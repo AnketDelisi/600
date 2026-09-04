@@ -16,7 +16,7 @@ document.addEventListener('click',e=>{
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='constituency'&&!pane.dataset.loaded){renderConstituency(pane);if(CONSTITUENCIES){pane.dataset.loaded='1'}}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
 /* ---------- load data ---------- */
@@ -338,219 +338,19 @@ function renderPollsTable(polls){
 }
 
 /* ---------- render parliament ---------- */
-let PARL_VIEW='map';   // 'map' (Sweden shape) or 'arc'
 let PARL_MODE='proj';  // 'proj' or '2022'
 
 function renderParliament(avg){
-  let body='';
-  if(PARL_VIEW==='arc'){
-    const seats=PARL_MODE==='proj'?allocateSeats(avg):allocateSeatsN(LAST_ELECTION.results,310);
-    body=`<div class="parliament-box">${buildParliamentSVG(seats)}</div>
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">310 constituency seats via Sainte-Laguë (modified)</div>`;
-  }else{
-    body=renderMosaic(avg);
-  }
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION — SWEDEN</div></div>
-    <div class="map-toggle-row">
-      <button class="map-toggle-btn parl-btn${PARL_VIEW==='map'?' active':''}" data-parlview="map">MOSAIC</button>
-      <button class="map-toggle-btn parl-btn${PARL_VIEW==='arc'?' active':''}" data-parlview="arc">ARC</button>
-      <span style="flex:1"></span>
+  const seats=PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL);
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
+    <div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">2022 RESULT</button>
     </div>
-    ${body}
+    <div class="parliament-box">${buildParliamentSVG(seats)}</div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      349 seats · 310 constituency (in county shape) + 39 leveling · Sainte-Laguë (modified) · 4% threshold
+      ${SEATS_TOTAL} seats (310 constituency + 39 leveling) · Sainte-Laguë (modified) · 4% threshold
     </div></div>`;
-}
-
-/* ---------- seat-by-seat Sweden mosaic cartogram ---------- */
-let _mosaicTiles=null;
-function mosaicTiles(){
-  if(_mosaicTiles) return _mosaicTiles;
-  _mosaicTiles=[];
-  MOSAIC_GRID.forEach((rowStr,y)=>{
-    [...rowStr].forEach((ch,x)=>{
-      if(ch==='.'||ch===' ') return;
-      const id=MOSAIC_KEYS[ch];
-      if(!id){console.warn('Unknown mosaic key:',ch);return}
-      _mosaicTiles.push({id,x,y});
-    });
-  });
-  return _mosaicTiles;
-}
-
-function renderMosaic(avg){
-  const tiles=mosaicTiles();
-  const cList=CONSTITUENCIES.constituencies;
-  const byId={}; cList.forEach(c=>{byId[c.id]=c});
-
-  // Validate tile counts against fixed seats
-  const tileCounts={};
-  tiles.forEach(t=>{tileCounts[t.id]=(tileCounts[t.id]||0)+1});
-  cList.forEach(c=>{
-    if(tileCounts[c.id]!==c.seats) console.warn('Mosaic count mismatch for '+c.id+': tiles='+tileCounts[c.id]+' seats='+c.seats);
-  });
-
-  const COLS=Math.max(...MOSAIC_GRID.map(r=>r.length));
-  const ROWS=MOSAIC_GRID.length;
-  const CELL=24;
-  const LABEL_W=110;
-  const W=COLS*CELL+LABEL_W, H=ROWS*CELL;
-
-  // Per-county allocation + ordered color list per county
-  const alloc={}, colors={};
-  for(const c of cList){
-    const sa=PARL_MODE==='proj'?allocateConstituencySeats(avg,c):allocateConstituencySeats2022(c);
-    alloc[c.id]=sa;
-    const ordered=PARTY_ORDER.slice().sort((a,b)=>(sa[b]||0)-(sa[a]||0));
-    const col=[];
-    ordered.forEach(pid=>{for(let i=0;i<(sa[pid]||0);i++)col.push(PARTY_META[pid]?PARTY_META[pid].color:'#ccc')});
-    colors[c.id]=col;
-  }
-  const levelingVotes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
-  const leveling=allocateSeatsN(levelingVotes,39);
-
-// Group tiles per county
-  const byCounty={};
-  tiles.forEach(t=>{if(!byCounty[t.id])byCounty[t.id]=[];byCounty[t.id].push(t)});
-
-  function edgeSegments(countyTiles){
-    const set=new Set(countyTiles.map(t=>t.x+','+t.y));
-    const segs=[];
-    countyTiles.forEach(t=>{
-      if(!set.has((t.x+1)+','+t.y)) segs.push({x1:t.x+1,y1:t.y,x2:t.x+1,y2:t.y+1});
-      if(!set.has(t.x+','+(t.y+1))) segs.push({x1:t.x,y1:t.y+1,x2:t.x+1,y2:t.y+1});
-      if(!set.has((t.x-1)+','+t.y)) segs.push({x1:t.x,y1:t.y,x2:t.x,y2:t.y+1});
-      if(!set.has(t.x+','+(t.y-1))) segs.push({x1:t.x,y1:t.y,x2:t.x+1,y2:t.y});
-    });
-    return segs;
-  }
-
-  function chainSegments(segs){
-    const remaining=segs.slice();
-    const chains=[];
-    while(remaining.length){
-      const chain=[remaining.pop()];
-      let grown=true;
-      while(grown){
-        grown=false;
-        for(let i=0;i<remaining.length;i++){
-          const s=remaining[i], head=chain[0], tail=chain[chain.length-1];
-          if(s.x1===tail.x2&&s.y1===tail.y2){chain.push(s);remaining.splice(i,1);grown=true;break}
-          if(s.x2===tail.x2&&s.y2===tail.y2){chain.push({x1:s.x2,y1:s.y2,x2:s.x1,y2:s.y1});remaining.splice(i,1);grown=true;break}
-          if(s.x2===head.x1&&s.y2===head.y1){chain.unshift(s);remaining.splice(i,1);grown=true;break}
-          if(s.x1===head.x1&&s.y1===head.y1){chain.unshift({x1:s.x2,y1:s.y2,x2:s.x1,y2:s.y1});remaining.splice(i,1);grown=true;break}
-        }
-      }
-      chains.push(chain);
-    }
-    return chains;
-  }
-
-  function pathFromChains(chains){
-    let d='';
-    chains.forEach(ch=>{
-      d+=`M ${ch[0].x1*CELL} ${ch[0].y1*CELL}`;
-      ch.forEach(s=>{d+=` L ${s.x2*CELL} ${s.y2*CELL}`});
-    });
-    return d;
-  }
-
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
-
-  // Per county: tiles + dotted border
-  const idx={}; cList.forEach(c=>{idx[c.id]=0});
-  for(const id of Object.keys(byCounty)){
-    const c=byId[id];
-    if(!c) continue;
-    const tList=byCounty[id];
-    const colList=colors[id];
-    let minX=99,minY=99,maxX=0,maxY=0;
-    svg+=`<g class="county-cell" data-id="${id}" data-name="${c.name}" data-seats="${c.seats}" data-mode="${PARL_MODE}" style="cursor:pointer">`;
-    tList.forEach(t=>{
-      const ci=idx[id]++;
-      const color=colList[ci]||'#ccc';
-      minX=Math.min(minX,t.x);minY=Math.min(minY,t.y);maxX=Math.max(maxX,t.x);maxY=Math.max(maxY,t.y);
-      svg+=`<rect x="${t.x*CELL+1.5}" y="${t.y*CELL+1.5}" width="${CELL-3}" height="${CELL-3}" fill="${color}"/>`;
-    });
-    // dotted subtle border around the county block
-    const border=pathFromChains(chainSegments(edgeSegments(tList)));
-    svg+=`<path d="${border}" fill="none" stroke="#111827" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>`;
-    // label: to the right of the county block (left for the Gotland island)
-    const lx=(maxX+1)*CELL+7;
-    const ly=(minY+maxY)*CELL/2+12;
-    const anchor=(id==='gotland')?'end':'start';
-    const labelX=(id==='gotland')?(minX)*CELL-7:lx;
-    svg+=`<text x="${labelX}" y="${ly}" font-size="10" font-weight="700" fill="#111827" text-anchor="${anchor}" font-family="Decima Mono Pro,monospace">${c.name} ${c.seats}</text>`;
-    svg+=`</g>`;
-  }
-  svg+=`</svg>`;
-
-  // Leveling strip
-  let ldots='';
-  const lOrdered=PARTY_ORDER.slice().sort((a,b)=>(leveling[b]||0)-(leveling[a]||0));
-  let lCounts='';
-  lOrdered.forEach(pid=>{
-    if(!(leveling[pid]||0)) return;
-    const col=PARTY_META[pid]?PARTY_META[pid].color:'#888';
-    for(let i=0;i<leveling[pid];i++) ldots+=`<span class="level-dot" style="background:${col}"></span>`;
-    lCounts+=`<span class="level-count"><span class="map-legend-dot" style="background:${col}"></span>${pid} ${leveling[pid]}</span>`;
-  });
-  const levelingHtml=`<div class="leveling-box">
-    <div class="leveling-label">39 LEVELING SEATS</div>
-    <div class="leveling-dots">${ldots}</div>
-    <div class="leveling-counts">${lCounts}</div>
-  </div>`;
-
-  // Legend
-  let legend='';
-  for(const pid of PARTY_ORDER){
-    legend+=`<span class="map-legend-item"><span class="map-legend-dot" style="background:${PARTY_META[pid].color}"></span>${pid}</span>`;
-  }
-
-  return `<div class="map-wrap" id="parl-map-wrap">${svg}<div class="map-tooltip" id="parl-map-tooltip"></div></div>
-    ${levelingHtml}
-    <div class="map-legend">${legend}</div>`;
-}
-
-function bindParliamentEvents(){
-  const wrap=$('parl-map-wrap');
-  if(wrap){
-    const tip=$('parl-map-tooltip');
-    wrap.querySelectorAll('.county-cell').forEach(cell=>{
-      cell.addEventListener('mouseenter',()=>{
-        const name=cell.dataset.name;
-        const seats=parseInt(cell.dataset.seats,10);
-        const c=CONSTITUENCIES.constituencies.find(x=>x.id===cell.dataset.id);
-        const sa=PARL_MODE==='proj'?allocateConstituencySeats(currentAvg(),c):allocateConstituencySeats2022(c);
-        let rows=PARTY_ORDER.filter(p=>(sa[p]||0)>0).map(p=>{
-          const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-          return `<div class="map-tip-row"><span class="map-tip-dot" style="background:${col}"></span><span class="map-tip-label">${p}</span><span class="map-tip-val">${sa[p]}</span></div>`;
-        }).join('');
-        if(!rows) rows='<div class="map-tip-row" style="color:var(--c-text-muted)">No party above threshold</div>';
-        tip.innerHTML=`<div class="map-tip-name">${name}</div>
-          <div class="map-tip-meta">${seats} constituency seats</div>${rows}`;
-        tip.classList.add('visible');
-      });
-      cell.addEventListener('mousemove',e=>{
-        const r=wrap.getBoundingClientRect();
-        tip.style.left=(e.clientX-r.left+14)+'px';
-        tip.style.top=(e.clientY-r.top+14)+'px';
-      });
-      cell.addEventListener('mouseleave',()=>{tip.classList.remove('visible')});
-    });
-  }
-  const pane=$('pane-polls');
-  if(pane){
-    pane.querySelectorAll('.parl-btn').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        if(btn.dataset.parlview) PARL_VIEW=btn.dataset.parlview;
-        if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
-        renderPollsTab();
-      });
-    });
-  }
 }
 
 function allocateSeatsN(votes, totalSeats){
@@ -581,327 +381,89 @@ function allocateSeats(avg){
   return allocateSeatsN(avg, 310);
 }
 
-function allocateConstituencySeats2022(c){
-  const r=c.results_2022||{};
-  const votes={};
-  for(const p of PARTY_ORDER) votes[p]=r[p]||0;
-  return allocateConstituencySeats(votes,c);
-}
-
 function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
-  const rows=13, cols=Math.ceil(total/rows);
-  const dotR=5, gap=2, cell=dotR*2+gap;
-  const svgW=cols*cell+gap;
-  const svgH=rows*cell+gap;
+  if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
-  // Build colored dot list
+  // Conventional hemicycle: nested arcs centered at the speaker (bottom).
+  // Back row = largest radius (top), front row = smallest (bottom, widest angle).
+  const ROWS=11;
+  const DOT=14, dotR=6.5;
+  const TH_BACK=14*Math.PI/180, TH_FRONT=72*Math.PI/180;
+  const RATIO=2.0;
+
+  // Solve base radius so all seats fit
+  let S=0;
+  for(let i=0;i<ROWS;i++){
+    const th=TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK);
+    S+=th*(RATIO-i*(RATIO-1)/(ROWS-1));
+  }
+  const rho0=total*DOT/(2*S);
+
+  // Per-row seat counts proportional to arc length
+  const ns=[];
+  const rhos=[];
+  for(let i=0;i<ROWS;i++){
+    const th=TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK);
+    const rho=rho0*(RATIO-i*(RATIO-1)/(ROWS-1));
+    rhos.push(rho);
+    ns.push(Math.max(1,Math.round(2*th*rho/DOT)));
+  }
+  let rem=total-ns.reduce((a,b)=>a+b,0);
+  let ri=ROWS-1;
+  while(rem!==0){ns[ri]+=(rem>0?1:-1);rem+=(rem>0?-1:1);ri=(ri-1+ROWS)%ROWS}
+
+  // Party colors, by size desc
   const dots=[];
   const sorted=PARTY_ORDER.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
-  for(const p of sorted){
-    const n=seats[p]||0;
-    const color=PARTY_META[p]?PARTY_META[p].color:'#ccc';
-    for(let i=0;i<n;i++) dots.push(color);
-  }
-  // Fill remaining with gray if needed
+  sorted.forEach(p=>{
+    for(let k=0;k<(seats[p]||0);k++) dots.push(PARTY_META[p]?PARTY_META[p].color:'#ccc');
+  });
   while(dots.length<total) dots.push('#ccc');
 
-  const cx=svgW/2, cy=svgH+20;
-  // Arc capacity for a given radius R
-  const capacity=R=>{
-    let c=0;
-    for(let row=0;row<rows;row++){
-      const y=svgH-((row+0.5)*svgH/rows);
-      const spanY=Math.abs(cy-y);
-      if(spanY>R) continue;
-      const spanX=Math.sqrt(R*R-spanY*spanY);
-      c+=Math.max(1,Math.floor(2*spanX/cell));
-    }
-    return c;
-  };
-  // Grow the arc until it can hold all dots
-  let R=Math.min(svgW/2, svgH*1.2);
-  while(capacity(R)<total && R<svgW*2) R+=5;
-
-  let svg=`<svg viewBox="0 0 ${svgW} ${svgH}" xmlns="http://www.w3.org/2000/svg">`;
+  // Place seats first (front row left->right, then upward) and compute bounds
+  const rhoBack=rhos[0], rhoFront=rhos[ROWS-1];
+  const cx=(2*rhoFront*Math.sin(TH_FRONT))/2+16, cy=12+rhoBack;
+  const placed=[];
   let idx=0;
-  if(capacity(R)>=total){
-    for(let row=0;row<rows;row++){
-      const y=svgH-((row+0.5)*svgH/rows);
-      const spanY=Math.abs(cy-y);
-      const spanX=Math.sqrt(Math.max(0,R*R-spanY*spanY));
-      const rowCols=Math.max(1,Math.floor(2*spanX/cell));
-      const rowStartX=cx-spanX;
-      for(let col=0;col<rowCols&&idx<dots.length;col++){
-        const x=rowStartX+col*(2*spanX/rowCols)+dotR;
-        svg+=`<circle cx="${fmt(x,1)}" cy="${fmt(y,1)}" r="${dotR}" fill="${dots[idx]}" stroke="#111827" stroke-width="0.5"/>`;
-        idx++;
-      }
-    }
-  }else{
-    // Fallback: plain grid if the arc cannot hold everything
-    for(let r=0;r<rows&&idx<dots.length;r++){
-      for(let c=0;c<cols&&idx<dots.length;c++){
-        const x=c*cell+gap+dotR, y=r*cell+gap+dotR;
-        svg+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="${dots[idx]}" stroke="#111827" stroke-width="0.5"/>`;
-        idx++;
-      }
+  for(let i=ROWS-1;i>=0;i--){
+    const th=TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK);
+    const rho=rhos[i];
+    for(let j=0;j<ns[i];j++){
+      const phi=-th+(j+0.5)*(2*th/ns[i]);
+      placed.push({
+        x:cx+rho*Math.sin(phi),
+        y:cy-rho*Math.cos(phi),
+        color:dots[idx]||'#ccc'
+      });
+      idx++;
     }
   }
+  let minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
+  placed.forEach(p=>{
+    minX=Math.min(minX,p.x-dotR);maxX=Math.max(maxX,p.x+dotR);
+    minY=Math.min(minY,p.y-dotR);maxY=Math.max(maxY,p.y+dotR);
+  });
+  const W=Math.ceil(maxX-minX)+4, H=Math.ceil(maxY-minY)+4;
+  const ox=2-minX, oy=2-minY;
+
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  placed.forEach(p=>{
+    svg+=`<circle cx="${fmt(p.x+ox,1)}" cy="${fmt(p.y+oy,1)}" r="${dotR}" fill="${p.color}" stroke="#111827" stroke-width="0.75"/>`;
+  });
   svg+=`</svg>`;
   return svg;
 }
 
-/* ---------- load constituency data ---------- */
-let CONSTITUENCIES=null;
-
-async function loadConstituencies(){
-  try{
-    const isSubdir=window.location.pathname.includes('/site/');
-    const base=isSubdir?'../':'';
-    const resp=await fetch(base+'data/sweden/constituencies.json');
-    if(!resp.ok) throw new Error('HTTP '+resp.status);
-    CONSTITUENCIES=await resp.json();
-  }catch(e){
-    console.error('Failed to load constituencies:',e);
-    CONSTITUENCIES=[];  // mark as "loaded but empty" so UI shows an error, not eternal LOADING
-  }
-}
-
-/* ---------- constituency seat allocator ---------- */
-function allocateConstituencySeats(avg, constituency){
-  const seats=constituency.seats;
-  const results=constituency.results_2022;
-  // Shift 2022 results by (poll_avg - 2022_result) for each party
-  const shifted={};
-  for(const pid of PARTY_ORDER){
-    const pollVal=avg[pid]||0;
-    const lastVal=results[pid]||0;
-    shifted[pid]=Math.max(0,lastVal+(pollVal-(LAST_ELECTION.results[pid]||0)));
-  }
-  const total=Object.values(shifted).reduce((a,b)=>a+b,0);
-  if(total===0) return {};
-  // Normalize to percentages
-  const pctShifted={};
-  for(const pid of PARTY_ORDER) pctShifted[pid]=(shifted[pid]/total)*100;
-  // Sainte-Laguë
-  const valid=PARTY_ORDER.filter(p=>pctShifted[p]>=THRESHOLD);
-  const totalValid=valid.reduce((s,p)=>s+pctShifted[p],0);
-  if(totalValid===0) return {};
-  const divisors=[1.2];for(let i=1;i<50;i++)divisors.push(2*i+1);
-  const q=[];
-  valid.forEach(p=>{for(let d=0;d<divisors.length;d++)q.push({party:p,q:pctShifted[p]/divisors[d]})});
-  q.sort((a,b)=>b.q-a.q);
-  const seatAlloc={};valid.forEach(p=>{seatAlloc[p]=0});
-  for(let i=0;i<seats&&i<q.length;i++)seatAlloc[q[i].party]++;
-  return seatAlloc;
-}
-
-/* ---------- constituency winner helpers ---------- */
-function constWinnerBySeats(sa){
-  let winner='—',wMax=0;
-  for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
-  return winner;
-}
-
-function constWinner2022(c){
-  const r=c.results_2022||{};
-  let winner='—',wMax=0;
-  for(const p of PARTY_ORDER){if((r[p]||0)>wMax){wMax=r[p];winner=p}}
-  return winner;
-}
-
-/* ---------- constituency map ---------- */
-let MAP_MODE='proj';
-
-function renderConstituencyMap(avg){
-  const CW=118, CH=64, GAP=10, COLS=6;
-  const positions=MAP_POS, cList=CONSTITUENCIES.constituencies;
-  const byId={}; cList.forEach(c=>{byId[c.id]=c});
-
-  // Compute per-constituency winners
-  const winners={}, seatAllocs={};
-  for(const c of cList){
-    const sa=allocateConstituencySeats(avg,c);
-    seatAllocs[c.id]=sa;
-    winners[c.id]=MAP_MODE==='proj'?constWinnerBySeats(sa):constWinner2022(c);
-  }
-
-  const rows=7;
-  const W=COLS*CW+(COLS-1)*GAP;
-  const H=rows*CH+(rows-1)*GAP;
-
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
-
-  // Region bands + labels
-  for(const key of ['norrland','svealand','götaland']){
-    const reg=MAP_REGIONS[key];
-    const y0=reg.rows[0]*CH+reg.rows[0]*GAP;
-    const y1=(reg.rows[1]+1)*CH+reg.rows[1]*GAP;
-    const x0=reg.cols[0]*CW+reg.cols[0]*GAP;
-    const x1=(reg.cols[1]+1)*CW+reg.cols[1]*GAP;
-    svg+=`<rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="6 4" rx="4" opacity="0.5"/>`;
-    svg+=`<text x="${x0+8}" y="${y0+16}" font-size="11" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace" letter-spacing="1">${reg.label}</text>`;
-  }
-
-  for(const c of cList){
-    const [col,row]=positions[c.id];
-    const x=col*(CW+GAP), y=row*(CH+GAP);
-    const w=winners[c.id];
-    const color=w==='—'?'#CBD5E1':(PARTY_META[w]?PARTY_META[w].color:'#888');
-    const seats=MAP_MODE==='proj'?seatAllocs[c.id]:null;
-    const seatStr=seats?Object.values(seats).reduce((a,b)=>a+b,0):c.seats;
-    const leaderStr=seats?w:c.seats===0?'—':w;
-    svg+=`<g class="const-cell" data-id="${c.id}" data-name="${c.name}" data-winner="${w}" data-seats="${seatStr}" data-mode="${MAP_MODE}">
-      <rect x="${x}" y="${y}" width="${CW}" height="${CH}" rx="4" fill="${color}" stroke="#111827" stroke-width="2" style="cursor:pointer"/>
-      <text x="${x+8}" y="${y+18}" font-size="10" font-weight="700" fill="#fff" stroke="#111827" stroke-width="2.5" paint-order="stroke" font-family="Decima Mono Pro,monospace">${c.name.toUpperCase()}</text>
-      <text x="${x+8}" y="${y+CH-10}" font-size="22" font-weight="900" fill="#fff" stroke="#111827" stroke-width="2.5" paint-order="stroke" font-family="Decima Mono Pro,monospace" font-variant-numeric="tabular-nums">${leaderStr}</text>
-      <text x="${x+CW-8}" y="${y+CH-10}" font-size="12" font-weight="700" fill="#fff" stroke="#111827" stroke-width="2.5" paint-order="stroke" text-anchor="end" font-family="Decima Mono Pro,monospace">${seatStr} seats</text>
-    </g>`;
-  }
-  svg+=`</svg>`;
-
-  // Legend
-  let legend='';
-  for(const pid of PARTY_ORDER){
-    legend+=`<span class="map-legend-item"><span class="map-legend-dot" style="background:${PARTY_META[pid].color}"></span>${pid}</span>`;
-  }
-
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCY MAP</div></div>
-    <div class="map-toggle-row">
-      <button class="map-toggle-btn${MAP_MODE==='proj'?' active':''}" data-mapmode="proj">PROJECTION</button>
-      <button class="map-toggle-btn${MAP_MODE==='2022'?' active':''}" data-mapmode="2022">2022 RESULT</button>
-    </div>
-    <div class="map-wrap" id="map-wrap">${svg}<div class="map-tooltip" id="map-tooltip"></div></div>
-    <div class="map-legend">${legend}</div>
-    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      Schematic layout by region. Cell = winner party · seat count per constituency. Hover for breakdown.
-    </div>
-  </div>`;
-}
-
-function bindMapEvents(){
-  const wrap=$('map-wrap');
-  if(!wrap) return;
-  const tip=$('map-tooltip');
-  const cells=wrap.querySelectorAll('.const-cell');
-  cells.forEach(cell=>{
-    cell.addEventListener('mouseenter',()=>{
-      const name=cell.dataset.name;
-      const winner=cell.dataset.winner;
-      const seats=parseInt(cell.dataset.seats,10);
-      const mode=cell.dataset.mode;
-      let breakdown='';
-      if(mode==='proj'&&CONSTITUENCIES){
-        const c=CONSTITUENCIES.constituencies.find(x=>x.id===cell.dataset.id);
-        const sa=allocateConstituencySeats(currentAvg(),c);
-        breakdown=PARTY_ORDER.filter(p=>(sa[p]||0)>0).map(p=>{
-          const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-          return `<div class="map-tip-row"><span class="map-tip-dot" style="background:${col}"></span><span class="map-tip-label">${p}</span><span class="map-tip-val">${sa[p]}</span></div>`;
-        }).join('');
-        if(!breakdown) breakdown='<div class="map-tip-row" style="color:var(--c-text-muted)">No party above threshold</div>';
-      } else {
-        const c=CONSTITUENCIES.constituencies.find(x=>x.id===cell.dataset.id);
-        const r=c.results_2022||{};
-        breakdown=PARTY_ORDER.filter(p=>(r[p]||0)>3).map(p=>{
-          const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-          return `<div class="map-tip-row"><span class="map-tip-dot" style="background:${col}"></span><span class="map-tip-label">${p}</span><span class="map-tip-val">${pct(r[p])}</span></div>`;
-        }).join('');
-      }
-      tip.innerHTML=`<div class="map-tip-name">${name}</div>
-        <div class="map-tip-meta">${seats} seats · winner: <b>${winner}</b></div>${breakdown}`;
-      tip.classList.add('visible');
-    });
-    cell.addEventListener('mousemove',e=>{
-      const r=wrap.getBoundingClientRect();
-      tip.style.left=(e.clientX-r.left+14)+'px';
-      tip.style.top=(e.clientY-r.top+14)+'px';
-    });
-    cell.addEventListener('mouseleave',()=>{tip.classList.remove('visible')});
-  });
-  // Toggle buttons
-  wrap.parentElement.querySelectorAll('.map-toggle-btn').forEach(btn=>{
+function bindParlToggles(){
+  const pane=$('pane-polls');
+  if(!pane) return;
+  pane.querySelectorAll('.parl-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      MAP_MODE=btn.dataset.mapmode;
-      const pane=$('pane-constituency');
-      renderConstituency(pane);
+      if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
+      renderPollsTab();
     });
   });
-}
-
-let _currentAvg=null;
-function currentAvg(){return _currentAvg||{}}
-
-/* ---------- render constituency tab ---------- */
-function renderConstituency(pane){
-  if(!CONSTITUENCIES){
-    pane.innerHTML='<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">LOADING...</div></div></div></div>';
-    return;
-  }
-  if(CONSTITUENCIES.length===0){
-    pane.innerHTML='<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCIES</div></div><div class="method-text" style="padding:16px"><p>Constituency data failed to load. Please refresh.</p></div></div></div>';
-    return;
-  }
-  const daysVal=parseInt($('filter-days').value)||30;
-  const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
-  let filtered=recentPolls(POLLS,daysVal);
-  if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
-  const avg=computeAverages(filtered);
-  _currentAvg=avg;
-
-  let totalSeatsAll={};PARTY_ORDER.forEach(p=>{totalSeatsAll[p]=0});
-  let rows='';
-  const sorted=CONSTITUENCIES.constituencies.slice().sort((a,b)=>b.seats-a.seats);
-  for(const c of sorted){
-    const sa=allocateConstituencySeats(avg,c);
-    const total=Object.values(sa).reduce((a,b)=>a+b,0);
-    PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
-    // Winner
-    let winner='—',wMax=0;
-    for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
-    const wColor=winner==='—'?'var(--c-text-muted)':(PARTY_META[winner]?PARTY_META[winner].color:'#888');
-    // Seat cells
-    let seatCells='';
-    for(const p of PARTY_ORDER){
-      const s=sa[p]||0;
-      const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-      seatCells+=`<td class="num" style="color:${s>0?color:'var(--c-rule)'};font-weight:${s>0?'700':'400'}">${s||'—'}</td>`;
-    }
-    rows+=`<tr>
-      <td style="font-weight:700">${c.name}</td>
-      <td class="num">${c.seats}</td>
-      <td style="color:${wColor};font-weight:700">${winner}</td>
-      ${seatCells}
-    </tr>`;
-  }
-  // Totals row
-  let totalCells='';
-  for(const p of PARTY_ORDER){
-    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-    totalCells+=`<td class="num" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
-  }
-  const constSeats=CONSTITUENCIES.constituencies.reduce((s,c)=>s+c.seats,0);
-  rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
-    <td>TOTAL</td><td class="num">${constSeats}</td><td></td>${totalCells}</tr>`;
-
-  let html=`<div class="tab-pane-inner">
-    <div class="hero">
-      <div class="hero-title">CONSTITUENCY SEAT PROJECTION</div>
-      <div class="hero-date">Modified Sainte-Laguë (divisor 1.2) · 29 constituencies · 310 constituency + 39 leveling seats</div>
-    </div>
-    ${renderConstituencyMap(avg)}
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEATS BY CONSTITUENCY</div></div>
-      <div style="overflow-x:auto">
-      <table class="polls-table"><thead><tr>
-        <th>Constituency</th><th>Seats</th><th>Leader</th>`;
-  PARTY_ORDER.forEach(p=>{html+=`<th style="text-align:right">${p}</th>`});
-  html+=`</tr></thead><tbody>${rows}</tbody></table></div>
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
-        Shifts applied: each party's 2022 constituency result adjusted by (poll_avg − 2022_national). Leveling seats distributed nationally.
-      </div>
-    </div></div>`;
-  pane.innerHTML=html;
-  bindMapEvents();
 }
 
 /* ---------- forecast tab ---------- */
@@ -945,11 +507,11 @@ function renderMethodology(pane){
         <h3>Seat Projection</h3>
         <p>Sweden uses a <strong>mixed-member proportional</strong> system with 349 seats:</p>
         <ul>
-          <li><strong>310 constituency seats</strong> — 29 constituencies, allocated via modified Sainte-Laguë (divisor 1.2)</li>
+          <li><strong>310 constituency seats</strong> — allocated across 29 constituencies via modified Sainte-Laguë (divisor 1.2)</li>
           <li><strong>39 leveling seats</strong> — used to align national vote share with seat share</li>
           <li><strong>4% threshold</strong> — parties must exceed this to qualify for seats</li>
         </ul>
-        <p>The constituency projection shifts each party's 2022 constituency result by the difference between the current poll average and the 2022 national result. Seats are then allocated via Sainte-Laguë. Leveling seats are not yet modeled.</p>
+        <p>The parliament diagram shows the full 349 seats allocated nationally via modified Sainte-Laguë, using the dual-weighted poll average. The hemicycle fills from the front-left by party size.</p>
 
         <h3>Bloc Totals</h3>
         <p>The <strong>Red-Green</strong> bloc includes S, V, MP, and C. The <strong>Tidö</strong> bloc includes M, SD, KD, and L. Note: C (Centre Party) is sometimes classified as centrist rather than left-leaning.</p>
@@ -971,7 +533,6 @@ function renderPollsTab(){
   filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
 
   const avg=computeAverages(filtered);
-  _currentAvg=avg;
 
   let html=`<div class="tab-pane-inner">`;
   html+=renderHero(avg, filtered);
@@ -992,7 +553,7 @@ function renderPollsTab(){
     const canvas=$('trend-canvas');
     if(canvas) renderTrendChart(canvas, filtered);
   });
-  bindParliamentEvents();
+  bindParlToggles();
 }
 
 /* ---------- public API ---------- */
@@ -1003,23 +564,15 @@ window._600={
     if(tabId==='polls'){renderPollsTab();return}
     const pane=$('pane-'+tabId);
     if(!pane) return;
-    if(tabId==='constituency'){renderConstituency(pane)}
-    else if(tabId==='forecast'){renderForecast(pane)}
+    if(tabId==='forecast'){renderForecast(pane)}
     else if(tabId==='methodology'){renderMethodology(pane)}
   }
 };
 
 /* ---------- boot ---------- */
-loadData().then(()=>loadConstituencies()).then(()=>{
+loadData().then(()=>{
   renderSidebar();
   renderPollsTab();
-  // If the user already opened the constituency tab while data was loading,
-  // re-render it now that constituencies are available.
-  const active=document.querySelector('.tab-trigger[data-active="true"]');
-  if(active&&active.dataset.tab==='constituency'){
-    const pane=$('pane-constituency');
-    if(pane){renderConstituency(pane);pane.dataset.loaded='1'}
-  }
 });
 
 })();

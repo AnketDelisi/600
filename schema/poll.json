@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Poll",
+  "description": "A single political opinion poll",
+  "type": "object",
+  "required": ["pollster", "date", "votes"],
+  "properties": {
+    "pollster": { "type": "string", "description": "Polling firm name" },
+    "date": { "type": "string", "format": "date", "description": "Fieldwork start or publication date (YYYY-MM-DD)" },
+    "date_end": { "type": "string", "format": "date", "description": "Fieldwork end date if range (YYYY-MM-DD)" },
+    "n": { "type": "integer", "description": "Sample size" },
+    "mode": { "type": "string", "enum": ["phone", "web", "mixed", "postal", "unknown"], "description": "Interview mode" },
+    "votes": {
+      "type": "object",
+      "description": "Party vote shares as percentages (0-100)",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
+    },
+    "source_url": { "type": "string", "format": "uri", "description": "Original source URL" },
+    "country": { "type": "string", "description": "ISO 3166-1 alpha-2 or common name" }
+  }
+}

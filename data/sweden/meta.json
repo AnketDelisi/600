@@ -1,0 +1,37 @@
+{
+  "country": "sweden",
+  "country_name": "Sweden",
+  "country_name_sv": "Sverige",
+  "system": "PR + leveling seats",
+  "seats_total": 349,
+  "seats_constituency": 310,
+  "seats_leveling": 39,
+  "threshold": 4.0,
+  "constituencies": 29,
+  "seat_method": "Sainte-Laguë (modified, divisor 1.2; leveling divisor 1.4)",
+  "parties": [
+    { "id": "S", "name": "Socialdemokraterna", "name_en": "Social Democrats", "color": "#EE2020" },
+    { "id": "SD", "name": "Sverigedemokraterna", "name_en": "Sweden Democrats", "color": "#006AB5" },
+    { "id": "M", "name": "Moderaterna", "name_en": "Moderates", "color": "#52BDEC" },
+    { "id": "V", "name": "Vänsterpartiet", "name_en": "Left Party", "color": "#DA291C" },
+    { "id": "C", "name": "Centerpartiet", "name_en": "Centre Party", "color": "#009933" },
+    { "id": "KD", "name": "Kristdemokraterna", "name_en": "Christian Democrats", "color": "#006AB5" },
+    { "id": "MP", "name": "Miljöpartiet", "name_en": "Green Party", "color": "#87C737" },
+    { "id": "L", "name": "Liberalerna", "name_en": "Liberals", "color": "#006AB5" }
+  ],
+  "blocs": {
+    "red_green": { "name": "Red-Green", "parties": ["S", "V", "MP", "C"] },
+    "tidö": { "name": "Tidö (Right)", "parties": ["M", "SD", "KD", "L"] }
+  },
+  "last_election": {
+    "date": "2022-09-11",
+    "results": {
+      "S": 30.33, "SD": 20.54, "M": 19.10, "V": 6.75,
+      "C": 6.71, "KD": 5.34, "MP": 5.10, "L": 4.61
+    },
+    "seats": {
+      "S": 107, "SD": 73, "M": 68, "V": 24,
+      "C": 24, "KD": 19, "MP": 18, "L": 16
+    }
+  }
+}

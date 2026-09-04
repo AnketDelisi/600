@@ -1,0 +1,48 @@
+name: Update poll data
+
+on:
+  schedule:
+    # Daily at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Scrape polls
+        run: python scraper/scrape_all.py
+
+      - name: Commit and push to main
+        run: |
+          git config user.name "600 bot"
+          git config user.email "600@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Update poll data $(date -u +%Y-%m-%d)"
+          git push origin main
+
+      - name: Sync data to stable
+        run: |
+          git fetch origin stable
+          git checkout stable
+          git checkout main -- data/
+          git config user.name "600 bot"
+          git config user.email "600@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Sync poll data to stable $(date -u +%Y-%m-%d)"
+          git push origin stable

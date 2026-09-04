@@ -175,13 +175,21 @@ function pollsterWeight(pollster){
   return 1/mae.overall;
 }
 
+// Exponential time decay: polls halve in weight every 14 days
+function recencyWeight(dateStr){
+  const ageDays=(Date.now()-new Date(dateStr).getTime())/(1000*60*60*24);
+  if(ageDays<=0) return 1;
+  return Math.pow(0.5, ageDays/14);
+}
+
 function weightedAverage(polls, party){
   let wSum=0, wTotal=0;
   for(const p of polls){
     if(p.votes[party]===undefined) continue;
     const n=p.n||1000;
     const pw=pollsterWeight(p.pollster);
-    const w=n*pw;
+    const rw=recencyWeight(p.date);
+    const w=n*pw*rw;
     wSum+=p.votes[party]*w;
     wTotal+=w;
   }
@@ -288,7 +296,7 @@ function renderHero(avg, filteredPolls){
   const logoSrc=PARTY_LOGOS[topParty]||'';
   return `<div class="hero">
     <div class="hero-title">${COUNTRY_NAME} — Poll Average</div>
-    <div class="hero-date">${filteredPolls.length} polls · latest: ${latestStr} (${days}d ago) · sample-size + pollster accuracy weighted</div>
+    <div class="hero-date">${filteredPolls.length} polls · latest: ${latestStr} (${days}d ago) · sample-size + pollster accuracy + recency weighted</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
         ${logoSrc?`<img src="${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
@@ -473,7 +481,7 @@ function drawChartBase(hoverIdx){
 
   // X labels
   const xStep=Math.max(1,Math.floor(dates.length/8));
-  ctx.fillStyle='#64748B';ctx.font='10px Atlas Grotesk,sans-serif';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='10px Decima Mono Pro,monospace';ctx.textAlign='center';
   for(let i=0;i<dates.length;i+=xStep){
     const x=pad.left+(i/(dates.length-1))*cw;
     ctx.fillText(dates[i].slice(5),x,H-pad.bottom+16);
@@ -686,8 +694,10 @@ function allocateSeatsFast(votes, total){
 
 /* ---------- forecast: Monte Carlo simulation ---------- */
 // Dirichlet concentration: alpha_p = avg_p(%) * K. sd(share) = sqrt(s(1-s)/(K*sum(avg)+1)).
-// With K=3 and sum(avg)~95, a 30% party gets sigma ~2.7pp (national polling error).
-const FORECAST_K=3;
+// K calibrated to the empirically measured pollster error: the MAE of final
+// poll averages across 2014/2018/2022 was ~1.2-1.5pp. K=11 gives sigma ~1.4pp
+// for a 30% party (with the election 9 days away, late swings are limited).
+const FORECAST_K=11;
 
 // Seeded PRNG (mulberry32) so the forecast is deterministic/static for a given dataset
 function mulberry32(seed){
@@ -1006,10 +1016,10 @@ function renderMethodology(pane){
         <p>Duplicate polls (same pollster + same date) are deduplicated, with Wikipedia data taking priority.</p>
 
         <h3>Poll Average</h3>
-        <p>The national poll average uses a <strong>dual-weighted mean</strong> combining sample size and pollster accuracy:</p>
-        <span class="formula">weight_i = n_i × (1 / MAE_pollster)</span>
+        <p>The national poll average uses a <strong>triple-weighted mean</strong> combining sample size, pollster accuracy and recency:</p>
+        <span class="formula">weight_i = n_i × (1 / MAE_pollster) × 0.5^(age_days / 14)</span>
         <span class="formula">avg(party) = Σ(vote_i × weight_i) / Σ(weight_i)</span>
-        <p>where <em>n_i</em> is the sample size and <em>MAE_pollster</em> is the mean absolute error of the pollster across the last 3 elections (2014, 2018, 2022). Lower MAE = higher weight. Pollsters with only 1-2 elections of data are assigned a default MAE of 1.30.</p>
+        <p>where <em>n_i</em> is the sample size, <em>MAE_pollster</em> is the mean absolute error of the pollster across the last 3 elections (2014, 2018, 2022) and <em>age_days</em> is the age of the poll in days. Polls halve in weight every 14 days, so recent polls dominate. Pollsters with only 1-2 elections of data are assigned a default MAE of 1.30.</p>
 
         <h3>Pollster Accuracy (MAE)</h3>
         <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the 3 most recent elections. The MAE is the mean absolute deviation across all 8 parties:</p>

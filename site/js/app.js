@@ -82,9 +82,6 @@ function renderConstituencyTable(avg){
   for(const c of sorted){
     const sa=by2022?allocateConstituencySeats2022(c):allocateConstituencySeats(votes,c);
     PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
-    let winner='—',wMax=0;
-    for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
-    const wColor=winner==='—'?'var(--c-text-muted)':(PARTY_META[winner]?PARTY_META[winner].color:'#888');
     let seatCells='';
     for(const p of PARTY_ORDER){
       const s=sa[p]||0;
@@ -94,7 +91,6 @@ function renderConstituencyTable(avg){
     rows+=`<tr>
       <td style="font-weight:700">${c.name}</td>
       <td class="num c">${c.seats}</td>
-      <td class="c" style="color:${wColor};font-weight:700">${winner}</td>
       ${seatCells}
     </tr>`;
   }
@@ -105,14 +101,14 @@ function renderConstituencyTable(avg){
   }
   const constSeats=cList.reduce((s,c)=>s+c.seats,0);
   rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
-    <td>TOTAL</td><td class="num c">${constSeats}</td><td></td>${totalCells}</tr>`;
+    <td>TOTAL</td><td class="num c">${constSeats}</td>${totalCells}</tr>`;
 
   let head='';
   PARTY_ORDER.forEach(p=>{head+=`<th class="c">${p}</th>`});
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCY SEATS (${PARL_MODE==='2022'?'2022 RESULT':'PROJECTION'})</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>Constituency</th><th class="c">Seats</th><th class="c">Leader</th>${head}
+      <th>Constituency</th><th class="c">Seats</th>${head}
     </tr></thead><tbody>${rows}</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
       Per-constituency Sainte-Laguë (4% threshold) · ${by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'}
@@ -365,11 +361,12 @@ function renderTrendChart(canvas, polls){
     return {pid, points, color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
   });
 
-  // Find y range
+  // Find y range (data-driven, no clipping; cap at 55 for sanity)
   let yMin=Infinity,yMax=-Infinity;
   series.forEach(s=>s.points.forEach(v=>{if(v!==null){yMin=Math.min(yMin,v);yMax=Math.max(yMax,v)}}));
+  if(!isFinite(yMin)){yMin=0;yMax=45}
   yMin=Math.floor(Math.max(0,yMin-3));
-  yMax=Math.ceil(Math.min(45,yMax+3));
+  yMax=Math.ceil(Math.min(55,yMax+3));
 
   CHART_STATE.ctx=ctx; CHART_STATE.W=W; CHART_STATE.H=H;
   CHART_STATE.pad=pad; CHART_STATE.dates=dates; CHART_STATE.series=series;
@@ -404,12 +401,15 @@ function renderTrendChart(canvas, polls){
     }
     tip.innerHTML=`<div class="ct-date">${date}</div>${rows}`;
     tip.classList.add('visible');
-    // position tooltip next to cursor, keep inside
+    // position tooltip next to cursor, clamped inside the chart wrap
     const tw=tip.offsetWidth||150;
+    const th=tip.offsetHeight||120;
     let tx=e.clientX-r.left+16;
     if(tx+tw>W-4) tx=e.clientX-r.left-tw-16;
-    tip.style.left=tx+'px';
-    tip.style.top=(e.clientY-r.top+12)+'px';
+    let ty=e.clientY-r.top+12;
+    if(ty+th>H-4) ty=e.clientY-r.top-th-12;
+    tip.style.left=Math.max(4,Math.min(W-tw-4,tx))+'px';
+    tip.style.top=Math.max(4,Math.min(H-th-4,ty))+'px';
   };
   wrap.onmouseleave=()=>{
     drawChartBase();
@@ -510,15 +510,17 @@ function renderPollsTable(polls){
     // Blocs
     const rg=BLOCS.red_green.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
     const td=BLOCS.tidö.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
+    const rgWin=rg>=td;
 
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num c">${p.n?p.n.toLocaleString():'—'}</td>
       <td class="num c" style="color:${leadColor};font-weight:700">${leadP} +${fmt(margin)}</td>
-      <td class="num c" style="color:${BLOCS.red_green.color};font-weight:700">${pct(rg)}</td>
-      <td class="num c" style="color:${BLOCS.tidö.color};font-weight:700">${pct(td)}</td>`;
+      <td class="num c" style="color:${BLOCS.red_green.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${pct(rg)}</td>
+      <td class="num c" style="color:${BLOCS.tidö.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${pct(td)}</td>`;
     PARTY_ORDER.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
-      html+=`<td class="num" style="color:${v!==undefined?color:'var(--c-rule)'}">${v!==undefined?pct(v):'—'}</td>`;
+      const isTop=pid===leadP;
+      html+=`<td class="num" style="color:${v!==undefined?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined?pct(v):'—'}</td>`;
     });
     html+=`</tr>`;
   });
@@ -577,82 +579,44 @@ function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
-  // Parliamentarch-style flat semicircle: wide canvas, near-flat rows,
-  // every row holds all parties as wedges (Hamilton per-row apportionment),
-  // total seat count displayed in the center of the arch.
-  const W=760, H=390;
-  const cx=W/2, cy=H-4;
-  const R=W/2-12;
-  const DOT=36;         // seat spacing
-  const dotR=7.4;
-  const TH_MAX=87*Math.PI/180;
-
-  // Solve angular step so the total seat capacity matches
-  const totalFor=dth=>{
-    let s=0, th=TH_MAX;
-    while(th>0.02){s+=Math.max(1,Math.round(2*R*Math.sin(th)/DOT));th-=dth}
-    return s;
-  };
-  let lo=Math.PI/60, hi=Math.PI/20;
-  for(let k=0;k<40;k++){
-    const mid=(lo+hi)/2;
-    if(totalFor(mid)>total) lo=mid; else hi=mid;
-  }
-  const dth=lo;
-
-  const rows=[];
-  let th=TH_MAX;
-  while(th>0.02){
-    rows.push([th,Math.max(1,Math.round(2*R*Math.sin(th)/DOT))]);
-    th-=dth;
-  }
-  let used=rows.reduce((a,r)=>a+r[1],0);
-  let diff=total-used;
-  let di=0;
-  while(diff!==0){const idx=di%rows.length;rows[idx][1]+=(diff>0?1:-1);diff+=(diff>0?-1:1);di++}
-
-  // Apportion each party's seats across rows (Hamilton largest remainder)
-  const caps=rows.map(r=>2*R*Math.sin(r[0]));
-  const capSum=caps.reduce((a,b)=>a+b,0);
-  const rowParties=rows.map(()=>[]);
+  // ADProjeksiyon-style parliament: full semicircle, concentric rows
+  // (radii 130..260), parties as wedges filled from the left in spectrum
+  // order, majority axis marker at the top, total seat count at the bottom.
+  const assigned=[];
   PARTY_ORDER.forEach(p=>{
-    const S=seats[p]||0;
-    if(S===0) return;
-    const exact=[], rems=[];
-    let usedP=0;
-    rows.forEach((r,idx)=>{
-      const v=S*caps[idx]/capSum;
-      exact.push(Math.floor(v)); rems.push(v-Math.floor(v)); usedP+=Math.floor(v);
-    });
-    let left=S-usedP;
-    const order=[...Array(rows.length).keys()].sort((a,b)=>rems[b]-rems[a]);
-    for(let k=0;k<left&&k<order.length;k++) exact[order[k]]++;
-    rows.forEach((r,idx)=>{if(exact[idx]>0) rowParties[idx].push([p,exact[idx]])});
+    const n=seats[p]||0;
+    for(let i=0;i<n;i++) assigned.push(p);
   });
 
-  // Place seats: per row left->right in PARTY_ORDER
-  const seatsList=[];
-  rows.forEach((r,idx)=>{
-    const t=r[0], n=r[1];
-    const chord=2*R*Math.sin(t);
-    const y=cy-R*Math.cos(t);
-    const row=[];
-    rowParties[idx].forEach(([p,c])=>{
-      const color=PARTY_META[p]?PARTY_META[p].color:'#ccc';
-      for(let k=0;k<c;k++) row.push(color);
-    });
-    for(let j=0;j<row.length;j++){
-      const x=cx-chord/2+(j+0.5)*chord/Math.max(1,row.length);
-      seatsList.push({x,y,color:row[j]});
+  const radii=[]; for(let r=130;r<265;r+=10) radii.push(r);
+  const sumR=radii.reduce((a,b)=>a+b,0);
+  const seatsPerRow=radii.map(r=>Math.round(total*(r/sumR)));
+  let spSum=seatsPerRow.reduce((a,b)=>a+b,0);
+  if(spSum!==total) seatsPerRow[seatsPerRow.length-1]+=(total-spSum);
+
+  const points=[];
+  for(let i=0;i<radii.length;i++){
+    const r=radii[i], s=seatsPerRow[i];
+    if(s<=0) continue;
+    for(let j=0;j<s;j++){
+      const angle=Math.PI-(Math.PI*j)/Math.max(1,(s-1));
+      points.push({x:r*Math.cos(angle), y:r*Math.sin(angle), angle, r});
     }
-  });
+  }
+  points.sort((a,b)=>(a.angle-b.angle)||(b.r-a.r)).reverse();
 
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
-  // Total count in the center of the arch (drawn first, seats over it)
-  svg+=`<text x="${cx}" y="${cy-R*0.045}" font-size="64" font-weight="900" text-anchor="middle" font-family="Decima Mono Pro,monospace" fill="#111827">${total}</text>`;
-  seatsList.forEach(s=>{
-    svg+=`<circle cx="${fmt(s.x,1)}" cy="${fmt(s.y,1)}" r="${dotR}" fill="${s.color}"/>`;
-  });
+  const majority=Math.floor(total/2)+1;
+  let svg=`<svg viewBox="-10 -26 540 296" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">`;
+  svg+=`<text x="250" y="-16" text-anchor="middle" font-size="13" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
+  svg+=`<line x1="250" y1="-12" x2="250" y2="130" stroke="#111827" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>`;
+  for(let i=0;i<assigned.length;i++){
+    if(i<points.length){
+      const party=assigned[i];
+      const col=PARTY_META[party]?PARTY_META[party].color:'#888';
+      svg+=`<circle cx="${fmt(250+points[i].x,1)}" cy="${fmt(250-points[i].y,1)}" r="5" fill="${col}"/>`;
+    }
+  }
+  svg+=`<text x="250" y="240" text-anchor="middle" font-size="46" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;
   svg+=`</svg>`;
   return svg;
 }

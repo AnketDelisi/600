@@ -19,6 +19,106 @@ document.addEventListener('click',e=>{
   if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
+/* ---------- load constituency data ---------- */
+let CONSTITUENCIES=null;
+
+async function loadConstituencies(){
+  try{
+    const isSubdir=window.location.pathname.includes('/site/');
+    const base=isSubdir?'../':'';
+    const resp=await fetch(base+'data/sweden/constituencies.json');
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    CONSTITUENCIES=await resp.json();
+  }catch(e){
+    console.error('Failed to load constituencies:',e);
+    CONSTITUENCIES=[];
+  }
+}
+
+/* ---------- constituency seat allocator ---------- */
+function allocateConstituencySeats(votes, constituency){
+  const seats=constituency.seats;
+  const results=constituency.results_2022;
+  // Shift 2022 results by (poll_avg - 2022_national) per party
+  const shifted={};
+  for(const pid of PARTY_ORDER){
+    const pollVal=votes[pid]||0;
+    const lastVal=results[pid]||0;
+    shifted[pid]=Math.max(0,lastVal+(pollVal-(LAST_ELECTION.results[pid]||0)));
+  }
+  const total=Object.values(shifted).reduce((a,b)=>a+b,0);
+  if(total===0) return {};
+  const pctShifted={};
+  for(const pid of PARTY_ORDER) pctShifted[pid]=(shifted[pid]/total)*100;
+  const valid=PARTY_ORDER.filter(p=>pctShifted[p]>=THRESHOLD);
+  const totalValid=valid.reduce((s,p)=>s+pctShifted[p],0);
+  if(totalValid===0) return {};
+  const divisors=[1.2];for(let i=1;i<50;i++)divisors.push(2*i+1);
+  const q=[];
+  valid.forEach(p=>{for(let d=0;d<divisors.length;d++)q.push({party:p,q:pctShifted[p]/divisors[d]})});
+  q.sort((a,b)=>b.q-a.q);
+  const seatAlloc={};valid.forEach(p=>{seatAlloc[p]=0});
+  for(let i=0;i<seats&&i<q.length;i++)seatAlloc[q[i].party]++;
+  return seatAlloc;
+}
+
+function allocateConstituencySeats2022(c){
+  const r=c.results_2022||{};
+  const votes={};
+  for(const p of PARTY_ORDER) votes[p]=r[p]||0;
+  return allocateConstituencySeats(votes,c);
+}
+
+/* ---------- constituency results table ---------- */
+function renderConstituencyTable(avg){
+  if(!CONSTITUENCIES||CONSTITUENCIES.length===0) return '';
+  const cList=CONSTITUENCIES.constituencies;
+  const votes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
+  const by2022=PARL_MODE==='2022';
+
+  let totalSeatsAll={};PARTY_ORDER.forEach(p=>{totalSeatsAll[p]=0});
+  let rows='';
+  const sorted=cList.slice().sort((a,b)=>b.seats-a.seats);
+  for(const c of sorted){
+    const sa=by2022?allocateConstituencySeats2022(c):allocateConstituencySeats(votes,c);
+    PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
+    let winner='—',wMax=0;
+    for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
+    const wColor=winner==='—'?'var(--c-text-muted)':(PARTY_META[winner]?PARTY_META[winner].color:'#888');
+    let seatCells='';
+    for(const p of PARTY_ORDER){
+      const s=sa[p]||0;
+      const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+      seatCells+=`<td class="num" style="color:${s>0?color:'var(--c-rule)'};font-weight:${s>0?'700':'400'}">${s||'—'}</td>`;
+    }
+    rows+=`<tr>
+      <td style="font-weight:700">${c.name}</td>
+      <td class="num">${c.seats}</td>
+      <td style="color:${wColor};font-weight:700">${winner}</td>
+      ${seatCells}
+    </tr>`;
+  }
+  let totalCells='';
+  for(const p of PARTY_ORDER){
+    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    totalCells+=`<td class="num" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
+  }
+  const constSeats=cList.reduce((s,c)=>s+c.seats,0);
+  rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
+    <td>TOTAL</td><td class="num">${constSeats}</td><td></td>${totalCells}</tr>`;
+
+  let head='';
+  PARTY_ORDER.forEach(p=>{head+=`<th style="text-align:right">${p}</th>`});
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCY SEATS (${PARL_MODE==='2022'?'2022 RESULT':'PROJECTION'})</div></div>
+    <div style="overflow-x:auto">
+    <table class="polls-table compact-table"><thead><tr>
+      <th>Constituency</th><th>Seats</th><th>Leader</th>${head}
+    </tr></thead><tbody>${rows}</tbody></table></div>
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
+      Per-constituency Sainte-Laguë (4% threshold) · ${by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'}
+    </div></div>`;
+}
+
 /* ---------- load data ---------- */
 let POLLS=[], META={};
 
@@ -221,13 +321,16 @@ function renderBlocs(avg){
 }
 
 /* ---------- render trend chart (canvas) ---------- */
+const CHART_STATE={};
+
 function renderTrendChart(canvas, polls){
   const ctx=canvas.getContext('2d');
-  const W=canvas.parentElement.clientWidth;
-  const H=canvas.parentElement.clientHeight||320;
+  const wrap=canvas.parentElement;
+  const W=wrap.clientWidth;
+  const H=wrap.clientHeight||320;
   canvas.width=W*2; canvas.height=H*2;
   canvas.style.width=W+'px'; canvas.style.height=H+'px';
-  ctx.scale(2,2);
+  ctx.setTransform(2,0,0,2,0,0);
 
   // Collect data points: group by date, average
   const byDate={};
@@ -242,6 +345,10 @@ function renderTrendChart(canvas, polls){
   });
 
   const dates=Object.keys(byDate).sort();
+  const pad={top:20,right:60,bottom:40,left:50};
+  const cw=W-pad.left-pad.right;
+  const ch=H-pad.top-pad.bottom;
+
   if(dates.length<2){
     ctx.fillStyle='#64748B';ctx.font='12px Atlas Grotesk,sans-serif';ctx.textAlign='center';
     ctx.fillText('Need at least 2 dates for a chart',W/2,H/2);
@@ -264,9 +371,57 @@ function renderTrendChart(canvas, polls){
   yMin=Math.floor(Math.max(0,yMin-3));
   yMax=Math.ceil(Math.min(45,yMax+3));
 
-  const pad={top:20,right:60,bottom:40,left:50};
-  const cw=W-pad.left-pad.right;
-  const ch=H-pad.top-pad.bottom;
+  CHART_STATE.ctx=ctx; CHART_STATE.W=W; CHART_STATE.H=H;
+  CHART_STATE.pad=pad; CHART_STATE.dates=dates; CHART_STATE.series=series;
+  CHART_STATE.yMin=yMin; CHART_STATE.yMax=yMax; CHART_STATE.byDate=byDate;
+  CHART_STATE.cw=cw; CHART_STATE.ch=ch; CHART_STATE.wrap=wrap;
+
+  drawChartBase();
+
+  // Tooltip element
+  let tip=wrap.querySelector('.chart-tooltip');
+  if(!tip){
+    tip=document.createElement('div');
+    tip.className='chart-tooltip';
+    wrap.appendChild(tip);
+  }
+  CHART_STATE.tip=tip;
+
+  wrap.onmousemove=e=>{
+    const r=canvas.getBoundingClientRect();
+    const mx=e.clientX-r.left;
+    const idx=Math.round((mx-pad.left)/cw*(dates.length-1));
+    if(idx<0||idx>=dates.length){drawChartBase();tip.classList.remove('visible');return}
+    drawChartBase(idx);
+    const date=dates[idx];
+    let rows='';
+    for(const pid of PARTY_ORDER){
+      const vals=byDate[date][pid];
+      if(!vals||!vals.length) continue;
+      const v=vals.reduce((a,b)=>a+b,0)/vals.length;
+      const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
+      rows+=`<div class="ct-row"><span class="ct-dot" style="background:${color}"></span><span class="ct-label">${pid}</span><span class="ct-val">${v.toFixed(1)}%</span></div>`;
+    }
+    tip.innerHTML=`<div class="ct-date">${date}</div>${rows}`;
+    tip.classList.add('visible');
+    // position tooltip next to cursor, keep inside
+    const tw=tip.offsetWidth||150;
+    let tx=e.clientX-r.left+16;
+    if(tx+tw>W-4) tx=e.clientX-r.left-tw-16;
+    tip.style.left=tx+'px';
+    tip.style.top=(e.clientY-r.top+12)+'px';
+  };
+  wrap.onmouseleave=()=>{
+    drawChartBase();
+    if(tip) tip.classList.remove('visible');
+  };
+}
+
+function drawChartBase(hoverIdx){
+  const s=CHART_STATE;
+  const {ctx,W,H,pad,dates,series,yMin,yMax,cw,ch}=s;
+  ctx.setTransform(2,0,0,2,0,0);
+  ctx.clearRect(0,0,W,H);
 
   // Grid
   ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
@@ -288,12 +443,12 @@ function renderTrendChart(canvas, polls){
   }
 
   // Lines
-  series.forEach(s=>{
+  series.forEach(ser=>{
     ctx.beginPath();
-    ctx.strokeStyle=s.color;
+    ctx.strokeStyle=ser.color;
     ctx.lineWidth=2;
     let started=false;
-    s.points.forEach((v,i)=>{
+    ser.points.forEach((v,i)=>{
       if(v===null) return;
       const x=pad.left+(i/(dates.length-1))*cw;
       const y=pad.top+ch*(1-(v-yMin)/(yMax-yMin));
@@ -303,29 +458,63 @@ function renderTrendChart(canvas, polls){
   });
 
   // End labels
-  series.forEach(s=>{
-    const lastIdx=s.points.length-1;
+  series.forEach(ser=>{
+    const lastIdx=ser.points.length-1;
     let lastVal=null;
-    for(let i=lastIdx;i>=0;i--){if(s.points[i]!==null){lastVal=s.points[i];break}}
+    for(let i=lastIdx;i>=0;i--){if(ser.points[i]!==null){lastVal=ser.points[i];break}}
     if(lastVal===null) return;
     const x=W-pad.right+4;
     const y=pad.top+ch*(1-(lastVal-yMin)/(yMax-yMin));
-    ctx.fillStyle=s.color;ctx.font='bold 10px Decima Mono Pro,monospace';ctx.textAlign='left';
-    ctx.fillText(s.pid,x,y+3);
+    ctx.fillStyle=ser.color;ctx.font='bold 10px Decima Mono Pro,monospace';ctx.textAlign='left';
+    ctx.fillText(ser.pid,x,y+3);
   });
+
+  // Hover overlay: guide line + dots
+  if(hoverIdx!==undefined&&hoverIdx>=0&&hoverIdx<dates.length){
+    const x=pad.left+(hoverIdx/(dates.length-1))*cw;
+    ctx.strokeStyle='#111827';ctx.lineWidth=1;
+    ctx.setLineDash([4,3]);
+    ctx.beginPath();ctx.moveTo(x,pad.top);ctx.lineTo(x,H-pad.bottom);ctx.stroke();
+    ctx.setLineDash([]);
+    series.forEach(ser=>{
+      const v=ser.points[hoverIdx];
+      if(v===null) return;
+      const y=pad.top+ch*(1-(v-yMin)/(yMax-yMin));
+      ctx.beginPath();
+      ctx.fillStyle=ser.color;
+      ctx.strokeStyle='#111827';ctx.lineWidth=1;
+      ctx.arc(x,y,3.5,0,Math.PI*2);
+      ctx.fill();
+      ctx.stroke();
+    });
+  }
 }
 
 /* ---------- render individual polls table ---------- */
 function renderPollsTable(polls){
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">INDIVIDUAL POLLS</div></div>
     <div style="overflow-x:auto">
-    <table class="polls-table"><thead><tr>
-      <th>Date</th><th>Pollster</th><th>N</th>`;
-  PARTY_ORDER.forEach(p=>{html+=`<th style="text-align:right">${p}</th>`});
+    <table class="polls-table compact-table"><thead><tr>
+      <th>Date</th><th>Pollster</th><th>N</th><th>Lead</th>
+      <th class="bloc-h rg-h">RG</th><th class="bloc-h td-h">Tidö</th>`;
+  PARTY_ORDER.forEach(p=>{html+=`<th class="ph-${p}" style="text-align:right">${p}</th>`});
   html+=`</tr></thead><tbody>`;
 
-  polls.slice(0,50).forEach(p=>{
-    html+=`<tr><td>${p.date}</td><td>${p.pollster}</td><td class="num">${p.n?p.n.toLocaleString():'—'}</td>`;
+  polls.slice(0,60).forEach(p=>{
+    // Leader + margin
+    const sorted=PARTY_ORDER.slice().sort((a,b)=>(p.votes[b]||0)-(p.votes[a]||0));
+    const leadP=sorted[0], leadV=p.votes[leadP]||0;
+    const secondV=p.votes[sorted[1]]||0;
+    const margin=leadV-secondV;
+    const leadColor=PARTY_META[leadP]?PARTY_META[leadP].color:'#888';
+    // Blocs
+    const rg=BLOCS.red_green.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
+    const td=BLOCS.tidö.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
+
+    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num">${p.n?p.n.toLocaleString():'—'}</td>
+      <td class="num" style="color:${leadColor};font-weight:700">${leadP} +${fmt(margin)}</td>
+      <td class="num" style="color:${BLOCS.red_green.color};font-weight:700">${pct(rg)}</td>
+      <td class="num" style="color:${BLOCS.tidö.color};font-weight:700">${pct(td)}</td>`;
     PARTY_ORDER.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
@@ -333,7 +522,10 @@ function renderPollsTable(polls){
     });
     html+=`</tr>`;
   });
-  html+=`</tbody></table></div></div>`;
+  html+=`</tbody></table></div>
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
+      RG = S+V+MP+C · Tidö = M+SD+KD+L · Lead = margin between the two largest parties in the poll
+    </div></div>`;
   return html;
 }
 
@@ -385,67 +577,77 @@ function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
-  // Conventional hemicycle: nested arcs centered at the speaker (bottom).
-  // Back row = largest radius (top), front row = smallest (bottom, widest angle).
-  const ROWS=11;
+  // Wikipedia-parliament-diagram style: concentric arc rows; every row holds
+  // ALL parties left->right (smooth wedges), each party's seats apportioned
+  // across rows proportionally to row capacity (largest-remainder method).
+  const ROWS=13;
   const DOT=14, dotR=6.5;
-  const TH_BACK=14*Math.PI/180, TH_FRONT=72*Math.PI/180;
-  const RATIO=2.0;
+  const TH_BACK=10*Math.PI/180, TH_FRONT=62*Math.PI/180;
+  const RATIO=2.0; // back radius / front radius
 
-  // Solve base radius so all seats fit
-  let S=0;
+  // Row radii (front = rho0, back = rho0*RATIO) and angular spans
+  const ths=[], rhos=[], caps=[];
   for(let i=0;i<ROWS;i++){
-    const th=TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK);
-    S+=th*(RATIO-i*(RATIO-1)/(ROWS-1));
+    ths.push(TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK));
+    rhos.push(RATIO-(i/(ROWS-1))*(RATIO-1));  // normalized radius factor
+    caps.push(2*ths[i]*rhos[i]);
   }
-  const rho0=total*DOT/(2*S);
+  const capSum=caps.reduce((a,b)=>a+b,0);
+  const thetaSum=ths.reduce((a,th,i)=>a+th*rhos[i],0);
+  const rho0=total*DOT/(2*thetaSum);
+  for(let i=0;i<ROWS;i++) rhos[i]*=rho0;
 
-  // Per-row seat counts proportional to arc length
-  const ns=[];
-  const rhos=[];
-  for(let i=0;i<ROWS;i++){
-    const th=TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK);
-    const rho=rho0*(RATIO-i*(RATIO-1)/(ROWS-1));
-    rhos.push(rho);
-    ns.push(Math.max(1,Math.round(2*th*rho/DOT)));
-  }
-  let rem=total-ns.reduce((a,b)=>a+b,0);
-  let ri=ROWS-1;
-  while(rem!==0){ns[ri]+=(rem>0?1:-1);rem+=(rem>0?-1:1);ri=(ri-1+ROWS)%ROWS}
-
-  // Party colors, by size desc
-  const dots=[];
-  const sorted=PARTY_ORDER.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
-  sorted.forEach(p=>{
-    for(let k=0;k<(seats[p]||0);k++) dots.push(PARTY_META[p]?PARTY_META[p].color:'#ccc');
+  // Apportion each party's seats across rows (Hamilton largest remainder)
+  const rowParties=[];      // per row: [party, count] left->right
+  const rowTotals=new Array(ROWS).fill(0);
+  const valid=PARTY_ORDER.filter(p=>(seats[p]||0)>0);
+  valid.forEach(p=>{
+    const S=seats[p];
+    const exact=[]; const rem=[];
+    let used=0;
+    for(let i=0;i<ROWS;i++){
+      const v=S*caps[i]/capSum;
+      exact.push(Math.floor(v));
+      rem.push(v-Math.floor(v));
+      used+=Math.floor(v);
+    }
+    let left=S-used;
+    const order=[...Array(ROWS).keys()].sort((a,b)=>rem[b]-rem[a]);
+    for(let k=0;k<left && k<order.length;k++){
+      exact[order[k]]++;
+    }
+    for(let i=0;i<ROWS;i++){
+      if(exact[i]>0){
+        rowParties[i]=rowParties[i]||[];
+        rowParties[i].push([p,exact[i]]);
+        rowTotals[i]+=exact[i];
+      }
+    }
   });
-  while(dots.length<total) dots.push('#ccc');
 
-  // Place seats first (front row left->right, then upward) and compute bounds
-  const rhoBack=rhos[0], rhoFront=rhos[ROWS-1];
-  const cx=(2*rhoFront*Math.sin(TH_FRONT))/2+16, cy=12+rhoBack;
+  // Place seats: for each row (front->back), parties left->right
   const placed=[];
-  let idx=0;
   for(let i=ROWS-1;i>=0;i--){
-    const th=TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK);
-    const rho=rhos[i];
-    for(let j=0;j<ns[i];j++){
-      const phi=-th+(j+0.5)*(2*th/ns[i]);
-      placed.push({
-        x:cx+rho*Math.sin(phi),
-        y:cy-rho*Math.cos(phi),
-        color:dots[idx]||'#ccc'
-      });
-      idx++;
+    const th=ths[i], rho=rhos[i];
+    const row=[];
+    (rowParties[i]||[]).forEach(([p,n])=>{
+      const color=PARTY_META[p]?PARTY_META[p].color:'#ccc';
+      for(let k=0;k<n;k++) row.push(color);
+    });
+    for(let j=0;j<row.length;j++){
+      const phi=-th+(j+0.5)*(2*th/Math.max(1,row.length));
+      placed.push({x:rho*Math.sin(phi), y:-rho*Math.cos(phi), color:row[j]});
     }
   }
+
+  // Bounds -> viewBox
   let minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
   placed.forEach(p=>{
     minX=Math.min(minX,p.x-dotR);maxX=Math.max(maxX,p.x+dotR);
     minY=Math.min(minY,p.y-dotR);maxY=Math.max(maxY,p.y+dotR);
   });
-  const W=Math.ceil(maxX-minX)+4, H=Math.ceil(maxY-minY)+4;
-  const ox=2-minX, oy=2-minY;
+  const W=Math.ceil(maxX-minX)+6, H=Math.ceil(maxY-minY)+6;
+  const ox=3-minX, oy=3-minY;
 
   let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
   placed.forEach(p=>{
@@ -544,6 +746,7 @@ function renderPollsTab(){
     <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>`;
 
   html+=renderParliament(avg);
+  html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);
   html+=`</div>`;
   pane.innerHTML=html;
@@ -570,7 +773,7 @@ window._600={
 };
 
 /* ---------- boot ---------- */
-loadData().then(()=>{
+loadData().then(()=>loadConstituencies()).then(()=>{
   renderSidebar();
   renderPollsTab();
 });

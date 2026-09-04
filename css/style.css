@@ -103,6 +103,11 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .polls-table td{padding:6px;border-bottom:1px solid var(--c-border);font-size:12px}
 .polls-table tr:nth-child(even) td{background:#F7F7F5}
 .polls-table .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.compact-table th{font-size:9px;padding:5px 4px;white-space:nowrap}
+.compact-table td{font-size:10.5px;padding:3px 4px;white-space:nowrap}
+.compact-table .num{font-size:10px}
+.bloc-h.rg-h{color:#EE2020}
+.bloc-h.td-h{color:#006AB5}
 
 /* ---------- Parliament ---------- */
 .parliament-box{width:100%;display:flex;justify-content:center;align-items:center}
@@ -118,6 +123,21 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 }
 .map-toggle-btn:hover{transform:translate(-1px,-1px);box-shadow:var(--shadow-big)}
 .map-toggle-btn.active{background:var(--c-accent);color:#fff;border-color:var(--c-edge)}
+
+/* ---------- Chart tooltip ---------- */
+.chart-wrap{position:relative}
+.chart-tooltip{
+  position:absolute;pointer-events:none;background:var(--c-surface);
+  border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:8px 10px;
+  font-size:11px;line-height:1.5;min-width:110px;z-index:50;display:none;
+  font-family:var(--font);
+}
+.chart-tooltip.visible{display:block}
+.ct-date{font-weight:900;font-size:11px;margin-bottom:3px}
+.ct-row{display:flex;align-items:center;gap:6px;padding:1px 0}
+.ct-dot{width:8px;height:8px;border-radius:1px;flex-shrink:0}
+.ct-label{flex:1;font-weight:700}
+.ct-val{font-family:var(--font-mono);font-weight:900;font-variant-numeric:tabular-nums}
 
 /* ---------- Methodology ---------- */
 .method-text{font-size:13px;line-height:1.7;color:var(--c-text-main)}

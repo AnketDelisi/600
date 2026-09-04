@@ -68,19 +68,16 @@ def parse_date(text, ref_year=2026):
 
 
 def parse_value(text):
-    """Return (value_in_pct, is_seats) or None."""
+    """Return seat count for above-threshold parties, None for below-threshold % or missing."""
     text = re.sub(r"\[\w+\]", "", text).strip()
     if not text or text in ("–", "—", "-", "–", ""):
         return None
-    m = re.match(r"\(?([<>]?\d+(?:\.\d+)?)%?\)?", text)
+    if text.startswith("("):
+        return None   # below-threshold share in % — no seats
+    m = re.match(r"(\d+(?:\.\d+)?)", text)
     if not m:
         return None
-    num = float(m.group(1).replace("<", "").replace(">", ""))
-    if "<" in m.group(1):
-        num = min(num, 0.5)
-    if text.startswith("("):
-        return num, False   # below-threshold share in %
-    return num, True        # seat count
+    return int(float(m.group(1)))
 
 
 def scrape_israel():
@@ -134,18 +131,15 @@ def scrape_israel():
             for i, key in enumerate(mapped):
                 if not key or i >= len(cells):
                     continue
-                parsed = parse_value(cells[i])
-                if not parsed:
+                seats = parse_value(cells[i])
+                if seats is None:
                     continue
-                val, is_seats = parsed
-                if is_seats:
-                    val = round(val / SEATS * 100, 2)
-                votes[key] = round(max(0.0, min(val, 50.0)), 2)
+                votes[key] = seats
 
             if len(votes) < MIN_PARTIES:
                 continue
             total = sum(votes.values())
-            if total < 55 or total > 115:
+            if total < 80 or total > 118:
                 continue
 
             poll = {

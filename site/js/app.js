@@ -348,11 +348,11 @@ function renderParliament(avg){
     body=`<div class="parliament-box">${buildParliamentSVG(seats)}</div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">310 constituency seats via Sainte-Laguë (modified)</div>`;
   }else{
-    body=renderSeatMap(avg);
+    body=renderMosaic(avg);
   }
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION — SWEDEN</div></div>
     <div class="map-toggle-row">
-      <button class="map-toggle-btn parl-btn${PARL_VIEW==='map'?' active':''}" data-parlview="map">SWEDEN</button>
+      <button class="map-toggle-btn parl-btn${PARL_VIEW==='map'?' active':''}" data-parlview="map">MOSAIC</button>
       <button class="map-toggle-btn parl-btn${PARL_VIEW==='arc'?' active':''}" data-parlview="arc">ARC</button>
       <span style="flex:1"></span>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
@@ -364,65 +364,86 @@ function renderParliament(avg){
     </div></div>`;
 }
 
-/* ---------- seat-by-seat Sweden map ---------- */
-function countyDots(count, cx, cy, rx, ry){
-  const dotR=4.2, cell=dotR*2+1.2;
-  let cols=Math.max(1,Math.ceil(Math.sqrt(count*1.4)));
-  while(cols*cell>2*rx-4 && cols<count) cols--;
-  if(cols<1) cols=1;
-  const rows=Math.ceil(count/cols);
-  const gw=cols*cell, gh=rows*cell;
-  const startX=cx-gw/2+dotR, startY=cy-gh/2+dotR;
-  const pts=[];
-  let i=0;
-  for(let r=0;r<rows&&i<count;r++){
-    for(let c=0;c<cols&&i<count;c++){
-      pts.push({x:startX+c*cell, y:startY+r*cell});
-      i++;
-    }
-  }
-  return pts;
+/* ---------- seat-by-seat Sweden mosaic cartogram ---------- */
+let _mosaicTiles=null;
+function mosaicTiles(){
+  if(_mosaicTiles) return _mosaicTiles;
+  _mosaicTiles=[];
+  MOSAIC_GRID.forEach((rowStr,y)=>{
+    [...rowStr].forEach((ch,x)=>{
+      if(ch==='.'||ch===' ') return;
+      const id=MOSAIC_KEYS[ch];
+      if(!id){console.warn('Unknown mosaic key:',ch);return}
+      _mosaicTiles.push({id,x,y});
+    });
+  });
+  return _mosaicTiles;
 }
 
-function renderSeatMap(avg){
+function renderMosaic(avg){
+  const tiles=mosaicTiles();
   const cList=CONSTITUENCIES.constituencies;
-  const pos=COUNTY_POS;
-  let svg=`<svg viewBox="0 0 500 660" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
-  svg+=`<path d="${SWEDEN_OUTLINE}" fill="#F3F1EC" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>`;
+  const byId={}; cList.forEach(c=>{byId[c.id]=c});
 
-  const perCounty={};
-  let levelingVotes=null;
+  // Validate tile counts against fixed seats
+  const tileCounts={};
+  tiles.forEach(t=>{tileCounts[t.id]=(tileCounts[t.id]||0)+1});
+  cList.forEach(c=>{
+    if(tileCounts[c.id]!==c.seats) console.warn('Mosaic count mismatch for '+c.id+': tiles='+tileCounts[c.id]+' seats='+c.seats);
+  });
+
+  const CELL=24;
+  const W=32*CELL, H=29*CELL;
+
+  // Per-county allocation + ordered color list per county
+  const alloc={}, colors={};
   for(const c of cList){
     const sa=PARL_MODE==='proj'?allocateConstituencySeats(avg,c):allocateConstituencySeats2022(c);
-    perCounty[c.id]=sa;
+    alloc[c.id]=sa;
+    const ordered=PARTY_ORDER.slice().sort((a,b)=>(sa[b]||0)-(sa[a]||0));
+    const col=[];
+    ordered.forEach(pid=>{for(let i=0;i<(sa[pid]||0);i++)col.push(PARTY_META[pid]?PARTY_META[pid].color:'#ccc')});
+    colors[c.id]=col;
   }
-  levelingVotes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
+  const levelingVotes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
   const leveling=allocateSeatsN(levelingVotes,39);
 
-  // Draw counties
-  for(const c of cList){
-    const sa=perCounty[c.id];
-    const total=Object.values(sa).reduce((a,b)=>a+b,0);
-    if(total===0) continue;
-    const p=pos[c.id];
-    if(!p) continue;
-    const rx=12+4.2*Math.sqrt(total), ry=rx*0.78;
-    const dots=countyDots(total,p.cx,p.cy,rx,ry);
-    // Fill dots ordered by party seat count desc
-    const ordered=PARTY_ORDER.slice().sort((a,b)=>(sa[b]||0)-(sa[a]||0));
-    const colors=[];
-    ordered.forEach(pid=>{for(let i=0;i<(sa[pid]||0);i++)colors.push(PARTY_META[pid]?PARTY_META[pid].color:'#ccc')});
+  // Per-county tile index map (scan order)
+  const idx={}; cList.forEach(c=>{idx[c.id]=0});
 
-    svg+=`<g class="county-cell" data-id="${c.id}" data-name="${c.name}" data-seats="${total}" data-mode="${PARL_MODE}" style="cursor:pointer">
-      <ellipse cx="${p.cx}" cy="${p.cy}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="#fff" stroke="#111827" stroke-width="2" fill-opacity="0.25"/>`;
-    dots.forEach((d,i)=>{
-      svg+=`<circle cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="4.2" fill="${colors[i]||'#ccc'}" stroke="#111827" stroke-width="0.8"/>`;
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
+  // Tiles grouped per county (grouped so tooltips/hover work per county)
+  const byCounty={};
+  tiles.forEach(t=>{if(!byCounty[t.id])byCounty[t.id]=[];byCounty[t.id].push(t)});
+  for(const id of Object.keys(byCounty)){
+    const c=byId[id];
+    if(!c) continue;
+    const tList=byCounty[id];
+    const total=c.seats;
+    const colList=colors[id];
+    svg+=`<g class="county-cell" data-id="${id}" data-name="${c.name}" data-seats="${total}" data-mode="${PARL_MODE}" style="cursor:pointer">`;
+    tList.forEach(t=>{
+      const ci=idx[id]++;
+      const color=colList[ci]||'#ccc';
+      const x=t.x*CELL+1, y=t.y*CELL+1;
+      svg+=`<rect x="${x}" y="${y}" width="${CELL-2}" height="${CELL-2}" rx="2" fill="${color}" stroke="#111827" stroke-width="1"/>`;
     });
-    // Label
-    const lx=p.cx, ly=p.label==='above'?p.cy-ry-10:(p.label==='right'?p.cx+rx+14:p.cy+ry+13);
-    const anchor=p.label==='right'?'start':'middle';
-    svg+=`<text x="${lx}" y="${ly}" font-size="9" font-weight="700" fill="#111827" text-anchor="${anchor}" font-family="Decima Mono Pro,monospace">${c.name} ${total}</text>`;
     svg+=`</g>`;
+  }
+  // County labels
+  for(const id of Object.keys(byCounty)){
+    const c=byId[id];
+    const tList=byCounty[id];
+    let minX=99,minY=99,maxX=0,maxY=0;
+    tList.forEach(t=>{minX=Math.min(minX,t.x);maxX=Math.max(maxX,t.x);minY=Math.min(minY,t.y);maxY=Math.max(maxY,t.y)});
+    const label=c.name+' '+c.seats;
+    let lx,ly,anchor='start';
+    if(id==='gotland'){
+      lx=minX*CELL-4; ly=(minY+maxY)*CELL/2+12+4; anchor='end';
+    }else{
+      lx=(maxX+1)*CELL+6; ly=(minY+maxY)*CELL/2+12+4;
+    }
+    svg+=`<text x="${lx}" y="${ly}" font-size="10" font-weight="700" fill="#111827" text-anchor="${anchor}" font-family="Decima Mono Pro,monospace">${label}</text>`;
   }
   svg+=`</svg>`;
 

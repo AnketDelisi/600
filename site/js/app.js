@@ -16,7 +16,7 @@ document.addEventListener('click',e=>{
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='constituency'&&!pane.dataset.loaded){renderConstituency(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
 /* ---------- load data ---------- */
@@ -41,13 +41,21 @@ async function loadData(){
 }
 
 /* ---------- average calculator ---------- */
+function pollsterWeight(pollster){
+  const mae=POLLSTER_MAE[pollster];
+  if(!mae||!mae.overall) return 1;
+  return 1/mae.overall;
+}
+
 function weightedAverage(polls, party){
   let wSum=0, wTotal=0;
   for(const p of polls){
     if(p.votes[party]===undefined) continue;
     const n=p.n||1000;
-    wSum+=p.votes[party]*n;
-    wTotal+=n;
+    const pw=pollsterWeight(p.pollster);
+    const w=n*pw;
+    wSum+=p.votes[party]*w;
+    wTotal+=w;
   }
   return wTotal>0?wSum/wTotal:null;
 }
@@ -149,12 +157,13 @@ function renderHero(avg, filteredPolls){
   const topPct=avg[topParty]||0;
   const color=PARTY_META[topParty]?PARTY_META[topParty].color:'#888';
 
+  const logoSrc=PARTY_LOGOS[topParty]||'';
   return `<div class="hero">
     <div class="hero-title">${COUNTRY_NAME} — Poll Average</div>
-    <div class="hero-date">${filteredPolls.length} polls · latest: ${latestStr} (${days}d ago) · avg. weighted by sample size</div>
+    <div class="hero-date">${filteredPolls.length} polls · latest: ${latestStr} (${days}d ago) · sample-size + pollster accuracy weighted</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
-      <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center">
-        <span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>
+      <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
+        ${logoSrc?`<img src="${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
       </div>
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${pct(topPct)}</span>
@@ -180,7 +189,9 @@ function renderPartyBars(avg){
     const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
 
     html+=`<div class="party-row">
-      <div class="party-logo" style="background:${color}"><span>${pid}</span></div>
+      <div class="party-logo" style="background:${color}">
+        ${PARTY_LOGOS[pid]?`<img src="${PARTY_LOGOS[pid]}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${pid}</span>`}
+      </div>
       <div class="party-name">${pid}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${pct(val)}</div>
@@ -402,6 +413,113 @@ function buildParliamentSVG(seats){
   return svg;
 }
 
+/* ---------- load constituency data ---------- */
+let CONSTITUENCIES=null;
+
+async function loadConstituencies(){
+  try{
+    const isSubdir=window.location.pathname.includes('/site/');
+    const base=isSubdir?'../':'';
+    const resp=await fetch(base+'data/sweden/constituencies.json');
+    CONSTITUENCIES=await resp.json();
+  }catch(e){
+    console.error('Failed to load constituencies:',e);
+  }
+}
+
+/* ---------- constituency seat allocator ---------- */
+function allocateConstituencySeats(avg, constituency){
+  const seats=constituency.seats;
+  const results=constituency.results_2022;
+  // Shift 2022 results by (poll_avg - 2022_result) for each party
+  const shifted={};
+  for(const pid of PARTY_ORDER){
+    const pollVal=avg[pid]||0;
+    const lastVal=results[pid]||0;
+    shifted[pid]=Math.max(0,lastVal+(pollVal-(LAST_ELECTION.results[pid]||0)));
+  }
+  const total=Object.values(shifted).reduce((a,b)=>a+b,0);
+  if(total===0) return {};
+  // Normalize to percentages
+  const pctShifted={};
+  for(const pid of PARTY_ORDER) pctShifted[pid]=(shifted[pid]/total)*100;
+  // Sainte-Laguë
+  const valid=PARTY_ORDER.filter(p=>pctShifted[p]>=THRESHOLD);
+  const totalValid=valid.reduce((s,p)=>s+pctShifted[p],0);
+  if(totalValid===0) return {};
+  const divisors=[1.2];for(let i=1;i<50;i++)divisors.push(2*i+1);
+  const q=[];
+  valid.forEach(p=>{for(let d=0;d<divisors.length;d++)q.push({party:p,q:pctShifted[p]/divisors[d]})});
+  q.sort((a,b)=>b.q-a.q);
+  const seatAlloc={};valid.forEach(p=>{seatAlloc[p]=0});
+  for(let i=0;i<seats&&i<q.length;i++)seatAlloc[q[i].party]++;
+  return seatAlloc;
+}
+
+/* ---------- render constituency tab ---------- */
+function renderConstituency(pane){
+  if(!CONSTITUENCIES){
+    pane.innerHTML='<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">LOADING...</div></div></div></div>';
+    return;
+  }
+  const daysVal=parseInt($('filter-days').value)||30;
+  const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
+  let filtered=recentPolls(POLLS,daysVal);
+  if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
+  const avg=computeAverages(filtered);
+
+  let totalSeatsAll={};PARTY_ORDER.forEach(p=>{totalSeatsAll[p]=0});
+  let rows='';
+  const sorted=CONSTITUENCIES.constituencies.slice().sort((a,b)=>b.seats-a.seats);
+  for(const c of sorted){
+    const sa=allocateConstituencySeats(avg,c);
+    const total=Object.values(sa).reduce((a,b)=>a+b,0);
+    PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
+    // Winner
+    let winner=PARTY_ORDER[0],wMax=0;
+    for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
+    const wColor=PARTY_META[winner]?PARTY_META[winner].color:'#888';
+    // Seat cells
+    let seatCells='';
+    for(const p of PARTY_ORDER){
+      const s=sa[p]||0;
+      const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+      seatCells+=`<td class="num" style="color:${s>0?color:'var(--c-rule)'};font-weight:${s>0?'700':'400'}">${s||'—'}</td>`;
+    }
+    rows+=`<tr>
+      <td style="font-weight:700">${c.name}</td>
+      <td class="num">${c.seats}</td>
+      <td style="color:${wColor};font-weight:700">${winner}</td>
+      ${seatCells}
+    </tr>`;
+  }
+  // Totals row
+  let totalCells='';
+  for(const p of PARTY_ORDER){
+    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    totalCells+=`<td class="num" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
+  }
+  rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
+    <td>TOTAL</td><td class="num">349</td><td></td>${totalCells}</tr>`;
+
+  let html=`<div class="tab-pane-inner">
+    <div class="hero">
+      <div class="hero-title">CONSTITUENCY SEAT PROJECTION</div>
+      <div class="hero-date">Modified Sainte-Laguë (divisor 1.2) · 29 constituencies · 310 constituency + 39 leveling seats</div>
+    </div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEATS BY CONSTITUENCY</div></div>
+      <div style="overflow-x:auto">
+      <table class="polls-table"><thead><tr>
+        <th>Constituency</th><th>Seats</th><th>Leader</th>`;
+  PARTY_ORDER.forEach(p=>{html+=`<th style="text-align:right">${p}</th>`});
+  html+=`</tr></thead><tbody>${rows}</tbody></table></div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
+        Shifts applied: each party's 2022 constituency result adjusted by (poll_avg − 2022_national). Leveling seats distributed nationally.
+      </div>
+    </div></div>`;
+  pane.innerHTML=html;
+}
+
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
   pane.innerHTML=`<div class="tab-pane-inner">
@@ -426,18 +544,28 @@ function renderMethodology(pane){
         <p>Duplicate polls (same pollster + same date) are deduplicated, with Wikipedia data taking priority.</p>
 
         <h3>Poll Average</h3>
-        <p>The national poll average is a <strong>sample-size weighted mean</strong> of all polls within the selected time window:</p>
-        <span class="formula">avg(party) = Σ(vote_i × n_i) / Σ(n_i)</span>
-        <p>where <em>vote_i</em> is the party's share in poll <em>i</em> and <em>n_i</em> is the sample size.</p>
+        <p>The national poll average uses a <strong>dual-weighted mean</strong> combining sample size and pollster accuracy:</p>
+        <span class="formula">weight_i = n_i × (1 / MAE_pollster)</span>
+        <span class="formula">avg(party) = Σ(vote_i × weight_i) / Σ(weight_i)</span>
+        <p>where <em>n_i</em> is the sample size and <em>MAE_pollster</em> is the mean absolute error of the pollster across the last 3 elections (2014, 2018, 2022). Lower MAE = higher weight. Pollsters with only 1-2 elections of data are assigned a default MAE of 1.30.</p>
+
+        <h3>Pollster Accuracy (MAE)</h3>
+        <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the 3 most recent elections. The MAE is the mean absolute deviation across all 8 parties:</p>
+        <table class="polls-table" style="margin:8px 0"><thead><tr><th>Pollster</th><th>Elections</th><th>MAE</th></tr></thead><tbody>
+        ${Object.entries(POLLSTER_MAE).sort((a,b)=>a[1].overall-b[1].overall).map(([ps,d])=>{
+          const eCount=Object.keys(d).filter(k=>k!=='overall').length;
+          return `<tr><td>${ps}</td><td class="num">${eCount}</td><td class="num" style="font-weight:700">${d.overall.toFixed(2)}%</td></tr>`;
+        }).join('')}
+        </tbody></table>
 
         <h3>Seat Projection</h3>
         <p>Sweden uses a <strong>mixed-member proportional</strong> system with 349 seats:</p>
         <ul>
-          <li><strong>310 constituency seats</strong> — allocated via modified Sainte-Laguë (divisor 1.2)</li>
+          <li><strong>310 constituency seats</strong> — 29 constituencies, allocated via modified Sainte-Laguë (divisor 1.2)</li>
           <li><strong>39 leveling seats</strong> — used to align national vote share with seat share</li>
           <li><strong>4% threshold</strong> — parties must exceed this to qualify for seats</li>
         </ul>
-        <p>The current seat estimate uses a simplified Sainte-Laguë allocation on constituency seats only. A full model with leveling seats and constituency breakdown is planned.</p>
+        <p>The constituency projection shifts each party's 2022 constituency result by the difference between the current poll average and the 2022 national result. Seats are then allocated via Sainte-Laguë. Leveling seats are not yet modeled.</p>
 
         <h3>Bloc Totals</h3>
         <p>The <strong>Red-Green</strong> bloc includes S, V, MP, and C. The <strong>Tidö</strong> bloc includes M, SD, KD, and L. Note: C (Centre Party) is sometimes classified as centrist rather than left-leaning.</p>
@@ -487,7 +615,7 @@ window._600={
 };
 
 /* ---------- boot ---------- */
-loadData().then(()=>{
+loadData().then(()=>loadConstituencies()).then(()=>{
   renderSidebar();
   renderPollsTab();
 });

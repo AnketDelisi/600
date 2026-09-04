@@ -6,6 +6,7 @@
 const $=s=>document.getElementById(s);
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
+const partyCode=pid=>(PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid;
 
 /* ---------- tab switching ---------- */
 document.addEventListener('click',e=>{
@@ -23,10 +24,12 @@ document.addEventListener('click',e=>{
 let CONSTITUENCIES=null;
 
 async function loadConstituencies(){
+  CONSTITUENCIES=null;
+  if(!HAS_CONSTITUENCIES) return;
   try{
     const isSubdir=window.location.pathname.includes('/site/');
     const base=isSubdir?'../':'';
-    const resp=await fetch(base+'data/sweden/constituencies.json');
+    const resp=await fetch(base+'data/'+COUNTRY+'/constituencies.json');
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     CONSTITUENCIES=await resp.json();
   }catch(e){
@@ -156,8 +159,8 @@ async function loadData(){
     const isSubdir=window.location.pathname.includes('/site/');
     const base=isSubdir?'../':'';
     const [pollsResp, metaResp]=await Promise.all([
-      fetch(base+'data/sweden/polls.json'),
-      fetch(base+'data/sweden/meta.json')
+      fetch(base+'data/'+COUNTRY+'/polls.json'),
+      fetch(base+'data/'+COUNTRY+'/meta.json')
     ]);
     const pollsJson=await pollsResp.json();
     const metaJson=await metaResp.json();
@@ -224,8 +227,10 @@ function renderSidebar(){
 
   // Country selector
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">COUNTRY</div></div>
-    <select class="sb-select" disabled><option>${COUNTRY_NAME}</option></select>
-    <div class="sb-hint">More countries coming soon</div></div>`;
+    <select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
+      ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
+    </select>
+    <div class="sb-hint">${SEATS_TOTAL} seats · ${SEAT_METHOD==='dhondt'?'D\'Hondt':'modified Sainte-Laguë'} · ${THRESHOLD}% threshold</div></div>`;
 
   // Filters
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">FILTERS</div></div>
@@ -244,12 +249,12 @@ function renderSidebar(){
     </select></div>`;
 
   // Last election
-  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">2022 RESULT</div></div>
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${LAST_ELECTION.date.slice(0,4)} RESULT</div></div>
     <div class="sb-last-election" id="sb-election"></div></div>`;
 
   // Info
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">INFO</div></div>
-    <div class="sb-hint">Data: Wikipedia + SwedishPolls (CC0)<br>349 seats · Sainte-Laguë · 4% threshold<br>Next election: Sep 13, 2026</div></div>`;
+    <div class="sb-hint">Data: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${SEATS_TOTAL} seats · ${SEAT_METHOD==='dhondt'?'D\'Hondt':'Sainte-Laguë'} · ${THRESHOLD}% threshold<br>Next election: ${META.election_date||LAST_ELECTION.date}</div></div>`;
 
   c.innerHTML=html;
 
@@ -277,7 +282,7 @@ function renderLastElection(){
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
     html+=`<div class="sb-le-row">
       <div class="sb-le-dot" style="background:${color}"></div>
-      <div class="sb-le-name">${pid}</div>
+      <div class="sb-le-name">${partyCode(pid)}</div>
       <div class="sb-le-pct">${pct(pct_val)}</div>
     </div>`;
   }
@@ -330,9 +335,9 @@ function renderPartyBars(avg){
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
-        ${PARTY_LOGOS[pid]?`<img src="${PARTY_LOGOS[pid]}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${pid}</span>`}
+        ${PARTY_LOGOS[pid]?`<img src="${PARTY_LOGOS[pid]}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${partyCode(pid)}</span>`}
       </div>
-      <div class="party-name">${pid}</div>
+      <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${pct(val)}</div>
       <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
@@ -345,18 +350,18 @@ function renderPartyBars(avg){
 
 /* ---------- render bloc summary ---------- */
 function renderBlocs(avg){
-  const rg=BLOCS.red_green.parties.reduce((s,p)=>s+(avg[p]||0),0);
-  const td=BLOCS.tidö.parties.reduce((s,p)=>s+(avg[p]||0),0);
+  const rg=BLOCS.bloc1.parties.reduce((s,p)=>s+(avg[p]||0),0);
+  const td=BLOCS.bloc2.parties.reduce((s,p)=>s+(avg[p]||0),0);
   return `<div class="bloc-row">
-    <div class="bloc-card" style="border-left:6px solid ${BLOCS.red_green.color}">
-      <div class="bloc-name">${BLOCS.red_green.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.red_green.color}">${pct(rg)}</div>
-      <div class="bloc-parties">${BLOCS.red_green.parties.join(' + ')}</div>
+    <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc1.color}">
+      <div class="bloc-name">${BLOCS.bloc1.name}</div>
+      <div class="bloc-pct" style="color:${BLOCS.bloc1.color}">${pct(rg)}</div>
+      <div class="bloc-parties">${BLOCS.bloc1.parties.map(partyCode).join(' + ')}</div>
     </div>
-    <div class="bloc-card" style="border-left:6px solid ${BLOCS.tidö.color}">
-      <div class="bloc-name">${BLOCS.tidö.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.tidö.color}">${pct(td)}</div>
-      <div class="bloc-parties">${BLOCS.tidö.parties.join(' + ')}</div>
+    <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc2.color}">
+      <div class="bloc-name">${BLOCS.bloc2.name}</div>
+      <div class="bloc-pct" style="color:${BLOCS.bloc2.color}">${pct(td)}</div>
+      <div class="bloc-parties">${BLOCS.bloc2.parties.map(partyCode).join(' + ')}</div>
     </div>
   </div>`;
 }
@@ -541,8 +546,8 @@ function renderPollsTable(polls){
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
       <th>Date</th><th>Pollster</th><th class="c">N</th><th class="c">Lead</th>
-      <th class="c bloc-h rg-h">RG</th><th class="c bloc-h td-h">Tidö</th>`;
-  PARTY_ORDER.forEach(p=>{html+=`<th class="c">${p}</th>`});
+      <th class="c bloc-h rg-h">${BLOCS.bloc1.short}</th><th class="c bloc-h td-h">${BLOCS.bloc2.short}</th>`;
+  PARTY_ORDER.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
 
   polls.slice(0,60).forEach(p=>{
@@ -553,14 +558,14 @@ function renderPollsTable(polls){
     const margin=leadV-secondV;
     const leadColor=PARTY_META[leadP]?PARTY_META[leadP].color:'#888';
     // Blocs
-    const rg=BLOCS.red_green.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
-    const td=BLOCS.tidö.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
+    const rg=BLOCS.bloc1.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
+    const td=BLOCS.bloc2.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
     const rgWin=rg>=td;
 
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num c">${p.n?p.n.toLocaleString():'—'}</td>
-      <td class="num c" style="color:${leadColor};font-weight:700">${leadP} +${fmt(margin)}</td>
-      <td class="num c" style="color:${BLOCS.red_green.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${pct(rg)}</td>
-      <td class="num c" style="color:${BLOCS.tidö.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${pct(td)}</td>`;
+      <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${fmt(margin)}</td>
+      <td class="num c" style="color:${BLOCS.bloc1.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${pct(rg)}</td>
+      <td class="num c" style="color:${BLOCS.bloc2.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${pct(td)}</td>`;
     PARTY_ORDER.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
@@ -571,7 +576,7 @@ function renderPollsTable(polls){
   });
   html+=`</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      RG = S+V+MP+C · Tidö = M+SD+KD+L · Lead = margin between the two largest parties in the poll
+      ${BLOCS.bloc1.name} = ${BLOCS.bloc1.parties.map(partyCode).join('+')} · ${BLOCS.bloc2.name} = ${BLOCS.bloc2.parties.map(partyCode).join('+')} · Lead = margin between the two largest parties in the poll
     </div></div>`;
   return html;
 }
@@ -588,7 +593,7 @@ function renderParliament(avg){
     </div>
     <div class="parliament-box">${buildParliamentSVG(seats)}</div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      ${SEATS_TOTAL} seats (310 constituency + 39 leveling) · Sainte-Laguë (modified) · 4% threshold
+      ${SEATS_TOTAL} seats · ${SEAT_METHOD==='dhondt'?"D'Hondt":'Sainte-Laguë (modified)'} · ${THRESHOLD}% threshold
     </div></div>`;
 }
 
@@ -599,9 +604,11 @@ function allocateSeatsN(votes, totalSeats){
   const seats={};
   validParties.forEach(p=>{seats[p]=0});
 
-  // Modified Sainte-Laguë: divisors 1.2, 3, 5, 7, 9, ... (enough for any party)
-  const divisors=[1.2];
-  for(let i=1;i<=totalSeats;i++) divisors.push(2*i+1);
+  // Modified Sainte-Laguë (1.2, 3, 5, ...) or D'Hondt (1, 2, 3, ...)
+  const divisors=[];
+  for(let i=1;i<=totalSeats;i++){
+    divisors.push(SEAT_METHOD==='dhondt'?i:(i===1?1.2:2*i-1));
+  }
 
   const quota=[];
   validParties.forEach(p=>{
@@ -682,12 +689,13 @@ function allocateSeatsFast(votes, total){
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
-  const quo={};valid.forEach(p=>{quo[p]=(votes[p]||0)/1.2});
+  const quo={};
+  valid.forEach(p=>{quo[p]=SEAT_METHOD==='dhondt'?(votes[p]||0):(votes[p]||0)/1.2});
   for(let i=0;i<total;i++){
     let best=valid[0];
     for(const p of valid){if(quo[p]>quo[best])best=p}
     seats[best]++;
-    quo[best]=(votes[best]||0)/(2*seats[best]+1);
+    quo[best]=SEAT_METHOD==='dhondt'?(votes[best]||0)/(seats[best]+1):(votes[best]||0)/(2*seats[best]+1);
   }
   return seats;
 }
@@ -751,10 +759,11 @@ function runForecast(avg, nSims){
     const simVotes={};
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
     const seats=allocateSeatsFast(simVotes,SEATS_TOTAL);
-    const rg=BLOCS.red_green.parties.reduce((a,p)=>a+(seats[p]||0),0);
-    const td=BLOCS.tidö.parties.reduce((a,p)=>a+(seats[p]||0),0);
-    if(rg>=176)maj.rg++;
-    else if(td>=176)maj.td++;
+    const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
+    const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
+    const MAJ_TH=Math.floor(SEATS_TOTAL/2)+1;
+    if(rg>=MAJ_TH)maj.rg++;
+    else if(td>=MAJ_TH)maj.td++;
     else maj.hung++;
     let top=PARTY_ORDER[0],topN=(seats[PARTY_ORDER[0]]||0);
     for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
@@ -828,7 +837,7 @@ function renderForecast(pane){
   const maj=sim.maj;
   const majTotal=sim.nSims;
   const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal;
-  const MAJ=176;
+  const MAJ=Math.floor(SEATS_TOTAL/2)+1;
 
   // --- Deterministic: median-based parliament ---
   const detSeats=deterministicSeats(sim.medians,sim.means,SEATS_TOTAL);
@@ -837,7 +846,7 @@ function renderForecast(pane){
   cmpOrder.forEach(p=>{
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     cmpRows+=`<tr>
-      <td style="font-weight:700;color:${color}">${p}</td>
+      <td style="font-weight:700;color:${color}">${partyCode(p)}</td>
       <td class="num c" style="font-weight:900">${detSeats[p]}</td>
       <td class="num c">${sim.medians[p]}</td>
       <td class="num c">${sim.modes[p]}</td>
@@ -859,8 +868,8 @@ function renderForecast(pane){
 
   // --- Probabilities ---
   const majorityBar=`<div class="fc-majbar">
-    <div class="fc-majseg" style="width:${(rgP*100).toFixed(1)}%;background:${BLOCS.red_green.color}"></div>
-    <div class="fc-majseg" style="width:${(tdP*100).toFixed(1)}%;background:${BLOCS.tidö.color}"></div>
+    <div class="fc-majseg" style="width:${(rgP*100).toFixed(1)}%;background:${BLOCS.bloc1.color}"></div>
+    <div class="fc-majseg" style="width:${(tdP*100).toFixed(1)}%;background:${BLOCS.bloc2.color}"></div>
     <div class="fc-majseg" style="width:${(hungP*100).toFixed(1)}%;background:#9CA3AF"></div>
   </div>`;
 
@@ -871,7 +880,7 @@ function renderForecast(pane){
     const n=sim.largest[p]||0;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     largestRows+=`<div class="fc-row">
-      <span class="fc-row-label" style="color:${color}">${p}</span>
+      <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
       <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(n/maxL*100).toFixed(1)}%;background:${color}"></div></div>
       <span class="fc-row-val">${pct100(n/sim.nSims)}</span>
     </div>`;
@@ -888,12 +897,12 @@ function renderForecast(pane){
     const barW=Math.min(100,mu/50*100);
     let note='';
     if(thresh>=0.5){
-      if(thresh<0.995) note=`<div class="fc-note">${p} is below the 4% threshold in ${pct100(1-thresh)} of sims</div>`;
+      if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the ${THRESHOLD}% threshold in ${pct100(1-thresh)} of sims</div>`;
     }else if(thresh>0.005){
-      note=`<div class="fc-note">${p} crosses the 4% threshold in ${pct100(thresh)} of sims</div>`;
+      note=`<div class="fc-note">${partyCode(p)} crosses the ${THRESHOLD}% threshold in ${pct100(thresh)} of sims</div>`;
     }
     voteRows+=`<div class="fc-voterow">
-      <span class="fc-row-label" style="color:${color}">${p}</span>
+      <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
       <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh"></div></div>
       <span class="fc-vote-val">${fmt(mu,1)}%</span>
       <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
@@ -925,7 +934,7 @@ function renderForecast(pane){
     const inParliament=mu>0.5;
     seatRows+=`<div class="fc-seatrow">
       <div class="fc-seathead">
-        <span class="fc-row-label" style="color:${color}">${p}</span>
+        <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
         <span class="fc-seat-mean">${fmt(mu,0)}</span>
         <span class="fc-seat-int">${lo}–${hi}</span>
       </div>
@@ -934,8 +943,8 @@ function renderForecast(pane){
     </div>`;
   });
 
-  const leadOutcome=rgP>=tdP?'Red-Green':(tdP>0?'Tidö':'Red-Green');
-  const leadColor=rgP>=tdP?BLOCS.red_green.color:BLOCS.tidö.color;
+  const leadOutcome=rgP>=tdP?BLOCS.bloc1.name:BLOCS.bloc2.name;
+  const leadColor=rgP>=tdP?BLOCS.bloc1.color:BLOCS.bloc2.color;
   const leadPct=Math.max(rgP,tdP)*100;
 
   pane.innerHTML=`<div class="tab-pane-inner">
@@ -966,8 +975,8 @@ function renderForecast(pane){
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MAJORITY</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
-        <span><span class="fc-dot" style="background:${BLOCS.red_green.color}"></span>Red-Green ${pct100(rgP)}</span>
-        <span><span class="fc-dot" style="background:${BLOCS.tidö.color}"></span>Tidö ${pct100(tdP)}</span>
+        <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${pct100(rgP)}</span>
+        <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${pct100(tdP)}</span>
         <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
@@ -1031,16 +1040,11 @@ function renderMethodology(pane){
         </tbody></table>
 
         <h3>Seat Projection</h3>
-        <p>Sweden uses a <strong>mixed-member proportional</strong> system with 349 seats:</p>
-        <ul>
-          <li><strong>310 constituency seats</strong> — allocated across 29 constituencies via modified Sainte-Laguë (divisor 1.2)</li>
-          <li><strong>39 leveling seats</strong> — used to align national vote share with seat share</li>
-          <li><strong>4% threshold</strong> — parties must exceed this to qualify for seats</li>
-        </ul>
-        <p>The parliament diagram shows the full 349 seats allocated nationally via modified Sainte-Laguë, using the dual-weighted poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge (left to right in political spectrum order), with the total seat count in the center.</p>
+        <p>${COUNTRY_NAME} elects <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${SEAT_METHOD==='dhondt'?"the <strong>D'Hondt</strong> method in a single national district":"<strong>modified Sainte-Laguë</strong> (divisor 1.2)"}, with a <strong>${THRESHOLD}% electoral threshold</strong>.</p>
+        <p>The parliament diagram shows the full ${SEATS_TOTAL} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center.</p>
 
         <h3>Bloc Totals</h3>
-        <p>The <strong>Red-Green</strong> bloc includes S, V, MP, and C. The <strong>Tidö</strong> bloc includes M, SD, KD, and L. Note: C (Centre Party) is sometimes classified as centrist rather than left-leaning.</p>
+        <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>
 
         <h3>Last Updated</h3>
         <p>Data is scraped automatically from Wikipedia and SwedishPolls. The site is updated daily via GitHub Actions.</p>
@@ -1093,6 +1097,20 @@ window._600={
     if(!pane) return;
     if(tabId==='forecast'){renderForecast(pane)}
     else if(tabId==='methodology'){renderMethodology(pane)}
+  },
+  setCountry(id){
+    if(!COUNTRIES[id]||id===COUNTRY) return;
+    setCountry(id);
+    for(const k in FC_CACHE) delete FC_CACHE[k];
+    PARL_MODE='proj';
+    document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
+    document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
+    const pollsBtn=document.querySelector('[data-tab="polls"]');
+    if(pollsBtn) pollsBtn.dataset.active='true';
+    loadData().then(()=>loadConstituencies()).then(()=>{
+      renderSidebar();
+      renderPollsTab();
+    });
   }
 };
 

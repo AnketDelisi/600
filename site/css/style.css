@@ -1,0 +1,154 @@
+/* ===== AltıCiftSıfır — neobrutalist (538-inspired) ===== */
+:root{
+  --c-bg:#F4F6FA;
+  --c-surface:#FFFFFF;
+  --c-text-main:#111827;
+  --c-text-muted:#64748B;
+  --c-accent:#FC454C;
+  --c-accent-2:#E00000;
+  --c-border:#E2E8F0;
+  --c-rule:#CBD5E1;
+  --c-edge:#111827;
+  --t-seat-bg:#111827;
+  --sidebar-input-bg:#FFFFFF;
+  --sidebar-input-border:#CBD5E1;
+  --font:'Atlas Grotesk','Nunito Sans','Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --font-mono:'Decima Mono Pro','Atlas Grotesk','Nunito Sans',monospace;
+  --shadow-big:5px 5px 0 rgba(17,24,39,1);
+  --shadow-md:3px 3px 0 rgba(17,24,39,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);font-size:14px;-webkit-font-smoothing:antialiased}
+
+.app-shell{display:flex;align-items:flex-start;width:100%;min-height:100vh;background:var(--c-bg)}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:320px;height:100vh;position:sticky;top:0;overflow-y:auto;flex-shrink:0;
+  background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);
+  margin-right:16px;padding:20px 16px;display:flex;flex-direction:column;gap:14px;
+  z-index:40;
+}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--c-rule)}
+.sidebar-logo{width:100%;padding:4px 0 10px 0;margin-bottom:4px}
+.sidebar-logo img{width:100%;display:block;object-fit:contain}
+
+/* ---------- Main column ---------- */
+.main-col{flex:1;min-width:0;width:100%}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+.tab-pane-inner{max-width:1400px;width:100%;margin:0 auto;padding:28px 16px 40px 16px}
+
+/* ---------- Segmented nav ---------- */
+.seg-nav{
+  position:sticky;top:0;z-index:50;width:100%;
+  background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);
+  padding:10px 24px;margin:0;display:flex;gap:2px;align-items:center;
+}
+.tab-trigger{
+  border:none;background:transparent;color:var(--c-text-main);
+  font-family:var(--font);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.4px;
+  padding:12px 16px 10px 16px;cursor:pointer;white-space:nowrap;flex-shrink:0;
+}
+.tab-trigger:hover{color:var(--c-accent-2)}
+.tab-trigger[data-active="true"]{color:#FFFFFF;background:#111827}
+.tab-social{
+  margin-left:auto;flex-shrink:0;display:inline-flex;align-items:center;gap:6px;
+  color:#FFFFFF;background:#111827;border:2px solid #111827;text-decoration:none;
+  font-family:var(--font);font-size:12px;font-weight:900;letter-spacing:0.4px;
+  padding:10px 14px 8px 14px;transition:background 90ms ease, color 90ms ease;
+}
+.tab-social:hover{background:var(--c-accent);color:#FFFFFF}
+
+/* ---------- Cards ---------- */
+.card{background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:16px;width:100%}
+.card+.card{margin-top:16px}
+.card-head{display:flex;align-items:center;width:100%;margin-bottom:10px;gap:8px}
+.card-head .bar{width:4px;height:12px;background:var(--c-accent);border-radius:1px}
+.card-head .t{font-weight:900;color:var(--c-text-muted);font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
+
+/* ---------- Party bars ---------- */
+.party-row{width:100%;display:flex;align-items:center;border-bottom:1px solid rgba(17,24,39,0.07);padding:6px 0}
+.party-logo{width:30px;height:30px;flex-shrink:0;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff}
+.party-logo img{width:100%;height:100%;object-fit:contain}
+.party-logo span{color:#fff;font-weight:900;font-size:9px;line-height:1;text-align:center}
+.party-name{width:60px;font-weight:900;color:var(--c-text-main);font-size:13px;flex-shrink:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;margin-left:8px}
+.party-bar{background:#F0EFED;height:14px;flex:1;border:2px solid #111827;border-radius:0;overflow:hidden;flex-shrink:0;margin:0 10px;box-shadow:var(--shadow-md);min-width:34px}
+.party-bar .fill{height:100%;border-radius:0}
+.party-pct{width:56px;font-weight:900;color:var(--c-text-main);font-size:13px;text-align:right;flex-shrink:0;line-height:1.2;font-variant-numeric:tabular-nums}
+.party-delta{width:56px;font-weight:700;font-size:10px;text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:20px 24px;width:100%;margin-bottom:16px}
+.hero-title{font-size:14px;font-weight:900;color:var(--c-text-muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.hero-date{font-size:13px;font-weight:700;color:var(--c-text-muted);margin-bottom:12px}
+.hero-subtitle{font-size:12px;color:var(--c-text-muted);font-weight:700}
+
+/* ---------- Bloc summary ---------- */
+.bloc-row{display:flex;gap:12px;width:100%;margin-bottom:16px}
+.bloc-card{flex:1;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:12px 14px;text-align:center}
+.bloc-card .bloc-name{font-size:11px;font-weight:900;color:var(--c-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.bloc-card .bloc-pct{font-size:28px;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums}
+.bloc-card .bloc-parties{font-size:10px;color:var(--c-text-muted);font-weight:700;margin-top:4px}
+
+/* ---------- Trend chart ---------- */
+.chart-wrap{width:100%;height:320px;position:relative;overflow:hidden}
+.chart-wrap canvas{display:block;width:100%;height:100%}
+
+/* ---------- Polls table ---------- */
+.polls-table{width:100%;border-collapse:collapse;font-family:var(--font);font-size:12px}
+.polls-table th{background:#111827;color:#fff;font-size:10px;font-weight:900;letter-spacing:0.5px;padding:8px 6px;text-align:left;position:sticky;top:0;z-index:2;border:1px solid #111827}
+.polls-table td{padding:6px;border-bottom:1px solid var(--c-border);font-size:12px}
+.polls-table tr:nth-child(even) td{background:#F7F7F5}
+.polls-table .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+
+/* ---------- Parliament ---------- */
+.parliament-box{width:100%;display:flex;justify-content:center;align-items:center}
+.parliament-box svg{width:100%;max-width:700px;height:auto}
+
+/* ---------- Methodology ---------- */
+.method-text{font-size:13px;line-height:1.7;color:var(--c-text-main)}
+.method-text h3{font-size:14px;font-weight:900;margin:16px 0 6px 0;color:var(--c-text-main)}
+.method-text p{margin:8px 0}
+.method-text ul{margin:8px 0 8px 20px}
+.method-text li{margin:4px 0}
+.method-text .formula{background:#F7F7F5;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);padding:12px 16px;font-family:var(--font-mono);font-size:12px;margin:12px 0;width:100%;display:block}
+
+/* ---------- Sidebar sections ---------- */
+.sb-section{background:var(--c-surface);border:2px solid var(--c-edge);padding:12px;width:100%}
+.sb-kicker{display:flex;align-items:center;width:100%;margin-bottom:8px;gap:8px}
+.sb-kicker .bar{width:4px;height:12px;background:var(--c-accent);border-radius:1px}
+.sb-kicker .t{font-weight:900;color:var(--c-text-muted);font-size:10px;letter-spacing:1.2px}
+.sb-select{
+  width:100%;background:var(--sidebar-input-bg);color:var(--c-text-main);border:2px solid var(--c-edge);
+  border-radius:2px;font-weight:800;font-size:12px;padding:6px 8px;height:34px;appearance:auto;cursor:pointer;
+  font-family:var(--font);
+}
+.sb-hint{font-size:10px;color:var(--c-text-muted);margin-top:4px}
+.sb-last-election{width:100%;margin-top:8px}
+.sb-le-row{display:flex;align-items:center;gap:6px;padding:3px 0;border-bottom:1px solid rgba(17,24,39,0.06)}
+.sb-le-dot{width:10px;height:10px;flex-shrink:0;border:1px solid var(--c-edge)}
+.sb-le-name{font-size:11px;font-weight:900;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-le-pct{font-family:var(--font-mono);font-size:11px;font-weight:900;font-variant-numeric:tabular-nums}
+
+/* ---------- Decima ---------- */
+input.vote-input,.party-pct,.party-delta,.bloc-card .bloc-pct,.tot-amt{font-family:var(--font-mono)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1100px){
+  .app-shell{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;margin-right:0}
+}
+@media (max-width:768px){
+  .seg-nav{
+    padding:8px 12px;
+    overflow-x:auto;overflow-y:hidden;flex-wrap:nowrap;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  }
+  .seg-nav::-webkit-scrollbar{display:none}
+  .tab-trigger{font-size:11px;padding:10px 12px 8px 12px;letter-spacing:0.3px}
+  .tab-social{font-size:11px;padding:9px 12px 7px 12px;margin-left:8px}
+  .bloc-row{flex-direction:column}
+}

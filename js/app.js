@@ -411,12 +411,9 @@ function renderMosaic(avg){
   const levelingVotes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
   const leveling=allocateSeatsN(levelingVotes,39);
 
-  // Group tiles per county
+// Group tiles per county
   const byCounty={};
   tiles.forEach(t=>{if(!byCounty[t.id])byCounty[t.id]=[];byCounty[t.id].push(t)});
-
-  // Whole-country set for outline tracing
-  const allSet=new Set(tiles.map(t=>t.x+','+t.y));
 
   function edgeSegments(countyTiles){
     const set=new Set(countyTiles.map(t=>t.x+','+t.y));
@@ -462,10 +459,6 @@ function renderMosaic(avg){
 
   let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
 
-  // Country outline (union of all tiles)
-  const countryBorder=pathFromChains(chainSegments(edgeSegments(tiles)));
-  svg+=`<path d="${countryBorder}" fill="none" stroke="#111827" stroke-width="1.5" opacity="0.25"/>`;
-
   // Per county: tiles + dotted border
   const idx={}; cList.forEach(c=>{idx[c.id]=0});
   for(const id of Object.keys(byCounty)){
@@ -479,9 +472,9 @@ function renderMosaic(avg){
       const ci=idx[id]++;
       const color=colList[ci]||'#ccc';
       minX=Math.min(minX,t.x);minY=Math.min(minY,t.y);maxX=Math.max(maxX,t.x);maxY=Math.max(maxY,t.y);
-      svg+=`<rect x="${t.x*CELL+1}" y="${t.y*CELL+1}" width="${CELL-2}" height="${CELL-2}" rx="1" fill="${color}"/>`;
+      svg+=`<rect x="${t.x*CELL+1.5}" y="${t.y*CELL+1.5}" width="${CELL-3}" height="${CELL-3}" fill="${color}"/>`;
     });
-    // dotted subtle border around the county
+    // dotted subtle border around the county block
     const border=pathFromChains(chainSegments(edgeSegments(tList)));
     svg+=`<path d="${border}" fill="none" stroke="#111827" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>`;
     // label: to the right of the county block (left for the Gotland island)

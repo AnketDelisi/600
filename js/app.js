@@ -16,7 +16,7 @@ document.addEventListener('click',e=>{
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='constituency'&&!pane.dataset.loaded){renderConstituency(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='constituency'&&!pane.dataset.loaded){renderConstituency(pane);if(CONSTITUENCIES){pane.dataset.loaded='1'}}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
 /* ---------- load data ---------- */
@@ -421,9 +421,11 @@ async function loadConstituencies(){
     const isSubdir=window.location.pathname.includes('/site/');
     const base=isSubdir?'../':'';
     const resp=await fetch(base+'data/sweden/constituencies.json');
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
     CONSTITUENCIES=await resp.json();
   }catch(e){
     console.error('Failed to load constituencies:',e);
+    CONSTITUENCIES=[];  // mark as "loaded but empty" so UI shows an error, not eternal LOADING
   }
 }
 
@@ -597,6 +599,10 @@ function renderConstituency(pane){
     pane.innerHTML='<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">LOADING...</div></div></div></div>';
     return;
   }
+  if(CONSTITUENCIES.length===0){
+    pane.innerHTML='<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCIES</div></div><div class="method-text" style="padding:16px"><p>Constituency data failed to load. Please refresh.</p></div></div></div>';
+    return;
+  }
   const daysVal=parseInt($('filter-days').value)||30;
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
   let filtered=recentPolls(POLLS,daysVal);
@@ -766,6 +772,13 @@ window._600={
 loadData().then(()=>loadConstituencies()).then(()=>{
   renderSidebar();
   renderPollsTab();
+  // If the user already opened the constituency tab while data was loading,
+  // re-render it now that constituencies are available.
+  const active=document.querySelector('.tab-trigger[data-active="true"]');
+  if(active&&active.dataset.tab==='constituency'){
+    const pane=$('pane-constituency');
+    if(pane){renderConstituency(pane);pane.dataset.loaded='1'}
+  }
 });
 
 })();

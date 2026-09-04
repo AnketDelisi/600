@@ -179,6 +179,12 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 input.vote-input,.party-pct,.party-delta,.bloc-card .bloc-pct,.tot-amt{font-family:var(--font-mono)}
 
 /* ---------- Forecast ---------- */
+.fc-hero{display:flex;flex-direction:column;gap:6px}
+.fc-headline{display:flex;align-items:baseline;gap:12px;margin-top:4px}
+.fc-headline-label{font-size:16px;font-weight:900}
+.fc-headline-num{font-size:44px;font-weight:900;font-family:var(--font-mono);line-height:1}
+.fc-section{display:flex;align-items:center;gap:8px;margin:18px 0 10px;font-size:11px;font-weight:900;letter-spacing:1.5px;color:var(--c-text-muted)}
+.fc-section .bar{width:4px;height:12px;background:var(--c-accent);border-radius:1px}
 .fc-majbar{display:flex;height:34px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);overflow:hidden}
 .fc-majseg{height:100%;min-width:2px}
 .fc-majlegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:12px;font-weight:700}

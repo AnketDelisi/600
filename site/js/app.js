@@ -689,6 +689,24 @@ function allocateSeatsFast(votes, total){
 // With K=3 and sum(avg)~95, a 30% party gets sigma ~2.7pp (national polling error).
 const FORECAST_K=3;
 
+// Seeded PRNG (mulberry32) so the forecast is deterministic/static for a given dataset
+function mulberry32(seed){
+  let a=seed>>>0;
+  return function(){
+    a|=0;a=(a+0x6D2B79F5)|0;
+    let t=Math.imul(a^(a>>>15),1|a);
+    t=(t+Math.imul(t^(t>>>7),61|t))^t;
+    return ((t^(t>>>14))>>>0)/4294967296;
+  };
+}
+function hashStr(s){
+  let h=5381;
+  for(let i=0;i<s.length;i++){h=((h<<5)+h+s.charCodeAt(i))>>>0}
+  return h;
+}
+let fcRand=Math.random;
+const FC_CACHE={};
+
 function forecastSigma(avg){
   const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*FORECAST_K;
   return Math.sqrt(0.3*0.7/(sumA+1))*100;
@@ -698,10 +716,10 @@ function gammaSample(alpha){
   // Marsaglia-Tsang (alpha > 1)
   const d=alpha-1/3, c=1/Math.sqrt(9*d);
   for(let i=0;i<20;i++){
-    const z=Math.sqrt(-2*Math.log(Math.random()))*(Math.random()<0.5?-1:1);  // full standard normal
+    const z=Math.sqrt(-2*Math.log(fcRand()))*(fcRand()<0.5?-1:1);  // full standard normal
     const y=Math.pow(1+c*z,3);
     if(y>0){
-      const u=Math.random();
+      const u=fcRand();
       if(u<1-0.0331*Math.pow(z,4)||Math.log(u)<0.5*z*z+d*(1-y+Math.log(y))) return d*y;
     }
   }
@@ -755,19 +773,24 @@ function runForecast(avg, nSims){
   return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims};
 }
 
-function expectedSeats(means,total){
-  // Deterministic projection: round the simulation means (largest remainder)
-  const fl={},frs=[];
-  let s=0;
-  PARTY_ORDER.forEach(p=>{
-    const m=means[p]||0;
-    const f=Math.floor(m);
-    fl[p]=f;frs.push([m-f,p]);s+=f;
-  });
-  let left=total-s;
-  frs.sort((a,b)=>b[0]-a[0]);
-  for(let i=0;i<left&&i<frs.length;i++)fl[frs[i][1]]++;
-  return fl;
+function deterministicSeats(medians, means, total){
+  // Deterministic projection from MEDIAN seats: parties whose median is 0
+  // (usually below the threshold) are left at 0. Sum is adjusted to the
+  // total using only parties present in the median outcome.
+  const s={};
+  PARTY_ORDER.forEach(p=>{s[p]=medians[p]||0});
+  let sum=PARTY_ORDER.reduce((a,p)=>a+s[p],0);
+  const eligible=PARTY_ORDER.filter(p=>s[p]>0);
+  if(sum<total&&eligible.length){
+    const order=eligible.slice().sort((a,b)=>(means[b]-medians[b])-(means[a]-medians[a]));
+    let i=0;
+    while(sum<total){s[order[i%order.length]]++;sum++;i++}
+  }else if(sum>total&&eligible.length){
+    const order=eligible.slice().sort((a,b)=>(medians[b]-means[b])-(medians[a]-means[a]));
+    let i=0;
+    while(sum>total){if(s[order[i%order.length]]>0){s[order[i%order.length]]--;sum--}i++}
+  }
+  return s;
 }
 
 function pct100(x){return (x*100).toFixed(1)+'%'}
@@ -784,20 +807,53 @@ function renderForecast(pane){
     return;
   }
 
-  const sim=runForecast(avg,3000);
+  // Deterministic + static: seeded simulation, cached per filter state
+  const seedKey=(POLLS[0]?POLLS[0].date:'')+'|'+daysVal+'|'+pollsterVal;
+  let sim=FC_CACHE[seedKey];
+  if(!sim){
+    fcRand=mulberry32(hashStr(seedKey));
+    sim=runForecast(avg,3000);
+    FC_CACHE[seedKey]=sim;
+  }
   const maj=sim.maj;
   const majTotal=sim.nSims;
   const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal;
   const MAJ=176;
 
-  // Majority stacked bar
+  // --- Deterministic: median-based parliament ---
+  const detSeats=deterministicSeats(sim.medians,sim.means,SEATS_TOTAL);
+  let cmpRows='';
+  const cmpOrder=PARTY_ORDER.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
+  cmpOrder.forEach(p=>{
+    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    cmpRows+=`<tr>
+      <td style="font-weight:700;color:${color}">${p}</td>
+      <td class="num c" style="font-weight:900">${detSeats[p]}</td>
+      <td class="num c">${sim.medians[p]}</td>
+      <td class="num c">${sim.modes[p]}</td>
+    </tr>`;
+  });
+
+  // --- Constituency results (median national vote shares) ---
+  const medVotes={};
+  PARTY_ORDER.forEach(p=>{
+    const arr=sim.votesBy[p].slice().sort((a,b)=>a-b);
+    medVotes[p]=arr[Math.floor(arr.length/2)];
+  });
+  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length?
+    constituencyTableHtml(medVotes,{
+      title:'CONSTITUENCIES',
+      showDelta:true,
+      note:'allocated from the forecast’s median national vote shares'
+    }):'';
+
+  // --- Probabilities ---
   const majorityBar=`<div class="fc-majbar">
     <div class="fc-majseg" style="width:${(rgP*100).toFixed(1)}%;background:${BLOCS.red_green.color}"></div>
     <div class="fc-majseg" style="width:${(tdP*100).toFixed(1)}%;background:${BLOCS.tidö.color}"></div>
     <div class="fc-majseg" style="width:${(hungP*100).toFixed(1)}%;background:#9CA3AF"></div>
   </div>`;
 
-  // Largest party rows
   let largestRows='';
   const largestSorted=PARTY_ORDER.slice().sort((a,b)=>(sim.largest[b]||0)-(sim.largest[a]||0));
   const maxL=Math.max(...Object.values(sim.largest),1);
@@ -811,63 +867,6 @@ function renderForecast(pane){
     </div>`;
   });
 
-  // Seat ranges + histograms
-  let seatRows='';
-  const seatOrder=PARTY_ORDER.slice().sort((a,b)=>{
-    const ma=mean(sim.seatsBy[a]), mb=mean(sim.seatsBy[b]);
-    return mb-ma;
-  });
-  const MAX_BUCKETS=25;
-  seatOrder.forEach(p=>{
-    const arr=sim.seatsBy[p];
-    const mu=mean(arr);
-    const lo=percentile(arr,5), hi=percentile(arr,95);
-    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-    // histogram
-    const span=Math.max(1,hi-lo);
-    const bW=Math.max(1,Math.ceil(span/MAX_BUCKETS));
-    const buckets=new Array(Math.ceil(350/bW)).fill(0);
-    arr.forEach(v=>{buckets[Math.floor(v/bW)]++});
-    const maxB=Math.max(...buckets,1);
-    let hist='';
-    buckets.forEach((c,i)=>{
-      const h=Math.round(c/maxB*36);
-      hist+=`<div class="fc-hist-col" style="height:${Math.max(1,h)}px;background:${color};opacity:${0.35+0.65*(c/maxB)}"></div>`;
-    });
-    const inParliament=mu>0.5;
-    seatRows+=`<div class="fc-seatrow">
-      <div class="fc-seathead">
-        <span class="fc-row-label" style="color:${color}">${p}</span>
-        <span class="fc-seat-mean">${fmt(mu,0)}</span>
-        <span class="fc-seat-int">${lo}–${hi}</span>
-      </div>
-      <div class="fc-hist">${hist}</div>
-      ${inParliament?'':'<div class="fc-note">likely below the 4% threshold</div>'}
-    </div>`;
-  });
-
-  // Deterministic projection
-  const expSeats=expectedSeats(sim.means,SEATS_TOTAL);
-  let cmpRows='';
-  const cmpOrder=PARTY_ORDER.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
-  cmpOrder.forEach(p=>{
-    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-    const arr=sim.seatsBy[p];
-    const lo=percentile(arr,5), hi=percentile(arr,95);
-    cmpRows+=`<tr>
-      <td style="font-weight:700;color:${color}">${p}</td>
-      <td class="num c" style="font-weight:900">${expSeats[p]}</td>
-      <td class="num c">${sim.medians[p]}</td>
-      <td class="num c">${sim.modes[p]}</td>
-      <td class="num c">${lo}–${hi}</td>
-    </tr>`;
-  });
-  let modalStr='—';
-  if(sim.modalN>0){
-    modalStr=PARTY_ORDER.filter(p=>(sim.modal[p]||0)>0).map(p=>`${p} ${sim.modal[p]}`).join(' · ');
-  }
-
-  // Vote share rows
   let voteRows='';
   const voteOrder=PARTY_ORDER.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
   voteOrder.forEach(p=>{
@@ -892,31 +891,80 @@ function renderForecast(pane){
     </div>`;
   });
 
-  // Constituency results (expected national vote shares)
-  const expVotes={};
-  PARTY_ORDER.forEach(p=>{expVotes[p]=mean(sim.votesBy[p])});
-  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length?
-    constituencyTableHtml(expVotes,{
-      title:'CONSTITUENCY RESULTS (EXPECTED)',
-      showDelta:true,
-      note:'allocated from the forecast’s expected national vote shares'
-    }):'';
+  let seatRows='';
+  const seatOrder=PARTY_ORDER.slice().sort((a,b)=>{
+    const ma=mean(sim.seatsBy[a]), mb=mean(sim.seatsBy[b]);
+    return mb-ma;
+  });
+  const MAX_BUCKETS=25;
+  seatOrder.forEach(p=>{
+    const arr=sim.seatsBy[p];
+    const mu=mean(arr);
+    const lo=percentile(arr,5), hi=percentile(arr,95);
+    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const span=Math.max(1,hi-lo);
+    const bW=Math.max(1,Math.ceil(span/MAX_BUCKETS));
+    const buckets=new Array(Math.ceil(350/bW)).fill(0);
+    arr.forEach(v=>{buckets[Math.floor(v/bW)]++});
+    const maxB=Math.max(...buckets,1);
+    let hist='';
+    buckets.forEach((c,i)=>{
+      const h=Math.round(c/maxB*36);
+      hist+=`<div class="fc-hist-col" style="height:${Math.max(1,h)}px;background:${color};opacity:${0.35+0.65*(c/maxB)}"></div>`;
+    });
+    const inParliament=mu>0.5;
+    seatRows+=`<div class="fc-seatrow">
+      <div class="fc-seathead">
+        <span class="fc-row-label" style="color:${color}">${p}</span>
+        <span class="fc-seat-mean">${fmt(mu,0)}</span>
+        <span class="fc-seat-int">${lo}–${hi}</span>
+      </div>
+      <div class="fc-hist">${hist}</div>
+      ${inParliament?'':'<div class="fc-note">likely below the 4% threshold</div>'}
+    </div>`;
+  });
+
+  const leadOutcome=rgP>=tdP?'Red-Green':(tdP>0?'Tidö':'Red-Green');
+  const leadColor=rgP>=tdP?BLOCS.red_green.color:BLOCS.tidö.color;
+  const leadPct=Math.max(rgP,tdP)*100;
 
   pane.innerHTML=`<div class="tab-pane-inner">
-    <div class="hero">
+    <div class="hero fc-hero">
       <div class="hero-title">FORECAST — ${COUNTRY_NAME} 2026</div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${fmt(forecastSigma(avg),1)}pp) · Sainte-Laguë · ${SEATS_TOTAL} seats · 4% threshold</div>
+      <div class="fc-headline">
+        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
+        <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
+      </div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${fmt(forecastSigma(avg),1)}pp) · Sainte-Laguë · ${SEATS_TOTAL} seats · 4% threshold · seeded, reproducible</div>
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MOST LIKELY PARLIAMENT (EXPECTED)</div></div>
-      <div class="parliament-box">${buildParliamentSVG(expSeats)}</div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>
+      <div class="parliament-box">${buildParliamentSVG(detSeats)}</div>
       <div style="overflow-x:auto">
       <table class="polls-table compact-table"><thead><tr>
-        <th>Party</th><th class="c">Exp</th><th class="c">Median</th><th class="c">Mode</th><th class="c">90% Int</th>
+        <th>Party</th><th class="c">Seats</th><th class="c">Median</th><th class="c">Mode</th>
       </tr></thead><tbody>${cmpRows}</tbody></table></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-        Deterministic projection = rounded simulation means. Most common single outcome in ${sim.nSims.toLocaleString()} sims: ${modalStr} (${pct100(sim.modalN/sim.nSims)})
+        Deterministic projection from the median of the simulations (parties whose median is 0 are left out)
       </div>
+    </div>
+
+    ${constHtml}
+
+    <div class="fc-section"><div class="bar"></div>PROBABILITIES</div>
+
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MAJORITY</div></div>
+      ${majorityBar}
+      <div class="fc-majlegend">
+        <span><span class="fc-dot" style="background:${BLOCS.red_green.color}"></span>Red-Green ${pct100(rgP)}</span>
+        <span><span class="fc-dot" style="background:${BLOCS.tidö.color}"></span>Tidö ${pct100(tdP)}</span>
+        <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
+      </div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
+    </div>
+
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LARGEST PARTY</div></div>
+      ${largestRows}
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">VOTE SHARE</div></div>
@@ -925,23 +973,7 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected national vote share from simulations · dashed line = 4% threshold</div>
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MAJORITY PROBABILITY</div></div>
-      ${majorityBar}
-      <div class="fc-majlegend">
-        <span><span class="fc-dot" style="background:${BLOCS.red_green.color}"></span>Red-Green majority ${pct100(rgP)}</span>
-        <span><span class="fc-dot" style="background:${BLOCS.tidö.color}"></span>Tidö majority ${pct100(tdP)}</span>
-        <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
-      </div>
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Majority = ${MAJ} of ${SEATS_TOTAL} seats</div>
-    </div>
-
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LARGEST PARTY</div></div>
-      ${largestRows}
-    </div>
-
-    ${constHtml}
-
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">EXPECTED SEATS</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT DISTRIBUTION</div></div>
       <div class="fc-seathead fc-seathead-hd"><span></span><span>EXP</span><span>90% INT</span></div>
       ${seatRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>

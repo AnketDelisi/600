@@ -93,8 +93,8 @@ function renderConstituencyTable(avg){
     }
     rows+=`<tr>
       <td style="font-weight:700">${c.name}</td>
-      <td class="num">${c.seats}</td>
-      <td style="color:${wColor};font-weight:700">${winner}</td>
+      <td class="num c">${c.seats}</td>
+      <td class="c" style="color:${wColor};font-weight:700">${winner}</td>
       ${seatCells}
     </tr>`;
   }
@@ -105,14 +105,14 @@ function renderConstituencyTable(avg){
   }
   const constSeats=cList.reduce((s,c)=>s+c.seats,0);
   rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
-    <td>TOTAL</td><td class="num">${constSeats}</td><td></td>${totalCells}</tr>`;
+    <td>TOTAL</td><td class="num c">${constSeats}</td><td></td>${totalCells}</tr>`;
 
   let head='';
-  PARTY_ORDER.forEach(p=>{head+=`<th style="text-align:right">${p}</th>`});
+  PARTY_ORDER.forEach(p=>{head+=`<th class="c">${p}</th>`});
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCY SEATS (${PARL_MODE==='2022'?'2022 RESULT':'PROJECTION'})</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>Constituency</th><th>Seats</th><th>Leader</th>${head}
+      <th>Constituency</th><th class="c">Seats</th><th class="c">Leader</th>${head}
     </tr></thead><tbody>${rows}</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
       Per-constituency Sainte-Laguë (4% threshold) · ${by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'}
@@ -495,9 +495,9 @@ function renderPollsTable(polls){
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">INDIVIDUAL POLLS</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>Date</th><th>Pollster</th><th>N</th><th>Lead</th>
-      <th class="bloc-h rg-h">RG</th><th class="bloc-h td-h">Tidö</th>`;
-  PARTY_ORDER.forEach(p=>{html+=`<th class="ph-${p}" style="text-align:right">${p}</th>`});
+      <th>Date</th><th>Pollster</th><th class="c">N</th><th class="c">Lead</th>
+      <th class="c bloc-h rg-h">RG</th><th class="c bloc-h td-h">Tidö</th>`;
+  PARTY_ORDER.forEach(p=>{html+=`<th class="c">${p}</th>`});
   html+=`</tr></thead><tbody>`;
 
   polls.slice(0,60).forEach(p=>{
@@ -511,10 +511,10 @@ function renderPollsTable(polls){
     const rg=BLOCS.red_green.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
     const td=BLOCS.tidö.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
 
-    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num">${p.n?p.n.toLocaleString():'—'}</td>
-      <td class="num" style="color:${leadColor};font-weight:700">${leadP} +${fmt(margin)}</td>
-      <td class="num" style="color:${BLOCS.red_green.color};font-weight:700">${pct(rg)}</td>
-      <td class="num" style="color:${BLOCS.tidö.color};font-weight:700">${pct(td)}</td>`;
+    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num c">${p.n?p.n.toLocaleString():'—'}</td>
+      <td class="num c" style="color:${leadColor};font-weight:700">${leadP} +${fmt(margin)}</td>
+      <td class="num c" style="color:${BLOCS.red_green.color};font-weight:700">${pct(rg)}</td>
+      <td class="num c" style="color:${BLOCS.tidö.color};font-weight:700">${pct(td)}</td>`;
     PARTY_ORDER.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
@@ -577,81 +577,81 @@ function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
-  // Wikipedia-parliament-diagram style: concentric arc rows; every row holds
-  // ALL parties left->right (smooth wedges), each party's seats apportioned
-  // across rows proportionally to row capacity (largest-remainder method).
-  const ROWS=13;
-  const DOT=14, dotR=6.5;
-  const TH_BACK=10*Math.PI/180, TH_FRONT=62*Math.PI/180;
-  const RATIO=2.0; // back radius / front radius
+  // Parliamentarch-style flat semicircle: wide canvas, near-flat rows,
+  // every row holds all parties as wedges (Hamilton per-row apportionment),
+  // total seat count displayed in the center of the arch.
+  const W=760, H=390;
+  const cx=W/2, cy=H-4;
+  const R=W/2-12;
+  const DOT=36;         // seat spacing
+  const dotR=7.4;
+  const TH_MAX=87*Math.PI/180;
 
-  // Row radii (front = rho0, back = rho0*RATIO) and angular spans
-  const ths=[], rhos=[], caps=[];
-  for(let i=0;i<ROWS;i++){
-    ths.push(TH_BACK+(i/(ROWS-1))*(TH_FRONT-TH_BACK));
-    rhos.push(RATIO-(i/(ROWS-1))*(RATIO-1));  // normalized radius factor
-    caps.push(2*ths[i]*rhos[i]);
+  // Solve angular step so the total seat capacity matches
+  const totalFor=dth=>{
+    let s=0, th=TH_MAX;
+    while(th>0.02){s+=Math.max(1,Math.round(2*R*Math.sin(th)/DOT));th-=dth}
+    return s;
+  };
+  let lo=Math.PI/60, hi=Math.PI/20;
+  for(let k=0;k<40;k++){
+    const mid=(lo+hi)/2;
+    if(totalFor(mid)>total) lo=mid; else hi=mid;
   }
-  const capSum=caps.reduce((a,b)=>a+b,0);
-  const thetaSum=ths.reduce((a,th,i)=>a+th*rhos[i],0);
-  const rho0=total*DOT/(2*thetaSum);
-  for(let i=0;i<ROWS;i++) rhos[i]*=rho0;
+  const dth=lo;
+
+  const rows=[];
+  let th=TH_MAX;
+  while(th>0.02){
+    rows.push([th,Math.max(1,Math.round(2*R*Math.sin(th)/DOT))]);
+    th-=dth;
+  }
+  let used=rows.reduce((a,r)=>a+r[1],0);
+  let diff=total-used;
+  let di=0;
+  while(diff!==0){const idx=di%rows.length;rows[idx][1]+=(diff>0?1:-1);diff+=(diff>0?-1:1);di++}
 
   // Apportion each party's seats across rows (Hamilton largest remainder)
-  const rowParties=[];      // per row: [party, count] left->right
-  const rowTotals=new Array(ROWS).fill(0);
-  const valid=PARTY_ORDER.filter(p=>(seats[p]||0)>0);
-  valid.forEach(p=>{
-    const S=seats[p];
-    const exact=[]; const rem=[];
-    let used=0;
-    for(let i=0;i<ROWS;i++){
-      const v=S*caps[i]/capSum;
-      exact.push(Math.floor(v));
-      rem.push(v-Math.floor(v));
-      used+=Math.floor(v);
-    }
-    let left=S-used;
-    const order=[...Array(ROWS).keys()].sort((a,b)=>rem[b]-rem[a]);
-    for(let k=0;k<left && k<order.length;k++){
-      exact[order[k]]++;
-    }
-    for(let i=0;i<ROWS;i++){
-      if(exact[i]>0){
-        rowParties[i]=rowParties[i]||[];
-        rowParties[i].push([p,exact[i]]);
-        rowTotals[i]+=exact[i];
-      }
-    }
+  const caps=rows.map(r=>2*R*Math.sin(r[0]));
+  const capSum=caps.reduce((a,b)=>a+b,0);
+  const rowParties=rows.map(()=>[]);
+  PARTY_ORDER.forEach(p=>{
+    const S=seats[p]||0;
+    if(S===0) return;
+    const exact=[], rems=[];
+    let usedP=0;
+    rows.forEach((r,idx)=>{
+      const v=S*caps[idx]/capSum;
+      exact.push(Math.floor(v)); rems.push(v-Math.floor(v)); usedP+=Math.floor(v);
+    });
+    let left=S-usedP;
+    const order=[...Array(rows.length).keys()].sort((a,b)=>rems[b]-rems[a]);
+    for(let k=0;k<left&&k<order.length;k++) exact[order[k]]++;
+    rows.forEach((r,idx)=>{if(exact[idx]>0) rowParties[idx].push([p,exact[idx]])});
   });
 
-  // Place seats: for each row (front->back), parties left->right
-  const placed=[];
-  for(let i=ROWS-1;i>=0;i--){
-    const th=ths[i], rho=rhos[i];
+  // Place seats: per row left->right in PARTY_ORDER
+  const seatsList=[];
+  rows.forEach((r,idx)=>{
+    const t=r[0], n=r[1];
+    const chord=2*R*Math.sin(t);
+    const y=cy-R*Math.cos(t);
     const row=[];
-    (rowParties[i]||[]).forEach(([p,n])=>{
+    rowParties[idx].forEach(([p,c])=>{
       const color=PARTY_META[p]?PARTY_META[p].color:'#ccc';
-      for(let k=0;k<n;k++) row.push(color);
+      for(let k=0;k<c;k++) row.push(color);
     });
     for(let j=0;j<row.length;j++){
-      const phi=-th+(j+0.5)*(2*th/Math.max(1,row.length));
-      placed.push({x:rho*Math.sin(phi), y:-rho*Math.cos(phi), color:row[j]});
+      const x=cx-chord/2+(j+0.5)*chord/Math.max(1,row.length);
+      seatsList.push({x,y,color:row[j]});
     }
-  }
-
-  // Bounds -> viewBox
-  let minX=1e9,maxX=-1e9,minY=1e9,maxY=-1e9;
-  placed.forEach(p=>{
-    minX=Math.min(minX,p.x-dotR);maxX=Math.max(maxX,p.x+dotR);
-    minY=Math.min(minY,p.y-dotR);maxY=Math.max(maxY,p.y+dotR);
   });
-  const W=Math.ceil(maxX-minX)+6, H=Math.ceil(maxY-minY)+6;
-  const ox=3-minX, oy=3-minY;
 
   let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
-  placed.forEach(p=>{
-    svg+=`<circle cx="${fmt(p.x+ox,1)}" cy="${fmt(p.y+oy,1)}" r="${dotR}" fill="${p.color}" stroke="#111827" stroke-width="0.75"/>`;
+  // Total count in the center of the arch (drawn first, seats over it)
+  svg+=`<text x="${cx}" y="${cy-R*0.045}" font-size="64" font-weight="900" text-anchor="middle" font-family="Decima Mono Pro,monospace" fill="#111827">${total}</text>`;
+  seatsList.forEach(s=>{
+    svg+=`<circle cx="${fmt(s.x,1)}" cy="${fmt(s.y,1)}" r="${dotR}" fill="${s.color}"/>`;
   });
   svg+=`</svg>`;
   return svg;
@@ -713,7 +713,7 @@ function renderMethodology(pane){
           <li><strong>39 leveling seats</strong> — used to align national vote share with seat share</li>
           <li><strong>4% threshold</strong> — parties must exceed this to qualify for seats</li>
         </ul>
-        <p>The parliament diagram shows the full 349 seats allocated nationally via modified Sainte-Laguë, using the dual-weighted poll average. The hemicycle fills from the front-left by party size.</p>
+        <p>The parliament diagram shows the full 349 seats allocated nationally via modified Sainte-Laguë, using the dual-weighted poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge (left to right in political spectrum order), with the total seat count in the center.</p>
 
         <h3>Bloc Totals</h3>
         <p>The <strong>Red-Green</strong> bloc includes S, V, MP, and C. The <strong>Tidö</strong> bloc includes M, SD, KD, and L. Note: C (Centre Party) is sometimes classified as centrist rather than left-leaning.</p>

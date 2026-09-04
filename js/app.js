@@ -72,17 +72,18 @@ function allocateConstituencySeats2022(c){
 }
 
 /* ---------- constituency results table ---------- */
-function renderConstituencyTable(avg){
-  if(!CONSTITUENCIES||CONSTITUENCIES.length===0) return '';
+function constituencyTableHtml(votes, opts){
+  opts=opts||{};
   const cList=CONSTITUENCIES.constituencies;
-  const votes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
-  const by2022=PARL_MODE==='2022';
+  const title=opts.title||'CONSTITUENCY SEATS';
+  const note=opts.note||'';
+  const showDelta=opts.showDelta!==false;
 
   let totalSeatsAll={};PARTY_ORDER.forEach(p=>{totalSeatsAll[p]=0});
   let rows='';
   const sorted=cList.slice().sort((a,b)=>b.seats-a.seats);
   let lastTotals=null;
-  if(!by2022){
+  if(showDelta){
     lastTotals={};PARTY_ORDER.forEach(p=>{lastTotals[p]=0});
     cList.forEach(c=>{
       const sa22=allocateConstituencySeats2022(c);
@@ -90,7 +91,7 @@ function renderConstituencyTable(avg){
     });
   }
   for(const c of sorted){
-    const sa=by2022?allocateConstituencySeats2022(c):allocateConstituencySeats(votes,c);
+    const sa=allocateConstituencySeats(votes,c);
     PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
     let seatCells='';
     for(const p of PARTY_ORDER){
@@ -125,14 +126,25 @@ function renderConstituencyTable(avg){
 
   let head='';
   PARTY_ORDER.forEach(p=>{head+=`<th class="c">${p}</th>`});
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCY SEATS (${PARL_MODE==='2022'?'2022 RESULT':'PROJECTION'})</div></div>
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${title}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
       <th>Constituency</th><th class="c">Seats</th>${head}
     </tr></thead><tbody>${rows}</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      Per-constituency Sainte-Laguë (4% threshold) · ${by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'}
+      Per-constituency Sainte-Laguë (4% / 12% rule)${note?' · '+note:''}
     </div></div>`;
+}
+
+function renderConstituencyTable(avg){
+  if(!CONSTITUENCIES||CONSTITUENCIES.length===0) return '';
+  const votes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
+  const by2022=PARL_MODE==='2022';
+  return constituencyTableHtml(votes,{
+    title:`CONSTITUENCY SEATS (${by2022?'2022 RESULT':'PROJECTION'})`,
+    showDelta:!by2022,
+    note:by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'
+  });
 }
 
 /* ---------- load data ---------- */
@@ -686,7 +698,7 @@ function gammaSample(alpha){
   // Marsaglia-Tsang (alpha > 1)
   const d=alpha-1/3, c=1/Math.sqrt(9*d);
   for(let i=0;i<20;i++){
-    const z=Math.sqrt(-2*Math.log(Math.random()));
+    const z=Math.sqrt(-2*Math.log(Math.random()))*(Math.random()<0.5?-1:1);  // full standard normal
     const y=Math.pow(1+c*z,3);
     if(y>0){
       const u=Math.random();
@@ -701,7 +713,8 @@ function runForecast(avg, nSims){
   const maj={rg:0,td:0,hung:0};
   const largest={};
   const seatsBy={};
-  PARTY_ORDER.forEach(p=>{seatsBy[p]=[]});
+  const votesBy={};
+  PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
   const comboCount={};
   const alpha=PARTY_ORDER.map(p=>Math.max(0.5,(avg[p]||0)*K));
   for(let s=0;s<nSims;s++){
@@ -718,7 +731,7 @@ function runForecast(avg, nSims){
     let top=PARTY_ORDER[0],topN=(seats[PARTY_ORDER[0]]||0);
     for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
     largest[top]=(largest[top]||0)+1;
-    PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0)});
+    PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
   // Summaries: mean / median / mode per party
@@ -739,7 +752,7 @@ function runForecast(avg, nSims){
   if(modalKey){
     PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
   }
-  return {maj,largest,seatsBy,means,medians,modes,modal,modalN,nSims};
+  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims};
 }
 
 function expectedSeats(means,total){
@@ -854,6 +867,41 @@ function renderForecast(pane){
     modalStr=PARTY_ORDER.filter(p=>(sim.modal[p]||0)>0).map(p=>`${p} ${sim.modal[p]}`).join(' · ');
   }
 
+  // Vote share rows
+  let voteRows='';
+  const voteOrder=PARTY_ORDER.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
+  voteOrder.forEach(p=>{
+    const arr=sim.votesBy[p];
+    const mu=mean(arr);
+    const lo=percentile(arr,5), hi=percentile(arr,95);
+    const thresh=arr.filter(v=>v>=THRESHOLD).length/arr.length;
+    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const barW=Math.min(100,mu/50*100);
+    let note='';
+    if(thresh>=0.5){
+      if(thresh<0.995) note=`<div class="fc-note">${p} is below the 4% threshold in ${pct100(1-thresh)} of sims</div>`;
+    }else if(thresh>0.005){
+      note=`<div class="fc-note">${p} crosses the 4% threshold in ${pct100(thresh)} of sims</div>`;
+    }
+    voteRows+=`<div class="fc-voterow">
+      <span class="fc-row-label" style="color:${color}">${p}</span>
+      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh"></div></div>
+      <span class="fc-vote-val">${fmt(mu,1)}%</span>
+      <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
+      ${note}
+    </div>`;
+  });
+
+  // Constituency results (expected national vote shares)
+  const expVotes={};
+  PARTY_ORDER.forEach(p=>{expVotes[p]=mean(sim.votesBy[p])});
+  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length?
+    constituencyTableHtml(expVotes,{
+      title:'CONSTITUENCY RESULTS (EXPECTED)',
+      showDelta:true,
+      note:'allocated from the forecast’s expected national vote shares'
+    }):'';
+
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero">
       <div class="hero-title">FORECAST — ${COUNTRY_NAME} 2026</div>
@@ -871,6 +919,12 @@ function renderForecast(pane){
       </div>
     </div>
 
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">VOTE SHARE</div></div>
+      <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
+      ${voteRows}
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected national vote share from simulations · dashed line = 4% threshold</div>
+    </div>
+
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MAJORITY PROBABILITY</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
@@ -884,6 +938,8 @@ function renderForecast(pane){
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LARGEST PARTY</div></div>
       ${largestRows}
     </div>
+
+    ${constHtml}
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">EXPECTED SEATS</div></div>
       <div class="fc-seathead fc-seathead-hd"><span></span><span>EXP</span><span>90% INT</span></div>

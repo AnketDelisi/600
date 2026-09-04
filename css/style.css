@@ -196,6 +196,17 @@ input.vote-input,.party-pct,.party-delta,.bloc-card .bloc-pct,.tot-amt{font-fami
 .fc-hist{display:flex;align-items:flex-end;gap:1px;height:38px}
 .fc-hist-col{flex:1;min-width:1px;border:1px solid rgba(17,24,39,0.35)}
 .fc-note{font-size:10px;color:var(--c-text-muted);margin-top:2px}
+.fc-voterow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:6px 0;border-bottom:1px solid rgba(17,24,39,0.07)}
+.fc-votebar{position:relative}
+.fc-vote-val{width:46px;text-align:right;font-weight:900;font-size:13px;font-family:var(--font-mono);flex-shrink:0}
+.fc-vote-int{width:82px;text-align:right;font-size:10px;color:var(--c-text-muted);font-family:var(--font-mono);flex-shrink:0}
+.fc-thresh{position:absolute;left:8%;top:-3px;bottom:-3px;width:1.5px;background:#111827;opacity:0.7;z-index:2}
+.fc-voterow .fc-note{width:100%;margin-left:38px}
+.fc-votehd{display:flex;align-items:center;gap:10px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:2px solid var(--c-edge);padding:2px 0 4px}
+.fc-votehd span:nth-child(1){width:30px}
+.fc-votehd span:nth-child(2){flex:1}
+.fc-votehd span:nth-child(3){width:46px;text-align:right}
+.fc-votehd span:nth-child(4){width:82px;text-align:right}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1100px){

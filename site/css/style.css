@@ -164,6 +164,14 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .map-tip-label{flex:1;font-weight:700}
 .map-tip-val{font-family:var(--font-mono);font-weight:900;font-variant-numeric:tabular-nums}
 
+/* ---------- Seat-by-seat Sweden map ---------- */
+.leveling-box{border:2px solid var(--c-edge);background:var(--c-surface);padding:8px 10px;margin-top:10px}
+.leveling-label{font-size:10px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);margin-bottom:6px}
+.leveling-dots{display:flex;flex-wrap:wrap;gap:2px}
+.level-dot{width:9px;height:9px;border:1px solid #111827;border-radius:1px}
+.leveling-counts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;font-size:10px;font-weight:700;font-family:var(--font-mono)}
+.level-count{display:inline-flex;align-items:center;gap:4px}
+
 /* ---------- Decima ---------- */
 input.vote-input,.party-pct,.party-delta,.bloc-card .bloc-pct,.tot-amt{font-family:var(--font-mono)}
 

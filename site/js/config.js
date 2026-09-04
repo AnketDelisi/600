@@ -72,3 +72,40 @@ const MAP_REGIONS = {
   svealand: { label: 'SVEALAND', cols: [0,5], rows: [2,3] },
   götaland: { label: 'GÖTALAND', cols: [0,5], rows: [4,6] },
 };
+
+// Sweden-shaped seat map: county ellipse centers (cx, cy) on a 500x660 canvas.
+// Ellipse size is computed from seat count (bigger county = bigger blob).
+const COUNTY_POS = {
+  norrbotten:     { cx: 315, cy: 65  },
+  västerbotten:   { cx: 225, cy: 95  },
+  västernorrland: { cx: 280, cy: 150 },
+  jämtland:       { cx: 160, cy: 135 },
+  gävleborg:      { cx: 250, cy: 205 },
+  dalarna:        { cx: 170, cy: 220 },
+  värmland:       { cx: 130, cy: 290 },
+  örebro:         { cx: 215, cy: 300 },
+  västmanland:    { cx: 270, cy: 315 },
+  uppsala:        { cx: 335, cy: 290 },
+  stockholm:      { cx: 395, cy: 350, label: 'above' },
+  stockholms_län: { cx: 425, cy: 305, label: 'above' },
+  södermanland:   { cx: 310, cy: 375 },
+  gotland:        { cx: 458, cy: 450, label: 'right' },
+  östergötland:   { cx: 335, cy: 435 },
+  vg_norra:       { cx: 130, cy: 395 },
+  vg_västra:      { cx: 155, cy: 440 },
+  göteborg:       { cx: 190, cy: 475 },
+  vg_södra:       { cx: 175, cy: 510 },
+  vg_östra:       { cx: 250, cy: 445 },
+  jönköping:      { cx: 255, cy: 515 },
+  kronoberg:      { cx: 225, cy: 555 },
+  kalmar:         { cx: 305, cy: 525 },
+  halland:        { cx: 145, cy: 555 },
+  blekinge:       { cx: 285, cy: 578 },
+  skåne_v:        { cx: 172, cy: 585 },
+  skåne_ne:       { cx: 245, cy: 580 },
+  skåne_s:        { cx: 205, cy: 593 },
+  malmö:          { cx: 165, cy: 605 },
+};
+
+// Stylized Sweden outline (rough silhouette behind the county blobs)
+const SWEDEN_OUTLINE = 'M 215 30 L 385 42 L 430 95 L 448 165 L 418 255 L 442 330 L 402 420 L 428 500 L 385 555 L 330 595 L 285 618 L 245 632 L 200 625 L 150 610 L 120 585 L 95 500 L 62 400 L 50 300 L 68 205 L 108 125 L 150 68 L 182 36 Z';

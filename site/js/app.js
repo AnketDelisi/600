@@ -338,21 +338,163 @@ function renderPollsTable(polls){
 }
 
 /* ---------- render parliament ---------- */
+let PARL_VIEW='map';   // 'map' (Sweden shape) or 'arc'
+let PARL_MODE='proj';  // 'proj' or '2022'
+
 function renderParliament(avg){
-  // Simple Sainte-Laguë estimate for 310 constituency seats
-  const seats=allocateSeats(avg);
-  const svg=buildParliamentSVG(seats);
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION (EST.)</div></div>
-    <div class="parliament-box">${svg}</div>
+  let body='';
+  if(PARL_VIEW==='arc'){
+    const seats=PARL_MODE==='proj'?allocateSeats(avg):allocateSeatsN(LAST_ELECTION.results,310);
+    body=`<div class="parliament-box">${buildParliamentSVG(seats)}</div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">310 constituency seats via Sainte-Laguë (modified)</div>`;
+  }else{
+    body=renderSeatMap(avg);
+  }
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION — SWEDEN</div></div>
+    <div class="map-toggle-row">
+      <button class="map-toggle-btn parl-btn${PARL_VIEW==='map'?' active':''}" data-parlview="map">SWEDEN</button>
+      <button class="map-toggle-btn parl-btn${PARL_VIEW==='arc'?' active':''}" data-parlview="arc">ARC</button>
+      <span style="flex:1"></span>
+      <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
+      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">2022 RESULT</button>
+    </div>
+    ${body}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      Estimated 310 constituency seats via Sainte-Laguë (modified). Leveling seats not modeled.
+      349 seats · 310 constituency (in county shape) + 39 leveling · Sainte-Laguë (modified) · 4% threshold
     </div></div>`;
 }
 
-function allocateSeats(avg){
-  const totalSeats=310;
-  const validParties=PARTY_ORDER.filter(p=>(avg[p]||0)>=THRESHOLD);
-  const totalVotes=validParties.reduce((s,p)=>s+(avg[p]||0),0);
+/* ---------- seat-by-seat Sweden map ---------- */
+function countyDots(count, cx, cy, rx, ry){
+  const dotR=4.2, cell=dotR*2+1.2;
+  let cols=Math.max(1,Math.ceil(Math.sqrt(count*1.4)));
+  while(cols*cell>2*rx-4 && cols<count) cols--;
+  if(cols<1) cols=1;
+  const rows=Math.ceil(count/cols);
+  const gw=cols*cell, gh=rows*cell;
+  const startX=cx-gw/2+dotR, startY=cy-gh/2+dotR;
+  const pts=[];
+  let i=0;
+  for(let r=0;r<rows&&i<count;r++){
+    for(let c=0;c<cols&&i<count;c++){
+      pts.push({x:startX+c*cell, y:startY+r*cell});
+      i++;
+    }
+  }
+  return pts;
+}
+
+function renderSeatMap(avg){
+  const cList=CONSTITUENCIES.constituencies;
+  const pos=COUNTY_POS;
+  let svg=`<svg viewBox="0 0 500 660" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
+  svg+=`<path d="${SWEDEN_OUTLINE}" fill="#F3F1EC" stroke="#111827" stroke-width="2.5" stroke-linejoin="round"/>`;
+
+  const perCounty={};
+  let levelingVotes=null;
+  for(const c of cList){
+    const sa=PARL_MODE==='proj'?allocateConstituencySeats(avg,c):allocateConstituencySeats2022(c);
+    perCounty[c.id]=sa;
+  }
+  levelingVotes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
+  const leveling=allocateSeatsN(levelingVotes,39);
+
+  // Draw counties
+  for(const c of cList){
+    const sa=perCounty[c.id];
+    const total=Object.values(sa).reduce((a,b)=>a+b,0);
+    if(total===0) continue;
+    const p=pos[c.id];
+    if(!p) continue;
+    const rx=12+4.2*Math.sqrt(total), ry=rx*0.78;
+    const dots=countyDots(total,p.cx,p.cy,rx,ry);
+    // Fill dots ordered by party seat count desc
+    const ordered=PARTY_ORDER.slice().sort((a,b)=>(sa[b]||0)-(sa[a]||0));
+    const colors=[];
+    ordered.forEach(pid=>{for(let i=0;i<(sa[pid]||0);i++)colors.push(PARTY_META[pid]?PARTY_META[pid].color:'#ccc')});
+
+    svg+=`<g class="county-cell" data-id="${c.id}" data-name="${c.name}" data-seats="${total}" data-mode="${PARL_MODE}" style="cursor:pointer">
+      <ellipse cx="${p.cx}" cy="${p.cy}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="#fff" stroke="#111827" stroke-width="2" fill-opacity="0.25"/>`;
+    dots.forEach((d,i)=>{
+      svg+=`<circle cx="${d.x.toFixed(1)}" cy="${d.y.toFixed(1)}" r="4.2" fill="${colors[i]||'#ccc'}" stroke="#111827" stroke-width="0.8"/>`;
+    });
+    // Label
+    const lx=p.cx, ly=p.label==='above'?p.cy-ry-10:(p.label==='right'?p.cx+rx+14:p.cy+ry+13);
+    const anchor=p.label==='right'?'start':'middle';
+    svg+=`<text x="${lx}" y="${ly}" font-size="9" font-weight="700" fill="#111827" text-anchor="${anchor}" font-family="Decima Mono Pro,monospace">${c.name} ${total}</text>`;
+    svg+=`</g>`;
+  }
+  svg+=`</svg>`;
+
+  // Leveling strip
+  let ldots='';
+  const lOrdered=PARTY_ORDER.slice().sort((a,b)=>(leveling[b]||0)-(leveling[a]||0));
+  let lCounts='';
+  lOrdered.forEach(pid=>{
+    if(!(leveling[pid]||0)) return;
+    const col=PARTY_META[pid]?PARTY_META[pid].color:'#888';
+    for(let i=0;i<leveling[pid];i++) ldots+=`<span class="level-dot" style="background:${col}"></span>`;
+    lCounts+=`<span class="level-count"><span class="map-legend-dot" style="background:${col}"></span>${pid} ${leveling[pid]}</span>`;
+  });
+  const levelingHtml=`<div class="leveling-box">
+    <div class="leveling-label">39 LEVELING SEATS</div>
+    <div class="leveling-dots">${ldots}</div>
+    <div class="leveling-counts">${lCounts}</div>
+  </div>`;
+
+  // Legend
+  let legend='';
+  for(const pid of PARTY_ORDER){
+    legend+=`<span class="map-legend-item"><span class="map-legend-dot" style="background:${PARTY_META[pid].color}"></span>${pid}</span>`;
+  }
+
+  return `<div class="map-wrap" id="parl-map-wrap">${svg}<div class="map-tooltip" id="parl-map-tooltip"></div></div>
+    ${levelingHtml}
+    <div class="map-legend">${legend}</div>`;
+}
+
+function bindParliamentEvents(){
+  const wrap=$('parl-map-wrap');
+  if(wrap){
+    const tip=$('parl-map-tooltip');
+    wrap.querySelectorAll('.county-cell').forEach(cell=>{
+      cell.addEventListener('mouseenter',()=>{
+        const name=cell.dataset.name;
+        const seats=parseInt(cell.dataset.seats,10);
+        const c=CONSTITUENCIES.constituencies.find(x=>x.id===cell.dataset.id);
+        const sa=PARL_MODE==='proj'?allocateConstituencySeats(currentAvg(),c):allocateConstituencySeats2022(c);
+        let rows=PARTY_ORDER.filter(p=>(sa[p]||0)>0).map(p=>{
+          const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+          return `<div class="map-tip-row"><span class="map-tip-dot" style="background:${col}"></span><span class="map-tip-label">${p}</span><span class="map-tip-val">${sa[p]}</span></div>`;
+        }).join('');
+        if(!rows) rows='<div class="map-tip-row" style="color:var(--c-text-muted)">No party above threshold</div>';
+        tip.innerHTML=`<div class="map-tip-name">${name}</div>
+          <div class="map-tip-meta">${seats} constituency seats</div>${rows}`;
+        tip.classList.add('visible');
+      });
+      cell.addEventListener('mousemove',e=>{
+        const r=wrap.getBoundingClientRect();
+        tip.style.left=(e.clientX-r.left+14)+'px';
+        tip.style.top=(e.clientY-r.top+14)+'px';
+      });
+      cell.addEventListener('mouseleave',()=>{tip.classList.remove('visible')});
+    });
+  }
+  const pane=$('pane-polls');
+  if(pane){
+    pane.querySelectorAll('.parl-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        if(btn.dataset.parlview) PARL_VIEW=btn.dataset.parlview;
+        if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
+        renderPollsTab();
+      });
+    });
+  }
+}
+
+function allocateSeatsN(votes, totalSeats){
+  const validParties=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
+  const totalVotes=validParties.reduce((s,p)=>s+(votes[p]||0),0);
   if(totalVotes===0) return {};
   const seats={};
   validParties.forEach(p=>{seats[p]=0});
@@ -364,7 +506,7 @@ function allocateSeats(avg){
   const quota=[];
   validParties.forEach(p=>{
     for(let d=0;d<divisors.length;d++){
-      quota.push({party:p, q:(avg[p]||0)/divisors[d]});
+      quota.push({party:p, q:(votes[p]||0)/divisors[d]});
     }
   });
   quota.sort((a,b)=>b.q-a.q);
@@ -374,12 +516,23 @@ function allocateSeats(avg){
   return seats;
 }
 
+function allocateSeats(avg){
+  return allocateSeatsN(avg, 310);
+}
+
+function allocateConstituencySeats2022(c){
+  const r=c.results_2022||{};
+  const votes={};
+  for(const p of PARTY_ORDER) votes[p]=r[p]||0;
+  return allocateConstituencySeats(votes,c);
+}
+
 function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   const rows=13, cols=Math.ceil(total/rows);
-  const dotR=5, gap=2;
-  const svgW=cols*(dotR*2+gap)+gap;
-  const svgH=rows*(dotR*2+gap)+gap;
+  const dotR=5, gap=2, cell=dotR*2+gap;
+  const svgW=cols*cell+gap;
+  const svgH=rows*cell+gap;
 
   // Build colored dot list
   const dots=[];
@@ -392,21 +545,46 @@ function buildParliamentSVG(seats){
   // Fill remaining with gray if needed
   while(dots.length<total) dots.push('#ccc');
 
+  const cx=svgW/2, cy=svgH+20;
+  // Arc capacity for a given radius R
+  const capacity=R=>{
+    let c=0;
+    for(let row=0;row<rows;row++){
+      const y=svgH-((row+0.5)*svgH/rows);
+      const spanY=Math.abs(cy-y);
+      if(spanY>R) continue;
+      const spanX=Math.sqrt(R*R-spanY*spanY);
+      c+=Math.max(1,Math.floor(2*spanX/cell));
+    }
+    return c;
+  };
+  // Grow the arc until it can hold all dots
+  let R=Math.min(svgW/2, svgH*1.2);
+  while(capacity(R)<total && R<svgW*2) R+=5;
+
   let svg=`<svg viewBox="0 0 ${svgW} ${svgH}" xmlns="http://www.w3.org/2000/svg">`;
   let idx=0;
-  // Arc layout
-  const cx=svgW/2, cy=svgH+20;
-  const R=Math.min(svgW/2, svgH*1.2);
-  for(let row=0;row<rows;row++){
-    const y=svgH-((row+0.5)*svgH/rows);
-    const spanY=Math.abs(cy-y);
-    const spanX=Math.sqrt(Math.max(0,R*R-spanY*spanY));
-    const rowCols=Math.max(1,Math.floor(2*spanX/(dotR*2+gap)));
-    const rowStartX=cx-spanX;
-    for(let col=0;col<rowCols&&idx<dots.length;col++){
-      const x=rowStartX+col*(2*spanX/rowCols)+dotR;
-      svg+=`<circle cx="${fmt(x,1)}" cy="${fmt(y,1)}" r="${dotR}" fill="${dots[idx]}" stroke="#111827" stroke-width="0.5"/>`;
-      idx++;
+  if(capacity(R)>=total){
+    for(let row=0;row<rows;row++){
+      const y=svgH-((row+0.5)*svgH/rows);
+      const spanY=Math.abs(cy-y);
+      const spanX=Math.sqrt(Math.max(0,R*R-spanY*spanY));
+      const rowCols=Math.max(1,Math.floor(2*spanX/cell));
+      const rowStartX=cx-spanX;
+      for(let col=0;col<rowCols&&idx<dots.length;col++){
+        const x=rowStartX+col*(2*spanX/rowCols)+dotR;
+        svg+=`<circle cx="${fmt(x,1)}" cy="${fmt(y,1)}" r="${dotR}" fill="${dots[idx]}" stroke="#111827" stroke-width="0.5"/>`;
+        idx++;
+      }
+    }
+  }else{
+    // Fallback: plain grid if the arc cannot hold everything
+    for(let r=0;r<rows&&idx<dots.length;r++){
+      for(let c=0;c<cols&&idx<dots.length;c++){
+        const x=c*cell+gap+dotR, y=r*cell+gap+dotR;
+        svg+=`<circle cx="${x}" cy="${y}" r="${dotR}" fill="${dots[idx]}" stroke="#111827" stroke-width="0.5"/>`;
+        idx++;
+      }
     }
   }
   svg+=`</svg>`;
@@ -732,6 +910,7 @@ function renderPollsTab(){
   filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
 
   const avg=computeAverages(filtered);
+  _currentAvg=avg;
 
   let html=`<div class="tab-pane-inner">`;
   html+=renderHero(avg, filtered);
@@ -752,6 +931,7 @@ function renderPollsTab(){
     const canvas=$('trend-canvas');
     if(canvas) renderTrendChart(canvas, filtered);
   });
+  bindParliamentEvents();
 }
 
 /* ---------- public API ---------- */

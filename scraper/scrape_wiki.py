@@ -19,36 +19,90 @@ MONTHS_SV = {
 COUNTRY = "sweden"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "sweden"
 
+MIN_DATE = "2025-01-01"  # only keep polls for the 2026 election cycle
+MIN_SAMPLE = 100
+MAX_SAMPLE = 50000  # reject rows where "n" is actually vote counts (e.g. EP election)
+
+
+def parse_part(s):
+    """Parse a date part like '29 Dec', '29 Dec 2025', or bare '29'.
+
+    Returns (day, month, year_or_None)."""
+    s = s.strip()
+    m = re.match(r"(\d{1,2})(?:\s+([A-Za-z]+)(?:\s+(\d{4}))?)?", s)
+    if not m:
+        return None
+    day = int(m.group(1))
+    month_str = m.group(2)
+    month = MONTHS_SV.get(month_str.lower()[:3]) if month_str else None
+    year = int(m.group(3)) if m.group(3) else None
+    return day, month, year
+
 
 def parse_fieldwork(text, ref_year):
+    """Parse a fieldwork date range like '3–29 Dec', '30 Dec–12 Jan', '31 Dec 2025–9 Jan'.
+
+    Handles:
+    - bare day in first part ('3–29 Dec')
+    - explicit years ('31 Dec 2025–9 Jan')
+    - year-crossing ranges ('30 Dec–12 Jan' -> Dec ref_year, Jan ref_year+1)
+    Returns (date_start, date_end) as ISO strings or (None, None).
+    """
     text = text.strip()
     if not text or text.lower() in ("—", "n/a"):
         return None, None
     text = text.replace("\u2013", "-").replace("\u2014", "-").replace("–", "-").replace("—", "-")
     text = re.sub(r"\s+", " ", text).strip()
     parts = re.split(r"\s*[-–—]\s*", text)
+    if not parts:
+        return None, None
 
-    def parse_part(s, default_year=ref_year):
-        s = s.strip()
-        m = re.match(r"(\d{1,2})\s*([A-Za-z]+)", s)
-        if not m:
-            return None
-        day, mon_str = int(m.group(1)), m.group(2).lower()[:3]
-        month = MONTHS_SV.get(mon_str)
-        if not month:
-            return None
+    p1 = parse_part(parts[0])
+    p2 = parse_part(parts[1]) if len(parts) >= 2 else None
+    if not p1:
+        return None, None
+
+    day1, mon1, yr1 = p1
+    day2, mon2, yr2 = p2 if p2 else (None, None, None)
+
+    # Single date without month in part 1: copy month/year from part 2 ('3–29 Dec')
+    if mon1 is None and mon2 is not None:
+        mon1, yr1 = mon2, yr2
+    if mon1 is None:
+        return None, None
+
+    # Resolve years
+    if yr1 is None and yr2 is not None:
+        yr1 = yr2
+    if yr2 is None and yr1 is not None:
+        yr2 = yr1
+    if yr1 is None:
+        yr1 = ref_year
+    if yr2 is None:
+        yr2 = ref_year
+
+    try:
+        d1 = datetime(yr1, mon1, day1)
+    except ValueError:
+        return None, None
+
+    if day2 is not None and mon2 is not None:
         try:
-            return datetime(default_year, month, day).strftime("%Y-%m-%d")
+            d2 = datetime(yr2, mon2, day2)
         except ValueError:
-            return None
+            d2 = None
+        if d2 and d1 > d2:
+            # Year-crossing range: e.g. Dec -> Jan
+            if p1[2] and not p2[2]:
+                d2 = d2.replace(year=d2.year + 1)
+            elif p2[2] and not p1[2]:
+                d1 = d1.replace(year=d1.year - 1)
+            else:
+                d2 = d2.replace(year=d2.year + 1)
+    else:
+        d2 = None
 
-    date_start = parse_part(parts[0])
-    date_end = None
-    if len(parts) >= 2:
-        year_match = re.search(r"(\d{4})", parts[1])
-        end_year = int(year_match.group(1)) if year_match else ref_year
-        date_end = parse_part(parts[1], end_year)
-    return date_start, date_end
+    return d1.strftime("%Y-%m-%d"), (d2.strftime("%Y-%m-%d") if d2 else None)
 
 
 def parse_sample(text):
@@ -78,10 +132,33 @@ def is_valid_pollster(text):
     # Reject if it's a demographic category
     if any(w in lower for w in ("male", "female", "income", "swedish", "foreign", "own house", "lowest", "%")):
         return False
-    # Reject election result rows
-    if "election" in lower or "ep " in lower:
+    # Reject election result rows and non-poll rows
+    if "election" in lower or "ep " in lower or "ep " in lower:
         return False
     return True
+
+
+def normalize_pollster(name):
+    name = re.sub(r"\[\d+\]", "", name).strip()
+    name = re.sub(r"Archived.*", "", name).strip()
+    name = name.replace("DemoskopforAftonbladet", "Demoskop")
+    name = name.replace("Indikator Opinion", "Indikator")
+    name = name.replace("Kantar", "Verian")
+    return name.strip()
+
+
+def assign_ref_years(soup):
+    """Map each wikitable to the year of the most recent preceding heading."""
+    current_year = None
+    table_years = {}
+    for el in soup.find_all(["h2", "h3", "h4", "table"]):
+        if el.name in ("h2", "h3", "h4"):
+            m = re.search(r"(20\d{2})", el.get_text())
+            if m:
+                current_year = int(m.group(1))
+        elif "wikitable" in (el.get("class") or []):
+            table_years[id(el)] = current_year
+    return table_years
 
 
 def scrape_wikipedia():
@@ -93,18 +170,11 @@ def scrape_wikipedia():
     tables = soup.find_all("table", class_="wikitable")
     print(f"Found {len(tables)} wikitable tables")
 
+    table_years = assign_ref_years(soup)
+
     polls = []
     for table in tables:
-        # Find ref year from heading above
-        ref_year = 2026
-        el = table
-        while el and el.parent:
-            el = el.parent
-            if el.name in ("h2", "h3", "h4"):
-                year_match = re.search(r"(20\d{2})", el.get_text())
-                if year_match:
-                    ref_year = int(year_match.group(1))
-                break
+        ref_year = table_years.get(id(table), 2026) or 2026
 
         rows = table.find_all("tr")
         for row in rows:
@@ -116,11 +186,7 @@ def scrape_wikipedia():
             pollster = texts[0]
             if not is_valid_pollster(pollster):
                 continue
-            # Clean pollster name
-            pollster = re.sub(r"\[\d+\]", "", pollster).strip()
-            pollster = re.sub(r"Archived.*", "", pollster).strip()
-            pollster = pollster.replace("DemoskopforAftonbladet", "Demoskop")
-            pollster = pollster.replace("Kantar", "Verian")
+            pollster = normalize_pollster(pollster)
 
             date_str, date_end = parse_fieldwork(texts[1], ref_year)
             if not date_str:
@@ -130,12 +196,14 @@ def scrape_wikipedia():
             if not re.search(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b", texts[1], re.I):
                 continue
 
-            # Validate column 2 is a plausible sample size (number ≥ 100)
+            # Validate column 2 is a plausible sample size
             sample_text = texts[2].replace(",", "").replace(".", "").strip()
-            if not sample_text.isdigit() or int(sample_text) < 100:
+            if not sample_text.isdigit():
+                continue
+            n = int(sample_text)
+            if n < MIN_SAMPLE or n > MAX_SAMPLE:
                 continue
 
-            n = parse_sample(texts[2])
             votes = {}
             for i, party in enumerate(PARTY_ORDER):
                 val = parse_pct(texts[PARTY_COL_START + i])
@@ -155,6 +223,10 @@ def scrape_wikipedia():
             if votes.get("S", 0) < 15:
                 continue
 
+            # Only keep polls for the 2026 election cycle
+            if date_str < MIN_DATE:
+                continue
+
             poll = {
                 "pollster": pollster,
                 "date": date_str,
@@ -163,8 +235,7 @@ def scrape_wikipedia():
             }
             if date_end:
                 poll["date_end"] = date_end
-            if n:
-                poll["n"] = n
+            poll["n"] = n
             polls.append(poll)
 
     return polls

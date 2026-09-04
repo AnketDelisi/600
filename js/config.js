@@ -17,6 +17,9 @@ const PARTY_META = {
 
 const PARTY_ORDER = ['S', 'SD', 'M', 'V', 'C', 'KD', 'MP', 'L'];
 
+// Seating order in the parliament diagram (left to right)
+const PARLIAMENT_ORDER = ['V', 'MP', 'S', 'C', 'L', 'M', 'KD', 'SD'];
+
 const BLOCS = {
   red_green: { name: 'Red-Green', parties: ['S', 'V', 'MP', 'C'], color: '#EE2020' },
   tidö:      { name: 'Tidö',      parties: ['M', 'SD', 'KD', 'L'], color: '#006AB5' },

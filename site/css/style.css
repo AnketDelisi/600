@@ -104,8 +104,10 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .polls-table tr:nth-child(even) td{background:#F7F7F5}
 .polls-table .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
 .compact-table th{font-size:9px;padding:5px 4px;white-space:nowrap}
+.compact-table th.c{text-align:center}
 .compact-table td{font-size:10.5px;padding:3px 4px;white-space:nowrap}
 .compact-table .num{font-size:10px}
+.compact-table td.c{text-align:center}
 .bloc-h.rg-h{color:#EE2020}
 .bloc-h.td-h{color:#006AB5}
 

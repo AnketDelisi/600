@@ -50,10 +50,12 @@ function allocateConstituencySeats(votes, constituency){
   if(total===0) return {};
   const pctShifted={};
   for(const pid of PARTY_ORDER) pctShifted[pid]=(shifted[pid]/total)*100;
-  const valid=PARTY_ORDER.filter(p=>pctShifted[p]>=THRESHOLD);
+  // Swedish rule: >=4% nationally OR >=12% in the constituency
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||pctShifted[p]>=12);
   const totalValid=valid.reduce((s,p)=>s+pctShifted[p],0);
   if(totalValid===0) return {};
-  const divisors=[1.2];for(let i=1;i<50;i++)divisors.push(2*i+1);
+  const divisors=[1.2];
+  for(let i=1;i<=seats;i++) divisors.push(2*i+1);
   const q=[];
   valid.forEach(p=>{for(let d=0;d<divisors.length;d++)q.push({party:p,q:pctShifted[p]/divisors[d]})});
   q.sort((a,b)=>b.q-a.q);
@@ -79,6 +81,14 @@ function renderConstituencyTable(avg){
   let totalSeatsAll={};PARTY_ORDER.forEach(p=>{totalSeatsAll[p]=0});
   let rows='';
   const sorted=cList.slice().sort((a,b)=>b.seats-a.seats);
+  let lastTotals=null;
+  if(!by2022){
+    lastTotals={};PARTY_ORDER.forEach(p=>{lastTotals[p]=0});
+    cList.forEach(c=>{
+      const sa22=allocateConstituencySeats2022(c);
+      PARTY_ORDER.forEach(p=>{lastTotals[p]+=sa22[p]||0});
+    });
+  }
   for(const c of sorted){
     const sa=by2022?allocateConstituencySeats2022(c):allocateConstituencySeats(votes,c);
     PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
@@ -86,7 +96,7 @@ function renderConstituencyTable(avg){
     for(const p of PARTY_ORDER){
       const s=sa[p]||0;
       const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-      seatCells+=`<td class="num" style="color:${s>0?color:'var(--c-rule)'};font-weight:${s>0?'700':'400'}">${s||'—'}</td>`;
+      seatCells+=`<td class="num c" style="color:${s>0?color:'var(--c-rule)'};font-weight:${s>0?'700':'400'}">${s||'—'}</td>`;
     }
     rows+=`<tr>
       <td style="font-weight:700">${c.name}</td>
@@ -97,11 +107,21 @@ function renderConstituencyTable(avg){
   let totalCells='';
   for(const p of PARTY_ORDER){
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-    totalCells+=`<td class="num" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
+    totalCells+=`<td class="num c" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
   }
   const constSeats=cList.reduce((s,c)=>s+c.seats,0);
   rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
     <td>TOTAL</td><td class="num c">${constSeats}</td>${totalCells}</tr>`;
+  if(lastTotals){
+    let deltaCells='';
+    for(const p of PARTY_ORDER){
+      const d=totalSeatsAll[p]-(lastTotals[p]||0);
+      const color=d>0?'#0B9E17':d<0?'var(--c-accent)':'var(--c-text-muted)';
+      deltaCells+=`<td class="num c" style="color:${color};font-weight:900">${d>0?'+'+d:d}</td>`;
+    }
+    rows+=`<tr class="delta-row">
+      <td>Δ vs 2022</td><td></td>${deltaCells}</tr>`;
+  }
 
   let head='';
   PARTY_ORDER.forEach(p=>{head+=`<th class="c">${p}</th>`});
@@ -272,9 +292,12 @@ function renderHero(avg, filteredPolls){
 /* ---------- render party bars ---------- */
 function renderPartyBars(avg){
   const maxPct=Math.max(...Object.values(avg).filter(v=>v!==null),1);
-  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">NATIONAL POLL AVERAGE</div></div>`;
+  const seats=allocateSeatsN(avg, SEATS_TOTAL);
+  const order=PARTY_ORDER.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
+  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">NATIONAL POLL AVERAGE</div></div>
+    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">PARTY</span><span class="bh-bar"></span><span class="bh-pct">%</span><span class="bh-delta">Δ</span><span class="bh-seats">SEATS</span></div>`;
 
-  for(const pid of PARTY_ORDER){
+  for(const pid of order){
     const val=avg[pid];
     if(val===null||val===undefined) continue;
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
@@ -283,6 +306,7 @@ function renderPartyBars(avg){
     const delta=val-last2022;
     const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
     const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
+    const mpSeats=seats[pid]||0;
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
@@ -292,6 +316,7 @@ function renderPartyBars(avg){
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${pct(val)}</div>
       <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
+      <div class="party-seats" style="color:${color}">${mpSeats}</div>
     </div>`;
   }
   html+=`</div>`;
@@ -520,7 +545,7 @@ function renderPollsTable(polls){
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
       const isTop=pid===leadP;
-      html+=`<td class="num" style="color:${v!==undefined?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined?pct(v):'—'}</td>`;
+      html+=`<td class="num c" style="color:${v!==undefined?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined?pct(v):'—'}</td>`;
     });
     html+=`</tr>`;
   });
@@ -554,9 +579,9 @@ function allocateSeatsN(votes, totalSeats){
   const seats={};
   validParties.forEach(p=>{seats[p]=0});
 
-  // Modified Sainte-Laguë: divisors 1.2, 3, 5, 7, 9, ...
+  // Modified Sainte-Laguë: divisors 1.2, 3, 5, 7, 9, ... (enough for any party)
   const divisors=[1.2];
-  for(let i=1;i<50;i++) divisors.push(2*i+1);
+  for(let i=1;i<=totalSeats;i++) divisors.push(2*i+1);
 
   const quota=[];
   validParties.forEach(p=>{
@@ -583,7 +608,7 @@ function buildParliamentSVG(seats){
   // (radii 130..260), parties as wedges filled from the left in spectrum
   // order, majority axis marker at the top, total seat count at the bottom.
   const assigned=[];
-  PARTY_ORDER.forEach(p=>{
+  PARLIAMENT_ORDER.forEach(p=>{
     const n=seats[p]||0;
     for(let i=0;i<n;i++) assigned.push(p);
   });

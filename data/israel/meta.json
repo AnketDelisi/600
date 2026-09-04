@@ -1,0 +1,10 @@
+{
+  "country": "israel",
+  "name": "Israel",
+  "election_date": "2026-10-27",
+  "seats": 120,
+  "threshold": 3.25,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Knesset: closed-list PR, single national district. Polls reported as seat projections, converted to implied vote share (seats/120)."
+}

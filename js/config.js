@@ -109,3 +109,51 @@ const COUNTY_POS = {
 
 // Stylized Sweden outline (rough silhouette behind the county blobs)
 const SWEDEN_OUTLINE = 'M 215 30 L 385 42 L 430 95 L 448 165 L 418 255 L 442 330 L 402 420 L 428 500 L 385 555 L 330 595 L 285 618 L 245 632 L 200 625 L 150 610 L 120 585 L 95 500 L 62 400 L 50 300 L 68 205 L 108 125 L 150 68 L 182 36 Z';
+
+// Mosaic cartogram: one tile per seat, 310 tiles arranged in the shape of
+// Sweden. Each county is drawn with EXACTLY its fixed seat count of tiles.
+// Keys: n=norrbotten b=västerbotten r=västernorrland j=jämtland g=gävleborg
+// d=dalarna v=värmland o=örebro t=västmanland u=uppsala s=södermanland
+// k=stockholm l=stockholms_län i=gotland e=östergötland N=vg_norra V=vg_västra
+// G=göteborg S=vg_södra E=vg_östra h=halland p=jönköping c=kronoberg
+// a=kalmar f=blekinge X=skåne_v Y=skåne_ne Z=skåne_s M=malmö
+const MOSAIC_KEYS = {
+  n:'norrbotten', b:'västerbotten', r:'västernorrland', j:'jämtland',
+  g:'gävleborg', d:'dalarna', v:'värmland', o:'örebro', t:'västmanland',
+  u:'uppsala', s:'södermanland', k:'stockholm', l:'stockholms_län',
+  i:'gotland', e:'östergötland', N:'vg_norra', V:'vg_västra', G:'göteborg',
+  S:'vg_södra', E:'vg_östra', h:'halland', p:'jönköping', c:'kronoberg',
+  a:'kalmar', f:'blekinge', X:'skåne_v', Y:'skåne_ne', Z:'skåne_s', M:'malmö',
+};
+
+const MOSAIC_GRID = [
+  '................bbbbnnnn........',
+  '................bbbbnnnn........',
+  '..............jj....rrrr........',
+  '..............jj....rrrr........',
+  '..............ddd...ggg.........',
+  '..............ddd...ggg.........',
+  '..............ddd...ggg.........',
+  '............vvv.ooo.tttt.uuuu...',
+  '............vvv.ooo.tttt.uuuu...',
+  '............vvv.ooo......uuuu...',
+  '....................kkkkklllll..',
+  '............NNNN....kkkkklllllll',
+  '............NNNN....kkkkklllllll',
+  '............VVVVEEEEkkkkklllllll',
+  '............VVVVEEEEkkkkklllllll',
+  '............VVV.....kkkk.lllllll',
+  '...........GGGGGppp..ssseeee....',
+  '............GGGGppp..ssseeee....',
+  '............GGGGppp..ssseeee....',
+  '............GGGG.pp.....ee......',
+  '............SSSSccc.....aaaa..ii',
+  '............SSS.ccc.....aaaa....',
+  '............hhhhh........fff....',
+  '............hhhhh........ff.....',
+  '.............XXX.....YYYYY......',
+  '.............XXX.....YYYYY......',
+  '.............XXXZZZZ............',
+  '...........MMMMMZZZZ............',
+  '...........MMMMMZZZZ............',
+];

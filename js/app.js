@@ -6,6 +6,7 @@
 const $=s=>document.getElementById(s);
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
+const valDisp=(v,d=1)=>SEAT_BASED?fmt(v,d):fmt(v,d)+'%';
 const partyCode=pid=>(PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid;
 
 /* ---------- tab switching ---------- */
@@ -193,7 +194,15 @@ function weightedAverage(polls, party){
     const pw=pollsterWeight(p.pollster);
     const rw=recencyWeight(p.date);
     const w=n*pw*rw;
-    wSum+=p.votes[party]*w;
+    // seat-based polls report seats only for above-threshold parties;
+    // renormalize each poll to sum to SEATS_TOTAL so the average is on a
+    // common scale (missing below-threshold seats are treated as 'Others')
+    let v=p.votes[party];
+    if(SEAT_BASED){
+      const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
+      if(raw>0) v*=SEATS_TOTAL/raw;
+    }
+    wSum+=v*w;
     wTotal+=w;
   }
   return wTotal>0?wSum/wTotal:null;
@@ -203,6 +212,12 @@ function computeAverages(polls){
   const avg={};
   for(const pid of PARTY_ORDER){
     avg[pid]=weightedAverage(polls, pid);
+  }
+  if(SEAT_BASED){
+    const total=Object.values(avg).reduce((a,b)=>a+(b||0),0);
+    if(total>0){
+      for(const pid of PARTY_ORDER) if(avg[pid]!==null) avg[pid]=avg[pid]*SEATS_TOTAL/total;
+    }
   }
   return avg;
 }
@@ -307,7 +322,7 @@ function renderHero(avg, filteredPolls){
         ${logoSrc?`<img src="${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
       </div>
       <div>
-        <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${pct(topPct)}</span>
+        <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
         <span style="font-size:13px;font-weight:700;color:var(--c-text-muted);margin-left:4px">leading</span>
       </div>
     </div>
@@ -331,7 +346,7 @@ function renderPartyBars(avg){
     const delta=val-last2022;
     const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
     const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
-    const mpSeats=seats[pid]||0;
+    const mpSeats=SEAT_BASED?Math.round(val):(seats[pid]||0);
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
@@ -339,7 +354,7 @@ function renderPartyBars(avg){
       </div>
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
-      <div class="party-pct">${pct(val)}</div>
+      <div class="party-pct">${valDisp(val)}</div>
       <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
       <div class="party-seats" style="color:${color}">${mpSeats}</div>
     </div>`;
@@ -355,12 +370,12 @@ function renderBlocs(avg){
   return `<div class="bloc-row">
     <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc1.color}">
       <div class="bloc-name">${BLOCS.bloc1.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.bloc1.color}">${pct(rg)}</div>
+      <div class="bloc-pct" style="color:${BLOCS.bloc1.color}">${valDisp(rg)}</div>
       <div class="bloc-parties">${BLOCS.bloc1.parties.map(partyCode).join(' + ')}</div>
     </div>
     <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc2.color}">
       <div class="bloc-name">${BLOCS.bloc2.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.bloc2.color}">${pct(td)}</div>
+      <div class="bloc-pct" style="color:${BLOCS.bloc2.color}">${valDisp(td)}</div>
       <div class="bloc-parties">${BLOCS.bloc2.parties.map(partyCode).join(' + ')}</div>
     </div>
   </div>`;
@@ -564,13 +579,13 @@ function renderPollsTable(polls){
 
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num c">${p.n?p.n.toLocaleString():'—'}</td>
       <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${fmt(margin)}</td>
-      <td class="num c" style="color:${BLOCS.bloc1.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${pct(rg)}</td>
-      <td class="num c" style="color:${BLOCS.bloc2.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${pct(td)}</td>`;
+      <td class="num c" style="color:${BLOCS.bloc1.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${valDisp(rg)}</td>
+      <td class="num c" style="color:${BLOCS.bloc2.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${valDisp(td)}</td>`;
     PARTY_ORDER.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
       const isTop=pid===leadP;
-      html+=`<td class="num c" style="color:${v!==undefined?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined?pct(v):'—'}</td>`;
+      html+=`<td class="num c" style="color:${v!==undefined?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined?(SEAT_BASED?Math.round(v):pct(v)):'—'}</td>`;
     });
     html+=`</tr>`;
   });
@@ -584,8 +599,28 @@ function renderPollsTable(polls){
 /* ---------- render parliament ---------- */
 let PARL_MODE='proj';  // 'proj' or '2022'
 
+function seatParliament(avg, total){
+  // Seat-based countries: round the seat averages (largest remainder),
+  // excluding parties below the electoral threshold (in seats)
+  const thSeats=THRESHOLD/100*total;
+  const fl={},frs=[];
+  let sum=0;
+  PARTY_ORDER.forEach(p=>{
+    const m=avg[p]||0;
+    if(m<thSeats){fl[p]=0;return}
+    const f=Math.floor(m);
+    fl[p]=f;frs.push([m-f,p]);sum+=f;
+  });
+  let left=total-sum;
+  frs.sort((a,b)=>b[0]-a[0]);
+  for(let i=0;i<left&&i<frs.length;i++)fl[frs[i][1]]++;
+  return fl;
+}
+
 function renderParliament(avg){
-  const seats=PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL);
+  const seats=SEAT_BASED
+    ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):seatParliament(LAST_ELECTION.results,SEATS_TOTAL))
+    :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL));
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
     <div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
@@ -744,7 +779,49 @@ function gammaSample(alpha){
   return d;
 }
 
+const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
+
+function runSeatForecast(avg, nSims){
+  const thSeats=THRESHOLD/100*SEATS_TOTAL;
+  const maj={rg:0,td:0,hung:0};
+  const largest={};
+  const seatsBy={};
+  const votesBy={};
+  PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
+  const alpha=PARTY_ORDER.map(p=>Math.max(0.2,(avg[p]||0)*FORECAST_K_SEATS));
+  for(let s=0;s<nSims;s++){
+    const draws=alpha.map(a=>gammaSample(a));
+    const totalD=draws.reduce((a,b)=>a+b,0);
+    const simVotes={};
+    PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
+    // seats = share * 120, threshold applied, adjusted to sum 120
+    let seats={};
+    const valid=[];
+    PARTY_ORDER.forEach(p=>{
+      const raw=simVotes[p]/100*SEATS_TOTAL;
+      if(raw>=thSeats){seats[p]=Math.floor(raw);valid.push(p)}
+      else seats[p]=0;
+    });
+    let used=valid.reduce((a,p)=>a+seats[p],0);
+    let left=SEATS_TOTAL-used;
+    const rems=valid.map(p=>[simVotes[p]/100*SEATS_TOTAL-seats[p],p]).sort((a,b)=>b[0]-a[0]);
+    for(let i=0;i<left&&i<rems.length;i++)seats[rems[i][1]]++;
+    const MAJ_TH=Math.floor(SEATS_TOTAL/2)+1;
+    const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
+    const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
+    if(rg>=MAJ_TH)maj.rg++;
+    else if(td>=MAJ_TH)maj.td++;
+    else maj.hung++;
+    let top=PARTY_ORDER[0],topN=(seats[PARTY_ORDER[0]]||0);
+    for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
+    largest[top]=(largest[top]||0)+1;
+    PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
+  }
+  return summarize(seatsBy,votesBy,largest,maj,nSims);
+}
+
 function runForecast(avg, nSims){
+  if(SEAT_BASED) return runSeatForecast(avg, nSims);
   const K=FORECAST_K;
   const maj={rg:0,td:0,hung:0};
   const largest={};
@@ -771,7 +848,10 @@ function runForecast(avg, nSims){
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
-  // Summaries: mean / median / mode per party
+  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount);
+}
+
+function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount){
   const means={},medians={},modes={};
   PARTY_ORDER.forEach(p=>{
     const arr=seatsBy[p];
@@ -782,9 +862,10 @@ function runForecast(avg, nSims){
     arr.forEach(v=>{c[v]=(c[v]||0)+1;if(c[v]>bc){bc=c[v];best=v}});
     modes[p]=best;
   });
-  // Most common single outcome (modal combination)
   let modalKey=null,modalN=0;
-  for(const k in comboCount){if(comboCount[k]>modalN){modalN=comboCount[k];modalKey=k}}
+  if(comboCount){
+    for(const k in comboCount){if(comboCount[k]>modalN){modalN=comboCount[k];modalKey=k}}
+  }
   const modal={};
   if(modalKey){
     PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
@@ -888,23 +969,26 @@ function renderForecast(pane){
 
   let voteRows='';
   const voteOrder=PARTY_ORDER.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
+  const vsMax=SEAT_BASED?60:50;
+  const vsThresh=SEAT_BASED?THRESHOLD/100*SEATS_TOTAL:THRESHOLD;
   voteOrder.forEach(p=>{
     const arr=sim.votesBy[p];
-    const mu=mean(arr);
-    const lo=percentile(arr,5), hi=percentile(arr,95);
-    const thresh=arr.filter(v=>v>=THRESHOLD).length/arr.length;
+    const mu=SEAT_BASED?mean(arr)/100*SEATS_TOTAL:mean(arr);
+    const lo=SEAT_BASED?percentile(arr,5)/100*SEATS_TOTAL:percentile(arr,5);
+    const hi=SEAT_BASED?percentile(arr,95)/100*SEATS_TOTAL:percentile(arr,95);
+    const thresh=arr.filter(v=>(SEAT_BASED?v/100*SEATS_TOTAL:v)>=vsThresh).length/arr.length;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-    const barW=Math.min(100,mu/50*100);
+    const barW=Math.min(100,mu/vsMax*100);
     let note='';
     if(thresh>=0.5){
-      if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the ${THRESHOLD}% threshold in ${pct100(1-thresh)} of sims</div>`;
+      if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${pct100(1-thresh)} of sims</div>`;
     }else if(thresh>0.005){
-      note=`<div class="fc-note">${partyCode(p)} crosses the ${THRESHOLD}% threshold in ${pct100(thresh)} of sims</div>`;
+      note=`<div class="fc-note">${partyCode(p)} crosses the threshold in ${pct100(thresh)} of sims</div>`;
     }
     voteRows+=`<div class="fc-voterow">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
-      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh"></div></div>
-      <span class="fc-vote-val">${fmt(mu,1)}%</span>
+      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div></div>
+      <span class="fc-vote-val">${fmt(mu,1)}${SEAT_BASED?'':'%'}</span>
       <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
       ${note}
     </div>`;
@@ -954,7 +1038,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${fmt(forecastSigma(avg),1)}pp) · Sainte-Laguë · ${SEATS_TOTAL} seats · 4% threshold · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · Sainte-Laguë · ${SEATS_TOTAL} seats · 4% threshold · seeded, reproducible</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>
@@ -986,10 +1070,10 @@ function renderForecast(pane){
       ${largestRows}
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">VOTE SHARE</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${SEAT_BASED?'SEAT SHARE':'VOTE SHARE'}</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected national vote share from simulations · dashed line = 4% threshold</div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected ${SEAT_BASED?'seat':'vote'} share from simulations · dashed line = ${SEAT_BASED?fmt(THRESHOLD/100*SEATS_TOTAL,1)+' seats':THRESHOLD+'%'} threshold</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT DISTRIBUTION</div></div>

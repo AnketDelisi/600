@@ -7,6 +7,7 @@ const COUNTRIES = {
     seats: 349,
     threshold: 4.0,
     method: 'sainte_lague',       // modified Sainte-Laguë (divisor 1.2)
+    seatBased: false,
     constituencies: true,
     parties: {
       S:  { name: 'Socialdemokraterna',       name_en: 'Social Democrats',  color: '#EE2020' },
@@ -52,6 +53,7 @@ const COUNTRIES = {
     seats: 120,
     threshold: 3.25,
     method: 'dhondt',             // D'Hondt (divisors 1,2,3,...)
+    seatBased: true,             // polls report seat projections
     constituencies: false,        // single national district
     parties: {
       likud:     { code: 'LK', name: 'Likud',                    name_en: 'Likud',            color: '#00A0DF' },
@@ -87,7 +89,12 @@ const COUNTRIES = {
       },
     },
     pollsterMAE: {},
-    logos: {},
+    logos: {
+      likud: 'img/il/Likud.svg', together: 'img/il/Together.svg', rzp: 'img/il/RZP.svg',
+      otzma: 'img/il/Otzma.svg', blue_white: 'img/il/BW.svg', shas: 'img/il/Shas.svg',
+      utj: 'img/il/UTJ.svg', yb: 'img/il/YisraelBeiteinu.svg', raam: 'img/il/Raam.svg',
+      joint_list: 'img/il/JointList.svg', dems: 'img/il/Dems.svg', yashar: 'img/il/Yashar.svg',
+    },
   },
 };
 
@@ -98,6 +105,7 @@ let SEATS_TOTAL = 349;
 let THRESHOLD = 4.0;
 let SEAT_METHOD = 'sainte_lague';
 let HAS_CONSTITUENCIES = true;
+let SEAT_BASED = false;
 let PARTY_META = {};
 let PARTY_ORDER = [];
 let PARLIAMENT_ORDER = [];
@@ -115,6 +123,7 @@ function setCountry(id) {
   THRESHOLD = c.threshold;
   SEAT_METHOD = c.method || 'sainte_lague';
   HAS_CONSTITUENCIES = !!c.constituencies;
+  SEAT_BASED = !!c.seatBased;
   PARTY_META = c.parties;
   PARTY_ORDER = c.order;
   PARLIAMENT_ORDER = c.parlOrder || c.order;

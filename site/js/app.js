@@ -392,8 +392,11 @@ function renderMosaic(avg){
     if(tileCounts[c.id]!==c.seats) console.warn('Mosaic count mismatch for '+c.id+': tiles='+tileCounts[c.id]+' seats='+c.seats);
   });
 
+  const COLS=Math.max(...MOSAIC_GRID.map(r=>r.length));
+  const ROWS=MOSAIC_GRID.length;
   const CELL=24;
-  const W=32*CELL, H=29*CELL;
+  const LABEL_W=110;
+  const W=COLS*CELL+LABEL_W, H=ROWS*CELL;
 
   // Per-county allocation + ordered color list per county
   const alloc={}, colors={};
@@ -408,42 +411,86 @@ function renderMosaic(avg){
   const levelingVotes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
   const leveling=allocateSeatsN(levelingVotes,39);
 
-  // Per-county tile index map (scan order)
-  const idx={}; cList.forEach(c=>{idx[c.id]=0});
-
-  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
-  // Tiles grouped per county (grouped so tooltips/hover work per county)
+  // Group tiles per county
   const byCounty={};
   tiles.forEach(t=>{if(!byCounty[t.id])byCounty[t.id]=[];byCounty[t.id].push(t)});
+
+  // Whole-country set for outline tracing
+  const allSet=new Set(tiles.map(t=>t.x+','+t.y));
+
+  function edgeSegments(countyTiles){
+    const set=new Set(countyTiles.map(t=>t.x+','+t.y));
+    const segs=[];
+    countyTiles.forEach(t=>{
+      if(!set.has((t.x+1)+','+t.y)) segs.push({x1:t.x+1,y1:t.y,x2:t.x+1,y2:t.y+1});
+      if(!set.has(t.x+','+(t.y+1))) segs.push({x1:t.x,y1:t.y+1,x2:t.x+1,y2:t.y+1});
+      if(!set.has((t.x-1)+','+t.y)) segs.push({x1:t.x,y1:t.y,x2:t.x,y2:t.y+1});
+      if(!set.has(t.x+','+(t.y-1))) segs.push({x1:t.x,y1:t.y,x2:t.x+1,y2:t.y});
+    });
+    return segs;
+  }
+
+  function chainSegments(segs){
+    const remaining=segs.slice();
+    const chains=[];
+    while(remaining.length){
+      const chain=[remaining.pop()];
+      let grown=true;
+      while(grown){
+        grown=false;
+        for(let i=0;i<remaining.length;i++){
+          const s=remaining[i], head=chain[0], tail=chain[chain.length-1];
+          if(s.x1===tail.x2&&s.y1===tail.y2){chain.push(s);remaining.splice(i,1);grown=true;break}
+          if(s.x2===tail.x2&&s.y2===tail.y2){chain.push({x1:s.x2,y1:s.y2,x2:s.x1,y2:s.y1});remaining.splice(i,1);grown=true;break}
+          if(s.x2===head.x1&&s.y2===head.y1){chain.unshift(s);remaining.splice(i,1);grown=true;break}
+          if(s.x1===head.x1&&s.y1===head.y1){chain.unshift({x1:s.x2,y1:s.y2,x2:s.x1,y2:s.y1});remaining.splice(i,1);grown=true;break}
+        }
+      }
+      chains.push(chain);
+    }
+    return chains;
+  }
+
+  function pathFromChains(chains){
+    let d='';
+    chains.forEach(ch=>{
+      d+=`M ${ch[0].x1*CELL} ${ch[0].y1*CELL}`;
+      ch.forEach(s=>{d+=` L ${s.x2*CELL} ${s.y2*CELL}`});
+    });
+    return d;
+  }
+
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
+
+  // Country outline (union of all tiles)
+  const countryBorder=pathFromChains(chainSegments(edgeSegments(tiles)));
+  svg+=`<path d="${countryBorder}" fill="none" stroke="#111827" stroke-width="1.5" opacity="0.25"/>`;
+
+  // Per county: tiles + dotted border
+  const idx={}; cList.forEach(c=>{idx[c.id]=0});
   for(const id of Object.keys(byCounty)){
     const c=byId[id];
     if(!c) continue;
     const tList=byCounty[id];
-    const total=c.seats;
     const colList=colors[id];
-    svg+=`<g class="county-cell" data-id="${id}" data-name="${c.name}" data-seats="${total}" data-mode="${PARL_MODE}" style="cursor:pointer">`;
+    let minX=99,minY=99,maxX=0,maxY=0;
+    svg+=`<g class="county-cell" data-id="${id}" data-name="${c.name}" data-seats="${c.seats}" data-mode="${PARL_MODE}" style="cursor:pointer">`;
     tList.forEach(t=>{
       const ci=idx[id]++;
       const color=colList[ci]||'#ccc';
-      const x=t.x*CELL+1, y=t.y*CELL+1;
-      svg+=`<rect x="${x}" y="${y}" width="${CELL-2}" height="${CELL-2}" rx="2" fill="${color}" stroke="#111827" stroke-width="1"/>`;
+      minX=Math.min(minX,t.x);minY=Math.min(minY,t.y);maxX=Math.max(maxX,t.x);maxY=Math.max(maxY,t.y);
+      svg+=`<rect x="${t.x*CELL+1}" y="${t.y*CELL+1}" width="${CELL-2}" height="${CELL-2}" rx="1" fill="${color}"/>`;
     });
+    // dotted subtle border around the county
+    const border=pathFromChains(chainSegments(edgeSegments(tList)));
+    svg+=`<path d="${border}" fill="none" stroke="#111827" stroke-width="1" stroke-dasharray="2 3" opacity="0.4"/>`;
+    // label: to the right of the county block (left for the Gotland island)
+    const lx=(maxX+1)*CELL+7;
+    const ly=(minY+maxY)*CELL/2+12;
+    const anchor=(id==='gotland')?'end':'start';
+    const labelX=(id==='gotland')?(minX)*CELL-7:lx;
+    svg+=`<text x="${labelX}" y="${ly}" font-size="10" font-weight="700" fill="#111827" text-anchor="${anchor}" font-family="Decima Mono Pro,monospace">${c.name} ${c.seats}</text>`;
     svg+=`</g>`;
-  }
-  // County labels
-  for(const id of Object.keys(byCounty)){
-    const c=byId[id];
-    const tList=byCounty[id];
-    let minX=99,minY=99,maxX=0,maxY=0;
-    tList.forEach(t=>{minX=Math.min(minX,t.x);maxX=Math.max(maxX,t.x);minY=Math.min(minY,t.y);maxY=Math.max(maxY,t.y)});
-    const label=c.name+' '+c.seats;
-    let lx,ly,anchor='start';
-    if(id==='gotland'){
-      lx=minX*CELL-4; ly=(minY+maxY)*CELL/2+12+4; anchor='end';
-    }else{
-      lx=(maxX+1)*CELL+6; ly=(minY+maxY)*CELL/2+12+4;
-    }
-    svg+=`<text x="${lx}" y="${ly}" font-size="10" font-weight="700" fill="#111827" text-anchor="${anchor}" font-family="Decima Mono Pro,monospace">${label}</text>`;
   }
   svg+=`</svg>`;
 

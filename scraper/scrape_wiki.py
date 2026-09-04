@@ -133,7 +133,7 @@ def is_valid_pollster(text):
     if any(w in lower for w in ("male", "female", "income", "swedish", "foreign", "own house", "lowest", "%")):
         return False
     # Reject election result rows and non-poll rows
-    if "election" in lower or "ep " in lower or "ep " in lower:
+    if "election" in lower or "ep " in lower:
         return False
     return True
 

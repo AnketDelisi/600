@@ -133,6 +133,37 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .sb-le-name{font-size:11px;font-weight:900;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .sb-le-pct{font-family:var(--font-mono);font-size:11px;font-weight:900;font-variant-numeric:tabular-nums}
 
+/* ---------- Constituency map ---------- */
+.map-toggle-row{display:flex;gap:8px;margin-bottom:12px}
+.map-toggle-btn{
+  font-family:var(--font);font-size:11px;font-weight:900;letter-spacing:1px;
+  padding:8px 14px;background:var(--c-surface);color:var(--c-text-main);
+  border:2px solid var(--c-edge);border-radius:2px;cursor:pointer;
+  box-shadow:var(--shadow-md);
+}
+.map-toggle-btn:hover{transform:translate(-1px,-1px);box-shadow:var(--shadow-big)}
+.map-toggle-btn.active{background:var(--c-accent);color:#fff;border-color:var(--c-edge)}
+.map-wrap{position:relative}
+.const-map-svg{width:100%;height:auto;display:block;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big)}
+.const-cell rect{transition:opacity 0.15s}
+.const-cell:hover rect{opacity:0.85}
+.map-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.map-legend-item{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:900;font-family:var(--font-mono)}
+.map-legend-dot{width:12px;height:12px;border:2px solid var(--c-edge);border-radius:2px}
+.map-tooltip{
+  position:absolute;pointer-events:none;background:var(--c-surface);
+  border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:10px 12px;
+  font-size:11px;line-height:1.5;min-width:150px;z-index:50;display:none;
+  font-family:var(--font);
+}
+.map-tooltip.visible{display:block}
+.map-tip-name{font-weight:900;font-size:12px;margin-bottom:2px}
+.map-tip-meta{color:var(--c-text-muted);font-size:10px;margin-bottom:4px}
+.map-tip-row{display:flex;align-items:center;gap:6px;padding:1px 0}
+.map-tip-dot{width:8px;height:8px;border-radius:1px;flex-shrink:0}
+.map-tip-label{flex:1;font-weight:700}
+.map-tip-val{font-family:var(--font-mono);font-weight:900;font-variant-numeric:tabular-nums}
+
 /* ---------- Decima ---------- */
 input.vote-input,.party-pct,.party-delta,.bloc-card .bloc-pct,.tot-amt{font-family:var(--font-mono)}
 

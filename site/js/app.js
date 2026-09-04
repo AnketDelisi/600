@@ -456,6 +456,141 @@ function allocateConstituencySeats(avg, constituency){
   return seatAlloc;
 }
 
+/* ---------- constituency winner helpers ---------- */
+function constWinnerBySeats(sa){
+  let winner='—',wMax=0;
+  for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
+  return winner;
+}
+
+function constWinner2022(c){
+  const r=c.results_2022||{};
+  let winner='—',wMax=0;
+  for(const p of PARTY_ORDER){if((r[p]||0)>wMax){wMax=r[p];winner=p}}
+  return winner;
+}
+
+/* ---------- constituency map ---------- */
+let MAP_MODE='proj';
+
+function renderConstituencyMap(avg){
+  const CW=118, CH=64, GAP=10, COLS=6;
+  const positions=MAP_POS, cList=CONSTITUENCIES.constituencies;
+  const byId={}; cList.forEach(c=>{byId[c.id]=c});
+
+  // Compute per-constituency winners
+  const winners={}, seatAllocs={};
+  for(const c of cList){
+    const sa=allocateConstituencySeats(avg,c);
+    seatAllocs[c.id]=sa;
+    winners[c.id]=MAP_MODE==='proj'?constWinnerBySeats(sa):constWinner2022(c);
+  }
+
+  const rows=7;
+  const W=COLS*CW+(COLS-1)*GAP;
+  const H=rows*CH+(rows-1)*GAP;
+
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="const-map-svg">`;
+
+  // Region bands + labels
+  for(const key of ['norrland','svealand','götaland']){
+    const reg=MAP_REGIONS[key];
+    const y0=reg.rows[0]*CH+reg.rows[0]*GAP;
+    const y1=(reg.rows[1]+1)*CH+reg.rows[1]*GAP;
+    const x0=reg.cols[0]*CW+reg.cols[0]*GAP;
+    const x1=(reg.cols[1]+1)*CW+reg.cols[1]*GAP;
+    svg+=`<rect x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" fill="none" stroke="#111827" stroke-width="2" stroke-dasharray="6 4" rx="4" opacity="0.5"/>`;
+    svg+=`<text x="${x0+8}" y="${y0+16}" font-size="11" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace" letter-spacing="1">${reg.label}</text>`;
+  }
+
+  for(const c of cList){
+    const [col,row]=positions[c.id];
+    const x=col*(CW+GAP), y=row*(CH+GAP);
+    const w=winners[c.id];
+    const color=w==='—'?'#CBD5E1':(PARTY_META[w]?PARTY_META[w].color:'#888');
+    const seats=MAP_MODE==='proj'?seatAllocs[c.id]:null;
+    const seatStr=seats?Object.values(seats).reduce((a,b)=>a+b,0):c.seats;
+    const leaderStr=seats?w:c.seats===0?'—':w;
+    svg+=`<g class="const-cell" data-id="${c.id}" data-name="${c.name}" data-winner="${w}" data-seats="${seatStr}" data-mode="${MAP_MODE}">
+      <rect x="${x}" y="${y}" width="${CW}" height="${CH}" rx="4" fill="${color}" stroke="#111827" stroke-width="2" style="cursor:pointer"/>
+      <text x="${x+8}" y="${y+18}" font-size="10" font-weight="700" fill="#fff" stroke="#111827" stroke-width="2.5" paint-order="stroke" font-family="Decima Mono Pro,monospace">${c.name.toUpperCase()}</text>
+      <text x="${x+8}" y="${y+CH-10}" font-size="22" font-weight="900" fill="#fff" stroke="#111827" stroke-width="2.5" paint-order="stroke" font-family="Decima Mono Pro,monospace" font-variant-numeric="tabular-nums">${leaderStr}</text>
+      <text x="${x+CW-8}" y="${y+CH-10}" font-size="12" font-weight="700" fill="#fff" stroke="#111827" stroke-width="2.5" paint-order="stroke" text-anchor="end" font-family="Decima Mono Pro,monospace">${seatStr} seats</text>
+    </g>`;
+  }
+  svg+=`</svg>`;
+
+  // Legend
+  let legend='';
+  for(const pid of PARTY_ORDER){
+    legend+=`<span class="map-legend-item"><span class="map-legend-dot" style="background:${PARTY_META[pid].color}"></span>${pid}</span>`;
+  }
+
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">CONSTITUENCY MAP</div></div>
+    <div class="map-toggle-row">
+      <button class="map-toggle-btn${MAP_MODE==='proj'?' active':''}" data-mapmode="proj">PROJECTION</button>
+      <button class="map-toggle-btn${MAP_MODE==='2022'?' active':''}" data-mapmode="2022">2022 RESULT</button>
+    </div>
+    <div class="map-wrap" id="map-wrap">${svg}<div class="map-tooltip" id="map-tooltip"></div></div>
+    <div class="map-legend">${legend}</div>
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
+      Schematic layout by region. Cell = winner party · seat count per constituency. Hover for breakdown.
+    </div>
+  </div>`;
+}
+
+function bindMapEvents(){
+  const wrap=$('map-wrap');
+  if(!wrap) return;
+  const tip=$('map-tooltip');
+  const cells=wrap.querySelectorAll('.const-cell');
+  cells.forEach(cell=>{
+    cell.addEventListener('mouseenter',()=>{
+      const name=cell.dataset.name;
+      const winner=cell.dataset.winner;
+      const seats=parseInt(cell.dataset.seats,10);
+      const mode=cell.dataset.mode;
+      let breakdown='';
+      if(mode==='proj'&&CONSTITUENCIES){
+        const c=CONSTITUENCIES.constituencies.find(x=>x.id===cell.dataset.id);
+        const sa=allocateConstituencySeats(currentAvg(),c);
+        breakdown=PARTY_ORDER.filter(p=>(sa[p]||0)>0).map(p=>{
+          const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+          return `<div class="map-tip-row"><span class="map-tip-dot" style="background:${col}"></span><span class="map-tip-label">${p}</span><span class="map-tip-val">${sa[p]}</span></div>`;
+        }).join('');
+        if(!breakdown) breakdown='<div class="map-tip-row" style="color:var(--c-text-muted)">No party above threshold</div>';
+      } else {
+        const c=CONSTITUENCIES.constituencies.find(x=>x.id===cell.dataset.id);
+        const r=c.results_2022||{};
+        breakdown=PARTY_ORDER.filter(p=>(r[p]||0)>3).map(p=>{
+          const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+          return `<div class="map-tip-row"><span class="map-tip-dot" style="background:${col}"></span><span class="map-tip-label">${p}</span><span class="map-tip-val">${pct(r[p])}</span></div>`;
+        }).join('');
+      }
+      tip.innerHTML=`<div class="map-tip-name">${name}</div>
+        <div class="map-tip-meta">${seats} seats · winner: <b>${winner}</b></div>${breakdown}`;
+      tip.classList.add('visible');
+    });
+    cell.addEventListener('mousemove',e=>{
+      const r=wrap.getBoundingClientRect();
+      tip.style.left=(e.clientX-r.left+14)+'px';
+      tip.style.top=(e.clientY-r.top+14)+'px';
+    });
+    cell.addEventListener('mouseleave',()=>{tip.classList.remove('visible')});
+  });
+  // Toggle buttons
+  wrap.parentElement.querySelectorAll('.map-toggle-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      MAP_MODE=btn.dataset.mapmode;
+      const pane=$('pane-constituency');
+      renderConstituency(pane);
+    });
+  });
+}
+
+let _currentAvg=null;
+function currentAvg(){return _currentAvg||{}}
+
 /* ---------- render constituency tab ---------- */
 function renderConstituency(pane){
   if(!CONSTITUENCIES){
@@ -467,6 +602,7 @@ function renderConstituency(pane){
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
   const avg=computeAverages(filtered);
+  _currentAvg=avg;
 
   let totalSeatsAll={};PARTY_ORDER.forEach(p=>{totalSeatsAll[p]=0});
   let rows='';
@@ -476,9 +612,9 @@ function renderConstituency(pane){
     const total=Object.values(sa).reduce((a,b)=>a+b,0);
     PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
     // Winner
-    let winner=PARTY_ORDER[0],wMax=0;
+    let winner='—',wMax=0;
     for(const p of PARTY_ORDER){if((sa[p]||0)>wMax){wMax=sa[p];winner=p}}
-    const wColor=PARTY_META[winner]?PARTY_META[winner].color:'#888';
+    const wColor=winner==='—'?'var(--c-text-muted)':(PARTY_META[winner]?PARTY_META[winner].color:'#888');
     // Seat cells
     let seatCells='';
     for(const p of PARTY_ORDER){
@@ -499,14 +635,16 @@ function renderConstituency(pane){
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     totalCells+=`<td class="num" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
   }
+  const constSeats=CONSTITUENCIES.constituencies.reduce((s,c)=>s+c.seats,0);
   rows+=`<tr style="border-top:3px solid var(--c-edge);font-weight:900">
-    <td>TOTAL</td><td class="num">349</td><td></td>${totalCells}</tr>`;
+    <td>TOTAL</td><td class="num">${constSeats}</td><td></td>${totalCells}</tr>`;
 
   let html=`<div class="tab-pane-inner">
     <div class="hero">
       <div class="hero-title">CONSTITUENCY SEAT PROJECTION</div>
       <div class="hero-date">Modified Sainte-Laguë (divisor 1.2) · 29 constituencies · 310 constituency + 39 leveling seats</div>
     </div>
+    ${renderConstituencyMap(avg)}
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEATS BY CONSTITUENCY</div></div>
       <div style="overflow-x:auto">
       <table class="polls-table"><thead><tr>
@@ -518,6 +656,7 @@ function renderConstituency(pane){
       </div>
     </div></div>`;
   pane.innerHTML=html;
+  bindMapEvents();
 }
 
 /* ---------- forecast tab ---------- */
@@ -611,7 +750,16 @@ function renderPollsTab(){
 
 /* ---------- public API ---------- */
 window._600={
-  applyFilters(){renderPollsTab()}
+  applyFilters(){
+    const active=document.querySelector('.tab-trigger[data-active="true"]');
+    const tabId=active?active.dataset.tab:'polls';
+    if(tabId==='polls'){renderPollsTab();return}
+    const pane=$('pane-'+tabId);
+    if(!pane) return;
+    if(tabId==='constituency'){renderConstituency(pane)}
+    else if(tabId==='forecast'){renderForecast(pane)}
+    else if(tabId==='methodology'){renderMethodology(pane)}
+  }
 };
 
 /* ---------- boot ---------- */

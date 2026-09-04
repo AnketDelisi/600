@@ -51,3 +51,24 @@ const PARTY_LOGOS = {
   MP: 'img/MP.svg',
   L:  'img/L.svg',
 };
+
+// Schematic map layout: grid [col, row] per constituency id (6 cols x 7 rows)
+const MAP_POS = {
+  jämtland:     [1,0], västerbotten: [2,0], norrbotten:   [3,0],
+  dalarna:      [0,1], gävleborg:    [2,1], västernorrland:[3,1],
+  värmland:     [0,2], örebro:       [1,2], västmanland:  [2,2],
+  uppsala:      [3,2], stockholm:    [4,2], stockholms_län:[5,2],
+  vg_norra:     [0,3], vg_västra:    [1,3], vg_östra:     [2,3],
+  södermanland: [3,3], östergötland: [4,3], gotland:      [5,3],
+  göteborg:     [0,4], vg_södra:     [1,4], jönköping:    [2,4],
+  kronoberg:    [3,4], kalmar:       [4,4],
+  halland:      [0,5], blekinge:     [3,5], skåne_v:      [4,5],
+  skåne_ne:     [5,5],
+  malmö:        [4,6], skåne_s:      [5,6],
+};
+
+const MAP_REGIONS = {
+  norrland: { label: 'NORRLAND', cols: [0,4], rows: [0,1] },
+  svealand: { label: 'SVEALAND', cols: [0,5], rows: [2,3] },
+  götaland: { label: 'GÖTALAND', cols: [0,5], rows: [4,6] },
+};

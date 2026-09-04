@@ -702,6 +702,7 @@ function runForecast(avg, nSims){
   const largest={};
   const seatsBy={};
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[]});
+  const comboCount={};
   const alpha=PARTY_ORDER.map(p=>Math.max(0.5,(avg[p]||0)*K));
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
@@ -718,8 +719,42 @@ function runForecast(avg, nSims){
     for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
     largest[top]=(largest[top]||0)+1;
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0)});
+    comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
-  return {maj,largest,seatsBy,nSims};
+  // Summaries: mean / median / mode per party
+  const means={},medians={},modes={};
+  PARTY_ORDER.forEach(p=>{
+    const arr=seatsBy[p];
+    means[p]=arr.reduce((a,b)=>a+b,0)/arr.length;
+    const sorted=arr.slice().sort((a,b)=>a-b);
+    medians[p]=sorted[Math.floor(arr.length/2)];
+    const c={};let best=arr[0],bc=0;
+    arr.forEach(v=>{c[v]=(c[v]||0)+1;if(c[v]>bc){bc=c[v];best=v}});
+    modes[p]=best;
+  });
+  // Most common single outcome (modal combination)
+  let modalKey=null,modalN=0;
+  for(const k in comboCount){if(comboCount[k]>modalN){modalN=comboCount[k];modalKey=k}}
+  const modal={};
+  if(modalKey){
+    PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
+  }
+  return {maj,largest,seatsBy,means,medians,modes,modal,modalN,nSims};
+}
+
+function expectedSeats(means,total){
+  // Deterministic projection: round the simulation means (largest remainder)
+  const fl={},frs=[];
+  let s=0;
+  PARTY_ORDER.forEach(p=>{
+    const m=means[p]||0;
+    const f=Math.floor(m);
+    fl[p]=f;frs.push([m-f,p]);s+=f;
+  });
+  let left=total-s;
+  frs.sort((a,b)=>b[0]-a[0]);
+  for(let i=0;i<left&&i<frs.length;i++)fl[frs[i][1]]++;
+  return fl;
 }
 
 function pct100(x){return (x*100).toFixed(1)+'%'}
@@ -798,10 +833,42 @@ function renderForecast(pane){
     </div>`;
   });
 
+  // Deterministic projection
+  const expSeats=expectedSeats(sim.means,SEATS_TOTAL);
+  let cmpRows='';
+  const cmpOrder=PARTY_ORDER.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
+  cmpOrder.forEach(p=>{
+    const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const arr=sim.seatsBy[p];
+    const lo=percentile(arr,5), hi=percentile(arr,95);
+    cmpRows+=`<tr>
+      <td style="font-weight:700;color:${color}">${p}</td>
+      <td class="num c" style="font-weight:900">${expSeats[p]}</td>
+      <td class="num c">${sim.medians[p]}</td>
+      <td class="num c">${sim.modes[p]}</td>
+      <td class="num c">${lo}–${hi}</td>
+    </tr>`;
+  });
+  let modalStr='—';
+  if(sim.modalN>0){
+    modalStr=PARTY_ORDER.filter(p=>(sim.modal[p]||0)>0).map(p=>`${p} ${sim.modal[p]}`).join(' · ');
+  }
+
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero">
       <div class="hero-title">FORECAST — ${COUNTRY_NAME} 2026</div>
       <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${fmt(forecastSigma(avg),1)}pp) · Sainte-Laguë · ${SEATS_TOTAL} seats · 4% threshold</div>
+    </div>
+
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MOST LIKELY PARLIAMENT (EXPECTED)</div></div>
+      <div class="parliament-box">${buildParliamentSVG(expSeats)}</div>
+      <div style="overflow-x:auto">
+      <table class="polls-table compact-table"><thead><tr>
+        <th>Party</th><th class="c">Exp</th><th class="c">Median</th><th class="c">Mode</th><th class="c">90% Int</th>
+      </tr></thead><tbody>${cmpRows}</tbody></table></div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
+        Deterministic projection = rounded simulation means. Most common single outcome in ${sim.nSims.toLocaleString()} sims: ${modalStr} (${pct100(sim.modalN/sim.nSims)})
+      </div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MAJORITY PROBABILITY</div></div>

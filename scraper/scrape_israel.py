@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Scrape Israeli opinion polls from Wikipedia for the 2026 Knesset election.
 
-Polls are reported as SEAT projections (of 120). We convert seats to an
-implied vote share (seats/120*100) so the site's vote-based pipeline works
-unchanged; parties below the 3.25% threshold are reported in % already.
+Israeli polls are reported as SEAT projections (of 120). We store them as
+raw seat counts — no conversion to vote share. Parties below the 3.25%
+threshold are usually reported in % and are skipped (they win no seats).
+The site runs the whole pipeline (averages, forecast, parliament) directly
+in seat space (seatBased mode).
 """
 
 import json

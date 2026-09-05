@@ -2,8 +2,8 @@
   "country": "israel",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-  "scraped_at": "2026-09-05T06:46:59Z",
-  "poll_count": 142,
+  "scraped_at": "2026-09-05T09:07:03Z",
+  "poll_count": 143,
   "polls": [
     {
       "pollster": "Lazar",
@@ -370,8 +370,8 @@
         "yb": 9,
         "raam": 4,
         "joint_list": 7,
-        "dems": 7,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -391,8 +391,8 @@
         "yb": 7,
         "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -412,8 +412,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 7,
-        "dems": 7,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -433,8 +433,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 8,
-        "dems": 8,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -454,8 +454,8 @@
         "yb": 11,
         "raam": 5,
         "joint_list": 7,
-        "dems": 7,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -475,7 +475,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 26
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -495,7 +496,8 @@
         "yb": 9,
         "raam": 4,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 25
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -515,7 +517,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -535,7 +538,8 @@
         "yb": 7,
         "raam": 6,
         "joint_list": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -555,7 +559,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -575,7 +580,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -595,7 +601,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -615,7 +622,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -635,8 +643,8 @@
         "yb": 11,
         "raam": 6,
         "joint_list": 6,
-        "dems": 6,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 25
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -656,7 +664,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -676,7 +685,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -696,7 +706,8 @@
         "yb": 10,
         "raam": 6,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -716,8 +727,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 8,
-        "dems": 8,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -737,7 +748,8 @@
         "yb": 9,
         "raam": 6,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -757,7 +769,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -777,8 +790,8 @@
         "yb": 11,
         "raam": 6,
         "joint_list": 6,
-        "dems": 6,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -798,7 +811,8 @@
         "yb": 11,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -818,7 +832,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 22
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -838,7 +853,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -858,7 +874,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -878,7 +895,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -899,8 +917,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 6,
-        "dems": 6,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -920,7 +938,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 4,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -940,7 +959,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 22
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -960,7 +980,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -980,8 +1001,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 7,
-        "dems": 7,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1001,7 +1022,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1021,7 +1043,8 @@
         "yb": 6,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 12
+        "dems": 12,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1041,7 +1064,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1061,8 +1085,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 6,
-        "dems": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 25
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1082,7 +1106,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1102,7 +1127,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1122,32 +1148,13 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 22
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 551
-    },
-    {
-      "pollster": "Lazar",
-      "date": "2026-07-17",
-      "votes": {
-        "likud": 22,
-        "together": 16,
-        "rzp": 4,
-        "otzma": 7,
-        "shas": 7,
-        "utj": 8,
-        "yb": 9,
-        "raam": 5,
-        "joint_list": 5,
-        "yashar": 11
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 500
     },
     {
       "pollster": "Direct Polls",
@@ -1162,8 +1169,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 7,
-        "dems": 7,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 22
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1184,8 +1191,8 @@
         "yb": 10,
         "raam": 4,
         "joint_list": 6,
-        "dems": 6,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1205,7 +1212,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1225,7 +1233,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 24
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1245,8 +1254,8 @@
         "yb": 8,
         "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1266,8 +1275,8 @@
         "yb": 9,
         "raam": 5,
         "joint_list": 7,
-        "dems": 7,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1287,7 +1296,8 @@
         "yb": 10,
         "raam": 5,
         "joint_list": 6,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 22
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1305,7 +1315,10 @@
         "shas": 8,
         "utj": 8,
         "yb": 9,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1323,7 +1336,10 @@
         "shas": 8,
         "utj": 8,
         "yb": 9,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 9,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1341,7 +1357,10 @@
         "shas": 8,
         "utj": 8,
         "yb": 10,
-        "dems": 6
+        "raam": 5,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 20
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1359,7 +1378,10 @@
         "shas": 10,
         "utj": 8,
         "yb": 11,
-        "dems": 5
+        "raam": 4,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1377,7 +1399,10 @@
         "shas": 9,
         "utj": 7,
         "yb": 9,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1395,8 +1420,10 @@
         "shas": 11,
         "utj": 8,
         "yb": 9,
-        "dems": 5,
-        "yashar": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 20
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1414,8 +1441,10 @@
         "shas": 9,
         "utj": 8,
         "yb": 10,
-        "dems": 7,
-        "yashar": 7
+        "raam": 5,
+        "joint_list": 7,
+        "dems": 10,
+        "yashar": 20
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1433,7 +1462,10 @@
         "shas": 8,
         "utj": 7,
         "yb": 11,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1452,7 +1484,10 @@
         "shas": 10,
         "utj": 7,
         "yb": 11,
-        "dems": 4
+        "raam": 4,
+        "joint_list": 4,
+        "dems": 7,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1470,7 +1505,10 @@
         "shas": 8,
         "utj": 7,
         "yb": 10,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 9,
+        "yashar": 22
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1488,12 +1526,35 @@
         "shas": 9,
         "utj": 7,
         "yb": 10,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 501
+    },
+    {
+      "pollster": "Yossi Tatika",
+      "date": "2026-06-18",
+      "votes": {
+        "likud": 23,
+        "together": 19,
+        "otzma": 9,
+        "shas": 10,
+        "utj": 8,
+        "yb": 10,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 23
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 500
     },
     {
       "pollster": "Kantar",
@@ -1506,7 +1567,10 @@
         "shas": 9,
         "utj": 7,
         "yb": 10,
-        "dems": 7
+        "raam": 4,
+        "joint_list": 7,
+        "dems": 9,
+        "yashar": 21
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1524,7 +1588,10 @@
         "shas": 9,
         "utj": 7,
         "yb": 8,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 11,
+        "yashar": 20
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1542,13 +1609,35 @@
         "shas": 10,
         "utj": 7,
         "yb": 8,
-        "dems": 6,
-        "yashar": 6
+        "raam": 5,
+        "joint_list": 6,
+        "dems": 9,
+        "yashar": 16
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 771
+    },
+    {
+      "pollster": "Yossi Tatika",
+      "date": "2026-06-11",
+      "votes": {
+        "likud": 24,
+        "together": 21,
+        "otzma": 8,
+        "shas": 10,
+        "utj": 8,
+        "yb": 10,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 21
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 500
     },
     {
       "pollster": "Lazar",
@@ -1561,7 +1650,10 @@
         "shas": 8,
         "utj": 7,
         "yb": 9,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 17
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1579,7 +1671,10 @@
         "shas": 8,
         "utj": 7,
         "yb": 8,
-        "dems": 6
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 9,
+        "yashar": 17
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1597,7 +1692,10 @@
         "shas": 9,
         "utj": 7,
         "yb": 9,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 19
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1616,7 +1714,30 @@
         "shas": 9,
         "utj": 8,
         "yb": 10,
-        "dems": 4
+        "raam": 4,
+        "joint_list": 4,
+        "dems": 8,
+        "yashar": 19
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 500
+    },
+    {
+      "pollster": "Lazar",
+      "date": "2026-06-04",
+      "votes": {
+        "likud": 25,
+        "together": 23,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 7,
+        "yb": 10,
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 17
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1634,7 +1755,10 @@
         "shas": 9,
         "utj": 8,
         "yb": 9,
-        "dems": 5
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 16
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1652,7 +1776,10 @@
         "shas": 8,
         "utj": 8,
         "yb": 9,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 11,
+        "yashar": 17
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1670,7 +1797,10 @@
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 18
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1688,7 +1818,10 @@
         "shas": 11,
         "utj": 7,
         "yb": 8,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 15
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1706,12 +1839,35 @@
         "shas": 9,
         "utj": 8,
         "yb": 8,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 16
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 501
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-05-20",
+      "votes": {
+        "likud": 27,
+        "together": 23,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 8,
+        "yb": 8,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 16
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 551
     },
     {
       "pollster": "Yossi Tatika",
@@ -1725,7 +1881,10 @@
         "shas": 9,
         "utj": 8,
         "yb": 9,
-        "dems": 4
+        "raam": 5,
+        "joint_list": 4,
+        "dems": 8,
+        "yashar": 16
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1743,7 +1902,10 @@
         "shas": 8,
         "utj": 7,
         "yb": 9,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 15
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1761,12 +1923,35 @@
         "shas": 10,
         "utj": 8,
         "yb": 8,
-        "dems": 5
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 17
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 546
+    },
+    {
+      "pollster": "Midgam R&C",
+      "date": "2026-05-14",
+      "votes": {
+        "likud": 26,
+        "together": 24,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 8,
+        "yb": 9,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 15
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 506
     },
     {
       "pollster": "Yossi Tatika",
@@ -1779,7 +1964,10 @@
         "shas": 9,
         "utj": 8,
         "yb": 10,
-        "dems": 4
+        "raam": 6,
+        "joint_list": 4,
+        "dems": 8,
+        "yashar": 15
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1797,12 +1985,75 @@
         "shas": 10,
         "utj": 7,
         "yb": 7,
-        "dems": 5
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 14
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 436
+    },
+    {
+      "pollster": "Lazar",
+      "date": "2026-05-13",
+      "votes": {
+        "likud": 25,
+        "together": 26,
+        "otzma": 8,
+        "shas": 9,
+        "utj": 7,
+        "yb": 9,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 16
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 502
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-05-12",
+      "votes": {
+        "likud": 26,
+        "together": 25,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 7,
+        "yb": 9,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 15
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 557
+    },
+    {
+      "pollster": "Midgam R&C",
+      "date": "2026-05-07",
+      "votes": {
+        "likud": 25,
+        "together": 25,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 8,
+        "yb": 9,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 11,
+        "yashar": 14
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 503
     },
     {
       "pollster": "Filber",
@@ -1815,7 +2066,10 @@
         "shas": 10,
         "utj": 8,
         "yb": 8,
-        "dems": 5
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 13
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1833,7 +2087,130 @@
         "shas": 9,
         "utj": 8,
         "yb": 9,
-        "dems": 4
+        "raam": 5,
+        "joint_list": 4,
+        "dems": 8,
+        "yashar": 14
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 500
+    },
+    {
+      "pollster": "Lazar",
+      "date": "2026-05-07",
+      "votes": {
+        "likud": 26,
+        "together": 26,
+        "otzma": 9,
+        "shas": 8,
+        "utj": 7,
+        "yb": 9,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 15
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 503
+    },
+    {
+      "pollster": "Yossi Tatika",
+      "date": "2026-04-30",
+      "votes": {
+        "likud": 26,
+        "together": 28,
+        "otzma": 7,
+        "shas": 9,
+        "utj": 8,
+        "yb": 10,
+        "raam": 5,
+        "joint_list": 4,
+        "dems": 8,
+        "yashar": 15
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 500
+    },
+    {
+      "pollster": "Lazar",
+      "date": "2026-04-30",
+      "votes": {
+        "likud": 26,
+        "together": 28,
+        "otzma": 9,
+        "shas": 8,
+        "utj": 7,
+        "yb": 8,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 14
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 501
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-04-27",
+      "votes": {
+        "likud": 27,
+        "together": 24,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 7,
+        "yb": 8,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 11,
+        "yashar": 15
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 555
+    },
+    {
+      "pollster": "Midgam R&C",
+      "date": "2026-04-27",
+      "votes": {
+        "likud": 25,
+        "together": 26,
+        "otzma": 9,
+        "shas": 9,
+        "utj": 7,
+        "yb": 9,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 15
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 501
+    },
+    {
+      "pollster": "Lazar",
+      "date": "2026-04-27",
+      "votes": {
+        "likud": 28,
+        "together": 27,
+        "otzma": 8,
+        "shas": 8,
+        "utj": 7,
+        "yb": 8,
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 15
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1851,7 +2228,10 @@
         "shas": 11,
         "utj": 8,
         "yb": 6,
-        "dems": 4
+        "raam": 7,
+        "joint_list": 4,
+        "dems": 9,
+        "yashar": 8
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1859,37 +2239,19 @@
       "n": 578
     },
     {
-      "pollster": "Filber",
-      "date": "2026-04-26",
-      "votes": {
-        "likud": 34,
-        "together": 20,
-        "rzp": 4,
-        "otzma": 7,
-        "shas": 11,
-        "utj": 8,
-        "yb": 8,
-        "dems": 11,
-        "yashar": 11
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 932
-    },
-    {
       "pollster": "Lazar",
       "date": "2026-04-24",
       "votes": {
         "likud": 24,
-        "together": 7,
+        "together": 31,
         "otzma": 9,
         "shas": 9,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 12
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1897,38 +2259,19 @@
       "n": 502
     },
     {
-      "pollster": "Filber",
-      "date": "2026-04-23",
-      "votes": {
-        "likud": 35,
-        "together": 11,
-        "rzp": 4,
-        "otzma": 8,
-        "shas": 11,
-        "utj": 8,
-        "yb": 9,
-        "joint_list": 11,
-        "dems": 11,
-        "yashar": 8
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 958
-    },
-    {
       "pollster": "Lazar",
       "date": "2026-04-17",
       "votes": {
         "likud": 25,
-        "together": 7,
+        "together": 31,
         "otzma": 8,
         "shas": 9,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 12
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1940,54 +2283,36 @@
       "date": "2026-04-16",
       "votes": {
         "likud": 28,
-        "together": 5,
+        "together": 21,
         "otzma": 6,
         "blue_white": 4,
         "shas": 9,
         "utj": 8,
         "yb": 10,
-        "joint_list": 5,
-        "dems": 4,
-        "yashar": 9
+        "raam": 5,
+        "joint_list": 4,
+        "dems": 9,
+        "yashar": 16
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 500
-    },
-    {
-      "pollster": "Filber",
-      "date": "2026-04-16",
-      "votes": {
-        "likud": 35,
-        "rzp": 4,
-        "otzma": 7,
-        "shas": 11,
-        "utj": 8,
-        "yb": 9,
-        "joint_list": 12,
-        "dems": 12,
-        "together": 12,
-        "yashar": 10
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 511
     },
     {
       "pollster": "Lazar",
       "date": "2026-04-10",
       "votes": {
         "likud": 25,
-        "together": 7,
+        "together": 31,
         "otzma": 8,
         "shas": 9,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 13
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -1995,38 +2320,19 @@
       "n": 500
     },
     {
-      "pollster": "Filber",
-      "date": "2026-04-09",
-      "votes": {
-        "likud": 35,
-        "together": 11,
-        "rzp": 4,
-        "otzma": 7,
-        "shas": 10,
-        "utj": 9,
-        "yb": 8,
-        "joint_list": 11,
-        "dems": 11,
-        "yashar": 10
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 951
-    },
-    {
       "pollster": "Kantar",
       "date": "2026-04-09",
       "votes": {
         "likud": 25,
-        "together": 6,
+        "together": 25,
         "otzma": 10,
         "shas": 9,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 14
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2038,14 +2344,15 @@
       "date": "2026-03-31",
       "votes": {
         "likud": 25,
-        "together": 8,
+        "together": 30,
         "otzma": 8,
         "shas": 9,
         "utj": 7,
         "yb": 8,
-        "joint_list": 4,
-        "dems": 6,
-        "yashar": 9
+        "raam": 4,
+        "joint_list": 6,
+        "dems": 9,
+        "yashar": 14
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2057,14 +2364,15 @@
       "date": "2026-03-29",
       "votes": {
         "likud": 28,
-        "together": 7,
+        "together": 26,
         "otzma": 8,
         "shas": 9,
         "utj": 8,
         "yb": 9,
-        "joint_list": 5,
-        "dems": 6,
-        "yashar": 9
+        "raam": 5,
+        "joint_list": 6,
+        "dems": 9,
+        "yashar": 13
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2076,14 +2384,15 @@
       "date": "2026-03-26",
       "votes": {
         "likud": 29,
-        "together": 6,
+        "together": 22,
         "otzma": 7,
         "shas": 9,
         "utj": 8,
         "yb": 10,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 17
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2091,38 +2400,19 @@
       "n": 500
     },
     {
-      "pollster": "Filber",
-      "date": "2026-03-26",
-      "votes": {
-        "likud": 35,
-        "together": 12,
-        "rzp": 4,
-        "otzma": 7,
-        "shas": 10,
-        "utj": 9,
-        "yb": 8,
-        "joint_list": 12,
-        "dems": 12,
-        "yashar": 10
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 754
-    },
-    {
       "pollster": "Lazar",
       "date": "2026-03-26",
       "votes": {
         "likud": 26,
-        "together": 7,
+        "together": 28,
         "otzma": 9,
         "shas": 8,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 13
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2134,13 +2424,14 @@
       "date": "2026-03-19",
       "votes": {
         "likud": 28,
-        "together": 6,
+        "together": 26,
         "otzma": 7,
         "shas": 9,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
+        "dems": 12,
         "yashar": 12
       },
       "country": "israel",
@@ -2153,15 +2444,16 @@
       "date": "2026-03-19",
       "votes": {
         "likud": 28,
-        "together": 5,
+        "together": 20,
         "otzma": 7,
         "blue_white": 4,
         "shas": 8,
         "utj": 8,
         "yb": 10,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 16
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2173,14 +2465,15 @@
       "date": "2026-03-13",
       "votes": {
         "likud": 27,
-        "together": 7,
+        "together": 29,
         "otzma": 8,
         "shas": 8,
         "utj": 7,
         "yb": 8,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 13
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2192,15 +2485,16 @@
       "date": "2026-03-12",
       "votes": {
         "likud": 29,
-        "together": 6,
+        "together": 23,
         "rzp": 4,
         "otzma": 6,
         "shas": 8,
         "utj": 7,
         "yb": 10,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 15
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2208,38 +2502,19 @@
       "n": 500
     },
     {
-      "pollster": "Filber",
-      "date": "2026-03-05",
-      "votes": {
-        "likud": 34,
-        "together": 13,
-        "rzp": 4,
-        "otzma": 8,
-        "shas": 11,
-        "utj": 9,
-        "yb": 7,
-        "joint_list": 13,
-        "dems": 13,
-        "yashar": 9
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 742
-    },
-    {
       "pollster": "Lazar",
       "date": "2026-03-05",
       "votes": {
         "likud": 27,
-        "together": 6,
+        "together": 27,
         "otzma": 9,
         "shas": 8,
         "utj": 7,
         "yb": 8,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 14
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2251,15 +2526,16 @@
       "date": "2026-03-05",
       "votes": {
         "likud": 31,
-        "together": 6,
+        "together": 21,
         "otzma": 6,
         "blue_white": 4,
         "shas": 9,
         "utj": 7,
         "yb": 10,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 8
+        "dems": 8,
+        "yashar": 14
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2267,38 +2543,19 @@
       "n": 500
     },
     {
-      "pollster": "Filber",
-      "date": "2026-02-26",
-      "votes": {
-        "likud": 33,
-        "together": 13,
-        "rzp": 5,
-        "otzma": 8,
-        "shas": 11,
-        "utj": 8,
-        "yb": 8,
-        "joint_list": 13,
-        "dems": 13,
-        "yashar": 9
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 579
-    },
-    {
       "pollster": "Lazar",
       "date": "2026-02-26",
       "votes": {
-        "likud": 25,
-        "together": 14,
+        "likud": 26,
+        "together": 27,
         "otzma": 9,
         "shas": 8,
         "utj": 7,
         "yb": 8,
-        "joint_list": 14,
-        "dems": 14,
-        "yashar": 9
+        "raam": 5,
+        "joint_list": 5,
+        "dems": 11,
+        "yashar": 14
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2310,53 +2567,35 @@
       "date": "2026-02-26",
       "votes": {
         "likud": 27,
-        "together": 7,
+        "together": 25,
         "otzma": 8,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
-        "yashar": 9
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 12
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 500
-    },
-    {
-      "pollster": "Filber",
-      "date": "2026-02-19",
-      "votes": {
-        "likud": 34,
-        "together": 13,
-        "rzp": 4,
-        "otzma": 8,
-        "shas": 10,
-        "utj": 9,
-        "yb": 8,
-        "joint_list": 13,
-        "dems": 13,
-        "yashar": 9
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 1024
     },
     {
       "pollster": "Lazar",
       "date": "2026-02-19",
       "votes": {
         "likud": 26,
-        "together": 8,
+        "together": 28,
         "otzma": 9,
         "shas": 8,
         "utj": 7,
         "yb": 8,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 13
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2368,14 +2607,15 @@
       "date": "2026-02-19",
       "votes": {
         "likud": 27,
-        "together": 7,
+        "together": 25,
         "otzma": 7,
         "blue_white": 4,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 9,
         "yashar": 9
       },
       "country": "israel",
@@ -2387,14 +2627,15 @@
       "pollster": "Yossi Tatika",
       "date": "2026-02-12",
       "votes": {
-        "likud": 27,
-        "together": 15,
+        "likud": 28,
+        "together": 29,
         "otzma": 7,
         "shas": 10,
         "utj": 8,
-        "yb": 10,
-        "joint_list": 15,
-        "dems": 15,
+        "yb": 11,
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 8,
         "yashar": 8
       },
       "country": "israel",
@@ -2407,14 +2648,15 @@
       "date": "2026-02-12",
       "votes": {
         "likud": 25,
-        "together": 9,
+        "together": 30,
         "otzma": 10,
         "shas": 8,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 12
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2423,17 +2665,17 @@
     },
     {
       "pollster": "Yossi Tatika",
-      "date": "2026-02-05",
+      "date": "2026-01-29",
       "votes": {
-        "likud": 27,
-        "together": 14,
+        "likud": 28,
+        "together": 28,
         "otzma": 7,
-        "blue_white": 4,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 14,
-        "dems": 14,
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 10,
         "yashar": 8
       },
       "country": "israel",
@@ -2443,94 +2685,18 @@
     },
     {
       "pollster": "Midgam R&C",
-      "date": "2026-01-29",
-      "votes": {
-        "likud": 27,
-        "together": 12,
-        "otzma": 8,
-        "shas": 9,
-        "utj": 7,
-        "yb": 8,
-        "joint_list": 12,
-        "dems": 12,
-        "yashar": 11
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 501
-    },
-    {
-      "pollster": "Filber",
-      "date": "2026-01-29",
-      "votes": {
-        "likud": 34,
-        "together": 13,
-        "rzp": 4,
-        "otzma": 7,
-        "shas": 10,
-        "utj": 9,
-        "yb": 9,
-        "joint_list": 13,
-        "dems": 13,
-        "yashar": 9
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 952
-    },
-    {
-      "pollster": "Lazar",
-      "date": "2026-01-29",
-      "votes": {
-        "likud": 27,
-        "together": 13,
-        "otzma": 8,
-        "shas": 8,
-        "utj": 7,
-        "yb": 9,
-        "joint_list": 13,
-        "dems": 13,
-        "yashar": 9
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 503
-    },
-    {
-      "pollster": "Yossi Tatika",
-      "date": "2026-01-29",
-      "votes": {
-        "likud": 27,
-        "together": 16,
-        "otzma": 7,
-        "shas": 9,
-        "utj": 8,
-        "yb": 10,
-        "joint_list": 16,
-        "dems": 16,
-        "yashar": 9
-      },
-      "country": "israel",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 500
-    },
-    {
-      "pollster": "Midgam R&C",
       "date": "2026-01-22",
       "votes": {
         "likud": 25,
-        "together": 8,
+        "together": 30,
         "otzma": 9,
         "shas": 9,
         "utj": 8,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 11
+        "dems": 11,
+        "yashar": 9
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2542,16 +2708,17 @@
       "date": "2026-01-22",
       "votes": {
         "likud": 34,
-        "together": 5,
+        "together": 15,
         "rzp": 5,
         "otzma": 7,
         "blue_white": 4,
         "shas": 10,
         "utj": 9,
         "yb": 8,
-        "joint_list": 5,
-        "dems": 6,
-        "yashar": 10
+        "raam": 5,
+        "joint_list": 6,
+        "dems": 10,
+        "yashar": 7
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2563,14 +2730,15 @@
       "date": "2026-01-22",
       "votes": {
         "likud": 25,
-        "together": 9,
+        "together": 32,
         "otzma": 9,
         "shas": 8,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 9
+        "dems": 9,
+        "yashar": 11
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2582,16 +2750,17 @@
       "date": "2026-01-22",
       "votes": {
         "likud": 25,
-        "together": 8,
+        "together": 26,
         "rzp": 4,
         "otzma": 6,
         "blue_white": 4,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
-        "yashar": 9
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 7
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2603,14 +2772,15 @@
       "date": "2026-01-15",
       "votes": {
         "likud": 26,
-        "together": 9,
+        "together": 31,
         "otzma": 9,
         "shas": 8,
         "utj": 8,
         "yb": 8,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 12
+        "dems": 12,
+        "yashar": 8
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2622,15 +2792,16 @@
       "date": "2026-01-15",
       "votes": {
         "likud": 35,
-        "together": 5,
+        "together": 16,
         "rzp": 4,
         "otzma": 7,
         "shas": 11,
         "utj": 9,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
-        "yashar": 11
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 11,
+        "yashar": 6
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2642,14 +2813,15 @@
       "date": "2026-01-15",
       "votes": {
         "likud": 26,
-        "together": 9,
+        "together": 31,
         "otzma": 10,
         "shas": 8,
         "utj": 7,
         "yb": 8,
-        "joint_list": 4,
-        "dems": 5,
-        "yashar": 10
+        "raam": 4,
+        "joint_list": 5,
+        "dems": 10,
+        "yashar": 11
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2661,15 +2833,16 @@
       "date": "2026-01-15",
       "votes": {
         "likud": 27,
-        "together": 9,
+        "together": 28,
         "otzma": 7,
         "blue_white": 4,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
-        "yashar": 8
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 7
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2681,13 +2854,14 @@
       "date": "2026-01-14",
       "votes": {
         "likud": 27,
-        "together": 8,
+        "together": 31,
         "otzma": 9,
         "shas": 10,
         "utj": 7,
         "yb": 8,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
+        "dems": 9,
         "yashar": 9
       },
       "country": "israel",
@@ -2700,14 +2874,15 @@
       "date": "2026-01-08",
       "votes": {
         "likud": 35,
-        "together": 6,
+        "together": 19,
         "rzp": 4,
         "otzma": 7,
         "shas": 11,
         "utj": 9,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
+        "dems": 8,
         "yashar": 8
       },
       "country": "israel",
@@ -2720,13 +2895,14 @@
       "date": "2026-01-08",
       "votes": {
         "likud": 27,
-        "together": 8,
+        "together": 30,
         "otzma": 9,
         "shas": 8,
         "utj": 7,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
+        "dems": 10,
         "yashar": 10
       },
       "country": "israel",
@@ -2739,14 +2915,15 @@
       "date": "2026-01-08",
       "votes": {
         "likud": 28,
-        "together": 10,
+        "together": 31,
         "otzma": 7,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
-        "yashar": 9
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 9,
+        "yashar": 6
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2758,15 +2935,16 @@
       "date": "2026-01-01",
       "votes": {
         "likud": 35,
-        "together": 6,
+        "together": 17,
         "rzp": 5,
         "otzma": 7,
         "shas": 11,
         "utj": 8,
         "yb": 9,
+        "raam": 5,
         "joint_list": 5,
-        "dems": 5,
-        "yashar": 10
+        "dems": 10,
+        "yashar": 8
       },
       "country": "israel",
       "source": "Wikipedia",
@@ -2778,14 +2956,15 @@
       "date": "2025-12-31",
       "votes": {
         "likud": 28,
-        "together": 10,
+        "together": 32,
         "otzma": 6,
         "shas": 10,
         "utj": 8,
         "yb": 10,
-        "joint_list": 6,
-        "dems": 5,
-        "yashar": 8
+        "raam": 6,
+        "joint_list": 5,
+        "dems": 8,
+        "yashar": 7
       },
       "country": "israel",
       "source": "Wikipedia",

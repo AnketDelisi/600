@@ -108,6 +108,52 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .parliament-box{width:100%;display:flex;justify-content:center;align-items:center}
 .parliament-box svg{width:100%;max-width:700px;height:auto}
 
+/* ---------- Projection / past-result toggle ---------- */
+.map-toggle-row{display:flex;gap:8px;align-items:center;margin:0 0 8px 0}
+.map-toggle-btn{font-family:var(--font);font-size:10px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;padding:6px 10px;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-md);color:var(--c-text-main);cursor:pointer}
+.map-toggle-btn:hover{background:#F7F7F5}
+.map-toggle-btn.active{background:#111827;color:#FFFFFF}
+
+/* ---------- Trend chart tooltip ---------- */
+.chart-tooltip{position:absolute;z-index:20;display:none;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-md);padding:8px 10px;font-family:var(--font);font-size:11px;max-width:240px;pointer-events:none}
+.chart-tooltip.visible{display:block}
+.ct-date{font-weight:900;font-size:10px;letter-spacing:0.5px;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:4px}
+.ct-row{display:flex;align-items:center;gap:6px;white-space:nowrap;padding:1px 0}
+.ct-dot{width:8px;height:8px;flex-shrink:0}
+.ct-label{font-weight:800;flex:1}
+.ct-val{font-weight:900;font-variant-numeric:tabular-nums}
+
+/* ---------- Forecast ---------- */
+.fc-section{display:flex;align-items:center;gap:8px;margin:24px 0 12px 0;font-weight:900;color:var(--c-text-muted);font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
+.fc-section .bar{width:4px;height:12px;background:var(--c-accent);border-radius:1px}
+.fc-hero{background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:20px 24px;width:100%;margin-bottom:16px}
+.fc-headline{display:flex;align-items:baseline;gap:10px;margin:8px 0 2px 0;flex-wrap:wrap}
+.fc-headline-label{font-size:16px;font-weight:900;letter-spacing:0.3px}
+.fc-headline-num{font-size:28px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.fc-majbar{display:flex;width:100%;height:18px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);overflow:hidden}
+.fc-majseg{height:100%}
+.fc-majlegend{display:flex;gap:16px;margin-top:10px;font-size:11px;font-weight:800;flex-wrap:wrap}
+.fc-dot{width:9px;height:9px;display:inline-block;margin-right:4px;border:1px solid var(--c-edge);vertical-align:-1px}
+.fc-row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid rgba(17,24,39,0.07)}
+.fc-row-label{width:44px;font-size:12px;font-weight:900;flex-shrink:0}
+.fc-row-bar{flex:1;height:14px;background:#F0EFED;border:2px solid #111827;box-shadow:var(--shadow-md);overflow:hidden;position:relative}
+.fc-row-fill{height:100%}
+.fc-row-val{width:56px;text-align:right;font-size:11px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;flex-shrink:0}
+.fc-voterow{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid rgba(17,24,39,0.07);flex-wrap:wrap}
+.fc-votebar{position:relative}
+.fc-vote-val{width:64px;text-align:right;font-size:12px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;flex-shrink:0}
+.fc-vote-int{width:76px;text-align:right;font-size:10px;color:var(--c-text-muted);font-weight:700;flex-shrink:0;font-family:var(--font-mono)}
+.fc-thresh{position:absolute;top:0;bottom:0;width:2px;background:#111827}
+.fc-note{font-size:10px;color:var(--c-text-muted);font-weight:700;width:100%;margin-left:54px}
+.fc-seatrow{padding:5px 0;border-bottom:1px solid rgba(17,24,39,0.07)}
+.fc-seathead{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+.fc-seathead-hd{font-size:10px;font-weight:900;color:var(--c-text-muted);letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--c-rule);padding-bottom:4px;margin-bottom:6px}
+.fc-seathead-hd span{flex:1}
+.fc-seat-mean{font-size:14px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.fc-seat-int{font-size:10px;color:var(--c-text-muted);font-weight:700;font-family:var(--font-mono)}
+.fc-hist{display:flex;align-items:flex-end;gap:1px;height:44px;margin-top:2px}
+.fc-hist-col{width:3px}
+
 /* ---------- Methodology ---------- */
 .method-text{font-size:13px;line-height:1.7;color:var(--c-text-main)}
 .method-text h3{font-size:14px;font-weight:900;margin:16px 0 6px 0;color:var(--c-text-main)}

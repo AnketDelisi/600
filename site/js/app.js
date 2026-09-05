@@ -364,18 +364,33 @@ function renderPartyBars(avg){
 }
 
 /* ---------- render bloc summary ---------- */
+function blocSeats(rg,td){
+  const others=Math.max(0,SEATS_TOTAL-rg-td);
+  const parts=[rg,td,others];
+  const base=parts.map(Math.floor);
+  const rem=parts.map((p,i)=>p-base[i]);
+  let left=SEATS_TOTAL-base.reduce((a,b)=>a+b,0);
+  while(left>0){
+    let bi=-1;
+    for(let i=0;i<3;i++) if(bi<0||rem[i]>rem[bi]) bi=i;
+    rem[bi]=-1; base[bi]++; left--;
+  }
+  return {gov:base[0],opp:base[1],other:base[2]};
+}
 function renderBlocs(avg){
   const rg=BLOCS.bloc1.parties.reduce((s,p)=>s+(avg[p]||0),0);
   const td=BLOCS.bloc2.parties.reduce((s,p)=>s+(avg[p]||0),0);
+  const rgDisp=SEAT_BASED?blocSeats(rg,td).gov:valDisp(rg);
+  const tdDisp=SEAT_BASED?blocSeats(rg,td).opp:valDisp(td);
   return `<div class="bloc-row">
     <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc1.color}">
       <div class="bloc-name">${BLOCS.bloc1.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.bloc1.color}">${valDisp(rg)}</div>
+      <div class="bloc-pct" style="color:${BLOCS.bloc1.color}">${rgDisp}</div>
       <div class="bloc-parties">${BLOCS.bloc1.parties.map(partyCode).join(' + ')}</div>
     </div>
     <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc2.color}">
       <div class="bloc-name">${BLOCS.bloc2.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.bloc2.color}">${valDisp(td)}</div>
+      <div class="bloc-pct" style="color:${BLOCS.bloc2.color}">${tdDisp}</div>
       <div class="bloc-parties">${BLOCS.bloc2.parties.map(partyCode).join(' + ')}</div>
     </div>
   </div>`;
@@ -531,7 +546,7 @@ function drawChartBase(hoverIdx){
     const x=W-pad.right+4;
     const y=pad.top+ch*(1-(lastVal-yMin)/(yMax-yMin));
     ctx.fillStyle=ser.color;ctx.font='bold 10px Decima Mono Pro,monospace';ctx.textAlign='left';
-    ctx.fillText(ser.pid,x,y+3);
+    ctx.fillText(partyCode(ser.pid),x,y+3);
   });
 
   // Hover overlay: guide line + dots
@@ -561,7 +576,7 @@ function renderPollsTable(polls){
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
       <th>Date</th><th>Pollster</th><th class="c">N</th><th class="c">Lead</th>
-      <th class="c bloc-h rg-h">${BLOCS.bloc1.short}</th><th class="c bloc-h td-h">${BLOCS.bloc2.short}</th>`;
+      <th class="c" style="color:${BLOCS.bloc1.color}">${BLOCS.bloc1.short}</th><th class="c" style="color:${BLOCS.bloc2.color}">${BLOCS.bloc2.short}</th>`;
   PARTY_ORDER.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
 
@@ -578,7 +593,7 @@ function renderPollsTable(polls){
     const rgWin=rg>=td;
 
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num c">${p.n?p.n.toLocaleString():'—'}</td>
-      <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${fmt(margin)}</td>
+      <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>
       <td class="num c" style="color:${BLOCS.bloc1.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${valDisp(rg)}</td>
       <td class="num c" style="color:${BLOCS.bloc2.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${valDisp(td)}</td>`;
     PARTY_ORDER.forEach(pid=>{
@@ -702,17 +717,23 @@ function buildParliamentSVG(seats){
 
     let minY=Infinity, maxY=-Infinity;
     pts.forEach(p=>{ if(p.y<minY)minY=p.y; if(p.y>maxY)maxY=p.y; });
+    const topSeat=pts.find(p=>p.y===minY)||pts[0];
+    const botSeat=pts.find(p=>p.y===maxY)||pts[0];
+    const topR=topSeat?topSeat.rr:4, botR=botSeat?botSeat.rr:4;
 
     const majority=Math.floor(total/2)+1;
-    const padTop=Math.max(8,Math.round(24-minY));
-    const labelY=padTop+Math.max(2,minY-7);
-    const axisBottom=minY+(maxY-minY)*0.62;
-    const totalFs=layout.h<=200?30:40;
-    const totalY=Math.min(layout.h-4,maxY+totalFs*0.5)+padTop;
+    const padTop=Math.max(8,Math.round(26-minY));
+    const labelY=minY-topR-3;
+    const lineTop=labelY+4;
+    const lineBot=minY+(maxY-minY)*0.55;
+    const totalFs=layout.h<=200?20:26;
+    const capH=Math.ceil(totalFs*0.72), descH=Math.ceil(totalFs*0.2)+2;
+    const padBottom=padTop+capH+descH+4;
+    const totalY=layout.h+capH+2;
 
-    let svg=`<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h+padTop}" xmlns="http://www.w3.org/2000/svg">`;
-    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="13" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
-    svg+=`<line x1="${layout.cx}" y1="${fmt(Math.max(labelY+10,padTop+minY),1)}" x2="${layout.cx}" y2="${fmt(axisBottom+padTop,1)}" stroke="#111827" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>`;
+    let svg=`<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h+padBottom}" xmlns="http://www.w3.org/2000/svg">`;
+    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
+    svg+=`<line x1="${layout.cx}" y1="${fmt(lineTop,1)}" x2="${layout.cx}" y2="${fmt(lineBot,1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
       const col=PARTY_META[party]?PARTY_META[party].color:'#888';

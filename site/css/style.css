@@ -79,6 +79,15 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .party-bar .fill{height:100%;border-radius:0}
 .party-pct{width:56px;font-weight:900;color:var(--c-text-main);font-size:13px;text-align:right;flex-shrink:0;line-height:1.2;font-variant-numeric:tabular-nums}
 .party-delta{width:56px;font-weight:700;font-size:10px;text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums}
+.party-seats{width:56px;font-weight:900;font-size:12px;text-align:right;flex-shrink:0}
+.bar-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:0 2px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)}
+.bar-header span{flex-shrink:0}
+.bar-header .bh-logo{width:38px}
+.bar-header .bh-party{width:60px;text-align:left}
+.bar-header .bh-bar{width:auto;flex:1}
+.bar-header .bh-pct{width:56px;text-align:right}
+.bar-header .bh-delta{width:56px;text-align:right}
+.bar-header .bh-seats{width:56px;text-align:right}
 
 /* ---------- Hero ---------- */
 .hero{background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:20px 24px;width:100%;margin-bottom:16px}
@@ -103,6 +112,12 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .polls-table td{padding:6px;border-bottom:1px solid var(--c-border);font-size:12px}
 .polls-table tr:nth-child(even) td{background:#F7F7F5}
 .polls-table .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+.compact-table th{font-size:9px;padding:5px 4px;white-space:nowrap}
+.compact-table th.c{text-align:center}
+.compact-table td{font-size:10.5px;padding:3px 4px;white-space:nowrap}
+.compact-table .num{font-size:10px}
+.compact-table td.c{text-align:center}
+.compact-table td:first-child{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 
 /* ---------- Parliament ---------- */
 .parliament-box{width:100%;display:flex;justify-content:center;align-items:center}
@@ -145,6 +160,11 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .fc-vote-int{width:76px;text-align:right;font-size:10px;color:var(--c-text-muted);font-weight:700;flex-shrink:0;font-family:var(--font-mono)}
 .fc-thresh{position:absolute;top:0;bottom:0;width:2px;background:#111827}
 .fc-note{font-size:10px;color:var(--c-text-muted);font-weight:700;width:100%;margin-left:54px}
+.fc-votehd{display:flex;align-items:center;gap:10px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:2px solid var(--c-edge);padding:2px 0 4px}
+.fc-votehd span:nth-child(1){width:44px}
+.fc-votehd span:nth-child(2){flex:1}
+.fc-votehd span:nth-child(3){width:64px;text-align:right}
+.fc-votehd span:nth-child(4){width:76px;text-align:right}
 .fc-seatrow{padding:5px 0;border-bottom:1px solid rgba(17,24,39,0.07)}
 .fc-seathead{display:flex;align-items:center;gap:10px;margin-bottom:2px}
 .fc-seathead-hd{font-size:10px;font-weight:900;color:var(--c-text-muted);letter-spacing:0.5px;text-transform:uppercase;border-bottom:1px solid var(--c-rule);padding-bottom:4px;margin-bottom:6px}
@@ -180,7 +200,11 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .sb-le-pct{font-family:var(--font-mono);font-size:11px;font-weight:900;font-variant-numeric:tabular-nums}
 
 /* ---------- Decima ---------- */
-input.vote-input,.party-pct,.party-delta,.bloc-card .bloc-pct,.tot-amt{font-family:var(--font-mono)}
+input.vote-input,.party-pct,.party-delta,.party-seats,.bloc-card .bloc-pct,.tot-amt,
+.sb-le-pct,.num,.fc-row-val,.fc-vote-val,.fc-vote-int,.fc-seat-mean,.fc-seat-int,
+.fc-headline-num,.fc-majlegend,.map-tip-val,.ct-val
+{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.chart-wrap canvas{font-family:var(--font-mono)}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1100px){

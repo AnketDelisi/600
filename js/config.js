@@ -78,14 +78,14 @@ const COUNTRIES = {
     lastElection: {
       date: '2022-11-01',
       results: {
-        likud: 23.41, together: 17.79, rzp: 5.4, otzma: 4.6, blue_white: 6.05,
-        yashar: 3.03, shas: 8.24, utj: 5.88, yb: 4.49, raam: 3.91,
-        joint_list: 3.75, dems: 3.69,
+        likud: 23.41, together: 17.79, rzp: 5.4, otzma: 4.6, blue_white: 9.08,
+        shas: 8.25, utj: 5.88, yb: 4.48, raam: 4.07,
+        joint_list: 3.75, dems: 3.69, yashar: 0,
       },
       seats: {
-        likud: 32, together: 24, rzp: 8, otzma: 6, blue_white: 8,
-        yashar: 4, shas: 11, utj: 7, yb: 6, raam: 5,
-        joint_list: 5, dems: 4,
+        likud: 32, together: 24, rzp: 8, otzma: 6, blue_white: 12,
+        shas: 11, utj: 7, yb: 6, raam: 5,
+        joint_list: 5, dems: 4, yashar: 0,
       },
     },
     pollsterMAE: {},

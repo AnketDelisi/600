@@ -6,7 +6,7 @@
 const $=s=>document.getElementById(s);
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
-const valDisp=(v,d=1)=>SEAT_BASED?fmt(v,d):fmt(v,d)+'%';
+const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
 const partyCode=pid=>(PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid;
 
 /* ---------- tab switching ---------- */
@@ -335,18 +335,18 @@ function renderPartyBars(avg){
   const seats=allocateSeatsN(avg, SEATS_TOTAL);
   const order=PARTY_ORDER.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">NATIONAL POLL AVERAGE</div></div>
-    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">PARTY</span><span class="bh-bar"></span><span class="bh-pct">%</span><span class="bh-delta">Δ</span><span class="bh-seats">SEATS</span></div>`;
+    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">PARTY</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED?'':'<span class="bh-seats">SEATS</span>'}</div>`;
 
   for(const pid of order){
     const val=avg[pid];
     if(val===null||val===undefined) continue;
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
     const barWidth=Math.max(1,(val/maxPct)*100);
-    const last2022=LAST_ELECTION.results[pid]||0;
-    const delta=val-last2022;
-    const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
+    const last2022=SEAT_BASED?(LAST_ELECTION.seats[pid]||0):(LAST_ELECTION.results[pid]||0);
+    const delta=(SEAT_BASED?Math.ceil(val):val)-last2022;
+    const deltaStr=delta>0?`+${SEAT_BASED?Math.round(delta):fmt(delta)}`:SEAT_BASED?String(Math.round(delta)):fmt(delta);
     const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
-    const mpSeats=SEAT_BASED?Math.round(val):(seats[pid]||0);
+    const mpSeats=SEAT_BASED?Math.ceil(val):(seats[pid]||0);
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
@@ -356,7 +356,7 @@ function renderPartyBars(avg){
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${valDisp(val)}</div>
       <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
-      <div class="party-seats" style="color:${color}">${mpSeats}</div>
+      ${SEAT_BASED?'':`<div class="party-seats" style="color:${color}">${mpSeats}</div>`}
     </div>`;
   }
   html+=`</div>`;
@@ -599,6 +599,21 @@ function renderPollsTable(polls){
 /* ---------- render parliament ---------- */
 let PARL_MODE='proj';  // 'proj' or '2022'
 
+function normalizeTo(src, total){
+  // direct seat counts (2022 RESULT for seat-based countries), scaled to total
+  const out={};
+  let sum=0;
+  PARTY_ORDER.forEach(p=>{out[p]=src[p]||0; sum+=out[p]});
+  if(sum===0) return out;
+  const k=total/sum;
+  if(Math.abs(k-1)>0.001){
+    PARTY_ORDER.forEach(p=>{out[p]=Math.round(out[p]*k)});
+    let s=PARTY_ORDER.reduce((a,p)=>a+out[p],0);
+    if(s!==total) out[PARTY_ORDER[0]]+=(total-s);
+  }
+  return out;
+}
+
 function seatParliament(avg, total){
   // Seat-based countries: round the seat averages (largest remainder),
   // excluding parties below the electoral threshold (in seats)
@@ -619,7 +634,7 @@ function seatParliament(avg, total){
 
 function renderParliament(avg){
   const seats=SEAT_BASED
-    ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):seatParliament(LAST_ELECTION.results,SEATS_TOTAL))
+    ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
     :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL));
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
     <div class="map-toggle-row" style="justify-content:flex-end">
@@ -666,15 +681,48 @@ function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
-  // ADProjeksiyon-style parliament: full semicircle, concentric rows
-  // (radii 130..260), parties as wedges filled from the left in spectrum
-  // order, majority axis marker at the top, total seat count at the bottom.
+  // Parties as wedges filled from the left in spectrum order.
   const assigned=[];
   PARLIAMENT_ORDER.forEach(p=>{
     const n=seats[p]||0;
     for(let i=0;i<n;i++) assigned.push(p);
   });
 
+  const layout=PARLIAMENT_SEATS[COUNTRY];
+  if(layout && layout.seats && layout.seats.length>=assigned.length){
+    // Real chamber geometry (parliamentarch SVG). Order the fixed seat
+    // positions around the arch center from left to right so each party
+    // fills a contiguous wedge; majority axis at the top, total at the base.
+    const pts=layout.seats.map((s,i)=>({
+      angle:Math.atan2(layout.cx-s[0], layout.cy-s[1]),
+      r:Math.hypot(s[0]-layout.cx, s[1]-layout.cy),
+      x:s[0], y:s[1], rr:s[2], i,
+    }));
+    pts.sort((a,b)=>(a.angle-b.angle)||(b.r-a.r)).reverse();
+
+    let minY=Infinity, maxY=-Infinity;
+    pts.forEach(p=>{ if(p.y<minY)minY=p.y; if(p.y>maxY)maxY=p.y; });
+
+    const majority=Math.floor(total/2)+1;
+    const labelY=Math.max(2,minY-7);
+    const axisBottom=minY+(maxY-minY)*0.62;
+    const totalFs=layout.h<=200?30:40;
+    const totalY=Math.min(layout.h-4,maxY+totalFs*0.5);
+
+    let svg=`<svg viewBox="0 0 ${layout.w} ${layout.h}" xmlns="http://www.w3.org/2000/svg">`;
+    svg+=`<text x="${layout.cx}" y="${labelY}" text-anchor="middle" font-size="13" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
+    svg+=`<line x1="${layout.cx}" y1="${Math.max(labelY+10,minY)}" x2="${layout.cx}" y2="${fmt(axisBottom,1)}" stroke="#111827" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>`;
+    for(let i=0;i<assigned.length&&i<pts.length;i++){
+      const party=assigned[i];
+      const col=PARTY_META[party]?PARTY_META[party].color:'#888';
+      svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"/>`;
+    }
+    svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;
+    svg+=`</svg>`;
+    return svg;
+  }
+
+  // Fallback: generated semicircle (topocentric), as before.
   const radii=[]; for(let r=130;r<265;r+=10) radii.push(r);
   const sumR=radii.reduce((a,b)=>a+b,0);
   const seatsPerRow=radii.map(r=>Math.round(total*(r/sumR)));
@@ -1070,11 +1118,11 @@ function renderForecast(pane){
       ${largestRows}
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${SEAT_BASED?'SEAT SHARE':'VOTE SHARE'}</div></div>
+    ${SEAT_BASED?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">VOTE SHARE</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected ${SEAT_BASED?'seat':'vote'} share from simulations · dashed line = ${SEAT_BASED?fmt(THRESHOLD/100*SEATS_TOTAL,1)+' seats':THRESHOLD+'%'} threshold</div>
-    </div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations · dashed line = ${THRESHOLD}% threshold</div>
+    </div>`}
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT DISTRIBUTION</div></div>
       <div class="fc-seathead fc-seathead-hd"><span></span><span>EXP</span><span>90% INT</span></div>

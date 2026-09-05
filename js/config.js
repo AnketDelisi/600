@@ -57,7 +57,7 @@ const COUNTRIES = {
     constituencies: false,        // single national district
     parties: {
       likud:     { code: 'LK', name: 'Likud',                    name_en: 'Likud',            color: '#00A0DF' },
-      together:  { code: 'TG', name: 'Together',                 name_en: 'Together',         color: '#0091C9' },
+      together:  { code: 'TG', name: 'Together',                 name_en: 'Together',         color: '#00A650' },
       rzp:       { code: 'RZP', name: 'Religious Zionist Party',  name_en: 'Religious Zionism', color: '#FDBB2E' },
       otzma:     { code: 'OTZ', name: 'Otzma Yehudit',            name_en: 'Otzma Yehudit',    color: '#E85D26' },
       blue_white:{ code: 'BW', name: 'Blue and White',           name_en: 'Blue and White',   color: '#0072CE' },

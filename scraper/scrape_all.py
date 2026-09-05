@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "sweden"
+TODAY = datetime.now(timezone.utc).date().isoformat()
 
 
 def load_json(path):
@@ -14,15 +15,31 @@ def load_json(path):
     return {"polls": []}
 
 
+def valid_date(p):
+    """A poll is only usable if it has an ISO date that is not in the future
+    (upcoming/scheduled rows in source datasets must not skew the average)."""
+    d = p.get("date")
+    if not isinstance(d, str) or len(d) < 10:
+        return False
+    try:
+        return d[:10] <= TODAY
+    except TypeError:
+        return False
+
+
 def merge_polls(wiki_polls, sp_polls):
-    """Merge polls from both sources. Wikipedia takes priority for duplicates."""
-    # Build dedup key from pollster + date
+    """Merge polls from both sources. Wikipedia takes priority for duplicates.
+    Drops poll rows whose date is missing or in the future."""
     merged = {}
     for p in wiki_polls:
+        if not valid_date(p):
+            continue
         key = (p["pollster"].lower().strip(), p["date"])
         merged[key] = p
 
     for p in sp_polls:
+        if not valid_date(p):
+            continue
         key = (p["pollster"].lower().strip(), p["date"])
         if key not in merged:
             merged[key] = p

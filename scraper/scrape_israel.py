@@ -6,6 +6,17 @@ raw seat counts — no conversion to vote share. Parties below the 3.25%
 threshold are usually reported in % and are skipped (they win no seats).
 The site runs the whole pipeline (averages, forecast, parliament) directly
 in seat space (seatBased mode).
+
+The Wikipedia tables have multi-row headers with rowspan/colspan groups
+(e.g. "Joint List[ak]" spans the sub-columns Ra'am | Hadash–Ta'al | Balad).
+Reading only the first `<tr>` misaligns every column after the group (the
+old bug wrote Hadash–Ta'al values into Dems and ignored Yashar). We expand
+the whole table into a rowspan/colspan-aware grid, merge the header rows
+(deepest non-empty text per physical column), strip footnotes, and then map
+each physical column. Hadash–Ta'al and Balad — the two halves of the merged
+Joint List — are summed into the single `joint_list` party; a cell that
+spans the whole group (e.g. a colspan=2 "7 seats") is used as the group
+total rather than counted twice.
 """
 
 import json
@@ -23,6 +34,7 @@ OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
 
 MONTHS = {"jan":1,"feb":2,"mar":3,"apr":4,"may":5,"jun":6,"jul":7,"aug":8,"sep":9,"oct":10,"nov":11,"dec":12}
 
+# Keys are normalized: footnotes stripped, dashes collapsed to "-", lowercase, whitespace collapsed.
 HEADER_MAP = {
     "likud": "likud",
     "together": "together",
@@ -30,7 +42,6 @@ HEADER_MAP = {
     "bennett 2026": "together",
     "rzp": "rzp",
     "rzp-zehut": "rzp",
-    "rzp–zehut": "rzp",
     "otzma": "otzma",
     "blue & white": "blue_white",
     "shas": "shas",
@@ -38,14 +49,65 @@ HEADER_MAP = {
     "yisrael beiteinu": "yb",
     "ra'am": "raam",
     "joint list": "joint_list",
-    "hadash–ta'al": "joint_list",
-    "hadash–ta'al[ak]": "joint_list",
+    "hadash-ta'al": "joint_list",
+    "hadash": "joint_list",
+    "balad": "joint_list",
     "dems": "dems",
     "yashar": "yashar",
 }
 
 MIN_SAMPLE = 100
 MIN_PARTIES = 8
+
+
+def expand_grid(table):
+    """Expand a <table> into (grid, metas).
+
+    grid[r]  = list of physical-cell texts for row r
+    metas[r] = list of (start_col, colspan, text) for the *raw* cells of row r,
+               so merged group cells keep their colspan.
+    """
+    rows = table.find_all("tr")
+    grid = []
+    metas = []
+    live = {}  # col -> [remaining_rows, text]
+    for tr in rows:
+        cells = tr.find_all(["td", "th"])
+        out = []
+        mrow = []
+        col = 0
+        i = 0
+        while i < len(cells):
+            while col in live and live[col][0] > 0:
+                out.append(live[col][1])
+                live[col][0] -= 1
+                col += 1
+            c = cells[i]
+            txt = " ".join(c.get_text(" ", strip=True).split())
+            cs = int(c.get("colspan") or 1)
+            rs = int(c.get("rowspan") or 1)
+            mrow.append((col, cs, txt))
+            for k in range(cs):
+                out.append(txt)
+                if rs > 1:
+                    live[col + k] = [rs - 1, txt]
+            col += cs
+            i += 1
+        while col in live and live[col][0] > 0:
+            out.append(live[col][1])
+            live[col][0] -= 1
+            col += 1
+        grid.append(out)
+        metas.append(mrow)
+    return grid, metas
+
+
+def norm_header(text):
+    text = re.sub(r"\[[^\]]*\]", "", text or "")
+    for ch in "\u2013\u2014\u2015":
+        text = text.replace(ch, "-")
+    text = re.sub(r"\s*-\s*", "-", text)
+    return re.sub(r"\s+", " ", text).strip().lower()
 
 
 def parse_date(text, ref_year=2026):
@@ -71,8 +133,10 @@ def parse_date(text, ref_year=2026):
 
 def parse_value(text):
     """Return seat count for above-threshold parties, None for below-threshold % or missing."""
-    text = re.sub(r"\[\w+\]", "", text).strip()
-    if not text or text in ("–", "—", "-", "–", ""):
+    text = re.sub(r"\[\w+\]", "", text)
+    text = re.sub(r"[\u00b9\u00b2\u00b3\u00b0\u2070-\u207f\u207a\u207b]+", "", text)
+    text = text.strip()
+    if not text or text.lower() in ("–", "—", "-", "n/a"):
         return None
     if text.startswith("("):
         return None   # below-threshold share in % — no seats
@@ -103,55 +167,73 @@ def scrape_israel():
         if current_year != "2026":
             continue
 
-        rows = el.find_all("tr")
-        if not rows:
+        grid, metas = expand_grid(el)
+        if not grid:
             continue
-        headers = [th.get_text(strip=True).lower() for th in rows[0].find_all("th")]
-        # needs at least the main parties
-        mapped = [HEADER_MAP.get(h) for h in headers]
+
+        # Header block: leading rows while the leftmost cell is not a date.
+        # (Header rows keep the meta labels via rowspan; the first data row
+        # has a real date at column 0.)
+        header_end = 0
+        while header_end < len(grid) and not parse_date(grid[header_end][0] if grid[header_end] else ""):
+            header_end += 1
+        if header_end == 0:
+            continue
+
+        ncol = max(len(r) for r in grid[:header_end])
+        hdr = [""] * ncol
+        for col in range(ncol):
+            for ri in range(header_end):
+                if col < len(grid[ri]) and grid[ri][col]:
+                    hdr[col] = grid[ri][col]
+        mapped = [HEADER_MAP.get(norm_header(h)) for h in hdr]
         if sum(1 for k in mapped if k) < MIN_PARTIES:
             continue
         if "likud" not in mapped:
             continue
 
-        for row in rows[1:]:
-            # Expand colspans to physical columns so index alignment with the
-            # header holds even when cells span multiple columns (e.g. RZP+Zehut
-            # reported merged, or Joint List covering its sub-columns).
-            cells = []
-            for c in row.find_all(["td", "th"]):
-                span = int(c.get("colspan") or 1)
-                txt = c.get_text(strip=True)
-                for _ in range(max(1, span)):
-                    cells.append(txt)
-            if len(cells) < 8:
+        for ri in range(header_end, len(grid)):
+            row = grid[ri]
+            if len(row) < 8:
                 continue
-            date = parse_date(cells[0])
+            date = parse_date(row[0])
             if not date:
                 continue
-            pollster = re.sub(r"\[\w+\]", "", cells[1]).strip()
+            pollster = re.sub(r"\[\w+\]", "", row[1]).strip()
             if not pollster or len(pollster) < 3:
                 continue
-            sample_text = re.sub(r"\[\w+\]", "", cells[3]).strip()
+            sample_text = re.sub(r"\[\w+\]", "", row[3]).strip()
             if not sample_text.isdigit() or int(sample_text) < MIN_SAMPLE:
                 continue
             n = int(sample_text)
 
             votes = {}
-            for i, key in enumerate(mapped):
-                if not key or i >= len(cells):
+            for start, span, txt in metas[ri]:
+                if start >= len(mapped):
                     continue
-                seats = parse_value(cells[i])
+                keys = [mapped[i] for i in range(start, min(start + span, len(mapped)))]
+                nonempty = [k for k in keys if k]
+                if not nonempty:
+                    continue
+                seats = parse_value(txt)
                 if seats is None:
                     continue
-                votes[key] = seats
+                if span > 1 and len(set(nonempty)) == 1:
+                    # cell spans the whole group (e.g. a merged Joint List):
+                    # it is the group total, not a per-column repeat
+                    votes[nonempty[0]] = seats
+                elif span == 1:
+                    votes[nonempty[0]] = votes.get(nonempty[0], 0) + seats
+                else:
+                    for k in nonempty:
+                        votes.setdefault(k, seats)
 
             if len(votes) < MIN_PARTIES:
                 continue
             total = sum(votes.values())
-            # A correctly aligned poll lists all 11 main parties and sums to
-            # exactly 120 seats; allow up to 122 for the occasional extra
-            # party, which also bounds misalignment artifacts.
+            # A correctly aligned poll lists all the main parties and sums to
+            # about 120 seats; allow up to 122 for the occasional extra party,
+            # which also bounds misalignment artifacts.
             if total < 80 or total > 122:
                 continue
 
@@ -202,8 +284,8 @@ def main():
         print(f"Date range: {polls[-1]['date']} to {polls[0]['date']}")
         print("\nLatest 5:")
         for p in polls[:5]:
-            top = sorted(p["votes"].items(), key=lambda x: -x[1])[:4]
-            print(f"  {p['date']} {p['pollster']:22s} {', '.join(f'{k}:{v:.1f}' for k, v in top)}")
+            top = sorted(p["votes"].items(), key=lambda x: -x[1])[:5]
+            print(f"  {p['date']} {p['pollster']:22s} n={p['n']:<4d} {', '.join(f'{k}:{v}' for k, v in top)}")
 
 
 if __name__ == "__main__":

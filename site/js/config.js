@@ -15,7 +15,7 @@ const COUNTRIES = {
       M:  { name: 'Moderaterna',              name_en: 'Moderates',         color: '#52BDEC' },
       V:  { name: 'Vänsterpartiet',           name_en: 'Left Party',        color: '#DA291C' },
       C:  { name: 'Centerpartiet',            name_en: 'Centre Party',      color: '#009933' },
-      KD: { name: 'Kristdemokraterna',         name_en: 'Christian Democrats', color: '#006AB5' },
+      KD: { name: 'Kristdemokraterna',         name_en: 'Christian Democrats', color: '#003087' },
       MP: { name: 'Miljöpartiet',             name_en: 'Green Party',       color: '#87C737' },
       L:  { name: 'Liberalerna',              name_en: 'Liberals',          color: '#006AB5' },
     },

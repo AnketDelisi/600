@@ -462,7 +462,7 @@ function renderTrendChart(canvas, polls){
       if(!vals||!vals.length) continue;
       const v=vals.reduce((a,b)=>a+b,0)/vals.length;
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
-      rows+=`<div class="ct-row"><span class="ct-dot" style="background:${color}"></span><span class="ct-label">${pid}</span><span class="ct-val">${v.toFixed(1)}%</span></div>`;
+      rows+=`<div class="ct-row"><span class="ct-dot" style="background:${color}"></span><span class="ct-label">${pid}</span><span class="ct-val">${SEAT_BASED?String(Math.round(v)):v.toFixed(1)+'%'}</span></div>`;
     }
     tip.innerHTML=`<div class="ct-date">${date}</div>${rows}`;
     tip.classList.add('visible');
@@ -496,7 +496,7 @@ function drawChartBase(hoverIdx){
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const val=yMax-(yMax-yMin)*(i/yTicks);
     ctx.fillStyle='#64748B';ctx.font='10px Decima Mono Pro,monospace';ctx.textAlign='right';
-    ctx.fillText(pct(val),pad.left-6,y+3);
+    ctx.fillText(SEAT_BASED?String(Math.round(val)):pct(val),pad.left-6,y+3);
   }
 
   // X labels
@@ -704,14 +704,15 @@ function buildParliamentSVG(seats){
     pts.forEach(p=>{ if(p.y<minY)minY=p.y; if(p.y>maxY)maxY=p.y; });
 
     const majority=Math.floor(total/2)+1;
-    const labelY=Math.max(2,minY-7);
+    const padTop=Math.max(8,Math.round(24-minY));
+    const labelY=padTop+Math.max(2,minY-7);
     const axisBottom=minY+(maxY-minY)*0.62;
     const totalFs=layout.h<=200?30:40;
-    const totalY=Math.min(layout.h-4,maxY+totalFs*0.5);
+    const totalY=Math.min(layout.h-4,maxY+totalFs*0.5)+padTop;
 
-    let svg=`<svg viewBox="0 0 ${layout.w} ${layout.h}" xmlns="http://www.w3.org/2000/svg">`;
-    svg+=`<text x="${layout.cx}" y="${labelY}" text-anchor="middle" font-size="13" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
-    svg+=`<line x1="${layout.cx}" y1="${Math.max(labelY+10,minY)}" x2="${layout.cx}" y2="${fmt(axisBottom,1)}" stroke="#111827" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>`;
+    let svg=`<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h+padTop}" xmlns="http://www.w3.org/2000/svg">`;
+    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="13" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
+    svg+=`<line x1="${layout.cx}" y1="${fmt(Math.max(labelY+10,padTop+minY),1)}" x2="${layout.cx}" y2="${fmt(axisBottom+padTop,1)}" stroke="#111827" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
       const col=PARTY_META[party]?PARTY_META[party].color:'#888';

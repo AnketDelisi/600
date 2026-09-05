@@ -1023,7 +1023,7 @@ function renderForecast(pane){
         <span class="fc-seat-int">${lo}–${hi}</span>
       </div>
       <div class="fc-hist">${hist}</div>
-      ${inParliament?'':'<div class="fc-note">likely below the 4% threshold</div>'}
+      ${inParliament?'':'<div class="fc-note">likely below the '+THRESHOLD+'% threshold</div>'}
     </div>`;
   });
 
@@ -1038,7 +1038,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · Sainte-Laguë · ${SEATS_TOTAL} seats · 4% threshold · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · ${SEAT_METHOD==='dhondt'?"D'Hondt":'Sainte-Laguë'} · ${SEATS_TOTAL} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>

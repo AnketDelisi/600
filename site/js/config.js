@@ -70,7 +70,7 @@ const COUNTRIES = {
       yashar:    { code: 'YASH', name: 'Yashar',                   name_en: 'Yashar',           color: '#7B3FA0' },
     },
     order: ['likud', 'together', 'rzp', 'otzma', 'blue_white', 'shas', 'utj', 'yb', 'raam', 'joint_list', 'dems', 'yashar'],
-    parlOrder: ['likud', 'together', 'dems', 'yashar', 'yb', 'blue_white', 'joint_list', 'raam', 'shas', 'utj', 'rzp', 'otzma'],
+    parlOrder: ['joint_list', 'raam', 'dems', 'together', 'yashar', 'blue_white', 'yb', 'utj', 'likud', 'otzma', 'shas', 'rzp'],
     blocs: {
       bloc1: { name: 'Coalition', short: 'GOV', parties: ['likud', 'rzp', 'otzma', 'shas', 'utj'], color: '#00A0DF' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['together', 'yb', 'dems', 'yashar', 'blue_white', 'raam', 'joint_list'], color: '#E30613' },

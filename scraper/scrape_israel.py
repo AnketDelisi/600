@@ -115,7 +115,15 @@ def scrape_israel():
             continue
 
         for row in rows[1:]:
-            cells = [c.get_text(strip=True) for c in row.find_all(["td", "th"])]
+            # Expand colspans to physical columns so index alignment with the
+            # header holds even when cells span multiple columns (e.g. RZP+Zehut
+            # reported merged, or Joint List covering its sub-columns).
+            cells = []
+            for c in row.find_all(["td", "th"]):
+                span = int(c.get("colspan") or 1)
+                txt = c.get_text(strip=True)
+                for _ in range(max(1, span)):
+                    cells.append(txt)
             if len(cells) < 8:
                 continue
             date = parse_date(cells[0])
@@ -141,7 +149,10 @@ def scrape_israel():
             if len(votes) < MIN_PARTIES:
                 continue
             total = sum(votes.values())
-            if total < 80 or total > 118:
+            # A correctly aligned poll lists all 11 main parties and sums to
+            # exactly 120 seats; allow up to 122 for the occasional extra
+            # party, which also bounds misalignment artifacts.
+            if total < 80 or total > 122:
                 continue
 
             poll = {

@@ -1166,6 +1166,9 @@ function percentile(arr,p){
 
 /* ---------- methodology tab ---------- */
 function renderMethodology(pane){
+  const maeElections=[...new Set(Object.values(POLLSTER_MAE).flatMap(d=>Object.keys(d).filter(k=>k!=='overall')))].sort();
+  const defaultMAE=SEAT_BASED?'1.25 seats':'1.30';
+  const unit=SEAT_BASED?'seats':'%';
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="card">
       <div class="card-head"><div class="bar"></div><div class="t">METHODOLOGY</div></div>
@@ -1182,14 +1185,14 @@ function renderMethodology(pane){
         <p>The national poll average uses a <strong>triple-weighted mean</strong> combining sample size, pollster accuracy and recency:</p>
         <span class="formula">weight_i = n_i × (1 / MAE_pollster) × 0.5^(age_days / 14)</span>
         <span class="formula">avg(party) = Σ(vote_i × weight_i) / Σ(weight_i)</span>
-        <p>where <em>n_i</em> is the sample size, <em>MAE_pollster</em> is the mean absolute error of the pollster across the last 3 elections (2014, 2018, 2022) and <em>age_days</em> is the age of the poll in days. Polls halve in weight every 14 days, so recent polls dominate. Pollsters with only 1-2 elections of data are assigned a default MAE of 1.30.</p>
+        <p>where <em>n_i</em> is the sample size, <em>MAE_pollster</em> is the mean absolute error of the pollster across the last ${maeElections.length} elections (${maeElections.join(', ')}) and <em>age_days</em> is the age of the poll in days. Polls halve in weight every 14 days, so recent polls dominate. Pollsters with only 1-2 elections of data are assigned a default MAE of ${defaultMAE}.</p>
 
         <h3>Pollster Accuracy (MAE)</h3>
-        <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the 3 most recent elections. The MAE is the mean absolute deviation across all 8 parties:</p>
+        <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the most recent elections. The MAE is the mean absolute deviation across the main parties in ${unit}:</p>
         <table class="polls-table" style="margin:8px 0"><thead><tr><th>Pollster</th><th>Elections</th><th>MAE</th></tr></thead><tbody>
         ${Object.entries(POLLSTER_MAE).sort((a,b)=>a[1].overall-b[1].overall).map(([ps,d])=>{
           const eCount=Object.keys(d).filter(k=>k!=='overall').length;
-          return `<tr><td>${ps}</td><td class="num">${eCount}</td><td class="num" style="font-weight:700">${d.overall.toFixed(2)}%</td></tr>`;
+          return `<tr><td>${ps}</td><td class="num">${eCount}</td><td class="num" style="font-weight:700">${d.overall.toFixed(2)} ${unit}</td></tr>`;
         }).join('')}
         </tbody></table>
 

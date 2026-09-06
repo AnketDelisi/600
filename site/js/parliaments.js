@@ -725,7 +725,6 @@ function generateArchLayout(nSeats, opts){
   opts=opts||{};
   const halfWidth=opts.halfWidth||180, cx=opts.cx||180, cy=opts.cy||180;
   const spanAngle=opts.spanAngle||180, minNRows=opts.minNRows||0;
-  const rowThickness=1/(2*nRows(nSeats)-1);
   function nRows(n){
     let r=1;
     while(rowsFromNRows(r).reduce((a,b)=>a+b,0)<n) r++;
@@ -738,20 +737,20 @@ function generateArchLayout(nSeats, opts){
     return out;
   }
   const nRowsTot=Math.max(minNRows, nRows(nSeats));
-  const th=rowThickness;
-  const maxSeatRadius=th/2;
+  const rowThickness=1/(2*nRowsTot-1);
+  const maxSeatRadius=rowThickness/2;
   const spanMargin=(1-spanAngle/180)*Math.PI/2;
   const maxed=rowsFromNRows(nRowsTot);
   const fillingRatio=nSeats/maxed.reduce((a,b)=>a+b,0);
   const seats=[];
   for(let row=0;row<nRowsTot;row++){
     let rowSeats=(row===nRowsTot-1)?(nSeats-seats.length):Math.round(fillingRatio*maxed[row]);
-    const pxr=(0.5+row*th)*halfWidth;
+    const pxr=(0.5+row*rowThickness)*halfWidth;
     const pxrSeat=maxSeatRadius*halfWidth;
     if(rowSeats===1){
       seats.push([cx, cy-pxr, pxrSeat]);
     }else{
-      const angleMargin=Math.asin(maxSeatRadius/(0.5+row*th))+spanMargin;
+      const angleMargin=Math.asin(maxSeatRadius/(0.5+row*rowThickness))+spanMargin;
       const step=(Math.PI-2*angleMargin)/(rowSeats-1);
       for(let s=0;s<rowSeats;s++){
         const a=angleMargin+s*step;

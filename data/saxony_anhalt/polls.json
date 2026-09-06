@@ -2,9 +2,26 @@
   "country": "saxony_anhalt",
   "source": "Wikipedia",
   "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Sachsen-Anhalt_2026",
-  "scraped_at": "2026-09-06T08:08:56Z",
-  "poll_count": 15,
+  "scraped_at": "2026-09-06T08:30:44Z",
+  "poll_count": 17,
   "polls": [
+    {
+      "pollster": "Forschungsgruppe Wahlen",
+      "date": "2026-09-03",
+      "votes": {
+        "cdu": 23.0,
+        "afd": 41.0,
+        "linke": 11.5,
+        "spd": 8.5,
+        "fdp": 3.0,
+        "gruene": 6.0,
+        "bsw": 4.0
+      },
+      "country": "saxony_anhalt",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Sachsen-Anhalt_2026",
+      "n": null
+    },
     {
       "pollster": "INSA",
       "date": "2026-09-02",
@@ -16,6 +33,23 @@
         "fdp": 3.0,
         "gruene": 5.0,
         "bsw": 4.0
+      },
+      "country": "saxony_anhalt",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Sachsen-Anhalt_2026",
+      "n": null
+    },
+    {
+      "pollster": "Forschungsgruppe Wahlen",
+      "date": "2026-08-28",
+      "votes": {
+        "cdu": 23.0,
+        "afd": 40.0,
+        "linke": 13.0,
+        "spd": 9.0,
+        "fdp": 3.0,
+        "gruene": 6.0,
+        "bsw": 3.0
       },
       "country": "saxony_anhalt",
       "source": "Wikipedia",

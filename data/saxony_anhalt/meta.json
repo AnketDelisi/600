@@ -10,7 +10,7 @@
   "seat_method": "Hare/Niemeyer (largest remainder, Hare quota)",
   "election_date": "2026-09-06",
   "parties": [
-    { "id": "cdu", "name": "Christlich Demokratische Union", "name_de": "CDU", "color": "#000000" },
+    { "id": "cdu", "name": "Christlich Demokratische Union", "name_de": "CDU", "color": "#6B6B6B" },
     { "id": "afd", "name": "Alternative für Deutschland", "name_de": "AfD", "color": "#40A0D8" },
     { "id": "linke", "name": "Die Linke", "name_de": "Die Linke", "color": "#B60055" },
     { "id": "spd", "name": "Sozialdemokratische Partei Deutschlands", "name_de": "SPD", "color": "#E3000F" },

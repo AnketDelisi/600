@@ -117,7 +117,7 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // single-state PR with 41 constituencies; we model nationally
     parties: {
-      cdu:    { code: 'CDU',   name: 'Christlich Demokratische Union',        name_en: 'Christian Democratic Union',          color: '#000000' },
+      cdu:    { code: 'CDU',   name: 'Christlich Demokratische Union',        name_en: 'Christian Democratic Union',          color: '#6B6B6B' },
       afd:    { code: 'AfD',   name: 'Alternative für Deutschland',           name_en: 'Alternative for Germany',              color: '#40A0D8' },
       linke:  { code: 'LINKE', name: 'Die Linke',                             name_en: 'The Left',                             color: '#B60055' },
       spd:    { code: 'SPD',   name: 'Sozialdemokratische Partei Deutschlands', name_en: 'Social Democratic Party of Germany',  color: '#E3000F' },
@@ -131,6 +131,8 @@ saxony_anhalt: {
       bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'linke', 'spd', 'fdp', 'gruene', 'bsw'], color: '#111827' },
       bloc2: { name: 'AfD',      short: 'AFD',  parties: ['afd'], color: '#40A0D8' },
     },
+    // Partial PR with direct mandates: leveling seats grow the total, capped at `cap` seats (LWG LSA)
+    overhang: { cap: 100 },
     logos: {
       cdu: 'img/de/CDU.svg', afd: 'img/de/AFD.svg', linke: 'img/de/Linke.svg',
       spd: 'img/de/SPD.svg', fdp: 'img/de/FDP.svg', gruene: 'img/de/Grune.svg', bsw: 'img/de/BSW.svg',
@@ -172,12 +174,12 @@ saxony_anhalt: {
       winners2021: { 41: 'afd' },
     },
     pollsterMAE: {
-      "Forschungsgruppe Wahlen": { overall: 1.30 },
-      "Infratest dimap":         { overall: 1.30 },
-      INSA:                      { overall: 1.30 },
-      pollytix:                  { overall: 1.30 },
-      Civey:                     { overall: 1.30 },
-      YouGov:                    { overall: 1.30 },
+      "Forschungsgruppe Wahlen": { BT2025: 0.73, BT2021: 0.90, ST2021: 2.43, overall: 1.35 },
+      "Infratest dimap":         { BT2025: 1.72, BT2021: 0.82, ST2021: 3.43, overall: 1.99 },
+      INSA:                      { BT2025: 0.71, BT2021: 0.97, ST2021: 3.43, overall: 1.70 },
+      pollytix:                  { BT2025: 1.20, overall: 1.20 },
+      Civey:                     { BT2021: 0.82, overall: 0.82 },
+      YouGov:                    { BT2025: 0.60, BT2021: 1.48, overall: 1.04 },
     },
   },
 };
@@ -197,6 +199,7 @@ let BLOCS = {};
 let LAST_ELECTION = {};
 let POLLSTER_MAE = {};
 let PARTY_LOGOS = {};
+let OVERHANG = null;
 
 function setCountry(id) {
   const c = COUNTRIES[id];
@@ -215,6 +218,7 @@ function setCountry(id) {
   LAST_ELECTION = c.lastElection;
   POLLSTER_MAE = c.pollsterMAE || {};
   PARTY_LOGOS = c.logos || {};
+  OVERHANG = c.overhang || null;
 }
 
 setCountry('sweden');

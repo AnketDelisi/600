@@ -29,6 +29,7 @@ jobs:
         run: |
           python scraper/scrape_all.py
           python scraper/scrape_israel.py
+          python scraper/scrape_saxony_anhalt.py
 
       - name: Commit and push to main
         run: |

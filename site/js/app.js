@@ -862,13 +862,18 @@ function buildParliamentSVG(seats){
   });
 
   let layout=PARLIAMENT_SEATS[COUNTRY];
-  if(OVERHANG && layout && layout.seats.length<assigned.length){
+  if(OVERHANG){
+    // Leveling-seat chambers (e.g. Saxony-Anhalt) have a variable size; draw
+    // the canonical arch generated for the exact seat count, with enough rows
+    // to match the real chamber's density.
+    layout=null;
+  } else if(layout && layout.seats && layout.seats.length<assigned.length){
     layout=PARLIAMENT_SEATS[COUNTRY+'_ovh']||layout;
   }
   if(!layout || !layout.seats || layout.seats.length<assigned.length){
     // No supplied blank chamber (or it is too small): generate the canonical
     // Wikimedia arch geometry at runtime so any seat count can be drawn.
-    layout=generateArchLayout(assigned.length);
+    layout=generateArchLayout(assigned.length,{minNRows:(OVERHANG&&OVERHANG.rows)||0});
   }
   // Real chamber geometry (parliamentarch SVG). Order the fixed seat
   // positions around the arch center from left to right so each party

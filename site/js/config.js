@@ -62,6 +62,8 @@ const COUNTRIES = {
       otzma:     { code: 'OTZ', name: 'Otzma Yehudit',            name_en: 'Otzma Yehudit',    color: '#E85D26' },
       blue_white:{ code: 'BW', name: 'Blue and White',           name_en: 'Blue and White',   color: '#0072CE' },
       shas:      { code: 'SHAS', name: 'Shas',                     name_en: 'Shas',             color: '#231F20' },
+      reservists:{ code: 'RSV', name: 'The Reservists',           name_en: 'The Reservists',   color: '#009688' },
+      amcha:     { code: 'AMC', name: 'Amcha Yisrael',            name_en: 'Amcha Yisrael',    color: '#FF7043' },
       utj:       { code: 'UTJ', name: 'United Torah Judaism',     name_en: 'United Torah Judaism', color: '#4A4A4A' },
       yb:        { code: 'YB', name: 'Yisrael Beiteinu',         name_en: 'Yisrael Beiteinu', color: '#1B6CA8' },
       raam:      { code: 'RAAM', name: "Ra'am",                    name_en: "Ra'am",            color: '#A67C00' },
@@ -69,8 +71,8 @@ const COUNTRIES = {
       dems:      { code: 'DEM', name: 'The Democrats',            name_en: 'The Democrats',    color: '#E30613' },
       yashar:    { code: 'YASH', name: 'Yashar',                   name_en: 'Yashar',           color: '#7B3FA0' },
     },
-    order: ['likud', 'together', 'rzp', 'otzma', 'blue_white', 'shas', 'utj', 'yb', 'raam', 'joint_list', 'dems', 'yashar'],
-    parlOrder: ['joint_list', 'raam', 'dems', 'together', 'yashar', 'blue_white', 'yb', 'utj', 'likud', 'otzma', 'shas', 'rzp'],
+    order: ['likud', 'together', 'rzp', 'otzma', 'blue_white', 'shas', 'reservists', 'amcha', 'utj', 'yb', 'raam', 'joint_list', 'dems', 'yashar'],
+    parlOrder: ['joint_list', 'raam', 'dems', 'together', 'yashar', 'blue_white', 'yb', 'reservists', 'amcha', 'utj', 'likud', 'otzma', 'shas', 'rzp'],
     blocs: {
       bloc1: { name: 'Coalition', short: 'GOV', parties: ['likud', 'rzp', 'otzma', 'shas', 'utj'], color: '#00A0DF' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['together', 'yb', 'dems', 'yashar', 'blue_white', 'raam', 'joint_list'], color: '#E30613' },
@@ -80,12 +82,12 @@ const COUNTRIES = {
       results: {
         likud: 23.41, together: 17.79, rzp: 5.4, otzma: 4.6, blue_white: 9.08,
         shas: 8.25, utj: 5.88, yb: 4.48, raam: 4.07,
-        joint_list: 3.75, dems: 3.69, yashar: 0,
+        joint_list: 3.75, dems: 3.69, yashar: 0, reservists: 0, amcha: 0,
       },
       seats: {
         likud: 32, together: 24, rzp: 8, otzma: 6, blue_white: 12,
         shas: 11, utj: 7, yb: 6, raam: 5,
-        joint_list: 5, dems: 4, yashar: 0,
+        joint_list: 5, dems: 4, yashar: 0, reservists: 0, amcha: 0,
       },
     },
     pollsterMAE: {
@@ -132,7 +134,7 @@ saxony_anhalt: {
       bloc2: { name: 'AfD',      short: 'AFD',  parties: ['afd'], color: '#40A0D8' },
     },
     // Partial PR with direct mandates: leveling seats grow the total, capped at `cap` seats (LWG LSA)
-    overhang: { cap: 100 },
+    overhang: { cap: 100, rows: 9 },
     logos: {
       cdu: 'img/de/CDU.svg', afd: 'img/de/AFD.svg', linke: 'img/de/Linke.svg',
       spd: 'img/de/SPD.svg', fdp: 'img/de/FDP.svg', gruene: 'img/de/Grune.svg', bsw: 'img/de/BSW.svg',

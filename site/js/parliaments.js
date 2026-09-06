@@ -714,3 +714,50 @@ const PARLIAMENT_SEATS = {
     ],
   },
 };
+
+// ===== Runtime arch generation (canonical ParliamentArch geometry) =====
+// Port of the getSeatCenters algorithm from @parliamentarch/core
+// (https://github.com/Gouvernathor/ParliamentArch-TS), the geometry used by
+// the Wikimedia toolforge parliamentdiagram generator. BSD 3-Clause (c)
+// Gouvernathor and contributors. Used for parliaments without a supplied
+// layout or when a supplied layout is too small.
+function generateArchLayout(nSeats, opts){
+  opts=opts||{};
+  const halfWidth=opts.halfWidth||180, cx=opts.cx||180, cy=opts.cy||180;
+  const spanAngle=opts.spanAngle||180, minNRows=opts.minNRows||0;
+  const rowThickness=1/(2*nRows(nSeats)-1);
+  function nRows(n){
+    let r=1;
+    while(rowsFromNRows(r).reduce((a,b)=>a+b,0)<n) r++;
+    return r;
+  }
+  function rowsFromNRows(n){
+    const th=1/(2*n-1), rad=Math.PI*spanAngle/180;
+    const out=[];
+    for(let r=0;r<n;r++) out.push(Math.floor(rad*(0.5+r*th)/th));
+    return out;
+  }
+  const nRowsTot=Math.max(minNRows, nRows(nSeats));
+  const th=rowThickness;
+  const maxSeatRadius=th/2;
+  const spanMargin=(1-spanAngle/180)*Math.PI/2;
+  const maxed=rowsFromNRows(nRowsTot);
+  const fillingRatio=nSeats/maxed.reduce((a,b)=>a+b,0);
+  const seats=[];
+  for(let row=0;row<nRowsTot;row++){
+    let rowSeats=(row===nRowsTot-1)?(nSeats-seats.length):Math.round(fillingRatio*maxed[row]);
+    const pxr=(0.5+row*th)*halfWidth;
+    const pxrSeat=maxSeatRadius*halfWidth;
+    if(rowSeats===1){
+      seats.push([cx, cy-pxr, pxrSeat]);
+    }else{
+      const angleMargin=Math.asin(maxSeatRadius/(0.5+row*th))+spanMargin;
+      const step=(Math.PI-2*angleMargin)/(rowSeats-1);
+      for(let s=0;s<rowSeats;s++){
+        const a=angleMargin+s*step;
+        seats.push([cx+pxr*Math.cos(a), cy-pxr*Math.sin(a), pxrSeat]);
+      }
+    }
+  }
+  return {w:halfWidth*2, h:185, cx:cx, cy:cy, seats:seats};
+}

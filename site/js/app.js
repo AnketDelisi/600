@@ -865,10 +865,14 @@ function buildParliamentSVG(seats){
   if(OVERHANG && layout && layout.seats.length<assigned.length){
     layout=PARLIAMENT_SEATS[COUNTRY+'_ovh']||layout;
   }
-  if(layout && layout.seats && layout.seats.length>=assigned.length){
-    // Real chamber geometry (parliamentarch SVG). Order the fixed seat
-    // positions around the arch center from left to right so each party
-    // fills a contiguous wedge; majority axis at the top, total at the base.
+  if(!layout || !layout.seats || layout.seats.length<assigned.length){
+    // No supplied blank chamber (or it is too small): generate the canonical
+    // Wikimedia arch geometry at runtime so any seat count can be drawn.
+    layout=generateArchLayout(assigned.length);
+  }
+  // Real chamber geometry (parliamentarch SVG). Order the fixed seat
+  // positions around the arch center from left to right so each party
+  // fills a contiguous wedge; majority axis at the top, total at the base.
     const pts=layout.seats.map((s,i)=>({
       angle:Math.atan2(layout.cx-s[0], layout.cy-s[1]),
       r:Math.hypot(s[0]-layout.cx, s[1]-layout.cy),
@@ -903,40 +907,6 @@ function buildParliamentSVG(seats){
     svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;
     svg+=`</svg>`;
     return svg;
-  }
-
-  // Fallback: generated semicircle (topocentric), as before.
-  const radii=[]; for(let r=130;r<265;r+=10) radii.push(r);
-  const sumR=radii.reduce((a,b)=>a+b,0);
-  const seatsPerRow=radii.map(r=>Math.round(total*(r/sumR)));
-  let spSum=seatsPerRow.reduce((a,b)=>a+b,0);
-  if(spSum!==total) seatsPerRow[seatsPerRow.length-1]+=(total-spSum);
-
-  const points=[];
-  for(let i=0;i<radii.length;i++){
-    const r=radii[i], s=seatsPerRow[i];
-    if(s<=0) continue;
-    for(let j=0;j<s;j++){
-      const angle=Math.PI-(Math.PI*j)/Math.max(1,(s-1));
-      points.push({x:r*Math.cos(angle), y:r*Math.sin(angle), angle, r});
-    }
-  }
-  points.sort((a,b)=>(a.angle-b.angle)||(b.r-a.r)).reverse();
-
-  const majority=Math.floor(total/2)+1;
-  let svg=`<svg viewBox="-10 -26 540 296" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">`;
-  svg+=`<text x="250" y="-16" text-anchor="middle" font-size="13" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
-  svg+=`<line x1="250" y1="-12" x2="250" y2="130" stroke="#111827" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>`;
-  for(let i=0;i<assigned.length;i++){
-    if(i<points.length){
-      const party=assigned[i];
-      const col=PARTY_META[party]?PARTY_META[party].color:'#888';
-      svg+=`<circle cx="${fmt(250+points[i].x,1)}" cy="${fmt(250-points[i].y,1)}" r="5" fill="${col}"/>`;
-    }
-  }
-  svg+=`<text x="250" y="240" text-anchor="middle" font-size="46" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;
-  svg+=`</svg>`;
-  return svg;
 }
 
 function bindParlToggles(avg){
@@ -1386,7 +1356,7 @@ function renderMethodology(pane){
 
         <h3>Seat Projection</h3>
         <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the 2021 Landtag sat 97 seats.`:''}</p>
-        <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center.</p>
+        <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>
 
         <h3>Bloc Totals</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>

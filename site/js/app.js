@@ -8,6 +8,21 @@ const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
 const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
 const partyCode=pid=>(PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid;
+const methodName=()=>{
+  if(SEAT_METHOD==='dhondt') return "D'Hondt";
+  if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
+  return 'modified Sainte-Laguë';
+};
+const methodNameShort=()=>{
+  if(SEAT_METHOD==='dhondt') return "D'Hondt";
+  if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
+  return 'Sainte-Laguë';
+};
+function methodSentence(){
+  if(SEAT_METHOD==='dhondt') return "the <strong>D'Hondt</strong> method in a single national district";
+  if(SEAT_METHOD==='hare_niemeyer') return "the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
+  return "<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
+}
 
 /* ---------- tab switching ---------- */
 document.addEventListener('click',e=>{
@@ -245,7 +260,7 @@ function renderSidebar(){
     <select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
       ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
     </select>
-    <div class="sb-hint">${SEATS_TOTAL} seats · ${SEAT_METHOD==='dhondt'?'D\'Hondt':'modified Sainte-Laguë'} · ${THRESHOLD}% threshold</div></div>`;
+    <div class="sb-hint">${SEATS_TOTAL} seats · ${methodName()} · ${THRESHOLD}% threshold</div></div>`;
 
   // Filters
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">FILTERS</div></div>
@@ -269,7 +284,7 @@ function renderSidebar(){
 
   // Info
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">INFO</div></div>
-    <div class="sb-hint">Data: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${SEATS_TOTAL} seats · ${SEAT_METHOD==='dhondt'?'D\'Hondt':'Sainte-Laguë'} · ${THRESHOLD}% threshold<br>Next election: ${META.election_date||LAST_ELECTION.date}</div></div>`;
+    <div class="sb-hint">Data: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${SEATS_TOTAL} seats · ${methodNameShort()} · ${THRESHOLD}% threshold<br>Next election: ${META.election_date||LAST_ELECTION.date}</div></div>`;
 
   c.innerHTML=html;
 
@@ -612,7 +627,8 @@ function renderPollsTable(polls){
 }
 
 /* ---------- render parliament ---------- */
-let PARL_MODE='proj';  // 'proj' or '2022'
+let PARL_MODE='proj';    // 'proj' or '2022'
+let PARL_VIEW='seats';   // 'seats' or 'map'
 
 function normalizeTo(src, total){
   // direct seat counts (2022 RESULT for seat-based countries), scaled to total
@@ -651,15 +667,90 @@ function renderParliament(avg){
   const seats=SEAT_BASED
     ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
     :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL));
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
-    <div class="map-toggle-row" style="justify-content:flex-end">
+  const mapConf=MAP_CONF();
+  const showMap=PARL_VIEW==='map'&&mapConf;
+  const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
-      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">2022 RESULT</button>
-    </div>
-    <div class="parliament-box">${buildParliamentSVG(seats)}</div>
+      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
+      ${mapConf?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">MAP</button>`:''}
+    </div>`;
+  const box=showMap
+    ?'<div class="parliament-box" id="map-box"></div>'
+    :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
+  const cap=showMap
+    ?`${SEATS_TOTAL} seats · ${methodName()} · ${THRESHOLD}% threshold · map = 41 constituencies, colored by district winner`
+    :`${SEATS_TOTAL} seats · ${methodName()} · ${THRESHOLD}% threshold`;
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
+    ${btnRow}
+    ${box}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      ${SEATS_TOTAL} seats · ${SEAT_METHOD==='dhondt'?"D'Hondt":'Sainte-Laguë (modified)'} · ${THRESHOLD}% threshold
+      ${cap}
     </div></div>`;
+}
+
+/* ---------- district map (Germany) ---------- */
+function MAP_CONF(){ return (COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null; }
+
+function districtWinner2021(nr){
+  const conf=MAP_CONF();
+  const exc=conf&&conf.winners2021?conf.winners2021[String(nr)]:null;
+  return exc||'cdu';
+}
+
+function districtWinnerProjection(nr, avg){
+  const conf=MAP_CONF();
+  const gArr=conf&&conf.districts?conf.districts[String(nr)]:null;
+  if(!gArr) return null;
+  const base=conf.gebiete[gArr];
+  // Uniform swing: shift each party's 2021 local share by (poll avg - 2021 national)
+  let best=null,bestV=-1;
+  for(const p of PARTY_ORDER){
+    const swing=(avg[p]||0)-(LAST_ELECTION.results[p]||0);
+    const shifted=Math.max(0,(base[p]||0)+swing);
+    if(shifted>bestV){bestV=shifted;best=p}
+  }
+  return best;
+}
+
+let MAP_CACHE=null;
+async function renderMap(avg){
+  const box=$('map-box');
+  if(!box) return;
+  const conf=MAP_CONF();
+  if(!conf) return;
+  if(!MAP_CACHE){
+    try{
+      const resp=await fetch(conf.svg);
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      MAP_CACHE=await resp.text();
+    }catch(e){
+      box.innerHTML='<div style="text-align:center;color:var(--c-text-muted);padding:20px;font-size:12px">District map failed to load.</div>';
+      return;
+    }
+  }
+  const holder=document.createElement('div');
+  holder.innerHTML=MAP_CACHE;
+  const svg=holder.querySelector('svg');
+  if(!svg){box.innerHTML='';return}
+  const resultMode=PARL_MODE==='2022';
+  svg.querySelectorAll('path[id^="_"]').forEach(ph=>{
+    const nr=parseInt(ph.id.slice(1),10);
+    const winner=resultMode?districtWinner2021(nr):districtWinnerProjection(nr,avg);
+    if(!winner) return;
+    const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
+    ph.style.fill=color;
+    if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
+      ph.style.stroke='#ffffff';
+    }
+  });
+  svg.setAttribute('viewBox', svg.getAttribute('viewBox')||'0 0 894 1140');
+  svg.removeAttribute('width');
+  svg.removeAttribute('height');
+  svg.style.width='100%';
+  svg.style.height='auto';
+  svg.style.display='block';
+  box.innerHTML='';
+  box.appendChild(svg);
 }
 
 function allocateSeatsN(votes, totalSeats){
@@ -668,6 +759,23 @@ function allocateSeatsN(votes, totalSeats){
   if(totalVotes===0) return {};
   const seats={};
   validParties.forEach(p=>{seats[p]=0});
+
+  // Hare/Niemeyer (largest remainder): floor(votes/quota), then by fraction
+  if(SEAT_METHOD==='hare_niemeyer'){
+    const quota=totalVotes/totalSeats;
+    const rems=[];
+    let given=0;
+    validParties.forEach(p=>{
+      const q=(votes[p]||0)/quota;
+      const fl=Math.floor(q);
+      seats[p]=fl; given+=fl;
+      rems.push([q-fl,p]);
+    });
+    let left=totalSeats-given;
+    rems.sort((a,b)=>b[0]-a[0]);
+    for(let i=0;i<left&&i<rems.length;i++) seats[rems[i][1]]++;
+    return seats;
+  }
 
   // Modified Sainte-Laguë (1.2, 3, 5, ...) or D'Hondt (1, 2, 3, ...)
   const divisors=[];
@@ -778,15 +886,17 @@ function buildParliamentSVG(seats){
   return svg;
 }
 
-function bindParlToggles(){
+function bindParlToggles(avg){
   const pane=$('pane-polls');
   if(!pane) return;
   pane.querySelectorAll('.parl-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
       if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
+      if(btn.dataset.parlview) PARL_VIEW=(PARL_VIEW==='map')?'seats':'map';
       renderPollsTab();
     });
   });
+  if(PARL_VIEW==='map') renderMap(avg);
 }
 
 /* ---------- forecast: fast Sainte-Laguë ---------- */
@@ -794,6 +904,26 @@ function allocateSeatsFast(votes, total){
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
+
+  // Hare/Niemeyer (largest remainder) for the Monte Carlo draws
+  if(SEAT_METHOD==='hare_niemeyer'){
+    const totalVotes=valid.reduce((a,p)=>a+(votes[p]||0),0);
+    if(totalVotes===0) return seats;
+    const quota=totalVotes/total;
+    const rems=[];
+    let given=0;
+    valid.forEach(p=>{
+      const q=(votes[p]||0)/quota;
+      const fl=Math.floor(q);
+      seats[p]=fl; given+=fl;
+      rems.push([q-fl,p]);
+    });
+    let left=total-given;
+    rems.sort((a,b)=>b[0]-a[0]);
+    for(let i=0;i<left&&i<rems.length;i++) seats[rems[i][1]]++;
+    return seats;
+  }
+
   const quo={};
   valid.forEach(p=>{quo[p]=SEAT_METHOD==='dhondt'?(votes[p]||0):(votes[p]||0)/1.2});
   for(let i=0;i<total;i++){
@@ -1108,7 +1238,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · ${SEAT_METHOD==='dhondt'?"D'Hondt":'Sainte-Laguë'} · ${SEATS_TOTAL} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · ${methodNameShort()} · ${SEATS_TOTAL} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>
@@ -1174,10 +1304,10 @@ function renderMethodology(pane){
       <div class="card-head"><div class="bar"></div><div class="t">METHODOLOGY</div></div>
       <div class="method-text">
         <h3>Data Sources</h3>
-        <p>Polls are collected from two sources:</p>
+        <p>Polls are collected from the following sources:</p>
         <ul>
           <li><strong>Wikipedia</strong> — aggregated from publicly available polling tables. Primary source.</li>
-          <li><strong>SwedishPolls</strong> (CC0) — GitHub repository maintained by Magnus&nbsp;M瑞典Polls with standardized Swedish polling data since 1944.</li>
+          ${COUNTRY==='sweden'?'<li><strong>SwedishPolls</strong> (CC0) — GitHub repository maintained by Magnus&nbsp;M瑞典Polls with standardized Swedish polling data since 1944.</li>':''}
         </ul>
         <p>Duplicate polls (same pollster + same date) are deduplicated, with Wikipedia data taking priority.</p>
 
@@ -1197,14 +1327,14 @@ function renderMethodology(pane){
         </tbody></table>
 
         <h3>Seat Projection</h3>
-        <p>${COUNTRY_NAME} elects <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${SEAT_METHOD==='dhondt'?"the <strong>D'Hondt</strong> method in a single national district":"<strong>modified Sainte-Laguë</strong> (divisor 1.2)"}, with a <strong>${THRESHOLD}% electoral threshold</strong>.</p>
+        <p>${COUNTRY_NAME} elects <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.</p>
         <p>The parliament diagram shows the full ${SEATS_TOTAL} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center.</p>
 
         <h3>Bloc Totals</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>
 
         <h3>Last Updated</h3>
-        <p>Data is scraped automatically from Wikipedia and SwedishPolls. The site is updated daily via GitHub Actions.</p>
+        <p>Data is scraped automatically from Wikipedia${COUNTRY==='sweden'?' and SwedishPolls':''}. The site is updated daily via GitHub Actions.</p>
       </div>
     </div></div>`;
 }
@@ -1241,7 +1371,7 @@ function renderPollsTab(){
     const canvas=$('trend-canvas');
     if(canvas) renderTrendChart(canvas, filtered);
   });
-  bindParlToggles();
+  bindParlToggles(avg);
 }
 
 /* ---------- public API ---------- */
@@ -1259,7 +1389,8 @@ window._600={
     if(!COUNTRIES[id]||id===COUNTRY) return;
     setCountry(id);
     for(const k in FC_CACHE) delete FC_CACHE[k];
-    PARL_MODE='proj';
+PARL_MODE='proj';
+    PARL_VIEW='seats';
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
     const pollsBtn=document.querySelector('[data-tab="polls"]');

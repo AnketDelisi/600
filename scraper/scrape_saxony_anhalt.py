@@ -47,6 +47,9 @@ HEADER_MAP = {
 
 PARTIES = ["cdu", "afd", "linke", "spd", "fdp", "gruene", "bsw"]
 CORE = ["cdu", "afd", "linke", "spd", "gruene"]   # must all be present
+# Reference rows in the table (italic) — exact Institute names, NOT a substring
+# match ("wahl" would also hit "Forschungsgruppe Wahlen").
+REF_SKIP = {"landtagswahl 2026", "landtagswahl 2021", "bundestagswahl", "europawahl"}
 
 
 def norm_header(text):
@@ -153,7 +156,7 @@ def scrape_saxony_anhalt():
             institute = re.sub(r"\[\s*\w+\s*\]", "", row[col_ins]).strip()
             if len(institute) < 3:
                 continue
-            if re.search(r"wahl", institute, re.I):
+            if institute.lower().strip() in REF_SKIP:
                 continue   # reference rows: Bundestagswahl / Europawahl / Landtagswahl
             date = parse_date(row[col_date])
             if not date or date < CUTOFF:

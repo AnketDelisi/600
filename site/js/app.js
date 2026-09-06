@@ -260,7 +260,7 @@ function renderSidebar(){
     <select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
       ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
     </select>
-    <div class="sb-hint">${SEATS_TOTAL} seats · ${methodName()} · ${THRESHOLD}% threshold</div></div>`;
+    <div class="sb-hint">${seatsDesc()} seats · ${methodName()} · ${THRESHOLD}% threshold</div></div>`;
 
   // Filters
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">FILTERS</div></div>
@@ -284,7 +284,7 @@ function renderSidebar(){
 
   // Info
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">INFO</div></div>
-    <div class="sb-hint">Data: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${SEATS_TOTAL} seats · ${methodNameShort()} · ${THRESHOLD}% threshold<br>Next election: ${META.election_date||LAST_ELECTION.date}</div></div>`;
+    <div class="sb-hint">Data: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${seatsDesc()} seats · ${methodNameShort()} · ${THRESHOLD}% threshold<br>Next election: ${META.election_date||LAST_ELECTION.date}</div></div>`;
 
   c.innerHTML=html;
 
@@ -590,8 +590,7 @@ function renderPollsTable(polls){
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">INDIVIDUAL POLLS</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>Date</th><th>Pollster</th><th class="c">N</th><th class="c">Lead</th>
-      <th class="c" style="color:${BLOCS.bloc1.color}">${BLOCS.bloc1.short}</th><th class="c" style="color:${BLOCS.bloc2.color}">${BLOCS.bloc2.short}</th>`;
+      <th>Date</th><th>Pollster</th><th class="c">Lead</th>`;
   PARTY_ORDER.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
 
@@ -602,15 +601,9 @@ function renderPollsTable(polls){
     const secondV=p.votes[sorted[1]]||0;
     const margin=leadV-secondV;
     const leadColor=PARTY_META[leadP]?PARTY_META[leadP].color:'#888';
-    // Blocs
-    const rg=BLOCS.bloc1.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
-    const td=BLOCS.bloc2.parties.reduce((s,q)=>s+(p.votes[q]||0),0);
-    const rgWin=rg>=td;
 
-    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td><td class="num c">${p.n?p.n.toLocaleString():'—'}</td>
-      <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>
-      <td class="num c" style="color:${BLOCS.bloc1.color};font-weight:${rgWin?'900':'700'};background:${rgWin?'#EE202022':''}">${valDisp(rg)}</td>
-      <td class="num c" style="color:${BLOCS.bloc2.color};font-weight:${rgWin?'700':'900'};background:${rgWin?'':'#006AB522'}">${valDisp(td)}</td>`;
+    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
+      <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>`;
     PARTY_ORDER.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
@@ -621,7 +614,7 @@ function renderPollsTable(polls){
   });
   html+=`</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      ${BLOCS.bloc1.name} = ${BLOCS.bloc1.parties.map(partyCode).join('+')} · ${BLOCS.bloc2.name} = ${BLOCS.bloc2.parties.map(partyCode).join('+')} · Lead = margin between the two largest parties in the poll
+      Lead = margin between the two largest parties in the poll
     </div></div>`;
   return html;
 }
@@ -663,10 +656,67 @@ function seatParliament(avg, total){
   return fl;
 }
 
+function seatsDesc(){
+  return OVERHANG?(SEATS_TOTAL+'\u2013'+OVERHANG.cap):String(SEATS_TOTAL);
+}
+
+/* ---------- overhang / leveling seats (partial PR, e.g. Saxony-Anhalt) ---------- */
+function directFromProjection(votes){
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  const conf=MAP_CONF();
+  if(!conf||!conf.districts) return out;
+  Object.keys(conf.districts).forEach(nr=>{
+    const w=districtWinnerProjection(parseInt(nr,10),votes);
+    if(w) out[w]++;
+  });
+  return out;
+}
+
+function overhangSeats(votes, totalBase, direct, cap){
+  // Leveling seats: grow the house (re-running Hare/Niemeyer each step) until
+  // every party that won direct mandates holds at least its direct share; the
+  // total is capped at `cap` seats per the electoral law.
+  cap=cap||totalBase;
+  const hare=(total)=>{
+    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
+    const totalVotes=valid.reduce((a,p)=>a+(votes[p]||0),0);
+    const quota=totalVotes/total;
+    const out={}; const rems=[]; let given=0;
+    valid.forEach(p=>{
+      const q=(votes[p]||0)/quota, fl=Math.floor(q);
+      out[p]=fl; given+=fl; rems.push([q-fl,p]);
+    });
+    let left=total-given;
+    rems.sort((a,b)=>b[0]-a[0]);
+    for(let i=0;i<left&&i<rems.length;i++) out[rems[i][1]]++;
+    return out;
+  };
+  let total=totalBase;
+  for(let it=0;it<200;it++){
+    const seats=hare(total);
+    let deficit=0;
+    PARTY_ORDER.forEach(p=>{const d=direct[p]||0; if(seats[p]<d) deficit+=d-seats[p]});
+    if(deficit<=0) return seats;
+    if(total===cap) break;
+    total=Math.min(total+deficit,cap);
+  }
+  const s=hare(total);
+  PARTY_ORDER.forEach(p=>{if(s[p]<(direct[p]||0)) s[p]=direct[p]||0});
+  return s;
+}
+
 function renderParliament(avg){
-  const seats=SEAT_BASED
-    ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
-    :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL));
+  let seats;
+  if(OVERHANG){
+    seats=PARL_MODE==='proj'
+      ?overhangSeats(avg,SEATS_TOTAL,directFromProjection(avg),OVERHANG.cap)
+      :(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0});return s})();
+  }else{
+    seats=SEAT_BASED
+      ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
+      :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL));
+  }
+  const seatsTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
   const mapConf=MAP_CONF();
   const showMap=PARL_VIEW==='map'&&mapConf;
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
@@ -678,8 +728,8 @@ function renderParliament(avg){
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
-    ?`${SEATS_TOTAL} seats · ${methodName()} · ${THRESHOLD}% threshold · map = 41 constituencies, colored by district winner`
-    :`${SEATS_TOTAL} seats · ${methodName()} · ${THRESHOLD}% threshold`;
+    ?`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold · map = 41 constituencies, colored by district winner`
+    :`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold`;
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
     ${btnRow}
     ${box}
@@ -811,7 +861,10 @@ function buildParliamentSVG(seats){
     for(let i=0;i<n;i++) assigned.push(p);
   });
 
-  const layout=PARLIAMENT_SEATS[COUNTRY];
+  let layout=PARLIAMENT_SEATS[COUNTRY];
+  if(OVERHANG && layout && layout.seats.length<assigned.length){
+    layout=PARLIAMENT_SEATS[COUNTRY+'_ovh']||layout;
+  }
   if(layout && layout.seats && layout.seats.length>=assigned.length){
     // Real chamber geometry (parliamentarch SVG). Order the fixed seat
     // positions around the arch center from left to right so each party
@@ -901,6 +954,9 @@ function bindParlToggles(avg){
 
 /* ---------- forecast: fast Sainte-Laguë ---------- */
 function allocateSeatsFast(votes, total){
+  if(OVERHANG){
+    return overhangSeats(votes,total,directFromProjection(votes),OVERHANG.cap);
+  }
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
@@ -1038,7 +1094,8 @@ function runForecast(avg, nSims){
     const seats=allocateSeatsFast(simVotes,SEATS_TOTAL);
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
-    const MAJ_TH=Math.floor(SEATS_TOTAL/2)+1;
+    const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
+    const MAJ_TH=Math.floor(simTotal/2)+1;
     if(rg>=MAJ_TH)maj.rg++;
     else if(td>=MAJ_TH)maj.td++;
     else maj.hung++;
@@ -1118,10 +1175,11 @@ function renderForecast(pane){
   const maj=sim.maj;
   const majTotal=sim.nSims;
   const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal;
-  const MAJ=Math.floor(SEATS_TOTAL/2)+1;
+  const expectedSeats=Math.round(PARTY_ORDER.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
+  const MAJ=Math.floor(expectedSeats/2)+1;
 
   // --- Deterministic: median-based parliament ---
-  const detSeats=deterministicSeats(sim.medians,sim.means,SEATS_TOTAL);
+  const detSeats=deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL);
   let cmpRows='';
   const cmpOrder=PARTY_ORDER.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
   cmpOrder.forEach(p=>{
@@ -1238,7 +1296,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · ${methodNameShort()} · ${SEATS_TOTAL} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>
@@ -1327,8 +1385,8 @@ function renderMethodology(pane){
         </tbody></table>
 
         <h3>Seat Projection</h3>
-        <p>${COUNTRY_NAME} elects <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.</p>
-        <p>The parliament diagram shows the full ${SEATS_TOTAL} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center.</p>
+        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the 2021 Landtag sat 97 seats.`:''}</p>
+        <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center.</p>
 
         <h3>Bloc Totals</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>

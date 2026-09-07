@@ -2252,12 +2252,12 @@ function drawHistoryLine(canvas, hist, mode){
     if(idx<0||idx>=valid.length){tip.style.display='none';return}
     const ev2=valid[idx];
     const src=mode==='votes'?ev2.results:(ev2.seats||{});
-    const unit=mode==='votes'?'%':' seats';
     const sortedP=parties.slice().sort((a,b)=>(src[b]||0)-(src[a]||0)).filter(p=>src[p]!=null&&!isNaN(src[p]));
     if(!sortedP.length){tip.style.display='none';return}
     const rows=sortedP.map(p=>{
       const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-      return `<div class="map-tip-row"><span class="map-tip-code" style="color:${col}">${partyCode(p)}</span><span class="map-tip-now">${pct(src[p])}</span></div>`;
+      const val=mode==='seats'?String(Math.round(src[p])):pct(src[p]);
+      return `<div class="map-tip-row"><span class="map-tip-code" style="color:${col}">${partyCode(p)}</span><span class="map-tip-now">${val}</span></div>`;
     }).join('');
     tip.innerHTML=`<div class="map-tip-head"><div class="map-tip-title">${ev2.year} ${t('ELECTION','SEÇİMİ')}</div></div>${rows}`;
     const tipW=tip.offsetWidth||170, tipH=tip.offsetHeight||120;

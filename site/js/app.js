@@ -214,6 +214,11 @@ function weightedAverage(polls, party){
     // renormalize each poll to sum to SEATS_TOTAL so the average is on a
     // common scale (missing below-threshold seats are treated as 'Others')
     let v=p.votes[party];
+    // signed-bias correction: bias = poll − actual (from per-election backtest);
+    // subtract it so pollster's systematic error is removed
+    if(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
+      v-=POLLSTER_BIAS[p.pollster][party];
+    }
     if(SEAT_BASED){
       const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
       if(raw>0) v*=SEATS_TOTAL/raw;
@@ -224,10 +229,56 @@ function weightedAverage(polls, party){
   return wTotal>0?wSum/wTotal:null;
 }
 
+// Linear-trend extrapolation: fit each party's recent polls (recency-weighted
+// least squares on time), project the slope forward to the election date, capped
+// at maxDaily points/day so the model cannot run away in the final stretch.
+function trendExtrapolation(polls, party){
+  if(!TREND_CONF) return null;
+  const election=new Date(TREND_CONF.electionDate).getTime();
+  const now=Date.now();
+  const horizon=(election-now)/(1000*60*60*24);  // days until election
+  if(!(horizon>0)||horizon>TREND_CONF.windowDays) return null;
+  const cutoff=now-TREND_CONF.windowDays*1000*60*60*24;
+  const recent=polls.filter(p=>p.votes[party]!==undefined&&new Date(p.date).getTime()>=cutoff);
+  if(recent.length<TREND_CONF.minPolls) return null;
+  let sw=0,swt=0,swtt=0,swv=0,swtv=0;
+  for(const p of recent){
+    const t=(now-new Date(p.date).getTime())/(1000*60*60*24); // days ago
+    const w=Math.pow(0.5,t/RECENCY_HALF_LIFE);
+    sw+=w; swt+=w*t; swtt+=w*t*t; swv+=w*(p.votes[party]||0); swtv+=w*t*(p.votes[party]||0);
+  }
+  const den=sw*swtt-swt*swt;
+  if(Math.abs(den)<1e-9) return null;
+  const slope=(sw*swtv-swt*swv)/den;      // % per day as time moves backward
+  const inter=(swv*swtt-swtv*swt)/den;    // value at t=0 (today)
+  let proj=inter-slope*horizon;           // extrapolate forward
+  const cap=TREND_CONF.maxDaily*horizon;
+  proj=Math.max(inter-cap,Math.min(inter+cap,proj));
+  return Math.max(0,proj);
+}
+
 function computeAverages(polls){
   const avg={};
   for(const pid of PARTY_ORDER){
     avg[pid]=weightedAverage(polls, pid);
+  }
+  // last-election Dirichlet prior: pull the average toward the most recent
+  // election outcome so a thin poll set cannot drift arbitrarily far
+  if(PRIOR_ALPHA>0&&LAST_ELECTION.results){
+    for(const pid of PARTY_ORDER){
+      if(avg[pid]===null) continue;
+      const prior=LAST_ELECTION.results[pid]!==undefined?LAST_ELECTION.results[pid]:0;
+      avg[pid]=(1-PRIOR_ALPHA)*avg[pid]+PRIOR_ALPHA*prior;
+    }
+  }
+  // linear-trend extrapolation toward the election date
+  if(TREND_CONF){
+    for(const pid of PARTY_ORDER){
+      const ext=trendExtrapolation(polls, pid);
+      if(ext!==null&&avg[pid]!==null){
+        avg[pid]=(1-TREND_CONF.blend)*avg[pid]+TREND_CONF.blend*ext;
+      }
+    }
   }
   if(SEAT_BASED){
     const total=Object.values(avg).reduce((a,b)=>a+(b||0),0);
@@ -729,7 +780,7 @@ function renderParliament(avg){
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
-    ?`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold · map = 41 constituencies, colored by district winner`
+    ?`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold · map = ${mapConf?Object.keys(mapConf.districts).length:''} constituencies, colored by district winner`
     :`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold`;
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
     ${btnRow}
@@ -764,29 +815,37 @@ function districtWinnerProjection(nr, avg){
   return best;
 }
 
-let MAP_CACHE=null;
+let MAP_CACHE={};
 async function renderMap(avg){
   const box=$('map-box');
   if(!box) return;
   const conf=MAP_CONF();
   if(!conf) return;
-  if(!MAP_CACHE){
+  if(!MAP_CACHE[conf.svg]){
     try{
       const resp=await fetch(conf.svg);
       if(!resp.ok) throw new Error('HTTP '+resp.status);
-      MAP_CACHE=await resp.text();
+      MAP_CACHE[conf.svg]=await resp.text();
     }catch(e){
       box.innerHTML='<div style="text-align:center;color:var(--c-text-muted);padding:20px;font-size:12px">District map failed to load.</div>';
       return;
     }
   }
   const holder=document.createElement('div');
-  holder.innerHTML=MAP_CACHE;
+  holder.innerHTML=MAP_CACHE[conf.svg];
   const svg=holder.querySelector('svg');
   if(!svg){box.innerHTML='';return}
   const resultMode=PARL_MODE!=='proj';
-  svg.querySelectorAll('path[id^="_"]').forEach(ph=>{
-    const nr=parseInt(ph.id.slice(1),10);
+  const selector=conf.selector==='class'?'path[class^="wk"]':'path[id^="_"]';
+  svg.querySelectorAll(selector).forEach(ph=>{
+    let nr=null;
+    if(conf.selector==='class'){
+      const m=/wk(\d+)/.exec(ph.getAttribute('class')||'');
+      if(m) nr=parseInt(m[1],10);
+    }else{
+      nr=parseInt(ph.id.slice(1),10);
+    }
+    if(!nr) return;
     const winner=resultMode?districtWinnerProjection(nr,LAST_ELECTION.results):districtWinnerProjection(nr,avg);
     if(!winner) return;
     const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
@@ -1371,6 +1430,9 @@ function renderMethodology(pane){
         <span class="formula">weight_i = n_i × (1 / MAE_pollster) × 0.5^(age_days / ${RECENCY_HALF_LIFE})</span>
         <span class="formula">avg(party) = Σ(vote_i × weight_i) / Σ(weight_i)</span>
         <p>where <em>n_i</em> is the sample size, <em>MAE_pollster</em> is the mean absolute error of the pollster across the last ${maeElections.length} elections (${maeElections.join(', ')}) and <em>age_days</em> is the age of the poll in days. Polls halve in weight every ${RECENCY_HALF_LIFE} days, so recent polls dominate. Pollsters with only 1-2 elections of data are assigned a default MAE of ${defaultMAE}.</p>
+        ${BIAS_KEY?`<p><strong>Bias correction.</strong> Each pollster's systematic error measured in the ${BIAS_KEY} backtest (their average signed deviation from the actual result) is subtracted from their polls before weighting, removing house effects.</p>`:''}
+        ${PRIOR_ALPHA>0?`<p><strong>Prior anchor.</strong> The average is blended ${(PRIOR_ALPHA*100).toFixed(0)}% toward the ${LAST_ELECTION.date.slice(0,4)} result, so a thin or volatile poll set cannot drift arbitrarily far from the known electorate.</p>`:''}
+        ${TREND_CONF?`<p><strong>Trend extrapolation.</strong> A recency-weighted linear fit over the last ${TREND_CONF.windowDays} days is projected forward to the election date (${TREND_CONF.electionDate}) and blended ${(TREND_CONF.blend*100).toFixed(0)}% into the average, capped at ${TREND_CONF.maxDaily} point/day of movement.</p>`:''}
 
         <h3>Pollster Accuracy (MAE)</h3>
         <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the most recent elections. The MAE is the mean absolute deviation across the main parties in ${unit}:</p>
@@ -1382,7 +1444,7 @@ function renderMethodology(pane){
         </tbody></table>
 
         <h3>Seat Projection</h3>
-        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the 2026 Landtag sat 83 seats (2021: 97).`:''}</p>
+        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
         <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>
 
         <h3>Bloc Totals</h3>

@@ -1,0 +1,223 @@
+{
+  "country": "mecklenburg_vorpommern",
+  "source": "Wikipedia",
+  "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+  "scraped_at": "2026-09-07T09:06:10Z",
+  "poll_count": 13,
+  "polls": [
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-09-03",
+      "votes": {
+        "spd": 32.0,
+        "afd": 35.0,
+        "cdu": 8.0,
+        "linke": 11.0,
+        "gruene": 5.0,
+        "bsw": 4.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Forsa",
+      "date": "2026-09-02",
+      "votes": {
+        "spd": 28.0,
+        "afd": 37.0,
+        "cdu": 10.0,
+        "linke": 11.0,
+        "gruene": 5.0,
+        "bsw": 4.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-08-13",
+      "votes": {
+        "spd": 29.0,
+        "afd": 36.0,
+        "cdu": 10.0,
+        "linke": 11.0,
+        "gruene": 5.0,
+        "fdp": 3.0,
+        "bsw": 4.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-07-09",
+      "votes": {
+        "spd": 29.0,
+        "afd": 36.0,
+        "cdu": 9.0,
+        "linke": 12.0,
+        "gruene": 5.0,
+        "bsw": 4.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-06-22",
+      "votes": {
+        "spd": 28.0,
+        "afd": 35.0,
+        "cdu": 10.0,
+        "linke": 11.0,
+        "gruene": 4.0,
+        "fdp": 3.0,
+        "bsw": 6.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-05-13",
+      "votes": {
+        "spd": 27.0,
+        "afd": 36.0,
+        "cdu": 10.0,
+        "linke": 13.0,
+        "gruene": 4.0,
+        "bsw": 5.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-03-17",
+      "votes": {
+        "spd": 26.0,
+        "afd": 34.0,
+        "cdu": 12.0,
+        "linke": 10.0,
+        "gruene": 5.0,
+        "fdp": 3.0,
+        "bsw": 5.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Forsa",
+      "date": "2026-02-19",
+      "votes": {
+        "spd": 23.0,
+        "afd": 37.0,
+        "cdu": 13.0,
+        "linke": 11.0,
+        "gruene": 4.0,
+        "fdp": 2.0,
+        "bsw": 5.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-01-27",
+      "votes": {
+        "spd": 25.0,
+        "afd": 35.0,
+        "cdu": 13.0,
+        "linke": 12.0,
+        "gruene": 4.0,
+        "bsw": 6.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2025-09-25",
+      "votes": {
+        "spd": 19.0,
+        "afd": 38.0,
+        "cdu": 13.0,
+        "linke": 12.0,
+        "gruene": 5.0,
+        "bsw": 7.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-04-28",
+      "votes": {
+        "spd": 21.0,
+        "afd": 29.0,
+        "cdu": 17.0,
+        "linke": 15.0,
+        "gruene": 5.0,
+        "bsw": 6.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Forsa",
+      "date": "2025-02-07",
+      "votes": {
+        "spd": 21.0,
+        "afd": 29.0,
+        "cdu": 16.0,
+        "linke": 8.0,
+        "gruene": 7.0,
+        "fdp": 3.0,
+        "bsw": 9.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2025-01-28",
+      "votes": {
+        "spd": 22.0,
+        "afd": 30.0,
+        "cdu": 17.0,
+        "linke": 7.0,
+        "gruene": 6.0,
+        "fdp": 3.0,
+        "bsw": 10.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": null
+    }
+  ]
+}

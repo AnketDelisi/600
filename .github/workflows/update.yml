@@ -30,6 +30,8 @@ jobs:
           python scraper/scrape_all.py
           python scraper/scrape_israel.py
           python scraper/scrape_saxony_anhalt.py
+          python scraper/scrape_mecklenburg_vorpommern.py
+          python scraper/scrape_berlin.py
 
       - name: Commit and push to main
         run: |

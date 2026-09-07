@@ -1,0 +1,39 @@
+{
+  "country": "berlin",
+  "country_name": "Berlin",
+  "country_name_de": "Berlin",
+  "system": "PR (party-list, Hare/Niemeyer)",
+  "seats_total": 130,
+  "seats_constituency": 78,
+  "threshold": 5.0,
+  "constituencies": 78,
+  "seat_method": "Hare/Niemeyer (largest remainder)",
+  "election_date": "2026-09-20",
+  "parties": [
+    { "id": "cdu", "name": "Christlich Demokratische Union", "name_de": "CDU", "color": "#6B6B6B" },
+    { "id": "spd", "name": "Sozialdemokratische Partei Deutschlands", "name_de": "SPD", "color": "#E3000F" },
+    { "id": "gruene", "name": "Bündnis 90/Die Grünen", "name_de": "Grüne", "color": "#64A12D" },
+    { "id": "linke", "name": "Die Linke", "name_de": "Die Linke", "color": "#B60055" },
+    { "id": "afd", "name": "Alternative für Deutschland", "name_de": "AfD", "color": "#40A0D8" },
+    { "id": "fdp", "name": "Freie Demokratische Partei", "name_de": "FDP", "color": "#FFED00" },
+    { "id": "bsw", "name": "Bündnis Sahra Wagenknecht", "name_de": "BSW", "color": "#8E44AD" }
+  ],
+  "blocs": {
+    "bloc1": { "name": "Firewall", "parties": ["cdu", "spd", "gruene", "linke", "fdp"], "names": ["CDU", "SPD", "Grüne", "Linke", "FDP"], "color": "#111827" },
+    "bloc2": { "name": "AfD", "parties": ["afd"], "names": ["AfD"], "color": "#40A0D8" },
+    "kingmaker": "bsw",
+    "kingmaker_label": "BSW Kingmaker",
+    "kingmaker_color": "#8E44AD"
+  },
+  "last_election": {
+    "date": "2023-02-12",
+    "results": {
+      "cdu": 28.2, "spd": 18.4, "gruene": 18.4, "linke": 12.2,
+      "afd": 9.1, "fdp": 4.6, "bsw": 0
+    },
+    "seats": {
+      "cdu": 52, "spd": 34, "gruene": 34, "linke": 22,
+      "afd": 17, "fdp": 0, "bsw": 0
+    }
+  }
+}

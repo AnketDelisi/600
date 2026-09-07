@@ -639,14 +639,14 @@ function normalizeTo(src, total){
 }
 
 function seatParliament(avg, total){
-  // Seat-based countries: round the seat averages (largest remainder),
-  // excluding parties below the electoral threshold (in seats)
-  const thSeats=THRESHOLD/100*total;
+  // Seat-based countries: round the seat averages (largest remainder).
+  // Every party that appears in the average (avg>0) is given seats so that
+  // small/listed parties stay visible on the parliament diagram.
   const fl={},frs=[];
   let sum=0;
   PARTY_ORDER.forEach(p=>{
     const m=avg[p]||0;
-    if(m<thSeats){fl[p]=0;return}
+    if(!(m>0)){fl[p]=0;return}
     const f=Math.floor(m);
     fl[p]=f;frs.push([m-f,p]);sum+=f;
   });
@@ -1014,7 +1014,7 @@ const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
 
 function runSeatForecast(avg, nSims){
   const thSeats=THRESHOLD/100*SEATS_TOTAL;
-  const maj={rg:0,td:0,hung:0};
+  const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
   const seatsBy={};
   const votesBy={};
@@ -1038,10 +1038,14 @@ function runSeatForecast(avg, nSims){
     const rems=valid.map(p=>[simVotes[p]/100*SEATS_TOTAL-seats[p],p]).sort((a,b)=>b[0]-a[0]);
     for(let i=0;i<left&&i<rems.length;i++)seats[rems[i][1]]++;
     const MAJ_TH=Math.floor(SEATS_TOTAL/2)+1;
+    const KM=BLOCS.kingmaker;
+    const kmActive=!!(KM&&!BLOCS.bloc1.parties.includes(KM)&&!BLOCS.bloc2.parties.includes(KM));
+    const kmS=kmActive?(seats[KM]||0):0;
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     if(rg>=MAJ_TH)maj.rg++;
     else if(td>=MAJ_TH)maj.td++;
+    else if(kmActive&&(rg+kmS>=MAJ_TH||td+kmS>=MAJ_TH))maj.km++;
     else maj.hung++;
     let top=PARTY_ORDER[0],topN=(seats[PARTY_ORDER[0]]||0);
     for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
@@ -1054,7 +1058,7 @@ function runSeatForecast(avg, nSims){
 function runForecast(avg, nSims){
   if(SEAT_BASED) return runSeatForecast(avg, nSims);
   const K=FORECAST_K;
-  const maj={rg:0,td:0,hung:0};
+  const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
   const seatsBy={};
   const votesBy={};
@@ -1071,8 +1075,12 @@ function runForecast(avg, nSims){
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
     const MAJ_TH=Math.floor(simTotal/2)+1;
+    const KM=BLOCS.kingmaker;
+    const kmActive=!!(KM&&!BLOCS.bloc1.parties.includes(KM)&&!BLOCS.bloc2.parties.includes(KM));
+    const kmS=kmActive?(seats[KM]||0):0;
     if(rg>=MAJ_TH)maj.rg++;
     else if(td>=MAJ_TH)maj.td++;
+    else if(kmActive&&(rg+kmS>=MAJ_TH||td+kmS>=MAJ_TH))maj.km++;
     else maj.hung++;
     let top=PARTY_ORDER[0],topN=(seats[PARTY_ORDER[0]]||0);
     for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
@@ -1149,7 +1157,9 @@ function renderForecast(pane){
   }
   const maj=sim.maj;
   const majTotal=sim.nSims;
-  const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal;
+  const kmDefined=!!BLOCS.kingmaker;
+  const KM_COLOR=BLOCS.kingmakerColor||'#F59E0B';
+  const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal, kmP=kmDefined?((maj.km||0)/majTotal):0;
   const expectedSeats=Math.round(PARTY_ORDER.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
   const MAJ=Math.floor(expectedSeats/2)+1;
 
@@ -1184,6 +1194,7 @@ function renderForecast(pane){
   const majorityBar=`<div class="fc-majbar">
     <div class="fc-majseg" style="width:${(rgP*100).toFixed(1)}%;background:${BLOCS.bloc1.color}"></div>
     <div class="fc-majseg" style="width:${(tdP*100).toFixed(1)}%;background:${BLOCS.bloc2.color}"></div>
+    ${kmDefined?`<div class="fc-majseg" style="width:${(kmP*100).toFixed(1)}%;background:${KM_COLOR}"></div>`:''}
     <div class="fc-majseg" style="width:${(hungP*100).toFixed(1)}%;background:#9CA3AF"></div>
   </div>`;
 
@@ -1260,9 +1271,10 @@ function renderForecast(pane){
     </div>`;
   });
 
-  const leadOutcome=rgP>=tdP?BLOCS.bloc1.name:BLOCS.bloc2.name;
-  const leadColor=rgP>=tdP?BLOCS.bloc1.color:BLOCS.bloc2.color;
-  const leadPct=Math.max(rgP,tdP)*100;
+  const leadCands=[{n:BLOCS.bloc1.name,c:BLOCS.bloc1.color,p:rgP},{n:BLOCS.bloc2.name,c:BLOCS.bloc2.color,p:tdP}];
+  if(kmDefined)leadCands.push({n:BLOCS.kingmakerLabel||'Kingmaker',c:KM_COLOR,p:kmP});
+  leadCands.sort((a,b)=>b.p-a.p);
+  const leadOutcome=leadCands[0].n, leadColor=leadCands[0].c, leadPct=leadCands[0].p*100;
 
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
@@ -1294,6 +1306,7 @@ function renderForecast(pane){
       <div class="fc-majlegend">
         <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${pct100(rgP)}</span>
         <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${pct100(tdP)}</span>
+        ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${pct100(kmP)}</span>`:''}
         <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>

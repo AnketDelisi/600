@@ -11,9 +11,29 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-09-06T10:12:52Z",
-  "poll_count": 92,
+  "scraped_at": "2026-09-07T07:03:05Z",
+  "poll_count": 94,
   "polls": [
+    {
+      "pollster": "Novus",
+      "date": "2026-09-07",
+      "votes": {
+        "S": 27.0,
+        "M": 17.9,
+        "SD": 19.7,
+        "V": 7.8,
+        "C": 7.7,
+        "KD": 6.0,
+        "MP": 7.8,
+        "L": 4.3
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 2888,
+      "fieldwork_start": "2026-09-01",
+      "fieldwork_end": "2026-09-05"
+    },
     {
       "pollster": "Indikator",
       "date": "2026-09-04",
@@ -75,24 +95,41 @@
       "fieldwork_end": "2026-09-01"
     },
     {
-      "pollster": "Novus",
-      "date": "2026-09-01",
+      "pollster": "Infostat",
+      "date": "2026-09-02",
       "votes": {
-        "S": 25.8,
-        "M": 17.2,
-        "SD": 20.7,
-        "V": 8.4,
-        "C": 8.3,
-        "KD": 6.5,
-        "MP": 7.8,
-        "L": 3.3
+        "S": 27.2,
+        "M": 17.5,
+        "SD": 20.2,
+        "V": 8.7,
+        "C": 8.1,
+        "KD": 5.8,
+        "MP": 7.5,
+        "L": 2.5
       },
       "country": "sweden",
       "source": "SwedishPolls",
       "source_url": "https://github.com/MansMeg/SwedishPolls",
-      "n": 2984,
-      "fieldwork_start": "2026-08-24",
-      "fieldwork_end": "2026-08-30"
+      "n": 1590,
+      "fieldwork_start": "2026-08-25",
+      "fieldwork_end": "2026-09-01"
+    },
+    {
+      "pollster": "Novus",
+      "date": "2026-09-01",
+      "votes": {
+        "V": 7.8,
+        "S": 27.0,
+        "MP": 7.8,
+        "C": 7.7,
+        "L": 4.3,
+        "M": 17.9,
+        "KD": 6.0,
+        "SD": 19.7
+      },
+      "country": "sweden",
+      "date_end": "2026-09-05",
+      "n": 2888
     },
     {
       "pollster": "Sentio",

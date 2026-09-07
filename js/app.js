@@ -2133,12 +2133,12 @@ function drawHistoryLine(canvas, hist, mode){
   ctx.clearRect(0,0,W,H);
 
   const elec=hist.elections||[];
-  // filter elections with data for this mode
+  // elections with data for this mode
   const valid=elec.filter(e=>mode==='votes'?(e.results&&Object.keys(e.results).length):(e.seats&&Object.keys(e.seats).length));
   if(valid.length<2) return;
   const years=valid.map(e=>e.year);
 
-  // parties to plot: those present in >=2 elections (or the modern 8)
+  // parties to stack: present in >=2 elections, in PARTY_ORDER
   const count={};
   valid.forEach(e=>{
     const src=mode==='votes'?e.results:(e.seats||{});
@@ -2146,14 +2146,25 @@ function drawHistoryLine(canvas, hist, mode){
   });
   const parties=Object.keys(count).filter(p=>count[p]>=2).sort((a,b)=>PARTY_ORDER.indexOf(a)-PARTY_ORDER.indexOf(b));
 
+  // per-year values (0 when missing) and the total cap (100 for %, seat total for seats)
+  const valOf=(e,p)=>{const src=mode==='votes'?e.results:(e.seats||{});const v=src[p];return (v==null||isNaN(v))?0:v};
+  const caps=valid.map(e=>{
+    if(mode==='votes') return 100;
+    const tot=Object.values(e.seats||{}).reduce((a,b)=>a+b,0);
+    return tot||349;
+  });
+  const mat=parties.map(p=>valid.map((e,i)=>valOf(e,p)));
+
   const pad={top:16,right:50,bottom:30,left:44};
   const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
-  const yMax=mode==='votes'?60:360;
+  const yMax=Math.max(...caps, mode==='votes'?100:360);
   const yMin=0;
+  const xFor=i=>pad.left+(i/(valid.length-1))*cw;
+  const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));
 
   // grid + y labels
   ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
-  const yTicks=mode==='votes'?6:4;
+  const yTicks=4;
   for(let i=0;i<=yTicks;i++){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
@@ -2161,46 +2172,70 @@ function drawHistoryLine(canvas, hist, mode){
     ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
     ctx.fillText(String(Math.round(v)),pad.left-4,y+3);
   }
-  // x labels
   ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
-    const x=pad.left+(i/(years.length-1))*cw;
-    ctx.fillText(String(years[i]),x,H-pad.bottom+12);
+    ctx.fillText(String(years[i]),xFor(i),H-pad.bottom+12);
   }
 
-  const xFor=i=>pad.left+(i/(years.length-1))*cw;
-  const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));
-
-  // lines per party
-  parties.forEach(p=>{
-    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-    ctx.beginPath();
-    ctx.strokeStyle=col;ctx.lineWidth=2;
-    let started=false;
-    valid.forEach((e,i)=>{
-      const src=mode==='votes'?e.results:(e.seats||{});
-      const v=src[p];
-      if(v==null||isNaN(v)){return}
-      const x=xFor(i), y=yFor(v);
-      if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y);
-    });
-    ctx.stroke();
-    // endpoint dot + label
-    let lastIdx=-1;
-    valid.forEach((e,i)=>{
-      const src=mode==='votes'?e.results:(e.seats||{});
-      if(src[p]!=null&&!isNaN(src[p])) lastIdx=i;
-    });
-    if(lastIdx>=0){
-      const src=mode==='votes'?valid[lastIdx].results:(valid[lastIdx].seats||{});
-      const v=src[p];
-      const x=xFor(lastIdx), y=yFor(v);
-      ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
-      ctx.fillStyle=col;ctx.font='800 9px '+(getComputedStyle(document.body).fontFamily||'sans-serif');
-      ctx.textAlign='left';
-      ctx.fillText(partyCode(p),x+4,y-4);
+  // stacked area: parties in order bottom-to-top, with an "others" remainder band on top
+  // cumulative tops per band
+  const bandVals=mat.map(col=>col.slice());
+  const others=valid.map((e,i)=>Math.max(0,caps[i]-parties.reduce((a,p,k)=>a+mat[k][i],0)));
+  bandVals.push(others);
+  // cumulative top for each band (bands drawn bottom-up; last band is "others")
+  const cumTop=bandVals.map((col,bi)=>{
+    const out=col.slice();
+    for(let j=0;j<bi;j++) out[j]+= (j===0?0:0); // placeholder; recompute below
+    return out;
+  });
+  // recompute properly: cumTop[b][i] = sum of bandVals[0..b][i]
+  for(let b=0;b<bandVals.length;b++){
+    for(let i=0;i<valid.length;i++){
+      cumTop[b][i]=(b===0?0:cumTop[b-1][i])+bandVals[b][i];
     }
+  }
+
+  // draw bands bottom-up (party 0 first ... others last on top)
+  const colors=[...parties.map(p=>PARTY_META[p]?PARTY_META[p].color:'#888'), '#C9CDD4'];
+  for(let b=0;b<bandVals.length;b++){
+    if(bandVals[b].every(v=>v===0)) continue;
+    ctx.beginPath();
+    for(let i=0;i<valid.length;i++){
+      const x=xFor(i), y=yFor(cumTop[b][i]);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    for(let i=valid.length-1;i>=0;i--){
+      const x=xFor(i), yb=yFor(b===0?0:cumTop[b-1][i]);
+      ctx.lineTo(x,yb);
+    }
+    ctx.closePath();
+    ctx.fillStyle=colors[b];
+    ctx.fill();
+  }
+
+  // separators between bands (crisp edges)
+  ctx.lineWidth=1;
+  for(let b=0;b<bandVals.length-1;b++){
+    if(bandVals[b].every(v=>v===0)) continue;
+    ctx.strokeStyle='rgba(255,255,255,0.5)';
+    ctx.beginPath();
+    for(let i=0;i<valid.length;i++){
+      const x=xFor(i), y=yFor(cumTop[b][i]);
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+  }
+
+  // right-edge labels per party band
+  const last=valid.length-1;
+  parties.forEach((p,k)=>{
+    const top=cumTop[k][last], bot=(k===0?0:cumTop[k-1][last]);
+    const midY=yFor((top+bot)/2);
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    ctx.fillStyle=col;ctx.font='800 9px '+(getComputedStyle(document.body).fontFamily||'sans-serif');
+    ctx.textAlign='left';
+    ctx.fillText(partyCode(p),xFor(last)+5,midY+3);
   });
 
   // ---- hover tooltip ----
@@ -2225,7 +2260,6 @@ function drawHistoryLine(canvas, hist, mode){
       return `<div class="map-tip-row"><span class="map-tip-code" style="color:${col}">${partyCode(p)}</span><span class="map-tip-now">${pct(src[p])}</span></div>`;
     }).join('');
     tip.innerHTML=`<div class="map-tip-head"><div class="map-tip-title">${ev2.year} ${t('ELECTION','SEÇİMİ')}</div></div>${rows}`;
-    // position tooltip near cursor, clamped
     const tipW=tip.offsetWidth||170, tipH=tip.offsetHeight||120;
     let left=Math.max(4,Math.min(mx+14,r.width-tipW-4));
     let top=Math.max(4,Math.min(e.clientY-r.top+14,r.height-tipH-4));

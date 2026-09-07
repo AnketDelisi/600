@@ -69,8 +69,11 @@ function applyLang(){
     const tab=b.dataset.tab;
     if(T.tabs[tab]!=null&&b.textContent!==T.tabs[tab]) b.textContent=T.tabs[tab];
   });
-  const mainBtn=[...document.querySelectorAll('.tab-social')].find(a=>a.textContent.trim()==='MAIN'||a.textContent.trim()==='ANA');
-  if(mainBtn) mainBtn.textContent=T.main;
+  document.querySelectorAll('.tab-social').forEach(a=>{
+    const txt=a.textContent.trim();
+    if(txt==='MAIN'||txt==='ANA') a.textContent=T.main;
+    else if(txt==='ARCHIVE'||txt==='ARŞİV') a.textContent=t('ARCHIVE','ARŞİV');
+  });
 }
 function toggleLang(){
   LANG=(LANG==='tr')?'en':'tr';
@@ -100,7 +103,9 @@ function injectLangToggle(){
   btn.textContent=(LANG==='tr')?'EN':'TR';
   btn.title=(LANG==='tr')?'Switch to English':'Türkçeye geç';
   btn.addEventListener('click',toggleLang);
-  nav.appendChild(btn);
+  const group=nav.querySelector('.segnav-right');
+  if(group) group.appendChild(btn);
+  else nav.appendChild(btn);
   applyLang();
 }
 document.addEventListener('DOMContentLoaded',()=>{injectLangToggle();});

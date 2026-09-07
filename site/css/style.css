@@ -54,8 +54,9 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 }
 .tab-trigger:hover{color:var(--c-accent-2)}
 .tab-trigger[data-active="true"]{color:#FFFFFF;background:#111827}
+.segnav-right{margin-left:auto;display:flex;gap:2px;align-items:center}
 .tab-social{
-  margin-left:auto;flex-shrink:0;display:inline-flex;align-items:center;gap:6px;
+  flex-shrink:0;display:inline-flex;align-items:center;gap:6px;
   color:#FFFFFF;background:#111827;border:2px solid #111827;text-decoration:none;
   font-family:var(--font);font-size:12px;font-weight:900;letter-spacing:0.4px;
   padding:10px 14px 8px 14px;transition:background 90ms ease, color 90ms ease;

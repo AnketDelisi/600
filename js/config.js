@@ -9,6 +9,7 @@ const COUNTRIES = {
     method: 'sainte_lague',       // modified Sainte-Laguë (divisor 1.2)
     seatBased: false,
     constituencies: true,
+    recencyHalfLifeDays: 7,       // respond faster to the latest polls
     parties: {
       S:  { name: 'Socialdemokraterna',       name_en: 'Social Democrats',  color: '#EE2020' },
       SD: { name: 'Sverigedemokraterna',       name_en: 'Sweden Democrats',  color: '#FFCD00' },
@@ -119,6 +120,8 @@ saxony_anhalt: {
     method: 'hare_niemeyer',      // Hare/Niemeyer (largest remainder, quota)
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // single-state PR with 41 constituencies; we model nationally
+    recencyHalfLifeDays: 7,       // post-election: lean on the freshest polls
+    maeKey: 'ST2026',             // weight pollsters by their 2026 LSA accuracy
     parties: {
       cdu:    { code: 'CDU',   name: 'Christlich Demokratische Union',        name_en: 'Christian Democratic Union',          color: '#6B6B6B' },
       afd:    { code: 'AfD',   name: 'Alternative für Deutschland',           name_en: 'Alternative for Germany',              color: '#40A0D8' },
@@ -131,8 +134,11 @@ saxony_anhalt: {
     order: ['afd', 'cdu', 'linke', 'spd', 'gruene', 'fdp', 'bsw'],
     parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd'],
     blocs: {
-      bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'linke', 'spd', 'fdp', 'gruene', 'bsw'], color: '#111827' },
+      bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'linke', 'spd', 'fdp', 'gruene'], color: '#111827' },
       bloc2: { name: 'AfD',      short: 'AFD',  parties: ['afd'], color: '#40A0D8' },
+      kingmaker: 'bsw',
+      kingmakerLabel: 'BSW Kingmaker',
+      kingmakerColor: '#8E44AD',
     },
     // Partial PR with direct mandates: leveling seats grow the total, capped at `cap` seats (LWG LSA)
     overhang: { cap: 100, rows: 9 },
@@ -141,9 +147,10 @@ saxony_anhalt: {
       spd: 'img/de/SPD.svg', fdp: 'img/de/FDP.svg', gruene: 'img/de/Grune.svg', bsw: 'img/de/BSW.svg',
     },
     lastElection: {
-      date: '2021-06-06',
-      results: { cdu: 37.1, afd: 20.8, linke: 11.0, spd: 8.4, fdp: 6.4, gruene: 5.9, bsw: 0 },
-      seats:   { cdu: 40, afd: 23, linke: 12, spd: 9, fdp: 7, gruene: 6, bsw: 0 },
+      date: '2026-09-06',
+      // 2026 LSA official result (source: en.wikipedia.org/wiki/2026_Saxony-Anhalt_state_election)
+      results: { cdu: 17.2, afd: 43.8, linke: 8.6, spd: 9.3, fdp: 2.6, gruene: 8.9, bsw: 5.3 },
+      seats:   { cdu: 15, afd: 39, linke: 8, spd: 8, fdp: 0, gruene: 8, bsw: 5 },
     },
     map: {
       svg: 'img/saxony_anhalt.svg',
@@ -175,12 +182,14 @@ saxony_anhalt: {
       },
       // 2021 direct-mandate winners per Wahlkreis that differ from the CDU default (40 CDU + 1 AfD/Zeitz)
       winners2021: { 41: 'afd' },
+      // 2021 national Zweitstimmen — the uniform-swing baseline for the projection map
+      national2021: { cdu: 37.1, afd: 20.8, linke: 11.0, spd: 8.4, fdp: 6.4, gruene: 5.9, bsw: 0 },
     },
     pollsterMAE: {
-      "Forschungsgruppe Wahlen": { BT2025: 0.73, BT2021: 0.90, ST2021: 2.43, overall: 1.35 },
-      "Infratest dimap":         { BT2025: 1.72, BT2021: 0.82, ST2021: 3.43, overall: 1.99 },
-      INSA:                      { BT2025: 0.71, BT2021: 0.97, ST2021: 3.43, overall: 1.70 },
-      pollytix:                  { BT2025: 1.20, overall: 1.20 },
+      "Forschungsgruppe Wahlen": { BT2025: 0.73, BT2021: 0.90, ST2021: 2.43, ST2026: 2.63, overall: 1.35 },
+      "Infratest dimap":         { BT2025: 1.72, BT2021: 0.82, ST2021: 3.43, ST2026: 3.41, overall: 1.99 },
+      INSA:                      { BT2025: 0.71, BT2021: 0.97, ST2021: 3.43, ST2026: 3.16, overall: 1.70 },
+      pollytix:                  { BT2025: 1.20, ST2026: 2.73, overall: 1.20 },
       Civey:                     { BT2021: 0.82, overall: 0.82 },
       YouGov:                    { BT2025: 0.60, BT2021: 1.48, overall: 1.04 },
     },
@@ -203,6 +212,8 @@ let LAST_ELECTION = {};
 let POLLSTER_MAE = {};
 let PARTY_LOGOS = {};
 let OVERHANG = null;
+let RECENCY_HALF_LIFE = 14;
+let MAE_KEY = 'overall';
 
 function setCountry(id) {
   const c = COUNTRIES[id];
@@ -222,6 +233,8 @@ function setCountry(id) {
   POLLSTER_MAE = c.pollsterMAE || {};
   PARTY_LOGOS = c.logos || {};
   OVERHANG = c.overhang || null;
+  RECENCY_HALF_LIFE = c.recencyHalfLifeDays || 14;
+  MAE_KEY = c.maeKey || 'overall';
 }
 
 setCountry('sweden');

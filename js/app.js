@@ -190,15 +190,16 @@ async function loadData(){
 /* ---------- average calculator ---------- */
 function pollsterWeight(pollster){
   const mae=POLLSTER_MAE[pollster];
-  if(!mae||!mae.overall) return 1;
-  return 1/mae.overall;
+  if(!mae) return 1;
+  const v=mae[MAE_KEY]||mae.overall;
+  return v?1/v:1;
 }
 
-// Exponential time decay: polls halve in weight every 14 days
+// Exponential time decay: polls halve in weight every RECENCY_HALF_LIFE days
 function recencyWeight(dateStr){
   const ageDays=(Date.now()-new Date(dateStr).getTime())/(1000*60*60*24);
   if(ageDays<=0) return 1;
-  return Math.pow(0.5, ageDays/14);
+  return Math.pow(0.5, ageDays/RECENCY_HALF_LIFE);
 }
 
 function weightedAverage(polls, party){
@@ -753,9 +754,10 @@ function districtWinnerProjection(nr, avg){
   if(!gArr) return null;
   const base=conf.gebiete[gArr];
   // Uniform swing: shift each party's 2021 local share by (poll avg - 2021 national)
+  const nat=conf.national2021||LAST_ELECTION.results;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
-    const swing=(avg[p]||0)-(LAST_ELECTION.results[p]||0);
+    const swing=(avg[p]||0)-(nat[p]||0);
     const shifted=Math.max(0,(base[p]||0)+swing);
     if(shifted>bestV){bestV=shifted;best=p}
   }
@@ -782,10 +784,10 @@ async function renderMap(avg){
   holder.innerHTML=MAP_CACHE;
   const svg=holder.querySelector('svg');
   if(!svg){box.innerHTML='';return}
-  const resultMode=PARL_MODE==='2022';
+  const resultMode=PARL_MODE!=='proj';
   svg.querySelectorAll('path[id^="_"]').forEach(ph=>{
     const nr=parseInt(ph.id.slice(1),10);
-    const winner=resultMode?districtWinner2021(nr):districtWinnerProjection(nr,avg);
+    const winner=resultMode?districtWinnerProjection(nr,LAST_ELECTION.results):districtWinnerProjection(nr,avg);
     if(!winner) return;
     const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
     ph.style.fill=color;
@@ -991,8 +993,15 @@ function hashStr(s){
 let fcRand=Math.random;
 const FC_CACHE={};
 
-function forecastSigma(avg){
-  const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*FORECAST_K;
+// Dirichlet concentration K is calibrated for a rich poll sample; with few
+// polls the estimate is less certain, so K shrinks (never below 30%).
+function effectiveK(nPolls, base){
+  if(!nPolls||nPolls<=0) return base;
+  return base*Math.max(0.3, Math.min(1, nPolls/12));
+}
+
+function forecastSigma(avg, nPolls){
+  const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*effectiveK(nPolls,FORECAST_K);
   return Math.sqrt(0.3*0.7/(sumA+1))*100;
 }
 
@@ -1012,14 +1021,14 @@ function gammaSample(alpha){
 
 const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
 
-function runSeatForecast(avg, nSims){
+function runSeatForecast(avg, nSims, nPolls){
   const thSeats=THRESHOLD/100*SEATS_TOTAL;
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
   const seatsBy={};
   const votesBy={};
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
-  const alpha=PARTY_ORDER.map(p=>Math.max(0.2,(avg[p]||0)*FORECAST_K_SEATS));
+  const alpha=PARTY_ORDER.map(p=>Math.max(0.2,(avg[p]||0)*effectiveK(nPolls,FORECAST_K_SEATS)));
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);
@@ -1055,9 +1064,9 @@ function runSeatForecast(avg, nSims){
   return summarize(seatsBy,votesBy,largest,maj,nSims);
 }
 
-function runForecast(avg, nSims){
-  if(SEAT_BASED) return runSeatForecast(avg, nSims);
-  const K=FORECAST_K;
+function runForecast(avg, nSims, nPolls){
+  if(SEAT_BASED) return runSeatForecast(avg, nSims, nPolls);
+  const K=effectiveK(nPolls,FORECAST_K);
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
   const seatsBy={};
@@ -1148,11 +1157,11 @@ function renderForecast(pane){
   }
 
   // Deterministic + static: seeded simulation, cached per filter state
-  const seedKey=(POLLS[0]?POLLS[0].date:'')+'|'+daysVal+'|'+pollsterVal;
+  const seedKey=(POLLS[0]?POLLS[0].date:'')+'|'+daysVal+'|'+pollsterVal+'|'+filtered.length;
   let sim=FC_CACHE[seedKey];
   if(!sim){
     fcRand=mulberry32(hashStr(seedKey));
-    sim=runForecast(avg,3000);
+    sim=runForecast(avg,3000,filtered.length);
     FC_CACHE[seedKey]=sim;
   }
   const maj=sim.maj;
@@ -1283,7 +1292,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>
@@ -1359,9 +1368,9 @@ function renderMethodology(pane){
 
         <h3>Poll Average</h3>
         <p>The national poll average uses a <strong>triple-weighted mean</strong> combining sample size, pollster accuracy and recency:</p>
-        <span class="formula">weight_i = n_i × (1 / MAE_pollster) × 0.5^(age_days / 14)</span>
+        <span class="formula">weight_i = n_i × (1 / MAE_pollster) × 0.5^(age_days / ${RECENCY_HALF_LIFE})</span>
         <span class="formula">avg(party) = Σ(vote_i × weight_i) / Σ(weight_i)</span>
-        <p>where <em>n_i</em> is the sample size, <em>MAE_pollster</em> is the mean absolute error of the pollster across the last ${maeElections.length} elections (${maeElections.join(', ')}) and <em>age_days</em> is the age of the poll in days. Polls halve in weight every 14 days, so recent polls dominate. Pollsters with only 1-2 elections of data are assigned a default MAE of ${defaultMAE}.</p>
+        <p>where <em>n_i</em> is the sample size, <em>MAE_pollster</em> is the mean absolute error of the pollster across the last ${maeElections.length} elections (${maeElections.join(', ')}) and <em>age_days</em> is the age of the poll in days. Polls halve in weight every ${RECENCY_HALF_LIFE} days, so recent polls dominate. Pollsters with only 1-2 elections of data are assigned a default MAE of ${defaultMAE}.</p>
 
         <h3>Pollster Accuracy (MAE)</h3>
         <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the most recent elections. The MAE is the mean absolute deviation across the main parties in ${unit}:</p>
@@ -1373,7 +1382,7 @@ function renderMethodology(pane){
         </tbody></table>
 
         <h3>Seat Projection</h3>
-        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the 2021 Landtag sat 97 seats.`:''}</p>
+        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the 2026 Landtag sat 83 seats (2021: 97).`:''}</p>
         <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>
 
         <h3>Bloc Totals</h3>

@@ -12,13 +12,22 @@ const $=s=>document.getElementById(s);
 const dataBase=()=>{
   // Archive snapshots carry their own js/css/img/data locally
   if(typeof window!=='undefined'&&window.__600_LOCAL_ASSETS__) return '';
+  // Derive base from where app.js was loaded: <base>js/app.js
+  // Works for /600/, /600/sweden/, /sweden/, /site/... and archives.
+  const s=document.querySelector('script[src*="app.js"]');
+  if(s){
+    let src=s.getAttribute('src')||'';
+    if(src.startsWith('./')) src=src.slice(2);
+    const i=src.lastIndexOf('js/app.js');
+    if(i>0) return src.slice(0,i);
+  }
+  // Fallback: pathname depth
   const p=window.location.pathname;
   if(p.includes('/site/')) return '../';
   const segs=p.split('/').filter(s=>s);
-  // last segment is the page name (index.html) or empty
   const last=segs[segs.length-1]||'';
   if(last==='index.html') segs.pop();
-  const depth=segs.length; // e.g. ['600']=1 (root), ['600','sweden']=2, ['600','archive','slug']=3
+  const depth=segs.length;
   if(depth<=1) return '';
   return '../'.repeat(depth-1);
 };
@@ -1766,19 +1775,220 @@ function renderForecast(pane){
 }
 
 /* ---------- live tab (election night) ---------- */
+let LIVE_DATA=null;
+let LIVE_LOADING=false;
+let LIVE_INTERVAL=null;
+
+async function loadValu(){
+  try{
+    const resp=await fetch(dataBase()+'data/'+COUNTRY+'/valu.json');
+    if(!resp.ok) return null;
+    const j=await resp.json();
+    return j&&j.parties?j.parties:null;
+  }catch(e){return null}
+}
+
+async function loadLive(){
+  const conf=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live;
+  if(!conf) return null;
+  if(LIVE_LOADING) return LIVE_DATA;
+  LIVE_LOADING=true;
+  const urls=[conf.workerUrl, dataBase()+conf.localUrl].filter(Boolean);
+  for(const u of urls){
+    try{
+      const resp=await fetch(u);
+      if(!resp.ok) continue;
+      const j=await resp.json();
+      LIVE_DATA=j;
+      LIVE_LOADING=false;
+      return j;
+    }catch(e){}
+  }
+  LIVE_LOADING=false;
+  return null;
+}
+
+function livePartyMap(){
+  const conf=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live;
+  const map={};
+  const mk=conf&&conf.mapCode?conf.mapCode:(p=>p);
+  for(const p of PARTY_ORDER) map[mk(p)]=p;
+  return map;
+}
+
+// three-way comparison rows: live % vs valu exit poll vs forecast avg
+function liveCompareRows(live, valu, avg){
+  const map=livePartyMap();
+  const liveParties=live&&live.national&&live.national.parties||[];
+  const liveBy={};
+  liveParties.forEach(p=>{const k=map[p.code];if(k)liveBy[k]={pct:p.pct,votes:p.votes}});
+  const rows=PARTY_ORDER.slice().sort((a,b)=>{
+    const la=liveBy[a]?liveBy[a].pct:0;
+    const lb=liveBy[b]?liveBy[b].pct:0;
+    return lb-la;
+  }).map(p=>{
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const lv=liveBy[p];
+    const va=valu?valu[p]:null;
+    const fc=avg&&avg[p]!=null?avg[p]:null;
+    const lvPct=lv?lv.pct:null;
+    const maxV=Math.max(lvPct||0,va||0,fc||0,35);
+    const cells=[['LIVE',lvPct],['VALU',va],['FCST',fc]].map(([lab,v])=>{
+      const w=v!=null?Math.max(2,Math.min(100,v/maxV*100)):0;
+      return `<div class="lv-cell">
+        <div class="lv-track"><div class="lv-fill" style="width:${w}%;background:${col}"></div></div>
+        <span class="lv-val">${v!=null?pct(v):'—'}</span>
+        <span class="lv-lab">${lab}</span>
+      </div>`;
+    }).join('');
+    const swing=lvPct!=null&&LAST_ELECTION.results[p]!=null?lvPct-LAST_ELECTION.results[p]:null;
+    return `<div class="lv-row">
+      <span class="lv-code" style="color:${col}">${partyCode(p)}</span>
+      ${cells}
+      <span class="lv-swing ${swing>0.05?'up':(swing<-0.05?'down':'flat')}">${swing==null?'—':((swing>0?'+':'')+pct(swing))}</span>
+    </div>`;
+  }).join('');
+  return rows;
+}
+
 function renderLive(pane){
+  const conf=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live;
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">LIVE — ${COUNTRY_NAME}</div>
-      <div class="hero-date">Live result tracking · election night · ${LAST_ELECTION.date.slice(0,4)} result as baseline</div>
-    </div>
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LIVE RESULTS</div></div>
-      <div class="method-text" style="padding:16px">
-        <p>Live results will appear here on election night. Current election: <strong>${LAST_ELECTION.date.slice(0,4)} ${COUNTRY_NAME} election</strong>.</p>
-        <p>This tab polls the official count feed (via the Cloudflare worker) every 30 seconds and compares it against the final forecast and the exit poll (Valu).</p>
-      </div>
+      <div class="hero-date">Election night · loading official count…</div>
     </div>
   </div>`;
+loadLive().then(live=>{
+    return loadValu().then(valu=>{
+    const avg=computeAverages(recentPolls(POLLS,60));
+    const nat=live&&live.national;
+    const counted=nat?nat.counted:0;
+    const totalD=nat?nat.totalDistricts:0;
+    const countedPct=totalD?Math.round(counted/totalD*100):0;
+    const turnout=nat&&nat.turnout!=null?nat.turnout:null;
+    const updated=nat&&nat.updatedAt||(live&&live.updated)||'';
+    const rows=liveCompareRows(live, valu, avg);
+
+    // seat projection: prefer live official seats, else allocate from national pct
+    let seats=null;
+    const map=livePartyMap();
+    if(live&&live.valkretsar&&live.valkretsar.some(v=>v&&v.seats&&v.seats.length)){
+      seats={};
+      live.valkretsar.filter(Boolean).forEach(v=>{
+        v.seats.forEach(s=>{const k=map[s.code];if(k)seats[k]=(seats[k]||0)+s.seats});
+      });
+    }else if(live&&live.national&&live.national.parties){
+      const votes={};
+      live.national.parties.forEach(p=>{const k=map[p.code];if(k)votes[k]=p.pct!=null?p.pct:0});
+      seats=allocateSeatsFast(votes,SEATS_TOTAL);
+    }
+    const seatsTotal=seats?PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0):0;
+    const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
+
+    const heroLine=`${countedPct}% of ${totalD} districts counted · turnout ${turnout!=null?pct(turnout):'—'} · updated ${updated||'—'}`;
+    pane.innerHTML=`<div class="tab-pane-inner">
+      <div class="hero fc-hero">
+        <div class="hero-title">LIVE — ${COUNTRY_NAME}</div>
+        <div class="hero-date">${heroLine}</div>
+      </div>
+
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LIVE vs VALU vs FORECAST</div></div>
+        <div style="display:flex;gap:8px;align-items:center;padding:0 2px 4px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)">
+          <span style="width:44px"></span><span style="flex:1">Official count</span><span style="flex:1">Exit poll (Valu)</span><span style="flex:1">Final forecast</span><span style="width:60px;text-align:right">vs 2022</span>
+        </div>
+        ${rows}
+      </div>
+
+      ${parlSvg?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEATS (LIVE)</div></div>
+        <div class="parliament-box">${parlSvg}</div>
+        <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px;text-align:center">${seatsTotal} seats · live allocation</div>
+      </div>`:''}
+
+      ${live&&live.valkretsar?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">VALKRETS LIVE MAP</div></div>
+        <div class="map-toggle-row" style="justify-content:flex-end">
+          <button class="map-toggle-btn parl-btn lv-map-btn active" data-lvmode="live">LIVE</button>
+          <button class="map-toggle-btn parl-btn lv-map-btn" data-lvmode="res">2022 RESULT</button>
+          <button class="shot-btn" id="lv-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
+        </div>
+        <div class="parliament-box" id="live-map-box"></div>
+      </div>`:''}
+    </div>`;
+    bindLiveMap(live);
+    const shot=$('lv-map-shot-btn');
+    if(shot) shot.addEventListener('click',()=>captureBoxMap('live-map-box', COUNTRY+'-live-map.png'));
+    // auto-refresh every 30s while the LIVE tab is visible
+    if(LIVE_INTERVAL) clearInterval(LIVE_INTERVAL);
+    LIVE_INTERVAL=setInterval(()=>{
+      const p=$('pane-live');
+      if(!p||p.style.display==='none') return;
+      LIVE_DATA=null;
+      loadLive().then(nl=>{
+        if(nl) renderLive(p);
+      });
+    },30000);
+    });
+  });
+}
+
+function bindLiveMap(live){
+  const box=$('live-map-box');
+  if(!box) return;
+  // build per-valkrets avg-shaped shares from live data and render
+  const render=()=>{
+    const mode=document.querySelector('.lv-map-btn.active')?document.querySelector('.lv-map-btn.active').dataset.lvmode:'live';
+    renderLiveMapInto(box, live, mode);
+  };
+  document.querySelectorAll('.lv-map-btn').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.lv-map-btn').forEach(x=>x.classList.toggle('active',x===b));
+      render();
+    });
+  });
+  render();
+}
+
+// map for live valkrets data: reuses districtShares machinery but replaces base
+// with live per-valkrets parties. We build a pseudo-avg so districtWinnerProjection works.
+function renderLiveMapInto(box, live, mode){
+  const conf=MAP_CONF();
+  if(!conf) return;
+  if(!conf.useConstituencies) return; // live map only for Sweden-style constituency maps
+  if(mode!=='live'){
+    // 2022 RESULT: use the normal machinery (constituencies.json results_2022)
+    return renderMapInto(box, LAST_ELECTION.results, true);
+  }
+  const map=livePartyMap();
+  // live valkretsar are ordered RD_01..RD_29; map index -> constituency id via
+  // CONSTITUENCIES order (which matches Valmyndigheten's valkrets numbering)
+  const cList=(CONSTITUENCIES&&CONSTITUENCIES.constituencies)||[];
+  const vkShares={};
+  (live&&live.valkretsar||[]).forEach((v,i)=>{
+    if(!v||!v.parties) return;
+    const cid=cList[i]?cList[i].id:String(i+1).padStart(2,'0');
+    const s={};
+    v.parties.forEach(p=>{
+      const k=map[p.code];
+      if(k){
+        const past=LAST_ELECTION.results[k]!=null?LAST_ELECTION.results[k]:0;
+        s[k]={past,now:p.pct!=null?p.pct:0};
+      }
+    });
+    vkShares[cid]=s;
+  });
+  renderMapIntoWithShares(box, LAST_ELECTION.results, false, vkShares);
+}
+
+function renderMapIntoWithShares(box, avg, resultMode, vkShares){
+  // Reuse renderMapInto but inject per-district shares for Sweden live data.
+  // Implemented by temporarily swapping districtShares, calling renderMapInto, restoring.
+  const orig=districtShares;
+  districtShares=(nr,a,rm)=>{
+    const id=String(nr);
+    if(vkShares&&vkShares[id]) return vkShares[id];
+    return orig(nr,a,rm);
+  };
+  return renderMapInto(box, avg, resultMode).finally(()=>{districtShares=orig});
 }
 
 function mean(arr){
@@ -1895,6 +2105,7 @@ PARL_MODE='proj';
     PARL_VIEW='seats';
     FC_MODE='proj';
     MAP_COLOR='party';
+    if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
     const pollsBtn=document.querySelector('[data-tab="polls"]');

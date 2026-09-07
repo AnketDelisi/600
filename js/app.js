@@ -2088,62 +2088,25 @@ function renderHistory(pane){
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${t('HISTORY','GEÇMİŞ')} — ${COUNTRY_NAME}</div>
-      <div class="hero-date">${t('Past election results · vote share and seat composition','Geçmiş seçim sonuçları · oy oranı ve sandalye dağılımı')} · ${LAST_ELECTION.date.slice(0,4)}</div>
+      <div class="hero-date">${t('Party vote shares, seats and turnout over time · hover a point for details','Oy oranları, sandalyeler ve katılım yıllara göre · ayrıntılar için üzerine gelin')} · ${LAST_ELECTION.date.slice(0,4)}</div>
     </div>
   </div>`;
   loadHistory().then(hist=>{
     if(!hist||!hist.elections||!hist.elections.length){
-      pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">HISTORY</div></div><div class="method-text" style="padding:16px"><p>${t('No historical data available for','Bu ülke için geçmiş veri yok')} ${COUNTRY_NAME}.</p></div></div></div>`;
+      pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.history}</div></div><div class="method-text" style="padding:16px"><p>${t('No historical data available for','Bu ülke için geçmiş veri yok')} ${COUNTRY_NAME}.</p></div></div></div>`;
       return;
     }
-    const cards=hist.elections.map(e=>{
-      const seats=e.seats||{};
-      const results=e.results||{};
-      const hasSeats=Object.keys(seats).length>0;
-      const sorted=PARTY_ORDER.slice().sort((a,b)=>((hasSeats?seats[b]:results[b])||0)-((hasSeats?seats[a]:results[a])||0));
-      const maxS=Math.max(...sorted.map(p=>seats[p]||0),1);
-      const bars=hasSeats?sorted.map(p=>{
-        const s=seats[p]||0;
-        const r=results[p];
-        const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-        const w=s?Math.max(2,Math.round(s/maxS*100)):0;
-        return `<div class="fc-row">
-          <span class="fc-row-label" style="color:${col}">${partyCode(p)}</span>
-          <div class="fc-row-bar"><div class="fc-row-fill" style="width:${w}%;background:${col}"></div></div>
-          <span class="fc-seat-mean">${s}</span>
-          ${r!=null?`<span class="fc-vote-val" style="width:52px;text-align:right">${pct(r)}</span>`:'<span style="width:52px"></span>'}
-        </div>`;
-      }).join(''):'';
-      const parlSvg=hasSeats?buildParliamentSVG(seats):'';
-return `<div class="card">
-        <div class="card-head"><div class="bar"></div><div class="t">${e.year} ${t('ELECTION','SEÇİMİ')}</div></div>
-        <div class="hero-date" style="margin-bottom:8px">${e.date||''} · ${t('turnout','katılım')} ${e.turnout!=null?pct(e.turnout):'—'}${e.note?' · '+e.note:''}</div>
-        <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
-          <th>${t('Party','Parti')}</th>${hasSeats?`<th class="c">${T.seats}</th>`:''}<th class="c">%</th>
-        </tr></thead><tbody>
-          ${sorted.map(p=>{
-            const s=seats[p]||0, r=results[p];
-            const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-            return `<tr><td style="font-weight:700;color:${col}">${partyCode(p)}</td>${hasSeats?`<td class="num c" style="font-weight:900">${s}</td>`:''}<td class="num c">${r!=null?pct(r):'—'}</td></tr>`;
-          }).join('')}
-          ${hasSeats?`<tr style="border-top:3px solid var(--c-edge)"><td style="font-weight:900">${t('TOTAL','TOPLAM')}</td><td class="num c" style="font-weight:900">${Object.values(seats).reduce((a,b)=>a+b,0)}</td><td></td></tr>`:''}
-        </tbody></table></div>
-        ${parlSvg?`<div class="parliament-box" style="margin-top:12px">${parlSvg}</div>`:''}
-        ${bars}
-      </div>`;
-    }).join('');
-pane.innerHTML=`<div class="tab-pane-inner">
+    pane.innerHTML=`<div class="tab-pane-inner">
       <div class="hero fc-hero">
         <div class="hero-title">${t('HISTORY','GEÇMİŞ')} — ${COUNTRY_NAME}</div>
-        <div class="hero-date">${t('Past election results · vote share and seat composition','Geçmiş seçim sonuçları · oy oranı ve sandalye dağılımı')} · ${LAST_ELECTION.date.slice(0,4)}</div>
+        <div class="hero-date">${t('Party vote shares, seats and turnout over time · hover a point for details','Oy oranları, sandalyeler ve katılım yıllara göre · ayrıntılar için üzerine gelin')} · ${LAST_ELECTION.date.slice(0,4)}</div>
       </div>
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY VOTE SHARE OVER TIME','PARTİ OY ORANLARI (YILLARA GÖRE)')}</div></div>
-        <div class="chart-wrap"><canvas id="hist-votes-canvas"></canvas></div></div>
+        <div class="chart-wrap" style="position:relative"><canvas id="hist-votes-canvas"></canvas></div></div>
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY SEATS OVER TIME','PARTİ SANDALYELERİ (YILLARA GÖRE)')}</div></div>
-        <div class="chart-wrap"><canvas id="hist-seats-canvas"></canvas></div></div>
+        <div class="chart-wrap" style="position:relative"><canvas id="hist-seats-canvas"></canvas></div></div>
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('TURNOUT OVER TIME','KATILIM (YILLARA GÖRE)')}</div></div>
-        <div class="chart-wrap"><canvas id="hist-turnout-canvas"></canvas></div></div>
-      ${cards}
+        <div class="chart-wrap" style="position:relative"><canvas id="hist-turnout-canvas"></canvas></div></div>
     </div>`;
     requestAnimationFrame(()=>{
       const vc=$('hist-votes-canvas');
@@ -2152,7 +2115,7 @@ pane.innerHTML=`<div class="tab-pane-inner">
       if(sc) drawHistoryLine(sc, hist, 'seats');
       const tc=$('hist-turnout-canvas');
       if(tc) drawHistoryTurnout(tc, hist);
-});
+    });
   });
 
 }
@@ -2239,6 +2202,38 @@ function drawHistoryLine(canvas, hist, mode){
       ctx.fillText(partyCode(p),x+4,y-4);
     }
   });
+
+  // ---- hover tooltip ----
+  let tip=wrap.querySelector('.hist-tip');
+  if(!tip){
+    tip=document.createElement('div');
+    tip.className='map-tip hist-tip';
+    wrap.appendChild(tip);
+  }
+  wrap.onmousemove=e=>{
+    const r=canvas.getBoundingClientRect();
+    const mx=e.clientX-r.left;
+    const idx=Math.round((mx-pad.left)/cw*(valid.length-1));
+    if(idx<0||idx>=valid.length){tip.style.display='none';return}
+    const ev2=valid[idx];
+    const src=mode==='votes'?ev2.results:(ev2.seats||{});
+    const unit=mode==='votes'?'%':' seats';
+    const sortedP=parties.slice().sort((a,b)=>(src[b]||0)-(src[a]||0)).filter(p=>src[p]!=null&&!isNaN(src[p]));
+    if(!sortedP.length){tip.style.display='none';return}
+    const rows=sortedP.map(p=>{
+      const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+      return `<div class="map-tip-row"><span class="map-tip-code" style="color:${col}">${partyCode(p)}</span><span class="map-tip-now">${pct(src[p])}</span></div>`;
+    }).join('');
+    tip.innerHTML=`<div class="map-tip-head"><div class="map-tip-title">${ev2.year} ${t('ELECTION','SEÇİMİ')}</div></div>${rows}`;
+    // position tooltip near cursor, clamped
+    const tipW=tip.offsetWidth||170, tipH=tip.offsetHeight||120;
+    let left=Math.max(4,Math.min(mx+14,r.width-tipW-4));
+    let top=Math.max(4,Math.min(e.clientY-r.top+14,r.height-tipH-4));
+    tip.style.left=left+'px';
+    tip.style.top=top+'px';
+    tip.style.display='block';
+  };
+  wrap.onmouseleave=()=>{tip.style.display='none'};
 }
 
 // turnout line chart
@@ -2286,6 +2281,30 @@ function drawHistoryTurnout(canvas, hist){
   elec.forEach((e,i)=>{
     ctx.beginPath();ctx.arc(xFor(i),yFor(e.turnout),2,0,Math.PI*2);ctx.fillStyle='#111827';ctx.fill();
   });
+
+  // ---- hover tooltip ----
+  let tip=wrap.querySelector('.hist-tip');
+  if(!tip){
+    tip=document.createElement('div');
+    tip.className='map-tip hist-tip';
+    wrap.appendChild(tip);
+  }
+  wrap.onmousemove=e=>{
+    const r=canvas.getBoundingClientRect();
+    const mx=e.clientX-r.left;
+    const idx=Math.round((mx-pad.left)/cw*(elec.length-1));
+    if(idx<0||idx>=elec.length){tip.style.display='none';return}
+    const ev2=elec[idx];
+    tip.innerHTML=`<div class="map-tip-head"><div class="map-tip-title">${ev2.year} ${t('ELECTION','SEÇİMİ')}</div>
+      <div class="map-tip-row"><span class="map-tip-code">${t('Turnout','Katılım')}</span><span class="map-tip-now">${pct(ev2.turnout)}</span></div></div>`;
+    const tipW=tip.offsetWidth||170, tipH=tip.offsetHeight||70;
+    let left=Math.max(4,Math.min(mx+14,r.width-tipW-4));
+    let top=Math.max(4,Math.min(e.clientY-r.top+14,r.height-tipH-4));
+    tip.style.left=left+'px';
+    tip.style.top=top+'px';
+    tip.style.display='block';
+  };
+  wrap.onmouseleave=()=>{tip.style.display='none'};
 }
 
 function mean(arr){

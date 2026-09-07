@@ -2151,13 +2151,13 @@ function drawHistoryLine(canvas, hist, mode){
   const caps=valid.map(e=>{
     if(mode==='votes') return 100;
     const tot=Object.values(e.seats||{}).reduce((a,b)=>a+b,0);
-    return tot||349;
+    return tot||0;
   });
   const mat=parties.map(p=>valid.map((e,i)=>valOf(e,p)));
 
   const pad={top:16,right:50,bottom:30,left:44};
   const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
-  const yMax=Math.max(...caps, mode==='votes'?100:360);
+  const yMax=Math.max(...caps, mode==='votes'?100:349);
   const yMin=0;
   const xFor=i=>pad.left+(i/(valid.length-1))*cw;
   const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));
@@ -2252,7 +2252,7 @@ function drawHistoryLine(canvas, hist, mode){
     if(idx<0||idx>=valid.length){tip.style.display='none';return}
     const ev2=valid[idx];
     const src=mode==='votes'?ev2.results:(ev2.seats||{});
-    const sortedP=parties.slice().sort((a,b)=>(src[b]||0)-(src[a]||0)).filter(p=>src[p]!=null&&!isNaN(src[p]));
+    const sortedP=parties.slice().sort((a,b)=>(src[b]||0)-(src[a]||0)).filter(p=>src[p]!=null&&!isNaN(src[p])&&(src[p]||0)>0);
     if(!sortedP.length){tip.style.display='none';return}
     const rows=sortedP.map(p=>{
       const col=PARTY_META[p]?PARTY_META[p].color:'#888';

@@ -1,0 +1,294 @@
+{
+  "country": "berlin",
+  "source": "Wikipedia",
+  "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+  "scraped_at": "2026-09-07T09:05:02Z",
+  "poll_count": 17,
+  "polls": [
+    {
+      "pollster": "INSA",
+      "date": "2026-09-02",
+      "votes": {
+        "cdu": 20.0,
+        "spd": 15.0,
+        "gruene": 15.0,
+        "linke": 19.0,
+        "afd": 18.0,
+        "fdp": 3.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-08-31",
+      "votes": {
+        "cdu": 21.0,
+        "spd": 11.0,
+        "gruene": 18.0,
+        "linke": 19.0,
+        "afd": 18.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1279
+    },
+    {
+      "pollster": "Forsa",
+      "date": "2026-08-18",
+      "votes": {
+        "cdu": 18.0,
+        "spd": 12.0,
+        "gruene": 16.0,
+        "linke": 22.0,
+        "afd": 18.0,
+        "fdp": 3.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1535
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-08-13",
+      "votes": {
+        "cdu": 20.0,
+        "spd": 15.0,
+        "gruene": 16.0,
+        "linke": 19.0,
+        "afd": 17.0,
+        "fdp": 3.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-07-21",
+      "votes": {
+        "cdu": 18.0,
+        "spd": 13.0,
+        "gruene": 16.0,
+        "linke": 18.0,
+        "afd": 19.0,
+        "fdp": 4.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-07-15",
+      "votes": {
+        "cdu": 20.0,
+        "spd": 12.0,
+        "gruene": 17.0,
+        "linke": 22.0,
+        "afd": 16.0,
+        "fdp": 3.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1147
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-06-29",
+      "votes": {
+        "cdu": 17.0,
+        "spd": 13.0,
+        "gruene": 19.0,
+        "linke": 20.0,
+        "afd": 18.0,
+        "fdp": 3.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1165
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-05-08",
+      "votes": {
+        "cdu": 20.0,
+        "spd": 16.0,
+        "gruene": 15.0,
+        "linke": 15.0,
+        "afd": 18.0,
+        "fdp": 4.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-04-27",
+      "votes": {
+        "cdu": 19.0,
+        "spd": 14.0,
+        "gruene": 18.0,
+        "linke": 18.0,
+        "afd": 18.0,
+        "fdp": 3.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1155
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-04-14",
+      "votes": {
+        "cdu": 21.0,
+        "spd": 17.0,
+        "gruene": 15.0,
+        "linke": 15.0,
+        "afd": 17.0,
+        "fdp": 3.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-02-24",
+      "votes": {
+        "cdu": 22.0,
+        "spd": 16.0,
+        "gruene": 15.0,
+        "linke": 15.0,
+        "afd": 17.0,
+        "fdp": 4.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2026-01-14",
+      "votes": {
+        "cdu": 22.0,
+        "spd": 14.0,
+        "gruene": 16.0,
+        "linke": 18.0,
+        "afd": 17.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1173
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-01-14",
+      "votes": {
+        "cdu": 22.0,
+        "spd": 17.0,
+        "gruene": 14.0,
+        "linke": 17.0,
+        "afd": 16.0,
+        "fdp": 3.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2025-11-17",
+      "votes": {
+        "cdu": 22.0,
+        "spd": 13.0,
+        "gruene": 16.0,
+        "linke": 19.0,
+        "afd": 16.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1185
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-10-28",
+      "votes": {
+        "cdu": 23.0,
+        "spd": 16.0,
+        "gruene": 14.0,
+        "linke": 17.0,
+        "afd": 15.0,
+        "fdp": 4.0,
+        "bsw": 5.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
+    {
+      "pollster": "Infratest dimap",
+      "date": "2025-06-16",
+      "votes": {
+        "cdu": 25.0,
+        "spd": 14.0,
+        "gruene": 15.0,
+        "linke": 19.0,
+        "afd": 13.0,
+        "bsw": 4.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1148
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-05-20",
+      "votes": {
+        "cdu": 24.0,
+        "spd": 17.0,
+        "gruene": 15.0,
+        "linke": 13.0,
+        "afd": 13.0,
+        "fdp": 3.0,
+        "bsw": 7.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    }
+  ]
+}

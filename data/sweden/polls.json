@@ -11,8 +11,8 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-09-07T07:03:05Z",
-  "poll_count": 94,
+  "scraped_at": "2026-09-07T11:30:19Z",
+  "poll_count": 95,
   "polls": [
     {
       "pollster": "Novus",
@@ -312,6 +312,23 @@
       "n": 5617,
       "fieldwork_start": "2026-08-03",
       "fieldwork_end": "2026-08-16"
+    },
+    {
+      "pollster": "Indikator Opinion",
+      "date": "2026-08-18",
+      "votes": {
+        "V": 9.3,
+        "S": 27.9,
+        "MP": 6.8,
+        "C": 7.3,
+        "L": 2.2,
+        "M": 18.4,
+        "KD": 6.6,
+        "SD": 19.3
+      },
+      "country": "sweden",
+      "date_end": "2026-09-04",
+      "n": 5618
     },
     {
       "pollster": "Indikator",

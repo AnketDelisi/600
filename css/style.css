@@ -135,6 +135,7 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .map-tip{position:absolute;z-index:40;display:none;min-width:230px;max-width:300px;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:10px 12px;pointer-events:none;font-family:var(--font)}
 .map-tip-head{margin-bottom:8px;border-bottom:2px solid var(--c-edge);padding-bottom:6px}
 .map-tip-title{font-weight:900;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:6px}
+.map-tip-mp{display:inline-block;background:#111827;color:#FFFFFF;font-weight:900;font-size:9px;letter-spacing:0.5px;padding:2px 7px;border-radius:999px;margin-left:6px;vertical-align:1px}
 .map-tip-compare{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:900;white-space:nowrap}
 .map-tip-compare i{display:inline-block;width:8px;height:8px;margin-right:3px;vertical-align:-1px}
 .map-tip-past{opacity:0.45;color:var(--c-text-main)}

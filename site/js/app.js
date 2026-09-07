@@ -675,6 +675,7 @@ function renderPollsTable(polls){
 let PARL_MODE='proj';    // 'proj' or '2022'
 let PARL_VIEW='seats';   // 'seats' or 'map'
 let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
+let MAP_COLOR='party';   // district map coloring: 'party' or 'bloc' (Sweden)
 
 function normalizeTo(src, total){
   // direct seat counts (2022 RESULT for seat-based countries), scaled to total
@@ -776,12 +777,13 @@ function renderParliament(avg){
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
       ${mapConf?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">MAP</button>`:''}
+      ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">BLOCS</button>`:''}
     </div>`;
   const box=showMap
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
-    ?`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold · map = ${mapConf?Object.keys(mapConf.districts).length:''} constituencies, colored by district winner`
+    ?`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold · map = ${mapConf?Object.keys(mapConf.districts).length:''} constituencies, colored by ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies)?'leading bloc':'district winner'}`
     :`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold`;
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
     ${btnRow}
@@ -831,7 +833,7 @@ function districtShares(nr, avg, resultMode){
     const c=constituencyById(nr);
     if(!c) return null;
     base=c.results_2022||{};
-  }else if(resultMode&&conf.wkResults&&conf.wkResults[String(nr)]){
+  }else if(conf.wkResults&&conf.wkResults[String(nr)]){
     base=conf.wkResults[String(nr)];
   }else{
     const gArr=conf.districts?conf.districts[String(nr)]:null;
@@ -848,16 +850,22 @@ function districtShares(nr, avg, resultMode){
   return out;
 }
 
-// MP seats a party holds from a district:
-// Sweden = official 2022 per-constituency seats (mp2022), Germany = 0/undefined
-// (each Wahlkreis elects one directly, so the pill is not shown)
-function districtPartySeats(nr, party){
+// MP seats a party holds from a district (Sweden only):
+// - result mode: official 2022 per-constituency seats (mp2022, fasta + utjämningsmandat)
+// - projection mode: Sainte-Laguë allocation of the constituency's fasta seats
+//   from the current poll avg, honoring the 4% national / 12% valkrets rule
+function districtPartySeats(nr, party, avg, resultMode){
   const conf=MAP_CONF();
-  if(conf.useConstituencies&&conf.mp2022){
+  if(!conf.useConstituencies) return null;
+  if(resultMode){
     const lbl=Object.keys(conf.districts).find(k=>conf.districts[k]===String(nr));
-    if(lbl&&conf.mp2022[lbl]) return conf.mp2022[lbl][party]||0;
+    if(lbl&&conf.mp2022&&conf.mp2022[lbl]) return conf.mp2022[lbl][party]||0;
+    return 0;
   }
-  return null;
+  const c=constituencyById(nr);
+  if(!c||!avg) return null;
+  const alloc=allocateConstituencySeats(avg,c);
+  return alloc[party]||0;
 }
 
 // MP seats of a district: Sweden = fixed valkretsmandat; Germany = 1 direct mandate
@@ -892,6 +900,29 @@ function districtResultWinner(nr){
     if(shares[p].past>bestV){bestV=shares[p].past;best=p}
   }
   return best;
+}
+
+// Bloc totals of a district: sum each bloc's member parties' shares
+// returns {bloc1:{past,now}, bloc2:{past,now}}
+function districtBlocTotals(shares){
+  const out={};
+  for(const bk of ['bloc1','bloc2']){
+    const b=BLOCS[bk];
+    if(!b) continue;
+    let past=0,now=0;
+    for(const p of b.parties){
+      if(shares[p]){past+=shares[p].past;now+=shares[p].now}
+    }
+    out[bk]={past,now};
+  }
+  return out;
+}
+
+// Leading bloc of a district under given totals
+function leadingBloc(blocTotals, key){
+  const a=blocTotals.bloc1?blocTotals.bloc1[key]:0;
+  const b=blocTotals.bloc2?blocTotals.bloc2[key]:0;
+  return a>=b?'bloc1':'bloc2';
 }
 
 let MAP_CACHE={};
@@ -956,13 +987,21 @@ async function renderMapInto(box, avg, resultMode){
     if(!nr) return;
     const shares=districtShares(nr, avg, resultMode);
     if(!shares) return;
+    const blocMode=MAP_COLOR==='bloc'&&BLOCS.bloc1&&BLOCS.bloc2;
+    const blocTotals=blocMode?districtBlocTotals(shares):null;
     // RESULT mode: official per-district winners (winners2021 map / wkResults
-    // argmax / per-constituency 2022), else the uniform-swing projection
-    const winner=resultMode
-      ?(districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results))
-      :districtWinnerProjection(nr,avg);
+    // argmax / per-constituency 2022), else the uniform-swing projection.
+    // Bloc mode colors by the leading bloc instead.
+    let winner;
+    if(blocMode){
+      winner=leadingBloc(blocTotals,resultMode?'past':'now');
+    }else{
+      winner=resultMode
+        ?(districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results))
+        :districtWinnerProjection(nr,avg);
+    }
     if(!winner) return;
-    const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
+    const color=blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888');
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
       ph.style.stroke='#ffffff';
@@ -972,6 +1011,36 @@ async function renderMapInto(box, avg, resultMode){
     const meta=districtMeta(nr, conf.selector==='label'?ph.getAttribute('data-label'):null);
     ph.addEventListener('mouseenter',()=>{
       ph.style.opacity='0.65';
+      if(blocMode){
+        const pastBloc=leadingBloc(blocTotals,'past');
+        const nowBloc=leadingBloc(blocTotals,'now');
+        const blocRows=['bloc1','bloc2'].map(bk=>{
+          const b=BLOCS[bk];
+          const t=blocTotals[bk];
+          const delta=t.now-t.past;
+          const col=b?b.color:'#888';
+          const barW=Math.max(2,Math.min(100,t.now));
+          return `<div class="map-tip-row">
+            <span class="map-tip-code" style="color:${col}">${b?b.name:'?'}</span>
+            <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
+            <span class="map-tip-now">${pct(t.now)}</span>
+            <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
+          </div>`;
+        }).join('');
+        const pbCol=BLOCS[pastBloc]?BLOCS[pastBloc].color:'#888';
+        const nbCol=BLOCS[nowBloc]?BLOCS[nowBloc].color:'#888';
+        tooltip.innerHTML=`<div class="map-tip-head">
+          <div class="map-tip-title">${conf.useConstituencies?'':`WK ${nr} · `}${meta.name}</div>
+          <div class="map-tip-compare">
+            <span class="map-tip-past"><i style="background:${pbCol}"></i>${LAST_ELECTION.date.slice(0,4)} ${BLOCS[pastBloc]?BLOCS[pastBloc].short||BLOCS[pastBloc].name:''}</span>
+            <span class="map-tip-arrow">→</span>
+            <span class="map-tip-nowlab"><i style="background:${nbCol}"></i>${resultMode?'RESULT':(BLOCS[nowBloc]?BLOCS[nowBloc].short||BLOCS[nowBloc].name:'')}</span>
+          </div>
+        </div>
+        ${blocRows}`;
+        tooltip.style.display='block';
+        return;
+      }
       const pastWinner=districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results);
       const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
       const rows=PARTY_ORDER.slice().sort((a,b)=>shares[b].now-shares[a].now).map(p=>{
@@ -979,7 +1048,7 @@ async function renderMapInto(box, avg, resultMode){
         const delta=s.now-s.past;
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
         const barW=Math.max(2,Math.min(100,s.now));
-        const pSeats=districtPartySeats(nr,p);
+        const pSeats=districtPartySeats(nr,p,avg,resultMode);
         const pill=pSeats!==null&&pSeats>0?`<span class="map-tip-pill">${pSeats}</span>`:'';
         return `<div class="map-tip-row">
           <span class="map-tip-code" style="color:${col}">${partyCode(p)}${pill}</span>
@@ -1145,6 +1214,7 @@ function bindParlToggles(avg){
     btn.addEventListener('click',()=>{
       if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
       if(btn.dataset.parlview) PARL_VIEW=(PARL_VIEW==='map')?'seats':'map';
+      if(btn.dataset.mapcolor) MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
       renderPollsTab();
     });
   });
@@ -1532,6 +1602,7 @@ function renderForecast(pane){
       <div class="map-toggle-row" style="justify-content:flex-end">
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">PROJECTION</button>
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
+        ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">BLOCS</button>`:''}
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
@@ -1580,6 +1651,17 @@ function renderForecast(pane){
       btn.addEventListener('click',()=>{
         FC_MODE=btn.dataset.fcmode;
         pane.querySelectorAll('.fc-map-btn').forEach(b=>b.classList.toggle('active',b===btn));
+        const fcBox=$('fc-map-box');
+        if(fcBox){
+          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
+          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+        }
+      });
+    });
+    pane.querySelectorAll('.fc-map-color-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
+        pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.toggle('active',b===btn));
         const fcBox=$('fc-map-box');
         if(fcBox){
           const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
@@ -1701,6 +1783,7 @@ window._600={
 PARL_MODE='proj';
     PARL_VIEW='seats';
     FC_MODE='proj';
+    MAP_COLOR='party';
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
     const pollsBtn=document.querySelector('[data-tab="polls"]');

@@ -2099,9 +2099,10 @@ function renderHistory(pane){
     const cards=hist.elections.map(e=>{
       const seats=e.seats||{};
       const results=e.results||{};
-      const sorted=PARTY_ORDER.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
+      const hasSeats=Object.keys(seats).length>0;
+      const sorted=PARTY_ORDER.slice().sort((a,b)=>((hasSeats?seats[b]:results[b])||0)-((hasSeats?seats[a]:results[a])||0));
       const maxS=Math.max(...sorted.map(p=>seats[p]||0),1);
-      const bars=sorted.map(p=>{
+      const bars=hasSeats?sorted.map(p=>{
         const s=seats[p]||0;
         const r=results[p];
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
@@ -2112,32 +2113,178 @@ function renderHistory(pane){
           <span class="fc-seat-mean">${s}</span>
           ${r!=null?`<span class="fc-vote-val" style="width:52px;text-align:right">${pct(r)}</span>`:'<span style="width:52px"></span>'}
         </div>`;
-      }).join('');
-      const parlSvg=buildParliamentSVG(seats);
-      return `<div class="card">
+      }).join(''):'';
+      const parlSvg=hasSeats?buildParliamentSVG(seats):'';
+return `<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${e.year} ${t('ELECTION','SEÇİMİ')}</div></div>
         <div class="hero-date" style="margin-bottom:8px">${e.date||''} · ${t('turnout','katılım')} ${e.turnout!=null?pct(e.turnout):'—'}${e.note?' · '+e.note:''}</div>
         <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
-          <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">%</th>
+          <th>${t('Party','Parti')}</th>${hasSeats?`<th class="c">${T.seats}</th>`:''}<th class="c">%</th>
         </tr></thead><tbody>
           ${sorted.map(p=>{
             const s=seats[p]||0, r=results[p];
             const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-            return `<tr><td style="font-weight:700;color:${col}">${partyCode(p)}</td><td class="num c" style="font-weight:900">${s}</td><td class="num c">${r!=null?pct(r):'—'}</td></tr>`;
+            return `<tr><td style="font-weight:700;color:${col}">${partyCode(p)}</td>${hasSeats?`<td class="num c" style="font-weight:900">${s}</td>`:''}<td class="num c">${r!=null?pct(r):'—'}</td></tr>`;
           }).join('')}
-          <tr style="border-top:3px solid var(--c-edge)"><td style="font-weight:900">${t('TOTAL','TOPLAM')}</td><td class="num c" style="font-weight:900">${Object.values(seats).reduce((a,b)=>a+b,0)}</td><td></td></tr>
+          ${hasSeats?`<tr style="border-top:3px solid var(--c-edge)"><td style="font-weight:900">${t('TOTAL','TOPLAM')}</td><td class="num c" style="font-weight:900">${Object.values(seats).reduce((a,b)=>a+b,0)}</td><td></td></tr>`:''}
         </tbody></table></div>
-        <div class="parliament-box" style="margin-top:12px">${parlSvg}</div>
+        ${parlSvg?`<div class="parliament-box" style="margin-top:12px">${parlSvg}</div>`:''}
         ${bars}
       </div>`;
     }).join('');
-    pane.innerHTML=`<div class="tab-pane-inner">
+pane.innerHTML=`<div class="tab-pane-inner">
       <div class="hero fc-hero">
         <div class="hero-title">${t('HISTORY','GEÇMİŞ')} — ${COUNTRY_NAME}</div>
         <div class="hero-date">${t('Past election results · vote share and seat composition','Geçmiş seçim sonuçları · oy oranı ve sandalye dağılımı')} · ${LAST_ELECTION.date.slice(0,4)}</div>
       </div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY VOTE SHARE OVER TIME','PARTİ OY ORANLARI (YILLARA GÖRE)')}</div></div>
+        <div class="chart-wrap"><canvas id="hist-votes-canvas"></canvas></div></div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY SEATS OVER TIME','PARTİ SANDALYELERİ (YILLARA GÖRE)')}</div></div>
+        <div class="chart-wrap"><canvas id="hist-seats-canvas"></canvas></div></div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('TURNOUT OVER TIME','KATILIM (YILLARA GÖRE)')}</div></div>
+        <div class="chart-wrap"><canvas id="hist-turnout-canvas"></canvas></div></div>
       ${cards}
     </div>`;
+    requestAnimationFrame(()=>{
+      const vc=$('hist-votes-canvas');
+      if(vc) drawHistoryLine(vc, hist, 'votes');
+      const sc=$('hist-seats-canvas');
+      if(sc) drawHistoryLine(sc, hist, 'seats');
+      const tc=$('hist-turnout-canvas');
+      if(tc) drawHistoryTurnout(tc, hist);
+});
+  });
+
+}
+
+/* ---------- history line charts ---------- */
+// draws multi-party line chart (votes % or seats) across election years
+function drawHistoryLine(canvas, hist, mode){
+  const ctx=canvas.getContext('2d');
+  const wrap=canvas.parentElement;
+  const W=wrap.clientWidth||600;
+  const H=wrap.clientHeight||260;
+  canvas.width=W*2; canvas.height=H*2;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  ctx.setTransform(2,0,0,2,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const elec=hist.elections||[];
+  // filter elections with data for this mode
+  const valid=elec.filter(e=>mode==='votes'?(e.results&&Object.keys(e.results).length):(e.seats&&Object.keys(e.seats).length));
+  if(valid.length<2) return;
+  const years=valid.map(e=>e.year);
+
+  // parties to plot: those present in >=2 elections (or the modern 8)
+  const count={};
+  valid.forEach(e=>{
+    const src=mode==='votes'?e.results:(e.seats||{});
+    Object.keys(src).forEach(p=>{count[p]=(count[p]||0)+1});
+  });
+  const parties=Object.keys(count).filter(p=>count[p]>=2).sort((a,b)=>PARTY_ORDER.indexOf(a)-PARTY_ORDER.indexOf(b));
+
+  const pad={top:16,right:50,bottom:30,left:44};
+  const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
+  const yMax=mode==='votes'?60:360;
+  const yMin=0;
+
+  // grid + y labels
+  ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+  const yTicks=mode==='votes'?6:4;
+  for(let i=0;i<=yTicks;i++){
+    const y=pad.top+ch*(i/yTicks);
+    ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
+    const v=yMax-(yMax-yMin)*(i/yTicks);
+    ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillText(String(Math.round(v)),pad.left-4,y+3);
+  }
+  // x labels
+  ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
+  const xStep=Math.max(1,Math.floor(years.length/8));
+  for(let i=0;i<years.length;i+=xStep){
+    const x=pad.left+(i/(years.length-1))*cw;
+    ctx.fillText(String(years[i]),x,H-pad.bottom+12);
+  }
+
+  const xFor=i=>pad.left+(i/(years.length-1))*cw;
+  const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));
+
+  // lines per party
+  parties.forEach(p=>{
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    ctx.beginPath();
+    ctx.strokeStyle=col;ctx.lineWidth=2;
+    let started=false;
+    valid.forEach((e,i)=>{
+      const src=mode==='votes'?e.results:(e.seats||{});
+      const v=src[p];
+      if(v==null||isNaN(v)){return}
+      const x=xFor(i), y=yFor(v);
+      if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y);
+    });
+    ctx.stroke();
+    // endpoint dot + label
+    let lastIdx=-1;
+    valid.forEach((e,i)=>{
+      const src=mode==='votes'?e.results:(e.seats||{});
+      if(src[p]!=null&&!isNaN(src[p])) lastIdx=i;
+    });
+    if(lastIdx>=0){
+      const src=mode==='votes'?valid[lastIdx].results:(valid[lastIdx].seats||{});
+      const v=src[p];
+      const x=xFor(lastIdx), y=yFor(v);
+      ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
+      ctx.fillStyle=col;ctx.font='800 9px '+(getComputedStyle(document.body).fontFamily||'sans-serif');
+      ctx.textAlign='left';
+      ctx.fillText(partyCode(p),x+4,y-4);
+    }
+  });
+}
+
+// turnout line chart
+function drawHistoryTurnout(canvas, hist){
+  const ctx=canvas.getContext('2d');
+  const wrap=canvas.parentElement;
+  const W=wrap.clientWidth||600;
+  const H=wrap.clientHeight||200;
+  canvas.width=W*2; canvas.height=H*2;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  ctx.setTransform(2,0,0,2,0,0);
+  ctx.clearRect(0,0,W,H);
+
+  const elec=(hist.elections||[]).filter(e=>e.turnout!=null);
+  if(elec.length<2) return;
+  const years=elec.map(e=>e.year);
+  const pad={top:16,right:16,bottom:30,left:44};
+  const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
+  const yMin=40,yMax=100;
+
+  ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+  for(let i=0;i<=4;i++){
+    const y=pad.top+ch*(i/4);
+    ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
+    const v=yMax-(yMax-yMin)*(i/4);
+    ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillText(v+'%',pad.left-4,y+3);
+  }
+  ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
+  const xStep=Math.max(1,Math.floor(years.length/8));
+  for(let i=0;i<years.length;i+=xStep){
+    const x=pad.left+(i/(years.length-1))*cw;
+    ctx.fillText(String(years[i]),x,H-pad.bottom+12);
+  }
+  const xFor=i=>pad.left+(i/(years.length-1))*cw;
+  const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));
+
+  ctx.beginPath();
+  ctx.strokeStyle='#111827';ctx.lineWidth=2;
+  elec.forEach((e,i)=>{
+    const x=xFor(i),y=yFor(e.turnout);
+    if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+  elec.forEach((e,i)=>{
+    ctx.beginPath();ctx.arc(xFor(i),yFor(e.turnout),2,0,Math.PI*2);ctx.fillStyle='#111827';ctx.fill();
   });
 }
 

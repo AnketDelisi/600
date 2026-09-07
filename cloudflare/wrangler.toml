@@ -1,0 +1,10 @@
+name = "600-election-night"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+workers_dev = true
+
+# Election-night proxy for the 600 live site.
+# Route on your own domain, e.g. live.anketdelisi.com/sweden
+# [routes]
+# pattern = "live.anketdelisi.com/*"
+# zone_name = "anketdelisi.com"

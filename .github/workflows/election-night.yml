@@ -1,0 +1,34 @@
+name: Election Night Live
+on:
+  schedule:
+    # every 5 minutes during election night (Sweden 2026: 13 Sep 18:00-24:00 CET)
+    - cron: '*/5 16-23 13 9 *'
+  workflow_dispatch:
+    inputs:
+      country:
+        description: Country to snapshot (sweden)
+        default: sweden
+        required: false
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pull live data
+        run: |
+          python scraper/scrape_live_sweden.py
+      - name: Commit and push
+        run: |
+          git config user.name "600 bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/sweden/live.json
+          git diff --cached --quiet || git commit -m "Election night live update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push origin main

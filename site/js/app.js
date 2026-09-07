@@ -821,14 +821,18 @@ function districtWinner2021(nr){
 }
 
 // Shares of a district under a given national avg: uniform swing from the
-// district's previous-election baseline; returns per-party {party: {past, now}}
-function districtShares(nr, avg){
+// district's previous-election baseline; returns per-party {party: {past, now}}.
+// When resultMode is true, returns the actual previous election per-district
+// results (past === now) so the map shows that election's result.
+function districtShares(nr, avg, resultMode){
   const conf=MAP_CONF();
   let base;
   if(conf.useConstituencies){
     const c=constituencyById(nr);
     if(!c) return null;
     base=c.results_2022||{};
+  }else if(resultMode&&conf.wkResults&&conf.wkResults[String(nr)]){
+    base=conf.wkResults[String(nr)];
   }else{
     const gArr=conf.districts?conf.districts[String(nr)]:null;
     if(!gArr) return null;
@@ -838,10 +842,22 @@ function districtShares(nr, avg){
   const out={};
   for(const p of PARTY_ORDER){
     const past=base[p]||0;
-    const swing=(avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
+    const swing=(!resultMode&&avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
     out[p]={past, now:Math.max(0,past+swing)};
   }
   return out;
+}
+
+// MP seats a party holds from a district:
+// Sweden = official 2022 per-constituency seats (mp2022), Germany = 0/undefined
+// (each Wahlkreis elects one directly, so the pill is not shown)
+function districtPartySeats(nr, party){
+  const conf=MAP_CONF();
+  if(conf.useConstituencies&&conf.mp2022){
+    const lbl=Object.keys(conf.districts).find(k=>conf.districts[k]===String(nr));
+    if(lbl&&conf.mp2022[lbl]) return conf.mp2022[lbl][party]||0;
+  }
+  return null;
 }
 
 // MP seats of a district: Sweden = fixed valkretsmandat; Germany = 1 direct mandate
@@ -855,11 +871,25 @@ function districtSeats(nr){
 }
 
 function districtWinnerProjection(nr, avg){
-  const shares=districtShares(nr, avg);
+  const shares=districtShares(nr, avg, false);
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
     if(shares[p].now>bestV){bestV=shares[p].now;best=p}
+  }
+  return best;
+}
+
+// Winner of the previous election in a district: explicit winners map wins,
+// else argmax of the official per-district results (wkResults / results_2022)
+function districtResultWinner(nr){
+  const conf=MAP_CONF();
+  if(conf.winners2021&&conf.winners2021[String(nr)]) return conf.winners2021[String(nr)];
+  const shares=districtShares(nr, null, true);
+  if(!shares) return null;
+  let best=null,bestV=-1;
+  for(const p of PARTY_ORDER){
+    if(shares[p].past>bestV){bestV=shares[p].past;best=p}
   }
   return best;
 }
@@ -924,14 +954,13 @@ async function renderMapInto(box, avg, resultMode){
       nr=parseInt(ph.id.slice(1),10);
     }
     if(!nr) return;
-    const shares=districtShares(nr, avg);
+    const shares=districtShares(nr, avg, resultMode);
     if(!shares) return;
-    // RESULT mode: use official per-district winners when a winners map is
-    // configured (winners2021_default set) or per-constituency data exists
-    // (Sweden); otherwise fall back to the uniform-swing projection of the
-    // last election (SA: 2026 result)
-    const pastWinnerFn=(conf.winners2021_default||conf.useConstituencies)?districtWinner2021:()=>districtWinnerProjection(nr,LAST_ELECTION.results);
-    const winner=resultMode?pastWinnerFn(nr):districtWinnerProjection(nr,avg);
+    // RESULT mode: official per-district winners (winners2021 map / wkResults
+    // argmax / per-constituency 2022), else the uniform-swing projection
+    const winner=resultMode
+      ?(districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results))
+      :districtWinnerProjection(nr,avg);
     if(!winner) return;
     const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
     ph.style.fill=color;
@@ -941,18 +970,19 @@ async function renderMapInto(box, avg, resultMode){
     ph.style.cursor='pointer';
     ph.style.transition='opacity .15s ease';
     const meta=districtMeta(nr, conf.selector==='label'?ph.getAttribute('data-label'):null);
-    const mpSeats=districtSeats(nr);
     ph.addEventListener('mouseenter',()=>{
       ph.style.opacity='0.65';
-      const pastWinner=pastWinnerFn(nr);
+      const pastWinner=districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results);
       const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
       const rows=PARTY_ORDER.slice().sort((a,b)=>shares[b].now-shares[a].now).map(p=>{
         const s=shares[p];
         const delta=s.now-s.past;
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
         const barW=Math.max(2,Math.min(100,s.now));
+        const pSeats=districtPartySeats(nr,p);
+        const pill=pSeats!==null&&pSeats>0?`<span class="map-tip-pill">${pSeats}</span>`:'';
         return `<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}">${partyCode(p)}</span>
+          <span class="map-tip-code" style="color:${col}">${partyCode(p)}${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
@@ -961,7 +991,7 @@ async function renderMapInto(box, avg, resultMode){
       const pwCol=PARTY_META[pastWinner]?PARTY_META[pastWinner].color:'#888';
       const nwCol=PARTY_META[nowWinner]?PARTY_META[nowWinner].color:'#888';
       tooltip.innerHTML=`<div class="map-tip-head">
-          <div class="map-tip-title">${conf.useConstituencies?'':`WK ${nr} · `}${meta.name} <span class="map-tip-mp">${mpSeats} MP</span></div>
+          <div class="map-tip-title">${conf.useConstituencies?'':`WK ${nr} · `}${meta.name}</div>
           <div class="map-tip-compare">
             <span class="map-tip-past"><i style="background:${pwCol}"></i>${LAST_ELECTION.date.slice(0,4)} ${partyCode(pastWinner)}</span>
             <span class="map-tip-arrow">→</span>

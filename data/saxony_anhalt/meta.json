@@ -19,18 +19,21 @@
     { "id": "bsw", "name": "Bündnis Sahra Wagenknecht", "name_de": "BSW", "color": "#8E44AD" }
   ],
   "blocs": {
-    "bloc1": { "name": "Firewall", "parties": ["cdu", "linke", "spd", "fdp", "gruene", "bsw"] },
-    "bloc2": { "name": "AfD", "parties": ["afd"] }
+    "bloc1": { "name": "Firewall", "parties": ["cdu", "linke", "spd", "fdp", "gruene"] },
+    "bloc2": { "name": "AfD", "parties": ["afd"] },
+    "kingmaker": "bsw",
+    "kingmaker_label": "BSW Kingmaker",
+    "kingmaker_color": "#8E44AD"
   },
   "last_election": {
-    "date": "2021-06-06",
+    "date": "2026-09-06",
     "results": {
-      "cdu": 37.1, "afd": 20.8, "linke": 11.0, "spd": 8.4,
-      "fdp": 6.4, "gruene": 5.9, "bsw": 0
+      "cdu": 17.2, "afd": 43.8, "linke": 8.6, "spd": 9.3,
+      "fdp": 2.6, "gruene": 8.9, "bsw": 5.3
     },
     "seats": {
-      "cdu": 40, "afd": 23, "linke": 12, "spd": 9,
-      "fdp": 7, "gruene": 6, "bsw": 0
+      "cdu": 15, "afd": 39, "linke": 8, "spd": 8,
+      "fdp": 0, "gruene": 8, "bsw": 5
     }
   }
 }

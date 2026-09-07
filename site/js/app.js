@@ -32,6 +32,78 @@ const dataBase=()=>{
   return '../'.repeat(depth-1);
 };
 const isPinnedCountry=()=>!!(typeof window!=='undefined'&&window.__600_COUNTRY__);
+
+/* ---------- language ---------- */
+let LANG='en';
+try{ LANG=localStorage.getItem('600_lang')||'en'; }catch(e){}
+const t=(en,tr)=>(LANG==='tr'&&tr!=null?tr:en);
+let T={};
+function setLang(){
+  T={
+    tabs:{polls:t('POLLS','ANKETLER'),forecast:t('FORECAST','TAHMİN'),history:t('HISTORY','GEÇMİŞ'),live:t('LIVE','CANLI'),methodology:t('METHODOLOGY','YÖNTEM')},
+    main:t('MAIN','ANA'),
+    country:t('COUNTRY','ÜLKE'), filters:t('FILTERS','FİLTRELER'), timeRange:t('TIME RANGE','ZAMAN ARALIĞI'),
+    pollster:t('POLLSTER','ANKET'), allPollsters:t('All pollsters','Tüm anketler'),
+    last7:t('Last 7 days','Son 7 gün'),last14:t('Last 14 days','Son 14 gün'),last30:t('Last 30 days','Son 30 gün'),
+    last60:t('Last 60 days','Son 60 gün'),last90:t('Last 90 days','Son 90 gün'),allPolls:t('All polls','Tüm anketler'),
+    info:t('INFO','BİLGİ'), seats:t('seats','sandalye'), threshold:t('threshold','eşik'),
+    pollAvg:t('NATIONAL POLL AVERAGE','ULUSAL ANKET ORTALAMASI'), trend:t('POLL TREND','ANKET TRENDİ'),
+    seatProjection:t('SEAT PROJECTION','SANDALYE TAHMİNİ'), individualPolls:t('INDIVIDUAL POLLS','BİREYSEL ANKETLER'),
+    constituencySeats:t('CONSTITUENCY SEATS','BÖLGE SANDALYELERİ'), districtMap:t('DISTRICT MAP','BÖLGE HARİTASI'),
+    history:t('HISTORY','GEÇMİŞ'),
+    projection:t('PROJECTION','TAHMİN'), result:t('RESULT','SONUÇ'), map:t('MAP','HARİTA'), blocs:t('BLOCS','BLOKLAR'),
+    liveVs:t('LIVE vs VALU vs FORECAST','CANLI vs ÇIKIŞ ANKETİ vs TAHMİN'),
+    seatsLive:t('SEATS (LIVE)','SANDALYELER (CANLI)'),
+    liveMap:t('VALKRETS LIVE MAP','CANLI BÖLGE HARİTASI'),
+    counted:t('districts counted','bölge sayıldı'), turnout:t('turnout','katılım'), updated:t('updated','güncellendi'),
+    swing:t('vs 2022','2022 farkı'),
+    ifHeldToday:t('IF THE ELECTION WERE HELD TODAY','SEÇİM BUGÜN OLSAYDI'),
+    probabilities:t('PROBABILITIES','OLASILIKLAR'), majority:t('MAJORITY','ÇOĞUNLUK'),
+    largestParty:t('LARGEST PARTY','EN BÜYÜK PARTİ'), voteShare:t('VOTE SHARE','OY ORANI'),
+    seatDistribution:t('SEAT DISTRIBUTION','SANDALYE DAĞILIMI'),
+  };
+}
+setLang();
+function applyLang(){
+  document.querySelectorAll('.tab-trigger').forEach(b=>{
+    const tab=b.dataset.tab;
+    if(T.tabs[tab]!=null&&b.textContent!==T.tabs[tab]) b.textContent=T.tabs[tab];
+  });
+  const mainBtn=[...document.querySelectorAll('.tab-social')].find(a=>a.textContent.trim()==='MAIN'||a.textContent.trim()==='ANA');
+  if(mainBtn) mainBtn.textContent=T.main;
+}
+function toggleLang(){
+  LANG=(LANG==='tr')?'en':'tr';
+  try{localStorage.setItem('600_lang',LANG)}catch(e){}
+  setLang();
+  applyLang();
+  const btn=$('lang-toggle');
+  if(btn){btn.textContent=(LANG==='tr')?'EN':'TR';btn.title=(LANG==='tr')?'Switch to English':'Türkçeye geç';}
+  // re-render current tab
+  renderSidebar();
+  const active=document.querySelector('.tab-trigger[data-active="true"]');
+  const tabId=active?active.dataset.tab:'polls';
+  const pane=$('pane-'+tabId);
+  if(!pane) return;
+  if(tabId==='polls') renderPollsTab();
+  else if(tabId==='forecast') renderForecast(pane);
+  else if(tabId==='live') renderLive(pane);
+  else if(tabId==='history') renderHistory(pane);
+  else if(tabId==='methodology') renderMethodology(pane);
+}
+function injectLangToggle(){
+  const nav=$('segnav');
+  if(!nav) return;
+  const btn=document.createElement('button');
+  btn.className='tab-social lang-toggle';
+  btn.id='lang-toggle';
+  btn.textContent=(LANG==='tr')?'EN':'TR';
+  btn.title=(LANG==='tr')?'Switch to English':'Türkçeye geç';
+  btn.addEventListener('click',toggleLang);
+  nav.appendChild(btn);
+  applyLang();
+}
+document.addEventListener('DOMContentLoaded',()=>{injectLangToggle();});
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
 const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
@@ -61,7 +133,7 @@ document.addEventListener('click',e=>{
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
 /* ---------- load constituency data ---------- */
@@ -187,7 +259,7 @@ function renderConstituencyTable(avg){
   const votes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
   const by2022=PARL_MODE==='2022';
   return constituencyTableHtml(votes,{
-    title:`CONSTITUENCY SEATS (${by2022?'2022 RESULT':'PROJECTION'})`,
+    title:`${T.constituencySeats} (${by2022?'2022 '+T.result:T.projection})`,
     showDelta:!by2022,
     note:by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'
   });
@@ -334,37 +406,37 @@ function renderSidebar(){
   let html='';
 
   // Country selector (hidden on pinned sub-pages / archives)
-  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">COUNTRY</div></div>
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.country}</div></div>
     ${isPinnedCountry()
       ?`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`
       :`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
       ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
     </select>`}
-    <div class="sb-hint">${seatsDesc()} seats · ${methodName()} · ${THRESHOLD}% threshold</div></div>`;
+    <div class="sb-hint">${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}</div></div>`;
 
   // Filters
-  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">FILTERS</div></div>
-    <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">TIME RANGE</label>
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.filters}</div></div>
+    <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.timeRange}</label>
     <select class="sb-select" id="filter-days" onchange="window._600.applyFilters()">
-      <option value="7">Last 7 days</option>
-      <option value="14">Last 14 days</option>
-      <option value="30" selected>Last 30 days</option>
-      <option value="60">Last 60 days</option>
-      <option value="90">Last 90 days</option>
-      <option value="9999">All polls</option>
+      <option value="7">${T.last7}</option>
+      <option value="14">${T.last14}</option>
+      <option value="30" selected>${T.last30}</option>
+      <option value="60">${T.last60}</option>
+      <option value="90">${T.last90}</option>
+      <option value="9999">${T.allPolls}</option>
     </select>
-    <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">POLLSTER</label>
+    <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.pollster}</label>
     <select class="sb-select" id="filter-pollster" onchange="window._600.applyFilters()">
-      <option value="">All pollsters</option>
+      <option value="">${T.allPollsters}</option>
     </select></div>`;
 
   // Last election
-  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${LAST_ELECTION.date.slice(0,4)} RESULT</div></div>
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${LAST_ELECTION.date.slice(0,4)} ${T.result}</div></div>
     <div class="sb-last-election" id="sb-election"></div></div>`;
 
   // Info
-  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">INFO</div></div>
-    <div class="sb-hint">Data: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${seatsDesc()} seats · ${methodNameShort()} · ${THRESHOLD}% threshold<br>Next election: ${META.election_date||LAST_ELECTION.date}</div></div>`;
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.info}</div></div>
+    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}</div></div>`;
 
   c.innerHTML=html;
 
@@ -411,8 +483,8 @@ function renderHero(avg, filteredPolls){
   const logoSrc=PARTY_LOGOS[topParty]||'';
   const b=dataBase();
   return `<div class="hero">
-    <div class="hero-title">${COUNTRY_NAME} — Poll Average</div>
-    <div class="hero-date">${filteredPolls.length} polls · latest: ${latestStr} (${days}d ago) · sample-size + pollster accuracy + recency weighted</div>
+    <div class="hero-title">${COUNTRY_NAME} — ${t('Poll Average','Anket Ortalaması')}</div>
+    <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','son')}: ${latestStr} (${days}d ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
         ${logoSrc?`<img src="${b}${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
@@ -430,8 +502,8 @@ function renderPartyBars(avg){
   const maxPct=Math.max(...Object.values(avg).filter(v=>v!==null),1);
   const seats=allocateSeatsN(avg, SEATS_TOTAL);
   const order=PARTY_ORDER.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
-  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">NATIONAL POLL AVERAGE</div></div>
-    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">PARTY</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED?'':'<span class="bh-seats">SEATS</span>'}</div>`;
+  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.pollAvg}</div></div>
+    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">${t('PARTY','PARTİ')}</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED?'':'<span class="bh-seats">SEATS</span>'}</div>`;
 
   for(const pid of order){
     const val=avg[pid];
@@ -668,10 +740,10 @@ function drawChartBase(hoverIdx){
 
 /* ---------- render individual polls table ---------- */
 function renderPollsTable(polls){
-  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">INDIVIDUAL POLLS</div></div>
+  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.individualPolls}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>Date</th><th>Pollster</th><th class="c">Lead</th>`;
+      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th><th class="c">${t('Lead','Fark')}</th>`;
   PARTY_ORDER.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
 
@@ -803,19 +875,19 @@ function renderParliament(avg){
   const mapConf=MAP_CONF();
   const showMap=PARL_VIEW==='map'&&mapConf;
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
-      <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">PROJECTION</button>
-      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
-      ${mapConf?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">MAP</button>`:''}
-      ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">BLOCS</button>`:''}
+      <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
+      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+      ${mapConf?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
+      ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
     </div>`;
   const box=showMap
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
-    ?`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold · map = ${mapConf?Object.keys(mapConf.districts).length:''} constituencies, colored by ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies)?'leading bloc':'district winner'}`
-    :`${seatsTotal} seats · ${methodName()} · ${THRESHOLD}% threshold`;
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT PROJECTION</div></div>
+    ?`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${t('colored by','renklendirilen')} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`
+    :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`;
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatProjection}</div></div>
     ${btnRow}
     ${box}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
@@ -1674,30 +1746,30 @@ function renderForecast(pane){
 
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
-      <div class="hero-title">FORECAST — ${COUNTRY_NAME} 2026</div>
+      <div class="hero-title">${t('FORECAST','TAHMİN')} — ${COUNTRY_NAME} 2026</div>
       <div class="fc-headline">
-        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} majority</span>
+        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} simulations · national polling error (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} seats · ${THRESHOLD}% threshold · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} ${T.seats} · ${THRESHOLD}% ${T.threshold} · seeded, reproducible</div>
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">IF THE ELECTION WERE HELD TODAY</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div></div>
       <div class="parliament-box">${buildParliamentSVG(detSeats)}</div>
       <div style="overflow-x:auto">
       <table class="polls-table compact-table"><thead><tr>
-        <th>Party</th><th class="c">Seats</th><th class="c">Median</th><th class="c">Mode</th>
+        <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th>
       </tr></thead><tbody>${cmpRows}</tbody></table></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-        Deterministic projection from the median of the simulations (parties whose median is 0 are left out)
+        ${t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Simülasyonların medyanından deterministik tahmin (medyanı 0 olan partiler hariç)')}
       </div>
     </div>
 
-    ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">DISTRICT MAP</div></div>
+    ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div></div>
       <div class="map-toggle-row" style="justify-content:flex-end">
-        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">PROJECTION</button>
-        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
-        ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">BLOCS</button>`:''}
+        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>
+        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+        ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
@@ -1708,9 +1780,9 @@ function renderForecast(pane){
 
     ${constHtml}
 
-    <div class="fc-section"><div class="bar"></div>PROBABILITIES</div>
+    <div class="fc-section"><div class="bar"></div>${T.probabilities}</div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">MAJORITY</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
         <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${pct100(rgP)}</span>
@@ -1721,17 +1793,17 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LARGEST PARTY</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.largestParty}</div></div>
       ${largestRows}
     </div>
 
-    ${SEAT_BASED?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">VOTE SHARE</div></div>
+    ${SEAT_BASED?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.voteShare}</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations · dashed line = ${THRESHOLD}% threshold</div>
     </div>`}
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEAT DISTRIBUTION</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatDistribution}</div></div>
       <div class="fc-seathead fc-seathead-hd"><span></span><span>EXP</span><span>90% INT</span></div>
       ${seatRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
@@ -1855,7 +1927,7 @@ function renderLive(pane){
   const conf=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live;
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
-      <div class="hero-title">LIVE — ${COUNTRY_NAME}</div>
+      <div class="hero-title">${t('LIVE','CANLI')} — ${COUNTRY_NAME}</div>
       <div class="hero-date">Election night · loading official count…</div>
     </div>
   </div>`;
@@ -1886,29 +1958,29 @@ loadLive().then(live=>{
     const seatsTotal=seats?PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0):0;
     const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
 
-    const heroLine=`${countedPct}% of ${totalD} districts counted · turnout ${turnout!=null?pct(turnout):'—'} · updated ${updated||'—'}`;
+    const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updated||'—'}`;
     pane.innerHTML=`<div class="tab-pane-inner">
       <div class="hero fc-hero">
-        <div class="hero-title">LIVE — ${COUNTRY_NAME}</div>
+        <div class="hero-title">${t('LIVE','CANLI')} — ${COUNTRY_NAME}</div>
         <div class="hero-date">${heroLine}</div>
       </div>
 
-      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LIVE vs VALU vs FORECAST</div></div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveVs}</div></div>
         <div style="display:flex;gap:8px;align-items:center;padding:0 2px 4px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)">
-          <span style="width:44px"></span><span style="flex:1">Official count</span><span style="flex:1">Exit poll (Valu)</span><span style="flex:1">Final forecast</span><span style="width:60px;text-align:right">vs 2022</span>
+          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span><span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
         </div>
         ${rows}
       </div>
 
-      ${parlSvg?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">SEATS (LIVE)</div></div>
+      ${parlSvg?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatsLive}</div></div>
         <div class="parliament-box">${parlSvg}</div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px;text-align:center">${seatsTotal} seats · live allocation</div>
       </div>`:''}
 
-      ${live&&live.valkretsar?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">VALKRETS LIVE MAP</div></div>
+      ${live&&live.valkretsar?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveMap}</div></div>
         <div class="map-toggle-row" style="justify-content:flex-end">
-          <button class="map-toggle-btn parl-btn lv-map-btn active" data-lvmode="live">LIVE</button>
-          <button class="map-toggle-btn parl-btn lv-map-btn" data-lvmode="res">2022 RESULT</button>
+          <button class="map-toggle-btn parl-btn lv-map-btn active" data-lvmode="live">${t('LIVE','CANLI')}</button>
+          <button class="map-toggle-btn parl-btn lv-map-btn" data-lvmode="res">2022 ${T.result}</button>
           <button class="shot-btn" id="lv-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
         </div>
         <div class="parliament-box" id="live-map-box"></div>
@@ -1991,6 +2063,79 @@ function renderMapIntoWithShares(box, avg, resultMode, vkShares){
   return renderMapInto(box, avg, resultMode).finally(()=>{districtShares=orig});
 }
 
+/* ---------- history tab ---------- */
+let HISTORY_DATA=null;
+let HISTORY_LOADING=false;
+
+async function loadHistory(){
+  if(HISTORY_LOADING) return HISTORY_DATA;
+  HISTORY_LOADING=true;
+  try{
+    const resp=await fetch(dataBase()+'data/'+COUNTRY+'/history.json');
+    if(!resp.ok){HISTORY_LOADING=false;return null}
+    HISTORY_DATA=await resp.json();
+    HISTORY_LOADING=false;
+    return HISTORY_DATA;
+  }catch(e){HISTORY_LOADING=false;return null}
+}
+
+function renderHistory(pane){
+  pane.innerHTML=`<div class="tab-pane-inner">
+    <div class="hero fc-hero">
+      <div class="hero-title">${t('HISTORY','GEÇMİŞ')} — ${COUNTRY_NAME}</div>
+      <div class="hero-date">${t('Past election results · vote share and seat composition','Geçmiş seçim sonuçları · oy oranı ve sandalye dağılımı')} · ${LAST_ELECTION.date.slice(0,4)}</div>
+    </div>
+  </div>`;
+  loadHistory().then(hist=>{
+    if(!hist||!hist.elections||!hist.elections.length){
+      pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">HISTORY</div></div><div class="method-text" style="padding:16px"><p>${t('No historical data available for','Bu ülke için geçmiş veri yok')} ${COUNTRY_NAME}.</p></div></div></div>`;
+      return;
+    }
+    const cards=hist.elections.map(e=>{
+      const seats=e.seats||{};
+      const results=e.results||{};
+      const sorted=PARTY_ORDER.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
+      const maxS=Math.max(...sorted.map(p=>seats[p]||0),1);
+      const bars=sorted.map(p=>{
+        const s=seats[p]||0;
+        const r=results[p];
+        const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+        const w=s?Math.max(2,Math.round(s/maxS*100)):0;
+        return `<div class="fc-row">
+          <span class="fc-row-label" style="color:${col}">${partyCode(p)}</span>
+          <div class="fc-row-bar"><div class="fc-row-fill" style="width:${w}%;background:${col}"></div></div>
+          <span class="fc-seat-mean">${s}</span>
+          ${r!=null?`<span class="fc-vote-val" style="width:52px;text-align:right">${pct(r)}</span>`:'<span style="width:52px"></span>'}
+        </div>`;
+      }).join('');
+      const parlSvg=buildParliamentSVG(seats);
+      return `<div class="card">
+        <div class="card-head"><div class="bar"></div><div class="t">${e.year} ${t('ELECTION','SEÇİMİ')}</div></div>
+        <div class="hero-date" style="margin-bottom:8px">${e.date||''} · ${t('turnout','katılım')} ${e.turnout!=null?pct(e.turnout):'—'}${e.note?' · '+e.note:''}</div>
+        <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
+          <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">%</th>
+        </tr></thead><tbody>
+          ${sorted.map(p=>{
+            const s=seats[p]||0, r=results[p];
+            const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+            return `<tr><td style="font-weight:700;color:${col}">${partyCode(p)}</td><td class="num c" style="font-weight:900">${s}</td><td class="num c">${r!=null?pct(r):'—'}</td></tr>`;
+          }).join('')}
+          <tr style="border-top:3px solid var(--c-edge)"><td style="font-weight:900">${t('TOTAL','TOPLAM')}</td><td class="num c" style="font-weight:900">${Object.values(seats).reduce((a,b)=>a+b,0)}</td><td></td></tr>
+        </tbody></table></div>
+        <div class="parliament-box" style="margin-top:12px">${parlSvg}</div>
+        ${bars}
+      </div>`;
+    }).join('');
+    pane.innerHTML=`<div class="tab-pane-inner">
+      <div class="hero fc-hero">
+        <div class="hero-title">${t('HISTORY','GEÇMİŞ')} — ${COUNTRY_NAME}</div>
+        <div class="hero-date">${t('Past election results · vote share and seat composition','Geçmiş seçim sonuçları · oy oranı ve sandalye dağılımı')} · ${LAST_ELECTION.date.slice(0,4)}</div>
+      </div>
+      ${cards}
+    </div>`;
+  });
+}
+
 function mean(arr){
   return arr.reduce((a,b)=>a+b,0)/arr.length;
 }
@@ -2008,9 +2153,9 @@ function renderMethodology(pane){
   const unit=SEAT_BASED?'seats':'%';
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="card">
-      <div class="card-head"><div class="bar"></div><div class="t">METHODOLOGY</div></div>
+      <div class="card-head"><div class="bar"></div><div class="t">${T.methodology}</div></div>
       <div class="method-text">
-        <h3>Data Sources</h3>
+        <h3>${t('Data Sources','Veri Kaynakları')}</h3>
         <p>Polls are collected from the following sources:</p>
         <ul>
           <li><strong>Wikipedia</strong> — aggregated from publicly available polling tables. Primary source.</li>
@@ -2018,7 +2163,7 @@ function renderMethodology(pane){
         </ul>
         <p>Duplicate polls (same pollster + same date) are deduplicated, with Wikipedia data taking priority.</p>
 
-        <h3>Poll Average</h3>
+        <h3>${t('Poll Average','Anket Ortalaması')}</h3>
         <p>The national poll average uses a <strong>triple-weighted mean</strong> combining sample size, pollster accuracy and recency:</p>
         <span class="formula">weight_i = n_i × (1 / MAE_pollster) × 0.5^(age_days / ${RECENCY_HALF_LIFE})</span>
         <span class="formula">avg(party) = Σ(vote_i × weight_i) / Σ(weight_i)</span>
@@ -2027,7 +2172,7 @@ function renderMethodology(pane){
         ${PRIOR_ALPHA>0?`<p><strong>Prior anchor.</strong> The average is blended ${(PRIOR_ALPHA*100).toFixed(0)}% toward the ${LAST_ELECTION.date.slice(0,4)} result, so a thin or volatile poll set cannot drift arbitrarily far from the known electorate.</p>`:''}
         ${TREND_CONF?`<p><strong>Trend extrapolation.</strong> A recency-weighted linear fit over the last ${TREND_CONF.windowDays} days is projected forward to the election date (${TREND_CONF.electionDate}) and blended ${(TREND_CONF.blend*100).toFixed(0)}% into the average, capped at ${TREND_CONF.maxDaily} point/day of movement.</p>`:''}
 
-        <h3>Pollster Accuracy (MAE)</h3>
+        <h3>${t('Pollster Accuracy (MAE)','Anketçi Doğruluğu (MAE)')}</h3>
         <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the most recent elections. The MAE is the mean absolute deviation across the main parties in ${unit}:</p>
         <table class="polls-table" style="margin:8px 0"><thead><tr><th>Pollster</th><th>Elections</th><th>MAE</th></tr></thead><tbody>
         ${Object.entries(POLLSTER_MAE).sort((a,b)=>a[1].overall-b[1].overall).map(([ps,d])=>{
@@ -2036,14 +2181,14 @@ function renderMethodology(pane){
         }).join('')}
         </tbody></table>
 
-        <h3>Seat Projection</h3>
+        <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
         <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
         <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>
 
-        <h3>Bloc Totals</h3>
+        <h3>${t('Bloc Totals','Blok Toplamları')}</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>
 
-        <h3>Last Updated</h3>
+        <h3>${t('Last Updated','Son Güncelleme')}</h3>
         <p>Data is scraped automatically from Wikipedia${COUNTRY==='sweden'?' and SwedishPolls':''}. The site is updated daily via GitHub Actions.</p>
       </div>
     </div></div>`;
@@ -2067,7 +2212,7 @@ function renderPollsTab(){
   html+=renderPartyBars(avg);
 
   // Trend chart
-  html+=`<div class="card" style="margin-top:16px"><div class="card-head"><div class="bar"></div><div class="t">POLL TREND</div>
+  html+=`<div class="card" style="margin-top:16px"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
     <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
     <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>`;
 
@@ -2095,6 +2240,7 @@ window._600={
     if(!pane) return;
     if(tabId==='forecast'){renderForecast(pane)}
     else if(tabId==='live'){renderLive(pane)}
+    else if(tabId==='history'){renderHistory(pane)}
     else if(tabId==='methodology'){renderMethodology(pane)}
   },
   setCountry(id){

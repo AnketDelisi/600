@@ -85,6 +85,7 @@ def main():
       <div class="seg-nav" id="segnav">
         <button class="tab-trigger" data-tab="polls" data-active="true">POLLS</button>
         <button class="tab-trigger" data-tab="forecast">FORECAST</button>
+        <button class="tab-trigger" data-tab="history">HISTORY</button>
         <button class="tab-trigger" data-tab="live">LIVE</button>
         <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
         <a class="tab-social" href="../" title="Archive index">ARCHIVE</a>
@@ -92,6 +93,7 @@ def main():
       </div>
       <div class="tab-pane active" id="pane-polls"></div>
       <div class="tab-pane" id="pane-forecast" style="display:none"></div>
+      <div class="tab-pane" id="pane-history" style="display:none"></div>
       <div class="tab-pane" id="pane-live" style="display:none"></div>
       <div class="tab-pane" id="pane-methodology" style="display:none"></div>
     </main>

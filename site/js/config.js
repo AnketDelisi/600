@@ -279,8 +279,16 @@ saxony_anhalt: {
         seenplatte:          { spd: 39.7, cdu: 14.3, afd: 19.5, linke: 9.8,  gruene: 4.0, fdp: 5.1 },
         ludwigslust_parchim: { spd: 42.8, cdu: 13.6, afd: 16.5, linke: 9.3,  gruene: 4.0, fdp: 5.7 },
       },
-      // 2021 direct-mandate winners default SPD (SPD won almost all MV Wahlkreise)
-      winners2021: {},
+      names: {
+        schwerin: 'Schwerin', rostock: 'Rostock', nordwestmecklenburg: 'Nordwestmecklenburg',
+        landkreis_rostock: 'Landkreis Rostock', vorpommern_ruegen: 'Vorpommern-Rügen',
+        vorpommern_greifswald: 'Vorpommern-Greifswald', seenplatte: 'Mecklenburgische Seenplatte',
+        ludwigslust_parchim: 'Ludwigslust-Parchim',
+      },
+      // 2021 direct-mandate winners per Wahlkreis (source: de.wikipedia.org Liste der Landtagswahlkreise);
+      // SPD won 34 of 36; WK 13 went AfD (Enrico Schult), WK 24 CDU (Harry Glawe)
+      winners2021: { 13: 'afd', 24: 'cdu' },
+      winners2021_default: 'spd',
       // 2021 national Zweitstimmen — uniform-swing baseline (fall back via LAST_ELECTION accordingly)
       national2021: { spd: 39.6, afd: 16.7, cdu: 13.3, linke: 9.9, gruene: 6.3, fdp: 5.8, bsw: 0 },
     },
@@ -378,8 +386,29 @@ saxony_anhalt: {
         lichtenberg: { spd: 16.3, cdu: 25.4, gruene: 11.7, linke: 18.6, afd: 13.8, fdp: 3.0 },
         reinickendorf:{ spd: 20.3, cdu: 40.2, gruene: 12.0, linke: 4.5,  afd: 10.0, fdp: 4.9 },
       },
+      names: {
+        mitte: 'Mitte', fk: 'Friedrichshain-Kreuzberg', pankow: 'Pankow', cw: 'Charlottenburg-Wilmersdorf',
+        spandau: 'Spandau', sdz: 'Steglitz-Zehlendorf', ts: 'Tempelhof-Schöneberg', nk: 'Neukölln',
+        tk: 'Treptow-Köpenick', marzahn: 'Marzahn-Hellersdorf', lichtenberg: 'Lichtenberg',
+        reinickendorf: 'Reinickendorf',
+      },
+      // 2023 direct-mandate winners per Wahlkreis (78, official: wahlen-berlin.de)
+      winners2021: {
+        101:'gruene',102:'cdu',103:'gruene',104:'gruene',105:'cdu',106:'gruene',107:'gruene',
+        201:'gruene',202:'gruene',203:'gruene',204:'linke',205:'gruene',206:'gruene',
+        301:'cdu',302:'cdu',303:'gruene',304:'cdu',305:'gruene',306:'gruene',307:'gruene',308:'gruene',309:'spd',
+        401:'cdu',402:'cdu',403:'gruene',404:'cdu',405:'cdu',406:'cdu',407:'cdu',
+        501:'cdu',502:'cdu',503:'cdu',504:'cdu',505:'cdu',
+        601:'cdu',602:'cdu',603:'cdu',604:'cdu',605:'cdu',606:'cdu',607:'cdu',
+        701:'gruene',702:'gruene',703:'spd',704:'cdu',705:'cdu',706:'cdu',707:'cdu',
+        801:'gruene',802:'gruene',803:'spd',804:'cdu',805:'cdu',806:'cdu',
+        901:'linke',902:'spd',903:'cdu',904:'cdu',905:'cdu',906:'cdu',
+        1001:'afd',1002:'cdu',1003:'afd',1004:'cdu',1005:'cdu',1006:'cdu',
+        1101:'cdu',1102:'cdu',1103:'cdu',1104:'linke',1105:'linke',1106:'cdu',
+        1201:'cdu',1202:'cdu',1203:'cdu',1204:'cdu',1205:'cdu',1206:'cdu',
+      },
       // 2023 direct-mandate winners default (uniform-swing uses gebiete directly)
-      winners2021: {},
+      winners2021_default: 'cdu',
       // 2023 national Zweitstimmen — uniform-swing baseline (falls back to LAST_ELECTION anyway)
       national2021: { cdu: 28.2, spd: 18.4, gruene: 18.4, linke: 12.2, afd: 9.1, fdp: 4.6, bsw: 0 },
     },

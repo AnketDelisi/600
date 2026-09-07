@@ -129,6 +129,27 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .map-toggle-btn:hover{background:#F7F7F5}
 .map-toggle-btn.active{background:#111827;color:#FFFFFF}
 
+/* ---------- District map hover tooltip ---------- */
+#map-box{position:relative}
+#map-box svg path{transition:opacity .15s ease}
+.map-tip{position:absolute;z-index:40;display:none;min-width:230px;max-width:300px;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:10px 12px;pointer-events:none;font-family:var(--font)}
+.map-tip-head{margin-bottom:8px;border-bottom:2px solid var(--c-edge);padding-bottom:6px}
+.map-tip-title{font-weight:900;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:6px}
+.map-tip-compare{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:900;white-space:nowrap}
+.map-tip-compare i{display:inline-block;width:8px;height:8px;margin-right:3px;vertical-align:-1px}
+.map-tip-past{opacity:0.45;color:var(--c-text-main)}
+.map-tip-arrow{color:var(--c-text-muted)}
+.map-tip-nowlab{color:var(--c-text-main)}
+.map-tip-row{display:flex;align-items:center;gap:6px;padding:2px 0;white-space:nowrap}
+.map-tip-code{width:40px;font-size:10px;font-weight:900;flex-shrink:0}
+.map-tip-track{flex:1;height:8px;background:rgba(17,24,39,0.07);border:1px solid var(--c-edge);overflow:hidden}
+.map-tip-fill{height:100%}
+.map-tip-now{width:38px;text-align:right;font-size:10px;font-weight:900;font-variant-numeric:tabular-nums;flex-shrink:0}
+.map-tip-delta{width:38px;text-align:right;font-size:9px;font-weight:900;font-variant-numeric:tabular-nums;flex-shrink:0}
+.map-tip-delta.up{color:#15803D}
+.map-tip-delta.down{color:#B91C1C}
+.map-tip-delta.flat{color:var(--c-text-muted)}
+
 /* ---------- Trend chart tooltip ---------- */
 .chart-tooltip{position:absolute;z-index:20;display:none;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-md);padding:8px 10px;font-family:var(--font);font-size:11px;max-width:240px;pointer-events:none}
 .chart-tooltip.visible{display:block}

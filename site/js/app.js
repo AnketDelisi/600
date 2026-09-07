@@ -674,6 +674,7 @@ function renderPollsTable(polls){
 /* ---------- render parliament ---------- */
 let PARL_MODE='proj';    // 'proj' or '2022'
 let PARL_VIEW='seats';   // 'seats' or 'map'
+let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
 
 function normalizeTo(src, total){
   // direct seat counts (2022 RESULT for seat-based countries), scaled to total
@@ -793,10 +794,30 @@ function renderParliament(avg){
 /* ---------- district map (Germany) ---------- */
 function MAP_CONF(){ return (COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null; }
 
+// Actual direct-mandate winner of the previous election for a Wahlkreis, with
+// the state default as fallback (winners2021_default, e.g. 'cdu' for Berlin)
 function districtWinner2021(nr){
   const conf=MAP_CONF();
   const exc=conf&&conf.winners2021?conf.winners2021[String(nr)]:null;
-  return exc||'cdu';
+  if(exc) return exc;
+  return (conf&&conf.winners2021_default)||'cdu';
+}
+
+// Shares of a district under a given national avg: uniform swing from the
+// gebiet's previous-election baseline; returns per-party {party: {past, now}}
+function districtShares(nr, avg){
+  const conf=MAP_CONF();
+  const gArr=conf&&conf.districts?conf.districts[String(nr)]:null;
+  if(!gArr) return null;
+  const base=conf.gebiete[gArr];
+  const nat=conf.national2021||LAST_ELECTION.results;
+  const out={};
+  for(const p of PARTY_ORDER){
+    const past=base[p]||0;
+    const swing=(avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
+    out[p]={past, now:Math.max(0,past+swing)};
+  }
+  return out;
 }
 
 function districtWinnerProjection(nr, avg){
@@ -819,6 +840,10 @@ let MAP_CACHE={};
 async function renderMap(avg){
   const box=$('map-box');
   if(!box) return;
+  await renderMapInto(box, avg, PARL_MODE!=='proj');
+}
+
+async function renderMapInto(box, avg, resultMode){
   const conf=MAP_CONF();
   if(!conf) return;
   if(!MAP_CACHE[conf.svg]){
@@ -835,9 +860,17 @@ async function renderMap(avg){
   holder.innerHTML=MAP_CACHE[conf.svg];
   const svg=holder.querySelector('svg');
   if(!svg){box.innerHTML='';return}
-  const resultMode=PARL_MODE!=='proj';
   const selector=conf.selector==='class'?'path[class^="wk"]':'path[id^="_"]';
-  svg.querySelectorAll(selector).forEach(ph=>{
+  const paths=svg.querySelectorAll(selector);
+  const tooltip=document.createElement('div');
+  tooltip.className='map-tip';
+  box.style.position='relative';
+  box.appendChild(tooltip);
+  const districtMeta=nr=>{
+    const gArr=conf.districts[String(nr)];
+    return {gArr, name:conf.names&&conf.names[gArr]?conf.names[gArr]:gArr};
+  };
+  paths.forEach(ph=>{
     let nr=null;
     if(conf.selector==='class'){
       const m=/wk(\d+)/.exec(ph.getAttribute('class')||'');
@@ -846,13 +879,65 @@ async function renderMap(avg){
       nr=parseInt(ph.id.slice(1),10);
     }
     if(!nr) return;
-    const winner=resultMode?districtWinnerProjection(nr,LAST_ELECTION.results):districtWinnerProjection(nr,avg);
+    const shares=districtShares(nr, avg);
+    if(!shares) return;
+    // RESULT mode: use official per-district winners when a winners map is
+    // configured (winners2021_default set); otherwise fall back to the
+    // uniform-swing projection of the last election (SA: 2026 result)
+    const pastWinnerFn=conf.winners2021_default?districtWinner2021:()=>districtWinnerProjection(nr,LAST_ELECTION.results);
+    const winner=resultMode?pastWinnerFn(nr):districtWinnerProjection(nr,avg);
     if(!winner) return;
     const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
       ph.style.stroke='#ffffff';
     }
+    ph.style.cursor='pointer';
+    ph.style.transition='opacity .15s ease';
+    const meta=districtMeta(nr);
+    ph.addEventListener('mouseenter',()=>{
+      ph.style.opacity='0.65';
+      const pastWinner=pastWinnerFn(nr);
+      const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
+      const rows=PARTY_ORDER.slice().sort((a,b)=>shares[b].now-shares[a].now).map(p=>{
+        const s=shares[p];
+        const delta=s.now-s.past;
+        const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+        const barW=Math.max(2,Math.min(100,s.now));
+        return `<div class="map-tip-row">
+          <span class="map-tip-code" style="color:${col}">${partyCode(p)}</span>
+          <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
+          <span class="map-tip-now">${pct(s.now)}</span>
+          <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
+        </div>`;
+      }).join('');
+      const pwCol=PARTY_META[pastWinner]?PARTY_META[pastWinner].color:'#888';
+      const nwCol=PARTY_META[nowWinner]?PARTY_META[nowWinner].color:'#888';
+      tooltip.innerHTML=`<div class="map-tip-head">
+          <div class="map-tip-title">WK ${nr} · ${meta.name}</div>
+          <div class="map-tip-compare">
+            <span class="map-tip-past"><i style="background:${pwCol}"></i>${LAST_ELECTION.date.slice(0,4)} ${partyCode(pastWinner)}</span>
+            <span class="map-tip-arrow">→</span>
+            <span class="map-tip-nowlab"><i style="background:${nwCol}"></i>${resultMode?'RESULT':(PARTY_META[nowWinner]?PARTY_META[nowWinner].name_en.split(' ').slice(0,2).join(' '):nowWinner)}</span>
+          </div>
+        </div>
+        ${rows}`;
+      tooltip.style.display='block';
+    });
+    ph.addEventListener('mouseleave',()=>{
+      ph.style.opacity='';
+      tooltip.style.display='none';
+    });
+  });
+  svg.addEventListener('mousemove',e=>{
+    const rect=box.getBoundingClientRect();
+    const tipW=tooltip.offsetWidth||220;
+    const tipH=tooltip.offsetHeight||140;
+    const x=e.clientX-rect.left, y=e.clientY-rect.top;
+    let left=Math.max(4,Math.min(x+14,rect.width-tipW-4));
+    let top=Math.max(4,Math.min(y+14,rect.height-tipH-4));
+    tooltip.style.left=left+'px';
+    tooltip.style.top=top+'px';
   });
   svg.setAttribute('viewBox', svg.getAttribute('viewBox')||'0 0 894 1140');
   svg.removeAttribute('width');
@@ -862,6 +947,7 @@ async function renderMap(avg){
   svg.style.display='block';
   box.innerHTML='';
   box.appendChild(svg);
+  box.appendChild(tooltip);
 }
 
 function allocateSeatsN(votes, totalSeats){
@@ -1365,6 +1451,17 @@ function renderForecast(pane){
       </div>
     </div>
 
+    ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">DISTRICT MAP</div></div>
+      <div class="map-toggle-row" style="justify-content:flex-end">
+        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">PROJECTION</button>
+        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
+      </div>
+      <div class="parliament-box" id="fc-map-box"></div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
+        District winners from the forecast's median national vote shares · hover a district for the past/forecast comparison
+      </div>
+    </div>`:''}
+
     ${constHtml}
 
     <div class="fc-section"><div class="bar"></div>PROBABILITIES</div>
@@ -1396,6 +1493,24 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
     </div>
   </div>`;
+  if(MAP_CONF()){
+    const fcBox=$('fc-map-box');
+    if(fcBox){
+      const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
+      renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+    }
+    pane.querySelectorAll('.fc-map-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        FC_MODE=btn.dataset.fcmode;
+        pane.querySelectorAll('.fc-map-btn').forEach(b=>b.classList.toggle('active',b===btn));
+        const fcBox=$('fc-map-box');
+        if(fcBox){
+          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
+          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+        }
+      });
+    });
+  }
 }
 
 function mean(arr){
@@ -1508,6 +1623,7 @@ window._600={
     for(const k in FC_CACHE) delete FC_CACHE[k];
 PARL_MODE='proj';
     PARL_VIEW='seats';
+    FC_MODE='proj';
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
     const pollsBtn=document.querySelector('[data-tab="polls"]');

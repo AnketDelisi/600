@@ -4,6 +4,25 @@
 
 /* ---------- helpers ---------- */
 const $=s=>document.getElementById(s);
+// Base path for data/ assets:
+//   /600/               -> ''          (Pages root)
+//   /600/site/          -> '../'       (local dev under site/)
+//   /600/<country>/     -> '../'       (country sub-page wrapper)
+//   /600/archive/<slug>/-> '../../'    (frozen archive snapshot)
+const dataBase=()=>{
+  // Archive snapshots carry their own js/css/img/data locally
+  if(typeof window!=='undefined'&&window.__600_LOCAL_ASSETS__) return '';
+  const p=window.location.pathname;
+  if(p.includes('/site/')) return '../';
+  const segs=p.split('/').filter(s=>s);
+  // last segment is the page name (index.html) or empty
+  const last=segs[segs.length-1]||'';
+  if(last==='index.html') segs.pop();
+  const depth=segs.length; // e.g. ['600']=1 (root), ['600','sweden']=2, ['600','archive','slug']=3
+  if(depth<=1) return '';
+  return '../'.repeat(depth-1);
+};
+const isPinnedCountry=()=>!!(typeof window!=='undefined'&&window.__600_COUNTRY__);
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
 const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
@@ -33,7 +52,7 @@ document.addEventListener('click',e=>{
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
 /* ---------- load constituency data ---------- */
@@ -43,8 +62,7 @@ async function loadConstituencies(){
   CONSTITUENCIES=null;
   if(!HAS_CONSTITUENCIES) return;
   try{
-    const isSubdir=window.location.pathname.includes('/site/');
-    const base=isSubdir?'../':'';
+    const base=dataBase();
     const resp=await fetch(base+'data/'+COUNTRY+'/constituencies.json');
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     CONSTITUENCIES=await resp.json();
@@ -172,8 +190,7 @@ let POLLS=[], META={};
 async function loadData(){
   try{
     // Detect base: local dev (site/ subdir) vs Pages (root)
-    const isSubdir=window.location.pathname.includes('/site/');
-    const base=isSubdir?'../':'';
+    const base=dataBase();
     const [pollsResp, metaResp]=await Promise.all([
       fetch(base+'data/'+COUNTRY+'/polls.json'),
       fetch(base+'data/'+COUNTRY+'/meta.json')
@@ -307,11 +324,13 @@ function renderSidebar(){
   const c=$('sidebar-content');
   let html='';
 
-  // Country selector
+  // Country selector (hidden on pinned sub-pages / archives)
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">COUNTRY</div></div>
-    <select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
+    ${isPinnedCountry()
+      ?`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`
+      :`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
       ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
-    </select>
+    </select>`}
     <div class="sb-hint">${seatsDesc()} seats · ${methodName()} · ${THRESHOLD}% threshold</div></div>`;
 
   // Filters
@@ -381,12 +400,13 @@ function renderHero(avg, filteredPolls){
   const color=PARTY_META[topParty]?PARTY_META[topParty].color:'#888';
 
   const logoSrc=PARTY_LOGOS[topParty]||'';
+  const b=dataBase();
   return `<div class="hero">
     <div class="hero-title">${COUNTRY_NAME} — Poll Average</div>
     <div class="hero-date">${filteredPolls.length} polls · latest: ${latestStr} (${days}d ago) · sample-size + pollster accuracy + recency weighted</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
-        ${logoSrc?`<img src="${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
+        ${logoSrc?`<img src="${b}${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
       </div>
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
@@ -417,7 +437,7 @@ function renderPartyBars(avg){
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
-        ${PARTY_LOGOS[pid]?`<img src="${PARTY_LOGOS[pid]}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${partyCode(pid)}</span>`}
+        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${partyCode(pid)}</span>`}
       </div>
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
@@ -938,7 +958,7 @@ async function renderMapInto(box, avg, resultMode){
   if(!conf) return;
   if(!MAP_CACHE[conf.svg]){
     try{
-      const resp=await fetch(conf.svg);
+      const resp=await fetch(dataBase()+conf.svg);
       if(!resp.ok) throw new Error('HTTP '+resp.status);
       MAP_CACHE[conf.svg]=await resp.text();
     }catch(e){
@@ -1745,6 +1765,22 @@ function renderForecast(pane){
   }
 }
 
+/* ---------- live tab (election night) ---------- */
+function renderLive(pane){
+  pane.innerHTML=`<div class="tab-pane-inner">
+    <div class="hero fc-hero">
+      <div class="hero-title">LIVE — ${COUNTRY_NAME}</div>
+      <div class="hero-date">Live result tracking · election night · ${LAST_ELECTION.date.slice(0,4)} result as baseline</div>
+    </div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">LIVE RESULTS</div></div>
+      <div class="method-text" style="padding:16px">
+        <p>Live results will appear here on election night. Current election: <strong>${LAST_ELECTION.date.slice(0,4)} ${COUNTRY_NAME} election</strong>.</p>
+        <p>This tab polls the official count feed (via the Cloudflare worker) every 30 seconds and compares it against the final forecast and the exit poll (Valu).</p>
+      </div>
+    </div>
+  </div>`;
+}
+
 function mean(arr){
   return arr.reduce((a,b)=>a+b,0)/arr.length;
 }
@@ -1848,6 +1884,7 @@ window._600={
     const pane=$('pane-'+tabId);
     if(!pane) return;
     if(tabId==='forecast'){renderForecast(pane)}
+    else if(tabId==='live'){renderLive(pane)}
     else if(tabId==='methodology'){renderMethodology(pane)}
   },
   setCountry(id){

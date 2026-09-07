@@ -531,4 +531,7 @@ function setCountry(id) {
   TREND_CONF = c.trend || null;
 }
 
-setCountry('sweden');
+// Sub-page / archive wrapper: a country can be pinned via window.__600_COUNTRY__
+const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'sweden';
+
+setCountry(BOOT_COUNTRY);

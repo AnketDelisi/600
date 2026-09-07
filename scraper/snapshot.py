@@ -88,8 +88,10 @@ def main():
         <button class="tab-trigger" data-tab="history">HISTORY</button>
         <button class="tab-trigger" data-tab="live">LIVE</button>
         <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
-        <a class="tab-social" href="../" title="Archive index">ARCHIVE</a>
-        <a class="tab-social" href="../../" title="Main site">MAIN</a>
+        <div class="segnav-right">
+          <a class="tab-social" href="../" title="Archive index">ARCHIVE</a>
+          <a class="tab-social" href="../../" title="Main site">MAIN</a>
+        </div>
       </div>
       <div class="tab-pane active" id="pane-polls"></div>
       <div class="tab-pane" id="pane-forecast" style="display:none"></div>

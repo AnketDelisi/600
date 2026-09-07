@@ -791,25 +791,49 @@ function renderParliament(avg){
     </div></div>`;
 }
 
-/* ---------- district map (Germany) ---------- */
+/* ---------- district map (Germany / Sweden) ---------- */
 function MAP_CONF(){ return (COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null; }
 
-// Actual direct-mandate winner of the previous election for a Wahlkreis, with
-// the state default as fallback (winners2021_default, e.g. 'cdu' for Berlin)
+function constituencyById(id){
+  if(!CONSTITUENCIES||!CONSTITUENCIES.constituencies) return null;
+  return CONSTITUENCIES.constituencies.find(c=>c.id===String(id))||null;
+}
+
+// Actual direct-mandate winner of the previous election for a Wahlkreis /
+// valkrets, with the state default as fallback
 function districtWinner2021(nr){
   const conf=MAP_CONF();
+  if(conf.useConstituencies){
+    const c=constituencyById(nr);
+    if(c&&c.results_2022){
+      let best=null,bv=-1;
+      for(const p of PARTY_ORDER){
+        const v=c.results_2022[p]||0;
+        if(v>bv){bv=v;best=p}
+      }
+      if(best) return best;
+    }
+    return 'S';
+  }
   const exc=conf&&conf.winners2021?conf.winners2021[String(nr)]:null;
   if(exc) return exc;
   return (conf&&conf.winners2021_default)||'cdu';
 }
 
 // Shares of a district under a given national avg: uniform swing from the
-// gebiet's previous-election baseline; returns per-party {party: {past, now}}
+// district's previous-election baseline; returns per-party {party: {past, now}}
 function districtShares(nr, avg){
   const conf=MAP_CONF();
-  const gArr=conf&&conf.districts?conf.districts[String(nr)]:null;
-  if(!gArr) return null;
-  const base=conf.gebiete[gArr];
+  let base;
+  if(conf.useConstituencies){
+    const c=constituencyById(nr);
+    if(!c) return null;
+    base=c.results_2022||{};
+  }else{
+    const gArr=conf.districts?conf.districts[String(nr)]:null;
+    if(!gArr) return null;
+    base=conf.gebiete[gArr];
+  }
   const nat=conf.national2021||LAST_ELECTION.results;
   const out={};
   for(const p of PARTY_ORDER){
@@ -820,18 +844,22 @@ function districtShares(nr, avg){
   return out;
 }
 
-function districtWinnerProjection(nr, avg){
+// MP seats of a district: Sweden = fixed valkretsmandat; Germany = 1 direct mandate
+function districtSeats(nr){
   const conf=MAP_CONF();
-  const gArr=conf&&conf.districts?conf.districts[String(nr)]:null;
-  if(!gArr) return null;
-  const base=conf.gebiete[gArr];
-  // Uniform swing: shift each party's 2021 local share by (poll avg - 2021 national)
-  const nat=conf.national2021||LAST_ELECTION.results;
+  if(conf.useConstituencies){
+    const c=constituencyById(nr);
+    return c?c.seats:1;
+  }
+  return 1;
+}
+
+function districtWinnerProjection(nr, avg){
+  const shares=districtShares(nr, avg);
+  if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
-    const swing=(avg[p]||0)-(nat[p]||0);
-    const shifted=Math.max(0,(base[p]||0)+swing);
-    if(shifted>bestV){bestV=shifted;best=p}
+    if(shares[p].now>bestV){bestV=shares[p].now;best=p}
   }
   return best;
 }
@@ -857,24 +885,41 @@ async function renderMapInto(box, avg, resultMode){
     }
   }
   const holder=document.createElement('div');
-  holder.innerHTML=MAP_CACHE[conf.svg];
+  // Sweden: paths carry inkscape:label (namespaced attr, lost in innerHTML parse) — normalize to data-label
+  const raw=MAP_CACHE[conf.svg];
+  holder.innerHTML=conf.selector==='label'?raw.replace(/inkscape:label=/g,'data-label='):raw;
   const svg=holder.querySelector('svg');
   if(!svg){box.innerHTML='';return}
-  const selector=conf.selector==='class'?'path[class^="wk"]':'path[id^="_"]';
+  let selector;
+  if(conf.selector==='class') selector='path[class^="wk"]';
+  else if(conf.selector==='label') selector='path[data-label]';
+  else selector='path[id^="_"]';
   const paths=svg.querySelectorAll(selector);
   const tooltip=document.createElement('div');
   tooltip.className='map-tip';
   box.style.position='relative';
   box.appendChild(tooltip);
-  const districtMeta=nr=>{
+  // District display name: explicit wkNames (MV), Bezirk + number (Berlin class),
+  // map label (Sweden), else gebiet name
+  const districtMeta=(nr,lbl)=>{
+    if(conf.useConstituencies){
+      return {gArr:nr, name:lbl||(constituencyById(nr)?constituencyById(nr).name:String(nr))};
+    }
     const gArr=conf.districts[String(nr)];
-    return {gArr, name:conf.names&&conf.names[gArr]?conf.names[gArr]:gArr};
+    const baseName=conf.names&&conf.names[gArr]?conf.names[gArr]:gArr;
+    let name=baseName;
+    if(conf.wkNames&&conf.wkNames[String(nr)]) name=conf.wkNames[String(nr)];
+    else if(conf.selector==='class'&&gArr) name=`${baseName} ${nr%100}`;
+    return {gArr, name};
   };
   paths.forEach(ph=>{
     let nr=null;
     if(conf.selector==='class'){
       const m=/wk(\d+)/.exec(ph.getAttribute('class')||'');
       if(m) nr=parseInt(m[1],10);
+    }else if(conf.selector==='label'){
+      const lbl=ph.getAttribute('data-label');
+      if(lbl&&conf.districts[lbl]) nr=conf.districts[lbl];
     }else{
       nr=parseInt(ph.id.slice(1),10);
     }
@@ -882,9 +927,10 @@ async function renderMapInto(box, avg, resultMode){
     const shares=districtShares(nr, avg);
     if(!shares) return;
     // RESULT mode: use official per-district winners when a winners map is
-    // configured (winners2021_default set); otherwise fall back to the
-    // uniform-swing projection of the last election (SA: 2026 result)
-    const pastWinnerFn=conf.winners2021_default?districtWinner2021:()=>districtWinnerProjection(nr,LAST_ELECTION.results);
+    // configured (winners2021_default set) or per-constituency data exists
+    // (Sweden); otherwise fall back to the uniform-swing projection of the
+    // last election (SA: 2026 result)
+    const pastWinnerFn=(conf.winners2021_default||conf.useConstituencies)?districtWinner2021:()=>districtWinnerProjection(nr,LAST_ELECTION.results);
     const winner=resultMode?pastWinnerFn(nr):districtWinnerProjection(nr,avg);
     if(!winner) return;
     const color=PARTY_META[winner]?PARTY_META[winner].color:'#888';
@@ -894,7 +940,8 @@ async function renderMapInto(box, avg, resultMode){
     }
     ph.style.cursor='pointer';
     ph.style.transition='opacity .15s ease';
-    const meta=districtMeta(nr);
+    const meta=districtMeta(nr, conf.selector==='label'?ph.getAttribute('data-label'):null);
+    const mpSeats=districtSeats(nr);
     ph.addEventListener('mouseenter',()=>{
       ph.style.opacity='0.65';
       const pastWinner=pastWinnerFn(nr);
@@ -914,11 +961,11 @@ async function renderMapInto(box, avg, resultMode){
       const pwCol=PARTY_META[pastWinner]?PARTY_META[pastWinner].color:'#888';
       const nwCol=PARTY_META[nowWinner]?PARTY_META[nowWinner].color:'#888';
       tooltip.innerHTML=`<div class="map-tip-head">
-          <div class="map-tip-title">WK ${nr} · ${meta.name}</div>
+          <div class="map-tip-title">${conf.useConstituencies?'':`WK ${nr} · `}${meta.name} <span class="map-tip-mp">${mpSeats} MP</span></div>
           <div class="map-tip-compare">
             <span class="map-tip-past"><i style="background:${pwCol}"></i>${LAST_ELECTION.date.slice(0,4)} ${partyCode(pastWinner)}</span>
             <span class="map-tip-arrow">→</span>
-            <span class="map-tip-nowlab"><i style="background:${nwCol}"></i>${resultMode?'RESULT':(PARTY_META[nowWinner]?PARTY_META[nowWinner].name_en.split(' ').slice(0,2).join(' '):nowWinner)}</span>
+            <span class="map-tip-nowlab"><i style="background:${nwCol}"></i>${resultMode?'RESULT':partyCode(nowWinner)}</span>
           </div>
         </div>
         ${rows}`;

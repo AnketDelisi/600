@@ -128,6 +128,8 @@ body{background:var(--c-bg);color:var(--c-text-main);font-family:var(--font);fon
 .map-toggle-btn{font-family:var(--font);font-size:10px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;padding:6px 10px;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-md);color:var(--c-text-main);cursor:pointer}
 .map-toggle-btn:hover{background:#F7F7F5}
 .map-toggle-btn.active{background:#111827;color:#FFFFFF}
+.shot-btn{font-family:var(--font);display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-md);color:var(--c-text-main);cursor:pointer;padding:0}
+.shot-btn:hover{background:#F7F7F5;color:var(--c-accent)}
 
 /* ---------- District map hover tooltip ---------- */
 #map-box{position:relative}

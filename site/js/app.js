@@ -778,6 +778,7 @@ function renderParliament(avg){
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
       ${mapConf?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">MAP</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">BLOCS</button>`:''}
+      ${mapConf?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
     </div>`;
   const box=showMap
     ?'<div class="parliament-box" id="map-box"></div>'
@@ -1096,6 +1097,59 @@ async function renderMapInto(box, avg, resultMode){
   box.appendChild(tooltip);
 }
 
+/* ---------- screenshot capture ---------- */
+const CAM_ICON=`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`;
+
+function downloadPng(dataUrl, name){
+  const a=document.createElement('a');
+  a.href=dataUrl;
+  a.download=name;
+  a.click();
+}
+
+// Map: render the SVG at its viewBox size (x2 for sharpness) onto a transparent
+// canvas — content-sized, no padding, no background
+async function captureMapPng(svg, filename){
+  if(!svg) return;
+  const vb=svg.viewBox?svg.viewBox.baseVal:null;
+  const w=vb&&vb.width?Math.round(vb.width):800;
+  const h=vb&&vb.height?Math.round(vb.height):900;
+  const scale=2;
+  const xml=new XMLSerializer().serializeToString(svg);
+  const svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
+  const img=new Image();
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=svgUrl});
+  const canvas=document.createElement('canvas');
+  canvas.width=w*scale; canvas.height=h*scale;
+  const ctx=canvas.getContext('2d');
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(img,0,0,canvas.width,canvas.height);
+  downloadPng(canvas.toDataURL('image/png'), filename);
+}
+
+// Chart: composite the (transparent) canvas over the card background so the
+// exported PNG keeps the graph's background, sized to the canvas content
+function captureChartPng(canvas, filename){
+  if(!canvas) return;
+  const card=canvas.closest('.card');
+  const bg=card?getComputedStyle(card).backgroundColor:'#FFFFFF';
+  const out=document.createElement('canvas');
+  out.width=canvas.width; out.height=canvas.height;
+  const ctx=out.getContext('2d');
+  ctx.fillStyle=bg;
+  ctx.fillRect(0,0,out.width,out.height);
+  ctx.drawImage(canvas,0,0);
+  downloadPng(out.toDataURL('image/png'), filename);
+}
+
+function captureBoxMap(boxId, filename){
+  const box=$(boxId);
+  if(!box) return;
+  const svg=box.querySelector('svg');
+  if(!svg) return;
+  captureMapPng(svg, filename);
+}
+
 function allocateSeatsN(votes, totalSeats){
   const validParties=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   const totalVotes=validParties.reduce((s,p)=>s+(votes[p]||0),0);
@@ -1218,6 +1272,18 @@ function bindParlToggles(avg){
       renderPollsTab();
     });
   });
+  const mapShot=$('map-shot-btn');
+  if(mapShot){
+    mapShot.addEventListener('click',()=>{
+      captureBoxMap('map-box', COUNTRY+'-map.png');
+    });
+  }
+  const trendShot=$('trend-shot-btn');
+  if(trendShot){
+    trendShot.addEventListener('click',()=>{
+      captureChartPng($('trend-canvas'), COUNTRY+'-poll-trend.png');
+    });
+  }
   if(PARL_VIEW==='map') renderMap(avg);
 }
 
@@ -1603,6 +1669,7 @@ function renderForecast(pane){
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">PROJECTION</button>
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} RESULT</button>
         ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">BLOCS</button>`:''}
+        <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
@@ -1669,6 +1736,12 @@ function renderForecast(pane){
         }
       });
     });
+    const fcShot=$('fc-map-shot-btn');
+    if(fcShot){
+      fcShot.addEventListener('click',()=>{
+        captureBoxMap('fc-map-box', COUNTRY+'-forecast-map.png');
+      });
+    }
   }
 }
 
@@ -1748,7 +1821,8 @@ function renderPollsTab(){
   html+=renderPartyBars(avg);
 
   // Trend chart
-  html+=`<div class="card" style="margin-top:16px"><div class="card-head"><div class="bar"></div><div class="t">POLL TREND</div></div>
+  html+=`<div class="card" style="margin-top:16px"><div class="card-head"><div class="bar"></div><div class="t">POLL TREND</div>
+    <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
     <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>`;
 
   html+=renderParliament(avg);

@@ -10,6 +10,13 @@ const COUNTRIES = {
     seatBased: false,
     constituencies: true,
     recencyHalfLifeDays: 7,       // respond faster to the latest polls
+    live: {
+      // election-night proxy (Cloudflare worker) + local static fallback
+      workerUrl: 'https://600-election-night.600-live.workers.dev/sweden',
+      localUrl: 'data/sweden/live.json',
+      // party -> id in the normalized live feed (matches valmyndigheten codes)
+      mapCode: p=>p,
+    },
     parties: {
       S:  { name: 'Socialdemokraterna',       name_en: 'Social Democrats',  color: '#EE2020' },
       SD: { name: 'Sverigedemokraterna',       name_en: 'Sweden Democrats',  color: '#FFCD00' },

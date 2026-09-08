@@ -208,7 +208,7 @@ function buildMapHTML(chamberData) {
   for (const st of geo.states) {
     const race = stateRace(races, st.name);
     const fill = race ? raceColor(race.dem_pct) : C_GRAY;
-    stateD.push(`<path class="st" data-name="${st.name}" data-idx="${geo.states.indexOf(st)}" d="${st.d}" fill="${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`);
+    stateD.push(`<path class="st" data-name="${st.name}" data-idx="${geo.states.indexOf(st)}" d="${st.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`);
   }
 
   let body;
@@ -224,7 +224,7 @@ function buildMapHTML(chamberData) {
     const dPaths = dists.map((d) => {
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
       const fill = race ? raceColor(race.dem_pct) : C_GRAY;
-      return `<path class="dist" data-name="${st.name} ${d.cd}" d="${d.d}" fill="${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
+      return `<path class="dist" data-name="${st.name} ${d.cd}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `<g transform="${t}">${dPaths.join("")}</g>`;
   } else if (isHouse) {
@@ -232,7 +232,7 @@ function buildMapHTML(chamberData) {
       const st = geo.states[d.s];
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
       const fill = race ? raceColor(race.dem_pct) : C_GRAY;
-      return `<path class="dist" data-name="${st.name} ${d.cd === "at-large" ? "At Large" : d.cd}" data-idx="${d.s}" d="${d.d}" fill="${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
+      return `<path class="dist" data-name="${st.name} ${d.cd === "at-large" ? "At Large" : d.cd}" data-idx="${d.s}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `${dPaths.join("")}<g class="sub">${geo.states.map((s) => `<path d="${s.d}"/>`).join("")}</g>`;
   } else {

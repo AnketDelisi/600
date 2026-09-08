@@ -56,7 +56,10 @@ POLL_WEIGHT = 0.65
 # so using the full margin on top would double-count it. The Senate is far less
 # nationalized than the House (state-by-state races, heavier polling), so its
 # environment weight is smaller.
-ENV_WEIGHT = {"senate": 0.25, "house": 0.5, "governor": 0.25}
+ENV_WEIGHT = {"senate": 0.25, "house": 0.25, "governor": 0.25}
+# races WITHOUT a rating use PVI alone, which is a neutral-year lean — the full
+# generic-ballot environment applies to them.
+UNRATED_ENV_WEIGHT = {"senate": 1.0, "house": 1.0, "governor": 1.0}
 # last-election result weight in the fundamentals; open seats (retiring /
 # term-limited / new) lose most of the incumbent's personal vote, so their
 # prior leans more on the structural PVI.
@@ -70,6 +73,9 @@ COMP_START = {
     "governor": {"d": 18, "r": 18},
 }
 MAJORITY = {"senate": 51, "house": 218}
+# 14 governorships are not up in 2026 (current split: 6 D / 8 R); the totals
+# reported for governors include these so the numbers cover all 50 governors.
+GOV_NOT_UP = {"d": 6, "r": 8}
 
 
 def rating_band(raw):
@@ -199,6 +205,7 @@ def run(chamber, races, poll_map, env_margin):
     beta = LOGISTIC_BETA[chamber]
     margins = {}
     polls_used = {}
+    rated = {}
     for r in races:
         label = (r["state"].replace("_", " "), r.get("district", ""))
         if chamber == "house":
@@ -209,6 +216,7 @@ def run(chamber, races, poll_map, env_margin):
         m = final_margin(r, polls, chamber)
         margins[label_key] = m
         polls_used[label_key] = polls
+        rated[label_key] = best_rating(r) is not None
 
     out_races = []
     total = {"senate": 100, "house": 435, "governor": len(races)}[chamber]
@@ -224,13 +232,19 @@ def run(chamber, races, poll_map, env_margin):
     else:
         not_up_d = COMP_START[chamber]["d"] - up_d
     seatz = [0] * (N_SIMS)
-    swing_mean = ENV_WEIGHT[chamber] * (env_margin or 0.0)
+    # Per-race environment mean: RATED races already embed the environment in
+    # their rating/poll priors, so only a small swing applies. UNRATED races
+    # (PVI-based) are neutral-year leans, so the full generic ballot applies.
+    env = env_margin or 0.0
+    rated_env = ENV_WEIGHT[chamber] * env
+    unrated_env = UNRATED_ENV_WEIGHT[chamber] * env
     for i in range(N_SIMS):
-        S = RNG.gauss(swing_mean, NATIONAL_SIGMA)
+        Z = RNG.gauss(0.0, NATIONAL_SIGMA)
         wins = 0
         for k, m in margins.items():
-            # logistic win probability, shifted by the common national swing
-            p = 1.0 / (1.0 + math.exp(-(m + S) / beta))
+            # race-level environment mean + shared national shock
+            mu = rated_env if rated[k] else unrated_env
+            p = 1.0 / (1.0 + math.exp(-(m + mu + Z) / beta))
             if RNG.random() < p:
                 wins += 1
         seatz[i] = not_up_d + wins
@@ -247,17 +261,18 @@ def run(chamber, races, poll_map, env_margin):
         else:
             label_key = label_key[0]
         m = margins[label_key]
+        mu = rated_env if rated[label_key] else unrated_env
         # displayed margin includes the expected national swing so it agrees
         # with the win probability (dem_pct) shown to readers
-        md = 1.0 / (1.0 + math.exp(-(m + swing_mean) / beta))
+        md = 1.0 / (1.0 + math.exp(-(m + mu) / beta))
         out_races.append({
             "state": r["state"].replace("_", " "),
             "district": r.get("district", ""),
             "incumbent": (r.get("incumbent") or "").split("(")[0].strip(),
             "party": r.get("party"),
             "rating": best_rating(r),
-            "lean": lean(m + swing_mean),
-            "margin": round(m + swing_mean, 1),
+            "lean": lean(m + mu),
+            "margin": round(m + mu, 1),
             "dem_pct": round(100 * md, 1),
             "rep_pct": round(100 * (1 - md), 1),
             "polls": polls_used[label_key],
@@ -271,7 +286,7 @@ def run(chamber, races, poll_map, env_margin):
         dem_share = sum(1 for s in seatz if s >= need) / N_SIMS
         rep_share = 1.0 - dem_share
     expected = sum(seatz) / N_SIMS
-    return {
+    res = {
         "races": out_races,
         "expected_d_seats": round(expected, 1),
         "expected_r_seats": round(total - expected, 1),
@@ -281,6 +296,11 @@ def run(chamber, races, poll_map, env_margin):
         },
         "distribution_buckets": _buckets(dist) if chamber != "governor" else None,
     }
+    if chamber == "governor":
+        # totals across all 50 governorships (36 up + 14 not up)
+        res["total_d_governors"] = round(expected + GOV_NOT_UP["d"], 1)
+        res["total_r_governors"] = round((total - expected) + GOV_NOT_UP["r"], 1)
+    return res
 
 
 def _buckets(dist):

@@ -8,11 +8,14 @@ Pipeline per race:
      With no rating: PVI prior  =  -0.5 * CPVI  (+1.5 if incumbent holding).
   2. Polling blend (when a race has an aggregate/simple poll average):
        margin = 0.65 * poll_margin + 0.35 * prior_margin.
-  3. National-swing Monte Carlo: every race shares a common environment
-     shift S ~ N(0, sigma_n); a race is won by the Democrats when
-     (margin + S) / sigma_e > 0. sigma_e is a per-chamber residual error.
-     Chamber seat tallies are accumulated across 20k simulated nights to
-     produce per-race win probabilities and seat distributions.
+3. National-swing Monte Carlo: every race shares a common environment
+      shift S ~ N(env_weight * env_margin, sigma_n), where env_margin is the
+      generic-ballot margin (D - R points) and env_weight = 0.5 (ratings already
+      embed the environment). A race is won by the Democrats with probability
+      logistic((margin + S) / beta), beta being a per-chamber residual scale.
+      Chamber seat tallies are accumulated across 20k simulated nights to
+      produce per-race win probabilities and seat distributions. Per-race
+      win probabilities (dem_pct) are reported at the swing mean (S = mean).
 
 Chamber majority thresholds: Senate 50 (current D-caucus 47 vs R 53),
 House 218 seats, Governors shows an expected Dem/Rep count only.
@@ -38,6 +41,10 @@ RATING_ORDER = ("cook", "ie", "sabato")
 LOGISTIC_BETA = {"senate": 4.0, "house": 4.5, "governor": 4.0}
 NATIONAL_SIGMA = 2.5
 POLL_WEIGHT = 0.65
+# generic-ballot margin enters the national swing at half weight: race ratings
+# (Cook/IE/Sabato) already embed the current environment, so using the full
+# margin on top would double-count it.
+ENV_WEIGHT = 0.5
 
 # current chamber state (D-caucus includes independents)
 COMP_START = {
@@ -130,10 +137,20 @@ def run(chamber, races, poll_map, env_margin):
     out_races = []
     total = {"senate": 100, "house": 435, "governor": len(races)}[chamber]
     up_d = sum(1 for r in races if r.get("party") in ("D", "I"))
-    not_up_d = COMP_START[chamber]["d"] - up_d
+    # Seats not up this cycle = current D-caucus minus D-held seats that ARE up.
+    # `up_d` only counts races with a D/I party tag; open seats (party=null) are
+    # still up and contestable, so in a chamber where every seat is on the ballot
+    # (House midterm: all 435, Governors: all 36) the not-up baseline is 0. The
+    # previous `current_d - up_d` wrongly locked in D-caucus seats whose race was
+    # open (party=null) as if they were not up, inflating House D seats by ~9.
+    if len(races) >= total:
+        not_up_d = 0
+    else:
+        not_up_d = COMP_START[chamber]["d"] - up_d
     seatz = [0] * (N_SIMS)
+    swing_mean = ENV_WEIGHT * (env_margin or 0.0)
     for i in range(N_SIMS):
-        S = RNG.gauss(0.0, NATIONAL_SIGMA)
+        S = RNG.gauss(swing_mean, NATIONAL_SIGMA)
         wins = 0
         for k, m in margins.items():
             # logistic win probability, shifted by the common national swing
@@ -154,7 +171,7 @@ def run(chamber, races, poll_map, env_margin):
         else:
             label_key = label_key[0]
         m = margins[label_key]
-        md = 1.0 / (1.0 + math.exp(-m / beta))
+        md = 1.0 / (1.0 + math.exp(-(m + swing_mean) / beta))
         out_races.append({
             "state": r["state"].replace("_", " "),
             "district": r.get("district", ""),

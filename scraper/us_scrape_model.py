@@ -4,7 +4,9 @@
 Pipeline per race:
   1. Fundamentals prior (D - R, two-party points): PVI at -1.0 (partisan lean
      maps ~1:1 onto margins, per FiftyPlusOne/Theo), plus incumbent bonus,
-     blended 30/70 with the last election result where one exists.
+     blended with the last election result (70% for held seats, 40% for open
+     seats — retiring/term-limited incumbents take their personal vote with
+     them, so the structural PVI dominates).
   2. Rating band: the strongest race rating (Cook, then Inside Elections,
      then Sabato) sets a direction + strength BAND (Safe >15, Likely 7.5-15,
      Lean 2.5-7.5, Tossup <2.5, per theoelections.com); the fundamentals prior
@@ -12,16 +14,18 @@ Pipeline per race:
      competitive races stay competitive.
   3. Polling blend (when a race has an aggregate/simple poll average):
        margin = 0.65 * poll_margin + 0.35 * prior_margin.
-  2. Polling blend (when a race has an aggregate/simple poll average):
-       margin = 0.65 * poll_margin + 0.35 * prior_margin.
-3. National-swing Monte Carlo: every race shares a common environment
-      shift S ~ N(env_weight * env_margin, sigma_n), where env_margin is the
-      generic-ballot margin (D - R points) and env_weight = 0.5 (ratings already
-      embed the environment). A race is won by the Democrats with probability
-      logistic((margin + S) / beta), beta being a per-chamber residual scale.
-      Chamber seat tallies are accumulated across 20k simulated nights to
-      produce per-race win probabilities and seat distributions. Per-race
-      win probabilities (dem_pct) are reported at the swing mean (S = mean).
+  4. National-swing Monte Carlo: every race shares a common environment
+     shift S ~ N(env_weight * env_margin, sigma_n), where env_margin is the
+     generic-ballot margin (D - R points). env_weight is chamber-specific
+     (Senate 0.25, House 0.5, Governor 0.25): ratings and polls already embed
+     the environment, so the full margin would double-count it — and the
+     Senate is far less nationalized than the House. A race is won by the
+     Democrats with probability logistic((margin + S) / beta), beta being a
+     per-chamber residual scale. Chamber seat tallies are accumulated across
+     20k simulated nights to produce per-race win probabilities and seat
+     distributions. Per-race win probabilities (dem_pct) are reported at the
+     swing mean (S = mean), and the displayed margin includes that swing so
+     it agrees with the win probability.
 
 Chamber majority thresholds: Senate 50 (current D-caucus 47 vs R 53),
 House 218 seats, Governors shows an expected Dem/Rep count only.
@@ -47,10 +51,17 @@ RATING_ORDER = ("cook", "ie", "sabato")
 LOGISTIC_BETA = {"senate": 4.0, "house": 4.5, "governor": 4.0}
 NATIONAL_SIGMA = 2.5
 POLL_WEIGHT = 0.65
-# generic-ballot margin enters the national swing at half weight: race ratings
-# (Cook/IE/Sabato) already embed the current environment, so using the full
-# margin on top would double-count it.
-ENV_WEIGHT = 0.5
+# generic-ballot margin enters the national swing at a chamber-specific weight:
+# race ratings (Cook/IE/Sabato) and polls already embed the current environment,
+# so using the full margin on top would double-count it. The Senate is far less
+# nationalized than the House (state-by-state races, heavier polling), so its
+# environment weight is smaller.
+ENV_WEIGHT = {"senate": 0.25, "house": 0.5, "governor": 0.25}
+# last-election result weight in the fundamentals; open seats (retiring /
+# term-limited / new) lose most of the incumbent's personal vote, so their
+# prior leans more on the structural PVI.
+LAST_WEIGHT = 0.7
+OPEN_SEAT_LAST_WEIGHT = 0.4
 
 # current chamber state (D-caucus includes independents)
 COMP_START = {
@@ -129,14 +140,28 @@ def last_margin(race):
     return margin if last.get("party") == "D" else -margin
 
 
+def is_open_seat(race):
+    inc = (race.get("incumbent") or "").lower()
+    return (
+        "retiring" in inc or "term-limited" in inc or "not seeking" in inc
+        or not inc or inc == "none (new seat)" or inc == "vacant"
+    )
+
+
 def fundamentals_margin(race, chamber):
-    """Blend PVI (30%) with the last election result (70%) where available."""
+    """Blend PVI with the last election result.
+
+    Open seats (retiring/term-limited/new incumbents) get less weight on the
+    last result: the incumbent's personal vote largely disappears, so the
+    structural PVI dominates. Held seats keep the stronger last-result signal.
+    """
     pv = pvi_margin(race.get("pvi") or 0.0)
     if race.get("party"):
         pv += 1.5 if race["party"] == "D" else -1.5
     last = last_margin(race)
     if last is not None:
-        return 0.7 * last + 0.3 * pv
+        w = OPEN_SEAT_LAST_WEIGHT if is_open_seat(race) else LAST_WEIGHT
+        return w * last + (1 - w) * pv
     return pv
 
 
@@ -199,7 +224,7 @@ def run(chamber, races, poll_map, env_margin):
     else:
         not_up_d = COMP_START[chamber]["d"] - up_d
     seatz = [0] * (N_SIMS)
-    swing_mean = ENV_WEIGHT * (env_margin or 0.0)
+    swing_mean = ENV_WEIGHT[chamber] * (env_margin or 0.0)
     for i in range(N_SIMS):
         S = RNG.gauss(swing_mean, NATIONAL_SIGMA)
         wins = 0
@@ -283,6 +308,7 @@ def main():
             "rating_margin_table": RATING_MARGIN,
             "margin_method": "PVI prior placed inside rating band (rating sets direction+strength, PVI gives continuous margin)",
             "national_swing_sigma": NATIONAL_SIGMA,
+            "env_weights": ENV_WEIGHT,
         },
         "senate": run("senate", base["races"]["senate"], polls["senate"], env),
         "house": run("house", base["races"]["house"], None, env),

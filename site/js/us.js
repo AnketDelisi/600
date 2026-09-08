@@ -16,8 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b1";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905b1";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b2";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905b2";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20260905b2";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -27,6 +28,7 @@ const US_LABELS = {
 const state = {
   forecast: null,
   geo: null,
+  polls: null,
   chamber: "senate",
   sort: "close",
   zoom: null, // state index for House drill-down
@@ -295,6 +297,95 @@ function selectRace(pane, key) {
   }
 }
 
+/* ---- race detail card: poll table + trend ---- */
+function racePollEntry(race) {
+  if (state.chamber === "house") return null;
+  const pool = state.polls ? state.polls[state.chamber] : null;
+  if (!pool) return null;
+  return pool[race.state] || null;
+}
+
+function parsePollDate(str) {
+  // "June 29–30, 2026", "May 20 – June 30, 2026", "April 28 – May 1, 2026",
+  // "through August 28, 2026"
+  if (!str) return null;
+  const year = +(str.match(/(\d{4})$/) || [])[1];
+  if (!year) return null;
+  const monMap = { january: 0, february: 1, march: 2, april: 3, may: 4, june: 5, july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
+  // last "Month day(s)... , year" occurrence: month name then digits/dash then year
+  const lastMonthMatch = str.match(/([A-Za-z]+)\s+\d{1,2}(?:\s*[–-]\s*\d{1,2})?,\s*(\d{4})$/);
+  if (!lastMonthMatch) return null;
+  const mon = monMap[lastMonthMatch[1].toLowerCase()];
+  if (mon === undefined) return null;
+  return new Date(year, mon, 1);
+}
+
+function pollTrendSVG(polls) {
+  const W = 640, H = 130, padL = 40, padR = 12, padT = 14, padB = 20;
+  const pts = [];
+  for (const p of polls) {
+    if (!p.dates) continue;
+    const dt = parsePollDate(p.dates);
+    if (!dt) continue;
+    pts.push({ t: dt.getTime(), m: p.dem - p.rep, dates: p.dates });
+  }
+  pts.sort((a, b) => a.t - b.t);
+  if (pts.length < 2) {
+    return `<div style="font-size:11px;color:var(--c-text-muted);padding:8px 0">Not enough dated polls to plot.</div>`;
+  }
+  const tMin = pts[0].t, tMax = pts[pts.length - 1].t;
+  let mMin = Math.min(...pts.map((p) => p.m), 0) - 2;
+  let mMax = Math.max(...pts.map((p) => p.m), 0) + 2;
+  if (mMax - mMin < 8) { const c = (mMax + mMin) / 2; mMin = c - 4; mMax = c + 4; }
+  const X = (t) => padL + ((t - tMin) / (tMax - tMin || 1)) * (W - padL - padR);
+  const Y = (m) => padT + ((mMax - m) / (mMax - mMin)) * (H - padT - padB);
+  let line = "";
+  let dots = "";
+  pts.forEach((p, i) => {
+    line += `${i === 0 ? "M" : "L"}${X(p.t).toFixed(1)},${Y(p.m).toFixed(1)} `;
+    dots += `<circle cx="${X(p.t).toFixed(1)}" cy="${Y(p.m).toFixed(1)}" r="3" fill="${p.m >= 0 ? "var(--d-blue)" : "var(--d-red)"}"/>`;
+  });
+  const y0 = Y(0);
+  const last = pts[pts.length - 1];
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:130px;display:block">
+    <line x1="${padL}" y1="${y0}" x2="${W - padR}" y2="${y0}" stroke="var(--c-edge)" stroke-width="1" stroke-dasharray="4 3"/>
+    <path d="${line}" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linejoin="round"/>
+    ${dots}
+    <text x="${padL}" y="${y0 - 4}" font-size="9" font-weight="900" fill="var(--c-text-muted)">0</text>
+    <text x="${padL}" y="${padT + 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">D+</text>
+    <text x="${padL}" y="${H - 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">R+</text>
+    <text x="${Math.min(W - padR - 120, X(last.t) - 60)}" y="${H - 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">${last.dates.replace("through", "through ")}</text>
+  </svg>`;
+}
+
+function raceDetailHTML(race) {
+  const entry = racePollEntry(race);
+  if (!entry || !Array.isArray(entry.polls) || !entry.polls.length) {
+    return `<div class="race-detail empty">No individual polls available for ${race.state}${race.district ? " " + race.district : ""}.</div>`;
+  }
+  const rows = entry.polls.map((p) => {
+    const margin = (p.dem - p.rep).toFixed(1);
+    const lead = p.dem >= p.rep ? "D+" : "R+";
+    const val = Math.abs(p.dem - p.rep).toFixed(1);
+    return `<tr>
+      <td>${p.pollster || "—"}</td>
+      <td class="num">${p.dates || "—"}</td>
+      <td class="num d">${fmt(p.dem)}%</td>
+      <td class="num r">${fmt(p.rep)}%</td>
+      <td class="num ${p.dem >= p.rep ? "d" : "r"}">${lead}${val}</td>
+    </tr>`;
+  }).join("");
+  return `<div class="race-detail">
+    <div class="rd-head"><span class="rd-title">Polling — ${race.state}${race.district ? " " + race.district : ""}</span>
+      <span class="rd-note">${entry.source}${entry.n_polls ? " · " + entry.n_polls + " polls" : ""}</span></div>
+    <div class="rd-graph">${pollTrendSVG(entry.polls)}</div>
+    <table class="rd-table">
+      <thead><tr><th>Pollster</th><th>Dates</th><th>D</th><th>R</th><th>Margin</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
 function mapReset() {
   state.zoom = null;
   render();
@@ -402,9 +493,28 @@ function attachRows(pane, data) {
         const race = raceByKey(data, key);
         if (race) { state.zoom = state.geo.states.findIndex((s) => s.name === race.state); render(); return; }
       }
+      const race = raceByKey(data, key);
       selectRace(pane, key);
+      toggleRaceDetail(tr, race);
     });
   });
+}
+
+function toggleRaceDetail(tr, race) {
+  if (!race) return;
+  const pane = tr.closest(".pane");
+  // close any other open detail row in this pane
+  pane.querySelectorAll(".detail-row").forEach((r) => { if (r !== tr.nextElementSibling) r.remove(); });
+  const existing = tr.nextElementSibling;
+  if (existing && existing.classList.contains("detail-row")) {
+    existing.remove();
+    return;
+  }
+  const detail = document.createElement("tr");
+  detail.className = "detail-row";
+  detail.innerHTML = `<td colspan="6">${raceDetailHTML(race)}</td>`;
+  tr.after(detail);
+  tr.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
 function setSort(v) {
@@ -428,11 +538,12 @@ document.querySelectorAll(".tab").forEach((t) => {
   t.addEventListener("click", () => selectChamber(t.dataset.chamber));
 });
 
-Promise.all([fetch(US_DATA), fetch(US_GEO)])
-  .then(([rf, rg]) => Promise.all([rf.json(), rg.json()]))
-  .then(([f, g]) => {
+Promise.all([fetch(US_DATA), fetch(US_GEO), fetch(US_POLLS)])
+  .then(([rf, rg, rp]) => Promise.all([rf.json(), rg.json(), rp.json()]))
+  .then(([f, g, p]) => {
     state.forecast = f;
     state.geo = g;
+    state.polls = p;
     document.getElementById("updated").textContent =
       `Updated ${new Date(f.generated).toUTCString()} · ${f.model || ""}`;
     render();

@@ -131,6 +131,46 @@ def parse_direct(soup):
     return best
 
 
+def parse_individual(soup):
+    """Collect the individual polls (pollster, dates, dem, rep) from the
+    newest candidate-matchup table, newest polls first. Returns a list."""
+    tables = soup.find_all("table", class_="wikitable")
+    for tbl in tables[::-1]:
+        rows = tbl.find_all("tr")
+        if len(rows) < 4:
+            continue
+        header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
+        cols = party_cols(header)
+        if cols is None:
+            continue
+        dem_i, rep_i = cols
+        # find the 'Poll source' column index (first col is usually it)
+        out = []
+        for row in rows[1:]:
+            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
+            if len(cells) <= max(dem_i, rep_i):
+                continue
+            pollster = cells[0].replace("(D)", "").replace("(R)", "").replace("(I)", "").strip()
+            dates = cells[1] if len(cells) > 1 else ""
+            d, r = pct(cells[dem_i]), pct(cells[rep_i])
+            if d is None or r is None or not pollster or pollster.lower() in ("average", ""):
+                continue
+            # skip aggregate tables and sample-size continuation rows
+            if (
+                "aggregation" in pollster.lower()
+                or "through" in dates.lower()
+                or "average" in pollster.lower()
+                or re.search(r"\b(LV|RV|PV|±)\b", pollster)
+                or pollster[0].isdigit()
+                or pollster.startswith("1,")
+            ):
+                continue
+            out.append({"pollster": pollster, "dates": dates, "dem": round(d, 1), "rep": round(r, 1)})
+        if len(out) >= 3:
+            return out
+    return []
+
+
 def scrape_race(chamber, race):
     key = race["state"].replace(" ", "_")
     if chamber == "senate":
@@ -138,14 +178,22 @@ def scrape_race(chamber, race):
         base = "2026_United_States_Senate_election_in_"
         url = "https://en.wikipedia.org/wiki/" + (tmpl or base + key)
     else:
-        url = "https://en.wikipedia.org/wiki/2026_United_States_gubernatorial_election_in_" + key
+        url = "https://en.wikipedia.org/wiki/2026_" + key.replace("_", "_") + "_gubernatorial_election"
     soup = fetch(url)
     if soup is None:
         return None
     agg = parse_aggregate(soup)
+    ind = parse_individual(soup)
     if agg:
+        if ind:
+            agg["polls"] = ind
         return agg
-    return parse_direct(soup)
+    res = parse_direct(soup)
+    if res is None:
+        return None
+    if ind:
+        res["polls"] = ind
+    return res
 
 
 def scrape_races(chamber):

@@ -2413,14 +2413,20 @@ function renderPollsTab(){
 
   let html=`<div class="tab-pane-inner">`;
   html+=renderHero(avg, filtered);
-  html+=renderBlocs(avg);
+
+  // Trend chart + blocs side by side on wide screens
+  html+=`<div class="layout-2col">
+    <div class="col-a">
+      <div class="card" style="height:100%"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
+        <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
+        <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>
+    </div>
+    <div class="col-b">
+      <div class="card" style="height:100%">${renderBlocs(avg)}</div>
+    </div>
+  </div>`;
+
   html+=renderPartyBars(avg);
-
-  // Trend chart
-  html+=`<div class="card" style="margin-top:16px"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
-    <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
-    <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>`;
-
   html+=renderParliament(avg);
   html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);

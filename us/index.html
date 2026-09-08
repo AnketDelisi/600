@@ -20,6 +20,7 @@
 
     .topbar{width:100%;background:var(--c-surface);border-bottom:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:10px 24px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:50;border-top:6px solid var(--c-accent)}
     .topbar .wordmark{font-size:14px;font-weight:900;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:var(--c-text-main)}
+    .topbar .wordmark img{display:block;height:38px;width:auto;object-fit:contain}
     .topbar .wordmark .k{color:var(--c-accent)}
     .topbar .crumb{margin-left:auto;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--c-text-muted)}
     .topbar .crumb a{color:var(--c-text-muted);text-decoration:none}
@@ -32,16 +33,41 @@
     .masthead .sub{color:var(--c-text-muted);font-size:14px;max-width:760px;line-height:1.55;margin:0}
     .updated{margin-top:12px;font-size:12px;font-weight:700;color:var(--c-text-muted)}
 
-    .tabs{display:flex;gap:2px;margin:0 0 22px 0;border-bottom:2px solid var(--c-edge)}
-    .tab{border:2px solid var(--c-edge);border-bottom:none;background:var(--c-surface);color:var(--c-text-main);font-family:var(--font);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;padding:12px 20px 10px 20px;cursor:pointer;box-shadow:var(--shadow-md);margin-bottom:-2px}
-    .tab:hover{color:var(--c-accent)}
-    .tab.active{background:var(--c-edge);color:#fff}
+    .tabs{display:flex;gap:2px;margin:0 0 0 0;border-bottom:2px solid var(--c-edge)}
+    .tab{border:2px solid var(--c-edge);border-bottom:none;background:var(--c-surface);color:var(--c-text-main);font-family:var(--font);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;padding:12px 20px 10px 20px;cursor:pointer;box-shadow:var(--shadow-md);margin-bottom:-2px;transition:transform 90ms ease, background 90ms ease, color 90ms ease}
+    .tab:hover{color:var(--c-accent-2);transform:translateY(-1px)}
+    .tab.active{background:var(--c-edge);color:#fff;box-shadow:none;transform:none}
     .pane{display:none}
     .pane.active{display:block}
 
     .card{background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:20px;margin-bottom:20px}
     .card h2{font-size:17px;margin:0 0 4px 0;letter-spacing:-0.2px}
     .card .note{color:var(--c-text-muted);font-size:12px;margin:0 0 16px 0}
+
+    /* ---- two-column layout: control + map ---- */
+    .layout-2col{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px;align-items:start;margin-bottom:20px}
+    .layout-2col .card{margin-bottom:0}
+    .col-a{display:flex;flex-direction:column;gap:0}
+    .col-a .card{height:100%}
+    .col-b .mapwrap{margin-bottom:0}
+    @media (max-width:860px){
+      .layout-2col{grid-template-columns:1fr}
+      .layout-2col .card{margin-bottom:20px}
+      .col-b .card{margin-bottom:20px}
+    }
+
+    /* ---- sticky race-status bar ---- */
+    .statusbar{position:sticky;top:64px;z-index:45;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+      background:var(--c-surface);border:2px solid var(--c-edge);border-top:0;box-shadow:var(--shadow-md);
+      padding:8px 16px;margin:0 0 20px 0;font-size:12px;font-weight:800}
+    .statusbar .sb-seg{display:inline-flex;align-items:baseline;gap:4px}
+    .statusbar .sb-seg b{font-family:var(--font-mono);font-size:15px;font-variant-numeric:tabular-nums}
+    .statusbar .sb-seg.d b{color:var(--d-blue)}
+    .statusbar .sb-seg.r b{color:var(--d-red)}
+    .statusbar .sb-arrow{color:var(--c-text-muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+    .statusbar .sb-seats{margin-left:auto;color:var(--c-text-muted);font-weight:700}
+    .statusbar .sb-seats b.d{color:var(--d-blue)}.statusbar .sb-seats b.r{color:var(--d-red)}
+    .statusbar .sb-maj{color:var(--c-text-muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
 
     .ctl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .ctl .cell{border-top:6px solid var(--c-edge);padding-top:10px}
@@ -57,9 +83,10 @@
     .chart .axis{font-size:10px;fill:var(--c-text-muted);font-weight:700}
 
     table{width:100%;border-collapse:collapse}
-    th{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;color:var(--c-text-muted);text-align:left;padding:4px 8px;border-bottom:2px solid var(--c-edge)}
-    td{padding:9px 8px;border-bottom:1px solid var(--c-border);vertical-align:middle;font-size:13px}
-    tr.selected{background:#FAF4E8}
+    th{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;color:var(--c-text-muted);text-align:left;padding:8px 8px;border-bottom:2px solid var(--c-edge);position:sticky;top:108px;z-index:30;background:var(--c-surface)}
+    td{padding:9px 8px;border-bottom:1px solid var(--c-border);vertical-align:middle;font-size:13px;transition:background 80ms ease}
+    tr[data-key]:hover td{background:#FBF9F3}
+    tr.selected td{background:#F8F0E4}
     .race-name b{font-size:13.5px}
     .race-name .inc{display:block;color:var(--c-text-muted);font-size:11.5px;margin-top:2px}
     .party-badge{display:inline-block;font-size:10px;font-weight:900;padding:1px 6px;margin-right:6px;border:1.5px solid var(--c-edge);vertical-align:1px}
@@ -117,7 +144,7 @@
 </head>
 <body>
   <div class="topbar">
-    <a class="wordmark" href="../index.html">ALTICI<span class="k">F</span>T SIFIR</a>
+    <a class="wordmark" href="../index.html"><img src="../img/600logo2.svg" alt="AltıCiftSıfır — 600"></a>
     <div class="crumb"><a href="../index.html">← Home</a></div>
   </div>
 

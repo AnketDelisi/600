@@ -16,8 +16,8 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905ae";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905ae";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905af";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905af";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -35,14 +35,15 @@ const state = {
 const fmt = (x) => (Math.abs(x) >= 100 ? Math.round(x) : (x % 1 === 0 ? String(Math.round(x)) : x.toFixed(1)));
 
 /* ---- color helpers (diverging blue/red by win chance) ---- */
-const C_NEUT = "#E8ECF2", C_D = "#3B82C4", C_R = "#FC454C", C_GRAY = "#D7DEE8";
+const C_NEUT = "#E8ECF2", C_D = "#3B82C4", C_R = "#FC454C", C_GRAY = "#D7DEE8", C_TOSSUP = "#E8C978";
 function mixColor(a, b, t) {
   const r1 = (a >> 16) & 255, g1 = (a >> 8) & 255, b1 = a & 255;
   const r2 = (b >> 16) & 255, g2 = (b >> 8) & 255, b2 = b & 255;
   const r = Math.round(r1 + (r2 - r1) * t), g = Math.round(g1 + (g2 - g1) * t), bl = Math.round(b1 + (b2 - b1) * t);
   return `rgb(${r},${g},${bl})`;
 }
-function raceColor(dem) {
+function raceColor(dem, rating) {
+  if (rating && /tossup/i.test(rating)) return C_TOSSUP;
   const t = (dem - 50) / 50; // -1..1
   if (t >= 0) return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(C_D.slice(1), 16), t);
   return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(C_R.slice(1), 16), -t);
@@ -171,7 +172,8 @@ function legendGradient() {
     <b>Democratic win chance</b>
     <div class="bar">${g.join("")}</div>
     <span>0%</span><b style="border-left:2px solid var(--c-edge);padding-left:4px">50%</b><span>100%</span>
-    <span style="margin-left:auto"><span class="sw" style="background:${C_GRAY};display:inline-block;width:12px;height:10px;border:1.5px solid var(--c-edge);margin-right:4px;vertical-align:0"></span>no race / not up</span>
+    <span style="margin-left:auto"><span class="sw" style="background:${C_TOSSUP};display:inline-block;width:12px;height:10px;border:1.5px solid var(--c-edge);margin-right:4px;vertical-align:0"></span>tossup</span>
+    <span style="margin-left:10px"><span class="sw" style="background:${C_GRAY};display:inline-block;width:12px;height:10px;border:1.5px solid var(--c-edge);margin-right:4px;vertical-align:0"></span>no race / not up</span>
   </div>`;
 }
 
@@ -207,7 +209,7 @@ function buildMapHTML(chamberData) {
   const stateD = [];
   for (const st of geo.states) {
     const race = stateRace(races, st.name);
-    const fill = race ? raceColor(race.dem_pct) : C_GRAY;
+    const fill = race ? raceColor(race.dem_pct, race.rating) : C_GRAY;
     stateD.push(`<path class="st" data-name="${st.name}" data-idx="${geo.states.indexOf(st)}" d="${st.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`);
   }
 
@@ -223,7 +225,7 @@ function buildMapHTML(chamberData) {
     const dists = geo.districts.filter((d) => d.s === si);
     const dPaths = dists.map((d) => {
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
-      const fill = race ? raceColor(race.dem_pct) : C_GRAY;
+      const fill = race ? raceColor(race.dem_pct, race.rating) : C_GRAY;
       return `<path class="dist" data-name="${st.name} ${d.cd}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `<g transform="${t}">${dPaths.join("")}</g>`;
@@ -231,7 +233,7 @@ function buildMapHTML(chamberData) {
     const dPaths = geo.districts.map((d) => {
       const st = geo.states[d.s];
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
-      const fill = race ? raceColor(race.dem_pct) : C_GRAY;
+      const fill = race ? raceColor(race.dem_pct, race.rating) : C_GRAY;
       return `<path class="dist" data-name="${st.name} ${d.cd === "at-large" ? "At Large" : d.cd}" data-idx="${d.s}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `${dPaths.join("")}<g class="sub">${geo.states.map((s) => `<path d="${s.d}"/>`).join("")}</g>`;
@@ -356,7 +358,7 @@ function render() {
     <p class="foot">
       Method: the 600 in-house model converts race ratings (Cook, Inside Elections, Sabato)
       and per-race polling averages into a two-party margin, then runs a national-swing
-      simulation (${fmt(f.environment ? f.environment.n_sims : 20000)} nights, national swing σ = ${fmt(f.environment ? f.environment.national_swing_sigma : 2.5)} pts).
+      simulation (${fmt(f.environment ? f.environment.n_sims : 20000)} nights, national swing σ = ${fmt(f.environment ? f.environment.national_swing_sigma : 2.5)} pts centered on the generic ballot).
       Races without public polling are shown as "—"; their probability comes from the rating and partisan lean.
       Sources: Wikipedia (2026 Senate / House / gubernatorial election articles and ratings), generic-ballot aggregates.
       Model generated: ${f.generated ? new Date(f.generated).toUTCString() : "—"}.

@@ -2,10 +2,11 @@
 """600 in-house forecast model for the 2026 U.S. midterms.
 
 Pipeline per race:
-  1. Prior margin (D - R, two-party points) from the strongest race rating
-     (Cook, then Inside Elections, then Sabato). Ratings map to point margins:
-       Solid/Safe  +22, Likely +10, Lean/Leans +6, Tilt +3, Tossup 0.
-     With no rating: PVI prior  =  -0.5 * CPVI  (+1.5 if incumbent holding).
+  1. Prior margin (D - R, two-party points). The strongest race rating
+     (Cook, then Inside Elections, then Sabato) sets a direction + strength
+     BAND; the district's PVI places the margin continuously inside that band
+     (e.g. Lean D = band [3,7], Solid R = band [-35,-12]). Races with no rating
+     use the PVI prior directly = -0.5 * CPVI (+1.5 if incumbent holding).
   2. Polling blend (when a race has an aggregate/simple poll average):
        margin = 0.65 * poll_margin + 0.35 * prior_margin.
 3. National-swing Monte Carlo: every race shares a common environment
@@ -55,43 +56,71 @@ COMP_START = {
 MAJORITY = {"senate": 50, "house": 218}
 
 
-def rating_margin(ratings):
-    """Margin (D - R points) from the strongest race rating."""
+def rating_band(raw):
+    """Rating -> (lo, hi, center, rating_weight) margin band.
 
-    def to_margin(raw):
-        if not raw:
-            return None
-        word = raw.lower().split("(")[0].strip()
-        toks = word.split()
-        party = toks[-1] if toks else ""
-        base = None
-        for k, v in RATING_MARGIN.items():
-            if k in word:
-                base = v
-                break
-        if base is None:
-            return None
-        if party == "r":
-            return -base
-        if party == "d":
-            return base
-        return 0.0 if "tossup" in word else None
+    The rating sets the direction and strength (a band of plausible D-R
+    margins), while the PVI prior places the race continuously inside that
+    band. This avoids the old all-races-in-a-category-share-the-same-margin
+    behavior (e.g. every Solid R = -22, every Lean D = +6).
+    """
+    if not raw:
+        return None
+    word = raw.lower().split("(")[0].strip()
+    toks = word.split()
+    if not toks:
+        return None
+    strength = toks[0]
+    if strength in ("safe", "solid"):
+        strength = "solid"
+    elif strength in ("lean", "leans"):
+        strength = "lean"
+    party = toks[-1] if len(toks) > 1 else ""
+    if strength == "tossup":
+        return (-1.0, 1.0, 0.0, 0.25)
+    key = f"{strength} {party}"
+    BANDS = {
+        "solid d": (12.0, 35.0, 22.0, 0.65),
+        "likely d": (7.0, 12.0, 10.0, 0.50),
+        "lean d": (3.0, 7.0, 6.0, 0.40),
+        "tilt d": (1.0, 3.0, 3.0, 0.35),
+        "tilt r": (-3.0, -1.0, -3.0, 0.35),
+        "lean r": (-7.0, -3.0, -6.0, 0.40),
+        "likely r": (-12.0, -7.0, -10.0, 0.50),
+        "solid r": (-35.0, -12.0, -22.0, 0.65),
+    }
+    return BANDS.get(key)
+
+
+def rating_margin(ratings):
+    """Center of the strongest rating band (informational; not used as the margin)."""
+
+    def to_center(raw):
+        b = rating_band(raw)
+        return b[2] if b else None
 
     for key in RATING_ORDER:
-        m = to_margin((ratings or {}).get(key))
+        m = to_center((ratings or {}).get(key))
         if m is not None:
             return m
     return None
 
 
 def pvi_margin(pvi):
-    """No-rating prior for House districts only (PVI positive lean Republican)."""
+    """No-rating prior (PVI positive leans Republican)."""
     return -0.5 * pvi
 
 
 def final_margin(race, polls, chamber):
-    rm = rating_margin(race.get("ratings"))
-    if rm is None:
+    band = rating_band(next((v for v in ((race.get("ratings") or {}).get(k) for k in RATING_ORDER) if v), None))
+    if band is not None:
+        lo, hi, center, w = band
+        pm = pvi_margin(race.get("pvi") or 0.0)
+        if race.get("party"):
+            pm += 1.5 if race["party"] == "D" else -1.5
+        rm = w * center + (1 - w) * pm
+        rm = max(lo, min(hi, rm))
+    else:
         rm = pvi_margin(race.get("pvi") or 0.0)
         if race.get("party"):
             rm += 1.5 if race["party"] == "D" else -1.5
@@ -228,6 +257,7 @@ def main():
             "generic_ballot_generic_margin": env,
             "n_sims": N_SIMS,
             "rating_margin_table": RATING_MARGIN,
+            "margin_method": "PVI prior placed inside rating band (rating sets direction+strength, PVI gives continuous margin)",
             "national_swing_sigma": NATIONAL_SIGMA,
         },
         "senate": run("senate", base["races"]["senate"], polls["senate"], env),

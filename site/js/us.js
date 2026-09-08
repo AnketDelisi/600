@@ -67,8 +67,8 @@ function ratingClass(rating) {
 }
 
 function partyBadge(party) {
-  if (party === "D") return '<span class="party-badge D">D</span>';
-  if (party === "R") return '<span class="party-badge R">R</span>';
+  if (party === "D") return `<span class="party-badge D"><img src="${US_BASE}img/usa/D.svg" alt="D"></span>`;
+  if (party === "R") return `<span class="party-badge R"><img src="${US_BASE}img/usa/R.svg" alt="R"></span>`;
   if (party === "I") return '<span class="party-badge I">IND</span>';
   return '<span class="party-badge open">OPEN</span>';
 }
@@ -321,40 +321,55 @@ function parsePollDate(str) {
 }
 
 function pollTrendSVG(polls) {
-  const W = 640, H = 130, padL = 40, padR = 12, padT = 14, padB = 20;
+  const W = 640, H = 150, padL = 44, padR = 14, padT = 18, padB = 24;
   const pts = [];
   for (const p of polls) {
     if (!p.dates) continue;
     const dt = parsePollDate(p.dates);
     if (!dt) continue;
-    pts.push({ t: dt.getTime(), m: p.dem - p.rep, dates: p.dates });
+    pts.push({ t: dt.getTime(), d: p.dem, r: p.rep, dates: p.dates });
   }
   pts.sort((a, b) => a.t - b.t);
   if (pts.length < 2) {
     return `<div style="font-size:11px;color:var(--c-text-muted);padding:8px 0">Not enough dated polls to plot.</div>`;
   }
   const tMin = pts[0].t, tMax = pts[pts.length - 1].t;
-  let mMin = Math.min(...pts.map((p) => p.m), 0) - 2;
-  let mMax = Math.max(...pts.map((p) => p.m), 0) + 2;
-  if (mMax - mMin < 8) { const c = (mMax + mMin) / 2; mMin = c - 4; mMax = c + 4; }
+  let vMin = 20, vMax = 70;
+  for (const p of pts) {
+    if (p.d < vMin) vMin = p.d;
+    if (p.r < vMin) vMin = p.r;
+    if (p.d > vMax) vMax = p.d;
+    if (p.r > vMax) vMax = p.r;
+  }
+  vMin = Math.floor((vMin - 4) / 5) * 5;
+  vMax = Math.ceil((vMax + 4) / 5) * 5;
+  if (vMax - vMin < 10) { const c = (vMax + vMin) / 2; vMin = c - 5; vMax = c + 5; }
   const X = (t) => padL + ((t - tMin) / (tMax - tMin || 1)) * (W - padL - padR);
-  const Y = (m) => padT + ((mMax - m) / (mMax - mMin)) * (H - padT - padB);
-  let line = "";
-  let dots = "";
-  pts.forEach((p, i) => {
-    line += `${i === 0 ? "M" : "L"}${X(p.t).toFixed(1)},${Y(p.m).toFixed(1)} `;
-    dots += `<circle cx="${X(p.t).toFixed(1)}" cy="${Y(p.m).toFixed(1)}" r="3" fill="${p.m >= 0 ? "var(--d-blue)" : "var(--d-red)"}"/>`;
-  });
-  const y0 = Y(0);
+  const Y = (v) => padT + ((vMax - v) / (vMax - vMin)) * (H - padT - padB);
+  const line = (get, col) => {
+    let d = "";
+    pts.forEach((p, i) => {
+      d += `${i === 0 ? "M" : "L"}${X(p.t).toFixed(1)},${Y(get(p)).toFixed(1)} `;
+    });
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+  };
+  const dots = (get, col) =>
+    pts.map((p) => `<circle cx="${X(p.t).toFixed(1)}" cy="${Y(get(p)).toFixed(1)}" r="3.5" fill="${col}"/>`).join("");
+  let grid = "";
+  for (let v = vMin; v <= vMax; v += 5) {
+    grid += `<line x1="${padL}" y1="${Y(v)}" x2="${W - padR}" y2="${Y(v)}" stroke="var(--c-rule)" stroke-width="1"/>`;
+    grid += `<text x="${padL - 6}" y="${Y(v) + 3}" font-size="9" font-weight="900" fill="var(--c-text-muted)" text-anchor="end">${v}</text>`;
+  }
   const last = pts[pts.length - 1];
-  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="width:100%;height:130px;display:block">
-    <line x1="${padL}" y1="${y0}" x2="${W - padR}" y2="${y0}" stroke="var(--c-edge)" stroke-width="1" stroke-dasharray="4 3"/>
-    <path d="${line}" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linejoin="round"/>
-    ${dots}
-    <text x="${padL}" y="${y0 - 4}" font-size="9" font-weight="900" fill="var(--c-text-muted)">0</text>
-    <text x="${padL}" y="${padT + 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">D+</text>
-    <text x="${padL}" y="${H - 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">R+</text>
-    <text x="${Math.min(W - padR - 120, X(last.t) - 60)}" y="${H - 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">${last.dates.replace("through", "through ")}</text>
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:150px;display:block">
+    ${grid}
+    ${line((p) => p.d, "var(--d-blue)")}
+    ${line((p) => p.r, "var(--d-red)")}
+    ${dots((p) => p.d, "var(--d-blue)")}
+    ${dots((p) => p.r, "var(--d-red)")}
+    <text x="${padL}" y="${padT - 6}" font-size="9" font-weight="900" fill="var(--d-blue)">D share</text>
+    <text x="${padL + 44}" y="${padT - 6}" font-size="9" font-weight="900" fill="var(--d-red)">R share</text>
+    <text x="${padL}" y="${H - 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">${last.dates.replace("through", "through ")}</text>
   </svg>`;
 }
 

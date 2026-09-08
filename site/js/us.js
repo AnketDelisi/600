@@ -342,13 +342,27 @@ function render() {
 
   const env = f.environment ? `Generic congressional ballot: <b>${fmt(f.environment.generic_ballot_generic_margin)}</b> points Democratic.` : "";
 
+  const maj = data.majority || {};
+  const statusBar = `<div class="statusbar">
+    <span class="sb-seg d"><b>${fmt(maj.dem_pct ?? data.expected_d_seats)}</b>${maj.dem_pct != null ? "%" : ""} D</span>
+    <span class="sb-arrow">vs</span>
+    <span class="sb-seg r"><b>${fmt(maj.rep_pct ?? data.expected_r_seats)}</b>${maj.rep_pct != null ? "%" : ""} R</span>
+    <span class="sb-seats">Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b> seats</span>
+    <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "50 for majority" : "36 governors up"}</span>
+  </div>`;
+
   pane.innerHTML = `
-    <div class="card">
-      <h2>Race for the ${state.chamber === "house" ? "U.S. House" : state.chamber === "senate" ? "U.S. Senate" : "governors' mansions"}</h2>
-      <p class="note">Model chance shown is the share of 20,000 simulated election nights in which each party wins the chamber, accounting for the generic-ballot environment (${env}).</p>
-      ${headerCard}
+    ${statusBar}
+    <div class="layout-2col">
+      <div class="col-a">
+        <div class="card">
+          <h2>Race for the ${state.chamber === "house" ? "U.S. House" : state.chamber === "senate" ? "U.S. Senate" : "governors' mansions"}</h2>
+          <p class="note">Model chance shown is the share of 20,000 simulated election nights in which each party wins the chamber, accounting for the generic-ballot environment (${env}).</p>
+          ${headerCard}
+        </div>
+      </div>
+      <div class="col-b">${mapHtml}</div>
     </div>
-    ${mapHtml}
     <div class="card">
       <h2>Seat distribution</h2>
       <p class="note">Share of simulated nights producing each number of Democratic seats (2-seat buckets). Blue bars are Democratic-majority outcomes.</p>

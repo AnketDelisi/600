@@ -16,8 +16,8 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b0";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905b0";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b1";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905b1";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -78,8 +78,6 @@ function raceKey(race) {
 function raceRow(race) {
   const name = race.district ? `${race.state} ${race.district}` : race.state;
   const d = race.dem_pct, r = race.rep_pct;
-  const dW = d >= r;
-  const dWidth = state.chamber === "governor" ? Math.max(d, r) : (dW ? d : r);
   const polls = race.polls
     ? `<span class="polling">D <b class="n">${fmt(race.polls.dem)}</b> · R <b class="u">${fmt(race.polls.rep)}</b></span>`
     : '<span class="polling"><span class="none">—</span></span>';
@@ -92,8 +90,8 @@ function raceRow(race) {
     <td>${polls}</td>
     <td>
       <div class="chance">
-        <div class="d" style="width:${dWidth}%"></div>
-        <div class="r" style="width:${100 - dWidth}%"></div>
+        <div class="d" style="width:${d}%"></div>
+        <div class="r" style="width:${r}%"></div>
         <div class="tick"></div>
         <span class="lbl pleft">${fmt(d)}</span>
         <span class="lbl pright">${fmt(r)}</span>
@@ -109,7 +107,7 @@ function distributionSVG(chamberData, total) {
   const maxPct = Math.max(...buckets.map((b) => b.pct));
   const nxt = total;
   const x = (seats) => (seats / nxt) * W;
-  const marker = state.chamber === "house" ? 218 : 50;
+  const marker = state.chamber === "house" ? 218 : 51;
   let bars = "";
   for (const b of buckets) {
     const h = (b.pct / maxPct) * (H - padB - 6);
@@ -141,7 +139,7 @@ function controlCard(chamberData) {
   </div>
   <p class="line" style="margin-top:14px;color:var(--c-text-muted);font-size:13px">
     Expected seats — Democrats <b>${fmt(chamberData.expected_d_seats)}</b>, Republicans <b>${fmt(chamberData.expected_r_seats)}</b>.
-    ${state.chamber === "senate" ? "50 seats are needed for a majority (a 50–50 split leaves control in White House hands)." : "218 seats are needed for a majority."}
+    ${state.chamber === "senate" ? "51 seats are needed for a Democratic majority — a 50–50 split leaves control in Republican hands via the Vice President's tie-breaking vote." : "218 seats are needed for a majority."}
   </p>`;
 }
 
@@ -348,7 +346,7 @@ function render() {
     <span class="sb-arrow">vs</span>
     <span class="sb-seg r"><b>${fmt(maj.rep_pct ?? data.expected_r_seats)}</b>${maj.rep_pct != null ? "%" : ""} R</span>
     <span class="sb-seats">Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b> seats</span>
-    <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "50 for majority" : "36 governors up"}</span>
+    <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "51 for D majority" : "36 governors up"}</span>
   </div>`;
 
   pane.innerHTML = `

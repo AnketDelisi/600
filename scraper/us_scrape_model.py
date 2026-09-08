@@ -58,7 +58,7 @@ COMP_START = {
     "house": {"d": 215, "r": 220},
     "governor": {"d": 18, "r": 18},
 }
-MAJORITY = {"senate": 50, "house": 218}
+MAJORITY = {"senate": 51, "house": 218}
 
 
 def rating_band(raw):
@@ -222,6 +222,8 @@ def run(chamber, races, poll_map, env_margin):
         else:
             label_key = label_key[0]
         m = margins[label_key]
+        # displayed margin includes the expected national swing so it agrees
+        # with the win probability (dem_pct) shown to readers
         md = 1.0 / (1.0 + math.exp(-(m + swing_mean) / beta))
         out_races.append({
             "state": r["state"].replace("_", " "),
@@ -229,8 +231,8 @@ def run(chamber, races, poll_map, env_margin):
             "incumbent": (r.get("incumbent") or "").split("(")[0].strip(),
             "party": r.get("party"),
             "rating": best_rating(r),
-            "lean": lean(m),
-            "margin": round(m, 1),
+            "lean": lean(m + swing_mean),
+            "margin": round(m + swing_mean, 1),
             "dem_pct": round(100 * md, 1),
             "rep_pct": round(100 * (1 - md), 1),
             "polls": polls_used[label_key],

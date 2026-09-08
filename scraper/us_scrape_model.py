@@ -1,0 +1,229 @@
+#!/usr/bin/env python3
+"""600 in-house forecast model for the 2026 U.S. midterms.
+
+Pipeline per race:
+  1. Prior margin (D - R, two-party points) from the strongest race rating
+     (Cook, then Inside Elections, then Sabato). Ratings map to point margins:
+       Solid/Safe  +22, Likely +10, Lean/Leans +6, Tilt +3, Tossup 0.
+     With no rating: PVI prior  =  -0.5 * CPVI  (+1.5 if incumbent holding).
+  2. Polling blend (when a race has an aggregate/simple poll average):
+       margin = 0.65 * poll_margin + 0.35 * prior_margin.
+  3. National-swing Monte Carlo: every race shares a common environment
+     shift S ~ N(0, sigma_n); a race is won by the Democrats when
+     (margin + S) / sigma_e > 0. sigma_e is a per-chamber residual error.
+     Chamber seat tallies are accumulated across 20k simulated nights to
+     produce per-race win probabilities and seat distributions.
+
+Chamber majority thresholds: Senate 50 (current D-caucus 47 vs R 53),
+House 218 seats, Governors shows an expected Dem/Rep count only.
+"""
+
+import json
+import math
+import random
+from datetime import datetime, timezone
+from pathlib import Path
+
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "us"
+RNG = random.Random(20260908)
+N_SIMS = 20000
+
+# point margins by rating word -> (cook, ie, sabato) synonyms
+RATING_MARGIN = {
+    "solid": 22.0, "safe": 22.0, "likely": 10.0, "lean": 6.0, "leans": 6.0,
+    "tilt": 3.0, "tossup": 0.0,
+}
+RATING_ORDER = ("cook", "ie", "sabato")
+# logistic slope for win probability
+LOGISTIC_BETA = {"senate": 4.0, "house": 4.5, "governor": 4.0}
+NATIONAL_SIGMA = 2.5
+POLL_WEIGHT = 0.65
+
+# current chamber state (D-caucus includes independents)
+COMP_START = {
+    "senate": {"d": 47, "r": 53},
+    "house": {"d": 215, "r": 220},
+    "governor": {"d": 18, "r": 18},
+}
+MAJORITY = {"senate": 50, "house": 218}
+
+
+def rating_margin(ratings):
+    """Margin (D - R points) from the strongest race rating."""
+
+    def to_margin(raw):
+        if not raw:
+            return None
+        word = raw.lower().split("(")[0].strip()
+        toks = word.split()
+        party = toks[-1] if toks else ""
+        base = None
+        for k, v in RATING_MARGIN.items():
+            if k in word:
+                base = v
+                break
+        if base is None:
+            return None
+        if party == "r":
+            return -base
+        if party == "d":
+            return base
+        return 0.0 if "tossup" in word else None
+
+    for key in RATING_ORDER:
+        m = to_margin((ratings or {}).get(key))
+        if m is not None:
+            return m
+    return None
+
+
+def pvi_margin(pvi):
+    """No-rating prior for House districts only (PVI positive lean Republican)."""
+    return -0.5 * pvi
+
+
+def final_margin(race, polls, chamber):
+    rm = rating_margin(race.get("ratings"))
+    if rm is None:
+        rm = pvi_margin(race.get("pvi") or 0.0)
+        if race.get("party"):
+            rm += 1.5 if race["party"] == "D" else -1.5
+    if polls:
+        pm = polls["dem"] - polls["rep"]
+        rm = POLL_WEIGHT * pm + (1 - POLL_WEIGHT) * rm
+    return rm
+
+
+def lean(m):
+    if m >= 12: return "Solid D"
+    if m >= 7: return "Likely D"
+    if m >= 3: return "Lean D"
+    if m > -3: return "Tossup"
+    if m > -7: return "Lean R"
+    if m > -12: return "Likely R"
+    return "Solid R"
+
+
+def best_rating(race):
+    ratings = race.get("ratings") or {}
+    for key in RATING_ORDER:
+        if ratings.get(key):
+            return ratings[key]
+    return None
+
+
+def run(chamber, races, poll_map, env_margin):
+    beta = LOGISTIC_BETA[chamber]
+    margins = {}
+    polls_used = {}
+    for r in races:
+        label = (r["state"].replace("_", " "), r.get("district", ""))
+        if chamber == "house":
+            label_key = label[0] + " " + label[1]
+        else:
+            label_key = label[0]
+        polls = poll_map.get(label_key) if poll_map else None
+        m = final_margin(r, polls, chamber)
+        margins[label_key] = m
+        polls_used[label_key] = polls
+
+    out_races = []
+    total = {"senate": 100, "house": 435, "governor": len(races)}[chamber]
+    up_d = sum(1 for r in races if r.get("party") in ("D", "I"))
+    not_up_d = COMP_START[chamber]["d"] - up_d
+    seatz = [0] * (N_SIMS)
+    for i in range(N_SIMS):
+        S = RNG.gauss(0.0, NATIONAL_SIGMA)
+        wins = 0
+        for k, m in margins.items():
+            # logistic win probability, shifted by the common national swing
+            p = 1.0 / (1.0 + math.exp(-(m + S) / beta))
+            if RNG.random() < p:
+                wins += 1
+        seatz[i] = not_up_d + wins
+
+    dist = [0.0] * (total + 1)
+    for s in seatz:
+        dist[min(s, total)] += 1
+    dist = [round(100.0 * n / N_SIMS, 1) for n in dist]
+
+    for r in races:
+        label_key = (r["state"].replace("_", " "), r.get("district", ""))
+        if chamber == "house":
+            label_key = label_key[0] + " " + label_key[1]
+        else:
+            label_key = label_key[0]
+        m = margins[label_key]
+        md = 1.0 / (1.0 + math.exp(-m / beta))
+        out_races.append({
+            "state": r["state"].replace("_", " "),
+            "district": r.get("district", ""),
+            "incumbent": (r.get("incumbent") or "").split("(")[0].strip(),
+            "party": r.get("party"),
+            "rating": best_rating(r),
+            "lean": lean(m),
+            "margin": round(m, 1),
+            "dem_pct": round(100 * md, 1),
+            "rep_pct": round(100 * (1 - md), 1),
+            "polls": polls_used[label_key],
+        })
+    out_races.sort(key=lambda x: (-abs(x["margin"])))
+
+    need = MAJORITY.get(chamber)
+    if need is None:
+        dem_share = rep_share = 0.0
+    else:
+        dem_share = sum(1 for s in seatz if s >= need) / N_SIMS
+        rep_share = 1.0 - dem_share
+    expected = sum(seatz) / N_SIMS
+    return {
+        "races": out_races,
+        "expected_d_seats": round(expected, 1),
+        "expected_r_seats": round(total - expected, 1),
+        "majority": {
+            "dem_pct": round(100 * dem_share, 1),
+            "rep_pct": round(100 * rep_share, 1),
+        },
+        "distribution_buckets": _buckets(dist) if chamber != "governor" else None,
+    }
+
+
+def _buckets(dist):
+    """compress sparse seat-distribution into 2-seat buckets (center values)."""
+    out = []
+    for lo in range(0, len(dist), 2):
+        s = sum(dist[lo:lo + 2])
+        if s:
+            out.append({"seats": lo + 1, "pct": round(s, 1)})
+    return out
+
+
+def main():
+    base = json.loads((OUTPUT_DIR / "races.json").read_text(encoding="utf-8"))
+    polls = json.loads((OUTPUT_DIR / "polling.json").read_text(encoding="utf-8"))
+    gb = [g for g in base.get("generic_ballot") or [] if g["pollster"].lower() != "average"]
+    env = round(sum(g["dem"] - g["rep"] for g in gb) / len(gb), 1) if gb else None
+
+    result = {
+        "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
+        "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "environment": {
+            "generic_ballot_generic_margin": env,
+            "n_sims": N_SIMS,
+            "rating_margin_table": RATING_MARGIN,
+            "national_swing_sigma": NATIONAL_SIGMA,
+        },
+        "senate": run("senate", base["races"]["senate"], polls["senate"], env),
+        "house": run("house", base["races"]["house"], None, env),
+        "governor": run("governor", base["races"]["governor"], polls["governor"], env),
+    }
+    out_file = OUTPUT_DIR / "forecast.json"
+    out_file.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Wrote {out_file}")
+    for ch in ("senate", "house", "governor"):
+        r = result[ch]
+        print(f"{ch}: expected D {r['expected_d_seats']}, " + (f"D maj {r['majority']['dem_pct']}%" if ch != 'governor' else f"D {r['majority']['dem_pct']}"))
+
+
+if __name__ == "__main__":
+    main()

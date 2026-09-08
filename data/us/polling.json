@@ -1,0 +1,162 @@
+{
+  "scraped_at": "2026-09-08T08:23:36Z",
+  "senate": {
+    "Alabama": null,
+    "Alaska": {
+      "dem": 49.0,
+      "rep": 47.5,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Arkansas": {
+      "dem": 40.2,
+      "rep": 49.8,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 4
+    },
+    "Colorado": null,
+    "Delaware": null,
+    "Florida": {
+      "dem": 40.0,
+      "rep": 49.6,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Georgia": {
+      "dem": 47.0,
+      "rep": 42.3,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Idaho": null,
+    "Illinois": null,
+    "Iowa": {
+      "dem": 45.4,
+      "rep": 47.2,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Kansas": {
+      "dem": 44.0,
+      "rep": 46.4,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Kentucky": null,
+    "Louisiana": null,
+    "Maine": {
+      "dem": 48.7,
+      "rep": 45.6,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Massachusetts": {
+      "dem": 54.2,
+      "rep": 26.6,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 5
+    },
+    "Michigan": {
+      "dem": 43.2,
+      "rep": 43.8,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Minnesota": {
+      "dem": 49.0,
+      "rep": 43.0,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3
+    },
+    "Mississippi": {
+      "dem": 38.3,
+      "rep": 45.7,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3
+    },
+    "Montana": {
+      "dem": 20.5,
+      "rep": 44.3,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Nebraska": null,
+    "New Hampshire": {
+      "dem": 45.8,
+      "rep": 42.4,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 5
+    },
+    "New Jersey": null,
+    "New Mexico": null,
+    "North Carolina": {
+      "dem": 51.0,
+      "rep": 42.7,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Ohio": {
+      "dem": 49.7,
+      "rep": 45.3,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Oklahoma": null,
+    "Oregon": null,
+    "Rhode Island": {
+      "dem": 51.7,
+      "rep": 33.3,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3
+    },
+    "South Carolina": {
+      "dem": 41.0,
+      "rep": 45.7,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3
+    },
+    "South Dakota": {
+      "dem": 31.0,
+      "rep": 52.3,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3
+    },
+    "Tennessee": null,
+    "Texas": {
+      "dem": 46.7,
+      "rep": 44.4,
+      "source": "Aggregate (Wikipedia)"
+    },
+    "Virginia": null,
+    "West Virginia": null,
+    "Wyoming": null
+  },
+  "governor": {
+    "Alabama": null,
+    "Alaska": null,
+    "Arizona": null,
+    "Arkansas": null,
+    "California": null,
+    "Colorado": null,
+    "Connecticut": null,
+    "Florida": null,
+    "Georgia": null,
+    "Hawaii": null,
+    "Idaho": null,
+    "Illinois": null,
+    "Iowa": null,
+    "Kansas": null,
+    "Maine": null,
+    "Maryland": null,
+    "Massachusetts": null,
+    "Michigan": null,
+    "Minnesota": null,
+    "Nebraska": null,
+    "Nevada": null,
+    "New Hampshire": null,
+    "New Mexico": null,
+    "New York": null,
+    "Ohio": null,
+    "Oklahoma": null,
+    "Oregon": null,
+    "Pennsylvania": null,
+    "Rhode Island": null,
+    "South Carolina": null,
+    "South Dakota": null,
+    "Tennessee": null,
+    "Texas": null,
+    "Vermont": null,
+    "Wisconsin": null,
+    "Wyoming": null
+  }
+}

@@ -2,11 +2,16 @@
 """600 in-house forecast model for the 2026 U.S. midterms.
 
 Pipeline per race:
-  1. Prior margin (D - R, two-party points). The strongest race rating
-     (Cook, then Inside Elections, then Sabato) sets a direction + strength
-     BAND; the district's PVI places the margin continuously inside that band
-     (e.g. Lean D = band [3,7], Solid R = band [-35,-12]). Races with no rating
-     use the PVI prior directly = -0.5 * CPVI (+1.5 if incumbent holding).
+  1. Fundamentals prior (D - R, two-party points): PVI at -1.0 (partisan lean
+     maps ~1:1 onto margins, per FiftyPlusOne/Theo), plus incumbent bonus,
+     blended 30/70 with the last election result where one exists.
+  2. Rating band: the strongest race rating (Cook, then Inside Elections,
+     then Sabato) sets a direction + strength BAND (Safe >15, Likely 7.5-15,
+     Lean 2.5-7.5, Tossup <2.5, per theoelections.com); the fundamentals prior
+     is clamped inside that band so safe seats reach realistic extremes while
+     competitive races stay competitive.
+  3. Polling blend (when a race has an aggregate/simple poll average):
+       margin = 0.65 * poll_margin + 0.35 * prior_margin.
   2. Polling blend (when a race has an aggregate/simple poll average):
        margin = 0.65 * poll_margin + 0.35 * prior_margin.
 3. National-swing Monte Carlo: every race shares a common environment
@@ -57,12 +62,12 @@ MAJORITY = {"senate": 50, "house": 218}
 
 
 def rating_band(raw):
-    """Rating -> (lo, hi, center, rating_weight) margin band.
+    """Rating -> (lo, hi, center) margin band, thresholds following Theo/FPO.
 
     The rating sets the direction and strength (a band of plausible D-R
-    margins), while the PVI prior places the race continuously inside that
-    band. This avoids the old all-races-in-a-category-share-the-same-margin
-    behavior (e.g. every Solid R = -22, every Lean D = +6).
+    margins), while the fundamentals prior (PVI + last result) places the race
+    continuously inside that band. Thresholds mirror theoelections.com:
+    Safe >15, Likely 7.5-15, Lean 2.5-7.5, Tossup <2.5.
     """
     if not raw:
         return None
@@ -77,17 +82,17 @@ def rating_band(raw):
         strength = "lean"
     party = toks[-1] if len(toks) > 1 else ""
     if strength == "tossup":
-        return (-1.0, 1.0, 0.0, 0.25)
+        return (-2.5, 2.5, 0.0)
     key = f"{strength} {party}"
     BANDS = {
-        "solid d": (12.0, 35.0, 22.0, 0.65),
-        "likely d": (7.0, 12.0, 10.0, 0.50),
-        "lean d": (3.0, 7.0, 6.0, 0.40),
-        "tilt d": (1.0, 3.0, 3.0, 0.35),
-        "tilt r": (-3.0, -1.0, -3.0, 0.35),
-        "lean r": (-7.0, -3.0, -6.0, 0.40),
-        "likely r": (-12.0, -7.0, -10.0, 0.50),
-        "solid r": (-35.0, -12.0, -22.0, 0.65),
+        "solid d": (15.0, 35.0, 22.0),
+        "likely d": (7.5, 15.0, 10.0),
+        "lean d": (2.5, 7.5, 5.0),
+        "tilt d": (1.0, 3.0, 2.0),
+        "tilt r": (-3.0, -1.0, -2.0),
+        "lean r": (-7.5, -2.5, -5.0),
+        "likely r": (-15.0, -7.5, -10.0),
+        "solid r": (-35.0, -15.0, -22.0),
     }
     return BANDS.get(key)
 
@@ -107,23 +112,40 @@ def rating_margin(ratings):
 
 
 def pvi_margin(pvi):
-    """No-rating prior (PVI positive leans Republican)."""
-    return -0.5 * pvi
+    """Fundamentals prior from PVI (PVI positive leans Republican).
+
+    Partisan lean maps roughly one-to-one onto margins (FiftyPlusOne; Theo),
+    so the prior is -1.0 * PVI (not -0.5, which understated safe seats).
+    """
+    return -1.0 * pvi
+
+
+def last_margin(race):
+    """Two-party margin (D - R points) implied by the last election result."""
+    last = race.get("last")
+    if not last or last.get("pct") is None:
+        return None
+    margin = last["pct"] - (100 - last["pct"])
+    return margin if last.get("party") == "D" else -margin
+
+
+def fundamentals_margin(race, chamber):
+    """Blend PVI (30%) with the last election result (70%) where available."""
+    pv = pvi_margin(race.get("pvi") or 0.0)
+    if race.get("party"):
+        pv += 1.5 if race["party"] == "D" else -1.5
+    last = last_margin(race)
+    if last is not None:
+        return 0.7 * last + 0.3 * pv
+    return pv
 
 
 def final_margin(race, polls, chamber):
     band = rating_band(next((v for v in ((race.get("ratings") or {}).get(k) for k in RATING_ORDER) if v), None))
+    rm = fundamentals_margin(race, chamber)
     if band is not None:
-        lo, hi, center, w = band
-        pm = pvi_margin(race.get("pvi") or 0.0)
-        if race.get("party"):
-            pm += 1.5 if race["party"] == "D" else -1.5
-        rm = w * center + (1 - w) * pm
+        lo, hi, _ = band
         rm = max(lo, min(hi, rm))
-    else:
-        rm = pvi_margin(race.get("pvi") or 0.0)
-        if race.get("party"):
-            rm += 1.5 if race["party"] == "D" else -1.5
     if polls:
         pm = polls["dem"] - polls["rep"]
         rm = POLL_WEIGHT * pm + (1 - POLL_WEIGHT) * rm
@@ -131,12 +153,12 @@ def final_margin(race, polls, chamber):
 
 
 def lean(m):
-    if m >= 12: return "Solid D"
-    if m >= 7: return "Likely D"
-    if m >= 3: return "Lean D"
-    if m > -3: return "Tossup"
-    if m > -7: return "Lean R"
-    if m > -12: return "Likely R"
+    if m >= 15: return "Solid D"
+    if m >= 7.5: return "Likely D"
+    if m >= 2.5: return "Lean D"
+    if m > -2.5: return "Tossup"
+    if m > -7.5: return "Lean R"
+    if m > -15: return "Likely R"
     return "Solid R"
 
 

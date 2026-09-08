@@ -88,6 +88,31 @@
     .load{text-align:center;padding:60px 0;font-weight:800;color:var(--c-text-muted)}
     select.sort{margin-bottom:14px;font-family:var(--font);font-size:12px;font-weight:800;padding:6px 8px;border:2px solid var(--c-edge);background:var(--c-surface);cursor:pointer}
     .toggle-flow{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+
+    /* ---- US map ---- */
+    .mapwrap{position:relative}
+    .map-ctrls{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+    .map-ctrls button{font-family:var(--font);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;padding:5px 10px;border:2px solid var(--c-edge);background:var(--c-surface);cursor:pointer}
+    .map-ctrls button:hover{color:var(--c-accent)}
+    .map-ctrls .map-title{font-size:12px;font-weight:800;color:var(--c-text-muted)}
+    .map-svg{width:100%;display:block}
+    .map-svg .land{fill:#E8ECF2;stroke:#fff;stroke-width:0.6}
+    .map-svg .st{fill:#D7DEE8;stroke:#fff;stroke-width:0.6;cursor:pointer;transition:fill .15s ease}
+    .map-svg .st:hover,.map-svg .st.focus{stroke:var(--c-edge);stroke-width:1.4}
+    .map-svg .dist{stroke:#fff;stroke-width:0.4;cursor:pointer;transition:fill .12s ease}
+    .map-svg .dist:hover,.map-svg .dist.focus{stroke:var(--c-edge);stroke-width:1.1}
+    .map-svg .sub{stroke:var(--c-text-main);stroke-width:1;fill:none;pointer-events:none;opacity:0.55}
+    .map-tip{position:absolute;pointer-events:none;background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-md);padding:10px 12px;font-size:12px;z-index:30;display:none;min-width:150px}
+    .map-tip .t{font-weight:900;font-size:13px;margin-bottom:5px;letter-spacing:-0.2px}
+    .map-tip .t .cd{color:var(--c-text-muted);font-weight:800}
+    .map-tip .r{font-weight:800;font-size:12px;margin-top:2px}
+    .map-tip .r .d{color:var(--d-blue)}.map-tip .r .u{color:var(--d-red)}
+    .map-tip .m{color:var(--c-text-muted);font-size:11px;margin-top:3px}
+    .map-leg{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;color:var(--c-text-muted);margin-top:12px;padding-top:10px;border-top:1px solid var(--c-rule)}
+    .map-leg .bar{width:180px;height:12px;border:1.5px solid var(--c-edge);display:flex}
+    .map-leg .bar i{display:block;height:100%}
+    .map-leg b{color:var(--c-text-main)}
+    .map-note{color:var(--c-text-muted);font-size:12px;margin:0 0 16px 0}
   </style>
 </head>
 <body>
@@ -115,6 +140,6 @@
     <div id="pane-governor" class="pane"></div>
   </div>
 
-  <script src="../js/us.js?v=20260905ab"></script>
+  <script src="../js/us.js?v=20260905ac"></script>
 </body>
 </html>

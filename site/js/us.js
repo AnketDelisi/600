@@ -1,20 +1,23 @@
 /* 600 — 2026 U.S. midterms renderer (538-style, sidebar-free)
  * Data: data/us/forecast.json produced by scraper/us_scrape_model.py
+ *       data/us/geo.json  pre-projected USA SVG paths + per-state zoom boxes
  */
 window.__errs = [];
 window.addEventListener('error', e => window.__errs.push(String(e)));
 window.addEventListener('unhandledrejection', e => window.__errs.push(String(e.reason || e)));
-const US_DATA = (() => {
-  // Same trick as app.js's dataBase(): derive the base from where us.js loads.
+function dataBase() {
   const s = document.querySelector('script[src*="us.js"]');
   if (s) {
     let src = s.getAttribute("src") || "";
     if (src.startsWith("./")) src = src.slice(2);
     const i = src.lastIndexOf("js/us.js");
-    if (i > 0) return src.slice(0, i) + "data/us/forecast.json?v=20260905ab";
+    if (i > 0) return src.slice(0, i);
   }
-  return "../data/us/forecast.json?v=20260905ab";
-})();
+  return "../";
+}
+const US_BASE = dataBase();
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905ac";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905ac";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -23,11 +26,27 @@ const US_LABELS = {
 
 const state = {
   forecast: null,
+  geo: null,
   chamber: "senate",
   sort: "close",
+  zoom: null, // state index for House drill-down
 };
 
 const fmt = (x) => (Math.abs(x) >= 100 ? Math.round(x) : (x % 1 === 0 ? String(Math.round(x)) : x.toFixed(1)));
+
+/* ---- color helpers (diverging blue/red by win chance) ---- */
+const C_NEUT = "#E8ECF2", C_D = "#3B82C4", C_R = "#FC454C", C_GRAY = "#D7DEE8";
+function mixColor(a, b, t) {
+  const r1 = (a >> 16) & 255, g1 = (a >> 8) & 255, b1 = a & 255;
+  const r2 = (b >> 16) & 255, g2 = (b >> 8) & 255, b2 = b & 255;
+  const r = Math.round(r1 + (r2 - r1) * t), g = Math.round(g1 + (g2 - g1) * t), bl = Math.round(b1 + (b2 - b1) * t);
+  return `rgb(${r},${g},${bl})`;
+}
+function raceColor(dem) {
+  const t = (dem - 50) / 50; // -1..1
+  if (t >= 0) return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(C_D.slice(1), 16), t);
+  return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(C_R.slice(1), 16), -t);
+}
 
 function ratingClass(rating) {
   if (!rating) return "none";
@@ -51,6 +70,10 @@ function partyBadge(party) {
   return '<span class="party-badge open">OPEN</span>';
 }
 
+function raceKey(race) {
+  return `${race.state}|${race.district || ""}|${race.incumbent || ""}`;
+}
+
 function raceRow(race) {
   const name = race.district ? `${race.state} ${race.district}` : race.state;
   const d = race.dem_pct, r = race.rep_pct;
@@ -62,7 +85,7 @@ function raceRow(race) {
   const inc = race.incumbent && race.incumbent !== "None (new seat)"
     ? `(${race.incumbent})`
     : "Open seat";
-  return `<tr>
+  return `<tr data-key="${raceKey(race)}">
     <td class="race-name">${partyBadge(race.party)}<b>${name}</b><span class="inc">${inc}</span></td>
     <td><span class="rating ${ratingClass(race.rating)}">${race.rating || "No rating"}</span></td>
     <td>${polls}</td>
@@ -85,7 +108,6 @@ function distributionSVG(chamberData, total) {
   const maxPct = Math.max(...buckets.map((b) => b.pct));
   const nxt = total;
   const x = (seats) => (seats / nxt) * W;
-  const need = 51; // majority marker (Senate); House 218
   const marker = state.chamber === "house" ? 218 : 50;
   let bars = "";
   for (const b of buckets) {
@@ -134,6 +156,150 @@ function governorCard(chamberData) {
   </p>`;
 }
 
+/* ---- map ---- */
+function raceByKey(data, key) {
+  return data.races.find((r) => raceKey(r) === key) || null;
+}
+function stateRace(races, stateName) {
+  return races.find((r) => r.state === stateName) || null;
+}
+
+function legendGradient() {
+  const g = [];
+  for (let i = 0; i <= 40; i++) g.push(`<i style="width:2.5%;background:${raceColor(i * 2.5)}"></i>`);
+  return `<div class="map-leg">
+    <b>Democratic win chance</b>
+    <div class="bar">${g.join("")}</div>
+    <span>0%</span><b style="border-left:2px solid var(--c-edge);padding-left:4px">50%</b><span>100%</span>
+    <span style="margin-left:auto"><span class="sw" style="background:${C_GRAY};display:inline-block;width:12px;height:10px;border:1.5px solid var(--c-edge);margin-right:4px;vertical-align:0"></span>no race / not up</span>
+  </div>`;
+}
+
+function mapCard(chamberData) {
+  const isHouse = state.chamber === "house";
+  const zoomed = isHouse && state.zoom !== null;
+  const zoomName = state.zoom !== null ? state.geo.states[state.zoom].name : "";
+  const ctrls = `<div class="map-ctrls">
+    <span class="map-title">${isHouse ? (zoomed ? `${zoomName} · click a district for details` : "All 435 districts · click a state to zoom in") : "Click a state for details"}</span>
+    ${zoomed ? `<button onclick="mapReset()">← Back to all states</button>` : ""}
+  </div>`;
+  const tip = `<div class="map-tip"></div>`;
+  return `<div class="card">
+    <h2>${US_LABELS[state.chamber]} map</h2>
+    <p class="map-note">${isHouse
+      ? "Every congressional district is filled by which party the 600 model makes the favorite (intensity = win chance)."
+      : `Every state contesting ${US_LABELS[state.chamber].toLowerCase()} seats in 2026 is filled by the favored party.`}</p>
+    ${ctrls}
+    <div class="mapwrap">
+      <div class="map-stage"></div>
+      ${tip}
+    </div>
+    ${legendGradient()}
+  </div>`;
+}
+
+function buildMapHTML(chamberData) {
+  const geo = state.geo;
+  const isHouse = state.chamber === "house";
+  const W = geo.w, H = geo.h;
+  const races = chamberData.races;
+
+  const stateD = [];
+  for (const st of geo.states) {
+    const race = stateRace(races, st.name);
+    const fill = race ? raceColor(race.dem_pct) : C_GRAY;
+    stateD.push(`<path class="st" data-name="${st.name}" data-idx="${geo.states.indexOf(st)}" d="${st.d}" fill="${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`);
+  }
+
+  let body;
+  if (isHouse && state.zoom !== null) {
+    const si = state.zoom;
+    const st = geo.states[si];
+    const [x0, y0, x1, y1] = st.box;
+    const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+    const pad = 0.82; // leave 18% margin
+    const s = Math.min((W * pad) / (x1 - x0 || 1), (H * pad) / (y1 - y0 || 1));
+    const t = `translate(${W / 2},${H / 2}) scale(${s}) translate(${-cx},${-cy})`;
+    const dists = geo.districts.filter((d) => d.s === si);
+    const dPaths = dists.map((d) => {
+      const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
+      const fill = race ? raceColor(race.dem_pct) : C_GRAY;
+      return `<path class="dist" data-name="${st.name} ${d.cd}" d="${d.d}" fill="${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
+    });
+    body = `<g transform="${t}">${dPaths.join("")}</g>`;
+  } else if (isHouse) {
+    const dPaths = geo.districts.map((d) => {
+      const st = geo.states[d.s];
+      const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
+      const fill = race ? raceColor(race.dem_pct) : C_GRAY;
+      return `<path class="dist" data-name="${st.name} ${d.cd === "at-large" ? "At Large" : d.cd}" data-idx="${d.s}" d="${d.d}" fill="${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
+    });
+    body = `${dPaths.join("")}<g class="sub">${geo.states.map((s) => `<path d="${s.d}"/>`).join("")}</g>`;
+  } else {
+    body = `<g class="land"><path d="${geo.nation}"/></g>${stateD.join("")}`;
+  }
+  return `<svg class="map-svg" viewBox="0 0 ${W} ${H}">${body}</svg>`;
+}
+
+function attachMap(pane, chamberData) {
+  const svg = pane.querySelector(".map-svg");
+  if (!svg) return;
+  const tip = pane.querySelector(".map-tip");
+  const isHouse = state.chamber === "house";
+  const races = chamberData.races;
+  const zoomed = isHouse && state.zoom !== null;
+
+  svg.querySelectorAll(".st, .dist").forEach((el) => {
+    el.addEventListener("mousemove", (e) => {
+      const rect = svg.parentElement.getBoundingClientRect();
+      const name = el.getAttribute("data-name");
+      const key = el.getAttribute("data-race");
+      const race = key ? raceByKey(chamberData, key) : null;
+      tip.style.display = "block";
+      tip.style.left = Math.min(rect.width - 180, e.clientX - rect.left + 14) + "px";
+      tip.style.top = Math.max(4, e.clientY - rect.top - 8) + "px";
+      if (race) {
+        const rn = state.chamber === "house" ? name : race.state;
+        tip.innerHTML = `<div class="t">${rn}</div>
+          <div class="r"><span class="d">D ${fmt(race.dem_pct)}%</span> · <span class="u">R ${fmt(race.rep_pct)}%</span></div>
+          <div class="m">Margin ${race.margin >= 0 ? "D+" : "R+"}${fmt(Math.abs(race.margin))} ${race.rating ? "· " + race.rating : ""}</div>`;
+      } else {
+        tip.innerHTML = `<div class="t">${name}</div><div class="m">No 2026 race</div>`;
+      }
+    });
+    el.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+    el.addEventListener("click", () => {
+      const key = el.getAttribute("data-race");
+      if (isHouse && !zoomed && key) {
+        const idx = parseInt(el.getAttribute("data-idx"), 10);
+        if (idx !== null && !isNaN(idx) && state.geo.states[idx]) {
+          state.zoom = idx;
+          render();
+          return;
+        }
+      }
+      if (key) selectRace(pane, key);
+    });
+  });
+  svg.querySelectorAll(".st").forEach((el) => {
+    el.addEventListener("mouseenter", () => { svg.querySelectorAll(".st,.dist").forEach((p) => p.classList.remove("focus")); el.classList.add("focus"); });
+  });
+}
+
+function selectRace(pane, key) {
+  pane.querySelectorAll("tr").forEach((tr) => tr.classList.remove("selected"));
+  const tr = pane.querySelector(`tr[data-key="${CSS.escape(key)}"]`);
+  if (tr && tr.scrollIntoView) {
+    tr.classList.add("selected");
+    tr.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+}
+
+function mapReset() {
+  state.zoom = null;
+  render();
+}
+
 function render() {
   const f = state.forecast;
   if (!f) return;
@@ -155,9 +321,11 @@ function render() {
       </select>`
     : "";
 
+  const mapHtml = state.geo ? mapCard(data) : "";
+
   const table = `<div class="card">
     <h2>Every ${US_LABELS[state.chamber].toLowerCase()} race</h2>
-    <p class="note">${data.races.length} races · sorted ${state.sort === "close" ? "by closeness" : state.sort === "rd" ? "by Democratic probability" : "by Republican probability"}</p>
+    <p class="note">${data.races.length} races · sorted ${state.sort === "close" ? "by closeness" : state.sort === "rd" ? "by Democratic probability" : "by Republican probability"} · click a row to see it on the map</p>
     <div class="toggle-flow">${sortSel}</div>
     <table>
       <thead><tr><th>Race</th><th>Rating</th><th>Polling average</th><th>Win probability</th></tr></thead>
@@ -178,6 +346,7 @@ function render() {
       <p class="note">Model chance shown is the share of 20,000 simulated election nights in which each party wins the chamber, accounting for the generic-ballot environment (${env}).</p>
       ${headerCard}
     </div>
+    ${mapHtml}
     <div class="card">
       <h2>Seat distribution</h2>
       <p class="note">Share of simulated nights producing each number of Democratic seats (2-seat buckets). Blue bars are Democratic-majority outcomes.</p>
@@ -192,6 +361,35 @@ function render() {
       Sources: Wikipedia (2026 Senate / House / gubernatorial election articles and ratings), generic-ballot aggregates.
       Model generated: ${f.generated ? new Date(f.generated).toUTCString() : "—"}.
     </p>`;
+
+  if (state.geo) {
+    const stage = pane.querySelector(".map-stage");
+    stage.innerHTML = buildMapHTML(data);
+    attachMap(pane, data);
+  }
+  attachRows(pane, data);
+}
+
+function attachRows(pane, data) {
+  pane.querySelectorAll("tr[data-key]").forEach((tr) => {
+    tr.style.cursor = "pointer";
+    tr.addEventListener("mouseenter", () => {
+      const key = tr.getAttribute("data-key");
+      const el = pane.querySelector(`.map-svg [data-race="${CSS.escape(key)}"]`);
+      if (el) { el.classList.add("focus"); }
+    });
+    tr.addEventListener("mouseleave", () => {
+      pane.querySelectorAll(".map-svg .focus").forEach((p) => p.classList.remove("focus"));
+    });
+    tr.addEventListener("click", () => {
+      const key = tr.getAttribute("data-key");
+      if (state.chamber === "house" && state.zoom === null) {
+        const race = raceByKey(data, key);
+        if (race) { state.zoom = state.geo.states.findIndex((s) => s.name === race.state); render(); return; }
+      }
+      selectRace(pane, key);
+    });
+  });
 }
 
 function setSort(v) {
@@ -201,6 +399,7 @@ function setSort(v) {
 
 function selectChamber(ch) {
   state.chamber = ch;
+  state.zoom = null;
   document.querySelectorAll(".tab").forEach((t) => {
     t.classList.toggle("active", t.dataset.chamber === ch);
   });
@@ -214,10 +413,11 @@ document.querySelectorAll(".tab").forEach((t) => {
   t.addEventListener("click", () => selectChamber(t.dataset.chamber));
 });
 
-fetch(US_DATA)
-  .then((res) => res.json())
-  .then((f) => {
+Promise.all([fetch(US_DATA), fetch(US_GEO)])
+  .then(([rf, rg]) => Promise.all([rf.json(), rg.json()]))
+  .then(([f, g]) => {
     state.forecast = f;
+    state.geo = g;
     document.getElementById("updated").textContent =
       `Updated ${new Date(f.generated).toUTCString()} · ${f.model || ""}`;
     render();

@@ -16,8 +16,8 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905ag";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905ag";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905ah";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905ah";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -356,8 +356,9 @@ function render() {
     </div>
     ${table}
     <p class="foot">
-      Method: the 600 in-house model converts race ratings (Cook, Inside Elections, Sabato)
-      and per-race polling averages into a two-party margin, then runs a national-swing
+      Method: the 600 in-house model starts from district/state partisan lean (PVI and the last
+      election result), clamps that margin inside the race-rating band (Cook, Inside Elections,
+      Sabato), blends in per-race polling averages where available, then runs a national-swing
       simulation (${fmt(f.environment ? f.environment.n_sims : 20000)} nights, national swing σ = ${fmt(f.environment ? f.environment.national_swing_sigma : 2.5)} pts centered on the generic ballot).
       Races without public polling are shown as "—"; their probability comes from the rating and partisan lean.
       Sources: Wikipedia (2026 Senate / House / gubernatorial election articles and ratings), generic-ballot aggregates.

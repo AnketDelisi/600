@@ -16,8 +16,8 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905ah";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905ah";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b0";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905b0";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -35,7 +35,7 @@ const state = {
 const fmt = (x) => (Math.abs(x) >= 100 ? Math.round(x) : (x % 1 === 0 ? String(Math.round(x)) : x.toFixed(1)));
 
 /* ---- color helpers (diverging blue/red by win chance) ---- */
-const C_NEUT = "#E8ECF2", C_D = "#3B82C4", C_R = "#FC454C", C_GRAY = "#D7DEE8", C_TOSSUP = "#E8C978";
+const C_NEUT = "#EFE9DE", C_D = "#2E6EA8", C_R = "#C83737", C_GRAY = "#DAD3C4", C_TOSSUP = "#E2C27A";
 function mixColor(a, b, t) {
   const r1 = (a >> 16) & 255, g1 = (a >> 8) & 255, b1 = a & 255;
   const r2 = (b >> 16) & 255, g2 = (b >> 8) & 255, b2 = b & 255;

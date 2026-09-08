@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b2";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905b2";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20260905b2";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b3";
+const US_GEO = US_BASE + "data/us/geo.json?v=20260905b3";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20260905b3";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -146,14 +146,16 @@ function controlCard(chamberData) {
 }
 
 function governorCard(chamberData) {
+  const dTot = chamberData.total_d_governors ?? chamberData.expected_d_seats;
+  const rTot = chamberData.total_r_governors ?? chamberData.expected_r_seats;
   return `<div class="ctl">
-    <div class="cell d"><div class="big">${fmt(chamberData.expected_d_seats)}</div>
+    <div class="cell d"><div class="big">${fmt(dTot)}</div>
       <div class="lbl">Expected Democratic governors</div></div>
-    <div class="cell r"><div class="big">${fmt(chamberData.expected_r_seats)}</div>
+    <div class="cell r"><div class="big">${fmt(rTot)}</div>
       <div class="lbl">Expected Republican governors</div></div>
   </div>
   <p class="line" style="margin-top:14px;color:var(--c-text-muted);font-size:13px">
-    ${chamberData.races.length} governorships are contested in 2026.
+    Totals across all 50 governorships — ${chamberData.races.length} are contested in 2026, the other 14 are already settled (currently 6 D / 8 R).
   </p>`;
 }
 
@@ -447,12 +449,18 @@ function render() {
   const env = f.environment ? `Generic congressional ballot: <b>${fmt(f.environment.generic_ballot_generic_margin)}</b> points Democratic.` : "";
 
   const maj = data.majority || {};
+  const govD = data.total_d_governors, govR = data.total_r_governors;
+  const hasMajPct = maj.dem_pct != null;
+  const dVal = state.chamber === "governor" ? govD : (hasMajPct ? maj.dem_pct : data.expected_d_seats);
+  const rVal = state.chamber === "governor" ? govR : (hasMajPct ? maj.rep_pct : data.expected_r_seats);
   const statusBar = `<div class="statusbar">
-    <span class="sb-seg d"><b>${fmt(maj.dem_pct ?? data.expected_d_seats)}</b>${maj.dem_pct != null ? "%" : ""} D</span>
+    <span class="sb-seg d"><b>${fmt(dVal)}</b>${state.chamber === "governor" ? "" : hasMajPct ? "%" : ""} D</span>
     <span class="sb-arrow">vs</span>
-    <span class="sb-seg r"><b>${fmt(maj.rep_pct ?? data.expected_r_seats)}</b>${maj.rep_pct != null ? "%" : ""} R</span>
-    <span class="sb-seats">Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b> seats</span>
-    <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "51 for D majority" : "36 governors up"}</span>
+    <span class="sb-seg r"><b>${fmt(rVal)}</b>${state.chamber === "governor" ? "" : hasMajPct ? "%" : ""} R</span>
+    <span class="sb-seats">${state.chamber === "governor"
+      ? `Expected governors: <b class="d">${fmt(govD)}</b> – <b class="r">${fmt(govR)}</b> (of 50)`
+      : `Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b> seats`}</span>
+    <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "51 for D majority" : "36 of 50 governors up"}</span>
   </div>`;
 
   pane.innerHTML = `

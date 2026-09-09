@@ -1,8 +1,9 @@
 /* 600 — Poll Image Generator
  * Config-driven: any country in js/config.js (COUNTRIES) works automatically:
  * party order, colors, English names, logos, and last-election baseline.
- * Renders a EuropeElects-style double-bar chart (poll vs last election) with
- * each party's logo in a box + name, plus the 600logo.svg header.
+ * Renders a clean double-bar chart (70% poll vs 30% last election, side by
+ * side) with each party's logo on a color square + abbreviation, plus the
+ * 600logo.svg header.
  */
 (function () {
   'use strict';
@@ -19,9 +20,9 @@
   const BASE = dataBase();
 
   const THEMES = {
-    default: { bg: '#F9F7F0', surface: '#FFFFFF', ink: '#161616', muted: '#5F584E', grid: '#D8D1C0', edge: '#1A1A1A' },
-    white:   { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#6B665C', grid: '#E4E0D6', edge: '#1A1A1A' },
-    dark:    { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', grid: '#3A3A3A', edge: '#FDFBF4' },
+    default: { bg: '#F9F7F0', surface: '#FFFFFF', ink: '#161616', muted: '#5F584E', edge: '#1A1A1A' },
+    white:   { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#6B665C', edge: '#1A1A1A' },
+    dark:    { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', edge: '#FDFBF4' },
   };
 
   /* ---------- image cache ---------- */
@@ -63,6 +64,50 @@
     return (r % 1 !== 0) ? r.toFixed(1) : String(r);
   }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  /* recolor a monochrome logo (black glyph on transparent) to any color */
+  function tintedLogo(img, color, w, h) {
+    const oc = document.createElement('canvas');
+    oc.width = w; oc.height = h;
+    const o = oc.getContext('2d');
+    o.drawImage(img, 0, 0, w, h);
+    o.globalCompositeOperation = 'source-in';
+    o.fillStyle = color;
+    o.fillRect(0, 0, w, h);
+    return oc;
+  }
+
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function isoDate(iso) {
+    const parts = String(iso).split('-').map(Number);
+    if (parts.length !== 3 || parts.some((p) => !isFinite(p))) return null;
+    const d = new Date(parts[0], parts[1] - 1, parts[2]);
+    return (isNaN(d)) ? null : d;
+  }
+  /* "2026-09-06 – 2026-09-09" -> "6–9 September" */
+  function fmtDateRange(a, b) {
+    const da = isoDate(a), db = isoDate(b);
+    if (!da && !db) return '';
+    if (!db) return formatSingle(da || isoDate(a));
+    if (!da) return formatSingle(db);
+    if (db - da < 0) return formatSingle(da);
+    const ya = da.getFullYear(), yb = db.getFullYear();
+    const cur = new Date().getFullYear();
+    const day = (d) => d.getDate();
+    if (da.getMonth() === db.getMonth() && ya === yb) {
+      const s = (day(da) === day(db) ? String(day(da)) : day(da) + '–' + day(db)) + ' ' + MONTHS[da.getMonth()];
+      return ya === cur ? s : s + ' ' + ya;
+    }
+    if (ya === yb) {
+      const s = day(da) + ' ' + MONTHS[da.getMonth()] + ' – ' + day(db) + ' ' + MONTHS[db.getMonth()];
+      return ya === cur ? s : s + ' ' + ya;
+    }
+    return day(da) + ' ' + MONTHS[da.getMonth()] + ' ' + ya + ' – ' + day(db) + ' ' + MONTHS[db.getMonth()] + ' ' + yb;
+  }
+  function formatSingle(d) {
+    if (!d) return '';
+    return fmtDateRange(d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(), d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate());
+  }
 
   /* ---------- build party rows ---------- */
   function buildRows() {
@@ -113,8 +158,11 @@
       if (!polls.length) throw new Error('empty');
       const latest = polls[0];
       titleInput.value = latest.pollster || '';
-      const nTxt = latest.n ? ' (n = ' + Number(latest.n).toLocaleString('en-US') + ')' : '';
-      dateInput.value = (latest.fieldwork_start && latest.date) ? latest.fieldwork_start + ' – ' + latest.date + nTxt : (latest.date || '') + nTxt;
+      const nTxt = latest.n ? ' · n = ' + Number(latest.n).toLocaleString('en-US') : '';
+      let dateTxt = '';
+      if (latest.fieldwork_start && latest.date) dateTxt = fmtDateRange(latest.fieldwork_start, latest.date);
+      else if (latest.date) dateTxt = formatSingle(isoDate(latest.date));
+      dateInput.value = (dateTxt || (latest.date || '')) + nTxt;
       const votes = latest.votes || latest.result || null;
       if (c && votes) {
         (c.order || []).forEach((pid) => {
@@ -133,28 +181,6 @@
   }
 
   /* ---------- rendering ---------- */
-  function drawGridRow(th, x0, x1, y) {
-    cctx.globalAlpha = 0.5;
-    cctx.strokeStyle = th.grid;
-    cctx.lineWidth = 1;
-    cctx.beginPath(); cctx.moveTo(x0, y); cctx.lineTo(x1, y); cctx.stroke();
-    cctx.globalAlpha = 1;
-  }
-
-  function wrapText(ctx, text, maxW, maxLines) {
-    const words = String(text).split(' ');
-    if (words.length === 1) return [text];
-    const lines = [];
-    let line = '';
-    for (let i = 0; i < words.length && lines.length < maxLines; i++) {
-      const t = line ? line + ' ' + words[i] : words[i];
-      if (ctx.measureText(t).width <= maxW || !line) line = t;
-      else { lines.push(line); line = words[i]; }
-    }
-    if (line) lines.push(line);
-    return lines;
-  }
-
   async function render() {
     const tid = countrySel.value;
     const c = COUNTRIES_DEF[tid];
@@ -178,10 +204,13 @@
 
     // header
     const padTop = Math.round(H * 0.045);
-    const logoH = Math.round(clamp(H * 0.05, 30, 52));
-    const logoW = Math.round(logoH * (257.17 / 96.31)); // 600logo aspect
+    const logoH = Math.round(clamp(H * 0.055, 30, 54));
     const logoImg = await loadImg(BASE + 'img/600logo.svg');
-    if (logoImg) cctx.drawImage(logoImg, (W - logoW) / 2, padTop, logoW, logoH);
+    if (logoImg) {
+      const iw = logoImg.naturalWidth || 100, ih = logoImg.naturalHeight || 100;
+      const logoW = Math.round(logoH * (iw / ih));
+      cctx.drawImage(tintedLogo(logoImg, th.ink, logoW, logoH), (W - logoW) / 2, padTop, logoW, logoH);
+    }
 
     const countryName = c.name || tid;
     const headerTxt = countryName + (c.seatBased ? ' — Seat Projection' : ' — Poll');
@@ -204,37 +233,32 @@
     const legendFont = Math.round(clamp(W * 0.013, 12, 15));
     const sw = 12, gap = 26;
     cctx.font = '800 ' + legendFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
-    // measure legend text to center it
     const lbl = 'Poll';
     cctx.fillStyle = th.ink;
     const tw = cctx.measureText(lbl).width;
     const legendW = sw + 6 + tw + gap + sw + 6 + cctx.measureText('Last election').width;
     let lx = (W - legendW) / 2;
-    cctx.strokeStyle = th.edge; cctx.lineWidth = 1.5;
     cctx.fillStyle = th.ink; cctx.fillRect(lx, legendY - sw, sw, sw);
     cctx.fillText('Poll', lx + sw + 6, legendY + legendFont * 0.34);
     lx += sw + 6 + tw + gap;
     cctx.fillStyle = th.ink; cctx.globalAlpha = 0.28; cctx.fillRect(lx, legendY - sw, sw, sw);
     cctx.globalAlpha = 1;
-    cctx.strokeRect(lx, legendY - sw, sw, sw);
     cctx.fillText('Last election', lx + sw + 6, legendY + legendFont * 0.34);
     const legendBottom = legendY + 20;
 
     // plot geometry
     const n = order.length || 1;
-    const padRx = Math.round(W * 0.05);
-    const axisW = Math.round(W * 0.075);
-    const x0 = padRx + axisW;
+    const padRx = Math.round(W * 0.045);
+    const x0 = padRx;
     const x1 = W - padRx;
     const colW = (x1 - x0) / n;
 
     // logo/name row height under axis
-    const boxSz = Math.round(clamp(colW * 0.55, 34, 62));
-    const nameFont = clamp(Math.round(colW * 0.1), 10, 14);
-    const catRowH = boxSz + 8 + nameFont * 2.4;
+    const boxSz = Math.round(clamp(colW * 0.6, 34, 66));
+    const nameFont = clamp(Math.round(colW * 0.13), 12, 18);
+    const catRowH = boxSz + 10 + nameFont * 1.7;
 
-    const padBottom = Math.round(H * 0.03);
-    // baseline sits above the category row; chart grows to fill the space
+    const padBottom = Math.round(H * 0.035);
     const baseY = H - padBottom - catRowH;
     const chartTop = legendBottom + Math.round(H * 0.025);
     const chartH = Math.max(40, baseY - chartTop);
@@ -243,28 +267,11 @@
     let maxV = 0;
     order.forEach((pid) => { maxV = Math.max(maxV, poll[pid] || 0, last[pid] || 0); });
     const niceMax = Math.max(10, Math.ceil(maxV / 10) * 10);
-    const step = niceMax / 5;
 
-    // gridlines + y labels
-    cctx.font = '600 ' + clamp(Math.round(W * 0.012), 10, 13) + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
-    for (let i = 0; i <= 5; i++) {
-      const v = step * i;
-      const y = Math.round(baseY - (v / niceMax) * chartH);
-      drawGridRow(th, x0, x1, y);
-      cctx.textAlign = 'right';
-      cctx.fillStyle = th.muted;
-      cctx.fillText(fmt(v), x0 - 8, y + 4);
-      cctx.textAlign = 'center';
-    }
-
-    // axis baseline
-    cctx.strokeStyle = th.edge; cctx.lineWidth = 2;
-    cctx.beginPath(); cctx.moveTo(x0, baseY); cctx.lineTo(x1, baseY); cctx.stroke();
-
-    // bars
-    const barW = colW * 0.30;
-    const gapB = colW * 0.08;
-    cctx.lineWidth = 1.5;
+    // bars: poll 70% / last-election 30% of the pair width, side by side
+    const pairW = colW * 0.84;
+    const pollW = pairW * 0.7;
+    const lastW = pairW * 0.3;
     const labelFont = Math.round(clamp(colW * 0.1, 11, 15));
 
     for (let i = 0; i < order.length; i++) {
@@ -274,41 +281,39 @@
       const pv = poll[pid] || 0;
       const lv = last[pid] || 0;
 
-      const drawBar = (x, v, isLast) => {
+      const drawBar = (x, v, w, isLast) => {
         const bh = Math.max(0, (v / niceMax) * chartH);
         const yTop = Math.round(baseY - bh);
-        const bx = Math.round(x - barW / 2);
-        const bw = Math.round(barW);
-        if (isLast) { cctx.globalAlpha = 0.3; cctx.fillStyle = color; cctx.fillRect(bx, yTop, bw, bh); cctx.globalAlpha = 1; cctx.strokeStyle = color; cctx.strokeRect(bx, yTop, bw, bh); }
+        const bx = Math.round(x);
+        const bw = Math.round(w);
+        if (isLast) { cctx.globalAlpha = 0.3; cctx.fillStyle = color; cctx.fillRect(bx, yTop, bw, bh); cctx.globalAlpha = 1; }
         else { cctx.fillStyle = color; cctx.fillRect(bx, yTop, bw, bh); }
-        // value label
         const vf = fmt(v);
         cctx.fillStyle = isLast ? th.muted : th.ink;
         cctx.font = '800 ' + labelFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
-        cctx.fillText(vf, x, yTop - 6);
+        cctx.fillText(vf, x + w / 2, yTop - 6);
       };
 
-      drawBar(cx - barW / 2 - gapB / 2, pv, false);
-      drawBar(cx + barW / 2 + gapB / 2, lv, true);
+      drawBar(cx - pairW / 2, pv, pollW, false);
+      drawBar(cx - pairW / 2 + pollW, lv, lastW, true);
     }
 
-    // category row: logo box + name
+    // category row: party-color square + logo + abbreviation
     cctx.font = '700 ' + nameFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
     for (let i = 0; i < order.length; i++) {
       const pid = order[i];
       const meta = c.parties[pid] || {};
-      const nameLbl = meta.name_en || meta.name || pid;
+      const abbr = meta.code || pid;
+      const color = meta.color || '#888';
       const cx = x0 + colW * (i + 0.5);
 
       const bx = Math.round(cx - boxSz / 2);
-      const by = baseY + 14;
-      // box
-      cctx.fillStyle = th.surface;
-      cctx.strokeStyle = th.edge;
-      cctx.lineWidth = 2;
+      const by = baseY + 16;
+      // colored square
+      cctx.fillStyle = color;
       cctx.beginPath();
       cctx.roundRect(bx, by, boxSz, boxSz, 6);
-      cctx.fill(); cctx.stroke();
+      cctx.fill();
 
       // logo
       const logoPath = useLogos[pid];
@@ -320,22 +325,20 @@
           const dw = iw * s, dh = ih * s;
           cctx.drawImage(img, cx - dw / 2, by + (boxSz - dh) / 2, dw, dh);
         } else {
-          cctx.fillStyle = th.muted; cctx.font = '800 ' + Math.round(boxSz * 0.3) + 'px monospace';
-          cctx.fillText(pid, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
+          cctx.fillStyle = th.surface; cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
+          cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
         }
       } else {
-        cctx.fillStyle = th.muted; cctx.font = '800 ' + Math.round(boxSz * 0.3) + 'px monospace';
-        cctx.fillText(pid, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
+        cctx.fillStyle = th.surface; cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
+        cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
       }
 
-      // name
+      // abbreviation
       cctx.fillStyle = th.ink;
-      const maxWt = colW - 6;
-      const lines = wrapText(cctx, nameLbl, maxWt, 2);
-      lines.forEach((ln, li) => {
-        cctx.fillText(ln, cx, by + boxSz + nameFont * (0.8 + li * 1.2));
-      });
+      cctx.fillText(abbr, cx, by + boxSz + nameFont * 1.35);
     }
+
+    window.__geo = { W: W, H: H, x0: x0, colW: colW, pairW: pairW, pollW: pollW, lastW: lastW, boxSz: boxSz, baseY: baseY };
   }
 
   /* ---------- events ---------- */

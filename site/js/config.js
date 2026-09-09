@@ -26,6 +26,7 @@ const COUNTRIES = {
       KD: { name: 'Kristdemokraterna',         name_en: 'Christian Democrats', color: '#003087' },
       MP: { name: 'Miljöpartiet',             name_en: 'Green Party',       color: '#87C737' },
       L:  { name: 'Liberalerna',              name_en: 'Liberals',          color: '#006AB5' },
+      NYD:{ name: 'Nya Demokratin',           name_en: 'New Democracy',     color: '#FFCD00' }, // historical right-populist party (1991/1994); same yellow as SD
     },
     order: ['S', 'SD', 'M', 'V', 'C', 'KD', 'MP', 'L'],
     parlOrder: ['V', 'MP', 'S', 'C', 'L', 'M', 'KD', 'SD'],

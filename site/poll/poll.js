@@ -20,7 +20,7 @@
   const BASE = dataBase();
 
   const THEMES = {
-    default: { bg: '#F9F7F0', surface: '#FFFFFF', ink: '#161616', muted: '#5F584E', edge: '#1A1A1A' },
+    default: { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#5F584E', edge: '#1A1A1A' },
     white:   { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#6B665C', edge: '#1A1A1A' },
     dark:    { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', edge: '#FDFBF4' },
   };
@@ -216,6 +216,10 @@
     const { order, poll, last } = readResults();
     const useLogos = (c.logos || {});
 
+    // drop parties with no current result, order the rest by last-election result (desc)
+    let visualOrder = order.filter((pid) => (poll[pid] || 0) > 0).sort((a, b) => (last[b] || 0) - (last[a] || 0));
+    if (!visualOrder.length) visualOrder = order;
+
     // header
     const padTop = Math.round(H * 0.045);
     const logoH = Math.round(clamp(H * 0.055, 30, 54));
@@ -243,7 +247,7 @@
     }
 
     // plot geometry
-    const n = order.length || 1;
+    const n = visualOrder.length || 1;
     const padRx = Math.round(W * 0.045);
     const x0 = padRx;
     const x1 = W - padRx;
@@ -261,7 +265,7 @@
 
     // scale
     let maxV = 0;
-    order.forEach((pid) => { maxV = Math.max(maxV, poll[pid] || 0, last[pid] || 0); });
+    visualOrder.forEach((pid) => { maxV = Math.max(maxV, poll[pid] || 0, last[pid] || 0); });
     const niceMax = Math.max(10, Math.ceil(maxV / 10) * 10);
 
     // bars: poll 70% / last-election 30% of the pair width, side by side
@@ -270,8 +274,8 @@
     const lastW = pairW * 0.3;
     const labelFont = Math.round(clamp(colW * 0.1, 11, 15));
 
-    for (let i = 0; i < order.length; i++) {
-      const pid = order[i];
+    for (let i = 0; i < visualOrder.length; i++) {
+      const pid = visualOrder[i];
       const cx = x0 + colW * (i + 0.5);
       const color = (c.parties[pid] || {}).color || '#888';
       const pv = poll[pid] || 0;
@@ -296,8 +300,8 @@
 
     // category row: party-color square + logo + abbreviation
     cctx.font = '700 ' + nameFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
-    for (let i = 0; i < order.length; i++) {
-      const pid = order[i];
+    for (let i = 0; i < visualOrder.length; i++) {
+      const pid = visualOrder[i];
       const meta = c.parties[pid] || {};
       const abbr = meta.code || pid;
       const color = meta.color || '#888';
@@ -334,7 +338,7 @@
       cctx.fillText(abbr, cx, by + boxSz + nameFont * 1.35);
     }
 
-    window.__geo = { W: W, H: H, x0: x0, colW: colW, pairW: pairW, pollW: pollW, lastW: lastW, boxSz: boxSz, baseY: baseY };
+    window.__geo = { W: W, H: H, x0: x0, colW: colW, pairW: pairW, pollW: pollW, lastW: lastW, boxSz: boxSz, baseY: baseY, cnt: visualOrder.length };
   }
 
   /* ---------- events ---------- */

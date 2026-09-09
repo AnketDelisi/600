@@ -2154,6 +2154,13 @@ function drawHistoryLine(canvas, hist, mode){
     Object.keys(src).forEach(p=>{count[p]=(count[p]||0)+1});
   });
   const parties=Object.keys(count).filter(p=>count[p]>=2).sort((a,b)=>PARLIAMENT_ORDER.indexOf(a)-PARLIAMENT_ORDER.indexOf(b));
+  // NYD (historical right-populist party, 1991/1994) sits between SD and KD in
+  // the stack, matching SD's far-right position in the parliament diagram.
+  const NYD='NYD';
+  if(parties.includes('SD')&&parties.includes('KD')&&parties.includes(NYD)){
+    parties.splice(parties.indexOf(NYD),1);
+    parties.splice(parties.indexOf('SD'),0,NYD);
+  }
 
   // per-year values (0 when missing) and the total cap (100 for %, seat total for seats)
   const valOf=(e,p)=>{const src=mode==='votes'?e.results:(e.seats||{});const v=src[p];return (v==null||isNaN(v))?0:v};
@@ -2236,9 +2243,10 @@ function drawHistoryLine(canvas, hist, mode){
     ctx.stroke();
   }
 
-  // right-edge labels per party band
+  // right-edge labels per party band (NYD is deliberately unlabeled)
   const last=valid.length-1;
   parties.forEach((p,k)=>{
+    if(p===NYD) return;
     const top=cumTop[k][last], bot=(k===0?0:cumTop[k-1][last]);
     const midY=yFor((top+bot)/2);
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';

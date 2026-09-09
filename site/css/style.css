@@ -40,25 +40,14 @@ button:active{transform:translateY(1px)}
   button:active{transform:none}
 }
 
-.app-shell{display:flex;align-items:flex-start;width:100%;min-height:100vh;background:transparent}
-
-/* ---------- Sidebar ---------- */
-.sidebar{
-  width:320px;height:calc(100vh - 40px);position:sticky;top:20px;overflow-y:auto;flex-shrink:0;
-  background:var(--c-surface);border:2px solid var(--c-edge);border-radius:12px;box-shadow:var(--shadow-big);
-  margin:20px 0 20px 20px;padding:24px 20px;display:flex;flex-direction:column;gap:18px;
-  z-index:40;
-}
-.sidebar::-webkit-scrollbar{width:6px}
-.sidebar::-webkit-scrollbar-thumb{background:var(--c-rule);border-radius:999px}
-.sidebar-logo{width:100%;padding:2px 0 8px 0;margin-bottom:2px}
-.sidebar-logo img{width:100%;display:block;object-fit:contain}
+.app-shell{min-height:100vh;background:transparent}
 
 /* ---------- Main column ---------- */
 .main-col{flex:1;min-width:0;width:100%}
 .tab-pane{display:none}
 .tab-pane.active{display:block}
 .tab-pane-inner{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
+.page-foot{margin-top:28px;font-size:10px;color:var(--c-text-muted);font-weight:700;letter-spacing:0.4px;line-height:1.6}
 
 /* ---------- Segmented nav ---------- */
 .seg-nav{
@@ -75,6 +64,7 @@ button:active{transform:translateY(1px)}
 .tab-trigger:hover{color:var(--c-accent-2);background:rgba(26,26,26,0.05)}
 .tab-trigger[data-active="true"]{color:#FFFFFF;background:#1A1A1A;box-shadow:var(--shadow-hard)}
 .segnav-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.nav-country select{width:170px;height:34px}
 .tab-social{
   flex-shrink:0;display:inline-flex;align-items:center;gap:6px;
   color:#FFFFFF;background:#1A1A1A;border:2px solid #1A1A1A;border-radius:var(--radius-sm);
@@ -95,9 +85,10 @@ button:active{transform:translateY(1px)}
 /* ---------- Two-column layout (blocs + trend) ---------- */
 .layout-2col{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:20px;align-items:stretch;margin-bottom:28px}
 .layout-2col .card{margin-top:0;margin-bottom:0}
+.layout-2col .col-b .card{height:100%}
 @media (max-width:1000px){
   .layout-2col{grid-template-columns:1fr}
-  .layout-2col .col-b .card{margin-bottom:24px}
+  .layout-2col .col-b .card{margin-bottom:24px;height:auto}
 }
 
 /* ---------- Party bars ---------- */
@@ -128,11 +119,12 @@ button:active{transform:translateY(1px)}
 .hero-subtitle{font-size:12px;color:var(--c-text-muted);font-weight:700}
 
 /* ---------- Bloc summary ---------- */
-.bloc-row{display:flex;gap:14px;width:100%;margin-bottom:0;height:100%}
-.bloc-card{flex:1;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-big);padding:16px 20px;text-align:center;display:flex;flex-direction:column;justify-content:center}
-.bloc-card .bloc-name{font-size:11px;font-weight:900;color:var(--c-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
-.bloc-card .bloc-pct{font-size:28px;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums}
-.bloc-card .bloc-parties{font-size:10px;color:var(--c-text-muted);font-weight:700;margin-top:4px}
+.bloc-row{display:flex;gap:12px;width:100%;margin-bottom:0;height:100%}
+.bloc-card{flex:1;background:var(--c-surface);border:1.5px solid var(--c-edge);border-radius:8px;padding:10px 14px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.bloc-card .bloc-name{font-size:10px;font-weight:900;color:var(--c-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.bloc-card .bloc-pct{font-size:22px;font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums}
+.bloc-card .bloc-parties{font-size:9px;color:var(--c-text-muted);font-weight:700;margin-top:2px}
+.pollavg-blocs{margin-top:16px;padding-top:14px;border-top:2px solid var(--c-edge)}
 
 /* ---------- Trend chart ---------- */
 .chart-wrap{width:100%;height:320px;position:relative;overflow:hidden}
@@ -257,8 +249,7 @@ button:active{transform:translateY(1px)}
 .method-text li{margin:4px 0}
 .method-text .formula{background:#F6F2E7;border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:12px 16px;font-family:var(--font-mono);font-size:12px;margin:12px 0;width:100%;display:block}
 
-/* ---------- Sidebar sections ---------- */
-.sb-section{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);padding:14px;width:100%;box-shadow:var(--shadow-md)}
+/* ---------- Filters / inline controls ---------- */
 .sb-kicker{display:flex;align-items:center;width:100%;margin-bottom:8px;gap:8px}
 .sb-kicker .bar{width:4px;height:12px;background:var(--c-accent);border-radius:var(--radius-pill)}
 .sb-kicker .t{font-weight:900;color:var(--c-text-muted);font-size:10px;letter-spacing:1.2px}
@@ -284,8 +275,6 @@ input.vote-input,.party-pct,.party-delta,.party-seats,.bloc-card .bloc-pct,.tot-
 
 /* ---------- Responsive ---------- */
 @media (max-width:1100px){
-  .app-shell{flex-direction:column}
-  .sidebar{width:calc(100% - 24px);height:auto;position:relative;top:0;margin:12px}
   .tab-pane-inner{padding-top:24px}
 }
 @media (max-width:768px){

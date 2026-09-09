@@ -40,19 +40,21 @@ button:active{transform:translateY(1px)}
   button:active{transform:none}
 }
 
-.app-shell{display:flex;align-items:flex-start;width:100%;min-height:100vh;background:transparent}
-
-/* ---------- Side column (single card, same location as the old sidebar) ---------- */
-.side-col{width:320px;flex-shrink:0;margin:20px 0 20px 20px;position:sticky;top:20px;align-self:flex-start}
-.side-card{max-height:calc(100vh - 40px);overflow-y:auto;padding:18px}
-.side-card::-webkit-scrollbar{width:6px}
-.side-card::-webkit-scrollbar-thumb{background:var(--c-rule);border-radius:999px}
+.app-shell{min-height:100vh;background:transparent}
 
 /* ---------- Main column ---------- */
 .main-col{flex:1;min-width:0;width:100%}
 .tab-pane{display:none}
 .tab-pane.active{display:block}
 .tab-pane-inner{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
+
+/* ---------- Top row: side card + (hero, trend) ---------- */
+.page-top{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:start;margin-bottom:20px}
+.page-top-main{min-width:0;display:flex;flex-direction:column;gap:20px}
+.page-top-main .hero{margin-bottom:0}
+.side-card{overflow-y:auto;padding:18px}
+.side-card::-webkit-scrollbar{width:6px}
+.side-card::-webkit-scrollbar-thumb{background:var(--c-rule);border-radius:999px}
 
 /* ---------- Segmented nav ---------- */
 .seg-nav{
@@ -89,15 +91,6 @@ button:active{transform:translateY(1px)}
 .card-head{display:flex;align-items:center;width:100%;margin-bottom:10px;gap:8px}
 .card-head .bar{width:5px;height:14px;background:var(--c-accent);border-radius:var(--radius-pill)}
 .card-head .t{font-weight:900;color:var(--c-text-muted);font-size:10px;letter-spacing:1.4px;text-transform:uppercase}
-
-/* ---------- Two-column layout (blocs + trend) ---------- */
-.layout-2col{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:20px;align-items:stretch;margin-bottom:28px}
-.layout-2col .card{margin-top:0;margin-bottom:0}
-.layout-2col .col-b .card{height:100%}
-@media (max-width:1000px){
-  .layout-2col{grid-template-columns:1fr}
-  .layout-2col .col-b .card{margin-bottom:24px;height:auto}
-}
 
 /* ---------- Party bars ---------- */
 .party-row{width:100%;display:flex;align-items:center;border-bottom:1px solid rgba(26,26,26,0.08);padding:7px 4px;border-radius:var(--radius-sm);transition:background 120ms var(--ease)}
@@ -285,9 +278,7 @@ input.vote-input,.party-pct,.party-delta,.party-seats,.bloc-card .bloc-pct,.tot-
 
 /* ---------- Responsive ---------- */
 @media (max-width:1100px){
-  .app-shell{flex-direction:column}
-  .side-col{width:calc(100% - 24px);margin:12px;position:static;align-self:auto}
-  .side-card{max-height:none;overflow-y:visible}
+  .page-top{grid-template-columns:1fr}
   .tab-pane-inner{padding-top:24px}
 }
 @media (max-width:768px){

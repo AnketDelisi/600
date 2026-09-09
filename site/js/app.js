@@ -83,7 +83,6 @@ function toggleLang(){
   const btn=$('lang-toggle');
   if(btn){btn.textContent=(LANG==='tr')?'EN':'TR';btn.title=(LANG==='tr')?'Switch to English':'Türkçeye geç';}
   // re-render current tab
-  renderSidebar();
   const active=document.querySelector('.tab-trigger[data-active="true"]');
   const tabId=active?active.dataset.tab:'polls';
   const pane=$('pane-'+tabId);
@@ -405,10 +404,12 @@ function recentPolls(polls, days){
   return polls.filter(p=>new Date(p.date)>=cutoff);
 }
 
-/* ---------- render sidebar (single card, left column) ---------- */
-function renderSidebar(){
+/* ---------- render sidebar (single card, top-left) ---------- */
+function renderSidebar(prevDays, prevPollster){
   const c=$('sidebar-content');
   if(!c) return;
+  prevDays=prevDays||'30';
+  prevPollster=prevPollster||'';
   let html='';
 
   // Country selector (hidden on pinned sub-pages / archives)
@@ -424,12 +425,12 @@ function renderSidebar(){
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.filters}</div></div>
     <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.timeRange}</label>
     <select class="sb-select" id="filter-days" onchange="window._600.applyFilters()">
-      <option value="7">${T.last7}</option>
-      <option value="14">${T.last14}</option>
-      <option value="30" selected>${T.last30}</option>
-      <option value="60">${T.last60}</option>
-      <option value="90">${T.last90}</option>
-      <option value="9999">${T.allPolls}</option>
+      <option value="7"${prevDays==='7'?' selected':''}>${T.last7}</option>
+      <option value="14"${prevDays==='14'?' selected':''}>${T.last14}</option>
+      <option value="30"${prevDays==='30'?' selected':''}>${T.last30}</option>
+      <option value="60"${prevDays==='60'?' selected':''}>${T.last60}</option>
+      <option value="90"${prevDays==='90'?' selected':''}>${T.last90}</option>
+      <option value="9999"${prevDays==='9999'?' selected':''}>${T.allPolls}</option>
     </select>
     <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.pollster}</label>
     <select class="sb-select" id="filter-pollster" onchange="window._600.applyFilters()">
@@ -452,6 +453,7 @@ function renderSidebar(){
   pollsters.forEach(ps=>{
     const opt=document.createElement('option');
     opt.value=ps; opt.textContent=ps;
+    if(ps===prevPollster) opt.selected=true;
     sel.appendChild(opt);
   });
 
@@ -2443,19 +2445,19 @@ function renderPollsTab(){
   const avg=computeAverages(filtered);
 
   let html=`<div class="tab-pane-inner">`;
-  html+=renderHero(avg, filtered);
-
-  // Trend chart + parliament side by side on wide screens
-  html+=`<div class="layout-2col">
-    <div class="col-a">
+  // Top row: side card beside hero + poll trend
+  html+=`<div class="page-top">
+    <div class="card side-card"><div id="sidebar-content"></div></div>
+    <div class="page-top-main">
+      ${renderHero(avg, filtered)}
       <div class="card" style="height:100%"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
         <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>
     </div>
-    <div class="col-b">
-      ${renderParliament(avg)}
-    </div>
   </div>`;
+
+  // Seat projection / district map (full width)
+  html+=renderParliament(avg);
 
   // National poll average + blocs
   html+=renderPartyBars(avg);
@@ -2465,12 +2467,23 @@ function renderPollsTab(){
   html+=`</div>`;
   pane.innerHTML=html;
 
+  renderSidebar(String(daysVal), pollsterVal);
+
   // Draw chart after DOM update
   requestAnimationFrame(()=>{
     const canvas=$('trend-canvas');
     if(canvas) renderTrendChart(canvas, filtered);
+    fitSideCard();
   });
   bindParlToggles(avg);
+}
+
+// Match the side card height to the hero+trend column so it spans the same
+// vertical range (starts at the poll-average hero, ends at the poll trend).
+function fitSideCard(){
+  const main=document.querySelector('.page-top-main');
+  const sc=document.querySelector('.side-card');
+  if(main&&sc) sc.style.height=main.offsetHeight+'px';
 }
 
 /* ---------- public API ---------- */
@@ -2500,7 +2513,6 @@ PARL_MODE='proj';
     const pollsBtn=document.querySelector('[data-tab="polls"]');
     if(pollsBtn) pollsBtn.dataset.active='true';
     loadData().then(()=>loadConstituencies()).then(()=>{
-      renderSidebar();
       renderPollsTab();
     });
   }
@@ -2508,8 +2520,8 @@ PARL_MODE='proj';
 
 /* ---------- boot ---------- */
 loadData().then(()=>loadConstituencies()).then(()=>{
-  renderSidebar();
   renderPollsTab();
 });
+window.addEventListener('resize',()=>{fitSideCard();});
 
 })();

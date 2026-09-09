@@ -46,8 +46,8 @@
   const titleInput = $('title-input');
   const dateInput = $('date-input');
   const partiesBody = $('parties-body');
-  const prefillBtn = $('prefill-btn');
   const prefillMsg = $('prefill-msg');
+  const pollSel = $('poll-select');
   const renderBtn = $('render-btn');
   const downloadBtn = $('download-btn');
 
@@ -144,39 +144,53 @@
     return { order, poll, last };
   }
 
-  /* ---------- prefill from site data ---------- */
-  async function prefill() {
+  /* ---------- poll loader (from site data) ---------- */
+  let POLL_LIST = [];
+
+  function pollLabel(p) {
+    let when = '';
+    if (p.fieldwork_start && p.date) when = fmtDateRange(p.fieldwork_start, p.date);
+    else if (p.date) when = formatSingle(isoDate(p.date));
+    return (p.pollster || 'Poll') + (when ? ' · ' + when : '');
+  }
+
+  async function loadPolls() {
     const tid = countrySel.value;
     const c = COUNTRIES_DEF[tid];
-    prefillBtn.disabled = true;
-    prefillMsg.textContent = 'Loading latest poll…';
+    pollSel.innerHTML = '<option value="">Loading polls…</option>';
     try {
       const resp = await fetch(BASE + 'data/' + tid + '/polls.json?v=' + Date.now());
       if (!resp.ok) throw new Error('no data');
       const data = await resp.json();
-      const polls = (data && data.polls) || [];
-      if (!polls.length) throw new Error('empty');
-      const latest = polls[0];
-      titleInput.value = latest.pollster || '';
-      const nTxt = latest.n ? ' · n = ' + Number(latest.n).toLocaleString('en-US') : '';
-      let dateTxt = '';
-      if (latest.fieldwork_start && latest.date) dateTxt = fmtDateRange(latest.fieldwork_start, latest.date);
-      else if (latest.date) dateTxt = formatSingle(isoDate(latest.date));
-      dateInput.value = (dateTxt || (latest.date || '')) + nTxt;
-      const votes = latest.votes || latest.result || null;
-      if (c && votes) {
-        (c.order || []).forEach((pid) => {
-          const inp = partiesBody.querySelector('.poll-in[data-pid="' + pid + '"]');
-          if (inp && pid in votes) inp.value = votes[pid];
-        });
-      }
-      prefillMsg.textContent = 'Loaded "' + (latest.pollster || 'latest poll') + '" for ' + (c ? c.name : tid) + '.';
+      POLL_LIST = (data && data.polls) || [];
+      if (!POLL_LIST.length) throw new Error('empty');
+      pollSel.innerHTML = POLL_LIST.map((p, i) => '<option value="' + i + '">' + pollLabel(p) + '</option>').join('');
+      pollSel.value = '0';
+      loadPoll(POLL_LIST[0]);
     } catch (e) {
-      // keep what the user typed; offer manual entry
+      POLL_LIST = [];
+      pollSel.innerHTML = '<option value="">No poll data</option>';
       prefillMsg.textContent = 'No poll data found for this country — enter values manually.';
-    } finally {
-      prefillBtn.disabled = false;
     }
+  }
+
+  function loadPoll(p) {
+    if (!p) return;
+    const c = COUNTRIES_DEF[countrySel.value];
+    titleInput.value = p.pollster || '';
+    const nTxt = p.n ? ' · n = ' + Number(p.n).toLocaleString('en-US') : '';
+    let dateTxt = '';
+    if (p.fieldwork_start && p.date) dateTxt = fmtDateRange(p.fieldwork_start, p.date);
+    else if (p.date) dateTxt = formatSingle(isoDate(p.date));
+    dateInput.value = (dateTxt || (p.date || '')) + nTxt;
+    const votes = p.votes || p.result || null;
+    if (c && votes) {
+      (c.order || []).forEach((pid) => {
+        const inp = partiesBody.querySelector('.poll-in[data-pid="' + pid + '"]');
+        if (inp && pid in votes) inp.value = votes[pid];
+      });
+    }
+    prefillMsg.textContent = 'Loaded "' + (p.pollster || 'poll') + '" for ' + (c ? c.name : tid) + '.';
     render();
   }
 
@@ -228,37 +242,6 @@
       subY += clamp(Math.round(W * 0.015), 13, 17) * 1.5;
     }
 
-    // legend: mini bar icons echoing the chart, aligned on a shared baseline
-    const legendY = subY + 14;
-    const legendFont = Math.round(clamp(W * 0.014, 12, 16));
-    const lw = Math.round(legendFont * 3.0);
-    const lh = Math.round(legendFont * 0.9);
-    cctx.font = '700 ' + legendFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
-    const labA = 'Poll', labB = 'Last election';
-    const wA = cctx.measureText(labA).width;
-    const wB = cctx.measureText(labB).width;
-    const itemGap = Math.round(W * 0.05);
-    const groupW = lw + 10 + wA + itemGap + lw + 10 + wB;
-    let lx = (W - groupW) / 2;
-    const iconTop = legendY - lh;
-    const txtY = legendY + legendFont * 0.16;
-    function legendBar(x, light) {
-      cctx.fillStyle = th.ink;
-      if (light) cctx.globalAlpha = 0.3;
-      cctx.beginPath();
-      cctx.roundRect(x, iconTop, lw, lh, 2);
-      cctx.fill();
-      cctx.globalAlpha = 1;
-    }
-    legendBar(lx, false);
-    cctx.fillStyle = th.ink;
-    cctx.fillText(labA, lx + lw + 10, txtY);
-    lx += lw + 10 + wA + itemGap;
-    legendBar(lx, true);
-    cctx.fillStyle = th.muted;
-    cctx.fillText(labB, lx + lw + 10, txtY);
-    const legendBottom = legendY + 8;
-
     // plot geometry
     const n = order.length || 1;
     const padRx = Math.round(W * 0.045);
@@ -273,7 +256,7 @@
 
     const padBottom = Math.round(H * 0.035);
     const baseY = H - padBottom - catRowH;
-    const chartTop = legendBottom + Math.round(H * 0.025);
+    const chartTop = subY + Math.round(H * 0.045);
     const chartH = Math.max(40, baseY - chartTop);
 
     // scale
@@ -360,13 +343,16 @@
 
   countrySel.addEventListener('change', () => {
     buildRows();
-    prefill();
+    loadPolls();
   });
   formatSel.addEventListener('change', render);
   titleInput.addEventListener('input', schedule);
   dateInput.addEventListener('input', schedule);
   renderBtn.addEventListener('click', () => { renderBtn.disabled = true; render().finally(() => { renderBtn.disabled = false; }); });
-  prefillBtn.addEventListener('click', prefill);
+  pollSel.addEventListener('change', () => {
+    const p = POLL_LIST[Number(pollSel.value)];
+    if (p) loadPoll(p);
+  });
   partiesBody.addEventListener('input', schedule);
   document.querySelectorAll('input[name="bg"]').forEach((r) => r.addEventListener('change', render));
   downloadBtn.addEventListener('click', () => {
@@ -397,7 +383,7 @@
       return '<option value="' + k + '">' + (c.name || k) + hint + '</option>';
     }).join('');
     buildRows();
-    prefill(); // load the most recent poll for the default country
+    loadPolls();
   }
   init();
 })();

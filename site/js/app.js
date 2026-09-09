@@ -83,7 +83,7 @@ function toggleLang(){
   const btn=$('lang-toggle');
   if(btn){btn.textContent=(LANG==='tr')?'EN':'TR';btn.title=(LANG==='tr')?'Switch to English':'Türkçeye geç';}
   // re-render current tab
-  renderCountryNav();
+  renderSidebar();
   const active=document.querySelector('.tab-trigger[data-active="true"]');
   const tabId=active?active.dataset.tab:'polls';
   const pane=$('pane-'+tabId);
@@ -405,17 +405,58 @@ function recentPolls(polls, days){
   return polls.filter(p=>new Date(p.date)>=cutoff);
 }
 
-/* ---------- country selector (nav) ---------- */
-function renderCountryNav(){
-  const c=$('nav-country');
+/* ---------- render sidebar (single card, left column) ---------- */
+function renderSidebar(){
+  const c=$('sidebar-content');
   if(!c) return;
-  if(isPinnedCountry()){
-    c.innerHTML='';
-    return;
-  }
-  c.innerHTML=`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
-    ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
-  </select>`;
+  let html='';
+
+  // Country selector (hidden on pinned sub-pages / archives)
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.country}</div></div>
+    ${isPinnedCountry()
+      ?`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`
+      :`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
+      ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
+    </select>`}
+    <div class="sb-hint">${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}</div></div>`;
+
+  // Filters
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.filters}</div></div>
+    <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.timeRange}</label>
+    <select class="sb-select" id="filter-days" onchange="window._600.applyFilters()">
+      <option value="7">${T.last7}</option>
+      <option value="14">${T.last14}</option>
+      <option value="30" selected>${T.last30}</option>
+      <option value="60">${T.last60}</option>
+      <option value="90">${T.last90}</option>
+      <option value="9999">${T.allPolls}</option>
+    </select>
+    <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.pollster}</label>
+    <select class="sb-select" id="filter-pollster" onchange="window._600.applyFilters()">
+      <option value="">${T.allPollsters}</option>
+    </select></div>`;
+
+  // Last election
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${LAST_ELECTION.date.slice(0,4)} ${T.result}</div></div>
+    <div class="sb-last-election" id="sb-election"></div></div>`;
+
+  // Info
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.info}</div></div>
+    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}</div></div>`;
+
+  c.innerHTML=html;
+
+  // Populate pollster filter
+  const pollsters=[...new Set(POLLS.map(p=>p.pollster))].sort();
+  const sel=$('filter-pollster');
+  pollsters.forEach(ps=>{
+    const opt=document.createElement('option');
+    opt.value=ps; opt.textContent=ps;
+    sel.appendChild(opt);
+  });
+
+  // Last election
+  renderLastElection();
 }
 
 function renderLastElection(){
@@ -2419,53 +2460,10 @@ function renderPollsTab(){
   // National poll average + blocs
   html+=renderPartyBars(avg);
 
-  // Last election
-  html+=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${LAST_ELECTION.date.slice(0,4)} ${T.result}</div></div>
-    <div class="sb-last-election" id="sb-election"></div></div>`;
-
   html+=renderConstituencyTable(avg);
-
-  // Filters + polls table
-  html+=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.filters}</div></div>
-    <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end">
-      <div>
-        <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.timeRange}</label>
-        <select class="sb-select" id="filter-days" onchange="window._600.applyFilters()">
-          <option value="7"${daysVal===7?' selected':''}>${T.last7}</option>
-          <option value="14"${daysVal===14?' selected':''}>${T.last14}</option>
-          <option value="30"${daysVal===30?' selected':''}>${T.last30}</option>
-          <option value="60"${daysVal===60?' selected':''}>${T.last60}</option>
-          <option value="90"${daysVal===90?' selected':''}>${T.last90}</option>
-          <option value="9999"${daysVal===9999?' selected':''}>${T.allPolls}</option>
-        </select>
-      </div>
-      <div>
-        <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.pollster}</label>
-        <select class="sb-select" id="filter-pollster" onchange="window._600.applyFilters()">
-          <option value="">${T.allPollsters}</option>
-        </select>
-      </div>
-    </div>
-    ${renderPollsTable(filtered)}
-    </div>`;
-
-  html+=`<div class="page-foot">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''} · ${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold} · ${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}</div>`;
+  html+=renderPollsTable(filtered);
   html+=`</div>`;
   pane.innerHTML=html;
-
-  // Populate pollster filter
-  const pollsters=[...new Set(POLLS.map(p=>p.pollster))].sort();
-  const psel=$('filter-pollster');
-  if(psel){
-    pollsters.forEach(ps=>{
-      const opt=document.createElement('option');
-      opt.value=ps; opt.textContent=ps;
-      if(ps===pollsterVal) opt.selected=true;
-      psel.appendChild(opt);
-    });
-  }
-
-  renderLastElection();
 
   // Draw chart after DOM update
   requestAnimationFrame(()=>{
@@ -2502,7 +2500,7 @@ PARL_MODE='proj';
     const pollsBtn=document.querySelector('[data-tab="polls"]');
     if(pollsBtn) pollsBtn.dataset.active='true';
     loadData().then(()=>loadConstituencies()).then(()=>{
-      renderCountryNav();
+      renderSidebar();
       renderPollsTab();
     });
   }
@@ -2510,7 +2508,7 @@ PARL_MODE='proj';
 
 /* ---------- boot ---------- */
 loadData().then(()=>loadConstituencies()).then(()=>{
-  renderCountryNav();
+  renderSidebar();
   renderPollsTab();
 });
 

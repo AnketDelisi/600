@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — Poll Image Generator</title>
   <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=20260905b15">
+  <link rel="stylesheet" href="../css/style.css?v=20260905b16">
   <style>
     .tool-shell{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
     .tool-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
@@ -60,7 +60,7 @@
         <div class="tool-grid">
           <!-- preview -->
           <div class="preview-card">
-            <canvas id="preview-canvas" width="1080" height="1080"></canvas>
+            <canvas id="preview-canvas" width="1200" height="675"></canvas>
             <div class="spacer"></div>
             <button class="btn" id="download-btn">Download PNG</button>
             <div class="spacer"></div>
@@ -78,8 +78,8 @@
             <div class="form-row">
               <label for="format-sel">Image format</label>
               <select id="format-sel">
+                <option value="1200x675" selected>Landscape — 1200×675</option>
                 <option value="1080x1080">Square — 1080×1080</option>
-                <option value="1200x675">Landscape — 1200×675</option>
               </select>
             </div>
 
@@ -122,7 +122,7 @@
       </div>
     </main>
   </div>
-  <script src="../js/config.js?v=20260905b15"></script>
-  <script src="poll.js?v=20260905b15"></script>
+  <script src="../js/config.js?v=20260905b16"></script>
+  <script src="poll.js?v=20260905b16"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — Poll Image Generator</title>
   <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=20260905b16">
+  <link rel="stylesheet" href="../css/style.css?v=20260905b17">
   <style>
     .tool-shell{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
     .tool-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
@@ -29,6 +29,9 @@
     .btn.secondary{background:#fff;color:var(--c-text-main);border:2px solid var(--c-edge);box-shadow:none}
     .btn.secondary:hover{background:#F0EDE2;color:var(--c-text-main)}
     .hint{font-size:12px;color:var(--c-text-muted);margin-top:8px;line-height:1.5}
+    .btn-row{display:flex;gap:8px}
+    #text-out{width:100%;box-sizing:border-box;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;color:var(--c-text-main);background:var(--c-surface);border:2px solid var(--c-border);border-radius:var(--radius-sm);padding:12px;min-height:300px;resize:vertical;white-space:pre;overflow-wrap:normal}
+    #text-out:focus{outline:none;border-color:var(--c-accent)}
     .seg-control{width:100%;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);margin-bottom:16px;overflow:hidden}
     .seg-inner{display:flex;gap:2px;padding:3px}
     .seg-inner label{flex:1;text-align:center;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;padding:9px 6px;border-radius:var(--radius-sm);cursor:pointer;color:var(--c-text-muted);border:2px solid transparent}
@@ -60,9 +63,28 @@
         <div class="tool-grid">
           <!-- preview -->
           <div class="preview-card">
+            <div class="seg-control" style="margin-bottom:12px">
+              <div class="seg-inner">
+                <input type="radio" name="share" id="share-img" value="image" checked>
+                <label for="share-img">Image</label>
+                <input type="radio" name="share" id="share-txt" value="text">
+                <label for="share-txt">Text</label>
+              </div>
+            </div>
             <canvas id="preview-canvas" width="1200" height="675"></canvas>
+            <div id="text-panel" hidden>
+              <textarea id="text-out" readonly spellcheck="false"></textarea>
+            </div>
             <div class="spacer"></div>
-            <button class="btn" id="download-btn">Download PNG</button>
+            <div id="img-actions">
+              <button class="btn" id="download-btn">Download PNG</button>
+            </div>
+            <div id="txt-actions" hidden>
+              <div class="btn-row">
+                <button class="btn" id="copy-btn">Copy text</button>
+                <button class="btn secondary" id="txt-dl-btn">Download .txt</button>
+              </div>
+            </div>
             <div class="spacer"></div>
             <button class="btn secondary" id="render-btn">Render</button>
             <p class="hint">Image regenerates automatically as you type. Use "Render" to refresh the preview manually.</p>
@@ -70,6 +92,15 @@
 
           <!-- controls -->
           <div>
+            <div class="seg-control">
+              <div class="seg-inner">
+                <input type="radio" name="chart" id="chart-poll" value="poll" checked>
+                <label for="chart-poll">Poll</label>
+                <input type="radio" name="chart" id="chart-seats" value="seats">
+                <label for="chart-seats">Seat projection</label>
+              </div>
+            </div>
+
             <div class="form-row">
               <label for="country-select">Country</label>
               <select id="country-select"></select>
@@ -122,7 +153,7 @@
       </div>
     </main>
   </div>
-  <script src="../js/config.js?v=20260905b16"></script>
-  <script src="poll.js?v=20260905b16"></script>
+  <script src="../js/config.js?v=20260905b17"></script>
+  <script src="poll.js?v=20260905b17"></script>
 </body>
 </html>

@@ -2153,7 +2153,7 @@ function drawHistoryLine(canvas, hist, mode){
     const src=mode==='votes'?e.results:(e.seats||{});
     Object.keys(src).forEach(p=>{count[p]=(count[p]||0)+1});
   });
-  const parties=Object.keys(count).filter(p=>count[p]>=2).sort((a,b)=>PARTY_ORDER.indexOf(a)-PARTY_ORDER.indexOf(b));
+  const parties=Object.keys(count).filter(p=>count[p]>=2).sort((a,b)=>PARLIAMENT_ORDER.indexOf(a)-PARLIAMENT_ORDER.indexOf(b));
 
   // per-year values (0 when missing) and the total cap (100 for %, seat total for seats)
   const valOf=(e,p)=>{const src=mode==='votes'?e.results:(e.seats||{});const v=src[p];return (v==null||isNaN(v))?0:v};

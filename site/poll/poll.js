@@ -228,23 +228,36 @@
       subY += clamp(Math.round(W * 0.015), 13, 17) * 1.5;
     }
 
-    // legend
+    // legend: mini bar icons echoing the chart, aligned on a shared baseline
     const legendY = subY + 14;
-    const legendFont = Math.round(clamp(W * 0.013, 12, 15));
-    const sw = 12, gap = 26;
-    cctx.font = '800 ' + legendFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
-    const lbl = 'Poll';
+    const legendFont = Math.round(clamp(W * 0.014, 12, 16));
+    const lw = Math.round(legendFont * 3.0);
+    const lh = Math.round(legendFont * 0.9);
+    cctx.font = '700 ' + legendFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
+    const labA = 'Poll', labB = 'Last election';
+    const wA = cctx.measureText(labA).width;
+    const wB = cctx.measureText(labB).width;
+    const itemGap = Math.round(W * 0.05);
+    const groupW = lw + 10 + wA + itemGap + lw + 10 + wB;
+    let lx = (W - groupW) / 2;
+    const iconTop = legendY - lh;
+    const txtY = legendY + legendFont * 0.16;
+    function legendBar(x, light) {
+      cctx.fillStyle = th.ink;
+      if (light) cctx.globalAlpha = 0.3;
+      cctx.beginPath();
+      cctx.roundRect(x, iconTop, lw, lh, 2);
+      cctx.fill();
+      cctx.globalAlpha = 1;
+    }
+    legendBar(lx, false);
     cctx.fillStyle = th.ink;
-    const tw = cctx.measureText(lbl).width;
-    const legendW = sw + 6 + tw + gap + sw + 6 + cctx.measureText('Last election').width;
-    let lx = (W - legendW) / 2;
-    cctx.fillStyle = th.ink; cctx.fillRect(lx, legendY - sw, sw, sw);
-    cctx.fillText('Poll', lx + sw + 6, legendY + legendFont * 0.34);
-    lx += sw + 6 + tw + gap;
-    cctx.fillStyle = th.ink; cctx.globalAlpha = 0.28; cctx.fillRect(lx, legendY - sw, sw, sw);
-    cctx.globalAlpha = 1;
-    cctx.fillText('Last election', lx + sw + 6, legendY + legendFont * 0.34);
-    const legendBottom = legendY + 20;
+    cctx.fillText(labA, lx + lw + 10, txtY);
+    lx += lw + 10 + wA + itemGap;
+    legendBar(lx, true);
+    cctx.fillStyle = th.muted;
+    cctx.fillText(labB, lx + lw + 10, txtY);
+    const legendBottom = legendY + 8;
 
     // plot geometry
     const n = order.length || 1;

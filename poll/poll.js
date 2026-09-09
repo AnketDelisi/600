@@ -310,7 +310,7 @@
     if (c && votes) {
       (c.order || []).forEach((pid) => {
         const inp = partiesBody.querySelector('.poll-in[data-pid="' + pid + '"]');
-        if (inp && pid in votes) inp.value = votes[pid];
+        if (inp) inp.value = (pid in votes) ? votes[pid] : 0;
       });
     }
     prefillMsg.textContent = 'Loaded "' + (p.pollster || 'poll') + '" for ' + (c ? c.name : tid) + '.';

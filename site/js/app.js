@@ -2101,11 +2101,14 @@ function renderHistory(pane){
         <div class="hero-title">${t('HISTORY','GEÇMİŞ')} — ${COUNTRY_NAME}</div>
         <div class="hero-date">${t('Party vote shares, seats and turnout over time · hover a point for details','Oy oranları, sandalyeler ve katılım yıllara göre · ayrıntılar için üzerine gelin')} · ${LAST_ELECTION.date.slice(0,4)}</div>
       </div>
-      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY VOTE SHARE OVER TIME','PARTİ OY ORANLARI (YILLARA GÖRE)')}</div></div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY VOTE SHARE OVER TIME','PARTİ OY ORANLARI (YILLARA GÖRE)')}</div>
+        <button class="shot-btn" id="hist-votes-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap" style="position:relative"><canvas id="hist-votes-canvas"></canvas></div></div>
-      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY SEATS OVER TIME','PARTİ SANDALYELERİ (YILLARA GÖRE)')}</div></div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('PARTY SEATS OVER TIME','PARTİ SANDALYELERİ (YILLARA GÖRE)')}</div>
+        <button class="shot-btn" id="hist-seats-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap" style="position:relative"><canvas id="hist-seats-canvas"></canvas></div></div>
-      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('TURNOUT OVER TIME','KATILIM (YILLARA GÖRE)')}</div></div>
+      <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('TURNOUT OVER TIME','KATILIM (YILLARA GÖRE)')}</div>
+        <button class="shot-btn" id="hist-turnout-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap" style="position:relative"><canvas id="hist-turnout-canvas"></canvas></div></div>
     </div>`;
     requestAnimationFrame(()=>{
@@ -2115,6 +2118,12 @@ function renderHistory(pane){
       if(sc) drawHistoryLine(sc, hist, 'seats');
       const tc=$('hist-turnout-canvas');
       if(tc) drawHistoryTurnout(tc, hist);
+      const vs=$('hist-votes-shot-btn');
+      if(vs) vs.addEventListener('click',()=>captureChartPng($('hist-votes-canvas'),COUNTRY+'-history-votes.png'));
+      const ss=$('hist-seats-shot-btn');
+      if(ss) ss.addEventListener('click',()=>captureChartPng($('hist-seats-canvas'),COUNTRY+'-history-seats.png'));
+      const ts=$('hist-turnout-shot-btn');
+      if(ts) ts.addEventListener('click',()=>captureChartPng($('hist-turnout-canvas'),COUNTRY+'-history-turnout.png'));
     });
   });
 

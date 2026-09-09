@@ -25,6 +25,8 @@
     dark:    { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', edge: '#FDFBF4' },
   };
 
+  const OUT_MONO = '"Decima Mono Pro","Decima Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace';
+
   /* ---------- image cache ---------- */
   const imgCache = {};
   function loadImg(src) {
@@ -50,6 +52,12 @@
   const pollSel = $('poll-select');
   const renderBtn = $('render-btn');
   const downloadBtn = $('download-btn');
+  const textPanel = $('text-panel');
+  const textOut = $('text-out');
+  const copyBtn = $('copy-btn');
+  const txtDlBtn = $('txt-dl-btn');
+  const imgActions = $('img-actions');
+  const txtActions = $('txt-actions');
 
   let COUNTRIES_DEF = {};
   try { COUNTRIES_DEF = (typeof COUNTRIES !== 'undefined') ? COUNTRIES : {}; } catch (e) { /* config not loaded */ }
@@ -64,6 +72,121 @@
     return (r % 1 !== 0) ? r.toFixed(1) : String(r);
   }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+  /* ---------- seat projection (port of site/js/app.js allocation logic) ---------- */
+  function seatDistrictShares(c, nr, avg) {
+    const conf = (c && c.map) || {};
+    let base;
+    if (conf.wkResults && conf.wkResults[String(nr)]) base = conf.wkResults[String(nr)];
+    else {
+      const gArr = conf.districts ? conf.districts[String(nr)] : null;
+      if (!gArr) return null;
+      base = conf.gebiete[gArr];
+    }
+    const nat = conf.national2021 || (c.lastElection ? c.lastElection.results : {});
+    const out = {};
+    (c.order || []).forEach((p) => {
+      const past = base[p] || 0;
+      const swing = (avg && avg[p] !== undefined) ? ((avg[p] || 0) - (nat[p] || 0)) : 0;
+      out[p] = { past: past, now: Math.max(0, past + swing) };
+    });
+    return out;
+  }
+
+  function seatDistrictWinner(c, nr, avg) {
+    const shares = seatDistrictShares(c, nr, avg);
+    if (!shares) return null;
+    let best = null, bestV = -1;
+    (c.order || []).forEach((p) => { if (shares[p].now > bestV) { bestV = shares[p].now; best = p; } });
+    return best;
+  }
+
+  function seatDirectMandates(c, avg) {
+    const out = {};
+    (c.order || []).forEach((p) => { out[p] = 0; });
+    const conf = (c && c.map) || {};
+    if (!conf || !conf.districts) return out;
+    Object.keys(conf.districts).forEach((nr) => {
+      const w = seatDistrictWinner(c, parseInt(nr, 10), avg);
+      if (w) out[w]++;
+    });
+    return out;
+  }
+
+  function seatHareNiemeyer(c, votes, total) {
+    const threshold = Number(c.threshold || 0);
+    const valid = (c.order || []).filter((p) => (votes[p] || 0) >= threshold);
+    const totalVotes = valid.reduce((a, p) => a + (votes[p] || 0), 0);
+    const quota = (totalVotes / total) || 1;
+    const out = {}; const rems = []; let given = 0;
+    valid.forEach((p) => {
+      const q = (votes[p] || 0) / quota, fl = Math.floor(q);
+      out[p] = fl; given += fl; rems.push([q - fl, p]);
+    });
+    let left = Math.max(0, total - given);
+    rems.sort((a, b) => b[0] - a[0]);
+    for (let i = 0; i < left && i < rems.length; i++) out[rems[i][1]]++;
+    return out;
+  }
+
+  function seatOverhang(c, votes, totalBase, direct, cap) {
+    cap = cap || totalBase;
+    let total = totalBase;
+    for (let it = 0; it < 200; it++) {
+      const seats = seatHareNiemeyer(c, votes, total);
+      let deficit = 0;
+      (c.order || []).forEach((p) => { const d = direct[p] || 0; if (seats[p] < d) deficit += d - seats[p]; });
+      if (deficit <= 0) return seats;
+      if (total === cap) break;
+      total = Math.min(total + deficit, cap);
+    }
+    const s = seatHareNiemeyer(c, votes, total);
+    (c.order || []).forEach((p) => { if (s[p] < (direct[p] || 0)) s[p] = direct[p] || 0; });
+    return s;
+  }
+
+  function seatDivisor(c, votes, total) {
+    const threshold = Number(c.threshold || 0);
+    const method = c.method || 'sainte_lague';
+    const valid = (c.order || []).filter((p) => (votes[p] || 0) >= threshold);
+    const totalVotes = valid.reduce((a, p) => a + (votes[p] || 0), 0);
+    if (totalVotes === 0) return {};
+    const seats = {};
+    valid.forEach((p) => { seats[p] = 0; });
+    const divisors = [];
+    for (let i = 1; i <= total; i++) divisors.push(method === 'dhondt' ? i : (i === 1 ? 1.2 : 2 * i - 1));
+    const quota = [];
+    valid.forEach((p) => { for (let d = 0; d < divisors.length; d++) quota.push({ party: p, q: (votes[p] || 0) / divisors[d] }); });
+    quota.sort((a, b) => b.q - a.q);
+    for (let i = 0; i < total && i < quota.length; i++) seats[quota[i].party]++;
+    return seats;
+  }
+
+  function seatRenorm(c, raw, total) {
+    const out = {};
+    (c.order || []).forEach((p) => { out[p] = 0; });
+    const frs = []; let sum = 0;
+    (c.order || []).forEach((p) => {
+      const m = raw[p] || 0;
+      if (!(m > 0)) return;
+      const f = Math.floor(m);
+      out[p] = f; frs.push([m - f, p]); sum += f;
+    });
+    let left = Math.max(0, total - sum);
+    frs.sort((a, b) => b[0] - a[0]);
+    for (let i = 0; i < left && i < frs.length; i++) out[frs[i][1]]++;
+    return out;
+  }
+
+  /* seat projection from the poll's numbers (vote % or seat counts) */
+  function seatCalc(c, votes) {
+    const total = Number(c.seats || 0);
+    if (!total) return {};
+    if (c.seatBased) return seatRenorm(c, votes, total);
+    if (c.overhang) return seatOverhang(c, votes, total, seatDirectMandates(c, votes), Number(c.overhang.cap || c.seats));
+    if (c.method === 'hare_niemeyer') return seatHareNiemeyer(c, votes, total);
+    return seatDivisor(c, votes, total);
+  }
 
   /* recolor a monochrome logo (black glyph on transparent) to any color */
   function tintedLogo(img, color, w, h) {
@@ -194,11 +317,63 @@
     render();
   }
 
-  /* ---------- rendering ---------- */
-  async function render() {
+  /* ---------- shared display state ---------- */
+  function currentState() {
     const tid = countrySel.value;
     const c = COUNTRIES_DEF[tid];
+    const { order, poll, last } = readResults();
+    const chartEl = document.querySelector('input[name="chart"]:checked');
+    const seatsMode = chartEl ? chartEl.value === 'seats' : false;
+    let now, prev, total, display;
+    if (seatsMode) {
+      now = seatCalc(c, poll);
+      prev = (c && c.lastElection && c.lastElection.seats) ? c.lastElection.seats : {};
+      total = (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
+      display = (c.order || []).filter((p) => (now[p] || 0) > 0).sort((a, b) => (now[b] || 0) - (now[a] || 0));
+      if (!display.length) display = (c.order || []).slice();
+    } else {
+      now = poll; prev = last; total = 0;
+      display = (c.order || []).filter((p) => (now[p] || 0) > 0).sort((a, b) => (prev[b] || 0) - (prev[a] || 0));
+      if (!display.length) display = (c.order || []).slice();
+    }
+    return { tid: tid, c: c, state: { order: order, poll: poll, last: last }, seatsMode: seatsMode, now: now, prev: prev, total: total, display: display };
+  }
+
+  /* ---------- text share output ---------- */
+  function updateText() {
+    const { tid, c, seatsMode, now, prev, total, display } = currentState();
+    if (!c) { textOut.value = ''; return; }
+    const abbr = (p) => (c.parties[p] || {}).code || p;
+    const fmtV = (v) => seatsMode ? String(Math.round(v)) : fmt(v);
+    const lines = [];
+    lines.push((c.name || tid).toUpperCase() + ' — ' + (seatsMode ? 'SEAT PROJECTION' : 'POLL'));
+    const subTxt = [titleInput.value.trim(), dateInput.value.trim()].filter(Boolean).join(' · ');
+    if (subTxt) lines.push(subTxt);
+    lines.push('');
+    lines.push(display.map((p) => abbr(p) + ' ' + fmtV(now[p] || 0)).join(' | '));
+    if (seatsMode) {
+      lines.push('');
+      lines.push('Total: ' + total + ' seats');
+    } else {
+      const le = c.lastElection;
+      if (le) {
+        const yr = le.date ? le.date.slice(0, 4) : '';
+        const head = yr ? 'Last election (' + yr + '): ' : 'Last election: ';
+        lines.push('');
+        lines.push(head + display.map((p) => abbr(p) + ' ' + fmtV(prev[p] || 0)).join(' | '));
+      }
+    }
+    lines.push('');
+    lines.push('anketdelisi.github.io/600');
+    textOut.value = lines.join('\n');
+  }
+
+  /* ---------- rendering ---------- */
+  async function render() {
+    const { tid, c, seatsMode, now, prev, total, display } = currentState();
     if (!c) return;
+
+    const visualOrder = display;
 
     // theme
     const bgVal = document.querySelector('input[name="bg"]:checked');
@@ -213,12 +388,7 @@
     cctx.textBaseline = 'alphabetic';
     cctx.textAlign = 'center';
 
-    const { order, poll, last } = readResults();
     const useLogos = (c.logos || {});
-
-    // drop parties with no current result, order the rest by last-election result (desc)
-    let visualOrder = order.filter((pid) => (poll[pid] || 0) > 0).sort((a, b) => (last[b] || 0) - (last[a] || 0));
-    if (!visualOrder.length) visualOrder = order;
 
     // header
     const padTop = Math.round(H * 0.045);
@@ -231,11 +401,21 @@
     }
 
     const countryName = c.name || tid;
-    const headerTxt = countryName + (c.seatBased ? ' — Seat Projection' : ' — Poll');
+    const headerTxt = countryName + (seatsMode ? ' — Seat Projection' : ' — Poll');
     const titleFont = clamp(Math.round(W * 0.026), 22, 34);
     cctx.font = '900 ' + titleFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
     cctx.fillStyle = th.ink;
-    cctx.fillText(headerTxt, W / 2, padTop + logoH + titleFont * 1.05);
+    const headY = padTop + logoH + titleFont * 1.05;
+    cctx.fillText(headerTxt, W / 2, headY);
+
+    // seats total note (top-right)
+    if (seatsMode) {
+      cctx.textAlign = 'right';
+      cctx.font = Math.round(titleFont * 0.5) + 'px ' + OUT_MONO;
+      cctx.fillStyle = th.muted;
+      cctx.fillText(String(total) + ' seats', W - Math.round(W * 0.045), headY);
+      cctx.textAlign = 'center';
+    }
 
     const subTxt = [titleInput.value.trim(), dateInput.value.trim()].filter(Boolean).join('  ·  ');
     let subY = padTop + logoH + titleFont * 2.1;
@@ -263,12 +443,14 @@
     const chartTop = subY + Math.round(H * 0.045);
     const chartH = Math.max(40, baseY - chartTop);
 
-    // scale
-    let maxV = 0;
-    visualOrder.forEach((pid) => { maxV = Math.max(maxV, poll[pid] || 0, last[pid] || 0); });
-    const niceMax = Math.max(10, Math.ceil(maxV / 10) * 10);
+    // scale: seat mode → whole chamber; poll mode → nice max of shown values
+    let maxV = seatsMode ? total : 0;
+    if (!seatsMode) {
+      visualOrder.forEach((pid) => { maxV = Math.max(maxV, now[pid] || 0, prev[pid] || 0); });
+    }
+    const niceMax = Math.max(seatsMode ? 1 : 10, Math.ceil(maxV / (seatsMode ? 1 : 10)) * (seatsMode ? 1 : 10));
 
-    // bars: poll 70% / last-election 30% of the pair width, side by side
+    // bars: now 70% / previous 30% of the pair width, side by side
     const pairW = colW * 0.84;
     const pollW = pairW * 0.7;
     const lastW = pairW * 0.3;
@@ -278,8 +460,8 @@
       const pid = visualOrder[i];
       const cx = x0 + colW * (i + 0.5);
       const color = (c.parties[pid] || {}).color || '#888';
-      const pv = poll[pid] || 0;
-      const lv = last[pid] || 0;
+      const pv = now[pid] || 0;
+      const lv = prev[pid] || 0;
 
       const drawBar = (x, v, w, isLast) => {
         const bh = Math.max(0, (v / niceMax) * chartH);
@@ -288,9 +470,9 @@
         const bw = Math.round(w);
         if (isLast) { cctx.globalAlpha = 0.3; cctx.fillStyle = color; cctx.fillRect(bx, yTop, bw, bh); cctx.globalAlpha = 1; }
         else { cctx.fillStyle = color; cctx.fillRect(bx, yTop, bw, bh); }
-        const vf = fmt(v);
+        const vf = seatsMode ? String(Math.round(v)) : fmt(v);
         cctx.fillStyle = isLast ? th.muted : th.ink;
-        cctx.font = '800 ' + labelFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
+        cctx.font = '800 ' + labelFont + 'px ' + OUT_MONO;
         cctx.fillText(vf, x + w / 2, yTop - 6);
       };
 
@@ -339,6 +521,8 @@
     }
 
     window.__geo = { W: W, H: H, x0: x0, colW: colW, pairW: pairW, pollW: pollW, lastW: lastW, boxSz: boxSz, baseY: baseY, cnt: visualOrder.length };
+    window.__data = { seatsMode: seatsMode, display: visualOrder.slice(), now: now, prev: prev, total: total };
+    updateText();
   }
 
   /* ---------- events ---------- */
@@ -377,6 +561,31 @@
     }
   });
 
+  document.querySelectorAll('input[name="chart"]').forEach((r) => r.addEventListener('change', schedule));
+  document.querySelectorAll('input[name="share"]').forEach((r) => r.addEventListener('change', () => {
+    const txt = document.querySelector('input[name="share"]:checked').value === 'text';
+    textPanel.hidden = !txt;
+    canvas.style.display = txt ? 'none' : '';
+    imgActions.hidden = txt;
+    txtActions.hidden = !txt;
+    if (txt) updateText();
+    else schedule();
+  }));
+  copyBtn.addEventListener('click', () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(textOut.value); return; }
+    textOut.select();
+    document.execCommand('copy');
+  });
+  txtDlBtn.addEventListener('click', () => {
+    const fn = '600_' + countrySel.value + '_poll.txt';
+    const blob = new Blob([textOut.value], { type: 'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = fn;
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  });
+
   /* ---------- init ---------- */
   function init() {
     const keys = Object.keys(COUNTRIES_DEF);
@@ -388,6 +597,7 @@
     }).join('');
     buildRows();
     loadPolls();
+    updateText();
   }
   init();
 })();

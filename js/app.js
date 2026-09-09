@@ -1986,6 +1986,7 @@ loadLive().then(live=>{
         <div class="map-toggle-row" style="justify-content:flex-end">
           <button class="map-toggle-btn parl-btn lv-map-btn active" data-lvmode="live">${t('LIVE','CANLI')}</button>
           <button class="map-toggle-btn parl-btn lv-map-btn" data-lvmode="res">2022 ${T.result}</button>
+          ${BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn lv-map-color-btn" data-lvcolor="bloc">${T.blocs}</button>`:''}
           <button class="shot-btn" id="lv-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
         </div>
         <div class="parliament-box" id="live-map-box"></div>
@@ -2022,6 +2023,15 @@ function bindLiveMap(live){
       render();
     });
   });
+  const colorBtn=document.querySelector('.lv-map-color-btn');
+  if(colorBtn){
+    colorBtn.classList.toggle('active',MAP_COLOR==='bloc');
+    colorBtn.addEventListener('click',()=>{
+      const on=colorBtn.classList.toggle('active');
+      MAP_COLOR=on?'bloc':'party';
+      render();
+    });
+  }
   render();
 }
 

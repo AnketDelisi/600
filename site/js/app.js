@@ -304,7 +304,7 @@ function recencyWeight(dateStr){
   return Math.pow(0.5, ageDays/RECENCY_HALF_LIFE);
 }
 
-function weightedAverage(polls, party){
+function weightedAverage(polls, party, noBias){
   let wSum=0, wTotal=0;
   for(const p of polls){
     if(p.votes[party]===undefined) continue;
@@ -318,7 +318,7 @@ function weightedAverage(polls, party){
     let v=p.votes[party];
     // signed-bias correction: bias = poll − actual (from per-election backtest);
     // subtract it so pollster's systematic error is removed
-    if(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
+    if(!noBias && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
       v-=POLLSTER_BIAS[p.pollster][party];
     }
     if(SEAT_BASED){
@@ -359,14 +359,14 @@ function trendExtrapolation(polls, party){
   return Math.max(0,proj);
 }
 
-function computeAverages(polls){
+function computeAverages(polls, raw){
   const avg={};
   for(const pid of PARTY_ORDER){
-    avg[pid]=weightedAverage(polls, pid);
+    avg[pid]=weightedAverage(polls, pid, raw);
   }
   // last-election Dirichlet prior: pull the average toward the most recent
   // election outcome so a thin poll set cannot drift arbitrarily far
-  if(PRIOR_ALPHA>0&&LAST_ELECTION.results){
+  if(!raw && PRIOR_ALPHA>0&&LAST_ELECTION.results){
     for(const pid of PARTY_ORDER){
       if(avg[pid]===null) continue;
       const prior=LAST_ELECTION.results[pid]!==undefined?LAST_ELECTION.results[pid]:0;
@@ -374,7 +374,7 @@ function computeAverages(polls){
     }
   }
   // linear-trend extrapolation toward the election date
-  if(TREND_CONF){
+  if(!raw && TREND_CONF){
     for(const pid of PARTY_ORDER){
       const ext=trendExtrapolation(polls, pid);
       if(ext!==null&&avg[pid]!==null){
@@ -2525,6 +2525,7 @@ function renderPollsTab(){
   filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
 
   const avg=computeAverages(filtered);
+  const rawAvg=computeAverages(filtered, true);
 
   let html=`<div class="tab-pane-inner">`;
   // Top row: side card beside hero + poll trend
@@ -2542,7 +2543,7 @@ function renderPollsTab(){
   html+=renderParliament(avg);
 
   // National poll average + blocs
-  html+=renderPartyBars(avg);
+  html+=renderPartyBars(rawAvg);
 
   html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);

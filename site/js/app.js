@@ -364,6 +364,10 @@ function computeAverages(polls){
   for(const pid of PARTY_ORDER){
     avg[pid]=weightedAverage(polls, pid);
   }
+  // dissolved alliances (e.g. SPN): present in the forecast at 0% (no polls report them)
+  for(const pid in PARTY_META){
+    if(PARTY_META[pid].pastOnly&&avg[pid]===null) avg[pid]=0;
+  }
   // last-election Dirichlet prior: pull the average toward the most recent
   // election outcome so a thin poll set cannot drift arbitrarily far
   if(PRIOR_ALPHA>0&&LAST_ELECTION.results){
@@ -882,7 +886,9 @@ function renderParliament(avg){
   }else{
     seats=SEAT_BASED
       ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
-      :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL):allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL));
+      :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL)
+        :(LAST_ELECTION.seats?(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats[p]||0});return s})()
+          :allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL)));
   }
   const seatsTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
   const mapConf=MAP_CONF();
@@ -971,16 +977,9 @@ function districtShares(nr, avg, resultMode){
     const k=100/sum;
     for(const p of PARTY_ORDER) out[p].now*=k;
   }
-  // Dissolved / past-only parties (e.g. SPN): official past result, never projected.
-  for(const p in PARTY_META){
-    if(PARTY_META[p].pastOnly&&base[p]!==undefined) out[p]={past:base[p],now:0};
-  }
   // Unmodelled remainder (2023 lists not tracked by this model).
   let pastSum=0;
   for(const p of PARTY_ORDER) pastSum+=out[p].past||0;
-  for(const p in PARTY_META){
-    if(PARTY_META[p].pastOnly&&out[p]) pastSum+=out[p].past||0;
-  }
   out.other={past:Math.max(0,100-pastSum),now:0};
   return out;
 }
@@ -1192,18 +1191,6 @@ async function renderMapInto(box, avg, resultMode){
           <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
         </div>`;
       }).join('');
-      // dissolved / past-only parties: 2023 result shown, not projected
-      for(const p in PARTY_META){
-        if(!PARTY_META[p].pastOnly||!shares[p]||shares[p].past<=0.05) continue;
-        const s=shares[p];
-        const col=PARTY_META[p].color||'#888';
-        rows+=`<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}">${partyCode(p)}</span>
-          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,s.past))}%;background:${col}"></div></div>
-          <span class="map-tip-now">${pct(s.now)}</span>
-          <span class="map-tip-delta down">▼${pct(s.past)}</span>
-        </div>`;
-      }
       // unmodelled 2023 lists (remainder), past column only
       if(shares.other&&shares.other.past>0.05){
         const o=shares.other;

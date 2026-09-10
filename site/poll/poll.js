@@ -349,7 +349,7 @@
     const pollster = titleInput.value.trim();
     const lines = [];
     lines.push((c.name || tid) + ', ' + (pollster || 'poll') + (seatsMode ? ' seat projection:' : ' poll:'));
-    lines.push(display.filter((p) => !(c.parties[p] || {}).pastOnly).map((p) => abbr(p) + ': ' + val(p) + delta(p)).join(' '));
+    lines.push(display.map((p) => abbr(p) + ': ' + val(p) + delta(p)).join(' '));
     const le = c.lastElection;
     if (le) {
       const yr = le.date ? le.date.slice(0, 4) : '';
@@ -501,11 +501,11 @@
           const dw = iw * s, dh = ih * s;
           cctx.drawImage(img, cx - dw / 2, by + (boxSz - dh) / 2, dw, dh);
         } else {
-          cctx.fillStyle = (meta.pastOnly ? '#161616' : th.surface); cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
+          cctx.fillStyle = (meta.pastOnly ? '#FFFFFF' : th.surface); cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
           cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
         }
       } else {
-        cctx.fillStyle = (meta.pastOnly ? '#161616' : th.surface); cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
+        cctx.fillStyle = (meta.pastOnly ? '#FFFFFF' : th.surface); cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
         cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
       }
 

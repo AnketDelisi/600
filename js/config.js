@@ -512,10 +512,10 @@ saxony_anhalt: {
       sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A6192E' },
       // SPN (Serbia Against Violence, 2023) — dissolved coalition. Shown in
       // past-result sections only; `pastOnly` keeps it out of the forecast.
-      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#7BAFD4', pastOnly: true },
+      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#E30613', pastOnly: true },
     },
-    order: ['sns', 'sl', 'sps', 'pes', 'nps', 'nada', 'misn', 'srs'],
-    parlOrder: ['sl', 'pes', 'nps', 'sps', 'sns', 'nada', 'misn', 'srs'],
+    order: ['sns', 'sl', 'sps', 'pes', 'nps', 'nada', 'misn', 'srs', 'spn'],
+    parlOrder: ['sl', 'pes', 'nps', 'sps', 'sns', 'nada', 'misn', 'srs', 'spn'],
     blocs: {
       bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps'], color: '#1B4381' },
       bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nps', 'nada', 'misn', 'srs'], color: '#A6192E' },

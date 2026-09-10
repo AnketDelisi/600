@@ -490,6 +490,10 @@ saxony_anhalt: {
       "Infratest dimap":         { BT2025: 1.72, BT2021: 0.82, B2023: 2.37, overall: 1.99 },
       INSA:                      { BT2025: 0.71, BT2021: 0.97, B2023: 2.23, overall: 1.70 },
       Forsa:                     { BT2025: 1.00, BT2021: 1.20, B2023: 0.90, overall: 1.05 },
+      // BSW internal poll (Sep-2026, commissioned by the BSW Landesverband from an
+      // unidentified French firm): partisan and method-unpublished, so it is
+      // down-weighted to the lowest MAE of any Berlin house.
+      "BSW (internal)":          { B2023: 4.0, overall: 4.0 },
     },
   },
 

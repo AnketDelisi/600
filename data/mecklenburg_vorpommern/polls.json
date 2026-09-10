@@ -7,7 +7,8 @@
   "polls": [
     {
       "pollster": "INSA",
-      "date": "2026-09-10",
+      "fieldwork_start": "2026-09-01",
+      "date": "2026-09-08",
       "votes": {
         "spd": 33.0,
         "afd": 36.0,
@@ -23,7 +24,8 @@
     },
     {
       "pollster": "Infratest dimap",
-      "date": "2026-09-03",
+      "fieldwork_start": "2026-08-26",
+      "date": "2026-08-31",
       "votes": {
         "spd": 32.0,
         "afd": 35.0,
@@ -39,7 +41,8 @@
     },
     {
       "pollster": "Forsa",
-      "date": "2026-09-02",
+      "fieldwork_start": "2026-08-21",
+      "date": "2026-08-27",
       "votes": {
         "spd": 28.0,
         "afd": 37.0,

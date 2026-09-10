@@ -597,6 +597,75 @@ saxony_anhalt: {
       national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32 },
     },
   },
+
+  latvia: {
+    name: 'Latvia',
+    seats: 100,
+    threshold: 5.0,
+    method: 'sainte_lague',       // modified Sainte-Laguë (first divisor 1.4; site uses 1.2)
+    seatBased: false,             // polls report vote shares (%)
+    constituencies: false,        // 5 multi-member constituencies; we model nationally
+    recencyHalfLifeDays: 7,
+    parties: {
+      as:  { code: 'AS',   name: 'Apvienotais saraksts',           name_en: 'United List',                color: '#2E7D32' },
+      sv:  { code: 'SV',   name: 'Suverēnā vara',                  name_en: 'Sovereign Power',            color: '#8B0000' },
+      lpv: { code: 'LPV',  name: 'Latvija pirmajā vietā',          name_en: 'Latvia First',               color: '#1565C0' },
+      pro: { code: 'P',    name: 'Progresīvie',                    name_en: 'The Progressives',           color: '#E91E63' },
+      na:  { code: 'NA',   name: 'Nacionālā Apvienība',            name_en: 'National Alliance',          color: '#1A237E' },
+      jv:  { code: 'JV',   name: 'Jaunā Vienotība',                name_en: 'New Unity',                  color: '#0277BD' },
+      zzs: { code: 'ZZS',  name: 'Zaļo un zemnieku savienība',     name_en: 'Greens and Farmers',        color: '#4CAF50' },
+      la:  { code: 'LA',   name: 'Latvijas attīstībai',            name_en: 'For Latvia\'s Development', color: '#FF9800' },
+      mmn: { code: 'MMN',  name: 'Mēs mainām noteikumus',          name_en: 'We Change the Rules',       color: '#9C27B0' },
+      st:  { code: 'S!',   name: 'Stabilitātei!',                  name_en: 'For Stability!',             color: '#795548' },
+      sc:  { code: 'SC',   name: 'Saskaņa',                        name_en: 'Harmony',                    color: '#D32F2F' },
+      asl: { code: 'ASL',  name: 'Apvienība Jaunlatvieši',         name_en: 'New Latvians',               color: '#FDD835' },
+      jkp: { code: 'JKP',  name: 'Jaunā konservatīvā partija',     name_en: 'New Conservative Party',     color: '#607D8B' },
+      lks: { code: 'LKS',  name: 'Latvijas Krievu savienība',      name_en: 'Latvian Russian Union',      color: '#B71C1C' },
+    },
+    order: ['as', 'sv', 'lpv', 'pro', 'na', 'jv', 'zzs', 'la', 'mmn', 'st', 'sc', 'asl', 'jkp'],
+    parlOrder: ['sc', 'pro', 'lks', 'as', 'zzs', 'jv', 'la', 'na', 'st', 'sv', 'lpv', 'asl', 'jkp'],
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['as', 'jv', 'na', 'zzs'], color: '#2E7D32' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['sv', 'lpv', 'pro', 'la', 'mmn', 'st', 'sc', 'asl', 'jkp', 'lks'], color: '#D32F2F' },
+    },
+    logos: {
+      as: 'img/lv/AS.svg', sv: 'img/lv/SV.svg', lpv: 'img/lv/LPV.svg',
+      pro: 'img/lv/PRO.svg', na: 'img/lv/NA.svg', jv: 'img/lv/JV.svg',
+      zzs: 'img/lv/ZZS.svg', la: 'img/lv/LA.svg', mmn: 'img/lv/MMN.svg',
+      st: 'img/lv/ST.svg', sc: 'img/lv/SC.svg', asl: 'img/lv/ASL.svg',
+      jkp: 'img/lv/JKP.svg', lks: 'img/lv/LKS.svg',
+    },
+    lastElection: {
+      date: '2022-10-01',
+      // 2022 Saeima official result (source: CVK / en.wikipedia.org)
+      results: { as: 11.14, sv: 3.28, lpv: 6.31, pro: 6.23, na: 9.40, jv: 19.19, zzs: 12.58, la: 5.03, mmn: 0, st: 6.88, sc: 4.86, asl: 0, jkp: 0, lks: 3.67 },
+      seats:   { as: 15, sv: 0, lpv: 9, pro: 10, na: 13, jv: 26, zzs: 16, la: 0, mmn: 0, st: 11, sc: 0, asl: 0, jkp: 0, lks: 0 },
+    },
+    map: {
+      svg: 'img/latvia.svg',
+      // 5 electoral districts (Saeima constituencies); numeric keys match
+      // the __01..__05 path ids in latvia.svg (default selector path[id^="_"])
+      districts: { 1: 'riga', 2: 'vidzeme', 3: 'latgale', 4: 'zemgale', 5: 'kurzeme' },
+      // 2022 vote share (%) per constituency (source: CVK / en.wikipedia.org)
+      // Parties without exact per-constituency data use estimated values
+      gebiete: {
+        riga:      { as: 6.91, sv: 4.0, lpv: 8.59, pro: 9.05, na: 7.14, jv: 20.59, zzs: 5.51, la: 7.0, mmn: 0, st: 9.15, sc: 6.0, asl: 0, jkp: 0, lks: 4.0 },
+        vidzeme:   { as: 12.62, sv: 2.0, lpv: 5.14, pro: 5.95, na: 11.39, jv: 23.46, zzs: 12.10, la: 5.0, mmn: 0, st: 3.04, sc: 2.0, asl: 0, jkp: 0, lks: 1.0 },
+        latgale:   { as: 5.12, sv: 8.0, lpv: 6.53, pro: 2.46, na: 5.78, jv: 6.97, zzs: 14.54, la: 3.0, mmn: 0, st: 18.56, sc: 12.0, asl: 0, jkp: 0, lks: 10.0 },
+        zemgale:   { as: 12.42, sv: 1.5, lpv: 4.56, pro: 4.35, na: 12.16, jv: 18.75, zzs: 19.55, la: 4.0, mmn: 0, st: 3.02, sc: 1.5, asl: 0, jkp: 0, lks: 0.5 },
+        kurzeme:   { as: 22.05, sv: 1.0, lpv: 4.27, pro: 4.80, na: 10.25, jv: 16.44, zzs: 21.10, la: 4.0, mmn: 0, st: 2.17, sc: 1.0, asl: 0, jkp: 0, lks: 0.5 },
+      },
+      names: {
+        riga: 'Rīga', vidzeme: 'Vidzeme', latgale: 'Latgale', zemgale: 'Zemgale', kurzeme: 'Kurzeme',
+      },
+      national2021: { as: 11.14, sv: 3.28, lpv: 6.31, pro: 6.23, na: 9.40, jv: 19.19, zzs: 12.58, la: 5.03, mmn: 0, st: 6.88, sc: 4.86, asl: 0, jkp: 0, lks: 3.67 },
+    },
+    pollsterMAE: {
+      SKDS:             { overall: 1.50 },
+      'Latvijas Fakti': { overall: 1.50 },
+      Gemius:           { overall: 2.00 },
+    },
+  },
 };
 
 // ===== Active country (switched at runtime) =====

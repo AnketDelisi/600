@@ -1,0 +1,44 @@
+{
+  "country": "latvia",
+  "country_name": "Latvia",
+  "system": "PR (open list, modified Sainte-Laguë)",
+  "seats_total": 100,
+  "seats_constituency": 100,
+  "threshold": 5.0,
+  "constituencies": 5,
+  "seat_method": "Modified Sainte-Laguë (first divisor 1.4)",
+  "election_date": "2026-10-03",
+  "parties": [
+    { "id": "as",  "name": "Apvienotais saraksts",          "name_en": "United List",                "color": "#2E7D32" },
+    { "id": "sv",  "name": "Suverēnā vara",                 "name_en": "Sovereign Power",            "color": "#8B0000" },
+    { "id": "lpv", "name": "Latvija pirmajā vietā",         "name_en": "Latvia First",               "color": "#1565C0" },
+    { "id": "pro", "name": "Progresīvie",                   "name_en": "The Progressives",           "color": "#E91E63" },
+    { "id": "na",  "name": "Nacionālā Apvienība",           "name_en": "National Alliance",          "color": "#1A237E" },
+    { "id": "jv",  "name": "Jaunā Vienotība",               "name_en": "New Unity",                  "color": "#0277BD" },
+    { "id": "zzs", "name": "Zaļo un zemnieku savienība",    "name_en": "Greens and Farmers",        "color": "#4CAF50" },
+    { "id": "la",  "name": "Latvijas attīstībai",           "name_en": "For Latvia's Development",  "color": "#FF9800" },
+    { "id": "mmn", "name": "Mēs mainām noteikumus",         "name_en": "We Change the Rules",       "color": "#9C27B0" },
+    { "id": "st",  "name": "Stabilitātei!",                 "name_en": "For Stability!",             "color": "#795548" },
+    { "id": "sc",  "name": "Saskaņa",                       "name_en": "Harmony",                    "color": "#D32F2F" },
+    { "id": "asl", "name": "Apvienība Jaunlatvieši",        "name_en": "New Latvians",               "color": "#FDD835" },
+    { "id": "jkp", "name": "Jaunā konservatīvā partija",    "name_en": "New Conservative Party",     "color": "#607D8B" },
+    { "id": "lks", "name": "Latvijas Krievu savienība",     "name_en": "Latvian Russian Union",      "color": "#B71C1C" }
+  ],
+  "blocs": {
+    "government": { "name": "Government", "parties": ["as", "jv", "na", "zzs"] },
+    "opposition": { "name": "Opposition", "parties": ["sv", "lpv", "pro", "la", "mmn", "st", "sc", "asl", "jkp", "lks"] }
+  },
+  "last_election": {
+    "date": "2022-10-01",
+    "results": {
+      "as": 11.14, "sv": 3.28, "lpv": 6.31, "pro": 6.23, "na": 9.40,
+      "jv": 19.19, "zzs": 12.58, "la": 5.03, "mmn": 0, "st": 6.88,
+      "sc": 4.86, "asl": 0, "jkp": 0, "lks": 3.67
+    },
+    "seats": {
+      "as": 15, "sv": 0, "lpv": 9, "pro": 10, "na": 13,
+      "jv": 26, "zzs": 16, "la": 0, "mmn": 0, "st": 11,
+      "sc": 0, "asl": 0, "jkp": 0, "lks": 0
+    }
+  }
+}

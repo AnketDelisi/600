@@ -1,0 +1,73 @@
+{
+  "country": "latvia",
+  "sources": [
+    {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Latvian_parliamentary_election"
+    },
+    {
+      "name": "PolitPro",
+      "url": "https://politpro.eu/en/latvia"
+    }
+  ],
+  "scraped_at": "2026-09-10T12:00:00Z",
+  "poll_count": 4,
+  "polls": [
+    {
+      "pollster": "Latvijas Fakti",
+      "date": "2026-08-31",
+      "fieldwork_start": "2026-08-21",
+      "n": 1058,
+      "country": "latvia",
+      "source": "PolitPro",
+      "source_url": "https://politpro.eu/en/latvia",
+      "votes": {
+        "as": 23.6, "lpv": 12.6, "na": 11.0, "pro": 10.7,
+        "zzs": 10.4, "sv": 9.6, "jv": 8.9, "mmn": 3.3,
+        "la": 2.5, "st": 2.5, "sc": 1.7, "asl": 1.2, "jkp": 0.7
+      }
+    },
+    {
+      "pollster": "SKDS",
+      "date": "2026-08-19",
+      "fieldwork_start": "2026-08-13",
+      "n": 1205,
+      "country": "latvia",
+      "source": "PolitPro",
+      "source_url": "https://politpro.eu/en/latvia",
+      "votes": {
+        "as": 23.6, "sv": 17.1, "pro": 14.1, "lpv": 12.2,
+        "jv": 7.0, "na": 6.7, "la": 4.1, "zzs": 3.8,
+        "st": 3.3, "mmn": 2.5, "sc": 2.1, "asl": 1.3, "jkp": 1.0
+      }
+    },
+    {
+      "pollster": "SKDS",
+      "date": "2026-07-15",
+      "fieldwork_start": "2026-07-10",
+      "n": 1200,
+      "country": "latvia",
+      "source": "PolitPro",
+      "source_url": "https://politpro.eu/en/latvia",
+      "votes": {
+        "as": 19.2, "sv": 17.1, "lpv": 14.8, "pro": 14.3,
+        "na": 8.7, "jv": 7.2, "zzs": 4.2, "mmn": 3.6,
+        "la": 3.0, "st": 2.5, "sc": 1.9, "asl": 1.9, "jkp": 1.1
+      }
+    },
+    {
+      "pollster": "Gemius",
+      "date": "2026-04-07",
+      "fieldwork_start": "2026-04-01",
+      "n": 1000,
+      "country": "latvia",
+      "source": "PolitPro",
+      "source_url": "https://politpro.eu/en/latvia",
+      "votes": {
+        "lpv": 14.3, "pro": 14.1, "jv": 9.4, "na": 8.4,
+        "as": 8.2, "sv": 6.1, "zzs": 5.2, "la": 3.9,
+        "mmn": 8.1, "sc": 2.9, "st": 2.2, "asl": 1.9, "jkp": 0.6
+      }
+    }
+  ]
+}

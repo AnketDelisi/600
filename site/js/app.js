@@ -137,7 +137,7 @@ document.addEventListener('click',e=>{
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'&&!pane.dataset.loaded){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
 });
 
 /* ---------- load constituency data ---------- */
@@ -631,8 +631,8 @@ function renderTrendChart(canvas, polls){
     return;
   }
 
-  // Build series
-  const series=PARTY_ORDER.map(pid=>{
+  // Build series (placeholder parties like SPN never appear)
+  const series=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(pid=>{
     const points=dates.map(d=>{
       const vals=byDate[d][pid];
       if(!vals||!vals.length) return null;
@@ -776,12 +776,13 @@ function renderPollsTable(polls){
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
       <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th><th class="c">${t('Lead','Fark')}</th>`;
-  PARTY_ORDER.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
+  const active=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
+  active.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
 
   polls.slice(0,60).forEach(p=>{
     // Leader + margin
-    const sorted=PARTY_ORDER.slice().sort((a,b)=>(p.votes[b]||0)-(p.votes[a]||0));
+    const sorted=active.slice().sort((a,b)=>(p.votes[b]||0)-(p.votes[a]||0));
     const leadP=sorted[0], leadV=p.votes[leadP]||0;
     const secondV=p.votes[sorted[1]]||0;
     const margin=leadV-secondV;
@@ -789,7 +790,7 @@ function renderPollsTable(polls){
 
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
       <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>`;
-    PARTY_ORDER.forEach(pid=>{
+    active.forEach(pid=>{
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
       const isTop=pid===leadP;
@@ -1704,18 +1705,19 @@ function renderForecast(pane){
     sim=runForecast(avg,3000,filtered.length);
     FC_CACHE[seedKey]=sim;
   }
+  const fOrder=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
   const maj=sim.maj;
   const majTotal=sim.nSims;
   const kmDefined=!!BLOCS.kingmaker;
   const KM_COLOR=BLOCS.kingmakerColor||'#F59E0B';
   const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal, kmP=kmDefined?((maj.km||0)/majTotal):0;
-  const expectedSeats=Math.round(PARTY_ORDER.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
+  const expectedSeats=Math.round(fOrder.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
   const MAJ=Math.floor(expectedSeats/2)+1;
 
   // --- Deterministic: median-based parliament ---
   const detSeats=deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL);
   let cmpRows='';
-  const cmpOrder=PARTY_ORDER.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
+  const cmpOrder=fOrder.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
   cmpOrder.forEach(p=>{
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     cmpRows+=`<tr>
@@ -1728,7 +1730,7 @@ function renderForecast(pane){
 
   // --- Constituency results (median national vote shares) ---
   const medVotes={};
-  PARTY_ORDER.forEach(p=>{
+  fOrder.forEach(p=>{
     const arr=sim.votesBy[p].slice().sort((a,b)=>a-b);
     medVotes[p]=arr[Math.floor(arr.length/2)];
   });
@@ -1748,7 +1750,7 @@ function renderForecast(pane){
   </div>`;
 
   let largestRows='';
-  const largestSorted=PARTY_ORDER.slice().sort((a,b)=>(sim.largest[b]||0)-(sim.largest[a]||0));
+  const largestSorted=fOrder.slice().sort((a,b)=>(sim.largest[b]||0)-(sim.largest[a]||0));
   const maxL=Math.max(...Object.values(sim.largest),1);
   largestSorted.forEach(p=>{
     const n=sim.largest[p]||0;
@@ -1761,7 +1763,7 @@ function renderForecast(pane){
   });
 
   let voteRows='';
-  const voteOrder=PARTY_ORDER.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
+  const voteOrder=fOrder.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
   const vsMax=SEAT_BASED?60:50;
   const vsThresh=SEAT_BASED?THRESHOLD/100*SEATS_TOTAL:THRESHOLD;
   voteOrder.forEach(p=>{
@@ -1788,7 +1790,7 @@ function renderForecast(pane){
   });
 
   let seatRows='';
-  const seatOrder=PARTY_ORDER.slice().sort((a,b)=>{
+  const seatOrder=fOrder.slice().sort((a,b)=>{
     const ma=mean(sim.seatsBy[a]), mb=mean(sim.seatsBy[b]);
     return mb-ma;
   });

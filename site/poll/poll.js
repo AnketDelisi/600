@@ -223,6 +223,7 @@
     if (chartSeg) chartSeg.style.display = c.seatBased ? 'none' : '';
     (c.order || []).forEach((pid) => {
       const meta = c.parties[pid] || {};
+      if (meta.pastOnly) return; // dissolved alliances: baseline only, no input row
       const tr = document.createElement('tr');
       const nameLbl = meta.name_en || meta.name || pid;
       tr.innerHTML =
@@ -248,6 +249,13 @@
       poll[pid] = num((partiesBody.querySelector('.poll-in[data-pid="' + pid + '"]') || {}).value);
       last[pid] = num((partiesBody.querySelector('.last-in[data-pid="' + pid + '"]') || {}).value);
     });
+    // past-only parties (e.g. dissolved SPN): fixed 2023 baseline, never in the forecast
+    if (c && c.parties) {
+      const le = c.lastElection ? (c.seatBased ? c.lastElection.seats : c.lastElection.results) || {} : {};
+      Object.keys(c.parties).forEach((pid) => {
+        if ((c.parties[pid] || {}).pastOnly) { poll[pid] = 0; last[pid] = le[pid] || 0; }
+      });
+    }
     return { order, poll, last };
   }
 
@@ -309,15 +317,20 @@
     const chartEl = document.querySelector('input[name="chart"]:checked');
     const seatsMode = (c && c.seatBased) ? true : (chartEl ? chartEl.value === 'seats' : false);
     let now, prev, total, display;
+    // past-only parties (dissolved alliances) join the chart as baseline columns
+    const baseOrder = (c.order || []).slice();
+    for (const pid in (c.parties || {})) {
+      if ((c.parties[pid] || {}).pastOnly && baseOrder.indexOf(pid) < 0) baseOrder.push(pid);
+    }
     if (seatsMode) {
       now = (c && c.seatBased) ? poll : seatCalc(c, poll);
       prev = (c && c.lastElection && c.lastElection.seats) ? c.lastElection.seats : {};
       total = (c && c.seatBased) ? Number(c.seats || 0) : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
-      display = (c.order || []).filter((p) => (now[p] || 0) > 0).sort((a, b) => (now[b] || 0) - (now[a] || 0));
+      display = baseOrder.filter((p) => (now[p] || 0) > 0 || ((c.parties[p] || {}).pastOnly && (prev[p] || 0) > 0)).sort((a, b) => (now[b] || 0) - (now[a] || 0));
       if (!display.length) display = (c.order || []).slice();
     } else {
       now = poll; prev = last; total = 0;
-      display = (c.order || []).filter((p) => (now[p] || 0) > 0).sort((a, b) => (prev[b] || 0) - (prev[a] || 0));
+      display = baseOrder.filter((p) => (now[p] || 0) > 0 || ((c.parties[p] || {}).pastOnly && (prev[p] || 0) > 0)).sort((a, b) => (prev[b] || 0) - (prev[a] || 0));
       if (!display.length) display = (c.order || []).slice();
     }
     return { tid: tid, c: c, state: { order: order, poll: poll, last: last }, seatsMode: seatsMode, now: now, prev: prev, total: total, display: display };
@@ -336,7 +349,7 @@
     const pollster = titleInput.value.trim();
     const lines = [];
     lines.push((c.name || tid) + ', ' + (pollster || 'poll') + (seatsMode ? ' seat projection:' : ' poll:'));
-    lines.push(display.map((p) => abbr(p) + ': ' + val(p) + delta(p)).join(' '));
+    lines.push(display.filter((p) => !(c.parties[p] || {}).pastOnly).map((p) => abbr(p) + ': ' + val(p) + delta(p)).join(' '));
     const le = c.lastElection;
     if (le) {
       const yr = le.date ? le.date.slice(0, 4) : '';
@@ -481,18 +494,18 @@
       // logo
       const logoPath = useLogos[pid];
       if (logoPath) {
-        const img = await loadImg(BASE + logoPath);
+        const img = await loadImg(BASE + logoPath + '?v=' + LOGO_CACHE);
         if (img) {
           const iw = img.naturalWidth || 100, ih = img.naturalHeight || 100;
           const s = Math.min((boxSz - 8) / iw, (boxSz - 8) / ih);
           const dw = iw * s, dh = ih * s;
           cctx.drawImage(img, cx - dw / 2, by + (boxSz - dh) / 2, dw, dh);
         } else {
-          cctx.fillStyle = th.surface; cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
+          cctx.fillStyle = (meta.pastOnly ? '#161616' : th.surface); cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
           cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
         }
       } else {
-        cctx.fillStyle = th.surface; cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
+        cctx.fillStyle = (meta.pastOnly ? '#161616' : th.surface); cctx.font = '800 ' + Math.round(boxSz * 0.34) + 'px monospace';
         cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
       }
 

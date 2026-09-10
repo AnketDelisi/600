@@ -465,7 +465,11 @@ function renderLastElection(){
   const c=$('sb-election');
   if(!c) return;
   let html='';
-  const sorted=PARTY_ORDER.slice().sort((a,b)=>(LAST_ELECTION.results[b]||0)-(LAST_ELECTION.results[a]||0));
+  const list=PARTY_ORDER.slice();
+  for(const pid in PARTY_META){
+    if(PARTY_META[pid].pastOnly&&LAST_ELECTION.results[pid]!==undefined&&list.indexOf(pid)<0) list.push(pid);
+  }
+  const sorted=list.slice().sort((a,b)=>(LAST_ELECTION.results[b]||0)-(LAST_ELECTION.results[a]||0));
   for(const pid of sorted){
     const pct_val=LAST_ELECTION.results[pid];
     if(pct_val===undefined) continue;
@@ -495,7 +499,7 @@ function renderHero(avg, filteredPolls){
     <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','son')}: ${latestStr} (${days}d ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
-        ${logoSrc?`<img src="${b}${logoSrc}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
+        ${logoSrc?`<img src="${b}${logoSrc}?v=${LOGO_CACHE}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
       </div>
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
@@ -526,7 +530,7 @@ function renderPartyBars(avg){
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
-        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${partyCode(pid)}</span>`}
+        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}?v=${LOGO_CACHE}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${partyCode(pid)}</span>`}
       </div>
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
@@ -953,11 +957,31 @@ function districtShares(nr, avg, resultMode){
   }
   const nat=conf.national2021||LAST_ELECTION.results;
   const out={};
+  let sum=0;
   for(const p of PARTY_ORDER){
     const past=base[p]||0;
     const swing=(!resultMode&&avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
     out[p]={past, now:Math.max(0,past+swing)};
+    sum+=out[p].now;
   }
+  // Okrug baselines cover only the modelled parties (unmodelled lists made up
+  // the remainder), so renormalize projected shares to sum to 100%.
+  // (Result mode keeps the official 2023 numbers untouched.)
+  if(!resultMode&&sum>0&&Math.abs(sum-100)>0.01){
+    const k=100/sum;
+    for(const p of PARTY_ORDER) out[p].now*=k;
+  }
+  // Dissolved / past-only parties (e.g. SPN): official past result, never projected.
+  for(const p in PARTY_META){
+    if(PARTY_META[p].pastOnly&&base[p]!==undefined) out[p]={past:base[p],now:0};
+  }
+  // Unmodelled remainder (2023 lists not tracked by this model).
+  let pastSum=0;
+  for(const p of PARTY_ORDER) pastSum+=out[p].past||0;
+  for(const p in PARTY_META){
+    if(PARTY_META[p].pastOnly&&out[p]) pastSum+=out[p].past||0;
+  }
+  out.other={past:Math.max(0,100-pastSum),now:0};
   return out;
 }
 
@@ -1154,7 +1178,7 @@ async function renderMapInto(box, avg, resultMode){
       }
       const pastWinner=districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results);
       const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
-      const rows=PARTY_ORDER.slice().sort((a,b)=>shares[b].now-shares[a].now).map(p=>{
+      let rows=PARTY_ORDER.slice().sort((a,b)=>shares[b].now-shares[a].now).map(p=>{
         const s=shares[p];
         const delta=s.now-s.past;
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
@@ -1168,6 +1192,28 @@ async function renderMapInto(box, avg, resultMode){
           <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
         </div>`;
       }).join('');
+      // dissolved / past-only parties: 2023 result shown, not projected
+      for(const p in PARTY_META){
+        if(!PARTY_META[p].pastOnly||!shares[p]||shares[p].past<=0.05) continue;
+        const s=shares[p];
+        const col=PARTY_META[p].color||'#888';
+        rows+=`<div class="map-tip-row">
+          <span class="map-tip-code" style="color:${col}">${partyCode(p)}</span>
+          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,s.past))}%;background:${col}"></div></div>
+          <span class="map-tip-now">${pct(s.now)}</span>
+          <span class="map-tip-delta down">▼${pct(s.past)}</span>
+        </div>`;
+      }
+      // unmodelled 2023 lists (remainder), past column only
+      if(shares.other&&shares.other.past>0.05){
+        const o=shares.other;
+        rows+=`<div class="map-tip-row">
+          <span class="map-tip-code" style="color:#9CA3AF">Other</span>
+          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,o.past))}%;background:#9CA3AF"></div></div>
+          <span class="map-tip-now">${pct(o.now)}</span>
+          <span class="map-tip-delta down">▼${pct(o.past)}</span>
+        </div>`;
+      }
       const pwCol=PARTY_META[pastWinner]?PARTY_META[pastWinner].color:'#888';
       const nwCol=PARTY_META[nowWinner]?PARTY_META[nowWinner].color:'#888';
       tooltip.innerHTML=`<div class="map-tip-head">

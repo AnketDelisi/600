@@ -669,27 +669,29 @@ saxony_anhalt: {
 
   brazil: {
     name: 'Brazil',
-    // Two-round presidential election (4 Oct 2026, runoff 25 Oct). The seat
-    // engine is repurposed for the 27 federative units: "seats" = states a
-    // candidate leads in (hare_niemeyer from vote shares). First-round win
-    // requires a majority of valid votes; runoff polls live in polls.json.
+    // Two-round presidential election (4 Oct 2026, runoff 25 Oct). Presidential
+    // layout: hideBlocs drops the bloc/majority cards, mapOnly replaces the
+    // parliament diagram with the 27-UF map. The seat engine is repurposed for
+    // the federative units ("seats" = UFs a candidate leads in).
     seats: 27,
     threshold: 5.0,
     method: 'hare_niemeyer',
     seatBased: false,             // polls report first-round vote intentions (%)
     constituencies: false,        // map = 27 UFs colored by projected state winner
     recencyHalfLifeDays: 7,
+    hideBlocs: true,
+    mapOnly: true,
     parties: {
-      lula:    { code: 'PT',     name: 'Partido dos Trabalhadores',          name_en: "Workers' Party",            color: '#DA251C' },
-      flavio:  { code: 'PL',     name: 'Partido Liberal',                   name_en: 'Liberal Party',             color: '#002776' },
-      cury:    { code: 'Avante', name: 'Avante',                            name_en: 'Avante',                     color: '#F5A800' },
-      caiado:  { code: 'PSD',    name: 'Partido Social Democrático',        name_en: 'Social Democratic Party',   color: '#7B1FA2' },
-      renan:   { code: 'Missão', name: 'Missão',                            name_en: 'Mission',                   color: '#37474F' },
-      zema:    { code: 'Novo',   name: 'Partido Novo',                      name_en: 'New Party',                 color: '#F26522' },
-      margal:  { code: 'PRTB',   name: 'Partido Renovador Trabalhista Brasileiro', name_en: 'Brazilian Labour Renewal Party', color: '#009B3A' },
-      samara:  { code: 'UP',     name: 'Unidade Popular',                   name_en: 'Popular Unity',             color: '#A50034' },
-      edmilson:{ code: 'PCB',    name: 'Partido Comunista Brasileiro',      name_en: 'Brazilian Communist Party', color: '#B91C1C' },
-      rui:     { code: 'PCO',    name: 'Partido da Causa Operária',         name_en: 'Workers\' Cause Party',     color: '#7F1D1D' },
+      lula:    { code: 'Lula',    name: 'Luiz Inácio Lula da Silva',        name_en: 'Luiz Inácio Lula da Silva',  color: '#DA251C' },
+      flavio:  { code: 'Flávio',  name: 'Flávio Bolsonaro',                 name_en: 'Flávio Bolsonaro',           color: '#002776' },
+      cury:    { code: 'Cury',    name: 'Augusto Cury',                     name_en: 'Augusto Cury',               color: '#F5A800' },
+      caiado:  { code: 'Caiado',  name: 'Ronaldo Caiado',                   name_en: 'Ronaldo Caiado',             color: '#7B1FA2' },
+      renan:   { code: 'Santos',  name: 'Renan Santos',                     name_en: 'Renan Santos',               color: '#37474F' },
+      zema:    { code: 'Zema',    name: 'Romeu Zema',                       name_en: 'Romeu Zema',                 color: '#F26522' },
+      margal:  { code: 'Marçal',  name: 'Pablo Marçal',                     name_en: 'Pablo Marçal',               color: '#009B3A' },
+      samara:  { code: 'Samara',  name: 'Samara Martins',                   name_en: 'Samara Martins',             color: '#A50034' },
+      edmilson:{ code: 'Edmilson', name: 'Edmilson Costa',                  name_en: 'Edmilson Costa',             color: '#B91C1C' },
+      rui:     { code: 'Rui',     name: 'Rui Costa Pimenta',                name_en: 'Rui Costa Pimenta',          color: '#7F1D1D' },
     },
     order: ['lula', 'flavio', 'cury', 'caiado', 'renan', 'zema', 'margal', 'samara', 'edmilson', 'rui'],
     parlOrder: ['lula', 'flavio', 'cury', 'caiado', 'renan', 'zema', 'margal', 'samara', 'edmilson', 'rui'],
@@ -756,6 +758,18 @@ saxony_anhalt: {
       'Meio/Ideia':{ overall: 2.00 },
       PoderData:   { overall: 2.20 },
       Gerp:        { overall: 2.50 },
+      Nexus:       { overall: 1.80 },
+      MDA:         { overall: 2.00 },
+      Futura:      { overall: 2.20 },
+      'Real Time': { overall: 2.20 },
+      'Vox Brasil':{ overall: 2.40 },
+      AtlasIntel:  { overall: 2.50 },
+      Indexa:      { overall: 2.50 },
+      Palver:      { overall: 2.60 },
+    },
+    logos: {
+      lula: 'img/br/Lula.svg', flavio: 'img/br/Bolsonaro.svg', caiado: 'img/br/Caiado.svg',
+      cury: 'img/br/Cury.svg', renan: 'img/br/Santos.svg', zema: 'img/br/Zema.svg',
     },
   },
 };
@@ -782,6 +796,8 @@ let BIAS_KEY = null;          // signed-bias correction key (e.g. 'MV2021'): pol
 let POLLSTER_BIAS = {};       // pollster -> {party: signed bias} where bias = poll − actual
 let PRIOR_ALPHA = 0;          // last-election Dirichlet prior weight (0 = off)
 let TREND_CONF = null;        // {electionDate, blend, maxDaily, windowDays, minPolls} linear-trend extrapolation
+let HIDE_BLOCS = false;       // presidential-style layout: no bloc cards / majority card
+let MAP_ONLY = false;         // no parliament diagram: seat card shows only the district map
 
 function setCountry(id) {
   const c = COUNTRIES[id];
@@ -807,6 +823,8 @@ function setCountry(id) {
   POLLSTER_BIAS = (c.biasKey && c.pollsterBias) ? c.pollsterBias : {};
   PRIOR_ALPHA = (c.priorAlpha!==undefined) ? c.priorAlpha : 0;
   TREND_CONF = c.trend || null;
+  HIDE_BLOCS = !!c.hideBlocs;
+  MAP_ONLY = !!c.mapOnly;
 }
 
 // Sub-page / archive wrapper: a country can be pinned via window.__600_COUNTRY__

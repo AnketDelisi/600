@@ -501,9 +501,9 @@ saxony_anhalt: {
       sns:  { code: 'SNS',  name: 'Srpska napredna stranka',             name_en: 'Serbian Progressive Party',      color: '#1B4381' },
       sps:  { code: 'SPS',  name: 'Socijalistička partija Srbije',       name_en: 'Socialist Party of Serbia',      color: '#D71920' },
       srs:  { code: 'SRS',  name: 'Srpska radikalna stranka',            name_en: 'Serbian Radical Party',          color: '#1F2A6E' },
-      pes:  { code: 'PES',  name: 'Platforma za evropsku Srbiju',        name_en: 'Platform for a European Serbia', color: '#2B5FA7' },
+      pes:  { code: 'PES',  name: 'Platforma za evropsku Srbiju',        name_en: 'Platform for a European Serbia', color: '#C9A227' },
       nps:  { code: 'NPS',  name: 'Narodni pokret Srbije',               name_en: "People's Movement of Serbia",    color: '#1E3A8A' },
-      nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#23316C' },
+      nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#7A7A7A' },
       misn: { code: 'MISN', name: 'Mi – snaga naroda',                   name_en: 'We – Power of the People',       color: '#0F4C81' },
       sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A6192E' },
     },
@@ -517,6 +517,17 @@ saxony_anhalt: {
       sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg', srs: 'img/serbia/SRS.svg',
       pes: 'img/serbia/PES.svg', nps: 'img/serbia/NPS.svg', nada: 'img/serbia/NADA.svg',
       misn: 'img/serbia/MISN.svg', sl: 'img/serbia/SL.svg',
+    },
+    // Pollster MAE (mean absolute error, %-points) from final party-level polls before each election,
+    // averaged over SNS / SPS / main opposition list / smaller opposition list / NADA (+SRS in 2022).
+    // Source: en.wikipedia.org/wiki/Opinion_polling_for_the_2023_Serbian_parliamentary_election
+    //         en.wikipedia.org/wiki/Opinion_polling_for_the_2022_Serbian_general_election
+    // CRTA excluded: it only ran bloc-scenario polling before 2023 (no party-level series), so it
+    // is treated as an unknown (weight 1). Note Faktor Plus reports the SPN coalition far below the
+    // other houses, which drives up its 2023 MAE.
+    pollsterMAE: {
+      "Faktor Plus": { 2022: 4.06, 2023: 5.84, overall: 4.95 },
+      NSPM:          { 2022: 2.46, 2023: 2.95, overall: 2.71 },
     },
     lastElection: {
       date: '2023-12-17',

@@ -3,8 +3,24 @@
   "source": "Wikipedia",
   "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
   "scraped_at": "2026-09-10T10:33:02Z",
-  "poll_count": 13,
+  "poll_count": 14,
   "polls": [
+    {
+      "pollster": "INSA",
+      "date": "2026-09-10",
+      "votes": {
+        "spd": 33.0,
+        "afd": 36.0,
+        "cdu": 7.0,
+        "linke": 11.0,
+        "gruene": 5.0,
+        "bsw": 4.0
+      },
+      "country": "mecklenburg_vorpommern",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026",
+      "n": 1000
+    },
     {
       "pollster": "Infratest dimap",
       "date": "2026-09-03",

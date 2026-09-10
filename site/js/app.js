@@ -364,10 +364,6 @@ function computeAverages(polls){
   for(const pid of PARTY_ORDER){
     avg[pid]=weightedAverage(polls, pid);
   }
-  // dissolved alliances (e.g. SPN): present in the forecast at 0% (no polls report them)
-  for(const pid in PARTY_META){
-    if(PARTY_META[pid].pastOnly&&avg[pid]===null) avg[pid]=0;
-  }
   // last-election Dirichlet prior: pull the average toward the most recent
   // election outcome so a thin poll set cannot drift arbitrarily far
   if(PRIOR_ALPHA>0&&LAST_ELECTION.results){
@@ -966,9 +962,16 @@ function districtShares(nr, avg, resultMode){
   let sum=0;
   for(const p of PARTY_ORDER){
     const past=base[p]||0;
-    const swing=(!resultMode&&avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
-    out[p]={past, now:Math.max(0,past+swing)};
-    sum+=out[p].now;
+    let now;
+    if(PARTY_META[p]&&PARTY_META[p].pastOnly){
+      // dissolved alliances: shown in the 2023 result view, never projected
+      now=resultMode?past:0;
+    }else{
+      const swing=(!resultMode&&avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
+      now=Math.max(0,past+swing);
+    }
+    out[p]={past, now};
+    sum+=now;
   }
   // Okrug baselines cover only the modelled parties (unmodelled lists made up
   // the remainder), so renormalize projected shares to sum to 100%.
@@ -977,10 +980,12 @@ function districtShares(nr, avg, resultMode){
     const k=100/sum;
     for(const p of PARTY_ORDER) out[p].now*=k;
   }
-  // Unmodelled remainder (2023 lists not tracked by this model).
+  // Unmodelled remainder (2023 lists not tracked by this model); in result mode
+  // it is real and shown, in projection mode the modelled parties cover 100%.
   let pastSum=0;
   for(const p of PARTY_ORDER) pastSum+=out[p].past||0;
-  out.other={past:Math.max(0,100-pastSum),now:0};
+  const rem=Math.max(0,100-pastSum);
+  out.other={past:rem, now:resultMode?rem:0};
   return out;
 }
 
@@ -1177,7 +1182,10 @@ async function renderMapInto(box, avg, resultMode){
       }
       const pastWinner=districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results);
       const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
-      let rows=PARTY_ORDER.slice().sort((a,b)=>shares[b].now-shares[a].now).map(p=>{
+      // Result mode: order rows by the official seat outcome (so a dissolved-but-large
+  // list like SPN sits above smaller parties); otherwise by projected share.
+      const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):shares[p].now;
+      let rows=PARTY_ORDER.slice().sort((a,b)=> (sortKey(b)-sortKey(a)) || (shares[b].now-shares[a].now)).map(p=>{
         const s=shares[p];
         const delta=s.now-s.past;
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
@@ -1194,11 +1202,12 @@ async function renderMapInto(box, avg, resultMode){
       // unmodelled 2023 lists (remainder), past column only
       if(shares.other&&shares.other.past>0.05){
         const o=shares.other;
+        const od=o.now-o.past;
         rows+=`<div class="map-tip-row">
           <span class="map-tip-code" style="color:#9CA3AF">Other</span>
-          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,o.past))}%;background:#9CA3AF"></div></div>
+          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,o.now))}%;background:#9CA3AF"></div></div>
           <span class="map-tip-now">${pct(o.now)}</span>
-          <span class="map-tip-delta down">▼${pct(o.past)}</span>
+          <span class="map-tip-delta ${od>0.05?'up':(od<-0.05?'down':'flat')}">${od>0.05?'▲':(od<-0.05?'▼':'')}${Math.abs(od)<0.05?'':pct(Math.abs(od))}</span>
         </div>`;
       }
       const pwCol=PARTY_META[pastWinner]?PARTY_META[pastWinner].color:'#888';

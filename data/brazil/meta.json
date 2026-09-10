@@ -1,0 +1,36 @@
+{
+  "country": "brazil",
+  "country_name": "Brazil",
+  "system": "Two-round presidential election (majority of valid votes in the first round)",
+  "seats_total": null,
+  "seats_constituency": null,
+  "threshold": 50.0,
+  "constituencies": 27,
+  "seat_method": "First round: majority of valid votes (blank/null excluded). Otherwise top-two runoff.",
+  "election_date": "2026-10-04",
+  "election_date_runoff": "2026-10-25",
+  "candidates": [
+    { "id": "lula",    "name": "Luiz Inácio Lula da Silva", "party": "PT",     "party_name": "Partido dos Trabalhadores",     "color": "#DA251C" },
+    { "id": "flavio",  "name": "Flávio Bolsonaro",           "party": "PL",     "party_name": "Partido Liberal",               "color": "#002776" },
+    { "id": "cury",    "name": "Augusto Cury",               "party": "Avante", "party_name": "Avante",                        "color": "#F5A800" },
+    { "id": "caiado",  "name": "Ronaldo Caiado",             "party": "PSD",    "party_name": "Partido Social Democrático",   "color": "#7B1FA2" },
+    { "id": "renan",   "name": "Renan Santos",               "party": "Missão", "party_name": "Missão",                        "color": "#37474F" },
+    { "id": "zema",    "name": "Romeu Zema",                 "party": "Novo",   "party_name": "Partido Novo",                 "color": "#F26522" },
+    { "id": "margal",  "name": "Pablo Marçal",               "party": "PRTB",   "party_name": "Partido Renovador Trabalhista Brasileiro", "color": "#009B3A" },
+    { "id": "samara",  "name": "Samara Martins",             "party": "UP",     "party_name": "Unidade Popular",              "color": "#A50034" },
+    { "id": "edmilson","name": "Edmilson Costa",             "party": "PCB",    "party_name": "Partido Comunista Brasileiro", "color": "#B91C1C" },
+    { "id": "rui",     "name": "Rui Costa Pimenta",          "party": "PCO",    "party_name": "Partido da Causa Operária",     "color": "#7F1D1D" }
+  ],
+  "blocs": {
+    "government": { "name": "Lula government", "parties": ["lula"] },
+    "opposition": { "name": "Opposition", "parties": ["flavio", "cury", "caiado", "renan", "zema", "margal", "samara", "edmilson", "rui"] }
+  },
+  "last_election": {
+    "date": "2022-10-02",
+    "results_valid": {
+      "lula": 48.43, "flavio": 43.20, "cury": 0, "caiado": 0, "renan": 0, "zema": 0, "margal": 0, "samara": 0, "edmilson": 0, "rui": 0
+    },
+    "results_note": "2022 first-round valid-vote shares: Lula 48.43%, Jair Bolsonaro 43.20% (bloc mapped to Flávio Bolsonaro), Simone Tebet 4.16%, Ciro Gomes 3.04%, others <1%.",
+    "runoff": { "lula": 50.90, "flavio": 49.10 }
+  }
+}

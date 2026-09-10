@@ -666,6 +666,98 @@ saxony_anhalt: {
       Gemius:           { overall: 2.00 },
     },
   },
+
+  brazil: {
+    name: 'Brazil',
+    // Two-round presidential election (4 Oct 2026, runoff 25 Oct). The seat
+    // engine is repurposed for the 27 federative units: "seats" = states a
+    // candidate leads in (hare_niemeyer from vote shares). First-round win
+    // requires a majority of valid votes; runoff polls live in polls.json.
+    seats: 27,
+    threshold: 5.0,
+    method: 'hare_niemeyer',
+    seatBased: false,             // polls report first-round vote intentions (%)
+    constituencies: false,        // map = 27 UFs colored by projected state winner
+    recencyHalfLifeDays: 7,
+    parties: {
+      lula:    { code: 'PT',     name: 'Partido dos Trabalhadores',          name_en: "Workers' Party",            color: '#DA251C' },
+      flavio:  { code: 'PL',     name: 'Partido Liberal',                   name_en: 'Liberal Party',             color: '#002776' },
+      cury:    { code: 'Avante', name: 'Avante',                            name_en: 'Avante',                     color: '#F5A800' },
+      caiado:  { code: 'PSD',    name: 'Partido Social Democrático',        name_en: 'Social Democratic Party',   color: '#7B1FA2' },
+      renan:   { code: 'Missão', name: 'Missão',                            name_en: 'Mission',                   color: '#37474F' },
+      zema:    { code: 'Novo',   name: 'Partido Novo',                      name_en: 'New Party',                 color: '#F26522' },
+      margal:  { code: 'PRTB',   name: 'Partido Renovador Trabalhista Brasileiro', name_en: 'Brazilian Labour Renewal Party', color: '#009B3A' },
+      samara:  { code: 'UP',     name: 'Unidade Popular',                   name_en: 'Popular Unity',             color: '#A50034' },
+      edmilson:{ code: 'PCB',    name: 'Partido Comunista Brasileiro',      name_en: 'Brazilian Communist Party', color: '#B91C1C' },
+      rui:     { code: 'PCO',    name: 'Partido da Causa Operária',         name_en: 'Workers\' Cause Party',     color: '#7F1D1D' },
+    },
+    order: ['lula', 'flavio', 'cury', 'caiado', 'renan', 'zema', 'margal', 'samara', 'edmilson', 'rui'],
+    parlOrder: ['lula', 'flavio', 'cury', 'caiado', 'renan', 'zema', 'margal', 'samara', 'edmilson', 'rui'],
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['lula'], color: '#DA251C' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['flavio', 'cury', 'caiado', 'renan', 'zema', 'margal', 'samara', 'edmilson', 'rui'], color: '#002776' },
+    },
+    // 2022 first-round valid-vote shares (Lula 48.43, Jair Bolsonaro 43.20,
+    // Tebet 4.16, Gomes 3.04, minor 1.17). Bolsonaro bloc mapped to Flávio.
+    lastElection: {
+      date: '2022-10-02',
+      results: { lula: 48.43, flavio: 43.20, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
+      seats:   { lula: 0, flavio: 0, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
+    },
+    // Trend extrapolation toward the first round (4 Oct 2026)
+    trend: {
+      electionDate: '2026-10-04',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      minPolls: 3,
+    },
+    map: {
+      svg: 'img/brazil.svg',
+      // path id (UF code) -> district key
+      selector: 'id',
+      districts: {
+        TO:'to', SE:'se', SP:'sp', SC:'sc', RR:'rr', RO:'ro', RS:'rs', RN:'rn', RJ:'rj',
+        PI:'pi', PE:'pe', PR:'pr', PB:'pb', PA:'pa', MG:'mg', MS:'ms', MT:'mt', MA:'ma',
+        GO:'go', ES:'es', DF:'df', CE:'ce', BA:'ba', AM:'am', AP:'ap', AL:'al', AC:'ac',
+      },
+      // 2022 first-round valid-vote shares per UF (official TSE via Wikipedia);
+      // Tebet/Gomes/minor remain as "Other". Jair Bolsonaro mapped to flavio.
+      gebiete: {
+        ac: { lula: 27.44, flavio: 64.95 }, al: { lula: 54.61, flavio: 38.45 },
+        ap: { lula: 43.86, flavio: 46.31 }, am: { lula: 47.48, flavio: 45.44 },
+        ba: { lula: 68.06, flavio: 26.31 }, ce: { lula: 64.36, flavio: 27.62 },
+        es: { lula: 39.08, flavio: 54.06 }, df: { lula: 36.94, flavio: 52.74 },
+        go: { lula: 38.12, flavio: 54.20 }, ma: { lula: 67.66, flavio: 27.45 },
+        mt: { lula: 33.02, flavio: 61.53 }, ms: { lula: 37.42, flavio: 54.95 },
+        mg: { lula: 46.43, flavio: 46.06 }, pa: { lula: 50.93, flavio: 42.09 },
+        pb: { lula: 62.75, flavio: 31.44 }, pr: { lula: 34.57, flavio: 57.38 },
+        pe: { lula: 63.86, flavio: 31.55 }, pi: { lula: 72.62, flavio: 21.86 },
+        rj: { lula: 40.16, flavio: 52.23 }, rn: { lula: 61.42, flavio: 32.93 },
+        rs: { lula: 40.11, flavio: 51.78 }, ro: { lula: 27.51, flavio: 66.25 },
+        rr: { lula: 22.28, flavio: 70.85 }, sc: { lula: 28.39, flavio: 63.98 },
+        sp: { lula: 40.18, flavio: 49.58 }, se: { lula: 62.80, flavio: 30.64 },
+        to: { lula: 48.63, flavio: 46.06 },
+      },
+      names: {
+        ac: 'Acre', al: 'Alagoas', ap: 'Amapá', am: 'Amazonas', ba: 'Bahia', ce: 'Ceará',
+        es: 'Espírito Santo', df: 'Distrito Federal', go: 'Goiás', ma: 'Maranhão',
+        mt: 'Mato Grosso', ms: 'Mato Grosso do Sul', mg: 'Minas Gerais', pa: 'Pará',
+        pb: 'Paraíba', pr: 'Paraná', pe: 'Pernambuco', pi: 'Piauí', rj: 'Rio de Janeiro',
+        rn: 'Rio Grande do Norte', rs: 'Rio Grande do Sul', ro: 'Rondônia', rr: 'Roraima',
+        sc: 'Santa Catarina', sp: 'São Paulo', se: 'Sergipe', to: 'Tocantins',
+      },
+      national2021: { lula: 48.43, flavio: 43.20, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
+    },
+    // Approximate house-quality weights (no official backtest available yet)
+    pollsterMAE: {
+      Datafolha:   { overall: 1.50 },
+      Quaest:      { overall: 1.80 },
+      'Meio/Ideia':{ overall: 2.00 },
+      PoderData:   { overall: 2.20 },
+      Gerp:        { overall: 2.50 },
+    },
+  },
 };
 
 // ===== Active country (switched at runtime) =====

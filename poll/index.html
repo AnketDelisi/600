@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — Poll Image Generator</title>
   <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=20260905b18">
+  <link rel="stylesheet" href="../css/style.css?v=20260905b19">
   <style>
     .tool-shell{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
     .tool-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
@@ -92,7 +92,7 @@
 
           <!-- controls -->
           <div>
-            <div class="seg-control">
+            <div class="seg-control" id="chart-seg">
               <div class="seg-inner">
                 <input type="radio" name="chart" id="chart-poll" value="poll" checked>
                 <label for="chart-poll">Poll</label>
@@ -125,9 +125,7 @@
 
             <div class="seg-control">
               <div class="seg-inner">
-                <input type="radio" name="bg" id="bg-default" value="default" checked>
-                <label for="bg-default">Default</label>
-                <input type="radio" name="bg" id="bg-white" value="white">
+                <input type="radio" name="bg" id="bg-white" value="white" checked>
                 <label for="bg-white">White</label>
                 <input type="radio" name="bg" id="bg-dark" value="dark">
                 <label for="bg-dark">Dark</label>
@@ -153,7 +151,7 @@
       </div>
     </main>
   </div>
-  <script src="../js/config.js?v=20260905b18"></script>
-  <script src="poll.js?v=20260905b18"></script>
+  <script src="../js/config.js?v=20260905b19"></script>
+  <script src="poll.js?v=20260905b19"></script>
 </body>
 </html>

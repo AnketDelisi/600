@@ -20,9 +20,8 @@
   const BASE = dataBase();
 
   const THEMES = {
-    default: { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#5F584E', edge: '#1A1A1A' },
-    white:   { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#6B665C', edge: '#1A1A1A' },
-    dark:    { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', edge: '#FDFBF4' },
+    white: { bg: '#FFFFFF', surface: '#FFFFFF', ink: '#161616', muted: '#6B665C', edge: '#1A1A1A' },
+    dark:  { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', edge: '#FDFBF4' },
   };
 
   const OUT_MONO = '"Decima Mono Pro","Decima Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace';
@@ -58,6 +57,7 @@
   const txtDlBtn = $('txt-dl-btn');
   const imgActions = $('img-actions');
   const txtActions = $('txt-actions');
+  const chartSeg = $('chart-seg');
 
   let COUNTRIES_DEF = {};
   try { COUNTRIES_DEF = (typeof COUNTRIES !== 'undefined') ? COUNTRIES : {}; } catch (e) { /* config not loaded */ }
@@ -162,27 +162,10 @@
     return seats;
   }
 
-  function seatRenorm(c, raw, total) {
-    const out = {};
-    (c.order || []).forEach((p) => { out[p] = 0; });
-    const frs = []; let sum = 0;
-    (c.order || []).forEach((p) => {
-      const m = raw[p] || 0;
-      if (!(m > 0)) return;
-      const f = Math.floor(m);
-      out[p] = f; frs.push([m - f, p]); sum += f;
-    });
-    let left = Math.max(0, total - sum);
-    frs.sort((a, b) => b[0] - a[0]);
-    for (let i = 0; i < left && i < frs.length; i++) out[frs[i][1]]++;
-    return out;
-  }
-
   /* seat projection from the poll's numbers (vote % or seat counts) */
   function seatCalc(c, votes) {
     const total = Number(c.seats || 0);
     if (!total) return {};
-    if (c.seatBased) return seatRenorm(c, votes, total);
     if (c.overhang) return seatOverhang(c, votes, total, seatDirectMandates(c, votes), Number(c.overhang.cap || c.seats));
     if (c.method === 'hare_niemeyer') return seatHareNiemeyer(c, votes, total);
     return seatDivisor(c, votes, total);
@@ -237,6 +220,7 @@
     const c = COUNTRIES_DEF[countrySel.value];
     partiesBody.innerHTML = '';
     if (!c) return;
+    if (chartSeg) chartSeg.style.display = c.seatBased ? 'none' : '';
     (c.order || []).forEach((pid) => {
       const meta = c.parties[pid] || {};
       const tr = document.createElement('tr');
@@ -323,12 +307,12 @@
     const c = COUNTRIES_DEF[tid];
     const { order, poll, last } = readResults();
     const chartEl = document.querySelector('input[name="chart"]:checked');
-    const seatsMode = chartEl ? chartEl.value === 'seats' : false;
+    const seatsMode = (c && c.seatBased) ? true : (chartEl ? chartEl.value === 'seats' : false);
     let now, prev, total, display;
     if (seatsMode) {
-      now = seatCalc(c, poll);
+      now = (c && c.seatBased) ? poll : seatCalc(c, poll);
       prev = (c && c.lastElection && c.lastElection.seats) ? c.lastElection.seats : {};
-      total = (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
+      total = (c && c.seatBased) ? Number(c.seats || 0) : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
       display = (c.order || []).filter((p) => (now[p] || 0) > 0).sort((a, b) => (now[b] || 0) - (now[a] || 0));
       if (!display.length) display = (c.order || []).slice();
     } else {
@@ -339,32 +323,31 @@
     return { tid: tid, c: c, state: { order: order, poll: poll, last: last }, seatsMode: seatsMode, now: now, prev: prev, total: total, display: display };
   }
 
-  /* ---------- text share output ---------- */
+  /* ---------- text share output (EuropeElects style) ---------- */
   function updateText() {
-    const { tid, c, seatsMode, now, prev, total, display } = currentState();
+    const { tid, c, seatsMode, now, prev, display } = currentState();
     if (!c) { textOut.value = ''; return; }
     const abbr = (p) => (c.parties[p] || {}).code || p;
-    const fmtV = (v) => seatsMode ? String(Math.round(v)) : fmt(v);
+    const val = (p) => { const v = Math.round(now[p] || 0); return seatsMode ? String(v) : String(v) + '%'; };
+    const delta = (p) => {
+      const d = Math.round((now[p] || 0) - (prev[p] || 0));
+      return d === 0 ? '' : ' (' + (d > 0 ? '+' : '') + d + ')';
+    };
+    const pollster = titleInput.value.trim();
     const lines = [];
-    lines.push((c.name || tid).toUpperCase() + ' — ' + (seatsMode ? 'SEAT PROJECTION' : 'POLL'));
-    const subTxt = [titleInput.value.trim(), dateInput.value.trim()].filter(Boolean).join(' · ');
-    if (subTxt) lines.push(subTxt);
-    lines.push('');
-    lines.push(display.map((p) => abbr(p) + ' ' + fmtV(now[p] || 0)).join(' | '));
-    if (seatsMode) {
-      lines.push('');
-      lines.push('Total: ' + total + ' seats');
-    } else {
-      const le = c.lastElection;
-      if (le) {
-        const yr = le.date ? le.date.slice(0, 4) : '';
-        const head = yr ? 'Last election (' + yr + '): ' : 'Last election: ';
-        lines.push('');
-        lines.push(head + display.map((p) => abbr(p) + ' ' + fmtV(prev[p] || 0)).join(' | '));
-      }
+    lines.push((c.name || tid) + ', ' + (pollster || 'poll') + (seatsMode ? ' seat projection:' : ' poll:'));
+    lines.push(display.map((p) => abbr(p) + ': ' + val(p) + delta(p)).join(' '));
+    const le = c.lastElection;
+    if (le) {
+      const yr = le.date ? le.date.slice(0, 4) : '';
+      lines.push(yr ? '+/- vs. ' + yr + ' election' : '+/- vs. last election');
     }
-    lines.push('');
-    lines.push('anketdelisi.github.io/600');
+    const m = dateInput.value.trim().match(/^(.*?)\s*·\s*n\s*=\s*([\d,]+)$/i);
+    const fw = m ? m[1].trim() : dateInput.value.trim();
+    const n = m ? m[2] : '';
+    if (fw) lines.push('Fieldwork: ' + fw);
+    if (n) lines.push('Sample size: ' + n);
+    lines.push('➤ anketdelisi.github.io/600');
     textOut.value = lines.join('\n');
   }
 
@@ -377,7 +360,7 @@
 
     // theme
     const bgVal = document.querySelector('input[name="bg"]:checked');
-    const th = THEMES[bgVal ? bgVal.value : 'default'];
+    const th = THEMES[bgVal ? bgVal.value : 'white'];
 
     // size
     const fmtSel = formatSel.value.split('x').map(Number);
@@ -443,12 +426,10 @@
     const chartTop = subY + Math.round(H * 0.045);
     const chartH = Math.max(40, baseY - chartTop);
 
-    // scale: seat mode → whole chamber; poll mode → nice max of shown values
-    let maxV = seatsMode ? total : 0;
-    if (!seatsMode) {
-      visualOrder.forEach((pid) => { maxV = Math.max(maxV, now[pid] || 0, prev[pid] || 0); });
-    }
-    const niceMax = Math.max(seatsMode ? 1 : 10, Math.ceil(maxV / (seatsMode ? 1 : 10)) * (seatsMode ? 1 : 10));
+    // scale: nice max of the shown values (both modes)
+    let maxV = 0;
+    visualOrder.forEach((pid) => { maxV = Math.max(maxV, now[pid] || 0, prev[pid] || 0); });
+    const niceMax = Math.max(10, Math.ceil(maxV / 10) * 10);
 
     // bars: now 70% / previous 30% of the pair width, side by side
     const pairW = colW * 0.84;

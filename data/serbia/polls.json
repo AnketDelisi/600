@@ -1,0 +1,81 @@
+{
+  "country": "serbia",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+  "scraped_at": "2026-09-10T12:00:00Z",
+  "poll_count": 4,
+  "polls": [
+    {
+      "pollster": "Faktor Plus",
+      "date": "2026-09-04",
+      "votes": {
+        "sns": 47.2,
+        "sps": 4.9,
+        "sl": 31.5,
+        "pes": 3.6,
+        "nps": 3.4,
+        "nada": 2.1,
+        "misn": 2.9,
+        "srs": 2.0
+      },
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "n": 1200
+    },
+    {
+      "pollster": "NSPM",
+      "date": "2026-07-30",
+      "votes": {
+        "sns": 37.5,
+        "sps": 4.9,
+        "sl": 39.6,
+        "pes": 4.2,
+        "nps": 5.6,
+        "nada": 2.3,
+        "misn": 3.8,
+        "srs": 0
+      },
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "CRTA",
+      "date": "2026-07-15",
+      "votes": {
+        "sns": 35.7,
+        "sps": 3.8,
+        "sl": 44.9,
+        "pes": 0.9,
+        "nps": 0.4,
+        "nada": 0.8,
+        "misn": 1.5,
+        "srs": 0
+      },
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "n": 2324
+    },
+    {
+      "pollster": "Faktor Plus",
+      "date": "2026-06-26",
+      "votes": {
+        "sns": 47.1,
+        "sps": 5.0,
+        "sl": 30.7,
+        "pes": 4.5,
+        "nps": 3.8,
+        "nada": 2.2,
+        "misn": 3.0,
+        "srs": 2.0
+      },
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "n": 1200
+    }
+  ]
+}

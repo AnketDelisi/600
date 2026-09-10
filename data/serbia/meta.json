@@ -1,0 +1,10 @@
+{
+  "country": "serbia",
+  "name": "Serbia",
+  "election_date": "2026-10-25",
+  "seats": 250,
+  "threshold": 3.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "National Assembly: closed-list PR, single national district, 3% threshold (coalitions: 3% + additional). Polls reported as vote share (%)."
+}

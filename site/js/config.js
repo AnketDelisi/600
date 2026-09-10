@@ -1,5 +1,9 @@
 // ===== AltıCiftSıfır — Config =====
 
+// Cache-buster appended to party-logo <img> URLs so logo updates reach users
+// without a hard refresh (script tags already carry ?v=, images did not).
+const LOGO_CACHE = 'b22';
+
 const COUNTRIES = {
 
   sweden: {
@@ -506,6 +510,9 @@ saxony_anhalt: {
       nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#7A7A7A' },
       misn: { code: 'MISN', name: 'Mi – snaga naroda',                   name_en: 'We – Power of the People',       color: '#0F4C81' },
       sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A6192E' },
+      // SPN (Serbia Against Violence, 2023) — dissolved coalition. Shown in
+      // past-result sections only; `pastOnly` keeps it out of the forecast.
+      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#7BAFD4', pastOnly: true },
     },
     order: ['sns', 'sl', 'sps', 'pes', 'nps', 'nada', 'misn', 'srs'],
     parlOrder: ['sl', 'pes', 'nps', 'sps', 'sns', 'nada', 'misn', 'srs'],
@@ -533,8 +540,8 @@ saxony_anhalt: {
       date: '2023-12-17',
       // 2023 Serbian parliamentary election (source: RIK / en.wikipedia.org/wiki/2023_Serbian_parliamentary_election)
       // Coalition baselines: SNS ran as "Serbia Must Not Stop"; NPS was inside SPN; PES/SL did not exist yet.
-      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0 },
-      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0 },
+      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32 },
+      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65 },
     },
     map: {
       svg: 'img/serbia.svg',
@@ -548,31 +555,31 @@ saxony_anhalt: {
       },
       // 2023 vote share (%) per okrug (source: RZS dissemination database 07021101, 17 Dec 2023 election)
       gebiete: {
-        beograd:      { sns: 37.48, sps: 5.19, srs: 1.21, pes: 0, nps: 0, nada: 6.31, misn: 6.58, sl: 0 },
-        west_backa:   { sns: 52.29, sps: 4.96, srs: 1.96, pes: 0, nps: 0, nada: 3.57, misn: 3.94, sl: 0 },
-        south_banat:  { sns: 48.74, sps: 4.91, srs: 1.52, pes: 0, nps: 0, nada: 4.25, misn: 4.77, sl: 0 },
-        south_backa:  { sns: 45.32, sps: 4.58, srs: 1.92, pes: 0, nps: 0, nada: 5.33, misn: 4.68, sl: 0 },
-        north_banat:  { sns: 41.97, sps: 3.97, srs: 1.11, pes: 0, nps: 0, nada: 2.45, misn: 2.44, sl: 0 },
-        north_backa:  { sns: 39.39, sps: 2.71, srs: 1.08, pes: 0, nps: 0, nada: 2.33, misn: 3.09, sl: 0 },
-        central_banat:{ sns: 50.56, sps: 4.83, srs: 1.77, pes: 0, nps: 0, nada: 5.00, misn: 3.59, sl: 0 },
-        srem:         { sns: 55.93, sps: 5.34, srs: 2.08, pes: 0, nps: 0, nada: 4.56, misn: 4.78, sl: 0 },
-        zlatibor:     { sns: 45.78, sps: 6.94, srs: 1.34, pes: 0, nps: 0, nada: 5.77, misn: 3.57, sl: 0 },
-        kolubara:     { sns: 48.05, sps: 6.43, srs: 1.52, pes: 0, nps: 0, nada: 6.06, misn: 5.11, sl: 0 },
-        macva:        { sns: 53.01, sps: 8.89, srs: 1.94, pes: 0, nps: 0, nada: 5.25, misn: 3.74, sl: 0 },
-        moravica:     { sns: 45.56, sps: 6.26, srs: 1.28, pes: 0, nps: 0, nada: 6.31, misn: 5.67, sl: 0 },
-        pomoravlje:   { sns: 49.90, sps: 14.00, srs: 1.35, pes: 0, nps: 0, nada: 4.44, misn: 4.91, sl: 0 },
-        rasina:       { sns: 54.46, sps: 7.74, srs: 1.45, pes: 0, nps: 0, nada: 4.69, misn: 3.96, sl: 0 },
-        raska:        { sns: 43.48, sps: 6.27, srs: 1.03, pes: 0, nps: 0, nada: 4.15, misn: 2.83, sl: 0 },
-        sumadija:     { sns: 46.80, sps: 7.30, srs: 1.36, pes: 0, nps: 0, nada: 6.31, misn: 4.77, sl: 0 },
-        bor:          { sns: 55.41, sps: 8.12, srs: 1.18, pes: 0, nps: 0, nada: 2.68, misn: 3.53, sl: 0 },
-        branicevo:    { sns: 56.07, sps: 9.03, srs: 1.30, pes: 0, nps: 0, nada: 3.54, misn: 3.36, sl: 0 },
-        zajecar:      { sns: 52.59, sps: 8.23, srs: 1.71, pes: 0, nps: 0, nada: 4.14, misn: 4.33, sl: 0 },
-        jablanica:    { sns: 56.28, sps: 11.87, srs: 1.65, pes: 0, nps: 0, nada: 3.65, misn: 2.48, sl: 0 },
-        nisava:       { sns: 48.04, sps: 6.66, srs: 1.45, pes: 0, nps: 0, nada: 4.77, misn: 5.10, sl: 0 },
-        pirot:        { sns: 55.30, sps: 8.27, srs: 1.91, pes: 0, nps: 0, nada: 2.73, misn: 3.22, sl: 0 },
-        podunavlje:   { sns: 52.27, sps: 7.18, srs: 1.39, pes: 0, nps: 0, nada: 5.96, misn: 4.99, sl: 0 },
-        pcinja:       { sns: 49.49, sps: 13.05, srs: 1.24, pes: 0, nps: 0, nada: 2.85, misn: 2.38, sl: 0 },
-        toplica:      { sns: 62.72, sps: 7.87, srs: 1.39, pes: 0, nps: 0, nada: 3.46, misn: 2.93, sl: 0 },
+        beograd:      { sns: 37.48, sps: 5.19, srs: 1.21, pes: 0, nps: 0, nada: 6.31, misn: 6.58, sl: 0, spn: 34.38 },
+        west_backa:   { sns: 52.29, sps: 4.96, srs: 1.96, pes: 0, nps: 0, nada: 3.57, misn: 3.94, sl: 0, spn: 19.94 },
+        south_banat:  { sns: 48.74, sps: 4.91, srs: 1.52, pes: 0, nps: 0, nada: 4.25, misn: 4.77, sl: 0, spn: 25.12 },
+        south_backa:  { sns: 45.32, sps: 4.58, srs: 1.92, pes: 0, nps: 0, nada: 5.33, misn: 4.68, sl: 0, spn: 27.05 },
+        north_banat:  { sns: 41.97, sps: 3.97, srs: 1.11, pes: 0, nps: 0, nada: 2.45, misn: 2.44, sl: 0, spn: 14.10 },
+        north_backa:  { sns: 39.39, sps: 2.71, srs: 1.08, pes: 0, nps: 0, nada: 2.33, misn: 3.09, sl: 0, spn: 17.89 },
+        central_banat:{ sns: 50.56, sps: 4.83, srs: 1.77, pes: 0, nps: 0, nada: 5.00, misn: 3.59, sl: 0, spn: 21.43 },
+        srem:         { sns: 55.93, sps: 5.34, srs: 2.08, pes: 0, nps: 0, nada: 4.56, misn: 4.78, sl: 0, spn: 17.79 },
+        zlatibor:     { sns: 45.78, sps: 6.94, srs: 1.34, pes: 0, nps: 0, nada: 5.77, misn: 3.57, sl: 0, spn: 20.22 },
+        kolubara:     { sns: 48.05, sps: 6.43, srs: 1.52, pes: 0, nps: 0, nada: 6.06, misn: 5.11, sl: 0, spn: 22.83 },
+        macva:        { sns: 53.01, sps: 8.89, srs: 1.94, pes: 0, nps: 0, nada: 5.25, misn: 3.74, sl: 0, spn: 18.13 },
+        moravica:     { sns: 45.56, sps: 6.26, srs: 1.28, pes: 0, nps: 0, nada: 6.31, misn: 5.67, sl: 0, spn: 23.04 },
+        pomoravlje:   { sns: 49.90, sps: 14.00, srs: 1.35, pes: 0, nps: 0, nada: 4.44, misn: 4.91, sl: 0, spn: 15.65 },
+        rasina:       { sns: 54.46, sps: 7.74, srs: 1.45, pes: 0, nps: 0, nada: 4.69, misn: 3.96, sl: 0, spn: 19.25 },
+        raska:        { sns: 43.48, sps: 6.27, srs: 1.03, pes: 0, nps: 0, nada: 4.15, misn: 2.83, sl: 0, spn: 15.56 },
+        sumadija:     { sns: 46.80, sps: 7.30, srs: 1.36, pes: 0, nps: 0, nada: 6.31, misn: 4.77, sl: 0, spn: 23.04 },
+        bor:          { sns: 55.41, sps: 8.12, srs: 1.18, pes: 0, nps: 0, nada: 2.68, misn: 3.53, sl: 0, spn: 20.43 },
+        branicevo:    { sns: 56.07, sps: 9.03, srs: 1.30, pes: 0, nps: 0, nada: 3.54, misn: 3.36, sl: 0, spn: 17.69 },
+        zajecar:      { sns: 52.59, sps: 8.23, srs: 1.71, pes: 0, nps: 0, nada: 4.14, misn: 4.33, sl: 0, spn: 19.05 },
+        jablanica:    { sns: 56.28, sps: 11.87, srs: 1.65, pes: 0, nps: 0, nada: 3.65, misn: 2.48, sl: 0, spn: 15.29 },
+        nisava:       { sns: 48.04, sps: 6.66, srs: 1.45, pes: 0, nps: 0, nada: 4.77, misn: 5.10, sl: 0, spn: 24.37 },
+        pirot:        { sns: 55.30, sps: 8.27, srs: 1.91, pes: 0, nps: 0, nada: 2.73, misn: 3.22, sl: 0, spn: 19.58 },
+        podunavlje:   { sns: 52.27, sps: 7.18, srs: 1.39, pes: 0, nps: 0, nada: 5.96, misn: 4.99, sl: 0, spn: 18.44 },
+        pcinja:       { sns: 49.49, sps: 13.05, srs: 1.24, pes: 0, nps: 0, nada: 2.85, misn: 2.38, sl: 0, spn: 10.59 },
+        toplica:      { sns: 62.72, sps: 7.87, srs: 1.39, pes: 0, nps: 0, nada: 3.46, misn: 2.93, sl: 0, spn: 13.05 },
       },
       names: {
         beograd: 'Belgrade', west_backa: 'West Bačka', south_banat: 'South Banat', south_backa: 'South Bačka',
@@ -583,7 +590,7 @@ saxony_anhalt: {
         pcinja: 'Pčinja', toplica: 'Toplica',
       },
       // 2023 national vote share — uniform-swing baseline for the district map
-      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0 },
+      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32 },
     },
   },
 };

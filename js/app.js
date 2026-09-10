@@ -539,6 +539,25 @@ function renderPartyBars(avg){
       ${SEAT_BASED?'':`<div class="party-seats" style="color:${color}">${mpSeats}</div>`}
     </div>`;
   }
+  // Others: the vote share not covered by the modelled parties (minority lists etc.)
+  if(!SEAT_BASED){
+    const othersNow=Math.max(0,100-PARTY_ORDER.reduce((a,p)=>a+(avg[p]||0),0));
+    if(othersNow>0.05){
+      const othersLast=Math.max(0,100-PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.results[p]||0),0));
+      const barWidth=Math.max(1,(othersNow/maxPct)*100);
+      const delta=othersNow-othersLast;
+      const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
+      const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
+      html+=`<div class="party-row">
+        <div class="party-logo" style="background:#9CA3AF"><span style="color:#1F2937">OTH</span></div>
+        <div class="party-name">Other</div>
+        <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:#9CA3AF"></div></div>
+        <div class="party-pct">${fmt(othersNow)}%</div>
+        <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
+        <div class="party-seats" style="color:#9CA3AF">0</div>
+      </div>`;
+    }
+  }
   if(BLOCS.bloc1&&BLOCS.bloc2) html+=`<div class="pollavg-blocs">${renderBlocs(avg)}</div>`;
   html+=`</div>`;
   return html;
@@ -886,7 +905,14 @@ function renderParliament(avg){
         :(LAST_ELECTION.seats?(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats[p]||0});return s})()
           :allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL)));
   }
-  const seatsTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
+  // Unmodelled parties (e.g. Serbia's minority lists): in the last-election view,
+  // fill the chamber up to the statutory size with an "Other" wedge.
+  if(PARL_MODE!=='proj'&&!OVERHANG){
+    const sum=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
+    const other=SEATS_TOTAL-sum;
+    if(other>0) seats.other=other;
+  }
+  const seatsTotal=Object.values(seats).reduce((a,b)=>a+(b||0),0);
   const mapConf=MAP_CONF();
   const showMap=PARL_VIEW==='map'&&mapConf;
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
@@ -1359,6 +1385,9 @@ function buildParliamentSVG(seats){
     const n=seats[p]||0;
     for(let i=0;i<n;i++) assigned.push(p);
   });
+  // Unmodelled remainder ("Other") wedge at the right edge.
+  const otherN=seats.other||0;
+  for(let i=0;i<otherN;i++) assigned.push('other');
 
   let layout=PARLIAMENT_SEATS[COUNTRY];
   if(OVERHANG){
@@ -1405,7 +1434,7 @@ function buildParliamentSVG(seats){
     svg+=`<line x1="${layout.cx}" y1="${fmt(lineTop,1)}" x2="${layout.cx}" y2="${fmt(lineBot,1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
-      const col=PARTY_META[party]?PARTY_META[party].color:'#888';
+      const col=party==='other'?'#9CA3AF':(PARTY_META[party]?PARTY_META[party].color:'#888');
       svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"/>`;
     }
     svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;

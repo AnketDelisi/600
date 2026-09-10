@@ -530,7 +530,7 @@ function renderPartyBars(avg){
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
-        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}?v=${LOGO_CACHE}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${partyCode(pid)}</span>`}
+        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}?v=${LOGO_CACHE}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
       </div>
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
@@ -558,7 +558,7 @@ function renderPartyBars(avg){
       </div>`;
     }
   }
-  if(BLOCS.bloc1&&BLOCS.bloc2) html+=`<div class="pollavg-blocs">${renderBlocs(avg)}</div>`;
+  if(BLOCS.bloc1&&BLOCS.bloc2&&!HIDE_BLOCS) html+=`<div class="pollavg-blocs">${renderBlocs(avg)}</div>`;
   html+=`</div>`;
   return html;
 }
@@ -915,11 +915,11 @@ function renderParliament(avg){
   }
   const seatsTotal=Object.values(seats).reduce((a,b)=>a+(b||0),0);
   const mapConf=MAP_CONF();
-  const showMap=PARL_VIEW==='map'&&mapConf;
+  const showMap=MAP_ONLY||(PARL_VIEW==='map'&&mapConf);
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
-      ${mapConf?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
+      ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
     </div>`;
@@ -1834,23 +1834,29 @@ function renderForecast(pane){
     </div>`;
   });
 
-  const leadCands=[{n:BLOCS.bloc1.name,c:BLOCS.bloc1.color,p:rgP},{n:BLOCS.bloc2.name,c:BLOCS.bloc2.color,p:tdP}];
-  if(kmDefined)leadCands.push({n:BLOCS.kingmakerLabel||'Kingmaker',c:KM_COLOR,p:kmP});
-  leadCands.sort((a,b)=>b.p-a.p);
+  let leadCands;
+  if(HIDE_BLOCS){
+    leadCands=fOrder.slice().sort((a,b)=>(sim.largest[b]||0)-(sim.largest[a]||0))
+      .map(p=>({n:partyCode(p),c:PARTY_META[p]?PARTY_META[p].color:'#888',p:(sim.largest[p]||0)/sim.nSims}));
+  }else{
+    leadCands=[{n:BLOCS.bloc1.name,c:BLOCS.bloc1.color,p:rgP},{n:BLOCS.bloc2.name,c:BLOCS.bloc2.color,p:tdP}];
+    if(kmDefined)leadCands.push({n:BLOCS.kingmakerLabel||'Kingmaker',c:KM_COLOR,p:kmP});
+    leadCands.sort((a,b)=>b.p-a.p);
+  }
   const leadOutcome=leadCands[0].n, leadColor=leadCands[0].c, leadPct=leadCands[0].p*100;
 
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${t('FORECAST','TAHMİN')} — ${COUNTRY_NAME} 2026</div>
       <div class="fc-headline">
-        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${t('majority','çoğunluk')}</span>
+        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win the most states','en çok eyaleti kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
       <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} ${T.seats} · ${THRESHOLD}% ${T.threshold} · seeded, reproducible</div>
     </div>
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div></div>
-      <div class="parliament-box">${buildParliamentSVG(detSeats)}</div>
+      ${MAP_ONLY?'':`<div class="parliament-box">${buildParliamentSVG(detSeats)}</div>`}
       <div style="overflow-x:auto">
       <table class="polls-table compact-table"><thead><tr>
         <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th>
@@ -1877,7 +1883,7 @@ function renderForecast(pane){
 
     <div class="fc-section"><div class="bar"></div>${T.probabilities}</div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
+    ${HIDE_BLOCS?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
         <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${pct100(rgP)}</span>
@@ -1886,7 +1892,7 @@ function renderForecast(pane){
         <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
-    </div>
+    </div>`}
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.largestParty}</div></div>
       ${largestRows}
@@ -2503,12 +2509,14 @@ function renderMethodology(pane){
         }).join('')}
         </tbody></table>
 
+        ${MAP_ONLY?`<h3>${t('Two-round system','İki turlu seçim')}</h3>
+        <p>${COUNTRY_NAME} elects its president in a two-round system: a candidate wins outright with a <strong>majority of valid votes</strong> on ${TREND_CONF?TREND_CONF.electionDate:'election day'}; otherwise the top two candidates face a runoff two weeks later. The map shows the <strong>${SEATS_TOTAL} federative units</strong> colored by projected winner from the poll average.</p>`:`
         <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
         <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
-        <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>
+        <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>`}
 
-        <h3>${t('Bloc Totals','Blok Toplamları')}</h3>
-        <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>
+        ${HIDE_BLOCS?'':`<h3>${t('Bloc Totals','Blok Toplamları')}</h3>
+        <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>`}
 
         <h3>${t('Last Updated','Son Güncelleme')}</h3>
         <p>Data is scraped automatically from Wikipedia${COUNTRY==='sweden'?' and SwedishPolls':''}. The site is updated daily via GitHub Actions.</p>

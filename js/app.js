@@ -1210,8 +1210,9 @@ async function renderMapInto(box, avg, resultMode){
       const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
       // Result mode: order rows by the official seat outcome (so a dissolved-but-large
   // list like SPN sits above smaller parties); otherwise by projected share.
+  // Dissolved alliances (pastOnly) appear in the 2023 result view only.
       const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):shares[p].now;
-      let rows=PARTY_ORDER.slice().sort((a,b)=> (sortKey(b)-sortKey(a)) || (shares[b].now-shares[a].now)).map(p=>{
+      let rows=PARTY_ORDER.slice().filter(p=>!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || (shares[b].now-shares[a].now)).map(p=>{
         const s=shares[p];
         const delta=s.now-s.past;
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';

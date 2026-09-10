@@ -1,0 +1,119 @@
+{
+  "country": "brazil",
+  "sources": [
+    {
+      "name": "Datafolha",
+      "url": "https://www1.folha.uol.com.br/poder/"
+    },
+    {
+      "name": "Quaest",
+      "url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/"
+    },
+    {
+      "name": "Meio/Ideia",
+      "url": "https://meio.com.br/"
+    },
+    {
+      "name": "PoderData",
+      "url": "https://www.poder360.com.br/pesquisas/"
+    },
+    {
+      "name": "Gerp",
+      "url": "https://www.gerp.net/"
+    }
+  ],
+  "scraped_at": "2026-09-10T16:00:00Z",
+  "poll_count": 7,
+  "polls": [
+    {
+      "pollster": "PoderData",
+      "fieldwork_start": "2026-09-06",
+      "date": "2026-09-09",
+      "n": 3000,
+      "country": "brazil",
+      "source": "Poder360",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/poderdata-aya-lula-tem-38-no-1o-turno-flavio-36-e-cury-10/",
+      "votes": {
+        "lula": 38.0, "flavio": 36.0, "cury": 10.0, "renan": 3.0, "caiado": 2.0, "margal": 2.0
+      },
+      "runoff": { "lula": 45.0, "flavio": 47.0 }
+    },
+    {
+      "pollster": "Gerp",
+      "fieldwork_start": "2026-09-03",
+      "date": "2026-09-08",
+      "n": 2400,
+      "country": "brazil",
+      "source": "CNN Brasil",
+      "source_url": "https://www.cnnbrasil.com.br/eleicoes/gerp-flavio-tem-37-das-intencoes-de-voto-no-1o-turno-lula-34/",
+      "votes": {
+        "flavio": 37.0, "lula": 34.0, "cury": 6.0, "caiado": 5.0, "renan": 4.0, "margal": 2.0, "zema": 1.0
+      }
+    },
+    {
+      "pollster": "Meio/Ideia",
+      "fieldwork_start": "2026-09-04",
+      "date": "2026-09-07",
+      "n": 1500,
+      "country": "brazil",
+      "source": "Meio",
+      "source_url": "https://www1.folha.uol.com.br/poder/2026/09/lula-e-flavio-bolsonaro-empatam-no-primeiro-e-no-segundo-turno-diz-pesquisa-meioideia.shtml",
+      "votes": {
+        "lula": 38.4, "flavio": 37.3, "cury": 6.6, "renan": 4.0, "caiado": 4.0, "zema": 1.5, "margal": 1.5
+      },
+      "runoff": { "lula": 46.0, "flavio": 46.0 }
+    },
+    {
+      "pollster": "Quaest",
+      "fieldwork_start": "2026-09-03",
+      "date": "2026-09-06",
+      "n": 2004,
+      "country": "brazil",
+      "source": "Quaest/G1",
+      "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/07/quaest-presidente-7-setembro.ghtml",
+      "votes": {
+        "lula": 36.0, "flavio": 29.0, "cury": 8.0, "renan": 3.0, "caiado": 3.0, "zema": 2.0, "samara": 1.0
+      },
+      "runoff": { "lula": 41.0, "flavio": 41.0 }
+    },
+    {
+      "pollster": "Datafolha",
+      "fieldwork_start": "2026-09-01",
+      "date": "2026-09-03",
+      "n": 2002,
+      "country": "brazil",
+      "source": "Datafolha/Folha",
+      "source_url": "https://g1.globo.com/politica/eleicoes/2026/pesquisa-eleitoral/noticia/2026/09/03/datafolha-presidente-3-setembro.ghtml",
+      "votes": {
+        "lula": 38.0, "flavio": 33.0, "cury": 8.0, "caiado": 4.0, "renan": 3.0, "zema": 2.0, "samara": 1.0, "edmilson": 1.0, "rui": 1.0
+      },
+      "runoff": { "lula": 46.0, "flavio": 44.0 }
+    },
+    {
+      "pollster": "Quaest",
+      "fieldwork_start": "2026-08-30",
+      "date": "2026-09-01",
+      "n": 2004,
+      "country": "brazil",
+      "source": "Quaest/G1",
+      "source_url": "https://valorinternational.globo.com/politics/news/2026/09/02/lula-leads-first-round-with-37percent-flavio-at-30percent-quaest-poll-shows.ghtml",
+      "votes": {
+        "lula": 37.0, "flavio": 29.0, "cury": 10.0, "renan": 3.0, "caiado": 1.0, "zema": 1.0, "samara": 1.0
+      },
+      "runoff": { "lula": 42.0, "flavio": 41.0 }
+    },
+    {
+      "pollster": "Meio/Ideia",
+      "fieldwork_start": "2026-07-31",
+      "date": "2026-08-03",
+      "n": 1500,
+      "country": "brazil",
+      "source": "Meio",
+      "source_url": "https://valor.globo.com/politica/eleicoes-2026/noticia/2026/09/08/quem-esta-na-frente-para-presidente-veja-resultados-das-ultimas-pesquisas.ghtml",
+      "votes": {
+        "lula": 43.0, "flavio": 35.0, "caiado": 5.7, "renan": 4.7, "zema": 2.6, "cury": 1.7
+      },
+      "runoff": { "lula": 48.5, "flavio": 43.0 }
+    }
+  ]
+}

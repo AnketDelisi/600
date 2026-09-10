@@ -1,4 +1,4 @@
-// ===== AltıCiftSıfır — App =====
+﻿// ===== AltıCiftSıfır — App =====
 (function(){
 'use strict';
 
@@ -1128,6 +1128,7 @@ async function renderMapInto(box, avg, resultMode){
   let selector;
   if(conf.selector==='class') selector='path[class^="wk"]';
   else if(conf.selector==='label') selector='path[data-label]';
+  else if(conf.selector==='id') selector='path[id]';
   else selector='path[id^="_"]';
   const paths=svg.querySelectorAll(selector);
   const tooltip=document.createElement('div');
@@ -1155,6 +1156,9 @@ async function renderMapInto(box, avg, resultMode){
     }else if(conf.selector==='label'){
       const lbl=ph.getAttribute('data-label');
       if(lbl&&conf.districts[lbl]) nr=conf.districts[lbl];
+    }else if(conf.selector==='id'){
+      const id=ph.getAttribute('id');
+      if(id&&conf.districts[id]) nr=id;
     }else{
       nr=parseInt(ph.id.slice(1),10);
     }
@@ -1204,7 +1208,7 @@ async function renderMapInto(box, avg, resultMode){
         const pbCol=BLOCS[pastBloc]?BLOCS[pastBloc].color:'#888';
         const nbCol=BLOCS[nowBloc]?BLOCS[nowBloc].color:'#888';
         tooltip.innerHTML=`<div class="map-tip-head">
-          <div class="map-tip-title">${conf.useConstituencies?'':`WK ${nr} · `}${meta.name}</div>
+          <div class="map-tip-title">${conf.useConstituencies?'':(conf.selector==='id'?'':'WK '+nr+' · ')}${meta.name}</div>
           <div class="map-tip-compare">
             <span class="map-tip-past"><i style="background:${pbCol}"></i>${LAST_ELECTION.date.slice(0,4)} ${BLOCS[pastBloc]?BLOCS[pastBloc].short||BLOCS[pastBloc].name:''}</span>
             <span class="map-tip-arrow">→</span>
@@ -1249,7 +1253,7 @@ async function renderMapInto(box, avg, resultMode){
       const pwCol=PARTY_META[pastWinner]?PARTY_META[pastWinner].color:'#888';
       const nwCol=PARTY_META[nowWinner]?PARTY_META[nowWinner].color:'#888';
       tooltip.innerHTML=`<div class="map-tip-head">
-          <div class="map-tip-title">${conf.useConstituencies?'':`WK ${nr} · `}${meta.name}</div>
+          <div class="map-tip-title">${conf.useConstituencies?'':(conf.selector==='id'?'':'WK '+nr+' · ')}${meta.name}</div>
           <div class="map-tip-compare">
             <span class="map-tip-past"><i style="background:${pwCol}"></i>${LAST_ELECTION.date.slice(0,4)} ${partyCode(pastWinner)}</span>
             <span class="map-tip-arrow">→</span>

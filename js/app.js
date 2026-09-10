@@ -1001,18 +1001,26 @@ function districtShares(nr, avg, resultMode){
     sum+=now;
   }
   // Okrug baselines cover only the modelled parties (unmodelled lists made up
-  // the remainder), so renormalize projected shares to sum to 100%.
+  // the remainder), so renormalize projected shares to the polls' own total for
+  // the modelled parties (e.g. ~97.6%) — the leftover stays visible as "Other".
   // (Result mode keeps the official 2023 numbers untouched.)
-  if(!resultMode&&sum>0&&Math.abs(sum-100)>0.01){
-    const k=100/sum;
-    for(const p of PARTY_ORDER) out[p].now*=k;
-  }
-  // Unmodelled remainder (2023 lists not tracked by this model); in result mode
-  // it is real and shown, in projection mode the modelled parties cover 100%.
   let pastSum=0;
   for(const p of PARTY_ORDER) pastSum+=out[p].past||0;
   const rem=Math.max(0,100-pastSum);
-  out.other={past:rem, now:resultMode?rem:0};
+  if(!resultMode){
+    let target=0;
+    for(const p of PARTY_ORDER){
+      if(!(PARTY_META[p]&&PARTY_META[p].pastOnly)&&avg&&avg[p]!==undefined&&avg[p]!==null) target+=avg[p];
+    }
+    if(!(target>0)||target>100) target=100;
+    if(sum>0&&Math.abs(sum-target)>0.01){
+      const k=target/sum;
+      for(const p of PARTY_ORDER) out[p].now*=k;
+    }
+    out.other={past:rem, now:Math.max(0,100-target)};
+  }else{
+    out.other={past:rem, now:rem};
+  }
   return out;
 }
 

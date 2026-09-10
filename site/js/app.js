@@ -419,7 +419,7 @@ function renderSidebar(prevDays, prevPollster){
       :`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
       ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
     </select>`}
-    <div class="sb-hint">${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}</div></div>`;
+    <div class="sb-hint">${MAP_ONLY?`${SEATS_TOTAL} ${t('federative units','federal birim')} · ${t('two-round presidential','iki turlu başkanlık seçimi')} · ${TREND_CONF?TREND_CONF.electionDate:''}`:`${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`}</div></div>`;
 
   // Filters
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.filters}</div></div>
@@ -443,7 +443,7 @@ function renderSidebar(prevDays, prevPollster){
 
   // Info
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.info}</div></div>
-    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}</div></div>`;
+    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${MAP_ONLY?`${SEATS_TOTAL} ${t('federative units','federal birim')} · ${t('two-round presidential','iki turlu başkanlık seçimi')}`:`${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}`}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}</div></div>`;
 
   c.innerHTML=html;
 
@@ -515,7 +515,7 @@ function renderPartyBars(avg){
   const seats=allocateSeatsN(avg, SEATS_TOTAL);
   const order=PARTY_ORDER.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.pollAvg}</div></div>
-    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">${t('PARTY','PARTİ')}</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED?'':'<span class="bh-seats">SEATS</span>'}</div>`;
+    <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">${t('PARTY','PARTİ')}</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED||MAP_ONLY?'':'<span class="bh-seats">SEATS</span>'}</div>`;
 
   for(const pid of order){
     const val=avg[pid];
@@ -536,7 +536,7 @@ function renderPartyBars(avg){
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${valDisp(val)}</div>
       <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
-      ${SEAT_BASED?'':`<div class="party-seats" style="color:${color}">${mpSeats}</div>`}
+      ${SEAT_BASED||MAP_ONLY?'':`<div class="party-seats" style="color:${color}">${mpSeats}</div>`}
     </div>`;
   }
   // Others: the vote share not covered by the modelled parties (minority lists etc.)
@@ -554,7 +554,7 @@ function renderPartyBars(avg){
         <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:#9CA3AF"></div></div>
         <div class="party-pct">${fmt(othersNow)}%</div>
         <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
-        <div class="party-seats" style="color:#9CA3AF">0</div>
+        ${SEAT_BASED||MAP_ONLY?'':'<div class="party-seats" style="color:#9CA3AF">0</div>'}
       </div>`;
     }
   }
@@ -927,9 +927,11 @@ function renderParliament(avg){
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
-    ?`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${t('colored by','renklendirilen')} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`
+    ?(MAP_ONLY
+      ?`${SEATS_TOTAL} ${t('federative units','federal birim')} · ${t('colored by','renklendirilen')} ${t('projected winner','tahmini kazanan')}`
+      :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${t('colored by','renklendirilen')} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
     :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`;
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatProjection}</div></div>
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
     ${box}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
@@ -1479,7 +1481,7 @@ function bindParlToggles(avg){
       captureChartPng($('trend-canvas'), COUNTRY+'-poll-trend.png');
     });
   }
-  if(PARL_VIEW==='map') renderMap(avg);
+  if(MAP_ONLY||PARL_VIEW==='map') renderMap(avg);
 }
 
 /* ---------- forecast: fast Sainte-Laguë ---------- */
@@ -1644,8 +1646,11 @@ function runForecast(avg, nSims, nPolls){
     else if(td>=MAJ_TH)maj.td++;
     else if(kmActive&&(rg+kmS>=MAJ_TH||td+kmS>=MAJ_TH))maj.km++;
     else maj.hung++;
-    let top=PARTY_ORDER[0],topN=(seats[PARTY_ORDER[0]]||0);
-    for(const p of PARTY_ORDER){if((seats[p]||0)>topN){topN=seats[p];top=p}}
+    let top=PARTY_ORDER[0],topN=HIDE_BLOCS?(simVotes[PARTY_ORDER[0]]||0):(seats[PARTY_ORDER[0]]||0);
+    for(const p of PARTY_ORDER){
+      const v=HIDE_BLOCS?(simVotes[p]||0):(seats[p]||0);
+      if(v>topN){topN=v;top=p}
+    }
     largest[top]=(largest[top]||0)+1;
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
@@ -1849,13 +1854,13 @@ function renderForecast(pane){
     <div class="hero fc-hero">
       <div class="hero-title">${t('FORECAST','TAHMİN')} — ${COUNTRY_NAME} 2026</div>
       <div class="fc-headline">
-        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win the most states','en çok eyaleti kazanacak'):t('majority','çoğunluk')}</span>
+        <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${methodNameShort()} · ${seatsDesc()} ${T.seats} · ${THRESHOLD}% ${T.threshold} · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${MAP_ONLY?`${SEATS_TOTAL} ${t('federative units','federal birim')} · ${t('first round','ilk tur')} ${TREND_CONF?TREND_CONF.electionDate:''}`:`${methodNameShort()} · ${seatsDesc()} ${T.seats} · ${THRESHOLD}% ${T.threshold}`} · seeded, reproducible</div>
     </div>
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div></div>
+    ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div></div>
       ${MAP_ONLY?'':`<div class="parliament-box">${buildParliamentSVG(detSeats)}</div>`}
       <div style="overflow-x:auto">
       <table class="polls-table compact-table"><thead><tr>
@@ -1864,7 +1869,7 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
         ${t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Simülasyonların medyanından deterministik tahmin (medyanı 0 olan partiler hariç)')}
       </div>
-    </div>
+    </div>`}
 
     ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div></div>
       <div class="map-toggle-row" style="justify-content:flex-end">
@@ -1904,11 +1909,11 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations · dashed line = ${THRESHOLD}% threshold</div>
     </div>`}
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatDistribution}</div></div>
+    ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatDistribution}</div></div>
       <div class="fc-seathead fc-seathead-hd"><span></span><span>EXP</span><span>90% INT</span></div>
       ${seatRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
-    </div>
+    </div>`}
   </div>`;
   if(MAP_CONF()){
     const fcBox=$('fc-map-box');

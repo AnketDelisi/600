@@ -770,6 +770,7 @@ saxony_anhalt: {
     logos: {
       lula: 'img/br/Lula.svg', flavio: 'img/br/Bolsonaro.svg', caiado: 'img/br/Caiado.svg',
       cury: 'img/br/Cury.svg', renan: 'img/br/Santos.svg', zema: 'img/br/Zema.svg',
+      samara: 'img/br/Samara.svg', edmilson: 'img/br/Costa.svg',
     },
   },
 };

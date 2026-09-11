@@ -1,0 +1,246 @@
+{
+ "country": "france",
+ "source": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election",
+ "polls": [
+  {
+   "pollster": "OpinionWay",
+   "date": "2026-09-03",
+   "n": 1003,
+   "country": "france",
+   "source": "https://www.lejdd.fr/politique/sondage-presidentielle-marine-le-pen-le-poids-detre-favorite-182718",
+   "votes": {
+    "arthaud": 1,
+    "melenchon": 17,
+    "roussel": 3,
+    "tondelier": 4,
+    "glucksmann": 13,
+    "attal": 13,
+    "retailleau": 11,
+    "lepen": 35,
+    "zemmour": 3
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2026-09-02",
+   "n": 1500,
+   "country": "france",
+   "source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10250-pres-iv-ipsos-bva-le-parisien-5-septembre.pdf",
+   "votes": {
+    "arthaud": 0.5,
+    "melenchon": 15,
+    "roussel": 2.5,
+    "tondelier": 3.5,
+    "glucksmann": 11.5,
+    "attal": 7.5,
+    "philippe": 14.5,
+    "retailleau": 6,
+    "dupont": 2,
+    "lepen": 34,
+    "zemmour": 3
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "date": "2026-08-28",
+   "n": 1501,
+   "country": "france",
+   "source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf",
+   "votes": {
+    "arthaud": 1.5,
+    "roussel": 3,
+    "melenchon": 14,
+    "glucksmann": 11.5,
+    "tondelier": 3.5,
+    "philippe": 17,
+    "villepin": 2,
+    "retailleau": 6.5,
+    "dupont": 3,
+    "lepen": 34,
+    "zemmour": 4
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "date": "2026-08-19",
+   "n": 1764,
+   "country": "france",
+   "source": "https://www.rtl.fr/actu/politique/sondage-rtl-presidentielle-2027-un-duel-le-pen-melenchon-la-candidate-rn-largement-en-tete-le-leader-insoumis-mieux-place-que-jamais-pour-le-second-tour-7900664150",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 2,
+    "melenchon": 16,
+    "glucksmann": 10,
+    "tondelier": 3,
+    "attal": 8,
+    "philippe": 14,
+    "retailleau": 6,
+    "dupont": 2,
+    "lepen": 35,
+    "zemmour": 3
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "date": "2026-07-10",
+   "n": 1503,
+   "country": "france",
+   "source": "https://www.latribune.fr/article/la-tribune-dimanche/politique/45944749344411/sondage-presidentielle-le-pen-en-tete-melenchon-progresse",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 2.5,
+    "melenchon": 16,
+    "glucksmann": 10.5,
+    "tondelier": 3.5,
+    "philippe": 16.5,
+    "villepin": 2.5,
+    "retailleau": 8,
+    "dupont": 1.5,
+    "lepen": 35,
+    "zemmour": 3
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-07-10",
+   "n": 1047,
+   "country": "france",
+   "source": "https://lhemicycle.com/2026/07/10/jordan-bardella-toujours-le-favori-pour-representer-le-rn/",
+   "votes": {
+    "roussel": 2,
+    "melenchon": 15,
+    "glucksmann": 11,
+    "attal": 8,
+    "philippe": 17,
+    "retailleau": 7,
+    "lepen": 37,
+    "zemmour": 3
+   }
+  },
+  {
+   "pollster": "OpinionWay",
+   "date": "2026-07-09",
+   "n": 963,
+   "country": "france",
+   "source": "https://www.lesechos.fr/elections/presidentielle/sondage-exclusif-presidentielle-2027-marine-le-pen-largement-en-tete-avantage-edouard-philippe-a-droite-et-au-centre-2241680",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 2,
+    "melenchon": 13,
+    "glucksmann": 9,
+    "tondelier": 5,
+    "attal": 7,
+    "philippe": 18,
+    "retailleau": 8,
+    "lepen": 35,
+    "zemmour": 3
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "date": "2026-07-08",
+   "n": 1582,
+   "country": "france",
+   "source": "https://www.rtl.fr/actu/politique/sondage-rtl-presidentielle-2027-marine-le-pen-progresse-dans-les-intentions-de-vote-apres-l-annonce-de-sa-candidature-7900653723",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 2,
+    "melenchon": 16,
+    "glucksmann": 10,
+    "tondelier": 2,
+    "attal": 8,
+    "philippe": 14,
+    "retailleau": 7,
+    "dupont": 1,
+    "lepen": 35,
+    "zemmour": 4
+   },
+   "runoff": {
+    "melenchon": 33,
+    "lepen": 67
+   }
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2026-05-28",
+   "n": 1500,
+   "country": "france",
+   "source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10195-pres-ipsos-bva-le-parisien-1er-juin.pdf",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 4,
+    "melenchon": 13.5,
+    "hollande": 7,
+    "tondelier": 4,
+    "attal": 9.5,
+    "philippe": 14.5,
+    "retailleau": 8.5,
+    "dupont": 1.5,
+    "lepen": 32
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "date": "2026-05-27",
+   "n": 1744,
+   "country": "france",
+   "source": "https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 4,
+    "melenchon": 15,
+    "glucksmann": 11,
+    "tondelier": 3,
+    "attal": 15,
+    "retailleau": 11,
+    "dupont": 2,
+    "lepen": 32
+   },
+   "runoff": {
+    "melenchon": 33,
+    "lepen": 67
+   }
+  },
+  {
+   "pollster": "Harris Interactive",
+   "date": "2026-04-22",
+   "n": 2000,
+   "country": "france",
+   "source": "https://tolunacorporate.com/wp-content/uploads/2026/04/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-1-M6-RTL-Avril-2026.pdf",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 4,
+    "melenchon": 12,
+    "glucksmann": 12,
+    "tondelier": 4,
+    "attal": 14,
+    "retailleau": 13,
+    "dupont": 2,
+    "lepen": 33
+   }
+  },
+  {
+   "pollster": "Elabe",
+   "date": "2026-03-27",
+   "n": 1504,
+   "country": "france",
+   "source": "https://elabe.fr/fichier-pdf/12955-20260328_elabe_bfmtv_la-tribune-dimanche_election-presidentielle-2027/",
+   "votes": {
+    "arthaud": 1,
+    "roussel": 2.5,
+    "melenchon": 12,
+    "glucksmann": 12.5,
+    "tondelier": 4,
+    "attal": 11.5,
+    "villepin": 6,
+    "retailleau": 10,
+    "dupont": 2.5,
+    "lepen": 34
+   },
+   "runoff": {
+    "attal": 49,
+    "lepen": 51
+   }
+  }
+ ]
+}

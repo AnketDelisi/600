@@ -1,0 +1,45 @@
+{
+  "country": "france",
+  "country_name": "France",
+  "system": "Two-round presidential election (majority of valid votes in the first round)",
+  "seats_total": null,
+  "seats_constituency": null,
+  "threshold": 50.0,
+  "constituencies": 13,
+  "seat_method": "First round: majority of valid votes (blank/null excluded). Otherwise top-two runoff.",
+  "election_date": "2027-04-18",
+  "election_date_runoff": "2027-05-02",
+  "candidates": [
+    { "id": "arthaud",    "name": "Nathalie Arthaud",        "party": "LO",  "party_name": "Lutte Ouvrière",                "color": "#D52121" },
+    { "id": "melenchon",  "name": "Jean-Luc Mélenchon",      "party": "LFI", "party_name": "La France Insoumise",           "color": "#7A1FA2" },
+    { "id": "roussel",    "name": "Fabien Roussel",          "party": "PCF", "party_name": "Parti Communiste Français",     "color": "#CC2E2E" },
+    { "id": "ruffin",     "name": "François Ruffin",         "party": "PD",  "party_name": "Picardie debout",               "color": "#00A650" },
+    { "id": "tondelier",  "name": "Marine Tondelier",        "party": "EÉLV", "party_name": "Europe Écologie Les Verts",    "color": "#3E9B2F" },
+    { "id": "faure",      "name": "Olivier Faure",           "party": "PS",  "party_name": "Parti Socialiste",              "color": "#E6007E" },
+    { "id": "hollande",   "name": "François Hollande",       "party": "PS",  "party_name": "Parti Socialiste",              "color": "#F04E98" },
+    { "id": "glucksmann", "name": "Raphaël Glucksmann",      "party": "PP",  "party_name": "Place Publique",                "color": "#00B7C6" },
+    { "id": "attal",      "name": "Gabriel Attal",           "party": "RE",  "party_name": "Renaissance",                   "color": "#E7A208" },
+    { "id": "philippe",   "name": "Édouard Philippe",        "party": "HOR", "party_name": "Horizons",                       "color": "#4A5A68" },
+    { "id": "villepin",   "name": "Dominique de Villepin",   "party": "UR",  "party_name": "Unité Républicaine",            "color": "#333F7F" },
+    { "id": "lisnard",    "name": "David Lisnard",           "party": "LR",  "party_name": "Les Républicains",              "color": "#3D64A8" },
+    { "id": "wauquiez",   "name": "Laurent Wauquiez",        "party": "LR",  "party_name": "Les Républicains",              "color": "#1E4294" },
+    { "id": "retailleau", "name": "Bruno Retailleau",        "party": "LR",  "party_name": "Les Républicains",              "color": "#28518F" },
+    { "id": "dupont",     "name": "Nicolas Dupont-Aignan",   "party": "DLF", "party_name": "Debout la France",               "color": "#CB1D46" },
+    { "id": "lepen",      "name": "Marine Le Pen",           "party": "RN",  "party_name": "Rassemblement National",         "color": "#041E42" },
+    { "id": "zemmour",    "name": "Éric Zemmour",            "party": "REC", "party_name": "Reconquête",                     "color": "#315E9C" }
+  ],
+  "blocs": {
+    "le_pen_field": { "name": "Le Pen", "parties": ["lepen"] },
+    "field": { "name": "Field", "parties": ["melenchon", "philippe", "attal", "glucksmann", "tondelier", "retailleau", "zemmour", "wauquiez", "hollande", "faure", "roussel", "ruffin", "dupont", "villepin", "lisnard", "arthaud"] }
+  },
+  "last_election": {
+    "date": "2022-04-10",
+    "results_valid": {
+      "lepen": 24.799, "melenchon": 19.958, "attal": 16.308, "philippe": 10.872, "zemmour": 7.388,
+      "retailleau": 4.85, "tondelier": 4.475, "roussel": 2.429, "dupont": 2.1, "faure": 1.711, "arthaud": 0.569,
+      "ruffin": 0, "hollande": 0, "glucksmann": 0, "villepin": 0, "lisnard": 0, "wauquiez": 0
+    },
+    "results_note": "2022 first-round valid-vote shares; Macron share split 60/40 between Attal and Philippe, Pécresse mapped to Retailleau, Jadot to Tondelier, Hidalgo to Faure.",
+    "runoff": { "lepen": 41.46, "attal": 58.54 }
+  }
+}

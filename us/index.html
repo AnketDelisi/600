@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 U.S. Midterms — AltıCiftSıfır</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <style>
+    :root{
+      --c-bg:#F9F7F0;--c-surface:#FFFFFF;--c-text-main:#161616;--c-text-muted:#5F584E;
+      --c-accent:#C83737;--c-accent-2:#9C2A2A;--c-border:#D8D1C0;--c-edge:#1A1A1A;--c-rule:#C0B8A6;
+      --d-blue:#2E6EA8;--d-red:#C83737;
+      --radius:6px;--radius-sm:4px;--radius-pill:999px;
+      --font:'Atlas Grotesk','Nunito Sans','Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+      --font-mono:'Decima Mono Pro','Atlas Grotesk','Nunito Sans',monospace;
+      --shadow-big:0 1px 2px rgba(26,26,26,0.05),0 12px 32px -12px rgba(26,26,26,0.16);
+      --shadow-md:0 1px 2px rgba(26,26,26,0.05),0 6px 16px -8px rgba(26,26,26,0.14);
+      --shadow-hard:0 2px 0 rgba(26,26,26,1);
+      --ease:cubic-bezier(.2,.7,.3,1);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:
+      radial-gradient(1100px 520px at 88% -8%, rgba(200,55,55,0.06), transparent 60%),
+      radial-gradient(900px 480px at -8% 108%, rgba(46,110,168,0.05), transparent 60%),
+      var(--c-bg);
+      color:var(--c-text-main);font-family:var(--font);font-size:14px;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
+    ::selection{background:rgba(200,55,55,0.16)}
+    :focus-visible{outline:2px solid var(--c-accent);outline-offset:2px;border-radius:4px}
+    button{transition:transform 120ms var(--ease),box-shadow 120ms var(--ease),background 120ms var(--ease),color 120ms var(--ease),border-color 120ms var(--ease)}
+    button:active{transform:translateY(1px)}
+    @media (prefers-reduced-motion:reduce){
+      *{transition:none!important;animation:none!important}
+      button:active{transform:none}
+    }
+
+    .topbar{width:100%;background:var(--c-surface);border-bottom:2px solid var(--c-edge);box-shadow:var(--shadow-md);padding:12px 28px;display:flex;align-items:center;gap:18px;position:sticky;top:0;z-index:50;border-top:4px solid var(--c-accent)}
+    .topbar .wordmark{font-size:14px;font-weight:900;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:var(--c-text-main)}
+    .topbar .wordmark img{display:block;height:38px;width:auto;object-fit:contain}
+    .topbar .wordmark .k{color:var(--c-accent)}
+    .topbar .crumb{margin-left:auto;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--c-text-muted)}
+    .topbar .crumb a{color:var(--c-text-muted);text-decoration:none}
+    .topbar .crumb a:hover{color:var(--c-accent)}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:36px 20px 64px 20px}
+    .masthead{padding:6px 0 26px 0}
+    .kicker{font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--c-accent);margin-bottom:10px}
+    h1{font-size:36px;line-height:1.05;margin:0 0 10px 0;letter-spacing:-0.6px;font-weight:900}
+    .masthead .sub{color:var(--c-text-muted);font-size:14px;max-width:760px;line-height:1.55;margin:0}
+    .updated{margin-top:12px;font-size:12px;font-weight:700;color:var(--c-text-muted)}
+
+    .tabs{display:flex;gap:8px;margin:0 0 24px 0}
+    .tab{border:2px solid var(--c-edge);background:var(--c-surface);color:var(--c-text-main);font-family:var(--font);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;padding:11px 20px 9px 20px;cursor:pointer;border-radius:var(--radius-sm);box-shadow:var(--shadow-hard);transition:transform 120ms var(--ease),background 120ms var(--ease),color 120ms var(--ease)}
+    .tab:hover{color:var(--c-accent-2);transform:translateY(-1px)}
+    .tab.active{background:var(--c-edge);color:#fff;box-shadow:var(--shadow-hard)}
+    .pane{display:none}
+    .pane.active{display:block}
+
+    .card{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-big);padding:22px;margin-bottom:20px}
+    .card h2{font-size:17px;margin:0 0 4px 0;letter-spacing:-0.2px}
+    .card .note{color:var(--c-text-muted);font-size:12px;margin:0 0 16px 0}
+
+    /* ---- two-column layout: control + map ---- */
+    .layout-2col{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start;margin-bottom:24px}
+    .layout-2col .card{margin-bottom:0}
+    .col-a{display:flex;flex-direction:column;gap:0}
+    .col-a .card{height:100%}
+    .col-b .mapwrap{margin-bottom:0}
+    @media (max-width:860px){
+      .layout-2col{grid-template-columns:1fr}
+      .layout-2col .card{margin-bottom:20px}
+      .col-b .card{margin-bottom:20px}
+    }
+
+    /* ---- sticky race-status bar ---- */
+    .statusbar{position:sticky;top:64px;z-index:45;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+      background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);
+      padding:9px 16px;margin:0 0 24px 0;font-size:12px;font-weight:800}
+    .statusbar .sb-seg{display:inline-flex;align-items:baseline;gap:4px}
+    .statusbar .sb-seg b{font-family:var(--font-mono);font-size:15px;font-variant-numeric:tabular-nums}
+    .statusbar .sb-seg.d b{color:var(--d-blue)}
+    .statusbar .sb-seg.r b{color:var(--d-red)}
+    .statusbar .sb-arrow{color:var(--c-text-muted);font-size:10px;text-transform:uppercase;letter-spacing:1px}
+    .statusbar .sb-seats{margin-left:auto;color:var(--c-text-muted);font-weight:700}
+    .statusbar .sb-seats b.d{color:var(--d-blue)}.statusbar .sb-seats b.r{color:var(--d-red)}
+    .statusbar .sb-maj{color:var(--c-text-muted);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+
+    .ctl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .ctl .cell{border-top:4px solid var(--c-edge);padding-top:10px}
+    .ctl .cell.d{border-color:var(--d-blue)}.ctl .cell.r{border-color:var(--d-red)}
+    .ctl .big{font-size:44px;font-weight:900;letter-spacing:-1px;line-height:1}
+    .ctl .cell.d .big{color:var(--d-blue)}
+    .ctl .cell.r .big{color:var(--d-red)}
+    .ctl .lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--c-text-muted);margin-top:6px}
+    .ctl .line{margin-top:14px;font-size:13px;color:var(--c-text-muted);border-top:1px solid var(--c-rule);padding-top:10px}
+    .ctl .line b{color:var(--c-text-main)}
+
+    .chart svg{width:100%;height:170px;display:block}
+    .chart .axis{font-size:10px;fill:var(--c-text-muted);font-weight:700}
+
+    table{width:100%;border-collapse:collapse}
+    th{font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px;color:var(--c-text-muted);text-align:left;padding:8px 8px;border-bottom:2px solid var(--c-edge)}
+    td{padding:9px 8px;border-bottom:1px solid var(--c-border);vertical-align:middle;font-size:13px;transition:background 80ms ease}
+    tr[data-key]:hover td{background:#FBF9F2}
+    tr.selected td{background:#F8F0E2}
+
+    /* ---- race detail (poll table + graph) ---- */
+    tr.detail-row td{background:#FBF9F2;border-bottom:2px solid var(--c-edge)}
+    .race-detail{padding:6px 4px 14px 4px}
+    .race-detail.empty{font-size:12px;color:var(--c-text-muted);padding:10px 4px}
+    .rd-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+    .rd-title{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.6px}
+    .rd-note{font-size:11px;color:var(--c-text-muted);font-weight:700}
+    .rd-graph{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:10px 12px;margin-bottom:10px}
+    .rd-table{width:100%;border-collapse:collapse}
+    .rd-table th{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;color:var(--c-text-muted);text-align:left;padding:5px 8px;border-bottom:2px solid var(--c-edge);position:static;background:transparent}
+    .rd-table td{padding:6px 8px;border-bottom:1px solid var(--c-border);font-size:12px;font-weight:700}
+    .rd-table td.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
+    .rd-table td.d{color:var(--d-blue)}.rd-table td.r{color:var(--d-red)}
+    .race-name b{font-size:13.5px}
+    .race-name .inc{display:block;color:var(--c-text-muted);font-size:11.5px;margin-top:2px}
+    .party-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:6px;border:2px solid var(--c-edge);border-radius:var(--radius-sm);vertical-align:-4px;overflow:hidden}
+    .party-badge img{width:100%;height:100%;object-fit:contain;display:block}
+    .party-badge.D{background:var(--d-blue)}
+    .party-badge.R{background:var(--d-red)}
+    .party-badge.I{background:#8A6DC3;color:#fff;font-size:8px;font-weight:900}
+    .party-badge.open{background:#fff;color:var(--c-text-muted);font-size:8px;font-weight:900}
+    .rating{display:inline-block;font-size:11px;font-weight:900;padding:3px 9px;border:2px solid var(--c-edge);border-radius:var(--radius-pill);white-space:nowrap}
+    .rating.r{background:#F7E4E4;color:#9C2A2A}
+    .rating.d{background:#E3EDF6;color:#1E4E7E}
+    .rating.t{background:#F1EDE1;color:#57503F}
+    .rating.none{background:#fff;color:var(--c-text-muted);border-color:var(--c-rule)}
+    .polling{font-family:var(--font-mono);font-size:12px;white-space:nowrap;color:var(--c-text-main)}
+    .polling .none{color:var(--c-text-muted)}
+    .polling b.n{color:var(--d-blue)}.polling b.u{color:var(--d-red)}
+    .chance{display:flex;height:34px;border:2px solid var(--c-edge);border-radius:var(--radius-pill);position:relative;overflow:hidden}
+    .chance .d{background:var(--d-blue)}.chance .r{background:var(--d-red)}
+    .chance .tick{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(26,26,26,0.55);z-index:2}
+    .chance .lbl{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;font-weight:900;color:#fff;z-index:3;padding:0 6px}
+    .chance .lbl.pleft{left:4px}.chance .lbl.pright{right:4px}
+    .legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11.5px;color:var(--c-text-muted);margin-top:10px}
+    .legend .sw{display:inline-block;width:28px;height:10px;border:2px solid var(--c-edge);border-radius:var(--radius-pill);margin-right:5px;vertical-align:0}
+    .legend .sw.d{background:var(--d-blue)}.legend .sw.r{background:var(--d-red)}
+
+    .foot{margin-top:8px;font-size:12px;line-height:1.6;color:var(--c-text-muted)}
+    .load{text-align:center;padding:60px 0;font-weight:800;color:var(--c-text-muted)}
+    select.sort{margin-bottom:14px;font-family:var(--font);font-size:12px;font-weight:800;padding:6px 9px;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);cursor:pointer}
+    select.sort:focus{outline:none;border-color:var(--c-accent);box-shadow:0 0 0 3px rgba(200,55,55,0.12)}
+    .toggle-flow{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+
+    /* ---- US map ---- */
+    .mapwrap{position:relative}
+    .map-ctrls{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+    .map-ctrls button{font-family:var(--font);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.5px;padding:5px 10px;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);cursor:pointer}
+    .map-ctrls button:hover{color:var(--c-accent);background:#F6F2E7}
+    .map-ctrls .map-title{font-size:12px;font-weight:800;color:var(--c-text-muted)}
+    .map-svg{width:100%;display:block}
+    .map-svg .land{fill:#EFE9DE;stroke:#fff;stroke-width:0.6}
+    .map-svg .st{stroke:#fff;stroke-width:0.6;cursor:pointer;transition:fill .15s ease}
+    .map-svg .st:hover,.map-svg .st.focus{stroke:var(--c-edge);stroke-width:1.4}
+    .map-svg .dist{stroke:#fff;stroke-width:0.4;cursor:pointer;transition:fill .12s ease}
+    .map-svg .dist:hover,.map-svg .dist.focus{stroke:var(--c-edge);stroke-width:1.1}
+    .map-svg .sub{stroke:var(--c-text-main);stroke-width:1;fill:none;pointer-events:none;opacity:0.55}
+    .map-tip{position:absolute;pointer-events:none;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-big);padding:10px 12px;font-size:12px;z-index:30;display:none;min-width:150px}
+    .map-tip .t{font-weight:900;font-size:13px;margin-bottom:5px;letter-spacing:-0.2px}
+    .map-tip .t .cd{color:var(--c-text-muted);font-weight:800}
+    .map-tip .r{font-weight:800;font-size:12px;margin-top:2px}
+    .map-tip .r .d{color:var(--d-blue)}.map-tip .r .u{color:var(--d-red)}
+    .map-tip .m{color:var(--c-text-muted);font-size:11px;margin-top:3px}
+    .map-leg{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11.5px;color:var(--c-text-muted);margin-top:12px;padding-top:10px;border-top:1px solid var(--c-rule)}
+    .map-leg .bar{width:180px;height:12px;border:2px solid var(--c-edge);border-radius:var(--radius-pill);display:flex;overflow:hidden}
+    .map-leg .bar i{display:block;height:100%}
+    .map-leg b{color:var(--c-text-main)}
+    .map-note{color:var(--c-text-muted);font-size:12px;margin:0 0 16px 0}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="wordmark" href="../index.html"><img src="../img/600logo2.svg" alt="AltıCiftSıfır — 600"></a>
+    <div class="crumb"><a href="../index.html">← Home</a></div>
+  </div>
+
+  <div class="wrap">
+    <header class="masthead">
+      <div class="kicker">2026 United States Midterm Elections</div>
+      <h1>Senate, House and governors — live forecast</h1>
+      <p class="sub">Race-by-race win chances from the 600 in-house model, which blends current race ratings (Cook, Inside Elections, Sabato) with the latest polling averages and a national-swing simulation. No sidebar, no takes — just chances, ratings and polling.</p>
+      <div class="updated" id="updated"></div>
+    </header>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-chamber="senate">Senate</button>
+      <button class="tab" data-chamber="house">House</button>
+      <button class="tab" data-chamber="governor">Governors</button>
+    </nav>
+
+    <div id="pane-senate" class="pane active"></div>
+    <div id="pane-house" class="pane"></div>
+    <div id="pane-governor" class="pane"></div>
+  </div>
+
+  <script src="../js/us.js?v=20260905b3"></script>
+</body>
+</html>

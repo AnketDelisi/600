@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AltıCiftSıfır — Poll Image Generator</title>
+  <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+  <link rel="stylesheet" href="../css/style.css?v=20260905b40">
+  <style>
+    .tool-shell{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
+    .tool-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+    .preview-card{position:sticky;top:88px}
+    #preview-canvas{width:100%;height:auto;background:#fff;border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-big)}
+    .form-row{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+    .form-row label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--c-text-muted)}
+    .form-row input,.form-row select{font-family:var(--font);font-size:14px;color:var(--c-text-main);background:var(--c-surface);border:2px solid var(--c-border);border-radius:var(--radius-sm);padding:8px 10px}
+    .form-row input:focus,.form-row select:focus{outline:none;border-color:var(--c-accent)}
+    .form-row input[type="number"]{width:100%}
+    .parties-table{width:100%;border-collapse:collapse;margin:4px 0 4px}
+    .parties-table th{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--c-text-muted);text-align:right;padding:2px 4px}
+    .parties-table th:first-child{text-align:left}
+    .parties-table td{padding:3px 4px;vertical-align:middle}
+    .parties-table input[type="number"]{width:72px;font-family:var(--font);font-size:14px;color:var(--c-text-main);background:var(--c-surface);border:2px solid var(--c-border);border-radius:var(--radius-sm);padding:6px 8px;text-align:right}
+    .party-id{font-weight:800;font-size:13px;min-width:48px}
+    .party-sw{width:12px;height:12px;border:1.5px solid var(--c-edge);border-radius:3px;display:inline-block;margin-right:8px;vertical-align:-1px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;background:#1A1A1A;color:#fff;font-family:var(--font);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;padding:12px 18px;border-radius:var(--radius-sm);cursor:pointer;box-shadow:var(--shadow-hard)}
+    .btn:hover{background:var(--c-accent-2)}
+    .btn:disabled{opacity:0.4;cursor:not-allowed;box-shadow:none}
+    .btn.secondary{background:#fff;color:var(--c-text-main);border:2px solid var(--c-edge);box-shadow:none}
+    .btn.secondary:hover{background:#F0EDE2;color:var(--c-text-main)}
+    .hint{font-size:12px;color:var(--c-text-muted);margin-top:8px;line-height:1.5}
+    .btn-row{display:flex;gap:8px}
+    #text-out{width:100%;box-sizing:border-box;font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-size:13px;line-height:1.6;color:var(--c-text-main);background:var(--c-surface);border:2px solid var(--c-border);border-radius:var(--radius-sm);padding:12px;min-height:300px;resize:vertical;white-space:pre;overflow-wrap:normal}
+    #text-out:focus{outline:none;border-color:var(--c-accent)}
+    .seg-control{width:100%;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);margin-bottom:16px;overflow:hidden}
+    .seg-inner{display:flex;gap:2px;padding:3px}
+    .seg-inner label{flex:1;text-align:center;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;padding:9px 6px;border-radius:var(--radius-sm);cursor:pointer;color:var(--c-text-muted);border:2px solid transparent}
+    .seg-inner input{position:absolute;opacity:0;pointer-events:none}
+    .seg-inner input:checked+label{background:#1A1A1A;color:#fff;box-shadow:var(--shadow-hard)}
+    .seg-inner label:hover{color:var(--c-accent-2)}
+    .spacer{height:16px}
+    @media (max-width:1080px){.tool-grid{grid-template-columns:1fr}.preview-card{position:static}}
+  </style>
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <main class="main-col" id="main">
+      <div class="seg-nav" id="segnav">
+        <img src="../img/600logo2.svg" alt="AltıCiftSıfır" class="nav-logo">
+        <div class="segnav-right" style="margin-left:0">
+          <a class="tab-social" href="../index.html">MAIN</a>
+          <a class="tab-social" href="../sweden/index.html">SWEDEN</a>
+          <a class="tab-social" href="../us/index.html">US MIDTERMS</a>
+          <a class="tab-social tab-social-accent" href="#" style="pointer-events:none">POLL IMAGE</a>
+          <a class="tab-social" href="https://github.com/AnketDelisi/600" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <div class="tool-shell">
+        <h1 style="margin:0 0 4px 0;font-size:26px;font-weight:900;letter-spacing:-0.3px">Poll Image Generator</h1>
+        <p class="hint" style="margin:0 0 24px 0">Enter a poll and generate a shareable chart with each party's logo. The "Last election" column is pre-filled from the latest election and can be edited.</p>
+
+        <div class="tool-grid">
+          <!-- preview -->
+          <div class="preview-card">
+            <div class="seg-control" style="margin-bottom:12px">
+              <div class="seg-inner">
+                <input type="radio" name="share" id="share-img" value="image" checked>
+                <label for="share-img">Image</label>
+                <input type="radio" name="share" id="share-txt" value="text">
+                <label for="share-txt">Text</label>
+              </div>
+            </div>
+            <canvas id="preview-canvas" width="1200" height="675"></canvas>
+            <div id="text-panel" hidden>
+              <textarea id="text-out" readonly spellcheck="false"></textarea>
+            </div>
+            <div class="spacer"></div>
+            <div id="img-actions">
+              <button class="btn" id="download-btn">Download PNG</button>
+            </div>
+            <div id="txt-actions" hidden>
+              <div class="btn-row">
+                <button class="btn" id="copy-btn">Copy text</button>
+                <button class="btn secondary" id="txt-dl-btn">Download .txt</button>
+              </div>
+            </div>
+            <div class="spacer"></div>
+            <button class="btn secondary" id="render-btn">Render</button>
+            <p class="hint">Image regenerates automatically as you type. Use "Render" to refresh the preview manually.</p>
+          </div>
+
+          <!-- controls -->
+          <div>
+            <div class="seg-control" id="chart-seg">
+              <div class="seg-inner">
+                <input type="radio" name="chart" id="chart-poll" value="poll" checked>
+                <label for="chart-poll">Poll</label>
+                <input type="radio" name="chart" id="chart-seats" value="seats">
+                <label for="chart-seats">Seat projection</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="country-select">Country</label>
+              <select id="country-select"></select>
+            </div>
+
+            <div class="form-row">
+              <label for="format-sel">Image format</label>
+              <select id="format-sel">
+                <option value="1200x675" selected>Landscape — 1200×675</option>
+                <option value="1080x1080">Square — 1080×1080</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="title-input">Pollster</label>
+              <input id="title-input" type="text" placeholder="e.g. Novus">
+            </div>
+            <div class="form-row">
+              <label for="date-input">Date / notes</label>
+              <input id="date-input" type="text" placeholder="e.g. Sep 6–8, 2026 (n = 2,292)">
+            </div>
+
+            <div class="seg-control">
+              <div class="seg-inner">
+                <input type="radio" name="bg" id="bg-white" value="white" checked>
+                <label for="bg-white">White</label>
+                <input type="radio" name="bg" id="bg-dark" value="dark">
+                <label for="bg-dark">Dark</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="poll-select">Poll</label>
+              <select id="poll-select"></select>
+            </div>
+            <div class="hint" id="prefill-msg" style="margin-top:4px">Choose a poll above to load its numbers from the site's data.</div>
+
+            <div class="spacer"></div>
+            <h2 style="margin:0 0 2px 0;font-size:15px;font-weight:900">Party results (%)</h2>
+            <table class="parties-table">
+              <thead>
+                <tr><th>Party</th><th>Poll</th><th>Last election</th></tr>
+              </thead>
+              <tbody id="parties-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../js/config.js?v=20260905b40"></script>
+  <script src="poll.js?v=20260905b40"></script>
+</body>
+</html>

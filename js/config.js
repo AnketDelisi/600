@@ -3131,7 +3131,9 @@ function setCountry(id) {
   MAP_ONLY = !!c.mapOnly;
 }
 
-// Sub-page / archive wrapper: a country can be pinned via window.__600_COUNTRY__
-const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'sweden';
+// Boot country priority: ?c= query param > pinned sub-page (window.__600_COUNTRY__) > default
+const URL_COUNTRY=(typeof window!=='undefined'&&window.location)?new URLSearchParams(window.location.search).get('c'):null;
+const BOOT_COUNTRY=(URL_COUNTRY&&COUNTRIES[URL_COUNTRY])?URL_COUNTRY
+  :((typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'sweden');
 
 setCountry(BOOT_COUNTRY);

@@ -2,52 +2,51 @@
   "country": "israel",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-  "scraped_at": "2026-09-10T10:33:01Z",
-  "poll_count": 150,
+  "scraped_at": "2026-09-11T10:33:35Z",
+  "poll_count": 152,
   "polls": [
     {
-      "pollster": "Kantar",
-      "date": "2026-09-09",
+      "pollster": "Lazar",
+      "date": "2026-09-10",
       "votes": {
-        "likud": 21,
-        "together": 12,
+        "likud": 19,
+        "together": 14,
         "rzp": 5,
-        "otzma": 7,
+        "otzma": 8,
         "shas": 7,
-        "utj": 8,
-        "yb": 7,
+        "utj": 7,
+        "yb": 9,
         "raam": 5,
         "joint_list": 7,
-        "dems": 9,
-        "yashar": 24,
+        "dems": 10,
+        "yashar": 25,
         "amcha": 4
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 554
+      "n": 601
     },
     {
-      "pollster": "Midgam R&C",
-      "date": "2026-09-09",
+      "pollster": "Yossi Tatika",
+      "date": "2026-09-10",
       "votes": {
-        "likud": 21,
-        "together": 13,
-        "rzp": 5,
+        "likud": 23,
+        "together": 15,
+        "rzp": 4,
         "otzma": 6,
-        "shas": 7,
-        "utj": 8,
-        "yb": 9,
-        "raam": 4,
+        "shas": 10,
+        "utj": 9,
+        "yb": 10,
+        "raam": 5,
         "joint_list": 7,
-        "dems": 10,
-        "yashar": 25,
-        "amcha": 5
+        "dems": 8,
+        "yashar": 23
       },
       "country": "israel",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-      "n": 504
+      "n": 500
     },
     {
       "pollster": "Filber",
@@ -91,6 +90,50 @@
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
       "n": 506
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-09-09",
+      "votes": {
+        "likud": 21,
+        "together": 12,
+        "rzp": 5,
+        "otzma": 7,
+        "shas": 7,
+        "utj": 8,
+        "yb": 7,
+        "raam": 5,
+        "joint_list": 7,
+        "dems": 9,
+        "yashar": 24,
+        "amcha": 4
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 554
+    },
+    {
+      "pollster": "Midgam R&C",
+      "date": "2026-09-09",
+      "votes": {
+        "likud": 21,
+        "together": 13,
+        "rzp": 5,
+        "otzma": 6,
+        "shas": 7,
+        "utj": 8,
+        "yb": 9,
+        "raam": 4,
+        "joint_list": 7,
+        "dems": 10,
+        "yashar": 25,
+        "amcha": 5
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 504
     },
     {
       "pollster": "Lazar",

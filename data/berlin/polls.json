@@ -2,12 +2,27 @@
   "country": "berlin",
   "source": "Wikipedia",
   "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
-  "scraped_at": "2026-09-10T10:33:03Z",
+  "scraped_at": "2026-09-11T10:33:36Z",
   "poll_count": 19,
   "polls": [
     {
+      "pollster": "Forschungsgruppe Wahlen",
+      "date": "2026-09-10",
+      "votes": {
+        "cdu": 21.0,
+        "spd": 10.0,
+        "gruene": 16.0,
+        "linke": 23.0,
+        "afd": 17.0,
+        "bsw": 3.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1100
+    },
+    {
       "pollster": "Infratest dimap",
-      "fieldwork_start": "2026-09-07",
       "date": "2026-09-09",
       "votes": {
         "cdu": 20.0,
@@ -24,7 +39,6 @@
     },
     {
       "pollster": "INSA",
-      "fieldwork_start": "2026-08-26",
       "date": "2026-09-02",
       "votes": {
         "cdu": 20.0,
@@ -42,7 +56,6 @@
     },
     {
       "pollster": "Infratest dimap",
-      "fieldwork_start": "2026-08-27",
       "date": "2026-08-31",
       "votes": {
         "cdu": 21.0,
@@ -56,24 +69,6 @@
       "source": "Wikipedia",
       "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
       "n": 1279
-    },
-    {
-      "pollster": "BSW (internal)",
-      "fieldwork_start": "2026-08-21",
-      "date": "2026-08-26",
-      "votes": {
-        "cdu": 13.5,
-        "spd": 11.8,
-        "gruene": 15.4,
-        "linke": 22.3,
-        "afd": 21.1,
-        "fdp": 4.2,
-        "bsw": 5.5
-      },
-      "country": "berlin",
-      "source": "Wikipedia",
-      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
-      "n": 1091
     },
     {
       "pollster": "Forsa",

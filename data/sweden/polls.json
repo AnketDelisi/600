@@ -11,9 +11,89 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-09-11T10:33:34Z",
-  "poll_count": 99,
+  "scraped_at": "2026-09-11T15:44:04Z",
+  "poll_count": 103,
   "polls": [
+    {
+      "pollster": "Sifo",
+      "date": "2026-09-11",
+      "votes": {
+        "S": 27.6,
+        "M": 15.8,
+        "SD": 18.1,
+        "V": 7.7,
+        "C": 8.2,
+        "KD": 6.5,
+        "MP": 8.0,
+        "L": 5.5
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 3063,
+      "fieldwork_start": "2026-09-04",
+      "fieldwork_end": "2026-09-10"
+    },
+    {
+      "pollster": "Novus",
+      "date": "2026-09-11",
+      "votes": {
+        "S": 28.6,
+        "M": 18.1,
+        "SD": 19.5,
+        "V": 6.6,
+        "C": 9.2,
+        "KD": 5.5,
+        "MP": 6.4,
+        "L": 4.7
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 5928,
+      "fieldwork_start": "2026-09-07",
+      "fieldwork_end": "2026-09-10"
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2026-09-11",
+      "votes": {
+        "S": 27.4,
+        "M": 18.3,
+        "SD": 18.8,
+        "V": 7.6,
+        "C": 7.6,
+        "KD": 6.9,
+        "MP": 6.8,
+        "L": 5.0
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 1800,
+      "fieldwork_start": "2026-09-07",
+      "fieldwork_end": "2026-09-10"
+    },
+    {
+      "pollster": "Demoskop",
+      "date": "2026-09-11",
+      "votes": {
+        "S": 29.7,
+        "M": 16.7,
+        "SD": 19.0,
+        "V": 7.5,
+        "C": 7.7,
+        "KD": 7.6,
+        "MP": 5.6,
+        "L": 4.7
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 1419,
+      "fieldwork_start": "2026-09-07",
+      "fieldwork_end": "2026-09-11"
+    },
     {
       "pollster": "Indikator",
       "date": "2026-09-11",

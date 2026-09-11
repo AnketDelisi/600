@@ -652,6 +652,7 @@ function renderTrendChart(canvas, polls){
   CHART_STATE.pad=pad; CHART_STATE.dates=dates; CHART_STATE.series=series;
   CHART_STATE.yMin=yMin; CHART_STATE.yMax=yMax; CHART_STATE.byDate=byDate;
   CHART_STATE.cw=cw; CHART_STATE.ch=ch; CHART_STATE.wrap=wrap;
+  CHART_STATE.polls=polls;
 
   drawChartBase();
 
@@ -748,6 +749,39 @@ function drawChartBase(hoverIdx){
     ctx.fillStyle=ser.color;ctx.font='bold 10px Decima Mono Pro,monospace';ctx.textAlign='left';
     ctx.fillText(partyCode(ser.pid),x,y+3);
   });
+
+  // Trend projection markers: dashed from the last point to the value the
+  // recency-weighted linear fit extrapolates at election day (top parties only)
+  if(s.polls&&TREND_CONF){
+    const election=new Date(TREND_CONF.electionDate).getTime();
+    const horizon=(election-Date.now())/(1000*60*60*24);
+    if(horizon>0&&horizon<=TREND_CONF.windowDays){
+      const cands=[];
+      series.forEach(ser=>{
+        let lastVal=null,lastIdx=-1;
+        for(let i=ser.points.length-1;i>=0;i--){if(ser.points[i]!==null){lastVal=ser.points[i];lastIdx=i;break}}
+        if(lastVal===null) return;
+        cands.push({ser,lastVal,lastIdx});
+      });
+      cands.sort((a,b)=>b.lastVal-a.lastVal);
+      cands.slice(0,4).forEach(c=>{
+        const ext=trendExtrapolation(s.polls,c.ser.pid);
+        if(ext===null) return;
+        const x0=pad.left+(c.lastIdx/(dates.length-1))*cw;
+        const y0=pad.top+ch*(1-(c.lastVal-yMin)/(yMax-yMin));
+        const xe=W-pad.right+2;
+        const ye=Math.max(pad.top+2,pad.top+ch*(1-(Math.min(ext,yMax)-yMin)/(yMax-yMin)));
+        ctx.strokeStyle=c.ser.color;ctx.lineWidth=1;
+        ctx.setLineDash([3,3]);
+        ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(xe,ye);ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.beginPath();
+        ctx.fillStyle='#fff';ctx.strokeStyle=c.ser.color;
+        ctx.moveTo(xe-3.5,ye);ctx.lineTo(xe,ye-3.5);ctx.lineTo(xe+3.5,ye);ctx.lineTo(xe,ye+3.5);ctx.closePath();
+        ctx.fill();ctx.stroke();
+      });
+    }
+  }
 
   // Hover overlay: guide line + dots
   if(hoverIdx!==undefined&&hoverIdx>=0&&hoverIdx<dates.length){
@@ -1624,6 +1658,8 @@ function runForecast(avg, nSims, nPolls){
   const K=effectiveK(nPolls,FORECAST_K);
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
+  const top2={};
+  const win50={};
   const seatsBy={};
   const votesBy={};
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
@@ -1652,13 +1688,16 @@ function runForecast(avg, nSims, nPolls){
       if(v>topN){topN=v;top=p}
     }
     largest[top]=(largest[top]||0)+1;
+    const srt=PARTY_ORDER.slice().sort((a,b)=>(simVotes[b]||0)-(simVotes[a]||0));
+    for(let i=0;i<2&&i<srt.length;i++) top2[srt[i]]=(top2[srt[i]]||0)+1;
+    if((simVotes[srt[0]]||0)>=50) win50[srt[0]]=(win50[srt[0]]||0)+1;
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
-  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount);
+  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50);
 }
 
-function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount){
+function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50){
   const means={},medians={},modes={};
   PARTY_ORDER.forEach(p=>{
     const arr=seatsBy[p];
@@ -1677,7 +1716,7 @@ function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount){
   if(modalKey){
     PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
   }
-  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims};
+  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims,top2:top2||{},win50:win50||{}};
 }
 
 function deterministicSeats(medians, means, total){
@@ -1701,6 +1740,48 @@ function deterministicSeats(medians, means, total){
 }
 
 function pct100(x){return (x*100).toFixed(1)+'%'}
+
+/* ---------- second-round runoff forecast (two-round presidential) ---------- */
+function gaussianSample(rng){
+  let u1=0;do{u1=rng()}while(u1<=1e-9);
+  const u2=rng()||1e-9;
+  return Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+}
+
+function weightedAvgRunoff(polls, cand){
+  let wSum=0,wTotal=0;
+  for(const p of polls){
+    const v=p.runoff[cand];
+    if(v===undefined) continue;
+    const w=(p.n||1000)*pollsterWeight(p.pollster)*recencyWeight(p.date);
+    wSum+=v*w; wTotal+=w;
+  }
+  return wTotal>0?wSum/wTotal:null;
+}
+
+// Head-to-head runoff forecast from polls that carry a "runoff" pair.
+// Averages are recency-weighted, renormalized to the two candidates, then
+// simulated head-to-head with the same national polling error scale.
+function runoffForecast(avg, filtered, sim){
+  const roPolls=filtered.filter(p=>p.runoff&&typeof p.runoff==='object'&&Object.keys(p.runoff).length);
+  if(roPolls.length<2) return null;
+  const freq={};
+  roPolls.forEach(p=>Object.keys(p.runoff).forEach(c=>{freq[c]=(freq[c]||0)+1}));
+  const pair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
+  if(pair.length<2) return null;
+  const a=pair[0], b=pair[1];
+  const wa=weightedAvgRunoff(roPolls,a), wb=weightedAvgRunoff(roPolls,b);
+  if(wa===null||wb===null) return null;
+  const tot=wa+wb;
+  const aN=100*wa/tot, bN=100*wb/tot;
+  const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
+  const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
+  let winA=0;
+  for(let s=0;s<3000;s++){
+    if(aN+gaussianSample(rng)*sigma > bN+gaussianSample(rng)*sigma) winA++;
+  }
+  return {a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls};
+}
 
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
@@ -1751,6 +1832,45 @@ function renderForecast(pane){
     const arr=sim.votesBy[p].slice().sort((a,b)=>a-b);
     medVotes[p]=arr[Math.floor(arr.length/2)];
   });
+
+  // Second-round runoff card (two-round presidential only)
+  let runoffHtml='';
+  const rDateNote=META.election_date_runoff?' ('+META.election_date_runoff+')':'';
+  if(MAP_ONLY){
+    const ro=runoffForecast(avg, filtered, sim);
+    if(ro){
+      const cA=PARTY_META[ro.a]?PARTY_META[ro.a].color:'#888';
+      const cB=PARTY_META[ro.b]?PARTY_META[ro.b].color:'#888';
+      const h2a=ro.winA/3000, h2b=1-h2a;
+      const reachA=(sim.top2[ro.a]||0)/sim.nSims, reachB=(sim.top2[ro.b]||0)/sim.nSims;
+      const w1A=(sim.win50[ro.a]||0)/sim.nSims, w1B=(sim.win50[ro.b]||0)/sim.nSims;
+      const eleA=w1A+Math.max(0,reachA-w1A)*h2a, eleB=w1B+Math.max(0,reachB-w1B)*h2b;
+      const row=(label,color,p)=>`<div class="fc-row">
+        <span class="fc-row-label" style="color:${color}">${label}</span>
+        <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>
+        <span class="fc-row-val">${pct100(p)}</span>
+      </div>`;
+      runoffHtml=`<div class="card">
+        <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
+        <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
+          ${t('Head-to-head from','Başa baş anketlerinden')} ${ro.roN} ${t('runoff polls','ikinci tur anketi')} · σ≈${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%
+        </div>
+        <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
+        ${row(partyCode(ro.a),cA,h2a)}
+        ${row(partyCode(ro.b),cB,h2b)}
+        <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('REACHES THE RUNOFF','İKİNCİ TURA KALIR')}</span><span></span><span>P</span></div>
+        ${row(partyCode(ro.a),cA,reachA)}
+        ${row(partyCode(ro.b),cB,reachB)}
+        <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('ELECTED PRESIDENT','CUMHURBAŞKANI SEÇİLİR')}</span><span></span><span>P</span></div>
+        ${row(partyCode(ro.a),cA,eleA)}
+        ${row(partyCode(ro.b),cB,eleB)}
+        <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
+          ${t('Two-round system: a candidate is elected with a majority of valid votes in the first round; otherwise the top two face a runoff two weeks later'+(META.election_date_runoff?rDateNote:'')+'. P(elected) = round-1 majority + reach-the-runoff × head-to-head win.','İki turlu sistem: aday birinci turda geçerli oyların çoğunluğunu alırsa seçilir; aksi halde ilk iki aday iki hafta sonra ikinci turda karşılaşır'+(META.election_date_runoff?rDateNote:'')+'. Seçilme olasılığı = birinci turda çoğunluk + ikinci tura kalma × ikinci tur kazanma.')}
+        </div>
+      </div>`;
+    }
+  }
+
   const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length?
     constituencyTableHtml(medVotes,{
       title:'CONSTITUENCIES',
@@ -1852,7 +1972,7 @@ function renderForecast(pane){
 
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
-      <div class="hero-title">${t('FORECAST','TAHMİN')} — ${COUNTRY_NAME} 2026</div>
+      <div class="hero-title">${t('FORECAST','TAHMİN')} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
       <div class="fc-headline">
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
@@ -1883,6 +2003,8 @@ function renderForecast(pane){
         District winners from the forecast's median national vote shares · hover a district for the past/forecast comparison
       </div>
     </div>`:''}
+
+    ${runoffHtml}
 
     ${constHtml}
 
@@ -2552,7 +2674,9 @@ function renderPollsTab(){
       ${renderHero(avg, filtered)}
       <div class="card" style="height:100%"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
         <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
-        <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div></div>
+        <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div>
+        ${TREND_CONF?`<div style="font-size:10px;color:var(--c-text-muted);padding:6px 12px 8px">◆ ${t('dashed diamond = value extrapolated to election day','kesikli elmas = seçim gününe yansıtılan değer')} (${TREND_CONF.electionDate})</div>`:''}
+    </div>
     </div>
   </div>`;
 

@@ -991,25 +991,6 @@ function constituencyById(id){
 
 // Actual direct-mandate winner of the previous election for a Wahlkreis /
 // valkrets, with the state default as fallback
-function districtWinner2021(nr){
-  const conf=MAP_CONF();
-  if(conf.useConstituencies){
-    const c=constituencyById(nr);
-    if(c&&c.results_2022){
-      let best=null,bv=-1;
-      for(const p of PARTY_ORDER){
-        const v=c.results_2022[p]||0;
-        if(v>bv){bv=v;best=p}
-      }
-      if(best) return best;
-    }
-    return 'S';
-  }
-  const exc=conf&&conf.winners2021?conf.winners2021[String(nr)]:null;
-  if(exc) return exc;
-  return (conf&&conf.winners2021_default)||'cdu';
-}
-
 // Shares of a district under a given national avg: uniform swing from the
 // district's previous-election baseline; returns per-party {party: {past, now}}.
 // When resultMode is true, returns the actual previous election per-district
@@ -1084,16 +1065,6 @@ function districtPartySeats(nr, party, avg, resultMode){
   if(!c||!avg) return null;
   const alloc=allocateConstituencySeats(avg,c);
   return alloc[party]||0;
-}
-
-// MP seats of a district: Sweden = fixed valkretsmandat; Germany = 1 direct mandate
-function districtSeats(nr){
-  const conf=MAP_CONF();
-  if(conf.useConstituencies){
-    const c=constituencyById(nr);
-    return c?c.seats:1;
-  }
-  return 1;
 }
 
 function districtWinnerProjection(nr, avg){

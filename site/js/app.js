@@ -962,11 +962,12 @@ function renderParliament(avg){
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
-      ${mapConf?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
+      ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
+      ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
     </div>`;
   const box=showMap
     ?'<div class="parliament-box" id="map-box"></div>'
-    :`<div class="parliament-box">${buildParliamentSVG(seats)}</div>`;
+    :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
     ?(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${t('colored by','renklendirilen')} ${t('projected winner','tahmini kazanan')}`
@@ -1516,6 +1517,12 @@ function bindParlToggles(avg){
       captureBoxMap('map-box', COUNTRY+'-map.png');
     });
   }
+  const parlShot=$('parl-shot-btn');
+  if(parlShot){
+    parlShot.addEventListener('click',()=>{
+      captureBoxMap('parl-box', COUNTRY+'-parliament.png');
+    });
+  }
   const trendShot=$('trend-shot-btn');
   if(trendShot){
     trendShot.addEventListener('click',()=>{
@@ -1987,8 +1994,10 @@ function renderForecast(pane){
       <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${t('first round','ilk tur')} ${TREND_CONF?TREND_CONF.electionDate:''}`:`${methodNameShort()} · ${seatsDesc()} ${T.seats} · ${THRESHOLD}% ${T.threshold}`} · seeded, reproducible</div>
     </div>
 
-    ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div></div>
-      ${MAP_ONLY?'':`<div class="parliament-box">${buildParliamentSVG(detSeats)}</div>`}
+    ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div>
+      <button class="shot-btn" id="fc-parl-shot-btn" style="margin-left:auto" title="Download parliament diagram as PNG">${CAM_ICON}</button>
+      </div>
+      ${MAP_ONLY?'':`<div class="parliament-box" id="fc-parl-box">${buildParliamentSVG(detSeats)}</div>`}
       <div style="overflow-x:auto">
       <table class="polls-table compact-table"><thead><tr>
         <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th>
@@ -2044,6 +2053,12 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
     </div>`}
   </div>`;
+  const fcParlShot=$('fc-parl-shot-btn');
+  if(fcParlShot){
+    fcParlShot.addEventListener('click',()=>{
+      captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
+    });
+  }
   if(MAP_CONF()){
     const fcBox=$('fc-map-box');
     if(fcBox){
@@ -2207,8 +2222,10 @@ loadLive().then(live=>{
         ${rows}
       </div>
 
-      ${parlSvg?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatsLive}</div></div>
-        <div class="parliament-box">${parlSvg}</div>
+      ${parlSvg?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatsLive}</div>
+        <button class="shot-btn" id="lv-parl-shot-btn" style="margin-left:auto" title="Download parliament diagram as PNG">${CAM_ICON}</button>
+        </div>
+        <div class="parliament-box" id="live-parl-box">${parlSvg}</div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px;text-align:center">${seatsTotal} seats · live allocation</div>
       </div>`:''}
 
@@ -2225,6 +2242,8 @@ loadLive().then(live=>{
     bindLiveMap(live);
     const shot=$('lv-map-shot-btn');
     if(shot) shot.addEventListener('click',()=>captureBoxMap('live-map-box', COUNTRY+'-live-map.png'));
+    const lvParlShot=$('lv-parl-shot-btn');
+    if(lvParlShot) lvParlShot.addEventListener('click',()=>captureBoxMap('live-parl-box', COUNTRY+'-live-parliament.png'));
     // auto-refresh every 30s while the LIVE tab is visible
     if(LIVE_INTERVAL) clearInterval(LIVE_INTERVAL);
     LIVE_INTERVAL=setInterval(()=>{

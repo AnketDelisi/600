@@ -11,9 +11,26 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-09-11T15:44:04Z",
-  "poll_count": 103,
+  "scraped_at": "2026-09-12T10:01:47Z",
+  "poll_count": 104,
   "polls": [
+    {
+      "pollster": "Novus",
+      "date": "2026-09-12",
+      "votes": {
+        "V": 7.2,
+        "S": 31.1,
+        "MP": 5.0,
+        "C": 5.7,
+        "L": 4.1,
+        "M": 19.6,
+        "KD": 4.9,
+        "SD": 20.8
+      },
+      "country": "sweden",
+      "date_end": "2026-10-02",
+      "n": 6023
+    },
     {
       "pollster": "Sifo",
       "date": "2026-09-11",

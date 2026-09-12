@@ -127,6 +127,27 @@ button:active{transform:translateY(1px)}
 /* ---------- Pollster rating column (polls table) ---------- */
 .ps-rate{font-size:11px;letter-spacing:1px;white-space:nowrap}
 
+/* ---------- Live tab: majority banner + seat counter ---------- */
+.lv-majbanner{display:flex;align-items:stretch;gap:10px;margin-bottom:16px}
+.lv-maj{flex:1;border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-hard);padding:14px 16px;background:var(--c-surface);text-align:center}
+.lv-maj .lv-maj-name{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--c-text-muted)}
+.lv-maj .lv-maj-seats{font-size:34px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;line-height:1.1}
+.lv-maj .lv-maj-sub{font-size:10px;font-weight:700;letter-spacing:0.5px;color:var(--c-text-muted);text-transform:uppercase;margin-top:2px}
+.lv-maj.threshold{background:#1A1A1A;color:#fff}
+.lv-maj.threshold .lv-maj-name,.lv-maj.threshold .lv-maj-sub{color:rgba(255,255,255,.65)}
+.lv-seat-ticks{display:flex;gap:3px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.lv-seat-tick{width:8px;height:8px;border-radius:2px;opacity:.9}
+.lv-seat-tick.live{animation:lvpulse 1.6s ease-in-out infinite}
+@keyframes lvpulse{0%,100%{opacity:.45}50%{opacity:1}}
+
+/* Live calls */
+.lv-calls{display:flex;flex-direction:column}
+.lv-call-row{display:flex;align-items:center;gap:10px;padding:6px 4px;border-bottom:1px solid rgba(26,26,26,0.08)}
+.lv-call-name{flex:1;font-size:12px;font-weight:800}
+.lv-call-dot{width:10px;height:10px;border-radius:999px;flex-shrink:0;border:1.5px solid var(--c-edge)}
+.lv-call-win{width:52px;font-size:12px;font-weight:900;text-align:right}
+.lv-call-pct{width:44px;text-align:right;font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--c-text-muted)}
+
 /* ---------- Brazil identity ---------- */
 .hero-brazil{border-top:4px solid var(--br-yellow)}
 .bz-runoff{display:flex;align-items:stretch;gap:16px;margin-top:14px}

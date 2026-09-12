@@ -143,12 +143,29 @@ function methodSentence(){
 document.addEventListener('click',e=>{
   const btn=e.target.closest('.tab-trigger');
   if(!btn) return;
+  switchTab(btn);
+});
+// ARIA tabs: arrow keys move between tab triggers (left/right), Home/End.
+function switchTab(btn){
+  if(!btn) return;
   document.querySelectorAll('.tab-trigger').forEach(b=>b.dataset.active='false');
   btn.dataset.active='true';
   const tabId=btn.dataset.tab;
-  document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active')});
+  document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active');p.setAttribute('aria-hidden','true')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');if(tabId==='forecast'){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');pane.setAttribute('aria-hidden','false');if(tabId==='forecast'){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+}
+document.addEventListener('keydown',e=>{
+  if(!e.target.closest||!e.target.closest('.tab-trigger')) return;
+  const tabs=Array.from(document.querySelectorAll('.tab-trigger'));
+  const idx=tabs.indexOf(e.target);
+  if(idx<0) return;
+  let next=null;
+  if(e.key==='ArrowRight') next=tabs[(idx+1)%tabs.length];
+  else if(e.key==='ArrowLeft') next=tabs[(idx-1+tabs.length)%tabs.length];
+  else if(e.key==='Home') next=tabs[0];
+  else if(e.key==='End') next=tabs[tabs.length-1];
+  if(next){e.preventDefault();next.focus();switchTab(next);}
 });
 
 /* ---------- load constituency data ---------- */
@@ -495,7 +512,48 @@ function renderLastElection(){
 }
 
 /* ---------- render hero ---------- */
+// Brazil: runoff-forward hero — head-to-head poll average plus the two-round
+// election path (first round -> runoff), built from the weighted runoff polls.
+function brazilRunoffHero(avg, filteredPolls){
+  const ro=runoffForecast(avg, filteredPolls, null);
+  if(!ro) return renderHeroGeneric(avg, filteredPolls);
+  const cA=PARTY_META[ro.a]?PARTY_META[ro.a].color:'#888';
+  const cB=PARTY_META[ro.b]?PARTY_META[ro.b].color:'#888';
+  const h2a=ro.winA/3000, h2b=1-h2a;
+  const barA=(v)=>Math.max(2,v*100);
+  const d1=META.election_date||'2026-10-04';
+  const d2=META.election_date_runoff||'2026-10-25';
+  return `<div class="hero hero-brazil">
+    <div class="hero-title">${COUNTRY_NAME} — ${t('PRESIDENTIAL · TWO ROUNDS','BAŞKANLIK · İKİ TUR')}</div>
+    <div class="hero-date">${d1} ${t('first round','birinci tur')} → ${d2} ${t('runoff','ikinci tur')} · ${ro.roN} ${t('head-to-head polls','başa baş anket')}</div>
+    <div class="bz-runoff">
+      <div class="bz-cand" style="--bz-c:${cA}">
+        <span class="bz-code">${partyCode(ro.a)}</span>
+        <span class="bz-pct">${fmt(ro.aN,1)}%</span>
+        <div class="bz-bar"><div class="bz-fill" style="width:${barA(ro.aN/100)}%;background:${cA}"></div></div>
+        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${pct100(h2a)}</b></span>
+      </div>
+      <div class="bz-vs">vs</div>
+      <div class="bz-cand" style="--bz-c:${cB}">
+        <span class="bz-code">${partyCode(ro.b)}</span>
+        <span class="bz-pct">${fmt(ro.bN,1)}%</span>
+        <div class="bz-bar"><div class="bz-fill" style="width:${barA(ro.bN/100)}%;background:${cB}"></div></div>
+        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${pct100(h2b)}</b></span>
+      </div>
+    </div>
+    <div class="bz-path">
+      <span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct100((ro.winA/3000))} ${t('first-round win','ilk tur zaferi')}</span>
+      <span>·</span>
+      <span>${partyCode(ro.b)} ${pct100(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>
+    </div>
+  </div>`;
+}
+
 function renderHero(avg, filteredPolls){
+  if(COUNTRY==='brazil') return brazilRunoffHero(avg, filteredPolls);
+  return renderHeroGeneric(avg, filteredPolls);
+}
+function renderHeroGeneric(avg, filteredPolls){
   const latest=filteredPolls[0];
   const days=latest?daysAgo(latest.date):'—';
   const latestStr=latest?latest.date:'—';
@@ -879,6 +937,74 @@ function renderPollsTable(polls){
       ${t('Lead = margin between the two largest parties · RATE = pollster accuracy relative to the best in this country','Fark = en büyük iki parti arasındaki marj · PUAN = anketçinin ülkedeki en iyiye göre doğruluğu')}
     </div></div>`;
   return html;
+}
+
+/* ---------- render state depth (Brazil) ---------- */
+// 27 UFs -> region, for the regional breakdown card. Keys match conf.gebiete (lowercase).
+const BRAZIL_REGIONS={
+  ac:'Norte',am:'Norte',ap:'Norte',pa:'Norte',ro:'Norte',rr:'Norte',to:'Norte',
+  al:'Nordeste',ba:'Nordeste',ce:'Nordeste',ma:'Nordeste',pb:'Nordeste',pe:'Nordeste',pi:'Nordeste',rn:'Nordeste',se:'Nordeste',
+  df:'Centro-Oeste',go:'Centro-Oeste',mt:'Centro-Oeste',ms:'Centro-Oeste',
+  es:'Sudeste',mg:'Sudeste',rj:'Sudeste',sp:'Sudeste',
+  pr:'Sul',rs:'Sul',sc:'Sul',
+};
+function renderStateDepth(avg){
+  if(COUNTRY!=='brazil') return '';
+  const conf=MAP_CONF();
+  if(!conf||!conf.gebiete) return '';
+  const nat=conf.national2021||LAST_ELECTION.results;
+  // projected per-state winner via uniform swing on the 2022 baseline
+  const stateWinners={};
+  Object.keys(conf.gebiete).forEach(uf=>{
+    const base=conf.gebiete[uf];
+    let best=null,bv=-1;
+    for(const p of PARTY_ORDER){
+      const past=base[p]||0;
+      const swing=(avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
+      const now=Math.max(0,past+swing);
+      if(now>bv){bv=now;best=p}
+    }
+    stateWinners[uf]=best;
+  });
+  const leadCount={};
+  Object.values(stateWinners).forEach(p=>{leadCount[p]=(leadCount[p]||0)+1});
+  const regionRows=[];
+  const regions=['Norte','Nordeste','Centro-Oeste','Sudeste','Sul'];
+  regions.forEach(reg=>{
+    const ufs=Object.keys(conf.gebiete).filter(uf=>BRAZIL_REGIONS[uf]===reg);
+    if(!ufs.length) return;
+    const win=ufs.map(uf=>stateWinners[uf]);
+    const counts={};
+    win.forEach(p=>{counts[p]=(counts[p]||0)+1});
+    const lead=Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
+    const leadCol=PARTY_META[lead]?PARTY_META[lead].color:'#888';
+    regionRows.push(`<div class="bz-reg-row">
+      <span class="bz-reg-name">${reg}</span>
+      <div class="bz-reg-bars">${Object.keys(counts).sort((a,b)=>counts[b]-counts[a]).map(p=>{
+        const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+        return `<span class="bz-reg-dot" style="background:${col}" title="${partyCode(p)} ${counts[p]}">${counts[p]}</span>`;
+      }).join('')||'—'}</div>
+      <span class="bz-reg-lead" style="color:${leadCol}">${partyCode(lead)}</span>
+    </div>`);
+  });
+  const topCands=Object.keys(leadCount).sort((a,b)=>leadCount[b]-leadCount[a]).slice(0,4);
+  const cards=topCands.map(p=>{
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const n=leadCount[p];
+    return `<div class="bz-state-card">
+      <span class="bz-state-code" style="background:${col}">${partyCode(p)}</span>
+      <span class="bz-state-num">${n}</span>
+      <span class="bz-state-lbl">${t('states','eyalet')}</span>
+    </div>`;
+  }).join('');
+  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('STATES — PROJECTED WINNERS','EYALETLER — TAHMİNİ KAZANANLAR')}</div></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">${cards}</div>
+    <div class="bz-regions">
+      <div class="bz-reg-hd"><span>${t('REGION','BÖLGE')}</span><span>${t('WINNERS','KAZANANLAR')}</span><span>${t('LEAD','LİDER')}</span></div>
+      ${regionRows.join('')}
+    </div>
+    <div style="font-size:10px;color:var(--c-text-muted);margin-top:6px">${t('Per-state winner = 2022 baseline shifted by the national poll swing (uniform swing).','Eyalet kazananı = ulusal anket farkıyla kaydırılan 2022 tabanı (tekdüze salınım).')}</div>
+  </div>`;
 }
 
 /* ---------- render parliament ---------- */
@@ -1597,6 +1723,7 @@ function hashStr(s){
 }
 let fcRand=Math.random;
 const FC_CACHE={};
+const RUNOFF_CACHE={};
 
 // Dirichlet concentration K is calibrated for a rich poll sample; with few
 // polls the estimate is less certain, so K shrinks (never below 30%).
@@ -1781,6 +1908,10 @@ function weightedAvgRunoff(polls, cand){
 function runoffForecast(avg, filtered, sim){
   const roPolls=filtered.filter(p=>p.runoff&&typeof p.runoff==='object'&&Object.keys(p.runoff).length);
   if(roPolls.length<2) return null;
+  // memoize: the runoff sim is deterministic (seeded) and only depends on the
+  // runoff poll set, so cache by date+count+headline values
+  const cacheKey=roPolls.map(p=>p.date+':'+p.pollster).join('|');
+  if(RUNOFF_CACHE[cacheKey]) return RUNOFF_CACHE[cacheKey];
   const freq={};
   roPolls.forEach(p=>Object.keys(p.runoff).forEach(c=>{freq[c]=(freq[c]||0)+1}));
   const pair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
@@ -1796,7 +1927,38 @@ function runoffForecast(avg, filtered, sim){
   for(let s=0;s<3000;s++){
     if(aN+gaussianSample(rng)*sigma > bN+gaussianSample(rng)*sigma) winA++;
   }
-  return {a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls};
+  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls};
+  RUNOFF_CACHE[cacheKey]=res;
+  return res;
+}
+
+// First-round threshold card (two-round presidential): each candidate's chance
+// of winning outright in round 1 (>=50% of valid votes, sim.win50) vs being
+// forced to a runoff (reaches top-2 but no majority).
+function firstRoundCard(sim){
+  if(!sim||!sim.win50) return '';
+  const fOrder=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
+  const rows=fOrder.map(p=>{
+    const w1=(sim.win50[p]||0)/sim.nSims;
+    const top2=(sim.top2[p]||0)/sim.nSims;
+    const runoff=Math.max(0,top2-w1);
+    return {p, w1, runoff, top2, color:PARTY_META[p]?PARTY_META[p].color:'#888'};
+  }).sort((a,b)=>(b.w1+b.runoff)-(a.w1+a.runoff)).slice(0,4);
+  const barRow=(label,color,v)=>`<div class="fc-row">
+    <span class="fc-row-label" style="color:${color}">${label}</span>
+    <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(v*100).toFixed(1)}%;background:${color}"></div></div>
+    <span class="fc-row-val">${pct100(v)}</span>
+  </div>`;
+  return `<div class="card">
+    <div class="card-head"><div class="bar"></div><div class="t">${t('FIRST ROUND — MAJORITY','BİRİNCİ TUR — ÇOĞUNLUK')}</div></div>
+    <div class="fc-seathead fc-seathead-hd"><span>${t('WINS ROUND 1','1. TURU KAZANIR')}</span><span></span><span>P</span></div>
+    ${rows.map(r=>barRow(partyCode(r.p),r.color,r.w1)).join('')}
+    <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('REACHES A RUNOFF','İKİNCİ TURA KALIR')}</span><span></span><span>P</span></div>
+    ${rows.map(r=>barRow(partyCode(r.p),r.color,r.runoff)).join('')}
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
+      ${t('A candidate is elected in round 1 with a majority of valid votes (≥50%); otherwise the top two face a runoff.','Bir aday birinci turda geçerli oyların çoğunluğunu (≥%50) alırsa seçilir; aksi halde ilk iki aday ikinci turda karşılaşır.')}
+    </div>
+  </div>`;
 }
 
 /* ---------- forecast tab ---------- */
@@ -2022,6 +2184,7 @@ function renderForecast(pane){
       </div>
     </div>`:''}
 
+    ${MAP_ONLY?firstRoundCard(sim):''}
     ${runoffHtml}
 
     ${constHtml}
@@ -2714,6 +2877,9 @@ function renderPollsTab(){
   // National poll average + blocs
   html+=renderPartyBars(rawAvg);
 
+  // Brazil: state-depth cards under the map (state winners + regions)
+  html+=renderStateDepth(avg);
+
   html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);
   html+=`</div>`;
@@ -2755,6 +2921,7 @@ window._600={
     if(!COUNTRIES[id]||id===COUNTRY) return;
     setCountry(id);
     for(const k in FC_CACHE) delete FC_CACHE[k];
+    for(const k in RUNOFF_CACHE) delete RUNOFF_CACHE[k];
 PARL_MODE='proj';
     PARL_VIEW='seats';
     FC_MODE='proj';
@@ -2764,6 +2931,7 @@ PARL_MODE='proj';
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
     const pollsBtn=document.querySelector('[data-tab="polls"]');
     if(pollsBtn) pollsBtn.dataset.active='true';
+    applyTheme();
     loadData().then(()=>loadConstituencies()).then(()=>{
       renderPollsTab();
     });
@@ -2771,7 +2939,44 @@ PARL_MODE='proj';
 };
 
 /* ---------- boot ---------- */
+// ARIA wiring: tablist/tab/tabpanel roles + aria-selected/aria-controls.
+function wireAria(){
+  const nav=document.getElementById('segnav');
+  if(!nav) return;
+  nav.setAttribute('role','tablist');
+  nav.setAttribute('aria-label','Sections');
+  document.querySelectorAll('.tab-trigger').forEach(b=>{
+    const tabId=b.dataset.tab;
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', b.dataset.active==='true'?'true':'false');
+    b.setAttribute('aria-controls','pane-'+tabId);
+    b.setAttribute('id','tab-'+tabId);
+    const pane=document.getElementById('pane-'+tabId);
+    if(pane){pane.setAttribute('role','tabpanel');pane.setAttribute('aria-labelledby','tab-'+tabId);pane.setAttribute('aria-hidden',pane.classList.contains('active')?'false':'true');}
+  });
+  // dynamic panes (map boxes etc.) re-render — keep aria-state consistent
+  const obs=new MutationObserver(()=>{
+    document.querySelectorAll('.tab-trigger').forEach(b=>{
+      b.setAttribute('aria-selected', b.dataset.active==='true'?'true':'false');
+    });
+  });
+  obs.observe(nav,{subtree:true,attributes:true,attributeFilter:['data-active']});
+}
+
+// Per-country theme: Brazil gets a green/yellow identity (flag accent).
+function applyTheme(){
+  const isBrazil=COUNTRY==='brazil';
+  document.body.classList.toggle('theme-brazil', isBrazil);
+  const nav=document.getElementById('segnav');
+  if(nav) nav.style.borderTopColor=isBrazil?'var(--br-accent)':'';
+  const pane=document.getElementById('pane-polls');
+  if(pane&&isBrazil){
+    // restyle live accent-driven bits via a class on the app shell
+  }
+}
 loadData().then(()=>loadConstituencies()).then(()=>{
+  wireAria();
+  applyTheme();
   renderPollsTab();
 });
 window.addEventListener('resize',()=>{fitSideCard();});

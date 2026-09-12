@@ -22,6 +22,17 @@
   --shadow-hard:0 2px 0 rgba(26,26,26,1);
   --ease:cubic-bezier(.2,.7,.3,1);
 }
+/* Brazil identity: green/yellow flag palette */
+body.theme-brazil{
+  --c-accent:#009739;
+  --c-accent-2:#00652a;
+  --br-yellow:#FFD602;
+  --br-blue:#002776;
+}
+body.theme-brazil::before{
+  content:'';display:block;position:fixed;top:0;left:0;right:0;height:4px;z-index:60;
+  background:linear-gradient(90deg,#009739 0 33%,#FFD602 33% 66%,#002776 66% 100%);
+}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -115,6 +126,34 @@ button:active{transform:translateY(1px)}
 
 /* ---------- Pollster rating column (polls table) ---------- */
 .ps-rate{font-size:11px;letter-spacing:1px;white-space:nowrap}
+
+/* ---------- Brazil identity ---------- */
+.hero-brazil{border-top:4px solid var(--br-yellow)}
+.bz-runoff{display:flex;align-items:stretch;gap:16px;margin-top:14px}
+.bz-cand{flex:1;padding:14px 16px;border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-md);background:var(--c-surface);position:relative}
+.bz-code{font-size:14px;font-weight:900;letter-spacing:0.5px}
+.bz-pct{font-size:26px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;margin-left:8px}
+.bz-bar{height:8px;background:#EFEAE0;border-radius:999px;margin:10px 0 8px;overflow:hidden}
+.bz-fill{height:100%;border-radius:999px}
+.bz-sub{font-size:10px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase}
+.bz-sub b{color:var(--c-text-main);font-family:var(--font-mono)}
+.bz-vs{align-self:center;font-size:12px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)}
+.bz-path{margin-top:12px;padding-top:10px;border-top:1px solid var(--c-rule);font-size:11px;font-weight:700;color:var(--c-text-muted);display:flex;gap:8px;flex-wrap:wrap}
+.bz-state-card{display:flex;align-items:center;gap:10px;border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-hard);padding:12px 16px;background:var(--c-surface)}
+.bz-state-code{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:900;border:2px solid var(--c-edge)}
+.bz-state-num{font-size:24px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.bz-state-lbl{font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase}
+.bz-regions{display:flex;flex-direction:column;gap:4px}
+.bz-reg-hd,.bz-reg-row{display:flex;align-items:center;gap:10px;padding:6px 4px}
+.bz-reg-hd{font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:1px solid var(--c-rule)}
+.bz-reg-hd span:nth-child(1),.bz-reg-name{width:120px;flex-shrink:0}
+.bz-reg-hd span:nth-child(2){flex:1}
+.bz-reg-hd span:nth-child(3){width:60px;text-align:right}
+.bz-reg-row{border-bottom:1px solid rgba(26,26,26,0.08)}
+.bz-reg-name{font-size:12px;font-weight:800;text-transform:uppercase;white-space:nowrap}
+.bz-reg-bars{flex:1;display:flex;gap:6px}
+.bz-reg-dot{width:26px;height:26px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:900;border:2px solid var(--c-edge)}
+.bz-reg-lead{width:60px;text-align:right;font-size:12px;font-weight:900}
 
 /* ---------- Hero ---------- */
 .hero{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-big);padding:24px 28px;width:100%;margin-bottom:20px}

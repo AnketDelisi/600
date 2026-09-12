@@ -300,6 +300,7 @@ function renderConstituencyTable(avg){
 /* ---------- load data ---------- */
 let POLLS=[], META={};
 let SCRAPED_AT=null;   // ISO timestamp of the last poll scrape (data health)
+let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting math
 
 async function loadData(){
   try{
@@ -333,7 +334,9 @@ function dataHealthLabel(){
 function pollsterWeight(pollster){
   const mae=POLLSTER_MAE[pollster];
   if(!mae) return 1;
-  const v=mae[MAE_KEY]||mae.overall;
+  // Archive-mode uses the snapshot's MAE key (overall) exactly as frozen
+  const key=ARCHIVE_MODE?'overall':MAE_KEY;
+  const v=mae[key]||mae.overall;
   return v?1/v:1;
 }
 
@@ -348,9 +351,9 @@ function weightedAverage(polls, party, noBias){
   let wSum=0, wTotal=0;
   for(const p of polls){
     if(p.votes[party]===undefined) continue;
-    // Cap effective sample size at 1500: accuracy does not scale linearly with
-    // n beyond ~1500, so mega-polls should not dominate the average.
-    const n=Math.min(1500, p.n||1000);
+    // Archive-mode replicates the frozen snapshot's math (no n-cap, no bias)
+    // so the live FCST column matches the archive page exactly.
+    const n=ARCHIVE_MODE?(p.n||1000):Math.min(1500, p.n||1000);
     const pw=pollsterWeight(p.pollster);
     const rw=recencyWeight(p.date);
     const w=n*pw*rw;
@@ -360,7 +363,7 @@ function weightedAverage(polls, party, noBias){
     let v=p.votes[party];
     // signed-bias correction: bias = poll − actual (from per-election backtest);
     // subtract it so pollster's systematic error is removed
-    if(!noBias && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
+    if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
       v-=POLLSTER_BIAS[p.pollster][party];
     }
     if(SEAT_BASED){
@@ -1785,6 +1788,7 @@ const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
 const FORECAST_SWING=2.0;
 // Apply a common bloc swing to a shares vector. Returns a new object.
 function applyNationalSwing(simVotes){
+  if(ARCHIVE_MODE) return simVotes;   // frozen snapshot predates the swing
   const b1=BLOCS&&BLOCS.bloc1, b2=BLOCS&&BLOCS.bloc2;
   if(!b1||!b2||!b1.parties||!b2.parties) return simVotes;
   const t1=b1.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
@@ -2463,8 +2467,26 @@ loadLive().then(live=>{
     return loadArchivedForecast().then(archPollSet=>{
     // Forecast reference: the frozen pre-election archive snapshot when
     // available (Sweden), else the live poll set — so the "final forecast"
-    // column stays fixed at what the model predicted before election night.
-    const avg=computeAverages(recentPolls(archPollSet||POLLS,60));
+    // column shows what the model predicted before election night. Uses the
+    // SIMULATION expected vote share (like the forecast tab's EXP column),
+    // not the raw poll average.
+    let avg=computeAverages(recentPolls(archPollSet||POLLS,60));
+    const archPolls=archPollSet||POLLS;
+    const archFiltered=recentPolls(archPolls,30);   // match the archive page's default window
+    ARCHIVE_MODE=!!archPollSet;   // match the archive's frozen weighting math
+    const archAvg=computeAverages(archFiltered);
+    ARCHIVE_MODE=false;
+    if(archFiltered.length){
+      try{
+        fcRand=mulberry32(hashStr((archPolls[0]?archPolls[0].date:'')+'|live-fcst|30|'));
+        const archSim=runForecast(archAvg,3000,archFiltered.length);
+        // expected VOTE SHARE from the simulation (normalized to 100%), exactly
+        // like the forecast tab's EXP column
+        const simAvg={};
+        PARTY_ORDER.forEach(p=>{simAvg[p]=mean(archSim.votesBy[p])});
+        avg=simAvg;
+      }catch(e){}
+    }
     const nat=live&&live.national;
     const counted=nat?nat.counted:0;
     const totalD=nat?nat.totalDistricts:0;

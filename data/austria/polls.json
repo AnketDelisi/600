@@ -1,0 +1,1490 @@
+{
+  "country": "austria",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Next_Austrian_legislative_election",
+  "scraped_at": "2026-09-12T15:18:52Z",
+  "poll_count": 99,
+  "polls": [
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-09-07",
+      "votes": {
+        "fpoe": 39.0,
+        "oevp": 21.0,
+        "spoe": 14.0,
+        "neos": 7.0,
+        "gruene": 13.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-09-08",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-08-31",
+      "votes": {
+        "fpoe": 39.0,
+        "oevp": 21.0,
+        "spoe": 15.0,
+        "neos": 7.0,
+        "gruene": 12.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-09-01",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-08-24",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 22.0,
+        "spoe": 15.0,
+        "neos": 7.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-08-25",
+      "n": 2000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2026-07-15",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 15.0,
+        "neos": 7.0,
+        "gruene": 13.0,
+        "kpoe": 5.0
+      },
+      "country": "austria",
+      "date_end": "2026-07-17",
+      "n": 1000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-07-13",
+      "votes": {
+        "fpoe": 39.0,
+        "oevp": 19.0,
+        "spoe": 18.0,
+        "neos": 7.0,
+        "gruene": 8.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-07-15",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-06-29",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 19.0,
+        "spoe": 16.0,
+        "neos": 8.0,
+        "gruene": 12.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-07-07",
+      "n": 2000
+    },
+    {
+      "pollster": "Unique Research",
+      "date": "2026-06-15",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 22.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-06-18",
+      "n": 819
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-06-15",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 20.0,
+        "spoe": 18.0,
+        "neos": 7.0,
+        "gruene": 12.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-06-16",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-06-01",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 18.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 12.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-06-09",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-05-22",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 17.0,
+        "neos": 8.0,
+        "gruene": 12.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2026-06-02",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-05-22",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-05-26",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-05-18",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-05-19",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-05-11",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 20.0,
+        "spoe": 18.0,
+        "neos": 7.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-05-12",
+      "n": 2000
+    },
+    {
+      "pollster": "OGM",
+      "date": "2026-04-27",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 16.0,
+        "neos": 8.0,
+        "gruene": 13.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-05-20",
+      "n": 3017
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-04-13",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 19.0,
+        "spoe": 19.0,
+        "neos": 7.0,
+        "gruene": 10.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-04-16",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-04-13",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 20.0,
+        "spoe": 18.0,
+        "neos": 7.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-04-14",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-04-06",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 18.0,
+        "spoe": 19.0,
+        "neos": 7.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-04-07",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-03-30",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 18.0,
+        "spoe": 19.0,
+        "neos": 8.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-03-31",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-03-23",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 7.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-03-24",
+      "n": 2000
+    },
+    {
+      "pollster": "Unique Research",
+      "date": "2026-03-19",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 22.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-03-26",
+      "n": 821
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-03-16",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 18.0,
+        "neos": 7.0,
+        "gruene": 9.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-03-17",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-02-23",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 19.0,
+        "spoe": 19.0,
+        "neos": 7.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-02-25",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-02-23",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 22.0,
+        "spoe": 16.0,
+        "neos": 9.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-02-24",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-02-16",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 17.0,
+        "neos": 8.0,
+        "gruene": 9.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-02-17",
+      "n": 2000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2026-02-11",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 22.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-02-17",
+      "n": 2600
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-02-09",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 19.0,
+        "neos": 7.0,
+        "gruene": 9.0,
+        "kpoe": 5.0
+      },
+      "country": "austria",
+      "date_end": "2026-02-10",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-02-02",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 24.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-02-03",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2026-01-12",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 20.0,
+        "neos": 8.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-01-14",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-01-12",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2026-01-14",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-01-05",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 19.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-01-07",
+      "n": 2000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2026-01-02",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 20.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-01-05",
+      "n": 1509
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-12-08",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 18.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-12-09",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-11-17",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 19.0,
+        "spoe": 18.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-11-18",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-11-03",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 20.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-11-04",
+      "n": 2000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2025-10-17",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 17.0,
+        "neos": 9.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2025-10-21",
+      "n": 1215
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-10-13",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 21.0,
+        "spoe": 17.0,
+        "neos": 7.0,
+        "gruene": 11.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2025-10-14",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-10-06",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 20.0,
+        "spoe": 17.0,
+        "neos": 8.0,
+        "gruene": 10.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2025-10-07",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-09-15",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-09-16",
+      "n": 2000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2025-09-10",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 10.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-09-12",
+      "n": 1500
+    },
+    {
+      "pollster": "OGM",
+      "date": "2025-09-09",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 23.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-09-11",
+      "n": 1027
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-09-08",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 18.0,
+        "neos": 8.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-09-09",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-09-01",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 19.0,
+        "neos": 9.0,
+        "gruene": 10.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-09-02",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-08-15",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 19.0,
+        "spoe": 20.0,
+        "neos": 9.0,
+        "gruene": 9.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2025-08-27",
+      "n": 1000
+    },
+    {
+      "pollster": "Market",
+      "date": "2025-07-24",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 22.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-07-30",
+      "n": 810
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-07-14",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 19.0,
+        "spoe": 20.0,
+        "neos": 9.0,
+        "gruene": 10.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2025-07-17",
+      "n": 1000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2025-06-06",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 24.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 11.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-06-07",
+      "n": 1250
+    },
+    {
+      "pollster": "Unique Research",
+      "date": "2025-06-02",
+      "votes": {
+        "fpoe": 31.0,
+        "oevp": 23.0,
+        "spoe": 19.0,
+        "neos": 13.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-06-05",
+      "n": 800
+    },
+    {
+      "pollster": "Market",
+      "date": "2025-05-28",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-06-03",
+      "n": 824
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-05-26",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 20.0,
+        "spoe": 21.0,
+        "neos": 9.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-05-27",
+      "n": 2000
+    },
+    {
+      "pollster": "OGM",
+      "date": "2025-05-23",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 22.0,
+        "spoe": 21.0,
+        "neos": 12.0,
+        "gruene": 9.0
+      },
+      "country": "austria",
+      "date_end": "2025-05-26",
+      "n": 1011
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-05-19",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 20.0,
+        "spoe": 20.0,
+        "neos": 8.0,
+        "gruene": 9.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2025-05-21",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-05-05",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 22.0,
+        "spoe": 21.0,
+        "neos": 9.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-05-13",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-04-28",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 21.0,
+        "spoe": 21.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-05-06",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-04-18",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 22.0,
+        "spoe": 21.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-29",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-04-14",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 22.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-22",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-04-14",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 20.0,
+        "spoe": 22.0,
+        "neos": 9.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-16",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-04-14",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-15",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-04-07",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-15",
+      "n": 2000
+    },
+    {
+      "pollster": "OGM",
+      "date": "2025-04-04",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 23.0,
+        "spoe": 21.0,
+        "neos": 11.0,
+        "gruene": 9.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-09",
+      "n": 1042
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-03-31",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 21.0,
+        "spoe": 21.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-08",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-03-24",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-04-01",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-03-17",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 11.0,
+        "gruene": 9.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-03-25",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-03-17",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 22.0,
+        "spoe": 21.0,
+        "neos": 12.0,
+        "gruene": 8.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-03-18",
+      "n": 2000
+    },
+    {
+      "pollster": "Market",
+      "date": "2025-03-05",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 21.0,
+        "spoe": 21.0,
+        "neos": 12.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-03-07",
+      "n": 829
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-03-03",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 21.0,
+        "spoe": 21.0,
+        "neos": 11.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-03-11",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-02-24",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 20.0,
+        "spoe": 21.0,
+        "neos": 11.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-03-04",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-02-24",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 20.0,
+        "spoe": 23.0,
+        "neos": 9.0,
+        "gruene": 9.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-26",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-02-24",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 19.0,
+        "spoe": 21.0,
+        "neos": 11.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-25",
+      "n": 2000
+    },
+    {
+      "pollster": "OGM",
+      "date": "2025-02-17",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 19.0,
+        "spoe": 21.0,
+        "neos": 13.0,
+        "gruene": 10.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-18",
+      "n": 941
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-02-17",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 18.0,
+        "spoe": 22.0,
+        "neos": 11.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-18",
+      "n": 2000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2025-02-13",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 19.0,
+        "spoe": 22.0,
+        "neos": 11.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-15",
+      "n": 1250
+    },
+    {
+      "pollster": "Spectra",
+      "date": "2025-02-13",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 19.0,
+        "spoe": 22.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-14",
+      "n": 1001
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-02-10",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 19.0,
+        "spoe": 23.0,
+        "neos": 10.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-11",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-02-03",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 19.0,
+        "spoe": 22.0,
+        "neos": 9.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-02-04",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-01-27",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 19.0,
+        "spoe": 22.0,
+        "neos": 10.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-01-28",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-01-13",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 18.0,
+        "spoe": 21.0,
+        "neos": 12.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-01-21",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2025-01-13",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 20.0,
+        "spoe": 20.0,
+        "neos": 11.0,
+        "gruene": 8.0
+      },
+      "country": "austria",
+      "date_end": "2025-01-15",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-01-13",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 17.0,
+        "spoe": 19.0,
+        "neos": 12.0,
+        "gruene": 9.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-01-14",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2025-01-07",
+      "votes": {
+        "fpoe": 39.0,
+        "oevp": 17.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 10.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-01-08",
+      "n": 1000
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2025-01-03",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 21.0,
+        "spoe": 19.0,
+        "neos": 11.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2025-01-04",
+      "n": 1250
+    },
+    {
+      "pollster": "IFDD",
+      "date": "2024-12-17",
+      "votes": {
+        "fpoe": 37.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-18",
+      "n": 1250
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-12-16",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 20.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-17",
+      "n": 2000
+    },
+    {
+      "pollster": "Market",
+      "date": "2024-12-13",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 22.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-17",
+      "n": 809
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-12-09",
+      "votes": {
+        "fpoe": 36.0,
+        "oevp": 21.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-10",
+      "n": 2000
+    },
+    {
+      "pollster": "Unique Research",
+      "date": "2024-12-02",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 20.0,
+        "spoe": 21.0,
+        "neos": 12.0,
+        "gruene": 8.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-04",
+      "n": 800
+    },
+    {
+      "pollster": "INSA",
+      "date": "2024-12-02",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 21.0,
+        "spoe": 20.0,
+        "neos": 9.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-04",
+      "n": 1004
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-12-02",
+      "votes": {
+        "fpoe": 35.0,
+        "oevp": 20.0,
+        "spoe": 19.0,
+        "neos": 11.0,
+        "gruene": 8.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2024-12-03",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-11-25",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 21.0,
+        "spoe": 19.0,
+        "neos": 11.0,
+        "gruene": 8.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2024-11-26",
+      "n": 2000
+    },
+    {
+      "pollster": "OGM",
+      "date": "2024-11-25",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 24.0,
+        "spoe": 20.0,
+        "neos": 12.0,
+        "gruene": 7.0
+      },
+      "country": "austria",
+      "date_end": "2024-11-26",
+      "n": 1018
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-11-18",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 23.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-11-19",
+      "n": 2000
+    },
+    {
+      "pollster": "INSA",
+      "date": "2024-11-11",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 22.0,
+        "spoe": 21.0,
+        "neos": 9.0,
+        "gruene": 8.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2024-11-13",
+      "n": 1000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-11-11",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 23.0,
+        "spoe": 21.0,
+        "neos": 9.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-11-12",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-11-04",
+      "votes": {
+        "fpoe": 34.0,
+        "oevp": 23.0,
+        "spoe": 21.0,
+        "neos": 9.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-11-05",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-10-28",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 23.0,
+        "spoe": 21.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-10-29",
+      "n": 2000
+    },
+    {
+      "pollster": "OGM",
+      "date": "2024-10-25",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 25.0,
+        "spoe": 20.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2024-10-28",
+      "n": 1008
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-10-21",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 23.0,
+        "spoe": 19.0,
+        "neos": 11.0,
+        "gruene": 8.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2024-10-22",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-10-14",
+      "votes": {
+        "fpoe": 32.0,
+        "oevp": 25.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 8.0,
+        "kpoe": 3.0
+      },
+      "country": "austria",
+      "date_end": "2024-10-15",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-10-07",
+      "votes": {
+        "fpoe": 33.0,
+        "oevp": 26.0,
+        "spoe": 19.0,
+        "neos": 10.0,
+        "gruene": 7.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2024-10-08",
+      "n": 2000
+    },
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2024-09-30",
+      "votes": {
+        "fpoe": 30.0,
+        "oevp": 25.0,
+        "spoe": 20.0,
+        "neos": 11.0,
+        "gruene": 8.0,
+        "kpoe": 2.0
+      },
+      "country": "austria",
+      "date_end": "2024-10-01",
+      "n": 2000
+    }
+  ]
+}

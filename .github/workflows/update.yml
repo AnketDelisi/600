@@ -28,6 +28,7 @@ jobs:
       - name: Scrape polls
         run: |
           python scraper/scrape_all.py
+          python scraper/scrape_austria.py
           python scraper/scrape_israel.py
           python scraper/scrape_saxony_anhalt.py
           python scraper/scrape_mecklenburg_vorpommern.py

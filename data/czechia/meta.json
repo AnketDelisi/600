@@ -1,0 +1,10 @@
+{
+  "country": "czechia",
+  "name": "Czechia",
+  "election_date": "2029",
+  "seats": 200,
+  "threshold": 5.0,
+  "method": "hare_niemeyer",
+  "constituencies": false,
+  "notes": "Chamber of Deputies: PR across 14 regions (multi-member), 5% national threshold; modelled as a single national district."
+}

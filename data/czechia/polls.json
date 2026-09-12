@@ -1,0 +1,399 @@
+{
+  "country": "czechia",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Next_Czech_parliamentary_election",
+  "scraped_at": "2026-09-12T18:05:32Z",
+  "poll_count": 19,
+  "polls": [
+    {
+      "pollster": "NMS",
+      "date": "2026-08-28",
+      "votes": {
+        "ano": 31.0,
+        "ods": 12.2,
+        "kducsl": 3.2,
+        "top09": 2.8,
+        "stan": 18.1,
+        "pirati": 8.9,
+        "zeleni": 1.2,
+        "spd": 7.4,
+        "svobodni": 1.2,
+        "pro": 1.5,
+        "trikolora": 0.3,
+        "auto": 4.4,
+        "kscm": 1.6,
+        "socdem": 0.9,
+        "prisaha": 0.9,
+        "nc": 2.8
+      },
+      "country": "czechia",
+      "date_end": "2026-09-02",
+      "n": 1044
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-08-03",
+      "votes": {
+        "ano": 30.5,
+        "ods": 15.5,
+        "kducsl": 3.5,
+        "top09": 2.0,
+        "stan": 17.0,
+        "pirati": 8.5,
+        "spd": 6.5,
+        "auto": 5.0,
+        "nc": 2.5
+      },
+      "country": "czechia",
+      "date_end": "2026-08-21",
+      "n": 991
+    },
+    {
+      "pollster": "Median",
+      "date": "2026-07-01",
+      "votes": {
+        "ano": 34.0,
+        "ods": 12.0,
+        "kducsl": 3.5,
+        "top09": 3.0,
+        "stan": 15.0,
+        "pirati": 8.0,
+        "spd": 7.5,
+        "auto": 4.5,
+        "kscm": 3.5,
+        "nc": 3.5
+      },
+      "country": "czechia",
+      "date_end": "2026-07-31",
+      "n": 1022
+    },
+    {
+      "pollster": "STEM",
+      "date": "2026-06-16",
+      "votes": {
+        "ano": 32.2,
+        "ods": 13.0,
+        "kducsl": 2.4,
+        "top09": 3.4,
+        "stan": 13.5,
+        "pirati": 7.6,
+        "zeleni": 1.8,
+        "spd": 7.9,
+        "auto": 5.3,
+        "kscm": 1.4,
+        "prisaha": 1.2,
+        "nc": 3.2
+      },
+      "country": "czechia",
+      "date_end": "2026-06-21",
+      "n": 1352
+    },
+    {
+      "pollster": "NMS",
+      "date": "2026-06-03",
+      "votes": {
+        "ano": 31.6,
+        "ods": 13.9,
+        "kducsl": 2.4,
+        "top09": 3.0,
+        "stan": 14.8,
+        "pirati": 7.4,
+        "zeleni": 1.3,
+        "spd": 7.5,
+        "svobodni": 0.7,
+        "pro": 1.1,
+        "trikolora": 0.3,
+        "auto": 5.8,
+        "kscm": 2.4,
+        "socdem": 0.8,
+        "prisaha": 1.0,
+        "nc": 3.9
+      },
+      "country": "czechia",
+      "date_end": "2026-06-08",
+      "n": 1035
+    },
+    {
+      "pollster": "Median",
+      "date": "2026-06-01",
+      "votes": {
+        "ano": 34.0,
+        "ods": 13.0,
+        "kducsl": 3.5,
+        "top09": 3.0,
+        "stan": 12.5,
+        "pirati": 7.0,
+        "spd": 6.5,
+        "auto": 5.0,
+        "kscm": 4.0,
+        "prisaha": 2.0,
+        "nc": 4.0
+      },
+      "country": "czechia",
+      "date_end": "2026-06-30",
+      "n": 1022
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-05-18",
+      "votes": {
+        "ano": 31.5,
+        "ods": 15.5,
+        "kducsl": 4.0,
+        "top09": 2.5,
+        "stan": 15.5,
+        "pirati": 9.5,
+        "spd": 6.5,
+        "auto": 5.0,
+        "nc": 2.5
+      },
+      "country": "czechia",
+      "date_end": "2026-06-05",
+      "n": 1003
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2026-05-11",
+      "votes": {
+        "ano": 31.5,
+        "ods": 14.9,
+        "kducsl": 3.4,
+        "top09": 3.5,
+        "stan": 14.5,
+        "pirati": 8.3,
+        "zeleni": 1.1,
+        "spd": 6.2,
+        "svobodni": 1.4,
+        "pro": 1.0,
+        "auto": 4.4,
+        "prisaha": 1.1,
+        "nc": 3.0
+      },
+      "country": "czechia",
+      "date_end": "2026-05-14",
+      "n": 1533
+    },
+    {
+      "pollster": "Median",
+      "date": "2026-05-01",
+      "votes": {
+        "ano": 35.5,
+        "ods": 12.0,
+        "kducsl": 2.5,
+        "top09": 3.0,
+        "stan": 14.5,
+        "pirati": 8.5,
+        "spd": 6.5,
+        "auto": 3.5,
+        "kscm": 3.0,
+        "socdem": 2.0,
+        "nc": 4.5
+      },
+      "country": "czechia",
+      "date_end": "2026-05-31",
+      "n": 1020
+    },
+    {
+      "pollster": "NMS",
+      "date": "2026-04-30",
+      "votes": {
+        "ano": 32.5,
+        "ods": 14.8,
+        "kducsl": 2.7,
+        "top09": 2.5,
+        "stan": 14.5,
+        "pirati": 6.7,
+        "zeleni": 1.6,
+        "spd": 8.7,
+        "auto": 4.8,
+        "kscm": 2.3,
+        "socdem": 1.1,
+        "prisaha": 1.3,
+        "nc": 2.8
+      },
+      "country": "czechia",
+      "date_end": "2026-05-05",
+      "n": 1022
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-04-13",
+      "votes": {
+        "ano": 32.0,
+        "ods": 15.5,
+        "kducsl": 3.5,
+        "top09": 2.0,
+        "stan": 16.0,
+        "pirati": 9.5,
+        "spd": 6.5,
+        "auto": 5.0,
+        "nc": 3.0
+      },
+      "country": "czechia",
+      "date_end": "2026-04-30",
+      "n": 995
+    },
+    {
+      "pollster": "NMS",
+      "date": "2026-04-01",
+      "votes": {
+        "ano": 32.7,
+        "ods": 13.9,
+        "kducsl": 2.5,
+        "top09": 3.1,
+        "stan": 13.7,
+        "pirati": 8.0,
+        "zeleni": 1.4,
+        "spd": 7.4,
+        "auto": 4.4,
+        "kscm": 2.8,
+        "socdem": 1.0,
+        "prisaha": 1.4,
+        "nc": 4.1
+      },
+      "country": "czechia",
+      "date_end": "2026-04-07",
+      "n": 1031
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-03-23",
+      "votes": {
+        "ano": 34.0,
+        "ods": 15.0,
+        "kducsl": 3.0,
+        "top09": 2.5,
+        "stan": 15.5,
+        "pirati": 9.5,
+        "spd": 6.5,
+        "auto": 5.0,
+        "nc": 3.0
+      },
+      "country": "czechia",
+      "date_end": "2026-04-02",
+      "n": 1017
+    },
+    {
+      "pollster": "STEM",
+      "date": "2026-03-11",
+      "votes": {
+        "ano": 34.2,
+        "ods": 12.2,
+        "kducsl": 2.4,
+        "top09": 3.1,
+        "stan": 13.3,
+        "pirati": 8.1,
+        "zeleni": 2.5,
+        "spd": 7.1,
+        "pro": 1.0,
+        "auto": 4.8,
+        "kscm": 1.3,
+        "prisaha": 1.1,
+        "nc": 3.7
+      },
+      "country": "czechia",
+      "date_end": "2026-03-16",
+      "n": 1223
+    },
+    {
+      "pollster": "NMS",
+      "date": "2026-03-05",
+      "votes": {
+        "ano": 31.5,
+        "ods": 14.1,
+        "kducsl": 3.0,
+        "top09": 2.6,
+        "stan": 13.6,
+        "pirati": 8.3,
+        "zeleni": 1.4,
+        "spd": 7.8,
+        "auto": 7.1,
+        "kscm": 2.5,
+        "socdem": 1.0,
+        "prisaha": 1.1,
+        "nc": 2.6
+      },
+      "country": "czechia",
+      "date_end": "2026-03-10",
+      "n": 1048
+    },
+    {
+      "pollster": "NMS",
+      "date": "2026-02-13",
+      "votes": {
+        "ano": 32.6,
+        "ods": 14.7,
+        "kducsl": 2.6,
+        "top09": 2.4,
+        "stan": 14.6,
+        "pirati": 7.2,
+        "spd": 6.5,
+        "svobodni": 1.4,
+        "pro": 1.6,
+        "auto": 4.7,
+        "kscm": 1.7,
+        "prisaha": 1.4,
+        "nc": 4.7
+      },
+      "country": "czechia",
+      "date_end": "2026-02-17",
+      "n": 1001
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-02-09",
+      "votes": {
+        "ano": 34.5,
+        "ods": 14.5,
+        "kducsl": 3.0,
+        "top09": 2.0,
+        "stan": 15.5,
+        "pirati": 9.0,
+        "spd": 6.5,
+        "auto": 5.0,
+        "nc": 3.5
+      },
+      "country": "czechia",
+      "date_end": "2026-02-27",
+      "n": 1031
+    },
+    {
+      "pollster": "Kantar",
+      "date": "2026-01-12",
+      "votes": {
+        "ano": 34.5,
+        "ods": 16.0,
+        "kducsl": 3.0,
+        "top09": 4.5,
+        "stan": 14.0,
+        "pirati": 9.5,
+        "spd": 6.5,
+        "auto": 5.0
+      },
+      "country": "czechia",
+      "date_end": "2026-01-30",
+      "n": 1023
+    },
+    {
+      "pollster": "STEM",
+      "date": "2026-01-02",
+      "votes": {
+        "ano": 34.6,
+        "ods": 14.1,
+        "kducsl": 3.4,
+        "top09": 4.3,
+        "stan": 12.6,
+        "pirati": 8.4,
+        "zeleni": 1.6,
+        "spd": 6.8,
+        "pro": 1.1,
+        "auto": 4.9,
+        "kscm": 1.3,
+        "prisaha": 1.3
+      },
+      "country": "czechia",
+      "date_end": "2026-01-07",
+      "n": 1089
+    }
+  ]
+}

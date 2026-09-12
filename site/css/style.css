@@ -127,20 +127,16 @@ button:active{transform:translateY(1px)}
 /* ---------- Pollster rating column (polls table) ---------- */
 .ps-rate{font-size:11px;letter-spacing:1px;white-space:nowrap}
 
-/* ---------- Live tab: majority bar graph + seat counter ---------- */
+/* ---------- Live tab: majority single bar + seat ticks ---------- */
 .lv-majbanner{border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-hard);padding:14px 16px;background:var(--c-surface);margin-bottom:12px}
-.lv-maj-hd{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:900;letter-spacing:1.2px;color:var(--c-text-muted);text-transform:uppercase;margin-bottom:8px}
-.lv-maj-th{font-family:var(--font-mono);font-size:13px;color:var(--c-text-main)}
-.lv-bar-row{display:flex;align-items:center;gap:10px;padding:5px 0}
-.lv-bar-label{width:110px;flex-shrink:0;font-size:11px;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap}
-.lv-bar-track{flex:1;height:22px;background:#EFEAE0;border-radius:var(--radius-sm);overflow:hidden;position:relative}
-.lv-bar-fill{height:100%;border-radius:var(--radius-sm);transition:width .6s var(--ease)}
-.lv-bar-seats{width:44px;flex-shrink:0;text-align:right;font-family:var(--font-mono);font-size:17px;font-weight:900;font-variant-numeric:tabular-nums}
-.lv-bar-tag{width:52px;flex-shrink:0;text-align:center;font-size:9px;font-weight:900;letter-spacing:1px;color:#fff;border-radius:var(--radius-sm);padding:3px 0}
-.lv-seat-ticks{display:flex;gap:3px;flex-wrap:wrap;margin-top:10px;justify-content:center}
-.lv-seat-tick{width:8px;height:8px;border-radius:2px;opacity:.9}
-.lv-seat-tick.live{animation:lvpulse 1.6s ease-in-out infinite}
-@keyframes lvpulse{0%,100%{opacity:.45}50%{opacity:1}}
+.lv-maj-hd{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase;margin-bottom:8px}
+.lv-maj-hd b{font-family:var(--font-mono);font-size:13px;color:var(--c-text-main)}
+.lv-maj-th{font-family:var(--font-mono);font-size:11px;color:var(--c-text-main)}
+.lv-single-bar{display:flex;height:26px;background:#EFEAE0;border-radius:var(--radius-sm);overflow:hidden;position:relative}
+.lv-single-fill{height:100%;transition:width .6s var(--ease)}
+.lv-single-gap{flex:1;background:repeating-linear-gradient(45deg,#E4DDCD,#E4DDCD 6px,#EDE7D8 6px,#EDE7D8 12px)}
+.lv-single-th{position:absolute;top:-4px;bottom:-4px;width:3px;background:#1A1A1A;border-radius:2px}
+.lv-single-th::after{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #1A1A1A}
 
 /* Live calls */
 .lv-calls{display:flex;flex-direction:column}

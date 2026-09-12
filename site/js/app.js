@@ -2469,32 +2469,33 @@ loadLive().then(live=>{
 
     const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updated||'—'}`;
 
-    // --- majority banner + seat counter (bloc totals from live seats) ---
+    // --- majority banner: horizontal bloc bars vs the majority threshold ---
     let majBanner='';
     if(seats&&seatsTotal&&BLOCS.bloc1&&BLOCS.bloc2){
       const b1Seats=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
       const b2Seats=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
       const majNeed=Math.floor(SEATS_TOTAL/2)+1;
       const b1Lead=b1Seats>=majNeed, b2Lead=b2Seats>=majNeed;
+      const maxSeats=Math.max(b1Seats,b2Seats,majNeed);
       const tick=(p,latest)=>`<span class="lv-seat-tick${latest?' live':''}" style="background:${PARTY_META[p]?PARTY_META[p].color:'#888'}" title="${partyCode(p)}"></span>`;
       // seat ticks per party (latest reporting valkrets pulsing)
       const liveSeatTicks=PARTY_ORDER.map(p=>{
         const n=seats[p]||0;
         return new Array(Math.min(n,40)).fill(0).map((_,i)=>tick(p,i===n-1&&countedPct<100)).join('');
       }).join('');
-      const majCard=(name,color,ns,lead)=>`<div class="lv-maj" style="${lead?'outline:3px solid '+color:''}">
-        <div class="lv-maj-name" style="color:${color}">${name}</div>
-        <div class="lv-maj-seats">${ns}</div>
-        <div class="lv-maj-sub">${lead?t('PROJECTED MAJORITY','TAHMİNİ ÇOĞUNLUK'):t('seats','sandalye')} · ${majNeed} ${t('to govern','hükümet için')}</div>
+      const bar=(label,color,ns,lead)=>`<div class="lv-bar-row">
+        <span class="lv-bar-label">${label}</span>
+        <div class="lv-bar-track">
+          <div class="lv-bar-fill" style="width:${Math.max(2,ns/maxSeats*100)}%;background:${color};${lead?'outline:2px solid '+color:''}"></div>
+        </div>
+        <span class="lv-bar-seats" style="${lead?'color:'+color+'':''}">${ns}</span>
+        <span class="lv-bar-tag${lead?' lead':''}" style="${lead?'background:'+color:''}">${lead?t('MAJ','ÇOĞ'):'&nbsp;'}</span>
       </div>`;
       majBanner=`<div class="lv-majbanner">
-        ${majCard(BLOCS.bloc1.name,BLOCS.bloc1.color||'#C83737',b1Seats,b1Lead)}
-        <div class="lv-maj threshold">
-          <div class="lv-maj-name">${t('MAJORITY','ÇOĞUNLUK')}</div>
-          <div class="lv-maj-seats">${majNeed}</div>
-          <div class="lv-maj-sub">${SEATS_TOTAL} ${t('seats','sandalye')}</div>
-        </div>
-        ${majCard(BLOCS.bloc2.name,BLOCS.bloc2.color||'#2E6EA8',b2Seats,b2Lead)}
+        <div class="lv-maj-hd"><span>${t('MAJORITY','ÇOĞUNLUK')}</span><span class="lv-maj-th">${majNeed}</span></div>
+        ${bar(BLOCS.bloc1.name,BLOCS.bloc1.color||'#C83737',b1Seats,b1Lead)}
+        ${bar(BLOCS.bloc2.name,BLOCS.bloc2.color||'#2E6EA8',b2Seats,b2Lead)}
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase;margin-top:4px">${SEATS_TOTAL} ${t('seats','sandalye')} · ${majNeed} ${t('needed to govern','hükümet için gerekli')}</div>
       </div>
       <div class="lv-seat-ticks">${liveSeatTicks}</div>`;
     }
@@ -2503,9 +2504,6 @@ loadLive().then(live=>{
       <div class="hero fc-hero">
         <div class="hero-title">${T.tabs.live} — ${COUNTRY_NAME}</div>
         <div class="hero-date">${heroLine}</div>
-        <div style="display:flex;justify-content:flex-end;margin-top:10px">
-          <button class="tab-social" id="lv-share-btn" style="pointer-events:auto">${t('SHARE RESULT','SONUCU PAYLAŞ')} ⤓</button>
-        </div>
       </div>
 
       ${majBanner}
@@ -2551,17 +2549,6 @@ loadLive().then(live=>{
     if(shot) shot.addEventListener('click',()=>captureBoxMap('live-map-box', COUNTRY+'-live-map.png'));
     const lvParlShot=$('lv-parl-shot-btn');
     if(lvParlShot) lvParlShot.addEventListener('click',()=>captureBoxMap('live-parl-box', COUNTRY+'-live-parliament.png'));
-    const shareBtn=$('lv-share-btn');
-    if(shareBtn&&seats){
-      shareBtn.addEventListener('click',()=>{
-        const svg=buildLiveShareCardSVG(seats, countedPct, updated);
-        if(!svg) return;
-        const holder=document.createElement('div');
-        holder.innerHTML=svg;
-        const el=holder.querySelector('svg');
-        if(el) captureMapPng(el, COUNTRY+'-live-'+Date.now()+'.png');
-      });
-    }
     // auto-refresh every 30s while the LIVE tab is visible
     if(LIVE_INTERVAL) clearInterval(LIVE_INTERVAL);
     LIVE_INTERVAL=setInterval(()=>{
@@ -2600,53 +2587,6 @@ function bindLiveMap(live){
     });
   }
   render();
-}
-
-// Composite share card as a single SVG (branding + parliament + bloc totals),
-// so the existing captureMapPng pipeline can rasterize the whole card.
-function buildLiveShareCardSVG(seats, countedPct, updated){
-  const total=Object.values(seats).reduce((a,b)=>a+b,0);
-  if(!total) return '';
-  const W=720, H=520;
-  const parl=buildParliamentSVG(seats);
-  // inner parliament viewBox (e.g. "0 -26 360 226") -> place scaled inside card
-  const m=parl.match(/viewBox="([^"]+)"/);
-  const vb=m?m[1].split(/\s+/).map(Number):[0,0,360,226];
-  const pw=vb[2], ph=vb[3];
-  const pwTarget=420, phTarget=pwTarget*ph/pw;
-  const px=(W-pwTarget)/2, py=100;
-  const b1=BLOCS.bloc1&&BLOCS.bloc1.parties?BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0):0;
-  const b2=BLOCS.bloc2&&BLOCS.bloc2.parties?BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0):0;
-  const majNeed=Math.floor(SEATS_TOTAL/2)+1;
-  const c1=(BLOCS.bloc1&&BLOCS.bloc1.color)||'#C83737';
-  const c2=(BLOCS.bloc2&&BLOCS.bloc2.color)||'#2E6EA8';
-  const name1=(BLOCS.bloc1&&BLOCS.bloc1.name)||'';
-  const name2=(BLOCS.bloc2&&BLOCS.bloc2.name)||'';
-  const inner=parl.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'');
-  const boxY=py+phTarget+28;
-  const box=(x,label,val,col,inv)=>{
-    const bg=inv?'#1A1A1A':'#FFFFFF';
-    const fg=inv?'#FFFFFF':'#161616';
-    const sub=inv?'rgba(255,255,255,.65)':'#5F584E';
-    return `<g transform="translate(${x} ${boxY})">
-      <rect width="190" height="86" rx="6" fill="${bg}" stroke="#1A1A1A" stroke-width="2"/>
-      <text x="95" y="26" text-anchor="middle" font-family="Atlas Grotesk,Arial,sans-serif" font-size="12" font-weight="900" letter-spacing="1.2" fill="${col||sub}">${label}</text>
-      <text x="95" y="64" text-anchor="middle" font-family="Decima Mono Pro,monospace" font-size="34" font-weight="900" fill="${fg}">${val}</text>
-    </g>`;
-  };
-  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
-    <rect width="${W}" height="${H}" fill="#F9F7F0"/>
-    <rect width="${W}" height="6" fill="#C83737"/>
-    <text x="36" y="52" font-family="Atlas Grotesk,Arial,sans-serif" font-size="24" font-weight="900" letter-spacing="1.5" fill="#161616">ALTICIFTSIFIR</text>
-    <text x="36" y="76" font-family="Atlas Grotesk,Arial,sans-serif" font-size="14" font-weight="900" letter-spacing="1.5" fill="#C83737">${COUNTRY_NAME} — ${t('ELECTION NIGHT','SEÇİM GECESİ')}</text>
-    <text x="${W-36}" y="52" text-anchor="end" font-family="Decima Mono Pro,monospace" font-size="13" font-weight="700" fill="#5F584E">${countedPct}% ${t('counted','sayıldı')}</text>
-    <text x="${W-36}" y="76" text-anchor="end" font-family="Decima Mono Pro,monospace" font-size="11" font-weight="700" fill="#5F584E">${updated||''}</text>
-    <svg x="${px}" y="${py}" width="${pwTarget}" height="${phTarget}" viewBox="${vb.join(' ')}">${inner}</svg>
-    ${box(36,name1,b1,c1,false)}
-    ${box((W-190)/2,t('MAJORITY','ÇOĞUNLUK'),majNeed,null,true)}
-    ${box(W-36-190,name2,b2,c2,false)}
-    <text x="${W/2}" y="${H-18}" text-anchor="middle" font-family="Atlas Grotesk,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#5F584E">anketdelisi.com · @manyakanket61</text>
-  </svg>`;
 }
 
 // Called districts: a valkrets is "called" once >=95% of its districts report.

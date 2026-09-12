@@ -299,6 +299,7 @@ function renderConstituencyTable(avg){
 
 /* ---------- load data ---------- */
 let POLLS=[], META={};
+let SCRAPED_AT=null;   // ISO timestamp of the last poll scrape (data health)
 
 async function loadData(){
   try{
@@ -311,10 +312,21 @@ async function loadData(){
     const pollsJson=await pollsResp.json();
     const metaJson=await metaResp.json();
     POLLS=pollsJson.polls||[];
+    SCRAPED_AT=pollsJson.scraped_at||null;
     META=metaJson;
   }catch(e){
     console.error('Failed to load data:',e);
   }
+}
+
+// Data-health label: how long ago the poll data was scraped, with a freshness
+// color (green <12h, amber <48h, red older).
+function dataHealthLabel(){
+  if(!SCRAPED_AT) return {txt:t('scrape time unknown','kazıma zamanı bilinmiyor'),col:'var(--c-text-muted)'};
+  const ageH=(Date.now()-new Date(SCRAPED_AT).getTime())/3.6e6;
+  const fmt=ageH<1?Math.round(ageH*60)+'m':Math.round(ageH)+'h';
+  const col=ageH<12?'#0B9E17':(ageH<48?'#E0A800':'var(--c-accent)');
+  return {txt:t('polls scraped','anketler kazındı')+' '+fmt+' '+t('ago','önce'),col};
 }
 
 /* ---------- average calculator ---------- */
@@ -478,8 +490,9 @@ function renderSidebar(prevDays, prevPollster){
     <div class="sb-last-election" id="sb-election"></div></div>`;
 
   // Info
+  const health=dataHealthLabel();
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.info}</div></div>
-    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound}`:`${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}`}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}</div></div>`;
+    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound}`:`${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}`}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}<br><span style="font-weight:900;color:${health.col}">◆ ${health.txt}</span></div></div>`;
 
   c.innerHTML=html;
 
@@ -2455,11 +2468,47 @@ loadLive().then(live=>{
     const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
 
     const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updated||'—'}`;
+
+    // --- majority banner + seat counter (bloc totals from live seats) ---
+    let majBanner='';
+    if(seats&&seatsTotal&&BLOCS.bloc1&&BLOCS.bloc2){
+      const b1Seats=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
+      const b2Seats=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
+      const majNeed=Math.floor(SEATS_TOTAL/2)+1;
+      const b1Lead=b1Seats>=majNeed, b2Lead=b2Seats>=majNeed;
+      const tick=(p,latest)=>`<span class="lv-seat-tick${latest?' live':''}" style="background:${PARTY_META[p]?PARTY_META[p].color:'#888'}" title="${partyCode(p)}"></span>`;
+      // seat ticks per party (latest reporting valkrets pulsing)
+      const liveSeatTicks=PARTY_ORDER.map(p=>{
+        const n=seats[p]||0;
+        return new Array(Math.min(n,40)).fill(0).map((_,i)=>tick(p,i===n-1&&countedPct<100)).join('');
+      }).join('');
+      const majCard=(name,color,ns,lead)=>`<div class="lv-maj" style="${lead?'outline:3px solid '+color:''}">
+        <div class="lv-maj-name" style="color:${color}">${name}</div>
+        <div class="lv-maj-seats">${ns}</div>
+        <div class="lv-maj-sub">${lead?t('PROJECTED MAJORITY','TAHMİNİ ÇOĞUNLUK'):t('seats','sandalye')} · ${majNeed} ${t('to govern','hükümet için')}</div>
+      </div>`;
+      majBanner=`<div class="lv-majbanner">
+        ${majCard(BLOCS.bloc1.name,BLOCS.bloc1.color||'#C83737',b1Seats,b1Lead)}
+        <div class="lv-maj threshold">
+          <div class="lv-maj-name">${t('MAJORITY','ÇOĞUNLUK')}</div>
+          <div class="lv-maj-seats">${majNeed}</div>
+          <div class="lv-maj-sub">${SEATS_TOTAL} ${t('seats','sandalye')}</div>
+        </div>
+        ${majCard(BLOCS.bloc2.name,BLOCS.bloc2.color||'#2E6EA8',b2Seats,b2Lead)}
+      </div>
+      <div class="lv-seat-ticks">${liveSeatTicks}</div>`;
+    }
+
     pane.innerHTML=`<div class="tab-pane-inner">
       <div class="hero fc-hero">
         <div class="hero-title">${T.tabs.live} — ${COUNTRY_NAME}</div>
         <div class="hero-date">${heroLine}</div>
+        <div style="display:flex;justify-content:flex-end;margin-top:10px">
+          <button class="tab-social" id="lv-share-btn" style="pointer-events:auto">${t('SHARE RESULT','SONUCU PAYLAŞ')} ⤓</button>
+        </div>
       </div>
+
+      ${majBanner}
 
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveVs}</div></div>
         <div style="display:flex;gap:8px;align-items:center;padding:0 2px 4px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)">
@@ -2484,12 +2533,35 @@ loadLive().then(live=>{
         </div>
         <div class="parliament-box" id="live-map-box"></div>
       </div>`:''}
+
+      ${(()=>{const calls=liveCalls(live);if(!calls||!calls.called.length)return '';const rows=calls.called.map(c=>`<div class="lv-call-row">
+        <span class="lv-call-name">${c.name}</span>
+        <span class="lv-call-dot" style="background:${c.color}"></span>
+        <span class="lv-call-win" style="color:${c.color}">${partyCode(c.winner)}</span>
+        <span class="lv-call-pct">${Math.round(c.countedPct)}%</span>
+      </div>`).join('');return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('CALLED DISTRICTS','SONUÇLANAN BÖLGELER')}</div>
+        <span style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted)">${calls.calledCount}/${calls.total}</span>
+      </div>
+      <div class="lv-calls">${rows}</div>
+      <div style="font-size:10px;color:var(--c-text-muted);margin-top:6px">${t('A district is called once ≥95% of its precincts report.','Bir bölge, sandıklarının ≥%95\'i sayıldığında sonuçlanmış sayılır.')}</div>
+      </div>`;})()}
     </div>`;
     bindLiveMap(live);
     const shot=$('lv-map-shot-btn');
     if(shot) shot.addEventListener('click',()=>captureBoxMap('live-map-box', COUNTRY+'-live-map.png'));
     const lvParlShot=$('lv-parl-shot-btn');
     if(lvParlShot) lvParlShot.addEventListener('click',()=>captureBoxMap('live-parl-box', COUNTRY+'-live-parliament.png'));
+    const shareBtn=$('lv-share-btn');
+    if(shareBtn&&seats){
+      shareBtn.addEventListener('click',()=>{
+        const svg=buildLiveShareCardSVG(seats, countedPct, updated);
+        if(!svg) return;
+        const holder=document.createElement('div');
+        holder.innerHTML=svg;
+        const el=holder.querySelector('svg');
+        if(el) captureMapPng(el, COUNTRY+'-live-'+Date.now()+'.png');
+      });
+    }
     // auto-refresh every 30s while the LIVE tab is visible
     if(LIVE_INTERVAL) clearInterval(LIVE_INTERVAL);
     LIVE_INTERVAL=setInterval(()=>{
@@ -2528,6 +2600,75 @@ function bindLiveMap(live){
     });
   }
   render();
+}
+
+// Composite share card as a single SVG (branding + parliament + bloc totals),
+// so the existing captureMapPng pipeline can rasterize the whole card.
+function buildLiveShareCardSVG(seats, countedPct, updated){
+  const total=Object.values(seats).reduce((a,b)=>a+b,0);
+  if(!total) return '';
+  const W=720, H=520;
+  const parl=buildParliamentSVG(seats);
+  // inner parliament viewBox (e.g. "0 -26 360 226") -> place scaled inside card
+  const m=parl.match(/viewBox="([^"]+)"/);
+  const vb=m?m[1].split(/\s+/).map(Number):[0,0,360,226];
+  const pw=vb[2], ph=vb[3];
+  const pwTarget=420, phTarget=pwTarget*ph/pw;
+  const px=(W-pwTarget)/2, py=100;
+  const b1=BLOCS.bloc1&&BLOCS.bloc1.parties?BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0):0;
+  const b2=BLOCS.bloc2&&BLOCS.bloc2.parties?BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0):0;
+  const majNeed=Math.floor(SEATS_TOTAL/2)+1;
+  const c1=(BLOCS.bloc1&&BLOCS.bloc1.color)||'#C83737';
+  const c2=(BLOCS.bloc2&&BLOCS.bloc2.color)||'#2E6EA8';
+  const name1=(BLOCS.bloc1&&BLOCS.bloc1.name)||'';
+  const name2=(BLOCS.bloc2&&BLOCS.bloc2.name)||'';
+  const inner=parl.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'');
+  const boxY=py+phTarget+28;
+  const box=(x,label,val,col,inv)=>{
+    const bg=inv?'#1A1A1A':'#FFFFFF';
+    const fg=inv?'#FFFFFF':'#161616';
+    const sub=inv?'rgba(255,255,255,.65)':'#5F584E';
+    return `<g transform="translate(${x} ${boxY})">
+      <rect width="190" height="86" rx="6" fill="${bg}" stroke="#1A1A1A" stroke-width="2"/>
+      <text x="95" y="26" text-anchor="middle" font-family="Atlas Grotesk,Arial,sans-serif" font-size="12" font-weight="900" letter-spacing="1.2" fill="${col||sub}">${label}</text>
+      <text x="95" y="64" text-anchor="middle" font-family="Decima Mono Pro,monospace" font-size="34" font-weight="900" fill="${fg}">${val}</text>
+    </g>`;
+  };
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <rect width="${W}" height="${H}" fill="#F9F7F0"/>
+    <rect width="${W}" height="6" fill="#C83737"/>
+    <text x="36" y="52" font-family="Atlas Grotesk,Arial,sans-serif" font-size="24" font-weight="900" letter-spacing="1.5" fill="#161616">ALTICIFTSIFIR</text>
+    <text x="36" y="76" font-family="Atlas Grotesk,Arial,sans-serif" font-size="14" font-weight="900" letter-spacing="1.5" fill="#C83737">${COUNTRY_NAME} — ${t('ELECTION NIGHT','SEÇİM GECESİ')}</text>
+    <text x="${W-36}" y="52" text-anchor="end" font-family="Decima Mono Pro,monospace" font-size="13" font-weight="700" fill="#5F584E">${countedPct}% ${t('counted','sayıldı')}</text>
+    <text x="${W-36}" y="76" text-anchor="end" font-family="Decima Mono Pro,monospace" font-size="11" font-weight="700" fill="#5F584E">${updated||''}</text>
+    <svg x="${px}" y="${py}" width="${pwTarget}" height="${phTarget}" viewBox="${vb.join(' ')}">${inner}</svg>
+    ${box(36,name1,b1,c1,false)}
+    ${box((W-190)/2,t('MAJORITY','ÇOĞUNLUK'),majNeed,null,true)}
+    ${box(W-36-190,name2,b2,c2,false)}
+    <text x="${W/2}" y="${H-18}" text-anchor="middle" font-family="Atlas Grotesk,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="1" fill="#5F584E">anketdelisi.com · @manyakanket61</text>
+  </svg>`;
+}
+
+// Called districts: a valkrets is "called" once >=95% of its districts report.
+// Returns {called:[{name,winner,color,countedPct}], total, calledCount}.
+function liveCalls(live){
+  const conf=MAP_CONF();
+  if(!live||!live.valkretsar||!conf) return null;
+  const map=livePartyMap();
+  const cList=(CONSTITUENCIES&&CONSTITUENCIES.constituencies)||[];
+  const calls=[];
+  live.valkretsar.forEach((v,i)=>{
+    if(!v||!v.parties||!v.totalDistricts) return;
+    const countedPct=v.counted/v.totalDistricts*100;
+    if(countedPct<95) return;
+    let best=null,bv=-1;
+    v.parties.forEach(p=>{const k=map[p.code];if(k&&(p.pct||0)>bv){bv=p.pct;best=k}});
+    if(!best) return;
+    const name=cList[i]?cList[i].name:('Valkrets '+String(i+1).padStart(2,'0'));
+    calls.push({name,winner:best,color:PARTY_META[best]?PARTY_META[best].color:'#888',countedPct});
+  });
+  calls.sort((a,b)=>a.name.localeCompare(b.name));
+  return {called:calls,total:live.valkretsar.length,calledCount:calls.length};
 }
 
 // map for live valkrets data: reuses districtShares machinery but replaces base
@@ -3012,7 +3153,7 @@ PARL_MODE='proj';
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
     const pollsBtn=document.querySelector('[data-tab="polls"]');
     if(pollsBtn) pollsBtn.dataset.active='true';
-    applyTheme();
+    applyTheme(); updateSocialMeta();
     loadData().then(()=>loadConstituencies()).then(()=>{
       renderPollsTab();
     });
@@ -3045,6 +3186,33 @@ function wireAria(){
 }
 
 // Per-country theme: Brazil gets a green/yellow identity (flag accent).
+// Social share meta: og:/twitter: cards reflect the current country + election.
+function updateSocialMeta(){
+  // remove any previously-created social metas (idempotent re-runs)
+  document.querySelectorAll('meta[data-social]').forEach(m=>m.remove());
+  const title=COUNTRY_NAME+' — '+t('Election Polls & Forecast','Seçim Anketleri ve Tahmini')+' | AltıCiftSıfır';
+  const desc=t('Live seat projection, poll averages, forecast simulations and district maps for','Canlı sandalye tahmini, anket ortalamaları, tahmin simülasyonları ve bölge haritaları:')+' '+COUNTRY_NAME+(META.election_date?(' · '+t('next election','sonraki seçim')+' '+META.election_date):'');
+  const url=location.origin+location.pathname;
+  const set=(sel,attr,val)=>{
+    const prop=sel.match(/\[([a-z]+)="([^"]+)"\]/);
+    let el=document.querySelector(sel);
+    if(!el){
+      el=document.createElement('meta');
+      if(prop) el.setAttribute(prop[1],prop[2]);
+      el.setAttribute('data-social','1');
+      document.head.appendChild(el);
+    }
+    el.setAttribute(attr,val);
+  };
+  set('meta[property="og:title"]','content',title);
+  set('meta[property="og:description"]','content',desc);
+  set('meta[property="og:url"]','content',url);
+  set('meta[property="og:type"]','content','website');
+  set('meta[property="og:site_name"]','content','AltıCiftSıfır — 600');
+  set('meta[name="twitter:card"]','content','summary');
+  set('meta[name="twitter:title"]','content',title);
+  set('meta[name="twitter:description"]','content',desc);
+}
 function applyTheme(){
   const isBrazil=COUNTRY==='brazil';
   document.body.classList.toggle('theme-brazil', isBrazil);
@@ -3057,7 +3225,7 @@ function applyTheme(){
 }
 loadData().then(()=>loadConstituencies()).then(()=>{
   wireAria();
-  applyTheme();
+  applyTheme(); updateSocialMeta();
   renderPollsTab();
 });
 window.addEventListener('resize',()=>{fitSideCard();});

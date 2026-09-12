@@ -572,7 +572,7 @@
 
   /* ---------- init ---------- */
   function init() {
-    const keys = Object.keys(COUNTRIES_DEF);
+    const keys = Object.keys(COUNTRIES_DEF).filter((k) => !COUNTRIES_DEF[k].hidden);
     if (!keys.length) { prefillMsg.textContent = 'Config not loaded — check that js/config.js is reachable.'; return; }
     countrySel.innerHTML = keys.map((k) => {
       const c = COUNTRIES_DEF[k];

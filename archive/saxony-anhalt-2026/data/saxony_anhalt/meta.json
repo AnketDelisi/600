@@ -1,0 +1,39 @@
+{
+  "country": "saxony_anhalt",
+  "country_name": "Saxony-Anhalt",
+  "country_name_de": "Sachsen-Anhalt",
+  "system": "PR (party-list, Hare/Niemeyer)",
+  "seats_total": 83,
+  "seats_constituency": 41,
+  "threshold": 5.0,
+  "constituencies": 41,
+  "seat_method": "Hare/Niemeyer (largest remainder, Hare quota)",
+  "election_date": "2026-09-06",
+  "parties": [
+    { "id": "cdu", "name": "Christlich Demokratische Union", "name_de": "CDU", "color": "#6B6B6B" },
+    { "id": "afd", "name": "Alternative für Deutschland", "name_de": "AfD", "color": "#40A0D8" },
+    { "id": "linke", "name": "Die Linke", "name_de": "Die Linke", "color": "#B60055" },
+    { "id": "spd", "name": "Sozialdemokratische Partei Deutschlands", "name_de": "SPD", "color": "#E3000F" },
+    { "id": "fdp", "name": "Freie Demokratische Partei", "name_de": "FDP", "color": "#FFED00" },
+    { "id": "gruene", "name": "Bündnis 90/Die Grünen", "name_de": "Grüne", "color": "#64A12D" },
+    { "id": "bsw", "name": "Bündnis Sahra Wagenknecht", "name_de": "BSW", "color": "#8E44AD" }
+  ],
+  "blocs": {
+    "bloc1": { "name": "Firewall", "parties": ["cdu", "linke", "spd", "fdp", "gruene"] },
+    "bloc2": { "name": "AfD", "parties": ["afd"] },
+    "kingmaker": "bsw",
+    "kingmaker_label": "BSW Kingmaker",
+    "kingmaker_color": "#8E44AD"
+  },
+  "last_election": {
+    "date": "2026-09-06",
+    "results": {
+      "cdu": 17.2, "afd": 43.8, "linke": 8.6, "spd": 9.3,
+      "fdp": 2.6, "gruene": 8.9, "bsw": 5.3
+    },
+    "seats": {
+      "cdu": 15, "afd": 39, "linke": 8, "spd": 8,
+      "fdp": 0, "gruene": 8, "bsw": 5
+    }
+  }
+}

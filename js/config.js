@@ -167,6 +167,7 @@ const COUNTRIES = {
   },
 saxony_anhalt: {
     name: 'Saxony-Anhalt',
+    hidden: true,                  // archived 2026-09-12 (Landtag election 2026-09-06)
     seats: 83,
     threshold: 5.0,
     method: 'hare_niemeyer',      // Hare/Niemeyer (largest remainder, quota)
@@ -775,6 +776,7 @@ saxony_anhalt: {
   },
   france: {
     name: "France",
+    hidden: true,                  // archived 2026-09-12 (2027 presidential not tracked live)
     seats: 13,
     threshold: 50,
     method: "hare_niemeyer",

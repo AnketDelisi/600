@@ -20,6 +20,15 @@ COUNTRY = "sweden"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "sweden"
 
 
+def future_date(date_str):
+    """Reject rows whose survey window is not yet complete: Wikipedia sometimes
+    lists in-progress polls. A poll is complete once its END date has passed."""
+    try:
+        return datetime.strptime(date_str, "%Y-%m-%d").date() >= datetime.now(timezone.utc).date()
+    except ValueError:
+        return True
+
+
 def parse_fieldwork(text, ref_year):
     text = text.strip()
     if not text or text.lower() in ("—", "n/a"):
@@ -124,6 +133,11 @@ def scrape_wikipedia():
 
             date_str, date_end = parse_fieldwork(texts[1], ref_year)
             if not date_str:
+                continue
+            # Reject in-progress/future polls: if the fieldwork END is today or
+            # later, the poll is still in the field / not yet published.
+            end_for_check = date_end or date_str
+            if future_date(end_for_check):
                 continue
 
             # Validate column 1 looks like a date (contains a month name)

@@ -20,6 +20,7 @@ from bs4 import BeautifulSoup
 WIKI_URL = "https://de.wikipedia.org/wiki/Landtagswahl_in_Mecklenburg-Vorpommern_2026"
 COUNTRY = "mecklenburg_vorpommern"
 CUTOFF = "2025-01-01"
+TODAY = datetime.now(timezone.utc).date().isoformat()
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
 
 HEADER_MAP = {
@@ -155,6 +156,9 @@ def scrape_mecklenburg_vorpommern():
                 continue
             date = parse_date(row[col_date])
             if not date or date < CUTOFF:
+                continue
+            # Reject in-progress/future polls (survey window starts today or later)
+            if date >= TODAY:
                 continue
 
             votes = {}

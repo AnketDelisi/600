@@ -19,6 +19,7 @@ from bs4 import BeautifulSoup
 WIKI_URL = "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026"
 COUNTRY = "berlin"
 CUTOFF = "2025-01-01"
+TODAY = datetime.now(timezone.utc).date().isoformat()
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
 
 HEADER_MAP = {
@@ -175,6 +176,10 @@ def scrape_berlin():
                 continue
             date = parse_date(row[col_date])
             if not date or date < CUTOFF:
+                continue
+            # Reject in-progress/future polls: Berlin's date is the survey-window
+            # END, so any poll whose window ends after today is not yet complete.
+            if date > TODAY:
                 continue
             n = parse_n(row[col_n]) if col_n is not None and col_n < len(row) else None
 

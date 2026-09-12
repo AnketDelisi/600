@@ -872,7 +872,7 @@ saxony_anhalt: {
       socdem: { code: 'SOCDEM', name: 'Social Democracy', name_en: 'Social Democracy', color: '#FF5F61' },
       prisaha: { code: 'Přísaha', name: 'Oath', name_en: 'Oath', color: '#0033FF' },
       nc: { code: 'NC', name: 'Our Czechia', name_en: 'Our Czechia', color: '#e42612' },
-      spolu: { code: 'SPOLU', name: 'SPOLU (ODS, KDU-ČSL, TOP 09)', name_en: 'SPOLU (ODS, KDU-ČSL, TOP 09)', color: '#8497B0', pastOnly: true },
+      spolu: { code: 'SPOLU', name: 'SPOLU (ODS, KDU-ČSL, TOP 09)', name_en: 'SPOLU (ODS, KDU-ČSL, TOP 09)', color: '#00A651', pastOnly: true },
     },
     // Poll-table column order (the 16 parties with logos) + dissolved SPOLU;
     // Not modelled (no logo; always '–' in polls): Stačilo! folds into 'Other'.

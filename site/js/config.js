@@ -167,6 +167,7 @@ const COUNTRIES = {
   },
 saxony_anhalt: {
     name: 'Saxony-Anhalt',
+    hidden: true,                  // archived 2026-09-12 (Landtag election 2026-09-06)
     seats: 83,
     threshold: 5.0,
     method: 'hare_niemeyer',      // Hare/Niemeyer (largest remainder, quota)
@@ -775,6 +776,7 @@ saxony_anhalt: {
   },
   france: {
     name: "France",
+    hidden: true,                  // archived 2026-09-12 (2027 presidential not tracked live)
     seats: 13,
     threshold: 50,
     method: "hare_niemeyer",
@@ -3131,9 +3133,7 @@ function setCountry(id) {
   MAP_ONLY = !!c.mapOnly;
 }
 
-// Boot country priority: ?c= query param > pinned sub-page (window.__600_COUNTRY__) > default
-const URL_COUNTRY=(typeof window!=='undefined'&&window.location)?new URLSearchParams(window.location.search).get('c'):null;
-const BOOT_COUNTRY=(URL_COUNTRY&&COUNTRIES[URL_COUNTRY])?URL_COUNTRY
-  :((typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'sweden');
+// Sub-page / archive wrapper: a country can be pinned via window.__600_COUNTRY__
+const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'sweden';
 
 setCountry(BOOT_COUNTRY);

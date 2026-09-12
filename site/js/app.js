@@ -424,7 +424,7 @@ function renderSidebar(prevDays, prevPollster){
     ${isPinnedCountry()
       ?`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`
       :`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
-      ${Object.keys(COUNTRIES).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
+      ${Object.keys(COUNTRIES).filter(id=>!COUNTRIES[id].hidden).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
     </select>`}
     <div class="sb-hint">${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${t('two-round presidential','iki turlu başkanlık seçimi')} · ${TREND_CONF?TREND_CONF.electionDate:''}`:`${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`}</div></div>`;
 

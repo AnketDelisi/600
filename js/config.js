@@ -95,6 +95,16 @@ const COUNTRIES = {
       Infostat:     { overall: 1.30 },
       Ipsos:        { overall: 1.30 },
     },
+    maeKey: '2022',                    // weight pollsters by their 2022 accuracy
+    biasKey: '2022',                   // signed-bias correction from the 2022 backtest
+    pollsterBias: {                    // bias = poll − actual (SwedishPolls, last-3 polls before 2022-09-11)
+      Sifo:    { S: -0.8,  SD: 0.09, M: -2.33, V: 0.68, C: 0.19, KD: 0.79, MP: 1.03, L: 0.99 },
+      Novus:   { S: -1.3,  SD: 0.39, M: -1.63, V: 0.98, C: 1.02, KD: 0.53, MP: 0.03, L: 0.42 },
+      Demoskop:{ S: -0.9,  SD: -0.01, M: -0.77, V: 0.92, C: 1.12, KD: -0.01, MP: -0.13, L: 0.32 },
+      Ipsos:   { S: -1.83, SD: 0.66, M: -1.37, V: 1.42, C: 0.52, KD: 0.36, MP: 0.5, L: -0.21 },
+      Sentio:  { S: -4.28, SD: 1.01, M: 0.9, V: 2.65, C: -1.51, KD: 1.41, MP: -0.55, L: -0.41 },
+      Infostat:{ S: -1.63, SD: 0.06, M: -1.1, V: 1.05, C: 0.79, KD: 0.56, MP: -0.3, L: 0.29 },
+    },
     logos: {
       S:  'img/S.svg', SD: 'img/SD.svg', M: 'img/M.svg', V: 'img/V.svg',
       C:  'img/C.svg', KD: 'img/KD.svg', MP: 'img/MP.svg', L: 'img/L.svg',

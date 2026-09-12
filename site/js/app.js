@@ -336,7 +336,9 @@ function weightedAverage(polls, party, noBias){
   let wSum=0, wTotal=0;
   for(const p of polls){
     if(p.votes[party]===undefined) continue;
-    const n=p.n||1000;
+    // Cap effective sample size at 1500: accuracy does not scale linearly with
+    // n beyond ~1500, so mega-polls should not dominate the average.
+    const n=Math.min(1500, p.n||1000);
     const pw=pollsterWeight(p.pollster);
     const rw=recencyWeight(p.date);
     const w=n*pw*rw;
@@ -362,6 +364,10 @@ function weightedAverage(polls, party, noBias){
 // Linear-trend extrapolation: fit each party's recent polls (recency-weighted
 // least squares on time), project the slope forward to the election date, capped
 // at maxDaily points/day so the model cannot run away in the final stretch.
+// The slope is damped as the election approaches (return-to-mean): a full
+// linear projection overestimates late momentum, so the projected move is
+// multiplied by horizon/(horizon + DAMP_DAYS) — near the election the
+// projection converges back toward today's value.
 function trendExtrapolation(polls, party){
   if(!TREND_CONF) return null;
   const election=new Date(TREND_CONF.electionDate).getTime();
@@ -381,7 +387,9 @@ function trendExtrapolation(polls, party){
   if(Math.abs(den)<1e-9) return null;
   const slope=(sw*swtv-swt*swv)/den;      // % per day as time moves backward
   const inter=(swv*swtt-swtv*swt)/den;    // value at t=0 (today)
-  let proj=inter-slope*horizon;           // extrapolate forward
+  const dampDays=TREND_CONF.dampDays||7;  // slope-halving horizon
+  const damp=horizon/(horizon+dampDays);  // 1 far out, -> 0 at election day
+  let proj=inter-slope*horizon*damp;      // extrapolate forward, damped
   const cap=TREND_CONF.maxDaily*horizon;
   proj=Math.max(inter-cap,Math.min(inter+cap,proj));
   return Math.max(0,proj);
@@ -1734,7 +1742,11 @@ function effectiveK(nPolls, base){
 
 function forecastSigma(avg, nPolls){
   const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*effectiveK(nPolls,FORECAST_K);
-  return Math.sqrt(0.3*0.7/(sumA+1))*100;
+  const dirichlet=Math.sqrt(0.3*0.7/(sumA+1))*100;
+  // Correlated bloc swing adds roughly FORECAST_SWING/2 to a party's sd (the
+  // swing moves each bloc by ±σ; a party inside a bloc of share s sees about
+  // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2).
+  return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2));
 }
 
 function gammaSample(alpha){
@@ -1752,6 +1764,35 @@ function gammaSample(alpha){
 }
 
 const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
+// Correlated (bloc) swing: the dominant polling-error mode is a systematic
+// shift between the two blocs (late swings, differential turnout). Each
+// simulation draws one bloc-level swing (σ≈2pp) and moves both blocs in
+// opposite directions, preserving within-bloc proportions. The Dirichlet
+// per-party noise alone misses this correlation and understates uncertainty.
+const FORECAST_SWING=2.0;
+// Apply a common bloc swing to a shares vector. Returns a new object.
+function applyNationalSwing(simVotes){
+  const b1=BLOCS&&BLOCS.bloc1, b2=BLOCS&&BLOCS.bloc2;
+  if(!b1||!b2||!b1.parties||!b2.parties) return simVotes;
+  const t1=b1.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
+  const t2=b2.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
+  if(!(t1>0)||!(t2>0)) return simVotes;
+  const delta=gaussianSample(fcRand)*FORECAST_SWING;
+  const f1=Math.max(0.05,1+delta/t1);   // bloc1 gains delta
+  const f2=Math.max(0.05,1-delta/t2);   // bloc2 loses delta
+  const out={};
+  let sum=0;
+  for(const p in simVotes){
+    const v=simVotes[p]||0;
+    let w=v;
+    if(b1.parties.includes(p)) w=v*f1;
+    else if(b2.parties.includes(p)) w=v*f2;
+    out[p]=Math.max(0,w);
+    sum+=out[p];
+  }
+  if(sum>0){for(const p in out) out[p]=100*out[p]/sum}
+  return out;
+}
 
 function runSeatForecast(avg, nSims, nPolls){
   const thSeats=THRESHOLD/100*SEATS_TOTAL;
@@ -1764,8 +1805,9 @@ function runSeatForecast(avg, nSims, nPolls){
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);
-    const simVotes={};
+    let simVotes={};
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
+    simVotes=applyNationalSwing(simVotes);
     // seats = share * 120, threshold applied, adjusted to sum 120
     let seats={};
     const valid=[];
@@ -1803,16 +1845,21 @@ function runForecast(avg, nSims, nPolls){
   const largest={};
   const top2={};
   const win50={};
+  const elected={};
   const seatsBy={};
   const votesBy={};
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
   const comboCount={};
   const alpha=PARTY_ORDER.map(p=>Math.max(0.5,(avg[p]||0)*K));
+  // Two-round setup (Brazil): weighted runoff-pair average, computed once.
+  const roSetup=MAP_ONLY?runoffSetup():null;
+  const roSigma=roSetup?forecastSigma({[roSetup.a]:roSetup.aN,[roSetup.b]:roSetup.bN}, roSetup.roN):0;
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);
-    const simVotes={};
+    let simVotes={};
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
+    simVotes=applyNationalSwing(simVotes);
     const seats=allocateSeatsFast(simVotes,SEATS_TOTAL);
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
@@ -1833,14 +1880,45 @@ function runForecast(avg, nSims, nPolls){
     largest[top]=(largest[top]||0)+1;
     const srt=PARTY_ORDER.slice().sort((a,b)=>(simVotes[b]||0)-(simVotes[a]||0));
     for(let i=0;i<2&&i<srt.length;i++) top2[srt[i]]=(top2[srt[i]]||0)+1;
-    if((simVotes[srt[0]]||0)>=50) win50[srt[0]]=(win50[srt[0]]||0)+1;
+    if((simVotes[srt[0]]||0)>=50){
+      win50[srt[0]]=(win50[srt[0]]||0)+1;
+      elected[srt[0]]=(elected[srt[0]]||0)+1;
+    }else if(roSetup&&roSetup.a&&roSetup.b){
+      // Joint two-round draw: the runoff outcome is correlated with round 1 —
+      // each candidate's runoff share starts from the runoff-poll average plus
+      // their round-1 residual vs the round-1 average (shrunk), plus noise.
+      const a=roSetup.a, b=roSetup.b;
+      const r1AvgA=avg[a]||0, r1AvgB=avg[b]||0;
+      const resA=(simVotes[a]||0)-r1AvgA, resB=(simVotes[b]||0)-r1AvgB;
+      const shrink=0.5;                       // residual carry-over into runoff
+      const da=roSetup.aN+resA*shrink+gaussianSample(fcRand)*roSigma;
+      const db=roSetup.bN+resB*shrink+gaussianSample(fcRand)*roSigma;
+      const winner=da>=db?a:b;
+      elected[winner]=(elected[winner]||0)+1;
+    }
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
-  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50);
+  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elected);
 }
 
-function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50){
+// Weighted runoff-pair average from runoff polls (no simulation, no cache):
+// returns {a, b, aN, bN, roN} for the top-2 runoff pair, or null.
+function runoffSetup(){
+  const roPolls=(POLLS||[]).filter(p=>p.runoff&&typeof p.runoff==='object'&&Object.keys(p.runoff).length);
+  if(roPolls.length<2) return null;
+  const freq={};
+  roPolls.forEach(p=>Object.keys(p.runoff).forEach(c=>{freq[c]=(freq[c]||0)+1}));
+  const pair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
+  if(pair.length<2) return null;
+  const a=pair[0], b=pair[1];
+  const wa=weightedAvgRunoff(roPolls,a), wb=weightedAvgRunoff(roPolls,b);
+  if(wa===null||wb===null) return null;
+  const tot=wa+wb;
+  return {a,b,aN:100*wa/tot,bN:100*wb/tot,roN:roPolls.length};
+}
+
+function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elected){
   const means={},medians={},modes={};
   PARTY_ORDER.forEach(p=>{
     const arr=seatsBy[p];
@@ -1859,7 +1937,7 @@ function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50){
   if(modalKey){
     PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
   }
-  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims,top2:top2||{},win50:win50||{}};
+  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims,top2:top2||{},win50:win50||{},elected:elected||{}};
 }
 
 function deterministicSeats(medians, means, total){
@@ -2022,7 +2100,10 @@ function renderForecast(pane){
       const h2a=ro.winA/3000, h2b=1-h2a;
       const reachA=(sim.top2[ro.a]||0)/sim.nSims, reachB=(sim.top2[ro.b]||0)/sim.nSims;
       const w1A=(sim.win50[ro.a]||0)/sim.nSims, w1B=(sim.win50[ro.b]||0)/sim.nSims;
-      const eleA=w1A+Math.max(0,reachA-w1A)*h2a, eleB=w1B+Math.max(0,reachB-w1B)*h2b;
+      // Joint two-round sim: P(elected) comes directly from the correlated
+      // round-1 -> runoff simulation (fallback: the independent formula).
+      const eleA=(sim.elected&&sim.elected[ro.a]!==undefined)?(sim.elected[ro.a]/sim.nSims):(w1A+Math.max(0,reachA-w1A)*h2a);
+      const eleB=(sim.elected&&sim.elected[ro.b]!==undefined)?(sim.elected[ro.b]/sim.nSims):(w1B+Math.max(0,reachB-w1B)*h2b);
       const row=(label,color,p)=>`<div class="fc-row">
         <span class="fc-row-label" style="color:${color}">${label}</span>
         <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>

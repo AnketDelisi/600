@@ -2389,6 +2389,24 @@ async function loadLive(){
   return null;
 }
 
+// Frozen pre-election forecast: the archive snapshot's poll set (e.g.
+// archive/sweden-2026/), used as the election-night "final forecast" reference.
+let ARCHIVE_FORECAST_CACHE={};
+async function loadArchivedForecast(){
+  if(ARCHIVE_FORECAST_CACHE[COUNTRY]!==undefined) return ARCHIVE_FORECAST_CACHE[COUNTRY];
+  const slug=COUNTRY+'-2026';
+  try{
+    const resp=await fetch(dataBase()+'archive/'+slug+'/data/'+COUNTRY+'/polls.json');
+    if(!resp.ok) throw new Error('HTTP '+resp.status);
+    const j=await resp.json();
+    ARCHIVE_FORECAST_CACHE[COUNTRY]=j.polls||null;
+    return ARCHIVE_FORECAST_CACHE[COUNTRY];
+  }catch(e){
+    ARCHIVE_FORECAST_CACHE[COUNTRY]=null;
+    return null;
+  }
+}
+
 function livePartyMap(){
   const conf=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live;
   const map={};
@@ -2442,7 +2460,11 @@ function renderLive(pane){
   </div>`;
 loadLive().then(live=>{
     return loadValu().then(valu=>{
-    const avg=computeAverages(recentPolls(POLLS,60));
+    return loadArchivedForecast().then(archPollSet=>{
+    // Forecast reference: the frozen pre-election archive snapshot when
+    // available (Sweden), else the live poll set — so the "final forecast"
+    // column stays fixed at what the model predicted before election night.
+    const avg=computeAverages(recentPolls(archPollSet||POLLS,60));
     const nat=live&&live.national;
     const counted=nat?nat.counted:0;
     const totalD=nat?nat.totalDistricts:0;
@@ -2469,35 +2491,32 @@ loadLive().then(live=>{
 
     const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updated||'—'}`;
 
-    // --- majority banner: horizontal bloc bars vs the majority threshold ---
+    // --- majority banner: single full-width bar (RG left / Tidö right) ---
     let majBanner='';
     if(seats&&seatsTotal&&BLOCS.bloc1&&BLOCS.bloc2){
       const b1Seats=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
       const b2Seats=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
       const majNeed=Math.floor(SEATS_TOTAL/2)+1;
       const b1Lead=b1Seats>=majNeed, b2Lead=b2Seats>=majNeed;
-      const maxSeats=Math.max(b1Seats,b2Seats,majNeed);
-      const tick=(p,latest)=>`<span class="lv-seat-tick${latest?' live':''}" style="background:${PARTY_META[p]?PARTY_META[p].color:'#888'}" title="${partyCode(p)}"></span>`;
-      // seat ticks per party (latest reporting valkrets pulsing)
-      const liveSeatTicks=PARTY_ORDER.map(p=>{
-        const n=seats[p]||0;
-        return new Array(Math.min(n,40)).fill(0).map((_,i)=>tick(p,i===n-1&&countedPct<100)).join('');
-      }).join('');
-      const bar=(label,color,ns,lead)=>`<div class="lv-bar-row">
-        <span class="lv-bar-label">${label}</span>
-        <div class="lv-bar-track">
-          <div class="lv-bar-fill" style="width:${Math.max(2,ns/maxSeats*100)}%;background:${color};${lead?'outline:2px solid '+color:''}"></div>
-        </div>
-        <span class="lv-bar-seats" style="${lead?'color:'+color+'':''}">${ns}</span>
-        <span class="lv-bar-tag${lead?' lead':''}" style="${lead?'background:'+color:''}">${lead?t('MAJ','ÇOĞ'):'&nbsp;'}</span>
-      </div>`;
+      const w1=Math.max(0.5,b1Seats/SEATS_TOTAL*100);   // RG share of the bar
+      const w2=Math.max(0.5,b2Seats/SEATS_TOTAL*100);   // Tidö share (right-anchored)
+      const thPos=majNeed/SEATS_TOTAL*100;              // majority threshold position
+      const c1=BLOCS.bloc1.color||'#C83737';
+      const c2=BLOCS.bloc2.color||'#2E6EA8';
       majBanner=`<div class="lv-majbanner">
-        <div class="lv-maj-hd"><span>${t('MAJORITY','ÇOĞUNLUK')}</span><span class="lv-maj-th">${majNeed}</span></div>
-        ${bar(BLOCS.bloc1.name,BLOCS.bloc1.color||'#C83737',b1Seats,b1Lead)}
-        ${bar(BLOCS.bloc2.name,BLOCS.bloc2.color||'#2E6EA8',b2Seats,b2Lead)}
-        <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase;margin-top:4px">${SEATS_TOTAL} ${t('seats','sandalye')} · ${majNeed} ${t('needed to govern','hükümet için gerekli')}</div>
-      </div>
-      <div class="lv-seat-ticks">${liveSeatTicks}</div>`;
+        <div class="lv-maj-hd">
+          <span style="color:${c1}">${BLOCS.bloc1.name} <b>${b1Seats}</b>${b1Lead?' · '+t('MAJ','ÇOĞ'):''}</span>
+          <span class="lv-maj-th">${t('MAJORITY','ÇOĞUNLUK')} ${majNeed} / ${SEATS_TOTAL}</span>
+          <span style="color:${c2}">${BLOCS.bloc2.name} <b>${b2Seats}</b>${b2Lead?' · '+t('MAJ','ÇOĞ'):''}</span>
+        </div>
+        <div class="lv-single-bar">
+          <div class="lv-single-fill" style="width:${w1}%;background:${c1}"></div>
+          <div class="lv-single-gap"></div>
+          <div class="lv-single-fill" style="width:${w2}%;background:${c2}"></div>
+          <div class="lv-single-th" style="left:${thPos}%"></div>
+        </div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase;margin-top:6px">${SEATS_TOTAL} ${t('seats','sandalye')} · ${majNeed} ${t('needed to govern','hükümet için gerekli')}</div>
+      </div>`;
     }
 
     pane.innerHTML=`<div class="tab-pane-inner">
@@ -2559,6 +2578,7 @@ loadLive().then(live=>{
         if(nl) renderLive(p);
       });
     },30000);
+    });
     });
   });
 }

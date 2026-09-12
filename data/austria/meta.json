@@ -1,0 +1,10 @@
+{
+  "country": "austria",
+  "name": "Austria",
+  "election_date": "2029",
+  "seats": 183,
+  "threshold": 4.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "National Council: PR at three levels (one national, nine state, 39 regional constituencies); 4% national threshold."
+}

@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b22';
+const LOGO_CACHE = 'b23';
 
 const COUNTRIES = {
 
@@ -782,6 +782,69 @@ saxony_anhalt: {
       lula: 'img/br/Lula.svg', flavio: 'img/br/Bolsonaro.svg', caiado: 'img/br/Caiado.svg',
       cury: 'img/br/Cury.svg', renan: 'img/br/Santos.svg', zema: 'img/br/Zema.svg',
       samara: 'img/br/Samara.svg', edmilson: 'img/br/Costa.svg',
+    },
+  },
+
+  austria: {
+    name: 'Austria',
+    seats: 183,
+    threshold: 4.0,
+    method: 'd_hondt',
+    seatBased: false,             // polls report vote shares (%)
+    constituencies: false,        // PR at three levels (national/state/regional); we model nationally
+    recencyHalfLifeDays: 14,
+    parties: {
+      fpoe:  { code: 'FPÖ',   name: 'Freedom Party of Austria',             name_en: 'Freedom Party of Austria',             color: '#0057A8' },
+      oevp:  { code: 'ÖVP',   name: "Austrian People's Party",              name_en: "Austrian People's Party",              color: '#63C3D2' },
+      spoe:  { code: 'SPÖ',   name: 'Social Democratic Party of Austria',    name_en: 'Social Democratic Party of Austria',    color: '#CE0000' },
+      neos:  { code: 'NEOS',  name: 'NEOS – The New Austria',                name_en: 'NEOS – The New Austria',                color: '#E85C20' },
+      gruene:{ code: 'GRÜNE', name: 'The Greens – The Green Alternative',    name_en: 'The Greens – The Green Alternative',    color: '#84B414' },
+      kpoe:  { code: 'KPÖ',   name: 'Communist Party of Austria',            name_en: 'Communist Party of Austria',            color: '#DA121A' },
+    },
+    order: ['fpoe', 'oevp', 'spoe', 'neos', 'gruene', 'kpoe'],
+    parlOrder: ['fpoe', 'oevp', 'spoe', 'neos', 'gruene', 'kpoe'],
+    // Blocs = the incumbent ÖVP–SPÖ–NEOS "Ampel" coalition vs the opposition
+    blocs: {
+      bloc1: { name: 'Coalition', short: 'GOV', parties: ['oevp', 'spoe', 'neos'], color: '#63C3D2' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['fpoe', 'gruene', 'kpoe'], color: '#0057A8' },
+    },
+    lastElection: {
+      date: '2024-09-29',
+      // 2024 Nationalrat official result (source: en.wikipedia.org/wiki/2024_Austrian_legislative_election)
+      results: { fpoe: 28.8, oevp: 26.3, spoe: 21.1, neos: 9.1, gruene: 8.2, kpoe: 2.4 },
+      seats:   { fpoe: 57, oevp: 51, spoe: 41, neos: 18, gruene: 16, kpoe: 0 },
+    },
+    map: {
+      svg: 'img/austria.svg',
+      selector: 'id',          // paths carry control ids per Bundesland (the provided Inkscape map)
+      districts: {
+        Burgenland: 'burgenland', Carinthia: 'carinthia', LowerAustria: 'lower_austria',
+        Salzburg: 'salzburg', Styria: 'styria', Tyrol: 'tyrol', UpperAustria: 'upper_austria',
+        Vienna: 'vienna', Vorarlberg: 'vorarlberg',
+      },
+      // 2024 Nationalrat share % per Bundesland (source: en.wikipedia.org 2024 election, "Results by state")
+      gebiete: {
+        burgenland:     { fpoe: 28.8, oevp: 28.6, spoe: 27.0, neos: 6.5, gruene: 4.7, kpoe: 0 },
+        carinthia:      { fpoe: 38.4, oevp: 20.8, spoe: 23.1, neos: 7.8, gruene: 4.7, kpoe: 0 },
+        lower_austria:  { fpoe: 29.2, oevp: 29.9, spoe: 20.2, neos: 8.5, gruene: 6.7, kpoe: 0 },
+        upper_austria:  { fpoe: 30.5, oevp: 26.3, spoe: 20.3, neos: 8.3, gruene: 8.4, kpoe: 0 },
+        salzburg:       { fpoe: 27.7, oevp: 31.6, spoe: 16.8, neos: 9.0, gruene: 8.5, kpoe: 0 },
+        styria:         { fpoe: 32.2, oevp: 27.0, spoe: 18.6, neos: 8.2, gruene: 7.6, kpoe: 0 },
+        tyrol:          { fpoe: 28.7, oevp: 31.0, spoe: 15.4, neos: 10.6, gruene: 8.1, kpoe: 0 },
+        vorarlberg:     { fpoe: 27.1, oevp: 29.1, spoe: 13.1, neos: 12.6, gruene: 11.4, kpoe: 0 },
+        vienna:         { fpoe: 20.7, oevp: 17.4, spoe: 29.9, neos: 11.4, gruene: 12.3, kpoe: 0 },
+      },
+      names: {
+        burgenland: 'Burgenland', carinthia: 'Carinthia', lower_austria: 'Lower Austria',
+        upper_austria: 'Upper Austria', salzburg: 'Salzburg', styria: 'Styria',
+        tyrol: 'Tyrol', vorarlberg: 'Vorarlberg', vienna: 'Vienna',
+      },
+      // national baseline for the uniform-swing projection (= 2024 result)
+      national2021: { fpoe: 28.8, oevp: 26.3, spoe: 21.1, neos: 9.1, gruene: 8.2, kpoe: 2.4 },
+    },
+    logos: {
+      fpoe: 'img/at/FPO.svg', oevp: 'img/at/OVP.svg', spoe: 'img/at/SPO.svg',
+      neos: 'img/at/NEOS.svg', gruene: 'img/at/GRUNE.svg', kpoe: 'img/at/KPO.svg',
     },
   },
   france: {

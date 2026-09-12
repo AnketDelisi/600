@@ -574,62 +574,6 @@ function renderPartyBars(avg){
   return html;
 }
 
-/* ---------- render pollster panel ---------- */
-// Editorial provenance card: every pollster in the data as a row, ranked by
-// its accuracy weight (1/MAE), showing the latest reading and a trailing
-// sparkline of the pollster's last few polls. Hidden when no MAE table exists.
-function renderPollsterPanel(filtered){
-  if(!POLLSTER_MAE||!Object.keys(POLLSTER_MAE).length) return '';
-  const byPs={};
-  filtered.forEach(p=>{
-    const ps=p.pollster||'?';
-    (byPs[ps]=byPs[ps]||[]).push(p);
-  });
-  const sorted=Object.keys(byPs)
-    .filter(ps=>POLLSTER_MAE[ps])
-    .map(ps=>({ps, polls:byPs[ps], w:(POLLSTER_MAE[ps][MAE_KEY]||POLLSTER_MAE[ps].overall)}))
-    .sort((a,b)=>a.w-b.w)
-    .map(r=>{
-      const ps=r.ps;
-      const polls=r.polls.slice().sort((a,b)=>new Date(b.date)-new Date(a.date));
-      const mae=POLLSTER_MAE[ps];
-      const weight=pollsterWeight(ps);
-      const latest=polls[0];
-      const top=latest&&latest.votes?Object.keys(latest.votes).filter(k=>latest.votes[k]!=null)
-        .sort((a,b)=>latest.votes[b]-latest.votes[a]).slice(0,2):[];
-      const readTxt=top.length?top.map(k=>`${partyCode(k)} ${valDisp(latest.votes[k])}`).join(' · '):'—';
-      const lead=latest&&latest.votes?top[0]:null;
-      const spark=lead?polls.slice(0,5).map(p=>p.votes[lead]).filter(v=>v!=null).reverse():[];
-      const sparkSvg=spark.length>=2
-        ?(()=>{
-            const W=44,H=16,P=2;
-            const min=Math.min(...spark),max=Math.max(...spark);
-            const rng=(max-min)||1;
-            const pts=spark.map((v,i)=>`${P+i*(W-2*P)/(spark.length-1)},${H-P-(v-min)/rng*(H-2*P)}`);
-            const col=PARTY_META[lead]?PARTY_META[lead].color:'#888';
-            return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><polyline points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="1.4"/></svg>`;
-          })()
-        :'';
-      const stars=Math.round(weight*4);
-      const starTxt=stars>=1?'★★★★★'.slice(0,stars):'—';
-      const monoCol=PARTY_META[top[0]]?PARTY_META[top[0]].color:'#1A1A1A';
-      return `<div class="ps-row">
-        <span class="ps-mono" style="background:${monoCol}">${ps.replace(/[^A-Za-zÀ-ž]/g,'').slice(0,2).toUpperCase()}</span>
-        <span class="ps-name">${ps}</span>
-        <span class="ps-read">${readTxt}</span>
-        <span class="ps-spark">${sparkSvg}</span>
-        <span class="ps-date">${latest?latest.date.slice(5):''}</span>
-        <span class="ps-w">${starTxt}<em>MAE ${fmt(mae[MAE_KEY]||mae.overall,2)}</em></span>
-      </div>`;
-    });
-  if(!sorted.length) return '';
-  return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('POLLSTERS — WEIGHTED','ANKETÇİLER — AĞIRLIKLI')}</div></div>
-    <div class="ps-hd"><span></span><span>${t('POLLSTER','ANKETÇİ')}</span><span>${t('LATEST','SON')}</span><span>${t('TREND','TREND')}</span><span>${t('DATE','TARİH')}</span><span>${t('WEIGHT','AĞIRLIK')}</span></div>
-    ${sorted.join('')}
-    <div style="font-size:10px;color:var(--c-text-muted);margin-top:6px">${t('Weight = 1 / mean absolute error across past elections; stars scale with weight.','Ağırlık = 1 / geçmiş seçimlerdeki ortalama mutlak hata; yıldızlar ağırlıkla ölçeklenir.')}</div>
-  </div>`;
-}
-
 /* ---------- render bloc summary ---------- */
 function blocSeats(rg,td){
   const others=Math.max(0,SEATS_TOTAL-rg-td);
@@ -872,11 +816,32 @@ function drawChartBase(hoverIdx){
 }
 
 /* ---------- render individual polls table ---------- */
+// Relative pollster accuracy per country: weight = 1/MAE, normalized so the
+// country's best pollster scores 1.0 (5 stars). Returns {pollster: 0..1}.
+function relativePollsterRatings(){
+  const mae=POLLSTER_MAE||{};
+  const keys=Object.keys(mae);
+  if(!keys.length) return {};
+  let maxW=0;
+  const w={};
+  keys.forEach(k=>{
+    const v=mae[k][MAE_KEY]||mae[k].overall;
+    w[k]=v?1/v:0;
+    if(w[k]>maxW) maxW=w[k];
+  });
+  const out={};
+  keys.forEach(k=>{out[k]=maxW>0?w[k]/maxW:0});
+  return out;
+}
+
 function renderPollsTable(polls){
+  const ratings=relativePollsterRatings();
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.individualPolls}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th><th class="c">${t('Lead','Fark')}</th>`;
+      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th>
+      <th class="c" title="${t('Pollster accuracy vs the best in this country (weight = 1/MAE)','Anketçi doğruluğu, ülkedeki en iyiye göre (ağırlık = 1/MAE)')}">${t('RATE','PUAN')}</th>
+      <th class="c">${t('Lead','Fark')}</th>`;
   const active=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
   active.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
@@ -889,7 +854,17 @@ function renderPollsTable(polls){
     const margin=leadV-secondV;
     const leadColor=PARTY_META[leadP]?PARTY_META[leadP].color:'#888';
 
+    // relative rating of this poll's pollster
+    const rr=ratings[p.pollster];
+    const maeV=POLLSTER_MAE[p.pollster];
+    const rateTxt=rr===undefined
+      ?'—'
+      :'★★★★★'.slice(0,Math.max(1,Math.round(rr*5)));
+    const rateTitle=maeV?`${t('accuracy vs best','en iyiye göre doğruluk')}: ${(rr*100).toFixed(0)}% · MAE ${fmt(maeV[MAE_KEY]||maeV.overall,2)}`:'';
+    const rateColor=rr===undefined?'var(--c-rule)':(rr>=0.85?'#0B9E17':(rr>=0.6?'#E0A800':'var(--c-text-muted)'));
+
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
+      <td class="num c ps-rate" title="${rateTitle}" style="color:${rateColor}">${rateTxt}</td>
       <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>`;
     active.forEach(pid=>{
       const v=p.votes[pid];
@@ -901,7 +876,7 @@ function renderPollsTable(polls){
   });
   html+=`</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      Lead = margin between the two largest parties in the poll
+      ${t('Lead = margin between the two largest parties · RATE = pollster accuracy relative to the best in this country','Fark = en büyük iki parti arasındaki marj · PUAN = anketçinin ülkedeki en iyiye göre doğruluğu')}
     </div></div>`;
   return html;
 }
@@ -2738,9 +2713,6 @@ function renderPollsTab(){
 
   // National poll average + blocs
   html+=renderPartyBars(rawAvg);
-
-  // Pollster provenance panel (weight transparency)
-  html+=renderPollsterPanel(filtered);
 
   html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);

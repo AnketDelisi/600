@@ -789,7 +789,7 @@ saxony_anhalt: {
     name: 'Austria',
     seats: 183,
     threshold: 4.0,
-    method: 'd_hondt',
+    method: 'dhondt',
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // PR at three levels (national/state/regional); we model nationally
     recencyHalfLifeDays: 14,

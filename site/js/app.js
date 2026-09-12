@@ -2464,6 +2464,24 @@ function renderLive(pane){
   </div>`;
 loadLive().then(live=>{
     return loadValu().then(valu=>{
+    // Placeholder guard: the local live.json is a 2022 snapshot used only as an
+    // offline fallback. If that's what we got, don't present 2022 numbers as
+    // tonight's result — show a waiting state instead.
+    const isPlaceholder=live&&live.election==='val2022'&&live.source==='valmyndigheten'&&!live.updated;
+    if(isPlaceholder&&COUNTRY==='sweden'){
+      pane.innerHTML=`<div class="tab-pane-inner">
+        <div class="hero fc-hero">
+          <div class="hero-title">${T.tabs.live} — ${COUNTRY_NAME}</div>
+          <div class="hero-date">${t('Election night · waiting for the official count…','Seçim gecesi · resmi sayım bekleniyor…')}</div>
+        </div>
+        <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('RESULTS COMING SOON','SONUÇLAR YAKINDA')}</div></div>
+          <div style="padding:20px 0;text-align:center;font-size:13px;color:var(--c-text-muted)">
+            ${t('The LIVE tab will light up once Valmyndigheten publishes the first results after the polls close.','Seçim merkezleri kapandıktan sonra Valmyndigheten ilk sonuçları yayınladığında CANLI sekmesi devreye girecek.')}
+          </div>
+        </div>
+      </div>`;
+      return;
+    }
     return loadArchivedForecast().then(archPollSet=>{
     // Forecast reference: the frozen pre-election archive snapshot when
     // available (Sweden), else the live poll set — so the "final forecast"
@@ -2493,16 +2511,28 @@ loadLive().then(live=>{
     const countedPct=totalD?Math.round(counted/totalD*100):0;
     const turnout=nat&&nat.turnout!=null?nat.turnout:null;
     const updated=nat&&nat.updatedAt||(live&&live.updated)||'';
+    // the worker stamps updated as a raw epoch number; format it for display
+    const updatedDisp=(typeof updated==='number')
+      ?new Date(updated).toLocaleString(LANG==='tr'?'tr-TR':'sv-SE',{hour:'2-digit',minute:'2-digit'})
+      :updated;
     const rows=liveCompareRows(live, valu, avg);
 
-    // seat projection: prefer live official seats, else allocate from national pct
-    let seats=null;
+    // seat projection: prefer live official seats (only if they cover most of the
+// chamber — at partial counts Valmyndigheten may not publish per-valkrets
+// seats yet), else allocate from national pct
+let seats=null;
     const map=livePartyMap();
-    if(live&&live.valkretsar&&live.valkretsar.some(v=>v&&v.seats&&v.seats.length)){
-      seats={};
+    let vkSeats=null;
+    if(live&&live.valkretsar){
+      vkSeats={};
       live.valkretsar.filter(Boolean).forEach(v=>{
-        v.seats.forEach(s=>{const k=map[s.code];if(k)seats[k]=(seats[k]||0)+s.seats});
+        (v.seats||[]).forEach(s=>{const k=map[s.code];if(k)vkSeats[k]=(vkSeats[k]||0)+s.seats});
       });
+      const vkTotal=PARTY_ORDER.reduce((a,p)=>a+(vkSeats[p]||0),0);
+      if(vkTotal<SEATS_TOTAL*0.9) vkSeats=null;   // incomplete -> fall back
+    }
+    if(vkSeats){
+      seats=vkSeats;
     }else if(live&&live.national&&live.national.parties){
       const votes={};
       live.national.parties.forEach(p=>{const k=map[p.code];if(k)votes[k]=p.pct!=null?p.pct:0});
@@ -2511,7 +2541,7 @@ loadLive().then(live=>{
     const seatsTotal=seats?PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0):0;
     const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
 
-    const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updated||'—'}`;
+    const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updatedDisp||'—'}`;
 
     // --- majority banner: single full-width bar (RG left / Tidö right) ---
     let majBanner='';

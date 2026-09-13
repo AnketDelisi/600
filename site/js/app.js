@@ -126,17 +126,20 @@ const unitLabel=()=>{
 const methodName=()=>{
   if(SEAT_METHOD==='dhondt') return "D'Hondt";
   if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
+  if(SEAT_METHOD==='imperiali_hb') return 'Imperiali + Hagenbach-Bischoff';
   return 'modified Sainte-Laguë';
 };
 const methodNameShort=()=>{
   if(SEAT_METHOD==='dhondt') return "D'Hondt";
   if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
+  if(SEAT_METHOD==='imperiali_hb') return 'Imperiali/H-B';
   return 'Sainte-Laguë';
 };
 function methodSentence(){
   const nD=MAP_CONF()&&MAP_CONF().seatDistricts?Object.keys(MAP_CONF().seatDistricts).length:0;
   if(SEAT_METHOD==='dhondt') return nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
   if(SEAT_METHOD==='hare_niemeyer') return "the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
+  if(SEAT_METHOD==='imperiali_hb') return "the <strong>Imperiali quota</strong> (votes ÷ (seats+2)) in each of the 14 regions, then a <strong>national second scrutiny</strong> by Hagenbach-Bischoff (remainder votes ÷ (unfilled seats+1))";
   return "<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
 }
 
@@ -1630,10 +1633,83 @@ function allocateSeatsByDistrict(avg){
   return out;
 }
 
+// Czech Chamber of Deputies (Act 189/2021): two scrutinies.
+// First: LR-Imperiali per region (quota = region votes/(seats+2); integer quota,
+// over-allocation trimmed from the smallest remainders per §48(4)).
+// Second: national LR-Hagenbach-Bischoff over the remainder votes
+// (quota = sum remainders/(unfilled seats+1); leftover seats by largest remainder).
+function allocateSeatsCzechia(avg){
+  const conf=MAP_CONF();
+  if(!conf||!conf.regions) return null;
+  const nat=conf.national2021||LAST_ELECTION.results;
+  const valid=PARTY_ORDER.filter(p=>(avg[p]||0)>=THRESHOLD);
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  if(!valid.length) return out;
+
+  // Region votes: 2025 regional shares shifted by the national swing, scaled to
+  // the region's absolute valid-vote count (so the national second scrutiny weights
+  // regions by size, as the law does), then LR-Imperiali per region.
+  const remainders={}; valid.forEach(p=>{remainders[p]=0});
+  let unfilled=0;
+  for(const rid of Object.keys(conf.regions)){
+    const r=conf.regions[rid];
+    const votes={}; let sum=0;
+    for(const p of valid){
+      votes[p]=Math.max(0,(r.results[p]||0)+((avg[p]||0)-(nat[p]||0)))*(r.votes||100)/100;
+      sum+=votes[p];
+    }
+    if(!(sum>0)){ unfilled+=r.seats; continue; }
+
+    // First scrutiny: Imperiali quota (integer)
+    const quota=Math.floor(sum/(r.seats+2))||1;
+    const alloc={}; const rems=[];
+    let given=0;
+    valid.forEach(p=>{
+      const q=Math.floor(votes[p]/quota);
+      alloc[p]=q; given+=q;
+      rems.push([votes[p]-q*quota, p]);
+    });
+    if(given>r.seats){
+      rems.sort((a,b)=>a[0]-b[0]);   // smallest remainders lose seats first
+      for(let i=0;i<rems.length&&given>r.seats;i++){
+        const p=rems[i][1];
+        if(alloc[p]>0){ alloc[p]--; given--; }
+      }
+    }
+    if(given<r.seats) unfilled+=r.seats-given;
+    valid.forEach(p=>{
+      // Remainder votes transfer to the second scrutiny (all votes if no seat won)
+      remainders[p]+=votes[p]-quota*alloc[p];
+      out[p]+=alloc[p];
+    });
+  }
+
+  // Second scrutiny: Hagenbach-Bischoff quota nationally
+  if(unfilled>0){
+    const totalRem=valid.reduce((s,p)=>s+remainders[p],0);
+    if(totalRem>0){
+      const quota=Math.floor(totalRem/(unfilled+1))||1;
+      const alloc={}; const rems=[];
+      let given=0;
+      valid.forEach(p=>{
+        const q=Math.floor(remainders[p]/quota);
+        alloc[p]=q; given+=q;
+        rems.push([remainders[p]-q*quota, p]);
+      });
+      rems.sort((a,b)=>b[0]-a[0]);   // leftover by largest remainder
+      for(let i=0;i<rems.length&&given<unfilled;i++){
+        alloc[rems[i][1]]++; given++;
+      }
+      valid.forEach(p=>{out[p]+=alloc[p]});
+    }
+  }
+  return out;
+}
+
 // Seat allocation for a projection: per-okręg D'Hondt when the country defines
 // seatDistricts (Poland), else the national-district allocation.
 function allocateSeatsTotal(avg, total){
-  return allocateSeatsByDistrict(avg)||allocateSeatsN(avg,total);
+  return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsN(avg,total);
 }
 
 function buildParliamentSVG(seats){
@@ -1740,6 +1816,8 @@ function allocateSeatsFast(votes, total){
   if(OVERHANG){
     return overhangSeats(votes,total,directFromProjection(votes),OVERHANG.cap);
   }
+  const czechia=allocateSeatsCzechia(votes);
+  if(czechia) return czechia;
   const byDistrict=allocateSeatsByDistrict(votes);
   if(byDistrict) return byDistrict;
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);

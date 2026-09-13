@@ -239,9 +239,9 @@ def main():
         "election_date": "2029",
         "seats": 200,
         "threshold": 5.0,
-        "method": "hare_niemeyer",
+        "method": "imperiali_hb",
         "constituencies": False,
-        "notes": "Chamber of Deputies: PR across 14 regions (multi-member), 5% national threshold; modelled as a single national district.",
+        "notes": "Chamber of Deputies: two-tier system (Act 189/2021) — first scrutiny LR-Imperiali per region, second scrutiny LR-Hagenbach-Bischoff nationally.",
     }
     meta_file = OUTPUT_DIR / "meta.json"
     meta_file.write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")

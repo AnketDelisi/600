@@ -460,7 +460,8 @@ function recentPolls(polls, days){
 function renderCountryNav(){
   const nav=$('country-nav');
   if(!nav) return;
-  const ids=Object.keys(COUNTRIES).filter(id=>!COUNTRIES[id].hidden);
+  const ids=Object.keys(COUNTRIES).filter(id=>!COUNTRIES[id].hidden)
+    .sort((a,b)=>COUNTRIES[a].name.localeCompare(COUNTRIES[b].name));
   nav.innerHTML=ids.map(id=>{
     const c=COUNTRIES[id];
     const active=id===COUNTRY;

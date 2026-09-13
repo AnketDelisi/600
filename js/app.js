@@ -2525,6 +2525,15 @@ async function loadValu(){
   }catch(e){return null}
 }
 
+async function loadNovus(){
+  try{
+    const resp=await fetch(dataBase()+'data/'+COUNTRY+'/novus.json');
+    if(!resp.ok) return null;
+    const j=await resp.json();
+    return j&&j.parties?j.parties:null;
+  }catch(e){return null}
+}
+
 async function loadLive(){
   const conf=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live;
   if(!conf) return null;
@@ -2571,8 +2580,8 @@ function livePartyMap(){
   return map;
 }
 
-// three-way comparison rows: live % vs valu exit poll vs forecast avg
-function liveCompareRows(live, valu, avg){
+// four-way comparison rows: live % vs SVT Valu exit poll vs TV4/Novus exit poll vs forecast avg
+function liveCompareRows(live, valu, novus, avg){
   const map=livePartyMap();
   const liveParties=live&&live.national&&live.national.parties||[];
   const liveBy={};
@@ -2585,10 +2594,11 @@ function liveCompareRows(live, valu, avg){
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     const lv=liveBy[p];
     const va=valu?valu[p]:null;
+    const nv=novus?novus[p]:null;
     const fc=avg&&avg[p]!=null?avg[p]:null;
     const lvPct=lv?lv.pct:null;
-    const maxV=Math.max(lvPct||0,va||0,fc||0,35);
-    const cells=[['LIVE',lvPct],['VALU',va],['FCST',fc]].map(([lab,v])=>{
+    const maxV=Math.max(lvPct||0,va||0,nv||0,fc||0,35);
+    const cells=[['LIVE',lvPct],['VALU',va],['NOVU',nv],['FCST',fc]].map(([lab,v])=>{
       const w=v!=null?Math.max(2,Math.min(100,v/maxV*100)):0;
       return `<div class="lv-cell">
         <div class="lv-track"><div class="lv-fill" style="width:${w}%;background:${col}"></div></div>
@@ -2615,7 +2625,7 @@ function renderLive(pane){
     </div>
   </div>`;
 loadLive().then(live=>{
-    return loadValu().then(valu=>{
+    return Promise.all([loadValu(), loadNovus()]).then(([valu, novus])=>{
     // Placeholder guard: the local live.json is a 2022 snapshot used only as an
     // offline fallback. If that's what we got, don't present 2022 numbers as
     // tonight's result — show a waiting state instead.
@@ -2667,7 +2677,7 @@ loadLive().then(live=>{
     const updatedDisp=(typeof updated==='number')
       ?new Date(updated).toLocaleString(LANG==='tr'?'tr-TR':'sv-SE',{hour:'2-digit',minute:'2-digit'})
       :updated;
-    const rows=liveCompareRows(live, valu, avg);
+    const rows=liveCompareRows(live, valu, novus, avg);
 
     // seat projection: prefer live official seats (only if they cover most of the
 // chamber — at partial counts Valmyndigheten may not publish per-valkrets
@@ -2733,7 +2743,7 @@ let seats=null;
 
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveVs}</div></div>
         <div style="display:flex;gap:8px;align-items:center;padding:0 2px 4px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)">
-          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span><span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
+          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span><span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Exit poll (Novus)','Çıkış anketi (Novus)')}</span><span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
         </div>
         ${rows}
       </div>

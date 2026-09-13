@@ -36,6 +36,7 @@ jobs:
           python scraper/scrape_mecklenburg_vorpommern.py
           python scraper/scrape_berlin.py
           python scraper/scrape_netherlands.py
+          python scraper/scrape_estonia.py
 
       - name: Commit and push to main
         run: |

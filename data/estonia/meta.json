@@ -1,0 +1,10 @@
+{
+  "country": "estonia",
+  "name": "Estonia",
+  "election_date": "2027-03-07",
+  "seats": 101,
+  "threshold": 5.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Riigikogu: closed-list PR via D'Hondt with national adjustment seats (5% threshold); polls reported as national vote shares."
+}

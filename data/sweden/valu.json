@@ -2,7 +2,13 @@
   "source": "SVT Valu exit poll",
   "published": null,
   "parties": {
-    "S": null, "SD": null, "M": null, "V": null,
-    "C": null, "KD": null, "MP": null, "L": null
+    "S": 28.4,
+    "SD": 17.2,
+    "M": 18.1,
+    "V": 8.0,
+    "C": 7.5,
+    "KD": 6.1,
+    "MP": 7.4,
+    "L": 5.4
   }
 }

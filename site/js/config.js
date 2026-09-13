@@ -851,7 +851,7 @@ saxony_anhalt: {
     name: 'Czechia',
     seats: 200,
     threshold: 5.0,
-    method: 'hare_niemeyer',  // Chamber of Deputies: PR via Imperiali/Hagenbach-Bischoff quota in 14 multi-member regions; we model one national district (Hare quota largest-remainder look)
+    method: 'imperiali_hb',     // Chamber of Deputies: two-tier system (Act 189/2021) — first scrutiny LR-Imperiali per region, second scrutiny LR-Hagenbach-Bischoff nationally
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // PR across 14 regions; map colors per-okres winners (2025 list-level shares)
     recencyHalfLifeDays: 14,
@@ -1001,6 +1001,26 @@ saxony_anhalt: {
       },
       // 2025 national result — uniform-swing baseline for the per-okres projection
       national2021: { ano: 34.52, ods: 0, kducsl: 0, top09: 0, stan: 11.23, pirati: 8.97, zeleni: 0, spd: 7.78, svobodni: 0, pro: 0, trikolora: 0, auto: 6.77, kscm: 0, socdem: 0, prisaha: 1.08, nc: 0, spolu: 23.36 },
+      // Two-tier seat allocation (Act 189/2021): first scrutiny LR-Imperiali per
+      // region (quota = region votes/(seats+2)), then national second scrutiny
+      // LR-Hagenbach-Bischoff (quota = remainder votes/(unfilled seats+1)).
+      // Region seats + 2025 list-level shares per region (volby.cz ps2025).
+      regions: {
+        praha: { seats: 23, votes: 636042, results: { ano: 19.83, spolu: 33.97, stan: 13.40, pirati: 16.89, spd: 5.23, auto: 5.15, prisaha: 0.71 } },
+        stredocesky: { seats: 26, votes: 754016, results: { ano: 31.12, spolu: 24.32, stan: 13.72, pirati: 9.09, spd: 7.06, auto: 7.76, prisaha: 1.05 } },
+        jihocesky: { seats: 12, votes: 348347, results: { ano: 34.87, spolu: 23.61, stan: 10.76, pirati: 7.59, spd: 7.93, auto: 7.04, prisaha: 1.16 } },
+        plzensky: { seats: 12, votes: 302986, results: { ano: 37.31, spolu: 20.99, stan: 10.62, pirati: 7.78, spd: 8.88, auto: 7.16, prisaha: 1.01 } },
+        karlovarsky: { seats: 4, votes: 135439, results: { ano: 42.49, spolu: 15.40, stan: 10.94, pirati: 6.49, spd: 10.21, auto: 7.28, prisaha: 1.04 } },
+        ustecky: { seats: 13, votes: 387602, results: { ano: 44.85, spolu: 15.40, stan: 9.61, pirati: 6.96, spd: 9.13, auto: 6.79, prisaha: 1.15 } },
+        liberecky: { seats: 6, votes: 230132, results: { ano: 34.40, spolu: 18.06, stan: 16.34, pirati: 8.20, spd: 8.65, auto: 7.35, prisaha: 0.97 } },
+        kralovehradecky: { seats: 11, votes: 301924, results: { ano: 33.63, spolu: 23.60, stan: 12.21, pirati: 8.05, spd: 7.75, auto: 7.61, prisaha: 1.08 } },
+        pardubicky: { seats: 11, votes: 285378, results: { ano: 34.61, spolu: 23.62, stan: 11.05, pirati: 7.71, spd: 7.68, auto: 7.76, prisaha: 1.16 } },
+        vysocina: { seats: 11, votes: 287922, results: { ano: 36.11, spolu: 23.28, stan: 11.80, pirati: 7.07, spd: 7.32, auto: 6.80, prisaha: 1.20 } },
+        jihomoravsky: { seats: 24, votes: 667622, results: { ano: 32.29, spolu: 27.24, stan: 9.63, pirati: 9.45, spd: 7.54, auto: 6.13, prisaha: 1.34 } },
+        olomoucky: { seats: 13, votes: 340059, results: { ano: 38.72, spolu: 20.14, stan: 9.36, pirati: 7.33, spd: 9.43, auto: 6.64, prisaha: 1.18 } },
+        zlinsky: { seats: 12, votes: 317779, results: { ano: 34.87, spolu: 24.24, stan: 10.20, pirati: 7.54, spd: 8.74, auto: 6.71, prisaha: 1.11 } },
+        moravskoslezsky: { seats: 22, votes: 626469, results: { ano: 43.42, spolu: 17.98, stan: 8.37, pirati: 7.18, spd: 8.09, auto: 6.42, prisaha: 0.96 } },
+      },
     },
     logos: {
       ano: 'img/cz/ANO.svg',
@@ -1035,7 +1055,7 @@ saxony_anhalt: {
       pis: { code: 'PiS', name: 'Law and Justice', name_en: 'Law and Justice', color: '#26387C' },
       ko: { code: 'KO', name: 'Civic Coalition', name_en: 'Civic Coalition', color: '#E85D02' },
       pl2050: { code: 'PL2050', name: 'Poland 2050', name_en: 'Poland 2050', color: '#FFD700' },
-      psl: { code: 'PSL', name: 'Polish People\'s Party', name_en: 'Polish People\'s Party', color: '#7FFFD4' },
+      psl: { code: 'PSL', name: 'Polish People\'s Party', name_en: 'Polish People\'s Party', color: '#66CDAA' },
       lewica: { code: 'Lewica', name: 'The Left', name_en: 'The Left', color: '#E30613' },
       razem: { code: 'Razem', name: 'Together (Left)', name_en: 'Together (Left)', color: '#960018' },
       kwin: { code: 'KWiN', name: 'Confederation', name_en: 'Confederation', color: '#26222D' },

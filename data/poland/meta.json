@@ -1,0 +1,10 @@
+{
+  "country": "poland",
+  "name": "Poland",
+  "election_date": "2027",
+  "seats": 460,
+  "threshold": 5.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Sejm: PR via D'Hondt in 41 multi-member constituencies (5% threshold, 8% for coalitions); modelled as a single national district; map colors per-okreg winners."
+}

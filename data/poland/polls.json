@@ -1,0 +1,1333 @@
+{
+  "country": "poland",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Polish_parliamentary_election",
+  "scraped_at": "2026-09-13T09:44:17Z",
+  "poll_count": 77,
+  "polls": [
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-09-04",
+      "votes": {
+        "pis": 19.2,
+        "ko": 30.2,
+        "pl2050": 0.5,
+        "psl": 3.7,
+        "lewica": 6.6,
+        "razem": 4.0,
+        "kwin": 15.1,
+        "kkp": 6.8,
+        "r": 6.0
+      },
+      "country": "poland",
+      "date_end": "2026-09-06",
+      "n": 1000
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-09-01",
+      "votes": {
+        "pis": 22.23,
+        "ko": 33.34,
+        "pl2050": 1.66,
+        "psl": 3.31,
+        "lewica": 8.23,
+        "razem": 4.06,
+        "kwin": 13.54,
+        "kkp": 8.02,
+        "r": 5.14
+      },
+      "country": "poland",
+      "date_end": "2026-09-02",
+      "n": 1008
+    },
+    {
+      "pollster": "IBRiS / Onet",
+      "date": "2026-08-25",
+      "votes": {
+        "pis": 19.7,
+        "ko": 27.5,
+        "pl2050": 0.4,
+        "psl": 4.2,
+        "lewica": 8.3,
+        "razem": 2.7,
+        "kwin": 13.1,
+        "kkp": 8.3,
+        "r": 6.0
+      },
+      "country": "poland",
+      "date_end": "2026-08-27",
+      "n": 1100
+    },
+    {
+      "pollster": "Social Changes / wPolsce24",
+      "date": "2026-08-21",
+      "votes": {
+        "pis": 24.0,
+        "ko": 29.0,
+        "pl2050": 2.0,
+        "psl": 3.0,
+        "lewica": 7.0,
+        "razem": 5.0,
+        "kwin": 15.0,
+        "kkp": 10.0,
+        "r": 4.0
+      },
+      "country": "poland",
+      "date_end": "2026-08-24",
+      "n": 1094
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-08-21",
+      "votes": {
+        "pis": 20.6,
+        "ko": 27.3,
+        "pl2050": 0.8,
+        "psl": 3.0,
+        "lewica": 7.1,
+        "razem": 4.0,
+        "kwin": 14.1,
+        "kkp": 8.4,
+        "r": 6.5
+      },
+      "country": "poland",
+      "date_end": "2026-08-23",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-08-21",
+      "votes": {
+        "pis": 18.1,
+        "ko": 28.1,
+        "pl2050": 0.8,
+        "psl": 3.5,
+        "lewica": 6.6,
+        "razem": 4.6,
+        "kwin": 13.2,
+        "kkp": 8.8,
+        "r": 6.4
+      },
+      "country": "poland",
+      "date_end": "2026-08-22",
+      "n": 1067
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-08-07",
+      "votes": {
+        "pis": 17.8,
+        "ko": 28.7,
+        "pl2050": 0.6,
+        "psl": 4.8,
+        "lewica": 7.2,
+        "razem": 3.5,
+        "kwin": 10.6,
+        "kkp": 9.6,
+        "r": 6.8
+      },
+      "country": "poland",
+      "date_end": "2026-08-09",
+      "n": 1000
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-08-05",
+      "votes": {
+        "pis": 22.34,
+        "ko": 33.53,
+        "pl2050": 0.94,
+        "psl": 1.74,
+        "lewica": 5.99,
+        "razem": 3.64,
+        "kwin": 15.82,
+        "kkp": 10.51,
+        "r": 5.49
+      },
+      "country": "poland",
+      "date_end": "2026-08-12",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-08-03",
+      "votes": {
+        "pis": 17.2,
+        "ko": 30.3,
+        "pl2050": 1.3,
+        "psl": 1.1,
+        "lewica": 7.0,
+        "razem": 4.8,
+        "kwin": 15.3,
+        "kkp": 9.0,
+        "r": 5.3
+      },
+      "country": "poland",
+      "date_end": "2026-08-05",
+      "n": 1001
+    },
+    {
+      "pollster": "Social Changes / Interia",
+      "date": "2026-07-31",
+      "votes": {
+        "pis": 25.0,
+        "ko": 29.0,
+        "pl2050": 2.0,
+        "psl": 3.0,
+        "lewica": 9.0,
+        "razem": 4.0,
+        "kwin": 13.0,
+        "kkp": 9.0,
+        "r": 4.0
+      },
+      "country": "poland",
+      "date_end": "2026-08-03",
+      "n": 1095
+    },
+    {
+      "pollster": "IBRiS / Polsat News",
+      "date": "2026-07-29",
+      "votes": {
+        "pis": 16.9,
+        "ko": 27.5,
+        "pl2050": 1.4,
+        "psl": 4.0,
+        "lewica": 7.6,
+        "razem": 2.3,
+        "kwin": 14.4,
+        "kkp": 9.4,
+        "r": 7.8
+      },
+      "country": "poland",
+      "date_end": "2026-08-02",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-07-24",
+      "votes": {
+        "pis": 17.3,
+        "ko": 30.1,
+        "pl2050": 0.5,
+        "psl": 2.8,
+        "lewica": 7.0,
+        "razem": 1.6,
+        "kwin": 12.3,
+        "kkp": 10.9,
+        "r": 7.4
+      },
+      "country": "poland",
+      "date_end": "2026-07-25",
+      "n": 1000
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-07-24",
+      "votes": {
+        "pis": 21.52,
+        "ko": 31.76,
+        "pl2050": 2.14,
+        "psl": 3.72,
+        "lewica": 7.71,
+        "razem": 4.73,
+        "kwin": 13.4,
+        "kkp": 9.06,
+        "r": 4.9
+      },
+      "country": "poland",
+      "date_end": "2026-07-25",
+      "n": 1013
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-07-24",
+      "votes": {
+        "pis": 15.9,
+        "ko": 28.5,
+        "pl2050": 0.6,
+        "psl": 3.3,
+        "lewica": 7.8,
+        "razem": 1.9,
+        "kwin": 13.5,
+        "kkp": 12.3,
+        "r": 7.5
+      },
+      "country": "poland",
+      "date_end": "2026-07-25",
+      "n": 1000
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-07-16",
+      "votes": {
+        "pis": 18.9,
+        "ko": 29.0,
+        "pl2050": 0.6,
+        "psl": 3.8,
+        "lewica": 8.3,
+        "razem": 2.5,
+        "kwin": 12.0,
+        "kkp": 10.9,
+        "r": 6.9
+      },
+      "country": "poland",
+      "date_end": "2026-07-17",
+      "n": 1000
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-07-16",
+      "votes": {
+        "pis": 25.41,
+        "ko": 32.48,
+        "pl2050": 3.99,
+        "psl": 2.22,
+        "lewica": 7.57,
+        "razem": 6.06,
+        "kwin": 14.26,
+        "kkp": 7.26
+      },
+      "country": "poland",
+      "date_end": "2026-07-17",
+      "n": 1021
+    },
+    {
+      "pollster": "Social Changes / wPolsce24",
+      "date": "2026-07-10",
+      "votes": {
+        "pis": 30.0,
+        "ko": 32.0,
+        "pl2050": 1.0,
+        "psl": 3.0,
+        "lewica": 10.0,
+        "razem": 3.0,
+        "kwin": 11.0,
+        "kkp": 8.0
+      },
+      "country": "poland",
+      "date_end": "2026-07-13",
+      "n": 1090
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-07-10",
+      "votes": {
+        "pis": 23.0,
+        "ko": 28.6,
+        "pl2050": 0.6,
+        "psl": 5.2,
+        "lewica": 7.5,
+        "razem": 4.0,
+        "kwin": 15.7,
+        "kkp": 10.2
+      },
+      "country": "poland",
+      "date_end": "2026-07-12",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-07-06",
+      "votes": {
+        "pis": 22.8,
+        "ko": 31.3,
+        "pl2050": 1.7,
+        "psl": 1.6,
+        "lewica": 9.2,
+        "razem": 3.0,
+        "kwin": 13.4,
+        "kkp": 8.0
+      },
+      "country": "poland",
+      "date_end": "2026-07-08",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-07-02",
+      "votes": {
+        "pis": 23.2,
+        "ko": 29.1,
+        "pl2050": 1.0,
+        "psl": 3.9,
+        "lewica": 8.4,
+        "razem": 2.3,
+        "kwin": 13.3,
+        "kkp": 11.0
+      },
+      "country": "poland",
+      "date_end": "2026-07-03",
+      "n": 1071
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-06-30",
+      "votes": {
+        "pis": 27.54,
+        "ko": 32.62,
+        "pl2050": 2.16,
+        "psl": 3.78,
+        "lewica": 7.29,
+        "razem": 4.29,
+        "kwin": 13.38,
+        "kkp": 7.99
+      },
+      "country": "poland",
+      "date_end": "2026-07-01",
+      "n": 1042
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-06-26",
+      "votes": {
+        "pis": 24.2,
+        "ko": 29.2,
+        "pl2050": 1.1,
+        "psl": 4.1,
+        "lewica": 7.8,
+        "razem": 2.8,
+        "kwin": 10.7,
+        "kkp": 10.5
+      },
+      "country": "poland",
+      "date_end": "2026-06-28",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Polsat News",
+      "date": "2026-06-24",
+      "votes": {
+        "pis": 24.1,
+        "ko": 28.0,
+        "pl2050": 0.8,
+        "psl": 4.1,
+        "lewica": 8.2,
+        "razem": 3.1,
+        "kwin": 13.7,
+        "kkp": 9.0
+      },
+      "country": "poland",
+      "date_end": "2026-06-27",
+      "n": 1000
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-06-19",
+      "votes": {
+        "pis": 26.17,
+        "ko": 34.01,
+        "pl2050": 1.61,
+        "psl": 3.55,
+        "lewica": 7.82,
+        "razem": 4.58,
+        "kwin": 13.93,
+        "kkp": 7.66
+      },
+      "country": "poland",
+      "date_end": "2026-06-21",
+      "n": 1045
+    },
+    {
+      "pollster": "Research Partner",
+      "date": "2026-06-12",
+      "votes": {
+        "pis": 25.3,
+        "ko": 31.5,
+        "pl2050": 1.3,
+        "psl": 1.4,
+        "lewica": 8.9,
+        "razem": 3.2,
+        "kwin": 11.1,
+        "kkp": 6.7
+      },
+      "country": "poland",
+      "date_end": "2026-06-15",
+      "n": 1067
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-06-12",
+      "votes": {
+        "pis": 24.1,
+        "ko": 29.7,
+        "pl2050": 1.4,
+        "psl": 5.0,
+        "lewica": 7.1,
+        "razem": 3.1,
+        "kwin": 12.2,
+        "kkp": 9.6
+      },
+      "country": "poland",
+      "date_end": "2026-06-14",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-06-08",
+      "votes": {
+        "pis": 24.2,
+        "ko": 34.1,
+        "pl2050": 1.8,
+        "psl": 2.7,
+        "lewica": 7.5,
+        "razem": 3.2,
+        "kwin": 12.6,
+        "kkp": 7.5
+      },
+      "country": "poland",
+      "date_end": "2026-06-10",
+      "n": 1000
+    },
+    {
+      "pollster": "Social Changes / Interia",
+      "date": "2026-06-05",
+      "votes": {
+        "pis": 30.0,
+        "ko": 33.0,
+        "pl2050": 2.0,
+        "psl": 2.0,
+        "lewica": 8.0,
+        "razem": 5.0,
+        "kwin": 12.0,
+        "kkp": 7.0
+      },
+      "country": "poland",
+      "date_end": "2026-06-09",
+      "n": 1073
+    },
+    {
+      "pollster": "IBRiS / Polsat News",
+      "date": "2026-05-29",
+      "votes": {
+        "pis": 23.7,
+        "ko": 29.3,
+        "pl2050": 1.5,
+        "psl": 4.2,
+        "lewica": 8.1,
+        "razem": 2.9,
+        "kwin": 13.4,
+        "kkp": 8.0
+      },
+      "country": "poland",
+      "date_end": "2026-06-02",
+      "n": 1000
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-05-28",
+      "votes": {
+        "pis": 26.66,
+        "ko": 32.98,
+        "pl2050": 2.71,
+        "psl": 4.25,
+        "lewica": 7.76,
+        "razem": 4.78,
+        "kwin": 13.29,
+        "kkp": 7.03
+      },
+      "country": "poland",
+      "date_end": "2026-05-29",
+      "n": 1057
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-05-22",
+      "votes": {
+        "pis": 22.9,
+        "ko": 29.2,
+        "pl2050": 1.5,
+        "psl": 4.1,
+        "lewica": 8.1,
+        "razem": 3.3,
+        "kwin": 13.5,
+        "kkp": 8.2
+      },
+      "country": "poland",
+      "date_end": "2026-05-24",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-05-22",
+      "votes": {
+        "pis": 25.4,
+        "ko": 30.9,
+        "pl2050": 2.1,
+        "psl": 3.9,
+        "lewica": 8.4,
+        "razem": 2.8,
+        "kwin": 12.6,
+        "kkp": 8.8
+      },
+      "country": "poland",
+      "date_end": "2026-05-23",
+      "n": 1000
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-05-12",
+      "votes": {
+        "pis": 27.03,
+        "ko": 38.89,
+        "pl2050": 1.9,
+        "psl": 2.39,
+        "lewica": 5.2,
+        "razem": 3.51,
+        "kwin": 11.76,
+        "kkp": 9.32
+      },
+      "country": "poland",
+      "date_end": "2026-05-23",
+      "n": 1000
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-05-08",
+      "votes": {
+        "pis": 24.0,
+        "ko": 32.5,
+        "pl2050": 1.4,
+        "psl": 4.1,
+        "lewica": 6.8,
+        "razem": 3.1,
+        "kwin": 13.1,
+        "kkp": 9.1
+      },
+      "country": "poland",
+      "date_end": "2026-05-10",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-05-04",
+      "votes": {
+        "pis": 24.8,
+        "ko": 33.8,
+        "pl2050": 3.0,
+        "psl": 1.9,
+        "lewica": 7.0,
+        "razem": 1.9,
+        "kwin": 11.7,
+        "kkp": 7.8
+      },
+      "country": "poland",
+      "date_end": "2026-05-06",
+      "n": 1002
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-04-28",
+      "votes": {
+        "pis": 26.63,
+        "ko": 36.89,
+        "pl2050": 1.15,
+        "psl": 2.14,
+        "lewica": 6.02,
+        "razem": 2.5,
+        "kwin": 13.08,
+        "kkp": 11.23
+      },
+      "country": "poland",
+      "date_end": "2026-05-11",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24 / GW",
+      "date": "2026-04-27",
+      "votes": {
+        "pis": 21.6,
+        "ko": 31.6,
+        "pl2050": 2.2,
+        "psl": 2.8,
+        "lewica": 7.0,
+        "razem": 3.5,
+        "kwin": 12.2,
+        "kkp": 8.2
+      },
+      "country": "poland",
+      "date_end": "2026-04-30",
+      "n": 1002
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-04-24",
+      "votes": {
+        "pis": 24.5,
+        "ko": 31.8,
+        "pl2050": 1.1,
+        "psl": 4.6,
+        "lewica": 8.5,
+        "razem": 3.8,
+        "kwin": 12.6,
+        "kkp": 6.8
+      },
+      "country": "poland",
+      "date_end": "2026-04-26",
+      "n": 1000
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-04-21",
+      "votes": {
+        "pis": 29.0,
+        "ko": 32.97,
+        "pl2050": 2.67,
+        "psl": 3.7,
+        "lewica": 6.65,
+        "razem": 5.81,
+        "kwin": 12.45,
+        "kkp": 6.29
+      },
+      "country": "poland",
+      "date_end": "2026-04-22",
+      "n": 1005
+    },
+    {
+      "pollster": "Social Changes / Interia",
+      "date": "2026-04-17",
+      "votes": {
+        "pis": 28.0,
+        "ko": 33.0,
+        "pl2050": 2.0,
+        "psl": 2.0,
+        "lewica": 7.0,
+        "razem": 5.0,
+        "kwin": 12.0,
+        "kkp": 9.0
+      },
+      "country": "poland",
+      "date_end": "2026-04-20",
+      "n": 1090
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-04-17",
+      "votes": {
+        "pis": 20.3,
+        "ko": 32.1,
+        "pl2050": 0.5,
+        "psl": 3.1,
+        "lewica": 7.8,
+        "razem": 3.2,
+        "kwin": 13.2,
+        "kkp": 8.5,
+        "r": 5.1
+      },
+      "country": "poland",
+      "date_end": "2026-04-19",
+      "n": 1000
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-04-16",
+      "votes": {
+        "pis": 29.41,
+        "ko": 37.61,
+        "pl2050": 1.66,
+        "psl": 1.71,
+        "lewica": 4.61,
+        "razem": 3.35,
+        "kwin": 13.24,
+        "kkp": 8.26
+      },
+      "country": "poland",
+      "date_end": "2026-04-27",
+      "n": 1000
+    },
+    {
+      "pollster": "CBOS",
+      "date": "2026-04-13",
+      "votes": {
+        "pis": 18.2,
+        "ko": 32.0,
+        "pl2050": 0.7,
+        "psl": 3.0,
+        "lewica": 5.8,
+        "razem": 4.9,
+        "kwin": 13.0,
+        "kkp": 8.7
+      },
+      "country": "poland",
+      "date_end": "2026-04-15",
+      "n": 1000
+    },
+    {
+      "pollster": "Research Partner / BS",
+      "date": "2026-04-10",
+      "votes": {
+        "pis": 24.6,
+        "ko": 30.0,
+        "pl2050": 4.2,
+        "psl": 3.3,
+        "lewica": 7.3,
+        "razem": 4.8,
+        "kwin": 13.3,
+        "kkp": 8.7
+      },
+      "country": "poland",
+      "date_end": "2026-04-13",
+      "n": 1070
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-04-10",
+      "votes": {
+        "pis": 23.7,
+        "ko": 30.5,
+        "pl2050": 1.6,
+        "psl": 3.7,
+        "lewica": 8.0,
+        "razem": 4.2,
+        "kwin": 14.2,
+        "kkp": 8.4
+      },
+      "country": "poland",
+      "date_end": "2026-04-12",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-04-07",
+      "votes": {
+        "pis": 22.0,
+        "ko": 35.2,
+        "pl2050": 3.1,
+        "psl": 1.9,
+        "lewica": 6.9,
+        "razem": 4.6,
+        "kwin": 12.8,
+        "kkp": 6.6
+      },
+      "country": "poland",
+      "date_end": "2026-04-09",
+      "n": 1002
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-04-02",
+      "votes": {
+        "pis": 27.28,
+        "ko": 35.75,
+        "pl2050": 1.75,
+        "psl": 3.86,
+        "lewica": 5.97,
+        "razem": 4.72,
+        "kwin": 12.0,
+        "kkp": 7.04
+      },
+      "country": "poland",
+      "date_end": "2026-04-03",
+      "n": 1011
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-03-27",
+      "votes": {
+        "pis": 23.3,
+        "ko": 31.1,
+        "pl2050": 1.9,
+        "psl": 5.1,
+        "lewica": 7.8,
+        "razem": 3.5,
+        "kwin": 12.6,
+        "kkp": 8.0
+      },
+      "country": "poland",
+      "date_end": "2026-03-29",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-03-27",
+      "votes": {
+        "pis": 24.5,
+        "ko": 32.4,
+        "pl2050": 1.8,
+        "psl": 4.5,
+        "lewica": 7.9,
+        "razem": 2.9,
+        "kwin": 13.4,
+        "kkp": 7.5
+      },
+      "country": "poland",
+      "date_end": "2026-03-28",
+      "n": 1067
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-03-25",
+      "votes": {
+        "pis": 29.77,
+        "ko": 37.99,
+        "pl2050": 1.04,
+        "psl": 1.57,
+        "lewica": 4.92,
+        "razem": 3.29,
+        "kwin": 11.42,
+        "kkp": 10.0
+      },
+      "country": "poland",
+      "date_end": "2026-04-04",
+      "n": 1000
+    },
+    {
+      "pollster": "Research Partner",
+      "date": "2026-03-20",
+      "votes": {
+        "pis": 26.4,
+        "ko": 30.6,
+        "pl2050": 1.7,
+        "psl": 1.6,
+        "lewica": 6.7,
+        "razem": 2.9,
+        "kwin": 10.5,
+        "kkp": 7.7
+      },
+      "country": "poland",
+      "date_end": "2026-03-23",
+      "n": 1080
+    },
+    {
+      "pollster": "Social Changes / wPolsce24",
+      "date": "2026-03-16",
+      "votes": {
+        "pis": 28.0,
+        "ko": 32.0,
+        "pl2050": 2.0,
+        "psl": 4.5,
+        "lewica": 8.0,
+        "razem": 4.0,
+        "kwin": 13.0,
+        "kkp": 5.0
+      },
+      "country": "poland",
+      "date_end": "2026-03-26",
+      "n": 1000
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-03-13",
+      "votes": {
+        "pis": 25.0,
+        "ko": 32.6,
+        "pl2050": 0.7,
+        "psl": 4.2,
+        "lewica": 6.7,
+        "razem": 2.2,
+        "kwin": 14.7,
+        "kkp": 8.5
+      },
+      "country": "poland",
+      "date_end": "2026-03-15",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Polsat News",
+      "date": "2026-03-13",
+      "votes": {
+        "pis": 24.7,
+        "ko": 31.1,
+        "pl2050": 1.4,
+        "psl": 4.8,
+        "lewica": 6.1,
+        "razem": 3.2,
+        "kwin": 13.6,
+        "kkp": 8.2
+      },
+      "country": "poland",
+      "date_end": "2026-03-15",
+      "n": 1000
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-03-11",
+      "votes": {
+        "pis": 28.82,
+        "ko": 37.91,
+        "pl2050": 1.36,
+        "psl": 2.32,
+        "lewica": 5.3,
+        "razem": 2.35,
+        "kwin": 12.9,
+        "kkp": 9.04
+      },
+      "country": "poland",
+      "date_end": "2026-03-16",
+      "n": 1000
+    },
+    {
+      "pollster": "Social Changes / wPolsce24",
+      "date": "2026-03-11",
+      "votes": {
+        "pis": 30.0,
+        "ko": 32.0,
+        "pl2050": 3.0,
+        "psl": 3.0,
+        "lewica": 9.0,
+        "razem": 4.0,
+        "kwin": 11.0,
+        "kkp": 7.0
+      },
+      "country": "poland",
+      "date_end": "2026-03-13",
+      "n": 1084
+    },
+    {
+      "pollster": "Opinia24 / \"Fakty\" TVN, TVN24",
+      "date": "2026-03-11",
+      "votes": {
+        "pis": 23.9,
+        "ko": 34.5,
+        "pl2050": 1.8,
+        "psl": 2.4,
+        "lewica": 5.1,
+        "razem": 4.6,
+        "kwin": 11.6,
+        "kkp": 7.1
+      },
+      "country": "poland",
+      "date_end": "2026-03-12",
+      "n": 1002
+    },
+    {
+      "pollster": "IBRiS / Onet",
+      "date": "2026-03-09",
+      "votes": {
+        "pis": 24.2,
+        "ko": 31.8,
+        "pl2050": 0.9,
+        "psl": 4.6,
+        "lewica": 6.9,
+        "razem": 2.1,
+        "kwin": 14.2,
+        "kkp": 8.0
+      },
+      "country": "poland",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-03-02",
+      "votes": {
+        "pis": 22.0,
+        "ko": 34.2,
+        "pl2050": 1.6,
+        "psl": 3.0,
+        "lewica": 6.1,
+        "razem": 4.1,
+        "kwin": 14.5,
+        "kkp": 7.2
+      },
+      "country": "poland",
+      "date_end": "2026-03-04",
+      "n": 1001
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-02-27",
+      "votes": {
+        "pis": 23.5,
+        "ko": 30.6,
+        "pl2050": 1.1,
+        "psl": 3.8,
+        "lewica": 7.7,
+        "razem": 4.2,
+        "kwin": 12.2,
+        "kkp": 8.4
+      },
+      "country": "poland",
+      "date_end": "2026-03-01",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-02-27",
+      "votes": {
+        "pis": 22.1,
+        "ko": 30.1,
+        "pl2050": 1.5,
+        "psl": 4.2,
+        "lewica": 6.8,
+        "razem": 3.4,
+        "kwin": 13.8,
+        "kkp": 9.2
+      },
+      "country": "poland",
+      "date_end": "2026-02-28",
+      "n": 1073
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2026-02-25",
+      "votes": {
+        "pis": 28.45,
+        "ko": 34.25,
+        "pl2050": 2.61,
+        "psl": 3.22,
+        "lewica": 7.69,
+        "razem": 5.01,
+        "kwin": 11.06,
+        "kkp": 7.32
+      },
+      "country": "poland",
+      "date_end": "2026-02-26",
+      "n": 988
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-02-20",
+      "votes": {
+        "pis": 21.5,
+        "ko": 30.7,
+        "pl2050": 1.0,
+        "psl": 5.0,
+        "lewica": 7.5,
+        "razem": 2.5,
+        "kwin": 13.2,
+        "kkp": 10.0
+      },
+      "country": "poland",
+      "date_end": "2026-02-21",
+      "n": 1000
+    },
+    {
+      "pollster": "IPSOS / \"19:30\" TVP Info",
+      "date": "2026-02-19",
+      "votes": {
+        "pis": 26.0,
+        "ko": 29.0,
+        "pl2050": 2.0,
+        "psl": 2.0,
+        "lewica": 6.0,
+        "razem": 5.0,
+        "kwin": 14.0,
+        "kkp": 7.0
+      },
+      "country": "poland",
+      "date_end": "2026-02-20",
+      "n": 1000
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-02-13",
+      "votes": {
+        "pis": 22.7,
+        "ko": 32.5,
+        "pl2050": 2.0,
+        "psl": 4.8,
+        "lewica": 8.0,
+        "razem": 3.1,
+        "kwin": 13.0,
+        "kkp": 9.9
+      },
+      "country": "poland",
+      "date_end": "2026-02-15",
+      "n": 1000
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-02-09",
+      "votes": {
+        "pis": 27.81,
+        "ko": 34.5,
+        "pl2050": 2.84,
+        "psl": 2.55,
+        "lewica": 5.86,
+        "razem": 3.07,
+        "kwin": 14.38,
+        "kkp": 8.99
+      },
+      "country": "poland",
+      "date_end": "2026-02-14",
+      "n": 1000
+    },
+    {
+      "pollster": "Social Changes / wPolsce24",
+      "date": "2026-02-06",
+      "votes": {
+        "pis": 28.0,
+        "ko": 33.0,
+        "pl2050": 2.0,
+        "psl": 2.0,
+        "lewica": 9.0,
+        "razem": 3.0,
+        "kwin": 11.0,
+        "kkp": 10.0
+      },
+      "country": "poland",
+      "date_end": "2026-02-17",
+      "n": 1098
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-02-02",
+      "votes": {
+        "pis": 24.5,
+        "ko": 32.0,
+        "pl2050": 4.1,
+        "psl": 1.7,
+        "lewica": 6.3,
+        "razem": 3.7,
+        "kwin": 12.6,
+        "kkp": 7.7
+      },
+      "country": "poland",
+      "date_end": "2026-02-04",
+      "n": 1000
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-01-30",
+      "votes": {
+        "pis": 23.5,
+        "ko": 32.3,
+        "pl2050": 2.1,
+        "psl": 4.9,
+        "lewica": 6.6,
+        "razem": 3.7,
+        "kwin": 11.2,
+        "kkp": 7.7
+      },
+      "country": "poland",
+      "date_end": "2026-02-01",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-01-30",
+      "votes": {
+        "pis": 23.3,
+        "ko": 31.4,
+        "pl2050": 1.7,
+        "psl": 5.4,
+        "lewica": 8.1,
+        "razem": 3.6,
+        "kwin": 12.6,
+        "kkp": 9.0
+      },
+      "country": "poland",
+      "date_end": "2026-01-31",
+      "n": 1067
+    },
+    {
+      "pollster": "IBRiS / Onet",
+      "date": "2026-01-20",
+      "votes": {
+        "pis": 27.3,
+        "ko": 31.2,
+        "pl2050": 1.4,
+        "psl": 4.9,
+        "lewica": 6.8,
+        "razem": 2.8,
+        "kwin": 12.8,
+        "kkp": 6.6
+      },
+      "country": "poland",
+      "date_end": "2026-01-21",
+      "n": 1100
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-01-16",
+      "votes": {
+        "pis": 26.2,
+        "ko": 31.8,
+        "pl2050": 2.3,
+        "psl": 4.8,
+        "lewica": 5.9,
+        "razem": 2.7,
+        "kwin": 14.0,
+        "kkp": 7.1
+      },
+      "country": "poland",
+      "date_end": "2026-01-18",
+      "n": 1000
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-01-12",
+      "votes": {
+        "pis": 28.47,
+        "ko": 39.04,
+        "pl2050": 1.23,
+        "psl": 1.53,
+        "lewica": 4.51,
+        "razem": 3.33,
+        "kwin": 12.25,
+        "kkp": 9.64
+      },
+      "country": "poland",
+      "date_end": "2026-01-19",
+      "n": 1000
+    },
+    {
+      "pollster": "Opinia24",
+      "date": "2026-01-12",
+      "votes": {
+        "pis": 25.8,
+        "ko": 30.9,
+        "pl2050": 4.0,
+        "psl": 3.3,
+        "lewica": 7.1,
+        "razem": 2.7,
+        "kwin": 12.8,
+        "kkp": 7.4
+      },
+      "country": "poland",
+      "date_end": "2026-01-14",
+      "n": 1001
+    },
+    {
+      "pollster": "United Surveys / WP.pl",
+      "date": "2026-01-02",
+      "votes": {
+        "pis": 25.9,
+        "ko": 30.9,
+        "pl2050": 2.0,
+        "psl": 3.2,
+        "lewica": 8.2,
+        "razem": 4.4,
+        "kwin": 11.2,
+        "kkp": 9.7
+      },
+      "country": "poland",
+      "date_end": "2026-01-04",
+      "n": 1000
+    },
+    {
+      "pollster": "IBRiS / Rz",
+      "date": "2026-01-02",
+      "votes": {
+        "pis": 26.7,
+        "ko": 31.6,
+        "pl2050": 1.1,
+        "psl": 3.7,
+        "lewica": 7.5,
+        "razem": 3.6,
+        "kwin": 12.0,
+        "kkp": 8.8
+      },
+      "country": "poland",
+      "date_end": "2026-01-03",
+      "n": 1068
+    },
+    {
+      "pollster": "Pollster / \"SE.pl\"",
+      "date": "2025-12-31",
+      "votes": {
+        "pis": 29.88,
+        "ko": 34.2,
+        "pl2050": 3.21,
+        "psl": 1.11,
+        "lewica": 7.37,
+        "razem": 4.58,
+        "kwin": 10.15,
+        "kkp": 7.22
+      },
+      "country": "poland",
+      "date_end": "2026-01-01",
+      "n": 1002
+    }
+  ]
+}

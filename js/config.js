@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b24';
+const LOGO_CACHE = 'b25';
 
 const COUNTRIES = {
 
@@ -1019,6 +1019,128 @@ saxony_anhalt: {
       top09: 'img/cz/TOP09.svg',
       trikolora: 'img/cz/TRIKOLORA.svg',
       zeleni: 'img/cz/ZELENI.svg',
+    },
+  },
+
+  // ===== Poland (Sejm 2027) =====
+  poland: {
+    name: 'Poland',
+    seats: 460,
+    threshold: 5.0,
+    method: 'dhondt',            // Sejm: PR via D'Hondt in 41 multi-member okręgi; we model one national district
+    seatBased: false,            // polls report vote shares (%)
+    constituencies: false,       // PR across 41 okręgów; map colors per-okręg winners (2023 list-level shares)
+    recencyHalfLifeDays: 14,
+    parties: {
+      pis: { code: 'PiS', name: 'Law and Justice', name_en: 'Law and Justice', color: '#26387C' },
+      ko: { code: 'KO', name: 'Civic Coalition', name_en: 'Civic Coalition', color: '#E85D02' },
+      pl2050: { code: 'PL2050', name: 'Poland 2050', name_en: 'Poland 2050', color: '#C3D500' },
+      psl: { code: 'PSL', name: 'Polish People\'s Party', name_en: 'Polish People\'s Party', color: '#00923F' },
+      lewica: { code: 'Lewica', name: 'The Left', name_en: 'The Left', color: '#E30613' },
+      razem: { code: 'Razem', name: 'Together (Left)', name_en: 'Together (Left)', color: '#B0171F' },
+      kwin: { code: 'KWiN', name: 'Confederation', name_en: 'Confederation', color: '#26222D' },
+      kkp: { code: 'KKP', name: 'Confederation of the Polish Crown', name_en: 'Confederation of the Polish Crown', color: '#8E1B2E' },
+      r: { code: 'R+', name: 'Development Plus', name_en: 'Development Plus', color: '#4F6F9F' },
+    },
+    // Poll-table column order (2026 tables list all nine registered parties with logos)
+    order: ['pis', 'ko', 'pl2050', 'psl', 'lewica', 'razem', 'kwin', 'kkp', 'r'],
+    parlOrder: ['lewica', 'razem', 'ko', 'pl2050', 'psl', 'r', 'pis', 'kwin', 'kkp'],
+    // Incumbent Tusk-III camp (KO + PL2050 + PSL + Lewica) vs the right-wing opposition; Razem left the coalition (unaligned)
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['ko', 'pl2050', 'psl', 'lewica'], color: '#E85D02' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['pis', 'kwin', 'kkp', 'r'], color: '#26387C' },
+    },
+    lastElection: {
+      date: '2023-10-15',
+      // 2023 Sejm (modelled party-level split of the Third Way / Lewica / Konfederacja alliances;
+      // national literal: PiS 35.4/194, KO 30.7/157, PL2050 7.2/33, PSL 5.9/32, NL 6.5/19, Razem 2.1/7,
+      // KWiN 6.3/16, KKP 0.9/2; R+ not yet founded → 0).
+      results: { pis: 35.4, ko: 30.7, pl2050: 7.2, psl: 5.9, lewica: 6.5, razem: 2.1, kwin: 6.3, kkp: 0.9, r: 0 },
+      seats:   { pis: 194, ko: 157, pl2050: 33, psl: 32, lewica: 19, razem: 7, kwin: 16, kkp: 2, r: 0 },
+    },
+    map: {
+      svg: 'img/Poland.svg',
+      selector: 'id',           // paths carry okręg city ids
+      districts: {
+        Legnica: 'Legnica', Walbrzych: 'Walbrzych', Wroclaw: 'Wroclaw', Bydgoszcz: 'Bydgoszcz', Torun: 'Torun',
+        Lublin: 'Lublin', Chelm: 'Chelm', ZielonaGora: 'ZielonaGora', Lodz: 'Lodz', PiotrkowTrybunalsk: 'PiotrkowTrybunalsk',
+        Sieradz: 'Sieradz', Krakow1: 'Krakow1', Krakow2: 'Krakow2', NowySacz: 'NowySacz', Tarnow: 'Tarnow',
+        Plock: 'Plock', Radom: 'Radom', Siedlce: 'Siedlce', Warszawa1: 'Warszawa1', Warszawa2: 'Warszawa2',
+        Opole: 'Opole', Krosno: 'Krosno', Rzeszow: 'Rzeszow', Bialystok: 'Bialystok', Gdansk: 'Gdansk',
+        Slupsk: 'Slupsk', BielskoBiala1: 'BielskoBiala1', Czestochowa: 'Czestochowa', Katowice1: 'Katowice1',
+        BielskoBiala2: 'BielskoBiala2', Katowice2: 'Katowice2', Katowice3: 'Katowice3', Kielce: 'Kielce',
+        Elblag: 'Elblag', Olsztyn: 'Olsztyn', Kalisz: 'Kalisz', Konin: 'Konin', Pila: 'Pila', Poznan: 'Poznan',
+        Koszalin: 'Koszalin', Szczecin: 'Szczecin',
+      },
+      // 2023 share % per okręg, split to modelled parties: TD (PL2050/PSL), Lewica (NL/Razem),
+      // Konfederacja (KWiN/KKP) apportioned by the fictional national ratio above; R+ = 0.
+      gebiete: {
+        Legnica: { pis: 34.8, ko: 33.78, pl2050: 5.91, psl: 4.84, lewica: 7.19, razem: 2.32, kwin: 5.54, kkp: 0.79 },
+        Walbrzych: { pis: 33.34, ko: 37.17, pl2050: 6.67, psl: 5.46, lewica: 6.03, razem: 1.95, kwin: 5.27, kkp: 0.75 },
+        Wroclaw: { pis: 26.66, ko: 36.94, pl2050: 7.55, psl: 6.19, lewica: 8.58, razem: 2.77, kwin: 6.11, kkp: 0.87 },
+        Bydgoszcz: { pis: 30.45, ko: 35.01, pl2050: 8.28, psl: 6.78, lewica: 7.5, razem: 2.42, kwin: 5.62, kkp: 0.8 },
+        Torun: { pis: 34.06, ko: 29.52, pl2050: 8.62, psl: 7.06, lewica: 8.5, razem: 2.75, kwin: 5.57, kkp: 0.8 },
+        Lublin: { pis: 45.48, ko: 20.32, pl2050: 8.72, psl: 7.15, lewica: 4.32, razem: 1.4, kwin: 7.33, kkp: 1.05 },
+        Chelm: { pis: 50.75, ko: 17.4, pl2050: 7.17, psl: 5.87, lewica: 4.25, razem: 1.37, kwin: 6.82, kkp: 0.97 },
+        ZielonaGora: { pis: 27.76, ko: 37.73, pl2050: 8.28, psl: 6.79, lewica: 7.01, razem: 2.26, kwin: 5.7, kkp: 0.81 },
+        Lodz: { pis: 26.82, ko: 41.07, pl2050: 6.53, psl: 5.36, lewica: 9.24, razem: 2.98, kwin: 4.87, kkp: 0.7 },
+        PiotrkowTrybunalsk: { pis: 46.6, ko: 21.69, pl2050: 7.55, psl: 6.18, lewica: 4.83, razem: 1.56, kwin: 6.67, kkp: 0.95 },
+        Sieradz: { pis: 41.46, ko: 25.89, pl2050: 7.97, psl: 6.53, lewica: 5.84, razem: 1.89, kwin: 5.97, kkp: 0.85 },
+        Krakow1: { pis: 42.86, ko: 24.24, pl2050: 8.23, psl: 6.74, lewica: 4.57, razem: 1.47, kwin: 6.89, kkp: 0.98 },
+        Krakow2: { pis: 30.68, ko: 30.73, pl2050: 9.27, psl: 7.59, lewica: 8.34, razem: 2.7, kwin: 6.75, kkp: 0.96 },
+        NowySacz: { pis: 53.73, ko: 16.1, pl2050: 6.36, psl: 5.22, lewica: 2.4, razem: 0.78, kwin: 7.64, kkp: 1.09 },
+        Tarnow: { pis: 48.67, ko: 17.02, pl2050: 10.24, psl: 8.4, lewica: 3.02, razem: 0.98, kwin: 6.99, kkp: 1.0 },
+        Plock: { pis: 44.11, ko: 22.4, pl2050: 9.38, psl: 7.69, lewica: 4.93, razem: 1.59, kwin: 5.71, kkp: 0.81 },
+        Radom: { pis: 48.68, ko: 20.96, pl2050: 7.68, psl: 6.3, lewica: 4.04, razem: 1.3, kwin: 6.4, kkp: 0.91 },
+        Siedlce: { pis: 48.62, ko: 18.71, pl2050: 8.52, psl: 6.99, lewica: 3.67, razem: 1.18, kwin: 7.18, kkp: 1.03 },
+        Warszawa1: { pis: 20.14, ko: 43.23, pl2050: 7.28, psl: 5.97, lewica: 10.17, razem: 3.28, kwin: 5.46, kkp: 0.78 },
+        Warszawa2: { pis: 31.74, ko: 35.23, pl2050: 8.28, psl: 6.78, lewica: 5.34, razem: 1.72, kwin: 6.18, kkp: 0.88 },
+        Opole: { pis: 31.26, ko: 33.59, pl2050: 7.0, psl: 5.74, lewica: 5.47, razem: 1.77, kwin: 5.68, kkp: 0.81 },
+        Krosno: { pis: 54.7, ko: 15.85, pl2050: 7.58, psl: 6.21, lewica: 3.38, razem: 1.09, kwin: 7.54, kkp: 1.08 },
+        Rzeszow: { pis: 51.6, ko: 17.7, pl2050: 6.83, psl: 5.59, lewica: 3.68, razem: 1.19, kwin: 8.29, kkp: 1.19 },
+        Bialystok: { pis: 42.39, ko: 20.84, pl2050: 10.37, psl: 8.49, lewica: 3.66, razem: 1.18, kwin: 8.57, kkp: 1.22 },
+        Gdansk: { pis: 25.2, ko: 41.7, pl2050: 8.08, psl: 6.62, lewica: 7.11, razem: 2.3, kwin: 5.45, kkp: 0.78 },
+        Slupsk: { pis: 29.24, ko: 37.91, pl2050: 7.47, psl: 6.12, lewica: 6.3, razem: 2.03, kwin: 6.31, kkp: 0.9 },
+        BielskoBiala1: { pis: 36.71, ko: 28.67, pl2050: 8.0, psl: 6.55, lewica: 5.87, razem: 1.9, kwin: 6.86, kkp: 0.98 },
+        Czestochowa: { pis: 36.35, ko: 29.11, pl2050: 8.09, psl: 6.63, lewica: 7.11, razem: 2.3, kwin: 5.74, kkp: 0.82 },
+        Katowice1: { pis: 30.16, ko: 36.06, pl2050: 7.33, psl: 6.01, lewica: 6.96, razem: 2.25, kwin: 6.08, kkp: 0.87 },
+        BielskoBiala2: { pis: 38.06, ko: 29.98, pl2050: 6.84, psl: 5.61, lewica: 5.17, razem: 1.67, kwin: 7.0, kkp: 1.0 },
+        Katowice2: { pis: 30.88, ko: 36.79, pl2050: 7.29, psl: 5.98, lewica: 6.39, razem: 2.07, kwin: 5.86, kkp: 0.84 },
+        Katowice3: { pis: 29.74, ko: 30.3, pl2050: 5.41, psl: 4.44, lewica: 16.33, razem: 5.27, kwin: 4.98, kkp: 0.71 },
+        Kielce: { pis: 47.07, ko: 20.93, pl2050: 7.58, psl: 6.22, lewica: 5.16, razem: 1.67, kwin: 5.73, kkp: 0.82 },
+        Elblag: { pis: 35.2, ko: 31.87, pl2050: 8.46, psl: 6.94, lewica: 6.13, razem: 1.98, kwin: 5.72, kkp: 0.82 },
+        Olsztyn: { pis: 32.33, ko: 33.07, pl2050: 8.85, psl: 7.26, lewica: 6.11, razem: 1.98, kwin: 6.06, kkp: 0.87 },
+        Kalisz: { pis: 35.85, ko: 28.85, pl2050: 8.88, psl: 7.28, lewica: 6.44, razem: 2.08, kwin: 6.11, kkp: 0.87 },
+        Konin: { pis: 38.69, ko: 23.99, pl2050: 9.14, psl: 7.49, lewica: 7.17, razem: 2.31, kwin: 6.1, kkp: 0.87 },
+        Pila: { pis: 29.11, ko: 34.87, pl2050: 9.71, psl: 7.95, lewica: 5.93, razem: 1.91, kwin: 6.01, kkp: 0.86 },
+        Poznan: { pis: 19.57, ko: 44.09, pl2050: 9.09, psl: 7.45, lewica: 9.3, razem: 3.01, kwin: 5.16, kkp: 0.74 },
+        Koszalin: { pis: 31.36, ko: 38.69, pl2050: 6.79, psl: 5.56, lewica: 6.59, razem: 2.13, kwin: 5.27, kkp: 0.75 },
+        Szczecin: { pis: 28.79, ko: 40.13, pl2050: 6.94, psl: 5.68, lewica: 7.1, razem: 2.29, kwin: 5.2, kkp: 0.74 },
+      },
+      names: {
+        Legnica: 'Legnica', Walbrzych: 'Wałbrzych', Wroclaw: 'Wrocław', Bydgoszcz: 'Bydgoszcz', Torun: 'Toruń',
+        Lublin: 'Lublin', Chelm: 'Chełm', ZielonaGora: 'Zielona Góra', Lodz: 'Łódź', PiotrkowTrybunalsk: 'Piotrków Trybunalski',
+        Sieradz: 'Sieradz', Krakow1: 'Kraków I', Krakow2: 'Kraków II', NowySacz: 'Nowy Sącz', Tarnow: 'Tarnów',
+        Plock: 'Płock', Radom: 'Radom', Siedlce: 'Siedlce', Warszawa1: 'Warszawa I', Warszawa2: 'Warszawa II',
+        Opole: 'Opole', Krosno: 'Krosno', Rzeszow: 'Rzeszów', Bialystok: 'Białystok', Gdansk: 'Gdańsk',
+        Slupsk: 'Słupsk', BielskoBiala1: 'Bielsko-Biała I', Czestochowa: 'Częstochowa', Katowice1: 'Katowice I',
+        BielskoBiala2: 'Bielsko-Biała II', Katowice2: 'Katowice II', Katowice3: 'Katowice III', Kielce: 'Kielce',
+        Elblag: 'Elbląg', Olsztyn: 'Olsztyn', Kalisz: 'Kalisz', Konin: 'Konin', Pila: 'Piła', Poznan: 'Poznań',
+        Koszalin: 'Koszalin', Szczecin: 'Szczecin',
+      },
+      // 2023 national result — uniform-swing baseline for the per-okręg projection
+      national2021: { pis: 35.4, ko: 30.7, pl2050: 7.2, psl: 5.9, lewica: 6.5, razem: 2.1, kwin: 6.3, kkp: 0.9, r: 0 },
+    },
+    logos: {
+      pis: 'img/pl/PIS.svg',
+      ko: 'img/pl/KO.svg',
+      pl2050: 'img/pl/PL2050.svg',
+      psl: 'img/pl/PSL.svg',
+      lewica: 'img/pl/Lewica.svg',
+      razem: 'img/pl/Razem.svg',
+      kwin: 'img/pl/KWIN.svg',
+      kkp: 'img/pl/KKP.svg',
+      r: 'img/pl/R.svg',
     },
   },
   france: {

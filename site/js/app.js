@@ -2628,22 +2628,11 @@ loadLive().then(live=>{
     return Promise.all([loadValu(), loadNovus()]).then(([valu, novus])=>{
     // Placeholder guard: the local live.json is a 2022 snapshot used only as an
     // offline fallback. If that's what we got, don't present 2022 numbers as
-    // tonight's result — show a waiting state instead.
+    // tonight's result — render the exit polls/forecast with LIVE shown as "—"
+    // and a waiting banner instead of the official count.
     const isPlaceholder=live&&live.election==='val2022'&&live.source==='valmyndigheten'&&!live.updated;
-    if(isPlaceholder&&COUNTRY==='sweden'){
-      pane.innerHTML=`<div class="tab-pane-inner">
-        <div class="hero fc-hero">
-          <div class="hero-title">${T.tabs.live} — ${COUNTRY_NAME}</div>
-          <div class="hero-date">${t('Election night · waiting for the official count…','Seçim gecesi · resmi sayım bekleniyor…')}</div>
-        </div>
-        <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('RESULTS COMING SOON','SONUÇLAR YAKINDA')}</div></div>
-          <div style="padding:20px 0;text-align:center;font-size:13px;color:var(--c-text-muted)">
-            ${t('The LIVE tab will light up once Valmyndigheten publishes the first results after the polls close.','Seçim merkezleri kapandıktan sonra Valmyndigheten ilk sonuçları yayınladığında CANLI sekmesi devreye girecek.')}
-          </div>
-        </div>
-      </div>`;
-      return;
-    }
+    if(isPlaceholder&&COUNTRY==='sweden') live=null;
+    const waitingLive=isPlaceholder&&COUNTRY==='sweden';
     return loadArchivedForecast().then(archPollSet=>{
     // Forecast reference: the frozen pre-election archive snapshot when
     // available (Sweden), else the live poll set — so the "final forecast"
@@ -2703,7 +2692,9 @@ let seats=null;
     const seatsTotal=seats?PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0):0;
     const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
 
-    const heroLine=`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updatedDisp||'—'}`;
+    const heroLine=waitingLive
+      ?`${t('Election night · waiting for the official count…','Seçim gecesi · resmi sayım bekleniyor…')}`
+      :`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updatedDisp||'—'}`;
 
     // --- majority banner: single full-width bar (RG left / Tidö right) ---
     let majBanner='';

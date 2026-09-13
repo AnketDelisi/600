@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b25';
+const LOGO_CACHE = 'b26';
 
 const COUNTRIES = {
 
@@ -1175,6 +1175,98 @@ saxony_anhalt: {
       r: 'img/pl/R.svg',
     },
   },
+
+  netherlands: {
+    name: 'Netherlands',
+    seats: 150,
+    threshold: 0.67,              // no legal threshold; effective ≈ 1/150 ≈ 0.67%
+    method: 'dhondt',             // national D'Hondt, single national district
+    seatBased: true,              // polls report seat projections
+    constituencies: false,
+    parties: {
+      d66:      { code: 'D66',    name: 'Democrats 66',            name_en: 'Democrats 66',            color: '#00A95C' },
+      pvv:      { code: 'PVV',    name: 'Party for Freedom',       name_en: 'Party for Freedom',       color: '#00A0DE' },
+      vvd:      { code: 'VVD',    name: 'People\'s Party for Freedom and Democracy', name_en: 'People\'s Party for Freedom and Democracy', color: '#23418B' },
+      pro:      { code: 'PRO',    name: 'Progressive Netherlands', name_en: 'Progressive Netherlands', color: '#E30613' },
+      cda:      { code: 'CDA',    name: 'Christian Democratic Appeal', name_en: 'Christian Democratic Appeal', color: '#007C48' },
+      ja21:     { code: 'JA21',   name: 'JA21',                    name_en: 'JA21',                    color: '#1F2A52' },
+      fvd:      { code: 'FvD',    name: 'Forum for Democracy',     name_en: 'Forum for Democracy',     color: '#FFD700' },
+      bbb:      { code: 'BBB',    name: 'Farmer–Citizen Movement', name_en: 'Farmer–Citizen Movement', color: '#E8590C' },
+      denk:     { code: 'DENK',   name: 'DENK',                    name_en: 'DENK',                    color: '#E2231A' },
+      sgp:      { code: 'SGP',    name: 'Reformed Political Party', name_en: 'Reformed Political Party', color: '#0057A8' },
+      pvdd:     { code: 'PvdD',   name: 'Party for the Animals',   name_en: 'Party for the Animals',   color: '#00A651' },
+      cu:       { code: 'CU',     name: 'Christian Union',         name_en: 'Christian Union',         color: '#00A0C6' },
+      sp:       { code: 'SP',     name: 'Socialist Party',         name_en: 'Socialist Party',         color: '#E3170A' },
+      fiftyplus:{ code: '50+',    name: '50PLUS',                  name_en: '50PLUS',                  color: '#FF7A00' },
+      volt:     { code: 'VOLT',   name: 'Volt',                    name_en: 'Volt',                    color: '#502379' },
+    },
+    order: ['d66', 'pvv', 'vvd', 'pro', 'cda', 'ja21', 'fvd', 'bbb', 'denk', 'sgp', 'pvdd', 'cu', 'sp', 'fiftyplus', 'volt'],
+    parlOrder: ['sp', 'denk', 'pvdd', 'pro', 'd66', 'volt', 'cu', 'sgp', 'cda', 'fiftyplus', 'vvd', 'ja21', 'bbb', 'fvd', 'pvv'],
+    // Government = Jetten cabinet (D66–VVD–CDA); everything else is opposition
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['d66', 'vvd', 'cda'], color: '#00A95C' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['pvv', 'pro', 'ja21', 'fvd', 'bbb', 'denk', 'sgp', 'pvdd', 'cu', 'sp', 'fiftyplus', 'volt'], color: '#8497B0' },
+    },
+    lastElection: {
+      date: '2025-10-29',
+      // 2025 Tweede Kamer official result gained by the 15 parties with logos.
+      // Polls are reported in seats, so averages run in seat space; `results`
+      // holds the actual vote shares (% of valid votes for these 15 parties)
+      // for the national map swing baseline, `seats` the official outcome.
+      results: {
+        d66: 16.94, pvv: 16.66, vvd: 14.24, pro: 12.79, cda: 11.79,
+        ja21: 5.95, fvd: 4.54, bbb: 2.65, denk: 2.37, sgp: 2.25,
+        pvdd: 2.08, cu: 1.90, sp: 1.89, fiftyplus: 1.43, volt: 1.10,
+      },
+      seats: {
+        d66: 26, pvv: 26, vvd: 22, pro: 20, cda: 18,
+        ja21: 9, fvd: 7, bbb: 4, denk: 3, sgp: 3,
+        pvdd: 3, cu: 3, sp: 3, fiftyplus: 2, volt: 1,
+      },
+    },
+    map: {
+      svg: 'img/Netherlands.svg',
+      selector: 'id',             // paths carry control ids per province
+      districts: {
+        Drenthe: 'drenthe', Overijssel: 'overijssel', Gelderland: 'gelderland', Utrecht: 'utrecht',
+        NorthHolland: 'north_holland', Limburg: 'limburg', Flevoland: 'flevoland', Friesland: 'friesland',
+        Groningen: 'groningen', Zeeland: 'zeeland', SouthHolland: 'south_holland', NorthBrabant: 'north_brabant',
+      },
+      // 2025 result per province, vote % (GL/PvdA column folded into PRO)
+      gebiete: {
+        drenthe:       { d66: 14.0, pvv: 19.2, vvd: 14.5, pro: 11.8, cda: 12.8, ja21: 5.4, fvd: 6.2, bbb: 5.1, denk: 0.5, sgp: 1.0, pvdd: 1.4, cu: 2.4, sp: 2.3, fiftyplus: 1.8, volt: 0.7 },
+        flevoland:     { d66: 13.9, pvv: 19.0, vvd: 13.7, pro: 10.7, cda: 9.4, ja21: 5.8, fvd: 6.0, bbb: 3.0, denk: 3.6, sgp: 4.5, pvdd: 1.8, cu: 2.6, sp: 1.9, fiftyplus: 1.5, volt: 0.8 },
+        friesland:     { d66: 13.3, pvv: 17.2, vvd: 12.0, pro: 12.2, cda: 15.4, ja21: 5.6, fvd: 6.8, bbb: 5.0, denk: 0.4, sgp: 1.3, pvdd: 1.5, cu: 2.5, sp: 2.1, fiftyplus: 1.3, volt: 0.7 },
+        gelderland:    { d66: 16.2, pvv: 15.9, vvd: 13.9, pro: 12.4, cda: 12.8, ja21: 5.8, fvd: 4.5, bbb: 3.1, denk: 1.4, sgp: 4.4, pvdd: 1.9, cu: 2.6, sp: 1.7, fiftyplus: 1.3, volt: 1.0 },
+        groningen:     { d66: 16.8, pvv: 16.4, vvd: 11.2, pro: 16.6, cda: 11.1, ja21: 3.8, fvd: 5.1, bbb: 3.5, denk: 0.7, sgp: 1.1, pvdd: 2.5, cu: 3.1, sp: 4.4, fiftyplus: 1.2, volt: 1.2 },
+        limburg:       { d66: 14.0, pvv: 25.6, vvd: 14.0, pro: 10.5, cda: 13.3, ja21: 6.1, fvd: 4.8, bbb: 2.6, denk: 1.2, sgp: 0.1, pvdd: 1.5, cu: 0.4, sp: 2.0, fiftyplus: 1.9, volt: 0.8 },
+        north_brabant: { d66: 17.8, pvv: 19.1, vvd: 16.7, pro: 10.1, cda: 13.0, ja21: 6.7, fvd: 4.0, bbb: 2.4, denk: 1.8, sgp: 0.5, pvdd: 1.5, cu: 0.6, sp: 1.9, fiftyplus: 1.8, volt: 1.0 },
+        north_holland: { d66: 20.4, pvv: 13.2, vvd: 15.3, pro: 16.7, cda: 8.1, ja21: 5.3, fvd: 4.2, bbb: 2.2, denk: 3.4, sgp: 0.4, pvdd: 3.1, cu: 1.0, sp: 2.0, fiftyplus: 1.3, volt: 1.4 },
+        overijssel:    { d66: 13.8, pvv: 16.7, vvd: 13.0, pro: 9.9, cda: 15.7, ja21: 6.3, fvd: 5.3, bbb: 4.8, denk: 1.3, sgp: 3.3, pvdd: 1.3, cu: 3.4, sp: 1.7, fiftyplus: 1.3, volt: 0.9 },
+        south_holland: { d66: 16.7, pvv: 16.4, vvd: 13.7, pro: 12.8, cda: 10.8, ja21: 6.6, fvd: 4.3, bbb: 1.5, denk: 4.0, sgp: 3.1, pvdd: 2.3, cu: 2.2, sp: 1.7, fiftyplus: 1.4, volt: 1.2 },
+        utrecht:       { d66: 20.4, pvv: 11.9, vvd: 13.6, pro: 15.8, cda: 11.3, ja21: 5.1, fvd: 3.4, bbb: 1.6, denk: 3.2, sgp: 2.9, pvdd: 2.7, cu: 2.7, sp: 1.5, fiftyplus: 1.0, volt: 1.6 },
+        zeeland:       { d66: 12.0, pvv: 17.6, vvd: 13.6, pro: 9.1, cda: 13.3, ja21: 6.1, fvd: 5.2, bbb: 3.1, denk: 0.8, sgp: 10.2, pvdd: 1.3, cu: 2.7, sp: 1.7, fiftyplus: 1.6, volt: 0.6 },
+      },
+      names: {
+        drenthe: 'Drenthe', overijssel: 'Overijssel', gelderland: 'Gelderland', utrecht: 'Utrecht',
+        north_holland: 'North Holland', limburg: 'Limburg', flevoland: 'Flevoland', friesland: 'Friesland',
+        groningen: 'Groningen', zeeland: 'Zeeland', south_holland: 'South Holland', north_brabant: 'North Brabant',
+      },
+      // National baseline for the uniform-swing projection = 2025 result vote %
+      national2021: {
+        d66: 16.94, pvv: 16.66, vvd: 14.24, pro: 12.79, cda: 11.79,
+        ja21: 5.95, fvd: 4.54, bbb: 2.65, denk: 2.37, sgp: 2.25,
+        pvdd: 2.08, cu: 1.90, sp: 1.89, fiftyplus: 1.43, volt: 1.10,
+      },
+    },
+    logos: {
+      d66: 'img/nl/D66.svg', pvv: 'img/nl/PVV.svg', vvd: 'img/nl/VVD.svg', pro: 'img/nl/PRO.svg',
+      cda: 'img/nl/CDA.svg', ja21: 'img/nl/JA21.svg', fvd: 'img/nl/FVD.svg', bbb: 'img/nl/BBB.svg',
+      denk: 'img/nl/DENK.svg', sgp: 'img/nl/SGP.svg', pvdd: 'img/nl/PVDD.svg', cu: 'img/nl/CU.svg',
+      sp: 'img/nl/SP.svg', fiftyplus: 'img/nl/50+.svg', volt: 'img/nl/VOLT.svg',
+    },
+  },
+
   france: {
     name: "France",
     hidden: true,                  // archived 2026-09-12 (2027 presidential not tracked live)

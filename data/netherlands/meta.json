@@ -1,0 +1,10 @@
+{
+  "country": "netherlands",
+  "name": "Netherlands",
+  "election_date": "2030-05-15",
+  "seats": 150,
+  "threshold": 0.67,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Tweede Kamer: closed-list PR via D'Hondt in a single national constituency; no legal threshold (effective ~0.67% = 1 seat). Polls reported as seat projections; vote shares for the province map are approximated from seats (DHondt midpoint)."
+}

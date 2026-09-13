@@ -1324,9 +1324,21 @@ function leadingBloc(blocTotals, key){
 }
 
 let MAP_CACHE={};
+// Seat-based countries (NL/IL): poll averages are in seats, but the election
+// map works on vote shares. Approximate the vote share that would yield a
+// party's seat count under D'Hondt as the seat-midpoint s+0.5 against the
+// scaled house size (SEATS_TOTAL + 0.5*n_seated), so seated parties sum to 100.
+function seatAvgToVotes(avg){
+  const seated=PARTY_ORDER.filter(p=>avg[p]>0);
+  const den=SEATS_TOTAL+0.5*seated.length;
+  const out={};
+  for(const p of PARTY_ORDER) out[p]=avg[p]>0?(avg[p]+0.5)/den*100:0;
+  return out;
+}
 async function renderMap(avg){
   const box=$('map-box');
   if(!box) return;
+  if(SEAT_BASED && PARL_MODE==='proj' && avg) avg=seatAvgToVotes(avg);
   await renderMapInto(box, avg, PARL_MODE!=='proj');
 }
 

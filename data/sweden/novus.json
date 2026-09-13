@@ -2,13 +2,13 @@
   "source": "TV4 Novus exit poll",
   "published": null,
   "parties": {
-    "S": null,
-    "SD": null,
-    "M": null,
-    "V": null,
-    "C": null,
-    "KD": null,
-    "MP": null,
-    "L": null
+    "S": 28.4,
+    "SD": 18.5,
+    "M": 17.5,
+    "V": 6.9,
+    "C": 9.0,
+    "KD": 6.0,
+    "MP": 7.0,
+    "L": 5.0
   }
 }

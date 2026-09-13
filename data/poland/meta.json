@@ -6,5 +6,5 @@
   "threshold": 5.0,
   "method": "dhondt",
   "constituencies": false,
-  "notes": "Sejm: PR via D'Hondt in 41 multi-member constituencies (5% threshold, 8% for coalitions); modelled as a single national district; map colors per-okreg winners."
+  "notes": "Sejm: PR via D'Hondt in 41 multi-member constituencies (5% threshold, 8% for coalitions); per-okreg D'Hondt seat allocation from district projections; map colors per-okreg winners."
 }

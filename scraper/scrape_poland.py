@@ -252,7 +252,7 @@ def main():
         "threshold": 5.0,
         "method": "dhondt",
         "constituencies": False,
-        "notes": "Sejm: PR via D'Hondt in 41 multi-member constituencies (5% threshold, 8% for coalitions); modelled as a single national district; map colors per-okreg winners.",
+        "notes": "Sejm: PR via D'Hondt in 41 multi-member constituencies (5% threshold, 8% for coalitions); per-okreg D'Hondt seat allocation from district projections; map colors per-okreg winners.",
     }
     meta_file = OUTPUT_DIR / "meta.json"
     meta_file.write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")

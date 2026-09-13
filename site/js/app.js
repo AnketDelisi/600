@@ -134,7 +134,8 @@ const methodNameShort=()=>{
   return 'Sainte-Laguë';
 };
 function methodSentence(){
-  if(SEAT_METHOD==='dhondt') return "the <strong>D'Hondt</strong> method in a single national district";
+  const nD=MAP_CONF()&&MAP_CONF().seatDistricts?Object.keys(MAP_CONF().seatDistricts).length:0;
+  if(SEAT_METHOD==='dhondt') return nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
   if(SEAT_METHOD==='hare_niemeyer') return "the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
   return "<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
 }
@@ -455,6 +456,27 @@ function recentPolls(polls, days){
   return polls.filter(p=>new Date(p.date)>=cutoff);
 }
 
+/* ---------- render country nav (Europe Elects-style flag card) ---------- */
+function renderCountryNav(){
+  const nav=$('country-nav');
+  if(!nav) return;
+  const ids=Object.keys(COUNTRIES).filter(id=>!COUNTRIES[id].hidden);
+  nav.innerHTML=ids.map(id=>{
+    const c=COUNTRIES[id];
+    const active=id===COUNTRY;
+    return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${c.name}" aria-pressed="${active}">
+      <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
+      <span class="cnav-name">${c.name}</span>
+    </button>`;
+  }).join('');
+  nav.querySelectorAll('.cnav-item').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id=btn.dataset.cnav;
+      if(id!==COUNTRY&&window._600) window._600.setCountry(id);
+    });
+  });
+}
+
 /* ---------- render sidebar (single card, top-left) ---------- */
 function renderSidebar(prevDays, prevPollster){
   const c=$('sidebar-content');
@@ -467,9 +489,7 @@ function renderSidebar(prevDays, prevPollster){
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.country}</div></div>
     ${isPinnedCountry()
       ?`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`
-      :`<select class="sb-select" id="country-select" onchange="window._600.setCountry(this.value)">
-      ${Object.keys(COUNTRIES).filter(id=>!COUNTRIES[id].hidden).map(id=>`<option value="${id}"${id===COUNTRY?' selected':''}>${COUNTRIES[id].name}</option>`).join('')}
-    </select>`}
+      :`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`}
     <div class="sb-hint">${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound} · ${TREND_CONF?TREND_CONF.electionDate:''}`:`${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`}</div></div>`;
 
   // Filters
@@ -605,7 +625,7 @@ function renderHeroGeneric(avg, filteredPolls){
 /* ---------- render party bars ---------- */
 function renderPartyBars(avg){
   const maxPct=Math.max(...Object.values(avg).filter(v=>v!==null),1);
-  const seats=allocateSeatsN(avg, SEATS_TOTAL);
+  const seats=allocateSeatsTotal(avg, SEATS_TOTAL);
   const order=PARTY_ORDER.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.pollAvg}</div></div>
     <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">${t('PARTY','PARTİ')}</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED||MAP_ONLY?'':'<span class="bh-seats">SEATS</span>'}</div>`;
@@ -1128,7 +1148,7 @@ function renderParliament(avg){
   }else{
     seats=SEAT_BASED
       ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
-      :(PARL_MODE==='proj'?allocateSeatsN(avg,SEATS_TOTAL)
+      :(PARL_MODE==='proj'?allocateSeatsTotal(avg,SEATS_TOTAL)
         :(LAST_ELECTION.seats?(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats[p]||0});return s})()
           :allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL)));
   }
@@ -1585,6 +1605,36 @@ function allocateSeatsN(votes, totalSeats){
   return seats;
 }
 
+// Per-okręg D'Hondt (Poland): each of the 41 okręgi allocates its own seat
+// count among nationally-qualifying parties (≥5% national threshold) from the
+// district's projected shares — the real Sejm system, not one national district.
+function allocateSeatsByDistrict(avg){
+  const conf=MAP_CONF();
+  if(!conf||!conf.seatDistricts) return null;
+  const out={};
+  PARTY_ORDER.forEach(p=>{out[p]=0});
+  for(const nr of Object.keys(conf.seatDistricts)){
+    const seatsN=conf.seatDistricts[nr];
+    const shares=districtShares(nr, avg, false);
+    if(!shares) continue;
+    const votes={};
+    PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?shares[p].now:0});
+    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&(avg[p]||0)>=THRESHOLD);
+    if(!valid.length) continue;
+    const quo=[];
+    valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});
+    quo.sort((a,b)=>b.q-a.q);
+    for(let i=0;i<seatsN&&i<quo.length;i++) out[quo[i].p]++;
+  }
+  return out;
+}
+
+// Seat allocation for a projection: per-okręg D'Hondt when the country defines
+// seatDistricts (Poland), else the national-district allocation.
+function allocateSeatsTotal(avg, total){
+  return allocateSeatsByDistrict(avg)||allocateSeatsN(avg,total);
+}
+
 function buildParliamentSVG(seats){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
@@ -1689,6 +1739,8 @@ function allocateSeatsFast(votes, total){
   if(OVERHANG){
     return overhangSeats(votes,total,directFromProjection(votes),OVERHANG.cap);
   }
+  const byDistrict=allocateSeatsByDistrict(votes);
+  if(byDistrict) return byDistrict;
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
@@ -3166,6 +3218,7 @@ PARL_MODE='proj';
     const pollsBtn=document.querySelector('[data-tab="polls"]');
     if(pollsBtn) pollsBtn.dataset.active='true';
     applyTheme(); updateSocialMeta();
+    renderCountryNav();
     loadData().then(()=>loadConstituencies()).then(()=>{
       renderPollsTab();
     });
@@ -3238,6 +3291,7 @@ function applyTheme(){
 loadData().then(()=>loadConstituencies()).then(()=>{
   wireAria();
   applyTheme(); updateSocialMeta();
+  renderCountryNav();
   renderPollsTab();
 });
 window.addEventListener('resize',()=>{fitSideCard();});

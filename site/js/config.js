@@ -1027,20 +1027,20 @@ saxony_anhalt: {
     name: 'Poland',
     seats: 460,
     threshold: 5.0,
-    method: 'dhondt',            // Sejm: PR via D'Hondt in 41 multi-member okręgi; we model one national district
+    method: 'dhondt',            // Sejm: PR via D'Hondt in 41 multi-member okręgi (per-okręg allocation, seatDistricts)
     seatBased: false,            // polls report vote shares (%)
     constituencies: false,       // PR across 41 okręgów; map colors per-okręg winners (2023 list-level shares)
     recencyHalfLifeDays: 14,
     parties: {
       pis: { code: 'PiS', name: 'Law and Justice', name_en: 'Law and Justice', color: '#26387C' },
       ko: { code: 'KO', name: 'Civic Coalition', name_en: 'Civic Coalition', color: '#E85D02' },
-      pl2050: { code: 'PL2050', name: 'Poland 2050', name_en: 'Poland 2050', color: '#C3D500' },
-      psl: { code: 'PSL', name: 'Polish People\'s Party', name_en: 'Polish People\'s Party', color: '#00923F' },
+      pl2050: { code: 'PL2050', name: 'Poland 2050', name_en: 'Poland 2050', color: '#FFD700' },
+      psl: { code: 'PSL', name: 'Polish People\'s Party', name_en: 'Polish People\'s Party', color: '#7FFFD4' },
       lewica: { code: 'Lewica', name: 'The Left', name_en: 'The Left', color: '#E30613' },
-      razem: { code: 'Razem', name: 'Together (Left)', name_en: 'Together (Left)', color: '#B0171F' },
+      razem: { code: 'Razem', name: 'Together (Left)', name_en: 'Together (Left)', color: '#960018' },
       kwin: { code: 'KWiN', name: 'Confederation', name_en: 'Confederation', color: '#26222D' },
-      kkp: { code: 'KKP', name: 'Confederation of the Polish Crown', name_en: 'Confederation of the Polish Crown', color: '#8E1B2E' },
-      r: { code: 'R+', name: 'Development Plus', name_en: 'Development Plus', color: '#4F6F9F' },
+      kkp: { code: 'KKP', name: 'Confederation of the Polish Crown', name_en: 'Confederation of the Polish Crown', color: '#DAA520' },
+      r: { code: 'R+', name: 'Development Plus', name_en: 'Development Plus', color: '#87CEEB' },
     },
     // Poll-table column order (2026 tables list all nine registered parties with logos)
     order: ['pis', 'ko', 'pl2050', 'psl', 'lewica', 'razem', 'kwin', 'kkp', 'r'],
@@ -1071,6 +1071,18 @@ saxony_anhalt: {
         BielskoBiala2: 'BielskoBiala2', Katowice2: 'Katowice2', Katowice3: 'Katowice3', Kielce: 'Kielce',
         Elblag: 'Elblag', Olsztyn: 'Olsztyn', Kalisz: 'Kalisz', Konin: 'Konin', Pila: 'Pila', Poznan: 'Poznan',
         Koszalin: 'Koszalin', Szczecin: 'Szczecin',
+      },
+      // 2023 Sejm seats per okręg (official; sums to 460) — D'Hondt allocated per okręg,
+      // not in one national district, so the seat projection matches the real system.
+      seatDistricts: {
+        Legnica: 12, Walbrzych: 8, Wroclaw: 14, Bydgoszcz: 12, Torun: 13,
+        Lublin: 15, Chelm: 12, ZielonaGora: 12, Lodz: 10, PiotrkowTrybunalsk: 9,
+        Sieradz: 12, Krakow1: 8, Krakow2: 14, NowySacz: 10, Tarnow: 9,
+        Plock: 10, Radom: 9, Siedlce: 12, Warszawa1: 20, Warszawa2: 12,
+        Opole: 12, Krosno: 11, Rzeszow: 15, Bialystok: 14, Gdansk: 12,
+        Slupsk: 14, BielskoBiala1: 9, Czestochowa: 7, Katowice1: 9, BielskoBiala2: 9,
+        Katowice2: 12, Katowice3: 9, Kielce: 16, Elblag: 8, Olsztyn: 10,
+        Kalisz: 12, Konin: 9, Pila: 9, Poznan: 10, Koszalin: 8, Szczecin: 12,
       },
       // 2023 share % per okręg, split to modelled parties: TD (PL2050/PSL), Lewica (NL/Razem),
       // Konfederacja (KWiN/KKP) apportioned by the fictional national ratio above; R+ = 0.

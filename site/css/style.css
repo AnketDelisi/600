@@ -96,6 +96,25 @@ button:active{transform:translateY(1px)}
 .tab-social-accent{background:var(--c-accent);border-color:var(--c-accent)}
 .tab-social-accent:hover{background:var(--c-accent-2);border-color:var(--c-accent-2)}
 
+/* ---------- Country nav (Europe Elects-style flag card) ---------- */
+.country-nav{
+  display:flex;gap:8px;align-items:center;overflow-x:auto;padding:12px 24px;
+  background:var(--c-surface);border-bottom:2px solid var(--c-edge);box-shadow:var(--shadow-md);
+}
+.country-nav::-webkit-scrollbar{height:6px}
+.country-nav::-webkit-scrollbar-thumb{background:var(--c-rule);border-radius:999px}
+.cnav-item{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:7px;
+  border:2px solid var(--c-border);background:transparent;border-radius:var(--radius-sm);
+  padding:7px 11px 6px 11px;cursor:pointer;font-family:var(--font);
+  font-size:11px;font-weight:800;letter-spacing:0.3px;text-transform:uppercase;color:var(--c-text-main);
+  box-shadow:var(--shadow-md);transition:transform .15s var(--ease),border-color .15s var(--ease),background .15s var(--ease),color .15s var(--ease);
+}
+.cnav-item img{width:22px;height:16px;object-fit:cover;border-radius:2px;border:1px solid rgba(26,26,26,0.25);flex-shrink:0}
+.cnav-item:hover{border-color:var(--c-accent);transform:translateY(-1px)}
+.cnav-item.active{background:#1A1A1A;border-color:#1A1A1A;color:#FFFFFF;box-shadow:var(--shadow-hard)}
+.cnav-item.active img{border-color:#FFFFFF}
+
 /* ---------- Cards ---------- */
 .card{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-big);padding:20px;width:100%}
 .card+.card{margin-top:20px}
@@ -353,4 +372,7 @@ input.vote-input,.party-pct,.party-delta,.party-seats,.bloc-card .bloc-pct,.tot-
   .tab-trigger{font-size:11px;padding:10px 12px 8px 12px;letter-spacing:0.3px}
   .tab-social{font-size:11px;padding:9px 12px 8px 12px;margin-left:8px}
   .bloc-row{flex-direction:column}
+  .country-nav{padding:10px 12px;gap:6px}
+  .cnav-item{padding:6px 9px 5px 9px;font-size:10px}
+  .cnav-item img{width:20px;height:14px}
 }

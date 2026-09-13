@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b26';
+const LOGO_CACHE = 'b27';
 
 const COUNTRIES = {
 
@@ -1264,6 +1264,79 @@ saxony_anhalt: {
       cda: 'img/nl/CDA.svg', ja21: 'img/nl/JA21.svg', fvd: 'img/nl/FVD.svg', bbb: 'img/nl/BBB.svg',
       denk: 'img/nl/DENK.svg', sgp: 'img/nl/SGP.svg', pvdd: 'img/nl/PVDD.svg', cu: 'img/nl/CU.svg',
       sp: 'img/nl/SP.svg', fiftyplus: 'img/nl/50+.svg', volt: 'img/nl/VOLT.svg',
+    },
+  },
+
+  estonia: {
+    name: 'Estonia',
+    seats: 101,
+    threshold: 5.0,               // 5% national threshold
+    method: 'dhondt',             // national D'Hondt over 12 multi-seat districts (adjustment seats)
+    seatBased: false,             // polls report vote shares (%)
+    constituencies: false,        // seat adjustment is national; map colors per 12 electoral districts
+    recencyHalfLifeDays: 14,
+    parties: {
+      isamaa: { code: 'Isamaa', name: 'Isamaa', name_en: 'Isamaa', color: '#009CE2' },
+      e200:   { code: 'E200',   name: 'Estonia 200', name_en: 'Estonia 200', color: '#2f2a95' },
+      ref:    { code: 'REF',    name: 'Estonian Reform Party', name_en: 'Estonian Reform Party', color: '#FFE200' },
+      ekre:   { code: 'EKRE',   name: 'Conservative People\'s Party of Estonia', name_en: 'Conservative People\'s Party of Estonia', color: '#0063AF' },
+      kesk:   { code: 'KESK',   name: 'Estonian Centre Party', name_en: 'Estonian Centre Party', color: '#00AA54' },
+      sde:    { code: 'SDE',    name: 'Social Democratic Party', name_en: 'Social Democratic Party', color: '#E10600' },
+      vl:     { code: 'VL',     name: 'Estonian Left Party', name_en: 'Estonian Left Party', color: '#D33131' },
+      koos:   { code: 'Koos',   name: 'Koos', name_en: 'Together', color: '#015AAC' },
+      pp:     { code: 'Parem',  name: 'Parempoolsed', name_en: 'Parempoolsed', color: '#FA6100' },
+      eer:    { code: 'EER',    name: 'Estonian Greens', name_en: 'Estonian Greens', color: '#96C93D' },
+      erk:    { code: 'ERK',    name: 'Estonian Nationalists and Conservatives', name_en: 'Estonian Nationalists and Conservatives', color: '#CFA14A' },
+    },
+    order: ['isamaa', 'e200', 'ref', 'ekre', 'kesk', 'sde', 'vl', 'koos', 'pp', 'eer', 'erk'],
+    parlOrder: ['sde', 'e200', 'ref', 'kesk', 'pp', 'ekre', 'isamaa', 'vl', 'koos', 'eer', 'erk'],
+    // Government = the Reform-dominated coalition formed 2025-03-11 (Reform + Estonia 200);
+    // everything else is opposition
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['ref', 'e200'], color: '#FFE200' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['isamaa', 'ekre', 'kesk', 'sde', 'vl', 'koos', 'pp', 'eer', 'erk'], color: '#8497B0' },
+    },
+    lastElection: {
+      date: '2023-03-05',
+      // 2023 Riigikogu official result (source: en.wikipedia.org/wiki/2023_Estonian_parliamentary_election)
+      results: { ref: 31.24, ekre: 16.05, kesk: 15.28, e200: 13.33, sde: 9.27, isamaa: 8.21, vl: 2.39, pp: 2.30, koos: 0, eer: 0.96, erk: 0 },
+      seats:   { ref: 37, ekre: 17, kesk: 16, e200: 14, sde: 9, isamaa: 8, vl: 0, pp: 0, koos: 0, eer: 0, erk: 0 },
+    },
+    map: {
+      svg: 'img/Estonia.svg',
+      selector: 'id',             // paths carry control ids per electoral district (No1–No12)
+      districts: {
+        No1: 'district1', No2: 'district2', No3: 'district3', No4: 'district4',
+        No5: 'district5', No6: 'district6', No7: 'district7', No8: 'district8',
+        No9: 'district9', No10: 'district10', No11: 'district11', No12: 'district12',
+      },
+      // 2023 result per electoral district, vote % (source: 2023 election page "Results by constituency")
+      gebiete: {
+        district1:  { ref: 31.4, kesk: 20.9, ekre: 9.7, isamaa: 5.6, sde: 10.0, e200: 15.7, eer: 1.1, pp: 2.3, vl: 3.3, koos: 0, erk: 0 },
+        district2:  { ref: 29.4, kesk: 29.0, ekre: 9.1, isamaa: 5.4, sde: 8.6, e200: 10.9, eer: 1.0, pp: 1.6, vl: 4.9, koos: 0, erk: 0 },
+        district3:  { ref: 34.7, kesk: 18.9, ekre: 11.7, isamaa: 6.5, sde: 8.9, e200: 14.2, eer: 1.1, pp: 2.1, vl: 1.9, koos: 0, erk: 0 },
+        district4:  { ref: 40.0, kesk: 10.2, ekre: 14.6, isamaa: 8.3, sde: 7.1, e200: 13.7, eer: 0.7, pp: 3.4, vl: 1.3, koos: 0, erk: 0 },
+        district5:  { ref: 27.6, kesk: 11.2, ekre: 19.4, isamaa: 7.8, sde: 13.9, e200: 17.1, eer: 0.9, pp: 2.1, vl: 0, koos: 0, erk: 0 },
+        district6:  { ref: 31.1, kesk: 13.4, ekre: 20.5, isamaa: 13.7, sde: 7.5, e200: 8.7, eer: 0.5, pp: 3.0, vl: 1.5, koos: 0, erk: 0 },
+        district7:  { ref: 14.1, kesk: 25.8, ekre: 8.4, isamaa: 4.0, sde: 7.6, e200: 8.3, eer: 0.5, pp: 1.0, vl: 14.9, koos: 0, erk: 0 },
+        district8:  { ref: 27.8, kesk: 10.2, ekre: 23.3, isamaa: 11.9, sde: 12.9, e200: 10.7, eer: 0.8, pp: 2.1, vl: 0, koos: 0, erk: 0 },
+        district9:  { ref: 30.4, kesk: 9.2, ekre: 19.7, isamaa: 12.0, sde: 9.0, e200: 14.6, eer: 1.0, pp: 2.6, vl: 1.5, koos: 0, erk: 0 },
+        district10: { ref: 35.9, kesk: 7.3, ekre: 14.5, isamaa: 8.6, sde: 9.9, e200: 18.4, eer: 1.7, pp: 2.0, vl: 1.6, koos: 0, erk: 0 },
+        district11: { ref: 24.0, kesk: 13.4, ekre: 26.5, isamaa: 8.5, sde: 12.3, e200: 11.5, eer: 1.3, pp: 2.3, vl: 0, koos: 0, erk: 0 },
+        district12: { ref: 29.5, kesk: 11.4, ekre: 26.0, isamaa: 10.0, sde: 6.7, e200: 12.8, eer: 0.8, pp: 2.2, vl: 0.7, koos: 0, erk: 0 },
+      },
+      names: {
+        district1: 'District No. 1', district2: 'District No. 2', district3: 'District No. 3', district4: 'District No. 4',
+        district5: 'District No. 5', district6: 'District No. 6', district7: 'District No. 7', district8: 'District No. 8',
+        district9: 'District No. 9', district10: 'District No. 10', district11: 'District No. 11', district12: 'District No. 12',
+      },
+      // National baseline for the uniform-swing projection = 2023 result vote %
+      national2021: { ref: 31.24, ekre: 16.05, kesk: 15.28, e200: 13.33, sde: 9.27, isamaa: 8.21, vl: 2.39, pp: 2.30, koos: 0, eer: 0.96, erk: 0 },
+    },
+    logos: {
+      isamaa: 'img/ee/ISAMAA.svg', e200: 'img/ee/E200.svg', ref: 'img/ee/REF.svg', ekre: 'img/ee/EKRE.svg',
+      kesk: 'img/ee/KESK.svg', sde: 'img/ee/SDE.svg', vl: 'img/ee/VL.svg', koos: 'img/ee/KOOS.svg',
+      pp: 'img/ee/PP.svg', eer: 'img/ee/EER.svg', erk: 'img/ee/ERK.svg',
     },
   },
 

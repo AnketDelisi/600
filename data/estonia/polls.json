@@ -1,0 +1,4802 @@
+{
+  "country": "estonia",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+  "scraped_at": "2026-09-13T14:35:44Z",
+  "poll_count": 253,
+  "polls": [
+    {
+      "pollster": "Norstat",
+      "date": "2026-08-29",
+      "votes": {
+        "ref": 13.5,
+        "ekre": 11.8,
+        "kesk": 20.4,
+        "e200": 1.5,
+        "sde": 19.1,
+        "isamaa": 24.1,
+        "vl": 0.0,
+        "koos": 0.9,
+        "pp": 6.7,
+        "eer": 0.3,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-08-23",
+      "votes": {
+        "ref": 13.3,
+        "ekre": 11.3,
+        "kesk": 23.6,
+        "e200": 1.5,
+        "sde": 13.9,
+        "isamaa": 25.9,
+        "vl": 0.0,
+        "koos": 0.8,
+        "pp": 7.5,
+        "eer": 0.7,
+        "erk": 0.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-08-15",
+      "votes": {
+        "ref": 13.0,
+        "ekre": 13.9,
+        "kesk": 21.2,
+        "e200": 1.6,
+        "sde": 14.4,
+        "isamaa": 22.3,
+        "vl": 0.0,
+        "koos": 0.8,
+        "pp": 7.9,
+        "eer": 1.3,
+        "erk": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-08-12",
+      "votes": {
+        "ref": 11.0,
+        "ekre": 13.0,
+        "kesk": 21.0,
+        "e200": 1.0,
+        "sde": 15.0,
+        "isamaa": 24.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 9.0,
+        "eer": 1.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 902
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-08-09",
+      "votes": {
+        "ref": 11.7,
+        "ekre": 13.8,
+        "kesk": 21.5,
+        "e200": 1.9,
+        "sde": 13.5,
+        "isamaa": 29.9,
+        "vl": 0.3,
+        "koos": 0.4,
+        "pp": 4.4,
+        "eer": 0.7,
+        "erk": 0.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-08-02",
+      "votes": {
+        "ref": 14.1,
+        "ekre": 12.2,
+        "kesk": 22.7,
+        "e200": 1.4,
+        "sde": 15.4,
+        "isamaa": 25.3,
+        "vl": 0.0,
+        "koos": 0.3,
+        "pp": 5.8,
+        "eer": 0.7,
+        "erk": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-07-26",
+      "votes": {
+        "ref": 12.1,
+        "ekre": 12.9,
+        "kesk": 23.1,
+        "e200": 1.2,
+        "sde": 15.4,
+        "isamaa": 25.1,
+        "vl": 0.3,
+        "koos": 0.5,
+        "pp": 5.2,
+        "eer": 1.2,
+        "erk": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-07-20",
+      "votes": {
+        "ref": 12.4,
+        "ekre": 17.7,
+        "kesk": 20.3,
+        "e200": 2.0,
+        "sde": 13.0,
+        "isamaa": 25.0,
+        "vl": 0.0,
+        "koos": 1.1,
+        "pp": 6.5,
+        "eer": 1.0,
+        "erk": 0.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Emor",
+      "date": "2026-07-16",
+      "votes": {
+        "ref": 14.1,
+        "ekre": 14.2,
+        "kesk": 20.3,
+        "e200": 1.9,
+        "sde": 14.3,
+        "isamaa": 24.4,
+        "vl": 0.0,
+        "koos": 0.8,
+        "pp": 6.8,
+        "eer": 2.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1554
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-07-13",
+      "votes": {
+        "ref": 10.3,
+        "ekre": 15.0,
+        "kesk": 22.4,
+        "e200": 1.6,
+        "sde": 11.8,
+        "isamaa": 27.9,
+        "vl": 0.1,
+        "pp": 7.0,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-07-05",
+      "votes": {
+        "ref": 13.7,
+        "ekre": 13.4,
+        "kesk": 20.3,
+        "e200": 2.0,
+        "sde": 13.8,
+        "isamaa": 26.7,
+        "vl": 0.0,
+        "pp": 5.9,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-06-25",
+      "votes": {
+        "ref": 12.0,
+        "ekre": 13.0,
+        "kesk": 22.0,
+        "e200": 3.0,
+        "sde": 15.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 0.0,
+        "pp": 7.0,
+        "eer": 1.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 906
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-06-20",
+      "votes": {
+        "ref": 12.8,
+        "ekre": 11.8,
+        "kesk": 23.0,
+        "e200": 1.6,
+        "sde": 14.6,
+        "isamaa": 26.3,
+        "vl": 0.3,
+        "pp": 6.7,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Emor",
+      "date": "2026-06-17",
+      "votes": {
+        "ref": 12.0,
+        "ekre": 13.4,
+        "kesk": 21.5,
+        "e200": 2.1,
+        "sde": 16.2,
+        "isamaa": 23.5,
+        "vl": 0.0,
+        "koos": 1.1,
+        "pp": 8.7,
+        "eer": 0.7,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1587
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-06-14",
+      "votes": {
+        "ref": 12.5,
+        "ekre": 14.6,
+        "kesk": 24.1,
+        "e200": 1.6,
+        "sde": 14.3,
+        "isamaa": 25.5,
+        "vl": 0.0,
+        "pp": 5.1,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-06-05",
+      "votes": {
+        "ref": 11.7,
+        "ekre": 13.5,
+        "kesk": 20.0,
+        "e200": 1.5,
+        "sde": 17.8,
+        "isamaa": 25.7,
+        "vl": 0.0,
+        "pp": 6.3,
+        "eer": 0.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-05-31",
+      "votes": {
+        "ref": 14.2,
+        "ekre": 13.4,
+        "kesk": 21.0,
+        "e200": 1.4,
+        "sde": 11.3,
+        "isamaa": 26.8,
+        "vl": 0.0,
+        "pp": 8.4,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-05-23",
+      "votes": {
+        "ref": 11.4,
+        "ekre": 14.3,
+        "kesk": 21.6,
+        "e200": 3.3,
+        "sde": 12.5,
+        "isamaa": 28.0,
+        "vl": 0.2,
+        "pp": 5.3,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Emor",
+      "date": "2026-05-20",
+      "votes": {
+        "ref": 9.9,
+        "ekre": 13.9,
+        "kesk": 20.6,
+        "e200": 2.4,
+        "sde": 17.4,
+        "isamaa": 23.5,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 8.5,
+        "eer": 1.6,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1429
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-05-17",
+      "votes": {
+        "ref": 12.5,
+        "ekre": 13.0,
+        "kesk": 20.2,
+        "e200": 1.0,
+        "sde": 14.1,
+        "isamaa": 28.9,
+        "vl": 0.0,
+        "pp": 6.2,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-05-13",
+      "votes": {
+        "ref": 11.0,
+        "ekre": 14.0,
+        "kesk": 25.0,
+        "e200": 2.0,
+        "sde": 14.0,
+        "isamaa": 20.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 11.0,
+        "eer": 0.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 903
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-05-10",
+      "votes": {
+        "ref": 11.7,
+        "ekre": 14.3,
+        "kesk": 21.9,
+        "e200": 2.0,
+        "sde": 14.2,
+        "isamaa": 24.4,
+        "pp": 6.0,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-05-03",
+      "votes": {
+        "ref": 11.0,
+        "ekre": 13.5,
+        "kesk": 23.3,
+        "e200": 1.3,
+        "sde": 15.8,
+        "isamaa": 25.9,
+        "pp": 5.4,
+        "eer": 0.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-04-26",
+      "votes": {
+        "ref": 13.0,
+        "ekre": 13.6,
+        "kesk": 20.9,
+        "e200": 1.9,
+        "sde": 13.5,
+        "isamaa": 27.7,
+        "pp": 5.9,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Emor",
+      "date": "2026-04-22",
+      "votes": {
+        "ref": 12.2,
+        "ekre": 8.7,
+        "kesk": 21.9,
+        "e200": 3.9,
+        "sde": 17.0,
+        "isamaa": 25.2,
+        "koos": 1.0,
+        "pp": 7.8,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1526
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-04-19",
+      "votes": {
+        "ref": 12.5,
+        "ekre": 14.4,
+        "kesk": 23.7,
+        "e200": 0.7,
+        "sde": 12.7,
+        "isamaa": 25.8,
+        "pp": 7.0,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-04-12",
+      "votes": {
+        "ref": 12.5,
+        "ekre": 14.8,
+        "kesk": 21.6,
+        "e200": 2.3,
+        "sde": 13.8,
+        "isamaa": 26.7,
+        "pp": 5.9,
+        "eer": 0.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-04-08",
+      "votes": {
+        "ref": 14.0,
+        "ekre": 11.0,
+        "kesk": 23.0,
+        "e200": 2.0,
+        "sde": 14.0,
+        "isamaa": 24.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 8.0,
+        "eer": 1.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 876
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-04-05",
+      "votes": {
+        "ref": 12.6,
+        "ekre": 12.0,
+        "kesk": 22.6,
+        "e200": 1.5,
+        "sde": 16.6,
+        "isamaa": 24.3,
+        "pp": 5.7,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-03-28",
+      "votes": {
+        "ref": 14.2,
+        "ekre": 13.5,
+        "kesk": 20.9,
+        "e200": 2.0,
+        "sde": 14.0,
+        "isamaa": 24.9,
+        "pp": 6.8,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-03-21",
+      "votes": {
+        "ref": 12.9,
+        "ekre": 11.5,
+        "kesk": 22.4,
+        "e200": 1.3,
+        "sde": 15.5,
+        "isamaa": 26.8,
+        "pp": 6.2,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Emor",
+      "date": "2026-03-18",
+      "votes": {
+        "ref": 12.0,
+        "ekre": 13.8,
+        "kesk": 22.8,
+        "e200": 2.1,
+        "sde": 14.0,
+        "isamaa": 24.2,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 7.0,
+        "eer": 1.7,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1515
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-03-15",
+      "votes": {
+        "ref": 12.1,
+        "ekre": 11.0,
+        "kesk": 21.4,
+        "e200": 1.4,
+        "sde": 14.3,
+        "isamaa": 29.8,
+        "pp": 6.1,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-03-09",
+      "votes": {
+        "ref": 13.0,
+        "ekre": 13.0,
+        "kesk": 23.0,
+        "e200": 1.0,
+        "sde": 14.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 7.0,
+        "eer": 0.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 872
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-03-07",
+      "votes": {
+        "ref": 14.0,
+        "ekre": 12.6,
+        "kesk": 21.8,
+        "e200": 2.3,
+        "sde": 12.2,
+        "isamaa": 26.9,
+        "pp": 6.5,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-03-01",
+      "votes": {
+        "ref": 12.2,
+        "ekre": 11.5,
+        "kesk": 19.5,
+        "e200": 1.8,
+        "sde": 13.4,
+        "isamaa": 29.5,
+        "pp": 7.6,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-02-21",
+      "votes": {
+        "ref": 12.8,
+        "ekre": 14.4,
+        "kesk": 22.4,
+        "e200": 2.1,
+        "sde": 14.3,
+        "isamaa": 25.0,
+        "pp": 5.4,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2026-02-18",
+      "votes": {
+        "ref": 12.4,
+        "ekre": 13.3,
+        "kesk": 21.3,
+        "e200": 2.1,
+        "sde": 15.5,
+        "isamaa": 24.4,
+        "koos": 0.8,
+        "pp": 8.1,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1446
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-02-15",
+      "votes": {
+        "ref": 12.6,
+        "ekre": 13.8,
+        "kesk": 21.1,
+        "e200": 2.3,
+        "sde": 12.9,
+        "isamaa": 26.6,
+        "pp": 6.7,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-02-09",
+      "votes": {
+        "ref": 12.0,
+        "ekre": 14.0,
+        "kesk": 21.0,
+        "e200": 2.0,
+        "sde": 14.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 9.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 899
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-02-07",
+      "votes": {
+        "ref": 14.0,
+        "ekre": 12.4,
+        "kesk": 18.6,
+        "e200": 1.6,
+        "sde": 15.3,
+        "isamaa": 28.4,
+        "pp": 6.3,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-01-31",
+      "votes": {
+        "ref": 15.4,
+        "ekre": 13.2,
+        "kesk": 22.0,
+        "e200": 1.8,
+        "sde": 11.9,
+        "isamaa": 28.0,
+        "pp": 4.6,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-01-24",
+      "votes": {
+        "ref": 15.0,
+        "ekre": 10.9,
+        "kesk": 20.7,
+        "e200": 2.4,
+        "sde": 13.4,
+        "isamaa": 26.0,
+        "pp": 6.3,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2026-01-21",
+      "votes": {
+        "ref": 12.6,
+        "ekre": 13.3,
+        "kesk": 22.7,
+        "e200": 1.4,
+        "sde": 13.5,
+        "isamaa": 25.5,
+        "koos": 1.4,
+        "pp": 6.9,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1598
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2026-01-19",
+      "votes": {
+        "ref": 14.0,
+        "ekre": 15.0,
+        "kesk": 20.0,
+        "e200": 3.0,
+        "sde": 15.0,
+        "isamaa": 19.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 9.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 894
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-01-18",
+      "votes": {
+        "ref": 14.3,
+        "ekre": 14.9,
+        "kesk": 21.2,
+        "e200": 1.5,
+        "sde": 15.4,
+        "isamaa": 23.5,
+        "pp": 6.8,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-01-11",
+      "votes": {
+        "ref": 16.2,
+        "ekre": 11.3,
+        "kesk": 19.0,
+        "e200": 1.6,
+        "sde": 14.2,
+        "isamaa": 27.7,
+        "pp": 6.1,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2026-01-03",
+      "votes": {
+        "ref": 13.6,
+        "ekre": 9.3,
+        "kesk": 19.5,
+        "e200": 2.6,
+        "sde": 13.1,
+        "isamaa": 31.4,
+        "pp": 7.2,
+        "eer": 0.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-12-21",
+      "votes": {
+        "ref": 11.0,
+        "ekre": 15.5,
+        "kesk": 22.1,
+        "e200": 1.4,
+        "sde": 14.6,
+        "isamaa": 26.1,
+        "pp": 6.2,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-12-14",
+      "votes": {
+        "ref": 12.3,
+        "ekre": 14.0,
+        "kesk": 19.5,
+        "e200": 2.4,
+        "sde": 13.8,
+        "isamaa": 29.1,
+        "pp": 6.7,
+        "eer": 0.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-12-10",
+      "votes": {
+        "ref": 12.0,
+        "ekre": 15.0,
+        "kesk": 22.0,
+        "e200": 1.0,
+        "sde": 15.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 7.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 877
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-12-10",
+      "votes": {
+        "ref": 13.7,
+        "ekre": 11.7,
+        "kesk": 20.7,
+        "e200": 2.6,
+        "sde": 14.6,
+        "isamaa": 23.6,
+        "koos": 1.2,
+        "pp": 8.8,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1621
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-12-07",
+      "votes": {
+        "ref": 11.5,
+        "ekre": 14.4,
+        "kesk": 22.1,
+        "e200": 2.4,
+        "sde": 14.9,
+        "isamaa": 26.1,
+        "pp": 6.2,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-11-30",
+      "votes": {
+        "ref": 10.1,
+        "ekre": 15.6,
+        "kesk": 20.8,
+        "e200": 1.0,
+        "sde": 16.3,
+        "isamaa": 28.2,
+        "pp": 5.4,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-11-23",
+      "votes": {
+        "ref": 10.7,
+        "ekre": 14.4,
+        "kesk": 19.7,
+        "e200": 2.0,
+        "sde": 14.1,
+        "isamaa": 29.1,
+        "pp": 7.4,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-11-16",
+      "votes": {
+        "ref": 11.2,
+        "ekre": 14.2,
+        "kesk": 21.8,
+        "e200": 2.8,
+        "sde": 11.7,
+        "isamaa": 28.7,
+        "pp": 7.3,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-11-12",
+      "votes": {
+        "ref": 11.6,
+        "ekre": 12.9,
+        "kesk": 19.0,
+        "e200": 2.5,
+        "sde": 15.6,
+        "isamaa": 25.6,
+        "koos": 1.4,
+        "pp": 8.7,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1483
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-11-10",
+      "votes": {
+        "ref": 13.0,
+        "ekre": 13.0,
+        "kesk": 19.0,
+        "e200": 2.0,
+        "sde": 15.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 9.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 887
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-11-09",
+      "votes": {
+        "ref": 10.9,
+        "ekre": 13.4,
+        "kesk": 21.4,
+        "e200": 0.9,
+        "sde": 13.2,
+        "isamaa": 30.4,
+        "pp": 7.6,
+        "eer": 0.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-11-02",
+      "votes": {
+        "ref": 10.8,
+        "ekre": 14.8,
+        "kesk": 22.0,
+        "e200": 1.9,
+        "sde": 11.8,
+        "isamaa": 29.5,
+        "pp": 7.1,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-10-26",
+      "votes": {
+        "ref": 10.5,
+        "ekre": 13.4,
+        "kesk": 23.7,
+        "e200": 2.1,
+        "sde": 12.9,
+        "isamaa": 30.2,
+        "pp": 5.1,
+        "eer": 0.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-10-17",
+      "votes": {
+        "ref": 10.5,
+        "ekre": 18.8,
+        "kesk": 21.4,
+        "e200": 1.8,
+        "sde": 13.6,
+        "isamaa": 27.4,
+        "pp": 5.0,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-10-13",
+      "votes": {
+        "ref": 13.1,
+        "ekre": 14.9,
+        "kesk": 19.8,
+        "e200": 2.5,
+        "sde": 13.8,
+        "isamaa": 22.6,
+        "koos": 1.5,
+        "pp": 9.3,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1684
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-10-12",
+      "votes": {
+        "ref": 10.5,
+        "ekre": 18.9,
+        "kesk": 19.4,
+        "e200": 2.4,
+        "sde": 11.4,
+        "isamaa": 29.0,
+        "pp": 5.4,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-10-09",
+      "votes": {
+        "ref": 13.0,
+        "ekre": 14.0,
+        "kesk": 18.0,
+        "e200": 3.0,
+        "sde": 15.0,
+        "isamaa": 21.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 9.0,
+        "eer": 1.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 902
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-10-05",
+      "votes": {
+        "ref": 13.2,
+        "ekre": 18.7,
+        "kesk": 20.6,
+        "e200": 2.1,
+        "sde": 10.0,
+        "isamaa": 27.6,
+        "pp": 5.0,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-09-28",
+      "votes": {
+        "ref": 14.5,
+        "ekre": 17.0,
+        "kesk": 19.0,
+        "e200": 2.5,
+        "sde": 12.1,
+        "isamaa": 26.4,
+        "pp": 6.1,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-09-22",
+      "votes": {
+        "ref": 10.0,
+        "ekre": 16.4,
+        "kesk": 19.3,
+        "e200": 2.9,
+        "sde": 11.2,
+        "isamaa": 30.5,
+        "pp": 6.0,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-09-17",
+      "votes": {
+        "ref": 14.2,
+        "ekre": 12.4,
+        "kesk": 18.1,
+        "e200": 2.0,
+        "sde": 17.5,
+        "isamaa": 23.6,
+        "koos": 2.3,
+        "pp": 7.6,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1502
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-09-14",
+      "votes": {
+        "ref": 12.8,
+        "ekre": 15.2,
+        "kesk": 19.8,
+        "e200": 1.4,
+        "sde": 12.8,
+        "isamaa": 29.1,
+        "pp": 6.2,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-09-09",
+      "votes": {
+        "ref": 11.0,
+        "ekre": 13.0,
+        "kesk": 17.0,
+        "e200": 2.0,
+        "sde": 13.0,
+        "isamaa": 26.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 10.0,
+        "eer": 1.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 891
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-09-08",
+      "votes": {
+        "ref": 10.4,
+        "ekre": 17.1,
+        "kesk": 20.6,
+        "e200": 1.3,
+        "sde": 13.2,
+        "isamaa": 28.3,
+        "pp": 6.2,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-08-31",
+      "votes": {
+        "ref": 13.1,
+        "ekre": 18.3,
+        "kesk": 20.1,
+        "e200": 3.6,
+        "sde": 9.8,
+        "isamaa": 27.3,
+        "pp": 5.4,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-08-24",
+      "votes": {
+        "ref": 11.3,
+        "ekre": 16.4,
+        "kesk": 20.2,
+        "e200": 2.7,
+        "sde": 11.0,
+        "isamaa": 27.6,
+        "pp": 7.4,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-08-19",
+      "votes": {
+        "ref": 10.5,
+        "ekre": 15.1,
+        "kesk": 18.6,
+        "e200": 3.3,
+        "sde": 14.7,
+        "isamaa": 25.4,
+        "koos": 2.2,
+        "pp": 7.7,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1547
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-08-17",
+      "votes": {
+        "ref": 12.1,
+        "ekre": 17.7,
+        "kesk": 17.1,
+        "e200": 1.5,
+        "sde": 14.1,
+        "isamaa": 28.7,
+        "pp": 6.1,
+        "eer": 1.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-08-11",
+      "votes": {
+        "ref": 10.0,
+        "ekre": 19.0,
+        "kesk": 16.0,
+        "e200": 5.0,
+        "sde": 11.0,
+        "isamaa": 21.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 10.0,
+        "eer": 0.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 892
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-08-09",
+      "votes": {
+        "ref": 9.6,
+        "ekre": 19.3,
+        "kesk": 17.5,
+        "e200": 3.0,
+        "sde": 13.8,
+        "isamaa": 28.8,
+        "pp": 5.7,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-08-03",
+      "votes": {
+        "ref": 14.4,
+        "ekre": 17.0,
+        "kesk": 17.3,
+        "e200": 3.1,
+        "sde": 13.5,
+        "isamaa": 24.8,
+        "pp": 7.8,
+        "eer": 0.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-07-28",
+      "votes": {
+        "ref": 10.1,
+        "ekre": 15.6,
+        "kesk": 17.9,
+        "e200": 3.0,
+        "sde": 14.4,
+        "isamaa": 31.1,
+        "pp": 5.8,
+        "eer": 0.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-07-21",
+      "votes": {
+        "ref": 10.1,
+        "ekre": 20.0,
+        "kesk": 17.2,
+        "e200": 3.0,
+        "sde": 14.8,
+        "isamaa": 25.5,
+        "pp": 6.7,
+        "eer": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-07-17",
+      "votes": {
+        "ref": 14.1,
+        "ekre": 15.3,
+        "kesk": 17.0,
+        "e200": 3.1,
+        "sde": 16.2,
+        "isamaa": 22.3,
+        "koos": 1.5,
+        "pp": 7.6,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1592
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-07-14",
+      "votes": {
+        "ref": 10.4,
+        "ekre": 16.1,
+        "kesk": 18.6,
+        "e200": 4.2,
+        "sde": 10.7,
+        "isamaa": 31.5,
+        "pp": 6.0,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-07-06",
+      "votes": {
+        "ref": 13.8,
+        "ekre": 17.8,
+        "kesk": 17.4,
+        "e200": 3.3,
+        "sde": 12.3,
+        "isamaa": 26.6,
+        "pp": 5.5,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-06-22",
+      "votes": {
+        "ref": 14.6,
+        "ekre": 19.0,
+        "kesk": 15.7,
+        "e200": 2.1,
+        "sde": 11.6,
+        "isamaa": 29.8,
+        "pp": 4.8,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-06-18",
+      "votes": {
+        "ref": 15.6,
+        "ekre": 13.6,
+        "kesk": 18.1,
+        "e200": 3.5,
+        "sde": 12.3,
+        "isamaa": 24.5,
+        "koos": 1.7,
+        "pp": 7.8,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1662
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-06-15",
+      "votes": {
+        "ref": 16.8,
+        "ekre": 19.0,
+        "kesk": 16.0,
+        "e200": 3.4,
+        "sde": 10.4,
+        "isamaa": 28.7,
+        "pp": 3.9,
+        "eer": 0.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-06-13",
+      "votes": {
+        "ref": 19.0,
+        "ekre": 17.0,
+        "kesk": 14.0,
+        "e200": 4.0,
+        "sde": 11.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 8.0,
+        "eer": 1.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 908
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-06-08",
+      "votes": {
+        "ref": 17.9,
+        "ekre": 19.7,
+        "kesk": 15.8,
+        "e200": 2.5,
+        "sde": 9.8,
+        "isamaa": 26.3,
+        "pp": 5.3,
+        "eer": 1.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-06-01",
+      "votes": {
+        "ref": 16.0,
+        "ekre": 17.4,
+        "kesk": 16.4,
+        "e200": 2.7,
+        "sde": 12.9,
+        "isamaa": 28.1,
+        "pp": 4.8,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-05-25",
+      "votes": {
+        "ref": 17.9,
+        "ekre": 15.4,
+        "kesk": 17.4,
+        "e200": 3.8,
+        "sde": 11.9,
+        "isamaa": 23.5,
+        "pp": 5.6,
+        "eer": 2.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-05-21",
+      "votes": {
+        "ref": 15.1,
+        "ekre": 11.9,
+        "kesk": 17.3,
+        "e200": 3.6,
+        "sde": 11.6,
+        "isamaa": 27.3,
+        "koos": 1.7,
+        "pp": 7.6,
+        "eer": 1.8,
+        "erk": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1493
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-05-18",
+      "votes": {
+        "ref": 16.1,
+        "ekre": 15.8,
+        "kesk": 17.8,
+        "e200": 4.3,
+        "sde": 11.9,
+        "isamaa": 26.7,
+        "pp": 5.7,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-05-11",
+      "votes": {
+        "ref": 18.4,
+        "ekre": 14.0,
+        "kesk": 16.8,
+        "e200": 1.5,
+        "sde": 12.8,
+        "isamaa": 27.6,
+        "pp": 5.8,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-05-07",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 15.0,
+        "kesk": 16.0,
+        "e200": 3.0,
+        "sde": 12.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 7.0,
+        "eer": 2.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 893
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-05-04",
+      "votes": {
+        "ref": 17.6,
+        "ekre": 13.9,
+        "kesk": 13.9,
+        "e200": 1.8,
+        "sde": 13.4,
+        "isamaa": 30.0,
+        "pp": 7.2,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-04-28",
+      "votes": {
+        "ref": 12.0,
+        "ekre": 16.4,
+        "kesk": 19.1,
+        "e200": 4.1,
+        "sde": 11.3,
+        "isamaa": 28.1,
+        "koos": 0.9,
+        "pp": 4.7,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-04-21",
+      "votes": {
+        "ref": 17.8,
+        "ekre": 19.3,
+        "kesk": 16.8,
+        "e200": 3.2,
+        "sde": 11.5,
+        "isamaa": 24.2,
+        "koos": 0.4,
+        "pp": 4.6,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-04-15",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 14.8,
+        "kesk": 16.5,
+        "e200": 2.9,
+        "sde": 11.7,
+        "isamaa": 22.8,
+        "koos": 1.6,
+        "pp": 8.5,
+        "eer": 2.4,
+        "erk": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1488
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-04-13",
+      "votes": {
+        "ref": 19.4,
+        "ekre": 14.9,
+        "kesk": 17.3,
+        "e200": 3.3,
+        "sde": 8.8,
+        "isamaa": 28.1,
+        "koos": 0.5,
+        "pp": 6.1,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-04-09",
+      "votes": {
+        "ref": 19.0,
+        "ekre": 19.0,
+        "kesk": 16.0,
+        "e200": 3.0,
+        "sde": 9.0,
+        "isamaa": 20.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 9.0,
+        "eer": 2.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 903
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-04-06",
+      "votes": {
+        "ref": 20.2,
+        "ekre": 15.4,
+        "kesk": 18.4,
+        "e200": 3.6,
+        "sde": 9.6,
+        "isamaa": 25.1,
+        "koos": 1.2,
+        "pp": 4.7,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-03-30",
+      "votes": {
+        "ref": 17.5,
+        "ekre": 13.5,
+        "kesk": 14.2,
+        "e200": 4.0,
+        "sde": 12.5,
+        "isamaa": 28.8,
+        "koos": 0.8,
+        "pp": 6.4,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-03-23",
+      "votes": {
+        "ref": 18.1,
+        "ekre": 16.3,
+        "kesk": 17.0,
+        "e200": 1.4,
+        "sde": 10.1,
+        "isamaa": 30.2,
+        "koos": 1.0,
+        "pp": 3.7,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-03-19",
+      "votes": {
+        "ref": 17.6,
+        "ekre": 14.0,
+        "kesk": 16.0,
+        "e200": 3.0,
+        "sde": 11.9,
+        "isamaa": 25.2,
+        "koos": 1.3,
+        "pp": 8.4,
+        "eer": 1.4,
+        "erk": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1587
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-03-16",
+      "votes": {
+        "ref": 16.2,
+        "ekre": 18.1,
+        "kesk": 14.9,
+        "e200": 1.7,
+        "sde": 8.8,
+        "isamaa": 33.6,
+        "koos": 0.8,
+        "pp": 3.3,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-03-12",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 17.0,
+        "kesk": 13.0,
+        "e200": 3.0,
+        "sde": 10.0,
+        "isamaa": 29.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 6.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 891
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-03-09",
+      "votes": {
+        "ref": 19.7,
+        "ekre": 16.0,
+        "kesk": 15.2,
+        "e200": 2.7,
+        "sde": 10.5,
+        "isamaa": 30.0,
+        "koos": 0.4,
+        "pp": 3.9,
+        "eer": 0.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-03-02",
+      "votes": {
+        "ref": 13.4,
+        "ekre": 20.1,
+        "kesk": 14.2,
+        "e200": 2.2,
+        "sde": 9.6,
+        "isamaa": 33.0,
+        "koos": 0.4,
+        "pp": 4.1,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-02-23",
+      "votes": {
+        "ref": 15.2,
+        "ekre": 16.6,
+        "kesk": 15.5,
+        "e200": 3.9,
+        "sde": 11.1,
+        "isamaa": 29.3,
+        "koos": 0.4,
+        "pp": 4.6,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-02-19",
+      "votes": {
+        "ref": 14.4,
+        "ekre": 15.1,
+        "kesk": 15.2,
+        "e200": 2.6,
+        "sde": 13.2,
+        "isamaa": 29.4,
+        "koos": 1.0,
+        "pp": 6.3,
+        "eer": 1.4,
+        "erk": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1612
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-02-16",
+      "votes": {
+        "ref": 17.2,
+        "ekre": 16.8,
+        "kesk": 13.4,
+        "e200": 3.2,
+        "sde": 12.0,
+        "isamaa": 31.3,
+        "koos": 0.8,
+        "pp": 3.1,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-02-16",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 15.0,
+        "kesk": 15.0,
+        "e200": 4.0,
+        "sde": 13.0,
+        "isamaa": 24.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 8.0,
+        "eer": 0.0,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 891
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-02-09",
+      "votes": {
+        "ref": 17.9,
+        "ekre": 17.7,
+        "kesk": 12.8,
+        "e200": 1.8,
+        "sde": 12.4,
+        "isamaa": 28.4,
+        "koos": 1.5,
+        "pp": 5.0,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-02-02",
+      "votes": {
+        "ref": 17.7,
+        "ekre": 15.9,
+        "kesk": 12.3,
+        "e200": 2.2,
+        "sde": 10.9,
+        "isamaa": 33.1,
+        "koos": 0.8,
+        "pp": 4.9,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2025-01-28",
+      "votes": {
+        "ref": 20.0,
+        "ekre": 13.0,
+        "kesk": 13.0,
+        "e200": 3.0,
+        "sde": 13.0,
+        "isamaa": 25.0,
+        "vl": 0.0,
+        "koos": 3.0,
+        "pp": 8.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 886
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-01-26",
+      "votes": {
+        "ref": 15.3,
+        "ekre": 17.0,
+        "kesk": 14.3,
+        "e200": 3.0,
+        "sde": 11.4,
+        "isamaa": 32.4,
+        "koos": 0.7,
+        "pp": 4.5,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2025-01-22",
+      "votes": {
+        "ref": 15.8,
+        "ekre": 13.6,
+        "kesk": 13.1,
+        "e200": 3.4,
+        "sde": 15.5,
+        "isamaa": 26.0,
+        "koos": 2.0,
+        "pp": 7.2,
+        "eer": 2.7,
+        "erk": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1537
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-01-19",
+      "votes": {
+        "ref": 16.1,
+        "ekre": 16.5,
+        "kesk": 17.0,
+        "e200": 3.1,
+        "sde": 10.4,
+        "isamaa": 29.3,
+        "koos": 1.3,
+        "pp": 4.2,
+        "eer": 0.3,
+        "erk": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-01-12",
+      "votes": {
+        "ref": 19.2,
+        "ekre": 14.5,
+        "kesk": 13.9,
+        "e200": 1.9,
+        "sde": 13.7,
+        "isamaa": 28.9,
+        "koos": 0.7,
+        "pp": 4.9,
+        "eer": 1.2,
+        "erk": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2025-01-05",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 16.2,
+        "kesk": 14.3,
+        "e200": 2.1,
+        "sde": 12.4,
+        "isamaa": 28.4,
+        "koos": 1.2,
+        "pp": 3.9,
+        "eer": 2.3,
+        "erk": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-12-22",
+      "votes": {
+        "ref": 18.4,
+        "ekre": 17.9,
+        "kesk": 15.3,
+        "e200": 3.7,
+        "sde": 11.3,
+        "isamaa": 26.4,
+        "koos": 1.4,
+        "pp": 3.0,
+        "eer": 1.4,
+        "erk": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-12-15",
+      "votes": {
+        "ref": 15.8,
+        "ekre": 15.8,
+        "kesk": 14.7,
+        "e200": 3.2,
+        "sde": 15.0,
+        "isamaa": 25.5,
+        "koos": 1.2,
+        "pp": 4.5,
+        "eer": 2.4,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-12-11",
+      "votes": {
+        "ref": 17.5,
+        "ekre": 12.2,
+        "kesk": 13.5,
+        "e200": 3.6,
+        "sde": 13.3,
+        "isamaa": 27.3,
+        "koos": 1.1,
+        "pp": 6.3,
+        "eer": 2.1,
+        "erk": 3.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1537
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-12-08",
+      "votes": {
+        "ref": 21.0,
+        "ekre": 13.4,
+        "kesk": 13.8,
+        "e200": 2.9,
+        "sde": 12.5,
+        "isamaa": 28.3,
+        "koos": 0.5,
+        "pp": 5.6,
+        "eer": 1.6,
+        "erk": 0.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-12-02",
+      "votes": {
+        "ref": 21.3,
+        "ekre": 13.8,
+        "kesk": 12.3,
+        "e200": 3.3,
+        "sde": 14.3,
+        "isamaa": 27.0,
+        "koos": 1.2,
+        "pp": 3.9,
+        "eer": 1.1,
+        "erk": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-11-30",
+      "votes": {
+        "ref": 19.0,
+        "ekre": 14.0,
+        "kesk": 13.0,
+        "e200": 4.0,
+        "sde": 13.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 7.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 887
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-11-24",
+      "votes": {
+        "ref": 21.3,
+        "ekre": 12.1,
+        "kesk": 13.5,
+        "e200": 4.5,
+        "sde": 15.1,
+        "isamaa": 24.6,
+        "koos": 1.0,
+        "pp": 4.4,
+        "eer": 1.1,
+        "erk": 2.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-11-21",
+      "votes": {
+        "ref": 17.4,
+        "ekre": 13.7,
+        "kesk": 14.8,
+        "e200": 4.3,
+        "sde": 13.9,
+        "isamaa": 24.1,
+        "koos": 2.3,
+        "pp": 6.4,
+        "eer": 1.4,
+        "erk": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1516
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-11-17",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 12.3,
+        "kesk": 13.4,
+        "e200": 3.8,
+        "sde": 15.2,
+        "isamaa": 27.5,
+        "koos": 0.6,
+        "pp": 5.3,
+        "eer": 1.2,
+        "erk": 2.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-11-10",
+      "votes": {
+        "ref": 17.6,
+        "ekre": 13.5,
+        "kesk": 17.2,
+        "e200": 4.8,
+        "sde": 12.6,
+        "isamaa": 26.9,
+        "koos": 1.3,
+        "pp": 2.9,
+        "eer": 2.1,
+        "erk": 0.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-11-03",
+      "votes": {
+        "ref": 17.1,
+        "ekre": 12.6,
+        "kesk": 11.7,
+        "e200": 3.6,
+        "sde": 12.8,
+        "isamaa": 32.7,
+        "koos": 1.0,
+        "pp": 5.5,
+        "eer": 1.6,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-10-30",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 10.0,
+        "kesk": 14.0,
+        "e200": 6.0,
+        "sde": 16.0,
+        "isamaa": 25.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 6.0,
+        "eer": 1.0,
+        "erk": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 894
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-10-28",
+      "votes": {
+        "ref": 16.4,
+        "ekre": 12.3,
+        "kesk": 14.3,
+        "e200": 3.7,
+        "sde": 12.8,
+        "isamaa": 30.9,
+        "koos": 1.1,
+        "pp": 5.1,
+        "eer": 1.2,
+        "erk": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-10-21",
+      "votes": {
+        "ref": 20.1,
+        "ekre": 12.0,
+        "kesk": 13.0,
+        "e200": 3.8,
+        "sde": 15.7,
+        "isamaa": 27.5,
+        "koos": 0.9,
+        "pp": 4.3,
+        "eer": 1.7,
+        "erk": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-10-16",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 13.3,
+        "kesk": 14.4,
+        "e200": 2.8,
+        "sde": 14.9,
+        "isamaa": 24.4,
+        "koos": 1.9,
+        "pp": 6.4,
+        "eer": 1.9,
+        "erk": 2.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1505
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-10-14",
+      "votes": {
+        "ref": 18.2,
+        "ekre": 12.4,
+        "kesk": 11.1,
+        "e200": 4.7,
+        "sde": 13.7,
+        "isamaa": 31.4,
+        "koos": 0.5,
+        "pp": 4.6,
+        "eer": 1.6,
+        "erk": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-10-10",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 11.0,
+        "kesk": 9.0,
+        "e200": 4.0,
+        "sde": 16.0,
+        "isamaa": 27.0,
+        "vl": 0.0,
+        "koos": 3.0,
+        "pp": 6.0,
+        "eer": 1.0,
+        "erk": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 886
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-10-06",
+      "votes": {
+        "ref": 18.1,
+        "ekre": 13.2,
+        "kesk": 14.9,
+        "e200": 4.0,
+        "sde": 13.5,
+        "isamaa": 27.2,
+        "koos": 0.7,
+        "pp": 6.0,
+        "eer": 1.3,
+        "erk": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-09-29",
+      "votes": {
+        "ref": 21.6,
+        "ekre": 13.6,
+        "kesk": 12.4,
+        "e200": 3.8,
+        "sde": 13.3,
+        "isamaa": 27.4,
+        "koos": 0.8,
+        "pp": 4.0,
+        "eer": 1.1,
+        "erk": 1.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-09-23",
+      "votes": {
+        "ref": 16.7,
+        "ekre": 11.7,
+        "kesk": 13.9,
+        "e200": 4.2,
+        "sde": 14.3,
+        "isamaa": 30.3,
+        "koos": 1.1,
+        "pp": 4.2,
+        "eer": 1.1,
+        "erk": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-09-18",
+      "votes": {
+        "ref": 18.1,
+        "ekre": 9.5,
+        "kesk": 13.9,
+        "e200": 3.9,
+        "sde": 16.0,
+        "isamaa": 24.5,
+        "koos": 3.2,
+        "pp": 5.3,
+        "eer": 1.3,
+        "erk": 3.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1553
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-09-14",
+      "votes": {
+        "ref": 18.1,
+        "ekre": 12.1,
+        "kesk": 13.8,
+        "e200": 5.0,
+        "sde": 12.5,
+        "isamaa": 28.3,
+        "koos": 1.9,
+        "pp": 3.9,
+        "eer": 1.8,
+        "erk": 1.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-09-12",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 12.0,
+        "kesk": 13.0,
+        "e200": 6.0,
+        "sde": 16.0,
+        "isamaa": 23.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 6.0,
+        "eer": 1.0,
+        "erk": 3.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 885
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-09-08",
+      "votes": {
+        "ref": 20.2,
+        "ekre": 14.6,
+        "kesk": 12.7,
+        "e200": 4.1,
+        "sde": 11.1,
+        "isamaa": 29.0,
+        "koos": 0.7,
+        "pp": 5.1,
+        "eer": 0.8,
+        "erk": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-09-01",
+      "votes": {
+        "ref": 19.9,
+        "ekre": 11.0,
+        "kesk": 11.0,
+        "e200": 4.3,
+        "sde": 16.4,
+        "isamaa": 28.3,
+        "koos": 1.3,
+        "pp": 3.9,
+        "eer": 1.3,
+        "erk": 2.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-08-25",
+      "votes": {
+        "ref": 19.9,
+        "ekre": 11.5,
+        "kesk": 11.4,
+        "e200": 2.9,
+        "sde": 18.3,
+        "isamaa": 27.3,
+        "koos": 1.1,
+        "pp": 4.5,
+        "eer": 0.8,
+        "erk": 1.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-08-21",
+      "votes": {
+        "ref": 17.5,
+        "ekre": 9.9,
+        "kesk": 13.6,
+        "e200": 3.8,
+        "sde": 18.0,
+        "isamaa": 23.0,
+        "koos": 1.9,
+        "pp": 7.1,
+        "eer": 1.5,
+        "erk": 3.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1528
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-08-19",
+      "votes": {
+        "ref": 17.4,
+        "ekre": 16.0,
+        "kesk": 12.7,
+        "e200": 2.9,
+        "sde": 16.2,
+        "isamaa": 27.4,
+        "koos": 0.8,
+        "pp": 2.7,
+        "eer": 1.2,
+        "erk": 2.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-08-11",
+      "votes": {
+        "ref": 20.1,
+        "ekre": 11.6,
+        "kesk": 12.1,
+        "e200": 3.3,
+        "sde": 17.9,
+        "isamaa": 27.1,
+        "pp": 6.2,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-08-09",
+      "votes": {
+        "ref": 16.0,
+        "ekre": 11.0,
+        "kesk": 12.0,
+        "e200": 3.0,
+        "sde": 17.0,
+        "isamaa": 25.0,
+        "vl": 0.0,
+        "koos": 3.0,
+        "pp": 6.0,
+        "eer": 2.0,
+        "erk": 3.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 893
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-08-04",
+      "votes": {
+        "ref": 16.6,
+        "ekre": 13.0,
+        "kesk": 11.3,
+        "e200": 3.2,
+        "sde": 18.2,
+        "isamaa": 29.7,
+        "pp": 5.3,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-07-29",
+      "votes": {
+        "ref": 15.2,
+        "ekre": 15.0,
+        "kesk": 13.0,
+        "e200": 2.7,
+        "sde": 17.8,
+        "isamaa": 29.4,
+        "pp": 4.5,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-07-22",
+      "votes": {
+        "ref": 15.6,
+        "ekre": 12.6,
+        "kesk": 13.6,
+        "e200": 2.6,
+        "sde": 17.0,
+        "isamaa": 30.2,
+        "pp": 4.5,
+        "eer": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-07-17",
+      "votes": {
+        "ref": 16.0,
+        "ekre": 12.6,
+        "kesk": 13.8,
+        "e200": 2.6,
+        "sde": 17.1,
+        "isamaa": 27.5,
+        "vl": 0.4,
+        "koos": 2.9,
+        "pp": 5.4,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1512
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-07-12",
+      "votes": {
+        "ref": 19.4,
+        "ekre": 11.2,
+        "kesk": 12.5,
+        "e200": 3.8,
+        "sde": 16.4,
+        "isamaa": 30.3,
+        "pp": 3.8,
+        "eer": 0.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-07-05",
+      "votes": {
+        "ref": 15.2,
+        "ekre": 11.0,
+        "kesk": 12.2,
+        "e200": 3.3,
+        "sde": 15.4,
+        "isamaa": 33.7,
+        "pp": 5.8,
+        "eer": 1.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-06-24",
+      "votes": {
+        "ref": 16.4,
+        "ekre": 13.0,
+        "kesk": 13.6,
+        "e200": 3.7,
+        "sde": 16.1,
+        "isamaa": 30.0,
+        "pp": 4.7,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-06-17",
+      "votes": {
+        "ref": 16.0,
+        "ekre": 12.8,
+        "kesk": 14.1,
+        "e200": 2.6,
+        "sde": 17.5,
+        "isamaa": 27.1,
+        "vl": 0.4,
+        "pp": 8.4,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1557
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-06-17",
+      "votes": {
+        "ref": 15.6,
+        "ekre": 11.8,
+        "kesk": 12.5,
+        "e200": 2.4,
+        "sde": 17.8,
+        "isamaa": 30.5,
+        "pp": 6.1,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-06-11",
+      "votes": {
+        "ref": 20.0,
+        "ekre": 15.0,
+        "kesk": 11.0,
+        "e200": 4.0,
+        "sde": 17.0,
+        "isamaa": 23.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 5.0,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 889
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-06-10",
+      "votes": {
+        "ref": 17.8,
+        "ekre": 16.3,
+        "kesk": 10.0,
+        "e200": 2.9,
+        "sde": 14.1,
+        "isamaa": 29.6,
+        "pp": 6.9,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-06-01",
+      "votes": {
+        "ref": 19.3,
+        "ekre": 13.6,
+        "kesk": 10.0,
+        "e200": 5.6,
+        "sde": 14.2,
+        "isamaa": 29.0,
+        "pp": 5.9,
+        "eer": 0.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-05-27",
+      "votes": {
+        "ref": 19.4,
+        "ekre": 17.6,
+        "kesk": 13.3,
+        "e200": 5.3,
+        "sde": 16.2,
+        "isamaa": 23.5,
+        "pp": 2.8,
+        "eer": 0.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-05-21",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 16.0,
+        "kesk": 8.0,
+        "e200": 6.0,
+        "sde": 19.0,
+        "isamaa": 22.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 5.0,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 897
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-05-20",
+      "votes": {
+        "ref": 19.4,
+        "ekre": 12.7,
+        "kesk": 12.3,
+        "e200": 7.5,
+        "sde": 12.1,
+        "isamaa": 27.7,
+        "pp": 4.9,
+        "eer": 2.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-05-15",
+      "votes": {
+        "ref": 17.5,
+        "ekre": 17.0,
+        "kesk": 12.7,
+        "e200": 4.9,
+        "sde": 18.0,
+        "isamaa": 21.5,
+        "vl": 1.0,
+        "pp": 5.4,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1471
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-05-13",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 15.7,
+        "kesk": 12.3,
+        "e200": 6.1,
+        "sde": 14.1,
+        "isamaa": 29.1,
+        "pp": 2.3,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-05-06",
+      "votes": {
+        "ref": 17.8,
+        "ekre": 17.5,
+        "kesk": 11.9,
+        "e200": 4.2,
+        "sde": 15.9,
+        "isamaa": 27.6,
+        "pp": 2.8,
+        "eer": 1.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-04-29",
+      "votes": {
+        "ref": 19.7,
+        "ekre": 19.8,
+        "kesk": 8.3,
+        "e200": 4.6,
+        "sde": 14.4,
+        "isamaa": 26.5,
+        "pp": 3.9,
+        "eer": 2.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-04-22",
+      "votes": {
+        "ref": 20.5,
+        "ekre": 17.9,
+        "kesk": 10.7,
+        "e200": 4.2,
+        "sde": 12.6,
+        "isamaa": 27.1,
+        "pp": 4.2,
+        "eer": 2.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-04-17",
+      "votes": {
+        "ref": 18.8,
+        "ekre": 18.3,
+        "kesk": 13.8,
+        "e200": 4.8,
+        "sde": 14.2,
+        "isamaa": 22.1,
+        "vl": 1.2,
+        "pp": 4.6,
+        "eer": 2.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 0
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-04-15",
+      "votes": {
+        "ref": 15.2,
+        "ekre": 16.7,
+        "kesk": 10.8,
+        "e200": 7.8,
+        "sde": 16.4,
+        "isamaa": 28.7,
+        "pp": 2.3,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-04-11",
+      "votes": {
+        "ref": 19.0,
+        "ekre": 15.0,
+        "kesk": 10.0,
+        "e200": 5.0,
+        "sde": 13.0,
+        "isamaa": 27.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 4.0,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 871
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-04-08",
+      "votes": {
+        "ref": 18.6,
+        "ekre": 20.2,
+        "kesk": 8.9,
+        "e200": 4.9,
+        "sde": 14.3,
+        "isamaa": 26.9,
+        "pp": 3.8,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-03-29",
+      "votes": {
+        "ref": 17.3,
+        "ekre": 17.4,
+        "kesk": 12.8,
+        "e200": 4.5,
+        "sde": 14.3,
+        "isamaa": 27.9,
+        "pp": 3.5,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-03-25",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 19.2,
+        "kesk": 11.2,
+        "e200": 4.5,
+        "sde": 15.2,
+        "isamaa": 28.5,
+        "pp": 1.8,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-03-20",
+      "votes": {
+        "ref": 15.0,
+        "ekre": 16.1,
+        "kesk": 13.9,
+        "e200": 3.6,
+        "sde": 17.6,
+        "isamaa": 26.7,
+        "vl": 0.6,
+        "pp": 4.5,
+        "eer": 1.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1567
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-03-18",
+      "votes": {
+        "ref": 17.8,
+        "ekre": 19.7,
+        "kesk": 10.0,
+        "e200": 6.7,
+        "sde": 13.7,
+        "isamaa": 26.8,
+        "pp": 2.0,
+        "eer": 2.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-03-18",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 19.0,
+        "kesk": 10.0,
+        "e200": 6.0,
+        "sde": 15.0,
+        "isamaa": 25.0,
+        "vl": 0.0,
+        "koos": 1.0,
+        "pp": 3.0,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 909
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-03-08",
+      "votes": {
+        "ref": 16.2,
+        "ekre": 16.3,
+        "kesk": 10.5,
+        "e200": 6.6,
+        "sde": 15.2,
+        "isamaa": 30.9,
+        "pp": 2.1,
+        "eer": 2.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-03-04",
+      "votes": {
+        "ref": 14.9,
+        "ekre": 19.8,
+        "kesk": 12.8,
+        "e200": 5.8,
+        "sde": 13.0,
+        "isamaa": 29.3,
+        "pp": 2.0,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-02-23",
+      "votes": {
+        "ref": 19.7,
+        "ekre": 20.1,
+        "kesk": 10.2,
+        "e200": 5.1,
+        "sde": 11.6,
+        "isamaa": 29.2,
+        "pp": 2.1,
+        "eer": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-02-19",
+      "votes": {
+        "ref": 16.2,
+        "ekre": 18.0,
+        "kesk": 13.7,
+        "e200": 5.8,
+        "sde": 13.3,
+        "isamaa": 28.7,
+        "pp": 2.5,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-02-19",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 17.0,
+        "kesk": 8.0,
+        "e200": 7.0,
+        "sde": 16.0,
+        "isamaa": 24.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 3.0,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 889
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-02-14",
+      "votes": {
+        "ref": 16.7,
+        "ekre": 15.2,
+        "kesk": 11.8,
+        "e200": 5.3,
+        "sde": 17.2,
+        "isamaa": 27.0,
+        "vl": 0.7,
+        "pp": 3.2,
+        "eer": 2.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1579
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-02-09",
+      "votes": {
+        "ref": 20.0,
+        "ekre": 16.4,
+        "kesk": 8.1,
+        "e200": 3.0,
+        "sde": 17.1,
+        "isamaa": 31.3,
+        "pp": 2.8,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-02-02",
+      "votes": {
+        "ref": 17.2,
+        "ekre": 18.9,
+        "kesk": 9.7,
+        "e200": 4.5,
+        "sde": 16.1,
+        "isamaa": 29.1,
+        "pp": 1.7,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-01-26",
+      "votes": {
+        "ref": 13.5,
+        "ekre": 21.5,
+        "kesk": 12.5,
+        "e200": 6.5,
+        "sde": 17.1,
+        "isamaa": 25.3,
+        "pp": 1.5,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2024-01-25",
+      "votes": {
+        "ref": 16.0,
+        "ekre": 16.0,
+        "kesk": 12.0,
+        "e200": 5.0,
+        "sde": 18.0,
+        "isamaa": 25.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 3.0,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 872
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2024-01-24",
+      "votes": {
+        "ref": 18.7,
+        "ekre": 17.4,
+        "kesk": 14.0,
+        "e200": 3.9,
+        "sde": 17.2,
+        "isamaa": 22.1,
+        "vl": 0.6,
+        "pp": 3.7,
+        "eer": 2.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1498
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-01-22",
+      "votes": {
+        "ref": 18.8,
+        "ekre": 17.9,
+        "kesk": 11.0,
+        "e200": 6.8,
+        "sde": 17.5,
+        "isamaa": 23.5,
+        "pp": 2.3,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-01-12",
+      "votes": {
+        "ref": 17.5,
+        "ekre": 15.3,
+        "kesk": 12.3,
+        "e200": 5.3,
+        "sde": 16.1,
+        "isamaa": 27.3,
+        "pp": 2.8,
+        "eer": 2.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2024-01-08",
+      "votes": {
+        "ref": 19.5,
+        "ekre": 17.6,
+        "kesk": 15.1,
+        "e200": 5.7,
+        "sde": 11.7,
+        "isamaa": 26.2,
+        "pp": 2.2,
+        "eer": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-12-22",
+      "votes": {
+        "ref": 16.3,
+        "ekre": 19.6,
+        "kesk": 14.9,
+        "e200": 6.6,
+        "sde": 10.5,
+        "isamaa": 27.1,
+        "pp": 2.8,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-12-18",
+      "votes": {
+        "ref": 16.4,
+        "ekre": 20.4,
+        "kesk": 14.2,
+        "e200": 5.8,
+        "sde": 10.7,
+        "isamaa": 26.7,
+        "pp": 2.8,
+        "eer": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-12-13",
+      "votes": {
+        "ref": 15.2,
+        "ekre": 19.8,
+        "kesk": 15.2,
+        "e200": 6.1,
+        "sde": 11.8,
+        "isamaa": 24.9,
+        "vl": 0.4,
+        "pp": 4.1,
+        "eer": 2.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1497
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-12-08",
+      "votes": {
+        "ref": 16.8,
+        "ekre": 22.5,
+        "kesk": 16.2,
+        "e200": 5.5,
+        "sde": 10.4,
+        "isamaa": 25.4,
+        "pp": 1.6,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-12-06",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 16.0,
+        "kesk": 12.0,
+        "e200": 6.0,
+        "sde": 13.0,
+        "isamaa": 26.0,
+        "vl": 0.0,
+        "koos": 2.0,
+        "pp": 4.0,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 871
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-12-01",
+      "votes": {
+        "ref": 17.0,
+        "ekre": 19.9,
+        "kesk": 15.7,
+        "e200": 6.5,
+        "sde": 10.9,
+        "isamaa": 26.5,
+        "pp": 1.5,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-11-24",
+      "votes": {
+        "ref": 18.2,
+        "ekre": 20.8,
+        "kesk": 14.0,
+        "e200": 6.9,
+        "sde": 10.6,
+        "isamaa": 25.8,
+        "pp": 1.5,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-11-22",
+      "votes": {
+        "ref": 16.1,
+        "ekre": 20.6,
+        "kesk": 13.4,
+        "e200": 6.3,
+        "sde": 12.9,
+        "isamaa": 24.8,
+        "vl": 0.4,
+        "pp": 3.3,
+        "eer": 2.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1494
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-11-17",
+      "votes": {
+        "ref": 16.3,
+        "ekre": 19.3,
+        "kesk": 14.4,
+        "e200": 5.5,
+        "sde": 9.4,
+        "isamaa": 30.6,
+        "pp": 1.8,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-11-10",
+      "votes": {
+        "ref": 17.3,
+        "ekre": 24.0,
+        "kesk": 10.1,
+        "e200": 6.1,
+        "sde": 11.6,
+        "isamaa": 26.7,
+        "pp": 2.3,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-11-06",
+      "votes": {
+        "ref": 16.7,
+        "ekre": 24.1,
+        "kesk": 14.3,
+        "e200": 5.0,
+        "sde": 9.2,
+        "isamaa": 25.6,
+        "pp": 2.5,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-11-06",
+      "votes": {
+        "ref": 18.0,
+        "ekre": 20.5,
+        "kesk": 10.9,
+        "e200": 5.1,
+        "sde": 10.0,
+        "isamaa": 25.9,
+        "vl": 0.5,
+        "koos": 1.9,
+        "pp": 3.7,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 899
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-10-27",
+      "votes": {
+        "ref": 20.3,
+        "ekre": 22.1,
+        "kesk": 14.7,
+        "e200": 6.1,
+        "sde": 11.0,
+        "isamaa": 21.6,
+        "pp": 2.7,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-10-20",
+      "votes": {
+        "ref": 18.3,
+        "ekre": 24.6,
+        "kesk": 13.1,
+        "e200": 6.6,
+        "sde": 10.1,
+        "isamaa": 22.6,
+        "pp": 2.9,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-10-18",
+      "votes": {
+        "ref": 19.7,
+        "ekre": 17.4,
+        "kesk": 14.3,
+        "e200": 7.2,
+        "sde": 14.8,
+        "isamaa": 18.5,
+        "vl": 1.2,
+        "pp": 4.1,
+        "eer": 2.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1486
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-10-13",
+      "votes": {
+        "ref": 20.4,
+        "ekre": 22.3,
+        "kesk": 15.9,
+        "e200": 6.2,
+        "sde": 9.6,
+        "isamaa": 20.1,
+        "pp": 2.8,
+        "eer": 1.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-10-09",
+      "votes": {
+        "ref": 20.4,
+        "ekre": 24.0,
+        "kesk": 15.1,
+        "e200": 6.2,
+        "sde": 10.9,
+        "isamaa": 17.0,
+        "pp": 3.4,
+        "eer": 1.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-10-06",
+      "votes": {
+        "ref": 23.0,
+        "ekre": 19.0,
+        "kesk": 14.0,
+        "e200": 8.0,
+        "sde": 10.0,
+        "isamaa": 16.0,
+        "vl": 1.0,
+        "koos": 2.0,
+        "pp": 4.0,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 879
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-10-02",
+      "votes": {
+        "ref": 23.2,
+        "ekre": 21.8,
+        "kesk": 14.4,
+        "e200": 6.8,
+        "sde": 10.2,
+        "isamaa": 18.0,
+        "pp": 3.2,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-09-25",
+      "votes": {
+        "ref": 23.2,
+        "ekre": 24.8,
+        "kesk": 15.0,
+        "e200": 6.2,
+        "sde": 9.7,
+        "isamaa": 16.9,
+        "pp": 2.4,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-09-20",
+      "votes": {
+        "ref": 24.2,
+        "ekre": 20.6,
+        "kesk": 16.4,
+        "e200": 7.3,
+        "sde": 11.9,
+        "isamaa": 12.8,
+        "vl": 0.5,
+        "pp": 4.1,
+        "eer": 2.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1491
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-09-18",
+      "votes": {
+        "ref": 25.1,
+        "ekre": 21.2,
+        "kesk": 15.5,
+        "e200": 6.1,
+        "sde": 10.7,
+        "isamaa": 15.2,
+        "pp": 2.7,
+        "eer": 2.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-09-11",
+      "votes": {
+        "ref": 25.8,
+        "ekre": 24.1,
+        "kesk": 16.6,
+        "e200": 6.6,
+        "sde": 10.1,
+        "isamaa": 13.1,
+        "pp": 1.1,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-09-10",
+      "votes": {
+        "ref": 23.0,
+        "ekre": 20.0,
+        "kesk": 18.0,
+        "e200": 6.0,
+        "sde": 10.0,
+        "isamaa": 14.0,
+        "vl": 1.0,
+        "pp": 4.0,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 891
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-09-04",
+      "votes": {
+        "ref": 25.2,
+        "ekre": 25.2,
+        "kesk": 16.8,
+        "e200": 6.2,
+        "sde": 8.6,
+        "isamaa": 13.3,
+        "pp": 1.4,
+        "eer": 2.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-08-28",
+      "votes": {
+        "ref": 27.2,
+        "ekre": 22.5,
+        "kesk": 16.6,
+        "e200": 7.6,
+        "sde": 10.5,
+        "isamaa": 11.2,
+        "pp": 2.7,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-08-21",
+      "votes": {
+        "ref": 24.1,
+        "ekre": 23.5,
+        "kesk": 19.0,
+        "e200": 8.9,
+        "sde": 10.6,
+        "isamaa": 9.5,
+        "pp": 2.2,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-08-16",
+      "votes": {
+        "ref": 25.3,
+        "ekre": 17.6,
+        "kesk": 17.0,
+        "e200": 7.4,
+        "sde": 13.8,
+        "isamaa": 10.6,
+        "vl": 1.5,
+        "pp": 4.1,
+        "eer": 2.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1494
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-08-14",
+      "votes": {
+        "ref": 24.9,
+        "ekre": 25.2,
+        "kesk": 17.9,
+        "e200": 8.2,
+        "sde": 9.2,
+        "isamaa": 9.9,
+        "pp": 2.5,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-08-13",
+      "votes": {
+        "ref": 23.0,
+        "ekre": 24.0,
+        "kesk": 16.0,
+        "e200": 8.0,
+        "sde": 13.0,
+        "isamaa": 9.0,
+        "vl": 1.0,
+        "pp": 3.0,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 877
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-08-07",
+      "votes": {
+        "ref": 23.8,
+        "ekre": 23.8,
+        "kesk": 18.1,
+        "e200": 8.5,
+        "sde": 11.1,
+        "isamaa": 10.0,
+        "pp": 2.5,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-07-31",
+      "votes": {
+        "ref": 25.1,
+        "ekre": 20.2,
+        "kesk": 19.1,
+        "e200": 9.0,
+        "sde": 12.0,
+        "isamaa": 9.4,
+        "pp": 1.5,
+        "eer": 2.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-07-23",
+      "votes": {
+        "ref": 29.5,
+        "ekre": 21.2,
+        "kesk": 17.5,
+        "e200": 8.0,
+        "sde": 9.5,
+        "isamaa": 9.8,
+        "pp": 2.2,
+        "eer": 1.5
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-07-20",
+      "votes": {
+        "ref": 26.3,
+        "ekre": 20.2,
+        "kesk": 16.2,
+        "e200": 9.8,
+        "sde": 11.5,
+        "isamaa": 8.5,
+        "vl": 1.4,
+        "pp": 3.5,
+        "eer": 2.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1486
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-07-17",
+      "votes": {
+        "ref": 28.3,
+        "ekre": 22.6,
+        "kesk": 18.4,
+        "e200": 6.9,
+        "sde": 8.9,
+        "isamaa": 10.1,
+        "pp": 2.6,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-07-10",
+      "votes": {
+        "ref": 25.7,
+        "ekre": 23.8,
+        "kesk": 17.7,
+        "e200": 7.3,
+        "sde": 9.8,
+        "isamaa": 10.1,
+        "pp": 2.1,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-06-30",
+      "votes": {
+        "ref": 29.3,
+        "ekre": 24.2,
+        "kesk": 16.1,
+        "e200": 5.9,
+        "sde": 9.2,
+        "isamaa": 10.0,
+        "pp": 1.8,
+        "eer": 1.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-06-20",
+      "votes": {
+        "ref": 28.6,
+        "ekre": 20.4,
+        "kesk": 15.8,
+        "e200": 9.3,
+        "sde": 8.6,
+        "isamaa": 12.0,
+        "pp": 2.3,
+        "eer": 2.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-06-14",
+      "votes": {
+        "ref": 24.9,
+        "ekre": 21.2,
+        "kesk": 16.8,
+        "e200": 9.4,
+        "sde": 11.9,
+        "isamaa": 9.1,
+        "vl": 0.6,
+        "pp": 3.9,
+        "eer": 2.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1476
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-06-13",
+      "votes": {
+        "ref": 26.0,
+        "ekre": 20.0,
+        "kesk": 17.0,
+        "e200": 10.0,
+        "sde": 10.0,
+        "isamaa": 9.0,
+        "vl": 1.0,
+        "pp": 3.0,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 871
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-06-12",
+      "votes": {
+        "ref": 24.0,
+        "ekre": 25.4,
+        "kesk": 15.4,
+        "e200": 8.3,
+        "sde": 11.7,
+        "isamaa": 10.0,
+        "pp": 3.1,
+        "eer": 0.9
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-06-06",
+      "votes": {
+        "ref": 27.7,
+        "ekre": 21.8,
+        "kesk": 15.1,
+        "e200": 9.7,
+        "sde": 9.2,
+        "isamaa": 10.3,
+        "pp": 2.7,
+        "eer": 2.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-05-29",
+      "votes": {
+        "ref": 25.0,
+        "ekre": 26.3,
+        "kesk": 18.1,
+        "e200": 8.3,
+        "sde": 9.3,
+        "isamaa": 8.1,
+        "pp": 1.8,
+        "eer": 1.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-05-22",
+      "votes": {
+        "ref": 25.1,
+        "ekre": 24.5,
+        "kesk": 17.0,
+        "e200": 10.6,
+        "sde": 9.7,
+        "isamaa": 8.1,
+        "pp": 2.3,
+        "eer": 2.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-05-17",
+      "votes": {
+        "ref": 22.7,
+        "ekre": 22.5,
+        "kesk": 17.6,
+        "e200": 12.6,
+        "sde": 10.4,
+        "isamaa": 8.0,
+        "vl": 1.2,
+        "pp": 2.7,
+        "eer": 2.4
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1501
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-05-15",
+      "votes": {
+        "ref": 23.3,
+        "ekre": 27.0,
+        "kesk": 20.1,
+        "e200": 8.8,
+        "sde": 7.9,
+        "isamaa": 7.8,
+        "pp": 2.0,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-05-15",
+      "votes": {
+        "ref": 23.0,
+        "ekre": 20.0,
+        "kesk": 16.0,
+        "e200": 14.0,
+        "sde": 10.0,
+        "isamaa": 8.0,
+        "vl": 1.0,
+        "pp": 3.0,
+        "eer": 3.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 879
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-05-06",
+      "votes": {
+        "ref": 24.0,
+        "ekre": 24.0,
+        "kesk": 18.6,
+        "e200": 13.5,
+        "sde": 7.7,
+        "isamaa": 6.9,
+        "pp": 2.1,
+        "eer": 1.1
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-05-01",
+      "votes": {
+        "ref": 24.6,
+        "ekre": 22.0,
+        "kesk": 15.7,
+        "e200": 15.1,
+        "sde": 9.2,
+        "isamaa": 6.5,
+        "pp": 3.2,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-04-24",
+      "votes": {
+        "ref": 24.4,
+        "ekre": 22.1,
+        "kesk": 14.7,
+        "e200": 15.8,
+        "sde": 7.8,
+        "isamaa": 9.0,
+        "pp": 3.2,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-04-19",
+      "votes": {
+        "ref": 23.2,
+        "ekre": 16.5,
+        "kesk": 16.5,
+        "e200": 16.5,
+        "sde": 12.1,
+        "isamaa": 6.6,
+        "vl": 1.0,
+        "pp": 4.2,
+        "eer": 3.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1495
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-04-17",
+      "votes": {
+        "ref": 21.6,
+        "ekre": 24.6,
+        "kesk": 17.2,
+        "e200": 14.2,
+        "sde": 9.3,
+        "isamaa": 7.3,
+        "pp": 2.1,
+        "eer": 2.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Turu-uuringute AS",
+      "date": "2023-04-11",
+      "votes": {
+        "ref": 24.0,
+        "ekre": 19.0,
+        "kesk": 13.0,
+        "e200": 17.0,
+        "sde": 10.0,
+        "isamaa": 8.0,
+        "vl": 1.0,
+        "pp": 4.0,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1174
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-04-10",
+      "votes": {
+        "ref": 23.8,
+        "ekre": 18.2,
+        "kesk": 19.3,
+        "e200": 16.1,
+        "sde": 10.1,
+        "isamaa": 8.3,
+        "pp": 2.6,
+        "eer": 0.8
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-04-03",
+      "votes": {
+        "ref": 26.8,
+        "ekre": 18.3,
+        "kesk": 18.0,
+        "e200": 14.7,
+        "sde": 8.4,
+        "isamaa": 8.0,
+        "pp": 2.2,
+        "eer": 1.2
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-03-27",
+      "votes": {
+        "ref": 24.8,
+        "ekre": 18.6,
+        "kesk": 17.3,
+        "e200": 16.0,
+        "sde": 10.2,
+        "isamaa": 7.7,
+        "pp": 1.8,
+        "eer": 1.7
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-03-20",
+      "votes": {
+        "ref": 29.3,
+        "ekre": 17.1,
+        "kesk": 14.2,
+        "e200": 15.5,
+        "sde": 11.9,
+        "isamaa": 7.5,
+        "pp": 1.9,
+        "eer": 1.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
+    {
+      "pollster": "Kantar Emor",
+      "date": "2023-03-17",
+      "votes": {
+        "ref": 29.3,
+        "ekre": 15.7,
+        "kesk": 15.4,
+        "e200": 16.3,
+        "sde": 11.6,
+        "isamaa": 5.9,
+        "vl": 1.5,
+        "pp": 2.9,
+        "eer": 1.6
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1586
+    },
+    {
+      "pollster": "Norstat",
+      "date": "2023-03-13",
+      "votes": {
+        "ref": 30.2,
+        "ekre": 13.5,
+        "kesk": 14.9,
+        "e200": 17.5,
+        "sde": 9.2,
+        "isamaa": 8.6,
+        "pp": 3.0,
+        "eer": 1.3
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    }
+  ]
+}

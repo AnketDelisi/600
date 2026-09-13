@@ -748,14 +748,23 @@ function renderTrendChart(canvas, polls){
     return;
   }
 
-  // Build series (placeholder parties like SPN never appear)
+  // Build series (placeholder parties like SPN never appear). Each series
+  // carries the raw weekly points plus a centered 3-week moving average; the
+  // average is what gets drawn so the trend reads smoothly instead of jaggedly.
+  const smoothSeries=vals=>vals.map((v,i)=>{
+    if(v===null) return null;
+    let sum=v,n=1;
+    if(i>0&&vals[i-1]!==null){sum+=vals[i-1];n++}
+    if(i<vals.length-1&&vals[i+1]!==null){sum+=vals[i+1];n++}
+    return sum/n;
+  });
   const series=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(pid=>{
     const points=dates.map(d=>{
       const vals=byDate[d][pid];
       if(!vals||!vals.length) return null;
       return vals.reduce((a,b)=>a+b,0)/vals.length;
     });
-    return {pid, points, color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
+    return {pid, points, smooth:smoothSeries(points), color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
   });
 
   // Find y range (data-driven, no clipping; cap at 55 for sanity)
@@ -846,7 +855,7 @@ function drawChartBase(hoverIdx){
     ctx.strokeStyle=ser.color;
     ctx.lineWidth=2;
     let started=false;
-    ser.points.forEach((v,i)=>{
+    ser.smooth.forEach((v,i)=>{
       if(v===null) return;
       const x=pad.left+(i/(dates.length-1))*cw;
       const y=pad.top+ch*(1-(v-yMin)/(yMax-yMin));

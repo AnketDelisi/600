@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b27';
+const LOGO_CACHE = 'b28';
 
 const COUNTRIES = {
 
@@ -1337,6 +1337,76 @@ saxony_anhalt: {
       isamaa: 'img/ee/ISAMAA.svg', e200: 'img/ee/E200.svg', ref: 'img/ee/REF.svg', ekre: 'img/ee/EKRE.svg',
       kesk: 'img/ee/KESK.svg', sde: 'img/ee/SDE.svg', vl: 'img/ee/VL.svg', koos: 'img/ee/KOOS.svg',
       pp: 'img/ee/PP.svg', eer: 'img/ee/EER.svg', erk: 'img/ee/ERK.svg',
+    },
+  },
+
+  slovakia: {
+    name: 'Slovakia',
+    seats: 150,
+    threshold: 5.0,
+    method: 'hare_niemeyer',      // LR-Hagenbach-Bischoff (quota = valid votes/(150+1)); app approximates with Hare quota
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 14,
+    parties: {
+      smer:      { code: 'Smer-SD',   name: 'Direction – Social Democracy',   name_en: 'Direction – Social Democracy',   color: '#E30613' },
+      ps:        { code: 'PS',        name: 'Progressive Slovakia',            name_en: 'Progressive Slovakia',            color: '#00A2E8' },
+      hlas:      { code: 'Hlas-SD',   name: 'Voice – Social Democracy',        name_en: 'Voice – Social Democracy',        color: '#005CA9' },
+      slovensko: { code: 'Slovensko', name: 'Slovakia (OĽaNO successor)',      name_en: 'Slovakia (OĽaNO successor)',      color: '#00A651' },
+      zl:        { code: 'Za ľudí',   name: 'For the People',                  name_en: 'For the People',                  color: '#26A69A' },
+      ku:        { code: 'KÚ',        name: 'Christian Union',                 name_en: 'Christian Union',                 color: '#AB47BC' },
+      kdh:       { code: 'KDH',       name: 'Christian Democratic Movement',   name_en: 'Christian Democratic Movement',   color: '#FF9800' },
+      sas:       { code: 'SaS',       name: 'Freedom and Solidarity',          name_en: 'Freedom and Solidarity',          color: '#FFCA28' },
+      sns:       { code: 'SNS',       name: 'Slovak National Party',           name_en: 'Slovak National Party',           color: '#546E7A' },
+      republika: { code: 'Republika', name: 'Republic Movement',               name_en: 'Republic Movement',               color: '#37474F' },
+      aliancia:  { code: 'Aliancia',  name: 'Hungarian Alliance',              name_en: 'Hungarian Alliance',              color: '#8BC34A' },
+      demokrati: { code: 'Demokrati', name: 'Democrats',                       name_en: 'Democrats',                       color: '#EC407A' },
+      rodina:    { code: 'Sme rodina', name: 'We Are Family',                  name_en: 'We Are Family',                   color: '#00BCD4' },
+      lsns:      { code: 'ĽSNS',      name: "People's Party Our Slovakia",     name_en: "People's Party Our Slovakia",     color: '#795548' },
+    },
+    order: ['smer', 'ps', 'hlas', 'slovensko', 'zl', 'ku', 'kdh', 'sas', 'sns', 'republika', 'aliancia', 'demokrati', 'rodina', 'lsns'],
+    parlOrder: ['smer', 'hlas', 'ps', 'slovensko', 'zl', 'ku', 'kdh', 'sas', 'demokrati', 'rodina', 'sns', 'aliancia', 'republika', 'lsns'],
+    // Government (Fico III coalition, Oct 2023): SMER + HLAS + SNS
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['smer', 'hlas', 'sns'], color: '#E30613' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['ps', 'slovensko', 'zl', 'ku', 'kdh', 'sas', 'republika', 'aliancia', 'demokrati', 'rodina', 'lsns'], color: '#8497B0' },
+    },
+    lastElection: {
+      date: '2023-09-30',
+      // 2023 NR election official result — volby.sk
+      results: { smer: 22.95, ps: 17.96, hlas: 14.70, slovensko: 8.89, kdh: 6.82, sas: 6.32, sns: 5.62, republika: 4.75, aliancia: 4.39, demokrati: 2.93, rodina: 2.21, lsns: 1.37, zl: 0, ku: 0 },
+      seats:   { smer: 42, ps: 32, hlas: 27, slovensko: 16, kdh: 12, sas: 11, sns: 10, republika: 0, aliancia: 0, demokrati: 0, rodina: 0, lsns: 0, zl: 0, ku: 0 },
+    },
+    map: {
+      svg: 'img/Slovakia.svg',
+      selector: 'id',
+      districts: {
+        Bratislava: 'bratislava', Trnava: 'trnava', Nitra: 'nitra', Trencin: 'trencin',
+        BanskaBystrica: 'banskabystrica', Zilina: 'zilina', Presov: 'presov', Kosice: 'kosice',
+      },
+      // 2023 result per region, vote % — volby.sk (others/zl/ku ran in coalition → 0 as independent parties)
+      gebiete: {
+        bratislava:   { smer: 18.54, ps: 31.0,  hlas: 10.36, slovensko: 6.17, zl: 0, ku: 0, kdh: 4.9,  sas: 12.5, sns: 4.31, republika: 3.14, aliancia: 0.91, demokrati: 4.43, rodina: 1.78, lsns: 0.57 },
+        trnava:       { smer: 22.01, ps: 17.07, hlas: 12.11, slovensko: 9.4,  zl: 0, ku: 0, kdh: 4.56, sas: 5.36, sns: 4.43, republika: 4.38, aliancia: 12.69, demokrati: 2.92, rodina: 2.19, lsns: 0.81 },
+        trencin:      { smer: 29.47, ps: 16.63, hlas: 16.4,  slovensko: 5.93, zl: 0, ku: 0, kdh: 5.44, sas: 5.63, sns: 7.28, republika: 5.45, aliancia: 0.03, demokrati: 2.84, rodina: 2.22, lsns: 1.06 },
+        nitra:        { smer: 25.31, ps: 14.42, hlas: 14.4,  slovensko: 7.47, zl: 0, ku: 0, kdh: 4.06, sas: 4.8,  sns: 4.51, republika: 4.46, aliancia: 13.91, demokrati: 2.19, rodina: 2.01, lsns: 0.8  },
+        zilina:       { smer: 25.79, ps: 15.51, hlas: 16.04, slovensko: 6.9,  zl: 0, ku: 0, kdh: 9.38, sas: 5.56, sns: 8.11, republika: 5.61, aliancia: 0.02, demokrati: 2.8,  rodina: 2.02, lsns: 0.96 },
+        banskabystrica:{ smer: 22.89, ps: 14.96, hlas: 19.76, slovensko: 7.41, zl: 0, ku: 0, kdh: 4.29, sas: 5.14, sns: 6.53, republika: 5.18, aliancia: 5.17, demokrati: 2.4,  rodina: 2.73, lsns: 1.33 },
+        presov:       { smer: 22.04, ps: 10.83, hlas: 16.16, slovensko: 14.78,zl: 0, ku: 0, kdh: 14.07,sas: 4.1,  sns: 5.73, republika: 5.22, aliancia: 0.07, demokrati: 2.65, rodina: 2.36, lsns: 0.63 },
+        kosice:       { smer: 21.1,  ps: 14.68, hlas: 15.08, slovensko: 13.46,zl: 0, ku: 0, kdh: 6.8,  sas: 5.74, sns: 4.38, republika: 4.97, aliancia: 5.44, demokrati: 2.98, rodina: 2.75, lsns: 0.76 },
+      },
+      names: {
+        bratislava: 'Bratislava', trnava: 'Trnava', trencin: 'Trenčín', nitra: 'Nitra',
+        zilina: 'Žilina', banskabystrica: 'Banská Bystrica', presov: 'Prešov', kosice: 'Košice',
+      },
+      // National baseline for uniform-swing projection = 2023 result vote %
+      national2021: { smer: 22.95, ps: 17.96, hlas: 14.70, slovensko: 8.89, zl: 0, ku: 0, kdh: 6.82, sas: 6.32, sns: 5.62, republika: 4.75, aliancia: 4.39, demokrati: 2.93, rodina: 2.21, lsns: 1.37 },
+    },
+    logos: {
+      smer: 'img/sk/SMER.svg', ps: 'img/sk/PS.svg', hlas: 'img/sk/HLAS.svg', slovensko: 'img/sk/SLOVENSKO.svg',
+      zl: 'img/sk/ZL.svg', ku: 'img/sk/KU.svg', kdh: 'img/sk/KDH.svg', sas: 'img/sk/SAS.svg',
+      sns: 'img/sk/SNS.svg', republika: 'img/sk/REPUBLIKA.svg', aliancia: 'img/sk/ALLIANCE.svg',
+      demokrati: 'img/sk/DEMOCRATS.svg', rodina: 'img/sk/WEAREFAMILY.svg', lsns: 'img/sk/LSNS.svg',
     },
   },
 

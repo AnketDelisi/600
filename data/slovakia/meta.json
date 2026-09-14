@@ -1,0 +1,10 @@
+{
+  "country": "slovakia",
+  "name": "Slovakia",
+  "election_date": "2027-09-28",
+  "seats": 150,
+  "threshold": 5.0,
+  "method": "hare_niemeyer",
+  "constituencies": false,
+  "notes": "National Council: single national district, closed-list PR by largest remainder with the Republic Electoral Number (votes/(150+1)); 5% threshold (7% for 2-party, 10% for 3+ coalitions); polls reported as national vote shares."
+}

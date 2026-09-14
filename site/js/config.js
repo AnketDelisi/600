@@ -8,6 +8,7 @@ const COUNTRIES = {
 
   sweden: {
     name: 'Sweden',
+    hidden: true,                   // archived 2026-09-14 (riksdag election 2026-09-14)
     seats: 349,
     threshold: 4.0,
     method: 'sainte_lague',       // modified Sainte-Laguë (divisor 1.2)
@@ -3749,8 +3750,8 @@ saxony_anhalt: {
 };
 
 // ===== Active country (switched at runtime) =====
-let COUNTRY = 'sweden';
-let COUNTRY_NAME = 'Sweden';
+let COUNTRY = 'berlin';
+let COUNTRY_NAME = 'Berlin';
 let SEATS_TOTAL = 349;
 let THRESHOLD = 4.0;
 let SEAT_METHOD = 'sainte_lague';

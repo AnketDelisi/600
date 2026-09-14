@@ -842,6 +842,16 @@ saxony_anhalt: {
       // national baseline for the uniform-swing projection (= 2024 result)
       national2021: { fpoe: 28.8, oevp: 26.3, spoe: 21.1, neos: 9.1, gruene: 8.2, kpoe: 2.4 },
     },
+    pollsterMAE: {
+      IFDD:                { AT2024: 1.06, overall: 1.06 },
+      'Unique Research':   { AT2024: 1.10, overall: 1.10 },
+      'Market-Lazarsfeld': { AT2024: 1.22, overall: 1.22 },
+      OGM:                 { AT2024: 1.27, overall: 1.27 },
+      Spectra:             { AT2024: 1.28, overall: 1.28 },
+      Market:              { AT2024: 1.63, overall: 1.63 },
+      INSA:                { AT2024: 1.75, overall: 1.75 },
+    },
+    maeKey: 'AT2024',
     logos: {
       fpoe: 'img/at/FPO.svg', oevp: 'img/at/OVP.svg', spoe: 'img/at/SPO.svg',
       neos: 'img/at/NEOS.svg', gruene: 'img/at/GRUNE.svg', kpoe: 'img/at/KPO.svg',
@@ -1022,6 +1032,14 @@ saxony_anhalt: {
         moravskoslezsky: { seats: 22, votes: 626469, results: { ano: 43.42, spolu: 17.98, stan: 8.37, pirati: 7.18, spd: 8.09, auto: 6.42, prisaha: 0.96 } },
       },
     },
+    pollsterMAE: {
+      Ipsos:  { CZ2025: 1.61, overall: 1.61 },
+      Kantar: { CZ2025: 1.65, overall: 1.65 },
+      STEM:   { CZ2025: 2.42, overall: 2.42 },
+      Median: { CZ2025: 2.59, overall: 2.59 },
+      NMS:    { CZ2025: 2.81, overall: 2.81 },
+    },
+    maeKey: 'CZ2025',
     logos: {
       ano: 'img/cz/ANO.svg',
       auto: 'img/cz/AUTO.svg',
@@ -1333,6 +1351,13 @@ saxony_anhalt: {
       // National baseline for the uniform-swing projection = 2023 result vote %
       national2021: { ref: 31.24, ekre: 16.05, kesk: 15.28, e200: 13.33, sde: 9.27, isamaa: 8.21, vl: 2.39, pp: 2.30, koos: 0, eer: 0.96, erk: 0 },
     },
+    pollsterMAE: {
+      'Kantar Emor':       { EE2023: 1.16, overall: 1.16 },
+      Emor:                { EE2023: 1.16, overall: 1.16 },
+      'Turu-uuringute AS': { EE2023: 2.20, overall: 2.20 },
+      Norstat:             { EE2023: 2.40, overall: 2.40 },
+    },
+    maeKey: 'EE2023',
     logos: {
       isamaa: 'img/ee/ISAMAA.svg', e200: 'img/ee/E200.svg', ref: 'img/ee/REF.svg', ekre: 'img/ee/EKRE.svg',
       kesk: 'img/ee/KESK.svg', sde: 'img/ee/SDE.svg', vl: 'img/ee/VL.svg', koos: 'img/ee/KOOS.svg',
@@ -1402,6 +1427,13 @@ saxony_anhalt: {
       // National baseline for uniform-swing projection = 2023 result vote %
       national2021: { smer: 22.95, ps: 17.96, hlas: 14.70, slovensko: 8.89, zl: 0, ku: 0, kdh: 6.82, sas: 6.32, sns: 5.62, republika: 4.75, aliancia: 4.39, demokrati: 2.93, rodina: 2.21, lsns: 1.37 },
     },
+    pollsterMAE: {
+      AKO:    { SK2023: 2.05, overall: 2.05 },
+      Ipsos:  { SK2023: 2.13, overall: 2.13 },
+      Focus:  { SK2023: 2.20, overall: 2.20 },
+      NMS:    { SK2023: 2.50, overall: 2.50 },
+    },
+    maeKey: 'SK2023',
     logos: {
       smer: 'img/sk/SMER.svg', ps: 'img/sk/PS.svg', hlas: 'img/sk/HLAS.svg', slovensko: 'img/sk/SLOVENSKO.svg',
       zl: 'img/sk/ZL.svg', ku: 'img/sk/KU.svg', kdh: 'img/sk/KDH.svg', sas: 'img/sk/SAS.svg',

@@ -2,9 +2,26 @@
   "country": "berlin",
   "source": "Wikipedia",
   "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
-  "scraped_at": "2026-09-13T11:02:48Z",
-  "poll_count": 19,
+  "scraped_at": "2026-09-15T11:00:13Z",
+  "poll_count": 20,
   "polls": [
+    {
+      "pollster": "INSA",
+      "date": "2026-09-14",
+      "votes": {
+        "cdu": 20.0,
+        "spd": 12.0,
+        "gruene": 16.0,
+        "linke": 20.0,
+        "afd": 18.0,
+        "fdp": 3.0,
+        "bsw": 5.0
+      },
+      "country": "berlin",
+      "source": "Wikipedia",
+      "source_url": "https://de.wikipedia.org/wiki/Wahl_zum_Abgeordnetenhaus_von_Berlin_2026",
+      "n": 1000
+    },
     {
       "pollster": "Forschungsgruppe Wahlen",
       "date": "2026-09-10",

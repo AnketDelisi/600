@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AltıCiftSıfır — Berlin (live)</title>
+  <link rel="icon" type="image/svg+xml" href="img/600logo.svg">
+  <link rel="stylesheet" href="css/style.css?v=c74f8f2">
+  <script>window.__600_COUNTRY__='berlin';window.__600_LOCAL_ASSETS__=true;</script>
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="img/600logo.svg" alt="AltıCiftSıfır">
+      </div>
+      <div id="sidebar-content"></div>
+    </aside>
+    <main class="main-col" id="main">
+      <div class="seg-nav" id="segnav">
+        <button class="tab-trigger" data-tab="polls">POLLS</button>
+        <button class="tab-trigger" data-tab="forecast">FORECAST</button>
+        <button class="tab-trigger" data-tab="history">HISTORY</button>
+        <button class="tab-trigger" data-tab="live" data-active="true">LIVE</button>
+        <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
+        <div class="segnav-right">
+          <a class="tab-social" href="../" title="BMV split view">BMV</a>
+          <a class="tab-social" href="../../" title="Main site">MAIN</a>
+        </div>
+      </div>
+      <div class="tab-pane" id="pane-polls" style="display:none"></div>
+      <div class="tab-pane" id="pane-forecast" style="display:none"></div>
+      <div class="tab-pane" id="pane-history" style="display:none"></div>
+      <div class="tab-pane active" id="pane-live"></div>
+      <div class="tab-pane" id="pane-methodology" style="display:none"></div>
+    </main>
+  </div>
+  <script src="js/config.js?v=c74f8f2"></script>
+  <script src="js/parliaments.js?v=c74f8f2"></script>
+  <script src="js/app.js?v=c74f8f2"></script>
+</body>
+</html>

@@ -2,9 +2,30 @@
   "country": "israel",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-  "scraped_at": "2026-09-15T11:00:12Z",
-  "poll_count": 152,
+  "scraped_at": "2026-09-16T10:48:12Z",
+  "poll_count": 153,
   "polls": [
+    {
+      "pollster": "SF+ND",
+      "date": "2026-09-15",
+      "votes": {
+        "likud": 30,
+        "together": 8,
+        "rzp": 8,
+        "otzma": 8,
+        "shas": 10,
+        "utj": 8,
+        "yb": 6,
+        "raam": 5,
+        "joint_list": 7,
+        "dems": 9,
+        "yashar": 21
+      },
+      "country": "israel",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+      "n": 483
+    },
     {
       "pollster": "LRI+P4A",
       "date": "2026-09-10",

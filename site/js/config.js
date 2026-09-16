@@ -267,6 +267,13 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // single-state PR with 36 constituencies; we model nationally
     recencyHalfLifeDays: 7,
+    live: {
+      // election-night proxy (Cloudflare worker) + local static fallback
+      workerUrl: 'https://600-election-night.600-live.workers.dev/mecklenburg_vorpommern',
+      localUrl: 'data/mecklenburg_vorpommern/live.json',
+      // party -> id in the normalized live feed (state-election codes)
+      mapCode: p=>p,
+    },
     maeKey: 'MV2021',             // weight pollsters by their 2021 MV accuracy
     biasKey: 'MV2021',            // signed-bias correction from the MV2021 backtest
     priorAlpha: 0.05,             // last-election Dirichlet prior (5% pull toward 2021)
@@ -391,6 +398,13 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // single-state PR with 78 constituencies; we model nationally
     recencyHalfLifeDays: 7,
+    live: {
+      // election-night proxy (Cloudflare worker) + local static fallback
+      workerUrl: 'https://600-election-night.600-live.workers.dev/berlin',
+      localUrl: 'data/berlin/live.json',
+      // party -> id in the normalized live feed (state-election codes)
+      mapCode: p=>p,
+    },
     maeKey: 'B2023',              // weight pollsters by their 2023 Berlin (repeat) accuracy
     biasKey: 'B2023',             // signed-bias correction from the B2023 backtest
     priorAlpha: 0.05,             // last-election Dirichlet prior (5% pull toward 2023)
@@ -3803,6 +3817,6 @@ function setCountry(id) {
 }
 
 // Sub-page / archive wrapper: a country can be pinned via window.__600_COUNTRY__
-const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'sweden';
+const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'berlin';
 
 setCountry(BOOT_COUNTRY);

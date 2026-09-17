@@ -156,10 +156,11 @@ const COUNTRIES = {
         joint_list: 5, dems: 4, yashar: 0, reservists: 0, amcha: 0,
       },
     },
-    excludePollsters: ['Direct Polls', 'Filber'],   // Channel-14-affiliated polling (Direct Polls until Jun 2025, Filber/Next Data since): systemically pro-coalition outliers
+    excludePollsters: ['Filber', 'SF+ND'],   // Channel-14-affiliated polling (Shlomo Filber / Next Data): systemically pro-coalition outlier
     pollsterMAE: {
       Kantar:           { 2022: 1.27, 2021: 1.54, 2019: 1.11, overall: 1.31 },
       "Midgam R&C":     { 2022: 1.27, 2021: 1.54, 2020: 1.00, 2019: 1.11, overall: 1.23 },
+      "Direct Polls":   { 2022: 1.27, 2021: 1.08, 2020: 1.00, overall: 1.12 },
       "Maagar Mochot":  { 2022: 1.45, 2021: 1.83, 2020: 1.25, 2019: 0.89, overall: 1.35 },
       "Midgam Project": { 2020: 1.00, 2019: 1.11, overall: 1.06 },
       Smith:            { 2022: 1.09, 2021: 1.54, 2020: 0.75, 2019: 0.89, overall: 1.07 },
@@ -169,6 +170,11 @@ const COUNTRIES = {
       Lazar:            { overall: 1.25 },
       "Yossi Tatika":   { overall: 1.25 },
     },
+    surplusAgreements: [            // Bader-Ofer surplus-vote agreements (pool votes for remainder seats)
+      ['joint_list', 'raam'],
+      ['together', 'yb'],
+      ['yashar', 'dems'],
+    ],
     logos: {
       likud: 'img/il/Likud.svg', together: 'img/il/Together.svg', rzp: 'img/il/RZP.svg',
       otzma: 'img/il/Otzma.svg', blue_white: 'img/il/BW.svg', shas: 'img/il/Shas.svg',
@@ -3787,6 +3793,7 @@ let POLLSTER_BIAS = {};       // pollster -> {party: signed bias} where bias = p
 let BIAS_SHRINK = 1.0;        // apply only fraction of the signed bias (0..1): Sweden 2026 showed single-election bias can flip sign, so shrink toward 0
 let MAE_SMOOTH = false;       // weight pollsters by 1/(1+MAE) instead of 1/MAE (less concentration on one pollster)
 let EXCLUDE_POLLSTERS = [];   // pollster names dropped from the average entirely (e.g. Channel-14-affiliated polls)
+let SURPLUS_AGREEMENTS = [];  // [partyA, partyB] cartels pooled for Bader-Ofer remainder-seat allocation
 let PRIOR_ALPHA = 0;          // last-election Dirichlet prior weight (0 = off)
 let TREND_CONF = null;        // {electionDate, blend, maxDaily, windowDays, minPolls} linear-trend extrapolation
 let HIDE_BLOCS = false;       // presidential-style layout: no bloc cards / majority card
@@ -3817,6 +3824,7 @@ function setCountry(id) {
   BIAS_SHRINK = (c.biasShrink!==undefined) ? c.biasShrink : 1.0;
   MAE_SMOOTH = !!c.maeSmooth;
   EXCLUDE_POLLSTERS = c.excludePollsters || [];
+  SURPLUS_AGREEMENTS = c.surplusAgreements || [];
   PRIOR_ALPHA = (c.priorAlpha!==undefined) ? c.priorAlpha : 0;
   TREND_CONF = c.trend || null;
   HIDE_BLOCS = !!c.hideBlocs;

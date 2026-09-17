@@ -1619,6 +1619,11 @@ function allocateSeatsN(votes, totalSeats){
   }
 
   // Modified Sainte-Laguë (1.2, 3, 5, ...) or D'Hondt (1, 2, 3, ...)
+  // Israeli Bader-Ofer: surplus-vote agreement cartels pool their votes for
+  // the remainder allocation, then split seats within the pair by D'Hondt.
+  if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
+    return allocateSeatsBaderOfer(votes, totalSeats);
+  }
   const divisors=[];
   for(let i=1;i<=totalSeats;i++){
     divisors.push(SEAT_METHOD==='dhondt'?i:(i===1?1.2:2*i-1));
@@ -1635,6 +1640,75 @@ function allocateSeatsN(votes, totalSeats){
     seats[quota[i].party]++;
   }
   return seats;
+}
+
+// Bader-Ofer (Israeli D'Hondt + surplus-vote agreements): qualifying lists get
+// their Hare-quota seats first; the leftover seats are then allocated among
+// cartels (each surplus-agreement pair pools its votes, lists without an
+// agreement are their own cartel) by D'Hondt on the cartel's next quotient;
+// finally each multi-party cartel's won seats are split back between its
+// members by D'Hondt on each member's next quotient.
+function allocateSeatsBaderOfer(votes, totalSeats, threshold){
+  if(threshold===undefined) threshold=THRESHOLD;
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=threshold);
+  const seats={};
+  valid.forEach(p=>{seats[p]=0});
+  const totalVotes=valid.reduce((s,p)=>s+(votes[p]||0),0);
+  if(totalVotes===0) return seats;
+  const quota=totalVotes/totalSeats;
+
+  // Stage 1: Hare-quota seats per qualifying list.
+  const qSeats={}; let given=0;
+  valid.forEach(p=>{
+    qSeats[p]=Math.floor((votes[p]||0)/quota);
+    seats[p]=qSeats[p]; given+=qSeats[p];
+  });
+  let left=totalSeats-given;
+  if(left<=0) return seats;
+
+  // Build cartels: agreement pairs that BOTH passed the threshold pool their
+  // votes; a pair where one list failed the threshold is treated as unsigned.
+  const cartels=[];
+  const inCartel=new Set();
+  for(const pair of SURPLUS_AGREEMENTS){
+    const [a,b]=pair;
+    if(!valid.includes(a)||!valid.includes(b)) continue;
+    cartels.push({members:[a,b], votes:(votes[a]||0)+(votes[b]||0), q:qSeats[a]+qSeats[b], split:[0,0]});
+    inCartel.add(a); inCartel.add(b);
+  }
+  valid.forEach(p=>{if(!inCartel.has(p)) cartels.push({members:[p], votes:(votes[p]||0), q:qSeats[p], split:[0]})});
+
+  // Stage 2: allocate the remaining seats among cartels by D'Hondt (divisor =
+  // cartel's current seats+1, starting from its Hare quota seats).
+  for(let i=0;i<left;i++){
+    let best=-1,bestQ=-1;
+    for(let ci=0;ci<cartels.length;ci++){
+      const c=cartels[ci];
+      const q=c.votes/(c.q+c.split.reduce((a,b)=>a+b,0)+1);
+      if(q>bestQ){bestQ=q;best=ci}
+    }
+    cartels[best].split[0]++;  // award the seat to the cartel
+  }
+
+  // Stage 3: split each multi-party cartel's won seats back among its members
+  // by D'Hondt on each member's next quotient (divisor = member seats+1, from
+  // its Hare quota seats).
+  const out={}; valid.forEach(p=>{out[p]=0});
+  for(const c of cartels){
+    if(c.members.length===1){out[c.members[0]]=c.q+c.split[0];continue}
+    const mw=[0,0];
+    for(let i=0;i<c.split[0];i++){
+      let best=-1,bestQ=-1;
+      for(let mi=0;mi<c.members.length;mi++){
+        const p=c.members[mi];
+        const q=(votes[p]||0)/(qSeats[p]+mw[mi]+1);
+        if(q>bestQ){bestQ=q;best=mi}
+      }
+      mw[best]++;
+    }
+    c.members.forEach((p,mi)=>{out[p]=qSeats[p]+mw[mi]});
+  }
+  return out;
 }
 
 // Per-okręg D'Hondt (Poland): each of the 41 okręgi allocates its own seat
@@ -1873,6 +1947,10 @@ function allocateSeatsFast(votes, total){
 
   const quo={};
   valid.forEach(p=>{quo[p]=SEAT_METHOD==='dhondt'?(votes[p]||0):(votes[p]||0)/1.2});
+  // Israeli Bader-Ofer: surplus-vote agreement cartels pool votes for remainder seats
+  if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
+    return allocateSeatsBaderOfer(votes, total);
+  }
   for(let i=0;i<total;i++){
     let best=valid[0];
     for(const p of valid){if(quo[p]>quo[best])best=p}
@@ -1986,6 +2064,13 @@ function runSeatForecast(avg, nSims, nPolls){
     simVotes=applyNationalSwing(simVotes);
     // seats = share * 120, threshold applied, adjusted to sum 120
     let seats={};
+    if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
+      // Bader-Ofer with surplus-vote agreement cartels (votes in seat units)
+      const raw={};
+      PARTY_ORDER.forEach(p=>{raw[p]=simVotes[p]/100*SEATS_TOTAL});
+      seats=allocateSeatsBaderOfer(raw, SEATS_TOTAL, thSeats);
+      PARTY_ORDER.forEach(p=>{if(seats[p]===undefined)seats[p]=0});
+    }else{
     const valid=[];
     PARTY_ORDER.forEach(p=>{
       const raw=simVotes[p]/100*SEATS_TOTAL;
@@ -1996,6 +2081,7 @@ function runSeatForecast(avg, nSims, nPolls){
     let left=SEATS_TOTAL-used;
     const rems=valid.map(p=>[simVotes[p]/100*SEATS_TOTAL-seats[p],p]).sort((a,b)=>b[0]-a[0]);
     for(let i=0;i<left&&i<rems.length;i++)seats[rems[i][1]]++;
+    }
     const MAJ_TH=Math.floor(SEATS_TOTAL/2)+1;
     const KM=BLOCS.kingmaker;
     const kmActive=!!(KM&&!BLOCS.bloc1.parties.includes(KM)&&!BLOCS.bloc2.parties.includes(KM));

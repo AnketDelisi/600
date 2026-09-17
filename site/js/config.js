@@ -415,6 +415,7 @@ saxony_anhalt: {
     },
     maeKey: 'B2023',              // weight pollsters by their 2023 Berlin (repeat) accuracy
     biasKey: 'B2023',             // signed-bias correction from the B2023 backtest
+    biasShrink: 0.5,              // B2023 bias is large (INSA cdu +6.6pp) & single-election; halve so CDU isn't inflated ~8pp
     priorAlpha: 0.05,             // last-election Dirichlet prior (5% pull toward 2023)
     trend: {                      // linear-trend extrapolation to the 2026-09-20 election
       electionDate: '2026-09-20',

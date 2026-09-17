@@ -306,6 +306,10 @@ button:active{transform:translateY(1px)}
 .fc-votebar{position:relative}
 .fc-vote-val{width:64px;text-align:right;font-size:12px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;flex-shrink:0}
 .fc-vote-int{width:76px;text-align:right;font-size:10px;color:var(--c-text-muted);font-weight:700;flex-shrink:0;font-family:var(--font-mono)}
+.fc-spark{flex-shrink:0;opacity:0.85}
+.fc-mom{font-size:10px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;flex-shrink:0;width:52px;text-align:right}
+.fc-mom.up{color:#0B9E17}
+.fc-mom.down{color:#E30613}
 .fc-thresh{position:absolute;top:0;bottom:0;width:2px;background:#1A1A1A}
 .fc-note{font-size:10px;color:var(--c-text-muted);font-weight:700;width:100%;margin-left:54px}
 .fc-votehd{display:flex;align-items:center;gap:10px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:2px solid var(--c-edge);padding:2px 0 4px}

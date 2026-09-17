@@ -51,6 +51,23 @@ CORE = ["cdu", "spd", "gruene", "linke", "afd"]   # Berlin core five
 REF_SKIP = {"abgeordnetenhauswahl 2026", "abgeordnetenhauswahl 2023", "abgeordnetenhauswahl 2021",
             "bundestagswahl", "europawahl", "sonstige"}
 
+# Non-Wikipedia polls merged into the output (not present in the de.wikipedia
+# table): the BSW-internal survey (Sep 2026, commissioned by the BSW
+# Landesverband from an unidentified French firm, n=1091). Down-weighted via a
+# high-MAE config entry ("BSW (internal)" -> 4.0), so it barely moves the avg.
+SUPPLEMENTARY_POLLS = [
+    {
+        "pollster": "BSW (internal)",
+        "date": "2026-09-09",
+        "votes": {"cdu": 13.5, "spd": 11.8, "gruene": 15.4, "linke": 22.3,
+                  "afd": 21.1, "fdp": 4.2, "bsw": 5.5},
+        "country": COUNTRY,
+        "source": "Wikipedia",
+        "source_url": WIKI_URL,
+        "n": 1091,
+    },
+]
+
 
 def norm_header(text):
     text = re.sub(r"\[\s*\w+\s*\]", "", text or "")
@@ -221,6 +238,12 @@ def scrape_berlin():
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     polls = scrape_berlin()
+    # merge non-Wikipedia supplementary polls (dedup by pollster+date)
+    seen = {(p["pollster"].lower(), p["date"]) for p in polls}
+    for p in SUPPLEMENTARY_POLLS:
+        if (p["pollster"].lower(), p["date"]) not in seen:
+            polls.append(p)
+    polls.sort(key=lambda p: p["date"], reverse=True)
     print(f"Scraped {len(polls)} polls")
     output = {
         "country": COUNTRY,

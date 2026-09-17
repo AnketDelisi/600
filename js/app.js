@@ -341,7 +341,11 @@ function pollsterWeight(pollster){
   // Archive-mode uses the snapshot's MAE key (overall) exactly as frozen
   const key=ARCHIVE_MODE?'overall':MAE_KEY;
   const v=mae[key]||mae.overall;
-  return v?1/v:1;
+  if(!v) return 1;
+  // Smooth 1/(1+MAE) weight: dampens over-concentration on the single best
+  // pollster of one past election (Sweden 2026: Sifo was best in 2022 but
+  // only mediocre in 2026, and the sharp inverse weight magnified its miss).
+  return MAE_SMOOTH?1/(1+v):1/v;
 }
 
 // Exponential time decay: polls halve in weight every RECENCY_HALF_LIFE days
@@ -366,9 +370,12 @@ function weightedAverage(polls, party, noBias){
     // common scale (missing below-threshold seats are treated as 'Others')
     let v=p.votes[party];
     // signed-bias correction: bias = poll − actual (from per-election backtest);
-    // subtract it so pollster's systematic error is removed
+    // subtract it so pollster's systematic error is removed. BIAS_SHRINK (0..1)
+    // damps this: a single-election bias can flip sign across elections (Sweden
+    // 2022 said pollsters understated S, 2026 every pollster overstated it), so
+    // full-strength correction can actively hurt — shrink toward 0.
     if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
-      v-=POLLSTER_BIAS[p.pollster][party];
+      v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
     }
     if(SEAT_BASED){
       const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);

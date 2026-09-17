@@ -98,6 +98,8 @@ const COUNTRIES = {
     },
     maeKey: '2022',                    // weight pollsters by their 2022 accuracy
     biasKey: '2022',                   // signed-bias correction from the 2022 backtest
+    biasShrink: 0.5,                   // 2022 bias flipped sign in 2026 (pollsters overstated S); apply at half strength
+    maeSmooth: true,                   // 1/(1+MAE) weight: Sifo was best in 2022 but weak in 2026; don't over-concentrate
     pollsterBias: {                    // bias = poll − actual (SwedishPolls, last-3 polls before 2022-09-11)
       Sifo:    { S: -0.8,  SD: 0.09, M: -2.33, V: 0.68, C: 0.19, KD: 0.79, MP: 1.03, L: 0.99 },
       Novus:   { S: -1.3,  SD: 0.39, M: -1.63, V: 0.98, C: 1.02, KD: 0.53, MP: 0.03, L: 0.42 },
@@ -3783,6 +3785,8 @@ let RECENCY_HALF_LIFE = 14;
 let MAE_KEY = 'overall';
 let BIAS_KEY = null;          // signed-bias correction key (e.g. 'MV2021'): pollster bias from backtest
 let POLLSTER_BIAS = {};       // pollster -> {party: signed bias} where bias = poll − actual
+let BIAS_SHRINK = 1.0;        // apply only fraction of the signed bias (0..1): Sweden 2026 showed single-election bias can flip sign, so shrink toward 0
+let MAE_SMOOTH = false;       // weight pollsters by 1/(1+MAE) instead of 1/MAE (less concentration on one pollster)
 let PRIOR_ALPHA = 0;          // last-election Dirichlet prior weight (0 = off)
 let TREND_CONF = null;        // {electionDate, blend, maxDaily, windowDays, minPolls} linear-trend extrapolation
 let HIDE_BLOCS = false;       // presidential-style layout: no bloc cards / majority card
@@ -3810,6 +3814,8 @@ function setCountry(id) {
   MAE_KEY = c.maeKey || 'overall';
   BIAS_KEY = c.biasKey || null;
   POLLSTER_BIAS = (c.biasKey && c.pollsterBias) ? c.pollsterBias : {};
+  BIAS_SHRINK = (c.biasShrink!==undefined) ? c.biasShrink : 1.0;
+  MAE_SMOOTH = !!c.maeSmooth;
   PRIOR_ALPHA = (c.priorAlpha!==undefined) ? c.priorAlpha : 0;
   TREND_CONF = c.trend || null;
   HIDE_BLOCS = !!c.hideBlocs;

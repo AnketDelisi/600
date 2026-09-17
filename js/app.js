@@ -411,7 +411,14 @@ function trendExtrapolation(polls, party){
   let sw=0,swt=0,swtt=0,swv=0,swtv=0;
   for(const p of recent){
     const t=(now-new Date(p.date).getTime())/(1000*60*60*24); // days ago
-    const w=Math.pow(0.5,t/RECENCY_HALF_LIFE);
+    let w=Math.pow(0.5,t/RECENCY_HALF_LIFE);
+    // Weight by the same pollster accuracy + sample cap as the average, so a
+    // low-quality outlier (e.g. a partisan internal poll down-weighted to a
+    // high MAE) cannot hijack the slope. Berlin 2026: the BSW-internal poll
+    // (CDU 13.5 vs ~20 elsewhere) entered the trend at full strength and its
+    // single point flipped the CDU projection upward.
+    w*=pollsterWeight(p.pollster);
+    w*=Math.min(1500, p.n||1000);
     sw+=w; swt+=w*t; swtt+=w*t*t; swv+=w*(p.votes[party]||0); swtv+=w*t*(p.votes[party]||0);
   }
   const den=sw*swtt-swt*swt;

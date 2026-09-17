@@ -751,6 +751,30 @@ function renderBlocs(avg){
 /* ---------- render trend chart (canvas) ---------- */
 const CHART_STATE={};
 
+// LOESS (locally estimated scatterplot smoothing): tricube-weighted local
+// regression in the x-domain (day timestamps). Unlike a fixed-half-life moving
+// average it adapts to the local data density, so it follows sudden trends
+// (Sweden 2026: L surged ~2->5pp in the final week) without lagging.
+// bandwidthDays is the tricube kernel half-width in days.
+function loessSmooth(xs, ys, xsEval, bandwidthDays){
+  const n=xs.length;
+  if(!n) return ys.slice();
+  const bw=(bandwidthDays||14)*864e5;
+  const out=ys.map((y,i)=>{
+    const x0=xsEval[i];
+    let num=0,den=0;
+    for(let j=0;j<n;j++){
+      if(ys[j]===null) continue;
+      const d=Math.abs(xs[j]-x0);
+      if(d>=bw) continue;
+      const w=Math.pow(1-Math.pow(d/bw,3),3);
+      num+=w*ys[j]; den+=w;
+    }
+    return den>0?num/den:null;
+  });
+  return out;
+}
+
 function renderTrendChart(canvas, polls){
   const ctx=canvas.getContext('2d');
   const wrap=canvas.parentElement;
@@ -784,22 +808,19 @@ function renderTrendChart(canvas, polls){
   }
 
   // Build series (placeholder parties like SPN never appear). Each series
-  // carries the raw weekly points plus a centered 3-week moving average; the
-  // average is what gets drawn so the trend reads smoothly instead of jaggedly.
-  const smoothSeries=vals=>vals.map((v,i)=>{
-    if(v===null) return null;
-    let sum=v,n=1;
-    if(i>0&&vals[i-1]!==null){sum+=vals[i-1];n++}
-    if(i<vals.length-1&&vals[i+1]!==null){sum+=vals[i+1];n++}
-    return sum/n;
-  });
+  // carries the raw date-averaged points plus a LOESS smooth; the LOESS curve
+  // is what gets drawn so the trend follows real movement instead of a lagging
+  // fixed-window average.
+  const datesT=dates.map(d=>new Date(d).getTime());
   const series=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(pid=>{
     const points=dates.map(d=>{
       const vals=byDate[d][pid];
       if(!vals||!vals.length) return null;
       return vals.reduce((a,b)=>a+b,0)/vals.length;
     });
-    return {pid, points, smooth:smoothSeries(points), color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
+    // LOESS over the day axis: tricube local regression with a ~14-day kernel.
+    const smooth=loessSmooth(datesT, points, datesT, 14);
+    return {pid, points, smooth, color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
   });
 
   // Find y range (data-driven, no clipping; cap at 55 for sanity)

@@ -486,29 +486,6 @@ function partyMomentum(polls, party, recentDays, baseDays){
   return r-b;
 }
 
-// Tiny per-party sparkline of the last ~60 days of raw poll values, so the
-// recent trend (surge/collapse) is visible at a glance next to the forecast.
-function partySparkline(polls, party, days){
-  days=days||60;
-  const now=Date.now();
-  const pts=polls
-    .filter(p=>p.votes[party]!==undefined&&now-new Date(p.date).getTime()<=days*864e5)
-    .map(p=>[new Date(p.date).getTime(), p.votes[party]])
-    .sort((a,b)=>a[0]-b[0]);
-  if(pts.length<2) return '';
-  const W=70,H=20,PAD=1;
-  const xs=pts.map(p=>p[0]);
-  const ys=pts.map(p=>p[1]);
-  const x0=xs[0],x1=xs[xs.length-1];
-  let yMin=Math.min(...ys),yMax=Math.max(...ys);
-  const span=(yMax-yMin)||1;
-  yMin-=span*0.2; yMax+=span*0.2;
-  const X=v=>PAD+(x1===x0?0:(v-x0)/(x1-x0)*(W-2*PAD));
-  const Y=v=>H-PAD-(v-yMin)/(yMax-yMin)*(H-2*PAD);
-  const path=pts.map((p,i)=>(i?'L':'M')+X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join('');
-  const lastColor='var(--c-accent)';
-  return `<svg class="fc-spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><path d="${path}" fill="none" stroke="${lastColor}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
-}
 
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 function renderCountryNav(){
@@ -2489,7 +2466,6 @@ function renderForecast(pane){
     }
     voteRows+=`<div class="fc-voterow">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
-      ${partySparkline(POLLS,p)}
       ${momHtml}
       <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div></div>
       <span class="fc-vote-val">${fmt(mu,1)}${SEAT_BASED?'':'%'}</span>

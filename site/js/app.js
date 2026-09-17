@@ -316,7 +316,7 @@ async function loadData(){
     ]);
     const pollsJson=await pollsResp.json();
     const metaJson=await metaResp.json();
-    POLLS=pollsJson.polls||[];
+    POLLS=(pollsJson.polls||[]).filter(p=>!EXCLUDE_POLLSTERS.includes(p.pollster));
     SCRAPED_AT=pollsJson.scraped_at||null;
     META=metaJson;
   }catch(e){

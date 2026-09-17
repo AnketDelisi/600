@@ -66,6 +66,10 @@ HEADER_MAP = {
 MIN_SAMPLE = 100
 MIN_PARTIES = 8
 
+# Channel-14-affiliated polling (Direct Polls until Jun 2025, Filber/Next Data
+# since): systemically pro-coalition outliers, excluded from the site average.
+EXCLUDED_POLLSTERS = {"direct polls", "filber"}
+
 
 def expand_grid(table):
     """Expand a <table> into (grid, metas).
@@ -208,6 +212,8 @@ def scrape_israel():
                 continue
             pollster = re.sub(r"\[\w+\]", "", row[1]).strip()
             if not pollster or len(pollster) < 3:
+                continue
+            if pollster.lower() in EXCLUDED_POLLSTERS:
                 continue
             sample_text = re.sub(r"\[\w+\]", "", row[3]).strip()
             if not sample_text.isdigit() or int(sample_text) < MIN_SAMPLE:

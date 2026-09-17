@@ -66,9 +66,10 @@ HEADER_MAP = {
 MIN_SAMPLE = 100
 MIN_PARTIES = 8
 
-# Channel-14-affiliated polling (Direct Polls until Jun 2025, Filber/Next Data
-# since): systemically pro-coalition outliers, excluded from the site average.
-EXCLUDED_POLLSTERS = {"direct polls", "filber"}
+# Channel-14-affiliated polling (Shlomo Filber / Next Data): systemically
+# pro-coalition outlier, excluded from the site average. (Direct Polls is the
+# i24 News pollster since Jun 2025 and is kept.)
+EXCLUDED_POLLSTERS = {"filber", "sf+nd"}
 
 
 def expand_grid(table):

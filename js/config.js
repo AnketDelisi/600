@@ -289,6 +289,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3,
     },
     pollsterBias: {               // bias = poll − actual (MV2021 backtest, last-5-polls avg)
@@ -420,6 +421,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3,
     },
     pollsterBias: {               // bias = poll − actual (B2023 backtest, last-5-polls avg)
@@ -745,6 +747,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3,
     },
     map: {
@@ -1700,6 +1703,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3
     },
     map: {

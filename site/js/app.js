@@ -400,7 +400,12 @@ function trendExtrapolation(polls, party){
   const now=Date.now();
   const horizon=(election-now)/(1000*60*60*24);  // days until election
   if(!(horizon>0)||horizon>TREND_CONF.windowDays) return null;
-  const cutoff=now-TREND_CONF.windowDays*1000*60*60*24;
+  // fitDays = how many days of polls the slope regression uses. A short window
+  // (≈14d) catches sudden late trends; a long one (e.g. 120d) dilutes them with
+  // months of stale data (Sweden 2026: L surged ~2→5pp in the final week but the
+  // 4-month-fit model kept it near the 4% threshold). Defaults to windowDays.
+  const fitDays=TREND_CONF.fitDays||TREND_CONF.windowDays;
+  const cutoff=now-fitDays*1000*60*60*24;
   const recent=polls.filter(p=>p.votes[party]!==undefined&&new Date(p.date).getTime()>=cutoff);
   if(recent.length<TREND_CONF.minPolls) return null;
   let sw=0,swt=0,swtt=0,swv=0,swtv=0;
@@ -464,6 +469,45 @@ function recentPolls(polls, days){
   const cutoff=new Date();
   cutoff.setDate(cutoff.getDate()-days);
   return polls.filter(p=>new Date(p.date)>=cutoff);
+}
+
+// Momentum = recent-average minus baseline-average (in pp or seats), so a party
+// that is suddenly surging (like L in Sweden 2026) shows it. Uses raw poll
+// values so the arrow reflects the polls themselves, not the smoothed model.
+function partyMomentum(polls, party, recentDays, baseDays){
+  recentDays=recentDays||14; baseDays=baseDays||30;
+  const now=Date.now();
+  const recent=polls.filter(p=>p.votes[party]!==undefined&&now-new Date(p.date).getTime()<=recentDays*864e5);
+  const base=polls.filter(p=>p.votes[party]!==undefined&&now-new Date(p.date).getTime()<=baseDays*864e5);
+  const avg=a=>a.length?mean(a):null;
+  const r=avg(recent.map(p=>p.votes[party]));
+  const b=avg(base.map(p=>p.votes[party]));
+  if(r===null||b===null) return null;
+  return r-b;
+}
+
+// Tiny per-party sparkline of the last ~60 days of raw poll values, so the
+// recent trend (surge/collapse) is visible at a glance next to the forecast.
+function partySparkline(polls, party, days){
+  days=days||60;
+  const now=Date.now();
+  const pts=polls
+    .filter(p=>p.votes[party]!==undefined&&now-new Date(p.date).getTime()<=days*864e5)
+    .map(p=>[new Date(p.date).getTime(), p.votes[party]])
+    .sort((a,b)=>a[0]-b[0]);
+  if(pts.length<2) return '';
+  const W=70,H=20,PAD=1;
+  const xs=pts.map(p=>p[0]);
+  const ys=pts.map(p=>p[1]);
+  const x0=xs[0],x1=xs[xs.length-1];
+  let yMin=Math.min(...ys),yMax=Math.max(...ys);
+  const span=(yMax-yMin)||1;
+  yMin-=span*0.2; yMax+=span*0.2;
+  const X=v=>PAD+(x1===x0?0:(v-x0)/(x1-x0)*(W-2*PAD));
+  const Y=v=>H-PAD-(v-yMin)/(yMax-yMin)*(H-2*PAD);
+  const path=pts.map((p,i)=>(i?'L':'M')+X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)).join('');
+  const lastColor='var(--c-accent)';
+  return `<svg class="fc-spark" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><path d="${path}" fill="none" stroke="${lastColor}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
 }
 
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
@@ -2432,6 +2476,11 @@ function renderForecast(pane){
     const thresh=arr.filter(v=>(SEAT_BASED?v/100*SEATS_TOTAL:v)>=vsThresh).length/arr.length;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     const barW=Math.min(100,mu/vsMax*100);
+    // Momentum: recent-14d vs last-30d raw average, shown as ▲/▼ with the delta.
+    const mom=partyMomentum(POLLS,p,14,30);
+    const momHtml=mom===null?'':(mom>0
+      ?`<span class="fc-mom up" title="14-day trend vs 30-day">▲ +${fmt(mom,1)}</span>`
+      :`<span class="fc-mom down" title="14-day trend vs 30-day">▼ ${fmt(mom,1)}</span>`);
     let note='';
     if(thresh>=0.5){
       if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${pct100(1-thresh)} of sims</div>`;
@@ -2440,6 +2489,8 @@ function renderForecast(pane){
     }
     voteRows+=`<div class="fc-voterow">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
+      ${partySparkline(POLLS,p)}
+      ${momHtml}
       <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div></div>
       <span class="fc-vote-val">${fmt(mu,1)}${SEAT_BASED?'':'%'}</span>
       <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>

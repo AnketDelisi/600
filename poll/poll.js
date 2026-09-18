@@ -24,7 +24,7 @@
     dark:  { bg: '#161616', surface: '#242424', ink: '#FDFBF4', muted: '#A8A39B', edge: '#FDFBF4' },
   };
 
-  const OUT_MONO = '"Decima Mono Pro","Decima Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace';
+  const OUT_MONO = '"Source Code Pro","Source Code Pro",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace';
 
   /* ---------- image cache ---------- */
   const imgCache = {};

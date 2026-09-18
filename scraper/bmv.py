@@ -32,7 +32,7 @@ def build_pinned(slug, country_key, name, dest):
     if os.path.isdir(dest):
         shutil.rmtree(dest)
     os.makedirs(dest)
-    for item in ["js", "css", "img"]:
+    for item in ["js", "css", "img", "fonts"]:
         s = os.path.join(SITE, item)
         if os.path.isdir(s):
             shutil.copytree(s, os.path.join(dest, item))

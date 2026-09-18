@@ -893,13 +893,13 @@ function drawChartBase(hoverIdx){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const val=yMax-(yMax-yMin)*(i/yTicks);
-    ctx.fillStyle='#64748B';ctx.font='10px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(SEAT_BASED?String(Math.round(val)):pct(val),pad.left-6,y+3);
   }
 
   // X labels
   const xStep=Math.max(1,Math.floor(dates.length/8));
-  ctx.fillStyle='#64748B';ctx.font='10px Decima Mono Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='center';
   for(let i=0;i<dates.length;i+=xStep){
     const x=pad.left+(i/(dates.length-1))*cw;
     ctx.fillText(dates[i].slice(5),x,H-pad.bottom+16);
@@ -928,7 +928,7 @@ function drawChartBase(hoverIdx){
     if(lastVal===null) return;
     const x=W-pad.right+4;
     const y=pad.top+ch*(1-(lastVal-yMin)/(yMax-yMin));
-    ctx.fillStyle=ser.color;ctx.font='bold 10px Decima Mono Pro,monospace';ctx.textAlign='left';
+    ctx.fillStyle=ser.color;ctx.font='bold 10px Source Code Pro,monospace';ctx.textAlign='left';
     ctx.fillText(partyCode(ser.pid),x,y+3);
   });
 
@@ -1598,9 +1598,7 @@ function downloadPng(dataUrl, name){
   a.href=dataUrl;
   a.download=name;
   a.click();
-}
-
-// Map: render the SVG at its viewBox size (x2 for sharpness) onto a transparent
+}// Map: render the SVG at its viewBox size (x2 for sharpness) onto a transparent
 // canvas — content-sized, no padding, no background
 async function captureMapPng(svg, filename){
   if(!svg) return;
@@ -1633,6 +1631,71 @@ function captureChartPng(canvas, filename){
   ctx.fillRect(0,0,out.width,out.height);
   ctx.drawImage(canvas,0,0);
   downloadPng(out.toDataURL('image/png'), filename);
+}
+
+// Infographic: minimal shareable forecast card, drawn at 2x from the SAME
+// values renderForecast already computed (medVotes/detSeats/lead*) so the PNG
+// matches the on-screen forecast card exactly.
+async function renderForecastInfographic(avg, sim, opts){
+  const W=1120, H=1560, S=2;
+  const canvas=document.createElement('canvas');
+  canvas.width=W*S; canvas.height=H*S;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(S,S);
+  const meta=(PARTY_META||{});
+  ctx.fillStyle='#ffffff';
+  ctx.fillRect(0,0,W,H);
+  const label=opts.title||COUNTRY_NAME+' '+(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear();
+  const method=(opts.methodName||methodNameShort());
+  // header
+  ctx.fillStyle=opts.leadColor||'#0b6e99';
+  ctx.fillRect(0,0,W,10);
+  ctx.fillStyle='#111';
+  ctx.font='600 52px "Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.textBaseline='top';
+  ctx.fillText(label.toUpperCase(),60,52);
+  ctx.fillStyle='#888';
+  ctx.font='30px "Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.fillText('FORECAST',W-60-ctx.measureText('FORECAST').width,52+S);
+  // headline
+  const outcome=(opts.leadOutcome||'').toUpperCase();
+  ctx.fillStyle=opts.leadColor||'#111';
+  ctx.font='700 128px "Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.textBaseline='alphabetic';
+  ctx.fillText(outcome,60,340);
+  ctx.fillStyle='#111';
+  ctx.fillText((opts.leadPct!==undefined?opts.leadPct.toFixed(1)+'%':''),60+ctx.measureText(outcome).width+28,340);
+  // party rows
+  const fOrder=opts.fOrder||Object.keys(avg).sort((a,b)=>avg[b]-avg[a]);
+  let y=470;
+  const rows=fOrder.filter(p=>{if(avg[p]==null)return false; const m=opts.onlyParties&&!opts.onlyParties.includes(p); return !m;});
+  const maxV=Math.max(...rows.map(p=>avg[p]));
+  ctx.font='34px "Archivo Narrow",Archivo,Arial,sans-serif';
+  for(const p of rows){
+    const c=meta[p]&&meta[p].color?meta[p].color:{berlin:'#0b6e99',mv:'#8a5a1f'}[COUNTRY]||'#0b6e99';
+    const vShare=opts.medVotes&&opts.medVotes[p]!=null?opts.medVotes[p]:avg[p];
+    const seats=opts.detSeats&&opts.detSeats[p]!=null?opts.detSeats[p]:null;
+    const barW=Math.max(8,(W-360)*(vShare/maxV));
+    ctx.fillText((meta[p]&&meta[p].short||p).toUpperCase(),60,y+8);
+    ctx.fillStyle=c;
+    ctx.fillRect(300,y,barW,34);
+    ctx.fillStyle=(p==='linie'&&COUNTRY==='berlin')?c:'#fff';
+    ctx.fillText(vShare.toFixed(1)+'%',318,y+4);
+    ctx.fillStyle='#111';
+    const right=seats!=null?seats+' '+T.seats:'';
+    ctx.fillText(right,W-60-ctx.measureText(right).width,y+8);
+    y+=64;
+  }
+  // footer
+  ctx.strokeStyle='#e3e3e3';
+  ctx.moveTo(60,y);
+  ctx.lineTo(W-60,y);
+  ctx.stroke();
+  ctx.fillStyle='#777';
+  ctx.font='26px "Archivo Narrow",Archivo,Arial,sans-serif';
+  const footer=`${sim&&sim.nSims?sim.nSims.toLocaleString():''} ${t('simulations','simülasyon')} · ${method} · ${opts.sigmaDesc||''} · ${t('seeded, reproducible','seeded, tekrarlanabilir')}`.trim();
+  ctx.fillText(footer,W/2-ctx.measureText(footer).width/2,y+30);
+  return canvas;
 }
 
 function captureBoxMap(boxId, filename){
@@ -1918,14 +1981,14 @@ function buildParliamentSVG(seats){
     const totalY=layout.h+capH+2;
 
     let svg=`<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h+padBottom}" xmlns="http://www.w3.org/2000/svg">`;
-    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
+    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Source Code Pro,monospace">MAJORITY ${majority}</text>`;
     svg+=`<line x1="${layout.cx}" y1="${fmt(lineTop,1)}" x2="${layout.cx}" y2="${fmt(lineBot,1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
       const col=party==='other'?'#9CA3AF':(PARTY_META[party]?PARTY_META[party].color:'#888');
       svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"/>`;
     }
-    svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;
+    svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Source Code Pro,monospace">${total}</text>`;
     svg+=`</svg>`;
     return svg;
 }
@@ -2549,6 +2612,7 @@ function renderForecast(pane){
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
+      <button class="shot-btn" id="fc-forecast-shot-btn" title="${t('Download forecast image as PNG','Tahmin görselini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
       <div class="fc-headline">
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
@@ -2620,6 +2684,19 @@ function renderForecast(pane){
   if(fcParlShot){
     fcParlShot.addEventListener('click',()=>{
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
+    });
+  }
+  const fcInfShot=$('fc-forecast-shot-btn');
+  if(fcInfShot){
+    fcInfShot.addEventListener('click',async()=>{
+      const canvas=await renderForecastInfographic(avg, sim, {
+        title:COUNTRY_NAME+' '+(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear(),
+        methodName:methodNameShort(),
+        sigmaDesc:SEAT_BASED?fmt(2.2,1)+' '+T.seats:fmt(forecastSigma(avg,filtered.length),1)+'pp',
+        leadColor:leadColor, leadOutcome:leadOutcome, leadPct:leadPct,
+        fOrder:fOrder, onlyParties:null, medVotes:medVotes, detSeats:detSeats
+      });
+      downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-forecast.png');
     });
   }
   if(MAP_CONF()){
@@ -3144,10 +3221,10 @@ function drawHistoryLine(canvas, hist, mode){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const v=yMax-(yMax-yMin)*(i/yTicks);
-    ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(String(Math.round(v)),pad.left-4,y+3);
   }
-  ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
     ctx.fillText(String(years[i]),xFor(i),H-pad.bottom+12);
@@ -3269,10 +3346,10 @@ function drawHistoryTurnout(canvas, hist){
     const y=pad.top+ch*(i/4);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const v=yMax-(yMax-yMin)*(i/4);
-    ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(v+'%',pad.left-4,y+3);
   }
-  ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
     const x=pad.left+(i/(years.length-1))*cw;

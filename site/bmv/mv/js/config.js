@@ -98,6 +98,8 @@ const COUNTRIES = {
     },
     maeKey: '2022',                    // weight pollsters by their 2022 accuracy
     biasKey: '2022',                   // signed-bias correction from the 2022 backtest
+    biasShrink: 0.5,                   // 2022 bias flipped sign in 2026 (pollsters overstated S); apply at half strength
+    maeSmooth: true,                   // 1/(1+MAE) weight: Sifo was best in 2022 but weak in 2026; don't over-concentrate
     pollsterBias: {                    // bias = poll − actual (SwedishPolls, last-3 polls before 2022-09-11)
       Sifo:    { S: -0.8,  SD: 0.09, M: -2.33, V: 0.68, C: 0.19, KD: 0.79, MP: 1.03, L: 0.99 },
       Novus:   { S: -1.3,  SD: 0.39, M: -1.63, V: 0.98, C: 1.02, KD: 0.53, MP: 0.03, L: 0.42 },
@@ -138,8 +140,8 @@ const COUNTRIES = {
     order: ['likud', 'together', 'rzp', 'otzma', 'blue_white', 'shas', 'reservists', 'amcha', 'utj', 'yb', 'raam', 'joint_list', 'dems', 'yashar'],
     parlOrder: ['joint_list', 'raam', 'dems', 'together', 'yashar', 'blue_white', 'yb', 'reservists', 'amcha', 'utj', 'likud', 'otzma', 'shas', 'rzp'],
     blocs: {
-      bloc1: { name: 'Coalition', short: 'GOV', parties: ['likud', 'rzp', 'otzma', 'shas', 'utj'], color: '#00A0DF' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['together', 'yb', 'dems', 'yashar', 'blue_white', 'raam', 'joint_list', 'reservists', 'amcha'], color: '#E30613' },
+      bloc1: { name: 'Coalition', short: 'GOV', parties: ['likud', 'rzp', 'otzma', 'shas', 'utj', 'amcha'], color: '#00A0DF' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['together', 'yb', 'dems', 'yashar', 'blue_white', 'raam', 'joint_list', 'reservists'], color: '#E30613' },
     },
     lastElection: {
       date: '2022-11-01',
@@ -154,6 +156,7 @@ const COUNTRIES = {
         joint_list: 5, dems: 4, yashar: 0, reservists: 0, amcha: 0,
       },
     },
+    excludePollsters: ['Filber', 'SF+ND'],   // Channel-14-affiliated polling (Shlomo Filber / Next Data): systemically pro-coalition outlier
     pollsterMAE: {
       Kantar:           { 2022: 1.27, 2021: 1.54, 2019: 1.11, overall: 1.31 },
       "Midgam R&C":     { 2022: 1.27, 2021: 1.54, 2020: 1.00, 2019: 1.11, overall: 1.23 },
@@ -166,8 +169,12 @@ const COUNTRIES = {
       "Shvakim Panorama":{ 2019: 1.11, overall: 1.11 },
       Lazar:            { overall: 1.25 },
       "Yossi Tatika":   { overall: 1.25 },
-      Filber:           { overall: 1.25 },
     },
+    surplusAgreements: [            // Bader-Ofer surplus-vote agreements (pool votes for remainder seats)
+      ['joint_list', 'raam'],
+      ['together', 'yb'],
+      ['yashar', 'dems'],
+    ],
     logos: {
       likud: 'img/il/Likud.svg', together: 'img/il/Together.svg', rzp: 'img/il/RZP.svg',
       otzma: 'img/il/Otzma.svg', blue_white: 'img/il/BW.svg', shas: 'img/il/Shas.svg',
@@ -282,6 +289,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3,
     },
     pollsterBias: {               // bias = poll − actual (MV2021 backtest, last-5-polls avg)
@@ -407,12 +415,14 @@ saxony_anhalt: {
     },
     maeKey: 'B2023',              // weight pollsters by their 2023 Berlin (repeat) accuracy
     biasKey: 'B2023',             // signed-bias correction from the B2023 backtest
+    biasShrink: 0.5,              // B2023 bias is large (INSA cdu +6.6pp) & single-election; halve so CDU isn't inflated ~8pp
     priorAlpha: 0.05,             // last-election Dirichlet prior (5% pull toward 2023)
     trend: {                      // linear-trend extrapolation to the 2026-09-20 election
       electionDate: '2026-09-20',
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3,
     },
     pollsterBias: {               // bias = poll − actual (B2023 backtest, last-5-polls avg)
@@ -738,6 +748,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3,
     },
     map: {
@@ -1693,6 +1704,7 @@ saxony_anhalt: {
       blend: 0.5,
       maxDaily: 0.3,
       windowDays: 120,
+      fitDays: 14,
       minPolls: 3
     },
     map: {
@@ -3783,6 +3795,10 @@ let RECENCY_HALF_LIFE = 14;
 let MAE_KEY = 'overall';
 let BIAS_KEY = null;          // signed-bias correction key (e.g. 'MV2021'): pollster bias from backtest
 let POLLSTER_BIAS = {};       // pollster -> {party: signed bias} where bias = poll − actual
+let BIAS_SHRINK = 1.0;        // apply only fraction of the signed bias (0..1): Sweden 2026 showed single-election bias can flip sign, so shrink toward 0
+let MAE_SMOOTH = false;       // weight pollsters by 1/(1+MAE) instead of 1/MAE (less concentration on one pollster)
+let EXCLUDE_POLLSTERS = [];   // pollster names dropped from the average entirely (e.g. Channel-14-affiliated polls)
+let SURPLUS_AGREEMENTS = [];  // [partyA, partyB] cartels pooled for Bader-Ofer remainder-seat allocation
 let PRIOR_ALPHA = 0;          // last-election Dirichlet prior weight (0 = off)
 let TREND_CONF = null;        // {electionDate, blend, maxDaily, windowDays, minPolls} linear-trend extrapolation
 let HIDE_BLOCS = false;       // presidential-style layout: no bloc cards / majority card
@@ -3810,6 +3826,10 @@ function setCountry(id) {
   MAE_KEY = c.maeKey || 'overall';
   BIAS_KEY = c.biasKey || null;
   POLLSTER_BIAS = (c.biasKey && c.pollsterBias) ? c.pollsterBias : {};
+  BIAS_SHRINK = (c.biasShrink!==undefined) ? c.biasShrink : 1.0;
+  MAE_SMOOTH = !!c.maeSmooth;
+  EXCLUDE_POLLSTERS = c.excludePollsters || [];
+  SURPLUS_AGREEMENTS = c.surplusAgreements || [];
   PRIOR_ALPHA = (c.priorAlpha!==undefined) ? c.priorAlpha : 0;
   TREND_CONF = c.trend || null;
   HIDE_BLOCS = !!c.hideBlocs;

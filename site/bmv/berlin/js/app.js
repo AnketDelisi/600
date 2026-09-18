@@ -316,7 +316,7 @@ async function loadData(){
     ]);
     const pollsJson=await pollsResp.json();
     const metaJson=await metaResp.json();
-    POLLS=pollsJson.polls||[];
+    POLLS=(pollsJson.polls||[]).filter(p=>!EXCLUDE_POLLSTERS.includes(p.pollster));
     SCRAPED_AT=pollsJson.scraped_at||null;
     META=metaJson;
   }catch(e){
@@ -341,7 +341,11 @@ function pollsterWeight(pollster){
   // Archive-mode uses the snapshot's MAE key (overall) exactly as frozen
   const key=ARCHIVE_MODE?'overall':MAE_KEY;
   const v=mae[key]||mae.overall;
-  return v?1/v:1;
+  if(!v) return 1;
+  // Smooth 1/(1+MAE) weight: dampens over-concentration on the single best
+  // pollster of one past election (Sweden 2026: Sifo was best in 2022 but
+  // only mediocre in 2026, and the sharp inverse weight magnified its miss).
+  return MAE_SMOOTH?1/(1+v):1/v;
 }
 
 // Exponential time decay: polls halve in weight every RECENCY_HALF_LIFE days
@@ -366,9 +370,12 @@ function weightedAverage(polls, party, noBias){
     // common scale (missing below-threshold seats are treated as 'Others')
     let v=p.votes[party];
     // signed-bias correction: bias = poll − actual (from per-election backtest);
-    // subtract it so pollster's systematic error is removed
+    // subtract it so pollster's systematic error is removed. BIAS_SHRINK (0..1)
+    // damps this: a single-election bias can flip sign across elections (Sweden
+    // 2022 said pollsters understated S, 2026 every pollster overstated it), so
+    // full-strength correction can actively hurt — shrink toward 0.
     if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
-      v-=POLLSTER_BIAS[p.pollster][party];
+      v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
     }
     if(SEAT_BASED){
       const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
@@ -393,13 +400,25 @@ function trendExtrapolation(polls, party){
   const now=Date.now();
   const horizon=(election-now)/(1000*60*60*24);  // days until election
   if(!(horizon>0)||horizon>TREND_CONF.windowDays) return null;
-  const cutoff=now-TREND_CONF.windowDays*1000*60*60*24;
+  // fitDays = how many days of polls the slope regression uses. A short window
+  // (≈14d) catches sudden late trends; a long one (e.g. 120d) dilutes them with
+  // months of stale data (Sweden 2026: L surged ~2→5pp in the final week but the
+  // 4-month-fit model kept it near the 4% threshold). Defaults to windowDays.
+  const fitDays=TREND_CONF.fitDays||TREND_CONF.windowDays;
+  const cutoff=now-fitDays*1000*60*60*24;
   const recent=polls.filter(p=>p.votes[party]!==undefined&&new Date(p.date).getTime()>=cutoff);
   if(recent.length<TREND_CONF.minPolls) return null;
   let sw=0,swt=0,swtt=0,swv=0,swtv=0;
   for(const p of recent){
     const t=(now-new Date(p.date).getTime())/(1000*60*60*24); // days ago
-    const w=Math.pow(0.5,t/RECENCY_HALF_LIFE);
+    let w=Math.pow(0.5,t/RECENCY_HALF_LIFE);
+    // Weight by the same pollster accuracy + sample cap as the average, so a
+    // low-quality outlier (e.g. a partisan internal poll down-weighted to a
+    // high MAE) cannot hijack the slope. Berlin 2026: the BSW-internal poll
+    // (CDU 13.5 vs ~20 elsewhere) entered the trend at full strength and its
+    // single point flipped the CDU projection upward.
+    w*=pollsterWeight(p.pollster);
+    w*=Math.min(1500, p.n||1000);
     sw+=w; swt+=w*t; swtt+=w*t*t; swv+=w*(p.votes[party]||0); swtv+=w*t*(p.votes[party]||0);
   }
   const den=sw*swtt-swt*swt;
@@ -458,6 +477,22 @@ function recentPolls(polls, days){
   cutoff.setDate(cutoff.getDate()-days);
   return polls.filter(p=>new Date(p.date)>=cutoff);
 }
+
+// Momentum = recent-average minus baseline-average (in pp or seats), so a party
+// that is suddenly surging (like L in Sweden 2026) shows it. Uses raw poll
+// values so the arrow reflects the polls themselves, not the smoothed model.
+function partyMomentum(polls, party, recentDays, baseDays){
+  recentDays=recentDays||14; baseDays=baseDays||30;
+  const now=Date.now();
+  const recent=polls.filter(p=>p.votes[party]!==undefined&&now-new Date(p.date).getTime()<=recentDays*864e5);
+  const base=polls.filter(p=>p.votes[party]!==undefined&&now-new Date(p.date).getTime()<=baseDays*864e5);
+  const avg=a=>a.length?mean(a):null;
+  const r=avg(recent.map(p=>p.votes[party]));
+  const b=avg(base.map(p=>p.votes[party]));
+  if(r===null||b===null) return null;
+  return r-b;
+}
+
 
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 function renderCountryNav(){
@@ -716,6 +751,30 @@ function renderBlocs(avg){
 /* ---------- render trend chart (canvas) ---------- */
 const CHART_STATE={};
 
+// LOESS (locally estimated scatterplot smoothing): tricube-weighted local
+// regression in the x-domain (day timestamps). Unlike a fixed-half-life moving
+// average it adapts to the local data density, so it follows sudden trends
+// (Sweden 2026: L surged ~2->5pp in the final week) without lagging.
+// bandwidthDays is the tricube kernel half-width in days.
+function loessSmooth(xs, ys, xsEval, bandwidthDays){
+  const n=xs.length;
+  if(!n) return ys.slice();
+  const bw=(bandwidthDays||14)*864e5;
+  const out=ys.map((y,i)=>{
+    const x0=xsEval[i];
+    let num=0,den=0;
+    for(let j=0;j<n;j++){
+      if(ys[j]===null) continue;
+      const d=Math.abs(xs[j]-x0);
+      if(d>=bw) continue;
+      const w=Math.pow(1-Math.pow(d/bw,3),3);
+      num+=w*ys[j]; den+=w;
+    }
+    return den>0?num/den:null;
+  });
+  return out;
+}
+
 function renderTrendChart(canvas, polls){
   const ctx=canvas.getContext('2d');
   const wrap=canvas.parentElement;
@@ -749,22 +808,19 @@ function renderTrendChart(canvas, polls){
   }
 
   // Build series (placeholder parties like SPN never appear). Each series
-  // carries the raw weekly points plus a centered 3-week moving average; the
-  // average is what gets drawn so the trend reads smoothly instead of jaggedly.
-  const smoothSeries=vals=>vals.map((v,i)=>{
-    if(v===null) return null;
-    let sum=v,n=1;
-    if(i>0&&vals[i-1]!==null){sum+=vals[i-1];n++}
-    if(i<vals.length-1&&vals[i+1]!==null){sum+=vals[i+1];n++}
-    return sum/n;
-  });
+  // carries the raw date-averaged points plus a LOESS smooth; the LOESS curve
+  // is what gets drawn so the trend follows real movement instead of a lagging
+  // fixed-window average.
+  const datesT=dates.map(d=>new Date(d).getTime());
   const series=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(pid=>{
     const points=dates.map(d=>{
       const vals=byDate[d][pid];
       if(!vals||!vals.length) return null;
       return vals.reduce((a,b)=>a+b,0)/vals.length;
     });
-    return {pid, points, smooth:smoothSeries(points), color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
+    // LOESS over the day axis: tricube local regression with a ~14-day kernel.
+    const smooth=loessSmooth(datesT, points, datesT, 14);
+    return {pid, points, smooth, color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
   });
 
   // Find y range (data-driven, no clipping; cap at 55 for sanity)
@@ -837,13 +893,13 @@ function drawChartBase(hoverIdx){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const val=yMax-(yMax-yMin)*(i/yTicks);
-    ctx.fillStyle='#64748B';ctx.font='10px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(SEAT_BASED?String(Math.round(val)):pct(val),pad.left-6,y+3);
   }
 
   // X labels
   const xStep=Math.max(1,Math.floor(dates.length/8));
-  ctx.fillStyle='#64748B';ctx.font='10px Decima Mono Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='center';
   for(let i=0;i<dates.length;i+=xStep){
     const x=pad.left+(i/(dates.length-1))*cw;
     ctx.fillText(dates[i].slice(5),x,H-pad.bottom+16);
@@ -872,7 +928,7 @@ function drawChartBase(hoverIdx){
     if(lastVal===null) return;
     const x=W-pad.right+4;
     const y=pad.top+ch*(1-(lastVal-yMin)/(yMax-yMin));
-    ctx.fillStyle=ser.color;ctx.font='bold 10px Decima Mono Pro,monospace';ctx.textAlign='left';
+    ctx.fillStyle=ser.color;ctx.font='bold 10px Source Code Pro,monospace';ctx.textAlign='left';
     ctx.fillText(partyCode(ser.pid),x,y+3);
   });
 
@@ -1542,9 +1598,7 @@ function downloadPng(dataUrl, name){
   a.href=dataUrl;
   a.download=name;
   a.click();
-}
-
-// Map: render the SVG at its viewBox size (x2 for sharpness) onto a transparent
+}// Map: render the SVG at its viewBox size (x2 for sharpness) onto a transparent
 // canvas — content-sized, no padding, no background
 async function captureMapPng(svg, filename){
   if(!svg) return;
@@ -1577,6 +1631,71 @@ function captureChartPng(canvas, filename){
   ctx.fillRect(0,0,out.width,out.height);
   ctx.drawImage(canvas,0,0);
   downloadPng(out.toDataURL('image/png'), filename);
+}
+
+// Infographic: minimal shareable forecast card, drawn at 2x from the SAME
+// values renderForecast already computed (medVotes/detSeats/lead*) so the PNG
+// matches the on-screen forecast card exactly.
+async function renderForecastInfographic(avg, sim, opts){
+  const W=1120, H=1560, S=2;
+  const canvas=document.createElement('canvas');
+  canvas.width=W*S; canvas.height=H*S;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(S,S);
+  const meta=(PARTY_META||{});
+  ctx.fillStyle='#ffffff';
+  ctx.fillRect(0,0,W,H);
+  const label=opts.title||COUNTRY_NAME+' '+(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear();
+  const method=(opts.methodName||methodNameShort());
+  // header
+  ctx.fillStyle=opts.leadColor||'#0b6e99';
+  ctx.fillRect(0,0,W,10);
+  ctx.fillStyle='#111';
+  ctx.font='600 52px "Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.textBaseline='top';
+  ctx.fillText(label.toUpperCase(),60,52);
+  ctx.fillStyle='#888';
+  ctx.font='30px "Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.fillText('FORECAST',W-60-ctx.measureText('FORECAST').width,52+S);
+  // headline
+  const outcome=(opts.leadOutcome||'').toUpperCase();
+  ctx.fillStyle=opts.leadColor||'#111';
+  ctx.font='700 128px "Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.textBaseline='alphabetic';
+  ctx.fillText(outcome,60,340);
+  ctx.fillStyle='#111';
+  ctx.fillText((opts.leadPct!==undefined?opts.leadPct.toFixed(1)+'%':''),60+ctx.measureText(outcome).width+28,340);
+  // party rows
+  const fOrder=opts.fOrder||Object.keys(avg).sort((a,b)=>avg[b]-avg[a]);
+  let y=470;
+  const rows=fOrder.filter(p=>{if(avg[p]==null)return false; const m=opts.onlyParties&&!opts.onlyParties.includes(p); return !m;});
+  const maxV=Math.max(...rows.map(p=>avg[p]));
+  ctx.font='34px "Archivo Narrow",Archivo,Arial,sans-serif';
+  for(const p of rows){
+    const c=meta[p]&&meta[p].color?meta[p].color:{berlin:'#0b6e99',mv:'#8a5a1f'}[COUNTRY]||'#0b6e99';
+    const vShare=opts.medVotes&&opts.medVotes[p]!=null?opts.medVotes[p]:avg[p];
+    const seats=opts.detSeats&&opts.detSeats[p]!=null?opts.detSeats[p]:null;
+    const barW=Math.max(8,(W-360)*(vShare/maxV));
+    ctx.fillText((meta[p]&&meta[p].short||p).toUpperCase(),60,y+8);
+    ctx.fillStyle=c;
+    ctx.fillRect(300,y,barW,34);
+    ctx.fillStyle=(p==='linie'&&COUNTRY==='berlin')?c:'#fff';
+    ctx.fillText(vShare.toFixed(1)+'%',318,y+4);
+    ctx.fillStyle='#111';
+    const right=seats!=null?seats+' '+T.seats:'';
+    ctx.fillText(right,W-60-ctx.measureText(right).width,y+8);
+    y+=64;
+  }
+  // footer
+  ctx.strokeStyle='#e3e3e3';
+  ctx.moveTo(60,y);
+  ctx.lineTo(W-60,y);
+  ctx.stroke();
+  ctx.fillStyle='#777';
+  ctx.font='26px "Archivo Narrow",Archivo,Arial,sans-serif';
+  const footer=`${sim&&sim.nSims?sim.nSims.toLocaleString():''} ${t('simulations','simülasyon')} · ${method} · ${opts.sigmaDesc||''} · ${t('seeded, reproducible','seeded, tekrarlanabilir')}`.trim();
+  ctx.fillText(footer,W/2-ctx.measureText(footer).width/2,y+30);
+  return canvas;
 }
 
 function captureBoxMap(boxId, filename){
@@ -1612,6 +1731,11 @@ function allocateSeatsN(votes, totalSeats){
   }
 
   // Modified Sainte-Laguë (1.2, 3, 5, ...) or D'Hondt (1, 2, 3, ...)
+  // Israeli Bader-Ofer: surplus-vote agreement cartels pool their votes for
+  // the remainder allocation, then split seats within the pair by D'Hondt.
+  if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
+    return allocateSeatsBaderOfer(votes, totalSeats);
+  }
   const divisors=[];
   for(let i=1;i<=totalSeats;i++){
     divisors.push(SEAT_METHOD==='dhondt'?i:(i===1?1.2:2*i-1));
@@ -1628,6 +1752,75 @@ function allocateSeatsN(votes, totalSeats){
     seats[quota[i].party]++;
   }
   return seats;
+}
+
+// Bader-Ofer (Israeli D'Hondt + surplus-vote agreements): qualifying lists get
+// their Hare-quota seats first; the leftover seats are then allocated among
+// cartels (each surplus-agreement pair pools its votes, lists without an
+// agreement are their own cartel) by D'Hondt on the cartel's next quotient;
+// finally each multi-party cartel's won seats are split back between its
+// members by D'Hondt on each member's next quotient.
+function allocateSeatsBaderOfer(votes, totalSeats, threshold){
+  if(threshold===undefined) threshold=THRESHOLD;
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=threshold);
+  const seats={};
+  valid.forEach(p=>{seats[p]=0});
+  const totalVotes=valid.reduce((s,p)=>s+(votes[p]||0),0);
+  if(totalVotes===0) return seats;
+  const quota=totalVotes/totalSeats;
+
+  // Stage 1: Hare-quota seats per qualifying list.
+  const qSeats={}; let given=0;
+  valid.forEach(p=>{
+    qSeats[p]=Math.floor((votes[p]||0)/quota);
+    seats[p]=qSeats[p]; given+=qSeats[p];
+  });
+  let left=totalSeats-given;
+  if(left<=0) return seats;
+
+  // Build cartels: agreement pairs that BOTH passed the threshold pool their
+  // votes; a pair where one list failed the threshold is treated as unsigned.
+  const cartels=[];
+  const inCartel=new Set();
+  for(const pair of SURPLUS_AGREEMENTS){
+    const [a,b]=pair;
+    if(!valid.includes(a)||!valid.includes(b)) continue;
+    cartels.push({members:[a,b], votes:(votes[a]||0)+(votes[b]||0), q:qSeats[a]+qSeats[b], split:[0,0]});
+    inCartel.add(a); inCartel.add(b);
+  }
+  valid.forEach(p=>{if(!inCartel.has(p)) cartels.push({members:[p], votes:(votes[p]||0), q:qSeats[p], split:[0]})});
+
+  // Stage 2: allocate the remaining seats among cartels by D'Hondt (divisor =
+  // cartel's current seats+1, starting from its Hare quota seats).
+  for(let i=0;i<left;i++){
+    let best=-1,bestQ=-1;
+    for(let ci=0;ci<cartels.length;ci++){
+      const c=cartels[ci];
+      const q=c.votes/(c.q+c.split.reduce((a,b)=>a+b,0)+1);
+      if(q>bestQ){bestQ=q;best=ci}
+    }
+    cartels[best].split[0]++;  // award the seat to the cartel
+  }
+
+  // Stage 3: split each multi-party cartel's won seats back among its members
+  // by D'Hondt on each member's next quotient (divisor = member seats+1, from
+  // its Hare quota seats).
+  const out={}; valid.forEach(p=>{out[p]=0});
+  for(const c of cartels){
+    if(c.members.length===1){out[c.members[0]]=c.q+c.split[0];continue}
+    const mw=[0,0];
+    for(let i=0;i<c.split[0];i++){
+      let best=-1,bestQ=-1;
+      for(let mi=0;mi<c.members.length;mi++){
+        const p=c.members[mi];
+        const q=(votes[p]||0)/(qSeats[p]+mw[mi]+1);
+        if(q>bestQ){bestQ=q;best=mi}
+      }
+      mw[best]++;
+    }
+    c.members.forEach((p,mi)=>{out[p]=qSeats[p]+mw[mi]});
+  }
+  return out;
 }
 
 // Per-okręg D'Hondt (Poland): each of the 41 okręgi allocates its own seat
@@ -1788,14 +1981,14 @@ function buildParliamentSVG(seats){
     const totalY=layout.h+capH+2;
 
     let svg=`<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h+padBottom}" xmlns="http://www.w3.org/2000/svg">`;
-    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Decima Mono Pro,monospace">MAJORITY ${majority}</text>`;
+    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Source Code Pro,monospace">MAJORITY ${majority}</text>`;
     svg+=`<line x1="${layout.cx}" y1="${fmt(lineTop,1)}" x2="${layout.cx}" y2="${fmt(lineBot,1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
       const col=party==='other'?'#9CA3AF':(PARTY_META[party]?PARTY_META[party].color:'#888');
       svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"/>`;
     }
-    svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Decima Mono Pro,monospace">${total}</text>`;
+    svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Source Code Pro,monospace">${total}</text>`;
     svg+=`</svg>`;
     return svg;
 }
@@ -1866,6 +2059,10 @@ function allocateSeatsFast(votes, total){
 
   const quo={};
   valid.forEach(p=>{quo[p]=SEAT_METHOD==='dhondt'?(votes[p]||0):(votes[p]||0)/1.2});
+  // Israeli Bader-Ofer: surplus-vote agreement cartels pool votes for remainder seats
+  if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
+    return allocateSeatsBaderOfer(votes, total);
+  }
   for(let i=0;i<total;i++){
     let best=valid[0];
     for(const p of valid){if(quo[p]>quo[best])best=p}
@@ -1979,6 +2176,13 @@ function runSeatForecast(avg, nSims, nPolls){
     simVotes=applyNationalSwing(simVotes);
     // seats = share * 120, threshold applied, adjusted to sum 120
     let seats={};
+    if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
+      // Bader-Ofer with surplus-vote agreement cartels (votes in seat units)
+      const raw={};
+      PARTY_ORDER.forEach(p=>{raw[p]=simVotes[p]/100*SEATS_TOTAL});
+      seats=allocateSeatsBaderOfer(raw, SEATS_TOTAL, thSeats);
+      PARTY_ORDER.forEach(p=>{if(seats[p]===undefined)seats[p]=0});
+    }else{
     const valid=[];
     PARTY_ORDER.forEach(p=>{
       const raw=simVotes[p]/100*SEATS_TOTAL;
@@ -1989,6 +2193,7 @@ function runSeatForecast(avg, nSims, nPolls){
     let left=SEATS_TOTAL-used;
     const rems=valid.map(p=>[simVotes[p]/100*SEATS_TOTAL-seats[p],p]).sort((a,b)=>b[0]-a[0]);
     for(let i=0;i<left&&i<rems.length;i++)seats[rems[i][1]]++;
+    }
     const MAJ_TH=Math.floor(SEATS_TOTAL/2)+1;
     const KM=BLOCS.kingmaker;
     const kmActive=!!(KM&&!BLOCS.bloc1.parties.includes(KM)&&!BLOCS.bloc2.parties.includes(KM));
@@ -2339,6 +2544,11 @@ function renderForecast(pane){
     const thresh=arr.filter(v=>(SEAT_BASED?v/100*SEATS_TOTAL:v)>=vsThresh).length/arr.length;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     const barW=Math.min(100,mu/vsMax*100);
+    // Momentum: recent-14d vs last-30d raw average, shown as ▲/▼ with the delta.
+    const mom=partyMomentum(POLLS,p,14,30);
+    const momHtml=mom===null?'':(mom>0
+      ?`<span class="fc-mom up" title="14-day trend vs 30-day">▲ +${fmt(mom,1)}</span>`
+      :`<span class="fc-mom down" title="14-day trend vs 30-day">▼ ${fmt(mom,1)}</span>`);
     let note='';
     if(thresh>=0.5){
       if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${pct100(1-thresh)} of sims</div>`;
@@ -2347,6 +2557,7 @@ function renderForecast(pane){
     }
     voteRows+=`<div class="fc-voterow">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
+      ${momHtml}
       <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div></div>
       <span class="fc-vote-val">${fmt(mu,1)}${SEAT_BASED?'':'%'}</span>
       <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
@@ -2401,6 +2612,7 @@ function renderForecast(pane){
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
+      <button class="shot-btn" id="fc-forecast-shot-btn" title="${t('Download forecast image as PNG','Tahmin görselini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
       <div class="fc-headline">
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
@@ -2472,6 +2684,19 @@ function renderForecast(pane){
   if(fcParlShot){
     fcParlShot.addEventListener('click',()=>{
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
+    });
+  }
+  const fcInfShot=$('fc-forecast-shot-btn');
+  if(fcInfShot){
+    fcInfShot.addEventListener('click',async()=>{
+      const canvas=await renderForecastInfographic(avg, sim, {
+        title:COUNTRY_NAME+' '+(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear(),
+        methodName:methodNameShort(),
+        sigmaDesc:SEAT_BASED?fmt(2.2,1)+' '+T.seats:fmt(forecastSigma(avg,filtered.length),1)+'pp',
+        leadColor:leadColor, leadOutcome:leadOutcome, leadPct:leadPct,
+        fOrder:fOrder, onlyParties:null, medVotes:medVotes, detSeats:detSeats
+      });
+      downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-forecast.png');
     });
   }
   if(MAP_CONF()){
@@ -2996,10 +3221,10 @@ function drawHistoryLine(canvas, hist, mode){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const v=yMax-(yMax-yMin)*(i/yTicks);
-    ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(String(Math.round(v)),pad.left-4,y+3);
   }
-  ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
     ctx.fillText(String(years[i]),xFor(i),H-pad.bottom+12);
@@ -3121,10 +3346,10 @@ function drawHistoryTurnout(canvas, hist){
     const y=pad.top+ch*(i/4);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const v=yMax-(yMax-yMin)*(i/4);
-    ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(v+'%',pad.left-4,y+3);
   }
-  ctx.fillStyle='#64748B';ctx.font='9px Decima Mono Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
     const x=pad.left+(i/(years.length-1))*cw;

@@ -3219,7 +3219,10 @@ function drawHistoryLine(canvas, hist, mode){
 
   const pad={top:16,right:50,bottom:30,left:44};
   const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
-  const yMax=Math.max(...caps, mode==='votes'?100:349);
+  // seats ceiling: the chamber's legal cap (SEATS_TOTAL + overhang room) so
+  // the graph has stable, country-appropriate headroom instead of a fixed 349
+  const seatsCeil=OVERHANG&&OVERHANG.cap?OVERHANG.cap:SEATS_TOTAL;
+  const yMax=Math.max(...caps, mode==='votes'?100:seatsCeil);
   const yMin=0;
   const xFor=i=>pad.left+(i/(valid.length-1))*cw;
   const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));

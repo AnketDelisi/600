@@ -1,0 +1,23 @@
+{
+  "source": "static-fallback",
+  "election": "berlin2026",
+  "national": {
+    "counted": 0,
+    "totalDistricts": 78,
+    "turnout": null,
+    "votes": null,
+    "eligible": null,
+    "updatedAt": null,
+    "parties": [
+      { "code": "cdu", "votes": null, "pct": null },
+      { "code": "spd", "votes": null, "pct": null },
+      { "code": "gruene", "votes": null, "pct": null },
+      { "code": "linke", "votes": null, "pct": null },
+      { "code": "afd", "votes": null, "pct": null },
+      { "code": "fdp", "votes": null, "pct": null },
+      { "code": "bsw", "votes": null, "pct": null }
+    ],
+    "seats": []
+  },
+  "valkretsar": []
+}

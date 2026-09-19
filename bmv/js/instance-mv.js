@@ -285,6 +285,8 @@ saxony_anhalt: {
       localUrl: 'data/mecklenburg_vorpommern/live.json',
       // party -> id in the normalized live feed (state-election codes)
       mapCode: p=>p,
+      // exit poll run for this state on election night (ARD)
+      exitPoll: { short: 'ID', name: 'Infratest dimap' },
     },
     maeKey: 'MV2021',             // weight pollsters by their 2021 MV accuracy
     biasKey: 'MV2021',            // signed-bias correction from the MV2021 backtest
@@ -417,6 +419,8 @@ saxony_anhalt: {
       localUrl: 'data/berlin/live.json',
       // party -> id in the normalized live feed (state-election codes)
       mapCode: p=>p,
+      // exit poll run for this state on election night (ZDF/ARD)
+      exitPoll: { short: 'FGW', name: 'Forschungsgruppe Wahlen' },
     },
     maeKey: 'B2023',              // weight pollsters by their 2023 Berlin (repeat) accuracy
     biasKey: 'B2023',             // signed-bias correction from the B2023 backtest
@@ -7415,9 +7419,16 @@ function livePartyMap(){
   return map;
 }
 
-// four-way comparison rows: live % vs SVT Valu exit poll vs TV4/Novus exit poll vs forecast avg
+// four-way comparison rows: live % vs exit poll(s) vs forecast avg.
+// Sweden shows both SVT Valu + TV4/Novus; German states show their own
+// configured exit poll (FGW / Infratest dimap).
 function liveCompareRows(live, valu, novus, avg){
   const map=livePartyMap();
+  const conf=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live)||{};
+  const ep=conf.exitPoll;
+  const exitCols=ep
+    ? [{lab:ep.short, src: valu}, {lab:'FCST', src: avg}]
+    : [{lab:'VALU', src: valu}, {lab:'NOVU', src: novus}, {lab:'FCST', src: avg}];
   const liveParties=live&&live.national&&live.national.parties||[];
   const liveBy={};
   liveParties.forEach(p=>{const k=map[p.code];if(k)liveBy[k]={pct:p.pct,votes:p.votes}});
@@ -7428,12 +7439,10 @@ function liveCompareRows(live, valu, novus, avg){
   }).map(p=>{
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     const lv=liveBy[p];
-    const va=valu?valu[p]:null;
-    const nv=novus?novus[p]:null;
-    const fc=avg&&avg[p]!=null?avg[p]:null;
     const lvPct=lv?lv.pct:null;
-    const maxV=Math.max(lvPct||0,va||0,nv||0,fc||0,35);
-    const cells=[['LIVE',lvPct],['VALU',va],['NOVU',nv],['FCST',fc]].map(([lab,v])=>{
+    const maxV=Math.max(lvPct||0,(valu&&valu[p])||0,(novus&&novus[p])||0,(avg&&avg[p])||0,35);
+    const cells=exitCols.map(({lab,src})=>{
+      const v=src&&src[p]!=null?src[p]:null;
       const w=v!=null?Math.max(2,Math.min(100,v/maxV*100)):0;
       return `<div class="lv-cell">
         <div class="lv-track"><div class="lv-fill" style="width:${w}%;background:${col}"></div></div>
@@ -7527,9 +7536,11 @@ let seats=null;
     const seatsTotal=seats?PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0):0;
     const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
 
+    const ep=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live&&COUNTRIES[COUNTRY].live.exitPoll)||null;
+    const epNote=ep?` · ${t('Exit poll','Çıkış anketi')}: ${ep.short} (${ep.name})`:'';
     const heroLine=waitingLive
-      ?`${t('Election night · waiting for the official count…','Seçim gecesi · resmi sayım bekleniyor…')}`
-      :`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updatedDisp||'—'}`;
+      ?`${t('Election night · waiting for the official count…','Seçim gecesi · resmi sayım bekleniyor…')}${epNote}`
+      :`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updatedDisp||'—'}${epNote}`;
 
     // --- majority banner: single full-width bar (RG left / Tidö right) ---
     let majBanner='';
@@ -7569,7 +7580,7 @@ let seats=null;
 
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveVs}</div></div>
         <div style="display:flex;gap:8px;align-items:center;padding:0 2px 4px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)">
-          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span><span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Exit poll (Novus)','Çıkış anketi (Novus)')}</span><span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
+          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span>${(()=>{const ep=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live&&COUNTRIES[COUNTRY].live.exitPoll;return ep?`<span style="flex:1">${t('Exit poll','Çıkış anketi')} (${ep.short})</span>`:`<span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Exit poll (Novus)','Çıkış anketi (Novus)')}</span>`})()}<span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
         </div>
         ${rows}
       </div>

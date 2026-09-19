@@ -1,0 +1,23 @@
+{
+  "source": "static-fallback",
+  "election": "mv2026",
+  "national": {
+    "counted": 0,
+    "totalDistricts": 36,
+    "turnout": null,
+    "votes": null,
+    "eligible": null,
+    "updatedAt": null,
+    "parties": [
+      { "code": "spd", "votes": null, "pct": null },
+      { "code": "afd", "votes": null, "pct": null },
+      { "code": "cdu", "votes": null, "pct": null },
+      { "code": "linke", "votes": null, "pct": null },
+      { "code": "gruene", "votes": null, "pct": null },
+      { "code": "fdp", "votes": null, "pct": null },
+      { "code": "bsw", "votes": null, "pct": null }
+    ],
+    "seats": []
+  },
+  "valkretsar": []
+}

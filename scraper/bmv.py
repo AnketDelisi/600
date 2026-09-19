@@ -142,7 +142,7 @@ def build_shell(cache):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AltıCiftSıfır — BMV: Berlin + Mecklenburg-Vorpommern (live)</title>
+  <title>AltıCiftSıfır — B&MV: Berlin + Mecklenburg-Vorpommern (live)</title>
   <link rel="icon" type="image/svg+xml" href="img/600logo.svg">
   <link rel="stylesheet" href="css/style.css?{cache}">
   <script>window.__600_LOCAL_ASSETS__=true;</script>
@@ -162,7 +162,7 @@ def build_shell(cache):
         </div>
       </div>
       <div class="bmv-title">
-        <div class="bmv-title-main">BMV — 20 SEPTEMBER</div>
+        <div class="bmv-title-main">B&MV — 20 SEPTEMBER</div>
         <div class="bmv-title-sub">Berlin + Mecklenburg-Vorpommern · live election results</div>
       </div>
       <div class="bmv-cols">{cols}

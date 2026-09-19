@@ -1,6 +1,5 @@
 (function(){
 'use strict';
-var BMV_PID='mv-';
 var BMV_ROOT=document.getElementById('bmv-mv');
 window.__600_COUNTRY__='mecklenburg_vorpommern';
 window.__600_LOCAL_ASSETS__=true;
@@ -4614,7 +4613,7 @@ function generateArchLayout(nSeats, opts){
 'use strict';
 
 /* ---------- helpers ---------- */
-const $=s=>BMV_ROOT.querySelector('#'+BMV_PID+s);
+const $=s=>BMV_ROOT.querySelector('#'+s);
 // Base path for data/ assets:
 //   /600/               -> ''          (Pages root)
 //   /600/site/          -> '../'       (local dev under site/)
@@ -8165,7 +8164,7 @@ PARL_MODE='proj';
 /* ---------- boot ---------- */
 // ARIA wiring: tablist/tab/tabpanel roles + aria-selected/aria-controls.
 function wireAria(){
-  const nav=BMV_ROOT.querySelector('#'+BMV_PID+'segnav');
+  const nav=BMV_ROOT.querySelector('#segnav');
   if(!nav) return;
   nav.setAttribute('role','tablist');
   nav.setAttribute('aria-label','Sections');
@@ -8175,7 +8174,7 @@ function wireAria(){
     b.setAttribute('aria-selected', b.dataset.active==='true'?'true':'false');
     b.setAttribute('aria-controls','pane-'+tabId);
     b.setAttribute('id','tab-'+tabId);
-    const pane=BMV_ROOT.querySelector('#'+BMV_PID+'pane-'+tabId);
+    const pane=BMV_ROOT.querySelector('#pane-'+tabId);
     if(pane){pane.setAttribute('role','tabpanel');pane.setAttribute('aria-labelledby','tab-'+tabId);pane.setAttribute('aria-hidden',pane.classList.contains('active')?'false':'true');}
   });
   // dynamic panes (map boxes etc.) re-render — keep aria-state consistent
@@ -8218,9 +8217,9 @@ function updateSocialMeta(){
 function applyTheme(){
   const isBrazil=COUNTRY==='brazil';
   document.body.classList.toggle('theme-brazil', isBrazil);
-  const nav=BMV_ROOT.querySelector('#'+BMV_PID+'segnav');
+  const nav=BMV_ROOT.querySelector('#segnav');
   if(nav) nav.style.borderTopColor=isBrazil?'var(--br-accent)':'';
-  const pane=BMV_ROOT.querySelector('#'+BMV_PID+'pane-polls');
+  const pane=BMV_ROOT.querySelector('#pane-polls');
   if(pane&&isBrazil){
     // restyle live accent-driven bits via a class on the app shell
   }
@@ -8235,4 +8234,8 @@ window.addEventListener('resize',()=>{fitSideCard();});
 
 })();
 
+var __api=window._600;
+window.__600_BMV__=window.__600_BMV__||[];
+if(__api&&__api.applyFilters)window.__600_BMV__.push(__api);
+window._600={applyFilters:function(){(window.__600_BMV__||[]).forEach(function(a){try{a.applyFilters()}catch(e){}});}};
 })();

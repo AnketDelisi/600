@@ -45,22 +45,26 @@ def write(path, text):
         f.write(text)
 
 
-def scoped_bundle(slug, pid, country_key, root_id, cache):
-    """Concatenate config+parliaments+app into ONE IIFE scoped to a column."""
+def scoped_bundle(slug, country_key, root_id, cache):
+    """Concatenate config+parliaments+app into ONE IIFE scoped to a column.
+
+    Scoping is root-based (no id prefixes): the app's dynamically-created
+    elements (sidebar-content, filter-days, ...) keep their original ids and
+    resolve inside each column's root via BMV_ROOT.querySelector('#id')."""
     config = read(os.path.join(ROOT, "js", "config.js"))
     parl = read(os.path.join(ROOT, "js", "parliaments.js"))
     app = read(os.path.join(ROOT, "js", "app.js"))
 
-    # scope the $ helper and class-based lookups to this column's root
+    # scope the $ helper and id/class lookups to this column's root
     app = app.replace(
         "const $=s=>document.getElementById(s);",
-        "const $=s=>BMV_ROOT.querySelector('#'+BMV_PID+s);")
+        "const $=s=>BMV_ROOT.querySelector('#'+s);")
     app = app.replace("document.getElementById('segnav')",
-                      "BMV_ROOT.querySelector('#'+BMV_PID+'segnav')")
+                      "BMV_ROOT.querySelector('#segnav')")
     app = app.replace("document.getElementById('pane-'+tabId)",
-                      "BMV_ROOT.querySelector('#'+BMV_PID+'pane-'+tabId)")
+                      "BMV_ROOT.querySelector('#pane-'+tabId)")
     app = app.replace("document.getElementById('pane-polls')",
-                      "BMV_ROOT.querySelector('#'+BMV_PID+'pane-polls')")
+                      "BMV_ROOT.querySelector('#pane-polls')")
     # every class-based query goes through the column root; the global
     # document.* sites (script[src*=app.js], meta[data-social], selector var)
     # are left alone by the negative lookahead.
@@ -75,11 +79,18 @@ def scoped_bundle(slug, pid, country_key, root_id, cache):
     bundle = (
         "(function(){\n"
         "'use strict';\n"
-        "var BMV_PID=" + repr(pid + "-") + ";\n"
         "var BMV_ROOT=document.getElementById(" + repr(root_id) + ");\n"
         "window.__600_COUNTRY__=" + repr(country_key) + ";\n"
         "window.__600_LOCAL_ASSETS__=true;\n"
         + config + "\n" + parl + "\n" + app + "\n"
+        # registry: filter changes (onchange="window._600.applyFilters()")
+        # re-render BOTH columns, not just the last-loaded instance
+        "var __api=window._600;\n"
+        "window.__600_BMV__=window.__600_BMV__||[];\n"
+        "if(__api&&__api.applyFilters)window.__600_BMV__.push(__api);\n"
+        "window._600={applyFilters:function(){"
+        "(window.__600_BMV__||[]).forEach(function(a){try{a.applyFilters()}catch(e){}});"
+        "}};\n"
         "})();\n"
     )
     dest = os.path.join(BMV, "js", "instance-" + slug + ".js")
@@ -90,9 +101,11 @@ def scoped_bundle(slug, pid, country_key, root_id, cache):
     return dest
 
 
-def column_markup(slug, pid, country_key, name, chamber, cache):
-    """One native column: app-shell with prefixed ids (inner segnav kept but
-    visually suppressed by CSS; the global tab bar drives both columns)."""
+def column_markup(slug, name, chamber):
+    """One native column, mirroring the main site's real structure exactly
+    (app-shell > main-col > segnav + tab-panes, unprefixed ids). The inner
+    segnav is visually suppressed; the shell's ONE global tab bar drives both
+    columns via the app's existing document-level click delegation."""
     return f"""
     <div class="bmv-col" id="bmv-{slug}">
       <div class="bmv-col-head">
@@ -100,29 +113,19 @@ def column_markup(slug, pid, country_key, name, chamber, cache):
         <span class="bmv-col-chamber">{chamber} · 20 Sep 2026</span>
       </div>
       <div class="app-shell">
-        <aside class="sidebar" id="{pid}-sidebar">
-          <div class="sidebar-logo">
-            <img src="img/600logo.svg" alt="AltıCiftSıfır">
-          </div>
-          <div id="{pid}-sidebar-content"></div>
-        </aside>
-        <main class="main-col" id="{pid}-main">
-          <div class="seg-nav" id="{pid}-segnav">
-            <button class="tab-trigger" data-tab="polls">POLLS</button>
+        <main class="main-col" id="main">
+          <div class="seg-nav" id="segnav">
+            <button class="tab-trigger" data-tab="polls" data-active="true">POLLS</button>
             <button class="tab-trigger" data-tab="forecast">FORECAST</button>
             <button class="tab-trigger" data-tab="history">HISTORY</button>
-            <button class="tab-trigger" data-tab="live" data-active="true">LIVE</button>
+            <button class="tab-trigger" data-tab="live">LIVE</button>
             <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
-            <div class="segnav-right">
-              <a class="tab-social" href="../" title="BMV split view">BMV</a>
-              <a class="tab-social" href="../../" title="Main site">MAIN</a>
-            </div>
           </div>
-          <div class="tab-pane" id="{pid}-pane-polls" style="display:none"></div>
-          <div class="tab-pane" id="{pid}-pane-forecast" style="display:none"></div>
-          <div class="tab-pane" id="{pid}-pane-history" style="display:none"></div>
-          <div class="tab-pane active" id="{pid}-pane-live"></div>
-          <div class="tab-pane" id="{pid}-pane-methodology" style="display:none"></div>
+          <div class="tab-pane active" id="pane-polls"></div>
+          <div class="tab-pane" id="pane-forecast" style="display:none"></div>
+          <div class="tab-pane" id="pane-history" style="display:none"></div>
+          <div class="tab-pane" id="pane-live" style="display:none"></div>
+          <div class="tab-pane" id="pane-methodology" style="display:none"></div>
         </main>
       </div>
     </div>
@@ -131,7 +134,7 @@ def column_markup(slug, pid, country_key, name, chamber, cache):
 
 def build_shell(cache):
     cols = "".join(
-        column_markup(slug, slug, key, name, chamber, cache)
+        column_markup(slug, name, chamber)
         for slug, key, name, chamber in COUNTRIES)
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -146,19 +149,15 @@ def build_shell(cache):
 <body>
   <div class="app-shell" id="app">
     <main class="main-col" id="main">
-      <div class="hero fc-hero">
-        <img class="hero-logo" src="img/600logo.svg" alt="AltıCiftSıfır">
-        <div class="hero-title">BMV — 20 SEPTEMBER</div>
-        <div class="hero-date">Berlin + Mecklenburg-Vorpommern · live election results</div>
-        <div class="seg-nav" id="bmv-segnav">
-          <button class="tab-trigger" data-tab="polls">POLLS</button>
-          <button class="tab-trigger" data-tab="forecast">FORECAST</button>
-          <button class="tab-trigger" data-tab="history">HISTORY</button>
-          <button class="tab-trigger" data-tab="live" data-active="true">LIVE</button>
-          <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
-          <div class="segnav-right">
-            <a class="tab-social tab-social-accent" href="../" title="Main site">MAIN</a>
-          </div>
+      <div class="seg-nav" id="bmv-segnav">
+        <img src="img/600logo2.svg" alt="AltıCiftSıfır" class="nav-logo">
+        <button class="tab-trigger" data-tab="polls" data-active="true">POLLS</button>
+        <button class="tab-trigger" data-tab="forecast">FORECAST</button>
+        <button class="tab-trigger" data-tab="history">HISTORY</button>
+        <button class="tab-trigger" data-tab="live">LIVE</button>
+        <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
+        <div class="segnav-right">
+          <a class="tab-social tab-social-accent" href="../" title="Main site">MAIN</a>
         </div>
       </div>
       <div class="bmv-cols">{cols}
@@ -166,8 +165,9 @@ def build_shell(cache):
     </main>
   </div>
   <script>
-    /* global tab bar visual state (switching itself is handled by each
-       instance's own document-level tab-trigger delegation) */
+    /* visual active state for the ONE global tab bar; the actual tab
+       switching is handled by each column's own document-level click
+       delegation (both listen to the same .tab-trigger clicks) */
     (function(){{
       var bar=document.getElementById('bmv-segnav');
       bar.addEventListener('click',function(ev){{
@@ -181,18 +181,17 @@ def build_shell(cache):
   <script src="js/instance-berlin.js?{cache}"></script>
   <script src="js/instance-mv.js?{cache}"></script>
   <style>
-    .bmv-cols{{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}}
+    .bmv-cols{{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;margin-top:16px}}
     .bmv-col{{min-width:0}}
+    .bmv-col .app-shell{{min-height:0}}
     .bmv-col-head{{display:flex;align-items:baseline;gap:10px;padding:8px 14px;margin-bottom:10px;
       background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-md)}}
     .bmv-col-name{{font-weight:900;letter-spacing:.02em}}
     .bmv-col-chamber{{color:var(--c-text-muted);font-size:.85em}}
     /* inner per-column segnavs are redundant — the one global bar drives both */
     .bmv-col .seg-nav{{display:none}}
-    /* columns keep the app's own sidebar (legend/notes) but tighter */
-    .bmv-col .app-shell{{grid-template-columns:240px minmax(0,1fr);gap:12px}}
-    @media (max-width:1080px){{.bmv-cols{{grid-template-columns:1fr}}.bmv-col .app-shell{{grid-template-columns:280px minmax(0,1fr)}}}}
-    @media (max-width:640px){{.bmv-col .app-shell{{grid-template-columns:1fr}}}}
+    /* keep each column's own .page-top grid intact (320px side card + main) */
+    @media (max-width:1180px){{.bmv-cols{{grid-template-columns:1fr}}}}
   </style>
 </body>
 </html>
@@ -213,10 +212,8 @@ def main():
         shutil.rmtree(BMV)
     os.makedirs(BMV)
     cache = "v=" + git_head()
-    for slug, pid, key, name, chamber in (
-            ("berlin", "berlin", "berlin", "Berlin", "Abgeordnetenhaus"),
-            ("mv", "mv", "mecklenburg_vorpommern", "Mecklenburg-Vorpommern", "Landtag")):
-        dest = scoped_bundle(slug, pid, key, "bmv-" + slug, cache)
+    for slug, key, name, chamber in COUNTRIES:
+        dest = scoped_bundle(slug, key, "bmv-" + slug, cache)
         print("built", dest, flush=True)
     copy_assets()
     # data/ in bmv/ only needs the two countries; drop the rest

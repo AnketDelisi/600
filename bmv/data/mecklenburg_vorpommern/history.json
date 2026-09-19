@@ -1,0 +1,54 @@
+{
+ "country": "mecklenburg_vorpommern",
+ "country_name": "Mecklenburg-Vorpommern",
+ "elections": [
+  {
+   "year": 1990,
+   "results": { "spd": 27.0, "cdu": 38.3, "linke": 15.7, "gruene": 9.3, "fdp": 5.5 },
+   "seats": { "spd": 21, "cdu": 29, "linke": 12, "fdp": 4 },
+   "turnout": 64.7
+  },
+  {
+   "year": 1994,
+   "results": { "spd": 29.5, "cdu": 37.7, "linke": 22.7, "gruene": 3.7, "fdp": 3.8 },
+   "seats": { "spd": 23, "cdu": 30, "linke": 18 },
+   "turnout": 72.9
+  },
+  {
+   "year": 1998,
+   "results": { "spd": 34.3, "cdu": 30.2, "linke": 24.4, "gruene": 2.7, "fdp": 1.6 },
+   "seats": { "spd": 27, "cdu": 24, "linke": 20 },
+   "turnout": 79.4
+  },
+  {
+   "year": 2002,
+   "results": { "spd": 40.6, "cdu": 31.4, "linke": 16.4, "gruene": 2.6, "fdp": 4.7 },
+   "seats": { "spd": 33, "cdu": 25, "linke": 13 },
+   "turnout": 70.6
+  },
+  {
+   "year": 2006,
+   "results": { "spd": 30.2, "cdu": 28.8, "linke": 16.8, "gruene": 3.4, "fdp": 9.6 },
+   "seats": { "spd": 23, "cdu": 22, "linke": 13, "fdp": 7 },
+   "turnout": 59.1
+  },
+  {
+   "year": 2011,
+   "results": { "spd": 35.6, "cdu": 23.0, "linke": 18.4, "gruene": 8.7, "fdp": 2.8 },
+   "seats": { "spd": 27, "cdu": 18, "linke": 14, "gruene": 7 },
+   "turnout": 51.5
+  },
+  {
+   "year": 2016,
+   "results": { "spd": 30.6, "cdu": 19.0, "linke": 13.2, "gruene": 4.8, "fdp": 3.0, "afd": 20.8 },
+   "seats": { "spd": 26, "cdu": 16, "linke": 11, "afd": 18 },
+   "turnout": 61.9
+  },
+  {
+   "year": 2021,
+   "results": { "spd": 39.6, "cdu": 13.3, "linke": 9.9, "gruene": 6.3, "fdp": 5.8, "afd": 16.7 },
+   "seats": { "spd": 34, "cdu": 12, "linke": 9, "gruene": 5, "fdp": 5, "afd": 14 },
+   "turnout": 70.8
+  }
+ ]
+}

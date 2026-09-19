@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — Berlin (live)</title>
   <link rel="icon" type="image/svg+xml" href="img/600logo.svg">
-  <link rel="stylesheet" href="css/style.css?v=e85ea4a">
+  <link rel="stylesheet" href="css/style.css?v=3c22298">
+  <style>
+    /* additive embed hook — inert unless page is loaded with ?embed=bmv (BMV unified shell) */
+    body.bmv-embed .sidebar{display:none!important}
+    body.bmv-embed .app-shell{grid-template-columns:1fr!important}
+    body.bmv-embed #segnav{display:none!important}
+    body.bmv-embed .main-col{max-width:100%!important}
+  </style>
   <script>window.__600_COUNTRY__='berlin';window.__600_LOCAL_ASSETS__=true;</script>
 </head>
 <body>
@@ -35,8 +42,28 @@
       <div class="tab-pane" id="pane-methodology" style="display:none"></div>
     </main>
   </div>
-  <script src="js/config.js?v=e85ea4a"></script>
-  <script src="js/parliaments.js?v=e85ea4a"></script>
-  <script src="js/app.js?v=e85ea4a"></script>
+  <script src="js/config.js?v=3c22298"></script>
+  <script src="js/parliaments.js?v=3c22298"></script>
+  <script src="js/app.js?v=3c22298"></script>
+  <script>
+    /* additive BMV embed relay — inert until a unified shell frames this copy */
+    (function(){
+      var EMBED='600-bmv-embed', TAB='600-bmv-tab';
+      window.addEventListener('message',function(ev){
+        var d=ev.data; if(!d||typeof d!=='object')return;
+        if(d.type===EMBED&&d.on===true&&document.body){
+          document.body.classList.add('bmv-embed');
+          window.__600_BMV_EMBED__=true;
+          return;
+        }
+        if(d.type===TAB&&d.tab){
+          var tabs=document.querySelectorAll('.tab-trigger');
+          for(var i=0;i<tabs.length;i++){
+            if(tabs[i].dataset.tab===d.tab){ switchTab(tabs[i]); return; }
+          }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

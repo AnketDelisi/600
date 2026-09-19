@@ -109,6 +109,7 @@ def column_markup(slug, name, chamber):
     return f"""
     <div class="bmv-col" id="bmv-{slug}">
       <div class="bmv-col-head">
+        <span class="bmv-col-bar"></span>
         <span class="bmv-col-name">{name}</span>
         <span class="bmv-col-chamber">{chamber} · 20 Sep 2026</span>
       </div>
@@ -160,6 +161,10 @@ def build_shell(cache):
           <a class="tab-social tab-social-accent" href="../" title="Main site">MAIN</a>
         </div>
       </div>
+      <div class="bmv-title">
+        <div class="bmv-title-main">BMV — 20 SEPTEMBER</div>
+        <div class="bmv-title-sub">Berlin + Mecklenburg-Vorpommern · live election results</div>
+      </div>
       <div class="bmv-cols">{cols}
       </div>
     </main>
@@ -181,17 +186,27 @@ def build_shell(cache):
   <script src="js/instance-berlin.js?{cache}"></script>
   <script src="js/instance-mv.js?{cache}"></script>
   <style>
-    .bmv-cols{{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;margin-top:16px}}
-    .bmv-col{{min-width:0}}
+    /* page identity row (between the global nav and the split) */
+    .bmv-title{{text-align:center;margin:18px 0 14px}}
+    .bmv-title-main{{font-size:17px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--c-text-main)}}
+    .bmv-title-sub{{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--c-text-muted);margin-top:4px}}
+    /* two framed panels, equal height */
+    .bmv-cols{{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;margin-top:6px}}
+    .bmv-col{{min-width:0;background:var(--c-surface);border:2px solid var(--c-edge);
+      border-radius:var(--radius);box-shadow:var(--shadow-md);padding:12px 14px 18px}}
     .bmv-col .app-shell{{min-height:0}}
-    .bmv-col-head{{display:flex;align-items:baseline;gap:10px;padding:8px 14px;margin-bottom:10px;
-      background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-md)}}
-    .bmv-col-name{{font-weight:900;letter-spacing:.02em}}
-    .bmv-col-chamber{{color:var(--c-text-muted);font-size:.85em}}
+    /* kicker-style column label (accent bar + uppercase), mirrors .sb-kicker */
+    .bmv-col-head{{display:flex;align-items:center;gap:8px;padding:4px 2px 8px;margin-bottom:10px;border-bottom:2px solid var(--c-edge)}}
+    .bmv-col-bar{{width:6px;height:15px;background:var(--c-accent);border-radius:2px;flex-shrink:0}}
+    .bmv-col-name{{font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.2px}}
+    .bmv-col-chamber{{color:var(--c-text-muted);font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;margin-left:auto}}
     /* inner per-column segnavs are redundant — the one global bar drives both */
     .bmv-col .seg-nav{{display:none}}
-    /* keep each column's own .page-top grid intact (320px side card + main) */
-    @media (max-width:1180px){{.bmv-cols{{grid-template-columns:1fr}}}}
+    /* tighter side card inside the half-width panels so charts/tables breathe */
+    .bmv-col .page-top{{grid-template-columns:270px minmax(0,1fr);gap:14px}}
+    .bmv-col .side-card{{overflow-y:auto}}
+    @media (max-width:1280px){{.bmv-col .page-top{{grid-template-columns:230px minmax(0,1fr)}}}}
+    @media (max-width:1180px){{.bmv-cols{{grid-template-columns:1fr}}.bmv-col .page-top{{grid-template-columns:320px minmax(0,1fr)}}}}
   </style>
 </body>
 </html>

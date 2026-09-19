@@ -2805,16 +2805,19 @@ function livePartyMap(){
   return map;
 }
 
-// four-way comparison rows: live % vs exit poll(s) vs forecast avg.
-// Sweden shows both SVT Valu + TV4/Novus; German states show their own
-// configured exit poll (FGW / Infratest dimap).
+// comparison rows: live % vs exit poll(s) vs forecast avg.
+// Sweden shows both SVT Valu + TV4/Novus; German states show their two
+// configured exit polls (FGW + Infratest dimap) in the same two slots.
 function liveCompareRows(live, valu, novus, avg){
   const map=livePartyMap();
   const conf=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live)||{};
-  const ep=conf.exitPoll;
-  const exitCols=ep
-    ? [{lab:ep.short, src: valu}, {lab:'FCST', src: avg}]
-    : [{lab:'VALU', src: valu}, {lab:'NOVU', src: novus}, {lab:'FCST', src: avg}];
+  const eps=conf.exitPoll;
+  const exitCols=Array.isArray(eps)&&eps.length
+    ? [{lab:eps[0].short, src: valu}, {lab:eps[1].short, src: novus}]
+    : eps
+      ? [{lab:eps.short, src: valu}]
+      : [{lab:'VALU', src: valu}, {lab:'NOVU', src: novus}];
+  exitCols.push({lab:'FCST', src: avg});
   const liveParties=live&&live.national&&live.national.parties||[];
   const liveBy={};
   liveParties.forEach(p=>{const k=map[p.code];if(k)liveBy[k]={pct:p.pct,votes:p.votes}});
@@ -2922,8 +2925,8 @@ let seats=null;
     const seatsTotal=seats?PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0):0;
     const parlSvg=seats&&seatsTotal?buildParliamentSVG(seats):'';
 
-    const ep=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live&&COUNTRIES[COUNTRY].live.exitPoll)||null;
-    const epNote=ep?` · ${t('Exit poll','Çıkış anketi')}: ${ep.short} (${ep.name})`:'';
+    const eps=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live&&COUNTRIES[COUNTRY].live.exitPoll)||null;
+    const epNote=eps?(Array.isArray(eps)?' · '+t('Exit polls','Çıkış anketleri')+': '+eps.map(e=>`${e.short} (${e.name})`).join(' + '):' · '+t('Exit poll','Çıkış anketi')+': '+eps.short+' ('+eps.name+')'):'';
     const heroLine=waitingLive
       ?`${t('Election night · waiting for the official count…','Seçim gecesi · resmi sayım bekleniyor…')}${epNote}`
       :`${countedPct}% ${t('of','')} ${totalD} ${T.counted} · ${T.turnout} ${turnout!=null?pct(turnout):'—'} · ${T.updated} ${updatedDisp||'—'}${epNote}`;
@@ -2966,7 +2969,7 @@ let seats=null;
 
       <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveVs}</div></div>
         <div style="display:flex;gap:8px;align-items:center;padding:0 2px 4px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)">
-          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span>${(()=>{const ep=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live&&COUNTRIES[COUNTRY].live.exitPoll;return ep?`<span style="flex:1">${t('Exit poll','Çıkış anketi')} (${ep.short})</span>`:`<span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Exit poll (Novus)','Çıkış anketi (Novus)')}</span>`})()}<span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
+          <span style="width:44px"></span><span style="flex:1">${t('Official count','Resmi sayım')}</span>${(()=>{const ep=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].live&&COUNTRIES[COUNTRY].live.exitPoll;if(Array.isArray(ep)&&ep.length)return ep.map(e=>`<span style="flex:1">${t('Exit poll','Çıkış anketi')} (${e.short})</span>`).join('');if(ep)return `<span style="flex:1">${t('Exit poll','Çıkış anketi')} (${ep.short})</span>`;return `<span style="flex:1">${t('Exit poll (Valu)','Çıkış anketi (Valu)')}</span><span style="flex:1">${t('Exit poll (Novus)','Çıkış anketi (Novus)')}</span>`})()}<span style="flex:1">${t('Final forecast','Son tahmin')}</span><span style="width:60px;text-align:right">${T.swing}</span>
         </div>
         ${rows}
       </div>
@@ -2978,7 +2981,7 @@ let seats=null;
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px;text-align:center">${seatsTotal} seats · live allocation</div>
       </div>`:''}
 
-      ${live&&live.valkretsar?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveMap}</div></div>
+      ${live&&live.valkretsar&&live.valkretsar.length?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.liveMap}</div></div>
         <div class="map-toggle-row" style="justify-content:flex-end">
           <button class="map-toggle-btn parl-btn lv-map-btn active" data-lvmode="live">${T.tabs.live}</button>
           <button class="map-toggle-btn parl-btn lv-map-btn" data-lvmode="res">2022 ${T.result}</button>

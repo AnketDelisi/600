@@ -280,8 +280,11 @@ saxony_anhalt: {
       localUrl: 'data/mecklenburg_vorpommern/live.json',
       // party -> id in the normalized live feed (state-election codes)
       mapCode: p=>p,
-      // exit poll run for this state on election night (ARD)
-      exitPoll: { short: 'ID', name: 'Infratest dimap' },
+      // exit polls run for this state on election night (ARD + ZDF)
+      exitPoll: [
+        { short: 'FGW', name: 'Forschungsgruppe Wahlen' },
+        { short: 'ID', name: 'Infratest dimap' },
+      ],
     },
     maeKey: 'MV2021',             // weight pollsters by their 2021 MV accuracy
     biasKey: 'MV2021',            // signed-bias correction from the MV2021 backtest
@@ -414,8 +417,11 @@ saxony_anhalt: {
       localUrl: 'data/berlin/live.json',
       // party -> id in the normalized live feed (state-election codes)
       mapCode: p=>p,
-      // exit poll run for this state on election night (ZDF/ARD)
-      exitPoll: { short: 'FGW', name: 'Forschungsgruppe Wahlen' },
+      // exit polls run for this state on election night (ZDF + ARD)
+      exitPoll: [
+        { short: 'FGW', name: 'Forschungsgruppe Wahlen' },
+        { short: 'ID', name: 'Infratest dimap' },
+      ],
     },
     maeKey: 'B2023',              // weight pollsters by their 2023 Berlin (repeat) accuracy
     biasKey: 'B2023',             // signed-bias correction from the B2023 backtest

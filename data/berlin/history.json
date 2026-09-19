@@ -1,0 +1,60 @@
+{
+ "country": "berlin",
+ "country_name": "Berlin",
+ "elections": [
+  {
+   "year": 1990,
+   "results": { "spd": 30.4, "cdu": 40.4, "gruene": 9.4, "linke": 9.2, "fdp": 7.1 },
+   "seats": { "spd": 76, "cdu": 101, "gruene": 23, "linke": 23, "fdp": 18 },
+   "turnout": 80.8
+  },
+  {
+   "year": 1995,
+   "results": { "spd": 23.6, "cdu": 37.4, "gruene": 13.2, "linke": 14.6, "fdp": 2.5 },
+   "seats": { "spd": 55, "cdu": 87, "gruene": 30, "linke": 34 },
+   "turnout": 68.6
+  },
+  {
+   "year": 1999,
+   "results": { "spd": 22.4, "cdu": 40.8, "gruene": 9.9, "linke": 17.7, "fdp": 2.2 },
+   "seats": { "spd": 42, "cdu": 76, "gruene": 18, "linke": 33 },
+   "turnout": 65.5
+  },
+  {
+   "year": 2001,
+   "results": { "spd": 29.7, "cdu": 23.8, "gruene": 9.1, "linke": 22.6, "fdp": 9.9 },
+   "seats": { "spd": 44, "cdu": 35, "gruene": 14, "linke": 33, "fdp": 15 },
+   "turnout": 68.1
+  },
+  {
+   "year": 2006,
+   "results": { "spd": 30.8, "cdu": 21.3, "gruene": 13.1, "linke": 13.4, "fdp": 7.6 },
+   "seats": { "spd": 53, "cdu": 37, "gruene": 23, "linke": 23, "fdp": 13 },
+   "turnout": 58.0
+  },
+  {
+   "year": 2011,
+   "results": { "spd": 28.3, "cdu": 23.4, "gruene": 17.6, "linke": 11.7, "fdp": 1.8, "piraten": 8.9 },
+   "seats": { "spd": 47, "cdu": 39, "gruene": 29, "linke": 19, "piraten": 15 },
+   "turnout": 60.2
+  },
+  {
+   "year": 2016,
+   "results": { "spd": 21.6, "cdu": 17.6, "gruene": 15.2, "linke": 15.6, "fdp": 6.7, "afd": 14.2 },
+   "seats": { "spd": 38, "cdu": 31, "gruene": 27, "linke": 27, "fdp": 12, "afd": 25 },
+   "turnout": 66.9
+  },
+  {
+   "year": 2021,
+   "results": { "spd": 21.4, "cdu": 18.0, "gruene": 18.9, "linke": 14.1, "fdp": 7.1, "afd": 8.0 },
+   "seats": { "spd": 36, "cdu": 30, "gruene": 32, "linke": 24, "fdp": 12, "afd": 13 },
+   "turnout": 75.4
+  },
+  {
+   "year": 2023,
+   "results": { "spd": 18.4, "cdu": 28.2, "gruene": 18.4, "linke": 12.2, "fdp": 4.6, "afd": 9.1 },
+   "seats": { "spd": 34, "cdu": 52, "gruene": 34, "linke": 22, "afd": 17 },
+   "turnout": 62.9
+  }
+ ]
+}

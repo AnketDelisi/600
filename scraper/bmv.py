@@ -1,8 +1,8 @@
-"""Build /site/bmv/: Berlin + Mecklenburg-Vorpommern live election-night pages
-(2026-09-20, same day) shown side by side.
+"""Build /bmv/ (repo root): Berlin + Mecklenburg-Vorpommern live election-night
+pages (2026-09-20, same day) shown side by side.
 
 Creates self-contained pinned pages (own js/css/img + the country's data) under
-site/bmv/{berlin,mv}/ plus a shell site/bmv/index.html embedding both as
+bmv/{berlin,mv}/ plus a shell bmv/index.html embedding both as
 side-by-side iframes. LIVE tab reads the 600-live worker (live.json is the
 static fallback), polls/forecast read the copied data.
 
@@ -13,7 +13,7 @@ import io, json, os, shutil, subprocess
 
 ROOT = r"C:\Users\deneme\Desktop\600"
 SITE = os.path.join(ROOT, "site")
-BMV = os.path.join(SITE, "bmv")
+BMV = os.path.join(ROOT, "bmv")
 COUNTRIES = [("berlin", "Berlin"), ("mv", "Mecklenburg-Vorpommern")]
 COUNTRY_KEY = {"berlin": "berlin", "mv": "mecklenburg_vorpommern"}
 

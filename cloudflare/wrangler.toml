@@ -3,6 +3,11 @@ main = "worker.js"
 compatibility_date = "2025-01-01"
 workers_dev = true
 
+# Visit counter storage (used by GET /counter/<key>)
+[[kv_namespaces]]
+binding = "COUNTERS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
 # Election-night proxy for the 600 live site.
 # Route on your own domain, e.g. live.anketdelisi.com/sweden
 # [routes]

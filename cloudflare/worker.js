@@ -70,6 +70,18 @@ export default {
   async fetch(request){
     const url=new URL(request.url);
     const path=url.pathname.replace(/\/+$/,'');
+
+    // Visit counter (needs a KV binding named COUNTERS in wrangler.toml):
+    //   GET /counter/bmv   -> {key:'bmv', value:N}  (increments by 1)
+    if(path.startsWith('/counter/')){
+      const key=path.slice('/counter/'.length).replace(/[^a-z0-9_-]/gi,'')||'default';
+      const n=parseInt(await env.COUNTERS.get(key))||0;
+      await env.COUNTERS.put(key,String(n+1));
+      return new Response(JSON.stringify({key,value:n+1}),{
+        headers:{'Content-Type':'application/json','Access-Control-Allow-Origin':'*','Cache-Control':'no-store'},
+      });
+    }
+
     if(path!=='/sweden') return new Response('not found',{status:404});
 
     const year=url.searchParams.get('year')||'2026';

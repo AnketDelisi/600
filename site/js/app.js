@@ -438,6 +438,12 @@ function computeAverages(polls, raw){
   for(const pid of PARTY_ORDER){
     avg[pid]=weightedAverage(polls, pid, raw);
   }
+  // "Other": the vote share not covered by the modelled parties. Publish
+  // reports party values that rarely sum to 100 (e.g. ~91% for Berlin), so
+  // the remainder must be kept as a real bucket — otherwise it leaks into
+  // the modelled parties and inflates every share.
+  const modelled=PARTY_ORDER.reduce((a,p)=>a+((avg[p]!=null&&!isNaN(avg[p]))?avg[p]:0),0);
+  avg.other=Math.max(0,100-modelled);
   // last-election Dirichlet prior: pull the average toward the most recent
   // election outcome so a thin poll set cannot drift arbitrarily far
   if(!raw && PRIOR_ALPHA>0&&LAST_ELECTION.results){
@@ -2223,8 +2229,13 @@ function runForecast(avg, nSims, nPolls){
   const seatsBy={};
   const votesBy={};
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
+  seatsBy.other=[];votesBy.other=[];
   const comboCount={};
   const alpha=PARTY_ORDER.map(p=>Math.max(0.5,(avg[p]||0)*K));
+  // "Other" is a real bucket in the Dirichlet: its draw competes with the
+  // modelled parties, so their simulated shares shrink to honest levels.
+  alpha.push(Math.max(0.5,(avg.other||0)*K));
+  const ORDER_ALL=PARTY_ORDER.concat(['other']);
   // Two-round setup (Brazil): weighted runoff-pair average, computed once.
   const roSetup=MAP_ONLY?runoffSetup():null;
   const roSigma=roSetup?forecastSigma({[roSetup.a]:roSetup.aN,[roSetup.b]:roSetup.bN}, roSetup.roN):0;
@@ -2233,6 +2244,7 @@ function runForecast(avg, nSims, nPolls){
     const totalD=draws.reduce((a,b)=>a+b,0);
     let simVotes={};
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
+    simVotes.other=100*draws[PARTY_ORDER.length]/totalD;
     simVotes=applyNationalSwing(simVotes);
     const seats=allocateSeatsFast(simVotes,SEATS_TOTAL);
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
@@ -2271,6 +2283,8 @@ function runForecast(avg, nSims, nPolls){
       elected[winner]=(elected[winner]||0)+1;
     }
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
+    seatsBy.other.push(seats.other||0);
+    votesBy.other.push(simVotes.other||0);
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
   return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elected);
@@ -2293,16 +2307,17 @@ function runoffSetup(){
 }
 
 function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elected){
-  const means={},medians={},modes={};
-  PARTY_ORDER.forEach(p=>{
-    const arr=seatsBy[p];
-    means[p]=arr.reduce((a,b)=>a+b,0)/arr.length;
-    const sorted=arr.slice().sort((a,b)=>a-b);
-    medians[p]=sorted[Math.floor(arr.length/2)];
-    const c={};let best=arr[0],bc=0;
-    arr.forEach(v=>{c[v]=(c[v]||0)+1;if(c[v]>bc){bc=c[v];best=v}});
-    modes[p]=best;
-  });
+const means={},medians={},modes={};
+const allKeys=PARTY_ORDER.concat(seatsBy.other?['other']:[]);
+allKeys.forEach(p=>{
+const arr=seatsBy[p];
+means[p]=arr.reduce((a,b)=>a+b,0)/arr.length;
+const sorted=arr.slice().sort((a,b)=>a-b);
+medians[p]=sorted[Math.floor(arr.length/2)];
+const c={};let best=arr[0],bc=0;
+arr.forEach(v=>{c[v]=(c[v]||0)+1;if(c[v]>bc){bc=c[v];best=v}});
+modes[p]=best;
+});
   let modalKey=null,modalN=0;
   if(comboCount){
     for(const k in comboCount){if(comboCount[k]>modalN){modalN=comboCount[k];modalKey=k}}
@@ -2317,7 +2332,8 @@ function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elect
 function deterministicSeats(medians, means, total){
   // Deterministic projection from MEDIAN seats: parties whose median is 0
   // (usually below the threshold) are left at 0. Sum is adjusted to the
-  // total using only parties present in the median outcome.
+  // total using only parties present in the median outcome; the "Other"
+  // bucket (unmodelled remainder) takes whatever is left over.
   const s={};
   PARTY_ORDER.forEach(p=>{s[p]=medians[p]||0});
   let sum=PARTY_ORDER.reduce((a,p)=>a+s[p],0);
@@ -2331,6 +2347,9 @@ function deterministicSeats(medians, means, total){
     let i=0;
     while(sum>total){if(s[order[i%order.length]]>0){s[order[i%order.length]]--;sum--}i++}
   }
+  // unmodelled remainder as "Other" seats (empty wedge otherwise)
+  const otherSeats=total-sum;
+  if(otherSeats>0) s.other=otherSeats;
   return s;
 }
 
@@ -2455,6 +2474,14 @@ function renderForecast(pane){
       <td class="num c">${sim.modes[p]}</td>
     </tr>`;
   });
+  // "Other" row: the unmodelled remainder (minority lists etc.) — must be
+  // visible for honest accuracy; below-threshold parties live here.
+  cmpRows+=`<tr>
+      <td style="font-weight:700;color:#9CA3AF">${t('Other','Diğer')}</td>
+      <td class="num c" style="font-weight:900">${detSeats.other||0}</td>
+      <td class="num c">${sim.medians.other!=null?sim.medians.other:0}</td>
+      <td class="num c">${sim.modes.other!=null?sim.modes.other:0}</td>
+    </tr>`;
 
   // --- Constituency results (median national vote shares) ---
   const medVotes={};
@@ -2462,6 +2489,10 @@ function renderForecast(pane){
     const arr=sim.votesBy[p].slice().sort((a,b)=>a-b);
     medVotes[p]=arr[Math.floor(arr.length/2)];
   });
+  if(sim.votesBy.other){
+    const arr=sim.votesBy.other.slice().sort((a,b)=>a-b);
+    medVotes.other=arr[Math.floor(arr.length/2)];
+  }
 
   // Second-round runoff card (two-round presidential only)
   let runoffHtml='';

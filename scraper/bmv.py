@@ -167,6 +167,9 @@ def build_shell(cache):
       </div>
       <div class="bmv-cols">{cols}
       </div>
+      <div class="bmv-footer">
+        <span class="bmv-visits">Visits: <b id="bmv-visit-count">—</b></span>
+      </div>
     </main>
   </div>
   <script>
@@ -185,6 +188,26 @@ def build_shell(cache):
   </script>
   <script src="js/instance-berlin.js?{cache}"></script>
   <script src="js/instance-mv.js?{cache}"></script>
+  <script>
+    /* visit counter: our Cloudflare worker when deployed, else Tallywire */
+    (function(){{
+      var el=document.getElementById('bmv-visit-count');
+      if(!el) return;
+      var shown=0;
+      var hit=function(url,key){{
+        fetch(url).then(function(r){{return r.json()}}).then(function(d){{
+          var v=d&&(d.value!=null?d.value:(d.count!=null?d.count:null));
+          if(v==null||shown) return;
+          shown=1;
+          el.textContent=Number(v).toLocaleString();
+        }}).catch(function(){{}});
+      }};
+      hit('https://600-election-night.600-live.workers.dev/counter/bmv');
+      setTimeout(function(){{
+        if(!shown) hit('https://tallywire.cronpulse.workers.dev/hit/anketdelisi/600-bmv');
+      }},800);
+    }})();
+  </script>
   <style>
     /* page identity row (between the global nav and the split) */
     .bmv-title{{text-align:center;margin:18px 0 14px}}
@@ -207,6 +230,8 @@ def build_shell(cache):
     .bmv-col .side-card{{overflow-y:auto}}
     @media (max-width:1280px){{.bmv-col .page-top{{grid-template-columns:230px minmax(0,1fr)}}}}
     @media (max-width:1180px){{.bmv-cols{{grid-template-columns:1fr}}.bmv-col .page-top{{grid-template-columns:320px minmax(0,1fr)}}}}
+    .bmv-footer{{display:flex;justify-content:center;margin-top:16px;padding:10px 0 4px;border-top:2px solid var(--c-edge)}}
+    .bmv-visits{{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--c-text-muted)}}
   </style>
 </body>
 </html>

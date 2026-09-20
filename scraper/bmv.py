@@ -143,7 +143,7 @@ def build_shell(cache):
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — B&MV: Berlin + Mecklenburg-Vorpommern (live)</title>
-  <link rel="icon" type="image/svg+xml" href="img/600logo.svg">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="stylesheet" href="css/style.css?{cache}">
   <script>window.__600_LOCAL_ASSETS__=true;</script>
 </head>
@@ -158,7 +158,6 @@ def build_shell(cache):
         <button class="tab-trigger" data-tab="live">LIVE</button>
         <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
         <div class="segnav-right">
-          <a class="tab-social tab-social-accent" href="../" title="Main site">MAIN</a>
         </div>
       </div>
       <div class="bmv-title">
@@ -202,9 +201,9 @@ def build_shell(cache):
           el.textContent=Number(v).toLocaleString();
         }}).catch(function(){{}});
       }};
-      hit('https://600-election-night.600-live.workers.dev/counter/bmv');
+      hit('https://600-election-night.600-live.workers.dev/counter/bmv?unique=1');
       setTimeout(function(){{
-        if(!shown) hit('https://tallywire.cronpulse.workers.dev/hit/anketdelisi/600-bmv');
+        if(!shown) hit('https://tallywire.cronpulse.workers.dev/hit/anketdelisi/600-bmv?unique=1');
       }},800);
     }})();
   </script>

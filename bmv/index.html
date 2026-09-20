@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — B&MV: Berlin + Mecklenburg-Vorpommern (live)</title>
-  <link rel="icon" type="image/svg+xml" href="img/600logo.svg">
-  <link rel="stylesheet" href="css/style.css?v=b48ee46">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="css/style.css?v=e0cd7ac">
   <script>window.__600_LOCAL_ASSETS__=true;</script>
 </head>
 <body>
@@ -19,7 +19,6 @@
         <button class="tab-trigger" data-tab="live">LIVE</button>
         <button class="tab-trigger" data-tab="methodology">METHODOLOGY</button>
         <div class="segnav-right">
-          <a class="tab-social tab-social-accent" href="../" title="Main site">MAIN</a>
         </div>
       </div>
       <div class="bmv-title">
@@ -95,8 +94,8 @@
       });
     })();
   </script>
-  <script src="js/instance-berlin.js?v=b48ee46"></script>
-  <script src="js/instance-mv.js?v=b48ee46"></script>
+  <script src="js/instance-berlin.js?v=e0cd7ac"></script>
+  <script src="js/instance-mv.js?v=e0cd7ac"></script>
   <script>
     /* visit counter: our Cloudflare worker when deployed, else Tallywire */
     (function(){
@@ -111,9 +110,9 @@
           el.textContent=Number(v).toLocaleString();
         }).catch(function(){});
       };
-      hit('https://600-election-night.600-live.workers.dev/counter/bmv');
+      hit('https://600-election-night.600-live.workers.dev/counter/bmv?unique=1');
       setTimeout(function(){
-        if(!shown) hit('https://tallywire.cronpulse.workers.dev/hit/anketdelisi/600-bmv');
+        if(!shown) hit('https://tallywire.cronpulse.workers.dev/hit/anketdelisi/600-bmv?unique=1');
       },800);
     })();
   </script>

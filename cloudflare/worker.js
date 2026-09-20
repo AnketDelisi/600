@@ -72,9 +72,32 @@ export default {
     const path=url.pathname.replace(/\/+$/,'');
 
     // Visit counter (needs a KV binding named COUNTERS in wrangler.toml):
-    //   GET /counter/bmv   -> {key:'bmv', value:N}  (increments by 1)
+    //   GET /counter/bmv           -> {key:'bmv', value:N}  (increments by 1)
+    //   GET /counter/bmv?unique=1  -> same, but dedupes per visitor/day
     if(path.startsWith('/counter/')){
       const key=path.slice('/counter/'.length).replace(/[^a-z0-9_-]/gi,'')||'default';
+      const unique=url.searchParams.get('unique')==='1';
+      if(unique){
+        // daily unique visitor: hash ip+ua+key+day; count only first time
+        const day=new Date().toISOString().slice(0,10);
+        const ip=(request.headers.get('CF-Connecting-IP')||'?');
+        const ua=(request.headers.get('User-Agent')||'?');
+        const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ip+'|'+ua+'|'+key+'|'+day));
+        const id=[...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('').slice(0,32);
+        const seen=await env.COUNTERS.get('seen:'+id);
+        if(seen===null){
+          const n=parseInt(await env.COUNTERS.get(key))||0;
+          await env.COUNTERS.put(key,String(n+1));
+          await env.COUNTERS.put('seen:'+id,'1',{expirationTtl:172800});
+          return new Response(JSON.stringify({key,value:n+1,unique:true}),{
+            headers:{'Content-Type':'application/json','Access-Control-Allow-Origin':'*','Cache-Control':'no-store'},
+          });
+        }
+        const cur=parseInt(await env.COUNTERS.get(key))||0;
+        return new Response(JSON.stringify({key,value:cur,unique:true,deduped:true}),{
+          headers:{'Content-Type':'application/json','Access-Control-Allow-Origin':'*','Cache-Control':'no-store'},
+        });
+      }
       const n=parseInt(await env.COUNTERS.get(key))||0;
       await env.COUNTERS.put(key,String(n+1));
       return new Response(JSON.stringify({key,value:n+1}),{

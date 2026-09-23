@@ -2,8 +2,8 @@
   "country": "czechia",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Next_Czech_parliamentary_election",
-  "scraped_at": "2026-09-22T10:55:15Z",
-  "poll_count": 21,
+  "scraped_at": "2026-09-23T10:43:17Z",
+  "poll_count": 22,
   "polls": [
     {
       "pollster": "Ipsos",
@@ -92,6 +92,25 @@
       "country": "czechia",
       "date_end": "2026-08-21",
       "n": 991
+    },
+    {
+      "pollster": "Median",
+      "date": "2026-08-01",
+      "votes": {
+        "ano": 34.0,
+        "ods": 11.0,
+        "kducsl": 3.5,
+        "top09": 4.0,
+        "stan": 12.0,
+        "pirati": 7.5,
+        "spd": 9.0,
+        "auto": 4.5,
+        "kscm": 4.5,
+        "nc": 2.5
+      },
+      "country": "czechia",
+      "date_end": "2026-08-31",
+      "n": 1021
     },
     {
       "pollster": "Median",

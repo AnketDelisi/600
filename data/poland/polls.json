@@ -2,8 +2,8 @@
   "country": "poland",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Polish_parliamentary_election",
-  "scraped_at": "2026-09-23T10:43:18Z",
-  "poll_count": 82,
+  "scraped_at": "2026-09-24T11:04:07Z",
+  "poll_count": 85,
   "polls": [
     {
       "pollster": "Pollster / \"SE.pl\"",
@@ -22,6 +22,60 @@
       "country": "poland",
       "date_end": "2026-09-22",
       "n": 1029
+    },
+    {
+      "pollster": "OGB",
+      "date": "2026-09-18",
+      "votes": {
+        "pis": 22.6,
+        "ko": 36.5,
+        "pl2050": 1.41,
+        "psl": 1.09,
+        "lewica": 6.85,
+        "razem": 3.16,
+        "kwin": 13.85,
+        "kkp": 9.43,
+        "r": 5.11
+      },
+      "country": "poland",
+      "date_end": "2026-09-22",
+      "n": 1000
+    },
+    {
+      "pollster": "Social Changes / wPolityce.pl",
+      "date": "2026-09-18",
+      "votes": {
+        "pis": 24.1,
+        "ko": 30.9,
+        "pl2050": 1.7,
+        "psl": 1.6,
+        "lewica": 9.4,
+        "razem": 5.2,
+        "kwin": 14.4,
+        "kkp": 6.7,
+        "r": 3.5
+      },
+      "country": "poland",
+      "date_end": "2026-09-22",
+      "n": 1095
+    },
+    {
+      "pollster": "Research Partner",
+      "date": "2026-09-18",
+      "votes": {
+        "pis": 19.2,
+        "ko": 28.8,
+        "pl2050": 1.9,
+        "psl": 1.9,
+        "lewica": 6.8,
+        "razem": 4.2,
+        "kwin": 11.2,
+        "kkp": 8.8,
+        "r": 4.1
+      },
+      "country": "poland",
+      "date_end": "2026-09-21",
+      "n": 1040
     },
     {
       "pollster": "United Surveys / WP.pl",

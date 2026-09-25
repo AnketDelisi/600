@@ -2,9 +2,30 @@
   "country": "slovakia",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovak_parliamentary_election",
-  "scraped_at": "2026-09-24T11:04:12Z",
-  "poll_count": 115,
+  "scraped_at": "2026-09-25T11:04:24Z",
+  "poll_count": 116,
   "polls": [
+    {
+      "pollster": "Ipsos",
+      "date": "2026-09-22",
+      "votes": {
+        "smer": 16.9,
+        "ps": 19.0,
+        "hlas": 6.6,
+        "slovensko": 10.7,
+        "kdh": 7.0,
+        "sas": 8.4,
+        "sns": 2.2,
+        "republika": 12.8,
+        "aliancia": 3.9,
+        "demokrati": 5.5,
+        "rodina": 2.0
+      },
+      "country": "slovakia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovak_parliamentary_election",
+      "n": 1030
+    },
     {
       "pollster": "NMS",
       "date": "2026-09-07",

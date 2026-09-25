@@ -2,9 +2,24 @@
   "country": "austria",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Next_Austrian_legislative_election",
-  "scraped_at": "2026-09-24T11:04:05Z",
-  "poll_count": 101,
+  "scraped_at": "2026-09-25T11:04:18Z",
+  "poll_count": 102,
   "polls": [
+    {
+      "pollster": "Market-Lazarsfeld",
+      "date": "2026-09-14",
+      "votes": {
+        "fpoe": 38.0,
+        "oevp": 21.0,
+        "spoe": 15.0,
+        "neos": 6.0,
+        "gruene": 13.0,
+        "kpoe": 4.0
+      },
+      "country": "austria",
+      "date_end": "2026-09-22",
+      "n": 2000
+    },
     {
       "pollster": "OGM",
       "date": "2026-09-08",

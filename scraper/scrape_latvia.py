@@ -89,10 +89,14 @@ def parse_date(text):
     for ch in "\u2013\u2014\u2015":
         text = text.replace(ch, "-")
     dates = re.findall(r"(\d{1,2})\s*([A-Za-z]+)", text)
-    if not dates:
-        return None
-    day, mon_name = dates[-1]
-    mon = MONTHS.get(mon_name.lower()[:3])
+    if dates:
+        day, mon_name = dates[-1]
+        mon = MONTHS.get(mon_name.lower()[:3])
+    else:
+        # month-only cells ("September 2026"): counted mid-month
+        mon_m = re.search(r"([A-Za-z]{3,})", text)
+        mon = MONTHS.get(mon_m.group(1).lower()[:3]) if mon_m else None
+        day = 15
     if not mon:
         return None
     try:

@@ -1,0 +1,4493 @@
+{
+ "country": "germany",
+ "total_seats": 630,
+ "constituency_seats": 299,
+ "leveling_seats": 0,
+ "constituencies": [
+  {
+   "id": "1",
+   "name": "Flensburg – Schleswig",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 26.51,
+    "spd": 14.8,
+    "gruene": 22.58,
+    "linke": 5.41,
+    "afd": 15.03,
+    "fdp": 2.34,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "2",
+   "name": "Nordfriesland – Dithmarschen Nord",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 32.65,
+    "spd": 20.41,
+    "gruene": 10.89,
+    "linke": 5.19,
+    "afd": 16.03,
+    "fdp": 3.77,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "3",
+   "name": "Steinburg – Dithmarschen Süd",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 35.03,
+    "spd": 21.14,
+    "gruene": 9.95,
+    "linke": 5.97,
+    "afd": 20.43,
+    "fdp": 3.87,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "4",
+   "name": "Rendsburg-Eckernförde",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 32.77,
+    "spd": 21.16,
+    "gruene": 11.95,
+    "linke": 5.06,
+    "afd": 15.42,
+    "fdp": 4.77,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "5",
+   "name": "Kiel",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 21.03,
+    "spd": 22.08,
+    "gruene": 26.04,
+    "linke": 9.6,
+    "afd": 10.72,
+    "fdp": 2.91,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "6",
+   "name": "Plön – Neumünster",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 32.72,
+    "spd": 23.98,
+    "gruene": 13.3,
+    "linke": 5.38,
+    "afd": 17.82,
+    "fdp": 3.31,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "7",
+   "name": "Pinneberg",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 31.76,
+    "spd": 24.97,
+    "gruene": 12.75,
+    "linke": 6.37,
+    "afd": 15.28,
+    "fdp": 3.85,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "8",
+   "name": "Segeberg – Stormarn-Mitte",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 32.32,
+    "spd": 24.49,
+    "gruene": 11.81,
+    "linke": 6.02,
+    "afd": 17.17,
+    "fdp": 4.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "9",
+   "name": "Ostholstein – Stormarn-Nord",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 34.76,
+    "spd": 25.44,
+    "gruene": 10.45,
+    "linke": 5.5,
+    "afd": 17.32,
+    "fdp": 3.62,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "10",
+   "name": "Herzogtum Lauenburg – Stormarn-Süd",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 32.74,
+    "spd": 23.36,
+    "gruene": 14.04,
+    "linke": 5.89,
+    "afd": 17.14,
+    "fdp": 3.6,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "11",
+   "name": "Lübeck",
+   "seats": 1,
+   "region": "Schleswig-Holstein",
+   "results_2022": {
+    "cdu": 23.77,
+    "spd": 28.08,
+    "gruene": 19.38,
+    "linke": 7.18,
+    "afd": 15.5,
+    "fdp": 2.84,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "12",
+   "name": "Schwerin – Ludwigslust-Parchim I – Nordwestmecklenburg I",
+   "seats": 1,
+   "region": "Mecklenburg-Vorpommern",
+   "results_2022": {
+    "cdu": 20.89,
+    "spd": 20.09,
+    "gruene": 3.26,
+    "linke": 12.71,
+    "afd": 35.85,
+    "fdp": 2.87,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "13",
+   "name": "Ludwigslust-Parchim II – Nordwestmecklenburg II – Landkreis Rostock I",
+   "seats": 1,
+   "region": "Mecklenburg-Vorpommern",
+   "results_2022": {
+    "cdu": 20.36,
+    "spd": 21.5,
+    "gruene": 3.57,
+    "linke": 11.23,
+    "afd": 36.85,
+    "fdp": 2.74,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "14",
+   "name": "Rostock – Landkreis Rostock II",
+   "seats": 1,
+   "region": "Mecklenburg-Vorpommern",
+   "results_2022": {
+    "cdu": 19.37,
+    "spd": 16.91,
+    "gruene": 5.29,
+    "linke": 25.63,
+    "afd": 26.8,
+    "fdp": 2.84,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "15",
+   "name": "Vorpommern-Rügen – Vorpommern-Greifswald I",
+   "seats": 1,
+   "region": "Mecklenburg-Vorpommern",
+   "results_2022": {
+    "cdu": 21.25,
+    "spd": 14.56,
+    "gruene": 4.91,
+    "linke": 13.34,
+    "afd": 37.28,
+    "fdp": 2.61,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "16",
+   "name": "Mecklenburgische Seenplatte I – Vorpommern-Greifswald II",
+   "seats": 1,
+   "region": "Mecklenburg-Vorpommern",
+   "results_2022": {
+    "cdu": 19.9,
+    "spd": 13.77,
+    "gruene": 2.28,
+    "linke": 10.84,
+    "afd": 45.21,
+    "fdp": 3.54,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "17",
+   "name": "Mecklenburgische Seenplatte II – Landkreis Rostock III",
+   "seats": 1,
+   "region": "Mecklenburg-Vorpommern",
+   "results_2022": {
+    "cdu": 19.45,
+    "spd": 19.57,
+    "gruene": 2.13,
+    "linke": 10.7,
+    "afd": 41.05,
+    "fdp": 2.72,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "18",
+   "name": "Hamburg-Mitte",
+   "seats": 1,
+   "region": "Hamburg",
+   "results_2022": {
+    "cdu": 16.95,
+    "spd": 27.45,
+    "gruene": 21.49,
+    "linke": 16.52,
+    "afd": 10.6,
+    "fdp": 3.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "19",
+   "name": "Hamburg-Altona",
+   "seats": 1,
+   "region": "Hamburg",
+   "results_2022": {
+    "cdu": 21.2,
+    "spd": 23.43,
+    "gruene": 27.51,
+    "linke": 16.04,
+    "afd": 7.56,
+    "fdp": 3.35,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "20",
+   "name": "Hamburg-Eimsbüttel",
+   "seats": 1,
+   "region": "Hamburg",
+   "results_2022": {
+    "cdu": 20.97,
+    "spd": 25.98,
+    "gruene": 27.75,
+    "linke": 12.6,
+    "afd": 7.75,
+    "fdp": 4.0,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "21",
+   "name": "Hamburg-Nord",
+   "seats": 1,
+   "region": "Hamburg",
+   "results_2022": {
+    "cdu": 28.08,
+    "spd": 26.63,
+    "gruene": 22.67,
+    "linke": 7.89,
+    "afd": 8.07,
+    "fdp": 3.72,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "22",
+   "name": "Hamburg-Wandsbek",
+   "seats": 1,
+   "region": "Hamburg",
+   "results_2022": {
+    "cdu": 24.67,
+    "spd": 32.32,
+    "gruene": 13.02,
+    "linke": 10.63,
+    "afd": 14.52,
+    "fdp": 3.2,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "23",
+   "name": "Hamburg-Bergedorf – Harburg",
+   "seats": 1,
+   "region": "Hamburg",
+   "results_2022": {
+    "cdu": 21.36,
+    "spd": 32.19,
+    "gruene": 11.61,
+    "linke": 11.57,
+    "afd": 17.58,
+    "fdp": 2.52,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "24",
+   "name": "Aurich – Emden",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 22.06,
+    "spd": 41.16,
+    "gruene": 5.04,
+    "linke": 5.79,
+    "afd": 20.18,
+    "fdp": 2.32,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "25",
+   "name": "Unterems",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 40.53,
+    "spd": 22.5,
+    "gruene": 6.98,
+    "linke": 5.51,
+    "afd": 20.33,
+    "fdp": 2.53,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "26",
+   "name": "Friesland – Wilhelmshaven – Wittmund",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 26.79,
+    "spd": 35.36,
+    "gruene": 5.77,
+    "linke": 5.51,
+    "afd": 19.73,
+    "fdp": 2.66,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "27",
+   "name": "Oldenburg – Ammerland",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 23.96,
+    "spd": 34.39,
+    "gruene": 14.91,
+    "linke": 8.13,
+    "afd": 13.0,
+    "fdp": 3.11,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "28",
+   "name": "Delmenhorst – Wesermarsch – Oldenburg-Land",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 29.29,
+    "spd": 26.49,
+    "gruene": 9.82,
+    "linke": 6.89,
+    "afd": 19.25,
+    "fdp": 5.56,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "29",
+   "name": "Cuxhaven – Stade II",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 32.72,
+    "spd": 30.46,
+    "gruene": 7.16,
+    "linke": 5.17,
+    "afd": 19.78,
+    "fdp": 2.71,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "30",
+   "name": "Stade I – Rotenburg II",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 36.35,
+    "spd": 25.55,
+    "gruene": 9.77,
+    "linke": 6.24,
+    "afd": 18.02,
+    "fdp": 2.81,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "31",
+   "name": "Mittelems",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 43.87,
+    "spd": 24.37,
+    "gruene": 7.29,
+    "linke": 5.13,
+    "afd": 14.12,
+    "fdp": 3.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "32",
+   "name": "Cloppenburg – Vechta",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 45.83,
+    "spd": 17.48,
+    "gruene": 6.07,
+    "linke": 5.1,
+    "afd": 20.63,
+    "fdp": 3.3,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "33",
+   "name": "Diepholz – Nienburg I",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 35.36,
+    "spd": 27.53,
+    "gruene": 8.08,
+    "linke": 5.97,
+    "afd": 16.99,
+    "fdp": 3.3,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "34",
+   "name": "Osterholz – Verden",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 35.94,
+    "spd": 24.81,
+    "gruene": 11.18,
+    "linke": 6.71,
+    "afd": 17.0,
+    "fdp": 3.0,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "35",
+   "name": "Rotenburg I – Heidekreis",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 27.32,
+    "spd": 42.08,
+    "gruene": 5.36,
+    "linke": 0.0,
+    "afd": 19.29,
+    "fdp": 2.36,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "36",
+   "name": "Harburg",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 33.18,
+    "spd": 26.29,
+    "gruene": 10.59,
+    "linke": 5.93,
+    "afd": 16.62,
+    "fdp": 3.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "37",
+   "name": "Lüchow-Dannenberg – Lüneburg",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 26.33,
+    "spd": 27.85,
+    "gruene": 16.42,
+    "linke": 7.1,
+    "afd": 15.51,
+    "fdp": 2.53,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "38",
+   "name": "Osnabrück-Land",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 36.58,
+    "spd": 24.24,
+    "gruene": 10.06,
+    "linke": 5.71,
+    "afd": 18.0,
+    "fdp": 2.95,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "39",
+   "name": "Stadt Osnabrück",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 29.73,
+    "spd": 28.2,
+    "gruene": 13.68,
+    "linke": 11.75,
+    "afd": 11.38,
+    "fdp": 2.6,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "40",
+   "name": "Nienburg II – Schaumburg",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 28.64,
+    "spd": 31.75,
+    "gruene": 7.5,
+    "linke": 5.54,
+    "afd": 20.12,
+    "fdp": 2.8,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "41",
+   "name": "Stadt Hannover I",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 23.0,
+    "spd": 34.11,
+    "gruene": 15.7,
+    "linke": 8.44,
+    "afd": 13.12,
+    "fdp": 2.8,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "42",
+   "name": "Stadt Hannover II",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 17.82,
+    "spd": 36.2,
+    "gruene": 19.08,
+    "linke": 11.41,
+    "afd": 10.24,
+    "fdp": 2.38,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "43",
+   "name": "Hannover-Land I",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 34.81,
+    "spd": 27.39,
+    "gruene": 9.49,
+    "linke": 5.46,
+    "afd": 17.35,
+    "fdp": 2.67,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "44",
+   "name": "Celle – Uelzen",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 35.2,
+    "spd": 23.07,
+    "gruene": 9.27,
+    "linke": 5.92,
+    "afd": 20.14,
+    "fdp": 3.41,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "45",
+   "name": "Gifhorn – Peine",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 27.92,
+    "spd": 33.94,
+    "gruene": 6.44,
+    "linke": 4.96,
+    "afd": 21.3,
+    "fdp": 2.58,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "46",
+   "name": "Hameln-Pyrmont – Holzminden",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 28.57,
+    "spd": 32.99,
+    "gruene": 7.16,
+    "linke": 5.38,
+    "afd": 20.87,
+    "fdp": 3.21,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "47",
+   "name": "Hannover-Land II",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 30.03,
+    "spd": 31.76,
+    "gruene": 8.93,
+    "linke": 5.54,
+    "afd": 17.19,
+    "fdp": 2.51,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "48",
+   "name": "Hildesheim",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 29.32,
+    "spd": 30.75,
+    "gruene": 9.41,
+    "linke": 6.85,
+    "afd": 18.23,
+    "fdp": 2.49,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "49",
+   "name": "Salzgitter – Wolfenbüttel",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 28.31,
+    "spd": 30.58,
+    "gruene": 6.89,
+    "linke": 7.04,
+    "afd": 21.35,
+    "fdp": 2.49,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "50",
+   "name": "Braunschweig",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 24.73,
+    "spd": 33.42,
+    "gruene": 14.25,
+    "linke": 8.21,
+    "afd": 13.27,
+    "fdp": 2.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "51",
+   "name": "Helmstedt – Wolfsburg",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 30.93,
+    "spd": 28.59,
+    "gruene": 6.93,
+    "linke": 6.17,
+    "afd": 22.1,
+    "fdp": 3.23,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "52",
+   "name": "Goslar – Northeim – Göttingen II",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 30.29,
+    "spd": 30.41,
+    "gruene": 7.73,
+    "linke": 5.96,
+    "afd": 19.78,
+    "fdp": 2.59,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "53",
+   "name": "Göttingen I",
+   "seats": 1,
+   "region": "Niedersachsen",
+   "results_2022": {
+    "cdu": 29.12,
+    "spd": 25.62,
+    "gruene": 15.37,
+    "linke": 9.15,
+    "afd": 14.21,
+    "fdp": 3.63,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "54",
+   "name": "Bremen I",
+   "seats": 1,
+   "region": "Bremen",
+   "results_2022": {
+    "cdu": 23.98,
+    "spd": 25.2,
+    "gruene": 18.94,
+    "linke": 13.36,
+    "afd": 11.78,
+    "fdp": 2.9,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "55",
+   "name": "Bremen II – Bremerhaven",
+   "seats": 1,
+   "region": "Bremen",
+   "results_2022": {
+    "cdu": 21.02,
+    "spd": 30.27,
+    "gruene": 10.86,
+    "linke": 12.08,
+    "afd": 19.41,
+    "fdp": 2.64,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "56",
+   "name": "Prignitz – Ostprignitz-Ruppin – Havelland I",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 19.64,
+    "spd": 22.24,
+    "gruene": 3.06,
+    "linke": 10.53,
+    "afd": 38.88,
+    "fdp": 2.16,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "57",
+   "name": "Uckermark – Barnim I",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 18.26,
+    "spd": 19.36,
+    "gruene": 3.88,
+    "linke": 12.23,
+    "afd": 38.35,
+    "fdp": 2.36,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "58",
+   "name": "Oberhavel – Havelland II",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 24.84,
+    "spd": 19.98,
+    "gruene": 6.64,
+    "linke": 9.47,
+    "afd": 30.84,
+    "fdp": 2.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "59",
+   "name": "Märkisch-Oderland – Barnim II",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 18.1,
+    "spd": 18.73,
+    "gruene": 3.99,
+    "linke": 13.31,
+    "afd": 36.11,
+    "fdp": 2.45,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "60",
+   "name": "Brandenburg an der Havel – Potsdam-Mittelmark I – Havelland III – Teltow-Fläming I",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 19.42,
+    "spd": 25.77,
+    "gruene": 3.74,
+    "linke": 10.89,
+    "afd": 33.64,
+    "fdp": 2.33,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "61",
+   "name": "Potsdam – Potsdam-Mittelmark II – Teltow-Fläming II",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 20.57,
+    "spd": 21.76,
+    "gruene": 15.89,
+    "linke": 13.82,
+    "afd": 18.98,
+    "fdp": 4.0,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "62",
+   "name": "Dahme-Spreewald – Teltow-Fläming III",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 23.85,
+    "spd": 17.63,
+    "gruene": 5.16,
+    "linke": 11.28,
+    "afd": 33.61,
+    "fdp": 2.5,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "63",
+   "name": "Frankfurt (Oder) – Oder-Spree",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 18.8,
+    "spd": 20.8,
+    "gruene": 3.01,
+    "linke": 11.33,
+    "afd": 38.2,
+    "fdp": 2.38,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "64",
+   "name": "Cottbus – Spree-Neiße",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 17.35,
+    "spd": 23.34,
+    "gruene": 0.0,
+    "linke": 9.79,
+    "afd": 42.0,
+    "fdp": 2.72,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "65",
+   "name": "Elbe-Elster – Oberspreewald-Lausitz",
+   "seats": 1,
+   "region": "Brandenburg",
+   "results_2022": {
+    "cdu": 18.28,
+    "spd": 16.6,
+    "gruene": 2.03,
+    "linke": 11.97,
+    "afd": 42.98,
+    "fdp": 2.87,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "66",
+   "name": "Altmark – Jerichower Land",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 22.03,
+    "spd": 16.05,
+    "gruene": 2.75,
+    "linke": 12.57,
+    "afd": 39.19,
+    "fdp": 3.43,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "67",
+   "name": "Börde – Salzlandkreis",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 22.36,
+    "spd": 13.61,
+    "gruene": 2.23,
+    "linke": 10.55,
+    "afd": 43.19,
+    "fdp": 2.74,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "68",
+   "name": "Harz",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 23.49,
+    "spd": 13.97,
+    "gruene": 3.26,
+    "linke": 11.89,
+    "afd": 39.01,
+    "fdp": 2.24,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "69",
+   "name": "Magdeburg",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 23.09,
+    "spd": 17.21,
+    "gruene": 5.99,
+    "linke": 14.86,
+    "afd": 32.23,
+    "fdp": 2.7,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "70",
+   "name": "Anhalt – Dessau – Wittenberg",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 29.53,
+    "spd": 10.47,
+    "gruene": 4.83,
+    "linke": 10.18,
+    "afd": 38.58,
+    "fdp": 2.13,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "71",
+   "name": "Halle",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 22.26,
+    "spd": 17.96,
+    "gruene": 5.46,
+    "linke": 16.21,
+    "afd": 30.64,
+    "fdp": 2.94,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "72",
+   "name": "Burgenland – Saalekreis",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 24.24,
+    "spd": 10.06,
+    "gruene": 2.41,
+    "linke": 10.95,
+    "afd": 44.39,
+    "fdp": 2.96,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "73",
+   "name": "Mansfeld",
+   "seats": 1,
+   "region": "Sachsen-Anhalt",
+   "results_2022": {
+    "cdu": 21.22,
+    "spd": 10.71,
+    "gruene": 1.99,
+    "linke": 12.26,
+    "afd": 43.76,
+    "fdp": 3.44,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "74",
+   "name": "Berlin-Mitte",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 14.26,
+    "spd": 16.67,
+    "gruene": 25.29,
+    "linke": 23.95,
+    "afd": 8.52,
+    "fdp": 2.85,
+    "bsw": 4.98
+   }
+  },
+  {
+   "id": "75",
+   "name": "Berlin-Pankow",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 16.22,
+    "spd": 13.26,
+    "gruene": 25.84,
+    "linke": 22.87,
+    "afd": 16.86,
+    "fdp": 2.75,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "76",
+   "name": "Berlin-Reinickendorf",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 30.88,
+    "spd": 21.88,
+    "gruene": 12.95,
+    "linke": 11.77,
+    "afd": 18.03,
+    "fdp": 3.58,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "77",
+   "name": "Berlin-Spandau – Charlottenburg Nord",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 26.08,
+    "spd": 27.52,
+    "gruene": 9.29,
+    "linke": 11.44,
+    "afd": 19.72,
+    "fdp": 3.26,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "78",
+   "name": "Berlin-Steglitz-Zehlendorf",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 30.74,
+    "spd": 22.4,
+    "gruene": 22.11,
+    "linke": 8.78,
+    "afd": 10.29,
+    "fdp": 4.1,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "79",
+   "name": "Berlin-Charlottenburg-Wilmersdorf",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 26.26,
+    "spd": 23.72,
+    "gruene": 24.03,
+    "linke": 11.09,
+    "afd": 8.62,
+    "fdp": 4.39,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "80",
+   "name": "Berlin-Tempelhof-Schöneberg",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 24.63,
+    "spd": 20.5,
+    "gruene": 24.67,
+    "linke": 12.11,
+    "afd": 11.15,
+    "fdp": 2.69,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "81",
+   "name": "Berlin-Neukölln",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 19.67,
+    "spd": 18.83,
+    "gruene": 11.14,
+    "linke": 29.97,
+    "afd": 13.04,
+    "fdp": 1.93,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "82",
+   "name": "Berlin-Friedrichshain-Kreuzberg – Prenzlauer Berg Ost",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 10.02,
+    "spd": 13.13,
+    "gruene": 30.59,
+    "linke": 34.65,
+    "afd": 7.74,
+    "fdp": 2.39,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "83",
+   "name": "Berlin-Treptow-Köpenick",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 14.08,
+    "spd": 8.58,
+    "gruene": 4.79,
+    "linke": 41.84,
+    "afd": 20.54,
+    "fdp": 1.76,
+    "bsw": 5.63
+   }
+  },
+  {
+   "id": "84",
+   "name": "Berlin-Marzahn-Hellersdorf",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 29.19,
+    "spd": 8.72,
+    "gruene": 4.11,
+    "linke": 16.8,
+    "afd": 29.51,
+    "fdp": 1.26,
+    "bsw": 8.61
+   }
+  },
+  {
+   "id": "85",
+   "name": "Berlin-Lichtenberg",
+   "seats": 1,
+   "region": "Berlin",
+   "results_2022": {
+    "cdu": 17.64,
+    "spd": 9.03,
+    "gruene": 5.26,
+    "linke": 33.98,
+    "afd": 21.86,
+    "fdp": 1.45,
+    "bsw": 7.48
+   }
+  },
+  {
+   "id": "86",
+   "name": "Aachen I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 32.31,
+    "spd": 19.67,
+    "gruene": 27.94,
+    "linke": 9.34,
+    "afd": 0.0,
+    "fdp": 4.2,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "87",
+   "name": "Aachen II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 40.08,
+    "spd": 30.54,
+    "gruene": 7.54,
+    "linke": 7.57,
+    "afd": 0.0,
+    "fdp": 4.65,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "88",
+   "name": "Heinsberg",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 41.54,
+    "spd": 19.17,
+    "gruene": 7.58,
+    "linke": 5.76,
+    "afd": 19.79,
+    "fdp": 3.01,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "89",
+   "name": "Düren",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 39.85,
+    "spd": 21.98,
+    "gruene": 7.45,
+    "linke": 5.58,
+    "afd": 20.32,
+    "fdp": 2.81,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "90",
+   "name": "Rhein-Erft-Kreis I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 34.98,
+    "spd": 26.07,
+    "gruene": 10.21,
+    "linke": 6.44,
+    "afd": 16.73,
+    "fdp": 3.68,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "91",
+   "name": "Euskirchen – Rhein-Erft-Kreis II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 38.38,
+    "spd": 20.66,
+    "gruene": 9.51,
+    "linke": 5.57,
+    "afd": 18.41,
+    "fdp": 4.13,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "92",
+   "name": "Köln I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 24.58,
+    "spd": 24.88,
+    "gruene": 20.12,
+    "linke": 11.14,
+    "afd": 13.21,
+    "fdp": 3.08,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "93",
+   "name": "Köln II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 28.08,
+    "spd": 16.46,
+    "gruene": 34.14,
+    "linke": 8.65,
+    "afd": 5.99,
+    "fdp": 3.78,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "94",
+   "name": "Köln III",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 19.45,
+    "spd": 25.81,
+    "gruene": 26.04,
+    "linke": 11.21,
+    "afd": 11.6,
+    "fdp": 2.84,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "95",
+   "name": "Bonn",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 33.31,
+    "spd": 21.65,
+    "gruene": 24.38,
+    "linke": 7.69,
+    "afd": 8.16,
+    "fdp": 2.47,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "96",
+   "name": "Rhein-Sieg-Kreis I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 35.6,
+    "spd": 22.41,
+    "gruene": 11.24,
+    "linke": 5.73,
+    "afd": 17.49,
+    "fdp": 4.27,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "97",
+   "name": "Rhein-Sieg-Kreis II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 43.82,
+    "spd": 17.77,
+    "gruene": 12.74,
+    "linke": 5.37,
+    "afd": 14.21,
+    "fdp": 3.23,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "98",
+   "name": "Oberbergischer Kreis",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 36.91,
+    "spd": 20.72,
+    "gruene": 8.8,
+    "linke": 5.98,
+    "afd": 21.55,
+    "fdp": 3.25,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "99",
+   "name": "Rheinisch-Bergischer Kreis",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 42.2,
+    "spd": 18.79,
+    "gruene": 13.78,
+    "linke": 5.08,
+    "afd": 12.43,
+    "fdp": 4.94,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "100",
+   "name": "Leverkusen – Köln IV",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 25.56,
+    "spd": 32.71,
+    "gruene": 11.04,
+    "linke": 9.07,
+    "afd": 15.53,
+    "fdp": 3.12,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "101",
+   "name": "Wuppertal I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 24.29,
+    "spd": 33.56,
+    "gruene": 8.59,
+    "linke": 9.13,
+    "afd": 18.27,
+    "fdp": 3.01,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "102",
+   "name": "Solingen – Remscheid – Wuppertal II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 32.45,
+    "spd": 27.44,
+    "gruene": 8.71,
+    "linke": 7.49,
+    "afd": 18.54,
+    "fdp": 3.23,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "103",
+   "name": "Mettmann I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 36.59,
+    "spd": 22.54,
+    "gruene": 12.46,
+    "linke": 6.44,
+    "afd": 15.75,
+    "fdp": 4.5,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "104",
+   "name": "Mettmann II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 35.88,
+    "spd": 25.01,
+    "gruene": 11.07,
+    "linke": 6.64,
+    "afd": 17.18,
+    "fdp": 3.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "105",
+   "name": "Düsseldorf I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 36.14,
+    "spd": 21.2,
+    "gruene": 17.38,
+    "linke": 7.17,
+    "afd": 9.82,
+    "fdp": 5.32,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "106",
+   "name": "Düsseldorf II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 28.74,
+    "spd": 23.07,
+    "gruene": 18.16,
+    "linke": 9.31,
+    "afd": 13.0,
+    "fdp": 4.15,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "107",
+   "name": "Neuss I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 36.28,
+    "spd": 27.05,
+    "gruene": 8.49,
+    "linke": 7.02,
+    "afd": 16.93,
+    "fdp": 4.24,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "108",
+   "name": "Mönchengladbach",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 36.35,
+    "spd": 26.19,
+    "gruene": 9.86,
+    "linke": 0.0,
+    "afd": 18.26,
+    "fdp": 3.29,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "109",
+   "name": "Krefeld I – Neuss II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 37.83,
+    "spd": 22.44,
+    "gruene": 10.97,
+    "linke": 6.66,
+    "afd": 14.61,
+    "fdp": 5.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "110",
+   "name": "Viersen",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 40.01,
+    "spd": 20.67,
+    "gruene": 10.56,
+    "linke": 6.16,
+    "afd": 15.98,
+    "fdp": 3.97,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "111",
+   "name": "Kleve",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 41.23,
+    "spd": 21.65,
+    "gruene": 9.09,
+    "linke": 5.94,
+    "afd": 16.01,
+    "fdp": 3.37,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "112",
+   "name": "Wesel I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 34.82,
+    "spd": 28.06,
+    "gruene": 8.16,
+    "linke": 6.08,
+    "afd": 17.38,
+    "fdp": 3.62,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "113",
+   "name": "Krefeld II – Wesel II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 31.96,
+    "spd": 30.22,
+    "gruene": 8.73,
+    "linke": 6.15,
+    "afd": 16.85,
+    "fdp": 3.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "114",
+   "name": "Duisburg I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 22.04,
+    "spd": 39.02,
+    "gruene": 7.81,
+    "linke": 8.58,
+    "afd": 17.66,
+    "fdp": 2.45,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "115",
+   "name": "Duisburg II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 19.73,
+    "spd": 33.26,
+    "gruene": 6.88,
+    "linke": 9.03,
+    "afd": 26.66,
+    "fdp": 2.17,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "116",
+   "name": "Oberhausen – Wesel III",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 26.91,
+    "spd": 31.39,
+    "gruene": 8.19,
+    "linke": 7.82,
+    "afd": 21.04,
+    "fdp": 2.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "117",
+   "name": "Mülheim – Essen I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 28.89,
+    "spd": 32.59,
+    "gruene": 9.2,
+    "linke": 6.83,
+    "afd": 17.42,
+    "fdp": 3.43,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "118",
+   "name": "Essen II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 24.66,
+    "spd": 30.31,
+    "gruene": 8.25,
+    "linke": 9.44,
+    "afd": 23.08,
+    "fdp": 2.38,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "119",
+   "name": "Essen III",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 35.74,
+    "spd": 24.68,
+    "gruene": 15.76,
+    "linke": 7.47,
+    "afd": 11.89,
+    "fdp": 3.1,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "120",
+   "name": "Recklinghausen I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 28.8,
+    "spd": 33.08,
+    "gruene": 6.78,
+    "linke": 5.89,
+    "afd": 20.24,
+    "fdp": 2.56,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "121",
+   "name": "Recklinghausen II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 31.62,
+    "spd": 29.05,
+    "gruene": 7.23,
+    "linke": 5.82,
+    "afd": 20.78,
+    "fdp": 2.34,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "122",
+   "name": "Gelsenkirchen",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 23.1,
+    "spd": 31.38,
+    "gruene": 6.08,
+    "linke": 8.44,
+    "afd": 25.77,
+    "fdp": 3.32,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "123",
+   "name": "Steinfurt I – Borken I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 41.81,
+    "spd": 22.7,
+    "gruene": 9.43,
+    "linke": 5.98,
+    "afd": 15.06,
+    "fdp": 3.45,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "124",
+   "name": "Bottrop – Recklinghausen III",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 31.69,
+    "spd": 29.55,
+    "gruene": 6.54,
+    "linke": 5.7,
+    "afd": 20.99,
+    "fdp": 2.67,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "125",
+   "name": "Borken II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 47.86,
+    "spd": 19.56,
+    "gruene": 9.62,
+    "linke": 5.1,
+    "afd": 12.95,
+    "fdp": 2.94,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "126",
+   "name": "Coesfeld – Steinfurt II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 45.58,
+    "spd": 20.26,
+    "gruene": 12.8,
+    "linke": 4.57,
+    "afd": 12.23,
+    "fdp": 3.17,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "127",
+   "name": "Steinfurt III",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 37.85,
+    "spd": 25.17,
+    "gruene": 11.79,
+    "linke": 6.0,
+    "afd": 15.49,
+    "fdp": 2.96,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "128",
+   "name": "Münster",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 28.53,
+    "spd": 20.58,
+    "gruene": 31.2,
+    "linke": 6.81,
+    "afd": 6.49,
+    "fdp": 3.28,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "129",
+   "name": "Warendorf",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 41.67,
+    "spd": 20.77,
+    "gruene": 10.85,
+    "linke": 5.61,
+    "afd": 16.01,
+    "fdp": 2.93,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "130",
+   "name": "Gütersloh I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 41.58,
+    "spd": 21.07,
+    "gruene": 9.05,
+    "linke": 5.49,
+    "afd": 17.12,
+    "fdp": 3.11,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "131",
+   "name": "Bielefeld – Gütersloh II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 25.97,
+    "spd": 27.19,
+    "gruene": 16.01,
+    "linke": 10.13,
+    "afd": 14.33,
+    "fdp": 3.03,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "132",
+   "name": "Herford – Minden-Lübbecke II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 30.12,
+    "spd": 29.19,
+    "gruene": 7.16,
+    "linke": 5.96,
+    "afd": 21.29,
+    "fdp": 3.26,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "133",
+   "name": "Minden-Lübbecke I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 32.14,
+    "spd": 24.7,
+    "gruene": 9.28,
+    "linke": 5.6,
+    "afd": 21.89,
+    "fdp": 3.36,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "134",
+   "name": "Lippe I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 31.33,
+    "spd": 23.54,
+    "gruene": 12.12,
+    "linke": 6.03,
+    "afd": 21.81,
+    "fdp": 3.03,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "135",
+   "name": "Höxter – Gütersloh III – Lippe II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 43.14,
+    "spd": 18.67,
+    "gruene": 7.46,
+    "linke": 5.28,
+    "afd": 20.55,
+    "fdp": 3.13,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "136",
+   "name": "Paderborn",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 45.49,
+    "spd": 15.24,
+    "gruene": 10.55,
+    "linke": 6.26,
+    "afd": 18.3,
+    "fdp": 2.37,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "137",
+   "name": "Hagen – Ennepe-Ruhr-Kreis I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 28.89,
+    "spd": 25.63,
+    "gruene": 8.23,
+    "linke": 5.95,
+    "afd": 21.35,
+    "fdp": 3.41,
+    "bsw": 4.26
+   }
+  },
+  {
+   "id": "138",
+   "name": "Ennepe-Ruhr-Kreis II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 30.9,
+    "spd": 30.05,
+    "gruene": 10.3,
+    "linke": 6.08,
+    "afd": 16.58,
+    "fdp": 3.01,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "139",
+   "name": "Bochum I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 24.63,
+    "spd": 32.69,
+    "gruene": 13.68,
+    "linke": 9.42,
+    "afd": 14.06,
+    "fdp": 2.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "140",
+   "name": "Herne – Bochum II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 23.75,
+    "spd": 33.54,
+    "gruene": 8.5,
+    "linke": 8.32,
+    "afd": 21.49,
+    "fdp": 2.26,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "141",
+   "name": "Dortmund I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 23.72,
+    "spd": 30.63,
+    "gruene": 14.01,
+    "linke": 9.17,
+    "afd": 15.88,
+    "fdp": 2.96,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "142",
+   "name": "Dortmund II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 24.8,
+    "spd": 32.44,
+    "gruene": 10.3,
+    "linke": 9.03,
+    "afd": 18.49,
+    "fdp": 2.65,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "143",
+   "name": "Unna I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 29.8,
+    "spd": 31.84,
+    "gruene": 9.01,
+    "linke": 6.08,
+    "afd": 18.63,
+    "fdp": 2.55,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "144",
+   "name": "Hamm – Unna II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 30.06,
+    "spd": 32.23,
+    "gruene": 6.37,
+    "linke": 7.14,
+    "afd": 21.54,
+    "fdp": 2.66,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "145",
+   "name": "Soest",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 37.29,
+    "spd": 22.51,
+    "gruene": 9.59,
+    "linke": 5.9,
+    "afd": 19.43,
+    "fdp": 3.94,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "146",
+   "name": "Hochsauerlandkreis",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 47.72,
+    "spd": 21.39,
+    "gruene": 6.11,
+    "linke": 4.67,
+    "afd": 15.91,
+    "fdp": 2.51,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "147",
+   "name": "Siegen-Wittgenstein",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 34.07,
+    "spd": 24.48,
+    "gruene": 7.49,
+    "linke": 6.44,
+    "afd": 20.47,
+    "fdp": 3.18,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "148",
+   "name": "Olpe – Märkischer Kreis I",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 42.14,
+    "spd": 20.77,
+    "gruene": 6.29,
+    "linke": 5.08,
+    "afd": 19.98,
+    "fdp": 3.49,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "149",
+   "name": "Märkischer Kreis II",
+   "seats": 1,
+   "region": "Nordrhein-Westfalen",
+   "results_2022": {
+    "cdu": 38.85,
+    "spd": 22.74,
+    "gruene": 6.51,
+    "linke": 6.53,
+    "afd": 20.86,
+    "fdp": 3.02,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "150",
+   "name": "Nordsachsen",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 24.97,
+    "spd": 9.99,
+    "gruene": 2.46,
+    "linke": 8.35,
+    "afd": 43.77,
+    "fdp": 2.13,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "151",
+   "name": "Leipzig I",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 21.47,
+    "spd": 11.74,
+    "gruene": 7.54,
+    "linke": 21.52,
+    "afd": 24.99,
+    "fdp": 2.09,
+    "bsw": 6.41
+   }
+  },
+  {
+   "id": "152",
+   "name": "Leipzig II",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 16.02,
+    "spd": 8.51,
+    "gruene": 10.22,
+    "linke": 36.8,
+    "afd": 18.73,
+    "fdp": 2.04,
+    "bsw": 5.18
+   }
+  },
+  {
+   "id": "153",
+   "name": "Leipzig-Land",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 24.58,
+    "spd": 10.92,
+    "gruene": 3.54,
+    "linke": 8.74,
+    "afd": 38.19,
+    "fdp": 2.57,
+    "bsw": 6.37
+   }
+  },
+  {
+   "id": "154",
+   "name": "Meißen",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 23.8,
+    "spd": 7.33,
+    "gruene": 4.19,
+    "linke": 9.44,
+    "afd": 45.33,
+    "fdp": 5.28,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "155",
+   "name": "Bautzen I",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 24.12,
+    "spd": 7.11,
+    "gruene": 2.17,
+    "linke": 9.77,
+    "afd": 48.27,
+    "fdp": 2.62,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "156",
+   "name": "Görlitz",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 24.19,
+    "spd": 6.26,
+    "gruene": 3.03,
+    "linke": 6.37,
+    "afd": 48.87,
+    "fdp": 1.92,
+    "bsw": 6.39
+   }
+  },
+  {
+   "id": "157",
+   "name": "Sächsische Schweiz-Osterzgebirge",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 22.65,
+    "spd": 8.04,
+    "gruene": 2.99,
+    "linke": 9.15,
+    "afd": 49.07,
+    "fdp": 2.82,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "158",
+   "name": "Dresden I",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 27.33,
+    "spd": 11.72,
+    "gruene": 10.87,
+    "linke": 14.25,
+    "afd": 29.42,
+    "fdp": 3.4,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "159",
+   "name": "Dresden II – Bautzen II",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 24.18,
+    "spd": 9.37,
+    "gruene": 11.37,
+    "linke": 16.41,
+    "afd": 29.9,
+    "fdp": 2.63,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "160",
+   "name": "Mittelsachsen",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 26.98,
+    "spd": 9.06,
+    "gruene": 2.5,
+    "linke": 9.0,
+    "afd": 45.36,
+    "fdp": 2.91,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "161",
+   "name": "Chemnitz",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 21.41,
+    "spd": 16.74,
+    "gruene": 4.55,
+    "linke": 9.95,
+    "afd": 32.19,
+    "fdp": 2.3,
+    "bsw": 9.15
+   }
+  },
+  {
+   "id": "162",
+   "name": "Chemnitzer Umland – Erzgebirgskreis II",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 27.72,
+    "spd": 11.68,
+    "gruene": 2.77,
+    "linke": 10.3,
+    "afd": 44.16,
+    "fdp": 3.37,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "163",
+   "name": "Erzgebirgskreis I",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 25.03,
+    "spd": 6.6,
+    "gruene": 1.6,
+    "linke": 6.84,
+    "afd": 46.65,
+    "fdp": 2.2,
+    "bsw": 6.33
+   }
+  },
+  {
+   "id": "164",
+   "name": "Zwickau",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 23.73,
+    "spd": 9.92,
+    "gruene": 2.33,
+    "linke": 7.49,
+    "afd": 39.91,
+    "fdp": 2.86,
+    "bsw": 9.03
+   }
+  },
+  {
+   "id": "165",
+   "name": "Vogtlandkreis",
+   "seats": 1,
+   "region": "Sachsen",
+   "results_2022": {
+    "cdu": 26.98,
+    "spd": 9.98,
+    "gruene": 3.23,
+    "linke": 9.53,
+    "afd": 43.34,
+    "fdp": 2.44,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "166",
+   "name": "Waldeck",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 31.1,
+    "spd": 28.22,
+    "gruene": 7.11,
+    "linke": 5.7,
+    "afd": 21.36,
+    "fdp": 3.28,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "167",
+   "name": "Kassel",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 24.27,
+    "spd": 27.67,
+    "gruene": 14.06,
+    "linke": 11.67,
+    "afd": 16.25,
+    "fdp": 2.74,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "168",
+   "name": "Werra-Meißner – Hersfeld-Rotenburg",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 32.25,
+    "spd": 27.75,
+    "gruene": 5.37,
+    "linke": 5.29,
+    "afd": 22.58,
+    "fdp": 2.43,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "169",
+   "name": "Schwalm-Eder",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 30.09,
+    "spd": 28.3,
+    "gruene": 5.74,
+    "linke": 5.26,
+    "afd": 23.96,
+    "fdp": 2.85,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "170",
+   "name": "Marburg",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 29.12,
+    "spd": 30.28,
+    "gruene": 9.09,
+    "linke": 7.58,
+    "afd": 18.28,
+    "fdp": 2.3,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "171",
+   "name": "Lahn-Dill",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 34.32,
+    "spd": 24.05,
+    "gruene": 6.81,
+    "linke": 5.28,
+    "afd": 23.11,
+    "fdp": 2.76,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "172",
+   "name": "Gießen",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 30.43,
+    "spd": 27.81,
+    "gruene": 8.63,
+    "linke": 7.03,
+    "afd": 18.96,
+    "fdp": 2.77,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "173",
+   "name": "Fulda",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 43.25,
+    "spd": 13.65,
+    "gruene": 6.61,
+    "linke": 4.19,
+    "afd": 22.93,
+    "fdp": 3.44,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "174",
+   "name": "Main-Kinzig – Wetterau II – Schotten",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 34.14,
+    "spd": 20.51,
+    "gruene": 7.39,
+    "linke": 4.86,
+    "afd": 24.93,
+    "fdp": 3.27,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "175",
+   "name": "Hochtaunus",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 37.83,
+    "spd": 19.46,
+    "gruene": 12.17,
+    "linke": 5.36,
+    "afd": 16.55,
+    "fdp": 4.81,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "176",
+   "name": "Wetterau I",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 33.66,
+    "spd": 25.74,
+    "gruene": 9.71,
+    "linke": 5.21,
+    "afd": 17.48,
+    "fdp": 3.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "177",
+   "name": "Rheingau-Taunus – Limburg",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 36.81,
+    "spd": 22.15,
+    "gruene": 10.75,
+    "linke": 4.98,
+    "afd": 17.33,
+    "fdp": 4.23,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "178",
+   "name": "Wiesbaden",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 30.66,
+    "spd": 22.28,
+    "gruene": 14.91,
+    "linke": 10.5,
+    "afd": 13.9,
+    "fdp": 4.05,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "179",
+   "name": "Hanau",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 31.96,
+    "spd": 25.3,
+    "gruene": 8.55,
+    "linke": 7.57,
+    "afd": 19.13,
+    "fdp": 3.65,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "180",
+   "name": "Main-Taunus",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 39.8,
+    "spd": 17.77,
+    "gruene": 13.98,
+    "linke": 5.99,
+    "afd": 13.09,
+    "fdp": 5.38,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "181",
+   "name": "Frankfurt am Main I",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 25.99,
+    "spd": 25.74,
+    "gruene": 16.24,
+    "linke": 12.82,
+    "afd": 10.76,
+    "fdp": 4.68,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "182",
+   "name": "Frankfurt am Main II",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 27.36,
+    "spd": 18.47,
+    "gruene": 26.42,
+    "linke": 9.88,
+    "afd": 9.18,
+    "fdp": 4.62,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "183",
+   "name": "Groß-Gerau",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 30.35,
+    "spd": 28.86,
+    "gruene": 8.05,
+    "linke": 8.91,
+    "afd": 16.41,
+    "fdp": 3.36,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "184",
+   "name": "Offenbach",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 31.2,
+    "spd": 22.25,
+    "gruene": 14.73,
+    "linke": 10.34,
+    "afd": 15.24,
+    "fdp": 3.83,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "185",
+   "name": "Darmstadt",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 26.73,
+    "spd": 21.07,
+    "gruene": 21.68,
+    "linke": 7.64,
+    "afd": 13.61,
+    "fdp": 3.29,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "186",
+   "name": "Odenwald",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 33.99,
+    "spd": 24.78,
+    "gruene": 9.0,
+    "linke": 6.08,
+    "afd": 18.46,
+    "fdp": 3.54,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "187",
+   "name": "Bergstraße",
+   "seats": 1,
+   "region": "Hessen",
+   "results_2022": {
+    "cdu": 36.28,
+    "spd": 20.97,
+    "gruene": 9.14,
+    "linke": 5.41,
+    "afd": 20.42,
+    "fdp": 3.85,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "188",
+   "name": "Eichsfeld – Nordhausen – Kyffhäuserkreis",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 27.8,
+    "spd": 8.73,
+    "gruene": 1.82,
+    "linke": 11.87,
+    "afd": 39.53,
+    "fdp": 2.32,
+    "bsw": 7.73
+   }
+  },
+  {
+   "id": "189",
+   "name": "Eisenach – Wartburgkreis – Unstrut-Hainich-Kreis",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 22.65,
+    "spd": 11.91,
+    "gruene": 2.45,
+    "linke": 10.1,
+    "afd": 38.51,
+    "fdp": 1.48,
+    "bsw": 8.08
+   }
+  },
+  {
+   "id": "190",
+   "name": "Jena – Sömmerda – Weimarer Land I",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 18.53,
+    "spd": 11.7,
+    "gruene": 5.99,
+    "linke": 19.52,
+    "afd": 32.48,
+    "fdp": 2.28,
+    "bsw": 7.15
+   }
+  },
+  {
+   "id": "191",
+   "name": "Gotha – Ilm-Kreis",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 20.01,
+    "spd": 10.01,
+    "gruene": 3.0,
+    "linke": 12.79,
+    "afd": 41.16,
+    "fdp": 2.04,
+    "bsw": 7.95
+   }
+  },
+  {
+   "id": "192",
+   "name": "Erfurt – Weimar – Weimarer Land II",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 16.35,
+    "spd": 7.95,
+    "gruene": 3.12,
+    "linke": 36.82,
+    "afd": 26.66,
+    "fdp": 1.92,
+    "bsw": 5.89
+   }
+  },
+  {
+   "id": "193",
+   "name": "Gera – Greiz – Altenburger Land",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 19.97,
+    "spd": 10.85,
+    "gruene": 1.93,
+    "linke": 11.87,
+    "afd": 44.79,
+    "fdp": 2.27,
+    "bsw": 6.34
+   }
+  },
+  {
+   "id": "194",
+   "name": "Saalfeld-Rudolstadt – Saale-Holzland-Kreis – Saale-Orla-Kreis",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 20.56,
+    "spd": 8.32,
+    "gruene": 2.53,
+    "linke": 12.32,
+    "afd": 44.48,
+    "fdp": 2.24,
+    "bsw": 7.25
+   }
+  },
+  {
+   "id": "195",
+   "name": "Suhl – Schmalkalden-Meiningen – Hildburghausen – Sonneberg",
+   "seats": 1,
+   "region": "Thüringen",
+   "results_2022": {
+    "cdu": 19.41,
+    "spd": 10.47,
+    "gruene": 1.62,
+    "linke": 10.55,
+    "afd": 42.1,
+    "fdp": 2.4,
+    "bsw": 8.41
+   }
+  },
+  {
+   "id": "196",
+   "name": "Neuwied",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 35.6,
+    "spd": 21.99,
+    "gruene": 6.2,
+    "linke": 5.04,
+    "afd": 20.98,
+    "fdp": 3.56,
+    "bsw": 3.35
+   }
+  },
+  {
+   "id": "197",
+   "name": "Ahrweiler",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 39.26,
+    "spd": 19.33,
+    "gruene": 9.13,
+    "linke": 5.2,
+    "afd": 17.94,
+    "fdp": 3.34,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "198",
+   "name": "Koblenz",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 35.71,
+    "spd": 24.41,
+    "gruene": 9.72,
+    "linke": 5.85,
+    "afd": 16.1,
+    "fdp": 3.05,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "199",
+   "name": "Mosel/Rhein-Hunsrück",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 38.17,
+    "spd": 19.32,
+    "gruene": 7.16,
+    "linke": 4.63,
+    "afd": 19.3,
+    "fdp": 5.41,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "200",
+   "name": "Kreuznach",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 32.27,
+    "spd": 26.28,
+    "gruene": 5.36,
+    "linke": 4.38,
+    "afd": 21.17,
+    "fdp": 3.25,
+    "bsw": 3.26
+   }
+  },
+  {
+   "id": "201",
+   "name": "Bitburg",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 40.2,
+    "spd": 20.38,
+    "gruene": 5.54,
+    "linke": 3.68,
+    "afd": 16.74,
+    "fdp": 3.12,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "202",
+   "name": "Trier",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 30.8,
+    "spd": 30.23,
+    "gruene": 8.27,
+    "linke": 5.02,
+    "afd": 14.22,
+    "fdp": 3.96,
+    "bsw": 3.45
+   }
+  },
+  {
+   "id": "203",
+   "name": "Montabaur",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 35.73,
+    "spd": 23.38,
+    "gruene": 6.29,
+    "linke": 5.05,
+    "afd": 20.5,
+    "fdp": 3.17,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "204",
+   "name": "Mainz",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 27.25,
+    "spd": 23.7,
+    "gruene": 19.1,
+    "linke": 9.16,
+    "afd": 10.19,
+    "fdp": 3.77,
+    "bsw": 2.33
+   }
+  },
+  {
+   "id": "205",
+   "name": "Worms",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 35.34,
+    "spd": 22.15,
+    "gruene": 7.94,
+    "linke": 4.9,
+    "afd": 20.35,
+    "fdp": 2.93,
+    "bsw": 2.5
+   }
+  },
+  {
+   "id": "206",
+   "name": "Ludwigshafen/Frankenthal",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 27.09,
+    "spd": 26.21,
+    "gruene": 7.68,
+    "linke": 4.84,
+    "afd": 23.05,
+    "fdp": 3.56,
+    "bsw": 3.38
+   }
+  },
+  {
+   "id": "207",
+   "name": "Neustadt – Speyer",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 34.69,
+    "spd": 21.93,
+    "gruene": 9.37,
+    "linke": 3.95,
+    "afd": 19.53,
+    "fdp": 3.09,
+    "bsw": 3.05
+   }
+  },
+  {
+   "id": "208",
+   "name": "Kaiserslautern",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 24.08,
+    "spd": 27.96,
+    "gruene": 5.71,
+    "linke": 4.18,
+    "afd": 25.53,
+    "fdp": 2.9,
+    "bsw": 4.31
+   }
+  },
+  {
+   "id": "209",
+   "name": "Pirmasens",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 33.29,
+    "spd": 20.75,
+    "gruene": 4.45,
+    "linke": 3.59,
+    "afd": 25.09,
+    "fdp": 2.97,
+    "bsw": 3.52
+   }
+  },
+  {
+   "id": "210",
+   "name": "Südpfalz",
+   "seats": 1,
+   "region": "Rheinland-Pfalz",
+   "results_2022": {
+    "cdu": 38.23,
+    "spd": 19.23,
+    "gruene": 7.74,
+    "linke": 3.99,
+    "afd": 19.97,
+    "fdp": 2.63,
+    "bsw": 3.01
+   }
+  },
+  {
+   "id": "211",
+   "name": "Altötting",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.93,
+    "spd": 8.67,
+    "gruene": 7.59,
+    "linke": 4.28,
+    "afd": 23.56,
+    "fdp": 2.92,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "212",
+   "name": "Erding – Ebersberg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 45.91,
+    "spd": 10.09,
+    "gruene": 13.4,
+    "linke": 3.93,
+    "afd": 15.64,
+    "fdp": 3.63,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "213",
+   "name": "Freising",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.14,
+    "spd": 11.45,
+    "gruene": 12.6,
+    "linke": 4.23,
+    "afd": 18.11,
+    "fdp": 2.84,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "214",
+   "name": "Fürstenfeldbruck",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 42.62,
+    "spd": 15.0,
+    "gruene": 12.03,
+    "linke": 3.68,
+    "afd": 14.1,
+    "fdp": 4.4,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "215",
+   "name": "Ingolstadt",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 47.08,
+    "spd": 11.05,
+    "gruene": 7.45,
+    "linke": 3.96,
+    "afd": 20.1,
+    "fdp": 1.9,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "216",
+   "name": "München-Nord",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 32.43,
+    "spd": 19.76,
+    "gruene": 24.21,
+    "linke": 6.57,
+    "afd": 9.04,
+    "fdp": 4.62,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "217",
+   "name": "München-Ost",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 36.29,
+    "spd": 15.46,
+    "gruene": 24.24,
+    "linke": 6.12,
+    "afd": 9.04,
+    "fdp": 4.06,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "218",
+   "name": "München-Süd",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 30.37,
+    "spd": 14.65,
+    "gruene": 29.77,
+    "linke": 5.44,
+    "afd": 8.79,
+    "fdp": 3.97,
+    "bsw": 2.54
+   }
+  },
+  {
+   "id": "219",
+   "name": "München-West/Mitte",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 34.69,
+    "spd": 15.86,
+    "gruene": 28.94,
+    "linke": 6.09,
+    "afd": 0.0,
+    "fdp": 4.96,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "220",
+   "name": "München-Land",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.07,
+    "spd": 13.34,
+    "gruene": 19.56,
+    "linke": 4.12,
+    "afd": 11.2,
+    "fdp": 4.29,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "221",
+   "name": "Rosenheim",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 40.87,
+    "spd": 8.93,
+    "gruene": 12.55,
+    "linke": 4.56,
+    "afd": 18.34,
+    "fdp": 2.85,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "222",
+   "name": "Bad Tölz-Wolfratshausen – Miesbach",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 46.39,
+    "spd": 7.72,
+    "gruene": 14.75,
+    "linke": 3.33,
+    "afd": 16.5,
+    "fdp": 3.37,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "223",
+   "name": "Starnberg – Landsberg am Lech",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 42.89,
+    "spd": 12.89,
+    "gruene": 16.7,
+    "linke": 3.44,
+    "afd": 12.9,
+    "fdp": 3.55,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "224",
+   "name": "Traunstein",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 46.87,
+    "spd": 12.14,
+    "gruene": 8.72,
+    "linke": 4.01,
+    "afd": 18.05,
+    "fdp": 1.9,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "225",
+   "name": "Weilheim",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 45.77,
+    "spd": 9.44,
+    "gruene": 12.68,
+    "linke": 3.99,
+    "afd": 15.51,
+    "fdp": 4.45,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "226",
+   "name": "Deggendorf",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.28,
+    "spd": 9.02,
+    "gruene": 4.71,
+    "linke": 2.28,
+    "afd": 27.01,
+    "fdp": 3.85,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "227",
+   "name": "Landshut",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 34.24,
+    "spd": 9.07,
+    "gruene": 8.26,
+    "linke": 3.65,
+    "afd": 20.32,
+    "fdp": 3.11,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "228",
+   "name": "Passau",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 40.79,
+    "spd": 14.02,
+    "gruene": 5.17,
+    "linke": 2.9,
+    "afd": 23.53,
+    "fdp": 2.14,
+    "bsw": 2.65
+   }
+  },
+  {
+   "id": "229",
+   "name": "Rottal-Inn",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 34.9,
+    "spd": 7.0,
+    "gruene": 5.41,
+    "linke": 2.93,
+    "afd": 23.15,
+    "fdp": 1.85,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "230",
+   "name": "Straubing",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 46.32,
+    "spd": 7.9,
+    "gruene": 5.14,
+    "linke": 3.12,
+    "afd": 26.02,
+    "fdp": 1.93,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "231",
+   "name": "Amberg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 44.51,
+    "spd": 10.88,
+    "gruene": 6.72,
+    "linke": 4.04,
+    "afd": 21.18,
+    "fdp": 2.59,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "232",
+   "name": "Regensburg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 38.26,
+    "spd": 13.03,
+    "gruene": 13.09,
+    "linke": 4.59,
+    "afd": 17.91,
+    "fdp": 2.47,
+    "bsw": 2.43
+   }
+  },
+  {
+   "id": "233",
+   "name": "Schwandorf",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 42.2,
+    "spd": 13.87,
+    "gruene": 4.08,
+    "linke": 2.67,
+    "afd": 26.99,
+    "fdp": 1.86,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "234",
+   "name": "Weiden",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.53,
+    "spd": 11.97,
+    "gruene": 4.87,
+    "linke": 4.11,
+    "afd": 23.03,
+    "fdp": 3.03,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "235",
+   "name": "Bamberg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 39.42,
+    "spd": 14.57,
+    "gruene": 13.41,
+    "linke": 5.11,
+    "afd": 18.66,
+    "fdp": 3.04,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "236",
+   "name": "Bayreuth",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 44.48,
+    "spd": 14.26,
+    "gruene": 8.24,
+    "linke": 4.58,
+    "afd": 18.84,
+    "fdp": 2.76,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "237",
+   "name": "Coburg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 41.91,
+    "spd": 14.37,
+    "gruene": 8.54,
+    "linke": 3.92,
+    "afd": 20.93,
+    "fdp": 1.94,
+    "bsw": 2.22
+   }
+  },
+  {
+   "id": "238",
+   "name": "Hof",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 40.36,
+    "spd": 17.85,
+    "gruene": 4.97,
+    "linke": 4.5,
+    "afd": 23.79,
+    "fdp": 2.46,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "239",
+   "name": "Kulmbach",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 49.33,
+    "spd": 9.38,
+    "gruene": 6.56,
+    "linke": 3.81,
+    "afd": 21.81,
+    "fdp": 2.02,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "240",
+   "name": "Ansbach",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 41.77,
+    "spd": 13.17,
+    "gruene": 9.0,
+    "linke": 4.65,
+    "afd": 21.25,
+    "fdp": 2.6,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "241",
+   "name": "Erlangen",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 35.91,
+    "spd": 17.35,
+    "gruene": 18.17,
+    "linke": 5.65,
+    "afd": 14.02,
+    "fdp": 2.95,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "242",
+   "name": "Fürth",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 37.42,
+    "spd": 17.85,
+    "gruene": 10.86,
+    "linke": 6.1,
+    "afd": 18.51,
+    "fdp": 2.94,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "243",
+   "name": "Nürnberg-Nord",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 30.18,
+    "spd": 17.77,
+    "gruene": 21.55,
+    "linke": 9.77,
+    "afd": 12.02,
+    "fdp": 3.31,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "244",
+   "name": "Nürnberg-Süd",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 36.0,
+    "spd": 17.82,
+    "gruene": 10.84,
+    "linke": 7.97,
+    "afd": 19.97,
+    "fdp": 2.62,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "245",
+   "name": "Roth",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 42.89,
+    "spd": 13.03,
+    "gruene": 12.32,
+    "linke": 5.07,
+    "afd": 16.92,
+    "fdp": 2.82,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "246",
+   "name": "Aschaffenburg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.8,
+    "spd": 12.31,
+    "gruene": 11.81,
+    "linke": 4.75,
+    "afd": 18.43,
+    "fdp": 3.35,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "247",
+   "name": "Bad Kissingen",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 50.52,
+    "spd": 14.53,
+    "gruene": 6.14,
+    "linke": 5.76,
+    "afd": 0.0,
+    "fdp": 4.88,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "248",
+   "name": "Main-Spessart",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 45.52,
+    "spd": 15.68,
+    "gruene": 8.35,
+    "linke": 4.12,
+    "afd": 18.08,
+    "fdp": 2.31,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "249",
+   "name": "Schweinfurt",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.36,
+    "spd": 13.44,
+    "gruene": 7.93,
+    "linke": 4.68,
+    "afd": 20.82,
+    "fdp": 2.46,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "250",
+   "name": "Würzburg",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 39.14,
+    "spd": 13.77,
+    "gruene": 19.11,
+    "linke": 5.1,
+    "afd": 12.96,
+    "fdp": 4.19,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "251",
+   "name": "Augsburg-Stadt",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 31.05,
+    "spd": 14.05,
+    "gruene": 20.58,
+    "linke": 7.44,
+    "afd": 17.3,
+    "fdp": 2.81,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "252",
+   "name": "Augsburg-Land",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 44.5,
+    "spd": 12.7,
+    "gruene": 9.2,
+    "linke": 3.95,
+    "afd": 18.91,
+    "fdp": 2.77,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "253",
+   "name": "Donau-Ries",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 45.07,
+    "spd": 12.12,
+    "gruene": 5.78,
+    "linke": 3.4,
+    "afd": 21.47,
+    "fdp": 2.39,
+    "bsw": 2.17
+   }
+  },
+  {
+   "id": "254",
+   "name": "Neu-Ulm",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 42.48,
+    "spd": 10.58,
+    "gruene": 8.38,
+    "linke": 4.51,
+    "afd": 23.68,
+    "fdp": 2.89,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "255",
+   "name": "Memmingen – Unterallgäu",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 43.77,
+    "spd": 9.49,
+    "gruene": 8.1,
+    "linke": 4.65,
+    "afd": 22.73,
+    "fdp": 2.95,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "256",
+   "name": "Oberallgäu",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 36.82,
+    "spd": 8.42,
+    "gruene": 12.41,
+    "linke": 3.91,
+    "afd": 16.68,
+    "fdp": 4.25,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "257",
+   "name": "Ostallgäu",
+   "seats": 1,
+   "region": "Bayern",
+   "results_2022": {
+    "cdu": 45.54,
+    "spd": 9.94,
+    "gruene": 10.37,
+    "linke": 4.49,
+    "afd": 19.59,
+    "fdp": 2.6,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "258",
+   "name": "Stuttgart I",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 28.33,
+    "spd": 15.65,
+    "gruene": 28.33,
+    "linke": 8.81,
+    "afd": 8.59,
+    "fdp": 5.79,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "259",
+   "name": "Stuttgart II",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 30.37,
+    "spd": 15.93,
+    "gruene": 21.25,
+    "linke": 8.96,
+    "afd": 14.56,
+    "fdp": 4.18,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "260",
+   "name": "Böblingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.35,
+    "spd": 16.8,
+    "gruene": 13.46,
+    "linke": 4.88,
+    "afd": 17.11,
+    "fdp": 6.11,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "261",
+   "name": "Esslingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.03,
+    "spd": 16.19,
+    "gruene": 15.51,
+    "linke": 6.62,
+    "afd": 15.69,
+    "fdp": 4.34,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "262",
+   "name": "Nürtingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.73,
+    "spd": 16.44,
+    "gruene": 14.4,
+    "linke": 5.38,
+    "afd": 17.76,
+    "fdp": 5.29,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "263",
+   "name": "Göppingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.11,
+    "spd": 16.98,
+    "gruene": 9.28,
+    "linke": 4.77,
+    "afd": 22.61,
+    "fdp": 4.09,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "264",
+   "name": "Waiblingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.68,
+    "spd": 17.2,
+    "gruene": 12.36,
+    "linke": 5.29,
+    "afd": 18.05,
+    "fdp": 5.72,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "265",
+   "name": "Ludwigsburg",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 36.53,
+    "spd": 15.16,
+    "gruene": 16.04,
+    "linke": 6.24,
+    "afd": 16.88,
+    "fdp": 5.12,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "266",
+   "name": "Neckar-Zaber",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 39.25,
+    "spd": 15.0,
+    "gruene": 11.6,
+    "linke": 5.1,
+    "afd": 19.51,
+    "fdp": 3.95,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "267",
+   "name": "Heilbronn",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 34.98,
+    "spd": 15.5,
+    "gruene": 8.62,
+    "linke": 5.95,
+    "afd": 25.06,
+    "fdp": 5.1,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "268",
+   "name": "Schwäbisch Hall – Hohenlohe",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 36.39,
+    "spd": 14.89,
+    "gruene": 10.03,
+    "linke": 4.82,
+    "afd": 24.02,
+    "fdp": 4.5,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "269",
+   "name": "Backnang – Schwäbisch Gmünd",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 36.56,
+    "spd": 16.45,
+    "gruene": 10.68,
+    "linke": 5.16,
+    "afd": 23.38,
+    "fdp": 4.03,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "270",
+   "name": "Aalen – Heidenheim",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 41.39,
+    "spd": 14.06,
+    "gruene": 8.32,
+    "linke": 5.03,
+    "afd": 23.12,
+    "fdp": 3.59,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "271",
+   "name": "Karlsruhe-Stadt",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 23.65,
+    "spd": 15.26,
+    "gruene": 30.64,
+    "linke": 7.98,
+    "afd": 13.73,
+    "fdp": 3.82,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "272",
+   "name": "Karlsruhe-Land",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 39.16,
+    "spd": 14.96,
+    "gruene": 13.01,
+    "linke": 5.06,
+    "afd": 18.48,
+    "fdp": 4.19,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "273",
+   "name": "Rastatt",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 38.85,
+    "spd": 15.12,
+    "gruene": 11.25,
+    "linke": 4.68,
+    "afd": 22.21,
+    "fdp": 3.53,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "274",
+   "name": "Heidelberg",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 29.16,
+    "spd": 15.89,
+    "gruene": 27.74,
+    "linke": 7.13,
+    "afd": 11.97,
+    "fdp": 3.65,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "275",
+   "name": "Mannheim",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 24.73,
+    "spd": 22.47,
+    "gruene": 18.1,
+    "linke": 7.98,
+    "afd": 17.88,
+    "fdp": 4.21,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "276",
+   "name": "Odenwald – Tauber",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 42.85,
+    "spd": 14.13,
+    "gruene": 7.85,
+    "linke": 4.53,
+    "afd": 23.0,
+    "fdp": 3.14,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "277",
+   "name": "Rhein-Neckar",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 34.42,
+    "spd": 20.36,
+    "gruene": 11.02,
+    "linke": 5.09,
+    "afd": 20.36,
+    "fdp": 4.33,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "278",
+   "name": "Bruchsal – Schwetzingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 36.14,
+    "spd": 16.33,
+    "gruene": 10.73,
+    "linke": 5.16,
+    "afd": 22.23,
+    "fdp": 4.17,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "279",
+   "name": "Pforzheim",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.06,
+    "spd": 21.06,
+    "gruene": 0.0,
+    "linke": 6.41,
+    "afd": 26.89,
+    "fdp": 5.45,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "280",
+   "name": "Calw",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 39.04,
+    "spd": 12.9,
+    "gruene": 8.12,
+    "linke": 3.89,
+    "afd": 24.21,
+    "fdp": 4.21,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "281",
+   "name": "Freiburg",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 24.55,
+    "spd": 15.65,
+    "gruene": 32.49,
+    "linke": 10.02,
+    "afd": 10.27,
+    "fdp": 2.84,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "282",
+   "name": "Lörrach – Müllheim",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 33.21,
+    "spd": 17.33,
+    "gruene": 15.69,
+    "linke": 6.08,
+    "afd": 17.63,
+    "fdp": 3.12,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "283",
+   "name": "Emmendingen – Lahr",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.03,
+    "spd": 22.23,
+    "gruene": 10.13,
+    "linke": 4.7,
+    "afd": 18.95,
+    "fdp": 3.15,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "284",
+   "name": "Offenburg",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 38.21,
+    "spd": 12.98,
+    "gruene": 12.32,
+    "linke": 5.41,
+    "afd": 20.71,
+    "fdp": 4.46,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "285",
+   "name": "Rottweil – Tuttlingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 38.94,
+    "spd": 11.07,
+    "gruene": 7.8,
+    "linke": 4.47,
+    "afd": 27.53,
+    "fdp": 5.46,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "286",
+   "name": "Schwarzwald-Baar",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 42.32,
+    "spd": 14.91,
+    "gruene": 7.67,
+    "linke": 4.07,
+    "afd": 22.4,
+    "fdp": 3.48,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "287",
+   "name": "Konstanz",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.7,
+    "spd": 15.6,
+    "gruene": 14.97,
+    "linke": 5.89,
+    "afd": 17.45,
+    "fdp": 4.34,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "288",
+   "name": "Waldshut",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.72,
+    "spd": 18.67,
+    "gruene": 11.64,
+    "linke": 4.74,
+    "afd": 18.5,
+    "fdp": 3.58,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "289",
+   "name": "Reutlingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 38.48,
+    "spd": 13.67,
+    "gruene": 12.71,
+    "linke": 5.55,
+    "afd": 19.78,
+    "fdp": 5.55,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "290",
+   "name": "Tübingen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 31.72,
+    "spd": 12.95,
+    "gruene": 24.66,
+    "linke": 6.15,
+    "afd": 15.65,
+    "fdp": 3.65,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "291",
+   "name": "Ulm",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 38.79,
+    "spd": 13.36,
+    "gruene": 15.54,
+    "linke": 4.97,
+    "afd": 18.53,
+    "fdp": 3.55,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "292",
+   "name": "Biberach",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 40.87,
+    "spd": 12.7,
+    "gruene": 10.33,
+    "linke": 3.8,
+    "afd": 22.35,
+    "fdp": 3.87,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "293",
+   "name": "Bodensee",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 40.03,
+    "spd": 15.25,
+    "gruene": 12.68,
+    "linke": 4.23,
+    "afd": 20.36,
+    "fdp": 3.21,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "294",
+   "name": "Ravensburg",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 38.72,
+    "spd": 10.98,
+    "gruene": 15.23,
+    "linke": 6.26,
+    "afd": 18.6,
+    "fdp": 5.71,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "295",
+   "name": "Zollernalb – Sigmaringen",
+   "seats": 1,
+   "region": "Baden-Württemberg",
+   "results_2022": {
+    "cdu": 37.13,
+    "spd": 19.63,
+    "gruene": 5.33,
+    "linke": 3.98,
+    "afd": 26.16,
+    "fdp": 4.19,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "296",
+   "name": "Saarbrücken",
+   "seats": 1,
+   "region": "Saarland",
+   "results_2022": {
+    "cdu": 24.75,
+    "spd": 32.38,
+    "gruene": 7.41,
+    "linke": 8.46,
+    "afd": 20.62,
+    "fdp": 3.6,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "297",
+   "name": "Saarlouis",
+   "seats": 1,
+   "region": "Saarland",
+   "results_2022": {
+    "cdu": 31.84,
+    "spd": 28.33,
+    "gruene": 4.76,
+    "linke": 6.71,
+    "afd": 21.94,
+    "fdp": 3.24,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "298",
+   "name": "St. Wendel",
+   "seats": 1,
+   "region": "Saarland",
+   "results_2022": {
+    "cdu": 33.88,
+    "spd": 28.59,
+    "gruene": 3.78,
+    "linke": 5.75,
+    "afd": 20.55,
+    "fdp": 3.79,
+    "bsw": 0.0
+   }
+  },
+  {
+   "id": "299",
+   "name": "Homburg",
+   "seats": 1,
+   "region": "Saarland",
+   "results_2022": {
+    "cdu": 28.02,
+    "spd": 30.52,
+    "gruene": 4.44,
+    "linke": 6.64,
+    "afd": 23.35,
+    "fdp": 3.21,
+    "bsw": 0.0
+   }
+  }
+ ]
+}

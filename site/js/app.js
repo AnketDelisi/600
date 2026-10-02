@@ -207,7 +207,7 @@ function allocateConstituencySeats(votes, constituency){
   const pctShifted={};
   for(const pid of PARTY_ORDER) pctShifted[pid]=(shifted[pid]/total)*100;
   // Swedish rule: >=4% nationally OR >=12% in the constituency
-  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||pctShifted[p]>=12);
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||(CONSTITUENCY_RULE!=='fptp'&&pctShifted[p]>=12));
   const totalValid=valid.reduce((s,p)=>s+pctShifted[p],0);
   if(totalValid===0) return {};
   const divisors=[1.2];
@@ -277,7 +277,7 @@ function constituencyTableHtml(votes, opts){
       deltaCells+=`<td class="num c" style="color:${color};font-weight:900">${d>0?'+'+d:d}</td>`;
     }
     rows+=`<tr class="delta-row">
-      <td>Δ vs 2022</td><td></td>${deltaCells}</tr>`;
+      <td>Δ vs ${LAST_ELECTION.date.slice(0,4)}</td><td></td>${deltaCells}</tr>`;
   }
 
   let head='';
@@ -288,7 +288,7 @@ function constituencyTableHtml(votes, opts){
       <th>Constituency</th><th class="c">Seats</th>${head}
     </tr></thead><tbody>${rows}</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      Per-constituency Sainte-Laguë (4% / 12% rule)${note?' · '+note:''}
+      ${CONSTITUENCY_RULE==='fptp'?'First-past-the-post (Erststimme winner)':'Per-constituency Sainte-Laguë (4% / 12% rule)'}${note?' · '+note:''}
     </div></div>`;
 }
 
@@ -296,10 +296,11 @@ function renderConstituencyTable(avg){
   if(!CONSTITUENCIES||CONSTITUENCIES.length===0) return '';
   const votes=PARL_MODE==='proj'?avg:LAST_ELECTION.results;
   const by2022=PARL_MODE==='2022';
+  const baseY=LAST_ELECTION.date.slice(0,4);
   return constituencyTableHtml(votes,{
-    title:`${T.constituencySeats} (${by2022?'2022 '+T.result:T.projection})`,
+    title:`${T.constituencySeats} (${by2022?baseY+' '+T.result:T.projection})`,
     showDelta:!by2022,
-    note:by2022?'2022 actual vote shares':'2022 results shifted by (poll avg − 2022 national)'
+    note:by2022?`${baseY} actual vote shares`:`${baseY} results shifted by (poll avg − ${baseY} national)`
   });
 }
 
@@ -3525,7 +3526,7 @@ function renderMethodology(pane){
         ${MAP_ONLY?`<h3>${t('Two-round system','İki turlu seçim')}</h3>
         <p>${COUNTRY_NAME} elects its president in a two-round system: a candidate wins outright with a <strong>majority of valid votes</strong> on ${TREND_CONF?TREND_CONF.electionDate:'election day'}; otherwise the top two candidates face a runoff two weeks later. The map shows the <strong>${SEATS_TOTAL} ${unitLabel()}</strong> colored by projected winner from the poll average.</p>`:`
         <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
-        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES?' — 310 constituency seats across 29 constituencies plus 39 leveling seats':''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
+        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES&&CONSTITUENCIES&&CONSTITUENCIES.constituencies?` — ${CONSTITUENCIES.constituency_seats} ${CONSTITUENCY_RULE==='fptp'?'direct mandates (first-past-the-post)':`constituency seats across ${CONSTITUENCIES.constituencies.length} constituencies`}${CONSTITUENCIES.leveling_seats?` plus ${CONSTITUENCIES.leveling_seats} leveling seats`:''}`:''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
         <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>`}
 
         ${HIDE_BLOCS?'':`<h3>${t('Bloc Totals','Blok Toplamları')}</h3>

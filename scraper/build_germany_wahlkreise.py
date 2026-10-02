@@ -124,7 +124,7 @@ def main():
             "    constituencies: false,        // single national district (Zweitstimme)",
             "    constituencies: true,         // 299 direct mandates (Erststimme)\n"
             "    constituencyRule: 'fptp',     // winner-takes-all, no 12% rule\n"
-            "    hideForecastConstituencies: true,")
+            "    hideConstituencyTable: true,")
     map2 = {"svg": "img/germany_wahlkreise.svg", "selector": "id",
             "districts": {c["id"]: c["id"] for c in cons},
             "useConstituencies": True, "hideBlocToggle": True,

@@ -2565,7 +2565,7 @@ function renderForecast(pane){
     }
   }
 
-  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length&&!(COUNTRIES[COUNTRY]||{}).hideForecastConstituencies?
+  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length&&!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable?
     constituencyTableHtml(medVotes,{
       title:'CONSTITUENCIES',
       showDelta:true,
@@ -3578,7 +3578,7 @@ function renderPollsTab(){
   // Brazil: state-depth cards under the map (state winners + regions)
   html+=renderStateDepth(avg);
 
-  html+=renderConstituencyTable(avg);
+        if(!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable) html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);
   html+=`</div>`;
   pane.innerHTML=html;

@@ -30,7 +30,8 @@ OUT_SVG = os.path.join(ROOT, "img", "spain.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "spain.svg")
 COMBINED = os.path.join(ROOT, "scraper", ".cache", "es_provinces.geojson")
 ATTRIBUTION = ("Resultados: Ministerio del Interior (generales 2023, via "
-               "electionresources.org); Geometria: geoBoundaries.org")
+               "electionresources.org); Geometria: geoBoundaries.org "
+               "(Canarias acercadas al continente)")
 
 PARTIES = ["pp", "psoe", "vox", "sumar", "erc", "junts", "bildu", "pnv",
            "bng", "cc", "upn", "aa", "podemos", "salf", "ac"]
@@ -90,6 +91,9 @@ PROV = {
     "52": ("melilla", "Melilla", "Melilla"),
 }
 SKIP = {"Censo", "Votantes", "Nulos", "V&aacute;lidos", "Blancos", "Otros"}
+# Canary Islands are shifted towards the mainland (standard cartographic
+# inset practice) so the map does not waste space on the Atlantic gap.
+CANARY_SHIFT = {"palmas": (8.5, 6.25), "tenerife": (8.5, 6.25)}
 
 
 def party_key(ticket):
@@ -191,6 +195,12 @@ def main():
     gj = bm.load_geojson(
         "https://www.geoboundaries.org/api/current/gbOpen/ESP/ADM2/")
     features, matched = [], set()
+
+    def shift_coords(c, dlon, dlat):
+        if isinstance(c[0], (int, float)):
+            return [c[0] + dlon, c[1] + dlat]
+        return [shift_coords(x, dlon, dlat) for x in c]
+
     for f in gj["features"]:
         raw = f["properties"]["shapeName"]
         key = next((k for k, g, _d in PROV.values() if g == raw), None)
@@ -198,8 +208,14 @@ def main():
             print("  no mapping for", raw)
             continue
         matched.add(key)
+        geom = f["geometry"]
+        if key in CANARY_SHIFT:
+            dlon, dlat = CANARY_SHIFT[key]
+            geom = {"type": geom["type"],
+                    "coordinates": shift_coords(geom["coordinates"], dlon,
+                                                dlat)}
         features.append({"type": "Feature", "properties": {"prov": key},
-                         "geometry": f["geometry"]})
+                         "geometry": geom})
     print("features:", len(features), "| without geometry:",
           sorted(set(gebiete) - matched))
     assert len(features) == 52, "expected 52 provinces"

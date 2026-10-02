@@ -40,6 +40,7 @@ jobs:
           python scraper/scrape_slovakia.py
           python scraper/scrape_latvia.py
           python scraper/scrape_serbia.py
+          python scraper/scrape_germany.py
 
       - name: Commit and push to main
         run: |

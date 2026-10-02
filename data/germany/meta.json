@@ -1,0 +1,10 @@
+{
+  "country": "germany",
+  "name": "Germany",
+  "election_date": "2029",
+  "seats": 630,
+  "threshold": 5.0,
+  "method": "sainte_lague_standard",
+  "constituencies": false,
+  "notes": "Bundestag: 630 seats, single national district (Zweitstimme), 5% national threshold, Sainte-Lague/Schepers. CDU and CSU run as separate parties but are modelled as one Union key."
+}

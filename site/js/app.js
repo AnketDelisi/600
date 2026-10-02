@@ -1129,6 +1129,7 @@ function renderStateDepth(avg){
 /* ---------- render parliament ---------- */
 let PARL_MODE='proj';    // 'proj' or '2022'
 let PARL_VIEW='seats';   // 'seats' or 'map'
+let MAP_LAYER=0;         // 0 = main map, 1 = map2 (lower/higher layer)
 let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
 let MAP_COLOR='party';   // district map coloring: 'party' or 'bloc' (Sweden)
 
@@ -1241,6 +1242,7 @@ function renderParliament(avg){
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
+      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
@@ -1262,7 +1264,12 @@ function renderParliament(avg){
 }
 
 /* ---------- district map (Germany / Sweden) ---------- */
-function MAP_CONF(){ return (COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null; }
+function MAP_CONF(){
+  const c=COUNTRIES[COUNTRY];
+  if(!c||!c.map) return null;
+  if(MAP_LAYER===1&&c.map2) return {...c,...c.map,...c.map2};
+  return c.map;
+}
 
 function constituencyById(id){
   if(!CONSTITUENCIES||!CONSTITUENCIES.constituencies) return null;
@@ -1290,6 +1297,15 @@ function districtShares(nr, avg, resultMode){
     base=conf.gebiete[gArr];
   }
   const nat=conf.national2021||LAST_ELECTION.results;
+  // District swing method (backtested on the 2026 MV/Berlin state elections,
+  // 114 Wahlkreise, actual per-district results):
+  //   proportional  now = past * (nat_now/nat_past)   MAE 2.29pp, 88% winners
+  //   uniform       now = past + (nat_now-nat_past)   MAE 3.18pp, 75% winners
+  //   shrunk        now = nat_now + L*(past-nat_past) (config swingShrink)
+  // Proportional is the default; a party whose national baseline is tiny
+  // (<0.5%) falls back to uniform swing to avoid ratio explosions.
+  const method=conf.swingMethod||'proportional';
+  const shrink=(conf.swingShrink!==undefined)?conf.swingShrink:0.6;
   const out={};
   let sum=0;
   for(const p of PARTY_ORDER){
@@ -1298,9 +1314,17 @@ function districtShares(nr, avg, resultMode){
     if(PARTY_META[p]&&PARTY_META[p].pastOnly){
       // dissolved alliances: shown in the 2023 result view, never projected
       now=resultMode?past:0;
+    }else if(resultMode||!avg||avg[p]===undefined){
+      now=past;
     }else{
-      const swing=(!resultMode&&avg&&avg[p]!==undefined)?((avg[p]||0)-(nat[p]||0)):0;
-      now=Math.max(0,past+swing);
+      const natP=nat[p]||0, avgP=avg[p]||0;
+      if(method==='proportional'&&natP>0.5){
+        now=Math.max(0,past*(avgP/natP));
+      }else if(method==='shrunk'){
+        now=Math.max(0,avgP+shrink*(past-natP));
+      }else{
+        now=Math.max(0,past+(avgP-natP));
+      }
     }
     out[p]={past, now};
     sum+=now;
@@ -2006,6 +2030,7 @@ function bindParlToggles(avg){
     btn.addEventListener('click',()=>{
       if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
       if(btn.dataset.parlview) PARL_VIEW=(PARL_VIEW==='map')?'seats':'map';
+      if(btn.dataset.maplayer){ MAP_LAYER=(MAP_LAYER===1)?0:1; PARL_VIEW='map'; }
       if(btn.dataset.mapcolor) MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
       renderPollsTab();
     });
@@ -2668,6 +2693,7 @@ function renderForecast(pane){
       <div class="map-toggle-row" style="justify-content:flex-end">
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+        ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
@@ -2751,6 +2777,17 @@ function renderForecast(pane){
       btn.addEventListener('click',()=>{
         MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
         pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.toggle('active',b===btn));
+        const fcBox=$('fc-map-box');
+        if(fcBox){
+          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
+          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+        }
+      });
+    });
+    pane.querySelectorAll('.fc-layer-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        MAP_LAYER=(MAP_LAYER===1)?0:1;
+        pane.querySelectorAll('.fc-layer-btn').forEach(b=>b.classList.toggle('active',b===btn));
         const fcBox=$('fc-map-box');
         if(fcBox){
           const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
@@ -3580,6 +3617,7 @@ window._600={
     for(const k in RUNOFF_CACHE) delete RUNOFF_CACHE[k];
 PARL_MODE='proj';
     PARL_VIEW='seats';
+    MAP_LAYER=0;
     FC_MODE='proj';
     MAP_COLOR='party';
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}

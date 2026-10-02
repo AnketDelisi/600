@@ -2565,7 +2565,7 @@ function renderForecast(pane){
     }
   }
 
-  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length?
+  const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length&&!(COUNTRIES[COUNTRY]||{}).hideForecastConstituencies?
     constituencyTableHtml(medVotes,{
       title:'CONSTITUENCIES',
       showDelta:true,

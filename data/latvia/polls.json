@@ -1,128 +1,305 @@
 {
   "country": "latvia",
-  "sources": [
-    {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election"
-    },
-    {
-      "name": "PolitPro",
-      "url": "https://politpro.eu/en/latvia"
-    }
-  ],
-  "scraped_at": "2026-09-10T12:00:00Z",
-  "poll_count": 8,
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+  "scraped_at": "2026-10-02T15:12:19Z",
+  "poll_count": 13,
   "polls": [
+    {
+      "pollster": "SKDS/LTV",
+      "date": "2026-09-16",
+      "n": 2035,
+      "country": "latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+      "votes": {
+        "jv": 6.8,
+        "zzs": 6.5,
+        "as": 22.7,
+        "na": 8.7,
+        "st": 3.1,
+        "lpv": 13.3,
+        "pro": 10.2,
+        "la": 3.7,
+        "sc": 2.4,
+        "sv": 14.1,
+        "jkp": 0.7,
+        "asl": 2.0,
+        "mmn": 3.7
+      }
+    },
     {
       "pollster": "Latvijas Fakti",
       "date": "2026-08-31",
-      "fieldwork_start": "2026-08-21",
       "n": 1058,
       "country": "latvia",
-      "source": "PolitPro",
-      "source_url": "https://politpro.eu/en/latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "as": 23.6, "lpv": 12.6, "na": 11.0, "pro": 10.7,
-        "zzs": 10.4, "sv": 9.6, "jv": 8.9, "mmn": 3.3,
-        "la": 2.5, "st": 2.5, "sc": 1.7, "asl": 1.2, "jkp": 0.7
+        "jv": 8.9,
+        "zzs": 10.4,
+        "as": 23.6,
+        "na": 11.0,
+        "st": 2.5,
+        "lpv": 12.6,
+        "pro": 10.7,
+        "la": 2.5,
+        "sc": 1.7,
+        "sv": 9.6,
+        "jkp": 0.7,
+        "asl": 1.2,
+        "mmn": 3.3
       }
     },
     {
-      "pollster": "SKDS",
+      "pollster": "SKDS/LTV",
       "date": "2026-08-19",
-      "fieldwork_start": "2026-08-13",
       "n": 1205,
       "country": "latvia",
-      "source": "PolitPro",
-      "source_url": "https://politpro.eu/en/latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "as": 23.6, "sv": 17.1, "pro": 14.1, "lpv": 12.2,
-        "jv": 7.0, "na": 6.7, "la": 4.1, "zzs": 3.8,
-        "st": 3.3, "mmn": 2.5, "sc": 2.1, "asl": 1.3, "jkp": 1.0
+        "jv": 7.0,
+        "zzs": 3.8,
+        "as": 23.6,
+        "na": 6.7,
+        "st": 3.3,
+        "lpv": 12.2,
+        "pro": 14.1,
+        "la": 4.1,
+        "sc": 2.1,
+        "sv": 17.1,
+        "jkp": 1.0,
+        "asl": 1.3,
+        "mmn": 2.5
       }
     },
     {
-      "pollster": "SKDS",
+      "pollster": "SKDS/LTV",
       "date": "2026-07-15",
-      "fieldwork_start": "2026-07-10",
-      "n": 1200,
+      "n": 1205,
       "country": "latvia",
-      "source": "PolitPro",
-      "source_url": "https://politpro.eu/en/latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "as": 19.2, "sv": 17.1, "lpv": 14.8, "pro": 14.3,
-        "na": 8.7, "jv": 7.2, "zzs": 4.2, "mmn": 3.6,
-        "la": 3.0, "st": 2.5, "sc": 1.9, "asl": 1.9, "jkp": 1.1
+        "jv": 7.2,
+        "zzs": 4.2,
+        "as": 19.2,
+        "na": 8.7,
+        "st": 2.5,
+        "lpv": 14.8,
+        "pro": 14.3,
+        "la": 3.0,
+        "sc": 1.9,
+        "sv": 17.1,
+        "jkp": 1.1,
+        "asl": 1.9,
+        "mmn": 3.6
       }
     },
     {
-      "pollster": "SKDS",
+      "pollster": "SKDS/LTV",
       "date": "2026-06-16",
-      "fieldwork_start": "2026-06-06",
       "n": 1832,
       "country": "latvia",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "as": 17.1, "lpv": 15.0, "pro": 12.1, "na": 9.5,
-        "jv": 7.3, "zzs": 6.9, "sv": 13.8, "mmn": 4.5,
-        "st": 2.9, "sc": 2.8, "la": 2.0, "asl": 1.7, "jkp": 0.5
+        "jv": 7.3,
+        "zzs": 6.9,
+        "as": 17.1,
+        "na": 9.5,
+        "st": 2.9,
+        "lpv": 15.0,
+        "pro": 12.1,
+        "jkp": 0.5,
+        "la": 2.0,
+        "sc": 2.8,
+        "lks": 2.2,
+        "sv": 13.8,
+        "asl": 1.7,
+        "mmn": 4.5
       }
     },
     {
-      "pollster": "SKDS",
+      "pollster": "SKDS/LTV",
       "date": "2026-05-06",
-      "fieldwork_start": "2026-04-24",
       "n": 1126,
       "country": "latvia",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "lpv": 14.9, "pro": 14.9, "as": 11.5, "jv": 11.3,
-        "na": 8.2, "zzs": 8.7, "sv": 10.0, "mmn": 5.2,
-        "st": 3.6, "la": 2.7, "sc": 2.2, "asl": 2.0, "jkp": 1.2
+        "jv": 11.3,
+        "zzs": 8.7,
+        "as": 11.5,
+        "na": 8.2,
+        "st": 3.6,
+        "lpv": 14.9,
+        "pro": 14.9,
+        "jkp": 1.2,
+        "la": 2.7,
+        "sc": 2.2,
+        "lks": 1.6,
+        "sv": 10.0,
+        "asl": 2.0,
+        "mmn": 5.2
       }
     },
     {
       "pollster": "Gemius",
       "date": "2026-04-07",
-      "fieldwork_start": "2026-04-01",
-      "n": 1000,
-      "country": "latvia",
-      "source": "PolitPro",
-      "source_url": "https://politpro.eu/en/latvia",
-      "votes": {
-        "lpv": 14.3, "pro": 14.1, "jv": 9.4, "na": 8.4,
-        "as": 8.2, "sv": 6.1, "zzs": 5.2, "la": 3.9,
-        "mmn": 8.1, "sc": 2.9, "st": 2.2, "asl": 1.9, "jkp": 0.6
-      }
-    },
-    {
-      "pollster": "SKDS",
-      "date": "2026-03-31",
-      "fieldwork_start": "2026-03-01",
-      "n": 1809,
+      "n": 1538,
       "country": "latvia",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "lpv": 14.6, "pro": 12.6, "na": 11.8, "jv": 11.0,
-        "as": 10.6, "zzs": 7.4, "sv": 10.6, "st": 4.5,
-        "mmn": 3.7, "sc": 3.4, "la": 2.0, "asl": 1.8, "jkp": 1.7
+        "jv": 9.4,
+        "zzs": 5.2,
+        "as": 8.2,
+        "na": 8.4,
+        "st": 2.2,
+        "lpv": 14.3,
+        "pro": 14.1,
+        "jkp": 0.6,
+        "la": 3.9,
+        "sc": 2.9,
+        "sv": 6.1,
+        "asl": 1.9,
+        "mmn": 8.1
       }
     },
     {
       "pollster": "Gemius",
       "date": "2026-03-02",
-      "fieldwork_start": "2026-02-24",
       "n": 1168,
       "country": "latvia",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
       "votes": {
-        "jv": 15.1, "pro": 13.2, "na": 8.9, "lpv": 8.4,
-        "mmn": 7.3, "as": 6.9, "sv": 5.3, "la": 2.2,
-        "sc": 4.2, "st": 2.8, "zzs": 4.1, "asl": 3.4, "jkp": 2.0
+        "jv": 15.1,
+        "zzs": 4.1,
+        "as": 6.9,
+        "na": 8.9,
+        "st": 2.8,
+        "lpv": 8.4,
+        "pro": 13.2,
+        "jkp": 2.0,
+        "la": 2.2,
+        "sc": 4.2,
+        "sv": 5.3,
+        "asl": 3.4,
+        "mmn": 7.3
+      }
+    },
+    {
+      "pollster": "Gemius",
+      "date": "2025-12-26",
+      "n": 1423,
+      "country": "latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+      "votes": {
+        "jv": 11.3,
+        "zzs": 3.8,
+        "as": 9.6,
+        "na": 16.5,
+        "st": 2.4,
+        "lpv": 15.5,
+        "pro": 1.3,
+        "jkp": 0.6,
+        "la": 2.1,
+        "sc": 1.0,
+        "lks": 3.0,
+        "sv": 5.6,
+        "asl": 4.2
+      }
+    },
+    {
+      "pollster": "SKDS/LTV",
+      "date": "2025-12-04",
+      "n": 1819,
+      "country": "latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+      "votes": {
+        "jv": 16.0,
+        "zzs": 9.2,
+        "as": 9.9,
+        "na": 10.3,
+        "st": 5.4,
+        "lpv": 13.9,
+        "pro": 0.2,
+        "jkp": 2.0,
+        "la": 2.2,
+        "sc": 2.6,
+        "lks": 2.0,
+        "sv": 8.2,
+        "asl": 1.2
+      }
+    },
+    {
+      "pollster": "Gemius",
+      "date": "2025-11-06",
+      "n": 1410,
+      "country": "latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+      "votes": {
+        "jv": 13.6,
+        "zzs": 5.1,
+        "as": 7.2,
+        "na": 15.3,
+        "st": 1.3,
+        "lpv": 10.7,
+        "pro": 0.7,
+        "jkp": 1.2,
+        "la": 2.3,
+        "sc": 3.8,
+        "lks": 3.0,
+        "sv": 4.4
+      }
+    },
+    {
+      "pollster": "SKDS/LTV",
+      "date": "2025-11-04",
+      "n": 1815,
+      "country": "latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+      "votes": {
+        "jv": 16.5,
+        "zzs": 8.1,
+        "as": 10.5,
+        "na": 11.1,
+        "st": 5.2,
+        "lpv": 14.8,
+        "pro": 0.4,
+        "jkp": 0.9,
+        "la": 2.3,
+        "sc": 3.0,
+        "lks": 2.3,
+        "sv": 6.8
+      }
+    },
+    {
+      "pollster": "Latvijas Fakti",
+      "date": "2025-03-24",
+      "n": 1003,
+      "country": "latvia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Latvian_parliamentary_election",
+      "votes": {
+        "jv": 13.2,
+        "zzs": 16.1,
+        "as": 4.6,
+        "na": 18.1,
+        "st": 5.3,
+        "lpv": 18.9,
+        "pro": 8.9,
+        "jkp": 1.0,
+        "la": 3.5,
+        "sc": 4.2,
+        "sv": 2.1
       }
     }
   ]

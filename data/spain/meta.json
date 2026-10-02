@@ -1,0 +1,10 @@
+{
+  "country": "spain",
+  "name": "Spain",
+  "election_date": "2027",
+  "seats": 350,
+  "threshold": 3.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Congress of Deputies: 350 seats, 52 constituencies (50 provinces plus Ceuta and Melilla), D'Hondt in each constituency, 3% threshold per constituency."
+}

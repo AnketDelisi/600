@@ -160,6 +160,7 @@ function switchTab(btn){
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active');p.setAttribute('aria-hidden','true')});
   const pane=$('pane-'+tabId);
   if(pane){pane.style.display='block';pane.classList.add('active');pane.setAttribute('aria-hidden','false');if(tabId==='forecast'){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(typeof updateUrl==='function') updateUrl();
 }
 document.addEventListener('keydown',e=>{
   if(!e.target.closest||!e.target.closest('.tab-trigger')) return;
@@ -1872,7 +1873,7 @@ function allocateSeatsByDistrict(avg){
     if(!shares) continue;
     const votes={};
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?shares[p].now:0});
-    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&(avg[p]||0)>=THRESHOLD);
+    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&((conf.districtThreshold?votes[p]:(avg[p]||0))>=THRESHOLD));
     if(!valid.length) continue;
     const quo=[];
     valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});
@@ -2035,7 +2036,7 @@ function bindParlToggles(avg){
     btn.addEventListener('click',()=>{
       if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
       if(btn.dataset.parlview) PARL_VIEW=(PARL_VIEW==='map')?'seats':'map';
-      if(btn.dataset.maplayer){ MAP_LAYER=(MAP_LAYER===1)?0:1; PARL_VIEW='map'; }
+      if(btn.dataset.maplayer){ MAP_LAYER=(MAP_LAYER===1)?0:1; PARL_VIEW='map'; updateUrl(); }
       if(btn.dataset.mapcolor) MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
       renderPollsTab();
     });
@@ -2792,6 +2793,7 @@ function renderForecast(pane){
     pane.querySelectorAll('.fc-layer-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         MAP_LAYER=(MAP_LAYER===1)?0:1;
+        updateUrl();
         pane.querySelectorAll('.fc-layer-btn').forEach(b=>b.classList.toggle('active',b===btn));
         const fcBox=$('fc-map-box');
         if(fcBox){
@@ -3632,11 +3634,36 @@ PARL_MODE='proj';
     if(pollsBtn) pollsBtn.dataset.active='true';
     applyTheme(); updateSocialMeta();
     renderCountryNav();
+    updateUrl();
     loadData().then(()=>loadConstituencies()).then(()=>{
       renderPollsTab();
     });
   }
 };
+
+/* ---------- URL routing (?c=country&t=tab&l=2) ---------- */
+function updateUrl(){
+  if(typeof history==='undefined'||!history.replaceState) return;
+  try{
+    const p=new URLSearchParams();
+    p.set('c',COUNTRY);
+    const active=document.querySelector('.tab-trigger[data-active="true"]');
+    const tabId=active?active.dataset.tab:'polls';
+    if(tabId&&tabId!=='polls') p.set('t',tabId);
+    if(MAP_LAYER===1) p.set('l','2');
+    history.replaceState(null,'',location.pathname+'?'+p.toString());
+  }catch(e){}
+}
+function applyUrlParams(){
+  if(typeof location==='undefined') return;
+  const p=new URLSearchParams(location.search);
+  if(p.get('l')==='2') MAP_LAYER=1;
+  const t=p.get('t');
+  if(t&&t!=='polls'){
+    const btn=document.querySelector('.tab-trigger[data-tab="'+t+'"]');
+    if(btn) switchTab(btn);
+  }
+}
 
 /* ---------- boot ---------- */
 // ARIA wiring: tablist/tab/tabpanel roles + aria-selected/aria-controls.
@@ -3705,6 +3732,7 @@ loadData().then(()=>loadConstituencies()).then(()=>{
   wireAria();
   applyTheme(); updateSocialMeta();
   renderCountryNav();
+  applyUrlParams();
   renderPollsTab();
 });
 window.addEventListener('resize',()=>{fitSideCard();});

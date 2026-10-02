@@ -72,6 +72,17 @@ MIN_PARTIES = 8
 EXCLUDED_POLLSTERS = {"filber", "sf+nd"}
 
 
+def _span(cell, attr):
+    """colspan/rowspan as int.
+
+    Wikipedia sometimes emits a broken attribute value (a Parsoid glitch:
+    colspan='2data-sort-value=""'), which lxml keeps verbatim. Take the
+    leading digits; fall back to 1 when there are none.
+    """
+    m = re.match(r"\s*(\d+)", str(cell.get(attr) or ""))
+    return int(m.group(1)) if m else 1
+
+
 def expand_grid(table):
     """Expand a <table> into (grid, metas).
 
@@ -96,8 +107,8 @@ def expand_grid(table):
                 col += 1
             c = cells[i]
             txt = " ".join(c.get_text(" ", strip=True).split())
-            cs = int(c.get("colspan") or 1)
-            rs = int(c.get("rowspan") or 1)
+            cs = _span(c, "colspan")
+            rs = _span(c, "rowspan")
             mrow.append((col, cs, txt))
             for k in range(cs):
                 out.append(txt)

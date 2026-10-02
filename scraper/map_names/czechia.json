@@ -1,0 +1,11 @@
+{
+ "Brno-City": "brno-mesto",
+ "Brno-Country": "brno-venkov",
+ "Ostrava-City": "ostrava-mesto",
+ "Plzeň-City": "plzen-mesto",
+ "Plzeň-North": "plzen-sever",
+ "Plzeň-South": "plzen-jih",
+ "Prague": "praha",
+ "Prague-East": "praha-vychod",
+ "Prague-West": "praha-zapad"
+}

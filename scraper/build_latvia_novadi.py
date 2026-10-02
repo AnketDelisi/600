@@ -5,7 +5,8 @@ Results: CVK 14. Saeimas velesanas (sv2022) open data (data.gov.lv,
 department-level results with Type-2 municipality aggregates). Geometry:
 "Administrativas teritorijas 2021/2026" GeoJSON (data.gov.lv, CC0, 42
 municipalities; Varaklanu novads was merged into Madona by 2026 — its
-2022 votes are folded in). Riga city = department 'riga-1'.
+2022 votes are folded in). Riga = departments 'riga-1' + 'arzemes' (the
+abroad votes belong to the Riga constituency, so both layers agree).
 
 Writes img/latvia_novadi.svg and patches the latvia block in
 js/config.js with a map2 layer.
@@ -75,12 +76,16 @@ def main():
         votes = {}
         for r in res:
             d = r.get("Department") or {}
-            if d.get("Type") != type_no or d.get("Id") == "arzemes":
+            if d.get("Type") != type_no:
                 continue
             if type_no == 1:
                 key = d["Id"]
+            elif d["Id"] in ("riga-1", "arzemes"):
+                # abroad votes belong to the Riga constituency, so the Riga
+                # unit (both layers) = Riga city + Arzemes
+                key = "riga"
             else:
-                key = "riga" if d["Id"] == "riga-1" else base(d["Name"])
+                key = base(d["Name"])
             acc = votes.setdefault(key, {})
             for c in r.get("CandidateLists") or []:
                 pk = SLUG_MAP.get(c.get("Id"))

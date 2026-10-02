@@ -126,7 +126,8 @@ def main():
             "    constituencyRule: 'fptp',     // winner-takes-all, no 12% rule")
     map2 = {"svg": "img/germany_wahlkreise.svg", "selector": "id",
             "districts": {c["id"]: c["id"] for c in cons},
-            "useConstituencies": True, "label": "Wahlkreise (299)"}
+            "useConstituencies": True, "hideBlocToggle": True,
+            "label": "Wahlkreise (299)"}
     mm = re.search(r"\n\s+map: \{", block)
     depth, k = 0, mm.end() - 1
     while k < len(block):

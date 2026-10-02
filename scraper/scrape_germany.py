@@ -182,7 +182,7 @@ def scrape_germany():
                 if span > 1 and len(set(keys)) > 1:
                     votes[keys[0]] = pct      # merged cell -> leftmost party
                 elif len(set(keys)) == 1:
-                    votes[keys[0]] = pct
+                    votes[keys[0]] = votes.get(keys[0], 0) + pct
                 else:
                     votes[keys[0]] = votes.get(keys[0], 0) + pct
 

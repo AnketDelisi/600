@@ -1246,7 +1246,7 @@ function renderParliament(avg){
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
-      ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
+      ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
     </div>`;
@@ -1256,7 +1256,7 @@ function renderParliament(avg){
   const cap=showMap
     ?(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${t('projected winner','tahmini kazanan')}`
-      :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
+      :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
     :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`;
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
@@ -1363,6 +1363,8 @@ function districtShares(nr, avg, resultMode){
 function districtPartySeats(nr, party, avg, resultMode){
   const conf=MAP_CONF();
   if(!conf.useConstituencies) return null;
+  // winner-takes-all constituencies (fptp): no per-party MP pills
+  if(CONSTITUENCY_RULE==='fptp') return null;
   if(resultMode){
     const lbl=Object.keys(conf.districts).find(k=>conf.districts[k]===String(nr));
     if(lbl&&conf.mp2022&&conf.mp2022[lbl]) return conf.mp2022[lbl][party]||0;
@@ -1499,7 +1501,7 @@ async function renderMapInto(box, avg, resultMode){
     if(!nr) return;
     const shares=districtShares(nr, avg, resultMode);
     if(!shares) return;
-    const blocMode=MAP_COLOR==='bloc'&&BLOCS.bloc1&&BLOCS.bloc2;
+    const blocMode=MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
     const blocTotals=blocMode?districtBlocTotals(shares):null;
     // RESULT mode: official per-district winners (winners2021 map / wkResults
     // argmax / per-constituency 2022), else the uniform-swing projection.
@@ -2697,7 +2699,7 @@ function renderForecast(pane){
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
         ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
-        ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
+        ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>

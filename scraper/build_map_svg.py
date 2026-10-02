@@ -336,8 +336,19 @@ def main():
         fields, records = read_dbf(shp_path[:-4] + ".dbf")
         if args.id_field not in fields:
             sys.exit(f"id field '{args.id_field}' not in {fields}")
-        for idx, rings in read_shp(shp_path):
-            geoms.append((records[idx][args.id_field], rings))
+        raw_geoms = [(records[idx][args.id_field], rings)
+                     for idx, rings in read_shp(shp_path)]
+        if args.project == "none":
+            proj = False
+        elif args.project == "mercator":
+            proj = True
+        else:  # auto: lon/lat -> Mercator, projected coords used as-is
+            px, py = raw_geoms[0][1][0][0]
+            proj = abs(px) <= 180 and abs(py) <= 90
+        for ident, rings in raw_geoms:
+            if proj:
+                rings = [[mercator(x, y) for x, y in r] for r in rings]
+            geoms.append((ident, rings))
 
     xs = [x for _, rings in geoms for r in rings for x, _ in r]
     ys = [y for _, rings in geoms for r in rings for _, y in r]

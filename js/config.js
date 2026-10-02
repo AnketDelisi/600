@@ -1286,7 +1286,6 @@ saxony_anhalt: {
       sps:  { code: 'SPS',  name: 'Socijalistička partija Srbije',       name_en: 'Socialist Party of Serbia',      color: '#EB1B23' },
       srs:  { code: 'SRS',  name: 'Srpska radikalna stranka',            name_en: 'Serbian Radical Party',          color: '#0000FF' },
       pes:  { code: 'PES',  name: 'Platforma za evropsku Srbiju',        name_en: 'Platform for a European Serbia', color: '#C9A227' },
-      nps:  { code: 'NPS',  name: 'Narodni pokret Srbije',               name_en: "People's Movement of Serbia",    color: '#235FCF' },
       nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#616264' },
       misn: { code: 'MISN', name: 'Mi – snaga naroda',                   name_en: 'We – Power of the People',       color: '#1B3160' },
       sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A81A32' },
@@ -1294,11 +1293,11 @@ saxony_anhalt: {
       // past-result sections only; `pastOnly` keeps it out of the forecast.
       spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#E30613', pastOnly: true },
     },
-    order: ['sns', 'sl', 'sps', 'pes', 'nps', 'nada', 'misn', 'srs', 'spn'],
-    parlOrder: ['sl', 'pes', 'nps', 'sps', 'sns', 'nada', 'misn', 'srs', 'spn'],
+    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'srs', 'spn'],
+    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'spn'],
     blocs: {
       bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps'], color: '#1B4381' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nps', 'nada', 'misn', 'srs'], color: '#A6192E' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs'], color: '#A6192E' },
     },
     logos: {
       sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg', srs: 'img/serbia/SRS.svg',
@@ -16332,10 +16331,11 @@ saxony_anhalt: {
     },
     order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp'],
     parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd'],
-    // Government = CDU/CSU + SPD (Merz cabinet); the rest is opposition
+    // Firewall = everyone but the AfD; BSW as kingmaker (like the state models)
     blocs: {
-      bloc1: { name: 'Government', short: 'GOV', parties: ['cdu', 'spd'], color: '#111827' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['afd', 'gruene', 'linke', 'bsw', 'fdp'], color: '#8497B0' },
+      bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'spd', 'gruene', 'linke', 'fdp'], color: '#111827' },
+      bloc2: { name: 'AfD', short: 'AFD', parties: ['afd'], color: '#40A0D8' },
+      kingmaker: 'bsw', kingmakerLabel: 'BSW Kingmaker', kingmakerColor: '#8E44AD',
     },
     lastElection: {
       date: '2025-02-23',
@@ -16861,6 +16861,7 @@ saxony_anhalt: {
             "299": "299"
       },
       "useConstituencies": true,
+      "hideBlocToggle": true,
       "label": "Wahlkreise (299)"
 },
     pollsterMAE: {},

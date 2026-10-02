@@ -146,10 +146,11 @@ def main():
     },
     order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp'],
     parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd'],
-    // Government = CDU/CSU + SPD (Merz cabinet); the rest is opposition
+    // Firewall = everyone but the AfD; BSW as kingmaker (like the state models)
     blocs: {
-      bloc1: { name: 'Government', short: 'GOV', parties: ['cdu', 'spd'], color: '#111827' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['afd', 'gruene', 'linke', 'bsw', 'fdp'], color: '#8497B0' },
+      bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'spd', 'gruene', 'linke', 'fdp'], color: '#111827' },
+      bloc2: { name: 'AfD', short: 'AFD', parties: ['afd'], color: '#40A0D8' },
+      kingmaker: 'bsw', kingmakerLabel: 'BSW Kingmaker', kingmakerColor: '#8E44AD',
     },
     lastElection: {
       date: '2025-02-23',

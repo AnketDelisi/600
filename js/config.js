@@ -16312,6 +16312,257 @@ saxony_anhalt: {
       zemmour: "img/fr/REC.svg"
     }
   },
+  germany: {
+    name: 'Germany',
+    seats: 630,
+    threshold: 5.0,
+    method: 'sainte_lague_standard', // Sainte-Laguë/Schepers (divisors 1, 3, 5, …)
+    seatBased: false,             // polls report vote shares (%)
+    constituencies: false,        // single national district (Zweitstimme)
+    recencyHalfLifeDays: 14,
+    parties: {
+      cdu:  { code: 'CDU/CSU', name: 'Christlich Demokratische Union / Christlich-Soziale Union', name_en: 'Christian Democratic Union / Christian Social Union', color: '#151518' },
+      spd:  { code: 'SPD',   name: 'Sozialdemokratische Partei Deutschlands', name_en: 'Social Democratic Party of Germany', color: '#E3000F' },
+      gruene:{ code: 'GRÜNE', name: 'Bündnis 90/Die Grünen', name_en: 'Alliance 90/The Greens', color: '#409A3C' },
+      linke:{ code: 'LINKE', name: 'Die Linke', name_en: 'The Left', color: '#BE3075' },
+      afd:  { code: 'AfD',   name: 'Alternative für Deutschland', name_en: 'Alternative for Germany', color: '#00A2DE' },
+      fdp:  { code: 'FDP',   name: 'Freie Demokratische Partei', name_en: 'Free Democratic Party', color: '#FFED00' },
+      bsw:  { code: 'BSW',   name: 'Bündnis Sahra Wagenknecht', name_en: 'Sahra Wagenknecht Alliance', color: '#792351' },
+    },
+    order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp'],
+    parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd'],
+    // Government = CDU/CSU + SPD (Merz cabinet); the rest is opposition
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['cdu', 'spd'], color: '#111827' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['afd', 'gruene', 'linke', 'bsw', 'fdp'], color: '#8497B0' },
+    },
+    lastElection: {
+      date: '2025-02-23',
+      // 2025 Bundestag official result (Zweitstimme %, Union = CDU + CSU)
+      results: {
+              "cdu": 28.52,
+              "spd": 16.41,
+              "gruene": 11.61,
+              "linke": 8.77,
+              "afd": 20.8,
+              "fdp": 4.33,
+              "bsw": 4.98
+      },
+      seats: {
+              "cdu": 208,
+              "afd": 152,
+              "spd": 120,
+              "gruene": 85,
+              "linke": 64,
+              "bsw": 0,
+              "fdp": 0
+      },
+    },
+    map: {
+      svg: 'img/germany.svg',
+      selector: 'id',
+      districts: {
+              "schleswig_holstein": "schleswig_holstein",
+              "mecklenburg_vorpommern": "mecklenburg_vorpommern",
+              "hamburg": "hamburg",
+              "niedersachsen": "niedersachsen",
+              "bremen": "bremen",
+              "brandenburg": "brandenburg",
+              "sachsen_anhalt": "sachsen_anhalt",
+              "berlin": "berlin",
+              "nordrhein_westfalen": "nordrhein_westfalen",
+              "sachsen": "sachsen",
+              "hessen": "hessen",
+              "thuringen": "thuringen",
+              "rheinland_pfalz": "rheinland_pfalz",
+              "bayern": "bayern",
+              "baden_wurttemberg": "baden_wurttemberg",
+              "saarland": "saarland"
+      },
+      // 2025 Zweitstimme share % per Bundesland (source: Die Bundeswahlleiterin, kerg2)
+      gebiete: {
+              "schleswig_holstein": {
+                      "cdu": 27.58,
+                      "spd": 18.75,
+                      "gruene": 14.89,
+                      "linke": 7.79,
+                      "afd": 16.29,
+                      "fdp": 4.69,
+                      "bsw": 3.45
+              },
+              "mecklenburg_vorpommern": {
+                      "cdu": 17.82,
+                      "spd": 12.41,
+                      "gruene": 5.36,
+                      "linke": 12.05,
+                      "afd": 34.99,
+                      "fdp": 3.2,
+                      "bsw": 10.56
+              },
+              "hamburg": {
+                      "cdu": 20.75,
+                      "spd": 22.74,
+                      "gruene": 19.29,
+                      "linke": 14.45,
+                      "afd": 10.87,
+                      "fdp": 4.51,
+                      "bsw": 4.01
+              },
+              "niedersachsen": {
+                      "cdu": 28.12,
+                      "spd": 23.0,
+                      "gruene": 11.5,
+                      "linke": 8.09,
+                      "afd": 17.84,
+                      "fdp": 4.09,
+                      "bsw": 3.78
+              },
+              "bremen": {
+                      "cdu": 20.55,
+                      "spd": 23.15,
+                      "gruene": 15.59,
+                      "linke": 14.78,
+                      "afd": 15.07,
+                      "fdp": 3.53,
+                      "bsw": 4.34
+              },
+              "brandenburg": {
+                      "cdu": 18.09,
+                      "spd": 14.81,
+                      "gruene": 6.59,
+                      "linke": 10.7,
+                      "afd": 32.49,
+                      "fdp": 3.25,
+                      "bsw": 10.71
+              },
+              "sachsen_anhalt": {
+                      "cdu": 19.18,
+                      "spd": 10.96,
+                      "gruene": 4.42,
+                      "linke": 10.75,
+                      "afd": 37.1,
+                      "fdp": 3.08,
+                      "bsw": 11.25
+              },
+              "berlin": {
+                      "cdu": 18.27,
+                      "spd": 15.14,
+                      "gruene": 16.83,
+                      "linke": 19.86,
+                      "afd": 15.23,
+                      "fdp": 3.8,
+                      "bsw": 6.65
+              },
+              "nordrhein_westfalen": {
+                      "cdu": 30.12,
+                      "spd": 20.03,
+                      "gruene": 12.36,
+                      "linke": 8.33,
+                      "afd": 16.82,
+                      "fdp": 4.39,
+                      "bsw": 4.11
+              },
+              "sachsen": {
+                      "cdu": 19.74,
+                      "spd": 8.45,
+                      "gruene": 6.51,
+                      "linke": 11.3,
+                      "afd": 37.3,
+                      "fdp": 3.25,
+                      "bsw": 9.04
+              },
+              "hessen": {
+                      "cdu": 28.87,
+                      "spd": 18.36,
+                      "gruene": 12.61,
+                      "linke": 8.69,
+                      "afd": 17.78,
+                      "fdp": 5.05,
+                      "bsw": 4.43
+              },
+              "thuringen": {
+                      "cdu": 18.58,
+                      "spd": 8.75,
+                      "gruene": 4.24,
+                      "linke": 15.16,
+                      "afd": 38.55,
+                      "fdp": 2.82,
+                      "bsw": 9.42
+              },
+              "rheinland_pfalz": {
+                      "cdu": 30.64,
+                      "spd": 18.64,
+                      "gruene": 10.35,
+                      "linke": 6.52,
+                      "afd": 20.09,
+                      "fdp": 4.59,
+                      "bsw": 4.23
+              },
+              "bayern": {
+                      "cdu": 37.18,
+                      "spd": 11.55,
+                      "gruene": 12.01,
+                      "linke": 5.73,
+                      "afd": 19.01,
+                      "fdp": 4.18,
+                      "bsw": 3.09
+              },
+              "baden_wurttemberg": {
+                      "cdu": 31.6,
+                      "spd": 14.15,
+                      "gruene": 13.63,
+                      "linke": 6.76,
+                      "afd": 19.79,
+                      "fdp": 5.63,
+                      "bsw": 4.1
+              },
+              "saarland": {
+                      "cdu": 26.86,
+                      "spd": 21.87,
+                      "gruene": 7.23,
+                      "linke": 7.35,
+                      "afd": 21.56,
+                      "fdp": 4.29,
+                      "bsw": 6.17
+              }
+      },
+      names: {
+              "schleswig_holstein": "Schleswig-Holstein",
+              "mecklenburg_vorpommern": "Mecklenburg-Vorpommern",
+              "hamburg": "Hamburg",
+              "niedersachsen": "Niedersachsen",
+              "bremen": "Bremen",
+              "brandenburg": "Brandenburg",
+              "sachsen_anhalt": "Sachsen-Anhalt",
+              "berlin": "Berlin",
+              "nordrhein_westfalen": "Nordrhein-Westfalen",
+              "sachsen": "Sachsen",
+              "hessen": "Hessen",
+              "thuringen": "Thüringen",
+              "rheinland_pfalz": "Rheinland-Pfalz",
+              "bayern": "Bayern",
+              "baden_wurttemberg": "Baden-Württemberg",
+              "saarland": "Saarland"
+      },
+      // national baseline for the uniform-swing projection (= 2025 result)
+      national2021: {
+              "cdu": 28.52,
+              "spd": 16.41,
+              "gruene": 11.61,
+              "linke": 8.77,
+              "afd": 20.8,
+              "fdp": 4.33,
+              "bsw": 4.98
+      },
+    },
+    pollsterMAE: {},
+    maeKey: 'BT2025',
+    logos: {
+      cdu: 'img/de/Union.svg', spd: 'img/de/SPD.svg', gruene: 'img/de/Grune.svg',
+      linke: 'img/de/Linke.svg', afd: 'img/de/AFD.svg', fdp: 'img/de/FDP.svg',
+      bsw: 'img/de/BSW.svg',
+    },
+  },
 };
 
 // ===== Active country (switched at runtime) =====

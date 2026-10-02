@@ -127,6 +127,7 @@ const methodName=()=>{
   if(SEAT_METHOD==='dhondt') return "D'Hondt";
   if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
   if(SEAT_METHOD==='imperiali_hb') return 'Imperiali + Hagenbach-Bischoff';
+  if(SEAT_METHOD==='sainte_lague_standard') return 'Sainte-Laguë/Schepers';
   return 'modified Sainte-Laguë';
 };
 const methodNameShort=()=>{
@@ -140,6 +141,7 @@ function methodSentence(){
   if(SEAT_METHOD==='dhondt') return nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
   if(SEAT_METHOD==='hare_niemeyer') return "the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
   if(SEAT_METHOD==='imperiali_hb') return "the <strong>Imperiali quota</strong> (votes ÷ (seats+2)) in each of the 14 regions, then a <strong>national second scrutiny</strong> by Hagenbach-Bischoff (remainder votes ÷ (unfilled seats+1))";
+  if(SEAT_METHOD==='sainte_lague_standard') return "the <strong>Sainte-Laguë/Schepers</strong> method (divisors 1, 3, 5, …) in a single national district";
   return "<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
 }
 
@@ -1768,7 +1770,7 @@ function allocateSeatsN(votes, totalSeats){
   }
   const divisors=[];
   for(let i=1;i<=totalSeats;i++){
-    divisors.push(SEAT_METHOD==='dhondt'?i:(i===1?1.2:2*i-1));
+    divisors.push(SEAT_METHOD==='dhondt'?i:(SEAT_METHOD==='sainte_lague_standard'?(2*i-1):(i===1?1.2:2*i-1)));
   }
 
   const quota=[];
@@ -2089,7 +2091,7 @@ function allocateSeatsFast(votes, total){
   }
 
   const quo={};
-  valid.forEach(p=>{quo[p]=SEAT_METHOD==='dhondt'?(votes[p]||0):(votes[p]||0)/1.2});
+  valid.forEach(p=>{quo[p]=SEAT_METHOD==='dhondt'?(votes[p]||0):(SEAT_METHOD==='sainte_lague_standard'?(votes[p]||0):(votes[p]||0)/1.2)});
   // Israeli Bader-Ofer: surplus-vote agreement cartels pool votes for remainder seats
   if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
     return allocateSeatsBaderOfer(votes, total);

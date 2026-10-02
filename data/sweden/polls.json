@@ -11,9 +11,66 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-09-25T11:04:18Z",
-  "poll_count": 108,
+  "scraped_at": "2026-10-02T14:56:07Z",
+  "poll_count": 111,
   "polls": [
+    {
+      "pollster": "Ipsos",
+      "date": "2026-09-29",
+      "votes": {
+        "S": 28.0,
+        "M": 22.0,
+        "SD": 17.0,
+        "V": 8.0,
+        "C": 7.0,
+        "KD": 6.0,
+        "MP": 6.0,
+        "L": 4.0
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 1694,
+      "fieldwork_start": "2026-09-15",
+      "fieldwork_end": "2026-09-27"
+    },
+    {
+      "pollster": "Sentio",
+      "date": "2026-09-28",
+      "votes": {
+        "S": 25.7,
+        "M": 22.7,
+        "SD": 19.4,
+        "V": 10.0,
+        "C": 5.4,
+        "KD": 5.6,
+        "MP": 5.7,
+        "L": 4.1
+      },
+      "country": "sweden",
+      "source": "SwedishPolls",
+      "source_url": "https://github.com/MansMeg/SwedishPolls",
+      "n": 905,
+      "fieldwork_start": "2026-09-21",
+      "fieldwork_end": "2026-09-25"
+    },
+    {
+      "pollster": "Verian(",
+      "date": "2026-09-18",
+      "votes": {
+        "V": 8.1,
+        "S": 37.4,
+        "MP": 4.6,
+        "C": 4.0,
+        "L": 3.0,
+        "M": 17.5,
+        "KD": 3.6,
+        "SD": 20.2
+      },
+      "country": "sweden",
+      "date_end": "2026-10-01",
+      "n": 3074
+    },
     {
       "pollster": "Novus exitpoll",
       "date": "2026-09-13",

@@ -268,6 +268,7 @@ saxony_anhalt: {
 
   mecklenburg_vorpommern: {
     name: 'Mecklenburg-Vorpommern',
+    hidden: true,                 // hidden from the country nav
     seats: 71,
     threshold: 5.0,
     method: 'hare_niemeyer',      // Hare/Niemeyer (largest remainder, quota)
@@ -442,6 +443,7 @@ saxony_anhalt: {
 
   berlin: {
     name: 'Berlin',
+    hidden: true,                 // hidden from the country nav
     seats: 130,
     threshold: 5.0,
     method: 'hare_niemeyer',      // Hare/Niemeyer (largest remainder, quota)
@@ -16876,8 +16878,8 @@ saxony_anhalt: {
 };
 
 // ===== Active country (switched at runtime) =====
-let COUNTRY = 'berlin';
-let COUNTRY_NAME = 'Berlin';
+let COUNTRY = 'israel';
+let COUNTRY_NAME = 'Israel';
 let SEATS_TOTAL = 349;
 let THRESHOLD = 4.0;
 let SEAT_METHOD = 'sainte_lague';
@@ -16939,6 +16941,6 @@ CONSTITUENCY_RULE = c.constituencyRule || 'standard';
 }
 
 // Sub-page / archive wrapper: a country can be pinned via window.__600_COUNTRY__
-const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'berlin';
+const BOOT_COUNTRY=(typeof window!=='undefined'&&window.__600_COUNTRY__&&COUNTRIES[window.__600_COUNTRY__])?window.__600_COUNTRY__:'israel';
 
 setCountry(BOOT_COUNTRY);

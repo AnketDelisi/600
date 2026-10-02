@@ -139,7 +139,18 @@ def parse_models(text):
     return models
 
 
+OVERRIDES = {
+    # Wikipedia keeps a historical (black) ÖVP entry; the current party is
+    # the 2017 turquoise one (#63C3D0).
+    ("austria", "Austrian People's Party"): "Austrian People's Party (2017)",
+}
+
+
 def lookup(colors, entry, country):
+    for n in (entry["name_en"], entry["name"]):
+        key = OVERRIDES.get((country, n))
+        if key and key in colors:
+            return key, colors[key]
     names = [entry["name_en"], entry["name"]]
     for n in list(names):
         if n:

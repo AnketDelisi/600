@@ -833,7 +833,7 @@ saxony_anhalt: {
     recencyHalfLifeDays: 14,
     parties: {
       fpoe:  { code: 'FPÖ',   name: 'Freedom Party of Austria',             name_en: 'Freedom Party of Austria',             color: '#0056A2' },
-      oevp:  { code: 'ÖVP',   name: "Austrian People's Party",              name_en: "Austrian People's Party",              color: '#000000' },
+      oevp:  { code: 'ÖVP',   name: "Austrian People's Party",              name_en: "Austrian People's Party",              color: '#63C3D0' },
       spoe:  { code: 'SPÖ',   name: 'Social Democratic Party of Austria',    name_en: 'Social Democratic Party of Austria',    color: '#E42712' },
       neos:  { code: 'NEOS',  name: 'NEOS – The New Austria',                name_en: 'NEOS – The New Austria',                color: '#CB1667' },
       gruene:{ code: 'GRÜNE', name: 'The Greens – The Green Alternative',    name_en: 'The Greens – The Green Alternative',    color: '#87B529' },

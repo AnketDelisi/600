@@ -70,38 +70,46 @@ def fetch(url):
 
 def main():
     res = fetch(RES_URL)
-    votes = {}
-    for r in res:
-        d = r.get("Department") or {}
-        if d.get("Type") != 2 or d.get("Id") == "arzemes":
-            continue
-        key = "riga" if d["Id"] == "riga-1" else base(d["Name"])
-        acc = votes.setdefault(key, {})
-        for c in r.get("CandidateLists") or []:
-            pk = SLUG_MAP.get(c.get("Id"))
-            if not pk:
+
+    def collect(type_no):
+        votes = {}
+        for r in res:
+            d = r.get("Department") or {}
+            if d.get("Type") != type_no or d.get("Id") == "arzemes":
                 continue
-            n = (c.get("ValidMarkCount") or {}).get("Count", 0)
-            acc[pk] = acc.get(pk, 0) + n
-        acc["_total"] = acc.get("_total", 0) + sum(
-            (c.get("ValidMarkCount") or {}).get("Count", 0)
-            for c in r.get("CandidateLists") or [])
+            if type_no == 1:
+                key = d["Id"]
+            else:
+                key = "riga" if d["Id"] == "riga-1" else base(d["Name"])
+            acc = votes.setdefault(key, {})
+            for c in r.get("CandidateLists") or []:
+                pk = SLUG_MAP.get(c.get("Id"))
+                n = (c.get("ValidMarkCount") or {}).get("Count", 0)
+                acc["_total"] = acc.get("_total", 0) + n
+                if pk:
+                    acc[pk] = acc.get(pk, 0) + n
+        return votes
+
+    def shares(raw):
+        out = {}
+        for key, acc in raw.items():
+            total = acc.get("_total", 0)
+            if total > 0:
+                out[key] = {p: round(v * 100 / total, 2)
+                            for p, v in acc.items() if p != "_total"}
+        return out
+
+    districts = shares(collect(1))
+    print("official districts:", sorted(districts))
+    votes = collect(2)
     # fold Varaklanu into Madona (2026 merger)
     var_key = next((k for k in votes if k.startswith("varak")), None)
     mad_key = next((k for k in votes if k.startswith("madonas")), None)
     if var_key and mad_key:
         for p, v in votes[var_key].items():
-            if p != "_total":
-                votes[mad_key][p] = votes[mad_key].get(p, 0) + v
-        votes[mad_key]["_total"] += votes[var_key]["_total"]
+            votes[mad_key][p] = votes[mad_key].get(p, 0) + v
         del votes[var_key]
-    gebiete = {}
-    for key, acc in votes.items():
-        total = acc.pop("_total", 0)
-        if total <= 0:
-            continue
-        gebiete[key] = {p: round(v * 100 / total, 2)
-                        for p, v in acc.items()}
+    gebiete = shares(votes)
     print("municipalities with results:", len(gebiete))
 
     gj = bm.load_geojson(GEO_URL)
@@ -163,8 +171,28 @@ def main():
             k += 1
         block = block[:k + 1] + ",\n      map2: " + \
             json.dumps(map2, ensure_ascii=False, indent=6) + block[k + 1:]
+    # replace the estimated layer-1 district baselines with the official
+    # CVK district results so both layers agree
+    block = block.replace(
+        "// Parties without exact per-constituency data use estimated values",
+        "// Official CVK district aggregates (sv2022)")
+    gm = re.search(r"\n(\s+)gebiete: \{", block)
+    indent = gm.group(1)
+    depth, k = 0, gm.end() - 1
+    while k < len(block):
+        if block[k] == "{":
+            depth += 1
+        elif block[k] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+        k += 1
+    new_body = json.dumps(districts, ensure_ascii=False,
+                          indent=len(indent))
+    block = (block[:gm.start()] + "\n" + indent + "gebiete: " +
+             new_body + block[k + 1:])
     open(cfg_path, "w", encoding="utf8").write(text[:start] + block + text[end:])
-    print("patched config.js (latvia map2)")
+    print("patched config.js (latvia map2 + official district baselines)")
 
 
 if __name__ == "__main__":

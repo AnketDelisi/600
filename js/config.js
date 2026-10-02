@@ -695,14 +695,79 @@ saxony_anhalt: {
       // the __01..__05 path ids in latvia.svg (default selector path[id^="_"])
       districts: { 1: 'riga', 2: 'vidzeme', 3: 'latgale', 4: 'zemgale', 5: 'kurzeme' },
       // 2022 vote share (%) per constituency (source: CVK / en.wikipedia.org)
-      // Parties without exact per-constituency data use estimated values
+      // Official CVK district aggregates (sv2022)
       gebiete: {
-        riga:      { as: 6.91, sv: 4.0, lpv: 8.59, pro: 9.05, na: 7.14, jv: 20.59, zzs: 5.51, la: 7.0, mmn: 0, st: 9.15, sc: 6.0, asl: 0, jkp: 0, lks: 4.0 },
-        vidzeme:   { as: 12.62, sv: 2.0, lpv: 5.14, pro: 5.95, na: 11.39, jv: 23.46, zzs: 12.10, la: 5.0, mmn: 0, st: 3.04, sc: 2.0, asl: 0, jkp: 0, lks: 1.0 },
-        latgale:   { as: 5.12, sv: 8.0, lpv: 6.53, pro: 2.46, na: 5.78, jv: 6.97, zzs: 14.54, la: 3.0, mmn: 0, st: 18.56, sc: 12.0, asl: 0, jkp: 0, lks: 10.0 },
-        zemgale:   { as: 12.42, sv: 1.5, lpv: 4.56, pro: 4.35, na: 12.16, jv: 18.75, zzs: 19.55, la: 4.0, mmn: 0, st: 3.02, sc: 1.5, asl: 0, jkp: 0, lks: 0.5 },
-        kurzeme:   { as: 22.05, sv: 1.0, lpv: 4.27, pro: 4.80, na: 10.25, jv: 16.44, zzs: 21.10, la: 4.0, mmn: 0, st: 2.17, sc: 1.0, asl: 0, jkp: 0, lks: 0.5 },
+      "riga": {
+            "jv": 20.79,
+            "lks": 4.8,
+            "zzs": 5.57,
+            "sv": 5.07,
+            "sc": 6.7,
+            "st": 9.24,
+            "na": 7.21,
+            "lpv": 8.68,
+            "jkp": 2.74,
+            "pro": 9.14,
+            "la": 3.93,
+            "as": 6.97
       },
+      "vidzeme": {
+            "jv": 23.77,
+            "lks": 2.0,
+            "zzs": 12.26,
+            "sv": 2.14,
+            "sc": 2.41,
+            "st": 3.08,
+            "na": 11.54,
+            "lpv": 5.21,
+            "jkp": 3.57,
+            "pro": 6.03,
+            "la": 7.51,
+            "as": 12.79
+      },
+      "latgale": {
+            "jv": 7.04,
+            "lks": 7.29,
+            "zzs": 14.69,
+            "sv": 5.02,
+            "sc": 11.59,
+            "st": 18.76,
+            "na": 5.84,
+            "lpv": 6.6,
+            "jkp": 2.55,
+            "pro": 2.49,
+            "la": 4.02,
+            "as": 5.18
+      },
+      "kurzeme": {
+            "jv": 16.64,
+            "lks": 1.5,
+            "zzs": 21.36,
+            "sv": 1.56,
+            "sc": 2.05,
+            "st": 2.19,
+            "na": 10.37,
+            "lpv": 4.33,
+            "jkp": 2.92,
+            "pro": 4.86,
+            "la": 3.09,
+            "as": 22.33
+      },
+      "zemgale": {
+            "jv": 18.98,
+            "lks": 3.29,
+            "zzs": 19.79,
+            "sv": 1.46,
+            "sc": 2.29,
+            "st": 3.06,
+            "na": 12.31,
+            "lpv": 4.61,
+            "jkp": 3.81,
+            "pro": 4.4,
+            "la": 5.12,
+            "as": 12.57
+      }
+},
       names: {
         riga: 'Rīga', vidzeme: 'Vidzeme', latgale: 'Latgale', zemgale: 'Zemgale', kurzeme: 'Kurzeme',
       },

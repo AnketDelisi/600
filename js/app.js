@@ -2693,6 +2693,7 @@ function renderForecast(pane){
       <div class="map-toggle-row" style="justify-content:flex-end">
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+        ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
@@ -2776,6 +2777,17 @@ function renderForecast(pane){
       btn.addEventListener('click',()=>{
         MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
         pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.toggle('active',b===btn));
+        const fcBox=$('fc-map-box');
+        if(fcBox){
+          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
+          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+        }
+      });
+    });
+    pane.querySelectorAll('.fc-layer-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        MAP_LAYER=(MAP_LAYER===1)?0:1;
+        pane.querySelectorAll('.fc-layer-btn').forEach(b=>b.classList.toggle('active',b===btn));
         const fcBox=$('fc-map-box');
         if(fcBox){
           const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;

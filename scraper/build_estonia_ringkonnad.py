@@ -33,7 +33,7 @@ ROOT = os.path.join(os.path.dirname(__file__), "..")
 WFS = ("https://gsavalik.envir.ee/geoserver/ehak/wfs?service=WFS"
        "&version=1.1.0&request=GetFeature&outputFormat=application/json"
        "&typeName=")
-OUT = os.path.join(ROOT, "bmv", "img", "estonia.gen.svg")
+OUT = os.path.join(ROOT, "bmv", "img", "Estonia.gen.svg")
 COMBINED = os.path.join(ROOT, "scraper", ".cache", "estonia_ringkonnad.geojson")
 ATTRIBUTION = ("Geometrien: EHAK (Maa- ja Ruumiamet, avaandmed) — "
                "omavalitsused + Tallinna linnaosad")
@@ -118,7 +118,7 @@ def main():
                 "--attribution", ATTRIBUTION]
     bm.main()
 
-    old = open(os.path.join(ROOT, "bmv", "img", "estonia.svg"),
+    old = open(os.path.join(ROOT, "bmv", "img", "Estonia.svg"),
                encoding="utf8", errors="replace").read()
     old_ids = set(re.findall(r'<path\b[^>]*\bid="([^"]+)"', old))
     new = open(OUT, encoding="utf8").read()
@@ -128,8 +128,8 @@ def main():
     ok = old_ids <= new_ids  # generated adds the missing No10
     print(f"old ids covered: {'OK' if ok else 'FAIL'}")
     if ok and args.apply:
-        for dst in (os.path.join(ROOT, "bmv", "img", "estonia.svg"),
-                    os.path.join(ROOT, "img", "estonia.svg")):
+        for dst in (os.path.join(ROOT, "bmv", "img", "Estonia.svg"),
+                    os.path.join(ROOT, "img", "Estonia.svg")):
             with open(dst, "w", encoding="utf8") as fh:
                 fh.write(new)
         os.remove(OUT)

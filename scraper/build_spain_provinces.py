@@ -235,7 +235,6 @@ def main():
     name: 'Spain',
     seats: 350,
     threshold: 3.0,               // 3% in each constituency
-    districtThreshold: true,      // the threshold applies per constituency
     method: 'dhondt',             // D'Hondt in each of the 52 constituencies
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,
@@ -273,6 +272,7 @@ def main():
     map: {
       svg: 'img/spain.svg',
       selector: 'id',
+      districtThreshold: true,    // 3% applies per constituency, not nationally
       districts: @@districts@@,
       // seats per constituency (2023 apportionment)
       seatDistricts: @@seatDistricts@@,

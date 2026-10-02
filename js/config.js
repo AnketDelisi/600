@@ -473,17 +473,19 @@ saxony_anhalt: {
     map: {
       svg: 'img/berlin.svg',
       selector: 'class',     // paths selected via class="wkNNN", nr = the NNN digits
-      // 78 Wahlkreise (101-107, 201-206, ... 1201-1206) -> Bezirk id per the user's polygon layer
+      // 78 Wahlkreise (101-107, 201-205, ... 1201-1206) -> Bezirk id
+      // 2026 delimitation: Friedrichshain-Kreuzberg lost one WK (206) to
+      // Treptow-Koepenick (new 907) — official AfS 2026 geometries
       districts: {
         101:'mitte', 102:'mitte', 103:'mitte', 104:'mitte', 105:'mitte', 106:'mitte', 107:'mitte',
-        201:'fk', 202:'fk', 203:'fk', 204:'fk', 205:'fk', 206:'fk',
+        201:'fk', 202:'fk', 203:'fk', 204:'fk', 205:'fk',
         301:'pankow', 302:'pankow', 303:'pankow', 304:'pankow', 305:'pankow', 306:'pankow', 307:'pankow', 308:'pankow', 309:'pankow',
         401:'cw', 402:'cw', 403:'cw', 404:'cw', 405:'cw', 406:'cw', 407:'cw',
         501:'spandau', 502:'spandau', 503:'spandau', 504:'spandau', 505:'spandau',
         601:'sdz', 602:'sdz', 603:'sdz', 604:'sdz', 605:'sdz', 606:'sdz', 607:'sdz',
         701:'ts', 702:'ts', 703:'ts', 704:'ts', 705:'ts', 706:'ts', 707:'ts',
         801:'nk', 802:'nk', 803:'nk', 804:'nk', 805:'nk', 806:'nk',
-        901:'tk', 902:'tk', 903:'tk', 904:'tk', 905:'tk', 906:'tk',
+        901:'tk', 902:'tk', 903:'tk', 904:'tk', 905:'tk', 906:'tk', 907:'tk',
         1001:'marzahn', 1002:'marzahn', 1003:'marzahn', 1004:'marzahn', 1005:'marzahn', 1006:'marzahn',
         1101:'lichtenberg', 1102:'lichtenberg', 1103:'lichtenberg', 1104:'lichtenberg', 1105:'lichtenberg', 1106:'lichtenberg',
         1201:'reinickendorf', 1202:'reinickendorf', 1203:'reinickendorf', 1204:'reinickendorf', 1205:'reinickendorf', 1206:'reinickendorf',

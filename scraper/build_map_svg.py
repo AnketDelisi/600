@@ -1,56 +1,80 @@
-"""Build a constituency/district SVG from an official boundary shapefile.
+"""Build a constituency/district SVG from official boundary data.
 
-Instead of hand-drawing one SVG per country/state, download the official
-boundary shapefile and emit an SVG whose <path> ids match what the site's
+Instead of hand-drawing one SVG per country/state, download official
+boundaries and emit an SVG whose <path> identifiers match what the site's
 map engine expects (js/app.js renderMapInto):
 
   default selector: path[id^="_"], nr = digits after the underscore
   -> id "_28" is Wahlkreis 28; conf.districts maps nr -> region name.
+  selector 'label' -> data-label="<name>" (from inkscape:label)
+  selector 'class' -> class="wkNNN"
+
+Two input modes:
+  --zip URL --shp inner/name.shp   shapefile archive (any CRS; projected
+                                   coordinates are used as-is)
+  --geojson URL                    GeoJSON file or geoBoundaries API URL
+                                   (auto-resolves simplifiedGeometryGeoJSON,
+                                   lon/lat -> Web Mercator)
+
+Identifier conventions:
+  --attr id|data-label|class       output attribute (default id)
+  --id-prefix "_"                  prefix for id mode
+  --class-pattern "wk{n}"          pattern for class mode
+  --name-field shapeName           feature property holding the region name
+  --name-map names.json            {feature name: output identifier}
+  --fold                           fall back to ASCII-folded names
 
 Default target: Landtagswahlkreise Mecklenburg-Vorpommern 2026 (36),
 official KLWK250MV shapefile of the LAiV MV Amt fuer Geoinformation,
-(c) GeoBasis-DE/M-V, CC BY 4.0. Coordinates are ETRS89/UTM33N (metres)
-and are used directly for the SVG (conformal; no reprojection needed).
+(c) GeoBasis-DE/M-V, CC BY 4.0.
 
 Usage:
   python scraper/build_map_svg.py
-  python scraper/build_map_svg.py --zip URL --shp inner/path.shp \
-      --id-field WkNr --out bmv/img/mecklenburg_vorpommern.gen.svg
+  python scraper/build_map_svg.py --geojson https://www.geoboundaries.org/api/current/gbOpen/AUT/ADM1/ \
+      --attr id --fold --out bmv/img/austria.gen.svg
 """
 import argparse
+import io
+import json
 import math
 import os
+import re
 import struct
 import sys
 import urllib.request
 import zipfile
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
+CACHE = os.path.join(ROOT, "scraper", ".cache")
 DEFAULT_ZIP = ("https://www.laiv-mv.de/static/LAIV/Geoinformation/"
                "Dateien/Karten/LTwahl_Wahlkreise.zip")
 DEFAULT_SHP = "LTwahl_Wahlkreise.shp"
 DEFAULT_OUT = os.path.join(ROOT, "bmv", "img",
                            "mecklenburg_vorpommern.gen.svg")
-ATTRIBUTION = ("Wahlkreisgeometrien: (c) GeoBasis-DE/M-V / CC BY 4.0 — "
+ATTRIBUTION = ("Geometrien: (c) GeoBasis-DE/M-V / CC BY 4.0 — "
                "Amt fuer Geoinformation, Vermessungs- und Katasterwesen "
                "(LAiV MV), Sonderausgabe KLWK250MV")
 
 
-def fetch(zip_url, cache_dir, force=False):
-    os.makedirs(cache_dir, exist_ok=True)
-    path = os.path.join(cache_dir, os.path.basename(zip_url))
-    if force or not os.path.exists(path):
-        req = urllib.request.Request(zip_url,
-                                     headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=120) as r, \
-                open(path, "wb") as f:
-            f.write(r.read())
-        print(f"downloaded {zip_url}")
-    return path
+def fetch_bytes(url, filename=None):
+    """Download a URL (cached under scraper/.cache when filename given)."""
+    path = None
+    if filename:
+        os.makedirs(CACHE, exist_ok=True)
+        path = os.path.join(CACHE, filename)
+        if os.path.exists(path):
+            return open(path, "rb").read()
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        data = r.read()
+    if path:
+        with open(path, "wb") as f:
+            f.write(data)
+    return data
 
 
-def extract(zip_path, shp_name, cache_dir):
-    out = os.path.join(cache_dir, "extract")
+def extract(zip_path, shp_name):
+    out = os.path.join(CACHE, "extract")
     os.makedirs(out, exist_ok=True)
     with zipfile.ZipFile(zip_path) as z:
         z.extractall(out)
@@ -110,6 +134,73 @@ def read_shp(shp_path):
         off += 8 + clen * 2
 
 
+def load_geojson(src):
+    """Load GeoJSON from a path/URL, a zip containing it, or the
+    geoBoundaries API (resolves simplifiedGeometryGeoJSON)."""
+    if src.startswith("http"):
+        safe = re.sub(r"[^A-Za-z0-9]+", "_", src).strip("_")
+        raw = fetch_bytes(src, safe)
+        if raw[:2] == b"PK":
+            return _geojson_from_zip(raw)
+        data = json.loads(raw)
+        if isinstance(data, dict) and "simplifiedGeometryGeoJSON" in data:
+            data = json.loads(fetch_bytes(
+                data["simplifiedGeometryGeoJSON"],
+                "gb_" + os.path.basename(
+                    data["simplifiedGeometryGeoJSON"])))
+        return data
+    if src.lower().endswith(".zip"):
+        return _geojson_from_zip(open(src, "rb").read())
+    with open(src, encoding="utf8") as f:
+        return json.load(f)
+
+
+def _geojson_from_zip(raw):
+    with zipfile.ZipFile(io.BytesIO(raw)) as z:
+        name = next(n for n in z.namelist()
+                    if n.lower().endswith(".geojson"))
+        return json.loads(z.read(name))
+
+
+def geojson_polygons(gj):
+    """Yield (properties, [ring, ...]) for Polygon/MultiPolygon features."""
+    for f in gj.get("features", []):
+        geom = f.get("geometry") or {}
+        rings = []
+        if geom.get("type") == "Polygon":
+            rings = geom.get("coordinates", [])
+        elif geom.get("type") == "MultiPolygon":
+            for poly in geom.get("coordinates", []):
+                rings.extend(poly)
+        if rings:
+            yield f.get("properties") or {}, \
+                [[(p[0], p[1]) for p in ring] for ring in rings]
+
+
+def mercator(lon, lat):
+    """Web Mercator in degrees (x = lon, y = log tan)."""
+    lat = max(-85.0, min(85.0, lat))
+    return lon, math.degrees(
+        math.log(math.tan(math.pi / 4 + math.radians(lat) / 2)))
+
+
+FOLD = {"İ": "i", "ı": "i", "ş": "s", "ğ": "g", "ü": "u", "ö": "o",
+        "ç": "c", "ä": "a", "å": "a", "æ": "ae", "ø": "o", "é": "e",
+        "è": "e", "ê": "e", "ë": "e", "á": "a", "à": "a", "â": "a",
+        "í": "i", "ó": "o", "ú": "u", "ñ": "n", "č": "c", "ř": "r",
+        "ž": "z", "š": "s", "ý": "y", "ů": "u", "ě": "e", "ť": "t",
+        "ď": "d", "ň": "n", "ł": "l", "ą": "a", "ę": "e", "ś": "s",
+        "ź": "z", "ż": "z", "ć": "c", "õ": "o", "î": "i", "û": "u",
+        "ô": "o", "ã": "a", "õ": "o", "ç": "c"}
+
+
+def fold(s):
+    s = s.lower()
+    for a, b in FOLD.items():
+        s = s.replace(a, b)
+    return re.sub(r"[^a-z0-9-]", "", s)
+
+
 def simplify(pts, eps):
     """Douglas-Peucker simplification (iterative)."""
     if len(pts) < 3:
@@ -148,24 +239,70 @@ def main():
     ap.add_argument("--zip", default=DEFAULT_ZIP)
     ap.add_argument("--shp", default=DEFAULT_SHP,
                     help="shapefile name inside the zip")
-    ap.add_argument("--id-field", default="WkNr")
+    ap.add_argument("--geojson", help="GeoJSON path/URL (or geoBoundaries API)")
+    ap.add_argument("--id-field", default="WkNr",
+                    help="shapefile dbf field for the identifier")
+    ap.add_argument("--name-field", default="shapeName",
+                    help="GeoJSON property for the region name")
+    ap.add_argument("--name-map", help="JSON {feature name: identifier}")
+    ap.add_argument("--fold", action="store_true",
+                    help="ASCII-fold names when not in --name-map")
+    ap.add_argument("--attr", choices=["id", "data-label", "class"],
+                    default="id")
     ap.add_argument("--id-prefix", default="_")
-    ap.add_argument("--label-field", default="text")
+    ap.add_argument("--no-prefix", action="store_true",
+                    help="shorthand for --id-prefix ''")
+    ap.add_argument("--lstrip-zeros", action="store_true",
+                    help="strip leading zeros from the identifier")
+    ap.add_argument("--class-pattern", default="wk{n}")
+    ap.add_argument("--project", choices=["auto", "none", "mercator"],
+                    default="auto")
     ap.add_argument("--out", default=DEFAULT_OUT)
+    ap.add_argument("--attribution", default=ATTRIBUTION)
     ap.add_argument("--simplify", type=float, default=0.0005,
                     help="DP tolerance as a fraction of the bbox diagonal")
     ap.add_argument("--width", type=int, default=1000)
-    ap.add_argument("--force", action="store_true", help="re-download zip")
+    ap.add_argument("--force", action="store_true", help="re-download")
     args = ap.parse_args()
+    if args.no_prefix:
+        args.id_prefix = ""
 
-    cache = os.path.join(ROOT, "scraper", ".cache")
-    shp_path = extract(fetch(args.zip, cache, args.force), args.shp, cache)
-    fields, records = read_dbf(shp_path[:-4] + ".dbf")
-    geoms = list(read_shp(shp_path))
-    if len(geoms) != len(records):
-        sys.exit(f"record mismatch: {len(geoms)} shapes vs {len(records)} rows")
-    if args.id_field not in fields:
-        sys.exit(f"id field '{args.id_field}' not in {fields}")
+    geoms = []          # list of (identifier, [ring, ...])
+    if args.geojson:
+        gj = load_geojson(args.geojson)
+        name_map = {}
+        if args.name_map:
+            with open(args.name_map, encoding="utf8") as f:
+                name_map = json.load(f)
+        feats = list(geojson_polygons(gj))
+        if args.project == "mercator":
+            project = True
+        elif args.project == "none":
+            project = False
+        else:  # auto: lon/lat -> Mercator, projected coords used as-is
+            x0, y0 = feats[0][1][0][0] if feats else (0, 0)
+            project = abs(x0) <= 180 and abs(y0) <= 90
+        for props, rings in feats:
+            raw = str(props.get(args.name_field, "")).strip()
+            ident = name_map.get(raw) or (fold(raw) if args.fold else raw)
+            if args.lstrip_zeros:
+                ident = ident.lstrip("0")
+            if project:
+                rings = [[mercator(x, y) for x, y in r] for r in rings]
+            geoms.append((ident, rings))
+    else:
+        zip_path = os.path.join(CACHE, os.path.basename(args.zip))
+        if args.force or not os.path.exists(zip_path):
+            os.makedirs(CACHE, exist_ok=True)
+            with open(zip_path, "wb") as f:
+                f.write(fetch_bytes(args.zip,
+                                    os.path.basename(args.zip)))
+        shp_path = extract(zip_path, args.shp)
+        fields, records = read_dbf(shp_path[:-4] + ".dbf")
+        if args.id_field not in fields:
+            sys.exit(f"id field '{args.id_field}' not in {fields}")
+        for idx, rings in read_shp(shp_path):
+            geoms.append((records[idx][args.id_field], rings))
 
     xs = [x for _, rings in geoms for r in rings for x, _ in r]
     ys = [y for _, rings in geoms for r in rings for _, y in r]
@@ -176,9 +313,14 @@ def main():
     height = round((y1 - y0) * scale + 2 * pad, 1)
 
     paths, pts_in, pts_out, ids = [], 0, 0, []
-    for idx, rings in geoms:
-        rec = records[idx]
-        ids.append(f"{args.id_prefix}{rec[args.id_field]}")
+    for ident, rings in geoms:
+        ids.append(ident)
+        if args.attr == "data-label":
+            attr = f'data-label="{ident}"'
+        elif args.attr == "class":
+            attr = f'class="{args.class_pattern.format(n=ident)}"'
+        else:
+            attr = f'id="{args.id_prefix}{ident}"'
         d = []
         for ring in rings:
             pts_in += len(ring)
@@ -187,12 +329,12 @@ def main():
             d.append("M" + "L".join(
                 f"{(x - x0) * scale + pad:.1f},{(y1 - y) * scale + pad:.1f}"
                 for x, y in s) + "Z")
-        paths.append(f'<path id="{ids[-1]}" d="{" ".join(d)}"/>')
+        paths.append(f'<path {attr} d="{" ".join(d)}"/>')
 
     svg = "\n".join([
-        f"<!-- {ATTRIBUTION} -->",
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '
-        f'{args.width} {height}" width="{args.width}" height="{height}">',
+        f"<!-- {args.attribution} -->",
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {args.width} '
+        f'{height}" width="{args.width}" height="{height}">',
         '<g fill="#E5E7EB" stroke="#111827" stroke-width="1" '
         'stroke-linejoin="round" fill-rule="evenodd">',
         *paths,
@@ -203,9 +345,8 @@ def main():
     os.makedirs(os.path.dirname(args.out), exist_ok=True)
     with open(args.out, "w", encoding="utf8") as f:
         f.write(svg)
-    print(f"{len(paths)} paths | ids {ids[0]}..{ids[-1]} | "
-          f"points {pts_in} -> {pts_out} | {os.path.getsize(args.out)} bytes")
-    print(f"viewBox 0 0 {args.width} {height} | wrote {args.out}")
+    print(f"{len(paths)} paths | points {pts_in} -> {pts_out} | "
+          f"{os.path.getsize(args.out)} bytes | wrote {args.out}")
 
 
 if __name__ == "__main__":

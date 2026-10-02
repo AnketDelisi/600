@@ -1129,6 +1129,7 @@ function renderStateDepth(avg){
 /* ---------- render parliament ---------- */
 let PARL_MODE='proj';    // 'proj' or '2022'
 let PARL_VIEW='seats';   // 'seats' or 'map'
+let MAP_LAYER=0;         // 0 = main map, 1 = map2 (lower/higher layer)
 let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
 let MAP_COLOR='party';   // district map coloring: 'party' or 'bloc' (Sweden)
 
@@ -1241,6 +1242,7 @@ function renderParliament(avg){
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
+      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
@@ -1262,7 +1264,12 @@ function renderParliament(avg){
 }
 
 /* ---------- district map (Germany / Sweden) ---------- */
-function MAP_CONF(){ return (COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null; }
+function MAP_CONF(){
+  const c=COUNTRIES[COUNTRY];
+  if(!c||!c.map) return null;
+  if(MAP_LAYER===1&&c.map2) return {...c,...c.map,...c.map2};
+  return c.map;
+}
 
 function constituencyById(id){
   if(!CONSTITUENCIES||!CONSTITUENCIES.constituencies) return null;
@@ -2023,6 +2030,7 @@ function bindParlToggles(avg){
     btn.addEventListener('click',()=>{
       if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
       if(btn.dataset.parlview) PARL_VIEW=(PARL_VIEW==='map')?'seats':'map';
+      if(btn.dataset.maplayer){ MAP_LAYER=(MAP_LAYER===1)?0:1; PARL_VIEW='map'; }
       if(btn.dataset.mapcolor) MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
       renderPollsTab();
     });
@@ -3597,6 +3605,7 @@ window._600={
     for(const k in RUNOFF_CACHE) delete RUNOFF_CACHE[k];
 PARL_MODE='proj';
     PARL_VIEW='seats';
+    MAP_LAYER=0;
     FC_MODE='proj';
     MAP_COLOR='party';
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}

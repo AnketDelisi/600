@@ -32,7 +32,7 @@ MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
 # sns, sps, srs, pes, nps, nada, misn, sl, spn)
 HEADER_MAP = {
     "sns-led coalition": "sns",
-    "sps - js": "sps",
+    "sps-js": "sps", "sps": "sps",
     "student list": "sl",
     "pes": "pes", "ssp": "pes", "srce": "pes",
     "nps": "nps",

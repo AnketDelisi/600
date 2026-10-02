@@ -5,8 +5,11 @@ Polls are national Zweitstimme vote shares (%). Germany elects 630 MPs in
 a single national district with a 5% threshold (Sainte-Laguë/Schepers).
 Tables live in "Opinion polling for the next German federal election";
 the main table has one "Union" column (CDU/CSU combined), a second format
-lists CDU and CSU separately - both are folded into the cdu key. Polls
-before the 2025 election are dropped; the election row is skipped.
+lists CDU and CSU separately - both are folded into the cdu key. Only the
+"Poll results" section is read: the By state / By Western and Eastern
+Germany sections poll sub-national electorates and the Scenario polls
+tables are hypothetical. Polls before the 2025 election are dropped; the
+election row is skipped.
 
 Output schema matches the other country scrapers (data/germany/polls.json).
 """
@@ -126,7 +129,19 @@ def scrape_germany():
     soup = BeautifulSoup(resp.text, "lxml")
 
     polls, seen = [], set()
-    for el in soup.find_all("table"):
+    section, subsection = "", ""
+    for el in soup.find_all(["h2", "h3", "table"]):
+        if el.name == "h2":
+            section = el.get_text(strip=True)
+            subsection = ""
+            continue
+        if el.name == "h3":
+            subsection = el.get_text(strip=True)
+            continue
+        if "poll" not in section.lower():
+            continue
+        if subsection.lower().startswith("scenario"):
+            continue
         if "wikitable" not in (el.get("class") or []):
             continue
         grid, metas = expand_grid(el)

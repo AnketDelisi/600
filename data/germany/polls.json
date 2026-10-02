@@ -2,8 +2,8 @@
   "country": "germany",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-  "scraped_at": "2026-10-02T20:42:17Z",
-  "poll_count": 398,
+  "scraped_at": "2026-10-02T21:12:40Z",
+  "poll_count": 390,
   "polls": [
     {
       "pollster": "Infratest dimap",
@@ -154,22 +154,6 @@
         "linke": 11.0,
         "bsw": 3.0,
         "fdp": 5.0
-      }
-    },
-    {
-      "pollster": "Forsa",
-      "date": "2026-09-18",
-      "n": 1030,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "cdu": 22.0,
-        "spd": 14.0,
-        "afd": 24.0,
-        "gruene": 18.0,
-        "linke": 12.0,
-        "fdp": 3.0
       }
     },
     {
@@ -439,22 +423,6 @@
         "linke": 10.0,
         "bsw": 4.0,
         "fdp": 4.0
-      }
-    },
-    {
-      "pollster": "Forsa",
-      "date": "2026-08-27",
-      "n": 1047,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "afd": 40.0,
-        "cdu": 14.0,
-        "spd": 13.0,
-        "linke": 14.0,
-        "bsw": 5.0,
-        "gruene": 7.0
       }
     },
     {
@@ -1071,22 +1039,6 @@
         "linke": 12.0,
         "bsw": 3.0,
         "fdp": 4.0
-      }
-    },
-    {
-      "pollster": "Infratest dimap",
-      "date": "2026-07-06",
-      "n": 1167,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "afd": 38.0,
-        "cdu": 15.0,
-        "spd": 17.0,
-        "linke": 13.0,
-        "bsw": 4.0,
-        "gruene": 7.0
       }
     },
     {
@@ -1712,22 +1664,6 @@
       }
     },
     {
-      "pollster": "Infratest dimap",
-      "date": "2026-05-11",
-      "n": 1153,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "afd": 38.0,
-        "cdu": 15.0,
-        "spd": 15.0,
-        "linke": 15.0,
-        "bsw": 5.0,
-        "gruene": 6.0
-      }
-    },
-    {
       "pollster": "Ipsos",
       "date": "2026-05-10",
       "n": 1000,
@@ -1991,22 +1927,6 @@
         "gruene": 14.0,
         "linke": 11.0,
         "fdp": 3.0
-      }
-    },
-    {
-      "pollster": "Forsa",
-      "date": "2026-04-14",
-      "n": 1531,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "cdu": 26.0,
-        "spd": 13.0,
-        "afd": 22.0,
-        "gruene": 18.0,
-        "linke": 9.0,
-        "fdp": 4.0
       }
     },
     {
@@ -2909,22 +2829,6 @@
         "linke": 11.0,
         "bsw": 3.0,
         "fdp": 3.0
-      }
-    },
-    {
-      "pollster": "Infratest dimap",
-      "date": "2026-01-24",
-      "n": 1145,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "afd": 37.0,
-        "cdu": 18.0,
-        "spd": 15.0,
-        "linke": 12.0,
-        "bsw": 7.0,
-        "gruene": 5.0
       }
     },
     {
@@ -4411,23 +4315,6 @@
       }
     },
     {
-      "pollster": "Forsa",
-      "date": "2025-09-10",
-      "n": 1012,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "cdu": 33.0,
-        "afd": 24.0,
-        "gruene": 13.0,
-        "spd": 9.0,
-        "linke": 8.0,
-        "fdp": 3.0,
-        "bsw": 2.0
-      }
-    },
-    {
       "pollster": "Verian",
       "date": "2025-09-09",
       "n": 1460,
@@ -5224,23 +5111,6 @@
         "linke": 10.0,
         "bsw": 4.0,
         "fdp": 3.0
-      }
-    },
-    {
-      "pollster": "Forsa",
-      "date": "2025-07-02",
-      "n": 1507,
-      "country": "germany",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
-      "votes": {
-        "cdu": 30.0,
-        "spd": 18.0,
-        "afd": 18.0,
-        "gruene": 13.0,
-        "linke": 9.0,
-        "fdp": 4.0,
-        "bsw": 3.0
       }
     },
     {

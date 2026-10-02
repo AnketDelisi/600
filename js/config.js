@@ -5683,7 +5683,17 @@ saxony_anhalt: {
       // 2023 Sejm (modelled party-level split of the Third Way / Lewica / Konfederacja alliances;
       // national literal: PiS 35.4/194, KO 30.7/157, PL2050 7.2/33, PSL 5.9/32, NL 6.5/19, Razem 2.1/7,
       // KWiN 6.3/16, KKP 0.9/2; R+ not yet founded → 0).
-      results: { pis: 35.4, ko: 30.7, pl2050: 7.2, psl: 5.9, lewica: 6.5, razem: 2.1, kwin: 6.3, kkp: 0.9, r: 0 },
+      results: {
+              "pis": 35.38,
+              "ko": 30.7,
+              "pl2050": 7.92,
+              "psl": 6.49,
+              "lewica": 6.51,
+              "razem": 2.1,
+              "kwin": 6.27,
+              "kkp": 0.9,
+              "r": 0.0
+      },
       seats:   { pis: 194, ko: 157, pl2050: 33, psl: 32, lewica: 19, razem: 7, kwin: 16, kkp: 2, r: 0 },
     },
     map: {
@@ -5715,47 +5725,457 @@ saxony_anhalt: {
       // 2023 share % per okręg, split to modelled parties: TD (PL2050/PSL), Lewica (NL/Razem),
       // Konfederacja (KWiN/KKP) apportioned by the fictional national ratio above; R+ = 0.
       gebiete: {
-        Legnica: { pis: 34.8, ko: 33.78, pl2050: 5.91, psl: 4.84, lewica: 7.19, razem: 2.32, kwin: 5.54, kkp: 0.79 },
-        Walbrzych: { pis: 33.34, ko: 37.17, pl2050: 6.67, psl: 5.46, lewica: 6.03, razem: 1.95, kwin: 5.27, kkp: 0.75 },
-        Wroclaw: { pis: 26.66, ko: 36.94, pl2050: 7.55, psl: 6.19, lewica: 8.58, razem: 2.77, kwin: 6.11, kkp: 0.87 },
-        Bydgoszcz: { pis: 30.45, ko: 35.01, pl2050: 8.28, psl: 6.78, lewica: 7.5, razem: 2.42, kwin: 5.62, kkp: 0.8 },
-        Torun: { pis: 34.06, ko: 29.52, pl2050: 8.62, psl: 7.06, lewica: 8.5, razem: 2.75, kwin: 5.57, kkp: 0.8 },
-        Lublin: { pis: 45.48, ko: 20.32, pl2050: 8.72, psl: 7.15, lewica: 4.32, razem: 1.4, kwin: 7.33, kkp: 1.05 },
-        Chelm: { pis: 50.75, ko: 17.4, pl2050: 7.17, psl: 5.87, lewica: 4.25, razem: 1.37, kwin: 6.82, kkp: 0.97 },
-        ZielonaGora: { pis: 27.76, ko: 37.73, pl2050: 8.28, psl: 6.79, lewica: 7.01, razem: 2.26, kwin: 5.7, kkp: 0.81 },
-        Lodz: { pis: 26.82, ko: 41.07, pl2050: 6.53, psl: 5.36, lewica: 9.24, razem: 2.98, kwin: 4.87, kkp: 0.7 },
-        PiotrkowTrybunalsk: { pis: 46.6, ko: 21.69, pl2050: 7.55, psl: 6.18, lewica: 4.83, razem: 1.56, kwin: 6.67, kkp: 0.95 },
-        Sieradz: { pis: 41.46, ko: 25.89, pl2050: 7.97, psl: 6.53, lewica: 5.84, razem: 1.89, kwin: 5.97, kkp: 0.85 },
-        Chrzanow: { pis: 42.86, ko: 24.24, pl2050: 8.23, psl: 6.74, lewica: 4.57, razem: 1.47, kwin: 6.89, kkp: 0.98 },
-        Krakow: { pis: 30.68, ko: 30.73, pl2050: 9.27, psl: 7.59, lewica: 8.34, razem: 2.7, kwin: 6.75, kkp: 0.96 },
-        NowySacz: { pis: 53.73, ko: 16.1, pl2050: 6.36, psl: 5.22, lewica: 2.4, razem: 0.78, kwin: 7.64, kkp: 1.09 },
-        Tarnow: { pis: 48.67, ko: 17.02, pl2050: 10.24, psl: 8.4, lewica: 3.02, razem: 0.98, kwin: 6.99, kkp: 1.0 },
-        Plock: { pis: 44.11, ko: 22.4, pl2050: 9.38, psl: 7.69, lewica: 4.93, razem: 1.59, kwin: 5.71, kkp: 0.81 },
-        Radom: { pis: 48.68, ko: 20.96, pl2050: 7.68, psl: 6.3, lewica: 4.04, razem: 1.3, kwin: 6.4, kkp: 0.91 },
-        Siedlce: { pis: 48.62, ko: 18.71, pl2050: 8.52, psl: 6.99, lewica: 3.67, razem: 1.18, kwin: 7.18, kkp: 1.03 },
-        Warszawa1: { pis: 20.14, ko: 43.23, pl2050: 7.28, psl: 5.97, lewica: 10.17, razem: 3.28, kwin: 5.46, kkp: 0.78 },
-        Warszawa2: { pis: 31.74, ko: 35.23, pl2050: 8.28, psl: 6.78, lewica: 5.34, razem: 1.72, kwin: 6.18, kkp: 0.88 },
-        Opole: { pis: 31.26, ko: 33.59, pl2050: 7.0, psl: 5.74, lewica: 5.47, razem: 1.77, kwin: 5.68, kkp: 0.81 },
-        Krosno: { pis: 54.7, ko: 15.85, pl2050: 7.58, psl: 6.21, lewica: 3.38, razem: 1.09, kwin: 7.54, kkp: 1.08 },
-        Rzeszow: { pis: 51.6, ko: 17.7, pl2050: 6.83, psl: 5.59, lewica: 3.68, razem: 1.19, kwin: 8.29, kkp: 1.19 },
-        Bialystok: { pis: 42.39, ko: 20.84, pl2050: 10.37, psl: 8.49, lewica: 3.66, razem: 1.18, kwin: 8.57, kkp: 1.22 },
-        Gdansk: { pis: 25.2, ko: 41.7, pl2050: 8.08, psl: 6.62, lewica: 7.11, razem: 2.3, kwin: 5.45, kkp: 0.78 },
-        Slupsk: { pis: 29.24, ko: 37.91, pl2050: 7.47, psl: 6.12, lewica: 6.3, razem: 2.03, kwin: 6.31, kkp: 0.9 },
-        BielskoBiala: { pis: 36.71, ko: 28.67, pl2050: 8.0, psl: 6.55, lewica: 5.87, razem: 1.9, kwin: 6.86, kkp: 0.98 },
-        Czestochowa: { pis: 36.35, ko: 29.11, pl2050: 8.09, psl: 6.63, lewica: 7.11, razem: 2.3, kwin: 5.74, kkp: 0.82 },
-        Gliwice: { pis: 30.16, ko: 36.06, pl2050: 7.33, psl: 6.01, lewica: 6.96, razem: 2.25, kwin: 6.08, kkp: 0.87 },
-        Rybnik: { pis: 38.06, ko: 29.98, pl2050: 6.84, psl: 5.61, lewica: 5.17, razem: 1.67, kwin: 7.0, kkp: 1.0 },
-        Katowice: { pis: 30.88, ko: 36.79, pl2050: 7.29, psl: 5.98, lewica: 6.39, razem: 2.07, kwin: 5.86, kkp: 0.84 },
-        Sosnowiec: { pis: 29.74, ko: 30.3, pl2050: 5.41, psl: 4.44, lewica: 16.33, razem: 5.27, kwin: 4.98, kkp: 0.71 },
-        Kielce: { pis: 47.07, ko: 20.93, pl2050: 7.58, psl: 6.22, lewica: 5.16, razem: 1.67, kwin: 5.73, kkp: 0.82 },
-        Elblag: { pis: 35.2, ko: 31.87, pl2050: 8.46, psl: 6.94, lewica: 6.13, razem: 1.98, kwin: 5.72, kkp: 0.82 },
-        Olsztyn: { pis: 32.33, ko: 33.07, pl2050: 8.85, psl: 7.26, lewica: 6.11, razem: 1.98, kwin: 6.06, kkp: 0.87 },
-        Kalisz: { pis: 35.85, ko: 28.85, pl2050: 8.88, psl: 7.28, lewica: 6.44, razem: 2.08, kwin: 6.11, kkp: 0.87 },
-        Konin: { pis: 38.69, ko: 23.99, pl2050: 9.14, psl: 7.49, lewica: 7.17, razem: 2.31, kwin: 6.1, kkp: 0.87 },
-        Pila: { pis: 29.11, ko: 34.87, pl2050: 9.71, psl: 7.95, lewica: 5.93, razem: 1.91, kwin: 6.01, kkp: 0.86 },
-        Poznan: { pis: 19.57, ko: 44.09, pl2050: 9.09, psl: 7.45, lewica: 9.3, razem: 3.01, kwin: 5.16, kkp: 0.74 },
-        Koszalin: { pis: 31.36, ko: 38.69, pl2050: 6.79, psl: 5.56, lewica: 6.59, razem: 2.13, kwin: 5.27, kkp: 0.75 },
-        Szczecin: { pis: 28.79, ko: 40.13, pl2050: 6.94, psl: 5.68, lewica: 7.1, razem: 2.29, kwin: 5.2, kkp: 0.74 },
+              "Legnica": {
+                      "pis": 34.8,
+                      "ko": 33.78,
+                      "pl2050": 5.91,
+                      "psl": 4.84,
+                      "lewica": 7.19,
+                      "razem": 2.32,
+                      "kwin": 5.54,
+                      "kkp": 0.79,
+                      "r": 0.0
+              },
+              "Walbrzych": {
+                      "pis": 33.34,
+                      "ko": 37.17,
+                      "pl2050": 6.67,
+                      "psl": 5.46,
+                      "lewica": 6.03,
+                      "razem": 1.95,
+                      "kwin": 5.27,
+                      "kkp": 0.75,
+                      "r": 0.0
+              },
+              "Wroclaw": {
+                      "pis": 26.66,
+                      "ko": 36.94,
+                      "pl2050": 7.55,
+                      "psl": 6.19,
+                      "lewica": 8.58,
+                      "razem": 2.77,
+                      "kwin": 6.1,
+                      "kkp": 0.87,
+                      "r": 0.0
+              },
+              "Bydgoszcz": {
+                      "pis": 30.45,
+                      "ko": 35.01,
+                      "pl2050": 8.28,
+                      "psl": 6.78,
+                      "lewica": 7.5,
+                      "razem": 2.42,
+                      "kwin": 5.62,
+                      "kkp": 0.8,
+                      "r": 0.0
+              },
+              "Torun": {
+                      "pis": 34.06,
+                      "ko": 29.52,
+                      "pl2050": 8.62,
+                      "psl": 7.06,
+                      "lewica": 8.5,
+                      "razem": 2.75,
+                      "kwin": 5.57,
+                      "kkp": 0.8,
+                      "r": 0.0
+              },
+              "Lublin": {
+                      "pis": 45.48,
+                      "ko": 20.32,
+                      "pl2050": 8.72,
+                      "psl": 7.15,
+                      "lewica": 4.32,
+                      "razem": 1.4,
+                      "kwin": 7.33,
+                      "kkp": 1.05,
+                      "r": 0.0
+              },
+              "Chelm": {
+                      "pis": 50.75,
+                      "ko": 17.4,
+                      "pl2050": 7.17,
+                      "psl": 5.87,
+                      "lewica": 4.25,
+                      "razem": 1.37,
+                      "kwin": 6.82,
+                      "kkp": 0.97,
+                      "r": 0.0
+              },
+              "ZielonaGora": {
+                      "pis": 27.76,
+                      "ko": 37.73,
+                      "pl2050": 8.28,
+                      "psl": 6.79,
+                      "lewica": 7.0,
+                      "razem": 2.26,
+                      "kwin": 5.7,
+                      "kkp": 0.81,
+                      "r": 0.0
+              },
+              "Lodz": {
+                      "pis": 26.82,
+                      "ko": 41.07,
+                      "pl2050": 6.53,
+                      "psl": 5.35,
+                      "lewica": 9.23,
+                      "razem": 2.98,
+                      "kwin": 4.87,
+                      "kkp": 0.7,
+                      "r": 0.0
+              },
+              "PiotrkowTrybunalsk": {
+                      "pis": 46.6,
+                      "ko": 21.69,
+                      "pl2050": 7.55,
+                      "psl": 6.18,
+                      "lewica": 4.83,
+                      "razem": 1.56,
+                      "kwin": 6.67,
+                      "kkp": 0.95,
+                      "r": 0.0
+              },
+              "Sieradz": {
+                      "pis": 41.46,
+                      "ko": 25.89,
+                      "pl2050": 7.97,
+                      "psl": 6.53,
+                      "lewica": 5.84,
+                      "razem": 1.89,
+                      "kwin": 5.97,
+                      "kkp": 0.85,
+                      "r": 0.0
+              },
+              "Chrzanow": {
+                      "pis": 42.86,
+                      "ko": 24.24,
+                      "pl2050": 8.23,
+                      "psl": 6.74,
+                      "lewica": 4.57,
+                      "razem": 1.48,
+                      "kwin": 6.9,
+                      "kkp": 0.99,
+                      "r": 0.0
+              },
+              "Krakow": {
+                      "pis": 30.68,
+                      "ko": 30.73,
+                      "pl2050": 9.26,
+                      "psl": 7.59,
+                      "lewica": 8.34,
+                      "razem": 2.7,
+                      "kwin": 6.75,
+                      "kkp": 0.96,
+                      "r": 0.0
+              },
+              "NowySacz": {
+                      "pis": 53.73,
+                      "ko": 16.1,
+                      "pl2050": 6.37,
+                      "psl": 5.22,
+                      "lewica": 2.4,
+                      "razem": 0.78,
+                      "kwin": 7.64,
+                      "kkp": 1.09,
+                      "r": 0.0
+              },
+              "Tarnow": {
+                      "pis": 48.67,
+                      "ko": 17.02,
+                      "pl2050": 10.24,
+                      "psl": 8.4,
+                      "lewica": 3.02,
+                      "razem": 0.98,
+                      "kwin": 6.99,
+                      "kkp": 1.0,
+                      "r": 0.0
+              },
+              "Plock": {
+                      "pis": 44.11,
+                      "ko": 22.4,
+                      "pl2050": 9.38,
+                      "psl": 7.69,
+                      "lewica": 4.93,
+                      "razem": 1.59,
+                      "kwin": 5.71,
+                      "kkp": 0.82,
+                      "r": 0.0
+              },
+              "Radom": {
+                      "pis": 48.68,
+                      "ko": 20.96,
+                      "pl2050": 7.68,
+                      "psl": 6.3,
+                      "lewica": 4.03,
+                      "razem": 1.3,
+                      "kwin": 6.4,
+                      "kkp": 0.91,
+                      "r": 0.0
+              },
+              "Siedlce": {
+                      "pis": 48.62,
+                      "ko": 18.71,
+                      "pl2050": 8.53,
+                      "psl": 6.99,
+                      "lewica": 3.66,
+                      "razem": 1.18,
+                      "kwin": 7.19,
+                      "kkp": 1.03,
+                      "r": 0.0
+              },
+              "Warszawa1": {
+                      "pis": 20.14,
+                      "ko": 43.23,
+                      "pl2050": 7.28,
+                      "psl": 5.97,
+                      "lewica": 10.17,
+                      "razem": 3.28,
+                      "kwin": 6.34,
+                      "kkp": 0.91,
+                      "r": 0.0
+              },
+              "Warszawa2": {
+                      "pis": 31.74,
+                      "ko": 35.23,
+                      "pl2050": 8.28,
+                      "psl": 6.78,
+                      "lewica": 5.33,
+                      "razem": 1.72,
+                      "kwin": 6.18,
+                      "kkp": 0.88,
+                      "r": 0.0
+              },
+              "Opole": {
+                      "pis": 31.26,
+                      "ko": 33.59,
+                      "pl2050": 7.0,
+                      "psl": 5.74,
+                      "lewica": 5.47,
+                      "razem": 1.77,
+                      "kwin": 5.68,
+                      "kkp": 0.81,
+                      "r": 0.0
+              },
+              "Krosno": {
+                      "pis": 54.7,
+                      "ko": 15.85,
+                      "pl2050": 7.58,
+                      "psl": 6.21,
+                      "lewica": 3.38,
+                      "razem": 1.09,
+                      "kwin": 7.54,
+                      "kkp": 1.08,
+                      "r": 0.0
+              },
+              "Rzeszow": {
+                      "pis": 51.6,
+                      "ko": 17.7,
+                      "pl2050": 6.83,
+                      "psl": 5.59,
+                      "lewica": 3.68,
+                      "razem": 1.19,
+                      "kwin": 8.29,
+                      "kkp": 1.18,
+                      "r": 0.0
+              },
+              "Bialystok": {
+                      "pis": 42.39,
+                      "ko": 20.84,
+                      "pl2050": 10.37,
+                      "psl": 8.49,
+                      "lewica": 3.66,
+                      "razem": 1.18,
+                      "kwin": 8.57,
+                      "kkp": 1.22,
+                      "r": 0.0
+              },
+              "Gdansk": {
+                      "pis": 25.2,
+                      "ko": 41.7,
+                      "pl2050": 8.08,
+                      "psl": 6.62,
+                      "lewica": 7.11,
+                      "razem": 2.3,
+                      "kwin": 5.45,
+                      "kkp": 0.78,
+                      "r": 0.0
+              },
+              "Slupsk": {
+                      "pis": 29.24,
+                      "ko": 37.91,
+                      "pl2050": 7.47,
+                      "psl": 6.12,
+                      "lewica": 6.3,
+                      "razem": 2.03,
+                      "kwin": 6.3,
+                      "kkp": 0.9,
+                      "r": 0.0
+              },
+              "BielskoBiala": {
+                      "pis": 36.71,
+                      "ko": 28.67,
+                      "pl2050": 7.99,
+                      "psl": 6.55,
+                      "lewica": 5.87,
+                      "razem": 1.9,
+                      "kwin": 6.86,
+                      "kkp": 0.98,
+                      "r": 0.0
+              },
+              "Czestochowa": {
+                      "pis": 36.35,
+                      "ko": 29.11,
+                      "pl2050": 8.09,
+                      "psl": 6.63,
+                      "lewica": 7.12,
+                      "razem": 2.3,
+                      "kwin": 5.74,
+                      "kkp": 0.82,
+                      "r": 0.0
+              },
+              "Gliwice": {
+                      "pis": 30.16,
+                      "ko": 36.06,
+                      "pl2050": 7.33,
+                      "psl": 6.01,
+                      "lewica": 6.96,
+                      "razem": 2.25,
+                      "kwin": 6.08,
+                      "kkp": 0.87,
+                      "r": 0.0
+              },
+              "Rybnik": {
+                      "pis": 38.06,
+                      "ko": 29.98,
+                      "pl2050": 6.85,
+                      "psl": 5.61,
+                      "lewica": 5.17,
+                      "razem": 1.67,
+                      "kwin": 7.0,
+                      "kkp": 1.0,
+                      "r": 0.0
+              },
+              "Katowice": {
+                      "pis": 30.88,
+                      "ko": 36.79,
+                      "pl2050": 7.29,
+                      "psl": 5.98,
+                      "lewica": 6.39,
+                      "razem": 2.07,
+                      "kwin": 5.86,
+                      "kkp": 0.84,
+                      "r": 0.0
+              },
+              "Sosnowiec": {
+                      "pis": 29.74,
+                      "ko": 30.3,
+                      "pl2050": 5.41,
+                      "psl": 4.44,
+                      "lewica": 16.33,
+                      "razem": 5.27,
+                      "kwin": 4.98,
+                      "kkp": 0.71,
+                      "r": 0.0
+              },
+              "Kielce": {
+                      "pis": 47.07,
+                      "ko": 20.93,
+                      "pl2050": 7.59,
+                      "psl": 6.22,
+                      "lewica": 5.17,
+                      "razem": 1.67,
+                      "kwin": 5.73,
+                      "kkp": 0.82,
+                      "r": 0.0
+              },
+              "Elblag": {
+                      "pis": 35.2,
+                      "ko": 31.87,
+                      "pl2050": 8.46,
+                      "psl": 6.94,
+                      "lewica": 6.13,
+                      "razem": 1.98,
+                      "kwin": 5.73,
+                      "kkp": 0.82,
+                      "r": 0.0
+              },
+              "Olsztyn": {
+                      "pis": 32.33,
+                      "ko": 33.07,
+                      "pl2050": 8.86,
+                      "psl": 7.26,
+                      "lewica": 6.11,
+                      "razem": 1.98,
+                      "kwin": 6.07,
+                      "kkp": 0.87,
+                      "r": 0.0
+              },
+              "Kalisz": {
+                      "pis": 35.85,
+                      "ko": 28.58,
+                      "pl2050": 8.88,
+                      "psl": 7.28,
+                      "lewica": 6.44,
+                      "razem": 2.08,
+                      "kwin": 6.11,
+                      "kkp": 0.87,
+                      "r": 0.0
+              },
+              "Konin": {
+                      "pis": 38.69,
+                      "ko": 23.99,
+                      "pl2050": 9.14,
+                      "psl": 7.49,
+                      "lewica": 7.17,
+                      "razem": 2.32,
+                      "kwin": 6.1,
+                      "kkp": 0.87,
+                      "r": 0.0
+              },
+              "Pila": {
+                      "pis": 29.11,
+                      "ko": 34.87,
+                      "pl2050": 9.71,
+                      "psl": 7.96,
+                      "lewica": 5.92,
+                      "razem": 1.91,
+                      "kwin": 6.01,
+                      "kkp": 0.86,
+                      "r": 0.0
+              },
+              "Poznan": {
+                      "pis": 19.57,
+                      "ko": 44.09,
+                      "pl2050": 9.09,
+                      "psl": 7.45,
+                      "lewica": 9.3,
+                      "razem": 3.0,
+                      "kwin": 5.16,
+                      "kkp": 0.74,
+                      "r": 0.0
+              },
+              "Koszalin": {
+                      "pis": 31.36,
+                      "ko": 38.69,
+                      "pl2050": 6.79,
+                      "psl": 5.56,
+                      "lewica": 6.59,
+                      "razem": 2.13,
+                      "kwin": 5.26,
+                      "kkp": 0.75,
+                      "r": 0.0
+              },
+              "Szczecin": {
+                      "pis": 28.79,
+                      "ko": 40.13,
+                      "pl2050": 6.94,
+                      "psl": 5.68,
+                      "lewica": 7.09,
+                      "razem": 2.29,
+                      "kwin": 5.2,
+                      "kkp": 0.74,
+                      "r": 0.0
+              }
       },
       names: {
         Legnica: 'Legnica', Walbrzych: 'Wałbrzych', Wroclaw: 'Wrocław', Bydgoszcz: 'Bydgoszcz', Torun: 'Toruń',
@@ -5769,8 +6189,237 @@ saxony_anhalt: {
         Koszalin: 'Koszalin', Szczecin: 'Szczecin',
       },
       // 2023 national result — uniform-swing baseline for the per-okręg projection
-      national2021: { pis: 35.4, ko: 30.7, pl2050: 7.2, psl: 5.9, lewica: 6.5, razem: 2.1, kwin: 6.3, kkp: 0.9, r: 0 },
+      national2021: {
+              "pis": 35.38,
+              "ko": 30.7,
+              "pl2050": 7.92,
+              "psl": 6.49,
+              "lewica": 6.51,
+              "razem": 2.1,
+              "kwin": 6.27,
+              "kkp": 0.9,
+              "r": 0.0
+      },
     },
+      map2: {
+      "svg": "img/poland_voivodeships.svg",
+      "selector": "id",
+      "districts": {
+            "dolnoslaskie": "dolnoslaskie",
+            "kujawsko_pomorskie": "kujawsko_pomorskie",
+            "lubelskie": "lubelskie",
+            "lubuskie": "lubuskie",
+            "lodzkie": "lodzkie",
+            "malopolskie": "malopolskie",
+            "mazowieckie": "mazowieckie",
+            "opolskie": "opolskie",
+            "podkarpackie": "podkarpackie",
+            "podlaskie": "podlaskie",
+            "pomorskie": "pomorskie",
+            "slaskie": "slaskie",
+            "swietokrzyskie": "swietokrzyskie",
+            "warminsko_mazurskie": "warminsko_mazurskie",
+            "wielkopolskie": "wielkopolskie",
+            "zachodniopomorskie": "zachodniopomorskie"
+      },
+      "gebiete": {
+            "dolnoslaskie": {
+                  "pis": 30.56,
+                  "ko": 36.0,
+                  "pl2050": 6.86,
+                  "psl": 5.62,
+                  "lewica": 7.63,
+                  "razem": 2.46,
+                  "kwin": 5.76,
+                  "kkp": 0.82,
+                  "r": 0.0
+            },
+            "kujawsko_pomorskie": {
+                  "pis": 32.27,
+                  "ko": 32.26,
+                  "pl2050": 8.45,
+                  "psl": 6.92,
+                  "lewica": 8.0,
+                  "razem": 2.58,
+                  "kwin": 5.59,
+                  "kkp": 0.8,
+                  "r": 0.0
+            },
+            "lubelskie": {
+                  "pis": 47.66,
+                  "ko": 19.11,
+                  "pl2050": 8.08,
+                  "psl": 6.62,
+                  "lewica": 4.29,
+                  "razem": 1.39,
+                  "kwin": 7.12,
+                  "kkp": 1.02,
+                  "r": 0.0
+            },
+            "lubuskie": {
+                  "pis": 27.76,
+                  "ko": 37.73,
+                  "pl2050": 8.28,
+                  "psl": 6.79,
+                  "lewica": 7.0,
+                  "razem": 2.26,
+                  "kwin": 5.7,
+                  "kkp": 0.81,
+                  "r": 0.0
+            },
+            "lodzkie": {
+                  "pis": 38.11,
+                  "ko": 29.69,
+                  "pl2050": 7.38,
+                  "psl": 6.04,
+                  "lewica": 6.67,
+                  "razem": 2.15,
+                  "kwin": 5.81,
+                  "kkp": 0.83,
+                  "r": 0.0
+            },
+            "malopolskie": {
+                  "pis": 41.72,
+                  "ko": 23.49,
+                  "pl2050": 8.64,
+                  "psl": 7.08,
+                  "lewica": 5.24,
+                  "razem": 1.69,
+                  "kwin": 7.02,
+                  "kkp": 1.0,
+                  "r": 0.0
+            },
+            "mazowieckie": {
+                  "pis": 32.22,
+                  "ko": 33.69,
+                  "pl2050": 7.97,
+                  "psl": 6.53,
+                  "lewica": 7.12,
+                  "razem": 2.3,
+                  "kwin": 6.39,
+                  "kkp": 0.91,
+                  "r": 0.0
+            },
+            "opolskie": {
+                  "pis": 31.26,
+                  "ko": 33.59,
+                  "pl2050": 7.0,
+                  "psl": 5.74,
+                  "lewica": 5.47,
+                  "razem": 1.77,
+                  "kwin": 5.68,
+                  "kkp": 0.81,
+                  "r": 0.0
+            },
+            "podkarpackie": {
+                  "pis": 52.83,
+                  "ko": 16.97,
+                  "pl2050": 7.12,
+                  "psl": 5.84,
+                  "lewica": 3.56,
+                  "razem": 1.15,
+                  "kwin": 7.99,
+                  "kkp": 1.14,
+                  "r": 0.0
+            },
+            "podlaskie": {
+                  "pis": 42.39,
+                  "ko": 20.84,
+                  "pl2050": 10.37,
+                  "psl": 8.49,
+                  "lewica": 3.66,
+                  "razem": 1.18,
+                  "kwin": 8.57,
+                  "kkp": 1.22,
+                  "r": 0.0
+            },
+            "pomorskie": {
+                  "pis": 27.33,
+                  "ko": 39.71,
+                  "pl2050": 7.76,
+                  "psl": 6.36,
+                  "lewica": 6.68,
+                  "razem": 2.16,
+                  "kwin": 5.9,
+                  "kkp": 0.84,
+                  "r": 0.0
+            },
+            "slaskie": {
+                  "pis": 33.5,
+                  "ko": 32.11,
+                  "pl2050": 7.17,
+                  "psl": 5.88,
+                  "lewica": 7.83,
+                  "razem": 2.53,
+                  "kwin": 6.1,
+                  "kkp": 0.87,
+                  "r": 0.0
+            },
+            "swietokrzyskie": {
+                  "pis": 47.07,
+                  "ko": 20.93,
+                  "pl2050": 7.59,
+                  "psl": 6.22,
+                  "lewica": 5.17,
+                  "razem": 1.67,
+                  "kwin": 5.73,
+                  "kkp": 0.82,
+                  "r": 0.0
+            },
+            "warminsko_mazurskie": {
+                  "pis": 33.57,
+                  "ko": 32.55,
+                  "pl2050": 8.69,
+                  "psl": 7.12,
+                  "lewica": 6.12,
+                  "razem": 1.98,
+                  "kwin": 5.92,
+                  "kkp": 0.85,
+                  "r": 0.0
+            },
+            "wielkopolskie": {
+                  "pis": 30.12,
+                  "ko": 33.61,
+                  "pl2050": 9.17,
+                  "psl": 7.52,
+                  "lewica": 7.35,
+                  "razem": 2.38,
+                  "kwin": 5.8,
+                  "kkp": 0.83,
+                  "r": 0.0
+            },
+            "zachodniopomorskie": {
+                  "pis": 29.73,
+                  "ko": 39.6,
+                  "pl2050": 6.88,
+                  "psl": 5.64,
+                  "lewica": 6.91,
+                  "razem": 2.23,
+                  "kwin": 5.22,
+                  "kkp": 0.75,
+                  "r": 0.0
+            }
+      },
+      "names": {
+            "dolnoslaskie": "Dolnośląskie",
+            "kujawsko_pomorskie": "Kujawsko-Pomorskie",
+            "lubelskie": "Lubelskie",
+            "lubuskie": "Lubuskie",
+            "lodzkie": "Łódzkie",
+            "malopolskie": "Małopolskie",
+            "mazowieckie": "Mazowieckie",
+            "opolskie": "Opolskie",
+            "podkarpackie": "Podkarpackie",
+            "podlaskie": "Podlaskie",
+            "pomorskie": "Pomorskie",
+            "slaskie": "Śląskie",
+            "swietokrzyskie": "Świętokrzyskie",
+            "warminsko_mazurskie": "Warmińsko-Mazurskie",
+            "wielkopolskie": "Wielkopolskie",
+            "zachodniopomorskie": "Zachodniopomorskie"
+      },
+      "label": "województwa (16)"
+},
     logos: {
       pis: 'img/pl/PIS.svg',
       ko: 'img/pl/KO.svg',
@@ -12642,6 +13291,242 @@ saxony_anhalt: {
       // National baseline for the uniform-swing projection = 2023 result vote %
       national2021: { ref: 31.24, ekre: 16.05, kesk: 15.28, e200: 13.33, sde: 9.27, isamaa: 8.21, vl: 2.39, pp: 2.30, koos: 0, eer: 0.96, erk: 0 },
     },
+      map2: {
+      "svg": "img/estonia_counties.svg",
+      "selector": "id",
+      "districts": {
+            "harju": "harju",
+            "rapla": "rapla",
+            "hiiu": "hiiu",
+            "laane": "laane",
+            "saare": "saare",
+            "laane_viru": "laane_viru",
+            "ida_viru": "ida_viru",
+            "jarva": "jarva",
+            "viljandi": "viljandi",
+            "jogeva": "jogeva",
+            "tartu": "tartu",
+            "polva": "polva",
+            "valga": "valga",
+            "voru": "voru",
+            "parnu": "parnu"
+      },
+      "gebiete": {
+            "harju": {
+                  "isamaa": 6.35,
+                  "e200": 13.65,
+                  "ref": 35.04,
+                  "ekre": 10.57,
+                  "kesk": 19.36,
+                  "sde": 8.42,
+                  "vl": 2.89,
+                  "koos": 0.0,
+                  "pp": 2.47,
+                  "eer": 0.95,
+                  "erk": 0.0
+            },
+            "rapla": {
+                  "isamaa": 11.72,
+                  "e200": 12.25,
+                  "ref": 30.5,
+                  "ekre": 22.75,
+                  "kesk": 10.97,
+                  "sde": 6.95,
+                  "vl": 0.27,
+                  "koos": 0.0,
+                  "pp": 2.8,
+                  "eer": 0.57,
+                  "erk": 0.0
+            },
+            "hiiu": {
+                  "isamaa": 7.4,
+                  "e200": 14.58,
+                  "ref": 29.32,
+                  "ekre": 12.77,
+                  "kesk": 11.1,
+                  "sde": 21.88,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 2.24,
+                  "eer": 0.7,
+                  "erk": 0.0
+            },
+            "laane": {
+                  "isamaa": 6.63,
+                  "e200": 18.59,
+                  "ref": 26.93,
+                  "ekre": 20.57,
+                  "kesk": 14.59,
+                  "sde": 9.71,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 1.96,
+                  "eer": 1.04,
+                  "erk": 0.0
+            },
+            "saare": {
+                  "isamaa": 8.74,
+                  "e200": 17.16,
+                  "ref": 27.64,
+                  "ekre": 20.17,
+                  "kesk": 9.57,
+                  "sde": 13.82,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 2.09,
+                  "eer": 0.79,
+                  "erk": 0.0
+            },
+            "laane_viru": {
+                  "isamaa": 13.85,
+                  "e200": 8.71,
+                  "ref": 31.16,
+                  "ekre": 20.11,
+                  "kesk": 13.52,
+                  "sde": 7.47,
+                  "vl": 1.48,
+                  "koos": 0.0,
+                  "pp": 3.0,
+                  "eer": 0.52,
+                  "erk": 0.0
+            },
+            "ida_viru": {
+                  "isamaa": 3.95,
+                  "e200": 8.27,
+                  "ref": 14.02,
+                  "ekre": 8.27,
+                  "kesk": 25.94,
+                  "sde": 7.59,
+                  "vl": 14.95,
+                  "koos": 0.0,
+                  "pp": 0.93,
+                  "eer": 0.46,
+                  "erk": 0.0
+            },
+            "jarva": {
+                  "isamaa": 10.75,
+                  "e200": 8.79,
+                  "ref": 30.42,
+                  "ekre": 23.55,
+                  "kesk": 11.14,
+                  "sde": 12.03,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 2.19,
+                  "eer": 0.83,
+                  "erk": 0.0
+            },
+            "viljandi": {
+                  "isamaa": 12.58,
+                  "e200": 11.96,
+                  "ref": 26.31,
+                  "ekre": 22.71,
+                  "kesk": 9.81,
+                  "sde": 13.61,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 1.98,
+                  "eer": 0.71,
+                  "erk": 0.0
+            },
+            "jogeva": {
+                  "isamaa": 17.04,
+                  "e200": 11.22,
+                  "ref": 24.93,
+                  "ekre": 21.02,
+                  "kesk": 14.09,
+                  "sde": 6.62,
+                  "vl": 2.16,
+                  "koos": 0.0,
+                  "pp": 2.16,
+                  "eer": 0.77,
+                  "erk": 0.0
+            },
+            "tartu": {
+                  "isamaa": 9.09,
+                  "e200": 17.7,
+                  "ref": 34.76,
+                  "ekre": 16.0,
+                  "kesk": 7.26,
+                  "sde": 9.97,
+                  "vl": 1.48,
+                  "koos": 0.0,
+                  "pp": 2.31,
+                  "eer": 1.45,
+                  "erk": 0.0
+            },
+            "polva": {
+                  "isamaa": 8.85,
+                  "e200": 13.03,
+                  "ref": 23.96,
+                  "ekre": 26.85,
+                  "kesk": 14.99,
+                  "sde": 9.41,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 1.64,
+                  "eer": 1.02,
+                  "erk": 0.0
+            },
+            "valga": {
+                  "isamaa": 8.4,
+                  "e200": 10.27,
+                  "ref": 29.26,
+                  "ekre": 22.22,
+                  "kesk": 17.39,
+                  "sde": 7.98,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 3.03,
+                  "eer": 1.08,
+                  "erk": 0.0
+            },
+            "voru": {
+                  "isamaa": 8.48,
+                  "e200": 11.33,
+                  "ref": 20.39,
+                  "ekre": 28.72,
+                  "kesk": 9.91,
+                  "sde": 17.32,
+                  "vl": 0.0,
+                  "koos": 0.0,
+                  "pp": 2.22,
+                  "eer": 1.48,
+                  "erk": 0.0
+            },
+            "parnu": {
+                  "isamaa": 10.06,
+                  "e200": 12.83,
+                  "ref": 29.43,
+                  "ekre": 25.78,
+                  "kesk": 11.58,
+                  "sde": 6.72,
+                  "vl": 0.65,
+                  "koos": 0.0,
+                  "pp": 2.17,
+                  "eer": 0.77,
+                  "erk": 0.0
+            }
+      },
+      "names": {
+            "harju": "Harju",
+            "rapla": "Rapla",
+            "hiiu": "Hiiu",
+            "laane": "Lääne",
+            "saare": "Saare",
+            "laane_viru": "Lääne-Viru",
+            "ida_viru": "Ida-Viru",
+            "jarva": "Järva",
+            "viljandi": "Viljandi",
+            "jogeva": "Jõgeva",
+            "tartu": "Tartu",
+            "polva": "Põlva",
+            "valga": "Valga",
+            "voru": "Võru",
+            "parnu": "Pärnu"
+      },
+      "label": "maakonnad (15)"
+},
     pollsterMAE: {
       'Kantar Emor':       { EE2023: 1.16, overall: 1.16 },
       Emor:                { EE2023: 1.16, overall: 1.16 },
@@ -16867,7 +17752,80 @@ saxony_anhalt: {
       "hideBlocToggle": true,
       "label": "Wahlkreise (299)"
 },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "INSA": {
+            "BT2025": 0.91,
+            "overall": 0.91
+      },
+      "Wahlkreisprognose": {
+            "BT2025": 1.18,
+            "overall": 1.18
+      },
+      "Ipsos": {
+            "BT2025": 1.35,
+            "overall": 1.35
+      },
+      "Forschungsgruppe Wahlen": {
+            "BT2025": 1.3,
+            "overall": 1.3
+      },
+      "Forsa": {
+            "BT2025": 1.28,
+            "overall": 1.28
+      },
+      "YouGov": {
+            "BT2025": 0.92,
+            "overall": 0.92
+      },
+      "Allensbach": {
+            "BT2025": 1.87,
+            "overall": 1.87
+      },
+      "GMS": {
+            "BT2025": 2.19,
+            "overall": 2.19
+      },
+      "YouGov ( MRP )": {
+            "BT2025": 0.89,
+            "overall": 0.89
+      },
+      "Cluster 17": {
+            "BT2025": 1.08,
+            "overall": 1.08
+      },
+      "Infratest dimap": {
+            "BT2025": 1.89,
+            "overall": 1.89
+      },
+      "Pollytix": {
+            "BT2025": 1.32,
+            "overall": 1.32
+      },
+      "YouGov (MRP)": {
+            "BT2025": 1.47,
+            "overall": 1.47
+      },
+      "Democracy Institute": {
+            "BT2025": 2.0,
+            "overall": 2.0
+      },
+      "Verian": {
+            "BT2025": 2.16,
+            "overall": 2.16
+      },
+      "Kantar": {
+            "BT2025": 2.04,
+            "overall": 2.04
+      },
+      "Civey": {
+            "BT2025": 4.46,
+            "overall": 4.46
+      },
+      "pollytix": {
+            "BT2025": 4.96,
+            "overall": 4.96
+      }
+},
     maeKey: 'BT2025',
     logos: {
       cdu: 'img/de/Union.svg', spd: 'img/de/SPD.svg', gruene: 'img/de/Grune.svg',

@@ -254,6 +254,9 @@ def main():
                     help="shorthand for --id-prefix ''")
     ap.add_argument("--lstrip-zeros", action="store_true",
                     help="strip leading zeros from the identifier")
+    ap.add_argument("--dissolve", action="store_true",
+                    help="union features sharing the same identifier "
+                         "(needs shapely)")
     ap.add_argument("--class-pattern", default="wk{n}")
     ap.add_argument("--project", choices=["auto", "none", "mercator"],
                     default="auto")
@@ -274,6 +277,12 @@ def main():
         if args.name_map:
             with open(args.name_map, encoding="utf8") as f:
                 name_map = json.load(f)
+
+        def ident_of(props):
+            raw = str(props.get(args.name_field, "")).strip()
+            ident = name_map.get(raw) or (fold(raw) if args.fold else raw)
+            return ident.lstrip("0") if args.lstrip_zeros else ident
+
         feats = list(geojson_polygons(gj))
         if args.project == "mercator":
             project = True
@@ -282,14 +291,40 @@ def main():
         else:  # auto: lon/lat -> Mercator, projected coords used as-is
             x0, y0 = feats[0][1][0][0] if feats else (0, 0)
             project = abs(x0) <= 180 and abs(y0) <= 90
-        for props, rings in feats:
-            raw = str(props.get(args.name_field, "")).strip()
-            ident = name_map.get(raw) or (fold(raw) if args.fold else raw)
-            if args.lstrip_zeros:
-                ident = ident.lstrip("0")
-            if project:
-                rings = [[mercator(x, y) for x, y in r] for r in rings]
-            geoms.append((ident, rings))
+
+        if args.dissolve:
+            from shapely.geometry import mapping, shape
+            from shapely.ops import unary_union
+            groups, order = {}, []
+            for f in gj.get("features", []):
+                geom = f.get("geometry")
+                if not geom:
+                    continue
+                ident = ident_of(f.get("properties") or {})
+                if ident not in groups:
+                    groups[ident] = []
+                    order.append(ident)
+                groups[ident].append(shape(geom))
+            for ident in order:
+                merged = mapping(unary_union(groups[ident]))
+                rings = []
+                polys = ([merged["coordinates"]]
+                         if merged["type"] == "Polygon"
+                         else merged["coordinates"])
+                for poly in polys:
+                    rings.extend([[tuple(p) for p in ring]
+                                  for ring in poly])
+                if project:
+                    rings = [[mercator(x, y) for x, y in r]
+                             for r in rings]
+                geoms.append((ident, rings))
+        else:
+            for props, rings in feats:
+                ident = ident_of(props)
+                if project:
+                    rings = [[mercator(x, y) for x, y in r]
+                             for r in rings]
+                geoms.append((ident, rings))
     else:
         zip_path = os.path.join(CACHE, os.path.basename(args.zip))
         if args.force or not os.path.exists(zip_path):

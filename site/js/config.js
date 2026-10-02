@@ -16319,6 +16319,7 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: true,         // 299 direct mandates (Erststimme)
     constituencyRule: 'fptp',     // winner-takes-all, no 12% rule
+    hideForecastConstituencies: true,
     recencyHalfLifeDays: 14,
     parties: {
       cdu:  { code: 'CDU/CSU', name: 'Christlich Demokratische Union / Christlich-Soziale Union', name_en: 'Christian Democratic Union / Christian Social Union', color: '#151518' },

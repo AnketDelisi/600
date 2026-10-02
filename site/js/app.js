@@ -1873,7 +1873,11 @@ function allocateSeatsByDistrict(avg){
     if(!shares) continue;
     const votes={};
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?shares[p].now:0});
-    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&((conf.districtThreshold?votes[p]:(avg[p]||0))>=THRESHOLD));
+    // the flag may live on the map block or on the country block (MAP_CONF
+  // returns the map block for layer 0)
+  const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
+    :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&((dth?votes[p]:(avg[p]||0))>=THRESHOLD));
     if(!valid.length) continue;
     const quo=[];
     valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});

@@ -388,7 +388,44 @@ saxony_anhalt: {
       },
       // 2021 direct-mandate winners per Wahlkreis (source: de.wikipedia.org Liste der Landtagswahlkreise);
       // SPD won 34 of 36; WK 13 went AfD (Enrico Schult), WK 24 CDU (Harry Glawe)
-      winners2021: { 13: 'afd', 24: 'cdu' },
+      winners2021: {
+              "1": "spd",
+              "2": "spd",
+              "3": "spd",
+              "4": "spd",
+              "5": "spd",
+              "6": "spd",
+              "7": "spd",
+              "8": "spd",
+              "9": "spd",
+              "10": "spd",
+              "11": "spd",
+              "12": "spd",
+              "13": "spd",
+              "14": "spd",
+              "15": "spd",
+              "16": "spd",
+              "17": "spd",
+              "18": "spd",
+              "19": "spd",
+              "20": "spd",
+              "21": "spd",
+              "22": "spd",
+              "23": "spd",
+              "24": "spd",
+              "25": "spd",
+              "26": "spd",
+              "27": "spd",
+              "28": "spd",
+              "29": "spd",
+              "30": "spd",
+              "31": "spd",
+              "32": "spd",
+              "33": "spd",
+              "34": "spd",
+              "35": "spd",
+              "36": "spd"
+      },
       winners2021_default: 'spd',
       // actual 2021 Zweitstimmen (%) per Wahlkreis (official: wahlen.mvnet.de l_wahlkreise.csv)
       wkResults: {"1":{"spd":33.5,"afd":12.4,"cdu":12.5,"linke":9.9,"gruene":14.4,"fdp":6.9},"2":{"spd":42.3,"afd":16.4,"cdu":11.5,"linke":12.8,"gruene":4.1,"fdp":5.1},"3":{"spd":40.5,"afd":16.2,"cdu":11.9,"linke":11.7,"gruene":5.6,"fdp":5.6},"4":{"spd":43.1,"afd":14.1,"cdu":9.5,"linke":12.5,"gruene":6.9,"fdp":5.3},"5":{"spd":44.6,"afd":11.8,"cdu":7.8,"linke":14.2,"gruene":7.2,"fdp":5.0},"6":{"spd":35.3,"afd":7.4,"cdu":8.8,"linke":14.7,"gruene":18.0,"fdp":6.5},"7":{"spd":36.5,"afd":10.8,"cdu":9.8,"linke":12.6,"gruene":12.9,"fdp":7.5},"8":{"spd":35.2,"afd":11.9,"cdu":12.1,"linke":12.8,"gruene":11.8,"fdp":7.3},"9":{"spd":44.3,"afd":15.7,"cdu":10.4,"linke":11.3,"gruene":5.3,"fdp":5.6},"10":{"spd":45.1,"afd":12.4,"cdu":10.4,"linke":10.5,"gruene":8.2,"fdp":5.9},"11":{"spd":41.4,"afd":15.4,"cdu":13.0,"linke":9.1,"gruene":6.0,"fdp":6.4},"12":{"spd":40.2,"afd":15.0,"cdu":13.8,"linke":9.6,"gruene":6.2,"fdp":7.2},"13":{"spd":33.7,"afd":24.0,"cdu":21.1,"linke":8.0,"gruene":2.6,"fdp":4.2},"14":{"spd":40.0,"afd":21.0,"cdu":15.9,"linke":8.5,"gruene":2.4,"fdp":5.0},"15":{"spd":40.5,"afd":19.7,"cdu":14.5,"linke":8.4,"gruene":3.5,"fdp":5.5},"16":{"spd":44.2,"afd":17.6,"cdu":11.8,"linke":8.2,"gruene":4.6,"fdp":5.5},"17":{"spd":48.1,"afd":14.3,"cdu":11.9,"linke":7.8,"gruene":4.5,"fdp":5.4},"18":{"spd":43.5,"afd":15.2,"cdu":14.8,"linke":9.1,"gruene":3.6,"fdp":6.3},"19":{"spd":41.2,"afd":17.9,"cdu":13.2,"linke":9.5,"gruene":3.7,"fdp":5.7},"20":{"spd":41.4,"afd":18.5,"cdu":13.5,"linke":9.3,"gruene":4.6,"fdp":5.5},"21":{"spd":41.4,"afd":17.5,"cdu":12.4,"linke":10.1,"gruene":5.6,"fdp":5.1},"22":{"spd":37.5,"afd":22.4,"cdu":14.5,"linke":9.0,"gruene":3.2,"fdp":5.1},"23":{"spd":40.4,"afd":17.1,"cdu":16.2,"linke":9.2,"gruene":4.6,"fdp":5.2},"24":{"spd":33.7,"afd":21.5,"cdu":20.4,"linke":8.1,"gruene":3.8,"fdp":5.1},"25":{"spd":38.0,"afd":20.7,"cdu":14.2,"linke":8.9,"gruene":4.3,"fdp":5.4},"26":{"spd":33.6,"afd":15.8,"cdu":13.6,"linke":9.0,"gruene":10.0,"fdp":7.0},"27":{"spd":42.6,"afd":13.9,"cdu":13.4,"linke":10.1,"gruene":7.3,"fdp":5.6},"28":{"spd":41.6,"afd":16.9,"cdu":13.2,"linke":9.7,"gruene":5.4,"fdp":5.7},"29":{"spd":35.6,"afd":21.3,"cdu":16.8,"linke":7.3,"gruene":4.0,"fdp":6.2},"30":{"spd":34.7,"afd":23.7,"cdu":15.5,"linke":7.4,"gruene":3.8,"fdp":5.5},"31":{"spd":40.8,"afd":18.5,"cdu":14.2,"linke":9.5,"gruene":3.4,"fdp":5.1},"32":{"spd":40.9,"afd":16.5,"cdu":13.6,"linke":10.4,"gruene":4.7,"fdp":6.0},"33":{"spd":37.1,"afd":19.7,"cdu":14.8,"linke":10.3,"gruene":4.6,"fdp":5.2},"34":{"spd":38.2,"afd":17.8,"cdu":14.8,"linke":10.1,"gruene":5.0,"fdp":6.1},"35":{"spd":39.0,"afd":23.7,"cdu":13.3,"linke":7.6,"gruene":2.1,"fdp":4.4},"36":{"spd":38.3,"afd":23.3,"cdu":16.6,"linke":7.5,"gruene":2.2,"fdp":4.0}},
@@ -513,23 +550,714 @@ saxony_anhalt: {
       },
       // 2023 direct-mandate winners per Wahlkreis (78, official: wahlen-berlin.de)
       winners2021: {
-        101:'gruene',102:'cdu',103:'gruene',104:'gruene',105:'cdu',106:'gruene',107:'gruene',
-        201:'gruene',202:'gruene',203:'gruene',204:'linke',205:'gruene',206:'gruene',
-        301:'cdu',302:'cdu',303:'gruene',304:'cdu',305:'gruene',306:'gruene',307:'gruene',308:'gruene',309:'spd',
-        401:'cdu',402:'cdu',403:'gruene',404:'cdu',405:'cdu',406:'cdu',407:'cdu',
-        501:'cdu',502:'cdu',503:'cdu',504:'cdu',505:'cdu',
-        601:'cdu',602:'cdu',603:'cdu',604:'cdu',605:'cdu',606:'cdu',607:'cdu',
-        701:'gruene',702:'gruene',703:'spd',704:'cdu',705:'cdu',706:'cdu',707:'cdu',
-        801:'gruene',802:'gruene',803:'spd',804:'cdu',805:'cdu',806:'cdu',
-        901:'linke',902:'spd',903:'cdu',904:'cdu',905:'cdu',906:'cdu',
-        1001:'afd',1002:'cdu',1003:'afd',1004:'cdu',1005:'cdu',1006:'cdu',
-        1101:'cdu',1102:'cdu',1103:'cdu',1104:'linke',1105:'linke',1106:'cdu',
-        1201:'cdu',1202:'cdu',1203:'cdu',1204:'cdu',1205:'cdu',1206:'cdu',
+              "907": "cdu",
+              "1206": "cdu",
+              "1205": "cdu",
+              "1204": "cdu",
+              "1203": "cdu",
+              "1202": "cdu",
+              "1201": "cdu",
+              "1106": "cdu",
+              "1105": "linke",
+              "1104": "linke",
+              "1103": "cdu",
+              "1102": "cdu",
+              "1101": "cdu",
+              "1006": "cdu",
+              "1005": "cdu",
+              "1004": "cdu",
+              "1003": "afd",
+              "1002": "cdu",
+              "1001": "afd",
+              "906": "cdu",
+              "905": "cdu",
+              "904": "cdu",
+              "903": "cdu",
+              "902": "cdu",
+              "901": "gruene",
+              "806": "cdu",
+              "805": "cdu",
+              "804": "cdu",
+              "803": "gruene",
+              "802": "gruene",
+              "801": "gruene",
+              "707": "cdu",
+              "706": "cdu",
+              "705": "cdu",
+              "704": "cdu",
+              "703": "gruene",
+              "702": "gruene",
+              "701": "gruene",
+              "607": "cdu",
+              "606": "cdu",
+              "605": "cdu",
+              "604": "cdu",
+              "603": "cdu",
+              "602": "cdu",
+              "601": "cdu",
+              "505": "cdu",
+              "504": "cdu",
+              "503": "cdu",
+              "502": "cdu",
+              "501": "cdu",
+              "407": "cdu",
+              "406": "cdu",
+              "405": "cdu",
+              "404": "cdu",
+              "403": "gruene",
+              "402": "cdu",
+              "401": "cdu",
+              "309": "gruene",
+              "308": "gruene",
+              "307": "gruene",
+              "306": "gruene",
+              "305": "cdu",
+              "304": "cdu",
+              "303": "gruene",
+              "302": "cdu",
+              "301": "cdu",
+              "205": "gruene",
+              "204": "gruene",
+              "203": "gruene",
+              "202": "gruene",
+              "201": "gruene",
+              "107": "gruene",
+              "106": "gruene",
+              "105": "cdu",
+              "104": "gruene",
+              "103": "gruene",
+              "102": "cdu",
+              "101": "gruene"
       },
       // 2023 direct-mandate winners default (uniform-swing uses gebiete directly)
       winners2021_default: 'cdu',
       // actual 2023 Zweitstimmen (%) per Wahlkreis (official: wahlen-berlin.de)
-      wkResults: {"101":{"spd":15.2,"cdu":20.6,"gruene":30.6,"linke":12.8,"afd":4.1,"fdp":8.0},"102":{"spd":17.6,"cdu":24.2,"gruene":19.5,"linke":17.6,"afd":7.1,"fdp":6.2},"103":{"spd":18.4,"cdu":22.2,"gruene":28.1,"linke":12.4,"afd":4.6,"fdp":6.1},"104":{"spd":14.7,"cdu":15.6,"gruene":34.3,"linke":16.8,"afd":4.6,"fdp":3.8},"105":{"spd":18.4,"cdu":24.1,"gruene":21.7,"linke":14.1,"afd":8.5,"fdp":3.2},"106":{"spd":14.8,"cdu":14.7,"gruene":28.7,"linke":21.5,"afd":5.4,"fdp":2.8},"107":{"spd":16.4,"cdu":17.8,"gruene":28.5,"linke":17.6,"afd":5.6,"fdp":3.5},"201":{"spd":16.1,"cdu":14.3,"gruene":37.0,"linke":17.4,"afd":2.6,"fdp":3.8},"202":{"spd":12.7,"cdu":10.2,"gruene":38.3,"linke":24.4,"afd":2.0,"fdp":2.4},"203":{"spd":15.8,"cdu":14.4,"gruene":32.9,"linke":21.6,"afd":2.9,"fdp":2.4},"204":{"spd":17.1,"cdu":18.2,"gruene":22.4,"linke":21.5,"afd":6.9,"fdp":3.6},"205":{"spd":13.5,"cdu":11.1,"gruene":33.9,"linke":21.9,"afd":4.2,"fdp":3.3},"206":{"spd":12.8,"cdu":12.2,"gruene":36.5,"linke":20.1,"afd":3.4,"fdp":4.2},"301":{"spd":16.2,"cdu":33.6,"gruene":9.4,"linke":11.0,"afd":17.0,"fdp":3.4},"302":{"spd":17.6,"cdu":29.6,"gruene":14.2,"linke":11.9,"afd":13.1,"fdp":4.4},"303":{"spd":17.1,"cdu":20.3,"gruene":23.0,"linke":16.6,"afd":9.2,"fdp":3.4},"304":{"spd":18.0,"cdu":28.9,"gruene":12.1,"linke":14.3,"afd":13.6,"fdp":3.2},"305":{"spd":17.4,"cdu":20.6,"gruene":19.6,"linke":17.6,"afd":10.4,"fdp":3.1},"306":{"spd":13.2,"cdu":12.1,"gruene":37.8,"linke":19.1,"afd":3.5,"fdp":4.3},"307":{"spd":14.9,"cdu":16.1,"gruene":27.5,"linke":18.8,"afd":7.3,"fdp":3.6},"308":{"spd":13.6,"cdu":14.4,"gruene":34.3,"linke":18.7,"afd":3.9,"fdp":5.6},"309":{"spd":17.5,"cdu":17.7,"gruene":24.6,"linke":18.0,"afd":7.9,"fdp":4.0},"401":{"spd":20.8,"cdu":27.4,"gruene":20.2,"linke":8.8,"afd":8.0,"fdp":5.4},"402":{"spd":20.6,"cdu":35.5,"gruene":18.4,"linke":5.6,"afd":5.4,"fdp":8.0},"403":{"spd":20.7,"cdu":24.1,"gruene":27.3,"linke":10.1,"afd":4.2,"fdp":6.3},"404":{"spd":20.1,"cdu":27.9,"gruene":24.2,"linke":8.2,"afd":4.7,"fdp":8.0},"405":{"spd":18.8,"cdu":39.0,"gruene":16.0,"linke":5.2,"afd":5.4,"fdp":9.9},"406":{"spd":21.6,"cdu":27.6,"gruene":24.2,"linke":8.5,"afd":4.4,"fdp":7.0},"407":{"spd":22.1,"cdu":31.9,"gruene":20.1,"linke":7.3,"afd":5.5,"fdp":6.3},"501":{"spd":22.2,"cdu":37.2,"gruene":9.6,"linke":4.8,"afd":12.2,"fdp":4.1},"502":{"spd":23.0,"cdu":33.9,"gruene":9.8,"linke":5.6,"afd":12.8,"fdp":3.8},"503":{"spd":21.2,"cdu":34.4,"gruene":12.1,"linke":5.9,"afd":10.8,"fdp":4.5},"504":{"spd":21.2,"cdu":43.9,"gruene":7.8,"linke":3.5,"afd":11.3,"fdp":4.1},"505":{"spd":20.4,"cdu":43.9,"gruene":11.2,"linke":3.3,"afd":8.5,"fdp":6.0},"601":{"spd":20.5,"cdu":28.7,"gruene":23.4,"linke":7.6,"afd":5.3,"fdp":6.5},"602":{"spd":21.6,"cdu":30.1,"gruene":20.7,"linke":7.0,"afd":6.0,"fdp":6.3},"603":{"spd":20.4,"cdu":36.8,"gruene":18.0,"linke":4.9,"afd":5.0,"fdp":8.7},"604":{"spd":21.0,"cdu":39.0,"gruene":14.8,"linke":4.7,"afd":6.6,"fdp":6.9},"605":{"spd":20.6,"cdu":38.3,"gruene":13.5,"linke":4.9,"afd":8.2,"fdp":6.3},"606":{"spd":18.8,"cdu":36.6,"gruene":19.2,"linke":5.4,"afd":4.8,"fdp":9.5},"607":{"spd":18.7,"cdu":38.4,"gruene":18.1,"linke":4.1,"afd":4.8,"fdp":10.7},"701":{"spd":19.3,"cdu":21.1,"gruene":31.1,"linke":12.3,"afd":4.0,"fdp":4.7},"702":{"spd":19.3,"cdu":17.2,"gruene":34.2,"linke":13.5,"afd":3.7,"fdp":3.7},"703":{"spd":21.9,"cdu":23.0,"gruene":30.0,"linke":9.1,"afd":4.0,"fdp":4.7},"704":{"spd":19.1,"cdu":27.8,"gruene":23.3,"linke":10.2,"afd":5.8,"fdp":3.9},"705":{"spd":20.3,"cdu":38.5,"gruene":12.1,"linke":6.4,"afd":8.7,"fdp":4.9},"706":{"spd":20.0,"cdu":45.6,"gruene":9.1,"linke":3.8,"afd":9.6,"fdp":4.8},"707":{"spd":19.2,"cdu":47.3,"gruene":9.0,"linke":3.6,"afd":8.9,"fdp":5.4},"801":{"spd":14.4,"cdu":10.3,"gruene":35.4,"linke":24.8,"afd":3.4,"fdp":1.8},"802":{"spd":14.3,"cdu":9.7,"gruene":35.8,"linke":25.7,"afd":3.4,"fdp":1.8},"803":{"spd":20.3,"cdu":20.0,"gruene":22.8,"linke":17.6,"afd":6.5,"fdp":2.5},"804":{"spd":27.5,"cdu":41.2,"gruene":5.2,"linke":4.6,"afd":10.6,"fdp":3.6},"805":{"spd":25.3,"cdu":40.3,"gruene":8.5,"linke":4.4,"afd":9.9,"fdp":4.4},"806":{"spd":25.2,"cdu":43.9,"gruene":5.6,"linke":3.6,"afd":10.8,"fdp":4.2},"901":{"spd":15.8,"cdu":18.3,"gruene":21.3,"linke":20.9,"afd":9.8,"fdp":3.1},"902":{"spd":20.4,"cdu":22.1,"gruene":12.4,"linke":16.4,"afd":13.5,"fdp":3.4},"903":{"spd":17.4,"cdu":30.6,"gruene":8.7,"linke":12.2,"afd":17.0,"fdp":3.6},"904":{"spd":17.9,"cdu":28.4,"gruene":11.1,"linke":14.5,"afd":13.9,"fdp":4.3},"905":{"spd":18.9,"cdu":27.6,"gruene":7.0,"linke":14.8,"afd":17.6,"fdp":4.1},"906":{"spd":17.8,"cdu":29.0,"gruene":12.1,"linke":16.2,"afd":12.2,"fdp":3.6},"1001":{"spd":15.0,"cdu":22.9,"gruene":3.5,"linke":16.0,"afd":28.0,"fdp":2.2},"1002":{"spd":18.1,"cdu":26.9,"gruene":4.1,"linke":17.5,"afd":20.4,"fdp":2.5},"1003":{"spd":15.0,"cdu":24.6,"gruene":4.3,"linke":14.8,"afd":25.2,"fdp":2.7},"1004":{"spd":15.7,"cdu":36.5,"gruene":6.8,"linke":14.4,"afd":14.7,"fdp":3.0},"1005":{"spd":16.2,"cdu":40.1,"gruene":7.5,"linke":11.5,"afd":13.3,"fdp":4.0},"1006":{"spd":15.3,"cdu":31.9,"gruene":5.0,"linke":14.3,"afd":20.2,"fdp":2.6},"1101":{"spd":14.0,"cdu":34.7,"gruene":4.0,"linke":14.4,"afd":20.9,"fdp":2.1},"1102":{"spd":14.9,"cdu":34.6,"gruene":6.9,"linke":15.9,"afd":15.3,"fdp":2.9},"1103":{"spd":18.5,"cdu":23.1,"gruene":9.0,"linke":19.5,"afd":14.6,"fdp":3.1},"1104":{"spd":16.8,"cdu":18.0,"gruene":17.3,"linke":21.9,"afd":10.7,"fdp":3.0},"1105":{"spd":15.9,"cdu":19.8,"gruene":15.0,"linke":20.9,"afd":12.7,"fdp":2.9},"1106":{"spd":17.2,"cdu":23.2,"gruene":16.6,"linke":18.4,"afd":9.9,"fdp":4.0},"1201":{"spd":19.3,"cdu":34.5,"gruene":12.6,"linke":8.2,"afd":11.8,"fdp":3.0},"1202":{"spd":20.5,"cdu":38.0,"gruene":9.5,"linke":5.4,"afd":13.0,"fdp":3.9},"1203":{"spd":20.7,"cdu":41.7,"gruene":12.9,"linke":3.4,"afd":8.3,"fdp":5.9},"1204":{"spd":20.7,"cdu":39.6,"gruene":12.4,"linke":4.1,"afd":9.9,"fdp":4.8},"1205":{"spd":21.8,"cdu":41.0,"gruene":6.6,"linke":3.9,"afd":14.4,"fdp":3.8},"1206":{"spd":19.0,"cdu":44.0,"gruene":15.3,"linke":3.5,"afd":6.0,"fdp":6.8}},
+      wkResults: {
+              "907": {
+                      "linke": 16.5,
+                      "afd": 12.4,
+                      "cdu": 29.9,
+                      "spd": 18.1,
+                      "fdp": 3.6,
+                      "gruene": 12.5
+              },
+              "1206": {
+                      "afd": 6.0,
+                      "gruene": 15.3,
+                      "spd": 19.0,
+                      "linke": 3.5,
+                      "fdp": 6.8,
+                      "cdu": 44.0
+              },
+              "1205": {
+                      "cdu": 41.0,
+                      "afd": 14.4,
+                      "spd": 21.8,
+                      "gruene": 6.6,
+                      "fdp": 3.8,
+                      "linke": 3.9
+              },
+              "1204": {
+                      "spd": 20.7,
+                      "linke": 4.1,
+                      "fdp": 4.8,
+                      "gruene": 12.4,
+                      "afd": 9.9,
+                      "cdu": 39.6
+              },
+              "1203": {
+                      "afd": 8.3,
+                      "spd": 20.7,
+                      "fdp": 5.9,
+                      "gruene": 12.9,
+                      "cdu": 41.7,
+                      "linke": 3.4
+              },
+              "1202": {
+                      "gruene": 9.5,
+                      "afd": 13.0,
+                      "fdp": 3.9,
+                      "cdu": 38.0,
+                      "spd": 20.5,
+                      "linke": 5.4
+              },
+              "1201": {
+                      "gruene": 12.6,
+                      "afd": 11.8,
+                      "cdu": 34.5,
+                      "fdp": 3.0,
+                      "linke": 8.2,
+                      "spd": 19.3
+              },
+              "1106": {
+                      "afd": 9.9,
+                      "fdp": 4.0,
+                      "linke": 18.4,
+                      "gruene": 16.6,
+                      "cdu": 23.2,
+                      "spd": 17.2
+              },
+              "1105": {
+                      "cdu": 19.8,
+                      "fdp": 2.9,
+                      "afd": 12.7,
+                      "gruene": 15.0,
+                      "linke": 20.9,
+                      "spd": 15.9
+              },
+              "1104": {
+                      "fdp": 3.0,
+                      "cdu": 18.0,
+                      "spd": 16.8,
+                      "gruene": 17.3,
+                      "afd": 10.7,
+                      "linke": 21.9
+              },
+              "1103": {
+                      "cdu": 23.1,
+                      "afd": 14.6,
+                      "linke": 19.5,
+                      "spd": 18.5,
+                      "gruene": 9.0,
+                      "fdp": 3.1
+              },
+              "1102": {
+                      "fdp": 2.9,
+                      "linke": 15.9,
+                      "cdu": 34.6,
+                      "gruene": 6.9,
+                      "afd": 15.3,
+                      "spd": 14.9
+              },
+              "1101": {
+                      "gruene": 4.0,
+                      "spd": 14.0,
+                      "linke": 14.4,
+                      "afd": 20.9,
+                      "fdp": 2.1,
+                      "cdu": 34.7
+              },
+              "1006": {
+                      "afd": 20.2,
+                      "cdu": 31.9,
+                      "fdp": 2.6,
+                      "spd": 15.3,
+                      "gruene": 5.0,
+                      "linke": 14.3
+              },
+              "1005": {
+                      "spd": 16.2,
+                      "cdu": 40.1,
+                      "afd": 13.3,
+                      "fdp": 4.0,
+                      "gruene": 7.5,
+                      "linke": 11.5
+              },
+              "1004": {
+                      "linke": 14.4,
+                      "spd": 15.7,
+                      "afd": 14.7,
+                      "gruene": 6.8,
+                      "cdu": 36.5,
+                      "fdp": 3.0
+              },
+              "1003": {
+                      "spd": 15.0,
+                      "cdu": 24.6,
+                      "linke": 14.8,
+                      "afd": 25.2,
+                      "gruene": 4.3,
+                      "fdp": 2.7
+              },
+              "1002": {
+                      "fdp": 2.5,
+                      "afd": 20.4,
+                      "linke": 17.5,
+                      "spd": 18.1,
+                      "gruene": 4.1,
+                      "cdu": 26.9
+              },
+              "1001": {
+                      "gruene": 3.5,
+                      "linke": 16.0,
+                      "afd": 28.0,
+                      "cdu": 22.9,
+                      "fdp": 2.2,
+                      "spd": 15.0
+              },
+              "906": {
+                      "linke": 15.1,
+                      "spd": 19.3,
+                      "afd": 18.2,
+                      "gruene": 6.6,
+                      "fdp": 4.2,
+                      "cdu": 28.4
+              },
+              "905": {
+                      "gruene": 11.8,
+                      "cdu": 26.0,
+                      "afd": 14.2,
+                      "spd": 19.0,
+                      "fdp": 4.3,
+                      "linke": 14.7
+              },
+              "904": {
+                      "linke": 11.3,
+                      "gruene": 5.9,
+                      "afd": 18.0,
+                      "cdu": 34.8,
+                      "spd": 16.7,
+                      "fdp": 3.6
+              },
+              "903": {
+                      "gruene": 11.6,
+                      "fdp": 3.6,
+                      "linke": 14.4,
+                      "spd": 20.6,
+                      "cdu": 25.5,
+                      "afd": 13.1
+              },
+              "902": {
+                      "afd": 12.3,
+                      "fdp": 3.7,
+                      "linke": 17.8,
+                      "spd": 17.1,
+                      "cdu": 19.6,
+                      "gruene": 15.6
+              },
+              "901": {
+                      "gruene": 22.4,
+                      "linke": 21.7,
+                      "afd": 8.7,
+                      "cdu": 15.9,
+                      "fdp": 2.8,
+                      "spd": 15.1
+              },
+              "806": {
+                      "afd": 10.8,
+                      "cdu": 43.9,
+                      "spd": 25.2,
+                      "fdp": 4.2,
+                      "gruene": 5.6,
+                      "linke": 3.6
+              },
+              "805": {
+                      "spd": 25.3,
+                      "gruene": 8.5,
+                      "fdp": 4.4,
+                      "linke": 4.4,
+                      "cdu": 40.3,
+                      "afd": 9.9
+              },
+              "804": {
+                      "gruene": 5.2,
+                      "cdu": 41.2,
+                      "afd": 10.6,
+                      "fdp": 3.6,
+                      "spd": 27.5,
+                      "linke": 4.6
+              },
+              "803": {
+                      "gruene": 22.8,
+                      "afd": 6.5,
+                      "cdu": 20.0,
+                      "linke": 17.6,
+                      "fdp": 2.5,
+                      "spd": 20.3
+              },
+              "802": {
+                      "fdp": 1.8,
+                      "spd": 14.3,
+                      "cdu": 9.7,
+                      "linke": 25.7,
+                      "gruene": 35.8,
+                      "afd": 3.4
+              },
+              "801": {
+                      "cdu": 10.3,
+                      "afd": 3.4,
+                      "gruene": 35.4,
+                      "fdp": 1.8,
+                      "spd": 14.4,
+                      "linke": 24.8
+              },
+              "707": {
+                      "gruene": 9.0,
+                      "fdp": 5.4,
+                      "linke": 3.6,
+                      "cdu": 47.3,
+                      "afd": 8.9,
+                      "spd": 19.2
+              },
+              "706": {
+                      "gruene": 9.1,
+                      "afd": 9.6,
+                      "fdp": 4.8,
+                      "linke": 3.8,
+                      "cdu": 45.6,
+                      "spd": 20.0
+              },
+              "705": {
+                      "afd": 8.7,
+                      "linke": 6.4,
+                      "fdp": 4.9,
+                      "gruene": 12.1,
+                      "spd": 20.3,
+                      "cdu": 38.5
+              },
+              "704": {
+                      "spd": 19.1,
+                      "afd": 5.8,
+                      "linke": 10.2,
+                      "cdu": 27.8,
+                      "fdp": 3.9,
+                      "gruene": 23.3
+              },
+              "703": {
+                      "afd": 4.0,
+                      "linke": 9.1,
+                      "gruene": 30.0,
+                      "spd": 21.9,
+                      "cdu": 23.0,
+                      "fdp": 4.7
+              },
+              "702": {
+                      "gruene": 34.2,
+                      "linke": 13.5,
+                      "fdp": 3.7,
+                      "cdu": 17.2,
+                      "spd": 19.3,
+                      "afd": 3.7
+              },
+              "701": {
+                      "fdp": 4.7,
+                      "gruene": 31.1,
+                      "afd": 4.0,
+                      "cdu": 21.1,
+                      "spd": 19.3,
+                      "linke": 12.3
+              },
+              "607": {
+                      "fdp": 10.7,
+                      "linke": 4.1,
+                      "gruene": 18.1,
+                      "afd": 4.8,
+                      "cdu": 38.4,
+                      "spd": 18.7
+              },
+              "606": {
+                      "cdu": 36.6,
+                      "linke": 5.4,
+                      "afd": 4.8,
+                      "spd": 18.8,
+                      "fdp": 9.5,
+                      "gruene": 19.2
+              },
+              "605": {
+                      "fdp": 6.3,
+                      "cdu": 38.3,
+                      "gruene": 13.5,
+                      "afd": 8.2,
+                      "spd": 20.6,
+                      "linke": 4.9
+              },
+              "604": {
+                      "linke": 4.7,
+                      "gruene": 14.8,
+                      "cdu": 39.0,
+                      "spd": 21.0,
+                      "fdp": 6.9,
+                      "afd": 6.6
+              },
+              "603": {
+                      "spd": 20.4,
+                      "afd": 5.0,
+                      "linke": 4.9,
+                      "cdu": 36.8,
+                      "fdp": 8.7,
+                      "gruene": 18.0
+              },
+              "602": {
+                      "fdp": 6.3,
+                      "cdu": 30.1,
+                      "gruene": 20.7,
+                      "afd": 6.0,
+                      "linke": 7.0,
+                      "spd": 21.6
+              },
+              "601": {
+                      "cdu": 28.7,
+                      "afd": 5.3,
+                      "spd": 20.5,
+                      "linke": 7.6,
+                      "gruene": 23.4,
+                      "fdp": 6.5
+              },
+              "505": {
+                      "fdp": 6.0,
+                      "spd": 20.4,
+                      "gruene": 11.2,
+                      "afd": 8.5,
+                      "linke": 3.3,
+                      "cdu": 43.9
+              },
+              "504": {
+                      "cdu": 43.9,
+                      "linke": 3.5,
+                      "gruene": 7.8,
+                      "spd": 21.2,
+                      "fdp": 4.1,
+                      "afd": 11.3
+              },
+              "503": {
+                      "cdu": 34.4,
+                      "gruene": 12.1,
+                      "fdp": 4.5,
+                      "spd": 21.2,
+                      "afd": 10.8,
+                      "linke": 5.9
+              },
+              "502": {
+                      "gruene": 9.8,
+                      "cdu": 33.9,
+                      "spd": 23.0,
+                      "fdp": 3.8,
+                      "linke": 5.6,
+                      "afd": 12.8
+              },
+              "501": {
+                      "linke": 4.8,
+                      "cdu": 37.2,
+                      "afd": 12.2,
+                      "spd": 22.2,
+                      "fdp": 4.1,
+                      "gruene": 9.6
+              },
+              "407": {
+                      "linke": 7.3,
+                      "spd": 22.1,
+                      "gruene": 20.1,
+                      "fdp": 6.3,
+                      "afd": 5.5,
+                      "cdu": 31.9
+              },
+              "406": {
+                      "afd": 4.4,
+                      "spd": 21.6,
+                      "cdu": 27.6,
+                      "linke": 8.5,
+                      "fdp": 7.0,
+                      "gruene": 24.2
+              },
+              "405": {
+                      "linke": 5.2,
+                      "gruene": 16.0,
+                      "afd": 5.4,
+                      "fdp": 9.9,
+                      "spd": 18.8,
+                      "cdu": 39.0
+              },
+              "404": {
+                      "fdp": 8.0,
+                      "linke": 8.2,
+                      "spd": 20.1,
+                      "afd": 4.7,
+                      "cdu": 27.9,
+                      "gruene": 24.2
+              },
+              "403": {
+                      "gruene": 27.3,
+                      "afd": 4.2,
+                      "fdp": 6.3,
+                      "linke": 10.1,
+                      "spd": 20.7,
+                      "cdu": 24.1
+              },
+              "402": {
+                      "fdp": 8.0,
+                      "linke": 5.6,
+                      "cdu": 35.5,
+                      "gruene": 18.4,
+                      "afd": 5.4,
+                      "spd": 20.6
+              },
+              "401": {
+                      "afd": 8.0,
+                      "spd": 20.8,
+                      "gruene": 20.2,
+                      "fdp": 5.4,
+                      "linke": 8.8,
+                      "cdu": 27.4
+              },
+              "309": {
+                      "fdp": 4.0,
+                      "spd": 17.5,
+                      "linke": 18.0,
+                      "afd": 7.9,
+                      "gruene": 24.6,
+                      "cdu": 17.7
+              },
+              "308": {
+                      "afd": 3.9,
+                      "linke": 18.7,
+                      "gruene": 34.3,
+                      "fdp": 5.6,
+                      "cdu": 14.4,
+                      "spd": 13.6
+              },
+              "307": {
+                      "fdp": 3.6,
+                      "gruene": 27.5,
+                      "linke": 18.8,
+                      "afd": 7.3,
+                      "spd": 14.9,
+                      "cdu": 16.1
+              },
+              "306": {
+                      "cdu": 12.1,
+                      "gruene": 37.8,
+                      "linke": 19.1,
+                      "fdp": 4.3,
+                      "spd": 13.2,
+                      "afd": 3.5
+              },
+              "305": {
+                      "fdp": 3.1,
+                      "gruene": 19.6,
+                      "spd": 17.4,
+                      "cdu": 20.6,
+                      "linke": 17.6,
+                      "afd": 10.4
+              },
+              "304": {
+                      "gruene": 12.1,
+                      "afd": 13.6,
+                      "linke": 14.3,
+                      "cdu": 28.9,
+                      "spd": 18.0,
+                      "fdp": 3.2
+              },
+              "303": {
+                      "linke": 16.6,
+                      "fdp": 3.4,
+                      "spd": 17.1,
+                      "cdu": 20.3,
+                      "gruene": 23.0,
+                      "afd": 9.2
+              },
+              "302": {
+                      "spd": 17.6,
+                      "cdu": 29.6,
+                      "linke": 11.9,
+                      "afd": 13.1,
+                      "fdp": 4.4,
+                      "gruene": 14.2
+              },
+              "301": {
+                      "gruene": 9.4,
+                      "cdu": 33.6,
+                      "afd": 17.0,
+                      "spd": 16.2,
+                      "fdp": 3.4,
+                      "linke": 11.0
+              },
+              "205": {
+                      "fdp": 3.5,
+                      "afd": 3.5,
+                      "linke": 22.8,
+                      "spd": 12.8,
+                      "cdu": 10.6,
+                      "gruene": 36.7
+              },
+              "204": {
+                      "gruene": 24.2,
+                      "linke": 21.2,
+                      "fdp": 3.6,
+                      "afd": 6.6,
+                      "cdu": 16.8,
+                      "spd": 16.8
+              },
+              "203": {
+                      "gruene": 36.4,
+                      "spd": 12.8,
+                      "afd": 2.7,
+                      "linke": 21.9,
+                      "fdp": 3.3,
+                      "cdu": 11.8
+              },
+              "202": {
+                      "afd": 2.2,
+                      "spd": 14.9,
+                      "cdu": 11.5,
+                      "gruene": 40.2,
+                      "linke": 19.5,
+                      "fdp": 3.2
+              },
+              "201": {
+                      "linke": 19.5,
+                      "afd": 3.3,
+                      "spd": 16.5,
+                      "fdp": 3.0,
+                      "cdu": 17.0,
+                      "gruene": 29.1
+              },
+              "107": {
+                      "spd": 16.4,
+                      "fdp": 3.5,
+                      "gruene": 28.5,
+                      "linke": 17.6,
+                      "afd": 5.6,
+                      "cdu": 17.8
+              },
+              "106": {
+                      "linke": 21.5,
+                      "fdp": 2.8,
+                      "afd": 5.4,
+                      "gruene": 28.7,
+                      "spd": 14.8,
+                      "cdu": 14.7
+              },
+              "105": {
+                      "gruene": 21.7,
+                      "afd": 8.5,
+                      "spd": 18.4,
+                      "fdp": 3.2,
+                      "cdu": 24.1,
+                      "linke": 14.1
+              },
+              "104": {
+                      "cdu": 15.6,
+                      "fdp": 3.8,
+                      "afd": 4.6,
+                      "gruene": 34.3,
+                      "spd": 14.7,
+                      "linke": 16.8
+              },
+              "103": {
+                      "afd": 4.6,
+                      "cdu": 22.2,
+                      "spd": 18.4,
+                      "fdp": 6.1,
+                      "linke": 12.4,
+                      "gruene": 28.1
+              },
+              "102": {
+                      "afd": 7.1,
+                      "fdp": 6.2,
+                      "cdu": 24.2,
+                      "spd": 17.6,
+                      "gruene": 19.5,
+                      "linke": 17.6
+              },
+              "101": {
+                      "spd": 15.2,
+                      "gruene": 30.6,
+                      "cdu": 20.6,
+                      "linke": 12.8,
+                      "fdp": 8.0,
+                      "afd": 4.1
+              }
+      },
       // 2023 national Zweitstimmen — uniform-swing baseline (falls back to LAST_ELECTION anyway)
       national2021: { cdu: 28.2, spd: 18.4, gruene: 18.4, linke: 12.2, afd: 9.1, fdp: 4.6, bsw: 0 },
     },
@@ -1610,11 +2338,11 @@ saxony_anhalt: {
       },
       // 2024 Nationalrat share % per Bundesland (source: en.wikipedia.org 2024 election, "Results by state")
       gebiete: {
-        burgenland:     { fpoe: 28.8, oevp: 28.6, spoe: 27.0, neos: 6.5, gruene: 4.7, kpoe: 0 },
-        carinthia:      { fpoe: 38.4, oevp: 20.8, spoe: 23.1, neos: 7.8, gruene: 4.7, kpoe: 0 },
+        burgenland:     { fpoe: 28.8, oevp: 28.6, spoe: 27.0, neos: 6.5, gruene: 4.4, kpoe: 0 },
+        carinthia:      { fpoe: 38.4, oevp: 20.8, spoe: 23.1, neos: 7.8, gruene: 5.2, kpoe: 0 },
         lower_austria:  { fpoe: 29.2, oevp: 29.9, spoe: 20.2, neos: 8.5, gruene: 6.7, kpoe: 0 },
         upper_austria:  { fpoe: 30.5, oevp: 26.3, spoe: 20.3, neos: 8.3, gruene: 8.4, kpoe: 0 },
-        salzburg:       { fpoe: 27.7, oevp: 31.6, spoe: 16.8, neos: 9.0, gruene: 8.5, kpoe: 0 },
+        salzburg:       { fpoe: 27.7, oevp: 31.6, spoe: 16.8, neos: 9.0, gruene: 6.4, kpoe: 0 },
         styria:         { fpoe: 32.2, oevp: 27.0, spoe: 18.6, neos: 8.2, gruene: 7.6, kpoe: 0 },
         tyrol:          { fpoe: 28.7, oevp: 31.0, spoe: 15.4, neos: 10.6, gruene: 8.1, kpoe: 0 },
         vorarlberg:     { fpoe: 27.1, oevp: 29.1, spoe: 13.1, neos: 12.6, gruene: 11.4, kpoe: 0 },

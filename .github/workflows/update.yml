@@ -38,6 +38,8 @@ jobs:
           python scraper/scrape_netherlands.py
           python scraper/scrape_estonia.py
           python scraper/scrape_slovakia.py
+          python scraper/scrape_latvia.py
+          python scraper/scrape_serbia.py
 
       - name: Commit and push to main
         run: |

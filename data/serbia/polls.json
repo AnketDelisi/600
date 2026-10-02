@@ -2,80 +2,253 @@
   "country": "serbia",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
-  "scraped_at": "2026-09-10T12:00:00Z",
-  "poll_count": 4,
+  "scraped_at": "2026-10-02T15:12:20Z",
+  "poll_count": 16,
   "polls": [
+    {
+      "pollster": "NSPM",
+      "date": "2026-09-30",
+      "n": 0,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 41.7,
+        "sl": 44.4
+      }
+    },
+    {
+      "pollster": "Faktor Plus",
+      "date": "2026-09-21",
+      "n": 986,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 48.6,
+        "sl": 37.1,
+        "pes": 3.6,
+        "nada": 2.8,
+        "misn": 1.2
+      }
+    },
     {
       "pollster": "Faktor Plus",
       "date": "2026-09-04",
+      "n": 1200,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
       "votes": {
         "sns": 47.2,
-        "sps": 4.9,
         "sl": 31.5,
         "pes": 3.6,
         "nps": 3.4,
         "nada": 2.1,
-        "misn": 2.9,
-        "srs": 2.0
-      },
-      "country": "serbia",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
-      "n": 1200
+        "misn": 2.9
+      }
     },
     {
       "pollster": "NSPM",
       "date": "2026-07-30",
+      "n": 1000,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
       "votes": {
         "sns": 37.5,
-        "sps": 4.9,
         "sl": 39.6,
         "pes": 4.2,
         "nps": 5.6,
         "nada": 2.3,
-        "misn": 3.8,
-        "srs": 0
-      },
-      "country": "serbia",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
-      "n": 1000
+        "misn": 3.8
+      }
     },
     {
       "pollster": "CRTA",
       "date": "2026-07-15",
-      "votes": {
-        "sns": 35.7,
-        "sps": 3.8,
-        "sl": 44.9,
-        "pes": 0.9,
-        "nps": 0.4,
-        "nada": 0.8,
-        "misn": 1.5,
-        "srs": 0
-      },
+      "n": 2324,
       "country": "serbia",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
-      "n": 2324
+      "votes": {
+        "sns": 35.7,
+        "sl": 44.9,
+        "pes": 0.4,
+        "nps": 2.2,
+        "nada": 1.5,
+        "misn": 2.0
+      }
     },
     {
       "pollster": "Faktor Plus",
       "date": "2026-06-26",
+      "n": 1200,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
       "votes": {
         "sns": 47.1,
-        "sps": 5.0,
         "sl": 30.7,
         "pes": 4.5,
         "nps": 3.8,
         "nada": 2.2,
-        "misn": 3.0,
-        "srs": 2.0
-      },
+        "misn": 3.0
+      }
+    },
+    {
+      "pollster": "Faktor Plus",
+      "date": "2026-04-30",
+      "n": 1000,
       "country": "serbia",
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
-      "n": 1200
+      "votes": {
+        "sns": 46.4,
+        "sl": 28.7,
+        "pes": 8.6,
+        "nada": 2.5,
+        "misn": 3.0
+      }
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2025-09-02",
+      "n": 1220,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 48.2,
+        "sl": 8.1,
+        "pes": 0.9,
+        "nps": 3.3,
+        "nada": 0.4,
+        "misn": 2.9
+      }
+    },
+    {
+      "pollster": "Faktor Plus",
+      "date": "2025-08-02",
+      "n": 1200,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 47.8,
+        "sl": 8.7,
+        "pes": 1.5,
+        "nps": 4.2,
+        "nada": 2.9,
+        "misn": 4.2
+      }
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2025-07-30",
+      "n": 1200,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 46.6,
+        "sl": 5.0,
+        "pes": 1.7,
+        "nps": 2.5,
+        "nada": 0.7,
+        "misn": 3.5
+      }
+    },
+    {
+      "pollster": "NSPM",
+      "date": "2025-07-24",
+      "n": 1100,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 40.2,
+        "sl": 23.5,
+        "pes": 3.6,
+        "nps": 4.5,
+        "nada": 2.7,
+        "misn": 2.8
+      }
+    },
+    {
+      "pollster": "NSPM",
+      "date": "2025-06-27",
+      "n": 1050,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 35.1,
+        "sl": 20.5,
+        "pes": 3.4,
+        "nps": 4.3,
+        "nada": 3.0,
+        "misn": 3.2
+      }
+    },
+    {
+      "pollster": "NSPM",
+      "date": "2025-03-30",
+      "n": 0,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 36.0,
+        "pes": 7.1,
+        "nps": 6.4,
+        "nada": 8.2
+      }
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2024-12-25",
+      "n": 0,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 48.3,
+        "pes": 1.8,
+        "nps": 2.4,
+        "nada": 0.8,
+        "misn": 4.7
+      }
+    },
+    {
+      "pollster": "Faktor Plus",
+      "date": "2024-12-25",
+      "n": 1180,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 51.1,
+        "pes": 2.7,
+        "nps": 4.1,
+        "nada": 3.8,
+        "misn": 5.6
+      }
+    },
+    {
+      "pollster": "Faktor Plus",
+      "date": "2024-09-27",
+      "n": 2000,
+      "country": "serbia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
+      "votes": {
+        "sns": 54.0,
+        "pes": 2.5,
+        "nps": 4.6,
+        "nada": 4.3,
+        "misn": 4.6
+      }
     }
   ]
 }

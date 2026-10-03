@@ -84,8 +84,12 @@ def norm_circ(s):
 
 
 def group_key(txt):
-    t = re.sub(r"\[[^\]]*\]", "", txt or "")
-    t = re.sub(r"\([^)]*\)", "", t).strip().lower()
+    raw = re.sub(r"\[[^\]]*\]", "", txt or "")
+    t = re.sub(r"\([^)]*\)", "", raw).strip().lower()
+    # Mixed-group winners keep their component in parentheses: the +Europa
+    # component is a modelled party (e), the rest (SVP/UV/ScN/MA/èViva) is not
+    if "europa" in t and "viva" not in raw.lower():
+        return "e"
     for name, key in GROUP_KEY.items():
         if t.startswith(name):
             return key
@@ -161,7 +165,7 @@ def fetch_collegio(circ, u_num, force=False):
             low = lst.lower()
             if lst.startswith("↳") or any(w in low for w in
                                           ("totale", "schede", "votanti",
-                                           "elettori")):
+                                           "elettori", "valid")):
                 continue
             n = parse_int(v)
             if n is None:
@@ -233,7 +237,8 @@ def fetch_winners(force=False):
                 key = "valle d'aosta - U01"
             else:
                 continue
-            winners[key] = group_key(group) if group else "other"
+            winners[key] = {"party": group_key(group) if group else "other",
+                            "coalition": cells[4]}
     return winners
 
 
@@ -299,10 +304,20 @@ def main():
         if shares is None:
             missing_shares.append(name)
             shares = {p: gebiete[region].get(p, 0) for p in PARTIES}
+        # Winner = the deputy's parliamentary group; a Mixed-group winner
+        # elected on a coalition list falls back to that coalition's leading
+        # party in the district (e.g. an unaffiliated CDX winner -> FdI).
+        winner = w["party"] if w else "other"
+        if w and winner == "other" and w["coalition"] in (
+                "Centro-destra", "Centro-sinistra"):
+            bloc = (["fdi", "lega", "fi", "nm"]
+                    if w["coalition"] == "Centro-destra"
+                    else ["pd", "avs", "e"])
+            winner = max(bloc, key=lambda p: shares.get(p, 0))
         cons.append({"id": cid, "name": name, "seats": 1,
                      "region": region,
                      "results_2022": shares,
-                     "winner_2022": w or "other"})
+                     "winner_2022": winner})
     print("constituencies:", len(cons), "| without winner:", missing_win[:6],
           "| without per-college shares:", len(missing_shares),
           missing_shares[:6])

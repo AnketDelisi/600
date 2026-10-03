@@ -315,7 +315,7 @@ function renderConstituencyTable(avg){
 }
 
 /* ---------- load data ---------- */
-let POLLS=[], META={};
+let POLLS=[], FILTERED_POLLS=[], META={};
 let SCRAPED_AT=null;   // ISO timestamp of the last poll scrape (data health)
 let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting math
 let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
@@ -1294,6 +1294,7 @@ function renderParliament(avg){
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+      ${MAP_ONLY&&mapConf&&mapConf.runoff2022?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
@@ -1305,7 +1306,7 @@ function renderParliament(avg){
     :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats)}</div>`;
   const cap=showMap
     ?(MAP_ONLY
-      ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${t('projected winner','tahmini kazanan')}`
+      ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):t('projected winner','tahmini kazanan')}`
       :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
     :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`;
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
@@ -1453,8 +1454,8 @@ function districtWinnerProjection(nr, avg, confOverride){
 
 // Winner of the previous election in a district: explicit winners map wins,
 // else argmax of the official per-district results (wkResults / results_2022)
-function districtResultWinner(nr){
-  const conf=MAP_CONF();
+function districtResultWinner(nr, confOverride){
+  const conf=confOverride||MAP_CONF();
   if(conf.winners2021&&conf.winners2021[String(nr)]) return conf.winners2021[String(nr)];
   const shares=districtShares(nr, null, true);
   if(!shares) return null;
@@ -1504,11 +1505,30 @@ async function renderMap(avg){
   const box=$('map-box');
   if(!box) return;
   if(SEAT_BASED && PARL_MODE==='proj' && avg) avg=seatAvgToVotes(avg);
+  if(MAP_ONLY&&PARL_MODE==='runoff'){
+    const ra=runoffMapAvg(avg, FILTERED_POLLS.length?FILTERED_POLLS:POLLS, null);
+    const rc=runoffConf();
+    if(ra&&rc) return renderMapInto(box, ra, false, rc);
+  }
   await renderMapInto(box, avg, PARL_MODE!=='proj');
 }
 
-async function renderMapInto(box, avg, resultMode){
-  const conf=MAP_CONF();
+// Two-round presidential runoff map: the per-state 2022 runoff baselines
+// (conf.runoff2022) shifted by the national head-to-head average, so the map
+// shows the projected runoff winner per state instead of the first round.
+function runoffConf(){
+  const c=MAP_CONF();
+  return (c&&c.runoff2022&&c.nationalRunoff)
+    ?{...c, gebiete:c.runoff2022, national2021:c.nationalRunoff} : null;
+}
+
+function runoffMapAvg(avg, filtered, sim){
+  const ro=runoffForecast(avg, filtered, sim);
+  return ro?{[ro.a]:ro.aN, [ro.b]:ro.bN} : null;
+}
+
+async function renderMapInto(box, avg, resultMode, confOverride){
+  const conf=confOverride||MAP_CONF();
   if(!conf) return;
   if(!MAP_CACHE[conf.svg]){
     try{
@@ -1564,7 +1584,7 @@ async function renderMapInto(box, avg, resultMode){
       nr=parseInt(ph.id.slice(1),10);
     }
     if(!nr) return;
-    const shares=districtShares(nr, avg, resultMode);
+    const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return;
     const blocMode=MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
     const blocTotals=blocMode?districtBlocTotals(shares):null;
@@ -1576,8 +1596,8 @@ async function renderMapInto(box, avg, resultMode){
       winner=leadingBloc(blocTotals,resultMode?'past':'now');
     }else{
       winner=resultMode
-        ?(districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results))
-        :districtWinnerProjection(nr,avg);
+        ?(districtResultWinner(nr,conf)||districtWinnerProjection(nr,LAST_ELECTION.results,conf))
+        :districtWinnerProjection(nr,avg,conf);
     }
     if(!winner) return;
     const color=blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888');
@@ -1620,8 +1640,8 @@ async function renderMapInto(box, avg, resultMode){
         tooltip.style.display='block';
         return;
       }
-      const pastWinner=districtResultWinner(nr)||districtWinnerProjection(nr,LAST_ELECTION.results);
-      const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg);
+      const pastWinner=districtResultWinner(nr,conf)||districtWinnerProjection(nr,LAST_ELECTION.results,conf);
+      const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg,conf);
       // Result mode: order rows by the official seat outcome (so a dissolved-but-large
   // list like SPN sits above smaller parties); otherwise by projected share.
   // Dissolved alliances (pastOnly) appear in the 2023 result view only.
@@ -2850,13 +2870,16 @@ function renderForecast(pane){
       <div class="map-toggle-row" style="justify-content:flex-end">
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+        ${MAP_ONLY&&MAP_CONF()&&MAP_CONF().runoff2022?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
         ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-        District winners from the forecast's median national vote shares · hover a district for the past/forecast comparison
+        ${FC_MODE==='runoff'
+          ?t('Projected runoff winners (Lula vs Flávio) from the head-to-head average · hover a district for the past/forecast comparison','Başa baş ortalamasından tahmini ikinci tur kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
+          :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')}
       </div>
     </div>`:''}
 
@@ -2916,10 +2939,12 @@ function renderForecast(pane){
     });
   }
   if(MAP_CONF()){
+    const fcRo=runoffMapAvg(avg,filtered,sim);
+    const fcRunConf=runoffConf();
     const fcBox=$('fc-map-box');
     if(fcBox){
-      const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
-      renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+      const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:(FC_MODE==='runoff'&&fcRo?fcRo:medVotes);
+      renderMapInto(fcBox, fcAvg, FC_MODE==='res', FC_MODE==='runoff'?fcRunConf:undefined);
     }
     pane.querySelectorAll('.fc-map-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
@@ -2927,8 +2952,8 @@ function renderForecast(pane){
         pane.querySelectorAll('.fc-map-btn').forEach(b=>b.classList.toggle('active',b===btn));
         const fcBox=$('fc-map-box');
         if(fcBox){
-          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
-          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
+          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:(FC_MODE==='runoff'&&fcRo?fcRo:medVotes);
+          renderMapInto(fcBox, fcAvg, FC_MODE==='res', FC_MODE==='runoff'?fcRunConf:undefined);
         }
       });
     });
@@ -3706,6 +3731,7 @@ function renderPollsTab(){
   let filtered=recentPolls(POLLS, daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
   filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  FILTERED_POLLS=filtered;
 
   const avg=computeAverages(filtered);
   const rawAvg=computeAverages(filtered, true);

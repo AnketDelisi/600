@@ -4166,6 +4166,116 @@ saxony_anhalt: {
         sp: { lula: 40.18, flavio: 49.58 }, se: { lula: 62.80, flavio: 30.64 },
         to: { lula: 48.63, flavio: 46.06 },
       },
+      runoff2022: {
+        "ac": {
+          "lula": 29.7,
+          "flavio": 70.3
+        },
+        "al": {
+          "lula": 58.68,
+          "flavio": 41.32
+        },
+        "ap": {
+          "lula": 48.64,
+          "flavio": 51.36
+        },
+        "am": {
+          "lula": 51.1,
+          "flavio": 48.9
+        },
+        "ba": {
+          "lula": 72.12,
+          "flavio": 27.88
+        },
+        "ce": {
+          "lula": 69.97,
+          "flavio": 30.03
+        },
+        "es": {
+          "lula": 41.96,
+          "flavio": 58.04
+        },
+        "df": {
+          "lula": 41.19,
+          "flavio": 58.81
+        },
+        "go": {
+          "lula": 41.29,
+          "flavio": 58.71
+        },
+        "ma": {
+          "lula": 71.14,
+          "flavio": 28.86
+        },
+        "mt": {
+          "lula": 34.92,
+          "flavio": 65.08
+        },
+        "ms": {
+          "lula": 40.51,
+          "flavio": 59.49
+        },
+        "mg": {
+          "lula": 50.2,
+          "flavio": 49.8
+        },
+        "pa": {
+          "lula": 54.75,
+          "flavio": 45.25
+        },
+        "pb": {
+          "lula": 66.62,
+          "flavio": 33.38
+        },
+        "pr": {
+          "lula": 37.6,
+          "flavio": 62.4
+        },
+        "pe": {
+          "lula": 66.93,
+          "flavio": 33.07
+        },
+        "pi": {
+          "lula": 76.86,
+          "flavio": 23.14
+        },
+        "rj": {
+          "lula": 43.47,
+          "flavio": 56.53
+        },
+        "rn": {
+          "lula": 65.1,
+          "flavio": 34.9
+        },
+        "rs": {
+          "lula": 43.65,
+          "flavio": 56.35
+        },
+        "ro": {
+          "lula": 29.34,
+          "flavio": 70.66
+        },
+        "rr": {
+          "lula": 23.92,
+          "flavio": 76.08
+        },
+        "sc": {
+          "lula": 30.73,
+          "flavio": 69.27
+        },
+        "sp": {
+          "lula": 44.76,
+          "flavio": 55.24
+        },
+        "se": {
+          "lula": 67.21,
+          "flavio": 32.79
+        },
+        "to": {
+          "lula": 51.36,
+          "flavio": 48.64
+        }
+      },
       names: {
         ac: 'Acre', al: 'Alagoas', ap: 'Amapá', am: 'Amazonas', ba: 'Bahia', ce: 'Ceará',
         es: 'Espírito Santo', df: 'Distrito Federal', go: 'Goiás', ma: 'Maranhão',
@@ -4175,6 +4285,7 @@ saxony_anhalt: {
         sc: 'Santa Catarina', sp: 'São Paulo', se: 'Sergipe', to: 'Tocantins',
       },
       national2021: { lula: 48.43, flavio: 43.20, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
+      nationalRunoff: {"lula": 50.9, "flavio": 49.1},
     },
     // Approximate house-quality weights (no official backtest available yet)
     pollsterMAE: {

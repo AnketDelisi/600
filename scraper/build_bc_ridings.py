@@ -172,16 +172,18 @@ def main():
     hideBlocs: true,              // no governing/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
-    // trend extrapolation to the 2026-10-24 election: fresh campaign polls
-    // (5 in the last 14 days); the maxDaily cap (0.3pp/day) and the 7-day
-    // damping hold the earlier +10pp intercept artifact in check
+    // trend extrapolation to the 2026-10-24 election: momentum is a nudge,
+    // not the driver - anchored at the recent poll mean, total move capped
+    // at 0.15pp/day (3.2pp over the 21-day horizon), damped and blended at
+    // 0.4; the old loose caps moved NDP ~+8pp / ~+29 seats on a noisy slope
     trend: {
       electionDate: '2026-10-24',
-      blend: 0.5,
-      maxDaily: 0.3,
+      blend: 0.4,
+      maxDaily: 0.15,
       windowDays: 120,
       fitDays: 14,
       minPolls: 3,
+      dampDays: 10,
     },
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {

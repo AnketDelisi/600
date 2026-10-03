@@ -2,7 +2,7 @@
   "country": "israel",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
-  "scraped_at": "2026-10-02T15:13:32Z",
+  "scraped_at": "2026-10-03T11:03:16Z",
   "poll_count": 149,
   "polls": [
     {
@@ -12,7 +12,7 @@
         "likud": 21,
         "together": 10,
         "rzp": 5,
-        "otzma": 7,
+        "otzma": 6,
         "shas": 9,
         "utj": 8,
         "yb": 10,

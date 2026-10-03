@@ -2,9 +2,34 @@
   "country": "netherlands",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Dutch_general_election",
-  "scraped_at": "2026-10-02T15:13:34Z",
-  "poll_count": 37,
+  "scraped_at": "2026-10-03T11:03:19Z",
+  "poll_count": 38,
   "polls": [
+    {
+      "pollster": "Peil.nl",
+      "date": "2026-10-02",
+      "votes": {
+        "d66": 18,
+        "pvv": 19,
+        "vvd": 12,
+        "pro": 29,
+        "cda": 12,
+        "ja21": 20,
+        "fvd": 13,
+        "bbb": 2,
+        "denk": 3,
+        "sgp": 3,
+        "pvdd": 4,
+        "cu": 3,
+        "sp": 4,
+        "fiftyplus": 5,
+        "volt": 3
+      },
+      "country": "netherlands",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Dutch_general_election",
+      "n": 0
+    },
     {
       "pollster": "Verian",
       "date": "2026-09-28",

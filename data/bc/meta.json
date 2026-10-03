@@ -1,0 +1,10 @@
+{
+  "country": "bc",
+  "name": "British Columbia",
+  "election_date": "2026-10-24",
+  "seats": 93,
+  "threshold": 0,
+  "method": "fptp",
+  "constituencies": 93,
+  "notes": "Legislative Assembly of British Columbia: 93 seats, first-past-the-post in single-member ridings. 2024 result: NDP 47 seats (44.9%), Conservatives 44 (43.3%), Greens 2 (8.2%). Snap election called for 24 October 2026."
+}

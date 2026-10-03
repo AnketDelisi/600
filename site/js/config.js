@@ -21810,6 +21810,804 @@ saxony_anhalt: {
       nm: 'img/it/NM.svg', fn: 'img/it/FN.svg',
     },
   },
+  bc: {
+    name: 'British Columbia',
+    seats: 93,
+    threshold: 0,                 // no threshold (first-past-the-post)
+    method: 'fptp',               // winner-takes-all in 93 single-member ridings
+    seatBased: false,             // polls report vote shares (%)
+    constituencies: true,         // the map is the 93 ridings
+    constituencyRule: 'fptp',
+    recencyHalfLifeDays: 14,
+    // colours from the en.wikipedia party infoboxes (OneBC has none: teal)
+    parties: {
+      bcndp: { code: 'BC NDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
+      cpbc:  { code: 'BC Con',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
+      gpbc:  { code: 'BC Green', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
+      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2E30' },
+      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#0E7C7B' },
+    },
+    order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
+    parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
+    // governing party vs the rest (majority = 47 seats)
+    blocs: {
+      bloc1: { name: 'BC NDP',     short: 'NDP', parties: ['bcndp'], color: '#F4A460' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['cpbc', 'gpbc', 'cbc', 'onbc'], color: '#004AAD' },
+    },
+    lastElection: {
+      date: '2024-10-19',
+      // 2024 general election (Elections BC): NDP 47, Con 44, Green 2
+      results: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+      seats:   { bcndp: 47, cpbc: 44, gpbc: 2, cbc: 0, onbc: 0 },
+    },
+    // No trend extrapolation: the newest BC poll is a week old and the recent
+    // spread (NDP 35-41) makes a fitted slope unreliable; the trend's
+    // intercept extrapolates to today from the last data point, which turned
+    // a noisy +1.3pp/day slope into a +10pp artifact. Re-add once the
+    // campaign produces fresh daily polls.
+    map: {
+      svg: 'img/bc_ridings.svg',
+      selector: 'id',
+      useConstituencies: true,     // 93 ridings, projected winner takes the seat
+      districts: {
+              "abbotsford-mission": "abbotsford-mission",
+              "abbotsfordsouth": "abbotsfordsouth",
+              "abbotsfordwest": "abbotsfordwest",
+              "boundary-similkameen": "boundary-similkameen",
+              "bulkleyvalley-stikine": "bulkleyvalley-stikine",
+              "burnaby-newwestminster": "burnaby-newwestminster",
+              "burnabycentre": "burnabycentre",
+              "burnabyeast": "burnabyeast",
+              "burnabynorth": "burnabynorth",
+              "burnabysouth-metrotown": "burnabysouth-metrotown",
+              "cariboo-chilcotin": "cariboo-chilcotin",
+              "chilliwack-cultuslake": "chilliwack-cultuslake",
+              "chilliwacknorth": "chilliwacknorth",
+              "columbiariver-revelstoke": "columbiariver-revelstoke",
+              "coquitlam-burkemountain": "coquitlam-burkemountain",
+              "coquitlam-maillardville": "coquitlam-maillardville",
+              "courtenay-comox": "courtenay-comox",
+              "cowichanvalley": "cowichanvalley",
+              "deltanorth": "deltanorth",
+              "deltasouth": "deltasouth",
+              "esquimalt-colwood": "esquimalt-colwood",
+              "fraser-nicola": "fraser-nicola",
+              "juandefuca-malahat": "juandefuca-malahat",
+              "kamloops-norththompson": "kamloops-norththompson",
+              "kamloopscentre": "kamloopscentre",
+              "kelowna-lakecountry-coldstream": "kelowna-lakecountry-coldstream",
+              "kelowna-mission": "kelowna-mission",
+              "kelownacentre": "kelownacentre",
+              "kootenay-monashee": "kootenay-monashee",
+              "kootenay-rockies": "kootenay-rockies",
+              "kootenaycentral": "kootenaycentral",
+              "ladysmith-oceanside": "ladysmith-oceanside",
+              "langford-highlands": "langford-highlands",
+              "langley-abbotsford": "langley-abbotsford",
+              "langley-walnutgrove": "langley-walnutgrove",
+              "langley-willowbrook": "langley-willowbrook",
+              "mapleridge-pittmeadows": "mapleridge-pittmeadows",
+              "mapleridgeeast": "mapleridgeeast",
+              "midisland-pacificrim": "midisland-pacificrim",
+              "nanaimo-gabriolaisland": "nanaimo-gabriolaisland",
+              "nanaimo-lantzville": "nanaimo-lantzville",
+              "nechakolakes": "nechakolakes",
+              "newwestminster-coquitlam": "newwestminster-coquitlam",
+              "northcoast-haidagwaii": "northcoast-haidagwaii",
+              "northisland": "northisland",
+              "northvancouver-lonsdale": "northvancouver-lonsdale",
+              "northvancouver-seymour": "northvancouver-seymour",
+              "oakbay-gordonhead": "oakbay-gordonhead",
+              "peacerivernorth": "peacerivernorth",
+              "peaceriversouth": "peaceriversouth",
+              "penticton-summerland": "penticton-summerland",
+              "portcoquitlam": "portcoquitlam",
+              "portmoody-burquitlam": "portmoody-burquitlam",
+              "powellriver-sunshinecoast": "powellriver-sunshinecoast",
+              "princegeorge-mackenzie": "princegeorge-mackenzie",
+              "princegeorge-northcariboo": "princegeorge-northcariboo",
+              "princegeorge-valemount": "princegeorge-valemount",
+              "richmond-bridgeport": "richmond-bridgeport",
+              "richmond-queensborough": "richmond-queensborough",
+              "richmond-steveston": "richmond-steveston",
+              "richmondcentre": "richmondcentre",
+              "saanichnorthandtheislands": "saanichnorthandtheislands",
+              "saanichsouth": "saanichsouth",
+              "salmonarm-shuswap": "salmonarm-shuswap",
+              "skeena": "skeena",
+              "surrey-cloverdale": "surrey-cloverdale",
+              "surrey-fleetwood": "surrey-fleetwood",
+              "surrey-guildford": "surrey-guildford",
+              "surrey-newton": "surrey-newton",
+              "surrey-panorama": "surrey-panorama",
+              "surrey-serpentineriver": "surrey-serpentineriver",
+              "surrey-whiterock": "surrey-whiterock",
+              "surreycitycentre": "surreycitycentre",
+              "surreynorth": "surreynorth",
+              "surreysouth": "surreysouth",
+              "vancouver-fraserview": "vancouver-fraserview",
+              "vancouver-hastings": "vancouver-hastings",
+              "vancouver-kensington": "vancouver-kensington",
+              "vancouver-langara": "vancouver-langara",
+              "vancouver-littlemountain": "vancouver-littlemountain",
+              "vancouver-pointgrey": "vancouver-pointgrey",
+              "vancouver-quilchena": "vancouver-quilchena",
+              "vancouver-renfrew": "vancouver-renfrew",
+              "vancouver-southgranville": "vancouver-southgranville",
+              "vancouver-strathcona": "vancouver-strathcona",
+              "vancouver-westend": "vancouver-westend",
+              "vancouver-yaletown": "vancouver-yaletown",
+              "vernon-lumby": "vernon-lumby",
+              "victoria-beaconhill": "victoria-beaconhill",
+              "victoria-swanlake": "victoria-swanlake",
+              "westkelowna-peachland": "westkelowna-peachland",
+              "westvancouver-capilano": "westvancouver-capilano",
+              "westvancouver-seatosky": "westvancouver-seatosky"
+      },
+      // 2024 vote shares per riding (Elections BC)
+      gebiete: {
+              "abbotsford-mission": {
+                      "bcndp": 44.62,
+                      "cpbc": 55.38,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "abbotsfordsouth": {
+                      "bcndp": 35.18,
+                      "cpbc": 61.61,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "abbotsfordwest": {
+                      "bcndp": 36.87,
+                      "cpbc": 58.35,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "boundary-similkameen": {
+                      "bcndp": 42.56,
+                      "cpbc": 48.39,
+                      "gpbc": 5.89,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "bulkleyvalley-stikine": {
+                      "bcndp": 38.86,
+                      "cpbc": 52.31,
+                      "gpbc": 6.33,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "burnaby-newwestminster": {
+                      "bcndp": 59.99,
+                      "cpbc": 34.71,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "burnabycentre": {
+                      "bcndp": 57.28,
+                      "cpbc": 42.72,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "burnabyeast": {
+                      "bcndp": 51.85,
+                      "cpbc": 40.52,
+                      "gpbc": 7.63,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "burnabynorth": {
+                      "bcndp": 53.26,
+                      "cpbc": 43.0,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "burnabysouth-metrotown": {
+                      "bcndp": 49.33,
+                      "cpbc": 41.59,
+                      "gpbc": 6.26,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "cariboo-chilcotin": {
+                      "bcndp": 30.41,
+                      "cpbc": 69.59,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "chilliwack-cultuslake": {
+                      "bcndp": 45.42,
+                      "cpbc": 54.58,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "chilliwacknorth": {
+                      "bcndp": 37.66,
+                      "cpbc": 54.58,
+                      "gpbc": 5.5,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "columbiariver-revelstoke": {
+                      "bcndp": 44.26,
+                      "cpbc": 47.93,
+                      "gpbc": 7.82,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "coquitlam-burkemountain": {
+                      "bcndp": 50.85,
+                      "cpbc": 49.15,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "coquitlam-maillardville": {
+                      "bcndp": 51.8,
+                      "cpbc": 39.57,
+                      "gpbc": 6.32,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "courtenay-comox": {
+                      "bcndp": 38.56,
+                      "cpbc": 38.83,
+                      "gpbc": 20.74,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "cowichanvalley": {
+                      "bcndp": 40.51,
+                      "cpbc": 37.59,
+                      "gpbc": 19.83,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "deltanorth": {
+                      "bcndp": 52.73,
+                      "cpbc": 40.22,
+                      "gpbc": 6.2,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "deltasouth": {
+                      "bcndp": 44.93,
+                      "cpbc": 55.07,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "esquimalt-colwood": {
+                      "bcndp": 51.47,
+                      "cpbc": 29.22,
+                      "gpbc": 19.31,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "fraser-nicola": {
+                      "bcndp": 36.4,
+                      "cpbc": 54.34,
+                      "gpbc": 9.27,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "juandefuca-malahat": {
+                      "bcndp": 38.79,
+                      "cpbc": 38.2,
+                      "gpbc": 23.01,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kamloops-norththompson": {
+                      "bcndp": 32.9,
+                      "cpbc": 59.74,
+                      "gpbc": 7.36,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kamloopscentre": {
+                      "bcndp": 40.92,
+                      "cpbc": 48.83,
+                      "gpbc": 10.25,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kelowna-lakecountry-coldstream": {
+                      "bcndp": 35.25,
+                      "cpbc": 53.92,
+                      "gpbc": 4.34,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kelowna-mission": {
+                      "bcndp": 32.61,
+                      "cpbc": 51.49,
+                      "gpbc": 4.94,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kelownacentre": {
+                      "bcndp": 42.69,
+                      "cpbc": 42.85,
+                      "gpbc": 4.31,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kootenay-monashee": {
+                      "bcndp": 52.04,
+                      "cpbc": 38.85,
+                      "gpbc": 9.11,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kootenay-rockies": {
+                      "bcndp": 21.75,
+                      "cpbc": 42.71,
+                      "gpbc": 5.18,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "kootenaycentral": {
+                      "bcndp": 39.63,
+                      "cpbc": 31.67,
+                      "gpbc": 18.74,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "ladysmith-oceanside": {
+                      "bcndp": 41.49,
+                      "cpbc": 35.48,
+                      "gpbc": 6.72,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "langford-highlands": {
+                      "bcndp": 51.87,
+                      "cpbc": 37.4,
+                      "gpbc": 10.73,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "langley-abbotsford": {
+                      "bcndp": 33.73,
+                      "cpbc": 55.65,
+                      "gpbc": 5.56,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "langley-walnutgrove": {
+                      "bcndp": 44.77,
+                      "cpbc": 49.56,
+                      "gpbc": 5.13,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "langley-willowbrook": {
+                      "bcndp": 44.43,
+                      "cpbc": 48.24,
+                      "gpbc": 7.34,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "mapleridge-pittmeadows": {
+                      "bcndp": 54.89,
+                      "cpbc": 45.11,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "mapleridgeeast": {
+                      "bcndp": 46.64,
+                      "cpbc": 47.02,
+                      "gpbc": 6.34,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "midisland-pacificrim": {
+                      "bcndp": 48.74,
+                      "cpbc": 39.45,
+                      "gpbc": 11.81,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "nanaimo-gabriolaisland": {
+                      "bcndp": 52.75,
+                      "cpbc": 34.65,
+                      "gpbc": 12.6,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "nanaimo-lantzville": {
+                      "bcndp": 51.75,
+                      "cpbc": 39.51,
+                      "gpbc": 8.74,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "nechakolakes": {
+                      "bcndp": 27.21,
+                      "cpbc": 67.45,
+                      "gpbc": 5.34,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "newwestminster-coquitlam": {
+                      "bcndp": 59.13,
+                      "cpbc": 29.84,
+                      "gpbc": 11.03,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "northcoast-haidagwaii": {
+                      "bcndp": 64.92,
+                      "cpbc": 35.08,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "northisland": {
+                      "bcndp": 44.93,
+                      "cpbc": 47.07,
+                      "gpbc": 8.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "northvancouver-lonsdale": {
+                      "bcndp": 64.88,
+                      "cpbc": 35.12,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "northvancouver-seymour": {
+                      "bcndp": 52.77,
+                      "cpbc": 35.79,
+                      "gpbc": 5.61,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "oakbay-gordonhead": {
+                      "bcndp": 49.1,
+                      "cpbc": 28.89,
+                      "gpbc": 22.01,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "peacerivernorth": {
+                      "bcndp": 5.49,
+                      "cpbc": 74.36,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "peaceriversouth": {
+                      "bcndp": 5.6,
+                      "cpbc": 69.84,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "penticton-summerland": {
+                      "bcndp": 40.24,
+                      "cpbc": 41.37,
+                      "gpbc": 5.24,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "portcoquitlam": {
+                      "bcndp": 53.87,
+                      "cpbc": 38.79,
+                      "gpbc": 6.4,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "portmoody-burquitlam": {
+                      "bcndp": 52.06,
+                      "cpbc": 40.5,
+                      "gpbc": 7.44,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "powellriver-sunshinecoast": {
+                      "bcndp": 49.62,
+                      "cpbc": 35.68,
+                      "gpbc": 13.48,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "princegeorge-mackenzie": {
+                      "bcndp": 28.24,
+                      "cpbc": 60.92,
+                      "gpbc": 8.49,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "princegeorge-northcariboo": {
+                      "bcndp": 17.03,
+                      "cpbc": 56.82,
+                      "gpbc": 4.31,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "princegeorge-valemount": {
+                      "bcndp": 34.94,
+                      "cpbc": 55.19,
+                      "gpbc": 9.87,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "richmond-bridgeport": {
+                      "bcndp": 34.77,
+                      "cpbc": 58.19,
+                      "gpbc": 3.21,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "richmond-queensborough": {
+                      "bcndp": 44.13,
+                      "cpbc": 50.91,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "richmond-steveston": {
+                      "bcndp": 44.27,
+                      "cpbc": 42.2,
+                      "gpbc": 3.44,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "richmondcentre": {
+                      "bcndp": 36.78,
+                      "cpbc": 51.99,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "saanichnorthandtheislands": {
+                      "bcndp": 32.19,
+                      "cpbc": 29.8,
+                      "gpbc": 36.15,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "saanichsouth": {
+                      "bcndp": 49.76,
+                      "cpbc": 32.45,
+                      "gpbc": 17.79,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "salmonarm-shuswap": {
+                      "bcndp": 30.44,
+                      "cpbc": 52.11,
+                      "gpbc": 7.08,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "skeena": {
+                      "bcndp": 44.44,
+                      "cpbc": 51.2,
+                      "gpbc": 3.33,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-cloverdale": {
+                      "bcndp": 45.55,
+                      "cpbc": 48.32,
+                      "gpbc": 5.41,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-fleetwood": {
+                      "bcndp": 48.6,
+                      "cpbc": 44.93,
+                      "gpbc": 6.47,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-guildford": {
+                      "bcndp": 46.93,
+                      "cpbc": 46.81,
+                      "gpbc": 4.32,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-newton": {
+                      "bcndp": 51.17,
+                      "cpbc": 42.99,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-panorama": {
+                      "bcndp": 48.11,
+                      "cpbc": 49.6,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-serpentineriver": {
+                      "bcndp": 47.49,
+                      "cpbc": 49.7,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surrey-whiterock": {
+                      "bcndp": 45.29,
+                      "cpbc": 52.31,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surreycitycentre": {
+                      "bcndp": 46.71,
+                      "cpbc": 45.07,
+                      "gpbc": 6.1,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surreynorth": {
+                      "bcndp": 43.28,
+                      "cpbc": 50.67,
+                      "gpbc": 4.22,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "surreysouth": {
+                      "bcndp": 41.17,
+                      "cpbc": 58.83,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-fraserview": {
+                      "bcndp": 57.18,
+                      "cpbc": 36.62,
+                      "gpbc": 6.21,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-hastings": {
+                      "bcndp": 64.15,
+                      "cpbc": 24.29,
+                      "gpbc": 10.85,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-kensington": {
+                      "bcndp": 60.9,
+                      "cpbc": 31.52,
+                      "gpbc": 7.58,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-langara": {
+                      "bcndp": 48.43,
+                      "cpbc": 46.05,
+                      "gpbc": 5.52,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-littlemountain": {
+                      "bcndp": 62.11,
+                      "cpbc": 30.61,
+                      "gpbc": 7.28,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-pointgrey": {
+                      "bcndp": 56.77,
+                      "cpbc": 34.51,
+                      "gpbc": 8.72,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-quilchena": {
+                      "bcndp": 38.91,
+                      "cpbc": 51.58,
+                      "gpbc": 7.78,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-renfrew": {
+                      "bcndp": 63.22,
+                      "cpbc": 30.66,
+                      "gpbc": 6.12,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-southgranville": {
+                      "bcndp": 64.31,
+                      "cpbc": 24.96,
+                      "gpbc": 10.73,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-strathcona": {
+                      "bcndp": 67.62,
+                      "cpbc": 17.09,
+                      "gpbc": 13.62,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-westend": {
+                      "bcndp": 63.01,
+                      "cpbc": 27.22,
+                      "gpbc": 9.08,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vancouver-yaletown": {
+                      "bcndp": 49.76,
+                      "cpbc": 43.36,
+                      "gpbc": 6.89,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "vernon-lumby": {
+                      "bcndp": 42.69,
+                      "cpbc": 40.97,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "victoria-beaconhill": {
+                      "bcndp": 47.35,
+                      "cpbc": 19.15,
+                      "gpbc": 33.5,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "victoria-swanlake": {
+                      "bcndp": 56.03,
+                      "cpbc": 20.2,
+                      "gpbc": 23.16,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "westkelowna-peachland": {
+                      "bcndp": 27.9,
+                      "cpbc": 50.85,
+                      "gpbc": 0.0,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "westvancouver-capilano": {
+                      "bcndp": 27.13,
+                      "cpbc": 46.68,
+                      "gpbc": 5.56,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              },
+              "westvancouver-seatosky": {
+                      "bcndp": 26.31,
+                      "cpbc": 35.61,
+                      "gpbc": 38.08,
+                      "cbc": 0.0,
+                      "onbc": 0.0
+              }
+      },
+      // national baseline for the uniform-swing projection (= 2024 result)
+      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+    },
+    pollsterMAE: {},
+    maeKey: 'BC2024',
+    logos: {
+      bcndp: 'img/bc/BCNDP.svg', cpbc: 'img/bc/CPBC.svg',
+      gpbc: 'img/bc/GPBC.svg', cbc: 'img/bc/CBC.svg', onbc: 'img/bc/1BC.svg',
+    },
+  },
 };
 
 // ===== Active country (switched at runtime) =====

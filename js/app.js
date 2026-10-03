@@ -128,12 +128,14 @@ const methodName=()=>{
   if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
   if(SEAT_METHOD==='imperiali_hb') return 'Imperiali + Hagenbach-Bischoff';
   if(SEAT_METHOD==='sainte_lague_standard') return 'Sainte-Laguë/Schepers';
+  if(SEAT_METHOD==='fptp') return 'first-past-the-post';
   return 'modified Sainte-Laguë';
 };
 const methodNameShort=()=>{
   if(SEAT_METHOD==='dhondt') return "D'Hondt";
   if(SEAT_METHOD==='hare_niemeyer') return 'Hare/Niemeyer';
   if(SEAT_METHOD==='imperiali_hb') return 'Imperiali/H-B';
+  if(SEAT_METHOD==='fptp') return 'FPTP';
   return 'Sainte-Laguë';
 };
 function methodSentence(){
@@ -144,7 +146,8 @@ function methodSentence(){
   }
   const nD=conf.seatDistricts?Object.keys(conf.seatDistricts).length:0;
   let s;
-  if(SEAT_METHOD==='dhondt') s=nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
+  if(SEAT_METHOD==='fptp') s=`<strong>first-past-the-post</strong> in ${conf.districts?Object.keys(conf.districts).length:''} single-member ridings`;
+  else if(SEAT_METHOD==='dhondt') s=nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
   else if(SEAT_METHOD==='hare_niemeyer') s="the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
   else if(SEAT_METHOD==='imperiali_hb') s="the <strong>Imperiali quota</strong> (votes ÷ (seats+2)) in each of the 14 regions, then a <strong>national second scrutiny</strong> by Hagenbach-Bischoff (remainder votes ÷ (unfilled seats+1))";
   else if(SEAT_METHOD==='sainte_lague_standard') s="the <strong>Sainte-Laguë/Schepers</strong> method (divisors 1, 3, 5, …) in a single national district";
@@ -291,7 +294,7 @@ function constituencyTableHtml(votes, opts){
   }
 
   let head='';
-  PARTY_ORDER.forEach(p=>{head+=`<th class="c">${p}</th>`});
+  PARTY_ORDER.forEach(p=>{head+=`<th class="c">${partyCode(p)}</th>`});
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${title}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
@@ -565,7 +568,7 @@ function renderSidebar(prevDays, prevPollster){
     ${isPinnedCountry()
       ?`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`
       :`<div class="sb-hint" style="font-weight:900;letter-spacing:0.8px">${COUNTRY_NAME}</div>`}
-    <div class="sb-hint">${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound} · ${TREND_CONF?TREND_CONF.electionDate:''}`:`${seatsDesc()} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`}</div></div>`;
+    <div class="sb-hint">${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound} · ${TREND_CONF?TREND_CONF.electionDate:''}`:`${seatsDesc()} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`}</div></div>`;
 
   // Filters
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.filters}</div></div>
@@ -591,7 +594,7 @@ function renderSidebar(prevDays, prevPollster){
   // Info
   const health=dataHealthLabel();
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.info}</div></div>
-    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound}`:`${seatsDesc()} ${T.seats} · ${methodNameShort()} · ${THRESHOLD}% ${T.threshold}`}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}<br><span style="font-weight:900;color:${health.col}">◆ ${health.txt}</span></div></div>`;
+    <div class="sb-hint">${t('Data','Veri')}: Wikipedia${COUNTRY==='sweden'?' + SwedishPolls (CC0)':''}<br>${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${T.twoRound}`:`${seatsDesc()} ${T.seats} · ${methodNameShort()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`}<br>${t('Next election','Sonraki seçim')}: ${META.election_date||LAST_ELECTION.date}<br><span style="font-weight:900;color:${health.col}">◆ ${health.txt}</span></div></div>`;
 
   c.innerHTML=html;
 
@@ -1319,8 +1322,8 @@ function renderParliament(avg){
   const cap=showMap
     ?(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):t('projected winner','tahmini kazanan')}`
-      :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
-    :`${seatsTotal} ${T.seats} · ${methodName()} · ${THRESHOLD}% ${T.threshold}`;
+      :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
+    :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`;
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
     ${box}
@@ -2117,10 +2120,24 @@ function allocateSeatsItaly(avg){
   return out;
 }
 
+// First-past-the-post: every seat is a single-member riding; the projected
+// winner (plurality of the swung shares) takes it. Used by BC/Quebec-style
+// pure-FPTP countries whose map is the riding layer itself.
+function allocateSeatsFptp(avg){
+  const conf=MAP_CONF();
+  if(!conf||!conf.useConstituencies||!conf.districts) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  for(const nr of Object.keys(conf.districts)){
+    const w=districtWinnerProjection(nr,avg,conf);
+    if(w) out[w]=(out[w]||0)+1;
+  }
+  return out;
+}
+
 // Seat allocation for a projection: per-okręg D'Hondt when the country defines
 // seatDistricts (Poland), else the national-district allocation.
 function allocateSeatsTotal(avg, total){
-  return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsN(avg,total);
+  return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,total);
 }
 
 function buildParliamentSVG(seats){
@@ -2439,7 +2456,7 @@ function runForecast(avg, nSims, nPolls){
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
     simVotes.other=100*draws[PARTY_ORDER.length]/totalD;
     simVotes=applyNationalSwing(simVotes);
-    const seats=(MAP_CONF()&&MAP_CONF().fptpSeats)?allocateSeatsItaly(simVotes):allocateSeatsFast(simVotes,SEATS_TOTAL);
+    const seats=(MAP_CONF()&&MAP_CONF().fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes):allocateSeatsFast(simVotes,SEATS_TOTAL));
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
@@ -2883,7 +2900,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${t('first round','ilk tur')} ${TREND_CONF?TREND_CONF.electionDate:''}`:`${methodNameShort()} · ${seatsDesc()} ${T.seats} · ${THRESHOLD}% ${T.threshold}`} · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${t('first round','ilk tur')} ${TREND_CONF?TREND_CONF.electionDate:''}`:`${methodNameShort()} · ${seatsDesc()} ${T.seats}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`} · seeded, reproducible</div>
     </div>
 
     ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div>
@@ -3741,7 +3758,7 @@ function renderMethodology(pane){
         ${MAP_ONLY?`<h3>${t('Two-round system','İki turlu seçim')}</h3>
         <p>${COUNTRY_NAME} elects its president in a two-round system: a candidate wins outright with a <strong>majority of valid votes</strong> on ${TREND_CONF?TREND_CONF.electionDate:'election day'}; otherwise the top two candidates face a runoff two weeks later. The map shows the <strong>${SEATS_TOTAL} ${unitLabel()}</strong> colored by projected winner from the poll average.</p>`:`
         <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
-        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES&&CONSTITUENCIES&&CONSTITUENCIES.constituencies?` — ${CONSTITUENCIES.constituency_seats} ${CONSTITUENCY_RULE==='fptp'?'direct mandates (first-past-the-post)':`constituency seats across ${CONSTITUENCIES.constituencies.length} constituencies`}${CONSTITUENCIES.leveling_seats?` plus ${CONSTITUENCIES.leveling_seats} leveling seats`:''}`:''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
+        <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES&&CONSTITUENCIES&&CONSTITUENCIES.constituencies?` — ${CONSTITUENCIES.constituency_seats} ${CONSTITUENCY_RULE==='fptp'?'direct mandates (first-past-the-post)':`constituency seats across ${CONSTITUENCIES.constituencies.length} constituencies`}${CONSTITUENCIES.leveling_seats?` plus ${CONSTITUENCIES.leveling_seats} leveling seats`:''}`:''} via ${methodSentence()}${THRESHOLD>0?`, with a <strong>${THRESHOLD}% electoral threshold</strong>`:''}.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
         <p>${(MAP_CONF()&&MAP_CONF().fptpSeats)?`The projection runs in two parts: the <strong>${Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} single-member districts</strong> go to the winning coalition in each region (its seats split among the coalition's parties by regional support), and the remaining <strong>${SEATS_TOTAL-Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} seats</strong> come from a national proportional pool allocated by D'Hondt among parties above the threshold. The map colors each region by its leading party.`:`The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.`}</p>`}
 
         ${HIDE_BLOCS?'':`<h3>${t('Bloc Totals','Blok Toplamları')}</h3>

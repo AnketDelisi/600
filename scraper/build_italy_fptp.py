@@ -4,11 +4,11 @@
 Geometry: the official geographic base of the current electoral colleges
 (riformeistituzionali.gov.it, decreto legislativo 177/2020), Camera
 uninominali layer (147 polygons, codes CU20_COD / names "Circoscrizione -
-Uxx"). Baselines: each district inherits its region's 2022 party shares
-(district-level party data is not published; the map's projection is
-therefore uniform within a region) — the actual 2022 district winners are
-taken from the elected-members table on it.wikipedia (Ministry of the
-Interior data) and stored as winners2021 so the result view is exact.
+Uxx"). Baselines: the 2022 party-level list votes per college from the
+it.wikipedia per-college articles ("Collegio uninominale <Circ> - NN
+(Camera dei deputati 2020)", Ministry of the Interior data); the actual
+2022 winners come from the elected-members table and are stored as
+winners2021 so the result view is exact.
 
 Writes img/italy_fptp.svg, data/italy/constituencies.json and patches the
 italy block in js/config.js (constituencies flag + map2).
@@ -32,6 +32,10 @@ CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "italy_fptp.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "italy_fptp.svg")
 CONST_JSON = os.path.join(ROOT, "data", "italy", "constituencies.json")
+COMBINED_SHP = os.path.join(CACHE, "it_fptp_trimmed.geojson")
+# Drop the Pelagie (Lampedusa/Linosa, UTM32N northing < 4.0M ~ 36.0N): they
+# are invisible at this scale but stretch the map's bounding box ~12% south.
+MIN_Y = 4000000.0
 SHP_URL = ("https://www.riformeistituzionali.gov.it/media/1431/"
            "collegi_elettorali_basigeografiche.zip")
 SHP_NAME = ("CAMERA_CollegiUNINOMINALI_2020/"
@@ -86,6 +90,93 @@ def group_key(txt):
         if t.startswith(name):
             return key
     return "other"
+
+
+def list_key(txt):
+    """2022 supporting-list name -> config party key (None = unmodelled)."""
+    u = re.sub(r"\[[^\]]*\]", "", txt or "").upper()
+    if "FRATELLI D'ITALIA" in u:
+        return "fdi"
+    if "LEGA" in u:
+        return "lega"
+    if "FORZA ITALIA" in u:
+        return "fi"
+    if "NOI MODERAT" in u:
+        return "nm"
+    if "PARTITO DEMOCRATICO" in u:
+        return "pd"
+    if "VERDI E SINISTRA" in u:
+        return "avs"
+    if "+EUROPA" in u:
+        return "e"
+    if "MOVIMENTO 5 STELLE" in u:
+        return "m5s"
+    return None
+
+
+def parse_int(txt):
+    digits = re.sub(r"[^\d]", "", txt or "")
+    return int(digits) if digits else None
+
+
+def fetch_collegio(circ, u_num, force=False):
+    """Party shares of one college from its it.wikipedia article.
+
+    Title formats differ: named circoscrizioni use "(Camera dei deputati
+    2020)", numbered ones (Piemonte 1, Lombardia 1, ...) use "(2020)".
+    """
+    name = "it_col_%s_%02d.html" % (norm_circ(circ).replace(" ", "_"), u_num)
+    path = os.path.join(CACHE, name)
+    if force or not os.path.isfile(path):
+        base = "Collegio_uninominale_%s_-_%02d" % (circ, u_num)
+        for suffix in ["_%28Camera_dei_deputati_2020%29",
+                       "_%282020%29"]:
+            r = requests.get("https://it.wikipedia.org/wiki/" + base + suffix,
+                             headers={"User-Agent": "Mozilla/5.0"},
+                             timeout=90)
+            if r.status_code == 200:
+                open(path, "wb").write(r.content)
+                break
+        else:
+            return None
+    soup = BeautifulSoup(open(path, encoding="utf8").read(), "lxml")
+    for t in soup.find_all("table"):
+        rows = t.find_all("tr")
+        if not rows:
+            continue
+        hdr = " ".join(rows[0].get_text(" ", strip=True).split())
+        if "Candidati" not in hdr or "Liste" not in hdr:
+            continue
+        votes, total = {}, 0
+        for tr in rows[1:]:
+            cells = [" ".join(c.get_text(" ", strip=True).split())
+                     for c in tr.find_all(["td", "th"])]
+            cells = [c for c in cells if c]
+            if len(cells) >= 6:
+                lst, v = cells[3], cells[4]
+            elif len(cells) == 3:
+                lst, v = cells[0], cells[1]
+            else:
+                continue
+            low = lst.lower()
+            if lst.startswith("↳") or any(w in low for w in
+                                          ("totale", "schede", "votanti",
+                                           "elettori")):
+                continue
+            n = parse_int(v)
+            if n is None:
+                continue
+            total += n
+            key = list_key(lst)
+            if "AZIONE" in lst.upper() and "ITALIA VIVA" in lst.upper():
+                votes["a"] = votes.get("a", 0) + n * 12 / 21
+                votes["iv"] = votes.get("iv", 0) + n * 9 / 21
+            elif key:
+                votes[key] = votes.get(key, 0) + n
+        if total > 0:
+            return {p: round(votes.get(p, 0) * 100 / total, 2)
+                    for p in PARTIES}
+    return None
 
 
 def read_config_gebiete():
@@ -153,26 +244,38 @@ def main():
     winners = fetch_winners(force)
     print("FPTP winners parsed:", len(winners))
 
-    # geometry: official Camera uninominali shapefile -> SVG
+    # geometry: official shapefile -> GeoJSON, dropping the Pelagie
+    # (Lampedusa/Linosa, ~35.5-35.9N): invisible at this scale but they
+    # stretch the map's bounding box ~12% south. Also used for the region
+    # map (scraper/trim_italy_islands.py rebuilds img/italy.svg the same way).
     zip_path = os.path.join(CACHE, "it_collegi.zip")
     bm.fetch_bytes(SHP_URL, "it_collegi.zip")
     shp_path = bm.extract(zip_path, SHP_NAME)
     _, recs = bm.read_dbf(shp_path[:-4] + ".dbf")
     name_by_code = {r["CU20_COD"]: r["CU20_DEN"] for r in recs}
     print("shapefile districts:", len(name_by_code))
-    sys.argv = ["build_map_svg.py", "--zip", SHP_URL, "--shp", SHP_NAME,
-                "--id-field", "CU20_COD", "--name-field", "CU20_DEN",
-                "--attr", "id", "--no-prefix", "--out", OUT_SVG,
-                "--attribution", ATTRIBUTION]
-    if force:
-        sys.argv.append("--force")
+    feats = []
+    for idx, rings in bm.read_shp(shp_path):
+        kept = [r for r in rings if max(y for _, y in r) >= MIN_Y]
+        if not kept:
+            continue
+        feats.append({"type": "Feature",
+                      "properties": {"cid": recs[idx]["CU20_COD"]},
+                      "geometry": {"type": "MultiPolygon",
+                                   "coordinates": [[r] for r in kept]}})
+    with open(COMBINED_SHP, "w", encoding="utf8") as fh:
+        json.dump({"type": "FeatureCollection", "features": feats}, fh)
+    sys.argv = ["build_map_svg.py", "--geojson", COMBINED_SHP,
+                "--name-field", "cid", "--attr", "id", "--no-prefix",
+                "--out", OUT_SVG, "--attribution", ATTRIBUTION]
     bm.main()
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
-    # districts from the shapefile -> region baselines + 2022 winners
+    # districts from the shapefile -> per-college 2022 shares + winners
     cons = []
     missing_win = []
+    missing_shares = []
     for cid in sorted(name_by_code):
         name = name_by_code[cid]
         parts = name.rsplit(" - ", 1)
@@ -185,12 +288,24 @@ def main():
                         if len(parts) == 2 else name)
         if not w:
             missing_win.append(name)
+        shares = None
+        if len(parts) == 2:
+            m = re.match(r"U(\d+)", parts[1])
+            if m:
+                # no 2020 per-college article exists for the Valle d'Aosta
+                # (the regional lists ran there); its region baseline is used
+                shares = fetch_collegio(parts[0].split("/")[0].strip(),
+                                        int(m.group(1)), force)
+        if shares is None:
+            missing_shares.append(name)
+            shares = {p: gebiete[region].get(p, 0) for p in PARTIES}
         cons.append({"id": cid, "name": name, "seats": 1,
                      "region": region,
-                     "results_2022": {p: gebiete[region].get(p, 0)
-                                      for p in PARTIES},
+                     "results_2022": shares,
                      "winner_2022": w or "other"})
-    print("constituencies:", len(cons), "| without winner:", missing_win[:6])
+    print("constituencies:", len(cons), "| without winner:", missing_win[:6],
+          "| without per-college shares:", len(missing_shares),
+          missing_shares[:6])
     assert len(cons) == 147, "expected 147 districts"
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
     with open(CONST_JSON, "w", encoding="utf8") as fh:

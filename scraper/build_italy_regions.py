@@ -241,8 +241,16 @@ def main():
             print("  no mapping for", raw)
             continue
         matched.add(key)
+        geom = f["geometry"]
+        # drop the Pelagie (Lampedusa/Linosa, < 36.5N): invisible at this
+        # scale but they stretch the map's bounding box south
+        polys = geom["coordinates"] if geom["type"] == "MultiPolygon" \
+            else [geom["coordinates"]]
+        kept = [p for p in polys
+                if max(pt[1] for ring in p for pt in ring) >= 36.5]
+        geom = {"type": "MultiPolygon", "coordinates": kept}
         features.append({"type": "Feature", "properties": {"reg": key},
-                         "geometry": f["geometry"]})
+                         "geometry": geom})
     print("features:", len(features), "| without geometry:",
           sorted(set(REGIONS) - matched))
     assert len(features) == 20, "expected 20 regions"
@@ -287,7 +295,7 @@ def main():
     // Rosatellum coalitions: the FPTP districts go to the winning coalition
     blocs: {
       bloc1: { name: 'Centre-right coalition', short: 'CDX', parties: ['fdi', 'lega', 'fi', 'nm'], color: '#1B4F9C' },
-      bloc2: { name: 'Centre-left coalition',  short: 'CSX', parties: ['pd', 'avs', 'e'], color: '#E4002B' },
+      bloc2: { name: 'Centre-left coalition',  short: 'CSX', parties: ['pd', 'm5s', 'avs', 'iv', 'e'], color: '#E4002B' },
     },
     lastElection: {
       date: '2022-09-25',

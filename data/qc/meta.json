@@ -1,0 +1,10 @@
+{
+  "country": "qc",
+  "name": "Quebec",
+  "election_date": "2026-10-05",
+  "seats": 127,
+  "threshold": 0,
+  "method": "fptp",
+  "constituencies": 127,
+  "notes": "National Assembly of Quebec: 127 seats, first-past-the-post in single-member ridings (2025 electoral map, up from 125). 2022 result: CAQ 90 seats (40.98%), QS 11 (15.43%), PQ 3 (14.61%), PLQ 21 (14.37%), PCQ 0 (12.91%). Election on 5 October 2026."
+}

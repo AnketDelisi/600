@@ -1,0 +1,1369 @@
+{
+  "country": "qc",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+  "scraped_at": "2026-10-03T17:02:06Z",
+  "poll_count": 85,
+  "polls": [
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-09-27",
+      "date": "2026-09-27",
+      "n": 1001,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 16.0,
+        "qs": 9.0,
+        "pq": 30.0,
+        "plq": 26.0,
+        "pcq": 18.0
+      }
+    },
+    {
+      "pollster": "Synopsis",
+      "fieldwork_start": "2026-09-27",
+      "date": "2026-09-27",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 17.0,
+        "qs": 13.0,
+        "pq": 30.0,
+        "plq": 22.0,
+        "pcq": 17.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-09-26",
+      "date": "2026-09-26",
+      "n": 1192,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 18.0,
+        "qs": 10.0,
+        "pq": 29.0,
+        "plq": 23.0,
+        "pcq": 17.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-09-21",
+      "date": "2026-09-21",
+      "n": 1001,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 20.0,
+        "qs": 10.0,
+        "pq": 29.0,
+        "plq": 23.0,
+        "pcq": 17.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-09-17",
+      "date": "2026-09-17",
+      "n": 1089,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 22.0,
+        "qs": 11.0,
+        "pq": 28.0,
+        "plq": 22.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Segma",
+      "fieldwork_start": "2026-09-17",
+      "date": "2026-09-17",
+      "n": 4594,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 22.0,
+        "qs": 12.0,
+        "pq": 29.0,
+        "plq": 19.0,
+        "pcq": 18.0
+      }
+    },
+    {
+      "pollster": "Nanos",
+      "fieldwork_start": "2026-09-14",
+      "date": "2026-09-14",
+      "n": 485,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.0,
+        "qs": 9.0,
+        "pq": 28.0,
+        "plq": 24.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2026-09-13",
+      "date": "2026-09-13",
+      "n": 2047,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 28.0,
+        "qs": 8.0,
+        "pq": 24.0,
+        "plq": 22.0,
+        "pcq": 17.0
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2026-09-13",
+      "date": "2026-09-13",
+      "n": 705,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 23.0,
+        "qs": 10.0,
+        "pq": 28.0,
+        "plq": 22.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-09-13",
+      "date": "2026-09-13",
+      "n": 1013,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.0,
+        "qs": 10.0,
+        "pq": 29.0,
+        "plq": 23.0,
+        "pcq": 17.0
+      }
+    },
+    {
+      "pollster": "Synopsis",
+      "fieldwork_start": "2026-09-13",
+      "date": "2026-09-13",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 11.0,
+        "pq": 28.0,
+        "plq": 22.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-09-12",
+      "date": "2026-09-12",
+      "n": 1085,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 23.0,
+        "qs": 11.0,
+        "pq": 27.0,
+        "plq": 23.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-09-06",
+      "date": "2026-09-06",
+      "n": 1008,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 23.0,
+        "qs": 10.0,
+        "pq": 29.0,
+        "plq": 22.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-09-05",
+      "date": "2026-09-05",
+      "n": 1100,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 11.0,
+        "pq": 29.0,
+        "plq": 20.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-08-30",
+      "date": "2026-08-30",
+      "n": 1008,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 10.0,
+        "pq": 29.0,
+        "plq": 22.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-08-29",
+      "date": "2026-08-29",
+      "n": 1108,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 9.0,
+        "pq": 29.0,
+        "plq": 22.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Synopsis",
+      "fieldwork_start": "2026-08-26",
+      "date": "2026-08-26",
+      "n": 1009,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 27.0,
+        "qs": 10.0,
+        "pq": 28.0,
+        "plq": 20.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-08-24",
+      "date": "2026-08-24",
+      "n": 1010,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 23.0,
+        "qs": 7.0,
+        "pq": 30.0,
+        "plq": 23.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-08-09",
+      "date": "2026-08-09",
+      "n": 998,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 20.0,
+        "qs": 11.0,
+        "pq": 30.0,
+        "plq": 24.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-08-02",
+      "date": "2026-08-02",
+      "n": 1121,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 19.0,
+        "qs": 9.0,
+        "pq": 31.0,
+        "plq": 27.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-06-15",
+      "date": "2026-06-15",
+      "n": 1014,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.0,
+        "qs": 8.0,
+        "pq": 30.0,
+        "plq": 27.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-06-12",
+      "date": "2026-06-12",
+      "n": 1099,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 20.0,
+        "qs": 11.2,
+        "pq": 28.6,
+        "plq": 24.7,
+        "pcq": 14.1
+      }
+    },
+    {
+      "pollster": "Synopsis",
+      "fieldwork_start": "2026-06-08",
+      "date": "2026-06-08",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.0,
+        "qs": 11.0,
+        "pq": 31.0,
+        "plq": 25.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-05-18",
+      "date": "2026-05-18",
+      "n": 1027,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 22.0,
+        "qs": 8.0,
+        "pq": 30.0,
+        "plq": 28.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2026-05-15",
+      "date": "2026-05-15",
+      "n": 1468,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.3,
+        "qs": 5.6,
+        "pq": 22.7,
+        "plq": 31.9,
+        "pcq": 12.9
+      }
+    },
+    {
+      "pollster": "Synopsis",
+      "fieldwork_start": "2026-05-10",
+      "date": "2026-05-10",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 18.0,
+        "qs": 8.0,
+        "pq": 30.0,
+        "plq": 30.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-05-09",
+      "date": "2026-05-09",
+      "n": 1176,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 18.9,
+        "qs": 8.1,
+        "pq": 28.5,
+        "plq": 28.3,
+        "pcq": 14.3
+      }
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "fieldwork_start": "2026-04-27",
+      "date": "2026-04-27",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 16.0,
+        "qs": 7.0,
+        "pq": 32.0,
+        "plq": 32.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-04-20",
+      "date": "2026-04-20",
+      "n": 1030,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 17.0,
+        "qs": 8.0,
+        "pq": 31.0,
+        "plq": 28.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-04-14",
+      "date": "2026-04-14",
+      "n": 956,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 14.4,
+        "qs": 10.6,
+        "pq": 28.5,
+        "plq": 31.8,
+        "pcq": 13.7
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-04-06",
+      "date": "2026-04-06",
+      "n": 1036,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 13.0,
+        "qs": 8.0,
+        "pq": 32.0,
+        "plq": 33.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-03-22",
+      "date": "2026-03-22",
+      "n": 1003,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 9.0,
+        "qs": 9.0,
+        "pq": 33.0,
+        "plq": 33.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-03-02",
+      "date": "2026-03-02",
+      "n": 1021,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 13.0,
+        "qs": 9.0,
+        "pq": 31.0,
+        "plq": 30.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-02-22",
+      "date": "2026-02-22",
+      "n": 1075,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 13.7,
+        "qs": 10.2,
+        "pq": 30.1,
+        "plq": 27.1,
+        "pcq": 16.4
+      }
+    },
+    {
+      "pollster": "Innovative Research",
+      "fieldwork_start": "2026-02-01",
+      "date": "2026-02-01",
+      "n": 651,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 14.0,
+        "qs": 6.0,
+        "pq": 31.0,
+        "plq": 26.0,
+        "pcq": 18.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-01-29",
+      "date": "2026-01-29",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 17.0,
+        "qs": 7.0,
+        "pq": 32.0,
+        "plq": 26.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-01-10",
+      "date": "2026-01-10",
+      "n": 1128,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 11.0,
+        "qs": 11.0,
+        "pq": 34.0,
+        "plq": 24.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-12-15",
+      "date": "2025-12-15",
+      "n": 1039,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 19.0,
+        "qs": 9.0,
+        "pq": 35.0,
+        "plq": 20.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2025-12-01",
+      "date": "2025-12-01",
+      "n": 538,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 13.0,
+        "qs": 10.0,
+        "pq": 40.0,
+        "plq": 18.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-12-01",
+      "date": "2025-12-01",
+      "n": 1042,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 18.0,
+        "qs": 8.0,
+        "pq": 39.0,
+        "plq": 21.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-11-25",
+      "date": "2025-11-25",
+      "n": 1102,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 12.8,
+        "qs": 9.2,
+        "pq": 35.5,
+        "plq": 24.7,
+        "pcq": 14.7
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-11-10",
+      "date": "2025-11-10",
+      "n": 1031,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 17.0,
+        "qs": 8.0,
+        "pq": 32.0,
+        "plq": 27.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-10-19",
+      "date": "2025-10-19",
+      "n": 1234,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 12.5,
+        "qs": 10.3,
+        "pq": 33.3,
+        "plq": 26.1,
+        "pcq": 13.9
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-09-28",
+      "date": "2025-09-28",
+      "n": 1037,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 16.0,
+        "qs": 6.0,
+        "pq": 36.0,
+        "plq": 25.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-09-15",
+      "date": "2025-09-15",
+      "n": 1053,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 16.0,
+        "qs": 7.0,
+        "pq": 38.0,
+        "plq": 27.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-09-06",
+      "date": "2025-09-06",
+      "n": 1187,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 10.8,
+        "qs": 7.9,
+        "pq": 38.0,
+        "plq": 26.7,
+        "pcq": 14.8
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2025-09-05",
+      "date": "2025-09-05",
+      "n": 524,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 12.0,
+        "qs": 11.0,
+        "pq": 38.0,
+        "plq": 21.0,
+        "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-08-18",
+      "date": "2025-08-18",
+      "n": 977,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 17.0,
+        "qs": 9.0,
+        "pq": 35.0,
+        "plq": 26.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2025-06-24",
+      "date": "2025-06-24",
+      "n": 910,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 16.0,
+        "qs": 8.0,
+        "pq": 31.0,
+        "plq": 29.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-06-22",
+      "date": "2025-06-22",
+      "n": 1056,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 17.0,
+        "qs": 9.0,
+        "pq": 30.0,
+        "plq": 28.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-06-16",
+      "date": "2025-06-16",
+      "n": 1085,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 15.0,
+        "qs": 12.0,
+        "pq": 31.0,
+        "plq": 26.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-05-11",
+      "date": "2025-05-11",
+      "n": 1051,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 20.0,
+        "qs": 10.0,
+        "pq": 33.0,
+        "plq": 21.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-03-10",
+      "date": "2025-03-10",
+      "n": 1007,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 12.0,
+        "pq": 30.0,
+        "plq": 19.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-03-01",
+      "date": "2025-03-01",
+      "n": 1120,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 19.5,
+        "qs": 10.1,
+        "pq": 31.6,
+        "plq": 21.6,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-02-02",
+      "date": "2025-02-02",
+      "n": 1017,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.0,
+        "qs": 10.0,
+        "pq": 30.0,
+        "plq": 21.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-01-19",
+      "date": "2025-01-19",
+      "n": 1003,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 25.0,
+        "qs": 12.0,
+        "pq": 34.0,
+        "plq": 15.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-12-02",
+      "date": "2024-12-02",
+      "n": 1002,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 13.0,
+        "pq": 31.0,
+        "plq": 16.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-11-26",
+      "date": "2024-11-26",
+      "n": 1093,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 20.4,
+        "qs": 11.9,
+        "pq": 35.0,
+        "plq": 18.3,
+        "pcq": 12.8
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-11-11",
+      "date": "2024-11-11",
+      "n": 1010,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.0,
+        "qs": 13.0,
+        "pq": 35.0,
+        "plq": 17.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-10-06",
+      "date": "2024-10-06",
+      "n": 1036,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 14.0,
+        "pq": 32.0,
+        "plq": 17.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-09-26",
+      "date": "2024-09-26",
+      "n": 1111,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.6,
+        "qs": 11.7,
+        "pq": 33.9,
+        "plq": 17.6,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-09-03",
+      "date": "2024-09-03",
+      "n": 1191,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 23.0,
+        "qs": 13.0,
+        "pq": 31.0,
+        "plq": 17.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-08-25",
+      "date": "2024-08-25",
+      "n": 1041,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 15.0,
+        "pq": 29.0,
+        "plq": 16.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-06-22",
+      "date": "2024-06-22",
+      "n": 1445,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.7,
+        "qs": 13.2,
+        "pq": 35.0,
+        "plq": 16.7,
+        "pcq": 12.2
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-06-08",
+      "date": "2024-06-08",
+      "n": 1339,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.5,
+        "qs": 15.9,
+        "pq": 33.1,
+        "plq": 17.1,
+        "pcq": 10.6
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-06-03",
+      "date": "2024-06-03",
+      "n": 1015,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 25.0,
+        "qs": 14.0,
+        "pq": 32.0,
+        "plq": 15.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-05-13",
+      "date": "2024-05-13",
+      "n": 1031,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 22.0,
+        "qs": 12.0,
+        "pq": 32.0,
+        "plq": 17.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-04-21",
+      "date": "2024-04-21",
+      "n": 1026,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.0,
+        "qs": 14.0,
+        "pq": 34.0,
+        "plq": 15.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-04-21",
+      "date": "2024-04-21",
+      "n": 1256,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 19.5,
+        "qs": 12.9,
+        "pq": 32.9,
+        "plq": 22.8,
+        "pcq": 10.7
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-03-18",
+      "date": "2024-03-18",
+      "n": 1033,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 22.0,
+        "qs": 18.0,
+        "pq": 34.0,
+        "plq": 14.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-02-24",
+      "date": "2024-02-24",
+      "n": 1122,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 23.1,
+        "qs": 16.5,
+        "pq": 31.4,
+        "plq": 14.5,
+        "pcq": 12.8
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2024-02-05",
+      "date": "2024-02-05",
+      "n": 1032,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 25.0,
+        "qs": 16.0,
+        "pq": 32.0,
+        "plq": 15.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2024-01-24",
+      "date": "2024-01-24",
+      "n": 1175,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 21.1,
+        "qs": 17.0,
+        "pq": 31.7,
+        "plq": 15.4,
+        "pcq": 11.5
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-12-04",
+      "date": "2023-12-04",
+      "n": 1040,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 25.0,
+        "qs": 17.0,
+        "pq": 31.0,
+        "plq": 14.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2023-11-18",
+      "date": "2023-11-18",
+      "n": 1178,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 24.1,
+        "qs": 16.1,
+        "pq": 30.4,
+        "plq": 15.5,
+        "pcq": 11.3
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-10-30",
+      "date": "2023-10-30",
+      "n": 1026,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 30.0,
+        "qs": 15.0,
+        "pq": 26.0,
+        "plq": 15.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2023-09-27",
+      "date": "2023-09-27",
+      "n": 1095,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 34.5,
+        "qs": 15.4,
+        "pq": 19.0,
+        "plq": 14.7,
+        "pcq": 14.6
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-09-25",
+      "date": "2023-09-25",
+      "n": 1028,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 34.0,
+        "qs": 17.0,
+        "pq": 22.0,
+        "plq": 14.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-08-21",
+      "date": "2023-08-21",
+      "n": 1036,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 37.0,
+        "qs": 15.0,
+        "pq": 22.0,
+        "plq": 12.0,
+        "pcq": 11.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-06-12",
+      "date": "2023-06-12",
+      "n": 1042,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 37.0,
+        "qs": 16.0,
+        "pq": 23.0,
+        "plq": 13.0,
+        "pcq": 9.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2023-06-03",
+      "date": "2023-06-03",
+      "n": 506,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 33.0,
+        "qs": 17.0,
+        "pq": 22.0,
+        "plq": 13.0,
+        "pcq": 12.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-05-01",
+      "date": "2023-05-01",
+      "n": 1201,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 36.0,
+        "qs": 16.0,
+        "pq": 22.0,
+        "plq": 14.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2023-02-26",
+      "date": "2023-02-26",
+      "n": 1044,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 40.0,
+        "qs": 17.0,
+        "pq": 18.0,
+        "plq": 14.0,
+        "pcq": 9.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2022-12-10",
+      "date": "2022-12-10",
+      "n": 1002,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 41.0,
+        "qs": 14.0,
+        "pq": 18.0,
+        "plq": 14.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2022-11-06",
+      "date": "2022-11-06",
+      "n": 1028,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 36.0,
+        "qs": 19.0,
+        "pq": 18.0,
+        "plq": 14.0,
+        "pcq": 11.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,1532 @@
+{
+ "country": "qc",
+ "total_seats": 127,
+ "constituency_seats": 127,
+ "leveling_seats": 0,
+ "constituencies": [
+  {
+   "id": "abitibi-est",
+   "name": "Abitibi-Est",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.17,
+    "plq": 14.71,
+    "pq": 12.39,
+    "qs": 13.71,
+    "pcq": 12.01
+   }
+  },
+  {
+   "id": "abitibi-ouest",
+   "name": "Abitibi-Ouest",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.75,
+    "plq": 5.18,
+    "pq": 20.76,
+    "qs": 16.29,
+    "pcq": 10.31
+   }
+  },
+  {
+   "id": "acadie",
+   "name": "Acadie",
+   "seats": 1,
+   "results_2022": {
+    "caq": 17.11,
+    "plq": 42.26,
+    "pq": 9.87,
+    "qs": 17.2,
+    "pcq": 11.37
+   }
+  },
+  {
+   "id": "anjou-louis-riel",
+   "name": "Anjou-Louis-Riel",
+   "seats": 1,
+   "results_2022": {
+    "caq": 35.56,
+    "plq": 30.52,
+    "pq": 11.04,
+    "qs": 14.77,
+    "pcq": 7.16
+   }
+  },
+  {
+   "id": "argenteuil",
+   "name": "Argenteuil",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.1,
+    "plq": 10.18,
+    "pq": 16.21,
+    "qs": 10.79,
+    "pcq": 14.72
+   }
+  },
+  {
+   "id": "arthabaska-lerable",
+   "name": "Arthabaska-L'Érable",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.75,
+    "plq": 3.76,
+    "pq": 10.02,
+    "qs": 9.22,
+    "pcq": 24.69
+   }
+  },
+  {
+   "id": "beauce-nord",
+   "name": "Beauce-Nord",
+   "seats": 1,
+   "results_2022": {
+    "caq": 43.43,
+    "plq": 2.83,
+    "pq": 5.94,
+    "qs": 4.53,
+    "pcq": 42.83
+   }
+  },
+  {
+   "id": "beauce-sud",
+   "name": "Beauce-Sud",
+   "seats": 1,
+   "results_2022": {
+    "caq": 44.55,
+    "plq": 2.83,
+    "pq": 4.04,
+    "qs": 4.35,
+    "pcq": 43.4
+   }
+  },
+  {
+   "id": "beauharnois",
+   "name": "Beauharnois",
+   "seats": 1,
+   "results_2022": {
+    "caq": 53.78,
+    "plq": 5.83,
+    "pq": 16.96,
+    "qs": 12.93,
+    "pcq": 9.36
+   }
+  },
+  {
+   "id": "bellechasse",
+   "name": "Bellechasse",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.74,
+    "plq": 4.13,
+    "pq": 8.83,
+    "qs": 6.04,
+    "pcq": 35.26
+   }
+  },
+  {
+   "id": "bellefeuille",
+   "name": "Bellefeuille",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.1,
+    "plq": 10.18,
+    "pq": 16.21,
+    "qs": 10.79,
+    "pcq": 14.72
+   }
+  },
+  {
+   "id": "berthier",
+   "name": "Berthier",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.97,
+    "plq": 2.55,
+    "pq": 20.82,
+    "qs": 14.09,
+    "pcq": 10.99
+   }
+  },
+  {
+   "id": "bertrand",
+   "name": "Bertrand",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.26,
+    "plq": 6.01,
+    "pq": 20.63,
+    "qs": 16.15,
+    "pcq": 9.79
+   }
+  },
+  {
+   "id": "blainville",
+   "name": "Blainville",
+   "seats": 1,
+   "results_2022": {
+    "caq": 49.45,
+    "plq": 11.03,
+    "pq": 15.43,
+    "qs": 14.0,
+    "pcq": 9.76
+   }
+  },
+  {
+   "id": "bonaventure",
+   "name": "Bonaventure",
+   "seats": 1,
+   "results_2022": {
+    "caq": 44.45,
+    "plq": 8.56,
+    "pq": 30.06,
+    "qs": 10.83,
+    "pcq": 5.46
+   }
+  },
+  {
+   "id": "borduas",
+   "name": "Borduas",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.23,
+    "plq": 5.24,
+    "pq": 19.46,
+    "qs": 15.14,
+    "pcq": 7.56
+   }
+  },
+  {
+   "id": "bourassa-sauve",
+   "name": "Bourassa-Sauvé",
+   "seats": 1,
+   "results_2022": {
+    "caq": 25.01,
+    "plq": 40.13,
+    "pq": 8.69,
+    "qs": 15.45,
+    "pcq": 8.94
+   }
+  },
+  {
+   "id": "brome-missisquoi",
+   "name": "Brome-Missisquoi",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.87,
+    "plq": 11.91,
+    "pq": 11.95,
+    "qs": 15.91,
+    "pcq": 10.87
+   }
+  },
+  {
+   "id": "camille-laurin",
+   "name": "Camille-Laurin",
+   "seats": 1,
+   "results_2022": {
+    "caq": 31.94,
+    "plq": 16.47,
+    "pq": 41.68,
+    "qs": 0.0,
+    "pcq": 6.51
+   }
+  },
+  {
+   "id": "chambly",
+   "name": "Chambly",
+   "seats": 1,
+   "results_2022": {
+    "caq": 48.47,
+    "plq": 7.85,
+    "pq": 17.9,
+    "qs": 16.37,
+    "pcq": 8.33
+   }
+  },
+  {
+   "id": "champlain",
+   "name": "Champlain",
+   "seats": 1,
+   "results_2022": {
+    "caq": 55.89,
+    "plq": 5.08,
+    "pq": 12.04,
+    "qs": 8.97,
+    "pcq": 17.55
+   }
+  },
+  {
+   "id": "chapleau",
+   "name": "Chapleau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 52.3,
+    "plq": 13.61,
+    "pq": 9.7,
+    "qs": 13.2,
+    "pcq": 10.1
+   }
+  },
+  {
+   "id": "charlesbourg",
+   "name": "Charlesbourg",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.0,
+    "plq": 5.99,
+    "pq": 14.19,
+    "qs": 13.05,
+    "pcq": 20.37
+   }
+  },
+  {
+   "id": "charlevoix-cote-de-beaupre",
+   "name": "Charlevoix-Côte-de-Beaupré",
+   "seats": 1,
+   "results_2022": {
+    "caq": 48.17,
+    "plq": 4.7,
+    "pq": 16.19,
+    "qs": 12.53,
+    "pcq": 18.12
+   }
+  },
+  {
+   "id": "chateauguay",
+   "name": "Châteauguay",
+   "seats": 1,
+   "results_2022": {
+    "caq": 39.12,
+    "plq": 24.78,
+    "pq": 11.84,
+    "qs": 12.78,
+    "pcq": 10.09
+   }
+  },
+  {
+   "id": "chauveau",
+   "name": "Chauveau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.84,
+    "plq": 3.81,
+    "pq": 7.63,
+    "qs": 8.81,
+    "pcq": 31.84
+   }
+  },
+  {
+   "id": "chicoutimi",
+   "name": "Chicoutimi",
+   "seats": 1,
+   "results_2022": {
+    "caq": 62.28,
+    "plq": 3.04,
+    "pq": 14.21,
+    "qs": 12.04,
+    "pcq": 8.43
+   }
+  },
+  {
+   "id": "chomedey",
+   "name": "Chomedey",
+   "seats": 1,
+   "results_2022": {
+    "caq": 26.7,
+    "plq": 36.52,
+    "pq": 7.19,
+    "qs": 7.89,
+    "pcq": 19.85
+   }
+  },
+  {
+   "id": "chutes-de-la-chaudiere",
+   "name": "Chutes-de-la-Chaudière",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.46,
+    "plq": 4.95,
+    "pq": 11.11,
+    "qs": 9.28,
+    "pcq": 27.2
+   }
+  },
+  {
+   "id": "cote-du-sud",
+   "name": "Côte-du-Sud",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.69,
+    "plq": 6.31,
+    "pq": 12.77,
+    "qs": 9.33,
+    "pcq": 23.41
+   }
+  },
+  {
+   "id": "daniel-johnson",
+   "name": "Daniel-Johnson",
+   "seats": 1,
+   "results_2022": {
+    "caq": 52.5,
+    "plq": 3.51,
+    "pq": 14.41,
+    "qs": 13.8,
+    "pcq": 15.13
+   }
+  },
+  {
+   "id": "darcy-mcgee",
+   "name": "D'Arcy-McGee",
+   "seats": 1,
+   "results_2022": {
+    "caq": 5.91,
+    "plq": 51.41,
+    "pq": 2.51,
+    "qs": 8.52,
+    "pcq": 21.95
+   }
+  },
+  {
+   "id": "deux-montagnes",
+   "name": "Deux-Montagnes",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.08,
+    "plq": 10.27,
+    "pq": 17.16,
+    "qs": 14.15,
+    "pcq": 9.82
+   }
+  },
+  {
+   "id": "drummond-bois-francs",
+   "name": "Drummond-Bois-Francs",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.64,
+    "plq": 4.01,
+    "pq": 15.05,
+    "qs": 10.65,
+    "pcq": 17.39
+   }
+  },
+  {
+   "id": "dubuc",
+   "name": "Dubuc",
+   "seats": 1,
+   "results_2022": {
+    "caq": 57.6,
+    "plq": 2.49,
+    "pq": 17.55,
+    "qs": 10.58,
+    "pcq": 11.04
+   }
+  },
+  {
+   "id": "duplessis",
+   "name": "Duplessis",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.14,
+    "plq": 4.02,
+    "pq": 24.79,
+    "qs": 9.36,
+    "pcq": 15.72
+   }
+  },
+  {
+   "id": "fabre",
+   "name": "Fabre",
+   "seats": 1,
+   "results_2022": {
+    "caq": 31.81,
+    "plq": 30.91,
+    "pq": 9.75,
+    "qs": 11.13,
+    "pcq": 15.17
+   }
+  },
+  {
+   "id": "gaspe",
+   "name": "Gaspé",
+   "seats": 1,
+   "results_2022": {
+    "caq": 41.4,
+    "plq": 6.89,
+    "pq": 37.5,
+    "qs": 8.97,
+    "pcq": 5.25
+   }
+  },
+  {
+   "id": "gatineau",
+   "name": "Gatineau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.74,
+    "plq": 19.56,
+    "pq": 9.71,
+    "qs": 12.1,
+    "pcq": 10.76
+   }
+  },
+  {
+   "id": "gouin",
+   "name": "Gouin",
+   "seats": 1,
+   "results_2022": {
+    "caq": 12.37,
+    "plq": 8.4,
+    "pq": 13.63,
+    "qs": 59.44,
+    "pcq": 3.11
+   }
+  },
+  {
+   "id": "granby",
+   "name": "Granby",
+   "seats": 1,
+   "results_2022": {
+    "caq": 58.19,
+    "plq": 4.76,
+    "pq": 11.84,
+    "qs": 14.29,
+    "pcq": 10.11
+   }
+  },
+  {
+   "id": "groulx",
+   "name": "Groulx",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.75,
+    "plq": 11.02,
+    "pq": 15.31,
+    "qs": 16.21,
+    "pcq": 8.7
+   }
+  },
+  {
+   "id": "hochelaga-maisonneuve",
+   "name": "Hochelaga-Maisonneuve",
+   "seats": 1,
+   "results_2022": {
+    "caq": 18.8,
+    "plq": 7.78,
+    "pq": 15.97,
+    "qs": 50.84,
+    "pcq": 4.62
+   }
+  },
+  {
+   "id": "hull",
+   "name": "Hull",
+   "seats": 1,
+   "results_2022": {
+    "caq": 34.64,
+    "plq": 25.92,
+    "pq": 9.78,
+    "qs": 20.75,
+    "pcq": 6.86
+   }
+  },
+  {
+   "id": "huntingdon",
+   "name": "Huntingdon",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.64,
+    "plq": 14.39,
+    "pq": 12.02,
+    "qs": 11.15,
+    "pcq": 13.39
+   }
+  },
+  {
+   "id": "iberville",
+   "name": "Iberville",
+   "seats": 1,
+   "results_2022": {
+    "caq": 53.15,
+    "plq": 5.64,
+    "pq": 15.24,
+    "qs": 13.72,
+    "pcq": 11.27
+   }
+  },
+  {
+   "id": "iles-de-la-madeleine",
+   "name": "Îles-de-la-Madeleine",
+   "seats": 1,
+   "results_2022": {
+    "caq": 39.91,
+    "plq": 7.25,
+    "pq": 46.35,
+    "qs": 5.38,
+    "pcq": 1.11
+   }
+  },
+  {
+   "id": "jacques-cartier",
+   "name": "Jacques-Cartier",
+   "seats": 1,
+   "results_2022": {
+    "caq": 9.42,
+    "plq": 62.57,
+    "pq": 3.02,
+    "qs": 5.02,
+    "pcq": 11.23
+   }
+  },
+  {
+   "id": "jean-lesage",
+   "name": "Jean-Lesage",
+   "seats": 1,
+   "results_2022": {
+    "caq": 31.26,
+    "plq": 4.4,
+    "pq": 11.07,
+    "qs": 37.77,
+    "pcq": 14.12
+   }
+  },
+  {
+   "id": "jean-talon",
+   "name": "Jean-Talon",
+   "seats": 1,
+   "results_2022": {
+    "caq": 32.5,
+    "plq": 13.51,
+    "pq": 18.69,
+    "qs": 23.76,
+    "pcq": 10.36
+   }
+  },
+  {
+   "id": "jeanne-mance-viger",
+   "name": "Jeanne-Mance-Viger",
+   "seats": 1,
+   "results_2022": {
+    "caq": 16.6,
+    "plq": 53.93,
+    "pq": 4.18,
+    "qs": 10.65,
+    "pcq": 11.6
+   }
+  },
+  {
+   "id": "joliette",
+   "name": "Joliette",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.58,
+    "plq": 3.0,
+    "pq": 31.23,
+    "qs": 11.38,
+    "pcq": 8.82
+   }
+  },
+  {
+   "id": "jonquiere",
+   "name": "Jonquière",
+   "seats": 1,
+   "results_2022": {
+    "caq": 59.39,
+    "plq": 2.12,
+    "pq": 19.3,
+    "qs": 9.07,
+    "pcq": 9.55
+   }
+  },
+  {
+   "id": "labelle",
+   "name": "Labelle",
+   "seats": 1,
+   "results_2022": {
+    "caq": 53.08,
+    "plq": 5.05,
+    "pq": 19.13,
+    "qs": 12.26,
+    "pcq": 9.54
+   }
+  },
+  {
+   "id": "lac-saint-jean",
+   "name": "Lac-Saint-Jean",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.47,
+    "plq": 3.02,
+    "pq": 25.62,
+    "qs": 7.58,
+    "pcq": 11.37
+   }
+  },
+  {
+   "id": "lafontaine",
+   "name": "LaFontaine",
+   "seats": 1,
+   "results_2022": {
+    "caq": 20.01,
+    "plq": 51.67,
+    "pq": 5.1,
+    "qs": 8.87,
+    "pcq": 13.14
+   }
+  },
+  {
+   "id": "lapeltrie",
+   "name": "La Peltrie",
+   "seats": 1,
+   "results_2022": {
+    "caq": 44.35,
+    "plq": 5.66,
+    "pq": 9.93,
+    "qs": 8.9,
+    "pcq": 29.9
+   }
+  },
+  {
+   "id": "lapiniere",
+   "name": "La Pinière",
+   "seats": 1,
+   "results_2022": {
+    "caq": 31.17,
+    "plq": 38.51,
+    "pq": 7.82,
+    "qs": 10.02,
+    "pcq": 10.15
+   }
+  },
+  {
+   "id": "laprairie",
+   "name": "La Prairie",
+   "seats": 1,
+   "results_2022": {
+    "caq": 52.71,
+    "plq": 13.85,
+    "pq": 11.42,
+    "qs": 13.1,
+    "pcq": 7.95
+   }
+  },
+  {
+   "id": "lassomption",
+   "name": "L'Assomption",
+   "seats": 1,
+   "results_2022": {
+    "caq": 58.63,
+    "plq": 5.68,
+    "pq": 13.75,
+    "qs": 14.32,
+    "pcq": 7.63
+   }
+  },
+  {
+   "id": "laurier-dorion",
+   "name": "Laurier-Dorion",
+   "seats": 1,
+   "results_2022": {
+    "caq": 11.73,
+    "plq": 19.57,
+    "pq": 10.26,
+    "qs": 48.8,
+    "pcq": 5.54
+   }
+  },
+  {
+   "id": "laval-des-rapides",
+   "name": "Laval-des-Rapides",
+   "seats": 1,
+   "results_2022": {
+    "caq": 31.9,
+    "plq": 28.73,
+    "pq": 12.92,
+    "qs": 16.68,
+    "pcq": 8.58
+   }
+  },
+  {
+   "id": "laviolette-saint-maurice",
+   "name": "Laviolette-Saint-Maurice",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.72,
+    "plq": 4.99,
+    "pq": 16.01,
+    "qs": 9.5,
+    "pcq": 16.75
+   }
+  },
+  {
+   "id": "lesplaines",
+   "name": "Les Plaines",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.54,
+    "plq": 6.88,
+    "pq": 16.13,
+    "qs": 13.32,
+    "pcq": 12.1
+   }
+  },
+  {
+   "id": "levis",
+   "name": "Lévis",
+   "seats": 1,
+   "results_2022": {
+    "caq": 48.79,
+    "plq": 5.13,
+    "pq": 12.91,
+    "qs": 11.47,
+    "pcq": 20.75
+   }
+  },
+  {
+   "id": "lotbiniere-frontenac",
+   "name": "Lotbinière-Frontenac",
+   "seats": 1,
+   "results_2022": {
+    "caq": 43.72,
+    "plq": 5.92,
+    "pq": 8.8,
+    "qs": 9.36,
+    "pcq": 32.2
+   }
+  },
+  {
+   "id": "louis-hebert",
+   "name": "Louis-Hébert",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.21,
+    "plq": 8.71,
+    "pq": 16.52,
+    "qs": 12.03,
+    "pcq": 14.61
+   }
+  },
+  {
+   "id": "marguerite-bourgeoys",
+   "name": "Marguerite-Bourgeoys",
+   "seats": 1,
+   "results_2022": {
+    "caq": 23.15,
+    "plq": 44.78,
+    "pq": 6.97,
+    "qs": 10.27,
+    "pcq": 11.0
+   }
+  },
+  {
+   "id": "marie-lacoste-gerin-lajoie",
+   "name": "Marie-Lacoste-Gérin-Lajoie",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.64,
+    "plq": 4.01,
+    "pq": 15.05,
+    "qs": 10.65,
+    "pcq": 17.39
+   }
+  },
+  {
+   "id": "marie-victorin",
+   "name": "Marie-Victorin",
+   "seats": 1,
+   "results_2022": {
+    "caq": 33.11,
+    "plq": 10.04,
+    "pq": 24.85,
+    "qs": 22.67,
+    "pcq": 7.02
+   }
+  },
+  {
+   "id": "marquette",
+   "name": "Marquette",
+   "seats": 1,
+   "results_2022": {
+    "caq": 21.82,
+    "plq": 46.73,
+    "pq": 8.06,
+    "qs": 11.27,
+    "pcq": 9.13
+   }
+  },
+  {
+   "id": "maskinonge",
+   "name": "Maskinongé",
+   "seats": 1,
+   "results_2022": {
+    "caq": 53.5,
+    "plq": 5.07,
+    "pq": 14.14,
+    "qs": 9.9,
+    "pcq": 16.06
+   }
+  },
+  {
+   "id": "masson",
+   "name": "Masson",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.6,
+    "plq": 7.72,
+    "pq": 18.24,
+    "qs": 13.07,
+    "pcq": 8.43
+   }
+  },
+  {
+   "id": "matane-matapedia-mitis",
+   "name": "Matane-Matapédia-Mitis",
+   "seats": 1,
+   "results_2022": {
+    "caq": 17.36,
+    "plq": 2.14,
+    "pq": 67.43,
+    "qs": 4.87,
+    "pcq": 7.79
+   }
+  },
+  {
+   "id": "maurice-richard",
+   "name": "Maurice-Richard",
+   "seats": 1,
+   "results_2022": {
+    "caq": 27.16,
+    "plq": 17.22,
+    "pq": 14.67,
+    "qs": 34.67,
+    "pcq": 4.2
+   }
+  },
+  {
+   "id": "megantic",
+   "name": "Mégantic",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.17,
+    "plq": 5.71,
+    "pq": 12.77,
+    "qs": 12.78,
+    "pcq": 22.25
+   }
+  },
+  {
+   "id": "mercier",
+   "name": "Mercier",
+   "seats": 1,
+   "results_2022": {
+    "caq": 10.28,
+    "plq": 14.02,
+    "pq": 14.57,
+    "qs": 53.92,
+    "pcq": 3.84
+   }
+  },
+  {
+   "id": "mille-iles",
+   "name": "Mille-Îles",
+   "seats": 1,
+   "results_2022": {
+    "caq": 30.93,
+    "plq": 32.38,
+    "pq": 12.07,
+    "qs": 12.88,
+    "pcq": 10.56
+   }
+  },
+  {
+   "id": "mirabel",
+   "name": "Mirabel",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.11,
+    "plq": 6.76,
+    "pq": 16.78,
+    "qs": 14.41,
+    "pcq": 11.43
+   }
+  },
+  {
+   "id": "mont-royal-outremont",
+   "name": "Mont-Royal-Outremont",
+   "seats": 1,
+   "results_2022": {
+    "caq": 15.79,
+    "plq": 39.35,
+    "pq": 11.42,
+    "qs": 20.28,
+    "pcq": 8.51
+   }
+  },
+  {
+   "id": "montarville",
+   "name": "Montarville",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.9,
+    "plq": 12.27,
+    "pq": 18.69,
+    "qs": 16.25,
+    "pcq": 5.12
+   }
+  },
+  {
+   "id": "montmorency",
+   "name": "Montmorency",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.18,
+    "plq": 4.65,
+    "pq": 11.28,
+    "qs": 12.05,
+    "pcq": 26.06
+   }
+  },
+  {
+   "id": "nelligan",
+   "name": "Nelligan",
+   "seats": 1,
+   "results_2022": {
+    "caq": 16.65,
+    "plq": 52.03,
+    "pq": 4.17,
+    "qs": 5.26,
+    "pcq": 15.09
+   }
+  },
+  {
+   "id": "nicolet-becancour",
+   "name": "Nicolet-Bécancour",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.05,
+    "plq": 4.74,
+    "pq": 17.18,
+    "qs": 8.8,
+    "pcq": 22.23
+   }
+  },
+  {
+   "id": "notre-dame-de-grace",
+   "name": "Notre-Dame-de-Grâce",
+   "seats": 1,
+   "results_2022": {
+    "caq": 7.33,
+    "plq": 50.46,
+    "pq": 5.09,
+    "qs": 15.49,
+    "pcq": 8.15
+   }
+  },
+  {
+   "id": "orford",
+   "name": "Orford",
+   "seats": 1,
+   "results_2022": {
+    "caq": 42.95,
+    "plq": 14.99,
+    "pq": 13.61,
+    "qs": 16.16,
+    "pcq": 10.88
+   }
+  },
+  {
+   "id": "papineau",
+   "name": "Papineau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 52.83,
+    "plq": 8.41,
+    "pq": 10.23,
+    "qs": 13.78,
+    "pcq": 13.27
+   }
+  },
+  {
+   "id": "pierre-laporte",
+   "name": "Pierre-Laporte",
+   "seats": 1,
+   "results_2022": {
+    "caq": 30.76,
+    "plq": 28.82,
+    "pq": 12.19,
+    "qs": 17.72,
+    "pcq": 7.39
+   }
+  },
+  {
+   "id": "pointe-aux-trembles",
+   "name": "Pointe-aux-Trembles",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.88,
+    "plq": 10.38,
+    "pq": 19.87,
+    "qs": 15.41,
+    "pcq": 6.81
+   }
+  },
+  {
+   "id": "pontiac",
+   "name": "Pontiac",
+   "seats": 1,
+   "results_2022": {
+    "caq": 24.7,
+    "plq": 43.68,
+    "pq": 6.61,
+    "qs": 10.28,
+    "pcq": 10.92
+   }
+  },
+  {
+   "id": "portneuf",
+   "name": "Portneuf",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.38,
+    "plq": 2.82,
+    "pq": 9.85,
+    "qs": 8.22,
+    "pcq": 29.74
+   }
+  },
+  {
+   "id": "prevost",
+   "name": "Prévost",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.23,
+    "plq": 6.02,
+    "pq": 19.58,
+    "qs": 15.1,
+    "pcq": 11.68
+   }
+  },
+  {
+   "id": "rene-levesque",
+   "name": "René-Lévesque",
+   "seats": 1,
+   "results_2022": {
+    "caq": 58.92,
+    "plq": 1.59,
+    "pq": 21.17,
+    "qs": 7.56,
+    "pcq": 10.12
+   }
+  },
+  {
+   "id": "repentigny",
+   "name": "Repentigny",
+   "seats": 1,
+   "results_2022": {
+    "caq": 52.36,
+    "plq": 9.96,
+    "pq": 17.73,
+    "qs": 12.68,
+    "pcq": 6.41
+   }
+  },
+  {
+   "id": "richelieu",
+   "name": "Richelieu",
+   "seats": 1,
+   "results_2022": {
+    "caq": 55.89,
+    "plq": 4.13,
+    "pq": 20.28,
+    "qs": 10.08,
+    "pcq": 8.82
+   }
+  },
+  {
+   "id": "richmond",
+   "name": "Richmond",
+   "seats": 1,
+   "results_2022": {
+    "caq": 46.75,
+    "plq": 5.45,
+    "pq": 12.76,
+    "qs": 19.86,
+    "pcq": 14.7
+   }
+  },
+  {
+   "id": "rimouski",
+   "name": "Rimouski",
+   "seats": 1,
+   "results_2022": {
+    "caq": 41.75,
+    "plq": 3.01,
+    "pq": 28.64,
+    "qs": 21.37,
+    "pcq": 4.75
+   }
+  },
+  {
+   "id": "riviere-du-louptemiscouatalesbasques",
+   "name": "Rivière-du-Loup–Témiscouata–Les Basques",
+   "seats": 1,
+   "results_2022": {
+    "caq": 52.06,
+    "plq": 3.97,
+    "pq": 17.58,
+    "qs": 14.61,
+    "pcq": 11.27
+   }
+  },
+  {
+   "id": "robert-baldwin",
+   "name": "Robert-Baldwin",
+   "seats": 1,
+   "results_2022": {
+    "caq": 9.75,
+    "plq": 57.76,
+    "pq": 2.6,
+    "qs": 5.02,
+    "pcq": 16.02
+   }
+  },
+  {
+   "id": "roberval",
+   "name": "Roberval",
+   "seats": 1,
+   "results_2022": {
+    "caq": 56.19,
+    "plq": 4.55,
+    "pq": 20.53,
+    "qs": 6.83,
+    "pcq": 11.37
+   }
+  },
+  {
+   "id": "rosemont",
+   "name": "Rosemont",
+   "seats": 1,
+   "results_2022": {
+    "caq": 23.06,
+    "plq": 11.79,
+    "pq": 21.27,
+    "qs": 37.62,
+    "pcq": 4.54
+   }
+  },
+  {
+   "id": "rousseau",
+   "name": "Rousseau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.58,
+    "plq": 3.45,
+    "pq": 17.86,
+    "qs": 13.14,
+    "pcq": 14.98
+   }
+  },
+  {
+   "id": "rouyn-noranda-temiscamingue",
+   "name": "Rouyn-Noranda-Témiscamingue",
+   "seats": 1,
+   "results_2022": {
+    "caq": 45.16,
+    "plq": 4.37,
+    "pq": 11.25,
+    "qs": 30.94,
+    "pcq": 7.66
+   }
+  },
+  {
+   "id": "saint-francois",
+   "name": "Saint-François",
+   "seats": 1,
+   "results_2022": {
+    "caq": 42.43,
+    "plq": 7.91,
+    "pq": 9.11,
+    "qs": 28.21,
+    "pcq": 11.01
+   }
+  },
+  {
+   "id": "saint-henri-sainte-anne",
+   "name": "Saint-Henri-Sainte-Anne",
+   "seats": 1,
+   "results_2022": {
+    "caq": 17.73,
+    "plq": 36.15,
+    "pq": 8.27,
+    "qs": 27.72,
+    "pcq": 6.36
+   }
+  },
+  {
+   "id": "saint-hyacinthe",
+   "name": "Saint-Hyacinthe",
+   "seats": 1,
+   "results_2022": {
+    "caq": 54.42,
+    "plq": 4.13,
+    "pq": 16.7,
+    "qs": 13.64,
+    "pcq": 9.84
+   }
+  },
+  {
+   "id": "saint-jean",
+   "name": "Saint-Jean",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.65,
+    "plq": 5.98,
+    "pq": 19.22,
+    "qs": 14.76,
+    "pcq": 8.4
+   }
+  },
+  {
+   "id": "saint-jerome",
+   "name": "Saint-Jérôme",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.02,
+    "plq": 4.53,
+    "pq": 18.83,
+    "qs": 15.62,
+    "pcq": 9.74
+   }
+  },
+  {
+   "id": "saint-laurent",
+   "name": "Saint-Laurent",
+   "seats": 1,
+   "results_2022": {
+    "caq": 14.29,
+    "plq": 49.97,
+    "pq": 5.92,
+    "qs": 9.92,
+    "pcq": 13.88
+   }
+  },
+  {
+   "id": "sainte-marie-saint-jacques",
+   "name": "Sainte-Marie-Saint-Jacques",
+   "seats": 1,
+   "results_2022": {
+    "caq": 14.31,
+    "plq": 15.85,
+    "pq": 14.72,
+    "qs": 47.69,
+    "pcq": 4.98
+   }
+  },
+  {
+   "id": "sainte-rose",
+   "name": "Sainte-Rose",
+   "seats": 1,
+   "results_2022": {
+    "caq": 38.5,
+    "plq": 23.98,
+    "pq": 12.39,
+    "qs": 14.33,
+    "pcq": 9.37
+   }
+  },
+  {
+   "id": "sanguinet",
+   "name": "Sanguinet",
+   "seats": 1,
+   "results_2022": {
+    "caq": 48.78,
+    "plq": 9.86,
+    "pq": 16.3,
+    "qs": 13.11,
+    "pcq": 10.57
+   }
+  },
+  {
+   "id": "sherbrooke",
+   "name": "Sherbrooke",
+   "seats": 1,
+   "results_2022": {
+    "caq": 35.25,
+    "plq": 5.84,
+    "pq": 9.09,
+    "qs": 41.91,
+    "pcq": 6.74
+   }
+  },
+  {
+   "id": "soulanges",
+   "name": "Soulanges",
+   "seats": 1,
+   "results_2022": {
+    "caq": 42.62,
+    "plq": 21.82,
+    "pq": 10.27,
+    "qs": 10.84,
+    "pcq": 12.47
+   }
+  },
+  {
+   "id": "taillon",
+   "name": "Taillon",
+   "seats": 1,
+   "results_2022": {
+    "caq": 41.51,
+    "plq": 11.62,
+    "pq": 20.31,
+    "qs": 18.9,
+    "pcq": 6.47
+   }
+  },
+  {
+   "id": "taschereau",
+   "name": "Taschereau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 21.93,
+    "plq": 5.89,
+    "pq": 22.57,
+    "qs": 39.53,
+    "pcq": 8.76
+   }
+  },
+  {
+   "id": "terrebonne",
+   "name": "Terrebonne",
+   "seats": 1,
+   "results_2022": {
+    "caq": 49.44,
+    "plq": 10.17,
+    "pq": 18.88,
+    "qs": 12.65,
+    "pcq": 7.94
+   }
+  },
+  {
+   "id": "trois-rivieres",
+   "name": "Trois-Rivières",
+   "seats": 1,
+   "results_2022": {
+    "caq": 50.81,
+    "plq": 5.54,
+    "pq": 14.34,
+    "qs": 16.35,
+    "pcq": 12.26
+   }
+  },
+  {
+   "id": "ungava",
+   "name": "Ungava",
+   "seats": 1,
+   "results_2022": {
+    "caq": 36.27,
+    "plq": 18.19,
+    "pq": 12.55,
+    "qs": 24.23,
+    "pcq": 8.76
+   }
+  },
+  {
+   "id": "vachon",
+   "name": "Vachon",
+   "seats": 1,
+   "results_2022": {
+    "caq": 44.91,
+    "plq": 16.07,
+    "pq": 13.37,
+    "qs": 15.01,
+    "pcq": 8.9
+   }
+  },
+  {
+   "id": "vanier-lesrivieres",
+   "name": "Vanier-Les Rivières",
+   "seats": 1,
+   "results_2022": {
+    "caq": 47.39,
+    "plq": 6.28,
+    "pq": 13.07,
+    "qs": 12.15,
+    "pcq": 19.52
+   }
+  },
+  {
+   "id": "vaudreuil",
+   "name": "Vaudreuil",
+   "seats": 1,
+   "results_2022": {
+    "caq": 32.77,
+    "plq": 34.22,
+    "pq": 7.7,
+    "qs": 9.23,
+    "pcq": 11.62
+   }
+  },
+  {
+   "id": "vercheres",
+   "name": "Verchères",
+   "seats": 1,
+   "results_2022": {
+    "caq": 51.28,
+    "plq": 5.28,
+    "pq": 20.71,
+    "qs": 14.44,
+    "pcq": 7.08
+   }
+  },
+  {
+   "id": "verdun",
+   "name": "Verdun",
+   "seats": 1,
+   "results_2022": {
+    "caq": 23.0,
+    "plq": 29.27,
+    "pq": 8.33,
+    "qs": 30.75,
+    "pcq": 5.35
+   }
+  },
+  {
+   "id": "viau",
+   "name": "Viau",
+   "seats": 1,
+   "results_2022": {
+    "caq": 15.18,
+    "plq": 38.18,
+    "pq": 7.58,
+    "qs": 30.44,
+    "pcq": 6.14
+   }
+  },
+  {
+   "id": "vimont-auteuil",
+   "name": "Vimont-Auteuil",
+   "seats": 1,
+   "results_2022": {
+    "caq": 34.28,
+    "plq": 29.85,
+    "pq": 10.57,
+    "qs": 11.48,
+    "pcq": 12.88
+   }
+  },
+  {
+   "id": "westmount-saint-louis",
+   "name": "Westmount-Saint-Louis",
+   "seats": 1,
+   "results_2022": {
+    "caq": 10.08,
+    "plq": 50.48,
+    "pq": 6.05,
+    "qs": 12.82,
+    "pcq": 9.21
+   }
+  }
+ ]
+}

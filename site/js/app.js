@@ -1570,6 +1570,9 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   holder.innerHTML=conf.selector==='label'?raw.replace(/inkscape:label=/g,'data-label='):raw;
   const svg=holder.querySelector('svg');
   if(!svg){box.innerHTML='';return}
+  // very tall maps (Israel's 1:3 aspect) render enormous at full width:
+  // a per-map max-height keeps them small and centered
+  if(conf.maxHeight) svg.style.maxHeight=conf.maxHeight+'px';
   let selector;
   if(conf.selector==='class') selector='path[class^="wk"]';
   else if(conf.selector==='label') selector='path[data-label]';

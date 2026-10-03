@@ -162,9 +162,11 @@ def main():
         "      bloc2: { name: 'Opposition', short: 'OPP', parties: ['together', 'yb', 'dems', 'yashar', 'blue_white'], color: '#E30613' },\n"
         "      bloc3: { name: 'Arab parties', short: 'ARAB', parties: ['raam', 'joint_list'], color: '#2E7D32' },")
     j = lambda o, ind: json.dumps(o, ensure_ascii=False, indent=ind)
-    map_block = """    map: {
+    map_block = """
+    map: {
       svg: 'img/israel.svg',
       selector: 'id',
+      maxHeight: 600,               // ~1:3 aspect: cap the rendered height
       districts: @@districts@@,
       names: @@names@@,
       // 2022 vote shares per district (Central Elections Committee, Knesset 25)
@@ -182,6 +184,23 @@ def main():
             ("gebiete", j(gebiete, 8).replace("\n", "\n      ")),
             ("national", j(national, 8).replace("\n", "\n      "))):
         map_block = map_block.replace("@@%s@@" % ph, val)
+    # drop an existing map block first, so re-runs pick up template changes
+    mm = re.search(r"map: \{", block)
+    if mm:
+        depth, k2 = 0, mm.end() - 1
+        while k2 < len(block):
+            if block[k2] == "{":
+                depth += 1
+            elif block[k2] == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+            k2 += 1
+        head = block[:mm.start()].rstrip()
+        tail = block[k2 + 1:]
+        if head.endswith(",") and tail.lstrip().startswith(","):
+            tail = tail.lstrip()[1:]
+        block = head + tail
     if "map: {" not in block:
         anchor = re.search(r"\n    lastElection: \{", block)
         depth, k = 0, anchor.end() - 1

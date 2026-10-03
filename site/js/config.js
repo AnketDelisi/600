@@ -156,9 +156,11 @@ const COUNTRIES = {
         shas: 11, utj: 7, yb: 6, raam: 5,
         joint_list: 5, dems: 4, yashar: 0, reservists: 0, amcha: 0,
       },
-    },    map: {
+    },
+    map: {
       svg: 'img/israel.svg',
       selector: 'id',
+      maxHeight: 600,               // ~1:3 aspect: cap the rendered height
       districts: {
               "north": "north",
               "haifa": "haifa",

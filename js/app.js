@@ -1461,7 +1461,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise){
     if(PARTY_META[p]&&PARTY_META[p].pastOnly){
       // dissolved alliances: shown in the 2023 result view, never projected
       now=resultMode?past:0;
-    }else if(resultMode||!avg||(avg[p]===undefined&&!(reg&&reg[p]!==undefined))){
+    }else if(resultMode||!avg||(avg[p]==null&&!(reg&&reg[p]!==undefined))){
       now=past;
     }else{
       const natP=nat[p]||0, avgP=avg[p]||0;
@@ -2584,12 +2584,20 @@ function runForecast(avg, nSims, nPolls){
   // modelled parties, so their simulated shares shrink to honest levels.
   alpha.push(Math.max(0.5,(avg.other||0)*K));
   const ORDER_ALL=PARTY_ORDER.concat(['other']);
+  // Parties with no polling (UK's NI parties): their Dirichlet placeholder
+  // draw would otherwise act as a "poll" and swing their seats on noise.
+  // Pin them to their last-election national share, so districtShares gives
+  // them zero swing and their seats hold the baseline.
+  const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
+  const noPoll={};
+  PARTY_ORDER.forEach(p=>{if(avg[p]==null) noPoll[p]=natBase[p]||0;});
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);
     let simVotes={};
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
     simVotes.other=100*draws[PARTY_ORDER.length]/totalD;
+    for(const p in noPoll) simVotes[p]=noPoll[p];
     simVotes=applyNationalSwing(simVotes);
     // one correlated regional swing deviation per region (see
     // FORECAST_REGION_SIGMA), applied to that region's districts below
@@ -2665,14 +2673,33 @@ function deterministicSeats(medians, means, total){
   PARTY_ORDER.forEach(p=>{s[p]=medians[p]||0});
   let sum=PARTY_ORDER.reduce((a,p)=>a+s[p],0);
   const eligible=PARTY_ORDER.filter(p=>s[p]>0);
+  // Reconcile the non-additive medians to the house total by largest
+  // remainder toward the means: each leftover seat goes to the party whose
+  // expected (mean) seats most exceed its current count. The old round-robin
+  // handed every eligible party a share of the leftover, which inflated
+  // stable small parties (UK: the NI parties' medians of 7/5/2/1/1/1 all
+  // gained +2).
   if(sum<total&&eligible.length){
-    const order=eligible.slice().sort((a,b)=>(means[b]-medians[b])-(means[a]-medians[a]));
-    let i=0;
-    while(sum<total){s[order[i%order.length]]++;sum++;i++}
+    while(sum<total){
+      let best=null,bestGap=-Infinity;
+      for(const p of eligible){
+        const gap=(means[p]||0)-s[p];
+        if(gap>bestGap){bestGap=gap;best=p}
+      }
+      if(!best) break;
+      s[best]++;sum++;
+    }
   }else if(sum>total&&eligible.length){
-    const order=eligible.slice().sort((a,b)=>(medians[b]-means[b])-(medians[a]-means[a]));
-    let i=0;
-    while(sum>total){if(s[order[i%order.length]]>0){s[order[i%order.length]]--;sum--}i++}
+    while(sum>total){
+      let best=null,bestGap=-Infinity;
+      for(const p of eligible){
+        if(s[p]<=0) continue;
+        const gap=s[p]-(means[p]||0);
+        if(gap>bestGap){bestGap=gap;best=p}
+      }
+      if(!best) break;
+      s[best]--;sum--;
+    }
   }
   // unmodelled remainder as "Other" seats (empty wedge otherwise)
   const otherSeats=total-sum;

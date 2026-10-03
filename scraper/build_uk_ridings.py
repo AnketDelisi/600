@@ -43,10 +43,13 @@ ATTRIBUTION = ("Risultati: House of Commons Library (elezioni 2024, "
                "psephology database); Geometria: ONS (Westminster "
                "constituencies, July 2024)")
 
-PARTIES = ["lab", "con", "ref", "lib", "grn", "snp", "plc", "res"]
+PARTIES = ["lab", "con", "ref", "lib", "grn", "snp", "plc", "res",
+           "sf", "dup", "sdlp", "apni", "uup", "tuv"]
 # DB party abbreviation -> modelled party (None/others -> Other)
 ABBR = {"Lab": "lab", "Co-op": "lab", "Con": "con", "RUK": "ref",
-        "LD": "lib", "Green": "grn", "SNP": "snp", "PC": "plc"}
+        "LD": "lib", "Green": "grn", "SNP": "snp", "PC": "plc",
+        "SF": "sf", "DUP": "dup", "SDLP": "sdlp", "APNI": "apni",
+        "UUP": "uup", "TUV": "tuv"}
 CURRENT_SETS = (1, 2, 3, 4)    # 2024-05-31 boundary sets: England/Scot/Wales/NI
 
 
@@ -71,9 +74,13 @@ def main():
     # 2024 results by constituency, on the current boundary sets. Co-operative
     # Party certifications are adjuncts to the Labour ones (joint candidates)
     # and must be dropped or every Labour-Co-op candidacy counts twice.
+    # The Speaker (Chorley, Lindsay Hoyle) counts as Labour: he is a Labour MP,
+    # no Labour candidate stood against him, and the seat must swing with
+    # Labour in the projection instead of falling to a minor list.
     rows = cur.execute("""
         select ca.geographic_code, cg.name, c.vote_count,
-               pp.abbreviation, c.is_winning_candidacy
+               pp.abbreviation, c.is_winning_candidacy,
+               c.is_standing_as_commons_speaker
         from elections e
         join constituency_groups cg on cg.id = e.constituency_group_id
         join constituency_areas ca on ca.id = cg.constituency_area_id
@@ -90,8 +97,8 @@ def main():
     seats["other"] = 0
     nat = {p: 0 for p in PARTIES}
     nat["other"] = 0
-    for code, name, votes, abbr, won in rows:
-        key = ABBR.get(abbr, "other")
+    for code, name, votes, abbr, won, speaker in rows:
+        key = "lab" if speaker else ABBR.get(abbr, "other")
         v = votes or 0
         r = results.setdefault(code, {"name": name, "votes": {}, "total": 0})
         r["votes"][key] = r["votes"].get(key, 0) + v
@@ -184,21 +191,29 @@ def main():
     recencyHalfLifeDays: 14,
     // colours from the en.wikipedia party infoboxes
     parties: {
-      lab: { code: 'LAB', name: 'Labour Party',             name_en: 'Labour Party',             color: '#E41C3E' },
-      con: { code: 'CON', name: 'Conservative Party',       name_en: 'Conservative Party',       color: '#0087DC' },
-      ref: { code: 'REF', name: 'Reform UK',                name_en: 'Reform UK',                color: '#1EB8D0' },
-      lib: { code: 'LD',  name: 'Liberal Democrats',        name_en: 'Liberal Democrats',        color: '#FAA61A' },
-      grn: { code: 'GRN', name: 'Green Party',              name_en: 'Green Party',              color: '#02A95B' },
-      snp: { code: 'SNP', name: 'Scottish National Party',  name_en: 'Scottish National Party',  color: '#FDF38E' },
-      plc: { code: 'PC',  name: 'Plaid Cymru',              name_en: 'Plaid Cymru',              color: '#008672' },
-      res: { code: 'RES', name: 'Restore Britain',          name_en: 'Restore Britain',          color: '#051D3F' },
+      lab:  { code: 'LAB',  name: 'Labour Party',             name_en: 'Labour Party',             color: '#E41C3E' },
+      con:  { code: 'CON',  name: 'Conservative Party',       name_en: 'Conservative Party',       color: '#0087DC' },
+      ref:  { code: 'REF',  name: 'Reform UK',                name_en: 'Reform UK',                color: '#1EB8D0' },
+      lib:  { code: 'LD',   name: 'Liberal Democrats',        name_en: 'Liberal Democrats',        color: '#FAA61A' },
+      grn:  { code: 'GRN',  name: 'Green Party',              name_en: 'Green Party',              color: '#02A95B' },
+      snp:  { code: 'SNP',  name: 'Scottish National Party',  name_en: 'Scottish National Party',  color: '#FDF38E' },
+      plc:  { code: 'PC',   name: 'Plaid Cymru',              name_en: 'Plaid Cymru',              color: '#008672' },
+      res:  { code: 'RES',  name: 'Restore Britain',          name_en: 'Restore Britain',          color: '#051D3F' },
+      sf:   { code: 'SF',   name: 'Sinn Féin',                name_en: 'Sinn Féin',                color: '#326760' },
+      dup:  { code: 'DUP',  name: 'Democratic Unionist Party', name_en: 'Democratic Unionist Party', color: '#D46A4C' },
+      sdlp: { code: 'SDLP', name: 'Social Democratic and Labour Party', name_en: 'Social Democratic and Labour Party', color: '#2AA82C' },
+      apni: { code: 'APNI', name: 'Alliance Party of Northern Ireland', name_en: 'Alliance Party of Northern Ireland', color: '#F6CB2F' },
+      uup:  { code: 'UUP',  name: 'Ulster Unionist Party',    name_en: 'Ulster Unionist Party',    color: '#48A5EE' },
+      tuv:  { code: 'TUV',  name: 'Traditional Unionist Voice', name_en: 'Traditional Unionist Voice', color: '#201863' },
     },
-    order: ['lab', 'con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res'],
-    parlOrder: ['grn', 'snp', 'plc', 'lab', 'lib', 'con', 'ref', 'res'],
+    order: ['lab', 'ref', 'con', 'lib', 'grn', 'res', 'snp', 'plc',
+            'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv'],
+    parlOrder: ['grn', 'snp', 'plc', 'sf', 'sdlp', 'lab', 'lib', 'apni',
+                'uup', 'con', 'dup', 'tuv', 'ref', 'res'],
     // governing party vs the rest (majority = 326)
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['lab'], color: '#E41C3E' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res'], color: '#0087DC' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res', 'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv'], color: '#0087DC' },
     },
     lastElection: {
       date: '2024-07-04',
@@ -226,10 +241,14 @@ def main():
     },
     pollsterMAE: {},
     maeKey: 'UK2024',
+    // NI parties have no polling in the GB/UK tables: their averages stay
+    // null and their seats hold the 2024 baseline (local dynamics decide)
     logos: {
       lab: 'img/uk/LAB.svg', con: 'img/uk/CONS.svg', ref: 'img/uk/REF.svg',
       lib: 'img/uk/LIB.svg', grn: 'img/uk/GRN.svg', snp: 'img/uk/SNP.svg',
-      plc: 'img/uk/PLC.svg', res: 'img/uk/RES.svg',
+      plc: 'img/uk/PLC.svg', res: 'img/uk/RES.svg', sf: 'img/uk/SF.svg',
+      dup: 'img/uk/DUP.svg', sdlp: 'img/uk/SDLP.svg',
+      apni: 'img/uk/APNI.svg', uup: 'img/uk/UUP.svg', tuv: 'img/uk/TUV.svg',
     },
   },
 """

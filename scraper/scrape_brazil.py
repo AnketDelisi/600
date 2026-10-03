@@ -170,14 +170,18 @@ def scrape_brazil():
         ncol = max(len(r) for r in grid[:header_end])
         cand_col = {}
         sample_col = None
+        others_col = None
         for col in range(ncol):
             for ri in range(header_end):
                 if col < len(grid[ri]) and grid[ri][col]:
                     key = map_candidate(grid[ri][col])
                     if key:
                         cand_col[col] = key
-                    if "sample" in grid[ri][col].lower():
+                    low = grid[ri][col].lower()
+                    if "sample" in low:
                         sample_col = col
+                    elif low.startswith("other"):
+                        others_col = col
         if len(set(cand_col.values())) < MIN_CANDIDATES:
             continue
         for ri in range(header_end, len(grid)):
@@ -209,12 +213,28 @@ def scrape_brazil():
                     continue
                 if not 40 <= sum(values.values()) <= 105:
                     continue
+                # distribute the blank/null/undecided share: renormalize the
+                # candidates plus the article's "Others" to 100% of decided
+                # voters (the app then shows the other candidates as "Other")
+                others = 0.0
+                if others_col is not None and others_col < len(row):
+                    others = parse_num(row[others_col]) or 0.0
+                decided = sum(values.values()) + others
+                if decided <= 0:
+                    continue
+                votes = {k: round(v * 100 / decided, 1)
+                         for k, v in values.items()}
                 first.append({"pollster": pollster, "fieldwork_start": start,
-                              "date": date, "n": n, "votes": values})
+                              "date": date, "n": n, "votes": votes})
             else:
                 pair = {k: v for k, v in values.items() if k in KNOWN}
                 if len(pair) != 2:
                     continue
+                # head-to-head shares are also reported among decided voters
+                total = sum(pair.values())
+                if total <= 0:
+                    continue
+                pair = {k: round(v * 100 / total, 1) for k, v in pair.items()}
                 runoff.append({"pollster": pollster, "date": date,
                                "runoff": pair})
 

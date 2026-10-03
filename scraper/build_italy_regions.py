@@ -10,6 +10,8 @@ regional tally (regione.vda.it). Geometry: geoBoundaries ITA ADM2 (20
 regions). Party logos: img/it/ (prepared separately).
 
 Writes img/italy.svg and inserts the italy block into js/config.js.
+Run build_italy_fptp.py afterwards (it re-adds the FPTP constituencies
+flag + map2 layer, which this script's block template does not carry).
 
 Usage: python scraper/build_italy_regions.py [--force]
 """

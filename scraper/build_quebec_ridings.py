@@ -233,6 +233,17 @@ def main():
     hideBlocs: true,              // no government/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
+    // trend extrapolation to the 2026-10-05 election: fresh campaign polls
+    // (4 in the last 14 days); with 2 days left the damping collapses the
+    // projected move to well under a point
+    trend: {
+      electionDate: '2026-10-05',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+    },
     // colours from the en.wikipedia party infoboxes
     parties: {
       caq:  { code: 'CAQ',  name: 'Coalition Avenir Québec',           name_en: 'Coalition Avenir Québec',           color: '#1E90FF' },
@@ -254,9 +265,6 @@ def main():
       results: @@national@@,
       seats: @@seats@@,
     },
-    // No trend extrapolation (same call as BC: the intercept extrapolates to
-    // today from the last data point, which is fragile with noisy provincial
-    // polls). Re-add with fresh daily campaign polls.
     map: {
       svg: 'img/quebec.svg',
       selector: 'id',

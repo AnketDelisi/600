@@ -1,0 +1,823 @@
+{
+ "country": "nz",
+ "total_seats": 120,
+ "constituency_seats": 72,
+ "leveling_seats": 48,
+ "constituencies": [
+  {
+   "id": "aucklandcentral",
+   "name": "Auckland Central",
+   "seats": 1,
+   "results_2022": {
+    "grn": 47.84,
+    "nat": 36.63,
+    "lab": 7.5,
+    "act": 3.55,
+    "opp": 1.33
+   }
+  },
+  {
+   "id": "bankspeninsula",
+   "name": "Banks Peninsula",
+   "seats": 1,
+   "results_2022": {
+    "nat": 36.54,
+    "lab": 35.69,
+    "grn": 17.02,
+    "act": 4.24,
+    "nzf": 3.27
+   }
+  },
+  {
+   "id": "bayofplenty",
+   "name": "Bay of Plenty",
+   "seats": 1,
+   "results_2022": {
+    "nat": 51.64,
+    "lab": 17.5,
+    "act": 9.31,
+    "grn": 8.94,
+    "nzf": 8.02
+   }
+  },
+  {
+   "id": "botany",
+   "name": "Botany",
+   "seats": 1,
+   "results_2022": {
+    "nat": 66.57,
+    "lab": 22.66,
+    "act": 5.26
+   }
+  },
+  {
+   "id": "christchurchcentral",
+   "name": "Christchurch Central",
+   "seats": 1,
+   "results_2022": {
+    "lab": 39.68,
+    "nat": 34.98,
+    "grn": 13.88,
+    "nzf": 3.98,
+    "act": 3.55
+   }
+  },
+  {
+   "id": "christchurcheast",
+   "name": "Christchurch East",
+   "seats": 1,
+   "results_2022": {
+    "lab": 39.07,
+    "nat": 32.89,
+    "grn": 11.83,
+    "nzf": 5.23,
+    "act": 4.32
+   }
+  },
+  {
+   "id": "coromandel",
+   "name": "Coromandel",
+   "seats": 1,
+   "results_2022": {
+    "nat": 53.31,
+    "lab": 16.9,
+    "grn": 10.57,
+    "act": 5.83,
+    "nzf": 6.73
+   }
+  },
+  {
+   "id": "dunedin",
+   "name": "Dunedin",
+   "seats": 1,
+   "results_2022": {
+    "lab": 40.61,
+    "nat": 21.67,
+    "grn": 19.06,
+    "opp": 4.48,
+    "act": 4.02,
+    "nzf": 3.09
+   }
+  },
+  {
+   "id": "eastcoast",
+   "name": "East Coast",
+   "seats": 1,
+   "results_2022": {
+    "nat": 42.57,
+    "lab": 34.56,
+    "nzf": 6.3,
+    "act": 4.81,
+    "grn": 4.42,
+    "tpm": 3.09
+   }
+  },
+  {
+   "id": "eastcoastbays",
+   "name": "East Coast Bays",
+   "seats": 1,
+   "results_2022": {
+    "nat": 71.52,
+    "lab": 18.94,
+    "act": 4.09
+   }
+  },
+  {
+   "id": "epsom",
+   "name": "Epsom",
+   "seats": 1,
+   "results_2022": {
+    "act": 44.43,
+    "nat": 24.14,
+    "lab": 15.42,
+    "grn": 8.81,
+    "opp": 4.49,
+    "nzf": 1.42
+   }
+  },
+  {
+   "id": "hamiltoneast",
+   "name": "Hamilton East",
+   "seats": 1,
+   "results_2022": {
+    "nat": 47.79,
+    "lab": 34.32,
+    "act": 4.47,
+    "tpm": 3.27,
+    "nzf": 3.21,
+    "opp": 3.18
+   }
+  },
+  {
+   "id": "hamiltonwest",
+   "name": "Hamilton West",
+   "seats": 1,
+   "results_2022": {
+    "nat": 46.04,
+    "lab": 29.06,
+    "grn": 8.45,
+    "act": 5.79,
+    "nzf": 4.54,
+    "opp": 2.74
+   }
+  },
+  {
+   "id": "hauraki-waikato",
+   "name": "Hauraki-Waikato",
+   "seats": 1,
+   "results_2022": {
+    "tpm": 51.63,
+    "lab": 40.01
+   }
+  },
+  {
+   "id": "huttsouth",
+   "name": "Hutt South",
+   "seats": 1,
+   "results_2022": {
+    "nat": 44.37,
+    "lab": 41.28,
+    "grn": 5.78,
+    "nzf": 2.85,
+    "opp": 2.27,
+    "act": 1.29
+   }
+  },
+  {
+   "id": "ikaroa-rwhiti",
+   "name": "Ikaroa-Rāwhiti",
+   "seats": 1,
+   "results_2022": {
+    "lab": 52.63,
+    "tpm": 41.63
+   }
+  },
+  {
+   "id": "ilam",
+   "name": "Ilam",
+   "seats": 1,
+   "results_2022": {
+    "nat": 44.01,
+    "opp": 25.57,
+    "lab": 21.21,
+    "grn": 5.63
+   }
+  },
+  {
+   "id": "invercargill",
+   "name": "Invercargill",
+   "seats": 1,
+   "results_2022": {
+    "nat": 55.61,
+    "lab": 29.23,
+    "act": 5.31
+   }
+  },
+  {
+   "id": "kaikura",
+   "name": "Kaikōura",
+   "seats": 1,
+   "results_2022": {
+    "nat": 49.47,
+    "lab": 22.25,
+    "nzf": 10.37,
+    "act": 6.26,
+    "grn": 5.99
+   }
+  },
+  {
+   "id": "kaiparakimahurangi",
+   "name": "Kaipara ki Mahurangi",
+   "seats": 1,
+   "results_2022": {
+    "nat": 57.6,
+    "lab": 17.96,
+    "grn": 9.65,
+    "act": 6.04,
+    "nzf": 5.15
+   }
+  },
+  {
+   "id": "kelston",
+   "name": "Kelston",
+   "seats": 1,
+   "results_2022": {
+    "lab": 43.71,
+    "nat": 30.38,
+    "grn": 11.45,
+    "act": 5.38,
+    "nzf": 3.46,
+    "tpm": 2.05
+   }
+  },
+  {
+   "id": "mana",
+   "name": "Mana",
+   "seats": 1,
+   "results_2022": {
+    "lab": 48.56,
+    "nat": 30.83,
+    "grn": 10.09,
+    "nzf": 4.44,
+    "act": 2.87
+   }
+  },
+  {
+   "id": "manurewa",
+   "name": "Manurewa",
+   "seats": 1,
+   "results_2022": {
+    "lab": 55.95,
+    "nat": 31.47,
+    "tpm": 5.51
+   }
+  },
+  {
+   "id": "maungakiekie",
+   "name": "Maungakiekie",
+   "seats": 1,
+   "results_2022": {
+    "nat": 47.7,
+    "lab": 34.71,
+    "grn": 8.83,
+    "act": 3.63,
+    "nzf": 2.58
+   }
+  },
+  {
+   "id": "mtalbert",
+   "name": "Mt Albert",
+   "seats": 1,
+   "results_2022": {
+    "lab": 33.73,
+    "nat": 33.68,
+    "grn": 23.69,
+    "act": 3.78,
+    "opp": 3.36
+   }
+  },
+  {
+   "id": "mtroskill",
+   "name": "Mt Roskill",
+   "seats": 1,
+   "results_2022": {
+    "nat": 43.3,
+    "lab": 38.97,
+    "grn": 9.34,
+    "act": 6.03
+   }
+  },
+  {
+   "id": "mngere",
+   "name": "Māngere",
+   "seats": 1,
+   "results_2022": {
+    "lab": 59.61,
+    "nat": 19.24,
+    "grn": 9.3,
+    "tpm": 3.21,
+    "act": 2.3
+   }
+  },
+  {
+   "id": "napier",
+   "name": "Napier",
+   "seats": 1,
+   "results_2022": {
+    "nat": 52.83,
+    "lab": 30.88,
+    "grn": 5.42,
+    "nzf": 4.28,
+    "act": 3.0
+   }
+  },
+  {
+   "id": "nelson",
+   "name": "Nelson",
+   "seats": 1,
+   "results_2022": {
+    "lab": 41.11,
+    "nat": 41.05,
+    "grn": 6.54,
+    "act": 6.31
+   }
+  },
+  {
+   "id": "newlynn",
+   "name": "New Lynn",
+   "seats": 1,
+   "results_2022": {
+    "nat": 39.22,
+    "lab": 36.72,
+    "grn": 13.27,
+    "act": 5.68
+   }
+  },
+  {
+   "id": "newplymouth",
+   "name": "New Plymouth",
+   "seats": 1,
+   "results_2022": {
+    "nat": 52.31,
+    "lab": 36.04,
+    "act": 4.55
+   }
+  },
+  {
+   "id": "northshore",
+   "name": "North Shore",
+   "seats": 1,
+   "results_2022": {
+    "nat": 60.76,
+    "lab": 20.9,
+    "grn": 8.94,
+    "act": 5.03,
+    "opp": 3.0
+   }
+  },
+  {
+   "id": "northcote",
+   "name": "Northcote",
+   "seats": 1,
+   "results_2022": {
+    "nat": 54.32,
+    "lab": 30.18,
+    "grn": 8.72,
+    "nzf": 2.74,
+    "act": 2.51
+   }
+  },
+  {
+   "id": "northland",
+   "name": "Northland",
+   "seats": 1,
+   "results_2022": {
+    "nat": 35.63,
+    "lab": 22.3,
+    "nzf": 17.83,
+    "grn": 5.31,
+    "act": 4.67
+   }
+  },
+  {
+   "id": "pakuranga",
+   "name": "Pakuranga",
+   "seats": 1,
+   "results_2022": {
+    "nat": 71.39,
+    "lab": 20.22,
+    "act": 3.54
+   }
+  },
+  {
+   "id": "palmerstonnorth",
+   "name": "Palmerston North",
+   "seats": 1,
+   "results_2022": {
+    "lab": 43.06,
+    "nat": 34.39,
+    "grn": 8.87,
+    "act": 7.97
+   }
+  },
+  {
+   "id": "panmure-thuhu",
+   "name": "Panmure-Ōtāhuhu",
+   "seats": 1,
+   "results_2022": {
+    "lab": 51.56,
+    "nat": 24.8,
+    "grn": 14.47,
+    "act": 4.15
+   }
+  },
+  {
+   "id": "papakura",
+   "name": "Papakura",
+   "seats": 1,
+   "results_2022": {
+    "nat": 57.79,
+    "lab": 25.38,
+    "act": 7.48,
+    "nzf": 4.14
+   }
+  },
+  {
+   "id": "portwaikato",
+   "name": "Port Waikato",
+   "seats": 1,
+   "results_2022": {
+    "nat": 76.33,
+    "nzf": 15.29
+   }
+  },
+  {
+   "id": "rangitata",
+   "name": "Rangitata",
+   "seats": 1,
+   "results_2022": {
+    "nat": 56.33,
+    "lab": 29.52,
+    "nzf": 5.34,
+    "grn": 4.41
+   }
+  },
+  {
+   "id": "rangitkei",
+   "name": "Rangitīkei",
+   "seats": 1,
+   "results_2022": {
+    "nat": 46.33,
+    "lab": 22.4,
+    "act": 14.46,
+    "nzf": 7.74,
+    "grn": 7.71
+   }
+  },
+  {
+   "id": "remutaka",
+   "name": "Remutaka",
+   "seats": 1,
+   "results_2022": {
+    "lab": 53.58,
+    "nat": 32.34,
+    "grn": 6.7,
+    "act": 3.02
+   }
+  },
+  {
+   "id": "rongotai",
+   "name": "Rongotai",
+   "seats": 1,
+   "results_2022": {
+    "grn": 39.03,
+    "lab": 32.64,
+    "nat": 20.7,
+    "act": 2.77,
+    "nzf": 2.02
+   }
+  },
+  {
+   "id": "rotorua",
+   "name": "Rotorua",
+   "seats": 1,
+   "results_2022": {
+    "nat": 52.95,
+    "lab": 28.52,
+    "tpm": 7.48,
+    "act": 4.74
+   }
+  },
+  {
+   "id": "selwyn",
+   "name": "Selwyn",
+   "seats": 1,
+   "results_2022": {
+    "nat": 65.42,
+    "lab": 24.34,
+    "act": 5.86
+   }
+  },
+  {
+   "id": "southland",
+   "name": "Southland",
+   "seats": 1,
+   "results_2022": {
+    "nat": 58.89,
+    "lab": 15.26,
+    "grn": 9.78,
+    "act": 7.11
+   }
+  },
+  {
+   "id": "taieri",
+   "name": "Taieri",
+   "seats": 1,
+   "results_2022": {
+    "lab": 39.39,
+    "nat": 35.96,
+    "grn": 9.26,
+    "nzf": 7.29,
+    "act": 4.03
+   }
+  },
+  {
+   "id": "takanini",
+   "name": "Takanini",
+   "seats": 1,
+   "results_2022": {
+    "nat": 55.95,
+    "lab": 33.57,
+    "act": 5.2
+   }
+  },
+  {
+   "id": "taranaki-kingcountry",
+   "name": "Taranaki-King Country",
+   "seats": 1,
+   "results_2022": {
+    "nat": 67.75,
+    "lab": 25.67
+   }
+  },
+  {
+   "id": "taup",
+   "name": "Taupō",
+   "seats": 1,
+   "results_2022": {
+    "nat": 57.13,
+    "lab": 19.2,
+    "grn": 7.9,
+    "act": 6.45,
+    "nzf": 4.85
+   }
+  },
+  {
+   "id": "tauranga",
+   "name": "Tauranga",
+   "seats": 1,
+   "results_2022": {
+    "nat": 45.68,
+    "lab": 23.13,
+    "act": 9.12,
+    "nzf": 8.19,
+    "grn": 6.56,
+    "tpm": 1.47
+   }
+  },
+  {
+   "id": "teatat",
+   "name": "Te Atatū",
+   "seats": 1,
+   "results_2022": {
+    "lab": 38.55,
+    "nat": 38.2,
+    "grn": 9.54,
+    "act": 6.8,
+    "tpm": 3.42
+   }
+  },
+  {
+   "id": "tetaihauuru",
+   "name": "Te Tai Hauāuru",
+   "seats": 1,
+   "results_2022": {
+    "tpm": 62.31,
+    "lab": 27.26,
+    "nat": 5.41
+   }
+  },
+  {
+   "id": "tetaitokerau",
+   "name": "Te Tai Tokerau",
+   "seats": 1,
+   "results_2022": {
+    "tpm": 37.55,
+    "lab": 35.69,
+    "grn": 15.08
+   }
+  },
+  {
+   "id": "tetaitonga",
+   "name": "Te Tai Tonga",
+   "seats": 1,
+   "results_2022": {
+    "tpm": 46.8,
+    "lab": 36.49
+   }
+  },
+  {
+   "id": "tukituki",
+   "name": "Tukituki",
+   "seats": 1,
+   "results_2022": {
+    "nat": 53.5,
+    "lab": 28.9,
+    "grn": 5.8,
+    "act": 4.9
+   }
+  },
+  {
+   "id": "tmaki",
+   "name": "Tāmaki",
+   "seats": 1,
+   "results_2022": {
+    "act": 43.19,
+    "nat": 33.13,
+    "lab": 21.69
+   }
+  },
+  {
+   "id": "tmakimakaurau",
+   "name": "Tāmaki Makaurau",
+   "seats": 1,
+   "results_2022": {
+    "tpm": 39.32,
+    "lab": 39.15,
+    "grn": 11.42,
+    "nat": 4.97
+   }
+  },
+  {
+   "id": "upperharbour",
+   "name": "Upper Harbour",
+   "seats": 1,
+   "results_2022": {
+    "nat": 52.73,
+    "lab": 25.28,
+    "grn": 7.4,
+    "act": 5.67,
+    "nzf": 3.26,
+    "opp": 2.72
+   }
+  },
+  {
+   "id": "waiariki",
+   "name": "Waiariki",
+   "seats": 1,
+   "results_2022": {
+    "tpm": 74.24,
+    "lab": 19.36
+   }
+  },
+  {
+   "id": "waikato",
+   "name": "Waikato",
+   "seats": 1,
+   "results_2022": {
+    "nat": 64.43,
+    "lab": 20.88,
+    "nzf": 8.42,
+    "opp": 3.63
+   }
+  },
+  {
+   "id": "waimakariri",
+   "name": "Waimakariri",
+   "seats": 1,
+   "results_2022": {
+    "nat": 57.66,
+    "lab": 29.69,
+    "act": 4.44
+   }
+  },
+  {
+   "id": "wairarapa",
+   "name": "Wairarapa",
+   "seats": 1,
+   "results_2022": {
+    "nat": 46.11,
+    "lab": 39.72,
+    "act": 4.32,
+    "grn": 4.15,
+    "tpm": 1.17
+   }
+  },
+  {
+   "id": "waitaki",
+   "name": "Waitaki",
+   "seats": 1,
+   "results_2022": {
+    "nat": 51.23,
+    "lab": 23.77,
+    "grn": 7.9,
+    "act": 5.6,
+    "nzf": 4.12
+   }
+  },
+  {
+   "id": "wellingtoncentral",
+   "name": "Wellington Central",
+   "seats": 1,
+   "results_2022": {
+    "grn": 40.56,
+    "lab": 27.22,
+    "nat": 25.42,
+    "opp": 3.42,
+    "nzf": 1.08
+   }
+  },
+  {
+   "id": "westcoast-tasman",
+   "name": "West Coast-Tasman",
+   "seats": 1,
+   "results_2022": {
+    "nat": 32.01,
+    "lab": 29.57,
+    "grn": 6.59,
+    "act": 6.05,
+    "nzf": 4.32
+   }
+  },
+  {
+   "id": "whanganui",
+   "name": "Whanganui",
+   "seats": 1,
+   "results_2022": {
+    "nat": 47.1,
+    "lab": 33.05,
+    "nzf": 7.99,
+    "grn": 5.22,
+    "act": 4.28
+   }
+  },
+  {
+   "id": "whangaparoa",
+   "name": "Whangaparāoa",
+   "seats": 1,
+   "results_2022": {
+    "nat": 66.45,
+    "lab": 15.92,
+    "grn": 7.53,
+    "act": 5.45
+   }
+  },
+  {
+   "id": "whangrei",
+   "name": "Whangārei",
+   "seats": 1,
+   "results_2022": {
+    "nat": 48.77,
+    "lab": 22.04,
+    "nzf": 12.56,
+    "grn": 6.27,
+    "act": 2.85,
+    "tpm": 2.01
+   }
+  },
+  {
+   "id": "wigram",
+   "name": "Wigram",
+   "seats": 1,
+   "results_2022": {
+    "lab": 41.43,
+    "nat": 38.3,
+    "grn": 10.05,
+    "act": 4.04
+   }
+  },
+  {
+   "id": "hriu",
+   "name": "Ōhāriu",
+   "seats": 1,
+   "results_2022": {
+    "lab": 41.15,
+    "nat": 38.2,
+    "grn": 10.33,
+    "opp": 6.97,
+    "act": 1.77
+   }
+  },
+  {
+   "id": "taki",
+   "name": "Ōtaki",
+   "seats": 1,
+   "results_2022": {
+    "nat": 50.23,
+    "lab": 36.01,
+    "grn": 6.68,
+    "act": 3.01
+   }
+  }
+ ]
+}

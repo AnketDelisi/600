@@ -1280,19 +1280,37 @@ function directFromProjection(votes){
   const conf=MAP_CONF();
   if(!conf||!conf.districts) return out;
   Object.keys(conf.districts).forEach(nr=>{
-    const w=districtWinnerProjection(parseInt(nr,10),votes);
+    const w=districtWinnerProjection(nr,votes);
     if(w) out[w]++;
   });
   return out;
 }
 
 function overhangSeats(votes, totalBase, direct, cap){
-  // Leveling seats: grow the house (re-running Hare/Niemeyer each step) until
-  // every party that won direct mandates holds at least its direct share; the
-  // total is capped at `cap` seats per the electoral law.
+  // Leveling seats: grow the house until every party that won direct mandates
+  // holds at least its direct share; the total is capped at `cap` seats per
+  // the electoral law. The base allocation follows the country's method:
+  // divisor methods (Sainte-Laguë/Schepers for New Zealand, D'Hondt) award
+  // seats by successive quotients, the German states keep Hare/Niemeyer. A
+  // party below the threshold still qualifies with at least one direct
+  // mandate (New Zealand's one-electorate rule).
   cap=cap||totalBase;
-  const hare=(total)=>{
-    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
+  const baseAlloc=(total)=>{
+    const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||(direct[p]||0)>0);
+    if(SEAT_METHOD==='dhondt'||SEAT_METHOD==='sainte_lague_standard'||SEAT_METHOD==='sainte_lague'){
+      const out={}; valid.forEach(p=>{out[p]=0});
+      const quo=[];
+      valid.forEach(p=>{
+        for(let i=1;i<=total;i++){
+          const div=SEAT_METHOD==='dhondt'?i
+            :(SEAT_METHOD==='sainte_lague_standard'?(2*i-1):(i===1?1.2:2*i-1));
+          quo.push([(votes[p]||0)/div,p]);
+        }
+      });
+      quo.sort((a,b)=>b[0]-a[0]);
+      for(let i=0;i<total&&i<quo.length;i++) out[quo[i][1]]++;
+      return out;
+    }
     const totalVotes=valid.reduce((a,p)=>a+(votes[p]||0),0);
     const quota=totalVotes/total;
     const out={}; const rems=[]; let given=0;
@@ -1305,16 +1323,26 @@ function overhangSeats(votes, totalBase, direct, cap){
     for(let i=0;i<left&&i<rems.length;i++) out[rems[i][1]]++;
     return out;
   };
+  if(OVERHANG&&OVERHANG.fixed){
+    // Fixed overhang (New Zealand): allocate the base house, then a party that
+    // won more electorates than its entitlement keeps all of them; the house
+    // grows by the overhang and the other parties keep their base seats. The
+    // iterative leveling loop below cannot converge for a party far below the
+    // threshold holding many electorates (Te Pati Maori at 1.8% with 6).
+    const seats=baseAlloc(totalBase);
+    PARTY_ORDER.forEach(p=>{if(seats[p]<(direct[p]||0)) seats[p]=direct[p]||0});
+    return seats;
+  }
   let total=totalBase;
   for(let it=0;it<200;it++){
-    const seats=hare(total);
+    const seats=baseAlloc(total);
     let deficit=0;
     PARTY_ORDER.forEach(p=>{const d=direct[p]||0; if(seats[p]<d) deficit+=d-seats[p]});
     if(deficit<=0) return seats;
     if(total===cap) break;
     total=Math.min(total+deficit,cap);
   }
-  const s=hare(total);
+  const s=baseAlloc(total);
   PARTY_ORDER.forEach(p=>{if(s[p]<(direct[p]||0)) s[p]=direct[p]||0});
   return s;
 }
@@ -1328,8 +1356,9 @@ function directMandateSplit(avg){
   const c=COUNTRIES[COUNTRY];
   // German 2025 rule only: Italy's Rosatellum keeps its FPTP seats separate
   // (mixedFptp) and pure-FPTP countries (BC/Quebec) have no proportional pool
-  // to seat the direct mandates within.
-  if(!c||CONSTITUENCY_RULE!=='fptp'||c.mixedFptp||
+  // to seat the direct mandates within. Countries with leveling seats (New
+  // Zealand's overhang) use the overhang parliament instead.
+  if(!c||CONSTITUENCY_RULE!=='fptp'||c.mixedFptp||OVERHANG||
      SEAT_METHOD!=='sainte_lague_standard') return null;
   const conf=(c.map2&&c.map2.useConstituencies)
     ?{...c,...c.map,...c.map2}:MAP_CONF();
@@ -1337,7 +1366,7 @@ function directMandateSplit(avg){
   const direct={};
   PARTY_ORDER.forEach(p=>{direct[p]=0});
   for(const nr of Object.keys(conf.districts)){
-    const w=districtWinnerProjection(parseInt(nr,10),avg,conf);
+    const w=districtWinnerProjection(nr,avg,conf);
     if(w) direct[w]=(direct[w]||0)+1;
   }
   const seats=allocateSeatsTotal(avg,SEATS_TOTAL);
@@ -2243,6 +2272,10 @@ function allocateSeatsFptp(avg, regionNoise){
 // Seat allocation for a projection: per-okręg D'Hondt when the country defines
 // seatDistricts (Poland), else the national-district allocation.
 function allocateSeatsTotal(avg, total){
+  // leveling-seat parliaments (NZ's overhang, the German states) route
+  // through the growing-house allocator; the direct mandates are counted from
+  // the map's districts
+  if(OVERHANG) return overhangSeats(avg, total, directFromProjection(avg), OVERHANG.cap);
   return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,total);
 }
 

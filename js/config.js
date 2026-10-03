@@ -37922,6 +37922,639 @@ saxony_anhalt: {
       apni: 'img/uk/APNI.svg', uup: 'img/uk/UUP.svg', tuv: 'img/uk/TUV.svg',
     },
   },
+
+  nz: {
+    name: 'New Zealand',
+    seats: 120,
+    threshold: 5.0,               // 5% or one electorate (MMP)
+    method: 'sainte_lague_standard', // Sainte-Lague/Schepers, national party vote
+    seatBased: false,             // polls report party-vote shares (%)
+    constituencies: true,         // the map is the 72 electorates
+    constituencyRule: 'fptp',     // 72 electorate seats (64 general + 7 Maori)
+    hideBlocs: true,
+    hideConstituencyTable: true,
+    recencyHalfLifeDays: 14,
+    // trend extrapolation to the 2026-11-07 election: fresh campaign polls
+    // (weekly trackers); momentum is a nudge, not the driver
+    trend: {
+      electionDate: '2026-11-07',
+      blend: 0.4,
+      maxDaily: 0.15,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+      dampDays: 10,
+    },
+    // colours from the en.wikipedia party infoboxes
+    parties: {
+      nat: { code: 'NAT', name: 'New Zealand National Party', name_en: 'New Zealand National Party', color: '#00529F' },
+      lab: { code: 'LAB', name: 'New Zealand Labour Party',   name_en: 'New Zealand Labour Party',   color: '#D82A20' },
+      grn: { code: 'GRN', name: 'Green Party of Aotearoa New Zealand', name_en: 'Green Party of Aotearoa New Zealand', color: '#098137' },
+      act: { code: 'ACT', name: 'ACT New Zealand',            name_en: 'ACT New Zealand',            color: '#FDE401' },
+      nzf: { code: 'NZF', name: 'New Zealand First',          name_en: 'New Zealand First',          color: '#000000' },
+      tpm: { code: 'TPM', name: 'Te Pati Maori',              name_en: 'Te Pati Maori',              color: '#B2001A' },
+      opp: { code: 'TOP', name: 'The Opportunities Party',    name_en: 'The Opportunities Party',    color: '#00EDE1' },
+    },
+    order: ['nat', 'lab', 'grn', 'act', 'nzf', 'tpm', 'opp'],
+    parlOrder: ['grn', 'tpm', 'lab', 'opp', 'nat', 'act', 'nzf'],
+    // right bloc (2023 government) vs the left bloc; the sim's correlated
+    // swing moves the two blocs in opposite directions
+    blocs: {
+      bloc1: { name: 'National-ACT-NZ First', short: 'RIGHT', parties: ['nat', 'act', 'nzf'], color: '#00529F' },
+      bloc2: { name: 'Labour-Green-Maori', short: 'LEFT', parties: ['lab', 'grn', 'tpm', 'opp'], color: '#D82A20' },
+    },
+    // leveling seats: Te Pati Maori's overhang grows the house past 120
+    // (fixed: the overhang is computed on the 120-seat house, as in the
+    // Electoral Act, not iteratively like the German leveling states)
+    overhang: { cap: 125, rows: 10, fixed: true },
+    lastElection: {
+      date: '2023-10-14',
+      // 2023 general election (official): party vote and seats (122 total)
+      results: {
+              "nat": 38.07,
+              "lab": 26.91,
+              "grn": 11.64,
+              "act": 8.64,
+              "nzf": 6.07,
+              "tpm": 3.08,
+              "opp": 2.24
+      },
+      seats: {
+              "nat": 48,
+              "lab": 34,
+              "grn": 15,
+              "act": 11,
+              "nzf": 8,
+              "tpm": 6
+      },
+    },
+    map: {
+      svg: 'img/nz.svg',
+      selector: 'id',
+      useConstituencies: true,
+      hideBlocToggle: true,
+      // Maori electorates hold their 2023 winners: they are decided by the
+      // candidate vote, not the party-vote swing
+      holdSeats: {
+              "hauraki-waikato": "tpm",
+              "ikaroa-rwhiti": "lab",
+              "tmakimakaurau": "tpm",
+              "tetaihauuru": "tpm",
+              "tetaitokerau": "tpm",
+              "tetaitonga": "tpm",
+              "waiariki": "tpm"
+      },
+      districts: {
+              "aucklandcentral": "aucklandcentral",
+              "bankspeninsula": "bankspeninsula",
+              "bayofplenty": "bayofplenty",
+              "botany": "botany",
+              "christchurchcentral": "christchurchcentral",
+              "christchurcheast": "christchurcheast",
+              "coromandel": "coromandel",
+              "dunedin": "dunedin",
+              "eastcoast": "eastcoast",
+              "eastcoastbays": "eastcoastbays",
+              "epsom": "epsom",
+              "hamiltoneast": "hamiltoneast",
+              "hamiltonwest": "hamiltonwest",
+              "hauraki-waikato": "hauraki-waikato",
+              "huttsouth": "huttsouth",
+              "ikaroa-rwhiti": "ikaroa-rwhiti",
+              "ilam": "ilam",
+              "invercargill": "invercargill",
+              "kaikura": "kaikura",
+              "kaiparakimahurangi": "kaiparakimahurangi",
+              "kelston": "kelston",
+              "mana": "mana",
+              "manurewa": "manurewa",
+              "maungakiekie": "maungakiekie",
+              "mtalbert": "mtalbert",
+              "mtroskill": "mtroskill",
+              "mngere": "mngere",
+              "napier": "napier",
+              "nelson": "nelson",
+              "newlynn": "newlynn",
+              "newplymouth": "newplymouth",
+              "northshore": "northshore",
+              "northcote": "northcote",
+              "northland": "northland",
+              "pakuranga": "pakuranga",
+              "palmerstonnorth": "palmerstonnorth",
+              "panmure-thuhu": "panmure-thuhu",
+              "papakura": "papakura",
+              "portwaikato": "portwaikato",
+              "rangitata": "rangitata",
+              "rangitkei": "rangitkei",
+              "remutaka": "remutaka",
+              "rongotai": "rongotai",
+              "rotorua": "rotorua",
+              "selwyn": "selwyn",
+              "southland": "southland",
+              "taieri": "taieri",
+              "takanini": "takanini",
+              "taranaki-kingcountry": "taranaki-kingcountry",
+              "taup": "taup",
+              "tauranga": "tauranga",
+              "teatat": "teatat",
+              "tetaihauuru": "tetaihauuru",
+              "tetaitokerau": "tetaitokerau",
+              "tetaitonga": "tetaitonga",
+              "tukituki": "tukituki",
+              "tmaki": "tmaki",
+              "tmakimakaurau": "tmakimakaurau",
+              "upperharbour": "upperharbour",
+              "waiariki": "waiariki",
+              "waikato": "waikato",
+              "waimakariri": "waimakariri",
+              "wairarapa": "wairarapa",
+              "waitaki": "waitaki",
+              "wellingtoncentral": "wellingtoncentral",
+              "westcoast-tasman": "westcoast-tasman",
+              "whanganui": "whanganui",
+              "whangaparoa": "whangaparoa",
+              "whangrei": "whangrei",
+              "wigram": "wigram",
+              "hriu": "hriu",
+              "taki": "taki"
+      },
+      // 2023 candidate-vote shares per electorate (electorate winner metric)
+      gebiete: {
+              "aucklandcentral": {
+                      "grn": 47.84,
+                      "nat": 36.63,
+                      "lab": 7.5,
+                      "act": 3.55,
+                      "opp": 1.33
+              },
+              "bankspeninsula": {
+                      "nat": 36.54,
+                      "lab": 35.69,
+                      "grn": 17.02,
+                      "act": 4.24,
+                      "nzf": 3.27
+              },
+              "bayofplenty": {
+                      "nat": 51.64,
+                      "lab": 17.5,
+                      "act": 9.31,
+                      "grn": 8.94,
+                      "nzf": 8.02
+              },
+              "botany": {
+                      "nat": 66.57,
+                      "lab": 22.66,
+                      "act": 5.26
+              },
+              "christchurchcentral": {
+                      "lab": 39.68,
+                      "nat": 34.98,
+                      "grn": 13.88,
+                      "nzf": 3.98,
+                      "act": 3.55
+              },
+              "christchurcheast": {
+                      "lab": 39.07,
+                      "nat": 32.89,
+                      "grn": 11.83,
+                      "nzf": 5.23,
+                      "act": 4.32
+              },
+              "coromandel": {
+                      "nat": 53.31,
+                      "lab": 16.9,
+                      "grn": 10.57,
+                      "act": 5.83,
+                      "nzf": 6.73
+              },
+              "dunedin": {
+                      "lab": 40.61,
+                      "nat": 21.67,
+                      "grn": 19.06,
+                      "opp": 4.48,
+                      "act": 4.02,
+                      "nzf": 3.09
+              },
+              "eastcoast": {
+                      "nat": 42.57,
+                      "lab": 34.56,
+                      "nzf": 6.3,
+                      "act": 4.81,
+                      "grn": 4.42,
+                      "tpm": 3.09
+              },
+              "eastcoastbays": {
+                      "nat": 71.52,
+                      "lab": 18.94,
+                      "act": 4.09
+              },
+              "epsom": {
+                      "act": 44.43,
+                      "nat": 24.14,
+                      "lab": 15.42,
+                      "grn": 8.81,
+                      "opp": 4.49,
+                      "nzf": 1.42
+              },
+              "hamiltoneast": {
+                      "nat": 47.79,
+                      "lab": 34.32,
+                      "act": 4.47,
+                      "tpm": 3.27,
+                      "nzf": 3.21,
+                      "opp": 3.18
+              },
+              "hamiltonwest": {
+                      "nat": 46.04,
+                      "lab": 29.06,
+                      "grn": 8.45,
+                      "act": 5.79,
+                      "nzf": 4.54,
+                      "opp": 2.74
+              },
+              "hauraki-waikato": {
+                      "tpm": 51.63,
+                      "lab": 40.01
+              },
+              "huttsouth": {
+                      "nat": 44.37,
+                      "lab": 41.28,
+                      "grn": 5.78,
+                      "nzf": 2.85,
+                      "opp": 2.27,
+                      "act": 1.29
+              },
+              "ikaroa-rwhiti": {
+                      "lab": 52.63,
+                      "tpm": 41.63
+              },
+              "ilam": {
+                      "nat": 44.01,
+                      "opp": 25.57,
+                      "lab": 21.21,
+                      "grn": 5.63
+              },
+              "invercargill": {
+                      "nat": 55.61,
+                      "lab": 29.23,
+                      "act": 5.31
+              },
+              "kaikura": {
+                      "nat": 49.47,
+                      "lab": 22.25,
+                      "nzf": 10.37,
+                      "act": 6.26,
+                      "grn": 5.99
+              },
+              "kaiparakimahurangi": {
+                      "nat": 57.6,
+                      "lab": 17.96,
+                      "grn": 9.65,
+                      "act": 6.04,
+                      "nzf": 5.15
+              },
+              "kelston": {
+                      "lab": 43.71,
+                      "nat": 30.38,
+                      "grn": 11.45,
+                      "act": 5.38,
+                      "nzf": 3.46,
+                      "tpm": 2.05
+              },
+              "mana": {
+                      "lab": 48.56,
+                      "nat": 30.83,
+                      "grn": 10.09,
+                      "nzf": 4.44,
+                      "act": 2.87
+              },
+              "manurewa": {
+                      "lab": 55.95,
+                      "nat": 31.47,
+                      "tpm": 5.51
+              },
+              "maungakiekie": {
+                      "nat": 47.7,
+                      "lab": 34.71,
+                      "grn": 8.83,
+                      "act": 3.63,
+                      "nzf": 2.58
+              },
+              "mtalbert": {
+                      "lab": 33.73,
+                      "nat": 33.68,
+                      "grn": 23.69,
+                      "act": 3.78,
+                      "opp": 3.36
+              },
+              "mtroskill": {
+                      "nat": 43.3,
+                      "lab": 38.97,
+                      "grn": 9.34,
+                      "act": 6.03
+              },
+              "mngere": {
+                      "lab": 59.61,
+                      "nat": 19.24,
+                      "grn": 9.3,
+                      "tpm": 3.21,
+                      "act": 2.3
+              },
+              "napier": {
+                      "nat": 52.83,
+                      "lab": 30.88,
+                      "grn": 5.42,
+                      "nzf": 4.28,
+                      "act": 3.0
+              },
+              "nelson": {
+                      "lab": 41.11,
+                      "nat": 41.05,
+                      "grn": 6.54,
+                      "act": 6.31
+              },
+              "newlynn": {
+                      "nat": 39.22,
+                      "lab": 36.72,
+                      "grn": 13.27,
+                      "act": 5.68
+              },
+              "newplymouth": {
+                      "nat": 52.31,
+                      "lab": 36.04,
+                      "act": 4.55
+              },
+              "northshore": {
+                      "nat": 60.76,
+                      "lab": 20.9,
+                      "grn": 8.94,
+                      "act": 5.03,
+                      "opp": 3.0
+              },
+              "northcote": {
+                      "nat": 54.32,
+                      "lab": 30.18,
+                      "grn": 8.72,
+                      "nzf": 2.74,
+                      "act": 2.51
+              },
+              "northland": {
+                      "nat": 35.63,
+                      "lab": 22.3,
+                      "nzf": 17.83,
+                      "grn": 5.31,
+                      "act": 4.67
+              },
+              "pakuranga": {
+                      "nat": 71.39,
+                      "lab": 20.22,
+                      "act": 3.54
+              },
+              "palmerstonnorth": {
+                      "lab": 43.06,
+                      "nat": 34.39,
+                      "grn": 8.87,
+                      "act": 7.97
+              },
+              "panmure-thuhu": {
+                      "lab": 51.56,
+                      "nat": 24.8,
+                      "grn": 14.47,
+                      "act": 4.15
+              },
+              "papakura": {
+                      "nat": 57.79,
+                      "lab": 25.38,
+                      "act": 7.48,
+                      "nzf": 4.14
+              },
+              "portwaikato": {
+                      "nat": 76.33,
+                      "nzf": 15.29
+              },
+              "rangitata": {
+                      "nat": 56.33,
+                      "lab": 29.52,
+                      "nzf": 5.34,
+                      "grn": 4.41
+              },
+              "rangitkei": {
+                      "nat": 46.33,
+                      "lab": 22.4,
+                      "act": 14.46,
+                      "nzf": 7.74,
+                      "grn": 7.71
+              },
+              "remutaka": {
+                      "lab": 53.58,
+                      "nat": 32.34,
+                      "grn": 6.7,
+                      "act": 3.02
+              },
+              "rongotai": {
+                      "grn": 39.03,
+                      "lab": 32.64,
+                      "nat": 20.7,
+                      "act": 2.77,
+                      "nzf": 2.02
+              },
+              "rotorua": {
+                      "nat": 52.95,
+                      "lab": 28.52,
+                      "tpm": 7.48,
+                      "act": 4.74
+              },
+              "selwyn": {
+                      "nat": 65.42,
+                      "lab": 24.34,
+                      "act": 5.86
+              },
+              "southland": {
+                      "nat": 58.89,
+                      "lab": 15.26,
+                      "grn": 9.78,
+                      "act": 7.11
+              },
+              "taieri": {
+                      "lab": 39.39,
+                      "nat": 35.96,
+                      "grn": 9.26,
+                      "nzf": 7.29,
+                      "act": 4.03
+              },
+              "takanini": {
+                      "nat": 55.95,
+                      "lab": 33.57,
+                      "act": 5.2
+              },
+              "taranaki-kingcountry": {
+                      "nat": 67.75,
+                      "lab": 25.67
+              },
+              "taup": {
+                      "nat": 57.13,
+                      "lab": 19.2,
+                      "grn": 7.9,
+                      "act": 6.45,
+                      "nzf": 4.85
+              },
+              "tauranga": {
+                      "nat": 45.68,
+                      "lab": 23.13,
+                      "act": 9.12,
+                      "nzf": 8.19,
+                      "grn": 6.56,
+                      "tpm": 1.47
+              },
+              "teatat": {
+                      "lab": 38.55,
+                      "nat": 38.2,
+                      "grn": 9.54,
+                      "act": 6.8,
+                      "tpm": 3.42
+              },
+              "tetaihauuru": {
+                      "tpm": 62.31,
+                      "lab": 27.26,
+                      "nat": 5.41
+              },
+              "tetaitokerau": {
+                      "tpm": 37.55,
+                      "lab": 35.69,
+                      "grn": 15.08
+              },
+              "tetaitonga": {
+                      "tpm": 46.8,
+                      "lab": 36.49
+              },
+              "tukituki": {
+                      "nat": 53.5,
+                      "lab": 28.9,
+                      "grn": 5.8,
+                      "act": 4.9
+              },
+              "tmaki": {
+                      "act": 43.19,
+                      "nat": 33.13,
+                      "lab": 21.69
+              },
+              "tmakimakaurau": {
+                      "tpm": 39.32,
+                      "lab": 39.15,
+                      "grn": 11.42,
+                      "nat": 4.97
+              },
+              "upperharbour": {
+                      "nat": 52.73,
+                      "lab": 25.28,
+                      "grn": 7.4,
+                      "act": 5.67,
+                      "nzf": 3.26,
+                      "opp": 2.72
+              },
+              "waiariki": {
+                      "tpm": 74.24,
+                      "lab": 19.36
+              },
+              "waikato": {
+                      "nat": 64.43,
+                      "lab": 20.88,
+                      "nzf": 8.42,
+                      "opp": 3.63
+              },
+              "waimakariri": {
+                      "nat": 57.66,
+                      "lab": 29.69,
+                      "act": 4.44
+              },
+              "wairarapa": {
+                      "nat": 46.11,
+                      "lab": 39.72,
+                      "act": 4.32,
+                      "grn": 4.15,
+                      "tpm": 1.17
+              },
+              "waitaki": {
+                      "nat": 51.23,
+                      "lab": 23.77,
+                      "grn": 7.9,
+                      "act": 5.6,
+                      "nzf": 4.12
+              },
+              "wellingtoncentral": {
+                      "grn": 40.56,
+                      "lab": 27.22,
+                      "nat": 25.42,
+                      "opp": 3.42,
+                      "nzf": 1.08
+              },
+              "westcoast-tasman": {
+                      "nat": 32.01,
+                      "lab": 29.57,
+                      "grn": 6.59,
+                      "act": 6.05,
+                      "nzf": 4.32
+              },
+              "whanganui": {
+                      "nat": 47.1,
+                      "lab": 33.05,
+                      "nzf": 7.99,
+                      "grn": 5.22,
+                      "act": 4.28
+              },
+              "whangaparoa": {
+                      "nat": 66.45,
+                      "lab": 15.92,
+                      "grn": 7.53,
+                      "act": 5.45
+              },
+              "whangrei": {
+                      "nat": 48.77,
+                      "lab": 22.04,
+                      "nzf": 12.56,
+                      "grn": 6.27,
+                      "act": 2.85,
+                      "tpm": 2.01
+              },
+              "wigram": {
+                      "lab": 41.43,
+                      "nat": 38.3,
+                      "grn": 10.05,
+                      "act": 4.04
+              },
+              "hriu": {
+                      "lab": 41.15,
+                      "nat": 38.2,
+                      "grn": 10.33,
+                      "opp": 6.97,
+                      "act": 1.77
+              },
+              "taki": {
+                      "nat": 50.23,
+                      "lab": 36.01,
+                      "grn": 6.68,
+                      "act": 3.01
+              }
+      },
+      // national baseline for the swing (= 2023 party vote, the poll metric)
+      national2021: {
+              "nat": 38.07,
+              "lab": 26.91,
+              "grn": 11.64,
+              "act": 8.64,
+              "nzf": 6.07,
+              "tpm": 3.08,
+              "opp": 2.24
+      },
+    },
+    pollsterMAE: {},
+    maeKey: 'NZ2023',
+    logos: {
+      nat: 'img/nz/NAT.svg', lab: 'img/nz/LAB.svg', grn: 'img/nz/GRN.svg',
+      act: 'img/nz/ACT.svg', nzf: 'img/nz/NZF.svg', tpm: 'img/nz/TPM.svg',
+      opp: 'img/nz/OPP.svg',
+    },
+  },
 };
 
 // ===== Active country (switched at runtime) =====

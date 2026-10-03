@@ -2,11 +2,11 @@
   "country": "greece",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
-  "scraped_at": "2026-10-03T09:10:05Z",
+  "scraped_at": "2026-10-03T09:32:54Z",
   "poll_count": 324,
   "polls": [
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-09-28",
       "n": 4928,
       "country": "greece",
@@ -29,7 +29,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2026-09-22",
       "n": 1307,
       "country": "greece",
@@ -51,7 +51,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2026-09-21",
       "n": 1554,
       "country": "greece",
@@ -75,7 +75,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2026-09-19",
       "n": 1000,
       "country": "greece",
@@ -97,7 +97,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ TheOpinion",
+      "pollster": "Palmos Analysis/TheOpinion",
       "date": "2026-09-18",
       "n": 1021,
       "country": "greece",
@@ -121,7 +121,7 @@
       }
     },
     {
-      "pollster": "MRB/ Open",
+      "pollster": "MRB/Open",
       "date": "2026-09-16",
       "n": 1000,
       "country": "greece",
@@ -142,7 +142,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2026-09-16",
       "n": 1000,
       "country": "greece",
@@ -164,7 +164,7 @@
       }
     },
     {
-      "pollster": "Marc/ Ant1",
+      "pollster": "Marc/Ant1",
       "date": "2026-09-16",
       "n": 1272,
       "country": "greece",
@@ -187,7 +187,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-09-15",
       "n": 1106,
       "country": "greece",
@@ -207,7 +207,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2026-09-15",
       "n": 1008,
       "country": "greece",
@@ -231,7 +231,7 @@
       }
     },
     {
-      "pollster": "Prorata/ EfSyn",
+      "pollster": "Prorata/EfSyn",
       "date": "2026-09-10",
       "n": 1100,
       "country": "greece",
@@ -254,7 +254,7 @@
       }
     },
     {
-      "pollster": "GPO/ Star",
+      "pollster": "GPO/Star",
       "date": "2026-09-08",
       "n": 1200,
       "country": "greece",
@@ -276,7 +276,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-09-01",
       "n": 4082,
       "country": "greece",
@@ -299,7 +299,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-08-24",
       "n": 4082,
       "country": "greece",
@@ -322,7 +322,7 @@
       }
     },
     {
-      "pollster": "Marc/ ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2026-07-23",
       "n": 1178,
       "country": "greece",
@@ -346,7 +346,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-07-20",
       "n": 3419,
       "country": "greece",
@@ -369,7 +369,7 @@
       }
     },
     {
-      "pollster": "GPO/ iefimerida",
+      "pollster": "GPO/iefimerida",
       "date": "2026-07-09",
       "n": 1000,
       "country": "greece",
@@ -390,7 +390,7 @@
       }
     },
     {
-      "pollster": "Alco/ Efsyn",
+      "pollster": "Alco/Efsyn",
       "date": "2026-07-09",
       "n": 1000,
       "country": "greece",
@@ -412,7 +412,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-07-07",
       "n": 1126,
       "country": "greece",
@@ -434,7 +434,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-07-06",
       "n": 4564,
       "country": "greece",
@@ -457,7 +457,7 @@
       }
     },
     {
-      "pollster": "Prorata/ Efsyn",
+      "pollster": "Prorata/EfSyn",
       "date": "2026-07-03",
       "n": 1200,
       "country": "greece",
@@ -480,7 +480,7 @@
       }
     },
     {
-      "pollster": "MRB/ Open",
+      "pollster": "MRB/Open",
       "date": "2026-07-03",
       "n": 2000,
       "country": "greece",
@@ -501,7 +501,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2026-06-30",
       "n": 1304,
       "country": "greece",
@@ -523,7 +523,7 @@
       }
     },
     {
-      "pollster": "Marc/ Ant1",
+      "pollster": "Marc/Ant1",
       "date": "2026-06-28",
       "n": 1239,
       "country": "greece",
@@ -547,7 +547,7 @@
       }
     },
     {
-      "pollster": "Alco/ Flash",
+      "pollster": "Alco/Flash",
       "date": "2026-06-26",
       "n": 1000,
       "country": "greece",
@@ -569,7 +569,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2026-06-24",
       "n": 1000,
       "country": "greece",
@@ -590,7 +590,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2026-06-22",
       "n": 1537,
       "country": "greece",
@@ -614,7 +614,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-06-22",
       "n": 3419,
       "country": "greece",
@@ -637,7 +637,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2026-06-13",
       "n": 1000,
       "country": "greece",
@@ -659,7 +659,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-06-08",
       "n": 4068,
       "country": "greece",
@@ -682,7 +682,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ Eleftheros Typos",
+      "pollster": "Palmos Analysis/Eleftheros Typos",
       "date": "2026-06-05",
       "n": 1008,
       "country": "greece",
@@ -706,7 +706,7 @@
       }
     },
     {
-      "pollster": "Marc/ ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2026-06-04",
       "n": 1564,
       "country": "greece",
@@ -730,7 +730,7 @@
       }
     },
     {
-      "pollster": "Prorata/ EfSyn",
+      "pollster": "Prorata/EfSyn",
       "date": "2026-06-03",
       "n": 1200,
       "country": "greece",
@@ -753,7 +753,7 @@
       }
     },
     {
-      "pollster": "GPO/ Star",
+      "pollster": "GPO/Star",
       "date": "2026-06-02",
       "n": 1200,
       "country": "greece",
@@ -774,7 +774,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2026-06-02",
       "n": 1300,
       "country": "greece",
@@ -795,7 +795,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-05-31",
       "n": 1108,
       "country": "greece",
@@ -817,7 +817,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2026-05-29",
       "n": 1005,
       "country": "greece",
@@ -841,7 +841,7 @@
       }
     },
     {
-      "pollster": "Alco/ Flash",
+      "pollster": "Alco/Flash",
       "date": "2026-05-28",
       "n": 1000,
       "country": "greece",
@@ -863,7 +863,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2026-05-25",
       "n": 1667,
       "country": "greece",
@@ -887,7 +887,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-05-25",
       "n": 3178,
       "country": "greece",
@@ -910,7 +910,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-05-11",
       "n": 4263,
       "country": "greece",
@@ -933,7 +933,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2026-05-09",
       "n": 1001,
       "country": "greece",
@@ -954,7 +954,7 @@
       }
     },
     {
-      "pollster": "MRB/ Open",
+      "pollster": "MRB/Open",
       "date": "2026-05-06",
       "n": 1000,
       "country": "greece",
@@ -975,7 +975,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-05-05",
       "n": 1059,
       "country": "greece",
@@ -997,7 +997,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2026-04-30",
       "n": 1005,
       "country": "greece",
@@ -1043,7 +1043,7 @@
       }
     },
     {
-      "pollster": "Marc/ ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2026-04-28",
       "n": 1141,
       "country": "greece",
@@ -1065,7 +1065,7 @@
       }
     },
     {
-      "pollster": "Prorata/ efsyn",
+      "pollster": "Prorata/EfSyn",
       "date": "2026-04-28",
       "n": 1100,
       "country": "greece",
@@ -1086,7 +1086,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2026-04-27",
       "n": 1300,
       "country": "greece",
@@ -1107,7 +1107,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2026-04-23",
       "n": 1000,
       "country": "greece",
@@ -1128,7 +1128,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2026-04-20",
       "n": 1631,
       "country": "greece",
@@ -1150,7 +1150,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-04-20",
       "n": 4428,
       "country": "greece",
@@ -1172,7 +1172,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-04-06",
       "n": 3076,
       "country": "greece",
@@ -1193,7 +1193,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2026-04-04",
       "n": 1000,
       "country": "greece",
@@ -1214,7 +1214,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-03-31",
       "n": 1018,
       "country": "greece",
@@ -1236,7 +1236,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ TheOpinion",
+      "pollster": "Palmos Analysis/TheOpinion",
       "date": "2026-03-31",
       "n": 1004,
       "country": "greece",
@@ -1258,7 +1258,7 @@
       }
     },
     {
-      "pollster": "GPO/ Star",
+      "pollster": "GPO/Star",
       "date": "2026-03-30",
       "n": 1200,
       "country": "greece",
@@ -1279,7 +1279,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-03-22",
       "n": 3167,
       "country": "greece",
@@ -1300,7 +1300,7 @@
       }
     },
     {
-      "pollster": "GPO/ iefimerida",
+      "pollster": "GPO/iefimerida",
       "date": "2026-03-20",
       "n": 1000,
       "country": "greece",
@@ -1321,7 +1321,7 @@
       }
     },
     {
-      "pollster": "MRB/ Open",
+      "pollster": "MRB/Open",
       "date": "2026-03-18",
       "n": 1000,
       "country": "greece",
@@ -1342,7 +1342,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2026-03-17",
       "n": 1311,
       "country": "greece",
@@ -1363,7 +1363,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2026-03-10",
       "n": 1613,
       "country": "greece",
@@ -1385,7 +1385,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-03-10",
       "n": 1056,
       "country": "greece",
@@ -1406,7 +1406,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-03-09",
       "n": 3175,
       "country": "greece",
@@ -1427,7 +1427,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2026-03-07",
       "n": 1000,
       "country": "greece",
@@ -1448,7 +1448,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2026-03-06",
       "n": 1004,
       "country": "greece",
@@ -1470,7 +1470,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-02-23",
       "n": 3519,
       "country": "greece",
@@ -1491,7 +1491,7 @@
       }
     },
     {
-      "pollster": "Marc/ ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2026-02-18",
       "n": 1314,
       "country": "greece",
@@ -1513,7 +1513,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2026-02-17",
       "n": 1311,
       "country": "greece",
@@ -1535,7 +1535,7 @@
       }
     },
     {
-      "pollster": "GPO/ iefimerida",
+      "pollster": "GPO/iefimerida",
       "date": "2026-02-14",
       "n": 1000,
       "country": "greece",
@@ -1556,7 +1556,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2026-02-09",
       "n": 1715,
       "country": "greece",
@@ -1578,7 +1578,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2026-02-09",
       "n": 3387,
       "country": "greece",
@@ -1599,7 +1599,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2026-01-31",
       "n": 1000,
       "country": "greece",
@@ -1620,7 +1620,7 @@
       }
     },
     {
-      "pollster": "MRB/ Open",
+      "pollster": "MRB/Open",
       "date": "2026-01-28",
       "n": 1000,
       "country": "greece",
@@ -1641,7 +1641,7 @@
       }
     },
     {
-      "pollster": "GPO/ Star",
+      "pollster": "GPO/Star",
       "date": "2026-01-27",
       "n": 1200,
       "country": "greece",
@@ -1662,7 +1662,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2026-01-26",
       "n": 3129,
       "country": "greece",
@@ -1705,7 +1705,7 @@
       }
     },
     {
-      "pollster": "Pulse/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2026-01-19",
       "n": 1123,
       "country": "greece",
@@ -1792,7 +1792,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2026-01-12",
       "n": 1709,
       "country": "greece",
@@ -1813,7 +1813,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ Eleftheros Typos",
+      "pollster": "Palmos Analysis/Eleftheros Typos",
       "date": "2025-12-29",
       "n": 1043,
       "country": "greece",
@@ -1900,7 +1900,7 @@
       }
     },
     {
-      "pollster": "Pulse/Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2025-12-14",
       "n": 1102,
       "country": "greece",
@@ -2007,7 +2007,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-12-08",
       "n": 3452,
       "country": "greece",
@@ -2049,7 +2049,7 @@
       }
     },
     {
-      "pollster": "Marc/ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2025-11-26",
       "n": 1252,
       "country": "greece",
@@ -2113,7 +2113,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ Eleftheros Typos",
+      "pollster": "Palmos Analysis/Eleftheros Typos",
       "date": "2025-11-19",
       "n": 1030,
       "country": "greece",
@@ -2135,7 +2135,7 @@
       }
     },
     {
-      "pollster": "Pulse/Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2025-11-18",
       "n": 1105,
       "country": "greece",
@@ -2178,7 +2178,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2025-11-18",
       "n": 1313,
       "country": "greece",
@@ -2200,7 +2200,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2025-11-11",
       "n": 1066,
       "country": "greece",
@@ -2222,7 +2222,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2025-11-10",
       "n": 1765,
       "country": "greece",
@@ -2244,7 +2244,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-11-10",
       "n": 3065,
       "country": "greece",
@@ -2307,7 +2307,7 @@
       }
     },
     {
-      "pollster": "Pulse/Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2025-10-20",
       "n": 1112,
       "country": "greece",
@@ -2436,7 +2436,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-10-08",
       "n": 3282,
       "country": "greece",
@@ -2520,7 +2520,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ TheOpinion",
+      "pollster": "Palmos Analysis/TheOpinion",
       "date": "2025-09-19",
       "n": 1058,
       "country": "greece",
@@ -2584,7 +2584,7 @@
       }
     },
     {
-      "pollster": "Pulse/Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2025-09-16",
       "n": 1129,
       "country": "greece",
@@ -2693,7 +2693,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-09-10",
       "n": 3432,
       "country": "greece",
@@ -2821,7 +2821,7 @@
       }
     },
     {
-      "pollster": "Pulse/Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2025-07-01",
       "n": 1212,
       "country": "greece",
@@ -2843,7 +2843,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2025-06-24",
       "n": 1000,
       "country": "greece",
@@ -2865,7 +2865,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2025-06-23",
       "n": 1915,
       "country": "greece",
@@ -2907,7 +2907,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2025-06-16",
       "n": 1702,
       "country": "greece",
@@ -2929,7 +2929,7 @@
       }
     },
     {
-      "pollster": "Alco/ Alpha",
+      "pollster": "Alco/Alpha",
       "date": "2025-06-14",
       "n": 1001,
       "country": "greece",
@@ -2950,7 +2950,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2025-06-13",
       "n": 1000,
       "country": "greece",
@@ -2971,7 +2971,7 @@
       }
     },
     {
-      "pollster": "Interview/ Political",
+      "pollster": "Interview/Politic",
       "date": "2025-06-09",
       "n": 1825,
       "country": "greece",
@@ -2993,7 +2993,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Libre",
+      "pollster": "Opinion Poll/Libre",
       "date": "2025-06-05",
       "n": 1002,
       "country": "greece",
@@ -3078,7 +3078,7 @@
       }
     },
     {
-      "pollster": "Pulse RC/ Skai",
+      "pollster": "Pulse RC/Skai",
       "date": "2025-05-27",
       "n": 1170,
       "country": "greece",
@@ -3100,7 +3100,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2025-05-26",
       "n": 1905,
       "country": "greece",
@@ -3122,7 +3122,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2025-05-21",
       "n": 1001,
       "country": "greece",
@@ -3166,7 +3166,7 @@
       }
     },
     {
-      "pollster": "Marc/ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2025-05-15",
       "n": 1103,
       "country": "greece",
@@ -3210,7 +3210,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-05-11",
       "n": 1805,
       "country": "greece",
@@ -3253,7 +3253,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2025-05-02",
       "n": 1003,
       "country": "greece",
@@ -3360,7 +3360,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-04-08",
       "n": 1515,
       "country": "greece",
@@ -3382,7 +3382,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2025-04-08",
       "n": 1300,
       "country": "greece",
@@ -3555,7 +3555,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2025-03-18",
       "n": 1003,
       "country": "greece",
@@ -3577,7 +3577,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2025-03-18",
       "n": 1309,
       "country": "greece",
@@ -3620,7 +3620,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-03-12",
       "n": 2195,
       "country": "greece",
@@ -3815,7 +3815,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2025-02-18",
       "n": 1301,
       "country": "greece",
@@ -3880,7 +3880,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Protagon",
+      "pollster": "Real Polls/Protagon",
       "date": "2025-02-06",
       "n": 1617,
       "country": "greece",
@@ -3902,7 +3902,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2025-01-31",
       "n": 1000,
       "country": "greece",
@@ -4009,7 +4009,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2025-01-21",
       "n": 1305,
       "country": "greece",
@@ -4074,7 +4074,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2025-01-10",
       "n": 1003,
       "country": "greece",
@@ -4118,7 +4118,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ Eleftheros Typos",
+      "pollster": "Palmos Analysis/Eleftheros Typos",
       "date": "2024-12-23",
       "n": 1043,
       "country": "greece",
@@ -4162,7 +4162,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2024-12-17",
       "n": 1303,
       "country": "greece",
@@ -4206,7 +4206,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Manifesto",
+      "pollster": "Opinion Poll/Manifesto",
       "date": "2024-12-13",
       "n": 1005,
       "country": "greece",
@@ -4335,7 +4335,7 @@
       }
     },
     {
-      "pollster": "Marc/ProtoThema",
+      "pollster": "Marc/Proto Thema",
       "date": "2024-11-28",
       "n": 1072,
       "country": "greece",
@@ -4423,7 +4423,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2024-11-22",
       "n": 1000,
       "country": "greece",
@@ -4445,7 +4445,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2024-11-16",
       "n": 1000,
       "country": "greece",
@@ -4466,7 +4466,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Alpha",
+      "pollster": "Real Polls/Alpha",
       "date": "2024-11-13",
       "n": 1759,
       "country": "greece",
@@ -4487,7 +4487,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2024-11-12",
       "n": 1201,
       "country": "greece",
@@ -4508,7 +4508,7 @@
       }
     },
     {
-      "pollster": "Marc/ANT1",
+      "pollster": "Marc/Ant1",
       "date": "2024-10-26",
       "n": 1112,
       "country": "greece",
@@ -4550,7 +4550,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2024-10-22",
       "n": 1306,
       "country": "greece",
@@ -4571,7 +4571,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2024-10-21",
       "n": 2325,
       "country": "greece",
@@ -4652,7 +4652,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2024-10-02",
       "n": 1700,
       "country": "greece",
@@ -4694,7 +4694,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ Tvxs",
+      "pollster": "Palmos Analysis/Tvxs",
       "date": "2024-09-28",
       "n": 1012,
       "country": "greece",
@@ -4715,7 +4715,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2024-09-27",
       "n": 1503,
       "country": "greece",
@@ -4755,7 +4755,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2024-09-23",
       "n": 1603,
       "country": "greece",
@@ -4858,7 +4858,7 @@
       }
     },
     {
-      "pollster": "Data Consultants/ Pelop",
+      "pollster": "Data Consultants/Pelop",
       "date": "2024-09-11",
       "n": 1143,
       "country": "greece",
@@ -4898,7 +4898,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2024-09-10",
       "n": 1308,
       "country": "greece",
@@ -4919,7 +4919,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2024-09-06",
       "n": 1085,
       "country": "greece",
@@ -4939,7 +4939,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2024-08-30",
       "n": 1203,
       "country": "greece",
@@ -5040,7 +5040,7 @@
       }
     },
     {
-      "pollster": "Kapa Research/ Apogevmatini",
+      "pollster": "Kapa Research/Apogevmatini",
       "date": "2024-06-28",
       "n": 1487,
       "country": "greece",
@@ -5140,7 +5140,7 @@
       }
     },
     {
-      "pollster": "Interview/Political",
+      "pollster": "Interview/Politic",
       "date": "2024-06-06",
       "n": 2755,
       "country": "greece",
@@ -5160,7 +5160,7 @@
       }
     },
     {
-      "pollster": "Marc/AΝΤ1",
+      "pollster": "Marc/Ant1",
       "date": "2024-06-05",
       "n": 1205,
       "country": "greece",
@@ -5338,7 +5338,7 @@
       }
     },
     {
-      "pollster": "Marc/ANT1",
+      "pollster": "Marc/Ant1",
       "date": "2024-05-30",
       "n": 1207,
       "country": "greece",
@@ -5518,7 +5518,7 @@
       }
     },
     {
-      "pollster": "Marc/ANT1",
+      "pollster": "Marc/Ant1",
       "date": "2024-05-15",
       "n": 1209,
       "country": "greece",
@@ -5681,7 +5681,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/Action 24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2024-04-10",
       "n": 1006,
       "country": "greece",
@@ -6227,7 +6227,7 @@
       }
     },
     {
-      "pollster": "Marc/AΝΤ1",
+      "pollster": "Marc/Ant1",
       "date": "2024-01-23",
       "n": 1092,
       "country": "greece",
@@ -6286,7 +6286,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/The Τοc",
+      "pollster": "Opinion Poll/The Toc",
       "date": "2024-01-12",
       "n": 1005,
       "country": "greece",
@@ -6366,7 +6366,7 @@
       }
     },
     {
-      "pollster": "Palmos Analysis/ Eleftheros Typos",
+      "pollster": "Palmos Analysis/Eleftheros Typos",
       "date": "2023-12-28",
       "n": 1200,
       "country": "greece",
@@ -6406,7 +6406,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2023-12-19",
       "n": 1300,
       "country": "greece",
@@ -6426,7 +6426,7 @@
       }
     },
     {
-      "pollster": "Opinion Poll/ Action24",
+      "pollster": "Opinion Poll/Action24",
       "date": "2023-12-15",
       "n": 1004,
       "country": "greece",
@@ -6446,7 +6446,7 @@
       }
     },
     {
-      "pollster": "Interview/ Politic",
+      "pollster": "Interview/Politic",
       "date": "2023-12-08",
       "n": 2356,
       "country": "greece",
@@ -6465,7 +6465,7 @@
       }
     },
     {
-      "pollster": "GPO/ Parapolitika",
+      "pollster": "GPO/Parapolitika",
       "date": "2023-12-07",
       "n": 1000,
       "country": "greece",
@@ -6505,7 +6505,7 @@
       }
     },
     {
-      "pollster": "Real Polls/ Documento",
+      "pollster": "Real Polls/Documento",
       "date": "2023-11-29",
       "n": 1772,
       "country": "greece",
@@ -6525,7 +6525,7 @@
       }
     },
     {
-      "pollster": "Metron Analysis/ Mega",
+      "pollster": "Metron Analysis/Mega",
       "date": "2023-11-28",
       "n": 1303,
       "country": "greece",
@@ -6563,7 +6563,7 @@
       }
     },
     {
-      "pollster": "Prorata/Αttica",
+      "pollster": "Prorata/Attica",
       "date": "2023-11-20",
       "n": 1000,
       "country": "greece",

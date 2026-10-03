@@ -100,6 +100,7 @@ def main():
     map2 = {"svg": "img/Czechia_regions.svg", "selector": "id",
             "districts": {k: k for k in gebiete},
             "gebiete": gebiete, "names": DISPLAY,
+            "seatDots": {"method": "imperiali"},
             "label": "kraje (14)"}
     m2 = re.search(r"\n\s+map2: \{", block)
     if m2:

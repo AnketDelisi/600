@@ -22753,6 +22753,1097 @@ saxony_anhalt: {
       gpbc: 'img/bc/GPBC.svg', cbc: 'img/bc/CBC.svg', onbc: 'img/bc/1BC.svg',
     },
   },
+
+  qc: {
+    name: 'Quebec',
+    seats: 127,
+    threshold: 0,                 // no threshold (first-past-the-post)
+    method: 'fptp',               // winner-takes-all in 127 single-member ridings
+    seatBased: false,             // polls report vote shares (%)
+    constituencies: true,         // the map is the 127 ridings
+    constituencyRule: 'fptp',
+    hideBlocs: true,              // no government/opposition bloc cards
+    hideConstituencyTable: true,
+    recencyHalfLifeDays: 14,
+    // colours from the en.wikipedia party infoboxes
+    parties: {
+      caq:  { code: 'CAQ',  name: 'Coalition Avenir Québec',           name_en: 'Coalition Avenir Québec',           color: '#1E90FF' },
+      plq:  { code: 'PLQ',  name: 'Parti libéral du Québec',           name_en: 'Quebec Liberal Party',              color: '#EA6D6A' },
+      pq:   { code: 'PQ',   name: 'Parti québécois',                   name_en: 'Parti Québécois',                   color: '#87CEFA' },
+      qs:   { code: 'QS',   name: 'Québec solidaire',                  name_en: 'Québec solidaire',                  color: '#FF8040' },
+      pcq:  { code: 'PCQ',  name: 'Parti conservateur du Québec',      name_en: 'Conservative Party of Quebec',      color: '#313E6B' },
+    },
+    order: ['caq', 'plq', 'pq', 'qs', 'pcq'],
+    parlOrder: ['qs', 'pq', 'plq', 'caq', 'pcq'],
+    // incumbent CAQ vs the rest (cards hidden)
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['caq'], color: '#1E90FF' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['plq', 'pq', 'qs', 'pcq'], color: '#E30613' },
+    },
+    lastElection: {
+      date: '2022-10-03',
+      // 2022 general election (Élections Québec, official)
+      results: {
+              "caq": 40.98,
+              "plq": 14.37,
+              "qs": 15.43,
+              "pq": 14.61,
+              "pcq": 12.91
+      },
+      seats: {
+              "caq": 90,
+              "plq": 21,
+              "qs": 11,
+              "pq": 3,
+              "pcq": 0
+      },
+    },
+    // No trend extrapolation (same call as BC: the intercept extrapolates to
+    // today from the last data point, which is fragile with noisy provincial
+    // polls). Re-add with fresh daily campaign polls.
+    map: {
+      svg: 'img/quebec.svg',
+      selector: 'id',
+      useConstituencies: true,     // 127 ridings, projected winner takes the seat
+      hideBlocToggle: true,
+      districts: {
+              "abitibi-est": "abitibi-est",
+              "abitibi-ouest": "abitibi-ouest",
+              "acadie": "acadie",
+              "anjou-louis-riel": "anjou-louis-riel",
+              "argenteuil": "argenteuil",
+              "arthabaska-lerable": "arthabaska-lerable",
+              "beauce-nord": "beauce-nord",
+              "beauce-sud": "beauce-sud",
+              "beauharnois": "beauharnois",
+              "bellechasse": "bellechasse",
+              "bellefeuille": "bellefeuille",
+              "berthier": "berthier",
+              "bertrand": "bertrand",
+              "blainville": "blainville",
+              "bonaventure": "bonaventure",
+              "borduas": "borduas",
+              "bourassa-sauve": "bourassa-sauve",
+              "brome-missisquoi": "brome-missisquoi",
+              "camille-laurin": "camille-laurin",
+              "chambly": "chambly",
+              "champlain": "champlain",
+              "chapleau": "chapleau",
+              "charlesbourg": "charlesbourg",
+              "charlevoix-cote-de-beaupre": "charlevoix-cote-de-beaupre",
+              "chateauguay": "chateauguay",
+              "chauveau": "chauveau",
+              "chicoutimi": "chicoutimi",
+              "chomedey": "chomedey",
+              "chutes-de-la-chaudiere": "chutes-de-la-chaudiere",
+              "cote-du-sud": "cote-du-sud",
+              "daniel-johnson": "daniel-johnson",
+              "darcy-mcgee": "darcy-mcgee",
+              "deux-montagnes": "deux-montagnes",
+              "drummond-bois-francs": "drummond-bois-francs",
+              "dubuc": "dubuc",
+              "duplessis": "duplessis",
+              "fabre": "fabre",
+              "gaspe": "gaspe",
+              "gatineau": "gatineau",
+              "gouin": "gouin",
+              "granby": "granby",
+              "groulx": "groulx",
+              "hochelaga-maisonneuve": "hochelaga-maisonneuve",
+              "hull": "hull",
+              "huntingdon": "huntingdon",
+              "iberville": "iberville",
+              "iles-de-la-madeleine": "iles-de-la-madeleine",
+              "jacques-cartier": "jacques-cartier",
+              "jean-lesage": "jean-lesage",
+              "jean-talon": "jean-talon",
+              "jeanne-mance-viger": "jeanne-mance-viger",
+              "joliette": "joliette",
+              "jonquiere": "jonquiere",
+              "labelle": "labelle",
+              "lac-saint-jean": "lac-saint-jean",
+              "lafontaine": "lafontaine",
+              "lapeltrie": "lapeltrie",
+              "lapiniere": "lapiniere",
+              "laprairie": "laprairie",
+              "lassomption": "lassomption",
+              "laurier-dorion": "laurier-dorion",
+              "laval-des-rapides": "laval-des-rapides",
+              "laviolette-saint-maurice": "laviolette-saint-maurice",
+              "lesplaines": "lesplaines",
+              "levis": "levis",
+              "lotbiniere-frontenac": "lotbiniere-frontenac",
+              "louis-hebert": "louis-hebert",
+              "marguerite-bourgeoys": "marguerite-bourgeoys",
+              "marie-lacoste-gerin-lajoie": "marie-lacoste-gerin-lajoie",
+              "marie-victorin": "marie-victorin",
+              "marquette": "marquette",
+              "maskinonge": "maskinonge",
+              "masson": "masson",
+              "matane-matapedia-mitis": "matane-matapedia-mitis",
+              "maurice-richard": "maurice-richard",
+              "megantic": "megantic",
+              "mercier": "mercier",
+              "mille-iles": "mille-iles",
+              "mirabel": "mirabel",
+              "mont-royal-outremont": "mont-royal-outremont",
+              "montarville": "montarville",
+              "montmorency": "montmorency",
+              "nelligan": "nelligan",
+              "nicolet-becancour": "nicolet-becancour",
+              "notre-dame-de-grace": "notre-dame-de-grace",
+              "orford": "orford",
+              "papineau": "papineau",
+              "pierre-laporte": "pierre-laporte",
+              "pointe-aux-trembles": "pointe-aux-trembles",
+              "pontiac": "pontiac",
+              "portneuf": "portneuf",
+              "prevost": "prevost",
+              "rene-levesque": "rene-levesque",
+              "repentigny": "repentigny",
+              "richelieu": "richelieu",
+              "richmond": "richmond",
+              "rimouski": "rimouski",
+              "riviere-du-louptemiscouatalesbasques": "riviere-du-louptemiscouatalesbasques",
+              "robert-baldwin": "robert-baldwin",
+              "roberval": "roberval",
+              "rosemont": "rosemont",
+              "rousseau": "rousseau",
+              "rouyn-noranda-temiscamingue": "rouyn-noranda-temiscamingue",
+              "saint-francois": "saint-francois",
+              "saint-henri-sainte-anne": "saint-henri-sainte-anne",
+              "saint-hyacinthe": "saint-hyacinthe",
+              "saint-jean": "saint-jean",
+              "saint-jerome": "saint-jerome",
+              "saint-laurent": "saint-laurent",
+              "sainte-marie-saint-jacques": "sainte-marie-saint-jacques",
+              "sainte-rose": "sainte-rose",
+              "sanguinet": "sanguinet",
+              "sherbrooke": "sherbrooke",
+              "soulanges": "soulanges",
+              "taillon": "taillon",
+              "taschereau": "taschereau",
+              "terrebonne": "terrebonne",
+              "trois-rivieres": "trois-rivieres",
+              "ungava": "ungava",
+              "vachon": "vachon",
+              "vanier-lesrivieres": "vanier-lesrivieres",
+              "vaudreuil": "vaudreuil",
+              "vercheres": "vercheres",
+              "verdun": "verdun",
+              "viau": "viau",
+              "vimont-auteuil": "vimont-auteuil",
+              "westmount-saint-louis": "westmount-saint-louis"
+      },
+      // 2022 vote shares per riding (Élections Québec; 2 new 2025 ridings
+      // inherit the riding they split from)
+      gebiete: {
+              "abitibi-est": {
+                      "caq": 47.17,
+                      "plq": 14.71,
+                      "pq": 12.39,
+                      "qs": 13.71,
+                      "pcq": 12.01
+              },
+              "abitibi-ouest": {
+                      "caq": 46.75,
+                      "plq": 5.18,
+                      "pq": 20.76,
+                      "qs": 16.29,
+                      "pcq": 10.31
+              },
+              "acadie": {
+                      "caq": 17.11,
+                      "plq": 42.26,
+                      "pq": 9.87,
+                      "qs": 17.2,
+                      "pcq": 11.37
+              },
+              "anjou-louis-riel": {
+                      "caq": 35.56,
+                      "plq": 30.52,
+                      "pq": 11.04,
+                      "qs": 14.77,
+                      "pcq": 7.16
+              },
+              "argenteuil": {
+                      "caq": 45.1,
+                      "plq": 10.18,
+                      "pq": 16.21,
+                      "qs": 10.79,
+                      "pcq": 14.72
+              },
+              "arthabaska-lerable": {
+                      "caq": 51.75,
+                      "plq": 3.76,
+                      "pq": 10.02,
+                      "qs": 9.22,
+                      "pcq": 24.69
+              },
+              "beauce-nord": {
+                      "caq": 43.43,
+                      "plq": 2.83,
+                      "pq": 5.94,
+                      "qs": 4.53,
+                      "pcq": 42.83
+              },
+              "beauce-sud": {
+                      "caq": 44.55,
+                      "plq": 2.83,
+                      "pq": 4.04,
+                      "qs": 4.35,
+                      "pcq": 43.4
+              },
+              "beauharnois": {
+                      "caq": 53.78,
+                      "plq": 5.83,
+                      "pq": 16.96,
+                      "qs": 12.93,
+                      "pcq": 9.36
+              },
+              "bellechasse": {
+                      "caq": 45.74,
+                      "plq": 4.13,
+                      "pq": 8.83,
+                      "qs": 6.04,
+                      "pcq": 35.26
+              },
+              "bellefeuille": {
+                      "caq": 45.1,
+                      "plq": 10.18,
+                      "pq": 16.21,
+                      "qs": 10.79,
+                      "pcq": 14.72
+              },
+              "berthier": {
+                      "caq": 50.97,
+                      "plq": 2.55,
+                      "pq": 20.82,
+                      "qs": 14.09,
+                      "pcq": 10.99
+              },
+              "bertrand": {
+                      "caq": 45.26,
+                      "plq": 6.01,
+                      "pq": 20.63,
+                      "qs": 16.15,
+                      "pcq": 9.79
+              },
+              "blainville": {
+                      "caq": 49.45,
+                      "plq": 11.03,
+                      "pq": 15.43,
+                      "qs": 14.0,
+                      "pcq": 9.76
+              },
+              "bonaventure": {
+                      "caq": 44.45,
+                      "plq": 8.56,
+                      "pq": 30.06,
+                      "qs": 10.83,
+                      "pcq": 5.46
+              },
+              "borduas": {
+                      "caq": 51.23,
+                      "plq": 5.24,
+                      "pq": 19.46,
+                      "qs": 15.14,
+                      "pcq": 7.56
+              },
+              "bourassa-sauve": {
+                      "caq": 25.01,
+                      "plq": 40.13,
+                      "pq": 8.69,
+                      "qs": 15.45,
+                      "pcq": 8.94
+              },
+              "brome-missisquoi": {
+                      "caq": 45.87,
+                      "plq": 11.91,
+                      "pq": 11.95,
+                      "qs": 15.91,
+                      "pcq": 10.87
+              },
+              "camille-laurin": {
+                      "caq": 31.94,
+                      "plq": 16.47,
+                      "pq": 41.68,
+                      "qs": 0.0,
+                      "pcq": 6.51
+              },
+              "chambly": {
+                      "caq": 48.47,
+                      "plq": 7.85,
+                      "pq": 17.9,
+                      "qs": 16.37,
+                      "pcq": 8.33
+              },
+              "champlain": {
+                      "caq": 55.89,
+                      "plq": 5.08,
+                      "pq": 12.04,
+                      "qs": 8.97,
+                      "pcq": 17.55
+              },
+              "chapleau": {
+                      "caq": 52.3,
+                      "plq": 13.61,
+                      "pq": 9.7,
+                      "qs": 13.2,
+                      "pcq": 10.1
+              },
+              "charlesbourg": {
+                      "caq": 45.0,
+                      "plq": 5.99,
+                      "pq": 14.19,
+                      "qs": 13.05,
+                      "pcq": 20.37
+              },
+              "charlevoix-cote-de-beaupre": {
+                      "caq": 48.17,
+                      "plq": 4.7,
+                      "pq": 16.19,
+                      "qs": 12.53,
+                      "pcq": 18.12
+              },
+              "chateauguay": {
+                      "caq": 39.12,
+                      "plq": 24.78,
+                      "pq": 11.84,
+                      "qs": 12.78,
+                      "pcq": 10.09
+              },
+              "chauveau": {
+                      "caq": 46.84,
+                      "plq": 3.81,
+                      "pq": 7.63,
+                      "qs": 8.81,
+                      "pcq": 31.84
+              },
+              "chicoutimi": {
+                      "caq": 62.28,
+                      "plq": 3.04,
+                      "pq": 14.21,
+                      "qs": 12.04,
+                      "pcq": 8.43
+              },
+              "chomedey": {
+                      "caq": 26.7,
+                      "plq": 36.52,
+                      "pq": 7.19,
+                      "qs": 7.89,
+                      "pcq": 19.85
+              },
+              "chutes-de-la-chaudiere": {
+                      "caq": 47.46,
+                      "plq": 4.95,
+                      "pq": 11.11,
+                      "qs": 9.28,
+                      "pcq": 27.2
+              },
+              "cote-du-sud": {
+                      "caq": 47.69,
+                      "plq": 6.31,
+                      "pq": 12.77,
+                      "qs": 9.33,
+                      "pcq": 23.41
+              },
+              "daniel-johnson": {
+                      "caq": 52.5,
+                      "plq": 3.51,
+                      "pq": 14.41,
+                      "qs": 13.8,
+                      "pcq": 15.13
+              },
+              "darcy-mcgee": {
+                      "caq": 5.91,
+                      "plq": 51.41,
+                      "pq": 2.51,
+                      "qs": 8.52,
+                      "pcq": 21.95
+              },
+              "deux-montagnes": {
+                      "caq": 47.08,
+                      "plq": 10.27,
+                      "pq": 17.16,
+                      "qs": 14.15,
+                      "pcq": 9.82
+              },
+              "drummond-bois-francs": {
+                      "caq": 51.64,
+                      "plq": 4.01,
+                      "pq": 15.05,
+                      "qs": 10.65,
+                      "pcq": 17.39
+              },
+              "dubuc": {
+                      "caq": 57.6,
+                      "plq": 2.49,
+                      "pq": 17.55,
+                      "qs": 10.58,
+                      "pcq": 11.04
+              },
+              "duplessis": {
+                      "caq": 45.14,
+                      "plq": 4.02,
+                      "pq": 24.79,
+                      "qs": 9.36,
+                      "pcq": 15.72
+              },
+              "fabre": {
+                      "caq": 31.81,
+                      "plq": 30.91,
+                      "pq": 9.75,
+                      "qs": 11.13,
+                      "pcq": 15.17
+              },
+              "gaspe": {
+                      "caq": 41.4,
+                      "plq": 6.89,
+                      "pq": 37.5,
+                      "qs": 8.97,
+                      "pcq": 5.25
+              },
+              "gatineau": {
+                      "caq": 46.74,
+                      "plq": 19.56,
+                      "pq": 9.71,
+                      "qs": 12.1,
+                      "pcq": 10.76
+              },
+              "gouin": {
+                      "caq": 12.37,
+                      "plq": 8.4,
+                      "pq": 13.63,
+                      "qs": 59.44,
+                      "pcq": 3.11
+              },
+              "granby": {
+                      "caq": 58.19,
+                      "plq": 4.76,
+                      "pq": 11.84,
+                      "qs": 14.29,
+                      "pcq": 10.11
+              },
+              "groulx": {
+                      "caq": 47.75,
+                      "plq": 11.02,
+                      "pq": 15.31,
+                      "qs": 16.21,
+                      "pcq": 8.7
+              },
+              "hochelaga-maisonneuve": {
+                      "caq": 18.8,
+                      "plq": 7.78,
+                      "pq": 15.97,
+                      "qs": 50.84,
+                      "pcq": 4.62
+              },
+              "hull": {
+                      "caq": 34.64,
+                      "plq": 25.92,
+                      "pq": 9.78,
+                      "qs": 20.75,
+                      "pcq": 6.86
+              },
+              "huntingdon": {
+                      "caq": 46.64,
+                      "plq": 14.39,
+                      "pq": 12.02,
+                      "qs": 11.15,
+                      "pcq": 13.39
+              },
+              "iberville": {
+                      "caq": 53.15,
+                      "plq": 5.64,
+                      "pq": 15.24,
+                      "qs": 13.72,
+                      "pcq": 11.27
+              },
+              "iles-de-la-madeleine": {
+                      "caq": 39.91,
+                      "plq": 7.25,
+                      "pq": 46.35,
+                      "qs": 5.38,
+                      "pcq": 1.11
+              },
+              "jacques-cartier": {
+                      "caq": 9.42,
+                      "plq": 62.57,
+                      "pq": 3.02,
+                      "qs": 5.02,
+                      "pcq": 11.23
+              },
+              "jean-lesage": {
+                      "caq": 31.26,
+                      "plq": 4.4,
+                      "pq": 11.07,
+                      "qs": 37.77,
+                      "pcq": 14.12
+              },
+              "jean-talon": {
+                      "caq": 32.5,
+                      "plq": 13.51,
+                      "pq": 18.69,
+                      "qs": 23.76,
+                      "pcq": 10.36
+              },
+              "jeanne-mance-viger": {
+                      "caq": 16.6,
+                      "plq": 53.93,
+                      "pq": 4.18,
+                      "qs": 10.65,
+                      "pcq": 11.6
+              },
+              "joliette": {
+                      "caq": 45.58,
+                      "plq": 3.0,
+                      "pq": 31.23,
+                      "qs": 11.38,
+                      "pcq": 8.82
+              },
+              "jonquiere": {
+                      "caq": 59.39,
+                      "plq": 2.12,
+                      "pq": 19.3,
+                      "qs": 9.07,
+                      "pcq": 9.55
+              },
+              "labelle": {
+                      "caq": 53.08,
+                      "plq": 5.05,
+                      "pq": 19.13,
+                      "qs": 12.26,
+                      "pcq": 9.54
+              },
+              "lac-saint-jean": {
+                      "caq": 51.47,
+                      "plq": 3.02,
+                      "pq": 25.62,
+                      "qs": 7.58,
+                      "pcq": 11.37
+              },
+              "lafontaine": {
+                      "caq": 20.01,
+                      "plq": 51.67,
+                      "pq": 5.1,
+                      "qs": 8.87,
+                      "pcq": 13.14
+              },
+              "lapeltrie": {
+                      "caq": 44.35,
+                      "plq": 5.66,
+                      "pq": 9.93,
+                      "qs": 8.9,
+                      "pcq": 29.9
+              },
+              "lapiniere": {
+                      "caq": 31.17,
+                      "plq": 38.51,
+                      "pq": 7.82,
+                      "qs": 10.02,
+                      "pcq": 10.15
+              },
+              "laprairie": {
+                      "caq": 52.71,
+                      "plq": 13.85,
+                      "pq": 11.42,
+                      "qs": 13.1,
+                      "pcq": 7.95
+              },
+              "lassomption": {
+                      "caq": 58.63,
+                      "plq": 5.68,
+                      "pq": 13.75,
+                      "qs": 14.32,
+                      "pcq": 7.63
+              },
+              "laurier-dorion": {
+                      "caq": 11.73,
+                      "plq": 19.57,
+                      "pq": 10.26,
+                      "qs": 48.8,
+                      "pcq": 5.54
+              },
+              "laval-des-rapides": {
+                      "caq": 31.9,
+                      "plq": 28.73,
+                      "pq": 12.92,
+                      "qs": 16.68,
+                      "pcq": 8.58
+              },
+              "laviolette-saint-maurice": {
+                      "caq": 51.72,
+                      "plq": 4.99,
+                      "pq": 16.01,
+                      "qs": 9.5,
+                      "pcq": 16.75
+              },
+              "lesplaines": {
+                      "caq": 50.54,
+                      "plq": 6.88,
+                      "pq": 16.13,
+                      "qs": 13.32,
+                      "pcq": 12.1
+              },
+              "levis": {
+                      "caq": 48.79,
+                      "plq": 5.13,
+                      "pq": 12.91,
+                      "qs": 11.47,
+                      "pcq": 20.75
+              },
+              "lotbiniere-frontenac": {
+                      "caq": 43.72,
+                      "plq": 5.92,
+                      "pq": 8.8,
+                      "qs": 9.36,
+                      "pcq": 32.2
+              },
+              "louis-hebert": {
+                      "caq": 47.21,
+                      "plq": 8.71,
+                      "pq": 16.52,
+                      "qs": 12.03,
+                      "pcq": 14.61
+              },
+              "marguerite-bourgeoys": {
+                      "caq": 23.15,
+                      "plq": 44.78,
+                      "pq": 6.97,
+                      "qs": 10.27,
+                      "pcq": 11.0
+              },
+              "marie-lacoste-gerin-lajoie": {
+                      "caq": 51.64,
+                      "plq": 4.01,
+                      "pq": 15.05,
+                      "qs": 10.65,
+                      "pcq": 17.39
+              },
+              "marie-victorin": {
+                      "caq": 33.11,
+                      "plq": 10.04,
+                      "pq": 24.85,
+                      "qs": 22.67,
+                      "pcq": 7.02
+              },
+              "marquette": {
+                      "caq": 21.82,
+                      "plq": 46.73,
+                      "pq": 8.06,
+                      "qs": 11.27,
+                      "pcq": 9.13
+              },
+              "maskinonge": {
+                      "caq": 53.5,
+                      "plq": 5.07,
+                      "pq": 14.14,
+                      "qs": 9.9,
+                      "pcq": 16.06
+              },
+              "masson": {
+                      "caq": 51.6,
+                      "plq": 7.72,
+                      "pq": 18.24,
+                      "qs": 13.07,
+                      "pcq": 8.43
+              },
+              "matane-matapedia-mitis": {
+                      "caq": 17.36,
+                      "plq": 2.14,
+                      "pq": 67.43,
+                      "qs": 4.87,
+                      "pcq": 7.79
+              },
+              "maurice-richard": {
+                      "caq": 27.16,
+                      "plq": 17.22,
+                      "pq": 14.67,
+                      "qs": 34.67,
+                      "pcq": 4.2
+              },
+              "megantic": {
+                      "caq": 46.17,
+                      "plq": 5.71,
+                      "pq": 12.77,
+                      "qs": 12.78,
+                      "pcq": 22.25
+              },
+              "mercier": {
+                      "caq": 10.28,
+                      "plq": 14.02,
+                      "pq": 14.57,
+                      "qs": 53.92,
+                      "pcq": 3.84
+              },
+              "mille-iles": {
+                      "caq": 30.93,
+                      "plq": 32.38,
+                      "pq": 12.07,
+                      "qs": 12.88,
+                      "pcq": 10.56
+              },
+              "mirabel": {
+                      "caq": 50.11,
+                      "plq": 6.76,
+                      "pq": 16.78,
+                      "qs": 14.41,
+                      "pcq": 11.43
+              },
+              "mont-royal-outremont": {
+                      "caq": 15.79,
+                      "plq": 39.35,
+                      "pq": 11.42,
+                      "qs": 20.28,
+                      "pcq": 8.51
+              },
+              "montarville": {
+                      "caq": 45.9,
+                      "plq": 12.27,
+                      "pq": 18.69,
+                      "qs": 16.25,
+                      "pcq": 5.12
+              },
+              "montmorency": {
+                      "caq": 45.18,
+                      "plq": 4.65,
+                      "pq": 11.28,
+                      "qs": 12.05,
+                      "pcq": 26.06
+              },
+              "nelligan": {
+                      "caq": 16.65,
+                      "plq": 52.03,
+                      "pq": 4.17,
+                      "qs": 5.26,
+                      "pcq": 15.09
+              },
+              "nicolet-becancour": {
+                      "caq": 47.05,
+                      "plq": 4.74,
+                      "pq": 17.18,
+                      "qs": 8.8,
+                      "pcq": 22.23
+              },
+              "notre-dame-de-grace": {
+                      "caq": 7.33,
+                      "plq": 50.46,
+                      "pq": 5.09,
+                      "qs": 15.49,
+                      "pcq": 8.15
+              },
+              "orford": {
+                      "caq": 42.95,
+                      "plq": 14.99,
+                      "pq": 13.61,
+                      "qs": 16.16,
+                      "pcq": 10.88
+              },
+              "papineau": {
+                      "caq": 52.83,
+                      "plq": 8.41,
+                      "pq": 10.23,
+                      "qs": 13.78,
+                      "pcq": 13.27
+              },
+              "pierre-laporte": {
+                      "caq": 30.76,
+                      "plq": 28.82,
+                      "pq": 12.19,
+                      "qs": 17.72,
+                      "pcq": 7.39
+              },
+              "pointe-aux-trembles": {
+                      "caq": 45.88,
+                      "plq": 10.38,
+                      "pq": 19.87,
+                      "qs": 15.41,
+                      "pcq": 6.81
+              },
+              "pontiac": {
+                      "caq": 24.7,
+                      "plq": 43.68,
+                      "pq": 6.61,
+                      "qs": 10.28,
+                      "pcq": 10.92
+              },
+              "portneuf": {
+                      "caq": 47.38,
+                      "plq": 2.82,
+                      "pq": 9.85,
+                      "qs": 8.22,
+                      "pcq": 29.74
+              },
+              "prevost": {
+                      "caq": 46.23,
+                      "plq": 6.02,
+                      "pq": 19.58,
+                      "qs": 15.1,
+                      "pcq": 11.68
+              },
+              "rene-levesque": {
+                      "caq": 58.92,
+                      "plq": 1.59,
+                      "pq": 21.17,
+                      "qs": 7.56,
+                      "pcq": 10.12
+              },
+              "repentigny": {
+                      "caq": 52.36,
+                      "plq": 9.96,
+                      "pq": 17.73,
+                      "qs": 12.68,
+                      "pcq": 6.41
+              },
+              "richelieu": {
+                      "caq": 55.89,
+                      "plq": 4.13,
+                      "pq": 20.28,
+                      "qs": 10.08,
+                      "pcq": 8.82
+              },
+              "richmond": {
+                      "caq": 46.75,
+                      "plq": 5.45,
+                      "pq": 12.76,
+                      "qs": 19.86,
+                      "pcq": 14.7
+              },
+              "rimouski": {
+                      "caq": 41.75,
+                      "plq": 3.01,
+                      "pq": 28.64,
+                      "qs": 21.37,
+                      "pcq": 4.75
+              },
+              "riviere-du-louptemiscouatalesbasques": {
+                      "caq": 52.06,
+                      "plq": 3.97,
+                      "pq": 17.58,
+                      "qs": 14.61,
+                      "pcq": 11.27
+              },
+              "robert-baldwin": {
+                      "caq": 9.75,
+                      "plq": 57.76,
+                      "pq": 2.6,
+                      "qs": 5.02,
+                      "pcq": 16.02
+              },
+              "roberval": {
+                      "caq": 56.19,
+                      "plq": 4.55,
+                      "pq": 20.53,
+                      "qs": 6.83,
+                      "pcq": 11.37
+              },
+              "rosemont": {
+                      "caq": 23.06,
+                      "plq": 11.79,
+                      "pq": 21.27,
+                      "qs": 37.62,
+                      "pcq": 4.54
+              },
+              "rousseau": {
+                      "caq": 50.58,
+                      "plq": 3.45,
+                      "pq": 17.86,
+                      "qs": 13.14,
+                      "pcq": 14.98
+              },
+              "rouyn-noranda-temiscamingue": {
+                      "caq": 45.16,
+                      "plq": 4.37,
+                      "pq": 11.25,
+                      "qs": 30.94,
+                      "pcq": 7.66
+              },
+              "saint-francois": {
+                      "caq": 42.43,
+                      "plq": 7.91,
+                      "pq": 9.11,
+                      "qs": 28.21,
+                      "pcq": 11.01
+              },
+              "saint-henri-sainte-anne": {
+                      "caq": 17.73,
+                      "plq": 36.15,
+                      "pq": 8.27,
+                      "qs": 27.72,
+                      "pcq": 6.36
+              },
+              "saint-hyacinthe": {
+                      "caq": 54.42,
+                      "plq": 4.13,
+                      "pq": 16.7,
+                      "qs": 13.64,
+                      "pcq": 9.84
+              },
+              "saint-jean": {
+                      "caq": 50.65,
+                      "plq": 5.98,
+                      "pq": 19.22,
+                      "qs": 14.76,
+                      "pcq": 8.4
+              },
+              "saint-jerome": {
+                      "caq": 50.02,
+                      "plq": 4.53,
+                      "pq": 18.83,
+                      "qs": 15.62,
+                      "pcq": 9.74
+              },
+              "saint-laurent": {
+                      "caq": 14.29,
+                      "plq": 49.97,
+                      "pq": 5.92,
+                      "qs": 9.92,
+                      "pcq": 13.88
+              },
+              "sainte-marie-saint-jacques": {
+                      "caq": 14.31,
+                      "plq": 15.85,
+                      "pq": 14.72,
+                      "qs": 47.69,
+                      "pcq": 4.98
+              },
+              "sainte-rose": {
+                      "caq": 38.5,
+                      "plq": 23.98,
+                      "pq": 12.39,
+                      "qs": 14.33,
+                      "pcq": 9.37
+              },
+              "sanguinet": {
+                      "caq": 48.78,
+                      "plq": 9.86,
+                      "pq": 16.3,
+                      "qs": 13.11,
+                      "pcq": 10.57
+              },
+              "sherbrooke": {
+                      "caq": 35.25,
+                      "plq": 5.84,
+                      "pq": 9.09,
+                      "qs": 41.91,
+                      "pcq": 6.74
+              },
+              "soulanges": {
+                      "caq": 42.62,
+                      "plq": 21.82,
+                      "pq": 10.27,
+                      "qs": 10.84,
+                      "pcq": 12.47
+              },
+              "taillon": {
+                      "caq": 41.51,
+                      "plq": 11.62,
+                      "pq": 20.31,
+                      "qs": 18.9,
+                      "pcq": 6.47
+              },
+              "taschereau": {
+                      "caq": 21.93,
+                      "plq": 5.89,
+                      "pq": 22.57,
+                      "qs": 39.53,
+                      "pcq": 8.76
+              },
+              "terrebonne": {
+                      "caq": 49.44,
+                      "plq": 10.17,
+                      "pq": 18.88,
+                      "qs": 12.65,
+                      "pcq": 7.94
+              },
+              "trois-rivieres": {
+                      "caq": 50.81,
+                      "plq": 5.54,
+                      "pq": 14.34,
+                      "qs": 16.35,
+                      "pcq": 12.26
+              },
+              "ungava": {
+                      "caq": 36.27,
+                      "plq": 18.19,
+                      "pq": 12.55,
+                      "qs": 24.23,
+                      "pcq": 8.76
+              },
+              "vachon": {
+                      "caq": 44.91,
+                      "plq": 16.07,
+                      "pq": 13.37,
+                      "qs": 15.01,
+                      "pcq": 8.9
+              },
+              "vanier-lesrivieres": {
+                      "caq": 47.39,
+                      "plq": 6.28,
+                      "pq": 13.07,
+                      "qs": 12.15,
+                      "pcq": 19.52
+              },
+              "vaudreuil": {
+                      "caq": 32.77,
+                      "plq": 34.22,
+                      "pq": 7.7,
+                      "qs": 9.23,
+                      "pcq": 11.62
+              },
+              "vercheres": {
+                      "caq": 51.28,
+                      "plq": 5.28,
+                      "pq": 20.71,
+                      "qs": 14.44,
+                      "pcq": 7.08
+              },
+              "verdun": {
+                      "caq": 23.0,
+                      "plq": 29.27,
+                      "pq": 8.33,
+                      "qs": 30.75,
+                      "pcq": 5.35
+              },
+              "viau": {
+                      "caq": 15.18,
+                      "plq": 38.18,
+                      "pq": 7.58,
+                      "qs": 30.44,
+                      "pcq": 6.14
+              },
+              "vimont-auteuil": {
+                      "caq": 34.28,
+                      "plq": 29.85,
+                      "pq": 10.57,
+                      "qs": 11.48,
+                      "pcq": 12.88
+              },
+              "westmount-saint-louis": {
+                      "caq": 10.08,
+                      "plq": 50.48,
+                      "pq": 6.05,
+                      "qs": 12.82,
+                      "pcq": 9.21
+              }
+      },
+      // national baseline for the uniform-swing projection (= 2022 result)
+      national2021: {
+              "caq": 40.98,
+              "plq": 14.37,
+              "qs": 15.43,
+              "pq": 14.61,
+              "pcq": 12.91
+      },
+    },
+    pollsterMAE: {},
+    maeKey: 'QC2022',
+    logos: {
+      caq: 'img/qc/CAQ.svg', plq: 'img/qc/PLQ.svg', pq: 'img/qc/PQ.svg',
+      qs: 'img/qc/QS.svg', pcq: 'img/qc/PCQ.svg',
+    },
+  },
 };
 
 // ===== Active country (switched at runtime) =====

@@ -29,6 +29,7 @@ COUNTRY_NAMES = {
     "poland": "Poland", "netherlands": "Netherlands",
     "estonia": "Estonia", "slovakia": "Slovakia", "france": "France",
     "greece": "Greece",
+    "italy": "Italy",
 }
 ALIASES = {
     # Sweden
@@ -68,6 +69,11 @@ ALIASES = {
     "Spartans": "Spartans (Greek political party)",
     "Victory": "Niki (Greek political party)",
     "Voice of Reason": "Voice of Reason (political party)",
+    # Italy
+    "Democratic Party": "Democratic Party (Italy)",
+    "League for Salvini Premier": "Lega (political party)",
+    "Forza Italia": "Forza Italia (2013)",
+    "Action": "Action (Italian political party)",
 }
 
 

@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded',()=>{injectLangToggle();});
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
 const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
-const partyCode=pid=>(PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid;
+const partyCode=pid=>pid==='other'?'Other':((PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid);
 
 // Label for the sub-national units (MAP_ONLY countries can override; default "federative units")
 const unitLabel=()=>{
@@ -137,7 +137,12 @@ const methodNameShort=()=>{
   return 'Sainte-Laguë';
 };
 function methodSentence(){
-  const nD=MAP_CONF()&&MAP_CONF().seatDistricts?Object.keys(MAP_CONF().seatDistricts).length:0;
+  const conf=MAP_CONF()||{};
+  if(conf.mixedFptp||((COUNTRIES[COUNTRY]||{}).mixedFptp)){
+    const nf=Object.values(conf.fptpSeats||{}).reduce((a,b)=>a+b,0);
+    return `the <strong>Rosatellum</strong> mixed system: ${nf} seats by <strong>first-past-the-post</strong> in single-member districts (the winning coalition takes the region's districts) plus ${SEATS_TOTAL-nf} seats from a <strong>national proportional pool</strong> (D'Hondt, 3% threshold)`;
+  }
+  const nD=conf.seatDistricts?Object.keys(conf.seatDistricts).length:0;
   let s;
   if(SEAT_METHOD==='dhondt') s=nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
   else if(SEAT_METHOD==='hare_niemeyer') s="the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
@@ -1356,7 +1361,7 @@ function districtShares(nr, avg, resultMode, confOverride){
   // 2023-based projection (never the base point itself).
   const region=conf.regionOf?conf.regionOf[String(nr)]:null;
   const reg=region&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
-  const rbase=region&&conf.region2023?conf.region2023[region]:null;
+  const rbase=region?((conf.regionBase||conf.region2023||conf.region2022||{})[region]||null):null;
   const rw=(conf.regionalBlend!==undefined)?conf.regionalBlend:0.5;
   const out={};
   let sum=0;
@@ -2033,10 +2038,55 @@ function allocateSeatsCzechia(avg){
   return out;
 }
 
+// Italy (Rosatellum): 147 FPTP districts (the winning coalition takes each
+// region's districts, attributed to the coalition's leading list in that
+// region) + a 253-seat national PR pool (D'Hondt, 3% threshold). A region
+// won by an unmodelled regionalist list (Valle d'Aosta) keeps its seat out
+// of the modelled parties.
+function allocateSeatsItaly(avg){
+  const conf=MAP_CONF();
+  if(!conf||!conf.fptpSeats) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  const blocOf={};
+  for(const bk of ['bloc1','bloc2']){
+    const b=BLOCS[bk]; if(!b) continue;
+    (b.parties||[]).forEach(p=>{blocOf[p]=bk});
+  }
+  let fptpTotal=0;
+  for(const region of Object.keys(conf.fptpSeats)){
+    const n=conf.fptpSeats[region]||0;
+    if(!n) continue;
+    const shares=districtShares(region,avg,false);
+    if(!shares) continue;
+    const ent={};
+    for(const p of PARTY_ORDER){
+      const k=blocOf[p]||p;
+      ent[k]=(ent[k]||0)+(shares[p]?shares[p].now:0);
+    }
+    if(shares.other) ent.other=(ent.other||0)+shares.other.now;
+    let best=null,bestV=-1;
+    for(const k of Object.keys(ent)){if(ent[k]>bestV){bestV=ent[k];best=k}}
+    if(!best||best==='other') continue;
+    const pool=BLOCS[best]?BLOCS[best].parties:[best];
+    let poolSum=0;
+    for(const p of pool) poolSum+=(shares[p]?shares[p].now:0);
+    if(poolSum<=0) continue;
+    const q=pool.map(p=>({p,exact:n*(shares[p]?shares[p].now:0)/poolSum}));
+    q.forEach(x=>{x.seat=Math.floor(x.exact)});
+    let given=q.reduce((a,x)=>a+x.seat,0);
+    q.sort((a,b)=>(b.exact-Math.floor(b.exact))-(a.exact-Math.floor(a.exact)));
+    for(let i=0;given<n;i++,given++) q[i%q.length].seat++;
+    q.forEach(x=>{if(x.seat){out[x.p]+=x.seat;fptpTotal+=x.seat}});
+  }
+  const prSeats=allocateSeatsN(avg,Math.max(0,SEATS_TOTAL-fptpTotal));
+  for(const p of PARTY_ORDER) out[p]+=(prSeats[p]||0);
+  return out;
+}
+
 // Seat allocation for a projection: per-okręg D'Hondt when the country defines
 // seatDistricts (Poland), else the national-district allocation.
 function allocateSeatsTotal(avg, total){
-  return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsN(avg,total);
+  return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsN(avg,total);
 }
 
 function buildParliamentSVG(seats){
@@ -2359,7 +2409,7 @@ function runForecast(avg, nSims, nPolls){
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
     simVotes.other=100*draws[PARTY_ORDER.length]/totalD;
     simVotes=applyNationalSwing(simVotes);
-    const seats=allocateSeatsFast(simVotes,SEATS_TOTAL);
+    const seats=(MAP_CONF()&&MAP_CONF().fptpSeats)?allocateSeatsItaly(simVotes):allocateSeatsFast(simVotes,SEATS_TOTAL);
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
@@ -3644,7 +3694,7 @@ function renderMethodology(pane){
         <p>${COUNTRY_NAME} elects its president in a two-round system: a candidate wins outright with a <strong>majority of valid votes</strong> on ${TREND_CONF?TREND_CONF.electionDate:'election day'}; otherwise the top two candidates face a runoff two weeks later. The map shows the <strong>${SEATS_TOTAL} ${unitLabel()}</strong> colored by projected winner from the poll average.</p>`:`
         <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
         <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES&&CONSTITUENCIES&&CONSTITUENCIES.constituencies?` — ${CONSTITUENCIES.constituency_seats} ${CONSTITUENCY_RULE==='fptp'?'direct mandates (first-past-the-post)':`constituency seats across ${CONSTITUENCIES.constituencies.length} constituencies`}${CONSTITUENCIES.leveling_seats?` plus ${CONSTITUENCIES.leveling_seats} leveling seats`:''}`:''} via ${methodSentence()}, with a <strong>${THRESHOLD}% electoral threshold</strong>.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
-        <p>The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.</p>`}
+        <p>${(MAP_CONF()&&MAP_CONF().fptpSeats)?`The projection runs in two parts: the <strong>${Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} single-member districts</strong> go to the winning coalition in each region (its seats split among the coalition's parties by regional support), and the remaining <strong>${SEATS_TOTAL-Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} seats</strong> come from a national proportional pool allocated by D'Hondt among parties above the threshold. The map colors each region by its leading party.`:`The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.`}</p>`}
 
         ${HIDE_BLOCS?'':`<h3>${t('Bloc Totals','Blok Toplamları')}</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>`}

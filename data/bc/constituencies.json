@@ -1,0 +1,1124 @@
+{
+ "country": "bc",
+ "total_seats": 93,
+ "constituency_seats": 93,
+ "leveling_seats": 0,
+ "constituencies": [
+  {
+   "id": "abbotsford-mission",
+   "name": "Abbotsford-Mission",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.62,
+    "cpbc": 55.38,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "abbotsfordsouth",
+   "name": "Abbotsford South",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 35.18,
+    "cpbc": 61.61,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "abbotsfordwest",
+   "name": "Abbotsford West",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 36.87,
+    "cpbc": 58.35,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "boundary-similkameen",
+   "name": "Boundary-Similkameen",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 42.56,
+    "cpbc": 48.39,
+    "gpbc": 5.89,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "bulkleyvalley-stikine",
+   "name": "Bulkley Valley-Stikine",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 38.86,
+    "cpbc": 52.31,
+    "gpbc": 6.33,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "burnaby-newwestminster",
+   "name": "Burnaby-New Westminster",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 59.99,
+    "cpbc": 34.71,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "burnabycentre",
+   "name": "Burnaby Centre",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 57.28,
+    "cpbc": 42.72,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "burnabyeast",
+   "name": "Burnaby East",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 51.85,
+    "cpbc": 40.52,
+    "gpbc": 7.63,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "burnabynorth",
+   "name": "Burnaby North",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 53.26,
+    "cpbc": 43.0,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "burnabysouth-metrotown",
+   "name": "Burnaby South-Metrotown",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 49.33,
+    "cpbc": 41.59,
+    "gpbc": 6.26,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "cariboo-chilcotin",
+   "name": "Cariboo-Chilcotin",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 30.41,
+    "cpbc": 69.59,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "chilliwack-cultuslake",
+   "name": "Chilliwack-Cultus Lake",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 45.42,
+    "cpbc": 54.58,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "chilliwacknorth",
+   "name": "Chilliwack North",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 37.66,
+    "cpbc": 54.58,
+    "gpbc": 5.5,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "columbiariver-revelstoke",
+   "name": "Columbia River-Revelstoke",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.26,
+    "cpbc": 47.93,
+    "gpbc": 7.82,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "coquitlam-burkemountain",
+   "name": "Coquitlam-Burke Mountain",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 50.85,
+    "cpbc": 49.15,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "coquitlam-maillardville",
+   "name": "Coquitlam-Maillardville",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 51.8,
+    "cpbc": 39.57,
+    "gpbc": 6.32,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "courtenay-comox",
+   "name": "Courtenay-Comox",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 38.56,
+    "cpbc": 38.83,
+    "gpbc": 20.74,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "cowichanvalley",
+   "name": "Cowichan Valley",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 40.51,
+    "cpbc": 37.59,
+    "gpbc": 19.83,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "deltanorth",
+   "name": "Delta North",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 52.73,
+    "cpbc": 40.22,
+    "gpbc": 6.2,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "deltasouth",
+   "name": "Delta South",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.93,
+    "cpbc": 55.07,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "esquimalt-colwood",
+   "name": "Esquimalt-Colwood",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 51.47,
+    "cpbc": 29.22,
+    "gpbc": 19.31,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "fraser-nicola",
+   "name": "Fraser-Nicola",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 36.4,
+    "cpbc": 54.34,
+    "gpbc": 9.27,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "juandefuca-malahat",
+   "name": "Juan de Fuca-Malahat",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 38.79,
+    "cpbc": 38.2,
+    "gpbc": 23.01,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kamloops-norththompson",
+   "name": "Kamloops-North Thompson",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 32.9,
+    "cpbc": 59.74,
+    "gpbc": 7.36,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kamloopscentre",
+   "name": "Kamloops Centre",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 40.92,
+    "cpbc": 48.83,
+    "gpbc": 10.25,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kelowna-lakecountry-coldstream",
+   "name": "Kelowna-Lake Country-Coldstream",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 35.25,
+    "cpbc": 53.92,
+    "gpbc": 4.34,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kelowna-mission",
+   "name": "Kelowna-Mission",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 32.61,
+    "cpbc": 51.49,
+    "gpbc": 4.94,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kelownacentre",
+   "name": "Kelowna Centre",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 42.69,
+    "cpbc": 42.85,
+    "gpbc": 4.31,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kootenay-monashee",
+   "name": "Kootenay-Monashee",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 52.04,
+    "cpbc": 38.85,
+    "gpbc": 9.11,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kootenay-rockies",
+   "name": "Kootenay-Rockies",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 21.75,
+    "cpbc": 42.71,
+    "gpbc": 5.18,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "kootenaycentral",
+   "name": "Kootenay Central",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 39.63,
+    "cpbc": 31.67,
+    "gpbc": 18.74,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "ladysmith-oceanside",
+   "name": "Ladysmith-Oceanside",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 41.49,
+    "cpbc": 35.48,
+    "gpbc": 6.72,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "langford-highlands",
+   "name": "Langford-Highlands",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 51.87,
+    "cpbc": 37.4,
+    "gpbc": 10.73,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "langley-abbotsford",
+   "name": "Langley-Abbotsford",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 33.73,
+    "cpbc": 55.65,
+    "gpbc": 5.56,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "langley-walnutgrove",
+   "name": "Langley-Walnut Grove",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.77,
+    "cpbc": 49.56,
+    "gpbc": 5.13,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "langley-willowbrook",
+   "name": "Langley-Willowbrook",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.43,
+    "cpbc": 48.24,
+    "gpbc": 7.34,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "mapleridge-pittmeadows",
+   "name": "Maple Ridge-Pitt Meadows",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 54.89,
+    "cpbc": 45.11,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "mapleridgeeast",
+   "name": "Maple Ridge East",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 46.64,
+    "cpbc": 47.02,
+    "gpbc": 6.34,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "midisland-pacificrim",
+   "name": "Mid Island-Pacific Rim",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 48.74,
+    "cpbc": 39.45,
+    "gpbc": 11.81,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "nanaimo-gabriolaisland",
+   "name": "Nanaimo-Gabriola Island",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 52.75,
+    "cpbc": 34.65,
+    "gpbc": 12.6,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "nanaimo-lantzville",
+   "name": "Nanaimo-Lantzville",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 51.75,
+    "cpbc": 39.51,
+    "gpbc": 8.74,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "nechakolakes",
+   "name": "Nechako Lakes",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 27.21,
+    "cpbc": 67.45,
+    "gpbc": 5.34,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "newwestminster-coquitlam",
+   "name": "New Westminster-Coquitlam",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 59.13,
+    "cpbc": 29.84,
+    "gpbc": 11.03,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "northcoast-haidagwaii",
+   "name": "North Coast-Haida Gwaii",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 64.92,
+    "cpbc": 35.08,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "northisland",
+   "name": "North Island",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.93,
+    "cpbc": 47.07,
+    "gpbc": 8.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "northvancouver-lonsdale",
+   "name": "North Vancouver-Lonsdale",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 64.88,
+    "cpbc": 35.12,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "northvancouver-seymour",
+   "name": "North Vancouver-Seymour",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 52.77,
+    "cpbc": 35.79,
+    "gpbc": 5.61,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "oakbay-gordonhead",
+   "name": "Oak Bay-Gordon Head",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 49.1,
+    "cpbc": 28.89,
+    "gpbc": 22.01,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "peacerivernorth",
+   "name": "Peace River North",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 5.49,
+    "cpbc": 74.36,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "peaceriversouth",
+   "name": "Peace River South",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 5.6,
+    "cpbc": 69.84,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "penticton-summerland",
+   "name": "Penticton-Summerland",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 40.24,
+    "cpbc": 41.37,
+    "gpbc": 5.24,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "portcoquitlam",
+   "name": "Port Coquitlam",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 53.87,
+    "cpbc": 38.79,
+    "gpbc": 6.4,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "portmoody-burquitlam",
+   "name": "Port Moody-Burquitlam",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 52.06,
+    "cpbc": 40.5,
+    "gpbc": 7.44,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "powellriver-sunshinecoast",
+   "name": "Powell River-Sunshine Coast",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 49.62,
+    "cpbc": 35.68,
+    "gpbc": 13.48,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "princegeorge-mackenzie",
+   "name": "Prince George-Mackenzie",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 28.24,
+    "cpbc": 60.92,
+    "gpbc": 8.49,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "princegeorge-northcariboo",
+   "name": "Prince George-North Cariboo",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 17.03,
+    "cpbc": 56.82,
+    "gpbc": 4.31,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "princegeorge-valemount",
+   "name": "Prince George-Valemount",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 34.94,
+    "cpbc": 55.19,
+    "gpbc": 9.87,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "richmond-bridgeport",
+   "name": "Richmond-Bridgeport",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 34.77,
+    "cpbc": 58.19,
+    "gpbc": 3.21,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "richmond-queensborough",
+   "name": "Richmond-Queensborough",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.13,
+    "cpbc": 50.91,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "richmond-steveston",
+   "name": "Richmond-Steveston",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.27,
+    "cpbc": 42.2,
+    "gpbc": 3.44,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "richmondcentre",
+   "name": "Richmond Centre",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 36.78,
+    "cpbc": 51.99,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "saanichnorthandtheislands",
+   "name": "Saanich North and the Islands",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 32.19,
+    "cpbc": 29.8,
+    "gpbc": 36.15,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "saanichsouth",
+   "name": "Saanich South",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 49.76,
+    "cpbc": 32.45,
+    "gpbc": 17.79,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "salmonarm-shuswap",
+   "name": "Salmon Arm-Shuswap",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 30.44,
+    "cpbc": 52.11,
+    "gpbc": 7.08,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "skeena",
+   "name": "Skeena",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 44.44,
+    "cpbc": 51.2,
+    "gpbc": 3.33,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-cloverdale",
+   "name": "Surrey-Cloverdale",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 45.55,
+    "cpbc": 48.32,
+    "gpbc": 5.41,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-fleetwood",
+   "name": "Surrey-Fleetwood",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 48.6,
+    "cpbc": 44.93,
+    "gpbc": 6.47,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-guildford",
+   "name": "Surrey-Guildford",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 46.93,
+    "cpbc": 46.81,
+    "gpbc": 4.32,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-newton",
+   "name": "Surrey-Newton",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 51.17,
+    "cpbc": 42.99,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-panorama",
+   "name": "Surrey-Panorama",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 48.11,
+    "cpbc": 49.6,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-serpentineriver",
+   "name": "Surrey-Serpentine River",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 47.49,
+    "cpbc": 49.7,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surrey-whiterock",
+   "name": "Surrey-White Rock",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 45.29,
+    "cpbc": 52.31,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surreycitycentre",
+   "name": "Surrey City Centre",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 46.71,
+    "cpbc": 45.07,
+    "gpbc": 6.1,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surreynorth",
+   "name": "Surrey North",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 43.28,
+    "cpbc": 50.67,
+    "gpbc": 4.22,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "surreysouth",
+   "name": "Surrey South",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 41.17,
+    "cpbc": 58.83,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-fraserview",
+   "name": "Vancouver-Fraserview",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 57.18,
+    "cpbc": 36.62,
+    "gpbc": 6.21,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-hastings",
+   "name": "Vancouver-Hastings",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 64.15,
+    "cpbc": 24.29,
+    "gpbc": 10.85,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-kensington",
+   "name": "Vancouver-Kensington",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 60.9,
+    "cpbc": 31.52,
+    "gpbc": 7.58,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-langara",
+   "name": "Vancouver-Langara",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 48.43,
+    "cpbc": 46.05,
+    "gpbc": 5.52,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-littlemountain",
+   "name": "Vancouver-Little Mountain",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 62.11,
+    "cpbc": 30.61,
+    "gpbc": 7.28,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-pointgrey",
+   "name": "Vancouver-Point Grey",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 56.77,
+    "cpbc": 34.51,
+    "gpbc": 8.72,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-quilchena",
+   "name": "Vancouver-Quilchena",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 38.91,
+    "cpbc": 51.58,
+    "gpbc": 7.78,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-renfrew",
+   "name": "Vancouver-Renfrew",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 63.22,
+    "cpbc": 30.66,
+    "gpbc": 6.12,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-southgranville",
+   "name": "Vancouver-South Granville",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 64.31,
+    "cpbc": 24.96,
+    "gpbc": 10.73,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-strathcona",
+   "name": "Vancouver-Strathcona",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 67.62,
+    "cpbc": 17.09,
+    "gpbc": 13.62,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-westend",
+   "name": "Vancouver-West End",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 63.01,
+    "cpbc": 27.22,
+    "gpbc": 9.08,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vancouver-yaletown",
+   "name": "Vancouver-Yaletown",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 49.76,
+    "cpbc": 43.36,
+    "gpbc": 6.89,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "vernon-lumby",
+   "name": "Vernon-Lumby",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 42.69,
+    "cpbc": 40.97,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "victoria-beaconhill",
+   "name": "Victoria-Beacon Hill",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 47.35,
+    "cpbc": 19.15,
+    "gpbc": 33.5,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "victoria-swanlake",
+   "name": "Victoria-Swan Lake",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 56.03,
+    "cpbc": 20.2,
+    "gpbc": 23.16,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "westkelowna-peachland",
+   "name": "West Kelowna-Peachland",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 27.9,
+    "cpbc": 50.85,
+    "gpbc": 0.0,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "westvancouver-capilano",
+   "name": "West Vancouver-Capilano",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 27.13,
+    "cpbc": 46.68,
+    "gpbc": 5.56,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  },
+  {
+   "id": "westvancouver-seatosky",
+   "name": "West Vancouver-Sea to Sky",
+   "seats": 1,
+   "results_2022": {
+    "bcndp": 26.31,
+    "cpbc": 35.61,
+    "gpbc": 38.08,
+    "cbc": 0.0,
+    "onbc": 0.0
+   }
+  }
+ ]
+}

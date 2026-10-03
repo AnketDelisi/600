@@ -1,0 +1,651 @@
+{
+  "country": "bc",
+  "source": "Wikipedia",
+  "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+  "scraped_at": "2026-10-03T13:59:16Z",
+  "poll_count": 43,
+  "polls": [
+    {
+      "pollster": "Liaison Strategies",
+      "fieldwork_start": "2026-09-26",
+      "date": "2026-09-26",
+      "n": 1000,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 39.0,
+        "cpbc": 40.0,
+        "gpbc": 11.0,
+        "onbc": 3.0,
+        "cbc": 4.0
+      }
+    },
+    {
+      "pollster": "Ipsos",
+      "fieldwork_start": "2026-09-25",
+      "date": "2026-09-25",
+      "n": 1001,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 40.0,
+        "cpbc": 42.0,
+        "gpbc": 10.0,
+        "onbc": 3.0,
+        "cbc": 3.0
+      }
+    },
+    {
+      "pollster": "Innovative Research",
+      "fieldwork_start": "2026-09-25",
+      "date": "2026-09-25",
+      "n": 500,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 41.0,
+        "cpbc": 39.0,
+        "gpbc": 11.0,
+        "onbc": 4.0,
+        "cbc": 3.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-09-24",
+      "date": "2026-09-24",
+      "n": 1003,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 36.0,
+        "cpbc": 39.0,
+        "gpbc": 13.0,
+        "onbc": 5.0,
+        "cbc": 5.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2026-09-22",
+      "date": "2026-09-22",
+      "n": 801,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 35.0,
+        "cpbc": 43.0,
+        "gpbc": 12.0,
+        "onbc": 4.0,
+        "cbc": 3.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2026-09-08",
+      "date": "2026-09-08",
+      "n": 749,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 41.0,
+        "cpbc": 37.0,
+        "gpbc": 13.0
+      }
+    },
+    {
+      "pollster": "Ipsos",
+      "fieldwork_start": "2026-09-08",
+      "date": "2026-09-08",
+      "n": 800,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 45.0,
+        "cpbc": 35.0,
+        "gpbc": 10.0,
+        "onbc": 2.0,
+        "cbc": 4.0
+      }
+    },
+    {
+      "pollster": "Innovative Research",
+      "fieldwork_start": "2026-09-04",
+      "date": "2026-09-04",
+      "n": 500,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 43.0,
+        "cpbc": 39.0,
+        "gpbc": 14.0
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2026-08-12",
+      "date": "2026-08-12",
+      "n": 801,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 39.0,
+        "gpbc": 10.0,
+        "onbc": 1.0,
+        "cbc": 5.0
+      }
+    },
+    {
+      "pollster": "604 Polling",
+      "fieldwork_start": "2026-07-31",
+      "date": "2026-08-08",
+      "n": 1124,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 35.0,
+        "cpbc": 45.0,
+        "gpbc": 12.0,
+        "onbc": 2.0,
+        "cbc": 2.0
+      }
+    },
+    {
+      "pollster": "Yorkville Strategies",
+      "fieldwork_start": "2026-07-28",
+      "date": "2026-08-03",
+      "n": 1016,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 46.0,
+        "cpbc": 40.0,
+        "gpbc": 12.0,
+        "onbc": 1.0,
+        "cbc": 0.0
+      }
+    },
+    {
+      "pollster": "Fairview Strategy",
+      "fieldwork_start": "2026-07-06",
+      "date": "2026-07-06",
+      "n": 896,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 40.0,
+        "gpbc": 12.0
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2026-06-03",
+      "date": "2026-06-03",
+      "n": 803,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 42.0,
+        "cpbc": 42.0,
+        "gpbc": 9.0,
+        "onbc": 2.0,
+        "cbc": 3.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2026-06-01",
+      "date": "2026-06-01",
+      "n": 755,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 36.0,
+        "cpbc": 47.0,
+        "gpbc": 11.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-06-01",
+      "date": "2026-06-01",
+      "n": 1002,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 41.0,
+        "cpbc": 45.0,
+        "gpbc": 8.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2026-04-24",
+      "date": "2026-04-24",
+      "n": 804,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 36.0,
+        "cpbc": 46.0,
+        "gpbc": 13.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2026-04-09",
+      "date": "2026-04-09",
+      "n": 1275,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 38.0,
+        "cpbc": 32.8,
+        "gpbc": 16.1,
+        "onbc": 10.9
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-04-03",
+      "date": "2026-04-03",
+      "n": 1003,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 40.0,
+        "gpbc": 10.0,
+        "onbc": 3.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2026-03-11",
+      "date": "2026-03-11",
+      "n": 499,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 42.0,
+        "cpbc": 44.0,
+        "gpbc": 9.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2026-03-11",
+      "date": "2026-03-11",
+      "n": 1054,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 39.0,
+        "cpbc": 37.0,
+        "gpbc": 12.0
+      }
+    },
+    {
+      "pollster": "Innovative Research",
+      "fieldwork_start": "2026-02-06",
+      "date": "2026-03-03",
+      "n": 991,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 39.0,
+        "cpbc": 47.0,
+        "gpbc": 10.0
+      }
+    },
+    {
+      "pollster": "One Persuasion",
+      "fieldwork_start": "2026-02-21",
+      "date": "2026-02-21",
+      "n": 1005,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 37.0,
+        "cpbc": 41.0,
+        "gpbc": 11.0,
+        "onbc": 6.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-02-12",
+      "date": "2026-02-12",
+      "n": 1256,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 42.0,
+        "cpbc": 40.0,
+        "gpbc": 11.0,
+        "onbc": 5.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-02-06",
+      "date": "2026-02-06",
+      "n": 1007,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 39.0,
+        "gpbc": 9.0,
+        "onbc": 5.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-01-23",
+      "date": "2026-01-23",
+      "n": 1003,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 38.0,
+        "gpbc": 9.0,
+        "onbc": 6.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2025-12-17",
+      "date": "2025-12-17",
+      "n": 1902,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 41.0,
+        "cpbc": 41.0,
+        "gpbc": 10.0,
+        "onbc": 7.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-12-11",
+      "date": "2025-12-11",
+      "n": 923,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 39.0,
+        "gpbc": 9.0,
+        "onbc": 7.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2025-11-26",
+      "date": "2025-12-01",
+      "n": 463,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 43.0,
+        "cpbc": 40.0,
+        "gpbc": 11.0
+      }
+    },
+    {
+      "pollster": "Yorkville Strategies",
+      "fieldwork_start": "2025-11-24",
+      "date": "2025-11-24",
+      "n": 600,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 40.0,
+        "cpbc": 42.0,
+        "gpbc": 8.0,
+        "onbc": 5.0
+      }
+    },
+    {
+      "pollster": "EKOS",
+      "fieldwork_start": "2025-11-20",
+      "date": "2025-11-20",
+      "n": 889,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 35.0,
+        "gpbc": 9.0,
+        "onbc": 8.0,
+        "cbc": 2.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2025-10-23",
+      "date": "2025-10-23",
+      "n": 1044,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 40.0,
+        "cpbc": 41.0,
+        "gpbc": 11.0,
+        "onbc": 5.0,
+        "cbc": 1.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-10-10",
+      "date": "2025-10-10",
+      "n": 1035,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 48.0,
+        "cpbc": 38.0,
+        "gpbc": 8.0
+      }
+    },
+    {
+      "pollster": "Abacus Data",
+      "fieldwork_start": "2025-10-09",
+      "date": "2025-10-09",
+      "n": 1000,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 47.0,
+        "cpbc": 40.0,
+        "gpbc": 8.0,
+        "onbc": 1.0,
+        "cbc": 3.0
+      }
+    },
+    {
+      "pollster": "Cardinal Research",
+      "fieldwork_start": "2025-10-04",
+      "date": "2025-10-04",
+      "n": 1088,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 42.5,
+        "cpbc": 41.3,
+        "gpbc": 10.0,
+        "onbc": 3.8
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2025-10-01",
+      "date": "2025-10-01",
+      "n": 801,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 38.0,
+        "gpbc": 12.0,
+        "onbc": 1.0,
+        "cbc": 3.0
+      }
+    },
+    {
+      "pollster": "Angus Reid",
+      "fieldwork_start": "2025-08-28",
+      "date": "2025-09-05",
+      "n": 811,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 42.0,
+        "cpbc": 44.0,
+        "gpbc": 10.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2025-06-23",
+      "date": "2025-06-23",
+      "n": 943,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 41.0,
+        "cpbc": 44.0,
+        "gpbc": 7.0
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2025-06-07",
+      "date": "2025-06-07",
+      "n": 803,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 43.0,
+        "cpbc": 42.0,
+        "gpbc": 8.0,
+        "onbc": 1.0,
+        "cbc": 2.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-05-23",
+      "date": "2025-05-23",
+      "n": 304,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 45.0,
+        "cpbc": 39.0,
+        "gpbc": 11.0
+      }
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "fieldwork_start": "2025-05-02",
+      "date": "2025-05-02",
+      "n": 345,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 45.0,
+        "cpbc": 47.0,
+        "gpbc": 7.0
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2025-03-03",
+      "date": "2025-03-03",
+      "n": 802,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 42.0,
+        "gpbc": 11.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2025-02-15",
+      "date": "2025-02-15",
+      "n": 677,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 48.8,
+        "cpbc": 40.7,
+        "gpbc": 7.6
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-01-24",
+      "date": "2025-01-24",
+      "n": 1001,
+      "country": "bc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+      "votes": {
+        "bcndp": 44.0,
+        "cpbc": 42.0,
+        "gpbc": 10.0
+      }
+    }
+  ]
+}

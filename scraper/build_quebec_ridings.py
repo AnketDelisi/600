@@ -107,10 +107,12 @@ def main():
         votes.setdefault(row[0], {}).setdefault(key, 0)
         votes[row[0]][key] += int(re.sub(r"[^\d]", "", row[6]) or 0)
     shares = {}
+    raw = {}
     for num, v in votes.items():
         vv = valid.get(num) or sum(v.values()) or 1
-        shares[name_of.get(num, num)] = {p: round(v.get(p, 0) * 100 / vv, 2)
-                                         for p in PARTIES}
+        name = name_of.get(num, num)
+        shares[name] = {p: round(v.get(p, 0) * 100 / vv, 2) for p in PARTIES}
+        raw[name] = (v, vv)
     print("2022 ridings with shares:", len(shares))
 
     # national 2022 result + seat counts (official)
@@ -126,14 +128,18 @@ def main():
         seats[key] = int(re.sub(r"[^\d]", "", row[5]) or 0)
     print("national:", nat, "| seats:", seats)
 
-    def lookup(name):
+    def resolve(name):
         if name in shares:
-            return shares[name]
+            return name
         if name in RENAMES and RENAMES[name] in shares:
-            return shares[RENAMES[name]]
+            return RENAMES[name]
         if name in NEW_RIDINGS and NEW_RIDINGS[name] in shares:
-            return shares[NEW_RIDINGS[name]]
+            return NEW_RIDINGS[name]
         return None
+
+    def lookup(name):
+        src = resolve(name)
+        return shares[src] if src else None
 
     missing = [n for n in geo_names if lookup(n) is None]
     print("without baseline:", missing)
@@ -195,6 +201,23 @@ def main():
                  label="Montreal")
     shutil.copy2(OUT_SVG, BMV_SVG)
 
+    # Regional baselines for the sub-national blend: "mtl" is the inset area
+    # (island + Laval + South Shore), everything else is "rest"; the 2022
+    # shares are vote-weighted sums of the riding results.
+    mtl = set(urban_ids)
+    region_of = {c["id"]: ("mtl" if c["id"] in mtl else "rest") for c in cons}
+    rv = {"mtl": {}, "rest": {}}
+    rvv = {"mtl": 0, "rest": 0}
+    for c in cons:
+        reg = region_of[c["id"]]
+        v, vv = raw[resolve(c["name"])]
+        for p in PARTIES:
+            rv[reg][p] = rv[reg].get(p, 0) + v.get(p, 0)
+        rvv[reg] += vv
+    region_base = {reg: {p: round(100 * rv[reg].get(p, 0) / rvv[reg], 2)
+                         for p in PARTIES} for reg in ("mtl", "rest")}
+    print("region base:", region_base)
+
     cfg_path = os.path.join(ROOT, "js", "config.js")
     text = open(cfg_path, encoding="utf8").read()
     j = lambda o, ind: json.dumps(o, ensure_ascii=False, indent=ind)
@@ -245,6 +268,13 @@ def main():
       gebiete: @@gebiete@@,
       // national baseline for the uniform-swing projection (= 2022 result)
       national2021: @@national@@,
+      // Sub-national adjustment: the article's francophone/non-francophone
+      // crosstabs weighted into two regions by rough 2021 mother-tongue
+      // shares (mtl = island + Laval + South Shore), blended into the
+      // national swing at the default 0.5 (same pattern as Spain; the
+      // regional data is an adjustment, never the base point).
+      regionOf: @@regionOf@@,
+      regionBase: @@regionBase@@,
     },
     pollsterMAE: {},
     maeKey: 'QC2022',
@@ -260,7 +290,9 @@ def main():
             ("districts", j({c["id"]: c["id"] for c in cons}, 8).replace(
                 "\n", "\n      ")),
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
-                          8).replace("\n", "\n      "))):
+                          8).replace("\n", "\n      ")),
+            ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
+            ("regionBase", j(region_base, 8).replace("\n", "\n      "))):
         block = block.replace("@@%s@@" % ph, val)
 
     m = re.search(r"\n  qc: \{", text)

@@ -30,6 +30,20 @@ POLLSTER_ALIAS = {
     "pallas": "pallasdata",
 }
 
+# Sub-national signal: the article's only regional polling is the
+# francophone / non-francophone crosstab table. The app blends a regional
+# adjustment into the national swing (never the base point, same pattern as
+# Spain), so the crosstabs are weighted into two regions by rough 2021
+# census mother-tongue shares:
+#   mtl  = Montreal island + Laval + South Shore (~52% fr / 48% non-fr)
+#   rest = the rest of Quebec (~92% fr / 8% non-fr)
+# Non-francophone subsamples are small (n~150) and noisy; the 0.5 default
+# regionalBlend in the app tempers them.
+N_LANG = 4                     # most recent crosstab pairs to average
+REGION_LANG_WEIGHTS = {"mtl": (0.52, 0.48), "rest": (0.92, 0.08)}
+LANG_COLS = {"caq": "caq", "liberal": "plq", "pq": "pq", "qs": "qs",
+             "pcq": "pcq"}
+
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 
@@ -115,6 +129,60 @@ def parse_share(text):
     if not m:
         return None
     return float(m.group(1).replace(",", "."))
+
+
+def scrape_language(soup):
+    """Recent francophone/non-francophone crosstabs -> regional averages."""
+    for el in soup.find_all("table"):
+        if "wikitable" not in (el.get("class") or []):
+            continue
+        rows = el.find_all("tr")
+        head = " ".join(rows[0].get_text(" ", strip=True).split())
+        if "Language" not in head or "Firm" not in head:
+            continue
+        grid, metas = expand_grid(el)
+        cols = {}
+        for i, h in enumerate(grid[0]):
+            key = LANG_COLS.get(h.strip().lower())
+            if key:
+                cols[i] = key
+        series = {"francophone": [], "non-francophone": []}
+        for ri in range(1, len(grid)):
+            row = grid[ri]
+            if len(row) < 4:
+                continue
+            lang = row[2].strip().lower()
+            if lang not in series:
+                continue
+            _, date = parse_date(row[0])
+            if not date or date < CUTOFF:
+                continue
+            votes = {}
+            for start_c, span, txt in metas[ri]:
+                for i in range(start_c, min(start_c + span, len(row))):
+                    if i in cols:
+                        share = parse_share(txt)
+                        if share is not None:
+                            votes[cols[i]] = share
+            if len(votes) >= MIN_PARTIES:
+                series[lang].append((date, votes))
+        if not all(series.values()):
+            return {}
+        regional = {}
+        for lang, entries in series.items():
+            entries.sort(key=lambda e: e[0], reverse=True)
+            entries = entries[:N_LANG]
+            regional[lang] = {
+                p: sum(v.get(p, 0) for _, v in entries) / len(entries)
+                for p in LANG_COLS.values()}
+        out = {}
+        for region, (wf, wn) in REGION_LANG_WEIGHTS.items():
+            out[region] = {
+                p: round(wf * regional["francophone"][p]
+                         + wn * regional["non-francophone"][p], 1)
+                for p in LANG_COLS.values()}
+        return out
+    return {}
 
 
 def scrape_qc():
@@ -204,13 +272,17 @@ def scrape_qc():
                       "votes": votes})
     polls = canonicalize_polls(polls, POLLSTER_ALIAS)
     polls.sort(key=lambda p: p["date"], reverse=True)
-    return polls
+    return polls, scrape_language(soup)
 
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    polls = scrape_qc()
+    polls, regional = scrape_qc()
     print(f"Scraped {len(polls)} polls")
+    if regional:
+        print("Regional averages (francophone/non-francophone crosstabs):")
+        for k in sorted(regional):
+            print(f"  {k:5s} {regional[k]}")
     out = OUTPUT_DIR / "polls.json"
     out.write_text(json.dumps({
         "country": COUNTRY,
@@ -219,6 +291,7 @@ def main():
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "poll_count": len(polls),
         "polls": polls,
+        "regional": regional,
     }, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {out}")
     if polls:

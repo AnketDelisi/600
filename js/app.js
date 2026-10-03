@@ -517,6 +517,18 @@ function partyMomentum(polls, party, recentDays, baseDays){
   return r-b;
 }
 
+// Same idea for the runoff pair: 14-day vs 30-day mean of the head-to-head
+// shares (runoff polls carry the pair in p.runoff, not p.votes).
+function runoffMomentum(roPolls, cand, recentDays, baseDays){
+  recentDays=recentDays||14; baseDays=baseDays||30;
+  const now=Date.now();
+  const val=p=>p.runoff&&p.runoff[cand]!==undefined?p.runoff[cand]:null;
+  const recent=roPolls.filter(p=>val(p)!==null&&now-new Date(p.date).getTime()<=recentDays*864e5).map(val);
+  const base=roPolls.filter(p=>val(p)!==null&&now-new Date(p.date).getTime()<=baseDays*864e5).map(val);
+  if(!recent.length||!base.length) return null;
+  return mean(recent)-mean(base);
+}
+
 
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 function renderCountryNav(){
@@ -2552,11 +2564,17 @@ function runoffForecast(avg, filtered, sim){
   // (the old model) overstates the margin and made this card disagree with
   // the elected-president probability.
   let winA=0;
+  const valsA=[];
   for(let s=0;s<3000;s++){
     const x=gaussianSample(rng)*sigma;
-    if(aN+x > bN-x) winA++;
+    const va=aN+x;
+    valsA.push(va);
+    if(va > bN-x) winA++;
   }
-  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls};
+  valsA.sort((p,q)=>p-q);
+  const aExp=mean(valsA), aLo=percentile(valsA,5), aHi=percentile(valsA,95);
+  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,
+             aExp,aLo,aHi,bExp:100-aExp,bLo:100-aHi,bHi:100-aLo};
   RUNOFF_CACHE[cacheKey]=res;
   return res;
 }
@@ -2676,6 +2694,18 @@ function renderForecast(pane){
         <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>
         <span class="fc-row-val">${pct100(p)}</span>
       </div>`;
+      const shareRow=(label,color,mu,lo,hi,mom)=>{
+        const momHtml=(mom===null||mom===undefined)?'':(mom>0
+          ?`<span class="fc-mom up" title="14-day trend vs 30-day">▲ +${fmt(mom,1)}</span>`
+          :`<span class="fc-mom down" title="14-day trend vs 30-day">▼ ${fmt(mom,1)}</span>`);
+        return `<div class="fc-voterow">
+        <span class="fc-row-label" style="color:${color}">${label}</span>
+        ${momHtml}
+        <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${Math.min(100,mu/50*100).toFixed(1)}%;background:${color}"></div></div>
+        <span class="fc-vote-val">${fmt(mu,1)}%</span>
+        <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
+      </div>`;
+      };
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
@@ -2690,6 +2720,9 @@ function renderForecast(pane){
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('ELECTED PRESIDENT','CUMHURBAŞKANI SEÇİLİR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,eleA)}
         ${row(partyCode(ro.b),cB,eleB)}
+        <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('PROJECTED VOTE SHARE','TAHMİNİ OY ORANI')}</span><span>EXP</span><span>90% INT</span></div>
+        ${shareRow(partyCode(ro.a),cA,ro.aExp,ro.aLo,ro.aHi,runoffMomentum(ro.roPolls,ro.a))}
+        ${shareRow(partyCode(ro.b),cB,ro.bExp,ro.bLo,ro.bHi,runoffMomentum(ro.roPolls,ro.b))}
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
           ${t('Two-round system: a candidate is elected with a majority of valid votes in the first round; otherwise the top two face a runoff two weeks later'+(META.election_date_runoff?rDateNote:'')+'. P(elected) = round-1 majority + reach-the-runoff × head-to-head win.','İki turlu sistem: aday birinci turda geçerli oyların çoğunluğunu alırsa seçilir; aksi halde ilk iki aday iki hafta sonra ikinci turda karşılaşır'+(META.election_date_runoff?rDateNote:'')+'. Seçilme olasılığı = birinci turda çoğunluk + ikinci tura kalma × ikinci tur kazanma.')}
         </div>

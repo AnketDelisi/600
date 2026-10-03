@@ -489,6 +489,9 @@ function daysAgo(dateStr){
 }
 
 function recentPolls(polls, days){
+  // a 4-digit year ("2026" filter) is a calendar-year window, not days
+  if(days>=1900&&days<=2100)
+    return polls.filter(p=>(p.date||'').slice(0,4)===String(days));
   const cutoff=new Date();
   cutoff.setDate(cutoff.getDate()-days);
   return polls.filter(p=>new Date(p.date)>=cutoff);
@@ -556,6 +559,7 @@ function renderSidebar(prevDays, prevPollster){
       <option value="30"${prevDays==='30'?' selected':''}>${T.last30}</option>
       <option value="60"${prevDays==='60'?' selected':''}>${T.last60}</option>
       <option value="90"${prevDays==='90'?' selected':''}>${T.last90}</option>
+      <option value="2026"${prevDays==='2026'?' selected':''}>2026</option>
       <option value="9999"${prevDays==='9999'?' selected':''}>${T.allPolls}</option>
     </select>
     <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.pollster}</label>

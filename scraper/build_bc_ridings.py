@@ -172,6 +172,17 @@ def main():
     hideBlocs: true,              // no governing/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
+    // trend extrapolation to the 2026-10-24 election: fresh campaign polls
+    // (5 in the last 14 days); the maxDaily cap (0.3pp/day) and the 7-day
+    // damping hold the earlier +10pp intercept artifact in check
+    trend: {
+      electionDate: '2026-10-24',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+    },
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
       bcndp: { code: 'BCNDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
@@ -193,11 +204,6 @@ def main():
       results: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
       seats:   { bcndp: 47, cpbc: 44, gpbc: 2, cbc: 0, onbc: 0 },
     },
-    // No trend extrapolation: the newest BC poll is a week old and the recent
-    // spread (NDP 35-41) makes a fitted slope unreliable; the trend's
-    // intercept extrapolates to today from the last data point, which turned
-    // a noisy +1.3pp/day slope into a +10pp artifact. Re-add once the
-    // campaign produces fresh daily polls.
     map: {
       svg: 'img/bc_ridings.svg',
       selector: 'id',

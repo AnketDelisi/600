@@ -1421,6 +1421,16 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // single national district; map shows okrug-level winners
     recencyHalfLifeDays: 7,
+    // trend extrapolation to the 2026-10-25 election; 30-day fit window
+    // because polling is sparse (3 polls in the last 30 days)
+    trend: {
+      electionDate: '2026-10-25',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      fitDays: 30,
+      minPolls: 3,
+    },
     parties: {
       sns:  { code: 'SNS',  name: 'Srpska napredna stranka',             name_en: 'Serbian Progressive Party',      color: '#242970' },
       sps:  { code: 'SPS',  name: 'Socijalistička partija Srbije',       name_en: 'Socialist Party of Serbia',      color: '#EB1B23' },
@@ -3417,6 +3427,16 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,        // 5 multi-member constituencies; we model nationally
     recencyHalfLifeDays: 7,
+    // trend extrapolation to the 2026-10-03 election; the fit window keeps it
+    // inert when the recent polls are too sparse (0 polls in the last 14 days)
+    trend: {
+      electionDate: '2026-10-03',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+    },
     parties: {
       as:  { code: 'AS',   name: 'Apvienotais saraksts',           name_en: 'United List',                color: '#FFAC01' },
       sv:  { code: 'SV',   name: 'Suverēnā vara',                  name_en: 'Sovereign Power',            color: '#6767AB' },
@@ -21959,6 +21979,17 @@ saxony_anhalt: {
     hideBlocs: true,              // no governing/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
+    // trend extrapolation to the 2026-10-24 election: fresh campaign polls
+    // (5 in the last 14 days); the maxDaily cap (0.3pp/day) and the 7-day
+    // damping hold the earlier +10pp intercept artifact in check
+    trend: {
+      electionDate: '2026-10-24',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+    },
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
       bcndp: { code: 'BCNDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
@@ -21980,11 +22011,6 @@ saxony_anhalt: {
       results: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
       seats:   { bcndp: 47, cpbc: 44, gpbc: 2, cbc: 0, onbc: 0 },
     },
-    // No trend extrapolation: the newest BC poll is a week old and the recent
-    // spread (NDP 35-41) makes a fitted slope unreliable; the trend's
-    // intercept extrapolates to today from the last data point, which turned
-    // a noisy +1.3pp/day slope into a +10pp artifact. Re-add once the
-    // campaign produces fresh daily polls.
     map: {
       svg: 'img/bc_ridings.svg',
       selector: 'id',
@@ -22765,6 +22791,17 @@ saxony_anhalt: {
     hideBlocs: true,              // no government/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
+    // trend extrapolation to the 2026-10-05 election: fresh campaign polls
+    // (4 in the last 14 days); with 2 days left the damping collapses the
+    // projected move to well under a point
+    trend: {
+      electionDate: '2026-10-05',
+      blend: 0.5,
+      maxDaily: 0.3,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+    },
     // colours from the en.wikipedia party infoboxes
     parties: {
       caq:  { code: 'CAQ',  name: 'Coalition Avenir Québec',           name_en: 'Coalition Avenir Québec',           color: '#1E90FF' },
@@ -22798,9 +22835,6 @@ saxony_anhalt: {
               "pcq": 0
       },
     },
-    // No trend extrapolation (same call as BC: the intercept extrapolates to
-    // today from the last data point, which is fragile with noisy provincial
-    // polls). Re-add with fresh daily campaign polls.
     map: {
       svg: 'img/quebec.svg',
       selector: 'id',

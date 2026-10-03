@@ -24159,52 +24159,61 @@ saxony_anhalt: {
       apni: { code: 'APNI', name: 'Alliance Party of Northern Ireland', name_en: 'Alliance Party of Northern Ireland', color: '#F6CB2F' },
       uup:  { code: 'UUP',  name: 'Ulster Unionist Party',    name_en: 'Ulster Unionist Party',    color: '#48A5EE' },
       tuv:  { code: 'TUV',  name: 'Traditional Unionist Voice', name_en: 'Traditional Unionist Voice', color: '#201863' },
+      spk:  { code: 'SPK',  name: 'Speaker',                  name_en: 'Speaker',                  color: '#333333' },
+      ind:  { code: 'IND',  name: 'Independent',              name_en: 'Independent',              color: '#9CA3AF' },
+      yp:   { code: 'YP',   name: 'Your Party',               name_en: 'Your Party',               color: '#FF3131' },
     },
     order: ['lab', 'ref', 'con', 'lib', 'grn', 'res', 'snp', 'plc',
-            'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv'],
+            'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv', 'spk', 'ind', 'yp'],
     parlOrder: ['grn', 'snp', 'plc', 'sf', 'sdlp', 'lab', 'lib', 'apni',
-                'uup', 'con', 'dup', 'tuv', 'ref', 'res'],
+                'uup', 'con', 'dup', 'tuv', 'ref', 'res', 'yp', 'ind', 'spk'],
     // governing party vs the rest (majority = 326)
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['lab'], color: '#E41C3E' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res', 'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv'], color: '#0087DC' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res', 'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv', 'spk', 'ind', 'yp'], color: '#0087DC' },
     },
     lastElection: {
       date: '2024-07-04',
       // 2024 general election (House of Commons Library, official)
       results: {
-              "lab": 33.79,
+              "lab": 33.7,
               "con": 23.7,
-              "ref": 14.29,
+              "ref": 14.24,
               "lib": 12.22,
               "grn": 6.75,
               "snp": 2.52,
               "plc": 0.68,
-              "res": 0.0,
+              "res": 0.05,
               "sf": 0.73,
               "dup": 0.6,
               "sdlp": 0.3,
               "apni": 0.41,
               "uup": 0.33,
               "tuv": 0.17,
-              "other": 3.52
+              "spk": 0.09,
+              "ind": 0.26,
+              "yp": 0.08,
+              "other": 3.18
       },
       seats: {
-              "lab": 412,
+              "lab": 411,
               "con": 121,
-              "ref": 5,
+              "ref": 4,
               "lib": 72,
               "grn": 4,
               "snp": 9,
               "plc": 4,
-              "res": 0,
+              "res": 1,
               "sf": 7,
               "dup": 5,
               "sdlp": 2,
               "apni": 1,
               "uup": 1,
               "tuv": 1,
-              "other": 6
+              "spk": 1,
+              "ind": 5,
+              "yp": 1,
+              "other": 0
       },
     },
     map: {
@@ -24216,6 +24225,10 @@ saxony_anhalt: {
       // geographic shape for the swing, so its vote concentrates where
       // Reform is strong instead of being flat across every seat
       swingProxy: { res: 'ref' },
+      // notional holds: Great Yarmouth stays Restore Britain's (Rupert Lowe's
+      // defection), so RES keeps its re-attributed 2024 baseline there while
+      // the other parties swing normally
+      holdSeats: { greatyarmouth: 'res' },
       districts: {
               "aldershot": "aldershot",
               "aldridge-brownhills": "aldridge-brownhills",
@@ -24884,7 +24897,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "aldridge-brownhills": {
                       "lab": 28.37,
@@ -24900,7 +24916,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "altrinchamandsalewest": {
                       "lab": 40.42,
@@ -24916,7 +24935,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ambervalley": {
                       "lab": 37.02,
@@ -24932,7 +24954,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "arundelandsouthdowns": {
                       "lab": 17.87,
@@ -24948,7 +24973,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ashfield": {
                       "lab": 28.97,
@@ -24964,7 +24992,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ashford": {
                       "lab": 32.49,
@@ -24980,7 +25011,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ashton-under-lyne": {
                       "lab": 43.92,
@@ -24996,7 +25030,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "aylesbury": {
                       "lab": 30.2,
@@ -25012,7 +25049,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "banbury": {
                       "lab": 38.33,
@@ -25028,7 +25068,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "barking": {
                       "lab": 44.49,
@@ -25044,7 +25087,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "barnsleynorth": {
                       "lab": 50.44,
@@ -25060,7 +25106,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "barnsleysouth": {
                       "lab": 46.74,
@@ -25076,7 +25125,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "barrowandfurness": {
                       "lab": 43.9,
@@ -25092,7 +25144,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "basildonandbillericay": {
                       "lab": 30.59,
@@ -25108,7 +25163,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "basingstoke": {
                       "lab": 42.71,
@@ -25124,7 +25182,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bassetlaw": {
                       "lab": 41.17,
@@ -25140,7 +25201,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bath": {
                       "lab": 18.0,
@@ -25156,7 +25220,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "battersea": {
                       "lab": 48.81,
@@ -25172,7 +25239,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "beaconsfield": {
                       "lab": 15.12,
@@ -25188,7 +25258,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "beckenhamandpenge": {
                       "lab": 49.31,
@@ -25204,7 +25277,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bedford": {
                       "lab": 45.11,
@@ -25220,7 +25296,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bermondseyandoldsouthwark": {
                       "lab": 44.83,
@@ -25236,7 +25315,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bethnalgreenandstepney": {
                       "lab": 34.08,
@@ -25252,7 +25334,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "beverleyandholderness": {
                       "lab": 34.25,
@@ -25268,7 +25353,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bexhillandbattle": {
                       "lab": 28.33,
@@ -25284,7 +25372,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bexleyheathandcrayford": {
                       "lab": 36.16,
@@ -25300,7 +25391,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bicesterandwoodstock": {
                       "lab": 16.4,
@@ -25316,7 +25410,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birkenhead": {
                       "lab": 52.09,
@@ -25332,7 +25429,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamedgbaston": {
                       "lab": 44.35,
@@ -25348,7 +25448,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamerdington": {
                       "lab": 43.28,
@@ -25364,7 +25467,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamhallgreenandmoseley": {
                       "lab": 30.76,
@@ -25380,7 +25486,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamhodgehillandsolihullnorth": {
                       "lab": 31.21,
@@ -25396,7 +25505,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamladywood": {
                       "lab": 42.53,
@@ -25412,7 +25524,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamnorthfield": {
                       "lab": 39.65,
@@ -25428,7 +25543,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamperrybarr": {
                       "lab": 34.14,
@@ -25444,7 +25562,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 35.5,
+                      "yp": 0.0
               },
               "birminghamsellyoak": {
                       "lab": 45.21,
@@ -25460,7 +25581,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "birminghamyardley": {
                       "lab": 31.19,
@@ -25476,7 +25600,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bishopauckland": {
                       "lab": 42.14,
@@ -25492,7 +25619,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "blackburn": {
                       "lab": 26.71,
@@ -25508,7 +25638,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 27.05,
+                      "yp": 0.0
               },
               "blackleyandmiddletonsouth": {
                       "lab": 53.81,
@@ -25524,7 +25657,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "blackpoolnorthandfleetwood": {
                       "lab": 40.05,
@@ -25540,7 +25676,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "blackpoolsouth": {
                       "lab": 48.08,
@@ -25556,7 +25695,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "blaydonandconsett": {
                       "lab": 50.12,
@@ -25572,7 +25714,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "blythandashington": {
                       "lab": 49.58,
@@ -25588,7 +25733,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bognorregisandlittlehampton": {
                       "lab": 29.09,
@@ -25604,7 +25752,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bolsover": {
                       "lab": 40.53,
@@ -25620,7 +25771,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "boltonnortheast": {
                       "lab": 37.28,
@@ -25636,7 +25790,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "boltonsouthandwalkden": {
                       "lab": 40.87,
@@ -25652,7 +25809,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "boltonwest": {
                       "lab": 38.93,
@@ -25668,7 +25828,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bootle": {
                       "lab": 68.75,
@@ -25684,7 +25847,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bostonandskegness": {
                       "lab": 18.86,
@@ -25700,7 +25866,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bournemoutheast": {
                       "lab": 40.78,
@@ -25716,7 +25885,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bournemouthwest": {
                       "lab": 36.44,
@@ -25732,7 +25904,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bracknell": {
                       "lab": 33.72,
@@ -25748,7 +25923,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bradfordeast": {
                       "lab": 37.88,
@@ -25764,7 +25942,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bradfordsouth": {
                       "lab": 35.81,
@@ -25780,7 +25961,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bradfordwest": {
                       "lab": 31.62,
@@ -25796,7 +25980,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "braintree": {
                       "lab": 28.03,
@@ -25812,7 +25999,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "brenteast": {
                       "lab": 51.24,
@@ -25828,7 +26018,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "brentwest": {
                       "lab": 41.71,
@@ -25844,7 +26037,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "brentfordandisleworth": {
                       "lab": 44.21,
@@ -25860,7 +26056,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "brentwoodandongar": {
                       "lab": 22.93,
@@ -25876,7 +26075,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bridgwater": {
                       "lab": 27.24,
@@ -25892,7 +26094,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bridlingtonandthewolds": {
                       "lab": 27.3,
@@ -25908,7 +26113,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "briggandimmingham": {
                       "lab": 29.79,
@@ -25924,7 +26132,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "brightonkemptownandpeacehaven": {
                       "lab": 43.98,
@@ -25940,7 +26151,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "brightonpavilion": {
                       "lab": 27.73,
@@ -25956,7 +26170,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bristolcentral": {
                       "lab": 32.59,
@@ -25972,7 +26189,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bristoleast": {
                       "lab": 45.0,
@@ -25988,7 +26208,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bristolnortheast": {
                       "lab": 45.26,
@@ -26004,7 +26227,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bristolnorthwest": {
                       "lab": 49.64,
@@ -26020,7 +26246,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bristolsouth": {
                       "lab": 42.67,
@@ -26036,7 +26265,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "broadlandandfakenham": {
                       "lab": 31.51,
@@ -26052,7 +26284,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bromleyandbigginhill": {
                       "lab": 33.4,
@@ -26068,7 +26303,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bromsgrove": {
                       "lab": 26.82,
@@ -26084,7 +26322,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "broxbourne": {
                       "lab": 30.15,
@@ -26100,7 +26341,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "broxtowe": {
                       "lab": 40.89,
@@ -26116,7 +26360,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "buckinghamandbletchley": {
                       "lab": 36.95,
@@ -26132,7 +26379,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "burnley": {
                       "lab": 31.72,
@@ -26148,7 +26398,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "burtonanduttoxeter": {
                       "lab": 35.55,
@@ -26164,7 +26417,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "burynorth": {
                       "lab": 43.11,
@@ -26180,7 +26436,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "burysouth": {
                       "lab": 45.59,
@@ -26196,7 +26455,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "burystedmundsandstowmarket": {
                       "lab": 32.9,
@@ -26212,7 +26474,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "caldervalley": {
                       "lab": 44.44,
@@ -26228,7 +26493,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "camborneandredruth": {
                       "lab": 40.51,
@@ -26244,7 +26512,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cambridge": {
                       "lab": 46.59,
@@ -26260,7 +26531,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cannockchase": {
                       "lab": 36.48,
@@ -26276,7 +26550,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "canterbury": {
                       "lab": 41.35,
@@ -26292,7 +26569,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "carlisle": {
                       "lab": 39.43,
@@ -26308,7 +26588,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "carshaltonandwallington": {
                       "lab": 13.09,
@@ -26324,7 +26607,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "castlepoint": {
                       "lab": 23.27,
@@ -26340,7 +26626,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "centraldevon": {
                       "lab": 31.39,
@@ -26356,7 +26645,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "centralsuffolkandnorthipswich": {
                       "lab": 23.38,
@@ -26372,7 +26664,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chathamandaylesford": {
                       "lab": 33.51,
@@ -26388,7 +26683,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cheadle": {
                       "lab": 15.59,
@@ -26404,7 +26702,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chelmsford": {
                       "lab": 12.04,
@@ -26420,7 +26721,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chelseaandfulham": {
                       "lab": 39.38,
@@ -26436,7 +26740,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cheltenham": {
                       "lab": 5.38,
@@ -26452,7 +26759,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cheshamandamersham": {
                       "lab": 6.43,
@@ -26468,7 +26778,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chesternorthandneston": {
                       "lab": 49.8,
@@ -26484,7 +26797,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chestersouthandeddisbury": {
                       "lab": 32.1,
@@ -26500,7 +26816,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chesterfield": {
                       "lab": 46.48,
@@ -26516,7 +26835,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chichester": {
                       "lab": 6.11,
@@ -26532,7 +26854,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chingfordandwoodfordgreen": {
                       "lab": 25.82,
@@ -26548,7 +26873,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chippenham": {
                       "lab": 7.93,
@@ -26564,7 +26892,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chippingbarnet": {
                       "lab": 42.44,
@@ -26580,10 +26911,13 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "chorley": {
-                      "lab": 74.31,
+                      "lab": 0.0,
                       "con": 0.0,
                       "ref": 0.0,
                       "lib": 0.0,
@@ -26596,7 +26930,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 74.31,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "christchurch": {
                       "lab": 16.4,
@@ -26612,7 +26949,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "citiesoflondonandwestminster": {
                       "lab": 39.02,
@@ -26628,7 +26968,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cityofdurham": {
                       "lab": 47.09,
@@ -26644,7 +26987,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "clacton": {
                       "lab": 16.21,
@@ -26660,7 +27006,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "claphamandbrixtonhill": {
                       "lab": 56.54,
@@ -26676,7 +27025,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "colchester": {
                       "lab": 41.88,
@@ -26692,7 +27044,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "colnevalley": {
                       "lab": 41.04,
@@ -26708,7 +27063,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "congleton": {
                       "lab": 37.66,
@@ -26724,7 +27082,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "corbyandeastnorthamptonshire": {
                       "lab": 42.39,
@@ -26740,7 +27101,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "coventryeast": {
                       "lab": 49.46,
@@ -26756,7 +27120,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "coventrynorthwest": {
                       "lab": 46.86,
@@ -26772,7 +27139,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "coventrysouth": {
                       "lab": 47.65,
@@ -26788,7 +27158,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cramlingtonandkillingworth": {
                       "lab": 49.07,
@@ -26804,7 +27177,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "crawley": {
                       "lab": 38.24,
@@ -26820,7 +27196,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "creweandnantwich": {
                       "lab": 44.15,
@@ -26836,7 +27215,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "croydoneast": {
                       "lab": 42.35,
@@ -26852,7 +27234,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "croydonsouth": {
                       "lab": 35.33,
@@ -26868,7 +27253,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "croydonwest": {
                       "lab": 54.07,
@@ -26884,7 +27272,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dagenhamandrainham": {
                       "lab": 42.64,
@@ -26900,7 +27291,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "darlington": {
                       "lab": 39.22,
@@ -26916,7 +27310,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dartford": {
                       "lab": 34.6,
@@ -26932,7 +27329,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "daventry": {
                       "lab": 27.99,
@@ -26948,7 +27348,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "derbynorth": {
                       "lab": 45.5,
@@ -26964,7 +27367,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "derbysouth": {
                       "lab": 38.78,
@@ -26980,7 +27386,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "derbyshiredales": {
                       "lab": 34.64,
@@ -26996,7 +27405,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dewsburyandbatley": {
                       "lab": 22.87,
@@ -27012,7 +27424,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 41.08,
+                      "yp": 0.0
               },
               "didcotandwantage": {
                       "lab": 14.7,
@@ -27028,7 +27443,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "doncastercentral": {
                       "lab": 46.16,
@@ -27044,7 +27462,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "doncastereastandtheisleofaxholme": {
                       "lab": 38.64,
@@ -27060,7 +27481,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "doncasternorth": {
                       "lab": 52.35,
@@ -27076,7 +27500,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dorkingandhorley": {
                       "lab": 8.11,
@@ -27092,7 +27519,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "doveranddeal": {
                       "lab": 39.64,
@@ -27108,7 +27538,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "droitwichandevesham": {
                       "lab": 22.13,
@@ -27124,7 +27557,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dudley": {
                       "lab": 34.12,
@@ -27140,7 +27576,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dulwichandwestnorwood": {
                       "lab": 60.28,
@@ -27156,7 +27595,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dunstableandleightonbuzzard": {
                       "lab": 32.52,
@@ -27172,7 +27614,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ealingcentralandacton": {
                       "lab": 46.77,
@@ -27188,7 +27633,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ealingnorth": {
                       "lab": 47.8,
@@ -27204,7 +27652,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ealingsouthall": {
                       "lab": 49.13,
@@ -27220,7 +27671,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "earleyandwoodley": {
                       "lab": 39.66,
@@ -27236,7 +27690,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "easington": {
                       "lab": 48.87,
@@ -27252,7 +27709,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastgrinsteadanduckfield": {
                       "lab": 20.72,
@@ -27268,7 +27728,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastham": {
                       "lab": 51.65,
@@ -27284,7 +27747,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "easthampshire": {
                       "lab": 9.73,
@@ -27300,7 +27766,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastsurrey": {
                       "lab": 20.43,
@@ -27316,7 +27785,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastthanet": {
                       "lab": 39.93,
@@ -27332,7 +27804,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastwiltshire": {
                       "lab": 25.71,
@@ -27348,7 +27823,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastworthingandshoreham": {
                       "lab": 45.07,
@@ -27364,7 +27842,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastbourne": {
                       "lab": 5.9,
@@ -27380,7 +27861,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastleigh": {
                       "lab": 15.09,
@@ -27396,7 +27880,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "edmontonandwinchmorehill": {
                       "lab": 49.99,
@@ -27412,7 +27899,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ellesmereportandbromborough": {
                       "lab": 57.64,
@@ -27428,7 +27918,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "elthamandchislehurst": {
                       "lab": 44.04,
@@ -27444,7 +27937,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "elyandeastcambridgeshire": {
                       "lab": 17.49,
@@ -27460,7 +27956,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "enfieldnorth": {
                       "lab": 49.13,
@@ -27476,7 +27975,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eppingforest": {
                       "lab": 29.59,
@@ -27492,7 +27994,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "epsomandewell": {
                       "lab": 15.27,
@@ -27508,7 +28013,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "erewash": {
                       "lab": 40.05,
@@ -27524,7 +28032,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "erithandthamesmead": {
                       "lab": 55.09,
@@ -27540,7 +28051,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "esherandwalton": {
                       "lab": 5.28,
@@ -27556,7 +28070,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "exeter": {
                       "lab": 45.34,
@@ -27572,7 +28089,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "exmouthandexetereast": {
                       "lab": 28.46,
@@ -27588,7 +28108,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "farehamandwaterlooville": {
                       "lab": 22.91,
@@ -27604,7 +28127,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "farnhamandbordon": {
                       "lab": 13.82,
@@ -27620,7 +28146,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "favershamandmidkent": {
                       "lab": 28.65,
@@ -27636,7 +28165,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "felthamandheston": {
                       "lab": 41.5,
@@ -27652,7 +28184,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "filtonandbradleystoke": {
                       "lab": 45.48,
@@ -27668,7 +28203,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "finchleyandgoldersgreen": {
                       "lab": 44.34,
@@ -27684,7 +28222,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "folkestoneandhythe": {
                       "lab": 34.73,
@@ -27700,7 +28241,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "forestofdean": {
                       "lab": 34.05,
@@ -27716,7 +28260,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "fromeandeastsomerset": {
                       "lab": 13.73,
@@ -27732,7 +28279,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "fylde": {
                       "lab": 32.02,
@@ -27748,7 +28298,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gainsborough": {
                       "lab": 28.07,
@@ -27764,7 +28317,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gatesheadcentralandwhickham": {
                       "lab": 45.37,
@@ -27780,7 +28336,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gedling": {
                       "lab": 47.78,
@@ -27796,7 +28355,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gillinghamandrainham": {
                       "lab": 37.83,
@@ -27812,7 +28374,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glastonburyandsomerton": {
                       "lab": 6.53,
@@ -27828,7 +28393,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gloucester": {
                       "lab": 36.05,
@@ -27844,7 +28412,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "godalmingandash": {
                       "lab": 5.02,
@@ -27860,7 +28431,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gooleandpocklington": {
                       "lab": 30.98,
@@ -27876,7 +28450,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gortonanddenton": {
                       "lab": 50.75,
@@ -27892,7 +28469,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gosport": {
                       "lab": 26.6,
@@ -27908,7 +28488,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "granthamandbourne": {
                       "lab": 26.61,
@@ -27924,7 +28507,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gravesham": {
                       "lab": 38.45,
@@ -27940,7 +28526,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "greatgrimsbyandcleethorpes": {
                       "lab": 41.88,
@@ -27956,23 +28545,29 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "greatyarmouth": {
                       "lab": 31.8,
                       "con": 24.62,
-                      "ref": 35.3,
+                      "ref": 0.0,
                       "lib": 2.7,
                       "grn": 4.26,
                       "snp": 0.0,
                       "plc": 0.0,
-                      "res": 0.0,
+                      "res": 35.3,
                       "sf": 0.0,
                       "dup": 0.0,
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "greenwichandwoolwich": {
                       "lab": 56.18,
@@ -27988,7 +28583,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "guildford": {
                       "lab": 8.14,
@@ -28004,7 +28602,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hackneynorthandstokenewington": {
                       "lab": 59.46,
@@ -28020,7 +28621,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hackneysouthandshoreditch": {
                       "lab": 59.29,
@@ -28036,7 +28640,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "halesowen": {
                       "lab": 38.94,
@@ -28052,7 +28659,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "halifax": {
                       "lab": 35.15,
@@ -28068,7 +28678,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hamblevalley": {
                       "lab": 16.21,
@@ -28084,7 +28697,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hammersmithandchiswick": {
                       "lab": 52.31,
@@ -28100,7 +28716,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hampsteadandhighgate": {
                       "lab": 48.26,
@@ -28116,7 +28735,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harboroughoadbyandwigston": {
                       "lab": 32.22,
@@ -28132,7 +28754,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harlow": {
                       "lab": 37.62,
@@ -28148,7 +28773,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harpendenandberkhamsted": {
                       "lab": 7.47,
@@ -28164,7 +28792,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harrogateandknaresborough": {
                       "lab": 7.98,
@@ -28180,7 +28811,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harroweast": {
                       "lab": 28.85,
@@ -28196,7 +28830,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harrowwest": {
                       "lab": 43.84,
@@ -28212,7 +28849,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hartlepool": {
                       "lab": 46.22,
@@ -28228,7 +28868,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "harwichandnorthessex": {
                       "lab": 31.97,
@@ -28244,7 +28887,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hastingsandrye": {
                       "lab": 41.6,
@@ -28260,7 +28906,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "havant": {
                       "lab": 30.56,
@@ -28276,7 +28925,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hayesandharlington": {
                       "lab": 53.26,
@@ -28292,7 +28944,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hazelgrove": {
                       "lab": 23.54,
@@ -28308,7 +28963,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hemelhempstead": {
                       "lab": 38.19,
@@ -28324,7 +28982,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hendon": {
                       "lab": 38.43,
@@ -28340,7 +29001,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "henleyandthame": {
                       "lab": 6.72,
@@ -28356,7 +29020,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "herefordandsouthherefordshire": {
                       "lab": 29.83,
@@ -28372,7 +29039,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hernebayandsandwich": {
                       "lab": 30.2,
@@ -28388,7 +29058,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hertfordandstortford": {
                       "lab": 38.53,
@@ -28404,7 +29077,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hertsmere": {
                       "lab": 28.04,
@@ -28420,7 +29096,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hexham": {
                       "lab": 46.28,
@@ -28436,7 +29115,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "heywoodandmiddletonnorth": {
                       "lab": 40.58,
@@ -28452,7 +29134,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "highpeak": {
                       "lab": 45.79,
@@ -28468,7 +29153,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hinckleyandbosworth": {
                       "lab": 17.99,
@@ -28484,7 +29172,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hitchin": {
                       "lab": 43.93,
@@ -28500,7 +29191,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "holbornandstpancras": {
                       "lab": 48.92,
@@ -28516,7 +29210,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "honitonandsidmouth": {
                       "lab": 5.82,
@@ -28532,7 +29229,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hornchurchandupminster": {
                       "lab": 27.58,
@@ -28548,7 +29248,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hornseyandfriernbarnet": {
                       "lab": 58.66,
@@ -28564,7 +29267,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "horsham": {
                       "lab": 10.77,
@@ -28580,7 +29286,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "houghtonandsunderlandsouth": {
                       "lab": 47.05,
@@ -28596,7 +29305,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hoveandportslade": {
                       "lab": 52.42,
@@ -28612,7 +29324,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "huddersfield": {
                       "lab": 37.6,
@@ -28628,7 +29343,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "huntingdon": {
                       "lab": 32.2,
@@ -28644,7 +29362,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hyndburn": {
                       "lab": 33.5,
@@ -28660,7 +29381,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ilfordnorth": {
                       "lab": 33.37,
@@ -28676,7 +29400,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ilfordsouth": {
                       "lab": 40.17,
@@ -28692,7 +29419,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ipswich": {
                       "lab": 43.34,
@@ -28708,7 +29438,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "isleofwighteast": {
                       "lab": 18.38,
@@ -28724,7 +29457,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "isleofwightwest": {
                       "lab": 38.61,
@@ -28740,7 +29476,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "islingtonnorth": {
                       "lab": 34.43,
@@ -28756,7 +29495,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 49.22
               },
               "islingtonsouthandfinsbury": {
                       "lab": 53.67,
@@ -28772,7 +29514,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "jarrowandgatesheadeast": {
                       "lab": 51.34,
@@ -28788,7 +29533,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "keighleyandilkley": {
                       "lab": 36.73,
@@ -28804,7 +29552,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kenilworthandsoutham": {
                       "lab": 24.05,
@@ -28820,7 +29571,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kensingtonandbayswater": {
                       "lab": 40.62,
@@ -28836,7 +29590,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kettering": {
                       "lab": 35.85,
@@ -28852,7 +29609,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kingstonandsurbiton": {
                       "lab": 12.95,
@@ -28868,7 +29628,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kingstonuponhulleast": {
                       "lab": 43.76,
@@ -28884,7 +29647,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kingstonuponhullnorthandcottingham": {
                       "lab": 48.34,
@@ -28900,7 +29666,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kingstonuponhullwestandhaltemprice": {
                       "lab": 46.82,
@@ -28916,7 +29685,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kingswinfordandsouthstaffordshire": {
                       "lab": 26.33,
@@ -28932,7 +29704,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "knowsley": {
                       "lab": 67.25,
@@ -28948,7 +29723,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lancasterandwyre": {
                       "lab": 44.91,
@@ -28964,7 +29742,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedscentralandheadingley": {
                       "lab": 50.18,
@@ -28980,7 +29761,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedseast": {
                       "lab": 47.25,
@@ -28996,7 +29780,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedsnortheast": {
                       "lab": 51.5,
@@ -29012,7 +29799,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedsnorthwest": {
                       "lab": 45.97,
@@ -29028,7 +29818,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedssouth": {
                       "lab": 54.03,
@@ -29044,7 +29837,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedssouthwestandmorley": {
                       "lab": 43.97,
@@ -29060,7 +29856,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leedswestandpudsey": {
                       "lab": 49.3,
@@ -29076,7 +29875,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leicestereast": {
                       "lab": 21.62,
@@ -29092,7 +29894,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leicestersouth": {
                       "lab": 32.89,
@@ -29108,7 +29913,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 35.23,
+                      "yp": 0.0
               },
               "leicesterwest": {
                       "lab": 44.63,
@@ -29124,7 +29932,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leighandatherton": {
                       "lab": 48.51,
@@ -29140,7 +29951,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lewes": {
                       "lab": 6.72,
@@ -29156,7 +29970,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lewishameast": {
                       "lab": 58.19,
@@ -29172,7 +29989,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lewishamnorth": {
                       "lab": 57.66,
@@ -29188,7 +30008,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lewishamwestandeastdulwich": {
                       "lab": 59.05,
@@ -29204,7 +30027,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "leytonandwanstead": {
                       "lab": 47.46,
@@ -29220,7 +30046,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lichfield": {
                       "lab": 35.09,
@@ -29236,7 +30065,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lincoln": {
                       "lab": 43.81,
@@ -29252,7 +30084,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "liverpoolgarston": {
                       "lab": 58.37,
@@ -29268,7 +30103,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "liverpoolriverside": {
                       "lab": 61.89,
@@ -29284,7 +30122,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "liverpoolwalton": {
                       "lab": 70.57,
@@ -29300,7 +30141,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "liverpoolwavertree": {
                       "lab": 57.96,
@@ -29316,7 +30160,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "liverpoolwestderby": {
                       "lab": 66.57,
@@ -29332,7 +30179,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "loughborough": {
                       "lab": 40.82,
@@ -29348,7 +30198,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "louthandhorncastle": {
                       "lab": 22.54,
@@ -29364,7 +30217,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lowestoft": {
                       "lab": 34.58,
@@ -29380,7 +30236,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lutonnorth": {
                       "lab": 37.88,
@@ -29396,7 +30255,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lutonsouthandsouthbedfordshire": {
                       "lab": 35.42,
@@ -29412,7 +30274,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "macclesfield": {
                       "lab": 46.73,
@@ -29428,7 +30293,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "maidenhead": {
                       "lab": 11.46,
@@ -29444,7 +30312,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "maidstoneandmalling": {
                       "lab": 26.89,
@@ -29460,7 +30331,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "makerfield": {
                       "lab": 45.21,
@@ -29476,7 +30350,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "maldon": {
                       "lab": 19.7,
@@ -29492,7 +30369,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "manchestercentral": {
                       "lab": 50.81,
@@ -29508,7 +30388,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "manchesterrusholme": {
                       "lab": 51.85,
@@ -29524,7 +30407,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "manchesterwithington": {
                       "lab": 52.88,
@@ -29540,7 +30426,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "mansfield": {
                       "lab": 39.06,
@@ -29556,7 +30445,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "melkshamanddevizes": {
                       "lab": 8.96,
@@ -29572,7 +30464,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "meltonandsyston": {
                       "lab": 26.38,
@@ -29588,7 +30483,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "meridenandsolihulleast": {
                       "lab": 27.72,
@@ -29604,7 +30502,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midbedfordshire": {
                       "lab": 31.42,
@@ -29620,7 +30521,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midbuckinghamshire": {
                       "lab": 17.0,
@@ -29636,7 +30540,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midcheshire": {
                       "lab": 44.47,
@@ -29652,7 +30559,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midderbyshire": {
                       "lab": 36.48,
@@ -29668,7 +30578,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "middorsetandnorthpoole": {
                       "lab": 9.22,
@@ -29684,7 +30597,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midleicestershire": {
                       "lab": 32.33,
@@ -29700,7 +30616,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midnorfolk": {
                       "lab": 29.88,
@@ -29716,7 +30635,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midsussex": {
                       "lab": 17.62,
@@ -29732,7 +30654,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "middlesbroughandthornabyeast": {
                       "lab": 47.19,
@@ -29748,7 +30673,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "middlesbroughsouthandeastcleveland": {
                       "lab": 43.3,
@@ -29764,7 +30692,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "miltonkeynescentral": {
                       "lab": 42.34,
@@ -29780,7 +30711,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "miltonkeynesnorth": {
                       "lab": 42.02,
@@ -29796,7 +30730,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "mitchamandmorden": {
                       "lab": 55.43,
@@ -29812,7 +30749,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "morecambeandlunesdale": {
                       "lab": 40.79,
@@ -29828,7 +30768,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newforesteast": {
                       "lab": 19.71,
@@ -29844,7 +30787,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newforestwest": {
                       "lab": 23.33,
@@ -29860,7 +30806,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newark": {
                       "lab": 32.54,
@@ -29876,7 +30825,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newbury": {
                       "lab": 7.48,
@@ -29892,7 +30844,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newcastleupontynecentralandwest": {
                       "lab": 45.64,
@@ -29908,7 +30863,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newcastleupontyneeastandwallsend": {
                       "lab": 50.09,
@@ -29924,7 +30882,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newcastleupontynenorth": {
                       "lab": 50.27,
@@ -29940,7 +30901,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newcastle-under-lyme": {
                       "lab": 40.37,
@@ -29956,7 +30920,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newtonabbot": {
                       "lab": 14.83,
@@ -29972,7 +30939,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newtonaycliffeandspennymoor": {
                       "lab": 46.16,
@@ -29988,7 +30958,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "normantonandhemsworth": {
                       "lab": 47.53,
@@ -30004,7 +30977,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northbedfordshire": {
                       "lab": 28.25,
@@ -30020,7 +30996,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northcornwall": {
                       "lab": 5.77,
@@ -30036,7 +31015,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northcotswolds": {
                       "lab": 17.11,
@@ -30052,7 +31034,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northdevon": {
                       "lab": 6.25,
@@ -30068,7 +31053,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northdorset": {
                       "lab": 8.8,
@@ -30084,7 +31072,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northdurham": {
                       "lab": 39.85,
@@ -30100,7 +31091,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northeastcambridgeshire": {
                       "lab": 20.44,
@@ -30116,7 +31110,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northeastderbyshire": {
                       "lab": 38.35,
@@ -30132,7 +31129,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northeasthampshire": {
                       "lab": 9.1,
@@ -30148,7 +31148,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northeasthertfordshire": {
                       "lab": 34.95,
@@ -30164,7 +31167,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northeastsomersetandhanham": {
                       "lab": 40.57,
@@ -30180,7 +31186,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northherefordshire": {
                       "lab": 6.36,
@@ -30196,7 +31205,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northnorfolk": {
                       "lab": 6.12,
@@ -30212,7 +31224,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northnorthumberland": {
                       "lab": 36.56,
@@ -30228,7 +31243,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northshropshire": {
                       "lab": 6.9,
@@ -30244,7 +31262,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northsomerset": {
                       "lab": 35.59,
@@ -30260,7 +31281,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northwarwickshireandbedworth": {
                       "lab": 35.97,
@@ -30276,7 +31300,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northwestcambridgeshire": {
                       "lab": 33.28,
@@ -30292,7 +31319,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northwestessex": {
                       "lab": 30.8,
@@ -30308,7 +31338,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northwesthampshire": {
                       "lab": 28.49,
@@ -30324,7 +31357,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northwestleicestershire": {
                       "lab": 34.73,
@@ -30340,7 +31376,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northwestnorfolk": {
                       "lab": 25.0,
@@ -30356,7 +31395,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northamptonnorth": {
                       "lab": 43.55,
@@ -30372,7 +31414,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northamptonsouth": {
                       "lab": 38.47,
@@ -30388,7 +31433,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "norwichnorth": {
                       "lab": 45.44,
@@ -30404,7 +31452,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "norwichsouth": {
                       "lab": 47.64,
@@ -30420,7 +31471,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "nottinghameast": {
                       "lab": 53.55,
@@ -30436,7 +31490,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "nottinghamnorthandkimberley": {
                       "lab": 47.08,
@@ -30452,7 +31509,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "nottinghamsouth": {
                       "lab": 47.38,
@@ -30468,7 +31528,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "nuneaton": {
                       "lab": 36.92,
@@ -30484,7 +31547,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "oldbexleyandsidcup": {
                       "lab": 30.15,
@@ -30500,7 +31566,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "oldhameastandsaddleworth": {
                       "lab": 35.17,
@@ -30516,7 +31585,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "oldhamwestchaddertonandroyton": {
                       "lab": 34.3,
@@ -30532,7 +31604,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "orpington": {
                       "lab": 26.88,
@@ -30548,7 +31623,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ossettanddenbydale": {
                       "lab": 39.28,
@@ -30564,7 +31642,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "oxfordeast": {
                       "lab": 49.67,
@@ -30580,7 +31661,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "oxfordwestandabingdon": {
                       "lab": 13.0,
@@ -30596,7 +31680,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "peckham": {
                       "lab": 58.8,
@@ -30612,7 +31699,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "pendleandclitheroe": {
                       "lab": 34.5,
@@ -30628,7 +31718,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "penistoneandstocksbridge": {
                       "lab": 43.6,
@@ -30644,7 +31737,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "penrithandsolway": {
                       "lab": 40.56,
@@ -30660,7 +31756,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "peterborough": {
                       "lab": 32.05,
@@ -30676,7 +31775,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "plymouthmoorview": {
                       "lab": 41.22,
@@ -30692,7 +31794,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "plymouthsuttonanddevonport": {
                       "lab": 49.4,
@@ -30708,7 +31813,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "pontefractcastlefordandknottingley": {
                       "lab": 47.53,
@@ -30724,7 +31832,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "poole": {
                       "lab": 31.84,
@@ -30740,7 +31851,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "poplarandlimehouse": {
                       "lab": 43.05,
@@ -30756,7 +31870,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "portsmouthnorth": {
                       "lab": 34.85,
@@ -30772,7 +31889,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "portsmouthsouth": {
                       "lab": 48.44,
@@ -30788,7 +31908,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "preston": {
                       "lab": 35.02,
@@ -30804,7 +31927,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "putney": {
                       "lab": 48.92,
@@ -30820,7 +31946,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "queensparkandmaidavale": {
                       "lab": 52.49,
@@ -30836,7 +31965,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rawmarshandconisbrough": {
                       "lab": 49.0,
@@ -30852,7 +31984,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rayleighandwickford": {
                       "lab": 24.64,
@@ -30868,7 +32003,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "readingcentral": {
                       "lab": 47.69,
@@ -30884,7 +32022,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "readingwestandmidberkshire": {
                       "lab": 34.96,
@@ -30900,7 +32041,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "redcar": {
                       "lab": 40.99,
@@ -30916,7 +32060,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "redditch": {
                       "lab": 34.95,
@@ -30932,7 +32079,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "reigate": {
                       "lab": 29.41,
@@ -30948,7 +32098,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ribblevalley": {
                       "lab": 34.94,
@@ -30964,7 +32117,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "richmondandnorthallerton": {
                       "lab": 22.41,
@@ -30980,7 +32136,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "richmondpark": {
                       "lab": 9.67,
@@ -30996,7 +32155,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rochdale": {
                       "lab": 32.82,
@@ -31012,7 +32174,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rochesterandstrood": {
                       "lab": 36.16,
@@ -31028,7 +32193,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "romford": {
                       "lab": 31.5,
@@ -31044,7 +32212,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "romseyandsouthamptonnorth": {
                       "lab": 9.27,
@@ -31060,7 +32231,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rossendaleanddarwen": {
                       "lab": 40.9,
@@ -31076,7 +32250,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rothervalley": {
                       "lab": 38.51,
@@ -31092,7 +32269,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rotherham": {
                       "lab": 45.14,
@@ -31108,7 +32288,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rugby": {
                       "lab": 39.86,
@@ -31124,7 +32307,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ruislipnorthwoodandpinner": {
                       "lab": 29.27,
@@ -31140,7 +32326,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "runcornandhelsby": {
                       "lab": 52.94,
@@ -31156,7 +32345,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "runnymedeandweybridge": {
                       "lab": 20.65,
@@ -31172,7 +32364,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rushcliffe": {
                       "lab": 43.8,
@@ -31188,7 +32383,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rutlandandstamford": {
                       "lab": 22.34,
@@ -31204,7 +32402,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "salford": {
                       "lab": 53.22,
@@ -31220,7 +32421,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "salisbury": {
                       "lab": 26.51,
@@ -31236,7 +32440,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "scarboroughandwhitby": {
                       "lab": 40.16,
@@ -31252,7 +32459,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "scunthorpe": {
                       "lab": 39.65,
@@ -31268,7 +32478,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "seftoncentral": {
                       "lab": 56.42,
@@ -31284,7 +32497,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "selby": {
                       "lab": 46.3,
@@ -31300,7 +32516,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sevenoaks": {
                       "lab": 13.63,
@@ -31316,7 +32535,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sheffieldbrightsideandhillsborough": {
                       "lab": 51.57,
@@ -31332,7 +32554,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sheffieldcentral": {
                       "lab": 52.1,
@@ -31348,7 +32573,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sheffieldhallam": {
                       "lab": 46.27,
@@ -31364,7 +32592,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sheffieldheeley": {
                       "lab": 55.22,
@@ -31380,7 +32611,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sheffieldsoutheast": {
                       "lab": 52.3,
@@ -31396,7 +32630,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sherwoodforest": {
                       "lab": 38.72,
@@ -31412,7 +32649,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "shipley": {
                       "lab": 45.0,
@@ -31428,7 +32668,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "shrewsbury": {
                       "lab": 44.48,
@@ -31444,7 +32687,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sittingbourneandsheppey": {
                       "lab": 29.07,
@@ -31460,7 +32706,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "skiptonandripon": {
                       "lab": 32.15,
@@ -31476,7 +32725,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sleafordandnorthhykeham": {
                       "lab": 26.77,
@@ -31492,7 +32744,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "slough": {
                       "lab": 33.89,
@@ -31508,7 +32763,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "smethwick": {
                       "lab": 48.01,
@@ -31524,7 +32782,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "solihullwestandshirley": {
                       "lab": 24.88,
@@ -31540,7 +32801,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southbasildonandeastthurrock": {
                       "lab": 30.54,
@@ -31556,7 +32820,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southcambridgeshire": {
                       "lab": 11.13,
@@ -31572,7 +32839,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southcotswolds": {
                       "lab": 7.54,
@@ -31588,7 +32858,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southderbyshire": {
                       "lab": 38.77,
@@ -31604,7 +32877,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southdevon": {
                       "lab": 6.26,
@@ -31620,7 +32896,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southdorset": {
                       "lab": 31.93,
@@ -31636,7 +32915,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southeastcornwall": {
                       "lab": 31.79,
@@ -31652,7 +32934,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southhollandandthedeepings": {
                       "lab": 19.78,
@@ -31668,7 +32953,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southleicestershire": {
                       "lab": 24.84,
@@ -31684,7 +32972,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southnorfolk": {
                       "lab": 35.0,
@@ -31700,7 +32991,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southnorthamptonshire": {
                       "lab": 28.87,
@@ -31716,7 +33010,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southribble": {
                       "lab": 42.47,
@@ -31732,7 +33029,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southshields": {
                       "lab": 41.07,
@@ -31748,7 +33048,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southshropshire": {
                       "lab": 13.43,
@@ -31764,7 +33067,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southsuffolk": {
                       "lab": 26.71,
@@ -31780,7 +33086,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southwestdevon": {
                       "lab": 30.25,
@@ -31796,7 +33105,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southwesthertfordshire": {
                       "lab": 19.97,
@@ -31812,7 +33124,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southwestnorfolk": {
                       "lab": 26.72,
@@ -31828,7 +33143,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southwestwiltshire": {
                       "lab": 26.8,
@@ -31844,7 +33162,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southamptonitchen": {
                       "lab": 41.47,
@@ -31860,7 +33181,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southamptontest": {
                       "lab": 44.53,
@@ -31876,7 +33200,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southendeastandrochford": {
                       "lab": 38.82,
@@ -31892,7 +33219,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southendwestandleigh": {
                       "lab": 35.64,
@@ -31908,7 +33238,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southgateandwoodgreen": {
                       "lab": 51.1,
@@ -31924,7 +33257,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southport": {
                       "lab": 38.29,
@@ -31940,7 +33276,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "spelthorne": {
                       "lab": 26.96,
@@ -31956,7 +33295,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "spenvalley": {
                       "lab": 39.15,
@@ -31972,7 +33314,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stalbans": {
                       "lab": 10.05,
@@ -31988,7 +33333,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "staustellandnewquay": {
                       "lab": 34.15,
@@ -32004,7 +33352,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sthelensnorth": {
                       "lab": 52.59,
@@ -32020,7 +33371,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sthelenssouthandwhiston": {
                       "lab": 49.74,
@@ -32036,7 +33390,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stives": {
                       "lab": 5.8,
@@ -32052,7 +33409,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stneotsandmidcambridgeshire": {
                       "lab": 13.08,
@@ -32068,7 +33428,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stafford": {
                       "lab": 40.28,
@@ -32084,7 +33447,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "staffordshiremoorlands": {
                       "lab": 32.64,
@@ -32100,7 +33466,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stalybridgeandhyde": {
                       "lab": 43.83,
@@ -32116,7 +33485,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stevenage": {
                       "lab": 41.43,
@@ -32132,7 +33504,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stockport": {
                       "lab": 49.88,
@@ -32148,7 +33523,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stocktonnorth": {
                       "lab": 45.8,
@@ -32164,7 +33542,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stocktonwest": {
                       "lab": 37.49,
@@ -32180,7 +33561,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stoke-on-trentcentral": {
                       "lab": 42.36,
@@ -32196,7 +33580,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stoke-on-trentnorth": {
                       "lab": 40.33,
@@ -32212,7 +33599,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stoke-on-trentsouth": {
                       "lab": 34.73,
@@ -32228,7 +33618,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stonegreatwyrleyandpenkridge": {
                       "lab": 33.7,
@@ -32244,7 +33637,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stourbridge": {
                       "lab": 38.46,
@@ -32260,7 +33656,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stratfordandbow": {
                       "lab": 44.08,
@@ -32276,7 +33675,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stratford-on-avon": {
                       "lab": 7.09,
@@ -32292,7 +33694,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "streathamandcroydonnorth": {
                       "lab": 52.14,
@@ -32308,7 +33713,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stretfordandurmston": {
                       "lab": 49.22,
@@ -32324,7 +33732,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stroud": {
                       "lab": 46.37,
@@ -32340,7 +33751,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "suffolkcoastal": {
                       "lab": 31.69,
@@ -32356,7 +33770,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sunderlandcentral": {
                       "lab": 42.18,
@@ -32372,7 +33789,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "surreyheath": {
                       "lab": 6.59,
@@ -32388,7 +33808,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "sussexweald": {
                       "lab": 16.75,
@@ -32404,7 +33827,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "suttonandcheam": {
                       "lab": 17.71,
@@ -32420,7 +33846,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "suttoncoldfield": {
                       "lab": 33.02,
@@ -32436,7 +33865,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "swindonnorth": {
                       "lab": 40.6,
@@ -32452,7 +33884,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "swindonsouth": {
                       "lab": 48.39,
@@ -32468,7 +33903,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tamworth": {
                       "lab": 35.03,
@@ -32484,7 +33922,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tatton": {
                       "lab": 36.26,
@@ -32500,7 +33941,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tauntonandwellington": {
                       "lab": 7.06,
@@ -32516,7 +33960,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "telford": {
                       "lab": 44.71,
@@ -32532,7 +33979,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tewkesbury": {
                       "lab": 8.85,
@@ -32548,7 +33998,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "thewrekin": {
                       "lab": 30.86,
@@ -32564,7 +34017,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "thirskandmalton": {
                       "lab": 24.09,
@@ -32580,7 +34036,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "thornburyandyate": {
                       "lab": 9.48,
@@ -32596,7 +34055,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "thurrock": {
                       "lab": 42.73,
@@ -32612,7 +34074,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tiptonandwednesbury": {
                       "lab": 36.91,
@@ -32628,7 +34093,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tivertonandminehead": {
                       "lab": 9.11,
@@ -32644,7 +34112,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tonbridge": {
                       "lab": 18.58,
@@ -32660,7 +34131,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tooting": {
                       "lab": 55.17,
@@ -32676,7 +34150,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "torbay": {
                       "lab": 7.1,
@@ -32692,7 +34169,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "torridgeandtavistock": {
                       "lab": 21.18,
@@ -32708,7 +34188,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tottenham": {
                       "lab": 57.45,
@@ -32724,7 +34207,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "truroandfalmouth": {
                       "lab": 41.35,
@@ -32740,7 +34226,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tunbridgewells": {
                       "lab": 11.39,
@@ -32756,7 +34245,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "twickenham": {
                       "lab": 12.48,
@@ -32772,7 +34264,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "tynemouth": {
                       "lab": 50.58,
@@ -32788,7 +34283,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "uxbridgeandsouthruislip": {
                       "lab": 36.15,
@@ -32804,7 +34302,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "vauxhallandcamberwellgreen": {
                       "lab": 57.35,
@@ -32820,7 +34321,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wakefieldandrothwell": {
                       "lab": 43.72,
@@ -32836,7 +34340,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wallasey": {
                       "lab": 57.72,
@@ -32852,7 +34359,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "walsallandbloxwich": {
                       "lab": 33.65,
@@ -32868,7 +34378,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "walthamstow": {
                       "lab": 59.5,
@@ -32884,7 +34397,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "warringtonnorth": {
                       "lab": 46.78,
@@ -32900,7 +34416,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "warringtonsouth": {
                       "lab": 46.71,
@@ -32916,7 +34435,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "warwickandleamington": {
                       "lab": 48.73,
@@ -32932,7 +34454,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "washingtonandgatesheadsouth": {
                       "lab": 47.76,
@@ -32948,7 +34473,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "watford": {
                       "lab": 35.33,
@@ -32964,7 +34492,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "waveneyvalley": {
                       "lab": 9.42,
@@ -32980,7 +34511,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wealdofkent": {
                       "lab": 23.23,
@@ -32996,7 +34530,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wellingboroughandrushden": {
                       "lab": 40.32,
@@ -33012,7 +34549,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wellsandmendiphills": {
                       "lab": 7.0,
@@ -33028,7 +34568,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "welwynhatfield": {
                       "lab": 41.02,
@@ -33044,7 +34587,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westbromwich": {
                       "lab": 46.25,
@@ -33060,7 +34606,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westdorset": {
                       "lab": 5.87,
@@ -33076,7 +34625,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westhamandbeckton": {
                       "lab": 45.21,
@@ -33092,7 +34644,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westlancashire": {
                       "lab": 50.46,
@@ -33108,7 +34663,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westsuffolk": {
                       "lab": 27.22,
@@ -33124,7 +34682,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westworcestershire": {
                       "lab": 15.24,
@@ -33140,7 +34701,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westmorlandandlonsdale": {
                       "lab": 4.66,
@@ -33156,7 +34720,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "weston-super-mare": {
                       "lab": 38.48,
@@ -33172,7 +34739,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wetherbyandeasingwold": {
                       "lab": 30.14,
@@ -33188,7 +34758,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "whitehavenandworkington": {
                       "lab": 52.99,
@@ -33204,7 +34777,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "widnesandhalewood": {
                       "lab": 61.61,
@@ -33220,7 +34796,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wigan": {
                       "lab": 47.44,
@@ -33236,7 +34815,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wimbledon": {
                       "lab": 21.34,
@@ -33252,7 +34834,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "winchester": {
                       "lab": 5.3,
@@ -33268,7 +34853,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "windsor": {
                       "lab": 22.16,
@@ -33284,7 +34872,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wirralwest": {
                       "lab": 46.36,
@@ -33300,7 +34891,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "witham": {
                       "lab": 27.04,
@@ -33316,7 +34910,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "witney": {
                       "lab": 9.44,
@@ -33332,7 +34929,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "woking": {
                       "lab": 9.23,
@@ -33348,7 +34948,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wokingham": {
                       "lab": 6.72,
@@ -33364,7 +34967,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wolverhamptonnortheast": {
                       "lab": 42.9,
@@ -33380,7 +34986,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wolverhamptonsoutheast": {
                       "lab": 50.33,
@@ -33396,7 +35005,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wolverhamptonwest": {
                       "lab": 44.28,
@@ -33412,7 +35024,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "worcester": {
                       "lab": 40.45,
@@ -33428,7 +35043,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "worsleyandeccles": {
                       "lab": 47.66,
@@ -33444,7 +35062,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "worthingwest": {
                       "lab": 40.24,
@@ -33460,7 +35081,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wycombe": {
                       "lab": 35.92,
@@ -33476,7 +35100,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wyreforest": {
                       "lab": 30.29,
@@ -33492,7 +35119,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wythenshaweandsaleeast": {
                       "lab": 52.63,
@@ -33508,7 +35138,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "yeovil": {
                       "lab": 6.13,
@@ -33524,7 +35157,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "yorkcentral": {
                       "lab": 56.64,
@@ -33540,7 +35176,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "yorkouter": {
                       "lab": 45.32,
@@ -33556,7 +35195,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "belfasteast": {
                       "lab": 0.0,
@@ -33572,7 +35214,10 @@ saxony_anhalt: {
                       "sdlp": 1.45,
                       "apni": 40.32,
                       "uup": 4.26,
-                      "tuv": 4.49
+                      "tuv": 4.49,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "belfastnorth": {
                       "lab": 0.0,
@@ -33588,7 +35233,10 @@ saxony_anhalt: {
                       "sdlp": 3.49,
                       "apni": 10.57,
                       "uup": 0.0,
-                      "tuv": 7.11
+                      "tuv": 7.11,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "belfastsouthandmiddown": {
                       "lab": 0.0,
@@ -33604,7 +35252,10 @@ saxony_anhalt: {
                       "sdlp": 49.08,
                       "apni": 20.32,
                       "uup": 6.1,
-                      "tuv": 5.1
+                      "tuv": 5.1,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "belfastwest": {
                       "lab": 0.0,
@@ -33620,7 +35271,10 @@ saxony_anhalt: {
                       "sdlp": 10.86,
                       "apni": 2.71,
                       "uup": 1.16,
-                      "tuv": 5.06
+                      "tuv": 5.06,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastantrim": {
                       "lab": 0.0,
@@ -33636,7 +35290,10 @@ saxony_anhalt: {
                       "sdlp": 2.25,
                       "apni": 25.6,
                       "uup": 23.88,
-                      "tuv": 10.42
+                      "tuv": 10.42,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastlondonderry": {
                       "lab": 0.0,
@@ -33652,7 +35309,10 @@ saxony_anhalt: {
                       "sdlp": 12.74,
                       "apni": 9.05,
                       "uup": 8.27,
-                      "tuv": 10.57
+                      "tuv": 10.57,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "fermanaghandsouthtyrone": {
                       "lab": 0.0,
@@ -33668,7 +35328,10 @@ saxony_anhalt: {
                       "sdlp": 4.67,
                       "apni": 4.74,
                       "uup": 39.69,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "foyle": {
                       "lab": 0.0,
@@ -33684,7 +35347,10 @@ saxony_anhalt: {
                       "sdlp": 40.79,
                       "apni": 3.31,
                       "uup": 3.71,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "laganvalley": {
                       "lab": 0.0,
@@ -33700,7 +35366,10 @@ saxony_anhalt: {
                       "sdlp": 2.09,
                       "apni": 37.93,
                       "uup": 22.73,
-                      "tuv": 4.45
+                      "tuv": 4.45,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midulster": {
                       "lab": 0.0,
@@ -33716,7 +35385,10 @@ saxony_anhalt: {
                       "sdlp": 8.19,
                       "apni": 4.4,
                       "uup": 4.99,
-                      "tuv": 6.55
+                      "tuv": 6.55,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newryandarmagh": {
                       "lab": 0.0,
@@ -33732,7 +35404,10 @@ saxony_anhalt: {
                       "sdlp": 14.81,
                       "apni": 5.86,
                       "uup": 6.91,
-                      "tuv": 8.92
+                      "tuv": 8.92,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northantrim": {
                       "lab": 0.0,
@@ -33748,7 +35423,10 @@ saxony_anhalt: {
                       "sdlp": 4.03,
                       "apni": 10.9,
                       "uup": 9.47,
-                      "tuv": 28.27
+                      "tuv": 28.27,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northdown": {
                       "lab": 0.0,
@@ -33764,7 +35442,10 @@ saxony_anhalt: {
                       "sdlp": 1.52,
                       "apni": 31.43,
                       "uup": 15.6,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 48.3,
+                      "yp": 0.0
               },
               "southantrim": {
                       "lab": 0.0,
@@ -33780,7 +35461,10 @@ saxony_anhalt: {
                       "sdlp": 3.7,
                       "apni": 10.66,
                       "uup": 38.01,
-                      "tuv": 6.28
+                      "tuv": 6.28,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "southdown": {
                       "lab": 0.0,
@@ -33796,7 +35480,10 @@ saxony_anhalt: {
                       "sdlp": 23.03,
                       "apni": 7.04,
                       "uup": 3.12,
-                      "tuv": 4.18
+                      "tuv": 4.18,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "strangford": {
                       "lab": 0.0,
@@ -33812,7 +35499,10 @@ saxony_anhalt: {
                       "sdlp": 4.58,
                       "apni": 26.8,
                       "uup": 10.13,
-                      "tuv": 8.08
+                      "tuv": 8.08,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "upperbann": {
                       "lab": 0.0,
@@ -33828,7 +35518,10 @@ saxony_anhalt: {
                       "sdlp": 3.16,
                       "apni": 13.35,
                       "uup": 7.73,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westtyrone": {
                       "lab": 0.0,
@@ -33844,7 +35537,10 @@ saxony_anhalt: {
                       "sdlp": 13.32,
                       "apni": 5.23,
                       "uup": 6.14,
-                      "tuv": 5.79
+                      "tuv": 5.79,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastrenfrewshire": {
                       "lab": 43.67,
@@ -33860,7 +35556,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "nah-eileanananiar": {
                       "lab": 49.47,
@@ -33876,7 +35575,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midlothian": {
                       "lab": 48.64,
@@ -33892,7 +35594,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northayrshireandarran": {
                       "lab": 39.8,
@@ -33908,7 +35613,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "orkneyandshetland": {
                       "lab": 7.22,
@@ -33924,7 +35632,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "aberdeennorth": {
                       "lab": 30.34,
@@ -33940,7 +35651,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "aberdeensouth": {
                       "lab": 24.72,
@@ -33956,7 +35670,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "aberdeenshirenorthandmorayeast": {
                       "lab": 10.15,
@@ -33972,7 +35689,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "airdrieandshotts": {
                       "lab": 51.47,
@@ -33988,7 +35708,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "alloaandgrangemouth": {
                       "lab": 43.78,
@@ -34004,7 +35727,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "angusandperthshireglens": {
                       "lab": 14.36,
@@ -34020,7 +35746,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "arbroathandbroughtyferry": {
                       "lab": 33.37,
@@ -34036,7 +35765,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "argyllbuteandsouthlochaber": {
                       "lab": 19.14,
@@ -34052,7 +35784,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bathgateandlinlithgow": {
                       "lab": 47.01,
@@ -34068,7 +35803,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "caithnesssutherlandandeasterross": {
                       "lab": 7.4,
@@ -34084,7 +35822,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "coatbridgeandbellshill": {
                       "lab": 49.81,
@@ -34100,7 +35841,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cowdenbeathandkirkcaldy": {
                       "lab": 45.72,
@@ -34116,7 +35860,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cumbernauldandkirkintilloch": {
                       "lab": 45.18,
@@ -34132,7 +35879,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dumfriesandgalloway": {
                       "lab": 25.71,
@@ -34148,7 +35898,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dumfriesshireclydesdaleandtweeddale": {
                       "lab": 22.93,
@@ -34164,7 +35917,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dundeecentral": {
                       "lab": 38.27,
@@ -34180,7 +35936,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dunfermlineanddollar": {
                       "lab": 45.66,
@@ -34196,7 +35955,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "eastkilbrideandstrathaven": {
                       "lab": 48.56,
@@ -34212,7 +35974,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "edinburgheastandmusselburgh": {
                       "lab": 41.23,
@@ -34228,7 +35993,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "edinburghnorthandleith": {
                       "lab": 42.05,
@@ -34244,7 +36012,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "edinburghsouth": {
                       "lab": 53.34,
@@ -34260,7 +36031,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "edinburghsouthwest": {
                       "lab": 40.87,
@@ -34276,7 +36050,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "edinburghwest": {
                       "lab": 14.97,
@@ -34292,7 +36069,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "falkirk": {
                       "lab": 43.03,
@@ -34308,7 +36088,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glasgoweast": {
                       "lab": 43.85,
@@ -34324,7 +36107,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glasgownorth": {
                       "lab": 42.19,
@@ -34340,7 +36126,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glasgownortheast": {
                       "lab": 45.87,
@@ -34356,7 +36145,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glasgowsouth": {
                       "lab": 41.76,
@@ -34372,7 +36164,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glasgowsouthwest": {
                       "lab": 43.6,
@@ -34388,7 +36183,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glasgowwest": {
                       "lab": 46.67,
@@ -34404,7 +36202,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "glenrothesandmidfife": {
                       "lab": 44.26,
@@ -34420,7 +36221,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gordonandbuchan": {
                       "lab": 10.69,
@@ -34436,7 +36240,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "hamiltonandclydevalley": {
                       "lab": 49.95,
@@ -34452,7 +36259,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "inverclydeandrenfrewshirewest": {
                       "lab": 46.92,
@@ -34468,7 +36278,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "invernessskyeandwestross-shire": {
                       "lab": 13.0,
@@ -34484,7 +36297,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "livingston": {
                       "lab": 40.87,
@@ -34500,7 +36316,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "lothianeast": {
                       "lab": 48.97,
@@ -34516,7 +36335,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "middunbartonshire": {
                       "lab": 20.84,
@@ -34532,7 +36354,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "moraywestnairnandstrathspey": {
                       "lab": 17.74,
@@ -34548,7 +36373,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "motherwellwishawandcarluke": {
                       "lab": 49.12,
@@ -34564,7 +36392,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "northeastfife": {
                       "lab": 9.42,
@@ -34580,7 +36411,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "paisleyandrenfrewshirenorth": {
                       "lab": 47.11,
@@ -34596,7 +36430,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "paisleyandrenfrewshiresouth": {
                       "lab": 47.44,
@@ -34612,7 +36449,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "perthandkinross-shire": {
                       "lab": 18.01,
@@ -34628,7 +36468,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rutherglen": {
                       "lab": 50.51,
@@ -34644,7 +36487,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "stirlingandstrathallan": {
                       "lab": 33.86,
@@ -34660,7 +36506,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westdunbartonshire": {
                       "lab": 48.79,
@@ -34676,7 +36525,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ayrcarrickandcumnock": {
                       "lab": 36.47,
@@ -34692,7 +36544,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "berwickshireroxburghandselkirk": {
                       "lab": 13.56,
@@ -34708,7 +36563,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "centralayrshire": {
                       "lab": 43.68,
@@ -34724,7 +36582,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "kilmarnockandloudoun": {
                       "lab": 44.86,
@@ -34740,7 +36601,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "westaberdeenshireandkincardine": {
                       "lab": 13.07,
@@ -34756,7 +36620,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "aberafanmaesteg": {
                       "lab": 49.89,
@@ -34772,7 +36639,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "alynanddeeside": {
                       "lab": 42.39,
@@ -34788,7 +36658,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bangoraberconwy": {
                       "lab": 33.62,
@@ -34804,7 +36677,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "blaenaugwentandrhymney": {
                       "lab": 53.56,
@@ -34820,7 +36696,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "breconradnorandcwmtawe": {
                       "lab": 21.28,
@@ -34836,7 +36715,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "bridgend": {
                       "lab": 39.92,
@@ -34852,7 +36734,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "caerfyrddin": {
                       "lab": 24.09,
@@ -34868,7 +36753,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "caerphilly": {
                       "lab": 38.02,
@@ -34884,7 +36772,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cardiffeast": {
                       "lab": 40.47,
@@ -34900,7 +36791,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cardiffnorth": {
                       "lab": 43.92,
@@ -34916,7 +36810,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cardiffsouthandpenarth": {
                       "lab": 44.49,
@@ -34932,7 +36829,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "cardiffwest": {
                       "lab": 36.74,
@@ -34948,7 +36848,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ceredigionpreseli": {
                       "lab": 11.63,
@@ -34964,7 +36867,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "clwydeast": {
                       "lab": 38.65,
@@ -34980,7 +36886,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "clwydnorth": {
                       "lab": 35.54,
@@ -34996,7 +36905,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "dwyformeirionnydd": {
                       "lab": 14.64,
@@ -35012,7 +36924,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "gower": {
                       "lab": 43.36,
@@ -35028,7 +36943,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "llanelli": {
                       "lab": 31.3,
@@ -35044,7 +36962,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "merthyrtydfilandaberdare": {
                       "lab": 44.84,
@@ -35060,7 +36981,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "midandsouthpembrokeshire": {
                       "lab": 35.4,
@@ -35076,7 +37000,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "monmouthshire": {
                       "lab": 41.32,
@@ -35092,7 +37019,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "montgomeryshireandglyndwr": {
                       "lab": 29.38,
@@ -35108,7 +37038,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "neathandswanseaeast": {
                       "lab": 41.85,
@@ -35124,7 +37057,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newporteast": {
                       "lab": 42.49,
@@ -35140,7 +37076,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "newportwestandislwyn": {
                       "lab": 41.5,
@@ -35156,7 +37095,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "pontypridd": {
                       "lab": 41.2,
@@ -35172,7 +37114,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "rhonddaandogmore": {
                       "lab": 47.81,
@@ -35188,7 +37133,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "swanseawest": {
                       "lab": 41.4,
@@ -35204,7 +37152,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "torfaen": {
                       "lab": 42.5,
@@ -35220,7 +37171,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "valeofglamorgan": {
                       "lab": 38.71,
@@ -35236,7 +37190,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "wrexham": {
                       "lab": 39.22,
@@ -35252,7 +37209,10 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               },
               "ynysmon": {
                       "lab": 23.35,
@@ -35268,26 +37228,32 @@ saxony_anhalt: {
                       "sdlp": 0.0,
                       "apni": 0.0,
                       "uup": 0.0,
-                      "tuv": 0.0
+                      "tuv": 0.0,
+                      "spk": 0.0,
+                      "ind": 0.0,
+                      "yp": 0.0
               }
       },
       // national baseline for the uniform-swing projection (= 2024 result)
       national2021: {
-              "lab": 33.79,
+              "lab": 33.7,
               "con": 23.7,
-              "ref": 14.29,
+              "ref": 14.24,
               "lib": 12.22,
               "grn": 6.75,
               "snp": 2.52,
               "plc": 0.68,
-              "res": 0.0,
+              "res": 0.05,
               "sf": 0.73,
               "dup": 0.6,
               "sdlp": 0.3,
               "apni": 0.41,
               "uup": 0.33,
               "tuv": 0.17,
-              "other": 3.52
+              "spk": 0.09,
+              "ind": 0.26,
+              "yp": 0.08,
+              "other": 3.18
       },
       // regions (English regions + Scotland/Wales/NI): used by the
       // simulation's regional swing error

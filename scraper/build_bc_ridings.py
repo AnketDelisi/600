@@ -28,8 +28,6 @@ CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "bc_ridings.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "bc_ridings.svg")
 CONST_JSON = os.path.join(ROOT, "data", "bc", "constituencies.json")
-ZOOM_SVG = os.path.join(ROOT, "img", "bc_vancouver.svg")
-ZOOM_BMV = os.path.join(ROOT, "bmv", "img", "bc_vancouver.svg")
 ZOOM_BOX = (-123.35, 49.0, -122.35, 49.55)  # Metro Vancouver
 GEOJSON = os.path.join(CACHE, "bc_ridings.geojson")
 ARTICLE = "https://en.wikipedia.org/wiki/2024_British_Columbia_general_election"
@@ -87,10 +85,6 @@ def parse_results(html, names):
                 continue
             out[key] = {p: round(votes.get(p, 0) * 100 / total, 2)
                         for p in PARTIES}
-            # 2024 Ind+Other share: proxy shape for CentreBC (the BC United
-            # successor; its remnant ran as independents/others in 2024)
-            out[key]["_oth"] = round(
-                (num(tail[3]) + num(tail[4])) * 100 / total, 2)
     return out
 
 
@@ -109,9 +103,6 @@ def main():
     print("ridings with 2024 results:", len(results),
           "| missing:", sorted(set(names) - set(results))[:8])
 
-    nat_oth = sum(x.get("_oth", 0) for x in results.values()) / \
-        max(1, len(results))
-    print("national _oth proxy: %.2f" % nat_oth)
     cons = []
     for key, disp in sorted(names.items()):
         r = results.get(key, {p: 0 for p in PARTIES})
@@ -131,9 +122,10 @@ def main():
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
-    # Metro Vancouver zoom layer: the dense urban ridings are unreadable at
-    # province scale, so rebuild just those (fully inside the metro box) as a
-    # second layer. Same ids -> the app's fills/tooltips work unchanged.
+    # Metro Vancouver inset: the dense urban ridings are unreadable at
+    # province scale, so duplicate them magnified into the empty NW corner of
+    # the same map (the Yukon corner is blank). Same path ids -> the app's
+    # fills and tooltips work on both copies.
     def bbox(geom):
         xs, ys = [], []
         def walk(c):
@@ -151,16 +143,11 @@ def main():
         if x0 >= ZOOM_BOX[0] and y0 >= ZOOM_BOX[1] and \
                 x1 <= ZOOM_BOX[2] and y1 <= ZOOM_BOX[3]:
             urban.append(f)
-    print("metro vancouver ridings:", len(urban))
-    zoom_gj = os.path.join(CACHE, "bc_vancouver.geojson")
-    with open(zoom_gj, "w", encoding="utf8") as fh:
-        json.dump({"type": "FeatureCollection", "features": urban}, fh)
-    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
-                "--name-field", "ED_NAME", "--fold", "--attr", "id",
-                "--no-prefix", "--out", ZOOM_SVG, "--attribution", ATTRIBUTION,
-                "--force"]
-    bm.main()
-    shutil.copy2(ZOOM_SVG, ZOOM_BMV)
+    urban_ids = [bm.fold(f["properties"]["ED_NAME"]) for f in urban]
+    print("metro vancouver ridings:", len(urban_ids))
+    bm.add_inset(OUT_SVG, urban_ids, 5.0, (44, 40),
+                 label="Metro Vancouver (5x)")
+    shutil.copy2(OUT_SVG, BMV_SVG)
 
     cfg_path = os.path.join(ROOT, "js", "config.js")
     text = open(cfg_path, encoding="utf8").read()
@@ -207,22 +194,15 @@ def main():
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
-      // parties with no 2024 past inherit a proxy's geographic shape:
-      // OneBC (right-wing split) tracks the Conservatives, CentreBC (the BC
-      // United successor) tracks the 2024 Ind+Other vote
-      swingProxy: { onbc: 'cpbc', cbc: '_oth' },
+      // parties with no 2024 past inherit a proxy's geographic shape: both
+      // OneBC (right-wing split) and CentreBC (the BC United successor) draw
+      // from the Conservative vote, so they track the CPBC's 2024 map
+      swingProxy: { onbc: 'cpbc', cbc: 'cpbc' },
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,
       // national baseline for the uniform-swing projection (= 2024 result)
-      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0, _oth: @@natoth@@ },
-    },
-    // dense Metro Vancouver ridings, zoomed (same ids as the main map)
-    map2: {
-      svg: 'img/bc_vancouver.svg',
-      selector: 'id',
-      districts: @@zoom@@,
-      label: 'Metro Vancouver (zoom)',
+      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
     },
     pollsterMAE: {},
     maeKey: 'BC2024',
@@ -237,10 +217,7 @@ def main():
                 "\n", "\n      ")),
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
                           8).replace("\n", "\n      ")),
-            ("zoom", j({bm.fold(f["properties"]["ED_NAME"]):
-                        bm.fold(f["properties"]["ED_NAME"]) for f in urban},
-                       8).replace("\n", "\n      ")),
-            ("natoth", "%.2f" % nat_oth)):
+            ):
         block = block.replace("@@%s@@" % ph, val)
 
     m = re.search(r"\n  bc: \{", text)

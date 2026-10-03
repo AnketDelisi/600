@@ -1,0 +1,2948 @@
+{
+ "country": "italy",
+ "total_seats": 400,
+ "constituency_seats": 147,
+ "leveling_seats": 0,
+ "constituencies": [
+  {
+   "id": "100001",
+   "name": "Umbria - U01",
+   "seats": 1,
+   "region": "umbria",
+   "results_2022": {
+    "fdi": 30.12,
+    "pd": 21.42,
+    "m5s": 12.66,
+    "lega": 7.91,
+    "fi": 7.28,
+    "a": 4.6,
+    "iv": 3.45,
+    "avs": 3.49,
+    "e": 2.1,
+    "nm": 0.46,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "100002",
+   "name": "Umbria - U02",
+   "seats": 1,
+   "region": "umbria",
+   "results_2022": {
+    "fdi": 30.12,
+    "pd": 21.42,
+    "m5s": 12.66,
+    "lega": 7.91,
+    "fi": 7.28,
+    "a": 4.6,
+    "iv": 3.45,
+    "avs": 3.49,
+    "e": 2.1,
+    "nm": 0.46,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "10101",
+   "name": "Piemonte 1 - U01",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "10102",
+   "name": "Piemonte 1 - U02",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "10103",
+   "name": "Piemonte 1 - U03",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "10104",
+   "name": "Piemonte 1 - U04",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "10105",
+   "name": "Piemonte 1 - U05",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "10201",
+   "name": "Piemonte 2 - U01",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "10202",
+   "name": "Piemonte 2 - U02",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "10203",
+   "name": "Piemonte 2 - U03",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "10204",
+   "name": "Piemonte 2 - U04",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "10205",
+   "name": "Piemonte 2 - U05",
+   "seats": 1,
+   "region": "piemonte",
+   "results_2022": {
+    "fdi": 26.9,
+    "pd": 19.92,
+    "m5s": 10.3,
+    "lega": 10.81,
+    "fi": 7.81,
+    "a": 4.95,
+    "iv": 3.72,
+    "avs": 3.91,
+    "e": 4.23,
+    "nm": 0.62,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "110001",
+   "name": "Marche - U01",
+   "seats": 1,
+   "region": "marche",
+   "results_2022": {
+    "fdi": 29.49,
+    "pd": 19.94,
+    "m5s": 13.79,
+    "lega": 7.99,
+    "fi": 6.54,
+    "a": 4.24,
+    "iv": 3.18,
+    "avs": 3.26,
+    "e": 2.67,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "110002",
+   "name": "Marche - U02",
+   "seats": 1,
+   "region": "marche",
+   "results_2022": {
+    "fdi": 29.49,
+    "pd": 19.94,
+    "m5s": 13.79,
+    "lega": 7.99,
+    "fi": 6.54,
+    "a": 4.24,
+    "iv": 3.18,
+    "avs": 3.26,
+    "e": 2.67,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "110003",
+   "name": "Marche - U03",
+   "seats": 1,
+   "region": "marche",
+   "results_2022": {
+    "fdi": 29.49,
+    "pd": 19.94,
+    "m5s": 13.79,
+    "lega": 7.99,
+    "fi": 6.54,
+    "a": 4.24,
+    "iv": 3.18,
+    "avs": 3.26,
+    "e": 2.67,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "110004",
+   "name": "Marche - U04",
+   "seats": 1,
+   "region": "marche",
+   "results_2022": {
+    "fdi": 29.49,
+    "pd": 19.94,
+    "m5s": 13.79,
+    "lega": 7.99,
+    "fi": 6.54,
+    "a": 4.24,
+    "iv": 3.18,
+    "avs": 3.26,
+    "e": 2.67,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "120101",
+   "name": "Lazio 1 - U01",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "120102",
+   "name": "Lazio 1 - U02",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "120103",
+   "name": "Lazio 1 - U03",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120104",
+   "name": "Lazio 1 - U04",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "120105",
+   "name": "Lazio 1 - U05",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "120106",
+   "name": "Lazio 1 - U06",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120107",
+   "name": "Lazio 1 - U07",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "120108",
+   "name": "Lazio 1 - U08",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "120109",
+   "name": "Lazio 1 - U09",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120201",
+   "name": "Lazio 2 - U01",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120202",
+   "name": "Lazio 2 - U02",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120203",
+   "name": "Lazio 2 - U03",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120204",
+   "name": "Lazio 2 - U04",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "120205",
+   "name": "Lazio 2 - U05",
+   "seats": 1,
+   "region": "lazio",
+   "results_2022": {
+    "fdi": 31.45,
+    "pd": 18.38,
+    "m5s": 14.81,
+    "lega": 6.87,
+    "fi": 6.11,
+    "a": 4.87,
+    "iv": 3.66,
+    "avs": 3.88,
+    "e": 3.32,
+    "nm": 0.41,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "130001",
+   "name": "Abruzzo - U01",
+   "seats": 1,
+   "region": "abruzzo",
+   "results_2022": {
+    "fdi": 27.22,
+    "pd": 16.08,
+    "m5s": 18.72,
+    "lega": 8.28,
+    "fi": 12.11,
+    "a": 3.47,
+    "iv": 2.61,
+    "avs": 2.7,
+    "e": 1.96,
+    "nm": 0.69,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "130002",
+   "name": "Abruzzo - U02",
+   "seats": 1,
+   "region": "abruzzo",
+   "results_2022": {
+    "fdi": 27.22,
+    "pd": 16.08,
+    "m5s": 18.72,
+    "lega": 8.28,
+    "fi": 12.11,
+    "a": 3.47,
+    "iv": 2.61,
+    "avs": 2.7,
+    "e": 1.96,
+    "nm": 0.69,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "130003",
+   "name": "Abruzzo - U03",
+   "seats": 1,
+   "region": "abruzzo",
+   "results_2022": {
+    "fdi": 27.22,
+    "pd": 16.08,
+    "m5s": 18.72,
+    "lega": 8.28,
+    "fi": 12.11,
+    "a": 3.47,
+    "iv": 2.61,
+    "avs": 2.7,
+    "e": 1.96,
+    "nm": 0.69,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "140001",
+   "name": "Molise - U01",
+   "seats": 1,
+   "region": "molise",
+   "results_2022": {
+    "fdi": 22.35,
+    "pd": 18.36,
+    "m5s": 24.49,
+    "lega": 6.52,
+    "fi": 12.7,
+    "a": 2.66,
+    "iv": 1.99,
+    "avs": 2.9,
+    "e": 1.55,
+    "nm": 1.31,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "150101",
+   "name": "Campania 1 - U01",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150102",
+   "name": "Campania 1 - U02",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150103",
+   "name": "Campania 1 - U03",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150104",
+   "name": "Campania 1 - U04",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150105",
+   "name": "Campania 1 - U05",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150106",
+   "name": "Campania 1 - U06",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150107",
+   "name": "Campania 1 - U07",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "150201",
+   "name": "Campania 2 - U01",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "150202",
+   "name": "Campania 2 - U02",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "150203",
+   "name": "Campania 2 - U03",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "150204",
+   "name": "Campania 2 - U04",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "150205",
+   "name": "Campania 2 - U05",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "150206",
+   "name": "Campania 2 - U06",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "150207",
+   "name": "Campania 2 - U07",
+   "seats": 1,
+   "region": "campania",
+   "results_2022": {
+    "fdi": 18.09,
+    "pd": 15.89,
+    "m5s": 34.68,
+    "lega": 3.95,
+    "fi": 10.64,
+    "a": 3.01,
+    "iv": 2.26,
+    "avs": 2.7,
+    "e": 2.16,
+    "nm": 0.57,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "160001",
+   "name": "Puglia - U01",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "160002",
+   "name": "Puglia - U02",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "160003",
+   "name": "Puglia - U03",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "160004",
+   "name": "Puglia - U04",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "160005",
+   "name": "Puglia - U05",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "160006",
+   "name": "Puglia - U06",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "160007",
+   "name": "Puglia - U07",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "160008",
+   "name": "Puglia - U08",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "160009",
+   "name": "Puglia - U09",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "160010",
+   "name": "Puglia - U10",
+   "seats": 1,
+   "region": "puglia",
+   "results_2022": {
+    "fdi": 24.47,
+    "pd": 15.99,
+    "m5s": 28.28,
+    "lega": 5.26,
+    "fi": 10.97,
+    "a": 2.76,
+    "iv": 2.07,
+    "avs": 2.77,
+    "e": 1.77,
+    "nm": 0.71,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "170001",
+   "name": "Basilicata - U01",
+   "seats": 1,
+   "region": "basilicata",
+   "results_2022": {
+    "fdi": 19.25,
+    "pd": 16.18,
+    "m5s": 24.39,
+    "lega": 7.14,
+    "fi": 9.01,
+    "a": 7.01,
+    "iv": 5.26,
+    "avs": 2.77,
+    "e": 2.0,
+    "nm": 0.69,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "180001",
+   "name": "Calabria - U01",
+   "seats": 1,
+   "region": "calabria",
+   "results_2022": {
+    "fdi": 18.94,
+    "pd": 14.71,
+    "m5s": 29.48,
+    "lega": 5.65,
+    "fi": 16.25,
+    "a": 2.27,
+    "iv": 1.7,
+    "avs": 1.49,
+    "e": 1.1,
+    "nm": 0.83,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "180002",
+   "name": "Calabria - U02",
+   "seats": 1,
+   "region": "calabria",
+   "results_2022": {
+    "fdi": 18.94,
+    "pd": 14.71,
+    "m5s": 29.48,
+    "lega": 5.65,
+    "fi": 16.25,
+    "a": 2.27,
+    "iv": 1.7,
+    "avs": 1.49,
+    "e": 1.1,
+    "nm": 0.83,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "180003",
+   "name": "Calabria - U03",
+   "seats": 1,
+   "region": "calabria",
+   "results_2022": {
+    "fdi": 18.94,
+    "pd": 14.71,
+    "m5s": 29.48,
+    "lega": 5.65,
+    "fi": 16.25,
+    "a": 2.27,
+    "iv": 1.7,
+    "avs": 1.49,
+    "e": 1.1,
+    "nm": 0.83,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "180004",
+   "name": "Calabria - U04",
+   "seats": 1,
+   "region": "calabria",
+   "results_2022": {
+    "fdi": 18.94,
+    "pd": 14.71,
+    "m5s": 29.48,
+    "lega": 5.65,
+    "fi": 16.25,
+    "a": 2.27,
+    "iv": 1.7,
+    "avs": 1.49,
+    "e": 1.1,
+    "nm": 0.83,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "180005",
+   "name": "Calabria - U05",
+   "seats": 1,
+   "region": "calabria",
+   "results_2022": {
+    "fdi": 18.94,
+    "pd": 14.71,
+    "m5s": 29.48,
+    "lega": 5.65,
+    "fi": 16.25,
+    "a": 2.27,
+    "iv": 1.7,
+    "avs": 1.49,
+    "e": 1.1,
+    "nm": 0.83,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "190101",
+   "name": "Sicilia 1 - U01",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "m5s"
+  },
+  {
+   "id": "190102",
+   "name": "Sicilia 1 - U02",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "190103",
+   "name": "Sicilia 1 - U03",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "190104",
+   "name": "Sicilia 1 - U04",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "190105",
+   "name": "Sicilia 1 - U05",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "190106",
+   "name": "Sicilia 1 - U06",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "190201",
+   "name": "Sicilia 2 - U01",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "190202",
+   "name": "Sicilia 2 - U02",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "190203",
+   "name": "Sicilia 2 - U03",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "190204",
+   "name": "Sicilia 2 - U04",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "190205",
+   "name": "Sicilia 2 - U05",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "190206",
+   "name": "Sicilia 2 - U06",
+   "seats": 1,
+   "region": "sicilia",
+   "results_2022": {
+    "fdi": 18.33,
+    "pd": 11.84,
+    "m5s": 27.22,
+    "lega": 5.07,
+    "fi": 10.72,
+    "a": 2.58,
+    "iv": 1.94,
+    "avs": 2.02,
+    "e": 1.62,
+    "nm": 0.9,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "200001",
+   "name": "Sardegna - U01",
+   "seats": 1,
+   "region": "sardegna",
+   "results_2022": {
+    "fdi": 22.67,
+    "pd": 19.93,
+    "m5s": 21.96,
+    "lega": 6.88,
+    "fi": 9.34,
+    "a": 2.53,
+    "iv": 1.89,
+    "avs": 4.26,
+    "e": 2.23,
+    "nm": 1.55,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "200002",
+   "name": "Sardegna - U02",
+   "seats": 1,
+   "region": "sardegna",
+   "results_2022": {
+    "fdi": 22.67,
+    "pd": 19.93,
+    "m5s": 21.96,
+    "lega": 6.88,
+    "fi": 9.34,
+    "a": 2.53,
+    "iv": 1.89,
+    "avs": 4.26,
+    "e": 2.23,
+    "nm": 1.55,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "200003",
+   "name": "Sardegna - U03",
+   "seats": 1,
+   "region": "sardegna",
+   "results_2022": {
+    "fdi": 22.67,
+    "pd": 19.93,
+    "m5s": 21.96,
+    "lega": 6.88,
+    "fi": 9.34,
+    "a": 2.53,
+    "iv": 1.89,
+    "avs": 4.26,
+    "e": 2.23,
+    "nm": 1.55,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "200004",
+   "name": "Sardegna - U04",
+   "seats": 1,
+   "region": "sardegna",
+   "results_2022": {
+    "fdi": 22.67,
+    "pd": 19.93,
+    "m5s": 21.96,
+    "lega": 6.88,
+    "fi": 9.34,
+    "a": 2.53,
+    "iv": 1.89,
+    "avs": 4.26,
+    "e": 2.23,
+    "nm": 1.55,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "20001",
+   "name": "Valle d'aosta/Vallée d'Aoste - U01",
+   "seats": 1,
+   "region": "valle_d_aosta",
+   "results_2022": {
+    "fdi": 17.68,
+    "pd": 0.0,
+    "m5s": 0.0,
+    "lega": 5.98,
+    "fi": 5.52,
+    "a": 0.0,
+    "iv": 0.0,
+    "avs": 0.0,
+    "e": 0.0,
+    "nm": 0.61,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "30101",
+   "name": "Lombardia 1 - U01",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30102",
+   "name": "Lombardia 1 - U02",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30103",
+   "name": "Lombardia 1 - U03",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30104",
+   "name": "Lombardia 1 - U04",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30105",
+   "name": "Lombardia 1 - U05",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30106",
+   "name": "Lombardia 1 - U06",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30107",
+   "name": "Lombardia 1 - U07",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "30108",
+   "name": "Lombardia 1 - U08",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "30109",
+   "name": "Lombardia 1 - U09",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "30201",
+   "name": "Lombardia 2 - U01",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30202",
+   "name": "Lombardia 2 - U02",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30203",
+   "name": "Lombardia 2 - U03",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30204",
+   "name": "Lombardia 2 - U04",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30205",
+   "name": "Lombardia 2 - U05",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "30301",
+   "name": "Lombardia 3 - U01",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "30302",
+   "name": "Lombardia 3 - U02",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30303",
+   "name": "Lombardia 3 - U03",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30304",
+   "name": "Lombardia 3 - U04",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "30305",
+   "name": "Lombardia 3 - U05",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30401",
+   "name": "Lombardia 4 - U01",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "30402",
+   "name": "Lombardia 4 - U02",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "30403",
+   "name": "Lombardia 4 - U03",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "30404",
+   "name": "Lombardia 4 - U04",
+   "seats": 1,
+   "region": "lombardia",
+   "results_2022": {
+    "fdi": 27.52,
+    "pd": 19.19,
+    "m5s": 7.32,
+    "lega": 13.92,
+    "fi": 7.95,
+    "a": 5.79,
+    "iv": 4.35,
+    "avs": 3.82,
+    "e": 3.75,
+    "nm": 1.01,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "40001",
+   "name": "Trentino-Alto Adige/Südtirol - U01",
+   "seats": 1,
+   "region": "trentino_alto_adige",
+   "results_2022": {
+    "fdi": 18.82,
+    "pd": 17.11,
+    "m5s": 5.02,
+    "lega": 8.55,
+    "fi": 3.35,
+    "a": 3.47,
+    "iv": 2.6,
+    "avs": 5.82,
+    "e": 2.92,
+    "nm": 0.48,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "40002",
+   "name": "Trentino-Alto Adige/Südtirol - U02",
+   "seats": 1,
+   "region": "trentino_alto_adige",
+   "results_2022": {
+    "fdi": 18.82,
+    "pd": 17.11,
+    "m5s": 5.02,
+    "lega": 8.55,
+    "fi": 3.35,
+    "a": 3.47,
+    "iv": 2.6,
+    "avs": 5.82,
+    "e": 2.92,
+    "nm": 0.48,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "40003",
+   "name": "Trentino-Alto Adige/Südtirol - U03",
+   "seats": 1,
+   "region": "trentino_alto_adige",
+   "results_2022": {
+    "fdi": 18.82,
+    "pd": 17.11,
+    "m5s": 5.02,
+    "lega": 8.55,
+    "fi": 3.35,
+    "a": 3.47,
+    "iv": 2.6,
+    "avs": 5.82,
+    "e": 2.92,
+    "nm": 0.48,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "40004",
+   "name": "Trentino-Alto Adige/Südtirol - U04",
+   "seats": 1,
+   "region": "trentino_alto_adige",
+   "results_2022": {
+    "fdi": 18.82,
+    "pd": 17.11,
+    "m5s": 5.02,
+    "lega": 8.55,
+    "fi": 3.35,
+    "a": 3.47,
+    "iv": 2.6,
+    "avs": 5.82,
+    "e": 2.92,
+    "nm": 0.48,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "50101",
+   "name": "Veneto 1 - U01",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "50102",
+   "name": "Veneto 1 - U02",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "50103",
+   "name": "Veneto 1 - U03",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "50104",
+   "name": "Veneto 1 - U04",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "50105",
+   "name": "Veneto 1 - U05",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "50201",
+   "name": "Veneto 2 - U01",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "50202",
+   "name": "Veneto 2 - U02",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "50203",
+   "name": "Veneto 2 - U03",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "50204",
+   "name": "Veneto 2 - U04",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "50205",
+   "name": "Veneto 2 - U05",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "50206",
+   "name": "Veneto 2 - U06",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "50207",
+   "name": "Veneto 2 - U07",
+   "seats": 1,
+   "region": "veneto",
+   "results_2022": {
+    "fdi": 32.6,
+    "pd": 16.16,
+    "m5s": 5.8,
+    "lega": 14.59,
+    "fi": 6.91,
+    "a": 4.78,
+    "iv": 3.58,
+    "avs": 3.48,
+    "e": 3.23,
+    "nm": 2.07,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "60001",
+   "name": "Friuli-Venezia Giulia - U01",
+   "seats": 1,
+   "region": "friuli_venezia_giulia",
+   "results_2022": {
+    "fdi": 32.29,
+    "pd": 18.46,
+    "m5s": 7.39,
+    "lega": 10.89,
+    "fi": 6.37,
+    "a": 4.7,
+    "iv": 3.52,
+    "avs": 3.76,
+    "e": 3.39,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "60002",
+   "name": "Friuli-Venezia Giulia - U02",
+   "seats": 1,
+   "region": "friuli_venezia_giulia",
+   "results_2022": {
+    "fdi": 32.29,
+    "pd": 18.46,
+    "m5s": 7.39,
+    "lega": 10.89,
+    "fi": 6.37,
+    "a": 4.7,
+    "iv": 3.52,
+    "avs": 3.76,
+    "e": 3.39,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "60003",
+   "name": "Friuli-Venezia Giulia - U03",
+   "seats": 1,
+   "region": "friuli_venezia_giulia",
+   "results_2022": {
+    "fdi": 32.29,
+    "pd": 18.46,
+    "m5s": 7.39,
+    "lega": 10.89,
+    "fi": 6.37,
+    "a": 4.7,
+    "iv": 3.52,
+    "avs": 3.76,
+    "e": 3.39,
+    "nm": 0.79,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "70001",
+   "name": "Liguria - U01",
+   "seats": 1,
+   "region": "liguria",
+   "results_2022": {
+    "fdi": 24.37,
+    "pd": 22.18,
+    "m5s": 12.92,
+    "lega": 8.76,
+    "fi": 6.63,
+    "a": 4.16,
+    "iv": 3.12,
+    "avs": 4.16,
+    "e": 3.37,
+    "nm": 2.56,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "70002",
+   "name": "Liguria - U02",
+   "seats": 1,
+   "region": "liguria",
+   "results_2022": {
+    "fdi": 24.37,
+    "pd": 22.18,
+    "m5s": 12.92,
+    "lega": 8.76,
+    "fi": 6.63,
+    "a": 4.16,
+    "iv": 3.12,
+    "avs": 4.16,
+    "e": 3.37,
+    "nm": 2.56,
+    "fn": 0.0
+   },
+   "winner_2022": "nm"
+  },
+  {
+   "id": "70003",
+   "name": "Liguria - U03",
+   "seats": 1,
+   "region": "liguria",
+   "results_2022": {
+    "fdi": 24.37,
+    "pd": 22.18,
+    "m5s": 12.92,
+    "lega": 8.76,
+    "fi": 6.63,
+    "a": 4.16,
+    "iv": 3.12,
+    "avs": 4.16,
+    "e": 3.37,
+    "nm": 2.56,
+    "fn": 0.0
+   },
+   "winner_2022": "other"
+  },
+  {
+   "id": "70004",
+   "name": "Liguria - U04",
+   "seats": 1,
+   "region": "liguria",
+   "results_2022": {
+    "fdi": 24.37,
+    "pd": 22.18,
+    "m5s": 12.92,
+    "lega": 8.76,
+    "fi": 6.63,
+    "a": 4.16,
+    "iv": 3.12,
+    "avs": 4.16,
+    "e": 3.37,
+    "nm": 2.56,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "80001",
+   "name": "Emilia-Romagna - U01",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "80002",
+   "name": "Emilia-Romagna - U02",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "80003",
+   "name": "Emilia-Romagna - U03",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "80004",
+   "name": "Emilia-Romagna - U04",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "80005",
+   "name": "Emilia-Romagna - U05",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "avs"
+  },
+  {
+   "id": "80006",
+   "name": "Emilia-Romagna - U06",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "80007",
+   "name": "Emilia-Romagna - U07",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "80008",
+   "name": "Emilia-Romagna - U08",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "80009",
+   "name": "Emilia-Romagna - U09",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "80010",
+   "name": "Emilia-Romagna - U10",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "80011",
+   "name": "Emilia-Romagna - U11",
+   "seats": 1,
+   "region": "emilia_romagna",
+   "results_2022": {
+    "fdi": 24.97,
+    "pd": 27.72,
+    "m5s": 10.0,
+    "lega": 7.75,
+    "fi": 5.65,
+    "a": 4.85,
+    "iv": 3.63,
+    "avs": 4.52,
+    "e": 3.3,
+    "nm": 0.54,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "90001",
+   "name": "Toscana - U01",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "90002",
+   "name": "Toscana - U02",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "90003",
+   "name": "Toscana - U03",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "fdi"
+  },
+  {
+   "id": "90004",
+   "name": "Toscana - U04",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  },
+  {
+   "id": "90005",
+   "name": "Toscana - U05",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "90006",
+   "name": "Toscana - U06",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "fi"
+  },
+  {
+   "id": "90007",
+   "name": "Toscana - U07",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "90008",
+   "name": "Toscana - U08",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "pd"
+  },
+  {
+   "id": "90009",
+   "name": "Toscana - U09",
+   "seats": 1,
+   "region": "toscana",
+   "results_2022": {
+    "fdi": 25.89,
+    "pd": 25.85,
+    "m5s": 11.3,
+    "lega": 6.41,
+    "fi": 5.74,
+    "a": 5.33,
+    "iv": 3.99,
+    "avs": 4.72,
+    "e": 2.9,
+    "nm": 0.49,
+    "fn": 0.0
+   },
+   "winner_2022": "lega"
+  }
+ ]
+}

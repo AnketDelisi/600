@@ -1241,7 +1241,9 @@ function overhangSeats(votes, totalBase, direct, cap){
 // split (direct seated / list / surplus) for the projection.
 function directMandateSplit(avg){
   const c=COUNTRIES[COUNTRY];
-  if(!c||CONSTITUENCY_RULE!=='fptp') return null;
+  // German 2025 rule only: Italy's Rosatellum keeps its FPTP seats separate
+  // (mixedFptp), so the direct mandates are not folded into the PR pool.
+  if(!c||CONSTITUENCY_RULE!=='fptp'||c.mixedFptp) return null;
   const conf=(c.map2&&c.map2.useConstituencies)
     ?{...c,...c.map,...c.map2}:MAP_CONF();
   if(!conf||!conf.districts) return null;
@@ -2388,7 +2390,6 @@ function runForecast(avg, nSims, nPolls){
   const largest={};
   const top2={};
   const win50={};
-  const elected={};
   const seatsBy={};
   const votesBy={};
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
@@ -2399,9 +2400,6 @@ function runForecast(avg, nSims, nPolls){
   // modelled parties, so their simulated shares shrink to honest levels.
   alpha.push(Math.max(0.5,(avg.other||0)*K));
   const ORDER_ALL=PARTY_ORDER.concat(['other']);
-  // Two-round setup (Brazil): weighted runoff-pair average, computed once.
-  const roSetup=MAP_ONLY?runoffSetup():null;
-  const roSigma=roSetup?forecastSigma({[roSetup.a]:roSetup.aN,[roSetup.b]:roSetup.bN}, roSetup.roN):0;
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);
@@ -2431,45 +2429,16 @@ function runForecast(avg, nSims, nPolls){
     for(let i=0;i<2&&i<srt.length;i++) top2[srt[i]]=(top2[srt[i]]||0)+1;
     if((simVotes[srt[0]]||0)>=50){
       win50[srt[0]]=(win50[srt[0]]||0)+1;
-      elected[srt[0]]=(elected[srt[0]]||0)+1;
-    }else if(roSetup&&roSetup.a&&roSetup.b){
-      // Joint two-round draw: the runoff outcome is correlated with round 1 —
-      // each candidate's runoff share starts from the runoff-poll average plus
-      // their round-1 residual vs the round-1 average (shrunk), plus noise.
-      const a=roSetup.a, b=roSetup.b;
-      const r1AvgA=avg[a]||0, r1AvgB=avg[b]||0;
-      const resA=(simVotes[a]||0)-r1AvgA, resB=(simVotes[b]||0)-r1AvgB;
-      const shrink=0.5;                       // residual carry-over into runoff
-      const da=roSetup.aN+resA*shrink+gaussianSample(fcRand)*roSigma;
-      const db=roSetup.bN+resB*shrink+gaussianSample(fcRand)*roSigma;
-      const winner=da>=db?a:b;
-      elected[winner]=(elected[winner]||0)+1;
     }
     PARTY_ORDER.forEach(p=>{seatsBy[p].push(seats[p]||0);votesBy[p].push(simVotes[p])});
     seatsBy.other.push(seats.other||0);
     votesBy.other.push(simVotes.other||0);
     comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]=(comboCount[PARTY_ORDER.map(p=>seats[p]||0).join(',')]||0)+1;
   }
-  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elected);
+  return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50);
 }
 
-// Weighted runoff-pair average from runoff polls (no simulation, no cache):
-// returns {a, b, aN, bN, roN} for the top-2 runoff pair, or null.
-function runoffSetup(){
-  const roPolls=(POLLS||[]).filter(p=>p.runoff&&typeof p.runoff==='object'&&Object.keys(p.runoff).length);
-  if(roPolls.length<2) return null;
-  const freq={};
-  roPolls.forEach(p=>Object.keys(p.runoff).forEach(c=>{freq[c]=(freq[c]||0)+1}));
-  const pair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
-  if(pair.length<2) return null;
-  const a=pair[0], b=pair[1];
-  const wa=weightedAvgRunoff(roPolls,a), wb=weightedAvgRunoff(roPolls,b);
-  if(wa===null||wb===null) return null;
-  const tot=wa+wb;
-  return {a,b,aN:100*wa/tot,bN:100*wb/tot,roN:roPolls.length};
-}
-
-function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50,elected){
+function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50){
 const means={},medians={},modes={};
 const allKeys=PARTY_ORDER.concat(seatsBy.other?['other']:[]);
 allKeys.forEach(p=>{
@@ -2489,7 +2458,7 @@ modes[p]=best;
   if(modalKey){
     PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
   }
-  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims,top2:top2||{},win50:win50||{},elected:elected||{}};
+  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims,top2:top2||{},win50:win50||{}};
 }
 
 function deterministicSeats(medians, means, total){
@@ -2557,9 +2526,15 @@ function runoffForecast(avg, filtered, sim){
   const aN=100*wa/tot, bN=100*wb/tot;
   const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
   const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
+  // Head-to-head shares are complementary (a + b = 100): the polling error
+  // shifts both by the same amount in opposite directions, so the margin's
+  // error is 2x the share error. Drawing independent errors per candidate
+  // (the old model) overstates the margin and made this card disagree with
+  // the elected-president probability.
   let winA=0;
   for(let s=0;s<3000;s++){
-    if(aN+gaussianSample(rng)*sigma > bN+gaussianSample(rng)*sigma) winA++;
+    const x=gaussianSample(rng)*sigma;
+    if(aN+x > bN-x) winA++;
   }
   const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls};
   RUNOFF_CACHE[cacheKey]=res;
@@ -2670,10 +2645,12 @@ function renderForecast(pane){
       const h2a=ro.winA/3000, h2b=1-h2a;
       const reachA=(sim.top2[ro.a]||0)/sim.nSims, reachB=(sim.top2[ro.b]||0)/sim.nSims;
       const w1A=(sim.win50[ro.a]||0)/sim.nSims, w1B=(sim.win50[ro.b]||0)/sim.nSims;
-      // Joint two-round sim: P(elected) comes directly from the correlated
-      // round-1 -> runoff simulation (fallback: the independent formula).
-      const eleA=(sim.elected&&sim.elected[ro.a]!==undefined)?(sim.elected[ro.a]/sim.nSims):(w1A+Math.max(0,reachA-w1A)*h2a);
-      const eleB=(sim.elected&&sim.elected[ro.b]!==undefined)?(sim.elected[ro.b]/sim.nSims):(w1B+Math.max(0,reachB-w1B)*h2b);
+      // Elected = round-1 majority + reach-the-runoff × head-to-head win.
+      // Both rows below therefore agree whenever both finalists always reach
+      // the runoff (the usual case), instead of reporting a second,
+      // independent runoff simulation with a different number.
+      const eleA=w1A+Math.max(0,reachA-w1A)*h2a;
+      const eleB=w1B+Math.max(0,reachB-w1B)*h2b;
       const row=(label,color,p)=>`<div class="fc-row">
         <span class="fc-row-label" style="color:${color}">${label}</span>
         <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>

@@ -21818,14 +21818,16 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: true,         // the map is the 93 ridings
     constituencyRule: 'fptp',
+    hideBlocs: true,              // no governing/opposition bloc cards
+    hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
-    // colours from the en.wikipedia party infoboxes (OneBC has none: teal)
+    // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
       bcndp: { code: 'BC NDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
       cpbc:  { code: 'BC Con',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
       gpbc:  { code: 'BC Green', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
-      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2E30' },
-      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#0E7C7B' },
+      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
+      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
     },
     order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
     parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
@@ -21849,6 +21851,7 @@ saxony_anhalt: {
       svg: 'img/bc_ridings.svg',
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
+      hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
       districts: {
               "abbotsford-mission": "abbotsford-mission",
               "abbotsfordsouth": "abbotsfordsouth",
@@ -22600,6 +22603,55 @@ saxony_anhalt: {
       },
       // national baseline for the uniform-swing projection (= 2024 result)
       national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+    },
+    // dense Metro Vancouver ridings, zoomed (same ids as the main map)
+    map2: {
+      svg: 'img/bc_vancouver.svg',
+      selector: 'id',
+      districts: {
+              "burnabycentre": "burnabycentre",
+              "burnabyeast": "burnabyeast",
+              "burnaby-newwestminster": "burnaby-newwestminster",
+              "burnabynorth": "burnabynorth",
+              "burnabysouth-metrotown": "burnabysouth-metrotown",
+              "portcoquitlam": "portcoquitlam",
+              "portmoody-burquitlam": "portmoody-burquitlam",
+              "vancouver-hastings": "vancouver-hastings",
+              "vancouver-kensington": "vancouver-kensington",
+              "vancouver-langara": "vancouver-langara",
+              "vancouver-littlemountain": "vancouver-littlemountain",
+              "vancouver-pointgrey": "vancouver-pointgrey",
+              "vancouver-quilchena": "vancouver-quilchena",
+              "vancouver-renfrew": "vancouver-renfrew",
+              "vancouver-yaletown": "vancouver-yaletown",
+              "westvancouver-capilano": "westvancouver-capilano",
+              "vancouver-southgranville": "vancouver-southgranville",
+              "vancouver-strathcona": "vancouver-strathcona",
+              "vancouver-westend": "vancouver-westend",
+              "richmondcentre": "richmondcentre",
+              "richmond-queensborough": "richmond-queensborough",
+              "richmond-steveston": "richmond-steveston",
+              "surreycitycentre": "surreycitycentre",
+              "surrey-cloverdale": "surrey-cloverdale",
+              "surrey-fleetwood": "surrey-fleetwood",
+              "surrey-guildford": "surrey-guildford",
+              "surrey-newton": "surrey-newton",
+              "surreynorth": "surreynorth",
+              "surrey-panorama": "surrey-panorama",
+              "surrey-serpentineriver": "surrey-serpentineriver",
+              "surreysouth": "surreysouth",
+              "surrey-whiterock": "surrey-whiterock",
+              "vancouver-fraserview": "vancouver-fraserview",
+              "coquitlam-maillardville": "coquitlam-maillardville",
+              "deltanorth": "deltanorth",
+              "langley-abbotsford": "langley-abbotsford",
+              "langley-walnutgrove": "langley-walnutgrove",
+              "langley-willowbrook": "langley-willowbrook",
+              "newwestminster-coquitlam": "newwestminster-coquitlam",
+              "northvancouver-lonsdale": "northvancouver-lonsdale",
+              "northvancouver-seymour": "northvancouver-seymour"
+      },
+      label: 'Metro Vancouver (zoom)',
     },
     pollsterMAE: {},
     maeKey: 'BC2024',

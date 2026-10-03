@@ -138,11 +138,15 @@ const methodNameShort=()=>{
 };
 function methodSentence(){
   const nD=MAP_CONF()&&MAP_CONF().seatDistricts?Object.keys(MAP_CONF().seatDistricts).length:0;
-  if(SEAT_METHOD==='dhondt') return nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
-  if(SEAT_METHOD==='hare_niemeyer') return "the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
-  if(SEAT_METHOD==='imperiali_hb') return "the <strong>Imperiali quota</strong> (votes ÷ (seats+2)) in each of the 14 regions, then a <strong>national second scrutiny</strong> by Hagenbach-Bischoff (remainder votes ÷ (unfilled seats+1))";
-  if(SEAT_METHOD==='sainte_lague_standard') return "the <strong>Sainte-Laguë/Schepers</strong> method (divisors 1, 3, 5, …) in a single national district";
-  return "<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
+  let s;
+  if(SEAT_METHOD==='dhondt') s=nD?`the <strong>D'Hondt</strong> method in ${nD} multi-member constituencies`:"the <strong>D'Hondt</strong> method in a single national district";
+  else if(SEAT_METHOD==='hare_niemeyer') s="the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
+  else if(SEAT_METHOD==='imperiali_hb') s="the <strong>Imperiali quota</strong> (votes ÷ (seats+2)) in each of the 14 regions, then a <strong>national second scrutiny</strong> by Hagenbach-Bischoff (remainder votes ÷ (unfilled seats+1))";
+  else if(SEAT_METHOD==='sainte_lague_standard') s="the <strong>Sainte-Laguë/Schepers</strong> method (divisors 1, 3, 5, …) in a single national district";
+  else s="<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
+  const b=(MAP_CONF()||{}).bonus||((COUNTRIES[COUNTRY]||{}).bonus);
+  if(b) s+=`, plus a <strong>sliding majority bonus</strong> (${b.minSeats} seats at ${b.min}%, +1 per ${b.step}pp, up to ${b.maxSeats} seats)`;
+  return s;
 }
 
 /* ---------- tab switching ---------- */
@@ -1791,16 +1795,32 @@ function captureBoxMap(boxId, filename){
   captureMapPng(svg, filename);
 }
 
+// Sliding majority bonus (Greece's 2020 law): the first party gets
+// minSeats at `min`%, +1 seat per `step` pp above it, capped at maxSeats.
+function bonusSeatCount(votes){
+  const b=(MAP_CONF()||{}).bonus||((COUNTRIES[COUNTRY]||{}).bonus);
+  if(!b) return 0;
+  let tv=-1;
+  for(const p of PARTY_ORDER){const v=votes[p]||0; if(v>tv)tv=v}
+  if(tv<b.min) return 0;
+  return Math.min(b.maxSeats, b.minSeats+Math.floor((tv-b.min)/b.step));
+}
+
 function allocateSeatsN(votes, totalSeats){
   const validParties=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   const totalVotes=validParties.reduce((s,p)=>s+(votes[p]||0),0);
   if(totalVotes===0) return {};
   const seats={};
   validParties.forEach(p=>{seats[p]=0});
+  const bonus=bonusSeatCount(votes);
+  const propSeats=Math.max(1,totalSeats-bonus);
+  const topParty=validParties.reduce((a,p)=>
+    ((votes[p]||0)>(votes[a]||0)?p:a),validParties[0]);
+  const finish=()=>{if(bonus)seats[topParty]=(seats[topParty]||0)+bonus;return seats};
 
   // Hare/Niemeyer (largest remainder): floor(votes/quota), then by fraction
   if(SEAT_METHOD==='hare_niemeyer'){
-    const quota=totalVotes/totalSeats;
+    const quota=totalVotes/propSeats;
     const rems=[];
     let given=0;
     validParties.forEach(p=>{
@@ -1809,10 +1829,10 @@ function allocateSeatsN(votes, totalSeats){
       seats[p]=fl; given+=fl;
       rems.push([q-fl,p]);
     });
-    let left=totalSeats-given;
+    let left=propSeats-given;
     rems.sort((a,b)=>b[0]-a[0]);
     for(let i=0;i<left&&i<rems.length;i++) seats[rems[i][1]]++;
-    return seats;
+    return finish();
   }
 
   // Modified Sainte-Laguë (1.2, 3, 5, ...) or D'Hondt (1, 2, 3, ...)
@@ -1822,7 +1842,7 @@ function allocateSeatsN(votes, totalSeats){
     return allocateSeatsBaderOfer(votes, totalSeats);
   }
   const divisors=[];
-  for(let i=1;i<=totalSeats;i++){
+  for(let i=1;i<=propSeats;i++){
     divisors.push(SEAT_METHOD==='dhondt'?i:(SEAT_METHOD==='sainte_lague_standard'?(2*i-1):(i===1?1.2:2*i-1)));
   }
 
@@ -1833,10 +1853,10 @@ function allocateSeatsN(votes, totalSeats){
     }
   });
   quota.sort((a,b)=>b.q-a.q);
-  for(let i=0;i<totalSeats&&i<quota.length;i++){
+  for(let i=0;i<propSeats&&i<quota.length;i++){
     seats[quota[i].party]++;
   }
-  return seats;
+  return finish();
 }
 
 // Bader-Ofer (Israeli D'Hondt + surplus-vote agreements): qualifying lists get
@@ -2127,12 +2147,17 @@ function allocateSeatsFast(votes, total){
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
+  const bonus=bonusSeatCount(votes);
+  const propSeats=Math.max(1,total-bonus);
+  const topParty=valid.reduce((a,p)=>
+    ((votes[p]||0)>(votes[a]||0)?p:a),valid[0]);
+  const finish=()=>{if(bonus)seats[topParty]=(seats[topParty]||0)+bonus;return seats};
 
   // Hare/Niemeyer (largest remainder) for the Monte Carlo draws
   if(SEAT_METHOD==='hare_niemeyer'){
     const totalVotes=valid.reduce((a,p)=>a+(votes[p]||0),0);
     if(totalVotes===0) return seats;
-    const quota=totalVotes/total;
+    const quota=totalVotes/propSeats;
     const rems=[];
     let given=0;
     valid.forEach(p=>{
@@ -2141,10 +2166,10 @@ function allocateSeatsFast(votes, total){
       seats[p]=fl; given+=fl;
       rems.push([q-fl,p]);
     });
-    let left=total-given;
+    let left=propSeats-given;
     rems.sort((a,b)=>b[0]-a[0]);
     for(let i=0;i<left&&i<rems.length;i++) seats[rems[i][1]]++;
-    return seats;
+    return finish();
   }
 
   const quo={};
@@ -2153,13 +2178,13 @@ function allocateSeatsFast(votes, total){
   if(SEAT_METHOD==='dhondt'&&SURPLUS_AGREEMENTS.length){
     return allocateSeatsBaderOfer(votes, total);
   }
-  for(let i=0;i<total;i++){
+  for(let i=0;i<propSeats;i++){
     let best=valid[0];
     for(const p of valid){if(quo[p]>quo[best])best=p}
     seats[best]++;
     quo[best]=SEAT_METHOD==='dhondt'?(votes[best]||0)/(seats[best]+1):(votes[best]||0)/(2*seats[best]+1);
   }
-  return seats;
+  return finish();
 }
 
 /* ---------- forecast: Monte Carlo simulation ---------- */

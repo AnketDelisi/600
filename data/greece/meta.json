@@ -1,0 +1,10 @@
+{
+  "country": "greece",
+  "name": "Greece",
+  "election_date": "2027",
+  "seats": 300,
+  "threshold": 3.0,
+  "method": "hare_niemeyer",
+  "constituencies": false,
+  "notes": "Hellenic Parliament: 300 seats; the first party receives a sliding majority bonus (20 seats at 25%, +1 per 0.5pp, up to 50 at 40%) and the remaining seats are allocated by Hare/Niemeyer among parties above 3%."
+}

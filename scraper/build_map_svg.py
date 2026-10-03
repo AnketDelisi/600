@@ -234,50 +234,48 @@ def simplify(pts, eps):
     return [p for p, k in zip(pts, keep) if k]
 
 
-def add_inset(svg_path, ids, scale, at, label=None, pad=4):
-    """Append a magnified duplicate of the given paths to a rendered SVG.
+def add_inset(main_svg, source_svg, ids, width, at, label=None, pad=4):
+    """Place a magnified copy of paths from another rendered SVG into an SVG.
 
     For maps with tiny dense districts (Metro Vancouver, Greater London,
-    Montreal): the duplicate keeps the original path ids, so the app's
-    fills/tooltips work on both the main map and the inset. `ids` are the
-    path ids to duplicate, `scale` the magnification, `at` the inset's
-    top-left in SVG coords. The source bbox is derived from the paths.
+    Montreal): render the dense area separately at its own scale (so the
+    simplification is fine) and drop it into an empty corner of the main map.
+    Ids are preserved, so the app's fills/tooltips work on both copies.
+    `width` is the inset's width in main-SVG px, `at` its top-left.
     """
-    text = open(svg_path, encoding="utf8").read()
-    paths = {}
-    for m in re.finditer(r'<path id="([^"]+)" d="([^"]*)"/>', text):
-        paths[m.group(1)] = m.group(2)
-    xs, ys = [], []
-    for pid in ids:
-        for x, y in re.findall(r"(-?\d+\.?\d*),(-?\d+\.?\d*)",
-                               paths.get(pid, "")):
-            xs.append(float(x))
-            ys.append(float(y))
-    if not xs:
-        print("  inset: no paths found")
+    src = open(source_svg, encoding="utf8").read()
+    svb = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', src)
+    if not svb:
+        print("  inset: source has no viewBox")
         return
-    x0, y0, x1, y1 = min(xs), min(ys), max(xs), max(ys)
+    sw, sh = float(svb.group(1)), float(svb.group(2))
+    k = width / sw
+    paths = {}
+    for m in re.finditer(r'<path id="([^"]+)" d="([^"]*)"/>', src):
+        paths[m.group(1)] = m.group(2)
     tx, ty = at
-    k = scale
-    parts = ['<g transform="translate(%.1f,%.1f) scale(%g)" '
-             'stroke-width="%.3f">' % (tx - x0 * k, ty - y0 * k, k, 1.0 / k)]
+    parts = ['<g transform="translate(%.1f,%.1f) scale(%.4f)" '
+             'stroke-width="%.3f">' % (tx, ty, k, 1.0 / k)]
+    n = 0
     for pid in ids:
         if pid in paths:
             parts.append('<path id="%s" d="%s"/>' % (pid, paths[pid]))
+            n += 1
     parts.append("</g>")
     parts.append('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" '
                  'fill="none" stroke="#111827" stroke-width="1.5" '
                  'opacity="0.5"/>'
-                 % (tx - pad, ty - pad, (x1 - x0) * k + 2 * pad,
-                    (y1 - y0) * k + 2 * pad))
+                 % (tx - pad, ty - pad, width + 2 * pad, sh * k + 2 * pad))
     if label:
         parts.append('<text x="%.1f" y="%.1f" font-size="13" '
                      'font-weight="700" fill="#111827" '
                      'font-family="Source Code Pro,monospace">%s</text>'
                      % (tx - pad, ty - pad - 7, label))
+    text = open(main_svg, encoding="utf8").read()
     text = text.replace("</svg>", "\n".join(parts) + "\n</svg>")
-    open(svg_path, "w", encoding="utf8").write(text)
-    print("  inset: %d paths at (%.0f,%.0f) scale %gx" % (len(ids), tx, ty, k))
+    open(main_svg, "w", encoding="utf8").write(text)
+    print("  inset: %d paths, width %.0fpx at (%.0f,%.0f) from %s"
+          % (n, width, tx, ty, os.path.basename(source_svg)))
 
 
 def main():

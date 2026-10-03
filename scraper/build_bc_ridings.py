@@ -28,6 +28,7 @@ CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "bc_ridings.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "bc_ridings.svg")
 CONST_JSON = os.path.join(ROOT, "data", "bc", "constituencies.json")
+ZOOM_SVG = os.path.join(CACHE, "bc_vancouver_detail.svg")
 ZOOM_BOX = (-123.35, 49.0, -122.35, 49.55)  # Metro Vancouver
 GEOJSON = os.path.join(CACHE, "bc_ridings.geojson")
 ARTICLE = "https://en.wikipedia.org/wiki/2024_British_Columbia_general_election"
@@ -123,9 +124,9 @@ def main():
     shutil.copy2(OUT_SVG, BMV_SVG)
 
     # Metro Vancouver inset: the dense urban ridings are unreadable at
-    # province scale, so duplicate them magnified into the empty NW corner of
-    # the same map (the Yukon corner is blank). Same path ids -> the app's
-    # fills and tooltips work on both copies.
+    # province scale (the province simplification eps is ~1.4 km). Render them
+    # separately at their own scale - fine detail - and drop a smaller copy
+    # into the empty ocean corner south-west of Vancouver Island.
     def bbox(geom):
         xs, ys = [], []
         def walk(c):
@@ -145,8 +146,16 @@ def main():
             urban.append(f)
     urban_ids = [bm.fold(f["properties"]["ED_NAME"]) for f in urban]
     print("metro vancouver ridings:", len(urban_ids))
-    bm.add_inset(OUT_SVG, urban_ids, 5.0, (44, 40),
-                 label="Metro Vancouver (5x)")
+    zoom_gj = os.path.join(CACHE, "bc_vancouver.geojson")
+    with open(zoom_gj, "w", encoding="utf8") as fh:
+        json.dump({"type": "FeatureCollection", "features": urban}, fh)
+    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
+                "--name-field", "ED_NAME", "--fold", "--attr", "id",
+                "--no-prefix", "--out", ZOOM_SVG, "--attribution", ATTRIBUTION,
+                "--force"]
+    bm.main()
+    bm.add_inset(OUT_SVG, ZOOM_SVG, urban_ids, 150, (40, 640),
+                 label="Metro Vancouver")
     shutil.copy2(OUT_SVG, BMV_SVG)
 
     cfg_path = os.path.join(ROOT, "js", "config.js")

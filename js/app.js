@@ -1257,8 +1257,10 @@ function overhangSeats(votes, totalBase, direct, cap){
 function directMandateSplit(avg){
   const c=COUNTRIES[COUNTRY];
   // German 2025 rule only: Italy's Rosatellum keeps its FPTP seats separate
-  // (mixedFptp), so the direct mandates are not folded into the PR pool.
-  if(!c||CONSTITUENCY_RULE!=='fptp'||c.mixedFptp) return null;
+  // (mixedFptp) and pure-FPTP countries (BC/Quebec) have no proportional pool
+  // to seat the direct mandates within.
+  if(!c||CONSTITUENCY_RULE!=='fptp'||c.mixedFptp||
+     SEAT_METHOD!=='sainte_lague_standard') return null;
   const conf=(c.map2&&c.map2.useConstituencies)
     ?{...c,...c.map,...c.map2}:MAP_CONF();
   if(!conf||!conf.districts) return null;
@@ -2844,7 +2846,7 @@ function renderForecast(pane){
     voteRows+=`<div class="fc-voterow">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
       ${momHtml}
-      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div>${MAP_ONLY?'':`<div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div>`}</div>
+      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div>${MAP_ONLY||THRESHOLD<=0?'':`<div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div>`}</div>
       <span class="fc-vote-val">${fmt(mu,1)}${SEAT_BASED?'':'%'}</span>
       <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
       ${note}
@@ -2880,7 +2882,7 @@ function renderForecast(pane){
         <span class="fc-seat-int">${lo}–${hi}</span>
       </div>
       <div class="fc-hist">${hist}</div>
-      ${inParliament?'':'<div class="fc-note">likely below the '+THRESHOLD+'% threshold</div>'}
+      ${inParliament||THRESHOLD<=0?'':'<div class="fc-note">likely below the '+THRESHOLD+'% threshold</div>'}
     </div>`;
   });
 
@@ -2967,7 +2969,7 @@ function renderForecast(pane){
     ${SEAT_BASED?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.voteShare}</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations${MAP_ONLY?'':` · dashed line = ${THRESHOLD}% threshold`}</div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations${MAP_ONLY||THRESHOLD<=0?'':` · dashed line = ${THRESHOLD}% threshold`}</div>
     </div>`}
 
     ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatDistribution}</div></div>

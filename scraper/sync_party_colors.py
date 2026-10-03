@@ -28,6 +28,7 @@ COUNTRY_NAMES = {
     "austria": "Austria", "czechia": "Czech Republic",
     "poland": "Poland", "netherlands": "Netherlands",
     "estonia": "Estonia", "slovakia": "Slovakia", "france": "France",
+    "greece": "Greece",
 }
 ALIASES = {
     # Sweden
@@ -62,6 +63,11 @@ ALIASES = {
     # Serbia
     "Narodni pokret Srbije": "People's Movement of Serbia",
     "National Movement of Serbia": "People's Movement of Serbia",
+    # Greece
+    "Coalition of the Radical Left": "Syriza",
+    "Spartans": "Spartans (Greek political party)",
+    "Victory": "Niki (Greek political party)",
+    "Voice of Reason": "Voice of Reason (political party)",
 }
 
 

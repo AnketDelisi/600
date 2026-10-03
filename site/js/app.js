@@ -2660,6 +2660,7 @@ function renderForecast(pane){
 
   // Second-round runoff card (two-round presidential only)
   let runoffHtml='';
+  let roLead=null;
   const rDateNote=META.election_date_runoff?' ('+META.election_date_runoff+')':'';
   if(MAP_ONLY){
     const ro=runoffForecast(avg, filtered, sim);
@@ -2696,6 +2697,8 @@ function renderForecast(pane){
           ${t('Two-round system: a candidate is elected with a majority of valid votes in the first round; otherwise the top two face a runoff two weeks later'+(META.election_date_runoff?rDateNote:'')+'. P(elected) = round-1 majority + reach-the-runoff × head-to-head win.','İki turlu sistem: aday birinci turda geçerli oyların çoğunluğunu alırsa seçilir; aksi halde ilk iki aday iki hafta sonra ikinci turda karşılaşır'+(META.election_date_runoff?rDateNote:'')+'. Seçilme olasılığı = birinci turda çoğunluk + ikinci tura kalma × ikinci tur kazanma.')}
         </div>
       </div>`;
+      const winA=eleA>=eleB;
+      roLead={n:partyCode(winA?ro.a:ro.b), c:winA?cA:cB, p:winA?eleA:eleB};
     }
   }
 
@@ -2747,6 +2750,7 @@ function renderForecast(pane){
   const maxL=Math.max(...Object.values(sim.largest),1);
   largestSorted.forEach(p=>{
     const n=sim.largest[p]||0;
+    if(n<=0) return;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     largestRows+=`<div class="fc-row">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
@@ -2762,6 +2766,9 @@ function renderForecast(pane){
   voteOrder.forEach(p=>{
     const arr=sim.votesBy[p];
     const mu=SEAT_BASED?mean(arr)/100*SEATS_TOTAL:mean(arr);
+    // presidential races: drop the simulation-floor artifacts (~0.1%) of
+    // candidates no pollster actually tracks
+    if(MAP_ONLY&&mu<0.5) return;
     const lo=SEAT_BASED?percentile(arr,5)/100*SEATS_TOTAL:percentile(arr,5);
     const hi=SEAT_BASED?percentile(arr,95)/100*SEATS_TOTAL:percentile(arr,95);
     const thresh=arr.filter(v=>(SEAT_BASED?v/100*SEATS_TOTAL:v)>=vsThresh).length/arr.length;
@@ -2773,15 +2780,17 @@ function renderForecast(pane){
       ?`<span class="fc-mom up" title="14-day trend vs 30-day">▲ +${fmt(mom,1)}</span>`
       :`<span class="fc-mom down" title="14-day trend vs 30-day">▼ ${fmt(mom,1)}</span>`);
     let note='';
-    if(thresh>=0.5){
-      if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${pct100(1-thresh)} of sims</div>`;
-    }else if(thresh>0.005){
-      note=`<div class="fc-note">${partyCode(p)} crosses the threshold in ${pct100(thresh)} of sims</div>`;
+    if(!MAP_ONLY){
+      if(thresh>=0.5){
+        if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${pct100(1-thresh)} of sims</div>`;
+      }else if(thresh>0.005){
+        note=`<div class="fc-note">${partyCode(p)} crosses the threshold in ${pct100(thresh)} of sims</div>`;
+      }
     }
     voteRows+=`<div class="fc-voterow">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
       ${momHtml}
-      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div><div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div></div>
+      <div class="fc-row-bar fc-votebar"><div class="fc-row-fill" style="width:${barW}%;background:${color}"></div>${MAP_ONLY?'':`<div class="fc-thresh" style="left:${(vsThresh/vsMax*100).toFixed(1)}%"></div>`}</div>
       <span class="fc-vote-val">${fmt(mu,1)}${SEAT_BASED?'':'%'}</span>
       <span class="fc-vote-int">${fmt(lo,1)}–${fmt(hi,1)}</span>
       ${note}
@@ -2822,7 +2831,11 @@ function renderForecast(pane){
   });
 
   let leadCands;
-  if(HIDE_BLOCS){
+  if(MAP_ONLY&&roLead){
+    // Two-round presidential: the headline is the elected-president
+    // probability, not who leads round 1.
+    leadCands=[roLead];
+  }else if(HIDE_BLOCS){
     leadCands=fOrder.slice().sort((a,b)=>(sim.largest[b]||0)-(sim.largest[a]||0))
       .map(p=>({n:partyCode(p),c:PARTY_META[p]?PARTY_META[p].color:'#888',p:(sim.largest[p]||0)/sim.nSims}));
   }else{
@@ -2890,14 +2903,14 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
     </div>`}
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.largestParty}</div></div>
+    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','BİRİNCİ TUR LİDERİ'):T.largestParty}</div></div>
       ${largestRows}
     </div>
 
     ${SEAT_BASED?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.voteShare}</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations · dashed line = ${THRESHOLD}% threshold</div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations${MAP_ONLY?'':` · dashed line = ${THRESHOLD}% threshold`}</div>
     </div>`}
 
     ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatDistribution}</div></div>

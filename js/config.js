@@ -4177,7 +4177,8 @@ saxony_anhalt: {
     pollsterMAE: {
       Datafolha:   { overall: 1.50 },
       Quaest:      { overall: 1.80 },
-      'Meio/Ideia':{ overall: 2.00 },
+      Ideia:       { overall: 2.00 },
+      Ipec:        { overall: 1.70 },
       PoderData:   { overall: 2.20 },
       Gerp:        { overall: 2.50 },
       Nexus:       { overall: 1.80 },
@@ -4188,6 +4189,8 @@ saxony_anhalt: {
       AtlasIntel:  { overall: 2.50 },
       Indexa:      { overall: 2.50 },
       Palver:      { overall: 2.60 },
+      'Paraná Pesquisas': { overall: 2.20 },
+      Veritá:      { overall: 2.60 },
     },
     logos: {
       lula: 'img/br/Lula.svg', flavio: 'img/br/Bolsonaro.svg', caiado: 'img/br/Caiado.svg',

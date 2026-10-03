@@ -87,6 +87,10 @@ def parse_results(html, names):
                 continue
             out[key] = {p: round(votes.get(p, 0) * 100 / total, 2)
                         for p in PARTIES}
+            # 2024 Ind+Other share: proxy shape for CentreBC (the BC United
+            # successor; its remnant ran as independents/others in 2024)
+            out[key]["_oth"] = round(
+                (num(tail[3]) + num(tail[4])) * 100 / total, 2)
     return out
 
 
@@ -105,6 +109,9 @@ def main():
     print("ridings with 2024 results:", len(results),
           "| missing:", sorted(set(names) - set(results))[:8])
 
+    nat_oth = sum(x.get("_oth", 0) for x in results.values()) / \
+        max(1, len(results))
+    print("national _oth proxy: %.2f" % nat_oth)
     cons = []
     for key, disp in sorted(names.items()):
         r = results.get(key, {p: 0 for p in PARTIES})
@@ -171,11 +178,11 @@ def main():
     recencyHalfLifeDays: 14,
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
-      bcndp: { code: 'BC NDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
-      cpbc:  { code: 'BC Con',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
-      gpbc:  { code: 'BC Green', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
-      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
-      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
+      bcndp: { code: 'BCNDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
+      cpbc:  { code: 'CPBC',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
+      gpbc:  { code: 'GPBC', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
+      cbc:   { code: 'CBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
+      onbc:  { code: '1BC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
     },
     order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
     parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
@@ -200,11 +207,15 @@ def main():
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
+      // parties with no 2024 past inherit a proxy's geographic shape:
+      // OneBC (right-wing split) tracks the Conservatives, CentreBC (the BC
+      // United successor) tracks the 2024 Ind+Other vote
+      swingProxy: { onbc: 'cpbc', cbc: '_oth' },
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,
       // national baseline for the uniform-swing projection (= 2024 result)
-      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0, _oth: @@natoth@@ },
     },
     // dense Metro Vancouver ridings, zoomed (same ids as the main map)
     map2: {
@@ -228,7 +239,8 @@ def main():
                           8).replace("\n", "\n      ")),
             ("zoom", j({bm.fold(f["properties"]["ED_NAME"]):
                         bm.fold(f["properties"]["ED_NAME"]) for f in urban},
-                       8).replace("\n", "\n      "))):
+                       8).replace("\n", "\n      ")),
+            ("natoth", "%.2f" % nat_oth)):
         block = block.replace("@@%s@@" % ph, val)
 
     m = re.search(r"\n  bc: \{", text)

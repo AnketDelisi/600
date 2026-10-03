@@ -1674,27 +1674,86 @@ function runoffMapAvg(avg, filtered, sim){
   return ro?{[ro.a]:ro.aN, [ro.b]:ro.bN} : null;
 }
 
-// Per-district D'Hondt split for the seat-circle overlay (Spain's provinces,
-// Poland's okregi): the same allocation as allocateSeatsByDistrict, returned
-// as one entry per seat grouped by party, largest first.
+// Per-district seat split for the seat-circle overlay. Countries whose map
+// districts elect several seats get one dot per seat: Spain/Poland from
+// conf.seatDistricts (per-district D'Hondt), Latvia/Estonia/Austria from a
+// conf.seatDots block, Czechia's map2 regions from conf.regions (first
+// scrutiny, LR-Imperiali). Returned grouped by party, largest first.
 function districtSeatSplit(nr, avg, resultMode, conf){
-  const seatsN=conf.seatDistricts[nr];
-  if(!seatsN) return null;
-  const shares=districtShares(nr, avg, resultMode, conf);
-  if(!shares) return null;
-  const votes={};
-  PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
-  const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
-    :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
+  const dots=conf.seatDots;
+  let seatsN=null, votes={}, method='dhondt', valid=null;
   const natBase=resultMode?(conf.national2021||LAST_ELECTION.results):avg;
-  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&
-    ((dth?votes[p]:(natBase&&natBase[p]||0))>=THRESHOLD));
-  if(!valid.length) return null;
-  const quo=[];
-  valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});
-  quo.sort((a,b)=>b.q-a.q);
+  if(conf.seatDistricts&&conf.seatDistricts[nr]){
+    seatsN=conf.seatDistricts[nr];
+    const shares=districtShares(nr, avg, resultMode, conf);
+    if(!shares) return null;
+    PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+    const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
+      :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
+    valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&
+      ((dth?votes[p]:(natBase&&natBase[p]||0))>=THRESHOLD));
+  }else if(conf.regions&&conf.regions[nr]){
+    // Czechia: the map2 regions carry their own shares and seats
+    const r=conf.regions[nr];
+    seatsN=r.seats;
+    const nat=conf.national2021||LAST_ELECTION.results;
+    PARTY_ORDER.forEach(p=>{
+      votes[p]=Math.max(0,(r.results[p]||0)+(resultMode?0:((avg&&avg[p]||0)-(nat[p]||0))));
+    });
+    method='imperiali';
+    valid=PARTY_ORDER.filter(p=>((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
+  }else if(dots&&dots.seats){
+    // nr is the raw path id; the seats are keyed by the district's gebiet key
+    const gKey=(conf.districts&&conf.districts[String(nr)])||String(nr);
+    if(!dots.seats[gKey]) return null;
+    seatsN=dots.seats[gKey];
+    method=dots.method||'dhondt';
+    const shares=districtShares(nr, avg, resultMode, conf);
+    if(!shares) return null;
+    PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+    valid=PARTY_ORDER.filter(p=>((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
+  }else{
+    return null;
+  }
+  if(!seatsN||!valid||!valid.length) return null;
   const seats={};
-  for(let i=0;i<seatsN&&i<quo.length;i++) seats[quo[i].p]=(seats[quo[i].p]||0)+1;
+  if(method==='hare'||method==='imperiali'){
+    const total=valid.reduce((a,p)=>a+(votes[p]||0),0);
+    if(!(total>0)) return null;
+    const quota=total/(method==='imperiali'?seatsN+2:seatsN);
+    const rems=[];
+    let given=0;
+    valid.forEach(p=>{
+      const q=(votes[p]||0)/quota, fl=Math.floor(q);
+      seats[p]=fl; given+=fl;
+      rems.push([q-fl,p]);
+    });
+    if(given>seatsN){
+      // Imperiali can over-allocate: trim the smallest remainders
+      rems.sort((a,b)=>a[0]-b[0]);
+      let over=given-seatsN, i=0;
+      while(over>0&&i<rems.length){
+        const p=rems[i][1];
+        if(seats[p]>0){seats[p]--;over--}
+        i++;
+      }
+    }else{
+      rems.sort((a,b)=>b[0]-a[0]);
+      const left=seatsN-given;
+      for(let i=0;i<left&&i<rems.length;i++) seats[rems[i][1]]++;
+    }
+  }else{
+    const quo=[];
+    valid.forEach(p=>{
+      for(let d=1;d<=seatsN;d++){
+        const div=method==='dhondt'?d
+          :(method==='sainte_lague_standard'?(2*d-1):(d===1?1.2:2*d-1));
+        quo.push({p,q:(votes[p]||0)/div});
+      }
+    });
+    quo.sort((a,b)=>b.q-a.q);
+    for(let i=0;i<seatsN&&i<quo.length;i++) seats[quo[i].p]=(seats[quo[i].p]||0)+1;
+  }
   const list=[];
   Object.entries(seats).sort((a,b)=>b[1]-a[1]).forEach(([p,n])=>{
     for(let i=0;i<n;i++) list.push(p);
@@ -1702,10 +1761,39 @@ function districtSeatSplit(nr, avg, resultMode, conf){
   return list;
 }
 
-// Seat circles: where a map district elects several seats (Spain's 52
-// provinces, Poland's 41 okregi) draw one dot per seat inside the district,
-// coloured by the party that won it and grouped in a compact grid at the
-// district's centre.
+// The district's largest ring: its polygon centroid and bounding box are a
+// better dot anchor than the path's bbox centre (island groups like the
+// Balearics, the Canaries or Estonia's Saaremaa have their bbox centre in
+// the sea).
+function largestRing(ph){
+  const d=ph.getAttribute('d')||'';
+  let best=null;
+  d.split(/[Mm]/).forEach(seg=>{
+    const pts=[];
+    const re=/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g;
+    let m;
+    while((m=re.exec(seg))) pts.push([parseFloat(m[1]),parseFloat(m[2])]);
+    if(pts.length<3) return;
+    let a=0,cx=0,cy=0,minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
+    for(let i=0;i<pts.length;i++){
+      const [x0,y0]=pts[i], [x1,y1]=pts[(i+1)%pts.length];
+      const cr=x0*y1-x1*y0;
+      a+=cr; cx+=(x0+x1)*cr; cy+=(y0+y1)*cr;
+      if(x0<minX)minX=x0; if(x0>maxX)maxX=x0;
+      if(y0<minY)minY=y0; if(y0>maxY)maxY=y0;
+    }
+    a/=2;
+    const area=Math.abs(a);
+    if(!best||area>best.area){
+      best={area,cx:cx/(6*a),cy:cy/(6*a),w:maxX-minX,h:maxY-minY};
+    }
+  });
+  return best;
+}
+
+// Seat circles: one dot per seat inside each multi-member district, coloured
+// by the party that won it and grouped in a compact grid at the district's
+// centre.
 function drawSeatDots(svg, mapped, avg, resultMode, conf){
   const NS='http://www.w3.org/2000/svg';
   const g=document.createElementNS(NS,'g');
@@ -1713,14 +1801,15 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
   mapped.forEach(({nr,ph})=>{
     const list=districtSeatSplit(nr, avg, resultMode, conf);
     if(!list||!list.length) return;
-    const bb=ph.getBBox();
+    const lr=largestRing(ph);
+    const bb=lr?{width:lr.w,height:lr.h}:ph.getBBox();
     if(!bb.width||!bb.height) return;
+    const cx=lr?lr.cx:bb.width/2, cy=lr?lr.cy:bb.height/2;
     const n=list.length;
     const cols=Math.min(7,Math.max(1,Math.ceil(Math.sqrt(n))));
     const rows=Math.ceil(n/cols);
     const r=Math.max(1.0,Math.min(4.2,(Math.min(bb.width,bb.height)*0.85)/(cols*2.15)));
     const sp=2.15*r;
-    const cx=bb.x+bb.width/2, cy=bb.y+bb.height/2;
     const x0=cx-(cols-1)*sp/2, y0=cy-(rows-1)*sp/2;
     list.forEach((p,i)=>{
       const c=document.createElementNS(NS,'circle');
@@ -1798,7 +1887,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       nr=parseInt(ph.id.slice(1),10);
     }
     if(!nr) return;
-    if(conf.seatDistricts) mapped.push({nr,ph});
+    if(conf.seatDistricts||conf.seatDots) mapped.push({nr,ph});
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return;
     const blocMode=MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
@@ -1925,7 +2014,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   box.appendChild(tooltip);
   // seat circles for multi-member district maps (Spain/Poland); drawn after
   // the SVG is in the DOM so getBBox() has layout
-  if(conf.seatDistricts&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
+  if((conf.seatDistricts||conf.seatDots)&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
 }
 
 /* ---------- screenshot capture ---------- */

@@ -3480,6 +3480,8 @@ saxony_anhalt: {
       // 5 electoral districts (Saeima constituencies); numeric keys match
       // the __01..__05 path ids in latvia.svg (default selector path[id^="_"])
       districts: { 1: 'riga', 2: 'vidzeme', 3: 'latgale', 4: 'zemgale', 5: 'kurzeme' },
+      // seat circles: the 5 Saeima constituencies elect 36/26/13/13/12 seats
+      seatDots: { method: 'sainte_lague', seats: { riga: 36, vidzeme: 26, latgale: 13, zemgale: 13, kurzeme: 12 } },
       // 2022 vote share (%) per constituency (source: CVK / en.wikipedia.org)
       // Official CVK district aggregates (sv2022)
       gebiete: {
@@ -4511,6 +4513,9 @@ saxony_anhalt: {
         Salzburg: 'salzburg', Styria: 'styria', Tyrol: 'tyrol', UpperAustria: 'upper_austria',
         Vienna: 'vienna', Vorarlberg: 'vorarlberg',
       },
+      // seat circles: the 9 state constituencies elect 7/12/37/32/27/16/11/8/33
+      // seats (Hare, per the Nationalratswahlordnung)
+      seatDots: { method: 'hare', seats: { burgenland: 7, carinthia: 12, lower_austria: 37, upper_austria: 32, styria: 27, tyrol: 16, salzburg: 11, vorarlberg: 8, vienna: 33 } },
       // 2024 Nationalrat share % per Bundesland (source: en.wikipedia.org 2024 election, "Results by state")
       gebiete: {
       "burgenland": {
@@ -5898,6 +5903,9 @@ saxony_anhalt: {
             "zlinsky": "Zlínský kraj",
             "moravskoslezsky": "Moravskoslezský kraj"
       },
+      // seat circles: the 14 kraje elect their seats in the first scrutiny
+      // (LR-Imperiali, quota votes/(seats+2)); seats come from conf.regions
+      "seatDots": { "method": "imperiali" },
       "label": "kraje (14)"
 },
     pollsterMAE: {
@@ -13546,6 +13554,9 @@ saxony_anhalt: {
         No5: 'district5', No6: 'district6', No7: 'district7', No8: 'district8',
         No9: 'district9', No10: 'district10', No11: 'district11', No12: 'district12',
       },
+      // seat circles: the 12 electoral districts elect 10/13/8/16/6/5/6/7/7/8/8/7
+      // seats (modified Sainte-Lague)
+      seatDots: { method: 'sainte_lague', seats: { district1: 10, district2: 13, district3: 8, district4: 16, district5: 6, district6: 5, district7: 6, district8: 7, district9: 7, district10: 8, district11: 8, district12: 7 } },
       // 2023 result per electoral district, vote % (source: 2023 election page "Results by constituency")
       gebiete: {
         district1:  { ref: 31.4, kesk: 20.9, ekre: 9.7, isamaa: 5.6, sde: 10.0, e200: 15.7, eer: 1.1, pp: 2.3, vl: 3.3, koos: 0, erk: 0 },

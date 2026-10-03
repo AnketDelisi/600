@@ -2,7 +2,7 @@
   "country": "spain",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
-  "scraped_at": "2026-10-02T21:38:52Z",
+  "scraped_at": "2026-10-03T08:41:10Z",
   "poll_count": 544,
   "polls": [
     {
@@ -11111,5 +11111,73 @@
         "upn": 0.2
       }
     }
-  ]
+  ],
+  "regional": {
+    "andalucia": {
+      "pp": 37.9,
+      "psoe": 29.2,
+      "vox": 17.25,
+      "sumar": 8.63,
+      "podemos": 2.15,
+      "salf": 2.4
+    },
+    "pais_vasco": {
+      "pnv": 23.7,
+      "pp": 11.2,
+      "sumar": 9.7,
+      "vox": 3.9
+    },
+    "canarias": {
+      "psoe": 30.0,
+      "pp": 24.0,
+      "cc": 11.0,
+      "sumar": 5.0,
+      "vox": 21.0,
+      "podemos": 3.0
+    },
+    "cataluna": {
+      "psoe": 31.48,
+      "sumar": 9.72,
+      "pp": 12.91,
+      "erc": 14.11,
+      "junts": 10.78,
+      "vox": 8.51,
+      "podemos": 3.85
+    },
+    "galicia": {
+      "pp": 42.38,
+      "sumar": 8.05,
+      "bng": 13.51,
+      "vox": 7.04
+    },
+    "madrid": {
+      "pp": 31.8,
+      "psoe": 26.0,
+      "sumar": 13.1,
+      "vox": 15.9
+    },
+    "murcia": {
+      "pp": 43.88,
+      "psoe": 24.55,
+      "vox": 20.67,
+      "sumar": 4.83,
+      "podemos": 4.03,
+      "salf": 4.1
+    },
+    "navarra": {
+      "psoe": 23.6,
+      "pp": 17.7,
+      "upn": 14.7,
+      "sumar": 11.6,
+      "vox": 7.0
+    },
+    "valenciana": {
+      "pp": 31.1,
+      "psoe": 27.6,
+      "vox": 20.23,
+      "sumar": 10.77,
+      "podemos": 6.0,
+      "salf": 3.4
+    }
+  }
 }

@@ -24,18 +24,35 @@ from bs4 import BeautifulSoup
 
 WIKI_URL = ("https://en.wikipedia.org/wiki/"
             "Opinion_polling_for_the_next_Spanish_general_election")
+SUB_URL = ("https://en.wikipedia.org/wiki/"
+           "Sub-national_opinion_polling_for_the_next_Spanish_general_"
+           "election")
 COUNTRY = "spain"
 CUTOFF = "2023-08-01"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
+
+REGION = {
+    "Andalusia": "andalucia", "Aragon": "aragon", "Asturias": "asturias",
+    "Balearic Islands": "balears", "Basque Country": "pais_vasco",
+    "Canary Islands": "canarias", "Cantabria": "cantabria",
+    "Castile and León": "castilla_y_leon",
+    "Castilla–La Mancha": "castilla_la_mancha",
+    "Catalonia": "cataluna", "Extremadura": "extremadura",
+    "Galicia": "galicia", "La Rioja": "rioja", "Madrid": "madrid",
+    "Region of Murcia": "murcia", "Murcia": "murcia",
+    "Navarre": "navarra", "Valencian Community": "valenciana",
+}
+N_REGIONAL = 8
 
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 
 ALT_MAP = {
-    "pp": "pp", "psoe": "psoe", "vox": "vox", "sumar": "sumar",
-    "erc": "erc", "junts": "junts", "eh bildu": "bildu", "pnv": "pnv",
-    "bng": "bng", "cca": "cc", "upn": "upn", "podemos": "podemos",
-    "salf": "salf", "aliança.cat": "ac", "alianca.cat": "ac",
+    "pp": "pp", "psoe": "psoe", "psc": "psoe", "vox": "vox",
+    "sumar": "sumar", "erc": "erc", "junts": "junts", "eh bildu": "bildu",
+    "pnv": "pnv", "bng": "bng", "cca": "cc", "upn": "upn",
+    "podemos": "podemos", "podem": "podemos", "salf": "salf",
+    "aliança.cat": "ac", "alianca.cat": "ac",
     "adelante andalucía": "aa", "adelante andalucia": "aa",
 }
 KNOWN = {"pp", "psoe", "vox", "sumar", "erc", "junts", "bildu", "pnv",
@@ -222,10 +239,94 @@ def scrape_spain():
     return polls
 
 
+def scrape_subnational():
+    """Latest regional polling averages per autonomous community.
+
+    These are used by the app as a *regional adjustment* blended into the
+    2023-based district projection (not as the base point).
+    """
+    print(f"Fetching {SUB_URL}...")
+    resp = requests.get(SUB_URL,
+                        headers={"User-Agent": "600-poll-scraper/1.0"},
+                        timeout=30)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, "lxml")
+
+    out = {}
+    h3 = ""
+    for el in soup.find_all(["h3", "table"]):
+        if el.name == "h3":
+            h3 = el.get_text(strip=True)
+            continue
+        key = REGION.get(h3)
+        if not key or "wikitable" not in (el.get("class") or []):
+            continue
+        grid, metas = expand_grid(el)
+        if not grid:
+            continue
+        header_end = 0
+        while header_end < len(grid) and (
+                len(grid[header_end]) < 3
+                or not parse_date(grid[header_end][1], None)):
+            header_end += 1
+        if header_end == 0 or header_end >= len(grid):
+            continue
+        ncol = max(len(r) for r in grid[:header_end])
+        hdr = [""] * ncol
+        for col in range(ncol):
+            for ri in range(header_end):
+                if col < len(grid[ri]) and grid[ri][col]:
+                    hdr[col] = grid[ri][col]
+        mapped = [map_header(h) for h in hdr]
+        if sum(1 for m in mapped if m) < MIN_PARTIES:
+            continue
+        polls = []
+        for ri in range(header_end, len(grid)):
+            row = grid[ri]
+            if len(row) < 4:
+                continue
+            pollster = re.sub(r"\[\s*[\w\d]+\s*\]", "", row[0]).strip()
+            if not pollster or "election" in pollster.lower():
+                continue
+            date = parse_date(row[1], None)
+            if not date or date < CUTOFF:
+                continue
+            votes = {}
+            for start, span, txt in metas[ri]:
+                keys = [mapped[i] for i in range(start, min(start + span,
+                                                           len(mapped)))
+                        if i < len(mapped) and mapped[i]]
+                keys = [k for k in keys if k in KNOWN]
+                if not keys:
+                    continue
+                share = parse_share(txt)
+                if share is None:
+                    continue
+                votes[keys[0]] = share
+            if len(votes) < MIN_PARTIES:
+                continue
+            polls.append((date, votes))
+        if not polls:
+            continue
+        polls.sort(key=lambda x: x[0])
+        last = polls[-N_REGIONAL:]
+        acc = {}
+        for _d, votes in last:
+            for p, v in votes.items():
+                acc.setdefault(p, []).append(v)
+        out[key] = {p: round(sum(vs) / len(vs), 2)
+                    for p, vs in acc.items()}
+    return out
+
+
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     polls = scrape_spain()
     print(f"Scraped {len(polls)} polls")
+    regional = scrape_subnational()
+    print(f"Regional averages: {len(regional)} communities")
+    for k in sorted(regional):
+        print(f"  {k:18s} {regional[k]}")
     out = OUTPUT_DIR / "polls.json"
     out.write_text(json.dumps({
         "country": COUNTRY,
@@ -234,6 +335,7 @@ def main():
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "poll_count": len(polls),
         "polls": polls,
+        "regional": regional,
     }, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {out}")
     if polls:

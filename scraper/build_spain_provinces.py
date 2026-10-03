@@ -94,6 +94,15 @@ SKIP = {"Censo", "Votantes", "Nulos", "V&aacute;lidos", "Blancos", "Otros"}
 # Canary Islands are shifted towards the mainland (standard cartographic
 # inset practice) so the map does not waste space on the Atlantic gap.
 CANARY_SHIFT = {"palmas": (8.5, 6.25), "tenerife": (8.5, 6.25)}
+# autonomous community codes (electionresources.org) -> region key
+REGION = {
+    "01": "andalucia", "02": "aragon", "03": "asturias", "04": "balears",
+    "05": "canarias", "06": "cantabria", "07": "castilla_la_mancha",
+    "08": "castilla_y_leon", "09": "cataluna", "10": "extremadura",
+    "11": "galicia", "12": "madrid", "13": "navarra", "14": "pais_vasco",
+    "15": "murcia", "16": "rioja", "17": "valenciana", "18": "ceuta",
+    "19": "melilla",
+}
 
 
 def party_key(ticket):
@@ -152,6 +161,7 @@ def main():
     prov_votes, prov_seats = {}, {}
     nat_votes, nat_seats = {}, {}
     prov_valid, nat_valid = {}, 0
+    prov_region, reg_votes, reg_valid = {}, {}, {}
     for r in rows:
         if len(r) < 7 or r[2] != "2023" or not r[3]:
             continue
@@ -160,16 +170,23 @@ def main():
             continue
         key = party_key(r[3])
         if r[1]:                      # province row
+            prov_region[r[1]] = r[0]
             if not key:
                 continue
             prov_votes.setdefault(r[1], {}).setdefault(key, 0)
             prov_votes[r[1]][key] += num(r[4])
             prov_seats.setdefault(r[1], {}).setdefault(key, 0)
             prov_seats[r[1]][key] += num(r[6])
-        elif not r[0]:
+        elif r[0]:                    # autonomous community row
+            if r[3] == "V&aacute;lidos":
+                reg_valid[r[0]] = num(r[4])
+            elif key:
+                reg_votes.setdefault(r[0], {}).setdefault(key, 0)
+                reg_votes[r[0]][key] += num(r[4])
+        else:                         # national row
             if r[3] == "V&aacute;lidos":
                 nat_valid = num(r[4])
-            elif key:                 # national row
+            elif key:
                 nat_votes[key] = nat_votes.get(key, 0) + num(r[4])
                 nat_seats[key] = nat_seats.get(key, 0) + num(r[6])
     print("provinces:", len(prov_votes), "| national seats:", nat_seats)
@@ -185,6 +202,29 @@ def main():
         names[key] = disp
     national = {p: round(nat_votes.get(p, 0) * 100 / nat_valid, 2)
                 for p in PARTIES}
+    # province -> autonomous community, and the official 2023 regional
+    # baselines (used to blend the sub-national polls into the projection)
+    region_of = {}
+    for code, (key, geob, disp) in PROV.items():
+        rc = prov_region.get(code)
+        if rc and rc in REGION:
+            region_of[key] = REGION[rc]
+    region2023 = {}
+    reg_acc, reg_val = {}, {}
+    for code, (key, geob, disp) in PROV.items():
+        rc = prov_region.get(code)
+        rk = REGION.get(rc)
+        if not rk:
+            continue
+        reg_val[rk] = reg_val.get(rk, 0) + (prov_valid.get(code) or 0)
+        for p, v in prov_votes.get(code, {}).items():
+            reg_acc.setdefault(rk, {}).setdefault(p, 0)
+            reg_acc[rk][p] += v
+    for rk, acc in reg_acc.items():
+        vv = reg_val.get(rk) or sum(acc.values())
+        region2023[rk] = {p: round(acc.get(p, 0) * 100 / vv, 2)
+                          for p in PARTIES}
+    print("regions:", len(region2023), "| regionOf:", len(region_of))
     print("seat total:", sum(seat_districts.values()))
     print("national:", national)
     for p in PARTIES:
@@ -276,6 +316,11 @@ def main():
       districts: @@districts@@,
       // seats per constituency (2023 apportionment)
       seatDistricts: @@seatDistricts@@,
+      // province -> autonomous community, and the official 2023 regional
+      // baselines: the sub-national polls blend into these, they are not
+      // the base point of the projection
+      regionOf: @@regionOf@@,
+      region2023: @@region2023@@,
       // 2023 vote share % per province (source: Ministerio del Interior)
       gebiete: @@gebiete@@,
       names: @@names@@,
@@ -300,6 +345,8 @@ def main():
                 "\n", "\n      ")),
             ("seatDistricts", j(seat_districts, 8).replace(
                 "\n", "\n      ")),
+            ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
+            ("region2023", j(region2023, 8).replace("\n", "\n      ")),
             ("gebiete", j(gebiete, 8).replace("\n", "\n      ")),
             ("names", j(names, 8).replace("\n", "\n      ")),
             ("mae", "{}")):

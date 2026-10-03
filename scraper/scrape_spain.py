@@ -22,6 +22,8 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+from pollster_norm import canonicalize_polls
+
 WIKI_URL = ("https://en.wikipedia.org/wiki/"
             "Opinion_polling_for_the_next_Spanish_general_election")
 SUB_URL = ("https://en.wikipedia.org/wiki/"
@@ -235,6 +237,7 @@ def scrape_spain():
             polls.append({"pollster": pollster, "date": date, "n": n,
                           "country": COUNTRY, "source": "Wikipedia",
                           "source_url": WIKI_URL, "votes": votes})
+    polls = canonicalize_polls(polls)
     polls.sort(key=lambda p: p["date"], reverse=True)
     return polls
 

@@ -21,11 +21,19 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+from pollster_norm import canonicalize_polls
+
 WIKI_URL = ("https://en.wikipedia.org/wiki/"
             "Opinion_polling_for_the_next_Greek_parliamentary_election")
 COUNTRY = "greece"
 CUTOFF = "2023-07-01"
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
+
+# same firm, different shorthand in the source table
+POLLSTER_ALIAS = {
+    "pulserc/skai": "pulse/skai",
+    "interview/political": "interview/politic",
+}
 
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
@@ -188,6 +196,7 @@ def scrape_greece():
             polls.append({"pollster": pollster, "date": date, "n": n,
                           "country": COUNTRY, "source": "Wikipedia",
                           "source_url": WIKI_URL, "votes": votes})
+    polls = canonicalize_polls(polls, POLLSTER_ALIAS)
     polls.sort(key=lambda p: p["date"], reverse=True)
     return polls
 

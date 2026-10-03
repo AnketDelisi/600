@@ -11,8 +11,8 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-10-02T15:13:29Z",
-  "poll_count": 111,
+  "scraped_at": "2026-10-03T11:03:13Z",
+  "poll_count": 112,
   "polls": [
     {
       "pollster": "Ipsos",
@@ -142,6 +142,23 @@
       "n": 13709,
       "fieldwork_start": "2026-08-26",
       "fieldwork_end": "2026-09-13"
+    },
+    {
+      "pollster": "Novus",
+      "date": "2026-09-12",
+      "votes": {
+        "V": 7.2,
+        "S": 31.1,
+        "MP": 5.0,
+        "C": 5.7,
+        "L": 4.1,
+        "M": 19.6,
+        "KD": 4.9,
+        "SD": 20.8
+      },
+      "country": "sweden",
+      "date_end": "2026-10-02",
+      "n": 6023
     },
     {
       "pollster": "Infostat",

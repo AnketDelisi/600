@@ -1393,13 +1393,20 @@ function districtShares(nr, avg, resultMode, confOverride){
       now=past;
     }else{
       const natP=nat[p]||0, avgP=avg[p]||0;
+      // New parties with no past of their own (BC's OneBC, a right-wing split
+      // from the Conservatives) inherit a proxy's geographic shape for the
+      // swing, so their projected vote concentrates where the parent is
+      // strong instead of being flat across every district.
+      const prox=(conf.swingProxy&&conf.swingProxy[p])||null;
+      const pastS=prox?(base[prox]||0):past;
+      const natS=prox?(nat[prox]||0):natP;
       let natNow;
-      if(method==='proportional'&&natP>0.5){
-        natNow=Math.max(0,past*(avgP/natP));
+      if(method==='proportional'&&natS>0.5){
+        natNow=Math.max(0,pastS*(avgP/natS));
       }else if(method==='shrunk'){
-        natNow=Math.max(0,avgP+shrink*(past-natP));
+        natNow=Math.max(0,avgP+shrink*(pastS-natS));
       }else{
-        natNow=Math.max(0,past+(avgP-natP));
+        natNow=Math.max(0,pastS+(avgP-natS));
       }
       now=natNow;
       if(reg&&reg[p]!==undefined&&rw>0&&rbase&&rbase[p]!==undefined){

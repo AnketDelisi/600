@@ -21823,11 +21823,11 @@ saxony_anhalt: {
     recencyHalfLifeDays: 14,
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
-      bcndp: { code: 'BC NDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
-      cpbc:  { code: 'BC Con',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
-      gpbc:  { code: 'BC Green', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
-      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
-      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
+      bcndp: { code: 'BCNDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
+      cpbc:  { code: 'CPBC',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
+      gpbc:  { code: 'GPBC', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
+      cbc:   { code: 'CBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
+      onbc:  { code: '1BC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
     },
     order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
     parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
@@ -21852,6 +21852,10 @@ saxony_anhalt: {
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
+      // parties with no 2024 past inherit a proxy's geographic shape:
+      // OneBC (right-wing split) tracks the Conservatives, CentreBC (the BC
+      // United successor) tracks the 2024 Ind+Other vote
+      swingProxy: { onbc: 'cpbc', cbc: '_oth' },
       districts: {
               "abbotsford-mission": "abbotsford-mission",
               "abbotsfordsouth": "abbotsfordsouth",
@@ -21954,655 +21958,748 @@ saxony_anhalt: {
                       "cpbc": 55.38,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "abbotsfordsouth": {
                       "bcndp": 35.18,
                       "cpbc": 61.61,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 3.21
               },
               "abbotsfordwest": {
                       "bcndp": 36.87,
                       "cpbc": 58.35,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 4.78
               },
               "boundary-similkameen": {
                       "bcndp": 42.56,
                       "cpbc": 48.39,
                       "gpbc": 5.89,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 3.16
               },
               "bulkleyvalley-stikine": {
                       "bcndp": 38.86,
                       "cpbc": 52.31,
                       "gpbc": 6.33,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.5
               },
               "burnaby-newwestminster": {
                       "bcndp": 59.99,
                       "cpbc": 34.71,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 5.3
               },
               "burnabycentre": {
                       "bcndp": 57.28,
                       "cpbc": 42.72,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "burnabyeast": {
                       "bcndp": 51.85,
                       "cpbc": 40.52,
                       "gpbc": 7.63,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "burnabynorth": {
                       "bcndp": 53.26,
                       "cpbc": 43.0,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 3.74
               },
               "burnabysouth-metrotown": {
                       "bcndp": 49.33,
                       "cpbc": 41.59,
                       "gpbc": 6.26,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.82
               },
               "cariboo-chilcotin": {
                       "bcndp": 30.41,
                       "cpbc": 69.59,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "chilliwack-cultuslake": {
                       "bcndp": 45.42,
                       "cpbc": 54.58,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "chilliwacknorth": {
                       "bcndp": 37.66,
                       "cpbc": 54.58,
                       "gpbc": 5.5,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.26
               },
               "columbiariver-revelstoke": {
                       "bcndp": 44.26,
                       "cpbc": 47.93,
                       "gpbc": 7.82,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "coquitlam-burkemountain": {
                       "bcndp": 50.85,
                       "cpbc": 49.15,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "coquitlam-maillardville": {
                       "bcndp": 51.8,
                       "cpbc": 39.57,
                       "gpbc": 6.32,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.31
               },
               "courtenay-comox": {
                       "bcndp": 38.56,
                       "cpbc": 38.83,
                       "gpbc": 20.74,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.86
               },
               "cowichanvalley": {
                       "bcndp": 40.51,
                       "cpbc": 37.59,
                       "gpbc": 19.83,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.07
               },
               "deltanorth": {
                       "bcndp": 52.73,
                       "cpbc": 40.22,
                       "gpbc": 6.2,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.85
               },
               "deltasouth": {
                       "bcndp": 44.93,
                       "cpbc": 55.07,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "esquimalt-colwood": {
                       "bcndp": 51.47,
                       "cpbc": 29.22,
                       "gpbc": 19.31,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "fraser-nicola": {
                       "bcndp": 36.4,
                       "cpbc": 54.34,
                       "gpbc": 9.27,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "juandefuca-malahat": {
                       "bcndp": 38.79,
                       "cpbc": 38.2,
                       "gpbc": 23.01,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "kamloops-norththompson": {
                       "bcndp": 32.9,
                       "cpbc": 59.74,
                       "gpbc": 7.36,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "kamloopscentre": {
                       "bcndp": 40.92,
                       "cpbc": 48.83,
                       "gpbc": 10.25,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "kelowna-lakecountry-coldstream": {
                       "bcndp": 35.25,
                       "cpbc": 53.92,
                       "gpbc": 4.34,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 6.5
               },
               "kelowna-mission": {
                       "bcndp": 32.61,
                       "cpbc": 51.49,
                       "gpbc": 4.94,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 10.96
               },
               "kelownacentre": {
                       "bcndp": 42.69,
                       "cpbc": 42.85,
                       "gpbc": 4.31,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 10.15
               },
               "kootenay-monashee": {
                       "bcndp": 52.04,
                       "cpbc": 38.85,
                       "gpbc": 9.11,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "kootenay-rockies": {
                       "bcndp": 21.75,
                       "cpbc": 42.71,
                       "gpbc": 5.18,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 30.37
               },
               "kootenaycentral": {
                       "bcndp": 39.63,
                       "cpbc": 31.67,
                       "gpbc": 18.74,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 9.96
               },
               "ladysmith-oceanside": {
                       "bcndp": 41.49,
                       "cpbc": 35.48,
                       "gpbc": 6.72,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 16.31
               },
               "langford-highlands": {
                       "bcndp": 51.87,
                       "cpbc": 37.4,
                       "gpbc": 10.73,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "langley-abbotsford": {
                       "bcndp": 33.73,
                       "cpbc": 55.65,
                       "gpbc": 5.56,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 5.06
               },
               "langley-walnutgrove": {
                       "bcndp": 44.77,
                       "cpbc": 49.56,
                       "gpbc": 5.13,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.55
               },
               "langley-willowbrook": {
                       "bcndp": 44.43,
                       "cpbc": 48.24,
                       "gpbc": 7.34,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "mapleridge-pittmeadows": {
                       "bcndp": 54.89,
                       "cpbc": 45.11,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "mapleridgeeast": {
                       "bcndp": 46.64,
                       "cpbc": 47.02,
                       "gpbc": 6.34,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "midisland-pacificrim": {
                       "bcndp": 48.74,
                       "cpbc": 39.45,
                       "gpbc": 11.81,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "nanaimo-gabriolaisland": {
                       "bcndp": 52.75,
                       "cpbc": 34.65,
                       "gpbc": 12.6,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "nanaimo-lantzville": {
                       "bcndp": 51.75,
                       "cpbc": 39.51,
                       "gpbc": 8.74,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "nechakolakes": {
                       "bcndp": 27.21,
                       "cpbc": 67.45,
                       "gpbc": 5.34,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "newwestminster-coquitlam": {
                       "bcndp": 59.13,
                       "cpbc": 29.84,
                       "gpbc": 11.03,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "northcoast-haidagwaii": {
                       "bcndp": 64.92,
                       "cpbc": 35.08,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "northisland": {
                       "bcndp": 44.93,
                       "cpbc": 47.07,
                       "gpbc": 8.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "northvancouver-lonsdale": {
                       "bcndp": 64.88,
                       "cpbc": 35.12,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "northvancouver-seymour": {
                       "bcndp": 52.77,
                       "cpbc": 35.79,
                       "gpbc": 5.61,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 5.84
               },
               "oakbay-gordonhead": {
                       "bcndp": 49.1,
                       "cpbc": 28.89,
                       "gpbc": 22.01,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "peacerivernorth": {
                       "bcndp": 5.49,
                       "cpbc": 74.36,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 20.15
               },
               "peaceriversouth": {
                       "bcndp": 5.6,
                       "cpbc": 69.84,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 24.56
               },
               "penticton-summerland": {
                       "bcndp": 40.24,
                       "cpbc": 41.37,
                       "gpbc": 5.24,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 13.15
               },
               "portcoquitlam": {
                       "bcndp": 53.87,
                       "cpbc": 38.79,
                       "gpbc": 6.4,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.95
               },
               "portmoody-burquitlam": {
                       "bcndp": 52.06,
                       "cpbc": 40.5,
                       "gpbc": 7.44,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "powellriver-sunshinecoast": {
                       "bcndp": 49.62,
                       "cpbc": 35.68,
                       "gpbc": 13.48,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.22
               },
               "princegeorge-mackenzie": {
                       "bcndp": 28.24,
                       "cpbc": 60.92,
                       "gpbc": 8.49,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.34
               },
               "princegeorge-northcariboo": {
                       "bcndp": 17.03,
                       "cpbc": 56.82,
                       "gpbc": 4.31,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 21.84
               },
               "princegeorge-valemount": {
                       "bcndp": 34.94,
                       "cpbc": 55.19,
                       "gpbc": 9.87,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "richmond-bridgeport": {
                       "bcndp": 34.77,
                       "cpbc": 58.19,
                       "gpbc": 3.21,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 3.82
               },
               "richmond-queensborough": {
                       "bcndp": 44.13,
                       "cpbc": 50.91,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 4.96
               },
               "richmond-steveston": {
                       "bcndp": 44.27,
                       "cpbc": 42.2,
                       "gpbc": 3.44,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 10.09
               },
               "richmondcentre": {
                       "bcndp": 36.78,
                       "cpbc": 51.99,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 11.24
               },
               "saanichnorthandtheislands": {
                       "bcndp": 32.19,
                       "cpbc": 29.8,
                       "gpbc": 36.15,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.87
               },
               "saanichsouth": {
                       "bcndp": 49.76,
                       "cpbc": 32.45,
                       "gpbc": 17.79,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "salmonarm-shuswap": {
                       "bcndp": 30.44,
                       "cpbc": 52.11,
                       "gpbc": 7.08,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 10.37
               },
               "skeena": {
                       "bcndp": 44.44,
                       "cpbc": 51.2,
                       "gpbc": 3.33,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.03
               },
               "surrey-cloverdale": {
                       "bcndp": 45.55,
                       "cpbc": 48.32,
                       "gpbc": 5.41,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.72
               },
               "surrey-fleetwood": {
                       "bcndp": 48.6,
                       "cpbc": 44.93,
                       "gpbc": 6.47,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "surrey-guildford": {
                       "bcndp": 46.93,
                       "cpbc": 46.81,
                       "gpbc": 4.32,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.94
               },
               "surrey-newton": {
                       "bcndp": 51.17,
                       "cpbc": 42.99,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 5.84
               },
               "surrey-panorama": {
                       "bcndp": 48.11,
                       "cpbc": 49.6,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.29
               },
               "surrey-serpentineriver": {
                       "bcndp": 47.49,
                       "cpbc": 49.7,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.81
               },
               "surrey-whiterock": {
                       "bcndp": 45.29,
                       "cpbc": 52.31,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.39
               },
               "surreycitycentre": {
                       "bcndp": 46.71,
                       "cpbc": 45.07,
                       "gpbc": 6.1,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 2.13
               },
               "surreynorth": {
                       "bcndp": 43.28,
                       "cpbc": 50.67,
                       "gpbc": 4.22,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.83
               },
               "surreysouth": {
                       "bcndp": 41.17,
                       "cpbc": 58.83,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-fraserview": {
                       "bcndp": 57.18,
                       "cpbc": 36.62,
                       "gpbc": 6.21,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-hastings": {
                       "bcndp": 64.15,
                       "cpbc": 24.29,
                       "gpbc": 10.85,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.71
               },
               "vancouver-kensington": {
                       "bcndp": 60.9,
                       "cpbc": 31.52,
                       "gpbc": 7.58,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-langara": {
                       "bcndp": 48.43,
                       "cpbc": 46.05,
                       "gpbc": 5.52,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-littlemountain": {
                       "bcndp": 62.11,
                       "cpbc": 30.61,
                       "gpbc": 7.28,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-pointgrey": {
                       "bcndp": 56.77,
                       "cpbc": 34.51,
                       "gpbc": 8.72,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-quilchena": {
                       "bcndp": 38.91,
                       "cpbc": 51.58,
                       "gpbc": 7.78,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.73
               },
               "vancouver-renfrew": {
                       "bcndp": 63.22,
                       "cpbc": 30.66,
                       "gpbc": 6.12,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-southgranville": {
                       "bcndp": 64.31,
                       "cpbc": 24.96,
                       "gpbc": 10.73,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vancouver-strathcona": {
                       "bcndp": 67.62,
                       "cpbc": 17.09,
                       "gpbc": 13.62,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 1.68
               },
               "vancouver-westend": {
                       "bcndp": 63.01,
                       "cpbc": 27.22,
                       "gpbc": 9.08,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.69
               },
               "vancouver-yaletown": {
                       "bcndp": 49.76,
                       "cpbc": 43.36,
                       "gpbc": 6.89,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "vernon-lumby": {
                       "bcndp": 42.69,
                       "cpbc": 40.97,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 16.34
               },
               "victoria-beaconhill": {
                       "bcndp": 47.35,
                       "cpbc": 19.15,
                       "gpbc": 33.5,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               },
               "victoria-swanlake": {
                       "bcndp": 56.03,
                       "cpbc": 20.2,
                       "gpbc": 23.16,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.61
               },
               "westkelowna-peachland": {
                       "bcndp": 27.9,
                       "cpbc": 50.85,
                       "gpbc": 0.0,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 21.25
               },
               "westvancouver-capilano": {
                       "bcndp": 27.13,
                       "cpbc": 46.68,
                       "gpbc": 5.56,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 20.63
               },
               "westvancouver-seatosky": {
                       "bcndp": 26.31,
                       "cpbc": 35.61,
                       "gpbc": 38.08,
                       "cbc": 0.0,
-                      "onbc": 0.0
+                      "onbc": 0.0,
+                      "_oth": 0.0
               }
       },
       // national baseline for the uniform-swing projection (= 2024 result)
-      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+      national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0, _oth: 3.67 },
     },
     // dense Metro Vancouver ridings, zoomed (same ids as the main map)
     map2: {

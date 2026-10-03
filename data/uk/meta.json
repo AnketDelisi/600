@@ -1,0 +1,10 @@
+{
+  "country": "uk",
+  "name": "United Kingdom",
+  "election_date": "2029-08-15",
+  "seats": 650,
+  "threshold": 0,
+  "method": "fptp",
+  "constituencies": 650,
+  "notes": "House of Commons: 650 seats, first-past-the-post. 2024 result: Labour 411 seats (33.7%), Conservatives 121 (23.7%), Liberal Democrats 72 (12.2%), Reform UK 5 (14.3%), SNP 9 (2.5%), Green 4 (6.8%), Plaid Cymru 4 (0.7%). Next general election due no later than 15 August 2029."
+}

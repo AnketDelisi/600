@@ -2413,6 +2413,11 @@ function daysToElection(){
   return h>0?h:0;
 }
 
+// The random-walk drift saturates at 120 days: beyond ~4 months today's
+// average will be replaced by campaign data the model cannot see, so a
+// 3-year horizon (UK 2029) must not claim a 6pp random walk.
+function driftDays(){ return Math.min(120, daysToElection()); }
+
 // Seeded PRNG (mulberry32) so the forecast is deterministic/static for a given dataset
 function mulberry32(seed){
   let a=seed>>>0;
@@ -2446,7 +2451,7 @@ function forecastSigma(avg, nPolls){
   // swing moves each bloc by ±σ; a party inside a bloc of share s sees about
   // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2).
   // Horizon drift adds the expected movement of the average itself.
-  const drift=FORECAST_DRIFT*Math.sqrt(daysToElection());
+  const drift=FORECAST_DRIFT*Math.sqrt(driftDays());
   return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2)+drift*drift);
 }
 
@@ -2559,7 +2564,7 @@ function runForecast(avg, nSims, nPolls){
   let K=effectiveK(nPolls,FORECAST_K);
   // horizon drift: scale the Dirichlet concentration so the simulated spread
   // matches the total sigma (poll sample + drift), not just the sample
-  const drift=FORECAST_DRIFT*Math.sqrt(daysToElection());
+  const drift=FORECAST_DRIFT*Math.sqrt(driftDays());
   if(drift>0){
     const sumA0=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*K;
     const sd0=Math.sqrt(0.3*0.7/(sumA0+1))*100;
@@ -3001,7 +3006,11 @@ function renderForecast(pane){
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     const span=Math.max(1,hi-lo);
     const bW=Math.max(1,Math.ceil(span/MAX_BUCKETS));
-    const buckets=new Array(Math.ceil(350/bW)).fill(0);
+    // size the histogram from the party's own max seats, not a fixed 350:
+    // in 650-seat parliaments (UK) winners can exceed 350 and buckets[350+]
+    // was undefined++ -> NaN bars
+    const maxSeats=Math.max(...arr,1);
+    const buckets=new Array(Math.ceil((maxSeats+1)/bW)).fill(0);
     arr.forEach(v=>{buckets[Math.floor(v/bW)]++});
     const maxB=Math.max(...buckets,1);
     let hist='';

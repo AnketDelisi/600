@@ -337,7 +337,7 @@ def main():
       act: { code: 'ACT', name: 'ACT New Zealand',            name_en: 'ACT New Zealand',            color: '#FDE401' },
       nzf: { code: 'NZF', name: 'New Zealand First',          name_en: 'New Zealand First',          color: '#000000' },
       tpm: { code: 'TPM', name: 'Te Pati Maori',              name_en: 'Te Pati Maori',              color: '#B2001A' },
-      opp: { code: 'TOP', name: 'The Opportunities Party',    name_en: 'The Opportunities Party',    color: '#00EDE1' },
+      opp: { code: 'OPP', name: 'The Opportunities Party',    name_en: 'The Opportunities Party',    color: '#00EDE1' },
     },
     order: ['nat', 'lab', 'grn', 'act', 'nzf', 'tpm', 'opp'],
     parlOrder: ['grn', 'tpm', 'lab', 'opp', 'nat', 'act', 'nzf'],

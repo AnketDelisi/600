@@ -28,6 +28,9 @@ CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "bc_ridings.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "bc_ridings.svg")
 CONST_JSON = os.path.join(ROOT, "data", "bc", "constituencies.json")
+ZOOM_SVG = os.path.join(ROOT, "img", "bc_vancouver.svg")
+ZOOM_BMV = os.path.join(ROOT, "bmv", "img", "bc_vancouver.svg")
+ZOOM_BOX = (-123.35, 49.0, -122.35, 49.55)  # Metro Vancouver
 GEOJSON = os.path.join(CACHE, "bc_ridings.geojson")
 ARTICLE = "https://en.wikipedia.org/wiki/2024_British_Columbia_general_election"
 WFS = ("https://openmaps.gov.bc.ca/geo/pub/WHSE_ADMIN_BOUNDARIES."
@@ -121,6 +124,37 @@ def main():
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
+    # Metro Vancouver zoom layer: the dense urban ridings are unreadable at
+    # province scale, so rebuild just those (fully inside the metro box) as a
+    # second layer. Same ids -> the app's fills/tooltips work unchanged.
+    def bbox(geom):
+        xs, ys = [], []
+        def walk(c):
+            if isinstance(c[0], (int, float)):
+                xs.append(c[0]); ys.append(c[1])
+            else:
+                for x in c:
+                    walk(x)
+        walk(geom["coordinates"])
+        return min(xs), min(ys), max(xs), max(ys)
+
+    urban = []
+    for f in gj["features"]:
+        x0, y0, x1, y1 = bbox(f["geometry"])
+        if x0 >= ZOOM_BOX[0] and y0 >= ZOOM_BOX[1] and \
+                x1 <= ZOOM_BOX[2] and y1 <= ZOOM_BOX[3]:
+            urban.append(f)
+    print("metro vancouver ridings:", len(urban))
+    zoom_gj = os.path.join(CACHE, "bc_vancouver.geojson")
+    with open(zoom_gj, "w", encoding="utf8") as fh:
+        json.dump({"type": "FeatureCollection", "features": urban}, fh)
+    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
+                "--name-field", "ED_NAME", "--fold", "--attr", "id",
+                "--no-prefix", "--out", ZOOM_SVG, "--attribution", ATTRIBUTION,
+                "--force"]
+    bm.main()
+    shutil.copy2(ZOOM_SVG, ZOOM_BMV)
+
     cfg_path = os.path.join(ROOT, "js", "config.js")
     text = open(cfg_path, encoding="utf8").read()
     j = lambda o, ind: json.dumps(o, ensure_ascii=False, indent=ind)
@@ -132,14 +166,16 @@ def main():
     seatBased: false,             // polls report vote shares (%)
     constituencies: true,         // the map is the 93 ridings
     constituencyRule: 'fptp',
+    hideBlocs: true,              // no governing/opposition bloc cards
+    hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
-    // colours from the en.wikipedia party infoboxes (OneBC has none: teal)
+    // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
       bcndp: { code: 'BC NDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
       cpbc:  { code: 'BC Con',   name: 'Conservative Party of British Columbia', name_en: 'Conservative Party of British Columbia', color: '#004AAD' },
       gpbc:  { code: 'BC Green', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
-      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2E30' },
-      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#0E7C7B' },
+      cbc:   { code: 'CentreBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
+      onbc:  { code: 'OneBC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
     },
     order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
     parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
@@ -154,24 +190,28 @@ def main():
       results: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
       seats:   { bcndp: 47, cpbc: 44, gpbc: 2, cbc: 0, onbc: 0 },
     },
-    // Trend extrapolation toward the snap election (24 Oct 2026)
-    trend: {
-      electionDate: '2026-10-24',
-      blend: 0.5,
-      maxDaily: 0.3,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-    },
+    // No trend extrapolation: the newest BC poll is a week old and the recent
+    // spread (NDP 35-41) makes a fitted slope unreliable; the trend's
+    // intercept extrapolates to today from the last data point, which turned
+    // a noisy +1.3pp/day slope into a +10pp artifact. Re-add once the
+    // campaign produces fresh daily polls.
     map: {
       svg: 'img/bc_ridings.svg',
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
+      hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,
       // national baseline for the uniform-swing projection (= 2024 result)
       national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+    },
+    // dense Metro Vancouver ridings, zoomed (same ids as the main map)
+    map2: {
+      svg: 'img/bc_vancouver.svg',
+      selector: 'id',
+      districts: @@zoom@@,
+      label: 'Metro Vancouver (zoom)',
     },
     pollsterMAE: {},
     maeKey: 'BC2024',
@@ -185,7 +225,10 @@ def main():
             ("districts", j({c["id"]: c["id"] for c in cons}, 8).replace(
                 "\n", "\n      ")),
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
-                          8).replace("\n", "\n      "))):
+                          8).replace("\n", "\n      ")),
+            ("zoom", j({bm.fold(f["properties"]["ED_NAME"]):
+                        bm.fold(f["properties"]["ED_NAME"]) for f in urban},
+                       8).replace("\n", "\n      "))):
         block = block.replace("@@%s@@" % ph, val)
 
     m = re.search(r"\n  bc: \{", text)

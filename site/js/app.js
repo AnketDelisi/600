@@ -772,20 +772,20 @@ function blocSeats(rg,td){
 function renderBlocs(avg){
   const rg=BLOCS.bloc1.parties.reduce((s,p)=>s+(avg[p]||0),0);
   const td=BLOCS.bloc2.parties.reduce((s,p)=>s+(avg[p]||0),0);
-  const rgDisp=SEAT_BASED?blocSeats(rg,td).gov:valDisp(rg);
-  const tdDisp=SEAT_BASED?blocSeats(rg,td).opp:valDisp(td);
-  return `<div class="bloc-row">
-    <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc1.color}">
-      <div class="bloc-name">${BLOCS.bloc1.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.bloc1.color}">${rgDisp}</div>
-      <div class="bloc-parties">${BLOCS.bloc1.parties.map(partyCode).join(' + ')}</div>
-    </div>
-    <div class="bloc-card" style="border-left:6px solid ${BLOCS.bloc2.color}">
-      <div class="bloc-name">${BLOCS.bloc2.name}</div>
-      <div class="bloc-pct" style="color:${BLOCS.bloc2.color}">${tdDisp}</div>
-      <div class="bloc-parties">${BLOCS.bloc2.parties.map(partyCode).join(' + ')}</div>
-    </div>
-  </div>`;
+  const bs=SEAT_BASED?blocSeats(rg,td):null;
+  const disp=v=>SEAT_BASED?String(Math.round(v)):valDisp(v);
+  const card=(b,val)=>`<div class="bloc-card" style="border-left:6px solid ${b.color}">
+      <div class="bloc-name">${b.name}</div>
+      <div class="bloc-pct" style="color:${b.color}">${val}</div>
+      <div class="bloc-parties">${b.parties.map(partyCode).join(' + ')}</div>
+    </div>`;
+  let cards=card(BLOCS.bloc1,disp(bs?bs.gov:rg))+card(BLOCS.bloc2,disp(bs?bs.opp:td));
+  // optional third bloc (e.g. Israel's Arab parties): shown on its own
+  if(BLOCS.bloc3){
+    const b3=BLOCS.bloc3.parties.reduce((s,p)=>s+(avg[p]||0),0);
+    cards+=card(BLOCS.bloc3,disp(b3));
+  }
+  return `<div class="bloc-row">${cards}</div>`;
 }
 
 /* ---------- render trend chart (canvas) ---------- */
@@ -2661,6 +2661,9 @@ function renderForecast(pane){
   const kmDefined=!!BLOCS.kingmaker;
   const KM_COLOR=BLOCS.kingmakerColor||'#F59E0B';
   const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal, kmP=kmDefined?((maj.km||0)/majTotal):0;
+  // optional third bloc (e.g. Israel's Arab parties): unaligned, so it has no
+  // majority probability - shown as its expected seat count instead
+  const b3Seats=BLOCS.bloc3?BLOCS.bloc3.parties.reduce((a,p)=>a+mean(sim.seatsBy[p]),0):0;
   const expectedSeats=Math.round(fOrder.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
   const MAJ=Math.floor(expectedSeats/2)+1;
 
@@ -2957,6 +2960,7 @@ function renderForecast(pane){
         <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${pct100(rgP)}</span>
         <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${pct100(tdP)}</span>
         ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${pct100(kmP)}</span>`:''}
+        ${BLOCS.bloc3?`<span><span class="fc-dot" style="background:${BLOCS.bloc3.color}"></span>${BLOCS.bloc3.name} ${Math.round(b3Seats)} ${T.seats} ${t('(unaligned)','(bağımsız)')}</span>`:''}
         <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>

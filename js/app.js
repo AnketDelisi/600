@@ -1674,6 +1674,69 @@ function runoffMapAvg(avg, filtered, sim){
   return ro?{[ro.a]:ro.aN, [ro.b]:ro.bN} : null;
 }
 
+// Per-district D'Hondt split for the seat-circle overlay (Spain's provinces,
+// Poland's okregi): the same allocation as allocateSeatsByDistrict, returned
+// as one entry per seat grouped by party, largest first.
+function districtSeatSplit(nr, avg, resultMode, conf){
+  const seatsN=conf.seatDistricts[nr];
+  if(!seatsN) return null;
+  const shares=districtShares(nr, avg, resultMode, conf);
+  if(!shares) return null;
+  const votes={};
+  PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+  const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
+    :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
+  const natBase=resultMode?(conf.national2021||LAST_ELECTION.results):avg;
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&
+    ((dth?votes[p]:(natBase&&natBase[p]||0))>=THRESHOLD));
+  if(!valid.length) return null;
+  const quo=[];
+  valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});
+  quo.sort((a,b)=>b.q-a.q);
+  const seats={};
+  for(let i=0;i<seatsN&&i<quo.length;i++) seats[quo[i].p]=(seats[quo[i].p]||0)+1;
+  const list=[];
+  Object.entries(seats).sort((a,b)=>b[1]-a[1]).forEach(([p,n])=>{
+    for(let i=0;i<n;i++) list.push(p);
+  });
+  return list;
+}
+
+// Seat circles: where a map district elects several seats (Spain's 52
+// provinces, Poland's 41 okregi) draw one dot per seat inside the district,
+// coloured by the party that won it and grouped in a compact grid at the
+// district's centre.
+function drawSeatDots(svg, mapped, avg, resultMode, conf){
+  const NS='http://www.w3.org/2000/svg';
+  const g=document.createElementNS(NS,'g');
+  g.setAttribute('class','seat-dots');
+  mapped.forEach(({nr,ph})=>{
+    const list=districtSeatSplit(nr, avg, resultMode, conf);
+    if(!list||!list.length) return;
+    const bb=ph.getBBox();
+    if(!bb.width||!bb.height) return;
+    const n=list.length;
+    const cols=Math.min(7,Math.max(1,Math.ceil(Math.sqrt(n))));
+    const rows=Math.ceil(n/cols);
+    const r=Math.max(1.0,Math.min(4.2,(Math.min(bb.width,bb.height)*0.85)/(cols*2.15)));
+    const sp=2.15*r;
+    const cx=bb.x+bb.width/2, cy=bb.y+bb.height/2;
+    const x0=cx-(cols-1)*sp/2, y0=cy-(rows-1)*sp/2;
+    list.forEach((p,i)=>{
+      const c=document.createElementNS(NS,'circle');
+      c.setAttribute('cx',(x0+(i%cols)*sp).toFixed(2));
+      c.setAttribute('cy',(y0+Math.floor(i/cols)*sp).toFixed(2));
+      c.setAttribute('r',r.toFixed(2));
+      c.setAttribute('fill',(PARTY_META[p]&&PARTY_META[p].color)||'#888');
+      c.setAttribute('stroke','#ffffff');
+      c.setAttribute('stroke-width','0.7');
+      c.setAttribute('pointer-events','none');
+      g.appendChild(c);
+    });
+  });
+  if(g.childNodes.length) svg.appendChild(g);
+}
+
 async function renderMapInto(box, avg, resultMode, confOverride){
   const conf=confOverride||MAP_CONF();
   if(!conf) return;
@@ -1702,6 +1765,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   else if(conf.selector==='id') selector='path[id]';
   else selector='path[id^="_"]';
   const paths=svg.querySelectorAll(selector);
+  const mapped=[];
   const tooltip=document.createElement('div');
   tooltip.className='map-tip';
   box.style.position='relative';
@@ -1734,6 +1798,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       nr=parseInt(ph.id.slice(1),10);
     }
     if(!nr) return;
+    if(conf.seatDistricts) mapped.push({nr,ph});
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return;
     const blocMode=MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
@@ -1858,6 +1923,9 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   box.innerHTML='';
   box.appendChild(svg);
   box.appendChild(tooltip);
+  // seat circles for multi-member district maps (Spain/Poland); drawn after
+  // the SVG is in the DOM so getBBox() has layout
+  if(conf.seatDistricts&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
 }
 
 /* ---------- screenshot capture ---------- */

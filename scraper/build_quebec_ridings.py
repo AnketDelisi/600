@@ -233,16 +233,17 @@ def main():
     hideBlocs: true,              // no government/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
-    // trend extrapolation to the 2026-10-05 election: fresh campaign polls
-    // (4 in the last 14 days); with 2 days left the damping collapses the
-    // projected move to well under a point
+    // trend extrapolation to the 2026-10-05 election: momentum is a nudge,
+    // not the driver (anchored at the recent poll mean, 0.15pp/day cap,
+    // 10-day damping, blend 0.4); with 2 days left the damped move is tiny
     trend: {
       electionDate: '2026-10-05',
-      blend: 0.5,
-      maxDaily: 0.3,
+      blend: 0.4,
+      maxDaily: 0.15,
       windowDays: 120,
       fitDays: 14,
       minPolls: 3,
+      dampDays: 10,
     },
     // colours from the en.wikipedia party infoboxes
     parties: {

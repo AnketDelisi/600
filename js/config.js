@@ -1422,14 +1422,16 @@ saxony_anhalt: {
     constituencies: false,        // single national district; map shows okrug-level winners
     recencyHalfLifeDays: 7,
     // trend extrapolation to the 2026-10-25 election; 30-day fit window
-    // because polling is sparse (3 polls in the last 30 days)
+    // because polling is sparse (3 polls in the last 30 days); momentum is a
+    // nudge, not the driver (anchored mean, 0.15pp/day cap, 10-day damping)
     trend: {
       electionDate: '2026-10-25',
-      blend: 0.5,
-      maxDaily: 0.3,
+      blend: 0.4,
+      maxDaily: 0.15,
       windowDays: 120,
       fitDays: 30,
       minPolls: 3,
+      dampDays: 10,
     },
     parties: {
       sns:  { code: 'SNS',  name: 'Srpska napredna stranka',             name_en: 'Serbian Progressive Party',      color: '#242970' },
@@ -3431,11 +3433,12 @@ saxony_anhalt: {
     // inert when the recent polls are too sparse (0 polls in the last 14 days)
     trend: {
       electionDate: '2026-10-03',
-      blend: 0.5,
-      maxDaily: 0.3,
+      blend: 0.4,
+      maxDaily: 0.15,
       windowDays: 120,
       fitDays: 14,
       minPolls: 3,
+      dampDays: 10,
     },
     parties: {
       as:  { code: 'AS',   name: 'Apvienotais saraksts',           name_en: 'United List',                color: '#FFAC01' },
@@ -21979,16 +21982,18 @@ saxony_anhalt: {
     hideBlocs: true,              // no governing/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
-    // trend extrapolation to the 2026-10-24 election: fresh campaign polls
-    // (5 in the last 14 days); the maxDaily cap (0.3pp/day) and the 7-day
-    // damping hold the earlier +10pp intercept artifact in check
+    // trend extrapolation to the 2026-10-24 election: momentum is a nudge,
+    // not the driver - anchored at the recent poll mean, total move capped
+    // at 0.15pp/day (3.2pp over the 21-day horizon), damped and blended at
+    // 0.4; the old loose caps moved NDP ~+8pp / ~+29 seats on a noisy slope
     trend: {
       electionDate: '2026-10-24',
-      blend: 0.5,
-      maxDaily: 0.3,
+      blend: 0.4,
+      maxDaily: 0.15,
       windowDays: 120,
       fitDays: 14,
       minPolls: 3,
+      dampDays: 10,
     },
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
@@ -22791,16 +22796,17 @@ saxony_anhalt: {
     hideBlocs: true,              // no government/opposition bloc cards
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
-    // trend extrapolation to the 2026-10-05 election: fresh campaign polls
-    // (4 in the last 14 days); with 2 days left the damping collapses the
-    // projected move to well under a point
+    // trend extrapolation to the 2026-10-05 election: momentum is a nudge,
+    // not the driver (anchored at the recent poll mean, 0.15pp/day cap,
+    // 10-day damping, blend 0.4); with 2 days left the damped move is tiny
     trend: {
       electionDate: '2026-10-05',
-      blend: 0.5,
-      maxDaily: 0.3,
+      blend: 0.4,
+      maxDaily: 0.15,
       windowDays: 120,
       fitDays: 14,
       minPolls: 3,
+      dampDays: 10,
     },
     // colours from the en.wikipedia party infoboxes
     parties: {

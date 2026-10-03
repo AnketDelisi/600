@@ -442,13 +442,19 @@ function trendExtrapolation(polls, party){
   const den=sw*swtt-swt*swt;
   if(Math.abs(den)<1e-9) return null;
   const slope=(sw*swtv-swt*swv)/den;      // % per day as time moves backward
-  const inter=(swv*swtt-swtv*swt)/den;    // value at t=0 (today)
+  // Anchor the projection at the recency-weighted mean of the fit-window
+  // polls, not the regression intercept at t=0. With few polls clustered
+  // near today the fitted line overshoots the newest data (BC 2026: polls
+  // 7-11 days old, NDP 35-41, intercept 49) and the trend then extrapolated
+  // the overshoot on top of the slope - a +10pp artifact. The mean is the
+  // honest "today" value; only the slope is projected forward, and the
+  // total move is capped at maxDaily per day of horizon.
+  const anchor=swv/sw;
   const dampDays=TREND_CONF.dampDays||7;  // slope-halving horizon
   const damp=horizon/(horizon+dampDays);  // 1 far out, -> 0 at election day
-  let proj=inter-slope*horizon*damp;      // extrapolate forward, damped
   const cap=TREND_CONF.maxDaily*horizon;
-  proj=Math.max(inter-cap,Math.min(inter+cap,proj));
-  return Math.max(0,proj);
+  const move=Math.max(-cap,Math.min(cap,-slope*horizon*damp));
+  return Math.max(0,anchor+move);
 }
 
 function computeAverages(polls, raw){

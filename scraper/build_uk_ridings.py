@@ -44,12 +44,16 @@ ATTRIBUTION = ("Risultati: House of Commons Library (elezioni 2024, "
                "constituencies, July 2024)")
 
 PARTIES = ["lab", "con", "ref", "lib", "grn", "snp", "plc", "res",
-           "sf", "dup", "sdlp", "apni", "uup", "tuv"]
+           "sf", "dup", "sdlp", "apni", "uup", "tuv", "spk", "ind", "yp"]
 # DB party abbreviation -> modelled party (None/others -> Other)
 ABBR = {"Lab": "lab", "Co-op": "lab", "Con": "con", "RUK": "ref",
         "LD": "lib", "Green": "grn", "SNP": "snp", "PC": "plc",
         "SF": "sf", "DUP": "dup", "SDLP": "sdlp", "APNI": "apni",
         "UUP": "uup", "TUV": "tuv"}
+# Notional re-attributions: when an MP leaves their 2024 party, the seat's
+# notional result follows them. Rupert Lowe (Reform -> Restore Britain)
+# keeps Great Yarmouth.
+SEAT_REATTRIBUTE = {"Great Yarmouth": ("ref", "res")}
 CURRENT_SETS = (1, 2, 3, 4)    # 2024-05-31 boundary sets: England/Scot/Wales/NI
 
 
@@ -74,9 +78,8 @@ def main():
     # 2024 results by constituency, on the current boundary sets. Co-operative
     # Party certifications are adjuncts to the Labour ones (joint candidates)
     # and must be dropped or every Labour-Co-op candidacy counts twice.
-    # The Speaker (Chorley, Lindsay Hoyle) counts as Labour: he is a Labour MP,
-    # no Labour candidate stood against him, and the seat must swing with
-    # Labour in the projection instead of falling to a minor list.
+    # The Speaker (Chorley) and the independent winners are kept as their own
+    # entries below instead of leaking into "Other".
     rows = cur.execute("""
         select ca.geographic_code, cg.name, c.vote_count,
                pp.abbreviation, c.is_winning_candidacy,
@@ -97,8 +100,19 @@ def main():
     seats["other"] = 0
     nat = {p: 0 for p in PARTIES}
     nat["other"] = 0
+    # The Speaker (Chorley, Lindsay Hoyle) is its own entry; independent
+    # winners are "ind", except Jeremy Corbyn's Islington North which is
+    # Your Party's seat. None of them poll, so the app holds their baseline.
     for code, name, votes, abbr, won, speaker in rows:
-        key = "lab" if speaker else ABBR.get(abbr, "other")
+        if speaker:
+            key = "spk"
+        elif abbr is None:
+            key = ("yp" if name == "Islington North" else "ind") if won else "other"
+        else:
+            key = ABBR.get(abbr, "other")
+        ra = SEAT_REATTRIBUTE.get(name)
+        if ra and key == ra[0]:
+            key = ra[1]
         v = votes or 0
         r = results.setdefault(code, {"name": name, "votes": {}, "total": 0})
         r["votes"][key] = r["votes"].get(key, 0) + v
@@ -205,15 +219,18 @@ def main():
       apni: { code: 'APNI', name: 'Alliance Party of Northern Ireland', name_en: 'Alliance Party of Northern Ireland', color: '#F6CB2F' },
       uup:  { code: 'UUP',  name: 'Ulster Unionist Party',    name_en: 'Ulster Unionist Party',    color: '#48A5EE' },
       tuv:  { code: 'TUV',  name: 'Traditional Unionist Voice', name_en: 'Traditional Unionist Voice', color: '#201863' },
+      spk:  { code: 'SPK',  name: 'Speaker',                  name_en: 'Speaker',                  color: '#333333' },
+      ind:  { code: 'IND',  name: 'Independent',              name_en: 'Independent',              color: '#9CA3AF' },
+      yp:   { code: 'YP',   name: 'Your Party',               name_en: 'Your Party',               color: '#FF3131' },
     },
     order: ['lab', 'ref', 'con', 'lib', 'grn', 'res', 'snp', 'plc',
-            'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv'],
+            'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv', 'spk', 'ind', 'yp'],
     parlOrder: ['grn', 'snp', 'plc', 'sf', 'sdlp', 'lab', 'lib', 'apni',
-                'uup', 'con', 'dup', 'tuv', 'ref', 'res'],
+                'uup', 'con', 'dup', 'tuv', 'ref', 'res', 'yp', 'ind', 'spk'],
     // governing party vs the rest (majority = 326)
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['lab'], color: '#E41C3E' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res', 'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv'], color: '#0087DC' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res', 'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv', 'spk', 'ind', 'yp'], color: '#0087DC' },
     },
     lastElection: {
       date: '2024-07-04',
@@ -230,6 +247,10 @@ def main():
       // geographic shape for the swing, so its vote concentrates where
       // Reform is strong instead of being flat across every seat
       swingProxy: { res: 'ref' },
+      // notional holds: Great Yarmouth stays Restore Britain's (Rupert Lowe's
+      // defection), so RES keeps its re-attributed 2024 baseline there while
+      // the other parties swing normally
+      holdSeats: { greatyarmouth: 'res' },
       districts: @@districts@@,
       // 2024 vote shares per constituency (House of Commons Library)
       gebiete: @@gebiete@@,

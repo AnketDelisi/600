@@ -1492,6 +1492,11 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise){
     out[p]={past, now};
     sum+=now;
   }
+  // Notional seat holds: the named party keeps its baseline in that seat
+  // instead of swinging with the national average (UK: Great Yarmouth stays
+  // Restore Britain's after Rupert Lowe's defection).
+  const hold=conf.holdSeats&&conf.holdSeats[String(nr)];
+  if(hold&&out[hold]) out[hold].now=out[hold].past;
   // Okrug baselines cover only the modelled parties (unmodelled lists made up
   // the remainder), so renormalize projected shares to the polls' own total for
   // the modelled parties (e.g. ~97.6%) — the leftover stays visible as "Other".

@@ -1,0 +1,10 @@
+{
+  "country": "nz",
+  "name": "New Zealand",
+  "election_date": "2026-11-07",
+  "seats": 120,
+  "threshold": 5.0,
+  "method": "sainte_lague_standard",
+  "constituencies": 72,
+  "notes": "House of Representatives: 120 seats under MMP (5% threshold or one electorate), 72 electorate seats (64 general + 7 Maori) plus list seats; an overhang can grow the house (122 in 2023). 2023 result: National 38.1% (48 seats), Labour 26.9% (34), Green 11.6% (15), ACT 8.6% (11), NZ First 6.1% (8), Te Pati Maori 3.1% (6, overhang). Election on 7 November 2026."
+}

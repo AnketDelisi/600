@@ -34,6 +34,11 @@ OUT_SVG = os.path.join(ROOT, "img", "quebec.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "quebec.svg")
 CONST_JSON = os.path.join(ROOT, "data", "qc", "constituencies.json")
 GEOJSON = os.path.join(CACHE, "qc_ridings_2026.geojson")
+ZOOM_SVG = os.path.join(CACHE, "qc_montreal_detail.svg")
+# Montreal island + Laval (the dense urban core; the 2026 map is unreadable
+# there at province scale). Bounds chosen so the South Shore cluster
+# (Longueuil, Brossard) stays out - only fully-inside ridings are inset.
+ZOOM_BOX = (-74.00, 45.38, -73.445, 45.71)
 DGEQ = ("https://donnees.electionsquebec.qc.ca/production/provincial/"
         "resultats/archives/gen2022-10-03/")
 GEO_URL = ("https://donnees.electionsquebec.qc.ca/autres/provincial/"
@@ -152,6 +157,42 @@ def main():
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
+    # Montreal inset: render the island + Laval separately at their own scale
+    # (fine detail) and drop a smaller copy into the empty north-east corner
+    # (the Labrador side of the map, outside the province boundary).
+    def bbox(geom):
+        xs, ys = [], []
+
+        def walk(c):
+            if isinstance(c[0], (int, float)):
+                xs.append(c[0])
+                ys.append(c[1])
+            else:
+                for x in c:
+                    walk(x)
+        walk(geom["coordinates"])
+        return min(xs), min(ys), max(xs), max(ys)
+
+    urban = []
+    for f in gj["features"]:
+        x0, y0, x1, y1 = bbox(f["geometry"])
+        if x0 >= ZOOM_BOX[0] and y0 >= ZOOM_BOX[1] and \
+                x1 <= ZOOM_BOX[2] and y1 <= ZOOM_BOX[3]:
+            urban.append(f)
+    urban_ids = [bm.fold(f["properties"]["NM_CEP"]) for f in urban]
+    print("montreal ridings:", len(urban_ids))
+    zoom_gj = os.path.join(CACHE, "qc_montreal.geojson")
+    with open(zoom_gj, "w", encoding="utf8") as fh:
+        json.dump({"type": "FeatureCollection", "features": urban}, fh)
+    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
+                "--name-field", "NM_CEP", "--fold", "--attr", "id",
+                "--no-prefix", "--out", ZOOM_SVG, "--attribution", ATTRIBUTION,
+                "--force"]
+    bm.main()
+    bm.add_inset(OUT_SVG, ZOOM_SVG, urban_ids, 150, (790, 60),
+                 label="Montreal")
+    shutil.copy2(OUT_SVG, BMV_SVG)
+
     cfg_path = os.path.join(ROOT, "js", "config.js")
     text = open(cfg_path, encoding="utf8").read()
     j = lambda o, ind: json.dumps(o, ensure_ascii=False, indent=ind)
@@ -231,7 +272,8 @@ def main():
                 if depth == 0:
                     break
             k += 1
-        text = text[:m.start()] + "\n" + block.rstrip()[:-1] + text[k + 1:]
+        head = text[:m.start()].rstrip("\n") + "\n\n"
+        text = head + block.rstrip()[:-1] + text[k + 1:]
     else:
         anchor = "\n};\n\n// ===== Active country"
         idx = text.index(anchor)

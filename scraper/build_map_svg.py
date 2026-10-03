@@ -234,6 +234,52 @@ def simplify(pts, eps):
     return [p for p, k in zip(pts, keep) if k]
 
 
+def add_inset(svg_path, ids, scale, at, label=None, pad=4):
+    """Append a magnified duplicate of the given paths to a rendered SVG.
+
+    For maps with tiny dense districts (Metro Vancouver, Greater London,
+    Montreal): the duplicate keeps the original path ids, so the app's
+    fills/tooltips work on both the main map and the inset. `ids` are the
+    path ids to duplicate, `scale` the magnification, `at` the inset's
+    top-left in SVG coords. The source bbox is derived from the paths.
+    """
+    text = open(svg_path, encoding="utf8").read()
+    paths = {}
+    for m in re.finditer(r'<path id="([^"]+)" d="([^"]*)"/>', text):
+        paths[m.group(1)] = m.group(2)
+    xs, ys = [], []
+    for pid in ids:
+        for x, y in re.findall(r"(-?\d+\.?\d*),(-?\d+\.?\d*)",
+                               paths.get(pid, "")):
+            xs.append(float(x))
+            ys.append(float(y))
+    if not xs:
+        print("  inset: no paths found")
+        return
+    x0, y0, x1, y1 = min(xs), min(ys), max(xs), max(ys)
+    tx, ty = at
+    k = scale
+    parts = ['<g transform="translate(%.1f,%.1f) scale(%g)" '
+             'stroke-width="%.3f">' % (tx - x0 * k, ty - y0 * k, k, 1.0 / k)]
+    for pid in ids:
+        if pid in paths:
+            parts.append('<path id="%s" d="%s"/>' % (pid, paths[pid]))
+    parts.append("</g>")
+    parts.append('<rect x="%.1f" y="%.1f" width="%.1f" height="%.1f" '
+                 'fill="none" stroke="#111827" stroke-width="1.5" '
+                 'opacity="0.5"/>'
+                 % (tx - pad, ty - pad, (x1 - x0) * k + 2 * pad,
+                    (y1 - y0) * k + 2 * pad))
+    if label:
+        parts.append('<text x="%.1f" y="%.1f" font-size="13" '
+                     'font-weight="700" fill="#111827" '
+                     'font-family="Source Code Pro,monospace">%s</text>'
+                     % (tx - pad, ty - pad - 7, label))
+    text = text.replace("</svg>", "\n".join(parts) + "\n</svg>")
+    open(svg_path, "w", encoding="utf8").write(text)
+    print("  inset: %d paths at (%.0f,%.0f) scale %gx" % (len(ids), tx, ty, k))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--zip", default=DEFAULT_ZIP)

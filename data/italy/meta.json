@@ -1,0 +1,10 @@
+{
+  "country": "italy",
+  "name": "Italy",
+  "election_date": "2027",
+  "seats": 400,
+  "threshold": 3.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Chamber of Deputies: 400 seats under the Rosatellum mixed system — 147 seats by first-past-the-post in single-member districts (the winning coalition takes the region's districts) plus 253 seats (245 domestic + 8 abroad) from a national proportional pool by D'Hondt with a 3% threshold."
+}

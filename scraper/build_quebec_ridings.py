@@ -35,10 +35,12 @@ BMV_SVG = os.path.join(ROOT, "bmv", "img", "quebec.svg")
 CONST_JSON = os.path.join(ROOT, "data", "qc", "constituencies.json")
 GEOJSON = os.path.join(CACHE, "qc_ridings_2026.geojson")
 ZOOM_SVG = os.path.join(CACHE, "qc_montreal_detail.svg")
-# Montreal island + Laval (the dense urban core; the 2026 map is unreadable
-# there at province scale). Bounds chosen so the South Shore cluster
-# (Longueuil, Brossard) stays out - only fully-inside ridings are inset.
-ZOOM_BOX = (-74.00, 45.38, -73.445, 45.71)
+# Montreal island + Laval + the South Shore core (Longueuil, Saint-Hubert,
+# Brossard, Boucherville, Saint-Bruno) - the dense urban area is unreadable
+# at province scale. Bounds keep the exurban ring out (Blainville, Terrebonne,
+# Repentigny, Chambly, La Prairie, Chateauguay): only fully-inside ridings
+# are inset.
+ZOOM_BOX = (-74.00, 45.38, -73.28, 45.71)
 DGEQ = ("https://donnees.electionsquebec.qc.ca/production/provincial/"
         "resultats/archives/gen2022-10-03/")
 GEO_URL = ("https://donnees.electionsquebec.qc.ca/autres/provincial/"
@@ -273,11 +275,11 @@ def main():
                     break
             k += 1
         head = text[:m.start()].rstrip("\n") + "\n\n"
-        text = head + block.rstrip()[:-1] + text[k + 1:]
+        text = head + block.strip("\n")[:-1] + text[k + 1:]
     else:
         anchor = "\n};\n\n// ===== Active country"
         idx = text.index(anchor)
-        text = text[:idx] + "\n" + block.rstrip() + text[idx:]
+        text = text[:idx] + "\n" + block.strip("\n") + text[idx:]
     open(cfg_path, "w", encoding="utf8").write(text)
     print("patched config.js (qc block)")
 

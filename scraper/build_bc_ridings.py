@@ -146,6 +146,11 @@ def main():
             urban.append(f)
     urban_ids = [bm.fold(f["properties"]["ED_NAME"]) for f in urban]
     print("metro vancouver ridings:", len(urban_ids))
+    # Metro Vancouver vs the rest: the simulation's regional swing error uses
+    # this partition (there is no BC regional polling, so no mean blend).
+    metro = set(urban_ids)
+    region_of = {c["id"]: ("metro" if c["id"] in metro else "rest")
+                 for c in cons}
     zoom_gj = os.path.join(CACHE, "bc_vancouver.geojson")
     with open(zoom_gj, "w", encoding="utf8") as fh:
         json.dump({"type": "FeatureCollection", "features": urban}, fh)
@@ -220,6 +225,9 @@ def main():
       gebiete: @@gebiete@@,
       // national baseline for the uniform-swing projection (= 2024 result)
       national2021: { bcndp: 44.86, cpbc: 43.28, gpbc: 8.24, cbc: 0, onbc: 0 },
+      // Metro Vancouver vs the rest: used by the simulation's regional swing
+      // error (no regional polls, so no regional mean blend)
+      regionOf: @@regionOf@@,
     },
     pollsterMAE: {},
     maeKey: 'BC2024',
@@ -234,6 +242,7 @@ def main():
                 "\n", "\n      ")),
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
                           8).replace("\n", "\n      ")),
+            ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
             ):
         block = block.replace("@@%s@@" % ph, val)
 

@@ -373,6 +373,62 @@ function recencyWeight(dateStr){
   return Math.pow(0.5, ageDays/RECENCY_HALF_LIFE);
 }
 
+// Automatic house effects: a pollster that sits consistently off the panel
+// consensus (house style, herding, partisan sponsorship) is pulled toward it.
+// The deviation is the pollster's n-weighted mean distance from the panel mean
+// per party, shrunk (HOUSE_SHRINK) and capped (HOUSE_CAP); pollsters with
+// fewer than HOUSE_MIN_POLLS polls are ignored, and a backtested config
+// pollsterBias takes precedence when present. Computed once per country load
+// from the full poll set (not the filtered window) so it is stable.
+const HOUSE_SHRINK=0.5;
+const HOUSE_CAP=2.5;
+const HOUSE_MIN_POLLS=2;
+let HOUSE_CACHE=null, HOUSE_CACHE_KEY=null;
+function houseEffects(){
+  if(ARCHIVE_MODE) return null;
+  const polls=POLLS;
+  if(!polls||!polls.length) return null;
+  if(HOUSE_CACHE_KEY===polls) return HOUSE_CACHE;
+  HOUSE_CACHE_KEY=polls;
+  const cons={};
+  for(const p of PARTY_ORDER){
+    let ws=0,wt=0;
+    for(const poll of polls){
+      const v=poll.votes[p];
+      if(v===undefined) continue;
+      const w=Math.min(1500,poll.n||1000)*recencyWeight(poll.date);
+      ws+=w*v; wt+=w;
+    }
+    cons[p]=wt>0?ws/wt:null;
+  }
+  const acc={};
+  for(const poll of polls){
+    const a=acc[poll.pollster]||(acc[poll.pollster]={polls:0,ws:{},wt:{}});
+    a.polls++;
+    for(const p of PARTY_ORDER){
+      const v=poll.votes[p];
+      if(v===undefined||cons[p]===null) continue;
+      const w=Math.min(1500,poll.n||1000);
+      a.ws[p]=(a.ws[p]||0)+w*(v-cons[p]);
+      a.wt[p]=(a.wt[p]||0)+w;
+    }
+  }
+  const out={};
+  for(const name in acc){
+    const a=acc[name];
+    if(a.polls<HOUSE_MIN_POLLS) continue;
+    const dev={};
+    for(const p of PARTY_ORDER){
+      if(!a.wt[p]) continue;
+      const d=Math.max(-HOUSE_CAP,Math.min(HOUSE_CAP,a.ws[p]/a.wt[p]))*HOUSE_SHRINK;
+      if(Math.abs(d)>0.05) dev[p]=d;
+    }
+    if(Object.keys(dev).length) out[name]=dev;
+  }
+  HOUSE_CACHE=out;
+  return out;
+}
+
 function weightedAverage(polls, party, noBias){
   let wSum=0, wTotal=0;
   for(const p of polls){
@@ -394,6 +450,14 @@ function weightedAverage(polls, party, noBias){
     // full-strength correction can actively hurt — shrink toward 0.
     if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
       v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
+    }
+    // automatic house effect (consensus deviation), unless this pollster has a
+    // backtested config bias (that one is better and would double-correct)
+    if(!noBias && !ARCHIVE_MODE &&
+       !(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined)){
+      const he=houseEffects();
+      const hd=he&&he[p.pollster];
+      if(hd&&hd[party]!==undefined) v-=hd[party];
     }
     if(SEAT_BASED){
       const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
@@ -1359,7 +1423,7 @@ function constituencyById(id){
 // district's previous-election baseline; returns per-party {party: {past, now}}.
 // When resultMode is true, returns the actual previous election per-district
 // results (past === now) so the map shows that election's result.
-function districtShares(nr, avg, resultMode, confOverride){
+function districtShares(nr, avg, resultMode, confOverride, regionNoise){
   const conf=confOverride||MAP_CONF();
   let base;
   if(conf.useConstituencies){
@@ -1449,6 +1513,25 @@ function districtShares(nr, avg, resultMode, confOverride){
   }else{
     out.other={past:rem, now:rem};
   }
+  // Simulation-only regional swing error: shift the two blocs in opposite
+  // directions by the region's drawn deviation (same mechanism as the
+  // national bloc swing, keyed on the district's region).
+  if(regionNoise&&conf.regionOf&&!resultMode){
+    const d=regionNoise[conf.regionOf[String(nr)]]||0;
+    const b1=BLOCS&&BLOCS.bloc1, b2=BLOCS&&BLOCS.bloc2;
+    if(d&&b1&&b2&&b1.parties&&b2.parties){
+      const t1=b1.parties.reduce((a,p)=>a+(out[p]?out[p].now:0),0);
+      const t2=b2.parties.reduce((a,p)=>a+(out[p]?out[p].now:0),0);
+      if(t1>0&&t2>0){
+        const f1=Math.max(0.05,1+d/t1), f2=Math.max(0.05,1-d/t2);
+        for(const p of PARTY_ORDER){
+          if(!out[p]) continue;
+          if(b1.parties.includes(p)) out[p].now=Math.max(0,out[p].now*f1);
+          else if(b2.parties.includes(p)) out[p].now=Math.max(0,out[p].now*f2);
+        }
+      }
+    }
+  }
   return out;
 }
 
@@ -1472,8 +1555,8 @@ function districtPartySeats(nr, party, avg, resultMode){
   return alloc[party]||0;
 }
 
-function districtWinnerProjection(nr, avg, confOverride){
-  const shares=districtShares(nr, avg, false, confOverride);
+function districtWinnerProjection(nr, avg, confOverride, regionNoise){
+  const shares=districtShares(nr, avg, false, confOverride, regionNoise);
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
@@ -1995,14 +2078,14 @@ function allocateSeatsBaderOfer(votes, totalSeats, threshold){
 // Per-okręg D'Hondt (Poland): each of the 41 okręgi allocates its own seat
 // count among nationally-qualifying parties (≥5% national threshold) from the
 // district's projected shares — the real Sejm system, not one national district.
-function allocateSeatsByDistrict(avg){
+function allocateSeatsByDistrict(avg, regionNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.seatDistricts) return null;
   const out={};
   PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.seatDistricts)){
     const seatsN=conf.seatDistricts[nr];
-    const shares=districtShares(nr, avg, false);
+    const shares=districtShares(nr, avg, false, null, regionNoise);
     if(!shares) continue;
     const votes={};
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?shares[p].now:0});
@@ -2141,12 +2224,12 @@ function allocateSeatsItaly(avg){
 // First-past-the-post: every seat is a single-member riding; the projected
 // winner (plurality of the swung shares) takes it. Used by BC/Quebec-style
 // pure-FPTP countries whose map is the riding layer itself.
-function allocateSeatsFptp(avg){
+function allocateSeatsFptp(avg, regionNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.useConstituencies||!conf.districts) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.districts)){
-    const w=districtWinnerProjection(nr,avg,conf);
+    const w=districtWinnerProjection(nr,avg,conf,regionNoise);
     if(w) out[w]=(out[w]||0)+1;
   }
   return out;
@@ -2317,6 +2400,19 @@ function allocateSeatsFast(votes, total){
 // for a 30% party (with the election 9 days away, late swings are limited).
 const FORECAST_K=11;
 
+// Horizon drift: between now and election day the poll average itself can move
+// (late swings, differential turnout). Model it as a random walk with daily
+// step FORECAST_DRIFT pp: sigma_drift = FORECAST_DRIFT*sqrt(days). ~0.9pp at
+// 3 weeks out (BC), ~0.3pp at 2 days (QC), ~2.2pp at 4 months.
+const FORECAST_DRIFT=0.2;
+
+function daysToElection(){
+  const d=(META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate);
+  if(!d) return 0;
+  const h=(new Date(d).getTime()-Date.now())/(1000*60*60*24);
+  return h>0?h:0;
+}
+
 // Seeded PRNG (mulberry32) so the forecast is deterministic/static for a given dataset
 function mulberry32(seed){
   let a=seed>>>0;
@@ -2349,7 +2445,9 @@ function forecastSigma(avg, nPolls){
   // Correlated bloc swing adds roughly FORECAST_SWING/2 to a party's sd (the
   // swing moves each bloc by ±σ; a party inside a bloc of share s sees about
   // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2).
-  return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2));
+  // Horizon drift adds the expected movement of the average itself.
+  const drift=FORECAST_DRIFT*Math.sqrt(daysToElection());
+  return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2)+drift*drift);
 }
 
 function gammaSample(alpha){
@@ -2373,6 +2471,12 @@ const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
 // opposite directions, preserving within-bloc proportions. The Dirichlet
 // per-party noise alone misses this correlation and understates uncertainty.
 const FORECAST_SWING=2.0;
+// Regional swing error: a region's swing can deviate from the national one
+// (Montreal vs the rest, Metro Vancouver vs the interior). Each simulation
+// draws one correlated bloc deviation per region (sigma FORECAST_REGION_SIGMA)
+// and applies it to every district of that region via conf.regionOf; countries
+// without a region map keep the pure national draw.
+const FORECAST_REGION_SIGMA=1.5;
 // Apply a common bloc swing to a shares vector. Returns a new object.
 function applyNationalSwing(simVotes){
   if(ARCHIVE_MODE) return simVotes;   // frozen snapshot predates the swing
@@ -2452,7 +2556,15 @@ function runSeatForecast(avg, nSims, nPolls){
 
 function runForecast(avg, nSims, nPolls){
   if(SEAT_BASED) return runSeatForecast(avg, nSims, nPolls);
-  const K=effectiveK(nPolls,FORECAST_K);
+  let K=effectiveK(nPolls,FORECAST_K);
+  // horizon drift: scale the Dirichlet concentration so the simulated spread
+  // matches the total sigma (poll sample + drift), not just the sample
+  const drift=FORECAST_DRIFT*Math.sqrt(daysToElection());
+  if(drift>0){
+    const sumA0=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*K;
+    const sd0=Math.sqrt(0.3*0.7/(sumA0+1))*100;
+    K=K*(sd0*sd0)/(sd0*sd0+drift*drift);
+  }
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
   const top2={};
@@ -2474,7 +2586,18 @@ function runForecast(avg, nSims, nPolls){
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
     simVotes.other=100*draws[PARTY_ORDER.length]/totalD;
     simVotes=applyNationalSwing(simVotes);
-    const seats=(MAP_CONF()&&MAP_CONF().fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes):allocateSeatsFast(simVotes,SEATS_TOTAL));
+    // one correlated regional swing deviation per region (see
+    // FORECAST_REGION_SIGMA), applied to that region's districts below
+    let regionNoise=null;
+    const mconf=MAP_CONF();
+    if(mconf&&mconf.regionOf&&FORECAST_REGION_SIGMA>0){
+      regionNoise={};
+      for(const nr in mconf.regionOf){
+        const r=mconf.regionOf[nr];
+        if(!(r in regionNoise)) regionNoise[r]=gaussianSample(fcRand)*FORECAST_REGION_SIGMA;
+      }
+    }
+    const seats=(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise):allocateSeatsFast(simVotes,SEATS_TOTAL));
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);

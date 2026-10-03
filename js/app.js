@@ -309,6 +309,7 @@ function renderConstituencyTable(avg){
 let POLLS=[], META={};
 let SCRAPED_AT=null;   // ISO timestamp of the last poll scrape (data health)
 let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting math
+let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
 
 async function loadData(){
   try{
@@ -322,6 +323,7 @@ async function loadData(){
     const metaJson=await metaResp.json();
     POLLS=(pollsJson.polls||[]).filter(p=>!EXCLUDE_POLLSTERS.includes(p.pollster));
     SCRAPED_AT=pollsJson.scraped_at||null;
+    REGIONAL_AVG=pollsJson.regional||{};
     META=metaJson;
   }catch(e){
     console.error('Failed to load data:',e);
@@ -1219,6 +1221,38 @@ function overhangSeats(votes, totalBase, direct, cap){
   return s;
 }
 
+// German 2025 system (Bundeswahlgesetz 2023): the 630 seats are allocated
+// proportionally (Sainte-Laguë/Schepers, 5% threshold); the 299 constituency
+// winners (Erststimme) are seated *within* their party's proportional
+// entitlement and surplus direct mandates are voided. Returns the per-party
+// split (direct seated / list / surplus) for the projection.
+function directMandateSplit(avg){
+  const c=COUNTRIES[COUNTRY];
+  if(!c||CONSTITUENCY_RULE!=='fptp') return null;
+  const conf=(c.map2&&c.map2.useConstituencies)
+    ?{...c,...c.map,...c.map2}:MAP_CONF();
+  if(!conf||!conf.districts) return null;
+  const direct={};
+  PARTY_ORDER.forEach(p=>{direct[p]=0});
+  for(const nr of Object.keys(conf.districts)){
+    const w=districtWinnerProjection(parseInt(nr,10),avg,conf);
+    if(w) direct[w]=(direct[w]||0)+1;
+  }
+  const seats=allocateSeatsTotal(avg,SEATS_TOTAL);
+  const rows=[];
+  let surplusTotal=0;
+  PARTY_ORDER.forEach(p=>{
+    const d=direct[p]||0, s=seats[p]||0;
+    if(!d&&!s) return;
+    const seated=Math.min(d,s);
+    const surplus=Math.max(0,d-s);
+    surplusTotal+=surplus;
+    rows.push({p,d,s,seated,surplus,list:Math.max(0,s-seated)});
+  });
+  rows.sort((a,b)=>b.s-a.s);
+  return {rows,surplusTotal,directTotal:rows.reduce((a,r)=>a+r.d,0)};
+}
+
 function renderParliament(avg){
   let seats;
   if(OVERHANG){
@@ -1286,8 +1320,8 @@ function constituencyById(id){
 // district's previous-election baseline; returns per-party {party: {past, now}}.
 // When resultMode is true, returns the actual previous election per-district
 // results (past === now) so the map shows that election's result.
-function districtShares(nr, avg, resultMode){
-  const conf=MAP_CONF();
+function districtShares(nr, avg, resultMode, confOverride){
+  const conf=confOverride||MAP_CONF();
   let base;
   if(conf.useConstituencies){
     const c=constituencyById(nr);
@@ -1310,6 +1344,12 @@ function districtShares(nr, avg, resultMode){
   // (<0.5%) falls back to uniform swing to avoid ratio explosions.
   const method=conf.swingMethod||'proportional';
   const shrink=(conf.swingShrink!==undefined)?conf.swingShrink:0.6;
+  // Sub-national polling: a regional adjustment blended into the
+  // 2023-based projection (never the base point itself).
+  const region=conf.regionOf?conf.regionOf[String(nr)]:null;
+  const reg=region&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
+  const rbase=region&&conf.region2023?conf.region2023[region]:null;
+  const rw=(conf.regionalBlend!==undefined)?conf.regionalBlend:0.5;
   const out={};
   let sum=0;
   for(const p of PARTY_ORDER){
@@ -1318,16 +1358,25 @@ function districtShares(nr, avg, resultMode){
     if(PARTY_META[p]&&PARTY_META[p].pastOnly){
       // dissolved alliances: shown in the 2023 result view, never projected
       now=resultMode?past:0;
-    }else if(resultMode||!avg||avg[p]===undefined){
+    }else if(resultMode||!avg||(avg[p]===undefined&&!(reg&&reg[p]!==undefined))){
       now=past;
     }else{
       const natP=nat[p]||0, avgP=avg[p]||0;
+      let natNow;
       if(method==='proportional'&&natP>0.5){
-        now=Math.max(0,past*(avgP/natP));
+        natNow=Math.max(0,past*(avgP/natP));
       }else if(method==='shrunk'){
-        now=Math.max(0,avgP+shrink*(past-natP));
+        natNow=Math.max(0,avgP+shrink*(past-natP));
       }else{
-        now=Math.max(0,past+(avgP-natP));
+        natNow=Math.max(0,past+(avgP-natP));
+      }
+      now=natNow;
+      if(reg&&reg[p]!==undefined&&rw>0&&rbase&&rbase[p]!==undefined){
+        const rp=rbase[p]||0;
+        const regNow=(rp>0.5)
+          ?Math.max(0,past*(reg[p]/rp))
+          :Math.max(0,past+(reg[p]-rp));
+        now=(1-rw)*natNow+rw*regNow;
       }
     }
     out[p]={past, now};
@@ -1377,8 +1426,8 @@ function districtPartySeats(nr, party, avg, resultMode){
   return alloc[party]||0;
 }
 
-function districtWinnerProjection(nr, avg){
-  const shares=districtShares(nr, avg, false);
+function districtWinnerProjection(nr, avg, confOverride){
+  const shares=districtShares(nr, avg, false, confOverride);
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
@@ -2469,7 +2518,8 @@ function firstRoundCard(sim){
 
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
-  const daysVal=parseInt($('filter-days').value)||30;
+  const fd=$('filter-days');
+  const daysVal=fd?(parseInt(fd.value)||30):30;
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
@@ -2570,11 +2620,39 @@ function renderForecast(pane){
     }
   }
 
+  // German 2025 system: direct mandates are seated within the party's
+  // proportional entitlement, surplus direct mandates are voided.
+  let directHtml='';
+  const dm=directMandateSplit(medVotes);
+  if(dm&&dm.rows.length){
+    const dmRows=dm.rows.map(r=>{
+      const color=PARTY_META[r.p]?PARTY_META[r.p].color:'#888';
+      const sur=r.surplus?`<td class="num c" style="color:var(--c-accent);font-weight:900">−${r.surplus}</td>`
+        :`<td class="num c" style="color:var(--c-rule)">—</td>`;
+      return `<tr>
+        <td style="font-weight:700;color:${color}">${partyCode(r.p)}</td>
+        <td class="num c">${r.d}</td>
+        <td class="num c">${r.s}</td>
+        <td class="num c">${r.list}</td>
+        ${sur}
+      </tr>`;
+    }).join('');
+    directHtml=`<div class="card">
+      <div class="card-head"><div class="bar"></div><div class="t">${t('DIRECT MANDATES (ERSTSTIMME)','DOĞRUDAN MANDALAR (ERSTSTIMME)')}</div></div>
+      <table class="polls-table compact-table"><thead><tr>
+        <th>${t('Party','Parti')}</th><th class="c">${t('Direct','Doğrudan')}</th><th class="c">${t('Seats','Sandalye')}</th><th class="c">${t('List','Liste')}</th><th class="c">${t('Voided','İptal')}</th>
+      </tr></thead><tbody>${dmRows}</tbody></table>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
+        ${t('2023 electoral law: the 299 constituency winners sit within their party\u2019s proportional seats (Sainte-Laguë/Schepers, 630 seats, 5% threshold); surplus direct mandates are voided.','2023 seçim yasası: 299 seçim bölgesi kazananı partisinin orantısal sandalye sayısı içinde oturur (Sainte-Laguë/Schepers, 630 sandalye, %5 baraj); fazla doğrudan mandalar iptal edilir.')}
+        ${dm.surplusTotal?' · '+t('Surplus voided','İptal edilen fazla manda')+': '+dm.surplusTotal:''}
+      </div>
+    </div>`;
+  }
+
   const constHtml=CONSTITUENCIES&&CONSTITUENCIES.constituencies&&CONSTITUENCIES.constituencies.length&&!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable?
     constituencyTableHtml(medVotes,{
       title:'CONSTITUENCIES',
-      showDelta:true,
-      note:'allocated from the forecast’s median national vote shares'
+      showDelta:true,      note:'allocated from the forecast’s median national vote shares'
     }):'';
 
   // --- Probabilities ---
@@ -2715,6 +2793,8 @@ function renderForecast(pane){
 
     ${MAP_ONLY?firstRoundCard(sim):''}
     ${runoffHtml}
+
+    ${directHtml}
 
     ${constHtml}
 
@@ -3736,8 +3816,8 @@ loadData().then(()=>loadConstituencies()).then(()=>{
   wireAria();
   applyTheme(); updateSocialMeta();
   renderCountryNav();
-  applyUrlParams();
   renderPollsTab();
+  applyUrlParams();
 });
 window.addEventListener('resize',()=>{fitSideCard();});
 

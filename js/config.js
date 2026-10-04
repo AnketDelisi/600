@@ -1441,20 +1441,30 @@ saxony_anhalt: {
       nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#616264' },
       misn: { code: 'MISN', name: 'Mi – snaga naroda',                   name_en: 'We – Power of the People',       color: '#1B3160' },
       sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A81A32' },
+      // national-minority lists (exempt from the 3% threshold, art. 81);
+      // they have no polling, so they hold their 2023 national shares
+      vmsz: { code: 'VMSZ', name: 'Savez vojvođanskih Mađara',           name_en: 'Alliance of Vojvodina Hungarians', color: '#00732B' },
+      spp:  { code: 'SPP',  name: 'Stranka pravde i pomirenja',          name_en: 'Justice and Reconciliation Party', color: '#16321B' },
+      sda:  { code: 'SDA',  name: 'Stranka demokratske akcije Sandžaka', name_en: 'Party of Democratic Action of Sandžak', color: '#069443' },
+      rs:   { code: 'RS',   name: 'Ruska stranka',                       name_en: 'Russian Party',                  color: '#0D3B66' },
+      sdp:  { code: 'SDP',  name: 'Socijaldemokratska partija',          name_en: 'Social Democratic Party',        color: '#FF004F' },
       // SPN (Serbia Against Violence, 2023) — dissolved coalition. Shown in
       // past-result sections only; `pastOnly` keeps it out of the forecast.
       spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#E30613', pastOnly: true },
     },
-    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'srs', 'spn'],
-    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'spn'],
+    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'srs', 'spp', 'sda', 'rs', 'sdp', 'spn'],
+    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'spn'],
+    // minority lists (Serbia art. 81): exempt from the 3% threshold
+    minorityParties: ['vmsz', 'spp', 'sda', 'rs'],
     blocs: {
       bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps'], color: '#1B4381' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs'], color: '#A6192E' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp'], color: '#A6192E' },
     },
     logos: {
       sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg', srs: 'img/serbia/SRS.svg',
-      pes: 'img/serbia/PES.svg', nps: 'img/serbia/NPS.svg', nada: 'img/serbia/NADA.svg',
-      misn: 'img/serbia/MISN.svg', sl: 'img/serbia/SL.svg',
+      pes: 'img/serbia/PES.svg', nada: 'img/serbia/NADA.svg', misn: 'img/serbia/MISN.svg',
+      sl: 'img/serbia/SL.svg', vmsz: 'img/serbia/VMSZ.svg', spp: 'img/serbia/SPP.svg',
+      sda: 'img/serbia/SDA.svg', rs: 'img/serbia/RS.svg', sdp: 'img/serbia/SDP.svg',
     },
     // Pollster MAE (mean absolute error, %-points) from final party-level polls before each election,
     // averaged over SNS / SPS / main opposition list / smaller opposition list / NADA (+SRS in 2022).
@@ -1471,8 +1481,8 @@ saxony_anhalt: {
       date: '2023-12-17',
       // 2023 Serbian parliamentary election (source: RIK / en.wikipedia.org/wiki/2023_Serbian_parliamentary_election)
       // Coalition baselines: SNS ran as "Serbia Must Not Stop"; NPS was inside SPN; PES/SL did not exist yet.
-      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32 },
-      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65 },
+      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0 },
+      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0 },
     },
     map: {
       svg: 'img/serbia.svg',
@@ -1521,7 +1531,7 @@ saxony_anhalt: {
         pcinja: 'Pčinja', toplica: 'Toplica',
       },
       // 2023 national vote share — uniform-swing baseline for the district map
-      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32 },
+      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0 },
     },
       map2: {
       "svg": "img/serbia_opstine.svg",

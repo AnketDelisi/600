@@ -8,8 +8,8 @@ in the "Poll results" section, one table per year (h3: 2026 / 2025 /
 is taken from the section heading. Grouped header cells (PES = SSP +
 SRCE; NADA = NDSS + Monarchists/POKS) are summed into the coalition key;
 a merged data cell covering several columns of one group is counted once.
-NPS withdrew and endorsed the Student List, so NPS readings are folded
-into the SL key.
+NPS, ZLF, DS and KP withdrew and endorsed the Student List, so their
+readings are folded into the SL key.
 
 Output schema matches the other country scrapers (data/serbia/polls.json).
 """
@@ -31,13 +31,14 @@ MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
 
 # normalized table header -> config party key (config keys:
-# sns, sps, srs, pes, nada, misn, sl, spn; NPS -> sl, it endorsed SL)
+# sns, sps, srs, pes, nada, misn, sl, spn; NPS/ZLF/DS/KP -> sl, they all
+# withdrew and endorsed the Student List)
 HEADER_MAP = {
     "sns-led coalition": "sns",
     "sps-js": "sps", "sps": "sps",
     "student list": "sl",
     "pes": "pes", "ssp": "pes", "srce": "pes",
-    "nps": "sl",
+    "nps": "sl", "zlf": "sl", "ds": "sl", "kp": "sl",
     "nada": "nada", "ndss": "nada", "monarchists": "nada", "poks": "nada",
     "mi-sn": "misn",
     "srs": "srs",

@@ -2184,7 +2184,18 @@ function bonusSeatCount(votes){
 }
 
 function allocateSeatsN(votes, totalSeats){
-  const validParties=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
+  // national-minority lists are exempt from the threshold (Serbia's VMSZ,
+  // SPP, SDA, RS under art. 81) and parties without polling hold their
+  // last-election national share instead of dropping to zero
+  const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
+  votes=Object.assign({},votes);
+  PARTY_ORDER.forEach(p=>{
+    if((votes[p]===undefined||votes[p]===null)&&
+       !(PARTY_META[p]&&PARTY_META[p].pastOnly)) votes[p]=natBase[p]||0;
+  });
+  const minority=(COUNTRIES[COUNTRY]||{}).minorityParties||[];
+  const validParties=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||
+    (minority.indexOf(p)>=0&&(votes[p]||0)>0));
   const totalVotes=validParties.reduce((s,p)=>s+(votes[p]||0),0);
   if(totalVotes===0) return {};
   const seats={};
@@ -2584,7 +2595,16 @@ function allocateSeatsFast(votes, total){
   if(czechia) return czechia;
   const byDistrict=allocateSeatsByDistrict(votes);
   if(byDistrict) return byDistrict;
-  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD);
+  // national-minority exemption + no-poll fallback (see allocateSeatsN)
+  const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
+  votes=Object.assign({},votes);
+  PARTY_ORDER.forEach(p=>{
+    if((votes[p]===undefined||votes[p]===null)&&
+       !(PARTY_META[p]&&PARTY_META[p].pastOnly)) votes[p]=natBase[p]||0;
+  });
+  const minority=(COUNTRIES[COUNTRY]||{}).minorityParties||[];
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||
+    (minority.indexOf(p)>=0&&(votes[p]||0)>0));
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
   const bonus=bonusSeatCount(votes);
@@ -2813,7 +2833,11 @@ function runForecast(avg, nSims, nPolls){
   PARTY_ORDER.forEach(p=>{seatsBy[p]=[];votesBy[p]=[]});
   seatsBy.other=[];votesBy.other=[];
   const comboCount={};
-  const alpha=PARTY_ORDER.map(p=>Math.max(0.5,(avg[p]||0)*K));
+  // dissolved alliances (pastOnly) never contest the projection: keep their
+  // sim draw negligible so they cannot soak up seats or votes (Serbia's SPN
+  // is still in PARTY_ORDER for the 2023 result view)
+  const alpha=PARTY_ORDER.map(p=>(PARTY_META[p]&&PARTY_META[p].pastOnly)?0.01:
+    Math.max(0.5,(avg[p]||0)*K));
   // "Other" is a real bucket in the Dirichlet: its draw competes with the
   // modelled parties, so their simulated shares shrink to honest levels.
   alpha.push(Math.max(0.5,(avg.other||0)*K));
@@ -2824,7 +2848,10 @@ function runForecast(avg, nSims, nPolls){
   // them zero swing and their seats hold the baseline.
   const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
   const noPoll={};
-  PARTY_ORDER.forEach(p=>{if(avg[p]==null) noPoll[p]=natBase[p]||0;});
+  PARTY_ORDER.forEach(p=>{
+    if(avg[p]==null&&!(PARTY_META[p]&&PARTY_META[p].pastOnly))
+      noPoll[p]=natBase[p]||0;
+  });
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);

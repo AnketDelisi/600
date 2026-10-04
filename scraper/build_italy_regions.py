@@ -306,6 +306,10 @@ def main():
     map: {
       svg: 'img/italy.svg',
       selector: 'id',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded); the region-level swing decides which bloc takes each
+      // region's FPTP seats in allocateSeatsItaly
+      swingMethod: 'geometric',
       districts: @@districts@@,
       names: @@names@@,
       // FPTP districts per region (2022 apportionment, 147 in total)

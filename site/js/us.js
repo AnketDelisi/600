@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004c";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004c";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004c";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004d";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004d";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004d";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -37,18 +37,25 @@ const state = {
 const fmt = (x) => (Math.abs(x) >= 100 ? Math.round(x) : (x % 1 === 0 ? String(Math.round(x)) : x.toFixed(1)));
 
 /* ---- color helpers (diverging blue/red by win chance) ---- */
-const C_NEUT = "#EFE9DE", C_D = "#2E6EA8", C_R = "#C83737", C_GRAY = "#DAD3C4", C_TOSSUP = "#E2C27A";
+const C_NEUT = "#EFE9DE", C_D = "#2E6EA8", C_R = "#C83737", C_GRAY = "#DAD3C4", C_TOSSUP = "#E2C27A", C_I = "#7C3AED";
 function mixColor(a, b, t) {
   const r1 = (a >> 16) & 255, g1 = (a >> 8) & 255, b1 = a & 255;
   const r2 = (b >> 16) & 255, g2 = (b >> 8) & 255, b2 = b & 255;
   const r = Math.round(r1 + (r2 - r1) * t), g = Math.round(g1 + (g2 - g1) * t), bl = Math.round(b1 + (b2 - b1) * t);
   return `rgb(${r},${g},${bl})`;
 }
-function raceColor(dem, rating) {
+function raceColor(dem, rating, ind, leader, rep) {
+  const i = ind || 0;
+  const lead = leader || (dem >= 50 ? "D" : "R");
+  const p = lead === "D" ? dem : lead === "R" ? (rep != null ? rep : 100 - dem) : i;
+  // an independent leading the race gets its own colour; intensity comes from
+  // the leader's win probability (dem_pct is 0 in R-vs-I races, which would
+  // otherwise paint Idaho/South Dakota fully red)
+  if (lead === "I" && p > 50) return C_I;
   if (rating && /tossup/i.test(rating)) return C_TOSSUP;
-  const t = (dem - 50) / 50; // -1..1
-  if (t >= 0) return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(C_D.slice(1), 16), t);
-  return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(C_R.slice(1), 16), -t);
+  const t = Math.max(0, Math.min(1, (p - 50) / 50));
+  const base = lead === "R" ? C_R : C_D;
+  return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(base.slice(1), 16), t);
 }
 
 function ratingClass(rating) {
@@ -79,26 +86,41 @@ function raceKey(race) {
 
 function raceRow(race) {
   const name = race.district ? `${race.state} ${race.district}` : race.state;
-  const d = race.dem_pct, r = race.rep_pct;
-  const polls = race.polls
-    ? `<span class="polling">D <b class="n">${fmt(race.polls.dem)}</b> · R <b class="u">${fmt(race.polls.rep)}</b></span>`
+  const d = race.dem_pct, r = race.rep_pct, iv = race.ind_pct || 0;
+  const p = race.polls;
+  const bits = [];
+  if (p && p.dem != null) bits.push(`D <b class="n" title="${race.dem_name || ""}">${fmt(p.dem)}</b>`);
+  if (p && p.rep != null) bits.push(`R <b class="u" title="${race.rep_name || ""}">${fmt(p.rep)}</b>`);
+  if (p && p.ind != null) bits.push(`I <b class="i" title="${race.ind_name || ""}">${fmt(p.ind)}</b>`);
+  const polls = bits.length
+    ? `<span class="polling">${bits.join(" · ")}</span>`
     : '<span class="polling"><span class="none">—</span></span>';
   const inc = race.incumbent && race.incumbent !== "None (new seat)"
     ? `(${race.incumbent})`
     : "Open seat";
-  return `<tr data-key="${raceKey(race)}">
-    <td class="race-name">${partyBadge(race.party)}<b>${name}</b><span class="inc">${inc}</span></td>
-    <td><span class="rating ${ratingClass(race.rating)}">${race.rating || "No rating"}</span></td>
-    <td>${polls}</td>
-    <td>
-      <div class="chance">
+  // races with an independent get a three-segment bar (violet middle band)
+  const chance = iv > 0.5
+    ? `<div class="chance">
+        <div class="d" style="width:${d}%"></div>
+        <div class="i" style="width:${iv}%"></div>
+        <div class="r" style="width:${r}%"></div>
+        <div class="tick"></div>
+        <span class="lbl pleft">D ${fmt(d)}</span>
+        <span class="lbl pind">I ${fmt(iv)}</span>
+        <span class="lbl pright">R ${fmt(r)}</span>
+      </div>`
+    : `<div class="chance">
         <div class="d" style="width:${d}%"></div>
         <div class="r" style="width:${r}%"></div>
         <div class="tick"></div>
         <span class="lbl pleft">${fmt(d)}</span>
         <span class="lbl pright">${fmt(r)}</span>
-      </div>
-    </td>
+      </div>`;
+  return `<tr data-key="${raceKey(race)}">
+    <td class="race-name">${partyBadge(race.party)}<b>${name}</b><span class="inc">${inc}</span></td>
+    <td><span class="rating ${ratingClass(race.rating)}">${race.rating || "No rating"}</span></td>
+    <td>${polls}</td>
+    <td>${chance}</td>
   </tr>`;
 }
 
@@ -133,6 +155,7 @@ function controlCard(chamberData) {
   const d = maj.dem_pct ?? null;
   if (d === null) return "";
   const r = maj.rep_pct;
+  const iSeats = chamberData.expected_i_seats || 0;
   return `<div class="ctl">
     <div class="cell d"><div class="big">${fmt(d)}<span style="font-size:20px">%</span></div>
       <div class="lbl">Democrats win ${US_LABELS[state.chamber]}</div></div>
@@ -140,8 +163,8 @@ function controlCard(chamberData) {
       <div class="lbl">Republicans win ${US_LABELS[state.chamber]}</div></div>
   </div>
   <p class="line" style="margin-top:14px;color:var(--c-text-muted);font-size:13px">
-    Expected seats — Democrats <b>${fmt(chamberData.expected_d_seats)}</b>, Republicans <b>${fmt(chamberData.expected_r_seats)}</b>.
-    ${state.chamber === "senate" ? "51 seats are needed for a Democratic majority — a 50–50 split leaves control in Republican hands via the Vice President's tie-breaking vote." : "218 seats are needed for a majority."}
+    Expected seats — Democrats <b>${fmt(chamberData.expected_d_seats)}</b>, Republicans <b>${fmt(chamberData.expected_r_seats)}</b>${iSeats > 0.05 ? `, Independents <b style="color:${C_I}">${fmt(iSeats)}</b>` : ""}.
+    ${state.chamber === "senate" ? "51 seats are needed for a Democratic majority — a 50–50 split leaves control in Republican hands via the Vice President's tie-breaking vote." : "218 seats are needed for a majority."}${iSeats > 0.05 ? " An independent win counts for neither side in the majority probabilities." : ""}
   </p>`;
 }
 
@@ -211,7 +234,7 @@ function buildMapHTML(chamberData) {
   const stateD = [];
   for (const st of geo.states) {
     const race = stateRace(races, st.name);
-    const fill = race ? raceColor(race.dem_pct, race.rating) : C_GRAY;
+    const fill = race ? raceColor(race.dem_pct, race.rating, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
     stateD.push(`<path class="st" data-name="${st.name}" data-idx="${geo.states.indexOf(st)}" d="${st.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`);
   }
 
@@ -227,7 +250,7 @@ function buildMapHTML(chamberData) {
     const dists = geo.districts.filter((d) => d.s === si);
     const dPaths = dists.map((d) => {
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
-      const fill = race ? raceColor(race.dem_pct, race.rating) : C_GRAY;
+      const fill = race ? raceColor(race.dem_pct, race.rating, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
       return `<path class="dist" data-name="${st.name} ${d.cd}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `<g transform="${t}">${dPaths.join("")}</g>`;
@@ -235,7 +258,7 @@ function buildMapHTML(chamberData) {
     const dPaths = geo.districts.map((d) => {
       const st = geo.states[d.s];
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
-      const fill = race ? raceColor(race.dem_pct, race.rating) : C_GRAY;
+      const fill = race ? raceColor(race.dem_pct, race.rating, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
       return `<path class="dist" data-name="${st.name} ${d.cd === "at-large" ? "At Large" : d.cd}" data-idx="${d.s}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `${dPaths.join("")}<g class="sub">${geo.states.map((s) => `<path d="${s.d}"/>`).join("")}</g>`;
@@ -264,9 +287,12 @@ function attachMap(pane, chamberData) {
       tip.style.top = Math.max(4, e.clientY - rect.top - 8) + "px";
       if (race) {
         const rn = state.chamber === "house" ? name : race.state;
+        const iBit = (race.ind_pct || 0) > 0.5
+          ? ` · <span style="color:${C_I}">I ${fmt(race.ind_pct)}%</span>` : "";
+        const lead = race.leader || (race.margin >= 0 ? "D" : "R");
         tip.innerHTML = `<div class="t">${rn}</div>
-          <div class="r"><span class="d">D ${fmt(race.dem_pct)}%</span> · <span class="u">R ${fmt(race.rep_pct)}%</span></div>
-          <div class="m">Margin ${race.margin >= 0 ? "D+" : "R+"}${fmt(Math.abs(race.margin))} ${race.rating ? "· " + race.rating : ""}</div>`;
+          <div class="r"><span class="d">D ${fmt(race.dem_pct)}%</span> · <span class="u">R ${fmt(race.rep_pct)}%</span>${iBit}</div>
+          <div class="m">Margin ${lead}+${fmt(Math.abs(race.margin))} ${race.rating ? "· " + race.rating : ""}</div>`;
       } else {
         tip.innerHTML = `<div class="t">${name}</div><div class="m">No 2026 race</div>`;
       }
@@ -325,23 +351,25 @@ function parsePollDate(str) {
 function pollTrendSVG(polls) {
   const W = 640, H = 150, padL = 44, padR = 14, padT = 18, padB = 24;
   const pts = [];
+  let hasI = false;
   for (const p of polls) {
     if (!p.dates) continue;
     const dt = parsePollDate(p.dates);
     if (!dt) continue;
-    pts.push({ t: dt.getTime(), d: p.dem, r: p.rep, dates: p.dates });
+    if (p.ind != null) hasI = true;
+    pts.push({ t: dt.getTime(), d: p.dem, r: p.rep, i: p.ind, dates: p.dates });
   }
-  pts.sort((a, b) => a.t - b.t);
   if (pts.length < 2) {
     return `<div style="font-size:11px;color:var(--c-text-muted);padding:8px 0">Not enough dated polls to plot.</div>`;
   }
   const tMin = pts[0].t, tMax = pts[pts.length - 1].t;
   let vMin = 20, vMax = 70;
   for (const p of pts) {
-    if (p.d < vMin) vMin = p.d;
-    if (p.r < vMin) vMin = p.r;
-    if (p.d > vMax) vMax = p.d;
-    if (p.r > vMax) vMax = p.r;
+    for (const v of [p.d, p.r, p.i]) {
+      if (v == null) continue;
+      if (v < vMin) vMin = v;
+      if (v > vMax) vMax = v;
+    }
   }
   vMin = Math.floor((vMin - 4) / 5) * 5;
   vMax = Math.ceil((vMax + 4) / 5) * 5;
@@ -349,14 +377,16 @@ function pollTrendSVG(polls) {
   const X = (t) => padL + ((t - tMin) / (tMax - tMin || 1)) * (W - padL - padR);
   const Y = (v) => padT + ((vMax - v) / (vMax - vMin)) * (H - padT - padB);
   const line = (get, col) => {
+    const pp = pts.filter((p) => get(p) != null);
+    if (!pp.length) return "";
     let d = "";
-    pts.forEach((p, i) => {
+    pp.forEach((p, i) => {
       d += `${i === 0 ? "M" : "L"}${X(p.t).toFixed(1)},${Y(get(p)).toFixed(1)} `;
     });
     return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
   };
   const dots = (get, col) =>
-    pts.map((p) => `<circle cx="${X(p.t).toFixed(1)}" cy="${Y(get(p)).toFixed(1)}" r="3.5" fill="${col}"/>`).join("");
+    pts.filter((p) => get(p) != null).map((p) => `<circle cx="${X(p.t).toFixed(1)}" cy="${Y(get(p)).toFixed(1)}" r="3.5" fill="${col}"/>`).join("");
   let grid = "";
   for (let v = vMin; v <= vMax; v += 5) {
     grid += `<line x1="${padL}" y1="${Y(v)}" x2="${W - padR}" y2="${Y(v)}" stroke="var(--c-rule)" stroke-width="1"/>`;
@@ -367,10 +397,13 @@ function pollTrendSVG(polls) {
     ${grid}
     ${line((p) => p.d, "var(--d-blue)")}
     ${line((p) => p.r, "var(--d-red)")}
+    ${hasI ? line((p) => p.i, C_I) : ""}
     ${dots((p) => p.d, "var(--d-blue)")}
     ${dots((p) => p.r, "var(--d-red)")}
+    ${hasI ? dots((p) => p.i, C_I) : ""}
     <text x="${padL}" y="${padT - 6}" font-size="9" font-weight="900" fill="var(--d-blue)">D share</text>
     <text x="${padL + 44}" y="${padT - 6}" font-size="9" font-weight="900" fill="var(--d-red)">R share</text>
+    ${hasI ? `<text x="${padL + 88}" y="${padT - 6}" font-size="9" font-weight="900" fill="${C_I}">I share</text>` : ""}
     <text x="${padL}" y="${H - 6}" font-size="9" font-weight="900" fill="var(--c-text-muted)">${last.dates.replace("through", "through ")}</text>
   </svg>`;
 }
@@ -380,16 +413,25 @@ function raceDetailHTML(race) {
   if (!entry || !Array.isArray(entry.polls) || !entry.polls.length) {
     return `<div class="race-detail empty">No individual polls available for ${race.state}${race.district ? " " + race.district : ""}.</div>`;
   }
+  const hasI = entry.polls.some((p) => p.ind != null);
+  const pv = (v) => (v != null ? fmt(v) + "%" : "—");
   const rows = entry.polls.map((p) => {
-    const margin = (p.dem - p.rep).toFixed(1);
-    const lead = p.dem >= p.rep ? "D+" : "R+";
-    const val = Math.abs(p.dem - p.rep).toFixed(1);
+    const sides = [["D", p.dem], ["R", p.rep]];
+    if (p.ind != null) sides.push(["I", p.ind]);
+    const present = sides.filter((s) => s[1] != null);
+    present.sort((a, b) => b[1] - a[1]);
+    const lead = present[0] || ["?", 0];
+    const second = present[1] || ["?", 0];
+    const margin = (lead[1] - second[1]).toFixed(1);
+    const col = lead[0] === "D" ? "d" : lead[0] === "R" ? "r" : "";
+    const style = lead[0] === "I" ? ` style="color:${C_I}"` : "";
     return `<tr>
       <td>${p.pollster || "—"}</td>
       <td class="num">${p.dates || "—"}</td>
-      <td class="num d">${fmt(p.dem)}%</td>
-      <td class="num r">${fmt(p.rep)}%</td>
-      <td class="num ${p.dem >= p.rep ? "d" : "r"}">${lead}${val}</td>
+      <td class="num d">${pv(p.dem)}</td>
+      <td class="num r">${pv(p.rep)}</td>
+      ${hasI ? `<td class="num" style="color:${C_I}">${pv(p.ind)}</td>` : ""}
+      <td class="num ${col}"${style}>${lead[0]}+${margin}</td>
     </tr>`;
   }).join("");
   return `<div class="race-detail">
@@ -397,7 +439,7 @@ function raceDetailHTML(race) {
       <span class="rd-note">${entry.source}${entry.n_polls ? " · " + entry.n_polls + " polls" : ""}</span></div>
     <div class="rd-graph">${pollTrendSVG(entry.polls)}</div>
     <table class="rd-table">
-      <thead><tr><th>Pollster</th><th>Dates</th><th>D</th><th>R</th><th>Margin</th></tr></thead>
+      <thead><tr><th>Pollster</th><th>Dates</th><th>D</th><th>R</th>${hasI ? "<th>I</th>" : ""}<th>Margin</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>
   </div>`;
@@ -459,7 +501,7 @@ function render() {
     <span class="sb-seg r"><b>${fmt(rVal)}</b>${state.chamber === "governor" ? "" : hasMajPct ? "%" : ""} R</span>
     <span class="sb-seats">${state.chamber === "governor"
       ? `Expected governors: <b class="d">${fmt(govD)}</b> – <b class="r">${fmt(govR)}</b> (of 50)`
-      : `Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b> seats`}</span>
+      : `Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b>${(data.expected_i_seats || 0) > 0.05 ? ` – <b style="color:${C_I}">${fmt(data.expected_i_seats)}</b> I` : ""} seats`}</span>
     <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "51 for D majority" : "36 of 50 governors up"}</span>
   </div>`;
 

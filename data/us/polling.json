@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-04T11:48:10Z",
+  "scraped_at": "2026-10-04T13:48:51Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -139,7 +139,11 @@
           "dem": 44.0,
           "rep": 41.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Dan S.  Sullivan",
+        "d": "Mary Peltola"
+      }
     },
     "Arkansas": {
       "dem": 40.3,
@@ -164,7 +168,11 @@
           "dem": 36.0,
           "rep": 58.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Tom Cotton",
+        "d": "Hallie Shoffner"
+      }
     },
     "Colorado": null,
     "Delaware": null,
@@ -174,78 +182,70 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "University of North Florida",
-          "dates": "July 8–17, 2026",
-          "dem": 40.0,
-          "rep": 50.0
-        },
-        {
           "pollster": "Change Research",
-          "dates": "July 9–11, 2026",
-          "dem": 37.0,
-          "rep": 45.0
-        },
-        {
-          "pollster": "McLaughlin & Associates",
-          "dates": "June 3–7, 2026",
-          "dem": 40.0,
-          "rep": 47.0
-        },
-        {
-          "pollster": "Global Strategy Group",
-          "dates": "May 18–21, 2026",
-          "dem": 43.0,
-          "rep": 46.0
-        },
-        {
-          "pollster": "Change Research",
-          "dates": "May 13–16, 2026",
+          "dates": "September 25–27, 2026",
           "dem": 47.0,
-          "rep": 45.0
-        },
-        {
-          "pollster": "Cherry Communications",
-          "dates": "May 1–9, 2026",
-          "dem": 40.0,
           "rep": 48.0
         },
         {
           "pollster": "Stetson University",
-          "dates": "March 15 – April 13, 2026",
+          "dates": "September 14–21, 2026",
+          "dem": 40.0,
+          "rep": 51.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 20–21, 2026",
           "dem": 42.0,
           "rep": 49.0
         },
         {
-          "pollster": "Echelon Insights",
-          "dates": "April 3–9, 2026",
+          "pollster": "St. Pete Polls",
+          "dates": "September 15–17, 2026",
+          "dem": 45.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 8–10, 2026",
           "dem": 43.0,
           "rep": 50.0
         },
         {
-          "pollster": "MDW",
-          "dates": "March 27 – April 3, 2026",
-          "dem": 42.0,
-          "rep": 43.0
+          "pollster": "Change Research",
+          "dates": "September 7–9, 2026",
+          "dem": 47.0,
+          "rep": 47.0
         },
         {
-          "pollster": "Public Policy Polling",
-          "dates": "April 2–3, 2026",
-          "dem": 40.0,
-          "rep": 43.0
+          "pollster": "University of North Florida",
+          "dates": "July 8–17, 2026",
+          "dem": 42.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "Stetson University",
+          "dates": "March 15 – April 13, 2026",
+          "dem": 38.0,
+          "rep": 51.0
         },
         {
           "pollster": "Emerson College",
           "dates": "March 29–31, 2026",
-          "dem": 38.0,
-          "rep": 46.0
+          "dem": 36.0,
+          "rep": 47.0
         },
         {
           "pollster": "University of North Florida",
           "dates": "February 21 – March 2, 2026",
           "dem": 38.0,
-          "rep": 45.0
+          "rep": 46.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Ashley Moody",
+        "d": "Angie Nixon"
+      }
     },
     "Georgia": {
       "dem": 47.0,
@@ -253,26 +253,143 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 22–23, 2026",
+          "dem": 50.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Big Data Poll",
+          "dates": "September 21–23, 2026",
+          "dem": 51.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "YouGov",
+          "dates": "September 15–18, 2026",
+          "dem": 51.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 14–16, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "September 14, 2026",
+          "dem": 51.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "September 10–12, 2026",
+          "dem": 49.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "August 16–17, 2026",
+          "dem": 50.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Fabrizio Ward /Impact Research",
+          "dates": "July 13–16, 2026",
+          "dem": 52.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Wick",
+          "dates": "June 27–30, 2026",
+          "dem": 47.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "June 23–27, 2026",
+          "dem": 56.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Echelon Insights",
+          "dates": "April 3–9, 2026",
+          "dem": 51.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "February 28 – March 2, 2026",
+          "dem": 48.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 9–12, 2025",
+          "dem": 38.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "July 28 – August 1, 2025",
+          "dem": 45.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Cygnal",
+          "dates": "May 15–17, 2025",
+          "dem": 46.0,
+          "rep": 43.0
+        },
+        {
           "pollster": "Trafalgar Group",
           "dates": "April 24–27, 2025",
           "dem": 48.0,
-          "rep": 37.0
+          "rep": 43.0
         },
         {
-          "pollster": "Atlanta Journal-Constitution",
-          "dates": "April 15–24, 2025",
-          "dem": 54.0,
-          "rep": 37.0
-        },
-        {
-          "pollster": "Tyson Group",
-          "dates": "January 30–31, 2025",
-          "dem": 51.0,
-          "rep": 39.0
+          "pollster": "WPA Intelligence",
+          "dates": "January 14–15, 2025",
+          "dem": 44.0,
+          "rep": 34.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Jon Ossoff",
+        "r": "Mike Collins"
+      }
     },
-    "Idaho": null,
+    "Idaho": {
+      "rep": 42.3,
+      "ind": 40.0,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3,
+      "polls": [
+        {
+          "pollster": "Advanced Targeting Research",
+          "dates": "September 13–16, 2026",
+          "rep": 39.0,
+          "ind": 50.0
+        },
+        {
+          "pollster": "The Bullfinch Group",
+          "dates": "May 29 – June 1, 2026",
+          "rep": 40.0,
+          "ind": 36.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "March 16–17, 2026",
+          "rep": 48.0,
+          "ind": 34.0
+        }
+      ],
+      "names": {
+        "r": "Jim Risch",
+        "i": "Todd Achilles"
+      }
+    },
     "Illinois": null,
     "Iowa": {
       "dem": 46.8,
@@ -280,15 +397,147 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 22 – October 1, 2026",
+          "dem": 47.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "September 28–30, 2026",
+          "dem": 47.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 28–29, 2026",
+          "dem": 46.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "September 24–28, 2026",
+          "dem": 49.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 22–23, 2026",
+          "dem": 47.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Marist University",
+          "dates": "September 17–20, 2026",
+          "dem": 50.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "September 16–18, 2026",
+          "dem": 42.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 14–16, 2026",
+          "dem": 42.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Cygnal",
+          "dates": "September 9–11, 2026",
+          "dem": 43.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "September 8–10, 2026",
+          "dem": 45.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "YouGov",
+          "dates": "September 3–8, 2026",
+          "dem": 44.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "August 31 – September 1, 2026",
+          "dem": 45.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "Global Strategy Group",
+          "dates": "August 27–31, 2026",
+          "dem": 46.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "August 27–29, 2026",
+          "dem": 48.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "Abacus Data",
+          "dates": "August 26–28, 2026",
+          "dem": 54.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "August 20–23, 2026",
+          "dem": 41.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "August 2–4, 2026",
+          "dem": 45.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "June 23–27, 2026",
+          "dem": 50.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "June 15–27, 2026",
+          "dem": 46.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Cygnal",
+          "dates": "June 16–19, 2026",
+          "dem": 44.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Global Strategy Group",
+          "dates": "June 8–11, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "June 3–4, 2026",
+          "dem": 46.0,
+          "rep": 46.0
+        },
+        {
           "pollster": "Echelon Insights",
           "dates": "April 3–9, 2026",
           "dem": 46.0,
-          "rep": 44.0
+          "rep": 45.0
         },
         {
           "pollster": "GQR",
           "dates": "March 10–16, 2026",
-          "dem": 44.0,
+          "dem": 43.0,
           "rep": 47.0
         },
         {
@@ -297,7 +546,11 @@
           "dem": 41.0,
           "rep": 44.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Ashley Hinson",
+        "d": "Josh Turek"
+      }
     },
     "Kansas": {
       "dem": 45.6,
@@ -305,16 +558,16 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "New York Times / Siena University",
-          "dates": "September 22–30, 2026",
-          "dem": 45.0,
-          "rep": 45.0
-        },
-        {
           "pollster": "Trafalgar Group",
           "dates": "September 29 – October 1, 2026",
           "dem": 44.0,
           "rep": 44.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 22–30, 2026",
+          "dem": 45.0,
+          "rep": 45.0
         },
         {
           "pollster": "Wedgewood Polls",
@@ -364,7 +617,11 @@
           "dem": 46.0,
           "rep": 54.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Roger Marshall",
+        "d": "Adam Hamilton"
+      }
     },
     "Kentucky": null,
     "Louisiana": null,
@@ -374,96 +631,130 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "Public Policy Polling",
-          "dates": "July 7, 2026",
-          "dem": 37.0,
-          "rep": 48.0
+          "pollster": "Trafalgar Group",
+          "dates": "September 29 – October 1, 2026",
+          "dem": 46.0,
+          "rep": 46.0
         },
         {
           "pollster": "Wedgewood Polls",
-          "dates": "July 4–6, 2026",
-          "dem": 47.0,
-          "rep": 47.0
-        },
-        {
-          "pollster": "Tavern Research",
-          "dates": "June 5–8, 2026",
+          "dates": "September 27 – October 1, 2026",
           "dem": 52.0,
           "rep": 48.0
         },
         {
-          "pollster": "Echelon Insights",
-          "dates": "April 3–9, 2026",
+          "pollster": "CBS News / YouGov",
+          "dates": "September 23 – October 1, 2026",
+          "dem": 50.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 28–30, 2026",
+          "dem": 46.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 22–23, 2026",
+          "dem": 46.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "September 20–22, 2026",
+          "dem": 50.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 15–22, 2026",
+          "dem": 46.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "September 17–21, 2026",
+          "dem": 51.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 14–15, 2026",
+          "dem": 47.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "University of Massachusetts / YouGov",
+          "dates": "August 28 – September 14, 2026",
+          "dem": 48.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "September 8–10, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "YouGov",
+          "dates": "September 2–8, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "SSRS",
+          "dates": "August 31 – September 6, 2026",
+          "dem": 48.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Abacus Data",
+          "dates": "August 26–28, 2026",
+          "dem": 52.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "August 6–10, 2026",
           "dem": 48.0,
           "rep": 46.0
         },
         {
-          "pollster": "Maine People's Resource Center",
-          "dates": "March 20–31, 2026",
-          "dem": 42.0,
+          "pollster": "Hart Research",
+          "dates": "July 27 – August 1, 2026",
+          "dem": 49.0,
           "rep": 45.0
-        },
-        {
-          "pollster": "Emerson College",
-          "dates": "March 21–23, 2026",
-          "dem": 46.0,
-          "rep": 43.0
-        },
-        {
-          "pollster": "OnMessage Public Strategies",
-          "dates": "March 3–8, 2026",
-          "dem": 42.0,
-          "rep": 42.0
-        },
-        {
-          "pollster": "Quantus Insights",
-          "dates": "March 5, 2026",
-          "dem": 43.0,
-          "rep": 45.0
-        },
-        {
-          "pollster": "Pan Atlantic Research",
-          "dates": "February 13 – March 2, 2026",
-          "dem": 44.0,
-          "rep": 44.0
         },
         {
           "pollster": "University of New Hampshire",
-          "dates": "February 12–16, 2026",
-          "dem": 41.0,
-          "rep": 40.0
-        },
-        {
-          "pollster": "Fabrizio, Lee & Associates",
-          "dates": "January 20–24, 2026",
-          "dem": 44.0,
-          "rep": 45.0
-        },
-        {
-          "pollster": "Workbench Strategy",
-          "dates": "December 11–16, 2025",
+          "dates": "July 15–20, 2026",
           "dem": 49.0,
-          "rep": 51.0
-        },
-        {
-          "pollster": "Pan Atlantic Research",
-          "dates": "November 29 – December 7, 2025",
-          "dem": 43.0,
-          "rep": 43.0
-        },
-        {
-          "pollster": "Maine People's Resource Center",
-          "dates": "October 26–29, 2025",
-          "dem": 42.0,
           "rep": 46.0
         },
         {
-          "pollster": "Zenith Research",
-          "dates": "October 7–10, 2025",
-          "dem": 42.0,
-          "rep": 37.0
+          "pollster": "Z to A Research",
+          "dates": "July 7–8, 2026",
+          "dem": 47.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "July 7, 2026",
+          "dem": 49.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "July 4–6, 2026",
+          "dem": 48.0,
+          "rep": 43.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Susan Collins",
+        "d": "Troy Jackson (replacing Graham Platner )"
+      }
     },
     "Massachusetts": {
       "dem": 53.8,
@@ -471,36 +762,70 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "University of New Hampshire",
-          "dates": "June 18–23, 2026",
-          "dem": 50.0,
-          "rep": 30.0
-        },
-        {
-          "pollster": "Suffolk University",
-          "dates": "June 8–12, 2026",
-          "dem": 54.0,
+          "pollster": "MassINC Polling Group",
+          "dates": "September 14–22, 2026",
+          "dem": 52.0,
           "rep": 26.0
         },
         {
           "pollster": "University of New Hampshire",
+          "dates": "September 17–21, 2026",
+          "dem": 53.0,
+          "rep": 30.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "August 20–24, 2026",
+          "dem": 49.0,
+          "rep": 30.0
+        },
+        {
+          "pollster": "UMass Amherst / YouGov",
+          "dates": "August 5–12, 2026",
+          "dem": 51.0,
+          "rep": 30.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "June 18–23, 2026",
+          "dem": 50.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "June 8–12, 2026",
+          "dem": 55.0,
+          "rep": 30.0
+        },
+        {
+          "pollster": "University of New Hampshire",
           "dates": "April 16–20, 2026",
-          "dem": 56.0,
-          "rep": 25.0
+          "dem": 55.0,
+          "rep": 32.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "February 12–16, 2026",
-          "dem": 59.0,
-          "rep": 23.0
+          "dem": 56.0,
+          "rep": 27.0
+        },
+        {
+          "pollster": "Cygnal",
+          "dates": "January 22–25, 2026",
+          "dem": 54.0,
+          "rep": 30.0
         },
         {
           "pollster": "Suffolk University",
           "dates": "November 19–23, 2025",
-          "dem": 52.0,
-          "rep": 29.0
+          "dem": 54.0,
+          "rep": 31.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Ed Markey",
+        "r": "John Deaton"
+      }
     },
     "Michigan": {
       "dem": 43.2,
@@ -508,90 +833,310 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "Trafalgar Group",
+          "dates": "September 28–30, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "September 24–28, 2026",
+          "dem": 50.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "Marist University",
+          "dates": "September 24–27, 2026",
+          "dem": 51.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Big Data Poll",
+          "dates": "September 22–24, 2026",
+          "dem": 47.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 21–23, 2026",
+          "dem": 45.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "September 19–22, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 15–22, 2026",
+          "dem": 49.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Cygnal /Beacon Research",
+          "dates": "September 18–21, 2026",
+          "dem": 45.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "September 16–20, 2026",
+          "dem": 47.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "Torchlight Strategies",
+          "dates": "September 15–19, 2026",
+          "dem": 43.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 16–17, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "September 12–14, 2026",
+          "dem": 48.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "The Washington Post / SSPG",
+          "dates": "September 10–14, 2026",
+          "dem": 48.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "September 7–9, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "SSRS",
+          "dates": "August 31 – September 6, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Glengariff Group",
+          "dates": "August 31 – September 3, 2026",
+          "dem": 44.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Abacus Data",
+          "dates": "August 26–28, 2026",
+          "dem": 49.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "EPIC-MRA",
+          "dates": "August 22–28, 2026",
+          "dem": 50.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Michigan State University / YouGov",
+          "dates": "August 10–20, 2026",
+          "dem": 50.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Susquehanna Polling & Research",
+          "dates": "August 11–17, 2026",
+          "dem": 46.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "August 9–11, 2026",
+          "dem": 48.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "August 6–10, 2026",
+          "dem": 43.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "August 6–10, 2026",
+          "dem": 50.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "August 6–10, 2026",
+          "dem": 47.0,
+          "rep": 51.0
+        },
+        {
+          "pollster": "EPIC-MRA",
+          "dates": "July 24–31, 2026",
+          "dem": 43.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "SoCal Strategies",
+          "dates": "July 28–30, 2026",
+          "dem": 41.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Mitchell Research & Communications",
+          "dates": "July 28–29, 2026",
+          "dem": 45.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Glengariff Group",
+          "dates": "July 22–24, 2026",
+          "dem": 39.0,
+          "rep": 49.0
+        },
+        {
           "pollster": "Quantus Insights",
           "dates": "June 29–30, 2026",
-          "dem": 44.0,
-          "rep": 45.0
+          "dem": 45.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Data for Progress",
+          "dates": "June 15–22, 2026",
+          "dem": 47.0,
+          "rep": 46.0
         },
         {
           "pollster": "Zenith Research",
           "dates": "June 11–14, 2026",
-          "dem": 44.0,
+          "dem": 45.0,
           "rep": 42.0
         },
         {
           "pollster": "Mitchell Research & Communications",
           "dates": "June 11–13, 2026",
-          "dem": 41.0,
-          "rep": 47.0
+          "dem": 47.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Tulchin Research",
+          "dates": "June 2–4, 2026",
+          "dem": 46.0,
+          "rep": 41.0
         },
         {
           "pollster": "TIPP Insights",
           "dates": "May 20–23, 2026",
-          "dem": 42.0,
-          "rep": 39.0
+          "dem": 40.0,
+          "rep": 40.0
         },
         {
           "pollster": "Mitchell Research",
           "dates": "May 1–7, 2026",
           "dem": 41.0,
-          "rep": 43.0
+          "rep": 42.0
         },
         {
           "pollster": "Glengariff Group",
           "dates": "April 28 – May 1, 2026",
-          "dem": 41.0,
-          "rep": 43.0
+          "dem": 40.0,
+          "rep": 45.0
         },
         {
           "pollster": "Emerson College",
           "dates": "January 24–25, 2026",
-          "dem": 46.0,
+          "dem": 43.0,
           "rep": 43.0
         },
         {
           "pollster": "Glengariff Group",
           "dates": "January 2–6, 2026",
-          "dem": 46.0,
+          "dem": 47.0,
           "rep": 43.0
         },
         {
           "pollster": "Mitchell Research & Communications",
           "dates": "November 18–21, 2025",
           "dem": 38.0,
-          "rep": 44.0
-        },
-        {
-          "pollster": "EPIC-MRA",
-          "dates": "November 6–11, 2025",
-          "dem": 43.0,
-          "rep": 42.0
+          "rep": 41.0
         },
         {
           "pollster": "Rosetta Stone Communications",
           "dates": "October 23–25, 2025",
-          "dem": 39.0,
-          "rep": 46.0
-        },
-        {
-          "pollster": "Normington Petts",
-          "dates": "June 12–16, 2025",
-          "dem": 44.0,
-          "rep": 48.0
+          "dem": 31.0,
+          "rep": 45.0
         },
         {
           "pollster": "Glengariff Group",
           "dates": "May 5–8, 2025",
-          "dem": 42.0,
-          "rep": 46.0
+          "dem": 41.0,
+          "rep": 47.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Abdul El-Sayed",
+        "r": "Mike Rogers"
+      }
     },
     "Minnesota": {
       "dem": 44.9,
       "rep": 42.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Big Data Poll",
+          "dates": "September 29–30, 2026",
+          "dem": 40.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 28–29, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 14–15, 2026",
+          "dem": 43.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "KSTP / SurveyUSA",
+          "dates": "September 9–14, 2026",
+          "dem": 42.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 8–10, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "August 31 – September 2, 2026",
+          "dem": 40.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Deep Root Analytics",
+          "dates": "August 17–18, 2026",
+          "dem": 50.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "KTSP / SurveyUSA",
+          "dates": "August 13–17, 2026",
+          "dem": 46.0,
+          "rep": 41.0
+        },
         {
           "pollster": "Impact Research",
           "dates": "May 26–28, 2026",
@@ -602,19 +1147,24 @@
           "pollster": "Emerson College",
           "dates": "February 6–8, 2026",
           "dem": 47.0,
-          "rep": 40.0
+          "rep": 41.0
         },
         {
           "pollster": "Impact Research",
           "dates": "July 8–11, 2025",
-          "dem": 49.0,
+          "dem": 48.0,
           "rep": 45.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Peggy Flanagan",
+        "r": "Michele Tafoya"
+      }
     },
     "Mississippi": {
       "dem": 38.3,
       "rep": 45.7,
+      "ind": 6.5,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 3,
       "polls": [
@@ -622,13 +1172,15 @@
           "pollster": "Data for Progress",
           "dates": "August 5–15, 2026",
           "dem": 38.0,
-          "rep": 44.0
+          "rep": 44.0,
+          "ind": 7.0
         },
         {
           "pollster": "Impact Research",
           "dates": "April 8–12, 2026",
           "dem": 39.0,
-          "rep": 42.0
+          "rep": 42.0,
+          "ind": 6.0
         },
         {
           "pollster": "Impact Research",
@@ -636,132 +1188,335 @@
           "dem": 38.0,
           "rep": 51.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Cindy Hyde-Smith",
+        "d": "Scott Colom"
+      }
     },
     "Montana": {
-      "dem": 42.0,
-      "rep": 52.0,
-      "source": "Simple avg (latest 5 polls)",
-      "n_polls": 4,
+      "dem": 20.0,
+      "rep": 42.7,
+      "ind": 27.0,
+      "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 14–15, 2026",
+          "dem": 23.0,
+          "rep": 44.0,
+          "ind": 24.0
+        },
+        {
+          "pollster": "Aspect Strategic",
+          "dates": "September 7–15, 2026",
+          "dem": 14.0,
+          "rep": 44.0,
+          "ind": 32.0
+        },
+        {
+          "pollster": "Rutgers University Eagleton Institute of Politics",
+          "dates": "August 27 – September 7, 2026",
+          "dem": 16.0,
+          "rep": 38.0,
+          "ind": 30.0
+        },
+        {
+          "pollster": "Peak Insights",
+          "dates": "August 23–25, 2026",
+          "dem": 19.0,
+          "rep": 44.0,
+          "ind": 22.0
+        },
+        {
+          "pollster": "Hart Research",
+          "dates": "August 1–4, 2026",
+          "dem": 15.0,
+          "rep": 45.0,
+          "ind": 30.0
+        },
         {
           "pollster": "Tavern Research",
           "dates": "July 23–27, 2026",
-          "dem": 41.0,
-          "rep": 59.0
+          "dem": 24.0,
+          "rep": 49.0,
+          "ind": 25.0
         },
         {
           "pollster": "GQR",
           "dates": "July 23–26, 2026",
-          "dem": 40.0,
-          "rep": 44.0
+          "dem": 22.0,
+          "rep": 41.0,
+          "ind": 27.0
+        },
+        {
+          "pollster": "Bullfinch Group",
+          "dates": "July 13–16, 2026",
+          "dem": 22.0,
+          "rep": 36.0,
+          "ind": 24.0
+        },
+        {
+          "pollster": "GrayHouse",
+          "dates": "June 23–24, 2026",
+          "dem": 25.0,
+          "rep": 41.0,
+          "ind": 17.0
         },
         {
           "pollster": "Hart Research",
           "dates": "June 18–24, 2026",
-          "dem": 43.0,
-          "rep": 49.0
+          "dem": 22.0,
+          "rep": 47.0,
+          "ind": 25.0
         },
         {
           "pollster": "Tavern Research",
           "dates": "June 16–19, 2026",
-          "dem": 44.0,
-          "rep": 56.0
+          "dem": 26.0,
+          "rep": 49.0,
+          "ind": 24.0
+        },
+        {
+          "pollster": "Public Opinion Strategies",
+          "dates": "June 8–11, 2026",
+          "dem": 25.0,
+          "rep": 44.0,
+          "ind": 20.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Kurt Alme",
+        "d": "Alani Bankhead",
+        "i": "Seth Bodnar"
+      }
     },
-    "Nebraska": null,
+    "Nebraska": {
+      "rep": 45.7,
+      "ind": 45.9,
+      "source": "Aggregate (Wikipedia)",
+      "polls": [
+        {
+          "pollster": "co/efficient",
+          "dates": "September 28–30, 2026",
+          "rep": 48.0,
+          "ind": 43.0
+        },
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "September 14–16, 2026",
+          "rep": 52.0,
+          "ind": 48.0
+        },
+        {
+          "pollster": "SurveyUSA",
+          "dates": "September 8–13, 2026",
+          "rep": 42.0,
+          "ind": 46.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "September 3–8, 2026",
+          "rep": 46.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "Impact Research",
+          "dates": "August 9–13, 2026",
+          "rep": 47.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "July 2026",
+          "rep": 47.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "Tavern Research",
+          "dates": "May 8–11, 2026",
+          "rep": 42.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "April 2026",
+          "rep": 45.0,
+          "ind": 46.0
+        },
+        {
+          "pollster": "Impact Research",
+          "dates": "February 2–5, 2026",
+          "rep": 48.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "Lake Research Partners",
+          "dates": "December 11–17, 2025",
+          "rep": 48.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "Lake Research Partners",
+          "dates": "July 23–29, 2025",
+          "rep": 46.0,
+          "ind": 47.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "March 28 – April 1, 2025",
+          "rep": 46.0,
+          "ind": 45.0
+        }
+      ],
+      "names": {
+        "r": "Pete Ricketts",
+        "i": "Dan Osborn"
+      }
+    },
     "New Hampshire": {
-      "dem": 48.6,
-      "rep": 37.8,
+      "dem": 48.2,
+      "rep": 42.8,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
       "polls": [
         {
+          "pollster": "Trafalgar Group",
+          "dates": "September 26–27, 2026",
+          "dem": 47.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 15–22, 2026",
+          "dem": 50.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "September 17–21, 2026",
+          "dem": 50.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 16–17, 2026",
+          "dem": 48.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 9–11, 2026",
+          "dem": 46.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "September 8–10, 2026",
+          "dem": 45.0,
+          "rep": 34.0
+        },
+        {
           "pollster": "University of New Hampshire",
           "dates": "August 20–24, 2026",
-          "dem": 45.0,
-          "rep": 40.0
+          "dem": 43.0,
+          "rep": 45.0
         },
         {
           "pollster": "Saint Anselm College",
           "dates": "August 17–18, 2026",
-          "dem": 49.0,
-          "rep": 37.0
+          "dem": 48.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Peak Insights",
+          "dates": "June 24–27, 2026",
+          "dem": 43.0,
+          "rep": 42.0
         },
         {
           "pollster": "Saint Anselm College",
           "dates": "June 24–25, 2026",
-          "dem": 48.0,
-          "rep": 36.0
+          "dem": 47.0,
+          "rep": 41.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "June 18–23, 2026",
-          "dem": 52.0,
-          "rep": 38.0
+          "dem": 47.0,
+          "rep": 44.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "April 17–21, 2026",
-          "dem": 52.0,
-          "rep": 38.0
+          "dem": 49.0,
+          "rep": 42.0
         },
         {
           "pollster": "Emerson College",
           "dates": "March 21–23, 2026",
-          "dem": 48.0,
-          "rep": 39.0
+          "dem": 45.0,
+          "rep": 44.0
         },
         {
           "pollster": "Saint Anselm College",
           "dates": "March 16–18, 2026",
-          "dem": 47.0,
-          "rep": 38.0
+          "dem": 46.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "yes. every kid.",
+          "dates": "January 28–29, 2026",
+          "dem": 45.0,
+          "rep": 41.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "January 15–19, 2026",
-          "dem": 52.0,
-          "rep": 42.0
+          "dem": 50.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "NHJournal/Praecones Analytica",
+          "dates": "December 26–28, 2025",
+          "dem": 42.0,
+          "rep": 36.0
         },
         {
           "pollster": "Guidant Polling and Strategy",
           "dates": "December 9–11, 2025",
-          "dem": 49.0,
-          "rep": 38.0
+          "dem": 47.0,
+          "rep": 44.0
         },
         {
           "pollster": "Saint Anselm College",
           "dates": "November 18–19, 2025",
           "dem": 44.0,
-          "rep": 36.0
+          "rep": 41.0
         },
         {
           "pollster": "co/efficient",
           "dates": "October 9–13, 2025",
-          "dem": 49.0,
-          "rep": 39.0
+          "dem": 45.0,
+          "rep": 42.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "September 17–23, 2025",
-          "dem": 52.0,
-          "rep": 37.0
+          "dem": 49.0,
+          "rep": 43.0
         },
         {
           "pollster": "co/efficient",
           "dates": "September 10–12, 2025",
-          "dem": 50.0,
-          "rep": 40.0
-        },
-        {
-          "pollster": "Saint Anselm College",
-          "dates": "August 26–27, 2025",
-          "dem": 48.0,
-          "rep": 37.0
+          "dem": 46.0,
+          "rep": 43.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Chris Pappas",
+        "r": "John E. Sununu"
+      }
     },
     "New Jersey": null,
     "New Mexico": null,
@@ -771,24 +1526,238 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "Change Research",
-          "dates": "March 31–April 4, 2025",
+          "pollster": "Big Data Poll",
+          "dates": "September 27–29, 2026",
+          "dem": 47.0,
+          "rep": 35.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "September 21–22, 2026",
+          "dem": 48.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "September 17–20, 2026",
+          "dem": 53.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Opinion Diagnostics",
+          "dates": "September 17–20, 2026",
+          "dem": 51.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "YouGov",
+          "dates": "September 15–18, 2026",
+          "dem": 52.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 16–17, 2026",
+          "dem": 48.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "High Point University",
+          "dates": "September 9–16, 2026",
+          "dem": 49.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "September 13–15, 2026",
+          "dem": 49.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Catawba College / YouGov",
+          "dates": "September 4–15, 2026",
+          "dem": 47.0,
+          "rep": 35.0
+        },
+        {
+          "pollster": "The Trafalgar Group",
+          "dates": "September 8–10, 2026",
+          "dem": 48.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "East Carolina University",
+          "dates": "August 31 – September 3, 2026",
           "dem": 46.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Elon University / YouGov",
+          "dates": "August 21–31, 2026",
+          "dem": 49.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "High Point University / YouGov",
+          "dates": "August 3–12, 2026",
+          "dem": 48.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "August 9–10, 2026",
+          "dem": 52.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "August 3–6, 2026",
+          "dem": 50.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "July 29 – August 1, 2026",
+          "dem": 50.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Elon University / YouGov",
+          "dates": "July 23–31, 2026",
+          "dem": 53.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "July 23–27, 2026",
+          "dem": 53.0,
           "rep": 44.0
         },
         {
           "pollster": "Public Policy Polling",
-          "dates": "March 4–5, 2025",
-          "dem": 47.0,
+          "dates": "July 10–11, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "June 15–27, 2026",
+          "dem": 50.0,
           "rep": 43.0
         },
         {
-          "pollster": "Victory Insights",
-          "dates": "November 26–29, 2024",
-          "dem": 45.0,
+          "pollster": "Catawba College / YouGov",
+          "dates": "June 1–10, 2026",
+          "dem": 48.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "May 10–11, 2026",
+          "dem": 50.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "May 4–8, 2026",
+          "dem": 49.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Opinion Diagnostics",
+          "dates": "April 21–24, 2026",
+          "dem": 50.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "High Point University / YouGov",
+          "dates": "March 26 – April 6, 2026",
+          "dem": 50.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "March 31 – April 1, 2026",
+          "dem": 49.0,
           "rep": 44.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "March 22–23, 2026",
+          "dem": 49.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Catawba College / YouGov",
+          "dates": "March 9–18, 2026",
+          "dem": 48.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "March 13–14, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Nexus Strategies/ Strategic Partners Solutions",
+          "dates": "March 8–9, 2026",
+          "dem": 50.0,
+          "rep": 32.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "January 31–February 4, 2026",
+          "dem": 50.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "January 5–7, 2026",
+          "dem": 47.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "November 9–10, 2025",
+          "dem": 47.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "September 14–15, 2025",
+          "dem": 46.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "September 2–8, 2025",
+          "dem": 48.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Harper Polling",
+          "dates": "August 11–12, 2025",
+          "dem": 47.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "July 28–30, 2025",
+          "dem": 47.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Victory Insights",
+          "dates": "July 28–30, 2025",
+          "dem": 43.0,
+          "rep": 40.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Michael Whatley",
+        "d": "Roy Cooper"
+      }
     },
     "Ohio": {
       "dem": 47.3,
@@ -969,7 +1938,11 @@
           "dem": 41.0,
           "rep": 47.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Jon Husted",
+        "d": "Sherrod Brown"
+      }
     },
     "Oklahoma": null,
     "Oregon": null,
@@ -1003,7 +1976,11 @@
           "dem": 52.0,
           "rep": 34.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Jack Reed",
+        "r": "Raymond McKay"
+      }
     },
     "South Carolina": {
       "dem": 43.1,
@@ -1011,50 +1988,106 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "Impact Research",
-          "dates": "June 17–22, 2026",
+          "pollster": "InsiderAdvantage",
+          "dates": "September 28–29, 2026",
           "dem": 45.0,
-          "rep": 48.0
+          "rep": 46.0
+        },
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "September 23–25, 2026",
+          "dem": 42.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 8–9, 2026",
+          "dem": 43.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Abacus Data",
+          "dates": "August 26–28, 2026",
+          "dem": 42.0,
+          "rep": 55.0
         },
         {
           "pollster": "Impact Research",
-          "dates": "February 25 – March 1, 2026",
+          "dates": "August 18–24, 2026",
+          "dem": 41.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Impact Research",
+          "dates": "August 14–22, 2026",
           "dem": 42.0,
-          "rep": 47.0
+          "rep": 39.0
+        }
+      ],
+      "names": {
+        "r": "Darline Graham (replacing Lindsey Graham )",
+        "d": "Annie Andrews"
+      }
+    },
+    "South Dakota": {
+      "rep": 48.4,
+      "ind": 43.4,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 5,
+      "polls": [
+        {
+          "pollster": "Zenith Research",
+          "dates": "September 24–27, 2026",
+          "rep": 53.0,
+          "ind": 47.0
         },
         {
           "pollster": "Public Policy Polling",
-          "dates": "November 21–22, 2025",
-          "dem": 36.0,
-          "rep": 42.0
-        }
-      ]
-    },
-    "South Dakota": {
-      "dem": 31.0,
-      "rep": 52.3,
-      "source": "Simple avg (latest 5 polls)",
-      "n_polls": 3,
-      "polls": [
+          "dates": "September 8–9, 2026",
+          "rep": 45.0,
+          "ind": 42.0
+        },
+        {
+          "pollster": "Lake Research Partners",
+          "dates": "August 26–30, 2026",
+          "rep": 44.0,
+          "ind": 51.0
+        },
+        {
+          "pollster": "Impact Research",
+          "dates": "August 13–17, 2026",
+          "rep": 44.0,
+          "ind": 44.0
+        },
+        {
+          "pollster": "Public Opinion Strategies",
+          "dates": "July 6–9, 2026",
+          "rep": 56.0,
+          "ind": 33.0
+        },
         {
           "pollster": "Public Policy Polling",
           "dates": "May 29–30, 2026",
-          "dem": 31.0,
-          "rep": 56.0
+          "rep": 44.0,
+          "ind": 40.0
         },
         {
           "pollster": "Public Policy Polling",
           "dates": "February 17–18, 2026",
-          "dem": 32.0,
-          "rep": 49.0
+          "rep": 47.0,
+          "ind": 35.0
         },
         {
           "pollster": "Public Policy Polling",
           "dates": "November 13–14, 2025",
-          "dem": 30.0,
-          "rep": 52.0
+          "rep": 44.0,
+          "ind": 31.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Mike Rounds",
+        "i": "Brian Bengs"
+      }
     },
     "Tennessee": null,
     "Texas": {
@@ -1063,24 +2096,280 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 21–30, 2026",
+          "dem": 51.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "September 28–29, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "September 24–28, 2026",
+          "dem": 51.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "Pulse Decision Science",
+          "dates": "September 24–27, 2026",
+          "dem": 45.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Big Data Poll",
+          "dates": "September 24–26, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Stratus Intelligence",
+          "dates": "September 22–24, 2026",
+          "dem": 48.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Texas Public Opinion Research",
+          "dates": "September 19–22, 2026",
+          "dem": 49.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Marist University",
+          "dates": "September 17–20, 2026",
+          "dem": 50.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Texas Southern University",
+          "dates": "September 15–19, 2026",
+          "dem": 47.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "September 15–17, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "September 12–14, 2026",
+          "dem": 47.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "SoCal Strategies",
+          "dates": "September 12–13, 2026",
+          "dem": 50.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "ReconMR/ Siena University",
+          "dates": "September 8–11, 2026",
+          "dem": 49.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Mason-Dixon",
+          "dates": "September 8–10, 2026",
+          "dem": 46.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "September 8–9, 2026",
+          "dem": 47.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Univision / YouGov",
+          "dates": "August 27 – September 4, 2026",
+          "dem": 48.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "August 30 – September 1, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Overton Insights",
+          "dates": "August 24–26, 2026",
+          "dem": 50.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "Texas Public Opinion Research",
+          "dates": "August 21–24, 2026",
+          "dem": 48.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "University of Texas /Texas Politics Project",
+          "dates": "August 5–13, 2026",
+          "dem": 42.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "August 9–10, 2026",
+          "dem": 46.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "July 30–31, 2026",
+          "dem": 48.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "YouGov Blue",
+          "dates": "July 15–31, 2026",
+          "dem": 48.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Texas A&M University /ReconMR/ Siena University",
+          "dates": "July 27–30, 2026",
+          "dem": 47.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Texas Southern University",
+          "dates": "July 27–30, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "July 23–27, 2026",
+          "dem": 51.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Texas Public Opinion Research",
+          "dates": "July 15–17, 2026",
+          "dem": 45.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "A2 Insights",
+          "dates": "June 23–28, 2026",
+          "dem": 48.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "June 19–27, 2026",
+          "dem": 47.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "SoCal Strategies",
+          "dates": "June 21, 2026",
+          "dem": 47.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "University of Texas /Texas Politics Project",
+          "dates": "June 5–12, 2026",
+          "dem": 42.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "June 3–4, 2026",
+          "dem": 43.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Texas A&M University /ReconMR/ Siena University",
+          "dates": "June 1–4, 2026",
+          "dem": 46.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Texas Public Opinion Research",
+          "dates": "May 27–28, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "May 22–23, 2026",
+          "dem": 45.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Texas Southern University",
+          "dates": "April 22 – May 6, 2026",
+          "dem": 45.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Texas Public Opinion Research",
+          "dates": "April 17–20, 2026",
+          "dem": 46.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "University of Texas /Texas Politics Project",
+          "dates": "April 10–20, 2026",
+          "dem": 42.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Impact Research",
+          "dates": "March 12–17, 2026",
+          "dem": 44.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "March 4–5, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
           "pollster": "University of Houston / YouGov",
           "dates": "January 20–31, 2026",
-          "dem": 42.0,
+          "dem": 44.0,
           "rep": 46.0
         },
         {
           "pollster": "Emerson College",
           "dates": "January 10–12, 2026",
+          "dem": 46.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Ragnar Research Partners",
+          "dates": "November 12–17, 2025",
           "dem": 44.0,
-          "rep": 47.0
+          "rep": 44.0
         },
         {
           "pollster": "University of Houston / Texas Southern University",
           "dates": "September 19 – October 1, 2025",
-          "dem": 44.0,
-          "rep": 50.0
+          "dem": 46.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "UT Tyler",
+          "dates": "September 17–24, 2025",
+          "dem": 37.0,
+          "rep": 38.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Ken Paxton",
+        "d": "James Talarico"
+      }
     },
     "Virginia": null,
     "West Virginia": null,
@@ -1111,7 +2400,11 @@
           "dem": 34.0,
           "rep": 53.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Tommy Tuberville",
+        "d": "Doug Jones"
+      }
     },
     "Alaska": null,
     "Arizona": {
@@ -1120,54 +2413,130 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "NextGen Polling",
+          "dates": "August 17–19, 2026",
+          "dem": 39.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "HighGround, Inc.",
+          "dates": "August 15–18, 2026",
+          "dem": 49.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "August 14–17, 2026",
+          "dem": 49.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Kreate Strategies",
+          "dates": "August 13–16, 2026",
+          "dem": 45.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "Stealth Analytics",
+          "dates": "August 11–13, 2026",
+          "dem": 43.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Noble Predictive Insights",
+          "dates": "August 10–13, 2026",
+          "dem": 48.0,
+          "rep": 35.0
+        },
+        {
+          "pollster": "Grayhouse",
+          "dates": "August 9–11, 2026",
+          "dem": 49.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "The Tarrance Group",
+          "dates": "July 27–30, 2026",
+          "dem": 52.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "July 26–28, 2026",
+          "dem": 52.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Noble Predictive Insights",
+          "dates": "May 5–7, 2026",
+          "dem": 41.0,
+          "rep": 37.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "April 20–24, 2026",
+          "dem": 48.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Noble Predictive Insights",
+          "dates": "February 23–26, 2026",
+          "dem": 42.0,
+          "rep": 35.0
+        },
+        {
           "pollster": "Center for Excellence in Polling",
           "dates": "January 22–24, 2026",
           "dem": 50.0,
-          "rep": 40.0
+          "rep": 41.0
         },
         {
           "pollster": "NextGen Polling",
           "dates": "December 15–17, 2025",
           "dem": 51.0,
-          "rep": 30.0
+          "rep": 32.0
         },
         {
           "pollster": "Emerson College",
           "dates": "November 8–10, 2025",
-          "dem": 43.0,
-          "rep": 42.0
+          "dem": 44.0,
+          "rep": 43.0
         },
         {
           "pollster": "Noble Predictive Insights",
           "dates": "August 11–18, 2025",
-          "dem": 40.0,
-          "rep": 38.0
+          "dem": 39.0,
+          "rep": 37.0
         },
         {
           "pollster": "Noble Predictive Insights",
           "dates": "May 12–16, 2025",
-          "dem": 41.0,
-          "rep": 39.0
+          "dem": 40.0,
+          "rep": 38.0
         },
         {
           "pollster": "Pulse Decision Science",
           "dates": "April 6–9, 2025",
-          "dem": 47.0,
-          "rep": 38.0
+          "dem": 46.0,
+          "rep": 42.0
         },
         {
           "pollster": "Noble Predictive Insights",
           "dates": "February 11–13, 2025",
-          "dem": 43.0,
-          "rep": 35.0
+          "dem": 40.0,
+          "rep": 38.0
         },
         {
           "pollster": "Kreate Strategies",
           "dates": "February 5–7, 2025",
-          "dem": 40.0,
-          "rep": 38.0
+          "dem": 43.0,
+          "rep": 44.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Katie Hobbs",
+        "r": "Andy Biggs"
+      }
     },
     "Arkansas": null,
     "California": {
@@ -1229,7 +2598,11 @@
           "dem": 52.0,
           "rep": 31.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Xavier Becerra",
+        "r": "Steve Hilton"
+      }
     },
     "Colorado": null,
     "Connecticut": {
@@ -1279,13 +2652,59 @@
           "dem": 49.0,
           "rep": 36.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Ned Lamont",
+        "r": "Ryan Fazio"
+      }
     },
     "Florida": {
       "dem": 42.8,
       "rep": 46.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Change Research",
+          "dates": "September 25-27, 2026",
+          "dem": 48.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Stetson University",
+          "dates": "September 14–21, 2026",
+          "dem": 39.0,
+          "rep": 51.0
+        },
+        {
+          "pollster": "St. Pete Polls",
+          "dates": "September 15–17, 2026",
+          "dem": 43.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Change Research",
+          "dates": "September 7–9, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Hart Research Associates",
+          "dates": "August 10–13, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Targoz Market Research",
+          "dates": "July 20–26, 2026",
+          "dem": 38.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "University of North Florida",
+          "dates": "July 8–17, 2026",
+          "dem": 41.0,
+          "rep": 46.0
+        },
         {
           "pollster": "Change Research",
           "dates": "May 13–16, 2026",
@@ -1296,45 +2715,79 @@
           "pollster": "Cherry Communications",
           "dates": "May 1–9, 2026",
           "dem": 39.0,
-          "rep": 48.0
+          "rep": 47.0
         },
         {
           "pollster": "Stetson University",
           "dates": "March 15 – April 13, 2026",
-          "dem": 42.0,
-          "rep": 46.0
+          "dem": 40.0,
+          "rep": 47.0
         },
         {
           "pollster": "Echelon Insights",
           "dates": "April 3–9, 2026",
-          "dem": 44.0,
-          "rep": 48.0
+          "dem": 43.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "MDW Communications",
+          "dates": "March 27 – April 3, 2026",
+          "dem": 41.0,
+          "rep": 41.0
         },
         {
           "pollster": "Emerson College",
           "dates": "March 29–31, 2026",
-          "dem": 36.0,
-          "rep": 45.0
+          "dem": 39.0,
+          "rep": 44.0
         },
         {
           "pollster": "University of North Florida",
           "dates": "February 21 – March 2, 2026",
           "dem": 36.0,
-          "rep": 43.0
+          "rep": 42.0
+        },
+        {
+          "pollster": "Targoz Market Research",
+          "dates": "February 13–16, 2026",
+          "dem": 36.0,
+          "rep": 41.0
         },
         {
           "pollster": "University of North Florida",
           "dates": "October 15–25, 2025",
-          "dem": 33.0,
+          "dem": 34.0,
           "rep": 45.0
+        },
+        {
+          "pollster": "Bendixen & Amandi International",
+          "dates": "September 7–9, 2025",
+          "dem": 41.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "AIF Center",
+          "dates": "August 25–27, 2025",
+          "dem": 41.0,
+          "rep": 49.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Byron Donalds",
+        "d": "David Jolly"
+      }
     },
     "Georgia": {
       "dem": 46.1,
       "rep": 46.5,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "October 2–3, 2026",
+          "dem": 49.0,
+          "rep": 51.0
+        },
         {
           "pollster": "InsiderAdvantage",
           "dates": "September 22–23, 2026",
@@ -1407,7 +2860,11 @@
           "dem": 49.0,
           "rep": 43.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Rick Jackson",
+        "d": "Keisha Lance Bottoms"
+      }
     },
     "Hawaii": null,
     "Idaho": null,
@@ -1418,24 +2875,88 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "Echelon Insights",
-          "dates": "April 3–9, 2026",
-          "dem": 51.0,
-          "rep": 39.0
+          "pollster": "New York Times / Siena University",
+          "dates": "September 22 – October 1, 2026",
+          "dem": 52.0,
+          "rep": 41.0
         },
         {
-          "pollster": "GBAO",
-          "dates": "March 10–16, 2026",
-          "dem": 50.0,
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "September 24–28, 2026",
+          "dem": 53.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Marist University",
+          "dates": "September 17–20, 2026",
+          "dem": 54.0,
           "rep": 42.0
         },
         {
-          "pollster": "Z to A Research",
-          "dates": "October 9–13, 2025",
-          "dem": 45.0,
+          "pollster": "co/efficient",
+          "dates": "September 14–16, 2026",
+          "dem": 46.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "Cygnal",
+          "dates": "September 9–11, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "YouGov",
+          "dates": "September 3–8, 2026",
+          "dem": 50.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "August 31 – September 1, 2026",
+          "dem": 49.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "August 27–29, 2026",
+          "dem": 51.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "August 20–23, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "August 2–4, 2026",
+          "dem": 48.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "June 23–27, 2026",
+          "dem": 53.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "June 15–27, 2026",
+          "dem": 48.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "Cygnal",
+          "dates": "June 16–19, 2026",
+          "dem": 48.0,
           "rep": 43.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Zach Lahn",
+        "d": "Rob Sand"
+      }
     },
     "Kansas": {
       "dem": 44.7,
@@ -1478,11 +2999,16 @@
           "dem": 47.0,
           "rep": 46.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Cindy Holscher",
+        "r": "Ty Masterson"
+      }
     },
     "Maine": {
       "dem": 49.4,
       "rep": 38.3,
+      "ind": 5.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -1495,25 +3021,29 @@
           "pollster": "co/efficient",
           "dates": "September 28–30, 2026",
           "dem": 47.0,
-          "rep": 38.0
+          "rep": 38.0,
+          "ind": 6.0
         },
         {
           "pollster": "Fabrizio Ward / Impact Research",
           "dates": "September 20–22, 2026",
           "dem": 52.0,
-          "rep": 39.0
+          "rep": 39.0,
+          "ind": 6.0
         },
         {
           "pollster": "New York Times / Portland Press Herald / Siena University",
           "dates": "September 15–22, 2026",
           "dem": 47.0,
-          "rep": 34.0
+          "rep": 34.0,
+          "ind": 8.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "September 17–21, 2026",
           "dem": 48.0,
-          "rep": 40.0
+          "rep": 40.0,
+          "ind": 5.0
         },
         {
           "pollster": "University of Massachusetts / YouGov",
@@ -1525,7 +3055,8 @@
           "pollster": "YouGov",
           "dates": "September 2–8, 2026",
           "dem": 47.0,
-          "rep": 36.0
+          "rep": 36.0,
+          "ind": 2.0
         },
         {
           "pollster": "SSRS",
@@ -1537,13 +3068,15 @@
           "pollster": "Beacon Research / Shaw & Co. Research",
           "dates": "August 6–10, 2026",
           "dem": 49.0,
-          "rep": 38.0
+          "rep": 38.0,
+          "ind": 9.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "July 15–20, 2026",
           "dem": 49.0,
-          "rep": 35.0
+          "rep": 35.0,
+          "ind": 6.0
         },
         {
           "pollster": "Beacon Research / Shaw & Co. Research",
@@ -1555,9 +3088,15 @@
           "pollster": "New York Times / Portland Press Herald / Siena University",
           "dates": "June 19–26, 2026",
           "dem": 50.0,
-          "rep": 36.0
+          "rep": 36.0,
+          "ind": 8.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Hannah Pingree",
+        "r": "Bobby Charles",
+        "i": "Rick Bennett"
+      }
     },
     "Maryland": null,
     "Massachusetts": {
@@ -1566,61 +3105,220 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "MassINC Polling Group",
+          "dates": "September 14–22, 2026",
+          "dem": 51.0,
+          "rep": 30.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "September 17–21, 2026",
+          "dem": 54.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "August 20–24, 2026",
+          "dem": 54.0,
+          "rep": 30.0
+        },
+        {
+          "pollster": "UMass Amherst / YouGov",
+          "dates": "August 5–12, 2026",
+          "dem": 53.0,
+          "rep": 33.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "June 18–23, 2026",
+          "dem": 51.0,
+          "rep": 32.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "June 8–12, 2026",
+          "dem": 56.0,
+          "rep": 31.0
+        },
+        {
+          "pollster": "Polity Research Consulting",
+          "dates": "April 19 – May 7, 2026",
+          "dem": 58.0,
+          "rep": 31.0
+        },
+        {
           "pollster": "University of New Hampshire",
           "dates": "April 16–20, 2026",
-          "dem": 53.0,
+          "dem": 52.0,
           "rep": 32.0
         },
         {
           "pollster": "University of New Hampshire",
           "dates": "February 12–16, 2026",
-          "dem": 55.0,
-          "rep": 28.0
+          "dem": 56.0,
+          "rep": 27.0
         },
         {
           "pollster": "UMass Amherst / YouGov",
           "dates": "October 21–29, 2025",
-          "dem": 49.0,
-          "rep": 27.0
-        },
-        {
-          "pollster": "Advantage, Inc.",
-          "dates": "September 23–24, 2025",
-          "dem": 45.0,
-          "rep": 34.0
+          "dem": 51.0,
+          "rep": 26.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Maura Healey",
+        "r": "Michael Minogue"
+      }
     },
     "Michigan": {
-      "dem": 49.6,
-      "rep": 41.5,
+      "dem": 35.4,
+      "rep": 30.5,
+      "ind": 20.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "EPIC-MRA",
-          "dates": "July 24–31, 2026",
-          "dem": 48.0,
-          "rep": 36.0
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "September 24–28, 2026",
+          "dem": 54.0,
+          "rep": 45.0
         },
         {
-          "pollster": "Mitchell Research",
-          "dates": "July 28–29, 2026",
+          "pollster": "Marist University",
+          "dates": "September 24–27, 2026",
+          "dem": 53.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 21–23, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 15–22, 2026",
           "dem": 48.0,
           "rep": 43.0
         },
         {
+          "pollster": "Beacon Research / Cygnal",
+          "dates": "September 18–21, 2026",
+          "dem": 45.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "September 16–20, 2026",
+          "dem": 51.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Torchlight Strategies",
+          "dates": "September 15–19, 2026",
+          "dem": 42.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "September 12–14, 2026",
+          "dem": 49.0,
+          "rep": 42.0
+        },
+        {
+          "pollster": "The Washington Post / SSPG",
+          "dates": "September 10–14, 2026",
+          "dem": 53.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "SSRS",
+          "dates": "August 31 – September 6, 2026",
+          "dem": 50.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Glengariff Group",
+          "dates": "August 31 – September 3, 2026",
+          "dem": 47.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "EPIC-MRA",
+          "dates": "August 22–28, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Michigan State University / YouGov",
+          "dates": "August 10–20, 2026",
+          "dem": 49.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "August 9–11, 2026",
+          "dem": 49.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "August 6–10, 2026",
+          "dem": 48.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "August 6–10, 2026",
+          "dem": 52.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "EPIC-MRA",
+          "dates": "July 24–31, 2026",
+          "dem": 47.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Mitchell Research",
+          "dates": "July 28–29, 2026",
+          "dem": 46.0,
+          "rep": 44.0
+        },
+        {
           "pollster": "Glengariff Group",
           "dates": "July 22–24, 2026",
-          "dem": 48.0,
-          "rep": 37.0
+          "dem": 44.0,
+          "rep": 39.0
         },
         {
           "pollster": "Mitchell Research",
           "dates": "June 11–13, 2026",
-          "dem": 50.0,
-          "rep": 42.0
+          "dem": 51.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "May 20–23, 2026",
+          "dem": 46.0,
+          "rep": 35.0
+        },
+        {
+          "pollster": "Glengariff Group",
+          "dates": "January 27 – February 2, 2026",
+          "dem": 45.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Glengariff Group",
+          "dates": "January 2–6, 2026",
+          "dem": 47.0,
+          "rep": 45.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Jocelyn Benson",
+        "r": "John James"
+      }
     },
     "Minnesota": {
       "dem": 50.1,
@@ -1628,24 +3326,52 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "co/efficient",
+          "dates": "September 14–15, 2026",
+          "dem": 47.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "KSTP / SurveyUSA",
+          "dates": "September 9–14, 2026",
+          "dem": 47.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "August 31 – September 2, 2026",
+          "dem": 47.0,
+          "rep": 37.0
+        },
+        {
+          "pollster": "KTSP / SurveyUSA",
+          "dates": "August 13–17, 2026",
+          "dem": 51.0,
+          "rep": 36.0
+        },
+        {
           "pollster": "Mason-Dixon Polling & Strategy",
           "dates": "June 8–10, 2026",
-          "dem": 53.0,
-          "rep": 36.0
+          "dem": 48.0,
+          "rep": 40.0
         },
         {
           "pollster": "Emerson College",
           "dates": "February 6–8, 2026",
-          "dem": 53.0,
-          "rep": 31.0
+          "dem": 51.0,
+          "rep": 38.0
         },
         {
           "pollster": "SurveyUSA",
           "dates": "January 27–30, 2026",
-          "dem": 52.0,
-          "rep": 32.0
+          "dem": 49.0,
+          "rep": 34.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Amy Klobuchar",
+        "r": "Lisa Demuth"
+      }
     },
     "Nebraska": {
       "dem": 36.7,
@@ -1773,7 +3499,11 @@
           "dem": 30.0,
           "rep": 51.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Joe Lombardo",
+        "d": "Aaron Ford"
+      }
     },
     "New Hampshire": {
       "dem": 38.1,
@@ -1781,55 +3511,217 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
-          "pollster": "Saint Anselm College",
-          "dates": "March 16–18, 2026",
-          "dem": 31.0,
-          "rep": 45.0
-        },
-        {
-          "pollster": "yes. every kid.",
-          "dates": "January 28–29, 2026",
-          "dem": 37.0,
-          "rep": 47.0
+          "pollster": "The New York Times / Siena University",
+          "dates": "September 15–22, 2026",
+          "dem": 41.0,
+          "rep": 52.0
         },
         {
           "pollster": "University of New Hampshire",
-          "dates": "January 15–19, 2026",
+          "dates": "September 17–21, 2026",
+          "dem": 43.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "September 9–11, 2026",
+          "dem": 34.0,
+          "rep": 55.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "August 20–24, 2026",
           "dem": 39.0,
-          "rep": 50.0
+          "rep": 49.0
+        },
+        {
+          "pollster": "Saint Anselm College",
+          "dates": "August 17–18, 2026",
+          "dem": 38.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "Saint Anselm College",
+          "dates": "June 24–25, 2026",
+          "dem": 37.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "June 18–23, 2026",
+          "dem": 39.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "April 17–21, 2026",
+          "dem": 39.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "Saint Anselm College",
+          "dates": "March 16–18, 2026",
+          "dem": 39.0,
+          "rep": 46.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Kelly Ayotte",
+        "d": "Cinde Warmington"
+      }
     },
     "New Mexico": {
       "dem": 46.5,
       "rep": 35.8,
-      "source": "Aggregate (Wikipedia)"
+      "source": "Aggregate (Wikipedia)",
+      "names": {
+        "d": "Deb Haaland",
+        "r": "Gregg Hull"
+      }
     },
     "New York": {
-      "dem": 46.3,
-      "rep": 39.0,
+      "dem": 51.4,
+      "rep": 39.8,
       "source": "Simple avg (latest 5 polls)",
-      "n_polls": 3,
+      "n_polls": 5,
       "polls": [
         {
-          "pollster": "Harper Polling",
-          "dates": "May 7–9, 2025",
-          "dem": 48.0,
+          "pollster": "Quinnipiac University",
+          "dates": "September 17–20, 2026",
+          "dem": 58.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "September 11–17, 2026",
+          "dem": 50.0,
           "rep": 41.0
+        },
+        {
+          "pollster": "McLaughlin & Associates",
+          "dates": "August 27–31, 2026",
+          "dem": 50.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Concord Public Opinion Partners",
+          "dates": "August 19–21, 2026",
+          "dem": 50.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "August 3–6, 2026",
+          "dem": 49.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Moxie Strategies",
+          "dates": "July 22–28, 2026",
+          "dem": 49.0,
+          "rep": 37.0
+        },
+        {
+          "pollster": "Red Oak Strategic",
+          "dates": "July 7–12, 2026",
+          "dem": 47.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "co/efficient",
+          "dates": "June 30 – July 2, 2026",
+          "dem": 47.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "June 17–23, 2026",
+          "dem": 52.0,
+          "rep": 32.0
+        },
+        {
+          "pollster": "Pollfinity Research",
+          "dates": "June 11–14, 2026",
+          "dem": 50.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "April 27–30, 2026",
+          "dem": 49.0,
+          "rep": 33.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "March 23–26, 2026",
+          "dem": 47.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Echelon Insights/Tusk Strategies",
+          "dates": "March 24–26, 2026",
+          "dem": 55.0,
+          "rep": 40.0
+        },
+        {
+          "pollster": "McLaughlin & Associates",
+          "dates": "March 4–8, 2026",
+          "dem": 52.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "February 23–26, 2026",
+          "dem": 51.0,
+          "rep": 31.0
+        },
+        {
+          "pollster": "Marist University",
+          "dates": "February 16–19, 2026",
+          "dem": 50.0,
+          "rep": 33.0
+        },
+        {
+          "pollster": "MAD Global Strategy",
+          "dates": "February 2–4, 2026",
+          "dem": 47.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "January 26–28, 2026",
+          "dem": 54.0,
+          "rep": 28.0
+        },
+        {
+          "pollster": "John Zogby Strategies",
+          "dates": "January 6–8, 2026",
+          "dem": 53.0,
+          "rep": 39.0
+        },
+        {
+          "pollster": "Siena College",
+          "dates": "December 8–12, 2025",
+          "dem": 50.0,
+          "rep": 25.0
+        },
+        {
+          "pollster": "J.L. Partners",
+          "dates": "November 9–10, 2025",
+          "dem": 47.0,
+          "rep": 36.0
         },
         {
           "pollster": "GrayHouse",
           "dates": "April 22–24, 2025",
-          "dem": 45.0,
-          "rep": 38.0
-        },
-        {
-          "pollster": "Citizen Data",
-          "dates": "February 10, 2025",
-          "dem": 46.0,
-          "rep": 38.0
+          "dem": 44.0,
+          "rep": 36.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Kathy Hochul",
+        "r": "Bruce Blakeman"
+      }
     },
     "Ohio": {
       "dem": 49.0,
@@ -1837,30 +3729,154 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 22 – October 1, 2026",
+          "dem": 49.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Big Data Poll",
+          "dates": "September 26–27, 2026",
+          "dem": 47.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Marist University",
+          "dates": "September 24–27, 2026",
+          "dem": 50.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Suffolk University",
+          "dates": "September 23–27, 2026",
+          "dem": 50.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "Bowling Green State University / YouGov",
+          "dates": "September 1–10, 2026",
+          "dem": 48.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "August 11–13, 2026",
+          "dem": 47.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "August 6–10, 2026",
+          "dem": 48.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "Tulchin Research",
+          "dates": "July 29 – August 4, 2026",
+          "dem": 46.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "June 15–28, 2026",
+          "dem": 47.0,
+          "rep": 47.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "June 14–16, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Tulchin Research",
+          "dates": "June 2–4, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "Beacon Research / Shaw & Co. Research",
+          "dates": "May 28 – June 1, 2026",
+          "dem": 50.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "Bowling Green State University / YouGov",
+          "dates": "April 7–14, 2026",
+          "dem": 47.0,
+          "rep": 48.0
+        },
+        {
+          "pollster": "Echelon Insights",
+          "dates": "April 3–9, 2026",
+          "dem": 44.0,
+          "rep": 49.0
+        },
+        {
+          "pollster": "Quantus Insights",
+          "dates": "March 13–14, 2026",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "EMC Research",
+          "dates": "February 10–22, 2026",
+          "dem": 53.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "Emerson College",
+          "dates": "December 6–8, 2025",
+          "dem": 46.0,
+          "rep": 45.0
+        },
+        {
+          "pollster": "Data Targeting",
+          "dates": "December 3–8, 2025",
+          "dem": 43.0,
+          "rep": 45.0
+        },
+        {
           "pollster": "Bowling Green State University / YouGov",
           "dates": "October 2–14, 2025",
           "dem": 47.0,
-          "rep": 49.0
+          "rep": 50.0
+        },
+        {
+          "pollster": "Hart Research",
+          "dates": "September 19–22, 2025",
+          "dem": 46.0,
+          "rep": 45.0
         },
         {
           "pollster": "Emerson College",
           "dates": "August 18–19, 2025",
-          "dem": 41.0,
+          "dem": 39.0,
           "rep": 49.0
+        },
+        {
+          "pollster": "Impact Research",
+          "dates": "July 24–28, 2025",
+          "dem": 46.0,
+          "rep": 47.0
         },
         {
           "pollster": "Bowling Green State University / YouGov",
           "dates": "April 18–24, 2025",
-          "dem": 44.0,
-          "rep": 51.0
+          "dem": 45.0,
+          "rep": 50.0
         },
         {
           "pollster": "Public Policy Polling",
           "dates": "February 19–20, 2025",
-          "dem": 42.0,
-          "rep": 48.0
+          "dem": 45.0,
+          "rep": 44.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Vivek Ramaswamy",
+        "d": "Amy Acton"
+      }
     },
     "Oklahoma": null,
     "Oregon": {
@@ -1899,7 +3915,11 @@
           "dem": 45.0,
           "rep": 40.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Tina Kotek",
+        "r": "Christine Drazan"
+      }
     },
     "Pennsylvania": {
       "dem": 55.9,
@@ -1919,15 +3939,15 @@
           "rep": 38.0
         },
         {
-          "pollster": "PennLive",
-          "dates": "August 18–22, 2026",
-          "dem": 56.0,
-          "rep": 25.0
-        },
-        {
           "pollster": "Franklin & Marshall College",
           "dates": "August 17–23, 2026",
           "dem": 50.0,
+          "rep": 25.0
+        },
+        {
+          "pollster": "PennLive",
+          "dates": "August 18–22, 2026",
+          "dem": 56.0,
           "rep": 25.0
         },
         {
@@ -2002,14 +4022,60 @@
           "dem": 54.0,
           "rep": 36.0
         }
-      ]
+      ],
+      "names": {
+        "d": "Josh Shapiro",
+        "r": "Stacy Garrity"
+      }
     },
-    "Rhode Island": null,
+    "Rhode Island": {
+      "dem": 42.0,
+      "rep": 19.0,
+      "ind": 22.2,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 4,
+      "polls": [
+        {
+          "pollster": "Opinion Diagnostics",
+          "dates": "September 23–25, 2026",
+          "dem": 41.0,
+          "rep": 19.0,
+          "ind": 24.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "September 17–21, 2026",
+          "dem": 44.0,
+          "rep": 17.0,
+          "ind": 25.0
+        },
+        {
+          "pollster": "Emerson College / WPRI-TV",
+          "dates": "August 21–22, 2026",
+          "dem": 45.0,
+          "rep": 18.0,
+          "ind": 21.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "June 18–23, 2026",
+          "dem": 38.0,
+          "rep": 22.0,
+          "ind": 19.0
+        }
+      ],
+      "names": {
+        "d": "Helena Foulkes",
+        "r": "Aaron Guckian",
+        "i": "Ken Block"
+      }
+    },
     "South Carolina": null,
     "South Dakota": null,
     "Tennessee": {
       "dem": 31.6,
       "rep": 49.2,
+      "ind": 10.0,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
       "polls": [
@@ -2017,7 +4083,8 @@
           "pollster": "TargetSmart",
           "dates": "September 9–12, 2026",
           "dem": 36.0,
-          "rep": 45.0
+          "rep": 45.0,
+          "ind": 10.0
         },
         {
           "pollster": "Targoz Market Research",
@@ -2043,7 +4110,11 @@
           "dem": 28.0,
           "rep": 49.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Marsha Blackburn",
+        "d": "Jerri Green"
+      }
     },
     "Texas": {
       "dem": 46.2,
@@ -2284,7 +4355,11 @@
           "dem": 42.0,
           "rep": 50.0
         }
-      ]
+      ],
+      "names": {
+        "r": "Greg Abbott",
+        "d": "Gina Hinojosa"
+      }
     },
     "Vermont": null,
     "Wisconsin": {
@@ -2294,24 +4369,108 @@
       "polls": [
         {
           "pollster": "Marquette University",
-          "dates": "July 8–16, 2026",
-          "dem": 42.0,
-          "rep": 41.0
+          "dates": "September 16–23, 2026",
+          "dem": 49.0,
+          "rep": 46.0
         },
         {
-          "pollster": "Wedgewood Polls",
-          "dates": "July 2–4, 2026",
+          "pollster": "Marquette University",
+          "dates": "August 12–20, 2026",
+          "dem": 49.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "TIPP Insights",
+          "dates": "August 14–18, 2026",
           "dem": 47.0,
-          "rep": 42.0
+          "rep": 43.0
+        },
+        {
+          "pollster": "Platform Communications",
+          "dates": "August 12–13, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "July 30 – August 3, 2026",
+          "dem": 47.0,
+          "rep": 44.0
+        },
+        {
+          "pollster": "RMG Research",
+          "dates": "July 20–24, 2026",
+          "dem": 46.0,
+          "rep": 43.0
         },
         {
           "pollster": "TIPP Insights",
           "dates": "March 13–19, 2026",
-          "dem": 44.0,
+          "dem": 42.0,
           "rep": 41.0
         }
-      ]
+      ],
+      "names": {
+        "d": "David Crowley",
+        "r": "Tom Tiffany"
+      }
     },
     "Wyoming": null
+  },
+  "house": {
+    "Alaska at-large": {
+      "rep": 45.8,
+      "ind": 36.4,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 5,
+      "polls": [
+        {
+          "pollster": "New York Times / Siena University",
+          "dates": "September 24 – October 1, 2026",
+          "rep": 47.0,
+          "ind": 35.0
+        },
+        {
+          "pollster": "Fabrizio Ward / Impact Research",
+          "dates": "September 8–11, 2026",
+          "rep": 45.0,
+          "ind": 31.0
+        },
+        {
+          "pollster": "Bullfinch Group",
+          "dates": "September 1–6, 2026",
+          "rep": 44.0,
+          "ind": 37.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "August 3–5, 2026",
+          "rep": 46.0,
+          "ind": 42.0
+        },
+        {
+          "pollster": "Data for Progress",
+          "dates": "July 28 – August 4, 2026",
+          "rep": 47.0,
+          "ind": 37.0
+        },
+        {
+          "pollster": "Tavern Research",
+          "dates": "May 18–27, 2026",
+          "rep": 52.0,
+          "ind": 48.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "February 11–12, 2026",
+          "rep": 41.0,
+          "ind": 37.0
+        }
+      ],
+      "names": {
+        "r": "Nick Begich III",
+        "i": "Bill Hill"
+      }
+    }
   }
 }

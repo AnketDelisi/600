@@ -12,20 +12,24 @@ Pipeline per race:
      Lean 2.5-7.5, Tossup <2.5, per theoelections.com); the fundamentals prior
      is clamped inside that band so safe seats reach realistic extremes while
      competitive races stay competitive.
-  3. Polling blend (when a race has an aggregate/simple poll average):
-       margin = 0.65 * poll_margin + 0.35 * prior_margin.
+3. Polling blend (when a race has an aggregate/simple poll average):
+     margin = 0.65 * poll_margin + 0.35 * prior_margin. Races with a serious
+     independent on the ballot (Nebraska/Idaho/South Dakota/Montana Senate,
+     Alaska's at-large House seat) skip the D-R prior entirely: their sides
+     come straight from the poll shares, since the D-R rating bands do not
+     describe them.
   4. National-swing Monte Carlo: every race shares a common environment
      shift S ~ N(env_weight * env_margin, sigma_n), where env_margin is the
      generic-ballot margin (D - R points). env_weight is chamber-specific
-     (Senate 0.25, House 0.5, Governor 0.25): ratings and polls already embed
-     the environment, so the full margin would double-count it — and the
-     Senate is far less nationalized than the House. A race is won by the
-     Democrats with probability logistic((margin + S) / beta), beta being a
-     per-chamber residual scale. Chamber seat tallies are accumulated across
-     20k simulated nights to produce per-race win probabilities and seat
-     distributions. Per-race win probabilities (dem_pct) are reported at the
-     swing mean (S = mean), and the displayed margin includes that swing so
-     it agrees with the win probability.
+     (0.25 for rated races, 1.0 for unrated; polls/ratings already embed the
+     environment). A race is won by the side with the highest softmax
+     probability softmax(share/beta) — for two sides this is exactly the
+     previous logistic((margin + S)/beta). Races without a Democrat get the
+     national shock only. Chamber seat tallies count Democrats, Republicans
+     and independents separately across 20k simulated nights; majority
+     probabilities require a party to reach the threshold on its own (an
+     independent win counts for neither side — conservative for Democrats).
+     Per-race win probabilities are reported at the swing mean.
 
 Chamber majority thresholds: Senate 50 (current D-caucus 47 vs R 53),
 House 218 seats, Governors shows an expected Dem/Rep count only.
@@ -201,11 +205,49 @@ def best_rating(race):
     return None
 
 
+def lean_from(leader, margin_abs):
+    """Lean label from the leader's perspective (works for D/R/I leaders)."""
+    if margin_abs >= 15:
+        band = "Solid"
+    elif margin_abs >= 7.5:
+        band = "Likely"
+    elif margin_abs >= 2.5:
+        band = "Lean"
+    else:
+        return "Tossup"
+    return "%s %s" % (band, leader)
+
+
+def race_sides(race, polls, chamber):
+    """Return (sides, names, polled_independent).
+
+    Races with a serious independent on the ballot (Nebraska's Dan Osborn,
+    Idaho's Todd Achilles, South Dakota's Brian Bengs, Montana's Seth Bodnar,
+    Alaska's at-large House race) are not Democrat-vs-Republican, so the
+    D-R rating bands don't describe them: their sides come straight from the
+    poll shares (normalized). Everything else keeps the fundamentals+rating
+    two-way margin.
+    """
+    sv = {}
+    if polls:
+        for party, key in (("D", "dem"), ("R", "rep"), ("I", "ind")):
+            v = polls.get(key)
+            if v is not None and v > 0:
+                sv[party] = v
+    if "I" in sv and len(sv) >= 2:
+        tot = sum(sv.values())
+        return ({k: 100.0 * v / tot for k, v in sv.items()},
+                (polls.get("names") or {}), True)
+    m = final_margin(race, polls, chamber)
+    return {"D": 50.0 + m / 2, "R": 50.0 - m / 2}, {}, False
+
+
 def run(chamber, races, poll_map, env_margin):
     beta = LOGISTIC_BETA[chamber]
-    margins = {}
-    polls_used = {}
+    sides = {}
+    names = {}
     rated = {}
+    polls_used = {}
     for r in races:
         label = (r["state"].replace("_", " "), r.get("district", ""))
         if chamber == "house":
@@ -213,68 +255,122 @@ def run(chamber, races, poll_map, env_margin):
         else:
             label_key = label[0]
         polls = poll_map.get(label_key) if poll_map else None
-        m = final_margin(r, polls, chamber)
-        margins[label_key] = m
+        sh, nm, polled_ind = race_sides(r, polls, chamber)
+        sides[label_key] = sh
+        names[label_key] = nm
         polls_used[label_key] = polls
-        rated[label_key] = best_rating(r) is not None
+        # polled independent races: the polls embed the environment, so use
+        # the small rated weight; otherwise the rating presence decides
+        rated[label_key] = True if polled_ind else (best_rating(r) is not None)
 
-    out_races = []
+    def adj_margin(sh, swing, swing_party):
+        """Leader-minus-runner margin (positive = leader ahead) after applying
+        the national swing along its axis: a positive swing helps the
+        Democrats, so for an R-led race it shrinks the Republican margin."""
+        keys = sorted(sh, key=lambda k: -sh[k])
+        margin = sh[keys[0]] - sh[keys[1]]
+        if swing_party == keys[0]:
+            margin += swing
+        elif swing_party == keys[1]:
+            margin -= swing
+        return keys, margin
+
+    def win_probs(sh, swing, swing_party):
+        """Softmax win probabilities at a given national swing.
+
+        For two sides this is exactly logistic((share_l - share_r)/beta),
+        the previous model; with an independent it extends naturally.
+        """
+        keys, margin = adj_margin(sh, swing, swing_party)
+        l, r = keys[0], keys[1]
+        third = keys[2] if len(keys) > 2 else None
+        tot = 100.0 - (sh[third] if third else 0.0)
+        adj = {l: tot / 2 + margin / 2, r: tot / 2 - margin / 2}
+        if third:
+            adj[third] = sh[third]
+        w = {k: math.exp(v / beta) for k, v in adj.items()}
+        s = sum(w.values())
+        return {k: v / s for k, v in w.items()}
+
     total = {"senate": 100, "house": 435, "governor": len(races)}[chamber]
     up_d = sum(1 for r in races if r.get("party") in ("D", "I"))
-    # Seats not up this cycle = current D-caucus minus D-held seats that ARE up.
-    # `up_d` only counts races with a D/I party tag; open seats (party=null) are
-    # still up and contestable, so in a chamber where every seat is on the ballot
-    # (House midterm: all 435, Governors: all 36) the not-up baseline is 0. The
-    # previous `current_d - up_d` wrongly locked in D-caucus seats whose race was
-    # open (party=null) as if they were not up, inflating House D seats by ~9.
     if len(races) >= total:
         not_up_d = 0
     else:
         not_up_d = COMP_START[chamber]["d"] - up_d
-    seatz = [0] * (N_SIMS)
-    # Per-race environment mean: RATED races already embed the environment in
-    # their rating/poll priors, so only a small swing applies. UNRATED races
-    # (PVI-based) are neutral-year leans, so the full generic ballot applies.
+    not_up_r = (total - len(races)) - not_up_d
     env = env_margin or 0.0
     rated_env = ENV_WEIGHT[chamber] * env
     unrated_env = UNRATED_ENV_WEIGHT[chamber] * env
+
+    seatz_d = [0] * N_SIMS
+    seatz_r = [0] * N_SIMS
+    seatz_i = [0] * N_SIMS
     for i in range(N_SIMS):
         Z = RNG.gauss(0.0, NATIONAL_SIGMA)
-        wins = 0
-        for k, m in margins.items():
-            # race-level environment mean + shared national shock
+        dw = rw = iw = 0
+        for k, sh in sides.items():
             mu = rated_env if rated[k] else unrated_env
-            p = 1.0 / (1.0 + math.exp(-(m + mu + Z) / beta))
-            if RNG.random() < p:
-                wins += 1
-        seatz[i] = not_up_d + wins
+            # the national environment moves the Democrat-against-the-field
+            # margin; a race with no Democrat (Nebraska/Idaho R-vs-I) gets
+            # the national shock only: the generic ballot says little about
+            # Republican-vs-Independent
+            if "D" in sh:
+                swing, swing_party = mu + Z, "D"
+            else:
+                swing, swing_party = Z, "R"
+            probs = win_probs(sh, swing, swing_party)
+            u = RNG.random()
+            acc = 0.0
+            for party, p in probs.items():
+                acc += p
+                if u <= acc:
+                    if party == "D":
+                        dw += 1
+                    elif party == "R":
+                        rw += 1
+                    else:
+                        iw += 1
+                    break
+        seatz_d[i] = not_up_d + dw
+        seatz_r[i] = not_up_r + rw
+        seatz_i[i] = iw
 
     dist = [0.0] * (total + 1)
-    for s in seatz:
+    for s in seatz_d:
         dist[min(s, total)] += 1
     dist = [round(100.0 * n / N_SIMS, 1) for n in dist]
 
+    out_races = []
     for r in races:
         label_key = (r["state"].replace("_", " "), r.get("district", ""))
         if chamber == "house":
             label_key = label_key[0] + " " + label_key[1]
         else:
             label_key = label_key[0]
-        m = margins[label_key]
+        sh = sides[label_key]
         mu = rated_env if rated[label_key] else unrated_env
-        # displayed margin includes the expected national swing so it agrees
-        # with the win probability (dem_pct) shown to readers
-        md = 1.0 / (1.0 + math.exp(-(m + mu) / beta))
+        swing, swing_party = (mu, "D") if "D" in sh else (0.0, "R")
+        probs = win_probs(sh, swing, swing_party)
+        keys, margin = adj_margin(sh, swing, swing_party)
+        leader = keys[0]
+        margin = round(margin, 1)
+        nm = names[label_key]
         out_races.append({
             "state": r["state"].replace("_", " "),
             "district": r.get("district", ""),
             "incumbent": (r.get("incumbent") or "").split("(")[0].strip(),
             "party": r.get("party"),
             "rating": best_rating(r),
-            "lean": lean(m + mu),
-            "margin": round(m + mu, 1),
-            "dem_pct": round(100 * md, 1),
-            "rep_pct": round(100 * (1 - md), 1),
+            "lean": lean_from(leader, margin),
+            "leader": leader,
+            "margin": margin,
+            "dem_pct": round(100 * probs.get("D", 0.0), 1),
+            "rep_pct": round(100 * probs.get("R", 0.0), 1),
+            "ind_pct": round(100 * probs.get("I", 0.0), 1),
+            "dem_name": nm.get("d"),
+            "rep_name": nm.get("r"),
+            "ind_name": nm.get("i"),
             "polls": polls_used[label_key],
         })
     out_races.sort(key=lambda x: (-abs(x["margin"])))
@@ -283,13 +379,15 @@ def run(chamber, races, poll_map, env_margin):
     if need is None:
         dem_share = rep_share = 0.0
     else:
-        dem_share = sum(1 for s in seatz if s >= need) / N_SIMS
-        rep_share = 1.0 - dem_share
-    expected = sum(seatz) / N_SIMS
+        dem_share = sum(1 for s in seatz_d if s >= need) / N_SIMS
+        rep_share = sum(1 for s in seatz_r if s >= need) / N_SIMS
+    expected = sum(seatz_d) / N_SIMS
+    expected_i = sum(seatz_i) / N_SIMS
     res = {
         "races": out_races,
         "expected_d_seats": round(expected, 1),
-        "expected_r_seats": round(total - expected, 1),
+        "expected_r_seats": round(total - expected - expected_i, 1),
+        "expected_i_seats": round(expected_i, 1),
         "majority": {
             "dem_pct": round(100 * dem_share, 1),
             "rep_pct": round(100 * rep_share, 1),
@@ -297,9 +395,9 @@ def run(chamber, races, poll_map, env_margin):
         "distribution_buckets": _buckets(dist) if chamber != "governor" else None,
     }
     if chamber == "governor":
-        # totals across all 50 governorships (36 up + 14 not up)
         res["total_d_governors"] = round(expected + GOV_NOT_UP["d"], 1)
-        res["total_r_governors"] = round((total - expected) + GOV_NOT_UP["r"], 1)
+        res["total_r_governors"] = round(
+            (total - expected - expected_i) + GOV_NOT_UP["r"], 1)
     return res
 
 
@@ -331,7 +429,7 @@ def main():
             "env_weights": ENV_WEIGHT,
         },
         "senate": run("senate", base["races"]["senate"], polls["senate"], env),
-        "house": run("house", base["races"]["house"], None, env),
+        "house": run("house", base["races"]["house"], polls.get("house"), env),
         "governor": run("governor", base["races"]["governor"], polls["governor"], env),
     }
     out_file = OUTPUT_DIR / "forecast.json"

@@ -8,9 +8,17 @@ Preference order per race:
   2. Simple average of the latest direct candidate polls (up to 5) if no
      aggregate table exists.
 
+Races are not always Democrat-vs-Republican: Nebraska (Dan Osborn), Idaho
+(Todd Achilles), South Dakota (Brian Bengs) and Montana (Seth Bodnar) have a
+serious INDEPENDENT, so tables can be (R)+(I) or (D)+(R)+(I). The parser
+picks the main candidate column per party by highest average share, requires
+at least two sides whose shares sum to >= 75 (fragment/jungle tables fall
+back to ratings), and captures the candidate names from the race infobox.
+
 Sources:
   https://en.wikipedia.org/wiki/2026_United_States_Senate_election_in_<State>
   .../2026_United_States_gubernatorial_election_in_<State>
+  .../2026_United_States_House_of_Representatives_election_in_Alaska
 """
 
 import json
@@ -30,6 +38,14 @@ RACE_ID_MAP = {
     "Ohio": "2026_United_States_Senate_special_election_in_Ohio",
 }
 
+# House races with real multi-candidate polling worth scraping (the model is
+# otherwise poll-less for the House and leans on ratings + PVI). Alaska's
+# at-large seat is a ranked-choice race with independents on the ballot.
+HOUSE_POLL_RACES = {
+    "Alaska at-large":
+        "2026_United_States_House_of_Representatives_election_in_Alaska",
+}
+
 
 def fetch(url):
     resp = requests.get(url, headers=HEADERS, timeout=40)
@@ -45,22 +61,26 @@ def pct(s):
 
 
 def party_cols(header, rows):
-    """Return (dem_idx, rep_idx): the MAIN (D)/(R) candidate columns.
+    """Main (D)/(R)/(I) candidate columns by highest average share.
 
     Multi-candidate tables list the main candidates first but often add minor
-    (D)/(R) candidates after them (Alaska 2026: Sullivan, Peltola, then three
-    also-rans). Taking the last annotated column picked a minor candidate and
-    produced nonsense like R 1% against D 46%; the main column is the one with
-    the highest average poll percentage.
+    (D)/(R)/(I) candidates after them (Alaska's 9-candidate Senate field);
+    the main column is the one with the highest average poll percentage.
+    Races where the main challenger is an independent (Nebraska, Idaho,
+    South Dakota) have (R)+(I) headers with no (D) at all.
+    Returns a dict of the present parties (at least two) or None.
     """
-    cand = {"D": [], "R": []}
+    cand = {"D": [], "R": [], "I": []}
     for i, h in enumerate(header):
         hu = h.upper()
         if "(D" in hu:
             cand["D"].append(i)
         elif "(R" in hu:
             cand["R"].append(i)
-    if not cand["D"] or not cand["R"]:
+        elif "(I" in hu:
+            cand["I"].append(i)
+    present = {k: v for k, v in cand.items() if v}
+    if len(present) < 2:
         return None
 
     def best(idxs):
@@ -78,7 +98,7 @@ def party_cols(header, rows):
                         vals.append(v)
             mean[i] = sum(vals) / len(vals) if vals else -1
         return max(idxs, key=lambda i: mean[i])
-    return best(cand["D"]), best(cand["R"])
+    return {k: best(v) for k, v in present.items()}
 
 
 def clean_name(s):
@@ -86,25 +106,83 @@ def clean_name(s):
     return re.sub(r"\[\s*[0-9a-zA-Z]{1,4}\s*\]", "", s or "").strip()
 
 
+def key_of(party):
+    return {"D": "dem", "R": "rep", "I": "ind"}[party]
+
+
+MONTHS = {m: i for i, m in enumerate(
+    ["january", "february", "march", "april", "may", "june", "july",
+     "august", "september", "october", "november", "december"], 1)}
+DATE_RE = re.compile(
+    r"(january|february|march|april|may|june|july|august|september|"
+    r"october|november|december)\s+(\d{1,2})?(?:\s*[–-]\s*(\d{1,2}))?"
+    r",?\s*(\d{4})")
+
+
+def date_key(s):
+    """Sortable (year, month, day) from a Wikipedia poll date string.
+
+    'September 24 - October 1, 2026' -> the last (end) date wins; strings
+    without a month/day (e.g. 'July 2026') fall back to the 1st.
+    """
+    hits = DATE_RE.findall((s or "").lower())
+    if not hits:
+        return (0, 0, 0)
+    mon, d1, d2, yr = hits[-1]
+    return (int(yr), MONTHS[mon], int(d2 or d1 or 1))
+
+
+def nominees(soup):
+    """Nominee/candidate names from the race infobox -> {d, r, i}."""
+    out = {}
+    ib = soup.find("table", class_="infobox")
+    if not ib:
+        return out
+    names_row = parties_row = None
+    for tr in ib.find_all("tr"):
+        cells = [c.get_text(" ", strip=True)
+                 for c in tr.find_all(["th", "td"])]
+        if not cells:
+            continue
+        if cells[0] in ("Nominee", "Candidate") and len(cells) > 1:
+            names_row = cells[1:]
+        elif cells[0] == "Party" and len(cells) > 1:
+            parties_row = cells[1:]
+    if not names_row or not parties_row:
+        return out
+    for nm, party in zip(names_row, parties_row):
+        pl = (party or "").lower()
+        if not nm:
+            continue
+        if pl.startswith("republic"):
+            out["r"] = clean_name(nm)
+        elif pl.startswith("democrat"):
+            out["d"] = clean_name(nm)
+        elif "independent" in pl:
+            out["i"] = clean_name(nm)
+    return out
+
+
 def parse_aggregate(soup):
     """Read the latest general-election 'Aggregate polls' table -> dict or None.
 
-    A qualifying table has a candidate header annotated with both (R) and (D)
-    plus an 'Average' data row. The latest such table in the article wins.
+    A qualifying table has candidate headers annotated with party letters and
+    an 'Average' data row. The latest such table in the article wins.
     """
     best = None
     for tbl in soup.find_all("table", class_="wikitable"):
         rows = tbl.find_all("tr")
         if len(rows) < 4:
             continue
-        header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
+        header = [c.get_text(" ", strip=True).replace("\u200b", "")
+                  for c in rows[0].find_all(["th", "td"])]
         cols = party_cols(header, rows)
         if cols is None:
             continue
-        dem_i, rep_i = cols
         chosen = None
         for row in rows[1:]:
-            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
+            cells = [c.get_text(" ", strip=True)
+                     for c in row.find_all(["th", "td"])]
             if not cells:
                 continue
             if "average" in cells[0].lower():
@@ -113,78 +191,102 @@ def parse_aggregate(soup):
             continue
         # the Average row may skip merged 'Dates' columns -> realign by gap
         gap = len(header) - len(chosen)
-        dem_i, rep_i = dem_i - gap, rep_i - gap
-        if dem_i < 0 or rep_i < 0 or dem_i >= len(chosen) or rep_i >= len(chosen):
+        vals = {}
+        for party, i in cols.items():
+            i2 = i - gap
+            if 0 <= i2 < len(chosen):
+                v = pct(chosen[i2])
+                if v is not None:
+                    vals[party] = v
+        # at least a clean two-way matchup: multi-candidate jungle races and
+        # primary-era fragments leave most of the vote to other columns
+        if len(vals) < 2 or not (75.0 <= sum(vals.values()) <= 100.0):
             continue
-        d, r = pct(chosen[dem_i]), pct(chosen[rep_i])
-        if d is None or r is None or not (75.0 <= d + r <= 100.0):
-            # not a clean two-way general-election matchup: multi-candidate
-            # jungle races (Alaska's 6-9 candidate fields) and primary-era
-            # fragments leave most of the vote to other columns
-            continue
-        best = {"dem": round(d, 1), "rep": round(r, 1), "source": "Aggregate (Wikipedia)"}
+        out = {key_of(k): round(v, 1) for k, v in vals.items()}
+        out["source"] = "Aggregate (Wikipedia)"
+        best = out
     return best
 
 
 def parse_direct(soup):
-    """Simple average of the latest 5 polls of the newest (R)/(D) table."""
+    """Average of the latest 5 polls of the most current matchup table.
+
+    Wikipedia articles can hold several tables (a stale Democrat-vs-
+    Republican one plus the current Republican-vs-Independent one, e.g.
+    South Dakota and Alaska); the table whose newest poll is the most recent
+    wins, and the 5 newest polls by date are averaged.
+    """
     best = None
-    tables = soup.find_all("table", class_="wikitable")
-    for tbl in tables[::-1]:  # newest matchup tables appear later
+    for tbl in soup.find_all("table", class_="wikitable"):
         rows = tbl.find_all("tr")
         if len(rows) < 4:
             continue
-        header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
+        header = [c.get_text(" ", strip=True).replace("\u200b", "")
+                  for c in rows[0].find_all(["th", "td"])]
         cols = party_cols(header, rows)
         if cols is None:
             continue
-        dem_i, rep_i = cols
         found = []
         for row in rows[1:]:
-            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
-            if len(cells) <= max(dem_i, rep_i):
+            cells = [c.get_text(" ", strip=True)
+                     for c in row.find_all(["th", "td"])]
+            if not cells or not cells[0] or cells[0].lower() in ("average", ""):
                 continue
-            if not cells[0] or cells[0].lower() in ("average", ""):
+            vals = {}
+            for party, i in cols.items():
+                if i < len(cells):
+                    v = pct(cells[i])
+                    if v is not None:
+                        vals[party] = v
+            if len(vals) < 2 or sum(vals.values()) < 75:
                 continue
-            d, r = pct(cells[dem_i]), pct(cells[rep_i])
-            if d is None or r is None or d + r < 75:
-                continue
-            found.append((d, r))
+            found.append((vals, cells[1] if len(cells) > 1 else ""))
         if len(found) < 3:
             continue
-        last = found[-5:]
-        return {
-            "dem": round(sum(d for d, _ in last) / len(last), 1),
-            "rep": round(sum(r for _, r in last) / len(last), 1),
-            "source": "Simple avg (latest 5 polls)",
-            "n_polls": len(last),
-        }
-    return best
+        last = sorted(found, key=lambda x: date_key(x[1]))[-5:]
+        out = {}
+        for party in ("D", "R", "I"):
+            vs = [x[0][party] for x in last if party in x[0]]
+            if vs:
+                out[key_of(party)] = round(sum(vs) / len(vs), 1)
+        out["source"] = "Simple avg (latest 5 polls)"
+        out["n_polls"] = len(last)
+        key = (date_key(last[-1][1]), len(found))
+        if best is None or key > best[0]:
+            best = (key, out)
+    return best[1] if best else None
 
 
 def parse_individual(soup):
-    """Collect the individual polls (pollster, dates, dem, rep) from the
-    newest candidate-matchup table, newest polls first. Returns a list."""
-    tables = soup.find_all("table", class_="wikitable")
-    for tbl in tables[::-1]:
+    """Individual polls from the most current matchup table (newest poll
+    date wins, same rule as parse_direct), newest polls first."""
+    best = None
+    for tbl in soup.find_all("table", class_="wikitable"):
         rows = tbl.find_all("tr")
         if len(rows) < 4:
             continue
-        header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
+        header = [c.get_text(" ", strip=True).replace("\u200b", "")
+                  for c in rows[0].find_all(["th", "td"])]
         cols = party_cols(header, rows)
         if cols is None:
             continue
-        dem_i, rep_i = cols
-        # find the 'Poll source' column index (first col is usually it)
         out = []
         for row in rows[1:]:
-            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
-            if len(cells) <= max(dem_i, rep_i):
+            cells = [c.get_text(" ", strip=True)
+                     for c in row.find_all(["th", "td"])]
+            if not cells:
                 continue
-            pollster = clean_name(cells[0].replace("(D)", "").replace("(R)", "").replace("(I)", ""))
+            pollster = clean_name(cells[0].replace("(D)", "")
+                                  .replace("(R)", "").replace("(I)", ""))
             dates = cells[1] if len(cells) > 1 else ""
-            d, r = pct(cells[dem_i]), pct(cells[rep_i])
-            if d is None or r is None or d + r < 75 or not pollster or pollster.lower() in ("average", ""):
+            vals = {}
+            for party, i in cols.items():
+                if i < len(cells):
+                    v = pct(cells[i])
+                    if v is not None:
+                        vals[party] = v
+            if (len(vals) < 2 or sum(vals.values()) < 75 or not pollster
+                    or pollster.lower() in ("average", "")):
                 continue
             # skip aggregate tables and sample-size continuation rows
             if (
@@ -196,46 +298,58 @@ def parse_individual(soup):
                 or pollster.startswith("1,")
             ):
                 continue
-            out.append({"pollster": pollster, "dates": dates, "dem": round(d, 1), "rep": round(r, 1)})
-        if len(out) >= 3:
-            return out
-    return []
+            entry = {"pollster": pollster, "dates": dates}
+            entry.update({key_of(k): round(v, 1) for k, v in vals.items()})
+            out.append(entry)
+        if len(out) < 3:
+            continue
+        out.sort(key=lambda e: date_key(e["dates"]), reverse=True)
+        key = (date_key(out[0]["dates"]), len(out))
+        if best is None or key > best[0]:
+            best = (key, out)
+    return best[1] if best else []
 
 
-def scrape_race(chamber, race):
-    key = race["state"].replace(" ", "_")
-    if chamber == "senate":
-        tmpl = RACE_ID_MAP.get(key.split("_")[0])
-        base = "2026_United_States_Senate_election_in_"
-        url = "https://en.wikipedia.org/wiki/" + (tmpl or base + key)
-    else:
-        url = "https://en.wikipedia.org/wiki/2026_" + key.replace("_", "_") + "_gubernatorial_election"
+def scrape_race(chamber, race, url):
     soup = fetch(url)
     if soup is None:
         return None
     agg = parse_aggregate(soup)
     ind = parse_individual(soup)
-    if agg:
-        if ind:
-            agg["polls"] = ind
-        return agg
-    res = parse_direct(soup)
+    res = agg or parse_direct(soup)
     if res is None:
         return None
     if ind:
         res["polls"] = ind
+    names = nominees(soup)
+    if names:
+        res["names"] = names
     return res
+
+
+def race_url(chamber, race):
+    key = race["state"].replace(" ", "_")
+    if chamber == "senate":
+        tmpl = RACE_ID_MAP.get(key.split("_")[0])
+        return "https://en.wikipedia.org/wiki/" + (
+            tmpl or "2026_United_States_Senate_election_in_" + key)
+    if chamber == "governor":
+        return ("https://en.wikipedia.org/wiki/2026_" + key
+                + "_gubernatorial_election")
+    label = race["state"].replace("_", " ") + " " + race.get("district", "")
+    return "https://en.wikipedia.org/wiki/" + HOUSE_POLL_RACES[label]
 
 
 def scrape_races(chamber):
     base = json.loads((OUTPUT_DIR / "races.json").read_text(encoding="utf-8"))
     results = {}
-    races = base["races"][chamber]
-    for race in races:
+    for race in base["races"][chamber]:
         label = race["state"].replace("_", " ")
         if chamber == "house":
             label += " " + race["district"]
-        res = scrape_race(chamber, race) if chamber != "house" else None
+            if label not in HOUSE_POLL_RACES:
+                continue
+        res = scrape_race(chamber, race, race_url(chamber, race))
         results[label] = res
         print(f"  {label}: {res}")
     return results
@@ -245,15 +359,19 @@ def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     print("Senate...")
     senate = scrape_races("senate")
-    print("Governor...(shared state articles only)")
+    print("Governor...")
     governor = scrape_races("governor")
+    print("House (curated list)...")
+    house = scrape_races("house")
     out = {
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "senate": senate,
         "governor": governor,
+        "house": house,
     }
     out_file = OUTPUT_DIR / "polling.json"
-    out_file.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
+    out_file.write_text(json.dumps(out, indent=2, ensure_ascii=False),
+                        encoding="utf-8")
     print(f"Wrote {out_file}")
 
 

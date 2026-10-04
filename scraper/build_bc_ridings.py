@@ -62,7 +62,7 @@ def fetch(url, name, force=False, binary=False):
 
 def parse_results(html, names):
     soup = BeautifulSoup(html, "lxml")
-    out = {}
+    out, totals = {}, {}
     for t in soup.find_all("table"):
         rows = t.find_all("tr")
         if len(rows) < 90:
@@ -86,7 +86,8 @@ def parse_results(html, names):
                 continue
             out[key] = {p: round(votes.get(p, 0) * 100 / total, 2)
                         for p in PARTIES}
-    return out
+            totals[key] = total
+    return out, totals
 
 
 def main():
@@ -99,15 +100,16 @@ def main():
              for f in gj["features"]}
     assert len(names) == 93, "expected 93 ridings"
 
-    results = parse_results(fetch(ARTICLE, "bc_2024_article.html", force),
-                            names)
+    results, totals = parse_results(fetch(ARTICLE, "bc_2024_article.html", force),
+                                    names)
     print("ridings with 2024 results:", len(results),
           "| missing:", sorted(set(names) - set(results))[:8])
 
     cons = []
     for key, disp in sorted(names.items()):
         r = results.get(key, {p: 0 for p in PARTIES})
-        cons.append({"id": key, "name": disp, "seats": 1, "results_2022": r})
+        cons.append({"id": key, "name": disp, "seats": 1,
+                     "votes2022": totals.get(key, 0), "results_2022": r})
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
     with open(CONST_JSON, "w", encoding="utf8") as fh:
         json.dump({"country": "bc", "total_seats": 93,

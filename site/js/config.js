@@ -4822,6 +4822,7 @@ saxony_anhalt: {
 
   latvia: {
     name: 'Latvia',
+    hidden: true,                 // election held 2026-10-03; hidden from the nav
     seats: 100,
     threshold: 5.0,
     method: 'sainte_lague',       // modified Sainte-Laguë (first divisor 1.4; site uses 1.2)

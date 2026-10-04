@@ -8,6 +8,7 @@
    "id": "aldershot",
    "name": "Aldershot",
    "seats": 1,
+   "votes2022": 48544,
    "results_2022": {
     "lab": 40.71,
     "con": 29.01,
@@ -32,6 +33,7 @@
    "id": "aldridge-brownhills",
    "name": "Aldridge-Brownhills",
    "seats": 1,
+   "votes2022": 40912,
    "results_2022": {
     "lab": 28.37,
     "con": 38.87,
@@ -56,6 +58,7 @@
    "id": "altrinchamandsalewest",
    "name": "Altrincham and Sale West",
    "seats": 1,
+   "votes2022": 51452,
    "results_2022": {
     "lab": 40.42,
     "con": 32.31,
@@ -80,6 +83,7 @@
    "id": "ambervalley",
    "name": "Amber Valley",
    "seats": 1,
+   "votes2022": 42531,
    "results_2022": {
     "lab": 37.02,
     "con": 25.22,
@@ -104,6 +108,7 @@
    "id": "arundelandsouthdowns",
    "name": "Arundel and South Downs",
    "seats": 1,
+   "votes2022": 54740,
    "results_2022": {
     "lab": 17.87,
     "con": 40.19,
@@ -128,6 +133,7 @@
    "id": "ashfield",
    "name": "Ashfield",
    "seats": 1,
+   "votes2022": 39882,
    "results_2022": {
     "lab": 28.97,
     "con": 8.2,
@@ -152,6 +158,7 @@
    "id": "ashford",
    "name": "Ashford",
    "seats": 1,
+   "votes2022": 46975,
    "results_2022": {
     "lab": 32.49,
     "con": 28.7,
@@ -176,6 +183,7 @@
    "id": "ashton-under-lyne",
    "name": "Ashton-under-Lyne",
    "seats": 1,
+   "votes2022": 35461,
    "results_2022": {
     "lab": 43.92,
     "con": 12.34,
@@ -200,6 +208,7 @@
    "id": "aylesbury",
    "name": "Aylesbury",
    "seats": 1,
+   "votes2022": 49940,
    "results_2022": {
     "lab": 30.2,
     "con": 28.94,
@@ -224,6 +233,7 @@
    "id": "banbury",
    "name": "Banbury",
    "seats": 1,
+   "votes2022": 48178,
    "results_2022": {
     "lab": 38.33,
     "con": 31.57,
@@ -248,6 +258,7 @@
    "id": "barking",
    "name": "Barking",
    "seats": 1,
+   "votes2022": 36477,
    "results_2022": {
     "lab": 44.49,
     "con": 11.77,
@@ -272,6 +283,7 @@
    "id": "barnsleynorth",
    "name": "Barnsley North",
    "seats": 1,
+   "votes2022": 36894,
    "results_2022": {
     "lab": 50.44,
     "con": 8.36,
@@ -296,6 +308,7 @@
    "id": "barnsleysouth",
    "name": "Barnsley South",
    "seats": 1,
+   "votes2022": 35082,
    "results_2022": {
     "lab": 46.74,
     "con": 9.26,
@@ -320,6 +333,7 @@
    "id": "barrowandfurness",
    "name": "Barrow and Furness",
    "seats": 1,
+   "votes2022": 42221,
    "results_2022": {
     "lab": 43.9,
     "con": 31.29,
@@ -344,6 +358,7 @@
    "id": "basildonandbillericay",
    "name": "Basildon and Billericay",
    "seats": 1,
+   "votes2022": 42124,
    "results_2022": {
     "lab": 30.59,
     "con": 30.64,
@@ -368,6 +383,7 @@
    "id": "basingstoke",
    "name": "Basingstoke",
    "seats": 1,
+   "votes2022": 48989,
    "results_2022": {
     "lab": 42.71,
     "con": 29.47,
@@ -392,6 +408,7 @@
    "id": "bassetlaw",
    "name": "Bassetlaw",
    "seats": 1,
+   "votes2022": 44878,
    "results_2022": {
     "lab": 41.17,
     "con": 28.32,
@@ -416,6 +433,7 @@
    "id": "bath",
    "name": "Bath",
    "seats": 1,
+   "votes2022": 48130,
    "results_2022": {
     "lab": 18.0,
     "con": 15.91,
@@ -440,6 +458,7 @@
    "id": "battersea",
    "name": "Battersea",
    "seats": 1,
+   "votes2022": 47082,
    "results_2022": {
     "lab": 48.81,
     "con": 23.24,
@@ -464,6 +483,7 @@
    "id": "beaconsfield",
    "name": "Beaconsfield",
    "seats": 1,
+   "votes2022": 47726,
    "results_2022": {
     "lab": 15.12,
     "con": 38.75,
@@ -488,6 +508,7 @@
    "id": "beckenhamandpenge",
    "name": "Beckenham and Penge",
    "seats": 1,
+   "votes2022": 52222,
    "results_2022": {
     "lab": 49.31,
     "con": 24.6,
@@ -512,6 +533,7 @@
    "id": "bedford",
    "name": "Bedford",
    "seats": 1,
+   "votes2022": 40659,
    "results_2022": {
     "lab": 45.11,
     "con": 21.92,
@@ -536,6 +558,7 @@
    "id": "bermondseyandoldsouthwark",
    "name": "Bermondsey and Old Southwark",
    "seats": 1,
+   "votes2022": 37603,
    "results_2022": {
     "lab": 44.83,
     "con": 7.66,
@@ -560,6 +583,7 @@
    "id": "bethnalgreenandstepney",
    "name": "Bethnal Green and Stepney",
    "seats": 1,
+   "votes2022": 46647,
    "results_2022": {
     "lab": 34.08,
     "con": 4.12,
@@ -584,6 +608,7 @@
    "id": "beverleyandholderness",
    "name": "Beverley and Holderness",
    "seats": 1,
+   "votes2022": 44897,
    "results_2022": {
     "lab": 34.25,
     "con": 34.53,
@@ -608,6 +633,7 @@
    "id": "bexhillandbattle",
    "name": "Bexhill and Battle",
    "seats": 1,
+   "votes2022": 47750,
    "results_2022": {
     "lab": 28.33,
     "con": 33.9,
@@ -632,6 +658,7 @@
    "id": "bexleyheathandcrayford",
    "name": "Bexleyheath and Crayford",
    "seats": 1,
+   "votes2022": 43461,
    "results_2022": {
     "lab": 36.16,
     "con": 31.3,
@@ -656,6 +683,7 @@
    "id": "bicesterandwoodstock",
    "name": "Bicester and Woodstock",
    "seats": 1,
+   "votes2022": 50219,
    "results_2022": {
     "lab": 16.4,
     "con": 28.8,
@@ -680,6 +708,7 @@
    "id": "birkenhead",
    "name": "Birkenhead",
    "seats": 1,
+   "votes2022": 43134,
    "results_2022": {
     "lab": 52.09,
     "con": 7.51,
@@ -704,6 +733,7 @@
    "id": "birminghamedgbaston",
    "name": "Birmingham Edgbaston",
    "seats": 1,
+   "votes2022": 37428,
    "results_2022": {
     "lab": 44.35,
     "con": 21.99,
@@ -728,6 +758,7 @@
    "id": "birminghamerdington",
    "name": "Birmingham Erdington",
    "seats": 1,
+   "votes2022": 34137,
    "results_2022": {
     "lab": 43.28,
     "con": 15.82,
@@ -752,6 +783,7 @@
    "id": "birminghamhallgreenandmoseley",
    "name": "Birmingham Hall Green and Moseley",
    "seats": 1,
+   "votes2022": 41606,
    "results_2022": {
     "lab": 30.76,
     "con": 9.24,
@@ -776,6 +808,7 @@
    "id": "birminghamhodgehillandsolihullnorth",
    "name": "Birmingham Hodge Hill and Solihull North",
    "seats": 1,
+   "votes2022": 34136,
    "results_2022": {
     "lab": 31.21,
     "con": 13.58,
@@ -800,6 +833,7 @@
    "id": "birminghamladywood",
    "name": "Birmingham Ladywood",
    "seats": 1,
+   "votes2022": 36579,
    "results_2022": {
     "lab": 42.53,
     "con": 6.06,
@@ -824,6 +858,7 @@
    "id": "birminghamnorthfield",
    "name": "Birmingham Northfield",
    "seats": 1,
+   "votes2022": 37652,
    "results_2022": {
     "lab": 39.65,
     "con": 25.34,
@@ -848,6 +883,7 @@
    "id": "birminghamperrybarr",
    "name": "Birmingham Perry Barr",
    "seats": 1,
+   "votes2022": 37476,
    "results_2022": {
     "lab": 34.14,
     "con": 11.28,
@@ -872,6 +908,7 @@
    "id": "birminghamsellyoak",
    "name": "Birmingham Selly Oak",
    "seats": 1,
+   "votes2022": 38423,
    "results_2022": {
     "lab": 45.21,
     "con": 15.18,
@@ -896,6 +933,7 @@
    "id": "birminghamyardley",
    "name": "Birmingham Yardley",
    "seats": 1,
+   "votes2022": 36144,
    "results_2022": {
     "lab": 31.19,
     "con": 10.05,
@@ -920,6 +958,7 @@
    "id": "bishopauckland",
    "name": "Bishop Auckland",
    "seats": 1,
+   "votes2022": 40427,
    "results_2022": {
     "lab": 42.14,
     "con": 25.64,
@@ -944,6 +983,7 @@
    "id": "blackburn",
    "name": "Blackburn",
    "seats": 1,
+   "votes2022": 38887,
    "results_2022": {
     "lab": 26.71,
     "con": 8.93,
@@ -968,6 +1008,7 @@
    "id": "blackleyandmiddletonsouth",
    "name": "Blackley and Middleton South",
    "seats": 1,
+   "votes2022": 31340,
    "results_2022": {
     "lab": 53.81,
     "con": 9.81,
@@ -992,6 +1033,7 @@
    "id": "blackpoolnorthandfleetwood",
    "name": "Blackpool North and Fleetwood",
    "seats": 1,
+   "votes2022": 41810,
    "results_2022": {
     "lab": 40.05,
     "con": 28.93,
@@ -1016,6 +1058,7 @@
    "id": "blackpoolsouth",
    "name": "Blackpool South",
    "seats": 1,
+   "votes2022": 35180,
    "results_2022": {
     "lab": 48.08,
     "con": 15.65,
@@ -1040,6 +1083,7 @@
    "id": "blaydonandconsett",
    "name": "Blaydon and Consett",
    "seats": 1,
+   "votes2022": 42216,
    "results_2022": {
     "lab": 50.12,
     "con": 14.34,
@@ -1064,6 +1108,7 @@
    "id": "blythandashington",
    "name": "Blyth and Ashington",
    "seats": 1,
+   "votes2022": 40401,
    "results_2022": {
     "lab": 49.58,
     "con": 15.15,
@@ -1088,6 +1133,7 @@
    "id": "bognorregisandlittlehampton",
    "name": "Bognor Regis and Littlehampton",
    "seats": 1,
+   "votes2022": 47827,
    "results_2022": {
     "lab": 29.09,
     "con": 32.78,
@@ -1112,6 +1158,7 @@
    "id": "bolsover",
    "name": "Bolsover",
    "seats": 1,
+   "votes2022": 42434,
    "results_2022": {
     "lab": 40.53,
     "con": 25.63,
@@ -1136,6 +1183,7 @@
    "id": "boltonnortheast",
    "name": "Bolton North East",
    "seats": 1,
+   "votes2022": 43359,
    "results_2022": {
     "lab": 37.28,
     "con": 21.94,
@@ -1160,6 +1208,7 @@
    "id": "boltonsouthandwalkden",
    "name": "Bolton South and Walkden",
    "seats": 1,
+   "votes2022": 36930,
    "results_2022": {
     "lab": 40.87,
     "con": 11.29,
@@ -1184,6 +1233,7 @@
    "id": "boltonwest",
    "name": "Bolton West",
    "seats": 1,
+   "votes2022": 44598,
    "results_2022": {
     "lab": 38.93,
     "con": 27.84,
@@ -1208,6 +1258,7 @@
    "id": "bootle",
    "name": "Bootle",
    "seats": 1,
+   "votes2022": 38880,
    "results_2022": {
     "lab": 68.75,
     "con": 4.31,
@@ -1232,6 +1283,7 @@
    "id": "bostonandskegness",
    "name": "Boston and Skegness",
    "seats": 1,
+   "votes2022": 40455,
    "results_2022": {
     "lab": 18.86,
     "con": 33.4,
@@ -1256,6 +1308,7 @@
    "id": "bournemoutheast",
    "name": "Bournemouth East",
    "seats": 1,
+   "votes2022": 44910,
    "results_2022": {
     "lab": 40.78,
     "con": 28.58,
@@ -1280,6 +1333,7 @@
    "id": "bournemouthwest",
    "name": "Bournemouth West",
    "seats": 1,
+   "votes2022": 39418,
    "results_2022": {
     "lab": 36.44,
     "con": 28.26,
@@ -1304,6 +1358,7 @@
    "id": "bracknell",
    "name": "Bracknell",
    "seats": 1,
+   "votes2022": 43837,
    "results_2022": {
     "lab": 33.72,
     "con": 31.93,
@@ -1328,6 +1383,7 @@
    "id": "bradfordeast",
    "name": "Bradford East",
    "seats": 1,
+   "votes2022": 37216,
    "results_2022": {
     "lab": 37.88,
     "con": 9.27,
@@ -1352,6 +1408,7 @@
    "id": "bradfordsouth",
    "name": "Bradford South",
    "seats": 1,
+   "votes2022": 33042,
    "results_2022": {
     "lab": 35.81,
     "con": 14.69,
@@ -1376,6 +1433,7 @@
    "id": "bradfordwest",
    "name": "Bradford West",
    "seats": 1,
+   "votes2022": 37081,
    "results_2022": {
     "lab": 31.62,
     "con": 8.24,
@@ -1400,6 +1458,7 @@
    "id": "braintree",
    "name": "Braintree",
    "seats": 1,
+   "votes2022": 49028,
    "results_2022": {
     "lab": 28.03,
     "con": 35.52,
@@ -1424,6 +1483,7 @@
    "id": "brenteast",
    "name": "Brent East",
    "seats": 1,
+   "votes2022": 37802,
    "results_2022": {
     "lab": 51.24,
     "con": 16.73,
@@ -1448,6 +1508,7 @@
    "id": "brentwest",
    "name": "Brent West",
    "seats": 1,
+   "votes2022": 41376,
    "results_2022": {
     "lab": 41.71,
     "con": 32.54,
@@ -1472,6 +1533,7 @@
    "id": "brentfordandisleworth",
    "name": "Brentford and Isleworth",
    "seats": 1,
+   "votes2022": 45254,
    "results_2022": {
     "lab": 44.21,
     "con": 22.5,
@@ -1496,6 +1558,7 @@
    "id": "brentwoodandongar",
    "name": "Brentwood and Ongar",
    "seats": 1,
+   "votes2022": 48332,
    "results_2022": {
     "lab": 22.93,
     "con": 36.69,
@@ -1520,6 +1583,7 @@
    "id": "bridgwater",
    "name": "Bridgwater",
    "seats": 1,
+   "votes2022": 40129,
    "results_2022": {
     "lab": 27.24,
     "con": 30.6,
@@ -1544,6 +1608,7 @@
    "id": "bridlingtonandthewolds",
    "name": "Bridlington and The Wolds",
    "seats": 1,
+   "votes2022": 42937,
    "results_2022": {
     "lab": 27.3,
     "con": 34.58,
@@ -1568,6 +1633,7 @@
    "id": "briggandimmingham",
    "name": "Brigg and Immingham",
    "seats": 1,
+   "votes2022": 42508,
    "results_2022": {
     "lab": 29.79,
     "con": 37.42,
@@ -1592,6 +1658,7 @@
    "id": "brightonkemptownandpeacehaven",
    "name": "Brighton Kemptown and Peacehaven",
    "seats": 1,
+   "votes2022": 40686,
    "results_2022": {
     "lab": 43.98,
     "con": 20.23,
@@ -1616,6 +1683,7 @@
    "id": "brightonpavilion",
    "name": "Brighton Pavilion",
    "seats": 1,
+   "votes2022": 52363,
    "results_2022": {
     "lab": 27.73,
     "con": 7.59,
@@ -1640,6 +1708,7 @@
    "id": "bristolcentral",
    "name": "Bristol Central",
    "seats": 1,
+   "votes2022": 43365,
    "results_2022": {
     "lab": 32.59,
     "con": 4.61,
@@ -1664,6 +1733,7 @@
    "id": "bristoleast",
    "name": "Bristol East",
    "seats": 1,
+   "votes2022": 46109,
    "results_2022": {
     "lab": 45.0,
     "con": 13.96,
@@ -1688,6 +1758,7 @@
    "id": "bristolnortheast",
    "name": "Bristol North East",
    "seats": 1,
+   "votes2022": 41989,
    "results_2022": {
     "lab": 45.26,
     "con": 14.8,
@@ -1712,6 +1783,7 @@
    "id": "bristolnorthwest",
    "name": "Bristol North West",
    "seats": 1,
+   "votes2022": 48464,
    "results_2022": {
     "lab": 49.64,
     "con": 13.98,
@@ -1736,6 +1808,7 @@
    "id": "bristolsouth",
    "name": "Bristol South",
    "seats": 1,
+   "votes2022": 43403,
    "results_2022": {
     "lab": 42.67,
     "con": 11.4,
@@ -1760,6 +1833,7 @@
    "id": "broadlandandfakenham",
    "name": "Broadland and Fakenham",
    "seats": 1,
+   "votes2022": 49513,
    "results_2022": {
     "lab": 31.51,
     "con": 32.97,
@@ -1784,6 +1858,7 @@
    "id": "bromleyandbigginhill",
    "name": "Bromley and Biggin Hill",
    "seats": 1,
+   "votes2022": 46788,
    "results_2022": {
     "lab": 33.4,
     "con": 34.05,
@@ -1808,6 +1883,7 @@
    "id": "bromsgrove",
    "name": "Bromsgrove",
    "seats": 1,
+   "votes2022": 50405,
    "results_2022": {
     "lab": 26.82,
     "con": 32.8,
@@ -1832,6 +1908,7 @@
    "id": "broxbourne",
    "name": "Broxbourne",
    "seats": 1,
+   "votes2022": 42952,
    "results_2022": {
     "lab": 30.15,
     "con": 36.81,
@@ -1856,6 +1933,7 @@
    "id": "broxtowe",
    "name": "Broxtowe",
    "seats": 1,
+   "votes2022": 47838,
    "results_2022": {
     "lab": 40.89,
     "con": 23.32,
@@ -1880,6 +1958,7 @@
    "id": "buckinghamandbletchley",
    "name": "Buckingham and Bletchley",
    "seats": 1,
+   "votes2022": 47641,
    "results_2022": {
     "lab": 36.95,
     "con": 31.87,
@@ -1904,6 +1983,7 @@
    "id": "burnley",
    "name": "Burnley",
    "seats": 1,
+   "votes2022": 39719,
    "results_2022": {
     "lab": 31.72,
     "con": 20.29,
@@ -1928,6 +2008,7 @@
    "id": "burtonanduttoxeter",
    "name": "Burton and Uttoxeter",
    "seats": 1,
+   "votes2022": 45627,
    "results_2022": {
     "lab": 35.55,
     "con": 30.59,
@@ -1952,6 +2033,7 @@
    "id": "burynorth",
    "name": "Bury North",
    "seats": 1,
+   "votes2022": 45520,
    "results_2022": {
     "lab": 43.11,
     "con": 27.86,
@@ -1976,6 +2058,7 @@
    "id": "burysouth",
    "name": "Bury South",
    "seats": 1,
+   "votes2022": 42214,
    "results_2022": {
     "lab": 45.59,
     "con": 23.42,
@@ -2000,6 +2083,7 @@
    "id": "burystedmundsandstowmarket",
    "name": "Bury St Edmunds and Stowmarket",
    "seats": 1,
+   "votes2022": 50893,
    "results_2022": {
     "lab": 32.9,
     "con": 30.05,
@@ -2024,6 +2108,7 @@
    "id": "caldervalley",
    "name": "Calder Valley",
    "seats": 1,
+   "votes2022": 49608,
    "results_2022": {
     "lab": 44.44,
     "con": 26.32,
@@ -2048,6 +2133,7 @@
    "id": "camborneandredruth",
    "name": "Camborne and Redruth",
    "seats": 1,
+   "votes2022": 47785,
    "results_2022": {
     "lab": 40.51,
     "con": 24.18,
@@ -2072,6 +2158,7 @@
    "id": "cambridge",
    "name": "Cambridge",
    "seats": 1,
+   "votes2022": 42100,
    "results_2022": {
     "lab": 46.59,
     "con": 12.05,
@@ -2096,6 +2183,7 @@
    "id": "cannockchase",
    "name": "Cannock Chase",
    "seats": 1,
+   "votes2022": 42953,
    "results_2022": {
     "lab": 36.48,
     "con": 29.21,
@@ -2120,6 +2208,7 @@
    "id": "canterbury",
    "name": "Canterbury",
    "seats": 1,
+   "votes2022": 47231,
    "results_2022": {
     "lab": 41.35,
     "con": 23.03,
@@ -2144,6 +2233,7 @@
    "id": "carlisle",
    "name": "Carlisle",
    "seats": 1,
+   "votes2022": 45979,
    "results_2022": {
     "lab": 39.43,
     "con": 28.12,
@@ -2168,6 +2258,7 @@
    "id": "carshaltonandwallington",
    "name": "Carshalton and Wallington",
    "seats": 1,
+   "votes2022": 46670,
    "results_2022": {
     "lab": 13.09,
     "con": 26.19,
@@ -2192,6 +2283,7 @@
    "id": "castlepoint",
    "name": "Castle Point",
    "seats": 1,
+   "votes2022": 40633,
    "results_2022": {
     "lab": 23.27,
     "con": 38.11,
@@ -2216,6 +2308,7 @@
    "id": "centraldevon",
    "name": "Central Devon",
    "seats": 1,
+   "votes2022": 53432,
    "results_2022": {
     "lab": 31.39,
     "con": 31.5,
@@ -2240,6 +2333,7 @@
    "id": "centralsuffolkandnorthipswich",
    "name": "Central Suffolk and North Ipswich",
    "seats": 1,
+   "votes2022": 46423,
    "results_2022": {
     "lab": 23.38,
     "con": 32.62,
@@ -2264,6 +2358,7 @@
    "id": "chathamandaylesford",
    "name": "Chatham and Aylesford",
    "seats": 1,
+   "votes2022": 40845,
    "results_2022": {
     "lab": 33.51,
     "con": 28.62,
@@ -2288,6 +2383,7 @@
    "id": "cheadle",
    "name": "Cheadle",
    "seats": 1,
+   "votes2022": 50731,
    "results_2022": {
     "lab": 15.59,
     "con": 22.56,
@@ -2312,6 +2408,7 @@
    "id": "chelmsford",
    "name": "Chelmsford",
    "seats": 1,
+   "votes2022": 50716,
    "results_2022": {
     "lab": 12.04,
     "con": 30.49,
@@ -2336,6 +2433,7 @@
    "id": "chelseaandfulham",
    "name": "Chelsea and Fulham",
    "seats": 1,
+   "votes2022": 47116,
    "results_2022": {
     "lab": 39.38,
     "con": 39.06,
@@ -2360,6 +2458,7 @@
    "id": "cheltenham",
    "name": "Cheltenham",
    "seats": 1,
+   "votes2022": 49542,
    "results_2022": {
     "lab": 5.38,
     "con": 36.06,
@@ -2384,6 +2483,7 @@
    "id": "cheshamandamersham",
    "name": "Chesham and Amersham",
    "seats": 1,
+   "votes2022": 54455,
    "results_2022": {
     "lab": 6.43,
     "con": 34.84,
@@ -2408,6 +2508,7 @@
    "id": "chesternorthandneston",
    "name": "Chester North and Neston",
    "seats": 1,
+   "votes2022": 44694,
    "results_2022": {
     "lab": 49.8,
     "con": 23.24,
@@ -2432,6 +2533,7 @@
    "id": "chestersouthandeddisbury",
    "name": "Chester South and Eddisbury",
    "seats": 1,
+   "votes2022": 52486,
    "results_2022": {
     "lab": 32.1,
     "con": 37.92,
@@ -2456,6 +2558,7 @@
    "id": "chesterfield",
    "name": "Chesterfield",
    "seats": 1,
+   "votes2022": 41555,
    "results_2022": {
     "lab": 46.48,
     "con": 20.45,
@@ -2480,6 +2583,7 @@
    "id": "chichester",
    "name": "Chichester",
    "seats": 1,
+   "votes2022": 51947,
    "results_2022": {
     "lab": 6.11,
     "con": 25.73,
@@ -2504,6 +2608,7 @@
    "id": "chingfordandwoodfordgreen",
    "name": "Chingford and Woodford Green",
    "seats": 1,
+   "votes2022": 48512,
    "results_2022": {
     "lab": 25.82,
     "con": 35.62,
@@ -2528,6 +2633,7 @@
    "id": "chippenham",
    "name": "Chippenham",
    "seats": 1,
+   "votes2022": 49512,
    "results_2022": {
     "lab": 7.93,
     "con": 29.11,
@@ -2552,6 +2658,7 @@
    "id": "chippingbarnet",
    "name": "Chipping Barnet",
    "seats": 1,
+   "votes2022": 50859,
    "results_2022": {
     "lab": 42.44,
     "con": 36.71,
@@ -2576,6 +2683,7 @@
    "id": "chorley",
    "name": "Chorley",
    "seats": 1,
+   "votes2022": 33964,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -2600,6 +2708,7 @@
    "id": "christchurch",
    "name": "Christchurch",
    "seats": 1,
+   "votes2022": 47335,
    "results_2022": {
     "lab": 16.4,
     "con": 35.79,
@@ -2624,6 +2733,7 @@
    "id": "citiesoflondonandwestminster",
    "name": "Cities of London and Westminster",
    "seats": 1,
+   "votes2022": 39215,
    "results_2022": {
     "lab": 39.02,
     "con": 32.12,
@@ -2648,6 +2758,7 @@
    "id": "cityofdurham",
    "name": "City of Durham",
    "seats": 1,
+   "votes2022": 40627,
    "results_2022": {
     "lab": 47.09,
     "con": 12.85,
@@ -2672,6 +2783,7 @@
    "id": "clacton",
    "name": "Clacton",
    "seats": 1,
+   "votes2022": 45958,
    "results_2022": {
     "lab": 16.21,
     "con": 27.9,
@@ -2696,6 +2808,7 @@
    "id": "claphamandbrixtonhill",
    "name": "Clapham and Brixton Hill",
    "seats": 1,
+   "votes2022": 42741,
    "results_2022": {
     "lab": 56.54,
     "con": 10.2,
@@ -2720,6 +2833,7 @@
    "id": "colchester",
    "name": "Colchester",
    "seats": 1,
+   "votes2022": 44903,
    "results_2022": {
     "lab": 41.88,
     "con": 23.5,
@@ -2744,6 +2858,7 @@
    "id": "colnevalley",
    "name": "Colne Valley",
    "seats": 1,
+   "votes2022": 46221,
    "results_2022": {
     "lab": 41.04,
     "con": 30.3,
@@ -2768,6 +2883,7 @@
    "id": "congleton",
    "name": "Congleton",
    "seats": 1,
+   "votes2022": 50125,
    "results_2022": {
     "lab": 37.66,
     "con": 30.9,
@@ -2792,6 +2908,7 @@
    "id": "corbyandeastnorthamptonshire",
    "name": "Corby and East Northamptonshire",
    "seats": 1,
+   "votes2022": 49589,
    "results_2022": {
     "lab": 42.39,
     "con": 29.62,
@@ -2816,6 +2933,7 @@
    "id": "coventryeast",
    "name": "Coventry East",
    "seats": 1,
+   "votes2022": 37014,
    "results_2022": {
     "lab": 49.46,
     "con": 16.86,
@@ -2840,6 +2958,7 @@
    "id": "coventrynorthwest",
    "name": "Coventry North West",
    "seats": 1,
+   "votes2022": 42030,
    "results_2022": {
     "lab": 46.86,
     "con": 20.28,
@@ -2864,6 +2983,7 @@
    "id": "coventrysouth",
    "name": "Coventry South",
    "seats": 1,
+   "votes2022": 42731,
    "results_2022": {
     "lab": 47.65,
     "con": 23.78,
@@ -2888,6 +3008,7 @@
    "id": "cramlingtonandkillingworth",
    "name": "Cramlington and Killingworth",
    "seats": 1,
+   "votes2022": 45394,
    "results_2022": {
     "lab": 49.07,
     "con": 18.93,
@@ -2912,6 +3033,7 @@
    "id": "crawley",
    "name": "Crawley",
    "seats": 1,
+   "votes2022": 45642,
    "results_2022": {
     "lab": 38.24,
     "con": 26.77,
@@ -2936,6 +3058,7 @@
    "id": "creweandnantwich",
    "name": "Crewe and Nantwich",
    "seats": 1,
+   "votes2022": 47197,
    "results_2022": {
     "lab": 44.15,
     "con": 23.54,
@@ -2960,6 +3083,7 @@
    "id": "croydoneast",
    "name": "Croydon East",
    "seats": 1,
+   "votes2022": 43779,
    "results_2022": {
     "lab": 42.35,
     "con": 26.76,
@@ -2984,6 +3108,7 @@
    "id": "croydonsouth",
    "name": "Croydon South",
    "seats": 1,
+   "votes2022": 49378,
    "results_2022": {
     "lab": 35.33,
     "con": 40.01,
@@ -3008,6 +3133,7 @@
    "id": "croydonwest",
    "name": "Croydon West",
    "seats": 1,
+   "votes2022": 38122,
    "results_2022": {
     "lab": 54.07,
     "con": 16.75,
@@ -3032,6 +3158,7 @@
    "id": "dagenhamandrainham",
    "name": "Dagenham and Rainham",
    "seats": 1,
+   "votes2022": 38867,
    "results_2022": {
     "lab": 42.64,
     "con": 17.82,
@@ -3056,6 +3183,7 @@
    "id": "darlington",
    "name": "Darlington",
    "seats": 1,
+   "votes2022": 42378,
    "results_2022": {
     "lab": 39.22,
     "con": 33.8,
@@ -3080,6 +3208,7 @@
    "id": "dartford",
    "name": "Dartford",
    "seats": 1,
+   "votes2022": 44488,
    "results_2022": {
     "lab": 34.6,
     "con": 31.92,
@@ -3104,6 +3233,7 @@
    "id": "daventry",
    "name": "Daventry",
    "seats": 1,
+   "votes2022": 53082,
    "results_2022": {
     "lab": 27.99,
     "con": 33.67,
@@ -3128,6 +3258,7 @@
    "id": "derbynorth",
    "name": "Derby North",
    "seats": 1,
+   "votes2022": 40919,
    "results_2022": {
     "lab": 45.5,
     "con": 23.72,
@@ -3152,6 +3283,7 @@
    "id": "derbysouth",
    "name": "Derby South",
    "seats": 1,
+   "votes2022": 37399,
    "results_2022": {
     "lab": 38.78,
     "con": 13.88,
@@ -3176,6 +3308,7 @@
    "id": "derbyshiredales",
    "name": "Derbyshire Dales",
    "seats": 1,
+   "votes2022": 51272,
    "results_2022": {
     "lab": 34.64,
     "con": 33.95,
@@ -3200,6 +3333,7 @@
    "id": "dewsburyandbatley",
    "name": "Dewsbury and Batley",
    "seats": 1,
+   "votes2022": 38070,
    "results_2022": {
     "lab": 22.87,
     "con": 10.99,
@@ -3224,6 +3358,7 @@
    "id": "didcotandwantage",
    "name": "Didcot and Wantage",
    "seats": 1,
+   "votes2022": 54733,
    "results_2022": {
     "lab": 14.7,
     "con": 28.43,
@@ -3248,6 +3383,7 @@
    "id": "doncastercentral",
    "name": "Doncaster Central",
    "seats": 1,
+   "votes2022": 37944,
    "results_2022": {
     "lab": 46.16,
     "con": 20.99,
@@ -3272,6 +3408,7 @@
    "id": "doncastereastandtheisleofaxholme",
    "name": "Doncaster East and the Isle of Axholme",
    "seats": 1,
+   "votes2022": 39132,
    "results_2022": {
     "lab": 38.64,
     "con": 32.74,
@@ -3296,6 +3433,7 @@
    "id": "doncasternorth",
    "name": "Doncaster North",
    "seats": 1,
+   "votes2022": 31002,
    "results_2022": {
     "lab": 52.35,
     "con": 22.92,
@@ -3320,6 +3458,7 @@
    "id": "dorkingandhorley",
    "name": "Dorking and Horley",
    "seats": 1,
+   "votes2022": 49965,
    "results_2022": {
     "lab": 8.11,
     "con": 31.08,
@@ -3344,6 +3483,7 @@
    "id": "doveranddeal",
    "name": "Dover and Deal",
    "seats": 1,
+   "votes2022": 47775,
    "results_2022": {
     "lab": 39.64,
     "con": 21.71,
@@ -3368,6 +3508,7 @@
    "id": "droitwichandevesham",
    "name": "Droitwich and Evesham",
    "seats": 1,
+   "votes2022": 49609,
    "results_2022": {
     "lab": 22.13,
     "con": 40.26,
@@ -3392,6 +3533,7 @@
    "id": "dudley",
    "name": "Dudley",
    "seats": 1,
+   "votes2022": 35796,
    "results_2022": {
     "lab": 34.12,
     "con": 28.82,
@@ -3416,6 +3558,7 @@
    "id": "dulwichandwestnorwood",
    "name": "Dulwich and West Norwood",
    "seats": 1,
+   "votes2022": 45378,
    "results_2022": {
     "lab": 60.28,
     "con": 8.53,
@@ -3440,6 +3583,7 @@
    "id": "dunstableandleightonbuzzard",
    "name": "Dunstable and Leighton Buzzard",
    "seats": 1,
+   "votes2022": 46045,
    "results_2022": {
     "lab": 32.52,
     "con": 31.08,
@@ -3464,6 +3608,7 @@
    "id": "ealingcentralandacton",
    "name": "Ealing Central and Acton",
    "seats": 1,
+   "votes2022": 47769,
    "results_2022": {
     "lab": 46.77,
     "con": 17.47,
@@ -3488,6 +3633,7 @@
    "id": "ealingnorth",
    "name": "Ealing North",
    "seats": 1,
+   "votes2022": 43232,
    "results_2022": {
     "lab": 47.8,
     "con": 18.84,
@@ -3512,6 +3658,7 @@
    "id": "ealingsouthall",
    "name": "Ealing Southall",
    "seats": 1,
+   "votes2022": 46816,
    "results_2022": {
     "lab": 49.13,
     "con": 15.39,
@@ -3536,6 +3683,7 @@
    "id": "earleyandwoodley",
    "name": "Earley and Woodley",
    "seats": 1,
+   "votes2022": 45914,
    "results_2022": {
     "lab": 39.66,
     "con": 37.81,
@@ -3560,6 +3708,7 @@
    "id": "easington",
    "name": "Easington",
    "seats": 1,
+   "votes2022": 34324,
    "results_2022": {
     "lab": 48.87,
     "con": 10.93,
@@ -3584,6 +3733,7 @@
    "id": "eastgrinsteadanduckfield",
    "name": "East Grinstead and Uckfield",
    "seats": 1,
+   "votes2022": 50393,
    "results_2022": {
     "lab": 20.72,
     "con": 38.34,
@@ -3608,6 +3758,7 @@
    "id": "eastham",
    "name": "East Ham",
    "seats": 1,
+   "votes2022": 37892,
    "results_2022": {
     "lab": 51.65,
     "con": 10.23,
@@ -3632,6 +3783,7 @@
    "id": "easthampshire",
    "name": "East Hampshire",
    "seats": 1,
+   "votes2022": 50006,
    "results_2022": {
     "lab": 9.73,
     "con": 37.01,
@@ -3656,6 +3808,7 @@
    "id": "eastsurrey",
    "name": "East Surrey",
    "seats": 1,
+   "votes2022": 49196,
    "results_2022": {
     "lab": 20.43,
     "con": 35.58,
@@ -3680,6 +3833,7 @@
    "id": "eastthanet",
    "name": "East Thanet",
    "seats": 1,
+   "votes2022": 42713,
    "results_2022": {
     "lab": 39.93,
     "con": 23.61,
@@ -3704,6 +3858,7 @@
    "id": "eastwiltshire",
    "name": "East Wiltshire",
    "seats": 1,
+   "votes2022": 47193,
    "results_2022": {
     "lab": 25.71,
     "con": 35.7,
@@ -3728,6 +3883,7 @@
    "id": "eastworthingandshoreham",
    "name": "East Worthing and Shoreham",
    "seats": 1,
+   "votes2022": 49078,
    "results_2022": {
     "lab": 45.07,
     "con": 25.68,
@@ -3752,6 +3908,7 @@
    "id": "eastbourne",
    "name": "Eastbourne",
    "seats": 1,
+   "votes2022": 45605,
    "results_2022": {
     "lab": 5.9,
     "con": 25.3,
@@ -3776,6 +3933,7 @@
    "id": "eastleigh",
    "name": "Eastleigh",
    "seats": 1,
+   "votes2022": 46420,
    "results_2022": {
     "lab": 15.09,
     "con": 31.07,
@@ -3800,6 +3958,7 @@
    "id": "edmontonandwinchmorehill",
    "name": "Edmonton and Winchmore Hill",
    "seats": 1,
+   "votes2022": 41045,
    "results_2022": {
     "lab": 49.99,
     "con": 19.22,
@@ -3824,6 +3983,7 @@
    "id": "ellesmereportandbromborough",
    "name": "Ellesmere Port and Bromborough",
    "seats": 1,
+   "votes2022": 41964,
    "results_2022": {
     "lab": 57.64,
     "con": 12.42,
@@ -3848,6 +4008,7 @@
    "id": "elthamandchislehurst",
    "name": "Eltham and Chislehurst",
    "seats": 1,
+   "votes2022": 45566,
    "results_2022": {
     "lab": 44.04,
     "con": 25.55,
@@ -3872,6 +4033,7 @@
    "id": "elyandeastcambridgeshire",
    "name": "Ely and East Cambridgeshire",
    "seats": 1,
+   "votes2022": 52369,
    "results_2022": {
     "lab": 17.49,
     "con": 31.76,
@@ -3896,6 +4058,7 @@
    "id": "enfieldnorth",
    "name": "Enfield North",
    "seats": 1,
+   "votes2022": 43492,
    "results_2022": {
     "lab": 49.13,
     "con": 19.85,
@@ -3920,6 +4083,7 @@
    "id": "eppingforest",
    "name": "Epping Forest",
    "seats": 1,
+   "votes2022": 41753,
    "results_2022": {
     "lab": 29.59,
     "con": 43.2,
@@ -3944,6 +4108,7 @@
    "id": "epsomandewell",
    "name": "Epsom and Ewell",
    "seats": 1,
+   "votes2022": 54525,
    "results_2022": {
     "lab": 15.27,
     "con": 31.16,
@@ -3968,6 +4133,7 @@
    "id": "erewash",
    "name": "Erewash",
    "seats": 1,
+   "votes2022": 43006,
    "results_2022": {
     "lab": 40.05,
     "con": 26.43,
@@ -3992,6 +4158,7 @@
    "id": "erithandthamesmead",
    "name": "Erith and Thamesmead",
    "seats": 1,
+   "votes2022": 40379,
    "results_2022": {
     "lab": 55.09,
     "con": 13.78,
@@ -4016,6 +4183,7 @@
    "id": "esherandwalton",
    "name": "Esher and Walton",
    "seats": 1,
+   "votes2022": 53880,
    "results_2022": {
     "lab": 5.28,
     "con": 30.27,
@@ -4040,6 +4208,7 @@
    "id": "exeter",
    "name": "Exeter",
    "seats": 1,
+   "votes2022": 40195,
    "results_2022": {
     "lab": 45.34,
     "con": 15.64,
@@ -4064,6 +4233,7 @@
    "id": "exmouthandexetereast",
    "name": "Exmouth and Exeter East",
    "seats": 1,
+   "votes2022": 51316,
    "results_2022": {
     "lab": 28.46,
     "con": 28.7,
@@ -4088,6 +4258,7 @@
    "id": "farehamandwaterlooville",
    "name": "Fareham and Waterlooville",
    "seats": 1,
+   "votes2022": 50123,
    "results_2022": {
     "lab": 22.91,
     "con": 35.04,
@@ -4112,6 +4283,7 @@
    "id": "farnhamandbordon",
    "name": "Farnham and Bordon",
    "seats": 1,
+   "votes2022": 53015,
    "results_2022": {
     "lab": 13.82,
     "con": 35.75,
@@ -4136,6 +4308,7 @@
    "id": "favershamandmidkent",
    "name": "Faversham and Mid Kent",
    "seats": 1,
+   "votes2022": 46594,
    "results_2022": {
     "lab": 28.65,
     "con": 31.8,
@@ -4160,6 +4333,7 @@
    "id": "felthamandheston",
    "name": "Feltham and Heston",
    "seats": 1,
+   "votes2022": 38887,
    "results_2022": {
     "lab": 41.5,
     "con": 21.07,
@@ -4184,6 +4358,7 @@
    "id": "filtonandbradleystoke",
    "name": "Filton and Bradley Stoke",
    "seats": 1,
+   "votes2022": 50367,
    "results_2022": {
     "lab": 45.48,
     "con": 25.62,
@@ -4208,6 +4383,7 @@
    "id": "finchleyandgoldersgreen",
    "name": "Finchley and Golders Green",
    "seats": 1,
+   "votes2022": 49289,
    "results_2022": {
     "lab": 44.34,
     "con": 35.05,
@@ -4232,6 +4408,7 @@
    "id": "folkestoneandhythe",
    "name": "Folkestone and Hythe",
    "seats": 1,
+   "votes2022": 43246,
    "results_2022": {
     "lab": 34.73,
     "con": 26.11,
@@ -4256,6 +4433,7 @@
    "id": "forestofdean",
    "name": "Forest of Dean",
    "seats": 1,
+   "votes2022": 48091,
    "results_2022": {
     "lab": 34.05,
     "con": 33.47,
@@ -4280,6 +4458,7 @@
    "id": "fromeandeastsomerset",
    "name": "Frome and East Somerset",
    "seats": 1,
+   "votes2022": 46716,
    "results_2022": {
     "lab": 13.73,
     "con": 23.9,
@@ -4304,6 +4483,7 @@
    "id": "fylde",
    "name": "Fylde",
    "seats": 1,
+   "votes2022": 47960,
    "results_2022": {
     "lab": 32.02,
     "con": 33.19,
@@ -4328,6 +4508,7 @@
    "id": "gainsborough",
    "name": "Gainsborough",
    "seats": 1,
+   "votes2022": 46685,
    "results_2022": {
     "lab": 28.07,
     "con": 35.63,
@@ -4352,6 +4533,7 @@
    "id": "gatesheadcentralandwhickham",
    "name": "Gateshead Central and Whickham",
    "seats": 1,
+   "votes2022": 40217,
    "results_2022": {
     "lab": 45.37,
     "con": 11.51,
@@ -4376,6 +4558,7 @@
    "id": "gedling",
    "name": "Gedling",
    "seats": 1,
+   "votes2022": 48722,
    "results_2022": {
     "lab": 47.78,
     "con": 23.39,
@@ -4400,6 +4583,7 @@
    "id": "gillinghamandrainham",
    "name": "Gillingham and Rainham",
    "seats": 1,
+   "votes2022": 41140,
    "results_2022": {
     "lab": 37.83,
     "con": 28.17,
@@ -4424,6 +4608,7 @@
    "id": "glastonburyandsomerton",
    "name": "Glastonbury and Somerton",
    "seats": 1,
+   "votes2022": 47642,
    "results_2022": {
     "lab": 6.53,
     "con": 28.87,
@@ -4448,6 +4633,7 @@
    "id": "gloucester",
    "name": "Gloucester",
    "seats": 1,
+   "votes2022": 45692,
    "results_2022": {
     "lab": 36.05,
     "con": 28.54,
@@ -4472,6 +4658,7 @@
    "id": "godalmingandash",
    "name": "Godalming and Ash",
    "seats": 1,
+   "votes2022": 54696,
    "results_2022": {
     "lab": 5.02,
     "con": 42.59,
@@ -4496,6 +4683,7 @@
    "id": "gooleandpocklington",
    "name": "Goole and Pocklington",
    "seats": 1,
+   "votes2022": 49742,
    "results_2022": {
     "lab": 30.98,
     "con": 38.16,
@@ -4520,6 +4708,7 @@
    "id": "gortonanddenton",
    "name": "Gorton and Denton",
    "seats": 1,
+   "votes2022": 36560,
    "results_2022": {
     "lab": 50.75,
     "con": 7.9,
@@ -4544,6 +4733,7 @@
    "id": "gosport",
    "name": "Gosport",
    "seats": 1,
+   "votes2022": 44277,
    "results_2022": {
     "lab": 26.6,
     "con": 40.27,
@@ -4568,6 +4758,7 @@
    "id": "granthamandbourne",
    "name": "Grantham and Bourne",
    "seats": 1,
+   "votes2022": 46125,
    "results_2022": {
     "lab": 26.61,
     "con": 36.36,
@@ -4592,6 +4783,7 @@
    "id": "gravesham",
    "name": "Gravesham",
    "seats": 1,
+   "votes2022": 43232,
    "results_2022": {
     "lab": 38.45,
     "con": 32.18,
@@ -4616,6 +4808,7 @@
    "id": "greatgrimsbyandcleethorpes",
    "name": "Great Grimsby and Cleethorpes",
    "seats": 1,
+   "votes2022": 36619,
    "results_2022": {
     "lab": 41.88,
     "con": 22.58,
@@ -4640,6 +4833,7 @@
    "id": "greatyarmouth",
    "name": "Great Yarmouth",
    "seats": 1,
+   "votes2022": 40748,
    "results_2022": {
     "lab": 31.8,
     "con": 24.62,
@@ -4664,6 +4858,7 @@
    "id": "greenwichandwoolwich",
    "name": "Greenwich and Woolwich",
    "seats": 1,
+   "votes2022": 42719,
    "results_2022": {
     "lab": 56.18,
     "con": 11.38,
@@ -4688,6 +4883,7 @@
    "id": "guildford",
    "name": "Guildford",
    "seats": 1,
+   "votes2022": 48294,
    "results_2022": {
     "lab": 8.14,
     "con": 30.04,
@@ -4712,6 +4908,7 @@
    "id": "hackneynorthandstokenewington",
    "name": "Hackney North and Stoke Newington",
    "seats": 1,
+   "votes2022": 40959,
    "results_2022": {
     "lab": 59.46,
     "con": 8.44,
@@ -4736,6 +4933,7 @@
    "id": "hackneysouthandshoreditch",
    "name": "Hackney South and Shoreditch",
    "seats": 1,
+   "votes2022": 41701,
    "results_2022": {
     "lab": 59.29,
     "con": 4.98,
@@ -4760,6 +4958,7 @@
    "id": "halesowen",
    "name": "Halesowen",
    "seats": 1,
+   "votes2022": 38578,
    "results_2022": {
     "lab": 38.94,
     "con": 27.63,
@@ -4784,6 +4983,7 @@
    "id": "halifax",
    "name": "Halifax",
    "seats": 1,
+   "votes2022": 40214,
    "results_2022": {
     "lab": 35.15,
     "con": 19.56,
@@ -4808,6 +5008,7 @@
    "id": "hamblevalley",
    "name": "Hamble Valley",
    "seats": 1,
+   "votes2022": 54004,
    "results_2022": {
     "lab": 16.21,
     "con": 36.43,
@@ -4832,6 +5033,7 @@
    "id": "hammersmithandchiswick",
    "name": "Hammersmith and Chiswick",
    "seats": 1,
+   "votes2022": 46021,
    "results_2022": {
     "lab": 52.31,
     "con": 19.08,
@@ -4856,6 +5058,7 @@
    "id": "hampsteadandhighgate",
    "name": "Hampstead and Highgate",
    "seats": 1,
+   "votes2022": 48550,
    "results_2022": {
     "lab": 48.26,
     "con": 17.43,
@@ -4880,6 +5083,7 @@
    "id": "harboroughoadbyandwigston",
    "name": "Harborough, Oadby and Wigston",
    "seats": 1,
+   "votes2022": 50386,
    "results_2022": {
     "lab": 32.22,
     "con": 36.94,
@@ -4904,6 +5108,7 @@
    "id": "harlow",
    "name": "Harlow",
    "seats": 1,
+   "votes2022": 43357,
    "results_2022": {
     "lab": 37.62,
     "con": 31.85,
@@ -4928,6 +5133,7 @@
    "id": "harpendenandberkhamsted",
    "name": "Harpenden and Berkhamsted",
    "seats": 1,
+   "votes2022": 54336,
    "results_2022": {
     "lab": 7.47,
     "con": 30.5,
@@ -4952,6 +5158,7 @@
    "id": "harrogateandknaresborough",
    "name": "Harrogate and Knaresborough",
    "seats": 1,
+   "votes2022": 52064,
    "results_2022": {
     "lab": 7.98,
     "con": 30.23,
@@ -4976,6 +5183,7 @@
    "id": "harroweast",
    "name": "Harrow East",
    "seats": 1,
+   "votes2022": 47777,
    "results_2022": {
     "lab": 28.85,
     "con": 53.3,
@@ -5000,6 +5208,7 @@
    "id": "harrowwest",
    "name": "Harrow West",
    "seats": 1,
+   "votes2022": 45241,
    "results_2022": {
     "lab": 43.84,
     "con": 29.16,
@@ -5024,6 +5233,7 @@
    "id": "hartlepool",
    "name": "Hartlepool",
    "seats": 1,
+   "votes2022": 35511,
    "results_2022": {
     "lab": 46.22,
     "con": 21.87,
@@ -5048,6 +5258,7 @@
    "id": "harwichandnorthessex",
    "name": "Harwich and North Essex",
    "seats": 1,
+   "votes2022": 48043,
    "results_2022": {
     "lab": 31.97,
     "con": 34.39,
@@ -5072,6 +5283,7 @@
    "id": "hastingsandrye",
    "name": "Hastings and Rye",
    "seats": 1,
+   "votes2022": 45990,
    "results_2022": {
     "lab": 41.6,
     "con": 22.79,
@@ -5096,6 +5308,7 @@
    "id": "havant",
    "name": "Havant",
    "seats": 1,
+   "votes2022": 42186,
    "results_2022": {
     "lab": 30.56,
     "con": 30.78,
@@ -5120,6 +5333,7 @@
    "id": "hayesandharlington",
    "name": "Hayes and Harlington",
    "seats": 1,
+   "votes2022": 38315,
    "results_2022": {
     "lab": 53.26,
     "con": 21.86,
@@ -5144,6 +5358,7 @@
    "id": "hazelgrove",
    "name": "Hazel Grove",
    "seats": 1,
+   "votes2022": 45998,
    "results_2022": {
     "lab": 23.54,
     "con": 19.59,
@@ -5168,6 +5383,7 @@
    "id": "hemelhempstead",
    "name": "Hemel Hempstead",
    "seats": 1,
+   "votes2022": 44108,
    "results_2022": {
     "lab": 38.19,
     "con": 27.18,
@@ -5192,6 +5408,7 @@
    "id": "hendon",
    "name": "Hendon",
    "seats": 1,
+   "votes2022": 41256,
    "results_2022": {
     "lab": 38.43,
     "con": 38.39,
@@ -5216,6 +5433,7 @@
    "id": "henleyandthame",
    "name": "Henley and Thame",
    "seats": 1,
+   "votes2022": 53157,
    "results_2022": {
     "lab": 6.72,
     "con": 33.18,
@@ -5240,6 +5458,7 @@
    "id": "herefordandsouthherefordshire",
    "name": "Hereford and South Herefordshire",
    "seats": 1,
+   "votes2022": 45572,
    "results_2022": {
     "lab": 29.83,
     "con": 32.63,
@@ -5264,6 +5483,7 @@
    "id": "hernebayandsandwich",
    "name": "Herne Bay and Sandwich",
    "seats": 1,
+   "votes2022": 48827,
    "results_2022": {
     "lab": 30.2,
     "con": 35.31,
@@ -5288,6 +5508,7 @@
    "id": "hertfordandstortford",
    "name": "Hertford and Stortford",
    "seats": 1,
+   "votes2022": 54009,
    "results_2022": {
     "lab": 38.53,
     "con": 29.74,
@@ -5312,6 +5533,7 @@
    "id": "hertsmere",
    "name": "Hertsmere",
    "seats": 1,
+   "votes2022": 48007,
    "results_2022": {
     "lab": 28.04,
     "con": 44.68,
@@ -5336,6 +5558,7 @@
    "id": "hexham",
    "name": "Hexham",
    "seats": 1,
+   "votes2022": 51828,
    "results_2022": {
     "lab": 46.28,
     "con": 39.12,
@@ -5360,6 +5583,7 @@
    "id": "heywoodandmiddletonnorth",
    "name": "Heywood and Middleton North",
    "seats": 1,
+   "votes2022": 37130,
    "results_2022": {
     "lab": 40.58,
     "con": 17.3,
@@ -5384,6 +5608,7 @@
    "id": "highpeak",
    "name": "High Peak",
    "seats": 1,
+   "votes2022": 49206,
    "results_2022": {
     "lab": 45.79,
     "con": 29.72,
@@ -5408,6 +5633,7 @@
    "id": "hinckleyandbosworth",
    "name": "Hinckley and Bosworth",
    "seats": 1,
+   "votes2022": 47799,
    "results_2022": {
     "lab": 17.99,
     "con": 35.63,
@@ -5432,6 +5658,7 @@
    "id": "hitchin",
    "name": "Hitchin",
    "seats": 1,
+   "votes2022": 52510,
    "results_2022": {
     "lab": 43.93,
     "con": 28.49,
@@ -5456,6 +5683,7 @@
    "id": "holbornandstpancras",
    "name": "Holborn and St Pancras",
    "seats": 1,
+   "votes2022": 38602,
    "results_2022": {
     "lab": 48.92,
     "con": 7.19,
@@ -5480,6 +5708,7 @@
    "id": "honitonandsidmouth",
    "name": "Honiton and Sidmouth",
    "seats": 1,
+   "votes2022": 50655,
    "results_2022": {
     "lab": 5.82,
     "con": 32.19,
@@ -5504,6 +5733,7 @@
    "id": "hornchurchandupminster",
    "name": "Hornchurch and Upminster",
    "seats": 1,
+   "votes2022": 46911,
    "results_2022": {
     "lab": 27.58,
     "con": 32.53,
@@ -5528,6 +5758,7 @@
    "id": "hornseyandfriernbarnet",
    "name": "Hornsey and Friern Barnet",
    "seats": 1,
+   "votes2022": 48642,
    "results_2022": {
     "lab": 58.66,
     "con": 8.25,
@@ -5552,6 +5783,7 @@
    "id": "horsham",
    "name": "Horsham",
    "seats": 1,
+   "votes2022": 55499,
    "results_2022": {
     "lab": 10.77,
     "con": 34.44,
@@ -5576,6 +5808,7 @@
    "id": "houghtonandsunderlandsouth",
    "name": "Houghton and Sunderland South",
    "seats": 1,
+   "votes2022": 40032,
    "results_2022": {
     "lab": 47.05,
     "con": 13.77,
@@ -5600,6 +5833,7 @@
    "id": "hoveandportslade",
    "name": "Hove and Portslade",
    "seats": 1,
+   "votes2022": 51909,
    "results_2022": {
     "lab": 52.42,
     "con": 12.77,
@@ -5624,6 +5858,7 @@
    "id": "huddersfield",
    "name": "Huddersfield",
    "seats": 1,
+   "votes2022": 40165,
    "results_2022": {
     "lab": 37.6,
     "con": 16.33,
@@ -5648,6 +5883,7 @@
    "id": "huntingdon",
    "name": "Huntingdon",
    "seats": 1,
+   "votes2022": 52040,
    "results_2022": {
     "lab": 32.2,
     "con": 35.08,
@@ -5672,6 +5908,7 @@
    "id": "hyndburn",
    "name": "Hyndburn",
    "seats": 1,
+   "votes2022": 36374,
    "results_2022": {
     "lab": 33.5,
     "con": 28.86,
@@ -5696,6 +5933,7 @@
    "id": "ilfordnorth",
    "name": "Ilford North",
    "seats": 1,
+   "votes2022": 46888,
    "results_2022": {
     "lab": 33.37,
     "con": 20.51,
@@ -5720,6 +5958,7 @@
    "id": "ilfordsouth",
    "name": "Ilford South",
    "seats": 1,
+   "votes2022": 41170,
    "results_2022": {
     "lab": 40.17,
     "con": 14.92,
@@ -5744,6 +5983,7 @@
    "id": "ipswich",
    "name": "Ipswich",
    "seats": 1,
+   "votes2022": 44071,
    "results_2022": {
     "lab": 43.34,
     "con": 26.54,
@@ -5768,6 +6008,7 @@
    "id": "isleofwighteast",
    "name": "Isle of Wight East",
    "seats": 1,
+   "votes2022": 34078,
    "results_2022": {
     "lab": 18.38,
     "con": 30.6,
@@ -5792,6 +6033,7 @@
    "id": "isleofwightwest",
    "name": "Isle of Wight West",
    "seats": 1,
+   "votes2022": 34290,
    "results_2022": {
     "lab": 38.61,
     "con": 29.35,
@@ -5816,6 +6058,7 @@
    "id": "islingtonnorth",
    "name": "Islington North",
    "seats": 1,
+   "votes2022": 49006,
    "results_2022": {
     "lab": 34.43,
     "con": 3.98,
@@ -5840,6 +6083,7 @@
    "id": "islingtonsouthandfinsbury",
    "name": "Islington South and Finsbury",
    "seats": 1,
+   "votes2022": 42754,
    "results_2022": {
     "lab": 53.67,
     "con": 8.38,
@@ -5864,6 +6108,7 @@
    "id": "jarrowandgatesheadeast",
    "name": "Jarrow and Gateshead East",
    "seats": 1,
+   "votes2022": 36728,
    "results_2022": {
     "lab": 51.34,
     "con": 9.13,
@@ -5888,6 +6133,7 @@
    "id": "keighleyandilkley",
    "name": "Keighley and Ilkley",
    "seats": 1,
+   "votes2022": 46186,
    "results_2022": {
     "lab": 36.73,
     "con": 40.25,
@@ -5912,6 +6158,7 @@
    "id": "kenilworthandsoutham",
    "name": "Kenilworth and Southam",
    "seats": 1,
+   "votes2022": 53320,
    "results_2022": {
     "lab": 24.05,
     "con": 36.37,
@@ -5936,6 +6183,7 @@
    "id": "kensingtonandbayswater",
    "name": "Kensington and Bayswater",
    "seats": 1,
+   "votes2022": 41908,
    "results_2022": {
     "lab": 40.62,
     "con": 33.7,
@@ -5960,6 +6208,7 @@
    "id": "kettering",
    "name": "Kettering",
    "seats": 1,
+   "votes2022": 50231,
    "results_2022": {
     "lab": 35.85,
     "con": 28.25,
@@ -5984,6 +6233,7 @@
    "id": "kingstonandsurbiton",
    "name": "Kingston and Surbiton",
    "seats": 1,
+   "votes2022": 50664,
    "results_2022": {
     "lab": 12.95,
     "con": 17.04,
@@ -6008,6 +6258,7 @@
    "id": "kingstonuponhulleast",
    "name": "Kingston upon Hull East",
    "seats": 1,
+   "votes2022": 29816,
    "results_2022": {
     "lab": 43.76,
     "con": 9.11,
@@ -6032,6 +6283,7 @@
    "id": "kingstonuponhullnorthandcottingham",
    "name": "Kingston upon Hull North and Cottingham",
    "seats": 1,
+   "votes2022": 38228,
    "results_2022": {
     "lab": 48.34,
     "con": 12.81,
@@ -6056,6 +6308,7 @@
    "id": "kingstonuponhullwestandhaltemprice",
    "name": "Kingston upon Hull West and Haltemprice",
    "seats": 1,
+   "votes2022": 38178,
    "results_2022": {
     "lab": 46.82,
     "con": 18.14,
@@ -6080,6 +6333,7 @@
    "id": "kingswinfordandsouthstaffordshire",
    "name": "Kingswinford and South Staffordshire",
    "seats": 1,
+   "votes2022": 45180,
    "results_2022": {
     "lab": 26.33,
     "con": 40.28,
@@ -6104,6 +6358,7 @@
    "id": "knowsley",
    "name": "Knowsley",
    "seats": 1,
+   "votes2022": 36047,
    "results_2022": {
     "lab": 67.25,
     "con": 4.15,
@@ -6128,6 +6383,7 @@
    "id": "lancasterandwyre",
    "name": "Lancaster and Wyre",
    "seats": 1,
+   "votes2022": 43008,
    "results_2022": {
     "lab": 44.91,
     "con": 23.4,
@@ -6152,6 +6408,7 @@
    "id": "leedscentralandheadingley",
    "name": "Leeds Central and Headingley",
    "seats": 1,
+   "votes2022": 31595,
    "results_2022": {
     "lab": 50.18,
     "con": 7.08,
@@ -6176,6 +6433,7 @@
    "id": "leedseast",
    "name": "Leeds East",
    "seats": 1,
+   "votes2022": 39388,
    "results_2022": {
     "lab": 47.25,
     "con": 17.51,
@@ -6200,6 +6458,7 @@
    "id": "leedsnortheast",
    "name": "Leeds North East",
    "seats": 1,
+   "votes2022": 45167,
    "results_2022": {
     "lab": 51.5,
     "con": 15.89,
@@ -6224,6 +6483,7 @@
    "id": "leedsnorthwest",
    "name": "Leeds North West",
    "seats": 1,
+   "votes2022": 49777,
    "results_2022": {
     "lab": 45.97,
     "con": 22.07,
@@ -6248,6 +6508,7 @@
    "id": "leedssouth",
    "name": "Leeds South",
    "seats": 1,
+   "votes2022": 31678,
    "results_2022": {
     "lab": 54.03,
     "con": 13.17,
@@ -6272,6 +6533,7 @@
    "id": "leedssouthwestandmorley",
    "name": "Leeds South West and Morley",
    "seats": 1,
+   "votes2022": 40209,
    "results_2022": {
     "lab": 43.97,
     "con": 23.02,
@@ -6296,6 +6558,7 @@
    "id": "leedswestandpudsey",
    "name": "Leeds West and Pudsey",
    "seats": 1,
+   "votes2022": 38494,
    "results_2022": {
     "lab": 49.3,
     "con": 17.1,
@@ -6320,6 +6583,7 @@
    "id": "leicestereast",
    "name": "Leicester East",
    "seats": 1,
+   "votes2022": 46714,
    "results_2022": {
     "lab": 21.62,
     "con": 31.1,
@@ -6344,6 +6608,7 @@
    "id": "leicestersouth",
    "name": "Leicester South",
    "seats": 1,
+   "votes2022": 41837,
    "results_2022": {
     "lab": 32.89,
     "con": 11.52,
@@ -6368,6 +6633,7 @@
    "id": "leicesterwest",
    "name": "Leicester West",
    "seats": 1,
+   "votes2022": 35397,
    "results_2022": {
     "lab": 44.63,
     "con": 19.84,
@@ -6392,6 +6658,7 @@
    "id": "leighandatherton",
    "name": "Leigh and Atherton",
    "seats": 1,
+   "votes2022": 41170,
    "results_2022": {
     "lab": 48.51,
     "con": 15.75,
@@ -6416,6 +6683,7 @@
    "id": "lewes",
    "name": "Lewes",
    "seats": 1,
+   "votes2022": 53173,
    "results_2022": {
     "lab": 6.72,
     "con": 26.84,
@@ -6440,6 +6708,7 @@
    "id": "lewishameast",
    "name": "Lewisham East",
    "seats": 1,
+   "votes2022": 40637,
    "results_2022": {
     "lab": 58.19,
     "con": 10.83,
@@ -6464,6 +6733,7 @@
    "id": "lewishamnorth",
    "name": "Lewisham North",
    "seats": 1,
+   "votes2022": 44167,
    "results_2022": {
     "lab": 57.66,
     "con": 6.12,
@@ -6488,6 +6758,7 @@
    "id": "lewishamwestandeastdulwich",
    "name": "Lewisham West and East Dulwich",
    "seats": 1,
+   "votes2022": 46414,
    "results_2022": {
     "lab": 59.05,
     "con": 7.49,
@@ -6512,6 +6783,7 @@
    "id": "leytonandwanstead",
    "name": "Leyton and Wanstead",
    "seats": 1,
+   "votes2022": 43732,
    "results_2022": {
     "lab": 47.46,
     "con": 11.08,
@@ -6536,6 +6808,7 @@
    "id": "lichfield",
    "name": "Lichfield",
    "seats": 1,
+   "votes2022": 49104,
    "results_2022": {
     "lab": 35.09,
     "con": 33.44,
@@ -6560,6 +6833,7 @@
    "id": "lincoln",
    "name": "Lincoln",
    "seats": 1,
+   "votes2022": 42160,
    "results_2022": {
     "lab": 43.81,
     "con": 22.95,
@@ -6584,6 +6858,7 @@
    "id": "liverpoolgarston",
    "name": "Liverpool Garston",
    "seats": 1,
+   "votes2022": 41993,
    "results_2022": {
     "lab": 58.37,
     "con": 7.01,
@@ -6608,6 +6883,7 @@
    "id": "liverpoolriverside",
    "name": "Liverpool Riverside",
    "seats": 1,
+   "votes2022": 32381,
    "results_2022": {
     "lab": 61.89,
     "con": 3.57,
@@ -6632,6 +6908,7 @@
    "id": "liverpoolwalton",
    "name": "Liverpool Walton",
    "seats": 1,
+   "votes2022": 36886,
    "results_2022": {
     "lab": 70.57,
     "con": 3.48,
@@ -6656,6 +6933,7 @@
    "id": "liverpoolwavertree",
    "name": "Liverpool Wavertree",
    "seats": 1,
+   "votes2022": 39815,
    "results_2022": {
     "lab": 57.96,
     "con": 4.74,
@@ -6680,6 +6958,7 @@
    "id": "liverpoolwestderby",
    "name": "Liverpool West Derby",
    "seats": 1,
+   "votes2022": 38006,
    "results_2022": {
     "lab": 66.57,
     "con": 4.12,
@@ -6704,6 +6983,7 @@
    "id": "loughborough",
    "name": "Loughborough",
    "seats": 1,
+   "votes2022": 42259,
    "results_2022": {
     "lab": 40.82,
     "con": 29.08,
@@ -6728,6 +7008,7 @@
    "id": "louthandhorncastle",
    "name": "Louth and Horncastle",
    "seats": 1,
+   "votes2022": 46479,
    "results_2022": {
     "lab": 22.54,
     "con": 37.52,
@@ -6752,6 +7033,7 @@
    "id": "lowestoft",
    "name": "Lowestoft",
    "seats": 1,
+   "votes2022": 41824,
    "results_2022": {
     "lab": 34.58,
     "con": 29.76,
@@ -6776,6 +7058,7 @@
    "id": "lutonnorth",
    "name": "Luton North",
    "seats": 1,
+   "votes2022": 38745,
    "results_2022": {
     "lab": 37.88,
     "con": 18.5,
@@ -6800,6 +7083,7 @@
    "id": "lutonsouthandsouthbedfordshire",
    "name": "Luton South and South Bedfordshire",
    "seats": 1,
+   "votes2022": 38382,
    "results_2022": {
     "lab": 35.42,
     "con": 17.55,
@@ -6824,6 +7108,7 @@
    "id": "macclesfield",
    "name": "Macclesfield",
    "seats": 1,
+   "votes2022": 52792,
    "results_2022": {
     "lab": 46.73,
     "con": 29.46,
@@ -6848,6 +7133,7 @@
    "id": "maidenhead",
    "name": "Maidenhead",
    "seats": 1,
+   "votes2022": 50329,
    "results_2022": {
     "lab": 11.46,
     "con": 37.62,
@@ -6872,6 +7158,7 @@
    "id": "maidstoneandmalling",
    "name": "Maidstone and Malling",
    "seats": 1,
+   "votes2022": 46389,
    "results_2022": {
     "lab": 26.89,
     "con": 30.49,
@@ -6896,6 +7183,7 @@
    "id": "makerfield",
    "name": "Makerfield",
    "seats": 1,
+   "votes2022": 40263,
    "results_2022": {
     "lab": 45.21,
     "con": 10.88,
@@ -6920,6 +7208,7 @@
    "id": "maldon",
    "name": "Maldon",
    "seats": 1,
+   "votes2022": 49841,
    "results_2022": {
     "lab": 19.7,
     "con": 38.87,
@@ -6944,6 +7233,7 @@
    "id": "manchestercentral",
    "name": "Manchester Central",
    "seats": 1,
+   "votes2022": 39725,
    "results_2022": {
     "lab": 50.81,
     "con": 7.11,
@@ -6968,6 +7258,7 @@
    "id": "manchesterrusholme",
    "name": "Manchester Rusholme",
    "seats": 1,
+   "votes2022": 29033,
    "results_2022": {
     "lab": 51.85,
     "con": 5.78,
@@ -6992,6 +7283,7 @@
    "id": "manchesterwithington",
    "name": "Manchester Withington",
    "seats": 1,
+   "votes2022": 41731,
    "results_2022": {
     "lab": 52.88,
     "con": 5.46,
@@ -7016,6 +7308,7 @@
    "id": "mansfield",
    "name": "Mansfield",
    "seats": 1,
+   "votes2022": 41087,
    "results_2022": {
     "lab": 39.06,
     "con": 30.58,
@@ -7040,6 +7333,7 @@
    "id": "melkshamanddevizes",
    "name": "Melksham and Devizes",
    "seats": 1,
+   "votes2022": 51203,
    "results_2022": {
     "lab": 8.96,
     "con": 34.43,
@@ -7064,6 +7358,7 @@
    "id": "meltonandsyston",
    "name": "Melton and Syston",
    "seats": 1,
+   "votes2022": 45986,
    "results_2022": {
     "lab": 26.38,
     "con": 38.11,
@@ -7088,6 +7383,7 @@
    "id": "meridenandsolihulleast",
    "name": "Meriden and Solihull East",
    "seats": 1,
+   "votes2022": 44035,
    "results_2022": {
     "lab": 27.72,
     "con": 38.13,
@@ -7112,6 +7408,7 @@
    "id": "midbedfordshire",
    "name": "Mid Bedfordshire",
    "seats": 1,
+   "votes2022": 49621,
    "results_2022": {
     "lab": 31.42,
     "con": 34.08,
@@ -7136,6 +7433,7 @@
    "id": "midbuckinghamshire",
    "name": "Mid Buckinghamshire",
    "seats": 1,
+   "votes2022": 53951,
    "results_2022": {
     "lab": 17.0,
     "con": 37.35,
@@ -7160,6 +7458,7 @@
    "id": "midcheshire",
    "name": "Mid Cheshire",
    "seats": 1,
+   "votes2022": 41509,
    "results_2022": {
     "lab": 44.47,
     "con": 22.96,
@@ -7184,6 +7483,7 @@
    "id": "midderbyshire",
    "name": "Mid Derbyshire",
    "seats": 1,
+   "votes2022": 47543,
    "results_2022": {
     "lab": 36.48,
     "con": 32.53,
@@ -7208,6 +7508,7 @@
    "id": "middorsetandnorthpoole",
    "name": "Mid Dorset and North Poole",
    "seats": 1,
+   "votes2022": 49514,
    "results_2022": {
     "lab": 9.22,
     "con": 40.57,
@@ -7232,6 +7533,7 @@
    "id": "midleicestershire",
    "name": "Mid Leicestershire",
    "seats": 1,
+   "votes2022": 48050,
    "results_2022": {
     "lab": 32.33,
     "con": 36.91,
@@ -7256,6 +7558,7 @@
    "id": "midnorfolk",
    "name": "Mid Norfolk",
    "seats": 1,
+   "votes2022": 45897,
    "results_2022": {
     "lab": 29.88,
     "con": 36.54,
@@ -7280,6 +7583,7 @@
    "id": "midsussex",
    "name": "Mid Sussex",
    "seats": 1,
+   "votes2022": 53328,
    "results_2022": {
     "lab": 17.62,
     "con": 27.14,
@@ -7304,6 +7608,7 @@
    "id": "middlesbroughandthornabyeast",
    "name": "Middlesbrough and Thornaby East",
    "seats": 1,
+   "votes2022": 34407,
    "results_2022": {
     "lab": 47.19,
     "con": 17.94,
@@ -7328,6 +7633,7 @@
    "id": "middlesbroughsouthandeastcleveland",
    "name": "Middlesbrough South and East Cleveland",
    "seats": 1,
+   "votes2022": 38035,
    "results_2022": {
     "lab": 43.3,
     "con": 42.73,
@@ -7352,6 +7658,7 @@
    "id": "miltonkeynescentral",
    "name": "Milton Keynes Central",
    "seats": 1,
+   "votes2022": 47729,
    "results_2022": {
     "lab": 42.34,
     "con": 27.07,
@@ -7376,6 +7683,7 @@
    "id": "miltonkeynesnorth",
    "name": "Milton Keynes North",
    "seats": 1,
+   "votes2022": 45977,
    "results_2022": {
     "lab": 42.02,
     "con": 30.21,
@@ -7400,6 +7708,7 @@
    "id": "mitchamandmorden",
    "name": "Mitcham and Morden",
    "seats": 1,
+   "votes2022": 45255,
    "results_2022": {
     "lab": 55.43,
     "con": 13.97,
@@ -7424,6 +7733,7 @@
    "id": "morecambeandlunesdale",
    "name": "Morecambe and Lunesdale",
    "seats": 1,
+   "votes2022": 48059,
    "results_2022": {
     "lab": 40.79,
     "con": 28.69,
@@ -7448,6 +7758,7 @@
    "id": "newforesteast",
    "name": "New Forest East",
    "seats": 1,
+   "votes2022": 45230,
    "results_2022": {
     "lab": 19.71,
     "con": 38.5,
@@ -7472,6 +7783,7 @@
    "id": "newforestwest",
    "name": "New Forest West",
    "seats": 1,
+   "votes2022": 46337,
    "results_2022": {
     "lab": 23.33,
     "con": 35.42,
@@ -7496,6 +7808,7 @@
    "id": "newark",
    "name": "Newark",
    "seats": 1,
+   "votes2022": 53459,
    "results_2022": {
     "lab": 32.54,
     "con": 39.22,
@@ -7520,6 +7833,7 @@
    "id": "newbury",
    "name": "Newbury",
    "seats": 1,
+   "votes2022": 48930,
    "results_2022": {
     "lab": 7.48,
     "con": 35.29,
@@ -7544,6 +7858,7 @@
    "id": "newcastleupontynecentralandwest",
    "name": "Newcastle upon Tyne Central and West",
    "seats": 1,
+   "votes2022": 41355,
    "results_2022": {
     "lab": 45.64,
     "con": 10.22,
@@ -7568,6 +7883,7 @@
    "id": "newcastleupontyneeastandwallsend",
    "name": "Newcastle upon Tyne East and Wallsend",
    "seats": 1,
+   "votes2022": 42321,
    "results_2022": {
     "lab": 50.09,
     "con": 8.32,
@@ -7592,6 +7908,7 @@
    "id": "newcastleupontynenorth",
    "name": "Newcastle upon Tyne North",
    "seats": 1,
+   "votes2022": 48617,
    "results_2022": {
     "lab": 50.27,
     "con": 13.74,
@@ -7616,6 +7933,7 @@
    "id": "newcastle-under-lyme",
    "name": "Newcastle-under-Lyme",
    "seats": 1,
+   "votes2022": 39618,
    "results_2022": {
     "lab": 40.37,
     "con": 27.57,
@@ -7640,6 +7958,7 @@
    "id": "newtonabbot",
    "name": "Newton Abbot",
    "seats": 1,
+   "votes2022": 47992,
    "results_2022": {
     "lab": 14.83,
     "con": 26.99,
@@ -7664,6 +7983,7 @@
    "id": "newtonaycliffeandspennymoor",
    "name": "Newton Aycliffe and Spennymoor",
    "seats": 1,
+   "votes2022": 39846,
    "results_2022": {
     "lab": 46.16,
     "con": 20.57,
@@ -7688,6 +8008,7 @@
    "id": "normantonandhemsworth",
    "name": "Normanton and Hemsworth",
    "seats": 1,
+   "votes2022": 36349,
    "results_2022": {
     "lab": 47.53,
     "con": 13.74,
@@ -7712,6 +8033,7 @@
    "id": "northbedfordshire",
    "name": "North Bedfordshire",
    "seats": 1,
+   "votes2022": 51561,
    "results_2022": {
     "lab": 28.25,
     "con": 38.75,
@@ -7736,6 +8058,7 @@
    "id": "northcornwall",
    "name": "North Cornwall",
    "seats": 1,
+   "votes2022": 51245,
    "results_2022": {
     "lab": 5.77,
     "con": 27.59,
@@ -7760,6 +8083,7 @@
    "id": "northcotswolds",
    "name": "North Cotswolds",
    "seats": 1,
+   "votes2022": 50229,
    "results_2022": {
     "lab": 17.11,
     "con": 34.69,
@@ -7784,6 +8108,7 @@
    "id": "northdevon",
    "name": "North Devon",
    "seats": 1,
+   "votes2022": 51417,
    "results_2022": {
     "lab": 6.25,
     "con": 29.32,
@@ -7808,6 +8133,7 @@
    "id": "northdorset",
    "name": "North Dorset",
    "seats": 1,
+   "votes2022": 49683,
    "results_2022": {
     "lab": 8.8,
     "con": 36.65,
@@ -7832,6 +8158,7 @@
    "id": "northdurham",
    "name": "North Durham",
    "seats": 1,
+   "votes2022": 41565,
    "results_2022": {
     "lab": 39.85,
     "con": 15.62,
@@ -7856,6 +8183,7 @@
    "id": "northeastcambridgeshire",
    "name": "North East Cambridgeshire",
    "seats": 1,
+   "votes2022": 39176,
    "results_2022": {
     "lab": 20.44,
     "con": 41.47,
@@ -7880,6 +8208,7 @@
    "id": "northeastderbyshire",
    "name": "North East Derbyshire",
    "seats": 1,
+   "votes2022": 45866,
    "results_2022": {
     "lab": 38.35,
     "con": 34.53,
@@ -7904,6 +8233,7 @@
    "id": "northeasthampshire",
    "name": "North East Hampshire",
    "seats": 1,
+   "votes2022": 55560,
    "results_2022": {
     "lab": 9.1,
     "con": 36.98,
@@ -7928,6 +8258,7 @@
    "id": "northeasthertfordshire",
    "name": "North East Hertfordshire",
    "seats": 1,
+   "votes2022": 52520,
    "results_2022": {
     "lab": 34.95,
     "con": 31.29,
@@ -7952,6 +8283,7 @@
    "id": "northeastsomersetandhanham",
    "name": "North East Somerset and Hanham",
    "seats": 1,
+   "votes2022": 51125,
    "results_2022": {
     "lab": 40.57,
     "con": 30.16,
@@ -7976,6 +8308,7 @@
    "id": "northherefordshire",
    "name": "North Herefordshire",
    "seats": 1,
+   "votes2022": 50362,
    "results_2022": {
     "lab": 6.36,
     "con": 31.46,
@@ -8000,6 +8333,7 @@
    "id": "northnorfolk",
    "name": "North Norfolk",
    "seats": 1,
+   "votes2022": 47043,
    "results_2022": {
     "lab": 6.12,
     "con": 35.93,
@@ -8024,6 +8358,7 @@
    "id": "northnorthumberland",
    "name": "North Northumberland",
    "seats": 1,
+   "votes2022": 48843,
    "results_2022": {
     "lab": 36.56,
     "con": 26.18,
@@ -8048,6 +8383,7 @@
    "id": "northshropshire",
    "name": "North Shropshire",
    "seats": 1,
+   "votes2022": 49594,
    "results_2022": {
     "lab": 6.9,
     "con": 21.98,
@@ -8072,6 +8408,7 @@
    "id": "northsomerset",
    "name": "North Somerset",
    "seats": 1,
+   "votes2022": 53766,
    "results_2022": {
     "lab": 35.59,
     "con": 34.41,
@@ -8096,6 +8433,7 @@
    "id": "northwarwickshireandbedworth",
    "name": "North Warwickshire and Bedworth",
    "seats": 1,
+   "votes2022": 40940,
    "results_2022": {
     "lab": 35.97,
     "con": 30.6,
@@ -8120,6 +8458,7 @@
    "id": "northwestcambridgeshire",
    "name": "North West Cambridgeshire",
    "seats": 1,
+   "votes2022": 44424,
    "results_2022": {
     "lab": 33.28,
     "con": 33.19,
@@ -8144,6 +8483,7 @@
    "id": "northwestessex",
    "name": "North West Essex",
    "seats": 1,
+   "votes2022": 54386,
    "results_2022": {
     "lab": 30.8,
     "con": 35.6,
@@ -8168,6 +8508,7 @@
    "id": "northwesthampshire",
    "name": "North West Hampshire",
    "seats": 1,
+   "votes2022": 50823,
    "results_2022": {
     "lab": 28.49,
     "con": 34.96,
@@ -8192,6 +8533,7 @@
    "id": "northwestleicestershire",
    "name": "North West Leicestershire",
    "seats": 1,
+   "votes2022": 48572,
    "results_2022": {
     "lab": 34.73,
     "con": 32.65,
@@ -8216,6 +8558,7 @@
    "id": "northwestnorfolk",
    "name": "North West Norfolk",
    "seats": 1,
+   "votes2022": 44566,
    "results_2022": {
     "lab": 25.0,
     "con": 36.12,
@@ -8240,6 +8583,7 @@
    "id": "northamptonnorth",
    "name": "Northampton North",
    "seats": 1,
+   "votes2022": 41813,
    "results_2022": {
     "lab": 43.55,
     "con": 21.99,
@@ -8264,6 +8608,7 @@
    "id": "northamptonsouth",
    "name": "Northampton South",
    "seats": 1,
+   "votes2022": 43904,
    "results_2022": {
     "lab": 38.47,
     "con": 29.2,
@@ -8288,6 +8633,7 @@
    "id": "norwichnorth",
    "name": "Norwich North",
    "seats": 1,
+   "votes2022": 45765,
    "results_2022": {
     "lab": 45.44,
     "con": 21.73,
@@ -8312,6 +8658,7 @@
    "id": "norwichsouth",
    "name": "Norwich South",
    "seats": 1,
+   "votes2022": 45095,
    "results_2022": {
     "lab": 47.64,
     "con": 12.88,
@@ -8336,6 +8683,7 @@
    "id": "nottinghameast",
    "name": "Nottingham East",
    "seats": 1,
+   "votes2022": 36401,
    "results_2022": {
     "lab": 53.55,
     "con": 10.78,
@@ -8360,6 +8708,7 @@
    "id": "nottinghamnorthandkimberley",
    "name": "Nottingham North and Kimberley",
    "seats": 1,
+   "votes2022": 35007,
    "results_2022": {
     "lab": 47.08,
     "con": 19.39,
@@ -8384,6 +8733,7 @@
    "id": "nottinghamsouth",
    "name": "Nottingham South",
    "seats": 1,
+   "votes2022": 32879,
    "results_2022": {
     "lab": 47.38,
     "con": 16.07,
@@ -8408,6 +8758,7 @@
    "id": "nuneaton",
    "name": "Nuneaton",
    "seats": 1,
+   "votes2022": 41213,
    "results_2022": {
     "lab": 36.92,
     "con": 28.48,
@@ -8432,6 +8783,7 @@
    "id": "oldbexleyandsidcup",
    "name": "Old Bexley and Sidcup",
    "seats": 1,
+   "votes2022": 47633,
    "results_2022": {
     "lab": 30.15,
     "con": 37.6,
@@ -8456,6 +8808,7 @@
    "id": "oldhameastandsaddleworth",
    "name": "Oldham East and Saddleworth",
    "seats": 1,
+   "votes2022": 40065,
    "results_2022": {
     "lab": 35.17,
     "con": 17.07,
@@ -8480,6 +8833,7 @@
    "id": "oldhamwestchaddertonandroyton",
    "name": "Oldham West, Chadderton and Royton",
    "seats": 1,
+   "votes2022": 38573,
    "results_2022": {
     "lab": 34.3,
     "con": 10.54,
@@ -8504,6 +8858,7 @@
    "id": "orpington",
    "name": "Orpington",
    "seats": 1,
+   "votes2022": 46073,
    "results_2022": {
     "lab": 26.88,
     "con": 37.99,
@@ -8528,6 +8883,7 @@
    "id": "ossettanddenbydale",
    "name": "Ossett and Denby Dale",
    "seats": 1,
+   "votes2022": 43873,
    "results_2022": {
     "lab": 39.28,
     "con": 28.92,
@@ -8552,6 +8908,7 @@
    "id": "oxfordeast",
    "name": "Oxford East",
    "seats": 1,
+   "votes2022": 39341,
    "results_2022": {
     "lab": 49.67,
     "con": 12.05,
@@ -8576,6 +8933,7 @@
    "id": "oxfordwestandabingdon",
    "name": "Oxford West and Abingdon",
    "seats": 1,
+   "votes2022": 45998,
    "results_2022": {
     "lab": 13.0,
     "con": 18.52,
@@ -8600,6 +8958,7 @@
    "id": "peckham",
    "name": "Peckham",
    "seats": 1,
+   "votes2022": 38797,
    "results_2022": {
     "lab": 58.8,
     "con": 5.87,
@@ -8624,6 +8983,7 @@
    "id": "pendleandclitheroe",
    "name": "Pendle and Clitheroe",
    "seats": 1,
+   "votes2022": 46754,
    "results_2022": {
     "lab": 34.5,
     "con": 32.57,
@@ -8648,6 +9008,7 @@
    "id": "penistoneandstocksbridge",
    "name": "Penistone and Stocksbridge",
    "seats": 1,
+   "votes2022": 43965,
    "results_2022": {
     "lab": 43.6,
     "con": 23.72,
@@ -8672,6 +9033,7 @@
    "id": "penrithandsolway",
    "name": "Penrith and Solway",
    "seats": 1,
+   "votes2022": 49281,
    "results_2022": {
     "lab": 40.56,
     "con": 29.89,
@@ -8696,6 +9058,7 @@
    "id": "peterborough",
    "name": "Peterborough",
    "seats": 1,
+   "votes2022": 41872,
    "results_2022": {
     "lab": 32.05,
     "con": 31.76,
@@ -8720,6 +9083,7 @@
    "id": "plymouthmoorview",
    "name": "Plymouth Moor View",
    "seats": 1,
+   "votes2022": 42856,
    "results_2022": {
     "lab": 41.22,
     "con": 28.14,
@@ -8744,6 +9108,7 @@
    "id": "plymouthsuttonanddevonport",
    "name": "Plymouth Sutton and Devonport",
    "seats": 1,
+   "votes2022": 42095,
    "results_2022": {
     "lab": 49.4,
     "con": 16.33,
@@ -8768,6 +9133,7 @@
    "id": "pontefractcastlefordandknottingley",
    "name": "Pontefract, Castleford and Knottingley",
    "seats": 1,
+   "votes2022": 35957,
    "results_2022": {
     "lab": 47.53,
     "con": 15.03,
@@ -8792,6 +9158,7 @@
    "id": "poole",
    "name": "Poole",
    "seats": 1,
+   "votes2022": 44495,
    "results_2022": {
     "lab": 31.84,
     "con": 31.8,
@@ -8816,6 +9183,7 @@
    "id": "poplarandlimehouse",
    "name": "Poplar and Limehouse",
    "seats": 1,
+   "votes2022": 43051,
    "results_2022": {
     "lab": 43.05,
     "con": 11.01,
@@ -8840,6 +9208,7 @@
    "id": "portsmouthnorth",
    "name": "Portsmouth North",
    "seats": 1,
+   "votes2022": 41593,
    "results_2022": {
     "lab": 34.85,
     "con": 32.97,
@@ -8864,6 +9233,7 @@
    "id": "portsmouthsouth",
    "name": "Portsmouth South",
    "seats": 1,
+   "votes2022": 38928,
    "results_2022": {
     "lab": 48.44,
     "con": 14.5,
@@ -8888,6 +9258,7 @@
    "id": "preston",
    "name": "Preston",
    "seats": 1,
+   "votes2022": 39993,
    "results_2022": {
     "lab": 35.02,
     "con": 13.03,
@@ -8912,6 +9283,7 @@
    "id": "putney",
    "name": "Putney",
    "seats": 1,
+   "votes2022": 49295,
    "results_2022": {
     "lab": 48.92,
     "con": 23.58,
@@ -8936,6 +9308,7 @@
    "id": "queensparkandmaidavale",
    "name": "Queen's Park and Maida Vale",
    "seats": 1,
+   "votes2022": 38343,
    "results_2022": {
     "lab": 52.49,
     "con": 13.27,
@@ -8960,6 +9333,7 @@
    "id": "rawmarshandconisbrough",
    "name": "Rawmarsh and Conisbrough",
    "seats": 1,
+   "votes2022": 33904,
    "results_2022": {
     "lab": 49.0,
     "con": 13.26,
@@ -8984,6 +9358,7 @@
    "id": "rayleighandwickford",
    "name": "Rayleigh and Wickford",
    "seats": 1,
+   "votes2022": 47978,
    "results_2022": {
     "lab": 24.64,
     "con": 37.01,
@@ -9008,6 +9383,7 @@
    "id": "readingcentral",
    "name": "Reading Central",
    "seats": 1,
+   "votes2022": 45291,
    "results_2022": {
     "lab": 47.69,
     "con": 19.79,
@@ -9032,6 +9408,7 @@
    "id": "readingwestandmidberkshire",
    "name": "Reading West and Mid Berkshire",
    "seats": 1,
+   "votes2022": 46551,
    "results_2022": {
     "lab": 34.96,
     "con": 32.03,
@@ -9056,6 +9433,7 @@
    "id": "redcar",
    "name": "Redcar",
    "seats": 1,
+   "votes2022": 38209,
    "results_2022": {
     "lab": 40.99,
     "con": 32.3,
@@ -9080,6 +9458,7 @@
    "id": "redditch",
    "name": "Redditch",
    "seats": 1,
+   "votes2022": 42375,
    "results_2022": {
     "lab": 34.95,
     "con": 33.09,
@@ -9104,6 +9483,7 @@
    "id": "reigate",
    "name": "Reigate",
    "seats": 1,
+   "votes2022": 53161,
    "results_2022": {
     "lab": 29.41,
     "con": 35.41,
@@ -9128,6 +9508,7 @@
    "id": "ribblevalley",
    "name": "Ribble Valley",
    "seats": 1,
+   "votes2022": 52023,
    "results_2022": {
     "lab": 34.94,
     "con": 33.29,
@@ -9152,6 +9533,7 @@
    "id": "richmondandnorthallerton",
    "name": "Richmond and Northallerton",
    "seats": 1,
+   "votes2022": 48526,
    "results_2022": {
     "lab": 22.41,
     "con": 47.52,
@@ -9176,6 +9558,7 @@
    "id": "richmondpark",
    "name": "Richmond Park",
    "seats": 1,
+   "votes2022": 52205,
    "results_2022": {
     "lab": 9.67,
     "con": 21.79,
@@ -9200,6 +9583,7 @@
    "id": "rochdale",
    "name": "Rochdale",
    "seats": 1,
+   "votes2022": 39688,
    "results_2022": {
     "lab": 32.82,
     "con": 10.77,
@@ -9224,6 +9608,7 @@
    "id": "rochesterandstrood",
    "name": "Rochester and Strood",
    "seats": 1,
+   "votes2022": 42598,
    "results_2022": {
     "lab": 36.16,
     "con": 29.28,
@@ -9248,6 +9633,7 @@
    "id": "romford",
    "name": "Romford",
    "seats": 1,
+   "votes2022": 44047,
    "results_2022": {
     "lab": 31.5,
     "con": 34.82,
@@ -9272,6 +9658,7 @@
    "id": "romseyandsouthamptonnorth",
    "name": "Romsey and Southampton North",
    "seats": 1,
+   "votes2022": 50027,
    "results_2022": {
     "lab": 9.27,
     "con": 39.76,
@@ -9296,6 +9683,7 @@
    "id": "rossendaleanddarwen",
    "name": "Rossendale and Darwen",
    "seats": 1,
+   "votes2022": 44618,
    "results_2022": {
     "lab": 40.9,
     "con": 28.28,
@@ -9320,6 +9708,7 @@
    "id": "rothervalley",
    "name": "Rother Valley",
    "seats": 1,
+   "votes2022": 41608,
    "results_2022": {
     "lab": 38.51,
     "con": 36.11,
@@ -9344,6 +9733,7 @@
    "id": "rotherham",
    "name": "Rotherham",
    "seats": 1,
+   "votes2022": 36932,
    "results_2022": {
     "lab": 45.14,
     "con": 0.0,
@@ -9368,6 +9758,7 @@
    "id": "rugby",
    "name": "Rugby",
    "seats": 1,
+   "votes2022": 49004,
    "results_2022": {
     "lab": 39.86,
     "con": 30.82,
@@ -9392,6 +9783,7 @@
    "id": "ruislipnorthwoodandpinner",
    "name": "Ruislip, Northwood and Pinner",
    "seats": 1,
+   "votes2022": 47091,
    "results_2022": {
     "lab": 29.27,
     "con": 45.37,
@@ -9416,6 +9808,7 @@
    "id": "runcornandhelsby",
    "name": "Runcorn and Helsby",
    "seats": 1,
+   "votes2022": 42235,
    "results_2022": {
     "lab": 52.94,
     "con": 16.0,
@@ -9440,6 +9833,7 @@
    "id": "runnymedeandweybridge",
    "name": "Runnymede and Weybridge",
    "seats": 1,
+   "votes2022": 48253,
    "results_2022": {
     "lab": 20.65,
     "con": 38.22,
@@ -9464,6 +9858,7 @@
    "id": "rushcliffe",
    "name": "Rushcliffe",
    "seats": 1,
+   "votes2022": 57744,
    "results_2022": {
     "lab": 43.8,
     "con": 30.94,
@@ -9488,6 +9883,7 @@
    "id": "rutlandandstamford",
    "name": "Rutland and Stamford",
    "seats": 1,
+   "votes2022": 48577,
    "results_2022": {
     "lab": 22.34,
     "con": 43.74,
@@ -9512,6 +9908,7 @@
    "id": "salford",
    "name": "Salford",
    "seats": 1,
+   "votes2022": 39704,
    "results_2022": {
     "lab": 53.22,
     "con": 9.02,
@@ -9536,6 +9933,7 @@
    "id": "salisbury",
    "name": "Salisbury",
    "seats": 1,
+   "votes2022": 50173,
    "results_2022": {
     "lab": 26.51,
     "con": 34.1,
@@ -9560,6 +9958,7 @@
    "id": "scarboroughandwhitby",
    "name": "Scarborough and Whitby",
    "seats": 1,
+   "votes2022": 44221,
    "results_2022": {
     "lab": 40.16,
     "con": 27.93,
@@ -9584,6 +9983,7 @@
    "id": "scunthorpe",
    "name": "Scunthorpe",
    "seats": 1,
+   "votes2022": 39051,
    "results_2022": {
     "lab": 39.65,
     "con": 30.58,
@@ -9608,6 +10008,7 @@
    "id": "seftoncentral",
    "name": "Sefton Central",
    "seats": 1,
+   "votes2022": 47449,
    "results_2022": {
     "lab": 56.42,
     "con": 17.89,
@@ -9632,6 +10033,7 @@
    "id": "selby",
    "name": "Selby",
    "seats": 1,
+   "votes2022": 49222,
    "results_2022": {
     "lab": 46.3,
     "con": 25.58,
@@ -9656,6 +10058,7 @@
    "id": "sevenoaks",
    "name": "Sevenoaks",
    "seats": 1,
+   "votes2022": 49899,
    "results_2022": {
     "lab": 13.63,
     "con": 36.73,
@@ -9680,6 +10083,7 @@
    "id": "sheffieldbrightsideandhillsborough",
    "name": "Sheffield Brightside and Hillsborough",
    "seats": 1,
+   "votes2022": 31612,
    "results_2022": {
     "lab": 51.57,
     "con": 12.87,
@@ -9704,6 +10108,7 @@
    "id": "sheffieldcentral",
    "name": "Sheffield Central",
    "seats": 1,
+   "votes2022": 31803,
    "results_2022": {
     "lab": 52.1,
     "con": 7.35,
@@ -9728,6 +10133,7 @@
    "id": "sheffieldhallam",
    "name": "Sheffield Hallam",
    "seats": 1,
+   "votes2022": 51601,
    "results_2022": {
     "lab": 46.27,
     "con": 12.02,
@@ -9752,6 +10158,7 @@
    "id": "sheffieldheeley",
    "name": "Sheffield Heeley",
    "seats": 1,
+   "votes2022": 38446,
    "results_2022": {
     "lab": 55.22,
     "con": 13.63,
@@ -9776,6 +10183,7 @@
    "id": "sheffieldsoutheast",
    "name": "Sheffield South East",
    "seats": 1,
+   "votes2022": 35771,
    "results_2022": {
     "lab": 52.3,
     "con": 17.48,
@@ -9800,6 +10208,7 @@
    "id": "sherwoodforest",
    "name": "Sherwood Forest",
    "seats": 1,
+   "votes2022": 48660,
    "results_2022": {
     "lab": 38.72,
     "con": 27.53,
@@ -9824,6 +10233,7 @@
    "id": "shipley",
    "name": "Shipley",
    "seats": 1,
+   "votes2022": 48303,
    "results_2022": {
     "lab": 45.0,
     "con": 27.19,
@@ -9848,6 +10258,7 @@
    "id": "shrewsbury",
    "name": "Shrewsbury",
    "seats": 1,
+   "votes2022": 51560,
    "results_2022": {
     "lab": 44.48,
     "con": 22.45,
@@ -9872,6 +10283,7 @@
    "id": "sittingbourneandsheppey",
    "name": "Sittingbourne and Sheppey",
    "seats": 1,
+   "votes2022": 40998,
    "results_2022": {
     "lab": 29.07,
     "con": 28.21,
@@ -9896,6 +10308,7 @@
    "id": "skiptonandripon",
    "name": "Skipton and Ripon",
    "seats": 1,
+   "votes2022": 53450,
    "results_2022": {
     "lab": 32.15,
     "con": 35.23,
@@ -9920,6 +10333,7 @@
    "id": "sleafordandnorthhykeham",
    "name": "Sleaford and North Hykeham",
    "seats": 1,
+   "votes2022": 48565,
    "results_2022": {
     "lab": 26.77,
     "con": 35.72,
@@ -9944,6 +10358,7 @@
    "id": "slough",
    "name": "Slough",
    "seats": 1,
+   "votes2022": 43278,
    "results_2022": {
     "lab": 33.89,
     "con": 17.23,
@@ -9968,6 +10383,7 @@
    "id": "smethwick",
    "name": "Smethwick",
    "seats": 1,
+   "votes2022": 35115,
    "results_2022": {
     "lab": 48.01,
     "con": 12.95,
@@ -9992,6 +10408,7 @@
    "id": "solihullwestandshirley",
    "name": "Solihull West and Shirley",
    "seats": 1,
+   "votes2022": 46877,
    "results_2022": {
     "lab": 24.88,
     "con": 34.74,
@@ -10016,6 +10433,7 @@
    "id": "southbasildonandeastthurrock",
    "name": "South Basildon and East Thurrock",
    "seats": 1,
+   "votes2022": 39549,
    "results_2022": {
     "lab": 30.54,
     "con": 25.69,
@@ -10040,6 +10458,7 @@
    "id": "southcambridgeshire",
    "name": "South Cambridgeshire",
    "seats": 1,
+   "votes2022": 54885,
    "results_2022": {
     "lab": 11.13,
     "con": 27.44,
@@ -10064,6 +10483,7 @@
    "id": "southcotswolds",
    "name": "South Cotswolds",
    "seats": 1,
+   "votes2022": 52287,
    "results_2022": {
     "lab": 7.54,
     "con": 34.4,
@@ -10088,6 +10508,7 @@
    "id": "southderbyshire",
    "name": "South Derbyshire",
    "seats": 1,
+   "votes2022": 45737,
    "results_2022": {
     "lab": 38.77,
     "con": 29.66,
@@ -10112,6 +10533,7 @@
    "id": "southdevon",
    "name": "South Devon",
    "seats": 1,
+   "votes2022": 49004,
    "results_2022": {
     "lab": 6.26,
     "con": 31.45,
@@ -10136,6 +10558,7 @@
    "id": "southdorset",
    "name": "South Dorset",
    "seats": 1,
+   "votes2022": 49037,
    "results_2022": {
     "lab": 31.93,
     "con": 29.8,
@@ -10160,6 +10583,7 @@
    "id": "southeastcornwall",
    "name": "South East Cornwall",
    "seats": 1,
+   "votes2022": 49286,
    "results_2022": {
     "lab": 31.79,
     "con": 27.92,
@@ -10184,6 +10608,7 @@
    "id": "southhollandandthedeepings",
    "name": "South Holland and The Deepings",
    "seats": 1,
+   "votes2022": 45930,
    "results_2022": {
     "lab": 19.78,
     "con": 38.02,
@@ -10208,6 +10633,7 @@
    "id": "southleicestershire",
    "name": "South Leicestershire",
    "seats": 1,
+   "votes2022": 51359,
    "results_2022": {
     "lab": 24.84,
     "con": 35.56,
@@ -10232,6 +10658,7 @@
    "id": "southnorfolk",
    "name": "South Norfolk",
    "seats": 1,
+   "votes2022": 49579,
    "results_2022": {
     "lab": 35.0,
     "con": 29.3,
@@ -10256,6 +10683,7 @@
    "id": "southnorthamptonshire",
    "name": "South Northamptonshire",
    "seats": 1,
+   "votes2022": 53697,
    "results_2022": {
     "lab": 28.87,
     "con": 35.74,
@@ -10280,6 +10708,7 @@
    "id": "southribble",
    "name": "South Ribble",
    "seats": 1,
+   "votes2022": 46720,
    "results_2022": {
     "lab": 42.47,
     "con": 28.55,
@@ -10304,6 +10733,7 @@
    "id": "southshields",
    "name": "South Shields",
    "seats": 1,
+   "votes2022": 36824,
    "results_2022": {
     "lab": 41.07,
     "con": 11.21,
@@ -10328,6 +10758,7 @@
    "id": "southshropshire",
    "name": "South Shropshire",
    "seats": 1,
+   "votes2022": 51653,
    "results_2022": {
     "lab": 13.43,
     "con": 34.13,
@@ -10352,6 +10783,7 @@
    "id": "southsuffolk",
    "name": "South Suffolk",
    "seats": 1,
+   "votes2022": 48801,
    "results_2022": {
     "lab": 26.71,
     "con": 32.95,
@@ -10376,6 +10808,7 @@
    "id": "southwestdevon",
    "name": "South West Devon",
    "seats": 1,
+   "votes2022": 52242,
    "results_2022": {
     "lab": 30.25,
     "con": 34.29,
@@ -10400,6 +10833,7 @@
    "id": "southwesthertfordshire",
    "name": "South West Hertfordshire",
    "seats": 1,
+   "votes2022": 48254,
    "results_2022": {
     "lab": 19.97,
     "con": 34.11,
@@ -10424,6 +10858,7 @@
    "id": "southwestnorfolk",
    "name": "South West Norfolk",
    "seats": 1,
+   "votes2022": 44335,
    "results_2022": {
     "lab": 26.72,
     "con": 25.3,
@@ -10448,6 +10883,7 @@
    "id": "southwestwiltshire",
    "name": "South West Wiltshire",
    "seats": 1,
+   "votes2022": 46168,
    "results_2022": {
     "lab": 26.8,
     "con": 33.83,
@@ -10472,6 +10908,7 @@
    "id": "southamptonitchen",
    "name": "Southampton Itchen",
    "seats": 1,
+   "votes2022": 38053,
    "results_2022": {
     "lab": 41.47,
     "con": 25.43,
@@ -10496,6 +10933,7 @@
    "id": "southamptontest",
    "name": "Southampton Test",
    "seats": 1,
+   "votes2022": 35805,
    "results_2022": {
     "lab": 44.53,
     "con": 18.47,
@@ -10520,6 +10958,7 @@
    "id": "southendeastandrochford",
    "name": "Southend East and Rochford",
    "seats": 1,
+   "votes2022": 39656,
    "results_2022": {
     "lab": 38.82,
     "con": 28.67,
@@ -10544,6 +10983,7 @@
    "id": "southendwestandleigh",
    "name": "Southend West and Leigh",
    "seats": 1,
+   "votes2022": 46968,
    "results_2022": {
     "lab": 35.64,
     "con": 31.49,
@@ -10568,6 +11008,7 @@
    "id": "southgateandwoodgreen",
    "name": "Southgate and Wood Green",
    "seats": 1,
+   "votes2022": 45671,
    "results_2022": {
     "lab": 51.1,
     "con": 17.6,
@@ -10592,6 +11033,7 @@
    "id": "southport",
    "name": "Southport",
    "seats": 1,
+   "votes2022": 45059,
    "results_2022": {
     "lab": 38.29,
     "con": 25.44,
@@ -10616,6 +11058,7 @@
    "id": "spelthorne",
    "name": "Spelthorne",
    "seats": 1,
+   "votes2022": 46166,
    "results_2022": {
     "lab": 26.96,
     "con": 30.41,
@@ -10640,6 +11083,7 @@
    "id": "spenvalley",
    "name": "Spen Valley",
    "seats": 1,
+   "votes2022": 41058,
    "results_2022": {
     "lab": 39.15,
     "con": 24.01,
@@ -10664,6 +11108,7 @@
    "id": "stalbans",
    "name": "St Albans",
    "seats": 1,
+   "votes2022": 51614,
    "results_2022": {
     "lab": 10.05,
     "con": 18.19,
@@ -10688,6 +11133,7 @@
    "id": "staustellandnewquay",
    "name": "St Austell and Newquay",
    "seats": 1,
+   "votes2022": 46732,
    "results_2022": {
     "lab": 34.15,
     "con": 28.86,
@@ -10712,6 +11158,7 @@
    "id": "sthelensnorth",
    "name": "St Helens North",
    "seats": 1,
+   "votes2022": 40474,
    "results_2022": {
     "lab": 52.59,
     "con": 11.14,
@@ -10736,6 +11183,7 @@
    "id": "sthelenssouthandwhiston",
    "name": "St Helens South and Whiston",
    "seats": 1,
+   "votes2022": 38035,
    "results_2022": {
     "lab": 49.74,
     "con": 8.04,
@@ -10760,6 +11208,7 @@
    "id": "stives",
    "name": "St Ives",
    "seats": 1,
+   "votes2022": 48106,
    "results_2022": {
     "lab": 5.8,
     "con": 23.38,
@@ -10784,6 +11233,7 @@
    "id": "stneotsandmidcambridgeshire",
    "name": "St Neots and Mid Cambridgeshire",
    "seats": 1,
+   "votes2022": 52882,
    "results_2022": {
     "lab": 13.08,
     "con": 28.17,
@@ -10808,6 +11258,7 @@
    "id": "stafford",
    "name": "Stafford",
    "seats": 1,
+   "votes2022": 46009,
    "results_2022": {
     "lab": 40.28,
     "con": 30.29,
@@ -10832,6 +11283,7 @@
    "id": "staffordshiremoorlands",
    "name": "Staffordshire Moorlands",
    "seats": 1,
+   "votes2022": 43302,
    "results_2022": {
     "lab": 32.64,
     "con": 35.36,
@@ -10856,6 +11308,7 @@
    "id": "stalybridgeandhyde",
    "name": "Stalybridge and Hyde",
    "seats": 1,
+   "votes2022": 37239,
    "results_2022": {
     "lab": 43.83,
     "con": 18.45,
@@ -10880,6 +11333,7 @@
    "id": "stevenage",
    "name": "Stevenage",
    "seats": 1,
+   "votes2022": 42715,
    "results_2022": {
     "lab": 41.43,
     "con": 25.94,
@@ -10904,6 +11358,7 @@
    "id": "stockport",
    "name": "Stockport",
    "seats": 1,
+   "votes2022": 43683,
    "results_2022": {
     "lab": 49.88,
     "con": 11.37,
@@ -10928,6 +11383,7 @@
    "id": "stocktonnorth",
    "name": "Stockton North",
    "seats": 1,
+   "votes2022": 37401,
    "results_2022": {
     "lab": 45.8,
     "con": 21.46,
@@ -10952,6 +11408,7 @@
    "id": "stocktonwest",
    "name": "Stockton West",
    "seats": 1,
+   "votes2022": 48638,
    "results_2022": {
     "lab": 37.49,
     "con": 41.88,
@@ -10976,6 +11433,7 @@
    "id": "stoke-on-trentcentral",
    "name": "Stoke-on-Trent Central",
    "seats": 1,
+   "votes2022": 35289,
    "results_2022": {
     "lab": 42.36,
     "con": 17.63,
@@ -11000,6 +11458,7 @@
    "id": "stoke-on-trentnorth",
    "name": "Stoke-on-Trent North",
    "seats": 1,
+   "votes2022": 36150,
    "results_2022": {
     "lab": 40.33,
     "con": 26.27,
@@ -11024,6 +11483,7 @@
    "id": "stoke-on-trentsouth",
    "name": "Stoke-on-Trent South",
    "seats": 1,
+   "votes2022": 40942,
    "results_2022": {
     "lab": 34.73,
     "con": 33.2,
@@ -11048,6 +11508,7 @@
    "id": "stonegreatwyrleyandpenkridge",
    "name": "Stone, Great Wyrley and Penkridge",
    "seats": 1,
+   "votes2022": 42770,
    "results_2022": {
     "lab": 33.7,
     "con": 46.48,
@@ -11072,6 +11533,7 @@
    "id": "stourbridge",
    "name": "Stourbridge",
    "seats": 1,
+   "votes2022": 39878,
    "results_2022": {
     "lab": 38.46,
     "con": 30.76,
@@ -11096,6 +11558,7 @@
    "id": "stratfordandbow",
    "name": "Stratford and Bow",
    "seats": 1,
+   "votes2022": 43435,
    "results_2022": {
     "lab": 44.08,
     "con": 7.17,
@@ -11120,6 +11583,7 @@
    "id": "stratford-on-avon",
    "name": "Stratford-on-Avon",
    "seats": 1,
+   "votes2022": 52959,
    "results_2022": {
     "lab": 7.09,
     "con": 30.83,
@@ -11144,6 +11608,7 @@
    "id": "streathamandcroydonnorth",
    "name": "Streatham and Croydon North",
    "seats": 1,
+   "votes2022": 44553,
    "results_2022": {
     "lab": 52.14,
     "con": 11.96,
@@ -11168,6 +11633,7 @@
    "id": "stretfordandurmston",
    "name": "Stretford and Urmston",
    "seats": 1,
+   "votes2022": 46002,
    "results_2022": {
     "lab": 49.22,
     "con": 14.11,
@@ -11192,6 +11658,7 @@
    "id": "stroud",
    "name": "Stroud",
    "seats": 1,
+   "votes2022": 55221,
    "results_2022": {
     "lab": 46.37,
     "con": 25.75,
@@ -11216,6 +11683,7 @@
    "id": "suffolkcoastal",
    "name": "Suffolk Coastal",
    "seats": 1,
+   "votes2022": 49451,
    "results_2022": {
     "lab": 31.69,
     "con": 29.53,
@@ -11240,6 +11708,7 @@
    "id": "sunderlandcentral",
    "name": "Sunderland Central",
    "seats": 1,
+   "votes2022": 39957,
    "results_2022": {
     "lab": 42.18,
     "con": 14.34,
@@ -11264,6 +11733,7 @@
    "id": "surreyheath",
    "name": "Surrey Heath",
    "seats": 1,
+   "votes2022": 47788,
    "results_2022": {
     "lab": 6.59,
     "con": 32.95,
@@ -11288,6 +11758,7 @@
    "id": "sussexweald",
    "name": "Sussex Weald",
    "seats": 1,
+   "votes2022": 49175,
    "results_2022": {
     "lab": 16.75,
     "con": 34.08,
@@ -11312,6 +11783,7 @@
    "id": "suttonandcheam",
    "name": "Sutton and Cheam",
    "seats": 1,
+   "votes2022": 47606,
    "results_2022": {
     "lab": 17.71,
     "con": 28.94,
@@ -11336,6 +11808,7 @@
    "id": "suttoncoldfield",
    "name": "Sutton Coldfield",
    "seats": 1,
+   "votes2022": 48333,
    "results_2022": {
     "lab": 33.02,
     "con": 38.28,
@@ -11360,6 +11833,7 @@
    "id": "swindonnorth",
    "name": "Swindon North",
    "seats": 1,
+   "votes2022": 44165,
    "results_2022": {
     "lab": 40.6,
     "con": 31.31,
@@ -11384,6 +11858,7 @@
    "id": "swindonsouth",
    "name": "Swindon South",
    "seats": 1,
+   "votes2022": 44794,
    "results_2022": {
     "lab": 48.39,
     "con": 26.95,
@@ -11408,6 +11883,7 @@
    "id": "tamworth",
    "name": "Tamworth",
    "seats": 1,
+   "votes2022": 43788,
    "results_2022": {
     "lab": 35.03,
     "con": 31.87,
@@ -11432,6 +11908,7 @@
    "id": "tatton",
    "name": "Tatton",
    "seats": 1,
+   "votes2022": 51909,
    "results_2022": {
     "lab": 36.26,
     "con": 38.44,
@@ -11456,6 +11933,7 @@
    "id": "tauntonandwellington",
    "name": "Taunton and Wellington",
    "seats": 1,
+   "votes2022": 50294,
    "results_2022": {
     "lab": 7.06,
     "con": 24.64,
@@ -11480,6 +11958,7 @@
    "id": "telford",
    "name": "Telford",
    "seats": 1,
+   "votes2022": 40730,
    "results_2022": {
     "lab": 44.71,
     "con": 21.43,
@@ -11504,6 +11983,7 @@
    "id": "tewkesbury",
    "name": "Tewkesbury",
    "seats": 1,
+   "votes2022": 48539,
    "results_2022": {
     "lab": 8.85,
     "con": 29.81,
@@ -11528,6 +12008,7 @@
    "id": "thewrekin",
    "name": "The Wrekin",
    "seats": 1,
+   "votes2022": 50020,
    "results_2022": {
     "lab": 30.86,
     "con": 32.63,
@@ -11552,6 +12033,7 @@
    "id": "thirskandmalton",
    "name": "Thirsk and Malton",
    "seats": 1,
+   "votes2022": 49797,
    "results_2022": {
     "lab": 24.09,
     "con": 39.25,
@@ -11576,6 +12058,7 @@
    "id": "thornburyandyate",
    "name": "Thornbury and Yate",
    "seats": 1,
+   "votes2022": 53367,
    "results_2022": {
     "lab": 9.48,
     "con": 33.36,
@@ -11600,6 +12083,7 @@
    "id": "thurrock",
    "name": "Thurrock",
    "seats": 1,
+   "votes2022": 37558,
    "results_2022": {
     "lab": 42.73,
     "con": 21.32,
@@ -11624,6 +12108,7 @@
    "id": "tiptonandwednesbury",
    "name": "Tipton and Wednesbury",
    "seats": 1,
+   "votes2022": 31850,
    "results_2022": {
     "lab": 36.91,
     "con": 26.28,
@@ -11648,6 +12133,7 @@
    "id": "tivertonandminehead",
    "name": "Tiverton and Minehead",
    "seats": 1,
+   "votes2022": 47491,
    "results_2022": {
     "lab": 9.11,
     "con": 31.2,
@@ -11672,6 +12158,7 @@
    "id": "tonbridge",
    "name": "Tonbridge",
    "seats": 1,
+   "votes2022": 50328,
    "results_2022": {
     "lab": 18.58,
     "con": 40.77,
@@ -11696,6 +12183,7 @@
    "id": "tooting",
    "name": "Tooting",
    "seats": 1,
+   "votes2022": 52943,
    "results_2022": {
     "lab": 55.17,
     "con": 18.36,
@@ -11720,6 +12208,7 @@
    "id": "torbay",
    "name": "Torbay",
    "seats": 1,
+   "votes2022": 46115,
    "results_2022": {
     "lab": 7.1,
     "con": 29.47,
@@ -11744,6 +12233,7 @@
    "id": "torridgeandtavistock",
    "name": "Torridge and Tavistock",
    "seats": 1,
+   "votes2022": 50820,
    "results_2022": {
     "lab": 21.18,
     "con": 31.58,
@@ -11768,6 +12258,7 @@
    "id": "tottenham",
    "name": "Tottenham",
    "seats": 1,
+   "votes2022": 40148,
    "results_2022": {
     "lab": 57.45,
     "con": 5.78,
@@ -11792,6 +12283,7 @@
    "id": "truroandfalmouth",
    "name": "Truro and Falmouth",
    "seats": 1,
+   "votes2022": 50264,
    "results_2022": {
     "lab": 41.35,
     "con": 25.13,
@@ -11816,6 +12308,7 @@
    "id": "tunbridgewells",
    "name": "Tunbridge Wells",
    "seats": 1,
+   "votes2022": 54250,
    "results_2022": {
     "lab": 11.39,
     "con": 27.6,
@@ -11840,6 +12333,7 @@
    "id": "twickenham",
    "name": "Twickenham",
    "seats": 1,
+   "votes2022": 53635,
    "results_2022": {
     "lab": 12.48,
     "con": 16.27,
@@ -11864,6 +12358,7 @@
    "id": "tynemouth",
    "name": "Tynemouth",
    "seats": 1,
+   "votes2022": 48418,
    "results_2022": {
     "lab": 50.58,
     "con": 18.66,
@@ -11888,6 +12383,7 @@
    "id": "uxbridgeandsouthruislip",
    "name": "Uxbridge and South Ruislip",
    "seats": 1,
+   "votes2022": 45914,
    "results_2022": {
     "lab": 36.15,
     "con": 34.87,
@@ -11912,6 +12408,7 @@
    "id": "vauxhallandcamberwellgreen",
    "name": "Vauxhall and Camberwell Green",
    "seats": 1,
+   "votes2022": 37536,
    "results_2022": {
     "lab": 57.35,
     "con": 7.48,
@@ -11936,6 +12433,7 @@
    "id": "wakefieldandrothwell",
    "name": "Wakefield and Rothwell",
    "seats": 1,
+   "votes2022": 40656,
    "results_2022": {
     "lab": 43.72,
     "con": 18.01,
@@ -11960,6 +12458,7 @@
    "id": "wallasey",
    "name": "Wallasey",
    "seats": 1,
+   "votes2022": 42746,
    "results_2022": {
     "lab": 57.72,
     "con": 11.67,
@@ -11984,6 +12483,7 @@
    "id": "walsallandbloxwich",
    "name": "Walsall and Bloxwich",
    "seats": 1,
+   "votes2022": 37191,
    "results_2022": {
     "lab": 33.65,
     "con": 17.96,
@@ -12008,6 +12508,7 @@
    "id": "walthamstow",
    "name": "Walthamstow",
    "seats": 1,
+   "votes2022": 45668,
    "results_2022": {
     "lab": 59.5,
     "con": 5.15,
@@ -12032,6 +12533,7 @@
    "id": "warringtonnorth",
    "name": "Warrington North",
    "seats": 1,
+   "votes2022": 40041,
    "results_2022": {
     "lab": 46.78,
     "con": 16.2,
@@ -12056,6 +12558,7 @@
    "id": "warringtonsouth",
    "name": "Warrington South",
    "seats": 1,
+   "votes2022": 49672,
    "results_2022": {
     "lab": 46.71,
     "con": 23.88,
@@ -12080,6 +12583,7 @@
    "id": "warwickandleamington",
    "name": "Warwick and Leamington",
    "seats": 1,
+   "votes2022": 49198,
    "results_2022": {
     "lab": 48.73,
     "con": 23.5,
@@ -12104,6 +12608,7 @@
    "id": "washingtonandgatesheadsouth",
    "name": "Washington and Gateshead South",
    "seats": 1,
+   "votes2022": 37021,
    "results_2022": {
     "lab": 47.76,
     "con": 12.57,
@@ -12128,6 +12633,7 @@
    "id": "watford",
    "name": "Watford",
    "seats": 1,
+   "votes2022": 44455,
    "results_2022": {
     "lab": 35.33,
     "con": 24.71,
@@ -12152,6 +12658,7 @@
    "id": "waveneyvalley",
    "name": "Waveney Valley",
    "seats": 1,
+   "votes2022": 49072,
    "results_2022": {
     "lab": 9.42,
     "con": 30.31,
@@ -12176,6 +12683,7 @@
    "id": "wealdofkent",
    "name": "Weald of Kent",
    "seats": 1,
+   "votes2022": 50712,
    "results_2022": {
     "lab": 23.23,
     "con": 39.84,
@@ -12200,6 +12708,7 @@
    "id": "wellingboroughandrushden",
    "name": "Wellingborough and Rushden",
    "seats": 1,
+   "votes2022": 43985,
    "results_2022": {
     "lab": 40.32,
     "con": 27.85,
@@ -12224,6 +12733,7 @@
    "id": "wellsandmendiphills",
    "name": "Wells and Mendip Hills",
    "seats": 1,
+   "votes2022": 50368,
    "results_2022": {
     "lab": 7.0,
     "con": 24.82,
@@ -12248,6 +12758,7 @@
    "id": "welwynhatfield",
    "name": "Welwyn Hatfield",
    "seats": 1,
+   "votes2022": 48455,
    "results_2022": {
     "lab": 41.02,
     "con": 33.18,
@@ -12272,6 +12783,7 @@
    "id": "westbromwich",
    "name": "West Bromwich",
    "seats": 1,
+   "votes2022": 36481,
    "results_2022": {
     "lab": 46.25,
     "con": 20.06,
@@ -12296,6 +12808,7 @@
    "id": "westdorset",
    "name": "West Dorset",
    "seats": 1,
+   "votes2022": 52605,
    "results_2022": {
     "lab": 5.87,
     "con": 36.52,
@@ -12320,6 +12833,7 @@
    "id": "westhamandbeckton",
    "name": "West Ham and Beckton",
    "seats": 1,
+   "votes2022": 36348,
    "results_2022": {
     "lab": 45.21,
     "con": 10.4,
@@ -12344,6 +12858,7 @@
    "id": "westlancashire",
    "name": "West Lancashire",
    "seats": 1,
+   "votes2022": 44200,
    "results_2022": {
     "lab": 50.46,
     "con": 19.64,
@@ -12368,6 +12883,7 @@
    "id": "westsuffolk",
    "name": "West Suffolk",
    "seats": 1,
+   "votes2022": 46161,
    "results_2022": {
     "lab": 27.22,
     "con": 34.26,
@@ -12392,6 +12908,7 @@
    "id": "westworcestershire",
    "name": "West Worcestershire",
    "seats": 1,
+   "votes2022": 54687,
    "results_2022": {
     "lab": 15.24,
     "con": 36.17,
@@ -12416,6 +12933,7 @@
    "id": "westmorlandandlonsdale",
    "name": "Westmorland and Lonsdale",
    "seats": 1,
+   "votes2022": 49533,
    "results_2022": {
     "lab": 4.66,
     "con": 19.36,
@@ -12440,6 +12958,7 @@
    "id": "weston-super-mare",
    "name": "Weston-super-Mare",
    "seats": 1,
+   "votes2022": 42390,
    "results_2022": {
     "lab": 38.48,
     "con": 28.08,
@@ -12464,6 +12983,7 @@
    "id": "wetherbyandeasingwold",
    "name": "Wetherby and Easingwold",
    "seats": 1,
+   "votes2022": 52259,
    "results_2022": {
     "lab": 30.14,
     "con": 39.41,
@@ -12488,6 +13008,7 @@
    "id": "whitehavenandworkington",
    "name": "Whitehaven and Workington",
    "seats": 1,
+   "votes2022": 41840,
    "results_2022": {
     "lab": 52.99,
     "con": 20.21,
@@ -12512,6 +13033,7 @@
    "id": "widnesandhalewood",
    "name": "Widnes and Halewood",
    "seats": 1,
+   "votes2022": 38116,
    "results_2022": {
     "lab": 61.61,
     "con": 9.2,
@@ -12536,6 +13058,7 @@
    "id": "wigan",
    "name": "Wigan",
    "seats": 1,
+   "votes2022": 40899,
    "results_2022": {
     "lab": 47.44,
     "con": 10.54,
@@ -12560,6 +13083,7 @@
    "id": "wimbledon",
    "name": "Wimbledon",
    "seats": 1,
+   "votes2022": 54985,
    "results_2022": {
     "lab": 21.34,
     "con": 22.15,
@@ -12584,6 +13108,7 @@
    "id": "winchester",
    "name": "Winchester",
    "seats": 1,
+   "votes2022": 57076,
    "results_2022": {
     "lab": 5.3,
     "con": 28.24,
@@ -12608,6 +13133,7 @@
    "id": "windsor",
    "name": "Windsor",
    "seats": 1,
+   "votes2022": 45246,
    "results_2022": {
     "lab": 22.16,
     "con": 36.43,
@@ -12632,6 +13158,7 @@
    "id": "wirralwest",
    "name": "Wirral West",
    "seats": 1,
+   "votes2022": 49951,
    "results_2022": {
     "lab": 46.36,
     "con": 26.34,
@@ -12656,6 +13183,7 @@
    "id": "witham",
    "name": "Witham",
    "seats": 1,
+   "votes2022": 50603,
    "results_2022": {
     "lab": 27.04,
     "con": 37.21,
@@ -12680,6 +13208,7 @@
    "id": "witney",
    "name": "Witney",
    "seats": 1,
+   "votes2022": 50584,
    "results_2022": {
     "lab": 9.44,
     "con": 32.61,
@@ -12704,6 +13233,7 @@
    "id": "woking",
    "name": "Woking",
    "seats": 1,
+   "votes2022": 48145,
    "results_2022": {
     "lab": 9.23,
     "con": 26.53,
@@ -12728,6 +13258,7 @@
    "id": "wokingham",
    "name": "Wokingham",
    "seats": 1,
+   "votes2022": 53999,
    "results_2022": {
     "lab": 6.72,
     "con": 32.22,
@@ -12752,6 +13283,7 @@
    "id": "wolverhamptonnortheast",
    "name": "Wolverhampton North East",
    "seats": 1,
+   "votes2022": 33289,
    "results_2022": {
     "lab": 42.9,
     "con": 26.62,
@@ -12776,6 +13308,7 @@
    "id": "wolverhamptonsoutheast",
    "name": "Wolverhampton South East",
    "seats": 1,
+   "votes2022": 33382,
    "results_2022": {
     "lab": 50.33,
     "con": 16.94,
@@ -12800,6 +13333,7 @@
    "id": "wolverhamptonwest",
    "name": "Wolverhampton West",
    "seats": 1,
+   "votes2022": 43657,
    "results_2022": {
     "lab": 44.28,
     "con": 26.26,
@@ -12824,6 +13358,7 @@
    "id": "worcester",
    "name": "Worcester",
    "seats": 1,
+   "votes2022": 46036,
    "results_2022": {
     "lab": 40.45,
     "con": 24.99,
@@ -12848,6 +13383,7 @@
    "id": "worsleyandeccles",
    "name": "Worsley and Eccles",
    "seats": 1,
+   "votes2022": 42543,
    "results_2022": {
     "lab": 47.66,
     "con": 15.96,
@@ -12872,6 +13408,7 @@
    "id": "worthingwest",
    "name": "Worthing West",
    "seats": 1,
+   "votes2022": 50997,
    "results_2022": {
     "lab": 40.24,
     "con": 32.49,
@@ -12896,6 +13433,7 @@
    "id": "wycombe",
    "name": "Wycombe",
    "seats": 1,
+   "votes2022": 44637,
    "results_2022": {
     "lab": 35.92,
     "con": 25.64,
@@ -12920,6 +13458,7 @@
    "id": "wyreforest",
    "name": "Wyre Forest",
    "seats": 1,
+   "votes2022": 45158,
    "results_2022": {
     "lab": 30.29,
     "con": 32.09,
@@ -12944,6 +13483,7 @@
    "id": "wythenshaweandsaleeast",
    "name": "Wythenshawe and Sale East",
    "seats": 1,
+   "votes2022": 39132,
    "results_2022": {
     "lab": 52.63,
     "con": 13.78,
@@ -12968,6 +13508,7 @@
    "id": "yeovil",
    "name": "Yeovil",
    "seats": 1,
+   "votes2022": 48952,
    "results_2022": {
     "lab": 6.13,
     "con": 23.49,
@@ -12992,6 +13533,7 @@
    "id": "yorkcentral",
    "name": "York Central",
    "seats": 1,
+   "votes2022": 43323,
    "results_2022": {
     "lab": 56.64,
     "con": 12.43,
@@ -13016,6 +13558,7 @@
    "id": "yorkouter",
    "name": "York Outer",
    "seats": 1,
+   "votes2022": 51106,
    "results_2022": {
     "lab": 45.32,
     "con": 26.94,
@@ -13040,6 +13583,7 @@
    "id": "belfasteast",
    "name": "Belfast East",
    "seats": 1,
+   "votes2022": 42706,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13064,6 +13608,7 @@
    "id": "belfastnorth",
    "name": "Belfast North",
    "seats": 1,
+   "votes2022": 40452,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13088,6 +13633,7 @@
    "id": "belfastsouthandmiddown",
    "name": "Belfast South and Mid Down",
    "seats": 1,
+   "votes2022": 43491,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13112,6 +13658,7 @@
    "id": "belfastwest",
    "name": "Belfast West",
    "seats": 1,
+   "votes2022": 39743,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13136,6 +13683,7 @@
    "id": "eastantrim",
    "name": "East Antrim",
    "seats": 1,
+   "votes2022": 39675,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13160,6 +13708,7 @@
    "id": "eastlondonderry",
    "name": "East Londonderry",
    "seats": 1,
+   "votes2022": 41277,
    "results_2022": {
     "lab": 0.0,
     "con": 0.45,
@@ -13184,6 +13733,7 @@
    "id": "fermanaghandsouthtyrone",
    "name": "Fermanagh and South Tyrone",
    "seats": 1,
+   "votes2022": 51076,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13208,6 +13758,7 @@
    "id": "foyle",
    "name": "Foyle",
    "seats": 1,
+   "votes2022": 38358,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13232,6 +13783,7 @@
    "id": "laganvalley",
    "name": "Lagan Valley",
    "seats": 1,
+   "votes2022": 49081,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13256,6 +13808,7 @@
    "id": "midulster",
    "name": "Mid Ulster",
    "seats": 1,
+   "votes2022": 45445,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13280,6 +13833,7 @@
    "id": "newryandarmagh",
    "name": "Newry and Armagh",
    "seats": 1,
+   "votes2022": 45942,
    "results_2022": {
     "lab": 0.0,
     "con": 0.18,
@@ -13304,6 +13858,7 @@
    "id": "northantrim",
    "name": "North Antrim",
    "seats": 1,
+   "votes2022": 41185,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13328,6 +13883,7 @@
    "id": "northdown",
    "name": "North Down",
    "seats": 1,
+   "votes2022": 43296,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13352,6 +13908,7 @@
    "id": "southantrim",
    "name": "South Antrim",
    "seats": 1,
+   "votes2022": 42908,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13376,6 +13933,7 @@
    "id": "southdown",
    "name": "South Down",
    "seats": 1,
+   "votes2022": 45243,
    "results_2022": {
     "lab": 0.0,
     "con": 0.1,
@@ -13400,6 +13958,7 @@
    "id": "strangford",
    "name": "Strangford",
    "seats": 1,
+   "votes2022": 38909,
    "results_2022": {
     "lab": 0.0,
     "con": 0.38,
@@ -13424,6 +13983,7 @@
    "id": "upperbann",
    "name": "Upper Bann",
    "seats": 1,
+   "votes2022": 47358,
    "results_2022": {
     "lab": 0.0,
     "con": 0.0,
@@ -13448,6 +14008,7 @@
    "id": "westtyrone",
    "name": "West Tyrone",
    "seats": 1,
+   "votes2022": 43695,
    "results_2022": {
     "lab": 0.0,
     "con": 0.21,
@@ -13472,6 +14033,7 @@
    "id": "eastrenfrewshire",
    "name": "East Renfrewshire",
    "seats": 1,
+   "votes2022": 50227,
    "results_2022": {
     "lab": 43.67,
     "con": 16.91,
@@ -13496,6 +14058,7 @@
    "id": "nah-eileanananiar",
    "name": "Na h-Eileanan an Iar",
    "seats": 1,
+   "votes2022": 13528,
    "results_2022": {
     "lab": 49.47,
     "con": 4.78,
@@ -13520,6 +14083,7 @@
    "id": "midlothian",
    "name": "Midlothian",
    "seats": 1,
+   "votes2022": 44165,
    "results_2022": {
     "lab": 48.64,
     "con": 7.35,
@@ -13544,6 +14108,7 @@
    "id": "northayrshireandarran",
    "name": "North Ayrshire and Arran",
    "seats": 1,
+   "votes2022": 42262,
    "results_2022": {
     "lab": 39.8,
     "con": 14.09,
@@ -13568,6 +14133,7 @@
    "id": "orkneyandshetland",
    "name": "Orkney and Shetland",
    "seats": 1,
+   "votes2022": 20688,
    "results_2022": {
     "lab": 7.22,
     "con": 2.83,
@@ -13592,6 +14158,7 @@
    "id": "aberdeennorth",
    "name": "Aberdeen North",
    "seats": 1,
+   "votes2022": 42095,
    "results_2022": {
     "lab": 30.34,
     "con": 13.97,
@@ -13616,6 +14183,7 @@
    "id": "aberdeensouth",
    "name": "Aberdeen South",
    "seats": 1,
+   "votes2022": 46345,
    "results_2022": {
     "lab": 24.72,
     "con": 24.38,
@@ -13640,6 +14208,7 @@
    "id": "aberdeenshirenorthandmorayeast",
    "name": "Aberdeenshire North and Moray East",
    "seats": 1,
+   "votes2022": 38188,
    "results_2022": {
     "lab": 10.15,
     "con": 32.77,
@@ -13664,6 +14233,7 @@
    "id": "airdrieandshotts",
    "name": "Airdrie and Shotts",
    "seats": 1,
+   "votes2022": 36666,
    "results_2022": {
     "lab": 51.47,
     "con": 4.63,
@@ -13688,6 +14258,7 @@
    "id": "alloaandgrangemouth",
    "name": "Alloa and Grangemouth",
    "seats": 1,
+   "votes2022": 41201,
    "results_2022": {
     "lab": 43.78,
     "con": 7.59,
@@ -13712,6 +14283,7 @@
    "id": "angusandperthshireglens",
    "name": "Angus and Perthshire Glens",
    "seats": 1,
+   "votes2022": 47348,
    "results_2022": {
     "lab": 14.36,
     "con": 30.14,
@@ -13736,6 +14308,7 @@
    "id": "arbroathandbroughtyferry",
    "name": "Arbroath and Broughty Ferry",
    "seats": 1,
+   "votes2022": 44117,
    "results_2022": {
     "lab": 33.37,
     "con": 15.51,
@@ -13760,6 +14333,7 @@
    "id": "argyllbuteandsouthlochaber",
    "name": "Argyll, Bute and South Lochaber",
    "seats": 1,
+   "votes2022": 44862,
    "results_2022": {
     "lab": 19.14,
     "con": 20.84,
@@ -13784,6 +14358,7 @@
    "id": "bathgateandlinlithgow",
    "name": "Bathgate and Linlithgow",
    "seats": 1,
+   "votes2022": 42065,
    "results_2022": {
     "lab": 47.01,
     "con": 7.47,
@@ -13808,6 +14383,7 @@
    "id": "caithnesssutherlandandeasterross",
    "name": "Caithness, Sutherland and Easter Ross",
    "seats": 1,
+   "votes2022": 46048,
    "results_2022": {
     "lab": 7.4,
     "con": 4.04,
@@ -13832,6 +14408,7 @@
    "id": "coatbridgeandbellshill",
    "name": "Coatbridge and Bellshill",
    "seats": 1,
+   "votes2022": 38731,
    "results_2022": {
     "lab": 49.81,
     "con": 3.57,
@@ -13856,6 +14433,7 @@
    "id": "cowdenbeathandkirkcaldy",
    "name": "Cowdenbeath and Kirkcaldy",
    "seats": 1,
+   "votes2022": 40814,
    "results_2022": {
     "lab": 45.72,
     "con": 7.85,
@@ -13880,6 +14458,7 @@
    "id": "cumbernauldandkirkintilloch",
    "name": "Cumbernauld and Kirkintilloch",
    "seats": 1,
+   "votes2022": 40976,
    "results_2022": {
     "lab": 45.18,
     "con": 4.73,
@@ -13904,6 +14483,7 @@
    "id": "dumfriesandgalloway",
    "name": "Dumfries and Galloway",
    "seats": 1,
+   "votes2022": 45775,
    "results_2022": {
     "lab": 25.71,
     "con": 29.55,
@@ -13928,6 +14508,7 @@
    "id": "dumfriesshireclydesdaleandtweeddale",
    "name": "Dumfriesshire, Clydesdale and Tweeddale",
    "seats": 1,
+   "votes2022": 44214,
    "results_2022": {
     "lab": 22.93,
     "con": 33.92,
@@ -13952,6 +14533,7 @@
    "id": "dundeecentral",
    "name": "Dundee Central",
    "seats": 1,
+   "votes2022": 38848,
    "results_2022": {
     "lab": 38.27,
     "con": 4.04,
@@ -13976,6 +14558,7 @@
    "id": "dunfermlineanddollar",
    "name": "Dunfermline and Dollar",
    "seats": 1,
+   "votes2022": 44537,
    "results_2022": {
     "lab": 45.66,
     "con": 7.4,
@@ -14000,6 +14583,7 @@
    "id": "eastkilbrideandstrathaven",
    "name": "East Kilbride and Strathaven",
    "seats": 1,
+   "votes2022": 46707,
    "results_2022": {
     "lab": 48.56,
     "con": 7.59,
@@ -14024,6 +14608,7 @@
    "id": "edinburgheastandmusselburgh",
    "name": "Edinburgh East and Musselburgh",
    "seats": 1,
+   "votes2022": 45575,
    "results_2022": {
     "lab": 41.23,
     "con": 5.7,
@@ -14048,6 +14633,7 @@
    "id": "edinburghnorthandleith",
    "name": "Edinburgh North and Leith",
    "seats": 1,
+   "votes2022": 49475,
    "results_2022": {
     "lab": 42.05,
     "con": 6.58,
@@ -14072,6 +14658,7 @@
    "id": "edinburghsouth",
    "name": "Edinburgh South",
    "seats": 1,
+   "votes2022": 46826,
    "results_2022": {
     "lab": 53.34,
     "con": 8.54,
@@ -14096,6 +14683,7 @@
    "id": "edinburghsouthwest",
    "name": "Edinburgh South West",
    "seats": 1,
+   "votes2022": 45664,
    "results_2022": {
     "lab": 40.87,
     "con": 12.17,
@@ -14120,6 +14708,7 @@
    "id": "edinburghwest",
    "name": "Edinburgh West",
    "seats": 1,
+   "votes2022": 52471,
    "results_2022": {
     "lab": 14.97,
     "con": 5.52,
@@ -14144,6 +14733,7 @@
    "id": "falkirk",
    "name": "Falkirk",
    "seats": 1,
+   "votes2022": 42625,
    "results_2022": {
     "lab": 43.03,
     "con": 8.39,
@@ -14168,6 +14758,7 @@
    "id": "glasgoweast",
    "name": "Glasgow East",
    "seats": 1,
+   "votes2022": 35445,
    "results_2022": {
     "lab": 43.85,
     "con": 4.82,
@@ -14192,6 +14783,7 @@
    "id": "glasgownorth",
    "name": "Glasgow North",
    "seats": 1,
+   "votes2022": 34739,
    "results_2022": {
     "lab": 42.19,
     "con": 3.93,
@@ -14216,6 +14808,7 @@
    "id": "glasgownortheast",
    "name": "Glasgow North East",
    "seats": 1,
+   "votes2022": 34091,
    "results_2022": {
     "lab": 45.87,
     "con": 3.47,
@@ -14240,6 +14833,7 @@
    "id": "glasgowsouth",
    "name": "Glasgow South",
    "seats": 1,
+   "votes2022": 42378,
    "results_2022": {
     "lab": 41.76,
     "con": 3.82,
@@ -14264,6 +14858,7 @@
    "id": "glasgowsouthwest",
    "name": "Glasgow South West",
    "seats": 1,
+   "votes2022": 35669,
    "results_2022": {
     "lab": 43.6,
     "con": 3.89,
@@ -14288,6 +14883,7 @@
    "id": "glasgowwest",
    "name": "Glasgow West",
    "seats": 1,
+   "votes2022": 39902,
    "results_2022": {
     "lab": 46.67,
     "con": 4.31,
@@ -14312,6 +14908,7 @@
    "id": "glenrothesandmidfife",
    "name": "Glenrothes and Mid Fife",
    "seats": 1,
+   "votes2022": 36139,
    "results_2022": {
     "lab": 44.26,
     "con": 5.46,
@@ -14336,6 +14933,7 @@
    "id": "gordonandbuchan",
    "name": "Gordon and Buchan",
    "seats": 1,
+   "votes2022": 43848,
    "results_2022": {
     "lab": 10.69,
     "con": 32.88,
@@ -14360,6 +14958,7 @@
    "id": "hamiltonandclydevalley",
    "name": "Hamilton and Clyde Valley",
    "seats": 1,
+   "votes2022": 42084,
    "results_2022": {
     "lab": 49.95,
     "con": 10.9,
@@ -14384,6 +14983,7 @@
    "id": "inverclydeandrenfrewshirewest",
    "name": "Inverclyde and Renfrewshire West",
    "seats": 1,
+   "votes2022": 40350,
    "results_2022": {
     "lab": 46.92,
     "con": 7.1,
@@ -14408,6 +15008,7 @@
    "id": "invernessskyeandwestross-shire",
    "name": "Inverness, Skye and West Ross-shire",
    "seats": 1,
+   "votes2022": 48056,
    "results_2022": {
     "lab": 13.0,
     "con": 5.21,
@@ -14432,6 +15033,7 @@
    "id": "livingston",
    "name": "Livingston",
    "seats": 1,
+   "votes2022": 44840,
    "results_2022": {
     "lab": 40.87,
     "con": 7.74,
@@ -14456,6 +15058,7 @@
    "id": "lothianeast",
    "name": "Lothian East",
    "seats": 1,
+   "votes2022": 48102,
    "results_2022": {
     "lab": 48.97,
     "con": 11.51,
@@ -14480,6 +15083,7 @@
    "id": "middunbartonshire",
    "name": "Mid Dunbartonshire",
    "seats": 1,
+   "votes2022": 52738,
    "results_2022": {
     "lab": 20.84,
     "con": 4.65,
@@ -14504,6 +15108,7 @@
    "id": "moraywestnairnandstrathspey",
    "name": "Moray West, Nairn and Strathspey",
    "seats": 1,
+   "votes2022": 46554,
    "results_2022": {
     "lab": 17.74,
     "con": 29.99,
@@ -14528,6 +15133,7 @@
    "id": "motherwellwishawandcarluke",
    "name": "Motherwell, Wishaw and Carluke",
    "seats": 1,
+   "votes2022": 39026,
    "results_2022": {
     "lab": 49.12,
     "con": 6.19,
@@ -14552,6 +15158,7 @@
    "id": "northeastfife",
    "name": "North East Fife",
    "seats": 1,
+   "votes2022": 42728,
    "results_2022": {
     "lab": 9.42,
     "con": 3.9,
@@ -14576,6 +15183,7 @@
    "id": "paisleyandrenfrewshirenorth",
    "name": "Paisley and Renfrewshire North",
    "seats": 1,
+   "votes2022": 41519,
    "results_2022": {
     "lab": 47.11,
     "con": 6.4,
@@ -14600,6 +15208,7 @@
    "id": "paisleyandrenfrewshiresouth",
    "name": "Paisley and Renfrewshire South",
    "seats": 1,
+   "votes2022": 41283,
    "results_2022": {
     "lab": 47.44,
     "con": 5.38,
@@ -14624,6 +15233,7 @@
    "id": "perthandkinross-shire",
    "name": "Perth and Kinross-shire",
    "seats": 1,
+   "votes2022": 50077,
    "results_2022": {
     "lab": 18.01,
     "con": 29.56,
@@ -14648,6 +15258,7 @@
    "id": "rutherglen",
    "name": "Rutherglen",
    "seats": 1,
+   "votes2022": 42484,
    "results_2022": {
     "lab": 50.51,
     "con": 5.7,
@@ -14672,6 +15283,7 @@
    "id": "stirlingandstrathallan",
    "name": "Stirling and Strathallan",
    "seats": 1,
+   "votes2022": 49782,
    "results_2022": {
     "lab": 33.86,
     "con": 19.02,
@@ -14696,6 +15308,7 @@
    "id": "westdunbartonshire",
    "name": "West Dunbartonshire",
    "seats": 1,
+   "votes2022": 39584,
    "results_2022": {
     "lab": 48.79,
     "con": 3.72,
@@ -14720,6 +15333,7 @@
    "id": "ayrcarrickandcumnock",
    "name": "Ayr, Carrick and Cumnock",
    "seats": 1,
+   "votes2022": 40936,
    "results_2022": {
     "lab": 36.47,
     "con": 22.59,
@@ -14744,6 +15358,7 @@
    "id": "berwickshireroxburghandselkirk",
    "name": "Berwickshire, Roxburgh and Selkirk",
    "seats": 1,
+   "votes2022": 46558,
    "results_2022": {
     "lab": 13.56,
     "con": 40.53,
@@ -14768,6 +15383,7 @@
    "id": "centralayrshire",
    "name": "Central Ayrshire",
    "seats": 1,
+   "votes2022": 41419,
    "results_2022": {
     "lab": 43.68,
     "con": 14.84,
@@ -14792,6 +15408,7 @@
    "id": "kilmarnockandloudoun",
    "name": "Kilmarnock and Loudoun",
    "seats": 1,
+   "votes2022": 42478,
    "results_2022": {
     "lab": 44.86,
     "con": 8.3,
@@ -14816,6 +15433,7 @@
    "id": "westaberdeenshireandkincardine",
    "name": "West Aberdeenshire and Kincardine",
    "seats": 1,
+   "votes2022": 48958,
    "results_2022": {
     "lab": 13.07,
     "con": 35.6,
@@ -14840,6 +15458,7 @@
    "id": "aberafanmaesteg",
    "name": "Aberafan Maesteg",
    "seats": 1,
+   "votes2022": 35755,
    "results_2022": {
     "lab": 49.89,
     "con": 8.12,
@@ -14864,6 +15483,7 @@
    "id": "alynanddeeside",
    "name": "Alyn and Deeside",
    "seats": 1,
+   "votes2022": 43392,
    "results_2022": {
     "lab": 42.39,
     "con": 18.19,
@@ -14888,6 +15508,7 @@
    "id": "bangoraberconwy",
    "name": "Bangor Aberconwy",
    "seats": 1,
+   "votes2022": 41660,
    "results_2022": {
     "lab": 33.62,
     "con": 21.69,
@@ -14912,6 +15533,7 @@
    "id": "blaenaugwentandrhymney",
    "name": "Blaenau Gwent and Rhymney",
    "seats": 1,
+   "votes2022": 29922,
    "results_2022": {
     "lab": 53.56,
     "con": 12.62,
@@ -14936,6 +15558,7 @@
    "id": "breconradnorandcwmtawe",
    "name": "Brecon, Radnor and Cwm Tawe",
    "seats": 1,
+   "votes2022": 46548,
    "results_2022": {
     "lab": 21.28,
     "con": 26.35,
@@ -14960,6 +15583,7 @@
    "id": "bridgend",
    "name": "Bridgend",
    "seats": 1,
+   "votes2022": 41374,
    "results_2022": {
     "lab": 39.92,
     "con": 16.35,
@@ -14984,6 +15608,7 @@
    "id": "caerfyrddin",
    "name": "Caerfyrddin",
    "seats": 1,
+   "votes2022": 45604,
    "results_2022": {
     "lab": 24.09,
     "con": 19.35,
@@ -15008,6 +15633,7 @@
    "id": "caerphilly",
    "name": "Caerphilly",
    "seats": 1,
+   "votes2022": 38234,
    "results_2022": {
     "lab": 38.02,
     "con": 11.47,
@@ -15032,6 +15658,7 @@
    "id": "cardiffeast",
    "name": "Cardiff East",
    "seats": 1,
+   "votes2022": 39123,
    "results_2022": {
     "lab": 40.47,
     "con": 10.0,
@@ -15056,6 +15683,7 @@
    "id": "cardiffnorth",
    "name": "Cardiff North",
    "seats": 1,
+   "votes2022": 47473,
    "results_2022": {
     "lab": 43.92,
     "con": 20.31,
@@ -15080,6 +15708,7 @@
    "id": "cardiffsouthandpenarth",
    "name": "Cardiff South and Penarth",
    "seats": 1,
+   "votes2022": 39176,
    "results_2022": {
     "lab": 44.49,
     "con": 13.93,
@@ -15104,6 +15733,7 @@
    "id": "cardiffwest",
    "name": "Cardiff West",
    "seats": 1,
+   "votes2022": 44757,
    "results_2022": {
     "lab": 36.74,
     "con": 15.27,
@@ -15128,6 +15758,7 @@
    "id": "ceredigionpreseli",
    "name": "Ceredigion Preseli",
    "seats": 1,
+   "votes2022": 46302,
    "results_2022": {
     "lab": 11.63,
     "con": 10.29,
@@ -15152,6 +15783,7 @@
    "id": "clwydeast",
    "name": "Clwyd East",
    "seats": 1,
+   "votes2022": 47822,
    "results_2022": {
     "lab": 38.65,
     "con": 28.99,
@@ -15176,6 +15808,7 @@
    "id": "clwydnorth",
    "name": "Clwyd North",
    "seats": 1,
+   "votes2022": 41627,
    "results_2022": {
     "lab": 35.54,
     "con": 32.67,
@@ -15200,6 +15833,7 @@
    "id": "dwyformeirionnydd",
    "name": "Dwyfor Meirionnydd",
    "seats": 1,
+   "votes2022": 40395,
    "results_2022": {
     "lab": 14.64,
     "con": 11.66,
@@ -15224,6 +15858,7 @@
    "id": "gower",
    "name": "Gower",
    "seats": 1,
+   "votes2022": 47229,
    "results_2022": {
     "lab": 43.36,
     "con": 18.87,
@@ -15248,6 +15883,7 @@
    "id": "llanelli",
    "name": "Llanelli",
    "seats": 1,
+   "votes2022": 40744,
    "results_2022": {
     "lab": 31.3,
     "con": 10.49,
@@ -15272,6 +15908,7 @@
    "id": "merthyrtydfilandaberdare",
    "name": "Merthyr Tydfil and Aberdare",
    "seats": 1,
+   "votes2022": 35215,
    "results_2022": {
     "lab": 44.84,
     "con": 7.63,
@@ -15296,6 +15933,7 @@
    "id": "midandsouthpembrokeshire",
    "name": "Mid and South Pembrokeshire",
    "seats": 1,
+   "votes2022": 46629,
    "results_2022": {
     "lab": 35.4,
     "con": 31.37,
@@ -15320,6 +15958,7 @@
    "id": "monmouthshire",
    "name": "Monmouthshire",
    "seats": 1,
+   "votes2022": 50844,
    "results_2022": {
     "lab": 41.32,
     "con": 34.76,
@@ -15344,6 +15983,7 @@
    "id": "montgomeryshireandglyndwr",
    "name": "Montgomeryshire and Glyndwr",
    "seats": 1,
+   "votes2022": 43259,
    "results_2022": {
     "lab": 29.38,
     "con": 17.97,
@@ -15368,6 +16008,7 @@
    "id": "neathandswanseaeast",
    "name": "Neath and Swansea East",
    "seats": 1,
+   "votes2022": 40137,
    "results_2022": {
     "lab": 41.85,
     "con": 9.38,
@@ -15392,6 +16033,7 @@
    "id": "newporteast",
    "name": "Newport East",
    "seats": 1,
+   "votes2022": 38531,
    "results_2022": {
     "lab": 42.49,
     "con": 16.84,
@@ -15416,6 +16058,7 @@
    "id": "newportwestandislwyn",
    "name": "Newport West and Islwyn",
    "seats": 1,
+   "votes2022": 41951,
    "results_2022": {
     "lab": 41.5,
     "con": 15.99,
@@ -15440,6 +16083,7 @@
    "id": "pontypridd",
    "name": "Pontypridd",
    "seats": 1,
+   "votes2022": 39378,
    "results_2022": {
     "lab": 41.2,
     "con": 9.59,
@@ -15464,6 +16108,7 @@
    "id": "rhonddaandogmore",
    "name": "Rhondda and Ogmore",
    "seats": 1,
+   "votes2022": 35806,
    "results_2022": {
     "lab": 47.81,
     "con": 5.73,
@@ -15488,6 +16133,7 @@
    "id": "swanseawest",
    "name": "Swansea West",
    "seats": 1,
+   "votes2022": 35657,
    "results_2022": {
     "lab": 41.4,
     "con": 9.92,
@@ -15512,6 +16158,7 @@
    "id": "torfaen",
    "name": "Torfaen",
    "seats": 1,
+   "votes2022": 35705,
    "results_2022": {
     "lab": 42.5,
     "con": 16.07,
@@ -15536,6 +16183,7 @@
    "id": "valeofglamorgan",
    "name": "Vale of Glamorgan",
    "seats": 1,
+   "votes2022": 45826,
    "results_2022": {
     "lab": 38.71,
     "con": 29.51,
@@ -15560,6 +16208,7 @@
    "id": "wrexham",
    "name": "Wrexham",
    "seats": 1,
+   "votes2022": 40373,
    "results_2022": {
     "lab": 39.22,
     "con": 24.49,
@@ -15584,6 +16233,7 @@
    "id": "ynysmon",
    "name": "Ynys Môn",
    "seats": 1,
+   "votes2022": 32628,
    "results_2022": {
     "lab": 23.35,
     "con": 30.5,

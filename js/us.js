@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004d";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004d";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004d";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004e";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004e";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004e";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -37,7 +37,7 @@ const state = {
 const fmt = (x) => (Math.abs(x) >= 100 ? Math.round(x) : (x % 1 === 0 ? String(Math.round(x)) : x.toFixed(1)));
 
 /* ---- color helpers (diverging blue/red by win chance) ---- */
-const C_NEUT = "#EFE9DE", C_D = "#2E6EA8", C_R = "#C83737", C_GRAY = "#DAD3C4", C_TOSSUP = "#E2C27A", C_I = "#7C3AED";
+const C_NEUT = "#EFE9DE", C_D = "#2E6EA8", C_R = "#C83737", C_GRAY = "#DAD3C4", C_TOSSUP = "#E2C27A", C_I = "#6B7280";
 function mixColor(a, b, t) {
   const r1 = (a >> 16) & 255, g1 = (a >> 8) & 255, b1 = a & 255;
   const r2 = (b >> 16) & 255, g2 = (b >> 8) & 255, b2 = b & 255;
@@ -163,8 +163,8 @@ function controlCard(chamberData) {
       <div class="lbl">Republicans win ${US_LABELS[state.chamber]}</div></div>
   </div>
   <p class="line" style="margin-top:14px;color:var(--c-text-muted);font-size:13px">
-    Expected seats — Democrats <b>${fmt(chamberData.expected_d_seats)}</b>, Republicans <b>${fmt(chamberData.expected_r_seats)}</b>${iSeats > 0.05 ? `, Independents <b style="color:${C_I}">${fmt(iSeats)}</b>` : ""}.
-    ${state.chamber === "senate" ? "51 seats are needed for a Democratic majority — a 50–50 split leaves control in Republican hands via the Vice President's tie-breaking vote." : "218 seats are needed for a majority."}${iSeats > 0.05 ? " An independent win counts for neither side in the majority probabilities." : ""}
+    Expected seats — Democrats <b>${fmt(chamberData.expected_d_seats)}</b>${iSeats > 0.05 ? ` (incl. Independents <b style="color:${C_I}">${fmt(iSeats)}</b>)` : ""}, Republicans <b>${fmt(chamberData.expected_r_seats)}</b>.
+    ${state.chamber === "senate" ? "51 seats are needed for a Democratic majority — a 50–50 split leaves control in Republican hands via the Vice President's tie-breaking vote." : "218 seats are needed for a majority."}${iSeats > 0.05 ? " Independent wins are counted with the Democratic caucus, as the Senate independents caucus with them." : ""}
   </p>`;
 }
 
@@ -501,7 +501,7 @@ function render() {
     <span class="sb-seg r"><b>${fmt(rVal)}</b>${state.chamber === "governor" ? "" : hasMajPct ? "%" : ""} R</span>
     <span class="sb-seats">${state.chamber === "governor"
       ? `Expected governors: <b class="d">${fmt(govD)}</b> – <b class="r">${fmt(govR)}</b> (of 50)`
-      : `Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b>${(data.expected_i_seats || 0) > 0.05 ? ` – <b style="color:${C_I}">${fmt(data.expected_i_seats)}</b> I` : ""} seats`}</span>
+      : `Expected: <b class="d">${fmt(data.expected_d_seats)}</b> – <b class="r">${fmt(data.expected_r_seats)}</b>${(data.expected_i_seats || 0) > 0.05 ? ` seats (incl. <b style="color:${C_I}">${fmt(data.expected_i_seats)}</b> I)` : " seats"}`}</span>
     <span class="sb-maj">${state.chamber === "house" ? "218 for majority" : state.chamber === "senate" ? "51 for D majority" : "36 of 50 governors up"}</span>
   </div>`;
 

@@ -108,6 +108,18 @@ def key_of(party):
     return {"D": "dem", "R": "rep", "I": "ind"}[party]
 
 
+def sponsor_of(cell):
+    """Partisan sponsor marker from a pollster cell: 'D'/'R'/'I'/None.
+
+    Wikipedia annotates partisan pollsters ("Public Policy Polling (D)",
+    "co/efficient (R)", "Fabrizio Ward (R)/Impact Research (D)"), which the
+    parsers used to strip and discard - exactly the polls whose house effect
+    matters.
+    """
+    m = re.search(r"\((D|R|I)\)", cell or "")
+    return m.group(1) if m else None
+
+
 MONTHS = {m: i for i, m in enumerate(
     ["january", "february", "march", "april", "may", "june", "july",
      "august", "september", "october", "november", "december"], 1)}
@@ -240,10 +252,19 @@ def parse_direct(soup, tables=None):
                         vals[party] = v
             if len(vals) < 2 or sum(vals.values()) < 75:
                 continue
-            found.append((vals, cells[1] if len(cells) > 1 else ""))
+            found.append((vals, cells[1] if len(cells) > 1 else "",
+                          sponsor_of(cells[0])))
         if len(found) < 3:
             continue
         last = sorted(found, key=lambda x: date_key(x[1]))[-5:]
+        # Sponsored (partisan) polls enter the average at equal weight.
+        # The 2022 + 2024 backtests measured their house effect vs neutral
+        # polls and found no stable direction (2022: D-sponsored +4.2 D,
+        # R-sponsored +1.8 D; 2024: D-sponsored -1.3, R-sponsored -6.9 R)
+        # and comparable absolute errors (better in 2024) - hard exclusion
+        # or a 0.5x downweight both cost winner accuracy (2024 polled races
+        # 87% -> 77%), so the honest treatment is recording and showing the
+        # sponsorship, not correcting it.
         out = {}
         for party in ("D", "R", "I"):
             vs = [x[0][party] for x in last if party in x[0]]
@@ -251,6 +272,9 @@ def parse_direct(soup, tables=None):
                 out[key_of(party)] = round(sum(vs) / len(vs), 1)
         out["source"] = "Simple avg (latest 5 polls)"
         out["n_polls"] = len(last)
+        n_spon = sum(1 for x in last if x[2])
+        if n_spon:
+            out["n_sponsored"] = n_spon
         key = (date_key(last[-1][1]), len(found))
         if best is None or key > best[0]:
             best = (key, out)
@@ -277,6 +301,7 @@ def parse_individual(soup, tables=None):
                      for c in row.find_all(["th", "td"])]
             if not cells:
                 continue
+            partisan = sponsor_of(cells[0])
             pollster = clean_name(cells[0].replace("(D)", "")
                                   .replace("(R)", "").replace("(I)", ""))
             dates = cells[1] if len(cells) > 1 else ""
@@ -300,6 +325,8 @@ def parse_individual(soup, tables=None):
             ):
                 continue
             entry = {"pollster": pollster, "dates": dates}
+            if partisan:
+                entry["partisan"] = partisan
             entry.update({key_of(k): round(v, 1) for k, v in vals.items()})
             out.append(entry)
         if len(out) < 3:

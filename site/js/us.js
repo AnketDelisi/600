@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004g";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004g";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004g";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004h";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004h";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004h";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -428,8 +428,11 @@ function raceDetailHTML(race) {
     const margin = (lead[1] - second[1]).toFixed(1);
     const col = lead[0] === "D" ? "d" : lead[0] === "R" ? "r" : "";
     const style = lead[0] === "I" ? ` style="color:${C_I}"` : "";
+    const spon = p.partisan
+      ? ` <span style="color:#B45309;font-weight:900" title="Partisan-sponsored poll (${p.partisan})">(${p.partisan})</span>`
+      : "";
     return `<tr>
-      <td>${p.pollster || "—"}</td>
+      <td>${p.pollster || "—"}${spon}</td>
       <td class="num">${p.dates || "—"}</td>
       <td class="num d">${pv(p.dem)}</td>
       <td class="num r">${pv(p.rep)}</td>
@@ -439,7 +442,7 @@ function raceDetailHTML(race) {
   }).join("");
   return `<div class="race-detail">
     <div class="rd-head"><span class="rd-title">Polling — ${race.state}${race.district ? " " + race.district : ""}</span>
-      <span class="rd-note">${entry.source}${entry.n_polls ? " · " + entry.n_polls + " polls" : ""}</span></div>
+      <span class="rd-note">${entry.source}${entry.n_polls ? " · " + entry.n_polls + " polls" : ""}${entry.n_sponsored ? " · incl. " + entry.n_sponsored + " partisan" : ""}</span></div>
     <div class="rd-graph">${pollTrendSVG(entry.polls)}</div>
     <table class="rd-table">
       <thead><tr><th>Pollster</th><th>Dates</th><th>D</th><th>R</th>${hasI ? "<th>I</th>" : ""}<th>Margin</th></tr></thead>

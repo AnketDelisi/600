@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T20:37:28Z",
+  "generated": "2026-10-04T20:57:25Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -144,6 +144,7 @@
             {
               "pollster": "Cygnal",
               "dates": "January 22–25, 2026",
+              "partisan": "R",
               "dem": 54.0,
               "rep": 30.0
             },
@@ -290,6 +291,7 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 14–15, 2026",
+              "partisan": "R",
               "dem": 23.0,
               "rep": 44.0,
               "ind": 24.0
@@ -318,6 +320,7 @@
             {
               "pollster": "Hart Research",
               "dates": "August 1–4, 2026",
+              "partisan": "D",
               "dem": 15.0,
               "rep": 45.0,
               "ind": 30.0
@@ -325,6 +328,7 @@
             {
               "pollster": "Tavern Research",
               "dates": "July 23–27, 2026",
+              "partisan": "D",
               "dem": 24.0,
               "rep": 49.0,
               "ind": 25.0
@@ -332,6 +336,7 @@
             {
               "pollster": "GQR",
               "dates": "July 23–26, 2026",
+              "partisan": "D",
               "dem": 22.0,
               "rep": 41.0,
               "ind": 27.0
@@ -339,6 +344,7 @@
             {
               "pollster": "Bullfinch Group",
               "dates": "July 13–16, 2026",
+              "partisan": "R",
               "dem": 22.0,
               "rep": 36.0,
               "ind": 24.0
@@ -346,6 +352,7 @@
             {
               "pollster": "GrayHouse",
               "dates": "June 23–24, 2026",
+              "partisan": "R",
               "dem": 25.0,
               "rep": 41.0,
               "ind": 17.0
@@ -353,6 +360,7 @@
             {
               "pollster": "Hart Research",
               "dates": "June 18–24, 2026",
+              "partisan": "D",
               "dem": 22.0,
               "rep": 47.0,
               "ind": 25.0
@@ -360,6 +368,7 @@
             {
               "pollster": "Tavern Research",
               "dates": "June 16–19, 2026",
+              "partisan": "D",
               "dem": 26.0,
               "rep": 49.0,
               "ind": 24.0
@@ -367,6 +376,7 @@
             {
               "pollster": "Public Opinion Strategies",
               "dates": "June 8–11, 2026",
+              "partisan": "R",
               "dem": 25.0,
               "rep": 44.0,
               "ind": 20.0
@@ -639,6 +649,7 @@
             {
               "pollster": "GrayHouse",
               "dates": "February 7–9, 2026",
+              "partisan": "R",
               "dem": 36.0,
               "rep": 58.0
             }
@@ -683,12 +694,14 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 21–22, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 43.0
             },
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "September 17–20, 2026",
+              "partisan": "R",
               "dem": 53.0,
               "rep": 42.0
             },
@@ -707,6 +720,7 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 16–17, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 43.0
             },
@@ -719,6 +733,7 @@
             {
               "pollster": "Harper Polling",
               "dates": "September 13–15, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 34.0
             },
@@ -731,6 +746,7 @@
             {
               "pollster": "The Trafalgar Group",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 42.0
             },
@@ -755,18 +771,21 @@
             {
               "pollster": "Harper Polling",
               "dates": "August 9–10, 2026",
+              "partisan": "R",
               "dem": 52.0,
               "rep": 39.0
             },
             {
               "pollster": "Change Research",
               "dates": "August 3–6, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 43.0
             },
             {
               "pollster": "Change Research",
               "dates": "July 29 – August 1, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 41.0
             },
@@ -779,12 +798,14 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "July 23–27, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 44.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "July 10–11, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 44.0
             },
@@ -803,18 +824,21 @@
             {
               "pollster": "Harper Polling",
               "dates": "May 10–11, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 39.0
             },
             {
               "pollster": "Change Research",
               "dates": "May 4–8, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 42.0
             },
             {
               "pollster": "Opinion Diagnostics",
               "dates": "April 21–24, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 41.0
             },
@@ -827,12 +851,14 @@
             {
               "pollster": "Quantus Insights",
               "dates": "March 31 – April 1, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 44.0
             },
             {
               "pollster": "Harper Polling",
               "dates": "March 22–23, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 41.0
             },
@@ -845,6 +871,7 @@
             {
               "pollster": "Public Policy Polling",
               "dates": "March 13–14, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 44.0
             },
@@ -857,36 +884,42 @@
             {
               "pollster": "Change Research",
               "dates": "January 31–February 4, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 40.0
             },
             {
               "pollster": "Change Research",
               "dates": "January 5–7, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 42.0
             },
             {
               "pollster": "Harper Polling",
               "dates": "November 9–10, 2025",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 39.0
             },
             {
               "pollster": "Harper Polling",
               "dates": "September 14–15, 2025",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 42.0
             },
             {
               "pollster": "Change Research",
               "dates": "September 2–8, 2025",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 41.0
             },
             {
               "pollster": "Harper Polling",
               "dates": "August 11–12, 2025",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 39.0
             },
@@ -899,6 +932,7 @@
             {
               "pollster": "Victory Insights",
               "dates": "July 28–30, 2025",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 40.0
             }
@@ -943,12 +977,14 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 22–23, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 42.0
             },
             {
               "pollster": "Big Data Poll",
               "dates": "September 21–23, 2026",
+              "partisan": "R",
               "dem": 51.0,
               "rep": 40.0
             },
@@ -961,30 +997,35 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 14–16, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 44.0
             },
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 14, 2026",
+              "partisan": "R",
               "dem": 51.0,
               "rep": 42.0
             },
             {
               "pollster": "Trafalgar Group",
               "dates": "September 10–12, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 43.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "August 16–17, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 43.0
             },
             {
               "pollster": "Fabrizio Ward /Impact Research",
               "dates": "July 13–16, 2026",
+              "partisan": "R",
               "dem": 52.0,
               "rep": 43.0
             },
@@ -997,12 +1038,14 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "June 23–27, 2026",
+              "partisan": "D",
               "dem": 56.0,
               "rep": 43.0
             },
             {
               "pollster": "Echelon Insights",
               "dates": "April 3–9, 2026",
+              "partisan": "R",
               "dem": 51.0,
               "rep": 44.0
             },
@@ -1015,6 +1058,7 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 9–12, 2025",
+              "partisan": "R",
               "dem": 38.0,
               "rep": 38.0
             },
@@ -1027,18 +1071,21 @@
             {
               "pollster": "Cygnal",
               "dates": "May 15–17, 2025",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 43.0
             },
             {
               "pollster": "Trafalgar Group",
               "dates": "April 24–27, 2025",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 43.0
             },
             {
               "pollster": "WPA Intelligence",
               "dates": "January 14–15, 2025",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 34.0
             }
@@ -1077,6 +1124,7 @@
             {
               "pollster": "Change Research",
               "dates": "September 25–27, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 48.0
             },
@@ -1089,6 +1137,7 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 20–21, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 49.0
             },
@@ -1101,12 +1150,14 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 50.0
             },
             {
               "pollster": "Change Research",
               "dates": "September 7–9, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 47.0
             },
@@ -1166,10 +1217,12 @@
           "rep": 42.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Trafalgar Group",
               "dates": "September 26–27, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 41.0
             },
@@ -1188,18 +1241,21 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 16–17, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 40.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 9–11, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 46.0
             },
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 34.0
             },
@@ -1218,6 +1274,7 @@
             {
               "pollster": "Peak Insights",
               "dates": "June 24–27, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 42.0
             },
@@ -1272,6 +1329,7 @@
             {
               "pollster": "Guidant Polling and Strategy",
               "dates": "December 9–11, 2025",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 44.0
             },
@@ -1284,6 +1342,7 @@
             {
               "pollster": "co/efficient",
               "dates": "October 9–13, 2025",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 42.0
             },
@@ -1296,6 +1355,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 10–12, 2025",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 43.0
             }
@@ -1334,18 +1394,21 @@
             {
               "pollster": "Big Data Poll",
               "dates": "September 29–30, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 38.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 28–29, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 14–15, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 42.0
             },
@@ -1358,18 +1421,21 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 44.0
             },
             {
               "pollster": "TIPP Insights",
               "dates": "August 31 – September 2, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 38.0
             },
             {
               "pollster": "Deep Root Analytics",
               "dates": "August 17–18, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 45.0
             },
@@ -1382,6 +1448,7 @@
             {
               "pollster": "Impact Research",
               "dates": "May 26–28, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 44.0
             },
@@ -1394,6 +1461,7 @@
             {
               "pollster": "Impact Research",
               "dates": "July 8–11, 2025",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 45.0
             }
@@ -1430,10 +1498,12 @@
           "ind": 6.5,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Data for Progress",
               "dates": "August 5–15, 2026",
+              "partisan": "D",
               "dem": 38.0,
               "rep": 44.0,
               "ind": 7.0
@@ -1441,6 +1511,7 @@
             {
               "pollster": "Impact Research",
               "dates": "April 8–12, 2026",
+              "partisan": "D",
               "dem": 39.0,
               "rep": 42.0,
               "ind": 6.0
@@ -1448,6 +1519,7 @@
             {
               "pollster": "Impact Research",
               "dates": "June 18–22, 2025",
+              "partisan": "D",
               "dem": 38.0,
               "rep": 51.0
             }
@@ -1483,6 +1555,7 @@
           "ind": 43.4,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "Zenith Research",
@@ -1493,42 +1566,49 @@
             {
               "pollster": "Public Policy Polling",
               "dates": "September 8–9, 2026",
+              "partisan": "D",
               "rep": 45.0,
               "ind": 42.0
             },
             {
               "pollster": "Lake Research Partners",
               "dates": "August 26–30, 2026",
+              "partisan": "D",
               "rep": 44.0,
               "ind": 51.0
             },
             {
               "pollster": "Impact Research",
               "dates": "August 13–17, 2026",
+              "partisan": "D",
               "rep": 44.0,
               "ind": 44.0
             },
             {
               "pollster": "Public Opinion Strategies",
               "dates": "July 6–9, 2026",
+              "partisan": "R",
               "rep": 56.0,
               "ind": 33.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "May 29–30, 2026",
+              "partisan": "D",
               "rep": 44.0,
               "ind": 40.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "February 17–18, 2026",
+              "partisan": "D",
               "rep": 47.0,
               "ind": 35.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "November 13–14, 2025",
+              "partisan": "D",
               "rep": 44.0,
               "ind": 31.0
             }
@@ -1573,12 +1653,14 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 28–29, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 43.0
             },
             {
               "pollster": "Big Data Poll",
               "dates": "September 26–27, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 43.0
             },
@@ -1597,18 +1679,21 @@
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 22–23, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 43.0
             },
             {
               "pollster": "Quantus Insights",
               "dates": "September 21–23, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 47.0
             },
             {
               "pollster": "Trafalgar Group",
               "dates": "September 14–16, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 42.0
             },
@@ -1621,6 +1706,7 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 8–9, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 42.0
             },
@@ -1639,12 +1725,14 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 45.0
             },
             {
               "pollster": "Tulchin Research",
               "dates": "July 29 – August 4, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 43.0
             },
@@ -1657,18 +1745,21 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "June 14–16, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 45.0
             },
             {
               "pollster": "Tulchin Research",
               "dates": "June 2–4, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 42.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "May 28 – June 1, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 45.0
             },
@@ -1681,24 +1772,28 @@
             {
               "pollster": "Echelon Insights",
               "dates": "April 3–9, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 51.0
             },
             {
               "pollster": "Quantus Insights",
               "dates": "March 13–14, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 46.0
             },
             {
               "pollster": "OnMessage Public Strategies",
               "dates": "March 3–8, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 45.0
             },
             {
               "pollster": "EMC Research",
               "dates": "February 10–22, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 47.0
             },
@@ -1717,6 +1812,7 @@
             {
               "pollster": "Hart Research",
               "dates": "September 19–22, 2025",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 45.0
             },
@@ -1779,18 +1875,21 @@
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 28–29, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 49.0
             },
             {
               "pollster": "Pulse Decision Science",
               "dates": "September 24–27, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 48.0
             },
@@ -1803,12 +1902,14 @@
             {
               "pollster": "Stratus Intelligence",
               "dates": "September 22–24, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 48.0
             },
             {
               "pollster": "Texas Public Opinion Research",
               "dates": "September 19–22, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 44.0
             },
@@ -1827,6 +1928,7 @@
             {
               "pollster": "Trafalgar Group",
               "dates": "September 15–17, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
@@ -1869,18 +1971,21 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "August 30 – September 1, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 44.0
             },
             {
               "pollster": "Overton Insights",
               "dates": "August 24–26, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 50.0
             },
             {
               "pollster": "Texas Public Opinion Research",
               "dates": "August 21–24, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 42.0
             },
@@ -1905,6 +2010,7 @@
             {
               "pollster": "YouGov Blue",
               "dates": "July 15–31, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 45.0
             },
@@ -1923,12 +2029,14 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "July 23–27, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 48.0
             },
             {
               "pollster": "Texas Public Opinion Research",
               "dates": "July 15–17, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 40.0
             },
@@ -1947,6 +2055,7 @@
             {
               "pollster": "SoCal Strategies",
               "dates": "June 21, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 49.0
             },
@@ -1971,12 +2080,14 @@
             {
               "pollster": "Texas Public Opinion Research",
               "dates": "May 27–28, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 44.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "May 22–23, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 38.0
             },
@@ -1989,6 +2100,7 @@
             {
               "pollster": "Texas Public Opinion Research",
               "dates": "April 17–20, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 41.0
             },
@@ -2001,12 +2113,14 @@
             {
               "pollster": "Impact Research",
               "dates": "March 12–17, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 43.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "March 4–5, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 45.0
             },
@@ -2025,6 +2139,7 @@
             {
               "pollster": "Ragnar Research Partners",
               "dates": "November 12–17, 2025",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 44.0
             },
@@ -2081,24 +2196,28 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 46.0
             },
             {
               "pollster": "Trafalgar Group",
               "dates": "September 22–24, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 47.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 14–17, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 48.0
             },
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 13–14, 2026",
+              "partisan": "R",
               "dem": 39.0,
               "rep": 39.0
             },
@@ -2111,6 +2230,7 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "September 8–11, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 41.0
             },
@@ -2129,6 +2249,7 @@
             {
               "pollster": "Data for Progress",
               "dates": "July 28 – August 4, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 41.0
             },
@@ -2165,6 +2286,7 @@
             {
               "pollster": "Public Policy Polling",
               "dates": "January 16–17, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 47.0
             },
@@ -2177,6 +2299,7 @@
             {
               "pollster": "Data for Progress",
               "dates": "October 17–23, 2025",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 45.0
             },
@@ -2195,6 +2318,7 @@
             {
               "pollster": "Data for Progress",
               "dates": "July 21–27, 2025",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 46.0
             },
@@ -2239,6 +2363,7 @@
             {
               "pollster": "Trafalgar Group",
               "dates": "September 29 – October 1, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 46.0
             },
@@ -2257,18 +2382,21 @@
             {
               "pollster": "co/efficient",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 48.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 22–23, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 46.0
             },
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "September 20–22, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 47.0
             },
@@ -2287,6 +2415,7 @@
             {
               "pollster": "Quantus Insights",
               "dates": "September 14–15, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 48.0
             },
@@ -2299,6 +2428,7 @@
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
@@ -2323,12 +2453,14 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 46.0
             },
             {
               "pollster": "Hart Research",
               "dates": "July 27 – August 1, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 45.0
             },
@@ -2341,18 +2473,21 @@
             {
               "pollster": "Z to A Research",
               "dates": "July 7–8, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 48.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "July 7, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 44.0
             },
             {
               "pollster": "Wedgewood Polls",
               "dates": "July 4–6, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 43.0
             }
@@ -2388,6 +2523,7 @@
           "ind": 40.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 1,
           "polls": [
             {
               "pollster": "Advanced Targeting Research",
@@ -2404,6 +2540,7 @@
             {
               "pollster": "Public Policy Polling",
               "dates": "March 16–17, 2026",
+              "partisan": "I",
               "rep": 48.0,
               "ind": 34.0
             }
@@ -2448,24 +2585,28 @@
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 43.0
             },
             {
               "pollster": "Quantus Insights",
               "dates": "September 28–29, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 47.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 47.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 22–23, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 46.0
             },
@@ -2478,24 +2619,28 @@
             {
               "pollster": "Trafalgar Group",
               "dates": "September 16–18, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 44.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 14–16, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 46.0
             },
             {
               "pollster": "Cygnal",
               "dates": "September 9–11, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 43.0
             },
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 40.0
             },
@@ -2514,6 +2659,7 @@
             {
               "pollster": "Global Strategy Group",
               "dates": "August 27–31, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 42.0
             },
@@ -2544,6 +2690,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "June 23–27, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 46.0
             },
@@ -2556,36 +2703,42 @@
             {
               "pollster": "Cygnal",
               "dates": "June 16–19, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 46.0
             },
             {
               "pollster": "Global Strategy Group",
               "dates": "June 8–11, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 45.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "June 3–4, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 46.0
             },
             {
               "pollster": "Echelon Insights",
               "dates": "April 3–9, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "GQR",
               "dates": "March 10–16, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 47.0
             },
             {
               "pollster": "Change Research",
               "dates": "January 8–11, 2026",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 44.0
             }
@@ -2624,12 +2777,14 @@
             {
               "pollster": "Trafalgar Group",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 45.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 49.0
             },
@@ -2642,18 +2797,21 @@
             {
               "pollster": "Big Data Poll",
               "dates": "September 22–24, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 42.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 21–23, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 45.0
             },
             {
               "pollster": "GBAO",
               "dates": "September 19–22, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 44.0
             },
@@ -2666,6 +2824,7 @@
             {
               "pollster": "Cygnal /Beacon Research",
               "dates": "September 18–21, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 40.0
             },
@@ -2678,12 +2837,14 @@
             {
               "pollster": "Torchlight Strategies",
               "dates": "September 15–19, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 44.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 16–17, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 45.0
             },
@@ -2702,6 +2863,7 @@
             {
               "pollster": "Trafalgar Group",
               "dates": "September 7–9, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
@@ -2738,30 +2900,35 @@
             {
               "pollster": "Susquehanna Polling & Research",
               "dates": "August 11–17, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 39.0
             },
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "August 9–11, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 47.0
             },
             {
               "pollster": "TIPP Insights",
               "dates": "August 6–10, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 39.0
             },
             {
               "pollster": "GBAO",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 44.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 51.0
             },
@@ -2774,6 +2941,7 @@
             {
               "pollster": "SoCal Strategies",
               "dates": "July 28–30, 2026",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 42.0
             },
@@ -2792,18 +2960,21 @@
             {
               "pollster": "Quantus Insights",
               "dates": "June 29–30, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 44.0
             },
             {
               "pollster": "Data for Progress",
               "dates": "June 15–22, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 46.0
             },
             {
               "pollster": "Zenith Research",
               "dates": "June 11–14, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 42.0
             },
@@ -2816,12 +2987,14 @@
             {
               "pollster": "Tulchin Research",
               "dates": "June 2–4, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 41.0
             },
             {
               "pollster": "TIPP Insights",
               "dates": "May 20–23, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 40.0
             },
@@ -2858,6 +3031,7 @@
             {
               "pollster": "Rosetta Stone Communications",
               "dates": "October 23–25, 2025",
+              "partisan": "R",
               "dem": 31.0,
               "rep": 45.0
             },
@@ -2902,18 +3076,21 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 28–29, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 46.0
             },
             {
               "pollster": "Trafalgar Group",
               "dates": "September 23–25, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 43.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 8–9, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 45.0
             },
@@ -2926,12 +3103,14 @@
             {
               "pollster": "Impact Research",
               "dates": "August 18–24, 2026",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 41.0
             },
             {
               "pollster": "Impact Research",
               "dates": "August 14–22, 2026",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 39.0
             }
@@ -2970,6 +3149,7 @@
             {
               "pollster": "Trafalgar Group",
               "dates": "September 29 – October 1, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 44.0
             },
@@ -2994,36 +3174,42 @@
             {
               "pollster": "Global Strategy Group",
               "dates": "September 13–16, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 47.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 49.0
             },
             {
               "pollster": "Global Strategy Group",
               "dates": "August 12–16, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 43.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "August 7–8, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 46.0
             },
             {
               "pollster": "GBAO",
               "dates": "July 8–13, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 47.0
             },
             {
               "pollster": "Tavern Research",
               "dates": "January 26–28, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 54.0
             }
@@ -3062,6 +3248,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "rep": 48.0,
               "ind": 43.0
             },
@@ -3080,54 +3267,63 @@
             {
               "pollster": "GBAO",
               "dates": "September 3–8, 2026",
+              "partisan": "D",
               "rep": 46.0,
               "ind": 47.0
             },
             {
               "pollster": "Impact Research",
               "dates": "August 9–13, 2026",
+              "partisan": "D",
               "rep": 47.0,
               "ind": 47.0
             },
             {
               "pollster": "GBAO",
               "dates": "July 2026",
+              "partisan": "D",
               "rep": 47.0,
               "ind": 47.0
             },
             {
               "pollster": "Tavern Research",
               "dates": "May 8–11, 2026",
+              "partisan": "D",
               "rep": 42.0,
               "ind": 47.0
             },
             {
               "pollster": "GBAO",
               "dates": "April 2026",
+              "partisan": "D",
               "rep": 45.0,
               "ind": 46.0
             },
             {
               "pollster": "Impact Research",
               "dates": "February 2–5, 2026",
+              "partisan": "D",
               "rep": 48.0,
               "ind": 47.0
             },
             {
               "pollster": "Lake Research Partners",
               "dates": "December 11–17, 2025",
+              "partisan": "D",
               "rep": 48.0,
               "ind": 47.0
             },
             {
               "pollster": "Lake Research Partners",
               "dates": "July 23–29, 2025",
+              "partisan": "D",
               "rep": 46.0,
               "ind": 47.0
             },
             {
               "pollster": "Change Research",
               "dates": "March 28 – April 1, 2025",
+              "partisan": "D",
               "rep": 46.0,
               "ind": 45.0
             }
@@ -8774,6 +8970,7 @@
           "ind": 36.4,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "New York Times / Siena University",
@@ -8784,6 +8981,7 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "September 8–11, 2026",
+              "partisan": "R",
               "rep": 45.0,
               "ind": 31.0
             },
@@ -8796,24 +8994,28 @@
             {
               "pollster": "GBAO",
               "dates": "August 3–5, 2026",
+              "partisan": "D",
               "rep": 46.0,
               "ind": 42.0
             },
             {
               "pollster": "Data for Progress",
               "dates": "July 28 – August 4, 2026",
+              "partisan": "D",
               "rep": 47.0,
               "ind": 37.0
             },
             {
               "pollster": "Tavern Research",
               "dates": "May 18–27, 2026",
+              "partisan": "D",
               "rep": 52.0,
               "ind": 48.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "February 11–12, 2026",
+              "partisan": "D",
               "rep": 41.0,
               "ind": 37.0
             }
@@ -10198,34 +10400,40 @@
           "rep": 39.4,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 5,
           "polls": [
             {
               "pollster": "Bedrock Polling",
               "dates": "August 7–10, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 35.0
             },
             {
               "pollster": "co/efficient",
               "dates": "August 5–6, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 33.0
             },
             {
               "pollster": "Tavern Research",
               "dates": "August 4–5, 2026",
+              "partisan": "D",
               "dem": 54.0,
               "rep": 46.0
             },
             {
               "pollster": "co/efficient",
               "dates": "July 29–30, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 39.0
             },
             {
               "pollster": "GBAO",
               "dates": "June 16–20, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 44.0
             }
@@ -10327,22 +10535,26 @@
           "rep": 47.3,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "GBAO",
               "dates": "September 18–21, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 46.0
             },
             {
               "pollster": "Ragnar Research Partners",
               "dates": "March 12–14, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 52.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "February 2–3, 2026",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 44.0
             }
@@ -10436,16 +10648,19 @@
           "rep": 45.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Public Policy Polling",
               "dates": "September 9–10, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 48.0
             },
             {
               "pollster": "Impact Research",
               "dates": "August 30 – September 2, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 47.0
             },
@@ -10464,6 +10679,7 @@
             {
               "pollster": "Impact Research",
               "dates": "May 26–31, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 45.0
             }
@@ -10869,22 +11085,26 @@
           "rep": 47.7,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "GBAO",
               "dates": "August 21–24, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 46.0
             },
             {
               "pollster": "Peak Insights",
               "dates": "August 17–20, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 53.0
             },
             {
               "pollster": "GBAO",
               "dates": "June 11–15, 2026",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 44.0
             }
@@ -10920,6 +11140,7 @@
           "rep": 48.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 2,
           "polls": [
             {
               "pollster": "The Washington Post / SSPG",
@@ -10930,12 +11151,14 @@
             {
               "pollster": "Expedition Strategies",
               "dates": "September 21–24, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 46.0
             },
             {
               "pollster": "Expedition Strategies",
               "dates": "July 29 – August 1, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 47.0
             }
@@ -10971,10 +11194,12 @@
           "rep": 43.6,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "Normington Petts",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 54.0,
               "rep": 41.0
             },
@@ -10987,18 +11212,21 @@
             {
               "pollster": "Normington Petts",
               "dates": "July 23–27, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 45.0
             },
             {
               "pollster": "Applecart",
               "dates": "May 18–25, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 46.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "September 10–11, 2025",
+              "partisan": "D",
               "dem": 38.0,
               "rep": 41.0
             }
@@ -11124,6 +11352,7 @@
           "rep": 44.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Franklin & Marshall College",
@@ -11134,18 +11363,21 @@
             {
               "pollster": "Normington Petts",
               "dates": "April 20–23, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 45.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "November 18–19, 2025",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 44.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "July 10–11, 2025",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 43.0
             }
@@ -11217,28 +11449,33 @@
           "rep": 41.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "GBAO",
               "dates": "September 8–11, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 43.0
             },
             {
               "pollster": "GQR",
               "dates": "June 22–28, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 41.0
             },
             {
               "pollster": "co/efficient",
               "dates": "April 25–29, 2026",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 41.0
             },
             {
               "pollster": "GQR",
               "dates": "January 29 – February 2, 2026",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 39.0
             }
@@ -11274,22 +11511,26 @@
           "rep": 43.3,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Normington Petts",
               "dates": "June 8–11, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 45.0
             },
             {
               "pollster": "Ragnar Research Partners",
               "dates": "March 12–14, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 44.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "October 14–15, 2025",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 41.0
             }
@@ -11325,22 +11566,26 @@
           "rep": 43.7,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Hart Research",
               "dates": "September 22–24, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "Hart Research",
               "dates": "August 6–9, 2026",
+              "partisan": "D",
               "dem": 37.0,
               "rep": 41.0
             },
             {
               "pollster": "Hart Research",
               "dates": "June 23–25, 2026",
+              "partisan": "D",
               "dem": 40.0,
               "rep": 45.0
             }
@@ -11376,22 +11621,26 @@
           "rep": 45.7,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "co/efficient",
               "dates": "September 30 – October 1, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 46.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "September 9–10, 2026",
+              "partisan": "D",
               "dem": 40.0,
               "rep": 41.0
             },
             {
               "pollster": "GQR",
               "dates": "July 15–22, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 50.0
             }
@@ -11467,34 +11716,40 @@
           "rep": 46.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 5,
           "polls": [
             {
               "pollster": "Public Opinion Strategies",
               "dates": "September 11–14, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 49.0
             },
             {
               "pollster": "GQR",
               "dates": "August 19–23, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 49.0
             },
             {
               "pollster": "Global Strategy Group",
               "dates": "August 5–9, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 47.0
             },
             {
               "pollster": "Global Strategy Group",
               "dates": "March 19–22, 2026",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 48.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "October 10–11, 2025",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 41.0
             }
@@ -11530,28 +11785,33 @@
           "rep": 45.5,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "FM3 Research",
               "dates": "June 20–25, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 46.0
             },
             {
               "pollster": "Impact Research",
               "dates": "May 26–31, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 46.0
             },
             {
               "pollster": "Impact Research",
               "dates": "February 12–17, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 48.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "October 14–15, 2025",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 42.0
             }
@@ -11609,22 +11869,26 @@
           "rep": 44.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Data for Progress",
               "dates": "June 24–30, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 46.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "April 24–26, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "October 27–28, 2025",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 41.0
             }
@@ -11660,22 +11924,26 @@
           "rep": 44.3,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Lake Research Partners",
               "dates": "June 18–23, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 45.0
             },
             {
               "pollster": "Impact Research",
               "dates": "June 8–11, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "August 27–28, 2025",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 43.0
             }
@@ -11711,6 +11979,7 @@
           "rep": 42.3,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 2,
           "polls": [
             {
               "pollster": "Public Policy Research/ Texas Southern University",
@@ -11721,12 +11990,14 @@
             {
               "pollster": "Ragnar Research Partners",
               "dates": "June 14–16, 2026",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 44.0
             },
             {
               "pollster": "co/efficient",
               "dates": "April 25–29, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 41.0
             }
@@ -11763,10 +12034,12 @@
           "ind": 10.5,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 1,
           "polls": [
             {
               "pollster": "GBAO",
               "dates": "August 31 – September 3, 2026",
+              "partisan": "D",
               "dem": 38.0,
               "rep": 37.0,
               "ind": 14.0
@@ -11817,10 +12090,12 @@
           "rep": 48.5,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Impact Research",
               "dates": "September 28 – October 1, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 47.0
             },
@@ -11833,12 +12108,14 @@
             {
               "pollster": "Impact Research",
               "dates": "August 6–9, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 49.0
             },
             {
               "pollster": "Ragnar Research Partners",
               "dates": "March 14–16, 2026",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 50.0
             }
@@ -11896,28 +12173,33 @@
           "rep": 45.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "Hart Research Associates",
               "dates": "August 25–27, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 46.0
             },
             {
               "pollster": "Fabrizio, Lee & Associates",
               "dates": "August 4–6, 2026",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 49.0
             },
             {
               "pollster": "GQR",
               "dates": "August 4–6, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 47.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "May 19–20, 2026",
+              "partisan": "D",
               "dem": 39.0,
               "rep": 41.0
             }
@@ -11953,22 +12235,26 @@
           "rep": 46.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Tulchin Research",
               "dates": "September 8–13, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 47.0
             },
             {
               "pollster": "Bendixen & Amandi International",
               "dates": "August 25–30, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 45.0
             },
             {
               "pollster": "Blueprint Polling",
               "dates": "March 6–8, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 46.0
             }
@@ -12004,10 +12290,12 @@
           "rep": 47.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "McLaughlin & Associates",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 50.0
             },
@@ -12020,12 +12308,14 @@
             {
               "pollster": "co/efficient",
               "dates": "July 20–22, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 50.0
             },
             {
               "pollster": "FM3 Research",
               "dates": "June 27 – July 1, 2026",
+              "partisan": "D",
               "dem": 51.0,
               "rep": 45.0
             }
@@ -12105,6 +12395,7 @@
           "rep": 43.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "American Pulse",
@@ -12115,12 +12406,14 @@
             {
               "pollster": "Impact Research",
               "dates": "September 20–23, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 44.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "September 9–10, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 43.0
             },
@@ -12133,12 +12426,14 @@
             {
               "pollster": "Impact Research",
               "dates": "June 22–25, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 44.0
             },
             {
               "pollster": "Upswing Research",
               "dates": "April 30 – May 5, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 48.0
             }
@@ -12174,22 +12469,26 @@
           "rep": 46.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "Tulchin Research",
               "dates": "August 24–31, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 47.0
             },
             {
               "pollster": "DCCC",
               "dates": "July 29–30, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 46.0
             },
             {
               "pollster": "Impact Research",
               "dates": "June 22–25, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 45.0
             }
@@ -12225,10 +12524,12 @@
           "rep": 47.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "Tulchin Research",
               "dates": "September 27–30, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 48.0
             },
@@ -12241,24 +12542,28 @@
             {
               "pollster": "Impact Research",
               "dates": "September 8–12, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 49.0
             },
             {
               "pollster": "DCCC Targeting Team",
               "dates": "August 11–13, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 49.0
             },
             {
               "pollster": "Tulchin Research",
               "dates": "July 11–16, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 48.0
             },
             {
               "pollster": "co/efficient",
               "dates": "April 26–28, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 50.0
             },
@@ -12271,6 +12576,7 @@
             {
               "pollster": "The Mellman Group",
               "dates": "June 4–10, 2025",
+              "partisan": "D",
               "dem": 37.0,
               "rep": 47.0
             }
@@ -12350,28 +12656,33 @@
           "rep": 45.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "GBAO",
               "dates": "September 13–16, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 46.0
             },
             {
               "pollster": "GBAO",
               "dates": "May 28 – June 1, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 45.0
             },
             {
               "pollster": "Ragnar Research Partners",
               "dates": "March 12–14, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 48.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "November 20–21, 2025",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 44.0
             }
@@ -12513,28 +12824,33 @@
           "rep": 42.5,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 4,
           "polls": [
             {
               "pollster": "GQR",
               "dates": "September 25–30, 2026",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 37.0
             },
             {
               "pollster": "Lake Research Partners",
               "dates": "August 17–23, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 44.0
             },
             {
               "pollster": "DCCC",
               "dates": "July 29–30, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 47.0
             },
             {
               "pollster": "GQR",
               "dates": "June 24–28, 2026",
+              "partisan": "D",
               "dem": 39.0,
               "rep": 42.0
             }
@@ -12570,6 +12886,7 @@
           "rep": 44.7,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 2,
           "polls": [
             {
               "pollster": "The Washington Post / SSPG",
@@ -12580,12 +12897,14 @@
             {
               "pollster": "DCCC Targeting Team",
               "dates": "September 15–17, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 47.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "August 8–9, 2025",
+              "partisan": "D",
               "dem": 40.0,
               "rep": 41.0
             }
@@ -12643,6 +12962,7 @@
           "rep": 44.5,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 4,
+          "n_sponsored": 2,
           "polls": [
             {
               "pollster": "DHM Research",
@@ -12659,12 +12979,14 @@
             {
               "pollster": "co/efficient",
               "dates": "April 25–29, 2026",
+              "partisan": "R",
               "dem": 34.0,
               "rep": 41.0
             },
             {
               "pollster": "Voter Sciences",
               "dates": "August 2025",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 48.0
             }
@@ -13211,6 +13533,7 @@
             {
               "pollster": "National Public Affairs",
               "dates": "July 26–30, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 43.0
             },
@@ -13247,6 +13570,7 @@
             {
               "pollster": "Susquehanna Polling & Research",
               "dates": "March 18–29, 2026",
+              "partisan": "R",
               "dem": 58.0,
               "rep": 36.0
             },
@@ -13271,6 +13595,7 @@
             {
               "pollster": "Susquehanna Polling & Research",
               "dates": "September 22–28, 2025",
+              "partisan": "R",
               "dem": 54.0,
               "rep": 36.0
             }
@@ -13459,6 +13784,7 @@
           "ind": 10.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 1,
           "polls": [
             {
               "pollster": "TargetSmart",
@@ -13488,6 +13814,7 @@
             {
               "pollster": "Quantus Insights",
               "dates": "August 5–7, 2025",
+              "partisan": "R",
               "dem": 28.0,
               "rep": 49.0
             }
@@ -13641,6 +13968,7 @@
           "rep": 39.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 2,
           "polls": [
             {
               "pollster": "Quinnipiac University",
@@ -13657,12 +13985,14 @@
             {
               "pollster": "McLaughlin & Associates",
               "dates": "August 27–31, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 46.0
             },
             {
               "pollster": "Concord Public Opinion Partners",
               "dates": "August 19–21, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 34.0
             },
@@ -13681,12 +14011,14 @@
             {
               "pollster": "Red Oak Strategic",
               "dates": "July 7–12, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 43.0
             },
             {
               "pollster": "co/efficient",
               "dates": "June 30 – July 2, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 41.0
             },
@@ -13723,6 +14055,7 @@
             {
               "pollster": "McLaughlin & Associates",
               "dates": "March 4–8, 2026",
+              "partisan": "R",
               "dem": 52.0,
               "rep": 43.0
             },
@@ -13765,12 +14098,14 @@
             {
               "pollster": "J.L. Partners",
               "dates": "November 9–10, 2025",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 36.0
             },
             {
               "pollster": "GrayHouse",
               "dates": "April 22–24, 2025",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 36.0
             }
@@ -13806,10 +14141,12 @@
           "rep": 50.7,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 3,
+          "n_sponsored": 2,
           "polls": [
             {
               "pollster": "RMG Research",
               "dates": "September 21–25, 2026",
+              "partisan": "R",
               "dem": 37.0,
               "rep": 50.0
             },
@@ -13822,6 +14159,7 @@
             {
               "pollster": "Cygnal",
               "dates": "November 12–13, 2025",
+              "partisan": "R",
               "dem": 34.0,
               "rep": 53.0
             }
@@ -13860,6 +14198,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 14–15, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 45.0
             },
@@ -13971,6 +14310,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 38.0,
               "ind": 6.0
@@ -13978,6 +14318,7 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "September 20–22, 2026",
+              "partisan": "R",
               "dem": 52.0,
               "rep": 39.0,
               "ind": 6.0
@@ -14018,6 +14359,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 38.0,
               "ind": 9.0
@@ -14032,6 +14374,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "June 23–27, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 42.0
             },
@@ -14134,6 +14477,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 9–11, 2026",
+              "partisan": "R",
               "dem": 34.0,
               "rep": 55.0
             },
@@ -14208,6 +14552,7 @@
             {
               "pollster": "NextGen Polling",
               "dates": "August 17–19, 2026",
+              "partisan": "R",
               "dem": 39.0,
               "rep": 38.0
             },
@@ -14220,12 +14565,14 @@
             {
               "pollster": "Quantus Insights",
               "dates": "August 14–17, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 43.0
             },
             {
               "pollster": "Kreate Strategies",
               "dates": "August 13–16, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 40.0
             },
@@ -14244,18 +14591,21 @@
             {
               "pollster": "Grayhouse",
               "dates": "August 9–11, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 45.0
             },
             {
               "pollster": "The Tarrance Group",
               "dates": "July 27–30, 2026",
+              "partisan": "R",
               "dem": 52.0,
               "rep": 48.0
             },
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "July 26–28, 2026",
+              "partisan": "R",
               "dem": 52.0,
               "rep": 44.0
             },
@@ -14268,6 +14618,7 @@
             {
               "pollster": "TIPP Insights",
               "dates": "April 20–24, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 38.0
             },
@@ -14286,6 +14637,7 @@
             {
               "pollster": "NextGen Polling",
               "dates": "December 15–17, 2025",
+              "partisan": "R",
               "dem": 51.0,
               "rep": 32.0
             },
@@ -14310,6 +14662,7 @@
             {
               "pollster": "Pulse Decision Science",
               "dates": "April 6–9, 2025",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 42.0
             },
@@ -14322,6 +14675,7 @@
             {
               "pollster": "Kreate Strategies",
               "dates": "February 5–7, 2025",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 44.0
             }
@@ -14360,6 +14714,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 28–30, 2026",
+              "partisan": "R",
               "dem": 38.0,
               "rep": 43.0
             },
@@ -14372,6 +14727,7 @@
             {
               "pollster": "Lake Research Partners",
               "dates": "September 8–14, 2026",
+              "partisan": "D",
               "dem": 40.0,
               "rep": 40.0
             },
@@ -14384,18 +14740,21 @@
             {
               "pollster": "Lake Research Partners",
               "dates": "April 25–29, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 47.0
             },
             {
               "pollster": "Lake Research Partners",
               "dates": "December 11–17, 2025",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 48.0
             },
             {
               "pollster": "Lake Research Partners",
               "dates": "July 23–29, 2025",
+              "partisan": "D",
               "dem": 39.0,
               "rep": 51.0
             }
@@ -14436,6 +14795,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 44.0
             },
@@ -14448,12 +14808,14 @@
             {
               "pollster": "co/efficient",
               "dates": "September 14–16, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 42.0
             },
             {
               "pollster": "Cygnal",
               "dates": "September 9–11, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 44.0
             },
@@ -14490,6 +14852,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "June 23–27, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 44.0
             },
@@ -14502,6 +14865,7 @@
             {
               "pollster": "Cygnal",
               "dates": "June 16–19, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 43.0
             }
@@ -14541,6 +14905,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 54.0,
               "rep": 45.0
             },
@@ -14553,6 +14918,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 21–23, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 44.0
             },
@@ -14565,6 +14931,7 @@
             {
               "pollster": "Beacon Research / Cygnal",
               "dates": "September 18–21, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 38.0
             },
@@ -14577,6 +14944,7 @@
             {
               "pollster": "Torchlight Strategies",
               "dates": "September 15–19, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 41.0
             },
@@ -14619,18 +14987,21 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "August 9–11, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 44.0
             },
             {
               "pollster": "TIPP Insights",
               "dates": "August 6–10, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 34.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 52.0,
               "rep": 47.0
             },
@@ -14661,6 +15032,7 @@
             {
               "pollster": "TIPP Insights",
               "dates": "May 20–23, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 35.0
             },
@@ -14723,18 +15095,21 @@
             {
               "pollster": "TIPP Insights",
               "dates": "August 14–18, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 43.0
             },
             {
               "pollster": "Platform Communications",
               "dates": "August 12–13, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 44.0
             },
             {
               "pollster": "GBAO",
               "dates": "July 30 – August 3, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 44.0
             },
@@ -14747,6 +15122,7 @@
             {
               "pollster": "TIPP Insights",
               "dates": "March 13–19, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 41.0
             }
@@ -14791,6 +15167,7 @@
             {
               "pollster": "Big Data Poll",
               "dates": "September 26–27, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 48.0
             },
@@ -14821,12 +15198,14 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "August 6–10, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 50.0
             },
             {
               "pollster": "Tulchin Research",
               "dates": "July 29 – August 4, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 44.0
             },
@@ -14839,18 +15218,21 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "June 14–16, 2026",
+              "partisan": "R",
               "dem": 47.0,
               "rep": 44.0
             },
             {
               "pollster": "Tulchin Research",
               "dates": "June 2–4, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 44.0
             },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "May 28 – June 1, 2026",
+              "partisan": "D",
               "dem": 50.0,
               "rep": 49.0
             },
@@ -14863,18 +15245,21 @@
             {
               "pollster": "Echelon Insights",
               "dates": "April 3–9, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 49.0
             },
             {
               "pollster": "Quantus Insights",
               "dates": "March 13–14, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "EMC Research",
               "dates": "February 10–22, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 43.0
             },
@@ -14887,6 +15272,7 @@
             {
               "pollster": "Data Targeting",
               "dates": "December 3–8, 2025",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 45.0
             },
@@ -14899,6 +15285,7 @@
             {
               "pollster": "Hart Research",
               "dates": "September 19–22, 2025",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 45.0
             },
@@ -14911,6 +15298,7 @@
             {
               "pollster": "Impact Research",
               "dates": "July 24–28, 2025",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 47.0
             },
@@ -14923,6 +15311,7 @@
             {
               "pollster": "Public Policy Polling",
               "dates": "February 19–20, 2025",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 44.0
             }
@@ -14979,18 +15368,21 @@
             {
               "pollster": "Global Strategy Group",
               "dates": "September 13–16, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 46.0
             },
             {
               "pollster": "co/efficient",
               "dates": "September 8–10, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 51.0
             },
             {
               "pollster": "Global Strategy Group",
               "dates": "August 13–16, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 46.0
             }
@@ -15029,6 +15421,7 @@
             {
               "pollster": "Change Research",
               "dates": "September 25-27, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 46.0
             },
@@ -15047,12 +15440,14 @@
             {
               "pollster": "Change Research",
               "dates": "September 7–9, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 44.0
             },
             {
               "pollster": "Hart Research Associates",
               "dates": "August 10–13, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 45.0
             },
@@ -15071,12 +15466,14 @@
             {
               "pollster": "Change Research",
               "dates": "May 13–16, 2026",
+              "partisan": "D",
               "dem": 46.0,
               "rep": 42.0
             },
             {
               "pollster": "Cherry Communications",
               "dates": "May 1–9, 2026",
+              "partisan": "R",
               "dem": 39.0,
               "rep": 47.0
             },
@@ -15095,6 +15492,7 @@
             {
               "pollster": "MDW Communications",
               "dates": "March 27 – April 3, 2026",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 41.0
             },
@@ -15125,12 +15523,14 @@
             {
               "pollster": "Bendixen & Amandi International",
               "dates": "September 7–9, 2025",
+              "partisan": "D",
               "dem": 41.0,
               "rep": 40.0
             },
             {
               "pollster": "AIF Center",
               "dates": "August 25–27, 2025",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 49.0
             }
@@ -15166,6 +15566,7 @@
           "rep": 45.0,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
+          "n_sponsored": 3,
           "polls": [
             {
               "pollster": "DHM Research",
@@ -15182,18 +15583,21 @@
             {
               "pollster": "Public Opinion Strategies",
               "dates": "June 22–24, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 48.0
             },
             {
               "pollster": "Hoffman Research Group",
               "dates": "May 11–12, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 45.0
             },
             {
               "pollster": "FM3 Research",
               "dates": "January 28 – February 4, 2026",
+              "partisan": "D",
               "dem": 45.0,
               "rep": 40.0
             }
@@ -15238,36 +15642,42 @@
             {
               "pollster": "Tarrance Group",
               "dates": "July 25–29, 2026",
+              "partisan": "R",
               "dem": 43.0,
               "rep": 50.0
             },
             {
               "pollster": "Public Policy Polling",
               "dates": "July 15–16, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 44.0
             },
             {
               "pollster": "Wedgewood Polls",
               "dates": "July 9–12, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 50.0
             },
             {
               "pollster": "Grassroots Targeting",
               "dates": "July 8–6, 2026",
+              "partisan": "R",
               "dem": 40.0,
               "rep": 52.0
             },
             {
               "pollster": "Public Opinion Strategies",
               "dates": "June 27–29, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 51.0
             },
             {
               "pollster": "Global Strategy Group",
               "dates": "May 5–11, 2026",
+              "partisan": "D",
               "dem": 42.0,
               "rep": 45.0
             },
@@ -15280,6 +15690,7 @@
             {
               "pollster": "Hart Research",
               "dates": "February 11–17, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 46.0
             },
@@ -15342,6 +15753,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
+              "partisan": "D",
               "dem": 47.0,
               "rep": 52.0
             },
@@ -15354,6 +15766,7 @@
             {
               "pollster": "Stratus Intelligence",
               "dates": "September 22–24, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 50.0
             },
@@ -15384,6 +15797,7 @@
             {
               "pollster": "SoCal Strategies",
               "dates": "September 12–13, 2026",
+              "partisan": "R",
               "dem": 44.0,
               "rep": 52.0
             },
@@ -15408,12 +15822,14 @@
             {
               "pollster": "Fabrizio Ward / Impact Research",
               "dates": "August 30 – September 1, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 49.0
             },
             {
               "pollster": "Overton Insights",
               "dates": "August 24–26, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 51.0
             },
@@ -15438,18 +15854,21 @@
             {
               "pollster": "GBAO",
               "dates": "August 4–9, 2026",
+              "partisan": "D",
               "dem": 48.0,
               "rep": 49.0
             },
             {
               "pollster": "Wedgewood Polls",
               "dates": "July 30–31, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 50.0
             },
             {
               "pollster": "Cygnal",
               "dates": "July 29–31, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 49.0
             },
@@ -15468,6 +15887,7 @@
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "July 23–27, 2026",
+              "partisan": "D",
               "dem": 49.0,
               "rep": 50.0
             },
@@ -15486,6 +15906,7 @@
             {
               "pollster": "SoCal Strategies",
               "dates": "June 21, 2026",
+              "partisan": "R",
               "dem": 42.0,
               "rep": 54.0
             },
@@ -15498,6 +15919,7 @@
             {
               "pollster": "Quantus Insights",
               "dates": "June 3–4, 2026",
+              "partisan": "R",
               "dem": 41.0,
               "rep": 49.0
             },
@@ -15516,6 +15938,7 @@
             {
               "pollster": "Public Policy Polling",
               "dates": "May 22–23, 2026",
+              "partisan": "D",
               "dem": 44.0,
               "rep": 48.0
             },
@@ -15528,6 +15951,7 @@
             {
               "pollster": "Slingshot Strategies",
               "dates": "April 17–20, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 48.0
             },
@@ -15552,6 +15976,7 @@
             {
               "pollster": "GBAO",
               "dates": "January 26 – February 3, 2026",
+              "partisan": "D",
               "dem": 43.0,
               "rep": 46.0
             },
@@ -15608,12 +16033,14 @@
             {
               "pollster": "InsiderAdvantage",
               "dates": "September 22–23, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 48.0
             },
             {
               "pollster": "Big Data Poll",
               "dates": "September 21–23, 2026",
+              "partisan": "R",
               "dem": 50.0,
               "rep": 50.0
             },
@@ -15626,24 +16053,28 @@
             {
               "pollster": "Rasmussen Reports",
               "dates": "September 14, 2026",
+              "partisan": "R",
               "dem": 45.0,
               "rep": 48.0
             },
             {
               "pollster": "InsiderAdvantage",
               "dates": "August 16–17, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 46.0
             },
             {
               "pollster": "Quantus Insights",
               "dates": "July 29 – August 1, 2026",
+              "partisan": "R",
               "dem": 46.0,
               "rep": 45.0
             },
             {
               "pollster": "Fabrizio Ward /Impact Research",
               "dates": "July 13–16, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 46.0
             },
@@ -15662,18 +16093,21 @@
             {
               "pollster": "Beacon Research /Shaw & Co. Research",
               "dates": "June 23–27, 2026",
+              "partisan": "D",
               "dem": 52.0,
               "rep": 47.0
             },
             {
               "pollster": "Concord Public Opinion Partners",
               "dates": "May 30 – June 2, 2026",
+              "partisan": "D",
               "dem": 53.0,
               "rep": 38.0
             },
             {
               "pollster": "Echelon Insights",
               "dates": "April 3–9, 2026",
+              "partisan": "R",
               "dem": 49.0,
               "rep": 43.0
             }

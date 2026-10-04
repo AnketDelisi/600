@@ -3,10 +3,12 @@
 
 Pipeline per race:
   1. Fundamentals prior (D - R, two-party points): PVI at -1.0 (partisan lean
-     maps ~1:1 onto margins, per FiftyPlusOne/Theo), plus incumbent bonus,
-     blended with the last election result (70% for held seats, 40% for open
-     seats — retiring/term-limited incumbents take their personal vote with
-     them, so the structural PVI dominates).
+     maps ~1:1 onto margins, per FiftyPlusOne/Theo), plus a personal-vote
+     term for running incumbents scaled by their track record (their last
+     margin vs the seat's lean; zero for open seats, skipped when polls
+     exist), blended with the last election result (70% for held seats, 40%
+     for open seats — retiring/term-limited incumbents take their personal
+     vote with them, so the structural PVI dominates).
   2. Rating band: the strongest race rating (Cook, then Inside Elections,
      then Sabato) sets a direction + strength BAND (Safe >15, Likely 7.5-15,
      Lean 2.5-7.5, Tossup <2.5, per theoelections.com); the fundamentals prior
@@ -151,6 +153,9 @@ def last_margin(race):
 
 
 def is_open_seat(race):
+    st = race.get("inc_status")
+    if st:
+        return st == "open"
     inc = (race.get("incumbent") or "").lower()
     return (
         "retiring" in inc or "term-limited" in inc or "not seeking" in inc
@@ -158,16 +163,51 @@ def is_open_seat(race):
     )
 
 
-def fundamentals_margin(race, chamber):
+INC_BONUS = 1.5   # base personal-vote term (D-minus-R points)
+
+
+def incumbency_adj(race):
+    """Personal-vote term for the fundamentals prior (D-minus-R points).
+
+    A blanket boost for every incumbent would reward the unpopular ones too,
+    so this term is only used where nothing else carries the signal: polled
+    races skip it (the polls embed the incumbent's standing) and rated races
+    keep it inside the rating band (the rating carries candidate quality).
+    It scales with the incumbent's own track record: one who historically ran
+    ahead of the seat's lean keeps a small personal vote, one who chronically
+    ran behind it keeps little or none. Open seats get nothing - the
+    discounted last-result weight already removes the retiree's pull.
+    """
+    if is_open_seat(race):
+        return 0.0
+    party = race.get("party")
+    if party not in ("D", "R"):
+        return 0.0
+    base = INC_BONUS if party == "D" else -INC_BONUS
+    last = last_margin(race)
+    if last is None:
+        return base
+    # the incumbent's overperformance vs the seat's lean, in their own
+    # party's terms (Lawler winning by R+4.4 in a D+1 seat is +5.4 ahead)
+    over = last - pvi_margin(race.get("pvi") or 0.0)
+    if party == "R":
+        over = -over
+    # 10 points behind the seat's lean -> no personal vote; 5 ahead -> +50%
+    scale = max(0.0, min(1.5, 1.0 + over / 10.0))
+    return base * scale
+
+
+def fundamentals_margin(race, chamber, apply_inc=True):
     """Blend PVI with the last election result.
 
     Open seats (retiring/term-limited/new incumbents) get less weight on the
     last result: the incumbent's personal vote largely disappears, so the
-    structural PVI dominates. Held seats keep the stronger last-result signal.
+    structural PVI dominates. Held seats keep the stronger last-result
+    signal, plus the track-record-scaled personal-vote term.
     """
     pv = pvi_margin(race.get("pvi") or 0.0)
-    if race.get("party"):
-        pv += 1.5 if race["party"] == "D" else -1.5
+    if apply_inc:
+        pv += incumbency_adj(race)
     last = last_margin(race)
     if last is not None:
         w = OPEN_SEAT_LAST_WEIGHT if is_open_seat(race) else LAST_WEIGHT
@@ -177,7 +217,9 @@ def fundamentals_margin(race, chamber):
 
 def final_margin(race, polls, chamber):
     band = rating_band(next((v for v in ((race.get("ratings") or {}).get(k) for k in RATING_ORDER) if v), None))
-    rm = fundamentals_margin(race, chamber)
+    # polled races: the polls already carry the incumbent's standing, so the
+    # prior drops the personal-vote term (no double-count)
+    rm = fundamentals_margin(race, chamber, apply_inc=(polls is None))
     if band is not None:
         lo, hi, _ = band
         rm = max(lo, min(hi, rm))

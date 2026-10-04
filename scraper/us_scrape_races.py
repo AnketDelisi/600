@@ -140,6 +140,10 @@ def scrape_senate_or_gov(key):
     soup = fetch(url)
     tbl = section_table(soup, "Predictions")
     if tbl is None:
+        # the 2022 cycle article titles the section "Final pre-election
+        # predictions"
+        tbl = section_table(soup, "Final pre-election predictions")
+    if tbl is None:
         raise RuntimeError(f"no Predictions table in {url}")
 
     # second header row defines columns: State | PVI | Incumbent | Last | <ratings>

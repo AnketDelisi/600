@@ -57,12 +57,13 @@ RATING_MARGIN = {
 }
 RATING_ORDER = ("cook", "ie", "sabato")
 # logistic slope for win probability
-# logistic slope for win probability, calibrated on the 2024 backtests
-# (us_backtest.py): both chambers' calibration bins showed the model
-# underconfident in the 0.5-0.85 range (a "55%" race won 87% of the time,
-# n=30), so beta came down one notch; going further keeps improving the
-# Brier only because it is dominated by safe seats - an artifact
-LOGISTIC_BETA = {"senate": 3.5, "house": 4.0, "governor": 3.5}
+# logistic slope for win probability, calibrated on the 2024 + 2022
+# backtests (us_backtest.py): both cycles' calibration bins show the model
+# underconfident in the 0.6-0.85 range (2022 House: 83%/100% actual for
+# 65%/77% predictions; 2024: 97%/92%), so beta came down; going much
+# further keeps improving the Brier only because it is dominated by safe
+# seats - an artifact
+LOGISTIC_BETA = {"senate": 3.5, "house": 3.5, "governor": 3.5}
 NATIONAL_SIGMA = 2.5
 # per-state correlated swing deviation (points): every race in a state shares
 # one draw per simulated night, so a state's Senate seat and House districts

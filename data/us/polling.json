@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-04T14:14:03Z",
+  "scraped_at": "2026-10-04T19:37:49Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -252,6 +252,12 @@
       "rep": 42.3,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Wedgewood Polls",
+          "dates": "October 2–3, 2026",
+          "dem": 55.0,
+          "rep": 45.0
+        },
         {
           "pollster": "InsiderAdvantage",
           "dates": "September 22–23, 2026",
@@ -1844,7 +1850,7 @@
         },
         {
           "pollster": "Tulchin Research",
-          "dates": "July 29–August 4, 2026",
+          "dates": "July 29 – August 4, 2026",
           "dem": 47.0,
           "rep": 43.0
         },
@@ -3725,7 +3731,7 @@
     },
     "Ohio": {
       "dem": 49.0,
-      "rep": 44.5,
+      "rep": 44.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {

@@ -240,6 +240,9 @@ def main():
     },
     map: {
       svg: 'img/uk.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 650 seats, projected winner takes the seat
       hideBlocToggle: true,

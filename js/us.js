@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004a";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004a";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004a";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004b";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004b";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004b";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -475,11 +475,11 @@ function render() {
       </div>
       <div class="col-b">${mapHtml}</div>
     </div>
-    <div class="card">
+    ${(data.distribution_buckets || []).length ? `<div class="card">
       <h2>Seat distribution</h2>
       <p class="note">Share of simulated nights producing each number of Democratic seats (2-seat buckets). Blue bars are Democratic-majority outcomes.</p>
       <div class="chart">${distributionSVG(data, state.chamber === "house" ? 435 : 100)}</div>
-    </div>
+    </div>` : ""}
     ${table}
     <p class="foot">
       Method: the 600 in-house model starts from district/state partisan lean (PVI and the last

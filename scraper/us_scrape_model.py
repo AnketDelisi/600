@@ -455,8 +455,11 @@ def run(chamber, races, poll_map, env_margin):
         swing, swing_party = (mu, "D") if "D" in sh else (0.0, "R")
         probs = win_probs(sh, swing, swing_party)
         keys, margin = adj_margin(sh, swing, swing_party)
-        leader = keys[0]
-        margin = round(margin, 1)
+        # the swing can flip the lead (a Republican-leading share pair minus
+        # a Democratic environment): the leader label and the reported margin
+        # must follow the ADJUSTED margin, not the pre-swing share order
+        leader = keys[0] if margin >= 0 else keys[1]
+        margin = round(abs(margin), 1)
         nm = names[label_key]
         cb = consensus_band(r.get("ratings"))
         out_races.append({

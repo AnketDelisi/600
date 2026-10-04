@@ -268,6 +268,9 @@ def main():
     },
     map: {
       svg: 'img/quebec.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
       hideBlocToggle: true,

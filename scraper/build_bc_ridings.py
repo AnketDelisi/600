@@ -213,6 +213,9 @@ def main():
     },
     map: {
       svg: 'img/bc_ridings.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring

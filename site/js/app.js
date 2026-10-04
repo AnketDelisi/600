@@ -1553,7 +1553,21 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise){
       const pastS=prox?(base[prox]||0):past;
       const natS=prox?(nat[prox]||0):natP;
       let natNow;
-      if(method==='proportional'&&natS>0.5){
+      if(method==='geometric'&&pastS>0&&natS>0.5){
+        // Geometric mean of log-odds proportional and uniform swing (Poliwave
+        // methodology): parameter-free, and it cannot push a stronghold past
+        // 100% or a vanished party below zero. Proportional swings explode on
+        // small-baseline parties (Reform's 42.6% Great Yarmouth seat scaled by
+        // 1.62 would project 68.9%); the log-odds arm approaches the 100% wall
+        // instead, and the uniform arm floors at zero.
+        const lg=x=>{
+          const c=Math.min(99.9,Math.max(0.1,x));
+          return Math.log(c/(100-c));
+        };
+        const prop=100/(1+Math.exp(-(lg(pastS)+lg(avgP)-lg(natS))));
+        const uni=Math.max(0,pastS+(avgP-natS));
+        natNow=Math.min(100,Math.sqrt(Math.max(0,prop)*uni));
+      }else if(method==='proportional'&&natS>0.5){
         natNow=Math.max(0,pastS*(avgP/natS));
       }else if(method==='shrunk'){
         natNow=Math.max(0,avgP+shrink*(pastS-natS));

@@ -7382,6 +7382,9 @@ saxony_anhalt: {
       seats:   { pis: 194, ko: 157, pl2050: 33, psl: 32, lewica: 19, razem: 7, kwin: 16, kkp: 2, r: 0 },
     },
     map: {
+      // swing method: geometric mean of log-odds proportional and
+      // uniform swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       svg: 'img/Poland.svg',
       selector: 'id',           // paths carry okręg city ids
       districts: {
@@ -19531,20 +19534,20 @@ saxony_anhalt: {
     recencyHalfLifeDays: 14,
     parties: {
       pp:     { code: 'PP',      name: 'Partido Popular',                    name_en: 'People\'s Party',                      color: '#1D84CE' },
-      psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#EF1C27' },
+      psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#E30713' },
       vox:    { code: 'VOX',     name: 'Vox',                                name_en: 'Vox',                                   color: '#63BE21' },
       sumar:  { code: 'SUMAR',   name: 'Sumar',                              name_en: 'Sumar',                                 color: '#E51C55' },
       erc:    { code: 'ERC',     name: 'Esquerra Republicana de Catalunya',  name_en: 'Republican Left of Catalonia',          color: '#FFB232' },
       junts:  { code: 'JUNTS',   name: 'Junts per Catalunya',                name_en: 'Together for Catalonia',                color: '#00B0B9' },
       bildu:  { code: 'EH BILDU',name: 'Euskal Herria Bildu',                name_en: 'Basque Country Gather',                 color: '#79BF43' },
-      pnv:    { code: 'EAJ-PNV', name: 'Euzko Alderdi Jeltzalea',            name_en: 'Basque Nationalist Party',              color: '#4AAE4A' },
-      bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#ADCFEF' },
-      cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFD700' },
-      upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#00599B' },
+      pnv:    { code: 'EAJ-PNV', name: 'Euzko Alderdi Jeltzalea',            name_en: 'Basque Nationalist Party',              color: '#008000' },
+      bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#6CA5D0' },
+      cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFCC00' },
+      upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#1B4F9C' },
       aa:     { code: 'AA',      name: 'Adelante Andalucía',                 name_en: 'Forward Andalusia',                     color: '#3FA535' },
       podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#93268F' },
-      salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#785A46' },
-      ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#064A81' },
+      salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#1B2A4A' },
+      ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#0C2C56' },
     },
     order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac'],
     parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'ac', 'vox', 'salf'],
@@ -19589,6 +19592,9 @@ saxony_anhalt: {
     },
     map: {
       svg: 'img/spain.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       districtThreshold: true,    // 3% applies per constituency, not nationally
       districts: {
@@ -23428,6 +23434,9 @@ saxony_anhalt: {
     },
     map: {
       svg: 'img/bc_ridings.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
@@ -24350,6 +24359,9 @@ saxony_anhalt: {
     },
     map: {
       svg: 'img/quebec.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
       hideBlocToggle: true,
@@ -25628,6 +25640,9 @@ saxony_anhalt: {
     },
     map: {
       svg: 'img/uk.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 650 seats, projected winner takes the seat
       hideBlocToggle: true,

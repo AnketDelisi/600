@@ -174,7 +174,7 @@ def scrape_senate_or_gov(key):
         if th is None or len(tds) < 8:
             continue
         cells = [c.get_text(strip=True) for c in tds]
-        state = re.sub(r"\(.*?\)", "", th.get_text(strip=True)).strip().title()
+        state = re.sub(r"\[.*?\]", "", re.sub(r"\(.*?\)", "", th.get_text(strip=True))).strip().title()
         if not state or state.lower().startswith("overall"):
             continue
         pvi = parse_pvi(cells[col["pvi"]])

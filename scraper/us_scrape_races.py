@@ -335,7 +335,11 @@ def partisan_composition(soup):
 def scrape_generic_ballot():
     """Generic-congressional-ballot polling table from the House article."""
     soup = fetch(WIKI["house"])
-    tbl = section_table(soup, "Opinion polling")
+    # the article renamed this section (was "Opinion polling"); try the
+    # current title first, keep the old one as fallback
+    tbl = section_table(soup, "Generic congressional ballot")
+    if tbl is None:
+        tbl = section_table(soup, "Opinion polling")
     if tbl is None:
         return None
     # locate Dem / Rep columns from the header row

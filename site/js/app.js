@@ -684,6 +684,24 @@ function renderCountryNav(){
 }
 
 /* ---------- render sidebar (single card, top-left) ---------- */
+// Sparse-polling countries (Estonia's newest poll is ~36 days old, France's
+// ~31): with the default 30-day window the poll average and the forecast tab
+// render empty on load. Fall back to the smallest range that has polls,
+// unless the range was set explicitly via ?d=. Works without the sidebar
+// select (first paint), and syncs it when it exists.
+function effectiveDays(){
+  const sel=$('filter-days');
+  let v=sel?(parseInt(sel.value)||30):30;
+  let explicit=false;
+  try{ explicit=!!new URLSearchParams(location.search).get('d'); }catch(e){}
+  if(v===30&&!explicit&&POLLS&&POLLS.length&&!recentPolls(POLLS,30).length){
+    for(const w of [60,90,2026,9999]){
+      if(recentPolls(POLLS,w).length){ v=w; if(sel) sel.value=String(w); break; }
+    }
+  }
+  return v;
+}
+
 function renderSidebar(prevDays, prevPollster){
   const c=$('sidebar-content');
   if(!c) return;
@@ -1199,13 +1217,15 @@ function renderPollsTable(polls){
     const margin=leadV-secondV;
     const leadColor=PARTY_META[leadP]?PARTY_META[leadP].color:'#888';
 
-    // relative rating of this poll's pollster
+    // relative rating of this poll's pollster (tolerate flat or incomplete
+    // MAE entries: a missing number must never kill the render)
     const rr=ratings[p.pollster];
     const maeV=POLLSTER_MAE[p.pollster];
+    const maeVal=maeV?(typeof maeV==='object'?(maeV[MAE_KEY]??maeV.overall):maeV):undefined;
     const rateTxt=rr===undefined
       ?'—'
       :'★★★★★'.slice(0,Math.max(1,Math.round(rr*5)));
-    const rateTitle=maeV?`${t('accuracy vs best','en iyiye göre doğruluk')}: ${(rr*100).toFixed(0)}% · MAE ${fmt(maeV[MAE_KEY]||maeV.overall,2)}`:'';
+    const rateTitle=maeVal!=null&&rr!==undefined?`${t('accuracy vs best','en iyiye göre doğruluk')}: ${(rr*100).toFixed(0)}% · MAE ${fmt(maeVal,2)}`:'';
     const rateColor=rr===undefined?'var(--c-rule)':(rr>=0.85?'#0B9E17':(rr>=0.6?'#E0A800':'var(--c-text-muted)'));
 
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
@@ -3216,7 +3236,7 @@ function firstRoundCard(sim){
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
   const fd=$('filter-days');
-  const daysVal=fd?(parseInt(fd.value)||30):30;
+  const daysVal=effectiveDays();
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
@@ -4355,9 +4375,10 @@ function renderMethodology(pane){
         <h3>${t('Pollster Accuracy (MAE)','Anketçi Doğruluğu (MAE)')}</h3>
         <p>Each pollster's accuracy is measured by averaging their error across the last 5 polls before each of the most recent elections. The MAE is the mean absolute deviation across the main parties in ${unit}:</p>
         <table class="polls-table" style="margin:8px 0"><thead><tr><th>Pollster</th><th>Elections</th><th>MAE</th></tr></thead><tbody>
-        ${Object.entries(POLLSTER_MAE).sort((a,b)=>a[1].overall-b[1].overall).map(([ps,d])=>{
+        ${Object.entries(POLLSTER_MAE).sort((a,b)=>((a[1].overall??a[1]??0)-(b[1].overall??b[1]??0))).map(([ps,d])=>{
           const eCount=Object.keys(d).filter(k=>k!=='overall').length;
-          return `<tr><td>${ps}</td><td class="num">${eCount}</td><td class="num" style="font-weight:700">${d.overall.toFixed(2)} ${unit}</td></tr>`;
+          const ov=typeof d==='number'?d:(d.overall??0);
+          return `<tr><td>${ps}</td><td class="num">${eCount}</td><td class="num" style="font-weight:700">${(typeof ov==='number'?ov:0).toFixed(2)} ${unit}</td></tr>`;
         }).join('')}
         </tbody></table>
 
@@ -4380,7 +4401,7 @@ function renderMethodology(pane){
 function renderPollsTab(){
   const pane=$('pane-polls');
   const daysEl=$('filter-days');
-  const daysVal=daysEl?(parseInt(daysEl.value)||30):30;
+  const daysVal=effectiveDays();
   const pollsterEl=$('filter-pollster');
   const pollsterVal=pollsterEl?pollsterEl.value:'';
 

@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-09-08T08:25:34Z",
+  "scraped_at": "2026-10-04T10:56:22Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -25,39 +25,33 @@
   "generic_ballot": [
     {
       "pollster": "Decision Desk HQ",
-      "dates": "January 9, 2025 – September 2, 2026",
-      "dem": 45.6,
-      "rep": 38.6
+      "dates": "January 9, 2025 – September 28, 2026",
+      "dem": 48.8,
+      "rep": 40.9
     },
     {
       "pollster": "FiftyPlusOne",
-      "dates": "January 9, 2025 – September 2, 2026",
-      "dem": 49.8,
-      "rep": 43.7
+      "dates": "January 9, 2025 – September 28, 2026",
+      "dem": 50.8,
+      "rep": 43.1
+    },
+    {
+      "pollster": "NBC News",
+      "dates": "January 9, 2025 – September 28, 2026",
+      "dem": 52.0,
+      "rep": 43.0
     },
     {
       "pollster": "RealClearPolitics",
-      "dates": "July 22 – September 2, 2026",
-      "dem": 48.1,
+      "dates": "September 8–28, 2026",
+      "dem": 50.6,
       "rep": 42.3
     },
     {
       "pollster": "Silver Bulletin",
-      "dates": "January 9, 2025 – September 2, 2026",
-      "dem": 48.0,
-      "rep": 41.6
-    },
-    {
-      "pollster": "VoteHub",
-      "dates": "January 9, 2025 – September 2, 2026",
-      "dem": 47.0,
-      "rep": 41.4
-    },
-    {
-      "pollster": "Race to the WH",
-      "dates": "January 9, 2025 – September 2, 2026",
-      "dem": 48.1,
-      "rep": 41.6
+      "dates": "January 9, 2025 – September 28, 2026",
+      "dem": 49.9,
+      "rep": 41.0
     }
   ],
   "races": {
@@ -90,7 +84,7 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
+          "ie": "Tossup",
           "sabato": "Tossup"
         }
       },
@@ -166,8 +160,8 @@
           "party": "D"
         },
         "ratings": {
-          "cook": "Lean D",
-          "ie": "Tilt D",
+          "cook": "Likely D",
+          "ie": "Lean D",
           "sabato": "Likely D"
         }
       },
@@ -216,7 +210,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R",
-          "sabato": "Lean R"
+          "sabato": "Tossup"
         }
       },
       {
@@ -230,9 +224,9 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Likely R",
+          "cook": "Lean R",
           "ie": "Likely R",
-          "sabato": "Likely R"
+          "sabato": "Lean R"
         }
       },
       {
@@ -279,7 +273,7 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
+          "ie": "Tossup",
           "sabato": "Tossup"
         }
       },
@@ -311,8 +305,8 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tossup",
-          "sabato": "Tossup"
+          "ie": "Tilt D",
+          "sabato": "Lean D"
         }
       },
       {
@@ -327,7 +321,7 @@
         },
         "ratings": {
           "cook": "Likely D",
-          "ie": "Likely D",
+          "ie": "Lean D",
           "sabato": "Likely D"
         }
       },
@@ -375,7 +369,7 @@
         },
         "ratings": {
           "cook": "Likely R",
-          "ie": "Likely R",
+          "ie": "Lean R",
           "sabato": "Likely R"
         }
       },
@@ -390,7 +384,7 @@
           "party": "D"
         },
         "ratings": {
-          "cook": "Lean D",
+          "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Lean D"
         }
@@ -439,7 +433,7 @@
         },
         "ratings": {
           "cook": "Lean D(flip)",
-          "ie": "Tilt D(flip)",
+          "ie": "Lean D(flip)",
           "sabato": "Lean D(flip)"
         }
       },
@@ -509,7 +503,7 @@
         "party": "R",
         "last": null,
         "ratings": {
-          "cook": "Solid R",
+          "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Safe R"
         }
@@ -558,7 +552,7 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Lean R",
+          "ie": "Tilt R",
           "sabato": "Tossup"
         }
       },
@@ -633,7 +627,7 @@
         "ratings": {
           "cook": "Likely R(flip)",
           "ie": "Likely R(flip)",
-          "sabato": "Likely R(flip)"
+          "sabato": "Lean R(flip)"
         }
       },
       {
@@ -709,7 +703,7 @@
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {
-          "cook": "Tossup",
+          "cook": "Lean D(flip)",
           "ie": "Tossup",
           "sabato": "Tossup"
         }
@@ -746,11 +740,7 @@
         "incumbent": "Greg Stanton",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Arizona",
@@ -835,7 +825,7 @@
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -866,11 +856,7 @@
         "incumbent": "James Gallagher",
         "party": "R",
         "status": "",
-        "ratings": {
-          "cook": "Solid D(flip)",
-          "ie": "Solid D(flip)",
-          "sabato": "Safe D(flip)"
-        }
+        "ratings": {}
       },
       {
         "state": "California",
@@ -910,7 +896,11 @@
         "incumbent": "Tom McClintock",
         "party": "R",
         "status": "",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "California",
@@ -1094,7 +1084,7 @@
         "status": "",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
+          "ie": "Tossup",
           "sabato": "Lean D(flip)"
         }
       },
@@ -1126,11 +1116,7 @@
         "incumbent": "Raul Ruiz",
         "party": "D",
         "status": "",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "California",
@@ -1332,8 +1318,8 @@
         "status": "",
         "ratings": {
           "cook": "Likely D",
-          "ie": "Lean D",
-          "sabato": "Lean D"
+          "ie": "Likely D",
+          "sabato": "Likely D"
         }
       },
       {
@@ -1378,11 +1364,7 @@
         "incumbent": "Mike Levin",
         "party": "D",
         "status": "",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "California",
@@ -1471,9 +1453,9 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Lean R",
-          "sabato": "Likely R"
+          "cook": "Lean R",
+          "ie": "Tilt R",
+          "sabato": "Lean R"
         }
       },
       {
@@ -1558,11 +1540,7 @@
         "incumbent": "Jahana Hayes",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Delaware",
@@ -1571,7 +1549,7 @@
         "pvi_label": "D+8",
         "incumbent": "Sarah McBride",
         "party": "D",
-        "status": "Incumbent running",
+        "status": "Incumbent renominated",
         "ratings": {}
       },
       {
@@ -1606,7 +1584,11 @@
         "incumbent": "Kat Cammack",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Florida",
@@ -1630,7 +1612,11 @@
         "incumbent": "John Rutherford",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Florida",
@@ -1731,8 +1717,8 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
+          "cook": "Lean R",
+          "ie": "Lean R",
           "sabato": "Likely R"
         }
       },
@@ -1746,7 +1732,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Lean R(flip)",
+          "ie": "Tossup",
           "sabato": "Tossup"
         }
       },
@@ -1774,7 +1760,7 @@
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Likely R"
         }
       },
@@ -1845,7 +1831,7 @@
         "party": null,
         "status": "",
         "ratings": {
-          "cook": "Lean R(flip)",
+          "cook": "Tossup",
           "ie": "Tilt R(flip)",
           "sabato": "Lean R(flip)"
         }
@@ -1907,9 +1893,9 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
+          "cook": "Lean R",
+          "ie": "Lean R",
+          "sabato": "Lean R"
         }
       },
       {
@@ -1920,11 +1906,7 @@
         "incumbent": "Carlos A. Giménez",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        }
+        "ratings": {}
       },
       {
         "state": "Georgia",
@@ -2028,7 +2010,11 @@
         "incumbent": "Mike Collins",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Georgia",
@@ -2061,7 +2047,7 @@
         "pvi_label": "D+21",
         "incumbent": "Everton Blair",
         "party": "D",
-        "status": "Incumbent lost initial nomination for the full term; later elected to completeDavid Scott's unexpired term.",
+        "status": "Blair lost the initial nomination for the full term; later elected to completeDavid Scott's unexpired term.",
         "ratings": {}
       },
       {
@@ -2072,11 +2058,7 @@
         "incumbent": "Clay Fuller",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        }
+        "ratings": {}
       },
       {
         "state": "Hawaii",
@@ -2176,11 +2158,7 @@
         "incumbent": "Sean Casten",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Illinois",
@@ -2200,11 +2178,7 @@
         "incumbent": "Raja Krishnamoorthi",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Illinois",
@@ -2264,11 +2238,7 @@
         "incumbent": "Lauren Underwood",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Illinois",
@@ -2412,8 +2382,8 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tossup",
-          "sabato": "Tossup"
+          "ie": "Tilt D(flip)",
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -2426,8 +2396,8 @@
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Lean R",
-          "ie": "Lean R",
-          "sabato": "Lean R"
+          "ie": "Tilt R",
+          "sabato": "Tossup"
         }
       },
       {
@@ -2440,7 +2410,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tossup",
+          "ie": "Tilt D(flip)",
           "sabato": "Tossup"
         }
       },
@@ -2562,8 +2532,8 @@
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
+          "ie": "Lean R",
+          "sabato": "Lean R"
         }
       },
       {
@@ -2634,11 +2604,7 @@
         "incumbent": "Chellie Pingree",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Maine",
@@ -2651,7 +2617,7 @@
         "ratings": {
           "cook": "Likely R(flip)",
           "ie": "Likely R(flip)",
-          "sabato": "Likely R(flip)"
+          "sabato": "Lean R(flip)"
         }
       },
       {
@@ -2716,11 +2682,7 @@
         "incumbent": "April McClain Delaney",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Maryland",
@@ -2880,8 +2842,8 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
-          "ie": "Lean R",
-          "sabato": "Lean R"
+          "ie": "Tilt R",
+          "sabato": "Tossup"
         }
       },
       {
@@ -2996,7 +2958,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Likely R"
         }
       },
@@ -3137,9 +3099,9 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Solid R",
+          "cook": "Likely R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Lean R"
         }
       },
       {
@@ -3170,11 +3132,7 @@
         "incumbent": "Emanuel Cleaver",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R(flip)",
-          "ie": "Solid R(flip)",
-          "sabato": "Safe R(flip)"
-        }
+        "ratings": {}
       },
       {
         "state": "Missouri",
@@ -3215,9 +3173,9 @@
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
+          "cook": "Lean R",
+          "ie": "Lean R",
+          "sabato": "Lean R"
         }
       },
       {
@@ -3291,9 +3249,9 @@
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
-          "cook": "Solid R",
+          "cook": "Likely R",
           "ie": "Likely R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -3345,7 +3303,7 @@
         "pvi_label": "D+2",
         "incumbent": "Maggie Goodlander",
         "party": "D",
-        "status": "Incumbent running",
+        "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid D",
           "ie": "Likely D",
@@ -3425,9 +3383,9 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Tossup",
+          "cook": "Lean D(flip)",
           "ie": "Tilt D(flip)",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -3516,11 +3474,7 @@
         "incumbent": "Teresa Leger Fernandez",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "New York",
@@ -3720,11 +3674,7 @@
         "incumbent": "Pat Ryan",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "New York",
@@ -3736,7 +3686,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
-          "ie": "Lean D",
+          "ie": "Likely D",
           "sabato": "Likely D"
         }
       },
@@ -3759,9 +3709,9 @@
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
+          "cook": "Likely R",
+          "ie": "Likely R",
+          "sabato": "Likely R"
         }
       },
       {
@@ -3782,7 +3732,11 @@
         "incumbent": "Nick Langworthy",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "New York",
@@ -3824,7 +3778,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R(flip)",
-          "ie": "Lean R(flip)",
+          "ie": "Tilt R(flip)",
           "sabato": "Tossup"
         }
       },
@@ -3849,7 +3803,7 @@
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -3955,7 +3909,7 @@
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
-          "cook": "Lean R",
+          "cook": "Tossup",
           "ie": "Lean R",
           "sabato": "Tossup"
         }
@@ -4125,7 +4079,7 @@
         "ratings": {
           "cook": "Likely R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -4182,8 +4136,8 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
+          "ie": "Likely R",
+          "sabato": "Likely R"
         }
       },
       {
@@ -4383,7 +4337,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -4432,7 +4386,11 @@
         "incumbent": "Lloyd Smucker",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Pennsylvania",
@@ -4482,11 +4440,7 @@
         "incumbent": "Mike Kelly",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        }
+        "ratings": {}
       },
       {
         "state": "Pennsylvania",
@@ -4496,11 +4450,7 @@
         "incumbent": "Chris Deluzio",
         "party": "D",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Rhode Island",
@@ -4509,7 +4459,7 @@
         "pvi_label": "D+12",
         "incumbent": "Gabe Amo",
         "party": "D",
-        "status": "Incumbent running",
+        "status": "Incumbent renominated",
         "ratings": {}
       },
       {
@@ -4519,12 +4469,8 @@
         "pvi_label": "D+4",
         "incumbent": "Seth Magaziner",
         "party": "D",
-        "status": "Incumbent running",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "status": "Incumbent renominated",
+        "ratings": {}
       },
       {
         "state": "South Carolina",
@@ -4772,7 +4718,11 @@
         "incumbent": "Lance Gooden",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Texas",
@@ -4813,9 +4763,9 @@
         "party": null,
         "status": "",
         "ratings": {
-          "cook": "Solid R(flip)",
-          "ie": "Solid R(flip)",
-          "sabato": "Safe R(flip)"
+          "cook": "Likely R(flip)",
+          "ie": "Likely R(flip)",
+          "sabato": "Likely R(flip)"
         }
       },
       {
@@ -4881,7 +4831,7 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Lean R",
+          "cook": "Tossup",
           "ie": "Tilt R",
           "sabato": "Tossup"
         }
@@ -4904,7 +4854,11 @@
         "incumbent": "Pete Sessions",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Texas",
@@ -5020,7 +4974,11 @@
         "incumbent": "Michael Cloud",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Texas",
@@ -5064,7 +5022,11 @@
         "incumbent": "John Carter",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Texas",
@@ -5101,7 +5063,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D"
         }
       },
       {
@@ -5113,8 +5075,8 @@
         "party": null,
         "status": "",
         "ratings": {
-          "cook": "Likely R(flip)",
-          "ie": "Likely R(flip)",
+          "cook": "Lean R(flip)",
+          "ie": "Lean R(flip)",
           "sabato": "Lean R(flip)"
         }
       },
@@ -5146,7 +5108,11 @@
         "incumbent": "Wesley Hunt",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        }
       },
       {
         "state": "Utah",
@@ -5209,7 +5175,7 @@
         "ratings": {
           "cook": "Lean R",
           "ie": "Lean R",
-          "sabato": "Lean R"
+          "sabato": "Tossup"
         }
       },
       {
@@ -5223,7 +5189,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -5255,9 +5221,9 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Likely R"
+          "cook": "Likely R",
+          "ie": "Likely R",
+          "sabato": "Lean R"
         }
       },
       {
@@ -5268,11 +5234,7 @@
         "incumbent": "Ben Cline",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        }
+        "ratings": {}
       },
       {
         "state": "Virginia",
@@ -5418,11 +5380,7 @@
         "incumbent": "Kim Schrier",
         "party": "D",
         "status": "",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Safe D"
-        }
+        "ratings": {}
       },
       {
         "state": "Washington",
@@ -5473,8 +5431,8 @@
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Solid R",
+          "cook": "Lean R",
+          "ie": "Likely R",
           "sabato": "Likely R"
         }
       },
@@ -5603,8 +5561,8 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Lean R",
+          "cook": "Tossup",
+          "ie": "Tossup",
           "sabato": "Tossup"
         }
       },
@@ -5699,9 +5657,9 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
+          "cook": "Lean R",
+          "ie": "Lean R",
+          "sabato": "Lean R"
         }
       },
       {
@@ -5812,7 +5770,7 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Likely D",
+          "ie": "Solid D",
           "sabato": "Likely D"
         }
       },
@@ -5893,7 +5851,7 @@
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -5909,7 +5867,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R",
-          "sabato": "Lean R"
+          "sabato": "Tossup"
         }
       },
       {
@@ -5972,8 +5930,8 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
-          "sabato": "Lean R"
+          "ie": "Tossup",
+          "sabato": "Tossup"
         }
       },
       {
@@ -5988,7 +5946,7 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Safe R"
         }
       },
@@ -6003,7 +5961,7 @@
           "party": "D"
         },
         "ratings": {
-          "cook": "Likely D",
+          "cook": "Lean D",
           "ie": "Lean D",
           "sabato": "Likely D"
         }
@@ -6028,7 +5986,7 @@
         "state": "Rhode Island",
         "pvi": -8.0,
         "pvi_label": "D+8",
-        "incumbent": "Dan McKee",
+        "incumbent": "Dan McKee(lost renomination)",
         "party": "D",
         "last": {
           "pct": 57.92,
@@ -6099,9 +6057,9 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Likely R",
+          "cook": "Lean R",
           "ie": "Likely R",
-          "sabato": "Likely R"
+          "sabato": "Lean R"
         }
       },
       {
@@ -6117,7 +6075,7 @@
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {

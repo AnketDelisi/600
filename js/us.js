@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004i";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004i";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004i";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004j";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004j";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004j";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -118,11 +118,14 @@ function raceRow(race) {
       </div>`;
   const rr = race.ratings || {};
   const rtitle = [["Cook", rr.cook], ["IE", rr.ie], ["Sabato", rr.sabato]]
-    .filter((x) => x[1]).map((x) => `${x[0]}: ${x[1]}`).join(" · ")
-    + (race.lean ? ` — model: ${race.lean} (polls and the national environment can move a race outside its rating band)` : "");
+    .filter((x) => x[1]).map((x) => `${x[0]}: ${x[1]}`).join(" · ");
+  const lead = race.leader || (race.margin >= 0 ? "D" : "R");
+  const iBit = (race.ind_pct || 0) > 0.5 ? ` / ${fmt(race.ind_pct)}% I` : "";
+  const modelTip = `600 model: ${race.lean} (${lead}+${fmt(race.margin)}) — ${fmt(race.dem_pct)}% D / ${fmt(race.rep_pct)}% R${iBit}`;
+  const title = rtitle ? `${modelTip} · rating inputs — ${rtitle}` : modelTip;
   return `<tr data-key="${raceKey(race)}">
     <td class="race-name">${partyBadge(race.party)}<b>${name}</b><span class="inc">${inc}</span></td>
-    <td><span class="rating ${ratingClass(race.rating)}"${rtitle ? ` title="Consensus — ${rtitle}"` : ""}>${race.rating || "No rating"}</span></td>
+    <td><span class="rating ${ratingClass(race.lean || race.rating)}" title="${title}">${race.lean || race.rating || "No rating"}</span></td>
     <td>${polls}</td>
     <td>${chance}</td>
   </tr>`;
@@ -296,7 +299,7 @@ function attachMap(pane, chamberData) {
         const lead = race.leader || (race.margin >= 0 ? "D" : "R");
         tip.innerHTML = `<div class="t">${rn}</div>
           <div class="r"><span class="d">D ${fmt(race.dem_pct)}%</span> · <span class="u">R ${fmt(race.rep_pct)}%</span>${iBit}</div>
-          <div class="m">Margin ${lead}+${fmt(Math.abs(race.margin))} ${race.rating ? "· " + race.rating : ""}</div>`;
+          <div class="m">Margin ${lead}+${fmt(Math.abs(race.margin))} ${race.lean ? "· " + race.lean : ""}</div>`;
       } else {
         tip.innerHTML = `<div class="t">${name}</div><div class="m">No 2026 race</div>`;
       }
@@ -485,7 +488,7 @@ function render() {
     <p class="note">${data.races.length} races · sorted ${state.sort === "close" ? "by closeness" : state.sort === "rd" ? "by Democratic probability" : "by Republican probability"} · click a row to see it on the map</p>
     <div class="toggle-flow">${sortSel}</div>
     <table>
-      <thead><tr><th>Race</th><th>Rating</th><th>Polling average</th><th>Win probability</th></tr></thead>
+      <thead><tr><th>Race</th><th>600 rating</th><th>Polling average</th><th>Win probability</th></tr></thead>
       <tbody>${races.map(raceRow).join("")}</tbody>
     </table>
     <div class="legend">

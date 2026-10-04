@@ -35,11 +35,12 @@ OUT = os.path.join(ROOT, "data", "us", "geo.json")
 TIGER = ("https://tigerweb.geo.census.gov/arcgis/rest/services/"
          "TIGERweb/Legislative/MapServer/0/query")
 
-# lower-48 / AK / HI target rectangles inside the 975x610 viewBox (matching
-# the layout of the map this replaces)
+# lower-48 / AK / HI target rectangles inside the 975x610 viewBox. Alaska and
+# Hawaii are deliberately large (readable at a glance); the shapely overlap
+# check at the end of main() fails loudly if a rect grows into the lower-48.
 CONUS_RECT = (73.0, 20.0, 975.0, 590.0)
-AK_RECT = (0.0, 454.0, 250.0, 588.0)
-HI_RECT = (263.0, 515.0, 375.0, 587.0)
+AK_RECT = (0.0, 398.0, 322.0, 590.0)
+HI_RECT = (238.0, 466.0, 386.0, 592.0)
 W, H = 975, 610
 
 FIPS = {
@@ -228,10 +229,27 @@ def main():
     size = os.path.getsize(OUT)
     print("wrote %s | %d states, %d districts | %.0f KB" %
           (OUT, len(states), len(districts), size / 1024))
+    # inset safety: the Alaska/Hawaii shapes must not touch the lower-48
+    conus_union = unary_union([shp_transform(mk_tf(f), g)
+                               for f, feats in raw.items() if f not in AK_HI
+                               for _, g in feats])
+    for fips, nm2 in (("02", "Alaska"), ("15", "Hawaii")):
+        ins = unary_union([shp_transform(mk_tf(fips), g)
+                           for _, g in raw[fips]])
+        if ins.buffer(1.5).intersects(conus_union):
+            print("WARNING: %s inset overlaps the lower-48 - shrink its rect"
+                  % nm2)
+        else:
+            print("  inset %s: no overlap with the lower-48" % nm2)
     for nm in ("Texas", "California", "North Carolina", "Ohio", "Missouri"):
         st = next(s for s in states if s["name"] == nm)
         n = sum(1 for d in districts if states[d["s"]]["name"] == nm)
         print("  %-14s districts=%d box=%s" % (nm, n, st["box"]))
+    for nm in ("Alaska", "Hawaii"):
+        st = next(s for s in states if s["name"] == nm)
+        b = st["box"]
+        print("  %-14s box=%s (%.0f x %.0f)" %
+              (nm, b, b[2] - b[0], b[3] - b[1]))
 
 
 if __name__ == "__main__":

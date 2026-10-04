@@ -476,20 +476,16 @@ function weightedAverage(polls, party, noBias){
 // linear projection overestimates late momentum, so the projected move is
 // multiplied by horizon/(horizon + DAMP_DAYS) — near the election the
 // projection converges back toward today's value.
-function trendExtrapolation(polls, party){
-  if(!TREND_CONF) return null;
-  const election=new Date(TREND_CONF.electionDate).getTime();
-  const now=Date.now();
-  const horizon=(election-now)/(1000*60*60*24);  // days until election
-  if(!(horizon>0)||horizon>TREND_CONF.windowDays) return null;
-  // fitDays = how many days of polls the slope regression uses. A short window
-  // (≈14d) catches sudden late trends; a long one (e.g. 120d) dilutes them with
-  // months of stale data (Sweden 2026: L surged ~2→5pp in the final week but the
-  // 4-month-fit model kept it near the 4% threshold). Defaults to windowDays.
-  const fitDays=TREND_CONF.fitDays||TREND_CONF.windowDays;
-  const cutoff=now-fitDays*1000*60*60*24;
+// A trend must pass a quality gate before it is used at all: at least
+// gatePolls recent polls from gateHouses different pollsters, and the slope
+// must point the same way in the short (fitDays) and long (gateDays) windows.
+// A slope that flips sign between windows is publication noise, not momentum
+// (BC 2026: +1.3pp/day on the 14-day fit, negative on the 30-day fit), so the
+// gate returns null and the projection falls back to the poll average.
+function trendSlopeFit(polls, party, days, now){
+  const cutoff=now-days*1000*60*60*24;
   const recent=polls.filter(p=>p.votes[party]!==undefined&&new Date(p.date).getTime()>=cutoff);
-  if(recent.length<TREND_CONF.minPolls) return null;
+  if(!recent.length) return null;
   let sw=0,swt=0,swtt=0,swv=0,swtv=0;
   for(const p of recent){
     const t=(now-new Date(p.date).getTime())/(1000*60*60*24); // days ago
@@ -505,7 +501,33 @@ function trendExtrapolation(polls, party){
   }
   const den=sw*swtt-swt*swt;
   if(Math.abs(den)<1e-9) return null;
-  const slope=(sw*swtv-swt*swv)/den;      // % per day as time moves backward
+  return {slope:(sw*swtv-swt*swv)/den, anchor:swv/sw, n:recent.length,
+          houses:new Set(recent.map(p=>p.pollster)).size};
+}
+
+function trendExtrapolation(polls, party){
+  if(!TREND_CONF) return null;
+  const election=new Date(TREND_CONF.electionDate).getTime();
+  const now=Date.now();
+  const horizon=(election-now)/(1000*60*60*24);  // days until election
+  if(!(horizon>0)||horizon>TREND_CONF.windowDays) return null;
+  // fitDays = how many days of polls the slope regression uses. A short window
+  // (≈14d) catches sudden late trends; a long one (e.g. 120d) dilutes them with
+  // months of stale data (Sweden 2026: L surged ~2→5pp in the final week but the
+  // 4-month-fit model kept it near the 4% threshold). Defaults to windowDays.
+  const fitDays=TREND_CONF.fitDays||TREND_CONF.windowDays;
+  const short=trendSlopeFit(polls, party, fitDays, now);
+  if(!short||short.n<(TREND_CONF.minPolls||3)) return null;
+  // quality gate (see header comment)
+  const gatePolls=TREND_CONF.gatePolls||4;
+  const gateHouses=TREND_CONF.gateHouses||3;
+  const gateDays=Math.max(TREND_CONF.gateDays||30, fitDays);
+  const eps=TREND_CONF.gateEps||0.02;   // pp/day treated as flat
+  if(short.n<gatePolls||short.houses<gateHouses) return null;
+  const long=trendSlopeFit(polls, party, gateDays, now);
+  if(!long||long.n<gatePolls||long.houses<gateHouses) return null;
+  const sgn=s=>Math.abs(s)<eps?0:(s>0?1:-1);
+  if(sgn(short.slope)===0||sgn(short.slope)!==sgn(long.slope)) return null;
   // Anchor the projection at the recency-weighted mean of the fit-window
   // polls, not the regression intercept at t=0. With few polls clustered
   // near today the fitted line overshoots the newest data (BC 2026: polls
@@ -513,12 +535,11 @@ function trendExtrapolation(polls, party){
   // the overshoot on top of the slope - a +10pp artifact. The mean is the
   // honest "today" value; only the slope is projected forward, and the
   // total move is capped at maxDaily per day of horizon.
-  const anchor=swv/sw;
   const dampDays=TREND_CONF.dampDays||7;  // slope-halving horizon
   const damp=horizon/(horizon+dampDays);  // 1 far out, -> 0 at election day
   const cap=TREND_CONF.maxDaily*horizon;
-  const move=Math.max(-cap,Math.min(cap,-slope*horizon*damp));
-  return Math.max(0,anchor+move);
+  const move=Math.max(-cap,Math.min(cap,-short.slope*horizon*damp));
+  return Math.max(0,short.anchor+move);
 }
 
 function computeAverages(polls, raw){

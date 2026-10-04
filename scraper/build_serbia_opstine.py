@@ -35,8 +35,12 @@ ATTRIBUTION = ("Rezultati: RZS (izbori 2023, G20246006); Geometrija: "
                "geoBoundaries.org (gbOpen)")
 
 NATIONAL = {1783701: "sns", 249916: "sps", 55782: "srs", 191431: "nada",
-            902450: "spn", 178830: "misn"}
-PARTIES = ["sns", "sps", "srs", "pes", "nps", "nada", "misn", "sl", "spn"]
+            902450: "spn", 178830: "misn",
+            # national-minority lists (2023 ballot order, exempt from the
+            # 3% threshold)
+            64747: "vmsz", 29066: "spp", 21827: "sda", 11369: "rs"}
+PARTIES = ["sns", "sps", "srs", "pes", "nps", "nada", "misn", "sl", "spn",
+           "vmsz", "spp", "sda", "rs"]
 BELGRADE = ["Барајево", "Вождовац", "Врачар", "Гроцка", "Звездара", "Земун",
             "Лазаревац", "Младеновац", "Нови Београд", "Обреновац",
             "Палилула", "Раковица", "Савски Венац", "Сопот", "Стари Град",
@@ -261,6 +265,22 @@ def main():
     end = start + 1 + m.start()
     block = text[start:end]
     print("oblast vs layer-1 check:")
+
+    def js_obj(text, key):
+        mm = re.search(r"\n\s+\"?" + key + r"\"?:\s*\{", text)
+        if not mm:
+            return None
+        depth, kk = 0, mm.end() - 1
+        while kk < len(text):
+            if text[kk] == "{":
+                depth += 1
+            elif text[kk] == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+            kk += 1
+        return text[mm.end():kk]
+
     for name in order:
         if not name.endswith("област"):
             continue
@@ -268,9 +288,8 @@ def main():
         if not ok:
             continue
         row = units[name]
-        g = dict(re.findall(r"(\w+): ([\d.]+)",
-                            re.search(r"\n\s+" + ok + r":\s*\{([^}]*)\}",
-                                      block).group(1)))
+        body = js_obj(block, ok)
+        g = dict(re.findall(r"\"?(\w+)\"?:\s*([\d.]+)", body)) if body else {}
         worst = max(PARTIES, key=lambda p: abs(
             row[p][1] - float(g.get(p, 0))))
         print(f"  {name:22s} worst {worst} "
@@ -279,6 +298,32 @@ def main():
     map2 = {"svg": "img/serbia_opstine.svg", "selector": "id",
             "districts": {k: k for k in gebiete},
             "gebiete": gebiete, "names": names, "label": "opštine (145)"}
+    # recompute the layer-1 (okrug) gebiete from the oblast rows so the
+    # minority lists appear there too
+    okrug = {}
+    for name in order:
+        if not name.endswith("област"):
+            continue
+        key = OBLAST.get(name[:-len(" област")].strip())
+        if not key:
+            continue
+        okrug[key] = {p: units[name][p][1] if units[name][p][1] else 0.0
+                      for p in PARTIES}
+    assert len(okrug) == 25, "expected 25 okrugs, got %d" % len(okrug)
+    mg = re.search(r"\n      gebiete: \{", block)
+    if mg:
+        depth, k3 = 0, mg.end() - 1
+        while k3 < len(block):
+            if block[k3] == "{":
+                depth += 1
+            elif block[k3] == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+            k3 += 1
+        block = block[:mg.start()] + "\n      gebiete: " + \
+            json.dumps(okrug, ensure_ascii=False, indent=8) + block[k3 + 1:]
+        print("patched config.js (serbia okrug gebiete incl. minority lists)")
     mm = re.search(r"\n\s+map: \{", block)
     depth, k = 0, mm.end() - 1
     while k < len(block):

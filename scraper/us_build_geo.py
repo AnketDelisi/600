@@ -39,8 +39,13 @@ TIGER = ("https://tigerweb.geo.census.gov/arcgis/rest/services/"
 # Hawaii are deliberately large (readable at a glance); the shapely overlap
 # check at the end of main() fails loudly if a rect grows into the lower-48.
 CONUS_RECT = (73.0, 20.0, 975.0, 590.0)
-AK_RECT = (0.0, 398.0, 322.0, 590.0)
-HI_RECT = (238.0, 466.0, 386.0, 592.0)
+AK_RECT = (0.0, 452.0, 330.0, 600.0)
+HI_RECT = (232.0, 458.0, 420.0, 596.0)
+# island trimming (deg^2): Alaska's Aleutian chain spans ~359 degrees of
+# longitude and Hawaii's northwestern atolls stretch 24 degrees, both of
+# which cap the inset scale; parts below these areas are dropped so the
+# mainland + major islands fill the insets
+ISLAND_MIN_AREA = {"02": 0.5, "15": 0.07}
 W, H = 975, 610
 
 FIPS = {
@@ -121,6 +126,16 @@ def ext_pts(geom):
     return []
 
 
+def drop_small_parts(geom, thr):
+    """Drop polygon parts below thr deg^2 (the Aleutians, NW Hawaiian atolls)."""
+    if not thr or geom.geom_type != "MultiPolygon":
+        return geom
+    keep = [g for g in geom.geoms if g.area >= thr]
+    if not keep:
+        return geom
+    return MultiPolygon(keep) if len(keep) > 1 else keep[0]
+
+
 def main():
     force = "--force" in sys.argv
     os.makedirs(CACHE, exist_ok=True)
@@ -144,6 +159,7 @@ def main():
                 # features (CT, IL, NH have one each)
                 continue
             geom = shape(f["geometry"])
+            geom = drop_small_parts(geom, ISLAND_MIN_AREA.get(fips))
             feats.append((cd, geom))
         raw[fips] = feats
         counts[fips] = len(feats)

@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T14:14:03Z",
+  "generated": "2026-10-04T19:37:49Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -834,6 +834,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "Wedgewood Polls",
+              "dates": "October 2–3, 2026",
+              "dem": 55.0,
+              "rep": 45.0
+            },
+            {
               "pollster": "InsiderAdvantage",
               "dates": "September 22–23, 2026",
               "dem": 50.0,
@@ -1507,7 +1513,7 @@
             },
             {
               "pollster": "Tulchin Research",
-              "dates": "July 29–August 4, 2026",
+              "dates": "July 29 – August 4, 2026",
               "dem": 47.0,
               "rep": 43.0
             },
@@ -13444,16 +13450,16 @@
         "rating": "Tossup",
         "lean": "Lean D",
         "leader": "D",
-        "margin": 4.1,
-        "dem_pct": 73.8,
-        "rep_pct": 26.2,
+        "margin": 4.0,
+        "dem_pct": 73.2,
+        "rep_pct": 26.8,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
           "dem": 49.0,
-          "rep": 44.5,
+          "rep": 44.7,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {

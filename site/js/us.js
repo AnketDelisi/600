@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004h";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004h";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004h";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004i";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004i";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004i";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -118,7 +118,8 @@ function raceRow(race) {
       </div>`;
   const rr = race.ratings || {};
   const rtitle = [["Cook", rr.cook], ["IE", rr.ie], ["Sabato", rr.sabato]]
-    .filter((x) => x[1]).map((x) => `${x[0]}: ${x[1]}`).join(" · ");
+    .filter((x) => x[1]).map((x) => `${x[0]}: ${x[1]}`).join(" · ")
+    + (race.lean ? ` — model: ${race.lean} (polls and the national environment can move a race outside its rating band)` : "");
   return `<tr data-key="${raceKey(race)}">
     <td class="race-name">${partyBadge(race.party)}<b>${name}</b><span class="inc">${inc}</span></td>
     <td><span class="rating ${ratingClass(race.rating)}"${rtitle ? ` title="Consensus — ${rtitle}"` : ""}>${race.rating || "No rating"}</span></td>

@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T20:57:25Z",
+  "generated": "2026-10-04T21:04:52Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -3340,7 +3340,7 @@
     "expected_i_seats": 1.0,
     "majority": {
       "dem_pct": 84.2,
-      "rep_pct": 7.7
+      "rep_pct": 15.8
     },
     "distribution_buckets": [
       {

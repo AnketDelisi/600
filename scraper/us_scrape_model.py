@@ -484,7 +484,12 @@ def run(chamber, races, poll_map, env_margin):
         dem_share = rep_share = 0.0
     else:
         dem_share = sum(1 for s in seatz_d if s >= need) / N_SIMS
-        rep_share = sum(1 for s in seatz_r if s >= need) / N_SIMS
+        # the Senate: a 50-50 chamber is Republican control (the Vice
+        # President breaks the tie), so the Republican threshold is 50, not
+        # 51 - otherwise those scenarios counted for neither side and the
+        # two probabilities did not add up to 100 (an ~8% gap)
+        rep_need = need - 1 if chamber == "senate" else need
+        rep_share = sum(1 for s in seatz_r if s >= rep_need) / N_SIMS
     expected = sum(seatz_d) / N_SIMS
     expected_i = sum(seatz_i) / N_SIMS
     expected_r = sum(seatz_r) / N_SIMS

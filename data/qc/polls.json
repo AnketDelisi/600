@@ -2,8 +2,8 @@
   "country": "qc",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
-  "scraped_at": "2026-10-04T19:37:06Z",
-  "poll_count": 86,
+  "scraped_at": "2026-10-04T21:55:20Z",
+  "poll_count": 98,
   "polls": [
     {
       "pollster": "Leger",
@@ -19,6 +19,38 @@
         "pq": 29.0,
         "plq": 25.0,
         "pcq": 20.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-10-03",
+      "date": "2026-10-03",
+      "n": 1137,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 15.0,
+        "plq": 24.0,
+        "qs": 11.0,
+        "pq": 29.0,
+        "pcq": 20.0
+      }
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "fieldwork_start": "2026-10-03",
+      "date": "2026-10-03",
+      "n": 2011,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 20.0,
+        "plq": 23.0,
+        "qs": 9.0,
+        "pq": 27.0,
+        "pcq": 19.0
       }
     },
     {
@@ -83,6 +115,22 @@
         "pq": 29.0,
         "plq": 23.0,
         "pcq": 17.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-09-19",
+      "date": "2026-09-19",
+      "n": 1089,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 22.0,
+        "plq": 22.0,
+        "qs": 11.0,
+        "pq": 28.0,
+        "pcq": 16.0
       }
     },
     {
@@ -247,6 +295,22 @@
     },
     {
       "pollster": "Leger",
+      "fieldwork_start": "2026-08-31",
+      "date": "2026-08-31",
+      "n": 1008,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 24.0,
+        "plq": 22.0,
+        "qs": 10.0,
+        "pq": 29.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Leger",
       "fieldwork_start": "2026-08-30",
       "date": "2026-08-30",
       "n": 1008,
@@ -279,6 +343,22 @@
     },
     {
       "pollster": "Synopsis",
+      "fieldwork_start": "2026-08-27",
+      "date": "2026-08-27",
+      "n": 1009,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 27.0,
+        "plq": 20.0,
+        "qs": 10.0,
+        "pq": 28.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Synopsis",
       "fieldwork_start": "2026-08-26",
       "date": "2026-08-26",
       "n": 1009,
@@ -307,6 +387,38 @@
         "pq": 30.0,
         "plq": 23.0,
         "pcq": 16.0
+      }
+    },
+    {
+      "pollster": "Abacus Data",
+      "fieldwork_start": "2026-08-12",
+      "date": "2026-08-12",
+      "n": 300,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 23.0,
+        "plq": 25.0,
+        "qs": 8.0,
+        "pq": 34.0,
+        "pcq": 10.0
+      }
+    },
+    {
+      "pollster": "Synopsis",
+      "fieldwork_start": "2026-08-10",
+      "date": "2026-08-10",
+      "n": 1040,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 20.0,
+        "plq": 26.0,
+        "qs": 9.0,
+        "pq": 30.0,
+        "pcq": 15.0
       }
     },
     {
@@ -535,6 +647,54 @@
     },
     {
       "pollster": "Leger",
+      "fieldwork_start": "2026-03-15",
+      "date": "2026-03-15",
+      "n": 1003,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 12.0,
+        "plq": 30.0,
+        "qs": 9.0,
+        "pq": 34.0,
+        "pcq": 13.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-03-08",
+      "date": "2026-03-08",
+      "n": 1005,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 11.0,
+        "plq": 31.0,
+        "qs": 9.0,
+        "pq": 33.0,
+        "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-03-03",
+      "date": "2026-03-03",
+      "n": 1041,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 13.0,
+        "plq": 30.0,
+        "qs": 9.0,
+        "pq": 31.0,
+        "pcq": 15.0
+      }
+    },
+    {
+      "pollster": "Leger",
       "fieldwork_start": "2026-03-02",
       "date": "2026-03-02",
       "n": 1021,
@@ -579,6 +739,22 @@
         "pq": 31.0,
         "plq": 26.0,
         "pcq": 18.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-01-30",
+      "date": "2026-01-30",
+      "n": 1000,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 17.0,
+        "plq": 26.0,
+        "qs": 7.0,
+        "pq": 32.0,
+        "pcq": 14.0
       }
     },
     {
@@ -899,6 +1075,22 @@
         "pq": 30.0,
         "plq": 21.0,
         "pcq": 14.0
+      }
+    },
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2025-01-22",
+      "date": "2025-01-22",
+      "n": 1003,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 25.0,
+        "plq": 15.0,
+        "qs": 12.0,
+        "pq": 34.0,
+        "pcq": 11.0
       }
     },
     {

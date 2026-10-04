@@ -21,6 +21,11 @@ from bs4 import BeautifulSoup
 from pollster_norm import canonicalize_polls
 
 WIKI_URL = "https://en.wikipedia.org/wiki/2026_Quebec_general_election"
+# French Wikipedia leads for Quebec politics: its "Sondages" tables (split
+# by year) carry final-campaign polls the English article misses (the
+# Pallas and Mainstreet polls of October 3, 2026, for example)
+FR_WIKI_URL = ("https://fr.wikipedia.org/wiki/"
+               "%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026")
 COUNTRY = "qc"
 CUTOFF = "2022-10-04"          # after the 3 October 2022 election
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
@@ -28,6 +33,18 @@ OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
 POLLSTER_ALIAS = {
     "leger": "léger", "mainstreet": "mainstreetresearch",
     "pallas": "pallasdata",
+}
+# raw spelling -> polished display name, applied before canonicalize_polls
+# (which otherwise picks the most common raw variant, letting the French
+# article's spellings out-vote the English ones, and leaves co-branded
+# variants as separate pollsters)
+POLLSTER_FIX = {
+    "pallas": "Pallas Data",
+    "mainstreet": "Mainstreet Research",
+    "liaison": "Liaison Strategies",
+    "segma/radio-canada": "Segma",
+    "synopsis/la presse": "Synopsis",
+    "abacus": "Abacus Data",
 }
 
 # Sub-national signal: the article's only regional polling is the
@@ -46,6 +63,80 @@ LANG_COLS = {"caq": "caq", "liberal": "plq", "pq": "pq", "qs": "qs",
 
 MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+
+FR_MONTHS = {"janvier": 1, "février": 2, "mars": 3, "avril": 4, "mai": 5,
+             "juin": 6, "juillet": 7, "août": 8, "septembre": 9,
+             "octobre": 10, "novembre": 11, "décembre": 12}
+FR_COLS = {"CAQ": "caq", "PLQ": "plq", "QS": "qs", "PQ": "pq", "PCQ": "pcq"}
+
+
+def parse_fr_date(s):
+    """'3 octobre 2026' / '3 oct. 2026' -> ISO date."""
+    m = re.match(r"(\d{1,2})\s+([a-zéûô]+)\.?\s+(\d{4})",
+                 (s or "").strip().lower())
+    if not m:
+        return None
+    mon = FR_MONTHS.get(m.group(2).rstrip("."))
+    if not mon:
+        return None
+    return "%04d-%02d-%02d" % (int(m.group(3)), mon, int(m.group(1)))
+
+
+def parse_fr_polls(soup):
+    """Polls from the French article's Sondages tables (one per period)."""
+    polls = []
+    for el in soup.find_all("table"):
+        if "wikitable" not in (el.get("class") or []):
+            continue
+        rows = el.find_all("tr")
+        if len(rows) < 4:
+            continue
+        hdr = [c.get_text(" ", strip=True).replace("\u200b", "")
+               for c in rows[0].find_all(["th", "td"])]
+        if "Sondeur" not in hdr or "CAQ" not in hdr:
+            continue
+        pi = hdr.index("Sondeur")
+        ni = hdr.index("Échantillon") if "Échantillon" in hdr else None
+        cols = {i: FR_COLS[h.strip()] for i, h in enumerate(hdr)
+                if h.strip() in FR_COLS}
+        if len(cols) < MIN_PARTIES:
+            continue
+        for row in rows[1:]:
+            cells = [c.get_text(" ", strip=True)
+                     for c in row.find_all(["th", "td"])]
+            if len(cells) <= max(cols):
+                continue
+            date = parse_fr_date(cells[0])
+            if not date or date < CUTOFF:
+                continue
+            pollster = re.sub(r"\[\s*[\w\d]+\s*\]", "",
+                              cells[pi] if pi < len(cells) else "").strip()
+            if not pollster or len(pollster) < 3 or len(pollster) > 60:
+                continue
+            votes = {}
+            for i, key in cols.items():
+                if i < len(cells):
+                    v = re.sub(r"[^\d,.]", "", cells[i]).replace(",", ".")
+                    if v:
+                        try:
+                            votes[key] = float(v)
+                        except ValueError:
+                            pass
+            votes = {k: v for k, v in votes.items() if k in KNOWN}
+            if len(votes) < MIN_PARTIES:
+                continue
+            if not 60 <= sum(votes.values()) <= 110:
+                continue
+            n = 0
+            if ni is not None and ni < len(cells):
+                digits = re.sub(r"[^\d]", "", cells[ni])
+                if digits:
+                    n = int(digits)
+            polls.append({"pollster": pollster, "fieldwork_start": date,
+                          "date": date, "n": n, "country": COUNTRY,
+                          "source": "Wikipedia (FR)",
+                          "source_url": FR_WIKI_URL, "votes": votes})
+    return polls
 
 ALT_MAP = {
     "caq": "caq", "qs": "qs", "pq": "pq", "liberal": "plq", "plq": "plq",
@@ -270,7 +361,29 @@ def scrape_qc():
                       "date": date, "n": n, "country": COUNTRY,
                       "source": "Wikipedia", "source_url": WIKI_URL,
                       "votes": votes})
+    print(f"Fetching {FR_WIKI_URL}...")
+    resp_fr = requests.get(FR_WIKI_URL,
+                           headers={"User-Agent": "600-poll-scraper/1.0"},
+                           timeout=60)
+    resp_fr.raise_for_status()
+    fr_polls = parse_fr_polls(BeautifulSoup(resp_fr.text, "lxml"))
+    print(f"French article: {len(fr_polls)} polls")
+    polls.extend(fr_polls)
+    for p in polls:
+        fix = POLLSTER_FIX.get(
+            re.sub(r"\s*/\s*", "/", p["pollster"]).strip().lower())
+        if fix:
+            p["pollster"] = fix
     polls = canonicalize_polls(polls, POLLSTER_ALIAS)
+    # the same poll can appear on both wikis: dedupe on canonical name + date
+    seen2, deduped = set(), []
+    for p in polls:
+        key = (p["pollster"].lower(), p["date"])
+        if key in seen2:
+            continue
+        seen2.add(key)
+        deduped.append(p)
+    polls = deduped
     polls.sort(key=lambda p: p["date"], reverse=True)
     return polls, scrape_language(soup)
 

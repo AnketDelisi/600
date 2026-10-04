@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import build_map_svg as bm
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
+CACHE = os.path.join(ROOT, "scraper", ".cache")
 PDF = os.path.join(ROOT, "scraper", ".cache", "rs_izbori2023.pdf")
 PDF_URL = "https://publikacije.stat.gov.rs/G2024/Pdf/G20246006.pdf"
 OUT_SVG = os.path.join(ROOT, "img", "serbia_opstine.svg")
@@ -38,9 +39,22 @@ NATIONAL = {1783701: "sns", 249916: "sps", 55782: "srs", 191431: "nada",
             902450: "spn", 178830: "misn",
             # national-minority lists (2023 ballot order, exempt from the
             # 3% threshold)
-            64747: "vmsz", 29066: "spp", 21827: "sda", 11369: "rs"}
+            64747: "vmsz", 29066: "spp", 21827: "sda", 11369: "rs",
+            13501: "kshlp"}
 PARTIES = ["sns", "sps", "srs", "pes", "nps", "nada", "misn", "sl", "spn",
-           "vmsz", "spp", "sda", "rs"]
+           "vmsz", "spp", "sda", "rs", "kshlp"]
+# Belgrade's 17 city municipalities (gradske opstine): the RZS table lists
+# them separately but geoBoundaries ADM2 has Belgrade as one polygon, so the
+# geometry is fetched from OSM (admin_level 8) and replaces the big feature.
+BELGRADE_UNITS = [("Барајево", "Barajevo"), ("Вождовац", "Voždovac"),
+                  ("Врачар", "Vračar"), ("Гроцка", "Grocka"),
+                  ("Звездара", "Zvezdara"), ("Земун", "Zemun"),
+                  ("Лазаревац", "Lazarevac"), ("Младеновац", "Mladenovac"),
+                  ("Нови Београд", "Novi Beograd"), ("Обреновац", "Obrenovac"),
+                  ("Палилула", "Palilula"), ("Раковица", "Rakovica"),
+                  ("Савски Венац", "Savski Venac"), ("Сопот", "Sopot"),
+                  ("Стари Град", "Stari Grad"), ("Сурчин", "Surčin"),
+                  ("Чукарица", "Čukarica")]
 BELGRADE = ["Барајево", "Вождовац", "Врачар", "Гроцка", "Звездара", "Земун",
             "Лазаревац", "Младеновац", "Нови Београд", "Обреновац",
             "Палилула", "Раковица", "Савски Венац", "Сопот", "Стари Град",
@@ -87,6 +101,36 @@ BEL_SET = {b.lower() for b in BELGRADE}
 
 def is_belgrade(name):
     return name.lower() in BEL_SET
+
+
+def fetch_belgrade(key, latin):
+    """OSM (admin_level 8) polygon for a Belgrade city municipality."""
+    path = os.path.join(CACHE, "rs_belgrade_%s.geojson" % key)
+    if os.path.isfile(path):
+        return json.load(open(path, encoding="utf8"))
+    import time
+
+    import requests
+    for attempt in range(5):
+        try:
+            r = requests.get("https://nominatim.openstreetmap.org/search",
+                             params={"q": "Gradska opština %s, Serbia" % latin,
+                                     "format": "json", "polygon_geojson": 1,
+                                     "limit": 6, "extratags": 1},
+                             headers={"User-Agent": "600-election-model/1.0"},
+                             timeout=120)
+            hits = r.json() if r.status_code == 200 else []
+        except Exception:
+            hits = []
+        for h in hits:
+            gj = h.get("geojson") or {}
+            et = h.get("extratags") or {}
+            if h.get("class") == "boundary" and et.get("admin_level") == "8" \
+                    and gj.get("type") in ("Polygon", "MultiPolygon"):
+                json.dump(gj, open(path, "w", encoding="utf8"))
+                return gj
+        time.sleep(3 + 3 * attempt)
+    raise RuntimeError("no OSM boundary for %s" % key)
 
 
 # city rows whose components are listed separately right after them
@@ -200,22 +244,19 @@ def main():
     close()
     print(f"oblast sum-check worst vote deviation: {worst:.3f}%")
 
-    # build gebiete: printed % per unit; Belgrade aggregated from votes
+    # build gebiete: printed % per unit (Belgrade's 17 city municipalities
+    # are individual units, their geometry comes from OSM)
     gebiete, names = {}, {}
-    bel = {p: 0 for p in PARTIES}
-    bel["_tot"] = 0.0
     skipped = []
     for name in order:
         acc = units[name]
         if name in COMPONENT:
             continue
         if is_belgrade(name):
-            for p in PARTIES:
-                bel[p] += acc[p][0]
-            dens = sorted(acc[p][0] / (acc[p][1] / 100) for p in PARTIES
-                          if acc[p][0] and acc[p][1])
-            if dens:
-                bel["_tot"] += dens[len(dens) // 2]
+            key = norm(translit(name))
+            gebiete[key] = {p: acc[p][1] if acc[p][1] else 0.0
+                            for p in PARTIES}
+            names[key] = translit(name)
             continue
         if name in GRAD:
             key = GRAD[name]
@@ -226,10 +267,6 @@ def main():
                 continue
         gebiete[key] = {p: acc[p][1] if acc[p][1] else 0.0 for p in PARTIES}
         names[key] = translit(name)
-    if bel["_tot"]:
-        gebiete["belgrade"] = {p: round(bel[p] * 100 / bel["_tot"], 2)
-                               if bel[p] else 0.0 for p in PARTIES}
-        names["belgrade"] = "Belgrade"
     print("units with shares:", len(gebiete), "| skipped rows:",
           len(skipped))
     print("  skipped:", skipped)
@@ -241,13 +278,19 @@ def main():
     features = []
     for f in gj["features"]:
         key = geob_key(f["properties"]["shapeName"])
+        if key == "belgrade":
+            continue      # replaced by the 17 city municipalities below
         if key not in gebiete:
             print("  no results for", f["properties"]["shapeName"])
             continue
         features.append({"type": "Feature", "properties": {"opstina": key},
                          "geometry": f["geometry"]})
+    for cyr, latin in BELGRADE_UNITS:
+        key = norm(translit(cyr))
+        features.append({"type": "Feature", "properties": {"opstina": key},
+                         "geometry": fetch_belgrade(key, latin)})
     print("features:", len(features))
-    assert len(features) == 145, "expected 145 opstine"
+    assert len(features) == 161, "expected 161 opstine (144 + 17 Belgrade)"
     with open(COMBINED, "w", encoding="utf8") as fh:
         json.dump({"type": "FeatureCollection", "features": features}, fh)
     sys.argv = ["build_map_svg.py", "--geojson", COMBINED,
@@ -297,7 +340,7 @@ def main():
 
     map2 = {"svg": "img/serbia_opstine.svg", "selector": "id",
             "districts": {k: k for k in gebiete},
-            "gebiete": gebiete, "names": names, "label": "opštine (145)"}
+            "gebiete": gebiete, "names": names, "label": "opštine (161)"}
     # recompute the layer-1 (okrug) gebiete from the oblast rows so the
     # minority lists appear there too
     okrug = {}

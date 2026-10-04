@@ -1434,7 +1434,7 @@ saxony_anhalt: {
       dampDays: 10,
     },
     parties: {
-      sns:  { code: 'SNS',  name: 'Srpska napredna stranka',             name_en: 'Serbian Progressive Party',      color: '#242970' },
+      sns:  { code: 'AV-US', name: 'Aleksandar Vučić – United Serbia',  name_en: 'Aleksandar Vučić – United Serbia', color: '#242970' },
       sps:  { code: 'SPS',  name: 'Socijalistička partija Srbije',       name_en: 'Socialist Party of Serbia',      color: '#EB1B23' },
       srs:  { code: 'SRS',  name: 'Srpska radikalna stranka',            name_en: 'Serbian Radical Party',          color: '#0000FF' },
       pes:  { code: 'PES',  name: 'Platforma za evropsku Srbiju',        name_en: 'Platform for a European Serbia', color: '#C9A227' },
@@ -1448,17 +1448,18 @@ saxony_anhalt: {
       sda:  { code: 'SDA',  name: 'Stranka demokratske akcije Sandžaka', name_en: 'Party of Democratic Action of Sandžak', color: '#069443' },
       rs:   { code: 'RS',   name: 'Ruska stranka',                       name_en: 'Russian Party',                  color: '#0D3B66' },
       sdp:  { code: 'SDP',  name: 'Socijaldemokratska partija',          name_en: 'Social Democratic Party',        color: '#FF004F' },
+      kshlp: { code: 'KShLP', name: 'Koalicija Albanaca Preševske doline', name_en: 'Albanian Coalition of Preševo Valley', color: '#0081CC' },
       // SPN (Serbia Against Violence, 2023) — dissolved coalition. Shown in
       // past-result sections only; `pastOnly` keeps it out of the forecast.
       spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#E30613', pastOnly: true },
     },
-    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'srs', 'spp', 'sda', 'rs', 'sdp', 'spn'],
-    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'spn'],
+    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'srs', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
+    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
     // minority lists (Serbia art. 81): exempt from the 3% threshold
-    minorityParties: ['vmsz', 'spp', 'sda', 'rs'],
+    minorityParties: ['vmsz', 'spp', 'sda', 'rs', 'kshlp'],
     blocs: {
       bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps'], color: '#1B4381' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp'], color: '#A6192E' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp'], color: '#A6192E' },
     },
     logos: {
       sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg', srs: 'img/serbia/SRS.svg',
@@ -1481,8 +1482,8 @@ saxony_anhalt: {
       date: '2023-12-17',
       // 2023 Serbian parliamentary election (source: RIK / en.wikipedia.org/wiki/2023_Serbian_parliamentary_election)
       // Coalition baselines: SNS ran as "Serbia Must Not Stop"; NPS was inside SPN; PES/SL did not exist yet.
-      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0 },
-      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0 },
+      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
+      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0, kshlp: 1 },
     },
     map: {
       svg: 'img/serbia.svg',
@@ -1509,7 +1510,8 @@ saxony_anhalt: {
                 "vmsz": 0.12,
                 "spp": 0.16,
                 "sda": 0.05,
-                "rs": 0.27
+                "rs": 0.27,
+                "kshlp": 0.03
         },
         "west_backa": {
                 "sns": 52.29,
@@ -1524,7 +1526,8 @@ saxony_anhalt: {
                 "vmsz": 4.45,
                 "spp": 0.57,
                 "sda": 0.05,
-                "rs": 0.49
+                "rs": 0.49,
+                "kshlp": 0.08
         },
         "south_banat": {
                 "sns": 48.74,
@@ -1539,7 +1542,8 @@ saxony_anhalt: {
                 "vmsz": 1.54,
                 "spp": 0.22,
                 "sda": 0.06,
-                "rs": 0.32
+                "rs": 0.32,
+                "kshlp": 0.09
         },
         "south_backa": {
                 "sns": 45.32,
@@ -1554,7 +1558,8 @@ saxony_anhalt: {
                 "vmsz": 2.92,
                 "spp": 0.22,
                 "sda": 0.04,
-                "rs": 0.31
+                "rs": 0.31,
+                "kshlp": 0.06
         },
         "north_banat": {
                 "sns": 41.97,
@@ -1569,7 +1574,8 @@ saxony_anhalt: {
                 "vmsz": 27.38,
                 "spp": 0.12,
                 "sda": 0.05,
-                "rs": 0.2
+                "rs": 0.2,
+                "kshlp": 0.11
         },
         "north_backa": {
                 "sns": 39.39,
@@ -1584,7 +1590,8 @@ saxony_anhalt: {
                 "vmsz": 24.75,
                 "spp": 1.51,
                 "sda": 0.06,
-                "rs": 0.31
+                "rs": 0.31,
+                "kshlp": 0.14
         },
         "central_banat": {
                 "sns": 50.56,
@@ -1599,7 +1606,8 @@ saxony_anhalt: {
                 "vmsz": 4.6,
                 "spp": 0.14,
                 "sda": 0.03,
-                "rs": 0.32
+                "rs": 0.32,
+                "kshlp": 0.11
         },
         "srem": {
                 "sns": 55.93,
@@ -1614,7 +1622,8 @@ saxony_anhalt: {
                 "vmsz": 0.44,
                 "spp": 0.35,
                 "sda": 0.06,
-                "rs": 0.4
+                "rs": 0.4,
+                "kshlp": 0.06
         },
         "zlatibor": {
                 "sns": 45.78,
@@ -1629,7 +1638,8 @@ saxony_anhalt: {
                 "vmsz": 0.1,
                 "spp": 4.92,
                 "sda": 2.91,
-                "rs": 0.19
+                "rs": 0.19,
+                "kshlp": 0.03
         },
         "kolubara": {
                 "sns": 48.05,
@@ -1644,7 +1654,8 @@ saxony_anhalt: {
                 "vmsz": 0.13,
                 "spp": 0.17,
                 "sda": 0.06,
-                "rs": 0.3
+                "rs": 0.3,
+                "kshlp": 0.05
         },
         "macva": {
                 "sns": 53.01,
@@ -1659,7 +1670,8 @@ saxony_anhalt: {
                 "vmsz": 0.19,
                 "spp": 0.2,
                 "sda": 0.08,
-                "rs": 0.33
+                "rs": 0.33,
+                "kshlp": 0.03
         },
         "moravica": {
                 "sns": 45.56,
@@ -1674,7 +1686,8 @@ saxony_anhalt: {
                 "vmsz": 0.11,
                 "spp": 0.24,
                 "sda": 0.07,
-                "rs": 0.33
+                "rs": 0.33,
+                "kshlp": 0.03
         },
         "pomoravlje": {
                 "sns": 49.9,
@@ -1689,7 +1702,8 @@ saxony_anhalt: {
                 "vmsz": 0.15,
                 "spp": 0.17,
                 "sda": 0.08,
-                "rs": 0.31
+                "rs": 0.31,
+                "kshlp": 0.02
         },
         "rasina": {
                 "sns": 54.46,
@@ -1704,7 +1718,8 @@ saxony_anhalt: {
                 "vmsz": 0.18,
                 "spp": 0.2,
                 "sda": 0.08,
-                "rs": 0.23
+                "rs": 0.23,
+                "kshlp": 0.03
         },
         "raska": {
                 "sns": 43.48,
@@ -1719,7 +1734,8 @@ saxony_anhalt: {
                 "vmsz": 0.08,
                 "spp": 8.66,
                 "sda": 10.5,
-                "rs": 0.19
+                "rs": 0.19,
+                "kshlp": 0.03
         },
         "sumadija": {
                 "sns": 46.8,
@@ -1734,7 +1750,8 @@ saxony_anhalt: {
                 "vmsz": 0.18,
                 "spp": 0.27,
                 "sda": 0.09,
-                "rs": 0.37
+                "rs": 0.37,
+                "kshlp": 0.03
         },
         "bor": {
                 "sns": 55.41,
@@ -1749,7 +1766,8 @@ saxony_anhalt: {
                 "vmsz": 0.11,
                 "spp": 0.17,
                 "sda": 0.04,
-                "rs": 0.27
+                "rs": 0.27,
+                "kshlp": 0.03
         },
         "branicevo": {
                 "sns": 56.07,
@@ -1764,7 +1782,8 @@ saxony_anhalt: {
                 "vmsz": 0.22,
                 "spp": 0.19,
                 "sda": 0.05,
-                "rs": 0.24
+                "rs": 0.24,
+                "kshlp": 0.04
         },
         "zajecar": {
                 "sns": 52.59,
@@ -1779,7 +1798,8 @@ saxony_anhalt: {
                 "vmsz": 0.12,
                 "spp": 0.15,
                 "sda": 0.04,
-                "rs": 0.38
+                "rs": 0.38,
+                "kshlp": 0.02
         },
         "jablanica": {
                 "sns": 56.28,
@@ -1794,7 +1814,8 @@ saxony_anhalt: {
                 "vmsz": 0.19,
                 "spp": 0.19,
                 "sda": 0.08,
-                "rs": 0.21
+                "rs": 0.21,
+                "kshlp": 0.15
         },
         "nisava": {
                 "sns": 48.04,
@@ -1809,7 +1830,8 @@ saxony_anhalt: {
                 "vmsz": 0.11,
                 "spp": 0.14,
                 "sda": 0.06,
-                "rs": 0.52
+                "rs": 0.52,
+                "kshlp": 0.02
         },
         "pirot": {
                 "sns": 55.3,
@@ -1824,7 +1846,8 @@ saxony_anhalt: {
                 "vmsz": 0.09,
                 "spp": 0.16,
                 "sda": 0.08,
-                "rs": 0.33
+                "rs": 0.33,
+                "kshlp": 0.04
         },
         "podunavlje": {
                 "sns": 52.27,
@@ -1839,7 +1862,8 @@ saxony_anhalt: {
                 "vmsz": 0.29,
                 "spp": 0.21,
                 "sda": 0.09,
-                "rs": 0.31
+                "rs": 0.31,
+                "kshlp": 0.04
         },
         "pcinja": {
                 "sns": 49.49,
@@ -1854,7 +1878,8 @@ saxony_anhalt: {
                 "vmsz": 0.16,
                 "spp": 0.45,
                 "sda": 0.07,
-                "rs": 0.16
+                "rs": 0.16,
+                "kshlp": 12.2
         },
         "toplica": {
                 "sns": 62.72,
@@ -1869,7 +1894,8 @@ saxony_anhalt: {
                 "vmsz": 0.2,
                 "spp": 0.2,
                 "sda": 0.06,
-                "rs": 0.2
+                "rs": 0.2,
+                "kshlp": 0.02
         }
 },
       names: {
@@ -1881,12 +1907,29 @@ saxony_anhalt: {
         pcinja: 'Pčinja', toplica: 'Toplica',
       },
       // 2023 national vote share — uniform-swing baseline for the district map
-      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0 },
+      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
     },
       map2: {
       "svg": "img/serbia_opstine.svg",
       "selector": "id",
       "districts": {
+            "barajevo": "barajevo",
+            "vozdovac": "vozdovac",
+            "vracar": "vracar",
+            "grocka": "grocka",
+            "zvezdara": "zvezdara",
+            "zemun": "zemun",
+            "lazarevac": "lazarevac",
+            "mladenovac": "mladenovac",
+            "novi_beograd": "novi_beograd",
+            "obrenovac": "obrenovac",
+            "palilula": "palilula",
+            "rakovica": "rakovica",
+            "savski_venac": "savski_venac",
+            "sopot": "sopot",
+            "stari_grad": "stari_grad",
+            "surcin": "surcin",
+            "cukarica": "cukarica",
             "sombor": "sombor",
             "apatin": "apatin",
             "kula": "kula",
@@ -2030,10 +2073,281 @@ saxony_anhalt: {
             "prokuplje": "prokuplje",
             "blace": "blace",
             "zitoradja": "zitoradja",
-            "kursumlija": "kursumlija",
-            "belgrade": "belgrade"
+            "kursumlija": "kursumlija"
       },
       "gebiete": {
+            "barajevo": {
+                  "sns": 50.64,
+                  "sps": 7.31,
+                  "srs": 1.45,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 4.83,
+                  "misn": 6.17,
+                  "sl": 0.0,
+                  "spn": 20.0,
+                  "vmsz": 0.14,
+                  "spp": 0.15,
+                  "sda": 0.04,
+                  "rs": 0.35,
+                  "kshlp": 0.04
+            },
+            "vozdovac": {
+                  "sns": 34.89,
+                  "sps": 4.95,
+                  "srs": 0.99,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 7.09,
+                  "misn": 6.7,
+                  "sl": 0.0,
+                  "spn": 36.63,
+                  "vmsz": 0.12,
+                  "spp": 0.14,
+                  "sda": 0.04,
+                  "rs": 0.26,
+                  "kshlp": 0.02
+            },
+            "vracar": {
+                  "sns": 26.59,
+                  "sps": 3.86,
+                  "srs": 0.63,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 6.47,
+                  "misn": 5.65,
+                  "sl": 0.0,
+                  "spn": 48.54,
+                  "vmsz": 0.14,
+                  "spp": 0.1,
+                  "sda": 0.02,
+                  "rs": 0.2,
+                  "kshlp": 0.04
+            },
+            "grocka": {
+                  "sns": 47.87,
+                  "sps": 8.0,
+                  "srs": 1.38,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 5.72,
+                  "misn": 5.62,
+                  "sl": 0.0,
+                  "spn": 22.09,
+                  "vmsz": 0.1,
+                  "spp": 0.18,
+                  "sda": 0.06,
+                  "rs": 0.28,
+                  "kshlp": 0.05
+            },
+            "zvezdara": {
+                  "sns": 31.64,
+                  "sps": 4.91,
+                  "srs": 0.92,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 6.84,
+                  "misn": 6.48,
+                  "sl": 0.0,
+                  "spn": 40.13,
+                  "vmsz": 0.11,
+                  "spp": 0.16,
+                  "sda": 0.05,
+                  "rs": 0.22,
+                  "kshlp": 0.02
+            },
+            "zemun": {
+                  "sns": 40.91,
+                  "sps": 4.52,
+                  "srs": 1.94,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 5.92,
+                  "misn": 6.67,
+                  "sl": 0.0,
+                  "spn": 31.73,
+                  "vmsz": 0.11,
+                  "spp": 0.21,
+                  "sda": 0.04,
+                  "rs": 0.32,
+                  "kshlp": 0.03
+            },
+            "lazarevac": {
+                  "sns": 41.29,
+                  "sps": 7.64,
+                  "srs": 1.21,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 6.57,
+                  "misn": 6.1,
+                  "sl": 0.0,
+                  "spn": 26.52,
+                  "vmsz": 0.1,
+                  "spp": 0.19,
+                  "sda": 0.1,
+                  "rs": 0.33,
+                  "kshlp": 0.06
+            },
+            "mladenovac": {
+                  "sns": 51.77,
+                  "sps": 6.66,
+                  "srs": 1.34,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 4.31,
+                  "misn": 5.12,
+                  "sl": 0.0,
+                  "spn": 21.6,
+                  "vmsz": 0.1,
+                  "spp": 0.13,
+                  "sda": 0.06,
+                  "rs": 0.31,
+                  "kshlp": 0.04
+            },
+            "novi_beograd": {
+                  "sns": 31.74,
+                  "sps": 4.41,
+                  "srs": 1.0,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 6.89,
+                  "misn": 6.8,
+                  "sl": 0.0,
+                  "spn": 40.67,
+                  "vmsz": 0.11,
+                  "spp": 0.12,
+                  "sda": 0.04,
+                  "rs": 0.26,
+                  "kshlp": 0.02
+            },
+            "obrenovac": {
+                  "sns": 49.5,
+                  "sps": 6.64,
+                  "srs": 1.56,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 4.48,
+                  "misn": 8.19,
+                  "sl": 0.0,
+                  "spn": 20.97,
+                  "vmsz": 0.12,
+                  "spp": 0.13,
+                  "sda": 0.06,
+                  "rs": 0.29,
+                  "kshlp": 0.03
+            },
+            "palilula": {
+                  "sns": 37.74,
+                  "sps": 5.21,
+                  "srs": 1.26,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 5.94,
+                  "misn": 6.66,
+                  "sl": 0.0,
+                  "spn": 33.93,
+                  "vmsz": 0.13,
+                  "spp": 0.28,
+                  "sda": 0.05,
+                  "rs": 0.28,
+                  "kshlp": 0.04
+            },
+            "rakovica": {
+                  "sns": 37.22,
+                  "sps": 5.41,
+                  "srs": 1.24,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 6.89,
+                  "misn": 6.86,
+                  "sl": 0.0,
+                  "spn": 33.58,
+                  "vmsz": 0.08,
+                  "spp": 0.15,
+                  "sda": 0.04,
+                  "rs": 0.32,
+                  "kshlp": 0.02
+            },
+            "savski_venac": {
+                  "sns": 30.34,
+                  "sps": 4.17,
+                  "srs": 0.81,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 6.17,
+                  "misn": 6.24,
+                  "sl": 0.0,
+                  "spn": 44.02,
+                  "vmsz": 0.11,
+                  "spp": 0.12,
+                  "sda": 0.04,
+                  "rs": 0.17,
+                  "kshlp": 0.05
+            },
+            "sopot": {
+                  "sns": 51.9,
+                  "sps": 8.33,
+                  "srs": 1.91,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 4.22,
+                  "misn": 5.26,
+                  "sl": 0.0,
+                  "spn": 17.06,
+                  "vmsz": 0.13,
+                  "spp": 0.18,
+                  "sda": 0.05,
+                  "rs": 0.42,
+                  "kshlp": 0.05
+            },
+            "stari_grad": {
+                  "sns": 24.61,
+                  "sps": 3.57,
+                  "srs": 0.8,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 5.94,
+                  "misn": 6.39,
+                  "sl": 0.0,
+                  "spn": 49.69,
+                  "vmsz": 0.13,
+                  "spp": 0.1,
+                  "sda": 0.02,
+                  "rs": 0.17,
+                  "kshlp": 0.05
+            },
+            "surcin": {
+                  "sns": 54.7,
+                  "sps": 5.45,
+                  "srs": 1.79,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 4.62,
+                  "misn": 6.56,
+                  "sl": 0.0,
+                  "spn": 18.22,
+                  "vmsz": 0.14,
+                  "spp": 0.18,
+                  "sda": 0.06,
+                  "rs": 0.36,
+                  "kshlp": 0.04
+            },
+            "cukarica": {
+                  "sns": 37.17,
+                  "sps": 4.87,
+                  "srs": 1.11,
+                  "pes": 0.0,
+                  "nps": 0.0,
+                  "nada": 7.14,
+                  "misn": 7.02,
+                  "sl": 0.0,
+                  "spn": 34.2,
+                  "vmsz": 0.11,
+                  "spp": 0.14,
+                  "sda": 0.05,
+                  "rs": 0.26,
+                  "kshlp": 0.05
+            },
             "sombor": {
                   "sns": 48.38,
                   "sps": 4.44,
@@ -2047,7 +2361,8 @@ saxony_anhalt: {
                   "vmsz": 5.09,
                   "spp": 0.65,
                   "sda": 0.04,
-                  "rs": 0.56
+                  "rs": 0.56,
+                  "kshlp": 0.1
             },
             "apatin": {
                   "sns": 54.97,
@@ -2062,7 +2377,8 @@ saxony_anhalt: {
                   "vmsz": 6.14,
                   "spp": 1.4,
                   "sda": 0.04,
-                  "rs": 0.44
+                  "rs": 0.44,
+                  "kshlp": 0.04
             },
             "kula": {
                   "sns": 53.25,
@@ -2077,7 +2393,8 @@ saxony_anhalt: {
                   "vmsz": 4.16,
                   "spp": 0.17,
                   "sda": 0.05,
-                  "rs": 0.5
+                  "rs": 0.5,
+                  "kshlp": 0.11
             },
             "odzaci": {
                   "sns": 58.92,
@@ -2092,7 +2409,8 @@ saxony_anhalt: {
                   "vmsz": 1.61,
                   "spp": 0.14,
                   "sda": 0.04,
-                  "rs": 0.35
+                  "rs": 0.35,
+                  "kshlp": 0.03
             },
             "pancevo": {
                   "sns": 44.59,
@@ -2107,7 +2425,8 @@ saxony_anhalt: {
                   "vmsz": 0.95,
                   "spp": 0.23,
                   "sda": 0.06,
-                  "rs": 0.35
+                  "rs": 0.35,
+                  "kshlp": 0.04
             },
             "alibunar": {
                   "sns": 52.32,
@@ -2122,7 +2441,8 @@ saxony_anhalt: {
                   "vmsz": 0.37,
                   "spp": 0.17,
                   "sda": 0.06,
-                  "rs": 0.24
+                  "rs": 0.24,
+                  "kshlp": 0.12
             },
             "bela_crkva": {
                   "sns": 60.95,
@@ -2137,7 +2457,8 @@ saxony_anhalt: {
                   "vmsz": 0.43,
                   "spp": 0.19,
                   "sda": 0.06,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.11
             },
             "vrsac": {
                   "sns": 47.16,
@@ -2152,7 +2473,8 @@ saxony_anhalt: {
                   "vmsz": 1.1,
                   "spp": 0.18,
                   "sda": 0.05,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.09
             },
             "kovacica": {
                   "sns": 51.57,
@@ -2167,7 +2489,8 @@ saxony_anhalt: {
                   "vmsz": 3.87,
                   "spp": 0.22,
                   "sda": 0.07,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.27
             },
             "kovin": {
                   "sns": 53.7,
@@ -2182,7 +2505,8 @@ saxony_anhalt: {
                   "vmsz": 3.57,
                   "spp": 0.2,
                   "sda": 0.05,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.08
             },
             "opovo": {
                   "sns": 58.72,
@@ -2197,7 +2521,8 @@ saxony_anhalt: {
                   "vmsz": 0.22,
                   "spp": 0.45,
                   "sda": 0.09,
-                  "rs": 0.65
+                  "rs": 0.65,
+                  "kshlp": 0.05
             },
             "plandiste": {
                   "sns": 49.69,
@@ -2212,7 +2537,8 @@ saxony_anhalt: {
                   "vmsz": 5.03,
                   "spp": 0.33,
                   "sda": 0.08,
-                  "rs": 0.33
+                  "rs": 0.33,
+                  "kshlp": 0.33
             },
             "novi_sad": {
                   "sns": 39.1,
@@ -2227,7 +2553,8 @@ saxony_anhalt: {
                   "vmsz": 1.21,
                   "spp": 0.2,
                   "sda": 0.03,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.04
             },
             "bac": {
                   "sns": 62.02,
@@ -2242,7 +2569,8 @@ saxony_anhalt: {
                   "vmsz": 1.32,
                   "spp": 1.42,
                   "sda": 0.05,
-                  "rs": 0.24
+                  "rs": 0.24,
+                  "kshlp": 0.19
             },
             "backa_palanka": {
                   "sns": 52.71,
@@ -2257,7 +2585,8 @@ saxony_anhalt: {
                   "vmsz": 0.73,
                   "spp": 0.14,
                   "sda": 0.05,
-                  "rs": 0.4
+                  "rs": 0.4,
+                  "kshlp": 0.08
             },
             "backi_petrovac": {
                   "sns": 52.07,
@@ -2272,7 +2601,8 @@ saxony_anhalt: {
                   "vmsz": 0.85,
                   "spp": 0.53,
                   "sda": 0.09,
-                  "rs": 0.18
+                  "rs": 0.18,
+                  "kshlp": 0.12
             },
             "beocin": {
                   "sns": 58.59,
@@ -2287,7 +2617,8 @@ saxony_anhalt: {
                   "vmsz": 0.37,
                   "spp": 0.45,
                   "sda": 0.06,
-                  "rs": 0.37
+                  "rs": 0.37,
+                  "kshlp": 0.16
             },
             "becej": {
                   "sns": 49.19,
@@ -2302,7 +2633,8 @@ saxony_anhalt: {
                   "vmsz": 22.03,
                   "spp": 0.1,
                   "sda": 0.07,
-                  "rs": 0.25
+                  "rs": 0.25,
+                  "kshlp": 0.07
             },
             "vrbas": {
                   "sns": 51.71,
@@ -2317,7 +2649,8 @@ saxony_anhalt: {
                   "vmsz": 1.18,
                   "spp": 0.16,
                   "sda": 0.04,
-                  "rs": 0.41
+                  "rs": 0.41,
+                  "kshlp": 0.13
             },
             "zabalj": {
                   "sns": 68.72,
@@ -2332,7 +2665,8 @@ saxony_anhalt: {
                   "vmsz": 0.24,
                   "spp": 0.12,
                   "sda": 0.04,
-                  "rs": 0.44
+                  "rs": 0.44,
+                  "kshlp": 0.07
             },
             "srbobran": {
                   "sns": 52.09,
@@ -2347,7 +2681,8 @@ saxony_anhalt: {
                   "vmsz": 7.9,
                   "spp": 0.14,
                   "sda": 0.09,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.06
             },
             "sremski_karlovci": {
                   "sns": 44.13,
@@ -2362,7 +2697,8 @@ saxony_anhalt: {
                   "vmsz": 0.74,
                   "spp": 0.34,
                   "sda": 0.02,
-                  "rs": 0.42
+                  "rs": 0.42,
+                  "kshlp": 0.06
             },
             "temerin": {
                   "sns": 47.77,
@@ -2377,7 +2713,8 @@ saxony_anhalt: {
                   "vmsz": 13.93,
                   "spp": 0.06,
                   "sda": 0.02,
-                  "rs": 0.34
+                  "rs": 0.34,
+                  "kshlp": 0.03
             },
             "titel": {
                   "sns": 60.34,
@@ -2392,7 +2729,8 @@ saxony_anhalt: {
                   "vmsz": 1.06,
                   "spp": 0.16,
                   "sda": 0.03,
-                  "rs": 0.4
+                  "rs": 0.4,
+                  "kshlp": 0.04
             },
             "kikinda": {
                   "sns": 53.22,
@@ -2407,7 +2745,8 @@ saxony_anhalt: {
                   "vmsz": 4.68,
                   "spp": 0.13,
                   "sda": 0.03,
-                  "rs": 0.26
+                  "rs": 0.26,
+                  "kshlp": 0.06
             },
             "ada": {
                   "sns": 34.33,
@@ -2422,7 +2761,8 @@ saxony_anhalt: {
                   "vmsz": 47.94,
                   "spp": 0.08,
                   "sda": 0.04,
-                  "rs": 0.12
+                  "rs": 0.12,
+                  "kshlp": 0.25
             },
             "kanjiza": {
                   "sns": 22.14,
@@ -2437,7 +2777,8 @@ saxony_anhalt: {
                   "vmsz": 61.75,
                   "spp": 0.09,
                   "sda": 0.07,
-                  "rs": 0.07
+                  "rs": 0.07,
+                  "kshlp": 0.18
             },
             "novi_knezevac": {
                   "sns": 49.82,
@@ -2452,7 +2793,8 @@ saxony_anhalt: {
                   "vmsz": 19.67,
                   "spp": 0.1,
                   "sda": 0.1,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.02
             },
             "senta": {
                   "sns": 26.93,
@@ -2467,7 +2809,8 @@ saxony_anhalt: {
                   "vmsz": 48.76,
                   "spp": 0.1,
                   "sda": 0.03,
-                  "rs": 0.16
+                  "rs": 0.16,
+                  "kshlp": 0.09
             },
             "coka": {
                   "sns": 48.25,
@@ -2482,7 +2825,8 @@ saxony_anhalt: {
                   "vmsz": 26.23,
                   "spp": 0.19,
                   "sda": 0.04,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.13
             },
             "subotica": {
                   "sns": 40.21,
@@ -2497,7 +2841,8 @@ saxony_anhalt: {
                   "vmsz": 20.28,
                   "spp": 1.93,
                   "sda": 0.05,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.13
             },
             "backa_topola": {
                   "sns": 34.01,
@@ -2512,7 +2857,8 @@ saxony_anhalt: {
                   "vmsz": 40.8,
                   "spp": 0.14,
                   "sda": 0.08,
-                  "rs": 0.35
+                  "rs": 0.35,
+                  "kshlp": 0.2
             },
             "mali_idjos": {
                   "sns": 43.39,
@@ -2527,7 +2873,8 @@ saxony_anhalt: {
                   "vmsz": 35.3,
                   "spp": 0.2,
                   "sda": 0.07,
-                  "rs": 0.17
+                  "rs": 0.17,
+                  "kshlp": 0.07
             },
             "zrenjanin": {
                   "sns": 46.92,
@@ -2542,7 +2889,8 @@ saxony_anhalt: {
                   "vmsz": 3.24,
                   "spp": 0.15,
                   "sda": 0.03,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.11
             },
             "zitiste": {
                   "sns": 53.84,
@@ -2557,7 +2905,8 @@ saxony_anhalt: {
                   "vmsz": 9.91,
                   "spp": 0.1,
                   "sda": 0.04,
-                  "rs": 0.25
+                  "rs": 0.25,
+                  "kshlp": 0.17
             },
             "nova_crnja": {
                   "sns": 61.26,
@@ -2572,7 +2921,8 @@ saxony_anhalt: {
                   "vmsz": 8.49,
                   "spp": 0.08,
                   "sda": 0.04,
-                  "rs": 0.23
+                  "rs": 0.23,
+                  "kshlp": 0.08
             },
             "novi_becej": {
                   "sns": 55.89,
@@ -2587,7 +2937,8 @@ saxony_anhalt: {
                   "vmsz": 7.4,
                   "spp": 0.15,
                   "sda": 0.06,
-                  "rs": 0.45
+                  "rs": 0.45,
+                  "kshlp": 0.06
             },
             "secanj": {
                   "sns": 61.5,
@@ -2602,7 +2953,8 @@ saxony_anhalt: {
                   "vmsz": 2.24,
                   "spp": 0.15,
                   "sda": 0.05,
-                  "rs": 0.47
+                  "rs": 0.47,
+                  "kshlp": 0.08
             },
             "sremska_mitrovica": {
                   "sns": 52.95,
@@ -2617,7 +2969,8 @@ saxony_anhalt: {
                   "vmsz": 0.41,
                   "spp": 0.49,
                   "sda": 0.06,
-                  "rs": 0.37
+                  "rs": 0.37,
+                  "kshlp": 0.1
             },
             "indjija": {
                   "sns": 55.64,
@@ -2632,7 +2985,8 @@ saxony_anhalt: {
                   "vmsz": 0.67,
                   "spp": 0.28,
                   "sda": 0.05,
-                  "rs": 0.42
+                  "rs": 0.42,
+                  "kshlp": 0.04
             },
             "irig": {
                   "sns": 62.84,
@@ -2647,7 +3001,8 @@ saxony_anhalt: {
                   "vmsz": 1.18,
                   "spp": 0.27,
                   "sda": 0.04,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.04
             },
             "pecinci": {
                   "sns": 70.21,
@@ -2662,7 +3017,8 @@ saxony_anhalt: {
                   "vmsz": 0.3,
                   "spp": 0.1,
                   "sda": 0.09,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.02
             },
             "ruma": {
                   "sns": 56.31,
@@ -2677,7 +3033,8 @@ saxony_anhalt: {
                   "vmsz": 0.51,
                   "spp": 0.3,
                   "sda": 0.06,
-                  "rs": 0.48
+                  "rs": 0.48,
+                  "kshlp": 0.05
             },
             "stara_pazova": {
                   "sns": 52.27,
@@ -2692,7 +3049,8 @@ saxony_anhalt: {
                   "vmsz": 0.22,
                   "spp": 0.24,
                   "sda": 0.05,
-                  "rs": 0.42
+                  "rs": 0.42,
+                  "kshlp": 0.04
             },
             "sid": {
                   "sns": 58.04,
@@ -2707,7 +3065,8 @@ saxony_anhalt: {
                   "vmsz": 0.3,
                   "spp": 0.61,
                   "sda": 0.03,
-                  "rs": 0.34
+                  "rs": 0.34,
+                  "kshlp": 0.07
             },
             "uzice": {
                   "sns": 43.16,
@@ -2722,7 +3081,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.17,
                   "sda": 0.06,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.03
             },
             "arilje": {
                   "sns": 44.29,
@@ -2737,7 +3097,8 @@ saxony_anhalt: {
                   "vmsz": 0.08,
                   "spp": 0.28,
                   "sda": 0.12,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.02
             },
             "bajina_basta": {
                   "sns": 49.48,
@@ -2752,7 +3113,8 @@ saxony_anhalt: {
                   "vmsz": 0.05,
                   "spp": 0.12,
                   "sda": 0.04,
-                  "rs": 0.18
+                  "rs": 0.18,
+                  "kshlp": 0.01
             },
             "kosjeric": {
                   "sns": 48.16,
@@ -2767,7 +3129,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.15,
                   "sda": 0.0,
-                  "rs": 0.16
+                  "rs": 0.16,
+                  "kshlp": 0.05
             },
             "nova_varos": {
                   "sns": 52.58,
@@ -2782,7 +3145,8 @@ saxony_anhalt: {
                   "vmsz": 0.05,
                   "spp": 1.62,
                   "sda": 0.47,
-                  "rs": 0.17
+                  "rs": 0.17,
+                  "kshlp": 0.02
             },
             "pozega": {
                   "sns": 46.04,
@@ -2797,7 +3161,8 @@ saxony_anhalt: {
                   "vmsz": 0.08,
                   "spp": 0.28,
                   "sda": 0.11,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.03
             },
             "priboj": {
                   "sns": 54.21,
@@ -2812,7 +3177,8 @@ saxony_anhalt: {
                   "vmsz": 0.22,
                   "spp": 5.81,
                   "sda": 2.83,
-                  "rs": 0.1
+                  "rs": 0.1,
+                  "kshlp": 0.02
             },
             "prijepolje": {
                   "sns": 48.79,
@@ -2827,7 +3193,8 @@ saxony_anhalt: {
                   "vmsz": 0.09,
                   "spp": 14.63,
                   "sda": 5.7,
-                  "rs": 0.06
+                  "rs": 0.06,
+                  "kshlp": 0.05
             },
             "sjenica": {
                   "sns": 25.78,
@@ -2842,7 +3209,8 @@ saxony_anhalt: {
                   "vmsz": 0.0,
                   "spp": 27.95,
                   "sda": 22.64,
-                  "rs": 0.02
+                  "rs": 0.02,
+                  "kshlp": 0.03
             },
             "cajetina": {
                   "sns": 52.62,
@@ -2857,7 +3225,8 @@ saxony_anhalt: {
                   "vmsz": 0.18,
                   "spp": 0.17,
                   "sda": 0.07,
-                  "rs": 0.24
+                  "rs": 0.24,
+                  "kshlp": 0.0
             },
             "valjevo": {
                   "sns": 41.55,
@@ -2872,7 +3241,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.16,
                   "sda": 0.05,
-                  "rs": 0.33
+                  "rs": 0.33,
+                  "kshlp": 0.03
             },
             "lajkovac": {
                   "sns": 50.9,
@@ -2887,7 +3257,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.18,
                   "sda": 0.1,
-                  "rs": 0.35
+                  "rs": 0.35,
+                  "kshlp": 0.11
             },
             "ljig": {
                   "sns": 43.32,
@@ -2902,7 +3273,8 @@ saxony_anhalt: {
                   "vmsz": 0.2,
                   "spp": 0.2,
                   "sda": 0.12,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.08
             },
             "mionica": {
                   "sns": 57.29,
@@ -2917,7 +3289,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.11,
                   "sda": 0.04,
-                  "rs": 0.17
+                  "rs": 0.17,
+                  "kshlp": 0.1
             },
             "osecina": {
                   "sns": 56.21,
@@ -2932,7 +3305,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.21,
                   "sda": 0.08,
-                  "rs": 0.18
+                  "rs": 0.18,
+                  "kshlp": 0.03
             },
             "ub": {
                   "sns": 60.72,
@@ -2947,7 +3321,8 @@ saxony_anhalt: {
                   "vmsz": 0.18,
                   "spp": 0.22,
                   "sda": 0.05,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.03
             },
             "sabac": {
                   "sns": 49.98,
@@ -2962,7 +3337,8 @@ saxony_anhalt: {
                   "vmsz": 0.25,
                   "spp": 0.21,
                   "sda": 0.11,
-                  "rs": 0.44
+                  "rs": 0.44,
+                  "kshlp": 0.02
             },
             "bogatic": {
                   "sns": 50.61,
@@ -2977,7 +3353,8 @@ saxony_anhalt: {
                   "vmsz": 0.41,
                   "spp": 0.24,
                   "sda": 0.13,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.03
             },
             "vladimirci": {
                   "sns": 57.57,
@@ -2992,7 +3369,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.16,
                   "sda": 0.09,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.07
             },
             "koceljeva": {
                   "sns": 64.0,
@@ -3007,7 +3385,8 @@ saxony_anhalt: {
                   "vmsz": 0.09,
                   "spp": 0.09,
                   "sda": 0.05,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.03
             },
             "krupanj": {
                   "sns": 55.8,
@@ -3022,7 +3401,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.21,
                   "sda": 0.04,
-                  "rs": 0.22
+                  "rs": 0.22,
+                  "kshlp": 0.04
             },
             "loznica": {
                   "sns": 55.85,
@@ -3037,7 +3417,8 @@ saxony_anhalt: {
                   "vmsz": 0.14,
                   "spp": 0.2,
                   "sda": 0.05,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.03
             },
             "ljubovija": {
                   "sns": 49.41,
@@ -3052,7 +3433,8 @@ saxony_anhalt: {
                   "vmsz": 0.04,
                   "spp": 0.06,
                   "sda": 0.01,
-                  "rs": 0.12
+                  "rs": 0.12,
+                  "kshlp": 0.02
             },
             "mali_zvornik": {
                   "sns": 53.76,
@@ -3067,7 +3449,8 @@ saxony_anhalt: {
                   "vmsz": 0.07,
                   "spp": 0.27,
                   "sda": 0.03,
-                  "rs": 0.11
+                  "rs": 0.11,
+                  "kshlp": 0.03
             },
             "cacak": {
                   "sns": 42.61,
@@ -3082,7 +3465,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.22,
                   "sda": 0.07,
-                  "rs": 0.33
+                  "rs": 0.33,
+                  "kshlp": 0.03
             },
             "gornji_milanovac": {
                   "sns": 45.22,
@@ -3097,7 +3481,8 @@ saxony_anhalt: {
                   "vmsz": 0.15,
                   "spp": 0.22,
                   "sda": 0.05,
-                  "rs": 0.3
+                  "rs": 0.3,
+                  "kshlp": 0.02
             },
             "ivanjica": {
                   "sns": 50.42,
@@ -3112,7 +3497,8 @@ saxony_anhalt: {
                   "vmsz": 0.07,
                   "spp": 0.27,
                   "sda": 0.05,
-                  "rs": 0.23
+                  "rs": 0.23,
+                  "kshlp": 0.01
             },
             "lucani": {
                   "sns": 55.4,
@@ -3127,7 +3513,8 @@ saxony_anhalt: {
                   "vmsz": 0.13,
                   "spp": 0.34,
                   "sda": 0.13,
-                  "rs": 0.49
+                  "rs": 0.49,
+                  "kshlp": 0.05
             },
             "jagodina": {
                   "sns": 38.23,
@@ -3142,7 +3529,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.13,
                   "sda": 0.07,
-                  "rs": 0.32
+                  "rs": 0.32,
+                  "kshlp": 0.01
             },
             "despotovac": {
                   "sns": 58.67,
@@ -3157,7 +3545,8 @@ saxony_anhalt: {
                   "vmsz": 0.22,
                   "spp": 0.11,
                   "sda": 0.12,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.07
             },
             "paracin": {
                   "sns": 55.78,
@@ -3172,7 +3561,8 @@ saxony_anhalt: {
                   "vmsz": 0.2,
                   "spp": 0.23,
                   "sda": 0.11,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.03
             },
             "rekovac": {
                   "sns": 48.49,
@@ -3187,7 +3577,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.22,
                   "sda": 0.09,
-                  "rs": 0.33
+                  "rs": 0.33,
+                  "kshlp": 0.02
             },
             "svilajnac": {
                   "sns": 56.88,
@@ -3202,7 +3593,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.15,
                   "sda": 0.07,
-                  "rs": 0.43
+                  "rs": 0.43,
+                  "kshlp": 0.01
             },
             "cuprija": {
                   "sns": 55.24,
@@ -3217,7 +3609,8 @@ saxony_anhalt: {
                   "vmsz": 0.13,
                   "spp": 0.16,
                   "sda": 0.06,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.01
             },
             "krusevac": {
                   "sns": 54.31,
@@ -3232,7 +3625,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.17,
                   "sda": 0.06,
-                  "rs": 0.22
+                  "rs": 0.22,
+                  "kshlp": 0.02
             },
             "aleksandrovac": {
                   "sns": 51.98,
@@ -3247,7 +3641,8 @@ saxony_anhalt: {
                   "vmsz": 0.29,
                   "spp": 0.24,
                   "sda": 0.12,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.01
             },
             "brus": {
                   "sns": 61.13,
@@ -3262,7 +3657,8 @@ saxony_anhalt: {
                   "vmsz": 0.18,
                   "spp": 0.32,
                   "sda": 0.08,
-                  "rs": 0.24
+                  "rs": 0.24,
+                  "kshlp": 0.0
             },
             "varvarin": {
                   "sns": 56.68,
@@ -3277,7 +3673,8 @@ saxony_anhalt: {
                   "vmsz": 0.18,
                   "spp": 0.19,
                   "sda": 0.12,
-                  "rs": 0.22
+                  "rs": 0.22,
+                  "kshlp": 0.07
             },
             "trstenik": {
                   "sns": 52.01,
@@ -3292,7 +3689,8 @@ saxony_anhalt: {
                   "vmsz": 0.15,
                   "spp": 0.23,
                   "sda": 0.09,
-                  "rs": 0.26
+                  "rs": 0.26,
+                  "kshlp": 0.07
             },
             "cicevac": {
                   "sns": 57.77,
@@ -3307,7 +3705,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.14,
                   "sda": 0.1,
-                  "rs": 0.2
+                  "rs": 0.2,
+                  "kshlp": 0.0
             },
             "kraljevo": {
                   "sns": 45.16,
@@ -3322,7 +3721,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.29,
                   "sda": 0.1,
-                  "rs": 0.34
+                  "rs": 0.34,
+                  "kshlp": 0.04
             },
             "vrnjacka_banja": {
                   "sns": 57.01,
@@ -3337,7 +3737,8 @@ saxony_anhalt: {
                   "vmsz": 0.07,
                   "spp": 0.27,
                   "sda": 0.07,
-                  "rs": 0.2
+                  "rs": 0.2,
+                  "kshlp": 0.04
             },
             "novi_pazar": {
                   "sns": 40.58,
@@ -3352,7 +3753,8 @@ saxony_anhalt: {
                   "vmsz": 0.05,
                   "spp": 21.53,
                   "sda": 19.87,
-                  "rs": 0.02
+                  "rs": 0.02,
+                  "kshlp": 0.04
             },
             "raska": {
                   "sns": 54.7,
@@ -3367,7 +3769,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.16,
                   "sda": 0.08,
-                  "rs": 0.22
+                  "rs": 0.22,
+                  "kshlp": 0.02
             },
             "tutin": {
                   "sns": 16.83,
@@ -3382,7 +3785,8 @@ saxony_anhalt: {
                   "vmsz": 0.02,
                   "spp": 21.78,
                   "sda": 50.94,
-                  "rs": 0.01
+                  "rs": 0.01,
+                  "kshlp": 0.01
             },
             "kragujevac": {
                   "sns": 44.03,
@@ -3397,7 +3801,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.28,
                   "sda": 0.08,
-                  "rs": 0.39
+                  "rs": 0.39,
+                  "kshlp": 0.02
             },
             "arandjelovac": {
                   "sns": 47.76,
@@ -3412,7 +3817,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.21,
                   "sda": 0.06,
-                  "rs": 0.27
+                  "rs": 0.27,
+                  "kshlp": 0.01
             },
             "batocina": {
                   "sns": 54.6,
@@ -3427,7 +3833,8 @@ saxony_anhalt: {
                   "vmsz": 0.25,
                   "spp": 0.4,
                   "sda": 0.11,
-                  "rs": 0.46
+                  "rs": 0.46,
+                  "kshlp": 0.02
             },
             "knic": {
                   "sns": 52.94,
@@ -3442,7 +3849,8 @@ saxony_anhalt: {
                   "vmsz": 0.36,
                   "spp": 0.22,
                   "sda": 0.12,
-                  "rs": 0.36
+                  "rs": 0.36,
+                  "kshlp": 0.06
             },
             "lapovo": {
                   "sns": 57.02,
@@ -3457,7 +3865,8 @@ saxony_anhalt: {
                   "vmsz": 0.18,
                   "spp": 0.18,
                   "sda": 0.08,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.08
             },
             "raca": {
                   "sns": 56.92,
@@ -3472,7 +3881,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.26,
                   "sda": 0.16,
-                  "rs": 0.32
+                  "rs": 0.32,
+                  "kshlp": 0.02
             },
             "topola": {
                   "sns": 50.69,
@@ -3487,7 +3897,8 @@ saxony_anhalt: {
                   "vmsz": 0.33,
                   "spp": 0.3,
                   "sda": 0.1,
-                  "rs": 0.4
+                  "rs": 0.4,
+                  "kshlp": 0.05
             },
             "bor": {
                   "sns": 45.48,
@@ -3502,7 +3913,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.27,
                   "sda": 0.04,
-                  "rs": 0.37
+                  "rs": 0.37,
+                  "kshlp": 0.04
             },
             "kladovo": {
                   "sns": 59.91,
@@ -3517,7 +3929,8 @@ saxony_anhalt: {
                   "vmsz": 0.04,
                   "spp": 0.07,
                   "sda": 0.0,
-                  "rs": 0.17
+                  "rs": 0.17,
+                  "kshlp": 0.03
             },
             "majdanpek": {
                   "sns": 59.31,
@@ -3532,7 +3945,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.14,
                   "sda": 0.03,
-                  "rs": 0.36
+                  "rs": 0.36,
+                  "kshlp": 0.01
             },
             "negotin": {
                   "sns": 64.24,
@@ -3547,7 +3961,8 @@ saxony_anhalt: {
                   "vmsz": 0.08,
                   "spp": 0.11,
                   "sda": 0.05,
-                  "rs": 0.16
+                  "rs": 0.16,
+                  "kshlp": 0.03
             },
             "pozarevac": {
                   "sns": 50.98,
@@ -3562,7 +3977,8 @@ saxony_anhalt: {
                   "vmsz": 0.1,
                   "spp": 0.23,
                   "sda": 0.04,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.03
             },
             "veliko_gradiste": {
                   "sns": 55.73,
@@ -3577,7 +3993,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.17,
                   "sda": 0.05,
-                  "rs": 0.31
+                  "rs": 0.31,
+                  "kshlp": 0.04
             },
             "golubac": {
                   "sns": 62.0,
@@ -3592,7 +4009,8 @@ saxony_anhalt: {
                   "vmsz": 0.13,
                   "spp": 0.11,
                   "sda": 0.02,
-                  "rs": 0.26
+                  "rs": 0.26,
+                  "kshlp": 0.04
             },
             "zabari": {
                   "sns": 63.97,
@@ -3607,7 +4025,8 @@ saxony_anhalt: {
                   "vmsz": 0.13,
                   "spp": 0.07,
                   "sda": 0.09,
-                  "rs": 0.13
+                  "rs": 0.13,
+                  "kshlp": 0.04
             },
             "zagubica": {
                   "sns": 68.22,
@@ -3622,7 +4041,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.26,
                   "sda": 0.06,
-                  "rs": 0.12
+                  "rs": 0.12,
+                  "kshlp": 0.0
             },
             "kucevo": {
                   "sns": 66.0,
@@ -3637,7 +4057,8 @@ saxony_anhalt: {
                   "vmsz": 0.04,
                   "spp": 0.04,
                   "sda": 0.09,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.04
             },
             "malo_crnice": {
                   "sns": 53.15,
@@ -3652,7 +4073,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.25,
                   "sda": 0.04,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.19
             },
             "petrovac_na_mlavi": {
                   "sns": 55.71,
@@ -3667,7 +4089,8 @@ saxony_anhalt: {
                   "vmsz": 0.79,
                   "spp": 0.17,
                   "sda": 0.04,
-                  "rs": 0.2
+                  "rs": 0.2,
+                  "kshlp": 0.02
             },
             "zajecar": {
                   "sns": 48.43,
@@ -3682,7 +4105,8 @@ saxony_anhalt: {
                   "vmsz": 0.08,
                   "spp": 0.15,
                   "sda": 0.04,
-                  "rs": 0.42
+                  "rs": 0.42,
+                  "kshlp": 0.02
             },
             "boljevac": {
                   "sns": 53.7,
@@ -3697,7 +4121,8 @@ saxony_anhalt: {
                   "vmsz": 0.09,
                   "spp": 0.06,
                   "sda": 0.09,
-                  "rs": 0.19
+                  "rs": 0.19,
+                  "kshlp": 0.08
             },
             "knjazevac": {
                   "sns": 58.94,
@@ -3712,7 +4137,8 @@ saxony_anhalt: {
                   "vmsz": 0.11,
                   "spp": 0.16,
                   "sda": 0.01,
-                  "rs": 0.39
+                  "rs": 0.39,
+                  "kshlp": 0.02
             },
             "sokobanja": {
                   "sns": 53.53,
@@ -3727,7 +4153,8 @@ saxony_anhalt: {
                   "vmsz": 0.26,
                   "spp": 0.18,
                   "sda": 0.05,
-                  "rs": 0.36
+                  "rs": 0.36,
+                  "kshlp": 0.0
             },
             "leskovac": {
                   "sns": 52.72,
@@ -3742,7 +4169,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.15,
                   "sda": 0.05,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.03
             },
             "bojnik": {
                   "sns": 78.06,
@@ -3757,7 +4185,8 @@ saxony_anhalt: {
                   "vmsz": 0.02,
                   "spp": 0.07,
                   "sda": 0.02,
-                  "rs": 0.18
+                  "rs": 0.18,
+                  "kshlp": 0.0
             },
             "vlasotince": {
                   "sns": 56.68,
@@ -3772,7 +4201,8 @@ saxony_anhalt: {
                   "vmsz": 0.49,
                   "spp": 0.49,
                   "sda": 0.23,
-                  "rs": 0.28
+                  "rs": 0.28,
+                  "kshlp": 0.01
             },
             "lebane": {
                   "sns": 63.49,
@@ -3787,7 +4217,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.08,
                   "sda": 0.03,
-                  "rs": 0.13
+                  "rs": 0.13,
+                  "kshlp": 0.05
             },
             "medvedja": {
                   "sns": 63.41,
@@ -3802,7 +4233,8 @@ saxony_anhalt: {
                   "vmsz": 0.0,
                   "spp": 0.19,
                   "sda": 0.16,
-                  "rs": 0.11
+                  "rs": 0.11,
+                  "kshlp": 3.82
             },
             "crna_trava": {
                   "sns": 75.7,
@@ -3817,7 +4249,8 @@ saxony_anhalt: {
                   "vmsz": 0.56,
                   "spp": 0.14,
                   "sda": 0.14,
-                  "rs": 0.0
+                  "rs": 0.0,
+                  "kshlp": 0.0
             },
             "nis": {
                   "sns": 41.55,
@@ -3832,7 +4265,8 @@ saxony_anhalt: {
                   "vmsz": 0.1,
                   "spp": 0.13,
                   "sda": 0.05,
-                  "rs": 0.58
+                  "rs": 0.58,
+                  "kshlp": 0.02
             },
             "aleksinac": {
                   "sns": 56.12,
@@ -3847,7 +4281,8 @@ saxony_anhalt: {
                   "vmsz": 0.12,
                   "spp": 0.18,
                   "sda": 0.08,
-                  "rs": 0.37
+                  "rs": 0.37,
+                  "kshlp": 0.03
             },
             "gadzin_han": {
                   "sns": 63.4,
@@ -3862,7 +4297,8 @@ saxony_anhalt: {
                   "vmsz": 0.14,
                   "spp": 0.21,
                   "sda": 0.14,
-                  "rs": 0.48
+                  "rs": 0.48,
+                  "kshlp": 0.05
             },
             "doljevac": {
                   "sns": 76.1,
@@ -3877,7 +4313,8 @@ saxony_anhalt: {
                   "vmsz": 0.07,
                   "spp": 0.09,
                   "sda": 0.05,
-                  "rs": 0.16
+                  "rs": 0.16,
+                  "kshlp": 0.0
             },
             "merosina": {
                   "sns": 68.19,
@@ -3892,7 +4329,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.12,
                   "sda": 0.1,
-                  "rs": 0.75
+                  "rs": 0.75,
+                  "kshlp": 0.01
             },
             "razanj": {
                   "sns": 68.86,
@@ -3907,7 +4345,8 @@ saxony_anhalt: {
                   "vmsz": 0.21,
                   "spp": 0.14,
                   "sda": 0.02,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.02
             },
             "svrljig": {
                   "sns": 58.31,
@@ -3922,7 +4361,8 @@ saxony_anhalt: {
                   "vmsz": 0.16,
                   "spp": 0.24,
                   "sda": 0.06,
-                  "rs": 0.26
+                  "rs": 0.26,
+                  "kshlp": 0.03
             },
             "pirot": {
                   "sns": 51.32,
@@ -3937,7 +4377,8 @@ saxony_anhalt: {
                   "vmsz": 0.09,
                   "spp": 0.14,
                   "sda": 0.06,
-                  "rs": 0.29
+                  "rs": 0.29,
+                  "kshlp": 0.03
             },
             "babusnica": {
                   "sns": 60.65,
@@ -3952,7 +4393,8 @@ saxony_anhalt: {
                   "vmsz": 0.09,
                   "spp": 0.14,
                   "sda": 0.11,
-                  "rs": 0.8
+                  "rs": 0.8,
+                  "kshlp": 0.08
             },
             "bela_palanka": {
                   "sns": 69.6,
@@ -3967,7 +4409,8 @@ saxony_anhalt: {
                   "vmsz": 0.07,
                   "spp": 0.23,
                   "sda": 0.07,
-                  "rs": 0.2
+                  "rs": 0.2,
+                  "kshlp": 0.03
             },
             "dimitrovgrad": {
                   "sns": 53.15,
@@ -3982,7 +4425,8 @@ saxony_anhalt: {
                   "vmsz": 0.13,
                   "spp": 0.22,
                   "sda": 0.15,
-                  "rs": 0.18
+                  "rs": 0.18,
+                  "kshlp": 0.05
             },
             "smederevo": {
                   "sns": 50.45,
@@ -3997,7 +4441,8 @@ saxony_anhalt: {
                   "vmsz": 0.38,
                   "spp": 0.24,
                   "sda": 0.12,
-                  "rs": 0.34
+                  "rs": 0.34,
+                  "kshlp": 0.04
             },
             "velika_plana": {
                   "sns": 54.48,
@@ -4012,7 +4457,8 @@ saxony_anhalt: {
                   "vmsz": 0.29,
                   "spp": 0.17,
                   "sda": 0.07,
-                  "rs": 0.3
+                  "rs": 0.3,
+                  "kshlp": 0.03
             },
             "smederevska_palanka": {
                   "sns": 54.71,
@@ -4027,7 +4473,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.18,
                   "sda": 0.04,
-                  "rs": 0.24
+                  "rs": 0.24,
+                  "kshlp": 0.03
             },
             "vranje": {
                   "sns": 55.83,
@@ -4042,7 +4489,8 @@ saxony_anhalt: {
                   "vmsz": 0.24,
                   "spp": 0.1,
                   "sda": 0.07,
-                  "rs": 0.25
+                  "rs": 0.25,
+                  "kshlp": 0.05
             },
             "bosilegrad": {
                   "sns": 76.16,
@@ -4057,7 +4505,8 @@ saxony_anhalt: {
                   "vmsz": 0.14,
                   "spp": 0.18,
                   "sda": 0.02,
-                  "rs": 0.05
+                  "rs": 0.05,
+                  "kshlp": 0.0
             },
             "bujanovac": {
                   "sns": 32.49,
@@ -4072,7 +4521,8 @@ saxony_anhalt: {
                   "vmsz": 0.02,
                   "spp": 2.28,
                   "sda": 0.12,
-                  "rs": 0.07
+                  "rs": 0.07,
+                  "kshlp": 45.41
             },
             "vladicin_han": {
                   "sns": 62.97,
@@ -4087,7 +4537,8 @@ saxony_anhalt: {
                   "vmsz": 0.32,
                   "spp": 0.13,
                   "sda": 0.12,
-                  "rs": 0.14
+                  "rs": 0.14,
+                  "kshlp": 0.01
             },
             "presevo": {
                   "sns": 11.65,
@@ -4102,7 +4553,8 @@ saxony_anhalt: {
                   "vmsz": 0.03,
                   "spp": 0.19,
                   "sda": 0.11,
-                  "rs": 0.08
+                  "rs": 0.08,
+                  "kshlp": 65.76
             },
             "surdulica": {
                   "sns": 38.98,
@@ -4117,7 +4569,8 @@ saxony_anhalt: {
                   "vmsz": 0.05,
                   "spp": 0.03,
                   "sda": 0.03,
-                  "rs": 0.08
+                  "rs": 0.08,
+                  "kshlp": 0.03
             },
             "trgoviste": {
                   "sns": 85.58,
@@ -4132,7 +4585,8 @@ saxony_anhalt: {
                   "vmsz": 0.06,
                   "spp": 0.06,
                   "sda": 0.0,
-                  "rs": 0.06
+                  "rs": 0.06,
+                  "kshlp": 0.0
             },
             "prokuplje": {
                   "sns": 58.86,
@@ -4147,7 +4601,8 @@ saxony_anhalt: {
                   "vmsz": 0.13,
                   "spp": 0.14,
                   "sda": 0.04,
-                  "rs": 0.19
+                  "rs": 0.19,
+                  "kshlp": 0.02
             },
             "blace": {
                   "sns": 60.34,
@@ -4162,7 +4617,8 @@ saxony_anhalt: {
                   "vmsz": 0.15,
                   "spp": 0.19,
                   "sda": 0.15,
-                  "rs": 0.21
+                  "rs": 0.21,
+                  "kshlp": 0.03
             },
             "zitoradja": {
                   "sns": 75.61,
@@ -4177,7 +4633,8 @@ saxony_anhalt: {
                   "vmsz": 0.44,
                   "spp": 0.09,
                   "sda": 0.08,
-                  "rs": 0.12
+                  "rs": 0.12,
+                  "kshlp": 0.02
             },
             "kursumlija": {
                   "sns": 60.58,
@@ -4192,25 +4649,28 @@ saxony_anhalt: {
                   "vmsz": 0.15,
                   "spp": 0.49,
                   "sda": 0.05,
-                  "rs": 0.31
-            },
-            "belgrade": {
-                  "sns": 37.46,
-                  "sps": 5.19,
-                  "srs": 1.21,
-                  "pes": 0.0,
-                  "nps": 0.0,
-                  "nada": 6.31,
-                  "misn": 6.58,
-                  "sl": 0.0,
-                  "spn": 34.37,
-                  "vmsz": 0.12,
-                  "spp": 0.16,
-                  "sda": 0.05,
-                  "rs": 0.27
+                  "rs": 0.31,
+                  "kshlp": 0.02
             }
       },
       "names": {
+            "barajevo": "barajevo",
+            "vozdovac": "vozdovac",
+            "vracar": "vracar",
+            "grocka": "grocka",
+            "zvezdara": "zvezdara",
+            "zemun": "zemun",
+            "lazarevac": "lazarevac",
+            "mladenovac": "mladenovac",
+            "novi_beograd": "novi beograd",
+            "obrenovac": "obrenovac",
+            "palilula": "palilula",
+            "rakovica": "rakovica",
+            "savski_venac": "savski venac",
+            "sopot": "sopot",
+            "stari_grad": "stari grad",
+            "surcin": "surcin",
+            "cukarica": "cukarica",
             "sombor": "sombor",
             "apatin": "apatin",
             "kula": "kula",
@@ -4354,10 +4814,9 @@ saxony_anhalt: {
             "prokuplje": "prokuplje",
             "blace": "blace",
             "zitoradja": "zitoradja",
-            "kursumlija": "kursumlija",
-            "belgrade": "Belgrade"
+            "kursumlija": "kursumlija"
       },
-      "label": "opštine (145)"
+      "label": "opštine (161)"
 },
   },
 

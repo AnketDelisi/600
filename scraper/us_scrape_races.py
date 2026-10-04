@@ -79,6 +79,23 @@ def strip_footnote(text):
     return re.sub(r"\[\d+\]", "", text).strip()
 
 
+def inc_status(incumbent, status=""):
+    """'running' | 'open' from the incumbent name + status text.
+
+    Open = retiring / term-limited / not seeking / lost renomination /
+    vacancy / new seat. An empty incumbent or an unrecognized status with a
+    named incumbent defaults to running (the common case).
+    """
+    s = ((incumbent or "") + " " + (status or "")).lower()
+    if any(w in s for w in ("retiring", "term-limited", "term limited",
+                            "not seeking", "lost renomination",
+                            "none (new seat)", "vacancy", "vacant")):
+        return "open"
+    if not (incumbent or "").strip():
+        return "open"
+    return "running"
+
+
 def clean_ratings(soup):
     """Ratings table -> list of row dicts.
 
@@ -185,6 +202,7 @@ def scrape_senate_or_gov(key):
             "pvi": pvi,
             "pvi_label": cells[col["pvi"]],
             "incumbent": incumbent,
+            "inc_status": inc_status(incumbent),
             "party": party,
             "last": last_res,
             "ratings": rating,
@@ -266,6 +284,7 @@ def scrape_house():
                 "pvi": pvi,
                 "pvi_label": pvi_label,
                 "incumbent": inc,
+                "inc_status": inc_status(inc, status),
                 "party": party,
                 "status": status,
                 "ratings": {},
@@ -299,6 +318,11 @@ def scrape_house():
             "ie": cells[col["ie"]],
             "sabato": cells[col["sabato"]],
         }
+        # the same table carries the seat's last result ("54.6% D"), which the
+        # main per-state tables do not: it feeds the last-result blend and the
+        # track-record-scaled personal-vote term for rated districts
+        if race.get("last") is None:
+            race["last"] = parse_last_result(cells[2])
     return races
 
 

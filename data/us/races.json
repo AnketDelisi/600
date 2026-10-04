@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-04T19:37:12Z",
+  "scraped_at": "2026-10-04T19:48:18Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -61,6 +61,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Tommy Tuberville(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 60.1,
@@ -77,6 +78,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Dan Sullivan",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 53.9,
@@ -93,6 +95,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Tom Cotton",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 66.53,
@@ -109,6 +112,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "John Hickenlooper",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 53.5,
@@ -125,6 +129,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Chris Coons",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 59.44,
@@ -141,6 +146,7 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Ashley Moody",
+        "inc_status": "running",
         "party": "R",
         "last": null,
         "ratings": {
@@ -154,6 +160,7 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Jon Ossoff",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 50.62,
@@ -170,6 +177,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Jim Risch",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 62.62,
@@ -186,6 +194,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Dick Durbin(retiring)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 54.93,
@@ -202,6 +211,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Joni Ernst(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 51.74,
@@ -218,6 +228,7 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Roger Marshall",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 53.22,
@@ -234,6 +245,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Mitch McConnell(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 57.76,
@@ -250,6 +262,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Bill Cassidy(lost renomination)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 59.32,
@@ -266,6 +279,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Susan Collins",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 50.98,
@@ -282,6 +296,7 @@
         "pvi": -14.0,
         "pvi_label": "D+14",
         "incumbent": "Ed Markey",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 66.15,
@@ -298,6 +313,7 @@
         "pvi": 0,
         "pvi_label": "EVEN",
         "incumbent": "Gary Peters(retiring)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 49.9,
@@ -314,6 +330,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Tina Smith(retiring)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 48.74,
@@ -330,6 +347,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Cindy Hyde-Smith",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 54.11,
@@ -346,6 +364,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Steve Daines(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 55.01,
@@ -362,6 +381,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Pete Ricketts",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 62.58,
@@ -378,6 +398,7 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Jeanne Shaheen(retiring)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 56.64,
@@ -394,6 +415,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Cory Booker",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 57.23,
@@ -410,6 +432,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Ben Ray Luján",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 51.73,
@@ -426,6 +449,7 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Thom Tillis(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 48.69,
@@ -442,6 +466,7 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Jon Husted",
+        "inc_status": "running",
         "party": "R",
         "last": null,
         "ratings": {
@@ -455,6 +480,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Alan Armstrong(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": null,
         "ratings": {
@@ -468,6 +494,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Jeff Merkley",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 56.91,
@@ -484,6 +511,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Jack Reed",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 66.48,
@@ -500,6 +528,7 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Darline Graham",
+        "inc_status": "running",
         "party": "R",
         "last": null,
         "ratings": {
@@ -513,6 +542,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Mike Rounds",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 65.74,
@@ -529,6 +559,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Bill Hagerty",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 62.2,
@@ -545,6 +576,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "John Cornyn(lost renomination)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 53.51,
@@ -561,6 +593,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Mark Warner",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 55.99,
@@ -577,6 +610,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Shelley Moore Capito",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 70.28,
@@ -593,6 +627,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Cynthia Lummis(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 72.85,
@@ -612,6 +647,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {}
@@ -622,12 +658,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Shomari Figures",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R(flip)",
           "ie": "Likely R(flip)",
           "sabato": "Lean R(flip)"
+        },
+        "last": {
+          "pct": 54.6,
+          "party": "D"
         }
       },
       {
@@ -636,6 +677,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Mike Rogers",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -646,6 +688,7 @@
         "pvi": 33.0,
         "pvi_label": "R+33",
         "incumbent": "Robert Aderholt",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -656,6 +699,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Dale Strong",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -666,6 +710,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Gary Palmer",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -676,6 +721,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Terri Sewell",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -686,12 +732,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Nick Begich III",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 51.3,
+          "party": "R"
         }
       },
       {
@@ -700,12 +751,17 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "David Schweikert",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Lean D(flip)",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 51.9,
+          "party": "R"
         }
       },
       {
@@ -714,12 +770,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Eli Crane",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 54.5,
+          "party": "R"
         }
       },
       {
@@ -728,6 +789,7 @@
         "pvi": -22.0,
         "pvi_label": "D+22",
         "incumbent": "Yassamin Ansari",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -738,6 +800,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Greg Stanton",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -748,12 +811,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Andy Biggs",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.4,
+          "party": "R"
         }
       },
       {
@@ -762,12 +830,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Juan Ciscomani",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 50.0,
+          "party": "R"
         }
       },
       {
@@ -776,6 +849,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Adelita Grijalva",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -786,12 +860,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Abraham Hamadeh",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 56.5,
+          "party": "R"
         }
       },
       {
@@ -800,6 +879,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Paul Gosar",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -810,6 +890,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Rick Crawford",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -820,12 +901,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "French Hill",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 58.9,
+          "party": "R"
         }
       },
       {
@@ -834,6 +920,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "Steve Womack",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -844,6 +931,7 @@
         "pvi": 20.0,
         "pvi_label": "R+20",
         "incumbent": "Bruce Westerman",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -854,6 +942,7 @@
         "pvi": -7.0,
         "pvi_label": "D+7",
         "incumbent": "James Gallagher",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {}
@@ -864,6 +953,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Jared Huffman",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -874,6 +964,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Ami BeraRedistricted from the6th district",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -884,6 +975,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Mike Thompson",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -894,12 +986,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Tom McClintock",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 61.8,
+          "party": "R"
         }
       },
       {
@@ -908,12 +1005,17 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Kevin KileyRedistricted from the3rd district",
+        "inc_status": "running",
         "party": null,
         "status": "",
         "ratings": {
           "cook": "Solid D(flip)",
           "ie": "Lean D(flip)",
           "sabato": "Likely D(flip)"
+        },
+        "last": {
+          "pct": 55.5,
+          "party": "R"
         }
       },
       {
@@ -922,6 +1024,7 @@
         "pvi": -7.0,
         "pvi_label": "D+7",
         "incumbent": "Doris Matsui",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -932,6 +1035,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "John Garamendi",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -942,6 +1046,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Josh Harder",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -952,6 +1057,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Mark DeSaulnier",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -962,6 +1068,7 @@
         "pvi": -36.0,
         "pvi_label": "D+36",
         "incumbent": "Nancy Pelosi",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring.Democratic hold.",
         "ratings": {}
@@ -972,6 +1079,7 @@
         "pvi": -39.0,
         "pvi_label": "D+39",
         "incumbent": "Lateefah Simon",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -982,12 +1090,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Adam Gray",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {
           "cook": "Lean D",
           "ie": "Tilt D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 50.0,
+          "party": "D"
         }
       },
       {
@@ -996,6 +1109,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "Aisha Wahab",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1006,6 +1120,7 @@
         "pvi": -26.0,
         "pvi_label": "D+26",
         "incumbent": "Kevin Mullin",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1016,6 +1131,7 @@
         "pvi": -25.0,
         "pvi_label": "D+25",
         "incumbent": "Sam Liccardo",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1026,6 +1142,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Ro Khanna",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1036,6 +1153,7 @@
         "pvi": -16.0,
         "pvi_label": "D+16",
         "incumbent": "Zoe Lofgren",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1046,6 +1164,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Jimmy Panetta",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1056,6 +1175,7 @@
         "pvi": 16.0,
         "pvi_label": "R+16",
         "incumbent": "Vince Fong",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {}
@@ -1066,12 +1186,17 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Jim Costa",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {
           "cook": "Likely D",
           "ie": "Solid D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 52.6,
+          "party": "D"
         }
       },
       {
@@ -1080,12 +1205,17 @@
         "pvi": -1.0,
         "pvi_label": "D+1",
         "incumbent": "David Valadao",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 53.4,
+          "party": "R"
         }
       },
       {
@@ -1094,6 +1224,7 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Jay Obernolte",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {}
@@ -1104,6 +1235,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Salud Carbajal",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1114,6 +1246,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Raul Ruiz",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1124,6 +1257,7 @@
         "pvi": -9.0,
         "pvi_label": "D+9",
         "incumbent": "Julia Brownley",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -1134,6 +1268,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "George T. Whitesides",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1144,6 +1279,7 @@
         "pvi": -14.0,
         "pvi_label": "D+14",
         "incumbent": "Judy Chu",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1154,6 +1290,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "Luz Rivas",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1164,6 +1301,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Laura Friedman",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1174,6 +1312,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Gil Cisneros",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1184,6 +1323,7 @@
         "pvi": -14.0,
         "pvi_label": "D+14",
         "incumbent": "Brad Sherman",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1194,6 +1334,7 @@
         "pvi": -7.0,
         "pvi_label": "D+7",
         "incumbent": "Pete Aguilar",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1204,6 +1345,7 @@
         "pvi": -28.0,
         "pvi_label": "D+28",
         "incumbent": "Jimmy Gomez",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1214,6 +1356,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Norma Torres",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1224,6 +1367,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Ted Lieu",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1234,6 +1378,7 @@
         "pvi": -33.0,
         "pvi_label": "D+33",
         "incumbent": "Sydney Kamlager-Dove",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1244,6 +1389,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {}
@@ -1254,6 +1400,7 @@
         "pvi": -7.0,
         "pvi_label": "D+7",
         "incumbent": "Mark Takano",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1264,6 +1411,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Young Kim",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {}
@@ -1274,6 +1422,7 @@
         "pvi": -9.0,
         "pvi_label": "D+9",
         "incumbent": "Linda SánchezRedistricted from the38th district",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1284,6 +1433,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Robert Garcia",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1294,6 +1444,7 @@
         "pvi": -27.0,
         "pvi_label": "D+27",
         "incumbent": "Maxine Waters",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1304,6 +1455,7 @@
         "pvi": -20.0,
         "pvi_label": "D+20",
         "incumbent": "Nanette Barragán",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1314,12 +1466,17 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Derek Tran",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 50.1,
+          "party": "D"
         }
       },
       {
@@ -1328,6 +1485,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Lou Correa",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1338,6 +1496,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Dave Min",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1348,12 +1507,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Darrell Issa",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Lean D(flip)",
           "ie": "Tilt D(flip)",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 59.3,
+          "party": "R"
         }
       },
       {
@@ -1362,6 +1526,7 @@
         "pvi": -7.0,
         "pvi_label": "D+7",
         "incumbent": "Mike Levin",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1372,6 +1537,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Scott Peters",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1382,6 +1548,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Sara Jacobs",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1392,6 +1559,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Juan Vargas",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1402,6 +1570,7 @@
         "pvi": -29.0,
         "pvi_label": "D+29",
         "incumbent": "Diana DeGette",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent lost renomination",
         "ratings": {}
@@ -1412,6 +1581,7 @@
         "pvi": -20.0,
         "pvi_label": "D+20",
         "incumbent": "Joe Neguse",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1422,12 +1592,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Jeff Hurd",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 50.8,
+          "party": "R"
         }
       },
       {
@@ -1436,12 +1611,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Lauren Boebert",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 53.6,
+          "party": "R"
         }
       },
       {
@@ -1450,12 +1630,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Jeff Crank",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
           "ie": "Tilt R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 54.7,
+          "party": "R"
         }
       },
       {
@@ -1464,6 +1649,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Jason Crow",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1474,6 +1660,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Brittany Pettersen",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1484,12 +1671,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Gabe Evans",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 49.0,
+          "party": "R"
         }
       },
       {
@@ -1498,6 +1690,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "John B. Larson",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent lost renomination",
         "ratings": {}
@@ -1508,6 +1701,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Joe Courtney",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1518,6 +1712,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Rosa DeLauro",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1528,6 +1723,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Jim Himes",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1538,6 +1734,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Jahana Hayes",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1548,6 +1745,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Sarah McBride",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1558,6 +1756,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Jimmy Patronis",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1568,12 +1767,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Neal Dunn",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 61.6,
+          "party": "R"
         }
       },
       {
@@ -1582,12 +1786,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Kat Cammack",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 61.6,
+          "party": "R"
         }
       },
       {
@@ -1596,12 +1805,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Aaron Bean",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 57.3,
+          "party": "R"
         }
       },
       {
@@ -1610,12 +1824,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "John Rutherford",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 63.1,
+          "party": "R"
         }
       },
       {
@@ -1624,6 +1843,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Randy Fine",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1634,12 +1854,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Cory Mills",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent lost renomination",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 56.5,
+          "party": "R"
         }
       },
       {
@@ -1648,12 +1873,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Mike Haridopolos",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 62.2,
+          "party": "R"
         }
       },
       {
@@ -1662,12 +1892,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Darren Soto",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R(flip)",
           "ie": "Likely R(flip)",
           "sabato": "Likely R(flip)"
+        },
+        "last": {
+          "pct": 55.1,
+          "party": "D"
         }
       },
       {
@@ -1676,6 +1911,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Maxwell Frost",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1686,12 +1922,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Daniel Webster",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.3,
+          "party": "R"
         }
       },
       {
@@ -1700,12 +1941,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Gus Bilirakis",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 71.0,
+          "party": "R"
         }
       },
       {
@@ -1714,12 +1960,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Anna Paulina Luna",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
           "ie": "Lean R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 54.8,
+          "party": "R"
         }
       },
       {
@@ -1728,12 +1979,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Kathy Castor",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 57.0,
+          "party": "D"
         }
       },
       {
@@ -1742,12 +1998,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Laurel Lee",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 56.2,
+          "party": "R"
         }
       },
       {
@@ -1756,12 +2017,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Vern Buchanan",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 59.5,
+          "party": "R"
         }
       },
       {
@@ -1770,6 +2036,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Greg Steube",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1780,12 +2047,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Scott Franklin",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 65.3,
+          "party": "R"
         }
       },
       {
@@ -1794,6 +2066,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Byron Donalds",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {}
@@ -1804,6 +2077,7 @@
         "pvi": -20.0,
         "pvi_label": "D+20",
         "incumbent": "Vacant",
+        "inc_status": "open",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -1814,12 +2088,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Brian Mast",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 61.8,
+          "party": "R"
         }
       },
       {
@@ -1828,13 +2107,15 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R(flip)",
           "sabato": "Lean R(flip)"
-        }
+        },
+        "last": null
       },
       {
         "state": "Florida",
@@ -1842,6 +2123,7 @@
         "pvi": -9.0,
         "pvi_label": "D+9",
         "incumbent": "Lois FrankelRedistricted from the22nd district",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1852,6 +2134,7 @@
         "pvi": -22.0,
         "pvi_label": "D+22",
         "incumbent": "Frederica Wilson",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -1862,12 +2145,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Jared MoskowitzRedistricted from the23rd district",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 52.4,
+          "party": "D"
         }
       },
       {
@@ -1876,12 +2164,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Mario Díaz-Balart",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 70.9,
+          "party": "R"
         }
       },
       {
@@ -1890,12 +2183,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "María Elvira Salazar",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
           "ie": "Lean R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 60.4,
+          "party": "R"
         }
       },
       {
@@ -1904,6 +2202,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Carlos A. Giménez",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1914,12 +2213,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Buddy Carter",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 62.0,
+          "party": "R"
         }
       },
       {
@@ -1928,6 +2232,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Sanford Bishop",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1938,6 +2243,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Brian Jack",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1948,6 +2254,7 @@
         "pvi": -27.0,
         "pvi_label": "D+27",
         "incumbent": "Hank Johnson",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1958,6 +2265,7 @@
         "pvi": -36.0,
         "pvi_label": "D+36",
         "incumbent": "Nikema Williams",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1968,6 +2276,7 @@
         "pvi": -25.0,
         "pvi_label": "D+25",
         "incumbent": "Lucy McBath",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1978,6 +2287,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Rich McCormick",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1988,6 +2298,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Austin Scott",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -1998,6 +2309,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Andrew Clyde",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2008,12 +2320,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Mike Collins",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 63.1,
+          "party": "R"
         }
       },
       {
@@ -2022,6 +2339,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Barry Loudermilk",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -2032,12 +2350,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Rick Allen",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.3,
+          "party": "R"
         }
       },
       {
@@ -2046,6 +2369,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Everton Blair",
+        "inc_status": "running",
         "party": "D",
         "status": "Blair lost the initial nomination for the full term; later elected to completeDavid Scott's unexpired term.",
         "ratings": {}
@@ -2056,6 +2380,7 @@
         "pvi": 19.0,
         "pvi_label": "R+19",
         "incumbent": "Clay Fuller",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2066,6 +2391,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Ed Case",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2076,6 +2402,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Jill Tokuda",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2086,6 +2413,7 @@
         "pvi": 22.0,
         "pvi_label": "R+22",
         "incumbent": "Russ Fulcher",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2096,6 +2424,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "Mike Simpson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2106,6 +2435,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Jonathan Jackson",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2116,6 +2446,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Robin Kelly",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {}
@@ -2126,6 +2457,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Delia Ramirez",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2136,6 +2468,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Chuy García",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -2146,6 +2479,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "Mike Quigley",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2156,6 +2490,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Sean Casten",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2166,6 +2501,7 @@
         "pvi": -34.0,
         "pvi_label": "D+34",
         "incumbent": "Danny Davis",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -2176,6 +2512,7 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Raja Krishnamoorthi",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {}
@@ -2186,6 +2523,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "Jan Schakowsky",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -2196,6 +2534,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Brad Schneider",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2206,6 +2545,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Bill Foster",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2216,6 +2556,7 @@
         "pvi": 22.0,
         "pvi_label": "R+22",
         "incumbent": "Mike Bost",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2226,6 +2567,7 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Nikki Budzinski",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2236,6 +2578,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Lauren Underwood",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2246,6 +2589,7 @@
         "pvi": 20.0,
         "pvi_label": "R+20",
         "incumbent": "Mary Miller",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2256,6 +2600,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Darin LaHood",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2266,12 +2611,17 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Eric Sorensen",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid D",
           "ie": "Solid D",
           "sabato": "Safe D"
+        },
+        "last": {
+          "pct": 54.4,
+          "party": "D"
         }
       },
       {
@@ -2280,12 +2630,17 @@
         "pvi": -1.0,
         "pvi_label": "D+1",
         "incumbent": "Frank J. Mrvan",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 53.4,
+          "party": "D"
         }
       },
       {
@@ -2294,6 +2649,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "Rudy Yakym",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2304,6 +2660,7 @@
         "pvi": 16.0,
         "pvi_label": "R+16",
         "incumbent": "Marlin Stutzman",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2314,6 +2671,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Jim Baird",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2324,12 +2682,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Victoria Spartz",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 56.6,
+          "party": "R"
         }
       },
       {
@@ -2338,6 +2701,7 @@
         "pvi": 16.0,
         "pvi_label": "R+16",
         "incumbent": "Jefferson Shreve",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2348,6 +2712,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "André Carson",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2358,6 +2723,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Mark Messmer",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2368,6 +2734,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Erin Houchin",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2378,12 +2745,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Mariannette Miller-Meeks",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt D(flip)",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 50.1,
+          "party": "R"
         }
       },
       {
@@ -2392,12 +2764,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Ashley Hinson",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Lean R",
           "ie": "Tilt R",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 57.1,
+          "party": "R"
         }
       },
       {
@@ -2406,12 +2783,17 @@
         "pvi": 2.0,
         "pvi_label": "R+2",
         "incumbent": "Zach Nunn",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt D(flip)",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 51.9,
+          "party": "R"
         }
       },
       {
@@ -2420,6 +2802,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Randy Feenstra",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {}
@@ -2430,6 +2813,7 @@
         "pvi": 16.0,
         "pvi_label": "R+16",
         "incumbent": "Tracey Mann",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2440,12 +2824,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Derek Schmidt",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 57.1,
+          "party": "R"
         }
       },
       {
@@ -2454,12 +2843,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Sharice Davids",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid D",
           "ie": "Solid D",
           "sabato": "Safe D"
+        },
+        "last": {
+          "pct": 53.4,
+          "party": "D"
         }
       },
       {
@@ -2468,6 +2862,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Ron Estes",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2478,6 +2873,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "James Comer",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2488,6 +2884,7 @@
         "pvi": 20.0,
         "pvi_label": "R+20",
         "incumbent": "Brett Guthrie",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2498,6 +2895,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Morgan McGarvey",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2508,6 +2906,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Thomas Massie",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent lost renomination",
         "ratings": {}
@@ -2518,6 +2917,7 @@
         "pvi": 32.0,
         "pvi_label": "R+32",
         "incumbent": "Hal Rogers",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2528,12 +2928,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Andy Barr",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Likely R",
           "ie": "Lean R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 63.0,
+          "party": "R"
         }
       },
       {
@@ -2542,6 +2947,7 @@
         "pvi": 20.0,
         "pvi_label": "R+20",
         "incumbent": "Steve Scalise",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent running",
         "ratings": {}
@@ -2552,6 +2958,7 @@
         "pvi": -25.0,
         "pvi_label": "D+25",
         "incumbent": "Troy Carter",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent running",
         "ratings": {}
@@ -2562,6 +2969,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Clay Higgins",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent running",
         "ratings": {}
@@ -2572,6 +2980,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Mike Johnson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent running",
         "ratings": {}
@@ -2582,6 +2991,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Julia Letlow",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {}
@@ -2592,6 +3002,7 @@
         "pvi": 16.0,
         "pvi_label": "R+16",
         "incumbent": "Cleo Fields",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring to run forLouisiana State Senate",
         "ratings": {}
@@ -2602,6 +3013,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Chellie Pingree",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2612,12 +3024,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Jared Golden",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Likely R(flip)",
           "ie": "Likely R(flip)",
           "sabato": "Lean R(flip)"
+        },
+        "last": {
+          "pct": 50.3,
+          "party": "D"
         }
       },
       {
@@ -2626,12 +3043,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Andy Harris",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.4,
+          "party": "R"
         }
       },
       {
@@ -2640,6 +3062,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Johnny Olszewski",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2650,6 +3073,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Sarah Elfreth",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2660,6 +3084,7 @@
         "pvi": -39.0,
         "pvi_label": "D+39",
         "incumbent": "Glenn Ivey",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2670,6 +3095,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Steny Hoyer",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -2680,6 +3106,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "April McClain Delaney",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2690,6 +3117,7 @@
         "pvi": -31.0,
         "pvi_label": "D+31",
         "incumbent": "Kweisi Mfume",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2700,6 +3128,7 @@
         "pvi": -30.0,
         "pvi_label": "D+30",
         "incumbent": "Jamie Raskin",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2710,6 +3139,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Richard Neal",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2720,6 +3150,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Jim McGovern",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -2730,6 +3161,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Lori Trahan",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2740,6 +3172,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Jake Auchincloss",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2750,6 +3183,7 @@
         "pvi": -24.0,
         "pvi_label": "D+24",
         "incumbent": "Katherine Clark",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -2760,6 +3194,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Seth Moulton",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {}
@@ -2770,6 +3205,7 @@
         "pvi": -34.0,
         "pvi_label": "D+34",
         "incumbent": "Ayanna Pressley",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -2780,6 +3216,7 @@
         "pvi": -15.0,
         "pvi_label": "D+15",
         "incumbent": "Stephen Lynch",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2790,6 +3227,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Bill Keating",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2800,12 +3238,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Jack Bergman",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.2,
+          "party": "R"
         }
       },
       {
@@ -2814,6 +3257,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "John Moolenaar",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2824,12 +3268,17 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Hillary Scholten",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid D",
           "ie": "Likely D",
           "sabato": "Safe D"
+        },
+        "last": {
+          "pct": 53.7,
+          "party": "D"
         }
       },
       {
@@ -2838,12 +3287,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Bill Huizenga",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
           "ie": "Tilt R",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 55.1,
+          "party": "R"
         }
       },
       {
@@ -2852,6 +3306,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "Tim Walberg",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2862,6 +3317,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Debbie Dingell",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2872,12 +3328,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Tom Barrett",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 50.3,
+          "party": "R"
         }
       },
       {
@@ -2886,12 +3347,17 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Kristen McDonald Rivet",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Solid D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 51.2,
+          "party": "D"
         }
       },
       {
@@ -2900,6 +3366,7 @@
         "pvi": 16.0,
         "pvi_label": "R+16",
         "incumbent": "Lisa McClain",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2910,12 +3377,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "John James",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 51.1,
+          "party": "R"
         }
       },
       {
@@ -2924,6 +3396,7 @@
         "pvi": -9.0,
         "pvi_label": "D+9",
         "incumbent": "Haley Stevens",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {}
@@ -2934,6 +3407,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Rashida Tlaib",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2944,6 +3418,7 @@
         "pvi": -22.0,
         "pvi_label": "D+22",
         "incumbent": "Shri Thanedar",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent lost renomination",
         "ratings": {}
@@ -2954,12 +3429,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Brad Finstad",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 58.6,
+          "party": "R"
         }
       },
       {
@@ -2968,12 +3448,17 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Angie Craig",
+        "inc_status": "open",
         "party": null,
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 55.6,
+          "party": "D"
         }
       },
       {
@@ -2982,6 +3467,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Kelly Morrison",
+        "inc_status": "running",
         "party": null,
         "status": "Incumbent renominated",
         "ratings": {}
@@ -2992,6 +3478,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Betty McCollum",
+        "inc_status": "running",
         "party": null,
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3002,6 +3489,7 @@
         "pvi": -32.0,
         "pvi_label": "D+32",
         "incumbent": "Ilhan Omar",
+        "inc_status": "running",
         "party": null,
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3012,6 +3500,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Tom Emmer",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3022,6 +3511,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Michelle Fischbach",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3032,12 +3522,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Pete Stauber",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 58.0,
+          "party": "R"
         }
       },
       {
@@ -3046,6 +3541,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Trent Kelly",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3056,6 +3552,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Bennie Thompson",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3066,6 +3563,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Michael Guest",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3076,6 +3574,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Mike Ezell",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3086,6 +3585,7 @@
         "pvi": -29.0,
         "pvi_label": "D+29",
         "incumbent": "Wesley Bell",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3096,12 +3596,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Ann Wagner",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Solid R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 54.5,
+          "party": "R"
         }
       },
       {
@@ -3110,6 +3615,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "Bob Onder",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3120,6 +3626,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Mark Alford",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3130,6 +3637,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Emanuel Cleaver",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3140,6 +3648,7 @@
         "pvi": 19.0,
         "pvi_label": "R+19",
         "incumbent": "Sam Graves",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -3150,6 +3659,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Eric Burlison",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3160,6 +3670,7 @@
         "pvi": 27.0,
         "pvi_label": "R+27",
         "incumbent": "Jason Smith",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3170,12 +3681,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Ryan Zinke",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Lean R",
           "ie": "Lean R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 52.3,
+          "party": "R"
         }
       },
       {
@@ -3184,6 +3700,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Troy Downing",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3194,12 +3711,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Mike Flood",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.1,
+          "party": "R"
         }
       },
       {
@@ -3208,12 +3730,17 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Don Bacon",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Lean D(flip)",
           "ie": "Tilt D(flip)",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 50.9,
+          "party": "R"
         }
       },
       {
@@ -3222,6 +3749,7 @@
         "pvi": 27.0,
         "pvi_label": "R+27",
         "incumbent": "Adrian Smith",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3232,12 +3760,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Dina Titus",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Lean D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 52.0,
+          "party": "D"
         }
       },
       {
@@ -3246,12 +3779,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Mark Amodei",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 55.0,
+          "party": "R"
         }
       },
       {
@@ -3260,12 +3798,17 @@
         "pvi": -1.0,
         "pvi_label": "D+1",
         "incumbent": "Susie Lee",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D",
           "ie": "Lean D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 51.4,
+          "party": "D"
         }
       },
       {
@@ -3274,12 +3817,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Steven Horsford",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 52.7,
+          "party": "D"
         }
       },
       {
@@ -3288,12 +3836,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Chris Pappas",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Likely D",
           "ie": "Lean D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 54.0,
+          "party": "D"
         }
       },
       {
@@ -3302,12 +3855,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Maggie Goodlander",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 53.0,
+          "party": "D"
         }
       },
       {
@@ -3316,6 +3874,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Donald Norcross",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3326,12 +3885,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Jeff Van Drew",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 58.0,
+          "party": "R"
         }
       },
       {
@@ -3340,6 +3904,7 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Herb Conaway",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3350,6 +3915,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Chris Smith",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3360,6 +3926,7 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Josh Gottheimer",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3370,6 +3937,7 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Frank Pallone",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3380,12 +3948,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Thomas Kean Jr.",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D(flip)",
           "ie": "Tilt D(flip)",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 51.8,
+          "party": "R"
         }
       },
       {
@@ -3394,6 +3967,7 @@
         "pvi": -15.0,
         "pvi_label": "D+15",
         "incumbent": "Rob Menendez",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3404,12 +3978,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Nellie Pou",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 50.8,
+          "party": "D"
         }
       },
       {
@@ -3418,6 +3997,7 @@
         "pvi": -27.0,
         "pvi_label": "D+27",
         "incumbent": "LaMonica McIver",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3428,6 +4008,7 @@
         "pvi": -5.0,
         "pvi_label": "D+5",
         "incumbent": "Analilia Mejia",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3438,6 +4019,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Bonnie Watson Coleman",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -3448,6 +4030,7 @@
         "pvi": -7.0,
         "pvi_label": "D+7",
         "incumbent": "Melanie Stansbury",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3458,12 +4041,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Gabe Vasquez",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D",
           "ie": "Tilt D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 52.1,
+          "party": "D"
         }
       },
       {
@@ -3472,6 +4060,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Teresa Leger Fernandez",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3482,12 +4071,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Nick LaLota",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 55.2,
+          "party": "R"
         }
       },
       {
@@ -3496,12 +4090,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Andrew Garbarino",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.8,
+          "party": "R"
         }
       },
       {
@@ -3510,12 +4109,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Tom Suozzi",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D",
           "ie": "Lean D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 51.8,
+          "party": "D"
         }
       },
       {
@@ -3524,12 +4128,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Laura Gillen",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D",
           "ie": "Tilt D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 51.1,
+          "party": "D"
         }
       },
       {
@@ -3538,6 +4147,7 @@
         "pvi": -24.0,
         "pvi_label": "D+24",
         "incumbent": "Gregory Meeks",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3548,6 +4158,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Grace Meng",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3558,6 +4169,7 @@
         "pvi": -25.0,
         "pvi_label": "D+25",
         "incumbent": "Nydia Velázquez",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -3568,6 +4180,7 @@
         "pvi": -24.0,
         "pvi_label": "D+24",
         "incumbent": "Hakeem Jeffries",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3578,6 +4191,7 @@
         "pvi": -22.0,
         "pvi_label": "D+22",
         "incumbent": "Yvette Clarke",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3588,6 +4202,7 @@
         "pvi": -32.0,
         "pvi_label": "D+32",
         "incumbent": "Dan Goldman",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent lost renomination",
         "ratings": {}
@@ -3598,6 +4213,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Nicole Malliotakis",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3608,6 +4224,7 @@
         "pvi": -33.0,
         "pvi_label": "D+33",
         "incumbent": "Jerry Nadler",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -3618,6 +4235,7 @@
         "pvi": -32.0,
         "pvi_label": "D+32",
         "incumbent": "Adriano Espaillat",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent lost renomination",
         "ratings": {}
@@ -3628,6 +4246,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "Alexandria Ocasio-Cortez",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3638,6 +4257,7 @@
         "pvi": -27.0,
         "pvi_label": "D+27",
         "incumbent": "Ritchie Torres",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3648,6 +4268,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "George Latimer",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3658,12 +4279,17 @@
         "pvi": -1.0,
         "pvi_label": "D+1",
         "incumbent": "Mike Lawler",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 52.2,
+          "party": "R"
         }
       },
       {
@@ -3672,6 +4298,7 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Pat Ryan",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3682,12 +4309,17 @@
         "pvi": -1.0,
         "pvi_label": "D+1",
         "incumbent": "Josh Riley",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 51.1,
+          "party": "D"
         }
       },
       {
@@ -3696,6 +4328,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Paul Tonko",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3706,12 +4339,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Elise Stefanik",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 62.1,
+          "party": "R"
         }
       },
       {
@@ -3720,6 +4358,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "John Mannion",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3730,12 +4369,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Nick Langworthy",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 65.8,
+          "party": "R"
         }
       },
       {
@@ -3744,6 +4388,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Claudia Tenney",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3754,6 +4399,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Joseph Morelle",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3764,6 +4410,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Tim Kennedy",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3774,12 +4421,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Don Davis",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R(flip)",
           "ie": "Tilt R(flip)",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 49.5,
+          "party": "D"
         }
       },
       {
@@ -3788,6 +4440,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Deborah Ross",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3798,12 +4451,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Greg Murphy",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 77.4,
+          "party": "R"
         }
       },
       {
@@ -3812,6 +4470,7 @@
         "pvi": -23.0,
         "pvi_label": "D+23",
         "incumbent": "Valerie Foushee",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3822,12 +4481,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Virginia Foxx",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.5,
+          "party": "R"
         }
       },
       {
@@ -3836,12 +4500,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Addison McDowell",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 69.2,
+          "party": "R"
         }
       },
       {
@@ -3850,12 +4519,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "David Rouzer",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 58.6,
+          "party": "R"
         }
       },
       {
@@ -3864,12 +4538,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Mark Harris",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.6,
+          "party": "R"
         }
       },
       {
@@ -3878,12 +4557,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Richard Hudson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 56.3,
+          "party": "R"
         }
       },
       {
@@ -3892,12 +4576,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Pat Harrigan",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 57.5,
+          "party": "R"
         }
       },
       {
@@ -3906,12 +4595,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Chuck Edwards",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Tossup",
           "ie": "Lean R",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 56.8,
+          "party": "R"
         }
       },
       {
@@ -3920,6 +4614,7 @@
         "pvi": -24.0,
         "pvi_label": "D+24",
         "incumbent": "Alma Adams",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3930,12 +4625,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Brad Knott",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 58.6,
+          "party": "R"
         }
       },
       {
@@ -3944,12 +4644,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Tim Moore",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 58.1,
+          "party": "R"
         }
       },
       {
@@ -3958,6 +4663,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Julie Fedorchak",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3968,12 +4674,17 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Greg Landsman",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D",
           "ie": "Tilt D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 54.6,
+          "party": "D"
         }
       },
       {
@@ -3982,6 +4693,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "David Taylor",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -3992,6 +4704,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Joyce Beatty",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4002,6 +4715,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Jim Jordan",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4012,6 +4726,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Bob Latta",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4022,6 +4737,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Michael Rulli",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4032,12 +4748,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Max Miller",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 51.1,
+          "party": "R"
         }
       },
       {
@@ -4046,12 +4767,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Warren Davidson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 62.8,
+          "party": "R"
         }
       },
       {
@@ -4060,12 +4786,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Marcy Kaptur",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R(flip)",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 48.3,
+          "party": "D"
         }
       },
       {
@@ -4074,12 +4805,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Mike Turner",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Solid R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 57.6,
+          "party": "R"
         }
       },
       {
@@ -4088,6 +4824,7 @@
         "pvi": -28.0,
         "pvi_label": "D+28",
         "incumbent": "Shontel Brown",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4098,6 +4835,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Troy Balderson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4108,12 +4846,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Emilia Sykes",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Solid D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 51.1,
+          "party": "D"
         }
       },
       {
@@ -4122,6 +4865,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "David Joyce",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4132,12 +4876,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Mike Carey",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 56.5,
+          "party": "R"
         }
       },
       {
@@ -4146,12 +4895,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Kevin Hern",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.4,
+          "party": "R"
         }
       },
       {
@@ -4160,6 +4914,7 @@
         "pvi": 28.0,
         "pvi_label": "R+28",
         "incumbent": "Josh Brecheen",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4170,6 +4925,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Frank Lucas",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4180,6 +4936,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Tom Cole",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4190,12 +4947,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Stephanie Bice",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.7,
+          "party": "R"
         }
       },
       {
@@ -4204,6 +4966,7 @@
         "pvi": -20.0,
         "pvi_label": "D+20",
         "incumbent": "Suzanne Bonamici",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4214,6 +4977,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Cliff Bentz",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4224,6 +4988,7 @@
         "pvi": -24.0,
         "pvi_label": "D+24",
         "incumbent": "Maxine Dexter",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4234,6 +4999,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Val Hoyle",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4244,12 +5010,17 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Janelle Bynum",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid D",
           "ie": "Solid D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 47.7,
+          "party": "D"
         }
       },
       {
@@ -4258,6 +5029,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Andrea Salinas",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4268,12 +5040,17 @@
         "pvi": -1.0,
         "pvi_label": "D+1",
         "incumbent": "Brian Fitzpatrick",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Lean R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 56.4,
+          "party": "R"
         }
       },
       {
@@ -4282,6 +5059,7 @@
         "pvi": -19.0,
         "pvi_label": "D+19",
         "incumbent": "Brendan Boyle",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4292,6 +5070,7 @@
         "pvi": -40.0,
         "pvi_label": "D+40",
         "incumbent": "Dwight Evans",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -4302,6 +5081,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Madeleine Dean",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4312,6 +5092,7 @@
         "pvi": -15.0,
         "pvi_label": "D+15",
         "incumbent": "Mary Gay Scanlon",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4322,6 +5103,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Chrissy Houlahan",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4332,12 +5114,17 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Ryan Mackenzie",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 50.5,
+          "party": "R"
         }
       },
       {
@@ -4346,12 +5133,17 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "Rob Bresnahan",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 50.8,
+          "party": "R"
         }
       },
       {
@@ -4360,6 +5152,7 @@
         "pvi": 19.0,
         "pvi_label": "R+19",
         "incumbent": "Dan Meuser",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4370,12 +5163,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Scott Perry",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 50.6,
+          "party": "R"
         }
       },
       {
@@ -4384,12 +5182,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Lloyd Smucker",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 62.9,
+          "party": "R"
         }
       },
       {
@@ -4398,6 +5201,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Summer Lee",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4408,6 +5212,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "John Joyce",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4418,6 +5223,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Guy Reschenthaler",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4428,6 +5234,7 @@
         "pvi": 19.0,
         "pvi_label": "R+19",
         "incumbent": "Glenn Thompson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4438,6 +5245,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Mike Kelly",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4448,6 +5256,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Chris Deluzio",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4458,6 +5267,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Gabe Amo",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4468,6 +5278,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Seth Magaziner",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4478,12 +5289,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Nancy Mace",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 58.3,
+          "party": "R"
         }
       },
       {
@@ -4492,12 +5308,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Joe Wilson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.5,
+          "party": "R"
         }
       },
       {
@@ -4506,6 +5327,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Sheri Biggs",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4516,6 +5338,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "William Timmons",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4526,12 +5349,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Ralph Norman",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 59.5,
+          "party": "R"
         }
       },
       {
@@ -4540,6 +5368,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Jim Clyburn",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4550,6 +5379,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Russell Fry",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4560,6 +5390,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Dusty Johnson",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {}
@@ -4570,6 +5401,7 @@
         "pvi": 29.0,
         "pvi_label": "R+29",
         "incumbent": "Diana Harshbarger",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4580,6 +5412,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Tim Burchett",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4590,6 +5423,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Chuck Fleischmann",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4600,6 +5434,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Scott DesJarlais",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4610,12 +5445,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Andy Ogles",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent lost renomination",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 56.8,
+          "party": "R"
         }
       },
       {
@@ -4624,6 +5464,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "John Rose",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for governor",
         "ratings": {}
@@ -4634,12 +5475,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Matt Van Epps",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 53.9,
+          "party": "R"
         }
       },
       {
@@ -4648,6 +5494,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "David Kustoff",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4658,12 +5505,17 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "Steve Cohen",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R(flip)",
           "ie": "Solid R(flip)",
           "sabato": "Safe R(flip)"
+        },
+        "last": {
+          "pct": 71.3,
+          "party": "D"
         }
       },
       {
@@ -4672,6 +5524,7 @@
         "pvi": 24.0,
         "pvi_label": "R+24",
         "incumbent": "Nathaniel Moran",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4682,12 +5535,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Dan Crenshaw",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent lost renomination",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 65.7,
+          "party": "R"
         }
       },
       {
@@ -4696,6 +5554,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Keith Self",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4706,6 +5565,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Pat Fallon",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4716,12 +5576,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Lance Gooden",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 64.1,
+          "party": "R"
         }
       },
       {
@@ -4730,6 +5595,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Jake Ellzey",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4740,6 +5606,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Lizzie Fletcher",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4750,6 +5617,7 @@
         "pvi": 13.0,
         "pvi_label": "R+13",
         "incumbent": "Morgan Luttrell",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -4760,13 +5628,15 @@
         "pvi": 9.0,
         "pvi_label": "R+9",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {
           "cook": "Likely R(flip)",
           "ie": "Likely R(flip)",
           "sabato": "Likely R(flip)"
-        }
+        },
+        "last": null
       },
       {
         "state": "Texas",
@@ -4774,12 +5644,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Michael McCaul",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 63.6,
+          "party": "R"
         }
       },
       {
@@ -4788,6 +5663,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "August Pfluger",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4798,6 +5674,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Craig Goldman",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4808,6 +5685,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Ronny Jackson",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4818,6 +5696,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Randy Weber",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4828,12 +5707,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Monica De La Cruz",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 57.1,
+          "party": "R"
         }
       },
       {
@@ -4842,6 +5726,7 @@
         "pvi": -11.0,
         "pvi_label": "D+11",
         "incumbent": "Veronica Escobar",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4852,12 +5737,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Pete Sessions",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 66.4,
+          "party": "R"
         }
       },
       {
@@ -4866,6 +5756,7 @@
         "pvi": -29.0,
         "pvi_label": "D+29",
         "incumbent": "Christian Menefee",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4876,6 +5767,7 @@
         "pvi": 25.0,
         "pvi_label": "R+25",
         "incumbent": "Jodey Arrington",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {}
@@ -4886,6 +5778,7 @@
         "pvi": -16.0,
         "pvi_label": "D+16",
         "incumbent": "Joaquin Castro",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4896,12 +5789,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Chip Roy",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for Texas attorney general",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 61.9,
+          "party": "R"
         }
       },
       {
@@ -4910,12 +5808,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Troy Nehls",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 62.1,
+          "party": "R"
         }
       },
       {
@@ -4924,12 +5827,17 @@
         "pvi": 7.0,
         "pvi_label": "R+7",
         "incumbent": "Vacant",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 62.3,
+          "party": "R"
         }
       },
       {
@@ -4938,12 +5846,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Beth Van Duyne",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.3,
+          "party": "R"
         }
       },
       {
@@ -4952,6 +5865,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Roger Williams",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4962,6 +5876,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Brandon Gill",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -4972,12 +5887,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Michael Cloud",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 66.0,
+          "party": "R"
         }
       },
       {
@@ -4986,12 +5906,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Henry Cuellar",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D",
           "ie": "Tilt D",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 52.8,
+          "party": "D"
         }
       },
       {
@@ -5000,6 +5925,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Sylvia Garcia",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5010,6 +5936,7 @@
         "pvi": -25.0,
         "pvi_label": "D+25",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {}
@@ -5020,12 +5947,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "John Carter",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 64.5,
+          "party": "R"
         }
       },
       {
@@ -5034,13 +5966,15 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {
           "cook": "Solid R(flip)",
           "ie": "Solid R(flip)",
           "sabato": "Safe R(flip)"
-        }
+        },
+        "last": null
       },
       {
         "state": "Texas",
@@ -5048,6 +5982,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Jasmine CrockettRedistricted from the30th district",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring torun for U.S. Senate.Democratic loss.",
         "ratings": {}
@@ -5058,12 +5993,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Vicente Gonzalez",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 51.3,
+          "party": "D"
         }
       },
       {
@@ -5072,13 +6012,15 @@
         "pvi": 4.0,
         "pvi_label": "R+4",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {
           "cook": "Lean R(flip)",
           "ie": "Lean R(flip)",
           "sabato": "Lean R(flip)"
-        }
+        },
+        "last": null
       },
       {
         "state": "Texas",
@@ -5086,6 +6028,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Brian Babin",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5096,6 +6039,7 @@
         "pvi": -30.0,
         "pvi_label": "D+30",
         "incumbent": "Lloyd Doggett",
+        "inc_status": "open",
         "party": "D",
         "status": "Incumbent retiring.Democratic loss.",
         "ratings": {}
@@ -5106,12 +6050,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Wesley Hunt",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 62.7,
+          "party": "R"
         }
       },
       {
@@ -5120,6 +6069,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "None (new seat)",
+        "inc_status": "open",
         "party": null,
         "status": "",
         "ratings": {}
@@ -5130,6 +6080,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Blake MooreRedistricted from the1st district",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5140,6 +6091,7 @@
         "pvi": 21.0,
         "pvi_label": "R+21",
         "incumbent": "Celeste MaloyRedistricted from the2nd district",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5150,6 +6102,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Burgess Owens",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring.Republican loss.",
         "ratings": {}
@@ -5160,6 +6113,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Becca Balint",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5170,12 +6124,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Rob Wittman",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
           "ie": "Lean R",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 56.4,
+          "party": "R"
         }
       },
       {
@@ -5184,12 +6143,17 @@
         "pvi": 0,
         "pvi_label": "",
         "incumbent": "Jen Kiggans",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Lean D(flip)"
+        },
+        "last": {
+          "pct": 50.8,
+          "party": "R"
         }
       },
       {
@@ -5198,6 +6162,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "Bobby Scott",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5208,6 +6173,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Jennifer McClellan",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5218,12 +6184,17 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "John McGuire",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Lean R"
+        },
+        "last": {
+          "pct": 57.5,
+          "party": "R"
         }
       },
       {
@@ -5232,6 +6203,7 @@
         "pvi": 12.0,
         "pvi_label": "R+12",
         "incumbent": "Ben Cline",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5242,12 +6214,17 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Eugene Vindman",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
           "ie": "Likely D",
           "sabato": "Likely D"
+        },
+        "last": {
+          "pct": 51.3,
+          "party": "D"
         }
       },
       {
@@ -5256,6 +6233,7 @@
         "pvi": -26.0,
         "pvi_label": "D+26",
         "incumbent": "Don Beyer",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5266,6 +6244,7 @@
         "pvi": 22.0,
         "pvi_label": "R+22",
         "incumbent": "Morgan Griffith",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5276,6 +6255,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Suhas Subramanyam",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5286,6 +6266,7 @@
         "pvi": -18.0,
         "pvi_label": "D+18",
         "incumbent": "James Walkinshaw",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5296,6 +6277,7 @@
         "pvi": -15.0,
         "pvi_label": "D+15",
         "incumbent": "Suzan DelBene",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5306,6 +6288,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Rick Larsen",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5316,12 +6299,17 @@
         "pvi": 2.0,
         "pvi_label": "R+2",
         "incumbent": "Marie Gluesenkamp Perez",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Lean D"
+        },
+        "last": {
+          "pct": 51.7,
+          "party": "D"
         }
       },
       {
@@ -5330,12 +6318,17 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Dan Newhouse",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 98.2,
+          "party": "R"
         }
       },
       {
@@ -5344,12 +6337,17 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Michael Baumgartner",
+        "inc_status": "running",
         "party": "R",
         "status": "",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 60.6,
+          "party": "R"
         }
       },
       {
@@ -5358,6 +6356,7 @@
         "pvi": -10.0,
         "pvi_label": "D+10",
         "incumbent": "Emily Randall",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5368,6 +6367,7 @@
         "pvi": -39.0,
         "pvi_label": "D+39",
         "incumbent": "Pramila Jayapal",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5378,6 +6378,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Kim Schrier",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5388,6 +6389,7 @@
         "pvi": -22.0,
         "pvi_label": "D+22",
         "incumbent": "Adam Smith",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5398,6 +6400,7 @@
         "pvi": -9.0,
         "pvi_label": "D+9",
         "incumbent": "Marilyn Strickland",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5408,6 +6411,7 @@
         "pvi": 22.0,
         "pvi_label": "R+22",
         "incumbent": "Carol Miller",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5418,6 +6422,7 @@
         "pvi": 20.0,
         "pvi_label": "R+20",
         "incumbent": "Riley Moore",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5428,12 +6433,17 @@
         "pvi": 2.0,
         "pvi_label": "R+2",
         "incumbent": "Bryan Steil",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean R",
           "ie": "Likely R",
           "sabato": "Likely R"
+        },
+        "last": {
+          "pct": 54.1,
+          "party": "R"
         }
       },
       {
@@ -5442,6 +6452,7 @@
         "pvi": -21.0,
         "pvi_label": "D+21",
         "incumbent": "Mark Pocan",
+        "inc_status": "running",
         "party": "D",
         "status": "",
         "ratings": {}
@@ -5452,12 +6463,17 @@
         "pvi": 3.0,
         "pvi_label": "R+3",
         "incumbent": "Derrick Van Orden",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
           "sabato": "Tossup"
+        },
+        "last": {
+          "pct": 51.4,
+          "party": "R"
         }
       },
       {
@@ -5466,6 +6482,7 @@
         "pvi": -26.0,
         "pvi_label": "D+26",
         "incumbent": "Gwen Moore",
+        "inc_status": "running",
         "party": "D",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5476,6 +6493,7 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Scott Fitzgerald",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {}
@@ -5486,12 +6504,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Glenn Grothman",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 61.2,
+          "party": "R"
         }
       },
       {
@@ -5500,12 +6523,17 @@
         "pvi": 11.0,
         "pvi_label": "R+11",
         "incumbent": "Tom Tiffany",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring to run forgovernor",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 63.6,
+          "party": "R"
         }
       },
       {
@@ -5514,12 +6542,17 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Tony Wied",
+        "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
           "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 57.3,
+          "party": "R"
         }
       },
       {
@@ -5528,6 +6561,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Harriet Hageman",
+        "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {}
@@ -5539,6 +6573,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Kay Ivey(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 66.91,
@@ -5555,6 +6590,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Mike Dunleavy(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 50.29,
@@ -5571,6 +6607,7 @@
         "pvi": 2.0,
         "pvi_label": "R+2",
         "incumbent": "Katie Hobbs",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 50.32,
@@ -5587,6 +6624,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Sarah Huckabee Sanders",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 62.96,
@@ -5603,6 +6641,7 @@
         "pvi": -12.0,
         "pvi_label": "D+12",
         "incumbent": "Gavin Newsom(term-limited)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 59.18,
@@ -5619,6 +6658,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "Jared Polis(term-limited)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 58.53,
@@ -5635,6 +6675,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Ned Lamont",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 55.97,
@@ -5651,6 +6692,7 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Ron DeSantis(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 59.37,
@@ -5667,6 +6709,7 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Brian Kemp(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 53.41,
@@ -5683,6 +6726,7 @@
         "pvi": -13.0,
         "pvi_label": "D+13",
         "incumbent": "Josh Green",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 63.21,
@@ -5699,6 +6743,7 @@
         "pvi": 18.0,
         "pvi_label": "R+18",
         "incumbent": "Brad Little",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 60.52,
@@ -5715,6 +6760,7 @@
         "pvi": -6.0,
         "pvi_label": "D+6",
         "incumbent": "JB Pritzker",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 54.91,
@@ -5731,6 +6777,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Kim Reynolds(retiring)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 58.04,
@@ -5747,6 +6794,7 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Laura Kelly(term-limited)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 49.54,
@@ -5763,6 +6811,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Janet Mills(term-limited)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 55.69,
@@ -5779,6 +6828,7 @@
         "pvi": -15.0,
         "pvi_label": "D+15",
         "incumbent": "Wes Moore",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 64.53,
@@ -5795,6 +6845,7 @@
         "pvi": -14.0,
         "pvi_label": "D+14",
         "incumbent": "Maura Healey",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 63.74,
@@ -5811,6 +6862,7 @@
         "pvi": 0,
         "pvi_label": "EVEN",
         "incumbent": "Gretchen Whitmer(term-limited)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 54.47,
@@ -5827,6 +6879,7 @@
         "pvi": -3.0,
         "pvi_label": "D+3",
         "incumbent": "Tim Walz(retiring)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 52.27,
@@ -5843,6 +6896,7 @@
         "pvi": 10.0,
         "pvi_label": "R+10",
         "incumbent": "Jim Pillen",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 59.74,
@@ -5859,6 +6913,7 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Joe Lombardo",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 48.81,
@@ -5875,6 +6930,7 @@
         "pvi": -2.0,
         "pvi_label": "D+2",
         "incumbent": "Kelly Ayotte",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 53.64,
@@ -5891,6 +6947,7 @@
         "pvi": -4.0,
         "pvi_label": "D+4",
         "incumbent": "Michelle Lujan Grisham(term-limited)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 51.97,
@@ -5907,6 +6964,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Kathy Hochul",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 53.12,
@@ -5923,6 +6981,7 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Mike DeWine(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 62.41,
@@ -5939,6 +6998,7 @@
         "pvi": 17.0,
         "pvi_label": "R+17",
         "incumbent": "Kevin Stitt(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 55.45,
@@ -5955,6 +7015,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Tina Kotek",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 46.96,
@@ -5971,6 +7032,7 @@
         "pvi": 1.0,
         "pvi_label": "R+1",
         "incumbent": "Josh Shapiro",
+        "inc_status": "running",
         "party": "D",
         "last": {
           "pct": 56.49,
@@ -5987,6 +7049,7 @@
         "pvi": -8.0,
         "pvi_label": "D+8",
         "incumbent": "Dan McKee(lost renomination)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 57.92,
@@ -6003,6 +7066,7 @@
         "pvi": 8.0,
         "pvi_label": "R+8",
         "incumbent": "Henry McMaster(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 58.04,
@@ -6019,6 +7083,7 @@
         "pvi": 15.0,
         "pvi_label": "R+15",
         "incumbent": "Larry Rhoden",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 61.98,
@@ -6035,6 +7100,7 @@
         "pvi": 14.0,
         "pvi_label": "R+14",
         "incumbent": "Bill Lee(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 64.91,
@@ -6051,6 +7117,7 @@
         "pvi": 6.0,
         "pvi_label": "R+6",
         "incumbent": "Greg Abbott",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 54.76,
@@ -6067,6 +7134,7 @@
         "pvi": -17.0,
         "pvi_label": "D+17",
         "incumbent": "Phil Scott",
+        "inc_status": "running",
         "party": "R",
         "last": {
           "pct": 73.43,
@@ -6083,6 +7151,7 @@
         "pvi": 0,
         "pvi_label": "EVEN",
         "incumbent": "Tony Evers(retiring)",
+        "inc_status": "open",
         "party": "D",
         "last": {
           "pct": 51.15,
@@ -6099,6 +7168,7 @@
         "pvi": 23.0,
         "pvi_label": "R+23",
         "incumbent": "Mark Gordon(term-limited)",
+        "inc_status": "open",
         "party": "R",
         "last": {
           "pct": 74.07,

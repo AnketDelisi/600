@@ -311,6 +311,9 @@ def main():
     },
     map: {
       svg: 'img/spain.svg',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds)
+      swingMethod: 'geometric',
       selector: 'id',
       districtThreshold: true,    // 3% applies per constituency, not nationally
       districts: @@districts@@,

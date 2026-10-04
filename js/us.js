@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004m";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004m";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004m";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004n";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004n";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004n";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -459,73 +459,37 @@ function raceDetailHTML(race) {
   </div>`;
 }
 
-// Download the current map as a PNG: serialise the live SVG (its fills are
-// inline; strokes come from the page CSS, so the key rules are injected into
-// the clone), draw it on a canvas with a title line and a canvas-drawn
-// legend, then save.
+// Download the current map as a PNG - just the map: the live SVG is
+// serialised (fills are inline; the stroke rules from the page CSS are
+// injected into the clone), drawn on a 2x canvas over the paper background
+// and saved. No title or legend decoration.
 function captureMap() {
   const svg = document.querySelector(".map-svg");
   if (!svg) return;
   const geo = state.geo;
   const W = geo.w, H = geo.h;
-  const pad = 26, headH = 58, legH = 46, scale = 2;
+  const scale = 2;
   const c = document.createElement("canvas");
-  c.width = (W + pad * 2) * scale;
-  c.height = (H + headH + legH + pad * 2) * scale;
+  c.width = W * scale;
+  c.height = H * scale;
   const ctx = c.getContext("2d");
   ctx.scale(scale, scale);
   ctx.fillStyle = "#FBF8F1";
-  ctx.fillRect(0, 0, W + pad * 2, H + headH + legH + pad * 2);
-  ctx.fillStyle = "#1A1A1A";
-  ctx.font = '900 22px Archivo,Arial,sans-serif';
-  const chamber = US_LABELS[state.chamber];
-  ctx.fillText(`${chamber} map — 600 model`, pad, 36);
-  ctx.font = '700 12px Archivo,Arial,sans-serif';
-  ctx.fillStyle = "#777";
-  const stamp = state.forecast && state.forecast.generated
-    ? new Date(state.forecast.generated).toUTCString().slice(0, 16) : "";
-  ctx.fillText(`favoured party, intensity = win chance · ${stamp}`, pad, 52);
-
+  ctx.fillRect(0, 0, W, H);
   const clone = svg.cloneNode(true);
   clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
   clone.setAttribute("width", W);
   clone.setAttribute("height", H);
   const css = document.createElementNS("http://www.w3.org/2000/svg", "style");
-  css.textContent = ".st{stroke:#fff;stroke-width:0.6}.dist{stroke:#fff;stroke-width:0.4}"
+  css.textContent = ".st{stroke:#fff;stroke-width:0.6}"
+    + ".dist{stroke:#fff;stroke-width:0.4}"
     + ".sub{stroke:#1A1A1A;stroke-width:1;fill:none;opacity:0.55}"
-    + ".land{fill:#EFE9DE;stroke:#fff;stroke-width:0.6}"
-    + ".st.focus,.dist.focus{stroke:#1A1A1A}";
+    + ".land{fill:#EFE9DE;stroke:#fff;stroke-width:0.6}";
   clone.insertBefore(css, clone.firstChild);
   const data = new XMLSerializer().serializeToString(clone);
   const img = new Image();
   img.onload = () => {
-    ctx.drawImage(img, pad, headH, W, H);
-    // legend: gradient + tossup / no race / independent swatches
-    const ly = headH + H + 24;
-    const gw = 260;
-    for (let i = 0; i <= 40; i++) {
-      ctx.fillStyle = raceColor(i * 2.5);
-      ctx.fillRect(pad + 96 + (i / 40) * gw, ly - 9, gw / 40 + 1, 12);
-    }
-    ctx.strokeStyle = "#D8D0BF";
-    ctx.strokeRect(pad + 96, ly - 9, gw, 12);
-    ctx.fillStyle = "#1A1A1A";
-    ctx.font = '800 11px Archivo,Arial,sans-serif';
-    ctx.fillText("Democratic win chance", pad, ly);
-    ctx.fillText("0%", pad + 96 + gw + 6, ly);
-    ctx.fillStyle = "#777";
-    ctx.fillText("100%", pad + 96 + gw + 30, ly);
-    const sw = (x, col, label) => {
-      ctx.fillStyle = col;
-      ctx.fillRect(x, ly - 9, 12, 12);
-      ctx.strokeStyle = "#D8D0BF";
-      ctx.strokeRect(x, ly - 9, 12, 12);
-      ctx.fillStyle = "#777";
-      ctx.fillText(label, x + 18, ly);
-    };
-    sw(pad + 96 + gw + 74, C_TOSSUP, "tossup");
-    sw(pad + 96 + gw + 142, C_GRAY, "no race");
-    sw(pad + 96 + gw + 214, C_I, "independent");
+    ctx.drawImage(img, 0, 0, W, H);
     c.toBlob((b) => {
       const a = document.createElement("a");
       a.href = URL.createObjectURL(b);

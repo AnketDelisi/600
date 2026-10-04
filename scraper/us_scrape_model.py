@@ -9,11 +9,13 @@ Pipeline per race:
      exist), blended with the last election result (70% for held seats, 40%
      for open seats — retiring/term-limited incumbents take their personal
      vote with them, so the structural PVI dominates).
-  2. Rating band: the strongest race rating (Cook, then Inside Elections,
-     then Sabato) sets a direction + strength BAND (Safe >15, Likely 7.5-15,
-     Lean 2.5-7.5, Tossup <2.5, per theoelections.com); the fundamentals prior
-     is clamped inside that band so safe seats reach realistic extremes while
-     competitive races stay competitive.
+  2. Rating band: the consensus of the three race ratings (Cook, Inside
+     Elections, Sabato) as published on Wikipedia — the median rater's band
+     with all three, the average with two — sets a direction + strength BAND
+     (Safe >15, Likely 7.5-15, Lean 2.5-7.5, Tossup <2.5, per
+     theoelections.com); the fundamentals prior is clamped inside that band
+     so safe seats reach realistic extremes while competitive races stay
+     competitive.
 3. Polling blend (when a race has an aggregate/simple poll average):
      margin = 0.65 * poll_margin + 0.35 * prior_margin. Races with a serious
      independent on the ballot (Nebraska/Idaho/South Dakota/Montana Senate,
@@ -134,6 +136,49 @@ def rating_margin(ratings):
     return None
 
 
+def consensus_band(ratings):
+    """Rating consensus as a margin band.
+
+    The three raters disagree in about a third of rated races (House 50/144,
+    mean band-center spread 6.7 pts), and taking the first available (always
+    Cook) ignored the other two entirely. With all three, use the MEDIAN
+    rater's band (robust to one outlier, keeps the rating vocabulary's
+    asymmetry); with two, average their centers and half-widths.
+    """
+    bands = []
+    for key in RATING_ORDER:
+        b = rating_band((ratings or {}).get(key))
+        if b is not None:
+            bands.append(b)
+    if not bands:
+        return None
+    if len(bands) == 1:
+        return bands[0]
+    if len(bands) == 2:
+        c = (bands[0][2] + bands[1][2]) / 2
+        h = ((bands[0][1] - bands[0][0]) + (bands[1][1] - bands[1][0])) / 4
+        return (c - h, c + h, c)
+    bands.sort(key=lambda b: b[2])
+    return bands[1]
+
+
+def band_label(center):
+    """The rating word for a band center (consensus display)."""
+    if center >= 15:
+        return "Solid D"
+    if center >= 7.5:
+        return "Likely D"
+    if center >= 2.5:
+        return "Lean D"
+    if center > -2.5:
+        return "Tossup"
+    if center > -7.5:
+        return "Lean R"
+    if center > -15:
+        return "Likely R"
+    return "Solid R"
+
+
 def pvi_margin(pvi):
     """Fundamentals prior from PVI (PVI positive leans Republican).
 
@@ -216,7 +261,7 @@ def fundamentals_margin(race, chamber, apply_inc=True):
 
 
 def final_margin(race, polls, chamber):
-    band = rating_band(next((v for v in ((race.get("ratings") or {}).get(k) for k in RATING_ORDER) if v), None))
+    band = consensus_band(race.get("ratings"))
     # polled races: the polls already carry the incumbent's standing, so the
     # prior drops the personal-vote term (no double-count)
     rm = fundamentals_margin(race, chamber, apply_inc=(polls is None))
@@ -237,14 +282,6 @@ def lean(m):
     if m > -7.5: return "Lean R"
     if m > -15: return "Likely R"
     return "Solid R"
-
-
-def best_rating(race):
-    ratings = race.get("ratings") or {}
-    for key in RATING_ORDER:
-        if ratings.get(key):
-            return ratings[key]
-    return None
 
 
 def lean_from(leader, margin_abs):
@@ -302,8 +339,8 @@ def run(chamber, races, poll_map, env_margin):
         names[label_key] = nm
         polls_used[label_key] = polls
         # polled independent races: the polls embed the environment, so use
-        # the small rated weight; otherwise the rating presence decides
-        rated[label_key] = True if polled_ind else (best_rating(r) is not None)
+        # the small rated weight; otherwise the rating consensus decides
+        rated[label_key] = True if polled_ind else (consensus_band(r.get("ratings")) is not None)
 
     def adj_margin(sh, swing, swing_party):
         """Leader-minus-runner margin (positive = leader ahead) after applying
@@ -398,12 +435,14 @@ def run(chamber, races, poll_map, env_margin):
         leader = keys[0]
         margin = round(margin, 1)
         nm = names[label_key]
+        cb = consensus_band(r.get("ratings"))
         out_races.append({
             "state": r["state"].replace("_", " "),
             "district": r.get("district", ""),
             "incumbent": (r.get("incumbent") or "").split("(")[0].strip(),
             "party": r.get("party"),
-            "rating": best_rating(r),
+            "rating": band_label(cb[2]) if cb else None,
+            "ratings": r.get("ratings"),
             "lean": lean_from(leader, margin),
             "leader": leader,
             "margin": margin,

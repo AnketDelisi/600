@@ -50,6 +50,18 @@ jobs:
           python scraper/scrape_uk.py
           python scraper/scrape_nz.py
 
+      # The US midterms page (us/index.html) has its own pipeline: races ->
+      # per-race polling -> the in-house model. It hits ~70 Wikipedia pages,
+      # so it runs as a separate step that cannot block the country data
+      # update if a US article changes layout (the races scraper asserts on
+      # the parsed counts).
+      - name: Scrape US midterms
+        continue-on-error: true
+        run: |
+          python scraper/us_scrape_races.py
+          python scraper/us_scrape_polls.py
+          python scraper/us_scrape_model.py
+
       - name: Commit and push to main
         run: |
           git config user.name "600 bot"

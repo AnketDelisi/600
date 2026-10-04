@@ -38,13 +38,11 @@ RACE_ID_MAP = {
     "Ohio": "2026_United_States_Senate_special_election_in_Ohio",
 }
 
-# House races with real multi-candidate polling worth scraping (the model is
-# otherwise poll-less for the House and leans on ratings + PVI). Alaska's
-# at-large seat is a ranked-choice race with independents on the ballot.
-HOUSE_POLL_RACES = {
-    "Alaska at-large":
-        "2026_United_States_House_of_Representatives_election_in_Alaska",
-}
+# House races: district-level polling comes from the per-state articles
+# ("... elections in <State>", singular "election" for single-district
+# states), whose "District N" sections carry the same matchup tables.
+SINGLE_DISTRICT = {"Alaska", "Delaware", "North Dakota", "South Dakota",
+                   "Vermont", "Wyoming"}
 
 
 def fetch(url):
@@ -163,14 +161,15 @@ def nominees(soup):
     return out
 
 
-def parse_aggregate(soup):
+def parse_aggregate(soup, tables=None):
     """Read the latest general-election 'Aggregate polls' table -> dict or None.
 
     A qualifying table has candidate headers annotated with party letters and
     an 'Average' data row. The latest such table in the article wins.
     """
     best = None
-    for tbl in soup.find_all("table", class_="wikitable"):
+    for tbl in (tables if tables is not None
+                else soup.find_all("table", class_="wikitable")):
         rows = tbl.find_all("tr")
         if len(rows) < 4:
             continue
@@ -208,7 +207,7 @@ def parse_aggregate(soup):
     return best
 
 
-def parse_direct(soup):
+def parse_direct(soup, tables=None):
     """Average of the latest 5 polls of the most current matchup table.
 
     Wikipedia articles can hold several tables (a stale Democrat-vs-
@@ -217,7 +216,8 @@ def parse_direct(soup):
     wins, and the 5 newest polls by date are averaged.
     """
     best = None
-    for tbl in soup.find_all("table", class_="wikitable"):
+    for tbl in (tables if tables is not None
+                else soup.find_all("table", class_="wikitable")):
         rows = tbl.find_all("tr")
         if len(rows) < 4:
             continue
@@ -257,11 +257,12 @@ def parse_direct(soup):
     return best[1] if best else None
 
 
-def parse_individual(soup):
+def parse_individual(soup, tables=None):
     """Individual polls from the most current matchup table (newest poll
     date wins, same rule as parse_direct), newest polls first."""
     best = None
-    for tbl in soup.find_all("table", class_="wikitable"):
+    for tbl in (tables if tables is not None
+                else soup.find_all("table", class_="wikitable")):
         rows = tbl.find_all("tr")
         if len(rows) < 4:
             continue
@@ -333,11 +334,87 @@ def race_url(chamber, race):
         tmpl = RACE_ID_MAP.get(key.split("_")[0])
         return "https://en.wikipedia.org/wiki/" + (
             tmpl or "2026_United_States_Senate_election_in_" + key)
-    if chamber == "governor":
-        return ("https://en.wikipedia.org/wiki/2026_" + key
-                + "_gubernatorial_election")
-    label = race["state"].replace("_", " ") + " " + race.get("district", "")
-    return "https://en.wikipedia.org/wiki/" + HOUSE_POLL_RACES[label]
+    return ("https://en.wikipedia.org/wiki/2026_" + key
+            + "_gubernatorial_election")
+
+
+def header_names(tables):
+    """Candidate names per party from the first qualifying table's header.
+
+    The main-candidate column per party is chosen the same way party_cols
+    does, so a multi-candidate header maps to the right names.
+    """
+    for tbl in tables:
+        rows = tbl.find_all("tr")
+        if len(rows) < 4:
+            continue
+        header = [c.get_text(" ", strip=True).replace("\u200b", "")
+                  for c in rows[0].find_all(["th", "td"])]
+        cols = party_cols(header, rows)
+        if cols is None:
+            continue
+        out = {}
+        for party, i in cols.items():
+            nm = clean_name(re.sub(r"\s*\((D|R|I)\)\s*$", "", header[i]))
+            if nm:
+                out[party.lower()] = nm
+        if out:
+            return out
+    return {}
+
+
+def scrape_house_states():
+    """District polling from every state's 2026 House article.
+
+    Walks the document in order, tracking the current 'District N' heading,
+    and parses each district's matchup tables with the same newest-table
+    logic as the Senate/Governor races. Only districts with at least three
+    clean two-way/three-way polls produce an entry.
+    """
+    base = json.loads((OUTPUT_DIR / "races.json").read_text(encoding="utf-8"))
+    states = sorted({r["state"] for r in base["races"]["house"]})
+    results = {}
+    for state in states:
+        key = state.replace(" ", "_")
+        kind = "election" if state in SINGLE_DISTRICT else "elections"
+        url = ("https://en.wikipedia.org/wiki/2026_United_States_House_of_"
+               "Representatives_%s_in_%s" % (kind, key))
+        soup = fetch(url)
+        if soup is None:
+            print("  %-14s no article" % state)
+            continue
+        by_district = {}
+        # single-district states have no "District N" heading: the whole
+        # article is the at-large race (Alaska, Delaware, ...)
+        cur = "at-large" if state in SINGLE_DISTRICT else None
+        for el in soup.find_all(["h2", "h3", "h4", "table"]):
+            if el.name != "table":
+                txt = el.get_text(" ", strip=True)
+                m = re.match(r"District\s+(\d+)", txt, re.I)
+                if m:
+                    cur = m.group(1)
+                elif re.match(r"At[\s\u2011-]*large", txt, re.I):
+                    cur = "at-large"
+                continue
+            if cur is None or "wikitable" not in (el.get("class") or []):
+                continue
+            by_district.setdefault(cur, []).append(el)
+        found = 0
+        for dist, tbls in by_district.items():
+            entry = parse_direct(soup, tbls)
+            if entry is None:
+                continue
+            ind = parse_individual(soup, tbls)
+            if ind:
+                entry["polls"] = ind
+            names = header_names(tbls)
+            if names:
+                entry["names"] = names
+            label = "%s %s" % (state, dist)
+            results[label] = entry
+            found += 1
+        print("  %-14s districts with polls: %d" % (state, found))
+    return results
 
 
 def scrape_races(chamber):
@@ -345,10 +422,6 @@ def scrape_races(chamber):
     results = {}
     for race in base["races"][chamber]:
         label = race["state"].replace("_", " ")
-        if chamber == "house":
-            label += " " + race["district"]
-            if label not in HOUSE_POLL_RACES:
-                continue
         res = scrape_race(chamber, race, race_url(chamber, race))
         results[label] = res
         print(f"  {label}: {res}")
@@ -361,8 +434,8 @@ def main():
     senate = scrape_races("senate")
     print("Governor...")
     governor = scrape_races("governor")
-    print("House (curated list)...")
-    house = scrape_races("house")
+    print("House (per-state district polling)...")
+    house = scrape_house_states()
     out = {
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "senate": senate,

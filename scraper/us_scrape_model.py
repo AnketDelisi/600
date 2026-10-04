@@ -26,9 +26,9 @@ Pipeline per race:
      probability softmax(share/beta) — for two sides this is exactly the
      previous logistic((margin + S)/beta). Races without a Democrat get the
      national shock only. Chamber seat tallies count Democrats, Republicans
-     and independents separately across 20k simulated nights; majority
-     probabilities require a party to reach the threshold on its own (an
-     independent win counts for neither side — conservative for Democrats).
+     and independents separately across 20k simulated nights; independent
+     wins are counted with the Democratic caucus (as the Senate independents
+     caucus with them), so a party's majority probability includes them.
      Per-race win probabilities are reported at the swing mean.
 
 Chamber majority thresholds: Senate 50 (current D-caucus 47 vs R 53),
@@ -332,7 +332,7 @@ def run(chamber, races, poll_map, env_margin):
                     else:
                         iw += 1
                     break
-        seatz_d[i] = not_up_d + dw
+        seatz_d[i] = not_up_d + dw + iw   # independents caucus with the Democrats
         seatz_r[i] = not_up_r + rw
         seatz_i[i] = iw
 
@@ -383,10 +383,11 @@ def run(chamber, races, poll_map, env_margin):
         rep_share = sum(1 for s in seatz_r if s >= need) / N_SIMS
     expected = sum(seatz_d) / N_SIMS
     expected_i = sum(seatz_i) / N_SIMS
+    expected_r = sum(seatz_r) / N_SIMS
     res = {
         "races": out_races,
         "expected_d_seats": round(expected, 1),
-        "expected_r_seats": round(total - expected - expected_i, 1),
+        "expected_r_seats": round(expected_r, 1),
         "expected_i_seats": round(expected_i, 1),
         "majority": {
             "dem_pct": round(100 * dem_share, 1),
@@ -396,8 +397,7 @@ def run(chamber, races, poll_map, env_margin):
     }
     if chamber == "governor":
         res["total_d_governors"] = round(expected + GOV_NOT_UP["d"], 1)
-        res["total_r_governors"] = round(
-            (total - expected - expected_i) + GOV_NOT_UP["r"], 1)
+        res["total_r_governors"] = round(expected_r + GOV_NOT_UP["r"], 1)
     return res
 
 

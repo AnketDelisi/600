@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T13:49:05Z",
+  "generated": "2026-10-04T14:10:50Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -2957,49 +2957,45 @@
         }
       }
     ],
-    "expected_d_seats": 51.6,
+    "expected_d_seats": 52.6,
     "expected_r_seats": 47.4,
     "expected_i_seats": 1.1,
     "majority": {
-      "dem_pct": 68.0,
+      "dem_pct": 82.6,
       "rep_pct": 8.8
     },
     "distribution_buckets": [
       {
-        "seats": 43,
-        "pct": 0.1
-      },
-      {
         "seats": 45,
-        "pct": 0.8
+        "pct": 0.2
       },
       {
         "seats": 47,
-        "pct": 4.5
+        "pct": 1.4
       },
       {
         "seats": 49,
-        "pct": 14.2
+        "pct": 7.3
       },
       {
         "seats": 51,
-        "pct": 27.8
+        "pct": 21.3
       },
       {
         "seats": 53,
-        "pct": 30.8
+        "pct": 33.3
       },
       {
         "seats": 55,
-        "pct": 17.6
+        "pct": 26.8
       },
       {
         "seats": 57,
-        "pct": 3.7
+        "pct": 8.8
       },
       {
         "seats": 59,
-        "pct": 0.2
+        "pct": 1.0
       }
     ]
   },
@@ -3361,6 +3357,52 @@
         "rep_name": null,
         "ind_name": null,
         "polls": null
+      },
+      {
+        "state": "Vermont",
+        "district": "at-large",
+        "incumbent": "Becca Balint",
+        "party": "D",
+        "rating": null,
+        "lean": "Solid D",
+        "leader": "D",
+        "margin": 37.6,
+        "dem_pct": 100.0,
+        "rep_pct": 0.0,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 62.0,
+          "rep": 27.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 66.0,
+              "rep": 30.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "July 15–20, 2026",
+              "dem": 63.0,
+              "rep": 25.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "June 18–23, 2026",
+              "dem": 57.0,
+              "rep": 26.0
+            }
+          ],
+          "names": {
+            "d": "Becca Balint",
+            "r": "Gerald Malloy"
+          }
+        }
       },
       {
         "state": "California",
@@ -4284,23 +4326,6 @@
         "state": "Texas",
         "district": "29",
         "incumbent": "Sylvia Garcia",
-        "party": "D",
-        "rating": null,
-        "lean": "Solid D",
-        "leader": "D",
-        "margin": 26.9,
-        "dem_pct": 99.7,
-        "rep_pct": 0.3,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Vermont",
-        "district": "at-large",
-        "incumbent": "Becca Balint",
         "party": "D",
         "rating": null,
         "lean": "Solid D",
@@ -5488,6 +5513,82 @@
         "polls": null
       },
       {
+        "state": "New Hampshire",
+        "district": "2",
+        "incumbent": "Maggie Goodlander",
+        "party": "D",
+        "rating": "Solid D",
+        "lean": "Solid D",
+        "leader": "D",
+        "margin": 17.9,
+        "dem_pct": 98.2,
+        "rep_pct": 1.8,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 51.6,
+          "rep": 35.4,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 56.0,
+              "rep": 35.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "August 17–18, 2026",
+              "dem": 50.0,
+              "rep": 35.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "June 24–25, 2026",
+              "dem": 50.0,
+              "rep": 31.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "March 16–18, 2026",
+              "dem": 48.0,
+              "rep": 36.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "January 15–19, 2026",
+              "dem": 54.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "November 18–19, 2025",
+              "dem": 40.0,
+              "rep": 35.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–23, 2025",
+              "dem": 51.0,
+              "rep": 39.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "August 26–27, 2025",
+              "dem": 49.0,
+              "rep": 31.0
+            }
+          ],
+          "names": {
+            "d": "Maggie Goodlander",
+            "r": "Lily Tang Williams"
+          }
+        }
+      },
+      {
         "state": "New York",
         "district": "20",
         "incumbent": "Paul Tonko",
@@ -5576,23 +5677,6 @@
         "state": "Michigan",
         "district": "3",
         "incumbent": "Hillary Scholten",
-        "party": "D",
-        "rating": "Solid D",
-        "lean": "Solid D",
-        "leader": "D",
-        "margin": 17.1,
-        "dem_pct": 97.8,
-        "rep_pct": 2.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "New Hampshire",
-        "district": "2",
-        "incumbent": "Maggie Goodlander",
         "party": "D",
         "rating": "Solid D",
         "lean": "Solid D",
@@ -7845,7 +7929,7 @@
         "dem_pct": 0.0,
         "rep_pct": 92.7,
         "ind_pct": 7.3,
-        "dem_name": null,
+        "dem_name": "Matt Schultz",
         "rep_name": "Nick Begich III",
         "ind_name": "Bill Hill",
         "polls": {
@@ -7898,6 +7982,7 @@
             }
           ],
           "names": {
+            "d": "Matt Schultz",
             "r": "Nick Begich III",
             "i": "Bill Hill"
           }
@@ -8414,23 +8499,6 @@
         "polls": null
       },
       {
-        "state": "New York",
-        "district": "21",
-        "incumbent": "Elise Stefanik",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Likely R",
-        "leader": "R",
-        "margin": 9.4,
-        "dem_pct": 11.0,
-        "rep_pct": 89.0,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "California",
         "district": "20",
         "incumbent": "Vince Fong",
@@ -8839,57 +8907,6 @@
         "polls": null
       },
       {
-        "state": "Arizona",
-        "district": "2",
-        "incumbent": "Eli Crane",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 6.4,
-        "dem_pct": 19.4,
-        "rep_pct": 80.6,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Kentucky",
-        "district": "6",
-        "incumbent": "Andy Barr",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 6.4,
-        "dem_pct": 19.4,
-        "rep_pct": 80.6,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Nevada",
-        "district": "2",
-        "incumbent": "Mark Amodei",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 6.4,
-        "dem_pct": 19.4,
-        "rep_pct": 80.6,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "Arkansas",
         "district": "3",
         "incumbent": "Steve Womack",
@@ -9060,21 +9077,62 @@
         "polls": null
       },
       {
-        "state": "Alabama",
-        "district": "2",
-        "incumbent": "Shomari Figures",
-        "party": "D",
-        "rating": "Likely R(flip)",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
+        "state": "Ohio",
+        "district": "7",
+        "incumbent": "Max Miller",
+        "party": "R",
+        "rating": "Tossup",
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 5.6,
+        "dem_pct": 77.8,
+        "rep_pct": 22.2,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 46.2,
+          "rep": 39.4,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "Bedrock Polling",
+              "dates": "August 7–10, 2026",
+              "dem": 43.0,
+              "rep": 35.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "August 5–6, 2026",
+              "dem": 47.0,
+              "rep": 33.0
+            },
+            {
+              "pollster": "Tavern Research",
+              "dates": "August 4–5, 2026",
+              "dem": 54.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "July 29–30, 2026",
+              "dem": 44.0,
+              "rep": 39.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "June 16–20, 2026",
+              "dem": 43.0,
+              "rep": 44.0
+            }
+          ],
+          "names": {
+            "d": "Brian Poindexter",
+            "r": "Max Miller"
+          }
+        }
       },
       {
         "state": "Colorado",
@@ -9128,74 +9186,6 @@
         "polls": null
       },
       {
-        "state": "Florida",
-        "district": "13",
-        "incumbent": "Anna Paulina Luna",
-        "party": "R",
-        "rating": "Lean R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Florida",
-        "district": "27",
-        "incumbent": "María Elvira Salazar",
-        "party": "R",
-        "rating": "Lean R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Maine",
-        "district": "2",
-        "incumbent": "Jared Golden",
-        "party": "D",
-        "rating": "Likely R(flip)",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Minnesota",
-        "district": "1",
-        "incumbent": "Brad Finstad",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "Missouri",
         "district": "2",
         "incumbent": "Ann Wagner",
@@ -9230,78 +9220,10 @@
         "polls": null
       },
       {
-        "state": "Ohio",
-        "district": "15",
-        "incumbent": "Mike Carey",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Pennsylvania",
-        "district": "1",
-        "incumbent": "Brian Fitzpatrick",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "South Carolina",
-        "district": "1",
-        "incumbent": "Nancy Mace",
-        "party": "R",
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "Texas",
         "district": "23",
         "incumbent": "Vacant",
         "party": null,
-        "rating": "Likely R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.4,
-        "dem_pct": 23.1,
-        "rep_pct": 76.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Virginia",
-        "district": "5",
-        "incumbent": "John McGuire",
-        "party": "R",
         "rating": "Likely R",
         "lean": "Lean R",
         "leader": "R",
@@ -9604,6 +9526,52 @@
         "polls": null
       },
       {
+        "state": "Arizona",
+        "district": "2",
+        "incumbent": "Eli Crane",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 4.4,
+        "dem_pct": 27.4,
+        "rep_pct": 72.6,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 42.3,
+          "rep": 47.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "GBAO",
+              "dates": "August 21–24, 2026",
+              "dem": 44.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Peak Insights",
+              "dates": "August 17–20, 2026",
+              "dem": 42.0,
+              "rep": 53.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "June 11–15, 2026",
+              "dem": 41.0,
+              "rep": 44.0
+            }
+          ],
+          "names": {
+            "d": "Jonathan Nez",
+            "r": "Eli Crane"
+          }
+        }
+      },
+      {
         "state": "Colorado",
         "district": "5",
         "incumbent": "Jeff Crank",
@@ -9621,21 +9589,62 @@
         "polls": null
       },
       {
-        "state": "Montana",
-        "district": "1",
-        "incumbent": "Ryan Zinke",
+        "state": "Texas",
+        "district": "15",
+        "incumbent": "Monica De La Cruz",
         "party": "R",
-        "rating": "Lean R",
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 4.4,
-        "dem_pct": 27.3,
-        "rep_pct": 72.7,
+        "rating": "Tossup",
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 4.2,
+        "dem_pct": 71.8,
+        "rep_pct": 28.2,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 48.2,
+          "rep": 43.6,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "Normington Petts",
+              "dates": "September 24–28, 2026",
+              "dem": 54.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "Public Policy Research/ Texas Southern University",
+              "dates": "August 18–22, 2026",
+              "dem": 50.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Normington Petts",
+              "dates": "July 23–27, 2026",
+              "dem": 51.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Applecart",
+              "dates": "May 18–25, 2026",
+              "dem": 48.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "September 10–11, 2025",
+              "dem": 38.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Bobby Pulido",
+            "r": "Monica De La Cruz"
+          }
+        }
       },
       {
         "state": "Georgia",
@@ -9842,6 +9851,116 @@
         "polls": null
       },
       {
+        "state": "New York",
+        "district": "21",
+        "incumbent": "Elise Stefanik",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 3.9,
+        "dem_pct": 29.7,
+        "rep_pct": 70.3,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 42.8,
+          "rep": 45.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "September 9–10, 2026",
+              "dem": 43.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "August 30 – September 2, 2026",
+              "dem": 44.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "J.L. Partners",
+              "dates": "August 15–17, 2026",
+              "dem": 40.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "SurveyUSA",
+              "dates": "August 4–8, 2026",
+              "dem": 43.0,
+              "rep": 39.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "May 26–31, 2026",
+              "dem": 44.0,
+              "rep": 45.0
+            }
+          ],
+          "names": {
+            "d": "Blake Gendebien",
+            "r": "Anthony Constantino"
+          }
+        }
+      },
+      {
+        "state": "Pennsylvania",
+        "district": "10",
+        "incumbent": "Scott Perry",
+        "party": "R",
+        "rating": "Tossup",
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 3.8,
+        "dem_pct": 70.1,
+        "rep_pct": 29.9,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 48.0,
+          "rep": 44.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "Franklin & Marshall College",
+              "dates": "September 9–20, 2026",
+              "dem": 47.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Normington Petts",
+              "dates": "April 20–23, 2026",
+              "dem": 51.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "November 18–19, 2025",
+              "dem": 48.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "July 10–11, 2025",
+              "dem": 46.0,
+              "rep": 43.0
+            }
+          ],
+          "names": {
+            "d": "Janelle Stelson",
+            "r": "Scott Perry"
+          }
+        }
+      },
+      {
         "state": "Iowa",
         "district": "2",
         "incumbent": "Ashley Hinson",
@@ -9894,6 +10013,52 @@
       },
       {
         "state": "Minnesota",
+        "district": "1",
+        "incumbent": "Brad Finstad",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 3.1,
+        "dem_pct": 33.3,
+        "rep_pct": 66.7,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 43.3,
+          "rep": 47.3,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "GBAO",
+              "dates": "September 18–21, 2026",
+              "dem": 47.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Ragnar Research Partners",
+              "dates": "March 12–14, 2026",
+              "dem": 42.0,
+              "rep": 52.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "February 2–3, 2026",
+              "dem": 41.0,
+              "rep": 44.0
+            }
+          ],
+          "names": {
+            "d": "Jake Johnson",
+            "r": "Brad Finstad"
+          }
+        }
+      },
+      {
+        "state": "Minnesota",
         "district": "6",
         "incumbent": "Tom Emmer",
         "party": "R",
@@ -9927,6 +10092,58 @@
         "polls": null
       },
       {
+        "state": "North Carolina",
+        "district": "1",
+        "incumbent": "Don Davis",
+        "party": "D",
+        "rating": "Lean R(flip)",
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 3.1,
+        "dem_pct": 66.8,
+        "rep_pct": 33.2,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 44.5,
+          "rep": 41.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "GBAO",
+              "dates": "September 8–11, 2026",
+              "dem": 50.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "June 22–28, 2026",
+              "dem": 45.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "April 25–29, 2026",
+              "dem": 41.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "January 29 – February 2, 2026",
+              "dem": 42.0,
+              "rep": 39.0
+            }
+          ],
+          "names": {
+            "d": "Don Davis",
+            "r": "Laurie Buckhout"
+          }
+        }
+      },
+      {
         "state": "Ohio",
         "district": "14",
         "incumbent": "David Joyce",
@@ -9942,6 +10159,64 @@
         "rep_name": null,
         "ind_name": null,
         "polls": null
+      },
+      {
+        "state": "Pennsylvania",
+        "district": "1",
+        "incumbent": "Brian Fitzpatrick",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 3.1,
+        "dem_pct": 33.3,
+        "rep_pct": 66.7,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 42.8,
+          "rep": 46.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "Public Opinion Strategies",
+              "dates": "September 11–14, 2026",
+              "dem": 40.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "August 19–23, 2026",
+              "dem": 48.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Global Strategy Group",
+              "dates": "August 5–9, 2026",
+              "dem": 43.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Global Strategy Group",
+              "dates": "March 19–22, 2026",
+              "dem": 42.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "October 10–11, 2025",
+              "dem": 41.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Bob Harvie",
+            "r": "Brian Fitzpatrick"
+          }
+        }
       },
       {
         "state": "Tennessee",
@@ -9961,38 +10236,332 @@
         "polls": null
       },
       {
-        "state": "Michigan",
-        "district": "4",
-        "incumbent": "Bill Huizenga",
+        "state": "Wisconsin",
+        "district": "3",
+        "incumbent": "Derrick Van Orden",
         "party": "R",
-        "rating": "Lean R",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": 2.4,
-        "dem_pct": 37.0,
-        "rep_pct": 63.0,
+        "rating": "Tossup",
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 3.0,
+        "dem_pct": 66.0,
+        "rep_pct": 34.0,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 48.2,
+          "rep": 45.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "FM3 Research",
+              "dates": "June 20–25, 2026",
+              "dem": 50.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "May 26–31, 2026",
+              "dem": 50.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "February 12–17, 2026",
+              "dem": 49.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "October 14–15, 2025",
+              "dem": 44.0,
+              "rep": 42.0
+            }
+          ],
+          "names": {
+            "d": "Rebecca Cooke",
+            "r": "Derrick Van Orden"
+          }
+        }
+      },
+      {
+        "state": "Arizona",
+        "district": "6",
+        "incumbent": "Juan Ciscomani",
+        "party": "R",
+        "rating": "Tossup",
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 2.9,
+        "dem_pct": 65.5,
+        "rep_pct": 34.5,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 45.3,
+          "rep": 43.3,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Normington Petts",
+              "dates": "June 8–11, 2026",
+              "dem": 47.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Ragnar Research Partners",
+              "dates": "March 12–14, 2026",
+              "dem": 47.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "October 14–15, 2025",
+              "dem": 42.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "JoAnna Mendoza",
+            "r": "Juan Ciscomani"
+          }
+        }
       },
       {
         "state": "Virginia",
-        "district": "1",
-        "incumbent": "Rob Wittman",
+        "district": "5",
+        "incumbent": "John McGuire",
         "party": "R",
-        "rating": "Lean R",
-        "lean": "Tossup",
+        "rating": "Likely R",
+        "lean": "Lean R",
         "leader": "R",
-        "margin": 2.4,
-        "dem_pct": 37.0,
-        "rep_pct": 63.0,
+        "margin": 2.7,
+        "dem_pct": 35.6,
+        "rep_pct": 64.4,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 44.7,
+          "rep": 48.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "The Washington Post / SSPG",
+              "dates": "September 23–28, 2026",
+              "dem": 45.0,
+              "rep": 51.0
+            },
+            {
+              "pollster": "Expedition Strategies",
+              "dates": "September 21–24, 2026",
+              "dem": 45.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Expedition Strategies",
+              "dates": "July 29 – August 1, 2026",
+              "dem": 44.0,
+              "rep": 47.0
+            }
+          ],
+          "names": {
+            "d": "Tom Perriello",
+            "r": "John McGuire"
+          }
+        }
+      },
+      {
+        "state": "South Carolina",
+        "district": "1",
+        "incumbent": "Nancy Mace",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 2.5,
+        "dem_pct": 36.6,
+        "rep_pct": 63.4,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 42.7,
+          "rep": 45.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "co/efficient",
+              "dates": "September 30 – October 1, 2026",
+              "dem": 40.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "September 9–10, 2026",
+              "dem": 40.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "July 15–22, 2026",
+              "dem": 48.0,
+              "rep": 50.0
+            }
+          ],
+          "names": {
+            "d": "Nancy Lacore",
+            "r": "Jenny Costa Honeycutt"
+          }
+        }
+      },
+      {
+        "state": "Michigan",
+        "district": "7",
+        "incumbent": "Tom Barrett",
+        "party": "R",
+        "rating": "Tossup",
+        "lean": "Tossup",
+        "leader": "D",
+        "margin": 2.4,
+        "dem_pct": 63.1,
+        "rep_pct": 36.9,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 45.3,
+          "rep": 44.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Data for Progress",
+              "dates": "June 24–30, 2026",
+              "dem": 45.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "April 24–26, 2026",
+              "dem": 46.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "October 27–28, 2025",
+              "dem": 45.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Bridget Brink",
+            "r": "Tom Barrett"
+          }
+        }
+      },
+      {
+        "state": "Ohio",
+        "district": "15",
+        "incumbent": "Mike Carey",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 2.3,
+        "dem_pct": 37.6,
+        "rep_pct": 62.4,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 41.0,
+          "rep": 43.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Hart Research",
+              "dates": "September 22–24, 2026",
+              "dem": 46.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Hart Research",
+              "dates": "August 6–9, 2026",
+              "dem": 37.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "Hart Research",
+              "dates": "June 23–25, 2026",
+              "dem": 40.0,
+              "rep": 45.0
+            }
+          ],
+          "names": {
+            "d": "Don Leonard",
+            "r": "Mike Carey"
+          }
+        }
+      },
+      {
+        "state": "Pennsylvania",
+        "district": "8",
+        "incumbent": "Rob Bresnahan",
+        "party": "R",
+        "rating": "Tossup",
+        "lean": "Tossup",
+        "leader": "D",
+        "margin": 2.3,
+        "dem_pct": 62.7,
+        "rep_pct": 37.3,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 46.0,
+          "rep": 44.3,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "June 18–23, 2026",
+              "dem": 47.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "June 8–11, 2026",
+              "dem": 46.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "August 27–28, 2025",
+              "dem": 45.0,
+              "rep": 43.0
+            }
+          ],
+          "names": {
+            "d": "Paige Cognetti",
+            "r": "Rob Bresnahan"
+          }
+        }
       },
       {
         "state": "California",
@@ -10012,6 +10581,108 @@
         "polls": null
       },
       {
+        "state": "Nevada",
+        "district": "2",
+        "incumbent": "Mark Amodei",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Tossup",
+        "leader": "D",
+        "margin": 2.1,
+        "dem_pct": 61.4,
+        "rep_pct": 38.5,
+        "ind_pct": 0.0,
+        "dem_name": "Teresa Benitez-Thompson",
+        "rep_name": "David Flippo",
+        "ind_name": "Lynn Champan (IA)",
+        "polls": {
+          "dem": 42.7,
+          "rep": 42.7,
+          "ind": 10.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "GBAO",
+              "dates": "August 31 – September 3, 2026",
+              "dem": 38.0,
+              "rep": 37.0,
+              "ind": 14.0
+            },
+            {
+              "pollster": "Strategies 360",
+              "dates": "August 22–26, 2026",
+              "dem": 42.0,
+              "rep": 45.0,
+              "ind": 7.0
+            },
+            {
+              "pollster": "Wedgewood Polls",
+              "dates": "July 9–12, 2026",
+              "dem": 48.0,
+              "rep": 46.0
+            }
+          ],
+          "names": {
+            "d": "Teresa Benitez-Thompson",
+            "r": "David Flippo",
+            "i": "Lynn Champan (IA)"
+          }
+        }
+      },
+      {
+        "state": "New York",
+        "district": "17",
+        "incumbent": "Mike Lawler",
+        "party": "R",
+        "rating": "Tossup",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": -1.9,
+        "dem_pct": 60.5,
+        "rep_pct": 39.5,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 47.8,
+          "rep": 47.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "McLaughlin & Associates",
+              "dates": "September 28–30, 2026",
+              "dem": 47.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "September 27–29, 2026",
+              "dem": 48.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "July 20–22, 2026",
+              "dem": 45.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "FM3 Research",
+              "dates": "June 27 – July 1, 2026",
+              "dem": 51.0,
+              "rep": 45.0
+            }
+          ],
+          "names": {
+            "d": "Cait Conley",
+            "r": "Mike Lawler"
+          }
+        }
+      },
+      {
         "state": "Texas",
         "district": "35",
         "incumbent": "None",
@@ -10027,6 +10698,58 @@
         "rep_name": null,
         "ind_name": null,
         "polls": null
+      },
+      {
+        "state": "Florida",
+        "district": "13",
+        "incumbent": "Anna Paulina Luna",
+        "party": "R",
+        "rating": "Lean R",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 1.8,
+        "dem_pct": 40.0,
+        "rep_pct": 60.0,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 43.8,
+          "rep": 45.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "Hart Research Associates",
+              "dates": "August 25–27, 2026",
+              "dem": 51.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Fabrizio, Lee & Associates",
+              "dates": "August 4–6, 2026",
+              "dem": 41.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "August 4–6, 2026",
+              "dem": 44.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "May 19–20, 2026",
+              "dem": 39.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Leela Gray",
+            "r": "Anna Paulina Luna"
+          }
+        }
       },
       {
         "state": "California",
@@ -10046,72 +10769,96 @@
         "polls": null
       },
       {
-        "state": "New York",
-        "district": "17",
-        "incumbent": "Mike Lawler",
-        "party": "R",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": -1.6,
-        "dem_pct": 58.8,
-        "rep_pct": 41.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Washington",
-        "district": "3",
-        "incumbent": "Marie Gluesenkamp Perez",
-        "party": "D",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": -1.6,
-        "dem_pct": 58.8,
-        "rep_pct": 41.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "North Carolina",
-        "district": "1",
-        "incumbent": "Don Davis",
-        "party": "D",
-        "rating": "Lean R(flip)",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": 1.4,
-        "dem_pct": 42.3,
-        "rep_pct": 57.7,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Wisconsin",
-        "district": "1",
-        "incumbent": "Bryan Steil",
+        "state": "Florida",
+        "district": "27",
+        "incumbent": "María Elvira Salazar",
         "party": "R",
         "rating": "Lean R",
         "lean": "Tossup",
         "leader": "R",
         "margin": 1.4,
-        "dem_pct": 42.3,
-        "rep_pct": 57.7,
+        "dem_pct": 42.4,
+        "rep_pct": 57.6,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 44.7,
+          "rep": 46.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Tulchin Research",
+              "dates": "September 8–13, 2026",
+              "dem": 46.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Bendixen & Amandi International",
+              "dates": "August 25–30, 2026",
+              "dem": 45.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Blueprint Polling",
+              "dates": "March 6–8, 2026",
+              "dem": 43.0,
+              "rep": 46.0
+            }
+          ],
+          "names": {
+            "d": "Eliott Rodriguez",
+            "r": "María Elvira Salazar"
+          }
+        }
+      },
+      {
+        "state": "Texas",
+        "district": "34",
+        "incumbent": "Vicente Gonzalez",
+        "party": "D",
+        "rating": "Tossup",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": -1.4,
+        "dem_pct": 57.6,
+        "rep_pct": 42.4,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 42.0,
+          "rep": 42.3,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Public Policy Research/ Texas Southern University",
+              "dates": "August 18–22, 2026",
+              "dem": 45.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Ragnar Research Partners",
+              "dates": "June 14–16, 2026",
+              "dem": 41.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "April 25–29, 2026",
+              "dem": 40.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Vicente Gonzalez",
+            "r": "Eric Flores"
+          }
+        }
       },
       {
         "state": "California",
@@ -10131,21 +10878,148 @@
         "polls": null
       },
       {
-        "state": "Arizona",
-        "district": "6",
-        "incumbent": "Juan Ciscomani",
+        "state": "Virginia",
+        "district": "1",
+        "incumbent": "Rob Wittman",
         "party": "R",
-        "rating": "Tossup",
+        "rating": "Lean R",
         "lean": "Tossup",
         "leader": "R",
-        "margin": -0.6,
-        "dem_pct": 53.3,
-        "rep_pct": 46.7,
+        "margin": -0.9,
+        "dem_pct": 55.1,
+        "rep_pct": 44.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 45.3,
+          "rep": 44.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "The Washington Post / SSPG",
+              "dates": "September 23–28, 2026",
+              "dem": 50.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "DCCC Targeting Team",
+              "dates": "September 15–17, 2026",
+              "dem": 46.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "August 8–9, 2025",
+              "dem": 40.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Shannon Taylor",
+            "r": "Rob Wittman"
+          }
+        }
+      },
+      {
+        "state": "Washington",
+        "district": "3",
+        "incumbent": "Marie Gluesenkamp Perez",
+        "party": "D",
+        "rating": "Tossup",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 0.9,
+        "dem_pct": 45.2,
+        "rep_pct": 54.8,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 40.2,
+          "rep": 44.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "DHM Research",
+              "dates": "July 8–10 2026",
+              "dem": 44.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "July 8–10 2026",
+              "dem": 42.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "April 25–29, 2026",
+              "dem": 34.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "Voter Sciences",
+              "dates": "August 2025",
+              "dem": 41.0,
+              "rep": 48.0
+            }
+          ],
+          "names": {
+            "d": "Marie Gluesenkamp Perez",
+            "r": "John Braun"
+          }
+        }
+      },
+      {
+        "state": "Alabama",
+        "district": "2",
+        "incumbent": "Shomari Figures",
+        "party": "D",
+        "rating": "Likely R(flip)",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 0.7,
+        "dem_pct": 46.0,
+        "rep_pct": 54.0,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 45.7,
+          "rep": 46.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "polls": [
+            {
+              "pollster": "Tulchin Research",
+              "dates": "August 24–31, 2026",
+              "dem": 47.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "DCCC",
+              "dates": "July 29–30, 2026",
+              "dem": 46.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "June 22–25, 2026",
+              "dem": 44.0,
+              "rep": 45.0
+            }
+          ],
+          "names": {
+            "d": "Shomari Figures",
+            "r": "Rhett Marques"
+          }
+        }
       },
       {
         "state": "Colorado",
@@ -10182,40 +11056,6 @@
         "polls": null
       },
       {
-        "state": "Michigan",
-        "district": "7",
-        "incumbent": "Tom Barrett",
-        "party": "R",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.6,
-        "dem_pct": 53.3,
-        "rep_pct": 46.7,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Texas",
-        "district": "34",
-        "incumbent": "Vicente Gonzalez",
-        "party": "D",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.6,
-        "dem_pct": 53.3,
-        "rep_pct": 46.7,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "Virginia",
         "district": "2",
         "incumbent": "Jen Kiggans",
@@ -10231,6 +11071,134 @@
         "rep_name": null,
         "ind_name": null,
         "polls": null
+      },
+      {
+        "state": "Wisconsin",
+        "district": "1",
+        "incumbent": "Bryan Steil",
+        "party": "R",
+        "rating": "Lean R",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 0.6,
+        "dem_pct": 46.6,
+        "rep_pct": 53.4,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 46.2,
+          "rep": 48.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "Impact Research",
+              "dates": "September 28 – October 1, 2026",
+              "dem": 48.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "DCCC Analytics Department",
+              "dates": "September 21–23, 2026",
+              "dem": 48.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "August 6–9, 2026",
+              "dem": 48.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Ragnar Research Partners",
+              "dates": "March 14–16, 2026",
+              "dem": 41.0,
+              "rep": 50.0
+            }
+          ],
+          "names": {
+            "d": "Mitchell Berman",
+            "r": "Bryan Steil"
+          }
+        }
+      },
+      {
+        "state": "Maine",
+        "district": "2",
+        "incumbent": "Jared Golden",
+        "party": "D",
+        "rating": "Likely R(flip)",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": -0.5,
+        "dem_pct": 52.9,
+        "rep_pct": 47.1,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 49.4,
+          "rep": 47.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "Tulchin Research",
+              "dates": "September 27–30, 2026",
+              "dem": 50.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 51.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "September 8–12, 2026",
+              "dem": 49.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "DCCC Targeting Team",
+              "dates": "August 11–13, 2026",
+              "dem": 48.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Tulchin Research",
+              "dates": "July 11–16, 2026",
+              "dem": 49.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "April 26–28, 2026",
+              "dem": 40.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "February 12–16, 2026",
+              "dem": 46.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "The Mellman Group",
+              "dates": "June 4–10, 2025",
+              "dem": 37.0,
+              "rep": 47.0
+            }
+          ],
+          "names": {
+            "d": "Matt Dunlap",
+            "r": "Paul LePage"
+          }
+        }
       },
       {
         "state": "Florida",
@@ -10301,6 +11269,58 @@
         "polls": null
       },
       {
+        "state": "Kentucky",
+        "district": "6",
+        "incumbent": "Andy Barr",
+        "party": "R",
+        "rating": "Likely R",
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 0.4,
+        "dem_pct": 47.7,
+        "rep_pct": 52.3,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 43.2,
+          "rep": 42.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "GQR",
+              "dates": "September 25–30, 2026",
+              "dem": 42.0,
+              "rep": 37.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "August 17–23, 2026",
+              "dem": 45.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "DCCC",
+              "dates": "July 29–30, 2026",
+              "dem": 47.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "June 24–28, 2026",
+              "dem": 39.0,
+              "rep": 42.0
+            }
+          ],
+          "names": {
+            "d": "Zach Dembo",
+            "r": "Ralph Alvarado"
+          }
+        }
+      },
+      {
         "state": "Michigan",
         "district": "10",
         "incumbent": "John James",
@@ -10321,23 +11341,6 @@
         "state": "North Carolina",
         "district": "11",
         "incumbent": "Chuck Edwards",
-        "party": "R",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": 0.4,
-        "dem_pct": 47.8,
-        "rep_pct": 52.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Ohio",
-        "district": "7",
-        "incumbent": "Max Miller",
         "party": "R",
         "rating": "Tossup",
         "lean": "Tossup",
@@ -10386,269 +11389,317 @@
         "polls": null
       },
       {
-        "state": "Pennsylvania",
-        "district": "8",
-        "incumbent": "Rob Bresnahan",
+        "state": "Montana",
+        "district": "1",
+        "incumbent": "Ryan Zinke",
         "party": "R",
-        "rating": "Tossup",
+        "rating": "Lean R",
         "lean": "Tossup",
         "leader": "R",
-        "margin": 0.4,
-        "dem_pct": 47.8,
-        "rep_pct": 52.2,
+        "margin": -0.2,
+        "dem_pct": 51.2,
+        "rep_pct": 48.8,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 44.4,
+          "rep": 43.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "polls": [
+            {
+              "pollster": "American Pulse",
+              "dates": "September 19–24, 2026",
+              "dem": 45.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "September 20–23, 2026",
+              "dem": 47.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "September 9–10, 2026",
+              "dem": 45.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Rutgers University Eagleton Institute of Politics",
+              "dates": "August 27 – September 7, 2026",
+              "dem": 41.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "June 22–25, 2026",
+              "dem": 44.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Upswing Research",
+              "dates": "April 30 – May 5, 2026",
+              "dem": 43.0,
+              "rep": 48.0
+            }
+          ],
+          "names": {
+            "d": "Sam Forstag",
+            "r": "Aaron Flint"
+          }
+        }
       },
       {
-        "state": "Pennsylvania",
-        "district": "10",
-        "incumbent": "Scott Perry",
+        "state": "Michigan",
+        "district": "4",
+        "incumbent": "Bill Huizenga",
         "party": "R",
-        "rating": "Tossup",
+        "rating": "Lean R",
         "lean": "Tossup",
         "leader": "R",
-        "margin": 0.4,
-        "dem_pct": 47.8,
-        "rep_pct": 52.2,
+        "margin": 0.1,
+        "dem_pct": 49.3,
+        "rep_pct": 50.7,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Texas",
-        "district": "15",
-        "incumbent": "Monica De La Cruz",
-        "party": "R",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": 0.4,
-        "dem_pct": 47.8,
-        "rep_pct": 52.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Wisconsin",
-        "district": "3",
-        "incumbent": "Derrick Van Orden",
-        "party": "R",
-        "rating": "Tossup",
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": 0.4,
-        "dem_pct": 47.8,
-        "rep_pct": 52.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
+        "polls": {
+          "dem": 44.8,
+          "rep": 45.8,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "polls": [
+            {
+              "pollster": "GBAO",
+              "dates": "September 13–16, 2026",
+              "dem": 47.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "May 28 – June 1, 2026",
+              "dem": 48.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Ragnar Research Partners",
+              "dates": "March 12–14, 2026",
+              "dem": 42.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "November 20–21, 2025",
+              "dem": 42.0,
+              "rep": 44.0
+            }
+          ],
+          "names": {
+            "d": "Sean McCann",
+            "r": "Bill Huizenga"
+          }
+        }
       }
     ],
-    "expected_d_seats": 240.7,
-    "expected_r_seats": 194.2,
+    "expected_d_seats": 245.1,
+    "expected_r_seats": 189.9,
     "expected_i_seats": 0.1,
     "majority": {
-      "dem_pct": 90.1,
-      "rep_pct": 9.7
+      "dem_pct": 93.8,
+      "rep_pct": 6.2
     },
     "distribution_buckets": [
       {
-        "seats": 197,
-        "pct": 0.2
-      },
-      {
-        "seats": 199,
+        "seats": 195,
         "pct": 0.1
       },
       {
-        "seats": 201,
-        "pct": 0.3
-      },
-      {
-        "seats": 203,
-        "pct": 0.4
-      },
-      {
-        "seats": 205,
-        "pct": 0.6
-      },
-      {
-        "seats": 207,
-        "pct": 0.8
-      },
-      {
-        "seats": 209,
-        "pct": 1.0
-      },
-      {
-        "seats": 211,
-        "pct": 1.2
-      },
-      {
-        "seats": 213,
-        "pct": 1.6
-      },
-      {
-        "seats": 215,
-        "pct": 1.8
-      },
-      {
-        "seats": 217,
-        "pct": 1.9
-      },
-      {
-        "seats": 219,
-        "pct": 2.4
-      },
-      {
-        "seats": 221,
-        "pct": 2.8
-      },
-      {
-        "seats": 223,
-        "pct": 2.9
-      },
-      {
-        "seats": 225,
-        "pct": 3.4
-      },
-      {
-        "seats": 227,
-        "pct": 3.6
-      },
-      {
-        "seats": 229,
-        "pct": 3.9
-      },
-      {
-        "seats": 231,
-        "pct": 3.9
-      },
-      {
-        "seats": 233,
-        "pct": 4.4
-      },
-      {
-        "seats": 235,
-        "pct": 4.4
-      },
-      {
-        "seats": 237,
-        "pct": 4.5
-      },
-      {
-        "seats": 239,
-        "pct": 4.6
-      },
-      {
-        "seats": 241,
-        "pct": 3.9
-      },
-      {
-        "seats": 243,
-        "pct": 4.1
-      },
-      {
-        "seats": 245,
-        "pct": 3.9
-      },
-      {
-        "seats": 247,
-        "pct": 4.0
-      },
-      {
-        "seats": 249,
-        "pct": 3.5
-      },
-      {
-        "seats": 251,
-        "pct": 3.4
-      },
-      {
-        "seats": 253,
-        "pct": 3.0
-      },
-      {
-        "seats": 255,
-        "pct": 2.9
-      },
-      {
-        "seats": 257,
-        "pct": 2.4
-      },
-      {
-        "seats": 259,
-        "pct": 2.3
-      },
-      {
-        "seats": 261,
-        "pct": 2.5
-      },
-      {
-        "seats": 263,
-        "pct": 1.9
-      },
-      {
-        "seats": 265,
-        "pct": 1.6
-      },
-      {
-        "seats": 267,
-        "pct": 1.7
-      },
-      {
-        "seats": 269,
-        "pct": 1.2
-      },
-      {
-        "seats": 271,
-        "pct": 1.2
-      },
-      {
-        "seats": 273,
-        "pct": 1.0
-      },
-      {
-        "seats": 275,
-        "pct": 0.9
-      },
-      {
-        "seats": 277,
-        "pct": 0.7
-      },
-      {
-        "seats": 279,
-        "pct": 0.5
-      },
-      {
-        "seats": 281,
-        "pct": 0.5
-      },
-      {
-        "seats": 283,
-        "pct": 0.4
-      },
-      {
-        "seats": 285,
-        "pct": 0.4
-      },
-      {
-        "seats": 287,
+        "seats": 199,
         "pct": 0.2
       },
       {
-        "seats": 289,
+        "seats": 201,
+        "pct": 0.2
+      },
+      {
+        "seats": 203,
+        "pct": 0.2
+      },
+      {
+        "seats": 205,
         "pct": 0.3
+      },
+      {
+        "seats": 207,
+        "pct": 0.5
+      },
+      {
+        "seats": 209,
+        "pct": 0.6
+      },
+      {
+        "seats": 211,
+        "pct": 0.7
+      },
+      {
+        "seats": 213,
+        "pct": 1.0
+      },
+      {
+        "seats": 215,
+        "pct": 1.1
+      },
+      {
+        "seats": 217,
+        "pct": 1.4
+      },
+      {
+        "seats": 219,
+        "pct": 1.7
+      },
+      {
+        "seats": 221,
+        "pct": 2.1
+      },
+      {
+        "seats": 223,
+        "pct": 2.2
+      },
+      {
+        "seats": 225,
+        "pct": 2.6
+      },
+      {
+        "seats": 227,
+        "pct": 2.9
+      },
+      {
+        "seats": 229,
+        "pct": 3.2
+      },
+      {
+        "seats": 231,
+        "pct": 3.3
+      },
+      {
+        "seats": 233,
+        "pct": 3.6
+      },
+      {
+        "seats": 235,
+        "pct": 4.0
+      },
+      {
+        "seats": 237,
+        "pct": 4.1
+      },
+      {
+        "seats": 239,
+        "pct": 4.4
+      },
+      {
+        "seats": 241,
+        "pct": 4.3
+      },
+      {
+        "seats": 243,
+        "pct": 4.3
+      },
+      {
+        "seats": 245,
+        "pct": 4.2
+      },
+      {
+        "seats": 247,
+        "pct": 4.3
+      },
+      {
+        "seats": 249,
+        "pct": 4.1
+      },
+      {
+        "seats": 251,
+        "pct": 3.7
+      },
+      {
+        "seats": 253,
+        "pct": 3.5
+      },
+      {
+        "seats": 255,
+        "pct": 3.5
+      },
+      {
+        "seats": 257,
+        "pct": 3.1
+      },
+      {
+        "seats": 259,
+        "pct": 2.7
+      },
+      {
+        "seats": 261,
+        "pct": 2.7
+      },
+      {
+        "seats": 263,
+        "pct": 2.6
+      },
+      {
+        "seats": 265,
+        "pct": 2.3
+      },
+      {
+        "seats": 267,
+        "pct": 2.0
+      },
+      {
+        "seats": 269,
+        "pct": 2.0
+      },
+      {
+        "seats": 271,
+        "pct": 1.5
+      },
+      {
+        "seats": 273,
+        "pct": 1.4
+      },
+      {
+        "seats": 275,
+        "pct": 1.2
+      },
+      {
+        "seats": 277,
+        "pct": 1.1
+      },
+      {
+        "seats": 279,
+        "pct": 1.0
+      },
+      {
+        "seats": 281,
+        "pct": 0.7
+      },
+      {
+        "seats": 283,
+        "pct": 0.6
+      },
+      {
+        "seats": 285,
+        "pct": 0.5
+      },
+      {
+        "seats": 287,
+        "pct": 0.6
+      },
+      {
+        "seats": 289,
+        "pct": 0.4
       },
       {
         "seats": 291,
@@ -10660,10 +11711,14 @@
       },
       {
         "seats": 295,
-        "pct": 0.1
+        "pct": 0.2
       },
       {
         "seats": 297,
+        "pct": 0.2
+      },
+      {
+        "seats": 299,
         "pct": 0.2
       },
       {
@@ -12049,16 +13104,16 @@
         "rating": "Lean D(flip)",
         "lean": "Likely D",
         "leader": "D",
-        "margin": 7.9,
-        "dem_pct": 87.9,
-        "rep_pct": 12.1,
+        "margin": 8.3,
+        "dem_pct": 88.9,
+        "rep_pct": 11.1,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 50.6,
-          "rep": 43.0,
+          "dem": 50.8,
+          "rep": 42.6,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {

@@ -36,13 +36,27 @@ import us_scrape_polls as p
 import us_scrape_races as r
 
 H = {"User-Agent": "600-us-midterms/1.0"}
-SENATE_2024 = "https://en.wikipedia.org/wiki/2024_United_States_Senate_elections"
-HOUSE_2024 = ("https://en.wikipedia.org/wiki/"
-              "2024_United_States_House_of_Representatives_elections")
-HOUSE_RATINGS_2024 = ("https://en.wikipedia.org/wiki/"
-                      "2024_United_States_House_of_Representatives_"
-                      "election_ratings")
-ENV_2024 = 1.0   # fallback; the real value comes from the aggregates table
+CYCLES = {
+    2022: {
+        "senate": "https://en.wikipedia.org/wiki/"
+                  "2022_United_States_Senate_elections",
+        "house": "https://en.wikipedia.org/wiki/"
+                 "2022_United_States_House_of_Representatives_elections",
+        "ratings": "https://en.wikipedia.org/wiki/2022_United_States_House_"
+                   "of_Representatives_election_ratings",
+        "env_fallback": -1.0,   # final 2022 generic ballot, R+1.0
+    },
+    2024: {
+        "senate": "https://en.wikipedia.org/wiki/"
+                  "2024_United_States_Senate_elections",
+        "house": "https://en.wikipedia.org/wiki/"
+                 "2024_United_States_House_of_Representatives_elections",
+        "ratings": "https://en.wikipedia.org/wiki/2024_United_States_House_"
+                   "of_Representatives_election_ratings",
+        "env_fallback": -0.1,   # final 2024 generic ballot, R+0.1
+    },
+}
+ENV_2024 = -0.1   # default env when none is passed
 
 
 def get(url):
@@ -136,54 +150,66 @@ def district_tables(soup):
     return out
 
 
-def district_actual(tables):
-    """Two-party-normalized margin from a district's results table."""
-    for tbl in tables:
-        txt = tbl.get_text(" ", strip=True)
-        if "Democratic" not in txt or "Republican" not in txt:
-            continue
-        by_party = {}
-        rows_with = 0
+def national_actuals(soup):
+    """{state + ' ' + district: two-party margin} from a past cycle's
+    national House article, whose result cells read
+    '▌ Y Jerry Carl (Republican) 84.2% ▌ Alexander Remrey (Libertarian)
+    15.8%'; Alaska-style RCV races use the Instant-runoff segment."""
+    out = {}
+    for tbl in soup.find_all("table", class_="wikitable"):
         for row in tbl.find_all("tr"):
+            th = row.find("th")
+            if not th:
+                continue
+            m = re.match(r"^([A-Za-z .']+?)(\d+|at-large)$",
+                         th.get_text(strip=True))
+            if not m:
+                continue
             cells = [c.get_text(" ", strip=True)
-                     for c in row.find_all(["th", "td"])]
-            if len(cells) < 5:
+                     for c in row.find_all("td")]
+            if not cells:
                 continue
-            party = cells[1].lower()
-            m2 = re.match(r"([\d.]+)\s*%?", cells[4])
-            if not m2:
-                continue
-            if party.startswith("republic"):
-                by_party["R"] = by_party.get("R", 0) + float(m2.group(1))
-                rows_with += 1
-            elif party.startswith("democrat"):
-                by_party["D"] = by_party.get("D", 0) + float(m2.group(1))
-                rows_with += 1
-        if (rows_with >= 2 and "D" in by_party and "R" in by_party
-                and by_party["D"] + by_party["R"] > 50):
-            tot = by_party["D"] + by_party["R"]
-            return (by_party["D"] - by_party["R"]) / tot * 100
-    return None
+            result = cells[-1]
+            if "Instant runoff:" in result:
+                result = result.split("Instant runoff:")[-1]
+            d = rr = None
+            for mm in re.finditer(r"\(([^)]+)\)\s*([\d.]+)%", result):
+                party, pct = mm.group(1).lower(), float(mm.group(2))
+                if party.startswith("democrat"):
+                    d = (d or 0) + pct
+                elif party.startswith("republic"):
+                    rr = (rr or 0) + pct
+            if d and rr and d + rr > 50:
+                out[m.group(1).strip().title() + " " + m.group(2)] = \
+                    (d - rr) / (d + rr) * 100
+    return out
 
 
-def load_house():
-    """2024 House races with district polls and actual results.
+def load_house(cycle=2024):
+    """House races with district polls and actual results.
 
-    One fetch per state article supplies both: the district sections' poll
-    tables (same parsers as the live scraper) and their results tables.
+    Polls come from the per-state articles (same parsers as the live
+    scraper); the actual two-party results come from the national article's
+    result cells, which exist for past cycles.
     """
-    r.WIKI["house"] = HOUSE_2024
-    r.WIKI["house_ratings"] = HOUSE_RATINGS_2024
+    r.WIKI["house"] = CYCLES[cycle]["house"]
+    r.WIKI["house_ratings"] = CYCLES[cycle]["ratings"]
     races = r.scrape_house()
-    env = generic_ballot(get(HOUSE_RATINGS_2024))
+    ratings_soup = get(CYCLES[cycle]["ratings"])
+    env = generic_ballot(ratings_soup)
+    if env is None:
+        env = CYCLES[cycle]["env_fallback"]
+    actuals = national_actuals(get(CYCLES[cycle]["house"]))
     by_state = {}
     for race in races:
+        race["_actual"] = actuals.get(
+            race["state"] + " " + str(race.get("district", "")))
         by_state.setdefault(race["state"], []).append(race)
     for state, state_races in by_state.items():
         key = state.replace(" ", "_")
         kind = ("election" if state in p.SINGLE_DISTRICT else "elections")
-        url = ("https://en.wikipedia.org/wiki/2024_United_States_House_of_"
-               "Representatives_%s_in_%s" % (kind, key))
+        url = ("https://en.wikipedia.org/wiki/%d_United_States_House_of_"
+               "Representatives_%s_in_%s" % (cycle, kind, key))
         try:
             soup = get(url)
         except Exception:
@@ -203,23 +229,23 @@ def load_house():
                 if names:
                     polls["names"] = names
             race["_polls"] = polls
-            race["_actual"] = district_actual(tbls)
     return races, env
 
 
-def load_races():
-    """2024 Senate races with polls and actual results."""
-    r.WIKI["senate"] = SENATE_2024
+def load_races(cycle=2024):
+    """Senate races of a cycle with polls and actual results."""
+    r.WIKI["senate"] = CYCLES[cycle]["senate"]
     races = r.scrape_senate_or_gov("senate")
     out = []
     for race in races:
         # the live scraper's 2026 special-election party override (FL/OH)
-        # is wrong for 2024 (Ohio's Sherrod Brown is a Democrat)
+        # is not meaningful for past cycles; the last result carries the
+        # incumbent's party
         if race.get("last"):
             race["party"] = race["last"]["party"]
         state = race["state"].replace(" ", "_")
-        url = ("https://en.wikipedia.org/wiki/"
-               "2024_United_States_Senate_election_in_" + state)
+        url = ("https://en.wikipedia.org/wiki/%d_United_States_Senate_"
+               "election_in_%s" % (cycle, state))
         soup = get(url)
         polls = p.scrape_race("senate", race, url)
         race["_polls"] = polls
@@ -317,15 +343,16 @@ def sweep(races, chamber="senate", env=ENV_2024):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--chamber", default="senate", choices=("senate", "house"))
+    ap.add_argument("--cycle", type=int, default=2024, choices=(2022, 2024))
     ap.add_argument("--sweep", action="store_true")
     args = ap.parse_args()
     if args.chamber == "house":
-        print("loading 2024 House races (50 state articles)...")
-        races, env = load_house()
+        print("loading %d House races (50 state articles)..." % args.cycle)
+        races, env = load_house(args.cycle)
     else:
-        print("loading 2024 Senate races (33 state articles)...")
-        races = load_races()
-        env = ENV_2024
+        print("loading %d Senate races..." % args.cycle)
+        races = load_races(args.cycle)
+        env = CYCLES[args.cycle]["env_fallback"]
     print("environment (generic ballot, D-R points): %s" % env)
     with_polls = sum(1 for x in races if x.get("_polls"))
     print("races: %d | with polls: %d | with actual: %d" %

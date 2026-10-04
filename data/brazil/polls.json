@@ -6,8 +6,8 @@
       "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election"
     }
   ],
-  "scraped_at": "2026-10-04T11:47:47Z",
-  "poll_count": 164,
+  "scraped_at": "2026-10-04T14:13:20Z",
+  "poll_count": 166,
   "polls": [
     {
       "pollster": "Datafolha",
@@ -46,6 +46,27 @@
       "runoff": {
         "lula": 48.8,
         "flavio": 51.2
+      },
+      "country": "brazil",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election"
+    },
+    {
+      "pollster": "Futura",
+      "fieldwork_start": "2026-10-03",
+      "date": "2026-10-03",
+      "n": 2000,
+      "votes": {
+        "lula": 42.6,
+        "flavio": 44.7,
+        "caiado": 3.9,
+        "zema": 0.8,
+        "renan": 2.7,
+        "cury": 4.1
+      },
+      "runoff": {
+        "lula": 48.4,
+        "flavio": 51.6
       },
       "country": "brazil",
       "source": "Wikipedia",
@@ -109,6 +130,27 @@
       "runoff": {
         "lula": 52.2,
         "flavio": 47.8
+      },
+      "country": "brazil",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election"
+    },
+    {
+      "pollster": "AtlasIntel",
+      "fieldwork_start": "2026-09-27",
+      "date": "2026-10-02",
+      "n": 4945,
+      "votes": {
+        "lula": 46.9,
+        "flavio": 44.0,
+        "caiado": 1.4,
+        "zema": 0.3,
+        "renan": 4.6,
+        "cury": 2.1
+      },
+      "runoff": {
+        "lula": 50.1,
+        "flavio": 49.9
       },
       "country": "brazil",
       "source": "Wikipedia",

@@ -275,6 +275,10 @@ def main():
       swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
+      // sitting-member personal-vote lift for the party that won the seat
+      // last time (baseline-winner heuristic: no target-candidate data, so
+      // only the positive arm; retiring-MP deboost needs candidate lists)
+      incumbentBoost: 2.0,
       hideBlocToggle: true,
       districts: @@districts@@,
       // 2022 vote shares per riding (Élections Québec; 2 new 2025 ridings

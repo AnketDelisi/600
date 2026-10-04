@@ -228,6 +228,10 @@ def main():
       // the borrowed shape is shrunk halfway toward the Conservatives'
       // national share (see swingProxyConfidence in districtShares)
       swingProxyConfidence: { onbc: 0.5, cbc: 0.5 },
+      // sitting-member personal-vote lift for the party that won the riding
+      // last time (baseline-winner heuristic: no target-candidate data, so
+      // only the positive arm; retiring-MLA deboost needs candidate lists)
+      incumbentBoost: 2.0,
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,

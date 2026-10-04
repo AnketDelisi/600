@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004l";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004l";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004l";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004m";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004m";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004m";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -217,6 +217,9 @@ function mapCard(chamberData) {
   const ctrls = `<div class="map-ctrls">
     <span class="map-title">${isHouse ? (zoomed ? `${zoomName} · click a district for details` : "All 435 districts · click a state to zoom in") : "Click a state for details"}</span>
     ${zoomed ? `<button onclick="mapReset()">← Back to all states</button>` : ""}
+    <button class="shot-btn" onclick="captureMap()" title="Download this map as a PNG image">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>
+    </button>
   </div>`;
   const tip = `<div class="map-tip"></div>`;
   return `<div class="card">
@@ -454,6 +457,84 @@ function raceDetailHTML(race) {
       <tbody>${rows}</tbody>
     </table>
   </div>`;
+}
+
+// Download the current map as a PNG: serialise the live SVG (its fills are
+// inline; strokes come from the page CSS, so the key rules are injected into
+// the clone), draw it on a canvas with a title line and a canvas-drawn
+// legend, then save.
+function captureMap() {
+  const svg = document.querySelector(".map-svg");
+  if (!svg) return;
+  const geo = state.geo;
+  const W = geo.w, H = geo.h;
+  const pad = 26, headH = 58, legH = 46, scale = 2;
+  const c = document.createElement("canvas");
+  c.width = (W + pad * 2) * scale;
+  c.height = (H + headH + legH + pad * 2) * scale;
+  const ctx = c.getContext("2d");
+  ctx.scale(scale, scale);
+  ctx.fillStyle = "#FBF8F1";
+  ctx.fillRect(0, 0, W + pad * 2, H + headH + legH + pad * 2);
+  ctx.fillStyle = "#1A1A1A";
+  ctx.font = '900 22px Archivo,Arial,sans-serif';
+  const chamber = US_LABELS[state.chamber];
+  ctx.fillText(`${chamber} map — 600 model`, pad, 36);
+  ctx.font = '700 12px Archivo,Arial,sans-serif';
+  ctx.fillStyle = "#777";
+  const stamp = state.forecast && state.forecast.generated
+    ? new Date(state.forecast.generated).toUTCString().slice(0, 16) : "";
+  ctx.fillText(`favoured party, intensity = win chance · ${stamp}`, pad, 52);
+
+  const clone = svg.cloneNode(true);
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  clone.setAttribute("width", W);
+  clone.setAttribute("height", H);
+  const css = document.createElementNS("http://www.w3.org/2000/svg", "style");
+  css.textContent = ".st{stroke:#fff;stroke-width:0.6}.dist{stroke:#fff;stroke-width:0.4}"
+    + ".sub{stroke:#1A1A1A;stroke-width:1;fill:none;opacity:0.55}"
+    + ".land{fill:#EFE9DE;stroke:#fff;stroke-width:0.6}"
+    + ".st.focus,.dist.focus{stroke:#1A1A1A}";
+  clone.insertBefore(css, clone.firstChild);
+  const data = new XMLSerializer().serializeToString(clone);
+  const img = new Image();
+  img.onload = () => {
+    ctx.drawImage(img, pad, headH, W, H);
+    // legend: gradient + tossup / no race / independent swatches
+    const ly = headH + H + 24;
+    const gw = 260;
+    for (let i = 0; i <= 40; i++) {
+      ctx.fillStyle = raceColor(i * 2.5);
+      ctx.fillRect(pad + 96 + (i / 40) * gw, ly - 9, gw / 40 + 1, 12);
+    }
+    ctx.strokeStyle = "#D8D0BF";
+    ctx.strokeRect(pad + 96, ly - 9, gw, 12);
+    ctx.fillStyle = "#1A1A1A";
+    ctx.font = '800 11px Archivo,Arial,sans-serif';
+    ctx.fillText("Democratic win chance", pad, ly);
+    ctx.fillText("0%", pad + 96 + gw + 6, ly);
+    ctx.fillStyle = "#777";
+    ctx.fillText("100%", pad + 96 + gw + 30, ly);
+    const sw = (x, col, label) => {
+      ctx.fillStyle = col;
+      ctx.fillRect(x, ly - 9, 12, 12);
+      ctx.strokeStyle = "#D8D0BF";
+      ctx.strokeRect(x, ly - 9, 12, 12);
+      ctx.fillStyle = "#777";
+      ctx.fillText(label, x + 18, ly);
+    };
+    sw(pad + 96 + gw + 74, C_TOSSUP, "tossup");
+    sw(pad + 96 + gw + 142, C_GRAY, "no race");
+    sw(pad + 96 + gw + 214, C_I, "independent");
+    c.toBlob((b) => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(b);
+      a.download = `600-${state.chamber}-map.png`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  };
+  img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(data);
 }
 
 function mapReset() {

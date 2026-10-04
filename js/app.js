@@ -1761,39 +1761,77 @@ function districtSeatSplit(nr, avg, resultMode, conf){
   return list;
 }
 
-// The district's largest ring: its polygon centroid and bounding box are a
-// better dot anchor than the path's bbox centre (island groups like the
-// Balearics, the Canaries or Estonia's Saaremaa have their bbox centre in
-// the sea).
-function largestRing(ph){
+// Dot anchor for a district path: the interior point farthest from the
+// polygon edges ("pole of inaccessibility", found on a coarse grid) plus its
+// clearance. The area centroid lands outside annular regions (Central
+// Bohemia wraps around Prague) or in the sea (island groups), and the
+// clearance lets the cluster shrink to stay inside small districts (Warsaw,
+// Tallinn's districts). All rings of the path are used, so holes count as
+// outside.
+function dotAnchor(ph){
   const d=ph.getAttribute('d')||'';
-  let best=null;
+  const rings=[];
   d.split(/[Mm]/).forEach(seg=>{
     const pts=[];
     const re=/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g;
     let m;
     while((m=re.exec(seg))) pts.push([parseFloat(m[1]),parseFloat(m[2])]);
-    if(pts.length<3) return;
-    let a=0,cx=0,cy=0,minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
-    for(let i=0;i<pts.length;i++){
-      const [x0,y0]=pts[i], [x1,y1]=pts[(i+1)%pts.length];
-      const cr=x0*y1-x1*y0;
-      a+=cr; cx+=(x0+x1)*cr; cy+=(y0+y1)*cr;
-      if(x0<minX)minX=x0; if(x0>maxX)maxX=x0;
-      if(y0<minY)minY=y0; if(y0>maxY)maxY=y0;
-    }
-    a/=2;
-    const area=Math.abs(a);
-    if(!best||area>best.area){
-      best={area,cx:cx/(6*a),cy:cy/(6*a),w:maxX-minX,h:maxY-minY};
-    }
+    if(pts.length>=3) rings.push(pts);
   });
-  return best;
+  if(!rings.length) return null;
+  let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
+  rings.forEach(ring=>ring.forEach(([x,y])=>{
+    if(x<minX)minX=x; if(x>maxX)maxX=x;
+    if(y<minY)minY=y; if(y>maxY)maxY=y;
+  }));
+  const w=maxX-minX, h=maxY-minY;
+  // subsample long rings: placement does not need full resolution
+  const simple=rings.map(ring=>{
+    if(ring.length<=160) return ring;
+    const step=Math.ceil(ring.length/160), out=[];
+    for(let i=0;i<ring.length;i+=step) out.push(ring[i]);
+    return out;
+  });
+  const inside=(x,y)=>{
+    let hit=false;
+    simple.forEach(ring=>{
+      for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+        const [xi,yi]=ring[i], [xj,yj]=ring[j];
+        if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi)) hit=!hit;
+      }
+    });
+    return hit;
+  };
+  const clearance=(x,y)=>{
+    let dmin=1e18;
+    simple.forEach(ring=>{
+      for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+        const [x1,y1]=ring[i], [x2,y2]=ring[j];
+        const dx=x2-x1, dy=y2-y1;
+        const t=Math.max(0,Math.min(1,((x-x1)*dx+(y-y1)*dy)/(dx*dx+dy*dy||1)));
+        const ex=x1+t*dx-x, ey=y1+t*dy-y;
+        const dd=ex*ex+ey*ey;
+        if(dd<dmin)dmin=dd;
+      }
+    });
+    return Math.sqrt(dmin);
+  };
+  const N=12;
+  let px=(minX+maxX)/2, py=(minY+maxY)/2, pd=0;
+  for(let i=1;i<N;i++){
+    for(let j=1;j<N;j++){
+      const x=minX+w*i/N, y=minY+h*j/N;
+      if(!inside(x,y)) continue;
+      const dd=clearance(x,y);
+      if(dd>pd){pd=dd;px=x;py=y}
+    }
+  }
+  return {px,py,pd,w,h};
 }
 
 // Seat circles: one dot per seat inside each multi-member district, coloured
 // by the party that won it and grouped in a compact grid at the district's
-// centre.
+// anchor point.
 function drawSeatDots(svg, mapped, avg, resultMode, conf){
   const NS='http://www.w3.org/2000/svg';
   const g=document.createElementNS(NS,'g');
@@ -1801,16 +1839,17 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
   mapped.forEach(({nr,ph})=>{
     const list=districtSeatSplit(nr, avg, resultMode, conf);
     if(!list||!list.length) return;
-    const lr=largestRing(ph);
-    const bb=lr?{width:lr.w,height:lr.h}:ph.getBBox();
-    if(!bb.width||!bb.height) return;
-    const cx=lr?lr.cx:bb.width/2, cy=lr?lr.cy:bb.height/2;
+    const anc=dotAnchor(ph);
+    if(!anc) return;
     const n=list.length;
     const cols=Math.min(7,Math.max(1,Math.ceil(Math.sqrt(n))));
     const rows=Math.ceil(n/cols);
-    const r=Math.max(1.0,Math.min(4.2,(Math.min(bb.width,bb.height)*0.85)/(cols*2.15)));
+    // fit the cluster inside the anchor's clearance when the district is
+    // small; cap the dot size in large districts
+    const fit=anc.pd>0?(anc.pd*0.9)/(1.075*Math.max(cols,rows)):3.4;
+    const r=Math.max(0.7,Math.min(4.2,fit));
     const sp=2.15*r;
-    const x0=cx-(cols-1)*sp/2, y0=cy-(rows-1)*sp/2;
+    const x0=anc.px-(cols-1)*sp/2, y0=anc.py-(rows-1)*sp/2;
     list.forEach((p,i)=>{
       const c=document.createElementNS(NS,'circle');
       c.setAttribute('cx',(x0+(i%cols)*sp).toFixed(2));
@@ -4263,6 +4302,12 @@ function applyUrlParams(){
   if(typeof location==='undefined') return;
   const p=new URLSearchParams(location.search);
   if(p.get('l')==='2') MAP_LAYER=1;
+  // optional time-range deep link (?d=30/60/90/2026/9999)
+  const d=p.get('d');
+  if(d){
+    const sel=document.getElementById('filter-days');
+    if(sel&&[...sel.options].some(o=>o.value===d)) sel.value=d;
+  }
   const t=p.get('t');
   if(t&&t!=='polls'){
     const btn=document.querySelector('.tab-trigger[data-tab="'+t+'"]');

@@ -361,6 +361,11 @@ def main():
       svg: 'img/nz.svg',
       selector: 'id',
       useConstituencies: true,
+      // sitting-member personal-vote lift for the party that won the
+      // electorate last time (baseline-winner heuristic: no target-candidate
+      // data, so only the positive arm; retiring-MP deboost needs candidate
+      // lists)
+      incumbentBoost: 2.0,
       hideBlocToggle: true,
       // Maori electorates hold their 2023 winners: they are decided by the
       // candidate vote, not the party-vote swing

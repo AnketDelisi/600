@@ -254,6 +254,10 @@ def main():
       // Restore Britain is a Reform splinter, so the borrowed shape is
       // trusted more (c=0.7) than a generic new party would be
       swingProxyConfidence: { res: 0.7 },
+      // sitting-member personal-vote lift for the party that won the seat
+      // last time (baseline-winner heuristic: no target-candidate data, so
+      // only the positive arm; retiring-MP deboost needs candidate lists)
+      incumbentBoost: 2.0,
       // notional holds: Great Yarmouth stays Restore Britain's (Rupert Lowe's
       // defection), so RES keeps its re-attributed 2024 baseline there while
       // the other parties swing normally

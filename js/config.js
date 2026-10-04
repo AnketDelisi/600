@@ -23448,6 +23448,10 @@ saxony_anhalt: {
       // the borrowed shape is shrunk halfway toward the Conservatives'
       // national share (see swingProxyConfidence in districtShares)
       swingProxyConfidence: { onbc: 0.5, cbc: 0.5 },
+      // sitting-member personal-vote lift for the party that won the riding
+      // last time (baseline-winner heuristic: no target-candidate data, so
+      // only the positive arm; retiring-MLA deboost needs candidate lists)
+      incumbentBoost: 2.0,
       districts: {
               "abbotsford-mission": "abbotsford-mission",
               "abbotsfordsouth": "abbotsfordsouth",
@@ -24368,6 +24372,10 @@ saxony_anhalt: {
       swingMethod: 'geometric',
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
+      // sitting-member personal-vote lift for the party that won the seat
+      // last time (baseline-winner heuristic: no target-candidate data, so
+      // only the positive arm; retiring-MP deboost needs candidate lists)
+      incumbentBoost: 2.0,
       hideBlocToggle: true,
       districts: {
               "abitibi-est": "abitibi-est",
@@ -25657,6 +25665,10 @@ saxony_anhalt: {
       // Restore Britain is a Reform splinter, so the borrowed shape is
       // trusted more (c=0.7) than a generic new party would be
       swingProxyConfidence: { res: 0.7 },
+      // sitting-member personal-vote lift for the party that won the seat
+      // last time (baseline-winner heuristic: no target-candidate data, so
+      // only the positive arm; retiring-MP deboost needs candidate lists)
+      incumbentBoost: 2.0,
       // notional holds: Great Yarmouth stays Restore Britain's (Rupert Lowe's
       // defection), so RES keeps its re-attributed 2024 baseline there while
       // the other parties swing normally
@@ -39424,6 +39436,11 @@ saxony_anhalt: {
       svg: 'img/nz.svg',
       selector: 'id',
       useConstituencies: true,
+      // sitting-member personal-vote lift for the party that won the
+      // electorate last time (baseline-winner heuristic: no target-candidate
+      // data, so only the positive arm; retiring-MP deboost needs candidate
+      // lists)
+      incumbentBoost: 2.0,
       hideBlocToggle: true,
       // Maori electorates hold their 2023 winners: they are decided by the
       // candidate vote, not the party-vote swing

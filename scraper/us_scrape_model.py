@@ -24,9 +24,10 @@ Pipeline per race:
      describe them.
   4. National-swing Monte Carlo: every race shares a common environment
      shift S ~ N(env_weight * env_margin, sigma_n), where env_margin is the
-     generic-ballot margin (D - R points). env_weight is chamber-specific
-     (0.25 for rated races, 1.0 for unrated; polls/ratings already embed the
-     environment). A race is won by the side with the highest softmax
+     generic-ballot margin (D - R points), plus one per-state correlated
+     deviation per night (sigma_state) so a state's Senate seat and House
+     districts move together. env_weight is chamber-specific (0.25 for rated
+     races, 1.0 for unrated; polls/ratings already embed the environment). A race is won by the side with the highest softmax
      probability softmax(share/beta) — for two sides this is exactly the
      previous logistic((margin + S)/beta). Races without a Democrat get the
      national shock only. Chamber seat tallies count Democrats, Republicans
@@ -58,6 +59,12 @@ RATING_ORDER = ("cook", "ie", "sabato")
 # logistic slope for win probability
 LOGISTIC_BETA = {"senate": 4.0, "house": 4.5, "governor": 4.0}
 NATIONAL_SIGMA = 2.5
+# per-state correlated swing deviation (points): every race in a state shares
+# one draw per simulated night, so a state's Senate seat and House districts
+# move together - the same architecture as the main site's regional swing
+# error. A state MEAN deviation would only re-encode PVI (double-count), so
+# this is mean-zero correlated noise on top of the national shock.
+STATE_SIGMA = 1.5
 POLL_WEIGHT = 0.65
 # generic-ballot margin enters the national swing at a chamber-specific weight:
 # race ratings (Cook/IE/Sabato) and polls already embed the current environment,
@@ -327,6 +334,7 @@ def run(chamber, races, poll_map, env_margin):
     names = {}
     rated = {}
     polls_used = {}
+    state_of = {}
     for r in races:
         label = (r["state"].replace("_", " "), r.get("district", ""))
         if chamber == "house":
@@ -338,6 +346,7 @@ def run(chamber, races, poll_map, env_margin):
         sides[label_key] = sh
         names[label_key] = nm
         polls_used[label_key] = polls
+        state_of[label_key] = label[0]
         # polled independent races: the polls embed the environment, so use
         # the small rated weight; otherwise the rating consensus decides
         rated[label_key] = True if polled_ind else (consensus_band(r.get("ratings")) is not None)
@@ -387,17 +396,22 @@ def run(chamber, races, poll_map, env_margin):
     seatz_i = [0] * N_SIMS
     for i in range(N_SIMS):
         Z = RNG.gauss(0.0, NATIONAL_SIGMA)
+        ZS = {}
         dw = rw = iw = 0
         for k, sh in sides.items():
+            st = state_of[k]
+            if st not in ZS:
+                ZS[st] = RNG.gauss(0.0, STATE_SIGMA)
             mu = rated_env if rated[k] else unrated_env
             # the national environment moves the Democrat-against-the-field
             # margin; a race with no Democrat (Nebraska/Idaho R-vs-I) gets
             # the national shock only: the generic ballot says little about
-            # Republican-vs-Independent
+            # Republican-vs-Independent. The state deviation applies to all
+            # races in the state.
             if "D" in sh:
-                swing, swing_party = mu + Z, "D"
+                swing, swing_party = mu + Z + ZS[st], "D"
             else:
-                swing, swing_party = Z, "R"
+                swing, swing_party = Z + ZS[st], "R"
             probs = win_probs(sh, swing, swing_party)
             u = RNG.random()
             acc = 0.0
@@ -505,8 +519,9 @@ def main():
             "generic_ballot_generic_margin": env,
             "n_sims": N_SIMS,
             "rating_margin_table": RATING_MARGIN,
-            "margin_method": "PVI prior placed inside rating band (rating sets direction+strength, PVI gives continuous margin)",
+            "margin_method": "PVI prior placed inside the rating band (rating sets direction+strength, PVI gives continuous margin)",
             "national_swing_sigma": NATIONAL_SIGMA,
+            "state_swing_sigma": STATE_SIGMA,
             "env_weights": ENV_WEIGHT,
         },
         "senate": run("senate", base["races"]["senate"], polls["senate"], env),

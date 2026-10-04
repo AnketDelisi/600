@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T19:57:49Z",
+  "generated": "2026-10-04T20:04:07Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -13,8 +13,9 @@
       "tilt": 3.0,
       "tossup": 0.0
     },
-    "margin_method": "PVI prior placed inside rating band (rating sets direction+strength, PVI gives continuous margin)",
+    "margin_method": "PVI prior placed inside the rating band (rating sets direction+strength, PVI gives continuous margin)",
     "national_swing_sigma": 2.5,
+    "state_swing_sigma": 1.5,
     "env_weights": {
       "senate": 0.25,
       "house": 0.25,
@@ -3142,25 +3143,25 @@
     "expected_r_seats": 47.3,
     "expected_i_seats": 1.1,
     "majority": {
-      "dem_pct": 83.3,
-      "rep_pct": 8.5
+      "dem_pct": 82.9,
+      "rep_pct": 8.6
     },
     "distribution_buckets": [
       {
         "seats": 45,
-        "pct": 0.2
+        "pct": 0.1
       },
       {
         "seats": 47,
-        "pct": 1.2
+        "pct": 1.5
       },
       {
         "seats": 49,
-        "pct": 7.0
+        "pct": 7.1
       },
       {
         "seats": 51,
-        "pct": 20.5
+        "pct": 20.8
       },
       {
         "seats": 53,
@@ -3168,19 +3169,15 @@
       },
       {
         "seats": 55,
-        "pct": 27.5
+        "pct": 26.9
       },
       {
         "seats": 57,
-        "pct": 9.5
+        "pct": 9.6
       },
       {
         "seats": 59,
-        "pct": 1.2
-      },
-      {
-        "seats": 61,
-        "pct": 0.1
+        "pct": 1.3
       }
     ]
   },
@@ -12701,21 +12698,25 @@
         "polls": null
       }
     ],
-    "expected_d_seats": 244.2,
-    "expected_r_seats": 190.8,
+    "expected_d_seats": 244.6,
+    "expected_r_seats": 190.4,
     "expected_i_seats": 0.1,
     "majority": {
-      "dem_pct": 93.6,
-      "rep_pct": 6.4
+      "dem_pct": 93.7,
+      "rep_pct": 6.3
     },
     "distribution_buckets": [
       {
-        "seats": 199,
+        "seats": 197,
         "pct": 0.1
       },
       {
+        "seats": 199,
+        "pct": 0.2
+      },
+      {
         "seats": 201,
-        "pct": 0.1
+        "pct": 0.2
       },
       {
         "seats": 203,
@@ -12723,7 +12724,7 @@
       },
       {
         "seats": 205,
-        "pct": 0.3
+        "pct": 0.2
       },
       {
         "seats": 207,
@@ -12731,7 +12732,7 @@
       },
       {
         "seats": 209,
-        "pct": 0.6
+        "pct": 0.5
       },
       {
         "seats": 211,
@@ -12739,19 +12740,19 @@
       },
       {
         "seats": 213,
-        "pct": 1.0
+        "pct": 0.9
       },
       {
         "seats": 215,
-        "pct": 1.2
+        "pct": 1.1
       },
       {
         "seats": 217,
-        "pct": 1.4
+        "pct": 1.6
       },
       {
         "seats": 219,
-        "pct": 1.7
+        "pct": 1.8
       },
       {
         "seats": 221,
@@ -12759,15 +12760,15 @@
       },
       {
         "seats": 223,
-        "pct": 2.4
+        "pct": 2.1
       },
       {
         "seats": 225,
-        "pct": 2.8
+        "pct": 2.6
       },
       {
         "seats": 227,
-        "pct": 2.8
+        "pct": 2.9
       },
       {
         "seats": 229,
@@ -12775,27 +12776,27 @@
       },
       {
         "seats": 231,
-        "pct": 3.5
+        "pct": 3.7
       },
       {
         "seats": 233,
-        "pct": 4.1
+        "pct": 3.7
       },
       {
         "seats": 235,
-        "pct": 4.2
+        "pct": 4.0
       },
       {
         "seats": 237,
-        "pct": 4.1
+        "pct": 4.2
       },
       {
         "seats": 239,
-        "pct": 4.5
+        "pct": 4.3
       },
       {
         "seats": 241,
-        "pct": 4.4
+        "pct": 4.3
       },
       {
         "seats": 243,
@@ -12803,35 +12804,35 @@
       },
       {
         "seats": 245,
-        "pct": 4.3
+        "pct": 4.4
       },
       {
         "seats": 247,
-        "pct": 4.2
+        "pct": 4.0
       },
       {
         "seats": 249,
-        "pct": 4.3
+        "pct": 4.0
       },
       {
         "seats": 251,
-        "pct": 3.6
+        "pct": 4.2
       },
       {
         "seats": 253,
-        "pct": 3.7
+        "pct": 3.8
       },
       {
         "seats": 255,
-        "pct": 3.4
+        "pct": 3.6
       },
       {
         "seats": 257,
-        "pct": 2.9
+        "pct": 3.0
       },
       {
         "seats": 259,
-        "pct": 3.1
+        "pct": 3.0
       },
       {
         "seats": 261,
@@ -12839,7 +12840,7 @@
       },
       {
         "seats": 263,
-        "pct": 2.3
+        "pct": 2.4
       },
       {
         "seats": 265,
@@ -12851,11 +12852,11 @@
       },
       {
         "seats": 269,
-        "pct": 1.8
+        "pct": 1.9
       },
       {
         "seats": 271,
-        "pct": 1.4
+        "pct": 1.5
       },
       {
         "seats": 273,
@@ -12863,15 +12864,15 @@
       },
       {
         "seats": 275,
-        "pct": 1.1
+        "pct": 1.3
       },
       {
         "seats": 277,
-        "pct": 0.9
+        "pct": 1.0
       },
       {
         "seats": 279,
-        "pct": 0.8
+        "pct": 0.7
       },
       {
         "seats": 281,
@@ -12883,7 +12884,7 @@
       },
       {
         "seats": 285,
-        "pct": 0.4
+        "pct": 0.5
       },
       {
         "seats": 287,
@@ -12891,11 +12892,11 @@
       },
       {
         "seats": 289,
-        "pct": 0.2
+        "pct": 0.3
       },
       {
         "seats": 291,
-        "pct": 0.2
+        "pct": 0.3
       },
       {
         "seats": 293,
@@ -12911,14 +12912,10 @@
       },
       {
         "seats": 299,
-        "pct": 0.1
+        "pct": 0.2
       },
       {
         "seats": 301,
-        "pct": 0.1
-      },
-      {
-        "seats": 303,
         "pct": 0.1
       }
     ]

@@ -251,6 +251,9 @@ def main():
       // geographic shape for the swing, so its vote concentrates where
       // Reform is strong instead of being flat across every seat
       swingProxy: { res: 'ref' },
+      // Restore Britain is a Reform splinter, so the borrowed shape is
+      // trusted more (c=0.7) than a generic new party would be
+      swingProxyConfidence: { res: 0.7 },
       // notional holds: Great Yarmouth stays Restore Britain's (Rupert Lowe's
       // defection), so RES keeps its re-attributed 2024 baseline there while
       // the other parties swing normally

@@ -225,6 +225,9 @@ def main():
       // OneBC (right-wing split) and CentreBC (the BC United successor) draw
       // from the Conservative vote, so they track the CPBC's 2024 map
       swingProxy: { onbc: 'cpbc', cbc: 'cpbc' },
+      // the borrowed shape is shrunk halfway toward the Conservatives'
+      // national share (see swingProxyConfidence in districtShares)
+      swingProxyConfidence: { onbc: 0.5, cbc: 0.5 },
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,

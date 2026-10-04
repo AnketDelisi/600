@@ -1550,8 +1550,19 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
       // swing, so their projected vote concentrates where the parent is
       // strong instead of being flat across every district.
       const prox=(conf.swingProxy&&conf.swingProxy[p])||null;
-      const pastS=prox?(base[prox]||0):past;
       const natS=prox?(nat[prox]||0):natP;
+      let pastS=prox?(base[prox]||0):past;
+      // Confidence-weighted proxy baseline: a borrowed shape is less
+      // trustworthy than a real result, so pull it toward the proxy's national
+      // share (Poliwave reconstruction: R~ = c*R + (1-c)*A, with A the
+      // party's average). c defaults to 0.5 and is configurable per party via
+      // swingProxyConfidence.
+      if(prox){
+        const c=(conf.swingProxyConfidence&&
+                 conf.swingProxyConfidence[p]!==undefined)
+          ?conf.swingProxyConfidence[p]:0.5;
+        pastS=c*pastS+(1-c)*natS;
+      }
       let natNow;
       if(method==='geometric'&&pastS>0&&natS>0.5){
         // Geometric mean of log-odds proportional and uniform swing (Poliwave
@@ -1565,8 +1576,15 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
           return Math.log(c/(100-c));
         };
         const prop=100/(1+Math.exp(-(lg(pastS)+lg(avgP)-lg(natS))));
-        const uni=Math.max(0,pastS+(avgP-natS));
-        natNow=Math.min(100,Math.sqrt(Math.max(0,prop)*uni));
+        if(prox){
+          // proxy parties measure their baseline in the parent's scale, so
+          // the uniform arm (pastS - natS) would go negative and zero them in
+          // weak-parent seats; only the bounded proportional arm applies
+          natNow=prop;
+        }else{
+          const uni=Math.max(0,pastS+(avgP-natS));
+          natNow=Math.min(100,Math.sqrt(Math.max(0,prop)*uni));
+        }
       }else if(method==='proportional'&&natS>0.5){
         natNow=Math.max(0,pastS*(avgP/natS));
       }else if(method==='shrunk'){

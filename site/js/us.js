@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004j";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004j";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004j";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004k";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004k";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004k";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -241,7 +241,7 @@ function buildMapHTML(chamberData) {
   const stateD = [];
   for (const st of geo.states) {
     const race = stateRace(races, st.name);
-    const fill = race ? raceColor(race.dem_pct, race.rating, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
+    const fill = race ? raceColor(race.dem_pct, race.lean, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
     stateD.push(`<path class="st" data-name="${st.name}" data-idx="${geo.states.indexOf(st)}" d="${st.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`);
   }
 
@@ -257,7 +257,7 @@ function buildMapHTML(chamberData) {
     const dists = geo.districts.filter((d) => d.s === si);
     const dPaths = dists.map((d) => {
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
-      const fill = race ? raceColor(race.dem_pct, race.rating, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
+      const fill = race ? raceColor(race.dem_pct, race.lean, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
       return `<path class="dist" data-name="${st.name} ${d.cd}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `<g transform="${t}">${dPaths.join("")}</g>`;
@@ -265,7 +265,7 @@ function buildMapHTML(chamberData) {
     const dPaths = geo.districts.map((d) => {
       const st = geo.states[d.s];
       const race = races.find((r) => r.state === st.name && String(r.district || "") === d.cd);
-      const fill = race ? raceColor(race.dem_pct, race.rating, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
+      const fill = race ? raceColor(race.dem_pct, race.lean, race.ind_pct, race.leader, race.rep_pct) : C_GRAY;
       return `<path class="dist" data-name="${st.name} ${d.cd === "at-large" ? "At Large" : d.cd}" data-idx="${d.s}" d="${d.d}" style="fill:${fill}"${race ? ` data-race="${raceKey(race)}"` : ""}/>`;
     });
     body = `${dPaths.join("")}<g class="sub">${geo.states.map((s) => `<path d="${s.d}"/>`).join("")}</g>`;

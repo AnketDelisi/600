@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T21:04:52Z",
+  "generated": "2026-10-04T21:17:51Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -2563,8 +2563,8 @@
           "sabato": "Tossup"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -2.1,
+        "leader": "D",
+        "margin": 2.1,
         "dem_pct": 64.4,
         "rep_pct": 35.6,
         "ind_pct": 0.0,
@@ -2761,8 +2761,8 @@
           "sabato": "Lean D"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -2.1,
+        "leader": "D",
+        "margin": 2.1,
         "dem_pct": 64.3,
         "rep_pct": 35.7,
         "ind_pct": 0.0,
@@ -12277,8 +12277,8 @@
           "sabato": "Tossup"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -1.2,
+        "leader": "D",
+        "margin": 1.2,
         "dem_pct": 58.7,
         "rep_pct": 41.3,
         "ind_pct": 0.0,
@@ -12382,8 +12382,8 @@
           "sabato": "Lean R"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.8,
+        "leader": "D",
+        "margin": 0.8,
         "dem_pct": 55.7,
         "rep_pct": 44.3,
         "ind_pct": 0.0,
@@ -12511,8 +12511,8 @@
           "sabato": "Lean R(flip)"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.5,
+        "leader": "D",
+        "margin": 0.5,
         "dem_pct": 53.7,
         "rep_pct": 46.3,
         "ind_pct": 0.0,
@@ -12643,8 +12643,8 @@
           "sabato": "Tossup"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.4,
+        "leader": "D",
+        "margin": 0.4,
         "dem_pct": 52.9,
         "rep_pct": 47.1,
         "ind_pct": 0.0,
@@ -12771,8 +12771,8 @@
           "sabato": "Lean D(flip)"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.4,
+        "leader": "D",
+        "margin": 0.4,
         "dem_pct": 52.5,
         "rep_pct": 47.5,
         "ind_pct": 0.0,
@@ -12927,8 +12927,8 @@
           "sabato": "Lean D(flip)"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -0.1,
+        "leader": "D",
+        "margin": 0.1,
         "dem_pct": 50.8,
         "rep_pct": 49.2,
         "ind_pct": 0.0,
@@ -16011,8 +16011,8 @@
           "sabato": "Tossup"
         },
         "lean": "Tossup",
-        "leader": "R",
-        "margin": -1.0,
+        "leader": "D",
+        "margin": 1.0,
         "dem_pct": 56.8,
         "rep_pct": 43.2,
         "ind_pct": 0.0,

@@ -1458,8 +1458,8 @@ saxony_anhalt: {
     // minority lists (Serbia art. 81): exempt from the 3% threshold
     minorityParties: ['vmsz', 'spp', 'sda', 'rs', 'kshlp'],
     blocs: {
-      bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps'], color: '#1B4381' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp'], color: '#A6192E' },
+      bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps', 'vmsz', 'rs'], color: '#1B4381' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs', 'spp', 'sda', 'sdp', 'kshlp'], color: '#A6192E' },
     },
     logos: {
       sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg', srs: 'img/serbia/SRS.svg',

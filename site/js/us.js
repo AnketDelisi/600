@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004k";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004k";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004k";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004l";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004l";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004l";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -48,11 +48,12 @@ function raceColor(dem, rating, ind, leader, rep) {
   const i = ind || 0;
   const lead = leader || (dem >= 50 ? "D" : "R");
   const p = lead === "D" ? dem : lead === "R" ? (rep != null ? rep : 100 - dem) : i;
-  // an independent leading the race gets its own colour; intensity comes from
-  // the leader's win probability (dem_pct is 0 in R-vs-I races, which would
-  // otherwise paint Idaho/South Dakota fully red)
-  if (lead === "I" && p > 50) return C_I;
+  // our own rating decides the tossup first: Nebraska leads with an
+  // independent but is a 0.2-point race, so it is tan like any other
+  // tossup; the independent colour only appears when an independent is
+  // clear of the tossup band (Lean I or better)
   if (rating && /tossup/i.test(rating)) return C_TOSSUP;
+  if (lead === "I" && p > 50) return C_I;
   const t = Math.max(0, Math.min(1, (p - 50) / 50));
   const base = lead === "R" ? C_R : C_D;
   return mixColor(parseInt(C_NEUT.slice(1), 16), parseInt(base.slice(1), 16), t);

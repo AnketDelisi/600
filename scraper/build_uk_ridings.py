@@ -163,6 +163,7 @@ def main():
             shares = {p: round(r["votes"].get(p, 0) * 100 / r["total"], 2)
                       for p in PARTIES}
         cons.append({"id": bm.fold(name), "name": name, "seats": 1,
+                     "votes2022": r["total"] if r else 0,
                      "results_2022": shares, "_code": code})
     print("without results:", missing)
     ids = [c["id"] for c in cons]

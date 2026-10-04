@@ -147,7 +147,9 @@ def main():
     for key in sorted(set(bm.fold(n) for n in geo_names)):
         disp = next(n for n in geo_names if bm.fold(n) == key)
         r = lookup(disp) or {p: 0 for p in PARTIES}
+        src = resolve(disp)
         cons.append({"id": key, "name": disp, "seats": 1,
+                     "votes2022": raw[src][1] if src else 0,
                      "results_2022": r})
     assert len(cons) == 127, "expected 127 ridings"
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)

@@ -1503,7 +1503,7 @@ function constituencyById(id){
 // district's previous-election baseline; returns per-party {party: {past, now}}.
 // When resultMode is true, returns the actual previous election per-district
 // results (past === now) so the map shows that election's result.
-function districtShares(nr, avg, resultMode, confOverride, regionNoise){
+function districtShares(nr, avg, resultMode, confOverride, regionNoise, districtNoise){
   const conf=confOverride||MAP_CONF();
   let base;
   if(conf.useConstituencies){
@@ -1612,23 +1612,29 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise){
   }else{
     out.other={past:rem, now:rem};
   }
-  // Simulation-only regional swing error: shift the two blocs in opposite
-  // directions by the region's drawn deviation (same mechanism as the
-  // national bloc swing, keyed on the district's region).
-  if(regionNoise&&conf.regionOf&&!resultMode){
-    const d=regionNoise[conf.regionOf[String(nr)]]||0;
+  // Simulation-only swing errors: shift the two blocs in opposite directions
+  // by the region's or the district's drawn deviation (same mechanism as the
+  // national bloc swing).
+  const shiftBlocs=(d)=>{
     const b1=BLOCS&&BLOCS.bloc1, b2=BLOCS&&BLOCS.bloc2;
-    if(d&&b1&&b2&&b1.parties&&b2.parties){
-      const t1=b1.parties.reduce((a,p)=>a+(out[p]?out[p].now:0),0);
-      const t2=b2.parties.reduce((a,p)=>a+(out[p]?out[p].now:0),0);
-      if(t1>0&&t2>0){
-        const f1=Math.max(0.05,1+d/t1), f2=Math.max(0.05,1-d/t2);
-        for(const p of PARTY_ORDER){
-          if(!out[p]) continue;
-          if(b1.parties.includes(p)) out[p].now=Math.max(0,out[p].now*f1);
-          else if(b2.parties.includes(p)) out[p].now=Math.max(0,out[p].now*f2);
-        }
+    if(!d||!b1||!b2||!b1.parties||!b2.parties) return;
+    const t1=b1.parties.reduce((a,p)=>a+(out[p]?out[p].now:0),0);
+    const t2=b2.parties.reduce((a,p)=>a+(out[p]?out[p].now:0),0);
+    if(t1>0&&t2>0){
+      const f1=Math.max(0.05,1+d/t1), f2=Math.max(0.05,1-d/t2);
+      for(const p of PARTY_ORDER){
+        if(!out[p]) continue;
+        if(b1.parties.includes(p)) out[p].now=Math.max(0,out[p].now*f1);
+        else if(b2.parties.includes(p)) out[p].now=Math.max(0,out[p].now*f2);
       }
+    }
+  };
+  if(!resultMode){
+    if(regionNoise&&conf.regionOf){
+      shiftBlocs(regionNoise[conf.regionOf[String(nr)]]||0);
+    }
+    if(districtNoise){
+      shiftBlocs(districtNoise[String(nr)]||0);
     }
   }
   return out;
@@ -1654,8 +1660,8 @@ function districtPartySeats(nr, party, avg, resultMode){
   return alloc[party]||0;
 }
 
-function districtWinnerProjection(nr, avg, confOverride, regionNoise){
-  const shares=districtShares(nr, avg, false, confOverride, regionNoise);
+function districtWinnerProjection(nr, avg, confOverride, regionNoise, districtNoise){
+  const shares=districtShares(nr, avg, false, confOverride, regionNoise, districtNoise);
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
@@ -2530,12 +2536,12 @@ function allocateSeatsItaly(avg){
 // First-past-the-post: every seat is a single-member riding; the projected
 // winner (plurality of the swung shares) takes it. Used by BC/Quebec-style
 // pure-FPTP countries whose map is the riding layer itself.
-function allocateSeatsFptp(avg, regionNoise){
+function allocateSeatsFptp(avg, regionNoise, districtNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.useConstituencies||!conf.districts) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.districts)){
-    const w=districtWinnerProjection(nr,avg,conf,regionNoise);
+    const w=districtWinnerProjection(nr,avg,conf,regionNoise,districtNoise);
     if(w) out[w]=(out[w]||0)+1;
   }
   return out;
@@ -2801,6 +2807,23 @@ const FORECAST_SWING=2.0;
 // and applies it to every district of that region via conf.regionOf; countries
 // without a region map keep the pure national draw.
 const FORECAST_REGION_SIGMA=1.5;
+// Per-district swing error: local factors (candidate quality, local issues)
+// make a single district's swing noisier than its region's, and a small
+// electorate gives more leverage to single events (Poliwave): the error scales
+// as sqrt(median electorate / district electorate), using the 2022 valid-vote
+// count as the electorate proxy (stored per constituency as votes2022).
+const FORECAST_DISTRICT_SIGMA=1.5;
+
+let DISTRICT_VOTES_MEDIAN=null, DISTRICT_VOTES_KEY=null;
+function districtVotesMedian(){
+  if(!CONSTITUENCIES||!CONSTITUENCIES.constituencies) return 0;
+  if(DISTRICT_VOTES_KEY===CONSTITUENCIES) return DISTRICT_VOTES_MEDIAN;
+  const votes=CONSTITUENCIES.constituencies
+    .map(c=>c.votes2022||0).filter(v=>v>0).sort((a,b)=>a-b);
+  DISTRICT_VOTES_KEY=CONSTITUENCIES;
+  DISTRICT_VOTES_MEDIAN=votes.length?votes[Math.floor(votes.length/2)]:0;
+  return DISTRICT_VOTES_MEDIAN;
+}
 // Apply a common bloc swing to a shares vector. Returns a new object.
 function applyNationalSwing(simVotes){
   if(ARCHIVE_MODE) return simVotes;   // frozen snapshot predates the swing
@@ -2936,7 +2959,22 @@ function runForecast(avg, nSims, nPolls){
         if(!(r in regionNoise)) regionNoise[r]=gaussianSample(fcRand)*FORECAST_REGION_SIGMA;
       }
     }
-    const seats=(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise):allocateSeatsFast(simVotes,SEATS_TOTAL));
+    // per-district swing error, scaled by electorate size (see
+    // FORECAST_DISTRICT_SIGMA)
+    let districtNoise=null;
+    if(mconf&&mconf.useConstituencies&&FORECAST_DISTRICT_SIGMA>0){
+      const ref=districtVotesMedian();
+      if(ref>0){
+        districtNoise={};
+        for(const nr of Object.keys(mconf.districts)){
+          const c=constituencyById(nr);
+          const v=(c&&c.votes2022)||ref;
+          districtNoise[nr]=gaussianSample(fcRand)*FORECAST_DISTRICT_SIGMA*
+            Math.sqrt(ref/Math.max(1,v));
+        }
+      }
+    }
+    const seats=(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise,districtNoise):allocateSeatsFast(simVotes,SEATS_TOTAL));
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);

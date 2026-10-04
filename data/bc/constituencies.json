@@ -8,6 +8,7 @@
    "id": "abbotsford-mission",
    "name": "Abbotsford-Mission",
    "seats": 1,
+   "votes2022": 24417,
    "results_2022": {
     "bcndp": 44.62,
     "cpbc": 55.38,
@@ -20,6 +21,7 @@
    "id": "abbotsfordsouth",
    "name": "Abbotsford South",
    "seats": 1,
+   "votes2022": 21188,
    "results_2022": {
     "bcndp": 35.18,
     "cpbc": 61.61,
@@ -32,6 +34,7 @@
    "id": "abbotsfordwest",
    "name": "Abbotsford West",
    "seats": 1,
+   "votes2022": 19678,
    "results_2022": {
     "bcndp": 36.87,
     "cpbc": 58.35,
@@ -44,6 +47,7 @@
    "id": "boundary-similkameen",
    "name": "Boundary-Similkameen",
    "seats": 1,
+   "votes2022": 24665,
    "results_2022": {
     "bcndp": 42.56,
     "cpbc": 48.39,
@@ -56,6 +60,7 @@
    "id": "bulkleyvalley-stikine",
    "name": "Bulkley Valley-Stikine",
    "seats": 1,
+   "votes2022": 9544,
    "results_2022": {
     "bcndp": 38.86,
     "cpbc": 52.31,
@@ -68,6 +73,7 @@
    "id": "burnaby-newwestminster",
    "name": "Burnaby-New Westminster",
    "seats": 1,
+   "votes2022": 17748,
    "results_2022": {
     "bcndp": 59.99,
     "cpbc": 34.71,
@@ -80,6 +86,7 @@
    "id": "burnabycentre",
    "name": "Burnaby Centre",
    "seats": 1,
+   "votes2022": 17074,
    "results_2022": {
     "bcndp": 57.28,
     "cpbc": 42.72,
@@ -92,6 +99,7 @@
    "id": "burnabyeast",
    "name": "Burnaby East",
    "seats": 1,
+   "votes2022": 20232,
    "results_2022": {
     "bcndp": 51.85,
     "cpbc": 40.52,
@@ -104,6 +112,7 @@
    "id": "burnabynorth",
    "name": "Burnaby North",
    "seats": 1,
+   "votes2022": 20136,
    "results_2022": {
     "bcndp": 53.26,
     "cpbc": 43.0,
@@ -116,6 +125,7 @@
    "id": "burnabysouth-metrotown",
    "name": "Burnaby South-Metrotown",
    "seats": 1,
+   "votes2022": 15325,
    "results_2022": {
     "bcndp": 49.33,
     "cpbc": 41.59,
@@ -128,6 +138,7 @@
    "id": "cariboo-chilcotin",
    "name": "Cariboo-Chilcotin",
    "seats": 1,
+   "votes2022": 19706,
    "results_2022": {
     "bcndp": 30.41,
     "cpbc": 69.59,
@@ -140,6 +151,7 @@
    "id": "chilliwack-cultuslake",
    "name": "Chilliwack-Cultus Lake",
    "seats": 1,
+   "votes2022": 25022,
    "results_2022": {
     "bcndp": 45.42,
     "cpbc": 54.58,
@@ -152,6 +164,7 @@
    "id": "chilliwacknorth",
    "name": "Chilliwack North",
    "seats": 1,
+   "votes2022": 21575,
    "results_2022": {
     "bcndp": 37.66,
     "cpbc": 54.58,
@@ -164,6 +177,7 @@
    "id": "columbiariver-revelstoke",
    "name": "Columbia River-Revelstoke",
    "seats": 1,
+   "votes2022": 18295,
    "results_2022": {
     "bcndp": 44.26,
     "cpbc": 47.93,
@@ -176,6 +190,7 @@
    "id": "coquitlam-burkemountain",
    "name": "Coquitlam-Burke Mountain",
    "seats": 1,
+   "votes2022": 21672,
    "results_2022": {
     "bcndp": 50.85,
     "cpbc": 49.15,
@@ -188,6 +203,7 @@
    "id": "coquitlam-maillardville",
    "name": "Coquitlam-Maillardville",
    "seats": 1,
+   "votes2022": 23114,
    "results_2022": {
     "bcndp": 51.8,
     "cpbc": 39.57,
@@ -200,6 +216,7 @@
    "id": "courtenay-comox",
    "name": "Courtenay-Comox",
    "seats": 1,
+   "votes2022": 34718,
    "results_2022": {
     "bcndp": 38.56,
     "cpbc": 38.83,
@@ -212,6 +229,7 @@
    "id": "cowichanvalley",
    "name": "Cowichan Valley",
    "seats": 1,
+   "votes2022": 29118,
    "results_2022": {
     "bcndp": 40.51,
     "cpbc": 37.59,
@@ -224,6 +242,7 @@
    "id": "deltanorth",
    "name": "Delta North",
    "seats": 1,
+   "votes2022": 20838,
    "results_2022": {
     "bcndp": 52.73,
     "cpbc": 40.22,
@@ -236,6 +255,7 @@
    "id": "deltasouth",
    "name": "Delta South",
    "seats": 1,
+   "votes2022": 26313,
    "results_2022": {
     "bcndp": 44.93,
     "cpbc": 55.07,
@@ -248,6 +268,7 @@
    "id": "esquimalt-colwood",
    "name": "Esquimalt-Colwood",
    "seats": 1,
+   "votes2022": 29606,
    "results_2022": {
     "bcndp": 51.47,
     "cpbc": 29.22,
@@ -260,6 +281,7 @@
    "id": "fraser-nicola",
    "name": "Fraser-Nicola",
    "seats": 1,
+   "votes2022": 19004,
    "results_2022": {
     "bcndp": 36.4,
     "cpbc": 54.34,
@@ -272,6 +294,7 @@
    "id": "juandefuca-malahat",
    "name": "Juan de Fuca-Malahat",
    "seats": 1,
+   "votes2022": 23997,
    "results_2022": {
     "bcndp": 38.79,
     "cpbc": 38.2,
@@ -284,6 +307,7 @@
    "id": "kamloops-norththompson",
    "name": "Kamloops-North Thompson",
    "seats": 1,
+   "votes2022": 30013,
    "results_2022": {
     "bcndp": 32.9,
     "cpbc": 59.74,
@@ -296,6 +320,7 @@
    "id": "kamloopscentre",
    "name": "Kamloops Centre",
    "seats": 1,
+   "votes2022": 25338,
    "results_2022": {
     "bcndp": 40.92,
     "cpbc": 48.83,
@@ -308,6 +333,7 @@
    "id": "kelowna-lakecountry-coldstream",
    "name": "Kelowna-Lake Country-Coldstream",
    "seats": 1,
+   "votes2022": 26528,
    "results_2022": {
     "bcndp": 35.25,
     "cpbc": 53.92,
@@ -320,6 +346,7 @@
    "id": "kelowna-mission",
    "name": "Kelowna-Mission",
    "seats": 1,
+   "votes2022": 27329,
    "results_2022": {
     "bcndp": 32.61,
     "cpbc": 51.49,
@@ -332,6 +359,7 @@
    "id": "kelownacentre",
    "name": "Kelowna Centre",
    "seats": 1,
+   "votes2022": 25750,
    "results_2022": {
     "bcndp": 42.69,
     "cpbc": 42.85,
@@ -344,6 +372,7 @@
    "id": "kootenay-monashee",
    "name": "Kootenay-Monashee",
    "seats": 1,
+   "votes2022": 19603,
    "results_2022": {
     "bcndp": 52.04,
     "cpbc": 38.85,
@@ -356,6 +385,7 @@
    "id": "kootenay-rockies",
    "name": "Kootenay-Rockies",
    "seats": 1,
+   "votes2022": 19241,
    "results_2022": {
     "bcndp": 21.75,
     "cpbc": 42.71,
@@ -368,6 +398,7 @@
    "id": "kootenaycentral",
    "name": "Kootenay Central",
    "seats": 1,
+   "votes2022": 21996,
    "results_2022": {
     "bcndp": 39.63,
     "cpbc": 31.67,
@@ -380,6 +411,7 @@
    "id": "ladysmith-oceanside",
    "name": "Ladysmith-Oceanside",
    "seats": 1,
+   "votes2022": 34092,
    "results_2022": {
     "bcndp": 41.49,
     "cpbc": 35.48,
@@ -392,6 +424,7 @@
    "id": "langford-highlands",
    "name": "Langford-Highlands",
    "seats": 1,
+   "votes2022": 22063,
    "results_2022": {
     "bcndp": 51.87,
     "cpbc": 37.4,
@@ -404,6 +437,7 @@
    "id": "langley-abbotsford",
    "name": "Langley-Abbotsford",
    "seats": 1,
+   "votes2022": 25770,
    "results_2022": {
     "bcndp": 33.73,
     "cpbc": 55.65,
@@ -416,6 +450,7 @@
    "id": "langley-walnutgrove",
    "name": "Langley-Walnut Grove",
    "seats": 1,
+   "votes2022": 24458,
    "results_2022": {
     "bcndp": 44.77,
     "cpbc": 49.56,
@@ -428,6 +463,7 @@
    "id": "langley-willowbrook",
    "name": "Langley-Willowbrook",
    "seats": 1,
+   "votes2022": 22761,
    "results_2022": {
     "bcndp": 44.43,
     "cpbc": 48.24,
@@ -440,6 +476,7 @@
    "id": "mapleridge-pittmeadows",
    "name": "Maple Ridge-Pitt Meadows",
    "seats": 1,
+   "votes2022": 26381,
    "results_2022": {
     "bcndp": 54.89,
     "cpbc": 45.11,
@@ -452,6 +489,7 @@
    "id": "mapleridgeeast",
    "name": "Maple Ridge East",
    "seats": 1,
+   "votes2022": 25645,
    "results_2022": {
     "bcndp": 46.64,
     "cpbc": 47.02,
@@ -464,6 +502,7 @@
    "id": "midisland-pacificrim",
    "name": "Mid Island-Pacific Rim",
    "seats": 1,
+   "votes2022": 28810,
    "results_2022": {
     "bcndp": 48.74,
     "cpbc": 39.45,
@@ -476,6 +515,7 @@
    "id": "nanaimo-gabriolaisland",
    "name": "Nanaimo-Gabriola Island",
    "seats": 1,
+   "votes2022": 27798,
    "results_2022": {
     "bcndp": 52.75,
     "cpbc": 34.65,
@@ -488,6 +528,7 @@
    "id": "nanaimo-lantzville",
    "name": "Nanaimo-Lantzville",
    "seats": 1,
+   "votes2022": 29580,
    "results_2022": {
     "bcndp": 51.75,
     "cpbc": 39.51,
@@ -500,6 +541,7 @@
    "id": "nechakolakes",
    "name": "Nechako Lakes",
    "seats": 1,
+   "votes2022": 11640,
    "results_2022": {
     "bcndp": 27.21,
     "cpbc": 67.45,
@@ -512,6 +554,7 @@
    "id": "newwestminster-coquitlam",
    "name": "New Westminster-Coquitlam",
    "seats": 1,
+   "votes2022": 21575,
    "results_2022": {
     "bcndp": 59.13,
     "cpbc": 29.84,
@@ -524,6 +567,7 @@
    "id": "northcoast-haidagwaii",
    "name": "North Coast-Haida Gwaii",
    "seats": 1,
+   "votes2022": 7491,
    "results_2022": {
     "bcndp": 64.92,
     "cpbc": 35.08,
@@ -536,6 +580,7 @@
    "id": "northisland",
    "name": "North Island",
    "seats": 1,
+   "votes2022": 29958,
    "results_2022": {
     "bcndp": 44.93,
     "cpbc": 47.07,
@@ -548,6 +593,7 @@
    "id": "northvancouver-lonsdale",
    "name": "North Vancouver-Lonsdale",
    "seats": 1,
+   "votes2022": 25832,
    "results_2022": {
     "bcndp": 64.88,
     "cpbc": 35.12,
@@ -560,6 +606,7 @@
    "id": "northvancouver-seymour",
    "name": "North Vancouver-Seymour",
    "seats": 1,
+   "votes2022": 30721,
    "results_2022": {
     "bcndp": 52.77,
     "cpbc": 35.79,
@@ -572,6 +619,7 @@
    "id": "oakbay-gordonhead",
    "name": "Oak Bay-Gordon Head",
    "seats": 1,
+   "votes2022": 29570,
    "results_2022": {
     "bcndp": 49.1,
     "cpbc": 28.89,
@@ -584,6 +632,7 @@
    "id": "peacerivernorth",
    "name": "Peace River North",
    "seats": 1,
+   "votes2022": 15079,
    "results_2022": {
     "bcndp": 5.49,
     "cpbc": 74.36,
@@ -596,6 +645,7 @@
    "id": "peaceriversouth",
    "name": "Peace River South",
    "seats": 1,
+   "votes2022": 10283,
    "results_2022": {
     "bcndp": 5.6,
     "cpbc": 69.84,
@@ -608,6 +658,7 @@
    "id": "penticton-summerland",
    "name": "Penticton-Summerland",
    "seats": 1,
+   "votes2022": 28076,
    "results_2022": {
     "bcndp": 40.24,
     "cpbc": 41.37,
@@ -620,6 +671,7 @@
    "id": "portcoquitlam",
    "name": "Port Coquitlam",
    "seats": 1,
+   "votes2022": 25698,
    "results_2022": {
     "bcndp": 53.87,
     "cpbc": 38.79,
@@ -632,6 +684,7 @@
    "id": "portmoody-burquitlam",
    "name": "Port Moody-Burquitlam",
    "seats": 1,
+   "votes2022": 25908,
    "results_2022": {
     "bcndp": 52.06,
     "cpbc": 40.5,
@@ -644,6 +697,7 @@
    "id": "powellriver-sunshinecoast",
    "name": "Powell River-Sunshine Coast",
    "seats": 1,
+   "votes2022": 29171,
    "results_2022": {
     "bcndp": 49.62,
     "cpbc": 35.68,
@@ -656,6 +710,7 @@
    "id": "princegeorge-mackenzie",
    "name": "Prince George-Mackenzie",
    "seats": 1,
+   "votes2022": 18560,
    "results_2022": {
     "bcndp": 28.24,
     "cpbc": 60.92,
@@ -668,6 +723,7 @@
    "id": "princegeorge-northcariboo",
    "name": "Prince George-North Cariboo",
    "seats": 1,
+   "votes2022": 20116,
    "results_2022": {
     "bcndp": 17.03,
     "cpbc": 56.82,
@@ -680,6 +736,7 @@
    "id": "princegeorge-valemount",
    "name": "Prince George-Valemount",
    "seats": 1,
+   "votes2022": 16339,
    "results_2022": {
     "bcndp": 34.94,
     "cpbc": 55.19,
@@ -692,6 +749,7 @@
    "id": "richmond-bridgeport",
    "name": "Richmond-Bridgeport",
    "seats": 1,
+   "votes2022": 17027,
    "results_2022": {
     "bcndp": 34.77,
     "cpbc": 58.19,
@@ -704,6 +762,7 @@
    "id": "richmond-queensborough",
    "name": "Richmond-Queensborough",
    "seats": 1,
+   "votes2022": 19744,
    "results_2022": {
     "bcndp": 44.13,
     "cpbc": 50.91,
@@ -716,6 +775,7 @@
    "id": "richmond-steveston",
    "name": "Richmond-Steveston",
    "seats": 1,
+   "votes2022": 23337,
    "results_2022": {
     "bcndp": 44.27,
     "cpbc": 42.2,
@@ -728,6 +788,7 @@
    "id": "richmondcentre",
    "name": "Richmond Centre",
    "seats": 1,
+   "votes2022": 16208,
    "results_2022": {
     "bcndp": 36.78,
     "cpbc": 51.99,
@@ -740,6 +801,7 @@
    "id": "saanichnorthandtheislands",
    "name": "Saanich North and the Islands",
    "seats": 1,
+   "votes2022": 34046,
    "results_2022": {
     "bcndp": 32.19,
     "cpbc": 29.8,
@@ -752,6 +814,7 @@
    "id": "saanichsouth",
    "name": "Saanich South",
    "seats": 1,
+   "votes2022": 30826,
    "results_2022": {
     "bcndp": 49.76,
     "cpbc": 32.45,
@@ -764,6 +827,7 @@
    "id": "salmonarm-shuswap",
    "name": "Salmon Arm-Shuswap",
    "seats": 1,
+   "votes2022": 31788,
    "results_2022": {
     "bcndp": 30.44,
     "cpbc": 52.11,
@@ -776,6 +840,7 @@
    "id": "skeena",
    "name": "Skeena",
    "seats": 1,
+   "votes2022": 12194,
    "results_2022": {
     "bcndp": 44.44,
     "cpbc": 51.2,
@@ -788,6 +853,7 @@
    "id": "surrey-cloverdale",
    "name": "Surrey-Cloverdale",
    "seats": 1,
+   "votes2022": 21252,
    "results_2022": {
     "bcndp": 45.55,
     "cpbc": 48.32,
@@ -800,6 +866,7 @@
    "id": "surrey-fleetwood",
    "name": "Surrey-Fleetwood",
    "seats": 1,
+   "votes2022": 20416,
    "results_2022": {
     "bcndp": 48.6,
     "cpbc": 44.93,
@@ -812,6 +879,7 @@
    "id": "surrey-guildford",
    "name": "Surrey-Guildford",
    "seats": 1,
+   "votes2022": 19066,
    "results_2022": {
     "bcndp": 46.93,
     "cpbc": 46.81,
@@ -824,6 +892,7 @@
    "id": "surrey-newton",
    "name": "Surrey-Newton",
    "seats": 1,
+   "votes2022": 15486,
    "results_2022": {
     "bcndp": 51.17,
     "cpbc": 42.99,
@@ -836,6 +905,7 @@
    "id": "surrey-panorama",
    "name": "Surrey-Panorama",
    "seats": 1,
+   "votes2022": 17611,
    "results_2022": {
     "bcndp": 48.11,
     "cpbc": 49.6,
@@ -848,6 +918,7 @@
    "id": "surrey-serpentineriver",
    "name": "Surrey-Serpentine River",
    "seats": 1,
+   "votes2022": 19683,
    "results_2022": {
     "bcndp": 47.49,
     "cpbc": 49.7,
@@ -860,6 +931,7 @@
    "id": "surrey-whiterock",
    "name": "Surrey-White Rock",
    "seats": 1,
+   "votes2022": 28037,
    "results_2022": {
     "bcndp": 45.29,
     "cpbc": 52.31,
@@ -872,6 +944,7 @@
    "id": "surreycitycentre",
    "name": "Surrey City Centre",
    "seats": 1,
+   "votes2022": 14403,
    "results_2022": {
     "bcndp": 46.71,
     "cpbc": 45.07,
@@ -884,6 +957,7 @@
    "id": "surreynorth",
    "name": "Surrey North",
    "seats": 1,
+   "votes2022": 15697,
    "results_2022": {
     "bcndp": 43.28,
     "cpbc": 50.67,
@@ -896,6 +970,7 @@
    "id": "surreysouth",
    "name": "Surrey South",
    "seats": 1,
+   "votes2022": 22192,
    "results_2022": {
     "bcndp": 41.17,
     "cpbc": 58.83,
@@ -908,6 +983,7 @@
    "id": "vancouver-fraserview",
    "name": "Vancouver-Fraserview",
    "seats": 1,
+   "votes2022": 20805,
    "results_2022": {
     "bcndp": 57.18,
     "cpbc": 36.62,
@@ -920,6 +996,7 @@
    "id": "vancouver-hastings",
    "name": "Vancouver-Hastings",
    "seats": 1,
+   "votes2022": 22194,
    "results_2022": {
     "bcndp": 64.15,
     "cpbc": 24.29,
@@ -932,6 +1009,7 @@
    "id": "vancouver-kensington",
    "name": "Vancouver-Kensington",
    "seats": 1,
+   "votes2022": 19232,
    "results_2022": {
     "bcndp": 60.9,
     "cpbc": 31.52,
@@ -944,6 +1022,7 @@
    "id": "vancouver-langara",
    "name": "Vancouver-Langara",
    "seats": 1,
+   "votes2022": 17562,
    "results_2022": {
     "bcndp": 48.43,
     "cpbc": 46.05,
@@ -956,6 +1035,7 @@
    "id": "vancouver-littlemountain",
    "name": "Vancouver-Little Mountain",
    "seats": 1,
+   "votes2022": 25174,
    "results_2022": {
     "bcndp": 62.11,
     "cpbc": 30.61,
@@ -968,6 +1048,7 @@
    "id": "vancouver-pointgrey",
    "name": "Vancouver-Point Grey",
    "seats": 1,
+   "votes2022": 22085,
    "results_2022": {
     "bcndp": 56.77,
     "cpbc": 34.51,
@@ -980,6 +1061,7 @@
    "id": "vancouver-quilchena",
    "name": "Vancouver-Quilchena",
    "seats": 1,
+   "votes2022": 22227,
    "results_2022": {
     "bcndp": 38.91,
     "cpbc": 51.58,
@@ -992,6 +1074,7 @@
    "id": "vancouver-renfrew",
    "name": "Vancouver-Renfrew",
    "seats": 1,
+   "votes2022": 17374,
    "results_2022": {
     "bcndp": 63.22,
     "cpbc": 30.66,
@@ -1004,6 +1087,7 @@
    "id": "vancouver-southgranville",
    "name": "Vancouver-South Granville",
    "seats": 1,
+   "votes2022": 26758,
    "results_2022": {
     "bcndp": 64.31,
     "cpbc": 24.96,
@@ -1016,6 +1100,7 @@
    "id": "vancouver-strathcona",
    "name": "Vancouver-Strathcona",
    "seats": 1,
+   "votes2022": 20057,
    "results_2022": {
     "bcndp": 67.62,
     "cpbc": 17.09,
@@ -1028,6 +1113,7 @@
    "id": "vancouver-westend",
    "name": "Vancouver-West End",
    "seats": 1,
+   "votes2022": 20857,
    "results_2022": {
     "bcndp": 63.01,
     "cpbc": 27.22,
@@ -1040,6 +1126,7 @@
    "id": "vancouver-yaletown",
    "name": "Vancouver-Yaletown",
    "seats": 1,
+   "votes2022": 18124,
    "results_2022": {
     "bcndp": 49.76,
     "cpbc": 43.36,
@@ -1052,6 +1139,7 @@
    "id": "vernon-lumby",
    "name": "Vernon-Lumby",
    "seats": 1,
+   "votes2022": 27729,
    "results_2022": {
     "bcndp": 42.69,
     "cpbc": 40.97,
@@ -1064,6 +1152,7 @@
    "id": "victoria-beaconhill",
    "name": "Victoria-Beacon Hill",
    "seats": 1,
+   "votes2022": 28793,
    "results_2022": {
     "bcndp": 47.35,
     "cpbc": 19.15,
@@ -1076,6 +1165,7 @@
    "id": "victoria-swanlake",
    "name": "Victoria-Swan Lake",
    "seats": 1,
+   "votes2022": 25475,
    "results_2022": {
     "bcndp": 56.03,
     "cpbc": 20.2,
@@ -1088,6 +1178,7 @@
    "id": "westkelowna-peachland",
    "name": "West Kelowna-Peachland",
    "seats": 1,
+   "votes2022": 26499,
    "results_2022": {
     "bcndp": 27.9,
     "cpbc": 50.85,
@@ -1100,6 +1191,7 @@
    "id": "westvancouver-capilano",
    "name": "West Vancouver-Capilano",
    "seats": 1,
+   "votes2022": 25816,
    "results_2022": {
     "bcndp": 27.13,
     "cpbc": 46.68,
@@ -1112,6 +1204,7 @@
    "id": "westvancouver-seatosky",
    "name": "West Vancouver-Sea to Sky",
    "seats": 1,
+   "votes2022": 27412,
    "results_2022": {
     "bcndp": 26.31,
     "cpbc": 35.61,

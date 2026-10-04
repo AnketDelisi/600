@@ -8,6 +8,7 @@
    "id": "abitibi-est",
    "name": "Abitibi-Est",
    "seats": 1,
+   "votes2022": 20695,
    "results_2022": {
     "caq": 47.17,
     "plq": 14.71,
@@ -20,6 +21,7 @@
    "id": "abitibi-ouest",
    "name": "Abitibi-Ouest",
    "seats": 1,
+   "votes2022": 22246,
    "results_2022": {
     "caq": 46.75,
     "plq": 5.18,
@@ -32,6 +34,7 @@
    "id": "acadie",
    "name": "Acadie",
    "seats": 1,
+   "votes2022": 25984,
    "results_2022": {
     "caq": 17.11,
     "plq": 42.26,
@@ -44,6 +47,7 @@
    "id": "anjou-louis-riel",
    "name": "Anjou-Louis-Riel",
    "seats": 1,
+   "votes2022": 26363,
    "results_2022": {
     "caq": 35.56,
     "plq": 30.52,
@@ -56,6 +60,7 @@
    "id": "argenteuil",
    "name": "Argenteuil",
    "seats": 1,
+   "votes2022": 32649,
    "results_2022": {
     "caq": 45.1,
     "plq": 10.18,
@@ -68,6 +73,7 @@
    "id": "arthabaska-lerable",
    "name": "Arthabaska-L'Érable",
    "seats": 1,
+   "votes2022": 45309,
    "results_2022": {
     "caq": 51.75,
     "plq": 3.76,
@@ -80,6 +86,7 @@
    "id": "beauce-nord",
    "name": "Beauce-Nord",
    "seats": 1,
+   "votes2022": 33591,
    "results_2022": {
     "caq": 43.43,
     "plq": 2.83,
@@ -92,6 +99,7 @@
    "id": "beauce-sud",
    "name": "Beauce-Sud",
    "seats": 1,
+   "votes2022": 37293,
    "results_2022": {
     "caq": 44.55,
     "plq": 2.83,
@@ -104,6 +112,7 @@
    "id": "beauharnois",
    "name": "Beauharnois",
    "seats": 1,
+   "votes2022": 33252,
    "results_2022": {
     "caq": 53.78,
     "plq": 5.83,
@@ -116,6 +125,7 @@
    "id": "bellechasse",
    "name": "Bellechasse",
    "seats": 1,
+   "votes2022": 32933,
    "results_2022": {
     "caq": 45.74,
     "plq": 4.13,
@@ -128,6 +138,7 @@
    "id": "bellefeuille",
    "name": "Bellefeuille",
    "seats": 1,
+   "votes2022": 32649,
    "results_2022": {
     "caq": 45.1,
     "plq": 10.18,
@@ -140,6 +151,7 @@
    "id": "berthier",
    "name": "Berthier",
    "seats": 1,
+   "votes2022": 41706,
    "results_2022": {
     "caq": 50.97,
     "plq": 2.55,
@@ -152,6 +164,7 @@
    "id": "bertrand",
    "name": "Bertrand",
    "seats": 1,
+   "votes2022": 35188,
    "results_2022": {
     "caq": 45.26,
     "plq": 6.01,
@@ -164,6 +177,7 @@
    "id": "blainville",
    "name": "Blainville",
    "seats": 1,
+   "votes2022": 42769,
    "results_2022": {
     "caq": 49.45,
     "plq": 11.03,
@@ -176,6 +190,7 @@
    "id": "bonaventure",
    "name": "Bonaventure",
    "seats": 1,
+   "votes2022": 22313,
    "results_2022": {
     "caq": 44.45,
     "plq": 8.56,
@@ -188,6 +203,7 @@
    "id": "borduas",
    "name": "Borduas",
    "seats": 1,
+   "votes2022": 44429,
    "results_2022": {
     "caq": 51.23,
     "plq": 5.24,
@@ -200,6 +216,7 @@
    "id": "bourassa-sauve",
    "name": "Bourassa-Sauvé",
    "seats": 1,
+   "votes2022": 24182,
    "results_2022": {
     "caq": 25.01,
     "plq": 40.13,
@@ -212,6 +229,7 @@
    "id": "brome-missisquoi",
    "name": "Brome-Missisquoi",
    "seats": 1,
+   "votes2022": 44856,
    "results_2022": {
     "caq": 45.87,
     "plq": 11.91,
@@ -224,6 +242,7 @@
    "id": "camille-laurin",
    "name": "Camille-Laurin",
    "seats": 1,
+   "votes2022": 28690,
    "results_2022": {
     "caq": 31.94,
     "plq": 16.47,
@@ -236,6 +255,7 @@
    "id": "chambly",
    "name": "Chambly",
    "seats": 1,
+   "votes2022": 38170,
    "results_2022": {
     "caq": 48.47,
     "plq": 7.85,
@@ -248,6 +268,7 @@
    "id": "champlain",
    "name": "Champlain",
    "seats": 1,
+   "votes2022": 42068,
    "results_2022": {
     "caq": 55.89,
     "plq": 5.08,
@@ -260,6 +281,7 @@
    "id": "chapleau",
    "name": "Chapleau",
    "seats": 1,
+   "votes2022": 31284,
    "results_2022": {
     "caq": 52.3,
     "plq": 13.61,
@@ -272,6 +294,7 @@
    "id": "charlesbourg",
    "name": "Charlesbourg",
    "seats": 1,
+   "votes2022": 42042,
    "results_2022": {
     "caq": 45.0,
     "plq": 5.99,
@@ -284,6 +307,7 @@
    "id": "charlevoix-cote-de-beaupre",
    "name": "Charlevoix-Côte-de-Beaupré",
    "seats": 1,
+   "votes2022": 37322,
    "results_2022": {
     "caq": 48.17,
     "plq": 4.7,
@@ -296,6 +320,7 @@
    "id": "chateauguay",
    "name": "Châteauguay",
    "seats": 1,
+   "votes2022": 33332,
    "results_2022": {
     "caq": 39.12,
     "plq": 24.78,
@@ -308,6 +333,7 @@
    "id": "chauveau",
    "name": "Chauveau",
    "seats": 1,
+   "votes2022": 43318,
    "results_2022": {
     "caq": 46.84,
     "plq": 3.81,
@@ -320,6 +346,7 @@
    "id": "chicoutimi",
    "name": "Chicoutimi",
    "seats": 1,
+   "votes2022": 31063,
    "results_2022": {
     "caq": 62.28,
     "plq": 3.04,
@@ -332,6 +359,7 @@
    "id": "chomedey",
    "name": "Chomedey",
    "seats": 1,
+   "votes2022": 32572,
    "results_2022": {
     "caq": 26.7,
     "plq": 36.52,
@@ -344,6 +372,7 @@
    "id": "chutes-de-la-chaudiere",
    "name": "Chutes-de-la-Chaudière",
    "seats": 1,
+   "votes2022": 46467,
    "results_2022": {
     "caq": 47.46,
     "plq": 4.95,
@@ -356,6 +385,7 @@
    "id": "cote-du-sud",
    "name": "Côte-du-Sud",
    "seats": 1,
+   "votes2022": 33792,
    "results_2022": {
     "caq": 47.69,
     "plq": 6.31,
@@ -368,6 +398,7 @@
    "id": "daniel-johnson",
    "name": "Daniel-Johnson",
    "seats": 1,
+   "votes2022": 41800,
    "results_2022": {
     "caq": 52.5,
     "plq": 3.51,
@@ -380,6 +411,7 @@
    "id": "darcy-mcgee",
    "name": "D'Arcy-McGee",
    "seats": 1,
+   "votes2022": 25866,
    "results_2022": {
     "caq": 5.91,
     "plq": 51.41,
@@ -392,6 +424,7 @@
    "id": "deux-montagnes",
    "name": "Deux-Montagnes",
    "seats": 1,
+   "votes2022": 33675,
    "results_2022": {
     "caq": 47.08,
     "plq": 10.27,
@@ -404,6 +437,7 @@
    "id": "drummond-bois-francs",
    "name": "Drummond-Bois-Francs",
    "seats": 1,
+   "votes2022": 36302,
    "results_2022": {
     "caq": 51.64,
     "plq": 4.01,
@@ -416,6 +450,7 @@
    "id": "dubuc",
    "name": "Dubuc",
    "seats": 1,
+   "votes2022": 26781,
    "results_2022": {
     "caq": 57.6,
     "plq": 2.49,
@@ -428,6 +463,7 @@
    "id": "duplessis",
    "name": "Duplessis",
    "seats": 1,
+   "votes2022": 19463,
    "results_2022": {
     "caq": 45.14,
     "plq": 4.02,
@@ -440,6 +476,7 @@
    "id": "fabre",
    "name": "Fabre",
    "seats": 1,
+   "votes2022": 34307,
    "results_2022": {
     "caq": 31.81,
     "plq": 30.91,
@@ -452,6 +489,7 @@
    "id": "gaspe",
    "name": "Gaspé",
    "seats": 1,
+   "votes2022": 18219,
    "results_2022": {
     "caq": 41.4,
     "plq": 6.89,
@@ -464,6 +502,7 @@
    "id": "gatineau",
    "name": "Gatineau",
    "seats": 1,
+   "votes2022": 36491,
    "results_2022": {
     "caq": 46.74,
     "plq": 19.56,
@@ -476,6 +515,7 @@
    "id": "gouin",
    "name": "Gouin",
    "seats": 1,
+   "votes2022": 29078,
    "results_2022": {
     "caq": 12.37,
     "plq": 8.4,
@@ -488,6 +528,7 @@
    "id": "granby",
    "name": "Granby",
    "seats": 1,
+   "votes2022": 36971,
    "results_2022": {
     "caq": 58.19,
     "plq": 4.76,
@@ -500,6 +541,7 @@
    "id": "groulx",
    "name": "Groulx",
    "seats": 1,
+   "votes2022": 36507,
    "results_2022": {
     "caq": 47.75,
     "plq": 11.02,
@@ -512,6 +554,7 @@
    "id": "hochelaga-maisonneuve",
    "name": "Hochelaga-Maisonneuve",
    "seats": 1,
+   "votes2022": 25144,
    "results_2022": {
     "caq": 18.8,
     "plq": 7.78,
@@ -524,6 +567,7 @@
    "id": "hull",
    "name": "Hull",
    "seats": 1,
+   "votes2022": 31925,
    "results_2022": {
     "caq": 34.64,
     "plq": 25.92,
@@ -536,6 +580,7 @@
    "id": "huntingdon",
    "name": "Huntingdon",
    "seats": 1,
+   "votes2022": 29294,
    "results_2022": {
     "caq": 46.64,
     "plq": 14.39,
@@ -548,6 +593,7 @@
    "id": "iberville",
    "name": "Iberville",
    "seats": 1,
+   "votes2022": 34288,
    "results_2022": {
     "caq": 53.15,
     "plq": 5.64,
@@ -560,6 +606,7 @@
    "id": "iles-de-la-madeleine",
    "name": "Îles-de-la-Madeleine",
    "seats": 1,
+   "votes2022": 8364,
    "results_2022": {
     "caq": 39.91,
     "plq": 7.25,
@@ -572,6 +619,7 @@
    "id": "jacques-cartier",
    "name": "Jacques-Cartier",
    "seats": 1,
+   "votes2022": 29022,
    "results_2022": {
     "caq": 9.42,
     "plq": 62.57,
@@ -584,6 +632,7 @@
    "id": "jean-lesage",
    "name": "Jean-Lesage",
    "seats": 1,
+   "votes2022": 30154,
    "results_2022": {
     "caq": 31.26,
     "plq": 4.4,
@@ -596,6 +645,7 @@
    "id": "jean-talon",
    "name": "Jean-Talon",
    "seats": 1,
+   "votes2022": 34164,
    "results_2022": {
     "caq": 32.5,
     "plq": 13.51,
@@ -608,6 +658,7 @@
    "id": "jeanne-mance-viger",
    "name": "Jeanne-Mance-Viger",
    "seats": 1,
+   "votes2022": 26834,
    "results_2022": {
     "caq": 16.6,
     "plq": 53.93,
@@ -620,6 +671,7 @@
    "id": "joliette",
    "name": "Joliette",
    "seats": 1,
+   "votes2022": 39330,
    "results_2022": {
     "caq": 45.58,
     "plq": 3.0,
@@ -632,6 +684,7 @@
    "id": "jonquiere",
    "name": "Jonquière",
    "seats": 1,
+   "votes2022": 30637,
    "results_2022": {
     "caq": 59.39,
     "plq": 2.12,
@@ -644,6 +697,7 @@
    "id": "labelle",
    "name": "Labelle",
    "seats": 1,
+   "votes2022": 33272,
    "results_2022": {
     "caq": 53.08,
     "plq": 5.05,
@@ -656,6 +710,7 @@
    "id": "lac-saint-jean",
    "name": "Lac-Saint-Jean",
    "seats": 1,
+   "votes2022": 28752,
    "results_2022": {
     "caq": 51.47,
     "plq": 3.02,
@@ -668,6 +723,7 @@
    "id": "lafontaine",
    "name": "LaFontaine",
    "seats": 1,
+   "votes2022": 25929,
    "results_2022": {
     "caq": 20.01,
     "plq": 51.67,
@@ -680,6 +736,7 @@
    "id": "lapeltrie",
    "name": "La Peltrie",
    "seats": 1,
+   "votes2022": 44448,
    "results_2022": {
     "caq": 44.35,
     "plq": 5.66,
@@ -692,6 +749,7 @@
    "id": "lapiniere",
    "name": "La Pinière",
    "seats": 1,
+   "votes2022": 32950,
    "results_2022": {
     "caq": 31.17,
     "plq": 38.51,
@@ -704,6 +762,7 @@
    "id": "laprairie",
    "name": "La Prairie",
    "seats": 1,
+   "votes2022": 34583,
    "results_2022": {
     "caq": 52.71,
     "plq": 13.85,
@@ -716,6 +775,7 @@
    "id": "lassomption",
    "name": "L'Assomption",
    "seats": 1,
+   "votes2022": 31790,
    "results_2022": {
     "caq": 58.63,
     "plq": 5.68,
@@ -728,6 +788,7 @@
    "id": "laurier-dorion",
    "name": "Laurier-Dorion",
    "seats": 1,
+   "votes2022": 27303,
    "results_2022": {
     "caq": 11.73,
     "plq": 19.57,
@@ -740,6 +801,7 @@
    "id": "laval-des-rapides",
    "name": "Laval-des-Rapides",
    "seats": 1,
+   "votes2022": 33230,
    "results_2022": {
     "caq": 31.9,
     "plq": 28.73,
@@ -752,6 +814,7 @@
    "id": "laviolette-saint-maurice",
    "name": "Laviolette-Saint-Maurice",
    "seats": 1,
+   "votes2022": 37543,
    "results_2022": {
     "caq": 51.72,
     "plq": 4.99,
@@ -764,6 +827,7 @@
    "id": "lesplaines",
    "name": "Les Plaines",
    "seats": 1,
+   "votes2022": 27544,
    "results_2022": {
     "caq": 50.54,
     "plq": 6.88,
@@ -776,6 +840,7 @@
    "id": "levis",
    "name": "Lévis",
    "seats": 1,
+   "votes2022": 36997,
    "results_2022": {
     "caq": 48.79,
     "plq": 5.13,
@@ -788,6 +853,7 @@
    "id": "lotbiniere-frontenac",
    "name": "Lotbinière-Frontenac",
    "seats": 1,
+   "votes2022": 41929,
    "results_2022": {
     "caq": 43.72,
     "plq": 5.92,
@@ -800,6 +866,7 @@
    "id": "louis-hebert",
    "name": "Louis-Hébert",
    "seats": 1,
+   "votes2022": 37710,
    "results_2022": {
     "caq": 47.21,
     "plq": 8.71,
@@ -812,6 +879,7 @@
    "id": "marguerite-bourgeoys",
    "name": "Marguerite-Bourgeoys",
    "seats": 1,
+   "votes2022": 28216,
    "results_2022": {
     "caq": 23.15,
     "plq": 44.78,
@@ -824,6 +892,7 @@
    "id": "marie-lacoste-gerin-lajoie",
    "name": "Marie-Lacoste-Gérin-Lajoie",
    "seats": 1,
+   "votes2022": 36302,
    "results_2022": {
     "caq": 51.64,
     "plq": 4.01,
@@ -836,6 +905,7 @@
    "id": "marie-victorin",
    "name": "Marie-Victorin",
    "seats": 1,
+   "votes2022": 27820,
    "results_2022": {
     "caq": 33.11,
     "plq": 10.04,
@@ -848,6 +918,7 @@
    "id": "marquette",
    "name": "Marquette",
    "seats": 1,
+   "votes2022": 26224,
    "results_2022": {
     "caq": 21.82,
     "plq": 46.73,
@@ -860,6 +931,7 @@
    "id": "maskinonge",
    "name": "Maskinongé",
    "seats": 1,
+   "votes2022": 31953,
    "results_2022": {
     "caq": 53.5,
     "plq": 5.07,
@@ -872,6 +944,7 @@
    "id": "masson",
    "name": "Masson",
    "seats": 1,
+   "votes2022": 35264,
    "results_2022": {
     "caq": 51.6,
     "plq": 7.72,
@@ -884,6 +957,7 @@
    "id": "matane-matapedia-mitis",
    "name": "Matane-Matapédia-Mitis",
    "seats": 1,
+   "votes2022": 29746,
    "results_2022": {
     "caq": 17.36,
     "plq": 2.14,
@@ -896,6 +970,7 @@
    "id": "maurice-richard",
    "name": "Maurice-Richard",
    "seats": 1,
+   "votes2022": 31447,
    "results_2022": {
     "caq": 27.16,
     "plq": 17.22,
@@ -908,6 +983,7 @@
    "id": "megantic",
    "name": "Mégantic",
    "seats": 1,
+   "votes2022": 28098,
    "results_2022": {
     "caq": 46.17,
     "plq": 5.71,
@@ -920,6 +996,7 @@
    "id": "mercier",
    "name": "Mercier",
    "seats": 1,
+   "votes2022": 27363,
    "results_2022": {
     "caq": 10.28,
     "plq": 14.02,
@@ -932,6 +1009,7 @@
    "id": "mille-iles",
    "name": "Mille-Îles",
    "seats": 1,
+   "votes2022": 29410,
    "results_2022": {
     "caq": 30.93,
     "plq": 32.38,
@@ -944,6 +1022,7 @@
    "id": "mirabel",
    "name": "Mirabel",
    "seats": 1,
+   "votes2022": 43184,
    "results_2022": {
     "caq": 50.11,
     "plq": 6.76,
@@ -956,6 +1035,7 @@
    "id": "mont-royal-outremont",
    "name": "Mont-Royal-Outremont",
    "seats": 1,
+   "votes2022": 29629,
    "results_2022": {
     "caq": 15.79,
     "plq": 39.35,
@@ -968,6 +1048,7 @@
    "id": "montarville",
    "name": "Montarville",
    "seats": 1,
+   "votes2022": 41488,
    "results_2022": {
     "caq": 45.9,
     "plq": 12.27,
@@ -980,6 +1061,7 @@
    "id": "montmorency",
    "name": "Montmorency",
    "seats": 1,
+   "votes2022": 42326,
    "results_2022": {
     "caq": 45.18,
     "plq": 4.65,
@@ -992,6 +1074,7 @@
    "id": "nelligan",
    "name": "Nelligan",
    "seats": 1,
+   "votes2022": 33546,
    "results_2022": {
     "caq": 16.65,
     "plq": 52.03,
@@ -1004,6 +1087,7 @@
    "id": "nicolet-becancour",
    "name": "Nicolet-Bécancour",
    "seats": 1,
+   "votes2022": 29662,
    "results_2022": {
     "caq": 47.05,
     "plq": 4.74,
@@ -1016,6 +1100,7 @@
    "id": "notre-dame-de-grace",
    "name": "Notre-Dame-de-Grâce",
    "seats": 1,
+   "votes2022": 25602,
    "results_2022": {
     "caq": 7.33,
     "plq": 50.46,
@@ -1028,6 +1113,7 @@
    "id": "orford",
    "name": "Orford",
    "seats": 1,
+   "votes2022": 32792,
    "results_2022": {
     "caq": 42.95,
     "plq": 14.99,
@@ -1040,6 +1126,7 @@
    "id": "papineau",
    "name": "Papineau",
    "seats": 1,
+   "votes2022": 37464,
    "results_2022": {
     "caq": 52.83,
     "plq": 8.41,
@@ -1052,6 +1139,7 @@
    "id": "pierre-laporte",
    "name": "Pierre-Laporte",
    "seats": 1,
+   "votes2022": 33687,
    "results_2022": {
     "caq": 30.76,
     "plq": 28.82,
@@ -1064,6 +1152,7 @@
    "id": "pointe-aux-trembles",
    "name": "Pointe-aux-Trembles",
    "seats": 1,
+   "votes2022": 26495,
    "results_2022": {
     "caq": 45.88,
     "plq": 10.38,
@@ -1076,6 +1165,7 @@
    "id": "pontiac",
    "name": "Pontiac",
    "seats": 1,
+   "votes2022": 28564,
    "results_2022": {
     "caq": 24.7,
     "plq": 43.68,
@@ -1088,6 +1178,7 @@
    "id": "portneuf",
    "name": "Portneuf",
    "seats": 1,
+   "votes2022": 32529,
    "results_2022": {
     "caq": 47.38,
     "plq": 2.82,
@@ -1100,6 +1191,7 @@
    "id": "prevost",
    "name": "Prévost",
    "seats": 1,
+   "votes2022": 34401,
    "results_2022": {
     "caq": 46.23,
     "plq": 6.02,
@@ -1112,6 +1204,7 @@
    "id": "rene-levesque",
    "name": "René-Lévesque",
    "seats": 1,
+   "votes2022": 19309,
    "results_2022": {
     "caq": 58.92,
     "plq": 1.59,
@@ -1124,6 +1217,7 @@
    "id": "repentigny",
    "name": "Repentigny",
    "seats": 1,
+   "votes2022": 37714,
    "results_2022": {
     "caq": 52.36,
     "plq": 9.96,
@@ -1136,6 +1230,7 @@
    "id": "richelieu",
    "name": "Richelieu",
    "seats": 1,
+   "votes2022": 30592,
    "results_2022": {
     "caq": 55.89,
     "plq": 4.13,
@@ -1148,6 +1243,7 @@
    "id": "richmond",
    "name": "Richmond",
    "seats": 1,
+   "votes2022": 45465,
    "results_2022": {
     "caq": 46.75,
     "plq": 5.45,
@@ -1160,6 +1256,7 @@
    "id": "rimouski",
    "name": "Rimouski",
    "seats": 1,
+   "votes2022": 32960,
    "results_2022": {
     "caq": 41.75,
     "plq": 3.01,
@@ -1172,6 +1269,7 @@
    "id": "riviere-du-louptemiscouatalesbasques",
    "name": "Rivière-du-Loup–Témiscouata–Les Basques",
    "seats": 1,
+   "votes2022": 34925,
    "results_2022": {
     "caq": 52.06,
     "plq": 3.97,
@@ -1184,6 +1282,7 @@
    "id": "robert-baldwin",
    "name": "Robert-Baldwin",
    "seats": 1,
+   "votes2022": 29827,
    "results_2022": {
     "caq": 9.75,
     "plq": 57.76,
@@ -1196,6 +1295,7 @@
    "id": "roberval",
    "name": "Roberval",
    "seats": 1,
+   "votes2022": 26727,
    "results_2022": {
     "caq": 56.19,
     "plq": 4.55,
@@ -1208,6 +1308,7 @@
    "id": "rosemont",
    "name": "Rosemont",
    "seats": 1,
+   "votes2022": 35380,
    "results_2022": {
     "caq": 23.06,
     "plq": 11.79,
@@ -1220,6 +1321,7 @@
    "id": "rousseau",
    "name": "Rousseau",
    "seats": 1,
+   "votes2022": 27912,
    "results_2022": {
     "caq": 50.58,
     "plq": 3.45,
@@ -1232,6 +1334,7 @@
    "id": "rouyn-noranda-temiscamingue",
    "name": "Rouyn-Noranda-Témiscamingue",
    "seats": 1,
+   "votes2022": 28732,
    "results_2022": {
     "caq": 45.16,
     "plq": 4.37,
@@ -1244,6 +1347,7 @@
    "id": "saint-francois",
    "name": "Saint-François",
    "seats": 1,
+   "votes2022": 40728,
    "results_2022": {
     "caq": 42.43,
     "plq": 7.91,
@@ -1256,6 +1360,7 @@
    "id": "saint-henri-sainte-anne",
    "name": "Saint-Henri-Sainte-Anne",
    "seats": 1,
+   "votes2022": 32440,
    "results_2022": {
     "caq": 17.73,
     "plq": 36.15,
@@ -1268,6 +1373,7 @@
    "id": "saint-hyacinthe",
    "name": "Saint-Hyacinthe",
    "seats": 1,
+   "votes2022": 41321,
    "results_2022": {
     "caq": 54.42,
     "plq": 4.13,
@@ -1280,6 +1386,7 @@
    "id": "saint-jean",
    "name": "Saint-Jean",
    "seats": 1,
+   "votes2022": 42907,
    "results_2022": {
     "caq": 50.65,
     "plq": 5.98,
@@ -1292,6 +1399,7 @@
    "id": "saint-jerome",
    "name": "Saint-Jérôme",
    "seats": 1,
+   "votes2022": 41038,
    "results_2022": {
     "caq": 50.02,
     "plq": 4.53,
@@ -1304,6 +1412,7 @@
    "id": "saint-laurent",
    "name": "Saint-Laurent",
    "seats": 1,
+   "votes2022": 28628,
    "results_2022": {
     "caq": 14.29,
     "plq": 49.97,
@@ -1316,6 +1425,7 @@
    "id": "sainte-marie-saint-jacques",
    "name": "Sainte-Marie-Saint-Jacques",
    "seats": 1,
+   "votes2022": 22841,
    "results_2022": {
     "caq": 14.31,
     "plq": 15.85,
@@ -1328,6 +1438,7 @@
    "id": "sainte-rose",
    "name": "Sainte-Rose",
    "seats": 1,
+   "votes2022": 36600,
    "results_2022": {
     "caq": 38.5,
     "plq": 23.98,
@@ -1340,6 +1451,7 @@
    "id": "sanguinet",
    "name": "Sanguinet",
    "seats": 1,
+   "votes2022": 29944,
    "results_2022": {
     "caq": 48.78,
     "plq": 9.86,
@@ -1352,6 +1464,7 @@
    "id": "sherbrooke",
    "name": "Sherbrooke",
    "seats": 1,
+   "votes2022": 37098,
    "results_2022": {
     "caq": 35.25,
     "plq": 5.84,
@@ -1364,6 +1477,7 @@
    "id": "soulanges",
    "name": "Soulanges",
    "seats": 1,
+   "votes2022": 40153,
    "results_2022": {
     "caq": 42.62,
     "plq": 21.82,
@@ -1376,6 +1490,7 @@
    "id": "taillon",
    "name": "Taillon",
    "seats": 1,
+   "votes2022": 35256,
    "results_2022": {
     "caq": 41.51,
     "plq": 11.62,
@@ -1388,6 +1503,7 @@
    "id": "taschereau",
    "name": "Taschereau",
    "seats": 1,
+   "votes2022": 34370,
    "results_2022": {
     "caq": 21.93,
     "plq": 5.89,
@@ -1400,6 +1516,7 @@
    "id": "terrebonne",
    "name": "Terrebonne",
    "seats": 1,
+   "votes2022": 42295,
    "results_2022": {
     "caq": 49.44,
     "plq": 10.17,
@@ -1412,6 +1529,7 @@
    "id": "trois-rivieres",
    "name": "Trois-Rivières",
    "seats": 1,
+   "votes2022": 37115,
    "results_2022": {
     "caq": 50.81,
     "plq": 5.54,
@@ -1424,6 +1542,7 @@
    "id": "ungava",
    "name": "Ungava",
    "seats": 1,
+   "votes2022": 8635,
    "results_2022": {
     "caq": 36.27,
     "plq": 18.19,
@@ -1436,6 +1555,7 @@
    "id": "vachon",
    "name": "Vachon",
    "seats": 1,
+   "votes2022": 35589,
    "results_2022": {
     "caq": 44.91,
     "plq": 16.07,
@@ -1448,6 +1568,7 @@
    "id": "vanier-lesrivieres",
    "name": "Vanier-Les Rivières",
    "seats": 1,
+   "votes2022": 43918,
    "results_2022": {
     "caq": 47.39,
     "plq": 6.28,
@@ -1460,6 +1581,7 @@
    "id": "vaudreuil",
    "name": "Vaudreuil",
    "seats": 1,
+   "votes2022": 39765,
    "results_2022": {
     "caq": 32.77,
     "plq": 34.22,
@@ -1472,6 +1594,7 @@
    "id": "vercheres",
    "name": "Verchères",
    "seats": 1,
+   "votes2022": 46161,
    "results_2022": {
     "caq": 51.28,
     "plq": 5.28,
@@ -1484,6 +1607,7 @@
    "id": "verdun",
    "name": "Verdun",
    "seats": 1,
+   "votes2022": 31093,
    "results_2022": {
     "caq": 23.0,
     "plq": 29.27,
@@ -1496,6 +1620,7 @@
    "id": "viau",
    "name": "Viau",
    "seats": 1,
+   "votes2022": 21082,
    "results_2022": {
     "caq": 15.18,
     "plq": 38.18,
@@ -1508,6 +1633,7 @@
    "id": "vimont-auteuil",
    "name": "Vimont-Auteuil",
    "seats": 1,
+   "votes2022": 31965,
    "results_2022": {
     "caq": 34.28,
     "plq": 29.85,
@@ -1520,6 +1646,7 @@
    "id": "westmount-saint-louis",
    "name": "Westmount-Saint-Louis",
    "seats": 1,
+   "votes2022": 20952,
    "results_2022": {
     "caq": 10.08,
     "plq": 50.48,

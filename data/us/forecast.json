@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T11:00:48Z",
+  "generated": "2026-10-04T11:48:10Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -286,7 +286,7 @@
       {
         "state": "Oklahoma",
         "district": "",
-        "incumbent": "Alan S. Armstrong",
+        "incumbent": "Alan Armstrong",
         "party": "R",
         "rating": "Solid R",
         "lean": "Solid R",

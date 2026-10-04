@@ -539,7 +539,32 @@ function trendExtrapolation(polls, party){
   const damp=horizon/(horizon+dampDays);  // 1 far out, -> 0 at election day
   const cap=TREND_CONF.maxDaily*horizon;
   const move=Math.max(-cap,Math.min(cap,-short.slope*horizon*damp));
-  return Math.max(0,short.anchor+move);
+  return {ext:Math.max(0,short.anchor+move), anchor:short.anchor};
+}
+
+// Projected trend values for every party, with the moves constrained to sum
+// to ~zero: shares must sum to the modelled total, so independent per-party
+// slopes could otherwise make every party rise at once. The gate runs per
+// party on the raw slopes; afterwards the mean move of the surviving parties
+// is subtracted, so only momentum relative to the field survives (a single
+// surviving trend is centered to zero - relative momentum without
+// counterparts is meaningless).
+function trendProjections(polls){
+  if(!TREND_CONF) return null;
+  const parts={}, moves=[];
+  for(const pid of PARTY_ORDER){
+    const t=trendExtrapolation(polls, pid);
+    if(!t) continue;
+    parts[pid]={ext:t.ext, anchor:t.anchor, move:t.ext-t.anchor};
+    moves.push(t.ext-t.anchor);
+  }
+  if(!moves.length) return null;
+  const mean=moves.reduce((a,b)=>a+b,0)/moves.length;
+  const res={};
+  for(const pid in parts){
+    res[pid]=Math.max(0,parts[pid].anchor+parts[pid].move-mean);
+  }
+  return res;
 }
 
 function computeAverages(polls, raw){
@@ -562,12 +587,16 @@ function computeAverages(polls, raw){
       avg[pid]=(1-PRIOR_ALPHA)*avg[pid]+PRIOR_ALPHA*prior;
     }
   }
-  // linear-trend extrapolation toward the election date
+  // linear-trend extrapolation toward the election date (moves constrained to
+  // sum to ~zero across the parties, see trendProjections)
   if(!raw && TREND_CONF){
-    for(const pid of PARTY_ORDER){
-      const ext=trendExtrapolation(polls, pid);
-      if(ext!==null&&avg[pid]!==null){
-        avg[pid]=(1-TREND_CONF.blend)*avg[pid]+TREND_CONF.blend*ext;
+    const tp=trendProjections(polls);
+    if(tp){
+      for(const pid of PARTY_ORDER){
+        const ext=tp[pid];
+        if(ext!==undefined&&avg[pid]!==null){
+          avg[pid]=(1-TREND_CONF.blend)*avg[pid]+TREND_CONF.blend*ext;
+        }
       }
     }
   }
@@ -1077,9 +1106,10 @@ function drawChartBase(hoverIdx){
         cands.push({ser,lastVal,lastIdx});
       });
       cands.sort((a,b)=>b.lastVal-a.lastVal);
+      const tp=trendProjections(s.polls);
       cands.slice(0,4).forEach(c=>{
-        const ext=trendExtrapolation(s.polls,c.ser.pid);
-        if(ext===null) return;
+        const ext=tp?tp[c.ser.pid]:null;
+        if(ext===null||ext===undefined) return;
         const x0=pad.left+(c.lastIdx/(dates.length-1))*cw;
         const y0=pad.top+ch*(1-(c.lastVal-yMin)/(yMax-yMin));
         const xe=W-pad.right+2;

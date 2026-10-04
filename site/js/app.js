@@ -1605,14 +1605,17 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
     sum+=now;
   }
   // Incumbent boost (Poliwave): the party that won the seat last time gets a
-  // small multiplicative lift for the sitting member's personal vote. We have
-  // no target-election candidate data, so only the positive arm applies (the
-  // baseline-winner heuristic; a retiring-MP deboost needs candidate lists).
-  // Applied before the holdSeats override and the renormalization, so the
-  // lift shifts the within-district distribution.
+  // small multiplicative lift for the sitting member's personal vote, or a
+  // symmetric deboost when the sitting member is not on the ballot (retired
+  // or not renominated - conf.retiringSeats lists those seats, built from the
+  // target election's official candidate lists). Applied before the holdSeats
+  // override and the renormalization, so the shift stays within the district.
   if(!resultMode&&conf.incumbentBoost){
     const w=districtResultWinner(nr, conf);
-    if(w&&out[w]) out[w].now*=1+conf.incumbentBoost/100;
+    if(w&&out[w]){
+      const ret=conf.retiringSeats&&conf.retiringSeats[nr]===w;
+      out[w].now*=ret?1-conf.incumbentBoost/100:1+conf.incumbentBoost/100;
+    }
   }
   // Notional seat holds: the named party keeps its baseline in that seat
   // instead of swinging with the national average (UK: Great Yarmouth stays

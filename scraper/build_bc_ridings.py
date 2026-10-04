@@ -12,10 +12,13 @@ block into js/config.js.
 
 Usage: python scraper/build_bc_ridings.py [--force]
 """
+import csv
+import io
 import json
 import os
 import re
 import sys
+import unicodedata
 
 import requests
 from bs4 import BeautifulSoup
@@ -32,6 +35,12 @@ ZOOM_SVG = os.path.join(CACHE, "bc_vancouver_detail.svg")
 ZOOM_BOX = (-123.35, 49.0, -122.35, 49.55)  # Metro Vancouver
 GEOJSON = os.path.join(CACHE, "bc_ridings.geojson")
 ARTICLE = "https://en.wikipedia.org/wiki/2024_British_Columbia_general_election"
+# 2024 elected members (Elections BC news release) and the final 2026
+# candidate list (nominations closed 2026-10-03): a 2024 winner not on the
+# 2026 ballot is retiring, and their seat loses the incumbent boost
+ELECTED = "https://elections.bc.ca/news/2024-final-count-complete/"
+CAND26 = ("https://elections.bc.ca/2026election/"
+          "2026-provincial-general-election-candidates.csv")
 WFS = ("https://openmaps.gov.bc.ca/geo/pub/WHSE_ADMIN_BOUNDARIES."
        "EBC_ELECTORAL_DISTS_BS11_SVW/ows?service=WFS&version=2.0.0"
        "&request=GetFeature&typeName=WHSE_ADMIN_BOUNDARIES."
@@ -110,6 +119,44 @@ def main():
         r = results.get(key, {p: 0 for p in PARTIES})
         cons.append({"id": key, "name": disp, "seats": 1,
                      "votes2022": totals.get(key, 0), "results_2022": r})
+
+    # 2024 elected members + the 2026 candidate list -> retiring seats
+    soup = BeautifulSoup(fetch(ELECTED, "bc_2024_elected.html", force), "lxml")
+    elected = {}
+    for t in soup.find_all("table"):
+        if "Candidate Elected" not in t.get_text():
+            continue
+        for tr in t.find_all("tr"):
+            cells = [c.get_text(" ", strip=True)
+                     for c in tr.find_all(["td", "th"])]
+            if len(cells) >= 3 and cells[0] and cells[0] != "Electoral District":
+                elected[bm.fold(cells[0])] = cells[1]
+    print("elected members parsed:", len(elected))
+    raw = fetch(CAND26, "bc_cand_2026.csv", force, binary=True).decode("cp1252")
+    by26 = {}
+    for row in csv.DictReader(io.StringIO(raw)):
+        by26.setdefault(bm.fold(row["Electoral District"]), []).append(
+            row["Candidate Ballot Name"])
+    print("2026 districts with candidates:", len(by26))
+
+    def nl(s):
+        s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore")
+        return re.sub(r"[^A-Za-z ]", " ", s.decode()).split()
+
+    retiring = {}
+    for c in cons:
+        nm, cands = elected.get(c["id"]), by26.get(c["id"])
+        if not nm or not cands:
+            continue
+        p = nl(nm)
+        surname, first = p[-1].lower(), p[0].lower()
+        hit = any(nl(x) and nl(x)[-1].lower() == surname
+                  and nl(x)[0].lower()[:1] == first[:1] for x in cands)
+        if not hit:
+            retiring[c["id"]] = max(c["results_2022"],
+                                    key=c["results_2022"].get)
+    print("retiring seats (2024 winner absent from the 2026 ballot):",
+          len(retiring))
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
     with open(CONST_JSON, "w", encoding="utf8") as fh:
         json.dump({"country": "bc", "total_seats": 93,
@@ -229,9 +276,11 @@ def main():
       // national share (see swingProxyConfidence in districtShares)
       swingProxyConfidence: { onbc: 0.5, cbc: 0.5 },
       // sitting-member personal-vote lift for the party that won the riding
-      // last time (baseline-winner heuristic: no target-candidate data, so
-      // only the positive arm; retiring-MLA deboost needs candidate lists)
+      // last time, with a symmetric deboost where the 2024 winner is not on
+      // the 2026 ballot (retiringSeats, from the final Elections BC candidate
+      // list: absent winner = retiring)
       incumbentBoost: 2.0,
+      retiringSeats: @@retiringSeats@@,
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,
@@ -255,6 +304,7 @@ def main():
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
                           8).replace("\n", "\n      ")),
             ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
+            ("retiringSeats", j(retiring, 8).replace("\n", "\n      ")),
             ):
         block = block.replace("@@%s@@" % ph, val)
 

@@ -23449,9 +23449,28 @@ saxony_anhalt: {
       // national share (see swingProxyConfidence in districtShares)
       swingProxyConfidence: { onbc: 0.5, cbc: 0.5 },
       // sitting-member personal-vote lift for the party that won the riding
-      // last time (baseline-winner heuristic: no target-candidate data, so
-      // only the positive arm; retiring-MLA deboost needs candidate lists)
+      // last time, with a symmetric deboost where the 2024 winner is not on
+      // the 2026 ballot (retiringSeats, from the final Elections BC candidate
+      // list: absent winner = retiring)
       incumbentBoost: 2.0,
+      retiringSeats: {
+              "abbotsford-mission": "cpbc",
+              "deltanorth": "bcndp",
+              "kelowna-lakecountry-coldstream": "cpbc",
+              "nechakolakes": "cpbc",
+              "penticton-summerland": "cpbc",
+              "richmond-steveston": "bcndp",
+              "richmondcentre": "cpbc",
+              "saanichnorthandtheislands": "gpbc",
+              "saanichsouth": "bcndp",
+              "surrey-cloverdale": "cpbc",
+              "surrey-serpentineriver": "cpbc",
+              "surreysouth": "cpbc",
+              "vancouver-fraserview": "bcndp",
+              "vancouver-southgranville": "bcndp",
+              "vancouver-strathcona": "bcndp",
+              "westvancouver-capilano": "cpbc"
+      },
       districts: {
               "abbotsford-mission": "abbotsford-mission",
               "abbotsfordsouth": "abbotsfordsouth",
@@ -24373,9 +24392,70 @@ saxony_anhalt: {
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
       // sitting-member personal-vote lift for the party that won the seat
-      // last time (baseline-winner heuristic: no target-candidate data, so
-      // only the positive arm; retiring-MP deboost needs candidate lists)
+      // last time, with a symmetric deboost where the 2022 winner is not on
+      // the 2026 ballot (retiringSeats, from the official 2026 candidate
+      // list: absent winner = retired or not renominated)
       incumbentBoost: 2.0,
+      retiringSeats: {
+              "daniel-johnson": "caq",
+              "rosemont": "qs",
+              "brome-missisquoi": "caq",
+              "saint-henri-sainte-anne": "plq",
+              "saint-laurent": "plq",
+              "saint-hyacinthe": "caq",
+              "beauce-nord": "caq",
+              "saint-jean": "caq",
+              "jean-talon": "caq",
+              "lotbiniere-frontenac": "caq",
+              "chicoutimi": "caq",
+              "laprairie": "caq",
+              "ungava": "caq",
+              "lac-saint-jean": "caq",
+              "masson": "caq",
+              "chauveau": "caq",
+              "vanier-lesrivieres": "caq",
+              "champlain": "caq",
+              "rouyn-noranda-temiscamingue": "caq",
+              "orford": "caq",
+              "saint-jerome": "caq",
+              "vaudreuil": "plq",
+              "sanguinet": "caq",
+              "lesplaines": "caq",
+              "richmond": "caq",
+              "laviolette-saint-maurice": "caq",
+              "louis-hebert": "caq",
+              "charlesbourg": "caq",
+              "berthier": "caq",
+              "fabre": "caq",
+              "labelle": "caq",
+              "huntingdon": "caq",
+              "trois-rivieres": "caq",
+              "roberval": "caq",
+              "maurice-richard": "qs",
+              "dubuc": "caq",
+              "sherbrooke": "qs",
+              "arthabaska-lerable": "caq",
+              "mirabel": "caq",
+              "lassomption": "caq",
+              "gouin": "qs",
+              "marguerite-bourgeoys": "plq",
+              "bellefeuille": "caq",
+              "sainte-marie-saint-jacques": "qs",
+              "argenteuil": "caq",
+              "pierre-laporte": "caq",
+              "terrebonne": "caq",
+              "joliette": "caq",
+              "gatineau": "caq",
+              "laval-des-rapides": "caq",
+              "taillon": "caq",
+              "papineau": "caq",
+              "lapeltrie": "caq",
+              "granby": "caq",
+              "vercheres": "caq",
+              "rimouski": "caq",
+              "marie-lacoste-gerin-lajoie": "caq",
+              "deux-montagnes": "caq"
+      },
       hideBlocToggle: true,
       districts: {
               "abitibi-est": "abitibi-est",

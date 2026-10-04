@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 
 import requests
 
@@ -45,6 +46,10 @@ DGEQ = ("https://donnees.electionsquebec.qc.ca/production/provincial/"
         "resultats/archives/gen2022-10-03/")
 GEO_URL = ("https://donnees.electionsquebec.qc.ca/autres/provincial/"
            "circonscriptions_electorales_sans_eau_2026.json")
+# 2026 official candidate list: used for the incumbent deboost (a 2022 winner
+# not on the 2026 ballot is retiring or was not renominated)
+CAND26 = ("https://donnees.electionsquebec.qc.ca/production/provincial/"
+          "candidatures/candidatures.json")
 ATTRIBUTION = ("Risultati: Élections Québec (elezioni generali 2022, dati "
                "aperti); Geometria: Élections Québec (carta elettorale 2026)")
 
@@ -80,6 +85,11 @@ def read_csv(name, force=False):
     return list(csv.reader(io.StringIO(raw.decode("cp1252")), delimiter=";"))
 
 
+def norm(s):
+    s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z]", "", s.lower())
+
+
 def main():
     force = "--force" in sys.argv
     os.makedirs(CACHE, exist_ok=True)
@@ -98,14 +108,18 @@ def main():
             name_of[row[0]] = row[1]
             valid[row[0]] = int(re.sub(r"[^\d]", "", row[6]) or 0)
     votes = {}
+    top = {}
     for row in cand[1:]:
         if len(row) < 7 or not row[0]:
             continue
+        v = int(re.sub(r"[^\d]", "", row[6]) or 0)
+        if v > top.get(row[0], (0,))[0]:
+            top[row[0]] = (v, row[2], row[3])
         key = ABBR.get(row[5])
         if not key:
             continue
         votes.setdefault(row[0], {}).setdefault(key, 0)
-        votes[row[0]][key] += int(re.sub(r"[^\d]", "", row[6]) or 0)
+        votes[row[0]][key] += v
     shares = {}
     raw = {}
     for num, v in votes.items():
@@ -143,6 +157,34 @@ def main():
 
     missing = [n for n in geo_names if lookup(n) is None]
     print("without baseline:", missing)
+
+    # 2026 official candidates (ballot names): where the 2022 winner is not on
+    # the 2026 ballot, the seat loses the incumbent boost (deboost). The 2026
+    # candidate JSON's depute_sortant flag cross-checks this (it agreed on
+    # every one of the 66 running winners).
+    cand26 = json.loads(fetch(CAND26, "qc_candidatures_2026.json", force))
+    by26 = {}
+    for c in cand26:
+        by26.setdefault(norm(c["nom_circonscription"]), []).append(
+            (norm(c["nom_bulletin_vote"]), norm(c["prenom_bulletin_vote"])))
+    no26 = [n for n in geo_names if norm(n) not in by26]
+    print("2026 candidate lists:", len(by26), "| geo names without list:", no26)
+    num_of = {v: k for k, v in name_of.items()}
+    retiring = {}
+    for n in geo_names:
+        src = resolve(n)
+        if not src or norm(n) not in by26:
+            continue
+        w = top.get(num_of.get(src))
+        if not w:
+            continue
+        _, nom, prenom = w
+        n22, p22 = norm(nom), norm(prenom)
+        if not any(a == n22 and b[:1] == p22[:1] for a, b in by26[norm(n)]):
+            retiring[bm.fold(n)] = max(votes[num_of[src]],
+                                       key=votes[num_of[src]].get)
+    print("retiring seats (2022 winner absent from the 2026 ballot):",
+          len(retiring))
     cons = []
     for key in sorted(set(bm.fold(n) for n in geo_names)):
         disp = next(n for n in geo_names if bm.fold(n) == key)
@@ -276,9 +318,11 @@ def main():
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
       // sitting-member personal-vote lift for the party that won the seat
-      // last time (baseline-winner heuristic: no target-candidate data, so
-      // only the positive arm; retiring-MP deboost needs candidate lists)
+      // last time, with a symmetric deboost where the 2022 winner is not on
+      // the 2026 ballot (retiringSeats, from the official 2026 candidate
+      // list: absent winner = retired or not renominated)
       incumbentBoost: 2.0,
+      retiringSeats: @@retiringSeats@@,
       hideBlocToggle: true,
       districts: @@districts@@,
       // 2022 vote shares per riding (Élections Québec; 2 new 2025 ridings
@@ -310,6 +354,7 @@ def main():
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
                           8).replace("\n", "\n      ")),
             ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
+            ("retiringSeats", j(retiring, 8).replace("\n", "\n      ")),
             ("regionBase", j(region_base, 8).replace("\n", "\n      "))):
         block = block.replace("@@%s@@" % ph, val)
 

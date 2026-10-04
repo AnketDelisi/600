@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20260905b3";
-const US_GEO = US_BASE + "data/us/geo.json?v=20260905b3";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20260905b3";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004a";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004a";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004a";
 const US_LABELS = {
   senate: "Senate",
   house: "House",

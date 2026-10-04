@@ -44,17 +44,46 @@ def pct(s):
     return float(m.group(1)) if m else None
 
 
-def party_cols(header):
-    """Return (dem_idx, rep_idx) when both (D) and (R) are annotated, else None."""
-    dem_i = rep_i = None
+def party_cols(header, rows):
+    """Return (dem_idx, rep_idx): the MAIN (D)/(R) candidate columns.
+
+    Multi-candidate tables list the main candidates first but often add minor
+    (D)/(R) candidates after them (Alaska 2026: Sullivan, Peltola, then three
+    also-rans). Taking the last annotated column picked a minor candidate and
+    produced nonsense like R 1% against D 46%; the main column is the one with
+    the highest average poll percentage.
+    """
+    cand = {"D": [], "R": []}
     for i, h in enumerate(header):
-        if "(D" in h.upper():
-            dem_i = i
-        elif "(R" in h.upper():
-            rep_i = i
-    if dem_i is None or rep_i is None:
+        hu = h.upper()
+        if "(D" in hu:
+            cand["D"].append(i)
+        elif "(R" in hu:
+            cand["R"].append(i)
+    if not cand["D"] or not cand["R"]:
         return None
-    return dem_i, rep_i
+
+    def best(idxs):
+        if len(idxs) == 1:
+            return idxs[0]
+        mean = {}
+        for i in idxs:
+            vals = []
+            for row in rows[1:]:
+                cells = [c.get_text(" ", strip=True)
+                         for c in row.find_all(["th", "td"])]
+                if i < len(cells):
+                    v = pct(cells[i])
+                    if v is not None and v > 5:  # ignore minor-candidate crumbs
+                        vals.append(v)
+            mean[i] = sum(vals) / len(vals) if vals else -1
+        return max(idxs, key=lambda i: mean[i])
+    return best(cand["D"]), best(cand["R"])
+
+
+def clean_name(s):
+    """Drop Wikipedia footnote markers like '[ 116 ]' or '[ r ]'."""
+    return re.sub(r"\[\s*[0-9a-zA-Z]{1,4}\s*\]", "", s or "").strip()
 
 
 def parse_aggregate(soup):
@@ -69,7 +98,7 @@ def parse_aggregate(soup):
         if len(rows) < 4:
             continue
         header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
-        cols = party_cols(header)
+        cols = party_cols(header, rows)
         if cols is None:
             continue
         dem_i, rep_i = cols
@@ -88,8 +117,10 @@ def parse_aggregate(soup):
         if dem_i < 0 or rep_i < 0 or dem_i >= len(chosen) or rep_i >= len(chosen):
             continue
         d, r = pct(chosen[dem_i]), pct(chosen[rep_i])
-        if d is None or r is None or not (60.0 <= d + r <= 100.0):
-            # not a two-way general-election aggregate (e.g. primary/fragment)
+        if d is None or r is None or not (75.0 <= d + r <= 100.0):
+            # not a clean two-way general-election matchup: multi-candidate
+            # jungle races (Alaska's 6-9 candidate fields) and primary-era
+            # fragments leave most of the vote to other columns
             continue
         best = {"dem": round(d, 1), "rep": round(r, 1), "source": "Aggregate (Wikipedia)"}
     return best
@@ -104,7 +135,7 @@ def parse_direct(soup):
         if len(rows) < 4:
             continue
         header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
-        cols = party_cols(header)
+        cols = party_cols(header, rows)
         if cols is None:
             continue
         dem_i, rep_i = cols
@@ -116,7 +147,7 @@ def parse_direct(soup):
             if not cells[0] or cells[0].lower() in ("average", ""):
                 continue
             d, r = pct(cells[dem_i]), pct(cells[rep_i])
-            if d is None or r is None:
+            if d is None or r is None or d + r < 75:
                 continue
             found.append((d, r))
         if len(found) < 3:
@@ -140,7 +171,7 @@ def parse_individual(soup):
         if len(rows) < 4:
             continue
         header = [c.get_text(" ", strip=True).replace("\u200b", "") for c in rows[0].find_all(["th", "td"])]
-        cols = party_cols(header)
+        cols = party_cols(header, rows)
         if cols is None:
             continue
         dem_i, rep_i = cols
@@ -150,10 +181,10 @@ def parse_individual(soup):
             cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
             if len(cells) <= max(dem_i, rep_i):
                 continue
-            pollster = cells[0].replace("(D)", "").replace("(R)", "").replace("(I)", "").strip()
+            pollster = clean_name(cells[0].replace("(D)", "").replace("(R)", "").replace("(I)", ""))
             dates = cells[1] if len(cells) > 1 else ""
             d, r = pct(cells[dem_i]), pct(cells[rep_i])
-            if d is None or r is None or not pollster or pollster.lower() in ("average", ""):
+            if d is None or r is None or d + r < 75 or not pollster or pollster.lower() in ("average", ""):
                 continue
             # skip aggregate tables and sample-size continuation rows
             if (

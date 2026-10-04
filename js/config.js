@@ -18860,15 +18860,18 @@ saxony_anhalt: {
       }
     },
     pollsterMAE: {
-      OpinionWay: 1.7,
-      Ipsos: 1.7,
-      Elabe: 1.8,
-      Ifop: 1.9,
-      Odoxa: 2.2,
-      BVA: 2,
-      "Harris Interactive": 2.2,
-      Verian: 2.2,
-      Cluster17: 2.3
+      // nested per-pollster shape like every other country (a flat number
+      // here crashed the polls table: maeV[MAE_KEY]/maeV.overall on a number
+      // is undefined -> fmt(undefined).toFixed threw)
+      OpinionWay:           { overall: 1.7 },
+      Ipsos:                { overall: 1.7 },
+      Elabe:                { overall: 1.8 },
+      Ifop:                 { overall: 1.9 },
+      Odoxa:                { overall: 2.2 },
+      BVA:                  { overall: 2.0 },
+      'Harris Interactive': { overall: 2.2 },
+      Verian:               { overall: 2.2 },
+      Cluster17:            { overall: 2.3 },
     },
     logos: {
       arthaud: "img/fr/LO.svg",

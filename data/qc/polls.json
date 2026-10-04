@@ -2,9 +2,25 @@
   "country": "qc",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
-  "scraped_at": "2026-10-03T17:35:24Z",
-  "poll_count": 85,
+  "scraped_at": "2026-10-04T09:33:07Z",
+  "poll_count": 86,
   "polls": [
+    {
+      "pollster": "Leger",
+      "fieldwork_start": "2026-10-03",
+      "date": "2026-10-03",
+      "n": 892,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 14.0,
+        "qs": 11.0,
+        "pq": 29.0,
+        "plq": 25.0,
+        "pcq": 20.0
+      }
+    },
     {
       "pollster": "Leger",
       "fieldwork_start": "2026-09-27",
@@ -1368,18 +1384,18 @@
   ],
   "regional": {
     "mtl": {
-      "caq": 18.9,
-      "plq": 31.2,
-      "pq": 22.0,
-      "qs": 10.5,
-      "pcq": 16.0
+      "caq": 15.7,
+      "plq": 34.6,
+      "pq": 22.1,
+      "qs": 9.6,
+      "pcq": 16.8
     },
     "rest": {
-      "caq": 24.6,
-      "plq": 16.0,
-      "pq": 32.4,
-      "qs": 10.5,
-      "pcq": 15.6
+      "caq": 19.3,
+      "plq": 17.0,
+      "pq": 33.5,
+      "qs": 11.0,
+      "pcq": 17.8
     }
   }
 }

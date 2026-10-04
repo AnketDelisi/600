@@ -22394,17 +22394,17 @@ saxony_anhalt: {
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
     parties: {
-      fdi:  { code: 'FdI',   name: 'Fratelli d\'Italia',            name_en: 'Brothers of Italy',             color: '#03386A' },
-      pd:   { code: 'PD',    name: 'Partito Democratico',           name_en: 'Democratic Party',              color: '#EF1C27' },
-      m5s:  { code: 'M5S',   name: 'Movimento 5 Stelle',            name_en: 'Five Star Movement',            color: '#FFEB3B' },
-      lega: { code: 'Lega',  name: 'Lega per Salvini Premier',      name_en: 'League for Salvini Premier',    color: '#008000' },
-      fi:   { code: 'FI',    name: 'Forza Italia',                  name_en: 'Forza Italia',                  color: '#0087DC' },
-      a:    { code: 'A',     name: 'Azione',                        name_en: 'Action',                        color: '#0039AA' },
-      iv:   { code: 'IV',    name: 'Italia Viva',                   name_en: 'Italia Viva',                   color: '#D6418C' },
-      avs:  { code: 'AVS',   name: 'Alleanza Verdi e Sinistra',     name_en: 'Greens and Left Alliance',      color: '#BE3457' },
+      fdi:  { code: 'FdI',   name: 'Fratelli d\'Italia',            name_en: 'Brothers of Italy',             color: '#0F2D5C' },
+      pd:   { code: 'PD',    name: 'Partito Democratico',           name_en: 'Democratic Party',              color: '#E4002B' },
+      m5s:  { code: 'M5S',   name: 'Movimento 5 Stelle',            name_en: 'Five Star Movement',            color: '#FDD500' },
+      lega: { code: 'Lega',  name: 'Lega per Salvini Premier',      name_en: 'League for Salvini Premier',    color: '#2B2B2B' },
+      fi:   { code: 'FI',    name: 'Forza Italia',                  name_en: 'Forza Italia',                  color: '#0087D1' },
+      a:    { code: 'A',     name: 'Azione',                        name_en: 'Action',                        color: '#0E5C9E' },
+      iv:   { code: 'IV',    name: 'Italia Viva',                   name_en: 'Italia Viva',                   color: '#E6226B' },
+      avs:  { code: 'AVS',   name: 'Alleanza Verdi e Sinistra',     name_en: 'Greens and Left Alliance',      color: '#4C9E38' },
       e:    { code: '+E',    name: '+Europa',                       name_en: 'More Europe',                   color: '#0073B9' },
-      nm:   { code: 'NM',    name: 'Noi Moderati',                  name_en: 'Us Moderates',                  color: '#43528F' },
-      fn:   { code: 'FN',    name: 'Futuro Nazionale',              name_en: 'National Future',               color: '#20293D' },
+      nm:   { code: 'NM',    name: 'Noi Moderati',                  name_en: 'Us Moderates',                  color: '#1B4F9C' },
+      fn:   { code: 'FN',    name: 'Futuro Nazionale',              name_en: 'National Future',               color: '#4A4A4A' },
     },
     order: ['fdi', 'pd', 'm5s', 'lega', 'fi', 'a', 'iv', 'avs', 'e', 'nm', 'fn'],
     parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn'],
@@ -22445,6 +22445,10 @@ saxony_anhalt: {
     map: {
       svg: 'img/italy.svg',
       selector: 'id',
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded); the region-level swing decides which bloc takes each
+      // region's FPTP seats in allocateSeatsItaly
+      swingMethod: 'geometric',
       districts: {
               "abruzzo": "abruzzo",
               "basilicata": "basilicata",
@@ -39516,6 +39520,11 @@ saxony_anhalt: {
       svg: 'img/nz.svg',
       selector: 'id',
       useConstituencies: true,
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds); the baselines
+      // are 2023 candidate-vote shares per electorate while the national
+      // anchor is the party vote, same hybrid as the proportional method
+      swingMethod: 'geometric',
       // sitting-member personal-vote lift for the party that won the
       // electorate last time (baseline-winner heuristic: no target-candidate
       // data, so only the positive arm; retiring-MP deboost needs candidate

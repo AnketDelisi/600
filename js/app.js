@@ -259,11 +259,19 @@ function constituencyTableHtml(votes, opts){
       PARTY_ORDER.forEach(p=>{lastTotals[p]+=sa22[p]||0});
     });
   }
+  // pre-pass: a party holding no seat anywhere (and none last time either)
+  // gets no column - a full column of dashes is noise
+  const seatByC=new Map();
   for(const c of sorted){
     const sa=allocateConstituencySeats(votes,c);
+    seatByC.set(c,sa);
     PARTY_ORDER.forEach(p=>{totalSeatsAll[p]+=sa[p]||0});
+  }
+  const cols=PARTY_ORDER.filter(p=>totalSeatsAll[p]>0||(lastTotals&&(lastTotals[p]||0)>0));
+  for(const c of sorted){
+    const sa=seatByC.get(c);
     let seatCells='';
-    for(const p of PARTY_ORDER){
+    for(const p of cols){
       const s=sa[p]||0;
       const color=PARTY_META[p]?PARTY_META[p].color:'#888';
       seatCells+=`<td class="num c" style="color:${s>0?color:'var(--c-rule)'};font-weight:${s>0?'700':'400'}">${s||'—'}</td>`;
@@ -275,7 +283,7 @@ function constituencyTableHtml(votes, opts){
     </tr>`;
   }
   let totalCells='';
-  for(const p of PARTY_ORDER){
+  for(const p of cols){
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     totalCells+=`<td class="num c" style="font-weight:900;color:${color}">${totalSeatsAll[p]}</td>`;
   }
@@ -284,7 +292,7 @@ function constituencyTableHtml(votes, opts){
     <td>TOTAL</td><td class="num c">${constSeats}</td>${totalCells}</tr>`;
   if(lastTotals){
     let deltaCells='';
-    for(const p of PARTY_ORDER){
+    for(const p of cols){
       const d=totalSeatsAll[p]-(lastTotals[p]||0);
       const color=d>0?'#0B9E17':d<0?'var(--c-accent)':'var(--c-text-muted)';
       deltaCells+=`<td class="num c" style="color:${color};font-weight:900">${d>0?'+'+d:d}</td>`;
@@ -294,7 +302,7 @@ function constituencyTableHtml(votes, opts){
   }
 
   let head='';
-  PARTY_ORDER.forEach(p=>{head+=`<th class="c">${partyCode(p)}</th>`});
+  cols.forEach(p=>{head+=`<th class="c">${partyCode(p)}</th>`});
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${title}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
@@ -744,6 +752,7 @@ function renderLastElection(){
   for(const pid of sorted){
     const pct_val=LAST_ELECTION.results[pid];
     if(pct_val===undefined) continue;
+    if(!(pct_val>=0.05)) continue;   // parties at 0.0% are noise
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
     html+=`<div class="sb-le-row">
       <div class="sb-le-dot" style="background:${color}"></div>
@@ -832,6 +841,7 @@ function renderPartyBars(avg){
   for(const pid of order){
     const val=avg[pid];
     if(val===null||val===undefined) continue;
+    if(!(val>=0.05)) continue;   // 0 seats / 0.0% rows are noise
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
     const barWidth=Math.max(1,(val/maxPct)*100);
     const last2022=SEAT_BASED?(LAST_ELECTION.seats[pid]||0):(LAST_ELECTION.results[pid]||0);
@@ -1174,7 +1184,10 @@ function renderPollsTable(polls){
       <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th>
       <th class="c" title="${t('Pollster accuracy vs the best in this country (weight = 1/MAE)','Anketçi doğruluğu, ülkedeki en iyiye göre (ağırlık = 1/MAE)')}">${t('RATE','PUAN')}</th>
       <th class="c">${t('Lead','Fark')}</th>`;
-  const active=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
+  const shown=polls.slice(0,60);
+  // drop columns for parties no poll in the table reports (all dashes = noise)
+  const active=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)
+    &&shown.some(pl=>pl.votes[p]!==undefined));
   active.forEach(p=>{html+=`<th class="c">${partyCode(p)}</th>`});
   html+=`</tr></thead><tbody>`;
 
@@ -1202,7 +1215,8 @@ function renderPollsTable(polls){
       const v=p.votes[pid];
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
       const isTop=pid===leadP;
-      html+=`<td class="num c" style="color:${v!==undefined?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined?(SEAT_BASED?Math.round(v):pct(v)):'—'}</td>`;
+      const zero=v!==undefined&&(SEAT_BASED?v<0.5:v<0.05);
+      html+=`<td class="num c" style="color:${v!==undefined&&!zero?color:'var(--c-rule)'};font-weight:${isTop?'900':'400'};background:${isTop?color+'22':''}">${v!==undefined&&!zero?(SEAT_BASED?Math.round(v):pct(v)):'—'}</td>`;
     });
     html+=`</tr>`;
   });
@@ -2093,10 +2107,12 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):shares[p].now;
       let rows=PARTY_ORDER.slice().filter(p=>!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || (shares[b].now-shares[a].now)).map(p=>{
         const s=shares[p];
+        const pSeats=districtPartySeats(nr,p,avg,resultMode);
+        // hide parties at 0.0% (unless they still hold a seat pill)
+        if(!((resultMode?s.past:s.now)>=0.05||pSeats>0)) return '';
         const delta=s.now-s.past;
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
         const barW=Math.max(2,Math.min(100,s.now));
-        const pSeats=districtPartySeats(nr,p,avg,resultMode);
         const pill=pSeats!==null&&pSeats>0?`<span class="map-tip-pill">${pSeats}</span>`:'';
         return `<div class="map-tip-row">
           <span class="map-tip-code" style="color:${col}">${partyCode(p)}${pill}</span>
@@ -2104,7 +2120,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
         </div>`;
-      }).join('');
+      }).filter(x=>x).join('');
       // unmodelled 2023 lists (remainder), past column only
       if(shares.other&&shares.other.past>0.05){
         const o=shares.other;
@@ -2236,7 +2252,7 @@ async function renderForecastInfographic(avg, sim, opts){
   // party rows
   const fOrder=opts.fOrder||Object.keys(avg).sort((a,b)=>avg[b]-avg[a]);
   let y=470;
-  const rows=fOrder.filter(p=>{if(avg[p]==null)return false; const m=opts.onlyParties&&!opts.onlyParties.includes(p); return !m;});
+  const rows=fOrder.filter(p=>{if(avg[p]==null)return false; if(!(avg[p]>=0.05))return false; const m=opts.onlyParties&&!opts.onlyParties.includes(p); return !m;});
   const maxV=Math.max(...rows.map(p=>avg[p]));
   ctx.font='34px "Archivo Narrow",Archivo,Arial,sans-serif';
   for(const p of rows){
@@ -2525,7 +2541,11 @@ function allocateSeatsCzechia(avg){
 // won by an unmodelled regionalist list (Valle d'Aosta) keeps its seat out
 // of the modelled parties.
 function allocateSeatsItaly(avg){
-  const conf=MAP_CONF();
+  // the region map, not the displayed layer: with the collegio layer active
+  // MAP_CONF() would merge map2's useConstituencies and districtShares(region)
+  // would look up a collegio that does not exist, silently dropping all 147
+  // FPTP seats (FdI 109 -> 119 when loading ?l=2)
+  const conf=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null;
   if(!conf||!conf.fptpSeats) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   const blocOf={};
@@ -2537,7 +2557,7 @@ function allocateSeatsItaly(avg){
   for(const region of Object.keys(conf.fptpSeats)){
     const n=conf.fptpSeats[region]||0;
     if(!n) continue;
-    const shares=districtShares(region,avg,false);
+    const shares=districtShares(region,avg,false,conf);
     if(!shares) continue;
     const ent={};
     for(const p of PARTY_ORDER){
@@ -3231,6 +3251,9 @@ function renderForecast(pane){
   let cmpRows='';
   const cmpOrder=fOrder.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
   cmpOrder.forEach(p=>{
+    // a party that never wins a seat (deterministic, median and mode all 0)
+    // is a row of zeros: keep it out of the seats table
+    if(!(detSeats[p]||sim.medians[p]||sim.modes[p])) return;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     cmpRows+=`<tr>
       <td style="font-weight:700;color:${color}">${partyCode(p)}</td>
@@ -3384,8 +3407,9 @@ function renderForecast(pane){
   voteOrder.forEach(p=>{
     const arr=sim.votesBy[p];
     const mu=SEAT_BASED?mean(arr)/100*SEATS_TOTAL:mean(arr);
-    // presidential races: drop the simulation-floor artifacts (~0.1%) of
-    // candidates no pollster actually tracks
+    // parties at 0.0% are noise; presidential races also drop the
+    // simulation-floor artifacts (~0.1%) of candidates no pollster tracks
+    if(!(mu>=0.05)) return;
     if(MAP_ONLY&&mu<0.5) return;
     const lo=SEAT_BASED?percentile(arr,5)/100*SEATS_TOTAL:percentile(arr,5);
     const hi=SEAT_BASED?percentile(arr,95)/100*SEATS_TOTAL:percentile(arr,95);
@@ -3424,6 +3448,7 @@ function renderForecast(pane){
   seatOrder.forEach(p=>{
     const arr=sim.seatsBy[p];
     const mu=mean(arr);
+    if(!(mu>=0.05)) return;   // never in parliament: a row of zeros is noise
     const lo=percentile(arr,5), hi=percentile(arr,95);
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     const span=Math.max(1,hi-lo);
@@ -3700,7 +3725,12 @@ function liveCompareRows(live, valu, novus, avg){
   const liveParties=live&&live.national&&live.national.parties||[];
   const liveBy={};
   liveParties.forEach(p=>{const k=map[p.code];if(k)liveBy[k]={pct:p.pct,votes:p.votes}});
-  const rows=PARTY_ORDER.slice().sort((a,b)=>{
+  const rows=PARTY_ORDER.slice().filter(p=>{
+    // a party with no live, exit or forecast value at all (or only 0.0%) is
+    // a row of dashes: keep it out of the live comparison
+    return [liveBy[p]&&liveBy[p].pct, valu&&valu[p], novus&&novus[p],
+            avg&&avg[p]].some(v=>v!=null&&v>=0.05);
+  }).sort((a,b)=>{
     const la=liveBy[a]?liveBy[a].pct:0;
     const lb=liveBy[b]?liveBy[b].pct:0;
     return lb-la;

@@ -205,6 +205,7 @@ def main():
 
     # 2023 results per 2020 electorate from the Wikipedia articles
     results, pvotes_by_el, nat_pv = {}, {}, {}
+    votes_by_el = {}
     nat_total = 0.0
     missing = []
     for r in rows:
@@ -230,6 +231,7 @@ def main():
             pvotes_by_el.setdefault(key, {})[p] = v
         if pv_total:
             nat_total += pv_total
+            votes_by_el[key] = pv_total
     print("without 2023 results:", missing)
     assert not missing, "missing 2023 results: %s" % missing
     national = {p: round(nat_pv.get(p, 0) * 100 / nat_total, 2)
@@ -285,6 +287,7 @@ def main():
         name = r["electorate_name"]
         key = bm.fold(name)
         cons.append({"id": key, "name": name, "seats": 1,
+                     "votes2022": int(votes_by_el.get(key, 0)),
                      "results_2022": results[key]})
     assert len(cons) == 72
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
@@ -361,6 +364,11 @@ def main():
       svg: 'img/nz.svg',
       selector: 'id',
       useConstituencies: true,
+      // swing method: geometric mean of log-odds proportional and uniform
+      // swing (bounded, no ratio explosions on strongholds); the baselines
+      // are 2023 candidate-vote shares per electorate while the national
+      // anchor is the party vote, same hybrid as the proportional method
+      swingMethod: 'geometric',
       // sitting-member personal-vote lift for the party that won the
       // electorate last time (baseline-winner heuristic: no target-candidate
       // data, so only the positive arm; retiring-MP deboost needs candidate

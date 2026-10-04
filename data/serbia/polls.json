@@ -2,7 +2,7 @@
   "country": "serbia",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
-  "scraped_at": "2026-10-03T11:03:21Z",
+  "scraped_at": "2026-10-04T08:23:22Z",
   "poll_count": 16,
   "polls": [
     {
@@ -75,7 +75,7 @@
       "votes": {
         "sns": 35.7,
         "sps": 3.8,
-        "sl": 47.1,
+        "sl": 51.099999999999994,
         "pes": 1.3,
         "nada": 1.5,
         "misn": 2.0
@@ -107,7 +107,7 @@
       "votes": {
         "sns": 46.4,
         "sps": 5.0,
-        "sl": 28.7,
+        "sl": 30.5,
         "pes": 8.6,
         "nada": 2.5,
         "misn": 3.0
@@ -123,7 +123,7 @@
       "votes": {
         "sns": 48.2,
         "sps": 5.3,
-        "sl": 11.399999999999999,
+        "sl": 21.7,
         "pes": 5.9,
         "nada": 3.0,
         "misn": 2.9
@@ -139,7 +139,7 @@
       "votes": {
         "sns": 47.8,
         "sps": 7.3,
-        "sl": 12.899999999999999,
+        "sl": 21.4,
         "pes": 5.9,
         "nada": 2.9,
         "misn": 4.2
@@ -155,7 +155,7 @@
       "votes": {
         "sns": 46.6,
         "sps": 6.4,
-        "sl": 7.5,
+        "sl": 19.5,
         "pes": 5.8,
         "nada": 3.4000000000000004,
         "misn": 3.5
@@ -170,7 +170,7 @@
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
       "votes": {
         "sns": 40.2,
-        "sl": 28.0,
+        "sl": 33.2,
         "pes": 3.6,
         "nada": 2.7,
         "misn": 2.8
@@ -186,7 +186,7 @@
       "votes": {
         "sns": 35.1,
         "sps": 5.7,
-        "sl": 24.8,
+        "sl": 30.700000000000003,
         "pes": 3.4,
         "nada": 3.0,
         "misn": 3.2
@@ -203,7 +203,7 @@
         "sns": 36.0,
         "sps": 6.4,
         "pes": 7.1,
-        "sl": 6.4,
+        "sl": 17.5,
         "nada": 8.2
       }
     },
@@ -218,7 +218,7 @@
         "sns": 48.3,
         "sps": 6.4,
         "pes": 7.6,
-        "sl": 2.4,
+        "sl": 12.7,
         "nada": 4.3,
         "misn": 4.7
       }
@@ -234,7 +234,7 @@
         "sns": 51.1,
         "sps": 7.6,
         "pes": 10.5,
-        "sl": 4.1,
+        "sl": 14.899999999999999,
         "nada": 3.8,
         "misn": 5.6
       }
@@ -250,7 +250,7 @@
         "sns": 54.0,
         "sps": 8.9,
         "pes": 10.5,
-        "sl": 4.6,
+        "sl": 12.7,
         "nada": 4.3,
         "misn": 4.6
       }

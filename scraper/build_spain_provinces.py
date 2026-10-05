@@ -214,6 +214,18 @@ def main():
         names[key] = disp
     national = {p: round(nat_votes.get(p, 0) * 100 / nat_valid, 2)
                 for p in PARTIES}
+    # AC and AA did not contest the 2023 general election: their baselines
+    # come from the most recent regional elections - Alianca Catalana 3.77%
+    # (Catalonia 2024) in the four Catalan provinces, Adelante Andalucia
+    # 4.58% (Andalusia 2022) in the eight Andalusian ones. National anchors
+    # are their national-equivalent shares.
+    for k in ("barcelona", "girona", "lleida", "tarragona"):
+        gebiete[k]["ac"] = 3.77
+    for k in ("almeria", "cadiz", "cordoba", "granada",
+              "huelva", "jaen", "malaga", "sevilla"):
+        gebiete[k]["aa"] = 4.58
+    national["ac"] = 0.58
+    national["aa"] = 0.83
     # province -> autonomous community, and the official 2023 regional
     # baselines (used to blend the sub-national polls into the projection)
     region_of = {}
@@ -244,6 +256,10 @@ def main():
         vv = reg_val.get(rk) or sum(acc.values())
         region2023[rk] = {p: round(acc.get(p, 0) * 100 / vv, 2)
                           for p in PARTIES}
+    # the regional-election baselines for the new regional parties, so the
+    # sub-national polls blend against the right anchor
+    region2023.setdefault("cataluna", {})["ac"] = 3.77
+    region2023.setdefault("andalucia", {})["aa"] = 4.58
     print("regions:", len(region2023), "| regionOf:", len(region_of))
     print("seat total:", sum(seat_districts.values()))
     print("national:", national)

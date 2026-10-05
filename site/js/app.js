@@ -1666,6 +1666,18 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
       if(out[p]) out[p].now=0;
     }
   }
+  // A sitting MLA running as an independent (BC 2026: Peace River North's
+  // Jordan Kealy, the 2024 Conservative winner now running alone). The
+  // personal vote is projected out of the field; the estimate follows BC's
+  // 2024 precedent, where five BC United incumbents running as independents
+  // kept 16.3-30.4% of the vote (mean ~22; the previous Peace River North
+  // MLA kept 20.2 in this very riding). Set before the renormalization so
+  // the ballot parties absorb the shift, and the incumbent boost must not
+  // follow a party whose sitting member is off its ticket.
+  const indInc=conf.indIncumbents&&conf.indIncumbents[nr];
+  if(indInc) out.ind={past:indInc.past||0,
+                      now:resultMode?(indInc.past||0):(indInc.now||0),
+                      name:indInc.name||''};
   // Incumbent boost (Poliwave): the party that won the seat last time gets a
   // small multiplicative lift for the sitting member's personal vote, or a
   // symmetric deboost when the sitting member is not on the ballot (retired
@@ -1675,7 +1687,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   if(!resultMode&&conf.incumbentBoost){
     const w=districtResultWinner(nr, conf);
     if(w&&out[w]){
-      const ret=conf.retiringSeats&&conf.retiringSeats[nr]===w;
+      const ret=(conf.retiringSeats&&conf.retiringSeats[nr]===w)||!!indInc;
       out[w].now*=ret?1-conf.incumbentBoost/100:1+conf.incumbentBoost/100;
     }
   }
@@ -1689,7 +1701,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   // (stale sums left ridings short of 100% - e.g. the no-candidate pin
   // removed a party's share from the numerator but not the denominator).
   sum=0;
-  for(const p of PARTY_ORDER) sum+=out[p].now||0;
+  for(const p of PARTY_ORDER){ if(p!=='ind') sum+=out[p].now||0; }
   // Okrug baselines cover only the modelled parties (unmodelled lists made up
   // the remainder), so renormalize projected shares to the polls' own total for
   // the modelled parties (e.g. ~97.6%) — the leftover stays visible as "Other".
@@ -1703,11 +1715,16 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
       if(!(PARTY_META[p]&&PARTY_META[p].pastOnly)&&avg&&avg[p]!==undefined&&avg[p]!==null) target+=avg[p];
     }
     if(!(target>0)||target>100) target=100;
+    // an independent incumbent's projected vote comes out of the parties'
+    // pool (polls never ask about them): scale the ballot parties to the
+    // reduced target while the independent keeps its estimate
+    const pollsTarget=target;
+    if(out.ind) target=Math.max(0,target-out.ind.now);
     if(sum>0&&Math.abs(sum-target)>0.01){
       const k=target/sum;
-      for(const p of PARTY_ORDER) out[p].now*=k;
+      for(const p of PARTY_ORDER){ if(p!=='ind') out[p].now*=k; }
     }
-    out.other={past:rem, now:Math.max(0,100-target)};
+    out.other={past:rem, now:Math.max(0,100-pollsTarget)};
   }else{
     out.other={past:rem, now:rem};
   }
@@ -1764,7 +1781,7 @@ function districtWinnerProjection(nr, avg, confOverride, regionNoise, districtNo
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
-    if(shares[p].now>bestV){bestV=shares[p].now;best=p}
+    if(shares[p]&&shares[p].now>bestV){bestV=shares[p].now;best=p}
   }
   return best;
 }
@@ -1778,7 +1795,7 @@ function districtResultWinner(nr, confOverride){
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
-    if(shares[p].past>bestV){bestV=shares[p].past;best=p}
+    if(shares[p]&&shares[p].past>bestV){bestV=shares[p].past;best=p}
   }
   return best;
 }
@@ -2162,9 +2179,10 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       // Result mode: order rows by the official seat outcome (so a dissolved-but-large
   // list like SPN sits above smaller parties); otherwise by projected share.
   // Dissolved alliances (pastOnly) appear in the 2023 result view only.
-      const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):shares[p].now;
-      let rows=PARTY_ORDER.slice().filter(p=>!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || (shares[b].now-shares[a].now)).map(p=>{
+      const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):(shares[p]?shares[p].now:0);
+      let rows=PARTY_ORDER.slice().filter(p=>!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{
         const s=shares[p];
+        if(!s) return '';
         const pSeats=districtPartySeats(nr,p,avg,resultMode);
         // hide parties at 0.0% (unless they still hold a seat pill)
         if(!((resultMode?s.past:s.now)>=0.05||pSeats>0)) return '';
@@ -2173,7 +2191,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const barW=Math.max(2,Math.min(100,s.now));
         const pill=pSeats!==null&&pSeats>0?`<span class="map-tip-pill">${pSeats}</span>`:'';
         return `<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}">${partyCode(p)}${pill}</span>
+          <span class="map-tip-code" style="color:${col}"${s.name?` title="${s.name}"`:''}>${partyCode(p)}${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>

@@ -3354,6 +3354,7 @@ function predictionSeats(votes){
   if(SEAT_BASED) return seatParliament(votes, SEATS_TOTAL);
   return allocateSeatsTotal(votes, SEATS_TOTAL);
 }
+let YP_MAP_TIMER=null;
 function ypUpdate(){
   const box=document.getElementById('yp-result');
   if(!box) return;
@@ -3373,20 +3374,31 @@ function ypUpdate(){
   order.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0)).forEach(p=>{
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     rows+=`<div style="display:flex;align-items:center;gap:8px;margin:3px 0">
-      <span style="color:${col};font-weight:700;font-size:12px;min-width:52px">${partyCode(p)}</span>
+      <span style="color:${col};font-weight:800;font-size:11px;letter-spacing:0.4px;min-width:60px">${partyCode(p)}</span>
       <div style="flex:1;height:10px;background:var(--c-rule);border-radius:2px;overflow:hidden"><div style="height:100%;width:${total?((seats[p]||0)/total*100):0}%;background:${col}"></div></div>
       <b style="font-size:12px;min-width:36px;text-align:right">${seats[p]||0}</b>
     </div>`;
   });
-  let note=`<div style="font-size:12px;margin-top:8px;color:var(--c-text-muted)">${t('Majority','Çoğunluk')}: ${MAJ}</div>`;
+  let note=`<div style="font-size:12px;margin-top:10px;color:var(--c-text-muted)">${t('Majority','Çoğunluk')}: ${MAJ}</div>`;
   if(BLOCS&&BLOCS.bloc1&&BLOCS.bloc2){
     const b1=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const b2=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const win=b1>=MAJ?BLOCS.bloc1.name:(b2>=MAJ?BLOCS.bloc2.name:null);
     const label=win?`<b style="color:var(--c-accent)">${win} — ${t('majority','çoğunluk')}</b>`:t('No majority','Çoğunluk yok');
-    note=`<div style="font-size:12px;margin-top:8px">${label} · ${BLOCS.bloc1.name} ${b1} · ${BLOCS.bloc2.name} ${b2} · ${t('majority at','çoğunluk sınırı')} ${MAJ}</div>`;
+    note=`<div style="font-size:12px;margin-top:10px">${label} · ${BLOCS.bloc1.name} ${b1} · ${BLOCS.bloc2.name} ${b2} · ${t('majority at','çoğunluk sınırı')} ${MAJ}</div>`;
   }
-  box.innerHTML=`${rows}${note}<div class="parliament-box" style="margin-top:10px">${buildParliamentSVG(seats)}</div>`;
+  box.innerHTML=`${rows}${note}`;
+  const pb=document.getElementById('yp-parl-box');
+  if(pb) pb.innerHTML=buildParliamentSVG(seats);
+  // the map recolors every district path - the expensive part, so debounce it
+  const mb=document.getElementById('yp-map-box');
+  if(mb){
+    clearTimeout(YP_MAP_TIMER);
+    YP_MAP_TIMER=setTimeout(()=>{
+      const cur=document.getElementById('yp-map-box');
+      if(cur) renderMapInto(cur, votes, false);
+    }, 300);
+  }
 }
 
 /* ---------- prediction tab ---------- */
@@ -3405,24 +3417,42 @@ function renderPrediction(pane){
   let ypInputs='';
   ypOrder.forEach(p=>{
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-    ypInputs+=`<label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700">
-      <span style="color:${col}">${partyCode(p)}</span>
-      <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${(avg[p]||0).toFixed(1)}" style="width:66px;padding:3px 6px" oninput="ypUpdate()">
-      <span style="color:var(--c-text-muted)">%</span></label>`;
+    ypInputs+=`<div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+      <span style="color:${col};font-weight:800;font-size:11px;letter-spacing:0.4px;min-width:64px">${partyCode(p)}</span>
+      <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${(avg[p]||0).toFixed(1)}" style="flex:1;min-width:0;padding:5px 8px;font-family:var(--font);font-weight:700;font-size:12px;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main)" oninput="ypUpdate()">
+      <span style="color:var(--c-text-muted);font-size:11px">%</span>
+    </div>`;
   });
+  const hasMap=!!(MAP_CONF()&&MAP_CONF().svg);
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
       <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil.')}</div>
     </div>
-    <div class="card">
-      <div class="method-text" style="padding:14px 16px">
-        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-bottom:10px">${ypInputs}</div>
-        <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
-          <button class="shot-btn" id="yp-reset">${t('Reset to average','Ortalamaya dön')}</button>
+    <div class="page-top">
+      <div class="card side-card">
+        <div class="card-head"><div class="bar"></div><div class="t">${t('YOUR VOTE SHARES','OY ORANLARINIZ')}</div></div>
+        ${ypInputs}
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <button id="yp-reset" style="font-family:var(--font);font-size:11px;font-weight:800;letter-spacing:0.4px;text-transform:uppercase;padding:8px 14px;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-hard);color:var(--c-text-main);cursor:pointer">${t('RESET TO AVERAGE','ORTALAMAYA DÖN')}</button>
           <span id="yp-sum" style="font-size:11px;color:var(--c-text-muted)"></span>
         </div>
-        <div id="yp-result"></div>
+      </div>
+      <div class="page-top-main">
+        <div class="card">
+          <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div></div>
+          <div id="yp-result"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+          <div class="card">
+            <div class="card-head"><div class="bar"></div><div class="t">${t('PARLIAMENT','PARLAMENTO')}</div></div>
+            <div class="parliament-box" id="yp-parl-box"></div>
+          </div>
+          ${hasMap?`<div class="card">
+            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}</div></div>
+            <div class="parliament-box" id="yp-map-box"></div>
+          </div>`:''}
+        </div>
       </div>
     </div>
   </div>`;

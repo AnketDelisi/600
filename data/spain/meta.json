@@ -1,10 +1,10 @@
 {
   "country": "spain",
   "name": "Spain",
-  "election_date": "2027",
+  "election_date": "2026-11-29",
   "seats": 350,
   "threshold": 3.0,
   "method": "dhondt",
   "constituencies": false,
-  "notes": "Congress of Deputies: 350 seats, 52 constituencies (50 provinces plus Ceuta and Melilla), D'Hondt in each constituency, 3% threshold per constituency."
+  "notes": "Congress of Deputies: 350 seats, 52 constituencies (50 provinces plus Ceuta and Melilla), D'Hondt in each constituency, 3% threshold per constituency. Early general election called for 29 November 2026."
 }

@@ -558,20 +558,6 @@ function trendExtrapolation(polls, party){
 // is subtracted, so only momentum relative to the field survives (a single
 // surviving trend is centered to zero - relative momentum without
 // counterparts is meaningless).
-// Imminent elections without an explicit trend block get a conservative
-// default (<=60 days out): momentum is never silently ignored, and the params
-// stay gentler than a hand-tuned block (blend 0.3, 0.08pp/day cap).
-function ensureTrendConf(){
-  if(TREND_CONF) return;
-  const d=META&&META.election_date?new Date(META.election_date).getTime():0;
-  if(!d) return;
-  const days=(d-Date.now())/(1000*60*60*24);
-  if(days>0&&days<=60){
-    TREND_CONF={electionDate:META.election_date, blend:0.3, maxDaily:0.08,
-                windowDays:60, fitDays:14, minPolls:3, dampDays:10};
-  }
-}
-
 function trendProjections(polls){
   if(!TREND_CONF) return null;
   const parts={}, moves=[];
@@ -611,9 +597,7 @@ function computeAverages(polls, raw){
     }
   }
   // linear-trend extrapolation toward the election date (moves constrained to
-  // sum to ~zero across the parties, see trendProjections); imminent
-  // elections without a block get the default here
-  if(!raw) ensureTrendConf();
+  // sum to ~zero across the parties, see trendProjections)
   if(!raw && TREND_CONF){
     const tp=trendProjections(polls);
     if(tp){
@@ -2872,46 +2856,6 @@ function daysToElection(){
 // 3-year horizon (UK 2029) must not claim a 6pp random walk.
 function driftDays(){ return Math.min(120, daysToElection()); }
 
-/* ---------- forecast layer: no-polls baseline blended with the nowcast ---------- */
-// The central estimate stays the poll-based nowcast, but as the election gets
-// closer the poll weight rises toward 1 and the last election result ("what if
-// nothing changed") carries the rest; the uncertainty adds a fundamentals term
-// that fades with the same weight. Brazil's runoff already blends its round-1
-// result this way inside runoffForecast.
-const FORECAST_BLEND_DAYS=180, FORECAST_W_MIN=0.5, FORECAST_W_MAX=0.97;
-const FORECAST_BASE_SIGMA=3.0;
-function forecastPollWeight(){
-  const d=daysToElection();
-  if(!d) return 1;
-  return FORECAST_W_MIN+(FORECAST_W_MAX-FORECAST_W_MIN)*
-    Math.max(0,Math.min(1,1-d/FORECAST_BLEND_DAYS));
-}
-function forecastBaselineAvg(){
-  const base={}; let any=false;
-  PARTY_ORDER.forEach(p=>{
-    const v=(LAST_ELECTION.results||{})[p];
-    base[p]=v==null?0:v;
-    if(v!=null) any=true;
-  });
-  return any?base:null;
-}
-function forecastBlend(avg){
-  const base=forecastBaselineAvg();
-  if(!base) return null;
-  const w=forecastPollWeight();
-  if(w>=0.995) return null;
-  const out={};
-  PARTY_ORDER.forEach(p=>{ out[p]=(avg[p]||0)*w+(base[p]||0)*(1-w); });
-  return {avg:out,w};
-}
-function forecastDrift(){
-  // poll-staleness drift plus the fundamentals term of the blend
-  const w=forecastPollWeight();
-  const d=FORECAST_DRIFT*Math.sqrt(driftDays());
-  const b=FORECAST_BASE_SIGMA*(1-w);
-  return Math.sqrt(d*d+b*b);
-}
-
 // Seeded PRNG (mulberry32) so the forecast is deterministic/static for a given dataset
 function mulberry32(seed){
   let a=seed>>>0;
@@ -2944,9 +2888,7 @@ function forecastSigma(avg, nPolls){
   // Correlated bloc swing adds roughly FORECAST_SWING/2 to a party's sd (the
   // swing moves each bloc by ±σ; a party inside a bloc of share s sees about
   // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2).
-  // Horizon drift adds the expected movement of the average itself.
-  const drift=forecastDrift();
-  return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2)+drift*drift);
+  return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2));
 }
 
 function gammaSample(alpha){
@@ -3073,14 +3015,6 @@ function runSeatForecast(avg, nSims, nPolls){
 function runForecast(avg, nSims, nPolls){
   if(SEAT_BASED) return runSeatForecast(avg, nSims, nPolls);
   let K=effectiveK(nPolls,FORECAST_K);
-  // horizon drift: scale the Dirichlet concentration so the simulated spread
-  // matches the total sigma (poll sample + drift), not just the sample
-  const drift=forecastDrift();
-  if(drift>0){
-    const sumA0=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*K;
-    const sd0=Math.sqrt(0.3*0.7/(sumA0+1))*100;
-    K=K*(sd0*sd0)/(sd0*sd0+drift*drift);
-  }
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
   const top2={};
@@ -3401,6 +3335,10 @@ function ypUpdate(){
   }
 }
 
+// app.js runs inside an IIFE, so expose the prediction updater for the
+// inline oninput handlers in the prediction tab
+window.ypUpdate=ypUpdate;
+
 /* ---------- prediction tab ---------- */
 function renderPrediction(pane){
   const daysVal=effectiveDays();
@@ -3525,30 +3463,6 @@ function renderForecast(pane){
       <td class="num c">${sim.medians.other!=null?sim.medians.other:0}</td>
       <td class="num c">${sim.modes.other!=null?sim.modes.other:0}</td>
     </tr>`;
-
-  // --- Forecast layer: the same table at the blended (baseline+nowcast) avg ---
-  const fcast=forecastBlend(avg);
-  let fcRows='';
-  if(fcast){
-    const fcKey='fc|'+seedKey+'|'+Math.round(fcast.w*100);
-    let fcSim=FC_CACHE[fcKey];
-    if(!fcSim){
-      fcRand=mulberry32(hashStr(fcKey));
-      fcSim=runForecast(fcast.avg,3000,filtered.length);
-      FC_CACHE[fcKey]=fcSim;
-    }
-    const fcExpected=Math.round(fOrder.reduce((a,p)=>a+mean(fcSim.seatsBy[p]),0));
-    const fcDet=deterministicSeats(fcSim.medians,fcSim.means,OVERHANG?fcExpected:SEATS_TOTAL);
-    const fcOrder=fOrder.slice().sort((a,b)=>fcSim.means[b]-fcSim.means[a]);
-    fcOrder.forEach(p=>{
-      if(!(fcDet[p]||fcSim.medians[p]||fcSim.modes[p])) return;
-      const color=PARTY_META[p]?PARTY_META[p].color:'#888';
-      fcRows+=`<tr><td style="font-weight:700;color:${color}">${partyCode(p)}</td>
-        <td class="num c" style="font-weight:900">${fcDet[p]}</td>
-        <td class="num c">${fcSim.medians[p]}</td>
-        <td class="num c">${fcSim.modes[p]}</td></tr>`;
-    });
-  }
 
   // --- Constituency results (median national vote shares) ---
   const medVotes={};
@@ -3794,17 +3708,6 @@ function renderForecast(pane){
         ${t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Simülasyonların medyanından deterministik tahmin (medyanı 0 olan partiler hariç)')}
       </div>
     </div>`}
-
-    ${(!MAP_ONLY&&fcast)?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('FORECAST — ELECTION DAY','TAHMİN — SEÇİM GÜNÜ')}${META.election_date?' · '+META.election_date:''}</div>
-      <span style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted)">${t('polls','anketler')} ${Math.round(fcast.w*100)}% + ${t('last election','son seçim')} ${Math.round((1-fcast.w)*100)}%</span></div>
-      <div style="overflow-x:auto">
-      <table class="polls-table compact-table"><thead><tr>
-        <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th>
-      </tr></thead><tbody>${fcRows}</tbody></table></div>
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-        ${t('Blend of the current poll average and the last election result, the poll weight rising as election day approaches; the uncertainty includes a fundamentals term.','Güncel anket ortalaması ile son seçim sonucunun karışımı; seçim günü yaklaştıkça anket ağırlığı artar, belirsizliğe temel terimi eklenir.')}
-      </div>
-    </div>`:''}
 
     ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div></div>
       <div class="map-toggle-row" style="justify-content:flex-end">

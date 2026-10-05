@@ -71,15 +71,8 @@ NATIONAL_SIGMA = 2.5
 # error. A state MEAN deviation would only re-encode PVI (double-count), so
 # this is mean-zero correlated noise on top of the national shock.
 STATE_SIGMA = 1.5
-POLL_WEIGHT = 0.65   # fallback; run() sets the horizon value per pass
-# the midterms: the poll weight rises as election day approaches, the same
-# curve as the main site (0.5 at 180+ days, 0.97 on the day); the model runs
-# twice - the forecast at the horizon weight and the nowcast at 1.0
+POLL_WEIGHT = 0.65
 ELECTION = "2026-11-03"
-
-
-def poll_weight(days):
-    return 0.5 + 0.47 * max(0.0, min(1.0, 1 - days / 180.0))
 # generic-ballot margin enters the national swing at a chamber-specific weight:
 # race ratings (Cook/IE/Sabato) and polls already embed the current environment,
 # so using the full margin on top would double-count it. The Senate is far less
@@ -540,24 +533,16 @@ def main():
     import datetime as _dt
     days = max(0.0, (_dt.date.fromisoformat(ELECTION)
                      - _dt.date.today()).days)
-    fw = poll_weight(days)
-    print("election in %d days -> forecast poll weight %.2f" % (days, fw))
+    print("election in %d days" % days)
 
-    def run_all(pw):
-        global POLL_WEIGHT
-        POLL_WEIGHT = pw
-        return {
-            "senate": run("senate", base["races"]["senate"],
-                          polls["senate"], env),
-            "house": run("house", base["races"]["house"],
-                         polls.get("house"), env),
-            "governor": run("governor", base["races"]["governor"],
-                            polls["governor"], env),
-        }
-
-    forecast = run_all(fw)
-    nowcast = run_all(1.0)
-    POLL_WEIGHT = 0.65
+    forecast = {
+        "senate": run("senate", base["races"]["senate"],
+                      polls["senate"], env),
+        "house": run("house", base["races"]["house"],
+                     polls.get("house"), env),
+        "governor": run("governor", base["races"]["governor"],
+                        polls["governor"], env),
+    }
 
     result = {
         "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
@@ -565,7 +550,6 @@ def main():
         "environment": {
             "election": ELECTION,
             "days_to_election": days,
-            "forecast_poll_weight": round(fw, 2),
             "generic_ballot_generic_margin": env,
             "n_sims": N_SIMS,
             "rating_margin_table": RATING_MARGIN,
@@ -577,7 +561,6 @@ def main():
         "senate": forecast["senate"],
         "house": forecast["house"],
         "governor": forecast["governor"],
-        "nowcast": nowcast,
     }
     out_file = OUTPUT_DIR / "forecast.json"
     out_file.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")

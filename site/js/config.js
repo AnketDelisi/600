@@ -5854,7 +5854,120 @@ saxony_anhalt: {
         sc: 'Santa Catarina', sp: 'São Paulo', se: 'Sergipe', to: 'Tocantins',
       },
       national2021: { lula: 48.43, flavio: 43.20, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
-      nationalRunoff: {"lula": 49.0, "flavio": 51.0},   // 2026 round-1 two-way (45.2 / 47.0): the runoff map anchor
+      // 2026 first-round results by federative unit (official),
+    // two-way normalised against Flavio; the runoff map anchors
+    // here and swings with the national head-to-head average
+    runoff2026: {
+          "ac": {
+                "lula": 30.8,
+                "flavio": 69.2
+          },
+          "al": {
+                "lula": 57.5,
+                "flavio": 42.5
+          },
+          "ap": {
+                "lula": 50.0,
+                "flavio": 50.0
+          },
+          "am": {
+                "lula": 51.7,
+                "flavio": 48.3
+          },
+          "ba": {
+                "lula": 69.9,
+                "flavio": 30.1
+          },
+          "ce": {
+                "lula": 66.9,
+                "flavio": 33.1
+          },
+          "es": {
+                "lula": 40.8,
+                "flavio": 59.2
+          },
+          "df": {
+                "lula": 42.6,
+                "flavio": 57.4
+          },
+          "go": {
+                "lula": 36.7,
+                "flavio": 63.3
+          },
+          "ma": {
+                "lula": 67.4,
+                "flavio": 32.6
+          },
+          "mt": {
+                "lula": 30.9,
+                "flavio": 69.1
+          },
+          "ms": {
+                "lula": 37.2,
+                "flavio": 62.8
+          },
+          "mg": {
+                "lula": 47.3,
+                "flavio": 52.7
+          },
+          "pa": {
+                "lula": 52.9,
+                "flavio": 47.1
+          },
+          "pb": {
+                "lula": 65.0,
+                "flavio": 35.0
+          },
+          "pr": {
+                "lula": 34.2,
+                "flavio": 65.8
+          },
+          "pe": {
+                "lula": 67.2,
+                "flavio": 32.8
+          },
+          "pi": {
+                "lula": 74.7,
+                "flavio": 25.3
+          },
+          "rj": {
+                "lula": 42.6,
+                "flavio": 57.4
+          },
+          "rn": {
+                "lula": 63.2,
+                "flavio": 36.8
+          },
+          "rs": {
+                "lula": 39.1,
+                "flavio": 60.9
+          },
+          "ro": {
+                "lula": 27.7,
+                "flavio": 72.3
+          },
+          "rr": {
+                "lula": 24.3,
+                "flavio": 75.7
+          },
+          "sc": {
+                "lula": 27.3,
+                "flavio": 72.7
+          },
+          "sp": {
+                "lula": 42.4,
+                "flavio": 57.6
+          },
+          "se": {
+                "lula": 67.2,
+                "flavio": 32.8
+          },
+          "to": {
+                "lula": 46.3,
+                "flavio": 53.7
+          }
+    },
+    nationalRunoff: {"lula": 49.0, "flavio": 51.0},   // 2026 round-1 two-way (45.2 / 47.0): the runoff map anchor
     // runoff2026 (per-state round-1 results) is filled by
     // scraper/build_brazil_round1.py once Wikipedia completes its
     // table; until then the map falls back to the 2022 baselines

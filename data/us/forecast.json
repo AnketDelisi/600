@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-04T21:17:51Z",
+  "generated": "2026-10-05T05:34:35Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
@@ -279,8 +279,8 @@
         "dem_pct": 0.1,
         "rep_pct": 99.3,
         "ind_pct": 0.7,
-        "dem_name": "Alani Bankhead",
-        "rep_name": "Kurt Alme",
+        "dem_name": null,
+        "rep_name": null,
         "ind_name": "Seth Bodnar",
         "polls": {
           "dem": 20.0,
@@ -383,8 +383,6 @@
             }
           ],
           "names": {
-            "r": "Kurt Alme",
-            "d": "Alani Bankhead",
             "i": "Seth Bodnar"
           }
         }
@@ -2336,6 +2334,59 @@
         }
       },
       {
+        "state": "Idaho",
+        "district": "",
+        "incumbent": "Jim Risch",
+        "party": "R",
+        "rating": "Solid R",
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        },
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 2.8,
+        "dem_pct": 0.0,
+        "rep_pct": 69.0,
+        "ind_pct": 31.0,
+        "dem_name": null,
+        "rep_name": "Jim Risch",
+        "ind_name": "Todd Achilles",
+        "polls": {
+          "rep": 42.3,
+          "ind": 40.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "n_sponsored": 1,
+          "polls": [
+            {
+              "pollster": "Advanced Targeting Research",
+              "dates": "September 13–16, 2026",
+              "rep": 39.0,
+              "ind": 50.0
+            },
+            {
+              "pollster": "The Bullfinch Group",
+              "dates": "May 29 – June 1, 2026",
+              "rep": 40.0,
+              "ind": 36.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "March 16–17, 2026",
+              "partisan": "I",
+              "rep": 48.0,
+              "ind": 34.0
+            }
+          ],
+          "names": {
+            "r": "Jim Risch",
+            "i": "Todd Achilles"
+          }
+        }
+      },
+      {
         "state": "Maine",
         "district": "",
         "incumbent": "Susan Collins",
@@ -2348,16 +2399,16 @@
         },
         "lean": "Lean D",
         "leader": "D",
-        "margin": 3.0,
-        "dem_pct": 70.3,
-        "rep_pct": 29.7,
+        "margin": 2.8,
+        "dem_pct": 69.1,
+        "rep_pct": 30.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
           "dem": 48.2,
-          "rep": 46.7,
+          "rep": 47.0,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -2495,59 +2546,6 @@
           "names": {
             "r": "Susan Collins",
             "d": "Troy Jackson (replacing Graham Platner )"
-          }
-        }
-      },
-      {
-        "state": "Idaho",
-        "district": "",
-        "incumbent": "Jim Risch",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 2.8,
-        "dem_pct": 0.0,
-        "rep_pct": 69.0,
-        "ind_pct": 31.0,
-        "dem_name": null,
-        "rep_name": "Jim Risch",
-        "ind_name": "Todd Achilles",
-        "polls": {
-          "rep": 42.3,
-          "ind": 40.0,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 3,
-          "n_sponsored": 1,
-          "polls": [
-            {
-              "pollster": "Advanced Targeting Research",
-              "dates": "September 13–16, 2026",
-              "rep": 39.0,
-              "ind": 50.0
-            },
-            {
-              "pollster": "The Bullfinch Group",
-              "dates": "May 29 – June 1, 2026",
-              "rep": 40.0,
-              "ind": 36.0
-            },
-            {
-              "pollster": "Public Policy Polling",
-              "dates": "March 16–17, 2026",
-              "partisan": "I",
-              "rep": 48.0,
-              "ind": 34.0
-            }
-          ],
-          "names": {
-            "r": "Jim Risch",
-            "i": "Todd Achilles"
           }
         }
       },
@@ -3122,6 +3120,120 @@
         }
       },
       {
+        "state": "Nebraska",
+        "district": "",
+        "incumbent": "Pete Ricketts",
+        "party": "R",
+        "rating": "Likely R",
+        "ratings": {
+          "cook": "Likely R",
+          "ie": "Lean R",
+          "sabato": "Likely R"
+        },
+        "lean": "Tossup",
+        "leader": "R",
+        "margin": 1.1,
+        "dem_pct": 0.0,
+        "rep_pct": 57.8,
+        "ind_pct": 42.2,
+        "dem_name": null,
+        "rep_name": "Pete Ricketts",
+        "ind_name": "Dan Osborn",
+        "polls": {
+          "rep": 46.2,
+          "ind": 45.2,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "co/efficient",
+              "dates": "September 28–30, 2026",
+              "partisan": "R",
+              "rep": 48.0,
+              "ind": 43.0
+            },
+            {
+              "pollster": "Wedgewood Polls",
+              "dates": "September 14–16, 2026",
+              "rep": 52.0,
+              "ind": 48.0
+            },
+            {
+              "pollster": "SurveyUSA",
+              "dates": "September 8–13, 2026",
+              "rep": 42.0,
+              "ind": 46.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "September 3–8, 2026",
+              "partisan": "D",
+              "rep": 46.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "August 9–13, 2026",
+              "partisan": "D",
+              "rep": 47.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "July 2026",
+              "partisan": "D",
+              "rep": 47.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "Tavern Research",
+              "dates": "May 8–11, 2026",
+              "partisan": "D",
+              "rep": 42.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "April 2026",
+              "partisan": "D",
+              "rep": 45.0,
+              "ind": 46.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "February 2–5, 2026",
+              "partisan": "D",
+              "rep": 48.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "December 11–17, 2025",
+              "partisan": "D",
+              "rep": 48.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "July 23–29, 2025",
+              "partisan": "D",
+              "rep": 46.0,
+              "ind": 47.0
+            },
+            {
+              "pollster": "Change Research",
+              "dates": "March 28 – April 1, 2025",
+              "partisan": "D",
+              "rep": 46.0,
+              "ind": 45.0
+            }
+          ],
+          "names": {
+            "r": "Pete Ricketts",
+            "i": "Dan Osborn"
+          }
+        }
+      },
+      {
         "state": "Kansas",
         "district": "",
         "incumbent": "Roger Marshall",
@@ -3219,128 +3331,14 @@
             "d": "Adam Hamilton"
           }
         }
-      },
-      {
-        "state": "Nebraska",
-        "district": "",
-        "incumbent": "Pete Ricketts",
-        "party": "R",
-        "rating": "Likely R",
-        "ratings": {
-          "cook": "Likely R",
-          "ie": "Lean R",
-          "sabato": "Likely R"
-        },
-        "lean": "Tossup",
-        "leader": "I",
-        "margin": 0.2,
-        "dem_pct": 0.0,
-        "rep_pct": 48.4,
-        "ind_pct": 51.6,
-        "dem_name": null,
-        "rep_name": "Pete Ricketts",
-        "ind_name": "Dan Osborn",
-        "polls": {
-          "rep": 45.7,
-          "ind": 45.9,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "co/efficient",
-              "dates": "September 28–30, 2026",
-              "partisan": "R",
-              "rep": 48.0,
-              "ind": 43.0
-            },
-            {
-              "pollster": "Wedgewood Polls",
-              "dates": "September 14–16, 2026",
-              "rep": 52.0,
-              "ind": 48.0
-            },
-            {
-              "pollster": "SurveyUSA",
-              "dates": "September 8–13, 2026",
-              "rep": 42.0,
-              "ind": 46.0
-            },
-            {
-              "pollster": "GBAO",
-              "dates": "September 3–8, 2026",
-              "partisan": "D",
-              "rep": 46.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "Impact Research",
-              "dates": "August 9–13, 2026",
-              "partisan": "D",
-              "rep": 47.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "GBAO",
-              "dates": "July 2026",
-              "partisan": "D",
-              "rep": 47.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "Tavern Research",
-              "dates": "May 8–11, 2026",
-              "partisan": "D",
-              "rep": 42.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "GBAO",
-              "dates": "April 2026",
-              "partisan": "D",
-              "rep": 45.0,
-              "ind": 46.0
-            },
-            {
-              "pollster": "Impact Research",
-              "dates": "February 2–5, 2026",
-              "partisan": "D",
-              "rep": 48.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "December 11–17, 2025",
-              "partisan": "D",
-              "rep": 48.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "July 23–29, 2025",
-              "partisan": "D",
-              "rep": 46.0,
-              "ind": 47.0
-            },
-            {
-              "pollster": "Change Research",
-              "dates": "March 28 – April 1, 2025",
-              "partisan": "D",
-              "rep": 46.0,
-              "ind": 45.0
-            }
-          ],
-          "names": {
-            "r": "Pete Ricketts",
-            "i": "Dan Osborn"
-          }
-        }
       }
     ],
-    "expected_d_seats": 52.8,
-    "expected_r_seats": 47.2,
+    "expected_d_seats": 52.7,
+    "expected_r_seats": 47.3,
     "expected_i_seats": 1.0,
     "majority": {
-      "dem_pct": 84.2,
-      "rep_pct": 15.8
+      "dem_pct": 83.6,
+      "rep_pct": 16.4
     },
     "distribution_buckets": [
       {
@@ -3349,31 +3347,31 @@
       },
       {
         "seats": 47,
-        "pct": 1.2
+        "pct": 1.3
       },
       {
         "seats": 49,
-        "pct": 6.5
+        "pct": 6.9
       },
       {
         "seats": 51,
-        "pct": 20.2
+        "pct": 20.9
       },
       {
         "seats": 53,
-        "pct": 33.1
+        "pct": 33.5
       },
       {
         "seats": 55,
-        "pct": 28.1
+        "pct": 27.4
       },
       {
         "seats": 57,
-        "pct": 9.8
+        "pct": 9.1
       },
       {
         "seats": 59,
-        "pct": 1.1
+        "pct": 1.0
       }
     ]
   },

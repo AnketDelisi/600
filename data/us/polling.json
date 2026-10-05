@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-04T20:57:25Z",
+  "scraped_at": "2026-10-05T05:34:35Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -685,7 +685,7 @@
     "Louisiana": null,
     "Maine": {
       "dem": 48.2,
-      "rep": 46.7,
+      "rep": 47.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -1398,14 +1398,12 @@
         }
       ],
       "names": {
-        "r": "Kurt Alme",
-        "d": "Alani Bankhead",
         "i": "Seth Bodnar"
       }
     },
     "Nebraska": {
-      "rep": 45.7,
-      "ind": 45.9,
+      "rep": 46.2,
+      "ind": 45.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {

@@ -2,9 +2,25 @@
   "country": "qc",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
-  "scraped_at": "2026-10-04T21:55:20Z",
-  "poll_count": 98,
+  "scraped_at": "2026-10-05T05:33:48Z",
+  "poll_count": 100,
   "polls": [
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2026-10-04",
+      "date": "2026-10-04",
+      "n": 708,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 13.0,
+        "qs": 10.0,
+        "pq": 31.0,
+        "plq": 25.0,
+        "pcq": 20.0
+      }
+    },
     {
       "pollster": "Leger",
       "fieldwork_start": "2026-10-03",
@@ -22,18 +38,18 @@
       }
     },
     {
-      "pollster": "Pallas Data",
+      "pollster": "Liaison Strategies",
       "fieldwork_start": "2026-10-03",
       "date": "2026-10-03",
-      "n": 1137,
+      "n": 900,
       "country": "qc",
-      "source": "Wikipedia (FR)",
-      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
       "votes": {
-        "caq": 15.0,
-        "plq": 24.0,
-        "qs": 11.0,
-        "pq": 29.0,
+        "caq": 18.0,
+        "qs": 10.0,
+        "pq": 28.0,
+        "plq": 23.0,
         "pcq": 20.0
       }
     },
@@ -43,14 +59,30 @@
       "date": "2026-10-03",
       "n": 2011,
       "country": "qc",
-      "source": "Wikipedia (FR)",
-      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
       "votes": {
         "caq": 20.0,
-        "plq": 23.0,
         "qs": 9.0,
         "pq": 27.0,
+        "plq": 23.0,
         "pcq": 19.0
+      }
+    },
+    {
+      "pollster": "Pallas Data",
+      "fieldwork_start": "2026-10-03",
+      "date": "2026-10-03",
+      "n": 1137,
+      "country": "qc",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
+      "votes": {
+        "caq": 15.0,
+        "qs": 11.0,
+        "pq": 29.0,
+        "plq": 24.0,
+        "pcq": 20.0
       }
     },
     {

@@ -5854,7 +5854,10 @@ saxony_anhalt: {
         sc: 'Santa Catarina', sp: 'São Paulo', se: 'Sergipe', to: 'Tocantins',
       },
       national2021: { lula: 48.43, flavio: 43.20, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
-      nationalRunoff: {"lula": 50.9, "flavio": 49.1},
+      nationalRunoff: {"lula": 49.0, "flavio": 51.0},   // 2026 round-1 two-way (45.2 / 47.0): the runoff map anchor
+    // runoff2026 (per-state round-1 results) is filled by
+    // scraper/build_brazil_round1.py once Wikipedia completes its
+    // table; until then the map falls back to the 2022 baselines
     },
     // Approximate house-quality weights (no official backtest available yet)
     pollsterMAE: {

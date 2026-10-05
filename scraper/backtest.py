@@ -289,21 +289,93 @@ def score(polls, spec, horizon_days):
             "bias": st.mean(errs), "lead": lead_ok}
 
 
+def house_bias_table(data, upto_cycle):
+    """Per-pollster per-party bias from cycles BEFORE upto_cycle, shrunk by
+    the pollster's poll count (n/(n+10)). Walk-forward only: never uses the
+    cycle being scored."""
+    acc = {}
+    for (country, cycle), (polls, result) in data.items():
+        if cycle >= upto_cycle:
+            continue
+        for p in polls:
+            for k, v in p["votes"].items():
+                if k in result:
+                    a = acc.setdefault((p["pollster"].lower(), k), [0.0, 0])
+                    a[0] += v - result[k]
+                    a[1] += 1
+    out = {}
+    for (ps, k), (tot, n) in acc.items():
+        out[(ps, k)] = (tot / n) * (n / (n + 10.0))
+    return out
+
+
+def average_corrected(polls, as_of, half_life, bias):
+    """weightedAverage with per-pollster per-party bias removed."""
+    out = {}
+    keys = set(k for p in polls for k in p["votes"])
+    for key in keys:
+        num = den = 0.0
+        for p in polls:
+            if key not in p["votes"]:
+                continue
+            days = _as_ord(as_of) - _ord(p["date"])
+            if days < 0:
+                continue
+            w = math.pow(0.5, days / half_life) * min(1500, p["n"])
+            b = bias.get((p["pollster"].lower(), key), 0.0)
+            num += w * (p["votes"][key] - b)
+            den += w
+        out[key] = num / den if den else None
+    return out
+
+
+def score_variant(polls, spec, horizon_days, mode, bias=None):
+    import datetime
+    election = datetime.date.fromisoformat(spec["election"])
+    as_of = election - datetime.timedelta(days=horizon_days)
+    use = [p for p in polls if _ord(p["date"]) <= _as_ord(as_of.isoformat())]
+    if not use:
+        return None
+    if mode == "corrected" and bias:
+        avg = average_corrected(use, as_of.isoformat(), spec["half_life"], bias)
+    else:
+        avg = average(use, _as_ord(as_of.isoformat()), spec["half_life"])
+    if mode == "normalized":
+        tot = sum(v for v in avg.values() if v is not None)
+        if tot > 0:
+            avg = {k: (v * 100.0 / tot if v is not None else None)
+                   for k, v in avg.items()}
+    keys = [k for k in spec["result"] if avg.get(k) is not None]
+    if len(keys) < 3:
+        return None
+    errs = [avg[k] - spec["result"][k] for k in keys]
+    return {"n": len(use), "mae": st.mean(abs(e) for e in errs),
+            "bias": st.mean(errs)}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", default=None)
     ap.add_argument("--refresh", action="store_true")
+    ap.add_argument("--variants", action="store_true")
     args = ap.parse_args()
     import datetime
     rows = []
+    variants = []
+    data_all = {}
+    for country, cycles in CYCLES.items():
+        for cycle, spec in sorted(cycles.items()):
+            spec["prev"] = spec.get("prev", "1900-01-01")
+            data_all[(country, cycle)] = (parse_cycle(
+                fetch(spec["article"], args.refresh), spec), spec["result"])
     for country, cycles in CYCLES.items():
         if args.country and country != args.country:
             continue
         for cycle, spec in sorted(cycles.items()):
             spec["prev"] = spec.get("prev", "1900-01-01")
-            soup = fetch(spec["article"], args.refresh)
-            polls = parse_cycle(soup, spec)
+            polls = data_all[(country, cycle)][0]
             print("== %s %d: %d polls parsed" % (country, cycle, len(polls)))
+            bias = house_bias_table(data_all, cycle)
             for horizon in (60, 30, 14, 7, 0):
                 s = score(polls, spec, horizon)
                 if not s:
@@ -312,6 +384,15 @@ def main():
                 print("   T-%-3d n=%-4d MAE %.2f  bias %+5.2f  leader %s" %
                       (horizon, s["n"], s["mae"], s["bias"],
                        "OK" if s["lead"] else "MISS"))
+                if args.variants:
+                    c = score_variant(polls, spec, horizon, "corrected", bias)
+                    nz = score_variant(polls, spec, horizon, "normalized")
+                    if c:
+                        print("        house-corrected: MAE %.2f (%+.2f) | "
+                              "normalized: MAE %.2f" %
+                              (c["mae"], c["mae"] - s["mae"], nz["mae"]))
+                        variants.append((country, cycle, horizon,
+                                         s["mae"], c["mae"], nz["mae"]))
     print("\n== aggregate MAE by horizon (all cycles)")
     for horizon in (60, 30, 14, 7, 0):
         vals = [r[3]["mae"] for r in rows if r[2] == horizon]
@@ -321,6 +402,17 @@ def main():
             print("  T-%-3d cycles=%d  MAE %.2f  mean bias %+5.2f  leaders %d/%d" %
                   (horizon, len(vals), st.mean(vals), st.mean(bias),
                    sum(lead), len(lead)))
+
+    if variants:
+        print("\n== Phase-2 variants vs baseline (mean MAE delta)")
+        for horizon in (60, 30, 14, 7, 0):
+            v = [x for x in variants if x[2] == horizon]
+            if not v:
+                continue
+            d_house = st.mean(x[4] - x[3] for x in v)
+            d_norm = st.mean(x[5] - x[3] for x in v)
+            print("  T-%-3d n=%d  house-corrected %+0.2f  normalized %+0.2f" %
+                  (horizon, len(v), d_house, d_norm))
 
 
 if __name__ == "__main__":

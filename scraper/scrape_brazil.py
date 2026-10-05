@@ -195,6 +195,11 @@ def scrape_brazil():
             pollster = re.sub(r"\s+", " ", pollster).strip()
             if not pollster or len(pollster) < 3 or len(pollster) > 60:
                 continue
+            # after the 2026 first round the page carries the official result
+            # as a row (pollster "Results", date October 4) - not a poll
+            if re.search(r"\b(result|results|resultado|election|actual)\b",
+                         pollster, re.I):
+                continue
             sample_text = ""
             if sample_col is not None and sample_col < len(row):
                 sample_text = row[sample_col]

@@ -5653,6 +5653,12 @@ saxony_anhalt: {
 
   brazil: {
     name: 'Brazil',
+    // actual first-round result (4 Oct 2026, official): neither
+    // candidate passed 50%, confirming the Lula-Flavio runoff;
+    // the final poll average had Lula ~1 point ahead, the result
+    // was Flavio +1.8 - shown in the hero for honesty
+    firstRoundResult: { flavio: 47.0, lula: 45.2, cury: 2.9,
+                        caiado: 2.2, renan: 2.2, zema: 0.3 },
     // Two-round presidential election (4 Oct 2026, runoff 25 Oct). Presidential
     // layout: hideBlocs drops the bloc/majority cards, mapOnly replaces the
     // parliament diagram with the 27-UF map. The seat engine is repurposed for

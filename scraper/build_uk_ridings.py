@@ -171,6 +171,26 @@ def main():
     region_by_id = {c["id"]: region_of.get(c["_code"], "rest")
                     for c in cons}
 
+    # regional parties contest only their own nation: pin their projected
+    # share to zero elsewhere, so a GB-wide poll number doesn't spread the SNP
+    # into England or Plaid Cymru into Scotland (the same noCandidate pin the
+    # BC and Spain maps use; the NI parties never appear in GB polls, but the
+    # pin keeps their projections local either way)
+    REGIONAL_PARTIES = {"snp": {"scotland"}, "plc": {"wales"},
+                        "sf": {"northernireland"},
+                        "sdlp": {"northernireland"},
+                        "apni": {"northernireland"},
+                        "uup": {"northernireland"},
+                        "dup": {"northernireland"},
+                        "tuv": {"northernireland"}}
+    no_candidate = {}
+    for c in cons:
+        reg = region_by_id.get(c["id"], "rest")
+        miss = [p for p, regs in REGIONAL_PARTIES.items() if reg not in regs]
+        if miss:
+            no_candidate[c["id"]] = miss
+    print("seats with a regional party absent:", len(no_candidate))
+
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
     with open(CONST_JSON, "w", encoding="utf8") as fh:
         json.dump({"country": "uk", "total_seats": 650,
@@ -270,6 +290,9 @@ def main():
       // regions (English regions + Scotland/Wales/NI): used by the
       // simulation's regional swing error
       regionOf: @@regionOf@@,
+      // seats where a regional party is not on the ballot: its projected
+      // share is pinned to zero there
+      noCandidate: @@noCandidate@@,
     },
     pollsterMAE: {},
     maeKey: 'UK2024',
@@ -291,7 +314,8 @@ def main():
                 "\n", "\n      ")),
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
                           8).replace("\n", "\n      ")),
-            ("regionOf", j(region_by_id, 8).replace("\n", "\n      "))):
+            ("regionOf", j(region_by_id, 8).replace("\n", "\n      ")),
+            ("noCandidate", j(no_candidate, 8).replace("\n", "\n      "))):
         block = block.replace("@@%s@@" % ph, val)
 
     m = re.search(r"\n  uk: \{", text)

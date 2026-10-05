@@ -314,6 +314,13 @@ def main():
       // swing method: geometric mean of log-odds proportional and uniform
       // swing (bounded, no ratio explosions on strongholds)
       swingMethod: 'geometric',
+      // Podemos ran inside Sumar in 2023 (the coalition included it), so it
+      // has no per-province baseline of its own: reconstruct it from Sumar's
+      // shape (Poliwave proxy - the borrowed shape, confidence-weighted, then
+      // scaled by the Podemos/Sumar national ratio), so its vote concentrates
+      // where Sumar is strong instead of being flat across every province
+      swingProxy: { podemos: 'sumar' },
+      swingProxyConfidence: { podemos: 0.5 },
       selector: 'id',
       districtThreshold: true,    // 3% applies per constituency, not nationally
       districts: @@districts@@,

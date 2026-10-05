@@ -185,6 +185,30 @@ def main():
                                        key=votes[num_of[src]].get)
     print("retiring seats (2022 winner absent from the 2026 ballot):",
           len(retiring))
+
+    # a sitting MNA running as an independent (2026: Chomedey's Sona
+    # Lakhoyan Olivier, the 2022 CAQ winner now running alone; the DGEQ
+    # flags her depute_sortant with no party). The projected personal vote
+    # reuses the BC-derived prior (~22, the mean of five incumbent
+    # independents' 2024 shares there); Quebec has no recent comparable
+    # case to calibrate against.
+    IND_INCUMBENT_EST = 22
+    ind_inc = {}
+    for c in cand26:
+        if c.get("depute_sortant") != "O" or c.get("nom_parti") is not None:
+            continue
+        gn = next((n for n in geo_names
+                   if norm(n) == norm(c["nom_circonscription"])), None)
+        src = resolve(gn) if gn else None
+        r = shares.get(src) if src else None
+        if not gn or r is None:
+            continue
+        ind_inc[bm.fold(gn)] = {
+            "name": (c["prenom_bulletin_vote"] + " "
+                     + c["nom_bulletin_vote"]).strip(),
+            "past": round(max(0.0, 100 - sum(r.values())), 2),
+            "now": IND_INCUMBENT_EST}
+    print("sitting MNAs running as independents:", len(ind_inc), sorted(ind_inc))
     cons = []
     for key in sorted(set(bm.fold(n) for n in geo_names)):
         disp = next(n for n in geo_names if bm.fold(n) == key)
@@ -296,9 +320,10 @@ def main():
       pq:   { code: 'PQ',   name: 'Parti québécois',                   name_en: 'Parti Québécois',                   color: '#87CEFA' },
       qs:   { code: 'QS',   name: 'Québec solidaire',                  name_en: 'Québec solidaire',                  color: '#FF8040' },
       pcq:  { code: 'PCQ',  name: 'Parti conservateur du Québec',      name_en: 'Conservative Party of Quebec',      color: '#313E6B' },
+      ind:  { code: 'IND',  name: 'Independent',                       name_en: 'Independent',                       color: '#6B7280' },
     },
-    order: ['caq', 'plq', 'pq', 'qs', 'pcq'],
-    parlOrder: ['qs', 'pq', 'plq', 'caq', 'pcq'],
+    order: ['caq', 'plq', 'pq', 'qs', 'pcq', 'ind'],
+    parlOrder: ['qs', 'pq', 'plq', 'caq', 'pcq', 'ind'],
     // incumbent CAQ vs the rest (cards hidden)
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['caq'], color: '#1E90FF' },
@@ -323,6 +348,9 @@ def main():
       // list: absent winner = retired or not renominated)
       incumbentBoost: 2.0,
       retiringSeats: @@retiringSeats@@,
+      // sitting MNAs running as independents: their personal vote is
+      // projected out of the field (name, 2022 Ind/other share, 2026 estimate)
+      indIncumbents: @@indIncumbents@@,
       hideBlocToggle: true,
       districts: @@districts@@,
       // 2022 vote shares per riding (Élections Québec; 2 new 2025 ridings
@@ -355,6 +383,7 @@ def main():
                           8).replace("\n", "\n      ")),
             ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
             ("retiringSeats", j(retiring, 8).replace("\n", "\n      ")),
+            ("indIncumbents", j(ind_inc, 8).replace("\n", "\n      ")),
             ("regionBase", j(region_base, 8).replace("\n", "\n      "))):
         block = block.replace("@@%s@@" % ph, val)
 

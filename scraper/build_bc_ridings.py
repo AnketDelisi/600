@@ -71,7 +71,7 @@ def fetch(url, name, force=False, binary=False):
 
 def parse_results(html, names):
     soup = BeautifulSoup(html, "lxml")
-    out, totals = {}, {}
+    out, totals, ind24 = {}, {}, {}
     for t in soup.find_all("table"):
         rows = t.find_all("tr")
         if len(rows) < 90:
@@ -95,8 +95,9 @@ def parse_results(html, names):
                 continue
             out[key] = {p: round(votes.get(p, 0) * 100 / total, 2)
                         for p in PARTIES}
+            ind24[key] = round(num(tail[3]) * 100 / total, 2)  # Ind column
             totals[key] = total
-    return out, totals
+    return out, totals, ind24
 
 
 def main():
@@ -109,8 +110,8 @@ def main():
              for f in gj["features"]}
     assert len(names) == 93, "expected 93 ridings"
 
-    results, totals = parse_results(fetch(ARTICLE, "bc_2024_article.html", force),
-                                    names)
+    results, totals, ind24 = parse_results(
+        fetch(ARTICLE, "bc_2024_article.html", force), names)
     print("ridings with 2024 results:", len(results),
           "| missing:", sorted(set(names) - set(results))[:8])
 
@@ -135,6 +136,7 @@ def main():
     raw = fetch(CAND26, "bc_cand_2026.csv", force, binary=True).decode("cp1252")
     by26 = {}
     aff26 = {}
+    ind26 = {}
     AFF_KEY = {"BC NDP": "bcndp", "Conservative Party": "cpbc",
                "BC Green Party": "gpbc", "CentreBC": "cbc", "OneBC": "onbc"}
     for row in csv.DictReader(io.StringIO(raw)):
@@ -143,6 +145,8 @@ def main():
         aff = AFF_KEY.get(row["Affiliation"])
         if aff:
             aff26.setdefault(key, set()).add(aff)
+        if row["Affiliation"] in ("Independent", "Unaffiliated"):
+            ind26.setdefault(key, []).append(row["Candidate Ballot Name"])
     print("2026 districts with candidates:", len(by26))
 
     # ridings where a modelled party fields no candidate: the projection pins
@@ -175,6 +179,27 @@ def main():
                                     key=c["results_2022"].get)
     print("retiring seats (2024 winner absent from the 2026 ballot):",
           len(retiring))
+
+    # a sitting MLA running as an independent (2026: Peace River North's
+    # Jordan Kealy, the 2024 Conservative winner now running alone). The
+    # projected personal vote follows BC's 2024 precedent, where five BC
+    # United incumbents running as independents kept 16.3-30.4% (mean ~22;
+    # Davies, the previous Peace River North MLA, kept 20.2 in this very
+    # riding).
+    IND_INCUMBENT_EST = 22
+    ind_inc = {}
+    for c in cons:
+        nm, cands = elected.get(c["id"]), ind26.get(c["id"])
+        if not nm or not cands:
+            continue
+        p = nl(nm)
+        surname, first = p[-1].lower(), p[0].lower()
+        if any(nl(x) and nl(x)[-1].lower() == surname
+               and nl(x)[0].lower()[:1] == first[:1] for x in cands):
+            ind_inc[c["id"]] = {"name": nm, "past": ind24.get(c["id"], 0),
+                                "now": IND_INCUMBENT_EST}
+    print("sitting MLAs running as independents:", len(ind_inc),
+          sorted(ind_inc))
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
     with open(CONST_JSON, "w", encoding="utf8") as fh:
         json.dump({"country": "bc", "total_seats": 93,
@@ -264,9 +289,10 @@ def main():
       gpbc:  { code: 'GPBC', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
       cbc:   { code: 'CBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
       onbc:  { code: '1BC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
+      ind:   { code: 'IND',    name: 'Independent', name_en: 'Independent', color: '#6B7280' },
     },
-    order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
-    parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
+    order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc', 'ind'],
+    parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc', 'ind'],
     // governing party vs the rest (majority = 47 seats)
     blocs: {
       bloc1: { name: 'BC NDP',     short: 'NDP', parties: ['bcndp'], color: '#F4A460' },
@@ -302,6 +328,9 @@ def main():
       // ridings where a modelled party fields no 2026 candidate (partial
       // slates): its projected share is pinned to zero there
       noCandidate: @@noCandidate@@,
+      // sitting MLAs running as independents: their personal vote is
+      // projected out of the field (name, 2024 Ind share, 2026 estimate)
+      indIncumbents: @@indIncumbents@@,
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,
@@ -327,6 +356,7 @@ def main():
             ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
             ("retiringSeats", j(retiring, 8).replace("\n", "\n      ")),
             ("noCandidate", j(no_candidate, 8).replace("\n", "\n      ")),
+            ("indIncumbents", j(ind_inc, 8).replace("\n", "\n      ")),
             ):
         block = block.replace("@@%s@@" % ph, val)
 

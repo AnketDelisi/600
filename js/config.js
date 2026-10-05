@@ -23544,9 +23544,10 @@ saxony_anhalt: {
       gpbc:  { code: 'GPBC', name: 'Green Party of British Columbia', name_en: 'Green Party of British Columbia', color: '#99C955' },
       cbc:   { code: 'CBC', name: 'CentreBC',  name_en: 'CentreBC', color: '#EE2D30' },
       onbc:  { code: '1BC',    name: 'OneBC',     name_en: 'OneBC',    color: '#C49B50' },
+      ind:   { code: 'IND',    name: 'Independent', name_en: 'Independent', color: '#6B7280' },
     },
-    order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc'],
-    parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc'],
+    order: ['bcndp', 'cpbc', 'gpbc', 'cbc', 'onbc', 'ind'],
+    parlOrder: ['bcndp', 'gpbc', 'cbc', 'onbc', 'cpbc', 'ind'],
     // governing party vs the rest (majority = 47 seats)
     blocs: {
       bloc1: { name: 'BC NDP',     short: 'NDP', parties: ['bcndp'], color: '#F4A460' },
@@ -23906,6 +23907,15 @@ saxony_anhalt: {
               "westvancouver-seatosky": [
                       "onbc"
               ]
+      },
+      // sitting MLAs running as independents: their personal vote is
+      // projected out of the field (name, 2024 Ind share, 2026 estimate)
+      indIncumbents: {
+              "peacerivernorth": {
+                      "name": "Jordan Kealy",
+                      "past": 20.15,
+                      "now": 22
+              }
       },
       districts: {
               "abbotsford-mission": "abbotsford-mission",
@@ -24794,9 +24804,10 @@ saxony_anhalt: {
       pq:   { code: 'PQ',   name: 'Parti québécois',                   name_en: 'Parti Québécois',                   color: '#87CEFA' },
       qs:   { code: 'QS',   name: 'Québec solidaire',                  name_en: 'Québec solidaire',                  color: '#FF8040' },
       pcq:  { code: 'PCQ',  name: 'Parti conservateur du Québec',      name_en: 'Conservative Party of Quebec',      color: '#313E6B' },
+      ind:  { code: 'IND',  name: 'Independent',                       name_en: 'Independent',                       color: '#6B7280' },
     },
-    order: ['caq', 'plq', 'pq', 'qs', 'pcq'],
-    parlOrder: ['qs', 'pq', 'plq', 'caq', 'pcq'],
+    order: ['caq', 'plq', 'pq', 'qs', 'pcq', 'ind'],
+    parlOrder: ['qs', 'pq', 'plq', 'caq', 'pcq', 'ind'],
     // incumbent CAQ vs the rest (cards hidden)
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['caq'], color: '#1E90FF' },
@@ -24891,6 +24902,15 @@ saxony_anhalt: {
               "rimouski": "caq",
               "marie-lacoste-gerin-lajoie": "caq",
               "deux-montagnes": "caq"
+      },
+      // sitting MNAs running as independents: their personal vote is
+      // projected out of the field (name, 2022 Ind/other share, 2026 estimate)
+      indIncumbents: {
+              "chomedey": {
+                      "name": "Sona Lakhoyan Olivier",
+                      "past": 1.85,
+                      "now": 22
+              }
       },
       hideBlocToggle: true,
       districts: {

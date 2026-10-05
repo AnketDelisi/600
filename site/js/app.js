@@ -3370,10 +3370,12 @@ function ypUpdate(){
         }
         return Object.assign({},conf,{noCandidate:nc});
       };
+      const done=[];
       const b0=document.getElementById('yp-map-box');
-      if(b0&&cc.map&&cc.map.svg) renderMapInto(b0, votes, false, augment(cc.map));
+      if(b0&&cc.map&&cc.map.svg) done.push(renderMapInto(b0, votes, false, augment(cc.map)));
       const b1=document.getElementById('yp-map2-box');
-      if(b1&&cc.map2&&cc.map2.svg) renderMapInto(b1, votes, false, augment(Object.assign({},cc,cc.map,cc.map2)));
+      if(b1&&cc.map2&&cc.map2.svg) done.push(renderMapInto(b1, votes, false, augment(Object.assign({},cc,cc.map,cc.map2))));
+      Promise.all(done).then(()=>{ if(window.__ypFit) window.__ypFit(); });
     }, 300);
   }
 }
@@ -3404,32 +3406,33 @@ function renderPrediction(pane){
   ypOrder.forEach(p=>{
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     const logo=PARTY_LOGOS[p]
-      ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:13px;height:13px;object-fit:contain">`
-      :`<span style="font-weight:900;font-size:9px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
-    ypInputs+=`<label class="yp-chip">
+      ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:16px;height:16px;object-fit:contain">`
+      :`<span style="font-weight:900;font-size:10px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
+    ypInputs+=`<div class="yp-row">
       <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="yp-code" style="color:${col}">${partyCode(p)}</span>
       <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${ypDef(p).toFixed(1)}" oninput="ypUpdate()">
       <span class="yp-suf">%</span>
-    </label>`;
+    </div>`;
   });
   const hasMap=!!(c.map&&c.map.svg);
   const hasMap2=!!(c.map2&&c.map2.svg);
   const map2Label=(c.map2&&(c.map2.label||c.map2.name))||t('LAYER 2','KATMAN 2');
   pane.innerHTML=`<style>
-    #pane-prediction .yp-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    #pane-prediction .yp-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border:2px solid var(--c-edge);border-radius:999px;background:var(--c-surface);box-shadow:var(--shadow-hard);cursor:text}
-    #pane-prediction .yp-chip:hover{border-color:var(--c-accent)}
-    #pane-prediction .yp-chip .yp-logo{width:18px;height:18px;flex:0 0 18px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
-    #pane-prediction .yp-chip .yp-code{font-weight:800;font-size:10.5px;letter-spacing:.3px}
-    #pane-prediction .yp-chip .yp-in{width:56px;padding:2px 4px;font-family:var(--font);font-weight:800;font-size:13px;text-align:right;border:none;border-bottom:2px solid var(--c-rule);border-radius:0;background:transparent;color:var(--c-text-main);appearance:textfield;-moz-appearance:textfield}
-    #pane-prediction .yp-chip .yp-in::-webkit-outer-spin-button,#pane-prediction .yp-chip .yp-in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-    #pane-prediction .yp-chip .yp-in:focus{outline:none;border-bottom-color:var(--c-accent)}
-    #pane-prediction .yp-chip .yp-suf{font-size:10px;color:var(--c-text-muted);font-weight:700}
-    #pane-prediction .yp-reset{font-family:var(--font);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:7px 13px;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-hard);color:var(--c-text-main);cursor:pointer}
+    #pane-prediction .yp-row{display:flex;align-items:center;gap:8px;margin:2px 0;padding:4px 6px;border-radius:6px}
+    #pane-prediction .yp-row:hover{background:rgba(0,0,0,.035)}
+    #pane-prediction .yp-logo{width:22px;height:22px;border-radius:6px;flex:0 0 22px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+    #pane-prediction .yp-logo img{width:16px;height:16px;object-fit:contain}
+    #pane-prediction .yp-code{font-weight:800;font-size:11px;letter-spacing:.4px;min-width:58px}
+    #pane-prediction .yp-in{flex:1;min-width:0;padding:5px 8px;font-family:var(--font);font-weight:800;font-size:13px;text-align:right;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main);appearance:textfield;-moz-appearance:textfield}
+    #pane-prediction .yp-in::-webkit-outer-spin-button,#pane-prediction .yp-in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    #pane-prediction .yp-in:focus{outline:none;border-color:var(--c-accent);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
+    #pane-prediction .yp-suf{font-size:11px;color:var(--c-text-muted);font-weight:700;min-width:10px}
+    #pane-prediction .yp-reset{font-family:var(--font);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:8px 14px;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-hard);color:var(--c-text-main);cursor:pointer}
     #pane-prediction .yp-reset:hover{background:#F6F2E7;color:var(--c-accent);transform:translateY(-1px)}
     #pane-prediction .yp-sum{font-size:12px;font-weight:900;color:var(--c-text-muted)}
-    #pane-prediction .yp-res{display:flex;align-items:center;gap:8px;margin:4px 0}
+    #pane-prediction .yp-res{display:flex;align-items:center;gap:8px;margin:2px 0;padding:3px 6px;border-radius:6px}
+    #pane-prediction .yp-res:hover{background:rgba(0,0,0,.035)}
     #pane-prediction .yp-res .lbl{font-weight:800;font-size:11px;letter-spacing:.4px;min-width:56px}
     #pane-prediction .yp-res .track{flex:1;height:12px;background:var(--c-rule);border-radius:3px;overflow:hidden}
     #pane-prediction .yp-res .fill{height:100%;border-radius:3px}
@@ -3442,39 +3445,52 @@ function renderPrediction(pane){
     #pane-prediction .yp-cards{align-items:start}
   </style>
   <div class="tab-pane-inner">
-    <div class="hero fc-hero">
-      <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
-      <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included. A party at 0 is treated as not running.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil. 0 girilen parti yarışmıyor sayılır.')}</div>
-    </div>
-    <div class="card" style="margin-bottom:20px">
-      <div class="card-head"><div class="bar"></div><div class="t">${t('YOUR VOTE SHARES','OY ORANLARINIZ')}</div></div>
-      <div class="yp-chips">${ypInputs}
-        <span style="margin-left:auto;display:inline-flex;align-items:center;gap:10px">
+    <div class="page-top">
+      <div class="card side-card">
+        <div class="card-head"><div class="bar"></div><div class="t">${t('YOUR VOTE SHARES','OY ORANLARINIZ')}</div></div>
+        ${ypInputs}
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap">
           <button id="yp-reset" class="yp-reset">${t('RESET TO AVERAGE','ORTALAMAYA DÖN')}</button>
           <span id="yp-sum" class="yp-sum"></span>
-        </span>
+        </div>
       </div>
-    </div>
-    <div class="yp-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px">
-      <div class="card">
-        <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted)"></span></div>
-        <div id="yp-result"></div>
+      <div class="page-top-main">
+        <div class="hero fc-hero">
+          <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
+          <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included. A party at 0 is treated as not running.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil. 0 girilen parti yarışmıyor sayılır.')}</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted)"></span></div>
+          <div id="yp-result"></div>
+        </div>
+        <div class="yp-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+          <div class="card">
+            <div class="card-head"><div class="bar"></div><div class="t">${t('PARLIAMENT','PARLAMENTO')}</div></div>
+            <div class="parliament-box" id="yp-parl-box"></div>
+          </div>
+          ${hasMap?`<div class="card">
+            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}${hasMap2?' · '+(c.map.label||t('LAYER 1','KATMAN 1')):''}</div></div>
+            <div class="parliament-box" id="yp-map-box"></div>
+          </div>`:''}
+          ${hasMap2?`<div class="card">
+            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')} · ${map2Label}</div></div>
+            <div class="parliament-box" id="yp-map2-box"></div>
+          </div>`:''}
+        </div>
       </div>
-      <div class="card">
-        <div class="card-head"><div class="bar"></div><div class="t">${t('PARLIAMENT','PARLAMENTO')}</div></div>
-        <div class="parliament-box" id="yp-parl-box"></div>
-      </div>
-      ${hasMap?`<div class="card">
-        <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}${hasMap2?' · '+(c.map.label||t('LAYER 1','KATMAN 1')):''}</div></div>
-        <div class="parliament-box" id="yp-map-box"></div>
-      </div>`:''}
-      ${hasMap2?`<div class="card">
-        <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')} · ${map2Label}</div></div>
-        <div class="parliament-box" id="yp-map2-box"></div>
-      </div>`:''}
     </div>
   </div>`;
   ypUpdate();
+  // match the sidebar height to the main column (same as the polls tab), so
+  // long party lists scroll internally instead of stretching the page
+  const fitYpSide=()=>{
+    if(!pane.clientHeight) return;
+    const main=pane.querySelector('.page-top-main');
+    const sc=pane.querySelector('.side-card');
+    if(main&&sc) sc.style.height=main.offsetHeight+'px';
+  };
+  window.__ypFit=fitYpSide;
+  requestAnimationFrame(fitYpSide);
   const ypReset=$('yp-reset');
   if(ypReset){
     ypReset.addEventListener('click',()=>{
@@ -4851,6 +4867,6 @@ loadData().then(()=>loadConstituencies()).then(()=>{
   renderPollsTab();
   applyUrlParams();
 });
-window.addEventListener('resize',()=>{fitSideCard();});
+window.addEventListener('resize',()=>{fitSideCard(); if(window.__ypFit) window.__ypFit();});
 
 })();

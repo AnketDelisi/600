@@ -3369,7 +3369,9 @@ function ypUpdate(){
         }
         confO=Object.assign({},conf,{noCandidate:nc});
       }
-      renderMapInto(cur, votes, false, confO);
+      renderMapInto(cur, votes, false, confO).then(()=>{
+        if(window.__ypFit) window.__ypFit();
+      });
     }, 300);
   }
 }
@@ -3431,14 +3433,10 @@ function renderPrediction(pane){
     #pane-prediction .yp-res .n{font-weight:900;font-size:13px;min-width:40px;text-align:right}
     #pane-prediction .yp-res .v{font-size:11px;color:var(--c-text-muted);min-width:48px;text-align:right}
     #pane-prediction .yp-note{font-size:12px;margin-top:10px}
-    #pane-prediction #yp-map-box svg{max-height:80vh;width:auto;max-width:100%}
+    #pane-prediction #yp-map-box svg{max-height:62vh;width:auto;max-width:100%}
     #pane-prediction .yp-cards{align-items:start}
   </style>
   <div class="tab-pane-inner">
-    <div class="hero fc-hero">
-      <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
-      <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included. A party at 0 is treated as not running.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil. 0 girilen parti yarışmıyor sayılır.')}</div>
-    </div>
     <div class="page-top">
       <div class="card side-card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('YOUR VOTE SHARES','OY ORANLARINIZ')}</div></div>
@@ -3449,6 +3447,10 @@ function renderPrediction(pane){
         </div>
       </div>
       <div class="page-top-main">
+        <div class="hero fc-hero">
+          <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
+          <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included. A party at 0 is treated as not running.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil. 0 girilen parti yarışmıyor sayılır.')}</div>
+        </div>
         <div class="card">
           <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted)"></span></div>
           <div id="yp-result"></div>
@@ -3467,6 +3469,16 @@ function renderPrediction(pane){
     </div>
   </div>`;
   ypUpdate();
+  // match the sidebar height to the main column (same as the polls tab), so
+  // the input list scrolls internally instead of stretching the page
+  const fitYpSide=()=>{
+    if(!pane.clientHeight) return;
+    const main=pane.querySelector('.page-top-main');
+    const sc=pane.querySelector('.side-card');
+    if(main&&sc) sc.style.height=main.offsetHeight+'px';
+  };
+  window.__ypFit=fitYpSide;
+  requestAnimationFrame(fitYpSide);
   const ypReset=$('yp-reset');
   if(ypReset){
     ypReset.addEventListener('click',()=>{
@@ -4843,6 +4855,6 @@ loadData().then(()=>loadConstituencies()).then(()=>{
   renderPollsTab();
   applyUrlParams();
 });
-window.addEventListener('resize',()=>{fitSideCard();});
+window.addEventListener('resize',()=>{fitSideCard(); if(window.__ypFit) window.__ypFit();});
 
 })();

@@ -428,14 +428,6 @@ saxony_anhalt: {
     maeKey: 'MV2021',             // weight pollsters by their 2021 MV accuracy
     biasKey: 'MV2021',            // signed-bias correction from the MV2021 backtest
     priorAlpha: 0.05,             // last-election Dirichlet prior (5% pull toward 2021)
-    trend: {                      // linear-trend extrapolation to the 2026-09-20 election
-      electionDate: '2026-09-20',
-      blend: 0.5,
-      maxDaily: 0.3,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-    },
     pollsterBias: {               // bias = poll − actual (MV2021 backtest, last-5-polls avg)
       "Infratest dimap": { spd: -6.6, afd: -0.3, cdu: 4.3, linke: 0.9, gruene: 1.5, fdp: 0.8 },
       INSA:             { spd: -7.6, afd: 1.3,  cdu: 3.3, linke: 2.5, gruene: 1.5, fdp: 0.4 },
@@ -604,14 +596,6 @@ saxony_anhalt: {
     biasKey: 'B2023',             // signed-bias correction from the B2023 backtest
     biasShrink: 0.5,              // B2023 bias is large (INSA cdu +6.6pp) & single-election; halve so CDU isn't inflated ~8pp
     priorAlpha: 0.05,             // last-election Dirichlet prior (5% pull toward 2023)
-    trend: {                      // linear-trend extrapolation to the 2026-09-20 election
-      electionDate: '2026-09-20',
-      blend: 0.5,
-      maxDaily: 0.3,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-    },
     pollsterBias: {               // bias = poll − actual (B2023 backtest, last-5-polls avg)
       "Infratest dimap": { cdu: -3.4, spd: 0.6,  gruene: 0.8, linke: -0.8, afd: 1.3 },
       INSA:             { cdu: -6.6, spd: 1.8,  gruene: 1.4, linke: -0.2, afd: 0.1 },
@@ -1424,15 +1408,6 @@ saxony_anhalt: {
     // trend extrapolation to the 2026-10-25 election; 30-day fit window
     // because polling is sparse (3 polls in the last 30 days); momentum is a
     // nudge, not the driver (anchored mean, 0.15pp/day cap, 10-day damping)
-    trend: {
-      electionDate: '2026-10-25',
-      blend: 0.4,
-      maxDaily: 0.15,
-      windowDays: 120,
-      fitDays: 30,
-      minPolls: 3,
-      dampDays: 10,
-    },
     parties: {
       sns:  { code: 'AV-US', name: 'Aleksandar Vučić – United Serbia',  name_en: 'Aleksandar Vučić – United Serbia', color: '#242970' },
       sps:  { code: 'SPS',  name: 'Socijalistička partija Srbije',       name_en: 'Socialist Party of Serbia',      color: '#EB1B23' },
@@ -4831,15 +4806,6 @@ saxony_anhalt: {
     recencyHalfLifeDays: 7,
     // trend extrapolation to the 2026-10-03 election; the fit window keeps it
     // inert when the recent polls are too sparse (0 polls in the last 14 days)
-    trend: {
-      electionDate: '2026-10-03',
-      blend: 0.4,
-      maxDaily: 0.15,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-      dampDays: 10,
-    },
     parties: {
       as:  { code: 'AS',   name: 'Apvienotais saraksts',           name_en: 'United List',                color: '#FFAC01' },
       sv:  { code: 'SV',   name: 'Suverēnā vara',                  name_en: 'Sovereign Power',            color: '#6767AB' },
@@ -5700,14 +5666,6 @@ saxony_anhalt: {
       seats:   { lula: 0, flavio: 0, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
     },
     // Trend extrapolation toward the first round (4 Oct 2026)
-    trend: {
-      electionDate: '2026-10-04',
-      blend: 0.5,
-      maxDaily: 0.3,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-    },
     map: {
       svg: 'img/brazil.svg',
       // path id (UF code) -> district key
@@ -16938,14 +16896,6 @@ saxony_anhalt: {
         arthaud: 0
       }
     },
-    trend: {
-      electionDate: "2027-04-18",
-      blend: 0.5,
-      maxDaily: 0.3,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3
-    },
     map: {
       svg: "img/france.svg",
       selector: "id",
@@ -19662,7 +19612,7 @@ saxony_anhalt: {
       pp:     { code: 'PP',      name: 'Partido Popular',                    name_en: 'People\'s Party',                      color: '#1D84CE' },
       psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#E30713' },
       vox:    { code: 'VOX',     name: 'Vox',                                name_en: 'Vox',                                   color: '#63BE21' },
-      sumar:  { code: 'SUMAR',   name: 'Sumar',                              name_en: 'Sumar',                                 color: '#E51C55' },
+      sumar:  { code: 'FA',      name: 'Frente Amplio',                     name_en: 'Broad Front',                           color: '#EF4B91' },
       erc:    { code: 'ERC',     name: 'Esquerra Republicana de Catalunya',  name_en: 'Republican Left of Catalonia',          color: '#FFB232' },
       junts:  { code: 'JUNTS',   name: 'Junts per Catalunya',                name_en: 'Together for Catalonia',                color: '#00B0B9' },
       bildu:  { code: 'EH BILDU',name: 'Euskal Herria Bildu',                name_en: 'Basque Country Gather',                 color: '#79BF43' },
@@ -19670,10 +19620,10 @@ saxony_anhalt: {
       bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#6CA5D0' },
       cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFCC00' },
       upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#1B4F9C' },
-      aa:     { code: 'AA',      name: 'Adelante Andalucía',                 name_en: 'Forward Andalusia',                     color: '#3FA535' },
-      podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#93268F' },
-      salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#1B2A4A' },
-      ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#0C2C56' },
+      aa:     { code: 'AA',      name: 'Adelante Andalucía',                 name_en: 'Forward Andalusia',                     color: '#24C87E' },
+      podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#9269F5' },
+      salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#785A46' },
+      ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#064A81' },
     },
     order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac'],
     parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'ac', 'vox', 'salf'],
@@ -23539,15 +23489,6 @@ saxony_anhalt: {
     // not the driver - anchored at the recent poll mean, total move capped
     // at 0.15pp/day (3.2pp over the 21-day horizon), damped and blended at
     // 0.4; the old loose caps moved NDP ~+8pp / ~+29 seats on a noisy slope
-    trend: {
-      electionDate: '2026-10-24',
-      blend: 0.4,
-      maxDaily: 0.15,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-      dampDays: 10,
-    },
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
       bcndp: { code: 'BCNDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
@@ -24799,15 +24740,6 @@ saxony_anhalt: {
     // trend extrapolation to the 2026-10-05 election: momentum is a nudge,
     // not the driver (anchored at the recent poll mean, 0.15pp/day cap,
     // 10-day damping, blend 0.4); with 2 days left the damped move is tiny
-    trend: {
-      electionDate: '2026-10-05',
-      blend: 0.4,
-      maxDaily: 0.15,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-      dampDays: 10,
-    },
     // colours from the en.wikipedia party infoboxes
     parties: {
       caq:  { code: 'CAQ',  name: 'Coalition Avenir Québec',           name_en: 'Coalition Avenir Québec',           color: '#1E90FF' },
@@ -39927,15 +39859,6 @@ saxony_anhalt: {
     recencyHalfLifeDays: 14,
     // trend extrapolation to the 2026-11-07 election: fresh campaign polls
     // (weekly trackers); momentum is a nudge, not the driver
-    trend: {
-      electionDate: '2026-11-07',
-      blend: 0.4,
-      maxDaily: 0.15,
-      windowDays: 120,
-      fitDays: 14,
-      minPolls: 3,
-      dampDays: 10,
-    },
     // colours from the en.wikipedia party infoboxes
     parties: {
       nat: { code: 'NAT', name: 'New Zealand National Party', name_en: 'New Zealand National Party', color: '#00529F' },

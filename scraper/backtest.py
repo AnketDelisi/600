@@ -81,6 +81,43 @@ CYCLES = {
             "result": {"pp": 33.1, "psoe": 31.7, "vox": 12.4, "sumar": 12.3},
         },
     },
+    "qc": {
+        2018: {
+            "article": "Opinion_polling_for_the_2018_Quebec_general_election",
+            "election": "2018-10-01", "prev": "2014-04-07", "half_life": 14,
+            "cols": {"caq": r"^caq", "plq": r"^plq|^qlp", "pq": r"^pq",
+                     "qs": r"^qs", "pcq": r"^pcq|^conserv"},
+            "result": {"caq": 37.4, "plq": 24.8, "pq": 17.1, "qs": 16.1},
+        },
+        2022: {
+            "article": "2022_Quebec_general_election",
+            "election": "2022-10-03", "prev": "2018-10-02", "half_life": 14,
+            "cols": {"caq": r"^caq", "plq": r"^plq|^qlp", "pq": r"^pq",
+                     "qs": r"^qs", "pcq": r"^pcq|^conserv"},
+            "result": {"caq": 40.98, "plq": 14.37, "qs": 15.43, "pq": 14.61,
+                       "pcq": 12.91},
+        },
+    },
+    "nz": {
+        2020: {
+            "article": "Opinion_polling_for_the_2020_New_Zealand_general_election",
+            "election": "2020-10-17", "exclude": r"whakaata|m[aā]ori", "prev": "2017-09-23", "half_life": 14,
+            "cols": {"lab": r"^lab", "nat": r"^nat", "grn": r"^grn|^green",
+                     "act": r"^act", "nzf": r"^nzf|^nz first",
+                     "top": r"^top|^opportun"},
+            "result": {"lab": 50.0, "nat": 25.6, "grn": 7.9, "act": 7.6,
+                       "nzf": 2.6, "top": 1.5},
+        },
+        2023: {
+            "article": "Opinion_polling_for_the_2023_New_Zealand_general_election",
+            "election": "2023-10-14", "exclude": r"whakaata|m[aā]ori", "prev": "2020-10-18", "half_life": 14,
+            "cols": {"lab": r"^lab", "nat": r"^nat", "grn": r"^grn|^green",
+                     "act": r"^act", "nzf": r"^nzf|^nz first",
+                     "tpm": r"^tpm|^m[aā]ori", "top": r"^top|^opportun"},
+            "result": {"nat": 38.08, "lab": 26.92, "grn": 11.61, "act": 8.64,
+                       "nzf": 6.09, "tpm": 3.08, "top": 2.22},
+        },
+    },
     "germany": {
         2021: {
             "article": "Opinion_polling_for_the_2021_German_federal_election",
@@ -145,8 +182,20 @@ def expand_grid(table):
 
 
 def parse_date(s, year):
+    s = s or ""
+    # month-first ("September 30, 2018" / "Oct 1, 2018") used by the Quebec
+    # articles
+    mf = re.findall(r"([A-Za-z]{3})[a-z]*\s+(\d{1,2})", s)
     m = re.findall(r"(\d{1,2})\s*(?:[–-]\s*\d{1,2}\s*)?([A-Za-z]{3})",
-                   s or "")
+                   s)
+    if mf and (not m or s.strip().lower().startswith(mf[0][0].lower())):
+        mon, d = mf[-1]
+        mon = MONTHS.get(mon.lower()[:3])
+        if not mon:
+            return None
+        y = re.search(r"(\d{4})", s)
+        y = int(y.group(1)) if y else year
+        return "%04d-%02d-%02d" % (y, mon, int(d))
     if not m:
         return None
     d, mon = m[-1]
@@ -178,11 +227,40 @@ def parse_cycle(soup, spec):
         grid = expand_grid(el)
         if len(grid) < 4:
             continue
-        # header: combine the first rows per column (some articles put the
-        # party names in a second header row under the group labels)
+        # header selection: try each of the first rows alone, scored by how
+        # many party columns plus a date and a poll/source column it carries
+        # (QC 2022's table has a full-span "Timeline of opinion polls" group
+        # row first, so merging by position poisons every column; the real
+        # header is the next row). If no single row qualifies, fall back to
+        # the merged first-wins header (Spanish articles keep the date in
+        # row 0 and the party names in row 1).
+        best = None
         for ri in range(min(3, len(grid))):
-            if not any("date" in h.lower() or "poll" in h.lower()
-                       for h in grid[ri]):
+            row = [h.lower() for h in grid[ri]]
+            c_r = {}
+            for key, pat in spec["cols"].items():
+                for ci, h in enumerate(row):
+                    if re.match(pat, h):
+                        c_r[key] = ci
+                        break
+            d_r = next((i for i, h in enumerate(row) if "date" in h), None)
+            p_r = next((i for i, h in enumerate(row)
+                        if "poll" in h or "source" in h), None)
+            score = len(c_r) + (1 if d_r is not None else 0) \
+                + (1 if p_r is not None else 0)
+            if best is None or score > best[0]:
+                best = (score, ri, c_r, d_r, p_r)
+        if best and len(best[2]) >= 3 and best[3] is not None \
+                and best[4] is not None:
+            ri, cols, di, pi = best[1], best[2], best[3], best[4]
+            ncol = max(len(r) for r in grid[:ri + 2])
+        else:
+            ri = 0
+            while ri < min(3, len(grid)) and not any(
+                    "date" in h.lower() or "poll" in h.lower()
+                    for h in grid[ri]):
+                ri += 1
+            if ri >= min(3, len(grid)):
                 continue
             ncol = max(len(r) for r in grid[:ri + 2])
             merged = []
@@ -190,7 +268,9 @@ def parse_cycle(soup, spec):
                 v = ""
                 for r2 in range(ri + 2):
                     if r2 < len(grid) and ci < len(grid[r2]) and grid[r2][ci]:
-                        v = grid[r2][ci]
+                        if v == "" and not re.match(
+                                r"^[\d.,%–—-]+$", grid[r2][ci]):
+                            v = grid[r2][ci]
                 merged.append(v)
             hdr = [h.lower() for h in merged]
             cols = {}
@@ -206,37 +286,42 @@ def parse_cycle(soup, spec):
                        if "poll" in h or "source" in h), None)
             if di is None or pi is None:
                 continue
-            for row in grid[ri + 1:]:
-                if len(row) <= max(list(cols.values()) + [di, pi]):
-                    continue
-                date = parse_date(row[di], year or int(spec["election"][:4]))
-                if not date or not (spec["prev"] <= date <= spec["election"]):
-                    continue
-                pollster = re.sub(r"\[\s*\w+\s*\]", "", row[pi]).strip()
-                if not pollster or len(pollster) < 3:
-                    continue
-                if re.search(r"\b(election|result)\b", pollster, re.I):
-                    continue
-                votes = {}
-                for key, ci in cols.items():
-                    m = re.match(r"([\d.]+)\s*%?", row[ci].replace(",", "."))
-                    if m:
-                        votes[key] = float(m.group(1))
-                if len(votes) < 3:
-                    continue
-                # percentages only: some rows are seat projections or vote
-                # counts (Datapraxis/YouGov 2019 read 344/221 and poisoned the
-                # late average to Con 72.7)
-                if any(v > 100 for v in votes.values()) or \
-                        not 50 <= sum(votes.values()) <= 120:
-                    continue
-                key = (pollster.lower(), date)
-                if key in seen:
-                    continue
-                seen.add(key)
-                polls.append({"pollster": pollster, "date": date,
-                              "votes": votes, "n": 1000})
-            break
+        for row in grid[ri + 1:]:
+            if len(row) <= max(list(cols.values()) + [di, pi]):
+                continue
+            date = parse_date(row[di], year or int(spec["election"][:4]))
+            if not date or not (spec["prev"] <= date <= spec["election"]):
+                continue
+            pollster = re.sub(r"\[\s*\w+\s*\]", "", row[pi]).strip()
+            if not pollster or len(pollster) < 3:
+                continue
+            if re.search(r"\b(election|result)\b", pollster, re.I):
+                continue
+            # per-cycle exclusions: NZ articles mix Maori-electorate
+            # polls (TPM ~25%) into the national tables
+            if spec.get("exclude") and re.search(spec["exclude"],
+                                                 pollster, re.I):
+                continue
+            votes = {}
+            for key, ci in cols.items():
+                m = re.match(r"([\d.]+)\s*%?", row[ci].replace(",", "."))
+                if m:
+                    votes[key] = float(m.group(1))
+            if len(votes) < 3:
+                continue
+            # percentages only: some rows are seat projections or vote
+            # counts (Datapraxis/YouGov 2019 read 344/221 and poisoned the
+            # late average to Con 72.7)
+            if any(v > 100 for v in votes.values()) or \
+                    not 50 <= sum(votes.values()) <= 120:
+                continue
+            key = (pollster.lower(), date)
+            if key in seen:
+                continue
+            seen.add(key)
+            polls.append({"pollster": pollster, "date": date,
+                          "votes": votes, "n": 1000})
+        break
     return polls
 
 

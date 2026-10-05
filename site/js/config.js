@@ -23596,6 +23596,317 @@ saxony_anhalt: {
               "vancouver-strathcona": "bcndp",
               "westvancouver-capilano": "cpbc"
       },
+      // ridings where a modelled party fields no 2026 candidate (partial
+      // slates): its projected share is pinned to zero there
+      noCandidate: {
+              "abbotsford-mission": [
+                      "gpbc"
+              ],
+              "abbotsfordsouth": [
+                      "gpbc",
+                      "cbc"
+              ],
+              "abbotsfordwest": [
+                      "gpbc",
+                      "onbc"
+              ],
+              "boundary-similkameen": [
+                      "gpbc",
+                      "cbc"
+              ],
+              "bulkleyvalley-stikine": [
+                      "gpbc",
+                      "cbc",
+                      "onbc"
+              ],
+              "burnaby-newwestminster": [
+                      "cbc",
+                      "onbc"
+              ],
+              "burnabycentre": [
+                      "onbc"
+              ],
+              "burnabyeast": [
+                      "cbc"
+              ],
+              "burnabynorth": [
+                      "cbc",
+                      "onbc"
+              ],
+              "burnabysouth-metrotown": [
+                      "cbc"
+              ],
+              "cariboo-chilcotin": [
+                      "cbc",
+                      "onbc"
+              ],
+              "chilliwack-cultuslake": [
+                      "gpbc",
+                      "cbc",
+                      "onbc"
+              ],
+              "chilliwacknorth": [
+                      "gpbc",
+                      "onbc"
+              ],
+              "columbiariver-revelstoke": [
+                      "cbc",
+                      "onbc"
+              ],
+              "coquitlam-burkemountain": [
+                      "onbc"
+              ],
+              "coquitlam-maillardville": [
+                      "cbc",
+                      "onbc"
+              ],
+              "courtenay-comox": [
+                      "onbc"
+              ],
+              "cowichanvalley": [
+                      "cbc",
+                      "onbc"
+              ],
+              "deltanorth": [
+                      "gpbc",
+                      "onbc"
+              ],
+              "deltasouth": [
+                      "cbc"
+              ],
+              "esquimalt-colwood": [
+                      "onbc"
+              ],
+              "fraser-nicola": [
+                      "cbc",
+                      "onbc"
+              ],
+              "juandefuca-malahat": [
+                      "cbc"
+              ],
+              "kamloops-norththompson": [
+                      "gpbc",
+                      "cbc"
+              ],
+              "kamloopscentre": [
+                      "cbc"
+              ],
+              "kelowna-lakecountry-coldstream": [
+                      "cbc"
+              ],
+              "kelowna-mission": [
+                      "cbc"
+              ],
+              "kelownacentre": [
+                      "gpbc",
+                      "cbc"
+              ],
+              "kootenay-monashee": [
+                      "cbc"
+              ],
+              "kootenaycentral": [
+                      "cbc"
+              ],
+              "ladysmith-oceanside": [
+                      "cbc",
+                      "onbc"
+              ],
+              "langford-highlands": [
+                      "onbc"
+              ],
+              "langley-abbotsford": [
+                      "cbc"
+              ],
+              "langley-walnutgrove": [
+                      "onbc"
+              ],
+              "langley-willowbrook": [
+                      "gpbc",
+                      "cbc"
+              ],
+              "mapleridge-pittmeadows": [
+                      "gpbc"
+              ],
+              "mapleridgeeast": [
+                      "cbc",
+                      "onbc"
+              ],
+              "midisland-pacificrim": [
+                      "cbc",
+                      "onbc"
+              ],
+              "nanaimo-gabriolaisland": [
+                      "cbc",
+                      "onbc"
+              ],
+              "nanaimo-lantzville": [
+                      "cbc",
+                      "onbc"
+              ],
+              "nechakolakes": [
+                      "gpbc",
+                      "cbc",
+                      "onbc"
+              ],
+              "newwestminster-coquitlam": [
+                      "cbc",
+                      "onbc"
+              ],
+              "northcoast-haidagwaii": [
+                      "cbc",
+                      "onbc"
+              ],
+              "northisland": [
+                      "cbc",
+                      "onbc"
+              ],
+              "northvancouver-lonsdale": [
+                      "cbc",
+                      "onbc"
+              ],
+              "oakbay-gordonhead": [
+                      "onbc"
+              ],
+              "peacerivernorth": [
+                      "bcndp",
+                      "gpbc",
+                      "cbc",
+                      "onbc"
+              ],
+              "peaceriversouth": [
+                      "gpbc",
+                      "cbc",
+                      "onbc"
+              ],
+              "penticton-summerland": [
+                      "cbc"
+              ],
+              "portcoquitlam": [
+                      "cbc",
+                      "onbc"
+              ],
+              "portmoody-burquitlam": [
+                      "onbc"
+              ],
+              "powellriver-sunshinecoast": [
+                      "cbc",
+                      "onbc"
+              ],
+              "princegeorge-mackenzie": [
+                      "cbc",
+                      "onbc"
+              ],
+              "princegeorge-northcariboo": [
+                      "cbc",
+                      "onbc"
+              ],
+              "princegeorge-valemount": [
+                      "cbc"
+              ],
+              "richmond-bridgeport": [
+                      "gpbc",
+                      "cbc",
+                      "onbc"
+              ],
+              "richmond-queensborough": [
+                      "cbc",
+                      "onbc"
+              ],
+              "richmond-steveston": [
+                      "gpbc",
+                      "onbc"
+              ],
+              "richmondcentre": [
+                      "cbc",
+                      "onbc"
+              ],
+              "saanichnorthandtheislands": [
+                      "onbc"
+              ],
+              "saanichsouth": [
+                      "cbc",
+                      "onbc"
+              ],
+              "skeena": [
+                      "cbc"
+              ],
+              "surrey-guildford": [
+                      "cbc",
+                      "onbc"
+              ],
+              "surrey-newton": [
+                      "gpbc",
+                      "onbc"
+              ],
+              "surrey-panorama": [
+                      "onbc"
+              ],
+              "surrey-serpentineriver": [
+                      "gpbc"
+              ],
+              "surreycitycentre": [
+                      "gpbc"
+              ],
+              "surreysouth": [
+                      "onbc"
+              ],
+              "vancouver-fraserview": [
+                      "cbc",
+                      "onbc"
+              ],
+              "vancouver-hastings": [
+                      "onbc"
+              ],
+              "vancouver-kensington": [
+                      "cbc",
+                      "onbc"
+              ],
+              "vancouver-langara": [
+                      "onbc"
+              ],
+              "vancouver-littlemountain": [
+                      "cbc",
+                      "onbc"
+              ],
+              "vancouver-pointgrey": [
+                      "onbc"
+              ],
+              "vancouver-renfrew": [
+                      "onbc"
+              ],
+              "vancouver-strathcona": [
+                      "cbc",
+                      "onbc"
+              ],
+              "vancouver-westend": [
+                      "cbc",
+                      "onbc"
+              ],
+              "vancouver-yaletown": [
+                      "onbc"
+              ],
+              "vernon-lumby": [
+                      "cbc"
+              ],
+              "victoria-beaconhill": [
+                      "cbc",
+                      "onbc"
+              ],
+              "victoria-swanlake": [
+                      "cbc",
+                      "onbc"
+              ],
+              "westkelowna-peachland": [
+                      "cbc",
+                      "onbc"
+              ],
+              "westvancouver-capilano": [
+                      "cbc"
+              ],
+              "westvancouver-seatosky": [
+                      "onbc"
+              ]
+      },
       districts: {
               "abbotsford-mission": "abbotsford-mission",
               "abbotsfordsouth": "abbotsfordsouth",

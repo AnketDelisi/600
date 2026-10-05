@@ -134,10 +134,28 @@ def main():
     print("elected members parsed:", len(elected))
     raw = fetch(CAND26, "bc_cand_2026.csv", force, binary=True).decode("cp1252")
     by26 = {}
+    aff26 = {}
+    AFF_KEY = {"BC NDP": "bcndp", "Conservative Party": "cpbc",
+               "BC Green Party": "gpbc", "CentreBC": "cbc", "OneBC": "onbc"}
     for row in csv.DictReader(io.StringIO(raw)):
-        by26.setdefault(bm.fold(row["Electoral District"]), []).append(
-            row["Candidate Ballot Name"])
+        key = bm.fold(row["Electoral District"])
+        by26.setdefault(key, []).append(row["Candidate Ballot Name"])
+        aff = AFF_KEY.get(row["Affiliation"])
+        if aff:
+            aff26.setdefault(key, set()).add(aff)
     print("2026 districts with candidates:", len(by26))
+
+    # ridings where a modelled party fields no candidate: the projection pins
+    # its share to zero there and the others absorb it (BC slates are partial:
+    # NDP 92/93, Green 73, CentreBC 35, OneBC 33, so their nonzero baselines
+    # would otherwise project phantom votes)
+    no_candidate = {}
+    for c in cons:
+        present = aff26.get(c["id"], set())
+        missing = [p for p in PARTIES if p not in present]
+        if missing:
+            no_candidate[c["id"]] = missing
+    print("ridings with a party absent:", len(no_candidate))
 
     def nl(s):
         s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore")
@@ -281,6 +299,9 @@ def main():
       // list: absent winner = retiring)
       incumbentBoost: 2.0,
       retiringSeats: @@retiringSeats@@,
+      // ridings where a modelled party fields no 2026 candidate (partial
+      // slates): its projected share is pinned to zero there
+      noCandidate: @@noCandidate@@,
       districts: @@districts@@,
       // 2024 vote shares per riding (Elections BC)
       gebiete: @@gebiete@@,
@@ -305,6 +326,7 @@ def main():
                           8).replace("\n", "\n      ")),
             ("regionOf", j(region_of, 8).replace("\n", "\n      ")),
             ("retiringSeats", j(retiring, 8).replace("\n", "\n      ")),
+            ("noCandidate", j(no_candidate, 8).replace("\n", "\n      ")),
             ):
         block = block.replace("@@%s@@" % ph, val)
 

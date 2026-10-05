@@ -1684,6 +1684,12 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   // Restore Britain's after Rupert Lowe's defection).
   const hold=conf.holdSeats&&conf.holdSeats[String(nr)];
   if(hold&&out[hold]) out[hold].now=out[hold].past;
+  // Recompute the projected total after the pin/boost/holds: the scaling
+  // below divides by it, and the earlier sum predates those adjustments
+  // (stale sums left ridings short of 100% - e.g. the no-candidate pin
+  // removed a party's share from the numerator but not the denominator).
+  sum=0;
+  for(const p of PARTY_ORDER) sum+=out[p].now||0;
   // Okrug baselines cover only the modelled parties (unmodelled lists made up
   // the remainder), so renormalize projected shares to the polls' own total for
   // the modelled parties (e.g. ~97.6%) — the leftover stays visible as "Other".
@@ -2173,8 +2179,9 @@ async function renderMapInto(box, avg, resultMode, confOverride){
           <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
         </div>`;
       }).filter(x=>x).join('');
-      // unmodelled 2023 lists (remainder), past column only
-      if(shares.other&&shares.other.past>0.05){
+      // unmodelled 2023 lists (remainder), past column only; shown whenever
+      // either side is nonzero so the district always adds to 100%
+      if(shares.other&&(shares.other.past>0.05||shares.other.now>0.05)){
         const o=shares.other;
         const od=o.now-o.past;
         rows+=`<div class="map-tip-row">

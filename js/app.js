@@ -793,9 +793,12 @@ function brazilRunoffHero(avg, filteredPolls){
   const barA=(v)=>Math.max(2,v*100);
   const d1=META.election_date||'2026-10-04';
   const d2=META.election_date_runoff||'2026-10-25';
+  const fr=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].firstRoundResult;
+  const frTop=fr?Object.entries(fr).sort((x,y)=>y[1]-x[1]).slice(0,2)
+    .map(([pp,vv])=>`${partyCode(pp)} ${fmt(vv,1)}`).join(' \u2013 '):'';
   return `<div class="hero hero-brazil">
     <div class="hero-title">${COUNTRY_NAME} — ${t('PRESIDENTIAL · TWO ROUNDS','BAŞKANLIK · İKİ TUR')}</div>
-    <div class="hero-date">${d1} ${t('first round','birinci tur')} → ${d2} ${t('runoff','ikinci tur')} · ${ro.roN} ${t('head-to-head polls','başa baş anket')}</div>
+    <div class="hero-date">${d1} ${t('first round','birinci tur')}${frTop?` (${frTop})`:''} → ${d2} ${t('runoff','ikinci tur')} · ${ro.roN} ${t('head-to-head polls','başa baş anket')}</div>
     <div class="bz-runoff">
       <div class="bz-cand" style="--bz-c:${cA}">
         <span class="bz-code">${partyCode(ro.a)}</span>

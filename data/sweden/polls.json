@@ -11,8 +11,8 @@
       "license": "CC0"
     }
   ],
-  "scraped_at": "2026-10-04T19:36:55Z",
-  "poll_count": 112,
+  "scraped_at": "2026-10-05T05:33:35Z",
+  "poll_count": 113,
   "polls": [
     {
       "pollster": "Ipsos",
@@ -53,6 +53,23 @@
       "n": 905,
       "fieldwork_start": "2026-09-21",
       "fieldwork_end": "2026-09-25"
+    },
+    {
+      "pollster": "Demoskop",
+      "date": "2026-09-26",
+      "votes": {
+        "V": 8.1,
+        "S": 31.6,
+        "MP": 3.8,
+        "C": 5.8,
+        "L": 4.7,
+        "M": 20.8,
+        "KD": 4.7,
+        "SD": 19.3
+      },
+      "country": "sweden",
+      "date_end": "2026-10-04",
+      "n": 2190
     },
     {
       "pollster": "Verian(",

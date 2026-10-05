@@ -40,7 +40,7 @@ const t=(en,tr)=>(LANG==='tr'&&tr!=null?tr:en);
 let T={};
 function setLang(){
   T={
-    tabs:{polls:t('POLLS','ANKETLER'),forecast:t('FORECAST','TAHMİN'),history:t('HISTORY','GEÇMİŞ'),live:t('LIVE','CANLI'),methodology:t('METHODOLOGY','YÖNTEM')},
+    tabs:{polls:t('POLLS','ANKETLER'),forecast:t('FORECAST','TAHMİN'),prediction:t('PREDICTION','TAHMİNİNİZ'),history:t('HISTORY','GEÇMİŞ'),live:t('LIVE','CANLI'),methodology:t('METHODOLOGY','YÖNTEM')},
     main:t('MAIN','ANA'),
     country:t('COUNTRY','ÜLKE'), filters:t('FILTERS','FİLTRELER'), timeRange:t('TIME RANGE','ZAMAN ARALIĞI'),
     pollster:t('POLLSTER','ANKET'), allPollsters:t('All pollsters','Tüm anketler'),
@@ -93,6 +93,7 @@ function toggleLang(){
   if(!pane) return;
   if(tabId==='polls') renderPollsTab();
   else if(tabId==='forecast') renderForecast(pane);
+  else if(tabId==='prediction') renderPrediction(pane);
   else if(tabId==='live') renderLive(pane);
   else if(tabId==='history') renderHistory(pane);
   else if(tabId==='methodology') renderMethodology(pane);
@@ -171,7 +172,7 @@ function switchTab(btn){
   const tabId=btn.dataset.tab;
   document.querySelectorAll('.tab-pane').forEach(p=>{p.style.display='none';p.classList.remove('active');p.setAttribute('aria-hidden','true')});
   const pane=$('pane-'+tabId);
-  if(pane){pane.style.display='block';pane.classList.add('active');pane.setAttribute('aria-hidden','false');if(tabId==='forecast'){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
+  if(pane){pane.style.display='block';pane.classList.add('active');pane.setAttribute('aria-hidden','false');if(tabId==='forecast'){renderForecast(pane);pane.dataset.loaded='1'}if(tabId==='prediction'){renderPrediction(pane);pane.dataset.loaded='1'}if(tabId==='live'&&!pane.dataset.loaded){renderLive(pane);pane.dataset.loaded='1'}if(tabId==='history'&&!pane.dataset.loaded){renderHistory(pane);pane.dataset.loaded='1'}if(tabId==='methodology'&&!pane.dataset.loaded){renderMethodology(pane);pane.dataset.loaded='1'}}
   if(typeof updateUrl==='function') updateUrl();
 }
 document.addEventListener('keydown',e=>{
@@ -3388,6 +3389,55 @@ function ypUpdate(){
   box.innerHTML=`${rows}${note}<div class="parliament-box" style="margin-top:10px">${buildParliamentSVG(seats)}</div>`;
 }
 
+/* ---------- prediction tab ---------- */
+function renderPrediction(pane){
+  const daysVal=effectiveDays();
+  const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
+  let filtered=recentPolls(POLLS,daysVal);
+  if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
+  const avg=computeAverages(filtered);
+  if(MAP_ONLY||!filtered.length||Object.values(avg).every(v=>v===null)){
+    pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('YOUR PREDICTION','TAHMİNİNİZ')}</div></div><div class="method-text" style="padding:16px"><p>${MAP_ONLY?t('Not available for presidential two-round pages.','İki turlu başkanlık sayfalarında kullanılamaz.'):t('No polls in the selected range.','Seçili aralıkta anket yok.')}</p></div></div></div>`;
+    return;
+  }
+  const fOrder=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
+  const ypOrder=fOrder.filter(p=>p!=='ind');
+  let ypInputs='';
+  ypOrder.forEach(p=>{
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    ypInputs+=`<label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700">
+      <span style="color:${col}">${partyCode(p)}</span>
+      <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${(avg[p]||0).toFixed(1)}" style="width:66px;padding:3px 6px" oninput="ypUpdate()">
+      <span style="color:var(--c-text-muted)">%</span></label>`;
+  });
+  pane.innerHTML=`<div class="tab-pane-inner">
+    <div class="hero fc-hero">
+      <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
+      <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil.')}</div>
+    </div>
+    <div class="card">
+      <div class="method-text" style="padding:14px 16px">
+        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-bottom:10px">${ypInputs}</div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+          <button class="shot-btn" id="yp-reset">${t('Reset to average','Ortalamaya dön')}</button>
+          <span id="yp-sum" style="font-size:11px;color:var(--c-text-muted)"></span>
+        </div>
+        <div id="yp-result"></div>
+      </div>
+    </div>
+  </div>`;
+  ypUpdate();
+  const ypReset=$('yp-reset');
+  if(ypReset){
+    ypReset.addEventListener('click',()=>{
+      document.querySelectorAll('.yp-in').forEach(el=>{
+        el.value=((avg&&avg[el.dataset.p])||0).toFixed(1);
+      });
+      ypUpdate();
+    });
+  }
+}
+
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
   const fd=$('filter-days');
@@ -3691,16 +3741,6 @@ function renderForecast(pane){
   }
   const leadOutcome=leadCands[0].n, leadColor=leadCands[0].c, leadPct=leadCands[0].p*100;
 
-  // YOUR PREDICTION inputs: one per national party, defaulted to the average
-  const ypOrder=fOrder.filter(p=>p!=='ind');
-  let ypInputs='';
-  ypOrder.forEach(p=>{
-    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
-    ypInputs+=`<label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700">
-      <span style="color:${col}">${partyCode(p)}</span>
-      <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${(avg[p]||0).toFixed(1)}" style="width:66px;padding:3px 6px" oninput="ypUpdate()">
-      <span style="color:var(--c-text-muted)">%</span></label>`;
-  });
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
@@ -3789,29 +3829,7 @@ function renderForecast(pane){
       ${seatRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
     </div>`}
-
-    ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('YOUR PREDICTION','TAHMİNİNİZ')}</div></div>
-      <div class="method-text" style="padding:14px 16px">
-        <p style="margin:0 0 10px">${t('Enter vote shares to see the parliament they produce — the same model as the projection: thresholds, district allocations and FPTP ridings included.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil.')}</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-bottom:10px">${ypInputs}</div>
-        <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
-          <button class="shot-btn" id="yp-reset">${t('Reset to average','Ortalamaya dön')}</button>
-          <span id="yp-sum" style="font-size:11px;color:var(--c-text-muted)"></span>
-        </div>
-        <div id="yp-result"></div>
-      </div>
-    </div>`}
   </div>`;
-  ypUpdate();
-  const ypReset=$('yp-reset');
-  if(ypReset){
-    ypReset.addEventListener('click',()=>{
-      document.querySelectorAll('.yp-in').forEach(el=>{
-        el.value=((avg&&avg[el.dataset.p])||0).toFixed(1);
-      });
-      ypUpdate();
-    });
-  }
   const fcParlShot=$('fc-parl-shot-btn');
   if(fcParlShot){
     fcParlShot.addEventListener('click',()=>{
@@ -4691,6 +4709,7 @@ window._600={
     const pane=$('pane-'+tabId);
     if(!pane) return;
     if(tabId==='forecast'){renderForecast(pane)}
+    else if(tabId==='prediction'){renderPrediction(pane)}
     else if(tabId==='live'){renderLive(pane)}
     else if(tabId==='history'){renderHistory(pane)}
     else if(tabId==='methodology'){renderMethodology(pane)}

@@ -40374,6 +40374,6313 @@ saxony_anhalt: {
               "wrexham": "wales",
               "ynysmon": "wales"
       },
+      // seats where a regional party is not on the ballot: its projected
+      // share is pinned to zero there
+      noCandidate: {
+              "aldershot": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "aldridge-brownhills": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "altrinchamandsalewest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ambervalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "arundelandsouthdowns": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ashfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ashford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ashton-under-lyne": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "aylesbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "banbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "barking": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "barnsleynorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "barnsleysouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "barrowandfurness": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "basildonandbillericay": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "basingstoke": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bassetlaw": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bath": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "battersea": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "beaconsfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "beckenhamandpenge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bedford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bermondseyandoldsouthwark": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bethnalgreenandstepney": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "beverleyandholderness": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bexhillandbattle": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bexleyheathandcrayford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bicesterandwoodstock": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birkenhead": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamedgbaston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamerdington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamhallgreenandmoseley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamhodgehillandsolihullnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamladywood": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamnorthfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamperrybarr": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamsellyoak": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "birminghamyardley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bishopauckland": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blackburn": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blackleyandmiddletonsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blackpoolnorthandfleetwood": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blackpoolsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blaydonandconsett": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blythandashington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bognorregisandlittlehampton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bolsover": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "boltonnortheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "boltonsouthandwalkden": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "boltonwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bootle": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bostonandskegness": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bournemoutheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bournemouthwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bracknell": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bradfordeast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bradfordsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bradfordwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "braintree": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "brenteast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "brentwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "brentfordandisleworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "brentwoodandongar": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bridgwater": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bridlingtonandthewolds": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "briggandimmingham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "brightonkemptownandpeacehaven": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "brightonpavilion": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bristolcentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bristoleast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bristolnortheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bristolnorthwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bristolsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "broadlandandfakenham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bromleyandbigginhill": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bromsgrove": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "broxbourne": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "broxtowe": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "buckinghamandbletchley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "burnley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "burtonanduttoxeter": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "burynorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "burysouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "burystedmundsandstowmarket": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "caldervalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "camborneandredruth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cambridge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cannockchase": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "canterbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "carlisle": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "carshaltonandwallington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "castlepoint": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "centraldevon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "centralsuffolkandnorthipswich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chathamandaylesford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cheadle": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chelmsford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chelseaandfulham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cheltenham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cheshamandamersham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chesternorthandneston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chestersouthandeddisbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chesterfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chichester": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chingfordandwoodfordgreen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chippenham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chippingbarnet": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "chorley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "christchurch": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "citiesoflondonandwestminster": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cityofdurham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "clacton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "claphamandbrixtonhill": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "colchester": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "colnevalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "congleton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "corbyandeastnorthamptonshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "coventryeast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "coventrynorthwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "coventrysouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cramlingtonandkillingworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "crawley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "creweandnantwich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "croydoneast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "croydonsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "croydonwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dagenhamandrainham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "darlington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dartford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "daventry": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "derbynorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "derbysouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "derbyshiredales": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dewsburyandbatley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "didcotandwantage": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "doncastercentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "doncastereastandtheisleofaxholme": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "doncasternorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dorkingandhorley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "doveranddeal": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "droitwichandevesham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dudley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dulwichandwestnorwood": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dunstableandleightonbuzzard": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ealingcentralandacton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ealingnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ealingsouthall": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "earleyandwoodley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "easington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastgrinsteadanduckfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "easthampshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastsurrey": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastthanet": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastwiltshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastworthingandshoreham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastbourne": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastleigh": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "edmontonandwinchmorehill": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ellesmereportandbromborough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "elthamandchislehurst": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "elyandeastcambridgeshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "enfieldnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eppingforest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "epsomandewell": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "erewash": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "erithandthamesmead": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "esherandwalton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "exeter": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "exmouthandexetereast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "farehamandwaterlooville": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "farnhamandbordon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "favershamandmidkent": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "felthamandheston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "filtonandbradleystoke": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "finchleyandgoldersgreen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "folkestoneandhythe": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "forestofdean": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "fromeandeastsomerset": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "fylde": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gainsborough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gatesheadcentralandwhickham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gedling": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gillinghamandrainham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glastonburyandsomerton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gloucester": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "godalmingandash": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gooleandpocklington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gortonanddenton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gosport": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "granthamandbourne": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gravesham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "greatgrimsbyandcleethorpes": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "greatyarmouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "greenwichandwoolwich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "guildford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hackneynorthandstokenewington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hackneysouthandshoreditch": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "halesowen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "halifax": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hamblevalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hammersmithandchiswick": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hampsteadandhighgate": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harboroughoadbyandwigston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harlow": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harpendenandberkhamsted": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harrogateandknaresborough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harroweast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harrowwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hartlepool": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "harwichandnorthessex": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hastingsandrye": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "havant": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hayesandharlington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hazelgrove": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hemelhempstead": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hendon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "henleyandthame": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "herefordandsouthherefordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hernebayandsandwich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hertfordandstortford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hertsmere": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hexham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "heywoodandmiddletonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "highpeak": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hinckleyandbosworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hitchin": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "holbornandstpancras": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "honitonandsidmouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hornchurchandupminster": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hornseyandfriernbarnet": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "horsham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "houghtonandsunderlandsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hoveandportslade": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "huddersfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "huntingdon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hyndburn": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ilfordnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ilfordsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ipswich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "isleofwighteast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "isleofwightwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "islingtonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "islingtonsouthandfinsbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "jarrowandgatesheadeast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "keighleyandilkley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kenilworthandsoutham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kensingtonandbayswater": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kettering": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kingstonandsurbiton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kingstonuponhulleast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kingstonuponhullnorthandcottingham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kingstonuponhullwestandhaltemprice": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kingswinfordandsouthstaffordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "knowsley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lancasterandwyre": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedscentralandheadingley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedseast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedsnortheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedsnorthwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedssouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedssouthwestandmorley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leedswestandpudsey": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leicestereast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leicestersouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leicesterwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leighandatherton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lewes": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lewishameast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lewishamnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lewishamwestandeastdulwich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "leytonandwanstead": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lichfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lincoln": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "liverpoolgarston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "liverpoolriverside": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "liverpoolwalton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "liverpoolwavertree": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "liverpoolwestderby": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "loughborough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "louthandhorncastle": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lowestoft": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lutonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lutonsouthandsouthbedfordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "macclesfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "maidenhead": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "maidstoneandmalling": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "makerfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "maldon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "manchestercentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "manchesterrusholme": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "manchesterwithington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "mansfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "melkshamanddevizes": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "meltonandsyston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "meridenandsolihulleast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midbedfordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midbuckinghamshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midcheshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midderbyshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "middorsetandnorthpoole": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midleicestershire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midnorfolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midsussex": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "middlesbroughandthornabyeast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "middlesbroughsouthandeastcleveland": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "miltonkeynescentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "miltonkeynesnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "mitchamandmorden": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "morecambeandlunesdale": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newforesteast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newforestwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newark": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newcastleupontynecentralandwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newcastleupontyneeastandwallsend": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newcastleupontynenorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newcastle-under-lyme": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newtonabbot": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newtonaycliffeandspennymoor": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "normantonandhemsworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northbedfordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northcornwall": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northcotswolds": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northdevon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northdorset": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northdurham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northeastcambridgeshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northeastderbyshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northeasthampshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northeasthertfordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northeastsomersetandhanham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northherefordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northnorfolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northnorthumberland": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northshropshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northsomerset": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northwarwickshireandbedworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northwestcambridgeshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northwestessex": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northwesthampshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northwestleicestershire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northwestnorfolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northamptonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northamptonsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "norwichnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "norwichsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "nottinghameast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "nottinghamnorthandkimberley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "nottinghamsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "nuneaton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "oldbexleyandsidcup": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "oldhameastandsaddleworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "oldhamwestchaddertonandroyton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "orpington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ossettanddenbydale": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "oxfordeast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "oxfordwestandabingdon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "peckham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "pendleandclitheroe": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "penistoneandstocksbridge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "penrithandsolway": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "peterborough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "plymouthmoorview": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "plymouthsuttonanddevonport": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "pontefractcastlefordandknottingley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "poole": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "poplarandlimehouse": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "portsmouthnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "portsmouthsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "preston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "putney": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "queensparkandmaidavale": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rawmarshandconisbrough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rayleighandwickford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "readingcentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "readingwestandmidberkshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "redcar": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "redditch": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "reigate": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ribblevalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "richmondandnorthallerton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "richmondpark": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rochdale": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rochesterandstrood": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "romford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "romseyandsouthamptonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rossendaleanddarwen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rothervalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rotherham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rugby": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ruislipnorthwoodandpinner": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "runcornandhelsby": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "runnymedeandweybridge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rushcliffe": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rutlandandstamford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "salford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "salisbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "scarboroughandwhitby": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "scunthorpe": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "seftoncentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "selby": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sevenoaks": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sheffieldbrightsideandhillsborough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sheffieldcentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sheffieldhallam": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sheffieldheeley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sheffieldsoutheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sherwoodforest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "shipley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "shrewsbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sittingbourneandsheppey": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "skiptonandripon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sleafordandnorthhykeham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "slough": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "smethwick": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "solihullwestandshirley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southbasildonandeastthurrock": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southcambridgeshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southcotswolds": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southderbyshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southdevon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southdorset": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southeastcornwall": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southhollandandthedeepings": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southleicestershire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southnorfolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southnorthamptonshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southribble": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southshields": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southshropshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southsuffolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southwestdevon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southwesthertfordshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southwestnorfolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southwestwiltshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southamptonitchen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southamptontest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southendeastandrochford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southendwestandleigh": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southgateandwoodgreen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "southport": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "spelthorne": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "spenvalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stalbans": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "staustellandnewquay": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sthelensnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sthelenssouthandwhiston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stives": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stneotsandmidcambridgeshire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stafford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "staffordshiremoorlands": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stalybridgeandhyde": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stevenage": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stockport": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stocktonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stocktonwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stoke-on-trentcentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stoke-on-trentnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stoke-on-trentsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stonegreatwyrleyandpenkridge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stourbridge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stratfordandbow": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stratford-on-avon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "streathamandcroydonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stretfordandurmston": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stroud": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "suffolkcoastal": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sunderlandcentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "surreyheath": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "sussexweald": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "suttonandcheam": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "suttoncoldfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "swindonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "swindonsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tamworth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tatton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tauntonandwellington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "telford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tewkesbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "thewrekin": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "thirskandmalton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "thornburyandyate": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "thurrock": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tiptonandwednesbury": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tivertonandminehead": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tonbridge": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tooting": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "torbay": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "torridgeandtavistock": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tottenham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "truroandfalmouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tunbridgewells": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "twickenham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "tynemouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "uxbridgeandsouthruislip": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "vauxhallandcamberwellgreen": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wakefieldandrothwell": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wallasey": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "walsallandbloxwich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "walthamstow": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "warringtonnorth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "warringtonsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "warwickandleamington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "washingtonandgatesheadsouth": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "watford": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "waveneyvalley": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wealdofkent": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wellingboroughandrushden": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wellsandmendiphills": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "welwynhatfield": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westbromwich": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westdorset": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westhamandbeckton": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westlancashire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westsuffolk": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westworcestershire": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westmorlandandlonsdale": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "weston-super-mare": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wetherbyandeasingwold": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "whitehavenandworkington": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "widnesandhalewood": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wigan": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wimbledon": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "winchester": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "windsor": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wirralwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "witham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "witney": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "woking": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wokingham": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wolverhamptonnortheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wolverhamptonsoutheast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wolverhamptonwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "worcester": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "worsleyandeccles": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "worthingwest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wycombe": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wyreforest": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wythenshaweandsaleeast": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "yeovil": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "yorkcentral": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "yorkouter": [
+                      "snp",
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "belfasteast": [
+                      "snp",
+                      "plc"
+              ],
+              "belfastnorth": [
+                      "snp",
+                      "plc"
+              ],
+              "belfastsouthandmiddown": [
+                      "snp",
+                      "plc"
+              ],
+              "belfastwest": [
+                      "snp",
+                      "plc"
+              ],
+              "eastantrim": [
+                      "snp",
+                      "plc"
+              ],
+              "eastlondonderry": [
+                      "snp",
+                      "plc"
+              ],
+              "fermanaghandsouthtyrone": [
+                      "snp",
+                      "plc"
+              ],
+              "foyle": [
+                      "snp",
+                      "plc"
+              ],
+              "laganvalley": [
+                      "snp",
+                      "plc"
+              ],
+              "midulster": [
+                      "snp",
+                      "plc"
+              ],
+              "newryandarmagh": [
+                      "snp",
+                      "plc"
+              ],
+              "northantrim": [
+                      "snp",
+                      "plc"
+              ],
+              "northdown": [
+                      "snp",
+                      "plc"
+              ],
+              "southantrim": [
+                      "snp",
+                      "plc"
+              ],
+              "southdown": [
+                      "snp",
+                      "plc"
+              ],
+              "strangford": [
+                      "snp",
+                      "plc"
+              ],
+              "upperbann": [
+                      "snp",
+                      "plc"
+              ],
+              "westtyrone": [
+                      "snp",
+                      "plc"
+              ],
+              "eastrenfrewshire": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "nah-eileanananiar": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midlothian": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northayrshireandarran": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "orkneyandshetland": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "aberdeennorth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "aberdeensouth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "aberdeenshirenorthandmorayeast": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "airdrieandshotts": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "alloaandgrangemouth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "angusandperthshireglens": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "arbroathandbroughtyferry": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "argyllbuteandsouthlochaber": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bathgateandlinlithgow": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "caithnesssutherlandandeasterross": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "coatbridgeandbellshill": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cowdenbeathandkirkcaldy": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cumbernauldandkirkintilloch": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dumfriesandgalloway": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dumfriesshireclydesdaleandtweeddale": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dundeecentral": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dunfermlineanddollar": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "eastkilbrideandstrathaven": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "edinburgheastandmusselburgh": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "edinburghnorthandleith": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "edinburghsouth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "edinburghsouthwest": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "edinburghwest": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "falkirk": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glasgoweast": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glasgownorth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glasgownortheast": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glasgowsouth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glasgowsouthwest": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glasgowwest": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "glenrothesandmidfife": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gordonandbuchan": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "hamiltonandclydevalley": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "inverclydeandrenfrewshirewest": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "invernessskyeandwestross-shire": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "livingston": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "lothianeast": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "middunbartonshire": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "moraywestnairnandstrathspey": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "motherwellwishawandcarluke": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "northeastfife": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "paisleyandrenfrewshirenorth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "paisleyandrenfrewshiresouth": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "perthandkinross-shire": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rutherglen": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "stirlingandstrathallan": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westdunbartonshire": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ayrcarrickandcumnock": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "berwickshireroxburghandselkirk": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "centralayrshire": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "kilmarnockandloudoun": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "westaberdeenshireandkincardine": [
+                      "plc",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "aberafanmaesteg": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "alynanddeeside": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bangoraberconwy": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "blaenaugwentandrhymney": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "breconradnorandcwmtawe": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "bridgend": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "caerfyrddin": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "caerphilly": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cardiffeast": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cardiffnorth": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cardiffsouthandpenarth": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "cardiffwest": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ceredigionpreseli": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "clwydeast": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "clwydnorth": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "dwyformeirionnydd": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "gower": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "llanelli": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "merthyrtydfilandaberdare": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "midandsouthpembrokeshire": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "monmouthshire": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "montgomeryshireandglyndwr": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "neathandswanseaeast": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newporteast": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "newportwestandislwyn": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "pontypridd": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "rhonddaandogmore": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "swanseawest": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "torfaen": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "valeofglamorgan": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "wrexham": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ],
+              "ynysmon": [
+                      "snp",
+                      "sf",
+                      "sdlp",
+                      "apni",
+                      "uup",
+                      "dup",
+                      "tuv"
+              ]
+      },
     },
     pollsterMAE: {},
     maeKey: 'UK2024',
@@ -40401,6 +46708,15 @@ saxony_anhalt: {
     recencyHalfLifeDays: 14,
     // trend extrapolation to the 2026-11-07 election: fresh campaign polls
     // (weekly trackers); momentum is a nudge, not the driver
+    trend: {
+      electionDate: '2026-11-07',
+      blend: 0.4,
+      maxDaily: 0.15,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+      dampDays: 10,
+    },
     // colours from the en.wikipedia party infoboxes
     parties: {
       nat: { code: 'NAT', name: 'New Zealand National Party', name_en: 'New Zealand National Party', color: '#00529F' },
@@ -41011,6 +47327,175 @@ saxony_anhalt: {
               "nzf": 6.07,
               "tpm": 3.08,
               "opp": 2.24
+      },
+      // electorates where Te Pati Maori is not on the ballot: its projected
+      // share is pinned to zero there
+      noCandidate: {
+              "aucklandcentral": [
+                      "tpm"
+              ],
+              "bankspeninsula": [
+                      "tpm"
+              ],
+              "bayofplenty": [
+                      "tpm"
+              ],
+              "botany": [
+                      "tpm"
+              ],
+              "christchurchcentral": [
+                      "tpm"
+              ],
+              "christchurcheast": [
+                      "tpm"
+              ],
+              "coromandel": [
+                      "tpm"
+              ],
+              "dunedin": [
+                      "tpm"
+              ],
+              "eastcoastbays": [
+                      "tpm"
+              ],
+              "epsom": [
+                      "tpm"
+              ],
+              "hamiltonwest": [
+                      "tpm"
+              ],
+              "huttsouth": [
+                      "tpm"
+              ],
+              "ilam": [
+                      "tpm"
+              ],
+              "invercargill": [
+                      "tpm"
+              ],
+              "kaikura": [
+                      "tpm"
+              ],
+              "kaiparakimahurangi": [
+                      "tpm"
+              ],
+              "mana": [
+                      "tpm"
+              ],
+              "maungakiekie": [
+                      "tpm"
+              ],
+              "mtalbert": [
+                      "tpm"
+              ],
+              "mtroskill": [
+                      "tpm"
+              ],
+              "napier": [
+                      "tpm"
+              ],
+              "nelson": [
+                      "tpm"
+              ],
+              "newlynn": [
+                      "tpm"
+              ],
+              "newplymouth": [
+                      "tpm"
+              ],
+              "northshore": [
+                      "tpm"
+              ],
+              "northcote": [
+                      "tpm"
+              ],
+              "northland": [
+                      "tpm"
+              ],
+              "pakuranga": [
+                      "tpm"
+              ],
+              "palmerstonnorth": [
+                      "tpm"
+              ],
+              "panmure-thuhu": [
+                      "tpm"
+              ],
+              "papakura": [
+                      "tpm"
+              ],
+              "portwaikato": [
+                      "tpm"
+              ],
+              "rangitata": [
+                      "tpm"
+              ],
+              "rangitkei": [
+                      "tpm"
+              ],
+              "remutaka": [
+                      "tpm"
+              ],
+              "rongotai": [
+                      "tpm"
+              ],
+              "selwyn": [
+                      "tpm"
+              ],
+              "southland": [
+                      "tpm"
+              ],
+              "taieri": [
+                      "tpm"
+              ],
+              "takanini": [
+                      "tpm"
+              ],
+              "taranaki-kingcountry": [
+                      "tpm"
+              ],
+              "taup": [
+                      "tpm"
+              ],
+              "tukituki": [
+                      "tpm"
+              ],
+              "tmaki": [
+                      "tpm"
+              ],
+              "upperharbour": [
+                      "tpm"
+              ],
+              "waikato": [
+                      "tpm"
+              ],
+              "waimakariri": [
+                      "tpm"
+              ],
+              "waitaki": [
+                      "tpm"
+              ],
+              "wellingtoncentral": [
+                      "tpm"
+              ],
+              "westcoast-tasman": [
+                      "tpm"
+              ],
+              "whanganui": [
+                      "tpm"
+              ],
+              "whangaparoa": [
+                      "tpm"
+              ],
+              "wigram": [
+                      "tpm"
+              ],
+              "hriu": [
+                      "tpm"
+              ],
+              "taki": [
+                      "tpm"
+              ]
       },
     },
     pollsterMAE: {},

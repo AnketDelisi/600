@@ -290,6 +290,15 @@ def main():
                      "votes2022": int(votes_by_el.get(key, 0)),
                      "results_2022": results[key]})
     assert len(cons) == 72
+
+    # Te Pati Maori contests the Maori electorates (and a handful of general
+    # ones): pin its projected share to zero where it had no 2023 candidate, so
+    # its national poll number doesn't spread it across every electorate
+    no_candidate = {}
+    for c in cons:
+        if (c["results_2022"].get("tpm") or 0) <= 0.01:
+            no_candidate[c["id"]] = ["tpm"]
+    print("electorates without Te Pati Maori:", len(no_candidate))
     os.makedirs(os.path.dirname(CONST_JSON), exist_ok=True)
     with open(CONST_JSON, "w", encoding="utf8") as fh:
         json.dump({"country": "nz", "total_seats": 120,
@@ -383,6 +392,9 @@ def main():
       gebiete: @@gebiete@@,
       // national baseline for the swing (= 2023 party vote, the poll metric)
       national2021: @@national@@,
+      // electorates where Te Pati Maori is not on the ballot: its projected
+      // share is pinned to zero there
+      noCandidate: @@noCandidate@@,
     },
     pollsterMAE: {},
     maeKey: 'NZ2023',
@@ -400,7 +412,8 @@ def main():
             ("districts", j({c["id"]: c["id"] for c in cons}, 8).replace(
                 "\n", "\n      ")),
             ("gebiete", j({c["id"]: c["results_2022"] for c in cons},
-                          8).replace("\n", "\n      "))):
+                          8).replace("\n", "\n      ")),
+            ("noCandidate", j(no_candidate, 8).replace("\n", "\n      "))):
         block = block.replace("@@%s@@" % ph, val)
 
     m = re.search(r"\n  nz: \{", text)

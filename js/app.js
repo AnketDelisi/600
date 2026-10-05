@@ -1657,6 +1657,15 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
     out[p]={past, now};
     sum+=now;
   }
+  // Ridings where a party fields no candidate (partial slates: BC's Greens
+  // run 73/93, CentreBC 35, OneBC 33): pin its projected share to zero - the
+  // historical past stays for the result view, and the renormalization lets
+  // the actual candidates absorb the share.
+  if(conf.noCandidate&&conf.noCandidate[nr]){
+    for(const p of conf.noCandidate[nr]){
+      if(out[p]) out[p].now=0;
+    }
+  }
   // Incumbent boost (Poliwave): the party that won the seat last time gets a
   // small multiplicative lift for the sitting member's personal vote, or a
   // symmetric deboost when the sitting member is not on the ballot (retired

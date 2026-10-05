@@ -19545,6 +19545,18 @@ saxony_anhalt: {
     seatBased: false,             // polls report vote shares (%)
     constituencies: false,
     recencyHalfLifeDays: 14,
+    // trend extrapolation to the early election of 2026-11-29: same machinery
+    // as BC, but the 55-day horizon gets a tighter per-day cap (0.06pp/day ->
+    // 3.3pp maximum move) since momentum this far out is less trustworthy
+    trend: {
+      electionDate: '2026-11-29',
+      blend: 0.4,
+      maxDaily: 0.06,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+      dampDays: 10,
+    },
     parties: {
       pp:     { code: 'PP',      name: 'Partido Popular',                    name_en: 'People\'s Party',                      color: '#1D84CE' },
       psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#E30713' },

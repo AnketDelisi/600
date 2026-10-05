@@ -81,6 +81,41 @@ CYCLES = {
             "result": {"pp": 33.1, "psoe": 31.7, "vox": 12.4, "sumar": 12.3},
         },
     },
+    "bc": {
+        2020: {
+            "article": "2020_British_Columbia_general_election",
+            "election": "2020-10-24", "prev": "2017-05-09", "half_life": 14,
+            "cols": {"bcndp": r"^bc ndp|^ndp", "bclib": r"^bc liberal|^liberal",
+                     "gpbc": r"^bc green|^green"},
+            "result": {"bcndp": 47.70, "bclib": 33.77, "gpbc": 15.08},
+        },
+        2024: {
+            "article": "2024_British_Columbia_general_election",
+            "election": "2024-10-19", "prev": "2020-10-25", "half_life": 14,
+            "cols": {"bcndp": r"^bc ndp|^ndp",
+                     "cpbc": r"^bc conserv|^conserv",
+                     "gpbc": r"^bc green|^green"},
+            "result": {"bcndp": 44.86, "cpbc": 43.28, "gpbc": 8.24},
+        },
+    },
+    "serbia": {
+        2022: {
+            "article": "2022_Serbian_parliamentary_election",
+            "election": "2022-04-03", "prev": "2020-06-21", "half_life": 14,
+            "cols": {"sns": r"^sns", "uzps": r"^uzps|^united",
+                     "sps": r"^sps", "nada": r"^nada", "moramo": r"^moramo"},
+            "result": {"sns": 44.27, "uzps": 14.09, "sps": 11.79,
+                       "nada": 5.54, "moramo": 4.70},
+        },
+        2023: {
+            "article": "Opinion_polling_for_the_2023_Serbian_parliamentary_election",
+            "election": "2023-12-17", "prev": "2022-04-04", "half_life": 14,
+            "cols": {"sns": r"^sns", "spn": r"^spn", "sps": r"^sps",
+                     "nada": r"^nada", "migin": r"^mi|^gin"},
+            "result": {"sns": 46.72, "spn": 23.66, "sps": 6.73,
+                       "nada": 5.02, "migin": 4.70},
+        },
+    },
     "qc": {
         2018: {
             "article": "Opinion_polling_for_the_2018_Quebec_general_election",
@@ -170,8 +205,8 @@ def expand_grid(table):
                 img = c.find("img")
                 if img and img.get("alt"):
                     txt = " ".join(img.get("alt").split())
-            rs = int(c.get("rowspan", 1) or 1)
-            cs = int(c.get("colspan", 1) or 1)
+            rs = int(re.sub(r"[^\d]", "", str(c.get("rowspan", 1))) or 1)
+            cs = int(re.sub(r"[^\d]", "", str(c.get("colspan", 1))) or 1)
             for k in range(cs):
                 out.append(txt)
                 live[col + k] = [rs - 1, txt]

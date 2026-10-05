@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-05T05:34:35Z",
+  "generated": "2026-10-05T13:32:44Z",
   "environment": {
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,

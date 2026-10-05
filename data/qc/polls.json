@@ -2,8 +2,8 @@
   "country": "qc",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/2026_Quebec_general_election",
-  "scraped_at": "2026-10-05T05:33:48Z",
-  "poll_count": 100,
+  "scraped_at": "2026-10-05T13:31:48Z",
+  "poll_count": 101,
   "polls": [
     {
       "pollster": "Research Co.",
@@ -82,6 +82,22 @@
         "qs": 11.0,
         "pq": 29.0,
         "plq": 24.0,
+        "pcq": 20.0
+      }
+    },
+    {
+      "pollster": "Research Co.",
+      "fieldwork_start": "2026-10-03",
+      "date": "2026-10-03",
+      "n": 708,
+      "country": "qc",
+      "source": "Wikipedia (FR)",
+      "source_url": "https://fr.wikipedia.org/wiki/%C3%89lections_g%C3%A9n%C3%A9rales_qu%C3%A9b%C3%A9coises_de_2026",
+      "votes": {
+        "caq": 13.0,
+        "plq": 25.0,
+        "qs": 10.0,
+        "pq": 31.0,
         "pcq": 20.0
       }
     },

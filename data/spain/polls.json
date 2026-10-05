@@ -2,8 +2,8 @@
   "country": "spain",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
-  "scraped_at": "2026-10-05T05:33:44Z",
-  "poll_count": 549,
+  "scraped_at": "2026-10-05T13:31:43Z",
+  "poll_count": 550,
   "polls": [
     {
       "pollster": "EM-Analytics/Electomanía",
@@ -104,6 +104,22 @@
         "aa": 0.8,
         "podemos": 3.3,
         "ac": 1.0
+      }
+    },
+    {
+      "pollster": "40dB/Prisa",
+      "date": "2026-09-28",
+      "n": 2000,
+      "country": "spain",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+      "votes": {
+        "pp": 31.6,
+        "psoe": 27.4,
+        "vox": 18.4,
+        "sumar": 5.6,
+        "podemos": 2.7,
+        "salf": 2.0
       }
     },
     {

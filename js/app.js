@@ -3305,7 +3305,29 @@ function predictionSeats(votes){
     if(mutated) conf.noCandidate=saved;
   }
 }
-let YP_MAP_TIMER=null;
+let YP_MAP_TIMER=null, YP_MAP_LAYER=0;
+// render the active map layer for the entered shares, with zeroed parties
+// pinned out (the maps must agree with the seats)
+function ypRenderMap(votes){
+  const cc=COUNTRIES[COUNTRY]||{};
+  const box=document.getElementById('yp-map-box');
+  if(!box) return;
+  const layer=(YP_MAP_LAYER===1&&cc.map2&&cc.map2.svg)?1:0;
+  const base=layer===1?Object.assign({},cc,cc.map,cc.map2):cc.map;
+  if(!base||!base.svg) return;
+  const zeroed=PARTY_ORDER.filter(p=>!(votes[p]>0.01));
+  let conf=base;
+  if(base.districts&&zeroed.length){
+    const nc=Object.assign({},base.noCandidate);
+    for(const nr of Object.keys(base.districts)){
+      nc[nr]=(nc[nr]||[]).concat(zeroed);
+    }
+    conf=Object.assign({},base,{noCandidate:nc});
+  }
+  renderMapInto(box, votes, false, conf).then(()=>{
+    if(window.__ypFit) window.__ypFit();
+  });
+}
 function ypUpdate(){
   const box=document.getElementById('yp-result');
   if(!box) return;
@@ -3328,8 +3350,8 @@ function ypUpdate(){
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     const n=seats[p]||0;
     const logo=PARTY_LOGOS[p]
-      ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:16px;height:16px;object-fit:contain">`
-      :`<span style="font-weight:900;font-size:10px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
+      ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:13px;height:13px;object-fit:contain">`
+      :`<span style="font-weight:900;font-size:9px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
     rows+=`<div class="yp-res">
       <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="lbl" style="color:${col}">${partyCode(p)}</span>
@@ -3349,34 +3371,10 @@ function ypUpdate(){
   box.innerHTML=`${rows}${note}`;
   const pb=document.getElementById('yp-parl-box');
   if(pb) pb.innerHTML=buildParliamentSVG(seats);
-  // the map recolors every district path - the expensive part, so debounce it.
-  // Zeroed parties are pinned out here too (same augmented conf as the seat
-  // allocation), so the map agrees with the seats instead of keeping the
-  // zeroed party's baseline.
-  // the map recolors every district path - the expensive part, so debounce it.
-  // Both layers render (layer 0 = the displayed map, layer 1 = the country
-  // config merged with map2, e.g. Italy's collegi or Czechia's regions), each
-  // with the zeroed parties pinned out so the maps agree with the seats.
-  if(document.getElementById('yp-map-box')||document.getElementById('yp-map2-box')){
+  // the map recolors every district path - the expensive part, so debounce it
+  if(document.getElementById('yp-map-box')){
     clearTimeout(YP_MAP_TIMER);
-    YP_MAP_TIMER=setTimeout(()=>{
-      const cc=COUNTRIES[COUNTRY]||{};
-      const zeroed=PARTY_ORDER.filter(p=>!(votes[p]>0.01));
-      const augment=(conf)=>{
-        if(!conf||!conf.districts||!zeroed.length) return conf;
-        const nc=Object.assign({},conf.noCandidate);
-        for(const nr of Object.keys(conf.districts)){
-          nc[nr]=(nc[nr]||[]).concat(zeroed);
-        }
-        return Object.assign({},conf,{noCandidate:nc});
-      };
-      const done=[];
-      const b0=document.getElementById('yp-map-box');
-      if(b0&&cc.map&&cc.map.svg) done.push(renderMapInto(b0, votes, false, augment(cc.map)));
-      const b1=document.getElementById('yp-map2-box');
-      if(b1&&cc.map2&&cc.map2.svg) done.push(renderMapInto(b1, votes, false, augment(Object.assign({},cc,cc.map,cc.map2))));
-      Promise.all(done).then(()=>{ if(window.__ypFit) window.__ypFit(); });
-    }, 300);
+    YP_MAP_TIMER=setTimeout(()=>ypRenderMap(votes), 300);
   }
 }
 
@@ -3411,45 +3409,49 @@ function renderPrediction(pane){
     ypInputs+=`<div class="yp-row">
       <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="yp-code" style="color:${col}">${partyCode(p)}</span>
-      <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${ypDef(p).toFixed(1)}" oninput="ypUpdate()">
-      <span class="yp-suf">%</span>
+      <span class="yp-val"><input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${ypDef(p).toFixed(1)}" oninput="ypUpdate()"><span class="yp-suf">%</span></span>
     </div>`;
   });
   const hasMap=!!(c.map&&c.map.svg);
   const hasMap2=!!(c.map2&&c.map2.svg);
+  if(!hasMap2) YP_MAP_LAYER=0;
   const map2Label=(c.map2&&(c.map2.label||c.map2.name))||t('LAYER 2','KATMAN 2');
+  const map1Label=(c.map&&(c.map.label||c.map.name))||t('LAYER 1','KATMAN 1');
   pane.innerHTML=`<style>
-    #pane-prediction .yp-row{display:flex;align-items:center;gap:8px;margin:2px 0;padding:4px 6px;border-radius:6px}
+    #pane-prediction .yp-row{display:flex;align-items:center;gap:8px;height:34px;padding:0 8px;border-radius:6px}
     #pane-prediction .yp-row:hover{background:rgba(0,0,0,.035)}
     #pane-prediction .yp-logo{width:22px;height:22px;border-radius:6px;flex:0 0 22px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
     #pane-prediction .yp-logo img{width:16px;height:16px;object-fit:contain}
     #pane-prediction .yp-code{font-weight:800;font-size:11px;letter-spacing:.4px;min-width:58px}
-    #pane-prediction .yp-in{flex:1;min-width:0;padding:5px 8px;font-family:var(--font);font-weight:800;font-size:13px;text-align:right;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main);appearance:textfield;-moz-appearance:textfield}
+    #pane-prediction .yp-val{flex:1;display:flex;align-items:center;gap:4px;min-width:0}
+    #pane-prediction .yp-in{flex:1;min-width:0;height:26px;padding:0 8px;font-family:var(--font);font-weight:800;font-size:13px;text-align:right;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main);appearance:textfield;-moz-appearance:textfield;font-variant-numeric:tabular-nums}
     #pane-prediction .yp-in::-webkit-outer-spin-button,#pane-prediction .yp-in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
     #pane-prediction .yp-in:focus{outline:none;border-color:var(--c-accent);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
-    #pane-prediction .yp-suf{font-size:11px;color:var(--c-text-muted);font-weight:700;min-width:10px}
+    #pane-prediction .yp-suf{font-size:11px;color:var(--c-text-muted);font-weight:700;width:12px;text-align:right}
     #pane-prediction .yp-reset{font-family:var(--font);font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:8px 14px;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-hard);color:var(--c-text-main);cursor:pointer}
     #pane-prediction .yp-reset:hover{background:#F6F2E7;color:var(--c-accent);transform:translateY(-1px)}
-    #pane-prediction .yp-sum{font-size:12px;font-weight:900;color:var(--c-text-muted)}
-    #pane-prediction .yp-res{display:flex;align-items:center;gap:8px;margin:2px 0;padding:3px 6px;border-radius:6px}
+    #pane-prediction .yp-sum{font-size:12px;font-weight:900;color:var(--c-text-muted);font-variant-numeric:tabular-nums}
+    #pane-prediction .yp-res{display:flex;align-items:center;gap:8px;height:26px;padding:0 8px;border-radius:6px}
     #pane-prediction .yp-res:hover{background:rgba(0,0,0,.035)}
     #pane-prediction .yp-res .lbl{font-weight:800;font-size:11px;letter-spacing:.4px;min-width:56px}
     #pane-prediction .yp-res .track{flex:1;height:12px;background:var(--c-rule);border-radius:3px;overflow:hidden}
     #pane-prediction .yp-res .fill{height:100%;border-radius:3px}
-    #pane-prediction .yp-res .n{font-weight:900;font-size:13px;min-width:38px;text-align:right}
-    #pane-prediction .yp-res .v{font-size:11px;color:var(--c-text-muted);min-width:44px;text-align:right}
+    #pane-prediction .yp-res .n{font-weight:900;font-size:13px;min-width:38px;text-align:right;font-variant-numeric:tabular-nums}
+    #pane-prediction .yp-res .v{font-size:11px;color:var(--c-text-muted);min-width:46px;text-align:right;font-variant-numeric:tabular-nums}
     #pane-prediction .yp-res .yp-logo{width:18px;height:18px;flex:0 0 18px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
     #pane-prediction .yp-res .yp-logo img{width:13px;height:13px}
     #pane-prediction .yp-note{font-size:12px;margin-top:10px}
-    #pane-prediction #yp-map-box svg,#pane-prediction #yp-map2-box svg{max-height:62vh;width:auto;max-width:100%}
-    #pane-prediction .yp-cards{align-items:start}
+    #pane-prediction #yp-map-box svg{max-height:62vh;width:auto;max-width:100%}
+    #pane-prediction .yp-cards{align-items:stretch}
+    #pane-prediction .yp-cards>.card{display:flex;flex-direction:column}
+    #pane-prediction .yp-cards>.card .parliament-box{flex:1;min-height:0}
   </style>
   <div class="tab-pane-inner">
     <div class="page-top">
       <div class="card side-card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('YOUR VOTE SHARES','OY ORANLARINIZ')}</div></div>
         ${ypInputs}
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:2px solid var(--c-rule);flex-wrap:wrap">
           <button id="yp-reset" class="yp-reset">${t('RESET TO AVERAGE','ORTALAMAYA DÖN')}</button>
           <span id="yp-sum" class="yp-sum"></span>
         </div>
@@ -3460,7 +3462,7 @@ function renderPrediction(pane){
           <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included. A party at 0 is treated as not running.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil. 0 girilen parti yarışmıyor sayılır.')}</div>
         </div>
         <div class="card">
-          <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted)"></span></div>
+          <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted);font-variant-numeric:tabular-nums"></span></div>
           <div id="yp-result"></div>
         </div>
         <div class="yp-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
@@ -3469,12 +3471,13 @@ function renderPrediction(pane){
             <div class="parliament-box" id="yp-parl-box"></div>
           </div>
           ${hasMap?`<div class="card">
-            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}${hasMap2?' · '+(c.map.label||t('LAYER 1','KATMAN 1')):''}</div></div>
+            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}</div>
+              ${hasMap2?`<div class="map-toggle-row" style="margin:0 0 0 auto">
+                <button class="map-toggle-btn yp-layer-btn${YP_MAP_LAYER===0?' active':''}" data-layer="0">${map1Label}</button>
+                <button class="map-toggle-btn yp-layer-btn${YP_MAP_LAYER===1?' active':''}" data-layer="1">${map2Label}</button>
+              </div>`:''}
+            </div>
             <div class="parliament-box" id="yp-map-box"></div>
-          </div>`:''}
-          ${hasMap2?`<div class="card">
-            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')} · ${map2Label}</div></div>
-            <div class="parliament-box" id="yp-map2-box"></div>
           </div>`:''}
         </div>
       </div>
@@ -3500,6 +3503,18 @@ function renderPrediction(pane){
       ypUpdate();
     });
   }
+  pane.querySelectorAll('.yp-layer-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      YP_MAP_LAYER=parseInt(btn.dataset.layer,10)||0;
+      pane.querySelectorAll('.yp-layer-btn').forEach(b=>b.classList.toggle('active',b===btn));
+      const votes={};
+      document.querySelectorAll('.yp-in').forEach(el=>{
+        votes[el.dataset.p]=Math.max(0,Math.min(100,parseFloat(el.value)||0));
+      });
+      clearTimeout(YP_MAP_TIMER);
+      ypRenderMap(votes);
+    });
+  });
 }
 
 /* ---------- forecast tab ---------- */

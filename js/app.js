@@ -3457,29 +3457,25 @@ function renderPrediction(pane){
         </div>
       </div>
       <div class="page-top-main">
-        <div class="hero fc-hero">
-          <div class="hero-title">${t('YOUR PREDICTION','TAHMİNİNİZ')} — ${COUNTRY_NAME}</div>
-          <div class="hero-date">${t('Enter vote shares and see the parliament they produce, through the same model as the projection: thresholds, district allocations and FPTP ridings included. A party at 0 is treated as not running.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil. 0 girilen parti yarışmıyor sayılır.')}</div>
-        </div>
-        <div class="card">
-          <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted);font-variant-numeric:tabular-nums"></span></div>
-          <div id="yp-result"></div>
-        </div>
-        <div class="yp-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+        <div class="yp-cards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px">
+          <div class="card">
+            <div class="card-head"><div class="bar"></div><div class="t">${T.seats}</div><span id="yp-maj" style="margin-left:auto;font-size:11px;font-weight:900;color:var(--c-text-muted);font-variant-numeric:tabular-nums"></span></div>
+            <div id="yp-result"></div>
+          </div>
           <div class="card">
             <div class="card-head"><div class="bar"></div><div class="t">${t('PARLIAMENT','PARLAMENTO')}</div></div>
             <div class="parliament-box" id="yp-parl-box"></div>
           </div>
-          ${hasMap?`<div class="card">
-            <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}</div>
-              ${hasMap2?`<div class="map-toggle-row" style="margin:0 0 0 auto">
-                <button class="map-toggle-btn yp-layer-btn${YP_MAP_LAYER===0?' active':''}" data-layer="0">${map1Label}</button>
-                <button class="map-toggle-btn yp-layer-btn${YP_MAP_LAYER===1?' active':''}" data-layer="1">${map2Label}</button>
-              </div>`:''}
-            </div>
-            <div class="parliament-box" id="yp-map-box"></div>
-          </div>`:''}
         </div>
+        ${hasMap?`<div class="card">
+          <div class="card-head"><div class="bar"></div><div class="t">${t('MAP','HARİTA')}</div>
+            ${hasMap2?`<div class="map-toggle-row" style="margin:0 0 0 auto">
+              <button class="map-toggle-btn yp-layer-btn${YP_MAP_LAYER===0?' active':''}" data-layer="0">${map1Label}</button>
+              <button class="map-toggle-btn yp-layer-btn${YP_MAP_LAYER===1?' active':''}" data-layer="1">${map2Label}</button>
+            </div>`:''}
+          </div>
+          <div class="parliament-box" id="yp-map-box"></div>
+        </div>`:''}
       </div>
     </div>
   </div>`;

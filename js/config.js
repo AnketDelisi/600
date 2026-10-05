@@ -19647,10 +19647,10 @@ saxony_anhalt: {
               "bng": 0.62,
               "cc": 0.47,
               "upn": 0.21,
-              "aa": 0.0,
+              "aa": 0.83,
               "podemos": 0.0,
               "salf": 0.0,
-              "ac": 0.0
+              "ac": 0.58
       },
       seats: {
               "pp": 137,
@@ -19910,7 +19910,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -19981,7 +19981,7 @@ saxony_anhalt: {
                       "aa": 0.0,
                       "podemos": 0.0,
                       "salf": 0.0,
-                      "ac": 0.0
+                      "ac": 3.77
               },
               "galicia": {
                       "pp": 43.58,
@@ -20236,7 +20236,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20307,7 +20307,7 @@ saxony_anhalt: {
                       "aa": 0.0,
                       "podemos": 0.0,
                       "salf": 0.0,
-                      "ac": 0.0
+                      "ac": 3.77
               },
               "burgos": {
                       "pp": 40.64,
@@ -20355,7 +20355,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20406,7 +20406,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20460,7 +20460,7 @@ saxony_anhalt: {
                       "aa": 0.0,
                       "podemos": 0.0,
                       "salf": 0.0,
-                      "ac": 0.0
+                      "ac": 3.77
               },
               "granada": {
                       "pp": 36.99,
@@ -20474,7 +20474,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20525,7 +20525,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20559,7 +20559,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20596,7 +20596,7 @@ saxony_anhalt: {
                       "aa": 0.0,
                       "podemos": 0.0,
                       "salf": 0.0,
-                      "ac": 0.0
+                      "ac": 3.77
               },
               "rioja": {
                       "pp": 45.64,
@@ -20661,7 +20661,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20865,7 +20865,7 @@ saxony_anhalt: {
                       "bng": 0.0,
                       "cc": 0.0,
                       "upn": 0.0,
-                      "aa": 0.0,
+                      "aa": 4.58,
                       "podemos": 0.0,
                       "salf": 0.0,
                       "ac": 0.0
@@ -20902,7 +20902,7 @@ saxony_anhalt: {
                       "aa": 0.0,
                       "podemos": 0.0,
                       "salf": 0.0,
-                      "ac": 0.0
+                      "ac": 3.77
               },
               "teruel": {
                       "pp": 35.02,
@@ -21125,10 +21125,10 @@ saxony_anhalt: {
               "bng": 0.62,
               "cc": 0.47,
               "upn": 0.21,
-              "aa": 0.0,
+              "aa": 0.83,
               "podemos": 0.0,
               "salf": 0.0,
-              "ac": 0.0
+              "ac": 0.58
       },
       // provinces where a regional party is not on the ballot: its projected
       // share is pinned to zero there

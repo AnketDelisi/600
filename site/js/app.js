@@ -3344,6 +3344,50 @@ function firstRoundCard(sim){
   </div>`;
 }
 
+/* ---------- your prediction ---------- */
+// Seats from user-entered vote shares: the same dispatcher the projection
+// uses (overhang/leveling houses, district allocations, FPTP ridings,
+// thresholds, minority exemptions), so the result matches the model's own
+// deterministic path instead of a separate simplified calculator.
+function predictionSeats(votes){
+  if(SEAT_BASED) return seatParliament(votes, SEATS_TOTAL);
+  return allocateSeatsTotal(votes, SEATS_TOTAL);
+}
+function ypUpdate(){
+  const box=document.getElementById('yp-result');
+  if(!box) return;
+  const votes={}; let sum=0;
+  document.querySelectorAll('.yp-in').forEach(el=>{
+    const v=Math.max(0,Math.min(100,parseFloat(el.value)||0));
+    votes[el.dataset.p]=v; sum+=v;
+  });
+  const sumEl=document.getElementById('yp-sum');
+  if(sumEl) sumEl.textContent=t('total','toplam')+' '+fmt(sum,1)+'%';
+  const seats=predictionSeats(votes);
+  if(!seats||!Object.keys(seats).length){ box.innerHTML=''; return; }
+  const order=PARTY_ORDER.filter(p=>votes[p]!==undefined&&!(PARTY_META[p]&&PARTY_META[p].pastOnly));
+  let total=0; order.forEach(p=>{total+=seats[p]||0});
+  const MAJ=Math.floor(total/2)+1;
+  let rows='';
+  order.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0)).forEach(p=>{
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    rows+=`<div style="display:flex;align-items:center;gap:8px;margin:3px 0">
+      <span style="color:${col};font-weight:700;font-size:12px;min-width:52px">${partyCode(p)}</span>
+      <div style="flex:1;height:10px;background:var(--c-rule);border-radius:2px;overflow:hidden"><div style="height:100%;width:${total?((seats[p]||0)/total*100):0}%;background:${col}"></div></div>
+      <b style="font-size:12px;min-width:36px;text-align:right">${seats[p]||0}</b>
+    </div>`;
+  });
+  let note=`<div style="font-size:12px;margin-top:8px;color:var(--c-text-muted)">${t('Majority','Çoğunluk')}: ${MAJ}</div>`;
+  if(BLOCS&&BLOCS.bloc1&&BLOCS.bloc2){
+    const b1=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
+    const b2=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
+    const win=b1>=MAJ?BLOCS.bloc1.name:(b2>=MAJ?BLOCS.bloc2.name:null);
+    const label=win?`<b style="color:var(--c-accent)">${win} — ${t('majority','çoğunluk')}</b>`:t('No majority','Çoğunluk yok');
+    note=`<div style="font-size:12px;margin-top:8px">${label} · ${BLOCS.bloc1.name} ${b1} · ${BLOCS.bloc2.name} ${b2} · ${t('majority at','çoğunluk sınırı')} ${MAJ}</div>`;
+  }
+  box.innerHTML=`${rows}${note}<div class="parliament-box" style="margin-top:10px">${buildParliamentSVG(seats)}</div>`;
+}
+
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
   const fd=$('filter-days');
@@ -3647,6 +3691,16 @@ function renderForecast(pane){
   }
   const leadOutcome=leadCands[0].n, leadColor=leadCands[0].c, leadPct=leadCands[0].p*100;
 
+  // YOUR PREDICTION inputs: one per national party, defaulted to the average
+  const ypOrder=fOrder.filter(p=>p!=='ind');
+  let ypInputs='';
+  ypOrder.forEach(p=>{
+    const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    ypInputs+=`<label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700">
+      <span style="color:${col}">${partyCode(p)}</span>
+      <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${(avg[p]||0).toFixed(1)}" style="width:66px;padding:3px 6px" oninput="ypUpdate()">
+      <span style="color:var(--c-text-muted)">%</span></label>`;
+  });
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
@@ -3735,7 +3789,29 @@ function renderForecast(pane){
       ${seatRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
     </div>`}
+
+    ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('YOUR PREDICTION','TAHMİNİNİZ')}</div></div>
+      <div class="method-text" style="padding:14px 16px">
+        <p style="margin:0 0 10px">${t('Enter vote shares to see the parliament they produce — the same model as the projection: thresholds, district allocations and FPTP ridings included.','Oyları girin, aynı modelle oluşan parlamentoyu görün — barajlar, bölge dağıtımları ve FPTP bölgeleri dahil.')}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 16px;margin-bottom:10px">${ypInputs}</div>
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+          <button class="shot-btn" id="yp-reset">${t('Reset to average','Ortalamaya dön')}</button>
+          <span id="yp-sum" style="font-size:11px;color:var(--c-text-muted)"></span>
+        </div>
+        <div id="yp-result"></div>
+      </div>
+    </div>`}
   </div>`;
+  ypUpdate();
+  const ypReset=$('yp-reset');
+  if(ypReset){
+    ypReset.addEventListener('click',()=>{
+      document.querySelectorAll('.yp-in').forEach(el=>{
+        el.value=((avg&&avg[el.dataset.p])||0).toFixed(1);
+      });
+      ypUpdate();
+    });
+  }
   const fcParlShot=$('fc-parl-shot-btn');
   if(fcParlShot){
     fcParlShot.addEventListener('click',()=>{

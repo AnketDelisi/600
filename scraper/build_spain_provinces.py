@@ -35,6 +35,18 @@ ATTRIBUTION = ("Resultados: Ministerio del Interior (generales 2023, via "
 
 PARTIES = ["pp", "psoe", "vox", "sumar", "erc", "junts", "bildu", "pnv",
            "bng", "cc", "upn", "aa", "podemos", "salf", "ac"]
+# regional parties contest only their own community: their projected share is
+# pinned to zero elsewhere, so a national poll number doesn't spread them into
+# provinces where they are not on the ballot. The 2023 baselines agree - ERC
+# and Junts are nonzero only in Catalonia, Bildu in the Basque Country and
+# Navarra, PNV in the Basque Country, BNG in Galicia, CC in the Canaries, UPN
+# in Navarra; AA runs only in Andalusia, AC only in Catalonia.
+PARTY_REGIONS = {
+    "erc": ["cataluna"], "junts": ["cataluna"], "ac": ["cataluna"],
+    "bildu": ["pais_vasco", "navarra"], "pnv": ["pais_vasco"],
+    "upn": ["navarra"], "bng": ["galicia"], "cc": ["canarias"],
+    "aa": ["andalucia"],
+}
 # province code -> (key, geoBoundaries shapeName, display name)
 PROV = {
     "01": ("alava", "Alava", "Álava"),
@@ -209,6 +221,14 @@ def main():
         rc = prov_region.get(code)
         if rc and rc in REGION:
             region_of[key] = REGION[rc]
+    # regional parties absent outside their own community: pin their projected
+    # share to zero there (same noCandidate mechanism as the BC map)
+    no_candidate = {}
+    for key, reg in region_of.items():
+        miss = [p for p, regs in PARTY_REGIONS.items() if reg not in regs]
+        if miss:
+            no_candidate[key] = miss
+    print("provinces with a regional party absent:", len(no_candidate))
     region2023 = {}
     reg_acc, reg_val = {}, {}
     for code, (key, geob, disp) in PROV.items():
@@ -336,6 +356,9 @@ def main():
       names: @@names@@,
       // national baseline for the swing projection (= 2023 result)
       national2021: @@national@@,
+      // provinces where a regional party is not on the ballot: its projected
+      // share is pinned to zero there
+      noCandidate: @@noCandidate@@,
     },
     pollsterMAE: @@mae@@,
     maeKey: 'ES2023',
@@ -359,6 +382,7 @@ def main():
             ("region2023", j(region2023, 8).replace("\n", "\n      ")),
             ("gebiete", j(gebiete, 8).replace("\n", "\n      ")),
             ("names", j(names, 8).replace("\n", "\n      ")),
+            ("noCandidate", j(no_candidate, 8).replace("\n", "\n      ")),
             ("mae", "{}")):
         block = block.replace("@@%s@@" % ph, val)
 

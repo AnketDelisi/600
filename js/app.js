@@ -1804,8 +1804,12 @@ async function renderMap(avg){
 // shows the projected runoff winner per state instead of the first round.
 function runoffConf(){
   const c=MAP_CONF();
-  return (c&&c.runoff2022&&c.nationalRunoff)
-    ?{...c, gebiete:c.runoff2022, national2021:c.nationalRunoff} : null;
+  // the 2026 per-state round-1 results anchor the runoff map once
+  // scraper/build_brazil_round1.py has filled them in; until then the
+  // 2022 runoff baselines stand in
+  const st=(c&&(c.runoff2026||c.runoff2022))||null;
+  return (st&&c.nationalRunoff)
+    ?{...c, gebiete:st, national2021:c.nationalRunoff} : null;
 }
 
 function runoffMapAvg(avg, filtered, sim){
@@ -3183,7 +3187,16 @@ function runoffForecast(avg, filtered, sim){
   const wa=weightedAvgRunoff(roPolls,a), wb=weightedAvgRunoff(roPolls,b);
   if(wa===null||wb===null) return null;
   const tot=wa+wb;
-  const aN=100*wa/tot, bN=100*wb/tot;
+  let aN=100*wa/tot, bN=100*wb/tot;
+  // round 1 is over: the actual two-way vote anchors the projection
+  // (65% head-to-head polls, 35% the round-1 result - the same
+  // poll-weight philosophy as the main model)
+  const fr=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].firstRoundResult;
+  if(fr&&fr[a]!=null&&fr[b]!=null&&fr[a]+fr[b]>0){
+    const ft=fr[a]+fr[b];
+    aN=0.65*aN+0.35*(100*fr[a]/ft);
+    bN=0.65*bN+0.35*(100*fr[b]/ft);
+  }
   const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
   const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
   // Head-to-head shares are complementary (a + b = 100): the polling error

@@ -557,6 +557,20 @@ function trendExtrapolation(polls, party){
 // is subtracted, so only momentum relative to the field survives (a single
 // surviving trend is centered to zero - relative momentum without
 // counterparts is meaningless).
+// Imminent elections without an explicit trend block get a conservative
+// default (<=60 days out): momentum is never silently ignored, and the params
+// stay gentler than a hand-tuned block (blend 0.3, 0.08pp/day cap).
+function ensureTrendConf(){
+  if(TREND_CONF) return;
+  const d=META&&META.election_date?new Date(META.election_date).getTime():0;
+  if(!d) return;
+  const days=(d-Date.now())/(1000*60*60*24);
+  if(days>0&&days<=60){
+    TREND_CONF={electionDate:META.election_date, blend:0.3, maxDaily:0.08,
+                windowDays:60, fitDays:14, minPolls:3, dampDays:10};
+  }
+}
+
 function trendProjections(polls){
   if(!TREND_CONF) return null;
   const parts={}, moves=[];
@@ -596,7 +610,9 @@ function computeAverages(polls, raw){
     }
   }
   // linear-trend extrapolation toward the election date (moves constrained to
-  // sum to ~zero across the parties, see trendProjections)
+  // sum to ~zero across the parties, see trendProjections); imminent
+  // elections without a block get the default here
+  if(!raw) ensureTrendConf();
   if(!raw && TREND_CONF){
     const tp=trendProjections(polls);
     if(tp){
@@ -3239,6 +3255,11 @@ function runoffForecast(avg, filtered, sim){
   }
   const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
   const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
+  // horizon drift for the runoff date (the first-round date is past, so
+  // daysToElection() is 0 during the runoff campaign)
+  const dRo=META.election_date_runoff;
+  const hRo=dRo?Math.max(0,(new Date(dRo).getTime()-Date.now())/86400000):0;
+  const sigmaT=Math.sqrt(sigma*sigma+Math.pow(FORECAST_DRIFT*Math.sqrt(Math.min(120,hRo)),2));
   // Head-to-head shares are complementary (a + b = 100): the polling error
   // shifts both by the same amount in opposite directions, so the margin's
   // error is 2x the share error. Drawing independent errors per candidate
@@ -3247,7 +3268,7 @@ function runoffForecast(avg, filtered, sim){
   let winA=0;
   const valsA=[];
   for(let s=0;s<3000;s++){
-    const x=gaussianSample(rng)*sigma;
+    const x=gaussianSample(rng)*sigmaT;
     const va=aN+x;
     valsA.push(va);
     if(va > bN-x) winA++;

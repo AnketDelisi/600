@@ -3327,7 +3327,11 @@ function ypUpdate(){
   order.slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0)).forEach(p=>{
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     const n=seats[p]||0;
+    const logo=PARTY_LOGOS[p]
+      ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:16px;height:16px;object-fit:contain">`
+      :`<span style="font-weight:900;font-size:10px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
     rows+=`<div class="yp-res">
+      <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="lbl" style="color:${col}">${partyCode(p)}</span>
       <div class="track"><div class="fill" style="width:${total?(n/total*100):0}%;background:${col}"></div></div>
       <span class="n">${n}</span>
@@ -3345,13 +3349,27 @@ function ypUpdate(){
   box.innerHTML=`${rows}${note}`;
   const pb=document.getElementById('yp-parl-box');
   if(pb) pb.innerHTML=buildParliamentSVG(seats);
-  // the map recolors every district path - the expensive part, so debounce it
+  // the map recolors every district path - the expensive part, so debounce it.
+  // Zeroed parties are pinned out here too (same augmented conf as the seat
+  // allocation), so the map agrees with the seats instead of keeping the
+  // zeroed party's baseline.
   const mb=document.getElementById('yp-map-box');
   if(mb){
     clearTimeout(YP_MAP_TIMER);
     YP_MAP_TIMER=setTimeout(()=>{
       const cur=document.getElementById('yp-map-box');
-      if(cur) renderMapInto(cur, votes, false);
+      if(!cur) return;
+      const conf=MAP_CONF();
+      let confO;
+      const zeroed=PARTY_ORDER.filter(p=>!(votes[p]>0.01));
+      if(conf&&conf.districts&&zeroed.length){
+        const nc=Object.assign({},conf.noCandidate);
+        for(const nr of Object.keys(conf.districts)){
+          nc[nr]=(nc[nr]||[]).concat(zeroed);
+        }
+        confO=Object.assign({},conf,{noCandidate:nc});
+      }
+      renderMapInto(cur, votes, false, confO);
     }, 300);
   }
 }
@@ -3380,8 +3398,11 @@ function renderPrediction(pane){
   let ypInputs='';
   ypOrder.forEach(p=>{
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const logo=PARTY_LOGOS[p]
+      ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:16px;height:16px;object-fit:contain">`
+      :`<span style="font-weight:900;font-size:10px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
     ypInputs+=`<div class="yp-row">
-      <span class="yp-dot" style="background:${col}"></span>
+      <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="yp-code" style="color:${col}">${partyCode(p)}</span>
       <input class="yp-in" data-p="${p}" type="number" min="0" max="100" step="0.1" value="${ypDef(p).toFixed(1)}" oninput="ypUpdate()">
       <span class="yp-suf">%</span>
@@ -3391,6 +3412,10 @@ function renderPrediction(pane){
   pane.innerHTML=`<style>
     #pane-prediction .yp-row{display:flex;align-items:center;gap:8px;margin:7px 0}
     #pane-prediction .yp-dot{width:10px;height:10px;border-radius:50%;flex:0 0 10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+    #pane-prediction .yp-logo{width:22px;height:22px;border-radius:6px;flex:0 0 22px;display:inline-flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+    #pane-prediction .yp-logo img{width:16px;height:16px;object-fit:contain}
+    #pane-prediction .yp-res .yp-logo{width:18px;height:18px;flex:0 0 18px;border-radius:5px}
+    #pane-prediction .yp-res .yp-logo img{width:13px;height:13px}
     #pane-prediction .yp-code{font-weight:800;font-size:11px;letter-spacing:.4px;min-width:56px}
     #pane-prediction .yp-in{flex:1;min-width:0;padding:6px 8px;font-family:var(--font);font-weight:700;font-size:13px;text-align:right;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main);appearance:textfield;-moz-appearance:textfield}
     #pane-prediction .yp-in::-webkit-outer-spin-button,#pane-prediction .yp-in::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}

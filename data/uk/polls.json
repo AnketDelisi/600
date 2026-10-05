@@ -2,8 +2,8 @@
   "country": "uk",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
-  "scraped_at": "2026-10-05T05:33:49Z",
-  "poll_count": 575,
+  "scraped_at": "2026-10-05T13:31:49Z",
+  "poll_count": 576,
   "polls": [
     {
       "pollster": "Opinium",
@@ -96,6 +96,24 @@
         "snp": 2.0,
         "plc": 1.0,
         "res": 3.0
+      }
+    },
+    {
+      "pollster": "Lord Ashcroft Polls",
+      "fieldwork_start": "2026-09-28",
+      "date": "2026-09-28",
+      "n": 5039,
+      "country": "uk",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+      "votes": {
+        "lab": 28.0,
+        "con": 22.0,
+        "ref": 19.0,
+        "lib": 9.0,
+        "grn": 14.0,
+        "snp": 3.0,
+        "plc": 1.0
       }
     },
     {

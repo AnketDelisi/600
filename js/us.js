@@ -16,9 +16,9 @@ function dataBase() {
   return "../";
 }
 const US_BASE = dataBase();
-const US_DATA = US_BASE + "data/us/forecast.json?v=20261004n";
-const US_GEO = US_BASE + "data/us/geo.json?v=20261004n";
-const US_POLLS = US_BASE + "data/us/polling.json?v=20261004n";
+const US_DATA = US_BASE + "data/us/forecast.json?v=20261004o";
+const US_GEO = US_BASE + "data/us/geo.json?v=20261004o";
+const US_POLLS = US_BASE + "data/us/polling.json?v=20261004o";
 const US_LABELS = {
   senate: "Senate",
   house: "House",
@@ -164,6 +164,8 @@ function controlCard(chamberData) {
   if (d === null) return "";
   const r = maj.rep_pct;
   const iSeats = chamberData.expected_i_seats || 0;
+  const nz = state.forecast && state.forecast.nowcast
+    ? state.forecast.nowcast[state.chamber] : null;
   return `<div class="ctl">
     <div class="cell d"><div class="big">${fmt(d)}<span style="font-size:20px">%</span></div>
       <div class="lbl">Democrats win ${US_LABELS[state.chamber]}</div></div>
@@ -173,6 +175,7 @@ function controlCard(chamberData) {
   <p class="line" style="margin-top:14px;color:var(--c-text-muted);font-size:13px">
     Expected seats — Democrats <b>${fmt(chamberData.expected_d_seats)}</b>${iSeats > 0.05 ? ` (incl. Independents <b style="color:${C_I}">${fmt(iSeats)}</b>)` : ""}, Republicans <b>${fmt(chamberData.expected_r_seats)}</b>.
     ${state.chamber === "senate" ? "51 seats are needed for a Democratic majority — a 50–50 split leaves control in Republican hands via the Vice President's tie-breaking vote." : "218 seats are needed for a majority."}${iSeats > 0.05 ? " Independent wins are counted with the Democratic caucus, as the Senate independents caucus with them." : ""}
+    ${nz ? ` <b>Nowcast</b> (the same model with district polls only, no fundamentals blend): Democrats <b>${fmt(nz.expected_d_seats)}</b>, Republicans <b>${fmt(nz.expected_r_seats)}</b>${(nz.expected_i_seats || 0) > 0.05 ? ` (incl. ${fmt(nz.expected_i_seats)} I)` : ""} — majority chance <b>${fmt(nz.majority.dem_pct)}%</b> D.` : ""}
   </p>`;
 }
 

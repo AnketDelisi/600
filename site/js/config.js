@@ -21130,6 +21130,548 @@ saxony_anhalt: {
               "salf": 0.0,
               "ac": 0.0
       },
+      // provinces where a regional party is not on the ballot: its projected
+      // share is pinned to zero there
+      noCandidate: {
+              "alava": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "albacete": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "alicante": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "almeria": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "avila": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "badajoz": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "balears": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "barcelona": [
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "burgos": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "caceres": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "cadiz": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "castellon": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "ciudad_real": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "cordoba": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "coruna": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "cc",
+                      "aa"
+              ],
+              "cuenca": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "girona": [
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "granada": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "guadalajara": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "gipuzkoa": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "huelva": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "huesca": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "jaen": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "leon": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "lleida": [
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "rioja": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "lugo": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "cc",
+                      "aa"
+              ],
+              "madrid": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "malaga": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "murcia": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "navarra": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "pnv",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "ourense": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "cc",
+                      "aa"
+              ],
+              "asturias": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "palencia": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "palmas": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "aa"
+              ],
+              "pontevedra": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "cc",
+                      "aa"
+              ],
+              "salamanca": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "tenerife": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "aa"
+              ],
+              "cantabria": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "segovia": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "sevilla": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc"
+              ],
+              "soria": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "tarragona": [
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "teruel": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "toledo": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "valencia": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "valladolid": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "bizkaia": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "zamora": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "zaragoza": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "ceuta": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ],
+              "melilla": [
+                      "erc",
+                      "junts",
+                      "ac",
+                      "bildu",
+                      "pnv",
+                      "upn",
+                      "bng",
+                      "cc",
+                      "aa"
+              ]
+      },
     },
     pollsterMAE: {},
     maeKey: 'ES2023',

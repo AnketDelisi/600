@@ -3465,7 +3465,9 @@ function renderPrediction(pane){
   }
   const c=COUNTRIES[COUNTRY]||{};
   const fOrder=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
-  const ypOrder=fOrder.filter(p=>p!=='ind');
+  // unallocated options (Bulgaria's NOTA) read like the Other bucket:
+  // they are polled and displayed, but never an editable prediction input
+  const ypOrder=fOrder.filter(p=>p!=='ind'&&!(PARTY_META[p]&&PARTY_META[p].unallocated));
   // default: the poll average, else the last national share (the same
   // convention the model uses for unpolled parties - so an unpolled party
   // starts at its baseline and only reads 0 when the user really means it)
@@ -4703,7 +4705,7 @@ function renderMethodology(pane){
   const unit=SEAT_BASED?'seats':'%';
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="card">
-      <div class="card-head"><div class="bar"></div><div class="t">${T.methodology}</div></div>
+      <div class="card-head"><div class="bar"></div><div class="t">${T.tabs.methodology}</div></div>
       <div class="method-text">
         <h3>${t('Data Sources','Veri Kaynakları')}</h3>
         <p>Polls are collected from the following sources:</p>

@@ -143,7 +143,7 @@ function methodSentence(){
   const conf=MAP_CONF()||{};
   if(conf.mixedFptp||((COUNTRIES[COUNTRY]||{}).mixedFptp)){
     const nf=Object.values(conf.fptpSeats||{}).reduce((a,b)=>a+b,0);
-    return `the <strong>Rosatellum</strong> mixed system: ${nf} seats by <strong>first-past-the-post</strong> in single-member districts (the winning coalition takes the region's districts) plus ${SEATS_TOTAL-nf} seats from a <strong>national proportional pool</strong> (D'Hondt, 3% threshold)`;
+    return `the <strong>Rosatellum</strong> mixed system: ${nf} seats by <strong>first-past-the-post</strong> in single-member districts (each college goes to the coalition leading there) plus ${SEATS_TOTAL-nf} seats from a <strong>national proportional pool</strong> (D'Hondt, 3% threshold)`;
   }
   const nD=conf.seatDistricts?Object.keys(conf.seatDistricts).length:0;
   let s;
@@ -2639,50 +2639,63 @@ function allocateSeatsCzechia(avg){
   return out;
 }
 
-// Italy (Rosatellum): 147 FPTP districts (the winning coalition takes each
-// region's districts, attributed to the coalition's leading list in that
-// region) + a 253-seat national PR pool (D'Hondt, 3% threshold). A region
-// won by an unmodelled regionalist list (Valle d'Aosta) keeps its seat out
-// of the modelled parties.
+// Rosatellum mixed system: 147 FPTP colleges + a national PR pool. Each
+// college is projected from its own 2022 list-vote baseline (swung to the
+// current national average) and goes to the coalition leading there - the
+// real geography, not a regional sweep (the sweep mis-attributed whole
+// regions: on the 2022 data it inverted CDX 121 / CSX 12 into 72 / 75).
+// A coalition's colleges are then split among its parties in proportion to
+// their contribution in the colleges it won (the intra-coalition candidate
+// deals are political; the proportional split is the transparent default).
+// Unaligned winners keep their college (SVP's two Bolzano colleges).
 function allocateSeatsItaly(avg){
   // the region map, not the displayed layer: with the collegio layer active
   // MAP_CONF() would merge map2's useConstituencies and districtShares(region)
   // would look up a collegio that does not exist, silently dropping all 147
   // FPTP seats (FdI 109 -> 119 when loading ?l=2)
-  const conf=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map)||null;
-  if(!conf||!conf.fptpSeats) return null;
+  const c=COUNTRIES[COUNTRY]||{};
+  const conf=c.map, m2=c.map2;
+  if(!conf||!conf.fptpSeats||!m2||!m2.districts) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   const blocOf={};
   for(const bk of ['bloc1','bloc2']){
     const b=BLOCS[bk]; if(!b) continue;
     (b.parties||[]).forEach(p=>{blocOf[p]=bk});
   }
-  let fptpTotal=0;
-  for(const region of Object.keys(conf.fptpSeats)){
-    const n=conf.fptpSeats[region]||0;
-    if(!n) continue;
-    const shares=districtShares(region,avg,false,conf);
+  const cconf=Object.assign({},conf,{useConstituencies:true});
+  const wonBy={};
+  for(const id of Object.keys(m2.districts)){
+    const shares=districtShares(id,avg,false,cconf);
     if(!shares) continue;
     const ent={};
     for(const p of PARTY_ORDER){
       const k=blocOf[p]||p;
       ent[k]=(ent[k]||0)+(shares[p]?shares[p].now:0);
     }
-    if(shares.other) ent.other=(ent.other||0)+shares.other.now;
     let best=null,bestV=-1;
     for(const k of Object.keys(ent)){if(ent[k]>bestV){bestV=ent[k];best=k}}
-    if(!best||best==='other') continue;
-    const pool=BLOCS[best]?BLOCS[best].parties:[best];
-    let poolSum=0;
-    for(const p of pool) poolSum+=(shares[p]?shares[p].now:0);
-    if(poolSum<=0) continue;
-    const q=pool.map(p=>({p,exact:n*(shares[p]?shares[p].now:0)/poolSum}));
+    if(!best||ent[best]<=0) continue;
+    (wonBy[best]=wonBy[best]||[]).push(shares);
+  }
+  for(const key of Object.keys(wonBy)){
+    const won=wonBy[key];
+    if(!BLOCS[key]){ out[key]+=won.length; continue; }
+    const agg={}; let tot=0;
+    for(const sh of won){
+      for(const p of BLOCS[key].parties){
+        const v=sh[p]?sh[p].now:0;
+        agg[p]=(agg[p]||0)+v; tot+=v;
+      }
+    }
+    if(tot<=0) continue;
+    const q=BLOCS[key].parties.map(p=>({p,exact:won.length*(agg[p]||0)/tot}));
     q.forEach(x=>{x.seat=Math.floor(x.exact)});
     let given=q.reduce((a,x)=>a+x.seat,0);
     q.sort((a,b)=>(b.exact-Math.floor(b.exact))-(a.exact-Math.floor(a.exact)));
-    for(let i=0;given<n;i++,given++) q[i%q.length].seat++;
-    q.forEach(x=>{if(x.seat){out[x.p]+=x.seat;fptpTotal+=x.seat}});
+    for(let i=0;given<won.length;i++,given++) q[i%q.length].seat++;
+    q.forEach(x=>{out[x.p]+=x.seat});
   }
+  const fptpTotal=PARTY_ORDER.reduce((a,p)=>a+out[p],0);
   const prSeats=allocateSeatsN(avg,Math.max(0,SEATS_TOTAL-fptpTotal));
   for(const p of PARTY_ORDER) out[p]+=(prSeats[p]||0);
   return out;
@@ -4741,7 +4754,7 @@ function renderMethodology(pane){
         <p>${COUNTRY_NAME} elects its president in a two-round system: a candidate wins outright with a <strong>majority of valid votes</strong> on ${TREND_CONF?TREND_CONF.electionDate:'election day'}; otherwise the top two candidates face a runoff two weeks later. The map shows the <strong>${SEATS_TOTAL} ${unitLabel()}</strong> colored by projected winner from the poll average.</p>`:`
         <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
         <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES&&CONSTITUENCIES&&CONSTITUENCIES.constituencies?` — ${CONSTITUENCIES.constituency_seats} ${CONSTITUENCY_RULE==='fptp'?'direct mandates (first-past-the-post)':`constituency seats across ${CONSTITUENCIES.constituencies.length} constituencies`}${CONSTITUENCIES.leveling_seats?` plus ${CONSTITUENCIES.leveling_seats} leveling seats`:''}`:''} via ${methodSentence()}${THRESHOLD>0?`, with a <strong>${THRESHOLD}% electoral threshold</strong>`:''}.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
-        <p>${(MAP_CONF()&&MAP_CONF().fptpSeats)?`The projection runs in two parts: the <strong>${Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} single-member districts</strong> go to the winning coalition in each region (its seats split among the coalition's parties by regional support), and the remaining <strong>${SEATS_TOTAL-Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} seats</strong> come from a national proportional pool allocated by D'Hondt among parties above the threshold. The map colors each region by its leading party.`:`The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.`}</p>`}
+        <p>${(MAP_CONF()&&MAP_CONF().fptpSeats)?`The projection runs in two parts: the <strong>${Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} single-member colleges</strong> are projected one by one (each college's 2022 result swung to the current poll average) and go to the coalition leading there - a coalition's colleges are then split among its parties by their contribution in the colleges it won - and the remaining <strong>${SEATS_TOTAL-Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} seats</strong> come from a national proportional pool allocated by D'Hondt among parties above the threshold. The map colors each region by its leading party.`:`The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.`}</p>`}
 
         ${HIDE_BLOCS?'':`<h3>${t('Bloc Totals','Blok Toplamları')}</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>`}

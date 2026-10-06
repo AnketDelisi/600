@@ -318,19 +318,19 @@ def main():
     election_date: '2026-10-25',
     election_date_runoff: '2026-11-01',
     parties: {{
-      iotova:     {{ code: 'IOTOVA', name: 'Iliana Iotova', name_en: 'Iliana Iotova', color: '#034A3F' }},
+      iotova:     {{ code: 'IOTOVA', name: 'Iliana Iotova', name_en: 'Iliana Iotova', color: '#DB0F28' }},
       gyurov:     {{ code: 'GYUROV', name: 'Andrey Gyurov', name_en: 'Andrey Gyurov', color: '#4200FF' }},
       kostadinov: {{ code: 'KOST.', name: 'Kostadin Kostadinov', name_en: 'Kostadin Kostadinov', color: '#C09F62' }},
       vasilev:    {{ code: 'VASILEV', name: 'Radostin Vasilev', name_en: 'Radostin Vasilev', color: '#1A2C44' }},
       mihaylov:   {{ code: 'MIHAYLOV', name: 'Ivelin Mihaylov', name_en: 'Ivelin Mihaylov', color: '#AC2225' }},
-      hristanov:  {{ code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#D6C3A1' }},
+      hristanov:  {{ code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#c0cc66' }},
       radev:      {{ code: 'RADEV', name: 'Rumen Radev', name_en: 'Rumen Radev', color: '#0E7C6B', pastOnly: true }},
       gerdzhikov: {{ code: 'GERDZH.', name: 'Anastas Gerdzhikov', name_en: 'Anastas Gerdzhikov', color: '#7B93C9', pastOnly: true }},
     }},
     order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov'],
     parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
     blocs: {{
-      bloc1: {{ name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#034A3F' }},
+      bloc1: {{ name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#DB0F28' }},
       bloc2: {{ name: 'Gyurov', short: 'GYU', parties: ['gyurov'], color: '#4200FF' }},
     }},
     lastElection: {{

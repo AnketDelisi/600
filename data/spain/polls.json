@@ -2,8 +2,8 @@
   "country": "spain",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
-  "scraped_at": "2026-10-05T13:31:43Z",
-  "poll_count": 550,
+  "scraped_at": "2026-10-06T12:41:41Z",
+  "poll_count": 551,
   "polls": [
     {
       "pollster": "EM-Analytics/Electomanía",
@@ -53,7 +53,31 @@
       }
     },
     {
-      "pollster": "Winston/Artículo 14",
+      "pollster": "Data10/Okdiario",
+      "date": "2026-10-02",
+      "n": 1000,
+      "country": "spain",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+      "votes": {
+        "pp": 34.0,
+        "psoe": 26.1,
+        "vox": 18.6,
+        "sumar": 5.2,
+        "erc": 1.9,
+        "junts": 1.5,
+        "bildu": 1.4,
+        "pnv": 0.8,
+        "bng": 1.0,
+        "cc": 0.3,
+        "upn": 0.2,
+        "aa": 0.5,
+        "podemos": 4.3,
+        "salf": 1.4
+      }
+    },
+    {
+      "pollster": "Winston/Artículo14",
       "date": "2026-10-01",
       "n": 1201,
       "country": "spain",

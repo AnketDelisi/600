@@ -2667,7 +2667,28 @@ function allocateSeatsTotal(avg, total){
   // through the growing-house allocator; the direct mandates are counted from
   // the map's districts
   if(OVERHANG) return overhangSeats(avg, total, directFromProjection(avg), OVERHANG.cap);
+  if(MAP_CONF()&&MAP_CONF().winnerDistricts) return allocateSeatsWinnerDistricts(avg, total);
   return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,total);
+}
+
+// Mixed systems where the strongest party in a district takes all of its
+// single-member seats (Hungary's counties): the winner's mandates come from
+// the district magnitudes, the remaining seats are a national PR with the
+// threshold (the Hungarian 93 list seats).
+function allocateSeatsWinnerDistricts(avg, total){
+  const conf=MAP_CONF();
+  if(!conf||!conf.winnerDistricts) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  let direct=0;
+  for(const nr of Object.keys(conf.winnerDistricts)){
+    const n=conf.winnerDistricts[nr];
+    const w=districtWinnerProjection(nr,avg,conf);
+    if(w){ out[w]=(out[w]||0)+n; direct+=n; }
+  }
+  const totalSeats=total||SEATS_TOTAL;
+  const pr=allocateSeatsN(avg, Math.max(0,totalSeats-direct));
+  for(const p of PARTY_ORDER) out[p]+=(pr[p]||0);
+  return out;
 }
 
 function buildParliamentSVG(seats){
@@ -3077,7 +3098,7 @@ function runForecast(avg, nSims, nPolls){
         }
       }
     }
-    const seats=(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise,districtNoise):allocateSeatsFast(simVotes,SEATS_TOTAL));
+    const seats=(mconf&&mconf.winnerDistricts)?allocateSeatsWinnerDistricts(simVotes,SEATS_TOTAL):(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise,districtNoise):allocateSeatsFast(simVotes,SEATS_TOTAL));
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);

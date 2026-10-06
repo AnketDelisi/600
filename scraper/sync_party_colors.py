@@ -30,8 +30,27 @@ COUNTRY_NAMES = {
     "estonia": "Estonia", "slovakia": "Slovakia", "france": "France",
     "greece": "Greece",
     "italy": "Italy",
+    "pt": "Portugal",
+    "hu": "Hungary",
 }
 ALIASES = {
+    # Portugal
+    "Aliança Democrática": "Democratic Alliance (Portugal, 2024)",
+    "Democratic Alliance": "Democratic Alliance (Portugal, 2024)",
+    "Socialist Party": "Socialist Party (Portugal)",
+    "Chega": "Chega (political party)",
+    "LIVRE": "Livre (Portugal)",
+    "Unitary Democratic Coalition": "Unitary Democratic Coalition",
+    "Left Bloc": "Left Bloc (Portugal)",
+    "People–Animals–Nature": "People Animals Nature",
+    "Juntos Pelo Povo": "Juntos Pelo Povo",
+    # Hungary
+    "Tisza Párt": "Tisza Party",
+    "Tisza Party": "Tisza Party",
+    "Fidesz–KDNP": "Fidesz–KDNP",
+    "Our Homeland Movement": "Our Homeland Movement",
+    "Democratic Coalition": "Democratic Coalition (Hungary)",
+    "Hungarian Two-Tailed Dog Party": "Hungarian Two-Tailed Dog Party",
     # Sweden
     "Social Democrats": "Swedish Social Democratic Party",
     "Moderates": "Moderate Party",

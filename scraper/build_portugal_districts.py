@@ -27,6 +27,16 @@ sys.path.insert(0, os.path.dirname(__file__))
 import build_map_svg as bm
 from scrape_spain import expand_grid
 
+
+def shift_coords(c, dlon, dlat):
+    if isinstance(c[0], (int, float)):
+        return [c[0] + dlon, c[1] + dlat]
+    return [shift_coords(x, dlon, dlat) for x in c]
+
+# Azores and Madeira are shifted towards the mainland (standard cartographic
+# inset practice) so the map does not waste space on the Atlantic gap
+ISLAND_SHIFT = {"azores": (15.4, -0.6), "madeira": (6.4, 3.6)}
+
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "portugal.svg")
@@ -175,6 +185,25 @@ def main():
     assert len(set(names.values())) == 20, \
         f"expected 20 districts, got {len(set(names.values()))}"
 
+    # shift the island groups towards the mainland and write the processed
+    # geojson for the SVG builder
+    feats = []
+    for f in geo["features"]:
+        key = names.get(f["properties"].get("shapeName", ""))
+        geom = f["geometry"]
+        if key in ISLAND_SHIFT:
+            dlon, dlat = ISLAND_SHIFT[key]
+            geom = {"type": geom["type"],
+                    "coordinates": shift_coords(geom["coordinates"],
+                                                dlon, dlat)}
+        feats.append({"type": "Feature",
+                      "properties": f["properties"],
+                      "geometry": geom})
+    shifted_path = os.path.join(CACHE, "pt_shifted.geojson")
+    with open(shifted_path, "w", encoding="utf8") as fh:
+        json.dump({"type": "FeatureCollection", "features": feats}, fh)
+    GEOJSON_SHIFTED = shifted_path
+
     dists = parse_2025(fetch(ARTICLE, "pt_2025_article.html", force))
     print("districts with 2025 results:", len(dists),
           "| missing:", sorted(set(names.values()) - set(dists)))
@@ -198,7 +227,7 @@ def main():
     name_map_path = os.path.join(CACHE, "pt_name_map.json")
     with open(name_map_path, "w", encoding="utf8") as fh:
         json.dump(names, fh, ensure_ascii=False)
-    sys.argv = ["build_map_svg.py", "--geojson", GEOJSON,
+    sys.argv = ["build_map_svg.py", "--geojson", GEOJSON_SHIFTED,
                 "--name-field", "shapeName", "--fold", "--attr", "id",
                 "--no-prefix", "--out", OUT_SVG, "--attribution", ATTRIBUTION,
                 "--name-map", name_map_path]
@@ -219,21 +248,21 @@ def main():
     constituencies: false,
     recencyHalfLifeDays: 14,
     parties: {{
-      ad:    {{ code: 'AD',    name: 'Aliança Democrática', name_en: 'Democratic Alliance', color: '#FF9900' }},
-      ps:    {{ code: 'PS',    name: 'Partido Socialista', name_en: 'Socialist Party', color: '#E63946' }},
-      ch:    {{ code: 'CH',    name: 'Chega', name_en: 'Chega', color: '#1F2A44' }},
-      il:    {{ code: 'IL',    name: 'Iniciativa Liberal', name_en: 'Liberal Initiative', color: '#00AEEF' }},
-      livre: {{ code: 'L',     name: 'LIVRE', name_en: 'LIVRE', color: '#00A550' }},
-      cdu:   {{ code: 'CDU',   name: 'CDU (PCP-PEV)', name_en: 'Unitary Democratic Coalition', color: '#DA291C' }},
-      be:    {{ code: 'BE',    name: 'Bloco de Esquerda', name_en: 'Left Bloc', color: '#DC3220' }},
-      pan:   {{ code: 'PAN',   name: 'Pessoas–Animais–Natureza', name_en: 'People–Animals–Nature', color: '#007A7C' }},
-      jpp:   {{ code: 'JPP',   name: 'Juntos Pelo Povo', name_en: 'Together for the People', color: '#E5A11F' }},
+      ad:    {{ code: 'AD',    name: 'Aliança Democrática', name_en: 'Democratic Alliance', color: '#3777BC' }},
+      ps:    {{ code: 'PS',    name: 'Partido Socialista', name_en: 'Socialist Party (Portugal)', color: '#FF66FF' }},
+      ch:    {{ code: 'CH',    name: 'Chega', name_en: 'Chega', color: '#222256' }},
+      il:    {{ code: 'IL',    name: 'Iniciativa Liberal', name_en: 'Liberal Initiative', color: '#00ADEF' }},
+      livre: {{ code: 'L',     name: 'LIVRE', name_en: 'LIVRE', color: '#C2D216' }},
+      cdu:   {{ code: 'CDU',   name: 'CDU (PCP-PEV)', name_en: 'Unitary Democratic Coalition', color: '#FF0000' }},
+      be:    {{ code: 'BE',    name: 'Bloco de Esquerda', name_en: 'Left Bloc', color: '#8B0000' }},
+      pan:   {{ code: 'PAN',   name: 'Pessoas–Animais–Natureza', name_en: 'People Animals Nature', color: '#008080' }},
+      jpp:   {{ code: 'JPP',   name: 'Juntos Pelo Povo', name_en: 'Together for the People', color: '#00A28B' }},
     }},
     order: ['ad', 'ps', 'ch', 'il', 'livre', 'cdu', 'be', 'pan', 'jpp'],
     parlOrder: ['cdu', 'be', 'livre', 'pan', 'jpp', 'ps', 'ad', 'il', 'ch'],
     blocs: {{
-      bloc1: {{ name: 'Government', short: 'GOV', parties: ['ad', 'il'], color: '#FF9900' }},
-      bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['ps', 'ch', 'livre', 'cdu', 'be', 'pan', 'jpp'], color: '#E63946' }},
+      bloc1: {{ name: 'Government', short: 'GOV', parties: ['ad'], color: '#3777BC' }},
+      bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['ps', 'ch', 'il', 'livre', 'cdu', 'be', 'pan', 'jpp'], color: '#E63946' }},
     }},
     lastElection: {{
       date: '2025-05-18',

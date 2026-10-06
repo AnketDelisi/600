@@ -1,0 +1,521 @@
+{
+ "country": "pt",
+ "total_seats": 230,
+ "districts": {
+  "azores": {
+   "shares": {
+    "ad": 36.6,
+    "ch": 22.9,
+    "ps": 23.6,
+    "il": 3.5,
+    "livre": 2.5,
+    "cdu": 1.2,
+    "be": 2.1,
+    "pan": 1.3,
+    "jpp": 0.3
+   },
+   "seats": {
+    "ad": 3,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "aveiro": {
+   "shares": {
+    "ad": 39.5,
+    "ch": 20.7,
+    "ps": 21.7,
+    "il": 5.7,
+    "livre": 3.1,
+    "cdu": 1.2,
+    "be": 1.7,
+    "pan": 1.2
+   },
+   "seats": {
+    "ad": 7,
+    "ch": 4,
+    "ps": 4,
+    "il": 1,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "beja": {
+   "shares": {
+    "ad": 20.9,
+    "ch": 27.7,
+    "ps": 26.5,
+    "il": 2.0,
+    "livre": 2.1,
+    "cdu": 13.6,
+    "be": 1.9,
+    "pan": 0.9
+   },
+   "seats": {
+    "ad": 1,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "braga": {
+   "shares": {
+    "ad": 36.3,
+    "ch": 22.0,
+    "ps": 23.0,
+    "il": 6.7,
+    "livre": 3.1,
+    "cdu": 1.7,
+    "be": 1.8,
+    "pan": 1.0,
+    "jpp": 0.1
+   },
+   "seats": {
+    "ad": 8,
+    "ch": 5,
+    "ps": 5,
+    "il": 1,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "braganca": {
+   "shares": {
+    "ad": 43.7,
+    "ch": 20.4,
+    "ps": 25.4,
+    "il": 2.2,
+    "livre": 1.1,
+    "cdu": 1.0,
+    "be": 0.8,
+    "pan": 0.7
+   },
+   "seats": {
+    "ad": 2,
+    "ch": 0,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "castelo_branco": {
+   "shares": {
+    "ad": 32.3,
+    "ch": 23.4,
+    "ps": 28.6,
+    "il": 3.0,
+    "livre": 2.6,
+    "cdu": 2.1,
+    "be": 1.7,
+    "pan": 0.9
+   },
+   "seats": {
+    "ad": 2,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "coimbra": {
+   "shares": {
+    "ad": 34.4,
+    "ch": 18.4,
+    "ps": 27.4,
+    "il": 4.4,
+    "livre": 4.1,
+    "cdu": 2.5,
+    "be": 2.2,
+    "pan": 1.2,
+    "jpp": 0.1
+   },
+   "seats": {
+    "ad": 4,
+    "ch": 2,
+    "ps": 3,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "evora": {
+   "shares": {
+    "ad": 24.8,
+    "ch": 24.8,
+    "ps": 27.8,
+    "il": 2.8,
+    "livre": 2.7,
+    "cdu": 10.2,
+    "be": 1.8,
+    "pan": 0.9
+   },
+   "seats": {
+    "ad": 1,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "faro": {
+   "shares": {
+    "ad": 25.7,
+    "ch": 33.9,
+    "ps": 20.5,
+    "il": 4.4,
+    "livre": 3.4,
+    "cdu": 2.7,
+    "be": 2.6,
+    "pan": 1.8,
+    "jpp": 0.1
+   },
+   "seats": {
+    "ad": 3,
+    "ch": 4,
+    "ps": 2,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "guarda": {
+   "shares": {
+    "ad": 39.6,
+    "ch": 21.1,
+    "ps": 26.4,
+    "il": 2.4,
+    "livre": 1.5,
+    "cdu": 1.3,
+    "be": 1.2,
+    "pan": 0.7
+   },
+   "seats": {
+    "ad": 1,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "leiria": {
+   "shares": {
+    "ad": 37.1,
+    "ch": 23.1,
+    "ps": 19.0,
+    "il": 6.0,
+    "livre": 3.5,
+    "cdu": 2.1,
+    "be": 1.9,
+    "pan": 1.2
+   },
+   "seats": {
+    "ad": 5,
+    "ch": 3,
+    "ps": 2,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "lisboa": {
+   "shares": {
+    "ad": 28.5,
+    "ch": 20.9,
+    "ps": 23.7,
+    "il": 7.6,
+    "livre": 6.9,
+    "cdu": 3.6,
+    "be": 2.4,
+    "pan": 1.8,
+    "jpp": 0.1
+   },
+   "seats": {
+    "ad": 15,
+    "ch": 11,
+    "ps": 12,
+    "il": 4,
+    "livre": 3,
+    "cdu": 1,
+    "be": 1,
+    "pan": 1,
+    "jpp": 0
+   }
+  },
+  "madeira": {
+   "shares": {
+    "ad": 41.4,
+    "ch": 20.9,
+    "ps": 13.5,
+    "il": 2.6,
+    "livre": 1.3,
+    "cdu": 1.3,
+    "be": 1.4,
+    "pan": 1.0,
+    "jpp": 12.3
+   },
+   "seats": {
+    "ad": 3,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 1
+   }
+  },
+  "portalegre": {
+   "shares": {
+    "ad": 26.8,
+    "ch": 29.9,
+    "ps": 28.0,
+    "il": 1.9,
+    "livre": 1.7,
+    "cdu": 5.2,
+    "be": 1.3,
+    "pan": 0.7
+   },
+   "seats": {
+    "ad": 0,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "porto": {
+   "shares": {
+    "ad": 34.2,
+    "ch": 20.7,
+    "ps": 24.0,
+    "il": 6.1,
+    "livre": 4.3,
+    "cdu": 2.3,
+    "be": 2.0,
+    "pan": 1.5,
+    "jpp": 0.1
+   },
+   "seats": {
+    "ad": 15,
+    "ch": 9,
+    "ps": 11,
+    "il": 2,
+    "livre": 2,
+    "cdu": 1,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "santarem": {
+   "shares": {
+    "ad": 30.6,
+    "ch": 28.1,
+    "ps": 22.8,
+    "il": 3.9,
+    "livre": 3.2,
+    "cdu": 3.6,
+    "be": 1.8,
+    "pan": 1.1
+   },
+   "seats": {
+    "ad": 4,
+    "ch": 3,
+    "ps": 2,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "setubal": {
+   "shares": {
+    "ad": 21.0,
+    "ch": 26.4,
+    "ps": 25.0,
+    "il": 5.5,
+    "livre": 5.8,
+    "cdu": 7.1,
+    "be": 2.7,
+    "pan": 1.9,
+    "jpp": 0.1
+   },
+   "seats": {
+    "ad": 5,
+    "ch": 6,
+    "ps": 5,
+    "il": 1,
+    "livre": 1,
+    "cdu": 1,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "viana_do_castelo": {
+   "shares": {
+    "ad": 39.6,
+    "ch": 23.0,
+    "ps": 21.7,
+    "il": 3.8,
+    "livre": 2.6,
+    "cdu": 2.0,
+    "be": 1.6,
+    "pan": 0.9
+   },
+   "seats": {
+    "ad": 3,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "vila_real": {
+   "shares": {
+    "ad": 44.4,
+    "ch": 20.0,
+    "ps": 24.6,
+    "il": 2.2,
+    "livre": 1.5,
+    "cdu": 1.2,
+    "be": 1.0,
+    "pan": 0.7
+   },
+   "seats": {
+    "ad": 3,
+    "ch": 1,
+    "ps": 1,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "viseu": {
+   "shares": {
+    "ad": 42.7,
+    "ch": 22.1,
+    "ps": 21.9,
+    "il": 3.1,
+    "livre": 2.1,
+    "cdu": 1.2,
+    "be": 1.2
+   },
+   "seats": {
+    "ad": 4,
+    "ch": 2,
+    "ps": 2,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "europe": {
+   "shares": {
+    "ad": 14.7,
+    "ch": 28.2,
+    "ps": 13.5,
+    "il": 2.5,
+    "livre": 2.2,
+    "cdu": 0.9,
+    "be": 1.9,
+    "pan": 1.6,
+    "jpp": 0.2
+   },
+   "seats": {
+    "ad": 1,
+    "ch": 1,
+    "ps": 0,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  },
+  "outside_europe": {
+   "shares": {
+    "ad": 19.6,
+    "ch": 20.8,
+    "ps": 13.5,
+    "il": 2.1,
+    "livre": 1.0,
+    "cdu": 0.6,
+    "be": 1.8,
+    "pan": 2.1,
+    "jpp": 0.2
+   },
+   "seats": {
+    "ad": 1,
+    "ch": 1,
+    "ps": 0,
+    "il": 0,
+    "livre": 0,
+    "cdu": 0,
+    "be": 0,
+    "pan": 0,
+    "jpp": 0
+   }
+  }
+ }
+}

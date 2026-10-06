@@ -1,0 +1,10 @@
+{
+ "country": "hu",
+ "name": "Hungary",
+ "election_date": "2026-04-12",
+ "seats": 199,
+ "threshold": 5.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "National Assembly: 199 seats, mixed system (106 single-member constituencies, 93 national list seats with a 5% threshold). 2026 result: Tisza 53.2% (141 seats), Fidesz-KDNP 38.6% (52), Mi Hazank 5.6% (6). Polling tracked after the 2026 election."
+}

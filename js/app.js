@@ -1700,13 +1700,13 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   // (stale sums left ridings short of 100% - e.g. the no-candidate pin
   // removed a party's share from the numerator but not the denominator).
   sum=0;
-  for(const p of PARTY_ORDER){ if(p!=='ind') sum+=out[p].now||0; }
+  for(const p of PARTY_ORDER){ if(p!=='ind'&&out[p]) sum+=out[p].now||0; }
   // Okrug baselines cover only the modelled parties (unmodelled lists made up
   // the remainder), so renormalize projected shares to the polls' own total for
   // the modelled parties (e.g. ~97.6%) — the leftover stays visible as "Other".
   // (Result mode keeps the official 2023 numbers untouched.)
   let pastSum=0;
-  for(const p of PARTY_ORDER) pastSum+=out[p].past||0;
+  for(const p of PARTY_ORDER) pastSum+=out[p]?out[p].past||0:0;
   const rem=Math.max(0,100-pastSum);
   if(!resultMode){
     let target=0;
@@ -1721,7 +1721,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
     if(out.ind) target=Math.max(0,target-out.ind.now);
     if(sum>0&&Math.abs(sum-target)>0.01){
       const k=target/sum;
-      for(const p of PARTY_ORDER){ if(p!=='ind') out[p].now*=k; }
+      for(const p of PARTY_ORDER){ if(p!=='ind'&&out[p]) out[p].now*=k; }
     }
     out.other={past:rem, now:Math.max(0,100-pollsTarget)};
   }else{

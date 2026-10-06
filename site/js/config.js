@@ -26660,7 +26660,7 @@ saxony_anhalt: {
       vasilev:    { code: 'VASILEV', name: 'Radostin Vasilev', name_en: 'Radostin Vasilev', color: '#1A2C44' },
       mihaylov:   { code: 'MIHAYLOV', name: 'Ivelin Mihaylov', name_en: 'Ivelin Mihaylov', color: '#AC2225' },
       hristanov:  { code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#c0cc66' },
-      radev:      { code: 'RADEV', name: 'Rumen Radev', name_en: 'Rumen Radev', color: '#0E7C6B', pastOnly: true },
+      radev:      { code: 'RADEV', name: 'Rumen Radev', name_en: 'Rumen Radev', color: '#DB0F28', pastOnly: true },
       gerdzhikov: { code: 'GERDZH.', name: 'Anastas Gerdzhikov', name_en: 'Anastas Gerdzhikov', color: '#7B93C9', pastOnly: true },
       karadayi:   { code: 'KARAD.', name: 'Mustafa Karadayi', name_en: 'Mustafa Karadayi', color: '#0065B7', pastOnly: true },
       panov:      { code: 'PANOV', name: 'Lozan Panov', name_en: 'Lozan Panov', color: '#004A80', pastOnly: true },
@@ -26704,7 +26704,6 @@ saxony_anhalt: {
       mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/Edinenie.svg',
       radev: 'img/bg/PB.svg', gerdzhikov: 'img/bg/PPDB.svg',
       karadayi: 'img/bg/DPS.svg', panov: 'img/bg/DB.svg',
-      nota: 'img/bg/NOTA.svg',
     },
   },
 

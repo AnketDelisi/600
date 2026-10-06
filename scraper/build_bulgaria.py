@@ -249,7 +249,7 @@ def main():
       nota: {{ code: 'NOTA', name: 'None of the above', name_en: 'None of the above', color: '#9CA3AF', unallocated: true }},
     }},
     order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps', 'ppdb', 'nota'],
-    parlOrder: ['bsp', 'aps', 'dps', 'pp', 'db', 'pb', 'mech', 'vaz', 'gerb', 'veli'],
+    parlOrder: ['bsp', 'aps', 'dps', 'pp', 'db', 'pb', 'mech', 'vaz', 'gerb', 'veli', 'ppdb', 'nota'],
     blocs: {{
       bloc1: {{ name: 'Government', short: 'GOV', parties: ['pb'], color: '#034A3F' }},
       bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps'], color: '#0054A6' }},
@@ -335,7 +335,7 @@ def main():
       nota:       {{ code: 'NOTA', name: 'None of the above', name_en: 'None of the above', color: '#9CA3AF', unallocated: true }},
     }},
     order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov', 'karadayi', 'panov', 'nota'],
-    parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
+    parlOrder: ['panov', 'karadayi', 'gerdzhikov', 'radev', 'hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov', 'nota'],
     blocs: {{
       bloc1: {{ name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#DB0F28' }},
       bloc2: {{ name: 'Gyurov', short: 'GYU', parties: ['gyurov'], color: '#4200FF' }},

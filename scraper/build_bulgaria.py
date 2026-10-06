@@ -265,7 +265,8 @@ def main():
       svg: 'img/bulgaria.svg',
       selector: 'id',
       swingMethod: 'geometric',
-      districtThreshold: true,
+      // the 4% threshold is national, not per district
+      districtThreshold: false,
       districts: {j({k: k for k in keys}, ensure_ascii=False)},
       seatDistricts: {j({k: SEATS[k] for k in keys}, ensure_ascii=False)},
       gebiete: {j(gebiete, ensure_ascii=False)},

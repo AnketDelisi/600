@@ -34,8 +34,23 @@ def shift_coords(c, dlon, dlat):
     return [shift_coords(x, dlon, dlat) for x in c]
 
 # Azores and Madeira are shifted towards the mainland (standard cartographic
-# inset practice) so the map does not waste space on the Atlantic gap
+# inset practice) so the map does not waste space on the Atlantic gap, and
+# each island is scaled up around its own centre so the seat circles fit
 ISLAND_SHIFT = {"azores": (15.4, -0.6), "madeira": (6.4, 3.6)}
+ISLAND_SCALE = {"azores": 2.2, "madeira": 2.6}
+
+
+def scale_rings(coords, k):
+    """Scale every ring around its own centre (islands grow in place)."""
+    out = []
+    for ring in coords:
+        xs = [p[0] for p in ring]
+        ys = [p[1] for p in ring]
+        cx = (min(xs) + max(xs)) / 2
+        cy = (min(ys) + max(ys)) / 2
+        out.append([[cx + (x - cx) * k, cy + (y - cy) * k]
+                    for x, y in ring])
+    return out
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 CACHE = os.path.join(ROOT, "scraper", ".cache")
@@ -192,10 +207,26 @@ def main():
         key = names.get(f["properties"].get("shapeName", ""))
         geom = f["geometry"]
         if key in ISLAND_SHIFT:
+            polys = ([geom["coordinates"]]
+                     if geom["type"] == "Polygon" else geom["coordinates"])
+            k = ISLAND_SCALE.get(key, 1.0)
             dlon, dlat = ISLAND_SHIFT[key]
-            geom = {"type": geom["type"],
-                    "coordinates": shift_coords(geom["coordinates"],
-                                                dlon, dlat)}
+            new_polys = []
+            for poly in polys:
+                new_rings = []
+                for ring in poly:
+                    xs = [p[0] for p in ring]
+                    ys = [p[1] for p in ring]
+                    cx = (min(xs) + max(xs)) / 2
+                    cy = (min(ys) + max(ys)) / 2
+                    new_rings.append([[cx + (p[0] - cx) * k + dlon,
+                                       cy + (p[1] - cy) * k + dlat]
+                                      for p in ring])
+                new_polys.append(new_rings)
+            geom = {"type": "MultiPolygon" if len(new_polys) > 1
+                    else "Polygon",
+                    "coordinates": new_polys if len(new_polys) > 1
+                    else new_polys[0]}
         feats.append({"type": "Feature",
                       "properties": f["properties"],
                       "geometry": geom})

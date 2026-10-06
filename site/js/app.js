@@ -2024,7 +2024,7 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
     // fit the cluster inside the anchor's clearance when the district is
     // small; cap the dot size in large districts
     const fit=anc.pd>0?(anc.pd*0.9)/(1.075*Math.max(cols,rows)):3.4;
-    const r=Math.max(0.7,Math.min(4.2,fit));
+    const r=Math.max(1.1,Math.min(4.2,fit));
     const sp=2.15*r;
     const x0=anc.px-(cols-1)*sp/2, y0=anc.py-(rows-1)*sp/2;
     list.forEach((p,i)=>{

@@ -207,16 +207,16 @@ def main():
       // takes that county's seats (the 2026 reality: Tisza swept 96 of 106)
       winnerDistricts: {j(SMD, ensure_ascii=False)},
       national2021: {j(NATIONAL, ensure_ascii=False)},
-      // the real 106 single-member constituencies (NVI boundaries), with
-      // their exact 2026 party shares - the allocator uses them for the SMD
-      // winners, the map toggle displays them
-      map2: {{
-        svg: 'img/hungary_smd.svg',
-        selector: 'id',
-        label: 'CONSTITUENCIES (106)',
-        districts: {j({k: k for k in sorted(smd)}, ensure_ascii=False)},
-        gebiete: {j(smd, ensure_ascii=False)},
-      }},
+    }},
+    // the real 106 single-member constituencies (NVI boundaries), with their
+    // exact 2026 party shares - the allocator uses them for the SMD winners,
+    // the map toggle displays them
+    map2: {{
+      svg: 'img/hungary_smd.svg',
+      selector: 'id',
+      label: 'CONSTITUENCIES (106)',
+      districts: {j({k: k for k in sorted(smd)}, ensure_ascii=False)},
+      gebiete: {j(smd, ensure_ascii=False)},
     }},
     pollsterMAE: {{}},
     maeKey: 'HU2026',

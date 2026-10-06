@@ -26659,7 +26659,7 @@ saxony_anhalt: {
       kostadinov: { code: 'KOST.', name: 'Kostadin Kostadinov', name_en: 'Kostadin Kostadinov', color: '#C09F62' },
       vasilev:    { code: 'VASILEV', name: 'Radostin Vasilev', name_en: 'Radostin Vasilev', color: '#1A2C44' },
       mihaylov:   { code: 'MIHAYLOV', name: 'Ivelin Mihaylov', name_en: 'Ivelin Mihaylov', color: '#AC2225' },
-      hristanov:  { code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#6B7280' },
+      hristanov:  { code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#D6C3A1' },
     },
     order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov'],
     parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
@@ -26690,7 +26690,7 @@ saxony_anhalt: {
     logos: {
       iotova: 'img/bg/PB.svg', gyurov: 'img/bg/PPDB.svg',
       kostadinov: 'img/bg/VAZ.svg', vasilev: 'img/bg/MECH.svg',
-      mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/DB.svg',
+      mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/Edinenie.svg',
     },
   },
 

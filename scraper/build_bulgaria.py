@@ -227,7 +227,7 @@ def main():
 
     bg = f"""  bg: {{
     name: 'Bulgaria',
-    unitLabel: { en: 'provinces', tr: 'vilayet' },
+    unitLabel: {{ en: 'provinces', tr: 'vilayet' }},
     seats: 240,
     threshold: 4.0,
     method: 'hare',
@@ -241,7 +241,7 @@ def main():
       db:   {{ code: 'DB',   name: 'Democratic Bulgaria', name_en: 'Democratic Bulgaria', color: '#004A80' }},
       dps:  {{ code: 'DPS',  name: 'Movement for Rights and Freedoms', name_en: 'Movement for Rights and Freedoms', color: '#0065B7' }},
       vaz:  {{ code: 'VAZ',  name: 'Vazrazhdane', name_en: 'Vazrazhdane', color: '#C09F62' }},
-      mech: {{ code: 'MECH', name: 'MECH', name_en: 'Moral, Unity, Honour', color: '#E0A32E' }},
+      mech: {{ code: 'MECH', name: 'MECH', name_en: 'Moral, Unity, Honour', color: '#1A2C44' }},
       veli: {{ code: 'VEL',  name: 'Velichie', name_en: 'Greatness', color: '#AC2225' }},
       bsp:  {{ code: 'BSP',  name: 'BSP – United Left', name_en: 'BSP – United Left', color: '#DB0F28' }},
       aps:  {{ code: 'APS',  name: 'Alliance for Rights and Freedoms', name_en: 'Alliance for Rights and Freedoms', color: '#C55AD3' }},
@@ -277,13 +277,35 @@ def main():
     }},
   }},
 """
-    PRES = {
-        "iotova": 44.5, "gyurov": 26.1, "kostadinov": 10.5,
-        "vasilev": 2.5, "mihaylov": 2.2, "hristanov": 3.4,
-    }
+    # presidential first-round baselines per province: each candidate's
+    # supporting bloc from the parliamentary pattern, scaled to the current
+    # poll level (the pattern keeps the geography: Kardzhali/Razgrad lean
+    # DPS, the west leans GERB)
+    CAND_BLOC = {"iotova": ["pb", "bsp"], "gyurov": ["pp", "db"],
+                 "kostadinov": ["vaz"], "vasilev": ["mech"],
+                 "mihaylov": ["veli"]}
+    PRES_NAT = {"iotova": 46.9, "gyurov": 25.3, "kostadinov": 9.7,
+                "vasilev": 4.6, "mihaylov": 2.4, "hristanov": 1.9}
+    pres_gebiete, pres_runoff = {}, {}
+    for key in keys:
+        g = gebiete[key]
+        row = {}
+        for cand, bloc in CAND_BLOC.items():
+            bsum = sum(g.get(x, 0) for x in bloc)
+            nsum = sum(NATIONAL.get(x, 0) for x in bloc)
+            row[cand] = round(bsum * (PRES_NAT[cand] / nsum), 2) if nsum else 0.0
+        row["hristanov"] = PRES_NAT["hristanov"]
+        pres_gebiete[key] = row
+        a, b = row["iotova"], row["gyurov"]
+        tot = a + b
+        pres_runoff[key] = {
+            "iotova": round(a * 100 / tot, 2) if tot else 50.0,
+            "gyurov": round(b * 100 / tot, 2) if tot else 50.0,
+        }
+    PRES = PRES_NAT
     bgpres = f"""  bgpres: {{
     name: 'Bulgaria (presidential)',
-    unitLabel: { en: 'provinces', tr: 'vilayet' },
+    unitLabel: {{ en: 'provinces', tr: 'vilayet' }},
     seats: 1,
     threshold: 0,
     seatBased: false,
@@ -294,15 +316,18 @@ def main():
     election_date_runoff: '2026-11-01',
     parties: {{
       iotova:     {{ code: 'IOTOVA', name: 'Iliana Iotova', name_en: 'Iliana Iotova', color: '#034A3F' }},
-      gyurov:     {{ code: 'GYUROV', name: 'Andrey Gyurov', name_en: 'Andrey Gyurov', color: '#004A80' }},
+      gyurov:     {{ code: 'GYUROV', name: 'Andrey Gyurov', name_en: 'Andrey Gyurov', color: '#4200FF' }},
       kostadinov: {{ code: 'KOST.', name: 'Kostadin Kostadinov', name_en: 'Kostadin Kostadinov', color: '#C09F62' }},
-      vasilev:    {{ code: 'VASILEV', name: 'Radostin Vasilev', name_en: 'Radostin Vasilev', color: '#E0A32E' }},
+      vasilev:    {{ code: 'VASILEV', name: 'Radostin Vasilev', name_en: 'Radostin Vasilev', color: '#1A2C44' }},
       mihaylov:   {{ code: 'MIHAYLOV', name: 'Ivelin Mihaylov', name_en: 'Ivelin Mihaylov', color: '#AC2225' }},
       hristanov:  {{ code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#6B7280' }},
     }},
     order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov'],
     parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
-    blocs: {{}},
+    blocs: {{
+      bloc1: {{ name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#034A3F' }},
+      bloc2: {{ name: 'Gyurov', short: 'GYU', parties: ['gyurov'], color: '#4200FF' }},
+    }},
     lastElection: {{
       date: '2021-11-21',
       results: {{ iotova: 49.42, gyurov: 22.83, kostadinov: 3.68, vasilev: 0, mihaylov: 0, hristanov: 0 }},
@@ -312,18 +337,19 @@ def main():
       svg: 'img/bulgaria.svg',
       selector: 'id',
       districts: {j({k: k for k in keys}, ensure_ascii=False)},
-      gebiete: {j(gebiete, ensure_ascii=False)},
-      national2021: {j(NATIONAL, ensure_ascii=False)},
-      // the 2021 runoff map (Radev 66.7 / Gerdzhikov 33.3) as the runoff
-      // baseline: the incumbent's vice president vs the reformist nominee
-      runoff2022: {{
-        national: {{ iotova: 66.72, gyurov: 33.28 }},
-      }},
+      gebiete: {j(pres_gebiete, ensure_ascii=False)},
+      national2021: {j(PRES_NAT, ensure_ascii=False)},
+      // the runoff baseline per province: the two-way ratio of the derived
+      // first-round baselines (2021's Radev/Gerdzhikov map is not available
+      // per province, so the parliamentary pattern stands in)
+      runoff2022: {j(pres_runoff, ensure_ascii=False)},
+      // current head-to-head estimate (first-round 47 vs 25 transfers)
+      nationalRunoff: {{ iotova: 62, gyurov: 38 }},
     }},
     pollsterMAE: {{}},
     maeKey: 'BGPRES2026',
     logos: {{
-      iotova: 'img/bg/PB.svg', gyurov: 'img/bg/PP.svg',
+      iotova: 'img/bg/PB.svg', gyurov: 'img/bg/PPDB.svg',
       kostadinov: 'img/bg/VAZ.svg', vasilev: 'img/bg/MECH.svg',
       mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/DB.svg',
     }},

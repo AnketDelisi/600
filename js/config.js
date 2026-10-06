@@ -1426,7 +1426,7 @@ saxony_anhalt: {
       kshlp: { code: 'KShLP', name: 'Koalicija Albanaca Preševske doline', name_en: 'Albanian Coalition of Preševo Valley', color: '#0081CC' },
       // SPN (Serbia Against Violence, 2023) — dissolved coalition. Shown in
       // past-result sections only; `pastOnly` keeps it out of the forecast.
-      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#E30613', pastOnly: true },
+      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#F22C27', pastOnly: true },
     },
     order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'srs', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
     parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
@@ -18983,9 +18983,12 @@ saxony_anhalt: {
       afd:  { code: 'AfD',   name: 'Alternative für Deutschland', name_en: 'Alternative for Germany', color: '#00A2DE' },
       fdp:  { code: 'FDP',   name: 'Freie Demokratische Partei', name_en: 'Free Democratic Party', color: '#FFED00' },
       bsw:  { code: 'BSW',   name: 'Bündnis Sahra Wagenknecht', name_en: 'Sahra Wagenknecht Alliance', color: '#792351' },
+      ssw:  { code: 'SSW',   name: 'South Schleswig Voters\' Association', name_en: 'South Schleswig Voters\' Association', color: '#003C8F' },
     },
-    order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp'],
-    parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd'],
+    // the SSW (Danish minority) is exempt from the 5% threshold
+    minorityParties: ['ssw'],
+    order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp', 'ssw'],
+    parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd', 'ssw'],
     // Firewall = everyone but the AfD; BSW as kingmaker (like the state models)
     blocs: {
       bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'spd', 'gruene', 'linke', 'fdp'], color: '#111827' },
@@ -19002,7 +19005,8 @@ saxony_anhalt: {
               "linke": 8.77,
               "afd": 20.8,
               "fdp": 4.33,
-              "bsw": 4.98
+              "bsw": 4.98,
+              "ssw": 0.2
       },
       seats: {
               "cdu": 208,
@@ -19011,7 +19015,8 @@ saxony_anhalt: {
               "gruene": 85,
               "linke": 64,
               "bsw": 0,
-              "fdp": 0
+              "fdp": 0,
+              "ssw": 1
       },
     },
     map: {
@@ -19610,16 +19615,16 @@ saxony_anhalt: {
     recencyHalfLifeDays: 14,
     parties: {
       pp:     { code: 'PP',      name: 'Partido Popular',                    name_en: 'People\'s Party',                      color: '#1D84CE' },
-      psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#E30713' },
+      psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#EF1C27' },
       vox:    { code: 'VOX',     name: 'Vox',                                name_en: 'Vox',                                   color: '#63BE21' },
       sumar:  { code: 'FA',      name: 'Frente Amplio',                     name_en: 'Broad Front',                           color: '#EF4B91' },
       erc:    { code: 'ERC',     name: 'Esquerra Republicana de Catalunya',  name_en: 'Republican Left of Catalonia',          color: '#FFB232' },
-      junts:  { code: 'JUNTS',   name: 'Junts per Catalunya',                name_en: 'Together for Catalonia',                color: '#00B0B9' },
+      junts:  { code: 'JUNTS',   name: 'Junts per Catalunya',                name_en: 'Together for Catalonia',                color: '#00C7AE' },
       bildu:  { code: 'EH BILDU',name: 'Euskal Herria Bildu',                name_en: 'Basque Country Gather',                 color: '#79BF43' },
-      pnv:    { code: 'EAJ-PNV', name: 'Euzko Alderdi Jeltzalea',            name_en: 'Basque Nationalist Party',              color: '#008000' },
-      bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#6CA5D0' },
-      cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFCC00' },
-      upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#1B4F9C' },
+      pnv:    { code: 'EAJ-PNV', name: 'Euzko Alderdi Jeltzalea',            name_en: 'Basque Nationalist Party',              color: '#4AAE4A' },
+      bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#ADCFEF' },
+      cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFD700' },
+      upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#00599B' },
       aa:     { code: 'AA',      name: 'Adelante Andalucía',                 name_en: 'Forward Andalusia',                     color: '#24C87E' },
       podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#9269F5' },
       salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#785A46' },
@@ -23018,20 +23023,21 @@ saxony_anhalt: {
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,
     parties: {
-      fdi:  { code: 'FdI',   name: 'Fratelli d\'Italia',            name_en: 'Brothers of Italy',             color: '#0F2D5C' },
-      pd:   { code: 'PD',    name: 'Partito Democratico',           name_en: 'Democratic Party',              color: '#E4002B' },
-      m5s:  { code: 'M5S',   name: 'Movimento 5 Stelle',            name_en: 'Five Star Movement',            color: '#FDD500' },
-      lega: { code: 'Lega',  name: 'Lega per Salvini Premier',      name_en: 'League for Salvini Premier',    color: '#2B2B2B' },
-      fi:   { code: 'FI',    name: 'Forza Italia',                  name_en: 'Forza Italia',                  color: '#0087D1' },
-      a:    { code: 'A',     name: 'Azione',                        name_en: 'Action',                        color: '#0E5C9E' },
-      iv:   { code: 'IV',    name: 'Italia Viva',                   name_en: 'Italia Viva',                   color: '#E6226B' },
-      avs:  { code: 'AVS',   name: 'Alleanza Verdi e Sinistra',     name_en: 'Greens and Left Alliance',      color: '#4C9E38' },
+      fdi:  { code: 'FdI',   name: 'Fratelli d\'Italia',            name_en: 'Brothers of Italy',             color: '#03386A' },
+      pd:   { code: 'PD',    name: 'Partito Democratico',           name_en: 'Democratic Party',              color: '#EF1C27' },
+      m5s:  { code: 'M5S',   name: 'Movimento 5 Stelle',            name_en: 'Five Star Movement',            color: '#FFEB3B' },
+      lega: { code: 'Lega',  name: 'Lega per Salvini Premier',      name_en: 'League for Salvini Premier',    color: '#008000' },
+      fi:   { code: 'FI',    name: 'Forza Italia',                  name_en: 'Forza Italia',                  color: '#0087DC' },
+      a:    { code: 'A',     name: 'Azione',                        name_en: 'Action',                        color: '#0039AA' },
+      iv:   { code: 'IV',    name: 'Italia Viva',                   name_en: 'Italia Viva',                   color: '#D6418C' },
+      avs:  { code: 'AVS',   name: 'Alleanza Verdi e Sinistra',     name_en: 'Greens and Left Alliance',      color: '#BE3457' },
       e:    { code: '+E',    name: '+Europa',                       name_en: 'More Europe',                   color: '#0073B9' },
-      nm:   { code: 'NM',    name: 'Noi Moderati',                  name_en: 'Us Moderates',                  color: '#1B4F9C' },
-      fn:   { code: 'FN',    name: 'Futuro Nazionale',              name_en: 'National Future',               color: '#4A4A4A' },
+      nm:   { code: 'NM',    name: 'Noi Moderati',                  name_en: 'Us Moderates',                  color: '#43528F' },
+      svp:  { code: 'SVP',   name: 'Südtiroler Volkspartei',         name_en: 'South Tyrolean People\'s Party', color: '#231F20' },
+      fn:   { code: 'FN',    name: 'Futuro Nazionale',              name_en: 'National Future',               color: '#20293D' },
     },
-    order: ['fdi', 'pd', 'm5s', 'lega', 'fi', 'a', 'iv', 'avs', 'e', 'nm', 'fn'],
-    parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn'],
+    order: ['fdi', 'pd', 'm5s', 'lega', 'fi', 'a', 'iv', 'avs', 'e', 'nm', 'fn', 'svp'],
+    parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn', 'svp'],
     // Rosatellum coalitions: the FPTP districts go to the winning coalition
     blocs: {
       bloc1: { name: 'Centre-right coalition', short: 'CDX', parties: ['fdi', 'lega', 'fi', 'nm'], color: '#1B4F9C' },
@@ -23050,7 +23056,8 @@ saxony_anhalt: {
               "e": 2.83,
               "m5s": 15.43,
               "a": 4.45,
-              "iv": 3.33
+              "iv": 3.33,
+              "svp": 0.3
       },
       seats: {
               "fdi": 119,
@@ -23063,7 +23070,8 @@ saxony_anhalt: {
               "avs": 12,
               "e": 2,
               "nm": 7,
-              "fn": 0
+              "fn": 0,
+              "svp": 3
       },
     },
     map: {
@@ -25282,6 +25290,7 @@ saxony_anhalt: {
 
   qc: {
     name: 'Quebec',
+    hidden: true, // 2026 election held 2026-10-05; hidden from the nav
     seats: 127,
     threshold: 0,                 // no threshold (first-past-the-post)
     method: 'fptp',               // winner-takes-all in 127 single-member ridings
@@ -25306,8 +25315,8 @@ saxony_anhalt: {
     // colours from the en.wikipedia party infoboxes
     parties: {
       caq:  { code: 'CAQ',  name: 'Coalition Avenir Québec',           name_en: 'Coalition Avenir Québec',           color: '#1E90FF' },
-      plq:  { code: 'PLQ',  name: 'Parti libéral du Québec',           name_en: 'Quebec Liberal Party',              color: '#EA6D6A' },
-      pq:   { code: 'PQ',   name: 'Parti québécois',                   name_en: 'Parti Québécois',                   color: '#87CEFA' },
+      plq:  { code: 'PLQ',  name: 'Parti libéral du Québec',           name_en: 'Quebec Liberal Party',              color: '#F08080' },
+      pq:   { code: 'PQ',   name: 'Parti québécois',                   name_en: 'Parti Québécois',                   color: '#004C9D' },
       qs:   { code: 'QS',   name: 'Québec solidaire',                  name_en: 'Québec solidaire',                  color: '#FF8040' },
       pcq:  { code: 'PCQ',  name: 'Parti conservateur du Québec',      name_en: 'Conservative Party of Quebec',      color: '#313E6B' },
       ind:  { code: 'IND',  name: 'Independent',                       name_en: 'Independent',                       color: '#6B7280' },
@@ -46977,7 +46986,7 @@ saxony_anhalt: {
       act: { code: 'ACT', name: 'ACT New Zealand',            name_en: 'ACT New Zealand',            color: '#FDE401' },
       nzf: { code: 'NZF', name: 'New Zealand First',          name_en: 'New Zealand First',          color: '#000000' },
       tpm: { code: 'TPM', name: 'Te Pati Maori',              name_en: 'Te Pati Maori',              color: '#B2001A' },
-      opp: { code: 'OPP', name: 'The Opportunities Party',    name_en: 'The Opportunities Party',    color: '#00EDE1' },
+      opp: { code: 'OPP', name: 'The Opportunities Party',    name_en: 'The Opportunities Party',    color: '#09B598' },
     },
     order: ['nat', 'lab', 'grn', 'act', 'nzf', 'tpm', 'opp'],
     parlOrder: ['grn', 'tpm', 'lab', 'opp', 'nat', 'act', 'nzf'],

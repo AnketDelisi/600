@@ -93,6 +93,23 @@ ALIASES = {
     "League for Salvini Premier": "Lega (political party)",
     "Forza Italia": "Forza Italia (2013)",
     "Action": "Action (Italian political party)",
+    # Bulgaria
+    "GERB–SDS": "GERB",
+    "Vazrazhdane": "Revival (Bulgarian political party)",
+    "Moral, Unity, Honour": "Morality, Unity, Honour",
+    "PP–DB": "We Continue the Change – Democratic Bulgaria",
+    # Serbia
+    "Aleksandar Vučić – United Serbia": "United Serbia (2026 coalition)",
+    "Serbia Against Violence": "Serbia Against Violence (coalition)",
+    # Spain
+    "People's Party": "People's Party (Spain)",
+    "Vox": "Vox (political party)",
+    "Broad Front": "Sumar (electoral platform)",
+    "Together for Catalonia": "Together for Catalonia (2020)",
+    "Forward Andalusia": "Adelante Andalucía (2021)",
+    "Podemos": "Podemos (Spanish political party, 2022)",
+    # Greece
+    "Greek Left Alliance": "Greek Left Alignment",
 }
 
 
@@ -174,6 +191,22 @@ OVERRIDES = {
     # Wikipedia keeps a historical (black) ÖVP entry; the current party is
     # the 2017 turquoise one (#63C3D0).
     ("austria", "Austrian People's Party"): "Austrian People's Party (2017)",
+    # country-specific module entries (bare names match the wrong party)
+    ("serbia", "Russian Party"): "Russian Party (Serbia)",
+    ("serbia", "Social Democratic Party"): "Social Democratic Party (Serbia)",
+    ("germany", "Christian Democratic Union / Christian Social Union"): "CDU/CSU",
+    ("czechia", "Free"): "Svobodní",
+    ("czechia", "Tricolour Civic Movement"): "Tricolour (political party)",
+    ("pt", "Democratic Alliance"): "Democratic Alliance (Portugal, 2024)",
+    ("uk", "Labour Party"): "Labour Party (UK)",
+    ("nz", "Labour Party"): "New Zealand Labour Party",
+}
+
+# Deliberate deviations from the module (kept out of --apply)
+SKIP = {
+    # module color is white; invisible on our UI — keep the gray
+    ("bgpres", "None of the above"): "white on white; UI keeps #9CA3AF",
+    ("bg", "None of the above"): "white on white; UI keeps #9CA3AF",
 }
 
 
@@ -215,6 +248,12 @@ def main():
     for country, entries in models.items():
         print(f"== {country}")
         for e in entries:
+            skip = SKIP.get((country, e["name_en"] or e["name"]))
+            if skip:
+                stats["missing"] += 1
+                print(f"  -- {e['key']:16s} {e['name_en'] or e['name']} "
+                      f"(current {(e['color'] or '').upper()})  SKIP: {skip}")
+                continue
             wname, wcolor = lookup(colors, e, country)
             cur = (e["color"] or "").upper()
             if not wcolor:

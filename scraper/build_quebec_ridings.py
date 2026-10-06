@@ -292,6 +292,7 @@ def main():
     block = """
   qc: {
     name: 'Quebec',
+    hidden: true, // 2026 election held 2026-10-05; hidden from the nav
     seats: 127,
     threshold: 0,                 // no threshold (first-past-the-post)
     method: 'fptp',               // winner-takes-all in 127 single-member ridings

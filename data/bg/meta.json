@@ -1,0 +1,9 @@
+{
+ "country": "bg",
+ "name": "Bulgaria",
+ "seats": 240,
+ "threshold": 4.0,
+ "method": "hare",
+ "constituencies": false,
+ "notes": "National Assembly: 240 seats in 31 multi-member constituencies (modelled on the 28 provinces, Sofia-city's three and Plovdiv's two merged), open-list proportional with the largest-remainder Hare quota, 4% threshold. 2026 result: Progressive Bulgaria 43.9% (131 seats), GERB-SDS 13.2% (39), PP-DB 12.4% (37), DPS 7.0% (21), Vazrazhdane 4.2% (12). Polling tracked after the 19 April 2026 election; the next election is due by 30 June 2030."
+}

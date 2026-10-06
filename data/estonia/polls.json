@@ -2,9 +2,30 @@
   "country": "estonia",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
-  "scraped_at": "2026-10-05T13:31:39Z",
-  "poll_count": 253,
+  "scraped_at": "2026-10-06T12:41:36Z",
+  "poll_count": 254,
   "polls": [
+    {
+      "pollster": "Norstat",
+      "date": "2026-09-27",
+      "votes": {
+        "ref": 12.4,
+        "ekre": 14.2,
+        "kesk": 19.1,
+        "e200": 1.6,
+        "sde": 14.4,
+        "isamaa": 27.6,
+        "vl": 0.0,
+        "koos": 0.7,
+        "pp": 7.7,
+        "eer": 0.9,
+        "erk": 0.0
+      },
+      "country": "estonia",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Estonian_parliamentary_election",
+      "n": 1000
+    },
     {
       "pollster": "Norstat",
       "date": "2026-08-29",

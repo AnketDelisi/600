@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-05T13:31:55Z",
+  "scraped_at": "2026-10-06T12:41:57Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -25,33 +25,33 @@
   "generic_ballot": [
     {
       "pollster": "Decision Desk HQ",
-      "dates": "January 9, 2025 – September 28, 2026",
-      "dem": 48.8,
-      "rep": 40.9
+      "dates": "January 9, 2025 – October 2, 2026",
+      "dem": 49.4,
+      "rep": 42.5
     },
     {
       "pollster": "FiftyPlusOne",
-      "dates": "January 9, 2025 – September 28, 2026",
-      "dem": 50.8,
-      "rep": 43.1
+      "dates": "January 9, 2025 – October 2, 2026",
+      "dem": 51.2,
+      "rep": 43.3
     },
     {
       "pollster": "NBC News",
-      "dates": "January 9, 2025 – September 28, 2026",
+      "dates": "January 9, 2025 – October 2, 2026",
       "dem": 52.0,
       "rep": 43.0
     },
     {
       "pollster": "RealClearPolitics",
-      "dates": "September 8–28, 2026",
-      "dem": 50.6,
-      "rep": 42.3
+      "dates": "September 16 – October 2, 2026",
+      "dem": 51.1,
+      "rep": 42.8
     },
     {
       "pollster": "Silver Bulletin",
-      "dates": "January 9, 2025 – September 28, 2026",
-      "dem": 49.9,
-      "rep": 41.0
+      "dates": "January 9, 2025 – October 2, 2026",
+      "dem": 50.1,
+      "rep": 41.2
     }
   ],
   "races": {
@@ -2290,7 +2290,15 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 64.9,
+          "party": "R"
+        }
       },
       {
         "state": "Georgia",
@@ -4595,9 +4603,9 @@
         "pvi": 5.0,
         "pvi_label": "R+5",
         "incumbent": "Chuck Edwards",
-        "inc_status": "open",
+        "inc_status": "running",
         "party": "R",
-        "status": "Incumbent retiring",
+        "status": "Incumbent renominatedbut withdrew",
         "ratings": {
           "cook": "Tossup",
           "ie": "Lean R",

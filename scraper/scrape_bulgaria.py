@@ -18,6 +18,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from pollster_norm import canonicalize_polls
+from scrape_spain import expand_grid
 
 WIKI_URL = ("https://en.wikipedia.org/wiki/"
             "Next_Bulgarian_parliamentary_election")
@@ -93,12 +94,15 @@ def scrape():
                 cols[i] = key
         if len(cols) < MIN_PARTIES:
             continue
-        for tr in rows[1:]:
-            cells = tr.find_all(["td", "th"])
-            if len(cells) < 5:
+        # expand_grid keeps the columns aligned when a row drops a blank
+        # cell (the Market Links rows omit DB, which used to shift APS onto
+        # the Others value); a cell spanning several party columns is the
+        # combined list (PP-DB) and is split equally between them
+        grid, metas = expand_grid(table)
+        for ri in range(1, len(grid)):
+            texts = grid[ri]
+            if len(texts) < 5:
                 continue
-            texts = [" ".join(c.get_text(" ", strip=True).split())
-                     for c in cells]
             date = parse_date(texts[1]) if len(texts) > 1 else None
             pollster = texts[0]
             if not date:
@@ -119,10 +123,16 @@ def scrape():
                     if digits.isdigit() and 100 <= int(digits) <= 100000:
                         n = int(digits)
             votes = {}
-            for i, key in cols.items():
-                v = parse_share(texts[i] if i < len(texts) else "")
-                if v is not None:
-                    votes[key] = v
+            for col, span, txt in metas[ri]:
+                parts = [cols.get(c) for c in range(col, col + span)]
+                parts = [p for p in parts if p]
+                if not parts:
+                    continue
+                v = parse_share(txt)
+                if v is None:
+                    continue
+                for p in parts:
+                    votes[p] = round(votes.get(p, 0) + v / len(parts), 2)
             if len(votes) < MIN_PARTIES:
                 continue
             sig = (pollster, date)

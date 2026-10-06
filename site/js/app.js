@@ -1664,6 +1664,19 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   if(indInc) out.ind={past:indInc.past||0,
                       now:resultMode?(indInc.past||0):(indInc.now||0),
                       name:indInc.name||''};
+  // Result-only list merges (Bulgaria's PP-DB ran as one coalition in 2026,
+  // then split into two parliamentary groups): in the result views the
+  // component pasts fold into the coalition key
+  if(resultMode&&conf.resultMerge){
+    for(const src in conf.resultMerge){
+      const dst=conf.resultMerge[src];
+      if(!out[src]) continue;
+      out[dst]=out[dst]||{past:0,now:0};
+      out[dst].past+=out[src].past;
+      out[dst].now+=out[src].now;
+      delete out[src];
+    }
+  }
   // Incumbent boost (Poliwave): the party that won the seat last time gets a
   // small multiplicative lift for the sitting member's personal vote, or a
   // symmetric deboost when the sitting member is not on the ballot (retired
@@ -1767,6 +1780,7 @@ function districtWinnerProjection(nr, avg, confOverride, regionNoise, districtNo
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
+    if(PARTY_META[p]&&PARTY_META[p].unallocated) continue;
     if(shares[p]&&shares[p].now>bestV){bestV=shares[p].now;best=p}
   }
   return best;
@@ -2376,7 +2390,8 @@ function allocateSeatsN(votes, totalSeats){
   });
   const minority=(COUNTRIES[COUNTRY]||{}).minorityParties||[];
   const validParties=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||
-    (minority.indexOf(p)>=0&&(votes[p]||0)>0));
+    (minority.indexOf(p)>=0&&(votes[p]||0)>0))
+    .filter(p=>!(PARTY_META[p]&&PARTY_META[p].unallocated));
   const totalVotes=validParties.reduce((s,p)=>s+(votes[p]||0),0);
   if(totalVotes===0) return {};
   const seats={};
@@ -2515,7 +2530,9 @@ function allocateSeatsByDistrict(avg, regionNoise){
   // returns the map block for layer 0)
   const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
     :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
-  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&((dth?votes[p]:(avg[p]||0))>=THRESHOLD));
+  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0
+    &&!(PARTY_META[p]&&PARTY_META[p].unallocated)
+    &&((dth?votes[p]:(avg[p]||0))>=THRESHOLD));
     if(!valid.length) continue;
     // Hare/Niemeyer (largest remainder) per district, e.g. Bulgaria
     if(SEAT_METHOD==='hare_niemeyer'){
@@ -3076,7 +3093,7 @@ function runForecast(avg, nSims, nPolls){
   // dissolved alliances (pastOnly) never contest the projection: keep their
   // sim draw negligible so they cannot soak up seats or votes (Serbia's SPN
   // is still in PARTY_ORDER for the 2023 result view)
-  const alpha=PARTY_ORDER.map(p=>(PARTY_META[p]&&PARTY_META[p].pastOnly)?0.01:
+  const alpha=PARTY_ORDER.map(p=>(PARTY_META[p]&&(PARTY_META[p].pastOnly||PARTY_META[p].unallocated))?0.01:
     Math.max(0.5,(avg[p]||0)*K));
   // "Other" is a real bucket in the Dirichlet: its draw competes with the
   // modelled parties, so their simulated shares shrink to honest levels.

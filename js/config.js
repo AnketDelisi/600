@@ -26662,8 +26662,11 @@ saxony_anhalt: {
       hristanov:  { code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#c0cc66' },
       radev:      { code: 'RADEV', name: 'Rumen Radev', name_en: 'Rumen Radev', color: '#0E7C6B', pastOnly: true },
       gerdzhikov: { code: 'GERDZH.', name: 'Anastas Gerdzhikov', name_en: 'Anastas Gerdzhikov', color: '#7B93C9', pastOnly: true },
+      karadayi:   { code: 'KARAD.', name: 'Mustafa Karadayi', name_en: 'Mustafa Karadayi', color: '#0065B7', pastOnly: true },
+      panov:      { code: 'PANOV', name: 'Lozan Panov', name_en: 'Lozan Panov', color: '#004A80', pastOnly: true },
+      nota:       { code: 'NOTA', name: 'None of the above', name_en: 'None of the above', color: '#9CA3AF', unallocated: true },
     },
-    order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov'],
+    order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov', 'karadayi', 'panov', 'nota'],
     parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
     blocs: {
       bloc1: { name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#DB0F28' },
@@ -26671,10 +26674,11 @@ saxony_anhalt: {
     },
     lastElection: {
       date: '2021-11-21',
-      // the 2021 first round as it happened: Radev (with Iotova as his
-      // running mate) vs Gerdzhikov; the 2026 candidates did not stand
-      results: { radev: 49.42, gerdzhikov: 22.83, kostadinov: 3.68, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 },
-      seats: { radev: 1, gerdzhikov: 0, kostadinov: 0, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 },
+      // the 2021 first round as it happened (Radev 49.42 with Iotova as
+      // his running mate, Gerdzhikov 22.83, Karadayi 11.57 for DPS, Panov
+      // 3.68 for DB, Kostadinov 3.92); the 2026 candidates did not stand
+      results: { radev: 49.42, gerdzhikov: 22.83, karadayi: 11.57, kostadinov: 3.92, panov: 3.68, nota: 2.3, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 },
+      seats: { radev: 1, gerdzhikov: 0, karadayi: 0, kostadinov: 0, panov: 0, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 },
     },
     map: {
       svg: 'img/bulgaria.svg',
@@ -26686,6 +26690,9 @@ saxony_anhalt: {
       // first-round baselines (2021's Radev/Gerdzhikov map is not available
       // per province, so the parliamentary pattern stands in)
       runoff2022: {"blagoevgrad": {"iotova": 71.75, "gyurov": 28.25}, "burgas": {"iotova": 67.91, "gyurov": 32.09}, "dobrich": {"iotova": 70.22, "gyurov": 29.78}, "gabrovo": {"iotova": 69.52, "gyurov": 30.48}, "haskovo": {"iotova": 70.88, "gyurov": 29.12}, "kardzhali": {"iotova": 87.27, "gyurov": 12.73}, "kyustendil": {"iotova": 72.33, "gyurov": 27.67}, "lovech": {"iotova": 72.31, "gyurov": 27.69}, "montana": {"iotova": 74.03, "gyurov": 25.97}, "pazardzhik": {"iotova": 73.12, "gyurov": 26.88}, "pernik": {"iotova": 69.99, "gyurov": 30.01}, "pleven": {"iotova": 72.89, "gyurov": 27.11}, "plovdiv": {"iotova": 66.19, "gyurov": 33.81}, "razgrad": {"iotova": 69.0, "gyurov": 31.0}, "ruse": {"iotova": 68.01, "gyurov": 31.99}, "shumen": {"iotova": 76.09, "gyurov": 23.91}, "silistra": {"iotova": 78.38, "gyurov": 21.62}, "sliven": {"iotova": 69.99, "gyurov": 30.01}, "smolyan": {"iotova": 73.81, "gyurov": 26.19}, "sofia": {"iotova": 70.79, "gyurov": 29.21}, "sofiacity": {"iotova": 51.22, "gyurov": 48.78}, "stara_zagora": {"iotova": 69.1, "gyurov": 30.9}, "targovishte": {"iotova": 79.19, "gyurov": 20.81}, "varna": {"iotova": 64.58, "gyurov": 35.42}, "veliko_tarnovo": {"iotova": 69.08, "gyurov": 30.92}, "vidin": {"iotova": 69.11, "gyurov": 30.89}, "vratsa": {"iotova": 72.38, "gyurov": 27.62}, "yambol": {"iotova": 71.01, "gyurov": 28.99}},
+      // the 2021 RESULT view: Radev carried every province but Kardzhali,
+      // where Karadayi (DPS) won the first round
+      winners2021: {"blagoevgrad": "radev", "burgas": "radev", "dobrich": "radev", "gabrovo": "radev", "haskovo": "radev", "kardzhali": "karadayi", "kyustendil": "radev", "lovech": "radev", "montana": "radev", "pazardzhik": "radev", "pernik": "radev", "pleven": "radev", "plovdiv": "radev", "razgrad": "radev", "ruse": "radev", "shumen": "radev", "silistra": "radev", "sliven": "radev", "smolyan": "radev", "sofia": "radev", "sofiacity": "radev", "stara_zagora": "radev", "targovishte": "radev", "varna": "radev", "veliko_tarnovo": "radev", "vidin": "radev", "vratsa": "radev", "yambol": "radev"},
       // current head-to-head estimate (first-round 47 vs 25 transfers)
       nationalRunoff: { iotova: 62, gyurov: 38 },
     },
@@ -26696,6 +26703,8 @@ saxony_anhalt: {
       kostadinov: 'img/bg/VAZ.svg', vasilev: 'img/bg/MECH.svg',
       mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/Edinenie.svg',
       radev: 'img/bg/PB.svg', gerdzhikov: 'img/bg/PPDB.svg',
+      karadayi: 'img/bg/DPS.svg', panov: 'img/bg/DB.svg',
+      nota: 'img/bg/NOTA.svg',
     },
   },
 
@@ -26704,7 +26713,7 @@ saxony_anhalt: {
     unitLabel: { en: 'provinces', tr: 'vilayet' },
     seats: 240,
     threshold: 4.0,
-    method: 'hare',
+    method: 'hare_niemeyer',
     seatBased: false,
     constituencies: false,
     recencyHalfLifeDays: 14,
@@ -26720,8 +26729,9 @@ saxony_anhalt: {
       bsp:  { code: 'BSP',  name: 'BSP – United Left', name_en: 'BSP – United Left', color: '#DB0F28' },
       aps:  { code: 'APS',  name: 'Alliance for Rights and Freedoms', name_en: 'Alliance for Rights and Freedoms', color: '#C55AD3' },
       ppdb: { code: 'PPDB', name: 'PP–DB', name_en: 'PP–DB', color: '#4200FF', pastOnly: true },
+      nota: { code: 'NOTA', name: 'None of the above', name_en: 'None of the above', color: '#9CA3AF', unallocated: true },
     },
-    order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps', 'ppdb'],
+    order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps', 'ppdb', 'nota'],
     parlOrder: ['bsp', 'aps', 'dps', 'pp', 'db', 'pb', 'mech', 'vaz', 'gerb', 'veli'],
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['pb'], color: '#034A3F' },
@@ -26731,7 +26741,7 @@ saxony_anhalt: {
       date: '2026-04-19',
       // PP-DB ran as one list in 2026 (37 seats); the two parties sit
       // separately in the current parliament and in the polls
-      results: {"pb": 43.9, "gerb": 13.2, "pp": 0, "db": 0, "dps": 7.0, "vaz": 4.2, "mech": 3.2, "veli": 3.1, "bsp": 3.0, "aps": 1.5, "ppdb": 12.4},
+      results: {"pb": 43.9, "gerb": 13.2, "pp": 0, "db": 0, "dps": 7.0, "vaz": 4.2, "mech": 3.2, "veli": 3.1, "bsp": 3.0, "aps": 1.5, "ppdb": 12.4, "nota": 1.5},
       seats: {"pb": 131, "gerb": 39, "pp": 0, "db": 0, "dps": 21, "vaz": 12, "mech": 0, "veli": 0, "bsp": 0, "aps": 0, "ppdb": 37},
     },
     map: {
@@ -26743,6 +26753,8 @@ saxony_anhalt: {
       seatDistricts: {"blagoevgrad": 11, "burgas": 14, "dobrich": 6, "gabrovo": 4, "haskovo": 8, "kardzhali": 5, "kyustendil": 4, "lovech": 5, "montana": 5, "pazardzhik": 9, "pernik": 4, "pleven": 9, "plovdiv": 22, "razgrad": 4, "ruse": 8, "shumen": 6, "silistra": 4, "sliven": 6, "smolyan": 4, "sofia": 8, "sofiacity": 42, "stara_zagora": 11, "targovishte": 4, "varna": 15, "veliko_tarnovo": 8, "vidin": 4, "vratsa": 6, "yambol": 4},
       gebiete: {"blagoevgrad": {"pb": 43.9, "gerb": 15.61, "pp": 4.26, "db": 4.77, "dps": 10.92, "vaz": 2.51, "mech": 3.2, "veli": 3.1, "bsp": 2.88, "aps": 2.34}, "burgas": {"pb": 43.9, "gerb": 13.41, "pp": 5.61, "db": 5.2, "dps": 9.35, "vaz": 4.49, "mech": 3.2, "veli": 3.1, "bsp": 2.79, "aps": 2.0}, "varna": {"pb": 43.9, "gerb": 15.44, "pp": 6.23, "db": 6.28, "dps": 3.01, "vaz": 5.79, "mech": 3.2, "veli": 3.1, "bsp": 2.62, "aps": 0.64}, "veliko_tarnovo": {"pb": 43.9, "gerb": 12.31, "pp": 5.42, "db": 5.2, "dps": 5.69, "vaz": 4.75, "mech": 3.2, "veli": 3.1, "bsp": 4.52, "aps": 1.22}, "vidin": {"pb": 43.9, "gerb": 16.25, "pp": 4.41, "db": 6.17, "dps": 4.12, "vaz": 2.94, "mech": 3.2, "veli": 3.1, "bsp": 4.41, "aps": 0.88}, "vratsa": {"pb": 43.9, "gerb": 15.91, "pp": 4.86, "db": 4.01, "dps": 5.62, "vaz": 3.37, "mech": 3.2, "veli": 3.1, "bsp": 3.53, "aps": 1.2}, "gabrovo": {"pb": 43.9, "gerb": 17.36, "pp": 5.87, "db": 4.22, "dps": 2.94, "vaz": 5.19, "mech": 3.2, "veli": 3.1, "bsp": 3.06, "aps": 0.63}, "dobrich": {"pb": 43.9, "gerb": 11.73, "pp": 5.46, "db": 4.55, "dps": 7.06, "vaz": 4.49, "mech": 3.2, "veli": 3.1, "bsp": 4.26, "aps": 1.51}, "kardzhali": {"pb": 43.9, "gerb": 6.09, "pp": 1.5, "db": 1.73, "dps": 44.51, "vaz": 0.95, "mech": 3.2, "veli": 3.1, "bsp": 1.29, "aps": 9.54}, "kyustendil": {"pb": 43.9, "gerb": 18.4, "pp": 5.29, "db": 3.68, "dps": 0.98, "vaz": 3.8, "mech": 3.2, "veli": 3.1, "bsp": 3.94, "aps": 0.21}, "lovech": {"pb": 43.9, "gerb": 16.14, "pp": 4.8, "db": 4.22, "dps": 5.29, "vaz": 3.98, "mech": 3.2, "veli": 3.1, "bsp": 4.14, "aps": 1.13}, "montana": {"pb": 43.9, "gerb": 12.02, "pp": 4.93, "db": 3.25, "dps": 12.09, "vaz": 3.2, "mech": 3.2, "veli": 3.1, "bsp": 3.67, "aps": 2.59}, "pazardzhik": {"pb": 43.9, "gerb": 15.38, "pp": 4.59, "db": 4.01, "dps": 8.56, "vaz": 3.54, "mech": 3.2, "veli": 3.1, "bsp": 3.85, "aps": 1.83}, "pernik": {"pb": 43.9, "gerb": 19.1, "pp": 5.21, "db": 4.77, "dps": 1.05, "vaz": 3.98, "mech": 3.2, "veli": 3.1, "bsp": 3.58, "aps": 0.22}, "pleven": {"pb": 43.9, "gerb": 12.54, "pp": 5.08, "db": 3.79, "dps": 3.92, "vaz": 3.63, "mech": 3.2, "veli": 3.1, "bsp": 4.76, "aps": 0.84}, "plovdiv": {"pb": 43.9, "gerb": 15.12, "pp": 5.98, "db": 5.9, "dps": 3.14, "vaz": 4.93, "mech": 3.2, "veli": 3.1, "bsp": 3.56, "aps": 0.67}, "razgrad": {"pb": 43.9, "gerb": 10.22, "pp": 2.29, "db": 7.8, "dps": 29.02, "vaz": 1.99, "mech": 3.2, "veli": 3.1, "bsp": 1.94, "aps": 6.22}, "ruse": {"pb": 43.9, "gerb": 12.36, "pp": 6.32, "db": 4.55, "dps": 5.29, "vaz": 4.84, "mech": 3.2, "veli": 3.1, "bsp": 3.26, "aps": 1.13}, "silistra": {"pb": 43.9, "gerb": 14.05, "pp": 3.69, "db": 2.6, "dps": 18.43, "vaz": 2.42, "mech": 3.2, "veli": 3.1, "bsp": 2.62, "aps": 3.95}, "sliven": {"pb": 43.9, "gerb": 15.5, "pp": 5.53, "db": 4.44, "dps": 3.73, "vaz": 4.23, "mech": 3.2, "veli": 3.1, "bsp": 3.53, "aps": 0.8}, "smolyan": {"pb": 43.9, "gerb": 14.4, "pp": 4.26, "db": 4.01, "dps": 13.86, "vaz": 2.07, "mech": 3.2, "veli": 3.1, "bsp": 3.64, "aps": 2.97}, "sofiacity": {"pb": 43.9, "gerb": 13.85, "pp": 7.29, "db": 14.41, "dps": 0.35, "vaz": 4.47, "mech": 3.2, "veli": 3.1, "bsp": 2.59, "aps": 0.07}, "sofia": {"pb": 43.9, "gerb": 16.66, "pp": 5.01, "db": 4.66, "dps": 3.73, "vaz": 3.63, "mech": 3.2, "veli": 3.1, "bsp": 3.91, "aps": 0.8}, "stara_zagora": {"pb": 43.9, "gerb": 13.35, "pp": 5.89, "db": 4.55, "dps": 4.38, "vaz": 5.36, "mech": 3.2, "veli": 3.1, "bsp": 3.73, "aps": 0.94}, "targovishte": {"pb": 43.9, "gerb": 9.81, "pp": 3.04, "db": 3.03, "dps": 24.71, "vaz": 2.51, "mech": 3.2, "veli": 3.1, "bsp": 3.2, "aps": 5.29}, "haskovo": {"pb": 43.9, "gerb": 13.06, "pp": 5.55, "db": 3.9, "dps": 10.98, "vaz": 3.89, "mech": 3.2, "veli": 3.1, "bsp": 3.03, "aps": 2.35}, "shumen": {"pb": 43.9, "gerb": 13.23, "pp": 4.29, "db": 2.92, "dps": 16.14, "vaz": 3.28, "mech": 3.2, "veli": 3.1, "bsp": 2.91, "aps": 3.46}, "yambol": {"pb": 43.9, "gerb": 13.93, "pp": 5.51, "db": 4.44, "dps": 1.05, "vaz": 5.01, "mech": 3.2, "veli": 3.1, "bsp": 5.82, "aps": 0.22}},
       national2021: {"pb": 43.9, "gerb": 13.2, "pp": 5.5, "db": 6.9, "dps": 7.0, "vaz": 4.2, "mech": 3.2, "veli": 3.1, "bsp": 3.0, "aps": 1.5},
+      // result views show the 2026 list as it ran: PP-DB merged
+      resultMerge: { pp: 'ppdb', db: 'ppdb' },
     },
     pollsterMAE: {},
     maeKey: 'BG2026',

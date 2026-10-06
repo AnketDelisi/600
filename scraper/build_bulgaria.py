@@ -230,7 +230,7 @@ def main():
     unitLabel: {{ en: 'provinces', tr: 'vilayet' }},
     seats: 240,
     threshold: 4.0,
-    method: 'hare',
+    method: 'hare_niemeyer',
     seatBased: false,
     constituencies: false,
     recencyHalfLifeDays: 14,
@@ -246,8 +246,9 @@ def main():
       bsp:  {{ code: 'BSP',  name: 'BSP – United Left', name_en: 'BSP – United Left', color: '#DB0F28' }},
       aps:  {{ code: 'APS',  name: 'Alliance for Rights and Freedoms', name_en: 'Alliance for Rights and Freedoms', color: '#C55AD3' }},
       ppdb: {{ code: 'PPDB', name: 'PP–DB', name_en: 'PP–DB', color: '#4200FF', pastOnly: true }},
+      nota: {{ code: 'NOTA', name: 'None of the above', name_en: 'None of the above', color: '#9CA3AF', unallocated: true }},
     }},
-    order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps', 'ppdb'],
+    order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps', 'ppdb', 'nota'],
     parlOrder: ['bsp', 'aps', 'dps', 'pp', 'db', 'pb', 'mech', 'vaz', 'gerb', 'veli'],
     blocs: {{
       bloc1: {{ name: 'Government', short: 'GOV', parties: ['pb'], color: '#034A3F' }},
@@ -257,7 +258,7 @@ def main():
       date: '2026-04-19',
       // PP-DB ran as one list in 2026 (37 seats); the two parties sit
       // separately in the current parliament and in the polls
-      results: {j(dict(NATIONAL, ppdb=12.4, pp=0, db=0), ensure_ascii=False)},
+      results: {j(dict(NATIONAL, ppdb=12.4, pp=0, db=0, nota=1.5), ensure_ascii=False)},
       seats: {j(dict(SEATS_2026, ppdb=37, pp=0, db=0), ensure_ascii=False)},
     }},
     map: {{
@@ -269,6 +270,8 @@ def main():
       seatDistricts: {j({k: SEATS[k] for k in keys}, ensure_ascii=False)},
       gebiete: {j(gebiete, ensure_ascii=False)},
       national2021: {j(NATIONAL, ensure_ascii=False)},
+      // result views show the 2026 list as it ran: PP-DB merged
+      resultMerge: {{ pp: 'ppdb', db: 'ppdb' }},
     }},
     pollsterMAE: {{}},
     maeKey: 'BG2026',
@@ -326,8 +329,11 @@ def main():
       hristanov:  {{ code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#c0cc66' }},
       radev:      {{ code: 'RADEV', name: 'Rumen Radev', name_en: 'Rumen Radev', color: '#0E7C6B', pastOnly: true }},
       gerdzhikov: {{ code: 'GERDZH.', name: 'Anastas Gerdzhikov', name_en: 'Anastas Gerdzhikov', color: '#7B93C9', pastOnly: true }},
+      karadayi:   {{ code: 'KARAD.', name: 'Mustafa Karadayi', name_en: 'Mustafa Karadayi', color: '#0065B7', pastOnly: true }},
+      panov:      {{ code: 'PANOV', name: 'Lozan Panov', name_en: 'Lozan Panov', color: '#004A80', pastOnly: true }},
+      nota:       {{ code: 'NOTA', name: 'None of the above', name_en: 'None of the above', color: '#9CA3AF', unallocated: true }},
     }},
-    order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov'],
+    order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov', 'karadayi', 'panov', 'nota'],
     parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
     blocs: {{
       bloc1: {{ name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#DB0F28' }},
@@ -335,10 +341,11 @@ def main():
     }},
     lastElection: {{
       date: '2021-11-21',
-      // the 2021 first round as it happened: Radev (with Iotova as his
-      // running mate) vs Gerdzhikov; the 2026 candidates did not stand
-      results: {{ radev: 49.42, gerdzhikov: 22.83, kostadinov: 3.68, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
-      seats: {{ radev: 1, gerdzhikov: 0, kostadinov: 0, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
+      // the 2021 first round as it happened (Radev 49.42 with Iotova as
+      // his running mate, Gerdzhikov 22.83, Karadayi 11.57 for DPS, Panov
+      // 3.68 for DB, Kostadinov 3.92); the 2026 candidates did not stand
+      results: {{ radev: 49.42, gerdzhikov: 22.83, karadayi: 11.57, kostadinov: 3.92, panov: 3.68, nota: 2.3, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
+      seats: {{ radev: 1, gerdzhikov: 0, karadayi: 0, kostadinov: 0, panov: 0, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
     }},
     map: {{
       svg: 'img/bulgaria.svg',
@@ -350,6 +357,10 @@ def main():
       // first-round baselines (2021's Radev/Gerdzhikov map is not available
       // per province, so the parliamentary pattern stands in)
       runoff2022: {j(pres_runoff, ensure_ascii=False)},
+      // the 2021 RESULT view: Radev carried every province but Kardzhali,
+      // where Karadayi (DPS) won the first round
+      winners2021: {j(dict({k: "radev" for k in keys}, kardzhali="karadayi"),
+                       ensure_ascii=False)},
       // current head-to-head estimate (first-round 47 vs 25 transfers)
       nationalRunoff: {{ iotova: 62, gyurov: 38 }},
     }},
@@ -360,6 +371,8 @@ def main():
       kostadinov: 'img/bg/VAZ.svg', vasilev: 'img/bg/MECH.svg',
       mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/Edinenie.svg',
       radev: 'img/bg/PB.svg', gerdzhikov: 'img/bg/PPDB.svg',
+      karadayi: 'img/bg/DPS.svg', panov: 'img/bg/DB.svg',
+      nota: 'img/bg/NOTA.svg',
     }},
   }},
 """

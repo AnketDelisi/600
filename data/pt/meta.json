@@ -1,0 +1,9 @@
+{
+ "country": "pt",
+ "name": "Portugal",
+ "seats": 230,
+ "threshold": 0.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "Assembly of the Republic: 230 seats, 22 multi-member constituencies (18 mainland districts, Azores, Madeira and the two diaspora constituencies), closed-list D'Hondt per district, no legal threshold (the effective threshold is the district magnitude). 2025 result: AD 31.8% (91 seats), PS 22.8% (58), Chega 22.8% (60), IL 5.4% (9), LIVRE 4.1% (6), CDU 2.9% (3), BE 2.0% (1), PAN 1.4% (1), JPP 0.3% (1). Next legislative election due by 14 October 2029; polling tracked from the 2025 election onward."
+}

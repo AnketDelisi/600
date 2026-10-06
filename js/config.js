@@ -24031,6 +24031,15 @@ saxony_anhalt: {
     // not the driver - anchored at the recent poll mean, total move capped
     // at 0.15pp/day (3.2pp over the 21-day horizon), damped and blended at
     // 0.4; the old loose caps moved NDP ~+8pp / ~+29 seats on a noisy slope
+    trend: {
+      electionDate: '2026-10-24',
+      blend: 0.4,
+      maxDaily: 0.15,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+      dampDays: 10,
+    },
     // colours from Template:Canadian party colour (en.wikipedia)
     parties: {
       bcndp: { code: 'BCNDP',   name: 'British Columbia New Democratic Party', name_en: 'British Columbia New Democratic Party', color: '#F4A460' },
@@ -24057,7 +24066,10 @@ saxony_anhalt: {
       svg: 'img/bc_ridings.svg',
       // swing method: geometric mean of log-odds proportional and uniform
       // swing (bounded, no ratio explosions on strongholds)
-      swingMethod: 'geometric',
+      // proportional swing: the seat-level backtests (QC 2026: MAE 18 vs
+      // 28; BC 2024: 45/52 vs 44/52) favour it over the geometric for
+      // stable party systems - it captures collapses and surges
+      swingMethod: 'proportional',
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring
@@ -25282,6 +25294,15 @@ saxony_anhalt: {
     // trend extrapolation to the 2026-10-05 election: momentum is a nudge,
     // not the driver (anchored at the recent poll mean, 0.15pp/day cap,
     // 10-day damping, blend 0.4); with 2 days left the damped move is tiny
+    trend: {
+      electionDate: '2026-10-05',
+      blend: 0.4,
+      maxDaily: 0.15,
+      windowDays: 120,
+      fitDays: 14,
+      minPolls: 3,
+      dampDays: 10,
+    },
     // colours from the en.wikipedia party infoboxes
     parties: {
       caq:  { code: 'CAQ',  name: 'Coalition Avenir Québec',           name_en: 'Coalition Avenir Québec',           color: '#1E90FF' },
@@ -25320,7 +25341,10 @@ saxony_anhalt: {
       svg: 'img/quebec.svg',
       // swing method: geometric mean of log-odds proportional and uniform
       // swing (bounded, no ratio explosions on strongholds)
-      swingMethod: 'geometric',
+      // proportional swing (see the QC 2026 seat-level post-mortem:
+      // seat-total MAE 18 vs 28 for the geometric, and it catches the
+      // CAQ collapse and the PCQ surge)
+      swingMethod: 'proportional',
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
       // sitting-member personal-vote lift for the party that won the seat

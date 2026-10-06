@@ -33,7 +33,11 @@ MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
 
 CANDS = [("iotova", "iotova"), ("gyurov", "gyurov"),
          ("kostadinov", "kostadinov"), ("vasilev", "vasilev"),
-         ("mihaylov", "mihaylov"), ("hristanov", "hristanov")]
+         ("mihaylov", "mihaylov"), ("hristanov", "hristanov"),
+         ("nota", "nota")]
+# the Global Metrics poll asked about generic party-affiliated candidates,
+# not the actual nominees (the article marks it [d])
+SKIP = {("Global Metrics", "2026-07-11")}
 PARTIES = [k for k, _ in CANDS]
 MIN_CANDS = 3
 
@@ -98,14 +102,18 @@ def scrape():
             if any("Iotova" in x and is_name_cell(x) for x in texts) and \
                     any("Gyurov" in x and is_name_cell(x) for x in texts):
                 cand_row = ri
+                # party columns come from the whole header block: the
+                # candidates sit in one row, NOTA in the row above
                 cols = {}
-                for col, span, txt in metas[ri]:
-                    low = txt.lower()
-                    if not is_name_cell(txt):
-                        continue
-                    for key, _ in CANDS:
-                        if low.startswith(key[:6]) and key not in cols.values():
-                            cols[col] = key
+                for rr in range(0, cand_row + 1):
+                    for col, span, txt in metas[rr]:
+                        low = txt.lower()
+                        if not is_name_cell(txt):
+                            continue
+                        for key, _ in CANDS:
+                            if low.startswith(key[:6]) and \
+                                    key not in cols.values():
+                                cols[col] = key
                 break
         if cand_row is None or len(cols) < MIN_CANDS:
             continue
@@ -140,7 +148,7 @@ def scrape():
             if len(votes) < MIN_CANDS:
                 continue
             sig = (pollster, date)
-            if sig in seen:
+            if sig in seen or sig in SKIP:
                 continue
             seen.add(sig)
             polls.append({

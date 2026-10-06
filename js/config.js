@@ -26587,6 +26587,51 @@ saxony_anhalt: {
     },
   },
 
+  hu: {
+    name: 'Hungary',
+    seats: 199,
+    threshold: 5.0,
+    method: 'dhondt',
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 14,
+    parties: {
+      tisza:  { code: 'TISZA',  name: 'Tisza Párt', name_en: 'Tisza Party', color: '#00A9A5' },
+      fidesz: { code: 'FIDESZ', name: 'Fidesz–KDNP', name_en: 'Fidesz–KDNP', color: '#F47920' },
+      mh:     { code: 'MH',     name: 'Mi Hazánk Mozgalom', name_en: 'Our Homeland Movement', color: '#3C5E34' },
+      dk:     { code: 'DK',     name: 'Demokratikus Koalíció', name_en: 'Democratic Coalition', color: '#1D5DA8' },
+      mkkp:   { code: 'MKKP',   name: 'Magyar Kétfarkú Kutya Párt', name_en: 'Hungarian Two-Tailed Dog Party', color: '#8C8C8C' },
+    },
+    order: ['tisza', 'fidesz', 'mh', 'dk', 'mkkp'],
+    parlOrder: ['dk', 'mkkp', 'tisza', 'mh', 'fidesz'],
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['tisza'], color: '#00A9A5' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['fidesz', 'mh', 'dk', 'mkkp'], color: '#F47920' },
+    },
+    lastElection: {
+      date: '2026-04-12',
+      results: {"tisza": 53.18, "fidesz": 38.61, "mh": 5.63, "dk": 1.1, "mkkp": 0.82},
+      seats: {"tisza": 141, "fidesz": 52, "mh": 6, "dk": 0, "mkkp": 0},
+    },
+    map: {
+      svg: 'img/hungary.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      districts: {"bacskiskun": "bacskiskun", "baranya": "baranya", "bekes": "bekes", "borsodabaujzemplen": "borsodabaujzemplen", "budapest": "budapest", "csongradcsanad": "csongradcsanad", "fejer": "fejer", "gyormosonsopron": "gyormosonsopron", "hajdubihar": "hajdubihar", "heves": "heves", "jasznagykunszolnok": "jasznagykunszolnok", "komaromesztergom": "komaromesztergom", "nograd": "nograd", "pest": "pest", "somogy": "somogy", "szabolcsszatmarbereg": "szabolcsszatmarbereg", "tolna": "tolna", "vas": "vas", "veszprem": "veszprem", "zala": "zala"},
+      gebiete: {"bacskiskun": {"tisza": 52.34, "fidesz": 39.07, "mh": 6.88, "dk": 0.99, "mkkp": 0.72}, "baranya": {"tisza": 56.94, "fidesz": 35.58, "mh": 5.38, "dk": 1.36, "mkkp": 0.74}, "bekes": {"tisza": 55.03, "fidesz": 36.88, "mh": 6.45, "dk": 0.99, "mkkp": 0.64}, "borsodabaujzemplen": {"tisza": 54.79, "fidesz": 37.69, "mh": 5.95, "dk": 1.01, "mkkp": 0.56}, "budapest": {"tisza": 63.87, "fidesz": 28.41, "mh": 4.6, "dk": 1.7, "mkkp": 1.42}, "csongradcsanad": {"tisza": 59.92, "fidesz": 31.29, "mh": 6.72, "dk": 1.17, "mkkp": 0.9}, "fejer": {"tisza": 53.99, "fidesz": 37.59, "mh": 6.26, "dk": 1.2, "mkkp": 0.97}, "gyormosonsopron": {"tisza": 52.83, "fidesz": 39.37, "mh": 6.08, "dk": 0.95, "mkkp": 0.76}, "hajdubihar": {"tisza": 53.42, "fidesz": 39.09, "mh": 5.92, "dk": 0.9, "mkkp": 0.68}, "heves": {"tisza": 53.24, "fidesz": 38.29, "mh": 6.86, "dk": 1.04, "mkkp": 0.57}, "jasznagykunszolnok": {"tisza": 52.94, "fidesz": 38.76, "mh": 6.68, "dk": 0.99, "mkkp": 0.62}, "komaromesztergom": {"tisza": 56.46, "fidesz": 35.55, "mh": 5.94, "dk": 1.26, "mkkp": 0.79}, "nograd": {"tisza": 48.16, "fidesz": 42.9, "mh": 7.37, "dk": 1.06, "mkkp": 0.51}, "pest": {"tisza": 57.23, "fidesz": 34.52, "mh": 6.31, "dk": 1.03, "mkkp": 0.92}, "somogy": {"tisza": 51.7, "fidesz": 40.76, "mh": 5.69, "dk": 1.23, "mkkp": 0.62}, "szabolcsszatmarbereg": {"tisza": 50.21, "fidesz": 43.72, "mh": 4.84, "dk": 0.8, "mkkp": 0.43}, "tolna": {"tisza": 48.91, "fidesz": 43.06, "mh": 6.49, "dk": 0.98, "mkkp": 0.56}, "vas": {"tisza": 48.96, "fidesz": 43.36, "mh": 5.87, "dk": 1.09, "mkkp": 0.72}, "veszprem": {"tisza": 54.52, "fidesz": 37.25, "mh": 6.18, "dk": 1.22, "mkkp": 0.84}, "zala": {"tisza": 51.8, "fidesz": 40.23, "mh": 6.12, "dk": 1.14, "mkkp": 0.7}},
+      // 106 single-member constituencies: the strongest party in each county
+      // takes that county's seats (the 2026 reality: Tisza swept 96 of 106)
+      winnerDistricts: {"budapest": 16, "pest": 14, "borsodabaujzemplen": 7, "szabolcsszatmarbereg": 6, "bacskiskun": 6, "hajdubihar": 6, "fejer": 5, "gyormosonsopron": 5, "baranya": 4, "csongradcsanad": 4, "somogy": 4, "veszprem": 4, "bekes": 4, "jasznagykunszolnok": 4, "heves": 3, "komaromesztergom": 3, "tolna": 3, "vas": 3, "zala": 3, "nograd": 2},
+      national2021: {"tisza": 53.18, "fidesz": 38.61, "mh": 5.63, "dk": 1.1, "mkkp": 0.82},
+    },
+    pollsterMAE: {},
+    maeKey: 'HU2026',
+    logos: {
+      tisza: 'img/hu/TISZA.svg', fidesz: 'img/hu/FIDESZ.svg',
+      mh: 'img/hu/MH.svg', dk: 'img/hu/DK.svg', mkkp: 'img/hu/MKKP.svg',
+    },
+  },
+
   pt: {
     name: 'Portugal',
     seats: 230,

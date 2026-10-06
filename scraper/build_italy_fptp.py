@@ -46,7 +46,8 @@ ATTRIBUTION = ("Geometria: basi geografiche dei collegi elettorali "
                "(d.lgs. 177/2020, riformeistituzionali.gov.it); Risultati: "
                "Ministero dell'Interno (elezioni 2022, via it.wikipedia)")
 
-PARTIES = ["fdi", "pd", "m5s", "lega", "fi", "a", "iv", "avs", "e", "nm", "fn"]
+PARTIES = ["fdi", "pd", "m5s", "lega", "fi", "a", "iv", "avs", "e", "nm",
+           "fn", "svp"]
 
 # winning party name (group column) -> config party key
 GROUP_KEY = {
@@ -115,6 +116,8 @@ def list_key(txt):
         return "e"
     if "MOVIMENTO 5 STELLE" in u:
         return "m5s"
+    if "VOLKSPARTEI" in u or "SÜDTIROLER" in u:
+        return "svp"
     return None
 
 

@@ -34,7 +34,7 @@ HDR_MAP = {
     "pp": "pp", "db": "db", "pp–db": "ppdb", "pp-db": "ppdb",
     "dps": "dps", "vaz.": "vaz", "vaz": "vaz", "vazrazhdane": "vaz",
     "mech": "mech", "veli.": "veli", "veli": "veli", "bsp": "bsp",
-    "bsp–ol": "bsp", "bsp-ol": "bsp", "aps": "aps",
+    "bsp–ol": "bsp", "bsp-ol": "bsp", "aps": "aps", "nota": "nota",
 }
 PARTIES = ["pb", "gerb", "pp", "db", "dps", "vaz", "mech", "veli", "bsp",
            "aps"]

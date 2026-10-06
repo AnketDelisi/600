@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b30';
+const LOGO_CACHE = 'b31';
 
 const COUNTRIES = {
 
@@ -124,11 +124,11 @@ const COUNTRIES = {
     parties: {
       likud:     { code: 'LK', name: 'Likud',                    name_en: 'Likud',            color: '#1F5AA5' },
       together:  { code: 'TG', name: 'Together',                 name_en: 'Together',         color: '#2A2A78' },
-      rzp:       { code: 'RZP', name: 'Religious Zionist Party',  name_en: 'Religious Zionism', color: '#4F9298' },
+      rzp:       { code: 'RZP-Zehut', name: 'Religious Zionist Party',  name_en: 'Religious Zionism', color: '#4F9298' },
       otzma:     { code: 'OTZ', name: 'Otzma Yehudit',            name_en: 'Otzma Yehudit',    color: '#FF4500' },
       blue_white:{ code: 'BW', name: 'Blue and White',           name_en: 'Blue and White',   color: '#0DAAFF' },
       shas:      { code: 'SHAS', name: 'Shas',                     name_en: 'Shas',             color: '#000000' },
-      reservists:{ code: 'RSV', name: 'The Reservists',           name_en: 'The Reservists',   color: '#68692C' },
+      reservists:{ code: 'RSV-NEP', name: 'The Reservists',           name_en: 'The Reservists',   color: '#68692C' },
       amcha:     { code: 'AMC', name: 'Amcha Yisrael',            name_en: 'Amcha Yisrael',    color: '#8F36BF' },
       utj:       { code: 'UTJ', name: 'United Torah Judaism',     name_en: 'United Torah Judaism', color: '#003366' },
       yb:        { code: 'YB', name: 'Yisrael Beiteinu',         name_en: 'Yisrael Beiteinu', color: '#23C2EB' },

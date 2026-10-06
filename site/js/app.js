@@ -856,7 +856,10 @@ function renderHeroGeneric(avg, filteredPolls){
 function renderPartyBars(avg){
   const maxPct=Math.max(...Object.values(avg).filter(v=>v!==null),1);
   const seats=allocateSeatsTotal(avg, SEATS_TOTAL);
-  const order=PARTY_ORDER.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
+  // unallocated entries (Bulgaria's NOTA) sit last, just before the Other row
+  const order=PARTY_ORDER.slice().sort((a,b)=>
+    ((PARTY_META[a]&&PARTY_META[a].unallocated)?1:0)-((PARTY_META[b]&&PARTY_META[b].unallocated)?1:0)
+    ||(avg[b]||0)-(avg[a]||0));
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.pollAvg}</div></div>
     <div class="bar-header"><span class="bh-logo"></span><span class="bh-party">${t('PARTY','PARTİ')}</span><span class="bh-bar"></span><span class="bh-pct">${SEAT_BASED?'SEATS':'%'}</span><span class="bh-delta">Δ</span>${SEAT_BASED||MAP_ONLY?'':'<span class="bh-seats">SEATS</span>'}</div>`;
 

@@ -1876,13 +1876,15 @@ function districtSeatSplit(nr, avg, resultMode, conf){
   const natBase=resultMode?(conf.national2021||LAST_ELECTION.results):avg;
   if(conf.seatDistricts&&conf.seatDistricts[nr]){
     seatsN=conf.seatDistricts[nr];
+    method=SEAT_METHOD;
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return null;
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
     const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
       :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
-    valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&
-      ((dth?votes[p]:(natBase&&natBase[p]||0))>=THRESHOLD));
+    valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0
+      &&!(PARTY_META[p]&&PARTY_META[p].unallocated)
+      &&((dth?votes[p]:(natBase&&natBase[p]||0))>=THRESHOLD));
   }else if(conf.regions&&conf.regions[nr]){
     // Czechia: the map2 regions carry their own shares and seats
     const r=conf.regions[nr];
@@ -1892,7 +1894,8 @@ function districtSeatSplit(nr, avg, resultMode, conf){
       votes[p]=Math.max(0,(r.results[p]||0)+(resultMode?0:((avg&&avg[p]||0)-(nat[p]||0))));
     });
     method='imperiali';
-    valid=PARTY_ORDER.filter(p=>((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
+    valid=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].unallocated)
+      &&((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
   }else if(dots&&dots.seats){
     // nr is the raw path id; the seats are keyed by the district's gebiet key
     const gKey=(conf.districts&&conf.districts[String(nr)])||String(nr);
@@ -1902,13 +1905,14 @@ function districtSeatSplit(nr, avg, resultMode, conf){
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return null;
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
-    valid=PARTY_ORDER.filter(p=>((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
+    valid=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].unallocated)
+      &&((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
   }else{
     return null;
   }
   if(!seatsN||!valid||!valid.length) return null;
   const seats={};
-  if(method==='hare'||method==='imperiali'){
+  if(method==='hare'||method==='hare_niemeyer'||method==='imperiali'){
     const total=valid.reduce((a,p)=>a+(votes[p]||0),0);
     if(!(total>0)) return null;
     const quota=total/(method==='imperiali'?seatsN+2:seatsN);

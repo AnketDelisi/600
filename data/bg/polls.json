@@ -1,0 +1,129 @@
+{
+ "country": "bg",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+ "scraped_at": "2026-10-06T16:23:33Z",
+ "poll_count": 7,
+ "polls": [
+  {
+   "pollster": "Market Links",
+   "date": "2026-05-27",
+   "n": 1008,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 45.7,
+    "gerb": 15.6,
+    "pp": 13.7,
+    "db": 6.8,
+    "dps": 4.3,
+    "aps": 12.9
+   }
+  },
+  {
+   "pollster": "Market Links",
+   "date": "2026-06-21",
+   "n": 1005,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 46.3,
+    "gerb": 15.5,
+    "pp": 14.0,
+    "db": 5.8,
+    "dps": 5.0,
+    "aps": 11.6
+   }
+  },
+  {
+   "pollster": "Market Links",
+   "date": "2026-07-19",
+   "n": 1002,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 45.5,
+    "gerb": 14.8,
+    "pp": 16.7,
+    "db": 4.9,
+    "dps": 4.2,
+    "aps": 10.7
+   }
+  },
+  {
+   "pollster": "Alpha Research",
+   "date": "2026-07-23",
+   "n": 1000,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 46.8,
+    "gerb": 14.8,
+    "pp": 7.4,
+    "db": 6.9,
+    "dps": 5.9,
+    "vaz": 4.5,
+    "bsp": 3.2
+   }
+  },
+  {
+   "pollster": "Gallup",
+   "date": "2026-08-04",
+   "n": 821,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 44.4,
+    "gerb": 12.6,
+    "pp": 8.0,
+    "db": 6.6,
+    "dps": 7.4,
+    "vaz": 5.0,
+    "mech": 2.2,
+    "veli": 2.3,
+    "bsp": 3.7,
+    "aps": 0.5
+   }
+  },
+  {
+   "pollster": "Market Links",
+   "date": "2026-09-29",
+   "n": 1006,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 42.2,
+    "gerb": 12.6,
+    "pp": 11.0,
+    "db": 8.8,
+    "dps": 5.5,
+    "vaz": 6.6
+   }
+  },
+  {
+   "pollster": "Trend",
+   "date": "2026-10-02",
+   "n": 1003,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 40.8,
+    "gerb": 14.2,
+    "pp": 7.6,
+    "db": 6.5,
+    "dps": 6.2,
+    "vaz": 5.7,
+    "mech": 3.8,
+    "veli": 2.7,
+    "bsp": 3.6
+   }
+  }
+ ]
+}

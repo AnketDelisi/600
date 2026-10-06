@@ -339,7 +339,10 @@ def main():
       svg: 'img/quebec.svg',
       // swing method: geometric mean of log-odds proportional and uniform
       // swing (bounded, no ratio explosions on strongholds)
-      swingMethod: 'geometric',
+      // proportional swing (see the QC 2026 seat-level post-mortem:
+      // seat-total MAE 18 vs 28 for the geometric, and it catches the
+      // CAQ collapse and the PCQ surge)
+      swingMethod: 'proportional',
       selector: 'id',
       useConstituencies: true,     // 127 ridings, projected winner takes the seat
       // sitting-member personal-vote lift for the party that won the seat

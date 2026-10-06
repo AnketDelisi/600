@@ -308,7 +308,10 @@ def main():
       svg: 'img/bc_ridings.svg',
       // swing method: geometric mean of log-odds proportional and uniform
       // swing (bounded, no ratio explosions on strongholds)
-      swingMethod: 'geometric',
+      // proportional swing: the seat-level backtests (QC 2026: MAE 18 vs
+      // 28; BC 2024: 45/52 vs 44/52) favour it over the geometric for
+      // stable party systems - it captures collapses and surges
+      swingMethod: 'proportional',
       selector: 'id',
       useConstituencies: true,     // 93 ridings, projected winner takes the seat
       hideBlocToggle: true,        // no NDP-vs-rest bloc coloring

@@ -1015,12 +1015,13 @@ function renderTrendChart(canvas, polls){
     return {pid, points, smooth, color:PARTY_META[pid]?PARTY_META[pid].color:'#888'};
   });
 
-  // Find y range (data-driven, no clipping; cap at 55 for sanity)
+  // Find y range (data-driven, no clipping; high sanity cap so a 60%+
+  // leader like Hungary's Tisza stays on the chart)
   let yMin=Infinity,yMax=-Infinity;
   series.forEach(s=>s.points.forEach(v=>{if(v!==null){yMin=Math.min(yMin,v);yMax=Math.max(yMax,v)}}));
   if(!isFinite(yMin)){yMin=0;yMax=45}
   yMin=Math.floor(Math.max(0,yMin-3));
-  yMax=Math.ceil(Math.min(55,yMax+3));
+  yMax=Math.ceil(Math.min(95,yMax+3));
 
   CHART_STATE.ctx=ctx; CHART_STATE.W=W; CHART_STATE.H=H;
   CHART_STATE.pad=pad; CHART_STATE.dates=dates; CHART_STATE.series=series;
@@ -2672,18 +2673,28 @@ function allocateSeatsTotal(avg, total){
 }
 
 // Mixed systems where the strongest party in a district takes all of its
-// single-member seats (Hungary's counties): the winner's mandates come from
-// the district magnitudes, the remaining seats are a national PR with the
-// threshold (the Hungarian 93 list seats).
+// single-member seats (Hungary): when the country carries real single-member
+// constituencies (map2), each one is a winner-takes-one race and the rest is
+// a national PR with the threshold; otherwise the county magnitudes
+// approximate the SMD blocks.
 function allocateSeatsWinnerDistricts(avg, total){
   const conf=MAP_CONF();
   if(!conf||!conf.winnerDistricts) return null;
+  const c=COUNTRIES[COUNTRY]||{};
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   let direct=0;
-  for(const nr of Object.keys(conf.winnerDistricts)){
-    const n=conf.winnerDistricts[nr];
-    const w=districtWinnerProjection(nr,avg,conf);
-    if(w){ out[w]=(out[w]||0)+n; direct+=n; }
+  if(c.map2&&c.map2.districts&&c.map2.gebiete){
+    const conf2=Object.assign({},c,c.map,c.map2);
+    for(const nr of Object.keys(c.map2.districts)){
+      const w=districtWinnerProjection(nr,avg,conf2);
+      if(w){ out[w]=(out[w]||0)+1; direct++; }
+    }
+  }else{
+    for(const nr of Object.keys(conf.winnerDistricts)){
+      const n=conf.winnerDistricts[nr];
+      const w=districtWinnerProjection(nr,avg,conf);
+      if(w){ out[w]=(out[w]||0)+n; direct+=n; }
+    }
   }
   const totalSeats=total||SEATS_TOTAL;
   const pr=allocateSeatsN(avg, Math.max(0,totalSeats-direct));

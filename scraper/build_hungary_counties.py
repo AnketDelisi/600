@@ -166,6 +166,11 @@ def main():
 
     j = json.dumps
     keys = sorted(set(names.values()))
+    smd_path = os.path.join(ROOT, "data", "hu", "smd.json")
+    smd = {}
+    if os.path.isfile(smd_path):
+        smd = json.load(open(smd_path, encoding="utf8")).get("smds", {})
+    print("SMD baselines for the map2:", len(smd))
     block = f"""  hu: {{
     name: 'Hungary',
     seats: 199,
@@ -175,17 +180,17 @@ def main():
     constituencies: false,
     recencyHalfLifeDays: 14,
     parties: {{
-      tisza:  {{ code: 'TISZA',  name: 'Tisza Párt', name_en: 'Tisza Party', color: '#00A9A5' }},
-      fidesz: {{ code: 'FIDESZ', name: 'Fidesz–KDNP', name_en: 'Fidesz–KDNP', color: '#F47920' }},
-      mh:     {{ code: 'MH',     name: 'Mi Hazánk Mozgalom', name_en: 'Our Homeland Movement', color: '#3C5E34' }},
-      dk:     {{ code: 'DK',     name: 'Demokratikus Koalíció', name_en: 'Democratic Coalition', color: '#1D5DA8' }},
-      mkkp:   {{ code: 'MKKP',   name: 'Magyar Kétfarkú Kutya Párt', name_en: 'Hungarian Two-Tailed Dog Party', color: '#8C8C8C' }},
+      tisza:  {{ code: 'TISZA',  name: 'Tisza Párt', name_en: 'Tisza Party', color: '#88E8FF' }},
+      fidesz: {{ code: 'FIDESZ', name: 'Fidesz–KDNP', name_en: 'Fidesz–KDNP', color: '#FF6A00' }},
+      mh:     {{ code: 'MH',     name: 'Mi Hazánk Mozgalom', name_en: 'Our Homeland Movement', color: '#688D1B' }},
+      dk:     {{ code: 'DK',     name: 'Demokratikus Koalíció', name_en: 'Democratic Coalition', color: '#2A61A4' }},
+      mkkp:   {{ code: 'MKKP',   name: 'Magyar Kétfarkú Kutya Párt', name_en: 'Hungarian Two-Tailed Dog Party', color: '#808080' }},
     }},
     order: ['tisza', 'fidesz', 'mh', 'dk', 'mkkp'],
     parlOrder: ['dk', 'mkkp', 'tisza', 'mh', 'fidesz'],
     blocs: {{
-      bloc1: {{ name: 'Government', short: 'GOV', parties: ['tisza'], color: '#00A9A5' }},
-      bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['fidesz', 'mh', 'dk', 'mkkp'], color: '#F47920' }},
+      bloc1: {{ name: 'Government', short: 'GOV', parties: ['tisza'], color: '#88E8FF' }},
+      bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['fidesz', 'mh', 'dk', 'mkkp'], color: '#FF6A00' }},
     }},
     lastElection: {{
       date: '2026-04-12',
@@ -202,6 +207,16 @@ def main():
       // takes that county's seats (the 2026 reality: Tisza swept 96 of 106)
       winnerDistricts: {j(SMD, ensure_ascii=False)},
       national2021: {j(NATIONAL, ensure_ascii=False)},
+      // the real 106 single-member constituencies (NVI boundaries), with
+      // their exact 2026 party shares - the allocator uses them for the SMD
+      // winners, the map toggle displays them
+      map2: {{
+        svg: 'img/hungary_smd.svg',
+        selector: 'id',
+        label: 'CONSTITUENCIES (106)',
+        districts: {j({k: k for k in sorted(smd)}, ensure_ascii=False)},
+        gebiete: {j(smd, ensure_ascii=False)},
+      }},
     }},
     pollsterMAE: {{}},
     maeKey: 'HU2026',

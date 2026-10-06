@@ -245,8 +245,9 @@ def main():
       veli: {{ code: 'VEL',  name: 'Velichie', name_en: 'Greatness', color: '#AC2225' }},
       bsp:  {{ code: 'BSP',  name: 'BSP – United Left', name_en: 'BSP – United Left', color: '#DB0F28' }},
       aps:  {{ code: 'APS',  name: 'Alliance for Rights and Freedoms', name_en: 'Alliance for Rights and Freedoms', color: '#C55AD3' }},
+      ppdb: {{ code: 'PPDB', name: 'PP–DB', name_en: 'PP–DB', color: '#4200FF', pastOnly: true }},
     }},
-    order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps'],
+    order: ['pb', 'gerb', 'pp', 'db', 'dps', 'vaz', 'mech', 'veli', 'bsp', 'aps', 'ppdb'],
     parlOrder: ['bsp', 'aps', 'dps', 'pp', 'db', 'pb', 'mech', 'vaz', 'gerb', 'veli'],
     blocs: {{
       bloc1: {{ name: 'Government', short: 'GOV', parties: ['pb'], color: '#034A3F' }},
@@ -254,8 +255,10 @@ def main():
     }},
     lastElection: {{
       date: '2026-04-19',
-      results: {j(NATIONAL, ensure_ascii=False)},
-      seats: {j(SEATS_2026, ensure_ascii=False)},
+      // PP-DB ran as one list in 2026 (37 seats); the two parties sit
+      // separately in the current parliament and in the polls
+      results: {j(dict(NATIONAL, ppdb=12.4, pp=0, db=0), ensure_ascii=False)},
+      seats: {j(dict(SEATS_2026, ppdb=37, pp=0, db=0), ensure_ascii=False)},
     }},
     map: {{
       svg: 'img/bulgaria.svg',
@@ -321,8 +324,10 @@ def main():
       vasilev:    {{ code: 'VASILEV', name: 'Radostin Vasilev', name_en: 'Radostin Vasilev', color: '#1A2C44' }},
       mihaylov:   {{ code: 'MIHAYLOV', name: 'Ivelin Mihaylov', name_en: 'Ivelin Mihaylov', color: '#AC2225' }},
       hristanov:  {{ code: 'HRIST.', name: 'Ivan Hristanov', name_en: 'Ivan Hristanov', color: '#D6C3A1' }},
+      radev:      {{ code: 'RADEV', name: 'Rumen Radev', name_en: 'Rumen Radev', color: '#0E7C6B', pastOnly: true }},
+      gerdzhikov: {{ code: 'GERDZH.', name: 'Anastas Gerdzhikov', name_en: 'Anastas Gerdzhikov', color: '#7B93C9', pastOnly: true }},
     }},
-    order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov'],
+    order: ['iotova', 'gyurov', 'kostadinov', 'vasilev', 'mihaylov', 'hristanov', 'radev', 'gerdzhikov'],
     parlOrder: ['hristanov', 'vasilev', 'gyurov', 'iotova', 'mihaylov', 'kostadinov'],
     blocs: {{
       bloc1: {{ name: 'Iotova', short: 'IOT', parties: ['iotova'], color: '#034A3F' }},
@@ -330,8 +335,10 @@ def main():
     }},
     lastElection: {{
       date: '2021-11-21',
-      results: {{ iotova: 49.42, gyurov: 22.83, kostadinov: 3.68, vasilev: 0, mihaylov: 0, hristanov: 0 }},
-      seats: {{ iotova: 1, gyurov: 0, kostadinov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
+      // the 2021 first round as it happened: Radev (with Iotova as his
+      // running mate) vs Gerdzhikov; the 2026 candidates did not stand
+      results: {{ radev: 49.42, gerdzhikov: 22.83, kostadinov: 3.68, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
+      seats: {{ radev: 1, gerdzhikov: 0, kostadinov: 0, iotova: 0, gyurov: 0, vasilev: 0, mihaylov: 0, hristanov: 0 }},
     }},
     map: {{
       svg: 'img/bulgaria.svg',
@@ -352,6 +359,7 @@ def main():
       iotova: 'img/bg/PB.svg', gyurov: 'img/bg/PPDB.svg',
       kostadinov: 'img/bg/VAZ.svg', vasilev: 'img/bg/MECH.svg',
       mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/Edinenie.svg',
+      radev: 'img/bg/PB.svg', gerdzhikov: 'img/bg/PPDB.svg',
     }},
   }},
 """

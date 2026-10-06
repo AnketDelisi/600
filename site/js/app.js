@@ -2517,6 +2517,23 @@ function allocateSeatsByDistrict(avg, regionNoise){
     :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
   const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0&&((dth?votes[p]:(avg[p]||0))>=THRESHOLD));
     if(!valid.length) continue;
+    // Hare/Niemeyer (largest remainder) per district, e.g. Bulgaria
+    if(SEAT_METHOD==='hare_niemeyer'){
+      const totalVotes=valid.reduce((s,p)=>s+(votes[p]||0),0);
+      if(totalVotes<=0) continue;
+      const quota=totalVotes/seatsN;
+      const rems=[];
+      let given=0;
+      valid.forEach(p=>{
+        const q=(votes[p]||0)/quota;
+        const fl=Math.floor(q);
+        out[p]+=fl; given+=fl;
+        rems.push([q-fl,p]);
+      });
+      rems.sort((a,b)=>b[0]-a[0]);
+      for(let i=0;i<seatsN-given&&i<rems.length;i++) out[rems[i][1]]++;
+      continue;
+    }
     const quo=[];
     valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});
     quo.sort((a,b)=>b.q-a.q);

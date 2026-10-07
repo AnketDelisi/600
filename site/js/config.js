@@ -26961,6 +26961,18 @@ saxony_anhalt: {
       results: {"s": 21.84, "sf": 11.58, "v": 10.14, "la": 9.37, "df": 9.10, "m": 7.70, "kf": 7.59, "el": 6.34, "rv": 5.81, "dd": 5.75, "alt": 2.57, "bp": 2.13, "na": 0},
       seats: {"s": 38, "sf": 20, "v": 18, "la": 16, "df": 16, "m": 14, "kf": 13, "el": 11, "rv": 10, "dd": 10, "alt": 5, "bp": 4, "na": 4},
     },
+    map: {
+      svg: 'img/denmark.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // the map is the 10 storkredse with their 2026 result; the seat model
+      // stays national (no seatDistricts - adding them would switch the
+      // allocator to per-district)
+      districts: {"bornholm": "bornholm", "fyn": "fyn", "kbh": "kbh", "kbh_omegn": "kbh_omegn", "nordjylland": "nordjylland", "nordsjaelland": "nordsjaelland", "ostjylland": "ostjylland", "sjaelland": "sjaelland", "sydjylland": "sydjylland", "vestjylland": "vestjylland"},
+      names: {"bornholm": "Bornholm", "fyn": "Fyn", "kbh": "København", "kbh_omegn": "Københavns Omegn", "nordjylland": "Nordjylland", "nordsjaelland": "Nordsjælland", "ostjylland": "Østjylland", "sjaelland": "Sjælland", "sydjylland": "Sydjylland", "vestjylland": "Vestjylland"},
+      gebiete: {"bornholm": {"s": 30.5, "sf": 11.6, "v": 17.6, "la": 5.1, "df": 10.5, "m": 5.8, "kf": 3.7, "el": 5.6, "rv": 1.8, "dd": 4.2, "alt": 1.8, "bp": 1.8}, "fyn": {"s": 26.2, "sf": 12.3, "v": 10.1, "la": 8.4, "df": 8.6, "m": 7.6, "kf": 7.0, "el": 6.1, "rv": 4.4, "dd": 4.8, "alt": 2.2, "bp": 2.3}, "kbh": {"s": 15.3, "sf": 13.3, "v": 3.6, "la": 8.0, "df": 5.5, "m": 8.2, "kf": 9.0, "el": 16.6, "rv": 12.0, "dd": 0.7, "alt": 6.6, "bp": 0.8}, "kbh_omegn": {"s": 21.9, "sf": 12.0, "v": 5.6, "la": 8.3, "df": 11.0, "m": 9.1, "kf": 10.1, "el": 8.0, "rv": 8.4, "dd": 1.7, "alt": 2.6, "bp": 1.5}, "nordjylland": {"s": 27.8, "sf": 9.1, "v": 12.6, "la": 9.7, "df": 6.9, "m": 5.1, "kf": 5.4, "el": 3.6, "rv": 3.7, "dd": 12.3, "alt": 1.4, "bp": 2.4}, "nordsjaelland": {"s": 18.9, "sf": 11.9, "v": 8.6, "la": 10.3, "df": 9.7, "m": 10.3, "kf": 12.0, "el": 4.6, "rv": 7.3, "dd": 2.4, "alt": 2.4, "bp": 1.6}, "ostjylland": {"s": 21.1, "sf": 13.3, "v": 9.7, "la": 10.5, "df": 6.6, "m": 7.4, "kf": 7.7, "el": 6.3, "rv": 7.1, "dd": 4.9, "alt": 3.0, "bp": 2.1}, "sjaelland": {"s": 22.9, "sf": 12.6, "v": 8.6, "la": 8.9, "df": 14.3, "m": 9.0, "kf": 6.0, "el": 4.2, "rv": 3.4, "dd": 5.4, "alt": 1.9, "bp": 2.8}, "sydjylland": {"s": 22.7, "sf": 8.5, "v": 16.9, "la": 10.2, "df": 11.4, "m": 7.1, "kf": 5.3, "el": 3.2, "rv": 2.9, "dd": 7.9, "alt": 1.1, "bp": 3.0}, "vestjylland": {"s": 20.6, "sf": 10.0, "v": 16.0, "la": 10.1, "df": 7.5, "m": 5.7, "kf": 8.0, "el": 2.6, "rv": 3.1, "dd": 12.7, "alt": 1.1, "bp": 2.6}},
+      national2021: {"s": 21.84, "sf": 11.58, "v": 10.14, "la": 9.37, "df": 9.1, "m": 7.7, "kf": 7.59, "el": 6.34, "rv": 5.81, "dd": 5.75, "alt": 2.57, "bp": 2.13},
+    },
     pollsterMAE: {},
     maeKey: 'DK2030',
     logos: {

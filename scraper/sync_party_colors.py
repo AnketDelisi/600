@@ -33,6 +33,7 @@ COUNTRY_NAMES = {
     "pt": "Portugal",
     "hu": "Hungary",
     "md": "Moldova",
+    "ro": "Romania",
 }
 ALIASES = {
     # Portugal
@@ -203,6 +204,7 @@ OVERRIDES = {
     ("pt", "Democratic Alliance"): "Democratic Alliance (Portugal, 2024)",
     ("uk", "Labour Party"): "Labour Party (UK)",
     ("nz", "Labour Party"): "New Zealand Labour Party",
+    ("ro", "Social Democratic Party"): "Social Democratic Party (Romania)",
 }
 
 # Deliberate deviations from the module (kept out of --apply)

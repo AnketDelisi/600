@@ -26860,6 +26860,66 @@ saxony_anhalt: {
       ppda: 'img/md/PPDA.svg', psde: 'img/md/PSDE.svg',
     },
   },
+  ro: {
+    name: 'Romania',
+    seats: 331,
+    threshold: 5.0,               // parties; 8/9/10% for alliances
+    method: 'hare_niemeyer',      // per-constituency Hare/Niemeyer
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 21,      // pollsters publish monthly
+    defaultDays: 90,
+    // the 19 deputies of the recognised national minorities are reserved
+    // (they are not in the polling tables and always hold their seats)
+    reservedSeats: { min: 19 },
+    parties: {
+      psd:   { code: 'PSD',   name: 'Partidul Social Democrat', name_en: 'Social Democratic Party', color: '#EF3340' },
+      aur:   { code: 'AUR',   name: 'Alian\u021ba pentru Unirea Rom\u00e2nilor', name_en: 'Alliance for the Union of Romanians', color: '#FCB21F' },
+      pnl:   { code: 'PNL',   name: 'Partidul Na\u021bional Liberal', name_en: 'National Liberal Party', color: '#FDE000' },
+      usr:   { code: 'USR',   name: 'Uniunea Salva\u021bi Rom\u00e2nia', name_en: 'Save Romania Union', color: '#00AAE7' },
+      sos:   { code: 'SOS',   name: 'S.O.S. Rom\u00e2nia', name_en: 'S.O.S. Romania', color: '#4DA9DA' },
+      pot:   { code: 'POT',   name: 'Partidul Oamenilor Tineri', name_en: 'Party of Young People', color: '#330099' },
+      udmr:  { code: 'UDMR',  name: 'Uniunea Democrat\u0103 Maghiar\u0103 din Rom\u00e2nia', name_en: 'Democratic Union of Hungarians in Romania', color: '#15803C' },
+      pmp:   { code: 'PMP',   name: 'Partidul Mi\u0219carea Popular\u0103', name_en: "People's Movement Party", color: '#A7CF35' },
+      fd:    { code: 'FD',    name: 'For\u021ba Dreptei', name_en: 'Force of the Right', color: '#08510A' },
+      reper: { code: 'REPER', name: 'Re\u00eennoim Proiectul European al Rom\u00e2niei', name_en: "Renewing Romania's European Project", color: '#C40075' },
+      sens:  { code: 'SENS',  name: 'Partidul S\u0103n\u0103tate, Educa\u021bie, Natur\u0103, Sustenabilitate', name_en: 'Health Education Nature Sustainability Party', color: '#A2DA5A' },
+      min:   { code: 'MIN',   name: 'Minorit\u0103\u021bi na\u021bionale', name_en: 'National minorities', color: '#9CA3AF', pastOnly: true },
+    },
+    order: ['psd', 'aur', 'pnl', 'usr', 'sos', 'pot', 'udmr', 'pmp', 'fd', 'reper', 'sens', 'min'],
+    parlOrder: ['psd', 'min', 'udmr', 'pnl', 'reper', 'sens', 'usr', 'fd', 'pmp', 'aur', 'sos', 'pot'],
+    // Government (the 2024 post-election coalition) vs Opposition (the
+    // forecast's majority simulation needs a two-bloc structure)
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['psd', 'pnl', 'udmr'], color: '#EF3340' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['aur', 'usr', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' },
+    },
+    lastElection: {
+      date: '2024-12-01',
+      // 19 minority deputies are reserved outside the party allocation
+      results: {"psd": 21.96, "aur": 18.01, "pnl": 13.2, "usr": 12.4, "sos": 7.36, "pot": 6.46, "udmr": 6.33, "pmp": 2.05, "fd": 1.88, "reper": 1.37, "sens": 2.99, "min": 0},
+      seats: {"psd": 86, "aur": 63, "pnl": 49, "usr": 40, "sos": 28, "pot": 24, "udmr": 22, "min": 19, "pmp": 0, "fd": 0, "reper": 0, "sens": 0},
+    },
+    map: {
+      svg: 'img/romania.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // the 5% threshold is national, not per county
+      districtThreshold: false,
+      districts: {"Alba": "Alba", "Arad": "Arad", "Argeș": "Argeș", "Bacău": "Bacău", "Bihor": "Bihor", "Bistrița-Năsăud": "Bistrița-Năsăud", "Botoșani": "Botoșani", "Brașov": "Brașov", "Brăila": "Brăila", "București": "București", "Buzău": "Buzău", "Caraș-Severin": "Caraș-Severin", "Cluj": "Cluj", "Constanța": "Constanța", "Covasna": "Covasna", "Călărași": "Călărași", "Dolj": "Dolj", "Dâmbovița": "Dâmbovița", "Galați": "Galați", "Giurgiu": "Giurgiu", "Gorj": "Gorj", "Harghita": "Harghita", "Hunedoara": "Hunedoara", "Ialomița": "Ialomița", "Iași": "Iași", "Ilfov": "Ilfov", "Maramureș": "Maramureș", "Mehedinți": "Mehedinți", "Mureș": "Mureș", "Neamț": "Neamț", "Olt": "Olt", "Prahova": "Prahova", "Satu Mare": "Satu Mare", "Sibiu": "Sibiu", "Suceava": "Suceava", "Sălaj": "Sălaj", "Teleorman": "Teleorman", "Timiș": "Timiș", "Tulcea": "Tulcea", "Vaslui": "Vaslui", "Vrancea": "Vrancea", "Vâlcea": "Vâlcea", "Diaspora": "Diaspora"},
+      seatDistricts: {"Alba": 5, "Arad": 7, "Argeș": 9, "Bacău": 10, "Bihor": 9, "Bistrița-Năsăud": 5, "Botoșani": 6, "Brașov": 9, "Brăila": 5, "București": 29, "Buzău": 7, "Caraș-Severin": 5, "Cluj": 10, "Constanța": 11, "Covasna": 4, "Călărași": 4, "Dolj": 10, "Dâmbovița": 7, "Galați": 9, "Giurgiu": 4, "Gorj": 5, "Harghita": 5, "Hunedoara": 6, "Ialomița": 4, "Iași": 11, "Ilfov": 5, "Maramureș": 7, "Mehedinți": 4, "Mureș": 8, "Neamț": 8, "Olt": 6, "Prahova": 12, "Satu Mare": 5, "Sibiu": 6, "Suceava": 10, "Sălaj": 4, "Teleorman": 5, "Timiș": 10, "Tulcea": 4, "Vaslui": 7, "Vrancea": 5, "Vâlcea": 6, "Diaspora": 4},
+      gebiete: {"Alba": {"psd": 15.71, "aur": 24.38, "pnl": 19.14, "usr": 11.3, "sos": 9.96, "pot": 8.74, "udmr": 3.19, "pmp": 1.91, "fd": 2.73, "reper": 1.25, "sens": 2.99}, "Arad": {"psd": 17.01, "aur": 27.15, "pnl": 14.24, "usr": 11.65, "sos": 11.1, "pot": 9.74, "udmr": 6.68, "pmp": 1.86, "fd": 2.03, "reper": 1.29, "sens": 2.99}, "Argeș": {"psd": 32.91, "aur": 13.73, "pnl": 9.43, "usr": 11.65, "sos": 5.61, "pot": 4.92, "udmr": 0.2, "pmp": 1.91, "fd": 1.34, "reper": 1.29, "sens": 2.99}, "Bacău": {"psd": 28.07, "aur": 22.47, "pnl": 11.26, "usr": 10.55, "sos": 9.18, "pot": 8.06, "udmr": 1.01, "pmp": 2.03, "fd": 1.6, "reper": 1.17, "sens": 2.99}, "Bihor": {"psd": 14.22, "aur": 16.82, "pnl": 17.03, "usr": 5.62, "sos": 6.87, "pot": 6.03, "udmr": 23.3, "pmp": 1.05, "fd": 2.42, "reper": 0.62, "sens": 2.99}, "Bistrița-Năsăud": {"psd": 20.96, "aur": 16.17, "pnl": 16.32, "usr": 5.66, "sos": 6.61, "pot": 5.8, "udmr": 3.98, "pmp": 4.64, "fd": 2.32, "reper": 0.63, "sens": 2.99}, "Botoșani": {"psd": 32.74, "aur": 28.68, "pnl": 10.11, "usr": 6.18, "sos": 11.72, "pot": 10.29, "udmr": 0.34, "pmp": 1.45, "fd": 1.44, "reper": 0.68, "sens": 2.99}, "Brașov": {"psd": 15.63, "aur": 15.21, "pnl": 13.43, "usr": 21.61, "sos": 6.22, "pot": 5.46, "udmr": 5.46, "pmp": 1.48, "fd": 1.91, "reper": 2.39, "sens": 2.99}, "Brăila": {"psd": 33.72, "aur": 20.47, "pnl": 9.28, "usr": 7.37, "sos": 8.37, "pot": 7.34, "udmr": 0.34, "pmp": 2.16, "fd": 1.32, "reper": 0.81, "sens": 2.99}, "București": {"psd": 19.89, "aur": 9.66, "pnl": 11.28, "usr": 23.7, "sos": 3.95, "pot": 3.46, "udmr": 0.19, "pmp": 2.4, "fd": 1.61, "reper": 2.62, "sens": 2.99}, "Buzău": {"psd": 36.31, "aur": 15.25, "pnl": 8.66, "usr": 7.09, "sos": 6.23, "pot": 5.47, "udmr": 0.2, "pmp": 3.75, "fd": 1.23, "reper": 0.78, "sens": 2.99}, "Caraș-Severin": {"psd": 24.86, "aur": 13.47, "pnl": 16.55, "usr": 5.86, "sos": 5.5, "pot": 4.83, "udmr": 0.56, "pmp": 2.73, "fd": 2.36, "reper": 0.65, "sens": 2.99}, "Cluj": {"psd": 10.26, "aur": 10.83, "pnl": 16.99, "usr": 19.1, "sos": 4.43, "pot": 3.88, "udmr": 13.21, "pmp": 1.69, "fd": 2.42, "reper": 2.11, "sens": 2.99}, "Constanța": {"psd": 18.78, "aur": 27.77, "pnl": 13.72, "usr": 14.52, "sos": 11.35, "pot": 9.96, "udmr": 0.29, "pmp": 1.89, "fd": 1.95, "reper": 1.6, "sens": 2.99}, "Covasna": {"psd": 6.09, "aur": 5.63, "pnl": 2.66, "usr": 3.69, "sos": 2.3, "pot": 2.02, "udmr": 77.57, "pmp": 0.74, "fd": 0.38, "reper": 0.41, "sens": 2.99}, "Călărași": {"psd": 34.57, "aur": 18.61, "pnl": 15.14, "usr": 5.38, "sos": 7.6, "pot": 6.67, "udmr": 0.1, "pmp": 1.4, "fd": 2.16, "reper": 0.59, "sens": 2.99}, "Dolj": {"psd": 34.7, "aur": 9.94, "pnl": 12.66, "usr": 8.87, "sos": 4.06, "pot": 3.56, "udmr": 0.3, "pmp": 2.11, "fd": 1.8, "reper": 0.98, "sens": 2.99}, "Dâmbovița": {"psd": 34.38, "aur": 14.18, "pnl": 12.16, "usr": 7.41, "sos": 5.8, "pot": 5.09, "udmr": 0.25, "pmp": 1.85, "fd": 1.73, "reper": 0.82, "sens": 2.99}, "Galați": {"psd": 27.64, "aur": 17.95, "pnl": 11.76, "usr": 11.16, "sos": 7.34, "pot": 6.44, "udmr": 0.44, "pmp": 2.1, "fd": 1.67, "reper": 1.23, "sens": 2.99}, "Giurgiu": {"psd": 24.34, "aur": 10.18, "pnl": 24.42, "usr": 4.09, "sos": 4.16, "pot": 3.65, "udmr": 0.24, "pmp": 1.16, "fd": 3.48, "reper": 0.45, "sens": 2.99}, "Gorj": {"psd": 30.6, "aur": 13.71, "pnl": 12.61, "usr": 7.36, "sos": 5.6, "pot": 4.92, "udmr": 0.66, "pmp": 1.91, "fd": 1.8, "reper": 0.81, "sens": 2.99}, "Harghita": {"psd": 3.09, "aur": 2.74, "pnl": 1.69, "usr": 1.44, "sos": 1.12, "pot": 0.98, "udmr": 94.69, "pmp": 0.45, "fd": 0.24, "reper": 0.16, "sens": 2.99}, "Hunedoara": {"psd": 29.51, "aur": 20.91, "pnl": 12.24, "usr": 8.09, "sos": 8.54, "pot": 7.5, "udmr": 2.67, "pmp": 1.32, "fd": 1.74, "reper": 0.89, "sens": 2.99}, "Ialomița": {"psd": 30.51, "aur": 23.52, "pnl": 11.04, "usr": 6.44, "sos": 9.61, "pot": 8.44, "udmr": 0.44, "pmp": 1.17, "fd": 1.57, "reper": 0.71, "sens": 2.99}, "Iași": {"psd": 19.64, "aur": 24.48, "pnl": 12.83, "usr": 16.25, "sos": 10.0, "pot": 8.78, "udmr": 0.28, "pmp": 2.34, "fd": 1.83, "reper": 1.8, "sens": 2.99}, "Ilfov": {"psd": 18.24, "aur": 16.22, "pnl": 16.15, "usr": 16.89, "sos": 6.63, "pot": 5.82, "udmr": 0.21, "pmp": 1.69, "fd": 2.3, "reper": 1.87, "sens": 2.99}, "Maramureș": {"psd": 19.51, "aur": 14.46, "pnl": 14.24, "usr": 11.42, "sos": 5.91, "pot": 5.19, "udmr": 5.67, "pmp": 3.48, "fd": 2.03, "reper": 1.26, "sens": 2.99}, "Mehedinți": {"psd": 30.58, "aur": 9.32, "pnl": 18.61, "usr": 3.17, "sos": 3.81, "pot": 3.34, "udmr": 0.29, "pmp": 3.11, "fd": 2.65, "reper": 0.35, "sens": 2.99}, "Mureș": {"psd": 12.26, "aur": 12.48, "pnl": 8.28, "usr": 8.58, "sos": 5.1, "pot": 4.48, "udmr": 40.78, "pmp": 2.32, "fd": 1.18, "reper": 0.95, "sens": 2.99}, "Neamț": {"psd": 25.12, "aur": 27.19, "pnl": 12.36, "usr": 10.25, "sos": 11.11, "pot": 9.75, "udmr": 0.18, "pmp": 1.79, "fd": 1.76, "reper": 1.13, "sens": 2.99}, "Olt": {"psd": 43.51, "aur": 11.17, "pnl": 10.43, "usr": 4.15, "sos": 4.56, "pot": 4.01, "udmr": 0.18, "pmp": 1.15, "fd": 1.49, "reper": 0.46, "sens": 2.99}, "Prahova": {"psd": 21.95, "aur": 18.62, "pnl": 14.23, "usr": 12.46, "sos": 7.61, "pot": 6.68, "udmr": 0.25, "pmp": 2.15, "fd": 2.03, "reper": 1.38, "sens": 2.99}, "Satu Mare": {"psd": 10.71, "aur": 11.23, "pnl": 10.09, "usr": 7.45, "sos": 4.59, "pot": 4.03, "udmr": 40.96, "pmp": 1.05, "fd": 1.44, "reper": 0.82, "sens": 2.99}, "Sibiu": {"psd": 10.41, "aur": 17.26, "pnl": 21.82, "usr": 18.12, "sos": 7.05, "pot": 6.19, "udmr": 1.29, "pmp": 1.62, "fd": 3.11, "reper": 2.0, "sens": 2.99}, "Suceava": {"psd": 21.37, "aur": 28.78, "pnl": 12.64, "usr": 7.87, "sos": 11.76, "pot": 10.32, "udmr": 0.39, "pmp": 2.54, "fd": 1.8, "reper": 0.87, "sens": 2.99}, "Sălaj": {"psd": 15.97, "aur": 12.87, "pnl": 14.26, "usr": 9.33, "sos": 5.26, "pot": 4.62, "udmr": 26.29, "pmp": 1.16, "fd": 2.03, "reper": 1.03, "sens": 2.99}, "Teleorman": {"psd": 31.94, "aur": 7.14, "pnl": 20.57, "usr": 4.14, "sos": 2.92, "pot": 2.56, "udmr": 0.29, "pmp": 0.99, "fd": 2.93, "reper": 0.46, "sens": 2.99}, "Timiș": {"psd": 14.75, "aur": 15.13, "pnl": 12.7, "usr": 23.15, "sos": 6.18, "pot": 5.43, "udmr": 2.77, "pmp": 2.41, "fd": 1.81, "reper": 2.56, "sens": 2.99}, "Tulcea": {"psd": 22.63, "aur": 22.95, "pnl": 14.28, "usr": 8.91, "sos": 9.38, "pot": 8.23, "udmr": 0.45, "pmp": 1.4, "fd": 2.03, "reper": 0.98, "sens": 2.99}, "Vaslui": {"psd": 28.08, "aur": 25.25, "pnl": 11.08, "usr": 8.33, "sos": 10.32, "pot": 9.06, "udmr": 0.6, "pmp": 1.46, "fd": 1.58, "reper": 0.92, "sens": 2.99}, "Vrancea": {"psd": 25.7, "aur": 26.14, "pnl": 17.92, "usr": 6.62, "sos": 10.68, "pot": 9.38, "udmr": 0.13, "pmp": 1.71, "fd": 2.55, "reper": 0.73, "sens": 2.99}, "Vâlcea": {"psd": 29.64, "aur": 16.15, "pnl": 14.27, "usr": 7.36, "sos": 6.6, "pot": 5.79, "udmr": 0.43, "pmp": 2.16, "fd": 2.03, "reper": 0.81, "sens": 2.99}, "Diaspora": {"psd": 2.55, "aur": 46.08, "pnl": 13.06, "usr": 26.28, "sos": 18.83, "pot": 16.53, "udmr": 1.27, "pmp": 3.61, "fd": 1.86, "reper": 2.9, "sens": 2.99}},
+      national2021: {"psd": 21.96, "aur": 18.01, "pnl": 13.2, "usr": 12.4, "sos": 7.36, "pot": 6.46, "udmr": 6.33, "pmp": 2.05, "fd": 1.88, "reper": 1.37, "sens": 2.99},
+    },
+    pollsterMAE: {},
+    maeKey: 'RO2028',
+    logos: {
+      psd: 'img/ro/PSD.svg', aur: 'img/ro/AUR.svg', pnl: 'img/ro/PNL.svg',
+      usr: 'img/ro/USR.svg', sos: 'img/ro/SOS.svg', pot: 'img/ro/POT.svg',
+      udmr: 'img/ro/UDMR.svg', pmp: 'img/ro/PMP.svg', fd: 'img/ro/FD.svg',
+      reper: 'img/ro/REPER.svg', sens: 'img/ro/SENS.svg',
+    },
+  },
   pt: {
     name: 'Portugal',
     seats: 230,

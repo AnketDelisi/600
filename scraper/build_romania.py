@@ -217,10 +217,10 @@ def main():
       psd:   {{ code: 'PSD',   name: 'Partidul Social Democrat', name_en: 'Social Democratic Party', color: '#EF3340' }},
       aur:   {{ code: 'AUR',   name: 'Alian\\u021ba pentru Unirea Rom\\u00e2nilor', name_en: 'Alliance for the Union of Romanians', color: '#FCB21F' }},
       pnl:   {{ code: 'PNL',   name: 'Partidul Na\\u021bional Liberal', name_en: 'National Liberal Party', color: '#FDE000' }},
-      usr:   {{ code: 'USR',   name: 'Uniunea Salva\\u021bi Rom\\u00e2nia', name_en: 'Save Romania Union', color: '#00AAE7' }},
+      usr:   {{ code: 'USR',   name: 'Uniunea Salva\\u021bi Rom\\u00e2nia', name_en: 'Save Romania Union', color: '#002A59' }},
       sos:   {{ code: 'SOS',   name: 'S.O.S. Rom\\u00e2nia', name_en: 'S.O.S. Romania', color: '#4DA9DA' }},
       pot:   {{ code: 'POT',   name: 'Partidul Oamenilor Tineri', name_en: 'Party of Young People', color: '#330099' }},
-      udmr:  {{ code: 'UDMR',  name: 'Uniunea Democrat\\u0103 Maghiar\\u0103 din Rom\\u00e2nia', name_en: 'Democratic Union of Hungarians in Romania', color: '#15803C' }},
+      udmr:  {{ code: 'UDMR',  name: 'Uniunea Democrat\\u0103 Maghiar\\u0103 din Rom\\u00e2nia', name_en: 'Democratic Union of Hungarians in Romania', color: '#00833E' }},
       pmp:   {{ code: 'PMP',   name: 'Partidul Mi\\u0219carea Popular\\u0103', name_en: "People's Movement Party", color: '#A7CF35' }},
       fd:    {{ code: 'FD',    name: 'For\\u021ba Dreptei', name_en: 'Force of the Right', color: '#08510A' }},
       reper: {{ code: 'REPER', name: 'Re\\u00eennoim Proiectul European al Rom\\u00e2niei', name_en: "Renewing Romania's European Project", color: '#C40075' }},
@@ -229,11 +229,11 @@ def main():
     }},
     order: ['psd', 'aur', 'pnl', 'usr', 'sos', 'pot', 'udmr', 'pmp', 'fd', 'reper', 'sens', 'min'],
     parlOrder: ['psd', 'min', 'udmr', 'pnl', 'reper', 'sens', 'usr', 'fd', 'pmp', 'aur', 'sos', 'pot'],
-    // Government (the 2024 post-election coalition) vs Opposition (the
-    // forecast's majority simulation needs a two-bloc structure)
+    // Government (the current PNL+USR+UDMR cabinet with the minorities)
+    // vs Opposition (the forecast's majority simulation needs two blocs)
     blocs: {{
-      bloc1: {{ name: 'Government', short: 'GOV', parties: ['psd', 'pnl', 'udmr'], color: '#EF3340' }},
-      bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['aur', 'usr', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' }},
+      bloc1: {{ name: 'Government', short: 'GOV', parties: ['pnl', 'usr', 'udmr', 'min'], color: '#FDE000' }},
+      bloc2: {{ name: 'Opposition', short: 'OPP', parties: ['psd', 'aur', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' }},
     }},
     lastElection: {{
       date: '2024-12-01',

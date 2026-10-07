@@ -1,0 +1,9 @@
+{
+ "country": "md",
+ "name": "Moldova",
+ "seats": 101,
+ "threshold": 5.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "Parliament of Moldova: 101 seats, single nationwide closed-list constituency, D'Hondt, 5% threshold for parties (7% for electoral blocs, 2% for independents). 2025 result: PAS 50.2% (55 seats), Patriotic Electoral Bloc 24.2% (26), Alternative Bloc 8.0% (8), Our Party 6.2% (6), Democracy at Home 5.6% (6). The Patriotic bloc dissolved in October 2025 (PSRM/PCRM now separate) and the Alternative bloc in April 2026 (MAN/PDCM/PRIM now separate). Polling tracked after the 28 September 2025 election; the next election is due by 2029."
+}

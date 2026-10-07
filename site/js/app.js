@@ -695,6 +695,13 @@ function effectiveDays(){
   let v=sel?(parseInt(sel.value)||30):30;
   let explicit=false;
   try{ explicit=!!new URLSearchParams(location.search).get('d'); }catch(e){}
+  // Per-country default window for sparse sources (Moldova's post-election
+  // polling is a handful of quarterly surveys): honored until the visitor
+  // picks a window themselves.
+  const def=(COUNTRIES[COUNTRY]||{}).defaultDays;
+  if(v===30&&!explicit&&!window._600UserDays&&def&&def!==30){
+    v=def; if(sel) sel.value=String(def);
+  }
   if(v===30&&!explicit&&POLLS&&POLLS.length&&!recentPolls(POLLS,30).length){
     for(const w of [60,90,2026,9999]){
       if(recentPolls(POLLS,w).length){ v=w; if(sel) sel.value=String(w); break; }
@@ -720,7 +727,7 @@ function renderSidebar(prevDays, prevPollster){
   // Filters
   html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${T.filters}</div></div>
     <label class="sb-hint" style="margin-bottom:4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.timeRange}</label>
-    <select class="sb-select" id="filter-days" onchange="window._600.applyFilters()">
+    <select class="sb-select" id="filter-days" onchange="window._600UserDays=true;window._600.applyFilters()">
       <option value="7"${prevDays==='7'?' selected':''}>${T.last7}</option>
       <option value="14"${prevDays==='14'?' selected':''}>${T.last14}</option>
       <option value="30"${prevDays==='30'?' selected':''}>${T.last30}</option>

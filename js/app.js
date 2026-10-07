@@ -2570,13 +2570,6 @@ function allocateSeatsByDistrict(avg, regionNoise){
     quo.sort((a,b)=>b.q-a.q);
     for(let i=0;i<seatsN&&i<quo.length;i++) out[quo[i].p]++;
   }
-  // Reserved seats (Romania's 19 national-minority deputies): not in the
-  // polls and not tied to a constituency - they always hold their seats, so
-  // they sit on top of the district allocation.
-  const reserved=(COUNTRIES[COUNTRY]||{}).reservedSeats;
-  if(reserved){
-    for(const k in reserved) out[k]=(out[k]||0)+reserved[k];
-  }
   return out;
 }
 
@@ -2731,13 +2724,28 @@ function allocateSeatsFptp(avg, regionNoise, districtNoise){
 
 // Seat allocation for a projection: per-okręg D'Hondt when the country defines
 // seatDistricts (Poland), else the national-district allocation.
+// Reserved seats (Romania's 19 national-minority deputies, Denmark's four
+// North Atlantic mandates): not in the polls and not tied to a constituency -
+// they always hold their seats, so they sit on top of the allocation.
+function applyReserved(seats){
+  const reserved=(COUNTRIES[COUNTRY]||{}).reservedSeats;
+  if(seats&&reserved){
+    for(const k in reserved) seats[k]=(seats[k]||0)+reserved[k];
+  }
+  return seats;
+}
+function reservedTotal(){
+  const reserved=(COUNTRIES[COUNTRY]||{}).reservedSeats||{};
+  return Object.values(reserved).reduce((a,b)=>a+b,0);
+}
+
 function allocateSeatsTotal(avg, total){
   // leveling-seat parliaments (NZ's overhang, the German states) route
   // through the growing-house allocator; the direct mandates are counted from
   // the map's districts
   if(OVERHANG) return overhangSeats(avg, total, directFromProjection(avg), OVERHANG.cap);
   if(MAP_CONF()&&MAP_CONF().winnerDistricts) return allocateSeatsWinnerDistricts(avg, total);
-  return allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,total);
+  return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
 }
 
 // Mixed systems where the strongest party in a district takes all of its
@@ -2871,7 +2879,7 @@ function bindParlToggles(avg){
 }
 
 /* ---------- forecast: fast Sainte-Laguë ---------- */
-function allocateSeatsFast(votes, total){
+function allocateSeatsFastRaw(votes, total){
   if(OVERHANG){
     return overhangSeats(votes,total,directFromProjection(votes),OVERHANG.cap);
   }
@@ -2929,6 +2937,10 @@ function allocateSeatsFast(votes, total){
     quo[best]=SEAT_METHOD==='dhondt'?(votes[best]||0)/(seats[best]+1):(votes[best]||0)/(2*seats[best]+1);
   }
   return finish();
+}
+
+function allocateSeatsFast(votes, total){
+  return applyReserved(allocateSeatsFastRaw(votes, Math.max(0, total - reservedTotal())));
 }
 
 /* ---------- forecast: Monte Carlo simulation ---------- */

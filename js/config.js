@@ -26920,6 +26920,56 @@ saxony_anhalt: {
       reper: 'img/ro/REPER.svg', sens: 'img/ro/SENS.svg',
     },
   },
+  dk: {
+    name: 'Denmark',
+    seats: 179,                   // 175 in Denmark proper + 4 North Atlantic
+    threshold: 2.0,
+    method: 'sainte_lague_standard',   // unmodified Sainte-Lague levelling
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 14,      // Voxmeter publishes weekly
+    // the four North Atlantic mandates (2 Faroe Islands + 2 Greenland) are
+    // separate elections, not in the Danish polls
+    reservedSeats: { na: 4 },
+    parties: {
+      s:   { code: 'S',   name: 'Socialdemokratiet', name_en: 'Social Democrats (Denmark)', color: '#C82518' },
+      sf:  { code: 'SF',  name: 'Socialistisk Folkeparti', name_en: 'Green Left (Denmark)', color: '#EB94D1' },
+      v:   { code: 'V',   name: 'Venstre', name_en: 'Venstre (Denmark)', color: '#01438E' },
+      la:  { code: 'LA',  name: 'Liberal Alliance', name_en: 'Liberal Alliance (Denmark)', color: '#3FB2BE' },
+      df:  { code: 'DF',  name: 'Dansk Folkeparti', name_en: "Danish People's Party", color: '#FCD03B' },
+      m:   { code: 'M',   name: 'Moderaterne', name_en: 'Moderates (Denmark)', color: '#B48CD2' },
+      kf:  { code: 'KF',  name: 'Det Konservative Folkeparti', name_en: "Conservative People's Party (Denmark)", color: '#6B9249' },
+      el:  { code: 'EL',  name: 'Enhedslisten', name_en: 'Red–Green Alliance (Denmark)', color: '#F7660D' },
+      rv:  { code: 'RV',  name: 'Radikale Venstre', name_en: 'Danish Social Liberal Party', color: '#733280' },
+      dd:  { code: 'DD',  name: 'Danmarksdemokraterne', name_en: 'Denmark Democrats', color: '#668DD1' },
+      alt: { code: 'ALT', name: 'Alternativet', name_en: 'The Alternative (Denmark)', color: '#18942D' },
+      bp:  { code: 'BP',  name: 'Borgernes Parti', name_en: "Citizens' Party (Denmark)", color: '#2B72FD' },
+      na:  { code: 'NA',  name: 'Nordatlantiske mandater', name_en: 'North Atlantic mandates', color: '#9CA3AF', pastOnly: true },
+    },
+    order: ['s', 'sf', 'v', 'la', 'df', 'm', 'kf', 'el', 'rv', 'dd', 'alt', 'bp', 'na'],
+    parlOrder: ['el', 'sf', 'alt', 'rv', 's', 'm', 'kf', 'la', 'v', 'dd', 'df', 'bp', 'na'],
+    // the source polling table's own groupings: Government (A, B, F, M),
+    // Supporting (O, A-ring), Opposition (C, H, I, O, V, AE)
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['s', 'rv', 'sf', 'm'], color: '#C82518' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['kf', 'bp', 'la', 'df', 'v', 'dd'], color: '#01438E' },
+      bloc3: { name: 'Supporting', short: 'SUP', parties: ['el', 'alt'], color: '#F7660D' },
+    },
+    lastElection: {
+      date: '2026-03-24',
+      // the 4 North Atlantic mandates are elected separately
+      results: {"s": 21.84, "sf": 11.58, "v": 10.14, "la": 9.37, "df": 9.10, "m": 7.70, "kf": 7.59, "el": 6.34, "rv": 5.81, "dd": 5.75, "alt": 2.57, "bp": 2.13, "na": 0},
+      seats: {"s": 38, "sf": 20, "v": 18, "la": 16, "df": 16, "m": 14, "kf": 13, "el": 11, "rv": 10, "dd": 10, "alt": 5, "bp": 4, "na": 4},
+    },
+    pollsterMAE: {},
+    maeKey: 'DK2030',
+    logos: {
+      s: 'img/dk/S.svg', sf: 'img/dk/SF.svg', v: 'img/dk/V.svg',
+      la: 'img/dk/LA.svg', df: 'img/dk/DF.svg', m: 'img/dk/M.svg',
+      kf: 'img/dk/C.svg', el: 'img/dk/EL.svg', rv: 'img/dk/RV.svg',
+      dd: 'img/dk/DD.svg', alt: 'img/dk/ALT.svg', bp: 'img/dk/BP.svg',
+    },
+  },
   pt: {
     name: 'Portugal',
     seats: 230,

@@ -1,9 +1,9 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-06T12:43:32Z",
+  "generated": "2026-10-07T12:36:58Z",
   "environment": {
     "election": "2026-11-03",
-    "days_to_election": 28,
+    "days_to_election": 27,
     "generic_ballot_generic_margin": 8.2,
     "n_sims": 20000,
     "rating_margin_table": {
@@ -667,7 +667,7 @@
         "party": "R",
         "rating": "Lean D",
         "ratings": {
-          "cook": "Lean D(flip)",
+          "cook": "Likely D(flip)",
           "ie": "Lean D(flip)",
           "sabato": "Lean D(flip)"
         },
@@ -944,6 +944,192 @@
         }
       },
       {
+        "state": "New Hampshire",
+        "district": "",
+        "incumbent": "Jeanne Shaheen",
+        "party": "D",
+        "rating": "Lean D",
+        "ratings": {
+          "cook": "Lean D",
+          "ie": "Tossup",
+          "sabato": "Lean D"
+        },
+        "lean": "Likely D",
+        "leader": "D",
+        "margin": 8.7,
+        "dem_pct": 92.4,
+        "rep_pct": 7.6,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 49.8,
+          "rep": 43.0,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "n_sponsored": 1,
+          "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 28 – October 5, 2026",
+              "dem": 51.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "September 28–29, 2026",
+              "dem": 51.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Trafalgar Group",
+              "dates": "September 26–27, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "New York Times / Siena University",
+              "dates": "September 15–22, 2026",
+              "dem": 50.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 50.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "InsiderAdvantage",
+              "dates": "September 16–17, 2026",
+              "partisan": "R",
+              "dem": 48.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 9–11, 2026",
+              "partisan": "R",
+              "dem": 46.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Rasmussen Reports",
+              "dates": "September 8–10, 2026",
+              "partisan": "R",
+              "dem": 45.0,
+              "rep": 34.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "August 20–24, 2026",
+              "dem": 43.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "August 17–18, 2026",
+              "dem": 48.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "Peak Insights",
+              "dates": "June 24–27, 2026",
+              "partisan": "R",
+              "dem": 43.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "June 24–25, 2026",
+              "dem": 47.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "June 18–23, 2026",
+              "dem": 47.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "April 17–21, 2026",
+              "dem": 49.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "March 21–23, 2026",
+              "dem": 45.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "March 16–18, 2026",
+              "dem": 46.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "yes. every kid.",
+              "dates": "January 28–29, 2026",
+              "dem": 45.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "January 15–19, 2026",
+              "dem": 50.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "NHJournal/Praecones Analytica",
+              "dates": "December 26–28, 2025",
+              "dem": 42.0,
+              "rep": 36.0
+            },
+            {
+              "pollster": "Guidant Polling and Strategy",
+              "dates": "December 9–11, 2025",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "November 18–19, 2025",
+              "dem": 44.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "October 9–13, 2025",
+              "partisan": "R",
+              "dem": 45.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–23, 2025",
+              "dem": 49.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 10–12, 2025",
+              "partisan": "R",
+              "dem": 46.0,
+              "rep": 43.0
+            }
+          ],
+          "names": {
+            "d": "Chris Pappas",
+            "r": "John E. Sununu"
+          }
+        }
+      },
+      {
         "state": "Georgia",
         "district": "",
         "incumbent": "Jon Ossoff",
@@ -1109,18 +1295,30 @@
         },
         "lean": "Lean R",
         "leader": "R",
-        "margin": 7.0,
-        "dem_pct": 11.8,
-        "rep_pct": 88.2,
+        "margin": 6.8,
+        "dem_pct": 12.4,
+        "rep_pct": 87.6,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 42.8,
+          "dem": 43.1,
           "rep": 48.7,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 28 – October 5, 2026",
+              "dem": 44.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Mason-Dixon",
+              "dates": "September 28 – October 1, 2026",
+              "dem": 40.0,
+              "rep": 50.0
+            },
             {
               "pollster": "Change Research",
               "dates": "September 25–27, 2026",
@@ -1189,180 +1387,6 @@
           "names": {
             "r": "Ashley Moody",
             "d": "Angie Nixon"
-          }
-        }
-      },
-      {
-        "state": "New Hampshire",
-        "district": "",
-        "incumbent": "Jeanne Shaheen",
-        "party": "D",
-        "rating": "Tossup",
-        "ratings": {
-          "cook": "Tossup",
-          "ie": "Tossup",
-          "sabato": "Lean D"
-        },
-        "lean": "Lean D",
-        "leader": "D",
-        "margin": 6.4,
-        "dem_pct": 86.3,
-        "rep_pct": 13.7,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 48.2,
-          "rep": 42.8,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 5,
-          "n_sponsored": 3,
-          "polls": [
-            {
-              "pollster": "Trafalgar Group",
-              "dates": "September 26–27, 2026",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 41.0
-            },
-            {
-              "pollster": "New York Times / Siena University",
-              "dates": "September 15–22, 2026",
-              "dem": 50.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "September 17–21, 2026",
-              "dem": 50.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "InsiderAdvantage",
-              "dates": "September 16–17, 2026",
-              "partisan": "R",
-              "dem": 48.0,
-              "rep": 40.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 9–11, 2026",
-              "partisan": "R",
-              "dem": 46.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Rasmussen Reports",
-              "dates": "September 8–10, 2026",
-              "partisan": "R",
-              "dem": 45.0,
-              "rep": 34.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "August 20–24, 2026",
-              "dem": 43.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "August 17–18, 2026",
-              "dem": 48.0,
-              "rep": 41.0
-            },
-            {
-              "pollster": "Peak Insights",
-              "dates": "June 24–27, 2026",
-              "partisan": "R",
-              "dem": 43.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "June 24–25, 2026",
-              "dem": 47.0,
-              "rep": 41.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "June 18–23, 2026",
-              "dem": 47.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "April 17–21, 2026",
-              "dem": 49.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "Emerson College",
-              "dates": "March 21–23, 2026",
-              "dem": 45.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "March 16–18, 2026",
-              "dem": 46.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "yes. every kid.",
-              "dates": "January 28–29, 2026",
-              "dem": 45.0,
-              "rep": 41.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "January 15–19, 2026",
-              "dem": 50.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "NHJournal/Praecones Analytica",
-              "dates": "December 26–28, 2025",
-              "dem": 42.0,
-              "rep": 36.0
-            },
-            {
-              "pollster": "Guidant Polling and Strategy",
-              "dates": "December 9–11, 2025",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "November 18–19, 2025",
-              "dem": 44.0,
-              "rep": 41.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "October 9–13, 2025",
-              "partisan": "R",
-              "dem": 45.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "September 17–23, 2025",
-              "dem": 49.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 10–12, 2025",
-              "partisan": "R",
-              "dem": 46.0,
-              "rep": 43.0
-            }
-          ],
-          "names": {
-            "d": "Chris Pappas",
-            "r": "John E. Sununu"
           }
         }
       },
@@ -1632,16 +1656,16 @@
         },
         "lean": "Lean D",
         "leader": "D",
-        "margin": 3.3,
-        "dem_pct": 72.1,
-        "rep_pct": 27.9,
+        "margin": 3.4,
+        "dem_pct": 72.5,
+        "rep_pct": 27.5,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 47.3,
-          "rep": 44.0,
+          "dem": 47.5,
+          "rep": 44.1,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -1649,6 +1673,12 @@
               "dates": "September 22 – October 1, 2026",
               "dem": 49.0,
               "rep": 46.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "September 18–30, 2026",
+              "dem": 49.0,
+              "rep": 45.0
             },
             {
               "pollster": "InsiderAdvantage",
@@ -1855,17 +1885,23 @@
         "lean": "Lean D",
         "leader": "D",
         "margin": 3.3,
-        "dem_pct": 71.7,
-        "rep_pct": 28.3,
+        "dem_pct": 72.1,
+        "rep_pct": 27.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 48.6,
+          "dem": 48.7,
           "rep": 45.4,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 28 – October 5, 2026",
+              "dem": 50.0,
+              "rep": 44.0
+            },
             {
               "pollster": "New York Times / Siena University",
               "dates": "September 21–30, 2026",
@@ -2171,7 +2207,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         },
         "lean": "Lean D",
         "leader": "D",
@@ -2356,8 +2392,8 @@
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 48.5,
-          "rep": 47.0,
+          "dem": 48.6,
+          "rep": 47.1,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -2787,6 +2823,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "YouGov",
+              "dates": "September 22 – October 4, 2026",
+              "dem": 49.0,
+              "rep": 48.0
+            },
+            {
               "pollster": "Mitchell Research & Communications",
               "dates": "October 1, 2026",
               "dem": 46.0,
@@ -3075,7 +3117,7 @@
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         },
         "lean": "Tossup",
         "leader": "R",
@@ -3152,18 +3194,24 @@
         },
         "lean": "Tossup",
         "leader": "R",
-        "margin": 1.1,
+        "margin": 0.9,
         "dem_pct": 0.0,
-        "rep_pct": 57.8,
-        "ind_pct": 42.2,
+        "rep_pct": 56.2,
+        "ind_pct": 43.8,
         "dem_name": null,
         "rep_name": "Pete Ricketts",
         "ind_name": "Dan Osborn",
         "polls": {
-          "rep": 46.2,
-          "ind": 45.2,
+          "rep": 46.3,
+          "ind": 45.5,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 24 – October 3, 2026",
+              "rep": 47.0,
+              "ind": 48.0
+            },
             {
               "pollster": "co/efficient",
               "dates": "September 28–30, 2026",
@@ -3260,24 +3308,30 @@
         "party": "R",
         "rating": "Lean R",
         "ratings": {
-          "cook": "Lean R",
+          "cook": "Tossup",
           "ie": "Likely R",
           "sabato": "Lean R"
         },
         "lean": "Tossup",
         "leader": "R",
-        "margin": 0.2,
-        "dem_pct": 48.3,
-        "rep_pct": 51.7,
+        "margin": 0.0,
+        "dem_pct": 49.7,
+        "rep_pct": 50.3,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 45.6,
+          "dem": 45.9,
           "rep": 45.4,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 24 – October 4, 2026",
+              "dem": 48.0,
+              "rep": 45.0
+            },
             {
               "pollster": "Trafalgar Group",
               "dates": "September 29 – October 1, 2026",
@@ -3353,12 +3407,12 @@
         }
       }
     ],
-    "expected_d_seats": 52.7,
-    "expected_r_seats": 47.3,
+    "expected_d_seats": 52.8,
+    "expected_r_seats": 47.2,
     "expected_i_seats": 1.0,
     "majority": {
-      "dem_pct": 83.3,
-      "rep_pct": 16.7
+      "dem_pct": 84.6,
+      "rep_pct": 15.4
     },
     "distribution_buckets": [
       {
@@ -3367,31 +3421,31 @@
       },
       {
         "seats": 47,
-        "pct": 1.3
+        "pct": 1.1
       },
       {
         "seats": 49,
-        "pct": 7.0
+        "pct": 6.2
       },
       {
         "seats": 51,
-        "pct": 21.1
+        "pct": 20.1
       },
       {
         "seats": 53,
-        "pct": 33.6
+        "pct": 33.7
       },
       {
         "seats": 55,
-        "pct": 27.1
+        "pct": 28.2
       },
       {
         "seats": 57,
-        "pct": 8.8
+        "pct": 9.5
       },
       {
         "seats": 59,
-        "pct": 0.9
+        "pct": 1.0
       }
     ]
   },
@@ -13702,13 +13756,6 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
-              "pollster": "David Wolfson Poll",
-              "dates": "October 1–2, 2026",
-              "partisan": "R",
-              "dem": 46.0,
-              "rep": 40.0
-            },
-            {
               "pollster": "Independent Voter Project",
               "dates": "September 23 – October 2, 2026",
               "dem": 48.0,
@@ -13983,6 +14030,260 @@
         }
       },
       {
+        "state": "Alabama",
+        "district": "",
+        "incumbent": "Kay Ivey",
+        "party": "R",
+        "rating": "Solid R",
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        },
+        "lean": "Likely R",
+        "leader": "R",
+        "margin": 14.5,
+        "dem_pct": 1.5,
+        "rep_pct": 98.5,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 37.3,
+          "rep": 50.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "n_sponsored": 2,
+          "polls": [
+            {
+              "pollster": "RMG Research",
+              "dates": "September 21–25, 2026",
+              "partisan": "R",
+              "dem": 37.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "yes. every kid.",
+              "dates": "July 8–11, 2026",
+              "dem": 41.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Cygnal",
+              "dates": "November 12–13, 2025",
+              "partisan": "R",
+              "dem": 34.0,
+              "rep": 53.0
+            }
+          ],
+          "names": {
+            "r": "Tommy Tuberville",
+            "d": "Doug Jones"
+          }
+        }
+      },
+      {
+        "state": "Minnesota",
+        "district": "",
+        "incumbent": "Tim Walz",
+        "party": "D",
+        "rating": "Solid D",
+        "ratings": {
+          "cook": "Solid D",
+          "ie": "Likely D",
+          "sabato": "Safe D"
+        },
+        "lean": "Likely D",
+        "leader": "D",
+        "margin": 14.3,
+        "dem_pct": 98.4,
+        "rep_pct": 1.6,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 50.1,
+          "rep": 39.3,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "co/efficient",
+              "dates": "September 14–15, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "KSTP / SurveyUSA",
+              "dates": "September 9–14, 2026",
+              "dem": 47.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "TIPP Insights",
+              "dates": "August 31 – September 2, 2026",
+              "dem": 47.0,
+              "rep": 37.0
+            },
+            {
+              "pollster": "KTSP / SurveyUSA",
+              "dates": "August 13–17, 2026",
+              "dem": 51.0,
+              "rep": 36.0
+            },
+            {
+              "pollster": "Mason-Dixon Polling & Strategy",
+              "dates": "June 8–10, 2026",
+              "dem": 48.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "February 6–8, 2026",
+              "dem": 51.0,
+              "rep": 38.0
+            },
+            {
+              "pollster": "SurveyUSA",
+              "dates": "January 27–30, 2026",
+              "dem": 49.0,
+              "rep": 34.0
+            }
+          ],
+          "names": {
+            "d": "Amy Klobuchar",
+            "r": "Lisa Demuth"
+          }
+        }
+      },
+      {
+        "state": "Maine",
+        "district": "",
+        "incumbent": "Janet Mills",
+        "party": "D",
+        "rating": "Solid D",
+        "ratings": {
+          "cook": "Solid D",
+          "ie": "Solid D",
+          "sabato": "Likely D"
+        },
+        "lean": "Likely D",
+        "leader": "D",
+        "margin": 14.0,
+        "dem_pct": 98.2,
+        "rep_pct": 1.8,
+        "ind_pct": 0.0,
+        "dem_name": "Hannah Pingree",
+        "rep_name": "Bobby Charles",
+        "ind_name": "Rick Bennett",
+        "polls": {
+          "dem": 49.9,
+          "rep": 38.6,
+          "ind": 5.9,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "Marist University",
+              "dates": "October 1–4, 2026",
+              "dem": 52.0,
+              "rep": 40.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "CBS / YouGov",
+              "dates": "September 23 – October 1, 2026",
+              "dem": 56.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 28–30, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 38.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "Fabrizio Ward / Impact Research",
+              "dates": "September 20–22, 2026",
+              "partisan": "R",
+              "dem": 52.0,
+              "rep": 39.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "New York Times / Portland Press Herald / Siena University",
+              "dates": "September 15–22, 2026",
+              "dem": 47.0,
+              "rep": 34.0,
+              "ind": 8.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 48.0,
+              "rep": 40.0,
+              "ind": 5.0
+            },
+            {
+              "pollster": "University of Massachusetts / YouGov",
+              "dates": "August 28 – September 14, 2026",
+              "dem": 49.0,
+              "rep": 38.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "September 2–8, 2026",
+              "dem": 47.0,
+              "rep": 36.0,
+              "ind": 2.0
+            },
+            {
+              "pollster": "SSRS",
+              "dates": "August 31 – September 6, 2026",
+              "dem": 52.0,
+              "rep": 39.0
+            },
+            {
+              "pollster": "Beacon Research / Shaw & Co. Research",
+              "dates": "August 6–10, 2026",
+              "partisan": "D",
+              "dem": 49.0,
+              "rep": 38.0,
+              "ind": 9.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "July 15–20, 2026",
+              "dem": 49.0,
+              "rep": 35.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "Beacon Research / Shaw & Co. Research",
+              "dates": "June 23–27, 2026",
+              "partisan": "D",
+              "dem": 53.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "New York Times / Portland Press Herald / Siena University",
+              "dates": "June 19–26, 2026",
+              "dem": 50.0,
+              "rep": 36.0,
+              "ind": 8.0
+            }
+          ],
+          "names": {
+            "d": "Hannah Pingree",
+            "r": "Bobby Charles",
+            "i": "Rick Bennett"
+          }
+        }
+      },
+      {
         "state": "New York",
         "district": "",
         "incumbent": "Kathy Hochul",
@@ -13995,20 +14296,33 @@
         },
         "lean": "Likely D",
         "leader": "D",
-        "margin": 14.8,
-        "dem_pct": 98.6,
-        "rep_pct": 1.4,
+        "margin": 13.8,
+        "dem_pct": 98.1,
+        "rep_pct": 1.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 51.4,
-          "rep": 39.8,
+          "dem": 51.8,
+          "rep": 41.8,
           "source": "Simple avg (latest 5 polls)",
           "n_polls": 5,
           "n_sponsored": 2,
           "polls": [
+            {
+              "pollster": "Marist University",
+              "dates": "October 1–4, 2026",
+              "dem": 53.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 23–25, 2026",
+              "partisan": "R",
+              "dem": 48.0,
+              "rep": 41.0
+            },
             {
               "pollster": "Quinnipiac University",
               "dates": "September 17–20, 2026",
@@ -14156,260 +14470,6 @@
         }
       },
       {
-        "state": "Alabama",
-        "district": "",
-        "incumbent": "Kay Ivey",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "lean": "Likely R",
-        "leader": "R",
-        "margin": 14.5,
-        "dem_pct": 1.5,
-        "rep_pct": 98.5,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 37.3,
-          "rep": 50.7,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 3,
-          "n_sponsored": 2,
-          "polls": [
-            {
-              "pollster": "RMG Research",
-              "dates": "September 21–25, 2026",
-              "partisan": "R",
-              "dem": 37.0,
-              "rep": 50.0
-            },
-            {
-              "pollster": "yes. every kid.",
-              "dates": "July 8–11, 2026",
-              "dem": 41.0,
-              "rep": 49.0
-            },
-            {
-              "pollster": "Cygnal",
-              "dates": "November 12–13, 2025",
-              "partisan": "R",
-              "dem": 34.0,
-              "rep": 53.0
-            }
-          ],
-          "names": {
-            "r": "Tommy Tuberville",
-            "d": "Doug Jones"
-          }
-        }
-      },
-      {
-        "state": "Minnesota",
-        "district": "",
-        "incumbent": "Tim Walz",
-        "party": "D",
-        "rating": "Solid D",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Likely D",
-          "sabato": "Safe D"
-        },
-        "lean": "Likely D",
-        "leader": "D",
-        "margin": 14.3,
-        "dem_pct": 98.4,
-        "rep_pct": 1.6,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 50.1,
-          "rep": 39.3,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "co/efficient",
-              "dates": "September 14–15, 2026",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "KSTP / SurveyUSA",
-              "dates": "September 9–14, 2026",
-              "dem": 47.0,
-              "rep": 40.0
-            },
-            {
-              "pollster": "TIPP Insights",
-              "dates": "August 31 – September 2, 2026",
-              "dem": 47.0,
-              "rep": 37.0
-            },
-            {
-              "pollster": "KTSP / SurveyUSA",
-              "dates": "August 13–17, 2026",
-              "dem": 51.0,
-              "rep": 36.0
-            },
-            {
-              "pollster": "Mason-Dixon Polling & Strategy",
-              "dates": "June 8–10, 2026",
-              "dem": 48.0,
-              "rep": 40.0
-            },
-            {
-              "pollster": "Emerson College",
-              "dates": "February 6–8, 2026",
-              "dem": 51.0,
-              "rep": 38.0
-            },
-            {
-              "pollster": "SurveyUSA",
-              "dates": "January 27–30, 2026",
-              "dem": 49.0,
-              "rep": 34.0
-            }
-          ],
-          "names": {
-            "d": "Amy Klobuchar",
-            "r": "Lisa Demuth"
-          }
-        }
-      },
-      {
-        "state": "Maine",
-        "district": "",
-        "incumbent": "Janet Mills",
-        "party": "D",
-        "rating": "Solid D",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Likely D"
-        },
-        "lean": "Likely D",
-        "leader": "D",
-        "margin": 13.9,
-        "dem_pct": 98.2,
-        "rep_pct": 1.8,
-        "ind_pct": 0.0,
-        "dem_name": "Hannah Pingree",
-        "rep_name": "Bobby Charles",
-        "ind_name": "Rick Bennett",
-        "polls": {
-          "dem": 49.4,
-          "rep": 38.3,
-          "ind": 5.7,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "Marist University",
-              "dates": "October 1–4, 2026",
-              "dem": 52.0,
-              "rep": 40.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "CBS / YouGov",
-              "dates": "September 23 – October 1, 2026",
-              "dem": 56.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 28–30, 2026",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 38.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "Fabrizio Ward / Impact Research",
-              "dates": "September 20–22, 2026",
-              "partisan": "R",
-              "dem": 52.0,
-              "rep": 39.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "New York Times / Portland Press Herald / Siena University",
-              "dates": "September 15–22, 2026",
-              "dem": 47.0,
-              "rep": 34.0,
-              "ind": 8.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "September 17–21, 2026",
-              "dem": 48.0,
-              "rep": 40.0,
-              "ind": 5.0
-            },
-            {
-              "pollster": "University of Massachusetts / YouGov",
-              "dates": "August 28 – September 14, 2026",
-              "dem": 49.0,
-              "rep": 38.0
-            },
-            {
-              "pollster": "YouGov",
-              "dates": "September 2–8, 2026",
-              "dem": 47.0,
-              "rep": 36.0,
-              "ind": 2.0
-            },
-            {
-              "pollster": "SSRS",
-              "dates": "August 31 – September 6, 2026",
-              "dem": 52.0,
-              "rep": 39.0
-            },
-            {
-              "pollster": "Beacon Research / Shaw & Co. Research",
-              "dates": "August 6–10, 2026",
-              "partisan": "D",
-              "dem": 49.0,
-              "rep": 38.0,
-              "ind": 9.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "July 15–20, 2026",
-              "dem": 49.0,
-              "rep": 35.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "Beacon Research / Shaw & Co. Research",
-              "dates": "June 23–27, 2026",
-              "partisan": "D",
-              "dem": 53.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "New York Times / Portland Press Herald / Siena University",
-              "dates": "June 19–26, 2026",
-              "dem": 50.0,
-              "rep": 36.0,
-              "ind": 8.0
-            }
-          ],
-          "names": {
-            "d": "Hannah Pingree",
-            "r": "Bobby Charles",
-            "i": "Rick Bennett"
-          }
-        }
-      },
-      {
         "state": "Oklahoma",
         "district": "",
         "incumbent": "Kevin Stitt",
@@ -14418,28 +14478,6 @@
         "ratings": {
           "cook": "Solid R",
           "ie": "Likely R",
-          "sabato": "Safe R"
-        },
-        "lean": "Likely R",
-        "leader": "R",
-        "margin": 12.9,
-        "dem_pct": 2.4,
-        "rep_pct": 97.6,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "South Carolina",
-        "district": "",
-        "incumbent": "Henry McMaster",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
           "sabato": "Safe R"
         },
         "lean": "Likely R",
@@ -14507,19 +14545,19 @@
         }
       },
       {
-        "state": "New Hampshire",
+        "state": "South Carolina",
         "district": "",
-        "incumbent": "Kelly Ayotte",
+        "incumbent": "Henry McMaster",
         "party": "R",
-        "rating": "Likely R",
+        "rating": "Solid R",
         "ratings": {
-          "cook": "Likely R",
+          "cook": "Solid R",
           "ie": "Solid R",
-          "sabato": "Likely R"
+          "sabato": "Safe R"
         },
         "lean": "Likely R",
         "leader": "R",
-        "margin": 8.8,
+        "margin": 8.9,
         "dem_pct": 7.4,
         "rep_pct": 92.6,
         "ind_pct": 0.0,
@@ -14527,69 +14565,36 @@
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 38.1,
-          "rep": 50.8,
-          "source": "Aggregate (Wikipedia)",
+          "dem": 38.0,
+          "rep": 46.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "n_sponsored": 2,
           "polls": [
             {
-              "pollster": "The New York Times / Siena University",
-              "dates": "September 15–22, 2026",
-              "dem": 41.0,
-              "rep": 52.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "September 17–21, 2026",
-              "dem": 43.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 9–11, 2026",
-              "partisan": "R",
-              "dem": 34.0,
-              "rep": 55.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "August 20–24, 2026",
-              "dem": 39.0,
-              "rep": 49.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "August 17–18, 2026",
-              "dem": 38.0,
-              "rep": 49.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "June 24–25, 2026",
-              "dem": 37.0,
+              "pollster": "Resonance Media",
+              "dates": "September 29 – October 3, 2026",
+              "dem": 35.0,
               "rep": 45.0
             },
             {
-              "pollster": "University of New Hampshire",
-              "dates": "June 18–23, 2026",
-              "dem": 39.0,
-              "rep": 44.0
+              "pollster": "Hart Research",
+              "dates": "August 12–15, 2026",
+              "partisan": "D",
+              "dem": 42.0,
+              "rep": 50.0
             },
             {
-              "pollster": "University of New Hampshire",
-              "dates": "April 17–21, 2026",
-              "dem": 39.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "Saint Anselm College",
-              "dates": "March 16–18, 2026",
-              "dem": 39.0,
-              "rep": 46.0
+              "pollster": "Public Policy Polling",
+              "dates": "July 16–17, 2026",
+              "partisan": "D",
+              "dem": 37.0,
+              "rep": 45.0
             }
           ],
           "names": {
-            "r": "Kelly Ayotte",
-            "d": "Cinde Warmington"
+            "r": "Alan Wilson",
+            "d": "Jermaine Johnson"
           }
         }
       },
@@ -14618,6 +14623,12 @@
           "rep": 38.9,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "Arizona State University",
+              "dates": "August 18 – September 4, 2026",
+              "dem": 47.0,
+              "rep": 34.0
+            },
             {
               "pollster": "NextGen Polling",
               "dates": "August 17–19, 2026",
@@ -14896,6 +14907,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "YouGov",
+              "dates": "September 24 – October 3, 2026",
+              "dem": 43.0,
+              "rep": 44.0
+            },
+            {
               "pollster": "co/efficient",
               "dates": "September 28–30, 2026",
               "partisan": "R",
@@ -14946,6 +14963,105 @@
         }
       },
       {
+        "state": "New Hampshire",
+        "district": "",
+        "incumbent": "Kelly Ayotte",
+        "party": "R",
+        "rating": "Likely R",
+        "ratings": {
+          "cook": "Likely R",
+          "ie": "Solid R",
+          "sabato": "Likely R"
+        },
+        "lean": "Likely R",
+        "leader": "R",
+        "margin": 7.8,
+        "dem_pct": 9.7,
+        "rep_pct": 90.3,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 40.3,
+          "rep": 51.4,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 28 – October 5, 2026",
+              "dem": 40.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "September 28–29, 2026",
+              "dem": 45.0,
+              "rep": 52.0
+            },
+            {
+              "pollster": "The New York Times / Siena University",
+              "dates": "September 15–22, 2026",
+              "dem": 41.0,
+              "rep": 52.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 43.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 9–11, 2026",
+              "partisan": "R",
+              "dem": 34.0,
+              "rep": 55.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "August 20–24, 2026",
+              "dem": 39.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "August 17–18, 2026",
+              "dem": 38.0,
+              "rep": 49.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "June 24–25, 2026",
+              "dem": 37.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "June 18–23, 2026",
+              "dem": 39.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "April 17–21, 2026",
+              "dem": 39.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Saint Anselm College",
+              "dates": "March 16–18, 2026",
+              "dem": 39.0,
+              "rep": 46.0
+            }
+          ],
+          "names": {
+            "r": "Kelly Ayotte",
+            "d": "Cinde Warmington"
+          }
+        }
+      },
+      {
         "state": "Michigan",
         "district": "",
         "incumbent": "Gretchen Whitmer",
@@ -14971,6 +15087,18 @@
           "ind": 20.7,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 22 – October 4, 2026",
+              "dem": 48.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Mitchell Research & Communications",
+              "dates": "October 1, 2026",
+              "dem": 46.0,
+              "rep": 39.0
+            },
             {
               "pollster": "Beacon Research / Shaw & Co. Research",
               "dates": "September 24–28, 2026",
@@ -15081,7 +15209,7 @@
               "rep": 38.0
             },
             {
-              "pollster": "Mitchell Research",
+              "pollster": "Mitchell Research & Communications",
               "dates": "July 28–29, 2026",
               "dem": 46.0,
               "rep": 44.0
@@ -15093,7 +15221,7 @@
               "rep": 39.0
             },
             {
-              "pollster": "Mitchell Research",
+              "pollster": "Mitchell Research & Communications",
               "dates": "June 11–13, 2026",
               "dem": 51.0,
               "rep": 40.0
@@ -15232,6 +15360,12 @@
               "dates": "September 22 – October 1, 2026",
               "dem": 49.0,
               "rep": 45.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "September 18–30, 2026",
+              "dem": 48.0,
+              "rep": 44.0
             },
             {
               "pollster": "Big Data Poll",
@@ -15417,6 +15551,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "YouGov",
+              "dates": "September 24 – October 4, 2026",
+              "dem": 44.0,
+              "rep": 47.0
+            },
+            {
               "pollster": "New York Times / Siena University",
               "dates": "September 22–30, 2026",
               "dem": 44.0,
@@ -15488,8 +15628,20 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "YouGov",
+              "dates": "September 28 – October 5, 2026",
+              "dem": 45.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Mason-Dixon",
+              "dates": "September 28 – October 1, 2026",
+              "dem": 41.0,
+              "rep": 48.0
+            },
+            {
               "pollster": "Change Research",
-              "dates": "September 25-27, 2026",
+              "dates": "September 25–27, 2026",
               "partisan": "D",
               "dem": 48.0,
               "rep": 46.0
@@ -15619,7 +15771,7 @@
         "ratings": {
           "cook": "Lean D",
           "ie": "Lean D",
-          "sabato": "Likely D"
+          "sabato": "Lean D"
         },
         "lean": "Lean D",
         "leader": "D",
@@ -15690,18 +15842,24 @@
         },
         "lean": "Tossup",
         "leader": "D",
-        "margin": 2.2,
-        "dem_pct": 65.2,
-        "rep_pct": 34.8,
+        "margin": 2.1,
+        "dem_pct": 64.8,
+        "rep_pct": 35.2,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 43.1,
-          "rep": 43.6,
+          "dem": 42.3,
+          "rep": 42.9,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "Noble Predictive Insights",
+              "dates": "September 22–26, 2026",
+              "dem": 37.0,
+              "rep": 38.0
+            },
             {
               "pollster": "Emerson College",
               "dates": "September 5–8, 2026",
@@ -15813,6 +15971,12 @@
           "rep": 48.5,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "YouGov",
+              "dates": "September 28 – October 5, 2026",
+              "dem": 48.0,
+              "rep": 47.0
+            },
             {
               "pollster": "New York Times / Siena University",
               "dates": "September 22 – October 1, 2026",
@@ -16196,7 +16360,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         },
         "lean": "Tossup",
         "leader": "R",
@@ -16210,15 +16374,15 @@
         "polls": null
       }
     ],
-    "expected_d_seats": 20.6,
-    "expected_r_seats": 15.4,
+    "expected_d_seats": 20.7,
+    "expected_r_seats": 15.3,
     "expected_i_seats": 0.0,
     "majority": {
       "dem_pct": 0.0,
       "rep_pct": 0.0
     },
     "distribution_buckets": null,
-    "total_d_governors": 26.6,
-    "total_r_governors": 23.4
+    "total_d_governors": 26.7,
+    "total_r_governors": 23.3
   }
 }

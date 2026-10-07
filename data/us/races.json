@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-06T12:41:57Z",
+  "scraped_at": "2026-10-07T12:36:07Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -87,7 +87,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -235,7 +235,7 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Lean R",
+          "cook": "Tossup",
           "ie": "Likely R",
           "sabato": "Lean R"
         }
@@ -405,7 +405,7 @@
           "party": "D"
         },
         "ratings": {
-          "cook": "Tossup",
+          "cook": "Lean D",
           "ie": "Tossup",
           "sabato": "Lean D"
         }
@@ -456,7 +456,7 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Lean D(flip)",
+          "cook": "Likely D(flip)",
           "ie": "Lean D(flip)",
           "sabato": "Lean D(flip)"
         }
@@ -534,7 +534,7 @@
         "ratings": {
           "cook": "Likely R",
           "ie": "Likely R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -6607,7 +6607,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -7032,7 +7032,7 @@
         "ratings": {
           "cook": "Lean D",
           "ie": "Lean D",
-          "sabato": "Likely D"
+          "sabato": "Lean D"
         }
       },
       {

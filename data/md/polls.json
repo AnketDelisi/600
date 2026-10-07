@@ -1,0 +1,167 @@
+{
+ "country": "md",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+ "scraped_at": "2026-10-07T13:05:28Z",
+ "poll_count": 8,
+ "polls": [
+  {
+   "pollster": "IMAS",
+   "date": "2025-12-04",
+   "n": 1123,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 43.0,
+    "psrm": 18.6,
+    "pcrm": 5.2,
+    "pvm": 1.8,
+    "prim": 2.9,
+    "man": 2.87,
+    "pdcm": 2.87,
+    "pacc": 2.87,
+    "pn": 8.7,
+    "ppda": 8.7
+   }
+  },
+  {
+   "pollster": "IMAS",
+   "date": "2026-02-15",
+   "n": 1113,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 40.8,
+    "psrm": 19.6,
+    "pcrm": 5.2,
+    "pvm": 2.1,
+    "prim": 3.3,
+    "man": 2.97,
+    "pdcm": 2.97,
+    "pacc": 2.97,
+    "pn": 7.6,
+    "ppda": 9.8,
+    "psde": 0.4
+   }
+  },
+  {
+   "pollster": "iData",
+   "date": "2026-03-15",
+   "n": 1035,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 48.2,
+    "psrm": 21.1,
+    "pcrm": 2.5,
+    "pvm": 0.1,
+    "prim": 2.4,
+    "man": 7.3,
+    "pdcm": 2.4,
+    "pn": 7.2,
+    "ppda": 5.1
+   }
+  },
+  {
+   "pollster": "ATES",
+   "date": "2026-03-23",
+   "n": 1078,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 55.6,
+    "psrm": 10.4,
+    "pcrm": 3.4,
+    "man": 2.6,
+    "pdcm": 0.8,
+    "pn": 6.8,
+    "ppda": 9.3,
+    "psde": 2.1
+   }
+  },
+  {
+   "pollster": "iData",
+   "date": "2026-05-15",
+   "n": 992,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 47.1,
+    "psrm": 18.7,
+    "pcrm": 2.0,
+    "pvm": 0.3,
+    "prim": 1.7,
+    "man": 4.9,
+    "pdcm": 2.6,
+    "pn": 5.8,
+    "ppda": 9.0,
+    "psde": 1.2
+   }
+  },
+  {
+   "pollster": "ATES",
+   "date": "2026-06-08",
+   "n": 1004,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 47.6,
+    "psrm": 13.3,
+    "pcrm": 4.1,
+    "pvm": 0.4,
+    "prim": 2.0,
+    "man": 4.7,
+    "pdcm": 2.1,
+    "pacc": 0.3,
+    "pn": 6.8,
+    "ppda": 9.9,
+    "psde": 1.0
+   }
+  },
+  {
+   "pollster": "IMAS",
+   "date": "2026-06-14",
+   "n": 1116,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 38.0,
+    "psrm": 19.9,
+    "pcrm": 5.9,
+    "pvm": 2.1,
+    "prim": 3.7,
+    "man": 4.4,
+    "pdcm": 1.4,
+    "pn": 7.1,
+    "ppda": 13.6
+   }
+  },
+  {
+   "pollster": "IPP/ATES",
+   "date": "2026-09-11",
+   "n": 1116,
+   "country": "md",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Moldovan_parliamentary_election",
+   "votes": {
+    "pas": 41.0,
+    "psrm": 17.0,
+    "pcrm": 6.8,
+    "pvm": 0.1,
+    "prim": 0.6,
+    "man": 4.6,
+    "pdcm": 2.0,
+    "pn": 8.6,
+    "ppda": 13.0,
+    "psde": 0.8
+   }
+  }
+ ]
+}

@@ -32,6 +32,7 @@ COUNTRY_NAMES = {
     "italy": "Italy",
     "pt": "Portugal",
     "hu": "Hungary",
+    "md": "Moldova",
 }
 ALIASES = {
     # Portugal
@@ -110,6 +111,8 @@ ALIASES = {
     "Podemos": "Podemos (Spanish political party, 2022)",
     # Greece
     "Greek Left Alliance": "Greek Left Alignment",
+    # Moldova
+    "Alternative Bloc": "Alternative (political bloc)",
 }
 
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600">
+<rect fill="#003DA5" width="300" height="600"/>
+<rect fill="#FFD200" x="300" width="300" height="600"/>
+<rect fill="#C8102E" x="600" width="300" height="600"/>
+<g transform="translate(450,300)">
+<path d="M-58,-95 C-115,-85 -145,-52 -155,-10 C-138,-27 -116,-40 -92,-46 L-55,-58 Z" fill="#A0522D" stroke="#6B3A1A" stroke-width="5"/>
+<path d="M58,-95 C115,-85 145,-52 155,-10 C138,-27 116,-40 92,-46 L55,-58 Z" fill="#A0522D" stroke="#6B3A1A" stroke-width="5"/>
+<path d="M0,-150 C30,-150 55,-120 60,-80 C64,-45 55,-5 34,25 L0,55 L-34,25 C-55,-5 -64,-45 -60,-80 C-55,-120 -30,-150 0,-150 Z" fill="#A0522D" stroke="#6B3A1A" stroke-width="6"/>
+<circle cx="0" cy="-122" r="13" fill="#A0522D" stroke="#6B3A1A" stroke-width="4"/>
+<path d="M0,-60 C22,-60 40,-40 40,-10 C40,30 22,70 0,95 C-22,70 -40,30 -40,-10 C-40,-40 -22,-60 0,-60 Z" fill="#C8102E" stroke="#6B3A1A" stroke-width="6"/>
+<path d="M0,-28 C8,-28 14,-20 14,-8 C14,10 8,26 0,36 C-8,26 -14,10 -14,-8 C-14,-20 -8,-28 0,-28 Z" fill="#003DA5"/>
+</g>
+</svg>

@@ -26799,6 +26799,61 @@ saxony_anhalt: {
     },
   },
 
+  md: {
+    name: 'Moldova',
+    seats: 101,
+    threshold: 5.0,
+    method: 'dhondt',             // national closed-list PR, D'Hondt
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 14,
+    defaultDays: 2026,            // sparse source: quarterly polls since 2025
+    parties: {
+      pas:  { code: 'PAS',  name: 'Partidul Acțiune și Solidaritate', name_en: 'Party of Action and Solidarity', color: '#FFDD00' },
+      psrm: { code: 'PSRM', name: 'Partidul Socialiștilor din Republica Moldova', name_en: 'Party of Socialists of the Republic of Moldova', color: '#9C162E' },
+      pcrm: { code: 'PCRM', name: 'Partidul Comuniștilor din Republica Moldova', name_en: 'Party of Communists of the Republic of Moldova', color: '#C00302' },
+      pvm:  { code: 'PVM',  name: 'Partidul Viitorul Moldovei', name_en: 'Future of Moldova Party', color: '#FF7900' },
+      prim: { code: 'PRIM', name: 'Partidul Inima Moldovei', name_en: 'Heart of Moldova Party', color: '#0046AE' },
+      man:  { code: 'MAN',  name: 'Mișcarea Alternativa Națională', name_en: 'National Alternative Movement', color: '#0F7B61' },
+      pdcm: { code: 'PDCM', name: 'Partidul Dezvoltării și Consolidării Moldovei', name_en: 'Party of Development and Consolidation of Moldova', color: '#71004B' },
+      pacc: { code: 'PAC–CC', name: 'Partidul Acțiunea Comună – Congresul Civic', name_en: 'Common Action Party – Civil Congress', color: '#EF7F1A' },
+      pn:   { code: 'PN',   name: 'Partidul Nostru', name_en: 'Our Party', color: '#2680FA' },
+      ppda: { code: 'PPDA', name: 'Partidul Democrația Acasă', name_en: 'Democracy at Home Party', color: '#24247A' },
+      psde: { code: 'PSDE', name: 'Partidul Social Democrat European', name_en: 'European Social Democratic Party', color: '#D93029' },
+      bep:  { code: 'BEP',  name: 'Blocul Electoral Patriotic', name_en: 'Patriotic Electoral Bloc', color: '#BA1906', pastOnly: true },
+      ba:   { code: 'BA',   name: 'Blocul Alternativ', name_en: 'Alternative Bloc', color: '#026D59', pastOnly: true },
+    },
+    order: ['pas', 'psrm', 'pcrm', 'pvm', 'prim', 'man', 'pdcm', 'pacc', 'pn', 'ppda', 'psde', 'bep', 'ba'],
+    parlOrder: ['pcrm', 'psrm', 'bep', 'pdcm', 'psde', 'pacc', 'pas', 'ppda', 'prim', 'man', 'ba', 'pn'],
+    lastElection: {
+      date: '2025-09-28',
+      // the 2025 blocs: BEP (PSRM/PCRM) and Alternative (MAN/PDCM/PRIM);
+      // both dissolved, the components run separately in the polls
+      results: {"pas": 50.2, "psrm": 0, "pcrm": 0, "pvm": 0, "prim": 0, "man": 0, "pdcm": 0, "pacc": 0, "pn": 6.2, "ppda": 5.62, "psde": 0.95, "bep": 24.2, "ba": 7.96},
+      seats: {"pas": 55, "psrm": 0, "pcrm": 0, "pvm": 0, "prim": 0, "man": 0, "pdcm": 0, "pacc": 0, "pn": 6, "ppda": 6, "psde": 0, "bep": 26, "ba": 8},
+    },
+    map: {
+      svg: 'img/moldova.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // the 5% threshold is national, not per district
+      districtThreshold: false,
+      districts: {"anenii_noi": "anenii_noi", "balti": "balti", "basarabeasca": "basarabeasca", "bender": "bender", "briceni": "briceni", "cahul": "cahul", "calarasi": "calarasi", "cantemir": "cantemir", "causeni": "causeni", "chisinau": "chisinau", "cimislia": "cimislia", "criuleni": "criuleni", "donduseni": "donduseni", "drochia": "drochia", "dubasari": "dubasari", "edinet": "edinet", "falesti": "falesti", "floresti": "floresti", "gagauzia": "gagauzia", "glodeni": "glodeni", "hincesti": "hincesti", "ialoveni": "ialoveni", "leova": "leova", "nisporeni": "nisporeni", "ocnita": "ocnita", "orhei": "orhei", "rezina": "rezina", "riscani": "riscani", "singerei": "singerei", "soldanesti": "soldanesti", "soroca": "soroca", "stefan_voda": "stefan_voda", "straseni": "straseni", "taraclia": "taraclia", "telenesti": "telenesti", "transnistria": "transnistria", "ungheni": "ungheni"},
+      names: {"anenii_noi": "Anenii Noi", "balti": "Bălți", "basarabeasca": "Basarabeasca", "bender": "Bender", "briceni": "Briceni", "cahul": "Cahul", "calarasi": "Calarasi", "cantemir": "Cantemir", "causeni": "Causeni", "chisinau": "Chișinău", "cimislia": "Cimislia", "criuleni": "Criuleni", "donduseni": "Donduseni", "drochia": "Drochia", "dubasari": "Dubasari", "edinet": "Edinet", "falesti": "Falesti", "floresti": "Floresti", "gagauzia": "UTA Gagauzia", "glodeni": "Glodeni", "hincesti": "Hincesti", "ialoveni": "Ialoveni", "leova": "Leova", "nisporeni": "Nisporeni", "ocnita": "Ocnita", "orhei": "Orhei", "rezina": "Rezina", "riscani": "Riscani", "singerei": "Singerei", "soldanesti": "Soldanesti", "soroca": "Soroca", "stefan_voda": "Stefan Voda", "straseni": "Straseni", "taraclia": "Taraclia", "telenesti": "Telenesti", "transnistria": "Left Bank", "ungheni": "Ungheni"},
+      gebiete: {"anenii_noi": {"pas": 47.27, "bep": 25.72, "ba": 7.93, "pn": 5.56, "ppda": 8.02}, "balti": {"pas": 26.57, "bep": 41.51, "ba": 10.98, "pn": 14.53, "ppda": 1.87}, "basarabeasca": {"pas": 35.75, "bep": 42.24, "ba": 6.72, "pn": 4.32, "ppda": 7.05}, "bender": {"pas": 29.89, "bep": 51.02, "ba": 8.91, "pn": 2.92, "ppda": 2.36}, "briceni": {"pas": 27.01, "bep": 48.48, "ba": 6.79, "pn": 6.18, "ppda": 5.36}, "cahul": {"pas": 44.35, "bep": 28.3, "ba": 8.44, "pn": 3.86, "ppda": 9.78}, "calarasi": {"pas": 59.36, "bep": 16.19, "ba": 4.72, "pn": 5.64, "ppda": 7.33}, "cantemir": {"pas": 52.81, "bep": 20.17, "ba": 5.91, "pn": 6.04, "ppda": 9.73}, "causeni": {"pas": 49.54, "bep": 22.99, "ba": 4.29, "pn": 4.59, "ppda": 12.25}, "chisinau": {"pas": 52.68, "bep": 21.26, "ba": 14.48, "pn": 4.12, "ppda": 2.49}, "cimislia": {"pas": 51.05, "bep": 20.79, "ba": 8.04, "pn": 4.48, "ppda": 9.94}, "criuleni": {"pas": 58.62, "bep": 14.35, "ba": 5.59, "pn": 5.58, "ppda": 7.48}, "donduseni": {"pas": 25.25, "bep": 48.12, "ba": 7.24, "pn": 7.17, "ppda": 5.89}, "drochia": {"pas": 31.74, "bep": 29.85, "ba": 8.39, "pn": 17.4, "ppda": 5.96}, "dubasari": {"pas": 39.94, "bep": 31.29, "ba": 10.91, "pn": 6.55, "ppda": 5.65}, "edinet": {"pas": 27.51, "bep": 42.51, "ba": 8.89, "pn": 5.43, "ppda": 6.28}, "falesti": {"pas": 30.53, "bep": 27.58, "ba": 5.36, "pn": 23.43, "ppda": 4.54}, "floresti": {"pas": 37.68, "bep": 28.6, "ba": 8.07, "pn": 9.74, "ppda": 6.89}, "gagauzia": {"pas": 3.19, "bep": 82.35, "ba": 11.47, "pn": 0.7, "ppda": 0.31}, "glodeni": {"pas": 31.37, "bep": 31.09, "ba": 14.66, "pn": 13.0, "ppda": 5.19}, "hincesti": {"pas": 58.02, "bep": 13.85, "ba": 5.92, "pn": 5.04, "ppda": 9.89}, "ialoveni": {"pas": 65.57, "bep": 8.62, "ba": 5.88, "pn": 4.4, "ppda": 8.17}, "leova": {"pas": 47.32, "bep": 20.72, "ba": 4.55, "pn": 4.09, "ppda": 10.02}, "nisporeni": {"pas": 57.56, "bep": 11.07, "ba": 4.7, "pn": 7.25, "ppda": 8.79}, "ocnita": {"pas": 20.67, "bep": 52.22, "ba": 8.59, "pn": 4.96, "ppda": 5.8}, "orhei": {"pas": 47.43, "bep": 23.87, "ba": 7.04, "pn": 4.02, "ppda": 9.5}, "rezina": {"pas": 47.01, "bep": 23.1, "ba": 6.19, "pn": 5.45, "ppda": 9.79}, "riscani": {"pas": 29.95, "bep": 40.46, "ba": 6.8, "pn": 11.29, "ppda": 4.95}, "singerei": {"pas": 43.05, "bep": 27.3, "ba": 5.49, "pn": 10.71, "ppda": 7.4}, "soldanesti": {"pas": 39.79, "bep": 25.57, "ba": 4.17, "pn": 7.73, "ppda": 12.13}, "soroca": {"pas": 37.79, "bep": 35.49, "ba": 5.27, "pn": 8.52, "ppda": 6.93}, "stefan_voda": {"pas": 47.02, "bep": 23.71, "ba": 4.55, "pn": 4.83, "ppda": 10.1}, "straseni": {"pas": 63.12, "bep": 12.97, "ba": 4.58, "pn": 6.4, "ppda": 6.7}, "taraclia": {"pas": 6.1, "bep": 79.51, "ba": 10.51, "pn": 0.69, "ppda": 0.72}, "telenesti": {"pas": 56.93, "bep": 14.25, "ba": 4.08, "pn": 4.56, "ppda": 9.93}, "transnistria": {"pas": 29.89, "bep": 51.02, "ba": 8.91, "pn": 2.92, "ppda": 2.36}, "ungheni": {"pas": 42.83, "bep": 24.35, "ba": 5.17, "pn": 9.4, "ppda": 8.65}},
+      national2021: {"pas": 50.2, "bep": 24.2, "ba": 7.96, "pn": 6.2, "ppda": 5.62},
+      // the dissolved blocs' successors inherit the bloc geography
+      swingProxy: { psrm: 'bep', pcrm: 'bep', man: 'ba', pdcm: 'ba', prim: 'ba' },
+    },
+    pollsterMAE: {},
+    maeKey: 'MD2029',
+    logos: {
+      pas: 'img/md/PAS.svg', psrm: 'img/md/PSRM.svg', pcrm: 'img/md/PCRM.svg',
+      pvm: 'img/md/PVM.svg', prim: 'img/md/PRIM.svg', man: 'img/md/MAN.svg',
+      pdcm: 'img/md/PDCM.svg', pacc: 'img/md/PACCC.svg', pn: 'img/md/PN.svg',
+      ppda: 'img/md/PPDA.svg', psde: 'img/md/PSDE.svg',
+    },
+  },
   pt: {
     name: 'Portugal',
     seats: 230,
@@ -47813,7 +47868,7 @@ CONSTITUENCY_RULE = c.constituencyRule || 'standard';
   PARTY_META = c.parties;
   PARTY_ORDER = c.order;
   PARLIAMENT_ORDER = c.parlOrder || c.order;
-  BLOCS = c.blocs;
+  BLOCS = c.blocs || {};   // a country without blocs (Moldova) must not crash the render
   LAST_ELECTION = c.lastElection;
   POLLSTER_MAE = c.pollsterMAE || {};
   PARTY_LOGOS = c.logos || {};

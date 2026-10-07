@@ -205,6 +205,9 @@ OVERRIDES = {
     ("uk", "Labour Party"): "Labour Party (UK)",
     ("nz", "Labour Party"): "New Zealand Labour Party",
     ("ro", "Social Democratic Party"): "Social Democratic Party (Romania)",
+    ("ro", "Save Romania Union"): "Save Romania Union (2022)",
+    ("ro", "Democratic Union of Hungarians in Romania"):
+        "Democratic Alliance of Hungarians in Romania",
 }
 
 # Deliberate deviations from the module (kept out of --apply)

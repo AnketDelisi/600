@@ -1,0 +1,9 @@
+{
+ "country": "ro",
+ "name": "Romania",
+ "seats": 331,
+ "threshold": 5.0,
+ "method": "hare_niemeyer",
+ "constituencies": false,
+ "notes": "Chamber of Deputies: 331 seats = 312 elected in the 43 constituencies (41 counties, Bucharest and 4 diaspora deputies) by closed-list PR with per-constituency Hare/Niemeyer, plus 19 reserved deputies of the recognised national minorities. National 5% threshold (8%/9%/10% for two/three/four-party alliances). 2024 result: PSD 21.96% (86 seats), AUR 18.01% (63), PNL 13.20% (49), USR 12.40% (40), SOS 7.36% (28), POT 6.46% (24), UDMR 6.33% (22). Regional baselines: the 2020 per-county result scaled to the 2024 national shares (SOS/POT inherit AUR's geography, FD PNL's, REPER USR's). Polling tracked after the 1 December 2024 election; the next election is due by 2028."
+}

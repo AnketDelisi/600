@@ -2570,6 +2570,13 @@ function allocateSeatsByDistrict(avg, regionNoise){
     quo.sort((a,b)=>b.q-a.q);
     for(let i=0;i<seatsN&&i<quo.length;i++) out[quo[i].p]++;
   }
+  // Reserved seats (Romania's 19 national-minority deputies): not in the
+  // polls and not tied to a constituency - they always hold their seats, so
+  // they sit on top of the district allocation.
+  const reserved=(COUNTRIES[COUNTRY]||{}).reservedSeats;
+  if(reserved){
+    for(const k in reserved) out[k]=(out[k]||0)+reserved[k];
+  }
   return out;
 }
 

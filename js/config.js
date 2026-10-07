@@ -26825,6 +26825,12 @@ saxony_anhalt: {
     },
     order: ['pas', 'psrm', 'pcrm', 'pvm', 'prim', 'man', 'pdcm', 'pacc', 'pn', 'ppda', 'psde', 'bep', 'ba'],
     parlOrder: ['pcrm', 'psrm', 'bep', 'pdcm', 'psde', 'pacc', 'pas', 'ppda', 'prim', 'man', 'ba', 'pn'],
+    // Government vs Opposition (the site convention: the forecast's majority
+    // simulation needs a two-bloc structure; Moldova has no formal blocs)
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['pas'], color: '#FFDD00' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['psrm', 'pcrm', 'pn', 'ppda', 'man', 'pdcm', 'prim', 'pvm', 'pacc', 'psde'], color: '#9C162E' },
+    },
     lastElection: {
       date: '2025-09-28',
       // the 2025 blocs: BEP (PSRM/PCRM) and Alternative (MAN/PDCM/PRIM);

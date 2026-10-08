@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-08T06:19:17Z",
+  "scraped_at": "2026-10-08T12:47:07Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -443,6 +443,12 @@
       "rep": 45.5,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "SSRS",
+          "dates": "September 29 – October 5, 2026",
+          "dem": 43.0,
+          "rep": 45.0
+        },
         {
           "pollster": "Suffolk University",
           "dates": "October 1–4, 2026",
@@ -983,6 +989,12 @@
           "dates": "September 24–27, 2026",
           "dem": 51.0,
           "rep": 44.0
+        },
+        {
+          "pollster": "Guidant Polling & Strategy",
+          "dates": "September 20–27, 2026",
+          "dem": 48.0,
+          "rep": 43.0
         },
         {
           "pollster": "Big Data Poll",
@@ -1997,6 +2009,12 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "SSRS",
+          "dates": "September 29 – October 5, 2026",
+          "dem": 49.0,
+          "rep": 43.0
+        },
+        {
           "pollster": "New York Times / Siena University",
           "dates": "September 22 – October 1, 2026",
           "dem": 49.0,
@@ -2386,6 +2404,12 @@
           "partisan": "D",
           "dem": 51.0,
           "rep": 49.0
+        },
+        {
+          "pollster": "Guidant Polling & Strategy",
+          "dates": "September 20–28, 2026",
+          "dem": 47.0,
+          "rep": 44.0
         },
         {
           "pollster": "Pulse Decision Science",
@@ -3220,6 +3244,12 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "SSRS",
+          "dates": "September 29 – October 5, 2026",
+          "dem": 51.0,
+          "rep": 42.0
+        },
+        {
           "pollster": "Suffolk University",
           "dates": "October 1–4, 2026",
           "dem": 55.0,
@@ -3576,6 +3606,12 @@
           "dates": "September 24–27, 2026",
           "dem": 53.0,
           "rep": 41.0
+        },
+        {
+          "pollster": "Guidant Polling & Strategy",
+          "dates": "September 20–27, 2026",
+          "dem": 50.0,
+          "rep": 45.0
         },
         {
           "pollster": "co/efficient",
@@ -4037,12 +4073,18 @@
       }
     },
     "New York": {
-      "dem": 51.8,
-      "rep": 41.8,
+      "dem": 52.2,
+      "rep": 40.6,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
-      "n_sponsored": 2,
+      "n_sponsored": 1,
       "polls": [
+        {
+          "pollster": "Emerson College",
+          "dates": "October 3–5, 2026",
+          "dem": 52.0,
+          "rep": 40.0
+        },
         {
           "pollster": "Marist University",
           "dates": "October 1–4, 2026",
@@ -4202,10 +4244,16 @@
       }
     },
     "Ohio": {
-      "dem": 49.0,
+      "dem": 49.2,
       "rep": 44.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "SSRS",
+          "dates": "September 29 – October 5, 2026",
+          "dem": 50.0,
+          "rep": 42.0
+        },
         {
           "pollster": "New York Times / Siena University",
           "dates": "September 22 – October 1, 2026",
@@ -4690,6 +4738,12 @@
           "partisan": "D",
           "dem": 47.0,
           "rep": 52.0
+        },
+        {
+          "pollster": "Guidant Polling & Strategy",
+          "dates": "September 20–28, 2026",
+          "dem": 44.0,
+          "rep": 46.0
         },
         {
           "pollster": "Big Data Poll",

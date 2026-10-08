@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-08T06:18:21Z",
+  "scraped_at": "2026-10-08T12:46:10Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -25,33 +25,33 @@
   "generic_ballot": [
     {
       "pollster": "Decision Desk HQ",
-      "dates": "January 9, 2025 – October 2, 2026",
-      "dem": 49.4,
-      "rep": 42.5
+      "dates": "January 9, 2025 – October 5, 2026",
+      "dem": 48.8,
+      "rep": 40.4
     },
     {
       "pollster": "FiftyPlusOne",
-      "dates": "January 9, 2025 – October 2, 2026",
+      "dates": "January 9, 2025 – October 5, 2026",
       "dem": 51.2,
-      "rep": 43.3
+      "rep": 43.4
     },
     {
       "pollster": "NBC News",
-      "dates": "January 9, 2025 – October 2, 2026",
+      "dates": "January 9, 2025 – October 5, 2026",
       "dem": 52.0,
       "rep": 43.0
     },
     {
       "pollster": "RealClearPolitics",
-      "dates": "September 16 – October 2, 2026",
-      "dem": 51.1,
-      "rep": 42.8
+      "dates": "September 16 – October 5, 2026",
+      "dem": 50.4,
+      "rep": 42.5
     },
     {
       "pollster": "Silver Bulletin",
-      "dates": "January 9, 2025 – October 2, 2026",
+      "dates": "January 9, 2025 – October 5, 2026",
       "dem": 50.1,
-      "rep": 41.2
+      "rep": 41.1
     }
   ],
   "races": {

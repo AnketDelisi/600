@@ -56,6 +56,7 @@ jobs:
           python scraper/scrape_moldova.py
           python scraper/scrape_romania.py
           python scraper/scrape_denmark.py
+          python scraper/scrape_finland.py
 
       # The US midterms page (us/index.html) has its own pipeline: races ->
       # per-race polling -> the in-house model. It hits ~70 Wikipedia pages,

@@ -5206,4 +5206,14 @@ loadData().then(()=>loadConstituencies()).then(()=>loadBacktest()).then(()=>{
 });
 window.addEventListener('resize',()=>{fitSideCard(); if(window.__ypFit) window.__ypFit();});
 
+// Offline seat-model API for scraper/seats_run.js (the backtest harness runs
+// the real allocation on arbitrary vote maps without a browser). Node sets
+// window.__600_SEATAPI__ before loading this file; inert in the browser.
+if(typeof window!=='undefined'&&window.__600_SEATAPI__){
+  window.__600_alloc=function(cc,votes,total){
+    setCountry(cc);
+    return allocateSeatsTotal(votes,total===undefined?SEATS_TOTAL:total);
+  };
+}
+
 })();

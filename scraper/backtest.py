@@ -507,6 +507,91 @@ def house_bias_table(data, upto_cycle):
     return out
 
 
+# horizon buckets for the pollster-accuracy-by-horizon measurement: polls are
+# bucketed by days-to-election into the harness horizons
+HORIZON_BUCKETS = ((3, 0), (10, 7), (21, 14), (45, 30), (120, 60))
+
+
+def _bucket(days):
+    for lim, h in HORIZON_BUCKETS:
+        if days <= lim:
+            return h
+    return None
+
+
+def pollster_tables(data_all, cc, upto_cycle):
+    """Per-pollster accuracy (mean per-poll MAE across parties) from cycles of
+    the SAME country strictly before upto_cycle - walk-forward, pollsters are
+    country-specific. Returns (overall, by_horizon, panel_overall,
+    panel_by_horizon), each shrunk toward the panel mean with n/(n+3) so a
+    pollster with one lucky poll does not get an extreme weight.
+
+    Measured 2026-10 via --variants: weighting polls by 1/pollster-MAE moves
+    the average MAE by -0.02 to +0.00 against the plain recency x sample
+    weighting, and the horizon-specific variant is the same -0.02. The
+    per-pollster horizon table is real (one UK pollster reads 1.41 MAE at
+    T-7 and 5.65 at T-60) but recency weighting already prices that in, so
+    the pollster x horizon interaction adds no usable signal. The app's flat
+    1/MAE weighting stays; do not add a horizon table to config."""
+    ov, bh, panel, panel_h = {}, {}, [], {}
+    for (country, cycle), (polls, result) in data_all.items():
+        if country != cc or cycle >= upto_cycle:
+            continue
+        edate = CYCLES[country][cycle]["election"]
+        for p in polls:
+            keys = [k for k in result if k in p["votes"]]
+            if len(keys) < 3:
+                continue
+            days = _ord(edate) - _ord(p["date"])
+            if days < 0:
+                continue
+            err = st.mean(abs(p["votes"][k] - result[k]) for k in keys)
+            ps = p["pollster"].lower()
+            ov.setdefault(ps, []).append(err)
+            panel.append(err)
+            b = _bucket(days)
+            if b is not None:
+                bh.setdefault((ps, b), []).append(err)
+                panel_h.setdefault(b, []).append(err)
+    pov = st.mean(panel) if panel else 2.5
+    povh = {b: st.mean(v) for b, v in panel_h.items()}
+    out_ov = {ps: (sum(v) + 3 * pov) / (len(v) + 3) for ps, v in ov.items()}
+    out_bh = {}
+    for (ps, b), v in bh.items():
+        prior = povh.get(b, pov)
+        out_bh[(ps, b)] = (sum(v) + 3 * prior) / (len(v) + 3)
+    return out_ov, out_bh, pov, povh
+
+
+def average_maeweighted(polls, as_of, half_life, mode, ptab):
+    """weightedAverage with the pollster weight divided by their measured MAE
+    instead of a flat sample-size weight. mode 'maew' = overall pollster MAE,
+    'maeh' = horizon-specific MAE (falling back to the panel's horizon mean)."""
+    ov, bh, pov, povh = ptab
+    out = {}
+    keys = set(k for p in polls for k in p["votes"])
+    for key in keys:
+        num = den = 0.0
+        for p in polls:
+            if key not in p["votes"]:
+                continue
+            days = _as_ord(as_of) - _ord(p["date"])
+            if days < 0:
+                continue
+            ps = p["pollster"].lower()
+            if mode == "maew":
+                mae = ov.get(ps, pov)
+            else:
+                b = _bucket(days)
+                mae = bh.get((ps, b)) or povh.get(b, pov)
+            w = (math.pow(0.5, days / half_life) * min(1500, p["n"])
+                 / max(mae, 0.3))
+            num += w * p["votes"][key]
+            den += w
+        out[key] = num / den if den else None
+    return out
+
+
 def average_corrected(polls, as_of, half_life, bias):
     """weightedAverage with per-pollster per-party bias removed."""
     out = {}
@@ -527,7 +612,7 @@ def average_corrected(polls, as_of, half_life, bias):
     return out
 
 
-def score_variant(polls, spec, horizon_days, mode, bias=None):
+def score_variant(polls, spec, horizon_days, mode, bias=None, ptab=None):
     import datetime
     election = datetime.date.fromisoformat(spec["election"])
     as_of = election - datetime.timedelta(days=horizon_days)
@@ -536,6 +621,9 @@ def score_variant(polls, spec, horizon_days, mode, bias=None):
         return None
     if mode == "corrected" and bias:
         avg = average_corrected(use, as_of.isoformat(), spec["half_life"], bias)
+    elif mode in ("maew", "maeh") and ptab:
+        avg = average_maeweighted(use, as_of.isoformat(), spec["half_life"],
+                                  mode, ptab)
     else:
         avg = average(use, _as_ord(as_of.isoformat()), spec["half_life"])
     if mode == "normalized":
@@ -639,6 +727,7 @@ def main():
             polls = data_all[(country, cycle)][0]
             print("== %s %d: %d polls parsed" % (country, cycle, len(polls)))
             bias = house_bias_table(data_all, cycle)
+            ptab = pollster_tables(data_all, country, cycle)
             for horizon in (60, 30, 14, 7, 0):
                 s = score(polls, spec, horizon)
                 if not s:
@@ -650,12 +739,16 @@ def main():
                 if args.variants:
                     c = score_variant(polls, spec, horizon, "corrected", bias)
                     nz = score_variant(polls, spec, horizon, "normalized")
+                    mw = score_variant(polls, spec, horizon, "maew", ptab=ptab)
+                    mh = score_variant(polls, spec, horizon, "maeh", ptab=ptab)
                     if c:
-                        print("        house-corrected: MAE %.2f (%+.2f) | "
-                              "normalized: MAE %.2f" %
-                              (c["mae"], c["mae"] - s["mae"], nz["mae"]))
+                        print("        house-corrected %+5.2f | normalized "
+                              "%+5.2f | mae-weight %+5.2f | mae-horizon %+5.2f"
+                              % (c["mae"] - s["mae"], nz["mae"] - s["mae"],
+                                 mw["mae"] - s["mae"], mh["mae"] - s["mae"]))
                         variants.append((country, cycle, horizon,
-                                         s["mae"], c["mae"], nz["mae"]))
+                                         s["mae"], c["mae"], nz["mae"],
+                                         mw["mae"], mh["mae"]))
             if spec.get("seats"):
                 got = 0
                 for horizon in (60, 30, 14, 7, 0):
@@ -794,8 +887,11 @@ def main():
                 continue
             d_house = st.mean(x[4] - x[3] for x in v)
             d_norm = st.mean(x[5] - x[3] for x in v)
-            print("  T-%-3d n=%d  house-corrected %+0.2f  normalized %+0.2f" %
-                  (horizon, len(v), d_house, d_norm))
+            d_mw = st.mean(x[6] - x[3] for x in v)
+            d_mh = st.mean(x[7] - x[3] for x in v)
+            print("  T-%-3d n=%d  house-corrected %+0.2f  normalized %+0.2f  "
+                  "mae-weight %+0.2f  mae-horizon %+0.2f" %
+                  (horizon, len(v), d_house, d_norm, d_mw, d_mh))
 
 
 if __name__ == "__main__":

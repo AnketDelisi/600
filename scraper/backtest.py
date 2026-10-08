@@ -551,17 +551,21 @@ def score_variant(polls, spec, horizon_days, mode, bias=None):
             "bias": st.mean(errs)}
 
 
-def run_seats(cc, votes):
+def run_seats(cc, votes, swing=None):
     """Run the app's real seat allocation through scraper/seats_run.js (Node
-    loads js/config.js + js/app.js with a DOM stub). Returns the seat map, or
-    None when node is missing or the allocation errors - no Python copy of the
-    model exists, so the harness cannot drift from the app."""
+    loads js/config.js + js/app.js with a DOM stub). `swing` overrides the
+    map's district swing method (proportional / uniform / shrunk). Returns the
+    seat map, or None when node is missing or the allocation errors - no
+    Python copy of the model exists, so the harness cannot drift from the
+    app."""
     import subprocess
     try:
+        args = ["node", os.path.join("scraper", "seats_run.js"), cc,
+                json.dumps(votes)]
+        if swing:
+            args.append(swing)
         r = subprocess.run(
-            ["node", os.path.join("scraper", "seats_run.js"), cc,
-             json.dumps(votes)],
-            capture_output=True, text=True, encoding="utf8", cwd=ROOT,
+            args, capture_output=True, text=True, encoding="utf8", cwd=ROOT,
             timeout=180)
         if r.returncode != 0 or not r.stdout.strip():
             return None
@@ -570,31 +574,42 @@ def run_seats(cc, votes):
         return None
 
 
-def score_seats(polls, spec, horizon, cc):
-    """Project seats from the T-horizon poll average through the app's model
-    and score against the actual seat outcome: per-party seat MAE and whether
-    the largest party was called."""
+def horizon_votes(polls, spec, horizon):
+    """The weighted average at T-horizon mapped onto app party codes."""
     import datetime
     election = datetime.date.fromisoformat(spec["election"])
     as_of = election - datetime.timedelta(days=horizon)
     use = [p for p in polls if _ord(p["date"]) <= _as_ord(as_of.isoformat())]
     if not use:
-        return None
+        return None, 0
     avg = average(use, _as_ord(as_of.isoformat()), spec["half_life"])
     smap = spec.get("seat_map", {})
     votes = {smap.get(k, k): v for k, v in avg.items() if v is not None}
     if len(votes) < 3:
-        return None
-    proj = run_seats(cc, votes)
-    if not proj:
-        return None
-    actual = spec["seats"]
+        return None, 0
+    return votes, len(use)
+
+
+def score_proj(proj, actual):
     keys = set(actual) | {k for k, v in proj.items() if v > 0}
     errs = [proj.get(k, 0) - actual.get(k, 0) for k in keys]
     lead_ok = (max(proj, key=lambda k: proj.get(k, 0)) ==
                max(actual, key=actual.get))
-    return {"n": len(use), "seat_mae": st.mean(abs(e) for e in errs),
-            "seat_bias": st.mean(errs), "lead": lead_ok, "proj": proj}
+    return st.mean(abs(e) for e in errs), lead_ok
+
+
+def score_seats(polls, spec, horizon, cc):
+    """Project seats from the T-horizon poll average through the app's model
+    and score against the actual seat outcome: per-party seat MAE and whether
+    the largest party was called."""
+    votes, n = horizon_votes(polls, spec, horizon)
+    if not votes:
+        return None
+    proj = run_seats(cc, votes)
+    if not proj:
+        return None
+    mae, lead_ok = score_proj(proj, spec["seats"])
+    return {"n": n, "seat_mae": mae, "lead": lead_ok, "proj": proj}
 
 
 def main():
@@ -602,6 +617,9 @@ def main():
     ap.add_argument("--country", default=None)
     ap.add_argument("--refresh", action="store_true")
     ap.add_argument("--variants", action="store_true")
+    ap.add_argument("--swings", action="store_true",
+                    help="compare proportional/uniform/shrunk district swing "
+                         "and their ensemble on the seat cycles")
     args = ap.parse_args()
     import datetime
     rows = []
@@ -671,6 +689,61 @@ def main():
             if vals:
                 print("  T-%-3d cycles=%d  seat MAE %.2f  leaders %d/%d" %
                       (horizon, len(vals), st.mean(vals), sum(lead), len(lead)))
+
+    if args.swings:
+        # Measured 2026-10 on the nine seat cycles: an equal-weight ensemble
+        # of the three swing methods does NOT beat proportional (T-0 mean
+        # seat MAE: prop 3.66, uniform 3.73, shrunk 4.83, ensemble 4.08; UK
+        # 2024: prop 7.9 vs ensemble 11.0). Uniform is statistically tied,
+        # 'shrunk' drags the mix down, and the methods are too correlated for
+        # variance reduction. Proportional stays the default - re-run
+        # --swings before changing any map's swingMethod.
+        print("\n== swing-method comparison (seat MAE; * = leader missed)")
+        srows = []
+        for country, cycles in CYCLES.items():
+            if args.country and country != args.country:
+                continue
+            for cycle, spec in sorted(cycles.items()):
+                if not spec.get("seats"):
+                    continue
+                polls = data_all[(country, cycle)][0]
+                for horizon in (60, 30, 14, 7, 0):
+                    votes, n = horizon_votes(polls, spec, horizon)
+                    if not votes:
+                        continue
+                    res, ok = {}, True
+                    for m in ("proportional", "uniform", "shrunk"):
+                        p = run_seats(country, votes, m)
+                        if p is None:
+                            ok = False
+                            break
+                        res[m] = p
+                    if not ok:
+                        continue
+                    keys = set().union(*[set(p) for p in res.values()])
+                    ens = {k: int(round(sum(res[m].get(k, 0) for m in res)
+                                        / 3.0)) for k in keys}
+                    row = {m: score_proj(res[m], spec["seats"])
+                           for m in res}
+                    row["ensemble"] = score_proj(ens, spec["seats"])
+                    srows.append((country, cycle, horizon, row))
+                    print("  %s %d T-%-3d  %s" %
+                          (country, cycle, horizon,
+                           "  ".join("%s %.1f%s" %
+                                     (m[:4], row[m][0],
+                                      "" if row[m][1] else "*")
+                                     for m in ("proportional", "uniform",
+                                               "shrunk", "ensemble"))))
+        print("  -- means --")
+        for horizon in (60, 30, 14, 7, 0):
+            hs = [r for r in srows if r[2] == horizon]
+            if not hs:
+                continue
+            line = "  T-%-3d n=%d" % (horizon, len(hs))
+            for m in ("proportional", "uniform", "shrunk", "ensemble"):
+                line += "  %s %.2f" % (m[:4], st.mean([r[3][m][0]
+                                                       for r in hs]))
+            print(line)
 
     # Machine-readable curve for the app: MAE by days-to-election, per
     # country and aggregated. js/app.js converts it to a normal sigma

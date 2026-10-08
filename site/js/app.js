@@ -5213,8 +5213,12 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
   window.__600_loadAll=function(){
     return loadData().then(()=>loadConstituencies()).then(()=>loadBacktest());
   };
-  window.__600_alloc=function(cc,votes,total){
+  window.__600_alloc=function(cc,votes,total,swing){
     setCountry(cc);
+    if(swing){
+      const mc=(typeof MAP_CONF==='function')?MAP_CONF():null;
+      if(mc) mc.swingMethod=swing;
+    }
     return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>
       allocateSeatsTotal(votes,total===undefined?SEATS_TOTAL:total));
   };

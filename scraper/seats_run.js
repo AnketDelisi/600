@@ -63,9 +63,12 @@ vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'js', 'app.js'), 'utf8'), { 
 async function main() {
   const cc = process.argv[2];
   const votes = JSON.parse(process.argv[3]);
-  const total = process.argv[4] ? parseInt(process.argv[4], 10) : undefined;
+  const a4 = process.argv[4];
+  const a5 = process.argv[5];
+  const total = a4 && /^\d+$/.test(a4) ? parseInt(a4, 10) : undefined;
+  const swing = a5 || (a4 && !/^\d+$/.test(a4) ? a4 : undefined);
   await globalThis.__600_loadAll();
-  const seats = await globalThis.__600_alloc(cc, votes, total);
+  const seats = await globalThis.__600_alloc(cc, votes, total, swing);
   console.log(JSON.stringify(seats));
 }
 

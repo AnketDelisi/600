@@ -215,6 +215,12 @@ for c in REF:
             for code in codes:
                 if code not in defined:
                     issues.append("%s party %s not defined" % (bid, code))
+    cm = re.search(r"coalitions:\s*\[([\s\S]*?)\n    \]", b)
+    if cm:
+        for pm in re.finditer(r"parties:\s*\[([^\]]*)\]", cm.group(1)):
+            for code in re.findall(r"['\"]([^'\"]+)['\"]", pm.group(1)):
+                if code not in defined:
+                    issues.append("coalition party %s not defined" % code)
     for f in ("polls.json", "meta.json"):
         if not (ROOT / "data" / c / f).is_file():
             issues.append("missing data/%s/%s" % (c, f))

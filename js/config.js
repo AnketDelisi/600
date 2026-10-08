@@ -8233,6 +8233,11 @@ saxony_anhalt: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['d66', 'vvd', 'cda'], color: '#00A95C' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['pvv', 'pro', 'ja21', 'fvd', 'bbb', 'denk', 'sgp', 'pvdd', 'cu', 'sp', 'fiftyplus', 'volt'], color: '#8497B0' },
     },
+    coalitions: [
+      { name: 'PVV + VVD + BBB + JA21', parties: ['pvv','vvd','bbb','ja21'] },
+      { name: 'PRO + VVD + D66 + CDA + CU + Volt', parties: ['pro','vvd','d66','cda','cu','volt'] },
+      { name: 'PVV + PRO', parties: ['pvv','pro'] },
+    ],
     lastElection: {
       date: '2025-10-29',
       // 2025 Tweede Kamer official result gained by the 15 parties with logos.
@@ -18995,6 +19000,12 @@ saxony_anhalt: {
       bloc2: { name: 'AfD', short: 'AFD', parties: ['afd'], color: '#40A0D8' },
       kingmaker: 'bsw', kingmakerLabel: 'BSW Kingmaker', kingmakerColor: '#8E44AD',
     },
+    coalitions: [
+      { name: 'CDU/CSU + SPD', parties: ['cdu','spd'] },
+      { name: 'CDU/CSU + Grüne', parties: ['cdu','gruene'] },
+      { name: 'CDU/CSU + AfD', parties: ['cdu','afd'] },
+      { name: 'SPD + Grüne + Linke', parties: ['spd','gruene','linke'] },
+    ],
     lastElection: {
       date: '2025-02-23',
       // 2025 Bundestag official result (Zweitstimme %, Union = CDU + CSU)
@@ -19637,6 +19648,11 @@ saxony_anhalt: {
       bloc1: { name: 'Government bloc', short: 'GOV', parties: ['psoe', 'sumar', 'podemos', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'aa'], color: '#A6192E' },
       bloc2: { name: 'Opposition',      short: 'OPP', parties: ['pp', 'vox', 'salf', 'ac', 'upn'], color: '#1B4F9C' },
     },
+    coalitions: [
+      { name: 'PP + VOX', parties: ['pp','vox'] },
+      { name: 'PSOE + SUMAR + regionalists', parties: ['psoe','sumar','junts','erc','bildu','pnv','bng','cc'] },
+      { name: 'PP + PSOE', parties: ['pp','psoe'] },
+    ],
     lastElection: {
       date: '2023-07-23',
       // 2023 general election official result (Congress; Sumar includes Podemos)
@@ -24064,6 +24080,11 @@ saxony_anhalt: {
       bloc1: { name: 'BC NDP',     short: 'NDP', parties: ['bcndp'], color: '#F4A460' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['cpbc', 'gpbc', 'cbc', 'onbc'], color: '#004AAD' },
     },
+    coalitions: [
+      { name: 'NDP + Green', parties: ['bcndp','gpbc'] },
+      { name: 'Conservatives alone', parties: ['cpbc'] },
+      { name: 'NDP + Green + OneBC', parties: ['bcndp','gpbc','onbc'] },
+    ],
     lastElection: {
       date: '2024-10-19',
       // 2024 general election (Elections BC): NDP 47, Con 44, Green 2
@@ -26955,6 +26976,11 @@ saxony_anhalt: {
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['kf', 'bp', 'la', 'df', 'v', 'dd'], color: '#01438E' },
       bloc3: { name: 'Supporting', short: 'SUP', parties: ['el', 'alt'], color: '#F7660D' },
     },
+    coalitions: [
+      { name: 'S + SF + M + RV', parties: ['s','sf','m','rv'] },
+      { name: 'S + SF + M + RV + EL + ALT', parties: ['s','sf','m','rv','el','alt'] },
+      { name: 'V + LA + KF + DD + DF + BP', parties: ['v','la','kf','dd','df','bp'] },
+    ],
     lastElection: {
       date: '2026-03-24',
       // the 4 North Atlantic mandates are elected separately
@@ -27060,6 +27086,10 @@ saxony_anhalt: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['ad'], color: '#3777BC' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['ps', 'ch', 'il', 'livre', 'cdu', 'be', 'pan', 'jpp'], color: '#E63946' },
     },
+    coalitions: [
+      { name: 'AD + IL', parties: ['ad','il'] },
+      { name: 'PS + BE + CDU + Livre', parties: ['ps','be','cdu','livre'] },
+    ],
     lastElection: {
       date: '2025-05-18',
       results: {"ad": 31.78, "ps": 22.83, "ch": 22.76, "il": 5.36, "livre": 4.07, "cdu": 2.91, "be": 1.99, "pan": 1.38, "jpp": 0.33},
@@ -27124,6 +27154,11 @@ saxony_anhalt: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['lab'], color: '#E41C3E' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['con', 'ref', 'lib', 'grn', 'snp', 'plc', 'res', 'sf', 'dup', 'sdlp', 'apni', 'uup', 'tuv', 'spk', 'ind', 'yp'], color: '#0087DC' },
     },
+    coalitions: [
+      { name: 'LAB + LIB', parties: ['lab','lib'] },
+      { name: 'LAB + GRN + SNP + PLC + LIB', parties: ['lab','grn','snp','plc','lib'] },
+      { name: 'CON + REF', parties: ['con','ref'] },
+    ],
     lastElection: {
       date: '2024-07-04',
       // 2024 general election (House of Commons Library, official)
@@ -47232,6 +47267,11 @@ saxony_anhalt: {
       bloc1: { name: 'National-ACT-NZ First', short: 'RIGHT', parties: ['nat', 'act', 'nzf'], color: '#00529F' },
       bloc2: { name: 'Labour-Green-Maori', short: 'LEFT', parties: ['lab', 'grn', 'tpm', 'opp'], color: '#D82A20' },
     },
+    coalitions: [
+      { name: 'NAT + ACT + NZF', parties: ['nat','act','nzf'] },
+      { name: 'LAB + GRN + TPM', parties: ['lab','grn','tpm'] },
+      { name: 'NAT + ACT', parties: ['nat','act'] },
+    ],
     // leveling seats: Te Pati Maori's overhang grows the house past 120
     // (fixed: the overhang is computed on the 120-seat house, as in the
     // Electoral Act, not iteratively like the German leveling states)

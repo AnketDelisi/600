@@ -1,0 +1,9 @@
+{
+ "country": "fi",
+ "name": "Finland",
+ "seats": 200,
+ "threshold": 0.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "Eduskunta: 200 seats, open-list proportional representation with the D'Hondt method in 13 multi-member electoral districts, no national threshold (the effective threshold is each district's magnitude). Aland has a single-member district and its own party system (For Aland holds the seat). Validated: per-district D'Hondt on the 2023 result with the real district magnitudes reproduces every district's allocation exactly (KOK 48, PS 46, SDP 43, KESK 23, VIHR 13, VAS 11, SFP 9, KD 5, Liik 1, Aland 1). The map's districts are the geoBoundaries regions regrouped (Helsinki split out of Uusimaa via the ADM2 sub-region). Next election: 18 April 2027."
+}

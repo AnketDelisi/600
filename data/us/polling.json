@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-07T12:36:42Z",
+  "scraped_at": "2026-10-08T06:19:17Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -187,8 +187,8 @@
     "Colorado": null,
     "Delaware": null,
     "Florida": {
-      "dem": 43.1,
-      "rep": 48.7,
+      "dem": 42.9,
+      "rep": 48.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -444,6 +444,12 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "Suffolk University",
+          "dates": "October 1–4, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
+        {
           "pollster": "New York Times / Siena University",
           "dates": "September 22 – October 1, 2026",
           "dem": 47.0,
@@ -616,10 +622,17 @@
       }
     },
     "Kansas": {
-      "dem": 45.9,
+      "dem": 46.0,
       "rep": 45.4,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "GBAO",
+          "dates": "September 30 – October 4, 2026",
+          "partisan": "D",
+          "dem": 46.0,
+          "rep": 41.0
+        },
         {
           "pollster": "YouGov",
           "dates": "September 24 – October 4, 2026",
@@ -702,8 +715,8 @@
     "Kentucky": null,
     "Louisiana": null,
     "Maine": {
-      "dem": 48.6,
-      "rep": 47.1,
+      "dem": 48.8,
+      "rep": 47.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -932,6 +945,13 @@
       "rep": 43.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Quantus Insights",
+          "dates": "October 5–6, 2026",
+          "partisan": "R",
+          "dem": 48.0,
+          "rep": 47.0
+        },
         {
           "pollster": "YouGov",
           "dates": "September 22 – October 4, 2026",
@@ -2357,7 +2377,6 @@
         {
           "pollster": "Rasmussen Reports",
           "dates": "September 28–29, 2026",
-          "partisan": "R",
           "dem": 46.0,
           "rep": 45.0
         },
@@ -3196,10 +3215,16 @@
     "Idaho": null,
     "Illinois": null,
     "Iowa": {
-      "dem": 51.0,
+      "dem": 51.4,
       "rep": 42.5,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Suffolk University",
+          "dates": "October 1–4, 2026",
+          "dem": 55.0,
+          "rep": 43.0
+        },
         {
           "pollster": "New York Times / Siena University",
           "dates": "September 22 – October 1, 2026",
@@ -4403,6 +4428,19 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "Quinnipiac University Polling Institute",
+          "dates": "October 1–5, 2026",
+          "dem": 59.0,
+          "rep": 34.0
+        },
+        {
+          "pollster": "Susquehanna Polling & Research",
+          "dates": "September 22–30, 2026",
+          "partisan": "R",
+          "dem": 52.0,
+          "rep": 31.0
+        },
+        {
           "pollster": "PennLive",
           "dates": "September 16–22, 2026",
           "dem": 55.0,
@@ -4894,7 +4932,36 @@
         "d": "Gina Hinojosa"
       }
     },
-    "Vermont": null,
+    "Vermont": {
+      "dem": 41.7,
+      "rep": 44.3,
+      "source": "Simple avg (latest 5 polls)",
+      "n_polls": 3,
+      "polls": [
+        {
+          "pollster": "State Navigate",
+          "dates": "October 2–4, 2026",
+          "dem": 43.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "September 17–21, 2026",
+          "dem": 49.0,
+          "rep": 43.0
+        },
+        {
+          "pollster": "University of New Hampshire",
+          "dates": "July 15–20, 2026",
+          "dem": 33.0,
+          "rep": 44.0
+        }
+      ],
+      "names": {
+        "r": "Phil Scott",
+        "d": "Amanda Janoo"
+      }
+    },
     "Wisconsin": {
       "dem": 48.1,
       "rep": 44.3,

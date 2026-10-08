@@ -10,8 +10,10 @@ scored against the actual national result: MAE, signed bias, and whether the
 largest party was called.
 
 This is the harness the undecided-allocation and house-effect work will be
-accepted or rejected against; seat-level scoring comes later (it needs the
-historical maps, this does not).
+accepted or rejected against. Seat-level scoring runs the app's real seat
+allocation via scraper/seats_run.js (Node, no Python re-implementation) for
+the cycles whose model maps onto the current config, and scores projected
+seats against the actual seat outcome.
 
 Usage: python scraper/backtest.py [--country uk] [--refresh]
 """
@@ -62,6 +64,11 @@ CYCLES = {
                      "plc": r"^pc|^plaid", "ref": r"^ref|^reform"},
             "result": {"lab": 33.7, "con": 23.7, "ref": 14.3, "lib": 12.2,
                        "grn": 6.8, "snp": 2.5},
+            # conversion backtest: baselines are the 2024 result, so this
+            # scores the votes->seats machinery, not the baseline
+            "seats": {"lab": 411, "con": 121, "lib": 72, "snp": 9, "grn": 4,
+                      "ref": 5, "plc": 4, "dup": 5, "sf": 7, "sdlp": 2,
+                      "uup": 1, "tuv": 1, "spk": 1, "ind": 6, "apni": 1},
         },
     },
     "spain": {
@@ -79,6 +86,11 @@ CYCLES = {
             "cols": {"pp": r"^pp", "psoe": r"^psoe", "vox": r"^vox",
                      "sumar": r"^sumar|^unidas"},
             "result": {"pp": 33.1, "psoe": 31.7, "vox": 12.4, "sumar": 12.3},
+            # the app models Spain as one national district; the regionalist
+            # seats it cannot see are part of what this measures
+            "seats": {"pp": 137, "psoe": 121, "vox": 33, "sumar": 31,
+                      "erc": 7, "junts": 7, "bildu": 6, "pnv": 5,
+                      "bng": 1, "cc": 1, "upn": 1},
         },
     },
     "bc": {
@@ -96,32 +108,7 @@ CYCLES = {
                      "cpbc": r"^bc conserv|^con",
                      "gpbc": r"^bc green|^grn|^green"},
             "result": {"bcndp": 44.86, "cpbc": 43.28, "gpbc": 8.24},
-        },
-    },
-    "serbia": {
-        2023: {
-            "article": "Opinion_polling_for_the_2023_Spanish_general_election",
-            "election": "2023-07-23", "half_life": 14,
-            "cols": {"pp": r"^pp", "psoe": r"^psoe", "vox": r"^vox",
-                     "sumar": r"^sumar|^unidas"},
-            "result": {"pp": 33.1, "psoe": 31.7, "vox": 12.4, "sumar": 12.3},
-        },
-    },
-    "bc": {
-        2020: {
-            "article": "2020_British_Columbia_general_election",
-            "election": "2020-10-24", "prev": "2017-05-09", "half_life": 14,
-            "cols": {"bcndp": r"^bc ndp|^ndp", "bclib": r"^bc liberal|^lib",
-                     "gpbc": r"^bc green|^grn|^green"},
-            "result": {"bcndp": 47.70, "bclib": 33.77, "gpbc": 15.08},
-        },
-        2024: {
-            "article": "2024_British_Columbia_general_election",
-            "election": "2024-10-19", "prev": "2020-10-25", "half_life": 14,
-            "cols": {"bcndp": r"^bc ndp|^ndp",
-                     "cpbc": r"^bc conserv|^con",
-                     "gpbc": r"^bc green|^grn|^green"},
-            "result": {"bcndp": 44.86, "cpbc": 43.28, "gpbc": 8.24},
+            "seats": {"bcndp": 47, "cpbc": 44, "gpbc": 2},
         },
     },
     "serbia": {
@@ -140,6 +127,9 @@ CYCLES = {
                      "nada": r"^nada", "migin": r"^mi|^gin"},
             "result": {"sns": 46.72, "spn": 23.66, "sps": 6.73,
                        "nada": 5.02, "migin": 4.70},
+            "seat_map": {"migin": "misn"},
+            "seats": {"sns": 129, "spn": 65, "sps": 18, "nada": 13,
+                      "misn": 13, "vmsz": 6, "spp": 3, "sda": 2, "rs": 1},
         },
     },
     "qc": {
@@ -196,6 +186,68 @@ CYCLES = {
                      "bsw": r"^bsw"},
             "result": {"cdu": 28.5, "afd": 20.8, "spd": 16.4, "gruene": 11.6,
                        "linke": 8.8, "bsw": 4.97},
+            "seats": {"cdu": 208, "afd": 152, "spd": 120, "gruene": 85,
+                      "linke": 64, "ssw": 1},
+        },
+    },
+    "latvia": {
+        2022: {
+            "article": "Opinion_polling_for_the_2022_Latvian_parliamentary_election",
+            "election": "2022-10-01", "prev": "2018-10-06", "half_life": 14,
+            "cols": {"jv": r"^jv|^unity", "zzs": r"^zzs|^union of greens",
+                     "as": r"^as\b|^combined", "na": r"^na\b|^national",
+                     "st": r"^st!?\b|^stability", "pro": r"^pro\b|^progress",
+                     "lpv": r"^lpv|^latvia first"},
+            "result": {"jv": 18.97, "zzs": 12.44, "as": 11.01, "na": 9.29,
+                       "st": 6.94, "pro": 6.23, "lpv": 6.22},
+            "seats": {"jv": 26, "zzs": 16, "as": 15, "na": 13, "st": 11,
+                      "pro": 10, "lpv": 9},
+        },
+    },
+    "slovakia": {
+        2023: {
+            "article": "Opinion_polling_for_the_2023_Slovak_parliamentary_election",
+            "election": "2023-09-30", "prev": "2020-02-29", "half_life": 14,
+            "cols": {"smer": r"^smer", "ps": r"^ps\b|^progressive",
+                     "hlas": r"^hlas|^voice",
+                     "slovensko": r"^o[ľl]ano|^slovensko|^ordinary",
+                     "kdh": r"^kdh|^christian", "sas": r"^sas|^freedom",
+                     "sns": r"^sns|^slovak national"},
+            "result": {"smer": 22.94, "ps": 17.96, "hlas": 14.70,
+                       "slovensko": 8.89, "kdh": 6.82, "sas": 6.32,
+                       "sns": 5.62},
+            "seats": {"smer": 42, "ps": 32, "hlas": 27, "slovensko": 16,
+                      "kdh": 12, "sas": 11, "sns": 10},
+        },
+    },
+    "pt": {
+        2024: {
+            "article": "Opinion_polling_for_the_2024_Portuguese_legislative_election",
+            "election": "2024-03-10", "prev": "2022-01-30", "half_life": 14,
+            "cols": {"ad": r"^ad\b|^democratic alliance", "ps": r"^ps\b|^socialist",
+                     "ch": r"^ch\b|^chega", "il": r"^il\b|^liberal",
+                     "be": r"^be\b|^left bloc",
+                     "cdu": r"^cdu|^unitary|^communist",
+                     "livre": r"^l\b|^livre|^free",
+                     "pan": r"^pan\b|^people.?animals"},
+            "result": {"ad": 28.83, "ps": 27.98, "ch": 18.06, "il": 4.94,
+                       "be": 4.39, "cdu": 3.30, "livre": 3.26, "pan": 1.95},
+            "seats": {"ad": 80, "ps": 78, "ch": 50, "il": 8, "be": 5,
+                      "cdu": 4, "livre": 4, "pan": 1},
+        },
+    },
+    "estonia": {
+        2023: {
+            "article": "Opinion_polling_for_the_2023_Estonian_parliamentary_election",
+            "election": "2023-03-05", "prev": "2019-03-03", "half_life": 14,
+            "cols": {"ref": r"^re\b|^reform", "ekre": r"^ekre",
+                     "kesk": r"^ke\b|^kesk|^centre",
+                     "e200": r"^e200|^estonia 200",
+                     "sde": r"^sde|^social", "isamaa": r"^i\b|^isamaa|^pro patria"},
+            "result": {"ref": 31.24, "ekre": 16.05, "kesk": 15.28,
+                       "e200": 13.33, "sde": 9.27, "isamaa": 8.21},
+            "seats": {"ref": 37, "ekre": 17, "kesk": 16, "e200": 14,
+                      "sde": 9, "isamaa": 8},
         },
     },
 }
@@ -499,6 +551,52 @@ def score_variant(polls, spec, horizon_days, mode, bias=None):
             "bias": st.mean(errs)}
 
 
+def run_seats(cc, votes):
+    """Run the app's real seat allocation through scraper/seats_run.js (Node
+    loads js/config.js + js/app.js with a DOM stub). Returns the seat map, or
+    None when node is missing or the allocation errors - no Python copy of the
+    model exists, so the harness cannot drift from the app."""
+    import subprocess
+    try:
+        r = subprocess.run(
+            ["node", os.path.join("scraper", "seats_run.js"), cc,
+             json.dumps(votes)],
+            capture_output=True, text=True, encoding="utf8", cwd=ROOT,
+            timeout=180)
+        if r.returncode != 0 or not r.stdout.strip():
+            return None
+        return json.loads(r.stdout.strip())
+    except Exception:
+        return None
+
+
+def score_seats(polls, spec, horizon, cc):
+    """Project seats from the T-horizon poll average through the app's model
+    and score against the actual seat outcome: per-party seat MAE and whether
+    the largest party was called."""
+    import datetime
+    election = datetime.date.fromisoformat(spec["election"])
+    as_of = election - datetime.timedelta(days=horizon)
+    use = [p for p in polls if _ord(p["date"]) <= _as_ord(as_of.isoformat())]
+    if not use:
+        return None
+    avg = average(use, _as_ord(as_of.isoformat()), spec["half_life"])
+    smap = spec.get("seat_map", {})
+    votes = {smap.get(k, k): v for k, v in avg.items() if v is not None}
+    if len(votes) < 3:
+        return None
+    proj = run_seats(cc, votes)
+    if not proj:
+        return None
+    actual = spec["seats"]
+    keys = set(actual) | {k for k, v in proj.items() if v > 0}
+    errs = [proj.get(k, 0) - actual.get(k, 0) for k in keys]
+    lead_ok = (max(proj, key=lambda k: proj.get(k, 0)) ==
+               max(actual, key=actual.get))
+    return {"n": len(use), "seat_mae": st.mean(abs(e) for e in errs),
+            "seat_bias": st.mean(errs), "lead": lead_ok, "proj": proj}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", default=None)
@@ -508,6 +606,7 @@ def main():
     import datetime
     rows = []
     variants = []
+    seat_rows = []
     data_all = {}
     for country, cycles in CYCLES.items():
         for cycle, spec in sorted(cycles.items()):
@@ -539,6 +638,21 @@ def main():
                               (c["mae"], c["mae"] - s["mae"], nz["mae"]))
                         variants.append((country, cycle, horizon,
                                          s["mae"], c["mae"], nz["mae"]))
+            if spec.get("seats"):
+                got = 0
+                for horizon in (60, 30, 14, 7, 0):
+                    s2 = score_seats(polls, spec, horizon, country)
+                    if not s2:
+                        continue
+                    got += 1
+                    seat_rows.append((country, cycle, horizon, s2))
+                    top = max(s2["proj"], key=lambda k: s2["proj"].get(k, 0))
+                    print("   T-%-3d seats MAE %5.2f  leader %s (%s %d)" %
+                          (horizon, s2["seat_mae"],
+                           "OK" if s2["lead"] else "MISS", top,
+                           s2["proj"].get(top, 0)))
+                if not got:
+                    print("   seats: skipped (node missing?)")
     print("\n== aggregate MAE by horizon (all cycles)")
     for horizon in (60, 30, 14, 7, 0):
         vals = [r[3]["mae"] for r in rows if r[2] == horizon]
@@ -548,6 +662,15 @@ def main():
             print("  T-%-3d cycles=%d  MAE %.2f  mean bias %+5.2f  leaders %d/%d" %
                   (horizon, len(vals), st.mean(vals), st.mean(bias),
                    sum(lead), len(lead)))
+
+    if seat_rows:
+        print("\n== aggregate seat MAE by horizon (cycles with an actual seat map)")
+        for horizon in (60, 30, 14, 7, 0):
+            vals = [r[3]["seat_mae"] for r in seat_rows if r[2] == horizon]
+            lead = [r[3]["lead"] for r in seat_rows if r[2] == horizon]
+            if vals:
+                print("  T-%-3d cycles=%d  seat MAE %.2f  leaders %d/%d" %
+                      (horizon, len(vals), st.mean(vals), sum(lead), len(lead)))
 
     # Machine-readable curve for the app: MAE by days-to-election, per
     # country and aggregated. js/app.js converts it to a normal sigma
@@ -567,6 +690,15 @@ def main():
                  for c, hs in by_country.items()}
     counts = {c: {h: len(v) for h, v in hs.items()}
               for c, hs in by_country.items()}
+    seat_agg = {}
+    for horizon in (60, 30, 14, 7, 0):
+        vals = [r[3]["seat_mae"] for r in seat_rows if r[2] == horizon]
+        if vals:
+            seat_agg[str(horizon)] = round(st.mean(vals), 2)
+    seat_by = {}
+    for country, cycle, horizon, s2 in seat_rows:
+        seat_by.setdefault("%s-%d" % (country, cycle), {})[str(horizon)] = \
+            round(s2["seat_mae"], 2)
     out = {
         "generated": datetime.datetime.now(datetime.timezone.utc)
         .strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -574,6 +706,7 @@ def main():
         "aggregate": agg,
         "countries": countries,
         "counts": counts,
+        "seats": {"aggregate": seat_agg, "cycles": seat_by},
     }
     path = os.path.join(ROOT, "data", "backtest.json")
     with open(path, "w", encoding="utf8") as fh:

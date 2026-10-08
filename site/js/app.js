@@ -5210,9 +5210,13 @@ window.addEventListener('resize',()=>{fitSideCard(); if(window.__ypFit) window._
 // the real allocation on arbitrary vote maps without a browser). Node sets
 // window.__600_SEATAPI__ before loading this file; inert in the browser.
 if(typeof window!=='undefined'&&window.__600_SEATAPI__){
+  window.__600_loadAll=function(){
+    return loadData().then(()=>loadConstituencies()).then(()=>loadBacktest());
+  };
   window.__600_alloc=function(cc,votes,total){
     setCountry(cc);
-    return allocateSeatsTotal(votes,total===undefined?SEATS_TOTAL:total);
+    return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>
+      allocateSeatsTotal(votes,total===undefined?SEATS_TOTAL:total));
   };
 }
 

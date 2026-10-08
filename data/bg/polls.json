@@ -91,7 +91,8 @@
     "veli": 2.3,
     "bsp": 3.7,
     "aps": 0.5
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Market Links",

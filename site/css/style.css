@@ -318,6 +318,7 @@ button:active{transform:translateY(1px)}
 .fc-thresh{position:absolute;top:0;bottom:0;width:2px;background:#1A1A1A}
 .fc-note{font-size:10px;color:var(--c-text-muted);font-weight:700;width:100%;margin-left:54px}
 .fc-votehd{display:flex;align-items:center;gap:10px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:2px solid var(--c-edge);padding:2px 0 4px}
+.poll-method{display:inline-block;margin-left:6px;font-size:9px;font-weight:900;letter-spacing:0.6px;text-transform:uppercase;color:var(--c-text-muted);border:1px solid var(--c-rule);border-radius:999px;padding:1px 5px;vertical-align:1px}
 
 /* ---------- Coalition scenarios card ---------- */
 .coal-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(80px,170px) 62px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(26,26,26,0.08)}

@@ -841,11 +841,12 @@ function effectiveDays(){
   return v;
 }
 
-function renderSidebar(prevDays, prevPollster){
+function renderSidebar(prevDays, prevPollster, prevMethod){
   const c=$('sidebar-content');
   if(!c) return;
   prevDays=prevDays||'30';
   prevPollster=prevPollster||'';
+  prevMethod=prevMethod||'';
   let html='';
 
   // Country selector (hidden on pinned sub-pages / archives)
@@ -870,6 +871,14 @@ function renderSidebar(prevDays, prevPollster){
     <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${T.pollster}</label>
     <select class="sb-select" id="filter-pollster" onchange="window._600.applyFilters()">
       <option value="">${T.allPollsters}</option>
+    </select>
+    <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${t('Method','Yöntem')}</label>
+    <select class="sb-select" id="filter-method" onchange="window._600.applyFilters()">
+      <option value="">${t('All methods','Tüm yöntemler')}</option>
+      <option value="online"${prevMethod==='online'?' selected':''}>${t('Online panel','Online panel')}</option>
+      <option value="phone"${prevMethod==='phone'?' selected':''}>${t('Telephone','Telefon')}</option>
+      <option value="face"${prevMethod==='face'?' selected':''}>${t('Face-to-face','Yüz yüze')}</option>
+      <option value="mixed"${prevMethod==='mixed'?' selected':''}>${t('Mixed','Karma')}</option>
     </select></div>`;
 
   // Last election
@@ -1374,7 +1383,7 @@ function renderPollsTable(polls){
     const rateTitle=maeVal!=null&&rr!==undefined?`${t('accuracy vs best','en iyiye göre doğruluk')}: ${(rr*100).toFixed(0)}% · MAE ${fmt(maeVal,2)}`:'';
     const rateColor=rr===undefined?'var(--c-rule)':(rr>=0.85?'#0B9E17':(rr>=0.6?'#E0A800':'var(--c-text-muted)'));
 
-    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
+    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}${p.method?`<span class="poll-method" title="${t('Fieldwork method','Saha yöntemi')}: ${p.method}">${p.method}</span>`:''}</td>
       <td class="num c ps-rate" title="${rateTitle}" style="color:${rateColor}">${rateTxt}</td>
       <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>`;
     active.forEach(pid=>{
@@ -1388,7 +1397,7 @@ function renderPollsTable(polls){
   });
   html+=`</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      ${t('Lead = margin between the two largest parties · RATE = pollster accuracy relative to the best in this country','Fark = en büyük iki parti arasındaki marj · PUAN = anketçinin ülkedeki en iyiye göre doğruluğu')}
+      ${t('Lead = margin between the two largest parties · RATE = pollster accuracy relative to the best in this country','Fark = en büyük iki parti arasındaki marj · PUAN = anketçinin ülkedeki en iyiye göre doğruluğu')}${POLLS.some(p=>p.method)?` · ${t('method tag = fieldwork type, from a curated pollster map (untagged = unknown)','yöntem etiketi = saha tipi, küratörlü anketçi haritasından (etiketsiz = bilinmiyor)')}`:''}
     </div></div>`;
   return html;
 }
@@ -3707,8 +3716,10 @@ window.ypUpdate=ypUpdate;
 function renderPrediction(pane){
   const daysVal=effectiveDays();
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
+  const methodVal=$('filter-method')?$('filter-method').value:'';
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
+  if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
   const avg=computeAverages(filtered);
   if(MAP_ONLY||!filtered.length||Object.values(avg).every(v=>v===null)){
     pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('YOUR PREDICTION','TAHMİNİNİZ')}</div></div><div class="method-text" style="padding:16px"><p>${MAP_ONLY?t('Not available for presidential two-round pages.','İki turlu başkanlık sayfalarında kullanılamaz.'):t('No polls in the selected range.','Seçili aralıkta anket yok.')}</p></div></div></div>`;
@@ -3841,8 +3852,10 @@ function renderForecast(pane){
   const fd=$('filter-days');
   const daysVal=effectiveDays();
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
+  const methodVal=$('filter-method')?$('filter-method').value:'';
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
+  if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
   const avg=computeAverages(filtered);
   if(!filtered.length||Object.values(avg).every(v=>v===null)){
     pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">FORECAST</div></div><div class="method-text" style="padding:16px"><p>No polls in the selected range.</p></div></div></div>`;
@@ -5050,9 +5063,12 @@ function renderPollsTab(){
   const daysVal=effectiveDays();
   const pollsterEl=$('filter-pollster');
   const pollsterVal=pollsterEl?pollsterEl.value:'';
+  const methodEl=$('filter-method');
+  const methodVal=methodEl?methodEl.value:'';
 
   let filtered=recentPolls(POLLS, daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
+  if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
   filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
   FILTERED_POLLS=filtered;
 
@@ -5087,7 +5103,7 @@ function renderPollsTab(){
   html+=`</div>`;
   pane.innerHTML=html;
 
-  renderSidebar(String(daysVal), pollsterVal);
+  renderSidebar(String(daysVal), pollsterVal, methodVal);
 
   // Draw chart after DOM update
   requestAnimationFrame(()=>{

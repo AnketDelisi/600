@@ -38,7 +38,8 @@
     "dupont": 2,
     "lepen": 34,
     "zemmour": 3
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Elabe",
@@ -177,7 +178,8 @@
     "retailleau": 8.5,
     "dupont": 1.5,
     "lepen": 32
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Harris Interactive",

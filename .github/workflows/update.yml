@@ -59,6 +59,12 @@ jobs:
           python scraper/scrape_denmark.py
           python scraper/scrape_finland.py
 
+      # Tag every poll with its fieldwork method from the curated pollster
+      # map (online / phone / face / mixed; unknowns stay untagged). The
+      # scrapers rewrite polls.json, so this runs on every update.
+      - name: Tag poll methods
+        run: python scraper/tag_methods.py
+
       # Health canary + model audit. Both must pass before anything is
       # committed, so a silently-broken scraper (poll count dropped, latest
       # poll date went backwards, a country stopped updating) or a config

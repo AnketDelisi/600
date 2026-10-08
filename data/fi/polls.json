@@ -41,7 +41,8 @@
     "sfp": 4.5,
     "kd": 4.1,
     "liik": 1.9
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -79,7 +80,8 @@
     "sfp": 4.4,
     "kd": 4.0,
     "liik": 2.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -117,7 +119,8 @@
     "sfp": 4.5,
     "kd": 3.9,
     "liik": 2.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -155,7 +158,8 @@
     "sfp": 4.4,
     "kd": 3.7,
     "liik": 2.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -193,7 +197,8 @@
     "sfp": 4.2,
     "kd": 4.1,
     "liik": 1.8
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -231,7 +236,8 @@
     "sfp": 4.2,
     "kd": 4.0,
     "liik": 1.8
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -269,7 +275,8 @@
     "sfp": 4.1,
     "kd": 3.9,
     "liik": 2.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",
@@ -307,7 +314,8 @@
     "sfp": 4.1,
     "kd": 4.0,
     "liik": 2.2
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Taloustutkimus",

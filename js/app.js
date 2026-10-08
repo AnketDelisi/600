@@ -3869,6 +3869,40 @@ function renderForecast(pane){
   const expectedSeats=Math.round(fOrder.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
   const MAJ=Math.floor(expectedSeats/2)+1;
 
+  // --- Coalition scenarios: P(configured combination reaches a majority),
+  // straight from the stored per-run seat samples. Only for countries with
+  // `coalitions` in config (uk/spain/germany/dk/netherlands/bc/nz/pt) - the
+  // generic majority card already covers the bloc structure elsewhere.
+  let coalHtml='';
+  const COALITIONS=(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].coalitions)||null;
+  if(COALITIONS&&COALITIONS.length&&sim.seatsBy){
+    const nS=sim.nSims;
+    const rows=COALITIONS.map(c=>{
+      const parts=c.parties.filter(p=>sim.seatsBy[p]);
+      if(!parts.length) return null;
+      let win=0;
+      for(let i=0;i<nS;i++){
+        let s=0;
+        for(const p of parts) s+=sim.seatsBy[p][i]||0;
+        if(s>=MAJ) win++;
+      }
+      return {c:c, p:win/nS,
+              exp:Math.round(parts.reduce((a,p)=>a+mean(sim.seatsBy[p]),0)),
+              color:(PARTY_META[parts[0]]||{}).color||'#1A1A1A'};
+    }).filter(Boolean).sort((a,b)=>b.p-a.p);
+    if(rows.length){
+      const maxP=Math.max.apply(null,rows.map(r=>r.p).concat([0.0001]));
+      coalHtml=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Coalition scenarios','Koalisyon senaryoları')}</div></div>
+        ${rows.map(r=>`<div class="fc-row">
+          <span class="fc-row-label" title="${r.c.parties.join(' + ')}">${r.c.name} <span style="color:var(--c-text-muted);font-weight:700">\u00b7 ${r.exp} ${T.seats}</span></span>
+          <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(r.p/maxP*100).toFixed(1)}%;background:${r.color}"></div></div>
+          <span class="fc-row-val">${pct100(r.p)}</span>
+        </div>`).join('')}
+        <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Chance each combination reaches '+MAJ+' seats','Her kombinasyonun '+MAJ+' sandalyeye ula\u015fma \u015fans\u0131')}</div>
+      </div>`;
+    }
+  }
+
   // --- Deterministic: median-based parliament ---
   const detSeats=deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL);
   let cmpRows='';
@@ -4176,6 +4210,8 @@ function renderForecast(pane){
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
     </div>`}
+
+    ${coalHtml}
 
     <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','BİRİNCİ TUR LİDERİ'):T.largestParty}</div></div>
       ${largestRows}

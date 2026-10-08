@@ -3125,13 +3125,75 @@ function effectiveK(nPolls, base){
   return base*Math.max(0.3, Math.min(1, nPolls/12));
 }
 
+// Measured horizon curve (scraper/backtest.py -> data/backtest.json): the
+// MAE of the poll average vs the result by days-to-election, per country
+// where measured (uk/spain/germany/qc/nz/bc/serbia) and aggregated over the
+// 14 cycles otherwise. Converted to a normal sigma (MAE = sigma*sqrt(2/pi))
+// and used to scale the correlated swing, so a forecast two months out is
+// visibly less certain than one the day before: sigma ~2.0pp at T-0, ~2.7
+// at T-14, ~4.7 at T-60 and beyond (the curve clamps at its ends - a 3-year
+// horizon must not claim more than the measured 2-month uncertainty).
+let BACKTEST=null;
+const MAE_FALLBACK={"60":3.79,"30":2.53,"14":2.14,"7":1.96,"0":1.62};
+function loadBacktest(){
+  if(BACKTEST) return Promise.resolve(BACKTEST);
+  return fetch(dataBase()+'data/backtest.json').then(r=>r.ok?r.json():null)
+    .then(d=>{BACKTEST=d;return d}).catch(()=>null);
+}
+function maeAt(days){
+  const agg=(BACKTEST&&BACKTEST.aggregate)||MAE_FALLBACK;
+  const ctry=BACKTEST&&BACKTEST.countries&&BACKTEST.countries[COUNTRY];
+  // per-country curves with one or two cycles are noisy, so they are shrunk
+  // toward the 14-cycle aggregate: weight n/(n+2)
+  let curve=agg;
+  if(ctry){
+    const counts=(BACKTEST.counts&&BACKTEST.counts[COUNTRY])||{};
+    curve={};
+    for(const h in agg){
+      const c=ctry[h];
+      if(c==null){ curve[h]=agg[h]; continue; }
+      const n=counts[h]||1;
+      const w=n/(n+2);
+      curve[h]=w*c+(1-w)*agg[h];
+    }
+  }
+  const pts=Object.keys(curve).map(Number).filter(n=>!isNaN(n))
+    .sort((a,b)=>a-b);
+  if(!pts.length) return 1.62;
+  const d=Math.max(pts[0],Math.min(pts[pts.length-1],days||0));
+  for(let i=0;i<pts.length-1;i++){
+    if(d<=pts[i+1]){
+      const a=pts[i],b=pts[i+1];
+      const t=(d-a)/Math.max(1e-9,b-a);
+      return curve[a]*(1-t)+curve[b]*t;
+    }
+  }
+  return curve[pts[pts.length-1]];
+}
+// The correlated swing sigma that makes the total forecast sigma match the
+// measured curve: total^2 = dirichlet^2 + (swing/2)^2, floored so the swing
+// never contributes less than 1.0pp (the old fixed contribution) - a thin
+// poll set keeps its own (larger) Dirichlet uncertainty on top.
+function horizonSwing(avg, nPolls){
+  const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)
+    *effectiveK(nPolls,FORECAST_K);
+  const dirichlet=Math.sqrt(0.3*0.7/(sumA+1))*100;
+  const target=1.253*maeAt(daysToElection());
+  return 2*Math.sqrt(Math.max(0.25,target*target-dirichlet*dirichlet));
+}
+let FORECAST_SWING_ACTIVE=null;
+function forecastSwingNow(){
+  return FORECAST_SWING_ACTIVE!=null?FORECAST_SWING_ACTIVE:FORECAST_SWING;
+}
+
 function forecastSigma(avg, nPolls){
   const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)*effectiveK(nPolls,FORECAST_K);
   const dirichlet=Math.sqrt(0.3*0.7/(sumA+1))*100;
   // Correlated bloc swing adds roughly FORECAST_SWING/2 to a party's sd (the
   // swing moves each bloc by ±σ; a party inside a bloc of share s sees about
-  // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2).
-  return Math.sqrt(dirichlet*dirichlet+Math.pow(FORECAST_SWING*0.5,2));
+  // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2),
+  // with the swing scaled to the measured days-to-election uncertainty.
+  return Math.sqrt(dirichlet*dirichlet+Math.pow(horizonSwing(avg,nPolls)*0.5,2));
 }
 
 function gammaSample(alpha){
@@ -3186,7 +3248,7 @@ function applyNationalSwing(simVotes){
   const t1=b1.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
   const t2=b2.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
   if(!(t1>0)||!(t2>0)) return simVotes;
-  const delta=gaussianSample(fcRand)*FORECAST_SWING;
+    const delta=gaussianSample(fcRand)*forecastSwingNow();
   const f1=Math.max(0.05,1+delta/t1);   // bloc1 gains delta
   const f2=Math.max(0.05,1-delta/t2);   // bloc2 loses delta
   const out={};
@@ -3204,6 +3266,9 @@ function applyNationalSwing(simVotes){
 }
 
 function runSeatForecast(avg, nSims, nPolls){
+  // seat-based races keep the fixed swing (the measured MAE curve is in
+  // vote-share points); clear any horizon swing set by a vote-based country
+  FORECAST_SWING_ACTIVE=null;
   const thSeats=THRESHOLD/100*SEATS_TOTAL;
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
@@ -3257,6 +3322,9 @@ function runSeatForecast(avg, nSims, nPolls){
 
 function runForecast(avg, nSims, nPolls){
   if(SEAT_BASED) return runSeatForecast(avg, nSims, nPolls);
+  // the correlated swing is scaled to the measured days-to-election error
+  // curve for this country before any simulation draws from it
+  FORECAST_SWING_ACTIVE=horizonSwing(avg,nPolls);
   let K=effectiveK(nPolls,FORECAST_K);
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
@@ -4907,6 +4975,10 @@ function renderMethodology(pane){
         }).join('')}
         </tbody></table>
 
+        <h3>${t('Forecast Simulations','Tahmin Sim\u00fclasyonlar\u0131')}</h3>
+        <p>${t('The forecast tab runs 3,000 seeded simulations of the national vote. Each draw combines per-party Dirichlet noise (shrinking as the number of polls in the window grows) with a correlated swing between the two blocs, plus regional and district swing noise where the map supports it. The swing\'s size follows the measured polling error of the backtest (14 past elections) by days-to-election: about 2.0pp on election day, 2.7pp two weeks out and 4.7pp two months out or beyond - each country uses its own measured curve where the backtest covers it, shrunk toward the pooled curve. A forecast made months ahead is therefore visibly less certain than one made the day before.',
+          'Tahmin sekmesi ulusal oyu 3.000 tohumlanm\u0131\u015f sim\u00fclasyonla modeller. Her \u00e7ekili\u015f, parti bazl\u0131 Dirichlet g\u00fcr\u00fclt\u00fcs\u00fc (penceredeki anket say\u0131s\u0131 artt\u0131k\u00e7a k\u00fc\u00e7\u00fcl\u00fcr) ile iki blok aras\u0131nda korelasyonlu bir sal\u0131n\u0131m\u0131 birle\u015ftirir; harita destekliyorsa b\u00f6lge ve b\u00f6lge-i\u00e7i sal\u0131n\u0131m g\u00fcr\u00fclt\u00fcs\u00fc eklenir. Sal\u0131n\u0131m\u0131n b\u00fcy\u00fckl\u00fc\u011f\u00fc, geri-testin (14 ge\u00e7mi\u015f se\u00e7im) se\u00e7ime kalan g\u00fcne g\u00f6re \u00f6l\u00e7\u00fclen anket hatas\u0131n\u0131 izler: se\u00e7im g\u00fcn\u00fc ~2,0pp, iki hafta \u00f6nce 2,7pp, iki ay ve \u00f6tesinde 4,7pp. Geri-testin kapsad\u0131\u011f\u0131 \u00fclkeler kendi \u00f6l\u00e7\u00fclen e\u011frisini kullan\u0131r (havuz e\u011frisine do\u011fru daralt\u0131lm\u0131\u015f). Bu y\u00fczden aylar \u00f6nceden yap\u0131lan bir tahmin, bir g\u00fcn \u00f6nce yap\u0131landan g\u00f6r\u00fcn\u00fcr bi\u00e7imde daha belirsizdir.')}</p>
+
         ${MAP_ONLY?`<h3>${t('Two-round system','İki turlu seçim')}</h3>
         <p>${COUNTRY_NAME} elects its president in a two-round system: a candidate wins outright with a <strong>majority of valid votes</strong> on ${TREND_CONF?TREND_CONF.electionDate:'election day'}; otherwise the top two candidates face a runoff two weeks later. The map shows the <strong>${SEATS_TOTAL} ${unitLabel()}</strong> colored by projected winner from the poll average.</p>`:`
         <h3>${t('Seat Projection','Sandalye Tahmini')}</h3>
@@ -5018,7 +5090,7 @@ PARL_MODE='proj';
     applyTheme(); updateSocialMeta();
     renderCountryNav();
     updateUrl();
-    loadData().then(()=>loadConstituencies()).then(()=>{
+loadData().then(()=>loadConstituencies()).then(()=>loadBacktest()).then(()=>{
       renderPollsTab();
     });
   }
@@ -5124,7 +5196,7 @@ function applyTheme(){
 // Calendar home: no ?c= and no pinned country (sub-pages pin themselves).
 const HOME_MODE=!((typeof URLSearchParams!=='undefined')&&new URLSearchParams(location.search).get('c'))
   &&!(typeof window!=='undefined'&&window.__600_COUNTRY__);
-loadData().then(()=>loadConstituencies()).then(()=>{
+loadData().then(()=>loadConstituencies()).then(()=>loadBacktest()).then(()=>{
   wireAria();
   applyTheme(); updateSocialMeta();
   renderCountryNav();

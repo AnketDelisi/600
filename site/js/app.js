@@ -3891,14 +3891,17 @@ function renderForecast(pane){
               color:(PARTY_META[parts[0]]||{}).color||'#1A1A1A'};
     }).filter(Boolean).sort((a,b)=>b.p-a.p);
     if(rows.length){
-      const maxP=Math.max.apply(null,rows.map(r=>r.p).concat([0.0001]));
       coalHtml=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Coalition scenarios','Koalisyon senaryoları')}</div></div>
-        ${rows.map(r=>`<div class="fc-row">
-          <span class="fc-row-label" title="${r.c.parties.join(' + ')}">${r.c.name} <span style="color:var(--c-text-muted);font-weight:700">\u00b7 ${r.exp} ${T.seats}</span></span>
-          <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(r.p/maxP*100).toFixed(1)}%;background:${r.color}"></div></div>
-          <span class="fc-row-val">${pct100(r.p)}</span>
+        ${rows.map(r=>`<div class="coal-row" title="${r.c.parties.join(' + ')} \u2014 ${r.exp} ${T.seats}, ${pct100(r.p)}">
+          <div class="coal-id">
+            <span class="coal-chips">${r.c.parties.filter(p=>sim.seatsBy[p]).map(p=>`<span class="coal-chip" style="background:${(PARTY_META[p]||{}).color||'#888'}"></span>`).join('')}</span>
+            <span class="coal-name">${r.c.name}</span>
+            <span class="coal-seats">${r.exp}</span>
+          </div>
+          <div class="coal-bar"><div class="coal-fill" style="width:${Math.min(100,r.exp/(MAJ*1.3)*100).toFixed(1)}%;background:${r.color}"></div><div class="fc-thresh" style="left:${(100/1.3).toFixed(1)}%"></div></div>
+          <span class="coal-p ${r.p>=0.5?'strong':(r.p>=0.1?'mid':'weak')}">${pct100(r.p)}</span>
         </div>`).join('')}
-        <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Chance each combination reaches '+MAJ+' seats','Her kombinasyonun '+MAJ+' sandalyeye ula\u015fma \u015fans\u0131')}</div>
+        <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">${t('Expected seats vs the '+MAJ+'-seat majority line','Beklenen sandalye ve '+MAJ+' sandalyelik \u00e7o\u011funluk \u00e7izgisi')}</div>
       </div>`;
     }
   }

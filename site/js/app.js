@@ -663,25 +663,156 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 
 
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
+/* ---------- calendar home + grouped country nav ---------- */
+const NAV_REGIONS=[
+  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','md','netherlands','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
+  ['Americas',['bc','brazil','qc']],
+  ['Middle East & Asia-Pacific',['israel','nz']],
+];
+const METHOD_SHORT={fptp:'FPTP',dhondt:"D'Hondt",sainte_lague_standard:'Sainte-Lagu\u00eb',sainte_lague:'Sainte-Lagu\u00eb (mod.)',hare_niemeyer:'Hare/Niemeyer',imperiali_hb:'Imperiali'};
+let SUMMARY=null;
+function loadSummary(){
+  if(SUMMARY) return Promise.resolve(SUMMARY);
+  return fetch(dataBase()+'data/summary.json').then(r=>r.ok?r.json():null)
+    .then(d=>{SUMMARY=d;return d}).catch(()=>null);
+}
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function nextElection(id){
+  const s=SUMMARY&&SUMMARY.countries&&SUMMARY.countries[id];
+  if(!s) return null;
+  const t=todayStr();
+  if(s.election_date_runoff&&s.election_date_runoff>=t) return {date:s.election_date_runoff,runoff:true};
+  if(s.election_date) return {date:s.election_date,runoff:false};
+  return null;
+}
+function fmtCalDate(d){
+  if(!d) return '';
+  const parts=d.split('-');
+  if(parts.length<3) return d;
+  const M=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  return parts[2]+' '+M[parseInt(parts[1],10)-1]+' '+parts[0];
+}
+function applyNavFilter(){
+  const nav=$('country-nav');
+  if(!nav) return;
+  const box=nav.querySelector('.cnav-search');
+  const q=box?box.value.trim().toLowerCase():'';
+  nav.querySelectorAll('.cnav-item').forEach(b=>{
+    const c=COUNTRIES[b.dataset.cnav]||{name:''};
+    const hit=!q||c.name.toLowerCase().includes(q)||b.dataset.cnav.includes(q);
+    b.style.display=hit?'':'none';
+  });
+  nav.querySelectorAll('.cnav-group').forEach(g=>{
+    const any=Array.from(g.querySelectorAll('.cnav-item')).some(b=>b.style.display!=='none');
+    g.style.display=any?'':'none';
+  });
+}
 function renderCountryNav(){
   const nav=$('country-nav');
   if(!nav) return;
-  const ids=Object.keys(COUNTRIES).filter(id=>!COUNTRIES[id].hidden)
-    .sort((a,b)=>COUNTRIES[a].name.localeCompare(COUNTRIES[b].name));
-  nav.innerHTML=ids.map(id=>{
-    const c=COUNTRIES[id];
-    const active=id===COUNTRY;
-    return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${c.name}" aria-pressed="${active}">
-      <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
-      <span class="cnav-name">${c.name}</span>
-    </button>`;
+  if(!nav.querySelector('.cnav-search')){
+    nav.innerHTML=`<input class="cnav-search" type="search" placeholder="${t('Search countries\u2026','\u00dclke ara\u2026')}" aria-label="${t('Search countries','\u00dclke ara')}"><div class="cnav-groups"></div>`;
+    nav.querySelector('.cnav-search').addEventListener('input',applyNavFilter);
+  }
+  const groups=nav.querySelector('.cnav-groups');
+  const t0=todayStr();
+  const sortKey=id=>{
+    const ne=nextElection(id);
+    if(!ne) return '3';
+    if(ne.date>=t0) return '1'+ne.date;
+    return '2'+String(99999999-parseInt(ne.date.replace(/-/g,''),10));
+  };
+  groups.innerHTML=NAV_REGIONS.map(([label,ids])=>{
+    const vis=ids.filter(id=>COUNTRIES[id]&&!COUNTRIES[id].hidden)
+      .sort((a,b)=>{const ka=sortKey(a),kb=sortKey(b);
+        return ka!==kb?ka.localeCompare(kb):COUNTRIES[a].name.localeCompare(COUNTRIES[b].name);});
+    if(!vis.length) return '';
+    return `<div class="cnav-group"><div class="cnav-group-label">${label}</div><div class="cnav-row">`+
+      vis.map(id=>{
+        const c=COUNTRIES[id]; const active=id===COUNTRY;
+        return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${c.name}" aria-pressed="${active}">
+          <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
+          <span class="cnav-name">${c.name}</span>
+        </button>`;}).join('')+`</div></div>`;
   }).join('');
-  nav.querySelectorAll('.cnav-item').forEach(btn=>{
+  groups.querySelectorAll('.cnav-item').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const id=btn.dataset.cnav;
       if(id!==COUNTRY&&window._600) window._600.setCountry(id);
     });
   });
+  applyNavFilter();
+}
+function renderHome(){
+  document.body.classList.add('home');
+  const pane=$('pane-polls');
+  if(!pane) return;
+  pane.innerHTML=`<div class="home-hero">
+    <div class="home-kicker">${t('GLOBAL ELECTION CALENDAR','K\u00dcRESEL SE\u00c7\u0130M TAKV\u0130M\u0130')}</div>
+    <h1 class="home-title">${t('Every election 600 tracks','600\u2019\u00fcn takip etti\u011fi t\u00fcm se\u00e7imler')}</h1>
+    <div class="home-sub" id="home-sub">${t('Loading the calendar\u2026','Takvim y\u00fckleniyor\u2026')}</div>
+  </div>
+  <div id="home-body"></div>`;
+  loadSummary().then(()=>renderHomeBody());
+}
+function renderHomeBody(){
+  const body=$('home-body');
+  if(!body) return;
+  if(!SUMMARY||!SUMMARY.countries){ body.innerHTML=''; return; }
+  const t0=todayStr();
+  const entries=Object.entries(SUMMARY.countries)
+    .filter(([id])=>COUNTRIES[id]&&!COUNTRIES[id].hidden);
+  const upcoming=[],past=[],tbc=[];
+  for(const [id,s] of entries){
+    const ne=nextElection(id);
+    if(!ne) tbc.push([id,s,ne]);
+    else if(ne.date>=t0) upcoming.push([id,s,ne]);
+    else past.push([id,s,ne]);
+  }
+  upcoming.sort((a,b)=>a[2].date.localeCompare(b[2].date));
+  past.sort((a,b)=>b[2].date.localeCompare(a[2].date));
+  tbc.sort((a,b)=>(a[1].name||'').localeCompare(b[1].name||''));
+  const sub=$('home-sub');
+  if(sub) sub.innerHTML=`${upcoming.length} ${t('upcoming elections','yakla\u015fan se\u00e7im')} \u00b7 ${t('updated','g\u00fcncellendi')} ${(SUMMARY.generated||'').slice(0,10)}`;
+  const sec=(title,items,fn)=>items.length?`<div class="home-section">
+      <div class="home-section-head">${title}<span>${items.length}</span></div>
+      <div class="cal-grid">${items.map(fn).join('')}</div></div>`:'';
+  body.innerHTML=
+    sec(t('NEXT ELECTIONS','YAKLA\u015eAN SE\u00c7\u0130MLER'),upcoming,x=>calCard(...x,'next'))+
+    sec(t('RECENTLY HELD','SON YAPILANLAR'),past,x=>calCard(...x,'past'))+
+    sec(t('DATE TO BE CONFIRMED','TAR\u0130H BELL\u0130 DE\u011e\u0130L'),tbc,x=>calCard(x[0],x[1],null,'tbc'));
+  body.querySelectorAll('.cal-card').forEach(b=>{
+    b.addEventListener('click',()=>{ if(window._600) window._600.setCountry(b.dataset.cnav); });
+  });
+}
+function calCard(id,s,ne,mode){
+  const c=COUNTRIES[id];
+  const precise=ne&&ne.date&&ne.date.length>4;
+  const days=precise?Math.round((new Date(ne.date+'T00:00:00')-new Date(todayStr()+'T00:00:00'))/86400000):null;
+  const soon=mode==='next'&&days!==null&&days<=45;
+  const chip=precise?`<span class="cal-days${soon?' soon':''}">${mode==='past'
+    ? t('held','yap\u0131ld\u0131')+' '+Math.abs(days)+'d'
+    : (days===0?t('TODAY','BUG\u00dcN'):days+' '+t('days','g\u00fcn'))}</span>`:'';
+  const dateTxt=ne?(fmtCalDate(ne.date)+(ne.runoff?` \u00b7 ${t('runoff','2. tur')}`:''))
+    :(s.election_date||t('unscheduled','belirsiz'));
+  const leader=s.leader?`<span class="cal-leader">
+      <span class="cal-dot" style="background:${s.leader_color||'#888'}"></span>
+      ${s.leader_logo?`<img src="${dataBase()}${s.leader_logo}" alt="" loading="lazy">`:''}
+      <b>${s.leader_code||s.leader}</b> ${s.leader_pct!=null?(s.seat_based?s.leader_pct+' '+t('seats','sandalye'):s.leader_pct+'%'):''}
+    </span>`:'';
+  const won=mode==='past'&&s.last_winner_code?`<span class="cal-leader">
+      <span class="cal-dot" style="background:${s.last_winner_color||'#888'}"></span>
+      <b>${s.last_winner_code}</b> ${t('won','kazand\u0131')}</span>`:'';
+  const fresh=s.latest_poll?`${s.poll_count} ${t('polls','anket')} \u00b7 ${t('latest','son')} ${s.latest_poll.slice(5)}`:'';
+  return `<button class="cal-card" data-cnav="${id}">
+    <div class="cal-top">
+      <img class="cal-flag" src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy">
+      <span class="cal-name">${c.name}</span>${chip}
+    </div>
+    <div class="cal-meta">${dateTxt} \u00b7 ${s.seats||c.seats} ${t('seats','sandalye')}${METHOD_SHORT[c.method]?' \u00b7 '+METHOD_SHORT[c.method]:''}</div>
+    <div class="cal-foot">${mode==='past'?won:leader}</div>
+    <div class="cal-fresh">${fresh}</div>
+  </button>`;
 }
 
 /* ---------- render sidebar (single card, top-left) ---------- */
@@ -4870,6 +5001,7 @@ window._600={
   },
   setCountry(id){
     if(!COUNTRIES[id]||id===COUNTRY) return;
+    document.body.classList.remove('home');
     setCountry(id);
     for(const k in FC_CACHE) delete FC_CACHE[k];
     for(const k in RUNOFF_CACHE) delete RUNOFF_CACHE[k];
@@ -4952,8 +5084,12 @@ function wireAria(){
 function updateSocialMeta(){
   // remove any previously-created social metas (idempotent re-runs)
   document.querySelectorAll('meta[data-social]').forEach(m=>m.remove());
-  const title=COUNTRY_NAME+' — '+t('Election Polls & Forecast','Seçim Anketleri ve Tahmini')+' | AltıCiftSıfır';
-  const desc=t('Live seat projection, poll averages, forecast simulations and district maps for','Canlı sandalye tahmini, anket ortalamaları, tahmin simülasyonları ve bölge haritaları:')+' '+COUNTRY_NAME+(META.election_date?(' · '+t('next election','sonraki seçim')+' '+META.election_date):'');
+  const title=HOME_MODE
+    ? t('Global Election Calendar','K\u00fcresel Se\u00e7im Takvimi')+' | Alt\u0131CiftS\u0131f\u0131r'
+    : COUNTRY_NAME+' — '+t('Election Polls & Forecast','Se\u00e7im Anketleri ve Tahmini')+' | Alt\u0131CiftS\u0131f\u0131r';
+  const desc=HOME_MODE
+    ? t('Upcoming elections, live poll averages and seat projections across','Yakla\u015fan se\u00e7imler, canl\u0131 anket ortalamalar\u0131 ve sandalye tahminleri')+' \u2014 600'
+    : t('Live seat projection, poll averages, forecast simulations and district maps for','Canl\u0131 sandalye tahmini, anket ortalamalar\u0131, tahmin sim\u00fclasyonlar\u0131 ve b\u00f6lge haritalar\u0131:')+' '+COUNTRY_NAME+(META.election_date?(' \u00b7 '+t('next election','sonraki se\u00e7im')+' '+META.election_date):'');
   const url=location.origin+location.pathname;
   const set=(sel,attr,val)=>{
     const prop=sel.match(/\[([a-z]+)="([^"]+)"\]/);
@@ -4985,12 +5121,16 @@ function applyTheme(){
     // restyle live accent-driven bits via a class on the app shell
   }
 }
+// Calendar home: no ?c= and no pinned country (sub-pages pin themselves).
+const HOME_MODE=!((typeof URLSearchParams!=='undefined')&&new URLSearchParams(location.search).get('c'))
+  &&!(typeof window!=='undefined'&&window.__600_COUNTRY__);
 loadData().then(()=>loadConstituencies()).then(()=>{
   wireAria();
   applyTheme(); updateSocialMeta();
   renderCountryNav();
-  renderPollsTab();
-  applyUrlParams();
+  loadSummary().then(()=>{ renderCountryNav(); if(HOME_MODE&&SUMMARY) renderHomeBody(); });
+  if(HOME_MODE){ renderHome(); }
+  else { renderPollsTab(); applyUrlParams(); }
 });
 window.addEventListener('resize',()=>{fitSideCard(); if(window.__ypFit) window.__ypFit();});
 

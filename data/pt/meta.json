@@ -1,6 +1,7 @@
 {
  "country": "pt",
  "name": "Portugal",
+ "election_date": "2029",
  "seats": 230,
  "threshold": 0.0,
  "method": "dhondt",

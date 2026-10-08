@@ -1,6 +1,7 @@
 {
  "country": "md",
  "name": "Moldova",
+ "election_date": "2029",
  "seats": 101,
  "threshold": 5.0,
  "method": "dhondt",

@@ -1,6 +1,7 @@
 {
  "country": "dk",
  "name": "Denmark",
+ "election_date": "2030",
  "seats": 179,
  "threshold": 2.0,
  "method": "sainte_lague_standard",

@@ -2,8 +2,8 @@
   "country": "spain",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
-  "scraped_at": "2026-10-08T12:45:55Z",
-  "poll_count": 552,
+  "scraped_at": "2026-10-08T17:53:36Z",
+  "poll_count": 553,
   "polls": [
     {
       "pollster": "NC Report/La Razón",
@@ -1113,6 +1113,21 @@
         "cc": 0.4,
         "upn": 0.2,
         "podemos": 3.6
+      }
+    },
+    {
+      "pollster": "CIS (Demócrata)",
+      "date": "2026-06-30",
+      "n": 6019,
+      "country": "spain",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+      "votes": {
+        "pp": 32.3,
+        "psoe": 30.4,
+        "vox": 18.1,
+        "sumar": 7.1,
+        "podemos": 2.7
       }
     },
     {

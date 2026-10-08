@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-08T12:47:07Z",
+  "scraped_at": "2026-10-08T17:54:50Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -439,8 +439,8 @@
     },
     "Illinois": null,
     "Iowa": {
-      "dem": 46.8,
-      "rep": 45.5,
+      "dem": 46.7,
+      "rep": 45.4,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -1476,8 +1476,8 @@
       }
     },
     "Nebraska": {
-      "rep": 46.3,
-      "ind": 45.5,
+      "rep": 46.5,
+      "ind": 45.6,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -2004,7 +2004,7 @@
       }
     },
     "Ohio": {
-      "dem": 47.5,
+      "dem": 47.7,
       "rep": 44.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
@@ -2376,8 +2376,8 @@
     },
     "Tennessee": null,
     "Texas": {
-      "dem": 48.7,
-      "rep": 45.4,
+      "dem": 48.5,
+      "rep": 45.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -2410,6 +2410,12 @@
           "dates": "September 20–28, 2026",
           "dem": 47.0,
           "rep": 44.0
+        },
+        {
+          "pollster": "UMass Lowell / YouGov",
+          "dates": "September 18–28, 2026",
+          "dem": 45.0,
+          "rep": 45.0
         },
         {
           "pollster": "Pulse Decision Science",
@@ -2726,10 +2732,17 @@
     },
     "Alaska": null,
     "Arizona": {
-      "dem": 47.6,
-      "rep": 38.9,
+      "dem": 47.9,
+      "rep": 40.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "GQR",
+          "dates": "September 30 – October 5, 2026",
+          "partisan": "D",
+          "dem": 49.0,
+          "rep": 45.0
+        },
         {
           "pollster": "Arizona State University",
           "dates": "August 18 – September 4, 2026",
@@ -2999,8 +3012,8 @@
       }
     },
     "Florida": {
-      "dem": 42.8,
-      "rep": 46.8,
+      "dem": 43.1,
+      "rep": 47.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -3239,8 +3252,8 @@
     "Idaho": null,
     "Illinois": null,
     "Iowa": {
-      "dem": 51.4,
-      "rep": 42.5,
+      "dem": 51.7,
+      "rep": 42.4,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -3346,7 +3359,7 @@
     },
     "Kansas": {
       "dem": 44.5,
-      "rep": 50.3,
+      "rep": 49.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -3867,8 +3880,8 @@
       ]
     },
     "Nevada": {
-      "dem": 42.3,
-      "rep": 42.9,
+      "dem": 41.8,
+      "rep": 42.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -4244,8 +4257,8 @@
       }
     },
     "Ohio": {
-      "dem": 49.2,
-      "rep": 44.7,
+      "dem": 49.1,
+      "rep": 44.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -4425,12 +4438,18 @@
     },
     "Oklahoma": null,
     "Oregon": {
-      "dem": 44.6,
-      "rep": 45.0,
+      "dem": 44.8,
+      "rep": 45.8,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
-      "n_sponsored": 3,
+      "n_sponsored": 2,
       "polls": [
+        {
+          "pollster": "DHM Research",
+          "dates": "September 24 – October 1, 2026",
+          "dem": 46.0,
+          "rep": 44.0
+        },
         {
           "pollster": "DHM Research",
           "dates": "September 17–27, 2026",
@@ -4471,8 +4490,8 @@
       }
     },
     "Pennsylvania": {
-      "dem": 55.9,
-      "rep": 32.9,
+      "dem": 55.7,
+      "rep": 33.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -4717,7 +4736,7 @@
     },
     "Texas": {
       "dem": 46.7,
-      "rep": 48.5,
+      "rep": 48.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -4744,6 +4763,12 @@
           "dates": "September 20–28, 2026",
           "dem": 44.0,
           "rep": 46.0
+        },
+        {
+          "pollster": "UMass Lowell / YouGov",
+          "dates": "September 18–28, 2026",
+          "dem": 44.0,
+          "rep": 48.0
         },
         {
           "pollster": "Big Data Poll",
@@ -5767,12 +5792,26 @@
       }
     },
     "North Carolina 1": {
-      "dem": 44.5,
+      "dem": 46.8,
       "rep": 41.0,
       "source": "Simple avg (latest 5 polls)",
-      "n_polls": 4,
-      "n_sponsored": 4,
+      "n_polls": 5,
+      "n_sponsored": 5,
       "polls": [
+        {
+          "pollster": "Neighborhood Research",
+          "dates": "October 1–6, 2026",
+          "partisan": "R",
+          "dem": 51.0,
+          "rep": 41.0
+        },
+        {
+          "pollster": "GQR",
+          "dates": "September 29 – October 4, 2026",
+          "partisan": "D",
+          "dem": 47.0,
+          "rep": 39.0
+        },
         {
           "pollster": "GBAO",
           "dates": "September 8–11, 2026",

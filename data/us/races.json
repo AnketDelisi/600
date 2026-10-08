@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-08T12:46:10Z",
+  "scraped_at": "2026-10-08T17:53:52Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -2113,7 +2113,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tilt R(flip)",
-          "sabato": "Lean R(flip)"
+          "sabato": "Tossup"
         },
         "last": null
       },
@@ -2151,7 +2151,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D"
         },
         "last": {
           "pct": 52.4,
@@ -3752,7 +3752,7 @@
         "ratings": {
           "cook": "Lean D(flip)",
           "ie": "Tilt D(flip)",
-          "sabato": "Lean D(flip)"
+          "sabato": "Likely D(flip)"
         },
         "last": {
           "pct": 50.9,
@@ -6455,7 +6455,7 @@
         "ratings": {
           "cook": "Lean R",
           "ie": "Likely R",
-          "sabato": "Likely R"
+          "sabato": "Lean R"
         },
         "last": {
           "pct": 54.1,
@@ -6597,8 +6597,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Likely R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -6615,7 +6615,7 @@
         "ratings": {
           "cook": "Tossup",
           "ie": "Tossup",
-          "sabato": "Tossup"
+          "sabato": "Lean D(flip)"
         }
       },
       {
@@ -6631,7 +6631,7 @@
         },
         "ratings": {
           "cook": "Lean D",
-          "ie": "Lean D",
+          "ie": "Tilt D",
           "sabato": "Lean D"
         }
       },
@@ -6648,8 +6648,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Safe R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -6665,8 +6665,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Safe D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6682,8 +6682,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Likely D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6699,8 +6699,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Likely D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6717,7 +6717,7 @@
         "ratings": {
           "cook": "Lean R",
           "ie": "Lean R",
-          "sabato": "Likely R"
+          "sabato": "Lean R"
         }
       },
       {
@@ -6750,8 +6750,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Safe D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6767,8 +6767,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Safe R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -6784,8 +6784,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Likely D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6801,7 +6801,7 @@
         },
         "ratings": {
           "cook": "Lean D(flip)",
-          "ie": "Lean D(flip)",
+          "ie": "Tilt D(flip)",
           "sabato": "Lean D(flip)"
         }
       },
@@ -6818,7 +6818,7 @@
         },
         "ratings": {
           "cook": "Lean R(flip)",
-          "ie": "Lean R(flip)",
+          "ie": "Tilt R(flip)",
           "sabato": "Lean R(flip)"
         }
       },
@@ -6835,8 +6835,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Likely D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Likely D"
         }
       },
       {
@@ -6852,8 +6852,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Safe D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6869,8 +6869,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Safe D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -6886,7 +6886,7 @@
         },
         "ratings": {
           "cook": "Lean D",
-          "ie": "Lean D",
+          "ie": "Tilt D",
           "sabato": "Lean D"
         }
       },
@@ -6904,7 +6904,7 @@
         "ratings": {
           "cook": "Solid D",
           "ie": "Likely D",
-          "sabato": "Likely D"
+          "sabato": "Safe D"
         }
       },
       {
@@ -6920,8 +6920,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Likely R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Likely R"
         }
       },
       {
@@ -6937,7 +6937,7 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tossup",
+          "ie": "Tilt R",
           "sabato": "Tossup"
         }
       },
@@ -6954,7 +6954,7 @@
         },
         "ratings": {
           "cook": "Likely R",
-          "ie": "Lean R",
+          "ie": "Solid R",
           "sabato": "Likely R"
         }
       },
@@ -6972,7 +6972,7 @@
         "ratings": {
           "cook": "Solid D",
           "ie": "Likely D",
-          "sabato": "Solid D"
+          "sabato": "Safe D"
         }
       },
       {
@@ -6989,7 +6989,7 @@
         "ratings": {
           "cook": "Solid D",
           "ie": "Likely D",
-          "sabato": "Solid D"
+          "sabato": "Safe D"
         }
       },
       {
@@ -7022,8 +7022,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Safe R",
-          "sabato": "Solid R"
+          "ie": "Likely R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -7039,7 +7039,7 @@
         },
         "ratings": {
           "cook": "Lean D",
-          "ie": "Likely D",
+          "ie": "Lean D",
           "sabato": "Lean D"
         }
       },
@@ -7056,8 +7056,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Safe D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -7073,8 +7073,8 @@
         },
         "ratings": {
           "cook": "Solid D",
-          "ie": "Safe D",
-          "sabato": "Solid D"
+          "ie": "Solid D",
+          "sabato": "Safe D"
         }
       },
       {
@@ -7090,8 +7090,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Lean R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -7107,8 +7107,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Safe R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -7124,8 +7124,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Likely R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       },
       {
@@ -7141,7 +7141,7 @@
         },
         "ratings": {
           "cook": "Lean R",
-          "ie": "Lean R",
+          "ie": "Likely R",
           "sabato": "Lean R"
         }
       },
@@ -7158,7 +7158,7 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Safe R",
+          "ie": "Solid R",
           "sabato": "Likely R"
         }
       },
@@ -7175,8 +7175,8 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Lean D",
-          "sabato": "Tossup"
+          "ie": "Tossup",
+          "sabato": "Lean D"
         }
       },
       {
@@ -7192,8 +7192,8 @@
         },
         "ratings": {
           "cook": "Solid R",
-          "ie": "Safe R",
-          "sabato": "Solid R"
+          "ie": "Solid R",
+          "sabato": "Safe R"
         }
       }
     ]

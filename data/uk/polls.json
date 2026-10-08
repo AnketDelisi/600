@@ -2,8 +2,8 @@
   "country": "uk",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
-  "scraped_at": "2026-10-07T12:36:02Z",
-  "poll_count": 577,
+  "scraped_at": "2026-10-08T06:18:13Z",
+  "poll_count": 579,
   "polls": [
     {
       "pollster": "YouGov",
@@ -22,6 +22,44 @@
         "snp": 3.0,
         "plc": 1.0,
         "res": 3.0
+      }
+    },
+    {
+      "pollster": "More in Common",
+      "fieldwork_start": "2026-10-05",
+      "date": "2026-10-05",
+      "n": 2088,
+      "country": "uk",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+      "votes": {
+        "lab": 29.0,
+        "con": 21.0,
+        "ref": 24.0,
+        "lib": 10.0,
+        "grn": 7.0,
+        "snp": 2.0,
+        "plc": 1.0,
+        "res": 4.0
+      }
+    },
+    {
+      "pollster": "Survation",
+      "fieldwork_start": "2026-10-05",
+      "date": "2026-10-05",
+      "n": 1669,
+      "country": "uk",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+      "votes": {
+        "lab": 30.0,
+        "con": 19.0,
+        "ref": 24.0,
+        "lib": 9.0,
+        "grn": 8.0,
+        "snp": 2.0,
+        "plc": 2.0,
+        "res": 2.0
       }
     },
     {

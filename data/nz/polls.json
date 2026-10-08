@@ -2,9 +2,27 @@
   "country": "nz",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-  "scraped_at": "2026-10-07T12:36:02Z",
-  "poll_count": 123,
+  "scraped_at": "2026-10-08T06:18:14Z",
+  "poll_count": 124,
   "polls": [
+    {
+      "pollster": "Taxpayers' Union–Curia",
+      "fieldwork_start": "2026-10-20",
+      "date": "2026-10-20",
+      "n": 1000,
+      "country": "nz",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
+      "votes": {
+        "nat": 28.5,
+        "lab": 28.2,
+        "grn": 13.3,
+        "act": 9.2,
+        "nzf": 12.0,
+        "tpm": 1.4,
+        "opp": 4.8
+      }
+    },
     {
       "pollster": "1 News–Verian",
       "fieldwork_start": "2026-10-20",

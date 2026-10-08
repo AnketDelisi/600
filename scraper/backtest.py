@@ -549,6 +549,37 @@ def main():
                   (horizon, len(vals), st.mean(vals), st.mean(bias),
                    sum(lead), len(lead)))
 
+    # Machine-readable curve for the app: MAE by days-to-election, per
+    # country and aggregated. js/app.js converts it to a normal sigma
+    # (MAE = sigma*sqrt(2/pi)) and scales the forecast's correlated swing,
+    # so uncertainty grows with the horizon instead of staying flat.
+    import datetime
+    agg = {}
+    for horizon in (60, 30, 14, 7, 0):
+        vals = [r[3]["mae"] for r in rows if r[2] == horizon]
+        if vals:
+            agg[str(horizon)] = round(st.mean(vals), 2)
+    by_country = {}
+    for country, cycle, horizon, s in rows:
+        by_country.setdefault(country, {}).setdefault(
+            str(horizon), []).append(s["mae"])
+    countries = {c: {h: round(st.mean(v), 2) for h, v in hs.items()}
+                 for c, hs in by_country.items()}
+    counts = {c: {h: len(v) for h, v in hs.items()}
+              for c, hs in by_country.items()}
+    out = {
+        "generated": datetime.datetime.now(datetime.timezone.utc)
+        .strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "horizons": [60, 30, 14, 7, 0],
+        "aggregate": agg,
+        "countries": countries,
+        "counts": counts,
+    }
+    path = os.path.join(ROOT, "data", "backtest.json")
+    with open(path, "w", encoding="utf8") as fh:
+        json.dump(out, fh, ensure_ascii=False, indent=1)
+    print("\nwrote %s (aggregate %s)" % (path, agg))
+
     if variants:
         print("\n== Phase-2 variants vs baseline (mean MAE delta)")
         for horizon in (60, 30, 14, 7, 0):

@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   update:
@@ -58,6 +59,17 @@ jobs:
           python scraper/scrape_denmark.py
           python scraper/scrape_finland.py
 
+      # Health canary + model audit. Both must pass before anything is
+      # committed, so a silently-broken scraper (poll count dropped, latest
+      # poll date went backwards, a country stopped updating) or a config
+      # regression never replaces good data in main. A failure files an
+      # issue at the bottom of this job.
+      - name: Data health check
+        run: python scraper/check_data.py --update
+
+      - name: Model audit
+        run: python scraper/audit.py
+
       # Calendar summary for the home view: the poll-average leader per
       # country, computed with the app's own math (a failure here must not
       # block the poll data update).
@@ -95,3 +107,33 @@ jobs:
           git add data/
           git diff --cached --quiet || git commit -m "Sync poll data to stable $(date -u +%Y-%m-%d)"
           git push origin stable
+
+      # One open issue titled "[data-health] scraper alert" collects every
+      # failure; a new comment carries the run link. Closed manually once
+      # the data is good again.
+      - name: File an issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '[data-health] scraper alert';
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = `The daily update failed: ${run}\n\nCheck the run log for the health check / audit output.`;
+            const found = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${context.repo.owner}/${context.repo.repo} is:issue is:open in:title "data-health"`,
+            });
+            if (found.data.total_count > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: found.data.items[0].number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+              });
+            }

@@ -8,10 +8,12 @@ Reference facts verified against official sources:
 """
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 cfg = (ROOT / "js" / "config.js").read_text(encoding="utf8")
+REAL_ISSUES = []
 
 # key: (seats, threshold, method or None=runoff/mixed, constituencies)
 REF = {
@@ -119,6 +121,7 @@ for c, (seats, thr, method, cons) in REF.items():
         issues.append("threshold %s != %s" % (t, thr))
     if method and m and m != method:
         issues.append("method %s != %s" % (m, method))
+    REAL_ISSUES.extend("%s: %s" % (c, i) for i in issues)
     print("%-12s" % c, "OK" if not issues else " | ".join(issues))
 
 print()
@@ -187,7 +190,41 @@ for c in REF:
                            re.findall(r":\s*([\d.]+)", reserved))
             if vals and seats and abs(sum(vals) - (seats - rsum)) > 0.5:
                 issues.append("seatDistricts sum %.0f != %s" % (sum(vals), seats))
+    blocs = find_block(b, "blocs")
+    if not blocs:
+        issues.append("no blocs block")
+    else:
+        defined = set()
+        pb = find_block(b, "parties")
+        if pb:
+            defined |= set(re.findall(r"(\w+):\s*\{", pb))
+        if le:
+            for key in ("results", "seats"):
+                kb = find_block(le, key)
+                if kb:
+                    defined |= set(re.findall(r"(\w+):", kb))
+        for bid in ("bloc1", "bloc2"):
+            bb = find_block(blocs, bid)
+            if not bb:
+                issues.append("blocs missing " + bid)
+                continue
+            pm = re.search(r"parties:\s*\[([^\]]*)\]", bb)
+            codes = re.findall(r"['\"]([^'\"]+)['\"]", pm.group(1)) if pm else []
+            if not codes:
+                issues.append("%s.parties empty" % bid)
+            for code in codes:
+                if code not in defined:
+                    issues.append("%s party %s not defined" % (bid, code))
     for f in ("polls.json", "meta.json"):
         if not (ROOT / "data" / c / f).is_file():
             issues.append("missing data/%s/%s" % (c, f))
+    REAL_ISSUES.extend("%s: %s" % (c, i) for i in issues if "note:" not in i)
     print("%-12s" % c, "OK" if not issues else " | ".join(issues))
+
+print()
+if REAL_ISSUES:
+    print("RESULT: %d issue(s)" % len(REAL_ISSUES))
+    for i in REAL_ISSUES:
+        print("  " + i)
+    sys.exit(1)
+print("RESULT: clean")

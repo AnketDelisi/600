@@ -1,6 +1,7 @@
 {
  "country": "ro",
  "name": "Romania",
+ "election_date": "2028",
  "seats": 331,
  "threshold": 5.0,
  "method": "hare_niemeyer",

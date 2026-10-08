@@ -385,3 +385,58 @@ input.vote-input,.party-pct,.party-delta,.party-seats,.bloc-card .bloc-pct,.tot-
   .cnav-item{padding:6px 9px 5px 9px;font-size:10px}
   .cnav-item img{width:20px;height:14px}
 }
+
+/* ---------- Calendar home + grouped country nav ---------- */
+.nav-logo-link{display:flex;align-items:center;text-decoration:none}
+body.home .tab-trigger{display:none}
+.cnav-search{
+  width:100%;max-width:420px;margin:0 auto 6px auto;display:block;
+  border:2px solid var(--c-border);background:var(--c-bg);
+  font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:0.4px;
+  padding:8px 12px;border-radius:var(--radius-sm);color:var(--c-text-main);
+}
+.cnav-search:focus{outline:none;border-color:var(--c-accent)}
+.cnav-groups{display:flex;flex-direction:column;gap:8px;width:100%}
+.cnav-group{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;justify-content:center}
+.cnav-group-label{
+  font-size:10px;font-weight:900;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--c-text-muted);flex-shrink:0;
+}
+.cnav-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.home-hero{padding:34px 24px 6px 24px;text-align:center}
+.home-kicker{font-size:11px;font-weight:900;letter-spacing:2px;color:var(--c-accent);text-transform:uppercase}
+.home-title{font-family:var(--font);font-size:clamp(22px,4vw,34px);font-weight:900;margin:8px 0 6px 0;letter-spacing:-0.5px}
+.home-sub{font-size:12px;font-weight:700;color:var(--c-text-muted);letter-spacing:0.4px}
+.home-section{padding:18px 24px 4px 24px}
+.home-section-head{
+  display:flex;align-items:center;gap:8px;font-size:12px;font-weight:900;
+  letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;
+}
+.home-section-head span{font-size:10px;background:#1A1A1A;color:#fff;border-radius:999px;padding:2px 8px}
+.cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.cal-card{
+  text-align:left;border:2px solid var(--c-border);background:var(--c-surface);
+  border-radius:var(--radius-sm);padding:12px 14px;cursor:pointer;
+  font-family:var(--font);display:flex;flex-direction:column;gap:7px;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.cal-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hard)}
+.cal-top{display:flex;align-items:center;gap:9px}
+.cal-flag{width:24px;height:17px;object-fit:cover;border-radius:2px;border:1px solid rgba(26,26,26,0.25)}
+.cal-name{font-size:14px;font-weight:900;letter-spacing:0.2px;flex:1}
+.cal-days{
+  font-size:10px;font-weight:900;letter-spacing:0.6px;text-transform:uppercase;
+  border:2px solid var(--c-border);padding:2px 7px;border-radius:999px;white-space:nowrap;
+}
+.cal-days.soon{background:var(--c-accent);border-color:var(--c-accent);color:#fff}
+.cal-meta{font-size:11px;font-weight:700;color:var(--c-text-muted);letter-spacing:0.3px}
+.cal-foot{min-height:16px}
+.cal-leader{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700}
+.cal-leader img{width:14px;height:14px;object-fit:contain}
+.cal-dot{width:9px;height:9px;border-radius:2px;display:inline-block}
+.cal-fresh{font-size:10px;font-weight:700;color:var(--c-text-muted);letter-spacing:0.3px}
+@media (max-width:768px){
+  .home-hero{padding:20px 12px 4px 12px}
+  .home-section{padding:14px 12px 2px 12px}
+  .cnav-group{flex-direction:column;align-items:center;gap:5px}
+}

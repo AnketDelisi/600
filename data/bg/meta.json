@@ -1,6 +1,7 @@
 {
  "country": "bg",
  "name": "Bulgaria",
+ "election_date": "2030",
  "seats": 240,
  "threshold": 4.0,
  "method": "hare",

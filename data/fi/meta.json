@@ -1,6 +1,7 @@
 {
  "country": "fi",
  "name": "Finland",
+ "election_date": "2027-04-18",
  "seats": 200,
  "threshold": 0.0,
  "method": "dhondt",

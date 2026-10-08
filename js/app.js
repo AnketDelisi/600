@@ -3222,6 +3222,16 @@ const FORECAST_SWING=2.0;
 // draws one correlated bloc deviation per region (sigma FORECAST_REGION_SIGMA)
 // and applies it to every district of that region via conf.regionOf; countries
 // without a region map keep the pure national draw.
+// Baseline-pattern uncertainty is part of this same draw: the projection's
+// district pattern error was measured on the 2026 MV/Berlin state elections
+// (114 Wahlkreise, actual per-district results) at 2.29pp MAE for proportional
+// swing - a number that already includes the baseline pattern's own error -
+// and region 1.5 + district 1.5 combine to ~2.1pp, so the noise is calibrated
+// to the measured total. Reconstructed baselines (Romania's scaled 2020
+// pattern, proxy-inherited parties) carry extra pattern risk that is handled
+// at the source instead: proxy baselines are confidence-shrunk toward the
+// proxy's national share in districtShares. No per-country uplift until a
+// cycle with per-district actuals measures one.
 const FORECAST_REGION_SIGMA=1.5;
 // Per-district swing error: local factors (candidate quality, local issues)
 // make a single district's swing noisier than its region's, and a small

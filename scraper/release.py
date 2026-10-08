@@ -57,7 +57,7 @@ def main():
         lines = [l for l in r.stdout.splitlines() if l.strip()]
         notes = [l for l in lines if "note:" in l]
         bad = [l for l in lines if "OK" not in l and "note:" not in l
-               and not l.startswith(("=", "STRUCT", "CONFIG"))]
+               and not l.startswith(("=", "STRUCT", "CONFIG", "RESULT"))]
         if bad:
             print("  audit: %d issue(s)" % len(bad))
             for l in bad:

@@ -26982,6 +26982,59 @@ saxony_anhalt: {
       dd: 'img/dk/DD.svg', alt: 'img/dk/ALT.svg', bp: 'img/dk/BP.svg',
     },
   },
+  fi: {
+    name: 'Finland',
+    seats: 200,
+    threshold: 0.0,               // no national threshold (district-level)
+    method: 'dhondt',             // per-district D'Hondt
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 21,
+    defaultDays: 90,
+    parties: {
+      kok:   { code: 'KOK',  name: 'Kansallinen Kokoomus', name_en: 'National Coalition Party', color: '#006288' },
+      ps:    { code: 'PS',   name: 'Perussuomalaiset', name_en: 'Finns Party', color: '#FFDE55' },
+      sdp:   { code: 'SDP',  name: 'Suomen Sosialidemokraattinen Puolue', name_en: 'Social Democratic Party of Finland', color: '#F54B4B' },
+      kesk:  { code: 'KESK', name: 'Suomen Keskusta', name_en: 'Centre Party (Finland)', color: '#3AAD2E' },
+      vihr:  { code: 'VIHR', name: 'Vihreä liitto', name_en: 'Green League', color: '#006845' },
+      vas:   { code: 'VAS',  name: 'Vasemmistoliitto', name_en: 'Left Alliance (Finland)', color: '#F00A64' },
+      sfp:   { code: 'SFP',  name: 'Svenska folkpartiet', name_en: "Swedish People's Party of Finland", color: '#FFDD93' },
+      kd:    { code: 'KD',   name: 'Kristillisdemokraatit', name_en: 'Christian Democrats (Finland)', color: '#2B67C9' },
+      liik:  { code: 'LIIK', name: 'Liike Nyt', name_en: 'Movement Now', color: '#AE2375' },
+      aland: { code: 'Å',   name: 'För Åland', name_en: 'For Åland', color: '#9CA3AF' },
+    },
+    order: ['kok', 'ps', 'sdp', 'kesk', 'vas', 'vihr', 'sfp', 'kd', 'liik', 'aland'],
+    parlOrder: ['vas', 'vihr', 'sdp', 'sfp', 'kesk', 'kd', 'kok', 'liik', 'ps', 'aland'],
+    // the source polling table's own groupings: Government KOK+PS+SFP+KD
+    // (the Orpo cabinet) vs the opposition
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['kok', 'ps', 'sfp', 'kd'], color: '#006288' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['sdp', 'kesk', 'vas', 'vihr', 'liik'], color: '#F54B4B' },
+    },
+    lastElection: {
+      date: '2023-04-02',
+      results: {"kok": 20.82, "ps": 20.06, "sdp": 19.95, "kesk": 11.29, "vihr": 7.04, "vas": 7.06, "sfp": 4.31, "kd": 4.22, "liik": 2.42, "aland": 0.37},
+      seats: {"kok": 48, "ps": 46, "sdp": 43, "kesk": 23, "vihr": 13, "vas": 11, "sfp": 9, "kd": 5, "liik": 1, "aland": 1},
+    },
+    map: {
+      svg: 'img/finland.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      districtThreshold: false,
+      districts: {"ahvenanmaa": "ahvenanmaa", "hame": "hame", "helsinki": "helsinki", "kaakkois_suomi": "kaakkois_suomi", "keski_suomi": "keski_suomi", "lappi": "lappi", "oulu": "oulu", "pirkanmaa": "pirkanmaa", "satakunta": "satakunta", "savo_karjala": "savo_karjala", "uusimaa": "uusimaa", "vaasa": "vaasa", "varsinais_suomi": "varsinais_suomi"},
+      names: {"ahvenanmaa": "Ahvenanmaa", "hame": "Häme", "helsinki": "Helsinki", "kaakkois_suomi": "Kaakkois-Suomi", "keski_suomi": "Keski-Suomi", "lappi": "Lappi", "oulu": "Oulu", "pirkanmaa": "Pirkanmaa", "satakunta": "Satakunta", "savo_karjala": "Savo-Karjala", "uusimaa": "Uusimaa", "vaasa": "Vaasa", "varsinais_suomi": "Varsinais-Suomi"},
+      seatDistricts: {"ahvenanmaa": 1, "hame": 14, "helsinki": 23, "kaakkois_suomi": 15, "keski_suomi": 10, "lappi": 6, "oulu": 18, "pirkanmaa": 20, "satakunta": 8, "savo_karjala": 15, "uusimaa": 37, "vaasa": 16, "varsinais_suomi": 17},
+      gebiete: {"ahvenanmaa": {"kok": 0.0, "ps": 0.0, "sdp": 0.0, "kesk": 0.0, "vihr": 0.0, "vas": 0.0, "sfp": 0.0, "kd": 0.0, "liik": 0.0, "aland": 85.57}, "hame": {"kok": 21.5, "ps": 24.42, "sdp": 23.71, "kesk": 8.64, "vihr": 4.74, "vas": 5.87, "sfp": 0.27, "kd": 5.52, "liik": 3.14, "aland": 0.0}, "helsinki": {"kok": 26.41, "ps": 11.29, "sdp": 20.93, "kesk": 1.57, "vihr": 15.31, "vas": 11.8, "sfp": 5.07, "kd": 1.9, "liik": 2.3, "aland": 0.0}, "kaakkois_suomi": {"kok": 21.96, "ps": 22.76, "sdp": 23.67, "kesk": 13.59, "vihr": 5.13, "vas": 3.75, "sfp": 0.21, "kd": 3.51, "liik": 3.51, "aland": 0.0}, "keski_suomi": {"kok": 16.26, "ps": 20.46, "sdp": 22.81, "kesk": 17.74, "vihr": 7.62, "vas": 6.52, "sfp": 0.12, "kd": 5.29, "liik": 1.33, "aland": 0.0}, "lappi": {"kok": 12.23, "ps": 26.76, "sdp": 18.06, "kesk": 24.84, "vihr": 3.46, "vas": 9.94, "sfp": 0.3, "kd": 1.1, "liik": 0.65, "aland": 0.0}, "oulu": {"kok": 14.99, "ps": 25.47, "sdp": 13.75, "kesk": 25.04, "vihr": 5.03, "vas": 9.44, "sfp": 0.19, "kd": 2.75, "liik": 1.07, "aland": 0.0}, "pirkanmaa": {"kok": 21.47, "ps": 20.16, "sdp": 25.85, "kesk": 7.1, "vihr": 7.5, "vas": 6.87, "sfp": 0.3, "kd": 5.46, "liik": 2.55, "aland": 0.0}, "satakunta": {"kok": 17.04, "ps": 26.65, "sdp": 24.6, "kesk": 13.91, "vihr": 2.7, "vas": 8.28, "sfp": 0.35, "kd": 3.21, "liik": 1.75, "aland": 0.0}, "savo_karjala": {"kok": 16.35, "ps": 20.04, "sdp": 19.12, "kesk": 19.7, "vihr": 5.66, "vas": 5.47, "sfp": 0.06, "kd": 9.82, "liik": 2.09, "aland": 0.0}, "uusimaa": {"kok": 26.21, "ps": 18.17, "sdp": 19.88, "kesk": 4.77, "vihr": 7.64, "vas": 4.56, "sfp": 8.66, "kd": 3.49, "liik": 3.73, "aland": 0.0}, "vaasa": {"kok": 14.22, "ps": 21.27, "sdp": 11.74, "kesk": 17.93, "vihr": 2.73, "vas": 2.42, "sfp": 19.27, "kd": 6.93, "liik": 1.5, "aland": 0.0}, "varsinais_suomi": {"kok": 23.02, "ps": 19.98, "sdp": 18.13, "kesk": 8.4, "vihr": 6.96, "vas": 11.55, "sfp": 4.96, "kd": 2.82, "liik": 2.35, "aland": 0.0}},
+      national2021: {"kok": 20.82, "ps": 20.06, "sdp": 19.95, "kesk": 11.29, "vihr": 7.04, "vas": 7.06, "sfp": 4.31, "kd": 4.22, "liik": 2.42, "aland": 0.37},
+    },
+    pollsterMAE: {},
+    maeKey: 'FI2027',
+    logos: {
+      kok: 'img/fi/KOK.svg', ps: 'img/fi/PS.svg', sdp: 'img/fi/SDP.svg',
+      kesk: 'img/fi/KESK.svg', vihr: 'img/fi/VIHR.svg', vas: 'img/fi/VAS.svg',
+      sfp: 'img/fi/SFP.svg', kd: 'img/fi/KD.svg', liik: 'img/fi/LIIK.svg',
+    },
+  },
   pt: {
     name: 'Portugal',
     seats: 230,

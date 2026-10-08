@@ -1,0 +1,1510 @@
+{
+ "country": "fi",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+ "scraped_at": "2026-10-08T17:38:53Z",
+ "poll_count": 79,
+ "polls": [
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-05-02",
+   "n": 2594,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.6,
+    "ps": 20.6,
+    "sdp": 19.9,
+    "kesk": 10.2,
+    "vas": 7.5,
+    "vihr": 7.5,
+    "sfp": 4.3,
+    "kd": 4.1,
+    "liik": 2.0
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-05-12",
+   "n": 2860,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.4,
+    "ps": 21.0,
+    "sdp": 19.0,
+    "kesk": 10.1,
+    "vas": 7.8,
+    "vihr": 7.7,
+    "sfp": 4.5,
+    "kd": 4.1,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-06-06",
+   "n": 2533,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 22.5,
+    "ps": 21.0,
+    "sdp": 19.6,
+    "kesk": 9.7,
+    "vas": 7.5,
+    "vihr": 7.3,
+    "sfp": 4.5,
+    "kd": 4.0,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-06-15",
+   "n": 2754,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.3,
+    "ps": 20.9,
+    "sdp": 19.2,
+    "kesk": 10.2,
+    "vas": 8.0,
+    "vihr": 7.7,
+    "sfp": 4.4,
+    "kd": 4.0,
+    "liik": 2.0
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-07-04",
+   "n": 2468,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 22.1,
+    "ps": 20.2,
+    "sdp": 20.6,
+    "kesk": 10.0,
+    "vas": 7.8,
+    "vihr": 8.6,
+    "sfp": 4.1,
+    "kd": 3.8,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-07-15",
+   "n": 2486,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 22.0,
+    "ps": 19.8,
+    "sdp": 19.4,
+    "kesk": 9.8,
+    "vas": 8.1,
+    "vihr": 8.0,
+    "sfp": 4.5,
+    "kd": 3.9,
+    "liik": 2.1
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-08-01",
+   "n": 2509,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.8,
+    "ps": 19.2,
+    "sdp": 22.8,
+    "kesk": 10.7,
+    "vas": 8.5,
+    "vihr": 8.0,
+    "sfp": 3.9,
+    "kd": 4.0,
+    "liik": 1.4
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-08-11",
+   "n": 2460,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.4,
+    "ps": 19.0,
+    "sdp": 21.5,
+    "kesk": 9.5,
+    "vas": 8.0,
+    "vihr": 8.1,
+    "sfp": 4.4,
+    "kd": 3.7,
+    "liik": 2.0
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-09-05",
+   "n": 2459,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.2,
+    "ps": 18.5,
+    "sdp": 21.4,
+    "kesk": 11.5,
+    "vas": 8.0,
+    "vihr": 7.7,
+    "sfp": 4.4,
+    "kd": 4.0,
+    "liik": 1.3
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-09-08",
+   "n": 2456,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.0,
+    "ps": 18.4,
+    "sdp": 21.6,
+    "kesk": 9.8,
+    "vas": 8.3,
+    "vihr": 8.6,
+    "sfp": 4.2,
+    "kd": 4.1,
+    "liik": 1.8
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-10-03",
+   "n": 2490,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.5,
+    "ps": 17.5,
+    "sdp": 20.8,
+    "kesk": 10.7,
+    "vas": 9.8,
+    "vihr": 9.1,
+    "sfp": 4.0,
+    "kd": 3.7,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-10-06",
+   "n": 2428,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.0,
+    "ps": 18.0,
+    "sdp": 20.7,
+    "kesk": 10.1,
+    "vas": 9.1,
+    "vihr": 8.4,
+    "sfp": 4.2,
+    "kd": 4.0,
+    "liik": 1.8
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-10-31",
+   "n": 2395,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.2,
+    "ps": 17.3,
+    "sdp": 23.5,
+    "kesk": 10.4,
+    "vas": 8.5,
+    "vihr": 8.7,
+    "sfp": 4.2,
+    "kd": 3.4,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-11-03",
+   "n": 2388,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.6,
+    "ps": 17.2,
+    "sdp": 21.5,
+    "kesk": 10.2,
+    "vas": 9.1,
+    "vihr": 8.8,
+    "sfp": 4.1,
+    "kd": 3.9,
+    "liik": 2.1
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2023-11-28",
+   "n": 2535,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 22.6,
+    "ps": 17.0,
+    "sdp": 22.3,
+    "kesk": 10.5,
+    "vas": 8.6,
+    "vihr": 8.4,
+    "sfp": 3.5,
+    "kd": 3.6,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Kantar Public",
+   "date": "2023-12-10",
+   "n": 2622,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.4,
+    "ps": 17.9,
+    "sdp": 20.8,
+    "kesk": 9.9,
+    "vas": 9.1,
+    "vihr": 8.5,
+    "sfp": 4.1,
+    "kd": 4.0,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-01-07",
+   "n": 2533,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.0,
+    "ps": 14.9,
+    "sdp": 23.2,
+    "kesk": 13.1,
+    "vas": 8.9,
+    "vihr": 8.3,
+    "sfp": 3.9,
+    "kd": 3.9,
+    "liik": 1.5
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-02-06",
+   "n": 2662,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 22.4,
+    "ps": 20.0,
+    "sdp": 20.4,
+    "kesk": 10.8,
+    "vas": 8.5,
+    "vihr": 8.2,
+    "sfp": 3.4,
+    "kd": 3.6,
+    "liik": 1.4
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-02-16",
+   "n": 2740,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.3,
+    "ps": 19.6,
+    "sdp": 19.6,
+    "kesk": 11.1,
+    "vas": 8.9,
+    "vihr": 8.1,
+    "sfp": 3.6,
+    "kd": 4.1,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-03-05",
+   "n": 2428,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.6,
+    "ps": 18.0,
+    "sdp": 19.8,
+    "kesk": 12.2,
+    "vas": 9.0,
+    "vihr": 8.9,
+    "sfp": 3.7,
+    "kd": 3.1,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-03-15",
+   "n": 2426,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.7,
+    "ps": 18.9,
+    "sdp": 19.6,
+    "kesk": 11.7,
+    "vas": 9.0,
+    "vihr": 8.1,
+    "sfp": 3.8,
+    "kd": 3.9,
+    "liik": 2.3
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-04-02",
+   "n": 2613,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.6,
+    "ps": 17.4,
+    "sdp": 21.7,
+    "kesk": 12.0,
+    "vas": 9.5,
+    "vihr": 8.3,
+    "sfp": 3.4,
+    "kd": 3.6,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-04-12",
+   "n": 2226,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.9,
+    "ps": 17.8,
+    "sdp": 21.6,
+    "kesk": 11.3,
+    "vas": 9.3,
+    "vihr": 8.1,
+    "sfp": 3.8,
+    "kd": 4.1,
+    "liik": 2.0
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-05-07",
+   "n": 2490,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.3,
+    "ps": 15.6,
+    "sdp": 24.4,
+    "kesk": 11.5,
+    "vas": 8.8,
+    "vihr": 7.7,
+    "sfp": 3.4,
+    "kd": 4.0,
+    "liik": 1.8
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-05-17",
+   "n": 2484,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.9,
+    "ps": 16.2,
+    "sdp": 22.7,
+    "kesk": 12.1,
+    "vas": 9.0,
+    "vihr": 7.8,
+    "sfp": 3.4,
+    "kd": 4.2,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-06-04",
+   "n": 2452,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 22.3,
+    "ps": 14.8,
+    "sdp": 23.0,
+    "kesk": 11.5,
+    "vas": 9.5,
+    "vihr": 8.0,
+    "sfp": 3.7,
+    "kd": 3.7,
+    "liik": 0.8
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-06-14",
+   "n": 2412,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.0,
+    "ps": 14.9,
+    "sdp": 21.2,
+    "kesk": 12.2,
+    "vas": 9.9,
+    "vihr": 8.4,
+    "sfp": 4.5,
+    "kd": 4.3,
+    "liik": 2.3
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-07-02",
+   "n": 2481,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.2,
+    "ps": 15.3,
+    "sdp": 20.1,
+    "kesk": 12.2,
+    "vas": 11.6,
+    "vihr": 8.3,
+    "sfp": 3.9,
+    "kd": 3.7,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-07-12",
+   "n": 2388,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.8,
+    "ps": 15.6,
+    "sdp": 20.8,
+    "kesk": 11.8,
+    "vas": 10.0,
+    "vihr": 8.2,
+    "sfp": 4.6,
+    "kd": 3.8,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-08-06",
+   "n": 2497,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.6,
+    "ps": 15.9,
+    "sdp": 20.4,
+    "kesk": 11.9,
+    "vas": 10.9,
+    "vihr": 8.9,
+    "sfp": 3.6,
+    "kd": 3.7,
+    "liik": 1.0
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-08-16",
+   "n": 2542,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.2,
+    "ps": 15.0,
+    "sdp": 20.9,
+    "kesk": 12.9,
+    "vas": 10.1,
+    "vihr": 8.0,
+    "sfp": 4.3,
+    "kd": 4.2,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-09-03",
+   "n": 2308,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.9,
+    "ps": 16.7,
+    "sdp": 22.3,
+    "kesk": 10.8,
+    "vas": 9.3,
+    "vihr": 8.2,
+    "sfp": 3.6,
+    "kd": 4.1,
+    "liik": 1.6
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-09-13",
+   "n": 2416,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.6,
+    "ps": 15.6,
+    "sdp": 22.0,
+    "kesk": 12.0,
+    "vas": 8.9,
+    "vihr": 8.3,
+    "sfp": 4.2,
+    "kd": 4.1,
+    "liik": 1.8
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-10-01",
+   "n": 2600,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.0,
+    "ps": 16.7,
+    "sdp": 22.6,
+    "kesk": 13.2,
+    "vas": 9.3,
+    "vihr": 7.6,
+    "sfp": 3.9,
+    "kd": 3.4,
+    "liik": 1.4
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-10-11",
+   "n": 2432,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.4,
+    "ps": 16.1,
+    "sdp": 22.8,
+    "kesk": 12.5,
+    "vas": 8.6,
+    "vihr": 8.0,
+    "sfp": 4.2,
+    "kd": 4.0,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-11-05",
+   "n": 2383,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.8,
+    "ps": 15.7,
+    "sdp": 24.3,
+    "kesk": 13.1,
+    "vas": 9.3,
+    "vihr": 8.0,
+    "sfp": 4.0,
+    "kd": 3.5,
+    "liik": 1.1
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-11-15",
+   "n": 2622,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.8,
+    "ps": 16.3,
+    "sdp": 22.5,
+    "kesk": 12.2,
+    "vas": 9.1,
+    "vihr": 7.8,
+    "sfp": 3.9,
+    "kd": 3.9,
+    "liik": 2.4
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2024-12-03",
+   "n": 2572,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.8,
+    "ps": 15.1,
+    "sdp": 24.0,
+    "kesk": 13.1,
+    "vas": 8.8,
+    "vihr": 8.2,
+    "sfp": 3.3,
+    "kd": 4.0,
+    "liik": 2.3
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2024-12-13",
+   "n": 2418,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.5,
+    "ps": 15.7,
+    "sdp": 24.0,
+    "kesk": 12.1,
+    "vas": 8.5,
+    "vihr": 7.8,
+    "sfp": 3.8,
+    "kd": 3.9,
+    "liik": 2.5
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-01-02",
+   "n": 2024,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.6,
+    "ps": 15.1,
+    "sdp": 23.9,
+    "kesk": 13.5,
+    "vas": 10.7,
+    "vihr": 8.4,
+    "sfp": 3.2,
+    "kd": 3.1,
+    "liik": 0.7
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-01-19",
+   "n": 4050,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.4,
+    "ps": 13.4,
+    "sdp": 25.0,
+    "kesk": 14.3,
+    "vas": 10.0,
+    "vihr": 8.3,
+    "sfp": 4.0,
+    "kd": 3.0,
+    "liik": 1.5
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-02-03",
+   "n": 2604,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.9,
+    "ps": 15.0,
+    "sdp": 24.4,
+    "kesk": 13.4,
+    "vas": 9.2,
+    "vihr": 8.5,
+    "sfp": 3.6,
+    "kd": 3.0,
+    "liik": 1.1
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-02-16",
+   "n": 3849,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.1,
+    "ps": 14.3,
+    "sdp": 24.5,
+    "kesk": 13.2,
+    "vas": 9.1,
+    "vihr": 8.1,
+    "sfp": 3.7,
+    "kd": 3.6,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-03-04",
+   "n": 2519,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.0,
+    "ps": 15.4,
+    "sdp": 22.8,
+    "kesk": 13.7,
+    "vas": 8.5,
+    "vihr": 7.8,
+    "sfp": 3.9,
+    "kd": 4.7,
+    "liik": 1.0
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-03-16",
+   "n": 3224,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.3,
+    "ps": 14.2,
+    "sdp": 24.2,
+    "kesk": 13.2,
+    "vas": 9.4,
+    "vihr": 7.8,
+    "sfp": 4.1,
+    "kd": 3.4,
+    "liik": 2.0
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-04-07",
+   "n": 2478,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.6,
+    "ps": 15.4,
+    "sdp": 23.4,
+    "kesk": 14.2,
+    "vas": 9.0,
+    "vihr": 8.8,
+    "sfp": 3.8,
+    "kd": 3.8,
+    "liik": 0.8
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-05-06",
+   "n": 2422,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.2,
+    "ps": 11.4,
+    "sdp": 25.3,
+    "kesk": 15.6,
+    "vas": 9.4,
+    "vihr": 7.9,
+    "sfp": 3.9,
+    "kd": 3.5,
+    "liik": 0.9
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-05-18",
+   "n": 3770,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.9,
+    "ps": 10.5,
+    "sdp": 25.3,
+    "kesk": 15.3,
+    "vas": 10.1,
+    "vihr": 7.9,
+    "sfp": 4.1,
+    "kd": 3.3,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-06-02",
+   "n": 2401,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 21.5,
+    "ps": 10.8,
+    "sdp": 25.1,
+    "kesk": 14.1,
+    "vas": 9.5,
+    "vihr": 8.7,
+    "sfp": 3.7,
+    "kd": 3.7,
+    "liik": 0.9
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-06-16",
+   "n": 4083,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.8,
+    "ps": 10.0,
+    "sdp": 25.2,
+    "kesk": 15.7,
+    "vas": 10.0,
+    "vihr": 8.2,
+    "sfp": 4.4,
+    "kd": 3.1,
+    "liik": 1.3
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-06-30",
+   "n": 2421,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 20.8,
+    "ps": 11.8,
+    "sdp": 25.1,
+    "kesk": 13.9,
+    "vas": 9.8,
+    "vihr": 7.6,
+    "sfp": 4.0,
+    "kd": 4.0,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-07-14",
+   "n": 3016,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.8,
+    "ps": 10.6,
+    "sdp": 25.4,
+    "kesk": 15.7,
+    "vas": 9.8,
+    "vihr": 8.0,
+    "sfp": 4.1,
+    "kd": 3.3,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-08-05",
+   "n": 2844,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.1,
+    "ps": 12.3,
+    "sdp": 24.7,
+    "kesk": 15.1,
+    "vas": 10.1,
+    "vihr": 8.6,
+    "sfp": 3.9,
+    "kd": 3.5,
+    "liik": 0.9
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-08-17",
+   "n": 3012,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.8,
+    "ps": 11.0,
+    "sdp": 25.2,
+    "kesk": 16.3,
+    "vas": 10.0,
+    "vihr": 8.3,
+    "sfp": 4.0,
+    "kd": 3.2,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-09-02",
+   "n": 2266,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.2,
+    "ps": 12.8,
+    "sdp": 25.8,
+    "kesk": 14.7,
+    "vas": 9.5,
+    "vihr": 7.7,
+    "sfp": 3.5,
+    "kd": 3.9,
+    "liik": 0.8
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-09-14",
+   "n": 3793,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.4,
+    "ps": 11.4,
+    "sdp": 25.3,
+    "kesk": 16.1,
+    "vas": 9.7,
+    "vihr": 8.6,
+    "sfp": 4.0,
+    "kd": 3.1,
+    "liik": 1.3
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-09-30",
+   "n": 2383,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.6,
+    "ps": 14.9,
+    "sdp": 24.9,
+    "kesk": 14.3,
+    "vas": 9.6,
+    "vihr": 7.5,
+    "sfp": 4.1,
+    "kd": 3.5,
+    "liik": 1.2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-10-12",
+   "n": 3598,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.2,
+    "ps": 12.8,
+    "sdp": 24.8,
+    "kesk": 15.7,
+    "vas": 9.4,
+    "vihr": 8.8,
+    "sfp": 3.8,
+    "kd": 3.0,
+    "liik": 1.5
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-11-04",
+   "n": 2520,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 19.0,
+    "ps": 14.6,
+    "sdp": 25.4,
+    "kesk": 13.8,
+    "vas": 9.5,
+    "vihr": 7.3,
+    "sfp": 3.9,
+    "kd": 3.5,
+    "liik": 1.3
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-11-16",
+   "n": 3971,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.3,
+    "ps": 13.4,
+    "sdp": 24.7,
+    "kesk": 15.3,
+    "vas": 9.1,
+    "vihr": 8.5,
+    "sfp": 4.0,
+    "kd": 3.1,
+    "liik": 1.6
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2025-12-02",
+   "n": 2407,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.7,
+    "ps": 14.2,
+    "sdp": 24.7,
+    "kesk": 13.9,
+    "vas": 10.2,
+    "vihr": 7.6,
+    "sfp": 3.8,
+    "kd": 3.4,
+    "liik": 1.5
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2025-12-14",
+   "n": 4075,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.0,
+    "ps": 13.1,
+    "sdp": 25.3,
+    "kesk": 14.8,
+    "vas": 9.5,
+    "vihr": 8.6,
+    "sfp": 4.0,
+    "kd": 3.0,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-02-03",
+   "n": 2402,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.8,
+    "ps": 13.3,
+    "sdp": 25.0,
+    "kesk": 14.3,
+    "vas": 11.1,
+    "vihr": 7.9,
+    "sfp": 3.8,
+    "kd": 3.4,
+    "liik": 1.0
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-02-16",
+   "n": 4072,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.9,
+    "ps": 13.0,
+    "sdp": 25.1,
+    "kesk": 14.1,
+    "vas": 10.4,
+    "vihr": 8.5,
+    "sfp": 4.0,
+    "kd": 3.3,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-03-03",
+   "n": 2402,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.9,
+    "ps": 14.9,
+    "sdp": 25.0,
+    "kesk": 13.2,
+    "vas": 11.0,
+    "vihr": 8.2,
+    "sfp": 3.4,
+    "kd": 3.3,
+    "liik": 1.0
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-03-16",
+   "n": 4048,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.8,
+    "ps": 13.4,
+    "sdp": 24.8,
+    "kesk": 13.7,
+    "vas": 10.4,
+    "vihr": 8.9,
+    "sfp": 4.0,
+    "kd": 3.2,
+    "liik": 1.8
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-04-07",
+   "n": 2543,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.4,
+    "ps": 13.5,
+    "sdp": 24.1,
+    "kesk": 14.5,
+    "vas": 11.3,
+    "vihr": 8.7,
+    "sfp": 3.8,
+    "kd": 3.2,
+    "liik": 1.0
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-04-20",
+   "n": 4340,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.6,
+    "ps": 13.3,
+    "sdp": 24.6,
+    "kesk": 13.7,
+    "vas": 10.6,
+    "vihr": 9.2,
+    "sfp": 4.0,
+    "kd": 3.1,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-05-05",
+   "n": 2378,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.6,
+    "ps": 13.9,
+    "sdp": 23.7,
+    "kesk": 14.2,
+    "vas": 10.9,
+    "vihr": 9.1,
+    "sfp": 3.2,
+    "kd": 4.0,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-05-18",
+   "n": 4120,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.3,
+    "ps": 13.4,
+    "sdp": 24.3,
+    "kesk": 13.6,
+    "vas": 11.0,
+    "vihr": 9.1,
+    "sfp": 3.8,
+    "kd": 3.3,
+    "liik": 2.0
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-06-01",
+   "n": 2224,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 18.3,
+    "ps": 13.8,
+    "sdp": 23.0,
+    "kesk": 14.1,
+    "vas": 11.2,
+    "vihr": 8.3,
+    "sfp": 3.9,
+    "kd": 3.4,
+    "liik": 1.7
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-06-15",
+   "n": 4080,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.4,
+    "ps": 13.6,
+    "sdp": 24.1,
+    "kesk": 13.6,
+    "vas": 11.2,
+    "vihr": 9.0,
+    "sfp": 3.9,
+    "kd": 3.1,
+    "liik": 2.1
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-06-30",
+   "n": 2433,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.4,
+    "ps": 14.5,
+    "sdp": 23.2,
+    "kesk": 13.6,
+    "vas": 11.4,
+    "vihr": 8.6,
+    "sfp": 3.8,
+    "kd": 3.4,
+    "liik": 1.3
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-07-13",
+   "n": 3512,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 16.7,
+    "ps": 14.2,
+    "sdp": 23.8,
+    "kesk": 13.7,
+    "vas": 11.5,
+    "vihr": 8.8,
+    "sfp": 4.0,
+    "kd": 3.1,
+    "liik": 2.1
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-08-03",
+   "n": 2125,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.0,
+    "ps": 15.6,
+    "sdp": 23.8,
+    "kesk": 12.7,
+    "vas": 10.3,
+    "vihr": 9.0,
+    "sfp": 3.7,
+    "kd": 3.5,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-08-17",
+   "n": 2946,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 16.5,
+    "ps": 14.6,
+    "sdp": 23.8,
+    "kesk": 13.7,
+    "vas": 11.3,
+    "vihr": 8.8,
+    "sfp": 4.0,
+    "kd": 3.0,
+    "liik": 2.3
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-09-01",
+   "n": 2502,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 17.0,
+    "ps": 16.3,
+    "sdp": 22.6,
+    "kesk": 13.5,
+    "vas": 11.7,
+    "vihr": 8.2,
+    "sfp": 3.6,
+    "kd": 3.4,
+    "liik": 1.9
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-09-14",
+   "n": 3078,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 16.5,
+    "ps": 15.0,
+    "sdp": 23.4,
+    "kesk": 13.6,
+    "vas": 11.6,
+    "vihr": 8.6,
+    "sfp": 4.1,
+    "kd": 3.0,
+    "liik": 2.2
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-10-05",
+   "n": 2807,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 16.3,
+    "ps": 16.5,
+    "sdp": 22.7,
+    "kesk": 12.6,
+    "vas": 12.4,
+    "vihr": 8.3,
+    "sfp": 3.6,
+    "kd": 3.4,
+    "liik": 2.1
+   }
+  }
+ ]
+}

@@ -4165,6 +4165,63 @@ function renderForecast(pane){
   }
   const leadOutcome=leadCands[0].n, leadColor=leadCands[0].c, leadPct=leadCands[0].p*100;
 
+  // --- Regional drill-down: aggregate the per-district projections into the
+  // map's regionOf groups (UK's 12 regions, Spain's 19 communities; BC/QC
+  // have only 2 groups so they are skipped). District shares come from the
+  // same districtShares() the map uses, weighted by district size.
+  let regionHtml='';
+  {
+    const mc=MAP_CONF();
+    const regionIds=(mc&&mc.regionOf)?Object.keys(mc.regionOf):[];
+    const nRegions=(mc&&mc.regionOf)?new Set(Object.values(mc.regionOf)).size:0;
+    if(mc&&mc.regionOf&&nRegions>=3&&nRegions<=30){
+      const groups={};
+      regionIds.forEach(nr=>{
+        const r=mc.regionOf[nr];
+        const sh=districtShares(nr,medVotes,false,mc);
+        if(!sh) return;
+        const cobj=(typeof constituencyById==='function')?constituencyById(nr):null;
+        const w=(cobj&&cobj.votes2022)||(mc.seatDistricts&&mc.seatDistricts[nr])||1;
+        const g=groups[r]||(groups[r]={w:0,v:{}});
+        g.w+=w;
+        PARTY_ORDER.forEach(p=>{g.v[p]=(g.v[p]||0)+(sh[p]?sh[p].now:0)*w});
+      });
+      const rows=Object.keys(groups).map(r=>{
+        const g=groups[r];
+        const parts=PARTY_ORDER.map(p=>[p,g.v[p]/g.w]).filter(x=>x[1]>0)
+          .sort((a,b)=>b[1]-a[1]);
+        return {r:r,parts:parts};
+      }).filter(x=>x.parts.length).sort((a,b)=>b.parts[0][1]-a.parts[0][1]);
+      if(rows.length>=3){
+        const REGION_LABELS={
+          eastmidlands:'East Midlands',eastofengland:'East of England',london:'London',
+          northeast:'North East',northernireland:'Northern Ireland',northwest:'North West',
+          scotland:'Scotland',southeast:'South East',southwest:'South West',wales:'Wales',
+          westmidlands:'West Midlands',yorkshireandthehumber:'Yorkshire and the Humber',
+          andalucia:'Andaluc\u00eda',aragon:'Arag\u00f3n',asturias:'Asturias',
+          balears:'Balearic Islands',canarias:'Canary Islands',cantabria:'Cantabria',
+          castilla_la_mancha:'Castilla\u2013La Mancha',castilla_y_leon:'Castilla y Le\u00f3n',
+          cataluna:'Catalu\u00f1a',ceuta:'Ceuta',extremadura:'Extremadura',galicia:'Galicia',
+          madrid:'Madrid',melilla:'Melilla',murcia:'Murcia',navarra:'Navarra',
+          pais_vasco:'Pa\u00eds Vasco',rioja:'La Rioja',valenciana:'Valencian Community'};
+        const cell=(x,i)=>{
+          const pr=x.parts[i];
+          if(!pr) return '<td class="num c">\u2014</td>';
+          const col=(PARTY_META[pr[0]]||{}).color||'#888';
+          return `<td class="num c" style="color:${col};font-weight:${i===0?'900':'700'}">${partyCode(pr[0])} ${fmt(pr[1],1)}</td>`;
+        };
+        regionHtml=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Regional breakdown','B\u00f6lgesel da\u011f\u0131l\u0131m')}</div></div>
+          <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
+            <th>${t('Region','B\u00f6lge')}</th><th class="c">1</th><th class="c">2</th><th class="c">3</th>
+          </tr></thead><tbody>
+          ${rows.map(x=>`<tr><td style="font-weight:900">${REGION_LABELS[x.r]||x.r}</td>${cell(x,0)}${cell(x,1)}${cell(x,2)}</tr>`).join('')}
+          </tbody></table></div>
+          <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Projected from the median vote shares, weighted by district size','Medyan oy oranlar\u0131ndan, b\u00f6lge b\u00fcy\u00fckl\u00fc\u011f\u00fcne g\u00f6re a\u011f\u0131rl\u0131kl\u0131')}</div>
+        </div>`;
+      }
+    }
+  }
+
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
@@ -4205,6 +4262,8 @@ function renderForecast(pane){
           :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')}
       </div>
     </div>`:''}
+
+    ${regionHtml}
 
     ${MAP_ONLY?firstRoundCard(sim):''}
     ${runoffHtml}

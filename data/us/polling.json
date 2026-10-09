@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-09T07:45:05Z",
+  "scraped_at": "2026-10-09T12:32:47Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -202,6 +202,12 @@
           "dates": "September 28 – October 5, 2026",
           "dem": 44.0,
           "rep": 49.0
+        },
+        {
+          "pollster": "James Madison Institute",
+          "dates": "September 28 – October 4, 2026",
+          "dem": 42.0,
+          "rep": 52.0
         },
         {
           "pollster": "Mason-Dixon",
@@ -449,6 +455,12 @@
       "rep": 45.4,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Emerson College",
+          "dates": "October 5–6, 2026",
+          "dem": 45.0,
+          "rep": 47.0
+        },
         {
           "pollster": "SSRS",
           "dates": "September 29 – October 5, 2026",
@@ -731,6 +743,12 @@
       "rep": 47.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "The Washington Post / SSPG",
+          "dates": "September 30 – October 5, 2026",
+          "dem": 50.0,
+          "rep": 46.0
+        },
         {
           "pollster": "Marist University",
           "dates": "October 1–4, 2026",
@@ -3054,6 +3072,12 @@
           "rep": 47.0
         },
         {
+          "pollster": "James Madison Institute",
+          "dates": "September 28 – October 4, 2026",
+          "dem": 42.0,
+          "rep": 52.0
+        },
+        {
           "pollster": "Mason-Dixon",
           "dates": "September 28 – October 1, 2026",
           "dem": 41.0,
@@ -3288,6 +3312,12 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "Emerson College",
+          "dates": "October 5–6, 2026",
+          "dem": 49.0,
+          "rep": 45.0
+        },
+        {
           "pollster": "SSRS",
           "dates": "September 29 – October 5, 2026",
           "dem": 51.0,
@@ -3450,6 +3480,13 @@
       "ind": 5.9,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "The Washington Post / SSPG",
+          "dates": "September 30 – October 5, 2026",
+          "dem": 49.0,
+          "rep": 36.0,
+          "ind": 11.0
+        },
         {
           "pollster": "Marist University",
           "dates": "October 1–4, 2026",
@@ -5798,12 +5835,18 @@
       }
     },
     "New York 21": {
-      "dem": 42.8,
-      "rep": 45.8,
+      "dem": 43.2,
+      "rep": 45.2,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
-      "n_sponsored": 3,
+      "n_sponsored": 2,
       "polls": [
+        {
+          "pollster": "Siena University",
+          "dates": "September 30 – October 6, 2026",
+          "dem": 46.0,
+          "rep": 42.0
+        },
         {
           "pollster": "Public Policy Polling",
           "dates": "September 9–10, 2026",

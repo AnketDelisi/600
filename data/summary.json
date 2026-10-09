@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T07:43:40Z",
+ "generated": "2026-10-09T12:32:02Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -58,8 +58,8 @@
    "second_pct": 42.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 39,
-   "latest_poll": "2026-10-03"
+   "poll_count": 41,
+   "latest_poll": "2026-10-07"
   },
   "austria": {
    "name": "Austria",
@@ -170,16 +170,16 @@
    "seats": 150,
    "seat_based": false,
    "leader": "ps",
-   "leader_pct": 19.0,
+   "leader_pct": 19.2,
    "leader_code": "PS",
    "leader_color": "#00BDFF",
    "leader_logo": "img/sk/PS.svg",
    "second": "smer",
-   "second_pct": 17.0,
+   "second_pct": 17.4,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 2,
-   "latest_poll": "2026-09-22"
+   "poll_count": 3,
+   "latest_poll": "2026-10-05"
   },
   "germany": {
    "name": "Germany",
@@ -195,10 +195,10 @@
    "leader_color": "#00A2DE",
    "leader_logo": "img/de/AFD.svg",
    "second": "cdu",
-   "second_pct": 19.4,
+   "second_pct": 19.5,
    "last_winner_code": "CDU/CSU",
    "last_winner_color": "#151518",
-   "poll_count": 20,
+   "poll_count": 21,
    "latest_poll": "2026-10-07"
   },
   "spain": {
@@ -210,16 +210,16 @@
    "seats": 350,
    "seat_based": false,
    "leader": "pp",
-   "leader_pct": 32.9,
+   "leader_pct": 32.6,
    "leader_code": "PP",
    "leader_color": "#1D84CE",
    "leader_logo": "img/es/PP.svg",
    "second": "psoe",
-   "second_pct": 26.3,
+   "second_pct": 26.4,
    "last_winner_code": "PP",
    "last_winner_color": "#1D84CE",
-   "poll_count": 18,
-   "latest_poll": "2026-10-08"
+   "poll_count": 20,
+   "latest_poll": "2026-10-09"
   },
   "greece": {
    "name": "Greece",
@@ -255,10 +255,10 @@
    "leader_color": "#03386A",
    "leader_logo": "img/it/FDI.svg",
    "second": "pd",
-   "second_pct": 20.7,
+   "second_pct": 20.6,
    "last_winner_code": "FdI",
    "last_winner_color": "#03386A",
-   "poll_count": 29,
+   "poll_count": 30,
    "latest_poll": "2026-10-08"
   },
   "bc": {

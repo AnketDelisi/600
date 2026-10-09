@@ -1,6 +1,6 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-09T07:45:34Z",
+  "generated": "2026-10-09T12:33:03Z",
   "environment": {
     "election": "2026-11-03",
     "days_to_election": 25,
@@ -1326,6 +1326,12 @@
               "rep": 49.0
             },
             {
+              "pollster": "James Madison Institute",
+              "dates": "September 28 – October 4, 2026",
+              "dem": 42.0,
+              "rep": 52.0
+            },
+            {
               "pollster": "Mason-Dixon",
               "dates": "September 28 – October 1, 2026",
               "dem": 40.0,
@@ -2433,6 +2439,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "The Washington Post / SSPG",
+              "dates": "September 30 – October 5, 2026",
+              "dem": 50.0,
+              "rep": 46.0
+            },
+            {
               "pollster": "Marist University",
               "dates": "October 1–4, 2026",
               "dem": 51.0,
@@ -2660,6 +2672,12 @@
           "rep": 45.4,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "Emerson College",
+              "dates": "October 5–6, 2026",
+              "dem": 45.0,
+              "rep": 47.0
+            },
             {
               "pollster": "SSRS",
               "dates": "September 29 – October 5, 2026",
@@ -10791,73 +10809,6 @@
       },
       {
         "state": "New York",
-        "district": "21",
-        "incumbent": "Elise Stefanik",
-        "party": "R",
-        "rating": "Likely R",
-        "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
-        },
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.1,
-        "dem_pct": 18.9,
-        "rep_pct": 81.1,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 42.8,
-          "rep": 45.8,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 5,
-          "n_sponsored": 3,
-          "polls": [
-            {
-              "pollster": "Public Policy Polling",
-              "dates": "September 9–10, 2026",
-              "partisan": "D",
-              "dem": 43.0,
-              "rep": 48.0
-            },
-            {
-              "pollster": "Impact Research",
-              "dates": "August 30 – September 2, 2026",
-              "partisan": "D",
-              "dem": 44.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "J.L. Partners",
-              "dates": "August 15–17, 2026",
-              "dem": 40.0,
-              "rep": 50.0
-            },
-            {
-              "pollster": "SurveyUSA",
-              "dates": "August 4–8, 2026",
-              "dem": 43.0,
-              "rep": 39.0
-            },
-            {
-              "pollster": "Impact Research",
-              "dates": "May 26–31, 2026",
-              "partisan": "D",
-              "dem": 44.0,
-              "rep": 45.0
-            }
-          ],
-          "names": {
-            "d": "Blake Gendebien",
-            "r": "Anthony Constantino"
-          }
-        }
-      },
-      {
-        "state": "New York",
         "district": "24",
         "incumbent": "Claudia Tenney",
         "party": "R",
@@ -11354,6 +11305,79 @@
           "names": {
             "d": "Jonathan Nez",
             "r": "Eli Crane"
+          }
+        }
+      },
+      {
+        "state": "New York",
+        "district": "21",
+        "incumbent": "Elise Stefanik",
+        "party": "R",
+        "rating": "Likely R",
+        "ratings": {
+          "cook": "Likely R",
+          "ie": "Likely R",
+          "sabato": "Likely R"
+        },
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 4.4,
+        "dem_pct": 21.9,
+        "rep_pct": 78.1,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 43.2,
+          "rep": 45.2,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "n_sponsored": 2,
+          "polls": [
+            {
+              "pollster": "Siena University",
+              "dates": "September 30 – October 6, 2026",
+              "dem": 46.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "September 9–10, 2026",
+              "partisan": "D",
+              "dem": 43.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "August 30 – September 2, 2026",
+              "partisan": "D",
+              "dem": 44.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "J.L. Partners",
+              "dates": "August 15–17, 2026",
+              "dem": 40.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "SurveyUSA",
+              "dates": "August 4–8, 2026",
+              "dem": 43.0,
+              "rep": 39.0
+            },
+            {
+              "pollster": "Impact Research",
+              "dates": "May 26–31, 2026",
+              "partisan": "D",
+              "dem": 44.0,
+              "rep": 45.0
+            }
+          ],
+          "names": {
+            "d": "Blake Gendebien",
+            "r": "Anthony Constantino"
           }
         }
       },
@@ -13201,7 +13225,7 @@
     "expected_i_seats": 0.0,
     "majority": {
       "dem_pct": 91.5,
-      "rep_pct": 8.6
+      "rep_pct": 8.5
     },
     "distribution_buckets": [
       {
@@ -13278,7 +13302,7 @@
       },
       {
         "seats": 233,
-        "pct": 5.0
+        "pct": 4.9
       },
       {
         "seats": 235,
@@ -13298,11 +13322,11 @@
       },
       {
         "seats": 243,
-        "pct": 4.7
+        "pct": 4.6
       },
       {
         "seats": 245,
-        "pct": 4.1
+        "pct": 4.2
       },
       {
         "seats": 247,
@@ -13310,11 +13334,11 @@
       },
       {
         "seats": 249,
-        "pct": 4.1
+        "pct": 4.0
       },
       {
         "seats": 251,
-        "pct": 3.4
+        "pct": 3.5
       },
       {
         "seats": 253,
@@ -13334,7 +13358,7 @@
       },
       {
         "seats": 261,
-        "pct": 1.9
+        "pct": 2.0
       },
       {
         "seats": 263,
@@ -13350,7 +13374,7 @@
       },
       {
         "seats": 269,
-        "pct": 1.0
+        "pct": 1.1
       },
       {
         "seats": 271,
@@ -13398,6 +13422,10 @@
       },
       {
         "seats": 293,
+        "pct": 0.1
+      },
+      {
+        "seats": 297,
         "pct": 0.1
       }
     ]
@@ -14460,6 +14488,13 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "The Washington Post / SSPG",
+              "dates": "September 30 – October 5, 2026",
+              "dem": 49.0,
+              "rep": 36.0,
+              "ind": 11.0
+            },
+            {
               "pollster": "Marist University",
               "dates": "October 1–4, 2026",
               "dem": 52.0,
@@ -14709,6 +14744,12 @@
           "rep": 42.4,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "Emerson College",
+              "dates": "October 5–6, 2026",
+              "dem": 49.0,
+              "rep": 45.0
+            },
             {
               "pollster": "SSRS",
               "dates": "September 29 – October 5, 2026",
@@ -15822,6 +15863,12 @@
               "dates": "September 28 – October 5, 2026",
               "dem": 45.0,
               "rep": 47.0
+            },
+            {
+              "pollster": "James Madison Institute",
+              "dates": "September 28 – October 4, 2026",
+              "dem": 42.0,
+              "rep": 52.0
             },
             {
               "pollster": "Mason-Dixon",

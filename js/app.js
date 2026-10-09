@@ -2810,8 +2810,8 @@ async function renderPoster(opts){
   canvas.width=W*S; canvas.height=H*S;
   const ctx=canvas.getContext('2d');
   ctx.scale(S,S);
-  const FONT='"Archivo Narrow",Archivo,Arial,sans-serif';
-  const MONO='"Source Code Pro","Archivo Narrow",monospace';
+  const FONT='"Source Code Pro","Archivo Narrow",monospace';
+  const MONO=FONT;
   // make sure the mono weights are actually loaded before drawing text
   if(document.fonts&&document.fonts.load){
     await Promise.all(['400','500','600','700','800','900'].map(w=>
@@ -2848,9 +2848,12 @@ async function renderPoster(opts){
     ctx.fillRect(X,yy,th,th);
     if(lg){
       ctx.save();
+      ctx.beginPath();
+      ctx.rect(X,yy,th,th);
+      ctx.clip();
       try{ctx.filter='brightness(0) invert(1)'}catch(e){}
-      const pad=th*0.15, iw=th-pad*2;
-      const sc=Math.min(iw/lg.width, iw/lg.height);
+      // the logos are already square-adjusted: fill the tile, never shrink
+      const sc=Math.max(th/lg.width, th/lg.height);
       ctx.drawImage(lg,X+(th-lg.width*sc)/2,yy+(th-lg.height*sc)/2,
         lg.width*sc,lg.height*sc);
       ctx.restore();
@@ -2904,10 +2907,21 @@ async function renderPoster(opts){
     }
     y+=RH;
   });
-  // compact grid (2 columns) for the parties below the big rows
+  // compact grid (2 columns) for the parties below the big rows: the pair's
+  // total width matches the big box above, the row height adapts so any
+  // number of parties fits
   if(grid.length){
     y+=6;
-    const gh=30, gw=Math.floor(totalW/2)-3;
+    const boxW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
+    const rowsN=Math.ceil(grid.length/2);
+    const tilesH=(opts.tiles&&opts.tiles.length)
+      ?(opts.tiles.length===1?156:116):0;
+    const avail=H-30-y-tilesH-10;
+    const gh=Math.max(18,Math.min(30,Math.floor(avail/rowsN)-4));
+    const gw=Math.floor(boxW/2)-3;
+    const nameS=Math.max(10,Math.round(gh*0.5));
+    const shareS=Math.max(9,Math.round(gh*0.47));
+    const seatS=Math.max(8,Math.round(gh*0.37));
     grid.forEach((r,i)=>{
       const gx=X+(i%2)*(gw+6), gy=y+Math.floor(i/2)*(gh+4);
       const th2=gh, lg=logos[rows.length+i];
@@ -2915,9 +2929,11 @@ async function renderPoster(opts){
       ctx.fillRect(gx,gy,th2,th2);
       if(lg){
         ctx.save();
+        ctx.beginPath();
+        ctx.rect(gx,gy,th2,th2);
+        ctx.clip();
         try{ctx.filter='brightness(0) invert(1)'}catch(e){}
-        const iw=th2-6;
-        const sc=Math.min(iw/lg.width, iw/lg.height);
+        const sc=Math.max(th2/lg.width, th2/lg.height);
         ctx.drawImage(lg,gx+(th2-lg.width*sc)/2,gy+(th2-lg.height*sc)/2,
           lg.width*sc,lg.height*sc);
         ctx.restore();
@@ -2927,18 +2943,18 @@ async function renderPoster(opts){
       ctx.fillRect(bx,gy,bw,th2);
       const tc=posterTextColor(r.color);
       ctx.fillStyle=tc;
-      ctx.font='700 15px '+FONT;
-      ctx.fillText(String(r.name||'').toUpperCase(),bx+8,gy+21);
+      ctx.font='700 '+nameS+'px '+FONT;
+      ctx.fillText(String(r.name||'').toUpperCase(),bx+8,gy+Math.round(gh*0.7));
       ctx.textAlign='right';
-      ctx.font='700 14px '+MONO;
-      ctx.fillText(r.shareText||'',bx+bw-8,gy+13);
+      ctx.font='700 '+shareS+'px '+MONO;
+      ctx.fillText(r.shareText||'',bx+bw-8,gy+Math.round(gh*0.44));
       if(r.seatsText){
-        ctx.font='700 11px '+MONO;
-        ctx.fillText(r.seatsText,bx+bw-8,gy+27);
+        ctx.font='700 '+seatS+'px '+MONO;
+        ctx.fillText(r.seatsText,bx+bw-8,gy+Math.round(gh*0.9));
       }
       ctx.textAlign='left';
     });
-    y+=Math.ceil(grid.length/2)*(gh+4)+10;
+    y+=rowsN*(gh+4)+10;
   }
   // probability tiles: one big (government/coalition majority) or two medium
   // (runoff win probabilities)
@@ -4864,12 +4880,21 @@ function renderForecast(pane){
           color:(PARTY_META[p]||{}).color||'#888'}));
       }else{
         const order=fOrder.slice().sort((a,b)=>(sim.means[b]||0)-(sim.means[a]||0));
-        const eligible=order.filter(p=>(sim.means[p]||0)>0.3||(sim.medians[p]||0)>0);
+        // every modelled party that polls above zero (a 0.01 floor only skips
+        // float noise), matching the reference posters' 0.0% rows
+        const eligible=order.filter(p=>(mean(sim.votesBy[p])||0)>0.01
+          ||(sim.means[p]||0)>0.01);
         const coal=(COUNTRIES[COUNTRY]||{}).coalitions||null;
         let topCoal=null;
         if(coal&&!MAP_ONLY){
           const MAJp=Math.floor(expectedSeats/2)+1;
-          topCoal=coal.map(c=>{
+          const blocOfP={};
+          ['bloc1','bloc2'].forEach(bk=>{
+            ((BLOCS[bk]||{}).parties||[]).forEach(p=>{blocOfP[p]=bk});
+          });
+          const cross=c=>c.parties.some(p=>blocOfP[p]==='bloc1')
+            &&c.parties.some(p=>blocOfP[p]==='bloc2');
+          const scored=coal.map(c=>{
             const parts=c.parties.filter(p=>sim.seatsBy[p]);
             let win=0;
             for(let i=0;i<nS;i++){
@@ -4877,8 +4902,11 @@ function renderForecast(pane){
               for(const p of parts) s+=sim.seatsBy[p][i]||0;
               if(s>=MAJp) win++;
             }
-            return {c:c,p:win/nS};
-          }).sort((a,b)=>b.p-a.p)[0];
+            return {c:c,p:win/nS,cross:cross(c)};
+          }).sort((a,b)=>b.p-a.p);
+          // a cross-bloc grand coalition always clears the bar and tells the
+          // reader nothing - prefer the strongest realistic alternative
+          topCoal=scored.find(x=>!x.cross)||scored[0];
         }
         // per-row first-place tiles only where no majority/coalition card
         // applies (Quebec-style: hideBlocs pages)

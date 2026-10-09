@@ -190,15 +190,25 @@ document.addEventListener('keydown',e=>{
 
 /* ---------- load constituency data ---------- */
 let CONSTITUENCIES=null;
+let CONSTITUENCIES_SENATE=null;
 
 async function loadConstituencies(){
   CONSTITUENCIES=null;
+  CONSTITUENCIES_SENATE=null;
   if(!HAS_CONSTITUENCIES) return;
   try{
     const base=dataBase();
     const resp=await fetch(base+'data/'+COUNTRY+'/constituencies.json');
     if(!resp.ok) throw new Error('HTTP '+resp.status);
     CONSTITUENCIES=await resp.json();
+    if((COUNTRIES[COUNTRY]||{}).senate){
+      try{
+        const r2=await fetch(base+'data/'+COUNTRY+'/senate_constituencies.json');
+        if(r2.ok) CONSTITUENCIES_SENATE=await r2.json();
+      }catch(e){
+        console.error('Failed to load senate constituencies:',e);
+      }
+    }
   }catch(e){
     console.error('Failed to load constituencies:',e);
     CONSTITUENCIES=[];
@@ -1689,19 +1699,77 @@ function allocateUpper(avg){
       const n=sbd[nr]||4;
       const sh=districtShares(nr,avg,false,mc);
       if(!sh) continue;
-      const order=PARTY_ORDER.map(p=>[p,sh[p]?sh[p].now:0])
-        .sort((a,b)=>b[1]-a[1]);
-      const p1=order[0][0], v1=order[0][1];
-      const p2=order[1]?order[1][0]:null, v2=order[1]?order[1][1]:0;
-      if(n<=2){ out[p1]++; if(p2) out[p2]++; continue; }
-      const close=(v1-v2)<2.0;
-      const first=close?Math.floor(n/2):n-1;
-      out[p1]+=first;
-      if(p2) out[p2]+=n-first;
+      const parts=PARTY_ORDER.map(p=>[p,sh[p]?sh[p].now:0]).filter(x=>x[1]>0);
+      if(!parts.length) continue;
+      // Block voting is strongly disproportional: a slate sweeps all n seats
+      // when its share is large, splits 2-2 when the top two are close, and
+      // islands split 3-1-1. Super-proportional allocation (exponent ~2,
+      // largest remainder) reproduces all three patterns - verified against
+      // the 2023 Senate results shape.
+      const ex=parts.map(x=>[x[0],Math.pow(x[1]/100,2)]);
+      const tot=ex.reduce((a,x)=>a+x[1],0)||1;
+      const q=ex.map(x=>({p:x[0],exact:n*x[1]/tot}));
+      q.forEach(x=>{x.seat=Math.floor(x.exact)});
+      let g=q.reduce((a,x)=>a+x.seat,0);
+      q.sort((a,b)=>(b.exact-Math.floor(b.exact))
+        -(a.exact-Math.floor(a.exact)));
+      for(let i=0;g<n;i++,g++) q[i%q.length].seat++;
+      q.forEach(x=>{out[x.p]+=x.seat});
     }
     return out;
   }
   if(up.fptp){
+    // the Senate's own 74 single-member districts (config `senate`, built by
+    // scraper/build_italy_senate.py) - real 2022 college baselines, swung by
+    // the national average; the 126 PR seats are then allocated nationally
+    // (the real lists are regional, which is the remaining approximation)
+    const sc=c.senate;
+    if(sc&&sc.districts){
+      const sconf=Object.assign({},sc,{useConstituencies:true});
+      const blocOf={};
+      for(const bk of ['bloc1','bloc2']){
+        const b=BLOCS[bk]; if(!b) continue;
+        (b.parties||[]).forEach(p=>{blocOf[p]=bk});
+      }
+      const wonBy={};
+      for(const id of Object.keys(sc.districts)){
+        const shares=districtShares(id,avg,false,sconf);
+        if(!shares) continue;
+        const ent={};
+        for(const p of PARTY_ORDER){
+          const k=blocOf[p]||p;
+          ent[k]=(ent[k]||0)+(shares[p]?shares[p].now:0);
+        }
+        let best=null,bestV=-1;
+        for(const k of Object.keys(ent)){if(ent[k]>bestV){bestV=ent[k];best=k}}
+        if(!best||ent[best]<=0) continue;
+        (wonBy[best]=wonBy[best]||[]).push(shares);
+      }
+      for(const key of Object.keys(wonBy)){
+        const won=wonBy[key];
+        if(!BLOCS[key]){ out[key]+=won.length; continue; }
+        const agg={}; let tot=0;
+        for(const sh of won){
+          for(const p of BLOCS[key].parties){
+            const v=sh[p]?sh[p].now:0;
+            agg[p]=(agg[p]||0)+v; tot+=v;
+          }
+        }
+        if(tot<=0){ out[key]+=won.length; continue; }
+        const q=BLOCS[key].parties.map(p=>({p:p,
+          exact:won.length*(agg[p]||0)/tot}));
+        q.forEach(x=>{x.seat=Math.floor(x.exact)});
+        let g2=q.reduce((a,x)=>a+x.seat,0);
+        q.sort((a,b)=>(b.exact-Math.floor(b.exact))
+          -(a.exact-Math.floor(a.exact)));
+        for(let i=0;g2<won.length;i++,g2++) q[i%q.length].seat++;
+        q.forEach(x=>{out[x.p]+=x.seat});
+      }
+      const fptpTotal=PARTY_ORDER.reduce((a,p)=>a+out[p],0);
+      const pr=allocateSeatsN(avg,Math.max(0,up.seats-fptpTotal));
+      for(const p of PARTY_ORDER) out[p]+=(pr[p]||0);
+      return out;
+    }
     const conf=c.map, m2=c.map2;
     if(!conf||!m2||!m2.districts) return null;
     const blocOf={};
@@ -1793,7 +1861,7 @@ function renderParliament(avg){
       ${UP?`<button class="map-toggle-btn parl-btn${PARL_MODE==='upper'?' active':''}" data-parlmode="upper">${UP.label||t('Upper chamber','\u00dcst meclis')}</button>`:''}
       ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
-      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
+      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
@@ -1804,9 +1872,11 @@ function renderParliament(avg){
   const cap=showMap
     ?(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):t('projected winner','tahmini kazanan')}`
-      :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
+      :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
+        ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
+        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','\u00f6nde giden blok'):t('district winner','b\u00f6lge kazanan\u0131')}`))
     :(PARL_MODE==='upper'
-      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
+      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)'):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
@@ -1824,9 +1894,10 @@ function MAP_CONF(){
   return c.map;
 }
 
-function constituencyById(id){
-  if(!CONSTITUENCIES||!CONSTITUENCIES.constituencies) return null;
-  return CONSTITUENCIES.constituencies.find(c=>c.id===String(id))||null;
+function constituencyById(id, conf){
+  const store=(conf&&conf.senateStore)?CONSTITUENCIES_SENATE:CONSTITUENCIES;
+  if(!store||!store.constituencies) return null;
+  return store.constituencies.find(c=>c.id===String(id))||null;
 }
 
 // Actual direct-mandate winner of the previous election for a Wahlkreis /
@@ -1839,7 +1910,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   const conf=confOverride||MAP_CONF();
   let base;
   if(conf.useConstituencies){
-    const c=constituencyById(nr);
+    const c=constituencyById(nr, conf);
     if(!c) return null;
     base=c.results_2022||{};
   }else if(conf.wkResults&&conf.wkResults[String(nr)]){
@@ -2136,6 +2207,13 @@ async function renderMap(avg){
     const ra=runoffMapAvg(avg, FILTERED_POLLS.length?FILTERED_POLLS:POLLS, null);
     const rc=runoffConf();
     if(ra&&rc) return renderMapInto(box, ra, false, rc);
+  }
+  // the upper chamber's own map layer (Italy's 74 Senate districts) when the
+  // Senate mode is active
+  const sen=(COUNTRIES[COUNTRY]||{}).senate;
+  if(PARL_MODE==='upper'&&sen){
+    return renderMapInto(box, avg, false,
+      Object.assign({},sen,{useConstituencies:true}));
   }
   await renderMapInto(box, avg, PARL_MODE!=='proj');
 }
@@ -5293,7 +5371,7 @@ function renderMethodology(pane){
         <p>${(MAP_CONF()&&MAP_CONF().fptpSeats)?`The projection runs in two parts: the <strong>${Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} single-member colleges</strong> are projected one by one (each college's 2022 result swung to the current poll average) and go to the coalition leading there - a coalition's colleges are then split among its parties by their contribution in the colleges it won - and the remaining <strong>${SEATS_TOTAL-Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} seats</strong> come from a national proportional pool allocated by D'Hondt among parties above the threshold. The map colors each region by its leading party.`:`The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.`}</p>`}
 
         ${HIDE_BLOCS?'':`        ${(COUNTRIES[COUNTRY]||{}).upper?`<h3>${t('Upper Chamber','\u00dcst Meclis')} — ${COUNTRIES[COUNTRY].upper.label||''}</h3>
-        <p>The upper chamber projection is an <strong>approximate model</strong>, shown as a separate toggle on the seat projection card.${COUNTRIES[COUNTRY].upper.block?` Spain's Senate uses block voting: each province elects 4 senators (5 for the Balearics and Las Palmas, 6 for Tenerife, 2 for Ceuta and Melilla); the projected province winner takes n-1 and the runner-up 1, flipping to an even split when the top two are within 2 percentage points.`:` Italy's Senate stands on the same ballot: 74 single-member seats scaled from the lower chamber's per-collegio bloc win-rate, plus 126 seats allocated proportionally from the same average under the national ${THRESHOLD}% threshold.`} The real upper chamber's boundaries and regional lists differ, so treat it as an informed estimate rather than a precise projection.</p>`:''}
+        <p>The upper chamber projection is an <strong>approximate model</strong>, shown as a separate toggle on the seat projection card.${COUNTRIES[COUNTRY].upper.block?` Spain's Senate uses block voting: each province elects 4 senators (5 for the Balearics and Las Palmas, 6 for Tenerife, 2 for Ceuta and Melilla); seats are allocated super-proportionally from the projected province shares (exponent ~2, largest remainder), which reproduces the observed patterns - 3-1 in a clear race, 2-2 when the top two are close, 4-0 in a landslide, 3-1-1 on the islands.`:` Italy's Senate has its own 74 single-member districts (real 2022 college baselines, swung like the Chamber) plus 126 proportional seats allocated nationally under the ${THRESHOLD}% threshold - the real lists are regional, which is the remaining approximation.`} Treat it as an informed estimate rather than a precise projection.</p>`:''}
 
         <h3>${t('Bloc Totals','Blok Toplamları')}</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>`}

@@ -2760,6 +2760,197 @@ async function renderForecastInfographic(avg, sim, opts){
   return canvas;
 }
 
+// ---------- poster: dark landscape shareable projection ----------
+// 1600x900 dark card in the "Seçim Projeksiyonu" style: party rows with logo
+// tiles + shares + seats, first-place / coalition / runoff probability tiles,
+// the parliament arc and the coloured district map - both rasterized from
+// the SVGs already on screen, so the poster matches the page.
+function posterTextColor(hex){
+  const h=(hex||'#888888').replace('#','');
+  const r=parseInt(h.slice(0,2),16)||0, g=parseInt(h.slice(2,4),16)||0,
+        b=parseInt(h.slice(4,6),16)||0;
+  // white on everything saturated; dark only on genuinely pale fills
+  // (the reference keeps white on salmon/orange bars)
+  return (0.299*r+0.587*g+0.114*b)>185?'#111111':'#FFFFFF';
+}
+function loadImg(src){
+  return new Promise(res=>{
+    if(!src){res(null);return}
+    const i=new Image();
+    i.onload=()=>res(i); i.onerror=()=>res(null);
+    i.src=src;
+  });
+}
+function svgElementToImg(svg){
+  return new Promise(res=>{
+    if(!svg){res(null);return}
+    const clone=svg.cloneNode(true);
+    const vb=svg.viewBox&&svg.viewBox.baseVal;
+    if(vb&&vb.width){
+      if(!clone.getAttribute('width')) clone.setAttribute('width',vb.width);
+      if(!clone.getAttribute('height')) clone.setAttribute('height',vb.height);
+    }
+    const xml=new XMLSerializer().serializeToString(clone);
+    const i=new Image();
+    i.onload=()=>res(i); i.onerror=()=>res(null);
+    i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
+  });
+}
+async function renderPoster(opts){
+  const W=1600,H=900,S=2;
+  const canvas=document.createElement('canvas');
+  canvas.width=W*S; canvas.height=H*S;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(S,S);
+  const FONT='"Archivo Narrow",Archivo,Arial,sans-serif';
+  ctx.fillStyle='#111111';
+  ctx.fillRect(0,0,W,H);
+
+  // title (top right)
+  ctx.fillStyle='#FFFFFF';
+  ctx.textAlign='right';
+  ctx.textBaseline='alphabetic';
+  ctx.font='700 52px '+FONT;
+  ctx.fillText(String(opts.title||'').toUpperCase(),W-40,84);
+  ctx.font='italic 700 25px '+FONT;
+  ctx.fillStyle='#DDDDDD';
+  ctx.fillText(opts.subtitle||'',W-40,124);
+
+  const rows=opts.rows||[];
+  const grid=opts.grid||[];
+  const logos=await Promise.all(rows.concat(grid).map(r=>loadImg(r.logo)));
+  const arcImg=await svgElementToImg(opts.arcSvg);
+  const mapImg=await svgElementToImg(opts.mapSvg);
+
+  const X=40, TH=86, barW=420, RH=96, totalW=TH+6+barW+8+92;
+  const drawTile=(r,lg,yy,th)=>{
+    ctx.fillStyle=r.color;
+    ctx.fillRect(X,yy,th,th);
+    if(lg){
+      ctx.save();
+      try{ctx.filter='brightness(0) invert(1)'}catch(e){}
+      const pad=th*0.15, iw=th-pad*2;
+      const sc=Math.min(iw/lg.width, iw/lg.height);
+      ctx.drawImage(lg,X+(th-lg.width*sc)/2,yy+(th-lg.height*sc)/2,
+        lg.width*sc,lg.height*sc);
+      ctx.restore();
+    }else{
+      ctx.fillStyle=posterTextColor(r.color);
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.font='700 '+Math.round(th*0.32)+'px '+FONT;
+      ctx.fillText(r.code||'',X+th/2,yy+th/2);
+      ctx.textAlign='left'; ctx.textBaseline='alphabetic';
+    }
+  };
+  let y=40;
+  rows.forEach((r,i)=>{
+    const th=TH;
+    drawTile(r,logos[i],y,th);
+    const bx=X+th+6;
+    ctx.fillStyle=r.color;
+    ctx.fillRect(bx,y,barW,th);
+    const tc=posterTextColor(r.color);
+    ctx.fillStyle=tc;
+    ctx.font='700 40px '+FONT;
+    ctx.fillText(String(r.name||'').toUpperCase(),bx+14,y+52);
+    ctx.textAlign='right';
+    ctx.font='700 36px '+FONT;
+    ctx.fillText(r.shareText||'',bx+barW-14,y+48);
+    if(r.seatsText){
+      ctx.font='700 22px '+FONT;
+      ctx.fillText(r.seatsText,bx+barW-14,y+76);
+    }
+    ctx.textAlign='left';
+    if(r.firstText){
+      const fx=bx+barW+8, fw=92;
+      ctx.fillStyle=r.color;
+      ctx.fillRect(fx,y,fw,th);
+      ctx.fillStyle=tc;
+      ctx.textAlign='center';
+      ctx.font='700 9px '+FONT;
+      ctx.fillText(t('CHANCE OF FIRST','B\u0130R\u0130NC\u0130 OLMA'),fx+fw/2,y+28);
+      ctx.font='900 26px '+FONT;
+      ctx.fillText(r.firstText,fx+fw/2,y+64);
+      ctx.textAlign='left';
+    }
+    y+=RH;
+  });
+  // compact grid (2 columns) for the parties below the big rows
+  if(grid.length){
+    y+=6;
+    const gh=30, gw=Math.floor(totalW/2)-3;
+    grid.forEach((r,i)=>{
+      const gx=X+(i%2)*(gw+6), gy=y+Math.floor(i/2)*(gh+4);
+      const th2=gh, lg=logos[rows.length+i];
+      ctx.fillStyle=r.color;
+      ctx.fillRect(gx,gy,th2,th2);
+      if(lg){
+        ctx.save();
+        try{ctx.filter='brightness(0) invert(1)'}catch(e){}
+        const iw=th2-6;
+        const sc=Math.min(iw/lg.width, iw/lg.height);
+        ctx.drawImage(lg,gx+(th2-lg.width*sc)/2,gy+(th2-lg.height*sc)/2,
+          lg.width*sc,lg.height*sc);
+        ctx.restore();
+      }
+      const bx=gx+th2+4, bw=gw-th2-4;
+      ctx.fillStyle=r.color;
+      ctx.fillRect(bx,gy,bw,th2);
+      const tc=posterTextColor(r.color);
+      ctx.fillStyle=tc;
+      ctx.font='700 15px '+FONT;
+      ctx.fillText(String(r.name||'').toUpperCase(),bx+8,gy+21);
+      ctx.textAlign='right';
+      ctx.font='700 14px '+FONT;
+      ctx.fillText(r.shareText||'',bx+bw-8,gy+13);
+      if(r.seatsText){
+        ctx.font='700 11px '+FONT;
+        ctx.fillText(r.seatsText,bx+bw-8,gy+27);
+      }
+      ctx.textAlign='left';
+    });
+    y+=Math.ceil(grid.length/2)*(gh+4)+10;
+  }
+  // probability tiles: one big (government/coalition majority) or two medium
+  // (runoff win probabilities)
+  if(opts.tiles&&opts.tiles.length){
+    const single=opts.tiles.length===1;
+    const tw=single?470:300, th3=single?150:110;
+    let tx=X;
+    opts.tiles.slice(0,2).forEach(tl=>{
+      ctx.fillStyle=tl.color;
+      ctx.fillRect(tx,y+6,tw,th3);
+      const tc=posterTextColor(tl.color);
+      ctx.fillStyle=tc;
+      ctx.font='700 '+(single?20:14)+'px '+FONT;
+      ctx.fillText(String(tl.label||'').toUpperCase(),tx+14,y+(single?48:40));
+      ctx.font='900 '+(single?78:44)+'px '+FONT;
+      ctx.fillText(tl.value,tx+14,y+(single?132:92));
+      tx+=tw+12;
+    });
+  }
+  // parliament arc: bottom right when the compact grid claims the bottom
+  // left, else bottom left
+  const arcRight=grid.length>0;
+  if(arcImg){
+    const ax=arcRight?920:X, ay=H-30-(arcRight?240:270),
+          aw=arcRight?600:580, ah=arcRight?240:270;
+    const sc=Math.min(aw/arcImg.width, ah/arcImg.height);
+    const dw=arcImg.width*sc, dh=arcImg.height*sc;
+    ctx.drawImage(arcImg,ax+(aw-dw)/2,ay+(ah-dh)/2,dw,dh);
+  }
+  // coloured district map (right)
+  if(mapImg){
+    const mx=690, my=150, mw=W-mx-40;
+    const mh=arcRight?(H-150-300):(H-my-40);
+    const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
+    const dw=mapImg.width*sc, dh=mapImg.height*sc;
+    ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);
+  }
+
+  downloadPng(canvas.toDataURL('image/png'), opts.file||(COUNTRY+'-poster.png'));
+}
+
 function captureBoxMap(boxId, filename){
   const box=$(boxId);
   if(!box) return;
@@ -4513,6 +4704,7 @@ function renderForecast(pane){
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
       <button class="shot-btn" id="fc-forecast-shot-btn" title="${t('Download forecast image as PNG','Tahmin görselini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
+      <button class="shot-btn" id="fc-poster-btn" title="${t('Download the dark projection poster as PNG','Koyu projeksiyon posterini PNG olarak indir')}" style="width:auto;padding:0 10px;align-self:center;font-size:10px;font-weight:900;letter-spacing:0.6px">POSTER</button>
       <div class="fc-headline">
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
@@ -4611,6 +4803,103 @@ function renderForecast(pane){
         detSeats:RO_ONLY?{}:detSeats
       });
       downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-forecast.png');
+    });
+  }
+  const fcPoster=$('fc-poster-btn');
+  if(fcPoster){
+    fcPoster.addEventListener('click',()=>{
+      const nS=sim.nSims;
+      const rows=[];
+      const grid=[];
+      let tiles=null;
+      if(MAP_ONLY&&roCache){
+        // two-candidate runoff: rows = the pair by win probability, two tiles
+        const items=[[roCache.a,roCache.aN,roCache.winA/3000],
+                     [roCache.b,roCache.bN,1-roCache.winA/3000]]
+          .sort((x,y)=>y[2]-x[2]);
+        items.forEach(([p,sh,wp])=>{
+          rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
+            shareText:'%'+fmt(sh,1),seatsText:'',
+            color:(PARTY_META[p]||{}).color||'#888',logo:PARTY_LOGOS[p]||null});
+        });
+        tiles=items.map(([p,sh,wp])=>({
+          label:((PARTY_META[p]||{}).short||partyCode(p))+' '+
+            t('win probability','kazanma ihtimali'),
+          value:'%'+fmt(100*wp,1),
+          color:(PARTY_META[p]||{}).color||'#888'}));
+      }else{
+        const order=fOrder.slice().sort((a,b)=>(sim.means[b]||0)-(sim.means[a]||0));
+        const eligible=order.filter(p=>(sim.means[p]||0)>0.3||(sim.medians[p]||0)>0);
+        const coal=(COUNTRIES[COUNTRY]||{}).coalitions||null;
+        let topCoal=null;
+        if(coal&&!MAP_ONLY){
+          const MAJp=Math.floor(expectedSeats/2)+1;
+          topCoal=coal.map(c=>{
+            const parts=c.parties.filter(p=>sim.seatsBy[p]);
+            let win=0;
+            for(let i=0;i<nS;i++){
+              let s=0;
+              for(const p of parts) s+=sim.seatsBy[p][i]||0;
+              if(s>=MAJp) win++;
+            }
+            return {c:c,p:win/nS};
+          }).sort((a,b)=>b.p-a.p)[0];
+        }
+        // per-row first-place tiles only where no majority/coalition card
+        // applies (Quebec-style: hideBlocs pages)
+        const showFirst=!topCoal&&!MAP_ONLY&&HIDE_BLOCS;
+        // big rows: parties at >= 8 mean seats, at least 5 and at most 7;
+        // the rest go to the compact grid
+        let bigN=eligible.filter(p=>(sim.means[p]||0)>=8).length;
+        bigN=Math.max(5,Math.min(7,bigN,eligible.length));
+        eligible.slice(0,bigN).forEach(p=>{
+          rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
+            shareText:'%'+fmt(mean(sim.votesBy[p]),1),
+            seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
+            color:(PARTY_META[p]||{}).color||'#888',
+            logo:PARTY_LOGOS[p]||null,
+            firstText:showFirst?'%'+fmt(100*(sim.largest[p]||0)/nS,1):''});
+        });
+        eligible.slice(bigN,bigN+12).forEach(p=>{
+          grid.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
+            shareText:'%'+fmt(mean(sim.votesBy[p]),1),
+            seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
+            color:(PARTY_META[p]||{}).color||'#888',
+            logo:PARTY_LOGOS[p]||null});
+        });
+        if(topCoal){
+          tiles=[{label:topCoal.c.name+' '+t('majority probability','çoğunluk ihtimali'),
+            value:'%'+fmt(100*topCoal.p,1),
+            color:(PARTY_META[topCoal.c.parties[0]]||{}).color||'#888'}];
+        }else if(!MAP_ONLY&&!HIDE_BLOCS){
+          tiles=[{label:t('Government majority probability','Hükümetin çoğunluğu tutma ihtimali'),
+            value:'%'+fmt(100*rgP,1),
+            color:(BLOCS.bloc1||{}).color||'#888'}];
+        }else if(MAP_ONLY){
+          // presidential multi-candidate: first-round win + runoff win
+          const lead=order[0];
+          const reach=(sim.top2[lead]||0)/nS;
+          const w1=(sim.win50[lead]||0)/nS;
+          const h2=roCache?roCache.winA/3000:0;
+          const elected=w1+Math.max(0,reach-w1)*h2;
+          const lc=(PARTY_META[lead]||{}).color||'#888';
+          tiles=[{label:partyCode(lead)+' '+t('wins the first round','ilk turu birinci bitirme'),
+                  value:'%'+fmt(100*w1,1),color:lc},
+                 {label:partyCode(lead)+' '+t('wins the runoff','ikinci turda kazanma'),
+                  value:'%'+fmt(100*elected,1),color:lc}];
+        }
+      }
+      const tmp=document.createElement('div');
+      if(!MAP_ONLY) tmp.innerHTML=buildParliamentSVG(detSeats);
+      const mapBox=$('fc-map-box');
+      renderPoster({
+        title:COUNTRY_NAME+' '+t('Election Projection','Seçim Projeksiyonu'),
+        subtitle:t('If the election were held today','Seçim Bugün Olsaydı'),
+        rows:rows, grid:grid, tiles:tiles,
+        arcSvg:MAP_ONLY?null:tmp.querySelector('svg'),
+        mapSvg:mapBox?mapBox.querySelector('svg'):null,
+        file:COUNTRY+'-poster.png'
+      });
     });
   }
   if(MAP_CONF()){

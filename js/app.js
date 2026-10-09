@@ -1665,9 +1665,107 @@ function directMandateSplit(avg){
   return {rows,surplusTotal,directTotal:rows.reduce((a,r)=>a+r.d,0)};
 }
 
+// Upper chambers (the second legislative layer). Two systems exist in the
+// app's coverage; both are documented approximations and the card caption
+// says so:
+//  - Italy Senate: same ballot as the Chamber (Rosatellum). 74 single-member
+//    seats scaled from the Chamber's per-collegio bloc win-rate (the Senate's
+//    own boundaries differ), 126 seats allocated proportionally from the same
+//    average under the national 3% threshold (the real lists are regional).
+//  - Spain Senate: block voting, 4 senators per peninsular province (5 for
+//    the Balearics and Las Palmas, 6 for Tenerife, 2 for Ceuta and Melilla =
+//    208). The projected province winner takes n-1 and the runner-up 1, or an
+//    even split when the top two are within 2pp.
+function allocateUpper(avg){
+  const c=COUNTRIES[COUNTRY]||{};
+  const up=c.upper;
+  if(!up||!avg) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  if(up.block){
+    const mc=MAP_CONF();
+    if(!mc||!mc.districts) return null;
+    const sbd=up.seatsByDistrict||{};
+    for(const nr of Object.keys(mc.districts)){
+      const n=sbd[nr]||4;
+      const sh=districtShares(nr,avg,false,mc);
+      if(!sh) continue;
+      const order=PARTY_ORDER.map(p=>[p,sh[p]?sh[p].now:0])
+        .sort((a,b)=>b[1]-a[1]);
+      const p1=order[0][0], v1=order[0][1];
+      const p2=order[1]?order[1][0]:null, v2=order[1]?order[1][1]:0;
+      if(n<=2){ out[p1]++; if(p2) out[p2]++; continue; }
+      const close=(v1-v2)<2.0;
+      const first=close?Math.floor(n/2):n-1;
+      out[p1]+=first;
+      if(p2) out[p2]+=n-first;
+    }
+    return out;
+  }
+  if(up.fptp){
+    const conf=c.map, m2=c.map2;
+    if(!conf||!m2||!m2.districts) return null;
+    const blocOf={};
+    for(const bk of ['bloc1','bloc2']){
+      const b=BLOCS[bk]; if(!b) continue;
+      (b.parties||[]).forEach(p=>{blocOf[p]=bk});
+    }
+    const cconf=Object.assign({},conf,{useConstituencies:true});
+    const wonBy={};
+    for(const id of Object.keys(m2.districts)){
+      const shares=districtShares(id,avg,false,cconf);
+      if(!shares) continue;
+      const ent={};
+      for(const p of PARTY_ORDER){
+        const k=blocOf[p]||p;
+        ent[k]=(ent[k]||0)+(shares[p]?shares[p].now:0);
+      }
+      let best=null,bestV=-1;
+      for(const k of Object.keys(ent)){if(ent[k]>bestV){bestV=ent[k];best=k}}
+      if(!best||ent[best]<=0) continue;
+      (wonBy[best]=wonBy[best]||[]).push(shares);
+    }
+    const totalWon=Object.keys(wonBy).reduce((a,k)=>a+wonBy[k].length,0)||1;
+    const blocs=Object.keys(wonBy).map(k=>({k:k,
+      exact:up.fptp*wonBy[k].length/totalWon}));
+    blocs.forEach(x=>{x.n=Math.floor(x.exact)});
+    let given=blocs.reduce((a,x)=>a+x.n,0);
+    blocs.sort((a,b)=>(b.exact-Math.floor(b.exact))
+      -(a.exact-Math.floor(a.exact)));
+    for(let i=0;given<up.fptp;i++,given++) blocs[i%blocs.length].n++;
+    for(const bx of blocs){
+      const won=wonBy[bx.k];
+      if(!BLOCS[bx.k]){ out[bx.k]+=bx.n; continue; }
+      const agg={}; let tot=0;
+      for(const sh of won){
+        for(const p of BLOCS[bx.k].parties){
+          const v=sh[p]?sh[p].now:0;
+          agg[p]=(agg[p]||0)+v; tot+=v;
+        }
+      }
+      if(tot<=0){ out[bx.k]+=bx.n; continue; }
+      const q=BLOCS[bx.k].parties.map(p=>({p:p,
+        exact:bx.n*(agg[p]||0)/tot}));
+      q.forEach(x=>{x.seat=Math.floor(x.exact)});
+      let g2=q.reduce((a,x)=>a+x.seat,0);
+      q.sort((a,b)=>(b.exact-Math.floor(b.exact))
+        -(a.exact-Math.floor(a.exact)));
+      for(let i=0;g2<bx.n;i++,g2++) q[i%q.length].seat++;
+      q.forEach(x=>{out[x.p]+=x.seat});
+    }
+    const pr=allocateSeatsN(avg,Math.max(0,up.seats-up.fptp));
+    for(const p of PARTY_ORDER) out[p]+=(pr[p]||0);
+    return out;
+  }
+  return null;
+}
+
 function renderParliament(avg){
   let seats;
-  if(OVERHANG){
+  const UP=(COUNTRIES[COUNTRY]||{}).upper||null;
+  if(PARL_MODE==='upper'&&!UP) PARL_MODE='proj';
+  if(PARL_MODE==='upper'){
+    seats=allocateUpper(avg)||{};
+  }else if(OVERHANG){
     seats=PARL_MODE==='proj'
       ?overhangSeats(avg,SEATS_TOTAL,directFromProjection(avg),OVERHANG.cap)
       :(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0});return s})();
@@ -1682,7 +1780,8 @@ function renderParliament(avg){
   // fill the chamber up to the statutory size with an "Other" wedge.
   if(PARL_MODE!=='proj'&&!OVERHANG){
     const sum=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
-    const other=SEATS_TOTAL-sum;
+    const target=(PARL_MODE==='upper'&&UP)?UP.seats:SEATS_TOTAL;
+    const other=target-sum;
     if(other>0) seats.other=other;
   }
   const seatsTotal=Object.values(seats).reduce((a,b)=>a+(b||0),0);
@@ -1691,6 +1790,7 @@ function renderParliament(avg){
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+      ${UP?`<button class="map-toggle-btn parl-btn${PARL_MODE==='upper'?' active':''}" data-parlmode="upper">${UP.label||t('Upper chamber','\u00dcst meclis')}</button>`:''}
       ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
@@ -1705,7 +1805,9 @@ function renderParliament(avg){
     ?(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):t('projected winner','tahmini kazanan')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','bölge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde giden blok'):t('district winner','bölge kazananı')}`)
-    :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`;
+    :(PARL_MODE==='upper'
+      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
+      :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
     ${box}
@@ -5190,7 +5292,10 @@ function renderMethodology(pane){
         <p>${COUNTRY_NAME} elects a base parliament of <strong>${SEATS_TOTAL} seats</strong>${HAS_CONSTITUENCIES&&CONSTITUENCIES&&CONSTITUENCIES.constituencies?` — ${CONSTITUENCIES.constituency_seats} ${CONSTITUENCY_RULE==='fptp'?'direct mandates (first-past-the-post)':`constituency seats across ${CONSTITUENCIES.constituencies.length} constituencies`}${CONSTITUENCIES.leveling_seats?` plus ${CONSTITUENCIES.leveling_seats} leveling seats`:''}`:''} via ${methodSentence()}${THRESHOLD>0?`, with a <strong>${THRESHOLD}% electoral threshold</strong>`:''}.${OVERHANG?` When a party wins more direct mandates than its proportional share, leveling seats (Überhang-/Ausgleichsmandate) grow the parliament until proportions hold — capped at <strong>${OVERHANG.cap} seats</strong>: the most recent Landtag sat ${PARTY_ORDER.reduce((a,p)=>a+(LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0),0)} seats.`:''}</p>
         <p>${(MAP_CONF()&&MAP_CONF().fptpSeats)?`The projection runs in two parts: the <strong>${Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} single-member colleges</strong> are projected one by one (each college's 2022 result swung to the current poll average) and go to the coalition leading there - a coalition's colleges are then split among its parties by their contribution in the colleges it won - and the remaining <strong>${SEATS_TOTAL-Object.values(MAP_CONF().fptpSeats).reduce((a,b)=>a+b,0)} seats</strong> come from a national proportional pool allocated by D'Hondt among parties above the threshold. The map colors each region by its leading party.`:`The parliament diagram shows all ${seatsDesc()} seats allocated nationally from the poll average. It follows the classic Wikimedia parliament-diagram layout: rows of the arch hold every party as a wedge, with the total seat count in the center. Chambers with a supplied floor plan use it; all others are laid out automatically with the canonical ParliamentArch geometry, so any seat count renders without a template.`}</p>`}
 
-        ${HIDE_BLOCS?'':`<h3>${t('Bloc Totals','Blok Toplamları')}</h3>
+        ${HIDE_BLOCS?'':`        ${(COUNTRIES[COUNTRY]||{}).upper?`<h3>${t('Upper Chamber','\u00dcst Meclis')} — ${COUNTRIES[COUNTRY].upper.label||''}</h3>
+        <p>The upper chamber projection is an <strong>approximate model</strong>, shown as a separate toggle on the seat projection card.${COUNTRIES[COUNTRY].upper.block?` Spain's Senate uses block voting: each province elects 4 senators (5 for the Balearics and Las Palmas, 6 for Tenerife, 2 for Ceuta and Melilla); the projected province winner takes n-1 and the runner-up 1, flipping to an even split when the top two are within 2 percentage points.`:` Italy's Senate stands on the same ballot: 74 single-member seats scaled from the lower chamber's per-collegio bloc win-rate, plus 126 seats allocated proportionally from the same average under the national ${THRESHOLD}% threshold.`} The real upper chamber's boundaries and regional lists differ, so treat it as an informed estimate rather than a precise projection.</p>`:''}
+
+        <h3>${t('Bloc Totals','Blok Toplamları')}</h3>
         <p>The <strong>${BLOCS.bloc1.name}</strong> bloc includes ${BLOCS.bloc1.parties.join(', ')}. The <strong>${BLOCS.bloc2.name}</strong> bloc includes ${BLOCS.bloc2.parties.join(', ')}.</p>`}
 
         <h3>${t('Last Updated','Son Güncelleme')}</h3>

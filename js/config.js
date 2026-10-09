@@ -19646,6 +19646,14 @@ saxony_anhalt: {
       ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#064A81' },
     },
     order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac'],
+    // Senate: block voting, 4 senators per peninsular province (5 for
+    // Balearic Islands and Las Palmas, 6 for Tenerife, 2 for the
+    // autonomous cities = 208). The projected province winner takes
+    // n-1 and the runner-up 1, flipping to an even split when the top
+    // two are within 2pp - the historical block-vote pattern.
+    upper: { label: 'Senate', seats: 208, block: true,
+             seatsByDistrict: { balears: 5, palmas: 5, tenerife: 6,
+                                ceuta: 2, melilla: 2 } },
     parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'ac', 'vox', 'salf'],
     // 2023 investiture majority (PSOE+Sumar and the regional allies) vs the right
     blocs: {
@@ -23057,6 +23065,12 @@ saxony_anhalt: {
       fn:   { code: 'FN',    name: 'Futuro Nazionale',              name_en: 'National Future',               color: '#20293D' },
     },
     order: ['fdi', 'pd', 'm5s', 'lega', 'fi', 'a', 'iv', 'avs', 'e', 'nm', 'fn', 'svp'],
+    // Senate: same ballot, Rosatellum with 74 single-member + 126
+    // regional-list seats. Modelled by scaling the Chamber's collegio
+    // win-rate to 74 and allocating 126 proportionally - the Senate's own
+    // boundaries and regional lists differ, so the card labels it an
+    // approximation.
+    upper: { label: 'Senate', seats: 200, fptp: 74 },
     parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn', 'svp'],
     // Rosatellum coalitions: the FPTP districts go to the winning coalition
     blocs: {

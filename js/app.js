@@ -2858,6 +2858,20 @@ async function renderPoster(opts){
       ctx.textAlign='left'; ctx.textBaseline='alphabetic';
     }
   };
+  // one delta column for every row: measure the widest vote/seat delta so
+  // the shares and seats right-align in a single column and the deltas
+  // left-align in their own
+  ctx.font='700 16px '+MONO;
+  let colW=0;
+  rows.forEach(r=>{
+    if(r.dvText) colW=Math.max(colW,ctx.measureText(r.dvText).width);
+  });
+  ctx.font='700 14px '+MONO;
+  rows.forEach(r=>{
+    if(r.dsText) colW=Math.max(colW,ctx.measureText(r.dsText).width);
+  });
+  colW=colW>0?Math.ceil(colW)+6:0;
+
   let y=40;
   rows.forEach((r,i)=>{
     const th=TH;
@@ -2867,31 +2881,31 @@ async function renderPoster(opts){
     ctx.fillRect(bx,y,barW,th);
     const tc=posterTextColor(r.color);
     ctx.fillStyle=tc;
-    // share + vote delta and seats + seat delta: each pair right-aligned as
-    // one group with a small fixed gap, so the delta sits attached to the
-    // number it belongs to instead of floating in a far column
+    // numbers right-align in one column, deltas left-align in the next, both
+    // lines sharing baselines (share+vote delta at 46, seats+seat delta at 74)
+    const numX=bx+barW-14-(colW?colW+10:0);
     ctx.textAlign='right';
-    ctx.font='700 16px '+MONO;
-    const dvW=r.dvText?ctx.measureText(r.dvText).width+10:0;
-    const dsW=r.dsText?ctx.measureText(r.dsText).width+10:0;
     ctx.font='700 36px '+MONO;
     const shareW=ctx.measureText(r.shareText||'').width;
-    ctx.fillText(r.shareText||'',bx+barW-14-dvW,y+46);
+    ctx.fillText(r.shareText||'',numX,y+46);
     if(r.seatsText){
       ctx.font='700 22px '+MONO;
-      ctx.fillText(r.seatsText,bx+barW-14-dsW,y+74);
+      ctx.fillText(r.seatsText,numX,y+74);
     }
-    if(r.dvText){
-      ctx.font='700 16px '+MONO;
-      ctx.fillText(r.dvText,bx+barW-14,y+46);
-    }
-    if(r.dsText){
-      ctx.font='700 14px '+MONO;
-      ctx.fillText(r.dsText,bx+barW-14,y+74);
+    if(r.dvText||r.dsText){
+      ctx.textAlign='left';
+      if(r.dvText){
+        ctx.font='700 16px '+MONO;
+        ctx.fillText(r.dvText,bx+barW-14-colW,y+46);
+      }
+      if(r.dsText){
+        ctx.font='700 14px '+MONO;
+        ctx.fillText(r.dsText,bx+barW-14-colW,y+74);
+      }
     }
     ctx.textAlign='left';
     const nameTxt=String(r.name||'').toUpperCase();
-    const nameAvail=barW-56-Math.max(shareW+dvW,22+dsW)-30;
+    const nameAvail=numX-(bx+14)-14;
     let nsize=40;
     ctx.font='700 '+nsize+'px '+FONT;
     while(nsize>24&&ctx.measureText(nameTxt).width>nameAvail){
@@ -2900,11 +2914,11 @@ async function renderPoster(opts){
     }
     ctx.fillText(nameTxt,bx+14,y+46);
     // ideology: the best-fitting item at a fixed size, word-boundary
-    // ellipsised when long
+    // ellipsised when long; baseline shared with the seats
     if(r.ideology){
       ctx.font='700 13px '+FONT;
       ctx.fillText(ellipsizeText(pickIdeology(r.ideology),nameAvail,ctx),
-        bx+14,y+72);
+        bx+14,y+74);
     }
     if(r.firstText){
       const fx=bx+barW+8, fw=92;
@@ -2931,14 +2945,14 @@ async function renderPoster(opts){
     const tilesH=(opts.tiles&&opts.tiles.length)
       ?(opts.tiles.length===1?126:96):0;
     const avail=H-30-y-tilesH-10;
-    const gh=Math.max(18,Math.min(44,Math.floor(avail/rowsN)-4));
-    const gap=12;
+    const gh=Math.max(18,Math.min(44,Math.floor(avail/rowsN)-8));
+    const gap=8;
     const gw=Math.floor((boxW-gap)/2);
     const nameS=Math.max(10,Math.round(gh*0.42));
     const shareS=Math.max(9,Math.round(gh*0.4));
     const seatS=Math.max(8,Math.round(gh*0.32));
     grid.forEach((r,i)=>{
-      const gx=X+(i%2)*(gw+gap), gy=y+Math.floor(i/2)*(gh+4);
+      const gx=X+(i%2)*(gw+gap), gy=y+Math.floor(i/2)*(gh+gap);
       const th2=gh, lg=logos[rows.length+i];
       ctx.fillStyle=r.color;
       ctx.fillRect(gx,gy,th2,th2);
@@ -2958,26 +2972,27 @@ async function renderPoster(opts){
       ctx.fillRect(bx,gy,bw,th2);
       const tc=posterTextColor(r.color);
       ctx.fillStyle=tc;
+      // name and share share a baseline; ideology and seats share the next
       ctx.font='700 '+nameS+'px '+FONT;
       ctx.fillText(String(r.name||'').toUpperCase(),bx+7,
         gy+Math.round(gh*0.42));
       if(r.ideology){
         ctx.font='700 10px '+FONT;
         ctx.fillText(ellipsizeText(pickIdeology(r.ideology),bw-14,ctx),
-          bx+7,gy+Math.round(gh*0.78));
+          bx+7,gy+Math.round(gh*0.8));
       }
       ctx.textAlign='right';
       ctx.font='700 '+shareS+'px '+MONO;
       ctx.fillText((r.shareText||'')+(r.dvText?'  '+r.dvText:''),
-        bx+bw-7,gy+Math.round(gh*0.36));
+        bx+bw-7,gy+Math.round(gh*0.42));
       if(r.seatsText||r.dsText){
         ctx.font='700 '+seatS+'px '+MONO;
         ctx.fillText((r.seatsText||'')+(r.dsText?'  '+r.dsText:''),
-          bx+bw-7,gy+Math.round(gh*0.84));
+          bx+bw-7,gy+Math.round(gh*0.8));
       }
       ctx.textAlign='left';
     });
-    y+=rowsN*(gh+4)+10;
+    y+=rowsN*(gh+gap)+10;
   }
   // probability tiles: one (government/coalition majority) or two (runoff
   // win probabilities); kept compact so the small-party grid gets the space

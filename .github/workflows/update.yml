@@ -76,6 +76,21 @@ jobs:
       - name: Model audit
         run: python scraper/audit.py
 
+      # Poster smoke test: render the shareable poster in headless Chrome
+      # (preinstalled on the runner) and assert a real 1600x900@2x PNG comes
+      # out. Non-blocking - a flaky browser must not stop the data commit -
+      # but a failure is visible in the run log.
+      - name: Poster smoke test
+        continue-on-error: true
+        run: |
+          python -m http.server 8123 &
+          sleep 2
+          google-chrome --headless=new --disable-gpu --no-sandbox \
+            --virtual-time-budget=30000 --dump-dom \
+            "http://localhost:8123/tests/poster_smoke.html?c=qc" > /tmp/poster.html
+          python scraper/check_poster.py /tmp/poster.html
+          kill %1
+
       # Calendar summary for the home view: the poll-average leader per
       # country, computed with the app's own math (a failure here must not
       # block the poll data update).

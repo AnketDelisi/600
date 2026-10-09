@@ -2781,7 +2781,7 @@ function loadImg(src){
     i.src=src;
   });
 }
-function svgElementToImg(svg){
+function svgElementToImg(svg, brightText){
   return new Promise(res=>{
     if(!svg){res(null);return}
     const clone=svg.cloneNode(true);
@@ -2789,6 +2789,14 @@ function svgElementToImg(svg){
     if(vb&&vb.width){
       if(!clone.getAttribute('width')) clone.setAttribute('width',vb.width);
       if(!clone.getAttribute('height')) clone.setAttribute('height',vb.height);
+    }
+    if(brightText){
+      // the parliament arc's majority labels are muted grey; on the dark
+      // poster they need to be light
+      clone.querySelectorAll('text').forEach(t=>{
+        t.setAttribute('fill','#DDDDDD');
+        if(t.getAttribute('style')) t.removeAttribute('style');
+      });
     }
     const xml=new XMLSerializer().serializeToString(clone);
     const i=new Image();
@@ -2803,15 +2811,27 @@ async function renderPoster(opts){
   const ctx=canvas.getContext('2d');
   ctx.scale(S,S);
   const FONT='"Archivo Narrow",Archivo,Arial,sans-serif';
+  const MONO='"Source Code Pro","Archivo Narrow",monospace';
+  // make sure the mono weights are actually loaded before drawing text
+  if(document.fonts&&document.fonts.load){
+    await Promise.all(['400','500','600','700','800','900'].map(w=>
+      document.fonts.load(w+' 16px "Source Code Pro"').catch(()=>{})));
+  }
   ctx.fillStyle='#111111';
   ctx.fillRect(0,0,W,H);
 
-  // title (top right)
+  // title (top right), shrunk to fit the right half
   ctx.fillStyle='#FFFFFF';
   ctx.textAlign='right';
   ctx.textBaseline='alphabetic';
-  ctx.font='700 52px '+FONT;
-  ctx.fillText(String(opts.title||'').toUpperCase(),W-40,84);
+  let titleSize=52;
+  const titleTxt=String(opts.title||'').toUpperCase();
+  ctx.font='700 '+titleSize+'px '+FONT;
+  while(titleSize>28&&ctx.measureText(titleTxt).width>W-40-700){
+    titleSize-=2;
+    ctx.font='700 '+titleSize+'px '+FONT;
+  }
+  ctx.fillText(titleTxt,W-40,84);
   ctx.font='italic 700 25px '+FONT;
   ctx.fillStyle='#DDDDDD';
   ctx.fillText(opts.subtitle||'',W-40,124);
@@ -2819,7 +2839,7 @@ async function renderPoster(opts){
   const rows=opts.rows||[];
   const grid=opts.grid||[];
   const logos=await Promise.all(rows.concat(grid).map(r=>loadImg(r.logo)));
-  const arcImg=await svgElementToImg(opts.arcSvg);
+  const arcImg=await svgElementToImg(opts.arcSvg,true);
   const mapImg=await svgElementToImg(opts.mapSvg);
 
   const X=40, TH=86, barW=420, RH=96, totalW=TH+6+barW+8+92;
@@ -2851,16 +2871,25 @@ async function renderPoster(opts){
     ctx.fillRect(bx,y,barW,th);
     const tc=posterTextColor(r.color);
     ctx.fillStyle=tc;
-    ctx.font='700 40px '+FONT;
-    ctx.fillText(String(r.name||'').toUpperCase(),bx+14,y+52);
+    // share + seats in the numbers font (right-aligned), then the name
+    // shrinks if it would collide with them
     ctx.textAlign='right';
-    ctx.font='700 36px '+FONT;
+    ctx.font='700 36px '+MONO;
+    const shareW=ctx.measureText(r.shareText||'').width;
     ctx.fillText(r.shareText||'',bx+barW-14,y+48);
     if(r.seatsText){
-      ctx.font='700 22px '+FONT;
+      ctx.font='700 22px '+MONO;
       ctx.fillText(r.seatsText,bx+barW-14,y+76);
     }
     ctx.textAlign='left';
+    const nameTxt=String(r.name||'').toUpperCase();
+    let nsize=40;
+    ctx.font='700 '+nsize+'px '+FONT;
+    while(nsize>24&&ctx.measureText(nameTxt).width>barW-shareW-40){
+      nsize-=2;
+      ctx.font='700 '+nsize+'px '+FONT;
+    }
+    ctx.fillText(nameTxt,bx+14,y+52);
     if(r.firstText){
       const fx=bx+barW+8, fw=92;
       ctx.fillStyle=r.color;
@@ -2869,7 +2898,7 @@ async function renderPoster(opts){
       ctx.textAlign='center';
       ctx.font='700 9px '+FONT;
       ctx.fillText(t('CHANCE OF FIRST','B\u0130R\u0130NC\u0130 OLMA'),fx+fw/2,y+28);
-      ctx.font='900 26px '+FONT;
+      ctx.font='900 26px '+MONO;
       ctx.fillText(r.firstText,fx+fw/2,y+64);
       ctx.textAlign='left';
     }
@@ -2901,10 +2930,10 @@ async function renderPoster(opts){
       ctx.font='700 15px '+FONT;
       ctx.fillText(String(r.name||'').toUpperCase(),bx+8,gy+21);
       ctx.textAlign='right';
-      ctx.font='700 14px '+FONT;
+      ctx.font='700 14px '+MONO;
       ctx.fillText(r.shareText||'',bx+bw-8,gy+13);
       if(r.seatsText){
-        ctx.font='700 11px '+FONT;
+        ctx.font='700 11px '+MONO;
         ctx.fillText(r.seatsText,bx+bw-8,gy+27);
       }
       ctx.textAlign='left';
@@ -2922,9 +2951,15 @@ async function renderPoster(opts){
       ctx.fillRect(tx,y+6,tw,th3);
       const tc=posterTextColor(tl.color);
       ctx.fillStyle=tc;
-      ctx.font='700 '+(single?20:14)+'px '+FONT;
-      ctx.fillText(String(tl.label||'').toUpperCase(),tx+14,y+(single?48:40));
-      ctx.font='900 '+(single?78:44)+'px '+FONT;
+      let lsize=single?20:14;
+      const labelTxt=String(tl.label||'').toUpperCase();
+      ctx.font='700 '+lsize+'px '+FONT;
+      while(lsize>11&&ctx.measureText(labelTxt).width>tw-28){
+        lsize--;
+        ctx.font='700 '+lsize+'px '+FONT;
+      }
+      ctx.fillText(labelTxt,tx+14,y+(single?48:40));
+      ctx.font='900 '+(single?78:44)+'px '+MONO;
       ctx.fillText(tl.value,tx+14,y+(single?132:92));
       tx+=tw+12;
     });
@@ -4854,7 +4889,7 @@ function renderForecast(pane){
         bigN=Math.max(5,Math.min(7,bigN,eligible.length));
         eligible.slice(0,bigN).forEach(p=>{
           rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
-            shareText:'%'+fmt(mean(sim.votesBy[p]),1),
+            shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
             seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
             color:(PARTY_META[p]||{}).color||'#888',
             logo:PARTY_LOGOS[p]||null,
@@ -4862,7 +4897,7 @@ function renderForecast(pane){
         });
         eligible.slice(bigN,bigN+12).forEach(p=>{
           grid.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
-            shareText:'%'+fmt(mean(sim.votesBy[p]),1),
+            shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
             seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
             color:(PARTY_META[p]||{}).color||'#888',
             logo:PARTY_LOGOS[p]||null});
@@ -4894,7 +4929,9 @@ function renderForecast(pane){
       const mapBox=$('fc-map-box');
       renderPoster({
         title:COUNTRY_NAME+' '+t('Election Projection','Seçim Projeksiyonu'),
-        subtitle:t('If the election were held today','Seçim Bugün Olsaydı'),
+        subtitle:MAP_ONLY&&(COUNTRIES[COUNTRY]||{}).firstRoundResult
+          ?(RO_ONLY?t('Runoff','2. Tur'):t('1st round','1. Tur'))
+          :t('If the election were held today','Seçim Bugün Olsaydı'),
         rows:rows, grid:grid, tiles:tiles,
         arcSvg:MAP_ONLY?null:tmp.querySelector('svg'),
         mapSvg:mapBox?mapBox.querySelector('svg'):null,

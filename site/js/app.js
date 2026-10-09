@@ -2739,6 +2739,38 @@ function svgElementToImg(svg, brightText){
     i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
   });
 }
+// Pick the ideology item that best describes the party: prefer the
+// recognisable ideological families over niche descriptors (Kahanism,
+// Ashkenazi) or interest labels, exact matches first, then substrings, then
+// whatever the infobox listed first.
+const IDEO_PRIORITY=[
+  'social democracy','democratic socialism','socialism','communism',
+  'social liberalism','liberalism','libertarianism','conservatism',
+  'christian democracy','national conservatism','social conservatism',
+  'liberal conservatism','fiscal conservatism','right-wing populism',
+  'left-wing populism','populism','nationalism','regionalism',
+  'sovereigntism','federalism','green politics','environmentalism',
+  'agrarianism','centrism','progressivism','social market economy',
+  'civic nationalism','economic liberalism','secularism','zionism',
+  'islamism','religious conservatism','religious zionism'
+];
+function pickIdeology(str){
+  const items=String(str||'').split(',').map(s=>s.trim()).filter(Boolean);
+  if(!items.length) return '';
+  const low=items.map(s=>s.toLowerCase().replace(/\s*\([^)]*\)/g,'').trim());
+  for(const term of IDEO_PRIORITY){
+    for(let i=0;i<low.length;i++){
+      if(low[i]===term) return items[i];
+    }
+  }
+  for(const term of IDEO_PRIORITY){
+    for(let i=0;i<low.length;i++){
+      if(low[i].includes(term)) return items[i];
+    }
+  }
+  return items[0];
+}
+
 async function renderPoster(opts){
   const W=1600,H=900,S=2;
   const canvas=document.createElement('canvas');
@@ -2814,28 +2846,31 @@ async function renderPoster(opts){
     ctx.fillRect(bx,y,barW,th);
     const tc=posterTextColor(r.color);
     ctx.fillStyle=tc;
-    // right side: a fixed delta column (vote change by the share, seat change
-    // by the seats) so every row aligns identically
-    const DCOL=84;
+    // share + vote delta and seats + seat delta: each pair right-aligned as
+    // one group with a small fixed gap, so the delta sits attached to the
+    // number it belongs to instead of floating in a far column
     ctx.textAlign='right';
+    ctx.font='700 16px '+MONO;
+    const dvW=r.dvText?ctx.measureText(r.dvText).width+10:0;
+    const dsW=r.dsText?ctx.measureText(r.dsText).width+10:0;
     ctx.font='700 36px '+MONO;
     const shareW=ctx.measureText(r.shareText||'').width;
-    ctx.fillText(r.shareText||'',bx+barW-14-DCOL,y+46);
+    ctx.fillText(r.shareText||'',bx+barW-14-dvW,y+46);
     if(r.seatsText){
       ctx.font='700 22px '+MONO;
-      ctx.fillText(r.seatsText,bx+barW-14-DCOL,y+74);
+      ctx.fillText(r.seatsText,bx+barW-14-dsW,y+74);
     }
     if(r.dvText){
-      ctx.font='700 15px '+MONO;
+      ctx.font='700 16px '+MONO;
       ctx.fillText(r.dvText,bx+barW-14,y+46);
     }
     if(r.dsText){
-      ctx.font='700 13px '+MONO;
+      ctx.font='700 14px '+MONO;
       ctx.fillText(r.dsText,bx+barW-14,y+74);
     }
     ctx.textAlign='left';
     const nameTxt=String(r.name||'').toUpperCase();
-    const nameAvail=barW-DCOL-shareW-40;
+    const nameAvail=barW-56-Math.max(shareW+dvW,22+dsW)-30;
     let nsize=40;
     ctx.font='700 '+nsize+'px '+FONT;
     while(nsize>24&&ctx.measureText(nameTxt).width>nameAvail){
@@ -2843,9 +2878,9 @@ async function renderPoster(opts){
       ctx.font='700 '+nsize+'px '+FONT;
     }
     ctx.fillText(nameTxt,bx+14,y+46);
-    // ideology: first item only, fixed size, ellipsised when needed
+    // ideology: the best-fitting item at a fixed size, ellipsised when long
     if(r.ideology){
-      let ideaTxt=String(r.ideology).split(',')[0].trim();
+      let ideaTxt=pickIdeology(r.ideology);
       ctx.font='700 13px '+FONT;
       while(ideaTxt.length>8&&ctx.measureText(ideaTxt).width>nameAvail){
         ideaTxt=ideaTxt.slice(0,-4)+'\u2026';
@@ -2908,7 +2943,7 @@ async function renderPoster(opts){
       ctx.fillText(String(r.name||'').toUpperCase(),bx+7,
         gy+Math.round(gh*0.42));
       if(r.ideology){
-        let it=String(r.ideology).split(',')[0].trim();
+        let it=pickIdeology(r.ideology);
         ctx.font='700 10px '+FONT;
         while(it.length>6&&ctx.measureText(it).width>bw-14){
           it=it.slice(0,-4)+'\u2026';

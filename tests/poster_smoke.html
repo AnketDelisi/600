@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- Poster smoke-test harness: loads a country's forecast tab in an iframe,
+     clicks the poster download button and writes the captured data URL into
+     <pre id="dlurl"> so a headless browser dump can be validated by
+     scraper/check_poster.py. Usage: ?c=<country> -->
+<html>
+<body>
+<div id="out"></div>
+<script>
+const cc = new URLSearchParams(location.search).get('c') || 'qc';
+const f = document.createElement('iframe');
+f.src = '/?c=' + cc + '&t=forecast';
+f.style.cssText = 'width:1300px;height:900px;visibility:hidden';
+f.onload = () => {
+  setTimeout(() => {
+    const w = f.contentWindow;
+    const d = f.contentDocument;
+    w.HTMLAnchorElement.prototype.click = function () {
+      w.__lastDl = this.href;
+    };
+    const btn = d.getElementById('fc-poster-btn');
+    if (!btn) { probe('NO POSTER BTN'); return; }
+    btn.click();
+    setTimeout(() => {
+      const url = w.__lastDl;
+      const p = document.createElement('pre');
+      p.id = 'dlurl';
+      p.textContent = url ? url : 'NO DOWNLOAD';
+      document.getElementById('out').appendChild(p);
+    }, 2500);
+  }, 6500);
+};
+function probe(t) {
+  const p = document.createElement('pre');
+  p.textContent = t;
+  document.getElementById('out').appendChild(p);
+}
+document.body.appendChild(f);
+</script>
+</body>
+</html>

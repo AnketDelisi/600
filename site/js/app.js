@@ -2654,6 +2654,8 @@ async function renderMapInto(box, avg, resultMode, confOverride){
 
 /* ---------- screenshot capture ---------- */
 const CAM_ICON=`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`;
+const COPY_ICON=`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+const CHECK_ICON=`<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>`;
 
 function downloadPng(dataUrl, name){
   const a=document.createElement('a');
@@ -2739,6 +2741,19 @@ function svgElementToImg(svg, brightText){
     i.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
   });
 }
+// Word-boundary ellipsis: drop whole words before characters so labels never
+// cut mid-word ("Conservatism (Canadian)" -> "Conservatism…", not "(Canad…").
+function ellipsizeText(txt, maxW, ctx){
+  if(ctx.measureText(txt).width<=maxW) return txt;
+  let t=txt;
+  while(t.length>2){
+    const sp=t.lastIndexOf(' ');
+    t=sp>2?t.slice(0,sp).replace(/\s+$/,'') :t.slice(0,-1);
+    if(ctx.measureText(t+'\u2026').width<=maxW) return t+'\u2026';
+  }
+  return '\u2026';
+}
+
 // Pick the ideology item that best describes the party: prefer the
 // recognisable ideological families over niche descriptors (Kahanism,
 // Ashkenazi) or interest labels, exact matches first, then substrings, then
@@ -2757,18 +2772,24 @@ const IDEO_PRIORITY=[
 function pickIdeology(str){
   const items=String(str||'').split(',').map(s=>s.trim()).filter(Boolean);
   if(!items.length) return '';
-  const low=items.map(s=>s.toLowerCase().replace(/\s*\([^)]*\)/g,'').trim());
+  // drop trailing disambiguation parentheticals: "Liberalism (German)" reads
+  // as "Liberalism" on a poster
+  const clean=items.map(s=>{
+    const t=s.replace(/\s*\([^)]*\)\s*$/,'').trim();
+    return t||s;
+  });
+  const low=clean.map(s=>s.toLowerCase());
   for(const term of IDEO_PRIORITY){
     for(let i=0;i<low.length;i++){
-      if(low[i]===term) return items[i];
+      if(low[i]===term) return clean[i];
     }
   }
   for(const term of IDEO_PRIORITY){
     for(let i=0;i<low.length;i++){
-      if(low[i].includes(term)) return items[i];
+      if(low[i].includes(term)) return clean[i];
     }
   }
-  return items[0];
+  return clean[0];
 }
 
 async function renderPoster(opts){
@@ -2878,14 +2899,12 @@ async function renderPoster(opts){
       ctx.font='700 '+nsize+'px '+FONT;
     }
     ctx.fillText(nameTxt,bx+14,y+46);
-    // ideology: the best-fitting item at a fixed size, ellipsised when long
+    // ideology: the best-fitting item at a fixed size, word-boundary
+    // ellipsised when long
     if(r.ideology){
-      let ideaTxt=pickIdeology(r.ideology);
       ctx.font='700 13px '+FONT;
-      while(ideaTxt.length>8&&ctx.measureText(ideaTxt).width>nameAvail){
-        ideaTxt=ideaTxt.slice(0,-4)+'\u2026';
-      }
-      ctx.fillText(ideaTxt,bx+14,y+72);
+      ctx.fillText(ellipsizeText(pickIdeology(r.ideology),nameAvail,ctx),
+        bx+14,y+72);
     }
     if(r.firstText){
       const fx=bx+barW+8, fw=92;
@@ -2943,12 +2962,9 @@ async function renderPoster(opts){
       ctx.fillText(String(r.name||'').toUpperCase(),bx+7,
         gy+Math.round(gh*0.42));
       if(r.ideology){
-        let it=pickIdeology(r.ideology);
         ctx.font='700 10px '+FONT;
-        while(it.length>6&&ctx.measureText(it).width>bw-14){
-          it=it.slice(0,-4)+'\u2026';
-        }
-        ctx.fillText(it,bx+7,gy+Math.round(gh*0.78));
+        ctx.fillText(ellipsizeText(pickIdeology(r.ideology),bw-14,ctx),
+          bx+7,gy+Math.round(gh*0.78));
       }
       ctx.textAlign='right';
       ctx.font='700 '+shareS+'px '+MONO;
@@ -2987,22 +3003,27 @@ async function renderPoster(opts){
       tx+=tw+12;
     });
   }
-  // parliament arc: bottom right corner, always
-  if(arcImg){
-    const ax=W-40-560, ay=H-30-210, aw=560, ah=210;
-    const sc=Math.min(aw/arcImg.width, ah/arcImg.height);
-    const dw=arcImg.width*sc, dh=arcImg.height*sc;
-    ctx.drawImage(arcImg,ax+(aw-dw)/2,ay+(ah-dh)/2,dw,dh);
-  }
-  // coloured district map: the widest region above the arc
   if(mapImg){
+    // coloured district map on the right, arc tucked under its corner
     const mx=620, my=140, mw=W-mx-40, mh=H-140-30-220;
     const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
     const dw=mapImg.width*sc, dh=mapImg.height*sc;
     ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);
+    if(arcImg){
+      const ax=W-40-560, ay=H-30-210, aw=560, ah=210;
+      const s2=Math.min(aw/arcImg.width, ah/arcImg.height);
+      ctx.drawImage(arcImg,ax+(aw-arcImg.width*s2)/2,
+        ay+(ah-arcImg.height*s2)/2,arcImg.width*s2,arcImg.height*s2);
+    }
+  }else if(arcImg){
+    // no map for this country: the arc takes the whole right side, larger
+    const ax=620, ay=140, aw=W-620-40, ah=H-140-40;
+    const sc=Math.min(aw/arcImg.width, ah/arcImg.height);
+    const dw=arcImg.width*sc, dh=arcImg.height*sc;
+    ctx.drawImage(arcImg,ax+(aw-dw)/2,ay+(ah-dh)/2,dw,dh);
   }
 
-  downloadPng(canvas.toDataURL('image/png'), opts.file||(COUNTRY+'-poster.png'));
+  return canvas;
 }
 
 function captureBoxMap(boxId, filename){
@@ -4758,6 +4779,7 @@ function renderForecast(pane){
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
       <button class="shot-btn" id="fc-poster-btn" title="${t('Download the projection poster as PNG','Projeksiyon posterini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
+      <button class="shot-btn" id="fc-copy-btn" title="${t('Copy the projection poster to the clipboard','Projeksiyon posterini panoya kopyala')}" style="align-self:center">${COPY_ICON}</button>
       <div class="fc-headline">
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
@@ -4842,13 +4864,11 @@ function renderForecast(pane){
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
     });
   }
-  const fcPoster=$('fc-poster-btn');
-  if(fcPoster){
-    fcPoster.addEventListener('click',()=>{
-      const nS=sim.nSims;
-      const rows=[];
-      const grid=[];
-      let tiles=null;
+  const posterOpts=()=>{
+    const nS=sim.nSims;
+    const rows=[];
+    const grid=[];
+    let tiles=null;
       if(MAP_ONLY&&roCache){
         // two-candidate runoff: rows = the pair by win probability, two tiles
         const items=[[roCache.a,roCache.aN,roCache.winA/3000],
@@ -4959,7 +4979,7 @@ function renderForecast(pane){
       const tmp=document.createElement('div');
       if(!MAP_ONLY) tmp.innerHTML=buildParliamentSVG(detSeats);
       const mapBox=$('fc-map-box');
-      renderPoster({
+      return {
         title:COUNTRY_NAME+' '+t('Election Projection','Seçim Projeksiyonu'),
         subtitle:MAP_ONLY&&(COUNTRIES[COUNTRY]||{}).firstRoundResult
           ?(RO_ONLY?t('Runoff','2. Tur'):t('1st round','1. Tur'))
@@ -4968,7 +4988,29 @@ function renderForecast(pane){
         arcSvg:MAP_ONLY?null:tmp.querySelector('svg'),
         mapSvg:mapBox?mapBox.querySelector('svg'):null,
         file:COUNTRY+'-poster.png'
-      });
+      };
+  };
+  const fcPoster=$('fc-poster-btn');
+  if(fcPoster){
+    fcPoster.addEventListener('click',async()=>{
+      const canvas=await renderPoster(posterOpts());
+      downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-poster.png');
+    });
+  }
+  const fcCopy=$('fc-copy-btn');
+  if(fcCopy){
+    fcCopy.addEventListener('click',async()=>{
+      const canvas=await renderPoster(posterOpts());
+      canvas.toBlob(async(blob)=>{
+        try{
+          await navigator.clipboard.write(
+            [new ClipboardItem({'image/png':blob})]);
+          fcCopy.innerHTML=CHECK_ICON;
+          setTimeout(()=>{fcCopy.innerHTML=COPY_ICON;},1500);
+        }catch(e){
+          console.error('clipboard copy failed:',e);
+        }
+      },'image/png');
     });
   }
   if(MAP_CONF()){

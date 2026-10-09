@@ -5629,6 +5629,7 @@ saxony_anhalt: {
     // layout: hideBlocs drops the bloc/majority cards, mapOnly replaces the
     // parliament diagram with the 27-UF map. The seat engine is repurposed for
     // the federative units ("seats" = UFs a candidate leads in).
+    runoffOnly: true,
     seats: 27,
     threshold: 5.0,
     method: 'hare_niemeyer',
@@ -5813,6 +5814,9 @@ saxony_anhalt: {
       },
       national2021: { lula: 48.43, flavio: 43.20, cury: 0, caiado: 0, renan: 0, zema: 0, margal: 0, samara: 0, edmilson: 0, rui: 0 },
       // 2026 first-round results by federative unit (official),
+    // two-way normalised against Flavio; the runoff map anchors
+    // here and swings with the national head-to-head average
+    // 2026 first-round results by federative unit (official),
     // two-way normalised against Flavio; the runoff map anchors
     // here and swings with the national head-to-head average
     runoff2026: {

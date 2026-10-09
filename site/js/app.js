@@ -2842,7 +2842,10 @@ async function renderPoster(opts){
   const arcImg=await svgElementToImg(opts.arcSvg,true);
   const mapImg=await svgElementToImg(opts.mapSvg);
 
-  const X=40, TH=86, barW=420, RH=96, totalW=TH+6+barW+8+92;
+  const X=40, TH=86, barW=420, totalW=TH+6+barW+8+92;
+  // many big rows plus a grid: rows give a little height back so the small
+  // boxes can be substantially taller
+  const RH=(rows.length>=6&&grid.length)?84:96;
   const drawTile=(r,lg,yy,th)=>{
     ctx.fillStyle=r.color;
     ctx.fillRect(X,yy,th,th);
@@ -2907,9 +2910,10 @@ async function renderPoster(opts){
     }
     y+=RH;
   });
-  // compact grid (2 columns) for the parties below the big rows: the pair's
-  // total width matches the big box above, the row height adapts so any
-  // number of parties fits
+  // compact grid (2 columns) for the parties below the big rows: each box is
+  // individually shorter than half the big box, the wider middle gap keeps
+  // the pair totalling the big box width, and the freed height makes the
+  // boxes taller with bigger logos
   if(grid.length){
     y+=6;
     const boxW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
@@ -2917,13 +2921,14 @@ async function renderPoster(opts){
     const tilesH=(opts.tiles&&opts.tiles.length)
       ?(opts.tiles.length===1?156:116):0;
     const avail=H-30-y-tilesH-10;
-    const gh=Math.max(18,Math.min(30,Math.floor(avail/rowsN)-4));
-    const gw=Math.floor(boxW/2)-3;
-    const nameS=Math.max(10,Math.round(gh*0.5));
-    const shareS=Math.max(9,Math.round(gh*0.47));
-    const seatS=Math.max(8,Math.round(gh*0.37));
+    const gh=Math.max(18,Math.min(44,Math.floor(avail/rowsN)-4));
+    const gap=40;
+    const gw=Math.floor((boxW-gap)/2);
+    const nameS=Math.max(10,Math.round(gh*0.42));
+    const shareS=Math.max(9,Math.round(gh*0.4));
+    const seatS=Math.max(8,Math.round(gh*0.32));
     grid.forEach((r,i)=>{
-      const gx=X+(i%2)*(gw+6), gy=y+Math.floor(i/2)*(gh+4);
+      const gx=X+(i%2)*(gw+gap), gy=y+Math.floor(i/2)*(gh+4);
       const th2=gh, lg=logos[rows.length+i];
       ctx.fillStyle=r.color;
       ctx.fillRect(gx,gy,th2,th2);
@@ -2944,13 +2949,13 @@ async function renderPoster(opts){
       const tc=posterTextColor(r.color);
       ctx.fillStyle=tc;
       ctx.font='700 '+nameS+'px '+FONT;
-      ctx.fillText(String(r.name||'').toUpperCase(),bx+8,gy+Math.round(gh*0.7));
+      ctx.fillText(String(r.name||'').toUpperCase(),bx+7,gy+Math.round(gh*0.62));
       ctx.textAlign='right';
       ctx.font='700 '+shareS+'px '+MONO;
-      ctx.fillText(r.shareText||'',bx+bw-8,gy+Math.round(gh*0.44));
+      ctx.fillText(r.shareText||'',bx+bw-7,gy+Math.round(gh*0.36));
       if(r.seatsText){
         ctx.font='700 '+seatS+'px '+MONO;
-        ctx.fillText(r.seatsText,bx+bw-8,gy+Math.round(gh*0.9));
+        ctx.fillText(r.seatsText,bx+bw-7,gy+Math.round(gh*0.82));
       }
       ctx.textAlign='left';
     });

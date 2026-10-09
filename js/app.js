@@ -1692,11 +1692,13 @@ function allocateUpper(avg){
   if(!up||!avg) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   if(up.block){
-    const mc=MAP_CONF();
+    // Spain: 59 block-voting districts (provinces + the Canary/Balearic
+    // islands, NUTS3) when the senate map block exists, else the province map
+    const mc=(c.senate&&c.senate.districts)?c.senate:MAP_CONF();
     if(!mc||!mc.districts) return null;
     const sbd=up.seatsByDistrict||{};
     for(const nr of Object.keys(mc.districts)){
-      const n=sbd[nr]||4;
+      const n=(mc.seatDistricts&&mc.seatDistricts[nr])||sbd[nr]||4;
       const sh=districtShares(nr,avg,false,mc);
       if(!sh) continue;
       const parts=PARTY_ORDER.map(p=>[p,sh[p]?sh[p].now:0]).filter(x=>x[1]>0);
@@ -1876,7 +1878,7 @@ function renderParliament(avg){
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
         :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','\u00f6nde giden blok'):t('district winner','b\u00f6lge kazanan\u0131')}`))
     :(PARL_MODE==='upper'
-      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)'):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
+      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
@@ -2155,7 +2157,7 @@ function districtWinnerProjection(nr, avg, confOverride, regionNoise, districtNo
 function districtResultWinner(nr, confOverride){
   const conf=confOverride||MAP_CONF();
   if(conf.winners2021&&conf.winners2021[String(nr)]) return conf.winners2021[String(nr)];
-  const shares=districtShares(nr, null, true);
+  const shares=districtShares(nr, null, true, conf);
   if(!shares) return null;
   let best=null,bestV=-1;
   for(const p of PARTY_ORDER){
@@ -2208,12 +2210,12 @@ async function renderMap(avg){
     const rc=runoffConf();
     if(ra&&rc) return renderMapInto(box, ra, false, rc);
   }
-  // the upper chamber's own map layer (Italy's 74 Senate districts) when the
-  // Senate mode is active
+  // the upper chamber's own map layer (Italy's 74 Senate districts, Spain's
+  // 59 NUTS3 districts) when the Senate mode is active; the conf carries its
+  // own structure (useConstituencies for Italy, gebiete for Spain)
   const sen=(COUNTRIES[COUNTRY]||{}).senate;
   if(PARL_MODE==='upper'&&sen){
-    return renderMapInto(box, avg, false,
-      Object.assign({},sen,{useConstituencies:true}));
+    return renderMapInto(box, avg, false, sen);
   }
   await renderMapInto(box, avg, PARL_MODE!=='proj');
 }

@@ -2695,71 +2695,6 @@ function captureChartPng(canvas, filename){
   downloadPng(out.toDataURL('image/png'), filename);
 }
 
-// Infographic: minimal shareable forecast card, drawn at 2x from the SAME
-// values renderForecast already computed (medVotes/detSeats/lead*) so the PNG
-// matches the on-screen forecast card exactly.
-async function renderForecastInfographic(avg, sim, opts){
-  const W=1120, H=1560, S=2;
-  const canvas=document.createElement('canvas');
-  canvas.width=W*S; canvas.height=H*S;
-  const ctx=canvas.getContext('2d');
-  ctx.scale(S,S);
-  const meta=(PARTY_META||{});
-  ctx.fillStyle='#ffffff';
-  ctx.fillRect(0,0,W,H);
-  const label=opts.title||COUNTRY_NAME+' '+(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear();
-  const method=(opts.methodName||methodNameShort());
-  // header
-  ctx.fillStyle=opts.leadColor||'#0b6e99';
-  ctx.fillRect(0,0,W,10);
-  ctx.fillStyle='#111';
-  ctx.font='600 52px "Archivo Narrow",Archivo,Arial,sans-serif';
-  ctx.textBaseline='top';
-  ctx.fillText(label.toUpperCase(),60,52);
-  ctx.fillStyle='#888';
-  ctx.font='30px "Archivo Narrow",Archivo,Arial,sans-serif';
-  ctx.fillText('FORECAST',W-60-ctx.measureText('FORECAST').width,52+S);
-  // headline
-  const outcome=(opts.leadOutcome||'').toUpperCase();
-  ctx.fillStyle=opts.leadColor||'#111';
-  ctx.font='700 128px "Archivo Narrow",Archivo,Arial,sans-serif';
-  ctx.textBaseline='alphabetic';
-  ctx.fillText(outcome,60,340);
-  ctx.fillStyle='#111';
-  ctx.fillText((opts.leadPct!==undefined?opts.leadPct.toFixed(1)+'%':''),60+ctx.measureText(outcome).width+28,340);
-  // party rows
-  const fOrder=opts.fOrder||Object.keys(avg).sort((a,b)=>avg[b]-avg[a]);
-  let y=470;
-  const rows=fOrder.filter(p=>{if(avg[p]==null)return false; if(!(avg[p]>=0.05))return false; const m=opts.onlyParties&&!opts.onlyParties.includes(p); return !m;});
-  const maxV=Math.max(...rows.map(p=>avg[p]));
-  ctx.font='34px "Archivo Narrow",Archivo,Arial,sans-serif';
-  for(const p of rows){
-    const c=meta[p]&&meta[p].color?meta[p].color:{berlin:'#0b6e99',mv:'#8a5a1f'}[COUNTRY]||'#0b6e99';
-    const vShare=opts.medVotes&&opts.medVotes[p]!=null?opts.medVotes[p]:avg[p];
-    const seats=opts.detSeats&&opts.detSeats[p]!=null?opts.detSeats[p]:null;
-    const barW=Math.max(8,(W-360)*(vShare/maxV));
-    ctx.fillText((meta[p]&&meta[p].short||p).toUpperCase(),60,y+8);
-    ctx.fillStyle=c;
-    ctx.fillRect(300,y,barW,34);
-    ctx.fillStyle=(p==='linie'&&COUNTRY==='berlin')?c:'#fff';
-    ctx.fillText(vShare.toFixed(1)+'%',318,y+4);
-    ctx.fillStyle='#111';
-    const right=seats!=null?seats+' '+T.seats:'';
-    ctx.fillText(right,W-60-ctx.measureText(right).width,y+8);
-    y+=64;
-  }
-  // footer
-  ctx.strokeStyle='#e3e3e3';
-  ctx.moveTo(60,y);
-  ctx.lineTo(W-60,y);
-  ctx.stroke();
-  ctx.fillStyle='#777';
-  ctx.font='26px "Archivo Narrow",Archivo,Arial,sans-serif';
-  const footer=`${sim&&sim.nSims?sim.nSims.toLocaleString():''} ${t('simulations','simülasyon')} · ${method} · ${opts.sigmaDesc||''} · ${t('seeded, reproducible','seeded, tekrarlanabilir')}`.trim();
-  ctx.fillText(footer,W/2-ctx.measureText(footer).width/2,y+30);
-  return canvas;
-}
-
 // ---------- poster: dark landscape shareable projection ----------
 // 1600x900 dark card in the "Seçim Projeksiyonu" style: party rows with logo
 // tiles + shares + seats, first-place / coalition / runoff probability tiles,
@@ -2882,10 +2817,12 @@ async function renderPoster(opts){
     ctx.textAlign='right';
     ctx.font='700 36px '+MONO;
     const shareW=ctx.measureText(r.shareText||'').width;
-    ctx.fillText(r.shareText||'',bx+barW-14,y+48);
-    if(r.seatsText){
+    ctx.fillText(r.shareText||'',bx+barW-14,y+46);
+    if(r.seatsText||r.momText){
       ctx.font='700 22px '+MONO;
-      ctx.fillText(r.seatsText,bx+barW-14,y+76);
+      const st=r.seatsText||'';
+      const dt=r.momText||'';
+      ctx.fillText(st+(dt?(st?'  ':''):'')+dt,bx+barW-14,y+74);
     }
     ctx.textAlign='left';
     const nameTxt=String(r.name||'').toUpperCase();
@@ -2895,7 +2832,22 @@ async function renderPoster(opts){
       nsize-=2;
       ctx.font='700 '+nsize+'px '+FONT;
     }
-    ctx.fillText(nameTxt,bx+14,y+52);
+    ctx.fillText(nameTxt,bx+14,y+46);
+    // ideology line (from the Wikipedia infoboxes), shrunk then ellipsised
+    if(r.ideology){
+      const avail=barW-shareW-40;
+      let isize=14;
+      let ideaTxt=r.ideology;
+      ctx.font='700 '+isize+'px '+FONT;
+      while(isize>10&&ctx.measureText(ideaTxt).width>avail){
+        isize--;
+        ctx.font='700 '+isize+'px '+FONT;
+      }
+      while(ideaTxt.length>8&&ctx.measureText(ideaTxt).width>avail){
+        ideaTxt=ideaTxt.slice(0,-4)+'\u2026';
+      }
+      ctx.fillText(ideaTxt,bx+14,y+72);
+    }
     if(r.firstText){
       const fx=bx+barW+8, fw=92;
       ctx.fillStyle=r.color;
@@ -4755,8 +4707,7 @@ function renderForecast(pane){
   pane.innerHTML=`<div class="tab-pane-inner">
     <div class="hero fc-hero">
       <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
-      <button class="shot-btn" id="fc-forecast-shot-btn" title="${t('Download forecast image as PNG','Tahmin görselini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
-      <button class="shot-btn" id="fc-poster-btn" title="${t('Download the dark projection poster as PNG','Koyu projeksiyon posterini PNG olarak indir')}" style="width:auto;padding:0 10px;align-self:center;font-size:10px;font-weight:900;letter-spacing:0.6px">POSTER</button>
+      <button class="shot-btn" id="fc-poster-btn" title="${t('Download the projection poster as PNG','Projeksiyon posterini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
       <div class="fc-headline">
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
@@ -4841,22 +4792,6 @@ function renderForecast(pane){
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
     });
   }
-  const fcInfShot=$('fc-forecast-shot-btn');
-  if(fcInfShot){
-    fcInfShot.addEventListener('click',async()=>{
-      const canvas=await renderForecastInfographic(avg, sim, {
-        title:COUNTRY_NAME+' '+(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear(),
-        methodName:methodNameShort(),
-        sigmaDesc:SEAT_BASED?fmt(2.2,1)+' '+T.seats:fmt(forecastSigma(avg,filtered.length),1)+'pp',
-        leadColor:leadColor, leadOutcome:leadOutcome, leadPct:leadPct,
-        fOrder:RO_ONLY&&roCache?[roCache.a,roCache.b]:fOrder,
-        onlyParties:RO_ONLY&&roCache?[roCache.a,roCache.b]:null,
-        medVotes:RO_ONLY&&roCache?{[roCache.a]:roCache.aN,[roCache.b]:roCache.bN}:medVotes,
-        detSeats:RO_ONLY?{}:detSeats
-      });
-      downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-forecast.png');
-    });
-  }
   const fcPoster=$('fc-poster-btn');
   if(fcPoster){
     fcPoster.addEventListener('click',()=>{
@@ -4917,9 +4852,12 @@ function renderForecast(pane){
         let bigN=eligible.filter(p=>(sim.means[p]||0)>=8).length;
         bigN=Math.max(5,Math.min(7,bigN,eligible.length));
         eligible.slice(0,bigN).forEach(p=>{
+          const mom=partyMomentum(POLLS,p,14,30);
           rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
             shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
             seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
+            momText:mom===null?'':(mom>0?'\u25b2+'+fmt(mom,1):'\u25bc'+fmt(mom,1)),
+            ideology:(PARTY_META[p]||{}).ideology||'',
             color:(PARTY_META[p]||{}).color||'#888',
             logo:PARTY_LOGOS[p]||null,
             firstText:showFirst?'%'+fmt(100*(sim.largest[p]||0)/nS,1):''});

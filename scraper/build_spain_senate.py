@@ -36,7 +36,8 @@ BMV_SVG = os.path.join(ROOT, "bmv", "img", "spain_senate.svg")
 COMBINED = os.path.join(CACHE, "es_senate_nuts3.geojson")
 NUTS_ZIP = os.path.join(CACHE, "NUTS_RG_10M_2021_4326.geojson")
 NUTS_URL = ("https://gisco-services.ec.europa.eu/distribution/v2/nuts/"
-            "geojson/NUTS_RG_10M_2021_4326.geojson")
+            "geojson/NUTS_RG_01M_2021_4326_LEVL_3.geojson")
+PROVINCES = os.path.join(CACHE, "es_provinces.geojson")
 ATTRIBUTION = ("Geometria: Eurostat GISCO NUTS 2021 (distritos del Senado = "
                "provincias + islas); Resultados base: Ministerio del "
                "Interior (generales 2023, via config gebiete)")
@@ -138,35 +139,50 @@ def read_spain_map():
 
 def main():
     force = "--force" in sys.argv
+    replace = "--replace" in sys.argv
     os.makedirs(CACHE, exist_ok=True)
     geb, reg, nat, block = read_spain_map()
     print("province baselines:", len(geb), "| regions:", len(reg))
 
     if force or not os.path.isfile(NUTS_ZIP):
-        print("downloading NUTS 10M (large, cached)...")
+        print("downloading NUTS 01M level-3 (cached)...")
         urllib.request.urlretrieve(NUTS_URL, NUTS_ZIP)
     with open(NUTS_ZIP, encoding="utf8") as fh:
         gj = json.load(fh)
+    # geometry: the 49 mainland/autonomous-city districts reuse the province
+    # map's own geometry (identical style to the usual map); only the 10
+    # island districts come from NUTS 01M, where they are separate features
     feats = []
+    island_keys = set()
+    if os.path.isfile(PROVINCES):
+        with open(PROVINCES, encoding="utf8") as fh:
+            prov = json.load(fh)
+        for f in prov["features"]:
+            key = f["properties"].get("prov")
+            if key in ("palmas", "tenerife", "balears"):
+                continue
+            feats.append({"type": "Feature", "properties": {"prov": key},
+                          "geometry": f["geometry"]})
+        print("province features reused:", len(feats))
     for f in gj["features"]:
         p = f["properties"]
-        if p.get("CNTR_CODE") != "ES" or p.get("LEV_LVL_CODE") not in (
-                "3", 3) and p.get("LEVL_CODE") not in ("3", 3):
+        if p.get("CNTR_CODE") != "ES":
             continue
         nid = p.get("NUTS_ID")
         if nid not in NUTS:
-            print("  unmapped NUTS3:", nid)
             continue
         key = NUTS[nid][0]
+        if key not in ISLANDS:
+            continue
+        if key in island_keys:
+            continue
+        island_keys.add(key)
         geom = f["geometry"]
-        if key in ISLANDS:
-            dlon, dlat = CANARY_SHIFT if key in (
-                "gran_canaria", "lanzarote", "fuerteventura", "tenerife",
-                "la_palma", "la_gomera", "el_hierro") else (0, 0)
-            if dlon:
-                geom = {"type": geom["type"],
-                        "coordinates": shift_coords(geom["coordinates"],
-                                                    dlon, dlat)}
+        if key in ("gran_canaria", "lanzarote", "fuerteventura", "tenerife",
+                   "la_palma", "la_gomera", "el_hierro"):
+            geom = {"type": geom["type"],
+                    "coordinates": shift_coords(geom["coordinates"],
+                                                *CANARY_SHIFT)}
         feats.append({"type": "Feature", "properties": {"prov": key},
                       "geometry": geom})
     print("features:", len(feats))
@@ -180,18 +196,20 @@ def main():
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
-    # senate conf: districts + inherited baselines + seat counts
+    # senate conf: districts + inherited baselines + FULL seat counts (the
+    # map dot overlay needs an entry for every district, like the province
+    # map) + the block-vote flag for the dot split
     districts, gebiete, regionOf, seatDistricts = {}, {}, {}, {}
     for nid, (key, parent, n) in NUTS.items():
         districts[key] = key
         gebiete[key] = geb.get(parent, {})
         if reg.get(parent):
             regionOf[key] = reg[parent]
-        if n != 4:
-            seatDistricts[key] = n
+        seatDistricts[key] = n
     senate = {"svg": "img/spain_senate.svg", "selector": "id",
               "districts": districts, "gebiete": gebiete,
               "regionOf": regionOf, "seatDistricts": seatDistricts,
+              "blockVote": True,
               "label": "Senate districts (59)"}
     if nat:
         senate["national2021"] = nat
@@ -203,16 +221,24 @@ def main():
     end = (start + 1 + m.start() if m
            else text.index("\n};\n\n// ===== Active country"))
     blk = text[start:end]
-    if "senate:" in blk:
-        print("senate block already present")
-        return
-    j = json.dumps(senate, ensure_ascii=False, indent=6)
-    j = j.replace("\n", "\n    ")
     anchor = "\n    upper: { label: 'Senate'"
     assert anchor in blk, "upper anchor not found"
+    if "senate:" in blk:
+        if not replace:
+            print("senate block already present (use --replace)")
+            return
+        i = blk.find("\n    // Senate's 59 block-voting districts")
+        assert i > 0, "senate comment anchor not found"
+        jj = blk.find(anchor, i)
+        assert jj > i, "upper anchor after senate not found"
+        blk = blk[:i] + blk[jj:]
+        print("replaced existing senate block")
+    j = json.dumps(senate, ensure_ascii=False, indent=6)
+    j = j.replace("\n", "\n    ")
     blk = blk.replace(
         anchor, "\n    // Senate's 59 block-voting districts: provinces + the\n"
-                "    // Canary/Balearic islands (NUTS3) - built by\n"
+                "    // Canary/Balearic islands - geometry from the province\n"
+                "    // map (mainland) + Eurostat NUTS 01M (islands); built by\n"
                 "    // scraper/build_spain_senate.py.\n"
                 "    senate: " + j + "," + anchor)
     text = text[:start] + blk + text[end:]

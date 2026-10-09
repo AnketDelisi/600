@@ -182,7 +182,11 @@ def scrape_brazil():
                         sample_col = col
                     elif low.startswith("other"):
                         others_col = col
-        if len(set(cand_col.values())) < MIN_CANDIDATES:
+        # a head-to-head runoff table is a pure 2-way (the after-first-round
+        # table has only Lula and F. Bolsonaro columns); first-round tables
+        # need the full candidate field
+        min_c = 2 if h2 == "Second round" else MIN_CANDIDATES
+        if len(set(cand_col.values())) < min_c:
             continue
         for ri in range(header_end, len(grid)):
             row = grid[ri]
@@ -240,7 +244,7 @@ def scrape_brazil():
                 if total <= 0:
                     continue
                 pair = {k: round(v * 100 / total, 1) for k, v in pair.items()}
-                runoff.append({"pollster": pollster, "date": date,
+                runoff.append({"pollster": pollster, "date": date, "n": n,
                                "runoff": pair})
 
     # merge runoff pairs into the matching first-round poll
@@ -254,7 +258,8 @@ def scrape_brazil():
             by_key[key].setdefault("runoff", r["runoff"])
         else:
             by_key[key] = {"pollster": r["pollster"], "date": r["date"],
-                           "n": 0, "votes": {}, "runoff": r["runoff"]}
+                           "n": r.get("n", 0), "votes": {},
+                           "runoff": r["runoff"]}
     polls = list(by_key.values())
     for p in polls:
         p["country"] = COUNTRY

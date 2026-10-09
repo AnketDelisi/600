@@ -1691,7 +1691,7 @@ function renderParliament(avg){
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
-      ${MAP_ONLY&&mapConf&&mapConf.runoff2022?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
+      ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
@@ -3925,6 +3925,12 @@ function renderPrediction(pane){
 function renderForecast(pane){
   const fd=$('filter-days');
   const daysVal=effectiveDays();
+  // runoff-only countries (round 1 done, e.g. Brazil after 4 Oct 2026): the
+  // forecast tab drops every round-1 card and defaults the map to the runoff
+  // layer, so the page is dedicated to the head-to-head race
+  const RO_ONLY=!!(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffOnly);
+  if(RO_ONLY){ if(FC_MODE!=='res'&&FC_MODE!=='runoff') FC_MODE='runoff'; }
+  else if(FC_MODE==='runoff') FC_MODE='proj';
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
   const methodVal=$('filter-method')?$('filter-method').value:'';
   let filtered=recentPolls(POLLS,daysVal);
@@ -4031,11 +4037,12 @@ function renderForecast(pane){
 
   // Second-round runoff card (two-round presidential only)
   let runoffHtml='';
-  let roLead=null;
+  let roLead=null, roCache=null;
   const rDateNote=META.election_date_runoff?' ('+META.election_date_runoff+')':'';
   if(MAP_ONLY){
     const ro=runoffForecast(avg, filtered, sim);
     if(ro){
+      roCache=ro;
       const cA=PARTY_META[ro.a]?PARTY_META[ro.a].color:'#888';
       const cB=PARTY_META[ro.b]?PARTY_META[ro.b].color:'#888';
       const h2a=ro.winA/3000, h2b=1-h2a;
@@ -4304,7 +4311,7 @@ function renderForecast(pane){
         <span class="fc-headline-label" style="color:${leadColor}">${leadOutcome} ${HIDE_BLOCS?t('to win','kazanacak'):t('majority','çoğunluk')}</span>
         <span class="fc-headline-num">${leadPct.toFixed(1)}%</span>
       </div>
-      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${t('first round','ilk tur')} ${TREND_CONF?TREND_CONF.electionDate:''}`:`${methodNameShort()} · ${seatsDesc()} ${T.seats}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`} · seeded, reproducible</div>
+      <div class="hero-date">${sim.nSims.toLocaleString()} ${t('simulations','simülasyon')} · ${t('national polling error','ulusal anket hatası')} (σ≈${SEAT_BASED?fmt(2.2,1)+' seats':fmt(forecastSigma(avg,filtered.length),1)+'pp'}) · ${MAP_ONLY?`${SEATS_TOTAL} ${unitLabel()} · ${RO_ONLY?`${t('runoff','ikinci tur')} ${META.election_date_runoff||''}`:`${t('first round','ilk tur')} ${TREND_CONF?TREND_CONF.electionDate:''}`}`:`${methodNameShort()} · ${seatsDesc()} ${T.seats}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`} · seeded, reproducible</div>
     </div>
 
     ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday}</div>
@@ -4322,9 +4329,9 @@ function renderForecast(pane){
 
     ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div></div>
       <div class="map-toggle-row" style="justify-content:flex-end">
-        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>
+        ${RO_ONLY?'':`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>`}
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
-        ${MAP_ONLY&&MAP_CONF()&&MAP_CONF().runoff2022?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
+        ${MAP_ONLY&&MAP_CONF()&&(MAP_CONF().runoff2022||MAP_CONF().runoff2026)?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
         ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
@@ -4339,14 +4346,14 @@ function renderForecast(pane){
 
     ${regionHtml}
 
-    ${MAP_ONLY?firstRoundCard(sim):''}
+    ${MAP_ONLY&&!RO_ONLY?firstRoundCard(sim):''}
     ${runoffHtml}
 
     ${directHtml}
 
     ${constHtml}
 
-    <div class="fc-section"><div class="bar"></div>${T.probabilities}</div>
+    ${RO_ONLY?'':`<div class="fc-section"><div class="bar"></div>${T.probabilities}</div>`}
 
     ${HIDE_BLOCS?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
       ${majorityBar}
@@ -4362,11 +4369,11 @@ function renderForecast(pane){
 
     ${coalHtml}
 
-    <div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','BİRİNCİ TUR LİDERİ'):T.largestParty}</div></div>
+    ${RO_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','BİRİNCİ TUR LİDERİ'):T.largestParty}</div></div>
       ${largestRows}
-    </div>
+    </div>`}
 
-    ${SEAT_BASED?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.voteShare}</div></div>
+    ${SEAT_BASED||RO_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.voteShare}</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations${MAP_ONLY||THRESHOLD<=0?'':` · dashed line = ${THRESHOLD}% threshold`}</div>
@@ -4392,7 +4399,10 @@ function renderForecast(pane){
         methodName:methodNameShort(),
         sigmaDesc:SEAT_BASED?fmt(2.2,1)+' '+T.seats:fmt(forecastSigma(avg,filtered.length),1)+'pp',
         leadColor:leadColor, leadOutcome:leadOutcome, leadPct:leadPct,
-        fOrder:fOrder, onlyParties:null, medVotes:medVotes, detSeats:detSeats
+        fOrder:RO_ONLY&&roCache?[roCache.a,roCache.b]:fOrder,
+        onlyParties:RO_ONLY&&roCache?[roCache.a,roCache.b]:null,
+        medVotes:RO_ONLY&&roCache?{[roCache.a]:roCache.aN,[roCache.b]:roCache.bN}:medVotes,
+        detSeats:RO_ONLY?{}:detSeats
       });
       downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-forecast.png');
     });

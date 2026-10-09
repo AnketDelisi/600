@@ -1126,14 +1126,18 @@ function renderTrendChart(canvas, polls){
   canvas.style.width=W+'px'; canvas.style.height=H+'px';
   ctx.setTransform(2,0,0,2,0,0);
 
-  // Collect data points: group by date, average
+  // Collect data points: group by date, average. In runoff mode the series
+  // come from the head-to-head pairs (p.runoff) instead of first-round votes.
+  const roMode=TREND_MODE==='ro';
   const byDate={};
   polls.forEach(p=>{
+    if(roMode&&!p.runoff) return;
+    const src=roMode?p.runoff:p.votes;
     if(!byDate[p.date]) byDate[p.date]={};
     for(const pid of PARTY_ORDER){
-      if(p.votes[pid]!==undefined){
+      if(src[pid]!==undefined){
         if(!byDate[p.date][pid]) byDate[p.date][pid]=[];
-        byDate[p.date][pid].push(p.votes[pid]);
+        byDate[p.date][pid].push(src[pid]);
       }
     }
   });
@@ -1402,6 +1406,42 @@ function renderPollsTable(polls){
   return html;
 }
 
+/* ---------- runoff (head-to-head) polls table ---------- */
+// Separate from the first-round table: only polls carrying a p.runoff pair,
+// with each pollster's measured error from the first round next to the
+// head-to-head numbers it feeds into the runoff average.
+function renderRunoffTable(polls){
+  const ro=polls.filter(p=>p.runoff&&
+    (p.runoff.lula!==undefined||p.runoff.flavio!==undefined));
+  if(!ro.length) return '';
+  const frM=firstRoundMAE();
+  let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Runoff polls (head-to-head)','\u0130kinci tur anketleri (ba\u015fa ba\u015f)')}</div></div>
+    <div style="overflow-x:auto">
+    <table class="polls-table compact-table"><thead><tr>
+      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th>
+      <th class="c" title="${t('Pollster error in the 4 Oct first round (their final poll vs the actual result); runoff weight = 1/MAE','Anket\u00e7inin 4 Ekim ilk turundaki hatas\u0131 (son anketi, ger\u00e7ek sonuca g\u00f6re); ikinci tur a\u011f\u0131rl\u0131\u011f\u0131 = 1/MAE')}">${t('R1 MAE','1T HATA')}</th>
+      <th class="c">${partyCode('lula')}</th><th class="c">${partyCode('flavio')}</th>
+      <th class="c">${t('Lead','Fark')}</th>
+      </tr></thead><tbody>`;
+  ro.slice(0,60).forEach(p=>{
+    const l=p.runoff.lula, f=p.runoff.flavio;
+    const lc=(PARTY_META.lula||{}).color||'#888';
+    const fc=(PARTY_META.flavio||{}).color||'#888';
+    const mae=frM[p.pollster];
+    const lead=(l!==undefined&&f!==undefined)
+      ?(l>f?['lula',l-f]:['flavio',f-l]):null;
+    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
+      <td class="num c" style="font-weight:700">${mae?fmt(mae,2):'\u2014'}</td>
+      <td class="num c" style="color:${lc};font-weight:${lead&&lead[0]==='lula'?'900':'400'};background:${lead&&lead[0]==='lula'?lc+'22':''}">${l!==undefined?pct(l):'\u2014'}</td>
+      <td class="num c" style="color:${fc};font-weight:${lead&&lead[0]==='flavio'?'900':'400'};background:${lead&&lead[0]==='flavio'?fc+'22':''}">${f!==undefined?pct(f):'\u2014'}</td>
+      <td class="num c" style="color:${lead?(PARTY_META[lead[0]]||{}).color:'#888'};font-weight:700">${lead?partyCode(lead[0])+' +'+fmt(lead[1],1):'\u2014'}</td>
+      </tr>`;
+  });
+  html+=`</tbody></table></div>
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Head-to-head shares are of decided voters; the runoff average weights each poll by 1/MAE measured in the first round','Ba\u015fa ba\u015f oranlar\u0131 karar\u0131n\u0131 vermi\u015f se\u00e7mene g\u00f6redir; ikinci tur ortalamas\u0131 her anketi ilk turda \u00f6l\u00e7\u00fclen 1/MAE ile a\u011f\u0131rl\u0131kland\u0131r\u0131r')}</div></div>`;
+  return html;
+}
+
 /* ---------- render state depth (Brazil) ---------- */
 // 27 UFs -> region, for the regional breakdown card. Keys match conf.gebiete (lowercase).
 const BRAZIL_REGIONS={
@@ -1475,6 +1515,7 @@ let PARL_MODE='proj';    // 'proj' or '2022'
 let PARL_VIEW='seats';   // 'seats' or 'map'
 let MAP_LAYER=0;         // 0 = main map, 1 = map2 (lower/higher layer)
 let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
+let TREND_MODE='fr';     // poll trend chart: 'fr' (first round) or 'ro' (runoff)
 let MAP_COLOR='party';   // district map coloring: 'party' or 'bloc' (Sweden)
 
 function normalizeTo(src, total){
@@ -3514,14 +3555,47 @@ function gaussianSample(rng){
 }
 
 function weightedAvgRunoff(polls, cand){
+  const frM=firstRoundMAE();
   let wSum=0,wTotal=0;
   for(const p of polls){
     const v=p.runoff[cand];
     if(v===undefined) continue;
-    const w=(p.n||1000)*pollsterWeight(p.pollster)*recencyWeight(p.date);
+    // Runoff weighting: the pollster's measured error in the first round
+    // (their final pre-4-Oct poll vs the actual result) when available - the
+    // freshest possible accuracy signal, from this very election - falling
+    // back to the historical table. Floored so one lucky pollster cannot
+    // dominate.
+    const mae=frM[p.pollster];
+    const pw=mae?1/Math.max(mae,0.5):pollsterWeight(p.pollster);
+    const w=(p.n||1000)*pw*recencyWeight(p.date);
     wSum+=v*w; wTotal+=w;
   }
   return wTotal>0?wSum/wTotal:null;
+}
+
+// Per-pollster MAE from the 2026 first round: each pollster's final poll
+// before election day scored against the actual result across the six
+// tracked candidates. Recomputed once per country load; empty when the
+// country has no firstRoundResult (i.e. before round 1).
+let FR_MAE=null;
+function firstRoundMAE(){
+  if(FR_MAE!==null) return FR_MAE;
+  FR_MAE={};
+  const conf=COUNTRIES[COUNTRY]||{};
+  const fr=conf.firstRoundResult;
+  if(!fr) return FR_MAE;
+  const frDate=conf.firstRoundDate||'2026-10-04';
+  const best={};
+  POLLS.forEach(p=>{
+    if(!p.votes||!p.date||p.date>frDate) return;
+    const ks=Object.keys(p.votes).filter(k=>fr[k]!=null);
+    if(ks.length<3) return;
+    const err=ks.reduce((a,k)=>a+Math.abs(p.votes[k]-fr[k]),0)/ks.length;
+    const cur=best[p.pollster];
+    if(!cur||p.date>=cur.date) best[p.pollster]={date:p.date,err:err};
+  });
+  Object.keys(best).forEach(ps=>{FR_MAE[ps]=best[ps].err});
+  return FR_MAE;
 }
 
 // Head-to-head runoff forecast from polls that carry a "runoff" pair.
@@ -5141,6 +5215,10 @@ function renderPollsTab(){
     <div class="page-top-main">
       ${renderHero(avg, filtered)}
       <div class="card" style="height:100%"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
+        ${filtered.some(p=>p.runoff)?`<div class="map-toggle-row" style="margin-left:auto">
+          <button class="map-toggle-btn parl-btn trend-mode-btn${TREND_MODE==='fr'?' active':''}" data-trendmode="fr">${t('FIRST ROUND','\u0130LK TUR')}</button>
+          <button class="map-toggle-btn parl-btn trend-mode-btn${TREND_MODE==='ro'?' active':''}" data-trendmode="ro">${t('RUNOFF','\u0130K\u0130NC\u0130 TUR')}</button>
+        </div>`:''}
         <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div>
         ${TREND_CONF?`<div style="font-size:10px;color:var(--c-text-muted);padding:6px 12px 8px">◆ ${t('dashed diamond = value extrapolated to election day','kesikli elmas = seçim gününe yansıtılan değer')} (${TREND_CONF.electionDate})</div>`:''}
@@ -5159,6 +5237,7 @@ function renderPollsTab(){
 
         if(!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable) html+=renderConstituencyTable(avg);
   html+=renderPollsTable(filtered);
+  html+=renderRunoffTable(filtered);
   html+=`</div>`;
   pane.innerHTML=html;
 
@@ -5168,6 +5247,18 @@ function renderPollsTab(){
   requestAnimationFrame(()=>{
     const canvas=$('trend-canvas');
     if(canvas) renderTrendChart(canvas, filtered);
+    pane.querySelectorAll('.trend-mode-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        TREND_MODE=btn.dataset.trendmode||'fr';
+        const cc=$('trend-canvas');
+        if(cc) renderTrendChart(cc, filtered);
+        // the generic .parl-btn handler re-renders this tab on any click
+        // (bindParlToggles), so match the live buttons by mode, not identity
+        pane.querySelectorAll('.trend-mode-btn').forEach(b=>
+          b.classList.toggle('active',
+            (b.dataset.trendmode||'fr')===TREND_MODE));
+      });
+    });
     fitSideCard();
   });
   bindParlToggles(avg);

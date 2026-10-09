@@ -2919,10 +2919,10 @@ async function renderPoster(opts){
     const boxW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
     const rowsN=Math.ceil(grid.length/2);
     const tilesH=(opts.tiles&&opts.tiles.length)
-      ?(opts.tiles.length===1?156:116):0;
+      ?(opts.tiles.length===1?126:96):0;
     const avail=H-30-y-tilesH-10;
     const gh=Math.max(18,Math.min(44,Math.floor(avail/rowsN)-4));
-    const gap=40;
+    const gap=12;
     const gw=Math.floor((boxW-gap)/2);
     const nameS=Math.max(10,Math.round(gh*0.42));
     const shareS=Math.max(9,Math.round(gh*0.4));
@@ -2961,44 +2961,40 @@ async function renderPoster(opts){
     });
     y+=rowsN*(gh+4)+10;
   }
-  // probability tiles: one big (government/coalition majority) or two medium
-  // (runoff win probabilities)
+  // probability tiles: one (government/coalition majority) or two (runoff
+  // win probabilities); kept compact so the small-party grid gets the space
   if(opts.tiles&&opts.tiles.length){
     const single=opts.tiles.length===1;
-    const tw=single?470:300, th3=single?150:110;
+    const tw=single?470:300, th3=single?120:90;
     let tx=X;
     opts.tiles.slice(0,2).forEach(tl=>{
       ctx.fillStyle=tl.color;
       ctx.fillRect(tx,y+6,tw,th3);
       const tc=posterTextColor(tl.color);
       ctx.fillStyle=tc;
-      let lsize=single?20:14;
+      let lsize=single?18:13;
       const labelTxt=String(tl.label||'').toUpperCase();
       ctx.font='700 '+lsize+'px '+FONT;
-      while(lsize>11&&ctx.measureText(labelTxt).width>tw-28){
+      while(lsize>10&&ctx.measureText(labelTxt).width>tw-28){
         lsize--;
         ctx.font='700 '+lsize+'px '+FONT;
       }
-      ctx.fillText(labelTxt,tx+14,y+(single?48:40));
-      ctx.font='900 '+(single?78:44)+'px '+MONO;
-      ctx.fillText(tl.value,tx+14,y+(single?132:92));
+      ctx.fillText(labelTxt,tx+14,y+(single?42:32));
+      ctx.font='900 '+(single?64:38)+'px '+MONO;
+      ctx.fillText(tl.value,tx+14,y+(single?104:76));
       tx+=tw+12;
     });
   }
-  // parliament arc: bottom right when the compact grid claims the bottom
-  // left, else bottom left
-  const arcRight=grid.length>0;
+  // parliament arc: bottom right corner, always
   if(arcImg){
-    const ax=arcRight?920:X, ay=H-30-(arcRight?240:270),
-          aw=arcRight?600:580, ah=arcRight?240:270;
+    const ax=W-40-560, ay=H-30-210, aw=560, ah=210;
     const sc=Math.min(aw/arcImg.width, ah/arcImg.height);
     const dw=arcImg.width*sc, dh=arcImg.height*sc;
     ctx.drawImage(arcImg,ax+(aw-dw)/2,ay+(ah-dh)/2,dw,dh);
   }
-  // coloured district map (right)
+  // coloured district map: the widest region above the arc
   if(mapImg){
-    const mx=690, my=150, mw=W-mx-40;
-    const mh=arcRight?(H-150-300):(H-my-40);
+    const mx=620, my=140, mw=W-mx-40, mh=H-140-30-220;
     const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
     const dw=mapImg.width*sc, dh=mapImg.height*sc;
     ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);

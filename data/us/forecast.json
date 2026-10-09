@@ -1,9 +1,9 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-08T17:55:13Z",
+  "generated": "2026-10-09T07:45:34Z",
   "environment": {
     "election": "2026-11-03",
-    "days_to_election": 26,
+    "days_to_election": 25,
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
     "rating_margin_table": {
@@ -673,18 +673,24 @@
         },
         "lean": "Likely D",
         "leader": "D",
-        "margin": 9.1,
-        "dem_pct": 93.1,
-        "rep_pct": 6.9,
+        "margin": 9.0,
+        "dem_pct": 92.8,
+        "rep_pct": 7.2,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 50.1,
-          "rep": 40.7,
+          "dem": 50.2,
+          "rep": 41.0,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "East Carolina University",
+              "dates": "September 30 – October 3, 2026",
+              "dem": 50.0,
+              "rep": 43.0
+            },
             {
               "pollster": "Big Data Poll",
               "dates": "September 27–29, 2026",
@@ -1295,18 +1301,24 @@
         },
         "lean": "Lean R",
         "leader": "R",
-        "margin": 7.0,
-        "dem_pct": 12.0,
-        "rep_pct": 88.0,
+        "margin": 6.8,
+        "dem_pct": 12.6,
+        "rep_pct": 87.4,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 42.9,
-          "rep": 48.8,
+          "dem": 43.1,
+          "rep": 48.7,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "St. Pete Polls",
+              "dates": "October 5–7, 2026",
+              "dem": 45.0,
+              "rep": 47.0
+            },
             {
               "pollster": "YouGov",
               "dates": "September 28 – October 5, 2026",
@@ -1656,18 +1668,25 @@
         },
         "lean": "Lean D",
         "leader": "D",
-        "margin": 3.6,
-        "dem_pct": 73.5,
-        "rep_pct": 26.5,
+        "margin": 3.5,
+        "dem_pct": 73.1,
+        "rep_pct": 26.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 47.7,
+          "dem": 47.6,
           "rep": 44.1,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "co/efficient",
+              "dates": "October 5–6, 2026",
+              "partisan": "R",
+              "dem": 45.0,
+              "rep": 46.0
+            },
             {
               "pollster": "SSRS",
               "dates": "September 29 – October 5, 2026",
@@ -3460,8 +3479,8 @@
     "expected_r_seats": 47.2,
     "expected_i_seats": 1.0,
     "majority": {
-      "dem_pct": 85.1,
-      "rep_pct": 14.9
+      "dem_pct": 85.0,
+      "rep_pct": 15.0
     },
     "distribution_buckets": [
       {
@@ -3474,7 +3493,7 @@
       },
       {
         "seats": 49,
-        "pct": 6.0
+        "pct": 6.1
       },
       {
         "seats": 51,
@@ -3482,7 +3501,7 @@
       },
       {
         "seats": 53,
-        "pct": 33.9
+        "pct": 33.8
       },
       {
         "seats": 55,
@@ -12098,6 +12117,82 @@
         }
       },
       {
+        "state": "Kentucky",
+        "district": "6",
+        "incumbent": "Andy Barr",
+        "party": "R",
+        "rating": "Lean R",
+        "ratings": {
+          "cook": "Likely R",
+          "ie": "Lean R",
+          "sabato": "Lean R"
+        },
+        "lean": "Tossup",
+        "leader": "D",
+        "margin": 2.3,
+        "dem_pct": 66.1,
+        "rep_pct": 33.9,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 45.6,
+          "rep": 41.2,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 5,
+          "n_sponsored": 5,
+          "polls": [
+            {
+              "pollster": "Change Research",
+              "dates": "September 29 – October 5, 2026",
+              "partisan": "D",
+              "dem": 47.0,
+              "rep": 38.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "September 30 – October 4, 2026",
+              "partisan": "D",
+              "dem": 47.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "September 25–30, 2026",
+              "partisan": "D",
+              "dem": 42.0,
+              "rep": 37.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "August 17–23, 2026",
+              "partisan": "D",
+              "dem": 45.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "DCCC",
+              "dates": "July 29–30, 2026",
+              "partisan": "D",
+              "dem": 47.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "June 24–28, 2026",
+              "partisan": "D",
+              "dem": 39.0,
+              "rep": 42.0
+            }
+          ],
+          "names": {
+            "d": "Zach Dembo",
+            "r": "Ralph Alvarado"
+          }
+        }
+      },
+      {
         "state": "Texas",
         "district": "34",
         "incumbent": "Vicente Gonzalez",
@@ -12943,68 +13038,6 @@
         "polls": null
       },
       {
-        "state": "Kentucky",
-        "district": "6",
-        "incumbent": "Andy Barr",
-        "party": "R",
-        "rating": "Lean R",
-        "ratings": {
-          "cook": "Likely R",
-          "ie": "Lean R",
-          "sabato": "Lean R"
-        },
-        "lean": "Tossup",
-        "leader": "R",
-        "margin": 0.1,
-        "dem_pct": 49.5,
-        "rep_pct": 50.5,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 43.2,
-          "rep": 42.5,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 4,
-          "n_sponsored": 4,
-          "polls": [
-            {
-              "pollster": "GQR",
-              "dates": "September 25–30, 2026",
-              "partisan": "D",
-              "dem": 42.0,
-              "rep": 37.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "August 17–23, 2026",
-              "partisan": "D",
-              "dem": 45.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "DCCC",
-              "dates": "July 29–30, 2026",
-              "partisan": "D",
-              "dem": 47.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "GQR",
-              "dates": "June 24–28, 2026",
-              "partisan": "D",
-              "dem": 39.0,
-              "rep": 42.0
-            }
-          ],
-          "names": {
-            "d": "Zach Dembo",
-            "r": "Ralph Alvarado"
-          }
-        }
-      },
-      {
         "state": "Virginia",
         "district": "1",
         "incumbent": "Rob Wittman",
@@ -13163,18 +13196,14 @@
         "polls": null
       }
     ],
-    "expected_d_seats": 239.2,
-    "expected_r_seats": 195.8,
+    "expected_d_seats": 239.3,
+    "expected_r_seats": 195.7,
     "expected_i_seats": 0.0,
     "majority": {
-      "dem_pct": 91.2,
-      "rep_pct": 8.8
+      "dem_pct": 91.5,
+      "rep_pct": 8.6
     },
     "distribution_buckets": [
-      {
-        "seats": 195,
-        "pct": 0.1
-      },
       {
         "seats": 197,
         "pct": 0.1
@@ -13197,7 +13226,7 @@
       },
       {
         "seats": 207,
-        "pct": 0.6
+        "pct": 0.5
       },
       {
         "seats": 209,
@@ -13205,11 +13234,11 @@
       },
       {
         "seats": 211,
-        "pct": 1.0
+        "pct": 0.9
       },
       {
         "seats": 213,
-        "pct": 1.4
+        "pct": 1.3
       },
       {
         "seats": 215,
@@ -13217,27 +13246,27 @@
       },
       {
         "seats": 217,
-        "pct": 2.4
+        "pct": 2.1
       },
       {
         "seats": 219,
-        "pct": 2.4
+        "pct": 2.6
       },
       {
         "seats": 221,
-        "pct": 2.8
+        "pct": 2.7
       },
       {
         "seats": 223,
-        "pct": 3.3
+        "pct": 3.2
       },
       {
         "seats": 225,
-        "pct": 3.7
+        "pct": 3.8
       },
       {
         "seats": 227,
-        "pct": 4.2
+        "pct": 4.1
       },
       {
         "seats": 229,
@@ -13245,55 +13274,55 @@
       },
       {
         "seats": 231,
-        "pct": 4.4
+        "pct": 4.3
       },
       {
         "seats": 233,
-        "pct": 4.8
-      },
-      {
-        "seats": 235,
         "pct": 5.0
       },
       {
+        "seats": 235,
+        "pct": 4.8
+      },
+      {
         "seats": 237,
-        "pct": 5.1
+        "pct": 5.2
       },
       {
         "seats": 239,
-        "pct": 4.7
+        "pct": 4.9
       },
       {
         "seats": 241,
-        "pct": 4.5
+        "pct": 4.3
       },
       {
         "seats": 243,
-        "pct": 4.6
+        "pct": 4.7
       },
       {
         "seats": 245,
-        "pct": 4.0
+        "pct": 4.1
       },
       {
         "seats": 247,
-        "pct": 3.9
+        "pct": 3.8
       },
       {
         "seats": 249,
-        "pct": 4.0
+        "pct": 4.1
       },
       {
         "seats": 251,
-        "pct": 3.3
+        "pct": 3.4
       },
       {
         "seats": 253,
-        "pct": 3.0
+        "pct": 3.1
       },
       {
         "seats": 255,
-        "pct": 2.7
+        "pct": 2.6
       },
       {
         "seats": 257,
@@ -13301,7 +13330,7 @@
       },
       {
         "seats": 259,
-        "pct": 2.2
+        "pct": 2.3
       },
       {
         "seats": 261,
@@ -13329,7 +13358,7 @@
       },
       {
         "seats": 273,
-        "pct": 0.7
+        "pct": 0.8
       },
       {
         "seats": 275,
@@ -13341,15 +13370,15 @@
       },
       {
         "seats": 279,
-        "pct": 0.3
+        "pct": 0.4
       },
       {
         "seats": 281,
-        "pct": 0.3
+        "pct": 0.4
       },
       {
         "seats": 283,
-        "pct": 0.3
+        "pct": 0.2
       },
       {
         "seats": 285,
@@ -13368,11 +13397,7 @@
         "pct": 0.1
       },
       {
-        "seats": 295,
-        "pct": 0.1
-      },
-      {
-        "seats": 297,
+        "seats": 293,
         "pct": 0.1
       }
     ]
@@ -14942,8 +14967,8 @@
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 47.9,
-          "rep": 40.2,
+          "dem": 48.0,
+          "rep": 40.3,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -14952,6 +14977,12 @@
               "partisan": "D",
               "dem": 49.0,
               "rep": 45.0
+            },
+            {
+              "pollster": "Equis Research",
+              "dates": "September 1–9, 2026",
+              "dem": 49.0,
+              "rep": 43.0
             },
             {
               "pollster": "Arizona State University",
@@ -15483,18 +15514,25 @@
         },
         "lean": "Lean D",
         "leader": "D",
-        "margin": 4.5,
-        "dem_pct": 78.5,
-        "rep_pct": 21.5,
+        "margin": 4.1,
+        "dem_pct": 76.6,
+        "rep_pct": 23.4,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 49.1,
-          "rep": 44.0,
+          "dem": 48.6,
+          "rep": 44.1,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "co/efficient",
+              "dates": "October 5–6, 2026",
+              "partisan": "R",
+              "dem": 43.0,
+              "rep": 45.0
+            },
             {
               "pollster": "SSRS",
               "dates": "September 29 – October 5, 2026",
@@ -15761,18 +15799,24 @@
         },
         "lean": "Lean R",
         "leader": "R",
-        "margin": 3.1,
-        "dem_pct": 29.4,
-        "rep_pct": 70.6,
+        "margin": 2.8,
+        "dem_pct": 31.0,
+        "rep_pct": 69.0,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 43.1,
-          "rep": 47.0,
+          "dem": 43.4,
+          "rep": 46.9,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "St. Pete Polls",
+              "dates": "October 5–7, 2026",
+              "dem": 45.0,
+              "rep": 45.0
+            },
             {
               "pollster": "YouGov",
               "dates": "September 28 – October 5, 2026",

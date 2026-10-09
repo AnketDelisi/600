@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-08T17:54:50Z",
+  "scraped_at": "2026-10-09T07:45:05Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -187,10 +187,16 @@
     "Colorado": null,
     "Delaware": null,
     "Florida": {
-      "dem": 42.9,
-      "rep": 48.8,
+      "dem": 43.1,
+      "rep": 48.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "St. Pete Polls",
+          "dates": "October 5–7, 2026",
+          "dem": 45.0,
+          "rep": 47.0
+        },
         {
           "pollster": "YouGov",
           "dates": "September 28 – October 5, 2026",
@@ -1742,10 +1748,16 @@
     "New Jersey": null,
     "New Mexico": null,
     "North Carolina": {
-      "dem": 50.1,
-      "rep": 40.7,
+      "dem": 50.2,
+      "rep": 41.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "East Carolina University",
+          "dates": "September 30 – October 3, 2026",
+          "dem": 50.0,
+          "rep": 43.0
+        },
         {
           "pollster": "Big Data Poll",
           "dates": "September 27–29, 2026",
@@ -2004,10 +2016,17 @@
       }
     },
     "Ohio": {
-      "dem": 47.7,
+      "dem": 47.6,
       "rep": 44.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "co/efficient",
+          "dates": "October 5–6, 2026",
+          "partisan": "R",
+          "dem": 45.0,
+          "rep": 46.0
+        },
         {
           "pollster": "SSRS",
           "dates": "September 29 – October 5, 2026",
@@ -2732,8 +2751,8 @@
     },
     "Alaska": null,
     "Arizona": {
-      "dem": 47.9,
-      "rep": 40.2,
+      "dem": 48.0,
+      "rep": 40.3,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -2742,6 +2761,12 @@
           "partisan": "D",
           "dem": 49.0,
           "rep": 45.0
+        },
+        {
+          "pollster": "Equis Research",
+          "dates": "September 1–9, 2026",
+          "dem": 49.0,
+          "rep": 43.0
         },
         {
           "pollster": "Arizona State University",
@@ -3012,10 +3037,16 @@
       }
     },
     "Florida": {
-      "dem": 43.1,
-      "rep": 47.0,
+      "dem": 43.4,
+      "rep": 46.9,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "St. Pete Polls",
+          "dates": "October 5–7, 2026",
+          "dem": 45.0,
+          "rep": 45.0
+        },
         {
           "pollster": "YouGov",
           "dates": "September 28 – October 5, 2026",
@@ -4257,10 +4288,17 @@
       }
     },
     "Ohio": {
-      "dem": 49.1,
-      "rep": 44.0,
+      "dem": 48.6,
+      "rep": 44.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "co/efficient",
+          "dates": "October 5–6, 2026",
+          "partisan": "R",
+          "dem": 43.0,
+          "rep": 45.0
+        },
         {
           "pollster": "SSRS",
           "dates": "September 29 – October 5, 2026",
@@ -5340,12 +5378,26 @@
       }
     },
     "Kentucky 6": {
-      "dem": 43.2,
-      "rep": 42.5,
+      "dem": 45.6,
+      "rep": 41.2,
       "source": "Simple avg (latest 5 polls)",
-      "n_polls": 4,
-      "n_sponsored": 4,
+      "n_polls": 5,
+      "n_sponsored": 5,
       "polls": [
+        {
+          "pollster": "Change Research",
+          "dates": "September 29 – October 5, 2026",
+          "partisan": "D",
+          "dem": 47.0,
+          "rep": 38.0
+        },
+        {
+          "pollster": "Lake Research Partners",
+          "dates": "September 30 – October 4, 2026",
+          "partisan": "D",
+          "dem": 47.0,
+          "rep": 40.0
+        },
         {
           "pollster": "GQR",
           "dates": "September 25–30, 2026",

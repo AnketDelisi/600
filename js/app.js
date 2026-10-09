@@ -2777,10 +2777,12 @@ async function renderPoster(opts){
   const arcImg=await svgElementToImg(opts.arcSvg,true);
   const mapImg=await svgElementToImg(opts.mapSvg);
 
-  const X=40, TH=86, barW=420, totalW=TH+6+barW+8+92;
-  // many big rows plus a grid: rows give a little height back so the small
-  // boxes can be substantially taller
+  const X=40, barW=420;
+  // consistent spacing across every country: the box always leaves a 10px
+  // gap inside its row slot, so tall and short grids alike breathe evenly
   const RH=(rows.length>=6&&grid.length)?84:96;
+  const TH=RH-10;
+  const totalW=TH+6+barW+8+92;
   const drawTile=(r,lg,yy,th)=>{
     ctx.fillStyle=r.color;
     ctx.fillRect(X,yy,th,th);
@@ -2812,38 +2814,40 @@ async function renderPoster(opts){
     ctx.fillRect(bx,y,barW,th);
     const tc=posterTextColor(r.color);
     ctx.fillStyle=tc;
-    // share + seats in the numbers font (right-aligned), then the name
-    // shrinks if it would collide with them
+    // right side: a fixed delta column (vote change by the share, seat change
+    // by the seats) so every row aligns identically
+    const DCOL=84;
     ctx.textAlign='right';
     ctx.font='700 36px '+MONO;
     const shareW=ctx.measureText(r.shareText||'').width;
-    ctx.fillText(r.shareText||'',bx+barW-14,y+46);
-    if(r.seatsText||r.momText){
+    ctx.fillText(r.shareText||'',bx+barW-14-DCOL,y+46);
+    if(r.seatsText){
       ctx.font='700 22px '+MONO;
-      const st=r.seatsText||'';
-      const dt=r.momText||'';
-      ctx.fillText(st+(dt?(st?'  ':''):'')+dt,bx+barW-14,y+74);
+      ctx.fillText(r.seatsText,bx+barW-14-DCOL,y+74);
+    }
+    if(r.dvText){
+      ctx.font='700 15px '+MONO;
+      ctx.fillText(r.dvText,bx+barW-14,y+46);
+    }
+    if(r.dsText){
+      ctx.font='700 13px '+MONO;
+      ctx.fillText(r.dsText,bx+barW-14,y+74);
     }
     ctx.textAlign='left';
     const nameTxt=String(r.name||'').toUpperCase();
+    const nameAvail=barW-DCOL-shareW-40;
     let nsize=40;
     ctx.font='700 '+nsize+'px '+FONT;
-    while(nsize>24&&ctx.measureText(nameTxt).width>barW-shareW-40){
+    while(nsize>24&&ctx.measureText(nameTxt).width>nameAvail){
       nsize-=2;
       ctx.font='700 '+nsize+'px '+FONT;
     }
     ctx.fillText(nameTxt,bx+14,y+46);
-    // ideology line (from the Wikipedia infoboxes), shrunk then ellipsised
+    // ideology: first item only, fixed size, ellipsised when needed
     if(r.ideology){
-      const avail=barW-shareW-40;
-      let isize=14;
-      let ideaTxt=r.ideology;
-      ctx.font='700 '+isize+'px '+FONT;
-      while(isize>10&&ctx.measureText(ideaTxt).width>avail){
-        isize--;
-        ctx.font='700 '+isize+'px '+FONT;
-      }
-      while(ideaTxt.length>8&&ctx.measureText(ideaTxt).width>avail){
+      let ideaTxt=String(r.ideology).split(',')[0].trim();
+      ctx.font='700 13px '+FONT;
+      while(ideaTxt.length>8&&ctx.measureText(ideaTxt).width>nameAvail){
         ideaTxt=ideaTxt.slice(0,-4)+'\u2026';
       }
       ctx.fillText(ideaTxt,bx+14,y+72);
@@ -2901,13 +2905,24 @@ async function renderPoster(opts){
       const tc=posterTextColor(r.color);
       ctx.fillStyle=tc;
       ctx.font='700 '+nameS+'px '+FONT;
-      ctx.fillText(String(r.name||'').toUpperCase(),bx+7,gy+Math.round(gh*0.62));
+      ctx.fillText(String(r.name||'').toUpperCase(),bx+7,
+        gy+Math.round(gh*0.42));
+      if(r.ideology){
+        let it=String(r.ideology).split(',')[0].trim();
+        ctx.font='700 10px '+FONT;
+        while(it.length>6&&ctx.measureText(it).width>bw-14){
+          it=it.slice(0,-4)+'\u2026';
+        }
+        ctx.fillText(it,bx+7,gy+Math.round(gh*0.78));
+      }
       ctx.textAlign='right';
       ctx.font='700 '+shareS+'px '+MONO;
-      ctx.fillText(r.shareText||'',bx+bw-7,gy+Math.round(gh*0.36));
-      if(r.seatsText){
+      ctx.fillText((r.shareText||'')+(r.dvText?'  '+r.dvText:''),
+        bx+bw-7,gy+Math.round(gh*0.36));
+      if(r.seatsText||r.dsText){
         ctx.font='700 '+seatS+'px '+MONO;
-        ctx.fillText(r.seatsText,bx+bw-7,gy+Math.round(gh*0.82));
+        ctx.fillText((r.seatsText||'')+(r.dsText?'  '+r.dsText:''),
+          bx+bw-7,gy+Math.round(gh*0.84));
       }
       ctx.textAlign='left';
     });
@@ -4851,21 +4866,36 @@ function renderForecast(pane){
         // the rest go to the compact grid
         let bigN=eligible.filter(p=>(sim.means[p]||0)>=8).length;
         bigN=Math.max(5,Math.min(7,bigN,eligible.length));
+        const leR=LAST_ELECTION.results||{};
+        const leS=LAST_ELECTION.seats||{};
+        const deltaTexts=(p)=>{
+          const dv=mean(sim.votesBy[p])-(leR[p]||0);
+          const ds=Math.round(sim.means[p])-(leS[p]||0);
+          return {
+            dvText:(!SEAT_BASED&&Math.abs(dv)>=0.05)
+              ?(dv>0?'\u25b2+'+fmt(dv,1):'\u25bc'+fmt(Math.abs(dv),1)):'',
+            dsText:(!MAP_ONLY&&ds!==0)
+              ?(ds>0?'\u25b2+'+ds:'\u25bc'+Math.abs(ds)):''
+          };
+        };
         eligible.slice(0,bigN).forEach(p=>{
-          const mom=partyMomentum(POLLS,p,14,30);
+          const d=deltaTexts(p);
           rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
             shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
             seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
-            momText:mom===null?'':(mom>0?'\u25b2+'+fmt(mom,1):'\u25bc'+fmt(mom,1)),
+            dvText:d.dvText, dsText:d.dsText,
             ideology:(PARTY_META[p]||{}).ideology||'',
             color:(PARTY_META[p]||{}).color||'#888',
             logo:PARTY_LOGOS[p]||null,
             firstText:showFirst?'%'+fmt(100*(sim.largest[p]||0)/nS,1):''});
         });
         eligible.slice(bigN,bigN+12).forEach(p=>{
+          const d=deltaTexts(p);
           grid.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
             shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
             seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
+            dvText:d.dvText, dsText:d.dsText,
+            ideology:(PARTY_META[p]||{}).ideology||'',
             color:(PARTY_META[p]||{}).color||'#888',
             logo:PARTY_LOGOS[p]||null});
         });

@@ -19652,7 +19652,8 @@ saxony_anhalt: {
     // n-1 and the runner-up 1, flipping to an even split when the top
     // two are within 2pp - the historical block-vote pattern.
     // Senate's 59 block-voting districts: provinces + the
-    // Canary/Balearic islands (NUTS3) - built by
+    // Canary/Balearic islands - geometry from the province
+    // map (mainland) + Eurostat NUTS 01M (islands); built by
     // scraper/build_spain_senate.py.
     senate: {
           "svg": "img/spain_senate.svg",
@@ -20785,9 +20786,56 @@ saxony_anhalt: {
                 "lanzarote": "canarias"
           },
           "seatDistricts": {
+                "coruna": 4,
+                "lugo": 4,
+                "ourense": 4,
+                "pontevedra": 4,
+                "asturias": 4,
+                "cantabria": 4,
+                "alava": 4,
+                "gipuzkoa": 4,
+                "bizkaia": 4,
+                "navarra": 4,
+                "rioja": 4,
+                "huesca": 4,
+                "teruel": 4,
+                "zaragoza": 4,
+                "madrid": 4,
+                "avila": 4,
+                "burgos": 4,
+                "leon": 4,
+                "palencia": 4,
+                "salamanca": 4,
+                "segovia": 4,
+                "soria": 4,
+                "valladolid": 4,
+                "zamora": 4,
+                "albacete": 4,
+                "ciudad_real": 4,
+                "cuenca": 4,
+                "guadalajara": 4,
+                "toledo": 4,
+                "badajoz": 4,
+                "caceres": 4,
+                "barcelona": 4,
+                "girona": 4,
+                "lleida": 4,
+                "tarragona": 4,
+                "alicante": 4,
+                "castellon": 4,
+                "valencia": 4,
                 "eivissa_formentera": 1,
                 "mallorca": 3,
                 "menorca": 1,
+                "almeria": 4,
+                "cadiz": 4,
+                "cordoba": 4,
+                "granada": 4,
+                "huelva": 4,
+                "jaen": 4,
+                "malaga": 4,
+                "sevilla": 4,
+                "murcia": 4,
                 "ceuta": 2,
                 "melilla": 2,
                 "gran_canaria": 3,
@@ -20798,6 +20846,7 @@ saxony_anhalt: {
                 "la_palma": 1,
                 "lanzarote": 1
           },
+          "blockVote": true,
           "label": "Senate districts (59)",
           "national2021": {
                 "pp": 33.06,

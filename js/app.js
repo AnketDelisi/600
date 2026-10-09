@@ -1703,20 +1703,10 @@ function allocateUpper(avg){
       if(!sh) continue;
       const parts=PARTY_ORDER.map(p=>[p,sh[p]?sh[p].now:0]).filter(x=>x[1]>0);
       if(!parts.length) continue;
-      // Block voting is strongly disproportional: a slate sweeps all n seats
-      // when its share is large, splits 2-2 when the top two are close, and
-      // islands split 3-1-1. Super-proportional allocation (exponent ~2,
-      // largest remainder) reproduces all three patterns - verified against
-      // the 2023 Senate results shape.
-      const ex=parts.map(x=>[x[0],Math.pow(x[1]/100,2)]);
-      const tot=ex.reduce((a,x)=>a+x[1],0)||1;
-      const q=ex.map(x=>({p:x[0],exact:n*x[1]/tot}));
-      q.forEach(x=>{x.seat=Math.floor(x.exact)});
-      let g=q.reduce((a,x)=>a+x.seat,0);
-      q.sort((a,b)=>(b.exact-Math.floor(b.exact))
-        -(a.exact-Math.floor(a.exact)));
-      for(let i=0;g<n;i++,g++) q[i%q.length].seat++;
-      q.forEach(x=>{out[x.p]+=x.seat});
+      const votes={};
+      PARTY_ORDER.forEach(p=>{votes[p]=sh[p]?sh[p].now:0});
+      const split=blockVoteSeats(n, votes);
+      if(split) for(const p of Object.keys(split)) out[p]+=split[p];
     }
     return out;
   }
@@ -2243,10 +2233,44 @@ function runoffMapAvg(avg, filtered, sim){
 // conf.seatDistricts (per-district D'Hondt), Latvia/Estonia/Austria from a
 // conf.seatDots block, Czechia's map2 regions from conf.regions (first
 // scrutiny, LR-Imperiali). Returned grouped by party, largest first.
+// Super-proportional seat split used by the Spain Senate block-vote model
+// (and its map dots): n seats from party shares with exponent ~2, largest
+// remainder - reproduces 3-1, 2-2, 4-0 and island 3-1-1 patterns.
+function blockVoteSeats(n, votes){
+  const seats={};
+  const ex=PARTY_ORDER.map(p=>[p,Math.pow((votes[p]||0)/100,2)])
+    .filter(x=>x[1]>0);
+  if(!ex.length) return null;
+  const tot=ex.reduce((a,x)=>a+x[1],0)||1;
+  const q=ex.map(x=>({p:x[0],exact:n*x[1]/tot}));
+  q.forEach(x=>{x.seat=Math.floor(x.exact)});
+  let g=q.reduce((a,x)=>a+x.seat,0);
+  q.sort((a,b)=>(b.exact-Math.floor(b.exact))
+    -(a.exact-Math.floor(a.exact)));
+  for(let i=0;g<n;i++,g++) q[i%q.length].seat++;
+  q.forEach(x=>{seats[x.p]=x.seat});
+  return seats;
+}
+
 function districtSeatSplit(nr, avg, resultMode, conf){
   const dots=conf.seatDots;
   let seatsN=null, votes={}, method='dhondt', valid=null;
   const natBase=resultMode?(conf.national2021||LAST_ELECTION.results):avg;
+  if(conf.blockVote&&conf.seatDistricts&&conf.seatDistricts[nr]){
+    // Spain Senate: block voting, no threshold - the dot split must match
+    // the diagram's super-proportional rule, not D'Hondt
+    seatsN=conf.seatDistricts[nr];
+    const shares=districtShares(nr, avg, resultMode, conf);
+    if(!shares) return null;
+    PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+    const split=blockVoteSeats(seatsN, votes);
+    if(!split) return null;
+    const arr=[];
+    PARTY_ORDER.forEach(p=>{
+      for(let i=0;i<(split[p]||0);i++) arr.push(p);
+    });
+    return arr;
+  }
   if(conf.seatDistricts&&conf.seatDistricts[nr]){
     seatsN=conf.seatDistricts[nr];
     method=SEAT_METHOD;

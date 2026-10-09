@@ -2812,7 +2812,7 @@ async function renderPoster(opts){
   ctx.fillStyle='#FFFFFF';
   ctx.textAlign='right';
   ctx.textBaseline='alphabetic';
-  let titleSize=52;
+  let titleSize=56;
   const titleTxt=String(opts.title||'').toUpperCase();
   ctx.font='700 '+titleSize+'px '+FONT;
   while(titleSize>28&&ctx.measureText(titleTxt).width>W-40-700){
@@ -3019,13 +3019,31 @@ async function renderPoster(opts){
     });
   }
   if(mapImg){
-    // coloured district map on the right, arc tucked under its corner
-    const mx=620, my=140, mw=W-mx-40, mh=H-140-30-220;
+    // wide maps (Spain, Brazil) leave an empty corner, so the arc overlays
+    // it on a dark backing like the reference layout; tall maps (Israel, UK)
+    // fill the height, so the arc keeps its own band below instead
+    const wideMap=(mapImg.width/mapImg.height)>=1.2;
+    const mx=620, my=140, mw=W-mx-40;
+    const mh=wideMap?(H-my-30):(H-my-30-220);
     const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
     const dw=mapImg.width*sc, dh=mapImg.height*sc;
     ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);
     if(arcImg){
       const ax=W-40-560, ay=H-30-210, aw=560, ah=210;
+      if(wideMap){
+        ctx.save();
+        ctx.fillStyle='rgba(17,17,17,0.78)';
+        const r=18;
+        ctx.beginPath();
+        ctx.moveTo(ax+r,ay);
+        ctx.arcTo(ax+aw,ay,ax+aw,ay+ah,r);
+        ctx.arcTo(ax+aw,ay+ah,ax,ay+ah,r);
+        ctx.arcTo(ax,ay+ah,ax,ay,r);
+        ctx.arcTo(ax,ay,ax+aw,ay,r);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
       const s2=Math.min(aw/arcImg.width, ah/arcImg.height);
       ctx.drawImage(arcImg,ax+(aw-arcImg.width*s2)/2,
         ay+(ah-arcImg.height*s2)/2,arcImg.width*s2,arcImg.height*s2);

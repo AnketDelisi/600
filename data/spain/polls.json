@@ -2,9 +2,40 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-10-08T17:53:36Z",
- "poll_count": 553,
+ "scraped_at": "2026-10-09T07:43:26Z",
+ "poll_count": 555,
  "polls": [
+  {
+   "pollster": "40dB/Prisa",
+   "date": "2026-10-08",
+   "n": 800,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 31.9,
+    "psoe": 28.1,
+    "vox": 18.9,
+    "sumar": 5.3,
+    "podemos": 2.3,
+    "salf": 1.8
+   }
+  },
+  {
+   "pollster": "DYM/Henneo",
+   "date": "2026-10-07",
+   "n": 1011,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 34.0,
+    "psoe": 28.2,
+    "vox": 18.2,
+    "sumar": 3.6,
+    "podemos": 3.6
+   }
+  },
   {
    "pollster": "NC Report/La Razón",
    "date": "2026-10-06",

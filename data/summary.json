@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T15:04:03Z",
+ "generated": "2026-10-10T15:23:51Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -10,15 +10,15 @@
    "seats": 120,
    "seat_based": true,
    "leader": "yashar",
-   "leader_pct": 21.8,
+   "leader_pct": 21.7,
    "leader_code": "YASH",
    "leader_color": "#62B9F2",
    "leader_logo": "img/il/Yashar.svg",
    "second": "likud",
-   "second_pct": 20.7,
+   "second_pct": 20.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 24,
+   "poll_count": 27,
    "latest_poll": "2026-10-08"
   },
   "serbia": {
@@ -58,8 +58,8 @@
    "second_pct": 42.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 39,
-   "latest_poll": "2026-10-07"
+   "poll_count": 41,
+   "latest_poll": "2026-10-08"
   },
   "austria": {
    "name": "Austria",
@@ -219,7 +219,7 @@
    "last_winner_code": "PP",
    "last_winner_color": "#1D84CE",
    "poll_count": 20,
-   "latest_poll": "2026-10-09"
+   "latest_poll": "2026-10-08"
   },
   "greece": {
    "name": "Greece",
@@ -270,16 +270,16 @@
    "seats": 93,
    "seat_based": false,
    "leader": "cpbc",
-   "leader_pct": 41.7,
+   "leader_pct": 42.0,
    "leader_code": "CPBC",
    "leader_color": "#004AAD",
    "leader_logo": "img/bc/CPBC.svg",
    "second": "bcndp",
-   "second_pct": 38.7,
+   "second_pct": 38.4,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 8,
-   "latest_poll": "2026-10-01"
+   "poll_count": 9,
+   "latest_poll": "2026-10-07"
   },
   "hu": {
    "name": "Hungary",
@@ -470,16 +470,16 @@
    "seats": 230,
    "seat_based": false,
    "leader": "ps",
-   "leader_pct": 28.0,
+   "leader_pct": 28.1,
    "leader_code": "PS",
    "leader_color": "#FF66FF",
    "leader_logo": "img/pt/PS.svg",
    "second": "ch",
-   "second_pct": 26.7,
+   "second_pct": 27.8,
    "last_winner_code": "AD",
    "last_winner_color": "#3777BC",
-   "poll_count": 4,
-   "latest_poll": "2026-09-21"
+   "poll_count": 7,
+   "latest_poll": "2026-10-07"
   },
   "uk": {
    "name": "United Kingdom",
@@ -490,7 +490,7 @@
    "seats": 650,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 27.3,
+   "leader_pct": 27.1,
    "leader_code": "LAB",
    "leader_color": "#E41C3E",
    "leader_logo": "img/uk/LAB.svg",
@@ -498,8 +498,8 @@
    "second_pct": 23.0,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 27,
-   "latest_poll": "2026-10-05"
+   "poll_count": 28,
+   "latest_poll": "2026-10-07"
   },
   "nz": {
    "name": "New Zealand",

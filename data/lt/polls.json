@@ -2,7 +2,7 @@
  "country": "lt",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
- "scraped_at": "2026-10-10T14:04:26Z",
+ "scraped_at": "2026-10-10T15:23:44Z",
  "poll_count": 46,
  "polls": [
   {
@@ -161,7 +161,8 @@
     "ls": 11.2,
     "lvzs": 5.9,
     "lp": 5.9
-   }
+   },
+   "method": "online"
   },
   {
    "pollster": "Baltijos tyrimai",

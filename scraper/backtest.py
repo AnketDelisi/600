@@ -250,6 +250,52 @@ CYCLES = {
                       "sde": 9, "isamaa": 8},
         },
     },
+    "lt": {
+        2024: {
+            "article": "2024_Lithuanian_parliamentary_election",
+            "election": "2024-10-13", "half_life": 30,
+            "cols": {"lsdp": r"^lsdp", "tslkd": r"^ts.?lkd",
+                     "na": r"^ppna|^na\b", "dsvl": r"^dsvl", "ls": r"^ls\b",
+                     "lvzs": r"^lvžs|^lvzs", "lp": r"^lp\b",
+                     "llrakss": r"^llra", "ns": r"^ns\b", "dp": r"^dp\b",
+                     "lrp": r"^lrp", "tts": r"^tts"},
+            "result": {"lsdp": 19.70, "tslkd": 18.35, "na": 15.26,
+                       "dsvl": 9.40, "ls": 7.85, "lvzs": 7.16, "lp": 4.62,
+                       "llrakss": 3.96, "ns": 2.93, "dp": 2.24, "lrp": 1.93,
+                       "tts": 1.41},
+            # seats include the 2 unmodelled district winners (independents);
+            # the district tier is plurality-only (no run-off modelled), so
+            # the 2024 run-off flips are part of what this measures
+            "seats": {"lsdp": 52, "tslkd": 28, "na": 20, "dsvl": 14,
+                      "ls": 12, "lvzs": 8, "llrakss": 3, "ns": 1, "tts": 1,
+                      "other": 2},
+        },
+    },
+    "jp": {
+        2026: {
+            "article": "Opinion_polling_for_the_2026_Japanese_general_election",
+            "election": "2026-02-08", "half_life": 30,
+            "section": "voting intention",
+            "cols": {"ldp": r"^ldp", "cra": r"^cra|^centrist",
+                     "ishin": r"^ishin", "dpfp": r"^dpfp|^dpp\b",
+                     "sansei": r"^sansei", "mirai": r"^mirai",
+                     "jcp": r"^jcp", "reiwa": r"^reiwa", "cdp": r"^cdp",
+                     "komei": r"^komei|^kōmei", "cpj": r"^cpj",
+                     "sdp": r"^sdp"},
+            # the voting-intention (proportional vote) tables: decided-voter
+            # shares, scored against the PR result
+            "result": {"ldp": 36.72, "cra": 18.23, "dpfp": 9.73,
+                       "ishin": 8.63, "sansei": 7.44, "mirai": 6.66,
+                       "jcp": 4.40, "reiwa": 2.92},
+            # seats include the 5 unmodelled winners (Genzei-Yukoku 1 +
+            # independents 4); the district tier uses top-two baselines and
+            # the PR tier plain per-bloc D'Hondt (no list-exhaustion
+            # forfeiture reallocation)
+            "seats": {"ldp": 316, "cra": 49, "ishin": 36, "dpfp": 28,
+                      "sansei": 15, "mirai": 11, "jcp": 4, "reiwa": 1,
+                      "other": 5},
+        },
+    },
 }
 
 
@@ -327,15 +373,23 @@ def parse_cycle(soup, spec):
     """All polls from the article's national tables."""
     polls, seen = [], set()
     year = None
+    section = None
     # walk headings to track the section year (the 2024 article spans years)
     for el in soup.find_all(["h2", "h3", "h4", "table"]):
         if el.name != "table":
             txt = el.get_text(" ", strip=True)
+            if el.name == "h2":
+                section = txt
             m = re.search(r"\b(20\d{2})\b", txt)
             if m and len(txt) < 100:
                 year = int(m.group(1))
             continue
         if "wikitable" not in (el.get("class") or []):
+            continue
+        # optional section scope (the Japanese page carries both party-ID and
+        # voting-intention tables; the model wants the vote measure)
+        if spec.get("section") and not re.search(spec["section"],
+                                                 section or "", re.I):
             continue
         grid = expand_grid(el)
         if len(grid) < 4:
@@ -426,7 +480,7 @@ def parse_cycle(soup, spec):
             # counts (Datapraxis/YouGov 2019 read 344/221 and poisoned the
             # late average to Con 72.7)
             if any(v > 100 for v in votes.values()) or \
-                    not 50 <= sum(votes.values()) <= 120:
+                    not spec.get("min_sum", 50) <= sum(votes.values()) <= 120:
                 continue
             key = (pollster.lower(), date)
             if key in seen:

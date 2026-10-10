@@ -33,6 +33,7 @@ REF = {
     "israel": (120, 3.25, None, False),
     "italy": (400, 3.0, None, False),
     "jp": (465, 0.0, "dhondt", False),
+    "kr": (300, 3.0, "dhondt", False),
     "latvia": (100, 5.0, "sainte_lague", False),
     "lt": (141, 5.0, "hare_niemeyer", False),
     "md": (101, 5.0, "dhondt", False),

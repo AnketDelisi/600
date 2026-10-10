@@ -1,0 +1,3082 @@
+{
+ "country": "kr",
+ "source": "en/ko.wikipedia (2024 election; NEC figures via ko-wiki)",
+ "districts": {
+  "seoul_1": {
+   "name": "Jongno",
+   "turnout": 70.44,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.92
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.13
+   }
+  },
+  "seoul_2": {
+   "name": "Jung–Seongdong A",
+   "turnout": 69.63,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.61
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.38
+   }
+  },
+  "seoul_3": {
+   "name": "Jung–Seongdong B",
+   "turnout": 69.38,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.81
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 48.53
+   }
+  },
+  "seoul_4": {
+   "name": "Yongsan",
+   "turnout": 68.91,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.77
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.02
+   }
+  },
+  "seoul_5": {
+   "name": "Gwangjin A",
+   "turnout": 69.46,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.53
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.46
+   }
+  },
+  "seoul_6": {
+   "name": "Gwangjin B",
+   "turnout": 69.3,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.47
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.6
+   }
+  },
+  "seoul_7": {
+   "name": "Dongdaemun A",
+   "turnout": 68.19,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.89
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.46
+   }
+  },
+  "seoul_8": {
+   "name": "Dongdaemun B",
+   "turnout": 70.02,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.62
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.37
+   }
+  },
+  "seoul_9": {
+   "name": "Jungnang A",
+   "turnout": 63.83,
+   "winner": {
+    "party": "dpk",
+    "pct": 61.92
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.07
+   }
+  },
+  "seoul_10": {
+   "name": "Jungnang B",
+   "turnout": 68.65,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.72
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.27
+   }
+  },
+  "seoul_11": {
+   "name": "Seongbuk A",
+   "turnout": 69.41,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.68
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.14
+   }
+  },
+  "seoul_12": {
+   "name": "Seongbuk B",
+   "turnout": 68.98,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.82
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.17
+   }
+  },
+  "seoul_13": {
+   "name": "Gangbuk A",
+   "turnout": 64.03,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.23
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.76
+   }
+  },
+  "seoul_14": {
+   "name": "Gangbuk B",
+   "turnout": 66.71,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.94
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.51
+   }
+  },
+  "seoul_15": {
+   "name": "Dobong A",
+   "turnout": 69.75,
+   "winner": {
+    "party": "ppp",
+    "pct": 49.05
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.89
+   }
+  },
+  "seoul_16": {
+   "name": "Dobong B",
+   "turnout": 69.82,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.83
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.16
+   }
+  },
+  "seoul_17": {
+   "name": "Nowon A",
+   "turnout": 70.69,
+   "winner": {
+    "party": "dpk",
+    "pct": 58.99
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.0
+   }
+  },
+  "seoul_18": {
+   "name": "Nowon B",
+   "turnout": 70.19,
+   "winner": {
+    "party": "dpk",
+    "pct": 58.51
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.26
+   }
+  },
+  "seoul_19": {
+   "name": "Eunpyeong A",
+   "turnout": 68.09,
+   "winner": {
+    "party": "dpk",
+    "pct": 60.78
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.21
+   }
+  },
+  "seoul_20": {
+   "name": "Eunpyeong B",
+   "turnout": 67.77,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.95
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.6
+   }
+  },
+  "seoul_21": {
+   "name": "Seodaemun A",
+   "turnout": 69.17,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.75
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.49
+   }
+  },
+  "seoul_22": {
+   "name": "Seodaemun B",
+   "turnout": 71.11,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.62
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.37
+   }
+  },
+  "seoul_23": {
+   "name": "Mapo A",
+   "turnout": 72.22,
+   "winner": {
+    "party": "ppp",
+    "pct": 48.3
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.7
+   }
+  },
+  "seoul_24": {
+   "name": "Mapo B",
+   "turnout": 68.53,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.44
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.77
+   }
+  },
+  "seoul_25": {
+   "name": "Yangcheon A",
+   "turnout": 73.98,
+   "winner": {
+    "party": "dpk",
+    "pct": 49.78
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 48.16
+   }
+  },
+  "seoul_26": {
+   "name": "Yangcheon B",
+   "turnout": 68.27,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.47
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.52
+   }
+  },
+  "seoul_27": {
+   "name": "Gangseo A",
+   "turnout": 66.47,
+   "winner": {
+    "party": "dpk",
+    "pct": 58.55
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.67
+   }
+  },
+  "seoul_28": {
+   "name": "Gangseo B",
+   "turnout": 68.81,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.84
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.15
+   }
+  },
+  "seoul_29": {
+   "name": "Gangseo C",
+   "turnout": 67.32,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.13
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.86
+   }
+  },
+  "seoul_30": {
+   "name": "Guro A",
+   "turnout": 71.05,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.74
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.25
+   }
+  },
+  "seoul_31": {
+   "name": "Guro B",
+   "turnout": 69.02,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.86
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.13
+   }
+  },
+  "seoul_32": {
+   "name": "Geumcheon",
+   "turnout": 65.28,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.03
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.96
+   }
+  },
+  "seoul_33": {
+   "name": "Yeongdeungpo A",
+   "turnout": 70.2,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.53
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.67
+   }
+  },
+  "seoul_34": {
+   "name": "Yeongdeungpo B",
+   "turnout": 70.77,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.18
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 49.03
+   }
+  },
+  "seoul_35": {
+   "name": "Dongjak A",
+   "turnout": 70.54,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.49
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.01
+   }
+  },
+  "seoul_36": {
+   "name": "Dongjak B",
+   "turnout": 74.18,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.01
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 45.98
+   }
+  },
+  "seoul_37": {
+   "name": "Gwanak A",
+   "turnout": 66.31,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.08
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.91
+   }
+  },
+  "seoul_38": {
+   "name": "Gwanak B",
+   "turnout": 63.42,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.97
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.83
+   }
+  },
+  "seoul_39": {
+   "name": "Seocho A",
+   "turnout": 71.67,
+   "winner": {
+    "party": "ppp",
+    "pct": 68.44
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 31.55
+   }
+  },
+  "seoul_40": {
+   "name": "Seocho B",
+   "turnout": 72.1,
+   "winner": {
+    "party": "ppp",
+    "pct": 57.49
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.5
+   }
+  },
+  "seoul_41": {
+   "name": "Gangnam A",
+   "turnout": 61.37,
+   "winner": {
+    "party": "ppp",
+    "pct": 64.18
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 35.81
+   }
+  },
+  "seoul_42": {
+   "name": "Gangnam B",
+   "turnout": 73.68,
+   "winner": {
+    "party": "ppp",
+    "pct": 58.57
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 41.42
+   }
+  },
+  "seoul_43": {
+   "name": "Gangnam C",
+   "turnout": 70.63,
+   "winner": {
+    "party": "ppp",
+    "pct": 66.28
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 32.75
+   }
+  },
+  "seoul_44": {
+   "name": "Songpa A",
+   "turnout": 72.15,
+   "winner": {
+    "party": "ppp",
+    "pct": 52.24
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 45.13
+   }
+  },
+  "seoul_45": {
+   "name": "Songpa B",
+   "turnout": 71.47,
+   "winner": {
+    "party": "ppp",
+    "pct": 57.2
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.79
+   }
+  },
+  "seoul_46": {
+   "name": "Songpa C",
+   "turnout": 72.22,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.04
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 48.95
+   }
+  },
+  "seoul_47": {
+   "name": "Gangdong A",
+   "turnout": 74.53,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.12
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.88
+   }
+  },
+  "seoul_48": {
+   "name": "Gangdong B",
+   "turnout": 67.86,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.55
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.68
+   }
+  },
+  "busan_1": {
+   "name": "Jung–Yeongdo",
+   "turnout": 64.35,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.82
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.54
+   }
+  },
+  "busan_2": {
+   "name": "Seo–Dong",
+   "turnout": 65.83,
+   "winner": {
+    "party": "ppp",
+    "pct": 57.95
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.04
+   }
+  },
+  "busan_3": {
+   "name": "Busanjin A",
+   "turnout": 67.09,
+   "winner": {
+    "party": "ppp",
+    "pct": 52.78
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.21
+   }
+  },
+  "busan_4": {
+   "name": "Busanjin B",
+   "turnout": 63.01,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.71
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 44.13
+   }
+  },
+  "busan_5": {
+   "name": "Dongnae",
+   "turnout": 69.0,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.26
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.21
+   }
+  },
+  "busan_6": {
+   "name": "Nam",
+   "turnout": 70.23,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.4
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 45.59
+   }
+  },
+  "busan_7": {
+   "name": "Buk A",
+   "turnout": 68.93,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.31
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.67
+   }
+  },
+  "busan_8": {
+   "name": "Buk B",
+   "turnout": 73.42,
+   "winner": {
+    "party": "ppp",
+    "pct": 52.56
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.43
+   }
+  },
+  "busan_9": {
+   "name": "Haeundae A",
+   "turnout": 69.13,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.7
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 44.61
+   }
+  },
+  "busan_10": {
+   "name": "Haeundae B",
+   "turnout": 66.73,
+   "winner": {
+    "party": "ppp",
+    "pct": 58.33
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 41.66
+   }
+  },
+  "busan_11": {
+   "name": "Saha A",
+   "turnout": 67.11,
+   "winner": {
+    "party": "ppp",
+    "pct": 50.39
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 49.6
+   }
+  },
+  "busan_12": {
+   "name": "Saha B",
+   "turnout": 65.16,
+   "winner": {
+    "party": "ppp",
+    "pct": 55.62
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.42
+   }
+  },
+  "busan_13": {
+   "name": "Geumjeong",
+   "turnout": 68.35,
+   "winner": {
+    "party": "ppp",
+    "pct": 56.62
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.37
+   }
+  },
+  "busan_14": {
+   "name": "Gangseo",
+   "turnout": 68.4,
+   "winner": {
+    "party": "ppp",
+    "pct": 55.58
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 44.41
+   }
+  },
+  "busan_15": {
+   "name": "Yeonje",
+   "turnout": 69.41,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.41
+   },
+   "runner": {
+    "party": "pp",
+    "pct": 45.58
+   }
+  },
+  "busan_16": {
+   "name": "Suyeong",
+   "turnout": 66.19,
+   "winner": {
+    "party": "ppp",
+    "pct": 50.33
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 40.47
+   }
+  },
+  "busan_17": {
+   "name": "Sasang",
+   "turnout": 66.71,
+   "winner": {
+    "party": "ppp",
+    "pct": 52.63
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.36
+   }
+  },
+  "busan_18": {
+   "name": "Gijang",
+   "turnout": 64.97,
+   "winner": {
+    "party": "ppp",
+    "pct": 52.33
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.66
+   }
+  },
+  "daegu_1": {
+   "name": "Jung–Nam",
+   "turnout": 62.12,
+   "winner": {
+    "party": "ppp",
+    "pct": 57.91
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 26.23
+   }
+  },
+  "daegu_2": {
+   "name": "Dong–Gunwi A",
+   "turnout": 64.17,
+   "winner": {
+    "party": "ppp",
+    "pct": 74.48
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 25.51
+   }
+  },
+  "daegu_3": {
+   "name": "Dong–Gunwi B",
+   "turnout": 64.17,
+   "winner": {
+    "party": "ppp",
+    "pct": 76.13
+   },
+   "runner": {
+    "party": "pp",
+    "pct": 19.47
+   }
+  },
+  "daegu_4": {
+   "name": "Seo",
+   "turnout": 61.64,
+   "winner": {
+    "party": "ppp",
+    "pct": 72.02
+   },
+   "runner": {
+    "party": "other",
+    "pct": 27.97
+   }
+  },
+  "daegu_5": {
+   "name": "Buk A",
+   "turnout": 64.05,
+   "winner": {
+    "party": "ppp",
+    "pct": 71.37
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 27.27
+   }
+  },
+  "daegu_6": {
+   "name": "Buk B",
+   "turnout": 62.65,
+   "winner": {
+    "party": "ppp",
+    "pct": 67.86
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 25.47
+   }
+  },
+  "daegu_7": {
+   "name": "Suseong A",
+   "turnout": 68.61,
+   "winner": {
+    "party": "ppp",
+    "pct": 65.63
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 30.33
+   }
+  },
+  "daegu_8": {
+   "name": "Suseong B",
+   "turnout": 65.11,
+   "winner": {
+    "party": "ppp",
+    "pct": 72.84
+   },
+   "runner": {
+    "party": "other",
+    "pct": 15.56
+   }
+  },
+  "daegu_9": {
+   "name": "Dalseo A",
+   "turnout": 63.48,
+   "winner": {
+    "party": "ppp",
+    "pct": 71.39
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 28.6
+   }
+  },
+  "daegu_10": {
+   "name": "Dalseo B",
+   "turnout": 66.59,
+   "winner": {
+    "party": "ppp",
+    "pct": 72.47
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 27.52
+   }
+  },
+  "daegu_11": {
+   "name": "Dalseo C",
+   "turnout": 61.28,
+   "winner": {
+    "party": "ppp",
+    "pct": 67.08
+   },
+   "runner": {
+    "party": "other",
+    "pct": 16.82
+   }
+  },
+  "daegu_12": {
+   "name": "Dalseong",
+   "turnout": 62.96,
+   "winner": {
+    "party": "ppp",
+    "pct": 75.31
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 24.68
+   }
+  },
+  "incheon_1": {
+   "name": "Jung–Ganghwa–Ongjin",
+   "turnout": 65.92,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.99
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.89
+   }
+  },
+  "incheon_2": {
+   "name": "Dong–Michuhol A",
+   "turnout": 62.33,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.73
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.26
+   }
+  },
+  "incheon_3": {
+   "name": "Dong–Michuhol B",
+   "turnout": 63.54,
+   "winner": {
+    "party": "ppp",
+    "pct": 50.44
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 49.55
+   }
+  },
+  "incheon_4": {
+   "name": "Yeonsu A",
+   "turnout": 67.96,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.44
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.08
+   }
+  },
+  "incheon_5": {
+   "name": "Yeonsu B",
+   "turnout": 70.76,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.5
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 48.49
+   }
+  },
+  "incheon_6": {
+   "name": "Namdong A",
+   "turnout": 62.9,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.96
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.26
+   }
+  },
+  "incheon_7": {
+   "name": "Namdong B",
+   "turnout": 65.78,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.48
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.51
+   }
+  },
+  "incheon_8": {
+   "name": "Bupyeong A",
+   "turnout": 61.62,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.19
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.8
+   }
+  },
+  "incheon_9": {
+   "name": "Bupyeong B",
+   "turnout": 67.68,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.36
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.75
+   }
+  },
+  "incheon_10": {
+   "name": "Gyeyang A",
+   "turnout": 65.96,
+   "winner": {
+    "party": "dpk",
+    "pct": 58.29
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.7
+   }
+  },
+  "incheon_11": {
+   "name": "Gyeyang B",
+   "turnout": 71.34,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.12
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.45
+   }
+  },
+  "incheon_12": {
+   "name": "Seo A",
+   "turnout": 64.11,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.59
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.37
+   }
+  },
+  "incheon_13": {
+   "name": "Seo B",
+   "turnout": 64.56,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.53
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.46
+   }
+  },
+  "incheon_14": {
+   "name": "Seo C",
+   "turnout": 63.61,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.52
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.55
+   }
+  },
+  "gwangju_1": {
+   "name": "Dong–Nam A",
+   "turnout": 69.64,
+   "winner": {
+    "party": "dpk",
+    "pct": 88.69
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 11.3
+   }
+  },
+  "gwangju_2": {
+   "name": "Dong–Nam B",
+   "turnout": 70.23,
+   "winner": {
+    "party": "dpk",
+    "pct": 70.16
+   },
+   "runner": {
+    "party": "other",
+    "pct": 16.15
+   }
+  },
+  "gwangju_3": {
+   "name": "Seo A",
+   "turnout": 66.8,
+   "winner": {
+    "party": "dpk",
+    "pct": 68.42
+   },
+   "runner": {
+    "party": "other",
+    "pct": 17.38
+   }
+  },
+  "gwangju_4": {
+   "name": "Seo B",
+   "turnout": 69.38,
+   "winner": {
+    "party": "dpk",
+    "pct": 71.39
+   },
+   "runner": {
+    "party": "other",
+    "pct": 14.66
+   }
+  },
+  "gwangju_5": {
+   "name": "Buk A",
+   "turnout": 66.53,
+   "winner": {
+    "party": "dpk",
+    "pct": 83.45
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 8.52
+   }
+  },
+  "gwangju_6": {
+   "name": "Buk B",
+   "turnout": 69.23,
+   "winner": {
+    "party": "dpk",
+    "pct": 72.11
+   },
+   "runner": {
+    "party": "pp",
+    "pct": 16.34
+   }
+  },
+  "gwangju_7": {
+   "name": "Gwangsan A",
+   "turnout": 66.6,
+   "winner": {
+    "party": "dpk",
+    "pct": 81.7
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 6.96
+   }
+  },
+  "gwangju_8": {
+   "name": "Gwangsan B",
+   "turnout": 67.27,
+   "winner": {
+    "party": "dpk",
+    "pct": 76.09
+   },
+   "runner": {
+    "party": "nfp",
+    "pct": 13.84
+   }
+  },
+  "daejeon_1": {
+   "name": "Dong",
+   "turnout": 64.41,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.32
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.01
+   }
+  },
+  "daejeon_2": {
+   "name": "Jung",
+   "turnout": 66.44,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.08
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.91
+   }
+  },
+  "daejeon_3": {
+   "name": "Seo A",
+   "turnout": 64.47,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.83
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.43
+   }
+  },
+  "daejeon_4": {
+   "name": "Seo B",
+   "turnout": 66.01,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.58
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.87
+   }
+  },
+  "daejeon_5": {
+   "name": "Yuseong A",
+   "turnout": 67.02,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.77
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.84
+   }
+  },
+  "daejeon_6": {
+   "name": "Yuseong B",
+   "turnout": 71.57,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.76
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.19
+   }
+  },
+  "daejeon_7": {
+   "name": "Daedeok",
+   "turnout": 65.45,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.92
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.05
+   }
+  },
+  "ulsan_1": {
+   "name": "Jung",
+   "turnout": 67.71,
+   "winner": {
+    "party": "ppp",
+    "pct": 56.44
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.55
+   }
+  },
+  "ulsan_2": {
+   "name": "Nam A",
+   "turnout": 67.98,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.86
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.69
+   }
+  },
+  "ulsan_3": {
+   "name": "Nam B",
+   "turnout": 64.77,
+   "winner": {
+    "party": "ppp",
+    "pct": 56.22
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.77
+   }
+  },
+  "ulsan_4": {
+   "name": "Dong",
+   "turnout": 66.65,
+   "winner": {
+    "party": "dpk",
+    "pct": 45.88
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.2
+   }
+  },
+  "ulsan_5": {
+   "name": "Buk",
+   "turnout": 66.27,
+   "winner": {
+    "party": "pp",
+    "pct": 55.12
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.88
+   }
+  },
+  "ulsan_6": {
+   "name": "Ulju",
+   "turnout": 67.35,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.48
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 46.51
+   }
+  },
+  "sejong_1": {
+   "name": "Sejong A",
+   "turnout": 71.1,
+   "winner": {
+    "party": "nfp",
+    "pct": 56.93
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.06
+   }
+  },
+  "sejong_2": {
+   "name": "Sejong B",
+   "turnout": 68.87,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.19
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.54
+   }
+  },
+  "gyeonggi_1": {
+   "name": "Suwon A",
+   "turnout": 68.62,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.54
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.16
+   }
+  },
+  "gyeonggi_2": {
+   "name": "Suwon B",
+   "turnout": 66.54,
+   "winner": {
+    "party": "dpk",
+    "pct": 61.73
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.26
+   }
+  },
+  "gyeonggi_3": {
+   "name": "Suwon C",
+   "turnout": 64.65,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.41
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.58
+   }
+  },
+  "gyeonggi_4": {
+   "name": "Suwon D",
+   "turnout": 70.66,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.86
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 49.13
+   }
+  },
+  "gyeonggi_5": {
+   "name": "Suwon E",
+   "turnout": 66.29,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.0
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.99
+   }
+  },
+  "gyeonggi_6": {
+   "name": "Sujeong, Seongnam",
+   "turnout": 66.83,
+   "winner": {
+    "party": "dpk",
+    "pct": 58.41
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.58
+   }
+  },
+  "gyeonggi_7": {
+   "name": "Jungwon, Seongnam",
+   "turnout": 66.63,
+   "winner": {
+    "party": "dpk",
+    "pct": 60.11
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.88
+   }
+  },
+  "gyeonggi_8": {
+   "name": "Bundang A, Seongnam",
+   "turnout": 77.12,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.27
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 46.72
+   }
+  },
+  "gyeonggi_9": {
+   "name": "Bundang B, Seongnam",
+   "turnout": 75.03,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.13
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 48.86
+   }
+  },
+  "gyeonggi_10": {
+   "name": "Uijeongbu A",
+   "turnout": 61.81,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.89
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.44
+   }
+  },
+  "gyeonggi_11": {
+   "name": "Uijeongbu B",
+   "turnout": 65.47,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.27
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.72
+   }
+  },
+  "gyeonggi_12": {
+   "name": "Manan, Anyang",
+   "turnout": 68.98,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.85
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.14
+   }
+  },
+  "gyeonggi_13": {
+   "name": "Dongan A, Anyang",
+   "turnout": 72.42,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.33
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.66
+   }
+  },
+  "gyeonggi_14": {
+   "name": "Dongan B, Anyang",
+   "turnout": 75.69,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.86
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.13
+   }
+  },
+  "gyeonggi_15": {
+   "name": "Bucheon A",
+   "turnout": 61.24,
+   "winner": {
+    "party": "dpk",
+    "pct": 61.13
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.86
+   }
+  },
+  "gyeonggi_16": {
+   "name": "Bucheon B",
+   "turnout": 69.67,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.9
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.93
+   }
+  },
+  "gyeonggi_17": {
+   "name": "Bucheon C",
+   "turnout": 67.56,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.44
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.04
+   }
+  },
+  "gyeonggi_18": {
+   "name": "Gwangmyeong A",
+   "turnout": 72.38,
+   "winner": {
+    "party": "dpk",
+    "pct": 58.73
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.26
+   }
+  },
+  "gyeonggi_19": {
+   "name": "Gwangmyeong B",
+   "turnout": 71.48,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.56
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.43
+   }
+  },
+  "gyeonggi_20": {
+   "name": "Pyeongtaek A",
+   "turnout": 58.75,
+   "winner": {
+    "party": "dpk",
+    "pct": 57.41
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.58
+   }
+  },
+  "gyeonggi_21": {
+   "name": "Pyeongtaek B",
+   "turnout": 58.62,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.23
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.76
+   }
+  },
+  "gyeonggi_22": {
+   "name": "Pyeongtaek C",
+   "turnout": 62.2,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.76
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.48
+   }
+  },
+  "gyeonggi_23": {
+   "name": "Dongducheon–Yangju–Yeoncheon A",
+   "turnout": 63.1,
+   "winner": {
+    "party": "dpk",
+    "pct": 60.26
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.73
+   }
+  },
+  "gyeonggi_24": {
+   "name": "Dongducheon–Yangju–Yeoncheon B",
+   "turnout": 63.87,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.7
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 46.29
+   }
+  },
+  "gyeonggi_25": {
+   "name": "Ansan A",
+   "turnout": 61.55,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.62
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.37
+   }
+  },
+  "gyeonggi_26": {
+   "name": "Ansan B",
+   "turnout": 61.81,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.21
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.98
+   }
+  },
+  "gyeonggi_27": {
+   "name": "Ansan C",
+   "turnout": 61.08,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.18
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.09
+   }
+  },
+  "gyeonggi_28": {
+   "name": "Goyang A",
+   "turnout": 67.7,
+   "winner": {
+    "party": "dpk",
+    "pct": 45.3
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 35.34
+   }
+  },
+  "gyeonggi_29": {
+   "name": "Goyang B",
+   "turnout": 69.9,
+   "winner": {
+    "party": "dpk",
+    "pct": 61.24
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.33
+   }
+  },
+  "gyeonggi_30": {
+   "name": "Goyang C",
+   "turnout": 67.25,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.06
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.93
+   }
+  },
+  "gyeonggi_31": {
+   "name": "Goyang D",
+   "turnout": 69.28,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.89
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.1
+   }
+  },
+  "gyeonggi_32": {
+   "name": "Uiwang–Gwacheon",
+   "turnout": 74.72,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.37
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.62
+   }
+  },
+  "gyeonggi_33": {
+   "name": "Guri",
+   "turnout": 68.76,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.97
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.32
+   }
+  },
+  "gyeonggi_34": {
+   "name": "Namyangju A",
+   "turnout": 63.54,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.08
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 35.73
+   }
+  },
+  "gyeonggi_35": {
+   "name": "Namyangju B",
+   "turnout": 63.79,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.94
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.81
+   }
+  },
+  "gyeonggi_36": {
+   "name": "Namyangju C",
+   "turnout": 68.48,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.58
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 42.24
+   }
+  },
+  "gyeonggi_37": {
+   "name": "Osan",
+   "turnout": 60.2,
+   "winner": {
+    "party": "dpk",
+    "pct": 59.01
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 40.98
+   }
+  },
+  "gyeonggi_38": {
+   "name": "Siheung A",
+   "turnout": 66.62,
+   "winner": {
+    "party": "dpk",
+    "pct": 60.81
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 38.27
+   }
+  },
+  "gyeonggi_39": {
+   "name": "Siheung B",
+   "turnout": 59.93,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.53
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.56
+   }
+  },
+  "gyeonggi_40": {
+   "name": "Gunpo",
+   "turnout": 70.45,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.92
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.07
+   }
+  },
+  "gyeonggi_41": {
+   "name": "Hanam A",
+   "turnout": 70.86,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.58
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 49.41
+   }
+  },
+  "gyeonggi_42": {
+   "name": "Hanam B",
+   "turnout": 68.59,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.65
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.7
+   }
+  },
+  "gyeonggi_43": {
+   "name": "Yongin A",
+   "turnout": 63.34,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.22
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.83
+   }
+  },
+  "gyeonggi_44": {
+   "name": "Yongin B",
+   "turnout": 69.21,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.7
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.69
+   }
+  },
+  "gyeonggi_45": {
+   "name": "Yongin C",
+   "turnout": 74.32,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.26
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 49.73
+   }
+  },
+  "gyeonggi_46": {
+   "name": "Yongin D",
+   "turnout": 72.61,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.06
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.88
+   }
+  },
+  "gyeonggi_47": {
+   "name": "Paju A",
+   "turnout": 65.08,
+   "winner": {
+    "party": "dpk",
+    "pct": 63.43
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 36.56
+   }
+  },
+  "gyeonggi_48": {
+   "name": "Paju B",
+   "turnout": 62.04,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.83
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.16
+   }
+  },
+  "gyeonggi_49": {
+   "name": "Icheon",
+   "turnout": 62.88,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.33
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 48.66
+   }
+  },
+  "gyeonggi_50": {
+   "name": "Anseong",
+   "turnout": 63.4,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.71
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.36
+   }
+  },
+  "gyeonggi_51": {
+   "name": "Gimpo A",
+   "turnout": 69.71,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.27
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.72
+   }
+  },
+  "gyeonggi_52": {
+   "name": "Gimpo B",
+   "turnout": 64.72,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.52
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.47
+   }
+  },
+  "gyeonggi_53": {
+   "name": "Hwaseong A",
+   "turnout": 62.06,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.88
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.11
+   }
+  },
+  "gyeonggi_54": {
+   "name": "Hwaseong B",
+   "turnout": 72.69,
+   "winner": {
+    "party": "rp",
+    "pct": 42.41
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 39.73
+   }
+  },
+  "gyeonggi_55": {
+   "name": "Hwaseong C",
+   "turnout": 63.66,
+   "winner": {
+    "party": "dpk",
+    "pct": 61.53
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.14
+   }
+  },
+  "gyeonggi_56": {
+   "name": "Hwaseong D",
+   "turnout": 68.93,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.72
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 34.09
+   }
+  },
+  "gyeonggi_57": {
+   "name": "Gwangju A",
+   "turnout": 64.32,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.33
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.66
+   }
+  },
+  "gyeonggi_58": {
+   "name": "Gwangju B",
+   "turnout": 62.49,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.06
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.93
+   }
+  },
+  "gyeonggi_59": {
+   "name": "Pocheon–Gapyeong",
+   "turnout": 64.54,
+   "winner": {
+    "party": "ppp",
+    "pct": 50.47
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 48.36
+   }
+  },
+  "gyeonggi_60": {
+   "name": "Yeoju–Yangpyeong",
+   "turnout": 66.85,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.58
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 46.41
+   }
+  },
+  "gangwon_1": {
+   "name": "Chuncheon–Cheorwon–Hwacheon–Yanggu A",
+   "turnout": 67.49,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.44
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.52
+   }
+  },
+  "gangwon_2": {
+   "name": "Chuncheon–Cheorwon–Hwacheon–Yanggu B",
+   "turnout": 66.61,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.93
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 41.46
+   }
+  },
+  "gangwon_3": {
+   "name": "Wonju A",
+   "turnout": 65.02,
+   "winner": {
+    "party": "ppp",
+    "pct": 50.71
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 49.28
+   }
+  },
+  "gangwon_4": {
+   "name": "Wonju B",
+   "turnout": 66.59,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.08
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.91
+   }
+  },
+  "gangwon_5": {
+   "name": "Gangneung",
+   "turnout": 65.63,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.24
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 43.34
+   }
+  },
+  "gangwon_6": {
+   "name": "Donghae–Taebaek–Samcheok–Jeongseon",
+   "turnout": 65.82,
+   "winner": {
+    "party": "ppp",
+    "pct": 61.22
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 36.48
+   }
+  },
+  "gangwon_7": {
+   "name": "Sokcho–Goseong–Yangyang–Inje",
+   "turnout": 66.61,
+   "winner": {
+    "party": "ppp",
+    "pct": 55.84
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 44.15
+   }
+  },
+  "gangwon_8": {
+   "name": "Hongcheon–Hoengseong–Yeongwol–Pyeongchang",
+   "turnout": 69.11,
+   "winner": {
+    "party": "ppp",
+    "pct": 57.71
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.28
+   }
+  },
+  "north_chungcheong_1": {
+   "name": "Sangdang, Cheongju",
+   "turnout": 64.61,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.45
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.18
+   }
+  },
+  "north_chungcheong_2": {
+   "name": "Seowon, Cheongju",
+   "turnout": 65.75,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.46
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.53
+   }
+  },
+  "north_chungcheong_3": {
+   "name": "Heungdeok, Cheongju",
+   "turnout": 61.28,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.76
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.58
+   }
+  },
+  "north_chungcheong_4": {
+   "name": "Cheongwon, Cheongju",
+   "turnout": 63.08,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.28
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.71
+   }
+  },
+  "north_chungcheong_5": {
+   "name": "Chungju",
+   "turnout": 65.87,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.11
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 48.88
+   }
+  },
+  "north_chungcheong_6": {
+   "name": "Jecheon–Danyang",
+   "turnout": 68.26,
+   "winner": {
+    "party": "ppp",
+    "pct": 49.43
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 41.44
+   }
+  },
+  "north_chungcheong_7": {
+   "name": "Boeun–Okcheon–Yeongdong–Goesan",
+   "turnout": 72.5,
+   "winner": {
+    "party": "ppp",
+    "pct": 52.93
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.06
+   }
+  },
+  "north_chungcheong_8": {
+   "name": "Jeungpyeong–Jincheon–Eumseong",
+   "turnout": 63.14,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.95
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 46.04
+   }
+  },
+  "south_chungcheong_1": {
+   "name": "Cheonan A",
+   "turnout": 59.66,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.58
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.15
+   }
+  },
+  "south_chungcheong_2": {
+   "name": "Cheonan B",
+   "turnout": 59.32,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.12
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.79
+   }
+  },
+  "south_chungcheong_3": {
+   "name": "Cheonan C",
+   "turnout": 63.2,
+   "winner": {
+    "party": "dpk",
+    "pct": 55.2
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 41.61
+   }
+  },
+  "south_chungcheong_4": {
+   "name": "Gongju–Buyeo–Cheongyang",
+   "turnout": 71.89,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.66
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 48.42
+   }
+  },
+  "south_chungcheong_5": {
+   "name": "Boryeong–Seocheon",
+   "turnout": 71.04,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.5
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 47.4
+   }
+  },
+  "south_chungcheong_6": {
+   "name": "Asan A",
+   "turnout": 63.03,
+   "winner": {
+    "party": "dpk",
+    "pct": 53.79
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 44.09
+   }
+  },
+  "south_chungcheong_7": {
+   "name": "Asan B",
+   "turnout": 61.58,
+   "winner": {
+    "party": "dpk",
+    "pct": 60.35
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 39.64
+   }
+  },
+  "south_chungcheong_8": {
+   "name": "Seosan–Taean",
+   "turnout": 67.79,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.55
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 48.44
+   }
+  },
+  "south_chungcheong_9": {
+   "name": "Nonsan–Gyeryong–Geumsan",
+   "turnout": 67.57,
+   "winner": {
+    "party": "dpk",
+    "pct": 50.84
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.15
+   }
+  },
+  "south_chungcheong_10": {
+   "name": "Dangjin",
+   "turnout": 62.89,
+   "winner": {
+    "party": "dpk",
+    "pct": 51.78
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 48.21
+   }
+  },
+  "south_chungcheong_11": {
+   "name": "Hongseong–Yesan",
+   "turnout": 68.16,
+   "winner": {
+    "party": "ppp",
+    "pct": 54.84
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 45.15
+   }
+  },
+  "north_jeolla_1": {
+   "name": "Jeonju A",
+   "turnout": 66.45,
+   "winner": {
+    "party": "dpk",
+    "pct": 77.59
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 12.01
+   }
+  },
+  "north_jeolla_2": {
+   "name": "Jeonju B",
+   "turnout": 67.89,
+   "winner": {
+    "party": "dpk",
+    "pct": 66.38
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 20.63
+   }
+  },
+  "north_jeolla_3": {
+   "name": "Jeonju C",
+   "turnout": 68.31,
+   "winner": {
+    "party": "dpk",
+    "pct": 82.08
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 12.29
+   }
+  },
+  "north_jeolla_4": {
+   "name": "Gunsan-Gimje–Buan A",
+   "turnout": 63.33,
+   "winner": {
+    "party": "dpk",
+    "pct": 86.73
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 13.26
+   }
+  },
+  "north_jeolla_5": {
+   "name": "Gunsan-Gimje–Buan B",
+   "turnout": 68.4,
+   "winner": {
+    "party": "dpk",
+    "pct": 86.63
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 9.57
+   }
+  },
+  "north_jeolla_6": {
+   "name": "Iksan A",
+   "turnout": 66.01,
+   "winner": {
+    "party": "dpk",
+    "pct": 77.11
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 10.12
+   }
+  },
+  "north_jeolla_7": {
+   "name": "Iksan B",
+   "turnout": 65.34,
+   "winner": {
+    "party": "dpk",
+    "pct": 87.03
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 11.09
+   }
+  },
+  "north_jeolla_8": {
+   "name": "Jeongeup–Gochang",
+   "turnout": 68.28,
+   "winner": {
+    "party": "dpk",
+    "pct": 86.86
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 10.47
+   }
+  },
+  "north_jeolla_9": {
+   "name": "Namwon–Jangsu–Imsil–Sunchang",
+   "turnout": 71.97,
+   "winner": {
+    "party": "dpk",
+    "pct": 83.83
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 11.68
+   }
+  },
+  "north_jeolla_10": {
+   "name": "Wanju–Jinan–Muju",
+   "turnout": 69.3,
+   "winner": {
+    "party": "dpk",
+    "pct": 84.23
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 15.76
+   }
+  },
+  "south_jeolla_1": {
+   "name": "Mokpo",
+   "turnout": 64.92,
+   "winner": {
+    "party": "dpk",
+    "pct": 71.43
+   },
+   "runner": {
+    "party": "other",
+    "pct": 13.65
+   }
+  },
+  "south_jeolla_2": {
+   "name": "Yeosu A",
+   "turnout": 66.54,
+   "winner": {
+    "party": "dpk",
+    "pct": 88.89
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 11.1
+   }
+  },
+  "south_jeolla_3": {
+   "name": "Yeosu B",
+   "turnout": 67.65,
+   "winner": {
+    "party": "dpk",
+    "pct": 68.01
+   },
+   "runner": {
+    "party": "other",
+    "pct": 22.37
+   }
+  },
+  "south_jeolla_4": {
+   "name": "Suncheon–Gwangyang–Gokseong–Gurye A",
+   "turnout": 70.03,
+   "winner": {
+    "party": "dpk",
+    "pct": 64.34
+   },
+   "runner": {
+    "party": "pp",
+    "pct": 18.04
+   }
+  },
+  "south_jeolla_5": {
+   "name": "Suncheon–Gwangyang–Gokseong–Gurye B",
+   "turnout": 69.1,
+   "winner": {
+    "party": "dpk",
+    "pct": 70.09
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 23.66
+   }
+  },
+  "south_jeolla_6": {
+   "name": "Naju–Hwasun",
+   "turnout": 68.97,
+   "winner": {
+    "party": "dpk",
+    "pct": 71.06
+   },
+   "runner": {
+    "party": "pp",
+    "pct": 19.75
+   }
+  },
+  "south_jeolla_7": {
+   "name": "Damyang–Hampyeong–Yeonggwang–Jangseong",
+   "turnout": 72.48,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.46
+   },
+   "runner": {
+    "party": "other",
+    "pct": 35.91
+   }
+  },
+  "south_jeolla_8": {
+   "name": "Goheung–Boseong–Jangheung–Gangjin",
+   "turnout": 71.33,
+   "winner": {
+    "party": "dpk",
+    "pct": 90.69
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 9.3
+   }
+  },
+  "south_jeolla_9": {
+   "name": "Haenam–Wando–Jindo",
+   "turnout": 69.82,
+   "winner": {
+    "party": "dpk",
+    "pct": 92.35
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 7.64
+   }
+  },
+  "south_jeolla_10": {
+   "name": "Yeongam–Muan–Sinan",
+   "turnout": 69.25,
+   "winner": {
+    "party": "dpk",
+    "pct": 69.17
+   },
+   "runner": {
+    "party": "other",
+    "pct": 20.5
+   }
+  },
+  "north_gyeongsang_1": {
+   "name": "Buk, Pohang",
+   "turnout": 64.79,
+   "winner": {
+    "party": "ppp",
+    "pct": 62.33
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 28.9
+   }
+  },
+  "north_gyeongsang_2": {
+   "name": "Nam, Pohang-Ulleung",
+   "turnout": 61.83,
+   "winner": {
+    "party": "ppp",
+    "pct": 70.03
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 29.96
+   }
+  },
+  "north_gyeongsang_3": {
+   "name": "Gyeongju",
+   "turnout": 65.37,
+   "winner": {
+    "party": "ppp",
+    "pct": 65.77
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 24.26
+   }
+  },
+  "north_gyeongsang_4": {
+   "name": "Gimcheon",
+   "turnout": 66.82,
+   "winner": {
+    "party": "ppp",
+    "pct": 65.78
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 23.22
+   }
+  },
+  "north_gyeongsang_5": {
+   "name": "Andong–Yecheon",
+   "turnout": 67.45,
+   "winner": {
+    "party": "ppp",
+    "pct": 67.47
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 28.93
+   }
+  },
+  "north_gyeongsang_6": {
+   "name": "Gumi A",
+   "turnout": 61.51,
+   "winner": {
+    "party": "ppp",
+    "pct": 72.58
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 27.41
+   }
+  },
+  "north_gyeongsang_7": {
+   "name": "Gumi B",
+   "turnout": 57.8,
+   "winner": {
+    "party": "ppp",
+    "pct": 65.29
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 33.36
+   }
+  },
+  "north_gyeongsang_8": {
+   "name": "Yeongju–Yeongyang–Bonghwa",
+   "turnout": 68.74,
+   "winner": {
+    "party": "ppp",
+    "pct": 73.71
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 26.28
+   }
+  },
+  "north_gyeongsang_9": {
+   "name": "Yeongcheon–Cheongdo",
+   "turnout": 69.09,
+   "winner": {
+    "party": "ppp",
+    "pct": 62.88
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 19.53
+   }
+  },
+  "north_gyeongsang_10": {
+   "name": "Sangju–Mungyeong",
+   "turnout": 69.43,
+   "winner": {
+    "party": "ppp",
+    "pct": 77.64
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 18.83
+   }
+  },
+  "north_gyeongsang_11": {
+   "name": "Gyeongsan",
+   "turnout": 63.48,
+   "winner": {
+    "party": "ppp",
+    "pct": 43.43
+   },
+   "runner": {
+    "party": "other",
+    "pct": 42.27
+   }
+  },
+  "north_gyeongsang_12": {
+   "name": "Uiseong–Cheongsong–Yeongdeok–Uljin",
+   "turnout": 70.97,
+   "winner": {
+    "party": "ppp",
+    "pct": 83.33
+   },
+   "runner": {
+    "party": "other",
+    "pct": 16.66
+   }
+  },
+  "north_gyeongsang_13": {
+   "name": "Goryeong–Seongju–Chilgok",
+   "turnout": 64.4,
+   "winner": {
+    "party": "ppp",
+    "pct": 76.23
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 21.49
+   }
+  },
+  "south_gyeongsang_1": {
+   "name": "Uichang, Changwon",
+   "turnout": 67.12,
+   "winner": {
+    "party": "ppp",
+    "pct": 57.3
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 42.69
+   }
+  },
+  "south_gyeongsang_2": {
+   "name": "Seongsan, Changwon",
+   "turnout": 70.51,
+   "winner": {
+    "party": "dpk",
+    "pct": 46.38
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.7
+   }
+  },
+  "south_gyeongsang_3": {
+   "name": "Masanhappo, Changwon",
+   "turnout": 67.4,
+   "winner": {
+    "party": "ppp",
+    "pct": 64.04
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 35.95
+   }
+  },
+  "south_gyeongsang_4": {
+   "name": "Masanhoewon, Changwon",
+   "turnout": 68.87,
+   "winner": {
+    "party": "ppp",
+    "pct": 59.77
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 40.22
+   }
+  },
+  "south_gyeongsang_5": {
+   "name": "Jinhae, Changwon",
+   "turnout": 65.08,
+   "winner": {
+    "party": "ppp",
+    "pct": 50.24
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 49.75
+   }
+  },
+  "south_gyeongsang_6": {
+   "name": "Jinju A",
+   "turnout": 68.87,
+   "winner": {
+    "party": "ppp",
+    "pct": 58.3
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 41.69
+   }
+  },
+  "south_gyeongsang_7": {
+   "name": "Jinju B",
+   "turnout": 67.46,
+   "winner": {
+    "party": "ppp",
+    "pct": 56.13
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 30.21
+   }
+  },
+  "south_gyeongsang_8": {
+   "name": "Tongyeong–Goseong",
+   "turnout": 68.62,
+   "winner": {
+    "party": "ppp",
+    "pct": 61.45
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 38.54
+   }
+  },
+  "south_gyeongsang_9": {
+   "name": "Sacheon–Namhae–Hadong",
+   "turnout": 69.96,
+   "winner": {
+    "party": "ppp",
+    "pct": 55.58
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 32.33
+   }
+  },
+  "south_gyeongsang_10": {
+   "name": "Gimhae A",
+   "turnout": 64.1,
+   "winner": {
+    "party": "dpk",
+    "pct": 52.47
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 47.52
+   }
+  },
+  "south_gyeongsang_11": {
+   "name": "Gimhae B",
+   "turnout": 65.06,
+   "winner": {
+    "party": "dpk",
+    "pct": 56.19
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 43.8
+   }
+  },
+  "south_gyeongsang_12": {
+   "name": "Miryang–Uiryeong–Haman–Changnyeong",
+   "turnout": 67.35,
+   "winner": {
+    "party": "ppp",
+    "pct": 66.85
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 33.14
+   }
+  },
+  "south_gyeongsang_13": {
+   "name": "Geoje",
+   "turnout": 67.55,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.23
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 46.67
+   }
+  },
+  "south_gyeongsang_14": {
+   "name": "Yangsan A",
+   "turnout": 66.66,
+   "winner": {
+    "party": "ppp",
+    "pct": 53.61
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 44.78
+   }
+  },
+  "south_gyeongsang_15": {
+   "name": "Yangsan B",
+   "turnout": 68.49,
+   "winner": {
+    "party": "ppp",
+    "pct": 51.05
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 48.94
+   }
+  },
+  "south_gyeongsang_16": {
+   "name": "Sancheong–Hamyang–Geochang–Hapcheon",
+   "turnout": 70.18,
+   "winner": {
+    "party": "ppp",
+    "pct": 70.99
+   },
+   "runner": {
+    "party": "dpk",
+    "pct": 29.0
+   }
+  },
+  "jeju_1": {
+   "name": "Jeju A",
+   "turnout": 59.66,
+   "winner": {
+    "party": "dpk",
+    "pct": 62.88
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 37.11
+   }
+  },
+  "jeju_2": {
+   "name": "Jeju B",
+   "turnout": 63.22,
+   "winner": {
+    "party": "dpk",
+    "pct": 64.64
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 31.96
+   }
+  },
+  "jeju_3": {
+   "name": "Seogwipo",
+   "turnout": 64.79,
+   "winner": {
+    "party": "dpk",
+    "pct": 54.0
+   },
+   "runner": {
+    "party": "ppp",
+    "pct": 45.99
+   }
+  }
+ },
+ "national": {
+  "fptp": {
+   "dpk": 50.36,
+   "ppp": 45.17,
+   "rkp": null,
+   "rp": 0.69,
+   "pp": 1.07,
+   "nfp": 0.71
+  },
+  "pr": {
+   "dpk": 26.7,
+   "ppp": 36.67,
+   "rkp": 24.25,
+   "rp": 3.62,
+   "pp": null,
+   "nfp": 1.71,
+   "bip": 0.0,
+   "sdp": 0.0
+  },
+  "seats": {
+   "dpk": 175,
+   "ppp": 108,
+   "rkp": 12,
+   "rp": 3,
+   "pp": 1,
+   "nfp": 1
+  }
+ }
+}

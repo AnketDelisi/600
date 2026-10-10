@@ -2832,8 +2832,9 @@ async function renderPoster(opts){
 
   const X=40, barW=420;
   // consistent spacing across every country: the box always leaves a 10px
-  // gap inside its row slot, so tall and short grids alike breathe evenly
-  const RH=(rows.length>=6&&grid.length)?84:96;
+  // gap inside its row slot; rows give height back when a grid must also fit
+  // so the small boxes can be as tall as possible
+  const RH=grid.length?(rows.length>=6?80:90):96;
   const TH=RH-10;
   const totalW=TH+6+barW+8+92;
   const drawTile=(r,lg,yy,th)=>{
@@ -2909,9 +2910,9 @@ async function renderPoster(opts){
     ctx.textAlign='left';
     const nameTxt=String(r.name||'').toUpperCase();
     const nameAvail=numX-(bx+14)-14;
-    let nsize=40;
+    let nsize=Math.min(40,Math.round(th*0.47));
     ctx.font='700 '+nsize+'px '+FONT;
-    while(nsize>24&&ctx.measureText(nameTxt).width>nameAvail){
+    while(nsize>22&&ctx.measureText(nameTxt).width>nameAvail){
       nsize-=2;
       ctx.font='700 '+nsize+'px '+FONT;
     }
@@ -2947,10 +2948,10 @@ async function renderPoster(opts){
     const boxW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
     const rowsN=Math.ceil(grid.length/2);
     const tilesH=(opts.tiles&&opts.tiles.length)
-      ?(opts.tiles.length===1?126:96):0;
+      ?(opts.tiles.length===1?106:90):0;
     const avail=H-30-y-tilesH-10;
-    const gh=Math.max(18,Math.min(44,Math.floor(avail/rowsN)-8));
-    const gap=8;
+    const gh=Math.max(18,Math.min(52,Math.floor(avail/rowsN)-10));
+    const gap=10;
     const gw=Math.floor((boxW-gap)/2);
     const nameS=Math.max(10,Math.round(gh*0.42));
     const shareS=Math.max(9,Math.round(gh*0.4));
@@ -3002,7 +3003,7 @@ async function renderPoster(opts){
   // win probabilities); kept compact so the small-party grid gets the space
   if(opts.tiles&&opts.tiles.length){
     const single=opts.tiles.length===1;
-    const tw=single?470:300, th3=single?120:90;
+    const tw=single?470:300, th3=single?100:84;
     let tx=X;
     opts.tiles.slice(0,2).forEach(tl=>{
       ctx.fillStyle=tl.color;
@@ -3016,9 +3017,9 @@ async function renderPoster(opts){
         lsize--;
         ctx.font='700 '+lsize+'px '+FONT;
       }
-      ctx.fillText(labelTxt,tx+14,y+(single?42:32));
-      ctx.font='900 '+(single?64:38)+'px '+MONO;
-      ctx.fillText(tl.value,tx+14,y+(single?104:76));
+      ctx.fillText(labelTxt,tx+14,y+(single?38:30));
+      ctx.font='900 '+(single?60:38)+'px '+MONO;
+      ctx.fillText(tl.value,tx+14,y+(single?88:72));
       tx+=tw+12;
     });
   }

@@ -1,0 +1,1693 @@
+{
+ "aichi_1": {
+  "other": 42.53,
+  "ldp": 32.53,
+  "cra": 18.05,
+  "sansei": 6.89
+ },
+ "aichi_2": {
+  "dpfp": 49.11,
+  "ldp": 33.25,
+  "other": 10.73,
+  "jcp": 6.91
+ },
+ "aichi_3": {
+  "ldp": 40.82,
+  "cra": 29.24,
+  "other": 15.49,
+  "ishin": 9.78,
+  "jcp": 4.67
+ },
+ "aichi_4": {
+  "ldp": 41.69,
+  "cra": 26.62,
+  "sansei": 9.32,
+  "other": 9.16,
+  "ishin": 7.81,
+  "jcp": 5.41
+ },
+ "aichi_5": {
+  "ldp": 41.68,
+  "cra": 25.07,
+  "other": 18.28,
+  "sansei": 10.74,
+  "jcp": 4.24
+ },
+ "aichi_6": {
+  "ldp": 54.06,
+  "cra": 19.75,
+  "sansei": 14.2,
+  "other": 6.53,
+  "sdp": 5.45
+ },
+ "aichi_7": {
+  "dpfp": 49.76,
+  "ldp": 43.63,
+  "jcp": 6.6
+ },
+ "aichi_8": {
+  "ldp": 52.84,
+  "cra": 34.1,
+  "cpj": 13.06
+ },
+ "aichi_9": {
+  "ldp": 45.11,
+  "cra": 28.07,
+  "ishin": 11.83,
+  "sansei": 10.68,
+  "jcp": 4.32
+ },
+ "aichi_10": {
+  "ldp": 42.1,
+  "cra": 22.71,
+  "ishin": 14.85,
+  "dpfp": 11.0,
+  "sansei": 9.34
+ },
+ "aichi_11": {
+  "dpfp": 59.69,
+  "ldp": 40.31
+ },
+ "aichi_12": {
+  "ldp": 47.01,
+  "cra": 39.2,
+  "sansei": 13.79
+ },
+ "aichi_13": {
+  "ldp": 58.61,
+  "cra": 36.41,
+  "jcp": 4.98
+ },
+ "aichi_14": {
+  "ldp": 67.43,
+  "cra": 28.1,
+  "jcp": 4.46
+ },
+ "aichi_15": {
+  "ldp": 43.55,
+  "cra": 18.11,
+  "ishin": 17.68,
+  "sansei": 9.41,
+  "other": 6.38,
+  "reiwa": 4.87
+ },
+ "aichi_16": {
+  "ldp": 40.93,
+  "dpfp": 26.91,
+  "cra": 19.44,
+  "sansei": 7.8,
+  "other": 4.92
+ },
+ "akita_1": {
+  "ldp": 46.49,
+  "dpfp": 17.98,
+  "cra": 15.98,
+  "ishin": 10.46,
+  "sansei": 5.39,
+  "jcp": 3.7
+ },
+ "akita_2": {
+  "ldp": 54.95,
+  "cra": 45.05
+ },
+ "akita_3": {
+  "dpfp": 50.73,
+  "ldp": 49.27
+ },
+ "aomori_1": {
+  "ldp": 50.89,
+  "cra": 32.64,
+  "sansei": 10.01,
+  "jcp": 6.45
+ },
+ "aomori_2": {
+  "ldp": 54.61,
+  "cra": 26.64,
+  "dpfp": 15.67,
+  "jcp": 3.08
+ },
+ "aomori_3": {
+  "ldp": 52.31,
+  "cra": 42.33,
+  "reiwa": 5.37
+ },
+ "chiba_1": {
+  "ldp": 46.84,
+  "cra": 38.89,
+  "sansei": 14.27
+ },
+ "chiba_2": {
+  "ldp": 67.46,
+  "cra": 23.31,
+  "jcp": 9.23
+ },
+ "chiba_3": {
+  "ldp": 52.0,
+  "cra": 29.2,
+  "sansei": 13.65,
+  "jcp": 5.15
+ },
+ "chiba_4": {
+  "ldp": 48.19,
+  "cra": 32.52,
+  "sansei": 11.26,
+  "jcp": 5.36,
+  "other": 2.67
+ },
+ "chiba_5": {
+  "ldp": 36.45,
+  "dpfp": 22.94,
+  "cra": 20.56,
+  "mirai": 10.89,
+  "sansei": 9.16
+ },
+ "chiba_6": {
+  "ldp": 40.46,
+  "cra": 26.37,
+  "dpfp": 18.54,
+  "sansei": 9.79,
+  "jcp": 4.84
+ },
+ "chiba_7": {
+  "ldp": 64.0,
+  "dpfp": 25.7,
+  "other": 10.3
+ },
+ "chiba_8": {
+  "ldp": 49.06,
+  "cra": 32.33,
+  "sansei": 10.88,
+  "ishin": 7.73
+ },
+ "chiba_9": {
+  "ldp": 44.21,
+  "cra": 34.44,
+  "ishin": 10.91,
+  "sansei": 10.44
+ },
+ "chiba_10": {
+  "ldp": 61.08,
+  "cra": 32.64,
+  "jcp": 6.28
+ },
+ "chiba_11": {
+  "ldp": 61.51,
+  "cra": 30.24,
+  "jcp": 8.24
+ },
+ "chiba_12": {
+  "ldp": 71.48,
+  "other": 18.84,
+  "jcp": 9.68
+ },
+ "chiba_13": {
+  "ldp": 53.86,
+  "cra": 31.94,
+  "sansei": 14.19
+ },
+ "chiba_14": {
+  "cra": 44.98,
+  "ldp": 38.97,
+  "sansei": 11.59,
+  "jcp": 4.45
+ },
+ "ehime_1": {
+  "ldp": 60.39,
+  "dpfp": 21.86,
+  "sansei": 11.26,
+  "jcp": 6.48
+ },
+ "ehime_2": {
+  "ldp": 47.56,
+  "cra": 40.18,
+  "sansei": 12.26
+ },
+ "ehime_3": {
+  "ldp": 71.18,
+  "cra": 23.2,
+  "jcp": 5.62
+ },
+ "fukui_1": {
+  "ldp": 48.1,
+  "cra": 20.07,
+  "dpfp": 17.81,
+  "sansei": 14.02
+ },
+ "fukui_2": {
+  "other": 59.95,
+  "cra": 40.05
+ },
+ "fukuoka_1": {
+  "ldp": 48.27,
+  "cra": 20.89,
+  "sansei": 14.5,
+  "ishin": 12.03,
+  "jcp": 4.31
+ },
+ "fukuoka_2": {
+  "ldp": 53.63,
+  "cra": 29.98,
+  "sansei": 12.98,
+  "jcp": 3.41
+ },
+ "fukuoka_3": {
+  "ldp": 53.94,
+  "cra": 24.38,
+  "ishin": 16.21,
+  "jcp": 5.47
+ },
+ "fukuoka_4": {
+  "ldp": 53.62,
+  "dpfp": 30.81,
+  "sansei": 15.56
+ },
+ "fukuoka_5": {
+  "ldp": 57.46,
+  "dpfp": 20.97,
+  "sansei": 12.89,
+  "sdp": 8.69
+ },
+ "fukuoka_6": {
+  "ldp": 61.79,
+  "dpfp": 30.69,
+  "jcp": 7.52
+ },
+ "fukuoka_7": {
+  "ldp": 67.12,
+  "cra": 32.88
+ },
+ "fukuoka_8": {
+  "ldp": 67.53,
+  "reiwa": 16.9,
+  "other": 15.57
+ },
+ "fukuoka_9": {
+  "other": 51.93,
+  "ldp": 34.56,
+  "dpfp": 8.41,
+  "jcp": 5.1
+ },
+ "fukuoka_10": {
+  "ldp": 42.5,
+  "cra": 32.22,
+  "other": 14.46,
+  "sansei": 7.05,
+  "jcp": 3.77
+ },
+ "fukuoka_11": {
+  "ldp": 44.68,
+  "ishin": 30.78,
+  "cra": 13.61,
+  "sansei": 7.21,
+  "sdp": 3.71
+ },
+ "fukushima_1": {
+  "ldp": 45.24,
+  "cra": 42.48,
+  "other": 12.28
+ },
+ "fukushima_2": {
+  "ldp": 52.01,
+  "cra": 36.36,
+  "sansei": 8.33,
+  "jcp": 2.58,
+  "other": 0.72
+ },
+ "fukushima_3": {
+  "ldp": 57.03,
+  "cra": 40.8,
+  "other": 2.16
+ },
+ "fukushima_4": {
+  "ldp": 49.35,
+  "cra": 26.77,
+  "dpfp": 18.87,
+  "jcp": 5.02
+ },
+ "gifu_1": {
+  "ldp": 55.81,
+  "cra": 22.67,
+  "sansei": 16.17,
+  "jcp": 5.35
+ },
+ "gifu_2": {
+  "ldp": 54.57,
+  "dpfp": 27.76,
+  "sansei": 8.82,
+  "other": 8.85
+ },
+ "gifu_3": {
+  "ldp": 53.44,
+  "dpfp": 23.04,
+  "reiwa": 13.04,
+  "sansei": 10.48
+ },
+ "gifu_4": {
+  "ldp": 50.66,
+  "cra": 39.07,
+  "sansei": 10.27
+ },
+ "gifu_5": {
+  "ldp": 52.11,
+  "cra": 23.56,
+  "dpfp": 17.27,
+  "ishin": 7.06
+ },
+ "gunma_1": {
+  "ldp": 61.64,
+  "cra": 28.83,
+  "jcp": 9.52
+ },
+ "gunma_2": {
+  "ldp": 52.74,
+  "dpfp": 13.93,
+  "other": 12.18,
+  "sansei": 10.05,
+  "jcp": 6.43,
+  "cpj": 4.68
+ },
+ "gunma_3": {
+  "ldp": 61.53,
+  "cra": 38.47
+ },
+ "gunma_4": {
+  "ldp": 53.41,
+  "sansei": 22.58,
+  "cra": 18.0,
+  "jcp": 6.01
+ },
+ "gunma_5": {
+  "ldp": 68.58,
+  "sansei": 31.42
+ },
+ "hiroshima_1": {
+  "ldp": 53.33,
+  "cra": 18.25,
+  "sansei": 17.05,
+  "reiwa": 4.57,
+  "jcp": 4.21,
+  "other": 2.6
+ },
+ "hiroshima_2": {
+  "ldp": 51.7,
+  "dpfp": 29.41,
+  "sansei": 10.98,
+  "jcp": 7.92
+ },
+ "hiroshima_3": {
+  "ldp": 51.36,
+  "cra": 29.67,
+  "sansei": 12.92,
+  "jcp": 4.17,
+  "other": 1.87
+ },
+ "hiroshima_4": {
+  "ldp": 47.02,
+  "dpfp": 32.2,
+  "ishin": 20.79
+ },
+ "hiroshima_5": {
+  "ldp": 50.71,
+  "cra": 43.66,
+  "jcp": 5.63
+ },
+ "hiroshima_6": {
+  "ldp": 67.02,
+  "cra": 27.67,
+  "jcp": 5.32
+ },
+ "hokkaido_1": {
+  "ldp": 43.61,
+  "cra": 31.58,
+  "dpfp": 11.28,
+  "sansei": 8.53,
+  "jcp": 5.0
+ },
+ "hokkaido_2": {
+  "ldp": 42.87,
+  "cra": 30.44,
+  "sansei": 11.56,
+  "ishin": 7.8,
+  "jcp": 7.34
+ },
+ "hokkaido_3": {
+  "ldp": 46.45,
+  "cra": 33.05,
+  "sansei": 14.16,
+  "jcp": 6.34
+ },
+ "hokkaido_4": {
+  "ldp": 47.33,
+  "cra": 37.41,
+  "sansei": 8.98,
+  "jcp": 6.27
+ },
+ "hokkaido_5": {
+  "ldp": 57.5,
+  "cra": 42.5
+ },
+ "hokkaido_6": {
+  "ldp": 56.09,
+  "cra": 36.98,
+  "jcp": 6.93
+ },
+ "hokkaido_7": {
+  "ldp": 65.72,
+  "cra": 34.28
+ },
+ "hokkaido_8": {
+  "ldp": 55.29,
+  "cra": 44.71
+ },
+ "hokkaido_9": {
+  "ldp": 43.11,
+  "cra": 39.72,
+  "sansei": 11.22,
+  "jcp": 5.95
+ },
+ "hokkaido_10": {
+  "cra": 50.01,
+  "ldp": 49.99
+ },
+ "hokkaido_11": {
+  "ldp": 50.13,
+  "cra": 42.52,
+  "sansei": 7.35
+ },
+ "hokkaido_12": {
+  "ldp": 58.81,
+  "cra": 41.19
+ },
+ "hyogo_1": {
+  "ldp": 33.46,
+  "cra": 31.58,
+  "ishin": 20.27,
+  "sansei": 9.54,
+  "jcp": 5.16
+ },
+ "hyogo_2": {
+  "ishin": 45.01,
+  "cra": 25.12,
+  "other": 22.74,
+  "jcp": 7.13
+ },
+ "hyogo_3": {
+  "ldp": 46.9,
+  "ishin": 21.48,
+  "dpfp": 21.43,
+  "jcp": 10.19
+ },
+ "hyogo_4": {
+  "ldp": 69.33,
+  "cra": 23.11,
+  "jcp": 7.56
+ },
+ "hyogo_5": {
+  "ldp": 44.56,
+  "ishin": 26.11,
+  "cra": 18.56,
+  "other": 5.97,
+  "jcp": 4.81
+ },
+ "hyogo_6": {
+  "ldp": 36.4,
+  "ishin": 25.26,
+  "cra": 23.31,
+  "sansei": 10.72,
+  "jcp": 4.3
+ },
+ "hyogo_7": {
+  "ldp": 42.39,
+  "ishin": 26.92,
+  "cra": 17.6,
+  "sansei": 7.85,
+  "jcp": 5.23
+ },
+ "hyogo_8": {
+  "ldp": 43.31,
+  "ishin": 24.23,
+  "cra": 21.66,
+  "jcp": 5.67,
+  "reiwa": 5.14
+ },
+ "hyogo_9": {
+  "ldp": 58.26,
+  "cra": 27.3,
+  "sansei": 10.54,
+  "jcp": 3.89
+ },
+ "hyogo_10": {
+  "ldp": 41.05,
+  "ishin": 20.66,
+  "cra": 20.59,
+  "sansei": 13.76,
+  "jcp": 3.95
+ },
+ "hyogo_11": {
+  "ldp": 43.5,
+  "ishin": 28.17,
+  "dpfp": 12.08,
+  "sansei": 9.32,
+  "jcp": 6.93
+ },
+ "hyogo_12": {
+  "ldp": 53.07,
+  "ishin": 36.22,
+  "jcp": 10.71
+ },
+ "ibaraki_1": {
+  "ldp": 41.61,
+  "other": 40.25,
+  "sansei": 12.04,
+  "jcp": 6.1
+ },
+ "ibaraki_2": {
+  "ldp": 54.15,
+  "cra": 22.16,
+  "dpfp": 11.96,
+  "sansei": 11.73
+ },
+ "ibaraki_3": {
+  "ldp": 51.29,
+  "cra": 27.9,
+  "sansei": 15.84,
+  "reiwa": 4.97
+ },
+ "ibaraki_4": {
+  "ldp": 83.1,
+  "jcp": 16.9
+ },
+ "ibaraki_5": {
+  "dpfp": 60.42,
+  "ldp": 39.58
+ },
+ "ibaraki_6": {
+  "ldp": 43.2,
+  "other": 43.38,
+  "sansei": 9.43,
+  "jcp": 3.98
+ },
+ "ibaraki_7": {
+  "other": 52.55,
+  "ldp": 47.45
+ },
+ "ishikawa_1": {
+  "ldp": 44.98,
+  "dpfp": 25.87,
+  "sansei": 12.54,
+  "ishin": 10.5,
+  "jcp": 6.1
+ },
+ "ishikawa_2": {
+  "ldp": 83.58,
+  "jcp": 16.42
+ },
+ "ishikawa_3": {
+  "ldp": 51.88,
+  "cra": 46.1,
+  "jcp": 2.02
+ },
+ "iwate_1": {
+  "cra": 44.16,
+  "ldp": 40.9,
+  "sansei": 7.38,
+  "jcp": 6.3,
+  "other": 1.25
+ },
+ "iwate_2": {
+  "ldp": 64.77,
+  "dpfp": 35.23
+ },
+ "iwate_3": {
+  "ldp": 48.58,
+  "cra": 37.29,
+  "sansei": 14.13
+ },
+ "kagawa_1": {
+  "cra": 43.04,
+  "ldp": 42.56,
+  "sansei": 11.38,
+  "jcp": 3.02
+ },
+ "kagawa_2": {
+  "dpfp": 59.92,
+  "ldp": 33.85,
+  "sansei": 6.23
+ },
+ "kagawa_3": {
+  "ldp": 59.11,
+  "dpfp": 29.78,
+  "ishin": 11.11
+ },
+ "kagoshima_1": {
+  "ldp": 51.04,
+  "cra": 31.66,
+  "sansei": 14.97,
+  "jcp": 2.34
+ },
+ "kagoshima_2": {
+  "ldp": 68.48,
+  "sansei": 21.11,
+  "jcp": 10.41
+ },
+ "kagoshima_3": {
+  "cra": 50.78,
+  "ldp": 49.22
+ },
+ "kagoshima_4": {
+  "ldp": 62.51,
+  "dpfp": 14.65,
+  "sansei": 13.52,
+  "sdp": 9.33
+ },
+ "kanagawa_1": {
+  "ldp": 53.12,
+  "cra": 34.91,
+  "ishin": 11.96
+ },
+ "kanagawa_2": {
+  "ldp": 47.94,
+  "dpfp": 19.51,
+  "cra": 17.96,
+  "sansei": 8.16,
+  "jcp": 6.43
+ },
+ "kanagawa_3": {
+  "ldp": 47.73,
+  "cra": 20.21,
+  "dpfp": 17.45,
+  "sansei": 9.2,
+  "jcp": 5.41
+ },
+ "kanagawa_4": {
+  "ldp": 47.56,
+  "cra": 41.98,
+  "sansei": 10.46
+ },
+ "kanagawa_5": {
+  "ldp": 49.71,
+  "cra": 26.71,
+  "ishin": 16.99,
+  "jcp": 6.6
+ },
+ "kanagawa_6": {
+  "ldp": 60.66,
+  "cra": 39.34
+ },
+ "kanagawa_7": {
+  "ldp": 62.12,
+  "cra": 37.88
+ },
+ "kanagawa_8": {
+  "ldp": 59.03,
+  "cra": 40.97
+ },
+ "kanagawa_9": {
+  "ldp": 46.62,
+  "cra": 44.76,
+  "jcp": 8.62
+ },
+ "kanagawa_10": {
+  "ldp": 36.08,
+  "ishin": 24.24,
+  "dpfp": 20.51,
+  "jcp": 10.03,
+  "sansei": 9.14
+ },
+ "kanagawa_11": {
+  "ldp": 79.47,
+  "jcp": 10.29,
+  "sansei": 10.23
+ },
+ "kanagawa_12": {
+  "ldp": 49.37,
+  "cra": 35.91,
+  "other": 9.61,
+  "jcp": 5.11
+ },
+ "kanagawa_13": {
+  "ldp": 48.64,
+  "cra": 39.74,
+  "sansei": 11.61
+ },
+ "kanagawa_14": {
+  "ldp": 52.49,
+  "cra": 29.9,
+  "sansei": 11.75,
+  "jcp": 5.85
+ },
+ "kanagawa_15": {
+  "ldp": 62.53,
+  "sansei": 17.47,
+  "sdp": 10.9,
+  "reiwa": 9.1
+ },
+ "kanagawa_16": {
+  "ldp": 52.87,
+  "cra": 47.13
+ },
+ "kanagawa_17": {
+  "ldp": 48.39,
+  "cra": 30.92,
+  "dpfp": 20.69
+ },
+ "kanagawa_18": {
+  "ldp": 32.39,
+  "cra": 22.01,
+  "dpfp": 21.08,
+  "ishin": 11.16,
+  "sansei": 7.56,
+  "jcp": 5.81
+ },
+ "kanagawa_19": {
+  "ldp": 40.66,
+  "dpfp": 37.7,
+  "ishin": 12.71,
+  "sansei": 8.92
+ },
+ "kanagawa_20": {
+  "ldp": 49.52,
+  "cra": 36.34,
+  "ishin": 14.14
+ },
+ "kochi_1": {
+  "ldp": 59.76,
+  "cra": 25.23,
+  "sansei": 15.01
+ },
+ "kochi_2": {
+  "ldp": 69.47,
+  "jcp": 16.34,
+  "dpfp": 14.19
+ },
+ "kumamoto_1": {
+  "ldp": 63.2,
+  "cra": 24.49,
+  "sansei": 12.31
+ },
+ "kumamoto_2": {
+  "ldp": 71.45,
+  "sansei": 19.18,
+  "jcp": 9.37
+ },
+ "kumamoto_3": {
+  "ldp": 66.56,
+  "sansei": 18.7,
+  "sdp": 14.74
+ },
+ "kumamoto_4": {
+  "ldp": 66.23,
+  "ishin": 10.63,
+  "sansei": 8.41,
+  "dpfp": 7.67,
+  "jcp": 7.06
+ },
+ "kyoto_1": {
+  "ldp": 36.99,
+  "cra": 13.69,
+  "ishin": 12.38,
+  "jcp": 10.13,
+  "mirai": 8.15,
+  "dpfp": 6.46,
+  "other": 6.1,
+  "sansei": 6.1
+ },
+ "kyoto_2": {
+  "ishin": 35.67,
+  "ldp": 26.63,
+  "jcp": 13.6,
+  "cra": 13.13,
+  "mirai": 8.07,
+  "reiwa": 2.9
+ },
+ "kyoto_3": {
+  "cra": 36.64,
+  "ldp": 33.36,
+  "ishin": 14.69,
+  "jcp": 8.38,
+  "sansei": 6.92
+ },
+ "kyoto_4": {
+  "ldp": 73.71,
+  "jcp": 26.29
+ },
+ "kyoto_5": {
+  "ldp": 76.99,
+  "jcp": 23.01
+ },
+ "kyoto_6": {
+  "ldp": 47.87,
+  "cra": 35.44,
+  "sansei": 9.46,
+  "jcp": 7.24
+ },
+ "mie_1": {
+  "ldp": 66.28,
+  "cra": 28.17,
+  "jcp": 5.56
+ },
+ "mie_2": {
+  "ldp": 52.48,
+  "cra": 34.89,
+  "sansei": 12.63
+ },
+ "mie_3": {
+  "ldp": 42.11,
+  "cra": 38.42,
+  "sansei": 9.62,
+  "cpj": 7.16,
+  "jcp": 2.69
+ },
+ "mie_4": {
+  "ldp": 66.46,
+  "dpfp": 26.79,
+  "jcp": 6.75
+ },
+ "miyagi_1": {
+  "ldp": 45.02,
+  "cra": 31.91,
+  "sansei": 12.94,
+  "ishin": 6.23,
+  "jcp": 3.9
+ },
+ "miyagi_2": {
+  "ldp": 41.41,
+  "cra": 30.11,
+  "sansei": 14.74,
+  "dpfp": 9.49,
+  "ishin": 4.25
+ },
+ "miyagi_3": {
+  "ldp": 54.72,
+  "cra": 30.92,
+  "sansei": 11.4,
+  "other": 2.96
+ },
+ "miyagi_4": {
+  "ldp": 57.15,
+  "cra": 36.18,
+  "sansei": 6.67
+ },
+ "miyagi_5": {
+  "ldp": 77.37,
+  "cra": 17.2,
+  "jcp": 5.43
+ },
+ "miyazaki_1": {
+  "cra": 40.28,
+  "ldp": 32.42,
+  "ishin": 16.07,
+  "sansei": 11.23
+ },
+ "miyazaki_2": {
+  "dpfp": 50.7,
+  "ldp": 44.97,
+  "jcp": 4.33
+ },
+ "miyazaki_3": {
+  "ldp": 77.12,
+  "sansei": 22.88
+ },
+ "nagano_1": {
+  "ldp": 50.7,
+  "cra": 36.8,
+  "ishin": 12.5
+ },
+ "nagano_2": {
+  "ldp": 46.74,
+  "cra": 34.04,
+  "ishin": 10.96,
+  "sansei": 8.25
+ },
+ "nagano_3": {
+  "ldp": 48.32,
+  "cra": 35.39,
+  "sansei": 11.41,
+  "reiwa": 4.88
+ },
+ "nagano_4": {
+  "ldp": 57.56,
+  "dpfp": 25.46,
+  "jcp": 16.97
+ },
+ "nagano_5": {
+  "ldp": 59.75,
+  "cra": 40.25
+ },
+ "nagasaki_1": {
+  "dpfp": 52.45,
+  "ldp": 29.48,
+  "ishin": 7.46,
+  "sansei": 5.82,
+  "jcp": 4.78
+ },
+ "nagasaki_2": {
+  "ldp": 56.29,
+  "cra": 32.4,
+  "sansei": 11.32
+ },
+ "nagasaki_3": {
+  "ldp": 72.12,
+  "cra": 27.88
+ },
+ "nara_1": {
+  "ldp": 53.31,
+  "cra": 26.11,
+  "dpfp": 12.17,
+  "sansei": 4.54,
+  "jcp": 3.87
+ },
+ "nara_2": {
+  "ldp": 87.01,
+  "jcp": 12.99
+ },
+ "nara_3": {
+  "ldp": 62.85,
+  "ishin": 19.41,
+  "jcp": 11.53,
+  "other": 6.21
+ },
+ "niigata_1": {
+  "ldp": 46.78,
+  "cra": 36.97,
+  "sansei": 7.83,
+  "ishin": 5.1,
+  "jcp": 3.32
+ },
+ "niigata_2": {
+  "ldp": 48.98,
+  "cra": 37.5,
+  "sansei": 9.48,
+  "ishin": 4.05
+ },
+ "niigata_3": {
+  "ldp": 54.63,
+  "cra": 36.01,
+  "sansei": 9.36
+ },
+ "niigata_4": {
+  "ldp": 53.56,
+  "cra": 31.22,
+  "dpfp": 7.92,
+  "sansei": 7.31
+ },
+ "niigata_5": {
+  "ldp": 52.1,
+  "cra": 39.65,
+  "sansei": 8.25
+ },
+ "oita_1": {
+  "ldp": 45.06,
+  "other": 33.58,
+  "sansei": 9.64,
+  "dpfp": 7.4,
+  "jcp": 4.32
+ },
+ "oita_2": {
+  "ldp": 61.48,
+  "cra": 38.52
+ },
+ "oita_3": {
+  "ldp": 34.59,
+  "cra": 30.23,
+  "other": 14.47,
+  "cpj": 11.19,
+  "sansei": 9.52
+ },
+ "okayama_1": {
+  "ldp": 48.14,
+  "cra": 25.78,
+  "dpfp": 11.22,
+  "sansei": 11.18,
+  "jcp": 3.68
+ },
+ "okayama_2": {
+  "ldp": 54.97,
+  "cra": 31.01,
+  "sansei": 10.38,
+  "jcp": 3.64
+ },
+ "okayama_3": {
+  "ldp": 81.14,
+  "jcp": 18.86
+ },
+ "okayama_4": {
+  "ldp": 50.91,
+  "cra": 32.03,
+  "dpfp": 13.97,
+  "jcp": 3.09
+ },
+ "okinawa_1": {
+  "ldp": 42.28,
+  "jcp": 38.27,
+  "sansei": 9.72,
+  "ishin": 8.28,
+  "other": 1.45
+ },
+ "okinawa_2": {
+  "ldp": 43.24,
+  "cra": 34.99,
+  "sansei": 11.76,
+  "sdp": 8.71,
+  "other": 1.3
+ },
+ "okinawa_3": {
+  "ldp": 51.81,
+  "cra": 36.72,
+  "sansei": 11.47
+ },
+ "okinawa_4": {
+  "ldp": 49.85,
+  "cra": 24.56,
+  "reiwa": 13.08,
+  "dpfp": 12.52
+ },
+ "osaka_1": {
+  "ishin": 40.22,
+  "ldp": 27.78,
+  "sansei": 12.04,
+  "dpfp": 12.02,
+  "jcp": 7.94
+ },
+ "osaka_2": {
+  "ishin": 51.95,
+  "other": 18.33,
+  "sansei": 16.68,
+  "jcp": 13.04
+ },
+ "osaka_3": {
+  "ishin": 40.36,
+  "ldp": 24.45,
+  "cra": 16.43,
+  "sansei": 9.81,
+  "jcp": 8.96
+ },
+ "osaka_4": {
+  "ishin": 37.19,
+  "ldp": 30.26,
+  "dpfp": 12.03,
+  "sansei": 10.23,
+  "jcp": 8.45,
+  "other": 1.83
+ },
+ "osaka_5": {
+  "ishin": 42.55,
+  "ldp": 21.87,
+  "dpfp": 10.93,
+  "reiwa": 9.04,
+  "sansei": 8.39,
+  "jcp": 7.22
+ },
+ "osaka_6": {
+  "ishin": 42.55,
+  "ldp": 20.74,
+  "cra": 18.44,
+  "sansei": 11.99,
+  "jcp": 6.28
+ },
+ "osaka_7": {
+  "ishin": 39.14,
+  "ldp": 34.86,
+  "sansei": 13.5,
+  "jcp": 12.49
+ },
+ "osaka_8": {
+  "ishin": 38.59,
+  "ldp": 32.17,
+  "dpfp": 12.04,
+  "jcp": 9.24,
+  "sansei": 7.95
+ },
+ "osaka_9": {
+  "ishin": 48.22,
+  "ldp": 37.39,
+  "sdp": 14.39
+ },
+ "osaka_10": {
+  "ishin": 45.06,
+  "cra": 26.2,
+  "ldp": 20.01,
+  "sansei": 8.72
+ },
+ "osaka_11": {
+  "ishin": 49.35,
+  "ldp": 18.19,
+  "cra": 16.77,
+  "sansei": 9.46,
+  "jcp": 6.23
+ },
+ "osaka_12": {
+  "ishin": 50.16,
+  "ldp": 21.56,
+  "cra": 21.46,
+  "jcp": 6.83
+ },
+ "osaka_13": {
+  "ishin": 37.88,
+  "ldp": 31.89,
+  "cra": 13.0,
+  "sansei": 7.31,
+  "jcp": 4.99,
+  "reiwa": 4.94
+ },
+ "osaka_14": {
+  "ishin": 57.76,
+  "ldp": 27.95,
+  "jcp": 14.28
+ },
+ "osaka_15": {
+  "ishin": 47.91,
+  "ldp": 38.11,
+  "jcp": 13.99
+ },
+ "osaka_16": {
+  "ishin": 41.24,
+  "cra": 27.01,
+  "ldp": 20.32,
+  "sansei": 11.43
+ },
+ "osaka_17": {
+  "ishin": 49.0,
+  "ldp": 26.71,
+  "sansei": 12.8,
+  "jcp": 11.49
+ },
+ "osaka_18": {
+  "ishin": 58.42,
+  "ldp": 28.21,
+  "jcp": 13.37
+ },
+ "osaka_19": {
+  "ldp": 36.91,
+  "ishin": 36.46,
+  "cra": 12.66,
+  "sansei": 8.47,
+  "jcp": 5.5
+ },
+ "saga_1": {
+  "ldp": 45.65,
+  "other": 45.01,
+  "sansei": 9.34
+ },
+ "saga_2": {
+  "ldp": 55.52,
+  "cra": 44.48
+ },
+ "saitama_1": {
+  "ldp": 55.65,
+  "cra": 31.27,
+  "sansei": 9.81,
+  "other": 3.27
+ },
+ "saitama_2": {
+  "ldp": 41.78,
+  "dpfp": 25.29,
+  "sansei": 17.26,
+  "ishin": 15.66
+ },
+ "saitama_3": {
+  "ldp": 52.2,
+  "cra": 32.74,
+  "sansei": 15.06
+ },
+ "saitama_4": {
+  "ldp": 52.92,
+  "dpfp": 27.14,
+  "jcp": 12.23,
+  "ishin": 7.71
+ },
+ "saitama_5": {
+  "ldp": 47.35,
+  "cra": 41.01,
+  "sansei": 11.64
+ },
+ "saitama_6": {
+  "ldp": 40.98,
+  "cra": 36.69,
+  "sansei": 9.49,
+  "jcp": 7.0,
+  "ishin": 5.83
+ },
+ "saitama_7": {
+  "ldp": 57.19,
+  "cra": 42.81
+ },
+ "saitama_8": {
+  "ldp": 52.38,
+  "cra": 29.97,
+  "other": 17.65
+ },
+ "saitama_9": {
+  "ldp": 54.97,
+  "cra": 45.03
+ },
+ "saitama_10": {
+  "ldp": 55.3,
+  "cra": 44.7
+ },
+ "saitama_11": {
+  "ldp": 53.36,
+  "cra": 19.54,
+  "dpfp": 11.53,
+  "sansei": 10.07,
+  "jcp": 5.5
+ },
+ "saitama_12": {
+  "ldp": 55.8,
+  "cra": 44.2
+ },
+ "saitama_13": {
+  "ldp": 39.34,
+  "dpfp": 35.96,
+  "sansei": 9.15,
+  "reiwa": 8.65,
+  "jcp": 6.89
+ },
+ "saitama_14": {
+  "ldp": 40.69,
+  "dpfp": 36.96,
+  "sansei": 12.51,
+  "jcp": 9.84
+ },
+ "saitama_15": {
+  "ldp": 52.31,
+  "cra": 26.09,
+  "ishin": 14.64,
+  "other": 6.96
+ },
+ "saitama_16": {
+  "ldp": 55.81,
+  "cra": 36.47,
+  "jcp": 7.72
+ },
+ "shiga_1": {
+  "ldp": 42.03,
+  "ishin": 25.99,
+  "dpfp": 21.42,
+  "jcp": 10.57
+ },
+ "shiga_2": {
+  "ldp": 60.14,
+  "cra": 19.98,
+  "ishin": 19.88
+ },
+ "shiga_3": {
+  "ldp": 48.64,
+  "ishin": 16.52,
+  "sansei": 13.49,
+  "cra": 13.22,
+  "jcp": 4.57,
+  "reiwa": 3.57
+ },
+ "shimane_1": {
+  "ldp": 50.96,
+  "cra": 37.69,
+  "sansei": 7.59,
+  "jcp": 3.76
+ },
+ "shimane_2": {
+  "ldp": 61.5,
+  "cra": 22.0,
+  "sansei": 10.22,
+  "jcp": 6.27
+ },
+ "shizuoka_1": {
+  "ldp": 61.15,
+  "dpfp": 29.49,
+  "jcp": 9.36
+ },
+ "shizuoka_2": {
+  "ldp": 71.06,
+  "cra": 28.94
+ },
+ "shizuoka_3": {
+  "ldp": 51.75,
+  "cra": 33.63,
+  "sansei": 11.02,
+  "jcp": 3.6
+ },
+ "shizuoka_4": {
+  "ldp": 51.75,
+  "dpfp": 36.39,
+  "sansei": 6.86,
+  "reiwa": 5.0
+ },
+ "shizuoka_5": {
+  "ldp": 74.8,
+  "cra": 19.27,
+  "jcp": 5.93
+ },
+ "shizuoka_6": {
+  "ldp": 54.58,
+  "cra": 36.75,
+  "sansei": 8.66
+ },
+ "shizuoka_7": {
+  "ldp": 67.66,
+  "dpfp": 23.8,
+  "sansei": 8.54
+ },
+ "shizuoka_8": {
+  "ldp": 49.97,
+  "cra": 36.02,
+  "sansei": 10.23,
+  "jcp": 3.77
+ },
+ "tochigi_1": {
+  "ldp": 40.52,
+  "cra": 21.52,
+  "ishin": 19.61,
+  "sansei": 13.95,
+  "jcp": 3.07,
+  "other": 1.34
+ },
+ "tochigi_2": {
+  "ldp": 51.84,
+  "cra": 35.08,
+  "sansei": 13.08
+ },
+ "tochigi_3": {
+  "other": 43.95,
+  "ldp": 40.56,
+  "cra": 15.49
+ },
+ "tochigi_4": {
+  "ldp": 47.06,
+  "cra": 39.94,
+  "sansei": 11.14,
+  "other": 1.85
+ },
+ "tochigi_5": {
+  "ldp": 68.19,
+  "dpfp": 12.09,
+  "sansei": 10.29,
+  "jcp": 9.43
+ },
+ "tokushima_1": {
+  "ldp": 58.2,
+  "cra": 25.44,
+  "ishin": 8.69,
+  "sansei": 7.67
+ },
+ "tokushima_2": {
+  "ldp": 48.56,
+  "dpfp": 27.37,
+  "other": 19.21,
+  "jcp": 4.86
+ },
+ "tokyo_1": {
+  "ldp": 43.0,
+  "cra": 25.41,
+  "sansei": 13.13,
+  "ishin": 10.5,
+  "jcp": 7.96
+ },
+ "tokyo_2": {
+  "ldp": 43.27,
+  "dpfp": 18.41,
+  "mirai": 12.78,
+  "ishin": 8.49,
+  "jcp": 7.85,
+  "sansei": 7.07,
+  "other": 2.13
+ },
+ "tokyo_3": {
+  "ldp": 42.64,
+  "cra": 24.52,
+  "dpfp": 15.93,
+  "ishin": 8.88,
+  "sansei": 8.03
+ },
+ "tokyo_4": {
+  "ldp": 49.39,
+  "dpfp": 24.08,
+  "sansei": 13.68,
+  "jcp": 12.85
+ },
+ "tokyo_5": {
+  "ldp": 39.06,
+  "cra": 25.5,
+  "dpfp": 14.53,
+  "ishin": 12.23,
+  "sansei": 8.69
+ },
+ "tokyo_6": {
+  "ldp": 37.74,
+  "cra": 33.21,
+  "dpfp": 18.24,
+  "sansei": 9.79,
+  "other": 1.02
+ },
+ "tokyo_7": {
+  "ldp": 34.47,
+  "cra": 22.53,
+  "mirai": 18.57,
+  "dpfp": 9.01,
+  "ishin": 8.42,
+  "sansei": 7.0
+ },
+ "tokyo_8": {
+  "ldp": 44.29,
+  "cra": 31.82,
+  "dpfp": 11.07,
+  "reiwa": 4.68,
+  "sansei": 4.36,
+  "cpj": 3.32,
+  "other": 0.46
+ },
+ "tokyo_9": {
+  "ldp": 43.03,
+  "cra": 30.63,
+  "dpfp": 17.81,
+  "sansei": 8.53
+ },
+ "tokyo_10": {
+  "ldp": 49.05,
+  "cra": 26.3,
+  "dpfp": 16.74,
+  "sansei": 6.87,
+  "other": 1.05
+ },
+ "tokyo_11": {
+  "ldp": 31.49,
+  "cra": 24.16,
+  "dpfp": 17.52,
+  "ishin": 11.95,
+  "sansei": 8.73,
+  "jcp": 5.74,
+  "other": 0.42
+ },
+ "tokyo_12": {
+  "ldp": 35.03,
+  "cra": 19.63,
+  "ishin": 14.72,
+  "dpfp": 13.75,
+  "jcp": 9.17,
+  "sansei": 7.7
+ },
+ "tokyo_13": {
+  "ldp": 46.59,
+  "dpfp": 32.55,
+  "jcp": 11.5,
+  "sansei": 9.36
+ },
+ "tokyo_14": {
+  "ldp": 50.23,
+  "dpfp": 22.54,
+  "reiwa": 9.44,
+  "sansei": 9.11,
+  "jcp": 8.69
+ },
+ "tokyo_15": {
+  "ldp": 42.49,
+  "cra": 27.52,
+  "dpfp": 11.13,
+  "ishin": 10.3,
+  "sansei": 5.73,
+  "other": 2.83
+ },
+ "tokyo_16": {
+  "ldp": 44.63,
+  "cra": 24.76,
+  "dpfp": 20.37,
+  "sansei": 10.25
+ },
+ "tokyo_17": {
+  "ldp": 36.18,
+  "cra": 22.03,
+  "dpfp": 13.97,
+  "ishin": 13.65,
+  "sansei": 9.53,
+  "other": 4.64
+ },
+ "tokyo_18": {
+  "ldp": 47.71,
+  "cra": 28.34,
+  "dpfp": 13.61,
+  "sansei": 6.96,
+  "other": 3.39
+ },
+ "tokyo_19": {
+  "ldp": 45.86,
+  "cra": 26.6,
+  "dpfp": 13.93,
+  "jcp": 7.02,
+  "sansei": 6.59
+ },
+ "tokyo_20": {
+  "ldp": 48.55,
+  "dpfp": 20.9,
+  "jcp": 20.06,
+  "sansei": 10.49
+ },
+ "tokyo_21": {
+  "ldp": 42.61,
+  "cra": 28.72,
+  "dpfp": 16.21,
+  "sansei": 9.78,
+  "other": 2.69
+ },
+ "tokyo_22": {
+  "ldp": 51.45,
+  "cra": 33.93,
+  "sansei": 14.62
+ },
+ "tokyo_23": {
+  "ldp": 45.29,
+  "cra": 34.35,
+  "sansei": 10.97,
+  "jcp": 9.39
+ },
+ "tokyo_24": {
+  "ldp": 41.06,
+  "cra": 33.87,
+  "dpfp": 10.65,
+  "sansei": 8.09,
+  "other": 6.32
+ },
+ "tokyo_25": {
+  "ldp": 50.48,
+  "cra": 23.13,
+  "dpfp": 9.91,
+  "sansei": 9.49,
+  "ishin": 6.99
+ },
+ "tokyo_26": {
+  "ldp": 34.68,
+  "other": 30.85,
+  "mirai": 13.04,
+  "dpfp": 9.13,
+  "jcp": 7.39,
+  "sansei": 4.91
+ },
+ "tokyo_27": {
+  "ldp": 38.15,
+  "cra": 36.25,
+  "dpfp": 16.94,
+  "sansei": 8.67
+ },
+ "tokyo_28": {
+  "ldp": 36.64,
+  "cra": 22.02,
+  "dpfp": 15.34,
+  "ishin": 9.95,
+  "sansei": 9.13,
+  "jcp": 6.92
+ },
+ "tokyo_29": {
+  "ldp": 41.36,
+  "cra": 23.29,
+  "dpfp": 13.71,
+  "cpj": 7.24,
+  "sansei": 7.23,
+  "jcp": 7.18
+ },
+ "tokyo_30": {
+  "ldp": 45.15,
+  "cra": 33.15,
+  "dpfp": 13.29,
+  "sansei": 8.42
+ },
+ "tottori_1": {
+  "ldp": 67.49,
+  "dpfp": 13.64,
+  "sansei": 11.97,
+  "jcp": 6.91
+ },
+ "tottori_2": {
+  "ldp": 62.3,
+  "cra": 33.23,
+  "jcp": 4.47
+ },
+ "toyama_1": {
+  "ldp": 63.4,
+  "cra": 21.47,
+  "sansei": 11.0,
+  "jcp": 4.12
+ },
+ "toyama_2": {
+  "ldp": 74.69,
+  "cra": 25.31
+ },
+ "toyama_3": {
+  "ldp": 65.93,
+  "dpfp": 18.47,
+  "sansei": 8.86,
+  "jcp": 6.75
+ },
+ "wakayama_1": {
+  "ldp": 46.25,
+  "dpfp": 15.13,
+  "cra": 14.58,
+  "sansei": 9.79,
+  "ishin": 9.2,
+  "jcp": 4.67,
+  "other": 0.38
+ },
+ "wakayama_2": {
+  "other": 82.17,
+  "jcp": 17.83
+ },
+ "yamagata_1": {
+  "ldp": 61.24,
+  "cra": 27.97,
+  "sansei": 10.79
+ },
+ "yamagata_2": {
+  "ldp": 68.32,
+  "dpfp": 27.33,
+  "jcp": 4.35
+ },
+ "yamagata_3": {
+  "ldp": 58.2,
+  "cra": 20.8,
+  "dpfp": 14.09,
+  "sansei": 6.91
+ },
+ "yamaguchi_1": {
+  "ldp": 63.51,
+  "dpfp": 19.97,
+  "sansei": 16.52
+ },
+ "yamaguchi_2": {
+  "ldp": 62.12,
+  "cra": 37.88
+ },
+ "yamaguchi_3": {
+  "ldp": 62.53,
+  "sansei": 12.82,
+  "cra": 12.62,
+  "ishin": 8.1,
+  "jcp": 3.94
+ },
+ "yamanashi_1": {
+  "ldp": 52.35,
+  "cra": 35.86,
+  "sansei": 7.72,
+  "jcp": 4.07
+ },
+ "yamanashi_2": {
+  "ldp": 81.52,
+  "jcp": 18.48
+ }
+}

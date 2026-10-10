@@ -286,18 +286,40 @@ def main():
 
     keys = sorted(mapkeys, key=lambda k: (k.rsplit("_", 1)[0],
                                           int(k.rsplit("_", 1)[1])))
+    # district baselines: full candidate shares scraped from ja.wikipedia,
+    # with the top-two candidates relabelled to the en-wiki caucus parties
+    # (the CRA alliance's candidates often ran as ballot independents, and
+    # the seat model works in caucus terms)
+    dr = json.loads(open(os.path.join(ROOT, "data", "jp",
+                                      "district_results.json"),
+                         encoding="utf8").read())
     names, gebiete = {}, {}
     for k in keys:
         d = res["districts"][k]
         names[k] = d["name"]
-        g = {}
-        w = d["winner"]
-        if w["party"] != "other" and w["pct"]:
-            g[w["party"]] = w["pct"]
-        r = d["runner"]
-        if r["party"] != "other" and r["pct"]:
-            g[r["party"]] = g.get(r["party"], 0) + r["pct"]
-        gebiete[k] = g
+        cands = dr.get(k, {}).get("cands")
+        if cands:
+            cands = [dict(c) for c in cands]
+            for p_en, pct_en in ((d["winner"]["party"], d["winner"]["pct"]),
+                                 (d["runner"]["party"], d["runner"]["pct"])):
+                if not pct_en:
+                    continue
+                best = min(cands, key=lambda c: abs(c["pct"] - pct_en))
+                if abs(best["pct"] - pct_en) <= 0.5:
+                    best["party"] = p_en
+            g = {}
+            for c in cands:
+                g[c["party"]] = round(g.get(c["party"], 0) + c["pct"], 2)
+            gebiete[k] = g
+        else:
+            g = {}
+            w = d["winner"]
+            if w["party"] != "other" and w["pct"]:
+                g[w["party"]] = w["pct"]
+            r = d["runner"]
+            if r["party"] != "other" and r["pct"]:
+                g[r["party"]] = g.get(r["party"], 0) + r["pct"]
+            gebiete[k] = g
 
     fptp = res["national"]["fptp"]
     prn = res["national"]["pr"]

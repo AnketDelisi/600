@@ -1,0 +1,4173 @@
+{
+ "country": "jp",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/Results_of_the_2026_Japanese_general_election",
+ "scraped_at": "2026-10-10T17:44:29Z",
+ "districts": {
+  "hokkaido_1": {
+   "name": "Hokkaido 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 112618,
+    "pct": 43.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.6
+   }
+  },
+  "hokkaido_2": {
+   "name": "Hokkaido 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 102343,
+    "pct": 42.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.4
+   }
+  },
+  "hokkaido_3": {
+   "name": "Hokkaido 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 114285,
+    "pct": 46.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.1
+   }
+  },
+  "hokkaido_4": {
+   "name": "Hokkaido 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 105656,
+    "pct": 47.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.4
+   }
+  },
+  "hokkaido_5": {
+   "name": "Hokkaido 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 143229,
+    "pct": 57.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 42.5
+   }
+  },
+  "hokkaido_6": {
+   "name": "Hokkaido 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 121276,
+    "pct": 56.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.0
+   }
+  },
+  "hokkaido_7": {
+   "name": "Hokkaido 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 89336,
+    "pct": 65.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.3
+   }
+  },
+  "hokkaido_8": {
+   "name": "Hokkaido 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 108229,
+    "pct": 55.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 44.7
+   }
+  },
+  "hokkaido_9": {
+   "name": "Hokkaido 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 87984,
+    "pct": 43.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.7
+   }
+  },
+  "hokkaido_10": {
+   "name": "Hokkaido 10th",
+   "winner": {
+    "party": "cra",
+    "votes": 74908,
+    "pct": 50.0
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 50.0
+   }
+  },
+  "hokkaido_11": {
+   "name": "Hokkaido 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 86019,
+    "pct": 50.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 42.5
+   }
+  },
+  "hokkaido_12": {
+   "name": "Hokkaido 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 92400,
+    "pct": 58.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 41.2
+   }
+  },
+  "aomori_1": {
+   "name": "Aomori 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 72060,
+    "pct": 50.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.6
+   }
+  },
+  "aomori_2": {
+   "name": "Aomori 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 104608,
+    "pct": 54.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.6
+   }
+  },
+  "aomori_3": {
+   "name": "Aomori 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 83547,
+    "pct": 52.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 42.3
+   }
+  },
+  "iwate_1": {
+   "name": "Iwate 1st",
+   "winner": {
+    "party": "cra",
+    "votes": 73209,
+    "pct": 44.2
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 40.9
+   }
+  },
+  "iwate_2": {
+   "name": "Iwate 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 123711,
+    "pct": 64.8
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 53.2
+   }
+  },
+  "iwate_3": {
+   "name": "Iwate 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 102578,
+    "pct": 48.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.3
+   }
+  },
+  "miyagi_1": {
+   "name": "Miyagi 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 110185,
+    "pct": 45.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.9
+   }
+  },
+  "miyagi_2": {
+   "name": "Miyagi 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 101364,
+    "pct": 41.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.1
+   }
+  },
+  "miyagi_3": {
+   "name": "Miyagi 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 83705,
+    "pct": 54.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.9
+   }
+  },
+  "miyagi_4": {
+   "name": "Miyagi 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 124250,
+    "pct": 57.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.2
+   }
+  },
+  "miyagi_5": {
+   "name": "Miyagi 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 138094,
+    "pct": 77.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 17.2
+   }
+  },
+  "akita_1": {
+   "name": "Akita 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 65940,
+    "pct": 46.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 18.0
+   }
+  },
+  "akita_2": {
+   "name": "Akita 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 70352,
+    "pct": 55.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 45.0
+   }
+  },
+  "akita_3": {
+   "name": "Akita 3rd",
+   "winner": {
+    "party": "dpfp",
+    "votes": 87573,
+    "pct": 50.7
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 49.3
+   }
+  },
+  "yamagata_1": {
+   "name": "Yamagata 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 106063,
+    "pct": 61.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.0
+   }
+  },
+  "yamagata_2": {
+   "name": "Yamagata 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 124512,
+    "pct": 68.3
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 27.3
+   }
+  },
+  "yamagata_3": {
+   "name": "Yamagata 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 90730,
+    "pct": 58.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 20.8
+   }
+  },
+  "fukushima_1": {
+   "name": "Fukushima 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 99531,
+    "pct": 45.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 42.5
+   }
+  },
+  "fukushima_2": {
+   "name": "Fukushima 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 128948,
+    "pct": 52.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.4
+   }
+  },
+  "fukushima_3": {
+   "name": "Fukushima 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 107649,
+    "pct": 57.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 40.8
+   }
+  },
+  "fukushima_4": {
+   "name": "Fukushima 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 100795,
+    "pct": 49.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.8
+   }
+  },
+  "ibaraki_1": {
+   "name": "Ibaraki 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 87570,
+    "pct": 41.6
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 40.3
+   }
+  },
+  "ibaraki_2": {
+   "name": "Ibaraki 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 74491,
+    "pct": 54.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.2
+   }
+  },
+  "ibaraki_3": {
+   "name": "Ibaraki 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 103231,
+    "pct": 51.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 27.9
+   }
+  },
+  "ibaraki_4": {
+   "name": "Ibaraki 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 106286,
+    "pct": 83.1
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 16.9
+   }
+  },
+  "ibaraki_5": {
+   "name": "Ibaraki 5th",
+   "winner": {
+    "party": "dpfp",
+    "votes": 70438,
+    "pct": 60.4
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 39.6
+   }
+  },
+  "ibaraki_6": {
+   "name": "Ibaraki 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 107388,
+    "pct": 43.2
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 42.2
+   }
+  },
+  "ibaraki_7": {
+   "name": "Ibaraki 7th",
+   "winner": {
+    "party": "other",
+    "votes": 84930,
+    "pct": 52.5
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 47.5
+   }
+  },
+  "tochigi_1": {
+   "name": "Tochigi 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 85199,
+    "pct": 40.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 21.5
+   }
+  },
+  "tochigi_2": {
+   "name": "Tochigi 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 66681,
+    "pct": 51.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 35.1
+   }
+  },
+  "tochigi_3": {
+   "name": "Tochigi 3rd",
+   "winner": {
+    "party": "other",
+    "votes": 58483,
+    "pct": 43.9
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 40.6
+   }
+  },
+  "tochigi_4": {
+   "name": "Tochigi 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 87743,
+    "pct": 47.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.9
+   }
+  },
+  "tochigi_5": {
+   "name": "Tochigi 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 110743,
+    "pct": 68.2
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 12.1
+   }
+  },
+  "gunma_1": {
+   "name": "Gunma 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 103316,
+    "pct": 61.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.8
+   }
+  },
+  "gunma_2": {
+   "name": "Gunma 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 84167,
+    "pct": 52.7
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 13.9
+   }
+  },
+  "gunma_3": {
+   "name": "Gunma 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 96283,
+    "pct": 61.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 38.5
+   }
+  },
+  "gunma_4": {
+   "name": "Gunma 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 84938,
+    "pct": 53.4
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 22.6
+   }
+  },
+  "gunma_5": {
+   "name": "Gunma 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 107356,
+    "pct": 68.6
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 31.4
+   }
+  },
+  "saitama_1": {
+   "name": "Saitama 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 121002,
+    "pct": 55.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.3
+   }
+  },
+  "saitama_2": {
+   "name": "Saitama 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 75209,
+    "pct": 41.8
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 25.3
+   }
+  },
+  "saitama_3": {
+   "name": "Saitama 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 96335,
+    "pct": 52.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.7
+   }
+  },
+  "saitama_4": {
+   "name": "Saitama 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 110312,
+    "pct": 52.9
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 27.1
+   }
+  },
+  "saitama_5": {
+   "name": "Saitama 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 104836,
+    "pct": 47.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 41.0
+   }
+  },
+  "saitama_6": {
+   "name": "Saitama 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 91049,
+    "pct": 41.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.7
+   }
+  },
+  "saitama_7": {
+   "name": "Saitama 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 107470,
+    "pct": 57.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 42.8
+   }
+  },
+  "saitama_8": {
+   "name": "Saitama 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 118529,
+    "pct": 52.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.0
+   }
+  },
+  "saitama_9": {
+   "name": "Saitama 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 112062,
+    "pct": 55.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 45.0
+   }
+  },
+  "saitama_10": {
+   "name": "Saitama 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 95847,
+    "pct": 55.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 44.7
+   }
+  },
+  "saitama_11": {
+   "name": "Saitama 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 88744,
+    "pct": 53.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 19.5
+   }
+  },
+  "saitama_12": {
+   "name": "Saitama 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 102382,
+    "pct": 55.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 44.2
+   }
+  },
+  "saitama_13": {
+   "name": "Saitama 13th",
+   "winner": {
+    "party": "ldp",
+    "votes": 75992,
+    "pct": 39.3
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 36.0
+   }
+  },
+  "saitama_14": {
+   "name": "Saitama 14th",
+   "winner": {
+    "party": "ldp",
+    "votes": 77481,
+    "pct": 40.7
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 37.0
+   }
+  },
+  "saitama_15": {
+   "name": "Saitama 15th",
+   "winner": {
+    "party": "ldp",
+    "votes": 114320,
+    "pct": 52.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.1
+   }
+  },
+  "saitama_16": {
+   "name": "Saitama 16th",
+   "winner": {
+    "party": "ldp",
+    "votes": 98187,
+    "pct": 55.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.5
+   }
+  },
+  "chiba_1": {
+   "name": "Chiba 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 109771,
+    "pct": 46.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 38.9
+   }
+  },
+  "chiba_2": {
+   "name": "Chiba 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 107933,
+    "pct": 67.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 23.3
+   }
+  },
+  "chiba_3": {
+   "name": "Chiba 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 86687,
+    "pct": 52.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 29.2
+   }
+  },
+  "chiba_4": {
+   "name": "Chiba 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 106236,
+    "pct": 48.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.5
+   }
+  },
+  "chiba_5": {
+   "name": "Chiba 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 85073,
+    "pct": 36.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 22.9
+   }
+  },
+  "chiba_6": {
+   "name": "Chiba 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 89662,
+    "pct": 40.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.4
+   }
+  },
+  "chiba_7": {
+   "name": "Chiba 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 100339,
+    "pct": 64.0
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 25.7
+   }
+  },
+  "chiba_8": {
+   "name": "Chiba 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 95279,
+    "pct": 49.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.3
+   }
+  },
+  "chiba_9": {
+   "name": "Chiba 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 89146,
+    "pct": 44.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.4
+   }
+  },
+  "chiba_10": {
+   "name": "Chiba 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 95358,
+    "pct": 61.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.6
+   }
+  },
+  "chiba_11": {
+   "name": "Chiba 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 102843,
+    "pct": 61.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.2
+   }
+  },
+  "chiba_12": {
+   "name": "Chiba 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 129997,
+    "pct": 71.5
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 18.8
+   }
+  },
+  "chiba_13": {
+   "name": "Chiba 13th",
+   "winner": {
+    "party": "ldp",
+    "votes": 121796,
+    "pct": 53.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.9
+   }
+  },
+  "chiba_14": {
+   "name": "Chiba 14th",
+   "winner": {
+    "party": "cra",
+    "votes": 99324,
+    "pct": 45.0
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 39.0
+   }
+  },
+  "kanagawa_1": {
+   "name": "Kanagawa 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 121899,
+    "pct": 53.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.9
+   }
+  },
+  "kanagawa_2": {
+   "name": "Kanagawa 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 112930,
+    "pct": 47.9
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 19.5
+   }
+  },
+  "kanagawa_3": {
+   "name": "Kanagawa 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 114485,
+    "pct": 47.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 20.2
+   }
+  },
+  "kanagawa_4": {
+   "name": "Kanagawa 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 93954,
+    "pct": 47.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 42.0
+   }
+  },
+  "kanagawa_5": {
+   "name": "Kanagawa 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 99726,
+    "pct": 49.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.7
+   }
+  },
+  "kanagawa_6": {
+   "name": "Kanagawa 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 120667,
+    "pct": 60.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.3
+   }
+  },
+  "kanagawa_7": {
+   "name": "Kanagawa 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 107464,
+    "pct": 62.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.9
+   }
+  },
+  "kanagawa_8": {
+   "name": "Kanagawa 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 140717,
+    "pct": 59.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 41.0
+   }
+  },
+  "kanagawa_9": {
+   "name": "Kanagawa 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 87531,
+    "pct": 46.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 44.8
+   }
+  },
+  "kanagawa_10": {
+   "name": "Kanagawa 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 59967,
+    "pct": 36.1
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 24.2
+   }
+  },
+  "kanagawa_11": {
+   "name": "Kanagawa 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 149029,
+    "pct": 79.5
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 10.3
+   }
+  },
+  "kanagawa_12": {
+   "name": "Kanagawa 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 108343,
+    "pct": 49.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 35.9
+   }
+  },
+  "kanagawa_13": {
+   "name": "Kanagawa 13th",
+   "winner": {
+    "party": "ldp",
+    "votes": 95453,
+    "pct": 48.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.7
+   }
+  },
+  "kanagawa_14": {
+   "name": "Kanagawa 14th",
+   "winner": {
+    "party": "ldp",
+    "votes": 108352,
+    "pct": 52.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 29.9
+   }
+  },
+  "kanagawa_15": {
+   "name": "Kanagawa 15th",
+   "winner": {
+    "party": "ldp",
+    "votes": 141580,
+    "pct": 62.5
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 17.5
+   }
+  },
+  "kanagawa_16": {
+   "name": "Kanagawa 16th",
+   "winner": {
+    "party": "ldp",
+    "votes": 105984,
+    "pct": 52.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 47.1
+   }
+  },
+  "kanagawa_17": {
+   "name": "Kanagawa 17th",
+   "winner": {
+    "party": "ldp",
+    "votes": 106966,
+    "pct": 48.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.9
+   }
+  },
+  "kanagawa_18": {
+   "name": "Kanagawa 18th",
+   "winner": {
+    "party": "ldp",
+    "votes": 76615,
+    "pct": 32.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.0
+   }
+  },
+  "kanagawa_19": {
+   "name": "Kanagawa 19th",
+   "winner": {
+    "party": "ldp",
+    "votes": 83450,
+    "pct": 40.7
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 37.7
+   }
+  },
+  "kanagawa_20": {
+   "name": "Kanagawa 20th",
+   "winner": {
+    "party": "ldp",
+    "votes": 91240,
+    "pct": 49.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.3
+   }
+  },
+  "yamanashi_1": {
+   "name": "Yamanashi 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 128168,
+    "pct": 52.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 35.9
+   }
+  },
+  "yamanashi_2": {
+   "name": "Yamanashi 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 108477,
+    "pct": 81.5
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 18.5
+   }
+  },
+  "tokyo_1": {
+   "name": "Tokyo 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 82622,
+    "pct": 43.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.4
+   }
+  },
+  "tokyo_2": {
+   "name": "Tokyo 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 84690,
+    "pct": 43.3
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 18.4
+   }
+  },
+  "tokyo_3": {
+   "name": "Tokyo 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 93158,
+    "pct": 42.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 24.5
+   }
+  },
+  "tokyo_4": {
+   "name": "Tokyo 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 114054,
+    "pct": 49.4
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 24.1
+   }
+  },
+  "tokyo_5": {
+   "name": "Tokyo 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 89078,
+    "pct": 39.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.5
+   }
+  },
+  "tokyo_6": {
+   "name": "Tokyo 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 90077,
+    "pct": 37.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.2
+   }
+  },
+  "tokyo_7": {
+   "name": "Tokyo 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 80421,
+    "pct": 34.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.5
+   }
+  },
+  "tokyo_8": {
+   "name": "Tokyo 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 108020,
+    "pct": 44.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.8
+   }
+  },
+  "tokyo_9": {
+   "name": "Tokyo 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 78927,
+    "pct": 43.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.6
+   }
+  },
+  "tokyo_10": {
+   "name": "Tokyo 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 126044,
+    "pct": 49.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.3
+   }
+  },
+  "tokyo_11": {
+   "name": "Tokyo 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 69077,
+    "pct": 31.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 24.2
+   }
+  },
+  "tokyo_12": {
+   "name": "Tokyo 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 78774,
+    "pct": 35.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 19.6
+   }
+  },
+  "tokyo_13": {
+   "name": "Tokyo 13th",
+   "winner": {
+    "party": "ldp",
+    "votes": 94680,
+    "pct": 46.6
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 32.5
+   }
+  },
+  "tokyo_14": {
+   "name": "Tokyo 14th",
+   "winner": {
+    "party": "ldp",
+    "votes": 109892,
+    "pct": 50.2
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 22.5
+   }
+  },
+  "tokyo_15": {
+   "name": "Tokyo 15th",
+   "winner": {
+    "party": "ldp",
+    "votes": 109489,
+    "pct": 42.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 27.5
+   }
+  },
+  "tokyo_16": {
+   "name": "Tokyo 16th",
+   "winner": {
+    "party": "ldp",
+    "votes": 92858,
+    "pct": 44.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 24.8
+   }
+  },
+  "tokyo_17": {
+   "name": "Tokyo 17th",
+   "winner": {
+    "party": "ldp",
+    "votes": 73234,
+    "pct": 36.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.0
+   }
+  },
+  "tokyo_18": {
+   "name": "Tokyo 18th",
+   "winner": {
+    "party": "ldp",
+    "votes": 117383,
+    "pct": 47.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.3
+   }
+  },
+  "tokyo_19": {
+   "name": "Tokyo 19th",
+   "winner": {
+    "party": "ldp",
+    "votes": 93697,
+    "pct": 45.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.6
+   }
+  },
+  "tokyo_20": {
+   "name": "Tokyo 20th",
+   "winner": {
+    "party": "ldp",
+    "votes": 108985,
+    "pct": 48.6
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 20.9
+   }
+  },
+  "tokyo_21": {
+   "name": "Tokyo 21st",
+   "winner": {
+    "party": "ldp",
+    "votes": 97494,
+    "pct": 42.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.7
+   }
+  },
+  "tokyo_22": {
+   "name": "Tokyo 22nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 132689,
+    "pct": 51.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.9
+   }
+  },
+  "tokyo_23": {
+   "name": "Tokyo 23rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 92171,
+    "pct": 45.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.4
+   }
+  },
+  "tokyo_24": {
+   "name": "Tokyo 24th",
+   "winner": {
+    "party": "ldp",
+    "votes": 85806,
+    "pct": 41.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.9
+   }
+  },
+  "tokyo_25": {
+   "name": "Tokyo 25th",
+   "winner": {
+    "party": "ldp",
+    "votes": 109606,
+    "pct": 50.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 23.1
+   }
+  },
+  "tokyo_26": {
+   "name": "Tokyo 26th",
+   "winner": {
+    "party": "ldp",
+    "votes": 92329,
+    "pct": 34.7
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 30.8
+   }
+  },
+  "tokyo_27": {
+   "name": "Tokyo 27th",
+   "winner": {
+    "party": "ldp",
+    "votes": 85249,
+    "pct": 38.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.2
+   }
+  },
+  "tokyo_28": {
+   "name": "Tokyo 28th",
+   "winner": {
+    "party": "ldp",
+    "votes": 69037,
+    "pct": 36.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.0
+   }
+  },
+  "tokyo_29": {
+   "name": "Tokyo 29th",
+   "winner": {
+    "party": "ldp",
+    "votes": 80538,
+    "pct": 41.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 23.3
+   }
+  },
+  "tokyo_30": {
+   "name": "Tokyo 30th",
+   "winner": {
+    "party": "ldp",
+    "votes": 110453,
+    "pct": 45.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.1
+   }
+  },
+  "niigata_1": {
+   "name": "Niigata 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 92578,
+    "pct": 46.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.0
+   }
+  },
+  "niigata_2": {
+   "name": "Niigata 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 111803,
+    "pct": 49.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.5
+   }
+  },
+  "niigata_3": {
+   "name": "Niigata 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 115991,
+    "pct": 54.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.0
+   }
+  },
+  "niigata_4": {
+   "name": "Niigata 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 107128,
+    "pct": 53.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.2
+   }
+  },
+  "niigata_5": {
+   "name": "Niigata 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 104206,
+    "pct": 52.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.6
+   }
+  },
+  "toyama_1": {
+   "name": "Toyama 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 81875,
+    "pct": 63.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 21.5
+   }
+  },
+  "toyama_2": {
+   "name": "Toyama 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 88839,
+    "pct": 74.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.3
+   }
+  },
+  "toyama_3": {
+   "name": "Toyama 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 126981,
+    "pct": 65.9
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 18.5
+   }
+  },
+  "ishikawa_1": {
+   "name": "Ishikawa 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 83732,
+    "pct": 45.0
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 25.9
+   }
+  },
+  "ishikawa_2": {
+   "name": "Ishikawa 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 139808,
+    "pct": 83.6
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 16.4
+   }
+  },
+  "ishikawa_3": {
+   "name": "Ishikawa 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 73034,
+    "pct": 51.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 46.1
+   }
+  },
+  "fukui_1": {
+   "name": "Fukui 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 93292,
+    "pct": 48.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 20.1
+   }
+  },
+  "fukui_2": {
+   "name": "Fukui 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 78737,
+    "pct": 59.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 40.1
+   }
+  },
+  "nagano_1": {
+   "name": "Nagano 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 119101,
+    "pct": 50.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.8
+   }
+  },
+  "nagano_2": {
+   "name": "Nagano 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 104107,
+    "pct": 46.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.0
+   }
+  },
+  "nagano_3": {
+   "name": "Nagano 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 111844,
+    "pct": 48.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 35.4
+   }
+  },
+  "nagano_4": {
+   "name": "Nagano 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 77135,
+    "pct": 57.6
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 25.5
+   }
+  },
+  "nagano_5": {
+   "name": "Nagano 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 98866,
+    "pct": 59.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 40.2
+   }
+  },
+  "gifu_1": {
+   "name": "Gifu 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 90249,
+    "pct": 55.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.7
+   }
+  },
+  "gifu_2": {
+   "name": "Gifu 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 87826,
+    "pct": 54.6
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 27.8
+   }
+  },
+  "gifu_3": {
+   "name": "Gifu 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 118346,
+    "pct": 53.4
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 23.0
+   }
+  },
+  "gifu_4": {
+   "name": "Gifu 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 103054,
+    "pct": 50.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.1
+   }
+  },
+  "gifu_5": {
+   "name": "Gifu 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 83214,
+    "pct": 52.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 23.6
+   }
+  },
+  "shizuoka_1": {
+   "name": "Shizuoka 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 127488,
+    "pct": 61.1
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 29.5
+   }
+  },
+  "shizuoka_2": {
+   "name": "Shizuoka 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 152012,
+    "pct": 71.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.9
+   }
+  },
+  "shizuoka_3": {
+   "name": "Shizuoka 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 117738,
+    "pct": 51.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.6
+   }
+  },
+  "shizuoka_4": {
+   "name": "Shizuoka 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 87880,
+    "pct": 51.7
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 36.4
+   }
+  },
+  "shizuoka_5": {
+   "name": "Shizuoka 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 168511,
+    "pct": 74.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 19.3
+   }
+  },
+  "shizuoka_6": {
+   "name": "Shizuoka 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 125829,
+    "pct": 54.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.8
+   }
+  },
+  "shizuoka_7": {
+   "name": "Shizuoka 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 129336,
+    "pct": 67.7
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 23.8
+   }
+  },
+  "shizuoka_8": {
+   "name": "Shizuoka 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 114256,
+    "pct": 50.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.0
+   }
+  },
+  "aichi_1": {
+   "name": "Aichi 1st",
+   "winner": {
+    "party": "other",
+    "votes": 94339,
+    "pct": 42.5
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 32.5
+   }
+  },
+  "aichi_2": {
+   "name": "Aichi 2nd",
+   "winner": {
+    "party": "dpfp",
+    "votes": 110540,
+    "pct": 49.1
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 33.3
+   }
+  },
+  "aichi_3": {
+   "name": "Aichi 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 98388,
+    "pct": 40.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 40.8
+   }
+  },
+  "aichi_4": {
+   "name": "Aichi 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 79204,
+    "pct": 41.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.6
+   }
+  },
+  "aichi_5": {
+   "name": "Aichi 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 73643,
+    "pct": 41.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.1
+   }
+  },
+  "aichi_6": {
+   "name": "Aichi 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 109044,
+    "pct": 54.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 19.7
+   }
+  },
+  "aichi_7": {
+   "name": "Aichi 7th",
+   "winner": {
+    "party": "dpfp",
+    "votes": 108322,
+    "pct": 49.8
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 43.6
+   }
+  },
+  "aichi_8": {
+   "name": "Aichi 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 131050,
+    "pct": 52.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.1
+   }
+  },
+  "aichi_9": {
+   "name": "Aichi 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 93351,
+    "pct": 45.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.1
+   }
+  },
+  "aichi_10": {
+   "name": "Aichi 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 80646,
+    "pct": 42.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.7
+   }
+  },
+  "aichi_11": {
+   "name": "Aichi 11th",
+   "winner": {
+    "party": "dpfp",
+    "votes": 145739,
+    "pct": 59.7
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 40.3
+   }
+  },
+  "aichi_12": {
+   "name": "Aichi 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 128453,
+    "pct": 47.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 39.2
+   }
+  },
+  "aichi_13": {
+   "name": "Aichi 13th",
+   "winner": {
+    "party": "ldp",
+    "votes": 151944,
+    "pct": 58.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.4
+   }
+  },
+  "aichi_14": {
+   "name": "Aichi 14th",
+   "winner": {
+    "party": "ldp",
+    "votes": 119376,
+    "pct": 67.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.1
+   }
+  },
+  "aichi_15": {
+   "name": "Aichi 15th",
+   "winner": {
+    "party": "ldp",
+    "votes": 88028,
+    "pct": 43.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 18.1
+   }
+  },
+  "aichi_16": {
+   "name": "Aichi 16th",
+   "winner": {
+    "party": "ldp",
+    "votes": 91375,
+    "pct": 40.9
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 26.9
+   }
+  },
+  "mie_1": {
+   "name": "Mie 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 124762,
+    "pct": 66.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 28.2
+   }
+  },
+  "mie_2": {
+   "name": "Mie 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 117495,
+    "pct": 52.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 34.9
+   }
+  },
+  "mie_3": {
+   "name": "Mie 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 99392,
+    "pct": 42.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 38.4
+   }
+  },
+  "mie_4": {
+   "name": "Mie 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 106718,
+    "pct": 66.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 26.8
+   }
+  },
+  "shiga_1": {
+   "name": "Shiga 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 76367,
+    "pct": 42.0
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 26.0
+   }
+  },
+  "shiga_2": {
+   "name": "Shiga 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 141853,
+    "pct": 60.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 20.0
+   }
+  },
+  "shiga_3": {
+   "name": "Shiga 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 108917,
+    "pct": 48.6
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 16.5
+   }
+  },
+  "kyoto_1": {
+   "name": "Kyoto 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 78098,
+    "pct": 37.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 13.7
+   }
+  },
+  "kyoto_2": {
+   "name": "Kyoto 2nd",
+   "winner": {
+    "party": "ishin",
+    "votes": 49415,
+    "pct": 35.7
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 26.6
+   }
+  },
+  "kyoto_3": {
+   "name": "Kyoto 3rd",
+   "winner": {
+    "party": "cra",
+    "votes": 68533,
+    "pct": 36.6
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 33.4
+   }
+  },
+  "kyoto_4": {
+   "name": "Kyoto 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 142149,
+    "pct": 73.7
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 26.3
+   }
+  },
+  "kyoto_5": {
+   "name": "Kyoto 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 84865,
+    "pct": 77.0
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 23.0
+   }
+  },
+  "kyoto_6": {
+   "name": "Kyoto 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 124175,
+    "pct": 47.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 35.4
+   }
+  },
+  "osaka_1": {
+   "name": "Osaka 1st",
+   "winner": {
+    "party": "ishin",
+    "votes": 93383,
+    "pct": 40.2
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 27.8
+   }
+  },
+  "osaka_2": {
+   "name": "Osaka 2nd",
+   "winner": {
+    "party": "ishin",
+    "votes": 115244,
+    "pct": 51.9
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 18.3
+   }
+  },
+  "osaka_3": {
+   "name": "Osaka 3rd",
+   "winner": {
+    "party": "ishin",
+    "votes": 75462,
+    "pct": 40.4
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 24.4
+   }
+  },
+  "osaka_4": {
+   "name": "Osaka 4th",
+   "winner": {
+    "party": "ishin",
+    "votes": 87309,
+    "pct": 37.2
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 30.3
+   }
+  },
+  "osaka_5": {
+   "name": "Osaka 5th",
+   "winner": {
+    "party": "ishin",
+    "votes": 93472,
+    "pct": 42.5
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 21.9
+   }
+  },
+  "osaka_6": {
+   "name": "Osaka 6th",
+   "winner": {
+    "party": "ishin",
+    "votes": 87431,
+    "pct": 42.6
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 20.7
+   }
+  },
+  "osaka_7": {
+   "name": "Osaka 7th",
+   "winner": {
+    "party": "ishin",
+    "votes": 88242,
+    "pct": 39.1
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 34.9
+   }
+  },
+  "osaka_8": {
+   "name": "Osaka 8th",
+   "winner": {
+    "party": "ishin",
+    "votes": 93189,
+    "pct": 38.6
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 32.2
+   }
+  },
+  "osaka_9": {
+   "name": "Osaka 9th",
+   "winner": {
+    "party": "ishin",
+    "votes": 102204,
+    "pct": 48.2
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 37.4
+   }
+  },
+  "osaka_10": {
+   "name": "Osaka 10th",
+   "winner": {
+    "party": "ishin",
+    "votes": 86557,
+    "pct": 45.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.2
+   }
+  },
+  "osaka_11": {
+   "name": "Osaka 11th",
+   "winner": {
+    "party": "ishin",
+    "votes": 113436,
+    "pct": 49.4
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 18.2
+   }
+  },
+  "osaka_12": {
+   "name": "Osaka 12th",
+   "winner": {
+    "party": "ishin",
+    "votes": 88775,
+    "pct": 50.2
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 21.6
+   }
+  },
+  "osaka_13": {
+   "name": "Osaka 13th",
+   "winner": {
+    "party": "ishin",
+    "votes": 77433,
+    "pct": 37.9
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 31.9
+   }
+  },
+  "osaka_14": {
+   "name": "Osaka 14th",
+   "winner": {
+    "party": "ishin",
+    "votes": 121049,
+    "pct": 57.8
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 28.0
+   }
+  },
+  "osaka_15": {
+   "name": "Osaka 15th",
+   "winner": {
+    "party": "ishin",
+    "votes": 92248,
+    "pct": 47.9
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 38.1
+   }
+  },
+  "osaka_16": {
+   "name": "Osaka 16th",
+   "winner": {
+    "party": "ishin",
+    "votes": 73063,
+    "pct": 41.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 27.0
+   }
+  },
+  "osaka_17": {
+   "name": "Osaka 17th",
+   "winner": {
+    "party": "ishin",
+    "votes": 78362,
+    "pct": 49.0
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 26.7
+   }
+  },
+  "osaka_18": {
+   "name": "Osaka 18th",
+   "winner": {
+    "party": "ishin",
+    "votes": 121948,
+    "pct": 58.4
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 28.2
+   }
+  },
+  "osaka_19": {
+   "name": "Osaka 19th",
+   "winner": {
+    "party": "ldp",
+    "votes": 58410,
+    "pct": 36.9
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 36.5
+   }
+  },
+  "hyogo_1": {
+   "name": "Hyōgo 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 73219,
+    "pct": 33.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.6
+   }
+  },
+  "hyogo_2": {
+   "name": "Hyōgo 2nd",
+   "winner": {
+    "party": "ishin",
+    "votes": 82982,
+    "pct": 45.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.1
+   }
+  },
+  "hyogo_3": {
+   "name": "Hyōgo 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 74806,
+    "pct": 46.9
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 21.5
+   }
+  },
+  "hyogo_4": {
+   "name": "Hyōgo 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 147544,
+    "pct": 69.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 23.1
+   }
+  },
+  "hyogo_5": {
+   "name": "Hyōgo 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 93501,
+    "pct": 44.6
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 26.1
+   }
+  },
+  "hyogo_6": {
+   "name": "Hyōgo 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 91440,
+    "pct": 36.4
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 25.3
+   }
+  },
+  "hyogo_7": {
+   "name": "Hyōgo 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 112151,
+    "pct": 42.4
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 26.9
+   }
+  },
+  "hyogo_8": {
+   "name": "Hyōgo 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 85970,
+    "pct": 43.3
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 24.2
+   }
+  },
+  "hyogo_9": {
+   "name": "Hyōgo 9th",
+   "winner": {
+    "party": "ldp",
+    "votes": 116526,
+    "pct": 58.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 27.3
+   }
+  },
+  "hyogo_10": {
+   "name": "Hyōgo 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 75309,
+    "pct": 41.0
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 20.7
+   }
+  },
+  "hyogo_11": {
+   "name": "Hyōgo 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 86090,
+    "pct": 43.5
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 28.2
+   }
+  },
+  "hyogo_12": {
+   "name": "Hyōgo 12th",
+   "winner": {
+    "party": "ldp",
+    "votes": 78957,
+    "pct": 53.1
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 36.2
+   }
+  },
+  "nara_1": {
+   "name": "Nara 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 131313,
+    "pct": 53.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 26.1
+   }
+  },
+  "nara_2": {
+   "name": "Nara 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 193708,
+    "pct": 87.0
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 13.0
+   }
+  },
+  "nara_3": {
+   "name": "Nara 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 120018,
+    "pct": 62.8
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 19.4
+   }
+  },
+  "wakayama_1": {
+   "name": "Wakayama 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 95836,
+    "pct": 46.2
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 15.1
+   }
+  },
+  "wakayama_2": {
+   "name": "Wakayama 2nd",
+   "winner": {
+    "party": "other",
+    "votes": 162257,
+    "pct": 82.2
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 17.8
+   }
+  },
+  "tottori_1": {
+   "name": "Tottori 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 66146,
+    "pct": 67.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 13.6
+   }
+  },
+  "tottori_2": {
+   "name": "Tottori 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 67736,
+    "pct": 62.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 33.2
+   }
+  },
+  "shimane_1": {
+   "name": "Shimane 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 67438,
+    "pct": 51.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.7
+   }
+  },
+  "shimane_2": {
+   "name": "Shimane 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 98015,
+    "pct": 61.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 22.0
+   }
+  },
+  "okayama_1": {
+   "name": "Okayama 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 81844,
+    "pct": 48.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.8
+   }
+  },
+  "okayama_2": {
+   "name": "Okayama 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 117527,
+    "pct": 55.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.0
+   }
+  },
+  "okayama_3": {
+   "name": "Okayama 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 165807,
+    "pct": 81.1
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 18.9
+   }
+  },
+  "okayama_4": {
+   "name": "Okayama 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 104826,
+    "pct": 50.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.0
+   }
+  },
+  "hiroshima_1": {
+   "name": "Hiroshima 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 102700,
+    "pct": 53.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 18.2
+   }
+  },
+  "hiroshima_2": {
+   "name": "Hiroshima 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 94750,
+    "pct": 51.7
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 29.4
+   }
+  },
+  "hiroshima_3": {
+   "name": "Hiroshima 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 100352,
+    "pct": 51.4
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 29.7
+   }
+  },
+  "hiroshima_4": {
+   "name": "Hiroshima 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 89563,
+    "pct": 47.0
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 32.2
+   }
+  },
+  "hiroshima_5": {
+   "name": "Hiroshima 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 78649,
+    "pct": 50.7
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 43.7
+   }
+  },
+  "hiroshima_6": {
+   "name": "Hiroshima 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 119827,
+    "pct": 67.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 27.7
+   }
+  },
+  "yamaguchi_1": {
+   "name": "Yamaguchi 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 124364,
+    "pct": 63.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 20.0
+   }
+  },
+  "yamaguchi_2": {
+   "name": "Yamaguchi 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 132409,
+    "pct": 62.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 37.9
+   }
+  },
+  "yamaguchi_3": {
+   "name": "Yamaguchi 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 113502,
+    "pct": 62.5
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 12.8
+   }
+  },
+  "tokushima_1": {
+   "name": "Tokushima 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 107440,
+    "pct": 58.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.4
+   }
+  },
+  "tokushima_2": {
+   "name": "Tokushima 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 64980,
+    "pct": 48.6
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 27.4
+   }
+  },
+  "kagawa_1": {
+   "name": "Kagawa 1st",
+   "winner": {
+    "party": "cra",
+    "votes": 73237,
+    "pct": 43.0
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 42.6
+   }
+  },
+  "kagawa_2": {
+   "name": "Kagawa 2nd",
+   "winner": {
+    "party": "dpfp",
+    "votes": 82752,
+    "pct": 59.9
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 33.8
+   }
+  },
+  "kagawa_3": {
+   "name": "Kagawa 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 71529,
+    "pct": 59.1
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 29.8
+   }
+  },
+  "ehime_1": {
+   "name": "Ehime 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 127770,
+    "pct": 60.4
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 21.9
+   }
+  },
+  "ehime_2": {
+   "name": "Ehime 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 100438,
+    "pct": 47.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 40.2
+   }
+  },
+  "ehime_3": {
+   "name": "Ehime 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 119930,
+    "pct": 71.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 23.2
+   }
+  },
+  "kochi_1": {
+   "name": "Kōchi 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 92043,
+    "pct": 59.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 25.2
+   }
+  },
+  "kochi_2": {
+   "name": "Kōchi 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 102523,
+    "pct": 69.5
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 16.3
+   }
+  },
+  "fukuoka_1": {
+   "name": "Fukuoka 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 106865,
+    "pct": 48.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 20.9
+   }
+  },
+  "fukuoka_2": {
+   "name": "Fukuoka 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 136442,
+    "pct": 53.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.0
+   }
+  },
+  "fukuoka_3": {
+   "name": "Fukuoka 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 132247,
+    "pct": 53.9
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 24.4
+   }
+  },
+  "fukuoka_4": {
+   "name": "Fukuoka 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 110544,
+    "pct": 53.6
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 30.9
+   }
+  },
+  "fukuoka_5": {
+   "name": "Fukuoka 5th",
+   "winner": {
+    "party": "ldp",
+    "votes": 144014,
+    "pct": 57.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 21.0
+   }
+  },
+  "fukuoka_6": {
+   "name": "Fukuoka 6th",
+   "winner": {
+    "party": "ldp",
+    "votes": 111832,
+    "pct": 61.8
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 30.7
+   }
+  },
+  "fukuoka_7": {
+   "name": "Fukuoka 7th",
+   "winner": {
+    "party": "ldp",
+    "votes": 95132,
+    "pct": 67.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.9
+   }
+  },
+  "fukuoka_8": {
+   "name": "Fukuoka 8th",
+   "winner": {
+    "party": "ldp",
+    "votes": 111727,
+    "pct": 67.5
+   },
+   "runner": {
+    "party": "reiwa",
+    "votes": null,
+    "pct": 16.9
+   }
+  },
+  "fukuoka_9": {
+   "name": "Fukuoka 9th",
+   "winner": {
+    "party": "other",
+    "votes": 100800,
+    "pct": 51.9
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 34.6
+   }
+  },
+  "fukuoka_10": {
+   "name": "Fukuoka 10th",
+   "winner": {
+    "party": "ldp",
+    "votes": 86338,
+    "pct": 42.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.2
+   }
+  },
+  "fukuoka_11": {
+   "name": "Fukuoka 11th",
+   "winner": {
+    "party": "ldp",
+    "votes": 62419,
+    "pct": 44.7
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 30.8
+   }
+  },
+  "saga_1": {
+   "name": "Saga 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 84220,
+    "pct": 45.7
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 45.0
+   }
+  },
+  "saga_2": {
+   "name": "Saga 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 106320,
+    "pct": 55.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 44.5
+   }
+  },
+  "nagasaki_1": {
+   "name": "Nagasaki 1st",
+   "winner": {
+    "party": "dpfp",
+    "votes": 93931,
+    "pct": 52.5
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 29.5
+   }
+  },
+  "nagasaki_2": {
+   "name": "Nagasaki 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 126751,
+    "pct": 56.3
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 32.4
+   }
+  },
+  "nagasaki_3": {
+   "name": "Nagasaki 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 133418,
+    "pct": 72.1
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 27.9
+   }
+  },
+  "kumamoto_1": {
+   "name": "Kumamoto 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 144036,
+    "pct": 63.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 24.5
+   }
+  },
+  "kumamoto_2": {
+   "name": "Kumamoto 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 115583,
+    "pct": 71.5
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 19.2
+   }
+  },
+  "kumamoto_3": {
+   "name": "Kumamoto 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 116925,
+    "pct": 66.6
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 18.7
+   }
+  },
+  "kumamoto_4": {
+   "name": "Kumamoto 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 141699,
+    "pct": 66.2
+   },
+   "runner": {
+    "party": "ishin",
+    "votes": null,
+    "pct": 10.6
+   }
+  },
+  "oita_1": {
+   "name": "Ōita 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 95484,
+    "pct": 45.1
+   },
+   "runner": {
+    "party": "other",
+    "votes": null,
+    "pct": 33.6
+   }
+  },
+  "oita_2": {
+   "name": "Ōita 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 89082,
+    "pct": 61.5
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 38.5
+   }
+  },
+  "oita_3": {
+   "name": "Ōita 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 57996,
+    "pct": 34.6
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 30.2
+   }
+  },
+  "miyazaki_1": {
+   "name": "Miyazaki 1st",
+   "winner": {
+    "party": "cra",
+    "votes": 72280,
+    "pct": 40.3
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 32.4
+   }
+  },
+  "miyazaki_2": {
+   "name": "Miyazaki 2nd",
+   "winner": {
+    "party": "dpfp",
+    "votes": 73994,
+    "pct": 50.7
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 45.0
+   }
+  },
+  "miyazaki_3": {
+   "name": "Miyazaki 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 94868,
+    "pct": 77.1
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 22.9
+   }
+  },
+  "kagoshima_1": {
+   "name": "Kagoshima 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 92321,
+    "pct": 51.0
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 31.7
+   }
+  },
+  "kagoshima_2": {
+   "name": "Kagoshima 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 115396,
+    "pct": 68.5
+   },
+   "runner": {
+    "party": "sansei",
+    "votes": null,
+    "pct": 21.1
+   }
+  },
+  "kagoshima_3": {
+   "name": "Kagoshima 3rd",
+   "winner": {
+    "party": "cra",
+    "votes": 88518,
+    "pct": 50.8
+   },
+   "runner": {
+    "party": "ldp",
+    "votes": null,
+    "pct": 49.2
+   }
+  },
+  "kagoshima_4": {
+   "name": "Kagoshima 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 102727,
+    "pct": 62.5
+   },
+   "runner": {
+    "party": "dpfp",
+    "votes": null,
+    "pct": 14.6
+   }
+  },
+  "okinawa_1": {
+   "name": "Okinawa 1st",
+   "winner": {
+    "party": "ldp",
+    "votes": 58808,
+    "pct": 42.3
+   },
+   "runner": {
+    "party": "jcp",
+    "votes": null,
+    "pct": 38.3
+   }
+  },
+  "okinawa_2": {
+   "name": "Okinawa 2nd",
+   "winner": {
+    "party": "ldp",
+    "votes": 71071,
+    "pct": 43.2
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 35.0
+   }
+  },
+  "okinawa_3": {
+   "name": "Okinawa 3rd",
+   "winner": {
+    "party": "ldp",
+    "votes": 87075,
+    "pct": 51.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 36.7
+   }
+  },
+  "okinawa_4": {
+   "name": "Okinawa 4th",
+   "winner": {
+    "party": "ldp",
+    "votes": 76580,
+    "pct": 49.8
+   },
+   "runner": {
+    "party": "cra",
+    "votes": null,
+    "pct": 24.6
+   }
+  }
+ },
+ "blocs": {
+  "hokkaido": {
+   "name": "Hokkaido",
+   "seats": 8,
+   "parties": {
+    "ldp": {
+     "votes": 911742,
+     "pct": 37.0,
+     "seats": 4
+    },
+    "cra": {
+     "votes": 605889,
+     "pct": 24.6,
+     "seats": 3
+    },
+    "dpfp": {
+     "votes": 218850,
+     "pct": 8.9,
+     "seats": 1
+    }
+   }
+  },
+  "tohoku": {
+   "name": "Tohoku",
+   "seats": 12,
+   "parties": {
+    "ldp": {
+     "votes": 1612576,
+     "pct": 41.2,
+     "seats": 6
+    },
+    "cra": {
+     "votes": 828883,
+     "pct": 21.2,
+     "seats": 3
+    },
+    "dpfp": {
+     "votes": 389503,
+     "pct": 9.9,
+     "seats": 1
+    },
+    "sansei": {
+     "votes": 278410,
+     "pct": 7.1,
+     "seats": 1
+    },
+    "mirai": {
+     "votes": 234050,
+     "pct": 6.0,
+     "seats": 1
+    }
+   }
+  },
+  "northern_kanto": {
+   "name": "Northern Kanto",
+   "seats": 19,
+   "parties": {
+    "ldp": {
+     "votes": 2256845,
+     "pct": 37.0,
+     "seats": 8
+    },
+    "cra": {
+     "votes": 1174717,
+     "pct": 19.3,
+     "seats": 4
+    },
+    "dpfp": {
+     "votes": 626695,
+     "pct": 10.3,
+     "seats": 2
+    },
+    "sansei": {
+     "votes": 506071,
+     "pct": 8.3,
+     "seats": 2
+    },
+    "mirai": {
+     "votes": 467561,
+     "pct": 7.7,
+     "seats": 1
+    },
+    "ishin": {
+     "votes": 326128,
+     "pct": 5.3,
+     "seats": 1
+    },
+    "jcp": {
+     "votes": 254497,
+     "pct": 4.2,
+     "seats": 1
+    }
+   }
+  },
+  "southern_kanto": {
+   "name": "Southern Kanto",
+   "seats": 23,
+   "parties": {
+    "ldp": {
+     "votes": 2637938,
+     "pct": 35.6,
+     "seats": 4
+    },
+    "cra": {
+     "votes": 1424763,
+     "pct": 19.2,
+     "seats": 7
+    },
+    "dpfp": {
+     "votes": 788564,
+     "pct": 10.6,
+     "seats": 3
+    },
+    "mirai": {
+     "votes": 682469,
+     "pct": 9.2,
+     "seats": 3
+    },
+    "sansei": {
+     "votes": 531288,
+     "pct": 7.2,
+     "seats": 2
+    },
+    "ishin": {
+     "votes": 463287,
+     "pct": 6.2,
+     "seats": 2
+    },
+    "jcp": {
+     "votes": 314224,
+     "pct": 4.2,
+     "seats": 1
+    },
+    "reiwa": {
+     "votes": 202655,
+     "pct": 2.7,
+     "seats": 1
+    }
+   }
+  },
+  "tokyo": {
+   "name": "Tokyo",
+   "seats": 19,
+   "parties": {
+    "ldp": {
+     "votes": 2243625,
+     "pct": 33.1,
+     "seats": 3
+    },
+    "cra": {
+     "votes": 1119155,
+     "pct": 16.5,
+     "seats": 5
+    },
+    "mirai": {
+     "votes": 887849,
+     "pct": 13.1,
+     "seats": 4
+    },
+    "dpfp": {
+     "votes": 746660,
+     "pct": 11.0,
+     "seats": 3
+    },
+    "sansei": {
+     "votes": 427028,
+     "pct": 6.3,
+     "seats": 2
+    },
+    "jcp": {
+     "votes": 407146,
+     "pct": 6.0,
+     "seats": 1
+    },
+    "ishin": {
+     "votes": 384487,
+     "pct": 5.7,
+     "seats": 1
+    }
+   }
+  },
+  "hokuriku_shinetsu": {
+   "name": "Hokuriku-Shin'etsu",
+   "seats": 10,
+   "parties": {
+    "ldp": {
+     "votes": 1387716,
+     "pct": 42.1,
+     "seats": 3
+    },
+    "cra": {
+     "votes": 651331,
+     "pct": 19.8,
+     "seats": 4
+    },
+    "dpfp": {
+     "votes": 322739,
+     "pct": 9.8,
+     "seats": 1
+    },
+    "sansei": {
+     "votes": 285897,
+     "pct": 8.7,
+     "seats": 1
+    },
+    "ishin": {
+     "votes": 231686,
+     "pct": 7.0,
+     "seats": 1
+    }
+   }
+  },
+  "tokai": {
+   "name": "Tokai",
+   "seats": 21,
+   "parties": {
+    "ldp": {
+     "votes": 2628008,
+     "pct": 37.7,
+     "seats": 10
+    },
+    "cra": {
+     "votes": 1199580,
+     "pct": 17.2,
+     "seats": 4
+    },
+    "dpfp": {
+     "votes": 836102,
+     "pct": 12.0,
+     "seats": 3
+    },
+    "sansei": {
+     "votes": 527291,
+     "pct": 7.6,
+     "seats": 2
+    },
+    "mirai": {
+     "votes": 478316,
+     "pct": 6.9,
+     "seats": 1
+    },
+    "ishin": {
+     "votes": 400964,
+     "pct": 5.7,
+     "seats": 1
+    }
+   }
+  },
+  "kinki": {
+   "name": "Kinki",
+   "seats": 28,
+   "parties": {
+    "ldp": {
+     "votes": 2842876,
+     "pct": 30.4,
+     "seats": 10
+    },
+    "ishin": {
+     "votes": 2168635,
+     "pct": 23.2,
+     "seats": 8
+    },
+    "cra": {
+     "votes": 1332752,
+     "pct": 14.3,
+     "seats": 5
+    },
+    "dpfp": {
+     "votes": 651785,
+     "pct": 7.0,
+     "seats": 2
+    },
+    "sansei": {
+     "votes": 631179,
+     "pct": 6.8,
+     "seats": 2
+    },
+    "mirai": {
+     "votes": 553496,
+     "pct": 5.9,
+     "seats": 0
+    },
+    "jcp": {
+     "votes": 480188,
+     "pct": 5.1,
+     "seats": 1
+    }
+   }
+  },
+  "chugoku": {
+   "name": "Chugoku",
+   "seats": 10,
+   "parties": {
+    "ldp": {
+     "votes": 1297078,
+     "pct": 43.2,
+     "seats": 5
+    },
+    "cra": {
+     "votes": 620211,
+     "pct": 20.6,
+     "seats": 2
+    },
+    "dpfp": {
+     "votes": 273263,
+     "pct": 9.1,
+     "seats": 1
+    },
+    "sansei": {
+     "votes": 252036,
+     "pct": 8.4,
+     "seats": 1
+    },
+    "ishin": {
+     "votes": 213428,
+     "pct": 7.1,
+     "seats": 1
+    }
+   }
+  },
+  "shikoku": {
+   "name": "Shikoku",
+   "seats": 6,
+   "parties": {
+    "ldp": {
+     "votes": 691402,
+     "pct": 42.0,
+     "seats": 4
+    },
+    "cra": {
+     "votes": 299777,
+     "pct": 18.2,
+     "seats": 1
+    },
+    "dpfp": {
+     "votes": 213661,
+     "pct": 13.0,
+     "seats": 1
+    }
+   }
+  },
+  "kyushu": {
+   "name": "Kyushu",
+   "seats": 20,
+   "parties": {
+    "ldp": {
+     "votes": 2516334,
+     "pct": 39.9,
+     "seats": 10
+    },
+    "cra": {
+     "votes": 1181744,
+     "pct": 18.7,
+     "seats": 4
+    },
+    "sansei": {
+     "votes": 519904,
+     "pct": 8.2,
+     "seats": 2
+    },
+    "dpfp": {
+     "votes": 505129,
+     "pct": 8.0,
+     "seats": 2
+    },
+    "mirai": {
+     "votes": 375396,
+     "pct": 5.9,
+     "seats": 1
+    },
+    "ishin": {
+     "votes": 374428,
+     "pct": 5.9,
+     "seats": 1
+    }
+   }
+  }
+ },
+ "national": {
+  "fptp": {
+   "ldp": 49.23,
+   "ishin": 6.63,
+   "dpfp": 7.52,
+   "cra": 21.63,
+   "other": 2.08
+  },
+  "pr": {
+   "ldp": 36.72,
+   "cra": 18.23,
+   "dpfp": 9.73,
+   "ishin": 8.63,
+   "sansei": 7.44,
+   "mirai": 6.66,
+   "jcp": 4.4,
+   "reiwa": 2.92
+  },
+  "seats": {
+   "ldp": 316,
+   "cra": 49,
+   "ishin": 36,
+   "dpfp": 28,
+   "sansei": 15,
+   "mirai": 11,
+   "jcp": 4,
+   "reiwa": 1,
+   "other": 5
+  }
+ }
+}

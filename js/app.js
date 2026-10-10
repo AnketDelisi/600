@@ -158,6 +158,11 @@ function methodSentence(){
     const nW=Object.values(conf.winnerDistricts).reduce((a,b)=>a+b,0);
     const nD=Object.keys(conf.winnerDistricts).length;
     const twoRound=!!(COUNTRIES[COUNTRY]||{}).districtRunoff;
+    if(conf.prDistricts){
+      const nB=Object.keys(conf.prDistricts).length;
+      const prS=Object.values(conf.prDistricts).reduce((a,b)=>a+b,0);
+      return `${nW} seats by <strong>first-past-the-post</strong> in ${nD} single-member constituencies (projected by plurality from the ${(LAST_ELECTION.date||'').slice(0,4)} top-two baselines), plus ${prS} seats by <strong>D'Hondt</strong> in ${nB} regional proportional blocs`;
+    }
     const prM=SEAT_METHOD==='hare_niemeyer'
       ?'Hare/Niemeyer (largest remainder)':methodName();
     return `${nW} seats by <strong>${twoRound?'two-round majority':'first-past-the-post'}</strong> in ${nD} single-member constituencies${twoRound?' (projected by first-round plurality)':''}, plus ${SEATS_TOTAL-nW} seats by national <strong>${prM}</strong>${THRESHOLD>0?` with a ${THRESHOLD}% threshold`:''}`;
@@ -695,7 +700,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 const NAV_REGIONS=[
   ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
   ['Americas',['bc','brazil','qc']],
-  ['Middle East & Asia-Pacific',['israel','nz']],
+  ['Middle East & Asia-Pacific',['israel','jp','nz']],
 ];
 const METHOD_SHORT={fptp:'FPTP',dhondt:"D'Hondt",sainte_lague_standard:'Sainte-Lagu\u00eb',sainte_lague:'Sainte-Lagu\u00eb (mod.)',hare_niemeyer:'Hare/Niemeyer',imperiali_hb:'Imperiali'};
 let SUMMARY=null;
@@ -3536,6 +3541,27 @@ function allocateSeatsWinnerDistricts(avg, total){
     }
   }
   const totalSeats=total||SEATS_TOTAL;
+  if(conf.prDistricts){
+    // Japan: the 176 PR seats are allocated per bloc (D'Hondt) from the
+    // bloc's 2026 shares with a uniform swing from the national PR baseline
+    const prG=conf.prGebiete||{}, prN=conf.prNational2021||{};
+    for(const bk of Object.keys(conf.prDistricts)){
+      const base=prG[bk];
+      if(!base) continue;
+      const seatsN=conf.prDistricts[bk];
+      const votes={};
+      PARTY_ORDER.forEach(p=>{
+        votes[p]=Math.max(0,(base[p]||0)+((avg[p]||0)-(prN[p]||0)));
+      });
+      const valid=PARTY_ORDER.filter(p=>votes[p]>0&&
+        !(PARTY_META[p]&&PARTY_META[p].unallocated));
+      const quo=[];
+      valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push([votes[p]/d,p])});
+      quo.sort((a,b)=>b[0]-a[0]);
+      for(let i=0;i<seatsN&&i<quo.length;i++) out[quo[i][1]]++;
+    }
+    return out;
+  }
   const pr=allocateSeatsN(avg, Math.max(0,totalSeats-direct));
   for(const p of PARTY_ORDER) out[p]+=(pr[p]||0);
   return out;

@@ -79,6 +79,11 @@
   "poll_count": 1122,
   "scraped_at": "2026-10-10T15:23:22Z"
  },
+ "jp": {
+  "latest_date": "2026-10-04",
+  "poll_count": 89,
+  "scraped_at": "2026-10-10T18:34:18Z"
+ },
  "latvia": {
   "latest_date": "2026-10-03",
   "poll_count": 41,

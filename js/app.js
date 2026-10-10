@@ -154,6 +154,14 @@ function methodSentence(){
     const nf=Object.values(conf.fptpSeats||{}).reduce((a,b)=>a+b,0);
     return `the <strong>Rosatellum</strong> mixed system: ${nf} seats by <strong>first-past-the-post</strong> in single-member districts (each college goes to the coalition leading there) plus ${SEATS_TOTAL-nf} seats from a <strong>national proportional pool</strong> (D'Hondt, 3% threshold)`;
   }
+  if(conf.winnerDistricts){
+    const nW=Object.values(conf.winnerDistricts).reduce((a,b)=>a+b,0);
+    const nD=Object.keys(conf.winnerDistricts).length;
+    const twoRound=!!(COUNTRIES[COUNTRY]||{}).districtRunoff;
+    const prM=SEAT_METHOD==='hare_niemeyer'
+      ?'Hare/Niemeyer (largest remainder)':methodName();
+    return `${nW} seats by <strong>${twoRound?'two-round majority':'first-past-the-post'}</strong> in ${nD} single-member constituencies${twoRound?' (projected by first-round plurality)':''}, plus ${SEATS_TOTAL-nW} seats by national <strong>${prM}</strong>${THRESHOLD>0?` with a ${THRESHOLD}% threshold`:''}`;
+  }
   const nD=conf.seatDistricts?Object.keys(conf.seatDistricts).length:0;
   let s;
   if(SEAT_METHOD==='fptp') s=`<strong>first-past-the-post</strong> in ${conf.districts?Object.keys(conf.districts).length:''} single-member ridings`;
@@ -685,7 +693,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
+  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
   ['Americas',['bc','brazil','qc']],
   ['Middle East & Asia-Pacific',['israel','nz']],
 ];

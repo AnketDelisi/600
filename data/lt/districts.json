@@ -1,0 +1,1107 @@
+{
+ "20": {
+  "number": 20,
+  "title": "Centro–Žaliakalnio rinkimų apygarda",
+  "round1": {
+   "tslkd": 31.02,
+   "ls": 11.75,
+   "na": 11.49,
+   "dsvl": 9.95,
+   "lsdp": 9.86,
+   "lvzs": 6.5,
+   "ns": 5.12,
+   "lp": 4.07,
+   "lzp": 3.34,
+   "tts": 2.45,
+   "lrp": 1.72
+  },
+  "total": 20014,
+  "runoff": [
+   {
+    "party": "ls",
+    "name": "Simonas KAIRYS",
+    "pct": 58.17
+   },
+   {
+    "party": "tslkd",
+    "name": "Gabrielius LANDSBERGIS",
+    "pct": 41.83
+   }
+  ],
+  "winner": "ls"
+ },
+ "61": {
+  "number": 61,
+  "title": "Deltuvos pietinė rinkimų apygarda",
+  "round1": {
+   "lrp": 31.19,
+   "lsdp": 15.15,
+   "tslkd": 14.83,
+   "lvzs": 9.68,
+   "dsvl": 9.49,
+   "dp": 8.72,
+   "ns": 3.03,
+   "ls": 2.91,
+   "lp": 2.77,
+   "llrakss": 2.24
+  },
+  "total": 18065,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Indrė KIŽIENĖ",
+    "pct": 55.93
+   },
+   {
+    "party": "lrp",
+    "name": "Jonas PINSKUS",
+    "pct": 44.07
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "49": {
+  "number": 49,
+  "title": "Deltuvos šiaurinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 20.79,
+   "dsvl": 18.98,
+   "lvzs": 15.96,
+   "tslkd": 14.88,
+   "ls": 9.92,
+   "lrp": 8.05,
+   "tts": 4.49,
+   "ns": 4.47,
+   "lzp": 2.45
+  },
+  "total": 15165,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Arūnas DUDĖNAS",
+    "pct": 56.05
+   },
+   {
+    "party": "dsvl",
+    "name": "Tomas TOMILINAS",
+    "pct": 43.95
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "70": {
+  "number": 70,
+  "title": "Jotvingių rinkimų apygarda",
+  "round1": {
+   "dsvl": 32.54,
+   "lsdp": 18.04,
+   "tslkd": 13.97,
+   "na": 10.95,
+   "lvzs": 9.01,
+   "ls": 6.3,
+   "lrp": 5.77,
+   "tts": 1.92
+  },
+  "total": 16071,
+  "runoff": [
+   {
+    "party": "dsvl",
+    "name": "Linas URMANAVIČIUS",
+    "pct": 58.72
+   },
+   {
+    "party": "lsdp",
+    "name": "Povilas JAGELAVIČIUS",
+    "pct": 41.28
+   }
+  ],
+  "winner": "dsvl"
+ },
+ "7": {
+  "number": 7,
+  "title": "Justiniškių–Viršuliškių rinkimų apygarda",
+  "round1": {
+   "tslkd": 22.23,
+   "dsvl": 15.81,
+   "lsdp": 14.87,
+   "llrakss": 12.07,
+   "na": 8.8,
+   "lp": 6.24,
+   "ls": 6.22,
+   "ns": 4.33,
+   "lvzs": 4.15,
+   "lrp": 2.85,
+   "lzp": 2.42
+  },
+  "total": 16132,
+  "runoff": [
+   {
+    "party": "dsvl",
+    "name": "Linas KUKURAITIS",
+    "pct": 61.72
+   },
+   {
+    "party": "tslkd",
+    "name": "Matas MALDEIKIS",
+    "pct": 38.28
+   }
+  ],
+  "winner": "dsvl"
+ },
+ "62": {
+  "number": 62,
+  "title": "Karšuvos rinkimų apygarda",
+  "round1": {
+   "ls": 25.39,
+   "na": 18.47,
+   "lsdp": 16.74,
+   "lvzs": 12.3,
+   "dsvl": 9.21,
+   "tslkd": 9.13,
+   "tts": 3.11,
+   "dp": 2.92,
+   "lrp": 2.74
+  },
+  "total": 14321,
+  "runoff": [
+   {
+    "party": "ls",
+    "name": "Ričardas JUŠKA",
+    "pct": 51.47
+   },
+   {
+    "party": "na",
+    "name": "Tomas AMBROZA",
+    "pct": 48.53
+   }
+  ],
+  "winner": "ls"
+ },
+ "41": {
+  "number": 41,
+  "title": "Kelmės–Šilalės rinkimų apygarda",
+  "round1": {
+   "na": 47.83,
+   "lsdp": 15.62,
+   "tslkd": 13.47,
+   "lvzs": 6.88,
+   "ls": 4.33,
+   "lrp": 1.52
+  },
+  "total": 17219,
+  "runoff": [],
+  "winner": "na"
+ },
+ "37": {
+  "number": 37,
+  "title": "Kuršo rinkimų apygarda",
+  "round1": {
+   "lsdp": 20.59,
+   "lrp": 15.24,
+   "dsvl": 14.77,
+   "na": 13.01,
+   "tslkd": 9.32,
+   "lvzs": 7.98,
+   "tts": 2.49,
+   "lzp": 2.15
+  },
+  "total": 17622,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Violeta TURAUSKAITĖ",
+    "pct": 65.51
+   },
+   {
+    "party": "lrp",
+    "name": "Antanas VINKUS",
+    "pct": 34.49
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "9": {
+  "number": 9,
+  "title": "Lazdynų rinkimų apygarda",
+  "round1": {
+   "tslkd": 35.52,
+   "dsvl": 19.33,
+   "llrakss": 9.57,
+   "lp": 9.06,
+   "lsdp": 8.06,
+   "lvzs": 4.02,
+   "ls": 3.94,
+   "ns": 3.92,
+   "dp": 3.37,
+   "lzp": 1.71
+  },
+  "total": 17394,
+  "runoff": [
+   {
+    "party": "tslkd",
+    "name": "Laurynas KASČIŪNAS",
+    "pct": 54.58
+   },
+   {
+    "party": "dsvl",
+    "name": "Saulius SKVERNELIS",
+    "pct": 45.42
+   }
+  ],
+  "winner": "tslkd"
+ },
+ "25": {
+  "number": 25,
+  "title": "Marių rinkimų apygarda",
+  "round1": {
+   "lvzs": 25.57,
+   "na": 15.9,
+   "lsdp": 14.96,
+   "llrakss": 14.65,
+   "ls": 14.42,
+   "tslkd": 10.64,
+   "lrp": 2.07,
+   "tts": 1.79
+  },
+  "total": 13690,
+  "runoff": [
+   {
+    "party": "lvzs",
+    "name": "Ligita GIRSKIENĖ",
+    "pct": 60.62
+   },
+   {
+    "party": "na",
+    "name": "Sergej MAŽŪGA",
+    "pct": 39.38
+   }
+  ],
+  "winner": "lvzs"
+ },
+ "36": {
+  "number": 36,
+  "title": "Mėguvos rinkimų apygarda",
+  "round1": {
+   "tslkd": 23.84,
+   "na": 20.56,
+   "lsdp": 18.65,
+   "ls": 11.88,
+   "lvzs": 11.45,
+   "lp": 5.79,
+   "lzp": 4.99,
+   "dp": 2.84
+  },
+  "total": 16671,
+  "runoff": [
+   {
+    "party": "na",
+    "name": "Karolis NEIMANTAS",
+    "pct": 53.93
+   },
+   {
+    "party": "tslkd",
+    "name": "Mindaugas SKRITULSKAS",
+    "pct": 46.07
+   }
+  ],
+  "winner": "na"
+ },
+ "53": {
+  "number": 53,
+  "title": "Nalšios pietinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 22.34,
+   "na": 15.55,
+   "tslkd": 13.06,
+   "dp": 7.71,
+   "lzp": 7.22,
+   "llrakss": 4.36,
+   "lvzs": 3.89,
+   "ns": 2.64,
+   "lrp": 1.97,
+   "tts": 0.74
+  },
+  "total": 16207,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Šarūnas BIRUTIS",
+    "pct": 56.36
+   },
+   {
+    "party": "other",
+    "name": "Erikas DEMIDOVAS",
+    "pct": 43.64
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "52": {
+  "number": 52,
+  "title": "Nalšios šiaurinė rinkimų apygarda",
+  "round1": {
+   "lvzs": 22.76,
+   "ls": 21.21,
+   "lsdp": 13.28,
+   "dsvl": 12.83,
+   "tslkd": 8.25,
+   "lrp": 7.27,
+   "llrakss": 6.63,
+   "dp": 3.67,
+   "lp": 2.05,
+   "tts": 2.05
+  },
+  "total": 11855,
+  "runoff": [
+   {
+    "party": "ls",
+    "name": "Jevgenij ŠUKLIN",
+    "pct": 51.36
+   },
+   {
+    "party": "lvzs",
+    "name": "Gintautas KINDURYS",
+    "pct": 48.64
+   }
+  ],
+  "winner": "ls"
+ },
+ "2": {
+  "number": 2,
+  "title": "Naujamiesčio–Vilkpėdės rinkimų apygarda",
+  "round1": {
+   "tslkd": 26.41,
+   "lp": 21.07,
+   "ls": 14.73,
+   "lsdp": 11.36,
+   "llrakss": 8.45,
+   "ns": 4.47,
+   "lvzs": 4.05,
+   "dsvl": 3.42,
+   "lzp": 2.85,
+   "lrp": 1.1
+  },
+  "total": 16571,
+  "runoff": [
+   {
+    "party": "tslkd",
+    "name": "Žygimantas PAVILIONIS",
+    "pct": 52.98
+   },
+   {
+    "party": "lp",
+    "name": "Tomas Vytautas RASKEVIČIUS",
+    "pct": 47.02
+   }
+  ],
+  "winner": "tslkd"
+ },
+ "14": {
+  "number": 14,
+  "title": "Naujininkų–Rasų rinkimų apygarda",
+  "round1": {
+   "tslkd": 15.93,
+   "lzp": 12.33,
+   "llrakss": 9.71,
+   "lsdp": 8.52,
+   "lp": 7.97,
+   "ls": 6.46,
+   "dsvl": 6.01,
+   "na": 5.8,
+   "lvzs": 2.54,
+   "lrp": 1.38
+  },
+  "total": 13833,
+  "runoff": [
+   {
+    "party": "other",
+    "name": "Artūras ZUOKAS",
+    "pct": 50.15
+   },
+   {
+    "party": "tslkd",
+    "name": "Vygintas GASPARAVIČIUS",
+    "pct": 49.85
+   }
+  ],
+  "winner": "other"
+ },
+ "29": {
+  "number": 29,
+  "title": "Panevėžio vakarinė rinkimų apygarda",
+  "round1": {
+   "tslkd": 20.82,
+   "lsdp": 17.28,
+   "lvzs": 17.17,
+   "na": 14.71,
+   "dsvl": 10.07,
+   "ls": 5.84,
+   "lp": 4.58,
+   "ns": 3.49,
+   "lzp": 2.57,
+   "dp": 2.24,
+   "tts": 1.23
+  },
+  "total": 16410,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Andrius BUSILA",
+    "pct": 62.52
+   },
+   {
+    "party": "tslkd",
+    "name": "Ignas GAIŽIŪNAS",
+    "pct": 37.48
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "13": {
+  "number": 13,
+  "title": "Pašilaičių rinkimų apygarda",
+  "round1": {
+   "tslkd": 23.76,
+   "ls": 17.59,
+   "lp": 13.84,
+   "dsvl": 9.91,
+   "lsdp": 9.11,
+   "llrakss": 8.79,
+   "lvzs": 5.75,
+   "ns": 4.69,
+   "lrp": 1.86,
+   "lzp": 1.59,
+   "tts": 0.98
+  },
+  "total": 19098,
+  "runoff": [
+   {
+    "party": "ls",
+    "name": "Eugenijus GENTVILAS",
+    "pct": 53.26
+   },
+   {
+    "party": "tslkd",
+    "name": "Vytautas KERNAGIS",
+    "pct": 46.74
+   }
+  ],
+  "winner": "ls"
+ },
+ "17": {
+  "number": 17,
+  "title": "Petrašiūnų–Gričiupio rinkimų apygarda",
+  "round1": {
+   "tslkd": 30.43,
+   "lsdp": 19.3,
+   "lvzs": 13.3,
+   "lp": 8.92,
+   "ls": 8.02,
+   "ns": 5.49,
+   "lrp": 4.71,
+   "lzp": 4.39,
+   "dp": 2.92,
+   "tts": 2.51
+  },
+  "total": 17800,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Darius RAZMISLEVIČIUS",
+    "pct": 55.09
+   },
+   {
+    "party": "tslkd",
+    "name": "Kazys STARKEVIČIUS",
+    "pct": 44.91
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "8": {
+  "number": 8,
+  "title": "Pilaitės–Karoliniškių rinkimų apygarda",
+  "round1": {
+   "tslkd": 29.03,
+   "ns": 13.39,
+   "lsdp": 11.48,
+   "lp": 10.13,
+   "llrakss": 7.5,
+   "na": 6.8,
+   "ls": 6.28,
+   "dsvl": 5.73,
+   "dp": 3.1,
+   "lvzs": 2.97,
+   "lzp": 2.34,
+   "lrp": 1.25
+  },
+  "total": 19002,
+  "runoff": [
+   {
+    "party": "ns",
+    "name": "Vytautas SINICA",
+    "pct": 51.46
+   },
+   {
+    "party": "tslkd",
+    "name": "Radvilė MORKŪNAITĖ-MIKULĖNIENĖ",
+    "pct": 48.54
+   }
+  ],
+  "winner": "ns"
+ },
+ "44": {
+  "number": 44,
+  "title": "Radviliškio–Tytuvėnų rinkimų apygarda",
+  "round1": {
+   "lsdp": 20.89,
+   "tslkd": 18.55,
+   "na": 13.98,
+   "ls": 10.52,
+   "tts": 9.71,
+   "lvzs": 9.11,
+   "dsvl": 8.65,
+   "dp": 2.85,
+   "lrp": 2.44
+  },
+  "total": 14967,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Saulius LUŠČIKAS",
+    "pct": 69.22
+   },
+   {
+    "party": "tslkd",
+    "name": "Antanas ČEPONONIS",
+    "pct": 30.78
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "42": {
+  "number": 42,
+  "title": "Raseinių–Josvainių rinkimų apygarda",
+  "round1": {
+   "lsdp": 39.74,
+   "lvzs": 16.42,
+   "tslkd": 14.76,
+   "na": 14.35,
+   "dp": 9.38,
+   "lrp": 5.35
+  },
+  "total": 15264,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Matas SKAMARAKAS",
+    "pct": 72.6
+   },
+   {
+    "party": "lvzs",
+    "name": "Vida AČIENĖ",
+    "pct": 27.4
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "65": {
+  "number": 65,
+  "title": "Raudondvario rinkimų apygarda",
+  "round1": {
+   "lsdp": 31.25,
+   "ls": 21.57,
+   "na": 14.06,
+   "tslkd": 12.22,
+   "dsvl": 5.93,
+   "lvzs": 5.68,
+   "lzp": 3.69,
+   "dp": 2.01,
+   "lrp": 1.81,
+   "tts": 1.77
+  },
+  "total": 18251,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Raminta POPOVIENĖ",
+    "pct": 56.68
+   },
+   {
+    "party": "ls",
+    "name": "Viktoras PRANCKIETIS",
+    "pct": 43.32
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "55": {
+  "number": 55,
+  "title": "Riešės rinkimų apygarda",
+  "round1": {
+   "llrakss": 22.85,
+   "tslkd": 22.3,
+   "lsdp": 16.26,
+   "ls": 12.72,
+   "na": 6.21,
+   "lp": 5.53,
+   "dsvl": 5.38,
+   "lvzs": 3.9,
+   "dp": 2.42,
+   "lrp": 1.54,
+   "tts": 0.89
+  },
+  "total": 19582,
+  "runoff": [
+   {
+    "party": "tslkd",
+    "name": "Daiva ULBINAITĖ",
+    "pct": 55.65
+   },
+   {
+    "party": "llrakss",
+    "name": "Waldemar URBAN",
+    "pct": 44.35
+   }
+  ],
+  "winner": "tslkd"
+ },
+ "16": {
+  "number": 16,
+  "title": "Savanorių rinkimų apygarda",
+  "round1": {
+   "tslkd": 25.03,
+   "lsdp": 19.67,
+   "na": 17.02,
+   "dsvl": 9.13,
+   "lvzs": 7.19,
+   "ls": 5.85,
+   "lp": 4.8,
+   "lzp": 4.13,
+   "lrp": 2.09,
+   "tts": 1.87
+  },
+  "total": 17905,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Orinta LEIPUTĖ",
+    "pct": 60.31
+   },
+   {
+    "party": "tslkd",
+    "name": "Liudas MAŽYLIS",
+    "pct": 39.69
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "50": {
+  "number": 50,
+  "title": "Sėlos rytinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 31.44,
+   "na": 16.84,
+   "tslkd": 11.81,
+   "dsvl": 10.91,
+   "lvzs": 10.43,
+   "ls": 7.48,
+   "lrp": 5.54,
+   "dp": 3.8
+  },
+  "total": 17014,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Tadas BARAUSKAS",
+    "pct": 63.32
+   },
+   {
+    "party": "na",
+    "name": "Ignotas ADOMAVIČIUS",
+    "pct": 36.68
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "48": {
+  "number": 48,
+  "title": "Sėlos vakarinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 23.49,
+   "lvzs": 18.0,
+   "tslkd": 12.28,
+   "na": 9.12,
+   "ls": 8.14,
+   "dsvl": 7.34,
+   "dp": 2.31,
+   "tts": 2.17,
+   "lrp": 1.27
+  },
+  "total": 16471,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Lilija VAITIEKŪNIENĖ",
+    "pct": 62.83
+   },
+   {
+    "party": "lvzs",
+    "name": "Eglė BLAŽEVIČIENĖ",
+    "pct": 37.17
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "1": {
+  "number": 1,
+  "title": "Senamiesčio–Žvėryno rinkimų apygarda",
+  "round1": {
+   "ls": 45.91,
+   "tslkd": 17.89,
+   "lsdp": 7.21,
+   "lp": 6.87,
+   "ns": 5.13,
+   "lvzs": 4.62,
+   "llrakss": 3.93,
+   "dsvl": 3.47,
+   "lzp": 2.01,
+   "lrp": 0.79
+  },
+  "total": 19813,
+  "runoff": [],
+  "winner": "ls"
+ },
+ "63": {
+  "number": 63,
+  "title": "Sūduvos pietinė rinkimų apygarda",
+  "round1": {
+   "dsvl": 29.44,
+   "lsdp": 23.33,
+   "na": 11.77,
+   "tslkd": 9.38,
+   "lvzs": 8.63,
+   "lrp": 8.61,
+   "ls": 3.65,
+   "tts": 2.91,
+   "dp": 2.28
+  },
+  "total": 14479,
+  "runoff": [
+   {
+    "party": "dsvl",
+    "name": "Kęstutis MAŽEIKA",
+    "pct": 55.58
+   },
+   {
+    "party": "lsdp",
+    "name": "Tadas PRAJARA",
+    "pct": 44.42
+   }
+  ],
+  "winner": "dsvl"
+ },
+ "64": {
+  "number": 64,
+  "title": "Sūduvos šiaurinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 27.06,
+   "lvzs": 19.64,
+   "tslkd": 19.26,
+   "na": 12.08,
+   "dsvl": 5.74,
+   "lp": 3.29,
+   "lrp": 2.99,
+   "ls": 2.8,
+   "tts": 1.38
+  },
+  "total": 16336,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Darius JAKAVIČIUS",
+    "pct": 58.81
+   },
+   {
+    "party": "lvzs",
+    "name": "Giedrius SURPLYS",
+    "pct": 41.19
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "6": {
+  "number": 6,
+  "title": "Šeškinės–Šnipiškių rinkimų apygarda",
+  "round1": {
+   "tslkd": 31.19,
+   "lsdp": 12.77,
+   "dsvl": 10.6,
+   "llrakss": 8.86,
+   "lp": 8.02,
+   "na": 7.96,
+   "ls": 6.16,
+   "ns": 4.88,
+   "lvzs": 4.09,
+   "lzp": 2.38,
+   "lrp": 1.26
+  },
+  "total": 17497,
+  "runoff": [
+   {
+    "party": "tslkd",
+    "name": "Mindaugas LINGĖ",
+    "pct": 54.01
+   },
+   {
+    "party": "lsdp",
+    "name": "Rasa BUDBERGYTĖ",
+    "pct": 45.99
+   }
+  ],
+  "winner": "tslkd"
+ },
+ "45": {
+  "number": 45,
+  "title": "Šiaulių krašto rinkimų apygarda",
+  "round1": {
+   "lvzs": 22.5,
+   "na": 17.37,
+   "tslkd": 16.79,
+   "lsdp": 16.68,
+   "dsvl": 12.82,
+   "ls": 7.85,
+   "lrp": 3.42,
+   "tts": 2.58
+  },
+  "total": 17258,
+  "runoff": [
+   {
+    "party": "lvzs",
+    "name": "Eimantas KIRKUTIS",
+    "pct": 62.45
+   },
+   {
+    "party": "na",
+    "name": "Vytautas SLABYS",
+    "pct": 37.55
+   }
+  ],
+  "winner": "lvzs"
+ },
+ "32": {
+  "number": 32,
+  "title": "Šilutės rinkimų apygarda",
+  "round1": {
+   "na": 34.23,
+   "dsvl": 27.59,
+   "lsdp": 16.16,
+   "tslkd": 12.89,
+   "lvzs": 3.58,
+   "lrp": 2.0,
+   "tts": 1.49
+  },
+  "total": 15534,
+  "runoff": [
+   {
+    "party": "na",
+    "name": "Daiva ŽEBELIENĖ",
+    "pct": 52.35
+   },
+   {
+    "party": "dsvl",
+    "name": "Zigmantas BALČYTIS",
+    "pct": 47.65
+   }
+  ],
+  "winner": "na"
+ },
+ "58": {
+  "number": 58,
+  "title": "Trakų–Vievio rinkimų apygarda",
+  "round1": {
+   "lsdp": 32.84,
+   "ls": 21.64,
+   "llrakss": 10.95,
+   "na": 8.65,
+   "dsvl": 8.12,
+   "tslkd": 7.92,
+   "lvzs": 4.09,
+   "lp": 2.51,
+   "lrp": 1.95,
+   "tts": 1.32
+  },
+  "total": 16804,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Kęstutis VILKAUSKAS",
+    "pct": 68.44
+   },
+   {
+    "party": "ls",
+    "name": "Edita RUDELIENĖ",
+    "pct": 31.56
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "51": {
+  "number": 51,
+  "title": "Utenos rinkimų apygarda",
+  "round1": {
+   "tslkd": 20.4,
+   "lsdp": 19.66,
+   "dsvl": 8.69,
+   "na": 5.24,
+   "lvzs": 2.34,
+   "lzp": 2.27,
+   "lp": 2.26,
+   "ns": 2.01,
+   "tts": 1.08,
+   "dp": 0.82
+  },
+  "total": 16899,
+  "runoff": [
+   {
+    "party": "other",
+    "name": "Vitalijus ŠERŠNIOVAS",
+    "pct": 71.12
+   },
+   {
+    "party": "tslkd",
+    "name": "Edmundas PUPINIS",
+    "pct": 28.88
+   }
+  ],
+  "winner": "other"
+ },
+ "68": {
+  "number": 68,
+  "title": "Vilkaviškio rinkimų apygarda",
+  "round1": {
+   "dsvl": 40.79,
+   "lsdp": 32.3,
+   "na": 9.26,
+   "tslkd": 9.22,
+   "lvzs": 5.25,
+   "lrp": 1.85,
+   "tts": 1.34
+  },
+  "total": 14227,
+  "runoff": [
+   {
+    "party": "dsvl",
+    "name": "Algirdas BUTKEVIČIUS",
+    "pct": 50.23
+   },
+   {
+    "party": "lsdp",
+    "name": "Joris JUŠKAUSKAS",
+    "pct": 49.77
+   }
+  ],
+  "winner": "dsvl"
+ },
+ "11": {
+  "number": 11,
+  "title": "Vilniaus pietinė rinkimų apygarda",
+  "round1": {
+   "tslkd": 21.61,
+   "llrakss": 19.53,
+   "lsdp": 13.27,
+   "na": 8.75,
+   "lp": 7.92,
+   "dsvl": 5.98,
+   "lvzs": 4.32,
+   "ls": 3.6,
+   "lrp": 2.55,
+   "lzp": 1.73
+  },
+  "total": 13954,
+  "runoff": [
+   {
+    "party": "llrakss",
+    "name": "Česlav OLŠEVSKI",
+    "pct": 54.54
+   },
+   {
+    "party": "tslkd",
+    "name": "Agnė BILOTAITĖ",
+    "pct": 45.46
+   }
+  ],
+  "winner": "llrakss"
+ },
+ "39": {
+  "number": 39,
+  "title": "Žemaitijos šiaurinė rinkimų apygarda",
+  "round1": {
+   "lvzs": 39.95,
+   "lsdp": 30.16,
+   "na": 11.11,
+   "tslkd": 8.85,
+   "dsvl": 4.25,
+   "ls": 3.64,
+   "lrp": 2.05
+  },
+  "total": 14593,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Tomas MARTINAITIS",
+    "pct": 53.11
+   },
+   {
+    "party": "lvzs",
+    "name": "Valius ĄŽUOLAS",
+    "pct": 46.89
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "47": {
+  "number": 47,
+  "title": "Žiemgalos rytinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 37.09,
+   "tslkd": 24.51,
+   "na": 12.19,
+   "lvzs": 9.41,
+   "dsvl": 8.08,
+   "ns": 3.48,
+   "lrp": 3.11,
+   "tts": 2.12
+  },
+  "total": 15277,
+  "runoff": [
+   {
+    "party": "lsdp",
+    "name": "Ilona GELAŽNIKIENĖ",
+    "pct": 69.97
+   },
+   {
+    "party": "tslkd",
+    "name": "Donatas DILYS",
+    "pct": 30.03
+   }
+  ],
+  "winner": "lsdp"
+ },
+ "46": {
+  "number": 46,
+  "title": "Žiemgalos vakarinė rinkimų apygarda",
+  "round1": {
+   "lsdp": 41.04,
+   "na": 16.83,
+   "lvzs": 16.54,
+   "tslkd": 9.37,
+   "ls": 8.59,
+   "dsvl": 4.91,
+   "lrp": 2.73
+  },
+  "total": 15533,
+  "runoff": [],
+  "winner": "lsdp"
+ }
+}

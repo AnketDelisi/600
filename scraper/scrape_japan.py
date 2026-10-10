@@ -34,6 +34,7 @@ MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
 TITLE_MAP = {
     "liberal democratic party (japan)": "ldp",
     "centrist reform alliance": "cra",
+    "centrist reform party": "cra",   # the alliance became a party in 2026
     "japan innovation party": "ishin",
     "democratic party for the people": "dpfp",
     "sanseit\u014d": "sansei",

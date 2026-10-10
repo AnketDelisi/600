@@ -208,6 +208,9 @@ OVERRIDES = {
     ("uk", "Labour Party"): "Labour Party (UK)",
     ("nz", "Labour Party"): "New Zealand Labour Party",
     ("ro", "Social Democratic Party"): "Social Democratic Party (Romania)",
+    # Japan: the module uses the full Japanese-derived names
+    ("jp", "Japan Innovation Party"): "Nippon Ishin no Kai",
+    ("jp", "Komeito"): "Kōmeitō",
     ("ro", "Save Romania Union"): "Save Romania Union (2022)",
     ("ro", "Democratic Union of Hungarians in Romania"):
         "Democratic Alliance of Hungarians in Romania",

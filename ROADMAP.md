@@ -1,51 +1,65 @@
 # Coverage roadmap
 
-Current coverage: 24 countries in the calendar (Austria, BC, Brazil, Bulgaria
-+ presidential, Czechia, Denmark, Estonia, Finland, Germany, Greece, Hungary,
-Israel, Italy, Moldova, Netherlands, New Zealand, Poland, Portugal, Romania,
-Serbia, Slovakia, Spain, UK), plus hidden pages reachable by URL (Sweden,
-Latvia, Quebec, France as map-only), four German states (Berlin,
-Mecklenburg-Vorpommern, Saxony-Anhalt and the machinery behind them) and the
-separate US midterms page.
+Reviewed 2026-10-10. Current coverage: 31 country models in the calendar
+(Austria, BC, Brazil, Bulgaria + presidential, Czechia, Denmark, Estonia,
+Finland, France, Germany, Greece, Hungary, Israel, Italy, **Japan**,
+Latvia, **Lithuania**, Moldova, Netherlands, **Norway**, New Zealand,
+Poland, Portugal, Quebec, Romania, Serbia, Slovakia, Spain, Sweden, UK)
+plus three German states (Berlin, Mecklenburg-Vorpommern, Saxony-Anhalt)
+and the separate US midterms page. Norway, Lithuania and Japan all have
+measured backtests now (T-0 seat MAE: NO n/a, LT 2.18, JP 8.89 - the JP
+residual is the unmodellable list-exhaustion forfeiture).
 
-Candidates are ranked by proximity x data availability x effort. "Effort"
-assumes the established pipeline: `scraper/scaffold.py` skeleton, a scraper on
-the same Wikipedia article pattern, config block, audit entry, health baseline.
+Since the last review, several listed candidates are resolved: the
+March 2026 German state elections and May 2026 Holyrood vote passed
+(could still be added as result pages, low value), Slovenia's 2026
+election was held on 22 March 2026 (next cycle 2030), and Lithuania /
+Japan / Norway were built.
+
+Candidates below were re-verified on 2026-10-10 by checking the live
+polling pages: "rows" is the polling table size (a proxy for data
+sufficiency), the system notes map to the existing machinery.
 
 ## Next up
 
-| # | Election | When | System | Reuses | Effort |
-|---|----------|------|--------|--------|--------|
-| 1 | Baden-Wurttemberg state election | Mar 2026 | AMS-ish (70 FPTP + list, 5% threshold) | the existing German state machinery (Berlin/MV builders), state-swing noise already backtested on 114 Wahlkreise | S |
-| 2 | Rhineland-Palatinate state election | Mar 2026 | same family (101 seats, 5%) | same as #1 | S |
-| 3 | Scottish Parliament (Holyrood) | May 2026 | AMS: 73 FPTP + 56 list, leveling-style | the NZ model (sainte_lague_standard + overhang + electorate baselines) | M |
-| 4 | Slovenia | 2026 (term ends April) | D'Hondt, 8 constituencies + 2 minority seats | reservedSeats hook (Romania/Denmark), per-district path | M |
-| 5 | Norway | Sep 2029 | modified Sainte-Lague, 19 counties, 19 leveling seats | Denmark's national sainte_lague_standard + per-county seatDistricts (geoBoundaries NOR ADM1) | M |
-| 6 | Croatia | 2028 | D'Hondt, 10 constituencies + diaspora | Poland's per-district path | M |
-| 7 | Iceland | 2028 | D'Hondt, 6 constituencies + leveling | Norway playbook | M |
-| 8 | Luxembourg | 2028 | D'Hondt, 4 constituencies | Poland playbook, small | S-M |
-| 9 | Canada federal | 2029 | FPTP, 343 ridings | the BC/QC riding builders + Elections Canada data | L (map) |
-| 10 | Argentina | 2027 | D'Hondt per province | Poland playbook, 24 provinces | M |
+| # | Election | When | Polling (rows) | System | Reuses | Effort |
+|---|----------|------|----------------|--------|--------|--------|
+| 1 | **South Korea** legislative | by 12 Apr 2028 | ~500 (very rich; 3 tables) | 300 = 254 FPTP + 46 national PR (the 2024 reform; "satellite party" quirks) | the Japan winnerDistricts path + the Hungary-style national PR pool (no per-bloc step needed) | M (map: 254 districts, Commons probe needed) |
+| 2 | **Croatia** parliamentary | 2028 | 83 (good) | 151 = 140 PR (10 districts, D'Hondt, 5%) + 3 diaspora + 8 minorities | the Poland per-district path + reservedSeats (Romania/Denmark) | S-M (map: 10 constituencies, easy) |
+| 3 | **Iceland** parliamentary | 30 Nov 2028 | 41 (good) | 63 = 54 district (6 constituencies, D'Hondt) + 9 leveling (2% threshold) | the Norway playbook exactly (district + leveling) | S-M (map: 6 constituencies / 8 regions) |
+| 4 | **Argentina** legislative | 24 Oct 2027 | ~44 (moderate) | Chamber half (~127) by province D'Hondt, 24 provinces | the seatDistricts per-province path (Poland) | S-M (map: 24 provinces) |
+| 5 | **Canada** federal | Oct 2029 (fixed) | ~400 (very rich) | FPTP, 343 ridings | the BC/QC riding builders + Elections Canada geodata | M model + L map (343 ridings) |
+| 6 | **Mexico** midterms | Jun 2027 | ~35 (moderate) | 500 = 300 FPTP + 200 PR (5 regional lists) | the Japan winnerDistricts + prDistricts path | M-L (300 district geodata is the risk; states-level map fallback) |
+| 7 | **France presidential** | Apr 2027 | very rich (dedicated page) | national two-round | the Brazil runoff machinery + the presidential page style (bgpres) as a new `frpres` key | M (no new map needed if national) |
+| 8 | **Australia** federal | by May 2028 | ~350 (very rich) | preferential (IRV) FPTP | needs a TCP-based winner rule validated on 2025 | M-L (model is the risk, not data) |
+| 9 | **Ireland** Dáil | by ~2030 | ~48 (moderate) | STV | no honest shortcut exists | L (defer) |
+
+## Thin data - wait
+
+- **Luxembourg** (8 Oct 2028): the system is easy (60 seats, 4
+  constituencies, D'Hondt) but the article has no polling table >10 rows
+  (Politmonitor ~quarterly). Revisit when the cycle thickens.
+- **Taiwan** (Jan 2028): en-wiki has no polling tables (the 2028
+  presidential article is a stub; "Next Taiwanese legislative election"
+  exists). Rich data lives in zh.wiki/news - needs a different scraper
+  family. Defer.
+- **Turkey** (Jun 2028): no dedicated polling page (the "next" title
+  redirects to the 2023 article). Data weaker than earlier assumed.
+- **Switzerland** (Oct 2027): no polling page; panachage makes the
+  poll-to-seat mapping ambiguous anyway.
 
 ## Deferred, with reasons
 
-- **Australia** (2028): instant-runoff (preferential) FPTP. The app's FPTP
-  path is plurality - a preferential model needs per-riding preference flows
-  or at least a two-candidate-preferred assumption; wrong model is worse than
-  none. Revisit with a TCP-based winner rule and validate on 2025.
-- **Malta, Ireland**: STV. No honest shortcut exists; an app that shows STV
-  seats from a plurality-style model would misinform. Long-term project.
-- **Lithuania** (2028): mixed 71 two-round FPTP + 70 PR - needs the runoff
-  machinery generalised beyond presidential pages. M-L, after Scotland.
-- **Japan** (2028), **South Korea** (2028): mixed FPTP+PR with complex
-  dual-candidacy rules. L.
-- **EU Parliament** (2029): 720 seats, 27 separate national PR systems in one
-  page - a different product, not a country add.
-- **Switzerland** (2027): panachage (voters split lists across parties) makes
-  the poll-to-seat mapping genuinely ambiguous. M-L, needs care.
-- **Turkey** (2028): national D'Hondt plus alliance-level pooling; data is
-  available but the alliance rules need the Israel-style cartel machinery
-  extended. M-L.
+- **Malta, Ireland**: STV. No honest shortcut exists; an app that shows
+  STV seats from a plurality-style model would misinform.
+- **EU Parliament** (2029): 720 seats, 27 separate national PR systems in
+  one page - a different product, not a country add.
+- **Slovenia**: the 2026 election was held 22 March 2026; next cycle
+  2030. Add in 2029-30 with the Poland playbook (D'Hondt, 8
+  constituencies + 2 minority seats).
+- **Germany federal** (2029), **Poland** (2027), **Italy** (2027),
+  **Greece** (2027): already covered; their "next election" polling pages
+  are live and the daily scrapers keep them current.
 
 ## Add-a-country checklist (the four-build distillation)
 
@@ -55,24 +69,27 @@ the same Wikipedia article pattern, config block, audit entry, health baseline.
    `BLOCS.bloc1.parties` directly and crashes without it.
 2. Scraper: copy the newest scraper of the same table family
    (`scrape_moldova.py` for colspan-heavy tables, `scrape_denmark.py` for
-   multi-row headers). Wikipedia merges cells; the grid expander in
-   `backtest.py` (rowspan AND colspan) is the reference implementation.
-3. Config block: paste where the country fits the file's order. Party colors
-   come from the article's rendered colour-swatch row (`sync_party_colors.py`
-   checks it), never from module name matches alone.
-4. Audit: add the country to `REF` in `scraper/audit.py` (seats, threshold,
-   method, constituencies flag). Run `python scraper/release.py` - it bumps
-   the token, mirrors `site/`, reports colour drift and fails on schema
-   problems (missing blocs, undefined party codes, missing logos/data).
-5. Map (optional but expected): geoBoundaries ADM1 first, official
-   boundaries (dst.dk, DAGI, Elections Canada) when the administrative map
-   does not match the electoral map. Store per-district baselines under the
-   map block; keep `seatDistricts` summing to `seats` minus `reservedSeats`.
-6. Validate before shipping: historical result through `scraper/seats_run.js`
-   must reproduce the actual allocation (Finland 2023 exact, BC 2024 exact,
-   Romania within 1 seat are the benchmarks). Add a cycle to
-   `scraper/backtest.py` when per-district actuals exist.
-7. `python scraper/check_data.py --update` to seed the health baseline, then
-   `python scraper/build_summary.py` for the calendar.
+   multi-row headers, `scrape_japan.py` for heading-year tables and
+   section scoping). The grid expander in `backtest.py` (rowspan AND
+   colspan) is the reference implementation.
+3. Config block: paste where the country fits the file's order. Party
+   colors come from the wiki module (`sync_party_colors.py`), with
+   OVERRIDES for module-name mismatches.
+4. Audit: add the country to `REF` in `scraper/audit.py` (seats,
+   threshold, method, constituencies flag). Run `python scraper/release.py`
+   - it bumps the token, mirrors `site/`, reports colour drift and fails
+   on schema problems.
+5. Map: the Commons election-results SVG (Japan/Italy pattern: remap
+   `data-name` labels, filter degenerate rings, pre-flip y) beats
+   geoBoundaries when the electoral map differs from the administrative
+   one. Store per-district baselines under the map block; keep
+   `seatDistricts` summing to `seats` minus `reservedSeats`.
+6. Validate before shipping: historical result through
+   `scraper/seats_run.js` must reproduce the actual allocation (Finland
+   2023 exact, BC 2024 exact, Lithuania PR exact, Japan districts exact
+   with the FPTP anchor). Add a cycle to `scraper/backtest.py` (article +
+   cols + result + seats; use `section` scoping for multi-table pages).
+7. `python scraper/check_data.py --update` to seed the health baseline,
+   then `python scraper/build_summary.py` for the calendar.
 8. CI: add the scraper to the "Scrape polls" step in
    `.github/workflows/update.yml`.

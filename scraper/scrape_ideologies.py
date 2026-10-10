@@ -29,6 +29,22 @@ MAX_ITEMS = 3
 DELAY = 0.35  # the search API rate-limits rapid bursts
 
 
+STOP = {"of", "the", "and", "party", "parti", "partido", "partito",
+        "in", "for", "list", "election", "elections"}
+
+
+def hit_score(title, name):
+    """Word overlap between a search hit and the party name - the search API
+    happily returns the same wrong article first for every query (British
+    Columbia queries all hit the Conservative Party article), so hits must be
+    ranked, not trusted in order."""
+    tw = set(re.findall(r"\w+", title.lower())) - STOP
+    nw = set(re.findall(r"\w+", name.lower())) - STOP
+    if not nw:
+        return 0
+    return len(tw & nw) / len(nw)
+
+
 def search_titles(name, country_name=None):
     queries = []
     if country_name:
@@ -41,7 +57,7 @@ def search_titles(name, country_name=None):
             r = requests.get("https://en.wikipedia.org/w/api.php",
                              params={"action": "query", "list": "search",
                                      "srsearch": q, "format": "json",
-                                     "srlimit": 3},
+                                     "srlimit": 5},
                              headers=H, timeout=60)
             time.sleep(DELAY + attempt * 1.5)
             try:
@@ -56,6 +72,7 @@ def search_titles(name, country_name=None):
         if t not in seen:
             seen.add(t)
             uniq.append(t)
+    uniq.sort(key=lambda t: hit_score(t, name), reverse=True)
     return uniq
 
 
@@ -159,6 +176,7 @@ def read_parties(country=None):
 
 def main():
     force = "--force" in sys.argv
+    repatch = "--repatch" in sys.argv
     country = None
     if "--country" in sys.argv:
         country = sys.argv[sys.argv.index("--country") + 1]
@@ -214,7 +232,22 @@ def main():
         for em in list(re.finditer(r"(\w+):\s*\{([^{}]*)\}", body))[::-1]:
             pid = em.group(1)
             idea = found.get((cc, pid))
-            if not idea or "ideology:" in em.group(2):
+            if not idea:
+                continue
+            if "ideology:" in em.group(2):
+                if not repatch:
+                    continue
+                # overwrite the existing value in place
+                abs_start = m.start() + k + em.start()
+                abs_end = m.start() + k + em.end()
+                span = text[abs_start:abs_end]
+                new_span = re.sub(
+                    r'ideology:\s*"[^"]*"',
+                    "ideology: %s" % json.dumps(idea, ensure_ascii=False),
+                    span)
+                if new_span != span:
+                    text = text[:abs_start] + new_span + text[abs_end:]
+                    n += 1
                 continue
             abs_end = m.start() + k + em.end() - 1  # the entry's closing }
             # trim the space before the closing brace so the entry reads

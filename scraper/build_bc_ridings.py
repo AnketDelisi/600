@@ -208,7 +208,7 @@ def main():
 
     sys.argv = ["build_map_svg.py", "--geojson", GEOJSON,
                 "--name-field", "ED_NAME", "--fold", "--attr", "id",
-                "--no-prefix", "--out", OUT_SVG, "--attribution", ATTRIBUTION]
+                "--no-prefix", "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--simplify", "0.00012"]
     if force:
         sys.argv.append("--force")
     bm.main()

@@ -8,6 +8,11 @@ kept, the other lists form the residual. Geometry: PDOK CBS
 gebiedsindelingen 2025 WFS (gemeente_gegeneraliseerd, official GM
 codes; matched via statcode).
 
+Note: the shipped netherlands_gemeenten.svg was re-rendered from PDOK's
+DETAILED layer (gebiedsindelingen:gemeente_niet_gegeneraliseerd) with
+--simplify 0.00012 and ids rebuilt via the norm() slug with CBS province
+suffixes stripped only for unique base names - a --force rebuild must
+reproduce that (the generalised layer has visibly coarse coastlines).
 Writes img/netherlands_gemeenten.svg and patches the netherlands block
 in js/config.js with a map2 layer.
 

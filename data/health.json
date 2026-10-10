@@ -99,6 +99,11 @@
   "poll_count": 38,
   "scraped_at": "2026-10-09T12:31:48Z"
  },
+ "no": {
+  "latest_date": "2026-09-08",
+  "poll_count": 76,
+  "scraped_at": "2026-10-10T13:00:05Z"
+ },
  "nz": {
   "latest_date": "2026-10-20",
   "poll_count": 124,

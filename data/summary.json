@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T12:32:02Z",
+ "generated": "2026-10-10T13:38:32Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -18,7 +18,7 @@
    "second_pct": 20.7,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 27,
+   "poll_count": 24,
    "latest_poll": "2026-10-08"
   },
   "serbia": {
@@ -58,7 +58,7 @@
    "second_pct": 42.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 41,
+   "poll_count": 39,
    "latest_poll": "2026-10-07"
   },
   "austria": {
@@ -258,7 +258,7 @@
    "second_pct": 20.6,
    "last_winner_code": "FdI",
    "last_winner_color": "#03386A",
-   "poll_count": 30,
+   "poll_count": 29,
    "latest_poll": "2026-10-08"
   },
   "bc": {
@@ -421,6 +421,26 @@
    "poll_count": 6,
    "latest_poll": "2026-10-05"
   },
+  "no": {
+   "name": "Norway",
+   "election_date": "2029-09-10",
+   "election_date_runoff": null,
+   "last_election": "2025-09-08",
+   "last_winner": null,
+   "seats": 169,
+   "seat_based": false,
+   "leader": "frp",
+   "leader_pct": 30.9,
+   "leader_code": "FrP",
+   "leader_color": "#004F80",
+   "leader_logo": "img/no/FRP.svg",
+   "second": "ap",
+   "second_pct": 23.4,
+   "last_winner_code": null,
+   "last_winner_color": null,
+   "poll_count": 7,
+   "latest_poll": "2026-09-08"
+  },
   "pt": {
    "name": "Portugal",
    "election_date": "2029",
@@ -450,7 +470,7 @@
    "seats": 650,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 27.2,
+   "leader_pct": 27.3,
    "leader_code": "LAB",
    "leader_color": "#E41C3E",
    "leader_logo": "img/uk/LAB.svg",
@@ -458,7 +478,7 @@
    "second_pct": 23.0,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 28,
+   "poll_count": 27,
    "latest_poll": "2026-10-05"
   },
   "nz": {
@@ -470,7 +490,7 @@
    "seats": 120,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 28.7,
+   "leader_pct": 28.8,
    "leader_code": "LAB",
    "leader_color": "#D82A20",
    "leader_logo": "img/nz/LAB.svg",

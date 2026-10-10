@@ -161,6 +161,7 @@ function methodSentence(){
   else if(SEAT_METHOD==='hare_niemeyer') s="the <strong>Hare/Niemeyer</strong> method (largest remainder, Hare quota = votes ÷ seats) in a single national district";
   else if(SEAT_METHOD==='imperiali_hb') s="the <strong>Imperiali quota</strong> (votes ÷ (seats+2)) in each of the 14 regions, then a <strong>national second scrutiny</strong> by Hagenbach-Bischoff (remainder votes ÷ (unfilled seats+1))";
   else if(SEAT_METHOD==='sainte_lague_standard') s="the <strong>Sainte-Laguë/Schepers</strong> method (divisors 1, 3, 5, …) in a single national district";
+  else if((COUNTRIES[COUNTRY]||{}).levelingSeats) s=`<strong>modified Sainte-Laguë</strong> (first divisor 1.4, then 3, 5, …) in the ${nD} constituencies (no threshold: parties below ${THRESHOLD}% still win district seats), plus ${(COUNTRIES[COUNTRY]||{}).levelingSeats} <strong>leveling seats</strong> by quotient votes ÷ (seats+1) among the parties at or above ${THRESHOLD}%`;
   else s="<strong>modified Sainte-Laguë</strong> (divisor 1.2)";
   const b=(MAP_CONF()||{}).bonus||((COUNTRIES[COUNTRY]||{}).bonus);
   if(b) s+=`, plus a <strong>sliding majority bonus</strong> (${b.minSeats} seats at ${b.min}%, +1 per ${b.step}pp, up to ${b.maxSeats} seats)`;
@@ -684,7 +685,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','md','netherlands','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
+  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
   ['Americas',['bc','brazil','qc']],
   ['Middle East & Asia-Pacific',['israel','nz']],
 ];
@@ -2280,6 +2281,19 @@ function districtSeatSplit(nr, avg, resultMode, conf){
     });
     return arr;
   }
+  if(conf.levelingSeats&&conf.seatDistricts&&conf.seatDistricts[nr]){
+    // Norway: district tier of the two-tier Storting model - modified
+    // Sainte-Lague (1.4 first divisor), no threshold: parties below the
+    // national 4% still win district seats (V 2025)
+    const split=districtTierSplit(nr, avg, resultMode, conf,
+                                  conf.seatDistricts[nr]);
+    if(!split) return null;
+    const arr=[];
+    PARTY_ORDER.forEach(p=>{
+      for(let i=0;i<(split[p]||0);i++) arr.push(p);
+    });
+    return arr;
+  }
   if(conf.seatDistricts&&conf.seatDistricts[nr]){
     seatsN=conf.seatDistricts[nr];
     method=SEAT_METHOD;
@@ -3264,6 +3278,56 @@ function allocateSeatsByDistrict(avg, regionNoise){
   return out;
 }
 
+// Norwegian two-tier model (Storting): the 150 district seats are allocated
+// in the 19 constituencies by modified Sainte-Lague (first divisor 1.4, no
+// threshold - parties below the national 4% still win district seats), then
+// the 19 leveling seats go to the parties at or above the threshold by
+// quotient continuation votes/(seats+1). Reproduces the official 2025
+// result exactly (Ap 53 / FrP 47 / H 24 / SV 9 / Sp 9 / R 9 / MDG 8 /
+// KrF 7 / V 3). Shared by the point projection, the Monte Carlo and the
+// map's seat dots.
+function districtTierSplit(nr, avg, resultMode, conf, seatsN){
+  const shares=districtShares(nr, avg, resultMode, conf);
+  if(!shares) return null;
+  const votes={};
+  PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+  const quo=[];
+  PARTY_ORDER.forEach(p=>{
+    if(!((votes[p]||0)>0)||(PARTY_META[p]&&PARTY_META[p].unallocated)) return;
+    for(let d=1;d<=seatsN;d++) quo.push({p,q:(votes[p]||0)/(d===1?1.4:2*d-1)});
+  });
+  quo.sort((a,b)=>b.q-a.q);
+  const seats={};
+  for(let i=0;i<seatsN&&i<quo.length;i++) seats[quo[i].p]=(seats[quo[i].p]||0)+1;
+  return seats;
+}
+
+function allocateSeatsLeveling(avg){
+  const c=COUNTRIES[COUNTRY]||{};
+  if(!c.levelingSeats) return null;
+  const conf=MAP_CONF();
+  if(!conf||!conf.seatDistricts) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  for(const nr of Object.keys(conf.seatDistricts)){
+    const split=districtTierSplit(nr, avg, false, conf, conf.seatDistricts[nr]);
+    if(!split) continue;
+    for(const p in split) out[p]=(out[p]||0)+split[p];
+  }
+  let left=c.levelingSeats;
+  while(left>0){
+    let best=null,bq=-1;
+    for(const p of PARTY_ORDER){
+      if((avg[p]||0)<THRESHOLD) continue;
+      if(PARTY_META[p]&&PARTY_META[p].pastOnly) continue;
+      const q=(avg[p]||0)/(out[p]+1);
+      if(q>bq){best=p;bq=q}
+    }
+    if(!best) break;
+    out[best]++; left--;
+  }
+  return out;
+}
+
 // Czech Chamber of Deputies (Act 189/2021): two scrutinies.
 // First: LR-Imperiali per region (quota = region votes/(seats+2); integer quota,
 // over-allocation trimmed from the smallest remainders per §48(4)).
@@ -3436,7 +3500,7 @@ function allocateSeatsTotal(avg, total){
   // the map's districts
   if(OVERHANG) return overhangSeats(avg, total, directFromProjection(avg), OVERHANG.cap);
   if(MAP_CONF()&&MAP_CONF().winnerDistricts) return allocateSeatsWinnerDistricts(avg, total);
-  return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
+  return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsLeveling(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
 }
 
 // Mixed systems where the strongest party in a district takes all of its
@@ -3576,6 +3640,8 @@ function allocateSeatsFastRaw(votes, total){
   }
   const czechia=allocateSeatsCzechia(votes);
   if(czechia) return czechia;
+  const leveling=allocateSeatsLeveling(votes);
+  if(leveling) return leveling;
   const byDistrict=allocateSeatsByDistrict(votes);
   if(byDistrict) return byDistrict;
   // national-minority exemption + no-poll fallback (see allocateSeatsN)

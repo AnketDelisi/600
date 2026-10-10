@@ -35,6 +35,7 @@ REF = {
     "latvia": (100, 5.0, "sainte_lague", False),
     "md": (101, 5.0, "dhondt", False),
     "netherlands": (150, 0.6667, "dhondt", False),
+    "no": (169, 4.0, "sainte_lague", False),
     "nz": (120, 5.0, "sainte_lague_standard", True),
     "poland": (460, 5.0, "dhondt", False),
     "pt": (230, 0.0, "dhondt", False),
@@ -188,7 +189,8 @@ for c in REF:
             if reserved:
                 rsum = sum(float(x) for x in
                            re.findall(r":\s*([\d.]+)", reserved))
-            if vals and seats and abs(sum(vals) - (seats - rsum)) > 0.5:
+            lv = toplevel(b, "levelingSeats") or 0
+            if vals and seats and abs(sum(vals) - (seats - rsum - lv)) > 0.5:
                 issues.append("seatDistricts sum %.0f != %s" % (sum(vals), seats))
     blocs = find_block(b, "blocs")
     if not blocs:

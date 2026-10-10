@@ -135,14 +135,23 @@ def scrape():
 
     polls, seen = [], set()
     year = None
+    cur_h2 = None
     body = soup.find("div", {"id": "mw-content-text"}) or soup
-    for el in body.find_all(["h3", "table"]):
+    for el in body.find_all(["h2", "h3", "table"]):
+        if el.name == "h2":
+            cur_h2 = el.get_text(" ", strip=True)
+            continue
         if el.name == "h3":
             m = re.match(r"\s*(20\d{2})\s*$", el.get_text(" ", strip=True))
             if m:
                 year = int(m.group(1))
             continue
         if "wikitable" not in (el.get("class") or []):
+            continue
+        # only the voting-intention (proportional vote) tables: decided-voter
+        # shares, the same measure as the vote model (the party-ID tables
+        # carry a ~50% no-party share)
+        if "voting intention" not in (cur_h2 or "").lower():
             continue
         rows = el.find_all("tr")
         if len(rows) < 5 or not year:

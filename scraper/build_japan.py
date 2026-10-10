@@ -301,22 +301,6 @@ def main():
 
     fptp = res["national"]["fptp"]
     prn = res["national"]["pr"]
-    # swing anchor: the party-support baseline at the 2026 election (the
-    # average of the first polls after 8 Feb 2026). The polls measure
-    # support, so the swing must compare support with support, not with the
-    # vote shares - otherwise the ~30pp no-party share reads as an
-    # opposition collapse.
-    polls = json.loads(open(os.path.join(ROOT, "data", "jp", "polls.json"),
-                            encoding="utf8").read())["polls"]
-    early = [p for p in polls if p["date"] <= "2026-02-28"]
-    sums, counts = {}, {}
-    for p in early:
-        for k, v in p["votes"].items():
-            sums[k] = sums.get(k, 0.0) + v
-            counts[k] = counts.get(k, 0) + 1
-    support = {k: round(sums[k] / counts[k], 2) for k in sums}
-    assert len(early) >= 5, early
-    print("support baseline (%d Feb polls): %s" % (len(early), support))
     prD, prG = {}, {}
     for bk, b in res["blocs"].items():
         prD[bk] = b["seats"]
@@ -329,21 +313,19 @@ def main():
       swingMethod: 'geometric',
       // 289 single-member constituencies (Commons 2024 map, data-name
       // labels) projected by plurality from the 2026 top-two baselines
-      // (winner + runner-up shares; no run-off). The swing is anchored on
-      // the party-support baseline at the 2026 election (the Feb 2026 polls'
-      // average), the same measure as the current polls; districtNormalize
-      // rescales the district display so the ~30pp no-party share does not
-      // read as a 50% "other" (the winner is unchanged). The 176 PR seats
-      // are allocated per bloc (D'Hondt, prDistricts) with the same anchor.
-      districtNormalize: true,
+      // (winner + runner-up shares; no run-off). The polls are the voting-
+      // intention (proportional vote) tables - decided-voter shares - so the
+      // swing is anchored on the 2026 national PR result (national2021),
+      // the same measure. The 176 PR seats are allocated per bloc (D'Hondt,
+      // prDistricts) with the same anchor.
       winnerDistricts: {j({k: 1 for k in keys}, ensure_ascii=False)},
       districts: {j({k: k for k in keys}, ensure_ascii=False)},
       names: {j(names, ensure_ascii=False)},
       gebiete: {j(gebiete, ensure_ascii=False)},
-      national2021: {j(support, ensure_ascii=False)},
+      national2021: {j(prn, ensure_ascii=False)},
       prDistricts: {j(prD, ensure_ascii=False)},
       prGebiete: {j(prG, ensure_ascii=False)},
-      prNational2021: {j(support, ensure_ascii=False)},
+      prNational2021: {j(prn, ensure_ascii=False)},
     }},
 """
     cp = os.path.join(ROOT, "js", "config.js")

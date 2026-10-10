@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T19:23:46Z",
+ "generated": "2026-10-10T20:00:26Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -270,16 +270,16 @@
    "seats": 465,
    "seat_based": false,
    "leader": "ldp",
-   "leader_pct": 32.8,
+   "leader_pct": 28.3,
    "leader_code": "LDP",
    "leader_color": "#D7003A",
    "leader_logo": "img/jp/LDP.svg",
-   "second": "sansei",
-   "second_pct": 4.0,
+   "second": "dpfp",
+   "second_pct": 9.2,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 11,
-   "latest_poll": "2026-10-04"
+   "poll_count": 3,
+   "latest_poll": "2026-09-13"
   },
   "bc": {
    "name": "British Columbia",

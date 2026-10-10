@@ -148,7 +148,9 @@ def convert_geometry(force):
         assert dm, num
         rings = []
         for ring in parse_path(dm.group(1)):
-            pts = [(sc * px + tx, sc * py + ty) for px, py in ring]
+            # the Commons SVG is already in SVG coordinates (y down), but
+            # build_map_svg flips y for its Mercator inputs - pre-flip here
+            pts = [(sc * px + tx, -(sc * py + ty)) for px, py in ring]
             if len(pts) >= 3:
                 rings.append(pts)
         assert rings, num

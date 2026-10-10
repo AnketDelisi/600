@@ -1,0 +1,10 @@
+{
+ "country": "kr",
+ "name": "South Korea",
+ "election_date": "2028-04-12",
+ "seats": 300,
+ "threshold": 3.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "National Assembly: 254 single-member constituencies (first-past-the-post) + 46 proportional seats (national list, 3% threshold; the 2024 semi-linked system with satellite lists is approximated as a plain national D'Hondt pool - the 2024 satellites' seats are folded into their parents: Democratic Alliance 14 -> DPK, People Future Party 18 -> PPP). Next election: no later than 12 April 2028. Baseline: the 10 April 2024 election (DPK 175 seats, PPP 108). District baselines: the en-wiki results-by-constituency table (all 254 districts, winner + runner-up shares); geometry: the Commons results map (province groups, data-sortkey + Korean district titles; 254 shapes after dropping the two island-inset duplicates and fixing the Namyangju-B sortkey collision). Polls: party-support tables (DPK/PPP/RKP/RP/PP/NFP/BIP/SDP columns, one table per year; fieldwork dates carry no year, taken from the section headings). Party support is anchored on the 2024 national proportional vote."
+}

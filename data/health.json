@@ -84,6 +84,11 @@
   "poll_count": 7,
   "scraped_at": "2026-10-10T19:56:04Z"
  },
+ "kr": {
+  "latest_date": "2026-09-30",
+  "poll_count": 940,
+  "scraped_at": "2026-10-10T21:38:44Z"
+ },
  "latvia": {
   "latest_date": "2026-10-03",
   "poll_count": 41,

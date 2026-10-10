@@ -700,7 +700,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 const NAV_REGIONS=[
   ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
   ['Americas',['bc','brazil','qc']],
-  ['Middle East & Asia-Pacific',['israel','jp','nz']],
+  ['Middle East & Asia-Pacific',['israel','jp','kr','nz']],
 ];
 const METHOD_SHORT={fptp:'FPTP',dhondt:"D'Hondt",sainte_lague_standard:'Sainte-Lagu\u00eb',sainte_lague:'Sainte-Lagu\u00eb (mod.)',hare_niemeyer:'Hare/Niemeyer',imperiali_hb:'Imperiali'};
 let SUMMARY=null;

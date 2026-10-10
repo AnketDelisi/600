@@ -32,6 +32,7 @@ REF = {
     "hu": (199, 5.0, "dhondt", False),
     "israel": (120, 3.25, None, False),
     "italy": (400, 3.0, None, False),
+    "jp": (465, 0.0, "dhondt", False),
     "latvia": (100, 5.0, "sainte_lague", False),
     "lt": (141, 5.0, "hare_niemeyer", False),
     "md": (101, 5.0, "dhondt", False),
@@ -56,6 +57,7 @@ SEAT_SUM_NOTES = {
     "qc": "2022 chamber 125 -> 2026 map 127 (normalized)",
     "italy": "4 unmodelled seats -> auto Other wedge",
     "lt": "2 unmodelled district winners (independents/PLT) -> auto Other wedge",
+    "jp": "5 unmodelled winners (Genzei-Yukoku 1 + independents 4) -> auto Other wedge",
 }
 
 

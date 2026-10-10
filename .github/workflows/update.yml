@@ -60,6 +60,7 @@ jobs:
           python scraper/scrape_finland.py
           python scraper/scrape_norway.py
           python scraper/scrape_lithuania.py
+          python scraper/scrape_japan.py
 
       # Tag every poll with its fieldwork method from the curated pollster
       # map (online / phone / face / mixed; unknowns stay untagged). The

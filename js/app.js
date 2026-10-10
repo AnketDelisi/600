@@ -2739,11 +2739,15 @@ function svgElementToImg(svg, brightText){
       if(!clone.getAttribute('height')) clone.setAttribute('height',vb.height);
     }
     if(brightText){
-      // the parliament arc's majority labels are muted grey; on the dark
-      // poster they need to be light
+      // the parliament arc's labels and the zoom-inset frames are dark on the
+      // light site; on the dark poster they need to be white
       clone.querySelectorAll('text').forEach(t=>{
-        t.setAttribute('fill','#DDDDDD');
+        t.setAttribute('fill','#FFFFFF');
         if(t.getAttribute('style')) t.removeAttribute('style');
+      });
+      clone.querySelectorAll('rect[stroke="#111827"]').forEach(r=>{
+        r.setAttribute('stroke','#FFFFFF');
+        r.setAttribute('opacity','1');
       });
     }
     const xml=new XMLSerializer().serializeToString(clone);
@@ -2839,7 +2843,7 @@ async function renderPoster(opts){
   const grid=opts.grid||[];
   const logos=await Promise.all(rows.concat(grid).map(r=>loadImg(r.logo)));
   const arcImg=await svgElementToImg(opts.arcSvg,true);
-  const mapImg=await svgElementToImg(opts.mapSvg);
+  const mapImg=await svgElementToImg(opts.mapSvg,true);
 
   const X=40, barW=420;
   // consistent spacing across every country: the box always leaves a 10px

@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-10T15:25:24Z",
+  "scraped_at": "2026-10-10T18:43:14Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -3362,8 +3362,8 @@
     "Idaho": null,
     "Illinois": null,
     "Iowa": {
-      "dem": 51.5,
-      "rep": 42.6,
+      "dem": 51.4,
+      "rep": 42.9,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {

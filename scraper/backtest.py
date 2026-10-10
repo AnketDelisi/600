@@ -296,6 +296,24 @@ CYCLES = {
                       "other": 5},
         },
     },
+    "kr": {
+        2024: {
+            "article": "Opinion_polling_for_the_2024_South_Korean_legislative_election",
+            "election": "2024-04-10", "half_life": 30,
+            "section": "proportional",
+            # the 2024-era proportional-vote polls asked about the satellite
+            # lists (Democratic Alliance / People Future Party); folded to
+            # their parents, the same measure as the model's PR anchor
+            "cols": {"dpk": r"^dak", "ppp": r"^pfp",
+                     "rkp": r"^rkp", "rp": r"^nrp", "nfp": r"^nfp"},
+            "result": {"dpk": 26.70, "ppp": 36.67, "rkp": 24.25,
+                       "rp": 3.62, "nfp": 1.71},
+            # seats with the satellites folded in; pp's Ulsan district seat
+            # is baseline-held (no pp poll column)
+            "seats": {"dpk": 175, "ppp": 108, "rkp": 12, "rp": 3,
+                      "pp": 1, "nfp": 1},
+        },
+    },
 }
 
 

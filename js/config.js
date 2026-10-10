@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = 'b31';
+const LOGO_CACHE = 'b32';
 
 const COUNTRIES = {
 
@@ -7074,7 +7074,7 @@ saxony_anhalt: {
       socdem: { code: 'SOCDEM', name: 'Social Democracy', name_en: 'Social Democracy', color: '#FF5F61', ideology: "Social democracy, Left-wing populism"},
       prisaha: { code: 'Přísaha', name: 'Oath', name_en: 'Oath', color: '#0033FF', ideology: "Populism, Anti-corruption"},
       nc: { code: 'NC', name: 'Our Czechia', name_en: 'Our Czechia', color: '#FD3307', ideology: "Liberal conservatism, Pro-Europeanism"},
-      spolu: { code: 'SPOLU', name: 'SPOLU (ODS, KDU-ČSL, TOP 09)', name_en: 'Spolu (Czech political alliance)', color: '#00A651', pastOnly: true, ideology: "Liberal conservatism, Christian democracy"},
+      spolu: { code: 'SPOLU', name: 'SPOLU (ODS, KDU-ČSL, TOP 09)', name_en: 'Spolu (Czech political alliance)', color: '#37349D', pastOnly: true, ideology: "Liberal conservatism, Christian democracy"},
     },
     // Poll-table column order (the 16 parties with logos) + dissolved SPOLU;
     // Not modelled (no logo; always '–' in polls): Stačilo! folds into 'Other'.
@@ -15334,7 +15334,7 @@ saxony_anhalt: {
       smer:      { code: 'Smer-SD',   name: 'Direction – Social Democracy',   name_en: 'Direction – Social Democracy',   color: '#D82222', ideology: "Social democracy, Left-wing populism, Left-wing nationalism"},
       ps:        { code: 'PS',        name: 'Progressive Slovakia',            name_en: 'Progressive Slovakia',            color: '#00BDFF', ideology: "Social liberalism, Liberalism, Pro-Europeanism"},
       hlas:      { code: 'Hlas-SD',   name: 'Voice – Social Democracy',        name_en: 'Voice – Social Democracy',        color: '#830F38', ideology: "Social democracy, Left-wing populism, Left-wing nationalism"},
-      slovensko: { code: 'Slovensko', name: 'Slovakia (OĽaNO successor)',      name_en: 'Ordinary People and Independent Personalities',      color: '#42B5C2', ideology: "Populism, National conservatism"},
+      slovensko: { code: 'Slovensko', name: 'Slovakia (OĽaNO successor)',      name_en: 'Ordinary People and Independent Personalities',      color: '#B2C933', ideology: "Populism, National conservatism"},
       zl:        { code: 'Za ľudí',   name: 'For the People',                  name_en: 'For the People',                  color: '#FDBB12', ideology: "Liberal conservatism, Pro-Europeanism"},
       ku:        { code: 'KÚ',        name: 'Christian Union',                 name_en: 'Christian Union',                 color: '#04B2E8', ideology: "Christian right, National conservatism, Social conservatism"},
       kdh:       { code: 'KDH',       name: 'Christian Democratic Movement',   name_en: 'Christian Democratic Movement',   color: '#173A70', ideology: "Christian democracy, Social conservatism"},
@@ -28546,6 +28546,68 @@ saxony_anhalt: {
       sfp: 'img/fi/SFP.svg', kd: 'img/fi/KD.svg', liik: 'img/fi/LIIK.svg',
     },
   },
+  no: {
+    name: 'Norway',
+    seats: 169,                   // 150 district seats + 19 leveling seats
+    threshold: 4.0,               // 4% national for the leveling seats
+    method: 'sainte_lague',       // modified Sainte-Lague, first divisor 1.4
+    seatBased: false,
+    constituencies: false,        // the two-tier allocator reads the map's seatDistricts
+    levelingSeats: 19,
+    recencyHalfLifeDays: 14,
+    parties: {
+      ap:  { code: 'Ap',  name: 'Arbeiderpartiet', name_en: 'Labour Party (Norway)', color: '#E11926', ideology: "Social democracy, Pro-Europeanism" },
+      frp: { code: 'FrP', name: 'Fremskrittspartiet', name_en: 'Progress Party (Norway)', color: '#004F80', ideology: "National conservatism, Right-libertarianism, Right-wing populism" },
+      h:   { code: 'H',   name: 'Høyre', name_en: 'Conservative Party (Norway)', color: '#87ADD7', ideology: "Liberal conservatism, Pro-Europeanism" },
+      sv:  { code: 'SV',  name: 'Sosialistisk Venstreparti', name_en: 'Socialist Left Party (Norway)', color: '#B5317C', ideology: "Socialism, Democratic socialism, Eco-socialism" },
+      sp:  { code: 'Sp',  name: 'Senterpartiet', name_en: 'Centre Party (Norway)', color: '#00843D', ideology: "Agrarianism (Nordic), Economic nationalism" },
+      r:   { code: 'R',   name: 'Rødt', name_en: 'Red Party (Norway)', color: '#871212', ideology: "Communism, Anti-capitalism, Socialism, Democratic socialism, Marxism" },
+      mdg: { code: 'MDG', name: 'Miljøpartiet De Grønne', name_en: 'Green Party (Norway)', color: '#6A9325', ideology: "Green politics, Pro-Europeanism" },
+      krf: { code: 'KrF', name: 'Kristelig Folkeparti', name_en: 'Christian Democratic Party (Norway)', color: '#FDED34', ideology: "Christian democracy, Social conservatism" },
+      v:   { code: 'V',   name: 'Venstre', name_en: 'Liberal Party (Norway)', color: '#006666', ideology: "Liberalism (Norwegian), Social liberalism, Green liberalism" },
+    },
+    order: ['r', 'sv', 'mdg', 'ap', 'sp', 'v', 'krf', 'h', 'frp'],
+    parlOrder: ['r', 'sv', 'mdg', 'ap', 'sp', 'v', 'krf', 'h', 'frp'],
+    // the source polling table's own grouping: Red (R, SV, MDG, Ap, Sp) vs
+    // Blue (V, KrF, H, FrP); Ap governs alone since the 2025 election,
+    // supported on budgets by the red-green parties
+    blocs: {
+      bloc1: { name: 'Red–green', short: 'RED', parties: ['r', 'sv', 'mdg', 'ap', 'sp'], color: '#C8102E' },
+      bloc2: { name: 'Blue', short: 'BLU', parties: ['v', 'krf', 'h', 'frp'], color: '#0057B8' },
+    },
+    coalitions: [
+      { name: 'Ap + Sp + SV', parties: ['ap', 'sp', 'sv'] },
+      { name: 'Ap + Sp + SV + R + MDG', parties: ['ap', 'sp', 'sv', 'r', 'mdg'] },
+      { name: 'H + FrP + V + KrF', parties: ['h', 'frp', 'v', 'krf'] },
+      { name: 'H + FrP + V', parties: ['h', 'frp', 'v'] },
+    ],
+    lastElection: {
+      date: '2025-09-08',
+      results: { ap: 28.02, frp: 23.85, h: 14.65, sv: 5.63, sp: 5.59, r: 5.32, mdg: 4.74, krf: 4.20, v: 3.69 },
+      seats:   { ap: 53, frp: 47, h: 24, sv: 9, sp: 9, r: 9, mdg: 8, krf: 7, v: 3 },
+    },
+    map: {
+      svg: 'img/norway.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // the map is the 19 Storting constituencies with their 2025 result;
+      // the two-tier allocator (150 district seats + 19 leveling) reads
+      // seatDistricts below
+      districts: {"akershus": "akershus", "aust_agder": "aust_agder", "buskerud": "buskerud", "finnmark": "finnmark", "hedmark": "hedmark", "hordaland": "hordaland", "more": "more", "nord_trondelag": "nord_trondelag", "nordland": "nordland", "oppland": "oppland", "oslo": "oslo", "ostfold": "ostfold", "rogaland": "rogaland", "sogn": "sogn", "sor_trondelag": "sor_trondelag", "telemark": "telemark", "troms": "troms", "vest_agder": "vest_agder", "vestfold": "vestfold"},
+      names: {"akershus": "Akershus", "aust_agder": "Aust-Agder", "buskerud": "Buskerud", "finnmark": "Finnmark", "hedmark": "Hedmark", "hordaland": "Hordaland", "more": "Møre og Romsdal", "nord_trondelag": "Nord-Trøndelag", "nordland": "Nordland", "oppland": "Oppland", "oslo": "Oslo", "ostfold": "Østfold", "rogaland": "Rogaland", "sogn": "Sogn og Fjordane", "sor_trondelag": "Sør-Trøndelag", "telemark": "Telemark", "troms": "Troms", "vest_agder": "Vest-Agder", "vestfold": "Vestfold"},
+      seatDistricts: {"akershus": 19, "aust_agder": 3, "buskerud": 7, "finnmark": 3, "hedmark": 6, "hordaland": 15, "more": 7, "nord_trondelag": 4, "nordland": 8, "oppland": 5, "oslo": 19, "ostfold": 8, "rogaland": 13, "sogn": 3, "sor_trondelag": 9, "telemark": 5, "troms": 5, "vest_agder": 5, "vestfold": 6},
+      gebiete: {"akershus": {"ap": 27.3, "frp": 23.6, "h": 19.4, "sv": 5.2, "sp": 2.9, "r": 4.2, "mdg": 5.4, "krf": 2.6, "v": 5.4}, "aust_agder": {"ap": 26.9, "frp": 27.8, "h": 13.0, "sv": 3.9, "sp": 5.1, "r": 4.6, "mdg": 3.4, "krf": 8.1, "v": 2.6}, "buskerud": {"ap": 29.4, "frp": 27.6, "h": 15.3, "sv": 4.4, "sp": 5.5, "r": 4.0, "mdg": 3.6, "krf": 2.8, "v": 3.1}, "finnmark": {"ap": 28.1, "frp": 24.5, "h": 5.9, "sv": 5.2, "sp": 5.5, "r": 9.8, "mdg": 2.2, "krf": 2.1, "v": 1.2}, "hedmark": {"ap": 35.0, "frp": 21.1, "h": 9.0, "sv": 4.5, "sp": 13.6, "r": 4.8, "mdg": 2.8, "krf": 2.2, "v": 1.9}, "hordaland": {"ap": 26.7, "frp": 23.8, "h": 16.9, "sv": 5.8, "sp": 4.2, "r": 5.0, "mdg": 4.9, "krf": 5.0, "v": 3.4}, "more": {"ap": 23.6, "frp": 32.3, "h": 12.6, "sv": 3.8, "sp": 7.3, "r": 3.5, "mdg": 3.1, "krf": 6.8, "v": 3.0}, "nord_trondelag": {"ap": 36.3, "frp": 19.5, "h": 9.0, "sv": 4.2, "sp": 14.8, "r": 5.2, "mdg": 2.4, "krf": 2.6, "v": 1.8}, "nordland": {"ap": 30.6, "frp": 25.6, "h": 11.2, "sv": 5.7, "sp": 8.6, "r": 6.6, "mdg": 2.9, "krf": 2.4, "v": 2.0}, "oppland": {"ap": 33.2, "frp": 21.4, "h": 9.2, "sv": 4.5, "sp": 15.8, "r": 4.5, "mdg": 2.9, "krf": 2.2, "v": 2.2}, "oslo": {"ap": 25.7, "frp": 14.3, "h": 18.5, "sv": 10.7, "sp": 0.8, "r": 7.2, "mdg": 10.3, "krf": 2.1, "v": 7.3}, "ostfold": {"ap": 29.8, "frp": 28.7, "h": 12.5, "sv": 4.3, "sp": 4.8, "r": 5.2, "mdg": 3.4, "krf": 3.9, "v": 2.5}, "rogaland": {"ap": 23.7, "frp": 28.7, "h": 15.3, "sv": 3.7, "sp": 5.0, "r": 5.5, "mdg": 2.7, "krf": 8.4, "v": 2.6}, "sogn": {"ap": 30.9, "frp": 20.8, "h": 10.2, "sv": 4.3, "sp": 16.0, "r": 4.0, "mdg": 3.3, "krf": 4.3, "v": 2.9}, "sor_trondelag": {"ap": 32.0, "frp": 19.8, "h": 12.5, "sv": 6.9, "sp": 6.8, "r": 6.0, "mdg": 5.8, "krf": 2.5, "v": 3.7}, "telemark": {"ap": 31.3, "frp": 26.1, "h": 11.0, "sv": 4.1, "sp": 6.2, "r": 5.9, "mdg": 3.3, "krf": 5.0, "v": 2.1}, "troms": {"ap": 29.5, "frp": 25.8, "h": 10.9, "sv": 7.2, "sp": 6.3, "r": 7.4, "mdg": 3.6, "krf": 2.9, "v": 2.0}, "vest_agder": {"ap": 22.8, "frp": 27.7, "h": 13.5, "sv": 3.9, "sp": 4.0, "r": 4.0, "mdg": 3.5, "krf": 13.0, "v": 3.1}, "vestfold": {"ap": 27.5, "frp": 27.6, "h": 16.5, "sv": 4.1, "sp": 3.3, "r": 4.9, "mdg": 4.3, "krf": 4.1, "v": 3.5}},
+      national2021: {"ap": 28.02, "frp": 23.85, "h": 14.65, "sv": 5.63, "sp": 5.59, "r": 5.32, "mdg": 4.74, "krf": 4.2, "v": 3.69},
+    },
+    pollsterMAE: {},
+    maeKey: 'NO2029',
+    logos: {
+      ap: 'img/no/AP.svg', frp: 'img/no/FRP.svg', h: 'img/no/H.svg',
+      sv: 'img/no/SV.svg', sp: 'img/no/SP.svg', r: 'img/no/R.svg',
+      mdg: 'img/no/MDG.svg', krf: 'img/no/KRF.svg', v: 'img/no/V.svg',
+    },
+  },
+
   pt: {
     name: 'Portugal',
     seats: 230,

@@ -3023,15 +3023,11 @@ async function renderPoster(opts){
     });
   }
   if(mapImg){
-    // no overlap between map and arc: the arc always keeps its own band.
-    // Wide maps (Spain/Brazil) are content-heavy top-left, so the band is
-    // tightened and the map takes the full height, with the arc's dots
-    // falling over the empty corner; tall maps (Israel/UK) fill the height,
-    // so they get the wider band instead of an obscured bottom half.
-    const wideMap=(mapImg.width/mapImg.height)>=1.2;
-    const arcW=520, arcH=195, arcBand=arcH+12;
+    // the arc always keeps its own band at the bottom-right (no overlap with
+    // any map shape); the map takes everything above it, centered
+    const arcW=460, arcH=170, arcBand=arcH+12;
     const mx=620, my=140, mw=W-mx-40;
-    const mh=wideMap?(H-my-30):(H-my-30-arcBand);
+    const mh=H-my-30-arcBand;
     const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
     const dw=mapImg.width*sc, dh=mapImg.height*sc;
     ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);

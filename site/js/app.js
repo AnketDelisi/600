@@ -2884,23 +2884,26 @@ async function renderPoster(opts){
     // numbers right-align in one column, deltas left-align in the next, both
     // lines sharing baselines (share+vote delta at 46, seats+seat delta at 74)
     const numX=bx+barW-14-(colW?colW+10:0);
+    // baselines scale with the box height so short boxes (six+ rows) never
+    // push the text against their bottom edge
+    const b1=y+Math.round(th*0.53), b2=y+Math.round(th*0.86);
     ctx.textAlign='right';
     ctx.font='700 36px '+MONO;
     const shareW=ctx.measureText(r.shareText||'').width;
-    ctx.fillText(r.shareText||'',numX,y+46);
+    ctx.fillText(r.shareText||'',numX,b1);
     if(r.seatsText){
       ctx.font='700 22px '+MONO;
-      ctx.fillText(r.seatsText,numX,y+74);
+      ctx.fillText(r.seatsText,numX,b2);
     }
     if(r.dvText||r.dsText){
       ctx.textAlign='left';
       if(r.dvText){
         ctx.font='700 16px '+MONO;
-        ctx.fillText(r.dvText,bx+barW-14-colW,y+46);
+        ctx.fillText(r.dvText,bx+barW-14-colW,b1);
       }
       if(r.dsText){
         ctx.font='700 14px '+MONO;
-        ctx.fillText(r.dsText,bx+barW-14-colW,y+74);
+        ctx.fillText(r.dsText,bx+barW-14-colW,b2);
       }
     }
     ctx.textAlign='left';
@@ -2912,13 +2915,13 @@ async function renderPoster(opts){
       nsize-=2;
       ctx.font='700 '+nsize+'px '+FONT;
     }
-    ctx.fillText(nameTxt,bx+14,y+46);
+    ctx.fillText(nameTxt,bx+14,b1);
     // ideology: the best-fitting item at a fixed size, word-boundary
     // ellipsised when long; baseline shared with the seats
     if(r.ideology){
       ctx.font='700 13px '+FONT;
       ctx.fillText(ellipsizeText(pickIdeology(r.ideology),nameAvail,ctx),
-        bx+14,y+74);
+        bx+14,b2);
     }
     if(r.firstText){
       const fx=bx+barW+8, fw=92;
@@ -2927,9 +2930,10 @@ async function renderPoster(opts){
       ctx.fillStyle=tc;
       ctx.textAlign='center';
       ctx.font='700 9px '+FONT;
-      ctx.fillText(t('CHANCE OF FIRST','B\u0130R\u0130NC\u0130 OLMA'),fx+fw/2,y+28);
+      ctx.fillText(t('CHANCE OF FIRST','B\u0130R\u0130NC\u0130 OLMA'),fx+fw/2,
+        y+Math.round(th*0.33));
       ctx.font='900 26px '+MONO;
-      ctx.fillText(r.firstText,fx+fw/2,y+64);
+      ctx.fillText(r.firstText,fx+fw/2,y+Math.round(th*0.74));
       ctx.textAlign='left';
     }
     y+=RH;
@@ -3019,34 +3023,23 @@ async function renderPoster(opts){
     });
   }
   if(mapImg){
-    // wide maps (Spain, Brazil) leave an empty corner, so the arc overlays
-    // it on a dark backing like the reference layout; tall maps (Israel, UK)
-    // fill the height, so the arc keeps its own band below instead
+    // no overlap between map and arc: the arc always keeps its own band.
+    // Wide maps (Spain/Brazil) are content-heavy top-left, so the band is
+    // tightened and the map takes the full height, with the arc's dots
+    // falling over the empty corner; tall maps (Israel/UK) fill the height,
+    // so they get the wider band instead of an obscured bottom half.
     const wideMap=(mapImg.width/mapImg.height)>=1.2;
+    const arcW=520, arcH=195, arcBand=arcH+12;
     const mx=620, my=140, mw=W-mx-40;
-    const mh=wideMap?(H-my-30):(H-my-30-220);
+    const mh=wideMap?(H-my-30):(H-my-30-arcBand);
     const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
     const dw=mapImg.width*sc, dh=mapImg.height*sc;
     ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);
     if(arcImg){
-      const ax=W-40-560, ay=H-30-210, aw=560, ah=210;
-      if(wideMap){
-        ctx.save();
-        ctx.fillStyle='rgba(17,17,17,0.78)';
-        const r=18;
-        ctx.beginPath();
-        ctx.moveTo(ax+r,ay);
-        ctx.arcTo(ax+aw,ay,ax+aw,ay+ah,r);
-        ctx.arcTo(ax+aw,ay+ah,ax,ay+ah,r);
-        ctx.arcTo(ax,ay+ah,ax,ay,r);
-        ctx.arcTo(ax,ay,ax+aw,ay,r);
-        ctx.closePath();
-        ctx.fill();
-        ctx.restore();
-      }
-      const s2=Math.min(aw/arcImg.width, ah/arcImg.height);
-      ctx.drawImage(arcImg,ax+(aw-arcImg.width*s2)/2,
-        ay+(ah-arcImg.height*s2)/2,arcImg.width*s2,arcImg.height*s2);
+      const ax=W-40-arcW, ay=H-30-arcH;
+      const s2=Math.min(arcW/arcImg.width, arcH/arcImg.height);
+      ctx.drawImage(arcImg,ax+(arcW-arcImg.width*s2)/2,
+        ay+(arcH-arcImg.height*s2)/2,arcImg.width*s2,arcImg.height*s2);
     }
   }else if(arcImg){
     // no map for this country: the arc takes the whole right side, larger

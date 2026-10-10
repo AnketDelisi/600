@@ -301,14 +301,16 @@ def main():
       swingMethod: 'geometric',
       // 289 single-member constituencies (Commons 2024 map, data-name
       // labels) projected by plurality from the 2026 top-two baselines
-      // (winner + runner-up shares; no run-off). The 176 PR seats are
-      // allocated per bloc (D'Hondt, prDistricts) with a uniform swing from
-      // the national PR baseline (prNational2021).
+      // (winner + runner-up shares; no run-off). The district swing is
+      // anchored on the national PR baseline (national2021), the same
+      // measure as the party-support polls; the 176 PR seats are allocated
+      // per bloc (D'Hondt, prDistricts) with a uniform swing from the same
+      // baseline (prNational2021).
       winnerDistricts: {j({k: 1 for k in keys}, ensure_ascii=False)},
       districts: {j({k: k for k in keys}, ensure_ascii=False)},
       names: {j(names, ensure_ascii=False)},
       gebiete: {j(gebiete, ensure_ascii=False)},
-      national2021: {j(fptp, ensure_ascii=False)},
+      national2021: {j(prn, ensure_ascii=False)},
       prDistricts: {j(prD, ensure_ascii=False)},
       prGebiete: {j(prG, ensure_ascii=False)},
       prNational2021: {j(prn, ensure_ascii=False)},

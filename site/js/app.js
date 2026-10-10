@@ -4,6 +4,15 @@
 
 /* ---------- helpers ---------- */
 const $=s=>document.getElementById(s);
+// this file's own cache-busting token (?v= on the script tag), reused for
+// map svg fetches so a rebuilt map is not served from the browser cache
+const ASSET_V=(function(){
+  try{
+    const s=document.querySelector('script[src*="app.js"]');
+    const m=s&&s.src.match(/[?&]v=([^&]+)/);
+    return m?m[1]:'0';
+  }catch(e){return '0'}
+})();
 // Base path for data/ assets:
 //   /600/               -> ''          (Pages root)
 //   /600/site/          -> '../'       (local dev under site/)
@@ -2462,7 +2471,9 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   if(!conf) return;
   if(!MAP_CACHE[conf.svg]){
     try{
-      const resp=await fetch(dataBase()+conf.svg);
+      // bust the browser/CDN cache with the app's own build token, so a
+      // rebuilt map svg reaches browsers on the next release
+      const resp=await fetch(dataBase()+conf.svg+'?v='+ASSET_V);
       if(!resp.ok) throw new Error('HTTP '+resp.status);
       MAP_CACHE[conf.svg]=await resp.text();
     }catch(e){

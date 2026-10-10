@@ -2776,13 +2776,14 @@ function ellipsizeText(txt, maxW, ctx){
 const IDEO_PRIORITY=[
   'social democracy','democratic socialism','socialism','communism',
   'social liberalism','liberalism','libertarianism','conservatism',
-  'christian democracy','national conservatism','social conservatism',
-  'liberal conservatism','fiscal conservatism','right-wing populism',
-  'left-wing populism','populism','nationalism','regionalism',
-  'sovereigntism','federalism','green politics','environmentalism',
-  'agrarianism','centrism','progressivism','social market economy',
-  'civic nationalism','economic liberalism','secularism','zionism',
-  'islamism','religious conservatism','religious zionism'
+  'christian democracy','christian right','national conservatism',
+  'social conservatism','liberal conservatism','fiscal conservatism',
+  'right-wing populism','left-wing populism','populism','nationalism',
+  'independence','regionalism','sovereigntism','federalism',
+  'green politics','environmentalism','agrarianism','centrism',
+  'progressivism','social market economy','civic nationalism',
+  'economic liberalism','secularism','zionism','islamism',
+  'religious conservatism','religious zionism'
 ];
 function pickIdeology(str){
   const items=String(str||'').split(',').map(s=>s.trim()).filter(Boolean);
@@ -2794,14 +2795,13 @@ function pickIdeology(str){
     return t||s;
   });
   const low=clean.map(s=>s.toLowerCase());
-  for(const term of IDEO_PRIORITY){
-    for(let i=0;i<low.length;i++){
-      if(low[i]===term) return clean[i];
-    }
-  }
-  for(const term of IDEO_PRIORITY){
-    for(let i=0;i<low.length;i++){
-      if(low[i].includes(term)) return clean[i];
+  // infoboxes list the party's primary ideology first, so scan the party's
+  // own items in order and only use the priority list to skip niche
+  // descriptors (Kahanism, Ashkenazi, Factions:) - scanning the priority
+  // first wrongly gave ACT "Conservatism" over "Classical liberalism"
+  for(let i=0;i<low.length;i++){
+    for(const term of IDEO_PRIORITY){
+      if(low[i]===term||low[i].includes(term)) return clean[i];
     }
   }
   return clean[0];

@@ -1426,7 +1426,7 @@ saxony_anhalt: {
       kshlp: { code: 'KShLP', name: 'Koalicija Albanaca Preševske doline', name_en: 'Albanian Coalition of Preševo Valley', color: '#0081CC', ideology: "Regionalism, Albanian minority interests"},
       // SPN (Serbia Against Violence, 2023) — dissolved coalition. Shown in
       // past-result sections only; `pastOnly` keeps it out of the forecast.
-      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#F22C27', pastOnly: true, ideology: "Big tent, Pro-Europeanism, Anti-corruption"},
+      spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#F22C27', pastOnly: true, ideology: "Pro-Europeanism, Big tent, Anti-corruption"},
     },
     order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'srs', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
     parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
@@ -22952,7 +22952,7 @@ saxony_anhalt: {
       fl:     { code: 'FL',      name: 'Voice of Reason',                  name_en: 'Voice of Reason',                  color: '#020C6A', ideology: "Ultranationalism, Ultraconservatism, Euroscepticism"},
       na:     { code: 'NA',      name: 'New Left',                         name_en: 'New Left',                         color: '#E11B22', ideology: "Democratic socialism"},
       dpk:    { code: 'DPK',     name: 'Movement for Democracy',           name_en: 'Movement for Democracy',           color: '#531BA0', ideology: "Pan-Europeanism, Post-capitalism, Progressivism"},
-      elpida: { code: 'ELPIDA',  name: 'Hope for Democracy',               name_en: 'Hope for Democracy',               color: '#E0B959', ideology: "Justice reform, Anti-corruption, Social justice"},
+      elpida: { code: 'ELPIDA',  name: 'Hope for Democracy',               name_en: 'Hope for Democracy',               color: '#E0B959', ideology: "Centrism, Anti-corruption, Social justice"},
       elas:   { code: 'ELAS',    name: 'Greek Left Alliance',              name_en: 'Greek Left Alliance',              color: '#A40044', ideology: "Social democracy, Progressivism"},
     },
     order: ['nd', 'syriza', 'pasok', 'kke', 'sp', 'el', 'niki', 'pe', 'm25', 'fl', 'na', 'dpk', 'elpida', 'elas'],
@@ -28563,7 +28563,7 @@ saxony_anhalt: {
       cdu:   { code: 'CDU',   name: 'CDU (PCP-PEV)', name_en: 'Unitary Democratic Coalition', color: '#FF0000', ideology: "Communism, Eco-socialism, Social conservatism"},
       be:    { code: 'BE',    name: 'Bloco de Esquerda', name_en: 'Left Bloc', color: '#8B0000', ideology: "Democratic socialism, Left-wing populism, Anti-capitalism"},
       pan:   { code: 'PAN',   name: 'Pessoas–Animais–Natureza', name_en: 'People Animals Nature', color: '#008080', ideology: "Environmentalism, Animal rights, Ecofeminism"},
-      jpp:   { code: 'JPP',   name: 'Juntos Pelo Povo', name_en: 'Together for the People', color: '#00A28B', ideology: "Madeiran, regionalism, Social liberalism"},
+      jpp:   { code: 'JPP',   name: 'Juntos Pelo Povo', name_en: 'Together for the People', color: '#00A28B', ideology: "Regionalism, Social liberalism"},
     },
     order: ['ad', 'ps', 'ch', 'il', 'livre', 'cdu', 'be', 'pan', 'jpp'],
     parlOrder: ['cdu', 'be', 'livre', 'pan', 'jpp', 'ps', 'ad', 'il', 'ch'],

@@ -1,0 +1,10 @@
+{
+ "country": "lt",
+ "name": "Lithuania",
+ "election_date": "2028-10-08",
+ "seats": 141,
+ "threshold": 5.0,
+ "method": "hare_niemeyer",
+ "constituencies": false,
+ "notes": "Seimas: 71 single-member constituencies (two-round majority) + 70 national PR seats (Hare/Niemeyer largest remainder, 5% threshold; 7% for coalitions). The PR tier reproduces the 2024 result exactly (LSDP 18 / TS-LKD 17 / NA 14 / DSVL 8 / LS 7 / LVZS 6). District winners are projected by first-round plurality from the 2024 round-1 baselines; the real run-off is not modelled - round-1 leaders won only 21 of 36 run-offs in 2024 (tactical voting against the long-governing TS-LKD), so the district tier is a documented approximation. 39 constituencies carry real lt.wikipedia round-1 shares; the other 32 (and the geometry-less Worldwide seat) carry a synthesized baseline with per-party winner premiums calibrated on the real districts (31/32 keep their 2024 winner). Geometry: Wikimedia Commons map of the 2024 constituencies. Next election: 8 October 2028."
+}

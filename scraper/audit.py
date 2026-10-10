@@ -33,6 +33,7 @@ REF = {
     "israel": (120, 3.25, None, False),
     "italy": (400, 3.0, None, False),
     "latvia": (100, 5.0, "sainte_lague", False),
+    "lt": (141, 5.0, "hare_niemeyer", False),
     "md": (101, 5.0, "dhondt", False),
     "netherlands": (150, 0.6667, "dhondt", False),
     "no": (169, 4.0, "sainte_lague", False),
@@ -54,6 +55,7 @@ SEAT_SUM_NOTES = {
     "nz": "overhang: 122 actual vs 120 base",
     "qc": "2022 chamber 125 -> 2026 map 127 (normalized)",
     "italy": "4 unmodelled seats -> auto Other wedge",
+    "lt": "2 unmodelled district winners (independents/PLT) -> auto Other wedge",
 }
 
 

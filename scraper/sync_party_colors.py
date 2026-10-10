@@ -35,6 +35,7 @@ COUNTRY_NAMES = {
     "md": "Moldova",
     "ro": "Romania",
     "no": "Norway",
+    "lt": "Lithuania",
 }
 ALIASES = {
     # Portugal

@@ -1,0 +1,881 @@
+{
+ "country": "lt",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+ "scraped_at": "2026-10-10T14:04:26Z",
+ "poll_count": 46,
+ "polls": [
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2024-11-12",
+   "n": 1019,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 18.8,
+    "tslkd": 13.4,
+    "na": 20.3,
+    "dsvl": 14.1,
+    "ls": 6.9,
+    "lvzs": 10.2,
+    "lp": 3.0,
+    "llrakss": 2.7,
+    "ns": 1.1,
+    "dp": 3.4,
+    "lrp": 2.4,
+    "lzp": 1.5,
+    "tts": 0.3,
+    "cds": 1.9
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2024-11-16",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 24.3,
+    "tslkd": 11.8,
+    "na": 20.7,
+    "dsvl": 10.8,
+    "ls": 13.5,
+    "lvzs": 9.6,
+    "llrakss": 2.2,
+    "ns": 3.1,
+    "cds": 1.9
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2024-12-01",
+   "n": 1018,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 22.9,
+    "tslkd": 13.7,
+    "na": 17.1,
+    "dsvl": 14.8,
+    "ls": 4.8,
+    "lvzs": 8.5,
+    "lp": 2.1,
+    "llrakss": 3.5,
+    "ns": 1.0,
+    "dp": 3.3,
+    "lrp": 3.4,
+    "lzp": 1.2,
+    "tts": 0.3,
+    "cds": 2.9
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2024-12-20",
+   "n": 1016,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 18.4,
+    "tslkd": 17.3,
+    "na": 17.9,
+    "dsvl": 11.1,
+    "ls": 11.5,
+    "lvzs": 9.2,
+    "lp": 3.3
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-01-29",
+   "n": 1009,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 16.3,
+    "tslkd": 15.9,
+    "na": 13.0,
+    "dsvl": 12.3,
+    "ls": 11.8,
+    "lvzs": 9.1,
+    "lp": 4.2,
+    "ns": 3.3
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-02-08",
+   "n": 1019,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 22.6,
+    "tslkd": 11.7,
+    "na": 17.4,
+    "dsvl": 17.9,
+    "ls": 5.4,
+    "lvzs": 10.6,
+    "lp": 2.1,
+    "llrakss": 2.0,
+    "ns": 1.4,
+    "dp": 4.4,
+    "lrp": 2.1,
+    "lzp": 1.8,
+    "cds": 2.0
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-02-23",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 22.1,
+    "tslkd": 14.4,
+    "na": 21.7,
+    "dsvl": 16.2,
+    "ls": 9.0,
+    "lvzs": 11.4
+   }
+  },
+  {
+   "pollster": "Norstat LT",
+   "date": "2025-02-28",
+   "n": 1500,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 15.6,
+    "tslkd": 27.1,
+    "na": 12.7,
+    "dsvl": 10.6,
+    "ls": 11.2,
+    "lvzs": 5.9,
+    "lp": 5.9
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-03-24",
+   "n": 1020,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 22.0,
+    "tslkd": 15.3,
+    "na": 13.2,
+    "dsvl": 15.0,
+    "ls": 7.3,
+    "lvzs": 8.3,
+    "lp": 2.2,
+    "llrakss": 3.0,
+    "dp": 4.8,
+    "lrp": 2.1,
+    "cds": 2.7
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-03-28",
+   "n": 1012,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 18.7,
+    "tslkd": 18.4,
+    "na": 10.4,
+    "dsvl": 11.3,
+    "ls": 9.8,
+    "lvzs": 10.3,
+    "lp": 5.3,
+    "ns": 3.2
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-04-19",
+   "n": 1015,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 20.0,
+    "tslkd": 13.8,
+    "na": 13.8,
+    "dsvl": 16.6,
+    "ls": 6.9,
+    "lvzs": 12.1,
+    "lp": 2.6,
+    "llrakss": 4.4,
+    "ns": 1.4,
+    "dp": 4.5,
+    "lrp": 3.2
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-04-28",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 24.7,
+    "tslkd": 17.7,
+    "na": 18.7,
+    "dsvl": 16.1,
+    "ls": 8.1,
+    "lvzs": 10.1
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-04-29",
+   "n": 1019,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 20.7,
+    "tslkd": 18.1,
+    "na": 9.3,
+    "dsvl": 13.3,
+    "ls": 8.9,
+    "lvzs": 10.0,
+    "lp": 3.9,
+    "llrakss": 2.9
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-05-12",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 25.3,
+    "tslkd": 16.4,
+    "na": 12.9,
+    "dsvl": 20.0,
+    "ls": 11.0,
+    "lvzs": 10.5
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-05-18",
+   "n": 1015,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 19.6,
+    "tslkd": 18.1,
+    "na": 8.0,
+    "dsvl": 10.8,
+    "ls": 9.1,
+    "lvzs": 7.8,
+    "lp": 2.8,
+    "llrakss": 3.0
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-06-22",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 23.8,
+    "tslkd": 17.0,
+    "na": 15.1,
+    "dsvl": 17.1,
+    "ls": 11.7,
+    "lvzs": 12.1
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-06-29",
+   "n": 1019,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.0,
+    "tslkd": 17.7,
+    "na": 7.3,
+    "dsvl": 10.8,
+    "ls": 13.8,
+    "lvzs": 7.9,
+    "lp": 5.6,
+    "llrakss": 4.7
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-07-25",
+   "n": 1009,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 15.5,
+    "tslkd": 19.7,
+    "na": 5.2,
+    "dsvl": 14.1,
+    "ls": 10.5,
+    "lvzs": 9.3,
+    "lp": 6.2,
+    "llrakss": 3.8
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-09-02",
+   "n": 1006,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 21.9,
+    "tslkd": 15.3,
+    "na": 11.7,
+    "dsvl": 12.2,
+    "ls": 9.5,
+    "lvzs": 12.8,
+    "lp": 4.5,
+    "llrakss": 4.0,
+    "ns": 1.0,
+    "dp": 3.7,
+    "lrp": 2.9
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-09-13",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 24.3,
+    "tslkd": 20.7,
+    "na": 17.6,
+    "dsvl": 13.7,
+    "ls": 8.7,
+    "lvzs": 11.6
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-09-27",
+   "n": 1017,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 15.7,
+    "tslkd": 21.7,
+    "na": 12.7,
+    "dsvl": 10.6,
+    "ls": 9.7,
+    "lvzs": 10.3,
+    "lp": 5.3,
+    "llrakss": 2.9,
+    "ns": 3.1
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-10-09",
+   "n": 1004,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 20.0,
+    "tslkd": 18.6,
+    "na": 12.3,
+    "dsvl": 14.4,
+    "ls": 7.6,
+    "lvzs": 12.7,
+    "lp": 2.8,
+    "llrakss": 3.6,
+    "dp": 3.3
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-10-27",
+   "n": 1015,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 19.1,
+    "tslkd": 22.0,
+    "na": 8.5,
+    "dsvl": 13.5,
+    "ls": 8.5,
+    "lvzs": 9.7,
+    "lp": 6.0,
+    "ns": 3.1
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-10-28",
+   "n": 1019,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 16.2,
+    "tslkd": 15.2,
+    "na": 11.6,
+    "dsvl": 14.4,
+    "ls": 9.6,
+    "lvzs": 14.4,
+    "lp": 3.2,
+    "llrakss": 4.2,
+    "dp": 4.3
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-11-16",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 20.1,
+    "tslkd": 22.9,
+    "na": 16.7,
+    "dsvl": 15.6,
+    "ls": 8.9,
+    "lvzs": 12.4
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-11-28",
+   "n": 1015,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 14.3,
+    "tslkd": 21.7,
+    "na": 8.6,
+    "dsvl": 13.0,
+    "ls": 9.0,
+    "lvzs": 11.1,
+    "lp": 6.3,
+    "ns": 4.0
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-11-29",
+   "n": 1019,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 16.9,
+    "tslkd": 16.7,
+    "na": 12.1,
+    "dsvl": 15.8,
+    "ls": 7.7,
+    "lvzs": 13.6,
+    "lp": 3.4,
+    "llrakss": 4.4,
+    "dp": 4.2
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2025-12-22",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 13.8,
+    "tslkd": 24.6,
+    "na": 9.2,
+    "dsvl": 9.5,
+    "ls": 10.9,
+    "lvzs": 9.2,
+    "lp": 7.4,
+    "ns": 3.7,
+    "dp": 1.6
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2025-12-29",
+   "n": 1015,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.8,
+    "tslkd": 14.9,
+    "na": 14.2,
+    "dsvl": 17.7,
+    "ls": 7.8,
+    "lvzs": 13.5,
+    "lp": 2.7,
+    "llrakss": 4.3,
+    "dp": 2.7
+   }
+  },
+  {
+   "pollster": "Vilmorus",
+   "date": "2025-12-30",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 19.1,
+    "tslkd": 21.6,
+    "na": 16.8,
+    "dsvl": 13.7,
+    "ls": 11.1,
+    "lvzs": 12.1
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-01-24",
+   "n": 1063,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.7,
+    "tslkd": 16.4,
+    "na": 13.5,
+    "dsvl": 14.0,
+    "ls": 9.4,
+    "lvzs": 14.6,
+    "lp": 2.8,
+    "llrakss": 3.1,
+    "dp": 3.7
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-01-29",
+   "n": 1017,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 11.2,
+    "tslkd": 20.4,
+    "na": 11.5,
+    "dsvl": 10.9,
+    "ls": 11.2,
+    "lvzs": 11.6,
+    "lp": 6.6,
+    "ns": 3.2,
+    "dp": 3.3
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-02-28",
+   "n": 1015,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 11.4,
+    "tslkd": 21.9,
+    "na": 11.6,
+    "dsvl": 6.8,
+    "ls": 13.3,
+    "lvzs": 9.6,
+    "lp": 4.0,
+    "ns": 5.1
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-03-02",
+   "n": 1014,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.7,
+    "tslkd": 15.9,
+    "na": 13.1,
+    "dsvl": 12.2,
+    "ls": 8.3,
+    "lvzs": 13.2,
+    "lp": 3.2,
+    "llrakss": 4.1,
+    "dp": 5.3
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-03-28",
+   "n": 1013,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 13.6,
+    "tslkd": 23.3,
+    "na": 9.1,
+    "dsvl": 7.4,
+    "ls": 13.6,
+    "lvzs": 8.5,
+    "lp": 5.4,
+    "ns": 4.8
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-03-30",
+   "n": 1009,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.4,
+    "tslkd": 18.3,
+    "na": 12.6,
+    "dsvl": 12.3,
+    "ls": 7.8,
+    "lvzs": 12.8,
+    "lp": 2.7,
+    "llrakss": 3.7,
+    "ns": 3.9,
+    "dp": 4.9,
+    "lrp": 2.6
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-04-28",
+   "n": 1021,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 11.9,
+    "tslkd": 24.8,
+    "na": 10.3,
+    "dsvl": 5.2,
+    "ls": 12.1,
+    "lvzs": 13.3,
+    "lp": 3.4,
+    "ns": 5.6
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-05-07",
+   "n": 1000,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 18.1,
+    "tslkd": 16.7,
+    "na": 16.5,
+    "dsvl": 5.1,
+    "ls": 11.4,
+    "lvzs": 14.3,
+    "lp": 2.9,
+    "llrakss": 2.9,
+    "ns": 2.8,
+    "dp": 5.0,
+    "lrp": 3.1,
+    "tts": 1.2
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-05-30",
+   "n": 1022,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 13.3,
+    "tslkd": 23.2,
+    "na": 9.4,
+    "dsvl": 2.9,
+    "ls": 11.3,
+    "lvzs": 8.5,
+    "lp": 4.4,
+    "ns": 5.8
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-05-31",
+   "n": 1011,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.9,
+    "tslkd": 16.9,
+    "na": 12.4,
+    "dsvl": 5.2,
+    "ls": 10.4,
+    "lvzs": 14.4,
+    "lp": 4.1,
+    "llrakss": 4.0,
+    "ns": 2.3,
+    "dp": 6.6,
+    "lrp": 3.0,
+    "tts": 2.5
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-06-28",
+   "n": 1022,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 16.9,
+    "tslkd": 24.4,
+    "na": 8.4,
+    "dsvl": 5.0,
+    "ls": 12.6,
+    "lvzs": 8.1,
+    "lp": 3.3,
+    "ns": 5.6
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-06-30",
+   "n": 1010,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 16.1,
+    "tslkd": 16.7,
+    "na": 14.0,
+    "dsvl": 8.0,
+    "ls": 9.2,
+    "lvzs": 13.6,
+    "lp": 3.7,
+    "llrakss": 2.9,
+    "ns": 5.3,
+    "dp": 5.7,
+    "lrp": 2.7,
+    "tts": 1.9
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-07-28",
+   "n": 1022,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 14.3,
+    "tslkd": 22.9,
+    "na": 12.0,
+    "dsvl": 6.5,
+    "ls": 11.5,
+    "lvzs": 7.9,
+    "lp": 5.2,
+    "ns": 6.1
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-07-31",
+   "n": 1002,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 15.2,
+    "tslkd": 19.3,
+    "na": 15.3,
+    "dsvl": 7.2,
+    "ls": 10.3,
+    "lvzs": 11.6,
+    "lp": 3.4,
+    "llrakss": 3.7,
+    "ns": 3.6,
+    "dp": 4.7,
+    "lrp": 2.1,
+    "tts": 2.2,
+    "lv": 1.4
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-08-31",
+   "n": 1002,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 17.0,
+    "tslkd": 17.4,
+    "na": 12.4,
+    "dsvl": 7.3,
+    "ls": 9.0,
+    "lvzs": 14.3,
+    "lp": 3.0,
+    "llrakss": 4.1,
+    "ns": 7.2,
+    "dp": 4.1,
+    "lrp": 2.2,
+    "tts": 1.9
+   }
+  },
+  {
+   "pollster": "Spinter tyrimai",
+   "date": "2026-09-26",
+   "n": 1020,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 13.4,
+    "tslkd": 24.5,
+    "na": 12.7,
+    "dsvl": 5.0,
+    "ls": 11.6,
+    "lvzs": 10.5,
+    "lp": 3.5,
+    "ns": 6.1
+   }
+  }
+ ]
+}

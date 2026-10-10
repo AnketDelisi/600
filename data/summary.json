@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T13:38:32Z",
+ "generated": "2026-10-10T15:04:03Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -340,6 +340,26 @@
    "last_winner_color": "#034A3F",
    "poll_count": 2,
    "latest_poll": "2026-10-02"
+  },
+  "lt": {
+   "name": "Lithuania",
+   "election_date": "2028-10-08",
+   "election_date_runoff": null,
+   "last_election": "2024-10-13",
+   "last_winner": null,
+   "seats": 141,
+   "seat_based": false,
+   "leader": "tslkd",
+   "leader_pct": 24.5,
+   "leader_code": "TS-LKD",
+   "leader_color": "#3359A3",
+   "leader_logo": "img/lt/TSLKD.svg",
+   "second": "lsdp",
+   "second_pct": 13.4,
+   "last_winner_code": null,
+   "last_winner_color": null,
+   "poll_count": 1,
+   "latest_poll": "2026-09-26"
   },
   "md": {
    "name": "Moldova",

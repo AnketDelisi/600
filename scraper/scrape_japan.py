@@ -35,6 +35,7 @@ TITLE_MAP = {
     "liberal democratic party (japan)": "ldp",
     "centrist reform alliance": "cra",
     "centrist reform party": "cra",   # the alliance became a party in 2026
+    "democratic reform party (japan, 2026)": "cra",  # ... renamed DRP, Sep 2026
     "japan innovation party": "ishin",
     "democratic party for the people": "dpfp",
     "sanseit\u014d": "sansei",

@@ -2131,6 +2131,21 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
       shiftBlocs(districtNoise[String(nr)]||0);
     }
   }
+  // Japan: the party-support polls carry a large no-party share, so the
+  // projected modelled sum would leave a ~50% "other" in every district.
+  // With districtNormalize both the past and projected shares are scaled by
+  // the same factor so the modelled sum matches the district's historical
+  // sum (the no-party/undecided are assumed to break proportionally; the
+  // projected winner and the displayed deltas are unchanged in direction).
+  // Result mode keeps the exact historical shares.
+  if(conf.districtNormalize&&!resultMode){
+    let sp=0,sn=0;
+    for(const p of PARTY_ORDER){if(out[p]){sp+=out[p].past;sn+=out[p].now;}}
+    if(sp>0&&sn>0){
+      const k=sp/sn;
+      for(const p of PARTY_ORDER){if(out[p]){out[p].past*=k;out[p].now*=k;}}
+    }
+  }
   return out;
 }
 
@@ -3029,13 +3044,28 @@ async function renderPoster(opts){
           bx+7,gy+Math.round(gh*0.8));
       }
       ctx.textAlign='right';
+      // share + vote delta in separate columns (the delta at the big rows'
+      // smaller ratio), so small boxes never overlap
+      const gR=bx+bw-7;
+      let dvW=0;
+      if(r.dvText){
+        const dvS=Math.max(8,Math.round(shareS*0.44));
+        ctx.font='700 '+dvS+'px '+MONO;
+        dvW=ctx.measureText(r.dvText).width+5;
+        ctx.fillText(r.dvText,gR,gy+Math.round(gh*0.42));
+      }
       ctx.font='700 '+shareS+'px '+MONO;
-      ctx.fillText((r.shareText||'')+(r.dvText?'  '+r.dvText:''),
-        bx+bw-7,gy+Math.round(gh*0.42));
+      ctx.fillText(r.shareText||'',gR-dvW,gy+Math.round(gh*0.42));
       if(r.seatsText||r.dsText){
+        let dsW=0;
+        if(r.dsText){
+          const dsS=Math.max(7,Math.round(seatS*0.64));
+          ctx.font='700 '+dsS+'px '+MONO;
+          dsW=ctx.measureText(r.dsText).width+5;
+          ctx.fillText(r.dsText,gR,gy+Math.round(gh*0.8));
+        }
         ctx.font='700 '+seatS+'px '+MONO;
-        ctx.fillText((r.seatsText||'')+(r.dsText?'  '+r.dsText:''),
-          bx+bw-7,gy+Math.round(gh*0.8));
+        ctx.fillText(r.seatsText||'',gR-dsW,gy+Math.round(gh*0.8));
       }
       ctx.textAlign='left';
     });

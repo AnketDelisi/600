@@ -16698,141 +16698,141 @@ saxony_anhalt: {
     },
     parties: {
       arthaud: {
-        code: "LO",
+        code: "Arthaud",
         name: "Nathalie Arthaud",
         name_en: "Nathalie Arthaud",
-        color: "#D52121"
+        color: "#AA0000"
 , ideology: "Trotskyism, Communism"},
       melenchon: {
-        code: "LFI",
+        code: "Mélenchon",
         name: "Jean-Luc Mélenchon",
         name_en: "Jean-Luc Mélenchon",
-        color: "#7A1FA2"
+        color: "#56277E"
 , ideology: "Left-wing populism, Democratic socialism"},
       roussel: {
-        code: "PCF",
+        code: "Roussel",
         name: "Fabien Roussel",
         name_en: "Fabien Roussel",
-        color: "#CC2E2E"
+        color: "#E4002A"
 , ideology: "Communism"},
       ruffin: {
-        code: "PD",
+        code: "Ruffin",
         name: "François Ruffin",
         name_en: "François Ruffin",
-        color: "#00A650"
+        color: "#F13C46"
 , ideology: "Left-wing populism, Social democracy"},
       tondelier: {
-        code: "EÉLV",
+        code: "Tondelier",
         name: "Marine Tondelier",
         name_en: "Marine Tondelier",
-        color: "#3E9B2F"
+        color: "#79b41d"
 , ideology: "Green politics"},
       faure: {
-        code: "PS",
+        code: "Faure",
         name: "Olivier Faure",
         name_en: "Olivier Faure",
-        color: "#E6007E"
+        color: "#E3265B"
 , ideology: "Social democracy"},
       hollande: {
-        code: "PS",
+        code: "Hollande",
         name: "François Hollande",
         name_en: "François Hollande",
-        color: "#F04E98"
+        color: "#E3265B"
 , ideology: "Social democracy"},
       glucksmann: {
-        code: "PP",
+        code: "Glucksmann",
         name: "Raphaël Glucksmann",
         name_en: "Raphaël Glucksmann",
-        color: "#00B7C6"
+        color: "#FFF100"
 , ideology: "Social democracy, Pro-Europeanism"},
       attal: {
-        code: "RE",
+        code: "Attal",
         name: "Gabriel Attal",
         name_en: "Gabriel Attal",
-        color: "#E7A208"
+        color: "#FFD600"
 , ideology: "Liberalism, Pro-Europeanism"},
       philippe: {
-        code: "HOR",
+        code: "Philippe",
         name: "Édouard Philippe",
         name_en: "Édouard Philippe",
-        color: "#4A5A68"
+        color: "#0000BA"
 , ideology: "Liberal conservatism"},
       villepin: {
-        code: "UR",
+        code: "Villepin",
         name: "Dominique de Villepin",
         name_en: "Dominique de Villepin",
-        color: "#333F7F"
+        color: "#687CD5"
 , ideology: "Gaullism, Conservatism"},
       lisnard: {
-        code: "LR",
+        code: "Lisnard",
         name: "David Lisnard",
         name_en: "David Lisnard",
-        color: "#3D64A8"
+        color: "#0043B0"
 , ideology: "Liberal conservatism"},
       wauquiez: {
-        code: "LR",
+        code: "Wauquiez",
         name: "Laurent Wauquiez",
         name_en: "Laurent Wauquiez",
-        color: "#1E4294"
+        color: "#0043B0"
 , ideology: "Conservatism, Gaullism"},
       maurel: {
-        code: "GRS",
+        code: "Maurel",
         name: "Emmanuel Maurel",
         name_en: "Emmanuel Maurel",
-        color: "#B03A2E", ideology: "Left-wing euroscepticism, Socialism"},
+        color: "#D53150", ideology: "Left-wing euroscepticism, Socialism"},
       royal: {
-        code: "PS",
+        code: "Royal",
         name: "Ségolène Royal",
         name_en: "Ségolène Royal",
-        color: "#F06292", ideology: "Social democracy"},
+        color: "#E3265B", ideology: "Social democracy"},
       bouamrane: {
-        code: "PS",
+        code: "Bouamrane",
         name: "Karim Bouamrane",
         name_en: "Karim Bouamrane",
-        color: "#AD1457", ideology: "Social democracy"},
+        color: "#E3265B", ideology: "Social democracy"},
       guedj: {
-        code: "PS",
+        code: "Guedj",
         name: "Jérôme Guedj",
         name_en: "Jérôme Guedj",
-        color: "#EC407A", ideology: "Social democracy"},
+        color: "#E3265B", ideology: "Social democracy"},
       lemaire: {
-        code: "RE",
+        code: "Le Maire",
         name: "Bruno Le Maire",
         name_en: "Bruno Le Maire",
-        color: "#8D6E00", ideology: "Liberal conservatism, Gaullism"},
+        color: "#FFD600", ideology: "Liberal conservatism, Gaullism"},
       bertrand: {
-        code: "NF",
+        code: "Bertrand",
         name: "Xavier Bertrand",
         name_en: "Xavier Bertrand",
-        color: "#3F6FB5", ideology: "Liberal conservatism, Gaullism"},
+        color: "#0043B0", ideology: "Liberal conservatism, Gaullism"},
       knafo: {
-        code: "REC",
+        code: "Knafo",
         name: "Sarah Knafo",
         name_en: "Sarah Knafo",
-        color: "#6E1E1E", ideology: "National conservatism, Right-wing populism"},
+        color: "#170066", ideology: "National conservatism, Right-wing populism"},
       retailleau: {
-        code: "LR",
+        code: "Retailleau",
         name: "Bruno Retailleau",
         name_en: "Bruno Retailleau",
-        color: "#28518F"
+        color: "#0043B0"
 , ideology: "Conservatism, National conservatism"},
       dupont: {
-        code: "DLF",
+        code: "Dupont-Aignan",
         name: "Nicolas Dupont-Aignan",
         name_en: "Nicolas Dupont-Aignan",
-        color: "#CB1D46"
+        color: "#0087CD"
 , ideology: "National conservatism, Euroscepticism"},
       lepen: {
-        code: "RN",
+        code: "Le Pen",
         name: "Marine Le Pen",
         name_en: "Marine Le Pen",
-        color: "#041E42"
+        color: "#254671"
 , ideology: "National conservatism, Right-wing populism"},
       zemmour: {
-        code: "REC",
+        code: "Zemmour",
         name: "Éric Zemmour",
         name_en: "Éric Zemmour",
-        color: "#315E9C"
+        color: "#170066"
 , ideology: "National conservatism, Euroscepticism"}
     },
     order: [

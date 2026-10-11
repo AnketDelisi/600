@@ -3181,20 +3181,6 @@ async function renderPoster(opts){
       ctx.fillText(tl.value,tx+14,y+(single?88:72));
       tx+=tw+12;
     });
-    // calibration footnote inside the last tile: the published hit-rate of
-    // the majority probability (from the backtest's scenario distribution)
-    const cal=BACKTEST&&BACKTEST.calibration;
-    if(cal&&cal.buckets&&cal.buckets.length&&opts.tiles.length){
-      const b=cal.buckets[cal.buckets.length-1];
-      const lastTile=opts.tiles.slice(0,2)[opts.tiles.slice(0,2).length-1];
-      const lx=X+(single?470:300*2+12)-14;
-      ctx.font='700 12px '+MONO;
-      ctx.fillStyle=posterTextColor(lastTile.color||'#888');
-      ctx.textAlign='right';
-      ctx.fillText('calibrated: '+Math.round(b.lo*100)+'%+ -> '+
-        b.hits+'/'+b.n+' ('+(cal.n_cycles||cal.n)+' cycles)',lx,y+6+th3-10);
-      ctx.textAlign='left';
-    }
   }
   if(mapImg){
     // the arc always keeps its own band at the bottom-right (no overlap with

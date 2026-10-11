@@ -69,7 +69,7 @@
       "lepen": 41.45,
       "president_camp": 58.55
     },
-    "runoff_note": "2022 runoff (Le Pen 41.45 / Macron 58.55); the 2027 runoff projection reads the head-to-head polls (Philippe vs Le Pen leads with 11 polls) with no first-round blend (the 2022-share renormalization is meaningless with an unsettled field)."
+    "runoff_note": "2022 runoff (Le Pen 41.45 / Macron 58.55). The RUNOFF map blends this geography with the 2024 EP camp-vs-RN two-way shares per department (scraper/build_fr_ep2024.py; runoffBlend 0.5) and shifts it by the current head-to-head average - the 2022 runoff is the last real runoff, the 2024 EP the most recent measurement of the same two blocs. The forecast card reads the head-to-head polls with no first-round blend (the 2022-share renormalization is meaningless with an unsettled field)."
   },
   "notes": "The 2027 candidate field is unsettled: the first-round polls test alternative hypothetical fields (19-33 columns across periods; the same pollster/date can appear in several scenario rows). scrape_france.py merges scenario rows by (pollster, fieldwork end date), each candidate taking the first tested value; candidates are matched by their linked name. The runoff pair is picked from the head-to-head section headings (X vs. Y) and the top pair by poll frequency drives the runoff card. Live again 2026-10-11. The map was rebuilt 2026-10-11 from GADM 4.1 (96 metropolitan departments; the old b40 map was missing Paris/92/93/94); the map units are the departments."
 }

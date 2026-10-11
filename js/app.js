@@ -1971,7 +1971,7 @@ function renderParliament(avg){
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats)}</div>`;
   const mapCap=(MAP_ONLY
-      ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):t('projected winner','tahmini kazanan')}`
+      ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?LAST_ELECTION.date.slice(0,4)+' '+T.result:t('projected winner','tahmini kazanan'))}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
         :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','\u00f6nde giden blok'):t('district winner','b\u00f6lge kazanan\u0131')}`));
@@ -2285,7 +2285,12 @@ function districtResultWinner(nr, confOverride){
   const shares=districtShares(nr, null, true, conf);
   if(!shares) return null;
   let best=null,bestV=-1;
-  for(const p of PARTY_ORDER){
+  // iterate the shares' own keys, not PARTY_ORDER: resultMerge folds the
+  // component parties into a coalition key that is not in the order array
+  // (France's attal+philippe -> macron, Bulgaria's PP+DB), and the merged
+  // key must be able to win its district
+  for(const p in shares){
+    if(p==='other') continue;
     if(shares[p]&&shares[p].past>bestV){bestV=shares[p].past;best=p}
   }
   return best;
@@ -2332,7 +2337,7 @@ async function renderMap(avg){
   if(SEAT_BASED && PARL_MODE==='proj' && avg) avg=seatAvgToVotes(avg);
   if(MAP_ONLY&&PARL_MODE==='runoff'){
     const ra=runoffMapAvg(avg, FILTERED_POLLS.length?FILTERED_POLLS:POLLS, null);
-    const rc=runoffConf();
+    const rc=runoffConf(ra);
     if(ra&&rc) return renderMapInto(box, ra, false, rc);
   }
   // the upper chamber's own map layer (Italy's 74 Senate districts, Spain's
@@ -2348,14 +2353,37 @@ async function renderMap(avg){
 // Two-round presidential runoff map: the per-state 2022 runoff baselines
 // (conf.runoff2022) shifted by the national head-to-head average, so the map
 // shows the projected runoff winner per state instead of the first round.
-function runoffConf(){
+function runoffConf(roAvg){
   const c=MAP_CONF();
-  // the 2026 per-state round-1 results anchor the runoff map once
-  // scraper/build_brazil_round1.py has filled them in; until then the
-  // 2022 runoff baselines stand in
   const st=(c&&(c.runoff2026||c.runoff2022))||null;
-  return (st&&c.nationalRunoff)
-    ?{...c, gebiete:st, national2021:c.nationalRunoff} : null;
+  if(st&&c.nationalRunoff){
+    const keys=roAvg?Object.keys(roAvg):null;
+    let geb=st;
+    if(keys&&!keys.every(k=>k in st[Object.keys(st)[0]])){
+      const nonLepen=keys.find(k=>k!=='lepen');
+      if(nonLepen==='attal'||nonLepen==='philippe'){
+        // France: the 2022 baselines are keyed {camp, lepen}; 'camp'
+        // (Macron) is remapped onto the pairing's camp member
+        geb={};
+        for(const nr in st){
+          const src=st[nr];
+          const row={};
+          keys.forEach(k=>{
+            row[k]=src[k]!==undefined?src[k]:
+                   (src.camp!==undefined?src.camp:0);
+          });
+          geb[nr]=row;
+        }
+      }else{
+        // a left candidate does not inherit the president's runoff
+        // geography: fall back to the first-round map
+        return {...c};
+      }
+    }
+    return {...c, gebiete:geb, national2021:c.nationalRunoff};
+  }
+  if(roAvg) return {...c};   // first-round geography, moved by the runoff
+  return null;
 }
 
 function runoffMapAvg(avg, filtered, sim){
@@ -4445,13 +4473,28 @@ function runoffForecast(avg, filtered, sim){
   if(roPolls.length<2) return null;
   // memoize: the runoff sim is deterministic (seeded) and only depends on the
   // runoff poll set, so cache by date+count+headline values
-  const cacheKey=roPolls.map(p=>p.date+':'+p.pollster).join('|');
-  if(RUNOFF_CACHE[cacheKey]) return RUNOFF_CACHE[cacheKey];
   const freq={};
   roPolls.forEach(p=>Object.keys(p.runoff).forEach(c=>{freq[c]=(freq[c]||0)+1}));
-  const pair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
-  if(pair.length<2) return null;
+  const freqPair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
+  if(freqPair.length<2) return null;
+  // the pairing follows the first round: the projected top two of the
+  // current view (the selected poll field included). Their head-to-head
+  // polls are used when they exist; otherwise the most-polled pairing
+  // stands in (flagged pairFallback for the caption).
+  let pair=freqPair, pairFallback=true;
+  if(avg){
+    const top=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly))
+      .slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
+    if(top.length>=2&&(avg[top[0]]||0)>0&&(avg[top[1]]||0)>0&&
+       roPolls.some(p=>p.runoff[top[0]]!==undefined&&
+                       p.runoff[top[1]]!==undefined)){
+      pair=[top[0],top[1]];
+      pairFallback=false;
+    }
+  }
   const a=pair[0], b=pair[1];
+  const cacheKey=roPolls.map(p=>p.date+':'+p.pollster).join('|')+'|'+a+','+b;
+  if(RUNOFF_CACHE[cacheKey]) return RUNOFF_CACHE[cacheKey];
   const wa=weightedAvgRunoff(roPolls,a), wb=weightedAvgRunoff(roPolls,b);
   if(wa===null||wb===null) return null;
   const tot=wa+wb;
@@ -4487,7 +4530,7 @@ function runoffForecast(avg, filtered, sim){
   }
   valsA.sort((p,q)=>p-q);
   const aExp=mean(valsA), aLo=percentile(valsA,5), aHi=percentile(valsA,95);
-  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,
+  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,
              aExp,aLo,aHi,bExp:100-aExp,bLo:100-aHi,bHi:100-aLo};
   RUNOFF_CACHE[cacheKey]=res;
   return res;
@@ -4913,7 +4956,7 @@ function renderForecast(pane){
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
-          ${t('Head-to-head from','Başa baş anketlerinden')} ${ro.roN} ${t('runoff polls','ikinci tur anketi')} · σ≈${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%
+          ${t('Head-to-head from','Ba\u015fa ba\u015f anketlerinden')} ${ro.roN} ${t('runoff polls','ikinci tur anketi')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yak\u0131n anket e\u015fle\u015fmesi - ilk tur ilk ikisi i\u00e7in hen\u00fcz ba\u015fa ba\u015f anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,h2a)}
@@ -6228,15 +6271,18 @@ function fieldScenarios(polls){
       diff=parts.join(' ');
     }
     return {sig, n: sub.length,
-            label: top.map(k=>partyCode(k)).join(' \u00b7 ')+
-                   (diff?' \u00b7 '+diff:'')};
+            label: idx===0?t('MAIN FIELD','ANA ALAN')
+                           :t('FIELD','ALAN')+(diff?' '+diff:''),
+            detail: top.map(k=>partyCode(k)).join(' \u00b7 ')+
+                    (diff?' \u00b7 '+diff:'')};
   });
 }
 function fieldChips(scenarios){
   if(!scenarios||scenarios.length<2) return '';
-  return `<div class="map-toggle-row" style="justify-content:flex-start;margin-top:10px">
+  return `<div class="map-toggle-row" style="justify-content:flex-start;margin-top:10px;align-items:center">
+    <span style="font-size:11px;color:var(--c-text-muted);margin-right:4px">${t('POLL FIELD','ANKET ALANI')}:</span>
     <button class="map-toggle-btn fr-field-btn${FIELD_SIG?'':' active'}" data-field="">${t('ALL POLLS','T\u00dcM ANKETLER')}</button>
-    ${scenarios.map(s=>`<button class="map-toggle-btn fr-field-btn${FIELD_SIG===s.sig?' active':''}" data-field="${s.sig}" title="${t('polls in this field','bu alandaki anket')}: ${s.n}">${s.label} (${s.n})</button>`).join('')}
+    ${scenarios.map(s=>`<button class="map-toggle-btn fr-field-btn${FIELD_SIG===s.sig?' active':''}" data-field="${s.sig}" title="${s.detail} \u00b7 ${s.n} ${t('polls','anket')}">${s.label} (${s.n})</button>`).join('')}
   </div>`;
 }
 

@@ -18938,6 +18938,12 @@ saxony_anhalt: {
         "2A": "Corse-du-Sud",
         "2B": "Haute-Corse"
       },
+      // 2022 runoff baselines per department (Macron vs Le Pen;
+      // 'camp' is remapped onto the current pairing's camp
+      // candidate at render time)
+      runoff2022: {"01": {"camp": 54.99, "lepen": 45.01}, "02": {"camp": 40.09, "lepen": 59.91}, "03": {"camp": 52.35, "lepen": 47.65}, "04": {"camp": 48.55, "lepen": 51.45}, "05": {"camp": 55.06, "lepen": 44.94}, "06": {"camp": 50.13, "lepen": 49.87}, "07": {"camp": 52.4, "lepen": 47.6}, "08": {"camp": 43.34, "lepen": 56.66}, "09": {"camp": 51.09, "lepen": 48.91}, "10": {"camp": 48.32, "lepen": 51.68}, "11": {"camp": 45.1, "lepen": 54.9}, "12": {"camp": 60.07, "lepen": 39.93}, "13": {"camp": 52.08, "lepen": 47.92}, "14": {"camp": 60.29, "lepen": 39.71}, "15": {"camp": 56.07, "lepen": 43.93}, "16": {"camp": 55.06, "lepen": 44.94}, "17": {"camp": 56.32, "lepen": 43.68}, "18": {"camp": 52.56, "lepen": 47.44}, "19": {"camp": 55.78, "lepen": 44.22}, "21": {"camp": 57.27, "lepen": 42.73}, "22": {"camp": 62.9, "lepen": 37.1}, "23": {"camp": 52.04, "lepen": 47.96}, "24": {"camp": 51.52, "lepen": 48.48}, "25": {"camp": 57.16, "lepen": 42.84}, "26": {"camp": 55.72, "lepen": 44.28}, "27": {"camp": 48.62, "lepen": 51.38}, "28": {"camp": 53.29, "lepen": 46.71}, "29": {"camp": 67.5, "lepen": 32.5}, "2A": {"camp": 41.69, "lepen": 58.31}, "2B": {"camp": 42.13, "lepen": 57.87}, "30": {"camp": 47.85, "lepen": 52.15}, "31": {"camp": 64.42, "lepen": 35.58}, "32": {"camp": 55.66, "lepen": 44.34}, "33": {"camp": 61.37, "lepen": 38.63}, "34": {"camp": 52.57, "lepen": 47.43}, "35": {"camp": 70.94, "lepen": 29.06}, "36": {"camp": 51.41, "lepen": 48.59}, "37": {"camp": 62.66, "lepen": 37.34}, "38": {"camp": 59.8, "lepen": 40.2}, "39": {"camp": 53.07, "lepen": 46.93}, "40": {"camp": 56.54, "lepen": 43.46}, "41": {"camp": 53.81, "lepen": 46.19}, "42": {"camp": 56.64, "lepen": 43.36}, "43": {"camp": 50.16, "lepen": 49.84}, "44": {"camp": 69.2, "lepen": 30.8}, "45": {"camp": 57.57, "lepen": 42.43}, "46": {"camp": 59.18, "lepen": 40.82}, "47": {"camp": 49.53, "lepen": 50.47}, "48": {"camp": 54.2, "lepen": 45.8}, "49": {"camp": 66.53, "lepen": 33.47}, "50": {"camp": 59.61, "lepen": 40.39}, "51": {"camp": 52.1, "lepen": 47.9}, "52": {"camp": 43.04, "lepen": 56.96}, "53": {"camp": 64.21, "lepen": 35.79}, "54": {"camp": 54.42, "lepen": 45.58}, "55": {"camp": 44.39, "lepen": 55.61}, "56": {"camp": 62.81, "lepen": 37.19}, "57": {"camp": 50.46, "lepen": 49.54}, "58": {"camp": 49.89, "lepen": 50.11}, "59": {"camp": 52.85, "lepen": 47.15}, "60": {"camp": 47.27, "lepen": 52.73}, "61": {"camp": 55.11, "lepen": 44.89}, "62": {"camp": 42.51, "lepen": 57.49}, "63": {"camp": 60.16, "lepen": 39.84}, "64": {"camp": 63.05, "lepen": 36.95}, "65": {"camp": 55.5, "lepen": 44.5}, "66": {"camp": 43.68, "lepen": 56.32}, "67": {"camp": 58.96, "lepen": 41.04}, "68": {"camp": 52.9, "lepen": 47.1}, "69": {"camp": 68.66, "lepen": 31.34}, "70": {"camp": 43.1, "lepen": 56.9}, "71": {"camp": 53.33, "lepen": 46.67}, "72": {"camp": 55.41, "lepen": 44.59}, "73": {"camp": 57.62, "lepen": 42.38}, "74": {"camp": 61.66, "lepen": 38.34}, "75": {"camp": 85.1, "lepen": 14.9}, "76": {"camp": 55.28, "lepen": 44.72}, "77": {"camp": 56.98, "lepen": 43.02}, "78": {"camp": 71.05, "lepen": 28.95}, "79": {"camp": 62.13, "lepen": 37.87}, "80": {"camp": 45.37, "lepen": 54.63}, "81": {"camp": 53.06, "lepen": 46.94}, "82": {"camp": 47.98, "lepen": 52.02}, "83": {"camp": 44.9, "lepen": 55.1}, "84": {"camp": 48.0, "lepen": 52.0}, "85": {"camp": 61.86, "lepen": 38.14}, "86": {"camp": 60.12, "lepen": 39.88}, "87": {"camp": 59.18, "lepen": 40.82}, "88": {"camp": 47.59, "lepen": 52.41}, "89": {"camp": 48.41, "lepen": 51.59}, "90": {"camp": 51.44, "lepen": 48.56}, "91": {"camp": 65.43, "lepen": 34.57}, "92": {"camp": 80.39, "lepen": 19.61}, "93": {"camp": 73.72, "lepen": 26.28}, "94": {"camp": 74.48, "lepen": 25.52}, "95": {"camp": 66.15, "lepen": 33.85}},
+      nationalRunoff: {"camp": 58.55, "lepen": 41.45},
+      resultMerge: { attal: "macron", philippe: "macron" },
       national2021: {
         lepen: 25.104,
         melenchon: 20.095,
@@ -18976,20 +18982,29 @@ saxony_anhalt: {
       arthaud: "img/fr/LO.svg",
       melenchon: "img/fr/LFI.svg",
       roussel: "img/fr/PCF.svg",
-      ruffin: "img/fr/NE.svg",
-      tondelier: "img/fr/PP.svg",
+      ruffin: "img/fr/D.svg",
+      tondelier: "img/fr/LE.svg",
       faure: "img/fr/PS.svg",
+      royal: "img/fr/PS.svg",
+      bouamrane: "img/fr/PS.svg",
+      guedj: "img/fr/PS.svg",
       hollande: "img/fr/LaFranceHumaniste.svg",
       glucksmann: "img/fr/PP.svg",
       attal: "img/fr/RE.svg",
+      lemaire: "img/fr/RE.svg",
       philippe: "img/fr/Horizons.svg",
-      villepin: "img/fr/LE.svg",
-      lisnard: "img/fr/LR.svg",
+      lisnard: "img/fr/NE.svg",
       wauquiez: "img/fr/LR.svg",
       retailleau: "img/fr/LR.svg",
+      bertrand: "img/fr/LR.svg",
       dupont: "img/fr/DLF.svg",
       lepen: "img/fr/RN.svg",
-      zemmour: "img/fr/REC.svg"
+      knafo: "img/fr/REC.svg",
+      zemmour: "img/fr/REC.svg",
+      macron: "img/fr/RE.svg",
+      pecresse: "img/fr/LR.svg",
+      jadot: "img/fr/LE.svg",
+      hidalgo: "img/fr/PS.svg",
     }
   },
   germany: {

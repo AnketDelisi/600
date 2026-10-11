@@ -26,7 +26,7 @@ REF = {
     "dk": (179, 2.0, "sainte_lague_standard", False),
     "estonia": (101, 5.0, None, True),
     "fi": (200, 0.0, "dhondt", False),
-    "france": (13, 50.0, None, False),
+    "france": (96, 50.0, None, False),
     "germany": (630, 5.0, "sainte_lague_standard", False),
     "greece": (300, 3.0, None, True),
     "hr": (151, 5.0, "dhondt", False),

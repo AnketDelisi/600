@@ -1,8 +1,8 @@
 # Coverage roadmap
 
-Reviewed 2026-10-10. Current coverage: 35 country models in the calendar
+Reviewed 2026-10-10 (France presidential built 2026-10-11). Current coverage: 36 country models in the calendar
 (Austria, BC, Brazil, Bulgaria + presidential, **Croatia**, Czechia,
-Denmark, Estonia, Finland, France, Germany, Greece, Hungary, **Iceland**,
+Denmark, Estonia, Finland, France (+ presidential), Germany, Greece, Hungary, **Iceland**,
 Israel, Italy, **Japan**, Latvia, **Lithuania**, Moldova, Netherlands,
 **Norway**, New Zealand, Poland, Portugal, Quebec, Romania, Serbia,
 **Slovenia**, Slovakia, **South Korea**, Spain, Sweden, UK)

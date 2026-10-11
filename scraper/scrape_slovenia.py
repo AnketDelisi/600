@@ -39,6 +39,7 @@ TITLE_MAP = {
     "democrats. of an\u017ee logar": "dem",
     "democrats (slovenia)": "dem",
     "the left (slovenia)": "l",
+    "levica and vesna": "l",
     "vesna \u2013 green party": "v",
     "resni.ca": "res",
     "prerod": "pvp",

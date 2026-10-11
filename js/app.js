@@ -2339,6 +2339,11 @@ async function renderMap(avg){
     const ra=runoffMapAvg(avg, FILTERED_POLLS.length?FILTERED_POLLS:POLLS, null);
     const rc=runoffConf(ra);
     if(ra&&rc) return renderMapInto(box, ra, false, rc);
+    // no head-to-head polls in the window: never silently fall through to
+    // the 2022 result map under a runoff caption
+    box.innerHTML='<div style="text-align:center;color:var(--c-text-muted);padding:20px;font-size:12px">'+
+      t('No head-to-head polls in this window — widen the time range for a runoff projection.','Bu aralıkta ikinci tur anketi yok — ikinci tur tahmini için zaman aralığını genişletin.')+'</div>';
+    return;
   }
   // the upper chamber's own map layer (Italy's 74 Senate districts, Spain's
   // 59 NUTS3 districts) when the Senate mode is active; the conf carries its
@@ -2363,7 +2368,11 @@ function runoffConf(roAvg){
       const nonLepen=keys.find(k=>k!=='lepen');
       if(nonLepen==='attal'||nonLepen==='philippe'){
         // France: the 2022 baselines are keyed {camp, lepen}; 'camp'
-        // (Macron) is remapped onto the pairing's camp member
+        // (Macron) is remapped onto the pairing's camp member - in the
+        // per-department baselines AND the national anchor, because the
+        // swing reads the anchor per party: a missing key reads 0, kills
+        // the proportional arm and the uniform fallback adds the whole
+        // runoff average (+40pp) to every department
         geb={};
         for(const nr in st){
           const src=st[nr];
@@ -2374,11 +2383,16 @@ function runoffConf(roAvg){
           });
           geb[nr]=row;
         }
-      }else{
-        // a left candidate does not inherit the president's runoff
-        // geography: fall back to the first-round map
-        return {...c};
+        const nat={};
+        keys.forEach(k=>{
+          nat[k]=c.nationalRunoff[k]!==undefined?c.nationalRunoff[k]:
+                 (c.nationalRunoff.camp!==undefined?c.nationalRunoff.camp:0);
+        });
+        return {...c, gebiete:geb, national2021:nat};
       }
+      // a left candidate does not inherit the president's runoff
+      // geography: fall back to the first-round map
+      return {...c};
     }
     return {...c, gebiete:geb, national2021:c.nationalRunoff};
   }

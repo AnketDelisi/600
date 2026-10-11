@@ -808,6 +808,66 @@ def horizon_votes(polls, spec, horizon):
     return votes, len(use)
 
 
+def run_forecast(cc, votes, n_sims=1500, n_polls=20):
+    """Run the app's real Monte Carlo through scraper/forecast_run.js and
+    return the slim summary (maj / largest / means / nSims), or None."""
+    import subprocess
+    try:
+        args = ["node", os.path.join("scraper", "forecast_run.js"), cc,
+                json.dumps(votes), str(n_sims), str(n_polls)]
+        r = subprocess.run(args, capture_output=True, text=True,
+                           encoding="utf8", cwd=ROOT, timeout=300)
+        if r.returncode != 0 or not r.stdout.strip():
+            return None
+        return json.loads(r.stdout.strip())
+    except Exception:
+        return None
+
+
+def country_blocs(cc):
+    """bloc1/bloc2/bloc3 party lists for a country, parsed from js/config.js
+    (the harness must never hold its own copy of the model config)."""
+    txt = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
+    try:
+        i = txt.index("\n  %s: {" % cc)
+    except ValueError:
+        return None
+    depth = 0
+    e = txt.index("{", i)
+    j = e
+    while j < len(txt):
+        if txt[j] == "{":
+            depth += 1
+        elif txt[j] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+        j += 1
+    body = txt[i:j + 1]
+    m = re.search(r"\bblocs:\s*\{", body)
+    if not m:
+        return None
+    k = body.index("{", m.start())
+    depth = 0
+    e = k
+    while e < len(body):
+        if body[e] == "{":
+            depth += 1
+        elif body[e] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+        e += 1
+    blocs = body[k:e + 1]
+    out = {}
+    for bid in ("bloc1", "bloc2", "bloc3"):
+        mm = re.search(re.escape(bid) + r":\s*\{[^}]*?parties:\s*\[([^\]]*)\]",
+                       blocs, re.S)
+        if mm:
+            out[bid] = re.findall(r"['\"]([^'\"]+)['\"]", mm.group(1))
+    return out or None
+
+
 def score_proj(proj, actual):
     keys = set(actual) | {k for k, v in proj.items() if v > 0}
     errs = [proj.get(k, 0) - actual.get(k, 0) for k in keys]
@@ -843,6 +903,7 @@ def main():
     rows = []
     variants = []
     seat_rows = []
+    cal_rows = []
     data_all = {}
     for country, cycles in CYCLES.items():
         for cycle, spec in sorted(cycles.items()):
@@ -894,6 +955,40 @@ def main():
                            s2["proj"].get(top, 0)))
                 if not got:
                     print("   seats: skipped (node missing?)")
+                # calibration: the T-0 Monte Carlo's bloc-majority probability
+                # vs what actually happened - published as a hit-rate table so
+                # the site's "majority probability" can show its track record
+                cv, cn = horizon_votes(polls, spec, 0)
+                fc = run_forecast(country, cv, 1500, cn) if cv else None
+                bl = country_blocs(country)
+                if fc and bl and fc.get("nSims"):
+                    means = {k: v for k, v in (fc.get("means") or {}).items()
+                             if k != "other"}
+                    pred = max(means, key=lambda k: means.get(k, 0)) \
+                        if means else None
+                    bloc = None
+                    if pred in bl.get("bloc1", []):
+                        bloc = "bloc1"
+                    elif pred in bl.get("bloc2", []):
+                        bloc = "bloc2"
+                    if bloc:
+                        maj = fc.get("maj") or {}
+                        p_pred = (maj.get("rg" if bloc == "bloc1" else "td",
+                                          0)) / fc["nSims"]
+                        act = spec["seats"]
+                        total = sum(act.values())
+                        need = total // 2 + 1
+                        act_bloc = sum(act.get(p, 0) for p in bl[bloc])
+                        cal_rows.append({
+                            "cycle": "%s-%d" % (country, cycle),
+                            "bloc": bloc, "leader": pred,
+                            "p": round(p_pred, 3),
+                            "actual": act_bloc, "need": need,
+                            "hit": bool(act_bloc >= need),
+                        })
+                        print("   T-0   calib p(%s maj)=%.2f  actual %d/%d %s" %
+                              (pred, p_pred, act_bloc, need,
+                               "HIT" if act_bloc >= need else "MISS"))
     print("\n== aggregate MAE by horizon (all cycles)")
     for horizon in (60, 30, 14, 7, 0):
         vals = [r[3]["mae"] for r in rows if r[2] == horizon]
@@ -912,6 +1007,20 @@ def main():
             if vals:
                 print("  T-%-3d cycles=%d  seat MAE %.2f  leaders %d/%d" %
                       (horizon, len(vals), st.mean(vals), sum(lead), len(lead)))
+
+    cal_buckets = []
+    if cal_rows:
+        print("\n== majority-probability calibration (T-0, "
+              "bloc of the projected leader)")
+        for lo, hi in ((0.0, 0.5), (0.5, 0.75), (0.75, 0.9), (0.9, 1.01)):
+            rs = [r for r in cal_rows if lo <= r["p"] < hi]
+            if not rs:
+                continue
+            hits = sum(1 for r in rs if r["hit"])
+            print("  p %3d-%3d%%: %d/%d hits" %
+                  (round(lo * 100), round(hi * 100), hits, len(rs)))
+            cal_buckets.append({"lo": lo, "hi": hi, "n": len(rs),
+                                "hits": hits})
 
     if args.swings:
         # Measured 2026-10 on the nine seat cycles: an equal-weight ensemble
@@ -1003,6 +1112,8 @@ def main():
         "countries": countries,
         "counts": counts,
         "seats": {"aggregate": seat_agg, "cycles": seat_by},
+        "calibration": {"n": len(cal_rows), "buckets": cal_buckets,
+                        "cycles": cal_rows},
     }
     path = os.path.join(ROOT, "data", "backtest.json")
     with open(path, "w", encoding="utf8") as fh:

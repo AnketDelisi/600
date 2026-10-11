@@ -1022,7 +1022,7 @@ function renderHeroGeneric(avg, filteredPolls){
     <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','son')}: ${latestStr} (${days}d ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
-        ${logoSrc?`<img src="${b}${logoSrc}?v=${LOGO_CACHE}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:#fff;font-weight:900;font-size:12px">${topParty}</span>`}
+        ${logoSrc?`<img src="${b}${logoSrc}?v=${LOGO_CACHE}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:${textOn(color)};font-weight:900;font-size:12px">${topParty}</span>`}
       </div>
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
@@ -1057,7 +1057,7 @@ function renderPartyBars(avg){
 
     html+=`<div class="party-row">
       <div class="party-logo" style="background:${color}">
-        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}?v=${LOGO_CACHE}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span>${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
+        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}?v=${LOGO_CACHE}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span style="color:${textOn(color)}">${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
       </div>
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
@@ -1109,9 +1109,25 @@ function renderBlocs(avg){
   const td=BLOCS.bloc2.parties.reduce((s,p)=>s+(avg[p]||0),0);
   const bs=SEAT_BASED?blocSeats(rg,td):null;
   const disp=v=>SEAT_BASED?String(Math.round(v)):valDisp(v);
+  // seat counts next to the vote shares - the reader counts seats; for
+  // seat-based countries the big number already is the seat count
+  let seats=null;
+  if(!SEAT_BASED){
+    if(PARL_MODE==='proj'){
+      try{seats=projectedSeats(avg)}catch(e){seats=null}
+    }else if(LAST_ELECTION.seats){
+      seats={};PARTY_ORDER.forEach(p=>{seats[p]=LAST_ELECTION.seats[p]||0});
+    }
+  }
+  const seatLine=b=>{
+    if(!seats||!b) return '';
+    const n=b.parties.reduce((s,p)=>s+(seats[p]||0),0);
+    return `<div class="bloc-seats">${n} ${T.seats}</div>`;
+  };
   const card=(b,val)=>`<div class="bloc-card" style="border-left:6px solid ${b.color}">
       <div class="bloc-name">${b.name}</div>
       <div class="bloc-pct" style="color:${b.color}">${val}</div>
+      ${seatLine(b)}
       <div class="bloc-parties">${b.parties.map(partyCode).join(' + ')}</div>
     </div>`;
   let cards=card(BLOCS.bloc1,disp(bs?bs.gov:rg))+card(BLOCS.bloc2,disp(bs?bs.opp:td));
@@ -1207,8 +1223,16 @@ function renderTrendChart(canvas, polls){
   let yMin=Infinity,yMax=-Infinity;
   series.forEach(s=>s.points.forEach(v=>{if(v!==null){yMin=Math.min(yMin,v);yMax=Math.max(yMax,v)}}));
   if(!isFinite(yMin)){yMin=0;yMax=45}
+  const dataMin=yMin;
   yMin=Math.floor(Math.max(0,yMin-3));
   yMax=Math.ceil(Math.min(95,yMax+3));
+  // zoom the lower bound: when every party polls above ~2% the 0-based axis
+  // flattens the small parties into one line at the bottom; the axis note
+  // tells the reader where it starts
+  if(dataMin>2){
+    const zoom=Math.floor(dataMin*0.75);
+    if(zoom>yMin) yMin=zoom;
+  }
 
   CHART_STATE.ctx=ctx; CHART_STATE.W=W; CHART_STATE.H=H;
   CHART_STATE.pad=pad; CHART_STATE.dates=dates; CHART_STATE.series=series;
@@ -1283,6 +1307,11 @@ function drawChartBase(hoverIdx){
   for(let i=0;i<dates.length;i+=xStep){
     const x=pad.left+(i/(dates.length-1))*cw;
     ctx.fillText(dates[i].slice(5),x,H-pad.bottom+16);
+  }
+  // axis note: the lower bound is zoomed, say so
+  if(yMin>0){
+    ctx.fillStyle='#94A3B8';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='left';
+    ctx.fillText('axis starts at '+(SEAT_BASED?String(Math.round(yMin)):pct(yMin)),pad.left,pad.top-4);
   }
 
   // Lines
@@ -1389,7 +1418,7 @@ function relativePollsterRatings(){
 function renderPollsTable(polls){
   const ratings=relativePollsterRatings();
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.individualPolls}</div></div>
-    <div style="overflow-x:auto">
+    <div class="polls-scroll">
     <table class="polls-table compact-table"><thead><tr>
       <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th>
       <th class="c" title="${t('Pollster accuracy vs the best in this country (weight = 1/MAE)','Anketçi doğruluğu, ülkedeki en iyiye göre (ağırlık = 1/MAE)')}">${t('RATE','PUAN')}</th>
@@ -1842,6 +1871,46 @@ function allocateUpper(avg){
   return null;
 }
 
+// The projected seat map (projection mode) - the same allocator the arch
+// uses, exposed so the bloc cards, the map section and the calibration hook
+// all read one number.
+function projectedSeats(avg){
+  if(OVERHANG) return overhangSeats(avg,SEATS_TOTAL,directFromProjection(avg),OVERHANG.cap);
+  return SEAT_BASED?seatParliament(avg,SEATS_TOTAL):allocateSeatsTotal(avg,SEATS_TOTAL);
+}
+
+// Map-as-the-story countries: when the map carries hundreds of districts
+// (KR 254, JP 289, UK 650, QC 125, DE 299) it gets its own always-visible
+// section below the arch instead of hiding behind a toggle.
+function isBigMap(){
+  const mc=MAP_CONF();
+  return !!(mc&&!MAP_ONLY&&Object.keys(mc.districts||{}).length>=100);
+}
+
+// The filter provenance line under the arch: which window, which pollsters,
+// how many polls feed the number on screen.
+function filtersNote(){
+  const d=effectiveDays();
+  const daysTxt=(d>=9999)?T.allPolls:((d>=365)?String(d):(T['last'+d]||('Last '+d+' days')));
+  const ps=$('filter-pollster');
+  const pv=(ps&&ps.value)?ps.value:T.allPollsters;
+  const ms=$('filter-method');
+  const mv=(ms&&ms.value&&ms.selectedOptions[0])?ms.selectedOptions[0].textContent:'';
+  const n=(typeof FILTERED_POLLS!=='undefined'&&FILTERED_POLLS)?FILTERED_POLLS.length:0;
+  return `${t('based on','dayanak')}: ${daysTxt} · ${pv}${mv?' · '+mv:''} · ${n} ${t('polls','anket')}`;
+}
+
+// Readable text on a party color: dark ink on light colors (yellow SDS,
+// Iceland F), white on the rest.
+function textOn(hex){
+  const m=/^#?([0-9a-f]{6})$/i.exec(String(hex||''));
+  if(!m) return '#fff';
+  const v=parseInt(m[1],16);
+  const r=(v>>16)&255,g=(v>>8)&255,b=v&255;
+  const lum=(0.299*r+0.587*g+0.114*b)/255;
+  return lum>0.62?'#111827':'#fff';
+}
+
 function renderParliament(avg){
   let seats;
   const UP=(COUNTRIES[COUNTRY]||{}).upper||null;
@@ -1850,12 +1919,12 @@ function renderParliament(avg){
     seats=allocateUpper(avg)||{};
   }else if(OVERHANG){
     seats=PARL_MODE==='proj'
-      ?overhangSeats(avg,SEATS_TOTAL,directFromProjection(avg),OVERHANG.cap)
+      ?projectedSeats(avg)
       :(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats?LAST_ELECTION.seats[p]||0:0});return s})();
   }else{
     seats=SEAT_BASED
-      ?(PARL_MODE==='proj'?seatParliament(avg,SEATS_TOTAL):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
-      :(PARL_MODE==='proj'?allocateSeatsTotal(avg,SEATS_TOTAL)
+      ?(PARL_MODE==='proj'?projectedSeats(avg):normalizeTo(LAST_ELECTION.seats,SEATS_TOTAL))
+      :(PARL_MODE==='proj'?projectedSeats(avg)
         :(LAST_ELECTION.seats?(()=>{const s={};PARTY_ORDER.forEach(p=>{s[p]=LAST_ELECTION.seats[p]||0});return s})()
           :allocateSeatsN(LAST_ELECTION.results,SEATS_TOTAL)));
   }
@@ -1869,13 +1938,14 @@ function renderParliament(avg){
   }
   const seatsTotal=Object.values(seats).reduce((a,b)=>a+(b||0),0);
   const mapConf=MAP_CONF();
+  const bigMap=isBigMap();
   const showMap=MAP_ONLY||(PARL_VIEW==='map'&&mapConf);
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
       <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
       ${UP?`<button class="map-toggle-btn parl-btn${PARL_MODE==='upper'?' active':''}" data-parlmode="upper">${UP.label||t('Upper chamber','\u00dcst meclis')}</button>`:''}
       ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
-      ${mapConf&&!MAP_ONLY?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
+      ${mapConf&&!MAP_ONLY&&!bigMap?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
@@ -1884,21 +1954,32 @@ function renderParliament(avg){
   const box=showMap
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats)}</div>`;
-  const cap=showMap
-    ?(MAP_ONLY
+  const mapCap=(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):t('projected winner','tahmini kazanan')}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
-        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','\u00f6nde giden blok'):t('district winner','b\u00f6lge kazanan\u0131')}`))
-    :(PARL_MODE==='upper'
+        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','\u00f6nde giden blok'):t('district winner','b\u00f6lge kazanan\u0131')}`));
+  const archCap=(PARL_MODE==='upper'
       ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
+  const cap=showMap?mapCap:archCap;
+  // filter provenance under the projection (never for the result view - the
+  // result is not "based on" the current poll window)
+  const prov=(PARL_MODE==='proj'&&!showMap)?` · ${filtersNote()}`:'';
+  // map-as-the-story: the map always visible below the arch (bigMap)
+  const mapSection=bigMap?`<div class="card" style="margin-top:14px"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div>
+      <button class="shot-btn" id="map-sec-shot-btn" style="margin-left:auto" title="Download map as PNG">${CAM_ICON}</button></div>
+      <div class="parliament-box" id="map-box-sec"></div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
+        ${mapCap}
+      </div></div>`:'';
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
     ${box}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      ${cap}
-    </div></div>`;
+      ${cap}${prov}
+    </div></div>
+  ${mapSection}`;
 }
 
 /* ---------- district map (Germany / Sweden) ---------- */
@@ -3094,6 +3175,20 @@ async function renderPoster(opts){
       ctx.fillText(tl.value,tx+14,y+(single?88:72));
       tx+=tw+12;
     });
+    // calibration footnote inside the last tile: the published hit-rate of
+    // the majority probability (from the backtest's scenario distribution)
+    const cal=BACKTEST&&BACKTEST.calibration;
+    if(cal&&cal.buckets&&cal.buckets.length&&opts.tiles.length){
+      const b=cal.buckets[cal.buckets.length-1];
+      const lastTile=opts.tiles.slice(0,2)[opts.tiles.slice(0,2).length-1];
+      const lx=X+(single?470:300*2+12)-14;
+      ctx.font='700 12px '+MONO;
+      ctx.fillStyle=posterTextColor(lastTile.color||'#888');
+      ctx.textAlign='right';
+      ctx.fillText('calibrated: '+Math.round(b.lo*100)+'%+ -> '+
+        b.hits+'/'+b.n+' ('+cal.n+' cycles)',lx,y+6+th3-10);
+      ctx.textAlign='left';
+    }
   }
   if(mapImg){
     // the arc always keeps its own band at the bottom-right (no overlap with
@@ -3763,6 +3858,21 @@ function bindParlToggles(avg){
     });
   }
   if(MAP_ONLY||PARL_VIEW==='map') renderMap(avg);
+  // map-as-the-story section (KR/JP/UK/QC/DE): drawn below the arch
+  if(isBigMap()){
+    const sec=$('map-box-sec');
+    if(sec){
+      const sen=(COUNTRIES[COUNTRY]||{}).senate;
+      renderMapInto(sec, avg, PARL_MODE!=='proj',
+                    (PARL_MODE==='upper'&&sen)?sen:undefined);
+    }
+    const secShot=$('map-sec-shot-btn');
+    if(secShot){
+      secShot.addEventListener('click',()=>{
+        captureBoxMap('map-box-sec', COUNTRY+'-map.png');
+      });
+    }
+  }
 }
 
 /* ---------- forecast: fast Sainte-Laguë ---------- */
@@ -4033,6 +4143,17 @@ function applyNationalSwing(simVotes){
   }
   if(sum>0){for(const p in out) out[p]=100*out[p]/sum}
   return out;
+}
+
+// The published calibration of the majority probability: hit rates per
+// predicted-probability bucket from the backtest's scenario distribution
+// (data/backtest.json, written by scraper/backtest.py).
+function calibNote(){
+  const cal=BACKTEST&&BACKTEST.calibration;
+  if(!cal||!cal.buckets||!cal.buckets.length||!cal.n) return '';
+  const parts=cal.buckets.map(b=>
+    `${Math.round(b.lo*100)}\u2013${Math.round(b.hi*100)}%: ${b.hits}/${b.n}`).join(' \u00b7 ');
+  return `<div style="font-size:11px;color:var(--c-text-muted);margin-top:4px">${t('calibrated on','kalibre edildi')} ${cal.n} ${t('past cycles','geçmiş d\u00f6ng\u00fc')} (${t('bloc of the projected leader','tahmin liderinin blo\u011fu')}: ${parts}</div>`;
 }
 
 function runSeatForecast(avg, nSims, nPolls){
@@ -4465,7 +4586,7 @@ function ypUpdate(){
     const n=seats[p]||0;
     const logo=PARTY_LOGOS[p]
       ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:13px;height:13px;object-fit:contain">`
-      :`<span style="font-weight:900;font-size:9px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
+      :`<span style="font-weight:900;font-size:9px;color:${textOn(col)}">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
     rows+=`<div class="yp-res">
       <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="lbl" style="color:${col}">${partyCode(p)}</span>
@@ -4523,7 +4644,7 @@ function renderPrediction(pane){
     const col=PARTY_META[p]?PARTY_META[p].color:'#888';
     const logo=PARTY_LOGOS[p]
       ?`<img src="${dataBase()}${PARTY_LOGOS[p]}?v=${LOGO_CACHE}" alt="${p}" style="width:16px;height:16px;object-fit:contain">`
-      :`<span style="font-weight:900;font-size:10px;color:#fff">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
+      :`<span style="font-weight:900;font-size:10px;color:${textOn(col)}">${partyCode(p).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()}</span>`;
     ypInputs+=`<div class="yp-row">
       <span class="yp-logo" style="background:${col}">${logo}</span>
       <span class="yp-code" style="color:${col}">${partyCode(p)}</span>
@@ -5076,6 +5197,7 @@ function renderForecast(pane){
         <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
+      ${calibNote()}
     </div>`}
 
     ${coalHtml}
@@ -6293,6 +6415,17 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
     }
     return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>
       allocateSeatsTotal(votes,total===undefined?SEATS_TOTAL:total));
+  };
+  // Headless Monte Carlo for the backtest's calibration: the same
+  // runForecast the forecast tab uses, slimmed to the summary the harness
+  // needs (no per-sim arrays).
+  window.__600_forecast=function(cc,votes,nSims,nPolls){
+    setCountry(cc);
+    return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>{
+      const r=runForecast(votes,nSims||1500,nPolls||20);
+      return {maj:r.maj,largest:r.largest,means:r.means,medians:r.medians,
+              modal:r.modal,nSims:r.nSims};
+    });
   };
 }
 

@@ -6,18 +6,18 @@
 @font-face{font-family:'Source Code Pro';src:url('../fonts/SourceCodePro-ExtraBold.ttf') format('truetype');font-weight:800;font-style:normal;font-display:swap}
 @font-face{font-family:'Source Code Pro';src:url('../fonts/SourceCodePro-Black.ttf') format('truetype');font-weight:900;font-style:normal;font-display:swap}
 :root{
-  --c-bg:#F9F7F0;
+  --c-bg:#FFFFFF;
   --c-surface:#FFFFFF;
   --c-text-main:#161616;
-  --c-text-muted:#5F584E;
+  --c-text-muted:#5A5A5A;
   --c-accent:#C83737;
   --c-accent-2:#9C2A2A;
-  --c-border:#D8D1C0;
-  --c-rule:#C0B8A6;
+  --c-border:#DCDCDC;
+  --c-rule:#C4C4C4;
   --c-edge:#1A1A1A;
   --t-seat-bg:#1A1A1A;
   --sidebar-input-bg:#FFFFFF;
-  --sidebar-input-border:#C9C1B1;
+  --sidebar-input-border:#C9C9C9;
   --radius:6px;
   --radius-sm:4px;
   --radius-pill:999px;
@@ -140,7 +140,7 @@ button:active{transform:translateY(1px)}
 .party-pct{width:56px;font-weight:900;color:var(--c-text-main);font-size:13px;text-align:right;flex-shrink:0;line-height:1.2;font-variant-numeric:tabular-nums}
 .party-delta{width:56px;font-weight:700;font-size:10px;text-align:right;flex-shrink:0;font-variant-numeric:tabular-nums}
 .party-seats{width:56px;font-weight:900;font-size:12px;text-align:right;flex-shrink:0}
-.bar-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:0 2px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)}
+.bar-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:0 2px;font-size:11px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)}
 .bar-header span{flex-shrink:0}
 .bar-header .bh-logo{width:38px}
 .bar-header .bh-party{width:60px;text-align:left}
@@ -186,10 +186,10 @@ button:active{transform:translateY(1px)}
 .bz-state-card{display:flex;align-items:center;gap:10px;border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-hard);padding:12px 16px;background:var(--c-surface)}
 .bz-state-code{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:900;border:2px solid var(--c-edge)}
 .bz-state-num{font-size:24px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-.bz-state-lbl{font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase}
+.bz-state-lbl{font-size:11px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase}
 .bz-regions{display:flex;flex-direction:column;gap:4px}
 .bz-reg-hd,.bz-reg-row{display:flex;align-items:center;gap:10px;padding:6px 4px}
-.bz-reg-hd{font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:1px solid var(--c-rule)}
+.bz-reg-hd{font-size:11px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:1px solid var(--c-rule)}
 .bz-reg-hd span:nth-child(1),.bz-reg-name{width:120px;flex-shrink:0}
 .bz-reg-hd span:nth-child(2){flex:1}
 .bz-reg-hd span:nth-child(3){width:60px;text-align:right}
@@ -208,9 +208,9 @@ button:active{transform:translateY(1px)}
 /* ---------- Bloc summary ---------- */
 .bloc-row{display:flex;gap:12px;width:100%;margin-bottom:0;height:100%}
 .bloc-card{flex:1;background:var(--c-surface);border:1.5px solid var(--c-edge);border-radius:8px;padding:10px 14px;text-align:center;display:flex;flex-direction:column;justify-content:center}
-.bloc-card .bloc-name{font-size:10px;font-weight:900;color:var(--c-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.bloc-card .bloc-name{font-size:11px;font-weight:900;color:var(--c-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
 .bloc-card .bloc-pct{font-size:22px;font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums}
-.bloc-card .bloc-parties{font-size:9px;color:var(--c-text-muted);font-weight:700;margin-top:2px}
+.bloc-card .bloc-parties{font-size:11px;color:var(--c-text-muted);font-weight:700;margin-top:2px}
 .pollavg-blocs{margin-top:16px;padding-top:14px;border-top:2px solid var(--c-edge)}
 
 /* ---------- Trend chart ---------- */
@@ -219,15 +219,15 @@ button:active{transform:translateY(1px)}
 
 /* ---------- Polls table ---------- */
 .polls-table{width:100%;border-collapse:separate;border-spacing:0;font-family:var(--font);font-size:12px;border:2px solid var(--c-edge);border-radius:var(--radius);overflow:hidden;background:var(--c-surface)}
-.polls-table th{background:#1A1A1A;color:#fff;font-size:10px;font-weight:900;letter-spacing:0.5px;padding:8px 6px;text-align:left;position:sticky;top:0;z-index:2;border:none}
+.polls-table th{background:#1A1A1A;color:#fff;font-size:11px;font-weight:900;letter-spacing:0.5px;padding:8px 6px;text-align:left;position:sticky;top:0;z-index:2;border:none}
 .polls-table th:first-child{border-top-left-radius:var(--radius-sm)}
 .polls-table th:last-child{border-top-right-radius:var(--radius-sm)}
 .polls-table td{padding:6px;border-bottom:1px solid var(--c-border);font-size:12px}
-.polls-table tbody tr:hover td{background:#FBF9F2}
-.polls-table tr:nth-child(even) td{background:#F4EFE2}
-.polls-table tr:nth-child(even):hover td{background:#F0EADB}
+.polls-table tbody tr:hover td{background:#FAFAFA}
+.polls-table tr:nth-child(even) td{background:#F4F4F4}
+.polls-table tr:nth-child(even):hover td{background:#EFEFEF}
 .polls-table .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right}
-.compact-table th{font-size:9px;padding:5px 4px;white-space:nowrap}
+.compact-table th{font-size:11px;padding:5px 4px;white-space:nowrap}
 .compact-table th.c{text-align:center}
 .compact-table td{font-size:10.5px;padding:3px 4px;white-space:nowrap}
 .compact-table .num{font-size:10px}
@@ -276,7 +276,7 @@ button:active{transform:translateY(1px)}
 .map-tip-track{flex:1;height:8px;background:rgba(26,26,26,0.08);border:1px solid var(--c-edge);border-radius:var(--radius-pill);overflow:hidden}
 .map-tip-fill{height:100%;border-radius:var(--radius-pill)}
 .map-tip-now{width:38px;text-align:right;font-size:10px;font-weight:900;font-variant-numeric:tabular-nums;flex-shrink:0}
-.map-tip-delta{width:38px;text-align:right;font-size:9px;font-weight:900;font-variant-numeric:tabular-nums;flex-shrink:0}
+.map-tip-delta{width:38px;text-align:right;font-size:11px;font-weight:900;font-variant-numeric:tabular-nums;flex-shrink:0}
 .map-tip-delta.up{color:#15803D}
 .map-tip-delta.down{color:#A83A3A}
 .map-tip-delta.flat{color:var(--c-text-muted)}
@@ -317,8 +317,8 @@ button:active{transform:translateY(1px)}
 .fc-mom.down{color:#E30613}
 .fc-thresh{position:absolute;top:0;bottom:0;width:2px;background:#1A1A1A}
 .fc-note{font-size:10px;color:var(--c-text-muted);font-weight:700;width:100%;margin-left:54px}
-.fc-votehd{display:flex;align-items:center;gap:10px;font-size:9px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:2px solid var(--c-edge);padding:2px 0 4px}
-.poll-method{display:inline-block;margin-left:6px;font-size:9px;font-weight:900;letter-spacing:0.6px;text-transform:uppercase;color:var(--c-text-muted);border:1px solid var(--c-rule);border-radius:999px;padding:1px 5px;vertical-align:1px}
+.fc-votehd{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);border-bottom:2px solid var(--c-edge);padding:2px 0 4px}
+.poll-method{display:inline-block;margin-left:6px;font-size:11px;font-weight:900;letter-spacing:0.6px;text-transform:uppercase;color:var(--c-text-muted);border:1px solid var(--c-rule);border-radius:999px;padding:1px 5px;vertical-align:1px}
 
 /* ---------- Coalition scenarios card ---------- */
 .coal-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(80px,170px) 62px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(26,26,26,0.08)}
@@ -460,3 +460,6 @@ body.home .tab-trigger{display:none}
   .home-section{padding:14px 12px 2px 12px}
   .cnav-group{flex-direction:column;align-items:center;gap:5px}
 }
+/* polls table scroll container: the sticky thead needs its own scrolling box */
+.polls-scroll{max-height:72vh;overflow:auto;overscroll-behavior:contain}
+.bloc-card .bloc-seats{font-size:12px;font-weight:900;color:var(--c-text-main);letter-spacing:0.5px;margin-top:1px}

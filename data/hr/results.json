@@ -1,0 +1,227 @@
+{
+ "country": "hr",
+ "source": "en.wikipedia (2024 election; coalitions mapped to lead parties)",
+ "districts": {
+  "i": {
+   "name": "I",
+   "shares": {
+    "hdz": 27.65,
+    "sdp": 24.37,
+    "dp": 9.29,
+    "most": 7.34,
+    "mozemo": 19.87,
+    "ourcroatia": 0.9,
+    "fokus": 3.4
+   },
+   "seats": {
+    "hdz": 5,
+    "sdp": 4,
+    "dp": 1,
+    "most": 1,
+    "mozemo": 3
+   }
+  },
+  "ii": {
+   "name": "II",
+   "shares": {
+    "hdz": 35.3,
+    "sdp": 24.8,
+    "dp": 11.1,
+    "most": 9.1,
+    "mozemo": 8.6,
+    "ourcroatia": 1.2,
+    "fokus": 2.8
+   },
+   "seats": {
+    "hdz": 6,
+    "sdp": 4,
+    "dp": 2,
+    "most": 1,
+    "mozemo": 1
+   }
+  },
+  "iii": {
+   "name": "III",
+   "shares": {
+    "hdz": 27.6,
+    "sdp": 36.8,
+    "dp": 5.1,
+    "most": 3.8,
+    "mozemo": 6.2,
+    "nps": 12.2,
+    "fokus": 0.9
+   },
+   "seats": {
+    "hdz": 5,
+    "sdp": 6,
+    "mozemo": 1,
+    "nps": 2
+   }
+  },
+  "iv": {
+   "name": "IV",
+   "shares": {
+    "hdz": 41.8,
+    "sdp": 25.2,
+    "dp": 13.1,
+    "most": 6.0,
+    "mozemo": 5.5,
+    "ourcroatia": 1.0,
+    "fokus": 1.0
+   },
+   "seats": {
+    "hdz": 7,
+    "sdp": 4,
+    "dp": 2,
+    "most": 1
+   }
+  },
+  "v": {
+   "name": "V",
+   "shares": {
+    "hdz": 42.8,
+    "sdp": 19.6,
+    "dp": 17.4,
+    "most": 8.5,
+    "mozemo": 3.6,
+    "ourcroatia": 0.4,
+    "fokus": 1.0
+   },
+   "seats": {
+    "hdz": 7,
+    "sdp": 3,
+    "dp": 3,
+    "most": 1
+   }
+  },
+  "vi": {
+   "name": "VI",
+   "shares": {
+    "hdz": 24.8,
+    "sdp": 23.8,
+    "dp": 8.7,
+    "most": 9.5,
+    "mozemo": 18.1,
+    "ourcroatia": 0.6,
+    "fokus": 7.8
+   },
+   "seats": {
+    "hdz": 4,
+    "sdp": 4,
+    "dp": 1,
+    "most": 1,
+    "mozemo": 3,
+    "fokus": 1
+   }
+  },
+  "vii": {
+   "name": "VII",
+   "shares": {
+    "hdz": 41.3,
+    "sdp": 25.4,
+    "dp": 8.6,
+    "most": 6.6,
+    "mozemo": 6.9,
+    "ourcroatia": 1.0,
+    "fokus": 1.6
+   },
+   "seats": {
+    "hdz": 7,
+    "sdp": 4,
+    "dp": 1,
+    "most": 1,
+    "mozemo": 1
+   }
+  },
+  "viii": {
+   "name": "VIII",
+   "shares": {
+    "hdz": 21.3,
+    "sdp": 33.4,
+    "dp": 4.0,
+    "most": 5.7,
+    "mozemo": 10.2,
+    "ids": 15.9,
+    "fokus": 1.9
+   },
+   "seats": {
+    "hdz": 4,
+    "sdp": 6,
+    "most": 1,
+    "mozemo": 1,
+    "ids": 2
+   }
+  },
+  "ix": {
+   "name": "IX",
+   "shares": {
+    "hdz": 39.7,
+    "sdp": 19.4,
+    "dp": 10.6,
+    "most": 12.1,
+    "mozemo": 4.4,
+    "ourcroatia": 0.9,
+    "fokus": 1.0
+   },
+   "seats": {
+    "hdz": 7,
+    "sdp": 3,
+    "dp": 2,
+    "most": 2
+   }
+  },
+  "x": {
+   "name": "X",
+   "shares": {
+    "hdz": 37.0,
+    "sdp": 25.5,
+    "dp": 10.8,
+    "most": 11.5,
+    "mozemo": 5.3,
+    "ourcroatia": 0.5,
+    "fokus": 0.5
+   },
+   "seats": {
+    "hdz": 6,
+    "sdp": 4,
+    "dp": 2,
+    "most": 2
+   }
+  },
+  "xi": {
+   "name": "XI",
+   "shares": {
+    "hdz": 79.5,
+    "most": 6.6,
+    "mozemo": 3.0,
+    "fokus": 0.5
+   },
+   "seats": {
+    "hdz": 3
+   }
+  }
+ },
+ "national": {
+  "shares": {
+   "hdz": 34.4,
+   "sdp": 25.4,
+   "dp": 9.6,
+   "most": 8.0,
+   "mozemo": 9.1,
+   "nps": 1.22,
+   "fokus": 2.3,
+   "ids": 2.25
+  },
+  "seats": {
+   "hdz": 61,
+   "sdp": 42,
+   "dp": 14,
+   "most": 11,
+   "mozemo": 10,
+   "nps": 2,
+   "fokus": 1,
+   "ids": 2
+  },
+  "minority": 8
+ }
+}

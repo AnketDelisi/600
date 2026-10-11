@@ -1,0 +1,10 @@
+{
+ "country": "hr",
+ "name": "Croatia",
+ "election_date": "2028-04-17",
+ "seats": 151,
+ "threshold": 5.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "Sabor: 151 seats = 140 from 10 electoral districts (14 each, D'Hondt with the 5% threshold applied inside each district) + 3 diaspora (district XI) + 8 minority seats (structurally reserved, modelled as a fixed Other allocation). Next election: by ~April 2028 (the 2024 election was 17 April 2024). Baseline: the 17 April 2024 election (HDZ 61, SDP-led Rivers of Justice 42, DP 14, Most-HS 11, Mozemo 10, NPS 2, IDS 2, Fokus 1, minorities 8). The 2024 lists were coalitions; each district baseline attributes the coalition share to its lead party key (Rivers of Justice -> SDP, Our Croatia -> NPS in III / IDS in VIII), and the polls measure the parties individually, so the swing is party-vs-coalition - documented approximation. Geometry: the Commons 2024 results map (10 unlabeled constituency paths identified against the official since-2023 composition and the 2024 winner fills). Polls: the main support table (17 party columns, explicit dates; the final election-results row skipped). Backtest: not yet run (the 2024 pre-election polling page exists - add a cycle when the model settles)."
+}

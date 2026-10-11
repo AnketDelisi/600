@@ -6355,8 +6355,10 @@ function renderPollsTab(){
 
   // poll-field scenarios: average inside the selected field so the shares
   // form one coherent race (the runoff machinery keeps the full window -
-  // head-to-head polls are field-independent)
-  const scenarios=fieldScenarios(filtered);
+  // head-to-head polls are field-independent). Config-gated (France only):
+  // other models poll a settled field, where subset clusters are noise
+  const scenarios=((COUNTRIES[COUNTRY]||{}).fieldSelector)
+    ?fieldScenarios(filtered):[];
   if(FIELD_SIG&&filtered.filter(p=>pollField(p)===FIELD_SIG).length<2)
     FIELD_SIG=null;
   const fieldPolls=FIELD_SIG
@@ -6602,6 +6604,13 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
     }
     return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>
       allocateSeatsTotal(votes,total===undefined?SEATS_TOTAL:total));
+  };
+  // per-district shares for one district (the base-blend and map checks:
+  // projection mode reads the blended base, result mode the pure last
+  // election)
+  window.__600_districtshares=function(cc,nr,avg,resultMode){
+    setCountry(cc);
+    return districtShares(String(nr),avg,!!resultMode,null);
   };
   // Headless Monte Carlo for the backtest's calibration: the same
   // runForecast the forecast tab uses, slimmed to the summary the harness

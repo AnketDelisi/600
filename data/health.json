@@ -50,9 +50,9 @@
   "scraped_at": "2026-10-10T18:41:34Z"
  },
  "france": {
-  "latest_date": "2026-09-03",
-  "poll_count": 12,
-  "scraped_at": null
+  "latest_date": "2026-09-29",
+  "poll_count": 49,
+  "scraped_at": "2026-10-11T11:15:22Z"
  },
  "germany": {
   "latest_date": "2026-10-07",
@@ -167,7 +167,7 @@
  "si": {
   "latest_date": "2026-09-24",
   "poll_count": 16,
-  "scraped_at": "2026-10-11T08:36:15Z"
+  "scraped_at": "2026-10-11T09:15:26Z"
  },
  "slovakia": {
   "latest_date": "2026-10-05",

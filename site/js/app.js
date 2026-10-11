@@ -996,15 +996,21 @@ function brazilRunoffHero(avg, filteredPolls){
       </div>
     </div>
     <div class="bz-path">
-      <span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct100((ro.winA/3000))} ${t('first-round win','ilk tur zaferi')}</span>
-      <span>·</span>
-      <span>${partyCode(ro.b)} ${pct100(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>
+      ${todayStr()<(META.election_date||'')
+        ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${pct100(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${pct100(1-ro.winA/3000)}</b></span>`
+        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct100((ro.winA/3000))} ${t('first-round win','ilk tur zaferi')}</span>
+      <span>\u00b7</span>
+      <span>${partyCode(ro.b)} ${pct100(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>`}
     </div>
   </div>`;
 }
 
 function renderHero(avg, filteredPolls){
-  if(COUNTRY==='brazil') return brazilRunoffHero(avg, filteredPolls);
+  // two-round presidential countries (Brazil, France): the head-to-head hero
+  // whenever the poll window carries runoff pairs; it falls back to the
+  // generic hero itself when there are fewer than two runoff polls
+  if(filteredPolls.some(p=>p.runoff&&Object.keys(p.runoff).length))
+    return brazilRunoffHero(avg, filteredPolls);
   return renderHeroGeneric(avg, filteredPolls);
 }
 function renderHeroGeneric(avg, filteredPolls){

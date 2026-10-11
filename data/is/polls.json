@@ -2,7 +2,7 @@
  "country": "is",
  "source": "Wikipedia (is)",
  "source_url": "https://is.wikipedia.org/wiki/N%C3%A6stu_al%C3%BEingiskosningar",
- "scraped_at": "2026-10-11T08:39:32Z",
+ "scraped_at": "2026-10-11T12:03:58Z",
  "poll_count": 27,
  "polls": [
   {
@@ -41,7 +41,8 @@
     "j": 6.0,
     "p": 3.1,
     "v": 2.1
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -79,7 +80,8 @@
     "j": 5.2,
     "p": 3.5,
     "v": 2.2
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -117,7 +119,8 @@
     "j": 6.2,
     "p": 3.6,
     "v": 3.1
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -155,7 +158,8 @@
     "j": 5.4,
     "p": 4.0,
     "v": 3.3
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -193,7 +197,8 @@
     "j": 4.7,
     "p": 3.2,
     "v": 3.3
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -231,7 +236,8 @@
     "j": 2.1,
     "p": 2.9,
     "v": 3.6
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Prósent",
@@ -307,7 +313,8 @@
     "j": 1.6,
     "p": 3.4,
     "v": 3.6
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -345,7 +352,8 @@
     "j": 1.9,
     "p": 3.4,
     "v": 3.1
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Prósent",
@@ -402,7 +410,8 @@
     "j": 2.5,
     "p": 2.7,
     "v": 4.2
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -440,7 +449,8 @@
     "j": 1.9,
     "p": 2.8,
     "v": 4.3
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -478,7 +488,8 @@
     "j": 2.3,
     "p": 2.1,
     "v": 5.1
-   }
+   },
+   "method": "phone"
   },
   {
    "pollster": "Maskína",
@@ -516,7 +527,8 @@
     "j": 2.4,
     "p": 2.7,
     "v": 3.7
-   }
+   },
+   "method": "phone"
   }
  ]
 }

@@ -2,9 +2,24 @@
   "country": "austria",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Next_Austrian_legislative_election",
-  "scraped_at": "2026-10-10T18:40:59Z",
-  "poll_count": 105,
+  "scraped_at": "2026-10-11T12:03:28Z",
+  "poll_count": 106,
   "polls": [
+    {
+      "pollster": "IFDD",
+      "date": "2026-10-07",
+      "votes": {
+        "fpoe": 40.0,
+        "oevp": 19.0,
+        "spoe": 13.0,
+        "neos": 7.0,
+        "gruene": 14.0,
+        "kpoe": 5.0
+      },
+      "country": "austria",
+      "date_end": "2026-10-10",
+      "n": 1000
+    },
     {
       "pollster": "OGM",
       "date": "2026-10-05",

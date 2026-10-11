@@ -361,7 +361,7 @@ CYCLES = {
             # NSi column (the coalition's dominant member - the early polls
             # list NSi/SLS/FOKUS separately)
             "cols": {"gs": r"^gs", "sds": r"^sds", "nsf": r"^nsi",
-                     "sd": r"^sd$", "dem": r"^dem", "l": r"^levica",
+                     "sd": r"^sd$", "dem": r"^dem", "l": r"^levica|^lv$",
                      "v": r"^vesna", "res": r"^res", "pir": r"^pir",
                      "sns": r"^sns", "mi": r"^mi"},
             "result": {"gs": 28.66, "sds": 27.88, "nsf": 9.26, "sd": 6.71,

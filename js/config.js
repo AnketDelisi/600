@@ -25823,6 +25823,7 @@ saxony_anhalt: {
     method: 'dhondt',             // per-constituency D'Hondt (11 each)
     seatBased: false,
     constituencies: false,
+    hideConstituencyTable: true,  // per-constituency table hidden by request
     recencyHalfLifeDays: 30,
     defaultDays: 90,
     // the Italian and Hungarian minority seats are reserved
@@ -25844,14 +25845,16 @@ saxony_anhalt: {
     order: ['gs', 'sds', 'nsf', 'sd', 'dem', 'l', 'v', 'res', 'pvp', 'pir', 'sns', 'mi'],
     parlOrder: ['mi', 'l', 'v', 'sd', 'gs', 'pir', 'res', 'pvp', 'nsf', 'dem', 'sns', 'sds'],
     // the incumbent GS-led government at the time of the March 2026 election
+    // the SDS-led government formed after the March 2026 election:
+    // SDS + NSi/SLS/FOKUS + Democrats + Resni.ca (48 seats)
     blocs: {
-      bloc1: { name: 'Government', short: 'GOV', parties: ['gs', 'sd', 'l'], color: '#00A9E0' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['sds', 'nsf', 'dem', 'v', 'res', 'pvp', 'pir', 'sns', 'mi'], color: '#F7D500' },
+      bloc1: { name: 'Government', short: 'GOV', parties: ['sds', 'nsf', 'dem', 'res'], color: '#FCDC00' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['gs', 'sd', 'l', 'v', 'pvp', 'pir', 'sns', 'mi'], color: '#00569D' },
     },
     coalitions: [
-      { name: 'GS + SD + L', parties: ['gs', 'sd', 'l'] },
+      { name: 'SDS + NSF + DEM + RES', parties: ['sds', 'nsf', 'dem', 'res'] },
+      { name: 'SDS + NSF + DEM + RES + SNS', parties: ['sds', 'nsf', 'dem', 'res', 'sns'] },
       { name: 'GS + SD + L + V', parties: ['gs', 'sd', 'l', 'v'] },
-      { name: 'SDS + NSF + DEM + SNS', parties: ['sds', 'nsf', 'dem', 'sns'] },
       { name: 'GS + SDS', parties: ['gs', 'sds'] },
     ],
     lastElection: {

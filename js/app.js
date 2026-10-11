@@ -2031,8 +2031,30 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
     const gArr=conf.districts?conf.districts[String(nr)]:null;
     if(!gArr) return null;
     base=conf.gebiete[gArr];
+    // recency-weighted base blend (Portugal 2025+2024, baseBlend): the
+    // projection reads the last two elections' per-district geography,
+    // while the result views keep the pure last election. A party absent
+    // from the previous election holds its last-election baseline (the
+    // same hold the noCandidate/pastOnly machinery uses).
+    if(!resultMode&&conf.prevGebiete&&conf.baseBlend!==undefined){
+      const pv=conf.prevGebiete[gArr];
+      if(pv){
+        const w=conf.baseBlend, nb={};
+        for(const p in base) nb[p]=(pv[p]!==undefined)
+          ?base[p]*w+pv[p]*(1-w):base[p];
+        base=nb;
+      }
+    }
   }
-  const nat=conf.national2021||LAST_ELECTION.results;
+  let nat=conf.national2021||LAST_ELECTION.results;
+  // the swing anchor is blended the same way, so past and anchor stay the
+  // same election's shares (a mixed pair would distort the swing ratio)
+  if(!resultMode&&conf.prevNational&&conf.baseBlend!==undefined){
+    const w=conf.baseBlend, nn={};
+    for(const p in nat) nn[p]=(conf.prevNational[p]!==undefined)
+      ?nat[p]*w+conf.prevNational[p]*(1-w):nat[p];
+    nat=nn;
+  }
   // District swing method (backtested on the 2026 MV/Berlin state elections,
   // 114 Wahlkreise, actual per-district results):
   //   proportional  now = past * (nat_now/nat_past)   MAE 2.29pp, 88% winners

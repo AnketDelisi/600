@@ -24,6 +24,7 @@ from shapely.geometry import shape, mapping
 
 sys.path.insert(0, os.path.dirname(__file__))
 import build_map_svg as bm
+from fr_departments import NAME_CODE
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 CACHE = os.path.join(ROOT, "scraper", ".cache")
@@ -34,14 +35,6 @@ BMV_SVG = os.path.join(ROOT, "bmv", "img", "france.svg")
 ATTRIBUTION = ("R\u00e9sultats: Minist\u00e8re de l'Int\u00e9rieur (2022, via "
                "en.wikipedia); G\u00e9om\u00e9trie: GADM 4.1")
 
-# the four departments the old SVG was missing
-EXTRA = {
-    "paris": "75",
-    "hautsdeseine": "92",
-    "seinesaintdenis": "93",
-    "valdemarne": "94",
-}
-
 
 def fold(s):
     s = unicodedata.normalize("NFKD", s)
@@ -51,13 +44,7 @@ def fold(s):
 
 def main():
     force = "--force" in sys.argv
-    t = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
-    i = t.find("  france: {")
-    seg = t[i:i + 30000]
-    pairs = re.findall(r'"?Dep[0-9AB]{2}_([^":]+)"?\s*:\s*"([0-9AB]{2})"',
-                       seg)
-    name_code = {fold(n): c for n, c in pairs}
-    name_code.update(EXTRA)
+    name_code = {fold(n): c for n, c in NAME_CODE.items()}
     assert len(name_code) == 96, len(name_code)
 
     gadm = json.loads(open(GADM, encoding="utf8").read())

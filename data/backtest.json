@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T09:17:08Z",
+ "generated": "2026-10-11T09:59:10Z",
  "horizons": [
   60,
   30,
@@ -360,5 +360,171 @@
     "0": 2.89
    }
   }
+ },
+ "calibration": {
+  "n": 15,
+  "buckets": [
+   {
+    "lo": 0.0,
+    "hi": 0.5,
+    "n": 2,
+    "hits": 2
+   },
+   {
+    "lo": 0.5,
+    "hi": 0.75,
+    "n": 5,
+    "hits": 2
+   },
+   {
+    "lo": 0.75,
+    "hi": 0.9,
+    "n": 1,
+    "hits": 1
+   },
+   {
+    "lo": 0.9,
+    "hi": 1.01,
+    "n": 7,
+    "hits": 7
+   }
+  ],
+  "cycles": [
+   {
+    "cycle": "uk-2024",
+    "bloc": "bloc1",
+    "leader": "lab",
+    "p": 0.985,
+    "actual": 411,
+    "need": 326,
+    "hit": true
+   },
+   {
+    "cycle": "spain-2023",
+    "bloc": "bloc2",
+    "leader": "pp",
+    "p": 0.685,
+    "actual": 171,
+    "need": 176,
+    "hit": false
+   },
+   {
+    "cycle": "bc-2024",
+    "bloc": "bloc2",
+    "leader": "cpbc",
+    "p": 0.58,
+    "actual": 46,
+    "need": 47,
+    "hit": false
+   },
+   {
+    "cycle": "serbia-2023",
+    "bloc": "bloc1",
+    "leader": "sns",
+    "p": 1.0,
+    "actual": 154,
+    "need": 126,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "latvia-2022",
+    "bloc": "bloc1",
+    "leader": "jv",
+    "p": 1.0,
+    "actual": 70,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.515,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "pt-2024",
+    "bloc": "bloc2",
+    "leader": "ps",
+    "p": 1.0,
+    "actual": 150,
+    "need": 116,
+    "hit": true
+   },
+   {
+    "cycle": "estonia-2023",
+    "bloc": "bloc1",
+    "leader": "ref",
+    "p": 0.001,
+    "actual": 51,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "lt-2024",
+    "bloc": "bloc1",
+    "leader": "lsdp",
+    "p": 0.938,
+    "actual": 77,
+    "need": 71,
+    "hit": true
+   },
+   {
+    "cycle": "jp-2026",
+    "bloc": "bloc1",
+    "leader": "ldp",
+    "p": 1.0,
+    "actual": 316,
+    "need": 233,
+    "hit": true
+   },
+   {
+    "cycle": "kr-2024",
+    "bloc": "bloc1",
+    "leader": "dpk",
+    "p": 0.603,
+    "actual": 175,
+    "need": 151,
+    "hit": true
+   },
+   {
+    "cycle": "hr-2024",
+    "bloc": "bloc1",
+    "leader": "hdz",
+    "p": 0.587,
+    "actual": 75,
+    "need": 76,
+    "hit": false
+   },
+   {
+    "cycle": "is-2024",
+    "bloc": "bloc1",
+    "leader": "s",
+    "p": 0.777,
+    "actual": 36,
+    "need": 32,
+    "hit": true
+   },
+   {
+    "cycle": "si-2026",
+    "bloc": "bloc1",
+    "leader": "sds",
+    "p": 0.347,
+    "actual": 48,
+    "need": 46,
+    "hit": true
+   }
+  ]
  }
 }

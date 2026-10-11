@@ -2388,6 +2388,22 @@ function runoffConf(roAvg){
           nat[k]=c.nationalRunoff[k]!==undefined?c.nationalRunoff[k]:
                  (c.nationalRunoff.camp!==undefined?c.nationalRunoff.camp:0);
         });
+        // 2024 EP geography (runoff2024): blend the camp-vs-RN two-way
+        // shares into both the per-department baselines and the anchor
+        // (runoffBlend, default 0.5) - the 2022 runoff is the last real
+        // runoff, the 2024 EP the most recent measurement of the same blocs
+        if(c.runoff2024&&c.nationalRunoff2024){
+          const w=(c.runoffBlend!==undefined)?c.runoffBlend:0.5;
+          const map24=(src,k)=>src[k]!==undefined?src[k]:
+                              (src.camp!==undefined?src.camp:0);
+          for(const nr in geb){
+            const s=c.runoff2024[nr];
+            if(!s) continue;
+            const row=geb[nr];
+            for(const k in row) row[k]=(1-w)*row[k]+w*map24(s,k);
+          }
+          for(const k in nat) nat[k]=(1-w)*nat[k]+w*map24(c.nationalRunoff2024,k);
+        }
         return {...c, gebiete:geb, national2021:nat};
       }
       // a left candidate does not inherit the president's runoff

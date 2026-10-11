@@ -29,6 +29,7 @@ REF = {
     "france": (13, 50.0, None, False),
     "germany": (630, 5.0, "sainte_lague_standard", False),
     "greece": (300, 3.0, None, True),
+    "hr": (151, 5.0, "dhondt", False),
     "hu": (199, 5.0, "dhondt", False),
     "israel": (120, 3.25, None, False),
     "italy": (400, 3.0, None, False),
@@ -59,6 +60,7 @@ SEAT_SUM_NOTES = {
     "italy": "4 unmodelled seats -> auto Other wedge",
     "lt": "2 unmodelled district winners (independents/PLT) -> auto Other wedge",
     "jp": "5 unmodelled winners (Genzei-Yukoku 1 + independents 4) -> auto Other wedge",
+    "hr": "8 minority seats (reservedSeats other: 8) -> auto Other wedge",
 }
 
 

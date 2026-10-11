@@ -1,23 +1,25 @@
 # Coverage roadmap
 
-Reviewed 2026-10-10. Current coverage: 32 country models in the calendar
-(Austria, BC, Brazil, Bulgaria + presidential, Czechia, Denmark, Estonia,
-Finland, France, Germany, Greece, Hungary, Israel, Italy, **Japan**,
-Latvia, **Lithuania**, Moldova, Netherlands, **Norway**, New Zealand,
-Poland, Portugal, Quebec, Romania, Serbia, Slovakia, **South Korea**,
-Spain, Sweden, UK)
+Reviewed 2026-10-10. Current coverage: 33 country models in the calendar
+(Austria, BC, Brazil, Bulgaria + presidential, **Croatia**, Czechia,
+Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Israel,
+Italy, **Japan**, Latvia, **Lithuania**, Moldova, Netherlands, **Norway**,
+New Zealand, Poland, Portugal, Quebec, Romania, Serbia, Slovakia,
+**South Korea**, Spain, Sweden, UK)
 plus three German states (Berlin, Mecklenburg-Vorpommern, Saxony-Anhalt)
-and the separate US midterms page. Norway, Lithuania, Japan and South
-Korea all have measured backtests now (T-0 seat MAE: NO n/a, LT 2.18,
-JP 8.89 - the JP residual is the unmodellable list-exhaustion forfeiture;
-KR reproduction via seats_run is 175/109/12/2/1/1 vs actual
-175/108/12/3/1/1 - the semi-linked vs plain D'Hondt delta).
+and the separate US midterms page. Norway, Lithuania, Japan, South Korea
+and Croatia all have measured backtests now (T-0 seat MAE: NO n/a,
+LT 2.18, JP 8.89 - the JP residual is the unmodellable list-exhaustion
+forfeiture; KR 2.33; HR 0.67). KR and HR reproduce the historical
+allocation through seats_run (KR 175/109/12/2/1/1 vs actual
+175/108/12/3/1/1 - the semi-linked vs plain D'Hondt delta; HR exactly,
+61/42/14/11/10/2/2/1 + 8 reserved).
 
 Since the last review, several listed candidates are resolved: the
 March 2026 German state elections and May 2026 Holyrood vote passed
 (could still be added as result pages, low value), Slovenia's 2026
 election was held on 22 March 2026 (next cycle 2030), and Lithuania /
-Japan / Norway / South Korea were built.
+Japan / Norway / South Korea / Croatia were built.
 
 Candidates below were re-verified on 2026-10-10 by checking the live
 polling pages: "rows" is the polling table size (a proxy for data
@@ -27,14 +29,13 @@ sufficiency), the system notes map to the existing machinery.
 
 | # | Election | When | Polling (rows) | System | Reuses | Effort |
 |---|----------|------|----------------|--------|--------|--------|
-| 1 | **Croatia** parliamentary | 2028 | 83 (good) | 151 = 140 PR (10 districts, D'Hondt, 5%) + 3 diaspora + 8 minorities | the Poland per-district path + reservedSeats (Romania/Denmark) | S-M (map: 10 constituencies, easy) |
-| 2 | **Iceland** parliamentary | 30 Nov 2028 | 41 (good) | 63 = 54 district (6 constituencies, D'Hondt) + 9 leveling (2% threshold) | the Norway playbook exactly (district + leveling) | S-M (map: 6 constituencies / 8 regions) |
-| 3 | **Argentina** legislative | 24 Oct 2027 | ~44 (moderate) | Chamber half (~127) by province D'Hondt, 24 provinces | the seatDistricts per-province path (Poland) | S-M (map: 24 provinces) |
-| 4 | **Canada** federal | Oct 2029 (fixed) | ~400 (very rich) | FPTP, 343 ridings | the BC/QC riding builders + Elections Canada geodata | M model + L map (343 ridings) |
-| 5 | **Mexico** midterms | Jun 2027 | ~35 (moderate) | 500 = 300 FPTP + 200 PR (5 regional lists) | the Japan winnerDistricts + prDistricts path | M-L (300 district geodata is the risk; states-level map fallback) |
-| 6 | **France presidential** | Apr 2027 | very rich (dedicated page) | national two-round | the Brazil runoff machinery + the presidential page style (bgpres) as a new `frpres` key | M (no new map needed if national) |
-| 7 | **Australia** federal | by May 2028 | ~350 (very rich) | preferential (IRV) FPTP | needs a TCP-based winner rule validated on 2025 | M-L (model is the risk, not data) |
-| 8 | **Ireland** Dáil | by ~2030 | ~48 (moderate) | STV | no honest shortcut exists | L (defer) |
+| 1 | **Iceland** parliamentary | 30 Nov 2028 | 41 (good) | 63 = 54 district (6 constituencies, D'Hondt) + 9 leveling (2% threshold) | the Norway playbook exactly (district + leveling) | S-M (map: 6 constituencies / 8 regions) |
+| 2 | **Argentina** legislative | 24 Oct 2027 | ~44 (moderate) | Chamber half (~127) by province D'Hondt, 24 provinces | the seatDistricts per-province path (Poland) | S-M (map: 24 provinces) |
+| 3 | **Canada** federal | Oct 2029 (fixed) | ~400 (very rich) | FPTP, 343 ridings | the BC/QC riding builders + Elections Canada geodata | M model + L map (343 ridings) |
+| 4 | **Mexico** midterms | Jun 2027 | ~35 (moderate) | 500 = 300 FPTP + 200 PR (5 regional lists) | the Japan winnerDistricts + prDistricts path | M-L (300 district geodata is the risk; states-level map fallback) |
+| 5 | **France presidential** | Apr 2027 | very rich (dedicated page) | national two-round | the Brazil runoff machinery + the presidential page style (bgpres) as a new `frpres` key | M (no new map needed if national) |
+| 6 | **Australia** federal | by May 2028 | ~350 (very rich) | preferential (IRV) FPTP | needs a TCP-based winner rule validated on 2025 | M-L (model is the risk, not data) |
+| 7 | **Ireland** Dáil | by ~2030 | ~48 (moderate) | STV | no honest shortcut exists | L (defer) |
 
 ## Thin data - wait
 

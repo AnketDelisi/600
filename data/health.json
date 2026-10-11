@@ -64,6 +64,11 @@
   "poll_count": 324,
   "scraped_at": "2026-10-10T18:41:20Z"
  },
+ "hr": {
+  "latest_date": "2026-09-22",
+  "poll_count": 70,
+  "scraped_at": "2026-10-10T22:20:29Z"
+ },
  "hu": {
   "latest_date": "2026-09-30",
   "poll_count": 25,

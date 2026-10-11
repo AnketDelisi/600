@@ -698,7 +698,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hu','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
+  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
   ['Americas',['bc','brazil','qc']],
   ['Middle East & Asia-Pacific',['israel','jp','kr','nz']],
 ];

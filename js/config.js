@@ -25671,6 +25671,87 @@ saxony_anhalt: {
     },
   },
 
+  hr: {
+    name: 'Croatia',
+    seats: 151,                   // 140 (10 districts x 14) + 3 diaspora + 8 minorities
+    threshold: 5.0,               // 5% per electoral district
+    districtThreshold: true,      // the threshold applies in each district
+    method: 'dhondt',
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 30,
+    defaultDays: 90,
+    // the 8 minority seats are structurally reserved (SDSS 3 + 5 others);
+    // modelled as a fixed Other allocation
+    reservedSeats: { other: 8 },
+    parties: {
+      hdz:    { code: 'HDZ',    name: 'Hrvatska demokratska zajednica', name_en: 'Croatian Democratic Union', color: '#005BAA', ideology: "Conservatism, Christian democracy" },
+      sdp:    { code: 'SDP',    name: 'Socijaldemokratska partija Hrvatske', name_en: 'Social Democratic Party of Croatia', color: '#ED1C24', ideology: "Social democracy, Social liberalism" },
+      mozemo: { code: 'Možemo!', name: 'Možemo!', name_en: 'We Can! (Croatia)', color: '#C3D746', ideology: "Green politics, Eco-socialism, Progressivism" },
+      most:   { code: 'MOST',   name: 'Most', name_en: 'The Bridge (Croatia)', color: '#E85726', ideology: "Social conservatism, Christian democracy" },
+      dp:     { code: 'DP',     name: 'Domovinski pokret', name_en: 'Homeland Movement (Croatia)', color: '#A5A5A5', ideology: "Croatian nationalism, Right-wing populism" },
+      drito:  { code: 'Drito',  name: 'Drito', name_en: 'Drito (political party)', color: '#2C8C8C', ideology: "Centrism, Anti-corruption" },
+      hsu:    { code: 'HSU',    name: 'Hrvatska stranka umirovljenika', name_en: 'Croatian Party of Pensioners', color: '#004B88', ideology: "Pensioners' interests, Social liberalism" },
+      hs:     { code: 'HS',     name: 'Hrvatski suverenisti', name_en: 'Croatian Sovereignists', color: '#033E7C', ideology: "National conservatism, Sovereigntism" },
+      centar: { code: 'Centar', name: 'Centar', name_en: 'Centre (Croatian political party)', color: '#2D7AB0', ideology: "Social liberalism, Centrism" },
+      domino: { code: 'DOMiNO', name: 'Dom i nacionalno okupljanje', name_en: 'Home and National Rally', color: '#17194C', ideology: "Croatian nationalism, Right-wing populism" },
+      ids:    { code: 'IDS',    name: 'Istarski demokratski sabor', name_en: 'Istrian Democratic Assembly', color: '#0CB14B', ideology: "Istrian regionalism, Social liberalism" },
+      fokus:  { code: 'Fokus',  name: 'Fokus', name_en: 'Focus (Croatian political party)', color: '#05AACB', ideology: "Classical liberalism, Liberalism" },
+      hss:    { code: 'HSS',    name: 'Hrvatska seljačka stranka', name_en: 'Croatian Peasant Party', color: '#02B14B', ideology: "Agrarianism, Christian democracy" },
+      hns:    { code: 'HNS',    name: 'Hrvatska narodna stranka – liberalni demokrati', name_en: "Croatian People's Party – Liberal Democrats", color: '#FF931E', ideology: "Social liberalism, Pro-Europeanism" },
+      nps:    { code: 'NPS',    name: 'Neovisna platforma Sjever', name_en: 'Independent Platform of the North', color: '#2C9180', ideology: "Regionalism, Centrism" },
+      pip:    { code: 'PiP',    name: 'Pravo i Pravda', name_en: 'Law and Justice (Croatia)', color: '#203D71', ideology: "Croatian nationalism, Right-wing populism" },
+      rf:     { code: 'RF',     name: 'Radnička fronta', name_en: "Workers' Front (Croatia)", color: '#CC0000', ideology: "Democratic socialism, Left-wing populism" },
+    },
+    order: ['hdz', 'sdp', 'mozemo', 'most', 'dp', 'drito', 'hsu', 'hs', 'centar', 'domino', 'ids', 'fokus', 'hss', 'hns', 'nps', 'pip', 'rf'],
+    parlOrder: ['rf', 'sdp', 'mozemo', 'hsu', 'hns', 'hss', 'centar', 'ids', 'nps', 'drito', 'fokus', 'most', 'hdz', 'hs', 'dp', 'domino', 'pip'],
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['hdz', 'dp'], color: '#2E5DA3' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['sdp', 'mozemo', 'most', 'drito', 'hsu', 'hs', 'centar', 'domino', 'ids', 'fokus', 'hss', 'hns', 'nps', 'pip', 'rf'], color: '#ED1C24' },
+    },
+    coalitions: [
+      { name: 'HDZ + DP', parties: ['hdz', 'dp'] },
+      { name: 'HDZ + DP + MOST', parties: ['hdz', 'dp', 'most'] },
+      { name: 'SDP + Možemo + Centar + HSS', parties: ['sdp', 'mozemo', 'centar', 'hss'] },
+      { name: 'SDP + Možemo + MOST', parties: ['sdp', 'mozemo', 'most'] },
+    ],
+    lastElection: {
+      date: '2024-04-17',
+      // national shares of the 2024 coalition lists attributed to their lead
+      // parties (Rivers of Justice -> SDP, Our Croatia -> NPS/IDS)
+      results: { hdz: 34.4, sdp: 25.4, dp: 9.6, mozemo: 9.1, most: 8.0, nps: 1.22, ids: 2.25, fokus: 2.3 },
+      seats:   { hdz: 61, sdp: 42, dp: 14, most: 11, mozemo: 10, nps: 2, ids: 2, fokus: 1 },
+    },
+    map: {
+      svg: 'img/croatia.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // The 10 electoral districts I-X (Commons 2024 map, unlabeled paths
+      // identified against the official composition; the 2024 fills confirm
+      // III/VIII Rivers of Justice, the rest HDZ). Per-district D'Hondt with
+      // the 5% threshold applied inside each district (districtThreshold);
+      // baselines are the 2024 coalition shares mapped to their lead parties
+      // (Rivers of Justice -> SDP, Our Croatia -> NPS in III / IDS in VIII).
+      // The XI diaspora (3 seats) is a modelled district without a shape;
+      // the 8 minority seats are reservedSeats.
+      districts: {"i": "i", "ii": "ii", "iii": "iii", "iv": "iv", "v": "v", "vi": "vi", "vii": "vii", "viii": "viii", "ix": "ix", "x": "x", "xi": "xi"},
+      seatDistricts: {"i": 14, "ii": 14, "iii": 14, "iv": 14, "v": 14, "vi": 14, "vii": 14, "viii": 14, "ix": 14, "x": 14, "xi": 3},
+      names: {"i": "I", "ii": "II", "iii": "III", "iv": "IV", "v": "V", "vi": "VI", "vii": "VII", "viii": "VIII", "ix": "IX", "x": "X", "xi": "Diaspora (XI)"},
+      gebiete: {"i": {"hdz": 27.65, "sdp": 24.37, "dp": 9.29, "most": 7.34, "mozemo": 19.87, "ourcroatia": 0.9, "fokus": 3.4}, "ii": {"hdz": 35.3, "sdp": 24.8, "dp": 11.1, "most": 9.1, "mozemo": 8.6, "ourcroatia": 1.2, "fokus": 2.8}, "iii": {"hdz": 27.6, "sdp": 36.8, "dp": 5.1, "most": 3.8, "mozemo": 6.2, "nps": 12.2, "fokus": 0.9}, "iv": {"hdz": 41.8, "sdp": 25.2, "dp": 13.1, "most": 6.0, "mozemo": 5.5, "ourcroatia": 1.0, "fokus": 1.0}, "v": {"hdz": 42.8, "sdp": 19.6, "dp": 17.4, "most": 8.5, "mozemo": 3.6, "ourcroatia": 0.4, "fokus": 1.0}, "vi": {"hdz": 24.8, "sdp": 23.8, "dp": 8.7, "most": 9.5, "mozemo": 18.1, "ourcroatia": 0.6, "fokus": 7.8}, "vii": {"hdz": 41.3, "sdp": 25.4, "dp": 8.6, "most": 6.6, "mozemo": 6.9, "ourcroatia": 1.0, "fokus": 1.6}, "viii": {"hdz": 21.3, "sdp": 33.4, "dp": 4.0, "most": 5.7, "mozemo": 10.2, "ids": 15.9, "fokus": 1.9}, "ix": {"hdz": 39.7, "sdp": 19.4, "dp": 10.6, "most": 12.1, "mozemo": 4.4, "ourcroatia": 0.9, "fokus": 1.0}, "x": {"hdz": 37.0, "sdp": 25.5, "dp": 10.8, "most": 11.5, "mozemo": 5.3, "ourcroatia": 0.5, "fokus": 0.5}, "xi": {"hdz": 79.5, "most": 6.6, "mozemo": 3.0, "fokus": 0.5}},
+      national2021: {"hdz": 34.4, "sdp": 25.4, "dp": 9.6, "most": 8.0, "mozemo": 9.1, "nps": 1.22, "fokus": 2.3, "ids": 2.25},
+    },
+    pollsterMAE: {},
+    maeKey: 'HR2028',
+    logos: {
+      hdz: 'img/hr/HDZ.svg', sdp: 'img/hr/SDP.svg', mozemo: 'img/hr/MOZEMO.svg',
+      most: 'img/hr/MOST.svg', dp: 'img/hr/DP.svg', drito: 'img/hr/DRITO.svg',
+      hsu: 'img/hr/HSU.svg', hs: 'img/hr/HS.svg', centar: 'img/hr/CENTAR.svg',
+      domino: 'img/hr/DOMINO.svg', ids: 'img/hr/IDS.svg', fokus: 'img/hr/FOKUS.svg',
+      hss: 'img/hr/HSS.svg', hns: 'img/hr/HNS.svg', nps: 'img/hr/NPS.svg',
+      pip: 'img/hr/PIP.svg', rf: 'img/hr/RF.svg',
+    },
+  },
+
   bc: {
     name: 'British Columbia',
     seats: 93,

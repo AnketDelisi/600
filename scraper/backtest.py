@@ -314,6 +314,28 @@ CYCLES = {
                       "pp": 1, "nfp": 1},
         },
     },
+    "hr": {
+        2024: {
+            "article": "Opinion_polling_for_the_2024_Croatian_parliamentary_election",
+            "election": "2024-04-17", "half_life": 30,
+            # the 2024 lists were coalitions; the result below attributes each
+            # coalition's national share to its lead party (same mapping as
+            # the district baselines), and the polls measure the parties
+            "cols": {"hdz": r"^hdz", "sdp": r"^sdp", "dp": r"^dp\b",
+                     "most": r"^most", "mozemo": r"^mož|^moz",
+                     "rf": r"^rf\b", "centar": r"^centar", "hss": r"^hss",
+                     "hsu": r"^hsu", "hns": r"^hns", "ids": r"^ids",
+                     "nps": r"^nps", "fokus": r"^fokus", "hs": r"^hs\b",
+                     "domino": r"^domino", "pip": r"^pip"},
+            "result": {"hdz": 34.4, "sdp": 25.4, "dp": 9.6, "mozemo": 9.1,
+                       "most": 8.0, "nps": 1.22, "ids": 2.25, "fokus": 2.3},
+            # the model reproduces the real 2024 allocation exactly at the
+            # anchor; other = the 8 reserved minority seats
+            "seats": {"hdz": 61, "sdp": 42, "dp": 14, "most": 11,
+                      "mozemo": 10, "nps": 2, "ids": 2, "fokus": 1,
+                      "other": 8},
+        },
+    },
 }
 
 

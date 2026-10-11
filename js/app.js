@@ -1594,6 +1594,7 @@ let MAP_LAYER=0;         // 0 = main map, 1 = map2 (lower/higher layer)
 let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
 let TREND_MODE='fr';     // poll trend chart: 'fr' (first round) or 'ro' (runoff)
 let MAP_COLOR='party';   // district map coloring: 'party' or 'bloc' (Sweden)
+let FIELD_SIG=null;      // selected poll-field scenario (France 2027); null = all polls
 
 function normalizeTo(src, total){
   // direct seat counts (2022 RESULT for seat-based countries), scaled to total
@@ -6176,6 +6177,69 @@ function renderMethodology(pane){
 }
 
 /* ---------- main render ---------- */
+/* ---------- poll-field scenarios (unsettled candidate fields) ---------- */
+// Every poll tests its own hypothetical candidate field. Mixing them makes
+// the per-candidate averages sum past 100 (France 2027: ~125%). A scenario
+// groups the polls by the subset of the KEY candidates (those tested in at
+// least 40% of the window) they tested, so averaging inside a scenario
+// yields a coherent single race; polls with extra fringe candidates stay in
+// the same scenario. Shown as chips only when at least two scenarios exist.
+let FIELD_KEYS=null;
+function pollField(p){
+  if(!FIELD_KEYS||!FIELD_KEYS.length||!p.votes) return '';
+  return FIELD_KEYS.filter(k=>p.votes[k]!==undefined).join(',');
+}
+function fieldScenarios(polls){
+  const withVotes=polls.filter(p=>p.votes&&Object.keys(p.votes).length);
+  FIELD_KEYS=null;
+  if(withVotes.length<4) return [];
+  const cnt={};
+  withVotes.forEach(p=>{Object.keys(p.votes).forEach(k=>{
+    if(PARTY_META[k]&&PARTY_META[k].pastOnly) return;
+    cnt[k]=(cnt[k]||0)+1;
+  })});
+  const min=Math.max(2,Math.ceil(withVotes.length*0.4));
+  FIELD_KEYS=PARTY_ORDER.filter(k=>cnt[k]>=min).slice(0,10);
+  if(FIELD_KEYS.length<3){ FIELD_KEYS=null; return []; }
+  const groups={};
+  withVotes.forEach(p=>{
+    const sig=pollField(p);
+    if(!sig) return;
+    (groups[sig]||(groups[sig]=[])).push(p);
+  });
+  const list=Object.keys(groups).filter(s=>groups[s].length>=2)
+    .sort((a,b)=>groups[b].length-groups[a].length).slice(0,3);
+  if(list.length<2) return [];
+  const topSet=new Set(list[0].split(','));
+  return list.map((sig, idx)=>{
+    const sub=groups[sig];
+    const a=computeAverages(sub, true);
+    const top=sig.split(',').sort((x,y)=>(a[y]||0)-(a[x]||0)).slice(0,2);
+    let diff='';
+    if(idx>0){
+      const set=new Set(sig.split(','));
+      const missing=[...topSet].filter(k=>!set.has(k));
+      const extra=[...set].filter(k=>!topSet.has(k));
+      const parts=[];
+      if(missing.length)
+        parts.push('\u2212'+missing.map(k=>partyCode(k)).join(', '));
+      if(extra.length)
+        parts.push('+'+extra.map(k=>partyCode(k)).join(', '));
+      diff=parts.join(' ');
+    }
+    return {sig, n: sub.length,
+            label: top.map(k=>partyCode(k)).join(' \u00b7 ')+
+                   (diff?' \u00b7 '+diff:'')};
+  });
+}
+function fieldChips(scenarios){
+  if(!scenarios||scenarios.length<2) return '';
+  return `<div class="map-toggle-row" style="justify-content:flex-start;margin-top:10px">
+    <button class="map-toggle-btn fr-field-btn${FIELD_SIG?'':' active'}" data-field="">${t('ALL POLLS','T\u00dcM ANKETLER')}</button>
+    ${scenarios.map(s=>`<button class="map-toggle-btn fr-field-btn${FIELD_SIG===s.sig?' active':''}" data-field="${s.sig}" title="${t('polls in this field','bu alandaki anket')}: ${s.n}">${s.label} (${s.n})</button>`).join('')}
+  </div>`;
+}
+
 function renderPollsTab(){
   const pane=$('pane-polls');
   const daysEl=$('filter-days');
@@ -6191,8 +6255,18 @@ function renderPollsTab(){
   filtered.sort((a,b)=>new Date(b.date)-new Date(a.date));
   FILTERED_POLLS=filtered;
 
-  const avg=computeAverages(filtered);
-  const rawAvg=computeAverages(filtered, true);
+  // poll-field scenarios: average inside the selected field so the shares
+  // form one coherent race (the runoff machinery keeps the full window -
+  // head-to-head polls are field-independent)
+  const scenarios=fieldScenarios(filtered);
+  if(FIELD_SIG&&filtered.filter(p=>pollField(p)===FIELD_SIG).length<2)
+    FIELD_SIG=null;
+  const fieldPolls=FIELD_SIG
+    ?filtered.filter(p=>pollField(p)===FIELD_SIG)
+    :filtered;
+
+  const avg=computeAverages(fieldPolls);
+  const rawAvg=computeAverages(fieldPolls, true);
 
   let html=`<div class="tab-pane-inner">`;
   // Top row: side card beside hero + poll trend
@@ -6200,6 +6274,7 @@ function renderPollsTab(){
     <div class="card side-card"><div id="sidebar-content"></div></div>
     <div class="page-top-main">
       ${renderHero(avg, filtered)}
+      ${fieldChips(scenarios)}
       <div class="card" style="height:100%"><div class="card-head"><div class="bar"></div><div class="t">${T.trend}</div>
         ${filtered.some(p=>p.runoff)?`<div class="map-toggle-row" style="margin-left:auto">
           <button class="map-toggle-btn parl-btn trend-mode-btn${TREND_MODE==='fr'?' active':''}" data-trendmode="fr">${t('FIRST ROUND','\u0130LK TUR')}</button>
@@ -6207,7 +6282,7 @@ function renderPollsTab(){
         </div>`:''}
         <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div>
-        ${TREND_CONF?`<div style="font-size:10px;color:var(--c-text-muted);padding:6px 12px 8px">◆ ${t('dashed diamond = value extrapolated to election day','kesikli elmas = seçim gününe yansıtılan değer')} (${TREND_CONF.electionDate})</div>`:''}
+        ${TREND_CONF?`<div style="font-size:10px;color:var(--c-text-muted);padding:6px 12px 8px">◆ ${t('dashed diamond = value extrapolated to election day','kesikli elmas = se\u00e7im g\u00fcn\u00fcne yans\u0131t\u0131lan de\u011fer')} (${TREND_CONF.electionDate})</div>`:''}
     </div>
     </div>
   </div>`;
@@ -6222,7 +6297,7 @@ function renderPollsTab(){
   html+=renderStateDepth(avg);
 
         if(!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable) html+=renderConstituencyTable(avg);
-  html+=renderPollsTable(filtered);
+  html+=renderPollsTable(fieldPolls);
   html+=renderRunoffTable(filtered);
   html+=`</div>`;
   pane.innerHTML=html;
@@ -6232,12 +6307,18 @@ function renderPollsTab(){
   // Draw chart after DOM update
   requestAnimationFrame(()=>{
     const canvas=$('trend-canvas');
-    if(canvas) renderTrendChart(canvas, filtered);
+    if(canvas) renderTrendChart(canvas, fieldPolls);
+    pane.querySelectorAll('.fr-field-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        FIELD_SIG=btn.dataset.field||null;
+        renderPollsTab();
+      });
+    });
     pane.querySelectorAll('.trend-mode-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         TREND_MODE=btn.dataset.trendmode||'fr';
         const cc=$('trend-canvas');
-        if(cc) renderTrendChart(cc, filtered);
+        if(cc) renderTrendChart(cc, fieldPolls);
         // the generic .parl-btn handler re-renders this tab on any click
         // (bindParlToggles), so match the live buttons by mode, not identity
         pane.querySelectorAll('.trend-mode-btn').forEach(b=>
@@ -6283,6 +6364,7 @@ PARL_MODE='proj';
     MAP_LAYER=0;
     FC_MODE='proj';
     MAP_COLOR='party';
+    FIELD_SIG=null;
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});

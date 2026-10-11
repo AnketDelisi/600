@@ -3186,7 +3186,7 @@ async function renderPoster(opts){
       ctx.fillStyle=posterTextColor(lastTile.color||'#888');
       ctx.textAlign='right';
       ctx.fillText('calibrated: '+Math.round(b.lo*100)+'%+ -> '+
-        b.hits+'/'+b.n+' ('+cal.n+' cycles)',lx,y+6+th3-10);
+        b.hits+'/'+b.n+' ('+(cal.n_cycles||cal.n)+' cycles)',lx,y+6+th3-10);
       ctx.textAlign='left';
     }
   }
@@ -3378,7 +3378,7 @@ function allocateSeatsBaderOfer(votes, totalSeats, threshold){
 // to parties at/above the 4% threshold by D'Hondt over those remainders.
 // Reproduces the 2026 result exactly (GS 29 / SDS 28 / NSi+SLS+FOKUS 9 /
 // SD 6 / Democrats 6 / Levica+Vesna 5 / Resni.ca 5 + 2 minority).
-function allocateSeatsSlovenia(avg){
+function allocateSeatsSlovenia(avg, regionNoise, districtNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.nationalRemainders||!conf.seatDistricts) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
@@ -3397,7 +3397,7 @@ function allocateSeatsSlovenia(avg){
   const geb=conf.gebiete||{};
   for(const nr of Object.keys(conf.seatDistricts)){
     const seatsN=conf.seatDistricts[nr];
-    const shares=districtShares(nr, avg, false, null);
+    const shares=districtShares(nr, avg, false, null, regionNoise, districtNoise);
     if(!shares) continue;
     let pastSum=0;
     PARTY_ORDER.forEach(p=>{pastSum+=(geb[nr]||{})[p]||0});
@@ -3437,14 +3437,14 @@ function allocateSeatsSlovenia(avg){
   return out;
 }
 
-function allocateSeatsByDistrict(avg, regionNoise){
+function allocateSeatsByDistrict(avg, regionNoise, districtNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.seatDistricts) return null;
   const out={};
   PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.seatDistricts)){
     const seatsN=conf.seatDistricts[nr];
-    const shares=districtShares(nr, avg, false, null, regionNoise);
+    const shares=districtShares(nr, avg, false, null, regionNoise, districtNoise);
     if(!shares) continue;
     const votes={};
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?shares[p].now:0});
@@ -3489,8 +3489,8 @@ function allocateSeatsByDistrict(avg, regionNoise){
 // result exactly (Ap 53 / FrP 47 / H 24 / SV 9 / Sp 9 / R 9 / MDG 8 /
 // KrF 7 / V 3). Shared by the point projection, the Monte Carlo and the
 // map's seat dots.
-function districtTierSplit(nr, avg, resultMode, conf, seatsN){
-  const shares=districtShares(nr, avg, resultMode, conf);
+function districtTierSplit(nr, avg, resultMode, conf, seatsN, regionNoise, districtNoise){
+  const shares=districtShares(nr, avg, resultMode, conf, regionNoise, districtNoise);
   if(!shares) return null;
   const votes={};
   PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
@@ -3508,14 +3508,14 @@ function districtTierSplit(nr, avg, resultMode, conf, seatsN){
   return seats;
 }
 
-function allocateSeatsLeveling(avg){
+function allocateSeatsLeveling(avg, regionNoise, districtNoise){
   const c=COUNTRIES[COUNTRY]||{};
   if(!c.levelingSeats) return null;
   const conf=MAP_CONF();
   if(!conf||!conf.seatDistricts) return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.seatDistricts)){
-    const split=districtTierSplit(nr, avg, false, conf, conf.seatDistricts[nr]);
+    const split=districtTierSplit(nr, avg, false, conf, conf.seatDistricts[nr], regionNoise, districtNoise);
     if(!split) continue;
     for(const p in split) out[p]=(out[p]||0)+split[p];
   }
@@ -3714,7 +3714,7 @@ function allocateSeatsTotal(avg, total){
 // constituencies (map2), each one is a winner-takes-one race and the rest is
 // a national PR with the threshold; otherwise the county magnitudes
 // approximate the SMD blocks.
-function allocateSeatsWinnerDistricts(avg, total){
+function allocateSeatsWinnerDistricts(avg, total, regionNoise, districtNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.winnerDistricts) return null;
   const c=COUNTRIES[COUNTRY]||{};
@@ -3723,13 +3723,13 @@ function allocateSeatsWinnerDistricts(avg, total){
   if(c.map2&&c.map2.districts&&c.map2.gebiete){
     const conf2=Object.assign({},c,c.map,c.map2);
     for(const nr of Object.keys(c.map2.districts)){
-      const w=districtWinnerProjection(nr,avg,conf2);
+      const w=districtWinnerProjection(nr,avg,conf2,regionNoise,districtNoise);
       if(w){ out[w]=(out[w]||0)+1; direct++; }
     }
   }else{
     for(const nr of Object.keys(conf.winnerDistricts)){
       const n=conf.winnerDistricts[nr];
-      const w=districtWinnerProjection(nr,avg,conf);
+      const w=districtWinnerProjection(nr,avg,conf,regionNoise,districtNoise);
       if(w){ out[w]=(out[w]||0)+n; direct+=n; }
     }
   }
@@ -3876,17 +3876,17 @@ function bindParlToggles(avg){
 }
 
 /* ---------- forecast: fast Sainte-Laguë ---------- */
-function allocateSeatsFastRaw(votes, total){
+function allocateSeatsFastRaw(votes, total, regionNoise, districtNoise){
   if(OVERHANG){
     return overhangSeats(votes,total,directFromProjection(votes),OVERHANG.cap);
   }
   const czechia=allocateSeatsCzechia(votes);
   if(czechia) return czechia;
-  const leveling=allocateSeatsLeveling(votes);
+  const leveling=allocateSeatsLeveling(votes, regionNoise, districtNoise);
   if(leveling) return leveling;
-  const slovenia=allocateSeatsSlovenia(votes);
+  const slovenia=allocateSeatsSlovenia(votes, regionNoise, districtNoise);
   if(slovenia) return slovenia;
-  const byDistrict=allocateSeatsByDistrict(votes);
+  const byDistrict=allocateSeatsByDistrict(votes, regionNoise, districtNoise);
   if(byDistrict) return byDistrict;
   // national-minority exemption + no-poll fallback (see allocateSeatsN)
   const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
@@ -3940,8 +3940,8 @@ function allocateSeatsFastRaw(votes, total){
   return finish();
 }
 
-function allocateSeatsFast(votes, total){
-  return applyReserved(allocateSeatsFastRaw(votes, Math.max(0, total - reservedTotal())));
+function allocateSeatsFast(votes, total, regionNoise, districtNoise){
+  return applyReserved(allocateSeatsFastRaw(votes, Math.max(0, total - reservedTotal()), regionNoise, districtNoise));
 }
 
 /* ---------- forecast: Monte Carlo simulation ---------- */
@@ -4153,7 +4153,8 @@ function calibNote(){
   if(!cal||!cal.buckets||!cal.buckets.length||!cal.n) return '';
   const parts=cal.buckets.map(b=>
     `${Math.round(b.lo*100)}\u2013${Math.round(b.hi*100)}%: ${b.hits}/${b.n}`).join(' \u00b7 ');
-  return `<div style="font-size:11px;color:var(--c-text-muted);margin-top:4px">${t('calibrated on','kalibre edildi')} ${cal.n} ${t('past cycles','geçmiş d\u00f6ng\u00fc')} (${t('bloc of the projected leader','tahmin liderinin blo\u011fu')}: ${parts}</div>`;
+  const scope=cal.n_cycles?`${cal.n_cycles} ${t('cycles','d\u00f6ng\u00fc')} \u00d7 5 ${t('horizons','ufuk')}`:`${cal.n} ${t('cycle-horizons','d\u00f6ng\u00fc-ufuk')}`;
+  return `<div style="font-size:11px;color:var(--c-text-muted);margin-top:4px">${t('calibrated on','kalibre edildi')} ${scope} (${t('bloc of the projected leader','tahmin liderinin blo\u011fu')}): ${parts}</div>`;
 }
 
 function runSeatForecast(avg, nSims, nPolls){
@@ -4264,22 +4265,27 @@ function runForecast(avg, nSims, nPolls){
         if(!(r in regionNoise)) regionNoise[r]=gaussianSample(fcRand)*FORECAST_REGION_SIGMA;
       }
     }
-    // per-district swing error, scaled by electorate size (see
-    // FORECAST_DISTRICT_SIGMA)
+    // per-district swing error (the baseline pattern's own error, measured
+    // at 2.29pp MAE for proportional swing on 114 Wahlkreise): drawn for
+    // every mapped country, scaled by electorate size where the vote counts
+    // are known. Without this the seat simulation inherits only the national
+    // vote noise and the majority probabilities come out overconfident.
     let districtNoise=null;
-    if(mconf&&mconf.useConstituencies&&FORECAST_DISTRICT_SIGMA>0){
-      const ref=districtVotesMedian();
-      if(ref>0){
-        districtNoise={};
-        for(const nr of Object.keys(mconf.districts)){
+    if(mconf&&mconf.districts&&FORECAST_DISTRICT_SIGMA>0){
+      const ref=(mconf.useConstituencies)?districtVotesMedian():0;
+      districtNoise={};
+      for(const nr of Object.keys(mconf.districts)){
+        let scale=1;
+        if(ref>0){
           const c=constituencyById(nr);
           const v=(c&&c.votes2022)||ref;
-          districtNoise[nr]=gaussianSample(fcRand)*FORECAST_DISTRICT_SIGMA*
-            Math.sqrt(ref/Math.max(1,v));
+          scale=Math.sqrt(ref/Math.max(1,v));
         }
+        districtNoise[nr]=gaussianSample(fcRand)*FORECAST_DISTRICT_SIGMA*
+          scale;
       }
     }
-    const seats=(mconf&&mconf.winnerDistricts)?allocateSeatsWinnerDistricts(simVotes,SEATS_TOTAL):(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise,districtNoise):allocateSeatsFast(simVotes,SEATS_TOTAL));
+    const seats=(mconf&&mconf.winnerDistricts)?allocateSeatsWinnerDistricts(simVotes,SEATS_TOTAL,regionNoise,districtNoise):(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise,districtNoise):allocateSeatsFast(simVotes,SEATS_TOTAL,regionNoise,districtNoise));
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);

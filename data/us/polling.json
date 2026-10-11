@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-10T18:43:14Z",
+  "scraped_at": "2026-10-11T12:05:15Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -211,7 +211,7 @@
           "rep": 49.0
         },
         {
-          "pollster": "James Madison Institute",
+          "pollster": "Targoz Market Research",
           "dates": "September 28 – October 4, 2026",
           "dem": 42.0,
           "rep": 52.0
@@ -1308,7 +1308,6 @@
         {
           "pollster": "Morning Consult",
           "dates": "October 2–7, 2026",
-          "partisan": "D",
           "dem": 45.0,
           "rep": 41.0
         },
@@ -3070,6 +3069,7 @@
         {
           "pollster": "co/efficient",
           "dates": "September 16–17, 2026",
+          "partisan": "R",
           "dem": 48.0,
           "rep": 41.0
         },
@@ -3127,7 +3127,7 @@
           "rep": 47.0
         },
         {
-          "pollster": "James Madison Institute",
+          "pollster": "Targoz Market Research",
           "dates": "September 28 – October 4, 2026",
           "dem": 42.0,
           "rep": 52.0
@@ -3261,7 +3261,7 @@
       }
     },
     "Georgia": {
-      "dem": 46.9,
+      "dem": 46.5,
       "rep": 47.6,
       "source": "Aggregate (Wikipedia)",
       "polls": [
@@ -3530,9 +3530,9 @@
       }
     },
     "Maine": {
-      "dem": 50.1,
-      "rep": 38.5,
-      "ind": 6.3,
+      "dem": 50.2,
+      "rep": 38.3,
+      "ind": 6.9,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {

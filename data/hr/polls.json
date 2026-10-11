@@ -2,7 +2,7 @@
  "country": "hr",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Croatian_parliamentary_election",
- "scraped_at": "2026-10-10T22:20:29Z",
+ "scraped_at": "2026-10-11T12:03:58Z",
  "poll_count": 70,
  "polls": [
   {
@@ -19,7 +19,8 @@
     "domino": 10.1,
     "mozemo": 12.3,
     "most": 8.3
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -61,7 +62,8 @@
     "domino": 7.4,
     "mozemo": 11.1,
     "most": 8.6
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -102,7 +104,8 @@
     "domino": 7.8,
     "mozemo": 9.1,
     "most": 7.7
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -165,7 +168,8 @@
     "domino": 7.5,
     "mozemo": 8.5,
     "most": 7.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -227,7 +231,8 @@
     "domino": 6.4,
     "mozemo": 10.2,
     "most": 7.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -289,7 +294,8 @@
     "domino": 5.4,
     "mozemo": 10.4,
     "most": 6.7
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -369,7 +375,8 @@
     "dp": 3.0,
     "mozemo": 9.4,
     "most": 7.3
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -436,7 +443,8 @@
     "dp": 4.9,
     "mozemo": 10.7,
     "most": 7.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -498,7 +506,8 @@
     "mozemo": 9.6,
     "most": 7.9,
     "hsu": 2.5
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -539,7 +548,8 @@
     "domino": 1.5,
     "mozemo": 10.6,
     "most": 6.3
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -626,7 +636,8 @@
     "dp": 2.7,
     "mozemo": 9.7,
     "most": 6.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -710,7 +721,8 @@
     "dp": 3.7,
     "mozemo": 11.3,
     "most": 5.8
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -771,7 +783,8 @@
     "domino": 2.5,
     "mozemo": 10.6,
     "most": 5.7
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "2x1 komunikacije",
@@ -808,7 +821,8 @@
     "mozemo": 9.7,
     "most": 6.2,
     "ids": 2.7
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -852,7 +866,8 @@
     "mozemo": 10.7,
     "most": 5.9,
     "hs": 2.9
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -897,7 +912,8 @@
     "most": 5.9,
     "hs": 2.4,
     "hsu": 2.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -941,7 +957,8 @@
     "mozemo": 10.1,
     "most": 5.7,
     "ids": 2.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -982,7 +999,8 @@
     "dp": 2.5,
     "mozemo": 10.6,
     "most": 6.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1017,7 +1035,8 @@
     "dp": 3.0,
     "mozemo": 11.8,
     "most": 5.8
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1058,7 +1077,8 @@
     "dp": 3.2,
     "mozemo": 12.0,
     "most": 6.0
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1100,7 +1120,8 @@
     "mozemo": 11.1,
     "most": 6.7,
     "drito": 2.5
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Ipsos",
@@ -1116,7 +1137,8 @@
     "mozemo": 10.5,
     "most": 6.3,
     "drito": 2.6
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1187,7 +1209,8 @@
     "hsu": 2.5,
     "hns": 0.3,
     "drito": 2.3
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1238,7 +1261,8 @@
     "hsu": 2.1,
     "hns": 0.4,
     "drito": 2.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1284,7 +1308,8 @@
     "hsu": 2.1,
     "hns": 0.2,
     "drito": 1.1
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1335,7 +1360,8 @@
     "hsu": 2.2,
     "hns": 0.4,
     "drito": 2.2
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1379,7 +1405,8 @@
     "hsu": 2.4,
     "hns": 0.4,
     "drito": 2.2
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1424,7 +1451,8 @@
     "hsu": 2.3,
     "hns": 0.1,
     "drito": 1.7
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Ipsos",
@@ -1449,7 +1477,8 @@
     "hsu": 2.8,
     "hns": 0.1,
     "drito": 1.7
-   }
+   },
+   "method": "mixed"
   },
   {
    "pollster": "Promocija plus",
@@ -1499,7 +1528,8 @@
     "hsu": 1.7,
     "hns": 0.4,
     "drito": 2.1
-   }
+   },
+   "method": "mixed"
   }
  ]
 }

@@ -1,9 +1,9 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-10T18:43:44Z",
+  "generated": "2026-10-11T12:05:44Z",
   "environment": {
     "election": "2026-11-03",
-    "days_to_election": 24,
+    "days_to_election": 23,
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
     "rating_margin_table": {
@@ -1333,7 +1333,7 @@
               "rep": 49.0
             },
             {
-              "pollster": "James Madison Institute",
+              "pollster": "Targoz Market Research",
               "dates": "September 28 – October 4, 2026",
               "dem": 42.0,
               "rep": 52.0
@@ -1443,7 +1443,6 @@
             {
               "pollster": "Morning Consult",
               "dates": "October 2–7, 2026",
-              "partisan": "D",
               "dem": 45.0,
               "rep": 41.0
             },
@@ -14145,6 +14144,7 @@
             {
               "pollster": "co/efficient",
               "dates": "September 16–17, 2026",
+              "partisan": "R",
               "dem": 48.0,
               "rep": 41.0
             },
@@ -14378,6 +14378,138 @@
         }
       },
       {
+        "state": "Maine",
+        "district": "",
+        "incumbent": "Janet Mills",
+        "party": "D",
+        "rating": "Solid D",
+        "ratings": {
+          "cook": "Solid D",
+          "ie": "Solid D",
+          "sabato": "Likely D"
+        },
+        "lean": "Likely D",
+        "leader": "D",
+        "margin": 14.6,
+        "dem_pct": 98.5,
+        "rep_pct": 1.5,
+        "ind_pct": 0.0,
+        "dem_name": "Hannah Pingree",
+        "rep_name": "Bobby Charles",
+        "ind_name": "Rick Bennett",
+        "polls": {
+          "dem": 50.2,
+          "rep": 38.3,
+          "ind": 6.9,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "The Washington Post / SSPG",
+              "dates": "September 30 – October 5, 2026",
+              "dem": 49.0,
+              "rep": 36.0,
+              "ind": 11.0
+            },
+            {
+              "pollster": "Marist University",
+              "dates": "October 1–4, 2026",
+              "dem": 52.0,
+              "rep": 40.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "CBS / YouGov",
+              "dates": "September 23 – October 1, 2026",
+              "dem": 56.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 28–30, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 38.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "Fabrizio Ward / Impact Research",
+              "dates": "September 20–22, 2026",
+              "partisan": "R",
+              "dem": 52.0,
+              "rep": 39.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "New York Times / Portland Press Herald / Siena University",
+              "dates": "September 15–22, 2026",
+              "dem": 47.0,
+              "rep": 34.0,
+              "ind": 8.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "September 17–21, 2026",
+              "dem": 48.0,
+              "rep": 40.0,
+              "ind": 5.0
+            },
+            {
+              "pollster": "University of Massachusetts / YouGov",
+              "dates": "August 28 – September 14, 2026",
+              "dem": 49.0,
+              "rep": 38.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "September 2–8, 2026",
+              "dem": 47.0,
+              "rep": 36.0,
+              "ind": 2.0
+            },
+            {
+              "pollster": "SSRS",
+              "dates": "August 31 – September 6, 2026",
+              "dem": 52.0,
+              "rep": 39.0
+            },
+            {
+              "pollster": "Beacon Research / Shaw & Co. Research",
+              "dates": "August 6–10, 2026",
+              "partisan": "D",
+              "dem": 49.0,
+              "rep": 38.0,
+              "ind": 9.0
+            },
+            {
+              "pollster": "University of New Hampshire",
+              "dates": "July 15–20, 2026",
+              "dem": 49.0,
+              "rep": 35.0,
+              "ind": 6.0
+            },
+            {
+              "pollster": "Beacon Research / Shaw & Co. Research",
+              "dates": "June 23–27, 2026",
+              "partisan": "D",
+              "dem": 53.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "New York Times / Portland Press Herald / Siena University",
+              "dates": "June 19–26, 2026",
+              "dem": 50.0,
+              "rep": 36.0,
+              "ind": 8.0
+            }
+          ],
+          "names": {
+            "d": "Hannah Pingree",
+            "r": "Bobby Charles",
+            "i": "Rick Bennett"
+          }
+        }
+      },
+      {
         "state": "Alabama",
         "district": "",
         "incumbent": "Kay Ivey",
@@ -14511,138 +14643,6 @@
           "names": {
             "d": "Amy Klobuchar",
             "r": "Lisa Demuth"
-          }
-        }
-      },
-      {
-        "state": "Maine",
-        "district": "",
-        "incumbent": "Janet Mills",
-        "party": "D",
-        "rating": "Solid D",
-        "ratings": {
-          "cook": "Solid D",
-          "ie": "Solid D",
-          "sabato": "Likely D"
-        },
-        "lean": "Likely D",
-        "leader": "D",
-        "margin": 14.3,
-        "dem_pct": 98.4,
-        "rep_pct": 1.6,
-        "ind_pct": 0.0,
-        "dem_name": "Hannah Pingree",
-        "rep_name": "Bobby Charles",
-        "ind_name": "Rick Bennett",
-        "polls": {
-          "dem": 50.1,
-          "rep": 38.5,
-          "ind": 6.3,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "The Washington Post / SSPG",
-              "dates": "September 30 – October 5, 2026",
-              "dem": 49.0,
-              "rep": 36.0,
-              "ind": 11.0
-            },
-            {
-              "pollster": "Marist University",
-              "dates": "October 1–4, 2026",
-              "dem": 52.0,
-              "rep": 40.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "CBS / YouGov",
-              "dates": "September 23 – October 1, 2026",
-              "dem": 56.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 28–30, 2026",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 38.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "Fabrizio Ward / Impact Research",
-              "dates": "September 20–22, 2026",
-              "partisan": "R",
-              "dem": 52.0,
-              "rep": 39.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "New York Times / Portland Press Herald / Siena University",
-              "dates": "September 15–22, 2026",
-              "dem": 47.0,
-              "rep": 34.0,
-              "ind": 8.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "September 17–21, 2026",
-              "dem": 48.0,
-              "rep": 40.0,
-              "ind": 5.0
-            },
-            {
-              "pollster": "University of Massachusetts / YouGov",
-              "dates": "August 28 – September 14, 2026",
-              "dem": 49.0,
-              "rep": 38.0
-            },
-            {
-              "pollster": "YouGov",
-              "dates": "September 2–8, 2026",
-              "dem": 47.0,
-              "rep": 36.0,
-              "ind": 2.0
-            },
-            {
-              "pollster": "SSRS",
-              "dates": "August 31 – September 6, 2026",
-              "dem": 52.0,
-              "rep": 39.0
-            },
-            {
-              "pollster": "Beacon Research / Shaw & Co. Research",
-              "dates": "August 6–10, 2026",
-              "partisan": "D",
-              "dem": 49.0,
-              "rep": 38.0,
-              "ind": 9.0
-            },
-            {
-              "pollster": "University of New Hampshire",
-              "dates": "July 15–20, 2026",
-              "dem": 49.0,
-              "rep": 35.0,
-              "ind": 6.0
-            },
-            {
-              "pollster": "Beacon Research / Shaw & Co. Research",
-              "dates": "June 23–27, 2026",
-              "partisan": "D",
-              "dem": 53.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "New York Times / Portland Press Herald / Siena University",
-              "dates": "June 19–26, 2026",
-              "dem": 50.0,
-              "rep": 36.0,
-              "ind": 8.0
-            }
-          ],
-          "names": {
-            "d": "Hannah Pingree",
-            "r": "Bobby Charles",
-            "i": "Rick Bennett"
           }
         }
       },
@@ -15861,7 +15861,7 @@
               "rep": 47.0
             },
             {
-              "pollster": "James Madison Institute",
+              "pollster": "Targoz Market Research",
               "dates": "September 28 – October 4, 2026",
               "dem": 42.0,
               "rep": 52.0
@@ -16580,15 +16580,15 @@
         },
         "lean": "Tossup",
         "leader": "D",
-        "margin": 0.8,
-        "dem_pct": 55.5,
-        "rep_pct": 44.5,
+        "margin": 0.5,
+        "dem_pct": 53.6,
+        "rep_pct": 46.4,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 46.9,
+          "dem": 46.5,
           "rep": 47.6,
           "source": "Aggregate (Wikipedia)",
           "polls": [

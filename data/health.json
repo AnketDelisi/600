@@ -74,6 +74,11 @@
   "poll_count": 25,
   "scraped_at": "2026-10-10T18:41:30Z"
  },
+ "is": {
+  "latest_date": "2026-09-28",
+  "poll_count": 27,
+  "scraped_at": "2026-10-11T08:39:32Z"
+ },
  "israel": {
   "latest_date": "2026-10-08",
   "poll_count": 157,
@@ -158,6 +163,11 @@
   "latest_date": "2026-09-30",
   "poll_count": 16,
   "scraped_at": "2026-10-10T18:41:16Z"
+ },
+ "si": {
+  "latest_date": "2026-09-24",
+  "poll_count": 16,
+  "scraped_at": "2026-10-11T08:36:15Z"
  },
  "slovakia": {
   "latest_date": "2026-10-05",

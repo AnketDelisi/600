@@ -1,0 +1,10 @@
+{
+ "country": "si",
+ "name": "Slovenia",
+ "election_date": "2030-03-22",
+ "seats": 90,
+ "threshold": 4.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "National Assembly: 90 seats = 88 elected in 8 constituencies (11 each, D'Hondt with the 4% threshold applied nationally) + 2 reserved minority seats (Italian and Hungarian; modelled as a fixed Other allocation). Next election: by ~March 2030 (the 2026 election was 22 March 2026). Baseline: the 22 March 2026 election (GS 29, SDS 28, NSi+SLS+FOKUS 9, SD 6, Democrats 6, Levica+Vesna 5, Resni.ca 5). Levica and Vesna ran as one list; its share sits on the Levica key (Vesna anchored at 0). Polls: the main support table (12 party columns; fieldwork dates carry no year, taken from the section heading). Geometry: GADM 4.1 municipalities dissolved into the 8 volilne enote using the ZDVEDZ law composition; the split municipalities (the city of Ljubljana above all) are assigned to the nearest constituency by centroid - a documented map approximation; the seat allocation is exact per constituency."
+}

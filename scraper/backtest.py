@@ -336,6 +336,42 @@ CYCLES = {
                       "other": 8},
         },
     },
+    "is": {
+        2024: {
+            "article": "2024_Icelandic_parliamentary_election",
+            "election": "2024-11-30", "half_life": 30,
+            # the campaign polls table (pollster-first columns; the party
+            # letters sit in the third header row - the harness merges them)
+            "cols": {"s": r"^s$", "d": r"^d$", "c": r"^c$", "f": r"^f$",
+                     "m": r"^m$", "b": r"^b$", "j": r"^j$", "p": r"^p$",
+                     "v": r"^v$"},
+            "result": {"s": 20.75, "d": 19.36, "c": 15.82, "f": 13.78,
+                       "m": 12.10, "b": 7.80, "j": 3.96, "p": 3.02,
+                       "v": 2.34},
+            # the two-tier allocator (district D'Hondt + leveling quotient
+            # continuation) reproduces the real 2024 allocation exactly
+            "seats": {"s": 15, "d": 14, "c": 11, "f": 10, "m": 8, "b": 5},
+        },
+    },
+    "si": {
+        2026: {
+            "article": "Opinion_polling_for_the_2026_Slovenian_parliamentary_election",
+            "election": "2026-03-22", "half_life": 30,
+            # the page carries one party table per year; NSF maps to the
+            # NSi column (the coalition's dominant member - the early polls
+            # list NSi/SLS/FOKUS separately)
+            "cols": {"gs": r"^gs", "sds": r"^sds", "nsf": r"^nsi",
+                     "sd": r"^sd$", "dem": r"^dem", "l": r"^levica",
+                     "v": r"^vesna", "res": r"^res", "pir": r"^pir",
+                     "sns": r"^sns", "mi": r"^mi"},
+            "result": {"gs": 28.66, "sds": 27.88, "nsf": 9.26, "sd": 6.71,
+                       "dem": 6.69, "l": 5.69, "res": 5.49},
+            # the Droop + national-remainder allocator reproduces the real
+            # 2026 allocation exactly at the anchor; other = 2 minority seats
+            "seats": {"gs": 29, "sds": 28, "nsf": 9, "sd": 6, "dem": 6,
+                      "l": 5, "res": 5, "other": 2},
+        },
+    },
 }
 
 

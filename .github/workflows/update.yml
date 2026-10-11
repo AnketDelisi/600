@@ -63,6 +63,8 @@ jobs:
           python scraper/scrape_japan.py
           python scraper/scrape_korea.py
           python scraper/scrape_croatia.py
+          python scraper/scrape_iceland.py
+          python scraper/scrape_slovenia.py
 
       # Tag every poll with its fieldwork method from the curated pollster
       # map (online / phone / face / mixed; unknowns stay untagged). The

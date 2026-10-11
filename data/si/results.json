@@ -1,0 +1,129 @@
+{
+ "country": "si",
+ "source": "en.wikipedia (2026 election, DVK figures)",
+ "districts": {
+  "celje": {
+   "name": "Celje",
+   "shares": {
+    "gs": 26.36,
+    "sds": 31.6,
+    "nsf": 10.39,
+    "sd": 7.62,
+    "dem": 6.81,
+    "l": 4.11,
+    "res": 5.14
+   }
+  },
+  "kranj": {
+   "name": "Kranj",
+   "shares": {
+    "gs": 26.1,
+    "sds": 27.71,
+    "nsf": 11.18,
+    "sd": 5.35,
+    "dem": 6.64,
+    "l": 5.87,
+    "res": 7.04
+   }
+  },
+  "ljubljana_bezigrad": {
+   "name": "Ljubljana Bežigrad",
+   "shares": {
+    "gs": 29.18,
+    "sds": 25.93,
+    "nsf": 8.65,
+    "sd": 5.87,
+    "dem": 6.73,
+    "l": 6.97,
+    "res": 5.28
+   }
+  },
+  "ljubljana_center": {
+   "name": "Ljubljana Center",
+   "shares": {
+    "gs": 29.12,
+    "sds": 23.64,
+    "nsf": 8.74,
+    "sd": 6.21,
+    "dem": 7.3,
+    "l": 9.53,
+    "res": 4.66
+   }
+  },
+  "maribor": {
+   "name": "Maribor",
+   "shares": {
+    "gs": 28.33,
+    "sds": 30.83,
+    "nsf": 7.1,
+    "sd": 6.8,
+    "dem": 7.03,
+    "l": 4.65,
+    "res": 5.87
+   }
+  },
+  "novo_mesto": {
+   "name": "Novo Mesto",
+   "shares": {
+    "gs": 27.74,
+    "sds": 29.42,
+    "nsf": 10.27,
+    "sd": 8.15,
+    "dem": 6.13,
+    "l": 3.95,
+    "res": 4.75
+   }
+  },
+  "postojna": {
+   "name": "Postojna",
+   "shares": {
+    "gs": 34.74,
+    "sds": 22.55,
+    "nsf": 9.13,
+    "sd": 7.39,
+    "dem": 5.64,
+    "l": 5.97,
+    "res": 4.92
+   }
+  },
+  "ptuj": {
+   "name": "Ptuj",
+   "shares": {
+    "gs": 27.8,
+    "sds": 32.71,
+    "nsf": 8.64,
+    "sd": 6.36,
+    "dem": 7.18,
+    "l": 3.09,
+    "res": 6.61
+   }
+  }
+ },
+ "national": {
+  "shares": {
+   "gs": 28.66,
+   "sds": 27.88,
+   "nsf": 9.26,
+   "sd": 6.71,
+   "dem": 6.69,
+   "l": 5.69,
+   "res": 5.49,
+   "pir": 2.36,
+   "sns": 2.24,
+   "mi": 0.48
+  },
+  "seats": {
+   "gs": 29,
+   "sds": 28,
+   "nsf": 9,
+   "sd": 6,
+   "dem": 6,
+   "l": 5,
+   "res": 5,
+   "pir": 0,
+   "sns": 0,
+   "mi": 0
+  },
+  "minority": 2
+ }
+}

@@ -698,7 +698,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','slovakia','spain','sweden','uk']],
+  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','uk']],
   ['Americas',['bc','brazil','qc']],
   ['Middle East & Asia-Pacific',['israel','jp','kr','nz']],
 ];
@@ -3277,6 +3277,71 @@ function allocateSeatsBaderOfer(votes, totalSeats, threshold){
 // Per-okręg D'Hondt (Poland): each of the 41 okręgi allocates its own seat
 // count among nationally-qualifying parties (≥5% national threshold) from the
 // district's projected shares — the real Sejm system, not one national district.
+// Slovenian National Assembly (ZVDZ): per constituency a Droop quota
+// (floor(votes/(11+1))+1) fills the 11 seats; the votes not converted to
+// seats (the remainders) are pooled nationally and the unfilled seats go
+// to parties at/above the 4% threshold by D'Hondt over those remainders.
+// Reproduces the 2026 result exactly (GS 29 / SDS 28 / NSi+SLS+FOKUS 9 /
+// SD 6 / Democrats 6 / Levica+Vesna 5 / Resni.ca 5 + 2 minority).
+function allocateSeatsSlovenia(avg){
+  const conf=MAP_CONF();
+  if(!conf||!conf.nationalRemainders||!conf.seatDistricts) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  const valid=PARTY_ORDER.filter(p=>(avg[p]||0)>=THRESHOLD
+    &&!(PARTY_META[p]&&PARTY_META[p].unallocated));
+  if(!valid.length) return out;
+  const remainders={}; valid.forEach(p=>{remainders[p]=0});
+  // districtShares renormalizes the modelled parties to the polls' total;
+  // the law's quota works on the raw (real) scale, so undo the uniform
+  // per-district rescale (k = polls total / baseline total) before applying
+  // the quota
+  let unfilled=0;
+  let target=0; PARTY_ORDER.forEach(p=>{
+    if(avg&&avg[p]!==undefined&&avg[p]!==null) target+=avg[p];
+  });
+  const geb=conf.gebiete||{};
+  for(const nr of Object.keys(conf.seatDistricts)){
+    const seatsN=conf.seatDistricts[nr];
+    const shares=districtShares(nr, avg, false, null);
+    if(!shares) continue;
+    let pastSum=0;
+    PARTY_ORDER.forEach(p=>{pastSum+=(geb[nr]||{})[p]||0});
+    const k=(pastSum>0&&target>0)?target/pastSum:1;
+    // Droop quota over the qualified parties' raw votes; only parties at
+    // or above the 4% national threshold can win seats
+    const votes={}; let sum=0;
+    valid.forEach(p=>{votes[p]=(shares[p]?shares[p].now:0)/k; sum+=votes[p]});
+    if(!(sum>0)){ unfilled+=seatsN; continue; }
+    const quota=Math.floor(sum/(seatsN+1))+1;
+    let given=0;
+    valid.forEach(p=>{
+      const q=Math.floor((votes[p]||0)/quota);
+      out[p]+=q; given+=q;
+      remainders[p]+=(votes[p]||0)-quota*q;
+    });
+    unfilled+=seatsN-given;
+  }
+  if(unfilled>0){
+    // national tier: Hagenbach-Bischoff quota over the pooled remainders
+    // (quota = total remainders/(unfilled+1)+1), leftover seats by largest
+    // remainder - reproduces the official 2026 allocation exactly
+    const totalRem=valid.reduce((s,p)=>s+remainders[p],0);
+    if(totalRem>0){
+      const quota=Math.floor(totalRem/(unfilled+1))+1;
+      const rems=[];
+      let given=0;
+      valid.forEach(p=>{
+        const q=Math.floor(remainders[p]/quota);
+        out[p]+=q; given+=q;
+        rems.push([remainders[p]-quota*q,p]);
+      });
+      rems.sort((a,b)=>b[0]-a[0]);
+      for(let i=0;i<unfilled-given&&i<rems.length;i++) out[rems[i][1]]++;
+    }
+  }
+  return out;
+}
+
 function allocateSeatsByDistrict(avg, regionNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.seatDistricts) return null;
@@ -3334,10 +3399,13 @@ function districtTierSplit(nr, avg, resultMode, conf, seatsN){
   if(!shares) return null;
   const votes={};
   PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+  // Iceland: plain D'Hondt in the district tier (method 'dhondt'); Norway:
+  // modified Sainte-Lague (first divisor 1.4, then odd divisors).
+  const dhondt=SEAT_METHOD==='dhondt';
   const quo=[];
   PARTY_ORDER.forEach(p=>{
     if(!((votes[p]||0)>0)||(PARTY_META[p]&&PARTY_META[p].unallocated)) return;
-    for(let d=1;d<=seatsN;d++) quo.push({p,q:(votes[p]||0)/(d===1?1.4:2*d-1)});
+    for(let d=1;d<=seatsN;d++) quo.push({p,q:dhondt?((votes[p]||0)/d):((votes[p]||0)/(d===1?1.4:2*d-1))});
   });
   quo.sort((a,b)=>b.q-a.q);
   const seats={};
@@ -3543,7 +3611,7 @@ function allocateSeatsTotal(avg, total){
   // the map's districts
   if(OVERHANG) return overhangSeats(avg, total, directFromProjection(avg), OVERHANG.cap);
   if(MAP_CONF()&&MAP_CONF().winnerDistricts) return allocateSeatsWinnerDistricts(avg, total);
-  return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsLeveling(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
+  return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsLeveling(avg)||allocateSeatsSlovenia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
 }
 
 // Mixed systems where the strongest party in a district takes all of its
@@ -3706,6 +3774,8 @@ function allocateSeatsFastRaw(votes, total){
   if(czechia) return czechia;
   const leveling=allocateSeatsLeveling(votes);
   if(leveling) return leveling;
+  const slovenia=allocateSeatsSlovenia(votes);
+  if(slovenia) return slovenia;
   const byDistrict=allocateSeatsByDistrict(votes);
   if(byDistrict) return byDistrict;
   // national-minority exemption + no-poll fallback (see allocateSeatsN)

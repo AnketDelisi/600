@@ -240,7 +240,7 @@ CYCLES = {
         2023: {
             "article": "Opinion_polling_for_the_2023_Estonian_parliamentary_election",
             "election": "2023-03-05", "prev": "2019-03-03", "half_life": 14,
-            "cols": {"ref": r"^re\b|^reform", "ekre": r"^ekre",
+            "cols": {"ref": r"^ref|^re\b|^reform", "ekre": r"^ekre",
                      "kesk": r"^ke\b|^kesk|^centre",
                      "e200": r"^e200|^estonia 200",
                      "sde": r"^sde|^social", "isamaa": r"^i\b|^isamaa|^pro patria"},
@@ -955,13 +955,18 @@ def main():
                            s2["proj"].get(top, 0)))
                 if not got:
                     print("   seats: skipped (node missing?)")
-                # calibration: the T-0 Monte Carlo's bloc-majority probability
-                # vs what actually happened - published as a hit-rate table so
-                # the site's "majority probability" can show its track record
-                cv, cn = horizon_votes(polls, spec, 0)
-                fc = run_forecast(country, cv, 1500, cn) if cv else None
+                # calibration: the Monte Carlo's bloc-majority probability of
+                # the projected leader vs what actually happened, collected at
+                # every horizon (the horizon dimension multiplies the sample)
                 bl = country_blocs(country)
-                if fc and bl and fc.get("nSims"):
+                act = spec["seats"]
+                total = sum(act.values())
+                need = total // 2 + 1
+                for ch in (60, 30, 14, 7, 0):
+                    cv, cn = horizon_votes(polls, spec, ch)
+                    fc = run_forecast(country, cv, 1000, cn) if cv else None
+                    if not (fc and bl and fc.get("nSims")):
+                        continue
                     means = {k: v for k, v in (fc.get("means") or {}).items()
                              if k != "other"}
                     pred = max(means, key=lambda k: means.get(k, 0)) \
@@ -971,21 +976,20 @@ def main():
                         bloc = "bloc1"
                     elif pred in bl.get("bloc2", []):
                         bloc = "bloc2"
-                    if bloc:
-                        maj = fc.get("maj") or {}
-                        p_pred = (maj.get("rg" if bloc == "bloc1" else "td",
-                                          0)) / fc["nSims"]
-                        act = spec["seats"]
-                        total = sum(act.values())
-                        need = total // 2 + 1
-                        act_bloc = sum(act.get(p, 0) for p in bl[bloc])
-                        cal_rows.append({
-                            "cycle": "%s-%d" % (country, cycle),
-                            "bloc": bloc, "leader": pred,
-                            "p": round(p_pred, 3),
-                            "actual": act_bloc, "need": need,
-                            "hit": bool(act_bloc >= need),
-                        })
+                    if not bloc:
+                        continue
+                    maj = fc.get("maj") or {}
+                    p_pred = (maj.get("rg" if bloc == "bloc1" else "td",
+                                      0)) / fc["nSims"]
+                    act_bloc = sum(act.get(p, 0) for p in bl[bloc])
+                    cal_rows.append({
+                        "cycle": "%s-%d" % (country, cycle),
+                        "horizon": ch, "bloc": bloc, "leader": pred,
+                        "p": round(p_pred, 3),
+                        "actual": act_bloc, "need": need,
+                        "hit": bool(act_bloc >= need),
+                    })
+                    if ch == 0:
                         print("   T-0   calib p(%s maj)=%.2f  actual %d/%d %s" %
                               (pred, p_pred, act_bloc, need,
                                "HIT" if act_bloc >= need else "MISS"))
@@ -1113,6 +1117,7 @@ def main():
         "counts": counts,
         "seats": {"aggregate": seat_agg, "cycles": seat_by},
         "calibration": {"n": len(cal_rows), "buckets": cal_buckets,
+                        "n_cycles": len({r["cycle"] for r in cal_rows}),
                         "cycles": cal_rows},
     }
     path = os.path.join(ROOT, "data", "backtest.json")

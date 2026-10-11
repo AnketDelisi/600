@@ -51,19 +51,20 @@
   "last_election": {
     "date": "2022-04-10",
     "results_valid": {
+      "macron": 27.85,
       "lepen": 23.15,
       "melenchon": 21.95,
-      "attal": 16.71,
-      "philippe": 11.14,
       "zemmour": 7.07,
-      "retailleau": 4.78,
-      "tondelier": 4.63,
+      "pecresse": 4.78,
+      "jadot": 4.63,
+      "lassalle": 3.13,
       "roussel": 2.28,
       "dupont": 2.06,
-      "faure": 1.75,
+      "hidalgo": 1.75,
+      "poutou": 0.77,
       "arthaud": 0.56
     },
-    "results_note": "Official 2022 first-round result mapped onto the 2027 field: Macron 27.85 split 60/40 Attal/Philippe, Pecresse -> Retailleau, Jadot -> Tondelier, Hidalgo -> Faure; Lassalle (3.13) unmodelled (Other wedge). Department baselines use the same inheritance.",
+    "results_note": "The TRUE official 2022 first-round result (Ministry of the Interior), actual candidates. The model's swing anchor is the mapped version in map.national2021 (Macron 27.85 split 60/40 Attal/Philippe, Pecresse -> Retailleau, Jadot -> Tondelier, Hidalgo -> Faure) which matches the department baselines; the display shows history.",
     "runoff": {
       "lepen": 41.45,
       "president_camp": 58.55

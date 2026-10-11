@@ -1091,6 +1091,15 @@ function renderPartyBars(avg){
       </div>`;
     }
   }
+  // Unsettled-field countries (France 2027): the polls test alternative
+  // candidate fields, so the per-candidate averages sum past 100 - say so
+  // instead of pretending the field is fixed.
+  const avgSum=PARTY_ORDER.reduce((a,p)=>a+(avg[p]||0),0);
+  if(avgSum>103){
+    html+=`<div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
+      \u03a3 ${fmt(avgSum,0)}% \u00b7 ${t('the field is unsettled: the polls test alternative candidate combinations, each candidate is averaged over the polls that tested them','alan belirsiz: anketler farkl\u0131 aday kombinasyonlar\u0131n\u0131 test ediyor; her aday kendisinin soruldu\u011fu anketlerin ortalamas\u0131')}
+    </div>`;
+  }
   if(BLOCS.bloc1&&BLOCS.bloc2&&!HIDE_BLOCS) html+=`<div class="pollavg-blocs">${renderBlocs(avg)}</div>`;
   html+=`</div>`;
   return html;

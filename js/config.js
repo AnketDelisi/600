@@ -16810,6 +16810,39 @@ saxony_anhalt: {
         name: "Sarah Knafo",
         name_en: "Sarah Knafo",
         color: "#170066", ideology: "National conservatism, Right-wing populism"},
+      // the true 2022 candidates who are not 2027 aspirants (pastOnly:
+      // shown in the 2022 result sections, never projected) - their colors
+      // come from the page's 2022 re-run table
+      macron: {
+        code: "Macron",
+        name: "Emmanuel Macron",
+        name_en: "Emmanuel Macron",
+        color: "#FFD600", pastOnly: true, ideology: "Liberalism, Pro-Europeanism"},
+      pecresse: {
+        code: "Pécresse",
+        name: "Valérie Pécresse",
+        name_en: "Valérie Pécresse",
+        color: "#0043B0", pastOnly: true, ideology: "Liberal conservatism, Gaullism"},
+      jadot: {
+        code: "Jadot",
+        name: "Yannick Jadot",
+        name_en: "Yannick Jadot",
+        color: "#79b41d", pastOnly: true, ideology: "Green politics"},
+      hidalgo: {
+        code: "Hidalgo",
+        name: "Anne Hidalgo",
+        name_en: "Anne Hidalgo",
+        color: "#E3265B", pastOnly: true, ideology: "Social democracy"},
+      lassalle: {
+        code: "Lassalle",
+        name: "Jean Lassalle",
+        name_en: "Jean Lassalle",
+        color: "#034EA1", pastOnly: true, ideology: "Ruralism, Regionalism"},
+      poutou: {
+        code: "Poutou",
+        name: "Philippe Poutou",
+        name_en: "Philippe Poutou",
+        color: "#C0081F", pastOnly: true, ideology: "Trotskyism, Anti-capitalism"},
       retailleau: {
         code: "Retailleau",
         name: "Bruno Retailleau",
@@ -16929,23 +16962,30 @@ saxony_anhalt: {
     },
     lastElection: {
       date: "2022-04-10",
-      // the official 2022 first-round result, mapped onto the 2027 field
-      // with the same inheritance as the department baselines (Macron 27.85
-      // split 60/40 Attal/Philippe, Pecresse -> Retailleau, Jadot ->
-      // Tondelier, Hidalgo -> Faure); Lassalle (3.13) and the rest are
-      // unmodelled and show in the Other wedge
+      // the TRUE official 2022 first-round result (Ministry of the
+      // Interior), with the actual candidates - Macron 27.85, Pecresse,
+      // Jadot, Hidalgo, Lassalle, Poutou included as pastOnly entries.
+      // The MODEL's swing anchor is the mapped version in map.national2021
+      // (Macron split 60/40 Attal/Philippe etc., matching the department
+      // baselines); this block is the historical display.
       results: {
+        macron: 27.85,
         lepen: 23.15,
         melenchon: 21.95,
-        attal: 16.71,
-        philippe: 11.14,
         zemmour: 7.07,
-        retailleau: 4.78,
-        tondelier: 4.63,
+        pecresse: 4.78,
+        jadot: 4.63,
+        lassalle: 3.13,
         roussel: 2.28,
         dupont: 2.06,
-        faure: 1.75,
+        hidalgo: 1.75,
+        poutou: 0.77,
         arthaud: 0.56,
+        attal: 0,
+        philippe: 0,
+        retailleau: 0,
+        tondelier: 0,
+        faure: 0,
         ruffin: 0,
         hollande: 0,
         glucksmann: 0,

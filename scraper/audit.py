@@ -31,6 +31,7 @@ REF = {
     "greece": (300, 3.0, None, True),
     "hr": (151, 5.0, "dhondt", False),
     "hu": (199, 5.0, "dhondt", False),
+    "is": (63, 5.0, "dhondt", False),
     "israel": (120, 3.25, None, False),
     "italy": (400, 3.0, None, False),
     "jp": (465, 0.0, "dhondt", False),
@@ -46,6 +47,7 @@ REF = {
     "ro": (331, 5.0, "hare_niemeyer", False),
     "qc": (127, 0.0, "fptp", True),
     "serbia": (250, 3.0, "dhondt", False),
+    "si": (90, 4.0, "dhondt", False),
     "slovakia": (150, 5.0, "hare_niemeyer", False),
     "spain": (350, 3.0, "dhondt", False),
     "uk": (650, 0.0, "fptp", True),
@@ -61,6 +63,7 @@ SEAT_SUM_NOTES = {
     "lt": "2 unmodelled district winners (independents/PLT) -> auto Other wedge",
     "jp": "5 unmodelled winners (Genzei-Yukoku 1 + independents 4) -> auto Other wedge",
     "hr": "8 minority seats (reservedSeats other: 8) -> auto Other wedge",
+    "si": "2 minority seats (reservedSeats other: 2) -> auto Other wedge",
 }
 
 

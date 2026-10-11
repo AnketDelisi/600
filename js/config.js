@@ -25752,6 +25752,141 @@ saxony_anhalt: {
     },
   },
 
+  is: {
+    name: 'Iceland',
+    seats: 63,                    // 54 district (6 constituencies) + 9 leveling
+    threshold: 5.0,               // 5% for leveling seats (district tier: none)
+    method: 'dhondt',             // district tier D'Hondt; leveling by quotient continuation
+    levelingSeats: 9,             // the 9 equalisation seats (5% threshold)
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 30,
+    defaultDays: 90,
+    parties: {
+      s: { code: 'S', name: 'Samfylkingin', name_en: 'Social Democratic Alliance', color: '#ED1400', ideology: "Social democracy, Pro-Europeanism" },
+      d: { code: 'D', name: 'Sjálfstæðisflokkurinn', name_en: 'Independence Party (Iceland)', color: '#00ADEF', ideology: "Conservatism, Liberal conservatism" },
+      c: { code: 'C', name: 'Viðreisn', name_en: 'Viðreisn', color: '#FF7D14', ideology: "Liberalism, Pro-Europeanism" },
+      f: { code: 'F', name: 'Flokkur fólksins', name_en: "People's Party (Iceland)", color: '#FFCA3E', ideology: "Populism, Pensioners' interests" },
+      m: { code: 'M', name: 'Miðflokkurinn', name_en: 'Centre Party (Iceland)', color: '#141F6E', ideology: "Right-wing populism, Conservatism" },
+      b: { code: 'B', name: 'Framsóknarflokkurinn', name_en: 'Progressive Party (Iceland)', color: '#9ACD66', ideology: "Agrarianism, Liberalism" },
+      j: { code: 'J', name: 'Sósíalistaflokkur Íslands', name_en: 'Icelandic Socialist Party', color: '#B22222', ideology: "Democratic socialism, Eco-socialism" },
+      p: { code: 'P', name: 'Píratar', name_en: 'Pirate Party (Iceland)', color: '#976DFF', ideology: "Pirate politics, Direct democracy" },
+      v: { code: 'V', name: 'Vinstrihreyfingin – grænt framboð', name_en: 'Left-Green Movement', color: '#00B878', ideology: "Eco-socialism, Democratic socialism" },
+    },
+    order: ['s', 'd', 'c', 'f', 'm', 'b', 'j', 'p', 'v'],
+    parlOrder: ['j', 'v', 'p', 's', 'b', 'c', 'f', 'm', 'd'],
+    // the Kristrún Frostadóttir government formed after the 2024 election:
+    // Social Democratic Alliance + Viðreisn + People's Party
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['s', 'c', 'f'], color: '#E2062A' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['d', 'm', 'b', 'j', 'p', 'v'], color: '#0C46A0' },
+    },
+    coalitions: [
+      { name: 'S + C + F', parties: ['s', 'c', 'f'] },
+      { name: 'S + V + P + J', parties: ['s', 'v', 'p', 'j'] },
+      { name: 'D + M + B', parties: ['d', 'm', 'b'] },
+      { name: 'S + C + D + F', parties: ['s', 'c', 'd', 'f'] },
+    ],
+    lastElection: {
+      date: '2024-11-30',
+      results: { s: 20.75, d: 19.36, c: 15.82, f: 13.78, m: 12.10, b: 7.80, j: 3.96, p: 3.02, v: 2.34 },
+      seats:   { s: 15, d: 14, c: 11, f: 10, m: 8, b: 5 },
+    },
+    map: {
+      svg: 'img/iceland.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // the 6 constituencies (Commons 2017 map, the six grey paths
+      // identified by rendering; boundaries unchanged). District tier:
+      // D'Hondt, no threshold; the 9 leveling seats go by quotient
+      // continuation (votes/(seats+1)) to parties at or above 5% - the
+      // real 2024 method, reproduced exactly at the anchor.
+      districts: {"ne": "ne", "rn": "rn", "nw": "nw", "rs": "rs", "s": "s", "sw": "sw"},
+      seatDistricts: {"rn": 9, "rs": 9, "sw": 12, "nw": 6, "ne": 9, "s": 9},
+      names: {"ne": "Northeast", "rn": "Reykjavík North", "nw": "Northwest", "rs": "Reykjavík South", "s": "South", "sw": "Southwest"},
+      gebiete: {"ne": {"s": 21.3, "d": 15.0, "c": 9.4, "f": 14.3, "m": 15.7, "b": 14.2, "j": 3.8, "p": 1.8, "v": 3.8}, "rn": {"s": 26.1, "d": 17.4, "c": 16.3, "f": 11.9, "m": 8.9, "b": 4.0, "j": 5.9, "p": 5.4, "v": 2.9}, "nw": {"s": 15.9, "d": 18.0, "c": 12.6, "f": 16.7, "m": 14.8, "b": 13.3, "j": 3.4, "p": 1.8, "v": 2.7}, "rs": {"s": 22.9, "d": 17.6, "c": 17.7, "f": 13.5, "m": 10.5, "b": 4.4, "j": 5.6, "p": 3.9, "v": 2.9}, "s": {"s": 17.3, "d": 19.6, "c": 11.2, "f": 20.0, "m": 13.6, "b": 12.0, "j": 2.4, "p": 1.3, "v": 1.3}, "sw": {"s": 19.3, "d": 23.4, "c": 20.1, "f": 11.0, "m": 12.0, "b": 5.9, "j": 2.8, "p": 2.8, "v": 1.5}},
+      national2021: {"s": 20.75, "d": 19.36, "c": 15.82, "f": 13.78, "m": 12.1, "b": 7.8, "j": 3.96, "p": 3.02, "v": 2.34},
+    },
+    pollsterMAE: {},
+    maeKey: 'IS2028',
+    logos: {
+      s: 'img/is/S.svg', d: 'img/is/D.svg', c: 'img/is/C.svg',
+      f: 'img/is/F.svg', m: 'img/is/M.svg', b: 'img/is/B.svg',
+      j: 'img/is/J.svg', p: 'img/is/P.svg', v: 'img/is/V.svg',
+    },
+  },
+
+  si: {
+    name: 'Slovenia',
+    seats: 90,                    // 88 (8 constituencies x 11) + 2 minority
+    threshold: 4.0,               // 4% national threshold
+    method: 'dhondt',             // per-constituency D'Hondt (11 each)
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 30,
+    defaultDays: 90,
+    // the Italian and Hungarian minority seats are reserved
+    reservedSeats: { other: 2 },
+    parties: {
+      gs:  { code: 'GS', name: 'Gibanje Svoboda', name_en: 'Freedom Movement (Slovenia)', color: '#00569D', ideology: "Social liberalism, Pro-Europeanism" },
+      sds: { code: 'SDS', name: 'Slovenska demokratska stranka', name_en: 'Slovenian Democratic Party', color: '#FCDC00', ideology: "National conservatism, Right-wing populism" },
+      nsf: { code: 'NSF', name: 'NSi + SLS + FOKUS', name_en: 'NSi, SLS, FOKUS', color: '#0099C7', ideology: "Christian democracy, Agrarianism" },
+      sd:  { code: 'SD', name: 'Socialni demokrati', name_en: 'Social Democrats (Slovenia)', color: '#E3000F', ideology: "Social democracy, Pro-Europeanism" },
+      dem: { code: 'DEM', name: 'Demokrati Anžeta Logarja', name_en: 'Democrats (Slovenia)', color: '#09115E', ideology: "Conservative liberalism, Centrism" },
+      l:   { code: 'L', name: 'Levica', name_en: 'The Left (Slovenia)', color: '#E82C25', ideology: "Democratic socialism, Eco-socialism" },
+      v:   { code: 'V', name: 'Vesna – zelena stranka', name_en: 'Vesna – Green Party', color: '#00A65E', ideology: "Green politics, Eco-socialism" },
+      res: { code: 'RES', name: 'Resni.ca', name_en: 'Resni.ca', color: '#7C5199', ideology: "Right-wing populism, Anti-lockdown" },
+      pvp: { code: 'PVP', name: 'Prerod', name_en: 'Prerod', color: '#6E288F', ideology: "National conservatism, Sovereigntism" },
+      pir: { code: 'PIR', name: 'Piratska stranka', name_en: 'Pirate Party (Slovenia)', color: '#F68F35', ideology: "Pirate politics, Direct democracy" },
+      sns: { code: 'SNS', name: 'Slovenska nacionalna stranka', name_en: 'Slovenian National Party', color: '#221F1F', ideology: "Ultranationalism, Right-wing populism" },
+      mi:  { code: 'MI!', name: 'Mi, socialisti!', name_en: 'We, Socialists!', color: '#EE4323', ideology: "Socialism, Left-wing populism" },
+    },
+    order: ['gs', 'sds', 'nsf', 'sd', 'dem', 'l', 'v', 'res', 'pvp', 'pir', 'sns', 'mi'],
+    parlOrder: ['mi', 'l', 'v', 'sd', 'gs', 'pir', 'res', 'pvp', 'nsf', 'dem', 'sns', 'sds'],
+    // the incumbent GS-led government at the time of the March 2026 election
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['gs', 'sd', 'l'], color: '#00A9E0' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['sds', 'nsf', 'dem', 'v', 'res', 'pvp', 'pir', 'sns', 'mi'], color: '#F7D500' },
+    },
+    coalitions: [
+      { name: 'GS + SD + L', parties: ['gs', 'sd', 'l'] },
+      { name: 'GS + SD + L + V', parties: ['gs', 'sd', 'l', 'v'] },
+      { name: 'SDS + NSF + DEM + SNS', parties: ['sds', 'nsf', 'dem', 'sns'] },
+      { name: 'GS + SDS', parties: ['gs', 'sds'] },
+    ],
+    lastElection: {
+      date: '2026-03-22',
+      // Levica + Vesna ran as one list (5.69); its share is on the Levica key
+      results: { gs: 28.66, sds: 27.88, nsf: 9.26, sd: 6.71, dem: 6.69, l: 5.69, res: 5.49, pir: 2.36, sns: 2.24, mi: 0.48, v: 0, pvp: 0 },
+      seats:   { gs: 29, sds: 28, nsf: 9, sd: 6, dem: 6, l: 5, res: 5 },
+    },
+    map: {
+      svg: 'img/slovenia.svg',
+      selector: 'id',
+      swingMethod: 'geometric',
+      // the 8 volilne enote (GADM municipalities dissolved by the ZDVEDZ
+      // law composition; the split municipalities - Ljubljana above all -
+      // are assigned to the nearest constituency, documented). Per-
+      // constituency D'Hondt, 11 seats each, with the 4% threshold applied
+      // nationally (districtThreshold off); the 2 minority seats are
+      // reservedSeats.
+      districts: {"celje": "celje", "kranj": "kranj", "ljubljana_bezigrad": "ljubljana_bezigrad", "ljubljana_center": "ljubljana_center", "maribor": "maribor", "novo_mesto": "novo_mesto", "postojna": "postojna", "ptuj": "ptuj"},
+      seatDistricts: {"celje": 11, "kranj": 11, "ljubljana_bezigrad": 11, "ljubljana_center": 11, "maribor": 11, "novo_mesto": 11, "postojna": 11, "ptuj": 11},
+      nationalRemainders: true,
+      names: {"celje": "Celje", "kranj": "Kranj", "ljubljana_bezigrad": "Ljubljana Bežigrad", "ljubljana_center": "Ljubljana Center", "maribor": "Maribor", "novo_mesto": "Novo mesto", "postojna": "Postojna", "ptuj": "Ptuj"},
+      gebiete: {"celje": {"gs": 26.36, "sds": 31.6, "nsf": 10.39, "sd": 7.62, "dem": 6.81, "l": 4.11, "res": 5.14}, "kranj": {"gs": 26.1, "sds": 27.71, "nsf": 11.18, "sd": 5.35, "dem": 6.64, "l": 5.87, "res": 7.04}, "ljubljana_bezigrad": {"gs": 29.18, "sds": 25.93, "nsf": 8.65, "sd": 5.87, "dem": 6.73, "l": 6.97, "res": 5.28}, "ljubljana_center": {"gs": 29.12, "sds": 23.64, "nsf": 8.74, "sd": 6.21, "dem": 7.3, "l": 9.53, "res": 4.66}, "maribor": {"gs": 28.33, "sds": 30.83, "nsf": 7.1, "sd": 6.8, "dem": 7.03, "l": 4.65, "res": 5.87}, "novo_mesto": {"gs": 27.74, "sds": 29.42, "nsf": 10.27, "sd": 8.15, "dem": 6.13, "l": 3.95, "res": 4.75}, "postojna": {"gs": 34.74, "sds": 22.55, "nsf": 9.13, "sd": 7.39, "dem": 5.64, "l": 5.97, "res": 4.92}, "ptuj": {"gs": 27.8, "sds": 32.71, "nsf": 8.64, "sd": 6.36, "dem": 7.18, "l": 3.09, "res": 6.61}},
+      national2021: {"gs": 28.66, "sds": 27.88, "nsf": 9.26, "sd": 6.71, "dem": 6.69, "l": 5.69, "res": 5.49, "pir": 2.36, "sns": 2.24, "mi": 0.48},
+    },
+    pollsterMAE: {},
+    maeKey: 'SI2030',
+    logos: {
+      gs: 'img/si/GS.svg', sds: 'img/si/SDS.svg', nsf: 'img/si/NSF.svg',
+      sd: 'img/si/SD.svg', dem: 'img/si/DEM.svg', l: 'img/si/L.svg',
+      v: 'img/si/V.svg', res: 'img/si/RES.svg', pvp: 'img/si/PVP.svg',
+      pir: 'img/si/PIR.svg', sns: 'img/si/SNS.svg', mi: 'img/si/MI.svg',
+    },
+  },
+
   bc: {
     name: 'British Columbia',
     seats: 93,

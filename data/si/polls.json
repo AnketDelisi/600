@@ -1,0 +1,341 @@
+{
+ "country": "si",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+ "scraped_at": "2026-10-11T08:36:15Z",
+ "poll_count": 16,
+ "polls": [
+  {
+   "pollster": "Mediana",
+   "date": "2026-04-09",
+   "n": 700,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 27.6,
+    "sds": 27.0,
+    "nsf": 10.6,
+    "sd": 6.4,
+    "dem": 6.8,
+    "l": 6.4,
+    "v": 6.4,
+    "res": 5.6,
+    "pvp": 1.8,
+    "pir": 2.9,
+    "sns": 3.5
+   }
+  },
+  {
+   "pollster": "IJEK",
+   "date": "2026-04-10",
+   "n": 675,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 26.4,
+    "sds": 28.1,
+    "nsf": 10.9,
+    "sd": 7.5,
+    "dem": 6.2,
+    "l": 7.7,
+    "v": 7.7,
+    "res": 5.4,
+    "pvp": 2.6,
+    "pir": 1.4,
+    "sns": 1.8,
+    "mi": 0.6
+   }
+  },
+  {
+   "pollster": "Ninamedia",
+   "date": "2026-04-15",
+   "n": 700,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 29.3,
+    "sds": 27.9,
+    "nsf": 8.7,
+    "sd": 7.3,
+    "dem": 5.2,
+    "l": 5.8,
+    "v": 5.8,
+    "res": 4.4,
+    "pvp": 3.1,
+    "pir": 2.0,
+    "sns": 2.8
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-04-23",
+   "n": 722,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 28.0,
+    "sds": 29.2,
+    "nsf": 10.4,
+    "sd": 7.1,
+    "dem": 4.9,
+    "l": 6.9,
+    "v": 6.9,
+    "res": 4.6,
+    "pvp": 3.4,
+    "pir": 1.4,
+    "sns": 2.9
+   }
+  },
+  {
+   "pollster": "16th Government of Slovenia is confirmed.",
+   "date": "2026-06-04",
+   "n": 1617,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 16.0,
+    "sds": 16.0,
+    "nsf": 16.0,
+    "sd": 16.0,
+    "dem": 16.0,
+    "l": 16.0,
+    "v": 16.0,
+    "res": 16.0,
+    "pvp": 16.0,
+    "pir": 16.0,
+    "sns": 16.0,
+    "mi": 16.0
+   }
+  },
+  {
+   "pollster": "Ninamedia",
+   "date": "2026-06-10",
+   "n": 700,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 26.6,
+    "sds": 28.3,
+    "nsf": 9.5,
+    "sd": 9.1,
+    "dem": 4.3,
+    "l": 8.3,
+    "v": 0.4,
+    "res": 3.9,
+    "pvp": 3.2,
+    "pir": 1.8,
+    "sns": 1.9,
+    "mi": 1.2
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-06-11",
+   "n": 719,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 26.7,
+    "sds": 26.8,
+    "nsf": 11.1,
+    "sd": 10.2,
+    "dem": 5.1,
+    "l": 9.1,
+    "v": 9.1,
+    "res": 3.8,
+    "pvp": 1.7,
+    "pir": 3.0
+   }
+  },
+  {
+   "pollster": "IJEK",
+   "date": "2026-06-19",
+   "n": 543,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 24.4,
+    "sds": 26.3,
+    "nsf": 11.0,
+    "sd": 9.0,
+    "dem": 4.6,
+    "l": 9.7,
+    "v": 9.7,
+    "res": 6.4,
+    "pvp": 2.9,
+    "pir": 2.4,
+    "sns": 1.9
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-06-24",
+   "n": 721,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 27.5,
+    "sds": 28.4,
+    "nsf": 10.3,
+    "sd": 9.9,
+    "dem": 3.5,
+    "l": 8.3,
+    "v": 8.3,
+    "res": 3.9,
+    "pvp": 2.5,
+    "pir": 3.1,
+    "sns": 1.9
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-07-09",
+   "n": 725,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 25.9,
+    "sds": 28.3,
+    "nsf": 10.7,
+    "sd": 7.5,
+    "dem": 4.7,
+    "l": 9.9,
+    "v": 9.9,
+    "res": 4.3,
+    "pvp": 2.9,
+    "pir": 2.4,
+    "sns": 1.8
+   }
+  },
+  {
+   "pollster": "Ninamedia",
+   "date": "2026-07-15",
+   "n": 700,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 25.6,
+    "sds": 27.3,
+    "nsf": 8.6,
+    "sd": 10.2,
+    "dem": 4.2,
+    "l": 9.7,
+    "res": 3.2
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-07-23",
+   "n": 719,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 24.8,
+    "sds": 27.8,
+    "nsf": 10.5,
+    "sd": 8.4,
+    "dem": 5.8,
+    "l": 8.5,
+    "v": 8.5,
+    "res": 4.2,
+    "pvp": 2.4,
+    "pir": 2.4,
+    "sns": 2.5
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-09-10",
+   "n": 717,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 24.1,
+    "sds": 29.1,
+    "nsf": 9.9,
+    "sd": 9.7,
+    "dem": 4.4,
+    "l": 6.2,
+    "res": 3.8,
+    "pvp": 4.0,
+    "pir": 3.7,
+    "sns": 1.7
+   }
+  },
+  {
+   "pollster": "Ninamedia",
+   "date": "2026-09-16",
+   "n": 700,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 24.8,
+    "sds": 28.6,
+    "nsf": 10.0,
+    "sd": 10.2,
+    "dem": 4.2,
+    "l": 9.1,
+    "v": 0.7,
+    "res": 2.5,
+    "pvp": 3.4,
+    "pir": 1.8,
+    "sns": 1.4,
+    "mi": 1.1
+   }
+  },
+  {
+   "pollster": "IJEK",
+   "date": "2026-09-18",
+   "n": 643,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 23.9,
+    "sds": 27.9,
+    "nsf": 8.8,
+    "sd": 9.5,
+    "dem": 4.7,
+    "l": 8.7,
+    "res": 3.9,
+    "pvp": 3.6,
+    "pir": 3.4,
+    "sns": 3.0
+   }
+  },
+  {
+   "pollster": "Mediana",
+   "date": "2026-09-24",
+   "n": 716,
+   "country": "si",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
+   "votes": {
+    "gs": 26.1,
+    "sds": 30.4,
+    "nsf": 9.0,
+    "sd": 8.7,
+    "dem": 5.4,
+    "l": 7.8,
+    "res": 3.7,
+    "pvp": 1.4,
+    "pir": 3.6,
+    "sns": 1.9
+   }
+  }
+ ]
+}

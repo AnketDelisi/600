@@ -70,9 +70,10 @@ BRADY = {"name": "Bobbi Ann Brady", "past": 63.65, "now": 63.65}
 
 
 def fold(s):
-    s = unicodedata.normalize("NFKD", s or "")
-    s = s.encode("ascii", "ignore").decode()
-    return re.sub(r"[^a-z]", "", s.lower())
+    # MUST match build_map_svg.fold (it keeps ASCII hyphens: 'Oro-Medonte'
+    # and 'Chatham-Kent' produce hyphenated svg ids; a stricter fold here
+    # left those two ridings uncoloured)
+    return bm.fold(s)
 
 
 def num(s):
@@ -211,7 +212,8 @@ def main():
     os.makedirs(dst, exist_ok=True)
     logos = {}
     for key, logo in (("pc", "PC.svg"), ("olp", "OLP.svg"),
-                      ("ndp", "NDP.svg"), ("gpo", "GPO.svg")):
+                      ("ndp", "NDP.svg"), ("gpo", "GPO.svg"),
+                      ("nb", "NB.svg"), ("ont", "ONT.svg")):
         shutil.copy2(os.path.join(r"C:\Users\deneme\Desktop\600logo\ONT",
                                   logo), os.path.join(dst, logo))
         logos[key] = "img/ont/" + logo

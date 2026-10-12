@@ -6468,8 +6468,11 @@ PARL_MODE='proj';
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});
-    const pollsBtn=document.querySelector('[data-tab="polls"]');
-    if(pollsBtn) pollsBtn.dataset.active='true';
+    // switching country always lands on polls: switchTab syncs the pane
+    // display too (previously only the triggers were reset, so the old
+    // country's forecast pane stayed visible under a "polls" trigger)
+    const pollsBtn=document.querySelector('.tab-trigger[data-tab="polls"]');
+    if(pollsBtn) switchTab(pollsBtn);
     applyTheme(); updateSocialMeta();
     renderCountryNav();
     updateUrl();

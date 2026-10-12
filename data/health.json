@@ -139,6 +139,11 @@
   "poll_count": 124,
   "scraped_at": "2026-10-12T14:21:24Z"
  },
+ "ontario": {
+  "latest_date": "2026-09-29",
+  "poll_count": 48,
+  "scraped_at": "2026-10-12T18:13:57Z"
+ },
  "poland": {
   "latest_date": "2026-10-06",
   "poll_count": 88,

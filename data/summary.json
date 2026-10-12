@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T17:49:07Z",
+ "generated": "2026-10-12T18:15:20Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -400,6 +400,26 @@
    "last_winner_color": null,
    "poll_count": 9,
    "latest_poll": "2026-10-07"
+  },
+  "ontario": {
+   "name": "Ontario",
+   "election_date": "2029-06-07",
+   "election_date_runoff": null,
+   "last_election": "2025-02-27",
+   "last_winner": "pc",
+   "seats": 124,
+   "seat_based": false,
+   "leader": "pc",
+   "leader_pct": 36.6,
+   "leader_code": "PC",
+   "leader_color": "#1A4782",
+   "leader_logo": "img/ont/PC.svg",
+   "second": "olp",
+   "second_pct": 29.5,
+   "last_winner_code": "PC",
+   "last_winner_color": "#1A4782",
+   "poll_count": 2,
+   "latest_poll": "2026-09-29"
   },
   "hu": {
    "name": "Hungary",

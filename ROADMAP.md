@@ -37,7 +37,7 @@ sufficiency), the system notes map to the existing machinery.
 | 5 | **Australia** federal | by May 2028 | ~350 (very rich) | preferential (IRV) FPTP | needs a TCP-based winner rule validated on 2025 | M-L (model is the risk, not data) |
 | 6 | **Ireland** Dáil | by ~2030 | ~48 (moderate) | STV | no honest shortcut exists | L (defer) |
 | 7 | ~~**Ontario** provincial~~ | ~~2029~~ | **shipped 2026-10-12** | FPTP, 124 ridings | the BC/QC riding builders | done |
-| 8 | **Alberta** provincial | May 2027 | rich (32nd article) | FPTP, 87 ridings | the Ontario pipeline | M |
+| 8 | ~~**Alberta** provincial~~ | ~~May 2027~~ | **shipped 2026-10-12** | FPTP, 87 ridings | the Ontario pipeline | done |
 
 ## Thin data - wait
 

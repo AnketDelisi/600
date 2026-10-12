@@ -27383,7 +27383,7 @@ saxony_anhalt: {
     },
     pollsterMAE: {},
     maeKey: 'ON2029',
-    logos: { pc: 'img/ont/PC.svg', olp: 'img/ont/OLP.svg', ndp: 'img/ont/NDP.svg', gpo: 'img/ont/GPO.svg' },
+    logos: { pc: 'img/ont/PC.svg', olp: 'img/ont/OLP.svg', ndp: 'img/ont/NDP.svg', gpo: 'img/ont/GPO.svg', nb: 'img/ont/NB.svg', ont: 'img/ont/ONT.svg' },
   },
 
   qc: {

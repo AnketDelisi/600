@@ -212,7 +212,8 @@ def main():
     os.makedirs(dst, exist_ok=True)
     logos = {}
     for key, logo in (("pc", "PC.svg"), ("olp", "OLP.svg"),
-                      ("ndp", "NDP.svg"), ("gpo", "GPO.svg")):
+                      ("ndp", "NDP.svg"), ("gpo", "GPO.svg"),
+                      ("nb", "NB.svg"), ("ont", "ONT.svg")):
         shutil.copy2(os.path.join(r"C:\Users\deneme\Desktop\600logo\ONT",
                                   logo), os.path.join(dst, logo))
         logos[key] = "img/ont/" + logo

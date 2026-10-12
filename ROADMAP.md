@@ -72,10 +72,17 @@ sufficiency), the system notes map to the existing machinery.
   **Iceland / Austria / Netherlands** (2024+2021, 2024+2019, 2025+2023).
   Backtest evidence (PT 2024 and 2025 cycles, seat-level, same T-0 votes
   per cycle): blending never hurt and helped by 0.2-0.75 seat MAE in 3 of
-  4 arms; 0.75 was never worse. Remaining: the test-first tier
-  **Germany** (2021+2025 per-Wahlkreis CSVs), **Italy**. UK is parked:
-  notional 2017 on the 2024 boundaries does not exist publicly, so the
-  FPTP blend can't be tested cheaply. Do not add blanket - stable systems
+  4 arms; 0.75 was never worse. Test-first tier verdicts: **Germany**
+  rejected - projecting the 2025 per-state winners (the only thing the
+  state gebiete drive there; the seat allocation is national) gives 15/16
+  for the pure 2021 base vs 14/16 for the 2021+2017 blends (the 2017
+  CDU-dominance drags Hamburg/Mecklenburg-Vorpommern/Saxony-Anhalt
+  wrong). **Italy parked**: the 2018 per-region table is not on
+  en.wikipedia (the Interior Ministry scraper would be needed) and the
+  region gebiete only drive the region map - the same class where the
+  German test came back negative. UK stays parked: notional 2017 on the
+  2024 boundaries does not exist publicly, so the FPTP blend can't be
+  tested cheaply. Do not add blanket - stable systems
   (DK/FI/NO/CH/SE/IE/ES) stay last-election-only.
 
 ## Add-a-country checklist (the four-build distillation)

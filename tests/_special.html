@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;overflow:hidden}iframe{width:100vw;height:100vh;border:0;display:block}</style>
+</head><body>
+<iframe id="f"></iframe>
+<pre id="report" style="display:none"></pre>
+<script>
+const PAGES = (new URLSearchParams(location.search).get('pages') || '').split(',').filter(Boolean);
+const f = document.getElementById('f');
+let report = [];
+let errs = [];
+let cur = null;
+let done = false;
+
+function loadNext() {
+  if (cur !== null) {
+    const d = f.contentDocument;
+    report.push({
+      page: cur,
+      errs: errs,
+      title: d ? d.title : '',
+      textLen: d && d.body ? d.body.innerText.length : -1,
+      canvases: d ? d.querySelectorAll('canvas').length : -1,
+      svgs: d ? d.querySelectorAll('svg').length : -1,
+    });
+  }
+  if (!PAGES.length) {
+    done = true;
+    document.getElementById('report').textContent = JSON.stringify(report, null, 1);
+    document.title = 'SPECIAL DONE ' + report.length;
+    return;
+  }
+  cur = PAGES.shift();
+  errs = [];
+  f.src = '/' + cur;
+}
+
+f.addEventListener('load', () => {
+  const w = f.contentWindow;
+  try { w.addEventListener('error', e => { errs.push(String(e.message).slice(0, 120)); }); } catch (e) {}
+  try { w.addEventListener('unhandledrejection', e => { errs.push('REJ:' + String(e.reason).slice(0, 100)); }); } catch (e) {}
+  setTimeout(loadNext, 5000);
+});
+loadNext();
+</script>
+</body></html>

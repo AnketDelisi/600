@@ -49,7 +49,9 @@ const cfg = JSON.parse(vm.runInThisContext(
   'dist:COUNTRIES.' + cc + '.map.districts,' +
   'nat:COUNTRIES.' + cc + '.map.national2021,' +
   'pnat:COUNTRIES.' + cc + '.map.prevNational,' +
-  'blend:COUNTRIES.' + cc + '.map.baseBlend})'));
+  'blend:COUNTRIES.' + cc + '.map.baseBlend,' +
+  'po:Object.keys(COUNTRIES.' + cc + '.parties||{}).filter(function(p){' +
+  'return COUNTRIES.' + cc + '.parties[p]&&COUNTRIES.' + cc + '.parties[p].pastOnly})})'));
 const shares = {};
 for (const d of districts) {
   shares[d] = {

@@ -1,0 +1,132 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;overflow:hidden}iframe{width:100vw;height:100vh;border:0;display:block}</style>
+</head><body>
+<iframe id="f"></iframe>
+<pre id="report" style="display:none"></pre>
+<script>
+const CC = (new URLSearchParams(location.search).get('ccs') || '').split(',').filter(Boolean);
+const f = document.getElementById('f');
+let report = [];
+let errs = [];
+let checks = {};
+let cur = null;
+let phase = 0;
+let tick = 0;
+let done = false;
+
+function loadNext() {
+  if (cur !== null) report.push({cc: cur, errs: errs, ...checks});
+  if (!CC.length) { finish(); return; }
+  cur = CC.shift();
+  errs = [];
+  checks = {};
+  phase = 0;
+  tick = 0;
+  f.src = '/index.html?c=' + cur;
+}
+
+function finish() {
+  done = true;
+  document.getElementById('report').textContent = JSON.stringify(report, null, 1);
+  document.title = 'SWEEP DONE ' + report.length;
+}
+
+f.addEventListener('load', () => {
+  const w = f.contentWindow;
+  try { w.addEventListener('error', e => { errs.push(String(e.message).slice(0, 120)); }); } catch (e) {}
+  try { w.addEventListener('unhandledrejection', e => { errs.push('REJ:' + String(e.reason).slice(0, 100)); }); } catch (e) {}
+});
+
+function paneLen(tab) {
+  const d = f.contentDocument;
+  const p = d.getElementById('pane-' + tab);
+  return p ? p.innerHTML.length : -1;
+}
+
+setInterval(() => {
+  if (done) return;
+  const d = f.contentDocument;
+  if (!d) return;
+  tick++;
+  const hasPolls = d.querySelector('#pane-polls .card');
+  if (phase === 0) {
+    if (hasPolls || tick > 120) {
+      checks.polls = hasPolls ? paneLen('polls') : 0;
+      phase = 1; tick = 0;
+      const b = d.querySelector('.tab-trigger[data-tab="forecast"]');
+      if (b) b.click();
+    }
+    return;
+  }
+  if (phase === 1) {
+    if (paneLen('forecast') > 2000 || tick > 200) {
+      checks.forecast = paneLen('forecast');
+      phase = 2; tick = 0;
+      const b = d.querySelector('.tab-trigger[data-tab="prediction"]');
+      if (b) b.click();
+    }
+    return;
+  }
+  if (phase === 2) {
+    if (paneLen('prediction') > 1000 || tick > 60) {
+      checks.prediction = paneLen('prediction');
+      phase = 3; tick = 0;
+      const b = d.querySelector('.tab-trigger[data-tab="methodology"]');
+      if (b) b.click();
+    }
+    return;
+  }
+  if (phase === 3) {
+    if (paneLen('methodology') > 1000 || tick > 60) {
+      checks.methodology = paneLen('methodology');
+      phase = 4; tick = 0;
+      const b = d.querySelector('.tab-trigger[data-tab="polls"]');
+      if (b) b.click();
+    }
+    return;
+  }
+  if (phase === 4) {
+    const mapBtn = d.querySelector('button[data-parlview="map"]');
+    if (mapBtn && !checks.mapClicked) {
+      checks.mapClicked = true;
+      mapBtn.click();
+      tick = 0;
+      return;
+    }
+    if (tick > 25 && checks.map === undefined) {
+      const box = d.getElementById('map-box');
+      checks.map = box ? box.querySelectorAll('path').length : -1;
+      const resBtn = d.querySelector('button[data-parlmode="2022"]');
+      if (resBtn) { resBtn.click(); tick = 0; checks.resClicked = true; return; }
+    }
+    if (checks.resClicked && checks.res === undefined && tick > 25) {
+      const box = d.getElementById('map-box');
+      checks.res = box ? box.querySelectorAll('path').length : -1;
+      const sel = d.getElementById('filter-days');
+      if (sel) {
+        sel.value = '60';
+        sel.dispatchEvent(new f.contentWindow.Event('change'));
+      }
+      phase = 5; tick = 0;
+      return;
+    }
+    if (!checks.resClicked && tick > 50) {
+      const sel = d.getElementById('filter-days');
+      if (sel) { sel.value = '60'; sel.dispatchEvent(new f.contentWindow.Event('change')); }
+      phase = 5; tick = 0;
+      return;
+    }
+    return;
+  }
+  if (phase === 5) {
+    if (tick > 40) {
+      checks.afterFilter = paneLen('polls');
+      loadNext();
+    }
+    return;
+  }
+}, 100);
+loadNext();
+</script>
+</body></html>

@@ -31,7 +31,7 @@ sufficiency), the system notes map to the existing machinery.
 | # | Election | When | Polling (rows) | System | Reuses | Effort |
 |---|----------|------|----------------|--------|--------|--------|
 | 1 | ~~**Argentina** presidential~~ | ~~Oct 2027~~ | **shipped 2026-10-12** | national two-round, 24 districts | the France/Brazil presidential machinery | done |
-| 2 | **Canada** federal | Oct 2029 (fixed) | ~400 (very rich) | FPTP, 343 ridings | the BC/QC riding builders + Elections Canada geodata | M model + L map (343 ridings) |
+| 2 | ~~**Canada** federal~~ | ~~Oct 2029 (fixed)~~ | **shipped 2026-10-12** | FPTP, 343 ridings | the BC/QC riding builders + Elections Canada geodata | done |
 | 3 | **Mexico** midterms | Jun 2027 | ~35 (moderate) | 500 = 300 FPTP + 200 PR (5 regional lists) | the Japan winnerDistricts + prDistricts path | M-L (300 district geodata is the risk; states-level map fallback) |
 | 4 | **France presidential** | Apr 2027 | very rich (dedicated page) | national two-round | the Brazil runoff machinery + the presidential page style (bgpres) as a new `frpres` key | M (no new map needed if national) |
 | 5 | **Australia** federal | by May 2028 | ~350 (very rich) | preferential (IRV) FPTP | needs a TCP-based winner rule validated on 2025 | M-L (model is the risk, not data) |

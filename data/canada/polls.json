@@ -1,0 +1,3025 @@
+{
+  "country": "canada",
+  "sources": [
+    {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_46th_Canadian_federal_election"
+    }
+  ],
+  "scraped_at": "2026-10-12T19:49:41Z",
+  "poll_count": 235,
+  "polls": [
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-10-03",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 28.0,
+        "bq": 6.0,
+        "ndp": 15.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-10-02",
+      "votes": {
+        "lpc": 49.1,
+        "cpc": 28.2,
+        "bq": 6.3,
+        "ndp": 10.9,
+        "gpc": 3.4,
+        "ppc": 1.6
+      },
+      "n": 1020
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-09-26",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 29.0,
+        "bq": 6.0,
+        "ndp": 15.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-09-25",
+      "votes": {
+        "lpc": 49.9,
+        "cpc": 27.9,
+        "bq": 5.6,
+        "ndp": 11.0,
+        "gpc": 3.5,
+        "ppc": 1.4
+      },
+      "n": 1022
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-09-23",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 34.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 2774
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-09-19",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 31.0,
+        "bq": 6.0,
+        "ndp": 15.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-09-18",
+      "votes": {
+        "lpc": 48.1,
+        "cpc": 31.0,
+        "bq": 4.8,
+        "ndp": 11.2,
+        "gpc": 3.3,
+        "ppc": 1.0
+      },
+      "n": 1026
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-09-12",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 14.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-09-11",
+      "votes": {
+        "lpc": 48.3,
+        "cpc": 30.9,
+        "bq": 4.9,
+        "ndp": 10.9,
+        "gpc": 3.2,
+        "ppc": 1.4
+      },
+      "n": 1014
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-09-09",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 33.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1479
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-09-07",
+      "votes": {
+        "lpc": 49.0,
+        "cpc": 33.0,
+        "bq": 7.0,
+        "ndp": 6.0,
+        "gpc": 3.0
+      },
+      "n": 1538
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-09-07",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 32.0,
+        "bq": 5.0,
+        "ndp": 12.0,
+        "gpc": 2.0
+      },
+      "n": 1811
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-09-05",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 31.0,
+        "bq": 6.0,
+        "ndp": 13.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-09-04",
+      "votes": {
+        "lpc": 47.3,
+        "cpc": 31.3,
+        "bq": 5.0,
+        "ndp": 10.8,
+        "gpc": 3.4,
+        "ppc": 1.6
+      },
+      "n": 1020
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-08-29",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 29.0,
+        "bq": 6.0,
+        "ndp": 13.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-08-28",
+      "votes": {
+        "lpc": 43.7,
+        "cpc": 32.6,
+        "bq": 6.0,
+        "ndp": 12.0,
+        "gpc": 3.9,
+        "ppc": 1.4
+      },
+      "n": 1017
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2026-08-27",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 33.0,
+        "bq": 8.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-08-26",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 35.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 2022
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-08-22",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 13.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-08-21",
+      "votes": {
+        "lpc": 44.1,
+        "cpc": 30.0,
+        "bq": 6.6,
+        "ndp": 12.9,
+        "gpc": 4.0,
+        "ppc": 2.0
+      },
+      "n": 1022
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-08-15",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 13.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-08-14",
+      "votes": {
+        "lpc": 45.7,
+        "cpc": 28.5,
+        "bq": 6.2,
+        "ndp": 13.7,
+        "gpc": 4.0,
+        "ppc": 1.5
+      },
+      "n": 1031
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-08-12",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 35.0,
+        "bq": 8.0,
+        "ndp": 10.0,
+        "gpc": 4.0,
+        "ppc": 2.0
+      },
+      "n": 1499
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-08-08",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 31.0,
+        "bq": 6.0,
+        "ndp": 13.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-08-07",
+      "votes": {
+        "lpc": 45.6,
+        "cpc": 29.1,
+        "bq": 6.8,
+        "ndp": 12.9,
+        "gpc": 4.0,
+        "ppc": 1.3
+      },
+      "n": 1038
+    },
+    {
+      "pollster": "Research Co.",
+      "date": "2026-08-07",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 27.0,
+        "bq": 6.0,
+        "ndp": 10.0,
+        "gpc": 5.0,
+        "ppc": 4.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2026-08-04",
+      "votes": {
+        "lpc": 44.7,
+        "cpc": 27.1,
+        "bq": 4.4,
+        "ndp": 17.0,
+        "gpc": 3.5,
+        "ppc": 2.2
+      },
+      "n": 3195
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-08-03",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 4.0
+      },
+      "n": 1514
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-08-01",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 12.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-07-31",
+      "votes": {
+        "lpc": 47.1,
+        "cpc": 27.9,
+        "bq": 6.1,
+        "ndp": 12.7,
+        "gpc": 3.8,
+        "ppc": 1.9
+      },
+      "n": 1037
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-07-29",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1910
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-07-27",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 36.0,
+        "bq": 6.0,
+        "ndp": 13.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1769
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-07-25",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 35.0,
+        "bq": 5.0,
+        "ndp": 11.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-07-24",
+      "votes": {
+        "lpc": 44.7,
+        "cpc": 29.5,
+        "bq": 7.3,
+        "ndp": 12.7,
+        "gpc": 4.5,
+        "ppc": 1.1
+      },
+      "n": 1034
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-07-18",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 35.0,
+        "bq": 5.0,
+        "ndp": 10.0,
+        "gpc": 1.0,
+        "ppc": 1.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-07-17",
+      "votes": {
+        "lpc": 42.7,
+        "cpc": 31.3,
+        "bq": 7.2,
+        "ndp": 13.6,
+        "gpc": 4.3,
+        "ppc": 0.8
+      },
+      "n": 1022
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-07-16",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 37.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 4205
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-07-11",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 35.0,
+        "bq": 6.0,
+        "ndp": 14.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-07-10",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 31.0,
+        "bq": 6.2,
+        "ndp": 15.1,
+        "gpc": 3.7,
+        "ppc": 1.0
+      },
+      "n": 1018
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-07-04",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 14.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1458
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-07-03",
+      "votes": {
+        "lpc": 41.4,
+        "cpc": 32.1,
+        "bq": 6.4,
+        "ndp": 15.1,
+        "gpc": 3.8,
+        "ppc": 1.1
+      },
+      "n": 1017
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-07-02",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 36.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 2366
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-06-27",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 34.0,
+        "bq": 5.0,
+        "ndp": 11.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-06-26",
+      "votes": {
+        "lpc": 43.8,
+        "cpc": 30.4,
+        "bq": 6.5,
+        "ndp": 12.0,
+        "gpc": 5.2,
+        "ppc": 2.1
+      },
+      "n": 1017
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-06-22",
+      "votes": {
+        "lpc": 48.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 6.0,
+        "gpc": 4.0
+      },
+      "n": 1528
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-06-20",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 14.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-06-19",
+      "votes": {
+        "lpc": 43.5,
+        "cpc": 31.5,
+        "bq": 6.6,
+        "ndp": 11.4,
+        "gpc": 4.8,
+        "ppc": 2.0
+      },
+      "n": 1024
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-06-17",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 3080
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-06-13",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 14.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2026-06-13",
+      "votes": {
+        "lpc": 43.1,
+        "cpc": 32.8,
+        "bq": 5.3,
+        "ndp": 12.3,
+        "gpc": 3.6,
+        "ppc": 1.6
+      },
+      "n": 1349
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-06-12",
+      "votes": {
+        "lpc": 42.7,
+        "cpc": 30.7,
+        "bq": 6.7,
+        "ndp": 11.5,
+        "gpc": 5.9,
+        "ppc": 2.1
+      },
+      "n": 1021
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-06-10",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 36.0,
+        "bq": 7.0,
+        "ndp": 12.0,
+        "gpc": 2.0
+      },
+      "n": 4237
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-06-06",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 32.0,
+        "bq": 7.0,
+        "ndp": 15.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-06-05",
+      "votes": {
+        "lpc": 42.3,
+        "cpc": 29.4,
+        "bq": 6.7,
+        "ndp": 13.1,
+        "gpc": 6.0,
+        "ppc": 2.0
+      },
+      "n": 1023
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-06-02",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 36.0,
+        "bq": 6.0,
+        "ndp": 11.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1910
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-06-01",
+      "votes": {
+        "lpc": 50.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 6.0,
+        "gpc": 2.0
+      },
+      "n": 1532
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-05-31",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 16.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-05-29",
+      "votes": {
+        "lpc": 40.3,
+        "cpc": 32.8,
+        "bq": 6.6,
+        "ndp": 13.2,
+        "gpc": 5.1,
+        "ppc": 1.5
+      },
+      "n": 1028
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2026-05-24",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 32.0,
+        "bq": 7.0,
+        "ndp": 11.0,
+        "gpc": 3.0
+      },
+      "n": 1295
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-05-23",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 31.0,
+        "bq": 6.0,
+        "ndp": 11.0,
+        "gpc": 2.0,
+        "ppc": 3.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-05-22",
+      "votes": {
+        "lpc": 41.1,
+        "cpc": 32.7,
+        "bq": 6.4,
+        "ndp": 12.6,
+        "gpc": 4.8,
+        "ppc": 2.0
+      },
+      "n": 1026
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-05-20",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 35.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1920
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-05-16",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 11.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-05-15",
+      "votes": {
+        "lpc": 42.3,
+        "cpc": 32.7,
+        "bq": 5.8,
+        "ndp": 12.0,
+        "gpc": 4.4,
+        "ppc": 1.9
+      },
+      "n": 1035
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-05-09",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1526
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-05-08",
+      "votes": {
+        "lpc": 45.5,
+        "cpc": 33.4,
+        "bq": 5.3,
+        "ndp": 8.8,
+        "gpc": 3.5,
+        "ppc": 2.0
+      },
+      "n": 1036
+    },
+    {
+      "pollster": "Research Co.",
+      "date": "2026-05-08",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 31.0,
+        "bq": 7.0,
+        "ndp": 11.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1003
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-05-05",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 36.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 2478
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-05-02",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-05-01",
+      "votes": {
+        "lpc": 44.8,
+        "cpc": 32.0,
+        "bq": 5.6,
+        "ndp": 11.4,
+        "gpc": 3.4,
+        "ppc": 1.4
+      },
+      "n": 1027
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-04-26",
+      "votes": {
+        "lpc": 48.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 6.0,
+        "gpc": 2.0
+      },
+      "n": 1521
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-04-25",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2026-04-24",
+      "votes": {
+        "lpc": 44.5,
+        "cpc": 31.0,
+        "bq": 5.8,
+        "ndp": 12.5,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1916
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-04-24",
+      "votes": {
+        "lpc": 44.6,
+        "cpc": 32.0,
+        "bq": 5.4,
+        "ndp": 11.5,
+        "gpc": 3.5,
+        "ppc": 1.1
+      },
+      "n": 1024
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-04-22",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 36.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 2000
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-04-20",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 35.0,
+        "bq": 7.0,
+        "ndp": 12.0,
+        "gpc": 2.0
+      },
+      "n": 2013
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-04-18",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 10.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-04-17",
+      "votes": {
+        "lpc": 45.8,
+        "cpc": 31.5,
+        "bq": 5.3,
+        "ndp": 11.9,
+        "gpc": 3.5,
+        "ppc": 0.9
+      },
+      "n": 1022
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-04-11",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 33.0,
+        "bq": 7.0,
+        "ndp": 10.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-04-10",
+      "votes": {
+        "lpc": 45.3,
+        "cpc": 32.0,
+        "bq": 5.4,
+        "ndp": 12.2,
+        "gpc": 3.5,
+        "ppc": 1.0
+      },
+      "n": 1027
+    },
+    {
+      "pollster": "Spark Insights",
+      "date": "2026-04-08",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 32.0,
+        "bq": 6.0,
+        "ndp": 9.0
+      },
+      "n": 4026
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-04-08",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1680
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2026-04-07",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 33.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-04-04",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-04-03",
+      "votes": {
+        "lpc": 45.7,
+        "cpc": 30.5,
+        "bq": 5.6,
+        "ndp": 12.5,
+        "gpc": 4.2,
+        "ppc": 1.1
+      },
+      "n": 1025
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-03-30",
+      "votes": {
+        "lpc": 48.0,
+        "cpc": 34.0,
+        "bq": 7.0,
+        "ndp": 6.0,
+        "gpc": 3.0
+      },
+      "n": 1618
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-03-28",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-03-27",
+      "votes": {
+        "lpc": 46.5,
+        "cpc": 32.2,
+        "bq": 5.1,
+        "ndp": 11.3,
+        "gpc": 3.6,
+        "ppc": 1.1
+      },
+      "n": 1029
+    },
+    {
+      "pollster": "Spark Insights",
+      "date": "2026-03-26",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 30.0,
+        "bq": 5.0,
+        "ndp": 11.0
+      },
+      "n": 4000
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-03-24",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1515
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-03-21",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 32.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-03-20",
+      "votes": {
+        "lpc": 45.7,
+        "cpc": 32.9,
+        "bq": 4.8,
+        "ndp": 11.5,
+        "gpc": 3.7,
+        "ppc": 0.8
+      },
+      "n": 1024
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-03-17",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 36.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 2.0
+      },
+      "n": 4005
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2026-03-15",
+      "votes": {
+        "lpc": 47.5,
+        "cpc": 27.0,
+        "bq": 4.1,
+        "ndp": 15.1,
+        "gpc": 4.5,
+        "ppc": 1.5
+      },
+      "n": 1047
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-03-14",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 31.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 4.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-03-13",
+      "votes": {
+        "lpc": 47.8,
+        "cpc": 31.1,
+        "bq": 4.5,
+        "ndp": 11.2,
+        "gpc": 4.0,
+        "ppc": 1.1
+      },
+      "n": 1015
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-03-11",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 35.0,
+        "bq": 7.0,
+        "ndp": 7.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1931
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-03-07",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 30.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 4.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Spark Insights",
+      "date": "2026-03-06",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 31.0,
+        "bq": 5.0,
+        "ndp": 10.0
+      },
+      "n": 3055
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-03-06",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 32.5,
+        "bq": 5.2,
+        "ndp": 10.0,
+        "gpc": 4.7,
+        "ppc": 0.7
+      },
+      "n": 1023
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2026-03-02",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 36.0,
+        "bq": 4.0,
+        "ndp": 7.0,
+        "gpc": 2.0,
+        "ppc": 3.0
+      },
+      "n": 1276
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-03-02",
+      "votes": {
+        "lpc": 49.0,
+        "cpc": 35.0,
+        "bq": 5.0,
+        "ndp": 5.0,
+        "gpc": 3.0
+      },
+      "n": 1627
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-02-28",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-02-27",
+      "votes": {
+        "lpc": 43.6,
+        "cpc": 33.2,
+        "bq": 5.1,
+        "ndp": 11.4,
+        "gpc": 4.9,
+        "ppc": 0.7
+      },
+      "n": 1015
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2026-02-26",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 36.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Pollara",
+      "date": "2026-02-24",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 34.0,
+        "bq": 7.0,
+        "ndp": 9.0
+      },
+      "n": 2410
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-02-23",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 7.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1500
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-02-23",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 32.0,
+        "bq": 7.0,
+        "ndp": 10.0,
+        "gpc": 4.0
+      },
+      "n": 1650
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-02-21",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 33.0,
+        "bq": 6.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-02-20",
+      "votes": {
+        "lpc": 41.3,
+        "cpc": 33.7,
+        "bq": 7.6,
+        "ndp": 10.6,
+        "gpc": 4.9,
+        "ppc": 0.9
+      },
+      "n": 1021
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2026-02-17",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0
+      },
+      "n": 1838
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-02-14",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 34.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-02-13",
+      "votes": {
+        "lpc": 38.1,
+        "cpc": 36.5,
+        "bq": 8.3,
+        "ndp": 11.1,
+        "gpc": 4.4,
+        "ppc": 0.7
+      },
+      "n": 1018
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-02-10",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1915
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-02-07",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 35.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-02-06",
+      "votes": {
+        "lpc": 39.1,
+        "cpc": 35.2,
+        "bq": 8.8,
+        "ndp": 12.6,
+        "gpc": 2.9,
+        "ppc": 0.9
+      },
+      "n": 1049
+    },
+    {
+      "pollster": "Research Co.",
+      "date": "2026-02-05",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 32.0,
+        "bq": 7.0,
+        "ndp": 10.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2026-02-02",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 38.0,
+        "bq": 7.0,
+        "ndp": 10.0,
+        "gpc": 3.0
+      },
+      "n": 1666
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2026-02-02",
+      "votes": {
+        "lpc": 51.0,
+        "cpc": 35.5,
+        "bq": 5.5,
+        "ndp": 4.0,
+        "gpc": 2.2,
+        "ppc": 0.6
+      },
+      "n": 1276
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-01-31",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 35.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2026-01-30",
+      "votes": {
+        "lpc": 44.4,
+        "cpc": 29.5,
+        "bq": 5.3,
+        "ndp": 13.8,
+        "gpc": 3.9,
+        "ppc": 1.6
+      },
+      "n": 1453
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-01-30",
+      "votes": {
+        "lpc": 38.9,
+        "cpc": 35.2,
+        "bq": 9.2,
+        "ndp": 12.5,
+        "gpc": 2.5,
+        "ppc": 1.3
+      },
+      "n": 1055
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-01-27",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 39.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 2498
+    },
+    {
+      "pollster": "Léger",
+      "date": "2026-01-26",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 5.0,
+        "gpc": 2.0
+      },
+      "n": 1611
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2026-01-26",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 38.0,
+        "bq": 7.0,
+        "ndp": 10.0,
+        "gpc": 2.0
+      },
+      "n": 1420
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-01-24",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 34.0,
+        "bq": 8.0,
+        "ndp": 10.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-01-23",
+      "votes": {
+        "lpc": 39.2,
+        "cpc": 35.2,
+        "bq": 8.0,
+        "ndp": 11.6,
+        "gpc": 3.6,
+        "ppc": 2.1
+      },
+      "n": 1053
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-01-17",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 35.0,
+        "bq": 8.0,
+        "ndp": 11.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-01-16",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 39.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 2008
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-01-16",
+      "votes": {
+        "lpc": 38.8,
+        "cpc": 34.8,
+        "bq": 7.7,
+        "ndp": 11.5,
+        "gpc": 4.6,
+        "ppc": 2.4
+      },
+      "n": 1084
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-01-14",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1850
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2026-01-12",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 37.0,
+        "bq": 7.0,
+        "ndp": 11.0,
+        "gpc": 3.0
+      },
+      "n": 1120
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-01-10",
+      "votes": {
+        "lpc": 39.0,
+        "cpc": 36.0,
+        "bq": 8.0,
+        "ndp": 12.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-01-09",
+      "votes": {
+        "lpc": 38.8,
+        "cpc": 35.5,
+        "bq": 7.6,
+        "ndp": 10.9,
+        "gpc": 3.9,
+        "ppc": 2.1
+      },
+      "n": 1054
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-01-03",
+      "votes": {
+        "lpc": 38.0,
+        "cpc": 37.0,
+        "bq": 7.0,
+        "ndp": 12.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2026-01-02",
+      "votes": {
+        "lpc": 37.7,
+        "cpc": 35.5,
+        "bq": 7.6,
+        "ndp": 11.7,
+        "gpc": 3.9,
+        "ppc": 1.9
+      },
+      "n": 1059
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-12-28",
+      "votes": {
+        "lpc": 39.0,
+        "cpc": 37.0,
+        "bq": 7.0,
+        "ndp": 11.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-12-26",
+      "votes": {
+        "lpc": 38.4,
+        "cpc": 34.7,
+        "bq": 7.4,
+        "ndp": 11.3,
+        "gpc": 3.9,
+        "ppc": 1.7
+      },
+      "n": 1054
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-12-21",
+      "votes": {
+        "lpc": 38.0,
+        "cpc": 38.0,
+        "bq": 7.0,
+        "ndp": 12.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-12-19",
+      "votes": {
+        "lpc": 36.3,
+        "cpc": 35.6,
+        "bq": 7.1,
+        "ndp": 11.4,
+        "gpc": 3.5,
+        "ppc": 1.8
+      },
+      "n": 1059
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2025-12-15",
+      "votes": {
+        "lpc": 40.9,
+        "cpc": 37.7,
+        "bq": 8.2,
+        "ndp": 7.9,
+        "gpc": 3.6
+      },
+      "n": 1074
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2025-12-15",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 37.0,
+        "bq": 9.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1502
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2025-12-14",
+      "votes": {
+        "lpc": 39.0,
+        "cpc": 39.0,
+        "bq": 7.0,
+        "ndp": 10.0,
+        "gpc": 4.0
+      },
+      "n": 2159
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2025-12-12",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 42.0,
+        "bq": 7.0,
+        "ndp": 6.0,
+        "gpc": 1.0,
+        "ppc": 1.0
+      },
+      "n": 1098
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-12-12",
+      "votes": {
+        "lpc": 38.5,
+        "cpc": 36.0,
+        "bq": 6.7,
+        "ndp": 10.8,
+        "gpc": 3.7,
+        "ppc": 1.9
+      },
+      "n": 1084
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-12-09",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 41.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1500
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-12-05",
+      "votes": {
+        "lpc": 39.1,
+        "cpc": 37.8,
+        "bq": 6.3,
+        "ndp": 9.5,
+        "gpc": 3.3,
+        "ppc": 1.8
+      },
+      "n": 1042
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2025-12-01",
+      "votes": {
+        "lpc": 39.0,
+        "cpc": 38.0,
+        "bq": 8.0,
+        "ndp": 9.0,
+        "gpc": 4.0
+      },
+      "n": 1846
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-12-01",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 41.0,
+        "bq": 7.0,
+        "ndp": 7.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1802
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2025-12-01",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 37.0,
+        "bq": 9.0,
+        "ndp": 10.0,
+        "gpc": 3.0
+      },
+      "n": 4025
+    },
+    {
+      "pollster": "Léger",
+      "date": "2025-11-30",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 36.0,
+        "bq": 9.0,
+        "ndp": 8.0,
+        "gpc": 4.0
+      },
+      "n": 1579
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-11-30",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 36.0,
+        "bq": 5.0,
+        "ndp": 12.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-11-28",
+      "votes": {
+        "lpc": 41.9,
+        "cpc": 38.2,
+        "bq": 7.3,
+        "ndp": 8.4,
+        "gpc": 2.7,
+        "ppc": 1.2
+      },
+      "n": 1084
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-11-27",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 2421
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-11-21",
+      "votes": {
+        "lpc": 41.9,
+        "cpc": 37.2,
+        "bq": 7.0,
+        "ndp": 9.1,
+        "gpc": 2.7,
+        "ppc": 1.6
+      },
+      "n": 1053
+    },
+    {
+      "pollster": "Kolosowski Strategies",
+      "date": "2025-11-18",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 44.0,
+        "bq": 6.0,
+        "ndp": 3.0,
+        "gpc": 1.0,
+        "ppc": 1.0
+      },
+      "n": 890
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-11-14",
+      "votes": {
+        "lpc": 40.2,
+        "cpc": 38.2,
+        "bq": 7.4,
+        "ndp": 10.1,
+        "gpc": 2.2,
+        "ppc": 1.3
+      },
+      "n": 1060
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2025-11-11",
+      "votes": {
+        "lpc": 44.1,
+        "cpc": 33.2,
+        "bq": 5.4,
+        "ndp": 10.7,
+        "gpc": 3.3,
+        "ppc": 1.8
+      },
+      "n": 1191
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2025-11-08",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 40.0,
+        "bq": 6.0,
+        "ndp": 5.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1084
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-11-08",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 36.0,
+        "bq": 6.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2025-11-07",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 38.0,
+        "bq": 8.0,
+        "ndp": 9.0,
+        "gpc": 3.0
+      },
+      "n": 2038
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-11-07",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 36.8,
+        "bq": 7.5,
+        "ndp": 11.4,
+        "gpc": 2.3,
+        "ppc": 1.2
+      },
+      "n": 1122
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-11-06",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 41.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1916
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2025-11-04",
+      "votes": {
+        "lpc": 43.4,
+        "cpc": 35.5,
+        "bq": 5.8,
+        "ndp": 8.0,
+        "gpc": 3.5,
+        "ppc": 2.0
+      },
+      "n": 1199
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-11-04",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 38.0,
+        "bq": 5.0,
+        "ndp": 11.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Léger",
+      "date": "2025-11-03",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 38.0,
+        "bq": 7.0,
+        "ndp": 7.0,
+        "gpc": 4.0
+      },
+      "n": 1585
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-10-31",
+      "votes": {
+        "lpc": 39.3,
+        "cpc": 37.1,
+        "bq": 6.6,
+        "ndp": 12.5,
+        "gpc": 1.7,
+        "ppc": 1.5
+      },
+      "n": 924
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-10-29",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 42.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 2922
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-10-24",
+      "votes": {
+        "lpc": 39.4,
+        "cpc": 37.0,
+        "bq": 7.0,
+        "ndp": 12.7,
+        "gpc": 1.6,
+        "ppc": 1.2
+      },
+      "n": 1060
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2025-10-24",
+      "votes": {
+        "lpc": 43.5,
+        "cpc": 32.4,
+        "bq": 5.7,
+        "ndp": 12.4,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1199
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-10-17",
+      "votes": {
+        "lpc": 39.3,
+        "cpc": 36.6,
+        "bq": 6.8,
+        "ndp": 12.1,
+        "gpc": 2.8,
+        "ppc": 1.3
+      },
+      "n": 1021
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-10-15",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 41.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 4501
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2025-10-15",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 11.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1206
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-10-10",
+      "votes": {
+        "lpc": 38.5,
+        "cpc": 36.8,
+        "bq": 6.5,
+        "ndp": 12.2,
+        "gpc": 3.9,
+        "ppc": 1.4
+      },
+      "n": 1002
+    },
+    {
+      "pollster": "Léger",
+      "date": "2025-10-05",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 38.0,
+        "bq": 7.0,
+        "ndp": 6.0,
+        "gpc": 3.0
+      },
+      "n": 1562
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-10-03",
+      "votes": {
+        "lpc": 39.1,
+        "cpc": 37.9,
+        "bq": 6.2,
+        "ndp": 11.5,
+        "gpc": 4.0,
+        "ppc": 0.9
+      },
+      "n": 1027
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-10-01",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 41.0,
+        "bq": 7.0,
+        "ndp": 7.0,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1504
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-09-26",
+      "votes": {
+        "lpc": 40.7,
+        "cpc": 36.6,
+        "bq": 4.8,
+        "ndp": 11.9,
+        "gpc": 4.3,
+        "ppc": 1.2
+      },
+      "n": 1030
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2025-09-22",
+      "votes": {
+        "lpc": 38.0,
+        "cpc": 41.0,
+        "bq": 8.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1570
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-09-21",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 37.0,
+        "bq": 5.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-09-19",
+      "votes": {
+        "lpc": 40.6,
+        "cpc": 35.7,
+        "bq": 5.5,
+        "ndp": 11.6,
+        "gpc": 3.2,
+        "ppc": 2.2
+      },
+      "n": 1056
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-09-17",
+      "votes": {
+        "lpc": 40.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 2230
+    },
+    {
+      "pollster": "Research Co.",
+      "date": "2025-09-12",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1003
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-09-12",
+      "votes": {
+        "lpc": 41.8,
+        "cpc": 34.5,
+        "bq": 5.5,
+        "ndp": 12.8,
+        "gpc": 2.5,
+        "ppc": 1.9
+      },
+      "n": 1049
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2025-09-12",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 34.0,
+        "bq": 5.2,
+        "ndp": 12.6,
+        "gpc": 3.0,
+        "ppc": 2.0
+      },
+      "n": 1614
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2025-09-08",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 39.0,
+        "bq": 7.0,
+        "ndp": 7.0,
+        "gpc": 1.0,
+        "ppc": 2.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Léger",
+      "date": "2025-09-07",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 6.0,
+        "gpc": 2.0
+      },
+      "n": 1592
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-09-05",
+      "votes": {
+        "lpc": 42.7,
+        "cpc": 32.9,
+        "bq": 5.2,
+        "ndp": 12.8,
+        "gpc": 3.5,
+        "ppc": 1.6
+      },
+      "n": 1002
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2025-09-04",
+      "votes": {
+        "lpc": 38.0,
+        "cpc": 40.0,
+        "bq": 8.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 3656
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-09-02",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 6.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1500
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2025-09-01",
+      "votes": {
+        "lpc": 42.3,
+        "cpc": 40.4,
+        "bq": 5.0,
+        "ndp": 8.4,
+        "gpc": 1.2,
+        "ppc": 1.6
+      },
+      "n": 1008
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-08-29",
+      "votes": {
+        "lpc": 43.3,
+        "cpc": 32.4,
+        "bq": 6.2,
+        "ndp": 12.7,
+        "gpc": 2.9,
+        "ppc": 1.6
+      },
+      "n": 1009
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-08-27",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 35.0,
+        "bq": 5.0,
+        "ndp": 10.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-08-22",
+      "votes": {
+        "lpc": 43.7,
+        "cpc": 34.2,
+        "bq": 5.5,
+        "ndp": 10.7,
+        "gpc": 3.3,
+        "ppc": 1.6
+      },
+      "n": 1045
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-08-19",
+      "votes": {
+        "lpc": 39.0,
+        "cpc": 41.0,
+        "bq": 7.0,
+        "ndp": 7.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1915
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-08-15",
+      "votes": {
+        "lpc": 44.4,
+        "cpc": 32.4,
+        "bq": 4.9,
+        "ndp": 11.6,
+        "gpc": 3.2,
+        "ppc": 2.8
+      },
+      "n": 1050
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-08-08",
+      "votes": {
+        "lpc": 44.8,
+        "cpc": 31.9,
+        "bq": 6.1,
+        "ndp": 11.5,
+        "gpc": 2.6,
+        "ppc": 2.5
+      },
+      "n": 1094
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-08-08",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 35.0,
+        "bq": 6.0,
+        "ndp": 11.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-08-07",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 40.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 1.5,
+        "ppc": 1.5
+      },
+      "n": 1686
+    },
+    {
+      "pollster": "Léger",
+      "date": "2025-08-04",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 36.0,
+        "bq": 7.0,
+        "ndp": 6.0,
+        "gpc": 3.0
+      },
+      "n": 1617
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2025-08-01",
+      "votes": {
+        "lpc": 43.2,
+        "cpc": 37.6,
+        "bq": 6.3,
+        "ndp": 7.5,
+        "gpc": 2.2
+      },
+      "n": 1301
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-08-01",
+      "votes": {
+        "lpc": 43.7,
+        "cpc": 32.5,
+        "bq": 5.3,
+        "ndp": 12.0,
+        "gpc": 2.5,
+        "ppc": 3.0
+      },
+      "n": 1096
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2025-07-28",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 39.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 4.0
+      },
+      "n": 3732
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-07-25",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 36.0,
+        "bq": 6.0,
+        "ndp": 10.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-07-25",
+      "votes": {
+        "lpc": 43.6,
+        "cpc": 33.5,
+        "bq": 5.9,
+        "ndp": 12.1,
+        "gpc": 2.3,
+        "ppc": 1.8
+      },
+      "n": 1027
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-07-18",
+      "votes": {
+        "lpc": 44.3,
+        "cpc": 34.0,
+        "bq": 6.6,
+        "ndp": 10.3,
+        "gpc": 2.3,
+        "ppc": 2.0
+      },
+      "n": 1026
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-07-15",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 40.0,
+        "bq": 6.0,
+        "ndp": 7.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1915
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2025-07-14",
+      "votes": {
+        "lpc": 43.2,
+        "cpc": 30.5,
+        "bq": 5.5,
+        "ndp": 13.0,
+        "gpc": 3.5,
+        "ppc": 3.6
+      },
+      "n": 1817
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-07-11",
+      "votes": {
+        "lpc": 44.5,
+        "cpc": 33.8,
+        "bq": 5.9,
+        "ndp": 11.1,
+        "gpc": 2.1,
+        "ppc": 1.9
+      },
+      "n": 1047
+    },
+    {
+      "pollster": "Léger",
+      "date": "2025-07-06",
+      "votes": {
+        "lpc": 48.0,
+        "cpc": 35.0,
+        "bq": 6.0,
+        "ndp": 7.0,
+        "gpc": 3.0
+      },
+      "n": 1546
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-07-04",
+      "votes": {
+        "lpc": 46.0,
+        "cpc": 35.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-07-04",
+      "votes": {
+        "lpc": 45.1,
+        "cpc": 32.6,
+        "bq": 6.2,
+        "ndp": 11.5,
+        "gpc": 1.8,
+        "ppc": 1.8
+      },
+      "n": 1056
+    },
+    {
+      "pollster": "Research Co.",
+      "date": "2025-07-02",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 37.0,
+        "bq": 6.0,
+        "ndp": 6.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-07-02",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 2.0
+      },
+      "n": 1500
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2025-06-30",
+      "votes": {
+        "lpc": 43.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0
+      },
+      "n": 4029
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-06-27",
+      "votes": {
+        "lpc": 44.5,
+        "cpc": 31.4,
+        "bq": 5.9,
+        "ndp": 12.8,
+        "gpc": 2.5,
+        "ppc": 1.7
+      },
+      "n": 1076
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2025-06-26",
+      "votes": {
+        "lpc": 47.0,
+        "cpc": 38.0,
+        "bq": 3.0,
+        "ndp": 6.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1168
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-06-20",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 38.0,
+        "bq": 6.0,
+        "ndp": 11.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-06-20",
+      "votes": {
+        "lpc": 45.2,
+        "cpc": 30.8,
+        "bq": 6.1,
+        "ndp": 12.2,
+        "gpc": 2.9,
+        "ppc": 1.5
+      },
+      "n": 1090
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-06-19",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 39.0,
+        "bq": 6.0,
+        "ndp": 7.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 1500
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-06-13",
+      "votes": {
+        "lpc": 44.2,
+        "cpc": 32.2,
+        "bq": 6.3,
+        "ndp": 11.4,
+        "gpc": 3.2,
+        "ppc": 1.7
+      },
+      "n": 1080
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-06-06",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 39.0,
+        "bq": 6.0,
+        "ndp": 9.0,
+        "gpc": 2.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-06-06",
+      "votes": {
+        "lpc": 42.6,
+        "cpc": 32.8,
+        "bq": 6.5,
+        "ndp": 12.0,
+        "gpc": 3.9,
+        "ppc": 1.3
+      },
+      "n": 1079
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-06-05",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 39.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 2585
+    },
+    {
+      "pollster": "Ekos",
+      "date": "2025-06-04",
+      "votes": {
+        "lpc": 43.9,
+        "cpc": 32.0,
+        "bq": 5.2,
+        "ndp": 12.7,
+        "gpc": 3.0,
+        "ppc": 3.0
+      },
+      "n": 1529
+    },
+    {
+      "pollster": "Spark Insights",
+      "date": "2025-05-30",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 8.0
+      },
+      "n": 3450
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-05-30",
+      "votes": {
+        "lpc": 41.7,
+        "cpc": 36.4,
+        "bq": 6.5,
+        "ndp": 10.5,
+        "gpc": 3.4,
+        "ppc": 1.1
+      },
+      "n": 1079
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-05-23",
+      "votes": {
+        "lpc": 44.0,
+        "cpc": 39.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 1.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-05-23",
+      "votes": {
+        "lpc": 40.4,
+        "cpc": 38.6,
+        "bq": 5.9,
+        "ndp": 9.8,
+        "gpc": 3.7,
+        "ppc": 1.3
+      },
+      "n": 1127
+    },
+    {
+      "pollster": "Innovative Research",
+      "date": "2025-05-22",
+      "votes": {
+        "lpc": 42.0,
+        "cpc": 39.0,
+        "bq": 6.0,
+        "ndp": 8.0,
+        "gpc": 3.0
+      },
+      "n": 2517
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-05-21",
+      "votes": {
+        "lpc": 41.0,
+        "cpc": 40.0,
+        "bq": 7.0,
+        "ndp": 8.0,
+        "gpc": 3.0,
+        "ppc": 1.0
+      },
+      "n": 2273
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-05-16",
+      "votes": {
+        "lpc": 41.4,
+        "cpc": 39.6,
+        "bq": 4.7,
+        "ndp": 8.5,
+        "gpc": 3.9,
+        "ppc": 1.3
+      },
+      "n": 1127
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-05-09",
+      "votes": {
+        "lpc": 45.0,
+        "cpc": 40.0,
+        "bq": 6.0,
+        "ndp": 7.0,
+        "gpc": 1.0,
+        "ppc": 1.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-05-09",
+      "votes": {
+        "lpc": 41.5,
+        "cpc": 40.5,
+        "bq": 5.1,
+        "ndp": 7.8,
+        "gpc": 3.3,
+        "ppc": 1.3
+      },
+      "n": 1259
+    },
+    {
+      "pollster": "Nanos Research",
+      "date": "2025-05-02",
+      "votes": {
+        "lpc": 41.8,
+        "cpc": 39.2,
+        "bq": 5.8,
+        "ndp": 7.9,
+        "gpc": 3.2,
+        "ppc": 1.3
+      },
+      "n": 1297
+    }
+  ]
+}

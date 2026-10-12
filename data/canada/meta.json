@@ -1,0 +1,10 @@
+{
+  "country": "canada",
+  "name": "Canada",
+  "election_date": "2029-10-15",
+  "seats": 343,
+  "threshold": 0,
+  "method": "fptp",
+  "constituencies": true,
+  "notes": "FPTP, 343 ridings (2023 Representation Order). Baselines: the 2025 general election per-riding votes (en.wikipedia breakdown, Elections Canada data). Polling: the 46th election article's table (scrape_canada.py)."
+}

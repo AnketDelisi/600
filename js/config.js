@@ -6082,6 +6082,14 @@ saxony_anhalt: {
       },
       // national baseline for the uniform-swing projection (= 2024 result)
       national2021: { fpoe: 28.8, oevp: 26.3, spoe: 21.1, neos: 9.1, gruene: 8.2, kpoe: 2.4 },
+          // previous-election base (29 Sep 2019, en.wikipedia
+          // per-state table; scraper/build_at_base.py): the
+          // projection blends 0.75 * 2024 + 0.25 * 2019 geography,
+          // result views stay pure 2024. KPoe (0.7% in 2019, no
+          // column) holds its 2024 baseline.
+          prevGebiete: {"burgenland": {"oevp": 38.3, "spoe": 29.4, "fpoe": 17.3, "gruene": 8.1, "neos": 4.9}, "carinthia": {"oevp": 34.9, "spoe": 26.2, "fpoe": 19.8, "gruene": 9.5, "neos": 6.8}, "lower_austria": {"oevp": 42.3, "spoe": 19.9, "fpoe": 16.4, "gruene": 11.0, "neos": 7.7}, "upper_austria": {"oevp": 36.8, "spoe": 22.1, "fpoe": 17.5, "gruene": 13.7, "neos": 7.3}, "salzburg": {"oevp": 46.4, "spoe": 16.4, "fpoe": 13.7, "gruene": 12.6, "neos": 8.4}, "styria": {"oevp": 38.9, "spoe": 19.2, "fpoe": 18.5, "gruene": 13.0, "neos": 7.1}, "tyrol": {"oevp": 45.8, "spoe": 13.0, "fpoe": 14.7, "gruene": 14.7, "neos": 8.9}, "vorarlberg": {"oevp": 36.6, "spoe": 13.1, "fpoe": 14.7, "gruene": 18.1, "neos": 13.6}, "vienna": {"oevp": 24.6, "spoe": 27.1, "fpoe": 12.8, "gruene": 20.7, "neos": 9.9}},
+          prevNational: {"oevp": 37.46, "spoe": 21.18, "fpoe": 16.17, "gruene": 13.9, "neos": 8.1},
+          baseBlend: 0.75,
     },
       map2: {
       "svg": "img/austria_bezirke.svg",
@@ -8485,6 +8493,16 @@ saxony_anhalt: {
         ja21: 5.95, fvd: 4.54, bbb: 2.65, denk: 2.37, sgp: 2.25,
         pvdd: 2.08, cu: 1.90, sp: 1.89, fiftyplus: 1.43, volt: 1.10,
       },
+          // previous-election base (22 Nov 2023, en.wikipedia
+          // per-province table; scraper/build_nl_base.py): the
+          // projection blends 0.75 * 2025 + 0.25 * 2023 geography,
+          // result views stay pure 2025. GL-PvdA -> PRO (same fold
+          // as the 2025 build); NSC (12.9% in 2023) is gone from
+          // the field, 50PLUS sits inside Others in 2023 and both
+          // hold their 2025 baseline.
+          prevGebiete: {"drenthe": {"pvv": 26.0, "pro": 14.0, "vvd": 12.6, "d66": 4.5, "bbb": 8.8, "cda": 3.7, "sp": 3.3, "denk": 0.5, "fvd": 2.3, "pvdd": 1.8, "sgp": 0.8, "cu": 2.6, "volt": 1.0, "ja21": 0.6}, "flevoland": {"pvv": 26.6, "pro": 11.8, "vvd": 14.8, "d66": 4.5, "bbb": 5.2, "cda": 2.5, "sp": 3.2, "denk": 3.3, "fvd": 3.3, "pvdd": 1.9, "sgp": 3.8, "cu": 2.6, "volt": 1.1, "ja21": 0.7}, "friesland": {"pvv": 24.5, "pro": 14.6, "vvd": 11.2, "d66": 4.3, "bbb": 8.3, "cda": 5.3, "sp": 3.4, "denk": 0.4, "fvd": 2.7, "pvdd": 1.8, "sgp": 1.0, "cu": 2.7, "volt": 0.9, "ja21": 0.7}, "gelderland": {"pvv": 22.2, "pro": 15.4, "vvd": 14.4, "d66": 5.9, "bbb": 6.2, "cda": 3.6, "sp": 2.9, "denk": 1.4, "fvd": 2.0, "pvdd": 2.2, "sgp": 4.1, "cu": 2.8, "volt": 1.5, "ja21": 0.6}, "groningen": {"pvv": 21.8, "pro": 20.2, "vvd": 9.9, "d66": 5.7, "bbb": 6.1, "cda": 3.0, "sp": 4.5, "denk": 0.8, "fvd": 2.3, "pvdd": 2.7, "sgp": 0.9, "cu": 3.4, "volt": 1.9, "ja21": 0.6}, "limburg": {"pvv": 33.3, "pro": 13.5, "vvd": 13.8, "d66": 4.8, "bbb": 4.4, "cda": 3.4, "sp": 3.7, "denk": 1.2, "fvd": 2.3, "pvdd": 1.7, "sgp": 0.1, "cu": 0.3, "volt": 1.0, "ja21": 0.6}, "north_brabant": {"pvv": 26.9, "pro": 13.1, "vvd": 18.1, "d66": 6.6, "bbb": 4.4, "cda": 3.5, "sp": 4.1, "denk": 1.8, "fvd": 1.9, "pvdd": 1.8, "sgp": 0.4, "cu": 0.6, "volt": 1.6, "ja21": 0.7}, "north_holland": {"pvv": 19.8, "pro": 20.7, "vvd": 17.1, "d66": 7.9, "bbb": 3.2, "cda": 2.3, "sp": 3.1, "denk": 3.4, "fvd": 2.5, "pvdd": 3.1, "sgp": 0.3, "cu": 1.0, "volt": 2.3, "ja21": 0.7}, "overijssel": {"pvv": 22.0, "pro": 11.6, "vvd": 11.1, "d66": 4.3, "bbb": 8.5, "cda": 3.5, "sp": 2.4, "denk": 1.4, "fvd": 2.1, "pvdd": 1.5, "sgp": 3.0, "cu": 3.4, "volt": 1.3, "ja21": 0.6}, "south_holland": {"pvv": 23.8, "pro": 14.7, "vvd": 16.0, "d66": 6.4, "bbb": 2.6, "cda": 3.3, "sp": 2.7, "denk": 4.1, "fvd": 2.4, "pvdd": 2.3, "sgp": 3.1, "cu": 2.4, "volt": 1.8, "ja21": 0.8}, "utrecht": {"pvv": 17.6, "pro": 20.5, "vvd": 16.2, "d66": 8.4, "bbb": 2.8, "cda": 3.4, "sp": 2.3, "denk": 3.1, "fvd": 1.8, "pvdd": 2.8, "sgp": 2.8, "cu": 3.0, "volt": 2.6, "ja21": 0.6}, "zeeland": {"pvv": 23.9, "pro": 11.1, "vvd": 14.7, "d66": 4.1, "bbb": 5.9, "cda": 4.3, "sp": 3.1, "denk": 0.8, "fvd": 2.5, "pvdd": 1.8, "sgp": 9.7, "cu": 2.9, "volt": 0.7, "ja21": 0.7}},
+          prevNational: {"pvv": 23.49, "pro": 15.75, "vvd": 15.24, "d66": 6.29, "bbb": 4.65, "cda": 3.31, "sp": 3.15, "denk": 2.05, "pvdd": 2.25, "fvd": 2.23, "sgp": 2.08, "cu": 2.04, "volt": 1.71, "ja21": 0.68},
+          baseBlend: 0.75,
     },
       map2: {
       "svg": "img/netherlands_gemeenten.svg",
@@ -25865,6 +25883,15 @@ saxony_anhalt: {
       names: {"ne": "Northeast", "rn": "Reykjavík North", "nw": "Northwest", "rs": "Reykjavík South", "s": "South", "sw": "Southwest"},
       gebiete: {"ne": {"s": 21.3, "d": 15.0, "c": 9.4, "f": 14.3, "m": 15.7, "b": 14.2, "j": 3.8, "p": 1.8, "v": 3.8}, "rn": {"s": 26.1, "d": 17.4, "c": 16.3, "f": 11.9, "m": 8.9, "b": 4.0, "j": 5.9, "p": 5.4, "v": 2.9}, "nw": {"s": 15.9, "d": 18.0, "c": 12.6, "f": 16.7, "m": 14.8, "b": 13.3, "j": 3.4, "p": 1.8, "v": 2.7}, "rs": {"s": 22.9, "d": 17.6, "c": 17.7, "f": 13.5, "m": 10.5, "b": 4.4, "j": 5.6, "p": 3.9, "v": 2.9}, "s": {"s": 17.3, "d": 19.6, "c": 11.2, "f": 20.0, "m": 13.6, "b": 12.0, "j": 2.4, "p": 1.3, "v": 1.3}, "sw": {"s": 19.3, "d": 23.4, "c": 20.1, "f": 11.0, "m": 12.0, "b": 5.9, "j": 2.8, "p": 2.8, "v": 1.5}},
       national2021: {"s": 20.75, "d": 19.36, "c": 15.82, "f": 13.78, "m": 12.1, "b": 7.8, "j": 3.96, "p": 3.02, "v": 2.34},
+          // previous-election base (30 Sep 2021, en.wikipedia
+          // per-constituency table; scraper/build_is_base.py):
+          // the projection blends 0.75 * 2024 + 0.25 * 2021
+          // geography, result views stay pure 2024. J
+          // (Socialist Party) has no 2021 column and holds its
+          // 2024 baseline.
+          prevGebiete: {"rn": {"d": 20.9, "b": 12.3, "v": 15.9, "s": 12.6, "f": 7.7, "p": 12.8, "c": 7.7, "m": 3.5}, "rs": {"d": 22.8, "b": 11.5, "v": 14.7, "s": 13.3, "f": 8.9, "p": 10.9, "c": 8.6, "m": 4.1}, "sw": {"d": 30.2, "b": 14.5, "v": 12.1, "s": 8.1, "f": 7.6, "p": 8.3, "c": 11.4, "m": 4.5}, "nw": {"d": 22.5, "b": 25.8, "v": 11.5, "s": 6.9, "f": 8.8, "p": 6.3, "c": 6.2, "m": 7.4}, "ne": {"d": 18.5, "b": 25.6, "v": 12.9, "s": 10.5, "f": 8.6, "p": 5.3, "c": 5.4, "m": 8.9}, "s": {"d": 24.6, "b": 23.9, "v": 7.4, "s": 7.6, "f": 12.9, "p": 5.6, "c": 6.2, "m": 7.4}},
+          prevNational: {"d": 24.38, "b": 17.27, "v": 12.57, "s": 9.93, "f": 8.85, "p": 8.63, "c": 8.33, "m": 5.45},
+          baseBlend: 0.75,
     },
     pollsterMAE: {},
     maeKey: 'IS2028',

@@ -6,5 +6,5 @@
   "threshold": 0.67,
   "method": "dhondt",
   "constituencies": false,
-  "notes": "Tweede Kamer: closed-list PR via D'Hondt in a single national constituency; no legal threshold (effective ~0.67% = 1 seat). Polls reported as seat projections; vote shares for the province map are approximated from seats (DHondt midpoint)."
+  "notes": "Tweede Kamer: closed-list PR via D'Hondt in a single national constituency; no legal threshold (effective ~0.67% = 1 seat). Polls reported as seat projections; vote shares for the province map are approximated from seats (DHondt midpoint). The projection base blends 0.75 * 2025 + 0.25 * 2023 per-province geography (scraper/build_nl_base.py; GL-PvdA -> PRO, NSC absent from the field, 50PLUS holds its 2025 baseline). Result views stay pure 2025."
 }

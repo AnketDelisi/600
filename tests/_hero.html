@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;overflow:hidden}iframe{width:100vw;height:100vh;border:0;display:block}</style>
+</head><body>
+<iframe id="f"></iframe>
+<script>
+const cc = new URLSearchParams(location.search).get('c') || 'uk';
+const f = document.getElementById('f');
+f.src = '/index.html?c=' + cc;
+f.addEventListener('load', () => {
+  const d = f.contentDocument;
+  let err = '';
+  try { f.contentWindow.addEventListener('error', e => { err += e.message + '; '; }); } catch (e) {}
+  let n = 0;
+  const t = setInterval(() => {
+    n++;
+    const h = d.querySelector('#pane-polls .hero');
+    if ((h && n > 30) || n > 150) {
+      clearInterval(t);
+      const txt = (h ? h.innerText : '').replace(/\s+/g, ' ').trim();
+      const pane = d.getElementById('pane-polls');
+      const ptext = pane ? pane.innerText : '';
+      const maeSeen = /MAE/i.test(ptext);
+      const maeNums = (ptext.match(/\bMAE[^\n]{0,40}/gi) || []).slice(0, 3);
+      document.title = 'AFTER ' + cc + ' :: ' + txt.slice(0, 200)
+        + ' || MAE=' + maeSeen + ' ' + JSON.stringify(maeNums)
+        + ' ERR=' + (err || 'none');
+    }
+  }, 100);
+});
+</script>
+</body></html>

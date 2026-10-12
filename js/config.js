@@ -610,7 +610,7 @@ saxony_anhalt: {
       linke:  { code: 'LINKE', name: 'Die Linke',                             name_en: 'The Left',                             color: '#BE3075', ideology: "Democratic socialism"},
       afd:    { code: 'AfD',   name: 'Alternative für Deutschland',           name_en: 'Alternative for Germany',              color: '#00A2DE', ideology: "Right-wing populism, National conservatism, Euroscepticism"},
       fdp:    { code: 'FDP',   name: 'Freie Demokratische Partei',            name_en: 'Free Democratic Party',                color: '#FFED00', ideology: "Liberalism, Economic liberalism"},
-      bsw:    { code: 'BSW',   name: 'Bündnis Sahra Wagenknecht',             name_en: 'Sahra Wagenknecht Alliance',            color: '#792351', ideology: "Left-conservatism, [, a"},
+      bsw:    { code: 'BSW',   name: 'Bündnis Sahra Wagenknecht',             name_en: 'Sahra Wagenknecht Alliance',            color: '#792351', ideology: "Left-conservatism, Left-wing populism"},
     },
     order: ['cdu', 'spd', 'gruene', 'linke', 'afd', 'fdp', 'bsw'],
     parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd'],
@@ -1417,7 +1417,7 @@ saxony_anhalt: {
       pes:  { code: 'PES',  name: 'Platforma za evropsku Srbiju',        name_en: 'Platform for a European Serbia', color: '#C9A227', ideology: "Pro-Europeanism"},
       nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#616264', ideology: "National conservatism, Euroscepticism, Monarchism"},
       misn: { code: 'MISN', name: 'Mi – snaga naroda',                   name_en: 'We – Power of the People',       color: '#1B3160', ideology: "Right-wing populism, National conservatism"},
-      sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A81A32' },
+      sl:   { code: 'SL',   name: 'Studentska lista',                    name_en: 'Student List',                   color: '#A81A32', ideology: "Reformism" },
       // national-minority lists (exempt from the 3% threshold, art. 81);
       // they have no polling, so they hold their 2023 national shares
       vmsz: { code: 'VMSZ', name: 'Savez vojvođanskih Mađara',           name_en: 'Alliance of Vojvodina Hungarians', color: '#00732B', ideology: "Hungarian minority interests, Regionalism"},

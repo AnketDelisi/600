@@ -46,22 +46,23 @@ const isPinnedCountry=()=>!!(typeof window!=='undefined'&&window.__600_COUNTRY__
 let LANG='en';
 try{ LANG=localStorage.getItem('600_lang')||'en'; }catch(e){}
 const t=(en,tr)=>(LANG==='tr'&&tr!=null?tr:en);
+  const cName=id=>{const c=COUNTRIES[id]||{};return (LANG==='tr'&&c.name_tr)?c.name_tr:(c.name||id);};
 let T={};
 function setLang(){
   T={
     tabs:{polls:t('POLLS','ANKETLER'),forecast:t('FORECAST','TAHMİN'),prediction:t('PREDICTION','TAHMİNİNİZ'),history:t('HISTORY','GEÇMİŞ'),live:t('LIVE','CANLI'),methodology:t('METHODOLOGY','YÖNTEM')},
     main:t('MAIN','ANA'),
     country:t('COUNTRY','ÜLKE'), filters:t('FILTERS','FİLTRELER'), timeRange:t('TIME RANGE','ZAMAN ARALIĞI'),
-    pollster:t('POLLSTER','ANKET'), allPollsters:t('All pollsters','Tüm anketler'),
+    pollster:t('POLLSTER','ANKETÇİ'), allPollsters:t('All pollsters','Tüm anketler'),
     last7:t('Last 7 days','Son 7 gün'),last14:t('Last 14 days','Son 14 gün'),last30:t('Last 30 days','Son 30 gün'),
     last60:t('Last 60 days','Son 60 gün'),last90:t('Last 90 days','Son 90 gün'),allPolls:t('All polls','Tüm anketler'),
-    info:t('INFO','BİLGİ'), seats:t('seats','sandalye'), threshold:t('threshold','eşik'),
+    info:t('INFO','BİLGİ'), seats:t('seats','sandalye'), threshold:t('threshold','baraj'),
     pollAvg:t('NATIONAL POLL AVERAGE','ULUSAL ANKET ORTALAMASI'), trend:t('POLL TREND','ANKET TRENDİ'),
     seatProjection:t('SEAT PROJECTION','SANDALYE TAHMİNİ'), individualPolls:t('INDIVIDUAL POLLS','BİREYSEL ANKETLER'),
     constituencySeats:t('CONSTITUENCY SEATS','BÖLGE SANDALYELERİ'), districtMap:t('DISTRICT MAP','BÖLGE HARİTASI'),
     history:t('HISTORY','GEÇMİŞ'),
     projection:t('PROJECTION','TAHMİN'), result:t('RESULT','SONUÇ'), map:t('MAP','HARİTA'), blocs:t('BLOCS','BLOKLAR'),
-    liveVs:t('LIVE vs VALU vs FORECAST','CANLI vs ÇIKIŞ ANKETİ vs TAHMİN'),
+    liveVs:t('LIVE vs VALU vs FORECAST','CANLI · ÇIKIŞ ANKETİ · TAHMİN'),
     seatsLive:t('SEATS (LIVE)','SANDALYELER (CANLI)'),
     liveMap:t('VALKRETS LIVE MAP','CANLI BÖLGE HARİTASI'),
     counted:t('districts counted','bölge sayıldı'), turnout:t('turnout','katılım'), updated:t('updated','güncellendi'),
@@ -73,7 +74,7 @@ function setLang(){
     election:t('ELECTION','SEÇİMİ'),
     pollAverage:t('Poll Average','Anket Ortalaması'),
     twoRound:t('two-round presidential','iki turlu başkanlık seçimi'),
-    coloredBy:t('colored by','renklendirilen'),
+    coloredBy:t('colored by','renklendirme:'),
   };
 }
 setLang();
@@ -86,11 +87,15 @@ function applyLang(){
     const txt=a.textContent.trim();
     if(txt==='MAIN'||txt==='ANA') a.textContent=T.main;
     else if(txt==='ARCHIVE'||txt==='ARŞİV') a.textContent=t('ARCHIVE','ARŞİV');
+    else if(txt==='US MIDTERMS'||txt==='ABD ARA SEÇİMLERİ') a.textContent=t('US MIDTERMS','ABD ARA SEÇİMLERİ');
+    else if(txt==='POLL IMAGE'||txt==='ANKET GÖRSELİ') a.textContent=t('POLL IMAGE','ANKET GÖRSELİ');
   });
 }
 function toggleLang(){
   LANG=(LANG==='tr')?'en':'tr';
   try{localStorage.setItem('600_lang',LANG)}catch(e){}
+  setCountry(COUNTRY);
+  COUNTRY_NAME=cName(COUNTRY);
   setLang();
   applyLang();
   const btn=$('lang-toggle');
@@ -125,7 +130,7 @@ document.addEventListener('DOMContentLoaded',()=>{injectLangToggle();});
 const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
 const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
-const partyCode=pid=>pid==='other'?'Other':((PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid);
+const partyCode=pid=>pid==='other'?t('Other','Diğer'):((PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid);
 
 // Label for the sub-national units (MAP_ONLY countries can override; default "federative units")
 const unitLabel=()=>{
@@ -387,11 +392,11 @@ async function loadData(){
 // Data-health label: how long ago the poll data was scraped, with a freshness
 // color (green <12h, amber <48h, red older).
 function dataHealthLabel(){
-  if(!SCRAPED_AT) return {txt:t('scrape time unknown','kazıma zamanı bilinmiyor'),col:'var(--c-text-muted)'};
+  if(!SCRAPED_AT) return {txt:t('scrape time unknown','güncelleme zamanı bilinmiyor'),col:'var(--c-text-muted)'};
   const ageH=(Date.now()-new Date(SCRAPED_AT).getTime())/3.6e6;
-  const fmt=ageH<1?Math.round(ageH*60)+'m':Math.round(ageH)+'h';
+  const fmt=ageH<1?Math.round(ageH*60)+t('m','dk'):Math.round(ageH)+t('h','sa');
   const col=ageH<12?'#0B9E17':(ageH<48?'#E0A800':'var(--c-accent)');
-  return {txt:t('polls scraped','anketler kazındı')+' '+fmt+' '+t('ago','önce'),col};
+  return {txt:t('polls scraped','anketler güncellendi')+' '+fmt+' '+t('ago','önce'),col};
 }
 
 /* ---------- average calculator ---------- */
@@ -698,9 +703,9 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','uk']],
-  ['Americas',['alberta','argentina','bc','brazil','canada','ontario','qc']],
-  ['Middle East & Asia-Pacific',['israel','jp','kr','nz']],
+  [t('Europe','Avrupa'),['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','uk']],
+  [t('Americas','Amerika'),['alberta','argentina','bc','brazil','canada','ontario','qc']],
+  [t('Middle East & Asia-Pacific','Orta Doğu ve Asya-Pasifik'),['israel','jp','kr','nz']],
 ];
 const METHOD_SHORT={fptp:'FPTP',dhondt:"D'Hondt",sainte_lague_standard:'Sainte-Lagu\u00eb',sainte_lague:'Sainte-Lagu\u00eb (mod.)',hare_niemeyer:'Hare/Niemeyer',imperiali_hb:'Imperiali'};
 let SUMMARY=null;
@@ -758,14 +763,14 @@ function renderCountryNav(){
   groups.innerHTML=NAV_REGIONS.map(([label,ids])=>{
     const vis=ids.filter(id=>COUNTRIES[id]&&!COUNTRIES[id].hidden)
       .sort((a,b)=>{const ka=sortKey(a),kb=sortKey(b);
-        return ka!==kb?ka.localeCompare(kb):COUNTRIES[a].name.localeCompare(COUNTRIES[b].name);});
+        return ka!==kb?ka.localeCompare(kb):cName(a).localeCompare(cName(b));});
     if(!vis.length) return '';
     return `<div class="cnav-group"><div class="cnav-group-label">${label}</div><div class="cnav-row">`+
       vis.map(id=>{
         const c=COUNTRIES[id]; const active=id===COUNTRY;
-        return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${c.name}" aria-pressed="${active}">
+        return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${cName(id)}" aria-pressed="${active}">
           <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
-          <span class="cnav-name">${c.name}</span>
+          <span class="cnav-name">${cName(id)}</span>
         </button>`;}).join('')+`</div></div>`;
   }).join('');
   groups.querySelectorAll('.cnav-item').forEach(btn=>{
@@ -804,7 +809,7 @@ function renderHomeBody(){
   }
   upcoming.sort((a,b)=>a[2].date.localeCompare(b[2].date));
   past.sort((a,b)=>b[2].date.localeCompare(a[2].date));
-  tbc.sort((a,b)=>(a[1].name||'').localeCompare(b[1].name||''));
+  tbc.sort((a,b)=>cName(a[0]).localeCompare(cName(b[0])));
   const sub=$('home-sub');
   if(sub) sub.innerHTML=`${upcoming.length} ${t('upcoming elections','yakla\u015fan se\u00e7im')} \u00b7 ${t('updated','g\u00fcncellendi')} ${(SUMMARY.generated||'').slice(0,10)}`;
   const sec=(title,items,fn)=>items.length?`<div class="home-section">
@@ -824,7 +829,7 @@ function calCard(id,s,ne,mode){
   const days=precise?Math.round((new Date(ne.date+'T00:00:00')-new Date(todayStr()+'T00:00:00'))/86400000):null;
   const soon=mode==='next'&&days!==null&&days<=45;
   const chip=precise?`<span class="cal-days${soon?' soon':''}">${mode==='past'
-    ? t('held','yap\u0131ld\u0131')+' '+Math.abs(days)+'d'
+    ? t('held','yap\u0131ld\u0131')+' '+Math.abs(days)+t('d','g')
     : (days===0?t('TODAY','BUG\u00dcN'):days+' '+t('days','g\u00fcn'))}</span>`:'';
   const dateTxt=ne?(fmtCalDate(ne.date)+(ne.runoff?` \u00b7 ${t('runoff','2. tur')}`:''))
     :(s.election_date||t('unscheduled','belirsiz'));
@@ -836,11 +841,11 @@ function calCard(id,s,ne,mode){
   const won=mode==='past'&&s.last_winner_code?`<span class="cal-leader">
       <span class="cal-dot" style="background:${s.last_winner_color||'#888'}"></span>
       <b>${s.last_winner_code}</b> ${t('won','kazand\u0131')}</span>`:'';
-  const fresh=s.latest_poll?`${s.poll_count} ${t('polls','anket')} \u00b7 ${t('latest','son')} ${s.latest_poll.slice(5)}`:'';
+  const fresh=s.latest_poll?`${s.poll_count} ${t('polls','anket')} \u00b7 ${t('latest','en yeni')} ${s.latest_poll.slice(5)}`:'';
   return `<button class="cal-card" data-cnav="${id}">
     <div class="cal-top">
       <img class="cal-flag" src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy">
-      <span class="cal-name">${c.name}</span>${chip}
+      <span class="cal-name">${cName(id)}</span>${chip}
     </div>
     <div class="cal-meta">${dateTxt} \u00b7 ${s.seats||c.seats} ${t('seats','sandalye')}${METHOD_SHORT[c.method]?' \u00b7 '+METHOD_SHORT[c.method]:''}</div>
     <div class="cal-foot">${mode==='past'?won:leader}</div>
@@ -908,7 +913,7 @@ function renderSidebar(prevDays, prevPollster, prevMethod){
     <label class="sb-hint" style="margin:10px 0 4px;display:block;font-weight:900;letter-spacing:0.8px;color:var(--c-text-muted)">${t('Method','Yöntem')}</label>
     <select class="sb-select" id="filter-method" onchange="window._600.applyFilters()">
       <option value="">${t('All methods','Tüm yöntemler')}</option>
-      <option value="online"${prevMethod==='online'?' selected':''}>${t('Online panel','Online panel')}</option>
+      <option value="online"${prevMethod==='online'?' selected':''}>${t('Online panel','Çevrimiçi panel')}</option>
       <option value="phone"${prevMethod==='phone'?' selected':''}>${t('Telephone','Telefon')}</option>
       <option value="face"${prevMethod==='face'?' selected':''}>${t('Face-to-face','Yüz yüze')}</option>
       <option value="mixed"${prevMethod==='mixed'?' selected':''}>${t('Mixed','Karma')}</option>
@@ -979,7 +984,7 @@ function brazilRunoffHero(avg, filteredPolls){
     .map(([pp,vv])=>`${partyCode(pp)} ${fmt(vv,1)}`).join(' \u2013 '):'';
   return `<div class="hero hero-brazil">
     <div class="hero-title">${COUNTRY_NAME} — ${t('PRESIDENTIAL · TWO ROUNDS','BAŞKANLIK · İKİ TUR')}</div>
-    <div class="hero-date">${d1} ${t('first round','birinci tur')}${frTop?` (${frTop})`:''} → ${d2} ${t('runoff','ikinci tur')} · ${ro.roN} ${t('head-to-head polls','başa baş anket')}</div>
+    <div class="hero-date">${d1} ${t('first round','ilk tur')}${frTop?` (${frTop})`:''} → ${d2} ${t('runoff','ikinci tur')} · ${ro.roN} ${t('head-to-head polls','başa baş anket')}</div>
     <div class="bz-runoff">
       <div class="bz-cand" style="--bz-c:${cA}">
         <span class="bz-code">${partyCode(ro.a)}</span>
@@ -998,7 +1003,7 @@ function brazilRunoffHero(avg, filteredPolls){
     <div class="bz-path">
       ${todayStr()<(META.election_date||'')
         ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${pct100(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${pct100(1-ro.winA/3000)}</b></span>`
-        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct100((ro.winA/3000))} ${t('first-round win','ilk tur zaferi')}</span>
+        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct100((ro.winA/3000))} ${t('first-round win','ilk turda kazanır')}</span>
       <span>\u00b7</span>
       <span>${partyCode(ro.b)} ${pct100(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>`}
     </div>
@@ -1025,14 +1030,14 @@ function renderHeroGeneric(avg, filteredPolls){
   const b=dataBase();
   return `<div class="hero">
     <div class="hero-title">${COUNTRY_NAME} — ${T.pollAverage}</div>
-    <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','son')}: ${latestStr} (${days}d ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
+    <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','en yeni')}: ${latestStr} (${days}${t('d','g')} ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
         ${logoSrc?`<img src="${b}${logoSrc}?v=${LOGO_CACHE}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:${textOn(color)};font-weight:900;font-size:12px">${topParty}</span>`}
       </div>
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
-        <span style="font-size:13px;font-weight:700;color:var(--c-text-muted);margin-left:4px">leading</span>
+        <span style="font-size:13px;font-weight:700;color:var(--c-text-muted);margin-left:4px">${t('leading','önde')}</span>
       </div>
     </div>
   </div>`;
@@ -1082,8 +1087,8 @@ function renderPartyBars(avg){
       const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
       const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
       html+=`<div class="party-row">
-        <div class="party-logo" style="background:#9CA3AF"><span style="color:#1F2937">OTH</span></div>
-        <div class="party-name">Other</div>
+        <div class="party-logo" style="background:#9CA3AF"><span style="color:#1F2937">${t('OTH','DİĞ')}</span></div>
+        <div class="party-name">${t('Other','Diğer')}</div>
         <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:#9CA3AF"></div></div>
         <div class="party-pct">${fmt(othersNow)}%</div>
         <div class="party-delta" style="color:${deltaColor}">${deltaStr}</div>
@@ -1097,7 +1102,7 @@ function renderPartyBars(avg){
   const avgSum=PARTY_ORDER.reduce((a,p)=>a+(avg[p]||0),0);
   if(avgSum>103){
     html+=`<div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      \u03a3 ${fmt(avgSum,0)}% \u00b7 ${t('the field is unsettled: the polls test alternative candidate combinations, each candidate is averaged over the polls that tested them','alan belirsiz: anketler farkl\u0131 aday kombinasyonlar\u0131n\u0131 test ediyor; her aday kendisinin soruldu\u011fu anketlerin ortalamas\u0131')}
+      \u03a3 ${fmt(avgSum,0)}% \u00b7 ${t('the field is unsettled: the polls test alternative candidate combinations, each candidate is averaged over the polls that tested them','alan belirsiz: anketler farklı aday kombinasyonlarını test ediyor; her aday, sorulduğu anketlerin ortalamasıyla hesaplanıyor')}
     </div>`;
   }
   if(BLOCS.bloc1&&BLOCS.bloc2&&!HIDE_BLOCS) html+=`<div class="pollavg-blocs">${renderBlocs(avg)}</div>`;
@@ -1435,7 +1440,7 @@ function renderPollsTable(polls){
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.individualPolls}</div></div>
     <div class="polls-scroll">
     <table class="polls-table compact-table"><thead><tr>
-      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th>
+      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anketçi')}</th>
       <th class="c" title="${t('Pollster accuracy vs the best in this country (weight = 1/MAE)','Anketçi doğruluğu, ülkedeki en iyiye göre (ağırlık = 1/MAE)')}">${t('RATE','PUAN')}</th>
       <th class="c">${t('Lead','Fark')}</th>`;
   const shown=polls.slice(0,60);
@@ -1478,7 +1483,7 @@ function renderPollsTable(polls){
   });
   html+=`</tbody></table></div>
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-      ${t('Lead = margin between the two largest parties · RATE = pollster accuracy relative to the best in this country','Fark = en büyük iki parti arasındaki marj · PUAN = anketçinin ülkedeki en iyiye göre doğruluğu')}${POLLS.some(p=>p.method)?` · ${t('method tag = fieldwork type, from a curated pollster map (untagged = unknown)','yöntem etiketi = saha tipi, küratörlü anketçi haritasından (etiketsiz = bilinmiyor)')}`:''}
+      ${t('Lead = margin between the two largest parties · RATE = pollster accuracy relative to the best in this country','Fark = en büyük iki parti arasındaki marj · PUAN = anketçinin ülkedeki en iyiye göre doğruluğu')}${POLLS.some(p=>p.method)?` · ${t('method tag = fieldwork type, from a curated pollster map (untagged = unknown)','yöntem etiketi = saha tipi, elle derlenen anketçi listesinden (etiketsiz = bilinmiyor)')}`:''}
     </div></div>`;
   return html;
 }
@@ -1495,8 +1500,8 @@ function renderRunoffTable(polls){
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Runoff polls (head-to-head)','\u0130kinci tur anketleri (ba\u015fa ba\u015f)')}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
-      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anket')}</th>
-      <th class="c" title="${t('Pollster error in the 4 Oct first round (their final poll vs the actual result); runoff weight = 1/MAE','Anket\u00e7inin 4 Ekim ilk turundaki hatas\u0131 (son anketi, ger\u00e7ek sonuca g\u00f6re); ikinci tur a\u011f\u0131rl\u0131\u011f\u0131 = 1/MAE')}">${t('R1 MAE','1T HATA')}</th>
+      <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anketçi')}</th>
+      <th class="c" title="${t('Pollster error in the 4 Oct first round (their final poll vs the actual result); runoff weight = 1/MAE','Anketçinin 4 Ekim\'deki ilk tur hatası (son anketiyle gerçek sonuç arasındaki fark); ikinci tur ağırlığı = 1/MAE')}">${t('R1 MAE','1T HATA')}</th>
       <th class="c">${partyCode('lula')}</th><th class="c">${partyCode('flavio')}</th>
       <th class="c">${t('Lead','Fark')}</th>
       </tr></thead><tbody>`;
@@ -1515,7 +1520,7 @@ function renderRunoffTable(polls){
       </tr>`;
   });
   html+=`</tbody></table></div>
-    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Head-to-head shares are of decided voters; the runoff average weights each poll by 1/MAE measured in the first round','Ba\u015fa ba\u015f oranlar\u0131 karar\u0131n\u0131 vermi\u015f se\u00e7mene g\u00f6redir; ikinci tur ortalamas\u0131 her anketi ilk turda \u00f6l\u00e7\u00fclen 1/MAE ile a\u011f\u0131rl\u0131kland\u0131r\u0131r')}</div></div>`;
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Head-to-head shares are of decided voters; the runoff average weights each poll by 1/MAE measured in the first round','Ba\u015fa ba\u015f oranlar\u0131, karar\u0131n\u0131 vermi\u015f se\u00e7menler aras\u0131ndad\u0131r; ikinci tur ortalamas\u0131 her anketi ilk turda \u00f6l\u00e7\u00fclen 1/MAE ile a\u011f\u0131rl\u0131kland\u0131r\u0131r')}</div></div>`;
   return html;
 }
 
@@ -1580,10 +1585,10 @@ function renderStateDepth(avg){
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('STATES — PROJECTED WINNERS','EYALETLER — TAHMİNİ KAZANANLAR')}</div></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">${cards}</div>
     <div class="bz-regions">
-      <div class="bz-reg-hd"><span>${t('REGION','BÖLGE')}</span><span>${t('WINNERS','KAZANANLAR')}</span><span>${t('LEAD','LİDER')}</span></div>
+      <div class="bz-reg-hd"><span>${t('REGION','BÖLGE')}</span><span>${t('WINNERS','KAZANANLAR')}</span><span>${t('LEAD','ÖNDEKİ')}</span></div>
       ${regionRows.join('')}
     </div>
-    <div style="font-size:10px;color:var(--c-text-muted);margin-top:6px">${t('Per-state winner = 2022 baseline shifted by the national poll swing (uniform swing).','Eyalet kazananı = ulusal anket farkıyla kaydırılan 2022 tabanı (tekdüze salınım).')}</div>
+    <div style="font-size:10px;color:var(--c-text-muted);margin-top:6px">${t('Per-state winner = 2022 baseline shifted by the national poll swing (uniform swing).','Eyalet kazananı = 2022 tabanının ulusal anket farkıyla eşit oranda kaydırılması.')}</div>
   </div>`;
 }
 
@@ -1913,7 +1918,7 @@ function filtersNote(){
   const ms=$('filter-method');
   const mv=(ms&&ms.value&&ms.selectedOptions[0])?ms.selectedOptions[0].textContent:'';
   const n=(typeof FILTERED_POLLS!=='undefined'&&FILTERED_POLLS)?FILTERED_POLLS.length:0;
-  return `${t('based on','dayanak')}: ${daysTxt} · ${pv}${mv?' · '+mv:''} · ${n} ${t('polls','anket')}`;
+  return `${t('based on','Esas alınan')}: ${daysTxt} · ${pv}${mv?' · '+mv:''} · ${n} ${t('polls','anket')}`;
 }
 
 // Readable text on a party color: dark ink on light colors (yellow SDS,
@@ -1974,9 +1979,9 @@ function renderParliament(avg){
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?LAST_ELECTION.date.slice(0,4)+' '+T.result:t('projected winner','tahmini kazanan'))}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
-        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','\u00f6nde giden blok'):t('district winner','b\u00f6lge kazanan\u0131')}`));
+        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):t('district winner','b\u00f6lge kazanan\u0131')}`));
   const archCap=(PARL_MODE==='upper'
-      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yakla\u015f\u0131k model - \u00fcst meclisin kendi s\u0131n\u0131rlar\u0131/listeleri farkl\u0131d\u0131r')}`
+      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yaklaşık model — üst meclisin kendi sınırları/listeleri farklıdır')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
   const cap=showMap?mapCap:archCap;
   // filter provenance under the projection (never for the result view - the
@@ -3165,7 +3170,7 @@ async function renderPoster(opts){
       ctx.fillStyle=tc;
       ctx.textAlign='center';
       ctx.font='700 9px '+FONT;
-      ctx.fillText(t('CHANCE OF FIRST','B\u0130R\u0130NC\u0130 OLMA'),fx+fw/2,
+      ctx.fillText(t('CHANCE OF FIRST','BİRİNCİLİK ŞANSI'),fx+fw/2,
         y+Math.round(th*0.33));
       ctx.font='900 26px '+MONO;
       ctx.fillText(r.firstText,fx+fw/2,y+Math.round(th*0.74));
@@ -3897,7 +3902,7 @@ function buildParliamentSVG(seats){
     const totalY=layout.h+capH+2;
 
     let svg=`<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h+padBottom}" xmlns="http://www.w3.org/2000/svg">`;
-    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Source Code Pro,monospace">MAJORITY ${majority}</text>`;
+    svg+=`<text x="${layout.cx}" y="${fmt(labelY,1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Source Code Pro,monospace">${t('MAJORITY','ÇOĞUNLUK')} ${majority}</text>`;
     svg+=`<line x1="${layout.cx}" y1="${fmt(lineTop,1)}" x2="${layout.cx}" y2="${fmt(lineBot,1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
@@ -4236,7 +4241,7 @@ function calibNote(){
   const parts=cal.buckets.map(b=>
     `${Math.round(b.lo*100)}\u2013${Math.round(b.hi*100)}%: ${b.hits}/${b.n}`).join(' \u00b7 ');
   const scope=cal.n_cycles?`${cal.n_cycles} ${t('cycles','d\u00f6ng\u00fc')} \u00d7 5 ${t('horizons','ufuk')}`:`${cal.n} ${t('cycle-horizons','d\u00f6ng\u00fc-ufuk')}`;
-  return `<div style="font-size:11px;color:var(--c-text-muted);margin-top:4px">${t('calibrated on','kalibre edildi')} ${scope} (${t('bloc of the projected leader','tahmin liderinin blo\u011fu')}): ${parts}</div>`;
+  return `<div style="font-size:11px;color:var(--c-text-muted);margin-top:4px">${t('calibrated on','kalibrasyon:')} ${scope} (${t('bloc of the projected leader','tahmini liderin bloğu')}): ${parts}</div>`;
 }
 
 function runSeatForecast(avg, nSims, nPolls){
@@ -4606,13 +4611,13 @@ function firstRoundCard(sim){
     <span class="fc-row-val">${pct100(v)}</span>
   </div>`;
   return `<div class="card">
-    <div class="card-head"><div class="bar"></div><div class="t">${t('FIRST ROUND — MAJORITY','BİRİNCİ TUR — ÇOĞUNLUK')}</div></div>
-    <div class="fc-seathead fc-seathead-hd"><span>${t('WINS ROUND 1','1. TURU KAZANIR')}</span><span></span><span>P</span></div>
+    <div class="card-head"><div class="bar"></div><div class="t">${t('FIRST ROUND — MAJORITY','İLK TUR — ÇOĞUNLUK')}</div></div>
+    <div class="fc-seathead fc-seathead-hd"><span>${t('WINS ROUND 1','İLK TURU KAZANIR')}</span><span></span><span>P</span></div>
     ${rows.map(r=>barRow(partyCode(r.p),r.color,r.w1)).join('')}
     <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('REACHES A RUNOFF','İKİNCİ TURA KALIR')}</span><span></span><span>P</span></div>
     ${rows.map(r=>barRow(partyCode(r.p),r.color,r.runoff)).join('')}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
-      ${t('A candidate is elected in round 1 with a majority of valid votes (≥50%); otherwise the top two face a runoff.','Bir aday birinci turda geçerli oyların çoğunluğunu (≥%50) alırsa seçilir; aksi halde ilk iki aday ikinci turda karşılaşır.')}
+      ${t('A candidate is elected in round 1 with a majority of valid votes (≥50%); otherwise the top two face a runoff.','Bir aday ilk turda geçerli oyların çoğunluğunu (≥%50) alırsa seçilir; aksi halde en çok oy alan iki aday ikinci turda karşılaşır.')}
     </div>
   </div>`;
 }
@@ -5008,7 +5013,7 @@ function renderForecast(pane){
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
-          ${t('Head-to-head from','Ba\u015fa ba\u015f anketlerinden')} ${ro.roN} ${t('runoff polls','ikinci tur anketi')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yak\u0131n anket e\u015fle\u015fmesi - ilk tur ilk ikisi i\u00e7in hen\u00fcz ba\u015fa ba\u015f anket yok')}`:''}
+          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${t('runoff polls','ikinci tur anketi')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,h2a)}
@@ -5231,7 +5236,7 @@ function renderForecast(pane){
           </tr></thead><tbody>
           ${rows.map(x=>`<tr><td style="font-weight:900">${REGION_LABELS[x.r]||x.r}</td>${cell(x,0)}${cell(x,1)}${cell(x,2)}</tr>`).join('')}
           </tbody></table></div>
-          <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Projected from the median vote shares, weighted by district size','Medyan oy oranlar\u0131ndan, b\u00f6lge b\u00fcy\u00fckl\u00fc\u011f\u00fcne g\u00f6re a\u011f\u0131rl\u0131kl\u0131')}</div>
+          <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Projected from the median vote shares, weighted by district size','Medyan oy oranlarından, bölge büyüklüğüne göre ağırlıklandırılmış')}</div>
         </div>`;
       }
     }
@@ -5305,7 +5310,7 @@ function renderForecast(pane){
 
     ${coalHtml}
 
-    ${RO_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','BİRİNCİ TUR LİDERİ'):T.largestParty}</div></div>
+    ${RO_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','İLK TUR LİDERİ'):T.largestParty}</div></div>
       ${largestRows}
     </div>`}
 
@@ -5391,9 +5396,9 @@ function renderForecast(pane){
           const ds=Math.round(sim.means[p])-(leS[p]||0);
           return {
             dvText:(!SEAT_BASED&&Math.abs(dv)>=0.05)
-              ?(dv>0?'\u25b2+'+fmt(dv,1):'\u25bc'+fmt(Math.abs(dv),1)):'',
+              ?(dv>0?'\u25b2'+fmt(dv,1):'\u25bc'+fmt(Math.abs(dv),1)):'',
             dsText:(!MAP_ONLY&&ds!==0)
-              ?(ds>0?'\u25b2+'+ds:'\u25bc'+Math.abs(ds)):''
+              ?(ds>0?'\u25b2'+ds:'\u25bc'+Math.abs(ds)):''
           };
         };
         eligible.slice(0,bigN).forEach(p=>{
@@ -5422,7 +5427,7 @@ function renderForecast(pane){
             value:'%'+fmt(100*topCoal.p,1),
             color:(PARTY_META[topCoal.c.parties[0]]||{}).color||'#888'}];
         }else if(!MAP_ONLY&&!HIDE_BLOCS){
-          tiles=[{label:t('Government majority probability','Hükümetin çoğunluğu tutma ihtimali'),
+          tiles=[{label:t('Government majority probability','Hükümetin çoğunluk kazanma olasılığı'),
             value:'%'+fmt(100*rgP,1),
             color:(BLOCS.bloc1||{}).color||'#888'}];
         }else if(MAP_ONLY){
@@ -5433,7 +5438,7 @@ function renderForecast(pane){
           const h2=roCache?roCache.winA/3000:0;
           const elected=w1+Math.max(0,reach-w1)*h2;
           const lc=(PARTY_META[lead]||{}).color||'#888';
-          tiles=[{label:partyCode(lead)+' '+t('wins the first round','ilk turu birinci bitirme'),
+          tiles=[{label:partyCode(lead)+' '+t('wins the first round','ilk turu kazanma'),
                   value:'%'+fmt(100*w1,1),color:lc},
                  {label:partyCode(lead)+' '+t('wins the runoff','ikinci turda kazanma'),
                   value:'%'+fmt(100*elected,1),color:lc}];
@@ -5445,7 +5450,7 @@ function renderForecast(pane){
       return {
         title:COUNTRY_NAME+' '+t('Election Projection','Seçim Projeksiyonu'),
         subtitle:MAP_ONLY&&(COUNTRIES[COUNTRY]||{}).firstRoundResult
-          ?(RO_ONLY?t('Runoff','2. Tur'):t('1st round','1. Tur'))
+          ?(RO_ONLY?t('Runoff','İkinci Tur'):t('1st round','İlk Tur'))
           :t('If the election were held today','Seçim Bugün Olsaydı'),
         rows:rows, grid:grid, tiles:tiles,
         arcSvg:MAP_ONLY?null:tmp.querySelector('svg'),
@@ -5935,7 +5940,7 @@ function renderHistory(pane){
   </div>`;
   loadHistory().then(hist=>{
     if(!hist||!hist.elections||!hist.elections.length){
-      pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.history}</div></div><div class="method-text" style="padding:16px"><p>${t('No historical data available for','Bu ülke için geçmiş veri yok')} ${COUNTRY_NAME}.</p></div></div></div>`;
+      pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.history}</div></div><div class="method-text" style="padding:16px"><p>${t('No historical data available for','Geçmiş veri yok:')} ${COUNTRY_NAME}.</p></div></div></div>`;
       return;
     }
     pane.innerHTML=`<div class="tab-pane-inner">
@@ -6323,8 +6328,8 @@ function fieldScenarios(polls){
       diff=parts.join(' ');
     }
     return {sig, n: sub.length,
-            label: idx===0?t('MAIN FIELD','ANA ALAN')
-                           :t('FIELD','ALAN')+(diff?' '+diff:''),
+            label: idx===0?t('MAIN FIELD','ANA KADRO')
+                           :t('FIELD','KADRO')+(diff?' '+diff:''),
             detail: top.map(k=>partyCode(k)).join(' \u00b7 ')+
                     (diff?' \u00b7 '+diff:'')};
   });
@@ -6332,7 +6337,7 @@ function fieldScenarios(polls){
 function fieldChips(scenarios){
   if(!scenarios||scenarios.length<2) return '';
   return `<div class="map-toggle-row" style="justify-content:flex-start;margin-top:10px;align-items:center">
-    <span style="font-size:11px;color:var(--c-text-muted);margin-right:4px">${t('POLL FIELD','ANKET ALANI')}:</span>
+    <span style="font-size:11px;color:var(--c-text-muted);margin-right:4px">${t('POLL FIELD','ADAY KADROSU')}:</span>
     <button class="map-toggle-btn fr-field-btn${FIELD_SIG?'':' active'}" data-field="">${t('ALL POLLS','T\u00dcM ANKETLER')}</button>
     ${scenarios.map(s=>`<button class="map-toggle-btn fr-field-btn${FIELD_SIG===s.sig?' active':''}" data-field="${s.sig}" title="${s.detail} \u00b7 ${s.n} ${t('polls','anket')}">${s.label} (${s.n})</button>`).join('')}
   </div>`;
@@ -6382,7 +6387,7 @@ function renderPollsTab(){
         </div>`:''}
         <button class="shot-btn" id="trend-shot-btn" style="margin-left:auto" title="Download chart as PNG">${CAM_ICON}</button></div>
         <div class="chart-wrap"><canvas id="trend-canvas"></canvas></div>
-        ${TREND_CONF?`<div style="font-size:10px;color:var(--c-text-muted);padding:6px 12px 8px">◆ ${t('dashed diamond = value extrapolated to election day','kesikli elmas = se\u00e7im g\u00fcn\u00fcne yans\u0131t\u0131lan de\u011fer')} (${TREND_CONF.electionDate})</div>`:''}
+        ${TREND_CONF?`<div style="font-size:10px;color:var(--c-text-muted);padding:6px 12px 8px">◆ ${t('dashed diamond = value extrapolated to election day','kesikli elmas = seçim gününe uzatılan değer')} (${TREND_CONF.electionDate})</div>`:''}
     </div>
     </div>
   </div>`;
@@ -6583,6 +6588,8 @@ function applyTheme(){
 const HOME_MODE=!((typeof URLSearchParams!=='undefined')&&new URLSearchParams(location.search).get('c'))
   &&!(typeof window!=='undefined'&&window.__600_COUNTRY__);
 loadData().then(()=>loadConstituencies()).then(()=>loadBacktest()).then(()=>{
+  setCountry(COUNTRY);
+  COUNTRY_NAME=cName(COUNTRY);
   wireAria();
   applyTheme(); updateSocialMeta();
   renderCountryNav();

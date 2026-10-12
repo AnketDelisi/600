@@ -1,0 +1,28 @@
+<!doctype html>
+<html><body>
+<iframe id="f" src="/index.html?c=serbia" style="width:1300px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+let err = '';
+f.addEventListener('load', () => {
+  const w = f.contentWindow;
+  try { w.addEventListener('error', e => { err += e.message + '; '; }); } catch (e) {}
+  setTimeout(() => {
+    const d = f.contentDocument;
+    const txt = (d.body.innerText || '').replace(/\s+/g, ' ');
+    const out = {
+      srs: txt.includes('SRS'),
+      srsResult: txt.includes('SRS 1.5'),
+      kshlpLogo: !!d.querySelector('img[src*="KSHLP"]'),
+      kshlpLogoOk: (() => {
+        const im = d.querySelector('img[src*="KSHLP"]');
+        return im ? (im.naturalWidth > 0) : false;
+      })(),
+      sl: txt.includes('SL '),
+      err: err || 'none'
+    };
+    document.title = JSON.stringify(out);
+  }, 9000);
+});
+</script>
+</body></html>

@@ -37,8 +37,9 @@ HEADER_MAP = {
     "grüne": "gruene", "grune": "gruene", "greens": "gruene",
     "linke": "linke", "the left": "linke",
     "afd": "afd", "bsw": "bsw", "fdp": "fdp",
+    "fw": "fw", "freie wähler": "fw", "free voters": "fw",
 }
-KNOWN = {"cdu", "spd", "gruene", "linke", "afd", "fdp", "bsw"}
+KNOWN = {"cdu", "spd", "gruene", "linke", "afd", "fdp", "bsw", "fw"}
 MIN_PARTIES = 3
 
 

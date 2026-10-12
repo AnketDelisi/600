@@ -17,6 +17,7 @@ REAL_ISSUES = []
 
 # key: (seats, threshold, method or None=runoff/mixed, constituencies)
 REF = {
+    "argentina": (24, 50.0, None, False),
     "austria": (183, 4.0, "dhondt", True),
     "bg": (240, 4.0, "hare_niemeyer", False),
     "bgpres": (1, 0.0, None, False),
@@ -54,7 +55,7 @@ REF = {
 }
 
 # mapOnly pages: `seats` counts map units; no seat allocation
-MAP_UNITS = {"brazil", "france", "bgpres"}
+MAP_UNITS = {"brazil", "france", "bgpres", "argentina"}
 # known-normal lastElection.seats sum != seats
 SEAT_SUM_NOTES = {
     "nz": "overhang: 122 actual vs 120 base",

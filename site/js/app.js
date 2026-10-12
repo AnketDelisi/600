@@ -5600,7 +5600,7 @@ function renderForecast(pane){
         const leS=LAST_ELECTION.seats||{};
         const deltaTexts=(p)=>{
           const dv=mean(sim.votesBy[p])-(leR[p]||0);
-          const ds=Math.round(sim.means[p])-(leS[p]||0);
+          const ds=(detSeats[p]||0)-(leS[p]||0);
           return {
             dvText:(!SEAT_BASED&&Math.abs(dv)>=0.05)
               ?(dv>0?'\u25b2'+fmt(dv,1):'\u25bc'+fmt(Math.abs(dv),1)):'',
@@ -5612,7 +5612,7 @@ function renderForecast(pane){
           const d=deltaTexts(p);
           rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
             shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
-            seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
+            seatsText:MAP_ONLY?'':fmt(detSeats[p]||0,0),
             dvText:d.dvText, dsText:d.dsText,
             ideology:ideologyTr((PARTY_META[p]||{}).ideology||''),
             color:(PARTY_META[p]||{}).color||'#888',
@@ -5623,7 +5623,7 @@ function renderForecast(pane){
           const d=deltaTexts(p);
           grid.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
             shareText:SEAT_BASED?'':'%'+fmt(mean(sim.votesBy[p]),1),
-            seatsText:MAP_ONLY?'':fmt(sim.means[p],0),
+            seatsText:MAP_ONLY?'':fmt(detSeats[p]||0,0),
             dvText:d.dvText, dsText:d.dsText,
             ideology:ideologyTr((PARTY_META[p]||{}).ideology||''),
             color:(PARTY_META[p]||{}).color||'#888',

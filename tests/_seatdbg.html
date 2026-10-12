@@ -1,0 +1,18 @@
+<!doctype html>
+<html><body>
+<script>localStorage.setItem('600_lang', 'tr');</script>
+<iframe id="f" src="/index.html?c=serbia" style="width:1300px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(() => {
+    const d = f.contentDocument;
+    const txt = (d.body.innerText || '').replace(/\s+/g, ' ');
+    const i = txt.indexOf('ULUSAL ANKET');
+    const j = txt.indexOf('PES');
+    document.title = 'POLLS:' + txt.slice(i, i + 420)
+      + ' ||PESctx:' + txt.slice(Math.max(0, j - 60), j + 120);
+  }, 9000);
+});
+</script>
+</body></html>

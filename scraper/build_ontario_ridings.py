@@ -70,9 +70,10 @@ BRADY = {"name": "Bobbi Ann Brady", "past": 63.65, "now": 63.65}
 
 
 def fold(s):
-    s = unicodedata.normalize("NFKD", s or "")
-    s = s.encode("ascii", "ignore").decode()
-    return re.sub(r"[^a-z]", "", s.lower())
+    # MUST match build_map_svg.fold (it keeps ASCII hyphens: 'Oro-Medonte'
+    # and 'Chatham-Kent' produce hyphenated svg ids; a stricter fold here
+    # left those two ridings uncoloured)
+    return bm.fold(s)
 
 
 def num(s):

@@ -259,6 +259,7 @@ def main():
       swingMethod: 'proportional',
       selector: 'id',
       useConstituencies: true,     // 124 ridings, projected winner takes the seat
+      hideBlocToggle: true,        // no government-vs-rest bloc coloring
       districts: %s,
       gebiete: %s,
       // the independent incumbent (Bobbi Ann Brady, Haldimand-Norfolk):

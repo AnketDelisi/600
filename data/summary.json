@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T18:33:01Z",
+ "generated": "2026-10-12T18:41:05Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -420,6 +420,26 @@
    "last_winner_color": "#1A4782",
    "poll_count": 2,
    "latest_poll": "2026-09-29"
+  },
+  "alberta": {
+   "name": "Alberta",
+   "election_date": "2027-05-31",
+   "election_date_runoff": null,
+   "last_election": "2023-05-29",
+   "last_winner": "ucp",
+   "seats": 87,
+   "seat_based": false,
+   "leader": "ucp",
+   "leader_pct": 41.0,
+   "leader_code": "UCP",
+   "leader_color": "#1A4C8B",
+   "leader_logo": "img/alb/UCP.svg",
+   "second": "ndp",
+   "second_pct": 41.0,
+   "last_winner_code": "UCP",
+   "last_winner_color": "#1A4C8B",
+   "poll_count": 1,
+   "latest_poll": "2026-09-21"
   },
   "hu": {
    "name": "Hungary",

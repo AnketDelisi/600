@@ -699,7 +699,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
   ['Europe',['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','uk']],
-  ['Americas',['argentina','bc','brazil','ontario','qc']],
+  ['Americas',['alberta','argentina','bc','brazil','ontario','qc']],
   ['Middle East & Asia-Pacific',['israel','jp','kr','nz']],
 ];
 const METHOD_SHORT={fptp:'FPTP',dhondt:"D'Hondt",sainte_lague_standard:'Sainte-Lagu\u00eb',sainte_lague:'Sainte-Lagu\u00eb (mod.)',hare_niemeyer:'Hare/Niemeyer',imperiali_hb:'Imperiali'};

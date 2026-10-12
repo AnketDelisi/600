@@ -17,6 +17,7 @@ REAL_ISSUES = []
 
 # key: (seats, threshold, method or None=runoff/mixed, constituencies)
 REF = {
+    "alberta": (87, 0.0, "fptp", True),
     "argentina": (24, 50.0, None, False),
     "austria": (183, 4.0, "dhondt", True),
     "ontario": (124, 0.0, "fptp", True),

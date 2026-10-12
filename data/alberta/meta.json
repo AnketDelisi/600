@@ -1,0 +1,10 @@
+{
+  "country": "alberta",
+  "name": "Alberta",
+  "election_date": "2027-05-31",
+  "seats": 87,
+  "threshold": 0,
+  "method": "fptp",
+  "constituencies": true,
+  "notes": "FPTP, 87 ridings (the 2019-representation map). Baselines: the 2023 general election per-riding votes (en.wikipedia, Elections Alberta data). Polling: the 32nd Alberta general election article's table (scrape_alberta.py)."
+}

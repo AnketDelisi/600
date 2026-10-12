@@ -1,0 +1,1400 @@
+{
+ "country": "alberta",
+ "total_seats": 87,
+ "constituency_seats": 87,
+ "leveling_seats": 0,
+ "constituencies": [
+  {
+   "id": "calgary-acadia",
+   "name": "Calgary-Acadia",
+   "seats": 1,
+   "votes2022": 22562,
+   "results_2022": {
+    "ucp": 48.48,
+    "ndp": 48.57,
+    "grn": 1.3,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.53,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-beddington",
+   "name": "Calgary-Beddington",
+   "seats": 1,
+   "votes2022": 20678,
+   "results_2022": {
+    "ucp": 47.04,
+    "ndp": 49.66,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-bow",
+   "name": "Calgary-Bow",
+   "seats": 1,
+   "votes2022": 26486,
+   "results_2022": {
+    "ucp": 49.74,
+    "ndp": 47.39,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-buffalo",
+   "name": "Calgary-Buffalo",
+   "seats": 1,
+   "votes2022": 20987,
+   "results_2022": {
+    "ucp": 34.75,
+    "ndp": 63.0,
+    "grn": 1.66,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-cross",
+   "name": "Calgary-Cross",
+   "seats": 1,
+   "votes2022": 15008,
+   "results_2022": {
+    "ucp": 50.19,
+    "ndp": 46.77,
+    "grn": 1.69,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-currie",
+   "name": "Calgary-Currie",
+   "seats": 1,
+   "votes2022": 22372,
+   "results_2022": {
+    "ucp": 41.04,
+    "ndp": 54.81,
+    "grn": 0.99,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-east",
+   "name": "Calgary-East",
+   "seats": 1,
+   "votes2022": 14181,
+   "results_2022": {
+    "ucp": 50.23,
+    "ndp": 45.31,
+    "grn": 2.84,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-edgemont",
+   "name": "Calgary-Edgemont",
+   "seats": 1,
+   "votes2022": 23696,
+   "results_2022": {
+    "ucp": 48.1,
+    "ndp": 49.3,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.28,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-elbow",
+   "name": "Calgary-Elbow",
+   "seats": 1,
+   "votes2022": 24870,
+   "results_2022": {
+    "ucp": 46.02,
+    "ndp": 49.01,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-falconridge",
+   "name": "Calgary-Falconridge",
+   "seats": 1,
+   "votes2022": 13808,
+   "results_2022": {
+    "ucp": 39.66,
+    "ndp": 56.39,
+    "grn": 1.47,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-fishcreek",
+   "name": "Calgary-Fish Creek",
+   "seats": 1,
+   "votes2022": 25561,
+   "results_2022": {
+    "ucp": 53.77,
+    "ndp": 44.03,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-foothills",
+   "name": "Calgary-Foothills",
+   "seats": 1,
+   "votes2022": 22142,
+   "results_2022": {
+    "ucp": 48.74,
+    "ndp": 49.92,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-glenmore",
+   "name": "Calgary-Glenmore",
+   "seats": 1,
+   "votes2022": 25748,
+   "results_2022": {
+    "ucp": 49.09,
+    "ndp": 49.27,
+    "grn": 1.64,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-hays",
+   "name": "Calgary-Hays",
+   "seats": 1,
+   "votes2022": 21233,
+   "results_2022": {
+    "ucp": 55.61,
+    "ndp": 42.33,
+    "grn": 1.51,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-klein",
+   "name": "Calgary-Klein",
+   "seats": 1,
+   "votes2022": 20767,
+   "results_2022": {
+    "ucp": 46.69,
+    "ndp": 50.87,
+    "grn": 1.7,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-lougheed",
+   "name": "Calgary-Lougheed",
+   "seats": 1,
+   "votes2022": 17167,
+   "results_2022": {
+    "ucp": 56.45,
+    "ndp": 40.33,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-bhullar-mccall",
+   "name": "Calgary-Bhullar-McCall",
+   "seats": 1,
+   "votes2022": 12526,
+   "results_2022": {
+    "ucp": 42.0,
+    "ndp": 58.0,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-mountainview",
+   "name": "Calgary-Mountain View",
+   "seats": 1,
+   "votes2022": 25528,
+   "results_2022": {
+    "ucp": 33.17,
+    "ndp": 64.7,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-north",
+   "name": "Calgary-North",
+   "seats": 1,
+   "votes2022": 15725,
+   "results_2022": {
+    "ucp": 50.41,
+    "ndp": 49.59,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-northeast",
+   "name": "Calgary-North East",
+   "seats": 1,
+   "votes2022": 20195,
+   "results_2022": {
+    "ucp": 44.95,
+    "ndp": 55.05,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-northwest",
+   "name": "Calgary-North West",
+   "seats": 1,
+   "votes2022": 24675,
+   "results_2022": {
+    "ucp": 48.31,
+    "ndp": 47.73,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-peigan",
+   "name": "Calgary-Peigan",
+   "seats": 1,
+   "votes2022": 21613,
+   "results_2022": {
+    "ucp": 55.02,
+    "ndp": 42.08,
+    "grn": 2.9,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-shaw",
+   "name": "Calgary-Shaw",
+   "seats": 1,
+   "votes2022": 24797,
+   "results_2022": {
+    "ucp": 56.34,
+    "ndp": 42.71,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-southeast",
+   "name": "Calgary-South East",
+   "seats": 1,
+   "votes2022": 23951,
+   "results_2022": {
+    "ucp": 58.82,
+    "ndp": 39.42,
+    "grn": 1.33,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-varsity",
+   "name": "Calgary-Varsity",
+   "seats": 1,
+   "votes2022": 23079,
+   "results_2022": {
+    "ucp": 40.63,
+    "ndp": 58.27,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.61,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "calgary-west",
+   "name": "Calgary-West",
+   "seats": 1,
+   "votes2022": 22574,
+   "results_2022": {
+    "ucp": 56.67,
+    "ndp": 41.94,
+    "grn": 1.39,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-beverly-clareview",
+   "name": "Edmonton-Beverly-Clareview",
+   "seats": 1,
+   "votes2022": 14759,
+   "results_2022": {
+    "ucp": 38.55,
+    "ndp": 57.66,
+    "grn": 2.28,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-castledowns",
+   "name": "Edmonton-Castle Downs",
+   "seats": 1,
+   "votes2022": 18037,
+   "results_2022": {
+    "ucp": 40.39,
+    "ndp": 55.69,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-citycentre",
+   "name": "Edmonton-City Centre",
+   "seats": 1,
+   "votes2022": 16598,
+   "results_2022": {
+    "ucp": 22.24,
+    "ndp": 74.89,
+    "grn": 2.87,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-decore",
+   "name": "Edmonton-Decore",
+   "seats": 1,
+   "votes2022": 15361,
+   "results_2022": {
+    "ucp": 41.18,
+    "ndp": 52.79,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-ellerslie",
+   "name": "Edmonton-Ellerslie",
+   "seats": 1,
+   "votes2022": 18510,
+   "results_2022": {
+    "ucp": 36.83,
+    "ndp": 61.75,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 1.43,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-glenora",
+   "name": "Edmonton-Glenora",
+   "seats": 1,
+   "votes2022": 17981,
+   "results_2022": {
+    "ucp": 28.12,
+    "ndp": 69.2,
+    "grn": 1.85,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-goldbar",
+   "name": "Edmonton-Gold Bar",
+   "seats": 1,
+   "votes2022": 22319,
+   "results_2022": {
+    "ucp": 27.66,
+    "ndp": 69.48,
+    "grn": 1.42,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-highlands-norwood",
+   "name": "Edmonton-Highlands-Norwood",
+   "seats": 1,
+   "votes2022": 13282,
+   "results_2022": {
+    "ucp": 25.22,
+    "ndp": 71.46,
+    "grn": 2.55,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-manning",
+   "name": "Edmonton-Manning",
+   "seats": 1,
+   "votes2022": 17649,
+   "results_2022": {
+    "ucp": 38.35,
+    "ndp": 59.76,
+    "grn": 1.89,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-mcclung",
+   "name": "Edmonton-McClung",
+   "seats": 1,
+   "votes2022": 16140,
+   "results_2022": {
+    "ucp": 37.35,
+    "ndp": 59.5,
+    "grn": 1.23,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-meadows",
+   "name": "Edmonton-Meadows",
+   "seats": 1,
+   "votes2022": 17604,
+   "results_2022": {
+    "ucp": 36.23,
+    "ndp": 62.56,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-millwoods",
+   "name": "Edmonton-Mill Woods",
+   "seats": 1,
+   "votes2022": 17932,
+   "results_2022": {
+    "ucp": 38.31,
+    "ndp": 61.69,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-northwest",
+   "name": "Edmonton-North West",
+   "seats": 1,
+   "votes2022": 16701,
+   "results_2022": {
+    "ucp": 38.25,
+    "ndp": 59.74,
+    "grn": 2.01,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-riverview",
+   "name": "Edmonton-Riverview",
+   "seats": 1,
+   "votes2022": 19199,
+   "results_2022": {
+    "ucp": 28.98,
+    "ndp": 67.06,
+    "grn": 1.81,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-rutherford",
+   "name": "Edmonton-Rutherford",
+   "seats": 1,
+   "votes2022": 20002,
+   "results_2022": {
+    "ucp": 31.83,
+    "ndp": 65.05,
+    "grn": 3.12,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-south",
+   "name": "Edmonton-South",
+   "seats": 1,
+   "votes2022": 24032,
+   "results_2022": {
+    "ucp": 39.5,
+    "ndp": 58.97,
+    "grn": 1.54,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-southwest",
+   "name": "Edmonton-South West",
+   "seats": 1,
+   "votes2022": 25444,
+   "results_2022": {
+    "ucp": 42.21,
+    "ndp": 56.52,
+    "grn": 1.27,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-strathcona",
+   "name": "Edmonton-Strathcona",
+   "seats": 1,
+   "votes2022": 17535,
+   "results_2022": {
+    "ucp": 17.29,
+    "ndp": 79.73,
+    "grn": 1.85,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.53,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-westhenday",
+   "name": "Edmonton-West Henday",
+   "seats": 1,
+   "votes2022": 20224,
+   "results_2022": {
+    "ucp": 39.34,
+    "ndp": 56.84,
+    "grn": 1.89,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "edmonton-whitemud",
+   "name": "Edmonton-Whitemud",
+   "seats": 1,
+   "votes2022": 21187,
+   "results_2022": {
+    "ucp": 36.81,
+    "ndp": 60.4,
+    "grn": 1.04,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "airdrie-cochrane",
+   "name": "Airdrie-Cochrane",
+   "seats": 1,
+   "votes2022": 30072,
+   "results_2022": {
+    "ucp": 60.1,
+    "ndp": 37.32,
+    "grn": 1.31,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.61,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "airdrie-east",
+   "name": "Airdrie-East",
+   "seats": 1,
+   "votes2022": 24535,
+   "results_2022": {
+    "ucp": 62.01,
+    "ndp": 35.45,
+    "grn": 2.54,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "athabasca-barrhead-westlock",
+   "name": "Athabasca-Barrhead-Westlock",
+   "seats": 1,
+   "votes2022": 21032,
+   "results_2022": {
+    "ucp": 74.32,
+    "ndp": 25.68,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "banff-kananaskis",
+   "name": "Banff-Kananaskis",
+   "seats": 1,
+   "votes2022": 23262,
+   "results_2022": {
+    "ucp": 48.4,
+    "ndp": 49.7,
+    "grn": 1.44,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "bonnyville-coldlake-stpaul",
+   "name": "Bonnyville-Cold Lake-St. Paul",
+   "seats": 1,
+   "votes2022": 17642,
+   "results_2022": {
+    "ucp": 75.47,
+    "ndp": 24.53,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "brooks-medicinehat",
+   "name": "Brooks-Medicine Hat",
+   "seats": 1,
+   "votes2022": 20025,
+   "results_2022": {
+    "ucp": 66.49,
+    "ndp": 27.35,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "camrose",
+   "name": "Camrose",
+   "seats": 1,
+   "votes2022": 20556,
+   "results_2022": {
+    "ucp": 63.4,
+    "ndp": 27.14,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 1.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "cardston-siksika",
+   "name": "Cardston-Siksika",
+   "seats": 1,
+   "votes2022": 14234,
+   "results_2022": {
+    "ucp": 74.12,
+    "ndp": 17.75,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "centralpeace-notley",
+   "name": "Central Peace-Notley",
+   "seats": 1,
+   "votes2022": 11946,
+   "results_2022": {
+    "ucp": 77.68,
+    "ndp": 18.55,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "chestermere-strathmore",
+   "name": "Chestermere-Strathmore",
+   "seats": 1,
+   "votes2022": 22048,
+   "results_2022": {
+    "ucp": 69.68,
+    "ndp": 27.75,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "cypress-medicinehat",
+   "name": "Cypress-Medicine Hat",
+   "seats": 1,
+   "votes2022": 21795,
+   "results_2022": {
+    "ucp": 61.89,
+    "ndp": 35.32,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 1.48,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "draytonvalley-devon",
+   "name": "Drayton Valley-Devon",
+   "seats": 1,
+   "votes2022": 22431,
+   "results_2022": {
+    "ucp": 73.7,
+    "ndp": 22.33,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 2.59,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "drumheller-stettler",
+   "name": "Drumheller-Stettler",
+   "seats": 1,
+   "votes2022": 18590,
+   "results_2022": {
+    "ucp": 82.14,
+    "ndp": 14.44,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.81,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "fortmcmurray-laclabiche",
+   "name": "Fort McMurray-Lac La Biche",
+   "seats": 1,
+   "votes2022": 10455,
+   "results_2022": {
+    "ucp": 73.57,
+    "ndp": 24.5,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "fortmcmurray-woodbuffalo",
+   "name": "Fort McMurray-Wood Buffalo",
+   "seats": 1,
+   "votes2022": 9578,
+   "results_2022": {
+    "ucp": 67.69,
+    "ndp": 19.67,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "fortsaskatchewan-vegreville",
+   "name": "Fort Saskatchewan-Vegreville",
+   "seats": 1,
+   "votes2022": 24326,
+   "results_2022": {
+    "ucp": 58.07,
+    "ndp": 37.26,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "grandeprairie",
+   "name": "Grande Prairie",
+   "seats": 1,
+   "votes2022": 15641,
+   "results_2022": {
+    "ucp": 63.94,
+    "ndp": 31.26,
+    "grn": 1.02,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "grandeprairie-wapiti",
+   "name": "Grande Prairie-Wapiti",
+   "seats": 1,
+   "votes2022": 19801,
+   "results_2022": {
+    "ucp": 76.22,
+    "ndp": 20.52,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "highwood",
+   "name": "Highwood",
+   "seats": 1,
+   "votes2022": 26110,
+   "results_2022": {
+    "ucp": 68.9,
+    "ndp": 28.88,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "innisfail-sylvanlake",
+   "name": "Innisfail-Sylvan Lake",
+   "seats": 1,
+   "votes2022": 22882,
+   "results_2022": {
+    "ucp": 71.61,
+    "ndp": 24.91,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "lacsteanne-parkland",
+   "name": "Lac Ste. Anne-Parkland",
+   "seats": 1,
+   "votes2022": 21641,
+   "results_2022": {
+    "ucp": 68.96,
+    "ndp": 27.12,
+    "grn": 0.95,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "lacombe-ponoka",
+   "name": "Lacombe-Ponoka",
+   "seats": 1,
+   "votes2022": 21200,
+   "results_2022": {
+    "ucp": 67.57,
+    "ndp": 23.56,
+    "grn": 0.92,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 2.09,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "leduc-beaumont",
+   "name": "Leduc-Beaumont",
+   "seats": 1,
+   "votes2022": 24880,
+   "results_2022": {
+    "ucp": 56.74,
+    "ndp": 40.47,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "lesserslavelake",
+   "name": "Lesser Slave Lake",
+   "seats": 1,
+   "votes2022": 7951,
+   "results_2022": {
+    "ucp": 65.04,
+    "ndp": 33.15,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "lethbridge-east",
+   "name": "Lethbridge-East",
+   "seats": 1,
+   "votes2022": 21848,
+   "results_2022": {
+    "ucp": 50.34,
+    "ndp": 47.43,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "lethbridge-west",
+   "name": "Lethbridge-West",
+   "seats": 1,
+   "votes2022": 22407,
+   "results_2022": {
+    "ucp": 42.51,
+    "ndp": 53.92,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "livingstone-macleod",
+   "name": "Livingstone-Macleod",
+   "seats": 1,
+   "votes2022": 24635,
+   "results_2022": {
+    "ucp": 66.94,
+    "ndp": 26.35,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "maskwacis-wetaskiwin",
+   "name": "Maskwacis-Wetaskiwin",
+   "seats": 1,
+   "votes2022": 17234,
+   "results_2022": {
+    "ucp": 67.54,
+    "ndp": 27.86,
+    "grn": 1.09,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "morinville-stalbert",
+   "name": "Morinville-St. Albert",
+   "seats": 1,
+   "votes2022": 26020,
+   "results_2022": {
+    "ucp": 51.78,
+    "ndp": 45.07,
+    "grn": 0.88,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "olds-didsbury-threehills",
+   "name": "Olds-Didsbury-Three Hills",
+   "seats": 1,
+   "votes2022": 24209,
+   "results_2022": {
+    "ucp": 75.29,
+    "ndp": 18.81,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.76,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "peaceriver",
+   "name": "Peace River",
+   "seats": 1,
+   "votes2022": 11307,
+   "results_2022": {
+    "ucp": 72.84,
+    "ndp": 22.88,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "reddeer-north",
+   "name": "Red Deer-North",
+   "seats": 1,
+   "votes2022": 18494,
+   "results_2022": {
+    "ucp": 57.47,
+    "ndp": 38.63,
+    "grn": 1.39,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "reddeer-south",
+   "name": "Red Deer-South",
+   "seats": 1,
+   "votes2022": 24025,
+   "results_2022": {
+    "ucp": 56.06,
+    "ndp": 41.52,
+    "grn": 1.14,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.67,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "rimbey-rockymountainhouse-sundre",
+   "name": "Rimbey-Rocky Mountain House-Sundre",
+   "seats": 1,
+   "votes2022": 22416,
+   "results_2022": {
+    "ucp": 69.46,
+    "ndp": 13.91,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.43,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "sherwoodpark",
+   "name": "Sherwood Park",
+   "seats": 1,
+   "votes2022": 26073,
+   "results_2022": {
+    "ucp": 43.9,
+    "ndp": 50.27,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "sprucegrove-stonyplain",
+   "name": "Spruce Grove-Stony Plain",
+   "seats": 1,
+   "votes2022": 25207,
+   "results_2022": {
+    "ucp": 56.99,
+    "ndp": 40.45,
+    "grn": 1.67,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "stalbert",
+   "name": "St. Albert",
+   "seats": 1,
+   "votes2022": 25676,
+   "results_2022": {
+    "ucp": 39.73,
+    "ndp": 58.5,
+    "grn": 1.77,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "strathcona-sherwoodpark",
+   "name": "Strathcona-Sherwood Park",
+   "seats": 1,
+   "votes2022": 26125,
+   "results_2022": {
+    "ucp": 53.07,
+    "ndp": 44.58,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "taber-warner",
+   "name": "Taber-Warner",
+   "seats": 1,
+   "votes2022": 16442,
+   "results_2022": {
+    "ucp": 75.29,
+    "ndp": 17.13,
+    "grn": 1.45,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 4.59,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "vermilion-lloydminster-wainwright",
+   "name": "Vermilion-Lloydminster-Wainwright",
+   "seats": 1,
+   "votes2022": 17604,
+   "results_2022": {
+    "ucp": 74.4,
+    "ndp": 17.47,
+    "grn": 0.83,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 2.61,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  },
+  {
+   "id": "westyellowhead",
+   "name": "West Yellowhead",
+   "seats": 1,
+   "votes2022": 20135,
+   "results_2022": {
+    "ucp": 71.8,
+    "ndp": 28.2,
+    "grn": 0.0,
+    "lib": 0.0,
+    "tory": 0.0,
+    "wlc": 0.0,
+    "wip": 0.0,
+    "rpa": 0.0
+   }
+  }
+ ]
+}

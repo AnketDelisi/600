@@ -2382,7 +2382,7 @@ async function renderMap(avg){
 // shows the projected runoff winner per state instead of the first round.
 function runoffConf(roAvg){
   const c=MAP_CONF();
-  const st=(c&&(c.runoff2026||c.runoff2022))||null;
+  const st=(c&&(c.runoff2026||c.runoff2023||c.runoff2022))||null;
   if(st&&c.nationalRunoff){
     const keys=roAvg?Object.keys(roAvg):null;
     let geb=st;

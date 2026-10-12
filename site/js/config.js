@@ -28732,6 +28732,77 @@ saxony_anhalt: {
     },
   },
 
+  argentina: {
+    name: 'Argentina',
+    // presidential two-round: the map units are the 24 districts (23
+    // provinces + the City of Buenos Aires). The 2027 field is a set of
+    // declared/potential candidacies - the polls test alternative fields,
+    // so the field selector is on. The 2023 geography is mapped onto the
+    // 2027 field: Milei/Massa/Schiaretti/Bregman are in it themselves,
+    // Bullrich (JxC) -> Macri (PRO), and the other PJ-FP alternatives
+    // (Kicillof, Kirchner) inherit the Massa geography (the result view
+    // folds them back to the true 2023 candidates via resultMerge).
+    seats: 24,                    // 24 map units (departments of the map)
+    threshold: 50,
+    method: 'hare_niemeyer',
+    seatBased: false,
+    constituencies: false,
+    recencyHalfLifeDays: 14,
+    defaultDays: 90,
+    fieldSelector: true,
+    hideBlocs: true,
+    mapOnly: true,
+    unitLabel: {
+      en: 'districts',
+      tr: 'bölge'
+    },
+    parties: {
+      milei: { code: 'Milei', name: 'Javier Milei', name_en: 'Javier Milei', color: '#6C4C99', ideology: "Libertarianism, Right-wing populism"},
+      kicillof: { code: 'Kicillof', name: 'Axel Kicillof', name_en: 'Axel Kicillof', color: '#318CE7', ideology: "Peronism, Kirchnerism"},
+      kirchner: { code: 'Kirchner', name: 'Máximo Kirchner', name_en: 'Máximo Kirchner', color: '#318CE7', ideology: "Kirchnerism, Peronism"},
+      massa: { code: 'Massa', name: 'Sergio Massa', name_en: 'Sergio Massa', color: '#0E3C61', ideology: "Peronism, Federal Peronism"},
+      grabois: { code: 'Grabois', name: 'Juan Grabois', name_en: 'Juan Grabois', color: '#17A0DA', ideology: "Left-wing Peronism, Social justice"},
+      macri: { code: 'Macri', name: 'Mauricio Macri', name_en: 'Mauricio Macri', color: '#FFD700', ideology: "Liberal conservatism, Republicanism"},
+      villarruel: { code: 'Villarruel', name: 'Victoria Villarruel', name_en: 'Victoria Villarruel', color: '#192B6B', ideology: "National conservatism, Right-wing populism"},
+      schiaretti: { code: 'Schiaretti', name: 'Juan Schiaretti', name_en: 'Juan Schiaretti', color: '#27AE60', ideology: "Federal Peronism, Regionalism"},
+      bregman: { code: 'Bregman', name: 'Myriam Bregman', name_en: 'Myriam Bregman', color: '#F65058', ideology: "Trotskyism, Socialism of the left"},
+      moreno: { code: 'Moreno', name: 'Guillermo Moreno', name_en: 'Guillermo Moreno', color: '#00ADEF', ideology: "Nationalism, Peronism"},
+      gebel: { code: 'Gebel', name: 'Gebel', name_en: 'Gebel', color: '#9CA3AF', ideology: "Independent"},
+      bullrich: { code: 'Bullrich', name: 'Patricia Bullrich', name_en: 'Patricia Bullrich', color: '#FFD700', pastOnly: true, ideology: "Liberal conservatism, Republicanism"},
+    },
+    order: ['milei', 'kicillof', 'kirchner', 'massa', 'grabois', 'macri', 'villarruel', 'schiaretti', 'bregman', 'moreno', 'gebel', 'bullrich'],
+    parlOrder: ['bregman', 'kirchner', 'massa', 'kicillof', 'grabois', 'moreno', 'schiaretti', 'macri', 'gebel', 'villarruel', 'milei', 'bullrich'],
+    blocs: {
+      bloc1: { name: 'Milei', short: 'LLA', parties: ['milei'], color: '#6C4C99' },
+      bloc2: { name: 'Field', short: 'FLD', parties: ['kicillof', 'kirchner', 'massa', 'grabois', 'macri', 'villarruel', 'schiaretti', 'bregman', 'moreno', 'gebel'], color: '#318CE7' },
+    },
+    lastElection: {
+      date: '2023-10-22',
+      // the TRUE 2023 first round (Massa 36.69, Milei 29.99, Bullrich
+      // 23.83, Schiaretti 6.78, Bregman 2.70); the 2027-only candidates
+      // read 0. Milei won the runoff 55.69/44.31
+      results: {"massa": 36.69, "milei": 29.99, "bullrich": 23.83, "schiaretti": 6.78, "bregman": 2.7, "kicillof": 0, "kirchner": 0, "grabois": 0, "macri": 0, "villarruel": 0, "moreno": 0, "gebel": 0},
+      seats: { milei: 1 },
+    },
+    map: {
+      svg: 'img/argentina.svg',
+      selector: 'id',
+      districts: {"buenos_aires": "buenos_aires", "buenos_aires_city": "buenos_aires_city", "catamarca": "catamarca", "chaco": "chaco", "chubut": "chubut", "cordoba": "cordoba", "corrientes": "corrientes", "entre_rios": "entre_rios", "formosa": "formosa", "jujuy": "jujuy", "la_pampa": "la_pampa", "la_rioja": "la_rioja", "mendoza": "mendoza", "misiones": "misiones", "neuquen": "neuquen", "rio_negro": "rio_negro", "salta": "salta", "san_juan": "san_juan", "san_luis": "san_luis", "santa_cruz": "santa_cruz", "santa_fe": "santa_fe", "santiago_del_estero": "santiago_del_estero", "tierra_del_fuego": "tierra_del_fuego", "tucuman": "tucuman"},
+      gebiete: {"buenos_aires": {"milei": 25.73, "macri": 24.05, "schiaretti": 3.7, "bregman": 3.57, "massa": 21.48, "kicillof": 10.74, "kirchner": 10.74}, "buenos_aires_city": {"milei": 19.98, "macri": 41.23, "schiaretti": 3.07, "bregman": 3.53, "massa": 16.09, "kicillof": 8.04, "kirchner": 8.04}, "catamarca": {"milei": 32.03, "macri": 17.13, "schiaretti": 6.44, "bregman": 1.58, "massa": 21.41, "kicillof": 10.71, "kirchner": 10.71}, "chaco": {"milei": 27.82, "macri": 24.1, "schiaretti": 3.62, "bregman": 0.78, "massa": 21.84, "kicillof": 10.92, "kirchner": 10.92}, "chubut": {"milei": 35.13, "macri": 20.57, "schiaretti": 7.7, "bregman": 4.38, "massa": 16.11, "kicillof": 8.05, "kirchner": 8.05}, "cordoba": {"milei": 33.58, "macri": 22.63, "schiaretti": 28.98, "bregman": 1.39, "massa": 6.71, "kicillof": 3.35, "kirchner": 3.35}, "corrientes": {"milei": 26.87, "macri": 32.13, "schiaretti": 2.73, "bregman": 1.06, "massa": 18.61, "kicillof": 9.3, "kirchner": 9.3}, "entre_rios": {"milei": 29.74, "macri": 30.03, "schiaretti": 5.36, "bregman": 1.56, "massa": 16.66, "kicillof": 8.33, "kirchner": 8.33}, "formosa": {"milei": 29.06, "macri": 15.38, "schiaretti": 2.44, "bregman": 0.81, "massa": 26.16, "kicillof": 13.08, "kirchner": 13.08}, "jujuy": {"milei": 37.35, "macri": 19.96, "schiaretti": 6.79, "bregman": 3.54, "massa": 16.18, "kicillof": 8.09, "kirchner": 8.09}, "la_pampa": {"milei": 33.51, "macri": 21.9, "schiaretti": 7.44, "bregman": 2.29, "massa": 17.43, "kicillof": 8.71, "kirchner": 8.71}, "la_rioja": {"milei": 37.63, "macri": 11.8, "schiaretti": 8.51, "bregman": 0.92, "massa": 20.57, "kicillof": 10.29, "kirchner": 10.29}, "mendoza": {"milei": 42.38, "macri": 25.82, "schiaretti": 4.32, "bregman": 3.47, "massa": 12.01, "kicillof": 6.0, "kirchner": 6.0}, "misiones": {"milei": 42.19, "macri": 14.39, "schiaretti": 4.1, "bregman": 1.4, "massa": 18.96, "kicillof": 9.48, "kirchner": 9.48}, "neuquen": {"milei": 36.74, "macri": 20.56, "schiaretti": 5.95, "bregman": 4.99, "massa": 15.88, "kicillof": 7.94, "kirchner": 7.94}, "rio_negro": {"milei": 33.76, "macri": 18.13, "schiaretti": 6.25, "bregman": 4.01, "massa": 18.93, "kicillof": 9.46, "kirchner": 9.46}, "salta": {"milei": 40.27, "macri": 13.8, "schiaretti": 6.18, "bregman": 1.75, "massa": 19.0, "kicillof": 9.5, "kirchner": 9.5}, "san_juan": {"milei": 35.08, "macri": 23.2, "schiaretti": 6.17, "bregman": 2.23, "massa": 16.65, "kicillof": 8.32, "kirchner": 8.32}, "san_luis": {"milei": 43.33, "macri": 20.91, "schiaretti": 6.24, "bregman": 2.19, "massa": 13.66, "kicillof": 6.83, "kirchner": 6.83}, "santa_cruz": {"milei": 36.3, "macri": 16.41, "schiaretti": 6.6, "bregman": 2.9, "massa": 18.89, "kicillof": 9.45, "kirchner": 9.45}, "santa_fe": {"milei": 32.52, "macri": 26.88, "schiaretti": 9.02, "bregman": 1.89, "massa": 14.85, "kicillof": 7.42, "kirchner": 7.42}, "santiago_del_estero": {"milei": 22.84, "macri": 8.01, "schiaretti": 2.13, "bregman": 1.25, "massa": 32.88, "kicillof": 16.44, "kirchner": 16.44}, "tierra_del_fuego": {"milei": 33.82, "macri": 14.99, "schiaretti": 9.12, "bregman": 3.86, "massa": 19.1, "kicillof": 9.55, "kirchner": 9.55}, "tucuman": {"milei": 35.0, "macri": 14.64, "schiaretti": 3.99, "bregman": 1.44, "massa": 22.46, "kicillof": 11.23, "kirchner": 11.23}},
+      national2021: {"milei": 29.99, "macri": 23.83, "schiaretti": 6.78, "bregman": 2.7, "massa": 18.34, "kicillof": 9.17, "kirchner": 9.17},
+      // result views show the 2023 candidates as they ran: the inherited
+      // 2027 candidates fold back into them
+      resultMerge: { kicillof: 'massa', kirchner: 'massa', macri: 'bullrich' },
+      // the 2023 runoff baselines per district (Milei vs Massa); the app
+      // looks up runoff2026/2023/2022 and remaps when the pairing differs
+      runoff2023: {"buenos_aires": {"milei": 49.24, "massa": 50.76}, "buenos_aires_city": {"milei": 57.25, "massa": 42.75}, "catamarca": {"milei": 52.81, "massa": 47.19}, "chaco": {"milei": 49.81, "massa": 50.19}, "chubut": {"milei": 59.07, "massa": 40.93}, "cordoba": {"milei": 74.05, "massa": 25.95}, "corrientes": {"milei": 53.16, "massa": 46.84}, "entre_rios": {"milei": 61.47, "massa": 38.53}, "formosa": {"milei": 43.27, "massa": 56.73}, "jujuy": {"milei": 58.14, "massa": 41.86}, "la_pampa": {"milei": 57.28, "massa": 42.72}, "la_rioja": {"milei": 53.73, "massa": 46.27}, "mendoza": {"milei": 71.17, "massa": 28.83}, "misiones": {"milei": 56.72, "massa": 43.28}, "neuquen": {"milei": 60.43, "massa": 39.57}, "rio_negro": {"milei": 54.22, "massa": 45.78}, "salta": {"milei": 57.67, "massa": 42.33}, "san_juan": {"milei": 60.71, "massa": 39.29}, "san_luis": {"milei": 67.98, "massa": 32.02}, "santa_cruz": {"milei": 58.0, "massa": 42.0}, "santa_fe": {"milei": 62.83, "massa": 37.17}, "santiago_del_estero": {"milei": 31.49, "massa": 68.51}, "tierra_del_fuego": {"milei": 53.32, "massa": 46.68}, "tucuman": {"milei": 51.98, "massa": 48.02}},
+      nationalRunoff: {"milei": 55.69, "massa": 44.31},
+    },
+    pollsterMAE: {},
+    maeKey: 'AR2027',
+    logos: {'milei': 'img/ar/LLA.svg', 'kicillof': 'img/ar/PJ.svg', 'kirchner': 'img/ar/PJ.svg', 'massa': 'img/ar/FR.svg', 'moreno': 'img/ar/PYV.svg', 'grabois': 'img/ar/PG.svg', 'macri': 'img/ar/PRO.svg', 'schiaretti': 'img/ar/PU.svg', 'bregman': 'img/ar/FITU.svg', 'villarruel': 'img/ar/PD.svg'},
+  },
+
   bgpres: {
     name: 'Bulgaria (presidential)',
     unitLabel: { en: 'provinces', tr: 'vilayet' },

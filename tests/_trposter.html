@@ -1,0 +1,8 @@
+<!doctype html>
+<html><body>
+<script>
+localStorage.setItem('600_lang', 'tr');
+const c = new URLSearchParams(location.search).get('c') || 'serbia';
+location.replace('/tests/poster_smoke.html?c=' + c);
+</script>
+</body></html>

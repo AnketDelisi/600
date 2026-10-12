@@ -22998,7 +22998,30 @@ saxony_anhalt: {
               ]
       },
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "40dB/Prisa": { ES2023: 1.67, overall: 1.67 },
+      "CIS": { ES2023: 1.81, overall: 1.81 },
+      "CIS (SocioMétrica)": { ES2023: 2.25, overall: 2.25 },
+      "Celeste-Tel/Onda Cero": { ES2023: 2.09, overall: 2.09 },
+      "Cluster17/El Grand Continent": { ES2023: 1.9, overall: 1.9 },
+      "DYM/Henneo": { ES2023: 1.58, overall: 1.58 },
+      "Data10/Okdiario": { ES2023: 2.12, overall: 2.12 },
+      "EM-Analytics/Electomanía": { ES2023: 1.41, overall: 1.41 },
+      "GAD3/ABC": { ES2023: 2.13, overall: 2.13 },
+      "GESOP/Prensa Ibérica": { ES2023: 2.27, overall: 2.27 },
+      "GESOP/The Adelaide Review": { ES2023: 2.02, overall: 2.02 },
+      "Hamalgama Métrica/Vozpópuli": { ES2023: 2.46, overall: 2.46 },
+      "IMOP/El Confidencial": { ES2023: 2.22, overall: 2.22 },
+      "InvyMark/laSexta": { ES2023: 2.75, overall: 2.75 },
+      "KeyData/Público": { ES2023: 1.85, overall: 1.85 },
+      "NC Report/La Razón": { ES2023: 2.26, overall: 2.26 },
+      "Sigma Dos/El Mundo": { ES2023: 1.67, overall: 1.67 },
+      "Simple Lógica/elDiario.es": { ES2023: 1.98, overall: 1.98 },
+      "SocioMétrica/El Español": { ES2023: 1.84, overall: 1.84 },
+      "Sondaxe/La Voz de Galicia": { ES2023: 1.6, overall: 1.6 },
+      "Target Point/El Debate": { ES2023: 1.94, overall: 1.94 },
+      "YouGov": { ES2023: 1.9, overall: 1.9 }
+    },
     maeKey: 'ES2023',
     logos: {
       pp: 'img/es/PP.svg', psoe: 'img/es/PSOE.svg', vox: 'img/es/VOX.svg',
@@ -25666,7 +25689,10 @@ saxony_anhalt: {
       prGebiete: {"hokkaido": {"ldp": 37.0, "cra": 24.6, "dpfp": 8.9}, "tohoku": {"ldp": 41.2, "cra": 21.2, "dpfp": 9.9, "sansei": 7.1, "mirai": 6.0}, "northern_kanto": {"ldp": 37.0, "cra": 19.3, "dpfp": 10.3, "sansei": 8.3, "mirai": 7.7, "ishin": 5.3, "jcp": 4.2}, "southern_kanto": {"ldp": 35.6, "cra": 19.2, "dpfp": 10.6, "mirai": 9.2, "sansei": 7.2, "ishin": 6.2, "jcp": 4.2, "reiwa": 2.7}, "tokyo": {"ldp": 33.1, "cra": 16.5, "mirai": 13.1, "dpfp": 11.0, "sansei": 6.3, "jcp": 6.0, "ishin": 5.7}, "hokuriku_shinetsu": {"ldp": 42.1, "cra": 19.8, "dpfp": 9.8, "sansei": 8.7, "ishin": 7.0}, "tokai": {"ldp": 37.7, "cra": 17.2, "dpfp": 12.0, "sansei": 7.6, "mirai": 6.9, "ishin": 5.7}, "kinki": {"ldp": 30.4, "ishin": 23.2, "cra": 14.3, "dpfp": 7.0, "sansei": 6.8, "mirai": 5.9, "jcp": 5.1}, "chugoku": {"ldp": 43.2, "cra": 20.6, "dpfp": 9.1, "sansei": 8.4, "ishin": 7.1}, "shikoku": {"ldp": 42.0, "cra": 18.2, "dpfp": 13.0}, "kyushu": {"ldp": 39.9, "cra": 18.7, "sansei": 8.2, "dpfp": 8.0, "mirai": 5.9, "ishin": 5.9}},
       prNational2021: {"ldp": 36.72, "cra": 18.23, "dpfp": 9.73, "ishin": 8.63, "sansei": 7.44, "mirai": 6.66, "jcp": 4.4, "reiwa": 2.92},
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "Kyodo News": { JP2030: 2.9, overall: 2.9 },
+      "Senkyo.com/JX": { JP2030: 1.31, overall: 1.31 }
+    },
     maeKey: 'JP2030',
     logos: {
       ldp: 'img/jp/LDP.svg', cra: 'img/jp/DRP.svg', ishin: 'img/jp/ISHIN.svg',
@@ -25739,7 +25765,28 @@ saxony_anhalt: {
       gebiete: {"busan_1": {"ppp": 54.82, "dpk": 43.54}, "busan_2": {"ppp": 57.95, "dpk": 42.04}, "busan_3": {"ppp": 52.78, "dpk": 47.21}, "busan_4": {"ppp": 53.71, "dpk": 44.13}, "busan_5": {"ppp": 54.26, "dpk": 43.21}, "busan_6": {"ppp": 54.4, "dpk": 45.59}, "busan_7": {"dpk": 52.31, "ppp": 46.67}, "busan_8": {"ppp": 52.56, "dpk": 47.43}, "busan_9": {"ppp": 53.7, "dpk": 44.61}, "busan_10": {"ppp": 58.33, "dpk": 41.66}, "busan_11": {"ppp": 50.39, "dpk": 49.6}, "busan_12": {"ppp": 55.62, "dpk": 42.42}, "busan_13": {"ppp": 56.62, "dpk": 43.37}, "busan_14": {"ppp": 55.58, "dpk": 44.41}, "busan_15": {"ppp": 54.41, "pp": 45.58}, "busan_16": {"ppp": 50.33, "dpk": 40.47}, "busan_17": {"ppp": 52.63, "dpk": 47.36}, "busan_18": {"ppp": 52.33, "dpk": 47.66}, "daegu_1": {"ppp": 57.91, "dpk": 26.23}, "daegu_2": {"ppp": 74.48, "dpk": 25.51}, "daegu_3": {"ppp": 76.13, "pp": 19.47}, "daegu_4": {"ppp": 72.02}, "daegu_5": {"ppp": 71.37, "dpk": 27.27}, "daegu_6": {"ppp": 67.86, "dpk": 25.47}, "daegu_7": {"ppp": 65.63, "dpk": 30.33}, "daegu_8": {"ppp": 72.84}, "daegu_9": {"ppp": 71.39, "dpk": 28.6}, "daegu_10": {"ppp": 72.47, "dpk": 27.52}, "daegu_11": {"ppp": 67.08}, "daegu_12": {"ppp": 75.31, "dpk": 24.68}, "daejeon_1": {"dpk": 53.32, "ppp": 45.01}, "daejeon_2": {"dpk": 52.08, "ppp": 47.91}, "daejeon_3": {"dpk": 52.83, "ppp": 41.43}, "daejeon_4": {"dpk": 54.58, "ppp": 42.87}, "daejeon_5": {"dpk": 56.77, "ppp": 40.84}, "daejeon_6": {"dpk": 59.76, "ppp": 37.19}, "daejeon_7": {"dpk": 50.92, "ppp": 43.05}, "gangwon_1": {"dpk": 53.44, "ppp": 44.52}, "gangwon_2": {"ppp": 53.93, "dpk": 41.46}, "gangwon_3": {"ppp": 50.71, "dpk": 49.28}, "gangwon_4": {"dpk": 54.08, "ppp": 45.91}, "gangwon_5": {"ppp": 54.24, "dpk": 43.34}, "gangwon_6": {"ppp": 61.22, "dpk": 36.48}, "gangwon_7": {"ppp": 55.84, "dpk": 44.15}, "gangwon_8": {"ppp": 57.71, "dpk": 42.28}, "gwangju_1": {"dpk": 88.69, "ppp": 11.3}, "gwangju_2": {"dpk": 70.16}, "gwangju_3": {"dpk": 68.42}, "gwangju_4": {"dpk": 71.39}, "gwangju_5": {"dpk": 83.45, "ppp": 8.52}, "gwangju_6": {"dpk": 72.11, "pp": 16.34}, "gwangju_7": {"dpk": 81.7, "ppp": 6.96}, "gwangju_8": {"dpk": 76.09, "nfp": 13.84}, "gyeonggi_1": {"dpk": 55.54, "ppp": 42.16}, "gyeonggi_2": {"dpk": 61.73, "ppp": 38.26}, "gyeonggi_3": {"dpk": 55.41, "ppp": 44.58}, "gyeonggi_4": {"dpk": 50.86, "ppp": 49.13}, "gyeonggi_5": {"dpk": 59.0, "ppp": 40.99}, "gyeonggi_6": {"dpk": 58.41, "ppp": 41.58}, "gyeonggi_7": {"dpk": 60.11, "ppp": 39.88}, "gyeonggi_8": {"ppp": 53.27, "dpk": 46.72}, "gyeonggi_9": {"ppp": 51.13, "dpk": 48.86}, "gyeonggi_10": {"dpk": 54.89, "ppp": 43.44}, "gyeonggi_11": {"dpk": 55.27, "ppp": 44.72}, "gyeonggi_12": {"dpk": 56.85, "ppp": 43.14}, "gyeonggi_13": {"dpk": 57.33, "ppp": 42.66}, "gyeonggi_14": {"dpk": 53.86, "ppp": 46.13}, "gyeonggi_15": {"dpk": 61.13, "ppp": 38.86}, "gyeonggi_16": {"dpk": 55.9, "ppp": 37.93}, "gyeonggi_17": {"dpk": 54.44, "ppp": 38.04}, "gyeonggi_18": {"dpk": 58.73, "ppp": 41.26}, "gyeonggi_19": {"dpk": 59.56, "ppp": 40.43}, "gyeonggi_20": {"dpk": 57.41, "ppp": 42.58}, "gyeonggi_21": {"dpk": 54.23, "ppp": 45.76}, "gyeonggi_22": {"dpk": 52.76, "ppp": 43.48}, "gyeonggi_23": {"dpk": 60.26, "ppp": 39.73}, "gyeonggi_24": {"ppp": 53.7, "dpk": 46.29}, "gyeonggi_25": {"dpk": 55.62, "ppp": 44.37}, "gyeonggi_26": {"dpk": 56.21, "ppp": 37.98}, "gyeonggi_27": {"dpk": 54.18, "ppp": 43.09}, "gyeonggi_28": {"dpk": 45.3, "ppp": 35.34}, "gyeonggi_29": {"dpk": 61.24, "ppp": 37.33}, "gyeonggi_30": {"dpk": 54.06, "ppp": 45.93}, "gyeonggi_31": {"dpk": 54.89, "ppp": 45.1}, "gyeonggi_32": {"dpk": 54.37, "ppp": 45.62}, "gyeonggi_33": {"dpk": 53.97, "ppp": 43.32}, "gyeonggi_34": {"dpk": 51.08, "ppp": 35.73}, "gyeonggi_35": {"dpk": 56.94, "ppp": 40.81}, "gyeonggi_36": {"dpk": 54.58, "ppp": 42.24}, "gyeonggi_37": {"dpk": 59.01, "ppp": 40.98}, "gyeonggi_38": {"dpk": 60.81, "ppp": 38.27}, "gyeonggi_39": {"dpk": 56.53, "ppp": 39.56}, "gyeonggi_40": {"dpk": 56.92, "ppp": 43.07}, "gyeonggi_41": {"dpk": 50.58, "ppp": 49.41}, "gyeonggi_42": {"dpk": 51.65, "ppp": 43.7}, "gyeonggi_43": {"dpk": 50.22, "ppp": 43.83}, "gyeonggi_44": {"dpk": 55.7, "ppp": 41.69}, "gyeonggi_45": {"dpk": 50.26, "ppp": 49.73}, "gyeonggi_46": {"dpk": 51.06, "ppp": 46.88}, "gyeonggi_47": {"dpk": 63.43, "ppp": 36.56}, "gyeonggi_48": {"dpk": 54.83, "ppp": 45.16}, "gyeonggi_49": {"ppp": 51.33, "dpk": 48.66}, "gyeonggi_50": {"dpk": 50.71, "ppp": 47.36}, "gyeonggi_51": {"dpk": 54.27, "ppp": 45.72}, "gyeonggi_52": {"dpk": 55.52, "ppp": 44.47}, "gyeonggi_53": {"dpk": 55.88, "ppp": 44.11}, "gyeonggi_54": {"rp": 42.41, "dpk": 39.73}, "gyeonggi_55": {"dpk": 61.53, "ppp": 37.14}, "gyeonggi_56": {"dpk": 55.72, "ppp": 34.09}, "gyeonggi_57": {"dpk": 56.33, "ppp": 43.66}, "gyeonggi_58": {"dpk": 55.06, "ppp": 44.93}, "gyeonggi_59": {"ppp": 50.47, "dpk": 48.36}, "gyeonggi_60": {"ppp": 53.58, "dpk": 46.41}, "incheon_1": {"ppp": 54.99, "dpk": 43.89}, "incheon_2": {"dpk": 53.73, "ppp": 46.26}, "incheon_3": {"ppp": 50.44, "dpk": 49.55}, "incheon_4": {"dpk": 52.44, "ppp": 46.08}, "incheon_5": {"dpk": 51.5, "ppp": 48.49}, "incheon_6": {"dpk": 56.96, "ppp": 40.26}, "incheon_7": {"dpk": 54.48, "ppp": 45.51}, "incheon_8": {"dpk": 55.19, "ppp": 44.8}, "incheon_9": {"dpk": 51.36, "ppp": 38.75}, "incheon_10": {"dpk": 58.29, "ppp": 41.7}, "incheon_11": {"dpk": 54.12, "ppp": 45.45}, "incheon_12": {"dpk": 57.59, "ppp": 40.37}, "incheon_13": {"dpk": 56.53, "ppp": 43.46}, "incheon_14": {"dpk": 57.52, "ppp": 39.55}, "jeju_1": {"dpk": 62.88, "ppp": 37.11}, "jeju_2": {"dpk": 64.64, "ppp": 31.96}, "jeju_3": {"dpk": 54.0, "ppp": 45.99}, "north_chungcheong_1": {"dpk": 51.45, "ppp": 46.18}, "north_chungcheong_2": {"dpk": 52.46, "ppp": 47.53}, "north_chungcheong_3": {"dpk": 51.76, "ppp": 44.58}, "north_chungcheong_4": {"dpk": 53.28, "ppp": 46.71}, "north_chungcheong_5": {"ppp": 51.11, "dpk": 48.88}, "north_chungcheong_6": {"ppp": 49.43, "dpk": 41.44}, "north_chungcheong_7": {"ppp": 52.93, "dpk": 47.06}, "north_chungcheong_8": {"dpk": 53.95, "ppp": 46.04}, "north_gyeongsang_1": {"ppp": 62.33, "dpk": 28.9}, "north_gyeongsang_2": {"ppp": 70.03, "dpk": 29.96}, "north_gyeongsang_3": {"ppp": 65.77, "dpk": 24.26}, "north_gyeongsang_4": {"ppp": 65.78, "dpk": 23.22}, "north_gyeongsang_5": {"ppp": 67.47, "dpk": 28.93}, "north_gyeongsang_6": {"ppp": 72.58, "dpk": 27.41}, "north_gyeongsang_7": {"ppp": 65.29, "dpk": 33.36}, "north_gyeongsang_8": {"ppp": 73.71, "dpk": 26.28}, "north_gyeongsang_9": {"ppp": 62.88, "dpk": 19.53}, "north_gyeongsang_10": {"ppp": 77.64, "dpk": 18.83}, "north_gyeongsang_11": {"ppp": 43.43}, "north_gyeongsang_12": {"ppp": 83.33}, "north_gyeongsang_13": {"ppp": 76.23, "dpk": 21.49}, "north_jeolla_1": {"dpk": 77.59, "ppp": 12.01}, "north_jeolla_2": {"dpk": 66.38, "ppp": 20.63}, "north_jeolla_3": {"dpk": 82.08, "ppp": 12.29}, "north_jeolla_4": {"dpk": 86.73, "ppp": 13.26}, "north_jeolla_5": {"dpk": 86.63, "ppp": 9.57}, "north_jeolla_6": {"dpk": 77.11, "ppp": 10.12}, "north_jeolla_7": {"dpk": 87.03, "ppp": 11.09}, "north_jeolla_8": {"dpk": 86.86, "ppp": 10.47}, "north_jeolla_9": {"dpk": 83.83, "ppp": 11.68}, "north_jeolla_10": {"dpk": 84.23, "ppp": 15.76}, "sejong_1": {"nfp": 56.93, "ppp": 43.06}, "sejong_2": {"dpk": 56.19, "ppp": 37.54}, "seoul_1": {"dpk": 50.92, "ppp": 44.13}, "seoul_2": {"dpk": 52.61, "ppp": 47.38}, "seoul_3": {"dpk": 50.81, "ppp": 48.53}, "seoul_4": {"ppp": 51.77, "dpk": 47.02}, "seoul_5": {"dpk": 52.53, "ppp": 47.46}, "seoul_6": {"dpk": 51.47, "ppp": 47.6}, "seoul_7": {"dpk": 52.89, "ppp": 44.46}, "seoul_8": {"dpk": 54.62, "ppp": 45.37}, "seoul_9": {"dpk": 61.92, "ppp": 38.07}, "seoul_10": {"dpk": 57.72, "ppp": 42.27}, "seoul_11": {"dpk": 55.68, "ppp": 39.14}, "seoul_12": {"dpk": 56.82, "ppp": 43.17}, "seoul_13": {"dpk": 57.23, "ppp": 42.76}, "seoul_14": {"dpk": 52.94, "ppp": 41.51}, "seoul_15": {"ppp": 49.05, "dpk": 47.89}, "seoul_16": {"dpk": 52.83, "ppp": 47.16}, "seoul_17": {"dpk": 58.99, "ppp": 41.0}, "seoul_18": {"dpk": 58.51, "ppp": 39.26}, "seoul_19": {"dpk": 60.78, "ppp": 39.21}, "seoul_20": {"dpk": 56.95, "ppp": 39.6}, "seoul_21": {"dpk": 50.75, "ppp": 43.49}, "seoul_22": {"dpk": 57.62, "ppp": 42.37}, "seoul_23": {"ppp": 48.3, "dpk": 47.7}, "seoul_24": {"dpk": 52.44, "ppp": 38.77}, "seoul_25": {"dpk": 49.78, "ppp": 48.16}, "seoul_26": {"dpk": 57.47, "ppp": 42.52}, "seoul_27": {"dpk": 58.55, "ppp": 38.67}, "seoul_28": {"dpk": 54.84, "ppp": 45.15}, "seoul_29": {"dpk": 59.13, "ppp": 40.86}, "seoul_30": {"dpk": 55.74, "ppp": 44.25}, "seoul_31": {"dpk": 59.86, "ppp": 40.13}, "seoul_32": {"dpk": 59.03, "ppp": 40.96}, "seoul_33": {"dpk": 54.53, "ppp": 41.67}, "seoul_34": {"dpk": 50.18, "ppp": 49.03}, "seoul_35": {"dpk": 50.49, "ppp": 45.01}, "seoul_36": {"ppp": 54.01, "dpk": 45.98}, "seoul_37": {"dpk": 57.08, "ppp": 42.91}, "seoul_38": {"dpk": 57.97, "ppp": 38.83}, "seoul_39": {"ppp": 68.44, "dpk": 31.55}, "seoul_40": {"ppp": 57.49, "dpk": 42.5}, "seoul_41": {"ppp": 64.18, "dpk": 35.81}, "seoul_42": {"ppp": 58.57, "dpk": 41.42}, "seoul_43": {"ppp": 66.28, "dpk": 32.75}, "seoul_44": {"ppp": 52.24, "dpk": 45.13}, "seoul_45": {"ppp": 57.2, "dpk": 42.79}, "seoul_46": {"dpk": 51.04, "ppp": 48.95}, "seoul_47": {"dpk": 50.12, "ppp": 47.88}, "seoul_48": {"dpk": 53.55, "ppp": 44.68}, "south_chungcheong_1": {"dpk": 50.58, "ppp": 47.15}, "south_chungcheong_2": {"dpk": 55.12, "ppp": 41.79}, "south_chungcheong_3": {"dpk": 55.2, "ppp": 41.61}, "south_chungcheong_4": {"dpk": 50.66, "ppp": 48.42}, "south_chungcheong_5": {"ppp": 51.5, "dpk": 47.4}, "south_chungcheong_6": {"dpk": 53.79, "ppp": 44.09}, "south_chungcheong_7": {"dpk": 60.35, "ppp": 39.64}, "south_chungcheong_8": {"ppp": 51.55, "dpk": 48.44}, "south_chungcheong_9": {"dpk": 50.84, "ppp": 47.15}, "south_chungcheong_10": {"dpk": 51.78, "ppp": 48.21}, "south_chungcheong_11": {"ppp": 54.84, "dpk": 45.15}, "south_gyeongsang_1": {"ppp": 57.3, "dpk": 42.69}, "south_gyeongsang_2": {"dpk": 46.38, "ppp": 45.7}, "south_gyeongsang_3": {"ppp": 64.04, "dpk": 35.95}, "south_gyeongsang_4": {"ppp": 59.77, "dpk": 40.22}, "south_gyeongsang_5": {"ppp": 50.24, "dpk": 49.75}, "south_gyeongsang_6": {"ppp": 58.3, "dpk": 41.69}, "south_gyeongsang_7": {"ppp": 56.13, "dpk": 30.21}, "south_gyeongsang_8": {"ppp": 61.45, "dpk": 38.54}, "south_gyeongsang_9": {"ppp": 55.58, "dpk": 32.33}, "south_gyeongsang_10": {"dpk": 52.47, "ppp": 47.52}, "south_gyeongsang_11": {"dpk": 56.19, "ppp": 43.8}, "south_gyeongsang_12": {"ppp": 66.85, "dpk": 33.14}, "south_gyeongsang_13": {"ppp": 51.23, "dpk": 46.67}, "south_gyeongsang_14": {"ppp": 53.61, "dpk": 44.78}, "south_gyeongsang_15": {"ppp": 51.05, "dpk": 48.94}, "south_gyeongsang_16": {"ppp": 70.99, "dpk": 29.0}, "south_jeolla_1": {"dpk": 71.43}, "south_jeolla_2": {"dpk": 88.89, "ppp": 11.1}, "south_jeolla_3": {"dpk": 68.01}, "south_jeolla_4": {"dpk": 64.34, "pp": 18.04}, "south_jeolla_5": {"dpk": 70.09, "ppp": 23.66}, "south_jeolla_6": {"dpk": 71.06, "pp": 19.75}, "south_jeolla_7": {"dpk": 56.46}, "south_jeolla_8": {"dpk": 90.69, "ppp": 9.3}, "south_jeolla_9": {"dpk": 92.35, "ppp": 7.64}, "south_jeolla_10": {"dpk": 69.17}, "ulsan_1": {"ppp": 56.44, "dpk": 43.55}, "ulsan_2": {"ppp": 53.86, "dpk": 42.69}, "ulsan_3": {"ppp": 56.22, "dpk": 43.77}, "ulsan_4": {"dpk": 45.88, "ppp": 45.2}, "ulsan_5": {"pp": 55.12, "ppp": 42.88}, "ulsan_6": {"ppp": 53.48, "dpk": 46.51}},
       national2021: {"dpk": 26.7, "ppp": 36.67, "rkp": 24.25, "rp": 3.62, "pp": 0.0, "nfp": 1.71, "bip": 0.0, "sdp": 0.0},
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "Embrain Public / YTN": { KR2028: 5.65, overall: 5.65 },
+      "Embrain Public, KStat Research, Korea Research, Hankook Research": { KR2028: 5.5, overall: 5.5 },
+      "Everyresearch / NewsSpirit": { KR2028: 3.9, overall: 3.9 },
+      "Flower Research": { KR2028: 3.83, overall: 3.83 },
+      "Gallup Korea": { KR2028: 2.44, overall: 2.44 },
+      "Gallup Korea / Seoul Economic Daily": { KR2028: 4.61, overall: 4.61 },
+      "Gongjung / Dailian": { KR2028: 3.68, overall: 3.68 },
+      "Gongjung / Fntoday, The Public": { KR2028: 3.36, overall: 3.36 },
+      "Hankook Research / KBS": { KR2028: 4.57, overall: 4.57 },
+      "Jowon C&I / Straight News": { KR2028: 4.14, overall: 4.14 },
+      "JowonC&I / Straight News": { KR2028: 3.26, overall: 3.26 },
+      "Korea Research / MBC": { KR2028: 4.46, overall: 4.46 },
+      "Media Research / Newspim": { KR2028: 2.97, overall: 2.97 },
+      "Media Tomato / News Tomato": { KR2028: 3.56, overall: 3.56 },
+      "Meta Voice / JTBC": { KR2028: 5.73, overall: 5.73 },
+      "Metrix / Yonhap News": { KR2028: 6.07, overall: 6.07 },
+      "Realmeter / EKN": { KR2028: 4.52, overall: 4.52 },
+      "Research view": { KR2028: 4.24, overall: 4.24 },
+      "Rnsearch": { KR2028: 2.51, overall: 2.51 },
+      "Rnsearch / Asia Today": { KR2028: 2.57, overall: 2.57 }
+    },
     maeKey: 'KR2028',
     logos: {
       dpk: 'img/kr/DPK.svg', ppp: 'img/kr/PPP.svg', rkp: 'img/kr/RKP.svg',
@@ -25817,7 +25864,12 @@ saxony_anhalt: {
       gebiete: {"i": {"hdz": 27.65, "sdp": 24.37, "dp": 9.29, "most": 7.34, "mozemo": 19.87, "ourcroatia": 0.9, "fokus": 3.4}, "ii": {"hdz": 35.3, "sdp": 24.8, "dp": 11.1, "most": 9.1, "mozemo": 8.6, "ourcroatia": 1.2, "fokus": 2.8}, "iii": {"hdz": 27.6, "sdp": 36.8, "dp": 5.1, "most": 3.8, "mozemo": 6.2, "nps": 12.2, "fokus": 0.9}, "iv": {"hdz": 41.8, "sdp": 25.2, "dp": 13.1, "most": 6.0, "mozemo": 5.5, "ourcroatia": 1.0, "fokus": 1.0}, "v": {"hdz": 42.8, "sdp": 19.6, "dp": 17.4, "most": 8.5, "mozemo": 3.6, "ourcroatia": 0.4, "fokus": 1.0}, "vi": {"hdz": 24.8, "sdp": 23.8, "dp": 8.7, "most": 9.5, "mozemo": 18.1, "ourcroatia": 0.6, "fokus": 7.8}, "vii": {"hdz": 41.3, "sdp": 25.4, "dp": 8.6, "most": 6.6, "mozemo": 6.9, "ourcroatia": 1.0, "fokus": 1.6}, "viii": {"hdz": 21.3, "sdp": 33.4, "dp": 4.0, "most": 5.7, "mozemo": 10.2, "ids": 15.9, "fokus": 1.9}, "ix": {"hdz": 39.7, "sdp": 19.4, "dp": 10.6, "most": 12.1, "mozemo": 4.4, "ourcroatia": 0.9, "fokus": 1.0}, "x": {"hdz": 37.0, "sdp": 25.5, "dp": 10.8, "most": 11.5, "mozemo": 5.3, "ourcroatia": 0.5, "fokus": 0.5}, "xi": {"hdz": 79.5, "most": 6.6, "mozemo": 3.0, "fokus": 0.5}},
       national2021: {"hdz": 34.4, "sdp": 25.4, "dp": 9.6, "most": 8.0, "mozemo": 9.1, "nps": 1.22, "fokus": 2.3, "ids": 2.25},
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "2x1 komunikacije": { HR2028: 3.47, overall: 3.47 },
+      "Ipsos": { HR2028: 3.11, overall: 3.11 },
+      "Promocija Plus": { HR2028: 3.44, overall: 3.44 },
+      "Promocija plus": { HR2028: 2.82, overall: 2.82 }
+    },
     maeKey: 'HR2028',
     logos: {
       hdz: 'img/hr/HDZ.svg', sdp: 'img/hr/SDP.svg', mozemo: 'img/hr/MOZEMO.svg',
@@ -25893,7 +25945,11 @@ saxony_anhalt: {
           prevNational: {"d": 24.38, "b": 17.27, "v": 12.57, "s": 9.93, "f": 8.85, "p": 8.63, "c": 8.33, "m": 5.45},
           baseBlend: 0.75,
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "Gallup": { IS2028: 2.24, overall: 2.24 },
+      "Maskína": { IS2028: 2.25, overall: 2.25 },
+      "Prósent": { IS2028: 2.51, overall: 2.51 }
+    },
     maeKey: 'IS2028',
     logos: {
       s: 'img/is/S.svg', d: 'img/is/D.svg', c: 'img/is/C.svg',
@@ -25966,7 +26022,13 @@ saxony_anhalt: {
       gebiete: {"celje": {"gs": 26.36, "sds": 31.6, "nsf": 10.39, "sd": 7.62, "dem": 6.81, "l": 4.11, "res": 5.14}, "kranj": {"gs": 26.1, "sds": 27.71, "nsf": 11.18, "sd": 5.35, "dem": 6.64, "l": 5.87, "res": 7.04}, "ljubljana_bezigrad": {"gs": 29.18, "sds": 25.93, "nsf": 8.65, "sd": 5.87, "dem": 6.73, "l": 6.97, "res": 5.28}, "ljubljana_center": {"gs": 29.12, "sds": 23.64, "nsf": 8.74, "sd": 6.21, "dem": 7.3, "l": 9.53, "res": 4.66}, "maribor": {"gs": 28.33, "sds": 30.83, "nsf": 7.1, "sd": 6.8, "dem": 7.03, "l": 4.65, "res": 5.87}, "novo_mesto": {"gs": 27.74, "sds": 29.42, "nsf": 10.27, "sd": 8.15, "dem": 6.13, "l": 3.95, "res": 4.75}, "postojna": {"gs": 34.74, "sds": 22.55, "nsf": 9.13, "sd": 7.39, "dem": 5.64, "l": 5.97, "res": 4.92}, "ptuj": {"gs": 27.8, "sds": 32.71, "nsf": 8.64, "sd": 6.36, "dem": 7.18, "l": 3.09, "res": 6.61}},
       national2021: {"gs": 28.66, "sds": 27.88, "nsf": 9.26, "sd": 6.71, "dem": 6.69, "l": 5.69, "res": 5.49, "pir": 2.36, "sns": 2.24, "mi": 0.48},
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "IJEK": { SI2030: 2.95, overall: 2.95 },
+      "Mediana": { SI2030: 1.67, overall: 1.67 },
+      "Ninamedia": { SI2030: 1.55, overall: 1.55 },
+      "Parsifal": { SI2030: 2.36, overall: 2.36 },
+      "Valicon": { SI2030: 2.62, overall: 2.62 }
+    },
     maeKey: 'SI2030',
     logos: {
       gs: 'img/si/GS.svg', sds: 'img/si/SDS.svg', nsf: 'img/si/NSF.svg',
@@ -27237,7 +27299,18 @@ saxony_anhalt: {
               "westvancouver-seatosky": "rest"
       },
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "Abacus Data": { BC2024: 5.08, overall: 5.08 },
+      "Angus Reid": { BC2024: 4.06, overall: 4.06 },
+      "Counsel Public Affairs": { BC2024: 2.81, overall: 2.81 },
+      "Ipsos": { BC2024: 1.68, overall: 1.68 },
+      "Leger": { BC2024: 1.6, overall: 1.6 },
+      "Liaison Strategies": { BC2024: 4.02, overall: 4.02 },
+      "Mainstreet Research": { BC2024: 2.95, overall: 2.95 },
+      "Pallas Data": { BC2024: 2.73, overall: 2.73 },
+      "Pollara": { BC2024: 3.57, overall: 3.57 },
+      "Research Co.": { BC2024: 1.9, overall: 1.9 }
+    },
     maeKey: 'BC2024',
     logos: {
       bcndp: 'img/bc/BCNDP.svg', cpbc: 'img/bc/CPBC.svg',
@@ -28569,7 +28642,17 @@ saxony_anhalt: {
               }
       },
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "Angus Reid": { QC2022: 3.95, overall: 3.95 },
+      "EKOS": { QC2022: 6.83, overall: 6.83 },
+      "Forum": { QC2022: 3.98, overall: 3.98 },
+      "Innovative Research Group": { QC2022: 8.47, overall: 8.47 },
+      "Leger": { QC2022: 5.9, overall: 5.9 },
+      "Léger": { QC2022: 2.07, overall: 2.07 },
+      "Mainstreet": { QC2022: 2.15, overall: 2.15 },
+      "Research Co.": { QC2022: 2.35, overall: 2.35 },
+      "Synopsis Recherche": { QC2022: 3.44, overall: 3.44 }
+    },
     maeKey: 'QC2022',
     logos: {
       caq: 'img/qc/CAQ.svg', plq: 'img/qc/PLQ.svg', pq: 'img/qc/PQ.svg',
@@ -28835,7 +28918,14 @@ saxony_anhalt: {
       gebiete: {"d1": {"lsdp": 7.21, "tslkd": 17.89, "na": 0.0, "dsvl": 3.47, "ls": 45.91, "lvzs": 4.62, "lp": 6.87, "llrakss": 3.93, "ns": 5.13, "dp": 0.0, "lrp": 0.79, "lzp": 2.01, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d2": {"lsdp": 11.36, "tslkd": 26.41, "na": 0.0, "dsvl": 3.42, "ls": 14.73, "lvzs": 4.05, "lp": 21.07, "llrakss": 8.45, "ns": 4.47, "dp": 0.0, "lrp": 1.1, "lzp": 2.85, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d3": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d4": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d5": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d6": {"lsdp": 12.77, "tslkd": 31.19, "na": 7.96, "dsvl": 10.6, "ls": 6.16, "lvzs": 4.09, "lp": 8.02, "llrakss": 8.86, "ns": 4.88, "dp": 0.0, "lrp": 1.26, "lzp": 2.38, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d7": {"lsdp": 14.87, "tslkd": 22.23, "na": 8.8, "dsvl": 15.81, "ls": 6.22, "lvzs": 4.15, "lp": 6.24, "llrakss": 12.07, "ns": 4.33, "dp": 0.0, "lrp": 2.85, "lzp": 2.42, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d8": {"lsdp": 11.48, "tslkd": 29.03, "na": 6.8, "dsvl": 5.73, "ls": 6.28, "lvzs": 2.97, "lp": 10.13, "llrakss": 7.5, "ns": 13.39, "dp": 3.1, "lrp": 1.25, "lzp": 2.34, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d9": {"lsdp": 8.06, "tslkd": 35.52, "na": 0.0, "dsvl": 19.33, "ls": 3.94, "lvzs": 4.02, "lp": 9.06, "llrakss": 9.57, "ns": 3.92, "dp": 3.37, "lrp": 0.0, "lzp": 1.71, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d10": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d11": {"lsdp": 13.27, "tslkd": 21.61, "na": 8.75, "dsvl": 5.98, "ls": 3.6, "lvzs": 4.32, "lp": 7.92, "llrakss": 19.53, "ns": 0.0, "dp": 0.0, "lrp": 2.55, "lzp": 1.73, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d12": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d13": {"lsdp": 9.11, "tslkd": 23.76, "na": 0.0, "dsvl": 9.91, "ls": 17.59, "lvzs": 5.75, "lp": 13.84, "llrakss": 8.79, "ns": 4.69, "dp": 0.0, "lrp": 1.86, "lzp": 1.59, "tts": 0.98, "cds": 0.0, "lv": 0.0}, "d14": {"lsdp": 8.52, "tslkd": 15.93, "na": 5.8, "dsvl": 6.01, "ls": 6.46, "lvzs": 2.54, "lp": 7.97, "llrakss": 9.71, "ns": 0.0, "dp": 0.0, "lrp": 1.38, "lzp": 12.33, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d15": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d16": {"lsdp": 19.67, "tslkd": 25.03, "na": 17.02, "dsvl": 9.13, "ls": 5.85, "lvzs": 7.19, "lp": 4.8, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 2.09, "lzp": 4.13, "tts": 1.87, "cds": 0.0, "lv": 0.0}, "d17": {"lsdp": 19.3, "tslkd": 30.43, "na": 0.0, "dsvl": 0.0, "ls": 8.02, "lvzs": 13.3, "lp": 8.92, "llrakss": 0.0, "ns": 5.49, "dp": 2.92, "lrp": 4.71, "lzp": 4.39, "tts": 2.51, "cds": 0.0, "lv": 0.0}, "d18": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d19": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d20": {"lsdp": 9.86, "tslkd": 31.02, "na": 11.49, "dsvl": 9.95, "ls": 11.75, "lvzs": 6.5, "lp": 4.07, "llrakss": 0.0, "ns": 5.12, "dp": 0.0, "lrp": 1.72, "lzp": 3.34, "tts": 2.45, "cds": 0.0, "lv": 0.0}, "d21": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d22": {"lsdp": 18.84, "tslkd": 19.32, "na": 34.23, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d23": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d24": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d25": {"lsdp": 14.96, "tslkd": 10.64, "na": 15.9, "dsvl": 0.0, "ls": 14.42, "lvzs": 25.57, "lp": 0.0, "llrakss": 14.65, "ns": 0.0, "dp": 0.0, "lrp": 2.07, "lzp": 0.0, "tts": 1.79, "cds": 0.0, "lv": 0.0}, "d26": {"lsdp": 18.84, "tslkd": 19.32, "na": 10.82, "dsvl": 30.99, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d27": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d28": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d29": {"lsdp": 17.28, "tslkd": 20.82, "na": 14.71, "dsvl": 10.07, "ls": 5.84, "lvzs": 17.17, "lp": 4.58, "llrakss": 0.0, "ns": 3.49, "dp": 2.24, "lrp": 0.0, "lzp": 2.57, "tts": 1.23, "cds": 0.0, "lv": 0.0}, "d30": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d31": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d32": {"lsdp": 16.16, "tslkd": 12.89, "na": 34.23, "dsvl": 27.59, "ls": 0.0, "lvzs": 3.58, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 2.0, "lzp": 0.0, "tts": 1.49, "cds": 0.0, "lv": 0.0}, "d33": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d34": {"lsdp": 18.84, "tslkd": 19.32, "na": 34.23, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d35": {"lsdp": 18.84, "tslkd": 19.32, "na": 34.23, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d36": {"lsdp": 18.65, "tslkd": 23.84, "na": 20.56, "dsvl": 0.0, "ls": 11.88, "lvzs": 11.45, "lp": 5.79, "llrakss": 0.0, "ns": 0.0, "dp": 2.84, "lrp": 0.0, "lzp": 4.99, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d37": {"lsdp": 20.59, "tslkd": 9.32, "na": 13.01, "dsvl": 14.77, "ls": 0.0, "lvzs": 7.98, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 15.24, "lzp": 2.15, "tts": 2.49, "cds": 0.0, "lv": 0.0}, "d38": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d39": {"lsdp": 30.16, "tslkd": 8.85, "na": 11.11, "dsvl": 4.25, "ls": 3.64, "lvzs": 39.95, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 2.05, "lzp": 0.0, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d40": {"lsdp": 18.84, "tslkd": 19.32, "na": 10.82, "dsvl": 30.99, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d41": {"lsdp": 15.62, "tslkd": 13.47, "na": 47.83, "dsvl": 0.0, "ls": 4.33, "lvzs": 6.88, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 1.52, "lzp": 0.0, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d42": {"lsdp": 39.74, "tslkd": 14.76, "na": 14.35, "dsvl": 0.0, "ls": 0.0, "lvzs": 16.42, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 9.38, "lrp": 5.35, "lzp": 0.0, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d43": {"lsdp": 18.84, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d44": {"lsdp": 20.89, "tslkd": 18.55, "na": 13.98, "dsvl": 8.65, "ls": 10.52, "lvzs": 9.11, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 2.85, "lrp": 2.44, "lzp": 0.0, "tts": 9.71, "cds": 0.0, "lv": 0.0}, "d45": {"lsdp": 16.68, "tslkd": 16.79, "na": 17.37, "dsvl": 12.82, "ls": 7.85, "lvzs": 22.5, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 3.42, "lzp": 0.0, "tts": 2.58, "cds": 0.0, "lv": 0.0}, "d46": {"lsdp": 41.04, "tslkd": 9.37, "na": 16.83, "dsvl": 4.91, "ls": 8.59, "lvzs": 16.54, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 2.73, "lzp": 0.0, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d47": {"lsdp": 37.09, "tslkd": 24.51, "na": 12.19, "dsvl": 8.08, "ls": 0.0, "lvzs": 9.41, "lp": 0.0, "llrakss": 0.0, "ns": 3.48, "dp": 0.0, "lrp": 3.11, "lzp": 0.0, "tts": 2.12, "cds": 0.0, "lv": 0.0}, "d48": {"lsdp": 23.49, "tslkd": 12.28, "na": 9.12, "dsvl": 7.34, "ls": 8.14, "lvzs": 18.0, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 2.31, "lrp": 1.27, "lzp": 0.0, "tts": 2.17, "cds": 0.0, "lv": 0.0}, "d49": {"lsdp": 20.79, "tslkd": 14.88, "na": 0.0, "dsvl": 18.98, "ls": 9.92, "lvzs": 15.96, "lp": 0.0, "llrakss": 0.0, "ns": 4.47, "dp": 0.0, "lrp": 8.05, "lzp": 2.45, "tts": 4.49, "cds": 0.0, "lv": 0.0}, "d50": {"lsdp": 31.44, "tslkd": 11.81, "na": 16.84, "dsvl": 10.91, "ls": 7.48, "lvzs": 10.43, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 3.8, "lrp": 5.54, "lzp": 0.0, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d51": {"lsdp": 19.66, "tslkd": 20.4, "na": 5.24, "dsvl": 8.69, "ls": 0.0, "lvzs": 2.34, "lp": 2.26, "llrakss": 0.0, "ns": 2.01, "dp": 0.82, "lrp": 0.0, "lzp": 2.27, "tts": 1.08, "cds": 0.0, "lv": 0.0}, "d52": {"lsdp": 13.28, "tslkd": 8.25, "na": 0.0, "dsvl": 12.83, "ls": 21.21, "lvzs": 22.76, "lp": 2.05, "llrakss": 6.63, "ns": 0.0, "dp": 3.67, "lrp": 7.27, "lzp": 0.0, "tts": 2.05, "cds": 0.0, "lv": 0.0}, "d53": {"lsdp": 22.34, "tslkd": 13.06, "na": 15.55, "dsvl": 0.0, "ls": 0.0, "lvzs": 3.89, "lp": 0.0, "llrakss": 4.36, "ns": 2.64, "dp": 7.71, "lrp": 1.97, "lzp": 7.22, "tts": 0.74, "cds": 0.0, "lv": 0.0}, "d54": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d55": {"lsdp": 16.26, "tslkd": 22.3, "na": 6.21, "dsvl": 5.38, "ls": 12.72, "lvzs": 3.9, "lp": 5.53, "llrakss": 22.85, "ns": 0.0, "dp": 2.42, "lrp": 1.54, "lzp": 0.0, "tts": 0.89, "cds": 0.0, "lv": 0.0}, "d56": {"lsdp": 18.84, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 19.53, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d57": {"lsdp": 18.84, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 19.53, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d58": {"lsdp": 32.84, "tslkd": 7.92, "na": 8.65, "dsvl": 8.12, "ls": 21.64, "lvzs": 4.09, "lp": 2.51, "llrakss": 10.95, "ns": 0.0, "dp": 0.0, "lrp": 1.95, "lzp": 0.0, "tts": 1.32, "cds": 0.0, "lv": 0.0}, "d59": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d60": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d61": {"lsdp": 15.15, "tslkd": 14.83, "na": 0.0, "dsvl": 9.49, "ls": 2.91, "lvzs": 9.68, "lp": 2.77, "llrakss": 2.24, "ns": 3.03, "dp": 8.72, "lrp": 31.19, "lzp": 0.0, "tts": 0.0, "cds": 0.0, "lv": 0.0}, "d62": {"lsdp": 16.74, "tslkd": 9.13, "na": 18.47, "dsvl": 9.21, "ls": 25.39, "lvzs": 12.3, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 2.92, "lrp": 2.74, "lzp": 0.0, "tts": 3.11, "cds": 0.0, "lv": 0.0}, "d63": {"lsdp": 23.33, "tslkd": 9.38, "na": 11.77, "dsvl": 29.44, "ls": 3.65, "lvzs": 8.63, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 2.28, "lrp": 8.61, "lzp": 0.0, "tts": 2.91, "cds": 0.0, "lv": 0.0}, "d64": {"lsdp": 27.06, "tslkd": 19.26, "na": 12.08, "dsvl": 5.74, "ls": 2.8, "lvzs": 19.64, "lp": 3.29, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 2.99, "lzp": 0.0, "tts": 1.38, "cds": 0.0, "lv": 0.0}, "d65": {"lsdp": 31.25, "tslkd": 12.22, "na": 14.06, "dsvl": 5.93, "ls": 21.57, "lvzs": 5.68, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 2.01, "lrp": 1.81, "lzp": 3.69, "tts": 1.77, "cds": 0.0, "lv": 0.0}, "d66": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d67": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d68": {"lsdp": 32.3, "tslkd": 9.22, "na": 9.26, "dsvl": 40.79, "ls": 0.0, "lvzs": 5.25, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 1.85, "lzp": 0.0, "tts": 1.34, "cds": 0.0, "lv": 0.0}, "d69": {"lsdp": 23.49, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}, "d70": {"lsdp": 18.04, "tslkd": 13.97, "na": 10.95, "dsvl": 32.54, "ls": 6.3, "lvzs": 9.01, "lp": 0.0, "llrakss": 0.0, "ns": 0.0, "dp": 0.0, "lrp": 5.77, "lzp": 0.0, "tts": 1.92, "cds": 0.0, "lv": 0.0}, "worldwide": {"lsdp": 18.84, "tslkd": 28.8, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0}},
       national2021: {"lsdp": 18.84, "tslkd": 19.32, "na": 10.82, "dsvl": 8.79, "ls": 9.06, "lvzs": 9.61, "lp": 4.54, "llrakss": 4.26, "ns": 2.01, "dp": 1.34, "lrp": 3.34, "lzp": 1.85, "tts": 1.83, "cds": 0.0, "lv": 0.0},
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "Baltijos tyrimai": { LT2028: 3.01, overall: 3.01 },
+      "Open Agency/Norstat": { LT2028: 3.34, overall: 3.34 },
+      "Spinter tyrimai": { LT2028: 2.24, overall: 2.24 },
+      "Spinter tyrimai [ link removed ]": { LT2028: 2.64, overall: 2.64 },
+      "Vilmorus": { LT2028: 3.85, overall: 3.85 },
+      "Vilmorus [ link removed ]": { LT2028: 4.2, overall: 4.2 }
+    },
     maeKey: 'LT2028',
     logos: {
       lsdp: 'img/lt/LSDP.svg', tslkd: 'img/lt/TSLKD.svg', na: 'img/lt/PPNA.svg',
@@ -49309,7 +49399,36 @@ saxony_anhalt: {
               ]
       },
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "BMG": { UK2024: 2.51, overall: 2.51 },
+      "Deltapoll": { UK2024: 3.0, overall: 3.0 },
+      "FindOutNow/Electoral Calculus (MRP)": { UK2024: 3.37, overall: 3.37 },
+      "Focaldata": { UK2024: 2.87, overall: 2.87 },
+      "Focaldata (MRP)": { UK2024: 2.03, overall: 2.03 },
+      "Ipsos": { UK2024: 3.36, overall: 3.36 },
+      "JL Partners": { UK2024: 2.15, overall: 2.15 },
+      "Labour Together": { UK2024: 3.55, overall: 3.55 },
+      "Lord Ashcroft": { UK2024: 3.41, overall: 3.41 },
+      "More in Common": { UK2024: 1.79, overall: 1.79 },
+      "More in Common (MRP)": { UK2024: 3.23, overall: 3.23 },
+      "Norstat": { UK2024: 2.27, overall: 2.27 },
+      "Opinium": { UK2024: 2.2, overall: 2.2 },
+      "PeoplePolling": { UK2024: 3.57, overall: 3.57 },
+      "Redfield & Wilton": { UK2024: 3.27, overall: 3.27 },
+      "Savanta": { UK2024: 2.48, overall: 2.48 },
+      "Survation": { UK2024: 2.3, overall: 2.3 },
+      "Survation (MRP)": { UK2024: 2.91, overall: 2.91 },
+      "Techne": { UK2024: 3.08, overall: 3.08 },
+      "Techne Archived 12 January 2025 at the Wayback Machine": { UK2024: 2.78, overall: 2.78 },
+      "Techne Archived 13 April 2024 at the Wayback Machine": { UK2024: 2.8, overall: 2.8 },
+      "Techne Archived 22 May 2024 at the Wayback Machine": { UK2024: 2.8, overall: 2.8 },
+      "Techne Archived 23 May 2024 at the Wayback Machine": { UK2024: 3.13, overall: 3.13 },
+      "Verian": { UK2024: 1.98, overall: 1.98 },
+      "We Think": { UK2024: 2.68, overall: 2.68 },
+      "Whitestone Insight": { UK2024: 2.79, overall: 2.79 },
+      "YouGov": { UK2024: 2.29, overall: 2.29 },
+      "YouGov (MRP)": { UK2024: 2.06, overall: 2.06 }
+    },
     maeKey: 'UK2024',
     // NI parties have no polling in the GB/UK tables: their averages stay
     // null and their seats hold the 2024 baseline (local dynamics decide)
@@ -50130,7 +50249,17 @@ saxony_anhalt: {
               ]
       },
     },
-    pollsterMAE: {},
+    pollsterMAE: {
+      "1 News–Kantar Public": { NZ2023: 2.81, overall: 2.81 },
+      "1 News–Verian": { NZ2023: 1.09, overall: 1.09 },
+      "Guardian Essential": { NZ2023: 1.85, overall: 1.85 },
+      "Horizon Research": { NZ2023: 3.61, overall: 3.61 },
+      "Labour–Talbot Mills": { NZ2023: 6.53, overall: 6.53 },
+      "Newshub–Reid Research": { NZ2023: 1.71, overall: 1.71 },
+      "Roy Morgan": { NZ2023: 3.05, overall: 3.05 },
+      "Talbot Mills": { NZ2023: 1.63, overall: 1.63 },
+      "Taxpayers' Union–Curia": { NZ2023: 2.56, overall: 2.56 }
+    },
     maeKey: 'NZ2023',
     logos: {
       nat: 'img/nz/NAT.svg', lab: 'img/nz/LAB.svg', grn: 'img/nz/GRN.svg',

@@ -1,0 +1,5153 @@
+{
+ "country": "canada",
+ "total_seats": 343,
+ "constituency_seats": 343,
+ "leveling_seats": 0,
+ "constituencies": [
+  {
+   "id": "avalon",
+   "name": "Avalon",
+   "seats": 1,
+   "votes2022": 47030,
+   "results_2022": {
+    "lpc": 58.607,
+    "cpc": 36.047,
+    "bq": 0.0,
+    "ndp": 4.856,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.489
+   }
+  },
+  {
+   "id": "capespear",
+   "name": "Cape Spear",
+   "seats": 1,
+   "votes2022": 45988,
+   "results_2022": {
+    "lpc": 68.253,
+    "cpc": 25.755,
+    "bq": 0.0,
+    "ndp": 5.319,
+    "gpc": 0.304,
+    "ppc": 0.0,
+    "other": 0.37
+   }
+  },
+  {
+   "id": "centralnewfoundland",
+   "name": "Central Newfoundland",
+   "seats": 1,
+   "votes2022": 40636,
+   "results_2022": {
+    "lpc": 43.548,
+    "cpc": 54.078,
+    "bq": 0.0,
+    "ndp": 2.375,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "labrador",
+   "name": "Labrador",
+   "seats": 1,
+   "votes2022": 11284,
+   "results_2022": {
+    "lpc": 51.498,
+    "cpc": 41.732,
+    "bq": 0.0,
+    "ndp": 6.771,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "longrangemountains",
+   "name": "Long Range Mountains",
+   "seats": 1,
+   "votes2022": 46143,
+   "results_2022": {
+    "lpc": 42.75,
+    "cpc": 50.348,
+    "bq": 0.0,
+    "ndp": 4.358,
+    "gpc": 0.0,
+    "ppc": 1.164,
+    "other": 1.38
+   }
+  },
+  {
+   "id": "stjohnseast",
+   "name": "St. John's East",
+   "seats": 1,
+   "votes2022": 46051,
+   "results_2022": {
+    "lpc": 62.281,
+    "cpc": 25.93,
+    "bq": 0.0,
+    "ndp": 11.231,
+    "gpc": 0.345,
+    "ppc": 0.0,
+    "other": 0.213
+   }
+  },
+  {
+   "id": "terranova-thepeninsulas",
+   "name": "Terra Nova—The Peninsulas",
+   "seats": 1,
+   "votes2022": 40875,
+   "results_2022": {
+    "lpc": 47.934,
+    "cpc": 47.963,
+    "bq": 0.0,
+    "ndp": 4.103,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "cardigan",
+   "name": "Cardigan",
+   "seats": 1,
+   "votes2022": 25261,
+   "results_2022": {
+    "lpc": 57.021,
+    "cpc": 37.378,
+    "bq": 0.0,
+    "ndp": 1.999,
+    "gpc": 1.291,
+    "ppc": 0.713,
+    "other": 1.599
+   }
+  },
+  {
+   "id": "charlottetown",
+   "name": "Charlottetown",
+   "seats": 1,
+   "votes2022": 21089,
+   "results_2022": {
+    "lpc": 64.754,
+    "cpc": 29.11,
+    "bq": 0.0,
+    "ndp": 4.296,
+    "gpc": 1.219,
+    "ppc": 0.621,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "egmont",
+   "name": "Egmont",
+   "seats": 1,
+   "votes2022": 24008,
+   "results_2022": {
+    "lpc": 51.924,
+    "cpc": 43.398,
+    "bq": 0.0,
+    "ndp": 2.437,
+    "gpc": 2.241,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "malpeque",
+   "name": "Malpeque",
+   "seats": 1,
+   "votes2022": 26883,
+   "results_2022": {
+    "lpc": 57.601,
+    "cpc": 36.625,
+    "bq": 0.0,
+    "ndp": 1.38,
+    "gpc": 3.902,
+    "ppc": 0.491,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "acadie-annapolis",
+   "name": "Acadie—Annapolis",
+   "seats": 1,
+   "votes2022": 48298,
+   "results_2022": {
+    "lpc": 46.567,
+    "cpc": 47.671,
+    "bq": 0.0,
+    "ndp": 3.661,
+    "gpc": 1.207,
+    "ppc": 0.894,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "capebreton-canso-antigonish",
+   "name": "Cape Breton—Canso—Antigonish",
+   "seats": 1,
+   "votes2022": 48278,
+   "results_2022": {
+    "lpc": 51.593,
+    "cpc": 43.229,
+    "bq": 0.0,
+    "ndp": 3.998,
+    "gpc": 0.0,
+    "ppc": 0.69,
+    "other": 0.491
+   }
+  },
+  {
+   "id": "centralnova",
+   "name": "Central Nova",
+   "seats": 1,
+   "votes2022": 50213,
+   "results_2022": {
+    "lpc": 51.935,
+    "cpc": 42.748,
+    "bq": 0.0,
+    "ndp": 3.284,
+    "gpc": 0.906,
+    "ppc": 0.659,
+    "other": 0.468
+   }
+  },
+  {
+   "id": "cumberland-colchester",
+   "name": "Cumberland—Colchester",
+   "seats": 1,
+   "votes2022": 49530,
+   "results_2022": {
+    "lpc": 48.312,
+    "cpc": 45.833,
+    "bq": 0.0,
+    "ndp": 3.782,
+    "gpc": 1.401,
+    "ppc": 0.672,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "dartmouth-coleharbour",
+   "name": "Dartmouth—Cole Harbour",
+   "seats": 1,
+   "votes2022": 59634,
+   "results_2022": {
+    "lpc": 67.691,
+    "cpc": 22.734,
+    "bq": 0.0,
+    "ndp": 7.045,
+    "gpc": 1.053,
+    "ppc": 1.258,
+    "other": 0.22
+   }
+  },
+  {
+   "id": "halifax",
+   "name": "Halifax",
+   "seats": 1,
+   "votes2022": 52160,
+   "results_2022": {
+    "lpc": 63.048,
+    "cpc": 19.055,
+    "bq": 0.0,
+    "ndp": 16.568,
+    "gpc": 0.809,
+    "ppc": 0.52,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "halifaxwest",
+   "name": "Halifax West",
+   "seats": 1,
+   "votes2022": 55184,
+   "results_2022": {
+    "lpc": 65.599,
+    "cpc": 27.218,
+    "bq": 0.0,
+    "ndp": 5.587,
+    "gpc": 0.901,
+    "ppc": 0.696,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kings-hants",
+   "name": "Kings—Hants",
+   "seats": 1,
+   "votes2022": 59179,
+   "results_2022": {
+    "lpc": 60.555,
+    "cpc": 33.412,
+    "bq": 0.0,
+    "ndp": 3.64,
+    "gpc": 1.394,
+    "ppc": 0.999,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "sackville-bedford-preston",
+   "name": "Sackville—Bedford—Preston",
+   "seats": 1,
+   "votes2022": 58190,
+   "results_2022": {
+    "lpc": 61.973,
+    "cpc": 32.411,
+    "bq": 0.0,
+    "ndp": 3.994,
+    "gpc": 0.904,
+    "ppc": 0.718,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "southshore-stmargarets",
+   "name": "South Shore—St. Margarets",
+   "seats": 1,
+   "votes2022": 50711,
+   "results_2022": {
+    "lpc": 54.882,
+    "cpc": 41.143,
+    "bq": 0.0,
+    "ndp": 0.0,
+    "gpc": 1.613,
+    "ppc": 1.376,
+    "other": 0.986
+   }
+  },
+  {
+   "id": "sydney-glacebay",
+   "name": "Sydney—Glace Bay",
+   "seats": 1,
+   "votes2022": 47166,
+   "results_2022": {
+    "lpc": 54.628,
+    "cpc": 38.116,
+    "bq": 0.0,
+    "ndp": 3.793,
+    "gpc": 0.0,
+    "ppc": 1.249,
+    "other": 2.213
+   }
+  },
+  {
+   "id": "acadie-bathurst",
+   "name": "Acadie—Bathurst",
+   "seats": 1,
+   "votes2022": 48248,
+   "results_2022": {
+    "lpc": 67.476,
+    "cpc": 25.993,
+    "bq": 0.0,
+    "ndp": 4.369,
+    "gpc": 0.0,
+    "ppc": 2.162,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "beausejour",
+   "name": "Beauséjour",
+   "seats": 1,
+   "votes2022": 59631,
+   "results_2022": {
+    "lpc": 60.604,
+    "cpc": 33.308,
+    "bq": 0.0,
+    "ndp": 2.428,
+    "gpc": 2.165,
+    "ppc": 0.844,
+    "other": 0.651
+   }
+  },
+  {
+   "id": "fredericton-oromocto",
+   "name": "Fredericton—Oromocto",
+   "seats": 1,
+   "votes2022": 50169,
+   "results_2022": {
+    "lpc": 61.293,
+    "cpc": 32.291,
+    "bq": 0.0,
+    "ndp": 1.81,
+    "gpc": 3.125,
+    "ppc": 0.415,
+    "other": 1.066
+   }
+  },
+  {
+   "id": "fundyroyal",
+   "name": "Fundy Royal",
+   "seats": 1,
+   "votes2022": 47611,
+   "results_2022": {
+    "lpc": 40.123,
+    "cpc": 53.372,
+    "bq": 0.0,
+    "ndp": 3.165,
+    "gpc": 2.018,
+    "ppc": 1.321,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "madawaska-restigouche",
+   "name": "Madawaska—Restigouche",
+   "seats": 1,
+   "votes2022": 41178,
+   "results_2022": {
+    "lpc": 55.175,
+    "cpc": 39.633,
+    "bq": 0.0,
+    "ndp": 3.038,
+    "gpc": 0.0,
+    "ppc": 2.154,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "miramichi-grandlake",
+   "name": "Miramichi—Grand Lake",
+   "seats": 1,
+   "votes2022": 38257,
+   "results_2022": {
+    "lpc": 47.147,
+    "cpc": 48.151,
+    "bq": 0.0,
+    "ndp": 2.53,
+    "gpc": 2.172,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "moncton-dieppe",
+   "name": "Moncton—Dieppe",
+   "seats": 1,
+   "votes2022": 47958,
+   "results_2022": {
+    "lpc": 63.003,
+    "cpc": 31.223,
+    "bq": 0.0,
+    "ndp": 3.701,
+    "gpc": 2.073,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saintjohn-kennebecasis",
+   "name": "Saint John—Kennebecasis",
+   "seats": 1,
+   "votes2022": 44967,
+   "results_2022": {
+    "lpc": 58.107,
+    "cpc": 37.332,
+    "bq": 0.0,
+    "ndp": 2.682,
+    "gpc": 1.639,
+    "ppc": 0.0,
+    "other": 0.24
+   }
+  },
+  {
+   "id": "saintjohn-stcroix",
+   "name": "Saint John—St. Croix",
+   "seats": 1,
+   "votes2022": 50092,
+   "results_2022": {
+    "lpc": 41.492,
+    "cpc": 53.084,
+    "bq": 0.0,
+    "ndp": 3.28,
+    "gpc": 1.585,
+    "ppc": 0.0,
+    "other": 0.559
+   }
+  },
+  {
+   "id": "tobique-mactaquac",
+   "name": "Tobique—Mactaquac",
+   "seats": 1,
+   "votes2022": 39667,
+   "results_2022": {
+    "lpc": 35.864,
+    "cpc": 58.794,
+    "bq": 0.0,
+    "ndp": 2.047,
+    "gpc": 2.032,
+    "ppc": 1.263,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "abitibi-baie-james-nunavik-eeyou",
+   "name": "Abitibi—Baie-James—Nunavik—Eeyou",
+   "seats": 1,
+   "votes2022": 30561,
+   "results_2022": {
+    "lpc": 41.157,
+    "cpc": 22.414,
+    "bq": 33.968,
+    "ndp": 2.461,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "abitibi-temiscamingue",
+   "name": "Abitibi—Témiscamingue",
+   "seats": 1,
+   "votes2022": 50115,
+   "results_2022": {
+    "lpc": 27.04,
+    "cpc": 19.677,
+    "bq": 49.434,
+    "ndp": 2.953,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.896
+   }
+  },
+  {
+   "id": "ahuntsic-cartierville",
+   "name": "Ahuntsic-Cartierville",
+   "seats": 1,
+   "votes2022": 50577,
+   "results_2022": {
+    "lpc": 60.962,
+    "cpc": 15.027,
+    "bq": 16.881,
+    "ndp": 6.59,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.54
+   }
+  },
+  {
+   "id": "alfred-pellan",
+   "name": "Alfred-Pellan",
+   "seats": 1,
+   "votes2022": 60331,
+   "results_2022": {
+    "lpc": 54.589,
+    "cpc": 21.002,
+    "bq": 20.32,
+    "ndp": 3.388,
+    "gpc": 0.0,
+    "ppc": 0.701,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "argenteuil-lapetite-nation",
+   "name": "Argenteuil—La Petite-Nation",
+   "seats": 1,
+   "votes2022": 59233,
+   "results_2022": {
+    "lpc": 47.48,
+    "cpc": 24.812,
+    "bq": 22.825,
+    "ndp": 2.531,
+    "gpc": 1.362,
+    "ppc": 0.989,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "beauce",
+   "name": "Beauce",
+   "seats": 1,
+   "votes2022": 62982,
+   "results_2022": {
+    "lpc": 19.144,
+    "cpc": 59.706,
+    "bq": 13.647,
+    "ndp": 1.747,
+    "gpc": 0.0,
+    "ppc": 5.757,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "beauharnois-salaberry-soulanges-huntingdon",
+   "name": "Beauharnois—Salaberry—Soulanges—Huntingdon",
+   "seats": 1,
+   "votes2022": 68314,
+   "results_2022": {
+    "lpc": 32.115,
+    "cpc": 19.366,
+    "bq": 43.922,
+    "ndp": 2.434,
+    "gpc": 1.174,
+    "ppc": 0.988,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "beauport-limoilou",
+   "name": "Beauport—Limoilou",
+   "seats": 1,
+   "votes2022": 61418,
+   "results_2022": {
+    "lpc": 35.589,
+    "cpc": 30.108,
+    "bq": 28.588,
+    "ndp": 3.411,
+    "gpc": 1.504,
+    "ppc": 0.645,
+    "other": 0.155
+   }
+  },
+  {
+   "id": "becancour-nicolet-saurel-alnobak",
+   "name": "Bécancour—Nicolet—Saurel—Alnôbak",
+   "seats": 1,
+   "votes2022": 54318,
+   "results_2022": {
+    "lpc": 27.271,
+    "cpc": 21.571,
+    "bq": 46.957,
+    "ndp": 2.047,
+    "gpc": 1.359,
+    "ppc": 0.795,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "bellechasse-lesetchemins-levis",
+   "name": "Bellechasse—Les Etchemins—Lévis",
+   "seats": 1,
+   "votes2022": 65398,
+   "results_2022": {
+    "lpc": 28.505,
+    "cpc": 49.079,
+    "bq": 18.722,
+    "ndp": 2.479,
+    "gpc": 0.0,
+    "ppc": 1.214,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "beloeil-chambly",
+   "name": "Beloeil—Chambly",
+   "seats": 1,
+   "votes2022": 68052,
+   "results_2022": {
+    "lpc": 33.998,
+    "cpc": 13.518,
+    "bq": 48.263,
+    "ndp": 3.513,
+    "gpc": 0.0,
+    "ppc": 0.708,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "berthier-maskinonge",
+   "name": "Berthier—Maskinongé",
+   "seats": 1,
+   "votes2022": 61956,
+   "results_2022": {
+    "lpc": 24.301,
+    "cpc": 17.175,
+    "bq": 34.986,
+    "ndp": 21.72,
+    "gpc": 0.889,
+    "ppc": 0.928,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "bourassa",
+   "name": "Bourassa",
+   "seats": 1,
+   "votes2022": 36202,
+   "results_2022": {
+    "lpc": 58.555,
+    "cpc": 16.311,
+    "bq": 17.143,
+    "ndp": 5.903,
+    "gpc": 0.0,
+    "ppc": 1.196,
+    "other": 0.892
+   }
+  },
+  {
+   "id": "brome-missisquoi",
+   "name": "Brome—Missisquoi",
+   "seats": 1,
+   "votes2022": 71952,
+   "results_2022": {
+    "lpc": 48.264,
+    "cpc": 19.1,
+    "bq": 28.049,
+    "ndp": 2.224,
+    "gpc": 1.583,
+    "ppc": 0.78,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "brossard-saint-lambert",
+   "name": "Brossard—Saint-Lambert",
+   "seats": 1,
+   "votes2022": 58739,
+   "results_2022": {
+    "lpc": 62.209,
+    "cpc": 18.856,
+    "bq": 13.342,
+    "ndp": 3.488,
+    "gpc": 1.456,
+    "ppc": 0.649,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "charlesbourg-haute-saint-charles",
+   "name": "Charlesbourg—Haute-Saint-Charles",
+   "seats": 1,
+   "votes2022": 65266,
+   "results_2022": {
+    "lpc": 34.623,
+    "cpc": 42.439,
+    "bq": 18.916,
+    "ndp": 2.684,
+    "gpc": 0.0,
+    "ppc": 0.791,
+    "other": 0.547
+   }
+  },
+  {
+   "id": "chateauguay-lesjardins-de-napierville",
+   "name": "Châteauguay—Les Jardins-de-Napierville",
+   "seats": 1,
+   "votes2022": 62501,
+   "results_2022": {
+    "lpc": 45.158,
+    "cpc": 21.66,
+    "bq": 29.056,
+    "ndp": 2.203,
+    "gpc": 1.237,
+    "ppc": 0.686,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "chicoutimi-lefjord",
+   "name": "Chicoutimi—Le Fjord",
+   "seats": 1,
+   "votes2022": 50839,
+   "results_2022": {
+    "lpc": 31.118,
+    "cpc": 34.139,
+    "bq": 31.191,
+    "ndp": 1.949,
+    "gpc": 0.936,
+    "ppc": 0.667,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "compton-stanstead",
+   "name": "Compton—Stanstead",
+   "seats": 1,
+   "votes2022": 65620,
+   "results_2022": {
+    "lpc": 45.643,
+    "cpc": 21.78,
+    "bq": 26.372,
+    "ndp": 3.237,
+    "gpc": 1.769,
+    "ppc": 1.199,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "cote-du-sud-riviere-du-loup-kataskomiq-temiscouata",
+   "name": "Côte-du-Sud—Rivière-du-Loup—Kataskomiq—Témiscouata",
+   "seats": 1,
+   "votes2022": 62992,
+   "results_2022": {
+    "lpc": 30.317,
+    "cpc": 45.836,
+    "bq": 19.999,
+    "ndp": 1.702,
+    "gpc": 1.083,
+    "ppc": 0.737,
+    "other": 0.327
+   }
+  },
+  {
+   "id": "cote-nord-kawawachikamach-nitassinan",
+   "name": "Côte-Nord—Kawawachikamach—Nitassinan",
+   "seats": 1,
+   "votes2022": 37183,
+   "results_2022": {
+    "lpc": 27.392,
+    "cpc": 25.186,
+    "bq": 43.684,
+    "ndp": 1.721,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 2.017
+   }
+  },
+  {
+   "id": "dorval-lachine-lasalle",
+   "name": "Dorval—Lachine—LaSalle",
+   "seats": 1,
+   "votes2022": 50420,
+   "results_2022": {
+    "lpc": 59.355,
+    "cpc": 20.682,
+    "bq": 12.57,
+    "ndp": 4.173,
+    "gpc": 1.632,
+    "ppc": 0.948,
+    "other": 0.639
+   }
+  },
+  {
+   "id": "drummond",
+   "name": "Drummond",
+   "seats": 1,
+   "votes2022": 56239,
+   "results_2022": {
+    "lpc": 28.446,
+    "cpc": 22.742,
+    "bq": 42.801,
+    "ndp": 4.636,
+    "gpc": 0.0,
+    "ppc": 1.374,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "gaspesie-lesiles-de-la-madeleine-listuguj",
+   "name": "Gaspésie—Les Îles-de-la-Madeleine—Listuguj",
+   "seats": 1,
+   "votes2022": 56984,
+   "results_2022": {
+    "lpc": 38.286,
+    "cpc": 12.367,
+    "bq": 45.787,
+    "ndp": 1.764,
+    "gpc": 0.0,
+    "ppc": 0.793,
+    "other": 1.004
+   }
+  },
+  {
+   "id": "gatineau",
+   "name": "Gatineau",
+   "seats": 1,
+   "votes2022": 57399,
+   "results_2022": {
+    "lpc": 60.543,
+    "cpc": 19.133,
+    "bq": 16.33,
+    "ndp": 2.814,
+    "gpc": 0.0,
+    "ppc": 0.88,
+    "other": 0.301
+   }
+  },
+  {
+   "id": "hochelaga-rosemont-est",
+   "name": "Hochelaga—Rosemont-Est",
+   "seats": 1,
+   "votes2022": 51147,
+   "results_2022": {
+    "lpc": 46.143,
+    "cpc": 10.562,
+    "bq": 27.18,
+    "ndp": 13.043,
+    "gpc": 2.598,
+    "ppc": 0.0,
+    "other": 0.473
+   }
+  },
+  {
+   "id": "honore-mercier",
+   "name": "Honoré-Mercier",
+   "seats": 1,
+   "votes2022": 49780,
+   "results_2022": {
+    "lpc": 60.159,
+    "cpc": 21.479,
+    "bq": 12.927,
+    "ndp": 3.59,
+    "gpc": 1.141,
+    "ppc": 0.705,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "hull-aylmer",
+   "name": "Hull—Aylmer",
+   "seats": 1,
+   "votes2022": 51487,
+   "results_2022": {
+    "lpc": 62.109,
+    "cpc": 16.95,
+    "bq": 12.135,
+    "ndp": 5.545,
+    "gpc": 2.195,
+    "ppc": 0.662,
+    "other": 0.404
+   }
+  },
+  {
+   "id": "joliette-manawan",
+   "name": "Joliette—Manawan",
+   "seats": 1,
+   "votes2022": 57229,
+   "results_2022": {
+    "lpc": 31.26,
+    "cpc": 15.239,
+    "bq": 49.269,
+    "ndp": 2.46,
+    "gpc": 1.772,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "jonquiere",
+   "name": "Jonquière",
+   "seats": 1,
+   "votes2022": 50629,
+   "results_2022": {
+    "lpc": 26.017,
+    "cpc": 30.247,
+    "bq": 39.991,
+    "ndp": 1.841,
+    "gpc": 0.885,
+    "ppc": 1.019,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "lapointe-de-lile",
+   "name": "La Pointe-de-l'Île",
+   "seats": 1,
+   "votes2022": 53209,
+   "results_2022": {
+    "lpc": 37.683,
+    "cpc": 12.744,
+    "bq": 43.113,
+    "ndp": 4.283,
+    "gpc": 1.836,
+    "ppc": 0.0,
+    "other": 0.34
+   }
+  },
+  {
+   "id": "laprairie-atateken",
+   "name": "La Prairie—Atateken",
+   "seats": 1,
+   "votes2022": 66761,
+   "results_2022": {
+    "lpc": 44.065,
+    "cpc": 17.233,
+    "bq": 34.799,
+    "ndp": 2.379,
+    "gpc": 0.984,
+    "ppc": 0.541,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "lac-saint-jean",
+   "name": "Lac-Saint-Jean",
+   "seats": 1,
+   "votes2022": 47756,
+   "results_2022": {
+    "lpc": 26.25,
+    "cpc": 24.692,
+    "bq": 46.212,
+    "ndp": 1.715,
+    "gpc": 0.0,
+    "ppc": 1.131,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "lac-saint-louis",
+   "name": "Lac-Saint-Louis",
+   "seats": 1,
+   "votes2022": 64242,
+   "results_2022": {
+    "lpc": 67.629,
+    "cpc": 23.665,
+    "bq": 3.627,
+    "ndp": 2.922,
+    "gpc": 1.424,
+    "ppc": 0.733,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "lasalle-emard-verdun",
+   "name": "LaSalle—Émard—Verdun",
+   "seats": 1,
+   "votes2022": 53953,
+   "results_2022": {
+    "lpc": 50.857,
+    "cpc": 13.819,
+    "bq": 21.254,
+    "ndp": 10.355,
+    "gpc": 2.406,
+    "ppc": 0.482,
+    "other": 0.827
+   }
+  },
+  {
+   "id": "laurentides-labelle",
+   "name": "Laurentides—Labelle",
+   "seats": 1,
+   "votes2022": 52983,
+   "results_2022": {
+    "lpc": 34.943,
+    "cpc": 14.91,
+    "bq": 44.571,
+    "ndp": 2.531,
+    "gpc": 1.631,
+    "ppc": 1.414,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "laurier-sainte-marie",
+   "name": "Laurier—Sainte-Marie",
+   "seats": 1,
+   "votes2022": 52401,
+   "results_2022": {
+    "lpc": 52.072,
+    "cpc": 9.152,
+    "bq": 15.418,
+    "ndp": 18.809,
+    "gpc": 2.771,
+    "ppc": 0.483,
+    "other": 1.296
+   }
+  },
+  {
+   "id": "laval-lesiles",
+   "name": "Laval—Les Îles",
+   "seats": 1,
+   "votes2022": 56916,
+   "results_2022": {
+    "lpc": 49.726,
+    "cpc": 32.249,
+    "bq": 14.579,
+    "ndp": 3.445,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "lespays-den-haut",
+   "name": "Les Pays-d'en-Haut",
+   "seats": 1,
+   "votes2022": 65703,
+   "results_2022": {
+    "lpc": 41.044,
+    "cpc": 17.984,
+    "bq": 36.148,
+    "ndp": 2.272,
+    "gpc": 1.58,
+    "ppc": 0.973,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "levis-lotbiniere",
+   "name": "Lévis—Lotbinière",
+   "seats": 1,
+   "votes2022": 69821,
+   "results_2022": {
+    "lpc": 29.431,
+    "cpc": 47.711,
+    "bq": 19.517,
+    "ndp": 2.342,
+    "gpc": 0.0,
+    "ppc": 1.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "longueuil-charles-lemoyne",
+   "name": "Longueuil—Charles-LeMoyne",
+   "seats": 1,
+   "votes2022": 50900,
+   "results_2022": {
+    "lpc": 49.387,
+    "cpc": 16.792,
+    "bq": 26.686,
+    "ndp": 5.564,
+    "gpc": 0.0,
+    "ppc": 0.807,
+    "other": 0.764
+   }
+  },
+  {
+   "id": "longueuil-saint-hubert",
+   "name": "Longueuil—Saint-Hubert",
+   "seats": 1,
+   "votes2022": 59138,
+   "results_2022": {
+    "lpc": 40.984,
+    "cpc": 14.284,
+    "bq": 39.683,
+    "ndp": 5.049,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "louis-hebert",
+   "name": "Louis-Hébert",
+   "seats": 1,
+   "votes2022": 60445,
+   "results_2022": {
+    "lpc": 55.442,
+    "cpc": 20.124,
+    "bq": 21.337,
+    "ndp": 2.548,
+    "gpc": 0.0,
+    "ppc": 0.549,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "louis-saint-laurent-akiawenhrahk",
+   "name": "Louis-Saint-Laurent—Akiawenhrahk",
+   "seats": 1,
+   "votes2022": 65817,
+   "results_2022": {
+    "lpc": 32.96,
+    "cpc": 44.859,
+    "bq": 18.939,
+    "ndp": 2.442,
+    "gpc": 0.0,
+    "ppc": 0.801,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "marc-aurele-fortin",
+   "name": "Marc-Aurèle-Fortin",
+   "seats": 1,
+   "votes2022": 57563,
+   "results_2022": {
+    "lpc": 51.992,
+    "cpc": 20.713,
+    "bq": 23.598,
+    "ndp": 3.697,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "megantic-lerable-lotbiniere",
+   "name": "Mégantic—L'Érable—Lotbinière",
+   "seats": 1,
+   "votes2022": 58635,
+   "results_2022": {
+    "lpc": 21.479,
+    "cpc": 58.787,
+    "bq": 16.384,
+    "ndp": 1.818,
+    "gpc": 0.0,
+    "ppc": 1.223,
+    "other": 0.309
+   }
+  },
+  {
+   "id": "mirabel",
+   "name": "Mirabel",
+   "seats": 1,
+   "votes2022": 56359,
+   "results_2022": {
+    "lpc": 33.35,
+    "cpc": 22.257,
+    "bq": 39.912,
+    "ndp": 2.365,
+    "gpc": 1.405,
+    "ppc": 0.71,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "mountroyal",
+   "name": "Mount Royal",
+   "seats": 1,
+   "votes2022": 50028,
+   "results_2022": {
+    "lpc": 51.059,
+    "cpc": 40.465,
+    "bq": 3.34,
+    "ndp": 4.703,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.432
+   }
+  },
+  {
+   "id": "mont-saint-bruno-lacadie",
+   "name": "Mont-Saint-Bruno—L'Acadie",
+   "seats": 1,
+   "votes2022": 68251,
+   "results_2022": {
+    "lpc": 47.104,
+    "cpc": 13.677,
+    "bq": 35.087,
+    "ndp": 2.33,
+    "gpc": 1.22,
+    "ppc": 0.582,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "montcalm",
+   "name": "Montcalm",
+   "seats": 1,
+   "votes2022": 58519,
+   "results_2022": {
+    "lpc": 26.947,
+    "cpc": 23.222,
+    "bq": 46.597,
+    "ndp": 3.235,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "montmorency-charlevoix",
+   "name": "Montmorency—Charlevoix",
+   "seats": 1,
+   "votes2022": 59407,
+   "results_2022": {
+    "lpc": 28.786,
+    "cpc": 34.498,
+    "bq": 33.616,
+    "ndp": 1.523,
+    "gpc": 0.976,
+    "ppc": 0.601,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "notre-dame-de-grace-westmount",
+   "name": "Notre-Dame-de-Grâce—Westmount",
+   "seats": 1,
+   "votes2022": 53490,
+   "results_2022": {
+    "lpc": 63.986,
+    "cpc": 19.662,
+    "bq": 4.958,
+    "ndp": 7.396,
+    "gpc": 2.488,
+    "ppc": 0.479,
+    "other": 1.032
+   }
+  },
+  {
+   "id": "outremont",
+   "name": "Outremont",
+   "seats": 1,
+   "votes2022": 47142,
+   "results_2022": {
+    "lpc": 55.203,
+    "cpc": 12.539,
+    "bq": 11.972,
+    "ndp": 10.657,
+    "gpc": 9.628,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "papineau",
+   "name": "Papineau",
+   "seats": 1,
+   "votes2022": 46619,
+   "results_2022": {
+    "lpc": 52.983,
+    "cpc": 10.569,
+    "bq": 16.573,
+    "ndp": 16.315,
+    "gpc": 0.0,
+    "ppc": 0.976,
+    "other": 2.585
+   }
+  },
+  {
+   "id": "pierre-boucher-lespatriotes-vercheres",
+   "name": "Pierre-Boucher—Les Patriotes—Verchères",
+   "seats": 1,
+   "votes2022": 62426,
+   "results_2022": {
+    "lpc": 38.793,
+    "cpc": 11.814,
+    "bq": 46.079,
+    "ndp": 2.469,
+    "gpc": 0.0,
+    "ppc": 0.846,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "pierrefonds-dollard",
+   "name": "Pierrefonds—Dollard",
+   "seats": 1,
+   "votes2022": 57136,
+   "results_2022": {
+    "lpc": 60.078,
+    "cpc": 30.546,
+    "bq": 5.42,
+    "ndp": 2.823,
+    "gpc": 0.0,
+    "ppc": 0.583,
+    "other": 0.55
+   }
+  },
+  {
+   "id": "pontiac-kitiganzibi",
+   "name": "Pontiac—Kitigan Zibi",
+   "seats": 1,
+   "votes2022": 58773,
+   "results_2022": {
+    "lpc": 54.596,
+    "cpc": 27.599,
+    "bq": 10.33,
+    "ndp": 5.055,
+    "gpc": 1.274,
+    "ppc": 1.145,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "portneuf-jacques-cartier",
+   "name": "Portneuf—Jacques-Cartier",
+   "seats": 1,
+   "votes2022": 64941,
+   "results_2022": {
+    "lpc": 29.049,
+    "cpc": 49.559,
+    "bq": 17.872,
+    "ndp": 1.592,
+    "gpc": 1.121,
+    "ppc": 0.807,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "quebeccentre",
+   "name": "Québec Centre",
+   "seats": 1,
+   "votes2022": 56319,
+   "results_2022": {
+    "lpc": 49.504,
+    "cpc": 0.0,
+    "bq": 35.872,
+    "ndp": 7.813,
+    "gpc": 0.0,
+    "ppc": 5.004,
+    "other": 1.808
+   }
+  },
+  {
+   "id": "repentigny",
+   "name": "Repentigny",
+   "seats": 1,
+   "votes2022": 63015,
+   "results_2022": {
+    "lpc": 38.751,
+    "cpc": 15.207,
+    "bq": 42.201,
+    "ndp": 2.733,
+    "gpc": 0.0,
+    "ppc": 0.609,
+    "other": 0.498
+   }
+  },
+  {
+   "id": "richmond-arthabaska",
+   "name": "Richmond—Arthabaska",
+   "seats": 1,
+   "votes2022": 62546,
+   "results_2022": {
+    "lpc": 32.982,
+    "cpc": 35.503,
+    "bq": 27.332,
+    "ndp": 1.995,
+    "gpc": 0.0,
+    "ppc": 1.13,
+    "other": 1.057
+   }
+  },
+  {
+   "id": "rimouski-lamatapedia",
+   "name": "Rimouski—La Matapédia",
+   "seats": 1,
+   "votes2022": 54040,
+   "results_2022": {
+    "lpc": 35.531,
+    "cpc": 13.553,
+    "bq": 46.164,
+    "ndp": 1.802,
+    "gpc": 0.0,
+    "ppc": 0.625,
+    "other": 2.324
+   }
+  },
+  {
+   "id": "riviere-des-mille-iles",
+   "name": "Rivière-des-Mille-Îles",
+   "seats": 1,
+   "votes2022": 59887,
+   "results_2022": {
+    "lpc": 45.629,
+    "cpc": 17.363,
+    "bq": 32.844,
+    "ndp": 2.121,
+    "gpc": 1.226,
+    "ppc": 0.511,
+    "other": 0.307
+   }
+  },
+  {
+   "id": "riviere-du-nord",
+   "name": "Rivière-du-Nord",
+   "seats": 1,
+   "votes2022": 58018,
+   "results_2022": {
+    "lpc": 31.619,
+    "cpc": 21.033,
+    "bq": 43.845,
+    "ndp": 3.502,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "rosemont-lapetite-patrie",
+   "name": "Rosemont—La Petite-Patrie",
+   "seats": 1,
+   "votes2022": 59420,
+   "results_2022": {
+    "lpc": 31.567,
+    "cpc": 6.855,
+    "bq": 18.283,
+    "ndp": 40.993,
+    "gpc": 2.302,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saint-hyacinthe-bagot-acton",
+   "name": "Saint-Hyacinthe—Bagot—Acton",
+   "seats": 1,
+   "votes2022": 57986,
+   "results_2022": {
+    "lpc": 33.636,
+    "cpc": 17.989,
+    "bq": 43.885,
+    "ndp": 2.368,
+    "gpc": 1.38,
+    "ppc": 0.743,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saint-jean",
+   "name": "Saint-Jean",
+   "seats": 1,
+   "votes2022": 64215,
+   "results_2022": {
+    "lpc": 34.258,
+    "cpc": 16.32,
+    "bq": 44.342,
+    "ndp": 2.569,
+    "gpc": 1.539,
+    "ppc": 0.972,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saint-laurent",
+   "name": "Saint-Laurent",
+   "seats": 1,
+   "votes2022": 44185,
+   "results_2022": {
+    "lpc": 58.891,
+    "cpc": 28.238,
+    "bq": 5.71,
+    "ndp": 4.492,
+    "gpc": 1.568,
+    "ppc": 0.79,
+    "other": 0.31
+   }
+  },
+  {
+   "id": "saint-leonard-saint-michel",
+   "name": "Saint-Léonard—Saint-Michel",
+   "seats": 1,
+   "votes2022": 41066,
+   "results_2022": {
+    "lpc": 65.341,
+    "cpc": 20.594,
+    "bq": 7.154,
+    "ndp": 5.966,
+    "gpc": 0.0,
+    "ppc": 0.945,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saint-maurice-champlain",
+   "name": "Saint-Maurice—Champlain",
+   "seats": 1,
+   "votes2022": 62240,
+   "results_2022": {
+    "lpc": 49.96,
+    "cpc": 24.616,
+    "bq": 21.192,
+    "ndp": 1.967,
+    "gpc": 1.131,
+    "ppc": 0.731,
+    "other": 0.403
+   }
+  },
+  {
+   "id": "shefford",
+   "name": "Shefford",
+   "seats": 1,
+   "votes2022": 66631,
+   "results_2022": {
+    "lpc": 39.254,
+    "cpc": 17.115,
+    "bq": 40.11,
+    "ndp": 2.337,
+    "gpc": 0.0,
+    "ppc": 1.184,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "sherbrooke",
+   "name": "Sherbrooke",
+   "seats": 1,
+   "votes2022": 60931,
+   "results_2022": {
+    "lpc": 51.286,
+    "cpc": 13.102,
+    "bq": 26.627,
+    "ndp": 5.77,
+    "gpc": 2.27,
+    "ppc": 0.945,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "terrebonne",
+   "name": "Terrebonne",
+   "seats": 1,
+   "votes2022": 60278,
+   "results_2022": {
+    "lpc": 38.741,
+    "cpc": 18.184,
+    "bq": 38.739,
+    "ndp": 2.581,
+    "gpc": 1.045,
+    "ppc": 0.71,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "therese-deblainville",
+   "name": "Thérèse-De Blainville",
+   "seats": 1,
+   "votes2022": 64397,
+   "results_2022": {
+    "lpc": 45.839,
+    "cpc": 18.664,
+    "bq": 32.343,
+    "ndp": 2.461,
+    "gpc": 0.0,
+    "ppc": 0.693,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "trois-rivieres",
+   "name": "Trois-Rivières",
+   "seats": 1,
+   "votes2022": 61317,
+   "results_2022": {
+    "lpc": 41.011,
+    "cpc": 27.249,
+    "bq": 27.596,
+    "ndp": 2.344,
+    "gpc": 0.928,
+    "ppc": 0.522,
+    "other": 0.351
+   }
+  },
+  {
+   "id": "vaudreuil",
+   "name": "Vaudreuil",
+   "seats": 1,
+   "votes2022": 70818,
+   "results_2022": {
+    "lpc": 57.869,
+    "cpc": 22.846,
+    "bq": 14.927,
+    "ndp": 2.262,
+    "gpc": 1.351,
+    "ppc": 0.744,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "ville-marie-lesud-ouest-ile-des-soeurs",
+   "name": "Ville-Marie—Le Sud-Ouest—Île-des-Sœurs",
+   "seats": 1,
+   "votes2022": 48519,
+   "results_2022": {
+    "lpc": 63.697,
+    "cpc": 18.782,
+    "bq": 8.994,
+    "ndp": 6.043,
+    "gpc": 2.053,
+    "ppc": 0.0,
+    "other": 0.431
+   }
+  },
+  {
+   "id": "vimy",
+   "name": "Vimy",
+   "seats": 1,
+   "votes2022": 49677,
+   "results_2022": {
+    "lpc": 53.407,
+    "cpc": 24.716,
+    "bq": 17.163,
+    "ndp": 4.714,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "ajax",
+   "name": "Ajax",
+   "seats": 1,
+   "votes2022": 65650,
+   "results_2022": {
+    "lpc": 56.321,
+    "cpc": 39.083,
+    "bq": 0.0,
+    "ndp": 2.684,
+    "gpc": 0.932,
+    "ppc": 0.0,
+    "other": 0.979
+   }
+  },
+  {
+   "id": "algonquin-renfrew-pembroke",
+   "name": "Algonquin—Renfrew—Pembroke",
+   "seats": 1,
+   "votes2022": 67018,
+   "results_2022": {
+    "lpc": 37.808,
+    "cpc": 55.706,
+    "bq": 0.0,
+    "ndp": 3.684,
+    "gpc": 0.922,
+    "ppc": 0.0,
+    "other": 1.88
+   }
+  },
+  {
+   "id": "aurora-oakridges-richmondhill",
+   "name": "Aurora—Oak Ridges—Richmond Hill",
+   "seats": 1,
+   "votes2022": 62169,
+   "results_2022": {
+    "lpc": 42.771,
+    "cpc": 54.727,
+    "bq": 0.0,
+    "ndp": 1.343,
+    "gpc": 0.748,
+    "ppc": 0.412,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "barriesouth-innisfil",
+   "name": "Barrie South—Innisfil",
+   "seats": 1,
+   "votes2022": 67325,
+   "results_2022": {
+    "lpc": 37.961,
+    "cpc": 57.843,
+    "bq": 0.0,
+    "ndp": 3.164,
+    "gpc": 0.0,
+    "ppc": 1.032,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "barrie-springwater-oro-medonte",
+   "name": "Barrie—Springwater—Oro-Medonte",
+   "seats": 1,
+   "votes2022": 65709,
+   "results_2022": {
+    "lpc": 44.362,
+    "cpc": 51.666,
+    "bq": 0.0,
+    "ndp": 2.373,
+    "gpc": 1.359,
+    "ppc": 0.0,
+    "other": 0.24
+   }
+  },
+  {
+   "id": "bayofquinte",
+   "name": "Bay of Quinte",
+   "seats": 1,
+   "votes2022": 65182,
+   "results_2022": {
+    "lpc": 50.391,
+    "cpc": 44.69,
+    "bq": 0.0,
+    "ndp": 3.641,
+    "gpc": 1.278,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "beaches-eastyork",
+   "name": "Beaches—East York",
+   "seats": 1,
+   "votes2022": 58755,
+   "results_2022": {
+    "lpc": 67.746,
+    "cpc": 23.538,
+    "bq": 0.0,
+    "ndp": 6.854,
+    "gpc": 1.273,
+    "ppc": 0.0,
+    "other": 0.589
+   }
+  },
+  {
+   "id": "bowmanville-oshawanorth",
+   "name": "Bowmanville—Oshawa North",
+   "seats": 1,
+   "votes2022": 70788,
+   "results_2022": {
+    "lpc": 45.508,
+    "cpc": 49.771,
+    "bq": 0.0,
+    "ndp": 2.871,
+    "gpc": 0.771,
+    "ppc": 0.0,
+    "other": 1.079
+   }
+  },
+  {
+   "id": "bramptoncentre",
+   "name": "Brampton Centre",
+   "seats": 1,
+   "votes2022": 40760,
+   "results_2022": {
+    "lpc": 48.371,
+    "cpc": 46.872,
+    "bq": 0.0,
+    "ndp": 2.662,
+    "gpc": 1.151,
+    "ppc": 0.707,
+    "other": 0.238
+   }
+  },
+  {
+   "id": "brampton-chinguacousypark",
+   "name": "Brampton—Chinguacousy Park",
+   "seats": 1,
+   "votes2022": 44080,
+   "results_2022": {
+    "lpc": 48.848,
+    "cpc": 44.444,
+    "bq": 0.0,
+    "ndp": 2.661,
+    "gpc": 1.182,
+    "ppc": 1.681,
+    "other": 1.184
+   }
+  },
+  {
+   "id": "bramptoneast",
+   "name": "Brampton East",
+   "seats": 1,
+   "votes2022": 48605,
+   "results_2022": {
+    "lpc": 48.588,
+    "cpc": 44.709,
+    "bq": 0.0,
+    "ndp": 1.689,
+    "gpc": 0.0,
+    "ppc": 4.742,
+    "other": 0.272
+   }
+  },
+  {
+   "id": "bramptonnorth-caledon",
+   "name": "Brampton North—Caledon",
+   "seats": 1,
+   "votes2022": 46595,
+   "results_2022": {
+    "lpc": 49.033,
+    "cpc": 47.441,
+    "bq": 0.0,
+    "ndp": 2.163,
+    "gpc": 0.0,
+    "ppc": 1.363,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "bramptonsouth",
+   "name": "Brampton South",
+   "seats": 1,
+   "votes2022": 44603,
+   "results_2022": {
+    "lpc": 49.326,
+    "cpc": 47.515,
+    "bq": 0.0,
+    "ndp": 1.742,
+    "gpc": 0.0,
+    "ppc": 0.803,
+    "other": 0.614
+   }
+  },
+  {
+   "id": "bramptonwest",
+   "name": "Brampton West",
+   "seats": 1,
+   "votes2022": 42387,
+   "results_2022": {
+    "lpc": 47.642,
+    "cpc": 49.808,
+    "bq": 0.0,
+    "ndp": 1.67,
+    "gpc": 0.656,
+    "ppc": 0.0,
+    "other": 0.224
+   }
+  },
+  {
+   "id": "brantford-brantsouth-sixnations",
+   "name": "Brantford—Brant South—Six Nations",
+   "seats": 1,
+   "votes2022": 65793,
+   "results_2022": {
+    "lpc": 41.086,
+    "cpc": 52.439,
+    "bq": 0.0,
+    "ndp": 3.663,
+    "gpc": 1.687,
+    "ppc": 0.596,
+    "other": 0.529
+   }
+  },
+  {
+   "id": "bruce-grey-owensound",
+   "name": "Bruce—Grey—Owen Sound",
+   "seats": 1,
+   "votes2022": 66911,
+   "results_2022": {
+    "lpc": 40.109,
+    "cpc": 53.032,
+    "bq": 0.0,
+    "ndp": 3.092,
+    "gpc": 2.163,
+    "ppc": 0.777,
+    "other": 0.828
+   }
+  },
+  {
+   "id": "burlington",
+   "name": "Burlington",
+   "seats": 1,
+   "votes2022": 78126,
+   "results_2022": {
+    "lpc": 55.798,
+    "cpc": 40.558,
+    "bq": 0.0,
+    "ndp": 1.983,
+    "gpc": 0.762,
+    "ppc": 0.669,
+    "other": 0.23
+   }
+  },
+  {
+   "id": "burlingtonnorth-miltonwest",
+   "name": "Burlington North—Milton West",
+   "seats": 1,
+   "votes2022": 70441,
+   "results_2022": {
+    "lpc": 52.746,
+    "cpc": 44.253,
+    "bq": 0.0,
+    "ndp": 2.139,
+    "gpc": 0.0,
+    "ppc": 0.862,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "cambridge",
+   "name": "Cambridge",
+   "seats": 1,
+   "votes2022": 65419,
+   "results_2022": {
+    "lpc": 46.331,
+    "cpc": 48.558,
+    "bq": 0.0,
+    "ndp": 3.337,
+    "gpc": 1.608,
+    "ppc": 0.0,
+    "other": 0.167
+   }
+  },
+  {
+   "id": "carleton",
+   "name": "Carleton",
+   "seats": 1,
+   "votes2022": 86060,
+   "results_2022": {
+    "lpc": 50.948,
+    "cpc": 45.704,
+    "bq": 0.0,
+    "ndp": 1.419,
+    "gpc": 0.652,
+    "ppc": 0.0,
+    "other": 1.277
+   }
+  },
+  {
+   "id": "chatham-kent-leamington",
+   "name": "Chatham-Kent—Leamington",
+   "seats": 1,
+   "votes2022": 72351,
+   "results_2022": {
+    "lpc": 35.906,
+    "cpc": 57.514,
+    "bq": 0.0,
+    "ndp": 4.068,
+    "gpc": 1.046,
+    "ppc": 1.466,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "davenport",
+   "name": "Davenport",
+   "seats": 1,
+   "votes2022": 61174,
+   "results_2022": {
+    "lpc": 57.809,
+    "cpc": 23.194,
+    "bq": 0.0,
+    "ndp": 17.086,
+    "gpc": 1.278,
+    "ppc": 0.0,
+    "other": 0.633
+   }
+  },
+  {
+   "id": "donvalleynorth",
+   "name": "Don Valley North",
+   "seats": 1,
+   "votes2022": 48527,
+   "results_2022": {
+    "lpc": 53.212,
+    "cpc": 42.339,
+    "bq": 0.0,
+    "ndp": 2.454,
+    "gpc": 0.923,
+    "ppc": 0.536,
+    "other": 0.536
+   }
+  },
+  {
+   "id": "donvalleywest",
+   "name": "Don Valley West",
+   "seats": 1,
+   "votes2022": 58664,
+   "results_2022": {
+    "lpc": 62.635,
+    "cpc": 33.206,
+    "bq": 0.0,
+    "ndp": 2.356,
+    "gpc": 1.05,
+    "ppc": 0.0,
+    "other": 0.753
+   }
+  },
+  {
+   "id": "dufferin-caledon",
+   "name": "Dufferin—Caledon",
+   "seats": 1,
+   "votes2022": 70595,
+   "results_2022": {
+    "lpc": 35.155,
+    "cpc": 60.143,
+    "bq": 0.0,
+    "ndp": 1.955,
+    "gpc": 1.313,
+    "ppc": 1.065,
+    "other": 0.368
+   }
+  },
+  {
+   "id": "eglinton-lawrence",
+   "name": "Eglinton—Lawrence",
+   "seats": 1,
+   "votes2022": 60761,
+   "results_2022": {
+    "lpc": 49.29,
+    "cpc": 47.828,
+    "bq": 0.0,
+    "ndp": 1.639,
+    "gpc": 0.706,
+    "ppc": 0.537,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "elgin-stthomas-londonsouth",
+   "name": "Elgin—St. Thomas—London South",
+   "seats": 1,
+   "votes2022": 64949,
+   "results_2022": {
+    "lpc": 43.126,
+    "cpc": 50.139,
+    "bq": 0.0,
+    "ndp": 4.801,
+    "gpc": 0.0,
+    "ppc": 1.934,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "essex",
+   "name": "Essex",
+   "seats": 1,
+   "votes2022": 80181,
+   "results_2022": {
+    "lpc": 36.653,
+    "cpc": 57.524,
+    "bq": 0.0,
+    "ndp": 4.772,
+    "gpc": 0.0,
+    "ppc": 1.051,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "etobicokecentre",
+   "name": "Etobicoke Centre",
+   "seats": 1,
+   "votes2022": 67510,
+   "results_2022": {
+    "lpc": 53.601,
+    "cpc": 44.013,
+    "bq": 0.0,
+    "ndp": 2.386,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "etobicoke-lakeshore",
+   "name": "Etobicoke—Lakeshore",
+   "seats": 1,
+   "votes2022": 65338,
+   "results_2022": {
+    "lpc": 57.412,
+    "cpc": 38.795,
+    "bq": 0.0,
+    "ndp": 2.548,
+    "gpc": 0.0,
+    "ppc": 0.943,
+    "other": 0.302
+   }
+  },
+  {
+   "id": "etobicokenorth",
+   "name": "Etobicoke North",
+   "seats": 1,
+   "votes2022": 42355,
+   "results_2022": {
+    "lpc": 52.579,
+    "cpc": 40.985,
+    "bq": 0.0,
+    "ndp": 3.197,
+    "gpc": 0.93,
+    "ppc": 1.997,
+    "other": 0.312
+   }
+  },
+  {
+   "id": "flamborough-glanbrook-brantnorth",
+   "name": "Flamborough—Glanbrook—Brant North",
+   "seats": 1,
+   "votes2022": 66884,
+   "results_2022": {
+    "lpc": 43.232,
+    "cpc": 52.697,
+    "bq": 0.0,
+    "ndp": 2.437,
+    "gpc": 0.888,
+    "ppc": 0.746,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "guelph",
+   "name": "Guelph",
+   "seats": 1,
+   "votes2022": 66593,
+   "results_2022": {
+    "lpc": 54.669,
+    "cpc": 30.739,
+    "bq": 0.0,
+    "ndp": 3.197,
+    "gpc": 10.18,
+    "ppc": 0.748,
+    "other": 0.467
+   }
+  },
+  {
+   "id": "haldimand-norfolk",
+   "name": "Haldimand—Norfolk",
+   "seats": 1,
+   "votes2022": 71606,
+   "results_2022": {
+    "lpc": 36.366,
+    "cpc": 57.562,
+    "bq": 0.0,
+    "ndp": 3.368,
+    "gpc": 1.047,
+    "ppc": 0.918,
+    "other": 0.739
+   }
+  },
+  {
+   "id": "haliburton-kawarthalakes",
+   "name": "Haliburton—Kawartha Lakes",
+   "seats": 1,
+   "votes2022": 75503,
+   "results_2022": {
+    "lpc": 38.704,
+    "cpc": 56.555,
+    "bq": 0.0,
+    "ndp": 3.477,
+    "gpc": 0.0,
+    "ppc": 1.264,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "hamiltoncentre",
+   "name": "Hamilton Centre",
+   "seats": 1,
+   "votes2022": 56952,
+   "results_2022": {
+    "lpc": 37.554,
+    "cpc": 29.988,
+    "bq": 0.0,
+    "ndp": 29.114,
+    "gpc": 1.436,
+    "ppc": 1.038,
+    "other": 0.869
+   }
+  },
+  {
+   "id": "hamiltoneast-stoneycreek",
+   "name": "Hamilton East—Stoney Creek",
+   "seats": 1,
+   "votes2022": 67468,
+   "results_2022": {
+    "lpc": 46.508,
+    "cpc": 48.7,
+    "bq": 0.0,
+    "ndp": 3.662,
+    "gpc": 0.0,
+    "ppc": 1.129,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "hamiltonmountain",
+   "name": "Hamilton Mountain",
+   "seats": 1,
+   "votes2022": 59893,
+   "results_2022": {
+    "lpc": 45.585,
+    "cpc": 41.502,
+    "bq": 0.0,
+    "ndp": 11.761,
+    "gpc": 0.0,
+    "ppc": 0.83,
+    "other": 0.322
+   }
+  },
+  {
+   "id": "hamiltonwest-ancaster-dundas",
+   "name": "Hamilton West—Ancaster—Dundas",
+   "seats": 1,
+   "votes2022": 69464,
+   "results_2022": {
+    "lpc": 56.101,
+    "cpc": 36.777,
+    "bq": 0.0,
+    "ndp": 5.252,
+    "gpc": 1.193,
+    "ppc": 0.442,
+    "other": 0.235
+   }
+  },
+  {
+   "id": "hastings-lennoxandaddington-tyendinaga",
+   "name": "Hastings—Lennox and Addington—Tyendinaga",
+   "seats": 1,
+   "votes2022": 66281,
+   "results_2022": {
+    "lpc": 40.351,
+    "cpc": 54.322,
+    "bq": 0.0,
+    "ndp": 3.547,
+    "gpc": 1.212,
+    "ppc": 0.569,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "humberriver-blackcreek",
+   "name": "Humber River—Black Creek",
+   "seats": 1,
+   "votes2022": 38398,
+   "results_2022": {
+    "lpc": 55.62,
+    "cpc": 35.796,
+    "bq": 0.0,
+    "ndp": 6.378,
+    "gpc": 0.0,
+    "ppc": 1.617,
+    "other": 0.589
+   }
+  },
+  {
+   "id": "huron-bruce",
+   "name": "Huron—Bruce",
+   "seats": 1,
+   "votes2022": 69657,
+   "results_2022": {
+    "lpc": 41.541,
+    "cpc": 53.156,
+    "bq": 0.0,
+    "ndp": 3.302,
+    "gpc": 1.331,
+    "ppc": 0.0,
+    "other": 0.67
+   }
+  },
+  {
+   "id": "kanata",
+   "name": "Kanata",
+   "seats": 1,
+   "votes2022": 74460,
+   "results_2022": {
+    "lpc": 60.763,
+    "cpc": 35.666,
+    "bq": 0.0,
+    "ndp": 2.286,
+    "gpc": 1.121,
+    "ppc": 0.0,
+    "other": 0.164
+   }
+  },
+  {
+   "id": "kapuskasing-timmins-mushkegowuk",
+   "name": "Kapuskasing—Timmins—Mushkegowuk",
+   "seats": 1,
+   "votes2022": 47137,
+   "results_2022": {
+    "lpc": 38.963,
+    "cpc": 48.925,
+    "bq": 0.0,
+    "ndp": 10.385,
+    "gpc": 0.0,
+    "ppc": 1.727,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kenora-kiiwetinoong",
+   "name": "Kenora—Kiiwetinoong",
+   "seats": 1,
+   "votes2022": 26892,
+   "results_2022": {
+    "lpc": 35.155,
+    "cpc": 48.747,
+    "bq": 0.0,
+    "ndp": 13.751,
+    "gpc": 1.064,
+    "ppc": 0.759,
+    "other": 0.524
+   }
+  },
+  {
+   "id": "kingstonandtheislands",
+   "name": "Kingston and the Islands",
+   "seats": 1,
+   "votes2022": 76993,
+   "results_2022": {
+    "lpc": 63.229,
+    "cpc": 30.642,
+    "bq": 0.0,
+    "ndp": 4.738,
+    "gpc": 1.391,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "king-vaughan",
+   "name": "King—Vaughan",
+   "seats": 1,
+   "votes2022": 67747,
+   "results_2022": {
+    "lpc": 35.946,
+    "cpc": 61.526,
+    "bq": 0.0,
+    "ndp": 1.135,
+    "gpc": 0.85,
+    "ppc": 0.543,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kitchenercentre",
+   "name": "Kitchener Centre",
+   "seats": 1,
+   "votes2022": 59084,
+   "results_2022": {
+    "lpc": 29.267,
+    "cpc": 34.246,
+    "bq": 0.0,
+    "ndp": 1.958,
+    "gpc": 33.611,
+    "ppc": 0.565,
+    "other": 0.352
+   }
+  },
+  {
+   "id": "kitchener-conestoga",
+   "name": "Kitchener—Conestoga",
+   "seats": 1,
+   "votes2022": 62087,
+   "results_2022": {
+    "lpc": 48.321,
+    "cpc": 47.48,
+    "bq": 0.0,
+    "ndp": 2.933,
+    "gpc": 0.0,
+    "ppc": 1.266,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kitchenersouth-hespeler",
+   "name": "Kitchener South—Hespeler",
+   "seats": 1,
+   "votes2022": 60431,
+   "results_2022": {
+    "lpc": 46.243,
+    "cpc": 47.944,
+    "bq": 0.0,
+    "ndp": 3.017,
+    "gpc": 1.999,
+    "ppc": 0.639,
+    "other": 0.159
+   }
+  },
+  {
+   "id": "lanark-frontenac",
+   "name": "Lanark—Frontenac",
+   "seats": 1,
+   "votes2022": 67813,
+   "results_2022": {
+    "lpc": 45.566,
+    "cpc": 50.412,
+    "bq": 0.0,
+    "ndp": 2.929,
+    "gpc": 1.093,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "leeds-grenville-thousandislands-rideaulakes",
+   "name": "Leeds—Grenville—Thousand Islands—Rideau Lakes",
+   "seats": 1,
+   "votes2022": 66811,
+   "results_2022": {
+    "lpc": 44.388,
+    "cpc": 50.047,
+    "bq": 0.0,
+    "ndp": 3.504,
+    "gpc": 1.169,
+    "ppc": 0.892,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "londoncentre",
+   "name": "London Centre",
+   "seats": 1,
+   "votes2022": 59923,
+   "results_2022": {
+    "lpc": 56.738,
+    "cpc": 31.095,
+    "bq": 0.0,
+    "ndp": 9.662,
+    "gpc": 1.465,
+    "ppc": 0.873,
+    "other": 0.167
+   }
+  },
+  {
+   "id": "london-fanshawe",
+   "name": "London—Fanshawe",
+   "seats": 1,
+   "votes2022": 58523,
+   "results_2022": {
+    "lpc": 30.523,
+    "cpc": 40.581,
+    "bq": 0.0,
+    "ndp": 27.57,
+    "gpc": 0.0,
+    "ppc": 1.326,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "londonwest",
+   "name": "London West",
+   "seats": 1,
+   "votes2022": 62808,
+   "results_2022": {
+    "lpc": 56.217,
+    "cpc": 37.0,
+    "bq": 0.0,
+    "ndp": 5.514,
+    "gpc": 0.68,
+    "ppc": 0.0,
+    "other": 0.589
+   }
+  },
+  {
+   "id": "markham-stouffville",
+   "name": "Markham—Stouffville",
+   "seats": 1,
+   "votes2022": 61644,
+   "results_2022": {
+    "lpc": 51.356,
+    "cpc": 45.257,
+    "bq": 0.0,
+    "ndp": 1.819,
+    "gpc": 0.702,
+    "ppc": 0.638,
+    "other": 0.229
+   }
+  },
+  {
+   "id": "markham-thornhill",
+   "name": "Markham—Thornhill",
+   "seats": 1,
+   "votes2022": 50429,
+   "results_2022": {
+    "lpc": 54.54,
+    "cpc": 41.649,
+    "bq": 0.0,
+    "ndp": 2.027,
+    "gpc": 0.0,
+    "ppc": 1.481,
+    "other": 0.303
+   }
+  },
+  {
+   "id": "markham-unionville",
+   "name": "Markham—Unionville",
+   "seats": 1,
+   "votes2022": 53414,
+   "results_2022": {
+    "lpc": 47.053,
+    "cpc": 50.652,
+    "bq": 0.0,
+    "ndp": 1.354,
+    "gpc": 0.942,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "middlesex-london",
+   "name": "Middlesex—London",
+   "seats": 1,
+   "votes2022": 69847,
+   "results_2022": {
+    "lpc": 42.092,
+    "cpc": 51.674,
+    "bq": 0.0,
+    "ndp": 4.135,
+    "gpc": 0.999,
+    "ppc": 0.826,
+    "other": 0.273
+   }
+  },
+  {
+   "id": "miltoneast-haltonhillssouth",
+   "name": "Milton East—Halton Hills South",
+   "seats": 1,
+   "votes2022": 66685,
+   "results_2022": {
+    "lpc": 48.254,
+    "cpc": 48.222,
+    "bq": 0.0,
+    "ndp": 1.543,
+    "gpc": 1.008,
+    "ppc": 0.712,
+    "other": 0.261
+   }
+  },
+  {
+   "id": "mississaugacentre",
+   "name": "Mississauga Centre",
+   "seats": 1,
+   "votes2022": 54976,
+   "results_2022": {
+    "lpc": 53.851,
+    "cpc": 41.855,
+    "bq": 0.0,
+    "ndp": 2.732,
+    "gpc": 0.0,
+    "ppc": 1.095,
+    "other": 0.467
+   }
+  },
+  {
+   "id": "mississaugaeast-cooksville",
+   "name": "Mississauga East—Cooksville",
+   "seats": 1,
+   "votes2022": 54056,
+   "results_2022": {
+    "lpc": 50.203,
+    "cpc": 44.606,
+    "bq": 0.0,
+    "ndp": 2.79,
+    "gpc": 0.0,
+    "ppc": 1.783,
+    "other": 0.618
+   }
+  },
+  {
+   "id": "mississauga-erinmills",
+   "name": "Mississauga—Erin Mills",
+   "seats": 1,
+   "votes2022": 60039,
+   "results_2022": {
+    "lpc": 55.71,
+    "cpc": 39.974,
+    "bq": 0.0,
+    "ndp": 2.184,
+    "gpc": 0.611,
+    "ppc": 1.223,
+    "other": 0.298
+   }
+  },
+  {
+   "id": "mississauga-lakeshore",
+   "name": "Mississauga—Lakeshore",
+   "seats": 1,
+   "votes2022": 66797,
+   "results_2022": {
+    "lpc": 52.354,
+    "cpc": 44.038,
+    "bq": 0.0,
+    "ndp": 1.877,
+    "gpc": 0.879,
+    "ppc": 0.5,
+    "other": 0.352
+   }
+  },
+  {
+   "id": "mississauga-malton",
+   "name": "Mississauga—Malton",
+   "seats": 1,
+   "votes2022": 50268,
+   "results_2022": {
+    "lpc": 53.3,
+    "cpc": 42.178,
+    "bq": 0.0,
+    "ndp": 2.566,
+    "gpc": 0.0,
+    "ppc": 1.956,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "mississauga-streetsville",
+   "name": "Mississauga—Streetsville",
+   "seats": 1,
+   "votes2022": 60731,
+   "results_2022": {
+    "lpc": 51.534,
+    "cpc": 44.855,
+    "bq": 0.0,
+    "ndp": 2.285,
+    "gpc": 0.723,
+    "ppc": 0.603,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "nepean",
+   "name": "Nepean",
+   "seats": 1,
+   "votes2022": 72237,
+   "results_2022": {
+    "lpc": 63.78,
+    "cpc": 33.248,
+    "bq": 0.0,
+    "ndp": 1.971,
+    "gpc": 0.64,
+    "ppc": 0.361,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "newmarket-aurora",
+   "name": "Newmarket—Aurora",
+   "seats": 1,
+   "votes2022": 62312,
+   "results_2022": {
+    "lpc": 47.02,
+    "cpc": 50.616,
+    "bq": 0.0,
+    "ndp": 2.364,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "newtecumseth-gwillimbury",
+   "name": "New Tecumseth—Gwillimbury",
+   "seats": 1,
+   "votes2022": 66125,
+   "results_2022": {
+    "lpc": 36.966,
+    "cpc": 59.353,
+    "bq": 0.0,
+    "ndp": 1.854,
+    "gpc": 1.077,
+    "ppc": 0.75,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "niagarafalls-niagara-on-the-lake",
+   "name": "Niagara Falls—Niagara-on-the-Lake",
+   "seats": 1,
+   "votes2022": 60595,
+   "results_2022": {
+    "lpc": 44.887,
+    "cpc": 49.136,
+    "bq": 0.0,
+    "ndp": 3.853,
+    "gpc": 0.855,
+    "ppc": 0.794,
+    "other": 0.475
+   }
+  },
+  {
+   "id": "niagarasouth",
+   "name": "Niagara South",
+   "seats": 1,
+   "votes2022": 76763,
+   "results_2022": {
+    "lpc": 43.912,
+    "cpc": 47.812,
+    "bq": 0.0,
+    "ndp": 5.611,
+    "gpc": 0.89,
+    "ppc": 1.494,
+    "other": 0.281
+   }
+  },
+  {
+   "id": "niagarawest",
+   "name": "Niagara West",
+   "seats": 1,
+   "votes2022": 70413,
+   "results_2022": {
+    "lpc": 43.208,
+    "cpc": 51.721,
+    "bq": 0.0,
+    "ndp": 3.212,
+    "gpc": 0.0,
+    "ppc": 0.827,
+    "other": 1.032
+   }
+  },
+  {
+   "id": "nipissing-timiskaming",
+   "name": "Nipissing—Timiskaming",
+   "seats": 1,
+   "votes2022": 58576,
+   "results_2022": {
+    "lpc": 47.245,
+    "cpc": 44.593,
+    "bq": 0.0,
+    "ndp": 6.057,
+    "gpc": 0.999,
+    "ppc": 1.106,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "northumberland-clarke",
+   "name": "Northumberland—Clarke",
+   "seats": 1,
+   "votes2022": 71192,
+   "results_2022": {
+    "lpc": 45.859,
+    "cpc": 48.969,
+    "bq": 0.0,
+    "ndp": 2.936,
+    "gpc": 0.885,
+    "ppc": 0.732,
+    "other": 0.619
+   }
+  },
+  {
+   "id": "oakvilleeast",
+   "name": "Oakville East",
+   "seats": 1,
+   "votes2022": 60872,
+   "results_2022": {
+    "lpc": 51.137,
+    "cpc": 44.85,
+    "bq": 0.0,
+    "ndp": 2.789,
+    "gpc": 0.577,
+    "ppc": 0.55,
+    "other": 0.097
+   }
+  },
+  {
+   "id": "oakvillewest",
+   "name": "Oakville West",
+   "seats": 1,
+   "votes2022": 60043,
+   "results_2022": {
+    "lpc": 53.082,
+    "cpc": 44.415,
+    "bq": 0.0,
+    "ndp": 1.384,
+    "gpc": 0.605,
+    "ppc": 0.423,
+    "other": 0.092
+   }
+  },
+  {
+   "id": "orleans",
+   "name": "Orléans",
+   "seats": 1,
+   "votes2022": 78803,
+   "results_2022": {
+    "lpc": 67.442,
+    "cpc": 28.009,
+    "bq": 0.0,
+    "ndp": 2.618,
+    "gpc": 0.827,
+    "ppc": 0.42,
+    "other": 0.684
+   }
+  },
+  {
+   "id": "oshawa",
+   "name": "Oshawa",
+   "seats": 1,
+   "votes2022": 66700,
+   "results_2022": {
+    "lpc": 42.958,
+    "cpc": 48.172,
+    "bq": 0.0,
+    "ndp": 7.664,
+    "gpc": 1.205,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "ottawacentre",
+   "name": "Ottawa Centre",
+   "seats": 1,
+   "votes2022": 81338,
+   "results_2022": {
+    "lpc": 62.733,
+    "cpc": 15.604,
+    "bq": 0.0,
+    "ndp": 19.591,
+    "gpc": 1.126,
+    "ppc": 0.0,
+    "other": 0.945
+   }
+  },
+  {
+   "id": "ottawasouth",
+   "name": "Ottawa South",
+   "seats": 1,
+   "votes2022": 66564,
+   "results_2022": {
+    "lpc": 65.182,
+    "cpc": 27.057,
+    "bq": 0.0,
+    "ndp": 6.035,
+    "gpc": 0.964,
+    "ppc": 0.0,
+    "other": 0.762
+   }
+  },
+  {
+   "id": "ottawa-vanier-gloucester",
+   "name": "Ottawa—Vanier—Gloucester",
+   "seats": 1,
+   "votes2022": 68183,
+   "results_2022": {
+    "lpc": 67.369,
+    "cpc": 21.461,
+    "bq": 0.0,
+    "ndp": 7.574,
+    "gpc": 1.973,
+    "ppc": 0.512,
+    "other": 1.112
+   }
+  },
+  {
+   "id": "ottawawest-nepean",
+   "name": "Ottawa West—Nepean",
+   "seats": 1,
+   "votes2022": 68445,
+   "results_2022": {
+    "lpc": 63.635,
+    "cpc": 27.054,
+    "bq": 0.0,
+    "ndp": 7.082,
+    "gpc": 1.14,
+    "ppc": 0.751,
+    "other": 0.339
+   }
+  },
+  {
+   "id": "oxford",
+   "name": "Oxford",
+   "seats": 1,
+   "votes2022": 71551,
+   "results_2022": {
+    "lpc": 38.17,
+    "cpc": 53.376,
+    "bq": 0.0,
+    "ndp": 4.257,
+    "gpc": 1.254,
+    "ppc": 0.897,
+    "other": 2.046
+   }
+  },
+  {
+   "id": "parrysound-muskoka",
+   "name": "Parry Sound—Muskoka",
+   "seats": 1,
+   "votes2022": 64653,
+   "results_2022": {
+    "lpc": 42.632,
+    "cpc": 52.189,
+    "bq": 0.0,
+    "ndp": 3.557,
+    "gpc": 0.0,
+    "ppc": 1.621,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "perth-wellington",
+   "name": "Perth—Wellington",
+   "seats": 1,
+   "votes2022": 64092,
+   "results_2022": {
+    "lpc": 40.788,
+    "cpc": 53.005,
+    "bq": 0.0,
+    "ndp": 4.539,
+    "gpc": 0.0,
+    "ppc": 1.668,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "peterborough",
+   "name": "Peterborough",
+   "seats": 1,
+   "votes2022": 79059,
+   "results_2022": {
+    "lpc": 54.251,
+    "cpc": 41.04,
+    "bq": 0.0,
+    "ndp": 3.043,
+    "gpc": 0.828,
+    "ppc": 0.344,
+    "other": 0.493
+   }
+  },
+  {
+   "id": "pickering-brooklin",
+   "name": "Pickering—Brooklin",
+   "seats": 1,
+   "votes2022": 71232,
+   "results_2022": {
+    "lpc": 54.158,
+    "cpc": 41.161,
+    "bq": 0.0,
+    "ndp": 2.58,
+    "gpc": 0.751,
+    "ppc": 0.897,
+    "other": 0.452
+   }
+  },
+  {
+   "id": "prescott-russell-cumberland",
+   "name": "Prescott—Russell—Cumberland",
+   "seats": 1,
+   "votes2022": 71393,
+   "results_2022": {
+    "lpc": 54.781,
+    "cpc": 40.347,
+    "bq": 0.0,
+    "ndp": 2.423,
+    "gpc": 1.102,
+    "ppc": 1.016,
+    "other": 0.331
+   }
+  },
+  {
+   "id": "richmondhillsouth",
+   "name": "Richmond Hill South",
+   "seats": 1,
+   "votes2022": 58584,
+   "results_2022": {
+    "lpc": 44.396,
+    "cpc": 52.258,
+    "bq": 0.0,
+    "ndp": 1.799,
+    "gpc": 0.845,
+    "ppc": 0.416,
+    "other": 0.285
+   }
+  },
+  {
+   "id": "sarnia-lambton-bkejwanong",
+   "name": "Sarnia—Lambton—Bkejwanong",
+   "seats": 1,
+   "votes2022": 76389,
+   "results_2022": {
+    "lpc": 37.885,
+    "cpc": 53.145,
+    "bq": 0.0,
+    "ndp": 5.352,
+    "gpc": 0.0,
+    "ppc": 1.487,
+    "other": 2.131
+   }
+  },
+  {
+   "id": "saultstemarie-algoma",
+   "name": "Sault Ste. Marie—Algoma",
+   "seats": 1,
+   "votes2022": 65317,
+   "results_2022": {
+    "lpc": 47.363,
+    "cpc": 44.717,
+    "bq": 0.0,
+    "ndp": 6.625,
+    "gpc": 0.828,
+    "ppc": 0.0,
+    "other": 0.467
+   }
+  },
+  {
+   "id": "scarborough-agincourt",
+   "name": "Scarborough—Agincourt",
+   "seats": 1,
+   "votes2022": 50733,
+   "results_2022": {
+    "lpc": 54.308,
+    "cpc": 42.836,
+    "bq": 0.0,
+    "ndp": 2.856,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "scarboroughcentre-donvalleyeast",
+   "name": "Scarborough Centre—Don Valley East",
+   "seats": 1,
+   "votes2022": 48088,
+   "results_2022": {
+    "lpc": 57.305,
+    "cpc": 38.07,
+    "bq": 0.0,
+    "ndp": 3.254,
+    "gpc": 0.0,
+    "ppc": 1.37,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "scarborough-guildwood-rougepark",
+   "name": "Scarborough—Guildwood—Rouge Park",
+   "seats": 1,
+   "votes2022": 55185,
+   "results_2022": {
+    "lpc": 63.958,
+    "cpc": 31.684,
+    "bq": 0.0,
+    "ndp": 3.211,
+    "gpc": 1.147,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "scarboroughnorth",
+   "name": "Scarborough North",
+   "seats": 1,
+   "votes2022": 46732,
+   "results_2022": {
+    "lpc": 62.95,
+    "cpc": 33.14,
+    "bq": 0.0,
+    "ndp": 3.91,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "scarboroughsouthwest",
+   "name": "Scarborough Southwest",
+   "seats": 1,
+   "votes2022": 54476,
+   "results_2022": {
+    "lpc": 61.486,
+    "cpc": 30.568,
+    "bq": 0.0,
+    "ndp": 5.011,
+    "gpc": 1.384,
+    "ppc": 1.041,
+    "other": 0.51
+   }
+  },
+  {
+   "id": "scarborough-woburn",
+   "name": "Scarborough—Woburn",
+   "seats": 1,
+   "votes2022": 41868,
+   "results_2022": {
+    "lpc": 60.383,
+    "cpc": 34.133,
+    "bq": 0.0,
+    "ndp": 3.501,
+    "gpc": 1.192,
+    "ppc": 0.0,
+    "other": 0.791
+   }
+  },
+  {
+   "id": "simcoe-grey",
+   "name": "Simcoe—Grey",
+   "seats": 1,
+   "votes2022": 67907,
+   "results_2022": {
+    "lpc": 43.375,
+    "cpc": 52.077,
+    "bq": 0.0,
+    "ndp": 2.318,
+    "gpc": 1.459,
+    "ppc": 0.77,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "simcoenorth",
+   "name": "Simcoe North",
+   "seats": 1,
+   "votes2022": 66605,
+   "results_2022": {
+    "lpc": 44.692,
+    "cpc": 48.406,
+    "bq": 0.0,
+    "ndp": 3.765,
+    "gpc": 1.892,
+    "ppc": 0.958,
+    "other": 0.287
+   }
+  },
+  {
+   "id": "spadina-harbourfront",
+   "name": "Spadina—Harbourfront",
+   "seats": 1,
+   "votes2022": 52990,
+   "results_2022": {
+    "lpc": 60.072,
+    "cpc": 30.734,
+    "bq": 0.0,
+    "ndp": 7.751,
+    "gpc": 0.845,
+    "ppc": 0.364,
+    "other": 0.234
+   }
+  },
+  {
+   "id": "stcatharines",
+   "name": "St. Catharines",
+   "seats": 1,
+   "votes2022": 66810,
+   "results_2022": {
+    "lpc": 52.013,
+    "cpc": 40.433,
+    "bq": 0.0,
+    "ndp": 6.019,
+    "gpc": 0.0,
+    "ppc": 0.781,
+    "other": 0.754
+   }
+  },
+  {
+   "id": "stormont-dundas-glengarry",
+   "name": "Stormont—Dundas—Glengarry",
+   "seats": 1,
+   "votes2022": 66407,
+   "results_2022": {
+    "lpc": 39.765,
+    "cpc": 56.318,
+    "bq": 0.0,
+    "ndp": 2.489,
+    "gpc": 1.015,
+    "ppc": 0.0,
+    "other": 0.413
+   }
+  },
+  {
+   "id": "sudbury",
+   "name": "Sudbury",
+   "seats": 1,
+   "votes2022": 60839,
+   "results_2022": {
+    "lpc": 51.86,
+    "cpc": 39.177,
+    "bq": 0.0,
+    "ndp": 7.692,
+    "gpc": 0.0,
+    "ppc": 1.271,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "sudburyeast-manitoulin-nickelbelt",
+   "name": "Sudbury East—Manitoulin—Nickel Belt",
+   "seats": 1,
+   "votes2022": 60323,
+   "results_2022": {
+    "lpc": 41.568,
+    "cpc": 48.333,
+    "bq": 0.0,
+    "ndp": 7.994,
+    "gpc": 0.771,
+    "ppc": 0.811,
+    "other": 0.524
+   }
+  },
+  {
+   "id": "taiaiakon-parkdale-highpark",
+   "name": "Taiaiako’n—Parkdale—High Park",
+   "seats": 1,
+   "votes2022": 65313,
+   "results_2022": {
+    "lpc": 55.791,
+    "cpc": 19.387,
+    "bq": 0.0,
+    "ndp": 22.971,
+    "gpc": 1.072,
+    "ppc": 0.0,
+    "other": 0.779
+   }
+  },
+  {
+   "id": "thornhill",
+   "name": "Thornhill",
+   "seats": 1,
+   "votes2022": 66918,
+   "results_2022": {
+    "lpc": 31.192,
+    "cpc": 66.378,
+    "bq": 0.0,
+    "ndp": 1.245,
+    "gpc": 0.528,
+    "ppc": 0.658,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "thunderbay-rainyriver",
+   "name": "Thunder Bay—Rainy River",
+   "seats": 1,
+   "votes2022": 43531,
+   "results_2022": {
+    "lpc": 48.529,
+    "cpc": 42.923,
+    "bq": 0.0,
+    "ndp": 6.786,
+    "gpc": 0.767,
+    "ppc": 0.995,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "thunderbay-superiornorth",
+   "name": "Thunder Bay—Superior North",
+   "seats": 1,
+   "votes2022": 45512,
+   "results_2022": {
+    "lpc": 55.225,
+    "cpc": 35.742,
+    "bq": 0.0,
+    "ndp": 7.108,
+    "gpc": 0.916,
+    "ppc": 1.009,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "torontocentre",
+   "name": "Toronto Centre",
+   "seats": 1,
+   "votes2022": 58922,
+   "results_2022": {
+    "lpc": 64.334,
+    "cpc": 20.911,
+    "bq": 0.0,
+    "ndp": 12.488,
+    "gpc": 1.127,
+    "ppc": 0.399,
+    "other": 0.742
+   }
+  },
+  {
+   "id": "toronto-danforth",
+   "name": "Toronto—Danforth",
+   "seats": 1,
+   "votes2022": 58881,
+   "results_2022": {
+    "lpc": 66.56,
+    "cpc": 18.999,
+    "bq": 0.0,
+    "ndp": 12.952,
+    "gpc": 1.063,
+    "ppc": 0.0,
+    "other": 0.426
+   }
+  },
+  {
+   "id": "toronto-stpauls",
+   "name": "Toronto—St. Paul's",
+   "seats": 1,
+   "votes2022": 71581,
+   "results_2022": {
+    "lpc": 61.906,
+    "cpc": 33.109,
+    "bq": 0.0,
+    "ndp": 3.487,
+    "gpc": 0.771,
+    "ppc": 0.46,
+    "other": 0.267
+   }
+  },
+  {
+   "id": "university-rosedale",
+   "name": "University—Rosedale",
+   "seats": 1,
+   "votes2022": 62265,
+   "results_2022": {
+    "lpc": 63.996,
+    "cpc": 23.487,
+    "bq": 0.0,
+    "ndp": 9.906,
+    "gpc": 1.712,
+    "ppc": 0.0,
+    "other": 0.899
+   }
+  },
+  {
+   "id": "vaughan-woodbridge",
+   "name": "Vaughan—Woodbridge",
+   "seats": 1,
+   "votes2022": 67355,
+   "results_2022": {
+    "lpc": 38.033,
+    "cpc": 60.013,
+    "bq": 0.0,
+    "ndp": 1.323,
+    "gpc": 0.0,
+    "ppc": 0.631,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "waterloo",
+   "name": "Waterloo",
+   "seats": 1,
+   "votes2022": 63193,
+   "results_2022": {
+    "lpc": 59.467,
+    "cpc": 32.553,
+    "bq": 0.0,
+    "ndp": 4.141,
+    "gpc": 2.53,
+    "ppc": 0.551,
+    "other": 0.758
+   }
+  },
+  {
+   "id": "wellington-haltonhillsnorth",
+   "name": "Wellington—Halton Hills North",
+   "seats": 1,
+   "votes2022": 66646,
+   "results_2022": {
+    "lpc": 44.427,
+    "cpc": 50.62,
+    "bq": 0.0,
+    "ndp": 2.02,
+    "gpc": 2.084,
+    "ppc": 0.849,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "whitby",
+   "name": "Whitby",
+   "seats": 1,
+   "votes2022": 67594,
+   "results_2022": {
+    "lpc": 52.703,
+    "cpc": 43.82,
+    "bq": 0.0,
+    "ndp": 2.423,
+    "gpc": 0.749,
+    "ppc": 0.0,
+    "other": 0.305
+   }
+  },
+  {
+   "id": "willowdale",
+   "name": "Willowdale",
+   "seats": 1,
+   "votes2022": 47689,
+   "results_2022": {
+    "lpc": 53.446,
+    "cpc": 43.987,
+    "bq": 0.0,
+    "ndp": 2.567,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "windsor-tecumseh-lakeshore",
+   "name": "Windsor—Tecumseh—Lakeshore",
+   "seats": 1,
+   "votes2022": 70138,
+   "results_2022": {
+    "lpc": 45.747,
+    "cpc": 45.753,
+    "bq": 0.0,
+    "ndp": 6.045,
+    "gpc": 0.667,
+    "ppc": 1.181,
+    "other": 0.607
+   }
+  },
+  {
+   "id": "windsorwest",
+   "name": "Windsor West",
+   "seats": 1,
+   "votes2022": 54888,
+   "results_2022": {
+    "lpc": 30.947,
+    "cpc": 39.01,
+    "bq": 0.0,
+    "ndp": 27.795,
+    "gpc": 0.723,
+    "ppc": 1.008,
+    "other": 0.517
+   }
+  },
+  {
+   "id": "yorkcentre",
+   "name": "York Centre",
+   "seats": 1,
+   "votes2022": 47619,
+   "results_2022": {
+    "lpc": 42.668,
+    "cpc": 54.831,
+    "bq": 0.0,
+    "ndp": 2.501,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "york-durham",
+   "name": "York—Durham",
+   "seats": 1,
+   "votes2022": 72582,
+   "results_2022": {
+    "lpc": 39.577,
+    "cpc": 55.563,
+    "bq": 0.0,
+    "ndp": 2.52,
+    "gpc": 1.098,
+    "ppc": 1.241,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "yorksouth-weston-etobicoke",
+   "name": "York South—Weston—Etobicoke",
+   "seats": 1,
+   "votes2022": 44599,
+   "results_2022": {
+    "lpc": 55.299,
+    "cpc": 39.79,
+    "bq": 0.0,
+    "ndp": 4.91,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "brandon-souris",
+   "name": "Brandon—Souris",
+   "seats": 1,
+   "votes2022": 46027,
+   "results_2022": {
+    "lpc": 23.391,
+    "cpc": 62.19,
+    "bq": 0.0,
+    "ndp": 14.42,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "churchill-keewatinookaski",
+   "name": "Churchill—Keewatinook Aski",
+   "seats": 1,
+   "votes2022": 20469,
+   "results_2022": {
+    "lpc": 45.498,
+    "cpc": 24.071,
+    "bq": 0.0,
+    "ndp": 28.726,
+    "gpc": 0.0,
+    "ppc": 1.705,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "elmwood-transcona",
+   "name": "Elmwood—Transcona",
+   "seats": 1,
+   "votes2022": 46830,
+   "results_2022": {
+    "lpc": 22.447,
+    "cpc": 41.561,
+    "bq": 0.0,
+    "ndp": 34.461,
+    "gpc": 0.685,
+    "ppc": 0.846,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kildonan-stpaul",
+   "name": "Kildonan—St. Paul",
+   "seats": 1,
+   "votes2022": 55521,
+   "results_2022": {
+    "lpc": 44.682,
+    "cpc": 47.485,
+    "bq": 0.0,
+    "ndp": 6.958,
+    "gpc": 0.0,
+    "ppc": 0.875,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "portage-lisgar",
+   "name": "Portage—Lisgar",
+   "seats": 1,
+   "votes2022": 45965,
+   "results_2022": {
+    "lpc": 22.828,
+    "cpc": 69.377,
+    "bq": 0.0,
+    "ndp": 4.375,
+    "gpc": 1.294,
+    "ppc": 2.126,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "provencher",
+   "name": "Provencher",
+   "seats": 1,
+   "votes2022": 51803,
+   "results_2022": {
+    "lpc": 25.856,
+    "cpc": 66.336,
+    "bq": 0.0,
+    "ndp": 4.629,
+    "gpc": 1.361,
+    "ppc": 1.818,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "ridingmountain",
+   "name": "Riding Mountain",
+   "seats": 1,
+   "votes2022": 41873,
+   "results_2022": {
+    "lpc": 22.165,
+    "cpc": 67.846,
+    "bq": 0.0,
+    "ndp": 7.336,
+    "gpc": 1.306,
+    "ppc": 1.347,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "stboniface-stvital",
+   "name": "St. Boniface—St. Vital",
+   "seats": 1,
+   "votes2022": 54520,
+   "results_2022": {
+    "lpc": 59.793,
+    "cpc": 32.328,
+    "bq": 0.0,
+    "ndp": 6.92,
+    "gpc": 0.0,
+    "ppc": 0.959,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "selkirk-interlake-eastman",
+   "name": "Selkirk—Interlake—Eastman",
+   "seats": 1,
+   "votes2022": 54479,
+   "results_2022": {
+    "lpc": 30.415,
+    "cpc": 60.185,
+    "bq": 0.0,
+    "ndp": 6.489,
+    "gpc": 1.301,
+    "ppc": 0.868,
+    "other": 0.742
+   }
+  },
+  {
+   "id": "winnipegcentre",
+   "name": "Winnipeg Centre",
+   "seats": 1,
+   "votes2022": 34289,
+   "results_2022": {
+    "lpc": 35.399,
+    "cpc": 22.334,
+    "bq": 0.0,
+    "ndp": 39.441,
+    "gpc": 1.134,
+    "ppc": 1.07,
+    "other": 0.621
+   }
+  },
+  {
+   "id": "winnipegnorth",
+   "name": "Winnipeg North",
+   "seats": 1,
+   "votes2022": 34173,
+   "results_2022": {
+    "lpc": 57.917,
+    "cpc": 34.355,
+    "bq": 0.0,
+    "ndp": 6.025,
+    "gpc": 0.568,
+    "ppc": 0.802,
+    "other": 0.334
+   }
+  },
+  {
+   "id": "winnipegsouth",
+   "name": "Winnipeg South",
+   "seats": 1,
+   "votes2022": 46319,
+   "results_2022": {
+    "lpc": 59.019,
+    "cpc": 35.087,
+    "bq": 0.0,
+    "ndp": 4.564,
+    "gpc": 0.499,
+    "ppc": 0.831,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "winnipegsouthcentre",
+   "name": "Winnipeg South Centre",
+   "seats": 1,
+   "votes2022": 53178,
+   "results_2022": {
+    "lpc": 63.624,
+    "cpc": 27.733,
+    "bq": 0.0,
+    "ndp": 6.512,
+    "gpc": 0.846,
+    "ppc": 0.511,
+    "other": 0.773
+   }
+  },
+  {
+   "id": "winnipegwest",
+   "name": "Winnipeg West",
+   "seats": 1,
+   "votes2022": 55591,
+   "results_2022": {
+    "lpc": 54.462,
+    "cpc": 40.76,
+    "bq": 0.0,
+    "ndp": 3.99,
+    "gpc": 0.788,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "battlefords-lloydminster-meadowlake",
+   "name": "Battlefords—Lloydminster—Meadow Lake",
+   "seats": 1,
+   "votes2022": 37787,
+   "results_2022": {
+    "lpc": 18.718,
+    "cpc": 75.777,
+    "bq": 0.0,
+    "ndp": 4.806,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.699
+   }
+  },
+  {
+   "id": "carltontrail-eaglecreek",
+   "name": "Carlton Trail—Eagle Creek",
+   "seats": 1,
+   "votes2022": 47051,
+   "results_2022": {
+    "lpc": 17.02,
+    "cpc": 77.42,
+    "bq": 0.0,
+    "ndp": 5.56,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "desnethe-missinippi-churchillriver",
+   "name": "Desnethé—Missinippi—Churchill River",
+   "seats": 1,
+   "votes2022": 9027,
+   "results_2022": {
+    "lpc": 65.094,
+    "cpc": 25.49,
+    "bq": 0.0,
+    "ndp": 9.416,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "moosejaw-lakecentre-lanigan",
+   "name": "Moose Jaw—Lake Centre—Lanigan",
+   "seats": 1,
+   "votes2022": 45879,
+   "results_2022": {
+    "lpc": 16.698,
+    "cpc": 71.909,
+    "bq": 0.0,
+    "ndp": 7.537,
+    "gpc": 0.896,
+    "ppc": 2.96,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "princealbert",
+   "name": "Prince Albert",
+   "seats": 1,
+   "votes2022": 38844,
+   "results_2022": {
+    "lpc": 19.182,
+    "cpc": 71.473,
+    "bq": 0.0,
+    "ndp": 9.345,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "regina-lewvan",
+   "name": "Regina—Lewvan",
+   "seats": 1,
+   "votes2022": 43969,
+   "results_2022": {
+    "lpc": 42.969,
+    "cpc": 50.008,
+    "bq": 0.0,
+    "ndp": 5.852,
+    "gpc": 0.619,
+    "ppc": 0.553,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "regina-quappelle",
+   "name": "Regina—Qu'Appelle",
+   "seats": 1,
+   "votes2022": 42244,
+   "results_2022": {
+    "lpc": 26.965,
+    "cpc": 63.971,
+    "bq": 0.0,
+    "ndp": 8.02,
+    "gpc": 0.0,
+    "ppc": 1.044,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "regina-wascana",
+   "name": "Regina—Wascana",
+   "seats": 1,
+   "votes2022": 44077,
+   "results_2022": {
+    "lpc": 43.678,
+    "cpc": 50.076,
+    "bq": 0.0,
+    "ndp": 4.851,
+    "gpc": 0.656,
+    "ppc": 0.74,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saskatoonsouth",
+   "name": "Saskatoon South",
+   "seats": 1,
+   "votes2022": 49756,
+   "results_2022": {
+    "lpc": 40.411,
+    "cpc": 49.272,
+    "bq": 0.0,
+    "ndp": 9.074,
+    "gpc": 0.623,
+    "ppc": 0.619,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saskatoon-university",
+   "name": "Saskatoon—University",
+   "seats": 1,
+   "votes2022": 47425,
+   "results_2022": {
+    "lpc": 41.375,
+    "cpc": 48.873,
+    "bq": 0.0,
+    "ndp": 8.508,
+    "gpc": 0.555,
+    "ppc": 0.69,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saskatoonwest",
+   "name": "Saskatoon West",
+   "seats": 1,
+   "votes2022": 37631,
+   "results_2022": {
+    "lpc": 27.249,
+    "cpc": 52.653,
+    "bq": 0.0,
+    "ndp": 19.099,
+    "gpc": 0.999,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "souris-moosemountain",
+   "name": "Souris—Moose Mountain",
+   "seats": 1,
+   "votes2022": 41428,
+   "results_2022": {
+    "lpc": 9.778,
+    "cpc": 83.984,
+    "bq": 0.0,
+    "ndp": 4.557,
+    "gpc": 0.567,
+    "ppc": 0.0,
+    "other": 1.113
+   }
+  },
+  {
+   "id": "swiftcurrent-grasslands-kindersley",
+   "name": "Swift Current—Grasslands—Kindersley",
+   "seats": 1,
+   "votes2022": 39388,
+   "results_2022": {
+    "lpc": 11.222,
+    "cpc": 81.984,
+    "bq": 0.0,
+    "ndp": 5.712,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 1.082
+   }
+  },
+  {
+   "id": "yorkton-melville",
+   "name": "Yorkton—Melville",
+   "seats": 1,
+   "votes2022": 37013,
+   "results_2022": {
+    "lpc": 14.422,
+    "cpc": 77.546,
+    "bq": 0.0,
+    "ndp": 5.495,
+    "gpc": 1.926,
+    "ppc": 0.0,
+    "other": 0.611
+   }
+  },
+  {
+   "id": "airdrie-cochrane",
+   "name": "Airdrie—Cochrane",
+   "seats": 1,
+   "votes2022": 70560,
+   "results_2022": {
+    "lpc": 23.688,
+    "cpc": 71.219,
+    "bq": 0.0,
+    "ndp": 3.672,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 1.421
+   }
+  },
+  {
+   "id": "battleriver-crowfoot",
+   "name": "Battle River—Crowfoot",
+   "seats": 1,
+   "votes2022": 64807,
+   "results_2022": {
+    "lpc": 11.675,
+    "cpc": 82.837,
+    "bq": 0.0,
+    "ndp": 3.18,
+    "gpc": 0.731,
+    "ppc": 1.577,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "bowriver",
+   "name": "Bow River",
+   "seats": 1,
+   "votes2022": 56554,
+   "results_2022": {
+    "lpc": 16.908,
+    "cpc": 78.872,
+    "bq": 0.0,
+    "ndp": 2.987,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 1.234
+   }
+  },
+  {
+   "id": "calgarycentre",
+   "name": "Calgary Centre",
+   "seats": 1,
+   "votes2022": 62946,
+   "results_2022": {
+    "lpc": 45.792,
+    "cpc": 50.208,
+    "bq": 0.0,
+    "ndp": 2.645,
+    "gpc": 0.575,
+    "ppc": 0.58,
+    "other": 0.2
+   }
+  },
+  {
+   "id": "calgaryconfederation",
+   "name": "Calgary Confederation",
+   "seats": 1,
+   "votes2022": 68839,
+   "results_2022": {
+    "lpc": 48.101,
+    "cpc": 46.251,
+    "bq": 0.0,
+    "ndp": 4.131,
+    "gpc": 0.581,
+    "ppc": 0.439,
+    "other": 0.497
+   }
+  },
+  {
+   "id": "calgarycrowfoot",
+   "name": "Calgary Crowfoot",
+   "seats": 1,
+   "votes2022": 67935,
+   "results_2022": {
+    "lpc": 37.368,
+    "cpc": 58.837,
+    "bq": 0.0,
+    "ndp": 2.563,
+    "gpc": 0.509,
+    "ppc": 0.53,
+    "other": 0.193
+   }
+  },
+  {
+   "id": "calgaryeast",
+   "name": "Calgary East",
+   "seats": 1,
+   "votes2022": 53674,
+   "results_2022": {
+    "lpc": 31.788,
+    "cpc": 60.532,
+    "bq": 0.0,
+    "ndp": 3.898,
+    "gpc": 1.237,
+    "ppc": 1.692,
+    "other": 0.853
+   }
+  },
+  {
+   "id": "calgaryheritage",
+   "name": "Calgary Heritage",
+   "seats": 1,
+   "votes2022": 68493,
+   "results_2022": {
+    "lpc": 34.563,
+    "cpc": 61.449,
+    "bq": 0.0,
+    "ndp": 2.469,
+    "gpc": 0.72,
+    "ppc": 0.0,
+    "other": 0.8
+   }
+  },
+  {
+   "id": "calgarymcknight",
+   "name": "Calgary McKnight",
+   "seats": 1,
+   "votes2022": 42478,
+   "results_2022": {
+    "lpc": 46.014,
+    "cpc": 49.115,
+    "bq": 0.0,
+    "ndp": 2.834,
+    "gpc": 0.643,
+    "ppc": 0.76,
+    "other": 0.633
+   }
+  },
+  {
+   "id": "calgarymidnapore",
+   "name": "Calgary Midnapore",
+   "seats": 1,
+   "votes2022": 73432,
+   "results_2022": {
+    "lpc": 29.931,
+    "cpc": 65.545,
+    "bq": 0.0,
+    "ndp": 3.093,
+    "gpc": 0.674,
+    "ppc": 0.757,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "calgarynosehill",
+   "name": "Calgary Nose Hill",
+   "seats": 1,
+   "votes2022": 61592,
+   "results_2022": {
+    "lpc": 36.167,
+    "cpc": 59.418,
+    "bq": 0.0,
+    "ndp": 3.207,
+    "gpc": 0.698,
+    "ppc": 0.0,
+    "other": 0.51
+   }
+  },
+  {
+   "id": "calgaryshepard",
+   "name": "Calgary Shepard",
+   "seats": 1,
+   "votes2022": 65249,
+   "results_2022": {
+    "lpc": 28.232,
+    "cpc": 67.99,
+    "bq": 0.0,
+    "ndp": 2.728,
+    "gpc": 0.463,
+    "ppc": 0.587,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "calgarysignalhill",
+   "name": "Calgary Signal Hill",
+   "seats": 1,
+   "votes2022": 69225,
+   "results_2022": {
+    "lpc": 36.365,
+    "cpc": 60.149,
+    "bq": 0.0,
+    "ndp": 2.392,
+    "gpc": 0.0,
+    "ppc": 0.711,
+    "other": 0.383
+   }
+  },
+  {
+   "id": "calgaryskyview",
+   "name": "Calgary Skyview",
+   "seats": 1,
+   "votes2022": 50152,
+   "results_2022": {
+    "lpc": 37.57,
+    "cpc": 55.447,
+    "bq": 0.0,
+    "ndp": 2.694,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 4.289
+   }
+  },
+  {
+   "id": "edmontoncentre",
+   "name": "Edmonton Centre",
+   "seats": 1,
+   "votes2022": 54428,
+   "results_2022": {
+    "lpc": 44.348,
+    "cpc": 37.896,
+    "bq": 0.0,
+    "ndp": 15.507,
+    "gpc": 0.0,
+    "ppc": 0.86,
+    "other": 1.389
+   }
+  },
+  {
+   "id": "edmontongateway",
+   "name": "Edmonton Gateway",
+   "seats": 1,
+   "votes2022": 52152,
+   "results_2022": {
+    "lpc": 37.266,
+    "cpc": 50.592,
+    "bq": 0.0,
+    "ndp": 4.918,
+    "gpc": 0.0,
+    "ppc": 0.909,
+    "other": 6.314
+   }
+  },
+  {
+   "id": "edmontongriesbach",
+   "name": "Edmonton Griesbach",
+   "seats": 1,
+   "votes2022": 48966,
+   "results_2022": {
+    "lpc": 18.325,
+    "cpc": 45.452,
+    "bq": 0.0,
+    "ndp": 34.14,
+    "gpc": 0.617,
+    "ppc": 0.649,
+    "other": 0.817
+   }
+  },
+  {
+   "id": "edmontonmanning",
+   "name": "Edmonton Manning",
+   "seats": 1,
+   "votes2022": 49807,
+   "results_2022": {
+    "lpc": 35.342,
+    "cpc": 53.095,
+    "bq": 0.0,
+    "ndp": 9.908,
+    "gpc": 0.0,
+    "ppc": 1.654,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "edmontonnorthwest",
+   "name": "Edmonton Northwest",
+   "seats": 1,
+   "votes2022": 54626,
+   "results_2022": {
+    "lpc": 38.273,
+    "cpc": 53.443,
+    "bq": 0.0,
+    "ndp": 6.585,
+    "gpc": 0.613,
+    "ppc": 1.086,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "edmontonriverbend",
+   "name": "Edmonton Riverbend",
+   "seats": 1,
+   "votes2022": 60391,
+   "results_2022": {
+    "lpc": 44.833,
+    "cpc": 50.244,
+    "bq": 0.0,
+    "ndp": 4.244,
+    "gpc": 0.0,
+    "ppc": 0.679,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "edmontonsoutheast",
+   "name": "Edmonton Southeast",
+   "seats": 1,
+   "votes2022": 47664,
+   "results_2022": {
+    "lpc": 38.773,
+    "cpc": 52.883,
+    "bq": 0.0,
+    "ndp": 5.321,
+    "gpc": 0.0,
+    "ppc": 1.848,
+    "other": 1.175
+   }
+  },
+  {
+   "id": "edmontonstrathcona",
+   "name": "Edmonton Strathcona",
+   "seats": 1,
+   "votes2022": 59687,
+   "results_2022": {
+    "lpc": 17.942,
+    "cpc": 33.119,
+    "bq": 0.0,
+    "ndp": 46.957,
+    "gpc": 0.613,
+    "ppc": 0.647,
+    "other": 0.722
+   }
+  },
+  {
+   "id": "edmontonwest",
+   "name": "Edmonton West",
+   "seats": 1,
+   "votes2022": 59015,
+   "results_2022": {
+    "lpc": 40.659,
+    "cpc": 52.87,
+    "bq": 0.0,
+    "ndp": 5.361,
+    "gpc": 0.0,
+    "ppc": 0.905,
+    "other": 0.205
+   }
+  },
+  {
+   "id": "foothills",
+   "name": "Foothills",
+   "seats": 1,
+   "votes2022": 71888,
+   "results_2022": {
+    "lpc": 19.066,
+    "cpc": 76.333,
+    "bq": 0.0,
+    "ndp": 2.675,
+    "gpc": 0.819,
+    "ppc": 1.107,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "fortmcmurray-coldlake",
+   "name": "Fort McMurray—Cold Lake",
+   "seats": 1,
+   "votes2022": 49466,
+   "results_2022": {
+    "lpc": 14.541,
+    "cpc": 80.154,
+    "bq": 0.0,
+    "ndp": 2.703,
+    "gpc": 0.586,
+    "ppc": 1.811,
+    "other": 0.204
+   }
+  },
+  {
+   "id": "grandeprairie",
+   "name": "Grande Prairie",
+   "seats": 1,
+   "votes2022": 58652,
+   "results_2022": {
+    "lpc": 11.843,
+    "cpc": 81.675,
+    "bq": 0.0,
+    "ndp": 4.194,
+    "gpc": 0.0,
+    "ppc": 1.412,
+    "other": 0.876
+   }
+  },
+  {
+   "id": "lakeland",
+   "name": "Lakeland",
+   "seats": 1,
+   "votes2022": 56593,
+   "results_2022": {
+    "lpc": 12.168,
+    "cpc": 80.975,
+    "bq": 0.0,
+    "ndp": 3.804,
+    "gpc": 0.726,
+    "ppc": 1.735,
+    "other": 0.592
+   }
+  },
+  {
+   "id": "leduc-wetaskiwin",
+   "name": "Leduc—Wetaskiwin",
+   "seats": 1,
+   "votes2022": 64161,
+   "results_2022": {
+    "lpc": 17.356,
+    "cpc": 74.729,
+    "bq": 0.0,
+    "ndp": 6.121,
+    "gpc": 0.0,
+    "ppc": 1.072,
+    "other": 0.722
+   }
+  },
+  {
+   "id": "lethbridge",
+   "name": "Lethbridge",
+   "seats": 1,
+   "votes2022": 66937,
+   "results_2022": {
+    "lpc": 32.716,
+    "cpc": 61.051,
+    "bq": 0.0,
+    "ndp": 3.632,
+    "gpc": 0.683,
+    "ppc": 0.714,
+    "other": 1.204
+   }
+  },
+  {
+   "id": "medicinehat-cardston-warner",
+   "name": "Medicine Hat—Cardston—Warner",
+   "seats": 1,
+   "votes2022": 54100,
+   "results_2022": {
+    "lpc": 17.66,
+    "cpc": 76.743,
+    "bq": 0.0,
+    "ndp": 4.784,
+    "gpc": 0.813,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "parkland",
+   "name": "Parkland",
+   "seats": 1,
+   "votes2022": 71107,
+   "results_2022": {
+    "lpc": 17.846,
+    "cpc": 75.194,
+    "bq": 0.0,
+    "ndp": 4.147,
+    "gpc": 0.631,
+    "ppc": 1.499,
+    "other": 0.682
+   }
+  },
+  {
+   "id": "peaceriver-westlock",
+   "name": "Peace River—Westlock",
+   "seats": 1,
+   "votes2022": 53369,
+   "results_2022": {
+    "lpc": 11.763,
+    "cpc": 77.067,
+    "bq": 0.0,
+    "ndp": 5.458,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 5.711
+   }
+  },
+  {
+   "id": "ponoka-didsbury",
+   "name": "Ponoka—Didsbury",
+   "seats": 1,
+   "votes2022": 68579,
+   "results_2022": {
+    "lpc": 0.0,
+    "cpc": 81.812,
+    "bq": 0.0,
+    "ndp": 10.811,
+    "gpc": 0.0,
+    "ppc": 1.88,
+    "other": 5.497
+   }
+  },
+  {
+   "id": "reddeer",
+   "name": "Red Deer",
+   "seats": 1,
+   "votes2022": 61828,
+   "results_2022": {
+    "lpc": 21.938,
+    "cpc": 71.552,
+    "bq": 0.0,
+    "ndp": 3.841,
+    "gpc": 1.0,
+    "ppc": 1.315,
+    "other": 0.354
+   }
+  },
+  {
+   "id": "sherwoodpark-fortsaskatchewan",
+   "name": "Sherwood Park—Fort Saskatchewan",
+   "seats": 1,
+   "votes2022": 81627,
+   "results_2022": {
+    "lpc": 27.17,
+    "cpc": 66.315,
+    "bq": 0.0,
+    "ndp": 5.067,
+    "gpc": 0.549,
+    "ppc": 0.609,
+    "other": 0.29
+   }
+  },
+  {
+   "id": "stalbert-sturgeonriver",
+   "name": "St. Albert—Sturgeon River",
+   "seats": 1,
+   "votes2022": 76961,
+   "results_2022": {
+    "lpc": 29.855,
+    "cpc": 63.949,
+    "bq": 0.0,
+    "ndp": 4.787,
+    "gpc": 0.0,
+    "ppc": 1.065,
+    "other": 0.343
+   }
+  },
+  {
+   "id": "yellowhead",
+   "name": "Yellowhead",
+   "seats": 1,
+   "votes2022": 69290,
+   "results_2022": {
+    "lpc": 25.211,
+    "cpc": 69.076,
+    "bq": 0.0,
+    "ndp": 3.973,
+    "gpc": 0.0,
+    "ppc": 1.374,
+    "other": 0.365
+   }
+  },
+  {
+   "id": "abbotsford-southlangley",
+   "name": "Abbotsford—South Langley",
+   "seats": 1,
+   "votes2022": 55972,
+   "results_2022": {
+    "lpc": 33.89,
+    "cpc": 43.086,
+    "bq": 0.0,
+    "ndp": 3.759,
+    "gpc": 1.031,
+    "ppc": 0.82,
+    "other": 17.414
+   }
+  },
+  {
+   "id": "burnabycentral",
+   "name": "Burnaby Central",
+   "seats": 1,
+   "votes2022": 51493,
+   "results_2022": {
+    "lpc": 42.229,
+    "cpc": 38.625,
+    "bq": 0.0,
+    "ndp": 18.164,
+    "gpc": 0.0,
+    "ppc": 0.983,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "burnabynorth-seymour",
+   "name": "Burnaby North—Seymour",
+   "seats": 1,
+   "votes2022": 64058,
+   "results_2022": {
+    "lpc": 59.054,
+    "cpc": 33.941,
+    "bq": 0.0,
+    "ndp": 6.433,
+    "gpc": 0.0,
+    "ppc": 0.571,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "cariboo-princegeorge",
+   "name": "Cariboo—Prince George",
+   "seats": 1,
+   "votes2022": 63291,
+   "results_2022": {
+    "lpc": 30.404,
+    "cpc": 60.317,
+    "bq": 0.0,
+    "ndp": 6.162,
+    "gpc": 1.825,
+    "ppc": 0.689,
+    "other": 0.604
+   }
+  },
+  {
+   "id": "chilliwack-hope",
+   "name": "Chilliwack—Hope",
+   "seats": 1,
+   "votes2022": 65754,
+   "results_2022": {
+    "lpc": 35.365,
+    "cpc": 54.791,
+    "bq": 0.0,
+    "ndp": 7.268,
+    "gpc": 1.647,
+    "ppc": 0.733,
+    "other": 0.196
+   }
+  },
+  {
+   "id": "cloverdale-langleycity",
+   "name": "Cloverdale—Langley City",
+   "seats": 1,
+   "votes2022": 53566,
+   "results_2022": {
+    "lpc": 46.35,
+    "cpc": 47.803,
+    "bq": 0.0,
+    "ndp": 4.387,
+    "gpc": 0.92,
+    "ppc": 0.54,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "columbia-kootenay-southernrockies",
+   "name": "Columbia—Kootenay—Southern Rockies",
+   "seats": 1,
+   "votes2022": 71542,
+   "results_2022": {
+    "lpc": 28.213,
+    "cpc": 50.433,
+    "bq": 0.0,
+    "ndp": 17.991,
+    "gpc": 1.487,
+    "ppc": 0.679,
+    "other": 1.196
+   }
+  },
+  {
+   "id": "coquitlam-portcoquitlam",
+   "name": "Coquitlam—Port Coquitlam",
+   "seats": 1,
+   "votes2022": 57522,
+   "results_2022": {
+    "lpc": 47.373,
+    "cpc": 42.992,
+    "bq": 0.0,
+    "ndp": 7.394,
+    "gpc": 0.876,
+    "ppc": 0.0,
+    "other": 1.365
+   }
+  },
+  {
+   "id": "courtenay-alberni",
+   "name": "Courtenay—Alberni",
+   "seats": 1,
+   "votes2022": 79766,
+   "results_2022": {
+    "lpc": 22.664,
+    "cpc": 35.138,
+    "bq": 0.0,
+    "ndp": 39.637,
+    "gpc": 1.695,
+    "ppc": 0.535,
+    "other": 0.331
+   }
+  },
+  {
+   "id": "cowichan-malahat-langford",
+   "name": "Cowichan—Malahat—Langford",
+   "seats": 1,
+   "votes2022": 76174,
+   "results_2022": {
+    "lpc": 28.196,
+    "cpc": 37.244,
+    "bq": 0.0,
+    "ndp": 32.591,
+    "gpc": 1.969,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "delta",
+   "name": "Delta",
+   "seats": 1,
+   "votes2022": 63293,
+   "results_2022": {
+    "lpc": 51.826,
+    "cpc": 43.155,
+    "bq": 0.0,
+    "ndp": 4.403,
+    "gpc": 0.0,
+    "ppc": 0.616,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "esquimalt-saanich-sooke",
+   "name": "Esquimalt—Saanich—Sooke",
+   "seats": 1,
+   "votes2022": 73335,
+   "results_2022": {
+    "lpc": 49.337,
+    "cpc": 28.748,
+    "bq": 0.0,
+    "ndp": 18.635,
+    "gpc": 2.671,
+    "ppc": 0.0,
+    "other": 0.61
+   }
+  },
+  {
+   "id": "fleetwood-portkells",
+   "name": "Fleetwood—Port Kells",
+   "seats": 1,
+   "votes2022": 48533,
+   "results_2022": {
+    "lpc": 47.906,
+    "cpc": 44.174,
+    "bq": 0.0,
+    "ndp": 5.944,
+    "gpc": 0.948,
+    "ppc": 1.028,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kamloops-shuswap-centralrockies",
+   "name": "Kamloops—Shuswap—Central Rockies",
+   "seats": 1,
+   "votes2022": 68056,
+   "results_2022": {
+    "lpc": 38.981,
+    "cpc": 52.245,
+    "bq": 0.0,
+    "ndp": 5.481,
+    "gpc": 2.408,
+    "ppc": 0.885,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kamloops-thompson-nicola",
+   "name": "Kamloops—Thompson—Nicola",
+   "seats": 1,
+   "votes2022": 62102,
+   "results_2022": {
+    "lpc": 40.194,
+    "cpc": 51.541,
+    "bq": 0.0,
+    "ndp": 5.927,
+    "gpc": 1.507,
+    "ppc": 0.831,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "kelowna",
+   "name": "Kelowna",
+   "seats": 1,
+   "votes2022": 58841,
+   "results_2022": {
+    "lpc": 48.779,
+    "cpc": 46.94,
+    "bq": 0.0,
+    "ndp": 3.299,
+    "gpc": 0.982,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "langleytownship-fraserheights",
+   "name": "Langley Township—Fraser Heights",
+   "seats": 1,
+   "votes2022": 65360,
+   "results_2022": {
+    "lpc": 42.892,
+    "cpc": 51.368,
+    "bq": 0.0,
+    "ndp": 3.995,
+    "gpc": 0.751,
+    "ppc": 0.464,
+    "other": 0.531
+   }
+  },
+  {
+   "id": "mission-matsqui-abbotsford",
+   "name": "Mission—Matsqui—Abbotsford",
+   "seats": 1,
+   "votes2022": 59599,
+   "results_2022": {
+    "lpc": 36.642,
+    "cpc": 56.697,
+    "bq": 0.0,
+    "ndp": 4.606,
+    "gpc": 1.213,
+    "ppc": 0.842,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "nanaimo-ladysmith",
+   "name": "Nanaimo—Ladysmith",
+   "seats": 1,
+   "votes2022": 74397,
+   "results_2022": {
+    "lpc": 27.765,
+    "cpc": 35.46,
+    "bq": 0.0,
+    "ndp": 18.261,
+    "gpc": 18.126,
+    "ppc": 0.388,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "newwestminster-burnaby-maillardville",
+   "name": "New Westminster—Burnaby—Maillardville",
+   "seats": 1,
+   "votes2022": 55703,
+   "results_2022": {
+    "lpc": 35.091,
+    "cpc": 31.429,
+    "bq": 0.0,
+    "ndp": 31.549,
+    "gpc": 1.239,
+    "ppc": 0.0,
+    "other": 0.691
+   }
+  },
+  {
+   "id": "northisland-powellriver",
+   "name": "North Island—Powell River",
+   "seats": 1,
+   "votes2022": 80929,
+   "results_2022": {
+    "lpc": 26.218,
+    "cpc": 38.745,
+    "bq": 0.0,
+    "ndp": 32.568,
+    "gpc": 1.86,
+    "ppc": 0.421,
+    "other": 0.188
+   }
+  },
+  {
+   "id": "northvancouver-capilano",
+   "name": "North Vancouver—Capilano",
+   "seats": 1,
+   "votes2022": 63364,
+   "results_2022": {
+    "lpc": 59.824,
+    "cpc": 33.677,
+    "bq": 0.0,
+    "ndp": 4.236,
+    "gpc": 1.698,
+    "ppc": 0.404,
+    "other": 0.161
+   }
+  },
+  {
+   "id": "okanaganlakewest-southkelowna",
+   "name": "Okanagan Lake West—South Kelowna",
+   "seats": 1,
+   "votes2022": 65234,
+   "results_2022": {
+    "lpc": 44.19,
+    "cpc": 50.923,
+    "bq": 0.0,
+    "ndp": 3.356,
+    "gpc": 0.923,
+    "ppc": 0.471,
+    "other": 0.138
+   }
+  },
+  {
+   "id": "pittmeadows-mapleridge",
+   "name": "Pitt Meadows—Maple Ridge",
+   "seats": 1,
+   "votes2022": 67333,
+   "results_2022": {
+    "lpc": 45.636,
+    "cpc": 47.412,
+    "bq": 0.0,
+    "ndp": 6.15,
+    "gpc": 0.0,
+    "ppc": 0.547,
+    "other": 0.255
+   }
+  },
+  {
+   "id": "portmoody-coquitlam",
+   "name": "Port Moody—Coquitlam",
+   "seats": 1,
+   "votes2022": 62196,
+   "results_2022": {
+    "lpc": 43.53,
+    "cpc": 40.398,
+    "bq": 0.0,
+    "ndp": 15.049,
+    "gpc": 0.834,
+    "ppc": 0.0,
+    "other": 0.188
+   }
+  },
+  {
+   "id": "princegeorge-peaceriver-northernrockies",
+   "name": "Prince George—Peace River—Northern Rockies",
+   "seats": 1,
+   "votes2022": 58992,
+   "results_2022": {
+    "lpc": 19.57,
+    "cpc": 71.122,
+    "bq": 0.0,
+    "ndp": 6.004,
+    "gpc": 2.134,
+    "ppc": 1.17,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "richmondcentre-marpole",
+   "name": "Richmond Centre—Marpole",
+   "seats": 1,
+   "votes2022": 47486,
+   "results_2022": {
+    "lpc": 44.712,
+    "cpc": 49.556,
+    "bq": 0.0,
+    "ndp": 4.441,
+    "gpc": 0.884,
+    "ppc": 0.406,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "richmondeast-steveston",
+   "name": "Richmond East—Steveston",
+   "seats": 1,
+   "votes2022": 53055,
+   "results_2022": {
+    "lpc": 48.45,
+    "cpc": 46.376,
+    "bq": 0.0,
+    "ndp": 4.243,
+    "gpc": 0.931,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "saanich-gulfislands",
+   "name": "Saanich—Gulf Islands",
+   "seats": 1,
+   "votes2022": 79786,
+   "results_2022": {
+    "lpc": 31.846,
+    "cpc": 25.086,
+    "bq": 0.0,
+    "ndp": 3.964,
+    "gpc": 39.103,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "similkameen-southokanagan-westkootenay",
+   "name": "Similkameen—South Okanagan—West Kootenay",
+   "seats": 1,
+   "votes2022": 68216,
+   "results_2022": {
+    "lpc": 37.28,
+    "cpc": 44.057,
+    "bq": 0.0,
+    "ndp": 16.174,
+    "gpc": 1.53,
+    "ppc": 0.959,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "skeena-bulkleyvalley",
+   "name": "Skeena—Bulkley Valley",
+   "seats": 1,
+   "votes2022": 44932,
+   "results_2022": {
+    "lpc": 10.957,
+    "cpc": 47.187,
+    "bq": 0.0,
+    "ndp": 39.342,
+    "gpc": 1.175,
+    "ppc": 0.0,
+    "other": 1.34
+   }
+  },
+  {
+   "id": "southsurrey-whiterock",
+   "name": "South Surrey—White Rock",
+   "seats": 1,
+   "votes2022": 65527,
+   "results_2022": {
+    "lpc": 50.504,
+    "cpc": 45.667,
+    "bq": 0.0,
+    "ndp": 2.494,
+    "gpc": 1.335,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "surreycentre",
+   "name": "Surrey Centre",
+   "seats": 1,
+   "votes2022": 41454,
+   "results_2022": {
+    "lpc": 48.005,
+    "cpc": 43.229,
+    "bq": 0.0,
+    "ndp": 6.781,
+    "gpc": 0.953,
+    "ppc": 0.593,
+    "other": 0.439
+   }
+  },
+  {
+   "id": "surreynewton",
+   "name": "Surrey Newton",
+   "seats": 1,
+   "votes2022": 40975,
+   "results_2022": {
+    "lpc": 49.452,
+    "cpc": 43.985,
+    "bq": 0.0,
+    "ndp": 6.021,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.542
+   }
+  },
+  {
+   "id": "vancouvercentre",
+   "name": "Vancouver Centre",
+   "seats": 1,
+   "votes2022": 54061,
+   "results_2022": {
+    "lpc": 55.225,
+    "cpc": 30.277,
+    "bq": 0.0,
+    "ndp": 12.591,
+    "gpc": 1.4,
+    "ppc": 0.39,
+    "other": 0.117
+   }
+  },
+  {
+   "id": "vancouvereast",
+   "name": "Vancouver East",
+   "seats": 1,
+   "votes2022": 57151,
+   "results_2022": {
+    "lpc": 35.497,
+    "cpc": 17.781,
+    "bq": 0.0,
+    "ndp": 43.648,
+    "gpc": 1.923,
+    "ppc": 0.576,
+    "other": 0.576
+   }
+  },
+  {
+   "id": "vancouverfraserview-southburnaby",
+   "name": "Vancouver Fraserview—South Burnaby",
+   "seats": 1,
+   "votes2022": 51845,
+   "results_2022": {
+    "lpc": 52.304,
+    "cpc": 35.683,
+    "bq": 0.0,
+    "ndp": 9.814,
+    "gpc": 1.269,
+    "ppc": 0.93,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "vancouvergranville",
+   "name": "Vancouver Granville",
+   "seats": 1,
+   "votes2022": 59577,
+   "results_2022": {
+    "lpc": 62.121,
+    "cpc": 28.758,
+    "bq": 0.0,
+    "ndp": 7.535,
+    "gpc": 1.586,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "vancouverkingsway",
+   "name": "Vancouver Kingsway",
+   "seats": 1,
+   "votes2022": 50446,
+   "results_2022": {
+    "lpc": 36.643,
+    "cpc": 24.486,
+    "bq": 0.0,
+    "ndp": 37.244,
+    "gpc": 0.989,
+    "ppc": 0.638,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "vancouverquadra",
+   "name": "Vancouver Quadra",
+   "seats": 1,
+   "votes2022": 55997,
+   "results_2022": {
+    "lpc": 63.189,
+    "cpc": 30.373,
+    "bq": 0.0,
+    "ndp": 4.27,
+    "gpc": 1.843,
+    "ppc": 0.325,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "vernon-lakecountry-monashee",
+   "name": "Vernon—Lake Country—Monashee",
+   "seats": 1,
+   "votes2022": 67141,
+   "results_2022": {
+    "lpc": 42.849,
+    "cpc": 50.416,
+    "bq": 0.0,
+    "ndp": 5.089,
+    "gpc": 1.646,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "victoria",
+   "name": "Victoria",
+   "seats": 1,
+   "votes2022": 75768,
+   "results_2022": {
+    "lpc": 54.281,
+    "cpc": 16.986,
+    "bq": 0.0,
+    "ndp": 24.914,
+    "gpc": 3.102,
+    "ppc": 0.367,
+    "other": 0.35
+   }
+  },
+  {
+   "id": "westvancouver-sunshinecoast-seatoskycountry",
+   "name": "West Vancouver—Sunshine Coast—Sea to Sky Country",
+   "seats": 1,
+   "votes2022": 64247,
+   "results_2022": {
+    "lpc": 59.744,
+    "cpc": 32.968,
+    "bq": 0.0,
+    "ndp": 3.222,
+    "gpc": 3.432,
+    "ppc": 0.479,
+    "other": 0.154
+   }
+  },
+  {
+   "id": "yukon",
+   "name": "Yukon",
+   "seats": 1,
+   "votes2022": 22636,
+   "results_2022": {
+    "lpc": 53.053,
+    "cpc": 38.518,
+    "bq": 0.0,
+    "ndp": 6.335,
+    "gpc": 2.094,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "northwestterritories",
+   "name": "Northwest Territories",
+   "seats": 1,
+   "votes2022": 16549,
+   "results_2022": {
+    "lpc": 53.508,
+    "cpc": 33.313,
+    "bq": 0.0,
+    "ndp": 12.152,
+    "gpc": 1.027,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  },
+  {
+   "id": "nunavut",
+   "name": "Nunavut",
+   "seats": 1,
+   "votes2022": 7657,
+   "results_2022": {
+    "lpc": 36.725,
+    "cpc": 26.015,
+    "bq": 0.0,
+    "ndp": 37.26,
+    "gpc": 0.0,
+    "ppc": 0.0,
+    "other": 0.0
+   }
+  }
+ ]
+}

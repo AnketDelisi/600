@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;overflow:hidden}iframe{width:100vw;height:100vh;border:0;display:block}</style>
+</head><body>
+<iframe id="f" src="/index.html?c=canada"></iframe>
+<script>
+const f = document.getElementById('f');
+let err = '';
+f.addEventListener('load', () => {
+  const d = f.contentDocument;
+  const w = f.contentWindow;
+  try { w.addEventListener('error', e => { err += e.message + '; '; }); } catch (e) {}
+  const T = (ms) => new Promise(r => setTimeout(r, ms));
+  const counts = (sel) => {
+    const box = d.querySelector(sel);
+    if (!box) return 'nobox';
+    const paths = [...box.querySelectorAll('path[style]')].filter(p => !p.closest('g[transform]'));
+    const c = {};
+    paths.forEach(p => { const v = p.style.fill || ''; if (v) c[v] = (c[v] || 0) + 1; });
+    return paths.length + ':' + JSON.stringify(c);
+  };
+  const click = (sel) => { const b = d.querySelector(sel); if (b) { b.click(); return true; } return false; };
+  (async () => {
+    let n = 0;
+    while (n < 150 && !d.querySelector('.parl-btn')) { await T(100); n++; }
+    await T(3000);
+    const out = [{ state: 'proj map-sec', map: counts('#map-box-sec') }];
+    const cRes = click('button[data-parlmode="2022"]');
+    await T(3000);
+    out.push({ state: '2025 result', clicked: cRes, map: counts('#map-box-sec') });
+    const hero = d.querySelector('#pane-polls .hero');
+    document.title = 'CA ' + JSON.stringify(out)
+      + ' HERO=' + (hero ? hero.innerText.replace(/\s+/g, ' ').slice(0, 100) : '?')
+      + ' ERR=' + (err || 'none');
+  })();
+});
+</script>
+</body></html>

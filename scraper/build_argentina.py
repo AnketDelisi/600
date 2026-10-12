@@ -317,7 +317,7 @@ def main():
        j(NAT, ensure_ascii=False),
        j(runoff, ensure_ascii=False),
        j(NAT_RUNOFF),
-       j(logos).replace('"', "'"))
+       '{ ' + ', '.join("%s: '%s'" % (k, v) for k, v in logos.items()) + ' }')
 
     text = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
     m = re.search(r"\n  argentina: \{", text)

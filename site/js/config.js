@@ -28800,7 +28800,7 @@ saxony_anhalt: {
     },
     pollsterMAE: {},
     maeKey: 'AR2027',
-    logos: {'milei': 'img/ar/LLA.svg', 'kicillof': 'img/ar/PJ.svg', 'kirchner': 'img/ar/PJ.svg', 'massa': 'img/ar/FR.svg', 'moreno': 'img/ar/PYV.svg', 'grabois': 'img/ar/PG.svg', 'macri': 'img/ar/PRO.svg', 'schiaretti': 'img/ar/PU.svg', 'bregman': 'img/ar/FITU.svg', 'villarruel': 'img/ar/PD.svg'},
+    logos: { milei: 'img/ar/LLA.svg', kicillof: 'img/ar/PJ.svg', kirchner: 'img/ar/PJ.svg', massa: 'img/ar/FR.svg', moreno: 'img/ar/PYV.svg', grabois: 'img/ar/PG.svg', macri: 'img/ar/PRO.svg', schiaretti: 'img/ar/PU.svg', bregman: 'img/ar/FITU.svg', villarruel: 'img/ar/PD.svg' },
   },
 
   bgpres: {

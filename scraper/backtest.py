@@ -224,6 +224,12 @@ CYCLES = {
         2024: {
             "article": "Opinion_polling_for_the_2024_Portuguese_legislative_election",
             "election": "2024-03-10", "prev": "2022-01-30", "half_life": 14,
+            # NOTE: this article's AD column header is an image cell with the
+            # PSD/CDS-PP sub-labels two rows down, which parse_cycle's
+            # single-row header pick cannot see: ad is absent from the
+            # cycle's average (the vote MAE covers the parsed parties only
+            # and the T-0 leader reads PS). The pt base-blend experiment
+            # parsed this table with scrape_spain's grid instead.
             "cols": {"ad": r"^ad\b|^democratic alliance", "ps": r"^ps\b|^socialist",
                      "ch": r"^ch\b|^chega", "il": r"^il\b|^liberal",
                      "be": r"^be\b|^left bloc",

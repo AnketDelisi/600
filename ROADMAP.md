@@ -64,19 +64,19 @@ sufficiency), the system notes map to the existing machinery.
 ## Model backlog
 
 - **Base blend (recency-weighted previous election)** - shipped for
-  **Portugal** (0.75 * 2025 + 0.25 * 2024) and **Bulgaria** (0.75 * 2026 +
+  **Portugal** (0.75 * 2025 + 0.25 * 2024), **Bulgaria** (0.75 * 2026 +
   0.25 * Oct 2024, official CEC opendata; the same rebuild replaced the
-  bg base's 2021-pattern proxies with the real 2026 per-province shares).
+  bg base's 2021-pattern proxies with the real 2026 per-province shares),
+  **France** (0.75 * 2022 + 0.25 * 2024 EP; ENS -> camp 60/40, PS-PP ->
+  Glucksmann, who gained a real base) and the cheap batch
+  **Iceland / Austria / Netherlands** (2024+2021, 2024+2019, 2025+2023).
   Backtest evidence (PT 2024 and 2025 cycles, seat-level, same T-0 votes
   per cycle): blending never hurt and helped by 0.2-0.75 seat MAE in 3 of
-  4 arms; 0.75 was never worse. Candidates for the same treatment, in
-  order: **France first-round base** (2024 EP table already in the config;
-  left-split mapping needed), then the cheap batch **Netherlands / Austria
-  / Iceland**. Test-first tier: **Germany** (2021+2025 per-Wahlkreis
-  CSVs), **Italy**. UK is parked: notional 2017 on the 2024 boundaries
-  does not exist publicly, so the FPTP blend can't be tested cheaply. Do
-  not add blanket - stable systems (DK/FI/NO/CH/SE/IE/ES) stay
-  last-election-only.
+  4 arms; 0.75 was never worse. Remaining: the test-first tier
+  **Germany** (2021+2025 per-Wahlkreis CSVs), **Italy**. UK is parked:
+  notional 2017 on the 2024 boundaries does not exist publicly, so the
+  FPTP blend can't be tested cheaply. Do not add blanket - stable systems
+  (DK/FI/NO/CH/SE/IE/ES) stay last-election-only.
 
 ## Add-a-country checklist (the four-build distillation)
 

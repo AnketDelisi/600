@@ -1,10 +1,10 @@
 {
- "country": "is",
- "name": "Iceland",
- "election_date": "2028-11-30",
- "seats": 63,
- "threshold": 5.0,
- "method": "dhondt",
- "constituencies": false,
- "notes": "Althing: 63 seats = 54 district seats in 6 constituencies (D'Hondt, no threshold) + 9 leveling seats allocated nationally by quotient continuation votes/(seats+1) to parties at or above 5% - the real two-tier method, reproduced exactly at the anchor (the allocator is the Norway path with a D'Hondt district tier). District seat counts fixed by law: RN 9, RS 9, SW 12, NW 6, NE 9, S 9 (Althingi 2024 election report). Next election: by ~November 2028 (the 2024 election was 30 November 2024). Baseline: the 30 November 2024 election (S 15, D 14, C 11, F 10, M 8, B 5; J/P/V below 5%). Polls: the is-wikipedia Næstu alþingiskosningar table (the en-wiki next-election title redirects to the stale 2021 article; is-wiki carries the live polls, Icelandic decimal commas and month names). Geometry: the Commons 2017 results map (six grey paths, identified by rendering; boundaries unchanged)."
+  "country": "is",
+  "name": "Iceland",
+  "election_date": "2028-11-30",
+  "seats": 63,
+  "threshold": 5.0,
+  "method": "dhondt",
+  "constituencies": false,
+  "notes": "Althing: 63 seats = 54 district seats in 6 constituencies (D'Hondt, no threshold) + 9 leveling seats allocated nationally by quotient continuation votes/(seats+1) to parties at or above 5% - the real two-tier method, reproduced exactly at the anchor (the allocator is the Norway path with a D'Hondt district tier). District seat counts fixed by law: RN 9, RS 9, SW 12, NW 6, NE 9, S 9 (Althingi 2024 election report). Next election: by ~November 2028 (the 2024 election was 30 November 2024). Baseline: the 30 November 2024 election (S 15, D 14, C 11, F 10, M 8, B 5; J/P/V below 5%). Polls: the is-wikipedia Næstu alþingiskosningar table (the en-wiki next-election title redirects to the stale 2021 article; is-wiki carries the live polls, Icelandic decimal commas and month names). Geometry: the Commons 2017 results map (six grey paths, identified by rendering; boundaries unchanged). The projection base blends 0.75 * 2024 + 0.25 * 2021 per-constituency geography (scraper/build_is_base.py; J has no 2021 column and holds its 2024 baseline). Result views stay pure 2024."
 }

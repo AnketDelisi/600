@@ -67,6 +67,7 @@ jobs:
           python scraper/scrape_slovenia.py
           python scraper/scrape_france.py
           python scraper/scrape_argentina.py
+          python scraper/scrape_ontario.py
 
       # Tag every poll with its fieldwork method from the curated pollster
       # map (online / phone / face / mixed; unknowns stay untagged). The

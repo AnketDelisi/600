@@ -36,7 +36,8 @@ sufficiency), the system notes map to the existing machinery.
 | 4 | **France presidential** | Apr 2027 | very rich (dedicated page) | national two-round | the Brazil runoff machinery + the presidential page style (bgpres) as a new `frpres` key | M (no new map needed if national) |
 | 5 | **Australia** federal | by May 2028 | ~350 (very rich) | preferential (IRV) FPTP | needs a TCP-based winner rule validated on 2025 | M-L (model is the risk, not data) |
 | 6 | **Ireland** Dáil | by ~2030 | ~48 (moderate) | STV | no honest shortcut exists | L (defer) |
-| 7 | **Ontario / Alberta** provincial | 2029 / 2027 | rich / moderate | FPTP ridings | the BC/QC riding builders | M each |
+| 7 | ~~**Ontario** provincial~~ | ~~2029~~ | **shipped 2026-10-12** | FPTP, 124 ridings | the BC/QC riding builders | done |
+| 8 | **Alberta** provincial | May 2027 | rich (32nd article) | FPTP, 87 ridings | the Ontario pipeline | M |
 
 ## Thin data - wait
 

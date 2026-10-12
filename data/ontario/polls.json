@@ -1,0 +1,541 @@
+{
+  "country": "ontario",
+  "sources": [
+    {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/45th_Ontario_general_election"
+    }
+  ],
+  "scraped_at": "2026-10-12T18:13:57Z",
+  "poll_count": 48,
+  "polls": [
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2026-09-29",
+      "votes": {
+        "pc": 34.0,
+        "ndp": 27.0,
+        "olp": 26.0,
+        "gpo": 5.0
+      },
+      "n": 1203
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-09-19",
+      "votes": {
+        "pc": 40.0,
+        "ndp": 21.0,
+        "olp": 34.0,
+        "gpo": 2.0
+      },
+      "n": 1600
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-08-24",
+      "votes": {
+        "pc": 42.0,
+        "ndp": 17.0,
+        "olp": 31.0,
+        "gpo": 4.0
+      },
+      "n": 1518
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-08-24",
+      "votes": {
+        "pc": 39.0,
+        "ndp": 20.0,
+        "olp": 35.0,
+        "gpo": 2.0
+      },
+      "n": 1500
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2026-08-09",
+      "votes": {
+        "pc": 37.0,
+        "ndp": 26.0,
+        "olp": 29.0,
+        "gpo": 3.0
+      },
+      "n": 1105
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-07-21",
+      "votes": {
+        "pc": 33.0,
+        "ndp": 24.0,
+        "olp": 38.0,
+        "gpo": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "EKOS",
+      "date": "2026-07-16",
+      "votes": {
+        "pc": 32.0,
+        "ndp": 28.0,
+        "olp": 26.0,
+        "gpo": 5.0
+      },
+      "n": 1512
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-06-17",
+      "votes": {
+        "pc": 41.0,
+        "ndp": 19.0,
+        "olp": 32.0,
+        "gpo": 5.0
+      },
+      "n": 2182
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-06-15",
+      "votes": {
+        "pc": 35.0,
+        "ndp": 22.0,
+        "olp": 38.0,
+        "gpo": 4.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-05-20",
+      "votes": {
+        "pc": 41.0,
+        "ndp": 17.0,
+        "olp": 31.0,
+        "gpo": 5.0
+      },
+      "n": 1017
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-05-16",
+      "votes": {
+        "pc": 37.0,
+        "ndp": 20.0,
+        "olp": 37.0,
+        "gpo": 4.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Leger",
+      "date": "2026-05-11",
+      "votes": {
+        "pc": 39.0,
+        "ndp": 17.0,
+        "olp": 34.0,
+        "gpo": 6.0
+      },
+      "n": 1003
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2026-05-07",
+      "votes": {
+        "pc": 35.0,
+        "ndp": 24.0,
+        "olp": 31.0,
+        "gpo": 6.0
+      },
+      "n": 910
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-04-26",
+      "votes": {
+        "pc": 36.0,
+        "ndp": 20.0,
+        "olp": 38.0,
+        "gpo": 4.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2026-04-22",
+      "votes": {
+        "pc": 37.0,
+        "ndp": 24.0,
+        "olp": 32.0,
+        "gpo": 6.0
+      },
+      "n": 1007
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-04-21",
+      "votes": {
+        "pc": 37.0,
+        "ndp": 17.0,
+        "olp": 36.0,
+        "gpo": 5.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2026-04-08",
+      "votes": {
+        "pc": 40.0,
+        "ndp": 22.0,
+        "olp": 31.0,
+        "gpo": 6.0
+      },
+      "n": 1084
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-04-06",
+      "votes": {
+        "pc": 39.0,
+        "ndp": 21.0,
+        "olp": 31.0,
+        "gpo": 5.0
+      },
+      "n": 2185
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-03-29",
+      "votes": {
+        "pc": 39.0,
+        "ndp": 18.0,
+        "olp": 36.0,
+        "gpo": 5.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Ipsos",
+      "date": "2026-03-11",
+      "votes": {
+        "pc": 42.0,
+        "ndp": 18.0,
+        "olp": 35.0,
+        "gpo": 3.0
+      },
+      "n": 801
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-03-11",
+      "votes": {
+        "pc": 44.0,
+        "ndp": 16.0,
+        "olp": 32.0,
+        "gpo": 5.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-02-22",
+      "votes": {
+        "pc": 40.0,
+        "ndp": 17.0,
+        "olp": 36.0,
+        "gpo": 5.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-02-10",
+      "votes": {
+        "pc": 44.0,
+        "ndp": 16.0,
+        "olp": 30.0,
+        "gpo": 6.0
+      },
+      "n": 1001
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2026-01-24",
+      "votes": {
+        "pc": 43.0,
+        "ndp": 18.0,
+        "olp": 30.0,
+        "gpo": 5.0
+      },
+      "n": 1015
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2026-01-21",
+      "votes": {
+        "pc": 42.0,
+        "ndp": 17.0,
+        "olp": 35.0,
+        "gpo": 3.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2026-01-13",
+      "votes": {
+        "pc": 48.0,
+        "ndp": 19.0,
+        "olp": 22.0,
+        "gpo": 6.0
+      },
+      "n": 1006
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-12-07",
+      "votes": {
+        "pc": 44.0,
+        "ndp": 16.0,
+        "olp": 35.0,
+        "gpo": 3.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2025-12-01",
+      "votes": {
+        "pc": 41.0,
+        "ndp": 23.0,
+        "olp": 28.0,
+        "gpo": 4.0
+      },
+      "n": 723
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2025-11-15",
+      "votes": {
+        "pc": 45.0,
+        "ndp": 18.0,
+        "olp": 28.0,
+        "gpo": 6.0
+      },
+      "n": 1077
+    },
+    {
+      "pollster": "North Poll",
+      "date": "2025-11-07",
+      "votes": {
+        "pc": 46.0,
+        "ndp": 17.0,
+        "olp": 29.0,
+        "gpo": 4.0
+      },
+      "n": 742
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-11-06",
+      "votes": {
+        "pc": 51.0,
+        "ndp": 19.0,
+        "olp": 23.0,
+        "gpo": 3.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Leger",
+      "date": "2025-10-20",
+      "votes": {
+        "pc": 44.0,
+        "ndp": 13.0,
+        "olp": 32.0,
+        "gpo": 7.0
+      },
+      "n": 1052
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-10-15",
+      "votes": {
+        "pc": 47.0,
+        "ndp": 15.0,
+        "olp": 33.0,
+        "gpo": 3.0
+      },
+      "n": 800
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-10-15",
+      "votes": {
+        "pc": 51.0,
+        "ndp": 15.0,
+        "olp": 25.0,
+        "gpo": 5.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Relay Strategies",
+      "date": "2025-10-13",
+      "votes": {
+        "pc": 44.0,
+        "ndp": 17.0,
+        "olp": 29.0,
+        "gpo": 6.0
+      },
+      "n": 1268
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2025-09-18",
+      "votes": {
+        "pc": 48.0,
+        "ndp": 14.0,
+        "olp": 29.0,
+        "gpo": 3.0
+      },
+      "n": 958
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-09-17",
+      "votes": {
+        "pc": 52.0,
+        "ndp": 12.0,
+        "olp": 24.0,
+        "gpo": 6.0
+      },
+      "n": 1021
+    },
+    {
+      "pollster": "Angus Reid",
+      "date": "2025-09-05",
+      "votes": {
+        "pc": 45.0,
+        "ndp": 22.0,
+        "olp": 25.0,
+        "gpo": 4.0
+      },
+      "n": 935
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2025-09-04",
+      "votes": {
+        "pc": 45.0,
+        "ndp": 17.0,
+        "olp": 26.0,
+        "gpo": 7.0
+      },
+      "n": 1026
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-08-19",
+      "votes": {
+        "pc": 53.0,
+        "ndp": 12.0,
+        "olp": 27.0,
+        "gpo": 5.0
+      },
+      "n": 1037
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-08-14",
+      "votes": {
+        "pc": 44.0,
+        "ndp": 15.0,
+        "olp": 35.0,
+        "gpo": 3.0
+      },
+      "n": 800
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-07-15",
+      "votes": {
+        "pc": 50.0,
+        "ndp": 13.0,
+        "olp": 28.0,
+        "gpo": 6.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Pallas Data",
+      "date": "2025-06-29",
+      "votes": {
+        "pc": 43.0,
+        "ndp": 21.0,
+        "olp": 29.0,
+        "gpo": 6.0
+      },
+      "n": 1080
+    },
+    {
+      "pollster": "Mainstreet Research",
+      "date": "2025-06-26",
+      "votes": {
+        "pc": 41.0,
+        "ndp": 17.0,
+        "olp": 32.0,
+        "gpo": 3.0
+      },
+      "n": 923
+    },
+    {
+      "pollster": "Abacus Data",
+      "date": "2025-06-05",
+      "votes": {
+        "pc": 49.0,
+        "ndp": 14.0,
+        "olp": 28.0,
+        "gpo": 5.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Leger",
+      "date": "2025-05-25",
+      "votes": {
+        "pc": 45.0,
+        "ndp": 15.0,
+        "olp": 32.0,
+        "gpo": 5.0
+      },
+      "n": 1025
+    },
+    {
+      "pollster": "Liaison Strategies",
+      "date": "2025-05-09",
+      "votes": {
+        "pc": 46.0,
+        "ndp": 13.0,
+        "olp": 36.0,
+        "gpo": 2.0
+      },
+      "n": 1000
+    },
+    {
+      "pollster": "Campaign Research",
+      "date": "2025-03-26",
+      "votes": {
+        "pc": 46.0,
+        "ndp": 18.0,
+        "olp": 24.0,
+        "gpo": 8.0
+      },
+      "n": 1672
+    }
+  ]
+}

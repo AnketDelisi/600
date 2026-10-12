@@ -1,0 +1,10 @@
+{
+  "country": "ontario",
+  "name": "Ontario",
+  "election_date": "2029-06-07",
+  "seats": 124,
+  "threshold": 0,
+  "method": "fptp",
+  "constituencies": true,
+  "notes": "FPTP, 124 ridings (the 2017-representation map, in force for 2029). Baselines: the 2025 general election per-riding votes (en.wikipedia, Elections Ontario data). Polling: the 45th Ontario general election article's table (scrape_ontario.py)."
+}

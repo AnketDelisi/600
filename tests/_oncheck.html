@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;padding:0;overflow:hidden}iframe{width:100vw;height:100vh;border:0;display:block}</style>
+</head><body>
+<iframe id="f" src="/index.html?c=ontario"></iframe>
+<script>
+const f = document.getElementById('f');
+let err = '';
+f.addEventListener('load', () => {
+  const d = f.contentDocument;
+  const w = f.contentWindow;
+  try { w.addEventListener('error', e => { err += e.message + '; '; }); } catch (e) {}
+  const T = (ms) => new Promise(r => setTimeout(r, ms));
+  const counts = () => {
+    const box = d.getElementById('map-box-sec') || d.getElementById('map-box');
+    if (!box) return 'nobox';
+    const paths = [...box.querySelectorAll('path[style]')].filter(p => {
+      const g = p.closest('g[transform]');
+      return !g;
+    });
+    const c = {};
+    paths.forEach(p => { const v = p.style.fill || ''; if (v) c[v] = (c[v] || 0) + 1; });
+    return paths.length + ':' + JSON.stringify(c);
+  };
+  const click = (sel) => { const b = d.querySelector(sel); if (b) { b.click(); return true; } return false; };
+  (async () => {
+    let n = 0;
+    while (n < 150 && !(d.getElementById('map-box-sec') && d.getElementById('map-box-sec').querySelector('svg'))) { await T(100); n++; }
+    const out = [];
+    out.push({ state: 'proj map', map: counts() });
+    const cRes = click('button[data-parlmode="2022"]');
+    await T(2500);
+    out.push({ state: '2025 result map', clicked: cRes, map: counts() });
+    const hero = d.querySelector('#pane-polls .hero');
+    const box = d.getElementById('map-box-sec');
+    if (box) { w.scrollTo(0, box.getBoundingClientRect().top + w.scrollY - 80); }
+    document.title = 'ON ' + JSON.stringify(out)
+      + ' HERO=' + (hero ? hero.innerText.replace(/\s+/g, ' ').slice(0, 110) : '?')
+      + ' ERR=' + (err || 'none');
+  })();
+});
+</script>
+</body></html>

@@ -39,8 +39,8 @@ ATTRIBUTION = ("Risultati: Elections Alberta (elezioni 2023, via "
                "en.wikipedia); Geometria: Elections Alberta (Current "
                "Electoral Divisions)")
 ZOOMS = [
-    ((-114.35, 50.75, -113.75, 51.25), "Calgary", (790, 60)),
-    ((-113.75, 53.30, -113.15, 53.75), "Edmonton", (790, 250)),
+    ((-114.35, 50.75, -113.75, 51.25), "Calgary", (1010, 60)),
+    ((-113.75, 53.30, -113.15, 53.75), "Edmonton", (1010, 250)),
 ]
 
 PARTIES = ["ucp", "ndp", "grn", "lib", "tory", "wlc", "wip", "rpa"]
@@ -201,6 +201,18 @@ def main():
                     "--attribution", ATTRIBUTION, "--force"]
         bm.main()
         bm.add_inset(OUT_SVG, zoom_svg, urban_ids, 150, at, label=label)
+
+    # the insets sit outside the province to its right: widen the canvas
+    # (the map itself stays 0..1000; the zoom boxes start at x=1010)
+    t = open(OUT_SVG, encoding="utf8").read()
+    m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', t)
+    w, h = float(m.group(1)), float(m.group(2))
+    nw = w + 190.0
+    t = re.sub(r'viewBox="0 0 [\d.]+ [\d.]+"',
+               'viewBox="0 0 %.1f %.1f"' % (nw, h), t)
+    t = re.sub(r'(<svg[^>]*?)width="[\d.]+" height="[\d.]+"',
+               r'\g<1>width="%.1f" height="%.1f"' % (nw, h), t, count=1)
+    open(OUT_SVG, "w", encoding="utf8", newline="").write(t)
     shutil.copy2(OUT_SVG, BMV_SVG)
 
     # logos
@@ -248,6 +260,7 @@ def main():
       swingMethod: 'proportional',
       selector: 'id',
       useConstituencies: true,     // 87 ridings, projected winner takes the seat
+      hideBlocToggle: true,        // no government-vs-rest bloc coloring
       districts: %s,
       gebiete: %s,
       // national baseline for the swing (= 2023 result)

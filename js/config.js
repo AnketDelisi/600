@@ -8,6 +8,7 @@ const COUNTRIES = {
 
   sweden: {
     name: 'Sweden',
+    name_tr: 'İsveç',
     hidden: true,                   // archived 2026-09-14 (riksdag election 2026-09-14)
     seats: 349,
     threshold: 4.0,
@@ -116,6 +117,7 @@ const COUNTRIES = {
 
   israel: {
     name: 'Israel',
+    name_tr: 'İsrail',
     seats: 120,
     threshold: 3.25,
     method: 'dhondt',             // D'Hondt (divisors 1,2,3,...)
@@ -1399,6 +1401,7 @@ saxony_anhalt: {
 
   serbia: {
     name: 'Serbia',
+    name_tr: 'Sırbistan',
     seats: 250,
     threshold: 3.0,
     method: 'dhondt',             // D'Hondt (divisors 1,2,3,...), single national district
@@ -1411,7 +1414,6 @@ saxony_anhalt: {
     parties: {
       sns:  { code: 'AV-US', name: 'Aleksandar Vučić – United Serbia',  name_en: 'Aleksandar Vučić – United Serbia', color: '#242970', ideology: "Populism"},
       sps:  { code: 'SPS',  name: 'Socijalistička partija Srbije',       name_en: 'Socialist Party of Serbia',      color: '#EB1B23', ideology: "Social democracy, Populism"},
-      srs:  { code: 'SRS',  name: 'Srpska radikalna stranka',            name_en: 'Serbian Radical Party',          color: '#0000FF', ideology: "Ultranationalism, Serbian irredentism, Right-wing populism"},
       pes:  { code: 'PES',  name: 'Platforma za evropsku Srbiju',        name_en: 'Platform for a European Serbia', color: '#C9A227', ideology: "Pro-Europeanism"},
       nada: { code: 'NADA', name: 'Srpska koalicija NADA',               name_en: 'National Democratic Alternative',color: '#616264', ideology: "National conservatism, Euroscepticism, Monarchism"},
       misn: { code: 'MISN', name: 'Mi – snaga naroda',                   name_en: 'We – Power of the People',       color: '#1B3160', ideology: "Right-wing populism, National conservatism"},
@@ -1428,22 +1430,23 @@ saxony_anhalt: {
       // past-result sections only; `pastOnly` keeps it out of the forecast.
       spn:  { code: 'SPN',  name: 'Srbija protiv nasilja',               name_en: 'Serbia Against Violence',         color: '#F22C27', pastOnly: true, ideology: "Pro-Europeanism, Big tent, Anti-corruption"},
     },
-    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'srs', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
-    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'srs', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
+    order: ['sns', 'sl', 'sps', 'pes', 'nada', 'misn', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
+    parlOrder: ['sl', 'pes', 'sps', 'sns', 'nada', 'misn', 'vmsz', 'spp', 'sda', 'rs', 'sdp', 'kshlp', 'spn'],
     // minority lists (Serbia art. 81): exempt from the 3% threshold
     minorityParties: ['vmsz', 'spp', 'sda', 'rs', 'kshlp'],
     blocs: {
       bloc1: { name: 'Government camp', short: 'GOV', parties: ['sns', 'sps', 'vmsz', 'rs'], color: '#1B4381' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'srs', 'spp', 'sda', 'sdp', 'kshlp'], color: '#A6192E' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['sl', 'pes', 'nada', 'misn', 'spp', 'sda', 'sdp', 'kshlp'], color: '#A6192E' },
     },
     logos: {
-      sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg', srs: 'img/serbia/SRS.svg',
+      sns: 'img/serbia/SNS.svg', sps: 'img/serbia/SPS.svg',
       pes: 'img/serbia/PES.svg', nada: 'img/serbia/NADA.svg', misn: 'img/serbia/MISN.svg',
       sl: 'img/serbia/SL.svg', vmsz: 'img/serbia/VMSZ.svg', spp: 'img/serbia/SPP.svg',
       sda: 'img/serbia/SDA.svg', rs: 'img/serbia/RS.svg', sdp: 'img/serbia/SDP.svg',
+      kshlp: 'img/serbia/KSHLP.svg',
     },
     // Pollster MAE (mean absolute error, %-points) from final party-level polls before each election,
-    // averaged over SNS / SPS / main opposition list / smaller opposition list / NADA (+SRS in 2022).
+    // averaged over SNS / SPS / main opposition list / smaller opposition list / NADA.
     // Source: en.wikipedia.org/wiki/Opinion_polling_for_the_2023_Serbian_parliamentary_election
     //         en.wikipedia.org/wiki/Opinion_polling_for_the_2022_Serbian_general_election
     // CRTA excluded: it only ran bloc-scenario polling before 2023 (no party-level series), so it
@@ -1457,8 +1460,8 @@ saxony_anhalt: {
       date: '2023-12-17',
       // 2023 Serbian parliamentary election (source: RIK / en.wikipedia.org/wiki/2023_Serbian_parliamentary_election)
       // Coalition baselines: SNS ran as "Serbia Must Not Stop"; NPS was inside SPN; PES/SL did not exist yet.
-      results: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
-      seats:   { sns: 129, sps: 18, srs: 0, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0, kshlp: 1 },
+      results: { sns: 48.07, sps: 6.73, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
+      seats:   { sns: 129, sps: 18, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0, kshlp: 1 },
     },
     map: {
       svg: 'img/serbia.svg',
@@ -1475,7 +1478,6 @@ saxony_anhalt: {
         "beograd": {
                 "sns": 37.48,
                 "sps": 5.19,
-                "srs": 1.21,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 6.31,
@@ -1491,7 +1493,6 @@ saxony_anhalt: {
         "west_backa": {
                 "sns": 52.29,
                 "sps": 4.96,
-                "srs": 1.96,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 3.57,
@@ -1507,7 +1508,6 @@ saxony_anhalt: {
         "south_banat": {
                 "sns": 48.74,
                 "sps": 4.91,
-                "srs": 1.52,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.25,
@@ -1523,7 +1523,6 @@ saxony_anhalt: {
         "south_backa": {
                 "sns": 45.32,
                 "sps": 4.58,
-                "srs": 1.92,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 5.33,
@@ -1539,7 +1538,6 @@ saxony_anhalt: {
         "north_banat": {
                 "sns": 41.97,
                 "sps": 3.97,
-                "srs": 1.11,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 2.45,
@@ -1555,7 +1553,6 @@ saxony_anhalt: {
         "north_backa": {
                 "sns": 39.39,
                 "sps": 2.71,
-                "srs": 1.08,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 2.33,
@@ -1571,7 +1568,6 @@ saxony_anhalt: {
         "central_banat": {
                 "sns": 50.56,
                 "sps": 4.83,
-                "srs": 1.77,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 5.0,
@@ -1587,7 +1583,6 @@ saxony_anhalt: {
         "srem": {
                 "sns": 55.93,
                 "sps": 5.34,
-                "srs": 2.08,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.56,
@@ -1603,7 +1598,6 @@ saxony_anhalt: {
         "zlatibor": {
                 "sns": 45.78,
                 "sps": 6.94,
-                "srs": 1.34,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 5.77,
@@ -1619,7 +1613,6 @@ saxony_anhalt: {
         "kolubara": {
                 "sns": 48.05,
                 "sps": 6.43,
-                "srs": 1.52,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 6.06,
@@ -1635,7 +1628,6 @@ saxony_anhalt: {
         "macva": {
                 "sns": 53.01,
                 "sps": 8.89,
-                "srs": 1.94,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 5.25,
@@ -1651,7 +1643,6 @@ saxony_anhalt: {
         "moravica": {
                 "sns": 45.56,
                 "sps": 6.26,
-                "srs": 1.28,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 6.31,
@@ -1667,7 +1658,6 @@ saxony_anhalt: {
         "pomoravlje": {
                 "sns": 49.9,
                 "sps": 14.0,
-                "srs": 1.35,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.44,
@@ -1683,7 +1673,6 @@ saxony_anhalt: {
         "rasina": {
                 "sns": 54.46,
                 "sps": 7.74,
-                "srs": 1.45,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.69,
@@ -1699,7 +1688,6 @@ saxony_anhalt: {
         "raska": {
                 "sns": 43.48,
                 "sps": 6.27,
-                "srs": 1.03,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.15,
@@ -1715,7 +1703,6 @@ saxony_anhalt: {
         "sumadija": {
                 "sns": 46.8,
                 "sps": 7.3,
-                "srs": 1.36,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 6.31,
@@ -1731,7 +1718,6 @@ saxony_anhalt: {
         "bor": {
                 "sns": 55.41,
                 "sps": 8.12,
-                "srs": 1.18,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 2.68,
@@ -1747,7 +1733,6 @@ saxony_anhalt: {
         "branicevo": {
                 "sns": 56.07,
                 "sps": 9.03,
-                "srs": 1.3,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 3.54,
@@ -1763,7 +1748,6 @@ saxony_anhalt: {
         "zajecar": {
                 "sns": 52.59,
                 "sps": 8.23,
-                "srs": 1.71,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.14,
@@ -1779,7 +1763,6 @@ saxony_anhalt: {
         "jablanica": {
                 "sns": 56.28,
                 "sps": 11.87,
-                "srs": 1.65,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 3.65,
@@ -1795,7 +1778,6 @@ saxony_anhalt: {
         "nisava": {
                 "sns": 48.04,
                 "sps": 6.66,
-                "srs": 1.45,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 4.77,
@@ -1811,7 +1793,6 @@ saxony_anhalt: {
         "pirot": {
                 "sns": 55.3,
                 "sps": 8.27,
-                "srs": 1.91,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 2.73,
@@ -1827,7 +1808,6 @@ saxony_anhalt: {
         "podunavlje": {
                 "sns": 52.27,
                 "sps": 7.18,
-                "srs": 1.39,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 5.96,
@@ -1843,7 +1823,6 @@ saxony_anhalt: {
         "pcinja": {
                 "sns": 49.49,
                 "sps": 13.05,
-                "srs": 1.24,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 2.85,
@@ -1859,7 +1838,6 @@ saxony_anhalt: {
         "toplica": {
                 "sns": 62.72,
                 "sps": 7.87,
-                "srs": 1.39,
                 "pes": 0.0,
                 "nps": 0.0,
                 "nada": 3.46,
@@ -1882,7 +1860,7 @@ saxony_anhalt: {
         pcinja: 'Pčinja', toplica: 'Toplica',
       },
       // 2023 national vote share — uniform-swing baseline for the district map
-      national2021: { sns: 48.07, sps: 6.73, srs: 1.50, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
+      national2021: { sns: 48.07, sps: 6.73, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
     },
       map2: {
       "svg": "img/serbia_opstine.svg",
@@ -2054,7 +2032,6 @@ saxony_anhalt: {
             "barajevo": {
                   "sns": 50.64,
                   "sps": 7.31,
-                  "srs": 1.45,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.83,
@@ -2070,7 +2047,6 @@ saxony_anhalt: {
             "vozdovac": {
                   "sns": 34.89,
                   "sps": 4.95,
-                  "srs": 0.99,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.09,
@@ -2086,7 +2062,6 @@ saxony_anhalt: {
             "vracar": {
                   "sns": 26.59,
                   "sps": 3.86,
-                  "srs": 0.63,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.47,
@@ -2102,7 +2077,6 @@ saxony_anhalt: {
             "grocka": {
                   "sns": 47.87,
                   "sps": 8.0,
-                  "srs": 1.38,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.72,
@@ -2118,7 +2092,6 @@ saxony_anhalt: {
             "zvezdara": {
                   "sns": 31.64,
                   "sps": 4.91,
-                  "srs": 0.92,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.84,
@@ -2134,7 +2107,6 @@ saxony_anhalt: {
             "zemun": {
                   "sns": 40.91,
                   "sps": 4.52,
-                  "srs": 1.94,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.92,
@@ -2150,7 +2122,6 @@ saxony_anhalt: {
             "lazarevac": {
                   "sns": 41.29,
                   "sps": 7.64,
-                  "srs": 1.21,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.57,
@@ -2166,7 +2137,6 @@ saxony_anhalt: {
             "mladenovac": {
                   "sns": 51.77,
                   "sps": 6.66,
-                  "srs": 1.34,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.31,
@@ -2182,7 +2152,6 @@ saxony_anhalt: {
             "novi_beograd": {
                   "sns": 31.74,
                   "sps": 4.41,
-                  "srs": 1.0,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.89,
@@ -2198,7 +2167,6 @@ saxony_anhalt: {
             "obrenovac": {
                   "sns": 49.5,
                   "sps": 6.64,
-                  "srs": 1.56,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.48,
@@ -2214,7 +2182,6 @@ saxony_anhalt: {
             "palilula": {
                   "sns": 37.74,
                   "sps": 5.21,
-                  "srs": 1.26,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.94,
@@ -2230,7 +2197,6 @@ saxony_anhalt: {
             "rakovica": {
                   "sns": 37.22,
                   "sps": 5.41,
-                  "srs": 1.24,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.89,
@@ -2246,7 +2212,6 @@ saxony_anhalt: {
             "savski_venac": {
                   "sns": 30.34,
                   "sps": 4.17,
-                  "srs": 0.81,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.17,
@@ -2262,7 +2227,6 @@ saxony_anhalt: {
             "sopot": {
                   "sns": 51.9,
                   "sps": 8.33,
-                  "srs": 1.91,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.22,
@@ -2278,7 +2242,6 @@ saxony_anhalt: {
             "stari_grad": {
                   "sns": 24.61,
                   "sps": 3.57,
-                  "srs": 0.8,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.94,
@@ -2294,7 +2257,6 @@ saxony_anhalt: {
             "surcin": {
                   "sns": 54.7,
                   "sps": 5.45,
-                  "srs": 1.79,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.62,
@@ -2310,7 +2272,6 @@ saxony_anhalt: {
             "cukarica": {
                   "sns": 37.17,
                   "sps": 4.87,
-                  "srs": 1.11,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.14,
@@ -2326,7 +2287,6 @@ saxony_anhalt: {
             "sombor": {
                   "sns": 48.38,
                   "sps": 4.44,
-                  "srs": 2.03,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.08,
@@ -2342,7 +2302,6 @@ saxony_anhalt: {
             "apatin": {
                   "sns": 54.97,
                   "sps": 5.79,
-                  "srs": 2.08,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.15,
@@ -2358,7 +2317,6 @@ saxony_anhalt: {
             "kula": {
                   "sns": 53.25,
                   "sps": 4.63,
-                  "srs": 1.68,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.34,
@@ -2374,7 +2332,6 @@ saxony_anhalt: {
             "odzaci": {
                   "sns": 58.92,
                   "sps": 6.04,
-                  "srs": 2.07,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.95,
@@ -2390,7 +2347,6 @@ saxony_anhalt: {
             "pancevo": {
                   "sns": 44.59,
                   "sps": 4.92,
-                  "srs": 1.42,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.63,
@@ -2406,7 +2362,6 @@ saxony_anhalt: {
             "alibunar": {
                   "sns": 52.32,
                   "sps": 5.33,
-                  "srs": 1.87,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.14,
@@ -2422,7 +2377,6 @@ saxony_anhalt: {
             "bela_crkva": {
                   "sns": 60.95,
                   "sps": 5.01,
-                  "srs": 1.4,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.82,
@@ -2438,7 +2392,6 @@ saxony_anhalt: {
             "vrsac": {
                   "sns": 47.16,
                   "sps": 4.54,
-                  "srs": 1.48,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.7,
@@ -2454,7 +2407,6 @@ saxony_anhalt: {
             "kovacica": {
                   "sns": 51.57,
                   "sps": 4.5,
-                  "srs": 1.07,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.34,
@@ -2470,7 +2422,6 @@ saxony_anhalt: {
             "kovin": {
                   "sns": 53.7,
                   "sps": 5.28,
-                  "srs": 1.99,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.14,
@@ -2486,7 +2437,6 @@ saxony_anhalt: {
             "opovo": {
                   "sns": 58.72,
                   "sps": 4.53,
-                  "srs": 1.29,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.84,
@@ -2502,7 +2452,6 @@ saxony_anhalt: {
             "plandiste": {
                   "sns": 49.69,
                   "sps": 5.79,
-                  "srs": 2.38,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.99,
@@ -2518,7 +2467,6 @@ saxony_anhalt: {
             "novi_sad": {
                   "sns": 39.1,
                   "sps": 4.01,
-                  "srs": 1.78,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.26,
@@ -2534,7 +2482,6 @@ saxony_anhalt: {
             "bac": {
                   "sns": 62.02,
                   "sps": 4.6,
-                  "srs": 1.99,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.31,
@@ -2550,7 +2497,6 @@ saxony_anhalt: {
             "backa_palanka": {
                   "sns": 52.71,
                   "sps": 5.75,
-                  "srs": 2.56,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.81,
@@ -2566,7 +2512,6 @@ saxony_anhalt: {
             "backi_petrovac": {
                   "sns": 52.07,
                   "sps": 6.16,
-                  "srs": 0.67,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.34,
@@ -2582,7 +2527,6 @@ saxony_anhalt: {
             "beocin": {
                   "sns": 58.59,
                   "sps": 13.74,
-                  "srs": 1.49,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.61,
@@ -2598,7 +2542,6 @@ saxony_anhalt: {
             "becej": {
                   "sns": 49.19,
                   "sps": 2.19,
-                  "srs": 1.37,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.3,
@@ -2614,7 +2557,6 @@ saxony_anhalt: {
             "vrbas": {
                   "sns": 51.71,
                   "sps": 6.87,
-                  "srs": 2.18,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.78,
@@ -2630,7 +2572,6 @@ saxony_anhalt: {
             "zabalj": {
                   "sns": 68.72,
                   "sps": 3.14,
-                  "srs": 2.19,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.44,
@@ -2646,7 +2587,6 @@ saxony_anhalt: {
             "srbobran": {
                   "sns": 52.09,
                   "sps": 4.53,
-                  "srs": 1.83,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.14,
@@ -2662,7 +2602,6 @@ saxony_anhalt: {
             "sremski_karlovci": {
                   "sns": 44.13,
                   "sps": 4.47,
-                  "srs": 4.25,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.44,
@@ -2678,7 +2617,6 @@ saxony_anhalt: {
             "temerin": {
                   "sns": 47.77,
                   "sps": 4.23,
-                  "srs": 2.45,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.93,
@@ -2694,7 +2632,6 @@ saxony_anhalt: {
             "titel": {
                   "sns": 60.34,
                   "sps": 5.9,
-                  "srs": 2.71,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.14,
@@ -2710,7 +2647,6 @@ saxony_anhalt: {
             "kikinda": {
                   "sns": 53.22,
                   "sps": 5.21,
-                  "srs": 1.57,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.25,
@@ -2726,7 +2662,6 @@ saxony_anhalt: {
             "ada": {
                   "sns": 34.33,
                   "sps": 3.12,
-                  "srs": 0.39,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 0.7,
@@ -2742,7 +2677,6 @@ saxony_anhalt: {
             "kanjiza": {
                   "sns": 22.14,
                   "sps": 4.35,
-                  "srs": 0.37,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 0.47,
@@ -2758,7 +2692,6 @@ saxony_anhalt: {
             "novi_knezevac": {
                   "sns": 49.82,
                   "sps": 3.39,
-                  "srs": 2.12,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.33,
@@ -2774,7 +2707,6 @@ saxony_anhalt: {
             "senta": {
                   "sns": 26.93,
                   "sps": 1.45,
-                  "srs": 0.31,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.02,
@@ -2790,7 +2722,6 @@ saxony_anhalt: {
             "coka": {
                   "sns": 48.25,
                   "sps": 2.25,
-                  "srs": 1.46,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.48,
@@ -2806,7 +2737,6 @@ saxony_anhalt: {
             "subotica": {
                   "sns": 40.21,
                   "sps": 2.6,
-                  "srs": 1.03,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.43,
@@ -2822,7 +2752,6 @@ saxony_anhalt: {
             "backa_topola": {
                   "sns": 34.01,
                   "sps": 2.88,
-                  "srs": 1.34,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.16,
@@ -2838,7 +2767,6 @@ saxony_anhalt: {
             "mali_idjos": {
                   "sns": 43.39,
                   "sps": 3.6,
-                  "srs": 0.95,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.63,
@@ -2854,7 +2782,6 @@ saxony_anhalt: {
             "zrenjanin": {
                   "sns": 46.92,
                   "sps": 4.63,
-                  "srs": 1.61,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.71,
@@ -2870,7 +2797,6 @@ saxony_anhalt: {
             "zitiste": {
                   "sns": 53.84,
                   "sps": 6.94,
-                  "srs": 1.82,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.74,
@@ -2886,7 +2812,6 @@ saxony_anhalt: {
             "nova_crnja": {
                   "sns": 61.26,
                   "sps": 4.34,
-                  "srs": 2.1,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.51,
@@ -2902,7 +2827,6 @@ saxony_anhalt: {
             "novi_becej": {
                   "sns": 55.89,
                   "sps": 3.9,
-                  "srs": 2.29,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.84,
@@ -2918,7 +2842,6 @@ saxony_anhalt: {
             "secanj": {
                   "sns": 61.5,
                   "sps": 5.8,
-                  "srs": 2.01,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.7,
@@ -2934,7 +2857,6 @@ saxony_anhalt: {
             "sremska_mitrovica": {
                   "sns": 52.95,
                   "sps": 6.13,
-                  "srs": 1.87,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.61,
@@ -2950,7 +2872,6 @@ saxony_anhalt: {
             "indjija": {
                   "sns": 55.64,
                   "sps": 5.25,
-                  "srs": 2.09,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.16,
@@ -2966,7 +2887,6 @@ saxony_anhalt: {
             "irig": {
                   "sns": 62.84,
                   "sps": 4.89,
-                  "srs": 2.44,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.18,
@@ -2982,7 +2902,6 @@ saxony_anhalt: {
             "pecinci": {
                   "sns": 70.21,
                   "sps": 3.32,
-                  "srs": 1.55,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.75,
@@ -2998,7 +2917,6 @@ saxony_anhalt: {
             "ruma": {
                   "sns": 56.31,
                   "sps": 5.74,
-                  "srs": 2.1,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.55,
@@ -3014,7 +2932,6 @@ saxony_anhalt: {
             "stara_pazova": {
                   "sns": 52.27,
                   "sps": 4.53,
-                  "srs": 2.14,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.81,
@@ -3030,7 +2947,6 @@ saxony_anhalt: {
             "sid": {
                   "sns": 58.04,
                   "sps": 6.06,
-                  "srs": 2.68,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.24,
@@ -3046,7 +2962,6 @@ saxony_anhalt: {
             "uzice": {
                   "sns": 43.16,
                   "sps": 5.12,
-                  "srs": 1.25,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.27,
@@ -3062,7 +2977,6 @@ saxony_anhalt: {
             "arilje": {
                   "sns": 44.29,
                   "sps": 6.58,
-                  "srs": 2.2,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 9.18,
@@ -3078,7 +2992,6 @@ saxony_anhalt: {
             "bajina_basta": {
                   "sns": 49.48,
                   "sps": 7.57,
-                  "srs": 1.47,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.72,
@@ -3094,7 +3007,6 @@ saxony_anhalt: {
             "kosjeric": {
                   "sns": 48.16,
                   "sps": 7.96,
-                  "srs": 1.16,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 8.82,
@@ -3110,7 +3022,6 @@ saxony_anhalt: {
             "nova_varos": {
                   "sns": 52.58,
                   "sps": 11.39,
-                  "srs": 1.41,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.58,
@@ -3126,7 +3037,6 @@ saxony_anhalt: {
             "pozega": {
                   "sns": 46.04,
                   "sps": 7.58,
-                  "srs": 1.88,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.26,
@@ -3142,7 +3052,6 @@ saxony_anhalt: {
             "priboj": {
                   "sns": 54.21,
                   "sps": 9.32,
-                  "srs": 0.8,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.7,
@@ -3158,7 +3067,6 @@ saxony_anhalt: {
             "prijepolje": {
                   "sns": 48.79,
                   "sps": 6.03,
-                  "srs": 1.61,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.92,
@@ -3174,7 +3082,6 @@ saxony_anhalt: {
             "sjenica": {
                   "sns": 25.78,
                   "sps": 7.7,
-                  "srs": 0.5,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.59,
@@ -3190,7 +3097,6 @@ saxony_anhalt: {
             "cajetina": {
                   "sns": 52.62,
                   "sps": 5.91,
-                  "srs": 1.2,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.47,
@@ -3206,7 +3112,6 @@ saxony_anhalt: {
             "valjevo": {
                   "sns": 41.55,
                   "sps": 6.49,
-                  "srs": 1.54,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.79,
@@ -3222,7 +3127,6 @@ saxony_anhalt: {
             "lajkovac": {
                   "sns": 50.9,
                   "sps": 4.66,
-                  "srs": 1.47,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.54,
@@ -3238,7 +3142,6 @@ saxony_anhalt: {
             "ljig": {
                   "sns": 43.32,
                   "sps": 8.58,
-                  "srs": 2.18,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.81,
@@ -3254,7 +3157,6 @@ saxony_anhalt: {
             "mionica": {
                   "sns": 57.29,
                   "sps": 7.62,
-                  "srs": 1.15,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.28,
@@ -3270,7 +3172,6 @@ saxony_anhalt: {
             "osecina": {
                   "sns": 56.21,
                   "sps": 6.47,
-                  "srs": 1.37,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.4,
@@ -3286,7 +3187,6 @@ saxony_anhalt: {
             "ub": {
                   "sns": 60.72,
                   "sps": 5.76,
-                  "srs": 1.47,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.05,
@@ -3302,7 +3202,6 @@ saxony_anhalt: {
             "sabac": {
                   "sns": 49.98,
                   "sps": 5.86,
-                  "srs": 1.46,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.13,
@@ -3318,7 +3217,6 @@ saxony_anhalt: {
             "bogatic": {
                   "sns": 50.61,
                   "sps": 9.01,
-                  "srs": 4.53,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.12,
@@ -3334,7 +3232,6 @@ saxony_anhalt: {
             "vladimirci": {
                   "sns": 57.57,
                   "sps": 8.31,
-                  "srs": 2.07,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.17,
@@ -3350,7 +3247,6 @@ saxony_anhalt: {
             "koceljeva": {
                   "sns": 64.0,
                   "sps": 6.67,
-                  "srs": 1.61,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.05,
@@ -3366,7 +3262,6 @@ saxony_anhalt: {
             "krupanj": {
                   "sns": 55.8,
                   "sps": 9.72,
-                  "srs": 2.48,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 8.75,
@@ -3382,7 +3277,6 @@ saxony_anhalt: {
             "loznica": {
                   "sns": 55.85,
                   "sps": 6.85,
-                  "srs": 1.52,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.01,
@@ -3398,7 +3292,6 @@ saxony_anhalt: {
             "ljubovija": {
                   "sns": 49.41,
                   "sps": 25.49,
-                  "srs": 3.04,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.15,
@@ -3414,7 +3307,6 @@ saxony_anhalt: {
             "mali_zvornik": {
                   "sns": 53.76,
                   "sps": 22.21,
-                  "srs": 1.48,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.88,
@@ -3430,7 +3322,6 @@ saxony_anhalt: {
             "cacak": {
                   "sns": 42.61,
                   "sps": 5.67,
-                  "srs": 1.22,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.47,
@@ -3446,7 +3337,6 @@ saxony_anhalt: {
             "gornji_milanovac": {
                   "sns": 45.22,
                   "sps": 6.41,
-                  "srs": 1.4,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.25,
@@ -3462,7 +3352,6 @@ saxony_anhalt: {
             "ivanjica": {
                   "sns": 50.42,
                   "sps": 7.61,
-                  "srs": 1.25,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.51,
@@ -3478,7 +3367,6 @@ saxony_anhalt: {
             "lucani": {
                   "sns": 55.4,
                   "sps": 7.27,
-                  "srs": 1.34,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.27,
@@ -3494,7 +3382,6 @@ saxony_anhalt: {
             "jagodina": {
                   "sns": 38.23,
                   "sps": 23.99,
-                  "srs": 1.28,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.94,
@@ -3510,7 +3397,6 @@ saxony_anhalt: {
             "despotovac": {
                   "sns": 58.67,
                   "sps": 11.29,
-                  "srs": 1.66,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.62,
@@ -3526,7 +3412,6 @@ saxony_anhalt: {
             "paracin": {
                   "sns": 55.78,
                   "sps": 8.05,
-                  "srs": 1.44,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.48,
@@ -3542,7 +3427,6 @@ saxony_anhalt: {
             "rekovac": {
                   "sns": 48.49,
                   "sps": 16.21,
-                  "srs": 1.77,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.22,
@@ -3558,7 +3442,6 @@ saxony_anhalt: {
             "svilajnac": {
                   "sns": 56.88,
                   "sps": 5.54,
-                  "srs": 1.14,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.58,
@@ -3574,7 +3457,6 @@ saxony_anhalt: {
             "cuprija": {
                   "sns": 55.24,
                   "sps": 8.98,
-                  "srs": 1.14,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.53,
@@ -3590,7 +3472,6 @@ saxony_anhalt: {
             "krusevac": {
                   "sns": 54.31,
                   "sps": 6.86,
-                  "srs": 1.26,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.74,
@@ -3606,7 +3487,6 @@ saxony_anhalt: {
             "aleksandrovac": {
                   "sns": 51.98,
                   "sps": 12.05,
-                  "srs": 1.94,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.85,
@@ -3622,7 +3502,6 @@ saxony_anhalt: {
             "brus": {
                   "sns": 61.13,
                   "sps": 9.13,
-                  "srs": 1.53,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.21,
@@ -3638,7 +3517,6 @@ saxony_anhalt: {
             "varvarin": {
                   "sns": 56.68,
                   "sps": 9.9,
-                  "srs": 1.98,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.68,
@@ -3654,7 +3532,6 @@ saxony_anhalt: {
             "trstenik": {
                   "sns": 52.01,
                   "sps": 6.48,
-                  "srs": 1.4,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.06,
@@ -3670,7 +3547,6 @@ saxony_anhalt: {
             "cicevac": {
                   "sns": 57.77,
                   "sps": 6.58,
-                  "srs": 1.86,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.77,
@@ -3686,7 +3562,6 @@ saxony_anhalt: {
             "kraljevo": {
                   "sns": 45.16,
                   "sps": 8.95,
-                  "srs": 1.54,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.3,
@@ -3702,7 +3577,6 @@ saxony_anhalt: {
             "vrnjacka_banja": {
                   "sns": 57.01,
                   "sps": 6.83,
-                  "srs": 1.24,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.58,
@@ -3718,7 +3592,6 @@ saxony_anhalt: {
             "novi_pazar": {
                   "sns": 40.58,
                   "sps": 2.21,
-                  "srs": 0.45,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 0.83,
@@ -3734,7 +3607,6 @@ saxony_anhalt: {
             "raska": {
                   "sns": 54.7,
                   "sps": 12.66,
-                  "srs": 1.26,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.46,
@@ -3750,7 +3622,6 @@ saxony_anhalt: {
             "tutin": {
                   "sns": 16.83,
                   "sps": 0.56,
-                  "srs": 0.17,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 0.21,
@@ -3766,7 +3637,6 @@ saxony_anhalt: {
             "kragujevac": {
                   "sns": 44.03,
                   "sps": 6.72,
-                  "srs": 1.26,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.19,
@@ -3782,7 +3652,6 @@ saxony_anhalt: {
             "arandjelovac": {
                   "sns": 47.76,
                   "sps": 7.21,
-                  "srs": 1.78,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.57,
@@ -3798,7 +3667,6 @@ saxony_anhalt: {
             "batocina": {
                   "sns": 54.6,
                   "sps": 12.15,
-                  "srs": 1.24,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.31,
@@ -3814,7 +3682,6 @@ saxony_anhalt: {
             "knic": {
                   "sns": 52.94,
                   "sps": 7.57,
-                  "srs": 1.11,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.38,
@@ -3830,7 +3697,6 @@ saxony_anhalt: {
             "lapovo": {
                   "sns": 57.02,
                   "sps": 9.61,
-                  "srs": 2.1,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.2,
@@ -3846,7 +3712,6 @@ saxony_anhalt: {
             "raca": {
                   "sns": 56.92,
                   "sps": 8.33,
-                  "srs": 0.63,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.15,
@@ -3862,7 +3727,6 @@ saxony_anhalt: {
             "topola": {
                   "sns": 50.69,
                   "sps": 7.93,
-                  "srs": 1.75,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.17,
@@ -3878,7 +3742,6 @@ saxony_anhalt: {
             "bor": {
                   "sns": 45.48,
                   "sps": 8.75,
-                  "srs": 1.26,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.09,
@@ -3894,7 +3757,6 @@ saxony_anhalt: {
             "kladovo": {
                   "sns": 59.91,
                   "sps": 9.4,
-                  "srs": 1.26,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.02,
@@ -3910,7 +3772,6 @@ saxony_anhalt: {
             "majdanpek": {
                   "sns": 59.31,
                   "sps": 5.93,
-                  "srs": 1.19,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.7,
@@ -3926,7 +3787,6 @@ saxony_anhalt: {
             "negotin": {
                   "sns": 64.24,
                   "sps": 7.64,
-                  "srs": 1.03,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.51,
@@ -3942,7 +3802,6 @@ saxony_anhalt: {
             "pozarevac": {
                   "sns": 50.98,
                   "sps": 7.22,
-                  "srs": 1.06,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.96,
@@ -3958,7 +3817,6 @@ saxony_anhalt: {
             "veliko_gradiste": {
                   "sns": 55.73,
                   "sps": 11.27,
-                  "srs": 2.81,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.31,
@@ -3974,7 +3832,6 @@ saxony_anhalt: {
             "golubac": {
                   "sns": 62.0,
                   "sps": 9.01,
-                  "srs": 2.05,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.12,
@@ -3990,7 +3847,6 @@ saxony_anhalt: {
             "zabari": {
                   "sns": 63.97,
                   "sps": 9.14,
-                  "srs": 1.17,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.75,
@@ -4006,7 +3862,6 @@ saxony_anhalt: {
             "zagubica": {
                   "sns": 68.22,
                   "sps": 5.7,
-                  "srs": 1.2,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.94,
@@ -4022,7 +3877,6 @@ saxony_anhalt: {
             "kucevo": {
                   "sns": 66.0,
                   "sps": 8.75,
-                  "srs": 1.02,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.95,
@@ -4038,7 +3892,6 @@ saxony_anhalt: {
             "malo_crnice": {
                   "sns": 53.15,
                   "sps": 11.9,
-                  "srs": 1.49,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.87,
@@ -4054,7 +3907,6 @@ saxony_anhalt: {
             "petrovac_na_mlavi": {
                   "sns": 55.71,
                   "sps": 12.95,
-                  "srs": 1.05,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.83,
@@ -4070,7 +3922,6 @@ saxony_anhalt: {
             "zajecar": {
                   "sns": 48.43,
                   "sps": 7.52,
-                  "srs": 1.46,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.67,
@@ -4086,7 +3937,6 @@ saxony_anhalt: {
             "boljevac": {
                   "sns": 53.7,
                   "sps": 11.91,
-                  "srs": 1.45,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.14,
@@ -4102,7 +3952,6 @@ saxony_anhalt: {
             "knjazevac": {
                   "sns": 58.94,
                   "sps": 7.28,
-                  "srs": 1.89,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.6,
@@ -4118,7 +3967,6 @@ saxony_anhalt: {
             "sokobanja": {
                   "sns": 53.53,
                   "sps": 9.62,
-                  "srs": 2.33,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.09,
@@ -4134,7 +3982,6 @@ saxony_anhalt: {
             "leskovac": {
                   "sns": 52.72,
                   "sps": 12.05,
-                  "srs": 1.71,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.85,
@@ -4150,7 +3997,6 @@ saxony_anhalt: {
             "bojnik": {
                   "sns": 78.06,
                   "sps": 5.28,
-                  "srs": 0.97,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.15,
@@ -4166,7 +4012,6 @@ saxony_anhalt: {
             "vlasotince": {
                   "sns": 56.68,
                   "sps": 12.12,
-                  "srs": 1.92,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.52,
@@ -4182,7 +4027,6 @@ saxony_anhalt: {
             "lebane": {
                   "sns": 63.49,
                   "sps": 14.18,
-                  "srs": 1.51,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.15,
@@ -4198,7 +4042,6 @@ saxony_anhalt: {
             "medvedja": {
                   "sns": 63.41,
                   "sps": 10.45,
-                  "srs": 0.88,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.89,
@@ -4214,7 +4057,6 @@ saxony_anhalt: {
             "crna_trava": {
                   "sns": 75.7,
                   "sps": 8.24,
-                  "srs": 0.98,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.51,
@@ -4230,7 +4072,6 @@ saxony_anhalt: {
             "nis": {
                   "sns": 41.55,
                   "sps": 5.74,
-                  "srs": 1.32,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.5,
@@ -4246,7 +4087,6 @@ saxony_anhalt: {
             "aleksinac": {
                   "sns": 56.12,
                   "sps": 9.61,
-                  "srs": 2.05,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.02,
@@ -4262,7 +4102,6 @@ saxony_anhalt: {
             "gadzin_han": {
                   "sns": 63.4,
                   "sps": 12.73,
-                  "srs": 1.89,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.33,
@@ -4278,7 +4117,6 @@ saxony_anhalt: {
             "doljevac": {
                   "sns": 76.1,
                   "sps": 6.69,
-                  "srs": 1.34,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.54,
@@ -4294,7 +4132,6 @@ saxony_anhalt: {
             "merosina": {
                   "sns": 68.19,
                   "sps": 9.7,
-                  "srs": 1.28,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.49,
@@ -4310,7 +4147,6 @@ saxony_anhalt: {
             "razanj": {
                   "sns": 68.86,
                   "sps": 7.25,
-                  "srs": 2.33,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.55,
@@ -4326,7 +4162,6 @@ saxony_anhalt: {
             "svrljig": {
                   "sns": 58.31,
                   "sps": 7.91,
-                  "srs": 1.54,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.0,
@@ -4342,7 +4177,6 @@ saxony_anhalt: {
             "pirot": {
                   "sns": 51.32,
                   "sps": 7.7,
-                  "srs": 1.88,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.21,
@@ -4358,7 +4192,6 @@ saxony_anhalt: {
             "babusnica": {
                   "sns": 60.65,
                   "sps": 12.91,
-                  "srs": 1.89,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.49,
@@ -4374,7 +4207,6 @@ saxony_anhalt: {
             "bela_palanka": {
                   "sns": 69.6,
                   "sps": 6.34,
-                  "srs": 2.01,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.33,
@@ -4390,7 +4222,6 @@ saxony_anhalt: {
             "dimitrovgrad": {
                   "sns": 53.15,
                   "sps": 8.35,
-                  "srs": 1.96,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.05,
@@ -4406,7 +4237,6 @@ saxony_anhalt: {
             "smederevo": {
                   "sns": 50.45,
                   "sps": 7.46,
-                  "srs": 1.56,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 5.68,
@@ -4422,7 +4252,6 @@ saxony_anhalt: {
             "velika_plana": {
                   "sns": 54.48,
                   "sps": 8.41,
-                  "srs": 1.3,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 7.82,
@@ -4438,7 +4267,6 @@ saxony_anhalt: {
             "smederevska_palanka": {
                   "sns": 54.71,
                   "sps": 5.38,
-                  "srs": 1.07,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.98,
@@ -4454,7 +4282,6 @@ saxony_anhalt: {
             "vranje": {
                   "sns": 55.83,
                   "sps": 11.33,
-                  "srs": 1.77,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.07,
@@ -4470,7 +4297,6 @@ saxony_anhalt: {
             "bosilegrad": {
                   "sns": 76.16,
                   "sps": 5.22,
-                  "srs": 0.9,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 0.81,
@@ -4486,7 +4312,6 @@ saxony_anhalt: {
             "bujanovac": {
                   "sns": 32.49,
                   "sps": 3.04,
-                  "srs": 0.51,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.39,
@@ -4502,7 +4327,6 @@ saxony_anhalt: {
             "vladicin_han": {
                   "sns": 62.97,
                   "sps": 10.36,
-                  "srs": 1.89,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 4.09,
@@ -4518,7 +4342,6 @@ saxony_anhalt: {
             "presevo": {
                   "sns": 11.65,
                   "sps": 3.37,
-                  "srs": 0.58,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 0.26,
@@ -4534,7 +4357,6 @@ saxony_anhalt: {
             "surdulica": {
                   "sns": 38.98,
                   "sps": 46.06,
-                  "srs": 0.4,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.88,
@@ -4550,7 +4372,6 @@ saxony_anhalt: {
             "trgoviste": {
                   "sns": 85.58,
                   "sps": 2.52,
-                  "srs": 0.52,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 1.6,
@@ -4566,7 +4387,6 @@ saxony_anhalt: {
             "prokuplje": {
                   "sns": 58.86,
                   "sps": 7.65,
-                  "srs": 1.96,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.26,
@@ -4582,7 +4402,6 @@ saxony_anhalt: {
             "blace": {
                   "sns": 60.34,
                   "sps": 7.29,
-                  "srs": 1.06,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 6.88,
@@ -4598,7 +4417,6 @@ saxony_anhalt: {
             "zitoradja": {
                   "sns": 75.61,
                   "sps": 7.11,
-                  "srs": 0.6,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 2.11,
@@ -4614,7 +4432,6 @@ saxony_anhalt: {
             "kursumlija": {
                   "sns": 60.58,
                   "sps": 9.51,
-                  "srs": 1.06,
                   "pes": 0.0,
                   "nps": 0.0,
                   "nada": 3.05,
@@ -4797,6 +4614,7 @@ saxony_anhalt: {
 
   latvia: {
     name: 'Latvia',
+    name_tr: 'Letonya',
     hidden: true,                 // election held 2026-10-03; hidden from the nav
     seats: 100,
     threshold: 5.0,
@@ -5619,6 +5437,7 @@ saxony_anhalt: {
 
   brazil: {
     name: 'Brazil',
+    name_tr: 'Brezilya',
     // actual first-round result (4 Oct 2026, official): neither
     // candidate passed 50%, confirming the Lula-Flavio runoff;
     // the final poll average had Lula ~1 point ahead, the result
@@ -5962,6 +5781,7 @@ saxony_anhalt: {
 
   austria: {
     name: 'Austria',
+    name_tr: 'Avusturya',
     seats: 183,
     threshold: 4.0,
     method: 'dhondt',
@@ -7059,6 +6879,7 @@ saxony_anhalt: {
   },
   czechia: {
     name: 'Czechia',
+    name_tr: 'Çekya',
     seats: 200,
     threshold: 5.0,
     method: 'imperiali_hb',     // Chamber of Deputies: two-tier system (Act 189/2021) — first scrutiny LR-Imperiali per region, second scrutiny LR-Hagenbach-Bischoff nationally
@@ -7431,6 +7252,7 @@ saxony_anhalt: {
   // ===== Poland (Sejm 2027) =====
   poland: {
     name: 'Poland',
+    name_tr: 'Polonya',
     seats: 460,
     threshold: 5.0,
     method: 'dhondt',            // Sejm: PR via D'Hondt in 41 multi-member okręgi (per-okręg allocation, seatDistricts)
@@ -8216,6 +8038,7 @@ saxony_anhalt: {
 
   netherlands: {
     name: 'Netherlands',
+    name_tr: 'Hollanda',
     seats: 150,
     threshold: 0.67,              // no legal threshold; effective ≈ 1/150 ≈ 0.67%
     method: 'dhondt',             // national D'Hondt, single national district
@@ -15023,6 +14846,7 @@ saxony_anhalt: {
 
   estonia: {
     name: 'Estonia',
+    name_tr: 'Estonya',
     seats: 101,
     threshold: 5.0,               // 5% national threshold
     method: 'dhondt',             // national D'Hondt over 12 multi-seat districts (adjustment seats)
@@ -15342,6 +15166,7 @@ saxony_anhalt: {
 
   slovakia: {
     name: 'Slovakia',
+    name_tr: 'Slovakya',
     seats: 150,
     threshold: 5.0,
     method: 'hare_niemeyer',      // LR-Hagenbach-Bischoff (quota = valid votes/(150+1)); app approximates with Hare quota
@@ -16694,6 +16519,7 @@ saxony_anhalt: {
 
   france: {
     name: "France",
+    name_tr: 'Fransa',
     // Live again 2026-10-11 (scrape_france.py). The 2027 field is UNSETTLED:
     // the first-round polls test alternative hypothetical fields (19-33
     // columns across periods, the same pollster/date in several scenario
@@ -19053,6 +18879,7 @@ saxony_anhalt: {
   },
   germany: {
     name: 'Germany',
+    name_tr: 'Almanya',
     seats: 630,
     threshold: 5.0,
     method: 'sainte_lague_standard', // Sainte-Laguë/Schepers (divisors 1, 3, 5, …)
@@ -19716,6 +19543,7 @@ saxony_anhalt: {
   },
   spain: {
     name: 'Spain',
+    name_tr: 'İspanya',
     seats: 350,
     threshold: 3.0,               // 3% in each constituency
     method: 'dhondt',             // D'Hondt in each of the 52 constituencies
@@ -23050,6 +22878,7 @@ saxony_anhalt: {
   },
   greece: {
     name: 'Greece',
+    name_tr: 'Yunanistan',
     seats: 300,
     threshold: 3.0,
     method: 'hare_niemeyer',      // proportional part: Hare quota + remainders
@@ -24373,6 +24202,7 @@ saxony_anhalt: {
   },
   italy: {
     name: 'Italy',
+    name_tr: 'İtalya',
     seats: 400,
     threshold: 3.0,
     method: 'dhondt',             // national PR pool (Rosatellum)
@@ -25644,6 +25474,7 @@ saxony_anhalt: {
   },
   jp: {
     name: 'Japan',
+    name_tr: 'Japonya',
     seats: 465,                   // 289 single-member districts + 176 PR in 11 blocs
     threshold: 0.0,               // no PR threshold
     method: 'dhondt',             // PR tier: D'Hondt in each of the 11 blocs
@@ -25721,6 +25552,7 @@ saxony_anhalt: {
 
   kr: {
     name: 'South Korea',
+    name_tr: 'Güney Kore',
     seats: 300,                   // 254 single-member districts + 46 national PR
     threshold: 3.0,               // proportional tier threshold (2024: 3%)
     // PR tier: national D'Hondt. The real 2024 system was semi-linked
@@ -25814,6 +25646,7 @@ saxony_anhalt: {
 
   hr: {
     name: 'Croatia',
+    name_tr: 'Hırvatistan',
     seats: 151,                   // 140 (10 districts x 14) + 3 diaspora + 8 minorities
     threshold: 5.0,               // 5% per electoral district
     districtThreshold: true,      // the threshold applies in each district
@@ -25900,6 +25733,7 @@ saxony_anhalt: {
 
   is: {
     name: 'Iceland',
+    name_tr: 'İzlanda',
     seats: 63,                    // 54 district (6 constituencies) + 9 leveling
     threshold: 5.0,               // 5% for leveling seats (district tier: none)
     method: 'dhondt',             // district tier D'Hondt; leveling by quotient continuation
@@ -25977,6 +25811,7 @@ saxony_anhalt: {
 
   si: {
     name: 'Slovenia',
+    name_tr: 'Slovenya',
     seats: 90,                    // 88 (8 constituencies x 11) + 2 minority
     threshold: 4.0,               // 4% national threshold
     method: 'dhondt',             // per-constituency D'Hondt (11 each)
@@ -26057,6 +25892,7 @@ saxony_anhalt: {
 
   bc: {
     name: 'British Columbia',
+    name_tr: 'Britanya Kolumbiyası',
     seats: 93,
     threshold: 0,                 // no threshold (first-past-the-post)
     method: 'fptp',               // winner-takes-all in 93 single-member ridings
@@ -27437,6 +27273,7 @@ saxony_anhalt: {
 
   canada: {
     name: 'Canada',
+    name_tr: 'Kanada',
     seats: 343,
     threshold: 0,                 // no threshold (first-past-the-post)
     method: 'fptp',               // winner-takes-all in 343 single-member ridings
@@ -28826,6 +28663,7 @@ saxony_anhalt: {
 
   hu: {
     name: 'Hungary',
+    name_tr: 'Macaristan',
     seats: 199,
     threshold: 5.0,
     method: 'dhondt',
@@ -28881,6 +28719,7 @@ saxony_anhalt: {
 
   argentina: {
     name: 'Argentina',
+    name_tr: 'Arjantin',
     // presidential two-round: the map units are the 24 districts (23
     // provinces + the City of Buenos Aires). The 2027 field is a set of
     // declared/potential candidacies - the polls test alternative fields,
@@ -28952,6 +28791,7 @@ saxony_anhalt: {
 
   bgpres: {
     name: 'Bulgaria (presidential)',
+    name_tr: 'Bulgaristan (başkanlık)',
     unitLabel: { en: 'provinces', tr: 'vilayet' },
     seats: 1,
     threshold: 0,
@@ -29017,6 +28857,7 @@ saxony_anhalt: {
 
   bg: {
     name: 'Bulgaria',
+    name_tr: 'Bulgaristan',
     unitLabel: { en: 'provinces', tr: 'vilayet' },
     seats: 240,
     threshold: 4.0,
@@ -29094,6 +28935,7 @@ saxony_anhalt: {
 
   lt: {
     name: 'Lithuania',
+    name_tr: 'Litvanya',
     seats: 141,                   // 71 single-member districts + 70 PR
     threshold: 5.0,               // 5% national for the 70 PR seats (7% for coalitions, not modelled)
     method: 'hare_niemeyer',      // PR tier: largest remainder, Hare quota
@@ -29234,6 +29076,7 @@ saxony_anhalt: {
   },
   ro: {
     name: 'Romania',
+    name_tr: 'Romanya',
     seats: 331,
     threshold: 5.0,               // parties; 8/9/10% for alliances
     method: 'hare_niemeyer',      // per-constituency Hare/Niemeyer
@@ -29294,6 +29137,7 @@ saxony_anhalt: {
   },
   dk: {
     name: 'Denmark',
+    name_tr: 'Danimarka',
     seats: 179,                   // 175 in Denmark proper + 4 North Atlantic
     threshold: 2.0,
     method: 'sainte_lague_standard',   // unmodified Sainte-Lague levelling
@@ -29361,6 +29205,7 @@ saxony_anhalt: {
   },
   fi: {
     name: 'Finland',
+    name_tr: 'Finlandiya',
     seats: 200,
     threshold: 0.0,               // no national threshold (district-level)
     method: 'dhondt',             // per-district D'Hondt
@@ -29414,6 +29259,7 @@ saxony_anhalt: {
   },
   no: {
     name: 'Norway',
+    name_tr: 'Norveç',
     seats: 169,                   // 150 district seats + 19 leveling seats
     threshold: 4.0,               // 4% national for the leveling seats
     method: 'sainte_lague',       // modified Sainte-Lague, first divisor 1.4
@@ -29476,6 +29322,7 @@ saxony_anhalt: {
 
   pt: {
     name: 'Portugal',
+    name_tr: 'Portekiz',
     seats: 230,
     threshold: 0,
     method: 'dhondt',
@@ -29536,6 +29383,7 @@ saxony_anhalt: {
 
   uk: {
     name: 'United Kingdom',
+    name_tr: 'Birleşik Krallık',
     seats: 650,
     threshold: 0,                 // no threshold (first-past-the-post)
     method: 'fptp',               // winner-takes-all in 650 single-member seats
@@ -49678,6 +49526,7 @@ saxony_anhalt: {
 
   nz: {
     name: 'New Zealand',
+    name_tr: 'Yeni Zelanda',
     seats: 120,
     threshold: 5.0,               // 5% or one electorate (MMP)
     method: 'sainte_lague_standard', // Sainte-Lague/Schepers, national party vote

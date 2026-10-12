@@ -2,9 +2,33 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-10-11T12:03:40Z",
- "poll_count": 560,
+ "scraped_at": "2026-10-12T14:21:16Z",
+ "poll_count": 564,
  "polls": [
+  {
+   "pollster": "SocioMétrica/El Español",
+   "date": "2026-10-11",
+   "n": 1000,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 32.6,
+    "psoe": 26.2,
+    "vox": 18.8,
+    "sumar": 5.8,
+    "erc": 2.0,
+    "junts": 1.5,
+    "bildu": 1.3,
+    "pnv": 0.8,
+    "bng": 0.9,
+    "cc": 0.5,
+    "upn": 0.2,
+    "aa": 0.9,
+    "podemos": 2.8,
+    "salf": 2.1
+   }
+  },
   {
    "pollster": "Target Point/El Debate",
    "date": "2026-10-09",
@@ -62,6 +86,48 @@
    }
   },
   {
+   "pollster": "GESOP/Prensa Ibérica",
+   "date": "2026-10-08",
+   "n": 1000,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 28.7,
+    "psoe": 26.1,
+    "vox": 18.9,
+    "sumar": 8.0,
+    "erc": 2.5,
+    "junts": 1.9,
+    "podemos": 2.6,
+    "salf": 2.0
+   }
+  },
+  {
+   "pollster": "GAD3/Vocento",
+   "date": "2026-10-08",
+   "n": 1077,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 31.4,
+    "psoe": 26.4,
+    "vox": 18.2,
+    "sumar": 7.4,
+    "erc": 2.6,
+    "junts": 1.5,
+    "bildu": 1.5,
+    "pnv": 1.0,
+    "bng": 0.9,
+    "cc": 0.4,
+    "upn": 0.1,
+    "aa": 1.0,
+    "podemos": 2.3,
+    "salf": 1.8
+   }
+  },
+  {
    "pollster": "Hamalgama Métrica/Vozpópuli",
    "date": "2026-10-08",
    "n": 1000,
@@ -80,7 +146,8 @@
     "bng": 0.8,
     "cc": 0.5,
     "upn": 0.2,
-    "podemos": 3.3
+    "podemos": 3.3,
+    "salf": 1.8
    }
   },
   {
@@ -101,6 +168,29 @@
     "pnv": 1.1,
     "podemos": 3.2,
     "salf": 1.8
+   }
+  },
+  {
+   "pollster": "Sigma Dos/El Mundo",
+   "date": "2026-10-08",
+   "n": 2017,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 31.9,
+    "psoe": 25.3,
+    "vox": 19.1,
+    "sumar": 7.6,
+    "erc": 2.6,
+    "junts": 1.2,
+    "bildu": 1.1,
+    "pnv": 0.9,
+    "bng": 0.9,
+    "cc": 0.5,
+    "upn": 0.2,
+    "aa": 0.8,
+    "podemos": 3.1
    }
   },
   {
@@ -11443,6 +11533,12 @@
    "sumar": 8.63,
    "podemos": 2.15,
    "salf": 2.4
+  },
+  "aragon": {
+   "pp": 34.5,
+   "psoe": 29.7,
+   "vox": 17.5,
+   "sumar": 5.4
   },
   "pais_vasco": {
    "pnv": 23.7,

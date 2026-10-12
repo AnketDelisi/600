@@ -19068,13 +19068,14 @@ saxony_anhalt: {
       linke:{ code: 'LINKE', name: 'Die Linke', name_en: 'The Left', color: '#BE3075', ideology: "Democratic socialism, Socialism"},
       afd:  { code: 'AfD',   name: 'Alternative für Deutschland', name_en: 'Alternative for Germany', color: '#00A2DE', ideology: "Right-wing populism, National conservatism, Euroscepticism"},
       fdp:  { code: 'FDP',   name: 'Freie Demokratische Partei', name_en: 'Free Democratic Party', color: '#FFED00', ideology: "Liberalism (German)"},
+      fw:   { code: 'FW',   name: 'Freie Wähler', name_en: 'Free Voters', color: '#F7A800', ideology: "Regionalism, Localism, Conservative liberalism"},
       bsw:  { code: 'BSW',   name: 'Bündnis Sahra Wagenknecht', name_en: 'Sahra Wagenknecht Alliance', color: '#792351', ideology: "Left-conservatism, Left-wing populism"},
       ssw:  { code: 'SSW',   name: 'South Schleswig Voters\' Association', name_en: 'South Schleswig Voters\' Association', color: '#003C8F', ideology: "Regionalism, Danish minority interests"},
     },
     // the SSW (Danish minority) is exempt from the 5% threshold
     minorityParties: ['ssw'],
-    order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp', 'ssw'],
-    parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'afd', 'ssw'],
+    order: ['cdu', 'afd', 'spd', 'gruene', 'linke', 'bsw', 'fdp', 'fw', 'ssw'],
+    parlOrder: ['linke', 'spd', 'gruene', 'bsw', 'cdu', 'fdp', 'fw', 'afd', 'ssw'],
     // Firewall = everyone but the AfD; BSW as kingmaker (like the state models)
     blocs: {
       bloc1: { name: 'Firewall', short: 'FIRE', parties: ['cdu', 'spd', 'gruene', 'linke', 'fdp'], color: '#111827' },
@@ -19099,7 +19100,7 @@ saxony_anhalt: {
               "fdp": 4.33,
               "bsw": 4.98,
               "ssw": 0.2
-      },
+      , fw: 1.55},
       seats: {
               "cdu": 208,
               "afd": 152,
@@ -19109,7 +19110,7 @@ saxony_anhalt: {
               "bsw": 0,
               "fdp": 0,
               "ssw": 1
-      },
+      , fw: 0},
     },
     map: {
       svg: 'img/germany.svg',
@@ -19141,7 +19142,8 @@ saxony_anhalt: {
                       "linke": 7.79,
                       "afd": 16.29,
                       "fdp": 4.69,
-                      "bsw": 3.45
+                      "bsw": 3.45,
+                      "fw": 0.73
               },
               "mecklenburg_vorpommern": {
                       "cdu": 17.82,
@@ -19150,7 +19152,8 @@ saxony_anhalt: {
                       "linke": 12.05,
                       "afd": 34.99,
                       "fdp": 3.2,
-                      "bsw": 10.56
+                      "bsw": 10.56,
+                      "fw": 1.06
               },
               "hamburg": {
                       "cdu": 20.75,
@@ -19159,7 +19162,8 @@ saxony_anhalt: {
                       "linke": 14.45,
                       "afd": 10.87,
                       "fdp": 4.51,
-                      "bsw": 4.01
+                      "bsw": 4.01,
+                      "fw": 0.37
               },
               "niedersachsen": {
                       "cdu": 28.12,
@@ -19168,7 +19172,8 @@ saxony_anhalt: {
                       "linke": 8.09,
                       "afd": 17.84,
                       "fdp": 4.09,
-                      "bsw": 3.78
+                      "bsw": 3.78,
+                      "fw": 0.75
               },
               "bremen": {
                       "cdu": 20.55,
@@ -19177,7 +19182,8 @@ saxony_anhalt: {
                       "linke": 14.78,
                       "afd": 15.07,
                       "fdp": 3.53,
-                      "bsw": 4.34
+                      "bsw": 4.34,
+                      "fw": 0.46
               },
               "brandenburg": {
                       "cdu": 18.09,
@@ -19186,7 +19192,8 @@ saxony_anhalt: {
                       "linke": 10.7,
                       "afd": 32.49,
                       "fdp": 3.25,
-                      "bsw": 10.71
+                      "bsw": 10.71,
+                      "fw": 1.46
               },
               "sachsen_anhalt": {
                       "cdu": 19.18,
@@ -19195,7 +19202,8 @@ saxony_anhalt: {
                       "linke": 10.75,
                       "afd": 37.1,
                       "fdp": 3.08,
-                      "bsw": 11.25
+                      "bsw": 11.25,
+                      "fw": 1.38
               },
               "berlin": {
                       "cdu": 18.27,
@@ -19204,7 +19212,8 @@ saxony_anhalt: {
                       "linke": 19.86,
                       "afd": 15.23,
                       "fdp": 3.8,
-                      "bsw": 6.65
+                      "bsw": 6.65,
+                      "fw": 0.33
               },
               "nordrhein_westfalen": {
                       "cdu": 30.12,
@@ -19213,7 +19222,8 @@ saxony_anhalt: {
                       "linke": 8.33,
                       "afd": 16.82,
                       "fdp": 4.39,
-                      "bsw": 4.11
+                      "bsw": 4.11,
+                      "fw": 0.50
               },
               "sachsen": {
                       "cdu": 19.74,
@@ -19222,7 +19232,8 @@ saxony_anhalt: {
                       "linke": 11.3,
                       "afd": 37.3,
                       "fdp": 3.25,
-                      "bsw": 9.04
+                      "bsw": 9.04,
+                      "fw": 1.56
               },
               "hessen": {
                       "cdu": 28.87,
@@ -19231,7 +19242,8 @@ saxony_anhalt: {
                       "linke": 8.69,
                       "afd": 17.78,
                       "fdp": 5.05,
-                      "bsw": 4.43
+                      "bsw": 4.43,
+                      "fw": 1.30
               },
               "thuringen": {
                       "cdu": 18.58,
@@ -19240,7 +19252,8 @@ saxony_anhalt: {
                       "linke": 15.16,
                       "afd": 38.55,
                       "fdp": 2.82,
-                      "bsw": 9.42
+                      "bsw": 9.42,
+                      "fw": 1.56
               },
               "rheinland_pfalz": {
                       "cdu": 30.64,
@@ -19249,7 +19262,8 @@ saxony_anhalt: {
                       "linke": 6.52,
                       "afd": 20.09,
                       "fdp": 4.59,
-                      "bsw": 4.23
+                      "bsw": 4.23,
+                      "fw": 2.10
               },
               "bayern": {
                       "cdu": 37.18,
@@ -19258,7 +19272,8 @@ saxony_anhalt: {
                       "linke": 5.73,
                       "afd": 19.01,
                       "fdp": 4.18,
-                      "bsw": 3.09
+                      "bsw": 3.09,
+                      "fw": 4.34
               },
               "baden_wurttemberg": {
                       "cdu": 31.6,
@@ -19267,7 +19282,8 @@ saxony_anhalt: {
                       "linke": 6.76,
                       "afd": 19.79,
                       "fdp": 5.63,
-                      "bsw": 4.1
+                      "bsw": 4.1,
+                      "fw": 1.36
               },
               "saarland": {
                       "cdu": 26.86,
@@ -19276,7 +19292,8 @@ saxony_anhalt: {
                       "linke": 7.35,
                       "afd": 21.56,
                       "fdp": 4.29,
-                      "bsw": 6.17
+                      "bsw": 6.17,
+                      "fw": 1.41
               }
       },
       names: {
@@ -19306,7 +19323,7 @@ saxony_anhalt: {
               "afd": 20.8,
               "fdp": 4.33,
               "bsw": 4.98
-      },
+      , "fw": 1.55},
     },
       map2: {
       "svg": "img/germany_wahlkreise.svg",
@@ -19694,7 +19711,7 @@ saxony_anhalt: {
     logos: {
       cdu: 'img/de/Union.svg', spd: 'img/de/SPD.svg', gruene: 'img/de/Grune.svg',
       linke: 'img/de/Linke.svg', afd: 'img/de/AFD.svg', fdp: 'img/de/FDP.svg',
-      bsw: 'img/de/BSW.svg',
+      bsw: 'img/de/BSW.svg', fw: 'img/de/FW.svg', ssw: 'img/de/SSW.svg',
     },
   },
   spain: {

@@ -2501,6 +2501,15 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
 //   from the current poll avg, honoring the 4% national / 12% valkrets rule
 function districtPartySeats(nr, party, avg, resultMode){
   const conf=MAP_CONF();
+  if(conf.prDistricts&&conf.prDistricts[nr]){
+    if(resultMode){
+      const mv=conf.mv2023&&conf.mv2023[nr];
+      return mv?(mv[party]||0):0;
+    }
+    const list=districtSeatSplit(nr, avg, false, conf);
+    if(!list) return 0;
+    return list.filter(x=>x===party).length;
+  }
   if(!conf.useConstituencies) return null;
   // winner-takes-all constituencies (fptp): no per-party MP pills
   if(CONSTITUENCY_RULE==='fptp') return null;
@@ -2697,6 +2706,14 @@ function blockVoteSeats(n, votes){
 function districtSeatSplit(nr, avg, resultMode, conf){
   const dots=conf.seatDots;
   let seatsN=null, votes={}, method='dhondt', valid=null;
+  // the real last-election seat counts per district (Turkey's mv2023):
+  // exact, and immune to the proxy geography the projection uses
+  if(resultMode&&conf.mv2023&&conf.mv2023[nr]){
+    const mv=conf.mv2023[nr];
+    const arr=[];
+    PARTY_ORDER.forEach(p=>{for(let i=0;i<(mv[p]||0);i++) arr.push(p)});
+    return arr.length?arr:null;
+  }
   const natBase=resultMode?(conf.national2021||LAST_ELECTION.results):avg;
   if(conf.blockVote&&conf.seatDistricts&&conf.seatDistricts[nr]){
     // Spain Senate: block voting, no threshold - the dot split must match
@@ -2748,6 +2765,24 @@ function districtSeatSplit(nr, avg, resultMode, conf){
     method='imperiali';
     valid=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].unallocated)
       &&((resultMode?(natBase&&natBase[p]||0):(avg&&avg[p]||0))||0)>=THRESHOLD);
+  }else if(conf.prDistricts&&conf.prDistricts[nr]){
+    // Turkey: plain per-district D'Hondt; an alliance clearing the 7%
+    // threshold exempts its members (MHP/BBP via Cumhur, TIP via Emek)
+    seatsN=conf.prDistricts[nr];
+    method='dhondt';
+    const shares=districtShares(nr, avg, resultMode, conf);
+    if(!shares) return null;
+    PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+    const c=COUNTRIES[COUNTRY]||{};
+    const alliances=c.alliances||{};
+    const exempt={};
+    Object.keys(alliances).forEach(a=>{
+      const nat=alliances[a].reduce((s,p)=>s+((avg&&avg[p])||0),0);
+      if(nat>=THRESHOLD) alliances[a].forEach(p=>{exempt[p]=true});
+    });
+    valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0
+      &&!(PARTY_META[p]&&PARTY_META[p].unallocated)
+      &&(exempt[p]||((natBase&&natBase[p]||0)>=THRESHOLD)));
   }else if(dots&&dots.seats){
     // nr is the raw path id; the seats are keyed by the district's gebiet key
     const gKey=(conf.districts&&conf.districts[String(nr)])||String(nr);
@@ -2975,7 +3010,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       nr=parseInt(ph.id.slice(1),10);
     }
     if(!nr) return;
-    if(conf.seatDistricts||conf.seatDots) mapped.push({nr,ph});
+    if(conf.seatDistricts||conf.seatDots||conf.prDistricts) mapped.push({nr,ph});
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return;
     const blocMode=MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
@@ -3106,7 +3141,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   box.appendChild(tooltip);
   // seat circles for multi-member district maps (Spain/Poland); drawn after
   // the SVG is in the DOM so getBBox() has layout
-  if((conf.seatDistricts||conf.seatDots)&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
+  if((conf.seatDistricts||conf.seatDots||conf.prDistricts)&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
 }
 
 /* ---------- screenshot capture ---------- */

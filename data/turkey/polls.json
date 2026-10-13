@@ -6,8 +6,8 @@
       "url": "https://tr.wikipedia.org/wiki/Bir_sonraki_T%C3%BCrkiye_genel_se%C3%A7imleri_i%C3%A7in_yap%C4%B1lan_anketler"
     }
   ],
-  "scraped_at": "2026-10-13T20:53:53Z",
-  "poll_count": 232,
+  "scraped_at": "2026-10-13T22:29:52Z",
+  "poll_count": 204,
   "polls": [
     {
       "pollster": "Kontak",
@@ -2675,18 +2675,6 @@
       "n": 2400
     },
     {
-      "pollster": "Toplum Çlş. Ens.",
-      "date": "2023-12-28",
-      "votes": {
-        "akp": 227.0,
-        "chp": 232.0,
-        "dem": 61.0,
-        "mhp": 80.0,
-        "iyi": 0.0
-      },
-      "n": 1500
-    },
-    {
       "pollster": "PanoramaTR",
       "date": "2023-12-15",
       "votes": {
@@ -2715,42 +2703,6 @@
         "tip": 1.6
       },
       "n": 2870
-    },
-    {
-      "pollster": "Türkiye'nin Fikri",
-      "date": "2023-12-13",
-      "votes": {
-        "akp": 259.0,
-        "chp": 284.0,
-        "dem": 57.0,
-        "mhp": 0.0,
-        "iyi": 0.0
-      },
-      "n": 2324
-    },
-    {
-      "pollster": "BETİMAR",
-      "date": "2023-12-12",
-      "votes": {
-        "akp": 253.0,
-        "chp": 205.0,
-        "dem": 73.0,
-        "mhp": 69.0,
-        "iyi": 0.0
-      },
-      "n": 1750
-    },
-    {
-      "pollster": "Kontak",
-      "date": "2023-12-07",
-      "votes": {
-        "akp": 247.0,
-        "chp": 286.0,
-        "dem": 0.0,
-        "mhp": 67.0,
-        "iyi": 0.0
-      },
-      "n": 2325
     },
     {
       "pollster": "Yöneylem",
@@ -2783,30 +2735,6 @@
       "n": 3012
     },
     {
-      "pollster": "AREA",
-      "date": "2023-11-27",
-      "votes": {
-        "akp": 209.0,
-        "chp": 213.0,
-        "dem": 72.0,
-        "mhp": 57.0,
-        "iyi": 49.0
-      },
-      "n": 2000
-    },
-    {
-      "pollster": "MetroPOLL",
-      "date": "2023-11-20",
-      "votes": {
-        "akp": 232.0,
-        "chp": 235.0,
-        "dem": 75.0,
-        "mhp": 58.0,
-        "iyi": 0.0
-      },
-      "n": 1189
-    },
-    {
       "pollster": "MetroPOLL",
       "date": "2023-11-19",
       "votes": {
@@ -2837,18 +2765,6 @@
       "n": 2015
     },
     {
-      "pollster": "Asal",
-      "date": "2023-11-09",
-      "votes": {
-        "akp": 230.0,
-        "chp": 243.0,
-        "dem": 66.0,
-        "mhp": 61.0,
-        "iyi": 0.0
-      },
-      "n": 2015
-    },
-    {
       "pollster": "Yöneylem",
       "date": "2023-11-08",
       "votes": {
@@ -2862,18 +2778,6 @@
         "tip": 4.0
       },
       "n": 2400
-    },
-    {
-      "pollster": "BETİMAR",
-      "date": "2023-11-04",
-      "votes": {
-        "akp": 247.0,
-        "chp": 229.0,
-        "dem": 65.0,
-        "mhp": 59.0,
-        "iyi": 0.0
-      },
-      "n": 1515
     },
     {
       "pollster": "MetroPOLL",
@@ -2920,31 +2824,6 @@
       "n": 2600
     },
     {
-      "pollster": "SAROS",
-      "date": "2023-10-05",
-      "votes": {
-        "akp": 218.0,
-        "chp": 245.0,
-        "dem": 67.0,
-        "mhp": 70.0,
-        "iyi": 0.0
-      },
-      "n": 3217
-    },
-    {
-      "pollster": "Kontak",
-      "date": "2023-10-04",
-      "votes": {
-        "akp": 244.0,
-        "chp": 74.0,
-        "dem": 63.0,
-        "mhp": 0.0,
-        "iyi": 0.0,
-        "yep": 179.0
-      },
-      "n": 1773
-    },
-    {
       "pollster": "AREA",
       "date": "2023-09-30",
       "votes": {
@@ -2974,31 +2853,6 @@
         "tip": 2.7
       },
       "n": 2398
-    },
-    {
-      "pollster": "Asal",
-      "date": "2023-09-29",
-      "votes": {
-        "akp": 223.0,
-        "chp": 241.0,
-        "dem": 67.0,
-        "mhp": 69.0,
-        "iyi": 0.0
-      },
-      "n": 2520
-    },
-    {
-      "pollster": "Asal",
-      "date": "2023-09-18",
-      "votes": {
-        "akp": 269.0,
-        "chp": 19.0,
-        "dem": 65.0,
-        "mhp": 42.0,
-        "iyi": 18.0,
-        "yep": 167.0
-      },
-      "n": 2015
     },
     {
       "pollster": "Özdemir/USPUM",
@@ -3048,45 +2902,6 @@
       "n": 1170
     },
     {
-      "pollster": "İm Global",
-      "date": "2023-08-31",
-      "votes": {
-        "akp": 308.0,
-        "chp": 0.0,
-        "dem": 60.0,
-        "mhp": 21.0,
-        "iyi": 0.0,
-        "yep": 208.0
-      },
-      "n": 2216
-    },
-    {
-      "pollster": "Areda Survey",
-      "date": "2023-08-31",
-      "votes": {
-        "akp": 257.0,
-        "chp": 82.0,
-        "dem": 71.0,
-        "mhp": 65.0,
-        "iyi": 0.0,
-        "yep": 125.0
-      },
-      "n": 2400
-    },
-    {
-      "pollster": "Gündemar",
-      "date": "2023-08-30",
-      "votes": {
-        "akp": 232.0,
-        "chp": 12.0,
-        "dem": 55.0,
-        "mhp": 20.0,
-        "iyi": 40.0,
-        "yep": 204.0
-      },
-      "n": 2375
-    },
-    {
       "pollster": "Yöneylem",
       "date": "2023-08-30",
       "votes": {
@@ -3096,45 +2911,6 @@
         "dem": 21.0
       },
       "n": 2141
-    },
-    {
-      "pollster": "SAROS",
-      "date": "2023-08-29",
-      "votes": {
-        "akp": 275.0,
-        "chp": 48.0,
-        "dem": 70.0,
-        "mhp": 55.0,
-        "iyi": 33.0,
-        "yep": 109.0
-      },
-      "n": 3287
-    },
-    {
-      "pollster": "BETİMAR",
-      "date": "2023-08-28",
-      "votes": {
-        "akp": 301.0,
-        "chp": 0.0,
-        "dem": 67.0,
-        "mhp": 38.0,
-        "iyi": 50.0,
-        "yep": 143.0
-      },
-      "n": 2000
-    },
-    {
-      "pollster": "Özdemir",
-      "date": "2023-08-26",
-      "votes": {
-        "akp": 288.0,
-        "chp": 26.0,
-        "dem": 56.0,
-        "mhp": 19.0,
-        "iyi": 22.0,
-        "yep": 167.0
-      },
-      "n": 2012
     },
     {
       "pollster": "SAROS",
@@ -3153,32 +2929,6 @@
       "n": 7487
     },
     {
-      "pollster": "Optimar",
-      "date": "2023-08-21",
-      "votes": {
-        "akp": 254.0,
-        "chp": 60.0,
-        "dem": 86.0,
-        "mhp": 61.0,
-        "iyi": 0.0,
-        "yep": 139.0
-      },
-      "n": 2500
-    },
-    {
-      "pollster": "AREA",
-      "date": "2023-08-20",
-      "votes": {
-        "akp": 230.0,
-        "chp": 61.0,
-        "dem": 52.0,
-        "mhp": 54.0,
-        "iyi": 61.0,
-        "yep": 142.0
-      },
-      "n": 2027
-    },
-    {
       "pollster": "Özdemir",
       "date": "2023-08-11",
       "votes": {
@@ -3192,45 +2942,6 @@
         "a": 17.9
       },
       "n": 2000
-    },
-    {
-      "pollster": "Asal",
-      "date": "2023-08-10",
-      "votes": {
-        "akp": 245.0,
-        "chp": 67.0,
-        "dem": 70.0,
-        "mhp": 62.0,
-        "iyi": 0.0,
-        "yep": 156.0
-      },
-      "n": 2000
-    },
-    {
-      "pollster": "Gündemar",
-      "date": "2023-07-31",
-      "votes": {
-        "akp": 225.0,
-        "chp": 0.0,
-        "dem": 55.0,
-        "mhp": 12.0,
-        "iyi": 0.0,
-        "yep": 308.0
-      },
-      "n": 2300
-    },
-    {
-      "pollster": "Özdemir",
-      "date": "2023-07-26",
-      "votes": {
-        "akp": 262.0,
-        "chp": 66.0,
-        "dem": 56.0,
-        "mhp": 51.0,
-        "iyi": 0.0,
-        "yep": 165.0
-      },
-      "n": 2007
     },
     {
       "pollster": "Gündemar",
@@ -3294,30 +3005,6 @@
         "a": 2.8
       },
       "n": 2016
-    },
-    {
-      "pollster": "Asal",
-      "date": "2023-07-17",
-      "votes": {
-        "akp": 222.0,
-        "chp": 240.0,
-        "dem": 65.0,
-        "mhp": 68.0,
-        "iyi": 0.0
-      },
-      "n": 2000
-    },
-    {
-      "pollster": "MetroPOLL",
-      "date": "2023-07-16",
-      "votes": {
-        "akp": 202.0,
-        "chp": 261.0,
-        "dem": 79.0,
-        "mhp": 58.0,
-        "iyi": 0.0
-      },
-      "n": 1699
     },
     {
       "pollster": "AREA",
@@ -3416,11 +3103,15 @@
       "pollster": "SAROS",
       "date": "2023-06-25",
       "votes": {
-        "akp": 251.0,
-        "chp": 225.0,
-        "dem": 66.0,
-        "mhp": 0.0,
-        "iyi": 58.0
+        "akp": 33.8,
+        "chp": 22.9,
+        "mhp": 8.5,
+        "iyi": 6.5,
+        "dem": 8.6,
+        "yrp": 4.1,
+        "zp": 2.9,
+        "tip": 1.6,
+        "a": 2.0
       },
       "n": 4872
     },
@@ -3441,30 +3132,6 @@
       "n": 2400
     },
     {
-      "pollster": "Asal",
-      "date": "2023-06-14",
-      "votes": {
-        "akp": 244.0,
-        "chp": 228.0,
-        "dem": 67.0,
-        "mhp": 61.0,
-        "iyi": 0.0
-      },
-      "n": 2000
-    },
-    {
-      "pollster": "Toplum Çlş. Ens.",
-      "date": "2023-06-12",
-      "votes": {
-        "akp": 241.0,
-        "chp": 228.0,
-        "dem": 63.0,
-        "mhp": 68.0,
-        "iyi": 0.0
-      },
-      "n": 1532
-    },
-    {
       "pollster": "MetroPOLL",
       "date": "2023-06-10",
       "votes": {
@@ -3483,25 +3150,17 @@
       "pollster": "AREA",
       "date": "2023-06-09",
       "votes": {
-        "akp": 244.0,
-        "chp": 232.0,
-        "dem": 70.0,
-        "mhp": 54.0,
-        "iyi": 0.0
+        "akp": 30.8,
+        "chp": 13.4,
+        "mhp": 7.3,
+        "iyi": 5.1,
+        "dem": 9.4,
+        "yrp": 2.7,
+        "zp": 3.2,
+        "tip": 2.1,
+        "a": 3.3
       },
       "n": 2008
-    },
-    {
-      "pollster": "Gezici",
-      "date": "2023-06-07",
-      "votes": {
-        "akp": 251.0,
-        "chp": 223.0,
-        "dem": 58.0,
-        "mhp": 68.0,
-        "iyi": 0.0
-      },
-      "n": 2484
     }
   ]
 }

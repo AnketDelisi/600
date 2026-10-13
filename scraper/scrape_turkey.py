@@ -98,15 +98,20 @@ def scrape():
             continue
         cand_col = {}
         date_col = n_col = None
+        seat_table = False
         for ri in range(min(2, len(grid))):
             for col, cell in enumerate(grid[ri]):
                 low = norm_tok((cell or "").strip())
+                if low == "analist":
+                    seat_table = True
                 if low in COLS and col not in cand_col:
                     cand_col[col] = COLS[low]
                 if "tarih" in low and date_col is None:
                     date_col = col
                 if "orneklem" in low and n_col is None:
                     n_col = col
+        if seat_table:
+            continue  # seat projection, not a vote poll
         if len(set(cand_col.values())) < MIN_PARTIES or date_col is None:
             continue
         for row in grid:
@@ -128,6 +133,8 @@ def scrape():
                     votes[key] = v
             if len(votes) < MIN_PARTIES:
                 continue
+            if any(v > 100 for v in votes.values()):
+                continue  # seat counts / stray columns
             n = sample_n(row[n_col]) if n_col and n_col < len(row) else None
             polls.append({"pollster": pollster, "date": date, "votes": votes,
                           "n": n or 1000})

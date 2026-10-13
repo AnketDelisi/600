@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<script>
+const files = ['AVANTE','CIDADANIA','FEBRASIL','MDB','MISSAO','NOVO','PCDoB',
+  'PDT','PL','PODE','PP','PRB','PRD','PRDSolidariedade','PSB','PSD','PSDB',
+  'PSDBCIDADANIA','PSOL','PSOLREDE','PT','PV','REDE','Solidariedade',
+  'UNIAO','UPB','Lula','Bolsonaro','Caiado','Cury','Santos','Zema','Samara','Costa'];
+(async () => {
+  const out = {};
+  for (const f of files) {
+    const im = new Image();
+    const ok = await new Promise((res) => {
+      im.onload = () => res(im.naturalWidth + 'x' + im.naturalHeight);
+      im.onerror = () => res('ERR');
+      im.src = '/img/br/' + f + '.svg?v=test';
+    });
+    out[f] = ok;
+  }
+  document.title = JSON.stringify(out);
+})();
+</script>
+</body></html>

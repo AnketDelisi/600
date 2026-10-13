@@ -244,6 +244,10 @@ const IDEOLOGY_TR={
     'Tino rangatiratanga': 'Tino rangatiratanga',
     'Radical centrism': 'Radikal merkezcilik',
     'Reformism': 'Reformizm',
+    'Kemalism': 'Kemalizm',
+    'Turkish nationalism': 'Türk milliyetçiliği',
+    'Kurdish nationalism': 'Kürt milliyetçiliği',
+    'Conservative democracy': 'Muhafazakâr demokrasi',
     'Liberalism (Canadian)': 'Liberalizm (Kanada)',
 };
 function ideologyTr(str){
@@ -910,7 +914,7 @@ function runoffMomentum(roPolls, cand, recentDays, baseDays){
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  [t('Europe','Avrupa'),['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','uk']],
+  [t('Europe','Avrupa'),['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','turkey','uk']],
   [t('Americas','Amerika'),['alberta','argentina','bc','brazil','canada','ontario','qc']],
   [t('Middle East & Asia-Pacific','Orta Doğu ve Asya-Pasifik'),['israel','jp','kr','nz']],
 ];
@@ -3999,8 +4003,38 @@ function allocateSeatsTotal(avg, total){
   // through the growing-house allocator; the direct mandates are counted from
   // the map's districts
   if(OVERHANG) return overhangSeats(avg, total, directFromProjection(avg), OVERHANG.cap);
+  if(MAP_CONF()&&MAP_CONF().prDistricts&&!MAP_CONF().winnerDistricts)
+    return allocateSeatsPrDistricts(avg, total);
   if(MAP_CONF()&&MAP_CONF().winnerDistricts) return allocateSeatsWinnerDistricts(avg, total);
   return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsLeveling(avg)||allocateSeatsSlovenia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
+}
+
+// All-PR systems allocated per district (Turkey): each province's seats by
+// D'Hondt from the province's 2023 shares swung to the current average; a
+// party must clear the national threshold to take seats anywhere.
+function allocateSeatsPrDistricts(avg, total){
+  const conf=MAP_CONF();
+  if(!conf||!conf.prDistricts||conf.winnerDistricts) return null;
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
+  const minority=(COUNTRIES[COUNTRY]||{}).minorityParties||[];
+  const valid=PARTY_ORDER.filter(p=>(avg[p]||0)>=THRESHOLD||
+    (minority.indexOf(p)>=0&&(avg[p]||0)>0)||
+    (PARTY_META[p]&&PARTY_META[p].unallocated));
+  if(!valid.length) return out;
+  for(const nr of Object.keys(conf.prDistricts)){
+    const seatsN=conf.prDistricts[nr];
+    const sh=districtShares(nr,avg,false,conf);
+    if(!sh) continue;
+    const q={};
+    valid.forEach(p=>{q[p]=sh[p]?sh[p].now:0});
+    for(let i=0;i<seatsN;i++){
+      let best=valid[0];
+      for(const p of valid){if((q[p]||0)>(q[best]||0))best=p}
+      out[best]=(out[best]||0)+1;
+      q[best]=(sh[best]?sh[best].now:0)/((out[best]||0)+1);
+    }
+  }
+  return out;
 }
 
 // Mixed systems where the strongest party in a district takes all of its
@@ -4173,6 +4207,12 @@ function bindParlToggles(avg){
 function allocateSeatsFastRaw(votes, total, regionNoise, districtNoise){
   if(OVERHANG){
     return overhangSeats(votes,total,directFromProjection(votes),OVERHANG.cap);
+  }
+  // per-province systems (Turkey): the Monte Carlo draws use the same
+  // province-level D'Hondt as the deterministic projection (the seat count
+  // is fixed, so the cost matches the national loop)
+  if(MAP_CONF()&&MAP_CONF().prDistricts&&!MAP_CONF().winnerDistricts){
+    return allocateSeatsPrDistricts(votes, total);
   }
   const czechia=allocateSeatsCzechia(votes);
   if(czechia) return czechia;

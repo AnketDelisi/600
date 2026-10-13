@@ -38,6 +38,7 @@ sufficiency), the system notes map to the existing machinery.
 | 6 | **Ireland** Dáil | by ~2030 | ~48 (moderate) | STV | no honest shortcut exists | L (defer) |
 | 7 | ~~**Ontario** provincial~~ | ~~2029~~ | **shipped 2026-10-12** | FPTP, 124 ridings | the BC/QC riding builders | done |
 | 8 | ~~**Alberta** provincial~~ | ~~May 2027~~ | **shipped 2026-10-12** | FPTP, 87 ridings | the Ontario pipeline | done |
+| 9 | ~~**Turkey** general~~ | ~~7 May 2028~~ | **shipped 2026-10-13** | per-province D'Hondt, 600 seats, 7% threshold | the Serbia machinery + prDistricts | done |
 
 ## Thin data - wait
 

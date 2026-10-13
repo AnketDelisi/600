@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T13:31:01Z",
+ "generated": "2026-10-13T21:08:51Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -460,6 +460,26 @@
    "last_winner_color": "#EA6D6A",
    "poll_count": 7,
    "latest_poll": "2026-10-03"
+  },
+  "turkey": {
+   "name": "Turkey",
+   "election_date": "2028-05-07",
+   "election_date_runoff": null,
+   "last_election": "2023-05-14",
+   "last_winner": "akp",
+   "seats": 600,
+   "seat_based": false,
+   "leader": "akp",
+   "leader_pct": 31.2,
+   "leader_code": "AKP",
+   "leader_color": "#FF8700",
+   "leader_logo": "img/tr/AKP.svg",
+   "second": "yep",
+   "second_pct": 22.3,
+   "last_winner_code": "AKP",
+   "last_winner_color": "#FF8700",
+   "poll_count": 5,
+   "latest_poll": "2026-10-04"
   },
   "hu": {
    "name": "Hungary",

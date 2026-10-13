@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/index.html?c=turkey" style="width:1400px;height=900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(() => {
+    const d = f.contentDocument;
+    const svgs = [...d.querySelectorAll('.parliament-box svg')].map(s => ({
+      id: s.parentElement.id,
+      circles: s.querySelectorAll('circle').length,
+      paths: s.querySelectorAll('path').length,
+      texts: s.querySelectorAll('text').length,
+      vb: s.getAttribute('viewBox')
+    }));
+    const canvas = d.getElementById('trend-canvas');
+    const pre = document.createElement('pre');
+    pre.id = 'dlurl';
+    pre.textContent = canvas ? canvas.toDataURL('image/png') : 'NO';
+    document.body.appendChild(pre);
+    document.title = JSON.stringify(svgs);
+  }, 9000);
+});
+</script>
+</body></html>

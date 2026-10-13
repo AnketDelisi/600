@@ -1438,6 +1438,7 @@ function renderTrendChart(canvas, polls){
   // is what gets drawn so the trend follows real movement instead of a lagging
   // fixed-window average.
   const datesT=dates.map(d=>new Date(d).getTime());
+  const ts0=datesT[0], ts1=datesT[datesT.length-1];
   const series=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(pid=>{
     const points=dates.map(d=>{
       const vals=byDate[d][pid];
@@ -1470,6 +1471,7 @@ function renderTrendChart(canvas, polls){
   CHART_STATE.yMin=yMin; CHART_STATE.yMax=yMax; CHART_STATE.byDate=byDate;
   CHART_STATE.cw=cw; CHART_STATE.ch=ch; CHART_STATE.wrap=wrap;
   CHART_STATE.polls=polls;
+  CHART_STATE.ts0=ts0; CHART_STATE.ts1=ts1; CHART_STATE.datesT=datesT;
 
   drawChartBase();
 
@@ -1485,7 +1487,10 @@ function renderTrendChart(canvas, polls){
   wrap.onmousemove=e=>{
     const r=canvas.getBoundingClientRect();
     const mx=e.clientX-r.left;
-    const idx=Math.round((mx-pad.left)/cw*(dates.length-1));
+    const frac=Math.max(0,Math.min(1,(mx-pad.left)/cw));
+    const tq=ts0+frac*(ts1-ts0);
+    let idx=0,best=Infinity;
+    datesT.forEach((t2,i)=>{const dd=Math.abs(t2-tq);if(dd<best){best=dd;idx=i}});
     if(idx<0||idx>=dates.length){drawChartBase();tip.classList.remove('visible');return}
     drawChartBase(idx);
     const date=dates[idx];
@@ -1518,6 +1523,13 @@ function renderTrendChart(canvas, polls){
 function drawChartBase(hoverIdx){
   const s=CHART_STATE;
   const {ctx,W,H,pad,dates,series,yMin,yMax,cw,ch}=s;
+  // x is time-proportional: irregular poll dates keep their spacing
+  const xOf=i=>{
+    const a=(s.datesT&&s.datesT.length===dates.length)?s.datesT[0]:0;
+    const b=(s.datesT&&s.datesT.length===dates.length)?s.datesT[dates.length-1]:(dates.length-1);
+    const v=(s.datesT&&s.datesT.length===dates.length)?s.datesT[i]:i;
+    return pad.left+((v-a)/Math.max(1,(b-a)))*cw;
+  };
   ctx.setTransform(2,0,0,2,0,0);
   ctx.clearRect(0,0,W,H);
 
@@ -1536,8 +1548,7 @@ function drawChartBase(hoverIdx){
   const xStep=Math.max(1,Math.floor(dates.length/8));
   ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='center';
   for(let i=0;i<dates.length;i+=xStep){
-    const x=pad.left+(i/(dates.length-1))*cw;
-    ctx.fillText(dates[i].slice(5),x,H-pad.bottom+16);
+    ctx.fillText(dates[i].slice(5),xOf(i),H-pad.bottom+16);
   }
   // axis note: the lower bound is zoomed, say so
   if(yMin>0){
@@ -1553,7 +1564,7 @@ function drawChartBase(hoverIdx){
     let started=false;
     ser.smooth.forEach((v,i)=>{
       if(v===null) return;
-      const x=pad.left+(i/(dates.length-1))*cw;
+      const x=xOf(i);
       const y=pad.top+ch*(1-(v-yMin)/(yMax-yMin));
       if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y);
     });
@@ -1590,7 +1601,7 @@ function drawChartBase(hoverIdx){
       cands.slice(0,4).forEach(c=>{
         const ext=tp?tp[c.ser.pid]:null;
         if(ext===null||ext===undefined) return;
-        const x0=pad.left+(c.lastIdx/(dates.length-1))*cw;
+        const x0=xOf(c.lastIdx);
         const y0=pad.top+ch*(1-(c.lastVal-yMin)/(yMax-yMin));
         const xe=W-pad.right+2;
         const ye=Math.max(pad.top+2,pad.top+ch*(1-(Math.min(ext,yMax)-yMin)/(yMax-yMin)));
@@ -1608,7 +1619,7 @@ function drawChartBase(hoverIdx){
 
   // Hover overlay: guide line + dots
   if(hoverIdx!==undefined&&hoverIdx>=0&&hoverIdx<dates.length){
-    const x=pad.left+(hoverIdx/(dates.length-1))*cw;
+    const x=xOf(hoverIdx);
     ctx.strokeStyle='#111827';ctx.lineWidth=1;
     ctx.setLineDash([4,3]);
     ctx.beginPath();ctx.moveTo(x,pad.top);ctx.lineTo(x,H-pad.bottom);ctx.stroke();
@@ -4009,33 +4020,48 @@ function allocateSeatsTotal(avg, total){
   return applyReserved(allocateSeatsCzechia(avg)||allocateSeatsLeveling(avg)||allocateSeatsSlovenia(avg)||allocateSeatsByDistrict(avg)||allocateSeatsItaly(avg)||allocateSeatsFptp(avg)||allocateSeatsN(avg,Math.max(0,total-reservedTotal())));
 }
 
-// All-PR systems allocated per district (Turkey): each province's seats by
-// D'Hondt from the province's 2023 shares swung to the current average; a
-// party must clear the national threshold to take seats anywhere.
+// All-PR systems allocated per district (Turkey): each district's seats by
+// D'Hondt from its 2023 shares swung to the current average, party by party
+// (the ittifak does NOT pool votes for the seat allocation - verified
+// against the official 2023 per-district MV: the party-level allocation
+// reproduces 272/170/50/43/61 vs the official 268/169/50/43/61). An
+// alliance's total only counts for the 7% threshold, which is how MHP and
+// TIP take seats while polling below it themselves.
 function allocateSeatsPrDistricts(avg, total){
   const conf=MAP_CONF();
   if(!conf||!conf.prDistricts||conf.winnerDistricts) return null;
-  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
-  const minority=(COUNTRIES[COUNTRY]||{}).minorityParties||[];
+  const c=COUNTRIES[COUNTRY]||{};
+  const alliances=c.alliances||{};
+  const partyAlliance={};
+  Object.keys(alliances).forEach(a=>{
+    const nat=alliances[a].reduce((s,p)=>s+(avg[p]||0),0);
+    if(nat>=THRESHOLD) alliances[a].forEach(p=>{partyAlliance[p]=a});
+  });
   const valid=PARTY_ORDER.filter(p=>(avg[p]||0)>=THRESHOLD||
-    (minority.indexOf(p)>=0&&(avg[p]||0)>0)||
-    (PARTY_META[p]&&PARTY_META[p].unallocated));
+    partyAlliance[p]||(PARTY_META[p]&&PARTY_META[p].unallocated));
+  const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   if(!valid.length) return out;
   for(const nr of Object.keys(conf.prDistricts)){
     const seatsN=conf.prDistricts[nr];
     const sh=districtShares(nr,avg,false,conf);
     if(!sh) continue;
+    // the D'Hondt divisors must count the seats won IN THIS DISTRICT, not
+    // the running national totals (the national count would suppress every
+    // party that already won seats elsewhere)
+    const won={};
     const q={};
     valid.forEach(p=>{q[p]=sh[p]?sh[p].now:0});
-    for(let i=0;i<seatsN;i++){
+    for(let i2=0;i2<seatsN;i2++){
       let best=valid[0];
       for(const p of valid){if((q[p]||0)>(q[best]||0))best=p}
-      out[best]=(out[best]||0)+1;
-      q[best]=(sh[best]?sh[best].now:0)/((out[best]||0)+1);
+      won[best]=(won[best]||0)+1;
+      q[best]=(sh[best]?sh[best].now:0)/((won[best]||0)+1);
     }
+    valid.forEach(p=>{out[p]=(out[p]||0)+(won[p]||0)});
   }
   return out;
 }
+
 
 // Mixed systems where the strongest party in a district takes all of its
 // single-member seats (Hungary): when the country carries real single-member

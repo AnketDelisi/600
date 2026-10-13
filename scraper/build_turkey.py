@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Build the Turkey map + config block (600 seats, per-province D'Hondt).
 
-Baselines: the 2023 general election per-province results (tr.wikipedia
-"2023 Türkiye genel seçimleri", the results-by-province table: seats,
-valid votes and each party's votes/%/MV - AKP/CHP/MHP/IYI/YSP/Other).
-Geometry: GADM 4.1 TUR ADM1 (81 provinces). The 600 seats are allocated
-per province (D'Hondt, prDistricts) with the 7% national threshold; the
-map shows the per-province winner.
+Baselines: the 2023 general election. The per-province totals (seats,
+valid votes, AKP/CHP/MHP/IYI/YSP/Other) come from the main article's
+results-by-province table; the per-party detail (YRP/ZP/TIP/BBP included)
+comes from the 81 per-province articles ("X'te 2023 Türkiye
+cumhurbaşkanlığı ve genel seçimleri"), which also carry the per-Bölge
+totals for the four split provinces (İstanbul I-III, Ankara I-III,
+İzmir I-II, Bursa I-II) - those become the prDistricts, so the seats are
+allocated in the real electoral districts. Yeni Parti inherits CHP's
+geography; Anahtar Parti 75% İYİ + 25% AKP. Geometry: GADM 4.1 TUR ADM1,
+with an İstanbul+Kocaeli inset.
 
 Writes img/turkey.svg and inserts the turkey block into js/config.js.
 
@@ -31,17 +35,38 @@ GEOJSON = os.path.join(CACHE, "tr_provinces.geojson")
 ARTICLE = "https://tr.wikipedia.org/wiki/2023_T%C3%BCrkiye_genel_se%C3%A7imleri"
 ATTRIBUTION = ("Sonuçlar: YSK (2023 genel seçimi, tr.wikipedia); "
                "Geometri: GADM 4.1")
-# GADM spells three provinces differently (two are typos) + the short
-# Afyon name
 ALIAS = {"K.Maras": "Kahramanmaraş", "Kinkkale": "Kırıkkale",
-         "Zinguldak": "Zonguldak", "Afyon": "Afyonkarahisar"}
+         "Zinguldak": "Zonguldak", "Afyon": "Afyonkarahisar",
+         # GADM ASCII spellings -> the Turkish names
+         "Adiyaman": "Adıyaman", "Agri": "Ağrı", "Balikesir": "Balıkesir",
+         "Diyarbakir": "Diyarbakır", "Eskisehir": "Eskişehir",
+         "Gümüshane": "Gümüşhane", "Hakkari": "Hakkâri",
+         "Istanbul": "İstanbul", "Izmir": "İzmir", "Mugla": "Muğla",
+         "Mus": "Muş", "Nigde": "Niğde", "Sanliurfa": "Şanlıurfa",
+         "Sirnak": "Şırnak", "Tekirdag": "Tekirdağ", "Usak": "Uşak",
+         "Aydin": "Aydın", "Kirklareli": "Kırklareli",
+         "Kirsehir": "Kırşehir", "Nevsehir": "Nevşehir",
+         "Çankiri": "Çankırı"}
 
 PARTIES = ["akp", "chp", "mhp", "iyi", "dem", "yrp", "zp", "tip", "a",
            "yep", "saadet", "bbp"]
-# the 2023 table's columns -> config keys (YSP is the DEM vehicle; the
-# remaining parties have no 2023 geography and swing uniformly)
-COLS = {"AKP": "akp", "CHP": "chp", "MHP": "mhp", "İYİ": "iyi",
-        "YSP": "dem", "Diğer": "other"}
+# per-province article party labels -> config keys
+PROV_COLS = {"ak parti": "akp", "akp": "akp", "chp": "chp",
+             "mhp": "mhp", "iyiparti": "iyi", "iyi parti": "iyi",
+             "yesil sol": "dem", "ysp": "dem", "yeniden refah": "yrp",
+             "yrp": "yrp", "zafer": "zp", "zp": "zp", "tip": "tip",
+             "bbp": "bbp"}
+
+
+def norm_label(s):
+    """'AK PARTI' / 'İYİPARTİ' / 'TİP' -> ascii-ish lower for matching."""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", (s or "").strip().lower())
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return s.replace("ı", "i")
+# the four provinces split into electoral districts + their article names
+SPLIT = {"istanbul": "İstanbul", "ankara": "Ankara", "izmir": "İzmir",
+         "bursa": "Bursa"}
 META = {
     "akp": ("AKP", "Adalet ve Kalkınma Partisi", "#FF8700",
             "Conservatism, Right-wing populism"),
@@ -72,14 +97,14 @@ LOGOS = {"akp": "AKP.svg", "chp": "CHP.svg", "mhp": "MHP.svg",
          "iyi": "IYI.svg", "dem": "DEM.svg", "yrp": "YRP.svg",
          "zp": "ZAFER.svg", "tip": "TIP.svg", "a": "A.svg",
          "yep": "YENI.svg", "saadet": "SAADET.svg", "bbp": "BBP.svg"}
-# 2023 national shares (YSK; the five table parties from the results-by-
-# province total row, the rest from the nationwide results table)
-NAT = {"akp": 35.62, "chp": 25.35, "mhp": 10.07, "iyi": 9.69, "dem": 8.82,
-       "yrp": 2.80, "zp": 2.23, "tip": 1.76, "bbp": 0.97, "a": 0, "yep": 0,
-       "saadet": 0}
 SEATS23 = {"akp": 268, "chp": 169, "mhp": 50, "iyi": 43, "dem": 61,
            "yrp": 5, "tip": 4, "bbp": 0, "zp": 0, "a": 0, "yep": 0,
            "saadet": 0}
+# the official 2023 shares (the displayed last election; YEP/A did not
+# exist - they only carry the proxy geography for the swing)
+RESULTS23 = {"akp": 35.62, "chp": 25.35, "mhp": 10.07, "iyi": 9.69,
+             "dem": 8.82, "yrp": 2.81, "zp": 2.23, "tip": 1.73, "bbp": 0.97,
+             "a": 0, "yep": 0, "saadet": 0}
 
 
 def fold(s):
@@ -94,20 +119,6 @@ def num(s):
 def dec(s):
     m = re.search(r"(\d+(?:,\d+)?)", (s or "").replace(".", ""))
     return float(m.group(1).replace(",", ".")) if m else 0.0
-
-
-def fetch_geo(force=False):
-    if force or not os.path.isfile(GEOJSON):
-        r = requests.get("https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
-                         "gadm41_TUR_1.json",
-                         headers={"User-Agent": "Mozilla/5.0"}, timeout=300)
-        r.raise_for_status()
-        open(GEOJSON, "w", encoding="utf8").write(r.text)
-    gj = json.loads(open(GEOJSON, encoding="utf8").read())
-    for f in gj["features"]:
-        nm = f["properties"]["NAME_1"]
-        f["properties"]["NAME_1"] = ALIAS.get(nm, nm)
-    return gj
 
 
 def expand_grid(table):
@@ -139,84 +150,227 @@ def expand_grid(table):
     return grid
 
 
-def parse_2023():
-    r = requests.get(ARTICLE, headers={"User-Agent": "Mozilla/5.0"},
-                     timeout=300)
-    r.raise_for_status()
-    soup = BeautifulSoup(r.text, "lxml")
-    for tb in soup.find_all("table"):
-        rows = tb.find_all("tr")
-        if len(rows) < 80:
+def fetch(url, name, force=False):
+    path = os.path.join(CACHE, name)
+    if force or not os.path.isfile(path):
+        r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"},
+                         timeout=300)
+        r.raise_for_status()
+        open(path, "w", encoding="utf8").write(r.text)
+    return open(path, encoding="utf8").read()
+
+
+def fetch_geo(force=False):
+    if force or not os.path.isfile(GEOJSON):
+        r = requests.get("https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
+                         "gadm41_TUR_1.json",
+                         headers={"User-Agent": "Mozilla/5.0"}, timeout=300)
+        r.raise_for_status()
+        open(GEOJSON, "w", encoding="utf8").write(r.text)
+    gj = json.loads(open(GEOJSON, encoding="utf8").read())
+    for f in gj["features"]:
+        nm = f["properties"]["NAME_1"]
+        f["properties"]["NAME_1"] = ALIAS.get(nm, nm)
+    return gj
+
+
+def parse_province_table(html):
+    """The per-province article: {district_key: {party: votes}} plus the
+    Bölge seats if the province is split. Returns (rows, n_bolge)."""
+    soup = BeautifulSoup(html, "lxml")
+    rows, bolge = {}, 0
+    cur = None
+    for el in soup.find_all(["h2", "h3", "h4", "table"]):
+        if el.name != "table":
+            txt = " ".join(el.get_text(" ", strip=True).split())
+            m = re.match(r"^(\d)\.\s*Bölge", txt)
+            if m:
+                cur = int(m.group(1))
+                bolge = max(bolge, cur)
             continue
-        grid = expand_grid(tb)
-        hdr = grid[0] if grid else []
-        if not hdr or "Seçim çevresi" not in " ".join(hdr[:2]):
+        if len(el.find_all("tr")) < 5:
             continue
-        # columns: 0 name, 1 seats, 2 valid, then per party votes/%/MV
-        colmap = {}
-        for i, h in enumerate(hdr):
-            h = h.strip()
-            if h in COLS and i not in colmap:
-                colmap[i] = COLS[h]
-        out, nat = {}, None
-        for row in grid[1:]:
-            if len(row) < 21:
+        grid = expand_grid(el)
+        # the result table's header is a few rows down (voter counts first)
+        hrow = None
+        for ri in range(min(6, len(grid))):
+            hdr = " ".join(grid[ri]).upper()
+            if "ÇEVRE OYU" in hdr and "TTIFAK" in hdr:
+                hrow = ri
+                break
+        if hrow is None:
+            continue
+        ci = gi = None
+        for i, h in enumerate(grid[hrow]):
+            hu = h.upper()
+            if "ÇEVRE" in hu and ci is None:
+                ci = i
+            if ("GÜMRÜK" in hu or "YURT" in hu) and gi is None:
+                gi = i
+        if ci is None or gi is None:
+            continue
+        key = "b%d" % cur if cur else "all"
+        if key in rows:
+            continue
+        votes = {}
+        for row in grid[hrow + 1:]:
+            if len(row) <= max(ci, gi):
                 continue
-            name = row[0].replace(" (toplam)", "").strip()
-            if name == "Türkiye toplamı":
-                nat = {"seats": num(row[1]), "valid": num(row[2]),
-                       "shares": {}, "votes": {}}
-                for i, key in colmap.items():
-                    nat["shares"][key] = dec(row[i + 1])
-                    nat["votes"][key] = num(row[i])
+            # the party label: the Kıs. column (index 1) or Parti (index 2)
+            label = None
+            for cell in row[1:4]:
+                tok = norm_label(cell)
+                if tok in PROV_COLS:
+                    label = PROV_COLS[tok]
+                    break
+            if not label:
                 continue
-            if re.search(r"\((?:I|II|III)\)$", row[0]) or not name:
-                continue
-            rec = {"name": name, "seats": num(row[1]), "valid": num(row[2]),
-                   "shares": {}, "mv": {}}
-            for i, key in colmap.items():
-                rec["shares"][key] = dec(row[i + 1])
-                rec["mv"][key] = num(row[i + 2])
-            out[fold(name)] = rec
-        if len(out) >= 80 and nat:
-            return out, nat
-    raise SystemExit("2023 results-by-province table not found")
+            v = num(row[ci]) + num(row[gi])
+            if v:
+                votes[label] = votes.get(label, 0) + v
+        if len(votes) >= 5:
+            rows[key] = votes
+    return rows, bolge
 
 
 def main():
     force = "--force" in sys.argv
     gj = fetch_geo(force)
     feats = gj["features"]
-    print("provinces:", len(feats))
     assert len(feats) == 81
 
-    res, nat = parse_2023()
-    print("table rows:", len(res))
-    missing = [f["properties"]["NAME_1"] for f in feats
-               if fold(f["properties"]["NAME_1"]) not in res]
-    print("geometries without results:", missing)
-    assert not missing, "name mismatch"
-    extra = [k for k in res
-             if k not in {fold(f["properties"]["NAME_1"]) for f in feats}]
-    print("results without geometry:", extra)
+    # ---- the main article: seats + valid votes + the 6-party shares ----
+    soup = BeautifulSoup(fetch(ARTICLE, "tr_2023_main.html", force), "lxml")
+    prov = {}
+    for tb in soup.find_all("table"):
+        if len(tb.find_all("tr")) < 80:
+            continue
+        grid = expand_grid(tb)
+        if not grid or "Seçim çevresi" not in " ".join(grid[0][:2]):
+            continue
+        cols = {}
+        for i, h in enumerate(grid[0]):
+            h = h.strip()
+            if h in ("AKP", "CHP", "MHP", "İYİ", "YSP", "Diğer"):
+                cols[i] = h
+        for row in grid[1:]:
+            if len(row) < 21:
+                continue
+            name = row[0].replace(" (toplam)", "").strip()
+            if re.search(r"\((?:I|II|III)\)$", row[0]) or not name:
+                continue
+            if name == "Türkiye toplamı":
+                continue
+            prov[fold(name)] = {"seats": num(row[1]), "valid": num(row[2])}
+        break
+    assert len(prov) == 81, len(prov)
 
-    print("2023 national (table):", nat["shares"], "seats", nat["seats"])
-    wins = {}
-    cons = []
-    for f in feats:
-        nm = f["properties"]["NAME_1"]
-        r = res[fold(nm)]
-        pid = fold(nm)
-        top = max(r["shares"], key=r["shares"].get)
-        wins[top] = wins.get(top, 0) + 1
-        cons.append({"id": pid, "name": nm, "seats": r["seats"],
-                     "shares": r["shares"], "mv": r["mv"], "winner": top})
-    print("2023 winner counts (per province):", wins)
-    tot = sum(c["seats"] for c in cons)
-    print("total seats:", tot)
-    assert tot == 600, "province seats must sum to 600"
+    # ---- the 81 per-province articles: full per-party votes ----
+    prov_names = {fold(f["properties"]["NAME_1"]):
+                  f["properties"]["NAME_1"] for f in feats}
+    VOWELS = "aeıioöuü"
+    BACK = "aıou"
+    VOICELESS = "fstkçşhp"
 
-    # the map geojson (names normalized)
+    def locative(word):
+        w = word.lower().replace("â", "a").replace("î", "i")
+        last_v = next((c for c in reversed(w) if c in VOWELS), "a")
+        v = "a" if last_v in BACK else "e"
+        d = "t" if w[-1] in VOICELESS else "d"
+        return d + v
+
+    districts = {}   # allocation districts: 77 provinces + 8 sub-districts
+    geo_shares = {}  # per-district party shares (akp..bbp; others implied)
+    for pid, nm in sorted(prov_names.items()):
+        title = "%s'%s 2023 Türkiye cumhurbaşkanlığı ve genel seçimleri" \
+            % (nm, locative(nm))
+        from urllib.parse import quote
+        url = "https://tr.wikipedia.org/wiki/" + quote(title)
+        rows, n_bolge = parse_province_table(
+            fetch(url, "tr_prov_%s.html" % pid, force))
+        if pid in SPLIT and n_bolge >= 2:
+            # sub-districts from the per-Bölge tables; the shares use the
+            # official valid votes: the province's valid votes scaled by the
+            # unlisted-party fraction (listed sum vs valid)
+            subs = {bi: rows.get("b%d" % bi) for bi in range(1, n_bolge + 1)}
+            for bi, v in subs.items():
+                assert v, "%s b%d missing" % (pid, bi)
+            listed_parent = sum(sum(v.values()) for v in subs.values())
+            scale = prov[pid]["valid"] / max(1, listed_parent)
+            merged, mw = {}, 0
+            for bi, v in subs.items():
+                key = "%s-%s" % (pid, "i" * bi)
+                valid = sum(v.values()) * scale
+                geo_shares[key] = {k: round(100 * v.get(k, 0) / valid, 2)
+                                   for k in ("akp", "chp", "mhp", "iyi",
+                                             "dem", "yrp", "zp", "tip",
+                                             "bbp")}
+                for k in ("akp", "chp", "mhp", "iyi", "dem", "yrp", "zp",
+                          "tip", "bbp"):
+                    merged[k] = merged.get(k, 0) + v.get(k, 0)
+                mw += sum(v.values())
+            # the province-wide shape for the map (the sub-districts stay
+            # the allocation units)
+            geo_shares[pid] = {k: round(100 * merged.get(k, 0) / mw, 2)
+                               for k in ("akp", "chp", "mhp", "iyi", "dem",
+                                         "yrp", "zp", "tip", "bbp")}
+            districts[pid] = None  # seat count from the sub-rows below
+        else:
+            v = rows.get("all") or rows.get("b1")
+            assert v, "%s: no result table" % pid
+            valid = prov[pid]["valid"]
+            geo_shares[pid] = {k: round(100 * v.get(k, 0) / valid, 2)
+                               for k in ("akp", "chp", "mhp", "iyi",
+                                         "dem", "yrp", "zp", "tip", "bbp")}
+            districts[pid] = prov[pid]["seats"]
+
+    # ---- the sub-district seats from the main table ----
+    sub_seats = {}
+    for tb in soup.find_all("table"):
+        if len(tb.find_all("tr")) < 80:
+            continue
+        grid = expand_grid(tb)
+        if not grid or "Seçim çevresi" not in " ".join(grid[0][:2]):
+            continue
+        for row in grid[1:]:
+            m = re.match(r"^(%s)\s*\((I|II|III)\)$"
+                         % "|".join(SPLIT.values()), row[0].strip())
+            if m:
+                pid = fold(m.group(1))
+                key = "%s-%s" % (pid, "i" * {"I": 1, "II": 2, "III": 3}[m.group(2)])
+                sub_seats[key] = num(row[1])
+        break
+    for pid in SPLIT:
+        n = sum(v for k, v in sub_seats.items() if k.startswith(pid + "-"))
+        assert n == prov[pid]["seats"], (pid, n, prov[pid]["seats"])
+        for k, v in sub_seats.items():
+            if k.startswith(pid + "-"):
+                districts[k] = v
+
+    # ---- proxies: YEP = CHP, A = 75% İYİ + 25% AKP ----
+    for key, sh in geo_shares.items():
+        sh["yep"] = sh["chp"]        # Yeni Parti is a CHP split
+        sh["a"] = round(0.75 * sh["iyi"] + 0.25 * sh["akp"], 2)
+        sh["saadet"] = sh["yrp"]     # Saadet inherits YRP's geography
+
+    # ---- national 2021 = the vote-weighted mean of the district shares ----
+    wsum = {}
+    totw = 0
+    for key, sh in geo_shares.items():
+        if key in SPLIT:
+            continue  # map-only province entry; the sub-districts cover it
+        if "-" in key:
+            parent = key.split("-")[0]
+            w = (prov[parent]["valid"] * districts[key]
+                 / max(1, prov[parent]["seats"]))
+        else:
+            w = prov[key]["valid"]
+        totw += w
+        for p in PARTIES:
+            wsum[p] = wsum.get(p, 0) + (sh.get(p, 0) or 0) * w
+    NAT = {p: round(wsum[p] / totw, 2) for p in PARTIES}
+
+    # ---- geometry + svg ----
     geo_norm = os.path.join(CACHE, "tr_provinces_norm.geojson")
     with open(geo_norm, "w", encoding="utf8") as fh:
         json.dump(gj, fh)
@@ -227,6 +381,51 @@ def main():
     if force:
         sys.argv.append("--force")
     bm.main()
+
+    # İstanbul + Kocaeli inset (the two provinces are tiny at national scale)
+    def bbox(geom):
+        xs, ys = [], []
+
+        def walk(c):
+            if isinstance(c[0], (int, float)):
+                xs.append(c[0])
+                ys.append(c[1])
+            else:
+                for x in c:
+                    walk(x)
+        walk(geom["coordinates"])
+        return min(xs), min(ys), max(xs), max(ys)
+
+    zoom_ids = ["istanbul", "kocaeli"]
+    zoom_feats = [f for f in feats
+                  if fold(f["properties"]["NAME_1"]) in zoom_ids]
+    assert len(zoom_feats) == 2
+    box = [min(bbox(f["geometry"])[0] for f in zoom_feats),
+           min(bbox(f["geometry"])[1] for f in zoom_feats),
+           max(bbox(f["geometry"])[2] for f in zoom_feats),
+           max(bbox(f["geometry"])[3] for f in zoom_feats)]
+    zoom_gj = os.path.join(CACHE, "tr_istanbul_detail.geojson")
+    with open(zoom_gj, "w", encoding="utf8") as fh:
+        json.dump({"type": "FeatureCollection", "features": zoom_feats}, fh)
+    zoom_svg = os.path.join(CACHE, "tr_istanbul_detail.svg")
+    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
+                "--name-field", "NAME_1", "--fold", "--attr", "id",
+                "--no-prefix", "--out", zoom_svg,
+                "--attribution", ATTRIBUTION, "--force"]
+    bm.main()
+    bm.add_inset(OUT_SVG, zoom_svg, zoom_ids, 150, (1010, 30),
+                 label="İstanbul + Kocaeli")
+    # the inset sits outside the map to its right: widen the canvas
+    tsvg = open(OUT_SVG, encoding="utf8").read()
+    mm = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', tsvg)
+    w, h = float(mm.group(1)), float(mm.group(2))
+    nw = w + 190.0
+    tsvg = re.sub(r'viewBox="0 0 [\d.]+ [\d.]+"',
+                  'viewBox="0 0 %.1f %.1f"' % (nw, h), tsvg)
+    tsvg = re.sub(r'(<svg[^>]*?)width="[\d.]+" height="[\d.]+"',
+                  r'\g<1>width="%.1f" height="%.1f"' % (nw, h), tsvg,
+                  count=1)
+    open(OUT_SVG, "w", encoding="utf8", newline="").write(tsvg)
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
@@ -250,15 +449,23 @@ def main():
     name_tr: 'T\\u00fcrkiye',
     seats: 600,
     threshold: 7.0,               // 7%% national threshold (2022 change)
-    method: 'dhondt',             // D'Hondt per province (prDistricts)
+    method: 'dhondt',             // D'Hondt per electoral district
     seatBased: false,             // polls report vote shares (%%)
-    constituencies: false,        // the 600 seats are allocated per province
+    constituencies: false,        // the 600 seats are allocated per district
     recencyHalfLifeDays: 7,
     parties: {
 %s
     },
     order: ['akp', 'chp', 'mhp', 'iyi', 'dem', 'yrp', 'zp', 'tip', 'a', 'yep', 'saadet', 'bbp'],
     parlOrder: ['yep', 'tip', 'dem', 'chp', 'saadet', 'a', 'iyi', 'bbp', 'zp', 'akp', 'mhp', 'yrp'],
+    // the ittifak structure (2028 state): an alliance's total counts for
+    // the 7%% threshold (so MHP/BBP/TİP take seats below it); the seat
+    // allocation itself is plain per-district D'Hondt, party by party.
+    // YRP left the Cumhur and İYİ runs alone (no Millet).
+    alliances: {
+      cumhur: ['akp', 'mhp', 'bbp'],
+      emek: ['dem', 'tip'],
+    },
     blocs: {
       bloc1: { name: 'Government camp', short: 'GOV', parties: ['akp', 'mhp', 'yrp', 'bbp'], color: '#FF8700' },
       bloc2: { name: 'Opposition',      short: 'OPP', parties: ['chp', 'iyi', 'dem', 'zp', 'tip', 'a', 'yep', 'saadet'], color: '#E30613' },
@@ -270,8 +477,8 @@ def main():
     maeKey: 'TR2028',
     lastElection: {
       date: '2023-05-14',
-      // 2023 general election (YSK); YSP is the DEM vehicle, YRP/TIP
-      // ran inside the Cumhur/Emek lists (their seats split out here)
+      // 2023 general election (YSK); YSP is the DEM vehicle, YRP/TIP ran
+      // inside the Cumhur/Emek lists (their seats split out here)
       results: %s,
       seats: %s,
     },
@@ -279,9 +486,10 @@ def main():
       svg: 'img/turkey.svg',
       selector: 'id',
       swingMethod: 'proportional',
-      // 81 provinces: each province's seats are allocated by D'Hondt from
-      // its 2023 shares + the national swing (prDistricts); the map colors
-      // the per-province winner
+      // the 85 allocation districts: the 77 single-district provinces + the
+      // İstanbul I-III / Ankara I-III / İzmir I-II / Bursa I-II electoral
+      // districts (the map still colors the 81 provinces; the four split
+      // provinces carry their province-wide shape for the map)
       districts: %s,
       gebiete: %s,
       national2021: %s,
@@ -290,44 +498,47 @@ def main():
   },
 """ % (parties,
        ', '.join("%s: '%s'" % (k, v) for k, v in logos.items()),
-       j(NAT, ensure_ascii=False),
+       j(RESULTS23, ensure_ascii=False),
        j(SEATS23, ensure_ascii=False),
-       j({c["id"]: c["id"] for c in cons}),
-       j({c["id"]: c["shares"] for c in cons}, ensure_ascii=False),
+       j({k: k for k in districts}, ensure_ascii=False),
+       j(geo_shares, ensure_ascii=False),
        j(NAT, ensure_ascii=False),
-       j({c["id"]: c["seats"] for c in cons}))
+       j({k: v for k, v in districts.items() if v}))
 
     text = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
     m = re.search(r"\n  turkey: \{", text)
-    if m:
-        depth, k = 0, m.end() - 1
-        while k < len(text):
-            if text[k] == "{":
-                depth += 1
-            elif text[k] == "}":
-                depth -= 1
-                if depth == 0:
-                    break
-            k += 1
-        end = k + 1
-        if text[end:end + 1] == ",":
-            end += 1
-        text = text[:m.start()] + "\n" + block.rstrip("\n") + text[end:]
-    else:
-        anchor = "\n  qc: {"
-        text = text.replace(anchor, "\n" + block + anchor, 1)
+    assert m, "turkey block not found"
+    depth, k = 0, m.end() - 1
+    while k < len(text):
+        if text[k] == "{":
+            depth += 1
+        elif text[k] == "}":
+            depth -= 1
+            if depth == 0:
+                break
+        k += 1
+    end = k + 1
+    if text[end:end + 1] == ",":
+        end += 1
+    text = text[:m.start()] + "\n" + block.rstrip("\n") + text[end:]
     open(os.path.join(ROOT, "js", "config.js"), "w",
          encoding="utf8", newline="").write(text)
     print("patched config.js (turkey block)")
+    print("districts:", len(districts), "with seats:", sum(1 for v in districts.values() if v))
+    print("seat total:", sum(v for v in districts.values() if v))
+    print("national:", NAT)
 
     meta = {
         "country": "turkey", "name": "Turkey",
         "election_date": "2028-05-07", "seats": 600, "threshold": 7.0,
         "method": "dhondt", "constituencies": False,
-        "notes": ("Per-province D'Hondt (81 provinces, prDistricts), 7% "
-                  "national threshold. Baselines: the 2023 general election "
-                  "per-province results (tr.wikipedia, YSK data). Polling: "
-                  "the tr.wikipedia next-election polling article "
+        "notes": ("Per-district D'Hondt (87 electoral districts: 77 "
+                  "provinces + the İstanbul/Ankara/İzmir/Bursa "
+                  "sub-districts), 7% national threshold with the ittifak "
+                  "exemption (Cumhur: AKP/MHP/BBP, Emek: DEM/TİP; YRP and "
+                  "İYİ run alone). Baselines: the 2023 general election "
+                  "(tr.wikipedia per-province articles). Polling: the "
+                  "tr.wikipedia next-election polling article "
                   "(scrape_turkey.py)."),
     }
     os.makedirs(os.path.join(ROOT, "data", "turkey"), exist_ok=True)

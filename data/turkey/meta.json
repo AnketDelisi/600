@@ -6,5 +6,5 @@
   "threshold": 7.0,
   "method": "dhondt",
   "constituencies": false,
-  "notes": "Per-province D'Hondt (81 provinces, prDistricts), 7% national threshold. Baselines: the 2023 general election per-province results (tr.wikipedia, YSK data). Polling: the tr.wikipedia next-election polling article (scrape_turkey.py)."
+  "notes": "Per-district D'Hondt (85 electoral districts: 77 provinces + the İstanbul/Ankara/İzmir/Bursa sub-districts), 7% national threshold with the alliance exemption (MHP, TİP). Baselines: the 2023 general election (tr.wikipedia per-province articles). Polling: the tr.wikipedia next-election polling article (scrape_turkey.py)."
 }

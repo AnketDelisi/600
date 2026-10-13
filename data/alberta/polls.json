@@ -1,350 +1,363 @@
 {
-  "country": "alberta",
-  "sources": [
-    {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/32nd_Alberta_general_election"
-    }
-  ],
-  "scraped_at": "2026-10-12T18:39:48Z",
-  "poll_count": 28,
-  "polls": [
-    {
-      "pollster": "Janet Brown Opinion Research/Trend Research",
-      "date": "2026-09-21",
-      "votes": {
-        "ucp": 41.0,
-        "ndp": 41.0,
-        "grn": 1.0,
-        "tory": 3.0,
-        "lib": 3.0,
-        "wlc": 1.0,
-        "wip": 1.0,
-        "rpa": 0.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Abacus Data",
-      "date": "2026-09-07",
-      "votes": {
-        "ucp": 52.0,
-        "ndp": 39.0,
-        "tory": 6.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Research Co.",
-      "date": "2026-08-26",
-      "votes": {
-        "ucp": 46.0,
-        "ndp": 43.0,
-        "tory": 5.0,
-        "wlc": 2.0,
-        "rpa": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Angus Reid",
-      "date": "2026-05-24",
-      "votes": {
-        "ucp": 46.0,
-        "ndp": 45.0,
-        "grn": 0.0,
-        "tory": 4.0,
-        "wlc": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Mainstreet Research",
-      "date": "2026-04-22",
-      "votes": {
-        "ucp": 46.0,
-        "ndp": 42.0,
-        "grn": 3.0,
-        "tory": 4.0,
-        "wip": 3.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Janet Brown Opinion Research/Trend Research",
-      "date": "2026-04-22",
-      "votes": {
-        "ucp": 49.0,
-        "ndp": 36.0,
-        "grn": 1.0,
-        "tory": 2.0,
-        "lib": 3.0,
-        "wlc": 0.0,
-        "wip": 1.0,
-        "rpa": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2026-03-04",
-      "votes": {
-        "ucp": 48.0,
-        "ndp": 36.0,
-        "grn": 4.0,
-        "tory": 5.0,
-        "lib": 3.0,
-        "wlc": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Abacus Data",
-      "date": "2026-02-25",
-      "votes": {
-        "ucp": 49.0,
-        "ndp": 36.0,
-        "grn": 2.0,
-        "tory": 2.0,
-        "lib": 9.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Mainstreet Research",
-      "date": "2026-02-12",
-      "votes": {
-        "ucp": 48.0,
-        "ndp": 40.0,
-        "tory": 3.0,
-        "lib": 6.0,
-        "rpa": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2026-01-26",
-      "votes": {
-        "ucp": 50.0,
-        "ndp": 37.0,
-        "grn": 1.0,
-        "tory": 4.0,
-        "lib": 2.0,
-        "wlc": 1.0,
-        "rpa": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Liaison",
-      "date": "2026-01-11",
-      "votes": {
-        "ucp": 46.0,
-        "ndp": 44.0,
-        "grn": 2.0,
-        "tory": 2.0,
-        "lib": 4.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2025-10-12",
-      "votes": {
-        "ucp": 44.0,
-        "ndp": 39.0,
-        "grn": 3.0,
-        "tory": 2.0,
-        "lib": 9.0,
-        "wlc": 1.0,
-        "rpa": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Cardinal Research",
-      "date": "2025-09-20",
-      "votes": {
-        "ucp": 43.0,
-        "ndp": 36.0,
-        "tory": 4.0,
-        "lib": 5.0,
-        "rpa": 11.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2025-05-25",
-      "votes": {
-        "ucp": 48.0,
-        "ndp": 34.0,
-        "grn": 2.0,
-        "tory": 2.0,
-        "lib": 9.0,
-        "wlc": 1.0,
-        "rpa": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Janet Brown Opinion Research/Trend Research",
-      "date": "2025-05-21",
-      "votes": {
-        "ucp": 52.0,
-        "ndp": 38.0,
-        "grn": 1.0,
-        "tory": 1.0,
-        "lib": 3.0,
-        "wip": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Environics",
-      "date": "2025-04-14",
-      "votes": {
-        "ucp": 43.0,
-        "ndp": 47.0,
-        "tory": 6.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2025-01-26",
-      "votes": {
-        "ucp": 51.0,
-        "ndp": 36.0,
-        "grn": 2.0,
-        "tory": 3.0,
-        "lib": 5.0,
-        "wlc": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Cardinal Research",
-      "date": "2024-09-28",
-      "votes": {
-        "ucp": 50.0,
-        "ndp": 43.0,
-        "grn": 2.0,
-        "tory": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2024-08-05",
-      "votes": {
-        "ucp": 48.0,
-        "ndp": 40.0,
-        "grn": 3.0,
-        "tory": 4.0,
-        "lib": 3.0,
-        "wlc": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Sovereign North Strategies",
-      "date": "2024-07-11",
-      "votes": {
-        "ucp": 47.0,
-        "ndp": 46.0,
-        "grn": 1.0,
-        "tory": 4.0,
-        "wip": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2024-05-25",
-      "votes": {
-        "ucp": 47.0,
-        "ndp": 43.0,
-        "tory": 6.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2024-03-24",
-      "votes": {
-        "ucp": 46.0,
-        "ndp": 44.0,
-        "grn": 1.0,
-        "tory": 4.0,
-        "lib": 1.0,
-        "wlc": 1.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Abacus Data",
-      "date": "2024-03-21",
-      "votes": {
-        "ucp": 55.0,
-        "ndp": 40.0,
-        "tory": 2.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2024-03-11",
-      "votes": {
-        "ucp": 49.0,
-        "ndp": 41.0,
-        "tory": 6.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2024-02-12",
-      "votes": {
-        "ucp": 49.0,
-        "ndp": 42.0,
-        "tory": 5.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2024-01-15",
-      "votes": {
-        "ucp": 50.0,
-        "ndp": 43.0,
-        "tory": 3.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2023-10-30",
-      "votes": {
-        "ucp": 46.0,
-        "ndp": 47.0,
-        "tory": 5.0
-      },
-      "n": 1000
-    },
-    {
-      "pollster": "Leger",
-      "date": "2023-09-18",
-      "votes": {
-        "ucp": 49.0,
-        "ndp": 39.0,
-        "grn": 2.0,
-        "tory": 4.0,
-        "lib": 3.0,
-        "wlc": 1.0
-      },
-      "n": 1000
-    }
-  ]
+ "country": "alberta",
+ "sources": [
+  {
+   "name": "Wikipedia",
+   "url": "https://en.wikipedia.org/wiki/32nd_Alberta_general_election"
+  }
+ ],
+ "scraped_at": "2026-10-13T13:30:48Z",
+ "poll_count": 28,
+ "polls": [
+  {
+   "pollster": "Janet Brown Opinion Research/Trend Research",
+   "date": "2026-09-21",
+   "votes": {
+    "ucp": 41.0,
+    "ndp": 41.0,
+    "grn": 1.0,
+    "tory": 3.0,
+    "lib": 3.0,
+    "wlc": 1.0,
+    "wip": 1.0,
+    "rpa": 0.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Abacus Data",
+   "date": "2026-09-07",
+   "votes": {
+    "ucp": 52.0,
+    "ndp": 39.0,
+    "tory": 6.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Research Co.",
+   "date": "2026-08-26",
+   "votes": {
+    "ucp": 46.0,
+    "ndp": 43.0,
+    "tory": 5.0,
+    "wlc": 2.0,
+    "rpa": 2.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Angus Reid",
+   "date": "2026-05-24",
+   "votes": {
+    "ucp": 46.0,
+    "ndp": 45.0,
+    "grn": 0.0,
+    "tory": 4.0,
+    "wlc": 2.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Mainstreet Research",
+   "date": "2026-04-22",
+   "votes": {
+    "ucp": 46.0,
+    "ndp": 42.0,
+    "grn": 3.0,
+    "tory": 4.0,
+    "wip": 3.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Janet Brown Opinion Research/Trend Research",
+   "date": "2026-04-22",
+   "votes": {
+    "ucp": 49.0,
+    "ndp": 36.0,
+    "grn": 1.0,
+    "tory": 2.0,
+    "lib": 3.0,
+    "wlc": 0.0,
+    "wip": 1.0,
+    "rpa": 1.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2026-03-04",
+   "votes": {
+    "ucp": 48.0,
+    "ndp": 36.0,
+    "grn": 4.0,
+    "tory": 5.0,
+    "lib": 3.0,
+    "wlc": 1.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Abacus Data",
+   "date": "2026-02-25",
+   "votes": {
+    "ucp": 49.0,
+    "ndp": 36.0,
+    "grn": 2.0,
+    "tory": 2.0,
+    "lib": 9.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Mainstreet Research",
+   "date": "2026-02-12",
+   "votes": {
+    "ucp": 48.0,
+    "ndp": 40.0,
+    "tory": 3.0,
+    "lib": 6.0,
+    "rpa": 1.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2026-01-26",
+   "votes": {
+    "ucp": 50.0,
+    "ndp": 37.0,
+    "grn": 1.0,
+    "tory": 4.0,
+    "lib": 2.0,
+    "wlc": 1.0,
+    "rpa": 2.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Liaison",
+   "date": "2026-01-11",
+   "votes": {
+    "ucp": 46.0,
+    "ndp": 44.0,
+    "grn": 2.0,
+    "tory": 2.0,
+    "lib": 4.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2025-10-12",
+   "votes": {
+    "ucp": 44.0,
+    "ndp": 39.0,
+    "grn": 3.0,
+    "tory": 2.0,
+    "lib": 9.0,
+    "wlc": 1.0,
+    "rpa": 1.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Cardinal Research",
+   "date": "2025-09-20",
+   "votes": {
+    "ucp": 43.0,
+    "ndp": 36.0,
+    "tory": 4.0,
+    "lib": 5.0,
+    "rpa": 11.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2025-05-25",
+   "votes": {
+    "ucp": 48.0,
+    "ndp": 34.0,
+    "grn": 2.0,
+    "tory": 2.0,
+    "lib": 9.0,
+    "wlc": 1.0,
+    "rpa": 2.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Janet Brown Opinion Research/Trend Research",
+   "date": "2025-05-21",
+   "votes": {
+    "ucp": 52.0,
+    "ndp": 38.0,
+    "grn": 1.0,
+    "tory": 1.0,
+    "lib": 3.0,
+    "wip": 1.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Environics",
+   "date": "2025-04-14",
+   "votes": {
+    "ucp": 43.0,
+    "ndp": 47.0,
+    "tory": 6.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2025-01-26",
+   "votes": {
+    "ucp": 51.0,
+    "ndp": 36.0,
+    "grn": 2.0,
+    "tory": 3.0,
+    "lib": 5.0,
+    "wlc": 1.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Cardinal Research",
+   "date": "2024-09-28",
+   "votes": {
+    "ucp": 50.0,
+    "ndp": 43.0,
+    "grn": 2.0,
+    "tory": 1.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2024-08-05",
+   "votes": {
+    "ucp": 48.0,
+    "ndp": 40.0,
+    "grn": 3.0,
+    "tory": 4.0,
+    "lib": 3.0,
+    "wlc": 2.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Sovereign North Strategies",
+   "date": "2024-07-11",
+   "votes": {
+    "ucp": 47.0,
+    "ndp": 46.0,
+    "grn": 1.0,
+    "tory": 4.0,
+    "wip": 2.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2024-05-25",
+   "votes": {
+    "ucp": 47.0,
+    "ndp": 43.0,
+    "tory": 6.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Leger",
+   "date": "2024-03-24",
+   "votes": {
+    "ucp": 46.0,
+    "ndp": 44.0,
+    "grn": 1.0,
+    "tory": 4.0,
+    "lib": 1.0,
+    "wlc": 1.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Abacus Data",
+   "date": "2024-03-21",
+   "votes": {
+    "ucp": 55.0,
+    "ndp": 40.0,
+    "tory": 2.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Leger",
+   "date": "2024-03-11",
+   "votes": {
+    "ucp": 49.0,
+    "ndp": 41.0,
+    "tory": 6.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Leger",
+   "date": "2024-02-12",
+   "votes": {
+    "ucp": 49.0,
+    "ndp": 42.0,
+    "tory": 5.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Leger",
+   "date": "2024-01-15",
+   "votes": {
+    "ucp": 50.0,
+    "ndp": 43.0,
+    "tory": 3.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Leger",
+   "date": "2023-10-30",
+   "votes": {
+    "ucp": 46.0,
+    "ndp": 47.0,
+    "tory": 5.0
+   },
+   "n": 1000,
+   "method": "online"
+  },
+  {
+   "pollster": "Leger",
+   "date": "2023-09-18",
+   "votes": {
+    "ucp": 49.0,
+    "ndp": 39.0,
+    "grn": 2.0,
+    "tory": 4.0,
+    "lib": 3.0,
+    "wlc": 1.0
+   },
+   "n": 1000,
+   "method": "online"
+  }
+ ]
 }

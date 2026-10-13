@@ -1,9 +1,9 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-12T14:23:08Z",
+  "generated": "2026-10-13T13:31:57Z",
   "environment": {
     "election": "2026-11-03",
-    "days_to_election": 22,
+    "days_to_election": 21,
     "generic_ballot_generic_margin": 8.4,
     "n_sims": 20000,
     "rating_margin_table": {
@@ -622,16 +622,16 @@
         },
         "lean": "Likely R",
         "leader": "R",
-        "margin": 11.8,
-        "dem_pct": 3.3,
-        "rep_pct": 96.7,
+        "margin": 12.2,
+        "dem_pct": 3.0,
+        "rep_pct": 97.0,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 41.0,
-          "rep": 47.5,
+          "dem": 40.8,
+          "rep": 47.9,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -692,6 +692,13 @@
           "rep": 41.0,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "Trafalgar Group",
+              "dates": "October 8–10, 2026",
+              "partisan": "R",
+              "dem": 49.0,
+              "rep": 41.0
+            },
             {
               "pollster": "East Carolina University",
               "dates": "September 30 – October 3, 2026",
@@ -1168,6 +1175,13 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "Trafalgar Group",
+              "dates": "October 7–9, 2026",
+              "partisan": "R",
+              "dem": 51.0,
+              "rep": 43.0
+            },
+            {
               "pollster": "Wedgewood Polls",
               "dates": "October 2–3, 2026",
               "dem": 55.0,
@@ -1308,16 +1322,16 @@
         },
         "lean": "Lean R",
         "leader": "R",
-        "margin": 7.1,
-        "dem_pct": 11.6,
-        "rep_pct": 88.4,
+        "margin": 7.2,
+        "dem_pct": 11.4,
+        "rep_pct": 88.6,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
           "dem": 42.8,
-          "rep": 48.9,
+          "rep": 49.0,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -1428,15 +1442,15 @@
         },
         "lean": "Lean D",
         "leader": "D",
-        "margin": 6.6,
-        "dem_pct": 86.9,
-        "rep_pct": 13.1,
+        "margin": 6.7,
+        "dem_pct": 87.1,
+        "rep_pct": 12.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 45.8,
+          "dem": 45.9,
           "rep": 42.9,
           "source": "Aggregate (Wikipedia)",
           "polls": [
@@ -1968,6 +1982,12 @@
               "rep": 44.0
             },
             {
+              "pollster": "ReconMR/ Siena University",
+              "dates": "October 5–8, 2026",
+              "dem": 48.0,
+              "rep": 44.0
+            },
+            {
               "pollster": "YouGov",
               "dates": "September 28 – October 5, 2026",
               "dem": 50.0,
@@ -2489,8 +2509,8 @@
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 48.5,
-          "rep": 46.1,
+          "dem": 48.6,
+          "rep": 46.2,
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
@@ -3367,18 +3387,25 @@
         },
         "lean": "Tossup",
         "leader": "R",
-        "margin": 1.0,
+        "margin": 1.2,
         "dem_pct": 0.0,
-        "rep_pct": 56.9,
-        "ind_pct": 43.1,
+        "rep_pct": 58.4,
+        "ind_pct": 41.6,
         "dem_name": null,
         "rep_name": "Pete Ricketts",
         "ind_name": "Dan Osborn",
         "polls": {
-          "rep": 46.5,
-          "ind": 45.6,
+          "rep": 46.6,
+          "ind": 45.5,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "National Public Affairs",
+              "dates": "October 2–5, 2026",
+              "partisan": "R",
+              "rep": 46.0,
+              "ind": 43.0
+            },
             {
               "pollster": "YouGov",
               "dates": "September 24 – October 3, 2026",
@@ -3608,27 +3635,27 @@
       },
       {
         "seats": 47,
-        "pct": 1.0
+        "pct": 1.1
       },
       {
         "seats": 49,
-        "pct": 6.0
+        "pct": 6.1
       },
       {
         "seats": 51,
-        "pct": 19.8
+        "pct": 19.9
       },
       {
         "seats": 53,
-        "pct": 33.9
+        "pct": 34.0
       },
       {
         "seats": 55,
-        "pct": 28.4
+        "pct": 28.2
       },
       {
         "seats": 57,
-        "pct": 9.9
+        "pct": 9.7
       },
       {
         "seats": 59,
@@ -10507,28 +10534,6 @@
         "polls": null
       },
       {
-        "state": "New Mexico",
-        "district": "2",
-        "incumbent": "Gabe Vasquez",
-        "party": "D",
-        "rating": "Lean D",
-        "ratings": {
-          "cook": "Lean D",
-          "ie": "Tilt D",
-          "sabato": "Lean D"
-        },
-        "lean": "Lean D",
-        "leader": "D",
-        "margin": 6.1,
-        "dem_pct": 85.1,
-        "rep_pct": 14.9,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "Ohio",
         "district": "5",
         "incumbent": "Bob Latta",
@@ -10892,61 +10897,6 @@
         }
       },
       {
-        "state": "Minnesota",
-        "district": "1",
-        "incumbent": "Brad Finstad",
-        "party": "R",
-        "rating": "Likely R",
-        "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
-        },
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 5.3,
-        "dem_pct": 17.8,
-        "rep_pct": 82.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 43.3,
-          "rep": 47.3,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 3,
-          "n_sponsored": 3,
-          "polls": [
-            {
-              "pollster": "GBAO",
-              "dates": "September 18–21, 2026",
-              "partisan": "D",
-              "dem": 47.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Ragnar Research Partners",
-              "dates": "March 12–14, 2026",
-              "partisan": "R",
-              "dem": 42.0,
-              "rep": 52.0
-            },
-            {
-              "pollster": "Public Policy Polling",
-              "dates": "February 2–3, 2026",
-              "partisan": "D",
-              "dem": 41.0,
-              "rep": 44.0
-            }
-          ],
-          "names": {
-            "d": "Jake Johnson",
-            "r": "Brad Finstad"
-          }
-        }
-      },
-      {
         "state": "Nevada",
         "district": "3",
         "incumbent": "Susie Lee",
@@ -10985,6 +10935,59 @@
         "rep_name": null,
         "ind_name": null,
         "polls": null
+      },
+      {
+        "state": "New Mexico",
+        "district": "2",
+        "incumbent": "Gabe Vasquez",
+        "party": "D",
+        "rating": "Lean D",
+        "ratings": {
+          "cook": "Lean D",
+          "ie": "Tilt D",
+          "sabato": "Lean D"
+        },
+        "lean": "Lean D",
+        "leader": "D",
+        "margin": 5.1,
+        "dem_pct": 81.0,
+        "rep_pct": 19.0,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 45.7,
+          "rep": 42.7,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 3,
+          "n_sponsored": 1,
+          "polls": [
+            {
+              "pollster": "Research & Polling",
+              "dates": "October 1–9, 2026",
+              "dem": 48.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "SurveyUSA",
+              "dates": "August 28 – September 2, 2026",
+              "dem": 46.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "April 26–28, 2026",
+              "partisan": "R",
+              "dem": 43.0,
+              "rep": 41.0
+            }
+          ],
+          "names": {
+            "d": "Gabe Vasquez",
+            "r": "Greg Cunningham"
+          }
+        }
       },
       {
         "state": "New York",
@@ -11517,6 +11520,67 @@
         }
       },
       {
+        "state": "Minnesota",
+        "district": "1",
+        "incumbent": "Brad Finstad",
+        "party": "R",
+        "rating": "Likely R",
+        "ratings": {
+          "cook": "Likely R",
+          "ie": "Likely R",
+          "sabato": "Likely R"
+        },
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 4.4,
+        "dem_pct": 22.3,
+        "rep_pct": 77.7,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 44.0,
+          "rep": 46.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "n_sponsored": 3,
+          "polls": [
+            {
+              "pollster": "SurveyUSA",
+              "dates": "October 4–9, 2026",
+              "dem": 46.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "GBAO",
+              "dates": "September 18–21, 2026",
+              "partisan": "D",
+              "dem": 47.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Ragnar Research Partners",
+              "dates": "March 12–14, 2026",
+              "partisan": "R",
+              "dem": 42.0,
+              "rep": 52.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "February 2–3, 2026",
+              "partisan": "D",
+              "dem": 41.0,
+              "rep": 44.0
+            }
+          ],
+          "names": {
+            "d": "Jake Johnson",
+            "r": "Brad Finstad"
+          }
+        }
+      },
+      {
         "state": "Virginia",
         "district": "5",
         "incumbent": "John McGuire",
@@ -11918,61 +11982,6 @@
         }
       },
       {
-        "state": "South Carolina",
-        "district": "1",
-        "incumbent": "Nancy Mace",
-        "party": "R",
-        "rating": "Likely R",
-        "ratings": {
-          "cook": "Likely R",
-          "ie": "Likely R",
-          "sabato": "Likely R"
-        },
-        "lean": "Lean R",
-        "leader": "R",
-        "margin": 3.4,
-        "dem_pct": 27.3,
-        "rep_pct": 72.7,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 42.7,
-          "rep": 45.7,
-          "source": "Simple avg (latest 5 polls)",
-          "n_polls": 3,
-          "n_sponsored": 3,
-          "polls": [
-            {
-              "pollster": "co/efficient",
-              "dates": "September 30 – October 1, 2026",
-              "partisan": "R",
-              "dem": 40.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Public Policy Polling",
-              "dates": "September 9–10, 2026",
-              "partisan": "D",
-              "dem": 40.0,
-              "rep": 41.0
-            },
-            {
-              "pollster": "GQR",
-              "dates": "July 15–22, 2026",
-              "partisan": "D",
-              "dem": 48.0,
-              "rep": 50.0
-            }
-          ],
-          "names": {
-            "d": "Nancy Lacore",
-            "r": "Jenny Costa Honeycutt"
-          }
-        }
-      },
-      {
         "state": "California",
         "district": "23",
         "incumbent": "Jay Obernolte",
@@ -12073,6 +12082,13 @@
               "partisan": "D",
               "dem": 41.0,
               "rep": 41.0
+            },
+            {
+              "pollster": "Global Strategy Group",
+              "dates": "October 1–8, 2025",
+              "partisan": "D",
+              "dem": 46.0,
+              "rep": 46.0
             }
           ],
           "names": {
@@ -12217,6 +12233,68 @@
           "names": {
             "d": "Bridget Brink",
             "r": "Tom Barrett"
+          }
+        }
+      },
+      {
+        "state": "South Carolina",
+        "district": "1",
+        "incumbent": "Nancy Mace",
+        "party": "R",
+        "rating": "Likely R",
+        "ratings": {
+          "cook": "Likely R",
+          "ie": "Likely R",
+          "sabato": "Likely R"
+        },
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 2.5,
+        "dem_pct": 33.1,
+        "rep_pct": 66.9,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 44.0,
+          "rep": 45.5,
+          "source": "Simple avg (latest 5 polls)",
+          "n_polls": 4,
+          "n_sponsored": 4,
+          "polls": [
+            {
+              "pollster": "GQR",
+              "dates": "September 30 – October 4, 2026",
+              "partisan": "D",
+              "dem": 48.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 30 – October 1, 2026",
+              "partisan": "R",
+              "dem": 40.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "September 9–10, 2026",
+              "partisan": "D",
+              "dem": 40.0,
+              "rep": 41.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "July 15–22, 2026",
+              "partisan": "D",
+              "dem": 48.0,
+              "rep": 50.0
+            }
+          ],
+          "names": {
+            "d": "Nancy Lacore",
+            "r": "Jenny Costa Honeycutt"
           }
         }
       },
@@ -13311,17 +13389,17 @@
         "polls": null
       }
     ],
-    "expected_d_seats": 240.2,
-    "expected_r_seats": 194.8,
+    "expected_d_seats": 240.3,
+    "expected_r_seats": 194.7,
     "expected_i_seats": 0.0,
     "majority": {
-      "dem_pct": 92.8,
-      "rep_pct": 7.2
+      "dem_pct": 92.7,
+      "rep_pct": 7.3
     },
     "distribution_buckets": [
       {
         "seats": 197,
-        "pct": 0.2
+        "pct": 0.1
       },
       {
         "seats": 199,
@@ -13353,7 +13431,7 @@
       },
       {
         "seats": 213,
-        "pct": 1.0
+        "pct": 1.1
       },
       {
         "seats": 215,
@@ -13365,7 +13443,7 @@
       },
       {
         "seats": 219,
-        "pct": 2.5
+        "pct": 2.4
       },
       {
         "seats": 221,
@@ -13373,7 +13451,7 @@
       },
       {
         "seats": 223,
-        "pct": 2.8
+        "pct": 2.9
       },
       {
         "seats": 225,
@@ -13381,15 +13459,15 @@
       },
       {
         "seats": 227,
-        "pct": 3.8
+        "pct": 3.9
       },
       {
         "seats": 229,
-        "pct": 4.3
+        "pct": 4.2
       },
       {
         "seats": 231,
-        "pct": 4.3
+        "pct": 4.2
       },
       {
         "seats": 233,
@@ -13413,23 +13491,23 @@
       },
       {
         "seats": 243,
-        "pct": 4.7
+        "pct": 4.8
       },
       {
         "seats": 245,
-        "pct": 4.3
+        "pct": 4.2
       },
       {
         "seats": 247,
-        "pct": 4.1
+        "pct": 4.0
       },
       {
         "seats": 249,
-        "pct": 4.1
+        "pct": 4.0
       },
       {
         "seats": 251,
-        "pct": 3.7
+        "pct": 3.9
       },
       {
         "seats": 253,
@@ -13437,11 +13515,11 @@
       },
       {
         "seats": 255,
-        "pct": 2.8
+        "pct": 2.7
       },
       {
         "seats": 257,
-        "pct": 2.6
+        "pct": 2.7
       },
       {
         "seats": 259,
@@ -13465,7 +13543,7 @@
       },
       {
         "seats": 269,
-        "pct": 1.2
+        "pct": 1.1
       },
       {
         "seats": 271,
@@ -13473,11 +13551,11 @@
       },
       {
         "seats": 273,
-        "pct": 0.7
+        "pct": 0.9
       },
       {
         "seats": 275,
-        "pct": 0.5
+        "pct": 0.6
       },
       {
         "seats": 277,
@@ -13509,14 +13587,10 @@
       },
       {
         "seats": 291,
-        "pct": 0.1
+        "pct": 0.2
       },
       {
-        "seats": 295,
-        "pct": 0.1
-      },
-      {
-        "seats": 297,
+        "seats": 293,
         "pct": 0.1
       }
     ]
@@ -13965,8 +14039,15 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "Manhattan Institute",
+              "dates": "September 24 – October 1, 2026",
+              "partisan": "R",
+              "dem": 57.0,
+              "rep": 39.0
+            },
+            {
               "pollster": "Independent Voter Project",
-              "dates": "September 23 – October 2, 2026",
+              "dates": "September 23–28, 2026",
               "dem": 48.0,
               "rep": 38.0
             },
@@ -14665,6 +14746,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "KARE 11 / Minnesota Star Tribune",
+              "dates": "October 5–7, 2026",
+              "dem": 50.0,
+              "rep": 41.0
+            },
+            {
               "pollster": "Morning Consult",
               "dates": "October 2–7, 2026",
               "partisan": "D",
@@ -14887,87 +14974,6 @@
         }
       },
       {
-        "state": "Nebraska",
-        "district": "",
-        "incumbent": "Jim Pillen",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Likely R"
-        },
-        "lean": "Likely R",
-        "leader": "R",
-        "margin": 8.6,
-        "dem_pct": 7.9,
-        "rep_pct": 92.1,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 37.4,
-          "rep": 44.9,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "YouGov",
-              "dates": "September 24 – October 3, 2026",
-              "dem": 43.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 28–30, 2026",
-              "partisan": "R",
-              "dem": 38.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "Wedgewood Polls",
-              "dates": "September 14–16, 2026",
-              "dem": 36.0,
-              "rep": 53.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "September 8–14, 2026",
-              "partisan": "D",
-              "dem": 40.0,
-              "rep": 40.0
-            },
-            {
-              "pollster": "SurveyUSA",
-              "dates": "September 8–13, 2026",
-              "dem": 35.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "April 25–29, 2026",
-              "partisan": "D",
-              "dem": 45.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "December 11–17, 2025",
-              "partisan": "D",
-              "dem": 43.0,
-              "rep": 48.0
-            },
-            {
-              "pollster": "Lake Research Partners",
-              "dates": "July 23–29, 2025",
-              "partisan": "D",
-              "dem": 39.0,
-              "rep": 51.0
-            }
-          ]
-        }
-      },
-      {
         "state": "Iowa",
         "district": "",
         "incumbent": "Kim Reynolds",
@@ -15114,17 +15120,24 @@
         "lean": "Likely D",
         "leader": "D",
         "margin": 8.2,
-        "dem_pct": 91.3,
-        "rep_pct": 8.7,
+        "dem_pct": 91.2,
+        "rep_pct": 8.8,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 48.3,
-          "rep": 40.2,
+          "dem": 48.4,
+          "rep": 40.4,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "GrayHouse",
+              "dates": "October 6–8, 2026",
+              "partisan": "R",
+              "dem": 50.0,
+              "rep": 44.0
+            },
             {
               "pollster": "GQR",
               "dates": "September 30 – October 5, 2026",
@@ -15279,6 +15292,94 @@
             "d": "Katie Hobbs",
             "r": "Andy Biggs"
           }
+        }
+      },
+      {
+        "state": "Nebraska",
+        "district": "",
+        "incumbent": "Jim Pillen",
+        "party": "R",
+        "rating": "Solid R",
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Likely R"
+        },
+        "lean": "Likely R",
+        "leader": "R",
+        "margin": 8.1,
+        "dem_pct": 9.0,
+        "rep_pct": 91.0,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 37.8,
+          "rep": 44.5,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "National Public Affairs",
+              "dates": "October 2–5, 2026",
+              "partisan": "R",
+              "dem": 40.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "September 24 – October 3, 2026",
+              "dem": 43.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 28–30, 2026",
+              "partisan": "R",
+              "dem": 38.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Wedgewood Polls",
+              "dates": "September 14–16, 2026",
+              "dem": 36.0,
+              "rep": 53.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "September 8–14, 2026",
+              "partisan": "D",
+              "dem": 40.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "SurveyUSA",
+              "dates": "September 8–13, 2026",
+              "dem": 35.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "April 25–29, 2026",
+              "partisan": "D",
+              "dem": 45.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "December 11–17, 2025",
+              "partisan": "D",
+              "dem": 43.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Lake Research Partners",
+              "dates": "July 23–29, 2025",
+              "partisan": "D",
+              "dem": 39.0,
+              "rep": 51.0
+            }
+          ]
         }
       },
       {
@@ -15909,6 +16010,13 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "Change Research",
+              "dates": "October 8–10, 2026",
+              "partisan": "D",
+              "dem": 47.0,
+              "rep": 47.0
+            },
+            {
               "pollster": "St. Pete Polls",
               "dates": "October 5–7, 2026",
               "dem": 45.0,
@@ -16354,6 +16462,12 @@
           "rep": 48.2,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "ReconMR/ Siena University",
+              "dates": "October 5–8, 2026",
+              "dem": 47.0,
+              "rep": 48.0
+            },
             {
               "pollster": "YouGov",
               "dates": "September 28 – October 5, 2026",

@@ -6,13 +6,13 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
   }
  ],
- "scraped_at": "2026-10-12T14:21:33Z",
- "poll_count": 50,
+ "scraped_at": "2026-10-13T13:30:47Z",
+ "poll_count": 51,
  "polls": [
   {
    "pollster": "Harris Interactive",
-   "fieldwork_start": "2026-10-08",
-   "date": "2026-10-08",
+   "fieldwork_start": "2026-10-12",
+   "date": "2026-10-12",
    "n": 2004,
    "votes": {
     "arthaud": 1.0,
@@ -28,10 +28,20 @@
     "zemmour": 5.0,
     "hollande": 7.0
    },
+   "country": "france",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
+  },
+  {
+   "pollster": "Harris Interactive",
+   "date": "2026-10-08",
+   "n": 2004,
+   "votes": {},
    "runoff": {
     "philippe": 44.0,
     "lepen": 56.0
    },
+   "fieldwork_start": "2026-10-08",
    "country": "france",
    "source": "Wikipedia",
    "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
@@ -337,6 +347,10 @@
     "hollande": 7.5,
     "ruffin": 6.0,
     "faure": 3.5
+   },
+   "runoff": {
+    "glucksmann": 43.0,
+    "lepen": 57.0
    },
    "country": "france",
    "source": "Wikipedia",

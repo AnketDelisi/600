@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<script>localStorage.setItem('600_lang', 'tr');</script>
+<iframe id="f" src="/index.html?c=turkey" style="width:1400px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  const w = f.contentWindow, d = f.contentDocument;
+  let err = '';
+  try { w.addEventListener('error', e => { err += e.message + '; '; }); } catch (e) {}
+  const T = (ms) => new Promise(r => setTimeout(r, ms));
+  const counts = (sel) => {
+    const box = d.querySelector(sel);
+    if (!box) return 'nobox';
+    const paths = [...box.querySelectorAll('path[style]')].filter(p => !p.closest('g[transform]'));
+    const c = {};
+    paths.forEach(p => { const v = p.style.fill || ''; if (v) c[v] = (c[v] || 0) + 1; });
+    return paths.length + ':' + JSON.stringify(c);
+  };
+  (async () => {
+    try {
+      let n = 0;
+      while (n < 200 && !d.querySelector('.parl-btn')) { await T(100); n++; }
+      await T(2500);
+      const mbtn = d.querySelector('button[data-parlview="map"]');
+      if (mbtn) mbtn.click();
+      await T(3500);
+      const out = [{ state: 'proj map', map: counts('#map-box') }];
+      const res = d.querySelector('button[data-parlmode="2022"]');
+      if (res) res.click();
+      await T(3500);
+      out.push({ state: '2023 result map', map: counts('#map-box') });
+      document.title = 'TR ' + JSON.stringify(out) + ' ERR=' + (err || 'none');
+    } catch (e) {
+      document.title = 'ERR ' + e.message;
+    }
+  })();
+});
+</script>
+</body></html>

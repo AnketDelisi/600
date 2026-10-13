@@ -22,6 +22,7 @@ REF = {
     "austria": (183, 4.0, "dhondt", True),
     "canada": (343, 0.0, "fptp", True),
     "ontario": (124, 0.0, "fptp", True),
+    "turkey": (600, 7.0, "dhondt", False),
     "bg": (240, 4.0, "hare_niemeyer", False),
     "bgpres": (1, 0.0, None, False),
     "brazil": (27, 5.0, None, False),

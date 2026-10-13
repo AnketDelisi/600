@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/poll/index.html" style="width:1300px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(async () => {
+    try {
+      const w = f.contentWindow, d = f.contentDocument;
+      const sel = d.getElementById('country-select');
+      const custom = [...sel.options].find(o => o.value === '__custom');
+      if (!custom) { document.title = 'NO CUSTOM OPTION'; return; }
+      sel.value = '__custom';
+      sel.dispatchEvent(new w.Event('change'));
+      await new Promise(r => setTimeout(r, 600));
+      const codes = ['SL', 'AV-US', 'SPS', 'PES', 'NADA', 'MISN'];
+      const votes = [44, 42, 5, 3, 3, 3];
+      const rows = d.querySelectorAll('#parties-body tr');
+      codes.forEach((c, i) => {
+        const row = rows[i];
+        if (!row) return;
+        row.querySelector('.code-in').value = c;
+        const p = row.querySelector('.poll-in');
+        p.value = votes[i];
+        p.dispatchEvent(new w.Event('input', { bubbles: true }));
+      });
+      const h = d.getElementById('heading-input');
+      h.value = 'SIRBISTAN — 2026 LEGISLATIVE';
+      h.dispatchEvent(new w.Event('input', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 900));
+      const dataUrl = d.getElementById('preview-canvas').toDataURL('image/png');
+      const p = document.createElement('pre');
+      p.id = 'dlurl';
+      p.textContent = dataUrl;
+      document.body.appendChild(p);
+      w.HTMLAnchorElement.prototype.click = function () { w.__lastDl = this.href; };
+      d.getElementById('download-btn').click();
+      await new Promise(r => setTimeout(r, 800));
+      document.title = JSON.stringify({
+        dl: (w.__lastDl || '').slice(0, 12), len: dataUrl.length,
+        rows: rows.length, addBtn: !d.getElementById('add-party-btn').hidden,
+        hint: !d.getElementById('custom-hint').hidden });
+    } catch (e) {
+      document.title = 'ERR ' + e.message;
+    }
+  }, 6000);
+});
+</script>
+</body></html>

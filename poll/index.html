@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AltıCiftSıfır — Poll Image Generator</title>
   <link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
-  <link rel="stylesheet" href="../css/style.css?v=20261005c191">
+  <link rel="stylesheet" href="../css/style.css?v=20261005c192">
   <style>
     .tool-shell{max-width:1400px;width:100%;margin:0 auto;padding:36px 24px 60px 24px}
     .tool-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
@@ -107,6 +107,11 @@
             </div>
 
             <div class="form-row">
+              <label for="heading-input">Heading (optional)</label>
+              <input id="heading-input" type="text" placeholder="e.g. Brazil — 2026 Legislative Election">
+            </div>
+
+            <div class="form-row">
               <label for="format-sel">Image format</label>
               <select id="format-sel">
                 <option value="1200x675" selected>Landscape — 1200×675</option>
@@ -146,12 +151,16 @@
               </thead>
               <tbody id="parties-body"></tbody>
             </table>
+            <div style="display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap">
+              <button class="btn secondary" id="add-party-btn" style="width:auto;padding:8px 14px" hidden>+ Add party</button>
+              <span class="hint" id="custom-hint" style="margin:0" hidden>Custom mode: set the party code, colour, numbers and (optionally) upload a logo for each row. Leave "Last election" empty for single bars.</span>
+            </div>
           </div>
         </div>
       </div>
     </main>
   </div>
-  <script src="../js/config.js?v=20261005c191"></script>
-  <script src="poll.js?v=20261005c191"></script>
+  <script src="../js/config.js?v=20261005c192"></script>
+  <script src="poll.js?v=20261005c192"></script>
 </body>
 </html>

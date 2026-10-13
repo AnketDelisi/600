@@ -5017,7 +5017,10 @@ function renderPrediction(pane){
             <div id="yp-result"></div>
           </div>
           <div class="card">
-            <div class="card-head"><div class="bar"></div><div class="t">${t('PARLIAMENT','PARLAMENTO')}</div></div>
+            <div class="card-head"><div class="bar"></div><div class="t">${t('PARLIAMENT','PARLAMENTO')}</div>
+              <input id="yp-poster-sub" type="text" placeholder="${t('Poster subtitle (optional)','Poster alt başlığı (isteğe bağlı)')}" style="margin-left:auto;width:190px;height:26px;padding:0 8px;font-family:var(--font);font-size:11px;font-weight:700;border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main)">
+              <button class="shot-btn" id="yp-poster-btn" title="${t('Download the prediction poster as PNG','Tahmin posterini PNG olarak indir')}">${CAM_ICON}</button>
+            </div>
             <div class="parliament-box" id="yp-parl-box"></div>
           </div>
         </div>
@@ -5051,6 +5054,54 @@ function renderPrediction(pane){
         el.value=ypDef(el.dataset.p).toFixed(1);
       });
       ypUpdate();
+    });
+  }
+  // prediction poster: the entered shares + the seats they yield, with an
+  // optional custom subtitle (falls back to "My prediction")
+  const ypPosterBtn=$('yp-poster-btn');
+  if(ypPosterBtn){
+    ypPosterBtn.addEventListener('click',async()=>{
+      const votes={};
+      document.querySelectorAll('.yp-in').forEach(el=>{
+        votes[el.dataset.p]=Math.max(0,Math.min(100,parseFloat(el.value)||0));
+      });
+      const seats=predictionSeats(votes)||{};
+      const order=PARTY_ORDER.filter(p=>votes[p]!==undefined
+          &&!(PARTY_META[p]&&PARTY_META[p].pastOnly))
+        .slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
+      const leR=LAST_ELECTION.results||{}, leS=LAST_ELECTION.seats||{};
+      const mkRow=(p)=>{
+        const dv=votes[p]-(leR[p]||0);
+        const ds=(seats[p]||0)-(leS[p]||0);
+        return {p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
+          shareText:SEAT_BASED?'':'%'+fmt(votes[p]||0,1),
+          seatsText:String(seats[p]||0),
+          dvText:(!SEAT_BASED&&Math.abs(dv)>=0.05)
+            ?(dv>0?'\u25b2'+fmt(dv,1):'\u25bc'+fmt(Math.abs(dv),1)):'',
+          dsText:(ds!==0)
+            ?(ds>0?'\u25b2'+ds:'\u25bc'+Math.abs(ds)):'',
+          ideology:ideologyTr((PARTY_META[p]||{}).ideology||''),
+          color:(PARTY_META[p]||{}).color||'#888',
+          logo:PARTY_LOGOS[p]||null,
+          firstText:''};
+      };
+      const rows=[], grid=[];
+      const bigN=Math.max(5,Math.min(7,
+        order.filter(p=>(seats[p]||0)>=8).length,order.length));
+      order.slice(0,bigN).forEach(p=>rows.push(mkRow(p)));
+      order.slice(bigN,bigN+12).forEach(p=>grid.push(mkRow(p)));
+      const tmp=document.createElement('div');
+      tmp.innerHTML=buildParliamentSVG(seats);
+      const mapBox=document.getElementById('yp-map-box');
+      const sub=$('yp-poster-sub');
+      const canvas=await renderPoster({
+        title:COUNTRY_NAME+' '+t('Election Projection','Seçim Projeksiyonu'),
+        subtitle:(sub&&sub.value.trim())||t('My prediction','Tahminim'),
+        rows:rows, grid:grid, tiles:null,
+        arcSvg:tmp.querySelector('svg'),
+        mapSvg:mapBox?mapBox.querySelector('svg'):null,
+      });
+      downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-prediction.png');
     });
   }
   pane.querySelectorAll('.yp-layer-btn').forEach(btn=>{

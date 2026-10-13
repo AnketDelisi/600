@@ -58,9 +58,92 @@
   const imgActions = $('img-actions');
   const txtActions = $('txt-actions');
   const chartSeg = $('chart-seg');
+  const headingInput = $('heading-input');
+  const addPartyBtn = $('add-party-btn');
+  const customHint = $('custom-hint');
+  const partiesThead = document.querySelector('.parties-table thead');
 
   let COUNTRIES_DEF = {};
   try { COUNTRIES_DEF = (typeof COUNTRIES !== 'undefined') ? COUNTRIES : {}; } catch (e) { /* config not loaded */ }
+
+  /* ---------- custom mode: own parties, own logos ---------- */
+  const CUSTOM_KEY = '__custom';
+  const CUSTOM_COLORS = ['#1A4C8B', '#D71920', '#6AB023', '#F58220', '#7C3AED', '#0F8753', '#6B7280', '#A81A32'];
+  let CUSTOM = [];
+  let customSeq = 0;
+  function newCustomRow() {
+    const i = customSeq++;
+    return { id: 'c' + i, code: '', color: CUSTOM_COLORS[i % CUSTOM_COLORS.length], poll: '', last: '', logo: '' };
+  }
+  for (let i = 0; i < 5; i++) CUSTOM.push(newCustomRow());
+  function isCustom() { return countrySel.value === CUSTOM_KEY; }
+  function customConfig() {
+    const order = [], parties = {}, logos = {};
+    CUSTOM.forEach((r) => {
+      order.push(r.id);
+      parties[r.id] = { code: (r.code || '').trim() || r.id.toUpperCase(), color: r.color || '#888' };
+      if (r.logo) logos[r.id] = r.logo;
+    });
+    return { name: (headingInput && headingInput.value.trim()) || 'Custom', order: order,
+             parties: parties, logos: logos, lastElection: null, seatBased: false };
+  }
+  /* ---------- built-in presets: fixed party sets, editable numbers ---------- */
+  const PRESETS = {
+    __brleg: {
+      name: 'Brazil — Legislative',
+      order: ['pt', 'pl', 'pp', 'uniao', 'psd', 'mdb', 'prb', 'psdb', 'pdt', 'psb', 'psol', 'novo', 'pode', 'cidadania', 'pv', 'rede', 'solidariedade', 'avante', 'prd', 'missao', 'upb', 'pcdob', 'febrasil', 'psolrede', 'prdsolidariedade', 'psdbcdadania'],
+      parties: {
+        pt: { code: 'PT', color: '#E20E28' },
+        pl: { code: 'PL', color: '#015AAA' },
+        pp: { code: 'PP', color: '#203F71' },
+        uniao: { code: 'UNIÃO', color: '#2FBEF2' },
+        psd: { code: 'PSD', color: '#FFA500' },
+        mdb: { code: 'MDB', color: '#30914D' },
+        prb: { code: 'REP', color: '#0070C5' },
+        psdb: { code: 'PSDB', color: '#0080FF' },
+        pdt: { code: 'PDT', color: '#C21E56' },
+        psb: { code: 'PSB', color: '#FFCC00' },
+        psol: { code: 'PSOL', color: '#E2202A' },
+        novo: { code: 'NOVO', color: '#F3701B' },
+        pode: { code: 'PODE', color: '#2DA933' },
+        cidadania: { code: 'CIDADANIA', color: '#EC008C' },
+        pv: { code: 'PV', color: '#006600' },
+        rede: { code: 'REDE', color: '#379E8D' },
+        solidariedade: { code: 'SOLID', color: '#FF9C2B' },
+        avante: { code: 'AVANTE', color: '#088F8F' },
+        prd: { code: 'PRD', color: '#008000' },
+        missao: { code: 'MISSÃO', color: '#FDBF35' },
+        upb: { code: 'UP', color: '#000000' },
+        pcdob: { code: 'PCdoB', color: '#820000' },
+        febrasil: { code: 'FE BRASIL', color: '#FF0000' },
+        psolrede: { code: 'PSOL/REDE', color: '#E2202A' },
+        prdsolidariedade: { code: 'PRD/SOLID', color: '#008000' },
+        psdbcdadania: { code: 'PSDB/CID', color: '#0080FF' },
+      },
+      logos: {
+        pt: 'img/br/PT.svg', pl: 'img/br/PL.svg', pp: 'img/br/PP.svg',
+        uniao: 'img/br/UNIAO.svg', psd: 'img/br/PSD.svg', mdb: 'img/br/MDB.svg',
+        prb: 'img/br/PRB.svg', psdb: 'img/br/PSDB.svg', pdt: 'img/br/PDT.svg',
+        psb: 'img/br/PSB.svg', psol: 'img/br/PSOL.svg', novo: 'img/br/NOVO.svg',
+        pode: 'img/br/PODE.svg', cidadania: 'img/br/CIDADANIA.svg',
+        pv: 'img/br/PV.svg', rede: 'img/br/REDE.svg',
+        solidariedade: 'img/br/Solidariedade.svg', avante: 'img/br/AVANTE.svg',
+        prd: 'img/br/PRD.svg', missao: 'img/br/MISSAO.svg',
+        upb: 'img/br/UPB.svg', pcdob: 'img/br/PCDoB.svg',
+        febrasil: 'img/br/FEBRASIL.svg', psolrede: 'img/br/PSOLREDE.svg',
+        prdsolidariedade: 'img/br/PRDSolidariedade.svg',
+        psdbcdadania: 'img/br/PSDBCIDADANIA.svg',
+      },
+      lastElection: null, seatBased: false, directNumbers: true,
+    },
+  };
+  function isPreset() { return !!PRESETS[countrySel.value]; }
+  function activeConfig() {
+    if (isCustom()) return customConfig();
+    if (isPreset()) return PRESETS[countrySel.value];
+    return COUNTRIES_DEF[countrySel.value];
+  }
+  function escAttr(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
 
   /* ---------- helpers ---------- */
   function num(v) {
@@ -217,7 +300,26 @@
 
   /* ---------- build party rows ---------- */
   function buildRows() {
-    const c = COUNTRIES_DEF[countrySel.value];
+    if (isCustom()) {
+      if (chartSeg) chartSeg.style.display = '';
+      if (addPartyBtn) addPartyBtn.hidden = false;
+      if (customHint) customHint.hidden = false;
+      if (partiesThead) partiesThead.innerHTML = '<tr><th>Party</th><th>Color</th><th>Poll</th><th>Last election</th><th>Logo</th><th></th></tr>';
+      partiesBody.innerHTML = CUSTOM.map((r, i) =>
+        '<tr>' +
+        '<td><input class="code-in" data-pid="' + r.id + '" type="text" value="' + escAttr(r.code) + '" placeholder="P' + (i + 1) + '" style="width:74px;font-weight:800;font-size:13px;font-family:var(--font);padding:6px 8px;border:2px solid var(--c-border);border-radius:var(--radius-sm);background:var(--c-surface);color:var(--c-text-main)"></td>' +
+        '<td><input class="color-in" data-pid="' + r.id + '" type="color" value="' + escAttr(r.color) + '" style="width:34px;height:28px;padding:0;border:2px solid var(--c-border);border-radius:var(--radius-sm);background:var(--c-surface)"></td>' +
+        '<td><input class="poll-in" data-pid="' + r.id + '" type="number" step="0.1" min="0" value="' + escAttr(r.poll) + '"></td>' +
+        '<td><input class="last-in" data-pid="' + r.id + '" type="number" step="0.1" min="0" value="' + escAttr(r.last) + '"></td>' +
+        '<td><input class="logo-in" data-pid="' + r.id + '" type="file" accept="image/*" style="width:116px;font-size:10px">' + (r.logo ? '<span style="font-size:10px;font-weight:800;color:#0B9E17"> &#10003;</span>' : '') + '</td>' +
+        '<td><button class="rm-btn" data-rm="' + r.id + '" title="Remove" style="border:none;background:none;font-weight:900;font-size:14px;color:#B91C1C;cursor:pointer">&#10005;</button></td>' +
+        '</tr>').join('');
+      return;
+    }
+    if (addPartyBtn) addPartyBtn.hidden = true;
+    if (customHint) customHint.hidden = true;
+    if (partiesThead) partiesThead.innerHTML = '<tr><th>Party</th><th>Poll</th><th>Last election</th></tr>';
+    const c = activeConfig();
     partiesBody.innerHTML = '';
     if (!c) return;
     if (chartSeg) chartSeg.style.display = c.seatBased ? 'none' : '';
@@ -242,7 +344,17 @@
   }
 
   function readResults() {
-    const c = COUNTRIES_DEF[countrySel.value];
+    if (isCustom()) {
+      CUSTOM.forEach((r) => {
+        const q = (cls) => partiesBody.querySelector('.' + cls + '[data-pid="' + r.id + '"]');
+        const codeEl = q('code-in'), colEl = q('color-in');
+        if (codeEl) r.code = codeEl.value;
+        if (colEl) r.color = colEl.value;
+        r.poll = num((q('poll-in') || {}).value);
+        r.last = num((q('last-in') || {}).value);
+      });
+    }
+    const c = activeConfig();
     const order = c ? (c.order || []) : [];
     const poll = {}, last = {};
     order.forEach((pid) => {
@@ -264,6 +376,19 @@
 
   async function loadPolls() {
     const tid = countrySel.value;
+    if (isCustom() || isPreset()) {
+      POLL_LIST = [];
+      pollSel.innerHTML = '<option value="">—</option>';
+      pollSel.disabled = true;
+      prefillMsg.textContent = isPreset()
+        ? 'Preset — enter your own numbers (or pick a poll above).'
+        : 'Custom mode — enter your own numbers and logos.';
+      titleInput.value = '';
+      dateInput.value = '';
+      render();
+      return;
+    }
+    pollSel.disabled = false;
     const c = COUNTRIES_DEF[tid];
     pollSel.innerHTML = '<option value="">Loading polls…</option>';
     try {
@@ -305,22 +430,29 @@
   /* ---------- shared display state ---------- */
   function currentState() {
     const tid = countrySel.value;
-    const c = COUNTRIES_DEF[tid];
+    const custom = isCustom();
+    // read the inputs first (custom rows sync into CUSTOM), then build
+    // the config from the fresh state
     const { order, poll, last } = readResults();
+    const c = activeConfig();
     const chartEl = document.querySelector('input[name="chart"]:checked');
     const seatsMode = (c && c.seatBased) ? true : (chartEl ? chartEl.value === 'seats' : false);
     let now, prev, total, display;
     // placeholder parties (dissolved alliances) never appear in polls/forecasts
     const activeOrder = (c.order || []).filter((p) => !((c.parties[p] || {}).pastOnly));
+    const direct = (c && (c.seatBased || c.directNumbers)) || custom;   // entered numbers used as-is
     if (seatsMode) {
-      now = (c && c.seatBased) ? poll : seatCalc(c, poll);
-      prev = (c && c.lastElection && c.lastElection.seats) ? c.lastElection.seats : {};
-      total = (c && c.seatBased) ? Number(c.seats || 0) : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
+      now = direct ? poll : seatCalc(c, poll);
+      prev = (custom || (c && c.directNumbers)) ? last : ((c && c.lastElection && c.lastElection.seats) ? c.lastElection.seats : {});
+      total = direct ? ((c && c.seatBased) ? Number(c.seats || 0) : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0))
+                     : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
       display = activeOrder.filter((p) => (now[p] || 0) > 0).sort((a, b) => (now[b] || 0) - (now[a] || 0));
       if (!display.length) display = activeOrder.slice();
     } else {
       now = poll; prev = last; total = 0;
-      display = activeOrder.filter((p) => (now[p] || 0) > 0).sort((a, b) => (prev[b] || 0) - (prev[a] || 0));
+      const directSort = custom || (c && c.directNumbers);
+      display = activeOrder.filter((p) => (now[p] || 0) > 0)
+        .sort(directSort ? (a, b) => (now[b] || 0) - (now[a] || 0) : (a, b) => (prev[b] || 0) - (prev[a] || 0));
       if (!display.length) display = activeOrder.slice();
     }
     return { tid: tid, c: c, state: { order: order, poll: poll, last: last }, seatsMode: seatsMode, now: now, prev: prev, total: total, display: display };
@@ -387,7 +519,8 @@
     }
 
     const countryName = c.name || tid;
-    const headerTxt = countryName + (seatsMode ? ' — Seat Projection' : ' — Poll');
+    const headOverride = headingInput ? headingInput.value.trim() : '';
+    const headerTxt = headOverride || (countryName + (seatsMode ? ' — Seat Projection' : ' — Poll'));
     const titleFont = clamp(Math.round(W * 0.026), 22, 34);
     cctx.font = '900 ' + titleFont + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
     cctx.fillStyle = th.ink;
@@ -434,10 +567,12 @@
     visualOrder.forEach((pid) => { maxV = Math.max(maxV, now[pid] || 0, prev[pid] || 0); });
     const niceMax = Math.max(10, Math.ceil(maxV / 10) * 10);
 
-    // bars: now 70% / previous 30% of the pair width, side by side
+    // bars: now 70% / previous 30% of the pair width, side by side;
+    // single full-width bars when there is no comparison column
+    const single = visualOrder.every((p) => !(prev[p] > 0));
     const pairW = colW * 0.84;
-    const pollW = pairW * 0.7;
-    const lastW = pairW * 0.3;
+    const pollW = single ? pairW : pairW * 0.7;
+    const lastW = single ? 0 : pairW * 0.3;
     const labelFont = Math.round(clamp(colW * 0.1, 11, 15));
 
     for (let i = 0; i < visualOrder.length; i++) {
@@ -461,7 +596,7 @@
       };
 
       drawBar(cx - pairW / 2, pv, pollW, false);
-      drawBar(cx - pairW / 2 + pollW, lv, lastW, true);
+      if (!single) drawBar(cx - pairW / 2 + pollW, lv, lastW, true);
     }
 
     // category row: party-color square + logo + abbreviation
@@ -484,7 +619,8 @@
       // logo
       const logoPath = useLogos[pid];
       if (logoPath) {
-        const img = await loadImg(BASE + logoPath + '?v=' + LOGO_CACHE);
+        const src = /^(blob:|data:)/.test(logoPath) ? logoPath : BASE + logoPath + '?v=' + LOGO_CACHE;
+        const img = await loadImg(src);
         if (img) {
           const iw = img.naturalWidth || 100, ih = img.naturalHeight || 100;
           const s = Math.min((boxSz - 8) / iw, (boxSz - 8) / ih);
@@ -499,7 +635,13 @@
         cctx.fillText(abbr, cx, by + boxSz / 2 + Math.round(boxSz * 0.1));
       }
 
-      // abbreviation
+      // abbreviation (shrunk so long codes never collide)
+      let fs = nameFont;
+      cctx.font = '700 ' + fs + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
+      while (fs > 8 && cctx.measureText(abbr).width > colW * 0.92) {
+        fs -= 1;
+        cctx.font = '700 ' + fs + 'px "Atlas Grotesk","Inter",Helvetica,Arial,sans-serif';
+      }
       cctx.fillStyle = th.ink;
       cctx.fillText(abbr, cx, by + boxSz + nameFont * 1.35);
     }
@@ -518,6 +660,7 @@
     loadPolls();
   });
   formatSel.addEventListener('change', render);
+  if (headingInput) headingInput.addEventListener('input', schedule);
   titleInput.addEventListener('input', schedule);
   dateInput.addEventListener('input', schedule);
   renderBtn.addEventListener('click', () => { renderBtn.disabled = true; render().finally(() => { renderBtn.disabled = false; }); });
@@ -526,9 +669,34 @@
     if (p) loadPoll(p);
   });
   partiesBody.addEventListener('input', schedule);
+  partiesBody.addEventListener('change', (e) => {
+    const el = e.target;
+    if (el && el.classList && el.classList.contains('logo-in')) {
+      const row = CUSTOM.find((r) => r.id === el.dataset.pid);
+      const f = el.files && el.files[0];
+      if (row && f) {
+        row.logo = URL.createObjectURL(f);
+        buildRows();
+        render();
+      }
+    }
+  });
+  partiesBody.addEventListener('click', (e) => {
+    const b = e.target && e.target.closest ? e.target.closest('.rm-btn') : null;
+    if (!b) return;
+    CUSTOM = CUSTOM.filter((r) => r.id !== b.dataset.rm);
+    if (!CUSTOM.length) CUSTOM.push(newCustomRow());
+    buildRows();
+    render();
+  });
+  if (addPartyBtn) addPartyBtn.addEventListener('click', () => {
+    CUSTOM.push(newCustomRow());
+    buildRows();
+    render();
+  });
   document.querySelectorAll('input[name="bg"]').forEach((r) => r.addEventListener('change', render));
   downloadBtn.addEventListener('click', () => {
-    const tid = countrySel.value;
+    const tid = isCustom() ? 'custom' : countrySel.value;
     const fn = '600_' + tid + '_poll.png';
     if (canvas.toBlob) {
       canvas.toBlob((blob) => {
@@ -561,7 +729,7 @@
     document.execCommand('copy');
   });
   txtDlBtn.addEventListener('click', () => {
-    const fn = '600_' + countrySel.value + '_poll.txt';
+    const fn = '600_' + (isCustom() ? 'custom' : countrySel.value) + '_poll.txt';
     const blob = new Blob([textOut.value], { type: 'text/plain;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -578,7 +746,8 @@
       const c = COUNTRIES_DEF[k];
       const hint = c.seatBased ? ' (seats)' : '';
       return '<option value="' + k + '">' + (c.name || k) + hint + '</option>';
-    }).join('');
+    }).join('') + '<option value="__brleg">Brazil — Legislative (Chamber)</option>'
+      + '<option value="__custom">Custom — own parties</option>';
     buildRows();
     loadPolls();
     updateText();

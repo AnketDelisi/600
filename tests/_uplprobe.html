@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/poll/index.html" style="width:1300px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(async () => {
+    const w = f.contentWindow, d = f.contentDocument;
+    const sel = d.getElementById('country-select');
+    sel.value = '__custom';
+    sel.dispatchEvent(new w.Event('change'));
+    await new Promise(r => setTimeout(r, 600));
+    const out = {};
+    try {
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#FFD700"/></svg>';
+      const dt = new w.DataTransfer();
+      dt.items.add(new w.File([svg], 'logo.svg', { type: 'image/svg+xml' }));
+      out.dtFiles = dt.files.length;
+      const logoIn = d.querySelector('.logo-in');
+      out.hasInput = !!logoIn;
+      if (logoIn) {
+        logoIn.files = dt.files;
+        out.assigned = logoIn.files.length;
+        logoIn.dispatchEvent(new w.Event('change', { bubbles: true }));
+      }
+      await new Promise(r => setTimeout(r, 800));
+      const row0 = d.querySelectorAll('#parties-body tr')[0];
+      out.checkMark = row0 ? row0.innerHTML.includes('\u2713') : 'norow';
+      // trigger a render and see if a logo draws (check via the img cache is not
+      // reachable; check the canvas differs from a no-logo render is overkill -
+      // just report the state)
+      const p = document.createElement('pre');
+      p.id = 'dlurl';
+      p.textContent = d.getElementById('preview-canvas').toDataURL('image/png');
+      document.body.appendChild(p);
+    } catch (e) {
+      out.err = e.message;
+    }
+    document.title = JSON.stringify(out);
+  }, 6000);
+});
+</script>
+</body></html>

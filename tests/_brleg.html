@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/poll/index.html" style="width:1300px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(async () => {
+    try {
+      const w = f.contentWindow, d = f.contentDocument;
+      const sel = d.getElementById('country-select');
+      if (![...sel.options].find(o => o.value === '__brleg')) {
+        document.title = 'NO BRLEG OPTION'; return;
+      }
+      sel.value = '__brleg';
+      sel.dispatchEvent(new w.Event('change'));
+      await new Promise(r => setTimeout(r, 500));
+      const seats = d.getElementById('chart-seats');
+      seats.checked = true;
+      seats.dispatchEvent(new w.Event('change', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 400));
+      const nums = { pl: 99, febrasil: 80, uniao: 60, pp: 55, psd: 45, mdb: 45,
+        prb: 45, pdt: 18, psb: 16, 'psolrede': 16, 'psdbcdadania': 18,
+        'prdsolidariedade': 13, pode: 13, avante: 8, novo: 5, missao: 3, upb: 2 };
+      Object.keys(nums).forEach((pid) => {
+        const el = d.querySelector('.poll-in[data-pid="' + pid + '"]');
+        if (el) { el.value = nums[pid]; el.dispatchEvent(new w.Event('input', { bubbles: true })); }
+      });
+      const h = d.getElementById('heading-input');
+      h.value = 'BRAZIL — 2026 LEGISLATIVE ELECTION';
+      h.dispatchEvent(new w.Event('input', { bubbles: true }));
+      const ti = d.getElementById('title-input');
+      ti.value = 'Chamber of Deputies';
+      ti.dispatchEvent(new w.Event('input', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 1200));
+      const p = document.createElement('pre');
+      p.id = 'dlurl';
+      p.textContent = d.getElementById('preview-canvas').toDataURL('image/png');
+      document.body.appendChild(p);
+      document.title = 'BRLEG OK';
+    } catch (e) {
+      document.title = 'ERR ' + e.message;
+    }
+  }, 6000);
+});
+</script>
+</body></html>

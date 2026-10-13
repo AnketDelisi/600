@@ -68,29 +68,29 @@ def norm_label(s):
 SPLIT = {"istanbul": "İstanbul", "ankara": "Ankara", "izmir": "İzmir",
          "bursa": "Bursa"}
 META = {
-    "akp": ("AKP", "Adalet ve Kalkınma Partisi", "#FF8700",
+    "akp": ("AKP", "Adalet ve Kalkınma Partisi", "#fda000",
             "Conservatism, Right-wing populism"),
-    "chp": ("CHP", "Cumhuriyet Halk Partisi", "#E30613",
+    "chp": ("CHP", "Cumhuriyet Halk Partisi", "#ED1C24",
             "Social democracy, Kemalism"),
-    "mhp": ("MHP", "Milliyetçi Hareket Partisi", "#870000",
+    "mhp": ("MHP", "Milliyetçi Hareket Partisi", "#C83737",
             "Ultranationalism, Turkish nationalism"),
-    "iyi": ("İYİ", "İYİ Parti", "#40B4E5",
+    "iyi": ("İYİ", "İYİ Parti", "#3db5e6",
             "Nationalism, Liberal conservatism"),
-    "dem": ("DEM", "Halkların Eşitlik ve Demokrasi Partisi", "#91007b",
+    "dem": ("DEM", "Halkların Eşitlik ve Demokrasi Partisi", "#734B9C",
             "Kurdish nationalism, Democratic socialism"),
-    "yrp": ("YRP", "Yeniden Refah Partisi", "#ED1D24",
+    "yrp": ("YRP", "Yeniden Refah Partisi", "#474647",
             "Islamism, National conservatism"),
-    "zp": ("ZP", "Zafer Partisi", "#404040",
+    "zp": ("ZP", "Zafer Partisi", "#373736",
            "Turkish nationalism, Anti-immigration"),
-    "tip": ("TİP", "Türkiye İşçi Partisi", "#b20309",
+    "tip": ("TİP", "Türkiye İşçi Partisi", "#BE0A11",
             "Communism, Socialism"),
-    "a": ("A", "Anahtar Parti", "#072654",
+    "a": ("A", "Anahtar Parti", "#192B4F",
           "Turkish nationalism, Conservatism"),
     "yep": ("YEP", "Yeni Parti", "#ED1C24",
             "Social democracy, Kemalism"),
-    "saadet": ("SAADET", "Saadet Partisi", "#CF3338",
+    "saadet": ("SAADET", "Saadet Partisi", "#FF2E84",
                "Islamism, National conservatism"),
-    "bbp": ("BBP", "Büyük Birlik Partisi", "#ED1C24",
+    "bbp": ("BBP", "Büyük Birlik Partisi", "#CC5252",
             "Turkish nationalism, Islamism"),
 }
 LOGOS = {"akp": "AKP.svg", "chp": "CHP.svg", "mhp": "MHP.svg",
@@ -176,9 +176,14 @@ def fetch_geo(force=False):
 
 def parse_province_table(html):
     """The per-province article: {district_key: {party: votes}} plus the
-    Bölge seats if the province is split. Returns (rows, n_bolge)."""
+    Bölge seats if the province is split. Returns (rows, n_bolge, compo,
+    mv_rows): compo maps the Bölge number to its ilçe list (the article's
+    per-Bölge ilçe tables = the official YSK compositions), mv_rows the
+    per-party seat counts."""
     soup = BeautifulSoup(html, "lxml")
     rows, bolge = {}, 0
+    compo = {}
+    mv_rows = {}
     cur = None
     for el in soup.find_all(["h2", "h3", "h4", "table"]):
         if el.name != "table":
@@ -191,6 +196,15 @@ def parse_province_table(html):
         if len(el.find_all("tr")) < 5:
             continue
         grid = expand_grid(el)
+        # the per-Bölge ilçe table: header starts with "Partiler"
+        if cur and grid and (grid[0][0] or "").strip().lower().startswith(
+                ("partiler", "partİler")):
+            names = [re.sub(r"\[[^\]]*\]", "", x).strip()
+                     for x in grid[0][1:]]
+            names = [x for x in names if x and "toplam" not in x.lower()]
+            if names:
+                compo[cur] = names
+            continue
         # the result table's header is a few rows down (voter counts first)
         hrow = None
         for ri in range(min(6, len(grid))):
@@ -200,19 +214,22 @@ def parse_province_table(html):
                 break
         if hrow is None:
             continue
-        ci = gi = None
+        ci = gi = mi = None
         for i, h in enumerate(grid[hrow]):
             hu = h.upper()
             if "ÇEVRE" in hu and ci is None:
                 ci = i
             if ("GÜMRÜK" in hu or "YURT" in hu) and gi is None:
                 gi = i
+            if hu.strip() in ("MV SAYISI", "MV") and mi is None:
+                mi = i
         if ci is None or gi is None:
             continue
         key = "b%d" % cur if cur else "all"
         if key in rows:
             continue
         votes = {}
+        mvs = {}
         for row in grid[hrow + 1:]:
             if len(row) <= max(ci, gi):
                 continue
@@ -228,9 +245,12 @@ def parse_province_table(html):
             v = num(row[ci]) + num(row[gi])
             if v:
                 votes[label] = votes.get(label, 0) + v
+            if mi is not None and mi < len(row):
+                mvs[label] = mvs.get(label, 0) + num(row[mi])
         if len(votes) >= 5:
             rows[key] = votes
-    return rows, bolge
+            mv_rows[key] = mvs
+    return rows, bolge, compo, mv_rows
 
 
 def main():
@@ -279,14 +299,17 @@ def main():
         d = "t" if w[-1] in VOICELESS else "d"
         return d + v
 
-    districts = {}   # allocation districts: 77 provinces + 8 sub-districts
+    districts = {}   # allocation districts: 77 provinces + 10 sub-districts
     geo_shares = {}  # per-district party shares (akp..bbp; others implied)
+    compo_map = {}   # split provinces: Bölge -> ilçe list
+    mvs_by_prov = {}  # (province, bölge) -> per-party 2023 seats
+    mv2023 = {}      # district -> {party: seats} (the 2023 real result)
     for pid, nm in sorted(prov_names.items()):
         title = "%s'%s 2023 Türkiye cumhurbaşkanlığı ve genel seçimleri" \
             % (nm, locative(nm))
         from urllib.parse import quote
         url = "https://tr.wikipedia.org/wiki/" + quote(title)
-        rows, n_bolge = parse_province_table(
+        rows, n_bolge, compo, mvs = parse_province_table(
             fetch(url, "tr_prov_%s.html" % pid, force))
         if pid in SPLIT and n_bolge >= 2:
             # sub-districts from the per-Bölge tables; the shares use the
@@ -297,7 +320,6 @@ def main():
                 assert v, "%s b%d missing" % (pid, bi)
             listed_parent = sum(sum(v.values()) for v in subs.values())
             scale = prov[pid]["valid"] / max(1, listed_parent)
-            merged, mw = {}, 0
             for bi, v in subs.items():
                 key = "%s-%s" % (pid, "i" * bi)
                 valid = sum(v.values()) * scale
@@ -305,15 +327,14 @@ def main():
                                    for k in ("akp", "chp", "mhp", "iyi",
                                              "dem", "yrp", "zp", "tip",
                                              "bbp")}
-                for k in ("akp", "chp", "mhp", "iyi", "dem", "yrp", "zp",
-                          "tip", "bbp"):
-                    merged[k] = merged.get(k, 0) + v.get(k, 0)
-                mw += sum(v.values())
-            # the province-wide shape for the map (the sub-districts stay
-            # the allocation units)
-            geo_shares[pid] = {k: round(100 * merged.get(k, 0) / mw, 2)
-                               for k in ("akp", "chp", "mhp", "iyi", "dem",
-                                         "yrp", "zp", "tip", "bbp")}
+            # Güdül moved from Ankara II to Ankara III (2022 change)
+            if pid == "ankara" and 2 in compo and "Güdül" in compo[2]:
+                compo[2].remove("Güdül")
+                compo.setdefault(3, []).append("Güdül")
+            compo_map[pid] = compo
+            for bi, v in mvs.items():
+                if bi != "all":
+                    mvs_by_prov[(pid, int(bi[1:]))] = v
             districts[pid] = None  # seat count from the sub-rows below
         else:
             v = rows.get("all") or rows.get("b1")
@@ -323,6 +344,8 @@ def main():
                                for k in ("akp", "chp", "mhp", "iyi",
                                          "dem", "yrp", "zp", "tip", "bbp")}
             districts[pid] = prov[pid]["seats"]
+            mv2023[pid] = {k: v for k, v in mvs.get("all", mvs.get("b1", {}))
+                           .items() if v}
 
     # ---- the sub-district seats from the main table ----
     sub_seats = {}
@@ -347,6 +370,14 @@ def main():
             if k.startswith(pid + "-"):
                 districts[k] = v
 
+    # the sub-district 2023 seats (per-Bölge MV)
+    for pid in SPLIT:
+        for bi in range(1, 4):
+            key = "%s-%s" % (pid, "i" * bi)
+            mv = mvs_by_prov.get((pid, bi))
+            if key in districts and mv:
+                mv2023[key] = {k: v for k, v in mv.items() if v}
+
     # ---- proxies: YEP = CHP, A = 75% İYİ + 25% AKP ----
     for key, sh in geo_shares.items():
         sh["yep"] = sh["chp"]        # Yeni Parti is a CHP split
@@ -370,10 +401,55 @@ def main():
             wsum[p] = wsum.get(p, 0) + (sh.get(p, 0) or 0) * w
     NAT = {p: round(wsum[p] / totw, 2) for p in PARTIES}
 
+    # ---- electoral-district geometry: dissolve the ilçeler per Bölge ----
+    from shapely.geometry import shape, mapping
+    from shapely.ops import unary_union
+    adm2 = json.loads(fetch("https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
+                            "gadm41_TUR_2.json", "tr_ilceler.geojson",
+                            force))
+    rev = {}
+    for gname, tname in ALIAS.items():
+        rev.setdefault(tname, gname)
+    ILCE_ALIAS = {"eyupsultan": "eyup", "kahramankazan": "kazan",
+                  "sereflikochisar": "sultankochisar"}
+    sub_feats = []
+    for pid in SPLIT:
+        tname = prov_names[pid]
+        gadm_prov = rev.get(tname, tname)
+        by_name = {}
+        for f in adm2["features"]:
+            if f["properties"]["NAME_1"] == gadm_prov:
+                by_name[fold(f["properties"]["NAME_2"])] = f
+        compo = compo_map[pid]
+        for bi in sorted(compo):
+            geoms = []
+            for nm in compo[bi]:
+                k2 = fold(nm)
+                k2 = ILCE_ALIAS.get(k2, k2)
+                f = by_name.get(k2)
+                if f is None:
+                    print("  WARN %s b%d: ilçe %s missing in GADM"
+                          % (pid, bi, nm))
+                    continue
+                geoms.append(shape(f["geometry"]))
+            assert geoms, "%s b%d: no geometry" % (pid, bi)
+            u = unary_union(geoms)
+            roman = ["", "I", "II", "III"][bi]
+            sub_feats.append({"type": "Feature",
+                              "properties": {"NAME_1": "%s-%s"
+                                             % (tname, roman)},
+                              "geometry": mapping(u)})
+    print("electoral-district polygons:", len(sub_feats))
+    assert len(sub_feats) == 10
+    map_gj = {"type": "FeatureCollection",
+              "features": [f for f in feats
+                           if fold(f["properties"]["NAME_1"]) not in SPLIT]
+              + sub_feats}
+
     # ---- geometry + svg ----
-    geo_norm = os.path.join(CACHE, "tr_provinces_norm.geojson")
+    geo_norm = os.path.join(CACHE, "tr_map_87.geojson")
     with open(geo_norm, "w", encoding="utf8") as fh:
-        json.dump(gj, fh)
+        json.dump(map_gj, fh)
     sys.argv = ["build_map_svg.py", "--geojson", geo_norm,
                 "--name-field", "NAME_1", "--fold", "--attr", "id",
                 "--no-prefix", "--out", OUT_SVG,
@@ -396,10 +472,10 @@ def main():
         walk(geom["coordinates"])
         return min(xs), min(ys), max(xs), max(ys)
 
-    zoom_ids = ["istanbul", "kocaeli"]
-    zoom_feats = [f for f in feats
+    zoom_ids = ["istanbul-i", "istanbul-ii", "istanbul-iii", "kocaeli"]
+    zoom_feats = [f for f in map_gj["features"]
                   if fold(f["properties"]["NAME_1"]) in zoom_ids]
-    assert len(zoom_feats) == 2
+    assert len(zoom_feats) == 4, len(zoom_feats)
     box = [min(bbox(f["geometry"])[0] for f in zoom_feats),
            min(bbox(f["geometry"])[1] for f in zoom_feats),
            max(bbox(f["geometry"])[2] for f in zoom_feats),
@@ -438,6 +514,12 @@ def main():
                                   logo), os.path.join(dst, logo))
         logos[key] = "img/tr/" + logo
 
+    names_map = dict(prov_names)
+    for k in districts:
+        if "-" in k:
+            base = prov_names[k.split("-")[0]]
+            bi = len(k.split("-")[1])
+            names_map[k] = "%s %s" % (base, ["", "I", "II", "III"][bi])
     j = json.dumps
     parties = "\n".join(
         "      %s: { code: '%s', name: '%s', name_en: '%s', color: '%s', "
@@ -467,8 +549,8 @@ def main():
       emek: ['dem', 'tip'],
     },
     blocs: {
-      bloc1: { name: 'Government camp', short: 'GOV', parties: ['akp', 'mhp', 'yrp', 'bbp'], color: '#FF8700' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['chp', 'iyi', 'dem', 'zp', 'tip', 'a', 'yep', 'saadet'], color: '#E30613' },
+      bloc1: { name: 'Government camp', short: 'GOV', parties: ['akp', 'mhp', 'yrp', 'bbp'], color: '#fda000' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['chp', 'iyi', 'dem', 'zp', 'tip', 'a', 'yep', 'saadet'], color: '#ED1C24' },
     },
     logos: {
 %s
@@ -491,19 +573,24 @@ def main():
       // districts (the map still colors the 81 provinces; the four split
       // provinces carry their province-wide shape for the map)
       districts: %s,
+      names: %s,
       gebiete: %s,
       national2021: %s,
       prDistricts: %s,
+      // the real 2023 per-district seat counts (the map's result view)
+      mv2023: %s,
     },
   },
 """ % (parties,
        ', '.join("%s: '%s'" % (k, v) for k, v in logos.items()),
        j(RESULTS23, ensure_ascii=False),
        j(SEATS23, ensure_ascii=False),
-       j({k: k for k in districts}, ensure_ascii=False),
+       j({k: k for k, v in districts.items() if v}, ensure_ascii=False),
+       j(names_map, ensure_ascii=False),
        j(geo_shares, ensure_ascii=False),
        j(NAT, ensure_ascii=False),
-       j({k: v for k, v in districts.items() if v}))
+       j({k: v for k, v in districts.items() if v}),
+       j(mv2023, ensure_ascii=False))
 
     text = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
     m = re.search(r"\n  turkey: \{", text)

@@ -1,0 +1,34 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1400px;height:900px;border:0}</style></head>
+<body>
+<script>localStorage.setItem('600_lang', 'tr');</script>
+<iframe id="f" src="/index.html?c=turkey"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  const w = f.contentWindow, d = f.contentDocument;
+  let err = '';
+  try { w.addEventListener('error', e => { err += e.message + '; '; }); } catch (e) {}
+  const T = (ms) => new Promise(r => setTimeout(r, ms));
+  (async () => {
+    let n = 0;
+    while (n < 200 && !d.querySelector('.parl-btn')) { await T(100); n++; }
+    await T(2000);
+    const mbtn = d.querySelector('button[data-parlview="map"]');
+    if (mbtn) mbtn.click();
+    await T(3000);
+    const box = d.getElementById('map-box');
+    const dots = box ? box.querySelectorAll('.seat-dots circle').length : -1;
+    const paths = box ? box.querySelectorAll('path[id]').length : -1;
+    const res = d.querySelector('button[data-parlmode="2022"]');
+    if (res) res.click();
+    await T(3000);
+    const dots2 = box ? box.querySelectorAll('.seat-dots circle').length : -1;
+    if (box) box.scrollIntoView({ block: 'center' });
+    await T(500);
+    document.title = JSON.stringify({ dots, dots2, paths, err: err || 'none' });
+  })();
+});
+</script>
+</body></html>

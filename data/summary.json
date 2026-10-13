@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T20:55:26Z",
+ "generated": "2026-10-13T13:31:01Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -58,8 +58,8 @@
    "second_pct": 42.8,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 40,
-   "latest_poll": "2026-10-08"
+   "poll_count": 42,
+   "latest_poll": "2026-10-12"
   },
   "austria": {
    "name": "Austria",
@@ -130,15 +130,15 @@
    "seats": 150,
    "seat_based": true,
    "leader": "pro",
-   "leader_pct": 28.3,
+   "leader_pct": 28.5,
    "leader_code": "PRO",
    "leader_color": "#E30613",
    "leader_logo": "img/nl/PRO.svg",
    "second": "pvv",
-   "second_pct": 19.4,
+   "second_pct": 19.5,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 3,
+   "poll_count": 2,
    "latest_poll": "2026-10-02"
   },
   "estonia": {
@@ -198,8 +198,8 @@
    "second_pct": null,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 16,
-   "latest_poll": "2026-10-08"
+   "poll_count": 17,
+   "latest_poll": "2026-10-12"
   },
   "germany": {
    "name": "Germany",
@@ -215,11 +215,11 @@
    "leader_color": "#00A2DE",
    "leader_logo": "img/de/AFD.svg",
    "second": "cdu",
-   "second_pct": 19.5,
+   "second_pct": 19.3,
    "last_winner_code": "CDU/CSU",
    "last_winner_color": "#151518",
-   "poll_count": 21,
-   "latest_poll": "2026-10-09"
+   "poll_count": 23,
+   "latest_poll": "2026-10-12"
   },
   "spain": {
    "name": "Spain",
@@ -250,7 +250,7 @@
    "seats": 300,
    "seat_based": false,
    "leader": "nd",
-   "leader_pct": 30.0,
+   "leader_pct": 29.9,
    "leader_code": "ND",
    "leader_color": "#1B5CC7",
    "leader_logo": "img/gr/ND.svg",
@@ -258,8 +258,8 @@
    "second_pct": 16.3,
    "last_winner_code": "ND",
    "last_winner_color": "#1B5CC7",
-   "poll_count": 10,
-   "latest_poll": "2026-09-28"
+   "poll_count": 11,
+   "latest_poll": "2026-10-10"
   },
   "italy": {
    "name": "Italy",
@@ -270,7 +270,7 @@
    "seats": 400,
    "seat_based": false,
    "leader": "fdi",
-   "leader_pct": 27.0,
+   "leader_pct": 27.1,
    "leader_code": "FdI",
    "leader_color": "#03386A",
    "leader_logo": "img/it/FDI.svg",
@@ -278,8 +278,8 @@
    "second_pct": 20.5,
    "last_winner_code": "FdI",
    "last_winner_color": "#03386A",
-   "poll_count": 26,
-   "latest_poll": "2026-10-08"
+   "poll_count": 27,
+   "latest_poll": "2026-10-12"
   },
   "jp": {
    "name": "Japan",
@@ -450,15 +450,15 @@
    "seats": 343,
    "seat_based": false,
    "leader": "lpc",
-   "leader_pct": 46.8,
+   "leader_pct": 46.9,
    "leader_code": "LPC",
    "leader_color": "#EA6D6A",
    "leader_logo": "img/ca/LPC.svg",
    "second": "cpc",
-   "second_pct": 29.9,
+   "second_pct": 29.8,
    "last_winner_code": "LPC",
    "last_winner_color": "#EA6D6A",
-   "poll_count": 8,
+   "poll_count": 7,
    "latest_poll": "2026-10-03"
   },
   "hu": {
@@ -670,7 +670,7 @@
    "seats": 230,
    "seat_based": false,
    "leader": "ps",
-   "leader_pct": 28.1,
+   "leader_pct": 28.0,
    "leader_code": "PS",
    "leader_color": "#FF66FF",
    "leader_logo": "img/pt/PS.svg",
@@ -678,7 +678,7 @@
    "second_pct": 27.8,
    "last_winner_code": "AD",
    "last_winner_color": "#3777BC",
-   "poll_count": 7,
+   "poll_count": 6,
    "latest_poll": "2026-10-07"
   },
   "uk": {
@@ -690,16 +690,16 @@
    "seats": 650,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 27.2,
+   "leader_pct": 27.0,
    "leader_code": "LAB",
    "leader_color": "#E41C3E",
    "leader_logo": "img/uk/LAB.svg",
    "second": "ref",
-   "second_pct": 22.8,
+   "second_pct": 22.6,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 26,
-   "latest_poll": "2026-10-09"
+   "poll_count": 27,
+   "latest_poll": "2026-10-12"
   },
   "nz": {
    "name": "New Zealand",
@@ -715,7 +715,7 @@
    "leader_color": "#D82A20",
    "leader_logo": "img/nz/LAB.svg",
    "second": "nat",
-   "second_pct": 28.0,
+   "second_pct": 27.8,
    "last_winner_code": "NAT",
    "last_winner_color": "#00529F",
    "poll_count": 8,

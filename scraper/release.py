@@ -43,6 +43,17 @@ def main():
         p.write_text(t.replace(old, new), encoding="utf8", newline="")
         print("  %-18s %d refs bumped" % (rel, n))
 
+    # the logo cache-buster must move with the release: a fixed value let a
+    # 404 cached during a deploy window (or an updated logo file) stick
+    # forever at ?v=<old>, so new/updated logos never appeared
+    cfgp = ROOT / "js" / "config.js"
+    cfg = cfgp.read_text(encoding="utf8")
+    cfg2 = re.sub(r"const LOGO_CACHE = '[^']*';",
+                  "const LOGO_CACHE = '%s';" % new, cfg)
+    if cfg2 != cfg:
+        cfgp.write_text(cfg2, encoding="utf8", newline="")
+        print("  %-18s LOGO_CACHE -> %s" % ("js/config.js", new))
+
     r = run("sync_site.py")
     tail = [l for l in r.stdout.strip().splitlines() if l.strip()]
     print("  sync_site: %s" % (tail[-1] if tail else "?"))

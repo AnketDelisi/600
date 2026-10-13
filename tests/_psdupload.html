@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/poll/index.html" style="width:1300px;height:900px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  setTimeout(async () => {
+    const w = f.contentWindow, d = f.contentDocument;
+    const out = {};
+    try {
+      const sel = d.getElementById('country-select');
+      sel.value = '__custom';
+      sel.dispatchEvent(new w.Event('change'));
+      await new Promise(r => setTimeout(r, 500));
+      // fetch the real PSD.svg and upload it into the first custom row
+      const resp = await fetch('/img/br/PSD.svg');
+      const blob = await resp.blob();
+      out.blobSize = blob.size;
+      const file = new w.File([blob], 'PSD.svg', { type: 'image/svg+xml' });
+      const dt = new w.DataTransfer();
+      dt.items.add(file);
+      const logoIn = d.querySelector('.logo-in');
+      logoIn.files = dt.files;
+      logoIn.dispatchEvent(new w.Event('change', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 900));
+      // give the row a number so it shows, and a code
+      const code = d.querySelector('.code-in');
+      code.value = 'PSD';
+      const p = d.querySelector('.poll-in');
+      p.value = 50;
+      p.dispatchEvent(new w.Event('input', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 900));
+      const pre = document.createElement('pre');
+      pre.id = 'dlurl';
+      pre.textContent = d.getElementById('preview-canvas').toDataURL('image/png');
+      document.body.appendChild(pre);
+      out.checkMark = d.querySelectorAll('#parties-body tr')[0].innerHTML.includes('\u2713');
+    } catch (e) {
+      out.err = e.message;
+    }
+    document.title = JSON.stringify(out);
+  }, 6000);
+});
+</script>
+</body></html>

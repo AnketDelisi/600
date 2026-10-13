@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"></head><body>
+<iframe id="f" src="/index.html?c=turkey" style="width:1200px;height=800px;visibility:hidden"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  const w = f.contentWindow;
+  setTimeout(async () => {
+    try {
+      const votes = { akp: 31.2, yep: 22.3, chp: 9.3, dem: 8.9, iyi: 6.8,
+        mhp: 6.0, zp: 5.7, yrp: 3.1, a: 3.0, tip: 1.4, saadet: 0, bbp: 1.0 };
+      const seats = await w.__600_alloc('turkey', votes, 600);
+      const sh1 = await w.__600_districtshares('turkey', 'istanbul-i', votes, false);
+      const sh2 = await w.__600_districtshares('turkey', 'konya', votes, false);
+      const fmt = (o) => o ? Object.keys(o).map(k => k + ':' + (o[k].now || 0).toFixed(1)).join(' ') : 'null';
+      document.title = 'SEATS=' + JSON.stringify(seats)
+        + ' | IST1=' + fmt(sh1) + ' | KONYA=' + fmt(sh2);
+    } catch (e) {
+      document.title = 'ERR ' + e.message;
+    }
+  }, 8000);
+});
+</script>
+</body></html>

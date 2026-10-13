@@ -255,7 +255,7 @@ def add_inset(main_svg, source_svg, ids, width, at, label=None, pad=4):
         paths[m.group(1)] = m.group(2)
     tx, ty = at
     parts = ['<g transform="translate(%.1f,%.1f) scale(%.4f)" '
-             'stroke-width="%.3f">' % (tx, ty, k, 1.0 / k)]
+             'fill="#E5E7EB" stroke-width="%.3f">' % (tx, ty, k, 1.0 / k)]
     n = 0
     for pid in ids:
         if pid in paths:

@@ -1,6 +1,6 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<style>html,body{margin:0}iframe{width:1400px;height:900px;border:0}</style></head>
+<style>html,body{margin:0}iframe{width:1400px;height:3600px;border:0}</style></head>
 <body>
 <script>localStorage.setItem('600_lang', 'tr');</script>
 <iframe id="f" src="/index.html?c=turkey"></iframe>
@@ -21,13 +21,26 @@ f.addEventListener('load', () => {
     const box = d.getElementById('map-box');
     const dots = box ? box.querySelectorAll('.seat-dots circle').length : -1;
     const paths = box ? box.querySelectorAll('path[id]').length : -1;
+    const stats = (b) => {
+      if (!b) return null;
+      const ins = [...b.querySelectorAll('.seat-dots circle')]
+        .filter(c => parseFloat(c.getAttribute('cx')) > 1000);
+      if (!ins.length) return { inset: 0 };
+      const ys = ins.map(c => parseFloat(c.getAttribute('cy')));
+      const rs = ins.map(c => parseFloat(c.getAttribute('r')));
+      return { inset: ins.length, ymin: Math.round(Math.min(...ys)),
+               ymax: Math.round(Math.max(...ys)), rmin: +Math.min(...rs).toFixed(2),
+               rmax: +Math.max(...rs).toFixed(2) };
+    };
+    const s1 = stats(box);
     const res = d.querySelector('button[data-parlmode="2022"]');
     if (res) res.click();
     await T(3000);
     const dots2 = box ? box.querySelectorAll('.seat-dots circle').length : -1;
+    const s2 = stats(box);
     if (box) box.scrollIntoView({ block: 'center' });
     await T(500);
-    document.title = JSON.stringify({ dots, dots2, paths, err: err || 'none' });
+    document.title = JSON.stringify({ dots, dots2, paths, s1, s2, err: err || 'none' });
   })();
 });
 </script>

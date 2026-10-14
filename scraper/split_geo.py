@@ -10,6 +10,7 @@ Usage: python scraper/split_geo.py [--threshold KB]
 """
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -81,6 +82,12 @@ def main():
         m_open = block.find("{", mi)
         m_end = brace_end(block, m_open)
         block = block[:mi] + "\n    map: {}" + block[m_end:]
+        if "map2" in geo:
+            m2 = re.search(r"\n[ \t]*map2: \{", block)
+            if m2:
+                m2_open = block.find("{", m2.start())
+                m2_end = brace_end(block, m2_open)
+                block = block[:m2.start()] + "\n    map2: {}" + block[m2_end:]
         text = text[:i] + block + text[cb_end:]
         moved.append((cc, round(v["size"] / 1024)))
     with open(os.path.join(ROOT, "js", "config.js"), "w",

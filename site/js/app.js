@@ -4856,11 +4856,17 @@ function gaussianSample(rng){
   return Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
 }
 
+function frRunoffPairs(p){
+  return (p.runoffs&&p.runoffs.length)?p.runoffs:[p.runoff];
+}
 function weightedAvgRunoff(polls, cand){
   const frM=firstRoundMAE();
   let wSum=0,wTotal=0;
   for(const p of polls){
-    const v=p.runoff[cand];
+    let v;
+    for(const pr of frRunoffPairs(p)){
+      if(pr&&pr[cand]!==undefined){ v=pr[cand]; break; }
+    }
     if(v===undefined) continue;
     // Runoff weighting: the pollster's measured error in the first round
     // (their final pre-4-Oct poll vs the actual result) when available - the
@@ -4909,7 +4915,7 @@ function runoffForecast(avg, filtered, sim){
   // memoize: the runoff sim is deterministic (seeded) and only depends on the
   // runoff poll set, so cache by date+count+headline values
   const freq={};
-  roPolls.forEach(p=>Object.keys(p.runoff).forEach(c=>{freq[c]=(freq[c]||0)+1}));
+  roPolls.forEach(p=>frRunoffPairs(p).forEach(pr=>Object.keys(pr).forEach(c=>{freq[c]=(freq[c]||0)+1})));
   const freqPair=Object.keys(freq).sort((a,b)=>freq[b]-freq[a]).slice(0,2);
   if(freqPair.length<2) return null;
   // the pairing follows the first round: the projected top two of the
@@ -4921,8 +4927,8 @@ function runoffForecast(avg, filtered, sim){
     const top=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly))
       .slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
     if(top.length>=2&&(avg[top[0]]||0)>0&&(avg[top[1]]||0)>0&&
-       roPolls.some(p=>p.runoff[top[0]]!==undefined&&
-                       p.runoff[top[1]]!==undefined)){
+       roPolls.some(p=>frRunoffPairs(p).some(pr=>
+                       pr[top[0]]!==undefined&&pr[top[1]]!==undefined))){
       pair=[top[0],top[1]];
       pairFallback=false;
     }

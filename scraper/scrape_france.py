@@ -288,6 +288,7 @@ def scrape():
                     continue
                 runoff.append({
                     "pollster": pollster, "date": date, "n": n,
+                    "pair": pair,
                     "runoff": {pair[0]: round(va * 100 / total, 1),
                                pair[1]: round(vb * 100 / total, 1)},
                 })
@@ -304,16 +305,21 @@ def scrape():
             tgt["votes"].setdefault(k, v)
         if not tgt["n"] and p["n"]:
             tgt["n"] = p["n"]
-    # merge runoff pairs into the matching first-round poll
+    # merge runoff pairs into the matching first-round poll; every pairing
+    # is kept (France tests many head-to-heads), p.runoff stays the first
+    # for backward compatibility and empty-vote rows are flagged
     for r in runoff:
         key = (r["pollster"].lower(), r["date"])
-        if key in merged:
-            merged[key].setdefault("runoff", r["runoff"])
-        else:
+        if key not in merged:
             merged[key] = {"pollster": r["pollster"], "date": r["date"],
                            "n": r.get("n", 0), "votes": {},
-                           "runoff": r["runoff"],
+                           "runoffOnly": True,
                            "fieldwork_start": r["date"]}
+        tgt = merged[key]
+        tgt.setdefault("runoff", r["runoff"])
+        pairs = tgt.setdefault("runoffs", [])
+        if not any(set(x["pair"]) == set(r["pair"]) for x in pairs):
+            pairs.append({"pair": r["pair"], **r["runoff"]})
     polls = list(merged.values())
     for p in polls:
         p["country"] = COUNTRY

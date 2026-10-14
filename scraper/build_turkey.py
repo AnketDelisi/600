@@ -745,7 +745,8 @@ def main():
     TWIN = {"giresun-sultankarahisar": "giresun-sebinkarahisar",
             "malatya-arapkir": "malatya-arapgir",
             "malatya-poturge": "malatya-puturge",
-            "zonguldak-eregli": "zonguldak-kdzeregli"}
+            "zonguldak-eregli": "zonguldak-kdzeregli",
+            "istanbul-princeislands": "istanbul-adalar"}
     _nf = 0
     for k in sorted(ilce_names):
         if k in geo_shares:
@@ -757,8 +758,21 @@ def main():
             _pfx = k.split("-")[0]
             _orph = [g2 for g2 in geo_shares
                      if g2.startswith(_pfx + "-") and g2 not in ilce_names]
-            if len(_orph) == 1:
-                src = _orph[0]
+
+            def _lcs(a2, b2):
+                best = 0
+                for i3 in range(len(a2)):
+                    for j3 in range(best + 1, len(a2) - i3 + 1):
+                        if a2[i3:i3 + j3] in b2:
+                            best = j3
+                        else:
+                            break
+                return best
+
+            if _orph:
+                _cand = max(_orph, key=lambda o2: _lcs(k, o2))
+                if _lcs(k, _cand) >= 4:
+                    src = _cand
         if src in geo_shares:
             geo_shares[k] = dict(geo_shares[src])
             ilce_dist[k] = ilce_dist.get(src, k.split("-")[0])

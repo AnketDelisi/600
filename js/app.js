@@ -2191,7 +2191,7 @@ function renderParliament(avg){
       ${UP?`<button class="map-toggle-btn parl-btn${PARL_MODE==='upper'?' active':''}" data-parlmode="upper">${UP.label||t('Upper chamber','\u00dcst meclis')}</button>`:''}
       ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY&&!bigMap?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
-      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
+      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${MAP_LAYER===1?(mapConf.label||T.map||'layer 1'):(COUNTRIES[COUNTRY].map2.label||'layer 2')}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
@@ -3044,11 +3044,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   paths.forEach(ph=>{
     // invisible district outlines under an ilçe base map: only pushed as
     // seat-circle anchors (dotAnchor parses their d)
-    if((ph.getAttribute('class')||'')==='seat-area'){
-      const aid=ph.getAttribute('id');
-      if(aid&&conf.prDistricts) mapped.push({nr:aid,ph});
-      return;
-    }
+    if((ph.getAttribute('class')||'')==='seat-area') return;
     let nr=null;
     if(conf.selector==='class'){
       const m=/wk(\d+)/.exec(ph.getAttribute('class')||'');

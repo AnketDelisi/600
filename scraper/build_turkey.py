@@ -266,6 +266,27 @@ def parse_ilce_tables(html):
     (the presidential tables' rows are candidates, they do not match)."""
     soup = BeautifulSoup(html, "lxml")
     votes, totals = {}, {}
+    full = {}
+    for k, v in PROV_COLS.items():
+        full[k] = v
+    for full_lab, key in (("dem parti", "dem"), ("yesil sol parti", "dem"),
+                          ("yesilsol", "dem"), ("ysp", "dem"),
+                          ("cumhuriyet halk parti", "chp"),
+                          ("milliyetci hareket parti", "mhp"),
+                          ("turkiye isci parti", "tip"),
+                          ("buyuk birlik parti", "bbp"),
+                          ("yeniden refah partisi", "yrp"),
+                          ("zafer partisi", "zp")):
+        full[full_lab] = key
+
+    def _party(lab):
+        if lab in full:
+            return full[lab]
+        for k, v in full.items():
+            if lab.startswith(k + " "):
+                return v
+        return None
+
     for el in soup.find_all("table"):
         if len(el.find_all("tr")) < 5:
             continue
@@ -282,7 +303,7 @@ def parse_ilce_tables(html):
             continue
         for row in grid[1:]:
             lab = norm_label(row[0]) if row else ""
-            party = PROV_COLS.get(lab)
+            party = _party(lab)
             if party is None and lab == "toplam":
                 for ci, hname in cols:
                     if ci < len(row) and num(row[ci]):
@@ -598,6 +619,8 @@ def main():
         open(OUT_SVG, "w", encoding="utf8", newline="").write(tsvg)
     print("ilce map:", len(ilce_gj["features"]), "paths +", len(dps),
           "district overlays")
+    import shutil as _sh
+    _sh.copy2(DIST_SVG, os.path.join(ROOT, "img", "turkey_il.svg"))
     # the articles abbreviate some ilçe names (D.Bey, A.Eylül): align the
     # parsed keys with the GADM-derived svg ids within each province
     ids_by_prov = {}
@@ -634,7 +657,8 @@ def main():
            "siirt-tillo": "siirt-aydinlar",
            "afyonkarahisar-sinanpasa": "afyonkarahisar-sincanli",
            "agri-dogubayazit": "agri-dogubeyazit",
-           "antalya-demre": "antalya-kale"}
+           "antalya-demre": "antalya-kale",
+           "zonguldak-kdzeregli": "zonguldak-eregli"}
     _n2 = 0
     for _k, _v in REN.items():
         if _k in geo_shares and _v in ilce_names and _v not in geo_shares:
@@ -661,6 +685,27 @@ def main():
                                      / len(_lst), 2) for _p in _keys}
         ilce_dist[_mk] = _pfx
     print("ilçe renames:", _n2, "merkez merges:", len(_macc))
+
+    # twins for the GADM duplicates + old names, then a centre fallback,
+    # so no svg ilçe is left uncoloured
+    TWIN = {"giresun-sultankarahisar": "giresun-sebinkarahisar",
+            "malatya-arapkir": "malatya-arapgir",
+            "malatya-poturge": "malatya-puturge",
+            "zonguldak-eregli": "zonguldak-kdzeregli"}
+    _nf = 0
+    for k in sorted(ilce_names):
+        if k in geo_shares:
+            continue
+        src = TWIN.get(k) or (k.split("-")[0] + "-merkez")
+        if src in geo_shares:
+            geo_shares[k] = dict(geo_shares[src])
+            ilce_dist[k] = ilce_dist.get(src, k.split("-")[0])
+            _nf += 1
+        elif "-" in k and k.split("-")[0] in geo_shares:
+            geo_shares[k] = dict(geo_shares[k.split("-")[0]])
+            ilce_dist[k] = k.split("-")[0]
+            _nf += 1
+    print("ilçe fills:", _nf)
 
 
     import shutil
@@ -745,6 +790,7 @@ def main():
       proxyParties: ['a', 'yep', 'saadet'],
       ilceDistrict: %s,
     },
+    map2: { svg: 'img/turkey_il.svg' },
   },
 """ % (parties,
        ', '.join("%s: '%s'" % (k, v) for k, v in logos.items()),

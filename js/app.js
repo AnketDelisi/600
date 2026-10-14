@@ -597,6 +597,20 @@ async function loadData(){
     SCRAPED_AT=pollsJson.scraped_at||null;
     REGIONAL_AVG=pollsJson.regional||{};
     META=metaJson;
+    // big country maps live in their own JSON (config.js stays small);
+    // countries with small maps keep the data inline and skip this fetch
+    try{
+      const cc=COUNTRIES[COUNTRY];
+      if(cc&&(!cc.map||!Object.keys(cc.map).length)){
+        const r=await fetch(base+'data/'+COUNTRY+'/geo.json');
+        if(r.ok){
+          const gj=await r.json();
+          if(gj.map) cc.map=gj.map;
+          if(gj.map2) cc.map2=gj.map2;
+        }
+      }
+    }catch(e){}
+    // end of loadData body marker
   }catch(e){
     console.error('Failed to load data:',e);
   }

@@ -114,6 +114,15 @@ async function main() {
           throw new Error('missing map file: ' + f);
         }
       }
+      // a split country must still carry real map data after the geo merge
+      if (fs.existsSync(path.join(ROOT, 'data', cc, 'geo.json'))) {
+        const dataKeys = ['gebiete', 'districts', 'wkResults',
+          'constituencies', 'results2022'];
+        const mc2 = conf.map || {};
+        const has = (mc2.svg && dataKeys.some((k) => mc2[k]
+          && Object.keys(mc2[k]).length > 0));
+        if (!has) throw new Error('geo.json present but the base map is empty');
+      }
     } catch (e) {
       err = e && e.message ? e.message : String(e);
       bad++;

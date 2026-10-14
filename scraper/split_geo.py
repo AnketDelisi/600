@@ -69,6 +69,18 @@ def main():
         geo = {"map": v["map"]}
         if v["map2"] and len(json.dumps(v["map2"])) > 4000:
             geo["map2"] = v["map2"]
+        # never clobber data an earlier run already saved (the config's
+        # stub {} must not overwrite the real map/map2 in geo.json)
+        gp = os.path.join(d, "geo.json")
+        if os.path.exists(gp):
+            with open(gp, encoding="utf8") as fh:
+                prev = json.load(fh)
+            for k in ("map", "map2"):
+                if (not geo.get(k)) and prev.get(k):
+                    geo[k] = prev[k]
+                elif prev.get(k) and geo.get(k) and \
+                        len(json.dumps(prev[k])) > len(json.dumps(geo[k])):
+                    geo[k] = prev[k]
         with open(os.path.join(d, "geo.json"), "w", encoding="utf8") as fh:
             json.dump(geo, fh, ensure_ascii=False)
         # stub the country's map block in place

@@ -89,6 +89,11 @@ jobs:
       - name: Model audit
         run: python scraper/audit.py
 
+      # Boot every country through the app's real forecast/allocator code
+      # (config.js + app.js in Node) so a broken country page never ships.
+      - name: App smoke check
+        run: node scraper/smoke.js
+
       # Poster smoke test: render the shareable poster in headless Chrome
       # (preinstalled on the runner) and assert a real 1600x900@2x PNG comes
       # out. Non-blocking - a flaky browser must not stop the data commit -

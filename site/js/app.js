@@ -2128,10 +2128,9 @@ function projectedSeats(avg){
 // (KR 254, JP 289, UK 650, QC 125, DE 299) it gets its own always-visible
 // section below the arch instead of hiding behind a toggle.
 function isBigMap(){
-  const mc=MAP_CONF();
-  // a map with its own layer toggle (Turkey's il/ilçe) is presented inline
-  // like every other map - the separate card would duplicate it
-  return !!(mc&&!MAP_ONLY&&!mc.map2&&Object.keys(mc.districts||{}).length>=100);
+  // retired: every map presents inline like the rest - the separate
+  // big-map card duplicated the map for 100+ district countries
+  return false;
 }
 
 // The filter provenance line under the arch: which window, which pollsters,

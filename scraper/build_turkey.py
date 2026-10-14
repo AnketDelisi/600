@@ -35,7 +35,7 @@ DIST_SVG = os.path.join(CACHE, "tr_map_87.svg")
 GEOJSON = os.path.join(CACHE, "tr_provinces.geojson")
 ARTICLE = "https://tr.wikipedia.org/wiki/2023_T%C3%BCrkiye_genel_se%C3%A7imleri"
 ATTRIBUTION = ("Sonuçlar: YSK (2023 genel seçimi, tr.wikipedia); "
-               "Geometri: GADM 4.1")
+               "Sınırlar: geoBoundaries (CC-BY 4.0)")
 ALIAS = {"K.Maras": "Kahramanmaraş", "Kinkkale": "Kırıkkale",
          "Zinguldak": "Zonguldak", "Afyon": "Afyonkarahisar",
          # GADM ASCII spellings -> the Turkish names
@@ -523,16 +523,63 @@ def main():
     # ---- electoral-district geometry: dissolve the ilçeler per Bölge ----
     from shapely.geometry import shape, mapping
     from shapely.ops import unary_union
-    adm2 = json.loads(fetch("https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
-                            "gadm41_TUR_2.json", "tr_ilceler.geojson",
-                            force))
+    adm2 = json.loads(fetch(
+        "https://www.geoboundaries.org/api/current/gbOpen/TUR/ADM2/",
+        "gb_tur_adm2_meta.json", force))
+    adm2 = json.loads(fetch(adm2.get("simplifiedGeometryGeoJSON")
+                            or adm2.get("gjDownloadURL"),
+                            "gb_tur_adm2.geojson", force))
+    adm1 = json.loads(fetch(
+        "https://www.geoboundaries.org/api/current/gbOpen/TUR/ADM1/",
+        "gb_tur_adm1_meta.json", force))
+    adm1 = json.loads(fetch(adm1.get("simplifiedGeometryGeoJSON")
+                            or adm1.get("gjDownloadURL"),
+                            "gb_tur_adm1.geojson", force))
+    from shapely.geometry import shape as _shape
+    from shapely.prepared import prep as _prep
+    _p1 = []
+    for f in adm1["features"]:
+        nm = f["properties"].get("shapeName") or ""
+        nm = ALIAS.get(nm, nm)
+        _p1.append((nm, _prep(_shape(f["geometry"]))))
+    _feats = []
+    _lost = 0
+    for f in adm2["features"]:
+        try:
+            g = _shape(f["geometry"])
+            pt = g.representative_point()
+        except Exception:
+            _lost += 1
+            continue
+        prov = None
+        for nm, pp in _p1:
+            if pp.contains(pt):
+                prov = nm
+                break
+        if prov is None:
+            best, best_d = None, 1e9
+            for nm, pp in _p1:
+                d = pp.context.distance(pt)
+                if d < best_d:
+                    best, best_d = nm, d
+            prov = best
+        if not prov:
+            _lost += 1
+            continue
+        _feats.append({"type": "Feature",
+                       "properties": {"NAME_1": prov,
+                                      "NAME_2": f["properties"]
+                                      .get("shapeName") or ""},
+                       "geometry": f["geometry"]})
+    adm2 = {"type": "FeatureCollection", "features": _feats}
+    print("geoBoundaries ilçes:", len(_feats), "lost:", _lost)
     rev = {}
     for gname, tname in ALIAS.items():
         rev.setdefault(tname, gname)
     sub_feats = []
     for pid in SPLIT:
         tname = prov_names[pid]
-        gadm_prov = rev.get(tname, tname)
+        gadm_prov = tname
         by_name = {}
         for f in adm2["features"]:
             if f["properties"]["NAME_1"] == gadm_prov:
@@ -578,9 +625,7 @@ def main():
     bm.main()
 
     # the visible base map is ilçe-level; ids = fold(province)-fold(ilçe)
-    adm2 = json.loads((CACHE / "tr_ilceler.geojson").read_text(encoding="utf8")) \
-        if hasattr(CACHE, "read_text") else json.load(
-            open(os.path.join(CACHE, "tr_ilceler.geojson"), encoding="utf8"))
+    # adm2 already normalised above
     ilce_gj = {"type": "FeatureCollection", "features": []}
     ilce_names = {}
     for f in adm2["features"]:
@@ -771,7 +816,8 @@ def main():
       seats: %s,
     },
     map: {
-      svg: 'img/turkey.svg',
+      svg: 'img/turkey_il.svg',
+      label: 'İL HARİTASI',
       selector: 'id',
       swingMethod: 'proportional',
       // the 85 allocation districts: the 77 single-district provinces + the
@@ -790,7 +836,7 @@ def main():
       proxyParties: ['a', 'yep', 'saadet'],
       ilceDistrict: %s,
     },
-    map2: { svg: 'img/turkey_il.svg' },
+    map2: { svg: 'img/turkey.svg', label: 'İLÇE HARİTASI' },
   },
 """ % (parties,
        ', '.join("%s: '%s'" % (k, v) for k, v in logos.items()),

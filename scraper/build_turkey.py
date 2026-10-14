@@ -202,7 +202,7 @@ def parse_province_table(html):
             names = [re.sub(r"\[[^\]]*\]", "", x).strip()
                      for x in grid[0][1:]]
             names = [x for x in names if x and "toplam" not in x.lower()]
-            if names:
+            if names and cur not in compo:
                 compo[cur] = names
             continue
         # the result table's header is a few rows down (voter counts first)
@@ -370,6 +370,42 @@ def main():
             if k.startswith(pid + "-"):
                 districts[k] = v
 
+    # ---- YSK karari (3 Mart 2026): the per-province seats from the 2025
+    # nufus (AA 3847431). The old article tables still show the 2023 numbers
+    YSK26 = {"adana": 15, "adiyaman": 5, "afyonkarahisar": 6, "agri": 4,
+             "amasya": 3, "ankara": 37, "antalya": 18, "artvin": 2,
+             "aydin": 8, "balikesir": 9, "bilecik": 2, "bingol": 3,
+             "bitlis": 3, "bolu": 3, "burdur": 3, "bursa": 21,
+             "canakkale": 4, "cankiri": 2, "corum": 4, "denizli": 7,
+             "diyarbakir": 12, "edirne": 4, "elazig": 5, "erzincan": 2,
+             "erzurum": 5, "eskisehir": 7, "gaziantep": 14, "giresun": 4,
+             "gumushane": 2, "hakkari": 3, "hatay": 10, "isparta": 4,
+             "mersin": 13, "istanbul": 96, "izmir": 28, "kars": 3,
+             "kastamonu": 3, "kayseri": 10, "kirklareli": 3, "kirsehir": 2,
+             "kocaeli": 14, "konya": 15, "kutahya": 4, "malatya": 6,
+             "manisa": 10, "kahramanmaras": 8, "mardin": 6, "mugla": 8,
+             "mus": 3, "nevsehir": 3, "nigde": 3, "ordu": 6, "rize": 3,
+             "sakarya": 8, "samsun": 9, "siirt": 3, "sinop": 2, "sivas": 5,
+             "tekirdag": 8, "tokat": 5, "trabzon": 6, "tunceli": 2,
+             "sanliurfa": 15, "usak": 3, "van": 8, "yozgat": 3,
+             "zonguldak": 5, "aksaray": 4, "bayburt": 1, "karaman": 3,
+             "kirikkale": 3, "batman": 5, "sirnak": 4, "bartin": 2,
+             "ardahan": 2, "igdir": 2, "yalova": 3, "karabuk": 2,
+             "kilis": 2, "osmaniye": 4, "duzce": 3}
+    for pid, n in YSK26.items():
+        prov[pid]["seats"] = n
+        if pid not in SPLIT:
+            districts[pid] = n
+    # the split provinces: provincial totals are known, the bolge split is
+    # apportioned on the 2023 bolge seats (largest remainder): Ankara +1
+    # -> I, Istanbul -2 -> II -1 + III -1, Bursa +1 -> I (larger pop)
+    for k, v in (("ankara-i", 14), ("ankara-ii", 11), ("ankara-iii", 12),
+                 ("istanbul-i", 34), ("istanbul-ii", 27), ("istanbul-iii", 35),
+                 ("izmir-i", 14), ("izmir-ii", 14),
+                 ("bursa-i", 11), ("bursa-ii", 10)):
+        districts[k] = v
+    assert sum(v for v in districts.values() if v) == 600, sum(v for v in districts.values() if v)
+
     # the sub-district 2023 seats (per-Bölge MV)
     for pid in SPLIT:
         for bi in range(1, 4):
@@ -411,6 +447,7 @@ def main():
     for gname, tname in ALIAS.items():
         rev.setdefault(tname, gname)
     ILCE_ALIAS = {"eyupsultan": "eyup", "kahramankazan": "kazan",
+                  "kkazan": "kazan", "khamam": "kizilcahamam",
                   "sereflikochisar": "sultankochisar"}
     sub_feats = []
     for pid in SPLIT:
@@ -433,7 +470,9 @@ def main():
                     continue
                 geoms.append(shape(f["geometry"]))
             assert geoms, "%s b%d: no geometry" % (pid, bi)
-            u = unary_union(geoms)
+            # close the GADM inter-ilçe gaps: buffer out, merge, buffer back
+            u = unary_union([g.buffer(0.0006) for g in geoms])
+            u = u.buffer(-0.0006)
             roman = ["", "I", "II", "III"][bi]
             sub_feats.append({"type": "Feature",
                               "properties": {"NAME_1": "%s-%s"

@@ -2918,6 +2918,24 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
   const NS='http://www.w3.org/2000/svg';
   const g=document.createElementNS(NS,'g');
   g.setAttribute('class','seat-dots');
+  // the map svg may carry transformed groups (the İstanbul+Kocaeli inset):
+  // the dots are appended to the root, so their positions/sizes must be
+  // mapped through each path's cumulative transform
+  let rootM=null;
+  try{ const sm=svg.getScreenCTM(); if(sm) rootM=sm.inverse(); }catch(e){}
+  const pathM=(ph)=>{
+    try{
+      const pm=ph.getScreenCTM();
+      if(rootM&&pm) return rootM.multiply(pm);
+    }catch(e){}
+    return null;
+  };
+  const toRoot=(mt,x,y)=>{
+    if(!mt) return [x,y];
+    const p=svg.createSVGPoint(); p.x=x; p.y=y;
+    const q=p.matrixTransform(mt);
+    return [q.x,q.y];
+  };
   mapped.forEach(({nr,ph})=>{
     const list=districtSeatSplit(nr, avg, resultMode, conf);
     if(!list||!list.length) return;
@@ -2932,11 +2950,16 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
     const r=Math.max(1.1,Math.min(4.2,fit));
     const sp=2.15*r;
     const x0=anc.px-(cols-1)*sp/2, y0=anc.py-(rows-1)*sp/2;
+    const mt=pathM(ph);
+    let sc=1;
+    try{ const pm=ph.getScreenCTM(); if(rootM&&pm) sc=Math.hypot(pm.a,pm.b)||1; }catch(e){}
+    const rRoot=Math.max(sc<0.5?2.2:0.6,Math.min(4.2,r*sc));
     list.forEach((p,i)=>{
+      const [cx,cy]=toRoot(mt,x0+(i%cols)*sp, y0+Math.floor(i/cols)*sp);
       const c=document.createElementNS(NS,'circle');
-      c.setAttribute('cx',(x0+(i%cols)*sp).toFixed(2));
-      c.setAttribute('cy',(y0+Math.floor(i/cols)*sp).toFixed(2));
-      c.setAttribute('r',r.toFixed(2));
+      c.setAttribute('cx',cx.toFixed(2));
+      c.setAttribute('cy',cy.toFixed(2));
+      c.setAttribute('r',rRoot.toFixed(2));
       c.setAttribute('fill',(PARTY_META[p]&&PARTY_META[p].color)||'#888');
       c.setAttribute('stroke','#ffffff');
       c.setAttribute('stroke-width','0.7');

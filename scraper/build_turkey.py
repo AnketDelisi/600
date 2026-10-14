@@ -751,6 +751,14 @@ def main():
         if k in geo_shares:
             continue
         src = TWIN.get(k) or (k.split("-")[0] + "-merkez")
+        if src not in geo_shares and "-" in k:
+            # geoBoundaries/English or modern name vs the article's: if the
+            # province has exactly one orphaned data key, it is the twin
+            _pfx = k.split("-")[0]
+            _orph = [g2 for g2 in geo_shares
+                     if g2.startswith(_pfx + "-") and g2 not in ilce_names]
+            if len(_orph) == 1:
+                src = _orph[0]
         if src in geo_shares:
             geo_shares[k] = dict(geo_shares[src])
             ilce_dist[k] = ilce_dist.get(src, k.split("-")[0])

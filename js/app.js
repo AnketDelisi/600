@@ -2129,7 +2129,9 @@ function projectedSeats(avg){
 // section below the arch instead of hiding behind a toggle.
 function isBigMap(){
   const mc=MAP_CONF();
-  return !!(mc&&!MAP_ONLY&&Object.keys(mc.districts||{}).length>=100);
+  // a map with its own layer toggle (Turkey's il/ilçe) is presented inline
+  // like every other map - the separate card would duplicate it
+  return !!(mc&&!MAP_ONLY&&!mc.map2&&Object.keys(mc.districts||{}).length>=100);
 }
 
 // The filter provenance line under the arch: which window, which pollsters,

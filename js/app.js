@@ -2203,7 +2203,7 @@ function renderParliament(avg){
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?LAST_ELECTION.date.slice(0,4)+' '+T.result:t('projected winner','tahmini kazanan'))}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
-        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?Object.keys(mapConf.districts).length:''} ${t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):t('district winner','b\u00f6lge kazanan\u0131')}`));
+        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?(mapConf.ilceDistrict?Object.keys(mapConf.ilceDistrict).length:Object.keys(mapConf.districts).length):''} ${mapConf&&mapConf.ilceDistrict?t('il\u00e7eler','il\u00e7e'):t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):(mapConf&&mapConf.ilceDistrict?t('il\u00e7e winner','il\u00e7e kazanan\u0131'):t('district winner','b\u00f6lge kazanan\u0131'))}`));
   const archCap=(PARL_MODE==='upper'
       ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yaklaşık model — üst meclisin kendi sınırları/listeleri farklıdır')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
@@ -2922,6 +2922,44 @@ function dotAnchor(ph){
 // Seat circles: one dot per seat inside each multi-member district, coloured
 // by the party that won it and grouped in a compact grid at the district's
 // anchor point.
+function zoomProvince(svg, box, ph){
+  const id=ph.getAttribute('id')||'';
+  const prov=id.split('-')[0];
+  if(!prov) return;
+  const all=svg.querySelectorAll('path[id^="'+prov+'-"]');
+  let x0=1e9, y0=1e9, x1=-1e9, y1=-1e9, any=false;
+  all.forEach(p2=>{
+    const b2=p2.getBBox();
+    if(b2.width||b2.height){
+      any=true;
+      if(b2.x<x0)x0=b2.x; if(b2.y<y0)y0=b2.y;
+      if(b2.x+b2.width>x1)x1=b2.x+b2.width;
+      if(b2.y+b2.height>y1)y1=b2.y+b2.height;
+    }
+  });
+  if(!any) return;
+  if(!svg.dataset.ovb) svg.dataset.ovb=svg.getAttribute('viewBox')||'';
+  const pad=Math.max(3,(x1-x0)*0.04);
+  svg.setAttribute('viewBox', (x0-pad).toFixed(1)+' '+(y0-pad).toFixed(1)
+    +' '+((x1-x0)+2*pad).toFixed(1)+' '+((y1-y0)+2*pad).toFixed(1));
+  let back=box.querySelector('.map-zoom-back');
+  if(!back){
+    back=document.createElement('button');
+    back.type='button';
+    back.className='map-zoom-back';
+    back.style.cssText='position:absolute;top:6px;left:6px;z-index:6;'
+      +'padding:4px 10px;font:700 11px inherit;border:1.5px solid '
+      +'currentColor;background:#fff;color:#000;cursor:pointer';
+    back.textContent='\u25C0 T\u00FCrkiye';
+    back.addEventListener('click',()=>{
+      svg.setAttribute('viewBox', svg.dataset.ovb||'');
+      back.style.display='none';
+    });
+    box.appendChild(back);
+  }
+  back.style.display='';
+}
+
 function drawSeatDots(svg, mapped, avg, resultMode, conf){
   const NS='http://www.w3.org/2000/svg';
   const g=document.createElementNS(NS,'g');
@@ -3004,6 +3042,13 @@ async function renderMapInto(box, avg, resultMode, confOverride){
     return {gArr, name};
   };
   paths.forEach(ph=>{
+    // invisible district outlines under an ilçe base map: only pushed as
+    // seat-circle anchors (dotAnchor parses their d)
+    if((ph.getAttribute('class')||'')==='seat-area'){
+      const aid=ph.getAttribute('id');
+      if(aid&&conf.prDistricts) mapped.push({nr:aid,ph});
+      return;
+    }
     let nr=null;
     if(conf.selector==='class'){
       const m=/wk(\d+)/.exec(ph.getAttribute('class')||'');
@@ -3084,7 +3129,8 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       let rows=PARTY_ORDER.slice().filter(p=>!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{
         const s=shares[p];
         if(!s) return '';
-        const pSeats=districtPartySeats(nr,p,avg,resultMode);
+        const seatNr=(conf.ilceDistrict&&conf.ilceDistrict[nr])||nr;
+        const pSeats=districtPartySeats(seatNr,p,avg,resultMode);
         // hide parties at 0.0% (unless they still hold a seat pill)
         if(!((resultMode?s.past:s.now)>=0.05||pSeats>0)) return '';
         const delta=s.now-s.past;
@@ -3131,6 +3177,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       ph.style.opacity='';
       tooltip.style.display='none';
     });
+    ph.addEventListener('click',()=>zoomProvince(svg, box, ph));
   });
   svg.addEventListener('mousemove',e=>{
     const rect=box.getBoundingClientRect();

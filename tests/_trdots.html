@@ -17,7 +17,12 @@ f.addEventListener('load', () => {
     await T(2000);
     const mbtn = d.querySelector('button[data-parlview="map"]');
     if (mbtn) mbtn.click();
-    await T(3000);
+    let n2 = 0;
+    while (n2 < 120 && !(d.getElementById('map-box')
+           && d.getElementById('map-box').querySelectorAll('path[id]').length)) {
+      await T(500); n2++;
+    }
+    await T(1500);
     const box = d.getElementById('map-box');
     const dots = box ? box.querySelectorAll('.seat-dots circle').length : -1;
     const paths = box ? box.querySelectorAll('path[id]').length : -1;
@@ -33,6 +38,20 @@ f.addEventListener('load', () => {
                rmax: +Math.max(...rs).toFixed(2) };
     };
     const s1 = stats(box);
+    let zoomTest = '';
+    try {
+      const zp = d.querySelector('#map-box path[id^="istanbul-"]');
+      if (zp) {
+        const zsvg = zp.closest('svg');
+        const v0 = zsvg.getAttribute('viewBox');
+        zp.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        await T(300);
+        const v1 = zsvg.getAttribute('viewBox');
+        const bk = d.querySelector('#map-box .map-zoom-back');
+        zoomTest = (v0 !== v1 ? 'zoomed' : 'same') + (bk ? '+btn' : '-btn');
+        if (bk) { bk.click(); await T(200); }
+      } else zoomTest = 'no-path';
+    } catch (e) { zoomTest = 'err:' + e.message; }
     const res = d.querySelector('button[data-parlmode="2022"]');
     if (res) res.click();
     await T(3000);
@@ -40,7 +59,7 @@ f.addEventListener('load', () => {
     const s2 = stats(box);
     if (box) box.scrollIntoView({ block: 'center' });
     await T(500);
-    document.title = JSON.stringify({ dots, dots2, paths, s1, s2, err: err || 'none' });
+    document.title = JSON.stringify({ dots, dots2, paths, s1, s2, zoom: zoomTest, err: err || 'none' });
   })();
 });
 </script>

@@ -3091,11 +3091,15 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const col=PARTY_META[p]?PARTY_META[p].color:'#888';
         const barW=Math.max(2,Math.min(100,s.now));
         const pill=pSeats!==null&&pSeats>0?`<span class="map-tip-pill">${pSeats}</span>`:'';
+        // no delta for parties that did not contest the last election
+        const noDelta=(conf.proxyParties||[]).indexOf(p)>=0;
+        const dTxt=noDelta?'':(delta>0.05?'▲':(delta<-0.05?'▼':''))+(Math.abs(delta)<0.05?'':pct(Math.abs(delta)));
+        const dCls=noDelta?'flat':(delta>0.05?'up':(delta<-0.05?'down':'flat'));
         return `<div class="map-tip-row">
           <span class="map-tip-code" style="color:${col}"${s.name?` title="${s.name}"`:''}>${partyCode(p)}${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
-          <span class="map-tip-delta ${delta>0.05?'up':(delta<-0.05?'down':'flat')}">${delta>0.05?'▲':(delta<-0.05?'▼':'')}${Math.abs(delta)<0.05?'':pct(Math.abs(delta))}</span>
+          <span class="map-tip-delta ${dCls}">${dTxt}</span>
         </div>`;
       }).filter(x=>x).join('');
       // unmodelled 2023 lists (remainder), past column only; shown whenever

@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c199';
+const LOGO_CACHE = '20261005c200';
 
 const COUNTRIES = {
 
@@ -27343,7 +27343,7 @@ saxony_anhalt: {
       bbp: { code: 'BBP', name: 'Büyük Birlik Partisi', name_en: 'Büyük Birlik Partisi', color: '#CC5252', ideology: "Turkish-Islamic Synthesis"},
     },
     order: ['akp', 'chp', 'mhp', 'iyi', 'dem', 'yrp', 'zp', 'tip', 'a', 'yep', 'saadet', 'bbp'],
-    parlOrder: ['yep', 'tip', 'dem', 'chp', 'saadet', 'a', 'iyi', 'bbp', 'zp', 'akp', 'mhp', 'yrp'],
+    parlOrder: ['tip', 'dem', 'yep', 'chp', 'iyi', 'zp', 'saadet', 'a', 'yrp', 'akp', 'bbp', 'mhp'],
     // the ittifak structure (2028 state): an alliance's total counts for
     // the 7% threshold (so MHP/BBP/TİP take seats below it); the seat
     // allocation itself is plain per-district D'Hondt, party by party.

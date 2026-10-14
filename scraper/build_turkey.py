@@ -534,7 +534,7 @@ def main():
 %s
     },
     order: ['akp', 'chp', 'mhp', 'iyi', 'dem', 'yrp', 'zp', 'tip', 'a', 'yep', 'saadet', 'bbp'],
-    parlOrder: ['yep', 'tip', 'dem', 'chp', 'saadet', 'a', 'iyi', 'bbp', 'zp', 'akp', 'mhp', 'yrp'],
+    parlOrder: ['tip', 'dem', 'yep', 'chp', 'iyi', 'zp', 'saadet', 'a', 'yrp', 'akp', 'bbp', 'mhp'],
     // the ittifak structure (2028 state): an alliance's total counts for
     // the 7%% threshold (so MHP/BBP/TİP take seats below it); the seat
     // allocation itself is plain per-district D'Hondt, party by party.

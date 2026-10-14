@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c198';
+const LOGO_CACHE = '20261005c199';
 
 const COUNTRIES = {
 
@@ -27329,18 +27329,18 @@ saxony_anhalt: {
     constituencies: false,        // the 600 seats are allocated per district
     recencyHalfLifeDays: 7,
     parties: {
-      akp: { code: 'AKP', name: 'Adalet ve Kalkınma Partisi', name_en: 'Adalet ve Kalkınma Partisi', color: '#fda000', ideology: "Conservatism, Right-wing populism"},
-      chp: { code: 'CHP', name: 'Cumhuriyet Halk Partisi', name_en: 'Cumhuriyet Halk Partisi', color: '#ED1C24', ideology: "Social democracy, Kemalism"},
-      mhp: { code: 'MHP', name: 'Milliyetçi Hareket Partisi', name_en: 'Milliyetçi Hareket Partisi', color: '#C83737', ideology: "Ultranationalism, Turkish nationalism"},
+      akp: { code: 'AKP', name: 'Adalet ve Kalkınma Partisi', name_en: 'Adalet ve Kalkınma Partisi', color: '#fda000', ideology: "Right-wing populism"},
+      chp: { code: 'CHP', name: 'Cumhuriyet Halk Partisi', name_en: 'Cumhuriyet Halk Partisi', color: '#F08080', ideology: "Social liberalism"},
+      mhp: { code: 'MHP', name: 'Milliyetçi Hareket Partisi', name_en: 'Milliyetçi Hareket Partisi', color: '#C83737', ideology: "Turkish-Islamic Synthesis"},
       iyi: { code: 'İYİ', name: 'İYİ Parti', name_en: 'İYİ Parti', color: '#3db5e6', ideology: "Nationalism, Liberal conservatism"},
       dem: { code: 'DEM', name: 'Halkların Eşitlik ve Demokrasi Partisi', name_en: 'Halkların Eşitlik ve Demokrasi Partisi', color: '#734B9C', ideology: "Kurdish nationalism, Democratic socialism"},
-      yrp: { code: 'YRP', name: 'Yeniden Refah Partisi', name_en: 'Yeniden Refah Partisi', color: '#474647', ideology: "Islamism, National conservatism"},
-      zp: { code: 'ZP', name: 'Zafer Partisi', name_en: 'Zafer Partisi', color: '#373736', ideology: "Turkish nationalism, Anti-immigration"},
-      tip: { code: 'TİP', name: 'Türkiye İşçi Partisi', name_en: 'Türkiye İşçi Partisi', color: '#BE0A11', ideology: "Communism, Socialism"},
-      a: { code: 'A', name: 'Anahtar Parti', name_en: 'Anahtar Parti', color: '#192B4F', ideology: "Turkish nationalism, Conservatism"},
+      yrp: { code: 'YRP', name: 'Yeniden Refah Partisi', name_en: 'Yeniden Refah Partisi', color: '#2E8B57', ideology: "Erbakanism"},
+      zp: { code: 'ZP', name: 'Zafer Partisi', name_en: 'Zafer Partisi', color: '#373736', ideology: "Ultranationalism"},
+      tip: { code: 'TİP', name: 'Türkiye İşçi Partisi', name_en: 'Türkiye İşçi Partisi', color: '#BE0A11', ideology: "Left-wing populism"},
+      a: { code: 'A', name: 'Anahtar Parti', name_en: 'Anahtar Parti', color: '#192B4F', ideology: "Turkish-Islamic Synthesis"},
       yep: { code: 'YENİ', name: 'Yeni Parti', name_en: 'Yeni Parti', color: '#ED1C24', ideology: "Social democracy, Kemalism"},
-      saadet: { code: 'SAADET', name: 'Saadet Partisi', name_en: 'Saadet Partisi', color: '#FF2E84', ideology: "Islamism, National conservatism"},
-      bbp: { code: 'BBP', name: 'Büyük Birlik Partisi', name_en: 'Büyük Birlik Partisi', color: '#CC5252', ideology: "Turkish nationalism, Islamism"},
+      saadet: { code: 'SAADET', name: 'Saadet Partisi', name_en: 'Saadet Partisi', color: '#FF2E84', ideology: "Erbakanism"},
+      bbp: { code: 'BBP', name: 'Büyük Birlik Partisi', name_en: 'Büyük Birlik Partisi', color: '#CC5252', ideology: "Turkish-Islamic Synthesis"},
     },
     order: ['akp', 'chp', 'mhp', 'iyi', 'dem', 'yrp', 'zp', 'tip', 'a', 'yep', 'saadet', 'bbp'],
     parlOrder: ['yep', 'tip', 'dem', 'chp', 'saadet', 'a', 'iyi', 'bbp', 'zp', 'akp', 'mhp', 'yrp'],
@@ -27383,6 +27383,9 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
       prDistricts: {"adana": 15, "adiyaman": 5, "afyonkarahisar": 6, "agri": 4, "aksaray": 4, "amasya": 3, "antalya": 18, "ardahan": 2, "artvin": 2, "aydin": 8, "balikesir": 9, "bartin": 2, "batman": 5, "bayburt": 1, "bilecik": 2, "bingol": 3, "bitlis": 3, "bolu": 3, "burdur": 3, "canakkale": 4, "cankiri": 2, "corum": 4, "denizli": 7, "diyarbakir": 12, "duzce": 3, "edirne": 4, "elazig": 5, "erzincan": 2, "erzurum": 5, "eskisehir": 7, "gaziantep": 14, "giresun": 4, "gumushane": 2, "hakkari": 3, "hatay": 10, "igdir": 2, "isparta": 4, "kahramanmaras": 8, "karabuk": 2, "karaman": 3, "kars": 3, "kastamonu": 3, "kayseri": 10, "kilis": 2, "kirikkale": 3, "kirklareli": 3, "kirsehir": 2, "kocaeli": 14, "konya": 15, "kutahya": 4, "malatya": 6, "manisa": 10, "mardin": 6, "mersin": 13, "mugla": 8, "mus": 3, "nevsehir": 3, "nigde": 3, "ordu": 6, "osmaniye": 4, "rize": 3, "sakarya": 8, "samsun": 9, "sanliurfa": 15, "siirt": 3, "sinop": 2, "sirnak": 4, "sivas": 5, "tekirdag": 8, "tokat": 5, "trabzon": 6, "tunceli": 2, "usak": 3, "van": 8, "yalova": 3, "yozgat": 3, "zonguldak": 5, "istanbul-i": 35, "istanbul-ii": 25, "istanbul-iii": 36, "ankara-i": 13, "ankara-ii": 11, "ankara-iii": 13, "izmir-i": 14, "izmir-ii": 14, "bursa-i": 11, "bursa-ii": 10},
       // the real 2023 per-district seat counts (the map's result view)
       mv2023: {"adana": {"akp": 5, "mhp": 2, "chp": 5, "iyi": 2, "dem": 1}, "adiyaman": {"akp": 4, "chp": 1}, "afyonkarahisar": {"akp": 3, "mhp": 1, "chp": 1, "iyi": 1}, "agri": {"dem": 3, "akp": 1}, "aksaray": {"akp": 2, "mhp": 1, "iyi": 1}, "amasya": {"akp": 2, "chp": 1}, "antalya": {"chp": 6, "iyi": 2, "akp": 6, "mhp": 2, "dem": 1}, "ardahan": {"akp": 1, "chp": 1}, "artvin": {"akp": 1, "chp": 1}, "aydin": {"chp": 4, "iyi": 1, "akp": 3}, "balikesir": {"chp": 3, "iyi": 1, "akp": 4, "mhp": 1}, "bartin": {"akp": 1, "chp": 1}, "batman": {"dem": 3, "akp": 2}, "bayburt": {"akp": 1}, "bilecik": {"akp": 1, "chp": 1}, "bingol": {"akp": 2, "dem": 1}, "bitlis": {"akp": 1, "dem": 2}, "bolu": {"akp": 1, "mhp": 1, "chp": 1}, "burdur": {"akp": 2, "chp": 1}, "canakkale": {"chp": 2, "iyi": 1, "akp": 1}, "cankiri": {"akp": 1, "mhp": 1}, "corum": {"akp": 2, "mhp": 1, "chp": 1}, "denizli": {"chp": 3, "iyi": 1, "akp": 3}, "diyarbakir": {"dem": 8, "akp": 3, "chp": 1}, "duzce": {"akp": 2, "chp": 1}, "edirne": {"chp": 2, "iyi": 1, "akp": 1}, "elazig": {"akp": 3, "mhp": 1, "chp": 1}, "erzincan": {"akp": 1, "chp": 1}, "erzurum": {"akp": 4, "mhp": 1, "dem": 1}, "eskisehir": {"chp": 3, "iyi": 1, "akp": 2}, "gaziantep": {"akp": 8, "mhp": 1, "chp": 3, "iyi": 1, "dem": 1}, "giresun": {"akp": 2, "mhp": 1, "chp": 1}, "gumushane": {"akp": 1, "mhp": 1}, "hakkari": {"dem": 3}, "hatay": {"akp": 4, "mhp": 1, "chp": 4, "iyi": 1, "tip": 1}, "igdir": {"dem": 1, "akp": 1}, "isparta": {"akp": 2, "mhp": 1, "chp": 1}, "kahramanmaras": {"akp": 5, "mhp": 1, "chp": 2}, "karabuk": {"akp": 2, "chp": 1}, "karaman": {"akp": 2, "chp": 1}, "kars": {"akp": 1, "chp": 1, "dem": 1}, "kastamonu": {"akp": 2, "chp": 1}, "kayseri": {"akp": 5, "mhp": 2, "chp": 2, "iyi": 1}, "kilis": {"akp": 1, "mhp": 1}, "kirikkale": {"akp": 1, "mhp": 1, "chp": 1}, "kirklareli": {"chp": 2, "akp": 1}, "kirsehir": {"akp": 1, "chp": 1}, "kocaeli": {"akp": 6, "mhp": 1, "yrp": 1, "chp": 4, "iyi": 1, "dem": 1}, "konya": {"akp": 9, "mhp": 2, "yrp": 1, "chp": 2, "iyi": 1}, "kutahya": {"akp": 3, "mhp": 1, "chp": 1}, "malatya": {"akp": 4, "mhp": 1, "chp": 1}, "manisa": {"akp": 4, "mhp": 1, "chp": 4, "iyi": 1}, "mardin": {"dem": 4, "akp": 2}, "mersin": {"chp": 5, "iyi": 1, "akp": 4, "mhp": 1, "dem": 2}, "mugla": {"chp": 4, "iyi": 1, "akp": 2}, "mus": {"dem": 2, "akp": 1}, "nevsehir": {"akp": 2, "mhp": 1}, "nigde": {"akp": 1, "mhp": 1, "chp": 1}, "ordu": {"akp": 3, "mhp": 1, "chp": 2}, "osmaniye": {"akp": 2, "mhp": 1, "chp": 1}, "rize": {"akp": 2, "chp": 1}, "sakarya": {"akp": 5, "mhp": 1, "chp": 1, "iyi": 1}, "samsun": {"akp": 5, "mhp": 1, "chp": 2, "iyi": 1}, "sanliurfa": {"akp": 8, "mhp": 1, "dem": 4, "chp": 1}, "siirt": {"dem": 2, "akp": 1}, "sinop": {"akp": 1, "chp": 1}, "sirnak": {"dem": 3, "akp": 1}, "sivas": {"akp": 3, "mhp": 1, "chp": 1}, "tekirdag": {"chp": 4, "iyi": 1, "akp": 3}, "tokat": {"akp": 3, "mhp": 1, "chp": 1}, "trabzon": {"akp": 4, "chp": 1, "iyi": 1}, "tunceli": {"dem": 1}, "usak": {"akp": 2, "chp": 1}, "van": {"dem": 6, "akp": 2}, "yalova": {"akp": 2, "chp": 1}, "yozgat": {"akp": 2, "mhp": 1, "iyi": 1}, "zonguldak": {"akp": 3, "chp": 2}, "istanbul-i": {"akp": 14, "mhp": 2, "yrp": 1, "chp": 12, "iyi": 3, "dem": 2, "tip": 1}, "istanbul-ii": {"akp": 12, "mhp": 1, "yrp": 1, "chp": 8, "iyi": 2, "dem": 2, "tip": 1}, "istanbul-iii": {"akp": 14, "mhp": 2, "yrp": 1, "chp": 11, "iyi": 3, "dem": 4, "tip": 1}, "ankara-i": {"chp": 6, "iyi": 2, "akp": 4, "mhp": 1}, "ankara-ii": {"akp": 6, "mhp": 1, "chp": 3, "iyi": 1}, "ankara-iii": {"akp": 5, "mhp": 1, "chp": 4, "iyi": 2}, "izmir-i": {"chp": 7, "iyi": 2, "akp": 4, "dem": 1}, "izmir-ii": {"chp": 7, "iyi": 1, "akp": 4, "mhp": 1, "dem": 1}, "bursa-i": {"akp": 5, "mhp": 1, "chp": 3, "iyi": 1}, "bursa-ii": {"akp": 5, "mhp": 1, "chp": 3, "iyi": 1}},
+      // the result views must not show parties absent from the
+      // 2023 election (these carry proxy geography for the swing)
+      proxyParties: ['a', 'yep', 'saadet'],
     },
   },
 

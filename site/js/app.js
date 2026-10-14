@@ -49,6 +49,8 @@ const t=(en,tr)=>(LANG==='tr'&&tr!=null?tr:en);
   const cName=id=>{const c=COUNTRIES[id]||{};return (LANG==='tr'&&c.name_tr)?c.name_tr:(c.name||id);};
 const IDEOLOGY_TR={
     'Right-wing populism': 'Sağ popülizm',
+    'Turkish-Islamic Synthesis': 'Türk-İslam sentezi',
+    'Erbakanism': 'Millî Görüş',
     'Social democracy': 'Sosyal demokrasi',
     'National conservatism': 'Millî muhafazakârlık',
     'Pro-Europeanism': 'Avrupa yanlılığı',
@@ -2272,6 +2274,12 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
         base=nb;
       }
     }
+  }
+  // parties absent from the last election must not appear in the result
+  // views (Turkey: YENİ/A/SAADET hold proxy geography for the swing)
+  if(resultMode&&conf.proxyParties&&base){
+    base={...base};
+    conf.proxyParties.forEach(p=>{delete base[p]});
   }
   let nat=conf.national2021||LAST_ELECTION.results;
   // the swing anchor is blended the same way, so past and anchor stay the

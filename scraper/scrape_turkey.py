@@ -80,14 +80,24 @@ def scrape():
     # walk the document so each table knows its year section
     polls = []
     year = None
+    skip_sec = False
     for el in soup.find_all(["h2", "h3", "table"]):
         if el.name in ("h2", "h3"):
             txt = " ".join(el.get_text(" ", strip=True).split())
             m = re.match(r"^(20\d\d)\b", txt)
             if m:
                 year = int(m.group(1))
+                skip_sec = False
+            low = norm_tok(txt)
+            if "ulke geneli" in low:
+                skip_sec = False
+            elif re.search(r"(senaryo|hipotetik|ortalama|ortanca|"
+                           r"projeksiyon|potansiyel)", low):
+                # hypothetical scenario / average / projection sections:
+                # not comparable to the regular polls (they caused spikes)
+                skip_sec = True
             continue
-        if year is None or year < 2023:
+        if year is None or year < 2023 or skip_sec:
             continue
         if "wikitable" not in (el.get("class") or []):
             continue
@@ -97,7 +107,7 @@ def scrape():
         if not grid:
             continue
         cand_col = {}
-        date_col = n_col = None
+        date_col = n_col = poll_col = None
         seat_table = False
         for ri in range(min(2, len(grid))):
             for col, cell in enumerate(grid[ri]):
@@ -110,20 +120,25 @@ def scrape():
                     date_col = col
                 if "orneklem" in low and n_col is None:
                     n_col = col
+                if "anket" in low and poll_col is None:
+                    poll_col = col
         if seat_table:
             continue  # seat projection, not a vote poll
-        if len(set(cand_col.values())) < MIN_PARTIES or date_col is None:
-            continue
+        if (len(set(cand_col.values())) < MIN_PARTIES or date_col is None
+                or poll_col is None):
+            continue  # no pollster column: an average/median table
         for row in grid:
             if len(row) <= date_col + 1:
                 continue
             date = parse_date(row[date_col], year)
             if not date or date < CUTOFF:
                 continue
-            pollster = re.sub(r"\[\s*[^\[\]]*\]", "", row[1]).strip() \
-                if len(row) > 1 else ""
+            pollster = (re.sub(r"\[\s*[^\[\]]*\]", "", row[poll_col]).strip()
+                        if len(row) > poll_col else "")
             if not pollster or len(pollster) < 3:
                 continue
+            if not re.search(r"[A-Za-zÇĞİÖŞÜçğıöşü]", pollster):
+                continue  # numeric cell: not a pollster name
             if re.search(r"(kuruldu|vefat|seçim|ittifak)", pollster, re.I):
                 continue
             votes = {}

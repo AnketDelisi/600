@@ -5243,7 +5243,7 @@ function renderPrediction(pane){
         votes[el.dataset.p]=Math.max(0,Math.min(100,parseFloat(el.value)||0));
       });
       const seats=predictionSeats(votes)||{};
-      const order=PARTY_ORDER.filter(p=>votes[p]!==undefined
+      const order=PARTY_ORDER.filter(p=>votes[p]!==undefined&&votes[p]>0
           &&!(PARTY_META[p]&&PARTY_META[p].pastOnly))
         .slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
       const leR=LAST_ELECTION.results||{}, leS=LAST_ELECTION.seats||{};

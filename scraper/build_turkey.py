@@ -682,6 +682,8 @@ def main():
         pfx, sep, rest = k.partition("-")
         if not sep or k in ilce_names:
             continue
+        if k in districts:
+            continue  # the 87 allocation-district keys ('ankara-i', ...)
         for cand in ids_by_prov.get(pfx, []):
             if pfx + "-" + cand in geo_shares:
                 continue

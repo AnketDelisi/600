@@ -77,5 +77,17 @@ def main():
             print("  audit: clean (%d documented note(s))" % len(notes))
 
 
+    # keep the big per-country maps out of config.js after any rebuild
+    try:
+        import os as _os
+        import subprocess as _sp
+        import sys as _sys
+        _sp.run([_sys.executable, _os.path.join(
+            _os.path.dirname(_os.path.abspath(__file__)), "split_geo.py")],
+            check=False)
+    except Exception:
+        pass
+
+
 if __name__ == "__main__":
     main()

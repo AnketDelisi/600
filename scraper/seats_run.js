@@ -60,6 +60,16 @@ process.on('unhandledRejection', () => {});
 vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'js', 'config.js'), 'utf8'), { filename: 'config.js' });
 vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'js', 'app.js'), 'utf8'), { filename: 'app.js' });
 
+// merge the split per-country map data (data/<cc>/geo.json) like the app
+for (const cc of Object.keys(COUNTRIES)) {
+  try {
+    const g = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', cc, 'geo.json'), 'utf8'));
+    if (g.map) COUNTRIES[cc].map = g.map;
+    if (g.map2) COUNTRIES[cc].map2 = g.map2;
+  } catch (e) { /* inline map */ }
+}
+
+
 async function main() {
   const cc = process.argv[2];
   const votes = JSON.parse(process.argv[3]);

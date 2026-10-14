@@ -526,15 +526,15 @@ def main():
     adm2 = json.loads(fetch(
         "https://www.geoboundaries.org/api/current/gbOpen/TUR/ADM2/",
         "gb_tur_adm2_meta.json", force))
-    adm2 = json.loads(fetch(adm2.get("simplifiedGeometryGeoJSON")
-                            or adm2.get("gjDownloadURL"),
-                            "gb_tur_adm2.geojson", force))
+    adm2 = json.loads(fetch(adm2.get("gjDownloadURL")
+                            or adm2.get("simplifiedGeometryGeoJSON"),
+                            "gb_tur_adm2_full.geojson", force))
     adm1 = json.loads(fetch(
         "https://www.geoboundaries.org/api/current/gbOpen/TUR/ADM1/",
         "gb_tur_adm1_meta.json", force))
-    adm1 = json.loads(fetch(adm1.get("simplifiedGeometryGeoJSON")
-                            or adm1.get("gjDownloadURL"),
-                            "gb_tur_adm1.geojson", force))
+    adm1 = json.loads(fetch(adm1.get("gjDownloadURL")
+                            or adm1.get("simplifiedGeometryGeoJSON"),
+                            "gb_tur_adm1_full.geojson", force))
     from shapely.geometry import shape as _shape
     from shapely.prepared import prep as _prep
     _p1 = []
@@ -607,6 +607,13 @@ def main():
                               "geometry": mapping(u)})
     print("electoral-district polygons:", len(sub_feats))
     assert len(sub_feats) == 10
+    feats = [{"type": "Feature",
+              "properties": {"NAME_1": ALIAS.get(f["properties"].get("shapeName")
+                                                 or "",
+                                                 f["properties"].get("shapeName")
+                                                 or "")},
+              "geometry": f["geometry"]}
+             for f in adm1["features"]]
     map_gj = {"type": "FeatureCollection",
               "features": [f for f in feats
                            if fold(f["properties"]["NAME_1"]) not in SPLIT]

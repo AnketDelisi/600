@@ -52,9 +52,7 @@ ALIAS = {"K.Maras": "Kahramanmaraş", "Kinkkale": "Kırıkkale",
 PARTIES = ["akp", "chp", "mhp", "iyi", "dem", "yrp", "zp", "tip", "a",
            "yep", "saadet", "bbp"]
 # per-province article party labels -> config keys
-ILCE_ALIAS = {"eyupsultan": "eyup", "kahramankazan": "kazan",
-              "kkazan": "kazan", "khamam": "kizilcahamam",
-              "sereflikochisar": "sultankochisar"}
+ILCE_ALIAS = {"kkazan": "kahramankazan", "khamam": "kizilcahamam"}
 
 
 PROV_COLS = {"ak parti": "akp", "akp": "akp", "chp": "chp",

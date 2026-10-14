@@ -31,6 +31,7 @@ ROOT = os.path.join(os.path.dirname(__file__), "..")
 CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "turkey.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "turkey.svg")
+DIST_SVG = os.path.join(CACHE, "tr_map_87.svg")
 GEOJSON = os.path.join(CACHE, "tr_provinces.geojson")
 ARTICLE = "https://tr.wikipedia.org/wiki/2023_T%C3%BCrkiye_genel_se%C3%A7imleri"
 ATTRIBUTION = ("Sonuçlar: YSK (2023 genel seçimi, tr.wikipedia); "
@@ -51,6 +52,11 @@ ALIAS = {"K.Maras": "Kahramanmaraş", "Kinkkale": "Kırıkkale",
 PARTIES = ["akp", "chp", "mhp", "iyi", "dem", "yrp", "zp", "tip", "a",
            "yep", "saadet", "bbp"]
 # per-province article party labels -> config keys
+ILCE_ALIAS = {"eyupsultan": "eyup", "kahramankazan": "kazan",
+              "kkazan": "kazan", "khamam": "kizilcahamam",
+              "sereflikochisar": "sultankochisar"}
+
+
 PROV_COLS = {"ak parti": "akp", "akp": "akp", "chp": "chp",
              "mhp": "mhp", "iyiparti": "iyi", "iyi parti": "iyi",
              "yesil sol": "dem", "ysp": "dem", "yeniden refah": "yrp",
@@ -253,6 +259,42 @@ def parse_province_table(html):
     return rows, bolge, compo, mv_rows
 
 
+
+def parse_ilce_tables(html):
+    """Per-ilçe 2023 general-election votes: {ilce: {party: votes}} plus the
+    per-ilçe Toplam row when present. Only the "Partiler | ilçe..." tables
+    (the presidential tables' rows are candidates, they do not match)."""
+    soup = BeautifulSoup(html, "lxml")
+    votes, totals = {}, {}
+    for el in soup.find_all("table"):
+        if len(el.find_all("tr")) < 5:
+            continue
+        grid = expand_grid(el)
+        if not grid or not (grid[0][0] or "").strip().lower().startswith(
+                ("partiler", "partİler".lower())):
+            continue
+        cols = []
+        for ci, hname in enumerate(grid[0][1:], start=1):
+            hname = re.sub(r"\[[^\]]*\]", "", hname or "").strip()
+            if hname and "toplam" not in hname.lower():
+                cols.append((ci, hname))
+        if len(cols) < 3:
+            continue
+        for row in grid[1:]:
+            lab = norm_label(row[0]) if row else ""
+            party = PROV_COLS.get(lab)
+            if party is None and lab == "toplam":
+                for ci, hname in cols:
+                    if ci < len(row) and num(row[ci]):
+                        totals[hname] = num(row[ci])
+                continue
+            if party is None:
+                continue
+            for ci, hname in cols:
+                if ci < len(row):
+                    votes.setdefault(hname, {})[party] = num(row[ci])
+    return votes, totals
+
 def main():
     force = "--force" in sys.argv
     gj = fetch_geo(force)
@@ -300,7 +342,8 @@ def main():
         return d + v
 
     districts = {}   # allocation districts: 77 provinces + 10 sub-districts
-    geo_shares = {}  # per-district party shares (akp..bbp; others implied)
+    geo_shares = {}
+    ilce_dist = {}  # per-district party shares (akp..bbp; others implied)
     compo_map = {}   # split provinces: Bölge -> ilçe list
     mvs_by_prov = {}  # (province, bölge) -> per-party 2023 seats
     mv2023 = {}      # district -> {party: seats} (the 2023 real result)
@@ -309,8 +352,20 @@ def main():
             % (nm, locative(nm))
         from urllib.parse import quote
         url = "https://tr.wikipedia.org/wiki/" + quote(title)
-        rows, n_bolge, compo, mvs = parse_province_table(
-            fetch(url, "tr_prov_%s.html" % pid, force))
+        _html = fetch(url, "tr_prov_%s.html" % pid, force)
+        rows, n_bolge, compo, mvs = parse_province_table(_html)
+        # the per-ilçe 2023 shares (the ilçe-level base map)
+        _iv, _itot = parse_ilce_tables(_html)
+        for _iname, _pv in _iv.items():
+            _ifold = ILCE_ALIAS.get(bm.fold(_iname), bm.fold(_iname))
+            _iid = "%s-%s" % (pid, _ifold)
+            _tot = _itot.get(_iname) or sum(_pv.values())
+            if not _tot:
+                continue
+            geo_shares[_iid] = {k: round(100.0 * _pv.get(k, 0) / _tot, 2)
+                                for k in ("akp", "chp", "mhp", "iyi",
+                                          "dem", "yrp", "zp", "tip", "bbp")}
+            ilce_dist[_iid] = pid
         if pid in SPLIT and n_bolge >= 2:
             # sub-districts from the per-Bölge tables; the shares use the
             # official valid votes: the province's valid votes scaled by the
@@ -332,6 +387,12 @@ def main():
                 compo[2].remove("Güdül")
                 compo.setdefault(3, []).append("Güdül")
             compo_map[pid] = compo
+            # the split provinces' ilçes report their Bölge's seat pills
+            for _bi, _lst in compo.items():
+                for _nm2 in _lst:
+                    _f2 = ILCE_ALIAS.get(bm.fold(_nm2), bm.fold(_nm2))
+                    ilce_dist["%s-%s" % (pid, _f2)] = \
+                        "%s-%s" % (pid, "i" * _bi)
             for bi, v in mvs.items():
                 if bi != "all":
                     mvs_by_prov[(pid, int(bi[1:]))] = v
@@ -425,6 +486,8 @@ def main():
     for key, sh in geo_shares.items():
         if key in SPLIT:
             continue  # map-only province entry; the sub-districts cover it
+        if key in ilce_dist:
+            continue  # ilçe rows colour the detail map only
         if "-" in key:
             parent = key.split("-")[0]
             w = (prov[parent]["valid"] * districts[key]
@@ -445,9 +508,6 @@ def main():
     rev = {}
     for gname, tname in ALIAS.items():
         rev.setdefault(tname, gname)
-    ILCE_ALIAS = {"eyupsultan": "eyup", "kahramankazan": "kazan",
-                  "kkazan": "kazan", "khamam": "kizilcahamam",
-                  "sereflikochisar": "sultankochisar"}
     sub_feats = []
     for pid in SPLIT:
         tname = prov_names[pid]
@@ -490,11 +550,117 @@ def main():
         json.dump(map_gj, fh)
     sys.argv = ["build_map_svg.py", "--geojson", geo_norm,
                 "--name-field", "NAME_1", "--fold", "--attr", "id",
+                "--no-prefix", "--out", DIST_SVG,
+                "--attribution", ATTRIBUTION]
+    if force:
+        sys.argv.append("--force")
+    bm.main()
+
+    # the visible base map is ilçe-level; ids = fold(province)-fold(ilçe)
+    adm2 = json.loads((CACHE / "tr_ilceler.geojson").read_text(encoding="utf8")) \
+        if hasattr(CACHE, "read_text") else json.load(
+            open(os.path.join(CACHE, "tr_ilceler.geojson"), encoding="utf8"))
+    ilce_gj = {"type": "FeatureCollection", "features": []}
+    ilce_names = {}
+    for f in adm2["features"]:
+        pnm = f["properties"].get("NAME_1") or ""
+        inm = f["properties"].get("NAME_2") or ""
+        if not pnm or not inm:
+            continue
+        pnm = ALIAS.get(pnm, pnm)
+        iid = "%s-%s" % (bm.fold(pnm), bm.fold(inm))
+        ilce_names[iid] = inm
+        ilce_gj["features"].append(
+            {"type": "Feature",
+             "properties": {"NAME_2": iid},
+             "geometry": f["geometry"]})
+    ilce_norm = os.path.join(CACHE, "tr_ilceler_ids.geojson")
+    with open(ilce_norm, "w", encoding="utf8") as fh:
+        json.dump(ilce_gj, fh)
+    sys.argv = ["build_map_svg.py", "--geojson", ilce_norm,
+                "--name-field", "NAME_2", "--fold", "--attr", "id",
                 "--no-prefix", "--out", OUT_SVG,
                 "--attribution", ATTRIBUTION]
     if force:
         sys.argv.append("--force")
     bm.main()
+    # inject the 87 district outlines as invisible seat-circle anchors
+    dsvg = open(DIST_SVG, encoding="utf8").read()
+    dps = re.findall(r"<path\b[^>]*?/>", dsvg)
+    if dps:
+        inj = "".join(
+            (p2 if "class=" in p2 else p2.replace(
+                "<path ", '<path class="seat-area" fill="none" '
+                          'stroke="none" pointer-events="none" ', 1))
+            for p2 in dps)
+        tsvg = open(OUT_SVG, encoding="utf8").read()
+        tsvg = tsvg.replace("</svg>", inj + "</svg>")
+        open(OUT_SVG, "w", encoding="utf8", newline="").write(tsvg)
+    print("ilce map:", len(ilce_gj["features"]), "paths +", len(dps),
+          "district overlays")
+    # the articles abbreviate some ilçe names (D.Bey, A.Eylül): align the
+    # parsed keys with the GADM-derived svg ids within each province
+    ids_by_prov = {}
+    for k in ilce_names:
+        pfx, _, rest = k.partition("-")
+        ids_by_prov.setdefault(pfx, []).append(rest)
+
+    def _is_abbrev(a, b):
+        it = iter(b)
+        return bool(a) and all(ch in it for ch in a)
+
+    _ren = {}
+    for k in list(geo_shares):
+        pfx, sep, rest = k.partition("-")
+        if not sep or k in ilce_names:
+            continue
+        for cand in ids_by_prov.get(pfx, []):
+            if pfx + "-" + cand in geo_shares:
+                continue
+            if _is_abbrev(rest, cand):
+                _ren[k] = pfx + "-" + cand
+                break
+    for k, v in _ren.items():
+        geo_shares[v] = geo_shares.pop(k)
+        if k in ilce_dist:
+            ilce_dist[v] = ilce_dist.pop(k)
+    if _ren:
+        print("ilçe name alignment:", len(_ren))
+
+    # GADM keeps pre-2012 names for some ilçes; the exact renames first
+    REN = {"giresun-sultankarahisar": "giresun-sebinkarahisar",
+           "malatya-arapkir": "malatya-arapgir",
+           "malatya-poturge": "malatya-puturge",
+           "siirt-tillo": "siirt-aydinlar",
+           "afyonkarahisar-sinanpasa": "afyonkarahisar-sincanli",
+           "agri-dogubayazit": "agri-dogubeyazit",
+           "antalya-demre": "antalya-kale"}
+    _n2 = 0
+    for _k, _v in REN.items():
+        if _k in geo_shares and _v in ilce_names and _v not in geo_shares:
+            geo_shares[_v] = geo_shares.pop(_k)
+            if _k in ilce_dist:
+                ilce_dist[_v] = ilce_dist.pop(_k)
+            _n2 += 1
+    # the article's modern büyükşehir centre ilçes merge into GADM's Merkez
+    _macc = {}
+    for _k in list(geo_shares):
+        _pfx, _sep, _rest = _k.partition("-")
+        if not _sep or _k in ilce_names:
+            continue
+        _mk = _pfx + "-merkez"
+        if _mk in ilce_names and _mk not in geo_shares:
+            _macc.setdefault(_pfx, []).append(geo_shares.pop(_k))
+            ilce_dist.pop(_k, None)
+    for _pfx, _lst in _macc.items():
+        _mk = _pfx + "-merkez"
+        _keys = set()
+        for _s in _lst:
+            _keys |= set(_s)
+        geo_shares[_mk] = {_p: round(sum(_s.get(_p, 0) for _s in _lst)
+                                     / len(_lst), 2) for _p in _keys}
+        ilce_dist[_mk] = _pfx
+    print("ilçe renames:", _n2, "merkez merges:", len(_macc))
 
 
     import shutil
@@ -577,18 +743,20 @@ def main():
       // the result views must not show parties absent from the
       // 2023 election (these carry proxy geography for the swing)
       proxyParties: ['a', 'yep', 'saadet'],
+      ilceDistrict: %s,
     },
   },
 """ % (parties,
        ', '.join("%s: '%s'" % (k, v) for k, v in logos.items()),
        j(RESULTS23, ensure_ascii=False),
        j(SEATS23, ensure_ascii=False),
-       j({k: k for k, v in districts.items() if v}, ensure_ascii=False),
-       j(names_map, ensure_ascii=False),
+       j(dict(list({k: k for k, v in districts.items() if v}.items()) + [(k, k) for k in ilce_dist]), ensure_ascii=False),
+       j(dict(list(names_map.items()) + list(ilce_names.items())), ensure_ascii=False),
        j(geo_shares, ensure_ascii=False),
        j(NAT, ensure_ascii=False),
        j({k: v for k, v in districts.items() if v}),
-       j(mv2023, ensure_ascii=False))
+       j(mv2023, ensure_ascii=False),
+      j(ilce_dist))
 
     text = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
     m = re.search(r"\n  turkey: \{", text)

@@ -1,0 +1,29 @@
+<!doctype html>
+<html><body>
+<script>localStorage.setItem('600_lang','tr');</script>
+<iframe id="f" src="/index.html?c=turkey" style="width:1400px;height:900px"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  const w = f.contentWindow, d = f.contentDocument;
+  let err = '';
+  w.addEventListener('error', e => { err += 'ERR:' + e.message + '@' + e.lineno + '; '; });
+  w.addEventListener('unhandledrejection', e => {
+    err += 'REJ:' + (e.reason && (e.reason.message || e.reason)) + '; ';
+  });
+  const T = (ms) => new Promise(r => setTimeout(r, ms));
+  (async () => {
+    let n = 0;
+    while (n < 200 && !d.querySelector('.parl-btn')) { await T(100); n++; }
+    const mbtn = d.querySelector('button[data-parlview="map"]');
+    document.title = 'btn:' + !!mbtn + ' ' + err;
+    if (mbtn) mbtn.click();
+    await T(30000);
+    const box = d.getElementById('map-box');
+    document.title = 'btn:' + !!mbtn + ' box:' + !!box
+      + (box ? ' paths:' + box.querySelectorAll('path[id]').length : '')
+      + ' | ' + err;
+  })();
+});
+</script>
+</body></html>

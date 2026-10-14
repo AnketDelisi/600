@@ -10,7 +10,7 @@ totals for the four split provinces (İstanbul I-III, Ankara I-III,
 İzmir I-II, Bursa I-II) - those become the prDistricts, so the seats are
 allocated in the real electoral districts. Yeni Parti inherits CHP's
 geography; Anahtar Parti 75% İYİ + 25% AKP. Geometry: GADM 4.1 TUR ADM1,
-with an İstanbul+Kocaeli inset.
+no inset.
 
 Writes img/turkey.svg and inserts the turkey block into js/config.js.
 
@@ -86,7 +86,7 @@ META = {
             "Communism, Socialism"),
     "a": ("A", "Anahtar Parti", "#192B4F",
           "Turkish nationalism, Conservatism"),
-    "yep": ("YEP", "Yeni Parti", "#ED1C24",
+    "yep": ("YENİ", "Yeni Parti", "#ED1C24",
             "Social democracy, Kemalism"),
     "saadet": ("SAADET", "Saadet Partisi", "#FF2E84",
                "Islamism, National conservatism"),
@@ -396,11 +396,10 @@ def main():
         prov[pid]["seats"] = n
         if pid not in SPLIT:
             districts[pid] = n
-    # the split provinces: provincial totals are known, the bolge split is
-    # apportioned on the 2023 bolge seats (largest remainder): Ankara +1
-    # -> I, Istanbul -2 -> II -1 + III -1, Bursa +1 -> I (larger pop)
-    for k, v in (("ankara-i", 14), ("ankara-ii", 11), ("ankara-iii", 12),
-                 ("istanbul-i", 34), ("istanbul-ii", 27), ("istanbul-iii", 35),
+    # the split provinces: the official bolge seats from YSK 2026/109
+    # (3 Mar 2026, 2025 nufus); the ilce compositions there match ours 1:1
+    for k, v in (("ankara-i", 13), ("ankara-ii", 11), ("ankara-iii", 13),
+                 ("istanbul-i", 35), ("istanbul-ii", 25), ("istanbul-iii", 36),
                  ("izmir-i", 14), ("izmir-ii", 14),
                  ("bursa-i", 11), ("bursa-ii", 10)):
         districts[k] = v
@@ -497,50 +496,7 @@ def main():
         sys.argv.append("--force")
     bm.main()
 
-    # İstanbul + Kocaeli inset (the two provinces are tiny at national scale)
-    def bbox(geom):
-        xs, ys = [], []
 
-        def walk(c):
-            if isinstance(c[0], (int, float)):
-                xs.append(c[0])
-                ys.append(c[1])
-            else:
-                for x in c:
-                    walk(x)
-        walk(geom["coordinates"])
-        return min(xs), min(ys), max(xs), max(ys)
-
-    zoom_ids = ["istanbul-i", "istanbul-ii", "istanbul-iii", "kocaeli"]
-    zoom_feats = [f for f in map_gj["features"]
-                  if fold(f["properties"]["NAME_1"]) in zoom_ids]
-    assert len(zoom_feats) == 4, len(zoom_feats)
-    box = [min(bbox(f["geometry"])[0] for f in zoom_feats),
-           min(bbox(f["geometry"])[1] for f in zoom_feats),
-           max(bbox(f["geometry"])[2] for f in zoom_feats),
-           max(bbox(f["geometry"])[3] for f in zoom_feats)]
-    zoom_gj = os.path.join(CACHE, "tr_istanbul_detail.geojson")
-    with open(zoom_gj, "w", encoding="utf8") as fh:
-        json.dump({"type": "FeatureCollection", "features": zoom_feats}, fh)
-    zoom_svg = os.path.join(CACHE, "tr_istanbul_detail.svg")
-    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
-                "--name-field", "NAME_1", "--fold", "--attr", "id",
-                "--no-prefix", "--out", zoom_svg,
-                "--attribution", ATTRIBUTION, "--force"]
-    bm.main()
-    bm.add_inset(OUT_SVG, zoom_svg, zoom_ids, 150, (1010, 30),
-                 label="İstanbul + Kocaeli")
-    # the inset sits outside the map to its right: widen the canvas
-    tsvg = open(OUT_SVG, encoding="utf8").read()
-    mm = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', tsvg)
-    w, h = float(mm.group(1)), float(mm.group(2))
-    nw = w + 190.0
-    tsvg = re.sub(r'viewBox="0 0 [\d.]+ [\d.]+"',
-                  'viewBox="0 0 %.1f %.1f"' % (nw, h), tsvg)
-    tsvg = re.sub(r'(<svg[^>]*?)width="[\d.]+" height="[\d.]+"',
-                  r'\g<1>width="%.1f" height="%.1f"' % (nw, h), tsvg,
-                  count=1)
-    open(OUT_SVG, "w", encoding="utf8", newline="").write(tsvg)
     import shutil
     shutil.copy2(OUT_SVG, BMV_SVG)
 
@@ -588,8 +544,8 @@ def main():
       emek: ['dem', 'tip'],
     },
     blocs: {
-      bloc1: { name: 'Government camp', short: 'GOV', parties: ['akp', 'mhp', 'yrp', 'bbp'], color: '#fda000' },
-      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['chp', 'iyi', 'dem', 'zp', 'tip', 'a', 'yep', 'saadet'], color: '#ED1C24' },
+      bloc1: { name: 'Government camp', short: 'GOV', parties: ['akp', 'mhp', 'bbp'], color: '#fda000' },
+      bloc2: { name: 'Opposition',      short: 'OPP', parties: ['chp', 'iyi', 'dem', 'yrp', 'zp', 'tip', 'a', 'yep', 'saadet'], color: '#ED1C24' },
     },
     logos: {
 %s

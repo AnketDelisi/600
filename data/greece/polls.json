@@ -2,9 +2,73 @@
   "country": "greece",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
-  "scraped_at": "2026-10-13T13:30:33Z",
-  "poll_count": 325,
+  "scraped_at": "2026-10-15T21:11:56Z",
+  "poll_count": 328,
   "polls": [
+    {
+      "pollster": "Marc/Ant1",
+      "date": "2026-10-14",
+      "n": 1209,
+      "country": "greece",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
+      "votes": {
+        "nd": 30.4,
+        "syriza": 1.8,
+        "pasok": 12.4,
+        "kke": 7.0,
+        "el": 7.0,
+        "niki": 1.7,
+        "pe": 5.5,
+        "m25": 2.6,
+        "fl": 3.6,
+        "elpida": 4.5,
+        "elas": 15.8
+      }
+    },
+    {
+      "pollster": "Alco/Flash",
+      "date": "2026-10-13",
+      "n": 1000,
+      "country": "greece",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
+      "votes": {
+        "nd": 28.2,
+        "syriza": 2.3,
+        "pasok": 13.3,
+        "kke": 8.4,
+        "el": 6.6,
+        "niki": 2.1,
+        "pe": 4.2,
+        "m25": 2.9,
+        "fl": 1.8,
+        "dpk": 0.8,
+        "elpida": 3.6,
+        "elas": 16.4
+      }
+    },
+    {
+      "pollster": "Opinion Poll/Action24",
+      "date": "2026-10-10",
+      "n": 1005,
+      "country": "greece",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
+      "votes": {
+        "nd": 30.3,
+        "syriza": 1.7,
+        "pasok": 12.3,
+        "kke": 7.2,
+        "el": 6.8,
+        "niki": 1.1,
+        "pe": 5.1,
+        "m25": 2.7,
+        "fl": 3.5,
+        "elpida": 4.5,
+        "elas": 15.9
+      }
+    },
     {
       "pollster": "Interview/Politic",
       "date": "2026-10-10",

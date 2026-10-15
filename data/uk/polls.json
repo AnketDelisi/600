@@ -2,9 +2,47 @@
  "country": "uk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
- "scraped_at": "2026-10-13T13:30:37Z",
- "poll_count": 582,
+ "scraped_at": "2026-10-15T21:12:03Z",
+ "poll_count": 586,
  "polls": [
+  {
+   "pollster": "Find Out Now",
+   "fieldwork_start": "2026-10-14",
+   "date": "2026-10-14",
+   "n": 2482,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 25.0,
+    "con": 22.0,
+    "ref": 22.0,
+    "lib": 10.0,
+    "grn": 11.0,
+    "snp": 3.0,
+    "plc": 1.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "Trajectory Partnership",
+   "fieldwork_start": "2026-10-14",
+   "date": "2026-10-14",
+   "n": 1473,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 30.0,
+    "con": 21.0,
+    "ref": 22.0,
+    "lib": 10.0,
+    "grn": 8.0,
+    "snp": 2.0,
+    "plc": 1.0,
+    "res": 6.0
+   }
+  },
   {
    "pollster": "YouGov",
    "fieldwork_start": "2026-10-12",
@@ -24,6 +62,43 @@
     "res": 2.0
    },
    "method": "online"
+  },
+  {
+   "pollster": "More in Common",
+   "fieldwork_start": "2026-10-12",
+   "date": "2026-10-12",
+   "n": 2101,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 28.0,
+    "con": 24.0,
+    "ref": 21.0,
+    "lib": 11.0,
+    "grn": 7.0,
+    "snp": 2.0,
+    "plc": 0.0,
+    "res": 5.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "Freshwater Strategy",
+   "fieldwork_start": "2026-10-11",
+   "date": "2026-10-11",
+   "n": 1235,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 29.0,
+    "con": 22.0,
+    "ref": 23.0,
+    "lib": 10.0,
+    "grn": 9.0,
+    "snp": 2.0
+   }
   },
   {
    "pollster": "Opinium",

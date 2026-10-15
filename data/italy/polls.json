@@ -2,8 +2,8 @@
  "country": "italy",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
- "scraped_at": "2026-10-13T13:30:34Z",
- "poll_count": 1124,
+ "scraped_at": "2026-10-15T21:11:58Z",
+ "poll_count": 1127,
  "polls": [
   {
    "pollster": "SWG",
@@ -26,6 +26,27 @@
     "fn": 7.6
    },
    "method": "online"
+  },
+  {
+   "pollster": "Lab21",
+   "date": "2026-10-09",
+   "n": 754,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 28.4,
+    "pd": 20.0,
+    "m5s": 13.4,
+    "lega": 5.5,
+    "fi": 7.0,
+    "a": 2.9,
+    "iv": 2.9,
+    "avs": 5.6,
+    "e": 1.2,
+    "nm": 0.8,
+    "fn": 8.2
+   }
   },
   {
    "pollster": "Only Numbers",
@@ -88,6 +109,48 @@
     "e": 1.8,
     "nm": 1.1,
     "fn": 7.6
+   }
+  },
+  {
+   "pollster": "Sigma Piave",
+   "date": "2026-10-08",
+   "n": 800,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 26.6,
+    "pd": 21.0,
+    "m5s": 12.6,
+    "lega": 5.6,
+    "fi": 7.3,
+    "a": 3.4,
+    "iv": 2.5,
+    "avs": 6.4,
+    "e": 1.5,
+    "nm": 1.1,
+    "fn": 7.7
+   }
+  },
+  {
+   "pollster": "Noto",
+   "date": "2026-10-06",
+   "n": 0,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 28.0,
+    "pd": 19.5,
+    "m5s": 12.5,
+    "lega": 6.0,
+    "fi": 6.9,
+    "a": 4.0,
+    "iv": 2.5,
+    "avs": 6.5,
+    "e": 2.5,
+    "nm": 1.4,
+    "fn": 6.7
    }
   },
   {
@@ -8285,7 +8348,7 @@
    }
   },
   {
-   "pollster": "Noto Sondaggi",
+   "pollster": "Noto",
    "date": "2025-02-03",
    "n": 1000,
    "country": "italy",

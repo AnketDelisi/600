@@ -6,9 +6,48 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_46th_Canadian_federal_election"
   }
  ],
- "scraped_at": "2026-10-13T13:30:49Z",
- "poll_count": 235,
+ "scraped_at": "2026-10-15T21:12:15Z",
+ "poll_count": 239,
  "polls": [
+  {
+   "pollster": "Abacus Data",
+   "date": "2026-10-13",
+   "votes": {
+    "lpc": 46.0,
+    "cpc": 34.0,
+    "bq": 7.0,
+    "ndp": 9.0,
+    "gpc": 3.0,
+    "ppc": 1.0
+   },
+   "n": 3197
+  },
+  {
+   "pollster": "Liaison Strategies",
+   "date": "2026-10-10",
+   "votes": {
+    "lpc": 45.0,
+    "cpc": 29.0,
+    "bq": 6.0,
+    "ndp": 15.0,
+    "gpc": 2.0,
+    "ppc": 2.0
+   },
+   "n": 1263
+  },
+  {
+   "pollster": "Nanos Research",
+   "date": "2026-10-09",
+   "votes": {
+    "lpc": 48.8,
+    "cpc": 29.5,
+    "bq": 6.4,
+    "ndp": 11.1,
+    "gpc": 2.1,
+    "ppc": 1.6
+   },
+   "n": 1034
+  },
   {
    "pollster": "Liaison Strategies",
    "date": "2026-10-03",
@@ -21,6 +60,19 @@
     "ppc": 2.0
    },
    "n": 1526
+  },
+  {
+   "pollster": "Ekos",
+   "date": "2026-10-02",
+   "votes": {
+    "lpc": 47.2,
+    "cpc": 26.4,
+    "bq": 4.6,
+    "ndp": 15.3,
+    "gpc": 3.2,
+    "ppc": 1.8
+   },
+   "n": 2020
   },
   {
    "pollster": "Nanos Research",

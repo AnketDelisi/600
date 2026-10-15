@@ -2,8 +2,8 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-10-13T13:30:32Z",
- "poll_count": 564,
+ "scraped_at": "2026-10-15T21:11:55Z",
+ "poll_count": 567,
  "polls": [
   {
    "pollster": "SocioMétrica/El Español",
@@ -231,6 +231,61 @@
     "sumar": 3.6,
     "podemos": 3.6,
     "salf": 0.5
+   }
+  },
+  {
+   "pollster": "CIS (Opina 360)",
+   "date": "2026-10-06",
+   "n": 5025,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 28.0,
+    "psoe": 28.0,
+    "vox": 17.8,
+    "sumar": 7.3,
+    "podemos": 3.5,
+    "salf": 1.6
+   }
+  },
+  {
+   "pollster": "CIS (Ateneo del Dato)",
+   "date": "2026-10-06",
+   "n": 5025,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 28.3,
+    "psoe": 28.6,
+    "vox": 17.5,
+    "sumar": 7.9,
+    "podemos": 3.0,
+    "salf": 2.4
+   }
+  },
+  {
+   "pollster": "CIS",
+   "date": "2026-10-06",
+   "n": 5025,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 22.2,
+    "psoe": 34.0,
+    "vox": 17.1,
+    "sumar": 6.1,
+    "erc": 3.0,
+    "junts": 1.1,
+    "bildu": 1.6,
+    "pnv": 0.6,
+    "bng": 0.9,
+    "cc": 0.2,
+    "upn": 0.1,
+    "podemos": 3.1,
+    "salf": 1.8
    }
   },
   {
@@ -11555,13 +11610,13 @@
    "podemos": 3.0
   },
   "cataluna": {
-   "psoe": 31.48,
-   "sumar": 9.72,
-   "pp": 12.91,
-   "erc": 14.11,
-   "junts": 10.78,
-   "vox": 8.51,
-   "podemos": 3.85
+   "psoe": 30.98,
+   "sumar": 8.66,
+   "pp": 12.75,
+   "erc": 14.94,
+   "junts": 10.5,
+   "vox": 9.16,
+   "podemos": 3.58
   },
   "galicia": {
    "pp": 42.38,

@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-13T13:31:04Z",
+  "scraped_at": "2026-10-15T21:12:35Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -25,33 +25,33 @@
   "generic_ballot": [
     {
       "pollster": "Decision Desk HQ",
-      "dates": "January 9, 2025 – October 5, 2026",
-      "dem": 48.8,
-      "rep": 40.3
+      "dates": "January 9, 2025 – October 13, 2026",
+      "dem": 49.2,
+      "rep": 41.3
     },
     {
       "pollster": "FiftyPlusOne",
-      "dates": "January 9, 2025 – October 5, 2026",
-      "dem": 51.1,
-      "rep": 43.3
+      "dates": "January 9, 2025 – October 13, 2026",
+      "dem": 51.4,
+      "rep": 43.2
     },
     {
       "pollster": "NBC News",
-      "dates": "January 9, 2025 – October 5, 2026",
-      "dem": 52.0,
+      "dates": "January 9, 2025 – October 13, 2026",
+      "dem": 51.0,
       "rep": 43.0
     },
     {
       "pollster": "RealClearPolitics",
-      "dates": "September 16 – October 5, 2026",
-      "dem": 49.8,
-      "rep": 41.9
+      "dates": "September 21 – October 13, 2026",
+      "dem": 50.4,
+      "rep": 42.3
     },
     {
       "pollster": "Silver Bulletin",
-      "dates": "January 9, 2025 – October 5, 2026",
+      "dates": "January 9, 2025 – October 13, 2026",
       "dem": 49.8,
-      "rep": 40.8
+      "rep": 41.2
     }
   ],
   "races": {
@@ -151,7 +151,7 @@
         "last": null,
         "ratings": {
           "cook": "Solid R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Safe R"
         }
       },
@@ -236,8 +236,8 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Likely R",
-          "sabato": "Lean R"
+          "ie": "Tilt R",
+          "sabato": "Tossup"
         }
       },
       {
@@ -339,7 +339,7 @@
         "ratings": {
           "cook": "Likely D",
           "ie": "Lean D",
-          "sabato": "Likely D"
+          "sabato": "Lean D"
         }
       },
       {
@@ -356,7 +356,7 @@
         "ratings": {
           "cook": "Solid R",
           "ie": "Solid R",
-          "sabato": "Safe R"
+          "sabato": "Likely R"
         }
       },
       {
@@ -390,7 +390,7 @@
         "ratings": {
           "cook": "Likely R",
           "ie": "Lean R",
-          "sabato": "Likely R"
+          "sabato": "Lean R"
         }
       },
       {
@@ -406,8 +406,8 @@
         },
         "ratings": {
           "cook": "Lean D",
-          "ie": "Tossup",
-          "sabato": "Lean D"
+          "ie": "Tilt D",
+          "sabato": "Likely D"
         }
       },
       {
@@ -533,7 +533,7 @@
         "last": null,
         "ratings": {
           "cook": "Likely R",
-          "ie": "Likely R",
+          "ie": "Lean R",
           "sabato": "Likely R"
         }
       },
@@ -584,7 +584,7 @@
         },
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
+          "ie": "Tossup",
           "sabato": "Tossup"
         }
       },
@@ -663,7 +663,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R(flip)",
-          "ie": "Likely R(flip)",
+          "ie": "Lean R(flip)",
           "sabato": "Lean R(flip)"
         },
         "last": {
@@ -756,7 +756,7 @@
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Lean D(flip)",
-          "ie": "Tossup",
+          "ie": "Tilt D(flip)",
           "sabato": "Tossup"
         },
         "last": {
@@ -906,7 +906,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Likely R"
         },
         "last": {
@@ -2703,7 +2703,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Safe R"
         },
         "last": {
@@ -2785,7 +2785,7 @@
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
+          "ie": "Tossup",
           "sabato": "Tossup"
         },
         "last": {
@@ -2949,7 +2949,7 @@
         "status": "Incumbent retiring torun for U.S. Senate",
         "ratings": {
           "cook": "Lean R",
-          "ie": "Lean R",
+          "ie": "Tilt R",
           "sabato": "Lean R"
         },
         "last": {
@@ -3045,7 +3045,7 @@
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Lean R(flip)",
-          "ie": "Likely R(flip)",
+          "ie": "Lean R(flip)",
           "sabato": "Lean R(flip)"
         },
         "last": {
@@ -3702,7 +3702,7 @@
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Lean R",
-          "ie": "Lean R",
+          "ie": "Tilt R",
           "sabato": "Lean R"
         },
         "last": {
@@ -3732,7 +3732,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Solid R",
-          "ie": "Solid R",
+          "ie": "Likely R",
           "sabato": "Safe R"
         },
         "last": {
@@ -3751,7 +3751,7 @@
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Likely D(flip)",
-          "ie": "Tilt D(flip)",
+          "ie": "Lean D(flip)",
           "sabato": "Likely D(flip)"
         },
         "last": {
@@ -3800,7 +3800,7 @@
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Likely R",
+          "ie": "Lean R",
           "sabato": "Likely R"
         },
         "last": {
@@ -3999,7 +3999,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
-          "ie": "Likely D",
+          "ie": "Solid D",
           "sabato": "Likely D"
         },
         "last": {
@@ -4330,7 +4330,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Likely D",
-          "ie": "Likely D",
+          "ie": "Solid D",
           "sabato": "Likely D"
         },
         "last": {
@@ -4360,7 +4360,7 @@
         "status": "Incumbent retiring",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Likely R",
+          "ie": "Lean R",
           "sabato": "Likely R"
         },
         "last": {
@@ -4388,15 +4388,7 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "last": {
-          "pct": 65.8,
-          "party": "R"
-        }
+        "ratings": {}
       },
       {
         "state": "New York",
@@ -4442,7 +4434,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R(flip)",
+          "ie": "Tossup",
           "sabato": "Tossup"
         },
         "last": {
@@ -4616,7 +4608,7 @@
         "status": "Incumbent renominatedbut withdrew",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Lean R",
+          "ie": "Tossup",
           "sabato": "Tossup"
         },
         "last": {
@@ -4807,7 +4799,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R(flip)",
+          "ie": "Tossup",
           "sabato": "Tossup"
         },
         "last": {
@@ -5135,7 +5127,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Lean D(flip)",
-          "ie": "Tossup",
+          "ie": "Tilt D(flip)",
           "sabato": "Lean D(flip)"
         },
         "last": {
@@ -5154,7 +5146,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tossup",
+          "ie": "Tilt D(flip)",
           "sabato": "Tossup"
         },
         "last": {
@@ -5310,7 +5302,7 @@
         "status": "Incumbent retiring torun for governor",
         "ratings": {
           "cook": "Likely R",
-          "ie": "Likely R",
+          "ie": "Lean R",
           "sabato": "Likely R"
         },
         "last": {
@@ -5728,7 +5720,7 @@
         "status": "Incumbent renominated",
         "ratings": {
           "cook": "Tossup",
-          "ie": "Tilt R",
+          "ie": "Tossup",
           "sabato": "Tossup"
         },
         "last": {
@@ -5756,15 +5748,7 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "last": {
-          "pct": 66.4,
-          "party": "R"
-        }
+        "ratings": {}
       },
       {
         "state": "Texas",
@@ -5966,15 +5950,7 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "last": {
-          "pct": 64.5,
-          "party": "R"
-        }
+        "ratings": {}
       },
       {
         "state": "Texas",
@@ -6580,7 +6556,15 @@
         "inc_status": "open",
         "party": "R",
         "status": "Incumbent retiring torun for U.S. Senate",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Likely R",
+          "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 70.6,
+          "party": "R"
+        }
       }
     ],
     "governor": [
@@ -6613,7 +6597,7 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Tossup",
+          "cook": "Lean D(flip)",
           "ie": "Tossup",
           "sabato": "Lean D(flip)"
         }
@@ -6919,8 +6903,8 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
+          "cook": "Likely R",
+          "ie": "Likely R",
           "sabato": "Likely R"
         }
       },
@@ -7021,7 +7005,7 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Solid R",
+          "cook": "Likely R",
           "ie": "Likely R",
           "sabato": "Safe R"
         }
@@ -7141,7 +7125,7 @@
         },
         "ratings": {
           "cook": "Lean R",
-          "ie": "Likely R",
+          "ie": "Lean R",
           "sabato": "Lean R"
         }
       },
@@ -7157,8 +7141,8 @@
           "party": "R"
         },
         "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
+          "cook": "Likely R",
+          "ie": "Likely R",
           "sabato": "Likely R"
         }
       },

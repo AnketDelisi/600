@@ -6,7 +6,7 @@
       "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
     }
   ],
-  "scraped_at": "2026-10-13T13:30:48Z",
+  "scraped_at": "2026-10-15T21:12:13Z",
   "poll_count": 15,
   "polls": [
     {
@@ -14,10 +14,10 @@
       "date": "2026-09-09",
       "votes": {
         "milei": 38.5,
-        "kirchner": 24.0,
-        "moreno": 6.1,
-        "schiaretti": 3.8,
-        "villarruel": 10.2
+        "kicillof": 24.0,
+        "massa": 6.1,
+        "macri": 3.8,
+        "bregman": 10.2
       },
       "n": 7025
     },
@@ -26,9 +26,9 @@
       "date": "2026-08-29",
       "votes": {
         "milei": 32.4,
-        "kirchner": 33.7,
-        "bregman": 6.6,
-        "villarruel": 10.2
+        "kicillof": 33.7,
+        "schiaretti": 6.6,
+        "bregman": 10.2
       },
       "n": 4958
     },
@@ -37,11 +37,12 @@
       "date": "2026-08-24",
       "votes": {
         "milei": 29.2,
-        "kirchner": 18.3,
-        "moreno": 8.7,
-        "macri": 1.7,
-        "villarruel": 4.7,
-        "gebel": 6.7
+        "kicillof": 18.3,
+        "massa": 8.7,
+        "grabois": 1.7,
+        "bregman": 4.7,
+        "villarruel": 6.7,
+        "gebel": 1.0
       },
       "n": 1286
     },
@@ -50,10 +51,10 @@
       "date": "2026-07-31",
       "votes": {
         "milei": 32.4,
-        "kirchner": 14.7,
-        "massa": 15.2,
-        "villarruel": 7.6,
-        "gebel": 6.4
+        "kicillof": 14.7,
+        "kirchner": 15.2,
+        "bregman": 7.6,
+        "villarruel": 6.4
       },
       "n": 1252
     },
@@ -62,11 +63,11 @@
       "date": "2026-07-28",
       "votes": {
         "milei": 30.5,
-        "kirchner": 14.8,
-        "moreno": 6.4,
-        "macri": 1.4,
-        "villarruel": 6.4,
-        "gebel": 5.3
+        "kicillof": 14.8,
+        "massa": 6.4,
+        "grabois": 1.4,
+        "bregman": 6.4,
+        "villarruel": 5.3
       },
       "n": 1139
     },
@@ -75,10 +76,10 @@
       "date": "2026-07-26",
       "votes": {
         "milei": 30.7,
-        "kirchner": 22.8,
-        "schiaretti": 8.3,
-        "bregman": 3.5,
-        "villarruel": 9.5
+        "kicillof": 22.8,
+        "macri": 8.3,
+        "schiaretti": 3.5,
+        "bregman": 9.5
       },
       "n": 1156
     },
@@ -87,11 +88,12 @@
       "date": "2026-07-26",
       "votes": {
         "milei": 30.3,
-        "kirchner": 32.9,
-        "schiaretti": 6.0,
-        "bregman": 2.4,
-        "villarruel": 9.0,
-        "gebel": 5.3
+        "kicillof": 32.9,
+        "macri": 6.0,
+        "schiaretti": 2.4,
+        "bregman": 9.0,
+        "villarruel": 5.3,
+        "gebel": 1.1
       },
       "n": 5400
     },
@@ -100,11 +102,11 @@
       "date": "2026-05-31",
       "votes": {
         "milei": 28.8,
-        "kirchner": 16.6,
-        "moreno": 5.6,
-        "macri": 1.3,
-        "villarruel": 6.6,
-        "gebel": 4.8
+        "kicillof": 16.6,
+        "massa": 5.6,
+        "grabois": 1.3,
+        "bregman": 6.6,
+        "villarruel": 4.8
       },
       "n": 1645
     },
@@ -113,11 +115,11 @@
       "date": "2026-05-27",
       "votes": {
         "milei": 32.8,
-        "kirchner": 26.3,
-        "macri": 5.1,
-        "schiaretti": 11.5,
-        "bregman": 4.0,
-        "villarruel": 12.6
+        "kicillof": 26.3,
+        "grabois": 5.1,
+        "macri": 11.5,
+        "schiaretti": 4.0,
+        "bregman": 12.6
       },
       "n": 4740
     },
@@ -126,9 +128,9 @@
       "date": "2026-05-25",
       "votes": {
         "milei": 39.1,
-        "kirchner": 23.0,
-        "schiaretti": 11.0,
-        "villarruel": 9.0
+        "kicillof": 23.0,
+        "macri": 11.0,
+        "bregman": 9.0
       },
       "n": 3450
     },
@@ -137,12 +139,13 @@
       "date": "2026-05-15",
       "votes": {
         "milei": 29.0,
-        "kirchner": 22.0,
-        "moreno": 3.0,
-        "macri": 3.0,
-        "schiaretti": 8.0,
-        "villarruel": 12.0,
-        "gebel": 4.0
+        "kicillof": 22.0,
+        "massa": 3.0,
+        "grabois": 3.0,
+        "macri": 8.0,
+        "bregman": 12.0,
+        "villarruel": 4.0,
+        "gebel": 1.0
       },
       "n": 1915
     },
@@ -151,9 +154,9 @@
       "date": "2026-04-14",
       "votes": {
         "milei": 29.6,
-        "kirchner": 40.4,
-        "bregman": 3.5,
-        "villarruel": 6.5
+        "kicillof": 40.4,
+        "schiaretti": 3.5,
+        "bregman": 6.5
       },
       "n": 3120
     },
@@ -162,10 +165,10 @@
       "date": "2026-03-28",
       "votes": {
         "milei": 28.3,
-        "kicillof": 7.4,
-        "kirchner": 24.2,
-        "macri": 6.7,
-        "gebel": 2.0
+        "kicillof": 24.2,
+        "grabois": 6.7,
+        "villarruel": 2.0,
+        "gebel": 3.2
       },
       "n": 2015
     },
@@ -174,9 +177,9 @@
       "date": "2026-03-15",
       "votes": {
         "milei": 38.1,
-        "kirchner": 33.0,
-        "bregman": 4.8,
-        "villarruel": 11.4
+        "kicillof": 33.0,
+        "schiaretti": 4.8,
+        "bregman": 11.4
       },
       "n": 3417
     },
@@ -185,11 +188,12 @@
       "date": "2026-02-15",
       "votes": {
         "milei": 35.7,
-        "kirchner": 22.5,
-        "grabois": 4.5,
-        "schiaretti": 5.2,
-        "bregman": 3.7,
-        "villarruel": 4.2
+        "kicillof": 22.5,
+        "moreno": 4.5,
+        "macri": 5.2,
+        "schiaretti": 3.7,
+        "bregman": 4.2,
+        "gebel": 0.8
       },
       "n": 2588
     }

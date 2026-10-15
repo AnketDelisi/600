@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T22:16:24Z",
+ "generated": "2026-10-15T21:12:30Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -10,16 +10,16 @@
    "seats": 120,
    "seat_based": true,
    "leader": "yashar",
-   "leader_pct": 21.6,
+   "leader_pct": 21.5,
    "leader_code": "YASH",
    "leader_color": "#62B9F2",
    "leader_logo": "img/il/Yashar.svg",
    "second": "likud",
-   "second_pct": 20.9,
+   "second_pct": 20.2,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 25,
-   "latest_poll": "2026-10-08"
+   "poll_count": 30,
+   "latest_poll": "2026-10-14"
   },
   "serbia": {
    "name": "Serbia",
@@ -55,11 +55,11 @@
    "leader_color": "#E20E28",
    "leader_logo": "img/br/Lula.svg",
    "second": "flavio",
-   "second_pct": 42.8,
+   "second_pct": 42.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 42,
-   "latest_poll": "2026-10-12"
+   "poll_count": 43,
+   "latest_poll": "2026-10-14"
   },
   "austria": {
    "name": "Austria",
@@ -70,7 +70,7 @@
    "seats": 183,
    "seat_based": false,
    "leader": "fpoe",
-   "leader_pct": 39.5,
+   "leader_pct": 39.6,
    "leader_code": "FPÖ",
    "leader_color": "#0056A2",
    "leader_logo": "img/at/FPO.svg",
@@ -78,7 +78,7 @@
    "second_pct": 20.0,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 5,
+   "poll_count": 4,
    "latest_poll": "2026-10-07"
   },
   "czechia": {
@@ -110,15 +110,15 @@
    "seats": 460,
    "seat_based": false,
    "leader": "ko",
-   "leader_pct": 32.2,
+   "leader_pct": 32.7,
    "leader_code": "KO",
    "leader_color": "#F68F2D",
    "leader_logo": "img/pl/KO.svg",
    "second": "pis",
-   "second_pct": 19.9,
+   "second_pct": 20.6,
    "last_winner_code": "PiS",
    "last_winner_color": "#263778",
-   "poll_count": 9,
+   "poll_count": 10,
    "latest_poll": "2026-10-06"
   },
   "netherlands": {
@@ -198,8 +198,8 @@
    "second_pct": null,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 17,
-   "latest_poll": "2026-10-12"
+   "poll_count": 19,
+   "latest_poll": "2026-10-14"
   },
   "germany": {
    "name": "Germany",
@@ -210,7 +210,7 @@
    "seats": 630,
    "seat_based": false,
    "leader": "afd",
-   "leader_pct": 28.3,
+   "leader_pct": 28.2,
    "leader_code": "AfD",
    "leader_color": "#00A2DE",
    "leader_logo": "img/de/AFD.svg",
@@ -218,7 +218,7 @@
    "second_pct": 19.3,
    "last_winner_code": "CDU/CSU",
    "last_winner_color": "#151518",
-   "poll_count": 23,
+   "poll_count": 19,
    "latest_poll": "2026-10-12"
   },
   "spain": {
@@ -230,15 +230,15 @@
    "seats": 350,
    "seat_based": false,
    "leader": "pp",
-   "leader_pct": 32.2,
+   "leader_pct": 30.9,
    "leader_code": "PP",
    "leader_color": "#1D84CE",
    "leader_logo": "img/es/PP.svg",
    "second": "psoe",
-   "second_pct": 26.4,
+   "second_pct": 27.1,
    "last_winner_code": "PP",
    "last_winner_color": "#1D84CE",
-   "poll_count": 24,
+   "poll_count": 27,
    "latest_poll": "2026-10-11"
   },
   "greece": {
@@ -250,16 +250,16 @@
    "seats": 300,
    "seat_based": false,
    "leader": "nd",
-   "leader_pct": 29.9,
+   "leader_pct": 29.7,
    "leader_code": "ND",
    "leader_color": "#1B5CC7",
    "leader_logo": "img/gr/ND.svg",
    "second": "elas",
-   "second_pct": 16.3,
+   "second_pct": 16.2,
    "last_winner_code": "ND",
    "last_winner_color": "#1B5CC7",
-   "poll_count": 11,
-   "latest_poll": "2026-10-10"
+   "poll_count": 14,
+   "latest_poll": "2026-10-14"
   },
   "italy": {
    "name": "Italy",
@@ -270,15 +270,15 @@
    "seats": 400,
    "seat_based": false,
    "leader": "fdi",
-   "leader_pct": 27.1,
+   "leader_pct": 27.2,
    "leader_code": "FdI",
    "leader_color": "#03386A",
    "leader_logo": "img/it/FDI.svg",
    "second": "pd",
-   "second_pct": 20.5,
+   "second_pct": 20.4,
    "last_winner_code": "FdI",
    "last_winner_color": "#03386A",
-   "poll_count": 27,
+   "poll_count": 28,
    "latest_poll": "2026-10-12"
   },
   "jp": {
@@ -315,10 +315,10 @@
    "leader_color": "#152484",
    "leader_logo": "img/kr/DPK.svg",
    "second": "ppp",
-   "second_pct": 32.1,
+   "second_pct": 32.2,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 52,
+   "poll_count": 49,
    "latest_poll": "2026-09-30"
   },
   "hr": {
@@ -378,7 +378,7 @@
    "second_pct": 24.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 6,
+   "poll_count": 5,
    "latest_poll": "2026-09-24"
   },
   "bc": {
@@ -390,16 +390,16 @@
    "seats": 93,
    "seat_based": false,
    "leader": "cpbc",
-   "leader_pct": 41.4,
+   "leader_pct": 42.4,
    "leader_code": "CPBC",
    "leader_color": "#004AAD",
    "leader_logo": "img/bc/CPBC.svg",
    "second": "bcndp",
-   "second_pct": 38.6,
+   "second_pct": 39.1,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 9,
-   "latest_poll": "2026-10-07"
+   "poll_count": 14,
+   "latest_poll": "2026-10-10"
   },
   "ontario": {
    "name": "Ontario",
@@ -450,16 +450,16 @@
    "seats": 343,
    "seat_based": false,
    "leader": "lpc",
-   "leader_pct": 46.9,
+   "leader_pct": 46.8,
    "leader_code": "LPC",
    "leader_color": "#EA6D6A",
    "leader_logo": "img/ca/LPC.svg",
    "second": "cpc",
-   "second_pct": 29.8,
+   "second_pct": 29.9,
    "last_winner_code": "LPC",
    "last_winner_color": "#EA6D6A",
-   "poll_count": 7,
-   "latest_poll": "2026-10-03"
+   "poll_count": 11,
+   "latest_poll": "2026-10-13"
   },
   "turkey": {
    "name": "Turkey",
@@ -470,15 +470,15 @@
    "seats": 600,
    "seat_based": false,
    "leader": "akp",
-   "leader_pct": 31.2,
+   "leader_pct": 31.0,
    "leader_code": "AKP",
-   "leader_color": "#FF8700",
+   "leader_color": "#fda000",
    "leader_logo": "img/tr/AKP.svg",
    "second": "yep",
-   "second_pct": 22.3,
+   "second_pct": 22.2,
    "last_winner_code": "AKP",
-   "last_winner_color": "#FF8700",
-   "poll_count": 5,
+   "last_winner_color": "#fda000",
+   "poll_count": 4,
    "latest_poll": "2026-10-04"
   },
   "hu": {
@@ -490,7 +490,7 @@
    "seats": 199,
    "seat_based": false,
    "leader": "tisza",
-   "leader_pct": 63.2,
+   "leader_pct": 62.0,
    "leader_code": "TISZA",
    "leader_color": "#88E8FF",
    "leader_logo": "img/hu/TISZA.svg",
@@ -498,8 +498,8 @@
    "second_pct": 25.9,
    "last_winner_code": "TISZA",
    "last_winner_color": "#88E8FF",
-   "poll_count": 3,
-   "latest_poll": "2026-09-30"
+   "poll_count": 4,
+   "latest_poll": "2026-10-15"
   },
   "argentina": {
    "name": "Argentina",
@@ -514,7 +514,7 @@
    "leader_code": "Milei",
    "leader_color": "#6C4C99",
    "leader_logo": "img/ar/LLA.svg",
-   "second": "kirchner",
+   "second": "kicillof",
    "second_pct": 25.3,
    "last_winner_code": "Massa",
    "last_winner_color": "#0E3C61",
@@ -638,7 +638,7 @@
    "second_pct": 13.1,
    "last_winner_code": "S",
    "last_winner_color": "#C82518",
-   "poll_count": 8,
+   "poll_count": 7,
    "latest_poll": "2026-10-11"
   },
   "fi": {
@@ -690,16 +690,16 @@
    "seats": 230,
    "seat_based": false,
    "leader": "ps",
-   "leader_pct": 28.0,
+   "leader_pct": 27.0,
    "leader_code": "PS",
    "leader_color": "#FF66FF",
    "leader_logo": "img/pt/PS.svg",
    "second": "ch",
-   "second_pct": 27.8,
+   "second_pct": 26.9,
    "last_winner_code": "AD",
    "last_winner_color": "#3777BC",
-   "poll_count": 6,
-   "latest_poll": "2026-10-07"
+   "poll_count": 7,
+   "latest_poll": "2026-10-12"
   },
   "uk": {
    "name": "United Kingdom",
@@ -710,16 +710,16 @@
    "seats": 650,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 27.0,
+   "leader_pct": 27.3,
    "leader_code": "LAB",
    "leader_color": "#E41C3E",
    "leader_logo": "img/uk/LAB.svg",
    "second": "ref",
-   "second_pct": 22.6,
+   "second_pct": 22.4,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 27,
-   "latest_poll": "2026-10-12"
+   "poll_count": 29,
+   "latest_poll": "2026-10-14"
   },
   "nz": {
    "name": "New Zealand",

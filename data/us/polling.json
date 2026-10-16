@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-15T21:13:33Z",
+  "scraped_at": "2026-10-16T10:39:36Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -697,10 +697,17 @@
       }
     },
     "Kansas": {
-      "dem": 46.2,
-      "rep": 45.5,
+      "dem": 46.3,
+      "rep": 45.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "October 13–14, 2026",
+          "partisan": "R",
+          "dem": 47.0,
+          "rep": 48.0
+        },
         {
           "pollster": "InsiderAdvantage",
           "dates": "October 9–10, 2026",
@@ -797,10 +804,17 @@
     "Kentucky": null,
     "Louisiana": null,
     "Maine": {
-      "dem": 49.1,
+      "dem": 49.2,
       "rep": 47.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "October 13–14, 2026",
+          "partisan": "R",
+          "dem": 49.0,
+          "rep": 47.0
+        },
         {
           "pollster": "Suffolk University",
           "dates": "October 8–11, 2026",
@@ -1058,6 +1072,12 @@
           "dates": "October 8–9, 2026",
           "dem": 53.0,
           "rep": 47.0
+        },
+        {
+          "pollster": "The Tyson Group",
+          "dates": "October 6–8, 2026",
+          "dem": 44.0,
+          "rep": 46.0
         },
         {
           "pollster": "Quantus Insights",
@@ -1525,11 +1545,25 @@
       }
     },
     "Montana": {
-      "dem": 20.0,
-      "rep": 42.7,
-      "ind": 27.0,
+      "dem": 18.4,
+      "rep": 41.4,
+      "ind": 28.5,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Concord Public Opinion Partners",
+          "dates": "October 6–8, 2026",
+          "dem": 13.0,
+          "rep": 35.0,
+          "ind": 37.0
+        },
+        {
+          "pollster": "American Pulse Research",
+          "dates": "September 19–24, 2026",
+          "dem": 19.0,
+          "rep": 45.0,
+          "ind": 26.0
+        },
         {
           "pollster": "Quantus Insights",
           "dates": "September 14–15, 2026",
@@ -1546,7 +1580,7 @@
           "ind": 32.0
         },
         {
-          "pollster": "Rutgers University Eagleton Institute of Politics",
+          "pollster": "Rutgers-Eagleton",
           "dates": "August 27 – September 7, 2026",
           "dem": 16.0,
           "rep": 38.0,
@@ -1555,6 +1589,7 @@
         {
           "pollster": "Peak Insights",
           "dates": "August 23–25, 2026",
+          "partisan": "R",
           "dem": 19.0,
           "rep": 44.0,
           "ind": 22.0
@@ -2622,10 +2657,17 @@
     },
     "Tennessee": null,
     "Texas": {
-      "dem": 48.2,
-      "rep": 45.3,
+      "dem": 48.5,
+      "rep": 45.6,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "InsiderAdvantage",
+          "dates": "October 13–14, 2026",
+          "partisan": "R",
+          "dem": 48.0,
+          "rep": 49.0
+        },
         {
           "pollster": "ActiVote",
           "dates": "September 30 – October 14, 2026",

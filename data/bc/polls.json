@@ -2,8 +2,8 @@
  "country": "bc",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
- "scraped_at": "2026-10-15T21:12:00Z",
- "poll_count": 52,
+ "scraped_at": "2026-10-16T10:38:24Z",
+ "poll_count": 54,
  "polls": [
   {
    "pollster": "Pallas Data",
@@ -19,6 +19,21 @@
     "gpbc": 11.0,
     "onbc": 5.0,
     "cbc": 2.0
+   }
+  },
+  {
+   "pollster": "Mainstreet Research",
+   "fieldwork_start": "2026-10-10",
+   "date": "2026-10-10",
+   "n": 329,
+   "country": "bc",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+   "votes": {
+    "bcndp": 36.0,
+    "cpbc": 47.0,
+    "gpbc": 7.0,
+    "cbc": 7.0
    }
   },
   {
@@ -52,6 +67,22 @@
     "gpbc": 8.0,
     "onbc": 2.0,
     "cbc": 2.0
+   }
+  },
+  {
+   "pollster": "Pollara",
+   "fieldwork_start": "2026-10-08",
+   "date": "2026-10-08",
+   "n": 1212,
+   "country": "bc",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+   "votes": {
+    "bcndp": 36.0,
+    "cpbc": 41.0,
+    "gpbc": 13.0,
+    "onbc": 5.0,
+    "cbc": 4.0
    }
   },
   {

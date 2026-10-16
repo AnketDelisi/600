@@ -2,7 +2,7 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-10-15T21:11:55Z",
+ "scraped_at": "2026-10-16T10:38:21Z",
  "poll_count": 567,
  "polls": [
   {
@@ -11610,12 +11610,12 @@
    "podemos": 3.0
   },
   "cataluna": {
-   "psoe": 30.98,
-   "sumar": 8.66,
-   "pp": 12.75,
-   "erc": 14.94,
-   "junts": 10.5,
-   "vox": 9.16,
+   "psoe": 31.55,
+   "sumar": 8.47,
+   "pp": 11.54,
+   "erc": 15.91,
+   "junts": 10.75,
+   "vox": 10.64,
    "podemos": 3.58
   },
   "galicia": {

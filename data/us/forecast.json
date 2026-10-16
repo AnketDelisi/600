@@ -1,9 +1,9 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-15T21:14:02Z",
+  "generated": "2026-10-16T10:39:52Z",
   "environment": {
     "election": "2026-11-03",
-    "days_to_election": 19,
+    "days_to_election": 18,
     "generic_ballot_generic_margin": 8.2,
     "n_sims": 20000,
     "rating_margin_table": {
@@ -326,131 +326,6 @@
         }
       },
       {
-        "state": "Montana",
-        "district": "",
-        "incumbent": "Steve Daines",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "lean": "Solid R",
-        "leader": "R",
-        "margin": 17.5,
-        "dem_pct": 0.1,
-        "rep_pct": 99.3,
-        "ind_pct": 0.7,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": "Seth Bodnar",
-        "polls": {
-          "dem": 20.0,
-          "rep": 42.7,
-          "ind": 27.0,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "Quantus Insights",
-              "dates": "September 14–15, 2026",
-              "partisan": "R",
-              "dem": 23.0,
-              "rep": 44.0,
-              "ind": 24.0
-            },
-            {
-              "pollster": "Aspect Strategic",
-              "dates": "September 7–15, 2026",
-              "dem": 14.0,
-              "rep": 44.0,
-              "ind": 32.0
-            },
-            {
-              "pollster": "Rutgers University Eagleton Institute of Politics",
-              "dates": "August 27 – September 7, 2026",
-              "dem": 16.0,
-              "rep": 38.0,
-              "ind": 30.0
-            },
-            {
-              "pollster": "Peak Insights",
-              "dates": "August 23–25, 2026",
-              "dem": 19.0,
-              "rep": 44.0,
-              "ind": 22.0
-            },
-            {
-              "pollster": "Hart Research",
-              "dates": "August 1–4, 2026",
-              "partisan": "D",
-              "dem": 15.0,
-              "rep": 45.0,
-              "ind": 30.0
-            },
-            {
-              "pollster": "Tavern Research",
-              "dates": "July 23–27, 2026",
-              "partisan": "D",
-              "dem": 24.0,
-              "rep": 49.0,
-              "ind": 25.0
-            },
-            {
-              "pollster": "GQR",
-              "dates": "July 23–26, 2026",
-              "partisan": "D",
-              "dem": 22.0,
-              "rep": 41.0,
-              "ind": 27.0
-            },
-            {
-              "pollster": "Bullfinch Group",
-              "dates": "July 13–16, 2026",
-              "partisan": "R",
-              "dem": 22.0,
-              "rep": 36.0,
-              "ind": 24.0
-            },
-            {
-              "pollster": "GrayHouse",
-              "dates": "June 23–24, 2026",
-              "partisan": "R",
-              "dem": 25.0,
-              "rep": 41.0,
-              "ind": 17.0
-            },
-            {
-              "pollster": "Hart Research",
-              "dates": "June 18–24, 2026",
-              "partisan": "D",
-              "dem": 22.0,
-              "rep": 47.0,
-              "ind": 25.0
-            },
-            {
-              "pollster": "Tavern Research",
-              "dates": "June 16–19, 2026",
-              "partisan": "D",
-              "dem": 26.0,
-              "rep": 49.0,
-              "ind": 24.0
-            },
-            {
-              "pollster": "Public Opinion Strategies",
-              "dates": "June 8–11, 2026",
-              "partisan": "R",
-              "dem": 25.0,
-              "rep": 44.0,
-              "ind": 20.0
-            }
-          ],
-          "names": {
-            "i": "Seth Bodnar"
-          }
-        }
-      },
-      {
         "state": "Colorado",
         "district": "",
         "incumbent": "John Hickenlooper",
@@ -603,6 +478,146 @@
         "rep_name": null,
         "ind_name": null,
         "polls": null
+      },
+      {
+        "state": "Montana",
+        "district": "",
+        "incumbent": "Steve Daines",
+        "party": "R",
+        "rating": "Solid R",
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        },
+        "lean": "Likely R",
+        "leader": "R",
+        "margin": 14.6,
+        "dem_pct": 0.1,
+        "rep_pct": 98.4,
+        "ind_pct": 1.5,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": "Seth Bodnar",
+        "polls": {
+          "dem": 18.4,
+          "rep": 41.4,
+          "ind": 28.5,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "Concord Public Opinion Partners",
+              "dates": "October 6–8, 2026",
+              "dem": 13.0,
+              "rep": 35.0,
+              "ind": 37.0
+            },
+            {
+              "pollster": "American Pulse Research",
+              "dates": "September 19–24, 2026",
+              "dem": 19.0,
+              "rep": 45.0,
+              "ind": 26.0
+            },
+            {
+              "pollster": "Quantus Insights",
+              "dates": "September 14–15, 2026",
+              "partisan": "R",
+              "dem": 23.0,
+              "rep": 44.0,
+              "ind": 24.0
+            },
+            {
+              "pollster": "Aspect Strategic",
+              "dates": "September 7–15, 2026",
+              "dem": 14.0,
+              "rep": 44.0,
+              "ind": 32.0
+            },
+            {
+              "pollster": "Rutgers-Eagleton",
+              "dates": "August 27 – September 7, 2026",
+              "dem": 16.0,
+              "rep": 38.0,
+              "ind": 30.0
+            },
+            {
+              "pollster": "Peak Insights",
+              "dates": "August 23–25, 2026",
+              "partisan": "R",
+              "dem": 19.0,
+              "rep": 44.0,
+              "ind": 22.0
+            },
+            {
+              "pollster": "Hart Research",
+              "dates": "August 1–4, 2026",
+              "partisan": "D",
+              "dem": 15.0,
+              "rep": 45.0,
+              "ind": 30.0
+            },
+            {
+              "pollster": "Tavern Research",
+              "dates": "July 23–27, 2026",
+              "partisan": "D",
+              "dem": 24.0,
+              "rep": 49.0,
+              "ind": 25.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "July 23–26, 2026",
+              "partisan": "D",
+              "dem": 22.0,
+              "rep": 41.0,
+              "ind": 27.0
+            },
+            {
+              "pollster": "Bullfinch Group",
+              "dates": "July 13–16, 2026",
+              "partisan": "R",
+              "dem": 22.0,
+              "rep": 36.0,
+              "ind": 24.0
+            },
+            {
+              "pollster": "GrayHouse",
+              "dates": "June 23–24, 2026",
+              "partisan": "R",
+              "dem": 25.0,
+              "rep": 41.0,
+              "ind": 17.0
+            },
+            {
+              "pollster": "Hart Research",
+              "dates": "June 18–24, 2026",
+              "partisan": "D",
+              "dem": 22.0,
+              "rep": 47.0,
+              "ind": 25.0
+            },
+            {
+              "pollster": "Tavern Research",
+              "dates": "June 16–19, 2026",
+              "partisan": "D",
+              "dem": 26.0,
+              "rep": 49.0,
+              "ind": 24.0
+            },
+            {
+              "pollster": "Public Opinion Strategies",
+              "dates": "June 8–11, 2026",
+              "partisan": "R",
+              "dem": 25.0,
+              "rep": 44.0,
+              "ind": 20.0
+            }
+          ],
+          "names": {
+            "i": "Seth Bodnar"
+          }
+        }
       },
       {
         "state": "Kentucky",
@@ -2038,18 +2053,25 @@
         },
         "lean": "Lean D",
         "leader": "D",
-        "margin": 3.3,
-        "dem_pct": 71.9,
-        "rep_pct": 28.1,
+        "margin": 3.4,
+        "dem_pct": 72.3,
+        "rep_pct": 27.7,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 49.1,
+          "dem": 49.2,
           "rep": 47.1,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "InsiderAdvantage",
+              "dates": "October 13–14, 2026",
+              "partisan": "R",
+              "dem": 49.0,
+              "rep": 47.0
+            },
             {
               "pollster": "Suffolk University",
               "dates": "October 8–11, 2026",
@@ -2240,10 +2262,17 @@
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 48.2,
-          "rep": 45.3,
+          "dem": 48.5,
+          "rep": 45.6,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "InsiderAdvantage",
+              "dates": "October 13–14, 2026",
+              "partisan": "R",
+              "dem": 48.0,
+              "rep": 49.0
+            },
             {
               "pollster": "ActiVote",
               "dates": "September 30 – October 14, 2026",
@@ -3101,6 +3130,12 @@
               "rep": 47.0
             },
             {
+              "pollster": "The Tyson Group",
+              "dates": "October 6–8, 2026",
+              "dem": 44.0,
+              "rep": 46.0
+            },
+            {
               "pollster": "Quantus Insights",
               "dates": "October 5–6, 2026",
               "partisan": "R",
@@ -3507,17 +3542,24 @@
         "lean": "Tossup",
         "leader": "D",
         "margin": 1.6,
-        "dem_pct": 61.4,
-        "rep_pct": 38.6,
+        "dem_pct": 61.0,
+        "rep_pct": 39.0,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 46.2,
-          "rep": 45.5,
+          "dem": 46.3,
+          "rep": 45.7,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "InsiderAdvantage",
+              "dates": "October 13–14, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 48.0
+            },
             {
               "pollster": "InsiderAdvantage",
               "dates": "October 9–10, 2026",
@@ -3762,7 +3804,7 @@
       },
       {
         "seats": 51,
-        "pct": 19.4
+        "pct": 19.3
       },
       {
         "seats": 53,
@@ -3770,11 +3812,11 @@
       },
       {
         "seats": 55,
-        "pct": 28.8
+        "pct": 28.9
       },
       {
         "seats": 57,
-        "pct": 10.4
+        "pct": 10.5
       },
       {
         "seats": 59,

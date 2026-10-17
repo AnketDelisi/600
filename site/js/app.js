@@ -584,6 +584,46 @@ let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting mat
 let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
 
 let EVENTS=[];
+window.__600_altLayer = async function(avg, want){
+  // the other map layer's svg, coloured directly (no DOM toggling): the
+  // districtShares winner logic is applied to a parsed copy of its file
+  const c=COUNTRIES[COUNTRY];
+  if(!c||!c.map||!c.map2) return null;
+  const other=want||(MAP_LAYER===1?'map':'map2');
+  const conf2=Object.assign({},c,c.map,c[other]);
+  if(!avg) avg=(typeof LAST_ELECTION!=='undefined'&&LAST_ELECTION.results)||{};
+  try{
+    let raw=MAP_CACHE[conf2.svg];
+    if(!raw){
+      const resp=await fetch(conf2.svg);
+      if(!resp.ok) return null;
+      raw=await resp.text();
+    }
+    const holder=document.createElement('div');
+    holder.innerHTML=raw;
+    const svg=holder.querySelector('svg');
+    if(!svg) return null;
+    svg.querySelectorAll('path[id]').forEach(function(ph){
+      const nr=ph.getAttribute('id');
+      try{
+        const shares=districtShares(nr, avg, false, conf2);
+        if(!shares) return;
+        let winner=null, best=-1;
+        PARTY_ORDER.forEach(function(p2){
+          const v=shares[p2]?shares[p2].now:0;
+          if(v>best){ best=v; winner=p2; }
+        });
+        if(!winner) return;
+        ph.style.fill=(PARTY_META[winner]||{}).color||'#888';
+        ph.style.stroke='#333333';
+        ph.style.strokeWidth='0.3';
+      }catch(e){}
+    });
+    return svg;
+  }catch(e){ return null; }
+}
+let ALT_MAP_SVG=null;
+
 async function loadData(){
   try{
     // Detect base: local dev (site/ subdir) vs Pages (root)
@@ -5320,7 +5360,7 @@ function renderPrediction(pane){
         rows:rows, grid:grid, tiles:null,
         arcSvg:tmp.querySelector('svg'),
         mapSvg:mapBox?mapBox.querySelector('svg'):null,
-        mapSvg2:await altLayerSvgDirect(votes),
+        mapSvg2:await window.__600_altLayer(votes,'map2'),
       });
       downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-prediction.png');
     });
@@ -5811,45 +5851,7 @@ function renderForecast(pane){
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
     });
   }
-  async function altLayerSvgDirect(avg){
-  // the other map layer's svg, coloured directly (no DOM toggling): the
-  // districtShares winner logic is applied to a parsed copy of its file
-  const c=COUNTRIES[COUNTRY];
-  if(!c||!c.map||!c.map2) return null;
-  const other=MAP_LAYER===1?'map':'map2';
-  const conf2=Object.assign({},c,c.map,c[other]);
-  if(!avg) avg=(typeof LAST_ELECTION!=='undefined'&&LAST_ELECTION.results)||{};
-  try{
-    let raw=MAP_CACHE[conf2.svg];
-    if(!raw){
-      const resp=await fetch(conf2.svg);
-      if(!resp.ok) return null;
-      raw=await resp.text();
-    }
-    const holder=document.createElement('div');
-    holder.innerHTML=raw;
-    const svg=holder.querySelector('svg');
-    if(!svg) return null;
-    svg.querySelectorAll('path[id]').forEach(function(ph){
-      const nr=ph.getAttribute('id');
-      try{
-        const shares=districtShares(nr, avg, false, conf2);
-        if(!shares) return;
-        let winner=null, best=-1;
-        PARTY_ORDER.forEach(function(p2){
-          const v=shares[p2]?shares[p2].now:0;
-          if(v>best){ best=v; winner=p2; }
-        });
-        if(!winner) return;
-        ph.style.fill=(PARTY_META[winner]||{}).color||'#888';
-        ph.style.stroke='#333333';
-        ph.style.strokeWidth='0.3';
-      }catch(e){}
-    });
-    return svg;
-  }catch(e){ return null; }
-}
-let ALT_MAP_SVG=null;
+  
 
 const posterOpts=()=>{
     const nS=sim.nSims;
@@ -5980,7 +5982,7 @@ const posterOpts=()=>{
   const fcPoster=$('fc-poster-btn');
   if(fcPoster){
     fcPoster.addEventListener('click',async()=>{
-      ALT_MAP_SVG=await altLayerSvgDirect((typeof fcAvg!=='undefined'?fcAvg:(typeof avg!=='undefined'?avg:null)));
+      ALT_MAP_SVG=await window.__600_altLayer((typeof fcAvg!=='undefined'?fcAvg:(typeof avg!=='undefined'?avg:null)),'map2');
       const canvas=await renderPoster(posterOpts());
       downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-poster.png');
     });
@@ -5988,7 +5990,7 @@ const posterOpts=()=>{
   const fcCopy=$('fc-copy-btn');
   if(fcCopy){
     fcCopy.addEventListener('click',async()=>{
-      ALT_MAP_SVG=await altLayerSvgDirect((typeof fcAvg!=='undefined'?fcAvg:(typeof avg!=='undefined'?avg:null)));
+      ALT_MAP_SVG=await window.__600_altLayer((typeof fcAvg!=='undefined'?fcAvg:(typeof avg!=='undefined'?avg:null)),'map2');
       const canvas=await renderPoster(posterOpts());
       canvas.toBlob(async(blob)=>{
         try{

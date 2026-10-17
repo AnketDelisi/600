@@ -584,6 +584,7 @@ let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting mat
 let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
 
 let EVENTS=[];
+const CAL_TRENDS={};
 async function loadData(){
   try{
     // Detect base: local dev (site/ subdir) vs Pages (root)
@@ -1052,6 +1053,27 @@ function renderHomeBody(){
     sec(t('NEXT ELECTIONS','YAKLA\u015eAN SE\u00c7\u0130MLER'),upcoming,x=>calCard(...x,'next'))+
     sec(t('RECENTLY HELD','SON YAPILANLAR'),past,x=>calCard(...x,'past'))+
     sec(t('DATE TO BE CONFIRMED','TAR\u0130H BELL\u0130 DE\u011e\u0130L'),tbc,x=>calCard(x[0],x[1],null,'tbc'));
+  body.querySelectorAll('canvas.cal-spark').forEach(cv=>{
+    const tr=CAL_TRENDS[cv.dataset.spark]||[];
+    if(tr.length<3) return;
+    const ctx=cv.getContext('2d');
+    const w=cv.width, h=cv.height;
+    const vals=tr.map(p=>p[1]);
+    const mn=Math.min.apply(null,vals)-1, mx=Math.max.apply(null,vals)+1;
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='#475569';ctx.lineWidth=2;ctx.beginPath();
+    tr.forEach((p,i)=>{
+      const x=3+(w-6)*i/(tr.length-1);
+      const y=h-5-(h-10)*(p[1]-mn)/Math.max(0.5,mx-mn);
+      if(i) ctx.lineTo(x,y); else ctx.moveTo(x,y);
+    });
+    ctx.stroke();
+    const li=tr.length-1;
+    const lx=3+(w-6)*li/(tr.length-1);
+    const ly=h-5-(h-10)*(tr[li][1]-mn)/Math.max(0.5,mx-mn);
+    ctx.fillStyle='#111827';
+    ctx.beginPath();ctx.arc(lx,ly,2.6,0,Math.PI*2);ctx.fill();
+  });
   body.querySelectorAll('.cal-card').forEach(b=>{
     b.addEventListener('click',()=>{ if(window._600) window._600.setCountry(b.dataset.cnav); });
   });
@@ -1075,6 +1097,20 @@ function calCard(id,s,ne,mode){
       <span class="cal-dot" style="background:${s.last_winner_color||'#888'}"></span>
       <b>${s.last_winner_code}</b> ${t('won','kazand\u0131')}</span>`:'';
   const fresh=s.latest_poll?`${s.poll_count} ${t('polls','anket')} \u00b7 ${t('latest','en yeni')} ${s.latest_poll.slice(5)}`:'';
+  let spark='';
+  if(s.trend&&s.trend.length>=4){
+    CAL_TRENDS[id]=s.trend;
+    spark=`<canvas class="cal-spark" width="180" height="40" data-spark="${id}" style="width:100%;height:40px;display:block;margin:6px 0 2px"></canvas>`;
+  }
+  let race='';
+  const lp=s.leader_pct, sp2=s.second_pct;
+  if(lp!=null&&sp2!=null){
+    const tot=Math.max(1,lp+sp2);
+    const sc=(COUNTRIES[id]&&COUNTRIES[id].parties&&COUNTRIES[id].parties[s.second]||{}).color||'#94A3B8';
+    race=`<div style="display:flex;height:8px;border:1px solid #111;margin-top:4px">`+
+      `<i style="width:${(100*lp/tot).toFixed(1)}%;background:${s.leader_color||'#888'};display:block"></i>`+
+      `<i style="width:${(100*sp2/tot).toFixed(1)}%;background:${sc};display:block"></i></div>`;
+  }
   return `<button class="cal-card" data-cnav="${id}">
     <div class="cal-top">
       <img class="cal-flag" src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy">
@@ -1082,7 +1118,7 @@ function calCard(id,s,ne,mode){
     </div>
     <div class="cal-meta">${dateTxt} \u00b7 ${s.seats||c.seats} ${t('seats','sandalye')}${METHOD_SHORT[c.method]?' \u00b7 '+METHOD_SHORT[c.method]:''}</div>
     <div class="cal-foot">${mode==='past'?won:leader}</div>
-    <div class="cal-fresh">${fresh}</div>
+    <div class="cal-fresh">${spark}${race}${fresh}</div>
   </button>`;
 }
 

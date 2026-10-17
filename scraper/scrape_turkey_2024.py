@@ -1,139 +1,115 @@
 #!/usr/bin/env python3
-"""2024 local elections (31 March) per-province party shares, from the
-tr.wikipedia per-province articles ("<İl>'de 2024 Türkiye yerel seçimleri").
+"""2024 belediye meclisi uyeligi (council) results per province from YSK.
 
-The article's first big party table is the province-wide mayoral race
-(büyükşehir/belediye başkanlığı) - used directly. Provinces whose article
-has no province table (non-metropolitan) sum their ilçe tables instead.
-Output: data/turkey/2024_local.json {province_id: {party: pct}}.
+The official system (sonuc.ysk.gov.tr) is an Angular app; its API takes
+secimId=hashData(secim_ID)=secim_ID*3+102 and answers curl but not python's
+TLS fingerprint. Election 20260 = 31 Mart 2024 Mahalli Idareler; type 3 =
+Belediye Meclisi Uyeligi. Per province: the party column headers, then the
+per-ilce vote rows summed. Writes data/turkey/2024_local.json.
+
+Usage: python scraper/scrape_turkey_2024.py [--il istanbul]
 """
 import json
 import os
 import re
+import subprocess
 import sys
 import time
-
-import requests
-from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import build_turkey as bt
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 CACHE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.cache')
-S = requests.Session()
-S.headers['User-Agent'] = '600-poll-scraper/1.0'
+JAR = os.path.join(CACHE, 'ysk_cookies.txt')
+SECIM_ID = 20260
+H = SECIM_ID * 3 + 102
+TYPE_COUNCIL = 3
+BASE = 'https://sonuc.ysk.gov.tr/api/'
 
-FULL = dict(bt.PROV_COLS)
-for lab, key in (('dem parti', 'dem'), ('yesil sol parti', 'dem'),
-                 ('halklarin esitlik', 'dem'), ('yeniden refah partisi', 'yrp'),
-                 ('zafer partisi', 'zp'), ('turkiye isci partisi', 'tip'),
-                 ('buyuk birlik partisi', 'bbp'), ('cumhuriyet halk partisi', 'chp'),
-                 ('milliyetci hareket partisi', 'mhp'), ('iyi parti', 'iyi'),
-                 ('saadet partisi', 'saadet')):
-    FULL.setdefault(lab, key)
-
-
-def party_of(lab):
-    if lab in FULL:
-        return FULL[lab]
-    for k, v in FULL.items():
-        if lab.startswith(k + ' '):
-            return v
-    return None
+COL_MAP = {
+    'AK PARTİ': 'akp', 'CHP': 'chp', 'MHP': 'mhp', 'İYİ PARTİ': 'iyi',
+    'DEM PARTİ': 'dem', 'YENİDEN REFAH': 'yrp', 'ZAFER PARTİSİ': 'zp',
+    'TİP': 'tip', 'SAADET': 'saadet', 'BÜYÜK BİRLİK': 'bbp',
+}
+UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/125'
 
 
-def parse_table(grid):
-    """Party rows of an 'Oy sayısı' result table -> {party: votes}."""
-    hdr = None
-    for ri, row in enumerate(grid[:8]):
-        if row and any('oy sayısı' in (c or '').lower() for c in row):
-            hdr = ri
-            break
-    if hdr is None:
-        return None
-    pcol = vcol = None
-    for ci, cell in enumerate(grid[hdr]):
-        low = (cell or '').lower()
-        if 'oy sayısı' in low:
-            vcol = ci
-        if low.strip() in ('parti', 'parti̇'):
-            pcol = ci
-    if vcol is None:
-        return None
-    votes = {}
-    for row in grid[hdr + 1:]:
-        if not row or len(row) <= vcol:
-            continue
-        lab = bt.norm_label(row[pcol] if pcol is not None and pcol < len(row)
-                            else '')
-        key = party_of(lab)
-        if not key:
-            continue
-        v = bt.num(row[vcol])
-        if v:
-            votes[key] = votes.get(key, 0) + v
-    return votes or None
+def curl(url):
+    r = subprocess.run(['curl.exe', '-s', '--max-time', '90',
+                        '-b', JAR, '-c', JAR, '-A', UA, url],
+                       capture_output=True, text=True, timeout=120)
+    return (r.stdout or '').strip()
+
+
+def params(il_id, extra=''):
+    return ('secimId=%d&secimTuru=%d&ilId=%s&ilceId=&beldeId=&birimId='
+            '&muhtarlikId=&cezaeviId=&sandikTuru=-1&sandikNoIlk=&sandikNoSon='
+            '&ulkeId=&disTemsilcilikId=&gumrukId=&yurtIciDisi=1&sandikRumuzIlk='
+            '&sandikRumuzSon=&secimCevresiId=&sandikId=%s' % (H, TYPE_COUNCIL,
+                                                             il_id, extra))
 
 
 def main():
-    gj = json.load(open(os.path.join(CACHE, 'tr_ilceler.geojson'),
-                        encoding='utf8'))
-    pnames = {}
-    for f in gj['features']:
-        nm = f['properties'].get('NAME_1')
-        if nm:
-            pnames[bt.bm.fold(nm)] = nm
+    only = None
+    if '--il' in sys.argv:
+        only = sys.argv[sys.argv.index('--il') + 1]
+    curl('https://sonuc.ysk.gov.tr/sonuc')  # session cookies
+    # the il list itself: mirror the app's call
+    ils = json.loads(curl(
+        BASE + 'getIlList?secimId=%d&secimTuru=%d&sandikTuru=-1'
+               '&yurtIciDisi=1' % (H, TYPE_COUNCIL)))
     out = {}
-    for pid, nm in sorted(pnames.items()):
-        cfile = os.path.join(CACHE, 'tr24_%s.html' % pid)
-        if os.path.exists(cfile):
-            html = open(cfile, encoding='utf8').read()
-        else:
-            title = "%s'%s 2024 Türkiye yerel seçimleri" % (nm, bt.locative(nm))
-            url = ('https://tr.wikipedia.org/wiki/'
-                   + requests.utils.quote(title.replace(' ', '_')))
-            r = S.get(url, timeout=120)
-            if r.status_code != 200:
-                print('%-14s MISS %s' % (pid, r.status_code))
-                continue
-            html = r.text
-            open(cfile, 'w', encoding='utf8').write(html)
-            time.sleep(0.8)
-        soup = BeautifulSoup(html, 'lxml')
-        h2 = None
-        prov_votes = None
-        sum_votes = {}
-        for el in soup.find_all(['h2', 'table']):
-            if el.name == 'h2':
-                h2 = el.get_text(' ', strip=True)
-                continue
-            if 'wikitable' not in (el.get('class') or []):
-                continue
-            grid = bt.expand_grid(el)
-            if not grid or len(grid) < 10:
-                continue
-            v = parse_table(grid)
-            if not v:
-                continue
-            if prov_votes is None and h2 and \
-                    re.search(r'belediye|büyükşehir', h2, re.I):
-                prov_votes = v
-            else:
-                for p, x in v.items():
-                    sum_votes[p] = sum_votes.get(p, 0) + x
-        votes = prov_votes or sum_votes
-        tv = sum(votes.values())
+    for ent in ils:
+        pid = bt.fold(ent['il_ADI'])
+        if only and pid != only:
+            continue
+        iid = ent['il_ID']
+        hdr = curl(BASE + 'getSandikSecimSonucBaslikList?'
+                   + params(iid) + '&sorguTuru=1')
+        try:
+            headers = json.loads(hdr)
+        except Exception:
+            print('%-14s header fail' % pid)
+            continue
+        col_key = {}
+        for h in headers:
+            col = h.get('column_NAME') or ''
+            ad = (h.get('ad') or '').strip().upper()
+            key = COL_MAP.get(ad)
+            if key is None:
+                for pre, k in (('DEM', 'dem'), ('YEŞİL SOL', 'dem'),
+                               ('HDP', 'dem'), ('AK PART', 'akp'),
+                               ('CHP', 'chp'), ('MHP', 'mhp'),
+                               ('İYİ', 'iyi'),
+                               ('YENİDEN REFAH', 'yrp'),
+                               ('ZAFER', 'zp'), ('TÜRKİYE İŞÇİ', 'tip'),
+                               ('TİP', 'tip'), ('SAADET', 'saadet'),
+                               ('BÜYÜK BİRLİK', 'bbp')):
+                    if ad.startswith(pre):
+                        key = k
+                        break
+            col_key[col] = key or 'other'
+        rows = json.loads(curl(BASE + 'getSecimSandikSonucList?'
+                               + params(iid) + '&sorguTuru=2'))
+        tot = {}
+        for row in rows:
+            for col, key in col_key.items():
+                v = row.get(col)
+                if isinstance(v, (int, float)) and v:
+                    tot[key] = tot.get(key, 0) + int(v)
+        tv = sum(tot.values())
         if not tv:
             print('%-14s no data' % pid)
             continue
         keep = ('akp', 'chp', 'mhp', 'iyi', 'dem', 'yrp', 'zp', 'tip',
                 'saadet', 'bbp')
-        out[pid] = {p: round(100.0 * votes.get(p, 0) / tv, 2) for p in keep}
+        out[pid] = {p: round(100.0 * tot.get(p, 0) / tv, 2) for p in keep}
+        out[pid]['other'] = round(100.0 * tot.get('other', 0) / tv, 2)
         top = sorted(out[pid].items(), key=lambda x: -x[1])[:4]
-        print('%-14s %-8s %s' % (pid, 'prov' if prov_votes else 'ilce-sum',
-                                 ', '.join('%s %.1f' % (k, x)
-                                           for k, x in top)))
+        print('%-14s %s' % (pid, ', '.join('%s %.1f' % (k, v)
+                                           for k, v in top)))
+        time.sleep(0.4)
     path = os.path.join(ROOT, 'data', 'turkey', '2024_local.json')
     json.dump(out, open(path, 'w', encoding='utf8'),
               ensure_ascii=False, indent=1)

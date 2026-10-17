@@ -584,46 +584,6 @@ let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting mat
 let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
 
 let EVENTS=[];
-window.__600_altLayer = async function(avg, want){
-  // the other map layer's svg, coloured directly (no DOM toggling): the
-  // districtShares winner logic is applied to a parsed copy of its file
-  const c=COUNTRIES[COUNTRY];
-  if(!c||!c.map||!c.map2) return null;
-  const other=want||(MAP_LAYER===1?'map':'map2');
-  const conf2=Object.assign({},c,c.map,c[other]);
-  if(!avg) avg=(typeof LAST_ELECTION!=='undefined'&&LAST_ELECTION.results)||{};
-  try{
-    let raw=MAP_CACHE[conf2.svg];
-    if(!raw){
-      const resp=await fetch(conf2.svg);
-      if(!resp.ok) return null;
-      raw=await resp.text();
-    }
-    const holder=document.createElement('div');
-    holder.innerHTML=raw;
-    const svg=holder.querySelector('svg');
-    if(!svg) return null;
-    svg.querySelectorAll('path[id]').forEach(function(ph){
-      const nr=ph.getAttribute('id');
-      try{
-        const shares=districtShares(nr, avg, false, conf2);
-        if(!shares) return;
-        let winner=null, best=-1;
-        PARTY_ORDER.forEach(function(p2){
-          const v=shares[p2]?shares[p2].now:0;
-          if(v>best){ best=v; winner=p2; }
-        });
-        if(!winner) return;
-        ph.style.fill=(PARTY_META[winner]||{}).color||'#888';
-        ph.style.stroke='#333333';
-        ph.style.strokeWidth='0.3';
-      }catch(e){}
-    });
-    return svg;
-  }catch(e){ return null; }
-}
-let ALT_MAP_SVG=null;
-
 async function loadData(){
   try{
     // Detect base: local dev (site/ subdir) vs Pages (root)
@@ -3470,7 +3430,6 @@ async function renderPoster(opts){
   const logos=await Promise.all(rows.concat(grid).map(r=>loadImg(r.logo)));
   const arcImg=await svgElementToImg(opts.arcSvg,true);
   const mapImg=await svgElementToImg(opts.mapSvg,true);
-  const mapImg2=opts.mapSvg2?await svgElementToImg(opts.mapSvg2,true):null;
 
   const X=40, barW=420;
   // consistent spacing across every country: the box always leaves a 10px
@@ -3682,20 +3641,13 @@ async function renderPoster(opts){
   }
   if(mapImg){
     // the arc always keeps its own band at the bottom-right (no overlap with
-    // any map shape); the map takes everything above it, centered. A second
-    // (ilçe-level) map, when given, takes a small strip below the main one
+    // any map shape); the map takes everything above it, centered
     const arcW=460, arcH=170, arcBand=arcH+12;
     const mx=620, my=140, mw=W-mx-40;
-    const smallH=mapImg2?148:0;
-    const mh=H-my-30-arcBand-(mapImg2?smallH+14:0);
+    const mh=H-my-30-arcBand;
     const sc=Math.min(mw/mapImg.width, mh/mapImg.height);
     const dw=mapImg.width*sc, dh=mapImg.height*sc;
     ctx.drawImage(mapImg,mx+(mw-dw)/2,my+(mh-dh)/2,dw,dh);
-    if(mapImg2){
-      const s2b=Math.min(430/mapImg2.width, smallH/mapImg2.height);
-      ctx.drawImage(mapImg2, mx+10, my+mh+14,
-                    mapImg2.width*s2b, mapImg2.height*s2b);
-    }
     if(arcImg){
       const ax=W-40-arcW, ay=H-30-arcH;
       const s2=Math.min(arcW/arcImg.width, arcH/arcImg.height);
@@ -5360,7 +5312,6 @@ function renderPrediction(pane){
         rows:rows, grid:grid, tiles:null,
         arcSvg:tmp.querySelector('svg'),
         mapSvg:mapBox?mapBox.querySelector('svg'):null,
-        mapSvg2:await window.__600_altLayer(votes,'map2'),
       });
       downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-prediction.png');
     });
@@ -5851,9 +5802,7 @@ function renderForecast(pane){
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
     });
   }
-  
-
-const posterOpts=()=>{
+  const posterOpts=()=>{
     const nS=sim.nSims;
     const rows=[];
     const grid=[];
@@ -5975,14 +5924,13 @@ const posterOpts=()=>{
           :t('If the election were held today','Seçim Bugün Olsaydı'),
         rows:rows, grid:grid, tiles:tiles,
         arcSvg:MAP_ONLY?null:tmp.querySelector('svg'),
-        mapSvg:mapBox?mapBox.querySelector('svg'):null, mapSvg2:ALT_MAP_SVG,
+        mapSvg:mapBox?mapBox.querySelector('svg'):null,
         file:COUNTRY+'-poster.png'
       };
   };
   const fcPoster=$('fc-poster-btn');
   if(fcPoster){
     fcPoster.addEventListener('click',async()=>{
-      ALT_MAP_SVG=await window.__600_altLayer((typeof fcAvg!=='undefined'?fcAvg:(typeof avg!=='undefined'?avg:null)),'map2');
       const canvas=await renderPoster(posterOpts());
       downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-poster.png');
     });
@@ -5990,7 +5938,6 @@ const posterOpts=()=>{
   const fcCopy=$('fc-copy-btn');
   if(fcCopy){
     fcCopy.addEventListener('click',async()=>{
-      ALT_MAP_SVG=await window.__600_altLayer((typeof fcAvg!=='undefined'?fcAvg:(typeof avg!=='undefined'?avg:null)),'map2');
       const canvas=await renderPoster(posterOpts());
       canvas.toBlob(async(blob)=>{
         try{

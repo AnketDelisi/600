@@ -261,7 +261,8 @@ def main():
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--force"]
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     gebiete = {k: {p: region[k].get(p, 0) for p in PARTIES}
                for k in REGIONS}

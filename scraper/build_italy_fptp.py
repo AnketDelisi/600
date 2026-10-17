@@ -278,7 +278,8 @@ def main():
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION]
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # districts from the shapefile -> per-college 2022 shares + winners
     cons = []

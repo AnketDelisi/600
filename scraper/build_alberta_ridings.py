@@ -213,7 +213,8 @@ def main():
     t = re.sub(r'(<svg[^>]*?)width="[\d.]+" height="[\d.]+"',
                r'\g<1>width="%.1f" height="%.1f"' % (nw, h), t, count=1)
     open(OUT_SVG, "w", encoding="utf8", newline="").write(t)
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # logos
     dst = os.path.join(ROOT, "img", "alb")

@@ -156,7 +156,8 @@ def main():
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--force"]
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # verify: land = valid-weighted sum of its bezirke
     for d, lk in LANDS.items():

@@ -205,7 +205,8 @@ def main():
     bm.main()
     bm.add_inset(OUT_SVG, ZOOM_SVG, urban_ids, 150, (790, 60),
                  label="Toronto")
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # logos
     dst = os.path.join(ROOT, "img", "ont")

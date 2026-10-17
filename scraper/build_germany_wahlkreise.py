@@ -109,7 +109,8 @@ def main():
         sys.argv.append("--force")
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # --- patch config: constituencies flag + map2 layer
     cfg_path = os.path.join(ROOT, "js", "config.js")

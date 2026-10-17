@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-HTMLS = ["index.html", "poll/index.html", "sweden/index.html"]
+HTMLS = ["index.html", "poll/index.html"]
 
 
 def run(script, timeout=600):

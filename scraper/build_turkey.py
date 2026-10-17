@@ -781,6 +781,31 @@ def main():
             _nf += 1
     print("ilçe fills:", _nf)
 
+    # ---- 2024 belediye meclisi (YSK, official): the 15% base blend ----
+    prev_gebiete = {}
+    prev_nat = {}
+    lp = os.path.join(ROOT, "data", "turkey", "2024_local.json")
+    if os.path.exists(lp):
+        loc = json.load(open(lp, encoding="utf8"))
+        for key in geo_shares:
+            prov = key.split("-")[0] if "-" in key else key
+            sh = loc.get(prov)
+            if not sh:
+                continue
+            prev_gebiete[key] = {k: v for k, v in sh.items()
+                                 if k != "other"}
+        wsum2, tw2 = {}, 0.0
+        for pid, sh in loc.items():
+            w = districts.get(pid) if isinstance(districts.get(pid), int) else 1
+            tw2 += w
+            for k, v in sh.items():
+                if k != "other":
+                    wsum2[k] = wsum2.get(k, 0) + v * w
+        prev_nat = {k: round(v / tw2, 2) for k, v in wsum2.items()}
+        print("2024 blend:", {k: prev_nat.get(k) for k in
+                              ("akp", "chp", "dem", "mhp")},
+              "| provinces:", len(prev_gebiete))
+
 
     import shutil
     if os.path.isdir(os.path.dirname(BMV_SVG)):
@@ -865,6 +890,9 @@ def main():
       // 2023 election (these carry proxy geography for the swing)
       proxyParties: ['a', 'yep', 'saadet'],
       ilceDistrict: %s,
+      prevGebiete: %s,
+      prevNational: %s,
+      baseBlend: 0.85,
     },
     map2: { svg: 'img/turkey.svg', label: 'İLÇE HARİTASI' },
   },
@@ -878,7 +906,9 @@ def main():
        j(NAT, ensure_ascii=False),
        j({k: v for k, v in districts.items() if v}),
        j(mv2023, ensure_ascii=False),
-      j(ilce_dist))
+      j(ilce_dist),
+      j(prev_gebiete, ensure_ascii=False),
+      j(prev_nat, ensure_ascii=False))
 
     text = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
     m = re.search(r"\n  turkey: \{", text)

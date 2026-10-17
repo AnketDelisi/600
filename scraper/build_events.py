@@ -57,41 +57,15 @@ def main():
             events[cc] = lst
     for cc, lst in CURATED.items():
         events.setdefault(cc, []).extend(lst)
-    # data-derived party entrances: a party whose first appearance is well
-    # after the series starts and that sticks around is a real system change
-    # (a split, a new alliance, a new candidate entering the field)
-    from datetime import date, timedelta
-    data_dir = os.path.join(ROOT, "data")
-    for cc in sorted(os.listdir(data_dir)):
-        pj = os.path.join(data_dir, cc, "polls.json")
-        if not os.path.exists(pj):
-            continue
-        try:
-            polls = json.load(open(pj, encoding="utf8")).get("polls") or []
-        except Exception:
-            continue
-        dated = [p for p in polls if p.get("date") and p.get("votes")]
-        if len(dated) < 8:
-            continue
-        first = min(p["date"] for p in dated)
-        cutoff = (date.fromisoformat(first) + timedelta(days=180)).isoformat()
-        appeared = {}
-        for p in dated:
-            for k in p["votes"]:
-                appeared.setdefault(k, []).append(p["date"])
-        names = cfg.get(cc, {}).get("parties") or {}
-        ent = []
-        for k, ds in appeared.items():
-            fd = min(ds)
-            if fd <= cutoff or len(ds) < 5:
-                continue
-            ent.append((len(ds), fd, k))
-        for n, fd, k in sorted(ent, reverse=True)[:3]:
-            nm = names.get(k) or {}
-            events.setdefault(cc, []).append(
-                {"date": fd,
-                 "en": "%s first polled" % (nm.get("e") or k.upper()),
-                 "tr": "%s ilk kez anketlerde" % (nm.get("n") or k.upper())})
+    # Turkey: the Yeni Parti split = its first appearance in the polls
+    tp = os.path.join(ROOT, "data", "turkey", "polls.json")
+    if os.path.exists(tp):
+        polls = json.load(open(tp, encoding="utf8")).get("polls") or []
+        yep = sorted(p["date"] for p in polls if "yep" in (p.get("votes") or {}))
+        if yep:
+            events.setdefault("turkey", []).append(
+                {"date": yep[0], "en": "Yeni Parti first polled (CHP split)",
+                 "tr": "Yeni Parti ilk kez anketlerde (CHP b\u00f6l\u00fcnmesi)"})
     for cc in events:
         events[cc].sort(key=lambda e: e["date"])
     path = os.path.join(ROOT, "data", "events.json")

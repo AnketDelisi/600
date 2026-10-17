@@ -2,9 +2,35 @@
  "country": "netherlands",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Dutch_general_election",
- "scraped_at": "2026-10-16T10:38:17Z",
- "poll_count": 38,
+ "scraped_at": "2026-10-17T10:06:36Z",
+ "poll_count": 39,
  "polls": [
+  {
+   "pollster": "Ipsos I&O",
+   "date": "2026-10-14",
+   "votes": {
+    "d66": 15,
+    "pvv": 18,
+    "vvd": 15,
+    "pro": 28,
+    "cda": 13,
+    "ja21": 18,
+    "fvd": 11,
+    "bbb": 2,
+    "denk": 2,
+    "sgp": 4,
+    "pvdd": 6,
+    "cu": 5,
+    "sp": 5,
+    "fiftyplus": 5,
+    "volt": 3
+   },
+   "country": "netherlands",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Dutch_general_election",
+   "n": 1697,
+   "method": "mixed"
+  },
   {
    "pollster": "Peil.nl",
    "date": "2026-10-02",

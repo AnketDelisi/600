@@ -6,7 +6,7 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
   }
  ],
- "scraped_at": "2026-10-16T10:38:33Z",
+ "scraped_at": "2026-10-17T10:06:58Z",
  "poll_count": 53,
  "polls": [
   {
@@ -15,10 +15,10 @@
    "date": "2026-10-14",
    "n": 1043,
    "votes": {
-    "arthaud": 0.5,
+    "arthaud": 1.0,
     "melenchon": 15.0,
-    "roussel": 2.0,
-    "tondelier": 1.0,
+    "roussel": 1.0,
+    "tondelier": 2.0,
     "bouamrane": 0.5,
     "glucksmann": 13.0,
     "attal": 5.0,

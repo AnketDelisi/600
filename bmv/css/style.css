@@ -116,7 +116,7 @@ button:active{transform:translateY(1px)}
   font-size:11px;font-weight:800;letter-spacing:0.3px;text-transform:uppercase;color:var(--c-text-main);
   box-shadow:var(--shadow-md);transition:transform .15s var(--ease),border-color .15s var(--ease),background .15s var(--ease),color .15s var(--ease);
 }
-.cnav-item img{width:22px;height:16px;object-fit:cover;border-radius:2px;border:1px solid rgba(26,26,26,0.25);flex-shrink:0}
+.cnav-item img{height:16px;width:auto;object-fit:contain;border-radius:2px;border:1px solid rgba(26,26,26,0.25);flex-shrink:0}
 .cnav-item:hover{border-color:var(--c-accent);transform:translateY(-1px)}
 .cnav-item.active{background:#1A1A1A;border-color:#1A1A1A;color:#FFFFFF;box-shadow:var(--shadow-hard)}
 .cnav-item.active img{border-color:#FFFFFF}
@@ -383,5 +383,5 @@ input.vote-input,.party-pct,.party-delta,.party-seats,.bloc-card .bloc-pct,.tot-
   .bloc-row{flex-direction:column}
   .country-nav{padding:10px 12px;gap:6px}
   .cnav-item{padding:6px 9px 5px 9px;font-size:10px}
-  .cnav-item img{width:20px;height:14px}
+  .cnav-item img{height:14px;width:auto}
 }

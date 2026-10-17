@@ -281,28 +281,6 @@ def main():
             "poll_count": len(win),
             "latest_poll": latest,
         }
-        # dashboard sparkline: the leader's trailing-90d weighted average at
-        # monthly points (~16), using the same mirror of the app's weights
-        try:
-            from datetime import timedelta as _td
-            tr = []
-            for back in range(15, -1, -1):
-                cut = now - _td(days=30 * back)
-                sub = [q for q in polls
-                       if datetime.strptime(q["date"], "%Y-%m-%d") <= cut
-                       and (cut - datetime.strptime(
-                           q["date"], "%Y-%m-%d")).days <= 90]
-                if len(sub) < 2:
-                    continue
-                a = compute_avg(sub, order, mae, str(mae_key), smooth,
-                                half_life, seat_based, seats, cut)
-                v = a.get(leader) if leader else None
-                if v is not None:
-                    tr.append([cut.strftime("%Y-%m-%d"), round(v, 1)])
-            if len(tr) >= 4:
-                out[cc]["trend"] = tr
-        except Exception as e:
-            print("  trend skip %s: %s" % (cc, e))
         print("%-12s %-12s leader %s %s (%d polls)" %
               (cc, out[cc]["election_date"] or "-", out[cc]["leader"],
                out[cc]["leader_pct"], len(win)))

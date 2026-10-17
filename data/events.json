@@ -1,0 +1,328 @@
+{
+ "sweden": [
+  {
+   "date": "2022-09-11",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "israel": [
+  {
+   "date": "2022-11-01",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "saxony_anhalt": [
+  {
+   "date": "2026-09-06",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "mecklenburg_vorpommern": [
+  {
+   "date": "2021-09-26",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "berlin": [
+  {
+   "date": "2023-02-12",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "serbia": [
+  {
+   "date": "2023-12-17",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "latvia": [
+  {
+   "date": "2022-10-01",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "brazil": [
+  {
+   "date": "2022-10-02",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "austria": [
+  {
+   "date": "2024-09-29",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "czechia": [
+  {
+   "date": "2025-10-04",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "poland": [
+  {
+   "date": "2023-10-15",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "netherlands": [
+  {
+   "date": "2025-10-29",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "estonia": [
+  {
+   "date": "2023-03-05",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "slovakia": [
+  {
+   "date": "2023-09-30",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "france": [
+  {
+   "date": "2022-04-10",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "germany": [
+  {
+   "date": "2025-02-23",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "spain": [
+  {
+   "date": "2023-07-23",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  },
+  {
+   "date": "2026-02-21",
+   "en": "Broad Front launched",
+   "tr": "Frente Amplio lansmanı"
+  },
+  {
+   "date": "2026-09-25",
+   "en": "Broad Front name revealed",
+   "tr": "Frente Amplio adı açıklandı"
+  },
+  {
+   "date": "2026-10-12",
+   "en": "Ada Colau announced as candidate",
+   "tr": "Ada Colau aday ilan edildi"
+  }
+ ],
+ "greece": [
+  {
+   "date": "2023-06-25",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "italy": [
+  {
+   "date": "2022-09-25",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "jp": [
+  {
+   "date": "2026-02-08",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "kr": [
+  {
+   "date": "2024-04-10",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "hr": [
+  {
+   "date": "2024-04-17",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "is": [
+  {
+   "date": "2024-11-30",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "si": [
+  {
+   "date": "2026-03-22",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "bc": [
+  {
+   "date": "2024-10-19",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "ontario": [
+  {
+   "date": "2025-02-27",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "alberta": [
+  {
+   "date": "2023-05-29",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "canada": [
+  {
+   "date": "2025-04-28",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "turkey": [
+  {
+   "date": "2023-05-14",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  },
+  {
+   "date": "2026-07-18",
+   "en": "Yeni Parti first polled (CHP split)",
+   "tr": "Yeni Parti ilk kez anketlerde (CHP bölünmesi)"
+  }
+ ],
+ "qc": [
+  {
+   "date": "2022-10-03",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "hu": [
+  {
+   "date": "2026-04-12",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "argentina": [
+  {
+   "date": "2023-10-22",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "bgpres": [
+  {
+   "date": "2021-11-21",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  },
+  {
+   "date": "2026-10-25",
+   "en": "Election day",
+   "tr": "Seçim günü"
+  }
+ ],
+ "bg": [
+  {
+   "date": "2026-04-19",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "lt": [
+  {
+   "date": "2024-10-13",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "md": [
+  {
+   "date": "2025-09-28",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "ro": [
+  {
+   "date": "2024-12-01",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "dk": [
+  {
+   "date": "2026-03-24",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "fi": [
+  {
+   "date": "2023-04-02",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "no": [
+  {
+   "date": "2025-09-08",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "pt": [
+  {
+   "date": "2025-05-18",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "uk": [
+  {
+   "date": "2024-07-04",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ],
+ "nz": [
+  {
+   "date": "2023-10-14",
+   "en": "Previous election",
+   "tr": "Son seçim"
+  }
+ ]
+}

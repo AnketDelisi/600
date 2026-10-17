@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset='utf-8'>
+<style>html,body{margin:0}iframe{width:1400px;height:2400px;border:0}</style></head>
+<body>
+<script>localStorage.setItem('600_lang','tr');</script>
+<iframe id='f' src='/index.html?c=turkey'></iframe>
+<script>
+const f=document.getElementById('f');
+f.addEventListener('load',()=>{
+  const d=f.contentDocument;
+  setTimeout(()=>{
+    const sel=d.getElementById('filter-days');
+    if(sel){ sel.value='9999'; sel.dispatchEvent(new Event('change')); }
+    setTimeout(()=>{ document.title='event-view-ready'; }, 4000);
+  }, 9000);
+});
+</script>
+</body></html>

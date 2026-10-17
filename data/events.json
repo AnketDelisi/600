@@ -11,6 +11,16 @@
    "date": "2022-11-01",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2026-07-19",
+   "en": "The Reservists first polled",
+   "tr": "The Reservists ilk kez anketlerde"
+  },
+  {
+   "date": "2026-08-26",
+   "en": "Amcha Yisrael first polled",
+   "tr": "Amcha Yisrael ilk kez anketlerde"
   }
  ],
  "saxony_anhalt": [
@@ -46,6 +56,16 @@
    "date": "2022-10-01",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2025-12-04",
+   "en": "New Latvians first polled",
+   "tr": "Apvienība Jaunlatvieši ilk kez anketlerde"
+  },
+  {
+   "date": "2026-03-02",
+   "en": "We Change the Rules first polled",
+   "tr": "Mēs mainām noteikumus ilk kez anketlerde"
   }
  ],
  "brazil": [
@@ -53,6 +73,21 @@
    "date": "2022-10-02",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2025-06-11",
+   "en": "Flávio Bolsonaro first polled",
+   "tr": "Flávio Bolsonaro ilk kez anketlerde"
+  },
+  {
+   "date": "2026-04-07",
+   "en": "Renan Santos first polled",
+   "tr": "Renan Santos ilk kez anketlerde"
+  },
+  {
+   "date": "2026-04-11",
+   "en": "Augusto Cury first polled",
+   "tr": "Augusto Cury ilk kez anketlerde"
   }
  ],
  "austria": [
@@ -88,6 +123,16 @@
    "date": "2023-03-05",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2023-10-06",
+   "en": "Together first polled",
+   "tr": "Koos ilk kez anketlerde"
+  },
+  {
+   "date": "2024-08-09",
+   "en": "Estonian Nationalists and Conservatives first polled",
+   "tr": "Estonian Nationalists and Conservatives ilk kez anketlerde"
   }
  ],
  "slovakia": [
@@ -102,6 +147,21 @@
    "date": "2022-04-10",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2024-04-18",
+   "en": "François Hollande first polled",
+   "tr": "François Hollande ilk kez anketlerde"
+  },
+  {
+   "date": "2024-07-08",
+   "en": "Raphaël Glucksmann first polled",
+   "tr": "Raphaël Glucksmann ilk kez anketlerde"
+  },
+  {
+   "date": "2025-03-27",
+   "en": "Bruno Retailleau first polled",
+   "tr": "Bruno Retailleau ilk kez anketlerde"
   }
  ],
  "germany": [
@@ -116,6 +176,21 @@
    "date": "2023-07-23",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2024-06-06",
+   "en": "The Party Is Over first polled",
+   "tr": "Se Acabó La Fiesta ilk kez anketlerde"
+  },
+  {
+   "date": "2025-06-21",
+   "en": "Catalan Alliance first polled",
+   "tr": "Aliança Catalana ilk kez anketlerde"
+  },
+  {
+   "date": "2026-01-03",
+   "en": "Forward Andalusia first polled",
+   "tr": "Adelante Andalucía ilk kez anketlerde"
   },
   {
    "date": "2026-02-21",
@@ -138,6 +213,21 @@
    "date": "2023-06-25",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2024-11-13",
+   "en": "Movement for Democracy first polled",
+   "tr": "Movement for Democracy ilk kez anketlerde"
+  },
+  {
+   "date": "2026-04-20",
+   "en": "Hope for Democracy first polled",
+   "tr": "Hope for Democracy ilk kez anketlerde"
+  },
+  {
+   "date": "2026-04-29",
+   "en": "Greek Left Alliance first polled",
+   "tr": "Greek Left Alliance ilk kez anketlerde"
   }
  ],
  "italy": [
@@ -145,6 +235,16 @@
    "date": "2022-09-25",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2023-04-14",
+   "en": "Italia Viva first polled",
+   "tr": "Italia Viva ilk kez anketlerde"
+  },
+  {
+   "date": "2026-02-03",
+   "en": "National Future first polled",
+   "tr": "Futuro Nazionale ilk kez anketlerde"
   }
  ],
  "jp": [
@@ -166,6 +266,11 @@
    "date": "2024-04-17",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2025-06-08",
+   "en": "Drito (political party) first polled",
+   "tr": "Drito ilk kez anketlerde"
   }
  ],
  "is": [
@@ -201,6 +306,16 @@
    "date": "2023-05-29",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2024-07-11",
+   "en": "Wildrose Independence Party first polled",
+   "tr": "Wildrose Independence Party ilk kez anketlerde"
+  },
+  {
+   "date": "2025-05-25",
+   "en": "Reform Party of Alberta first polled",
+   "tr": "Reform Party of Alberta ilk kez anketlerde"
   }
  ],
  "canada": [
@@ -217,9 +332,14 @@
    "tr": "Son seçim"
   },
   {
+   "date": "2024-11-03",
+   "en": "Anahtar Parti first polled",
+   "tr": "Anahtar Parti ilk kez anketlerde"
+  },
+  {
    "date": "2026-07-18",
-   "en": "Yeni Parti first polled (CHP split)",
-   "tr": "Yeni Parti ilk kez anketlerde (CHP bölünmesi)"
+   "en": "Yeni Parti first polled",
+   "tr": "Yeni Parti ilk kez anketlerde"
   }
  ],
  "qc": [
@@ -316,6 +436,11 @@
    "date": "2024-07-04",
    "en": "Previous election",
    "tr": "Son seçim"
+  },
+  {
+   "date": "2026-03-25",
+   "en": "Restore Britain first polled",
+   "tr": "Restore Britain ilk kez anketlerde"
   }
  ],
  "nz": [

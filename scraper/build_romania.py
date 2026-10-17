@@ -190,7 +190,8 @@ def main():
     bm.main()
     os.makedirs(os.path.dirname(BMV_SVG), exist_ok=True)
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     j = json.dumps
     results = dict(NAT24)

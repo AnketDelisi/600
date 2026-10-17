@@ -231,7 +231,8 @@ def main():
         sys.argv.append("--force")
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # Montreal inset: render the island + Laval separately at their own scale
     # (fine detail) and drop a smaller copy into the empty north-east corner
@@ -267,7 +268,8 @@ def main():
     bm.main()
     bm.add_inset(OUT_SVG, ZOOM_SVG, urban_ids, 150, (790, 60),
                  label="Montreal")
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # Regional baselines for the sub-national blend: "mtl" is the inset area
     # (island + Laval + South Shore), everything else is "rest"; the 2022

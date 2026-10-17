@@ -311,7 +311,8 @@ def main():
                     "--attribution", ATTRIBUTION, "--force"]
         bm.main()
         bm.add_inset(OUT_SVG, detail_svg, urban_ids, 150, at, label=label)
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # logos
     dst = os.path.join(ROOT, "img", "ca")

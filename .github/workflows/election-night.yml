@@ -3,13 +3,10 @@ on:
   schedule:
     # Sweden 2026 (13 Sep 18:00-24:00 CET) — every 5 minutes
     - cron: '*/5 16-23 13 9 *'
-    # Berlin + Mecklenburg-Vorpommern 2026 (20 Sep 18:00-02:00 CET) — every 5 min
-    - cron: '*/5 16-23 20 9 *'
-    - cron: '*/10 0-1 21 9 *'
   workflow_dispatch:
     inputs:
       country:
-        description: Country to snapshot (sweden|berlin|mv|all)
+        description: Country to snapshot (sweden|all)
         default: all
         required: false
 
@@ -28,14 +25,11 @@ jobs:
       - name: Pull Sweden live data
         run: |
           python scraper/scrape_live_sweden.py
-      - name: Pull Berlin + MV live data
-        run: |
-          python scraper/scrape_live_germany.py
       - name: Commit and push
         run: |
           git config user.name "600 bot"
           git config user.email "bot@users.noreply.github.com"
-          git add data/ bmv/data/
+          git add data/
           git diff --cached --quiet || git commit -m "Election night live update $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push origin main
 
@@ -43,9 +37,9 @@ jobs:
         run: |
           git fetch origin stable
           git checkout stable
-          git checkout main -- data/ bmv/data/
+          git checkout main -- data/
           git config user.name "600 bot"
           git config user.email "600@users.noreply.github.com"
-          git add data/ bmv/data/
+          git add data/
           git diff --cached --quiet || git commit -m "Sync live data to stable $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           git push origin stable

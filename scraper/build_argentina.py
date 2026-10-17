@@ -217,7 +217,8 @@ def main():
         sys.argv.append("--force")
     bm.main()
     os.makedirs(os.path.dirname(BMV_SVG), exist_ok=True)
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # logos
     dst = os.path.join(ROOT, "img", "ar")

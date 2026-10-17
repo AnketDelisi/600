@@ -149,7 +149,8 @@ def main():
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--force"]
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # verify: vote-weighted gemeente shares per province vs layer 1
     cfg = json.loads(subprocess.run(

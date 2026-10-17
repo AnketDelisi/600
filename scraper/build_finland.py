@@ -185,7 +185,8 @@ def main():
     bm.main()
     os.makedirs(os.path.dirname(BMV_SVG), exist_ok=True)
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     gebiete = {k: {p: round(res[k]["shares"].get(p, 0.0), 2)
                    for p in PARTIES} for k in keys}

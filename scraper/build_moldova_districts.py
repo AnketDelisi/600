@@ -189,7 +189,8 @@ def main():
     bm.main()
     os.makedirs(os.path.dirname(BMV_SVG), exist_ok=True)
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     j = json.dumps
     NATIONAL = {"pas": 50.2, "bep": 24.2, "ba": 7.96, "pn": 6.2, "ppda": 5.62}

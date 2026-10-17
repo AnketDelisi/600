@@ -136,7 +136,8 @@ def main():
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--force"]
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # patch the israel config: map block + blocs (reservists unaligned, Arab
     # parties their own bloc)

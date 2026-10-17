@@ -213,7 +213,8 @@ def main():
         sys.argv.append("--force")
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     # Metro Vancouver inset: the dense urban ridings are unreadable at
     # province scale (the province simplification eps is ~1.4 km). Render them
@@ -253,7 +254,8 @@ def main():
     bm.main()
     bm.add_inset(OUT_SVG, ZOOM_SVG, urban_ids, 150, (40, 640),
                  label="Metro Vancouver")
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     cfg_path = os.path.join(ROOT, "js", "config.js")
     text = open(cfg_path, encoding="utf8").read()

@@ -173,7 +173,8 @@ def main():
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--force"]
     bm.main()
     import shutil
-    shutil.copy2(OUT_SVG, BMV_SVG)
+    if os.path.isdir(os.path.dirname(BMV_SVG)):
+        shutil.copy2(OUT_SVG, BMV_SVG)
 
     cfg_path = os.path.join(ROOT, "js", "config.js")
     text = open(cfg_path, encoding="utf8").read()

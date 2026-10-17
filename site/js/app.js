@@ -583,6 +583,7 @@ let SCRAPED_AT=null;   // ISO timestamp of the last poll scrape (data health)
 let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting math
 let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
 
+let EVENTS=[];
 async function loadData(){
   try{
     // Detect base: local dev (site/ subdir) vs Pages (root)
@@ -597,6 +598,11 @@ async function loadData(){
     SCRAPED_AT=pollsJson.scraped_at||null;
     REGIONAL_AVG=pollsJson.regional||{};
     META=metaJson;
+    // annotation layer (elections, party splits) for the trend charts
+    try{
+      const er=await fetch(base+'data/events.json');
+      EVENTS=er.ok?((await er.json())[COUNTRY]||[]):[];
+    }catch(e){ EVENTS=[]; }
     // big country maps live in their own JSON (config.js stays small);
     // countries with small maps keep the data inline and skip this fetch
     try{
@@ -1629,6 +1635,35 @@ function drawChartBase(hoverIdx){
         ctx.fillStyle='#fff';ctx.strokeStyle=c.ser.color;
         ctx.moveTo(xe-3.5,ye);ctx.lineTo(xe,ye-3.5);ctx.lineTo(xe+3.5,ye);ctx.lineTo(xe,ye+3.5);ctx.closePath();
         ctx.fill();ctx.stroke();
+      });
+    }
+  }
+
+  // Event annotations: dashed marks for elections / party splits in-window
+  const _aT=(s.datesT&&s.datesT.length===dates.length)?s.datesT[0]:null;
+  const _bT=(s.datesT&&s.datesT.length===dates.length)?s.datesT[dates.length-1]:null;
+  if(_aT!==null&&_bT!==null&&EVENTS.length){
+    _eFrac: {
+      EVENTS.forEach(ev=>{
+        const et=Date.parse(ev.date);
+        if(!et||et<_aT||et>_bT) return;
+        const x=pad.left+((et-_aT)/Math.max(1,(_bT-_aT)))*cw;
+        ctx.strokeStyle='#94A3B8';ctx.lineWidth=1;
+        ctx.setLineDash([2,4]);
+        ctx.beginPath();ctx.moveTo(x,pad.top);ctx.lineTo(x,H-pad.bottom);ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.beginPath();
+        ctx.fillStyle='#475569';
+        ctx.moveTo(x-4,pad.top);ctx.lineTo(x+4,pad.top);ctx.lineTo(x,pad.top+7);
+        ctx.closePath();ctx.fill();
+        const lbl=(LANG==='tr'&&ev.tr)?ev.tr:(ev.en||'');
+        if(lbl){
+          ctx.font='600 9px "Source Code Pro",monospace';
+          ctx.fillStyle='#475569';
+          ctx.textAlign='center';
+          ctx.fillText(lbl,x,pad.top-4,150);
+          ctx.textAlign='left';
+        }
       });
     }
   }

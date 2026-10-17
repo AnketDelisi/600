@@ -85,6 +85,9 @@ def main():
         _sp.run([_sys.executable, _os.path.join(
             _os.path.dirname(_os.path.abspath(__file__)), "split_geo.py")],
             check=False)
+        _sp.run([_sys.executable, _os.path.join(
+            _os.path.dirname(_os.path.abspath(__file__)), "build_events.py")],
+            check=False)
     except Exception:
         pass
 

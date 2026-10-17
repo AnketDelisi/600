@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-16T10:39:36Z",
+  "scraped_at": "2026-10-17T10:08:11Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -7,6 +7,13 @@
       "rep": 46.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "October 14–15, 2026",
+          "partisan": "D",
+          "dem": 48.0,
+          "rep": 47.0
+        },
         {
           "pollster": "InsiderAdvantage",
           "dates": "October 9–10, 2026",
@@ -172,6 +179,12 @@
       "rep": 47.9,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Hendrix College",
+          "dates": "October 8–13, 2026",
+          "dem": 41.0,
+          "rep": 50.0
+        },
         {
           "pollster": "GrayHouse",
           "dates": "September 30 – October 4, 2026",
@@ -804,7 +817,7 @@
     "Kentucky": null,
     "Louisiana": null,
     "Maine": {
-      "dem": 49.2,
+      "dem": 49.3,
       "rep": 47.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
@@ -1061,6 +1074,13 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "Rasmussen Reports",
+          "dates": "October 12–14, 2026",
+          "partisan": "R",
+          "dem": 46.0,
+          "rep": 44.0
+        },
+        {
           "pollster": "InsiderAdvantage",
           "dates": "October 9–10, 2026",
           "partisan": "R",
@@ -1076,6 +1096,7 @@
         {
           "pollster": "The Tyson Group",
           "dates": "October 6–8, 2026",
+          "partisan": "R",
           "dem": 44.0,
           "rep": 46.0
         },
@@ -1118,6 +1139,13 @@
           "partisan": "D",
           "dem": 50.0,
           "rep": 49.0
+        },
+        {
+          "pollster": "The Tyson Group",
+          "dates": "September 24–27, 2026",
+          "partisan": "R",
+          "dem": 44.0,
+          "rep": 43.0
         },
         {
           "pollster": "Marist University",
@@ -1545,11 +1573,19 @@
       }
     },
     "Montana": {
-      "dem": 18.4,
-      "rep": 41.4,
-      "ind": 28.5,
+      "dem": 17.7,
+      "rep": 41.3,
+      "ind": 28.6,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Peak Insights",
+          "dates": "October 7–12, 2026",
+          "partisan": "R",
+          "dem": 12.0,
+          "rep": 44.0,
+          "ind": 29.0
+        },
         {
           "pollster": "Concord Public Opinion Partners",
           "dates": "October 6–8, 2026",
@@ -2254,10 +2290,17 @@
       }
     },
     "Ohio": {
-      "dem": 47.6,
-      "rep": 44.1,
+      "dem": 47.5,
+      "rep": 44.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Bowling Green State University / YouGov",
+          "dates": "September 29 – October 9, 2026",
+          "dem": 48.0,
+          "rep": 42.0,
+          "ind": 5.0
+        },
         {
           "pollster": "co/efficient",
           "dates": "October 5–6, 2026",
@@ -2288,7 +2331,8 @@
           "dates": "September 28–29, 2026",
           "partisan": "R",
           "dem": 44.0,
-          "rep": 43.0
+          "rep": 43.0,
+          "ind": 2.0
         },
         {
           "pollster": "Big Data Poll",
@@ -2307,21 +2351,24 @@
           "pollster": "Suffolk University",
           "dates": "September 23–27, 2026",
           "dem": 47.0,
-          "rep": 44.0
+          "rep": 44.0,
+          "ind": 1.0
         },
         {
           "pollster": "Rasmussen Reports",
           "dates": "September 22–23, 2026",
           "partisan": "R",
           "dem": 46.0,
-          "rep": 43.0
+          "rep": 43.0,
+          "ind": 2.0
         },
         {
           "pollster": "Quantus Insights",
           "dates": "September 21–23, 2026",
           "partisan": "R",
           "dem": 47.0,
-          "rep": 47.0
+          "rep": 47.0,
+          "ind": 2.0
         },
         {
           "pollster": "Trafalgar Group",
@@ -2334,7 +2381,8 @@
           "pollster": "Bowling Green State University / YouGov",
           "dates": "September 1–10, 2026",
           "dem": 48.0,
-          "rep": 45.0
+          "rep": 45.0,
+          "ind": 3.0
         },
         {
           "pollster": "InsiderAdvantage",
@@ -2367,7 +2415,8 @@
           "dates": "July 29 – August 4, 2026",
           "partisan": "D",
           "dem": 47.0,
-          "rep": 43.0
+          "rep": 43.0,
+          "ind": 2.0
         },
         {
           "pollster": "New York Times / Siena University",
@@ -2588,12 +2637,19 @@
       }
     },
     "South Dakota": {
-      "rep": 48.4,
-      "ind": 43.4,
+      "rep": 45.6,
+      "ind": 45.4,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
       "n_sponsored": 4,
       "polls": [
+        {
+          "pollster": "Concord Public Opinion Partners",
+          "dates": "October 6–8, 2026",
+          "partisan": "D",
+          "rep": 42.0,
+          "ind": 43.0
+        },
         {
           "pollster": "Zenith Research",
           "dates": "September 24–27, 2026",
@@ -2657,8 +2713,8 @@
     },
     "Tennessee": null,
     "Texas": {
-      "dem": 48.5,
-      "rep": 45.6,
+      "dem": 48.4,
+      "rep": 45.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -3323,7 +3379,7 @@
           "rep": 38.0
         },
         {
-          "pollster": "Quinnipiac University Polling Institute",
+          "pollster": "Quinnipiac University",
           "dates": "October 8–12, 2026",
           "dem": 58.0,
           "rep": 38.0
@@ -3342,7 +3398,7 @@
           "rep": 41.0
         },
         {
-          "pollster": "Quinnipiac University Polling Institute",
+          "pollster": "Quinnipiac University",
           "dates": "September 8–14, 2026",
           "dem": 55.0,
           "rep": 38.0
@@ -4759,9 +4815,15 @@
     },
     "Ohio": {
       "dem": 48.6,
-      "rep": 44.1,
+      "rep": 44.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Bowling Green State University / YouGov",
+          "dates": "September 29 – October 9, 2026",
+          "dem": 50.0,
+          "rep": 44.0
+        },
         {
           "pollster": "co/efficient",
           "dates": "October 5–6, 2026",
@@ -5703,13 +5765,21 @@
       }
     },
     "Alaska at-large": {
-      "dem": 8.0,
-      "rep": 47.3,
-      "ind": 35.3,
+      "dem": 7.2,
+      "rep": 46.2,
+      "ind": 37.4,
       "source": "Simple avg (latest 5 polls)",
-      "n_polls": 3,
-      "n_sponsored": 1,
+      "n_polls": 5,
+      "n_sponsored": 2,
       "polls": [
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "October 14–15, 2026",
+          "partisan": "D",
+          "dem": 5.0,
+          "rep": 45.0,
+          "ind": 44.0
+        },
         {
           "pollster": "Alaska Survey Research",
           "dates": "October 1–3, 2026",
@@ -5731,6 +5801,41 @@
           "dem": 9.0,
           "rep": 45.0,
           "ind": 31.0
+        },
+        {
+          "pollster": "Bullfinch Group",
+          "dates": "September 1–6, 2026",
+          "dem": 7.0,
+          "rep": 44.0,
+          "ind": 37.0
+        },
+        {
+          "pollster": "GBAO",
+          "dates": "August 3–5, 2026",
+          "partisan": "D",
+          "rep": 46.0,
+          "ind": 42.0
+        },
+        {
+          "pollster": "Data for Progress",
+          "dates": "July 28 – August 4, 2026",
+          "partisan": "D",
+          "rep": 47.0,
+          "ind": 37.0
+        },
+        {
+          "pollster": "Tavern Research",
+          "dates": "May 18–27, 2026",
+          "partisan": "D",
+          "rep": 52.0,
+          "ind": 48.0
+        },
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "February 11–12, 2026",
+          "partisan": "D",
+          "rep": 41.0,
+          "ind": 37.0
         }
       ],
       "names": {

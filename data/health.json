@@ -2,216 +2,216 @@
  "alberta": {
   "latest_date": "2026-09-21",
   "poll_count": 28,
-  "scraped_at": "2026-10-16T10:38:34Z"
+  "scraped_at": "2026-10-17T10:06:59Z"
  },
  "argentina": {
   "latest_date": "2026-09-09",
   "poll_count": 15,
-  "scraped_at": "2026-10-16T10:38:33Z"
+  "scraped_at": "2026-10-17T10:06:58Z"
  },
  "austria": {
   "latest_date": "2026-10-07",
-  "poll_count": 106,
-  "scraped_at": "2026-10-16T10:38:14Z"
+  "poll_count": 107,
+  "scraped_at": "2026-10-17T10:06:31Z"
  },
  "bc": {
   "latest_date": "2026-10-10",
   "poll_count": 54,
-  "scraped_at": "2026-10-16T10:38:24Z"
+  "scraped_at": "2026-10-17T10:06:46Z"
  },
  "berlin": {
   "latest_date": "2026-09-17",
   "poll_count": 23,
-  "scraped_at": "2026-10-16T10:38:17Z"
+  "scraped_at": "2026-10-17T10:06:36Z"
  },
  "bg": {
   "latest_date": "2026-10-02",
   "poll_count": 7,
-  "scraped_at": "2026-10-16T10:38:27Z"
+  "scraped_at": "2026-10-17T10:06:50Z"
  },
  "bgpres": {
   "latest_date": "2026-10-06",
   "poll_count": 6,
-  "scraped_at": "2026-10-16T10:38:28Z"
+  "scraped_at": "2026-10-17T10:06:50Z"
  },
  "brazil": {
-  "latest_date": "2026-10-15",
-  "poll_count": 179,
-  "scraped_at": "2026-10-16T10:38:24Z"
+  "latest_date": "2026-10-16",
+  "poll_count": 183,
+  "scraped_at": "2026-10-17T10:06:46Z"
  },
  "canada": {
   "latest_date": "2026-10-13",
   "poll_count": 239,
-  "scraped_at": "2026-10-16T10:38:35Z"
+  "scraped_at": "2026-10-17T10:06:59Z"
  },
  "czechia": {
   "latest_date": "2026-10-01",
   "poll_count": 25,
-  "scraped_at": "2026-10-16T10:38:14Z"
+  "scraped_at": "2026-10-17T10:06:32Z"
  },
  "dk": {
   "latest_date": "2026-10-11",
   "poll_count": 33,
-  "scraped_at": "2026-10-16T10:38:29Z"
+  "scraped_at": "2026-10-17T10:06:52Z"
  },
  "estonia": {
   "latest_date": "2026-09-27",
   "poll_count": 254,
-  "scraped_at": "2026-10-16T10:38:18Z"
+  "scraped_at": "2026-10-17T10:06:37Z"
  },
  "fi": {
   "latest_date": "2026-10-05",
   "poll_count": 79,
-  "scraped_at": "2026-10-16T10:38:29Z"
+  "scraped_at": "2026-10-17T10:06:52Z"
  },
  "france": {
   "latest_date": "2026-10-14",
   "poll_count": 53,
-  "scraped_at": "2026-10-16T10:38:33Z"
+  "scraped_at": "2026-10-17T10:06:58Z"
  },
  "germany": {
   "latest_date": "2026-10-12",
   "poll_count": 398,
-  "scraped_at": "2026-10-16T10:38:19Z"
+  "scraped_at": "2026-10-17T10:06:39Z"
  },
  "greece": {
   "latest_date": "2026-10-14",
   "poll_count": 328,
-  "scraped_at": "2026-10-16T10:38:21Z"
+  "scraped_at": "2026-10-17T10:06:42Z"
  },
  "hr": {
   "latest_date": "2026-10-11",
   "poll_count": 71,
-  "scraped_at": "2026-10-16T10:38:32Z"
+  "scraped_at": "2026-10-17T10:06:56Z"
  },
  "hu": {
   "latest_date": "2026-10-15",
   "poll_count": 26,
-  "scraped_at": "2026-10-16T10:38:27Z"
+  "scraped_at": "2026-10-17T10:06:50Z"
  },
  "is": {
   "latest_date": "2026-09-28",
   "poll_count": 27,
-  "scraped_at": "2026-10-16T10:38:32Z"
+  "scraped_at": "2026-10-17T10:06:56Z"
  },
  "israel": {
   "latest_date": "2026-10-15",
   "poll_count": 164,
-  "scraped_at": "2026-10-16T10:38:16Z"
+  "scraped_at": "2026-10-17T10:06:34Z"
  },
  "italy": {
   "latest_date": "2026-10-15",
-  "poll_count": 1129,
-  "scraped_at": "2026-10-16T10:38:23Z"
+  "poll_count": 1130,
+  "scraped_at": "2026-10-17T10:06:44Z"
  },
  "jp": {
   "latest_date": "2026-09-13",
   "poll_count": 7,
-  "scraped_at": "2026-10-16T10:38:30Z"
+  "scraped_at": "2026-10-17T10:06:54Z"
  },
  "kr": {
   "latest_date": "2026-09-30",
   "poll_count": 940,
-  "scraped_at": "2026-10-16T10:38:32Z"
+  "scraped_at": "2026-10-17T10:06:55Z"
  },
  "latvia": {
   "latest_date": "2026-10-03",
   "poll_count": 41,
-  "scraped_at": "2026-10-16T10:38:18Z"
+  "scraped_at": "2026-10-17T10:06:38Z"
  },
  "lt": {
   "latest_date": "2026-09-26",
   "poll_count": 46,
-  "scraped_at": "2026-10-16T10:38:30Z"
+  "scraped_at": "2026-10-17T10:06:53Z"
  },
  "md": {
   "latest_date": "2026-09-11",
   "poll_count": 8,
-  "scraped_at": "2026-10-16T10:38:28Z"
+  "scraped_at": "2026-10-17T10:06:51Z"
  },
  "mecklenburg_vorpommern": {
   "latest_date": "2026-09-17",
   "poll_count": 19,
-  "scraped_at": "2026-10-16T10:38:16Z"
+  "scraped_at": "2026-10-17T10:06:35Z"
  },
  "netherlands": {
-  "latest_date": "2026-10-02",
-  "poll_count": 38,
-  "scraped_at": "2026-10-16T10:38:17Z"
+  "latest_date": "2026-10-14",
+  "poll_count": 39,
+  "scraped_at": "2026-10-17T10:06:36Z"
  },
  "no": {
   "latest_date": "2026-09-08",
   "poll_count": 76,
-  "scraped_at": "2026-10-16T10:38:29Z"
+  "scraped_at": "2026-10-17T10:06:53Z"
  },
  "nz": {
   "latest_date": "2026-10-20",
   "poll_count": 125,
-  "scraped_at": "2026-10-16T10:38:26Z"
+  "scraped_at": "2026-10-17T10:06:49Z"
  },
  "ontario": {
   "latest_date": "2026-09-29",
   "poll_count": 48,
-  "scraped_at": "2026-10-16T10:38:34Z"
+  "scraped_at": "2026-10-17T10:06:58Z"
  },
  "poland": {
   "latest_date": "2026-10-06",
   "poll_count": 89,
-  "scraped_at": "2026-10-16T10:38:15Z"
+  "scraped_at": "2026-10-17T10:06:33Z"
  },
  "pt": {
   "latest_date": "2026-10-12",
   "poll_count": 41,
-  "scraped_at": "2026-10-16T10:38:27Z"
+  "scraped_at": "2026-10-17T10:06:49Z"
  },
  "qc": {
   "latest_date": "2026-10-04",
   "poll_count": 102,
-  "scraped_at": "2026-10-16T10:38:25Z"
+  "scraped_at": "2026-10-17T10:06:47Z"
  },
  "ro": {
   "latest_date": "2026-09-22",
   "poll_count": 41,
-  "scraped_at": "2026-10-16T10:38:28Z"
+  "scraped_at": "2026-10-17T10:06:51Z"
  },
  "saxony_anhalt": {
   "latest_date": "2026-09-03",
   "poll_count": 17,
-  "scraped_at": "2026-10-16T10:38:16Z"
+  "scraped_at": "2026-10-17T10:06:35Z"
  },
  "serbia": {
   "latest_date": "2026-09-30",
   "poll_count": 16,
-  "scraped_at": "2026-10-16T10:38:19Z"
+  "scraped_at": "2026-10-17T10:06:38Z"
  },
  "si": {
   "latest_date": "2026-09-24",
   "poll_count": 16,
-  "scraped_at": "2026-10-16T10:38:32Z"
+  "scraped_at": "2026-10-17T10:06:57Z"
  },
  "slovakia": {
   "latest_date": "2026-10-05",
   "poll_count": 118,
-  "scraped_at": "2026-10-16T10:38:18Z"
+  "scraped_at": "2026-10-17T10:06:37Z"
  },
  "spain": {
   "latest_date": "2026-10-11",
   "poll_count": 567,
-  "scraped_at": "2026-10-16T10:38:21Z"
+  "scraped_at": "2026-10-17T10:06:41Z"
  },
  "sweden": {
   "latest_date": "2026-10-14",
   "poll_count": 116,
-  "scraped_at": "2026-10-16T10:38:13Z"
+  "scraped_at": "2026-10-17T10:06:31Z"
  },
  "turkey": {
   "latest_date": "2026-10-04",
   "poll_count": 183,
-  "scraped_at": "2026-10-16T10:38:35Z"
+  "scraped_at": "2026-10-17T10:07:00Z"
  },
  "uk": {
   "latest_date": "2026-10-14",
-  "poll_count": 586,
-  "scraped_at": "2026-10-16T10:38:26Z"
+  "poll_count": 587,
+  "scraped_at": "2026-10-17T10:06:48Z"
  }
 }

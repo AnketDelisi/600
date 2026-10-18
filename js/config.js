@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c264';
+const LOGO_CACHE = '20261005c265';
 
 const COUNTRIES = {
 
@@ -10410,7 +10410,7 @@ epBlend: 0.15,
               "aa": 0.83,
               "podemos": 0.0,
               "salf": 4.58,
-              "ac": 0.58, "compromis": 1.2, "d21": 0.6, "ipla": 0.4 },
+              "ac": 0.58, "compromis": 1.2, "d21": 0.6 },
       // provinces where a regional party is not on the ballot: its projected
       // share is pinned to zero there
       noCandidate: {

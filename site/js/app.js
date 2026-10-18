@@ -368,6 +368,10 @@ const methodNameShort=()=>{
 };
 function methodSentence(){
   const conf=MAP_CONF()||{};
+  const stab=(COUNTRIES[COUNTRY]||{}).stabilicum;
+  if(stab){
+    return `the <strong>Stabilicum</strong> proportional system (D'Hondt, ${THRESHOLD}% list / ${stab.coalitionThreshold}% coalition thresholds with best-loser recovery), plus a <strong>fixed ${stab.bonus}-seat majority bonus</strong> for the list or coalition that tops the poll with at least ${stab.minBonus}% of the valid vote (capped at ${stab.cap} seats; pure proportional below ${stab.minBonus}%)`;
+  }
   if(conf.mixedFptp||((COUNTRIES[COUNTRY]||{}).mixedFptp)){
     const nf=Object.values(conf.fptpSeats||{}).reduce((a,b)=>a+b,0);
     return `the <strong>Rosatellum</strong> mixed system: ${nf} seats by <strong>first-past-the-post</strong> in single-member districts (each college goes to the coalition leading there) plus ${SEATS_TOTAL-nf} seats from a <strong>national proportional pool</strong> (D'Hondt, 3% threshold)`;
@@ -2057,6 +2061,11 @@ function allocateUpper(avg){
     return out;
   }
   if(up.fptp){
+    // Stabilicum countries (Italy): the Senate uses the same proportional +
+    // fixed-bonus allocator as the Chamber (35-seat bonus, 113 cap)
+    const stab=c.stabilicum;
+    if(stab) return stabilicumSeats(avg, up.seats||SEATS_TOTAL,
+      stab.senateBonus, stab.senateCap);
     // the Senate's own 74 single-member districts (config `senate`, built by
     // scraper/build_italy_senate.py) - real 2022 college baselines, swung by
     // the national average; the 126 PR seats are then allocated nationally
@@ -2255,7 +2264,7 @@ function renderParliament(avg){
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
         :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?(mapConf.layerCount||(mapConf.ilceDistrict?Object.keys(mapConf.ilceDistrict).length:Object.keys(mapConf.districts).length)):''} ${mapConf&&mapConf.ilceDistrict?t('il\u00e7eler','il\u00e7e'):t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):(mapConf&&mapConf.ilceDistrict?t('il\u00e7e winner','il\u00e7e kazanan\u0131'):t('district winner','b\u00f6lge kazanan\u0131'))}`));
   const archCap=(PARL_MODE==='upper'
-      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yaklaşık model — üst meclisin kendi sınırları/listeleri farklıdır')}`
+      ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?((COUNTRIES[COUNTRY]||{}).stabilicum?t('Stabilicum: proportional + a fixed '+((COUNTRIES[COUNTRY]||{}).stabilicum.senateBonus)+'-seat bonus for a coalition at or above '+((COUNTRIES[COUNTRY]||{}).stabilicum.minBonus)+'% (capped at '+((COUNTRIES[COUNTRY]||{}).stabilicum.senateCap)+')','Stabilicum: oransal + %'+((COUNTRIES[COUNTRY]||{}).stabilicum.minBonus)+' \u00fczeri koalisyona sabit '+((COUNTRIES[COUNTRY]||{}).stabilicum.senateBonus)+' koltuk bonusu (\u00fcst s\u0131n\u0131r '+((COUNTRIES[COUNTRY]||{}).stabilicum.senateCap)+')'):(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)'))):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yaklaşık model — üst meclisin kendi sınırları/listeleri farklıdır')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
   const cap=showMap?mapCap:archCap;
   // filter provenance under the projection (never for the result view - the
@@ -4151,66 +4160,107 @@ function allocateSeatsCzechia(avg){
   return out;
 }
 
-// Rosatellum mixed system: 147 FPTP colleges + a national PR pool. Each
-// college is projected from its own 2022 list-vote baseline (swung to the
-// current national average) and goes to the coalition leading there - the
-// real geography, not a regional sweep (the sweep mis-attributed whole
-// regions: on the 2022 data it inverted CDX 121 / CSX 12 into 72 / 75).
-// A coalition's colleges are then split among its parties in proportion to
-// their contribution in the colleges it won (the intra-coalition candidate
-// deals are political; the proportional split is the transparent default).
-// Unaligned winners keep their college (SVP's two Bolzano colleges).
-function allocateSeatsItaly(avg){
-  // the region map, not the displayed layer: with the collegio layer active
-  // MAP_CONF() would merge map2's useConstituencies and districtShares(region)
-  // would look up a collegio that does not exist, silently dropping all 147
-  // FPTP seats (FdI 109 -> 119 when loading ?l=2)
+// Stabilicum (legge 180/2026, in force 24 Oct 2026): pure proportional with
+// the Rosatellum thresholds (3% lists, 10% coalitions, best-loser recovery
+// inside a qualifying coalition) plus a FIXED governability bonus - 70
+// deputies / 35 senators - for the list or coalition that tops the poll with
+// at least 42% of the valid vote in both chambers, capped at 220/113 seats;
+// below 42% the system stays pure proportional. All coalition members'
+// votes count toward the 42% (no threshold on the contribution). Replaces
+// the Rosatellum mixed allocator (the 147 FPTP colleges are gone).
+function stabilicumSeats(avg, total, bonusSeats, cap){
   const c=COUNTRIES[COUNTRY]||{};
-  const conf=c.map, m2=c.map2;
-  if(!conf||!conf.fptpSeats||!m2||!m2.districts) return null;
+  const st=c.stabilicum||{};
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
-  const blocOf={};
+  const nat=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
+  const votes={};
+  PARTY_ORDER.forEach(p=>{
+    votes[p]=(avg&&avg[p]!==undefined&&avg[p]!==null)?avg[p]:(nat[p]||0);
+  });
+  const totalValid=PARTY_ORDER.reduce((s,p)=>s+(votes[p]||0),0);
+  if(totalValid<=0) return out;
+  // coalitions from the config blocs (2+ parties) and their totals - every
+  // member's votes count toward the 42%, qualified or not
+  const coals={}, inCoal={};
   for(const bk of ['bloc1','bloc2']){
-    const b=BLOCS[bk]; if(!b) continue;
-    (b.parties||[]).forEach(p=>{blocOf[p]=bk});
+    const b=BLOCS[bk];
+    if(!b||!b.parties||b.parties.length<2) continue;
+    coals[bk]={parties:b.parties.slice(),
+               votes:b.parties.reduce((s,p)=>s+(votes[p]||0),0)};
+    b.parties.forEach(p=>{inCoal[p]=bk});
   }
-  const cconf=Object.assign({},conf,{useConstituencies:true});
-  const wonBy={};
-  for(const id of Object.keys(m2.districts)){
-    const shares=districtShares(id,avg,false,cconf);
-    if(!shares) continue;
-    const ent={};
-    for(const p of PARTY_ORDER){
-      const k=blocOf[p]||p;
-      ent[k]=(ent[k]||0)+(shares[p]?shares[p].now:0);
-    }
-    let best=null,bestV=-1;
-    for(const k of Object.keys(ent)){if(ent[k]>bestV){bestV=ent[k];best=k}}
-    if(!best||ent[best]<=0) continue;
-    (wonBy[best]=wonBy[best]||[]).push(shares);
-  }
-  for(const key of Object.keys(wonBy)){
-    const won=wonBy[key];
-    if(!BLOCS[key]){ out[key]+=won.length; continue; }
-    const agg={}; let tot=0;
-    for(const sh of won){
-      for(const p of BLOCS[key].parties){
-        const v=sh[p]?sh[p].now:0;
-        agg[p]=(agg[p]||0)+v; tot+=v;
+  // qualifying lists: coalition >= 10% -> members >= 3%, plus the best
+  // sub-3% member recovered (ripescaggio); unaligned lists >= 3%
+  const coalMin=(st.coalitionThreshold!==undefined)?st.coalitionThreshold:10;
+  const qualify={};
+  Object.keys(coals).forEach(bk=>{
+    const co=coals[bk];
+    if(co.votes<coalMin) return;
+    co.parties.forEach(p=>{ if((votes[p]||0)>=THRESHOLD) qualify[p]=true; });
+    let best=null,bv=-1;
+    co.parties.forEach(p=>{ if(!qualify[p]&&(votes[p]||0)>bv){bv=votes[p]||0;best=p} });
+    if(best) qualify[best]=true;
+  });
+  PARTY_ORDER.forEach(p=>{ if(!inCoal[p]&&(votes[p]||0)>=THRESHOLD) qualify[p]=true; });
+  const list=PARTY_ORDER.filter(p=>qualify[p]);
+  if(!list.length) return out;
+  // the bonus: the top list/coalition at or above the threshold share
+  let winKey=null, winV=-1;
+  Object.keys(coals).forEach(bk=>{
+    if(coals[bk].votes>winV){winV=coals[bk].votes;winKey=bk}
+  });
+  list.forEach(p=>{
+    if(!inCoal[p]&&(votes[p]||0)>winV){winV=votes[p]||0;winKey=p}
+  });
+  const minShare=(st.minBonus!==undefined)?st.minBonus:42;
+  const hasBonus=bonusSeats>0&&(winV/totalValid)*100>=minShare;
+  const propN=hasBonus?Math.max(1,total-bonusSeats):total;
+  // D'Hondt over the qualifying lists
+  const quota=[];
+  list.forEach(p=>{for(let d=1;d<=propN;d++)quota.push([(votes[p]||0)/d,p])});
+  quota.sort((a,b)=>b[0]-a[0]);
+  for(let i=0;i<propN&&i<quota.length;i++) out[quota[i][1]]++;
+  if(hasBonus){
+    // the bonus is a coalition list: split the fixed seats among the winning
+    // coalition's qualifying members by D'Hondt on their own votes
+    const members=(coals[winKey]?coals[winKey].parties:[winKey])
+      .filter(p=>qualify[p]);
+    const bq=[];
+    members.forEach(p=>{for(let d=1;d<=bonusSeats;d++)bq.push([(votes[p]||0)/d,p])});
+    bq.sort((a,b)=>b[0]-a[0]);
+    for(let i=0;i<bonusSeats&&i<bq.length;i++) out[bq[i][1]]++;
+    // constitutional cap (220 deputies / 113 senators): the excess returns
+    // to the other qualifying lists
+    const winTotal=members.reduce((s,p)=>s+(out[p]||0),0);
+    const excess=winTotal-cap;
+    if(excess>0){
+      let left=excess;
+      const trim=members.slice().sort((a,b)=>(out[b]||0)-(out[a]||0));
+      let i=0;
+      while(left>0&&i<trim.length*100){
+        const p=trim[i%trim.length];
+        if((out[p]||0)>0){out[p]--;left--}
+        i++;
+      }
+      const others=list.filter(p=>members.indexOf(p)<0);
+      if(others.length){
+        const oq=[];
+        others.forEach(p=>{for(let d=1;d<=excess;d++)oq.push([(votes[p]||0)/d,p])});
+        oq.sort((a,b)=>b[0]-a[0]);
+        for(let k=0;k<excess&&k<oq.length;k++) out[oq[k][1]]++;
       }
     }
-    if(tot<=0) continue;
-    const q=BLOCS[key].parties.map(p=>({p,exact:won.length*(agg[p]||0)/tot}));
-    q.forEach(x=>{x.seat=Math.floor(x.exact)});
-    let given=q.reduce((a,x)=>a+x.seat,0);
-    q.sort((a,b)=>(b.exact-Math.floor(b.exact))-(a.exact-Math.floor(a.exact)));
-    for(let i=0;given<won.length;i++,given++) q[i%q.length].seat++;
-    q.forEach(x=>{out[x.p]+=x.seat});
   }
-  const fptpTotal=PARTY_ORDER.reduce((a,p)=>a+out[p],0);
-  const prSeats=allocateSeatsN(avg,Math.max(0,SEATS_TOTAL-fptpTotal));
-  for(const p of PARTY_ORDER) out[p]+=(prSeats[p]||0);
   return out;
+}
+
+// Stabilicum countries (Italy): the whole chamber from the proportional +
+// fixed-bonus allocator - the map keeps its 2022 collegio layer as the
+// historical geography, but no seat is decided by a college any more.
+function allocateSeatsItaly(avg){
+  const c=COUNTRIES[COUNTRY]||{};
+  if(!c.stabilicum) return null;
+  return stabilicumSeats(avg, SEATS_TOTAL, c.stabilicum.bonus, c.stabilicum.cap);
 }
 
 // First-past-the-post: every seat is a single-member riding; the projected

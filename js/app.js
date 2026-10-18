@@ -2827,7 +2827,10 @@ function runoffMapAvg(avg, filtered, sim){
 // remainder - reproduces 3-1, 2-2, 4-0 and island 3-1-1 patterns.
 function blockVoteSeats(n, votes){
   const seats={};
-  const ex=PARTY_ORDER.map(p=>[p,Math.pow((votes[p]||0)/100,2)])
+  // keys come from the caller's vote map, not PARTY_ORDER: senate
+  // coalitions pass pooled keys ('al:psoe+sumar') that must take part in
+  // the block vote
+  const ex=Object.keys(votes).map(p=>[p,Math.pow((votes[p]||0)/100,2)])
     .filter(x=>x[1]>0);
   if(!ex.length) return null;
   const tot=ex.reduce((a,x)=>a+x[1],0)||1;
@@ -2860,12 +2863,40 @@ function districtSeatSplit(nr, avg, resultMode, conf){
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return null;
     PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
-    const split=blockVoteSeats(seatsN, votes);
+    // senate coalitions (conf.alliances) pool exactly like the diagram's
+    // allocateUpper: members' district votes join, the block vote allocates
+    // to the pooled list, and the won seats split among members by their
+    // district shares - so the dots always agree with the arch
+    let groups=PARTY_ORDER.map(p=>({key:p,parties:[p],votes:votes[p]||0}));
+    for(const a of (conf.alliances||[])){
+      if(a.provinces.indexOf(nr)<0) continue;
+      const members=a.parties.filter(p=>groups.some(g=>g.key===p));
+      if(members.length<2) continue;
+      const pooled=members.reduce((s,p)=>s+(votes[p]||0),0);
+      groups=groups.filter(g=>members.indexOf(g.key)<0);
+      groups.push({key:'al:'+members.join('+'),parties:members,votes:pooled});
+    }
+    const gvotes={};
+    groups.forEach(g=>{gvotes[g.key]=g.votes});
+    const split=blockVoteSeats(seatsN, gvotes);
     if(!split) return null;
     const arr=[];
-    PARTY_ORDER.forEach(p=>{
-      for(let i=0;i<(split[p]||0);i++) arr.push(p);
-    });
+    for(const k of Object.keys(split)){
+      const g=groups.find(x=>x.key===k);
+      const cnt=split[k];
+      if(!g||!cnt) continue;
+      if(g.parties.length===1){
+        for(let i=0;i<cnt;i++) arr.push(g.parties[0]);
+        continue;
+      }
+      const tot=g.parties.reduce((s,p)=>s+(votes[p]||0),0)||1;
+      const q=g.parties.map(p=>({p,exact:cnt*(votes[p]||0)/tot}));
+      q.forEach(x=>{x.fl=Math.floor(x.exact)});
+      let given=q.reduce((a2,x)=>a2+x.fl,0);
+      q.sort((a2,b2)=>(b2.exact-Math.floor(b2.exact))-(a2.exact-Math.floor(a2.exact)));
+      for(let i2=0;given<cnt&&i2<q.length*2;i2++,given++) q[i2%q.length].fl++;
+      q.forEach(x=>{for(let i=0;i<x.fl;i++) arr.push(x.p)});
+    }
     return arr;
   }
   if(conf.levelingSeats&&conf.seatDistricts&&conf.seatDistricts[nr]){
@@ -5980,6 +6011,36 @@ function renderForecast(pane){
       </div>
     </div>`}
 
+    ${(!MAP_ONLY&&(COUNTRIES[COUNTRY]||{}).upper&&(COUNTRIES[COUNTRY]||{}).senate)?(()=>{
+      // Senate forecast: the deterministic upper-chamber projection from the
+      // simulation's median national vote shares - the same allocator the
+      // polls-tab Senate toggle uses (block voting in Spain, the Stabilicum
+      // Senate in Italy)
+      const medVotes={};
+      PARTY_ORDER.forEach(p=>{
+        const arr=(sim.votesBy&&sim.votesBy[p])||[];
+        const srt=arr.slice().sort((a,b)=>a-b);
+        medVotes[p]=srt.length?srt[Math.floor(srt.length/2)]:0;
+      });
+      const detUpper=allocateUpper(medVotes)||{};
+      const uRows=PARTY_ORDER.filter(p=>(detUpper[p]||0)>0)
+        .sort((a,b)=>(detUpper[b]||0)-(detUpper[a]||0))
+        .map(p=>`<tr><td style="font-weight:700;color:${(PARTY_META[p]||{}).color||'#888'}">${partyCode(p)}</td>
+          <td class="num c" style="font-weight:900">${detUpper[p]}</td></tr>`).join('');
+      const uTot=Object.values(detUpper).reduce((a,b)=>a+(b||0),0);
+      const up=COUNTRIES[COUNTRY].upper;
+      return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday} — ${up.label||t('Upper chamber','\u00dcst meclis')}</div>
+        <button class="shot-btn" id="fc-upper-shot-btn" style="margin-left:auto" title="Download parliament diagram as PNG">${CAM_ICON}</button></div>
+        <div class="parliament-box" id="fc-upper-box">${buildParliamentSVG(detUpper)}</div>
+        <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
+          <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th>
+        </tr></thead><tbody>${uRows}</tbody></table></div>
+        <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
+          ${up.block?t('Upper-chamber projection from the median of the simulations: each province allocates its senators by block voting','\u00dcst meclis projeksiyonu sim\u00fclasyonlar\u0131n medyan\u0131ndan: her il senat\u00f6rlerini blok oylamayla da\u011f\u0131t\u0131r'):t('Upper-chamber projection from the median of the simulations','\u00dcst meclis projeksiyonu sim\u00fclasyonlar\u0131n medyan\u0131ndan')} · ${uTot} ${T.seats}
+        </div>
+      </div>`;
+    })():''}
+
     ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div></div>
       <div class="map-toggle-row" style="justify-content:flex-end">
         ${RO_ONLY?'':`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>`}
@@ -6043,6 +6104,12 @@ function renderForecast(pane){
   if(fcParlShot){
     fcParlShot.addEventListener('click',()=>{
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
+    });
+  }
+  const fcUpperShot=$('fc-upper-shot-btn');
+  if(fcUpperShot){
+    fcUpperShot.addEventListener('click',()=>{
+      captureBoxMap('fc-upper-box', COUNTRY+'-forecast-upper.png');
     });
   }
   const posterOpts=()=>{
@@ -7331,9 +7398,29 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
   // per-district shares for one district (the base-blend and map checks:
   // projection mode reads the blended base, result mode the pure last
   // election)
-  window.__600_districtshares=function(cc,nr,avg,resultMode){
+  window.__600_districtshares=function(cc,nr,avg,resultMode,confKey){
     setCountry(cc);
-    return districtShares(String(nr),avg,!!resultMode,null);
+    const c=COUNTRIES[cc]||{};
+    const conf=confKey?(c[confKey]||null):null;
+    return districtShares(String(nr),avg,!!resultMode,conf);
+  };
+  // the seat-dot split for one district of a named conf ('senate' etc.),
+  // so the upper-chamber maps can be checked without a browser
+  window.__600_seatsplit=function(cc,nr,avg,resultMode,confKey,debug){
+    setCountry(cc);
+    const c=COUNTRIES[cc]||{};
+    const conf=confKey?(c[confKey]||null):MAP_CONF();
+    if(!conf) return null;
+    const r=districtSeatSplit(String(nr),avg||{},!!resultMode,conf);
+    if(debug){
+      const shares=districtShares(String(nr),avg||{},!!resultMode,conf);
+      const votes={};
+      if(shares) PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?(resultMode?shares[p].past:shares[p].now):0});
+      const pool=(conf.alliances||[]).filter(a=>a.provinces.indexOf(String(nr))>=0)
+        .map(a=>a.parties.join('+'));
+      return {arr:r,order:PARTY_ORDER.slice(0,20),votes,hasShares:!!shares,pool};
+    }
+    return r;
   };
   // Headless Monte Carlo for the backtest's calibration: the same
   // runForecast the forecast tab uses, slimmed to the summary the harness

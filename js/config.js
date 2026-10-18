@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c267';
+const LOGO_CACHE = '20261005c268';
 
 const COUNTRIES = {
 
@@ -8867,20 +8867,6 @@ saxony_anhalt: {
                 "la_gomera": "canarias",
                 "la_palma": "canarias",
                 "lanzarote": "canarias"
-          },
-          "seatDistricts": {
-                "eivissa_formentera": 1,
-                "mallorca": 3,
-                "menorca": 1,
-                "ceuta": 2,
-                "melilla": 2,
-                "gran_canaria": 3,
-                "tenerife": 3,
-                "el_hierro": 1,
-                "fuerteventura": 1,
-                "la_gomera": 1,
-                "la_palma": 1,
-                "lanzarote": 1
           },
           "label": "Senate districts (59)",
           "national2021": {

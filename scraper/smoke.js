@@ -109,6 +109,40 @@ async function main() {
           throw new Error('districtShares ' + nr + ': ' + e.message);
         }
       }
+      // upper-chamber seat dots: every block-vote district must split, the
+      // total must equal the chamber size, and where a pooled alliance
+      // leads the district its members must win seats - the block vote
+      // silently dropping pooled keys ('al:psoe+sumar') was exactly the
+      // Spain Senate bug
+      const sc = conf.senate;
+      if (sc && sc.blockVote && sc.seatDistricts) {
+        let tot = 0;
+        for (const nr of Object.keys(sc.seatDistricts)) {
+          const s = globalThis.__600_seatsplit(cc, nr, votes, false, 'senate');
+          if (!s || s.length !== sc.seatDistricts[nr]) {
+            throw new Error('senate split ' + nr + ': ' + (s ? s.length : 'null'));
+          }
+          tot += s.length;
+          const sh = globalThis.__600_districtshares(cc, nr, votes, false, 'senate');
+          if (sh && sc.alliances) {
+            for (const a of sc.alliances) {
+              if (a.provinces.indexOf(nr) < 0) continue;
+              const pooled = a.parties.reduce((x, p) => x + ((sh[p] && sh[p].now) || 0), 0);
+              let top = 0;
+              for (const p of Object.keys(sh)) top = Math.max(top, sh[p].now || 0);
+              if (pooled > top + 0.01 && pooled > 30) {
+                const got = s.filter((p) => a.parties.indexOf(p) >= 0).length;
+                if (got < 1) {
+                  throw new Error('senate pool ' + a.parties.join('+') + ' leads ' + nr + ' but won no seats');
+                }
+              }
+            }
+          }
+        }
+        if (conf.upper && conf.upper.seats && tot !== conf.upper.seats) {
+          throw new Error('senate split total ' + tot + ' != ' + conf.upper.seats);
+        }
+      }
       for (const f of [mc.svg, mc.map2 && mc.map2.svg]) {
         if (f && !fs.existsSync(path.join(ROOT, f))) {
           throw new Error('missing map file: ' + f);

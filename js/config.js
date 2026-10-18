@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c251';
+const LOGO_CACHE = '20261005c253';
 
 const COUNTRIES = {
 
@@ -10199,7 +10199,7 @@ saxony_anhalt: {
                 "190006": "other",
                 "200001": "fdi",
                 "200002": "fdi",
-                "20001": "other",
+                "20001": "uv",
                 "30001": "fdi",
                 "30002": "fdi",
                 "30003": "pd",
@@ -10449,7 +10449,7 @@ saxony_anhalt: {
               "sardegna": 4
       },
       // Valle d'Aosta's seat went to the regionalist Vallée d'Aoste list
-      winners2021: { "valle_d_aosta": "other" },
+      winners2021: { "valle_d_aosta": "uv" },
       regionOf: {
               "abruzzo": "abruzzo",
               "basilicata": "basilicata",
@@ -10717,7 +10717,7 @@ saxony_anhalt: {
                       "avs": 0.0,
                       "e": 0.0,
                       "nm": 0.61,
-                      "fn": 0.0, "uv": 25.0 },
+                      "fn": 0.0, "uv": 38.63 },
               "veneto": {
                       "fdi": 32.6,
                       "pd": 16.16,
@@ -10927,8 +10927,7 @@ saxony_anhalt: {
                       "avs": 2.02,
                       "e": 1.62,
                       "nm": 0.9,
-                      "fn": 0.0
-              },
+                      "fn": 0.0, "scn": 13.1 },
               "toscana": {
                       "fdi": 25.89,
                       "pd": 25.85,
@@ -10979,8 +10978,7 @@ saxony_anhalt: {
                       "avs": 0.0,
                       "e": 0.0,
                       "nm": 0.61,
-                      "fn": 0.0
-              },
+                      "fn": 0.0, "uv": 38.63 },
               "veneto": {
                       "fdi": 32.6,
                       "pd": 16.16,
@@ -11006,8 +11004,7 @@ saxony_anhalt: {
               "e": 2.83,
               "m5s": 15.43,
               "a": 4.45,
-              "iv": 3.33
-      },
+              "iv": 3.33, "scn": 1.1, "uv": 0.1 },
     },
       map2: {
       "svg": "img/italy_fptp.svg",

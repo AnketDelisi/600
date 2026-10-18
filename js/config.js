@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c250';
+const LOGO_CACHE = '20261005c251';
 
 const COUNTRIES = {
 
@@ -10325,7 +10325,7 @@ saxony_anhalt: {
                 "e": 2.94,
                 "nm": 0.9,
                 "fn": 0.0,
-                "svp": 0, "scn": 1.0, "uv": 0.1
+                "svp": 0, "scn": 1.1, "uv": 0.1
           },
           "label": "Senate districts (74)"
     },
@@ -10334,6 +10334,9 @@ saxony_anhalt: {
     // 3%/10% thresholds and a FIXED 70-deputy / 35-senator bonus for the
     // list or coalition at or above 42% in both chambers, capped 220/113
     stabilicum: { bonus: 70, cap: 220, minBonus: 42, coalitionThreshold: 10, senateBonus: 35, senateCap: 113 },
+    // FN has no 2022 geography of its own: borrow a 50/50 mix of the FdI and
+    // Lega regional patterns (Vannacci ex-Lega, FdI-leaning electorate)
+    swingProxy: { fn: [['fdi', 0.5], ['lega', 0.5]] },
     parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn', 'scn', 'svp', 'uv'],
     // coalitions: every member's votes count toward the Stabilicum 42% bonus
     blocs: {
@@ -10663,7 +10666,7 @@ saxony_anhalt: {
                       "avs": 2.02,
                       "e": 1.62,
                       "nm": 0.9,
-                      "fn": 0.0, "scn": 13.0 },
+                      "fn": 0.0, "scn": 13.1 },
               "toscana": {
                       "fdi": 25.89,
                       "pd": 25.85,

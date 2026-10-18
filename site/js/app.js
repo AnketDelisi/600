@@ -2404,10 +2404,12 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
       // New parties with no past of their own (BC's OneBC, a right-wing split
       // from the Conservatives) inherit a proxy's geographic shape for the
       // swing, so their projected vote concentrates where the parent is
-      // strong instead of being flat across every district.
-      const prox=(conf.swingProxy&&conf.swingProxy[p])||null;
-      const natS=prox?(nat[prox]||0):natP;
-      let pastS=prox?(base[prox]||0):past;
+      // strong instead of being flat across every district. A proxy is a
+      // single party name or a weighted mix ([['fdi',0.5],['lega',0.5]]).
+      const proxSpec=(conf.swingProxy&&conf.swingProxy[p])||null;
+      const prox=proxSpec?(Array.isArray(proxSpec)?proxSpec:[[proxSpec,1]]):null;
+      const natS=prox?prox.reduce((s,x)=>s+x[1]*(nat[x[0]]||0),0):natP;
+      let pastS=prox?prox.reduce((s,x)=>s+x[1]*(base[x[0]]||0),0):past;
       // Confidence-weighted proxy baseline: a borrowed shape is less
       // trustworthy than a real result, so pull it toward the proxy's national
       // share (Poliwave reconstruction: R~ = c*R + (1-c)*A, with A the

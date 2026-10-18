@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c248';
+const LOGO_CACHE = '20261005c249';
 
 const COUNTRIES = {
 
@@ -10049,7 +10049,7 @@ saxony_anhalt: {
     seats: 400,
     threshold: 3.0,
     method: 'dhondt',             // national PR pool (Rosatellum)
-    mixedFptp: true,              // 147 FPTP districts + 253-seat PR pool
+    mixedFptp: true,              // legacy: the 2022 collegio map layer (Stabilicum allocates proportionally)
     seatBased: false,             // polls report vote shares (%)
     constituencies: true,         // 147 FPTP districts (single-member)
     constituencyRule: 'fptp',
@@ -10328,8 +10328,12 @@ saxony_anhalt: {
           "label": "Senate districts (74)"
     },
     upper: { label: 'Senate', seats: 200, fptp: 74 },
+    // Stabilicum (L. 180/2026, in force 24 Oct 2026): proportional with the
+    // 3%/10% thresholds and a FIXED 70-deputy / 35-senator bonus for the
+    // list or coalition at or above 42% in both chambers, capped 220/113
+    stabilicum: { bonus: 70, cap: 220, minBonus: 42, coalitionThreshold: 10, senateBonus: 35, senateCap: 113 },
     parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn', 'svp'],
-    // Rosatellum coalitions: the FPTP districts go to the winning coalition
+    // coalitions: every member's votes count toward the Stabilicum 42% bonus
     blocs: {
       bloc1: { name: 'Centre-right coalition', short: 'CDX', parties: ['fdi', 'lega', 'fi', 'nm'], color: '#1B4F9C' },
       bloc2: { name: 'Centre-left coalition',  short: 'CSX', parties: ['pd', 'm5s', 'avs', 'iv', 'e'], color: '#E4002B' },

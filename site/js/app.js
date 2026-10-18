@@ -2612,6 +2612,24 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
       for(const p of PARTY_ORDER){if(out[p]){out[p].past*=k;out[p].now*=k;}}
     }
   }
+  // joint lists: projections fold the members into the list party so the map
+  // winner, the seat split and the allocators all treat the alliance as one
+  // list (history keeps the recorded separate results)
+  if(!resultMode&&conf.alliances){
+    for(const al of conf.alliances){
+      if(al.provinces.indexOf(String(nr))<0) continue;
+      const sen=al.parties[0];
+      if(!out[sen]) continue;
+      for(let i=1;i<al.parties.length;i++){
+        const jr=al.parties[i];
+        if(out[jr]){
+          out[sen].past+=out[jr].past;
+          out[sen].now+=out[jr].now;
+          delete out[jr];
+        }
+      }
+    }
+  }
   return out;
 }
 
@@ -3287,11 +3305,14 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       // the pooled share (the list competes as a whole in the calculation)
       for(const al of alHere){
         const mem=al.parties.filter(p=>shares[p]);
-        if(mem.length<2) continue;
-        const pv=mem.reduce((a2,p)=>a2+(resultMode?(shares[p].past||0):(shares[p].now||0)),0);
+        if(!mem.length) continue;
+        const sv=shares[al.parties[0]];
+        const pv=sv?(resultMode?(sv.past||0):(sv.now||0))
+          :mem.reduce((a2,p)=>a2+(resultMode?(shares[p].past||0):(shares[p].now||0)),0);
         if(pv<0.05) continue;
         const col=al.color||(PARTY_META[al.parties[0]]?PARTY_META[al.parties[0]].color:'#888');
-        const dls=mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
+        const dls=(sv&&!resultMode)?((sv.now||0)-(sv.past||0))
+          :mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
         rows=`<div class="map-tip-row">
           <span class="map-tip-code" style="color:${col}" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${al.name||partyCode(al.parties[0])}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${col}"></div></div>

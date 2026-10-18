@@ -111,28 +111,6 @@
    "tr": "Son seçim"
   }
  ],
- "spain": [
-  {
-   "date": "2023-07-23",
-   "en": "Previous election",
-   "tr": "Son seçim"
-  },
-  {
-   "date": "2026-02-21",
-   "en": "Broad Front launched",
-   "tr": "Frente Amplio lansmanı"
-  },
-  {
-   "date": "2026-09-25",
-   "en": "Broad Front name revealed",
-   "tr": "Frente Amplio adı açıklandı"
-  },
-  {
-   "date": "2026-10-12",
-   "en": "Ada Colau announced as candidate",
-   "tr": "Ada Colau aday ilan edildi"
-  }
- ],
  "greece": [
   {
    "date": "2023-06-25",
@@ -208,18 +186,6 @@
    "date": "2025-04-28",
    "en": "Previous election",
    "tr": "Son seçim"
-  }
- ],
- "turkey": [
-  {
-   "date": "2023-05-14",
-   "en": "Previous election",
-   "tr": "Son seçim"
-  },
-  {
-   "date": "2026-07-18",
-   "en": "Yeni Parti first polled (CHP split)",
-   "tr": "Yeni Parti ilk kez anketlerde (CHP bölünmesi)"
   }
  ],
  "qc": [

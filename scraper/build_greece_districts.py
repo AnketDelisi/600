@@ -153,7 +153,7 @@ sys.argv = ['build_map_svg.py', '--geojson', out_gj, '--name-field', 'id',
 bm.main()
 print('svg written')
 # ---- Athens (Attica) inset: the dense cluster magnified, bottom-left ----
-AT_IDS = ['ata', 'ab1', 'ab2', 'ab3', 'pia', 'pib', 'eat', 'waa']
+AT_IDS = ['ata', 'ab1', 'ab2', 'ab3', 'pia', 'eat', 'waa']
 at_feats = [f for f in feats if f['properties']['id'] in AT_IDS]
 at_gj = os.path.join(CACHE, 'gr_attica.geojson')
 json.dump({'type': 'FeatureCollection', 'features': at_feats},
@@ -163,6 +163,6 @@ sys.argv = ['build_map_svg.py', '--geojson', at_gj, '--name-field', 'id',
             '--fold', '--attr', 'id', '--no-prefix', '--out', at_svg,
             '--attribution', '', '--force']
 bm.main()
-bm.add_inset(OUT, at_svg, AT_IDS, 190, (28, 660))
+bm.add_inset(OUT, at_svg, AT_IDS, 330, (26, 620))
 print('athens inset added')
 

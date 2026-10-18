@@ -3290,12 +3290,11 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         if(mem.length<2) continue;
         const pv=mem.reduce((a2,p)=>a2+(resultMode?(shares[p].past||0):(shares[p].now||0)),0);
         if(pv<0.05) continue;
-        const cols=mem.map(p=>PARTY_META[p]?PARTY_META[p].color:'#888');
-        const grad=cols.length>1?`linear-gradient(90deg,${cols.map((c,i)=>`${c} ${i*100/cols.length}% ${(i+1)*100/cols.length}%`).join(',')})`:cols[0];
+        const col=al.color||(PARTY_META[al.parties[0]]?PARTY_META[al.parties[0]].color:'#888');
         const dls=mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
         rows=`<div class="map-tip-row">
-          <span class="map-tip-code" style="color:#111">${mem.map(p=>partyCode(p)).join('+')}</span>
-          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${grad}"></div></div>
+          <span class="map-tip-code" style="color:${col}" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${al.name||partyCode(al.parties[0])}</span>
+          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(pv)}</span>
           <span class="map-tip-delta ${dls>0.05?'up':(dls<-0.05?'down':'flat')}">${resultMode?'':(dls>0.05?'▲':(dls<-0.05?'▼':''))+(Math.abs(dls)<0.05?'':pct(Math.abs(dls)))}</span>
         </div>`+rows;

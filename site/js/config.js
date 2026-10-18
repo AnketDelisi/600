@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c244';
+const LOGO_CACHE = '20261005c245';
 
 const COUNTRIES = {
 

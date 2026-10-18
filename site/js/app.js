@@ -3223,7 +3223,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       ph.style.opacity='';
       tooltip.style.display='none';
     });
-    ph.addEventListener('click',()=>zoomProvince(svg, box, ph));
+    if(conf.ilceDistrict) ph.addEventListener('click',()=>zoomProvince(svg, box, ph));
   });
   svg.addEventListener('mousemove',e=>{
     const rect=box.getBoundingClientRect();

@@ -2055,8 +2055,34 @@ function allocateUpper(avg){
       if(!parts.length) continue;
       const votes={};
       PARTY_ORDER.forEach(p=>{votes[p]=sh[p]?sh[p].now:0});
-      const split=blockVoteSeats(n, votes);
-      if(split) for(const p of Object.keys(split)) out[p]+=split[p];
+      // Senate coalitions (config senate.alliances): members pool their
+      // district votes, the block vote allocates to the pooled list, and the
+      // won senators split among the members by their district shares.
+      let groups=PARTY_ORDER.map(p=>({key:p,parties:[p],votes:votes[p]||0}));
+      for(const a of (mc.alliances||[])){
+        if(a.provinces.indexOf(nr)<0) continue;
+        const members=a.parties.filter(p=>groups.some(g=>g.key===p));
+        if(members.length<2) continue;
+        const pooled=members.reduce((s,p)=>s+(votes[p]||0),0);
+        groups=groups.filter(g=>members.indexOf(g.key)<0);
+        groups.push({key:'al:'+members.join('+'),parties:members,votes:pooled});
+      }
+      const gvotes={};
+      groups.forEach(g=>{gvotes[g.key]=g.votes});
+      const split=blockVoteSeats(n, gvotes);
+      if(split) for(const k of Object.keys(split)){
+        const g=groups.find(x=>x.key===k);
+        const cnt=split[k];
+        if(!g||!cnt) continue;
+        if(g.parties.length===1){out[g.parties[0]]+=cnt;continue;}
+        const tot=g.parties.reduce((s,p)=>s+(votes[p]||0),0)||1;
+        const q=g.parties.map(p=>({p,exact:cnt*(votes[p]||0)/tot}));
+        q.forEach(x=>{x.fl=Math.floor(x.exact)});
+        let given=q.reduce((a2,x)=>a2+x.fl,0);
+        q.sort((a2,b2)=>(b2.exact-Math.floor(b2.exact))-(a2.exact-Math.floor(a2.exact)));
+        for(let i2=0;given<cnt&&i2<q.length*2;i2++,given++) q[i2%q.length].fl++;
+        q.forEach(x=>{out[x.p]+=x.fl});
+      }
     }
     return out;
   }
@@ -4007,31 +4033,56 @@ function allocateSeatsByDistrict(avg, regionNoise, districtNoise){
   // returns the map block for layer 0)
   const dth=(conf.districtThreshold!==undefined)?conf.districtThreshold
     :!!((COUNTRIES[COUNTRY]||{}).districtThreshold);
-  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0
-    &&!(PARTY_META[p]&&PARTY_META[p].unallocated)
-    &&((dth?votes[p]:(avg[p]||0))>=THRESHOLD));
+    // 29-N joint lists (config `alliances`): the members' district votes
+    // pool for the threshold and the D'Hondt; the pooled seats are split
+    // among the members in proportion to their district shares.
+    let groups=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].unallocated))
+      .map(p=>({key:p,parties:[p],votes:votes[p]||0}));
+    for(const a of (conf.alliances||[])){
+      if(a.provinces.indexOf(nr)<0) continue;
+      const members=a.parties.filter(p=>groups.some(g=>g.key===p));
+      if(members.length<2) continue;
+      const pooled=members.reduce((s,p)=>s+(votes[p]||0),0);
+      groups=groups.filter(g=>members.indexOf(g.key)<0);
+      groups.push({key:'al:'+members.join('+'),parties:members,votes:pooled});
+    }
+    const valid=groups.filter(g=>g.votes>0
+      &&((dth?g.votes:(avg[g.parties[0]]||0))>=THRESHOLD));
     if(!valid.length) continue;
+    const won={};
+    const flush=(g,n)=>{
+      if(g.parties.length===1){out[g.parties[0]]+=n;return;}
+      const tot=g.parties.reduce((s,p)=>s+(votes[p]||0),0)||1;
+      const q=g.parties.map(p=>({p,exact:n*(votes[p]||0)/tot}));
+      q.forEach(x=>{x.fl=Math.floor(x.exact)});
+      let given=q.reduce((a2,x)=>a2+x.fl,0);
+      q.sort((a2,b2)=>(b2.exact-Math.floor(b2.exact))-(a2.exact-Math.floor(a2.exact)));
+      for(let i=0;given<n&&i<q.length*2;i++,given++) q[i%q.length].fl++;
+      q.forEach(x=>{out[x.p]+=x.fl});
+    };
     // Hare/Niemeyer (largest remainder) per district, e.g. Bulgaria
     if(SEAT_METHOD==='hare_niemeyer'){
-      const totalVotes=valid.reduce((s,p)=>s+(votes[p]||0),0);
+      const totalVotes=valid.reduce((s,g)=>s+g.votes,0);
       if(totalVotes<=0) continue;
       const quota=totalVotes/seatsN;
       const rems=[];
       let given=0;
-      valid.forEach(p=>{
-        const q=(votes[p]||0)/quota;
+      valid.forEach(g=>{
+        const q=g.votes/quota;
         const fl=Math.floor(q);
-        out[p]+=fl; given+=fl;
-        rems.push([q-fl,p]);
+        won[g.key]=fl; given+=fl;
+        rems.push([q-fl,g]);
       });
-      rems.sort((a,b)=>b[0]-a[0]);
-      for(let i=0;i<seatsN-given&&i<rems.length;i++) out[rems[i][1]]++;
+      rems.sort((a2,b2)=>b2[0]-a2[0]);
+      for(let i=0;i<seatsN-given&&i<rems.length;i++) won[rems[i][1].key]++;
+      valid.forEach(g=>flush(g,won[g.key]||0));
       continue;
     }
     const quo=[];
-    valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push({p,q:votes[p]/d})});
-    quo.sort((a,b)=>b.q-a.q);
-    for(let i=0;i<seatsN&&i<quo.length;i++) out[quo[i].p]++;
+    valid.forEach(g=>{for(let d=1;d<=seatsN;d++) quo.push({g,q:g.votes/d})});
+    quo.sort((a2,b2)=>b2.q-a2.q);
+    for(let i=0;i<seatsN&&i<quo.length;i++) won[quo[i].g.key]=(won[quo[i].g.key]||0)+1;
+    valid.forEach(g=>flush(g,won[g.key]||0));
   }
   return out;
 }

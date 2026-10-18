@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c239';
+const LOGO_CACHE = '20261005c240';
 
 const COUNTRIES = {
 
@@ -9787,7 +9787,7 @@ saxony_anhalt: {
       pasok:  { code: 'PASOK',   name: 'PASOK – Movement for Change',      name_en: 'PASOK – Movement for Change',      color: '#01783D', ideology: "Social democracy, Pro-Europeanism, Social liberalism"},
       kke:    { code: 'KKE',     name: 'Communist Party of Greece',        name_en: 'Communist Party of Greece',        color: '#E30301', ideology: "Communism, Marxism-Leninism, Social conservatism"},
       sp:     { code: 'SP',      name: 'Spartans',                         name_en: 'Spartans',                         color: '#E9B460', ideology: "Neo-fascism, Ultranationalism, Ultraconservatism", pastOnly: true },
-      se:      { code: 'SE',      name: 'Spartans Successor',                          name_en: 'Spartans Successor',                          color: '#0000FF',                          ideology: "Ultranationalism, Right-wing populism" },
+      se:      { code: 'SE',      name: 'Spartans Successor',                          name_en: 'Spartans Successor',                          color: '#1C2971',                          ideology: "Ultranationalism, Right-wing populism" },
       el:     { code: 'EL',      name: 'Greek Solution',                   name_en: 'Greek Solution',                   color: '#6BB6E6', ideology: "Ultranationalism, National conservatism, Right-wing populism"},
       niki:   { code: 'NIKI',    name: 'Victory',                          name_en: 'Victory',                          color: '#910048', ideology: "Ultraconservatism, National conservatism"},
       pe:     { code: 'PE',      name: 'Course of Freedom',                name_en: 'Course of Freedom',                color: '#9F1897', ideology: "Left-wing nationalism, Sovereigntism, Anti-austerity"},

@@ -2,8 +2,8 @@
 """Build data/events.json - the annotation layer under the trend charts.
 
 Derived: every country's last/next election date (from js/config.js).
-Curated: the party events verified from the sources (Spain's Frente
-Amplio milestones; Turkey's Yeni Parti split = its first polled date).
+Curated: party events verified from the sources (currently none; Turkey and
+Spain are excluded from the annotation layer entirely by request).
 Run after config changes; release.py runs it automatically.
 """
 import json
@@ -11,6 +11,9 @@ import os
 import subprocess
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+
+# no annotation markers for these countries (charts stay clean)
+SKIP = {"turkey", "spain"}
 
 NODE = (
     'const fs=require("fs"),vm=require("vm");'
@@ -25,16 +28,7 @@ NODE = (
     'console.log(JSON.stringify(out));'
 )
 
-CURATED = {
-    "spain": [
-        {"date": "2026-02-21", "en": "Broad Front launched",
-         "tr": "Frente Amplio lansman\u0131"},
-        {"date": "2026-09-25", "en": "Broad Front name revealed",
-         "tr": "Frente Amplio ad\u0131 a\u00e7\u0131kland\u0131"},
-        {"date": "2026-10-12", "en": "Ada Colau announced as candidate",
-         "tr": "Ada Colau aday ilan edildi"},
-    ],
-}
+CURATED = {}
 
 
 def main():
@@ -46,6 +40,8 @@ def main():
     cfg = json.loads(out.stdout)
     events = {}
     for cc, v in cfg.items():
+        if cc in SKIP:
+            continue
         lst = []
         if v.get("last"):
             lst.append({"date": v["last"], "en": "Previous election",
@@ -57,15 +53,6 @@ def main():
             events[cc] = lst
     for cc, lst in CURATED.items():
         events.setdefault(cc, []).extend(lst)
-    # Turkey: the Yeni Parti split = its first appearance in the polls
-    tp = os.path.join(ROOT, "data", "turkey", "polls.json")
-    if os.path.exists(tp):
-        polls = json.load(open(tp, encoding="utf8")).get("polls") or []
-        yep = sorted(p["date"] for p in polls if "yep" in (p.get("votes") or {}))
-        if yep:
-            events.setdefault("turkey", []).append(
-                {"date": yep[0], "en": "Yeni Parti first polled (CHP split)",
-                 "tr": "Yeni Parti ilk kez anketlerde (CHP b\u00f6l\u00fcnmesi)"})
     for cc in events:
         events[cc].sort(key=lambda e: e["date"])
     path = os.path.join(ROOT, "data", "events.json")

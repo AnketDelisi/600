@@ -40,7 +40,7 @@ MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
 
 ALT_MAP = {
     "nd": "nd", "syriza": "syriza", "pasok": "pasok", "kke": "kke",
-    "sp": "sp", "el": "el", "niki": "niki", "pe": "pe", "m25": "m25",
+    "sp": "sp", "se": "se", "el": "el", "niki": "niki", "pe": "pe", "m25": "m25",
     "fl": "fl", "na": "na", "dpk": "dpk", "elpida": "elpida",
     "elas": "elas",
 }

@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c233';
+const LOGO_CACHE = '20261005c234';
 
 const COUNTRIES = {
 
@@ -9786,7 +9786,8 @@ saxony_anhalt: {
       syriza: { code: 'SYRIZA',  name: 'Coalition of the Radical Left',    name_en: 'Coalition of the Radical Left',    color: '#EE808F', ideology: "Social democracy, Progressivism"},
       pasok:  { code: 'PASOK',   name: 'PASOK – Movement for Change',      name_en: 'PASOK – Movement for Change',      color: '#01783D', ideology: "Social democracy, Pro-Europeanism, Social liberalism"},
       kke:    { code: 'KKE',     name: 'Communist Party of Greece',        name_en: 'Communist Party of Greece',        color: '#E30301', ideology: "Communism, Marxism-Leninism, Social conservatism"},
-      sp:     { code: 'SP',      name: 'Spartans',                         name_en: 'Spartans',                         color: '#E9B460', ideology: "Neo-fascism, Ultranationalism, Ultraconservatism"},
+      sp:     { code: 'SP',      name: 'Spartans',                         name_en: 'Spartans',                         color: '#E9B460', ideology: "Neo-fascism, Ultranationalism, Ultraconservatism", pastOnly: true },
+      se:      { code: 'SE',      name: 'Spartans Successor',                          name_en: 'Spartans Successor',                          color: '#BD7A00',                          ideology: "Ultranationalism, Right-wing populism" },
       el:     { code: 'EL',      name: 'Greek Solution',                   name_en: 'Greek Solution',                   color: '#6BB6E6', ideology: "Ultranationalism, National conservatism, Right-wing populism"},
       niki:   { code: 'NIKI',    name: 'Victory',                          name_en: 'Victory',                          color: '#910048', ideology: "Ultraconservatism, National conservatism"},
       pe:     { code: 'PE',      name: 'Course of Freedom',                name_en: 'Course of Freedom',                color: '#9F1897', ideology: "Left-wing nationalism, Sovereigntism, Anti-austerity"},
@@ -9797,8 +9798,8 @@ saxony_anhalt: {
       elpida: { code: 'ELPIDA',  name: 'Hope for Democracy',               name_en: 'Hope for Democracy',               color: '#E0B959', ideology: "Centrism, Anti-corruption, Social justice"},
       elas:   { code: 'ELAS',    name: 'Greek Left Alliance',              name_en: 'Greek Left Alliance',              color: '#A40044', ideology: "Social democracy, Progressivism"},
     },
-    order: ['nd', 'syriza', 'pasok', 'kke', 'sp', 'el', 'niki', 'pe', 'm25', 'fl', 'na', 'dpk', 'elpida', 'elas'],
-    parlOrder: ['kke', 'elas', 'na', 'syriza', 'pe', 'm25', 'dpk', 'pasok', 'elpida', 'nd', 'fl', 'el', 'niki', 'sp'],
+    order: ['nd', 'syriza', 'pasok', 'kke', 'sp', 'se', 'el', 'niki', 'pe', 'm25', 'fl', 'na', 'dpk', 'elpida', 'elas'],
+    parlOrder: ['kke', 'elas', 'na', 'syriza', 'pe', 'm25', 'dpk', 'pasok', 'elpida', 'nd', 'fl', 'el', 'niki', 'sp', 'se', 'se'],
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['nd'], color: '#0D5EAF' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['syriza', 'pasok', 'kke', 'sp', 'el', 'niki', 'pe', 'm25', 'fl', 'na', 'dpk', 'elpida', 'elas'], color: '#C4262E' },
@@ -9843,7 +9844,9 @@ saxony_anhalt: {
       svg: 'img/greece_constituencies.svg',
       label_tr: 'SEÇİM ÇEVRESİ', label_en: 'CONSTITUENCIES',
       selector: 'id',
-      proxyParties: ['fl', 'na'],
+      proxyParties: ['fl', 'na', 'se'],
+      swingProxy: { se: 'sp' },
+      swingProxyConfidence: { se: 0.6 },
       // 2020 bonus law: first party 20 seats at 25%, +1 per 0.5pp up to 50
       bonus: { min: 25.0, minSeats: 20, step: 0.5, maxSeats: 50 },
       districts: {"ab1": "ab1","ab2": "ab2","ab3": "ab3","ach": "ach","ait": "ait","arc": "arc","arl": "arl","art": "art","ata": "ata","boe": "boe","cfu": "cfu","cha": "cha","chi": "chi","chn": "chn","cth": "cth","cyc": "cyc","dod": "dod","drm": "drm","eat": "eat","epi": "epi","eub": "eub","evr": "evr","evt": "evt","flo": "flo","fok": "fok","fth": "fth","gre": "gre","hra": "hra","ili": "ili","ima": "ima","ioa": "ioa","kar": "kar","kas": "kas","kav": "kav","kef": "kef","kil": "kil","koz": "koz","lac": "lac","las": "las","lef": "lef","les": "les","lrs": "lrs","mag": "mag","mes": "mes","per": "per","pia": "pia","pib": "pib","pla": "pla","pre": "pre","ret": "ret","rod": "rod","sam": "sam","ser": "ser","tha": "tha","thb": "thb","the": "the","tri": "tri","waa": "waa","xan": "xan","zan": "zan", 
@@ -11094,7 +11097,7 @@ saxony_anhalt: {
     maeKey: 'GR2023',
     logos: {
       nd: 'img/gr/ND.svg', syriza: 'img/gr/SYRIZA.svg', pasok: 'img/gr/PASOK.svg',
-      kke: 'img/gr/KKE.svg', sp: 'img/gr/SP.svg', el: 'img/gr/EL.svg',
+      kke: 'img/gr/KKE.svg', sp: 'img/gr/SP.svg', se: 'img/gr/SE.svg', el: 'img/gr/EL.svg',
       niki: 'img/gr/NIKI.svg', pe: 'img/gr/PE.svg', m25: 'img/gr/M25.svg',
       fl: 'img/gr/FL.svg', na: 'img/gr/NA.svg', dpk: 'img/gr/DPK.svg',
       elpida: 'img/gr/ELPIDA.svg', elas: 'img/gr/ELAS.svg',

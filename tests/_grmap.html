@@ -1,0 +1,17 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1400px;height:3800px;border:0}</style></head>
+<body>
+<script>localStorage.setItem('600_lang', 'tr');</script>
+<iframe id="f" src="/index.html?c=greece"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  const d = f.contentDocument;
+  setTimeout(() => {
+    const det = d.querySelector('button[data-parlview="map"]');
+    if (det) det.click();
+  }, 8000);
+});
+</script>
+</body></html>

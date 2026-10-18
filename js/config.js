@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c232';
+const LOGO_CACHE = '20261005c233';
 
 const COUNTRIES = {
 
@@ -9841,7 +9841,7 @@ saxony_anhalt: {
     },
     map: {
       svg: 'img/greece_constituencies.svg',
-      label: 'SEÇİM ÇEVRESİ',
+      label_tr: 'SEÇİM ÇEVRESİ', label_en: 'CONSTITUENCIES',
       selector: 'id',
       proxyParties: ['fl', 'na'],
       // 2020 bonus law: first party 20 seats at 25%, +1 per 0.5pp up to 50
@@ -9998,7 +9998,7 @@ saxony_anhalt: {
               "thessalia_central_greece": "Thessaly–Central Greece",
               "agion_oros": "Mount Athos"
       },
-      seatDistricts: {"ab1": 16, "ab2": 12, "ab3": 19, "ach": 9, "ait": 7, "arc": 3, "arl": 3, "art": 2, "ata": 13, "boe": 3, "cfu": 3, "cha": 3, "chi": 2, "chn": 4, "cth": 4, "cyc": 4, "dod": 5, "drm": 3, "eat": 12, "epi": 15, "eub": 6, "evr": 4, "evt": 1, "flo": 2, "fok": 1, "fth": 4, "gre": 1, "hra": 8, "ili": 5, "ima": 4, "ioa": 5, "kar": 4, "kas": 1, "kav": 4, "kef": 1, "kil": 3, "koz": 4, "lac": 3, "las": 2, "lef": 1, "les": 3, "lrs": 8, "mag": 5, "mes": 5, "per": 4, "pia": 5, "pib": 8, "pla": 4, "pre": 2, "ret": 2, "rod": 3, "sam": 1, "ser": 5, "tha": 17, "thb": 9, "the": 1, "tri": 4, "waa": 4, "xan": 3, "zan": 1},
+      seatDots: true,
       mv2023: {"ab1": {"nd": 10, "syriza": 3, "kke": 2, "pasok": 1}, "ab2": {"nd": 6, "syriza": 3, "kke": 2, "pasok": 1}, "ab3": {"nd": 11, "syriza": 4, "kke": 2, "pasok": 2}, "ach": {"nd": 4, "syriza": 3, "pasok": 1, "kke": 1}, "ait": {"nd": 4, "syriza": 2, "pasok": 1}, "arc": {"nd": 2, "syriza": 1}, "arl": {"nd": 2, "syriza": 1}, "art": {"nd": 1, "syriza": 1}, "ata": {"nd": 8, "syriza": 3, "kke": 1, "pasok": 1}, "boe": {"nd": 2, "syriza": 1}, "cfu": {"nd": 2, "syriza": 1}, "cha": {"nd": 2, "pasok": 1}, "chi": {"nd": 2}, "chn": {"nd": 3, "syriza": 1}, "cth": {"nd": 3, "syriza": 1}, "cyc": {"nd": 3, "syriza": 1}, "dod": {"nd": 3, "pasok": 1, "syriza": 1}, "drm": {"nd": 2, "pasok": 1}, "eat": {"nd": 8, "syriza": 2, "pasok": 1, "kke": 1}, "epi": {"nd": 8, "syriza": 3, "pasok": 2, "kke": 1, "sp": 1}, "eub": {"nd": 4, "syriza": 1, "pasok": 1}, "evr": {"nd": 3, "syriza": 1}, "evt": {"nd": 1}, "flo": {"nd": 1, "syriza": 1}, "fok": {"nd": 1}, "fth": {"nd": 3, "syriza": 1}, "gre": {"nd": 1}, "hra": {"nd": 4, "pasok": 2, "syriza": 2}, "ili": {"nd": 3, "syriza": 1, "pasok": 1}, "ima": {"nd": 3, "syriza": 1}, "ioa": {"nd": 3, "syriza": 1, "pasok": 1}, "kar": {"nd": 2, "syriza": 1, "pasok": 1}, "kas": {"nd": 1}, "kav": {"nd": 3, "syriza": 1}, "kef": {"nd": 1}, "kil": {"nd": 2, "pasok": 1}, "koz": {"nd": 2, "syriza": 1, "pasok": 1}, "lac": {"nd": 3}, "las": {"nd": 1, "pasok": 1}, "lef": {"nd": 1}, "les": {"nd": 2, "pasok": 1}, "lrs": {"nd": 4, "syriza": 2, "pasok": 1, "kke": 1}, "mag": {"nd": 4, "syriza": 1}, "mes": {"nd": 3, "syriza": 1, "pasok": 1}, "per": {"nd": 2, "syriza": 1, "pasok": 1}, "pia": {"nd": 4, "syriza": 1}, "pib": {"nd": 4, "syriza": 2, "kke": 1, "pasok": 1}, "pla": {"nd": 3, "syriza": 1}, "pre": {"nd": 1, "syriza": 1}, "ret": {"nd": 1, "pasok": 1}, "rod": {"syriza": 1, "nd": 1, "pasok": 1}, "sam": {"nd": 1}, "ser": {"nd": 3, "syriza": 1, "pasok": 1}, "tha": {"nd": 8, "syriza": 3, "kke": 1, "pasok": 1, "el": 1, "niki": 1, "sp": 1, "pe": 1}, "thb": {"nd": 5, "syriza": 2, "pasok": 1, "el": 1}, "the": {"nd": 1}, "tri": {"nd": 2, "syriza": 1, "pasok": 1}, "waa": {"nd": 3, "syriza": 1}, "xan": {"nd": 1, "syriza": 1, "pasok": 1}, "zan": {"nd": 1}},
       national2021: {
               "nd": 40.56,
@@ -14259,7 +14259,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
       seats: {"akp": 268, "chp": 169, "mhp": 50, "iyi": 43, "dem": 61, "yrp": 5, "tip": 4, "bbp": 0, "zp": 0, "a": 0, "yep": 0, "saadet": 0},
     },
     map: {},
-    map2: { svg: 'img/turkey.svg', label: 'İLÇE HARİTASI' },
+    map2: { svg: 'img/turkey.svg', label_tr: 'İLÇE HARİTASI', label_en: 'DISTRICTS' },
   },
 
   qc: {

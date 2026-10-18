@@ -2241,7 +2241,7 @@ function renderParliament(avg){
       ${UP?`<button class="map-toggle-btn parl-btn${PARL_MODE==='upper'?' active':''}" data-parlmode="upper">${UP.label||t('Upper chamber','\u00dcst meclis')}</button>`:''}
       ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY&&!bigMap?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
-      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${MAP_LAYER===1?(mapConf.label||T.map||'layer 1'):(COUNTRIES[COUNTRY].map2.label||'layer 2')}</button>`:''}
+      ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${MAP_LAYER===1?(LANG==='tr'?(mapConf.label_tr||mapConf.label):(mapConf.label_en||mapConf.label))||T.map||'layer 1':((COUNTRIES[COUNTRY].map2&&(LANG==='tr'?(COUNTRIES[COUNTRY].map2.label_tr||COUNTRIES[COUNTRY].map2.label):(COUNTRIES[COUNTRY].map2.label_en||COUNTRIES[COUNTRY].map2.label)))||'layer 2')}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
@@ -5181,8 +5181,9 @@ function renderPrediction(pane){
   const hasMap=!!(c.map&&c.map.svg);
   const hasMap2=!!(c.map2&&c.map2.svg);
   if(!hasMap2) YP_MAP_LAYER=0;
-  const map2Label=(c.map2&&(c.map2.label||c.map2.name))||t('LAYER 2','KATMAN 2');
-  const map1Label=(c.map&&(c.map.label||c.map.name))||t('LAYER 1','KATMAN 1');
+  const layerLabel=(o,fb)=>o?((LANG==='tr'?(o.label_tr||o.label):(o.label_en||o.label))||o.name||fb):fb;
+  const map2Label=layerLabel(c.map2,t('LAYER 2','KATMAN 2'));
+  const map1Label=layerLabel(c.map,t('LAYER 1','KATMAN 1'));
   pane.innerHTML=`<style>
     #pane-prediction .yp-row{display:flex;align-items:center;gap:8px;height:34px;padding:0 8px;border-radius:6px}
     #pane-prediction .yp-row:hover{background:rgba(0,0,0,.035)}

@@ -163,6 +163,6 @@ sys.argv = ['build_map_svg.py', '--geojson', at_gj, '--name-field', 'id',
             '--fold', '--attr', 'id', '--no-prefix', '--out', at_svg,
             '--attribution', '', '--force']
 bm.main()
-bm.add_inset(OUT, at_svg, AT_IDS, 190, (28, 660), label='\u0391\u03b8\u03ae\u03bd\u03b1')
+bm.add_inset(OUT, at_svg, AT_IDS, 190, (28, 660))
 print('athens inset added')
 

@@ -3048,7 +3048,7 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
     const mt=pathM(ph);
     let sc=1;
     try{ const pm=ph.getScreenCTM(); if(rootM&&pm) sc=Math.hypot(pm.a,pm.b)||1; }catch(e){}
-    const rRoot=Math.max(sc<0.5?2.2:0.6,Math.min(4.2,r*sc));
+    const rRoot=Math.max(0.6,Math.min(4.2,r*sc));
     list.forEach((p,i)=>{
       const [cx,cy]=toRoot(mt,x0+(i%cols)*sp, y0+Math.floor(i/cols)*sp);
       const c=document.createElementNS(NS,'circle');

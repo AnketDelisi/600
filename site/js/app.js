@@ -3278,6 +3278,23 @@ async function renderMapInto(box, avg, resultMode, confOverride){
           <span class="map-tip-delta ${dCls}">${dTxt}</span>
         </div>`;
       }).filter(x=>x).join('');
+      // joint lists (29-N coalitions): a pooled banner row above the members,
+      // so SdP / PP+UPN / ERC+Podemos read as one list on the district
+      for(const al of (conf.alliances||[])){
+        if(al.provinces.indexOf(String(nr))<0) continue;
+        const mem=al.parties.filter(p=>shares[p]);
+        if(mem.length<2) continue;
+        const pv=mem.reduce((a2,p)=>a2+(resultMode?(shares[p].past||0):(shares[p].now||0)),0);
+        if(pv<0.05) continue;
+        const cols=mem.map(p=>PARTY_META[p]?PARTY_META[p].color:'#888');
+        const grad=cols.length>1?`linear-gradient(90deg,${cols.map((c,i)=>`${c} ${i*100/cols.length}% ${(i+1)*100/cols.length}%`).join(',')})`:cols[0];
+        rows=`<div class="map-tip-row">
+          <span class="map-tip-code" style="color:#111">${mem.map(p=>partyCode(p)).join('+')}</span>
+          <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${grad}"></div></div>
+          <span class="map-tip-now">${pct(pv)}</span>
+          <span class="map-tip-delta flat"></span>
+        </div>`+rows;
+      }
       // unmodelled 2023 lists (remainder), past column only; shown whenever
       // either side is nonzero so the district always adds to 100%
       if(shares.other&&(shares.other.past>0.05||shares.other.now>0.05)){

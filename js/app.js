@@ -3279,7 +3279,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       const alHere=(conf.alliances||[]).filter(a=>a.provinces.indexOf(String(nr))>=0&&a.parties.length>1);
       const alMember={};
       alHere.forEach(a=>a.parties.forEach(p=>{alMember[p]=a}));
-      let rows=PARTY_ORDER.slice().filter(p=>!alMember[p]&&!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{
+      const rowArr=PARTY_ORDER.slice().filter(p=>!alMember[p]&&!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{
         const s=shares[p];
         if(!s) return '';
         const seatNr=(conf.ilceDistrict&&conf.ilceDistrict[nr])||nr;
@@ -3294,13 +3294,13 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const noDelta=(conf.proxyParties||[]).indexOf(p)>=0;
         const dTxt=noDelta?'':(delta>0.05?'▲':(delta<-0.05?'▼':''))+(Math.abs(delta)<0.05?'':pct(Math.abs(delta)));
         const dCls=noDelta?'flat':(delta>0.05?'up':(delta<-0.05?'down':'flat'));
-        return `<div class="map-tip-row">
+        return {v:(resultMode?s.past:s.now), html:`<div class="map-tip-row">
           <span class="map-tip-code" style="color:${col}"${s.name?` title="${s.name}"`:''}>${partyCode(p)}${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${dCls}">${dTxt}</span>
-        </div>`;
-      }).filter(x=>x).join('');
+        </div>`};
+      }).filter(x=>x);
       // joint lists: one row per coalition, named by its members, carrying
       // the pooled share (the list competes as a whole in the calculation)
       for(const al of alHere){
@@ -3313,13 +3313,15 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const col=al.color||(PARTY_META[al.parties[0]]?PARTY_META[al.parties[0]].color:'#888');
         const dls=(sv&&!resultMode)?((sv.now||0)-(sv.past||0))
           :mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
-        rows=`<div class="map-tip-row">
+        rowArr.push({v:pv, html:`<div class="map-tip-row">
           <span class="map-tip-code" style="color:${col}" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${al.name||partyCode(al.parties[0])}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(pv)}</span>
           <span class="map-tip-delta ${dls>0.05?'up':(dls<-0.05?'down':'flat')}">${resultMode?'':(dls>0.05?'▲':(dls<-0.05?'▼':''))+(Math.abs(dls)<0.05?'':pct(Math.abs(dls)))}</span>
-        </div>`+rows;
+        </div>`});
       }
+      rowArr.sort((a2,b2)=>b2.v-a2.v);
+      let rows=rowArr.map(x=>x.html).join('');
       // unmodelled 2023 lists (remainder), past column only; shown whenever
       // either side is nonzero so the district always adds to 100%
       if(shares.other&&(shares.other.past>0.05||shares.other.now>0.05)){

@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c260';
+const LOGO_CACHE = '20261005c261';
 
 const COUNTRIES = {
 
@@ -8941,7 +8941,7 @@ saxony_anhalt: {
       // absorb Podemos into the Frente Amplio space
       { provinces: ['barcelona', 'girona', 'lleida', 'tarragona'], parties: ['erc', 'podemos'] },
       { provinces: ['navarra'], parties: ['upn', 'pp'], name: 'UPN' },
-      { provinces: ['alicante', 'castellon', 'valencia'], parties: ['compromis', 'sumar', 'podemos'], name: 'Compromís' },
+      { provinces: ['alicante', 'castellon', 'valencia'], parties: ['compromis', 'sumar', 'podemos'], name: 'FV' },
       { provinces: ['palmas', 'tenerife'], parties: ['sumar', 'podemos'], name: 'UPC' },
     ],
 epBlend: 0.15,

@@ -3044,17 +3044,17 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
     const fit=anc.pd>0?(anc.pd*0.9)/(1.075*Math.max(cols,rows)):3.4;
     const r=Math.max(1.1,Math.min(4.2,fit));
     const sp=2.15*r;
-    const x0=anc.px-(cols-1)*sp/2, y0=anc.py-(rows-1)*sp/2;
-    const mt=pathM(ph);
-    let sc=1;
-    try{ const pm=ph.getScreenCTM(); if(rootM&&pm) sc=Math.hypot(pm.a,pm.b)||1; }catch(e){}
-    const rRoot=Math.max(0.6,Math.min(4.2,r*sc));
+    // the grid is built at the map's own scale (identical for inset and
+    // main paths); only the ANCHOR is transformed into root space, so the
+    // inset copies get the same dot size as everywhere else
+    const _mt=pathM(ph);
+    const _a2=toRoot(_mt, anc.px, anc.py);
+    const x0=_a2[0]-(cols-1)*sp/2, y0=_a2[1]-(rows-1)*sp/2;
     list.forEach((p,i)=>{
-      const [cx,cy]=toRoot(mt,x0+(i%cols)*sp, y0+Math.floor(i/cols)*sp);
       const c=document.createElementNS(NS,'circle');
-      c.setAttribute('cx',cx.toFixed(2));
-      c.setAttribute('cy',cy.toFixed(2));
-      c.setAttribute('r',rRoot.toFixed(2));
+      c.setAttribute('cx',(x0+(i%cols)*sp).toFixed(2));
+      c.setAttribute('cy',(y0+Math.floor(i/cols)*sp).toFixed(2));
+      c.setAttribute('r',r.toFixed(2));
       c.setAttribute('fill',(PARTY_META[p]&&PARTY_META[p].color)||'#888');
       c.setAttribute('stroke','#ffffff');
       c.setAttribute('stroke-width','0.7');

@@ -2,7 +2,7 @@
   "country": "greece",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
-  "scraped_at": "2026-10-17T10:06:42Z",
+  "scraped_at": "2026-10-18T11:49:31Z",
   "poll_count": 328,
   "polls": [
     {
@@ -22,6 +22,7 @@
         "pe": 5.5,
         "m25": 2.6,
         "fl": 3.6,
+        "se": 4.2,
         "elpida": 4.5,
         "elas": 15.8
       }
@@ -43,6 +44,7 @@
         "pe": 4.2,
         "m25": 2.9,
         "fl": 1.8,
+        "se": 4.7,
         "dpk": 0.8,
         "elpida": 3.6,
         "elas": 16.4
@@ -65,6 +67,7 @@
         "pe": 5.1,
         "m25": 2.7,
         "fl": 3.5,
+        "se": 3.5,
         "elpida": 4.5,
         "elas": 15.9
       }
@@ -87,6 +90,7 @@
         "m25": 3.3,
         "fl": 3.7,
         "na": 0.4,
+        "se": 3.7,
         "dpk": 2.0,
         "elpida": 4.3,
         "elas": 15.7

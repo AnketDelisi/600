@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c255';
+const LOGO_CACHE = '20261005c256';
 
 const COUNTRIES = {
 
@@ -7717,9 +7717,12 @@ saxony_anhalt: {
       podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#9269F5' },
       salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#785A46' },
       ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#064A81' },
+      compromis: { code: 'Compromís', name: 'Compromís',        name_en: 'Compromís',              color: '#F58220', ideology: "Valencian nationalism, Progressivism"},
+      d21:       { code: 'D21',   name: 'Democracia para el Siglo XXI', name_en: 'Democracy for the 21st Century', color: '#EB6109', ideology: "Liberalism, Centrism"},
+      ipla:      { code: 'IPLA',  name: 'Iniciativa del Pueblo Andaluz', name_en: 'Andalusian People\'s Initiative', color: '#2E8B57', ideology: "Andalusian nationalism, Left-wing"},
     },
-    order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac'],
-    parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'ac', 'vox', 'salf'],
+    order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac', 'compromis', 'd21', 'ipla'],
+    parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'compromis', 'ipla', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'd21', 'ac', 'vox', 'salf'],
     // 2023 investiture majority (PSOE+Sumar and the regional allies) vs the right
     blocs: {
       bloc1: { name: 'Government bloc', short: 'GOV', parties: ['psoe', 'sumar', 'podemos', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'aa'], color: '#A6192E' },
@@ -7730,6 +7733,7 @@ saxony_anhalt: {
                                 ceuta: 2, melilla: 2 } },
     senate: {
           "svg": "img/spain_senate.svg",
+          "seatDistricts": {"coruna": 4, "lugo": 4, "ourense": 4, "pontevedra": 4, "asturias": 4, "cantabria": 4, "alava": 4, "gipuzkoa": 4, "bizkaia": 4, "navarra": 4, "rioja": 4, "huesca": 4, "teruel": 4, "zaragoza": 4, "madrid": 4, "avila": 4, "burgos": 4, "leon": 4, "palencia": 4, "salamanca": 4, "segovia": 4, "soria": 4, "valladolid": 4, "zamora": 4, "albacete": 4, "ciudad_real": 4, "cuenca": 4, "guadalajara": 4, "toledo": 4, "badajoz": 4, "caceres": 4, "barcelona": 4, "girona": 4, "lleida": 4, "tarragona": 4, "alicante": 4, "castellon": 4, "valencia": 4, "eivissa_formentera": 1, "mallorca": 3, "menorca": 1, "almeria": 4, "cadiz": 4, "cordoba": 4, "granada": 4, "huelva": 4, "jaen": 4, "malaga": 4, "sevilla": 4, "murcia": 4, "ceuta": 2, "melilla": 2, "gran_canaria": 3, "tenerife": 3, "el_hierro": 1, "fuerteventura": 1, "la_gomera": 1, "la_palma": 1, "lanzarote": 1},
           "alliances": [
             { "provinces": ["coruna", "lugo", "ourense", "pontevedra", "asturias", "cantabria", "alava", "gipuzkoa", "bizkaia", "navarra", "rioja", "huesca", "teruel", "zaragoza", "madrid", "avila", "burgos", "leon", "palencia", "salamanca", "segovia", "soria", "valladolid", "zamora", "albacete", "ciudad_real", "cuenca", "guadalajara", "toledo", "badajoz", "caceres", "alicante", "castellon", "valencia", "almeria", "cadiz", "cordoba", "granada", "huelva", "jaen", "malaga", "sevilla", "murcia", "ceuta", "melilla", "la_gomera"], "parties": ["psoe", "sumar"] },
             { "provinces": ["barcelona", "girona", "lleida", "tarragona", "alava", "gipuzkoa", "bizkaia", "navarra"], "parties": ["erc", "bildu"] },
@@ -8894,8 +8898,7 @@ saxony_anhalt: {
                 "aa": 0.83,
                 "podemos": 0.0,
                 "salf": 0.0,
-                "ac": 0.58
-          }
+                "ac": 0.58, "compromis": 1.2, "d21": 0.6, "ipla": 0.4 }
     },
     lastElection: {
       date: '2023-07-23',
@@ -8937,7 +8940,7 @@ saxony_anhalt: {
       // absorb Podemos into the Frente Amplio space
       { provinces: ['barcelona', 'girona', 'lleida', 'tarragona'], parties: ['erc', 'podemos'] },
       { provinces: ['navarra'], parties: ['pp', 'upn'] },
-      { provinces: ['alicante', 'castellon', 'valencia'], parties: ['sumar', 'podemos'] },
+      { provinces: ['alicante', 'castellon', 'valencia'], parties: ['compromis', 'sumar', 'podemos'] },
       { provinces: ['palmas', 'tenerife'], parties: ['sumar', 'podemos'] },
     ],
 epBlend: 0.15,
@@ -8952,7 +8955,7 @@ epBlend: 0.15,
       // shape (Poliwave proxy - the borrowed shape, confidence-weighted, then
       // scaled by the Podemos/Sumar national ratio), so its vote concentrates
       // where Sumar is strong instead of being flat across every province
-      swingProxy: { podemos: 'sumar', salf: 'vox' },
+      swingProxy: { podemos: 'sumar', salf: 'vox', compromis: 'sumar', ipla: 'sumar', d21: 'pp' },
       // SALF never ran in the 2023 general: it must not
       // appear in the 2023 result views
       proxyParties: ['salf'],
@@ -10407,8 +10410,7 @@ epBlend: 0.15,
               "aa": 0.83,
               "podemos": 0.0,
               "salf": 4.58,
-              "ac": 0.58
-      },
+              "ac": 0.58, "compromis": 1.2, "d21": 0.6, "ipla": 0.4 },
       // provinces where a regional party is not on the ballot: its projected
       // share is pinned to zero there
       noCandidate: {

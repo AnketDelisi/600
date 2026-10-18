@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c236';
+const LOGO_CACHE = '20261005c237';
 
 const COUNTRIES = {
 
@@ -9845,8 +9845,8 @@ saxony_anhalt: {
       label_tr: 'SEÇİM ÇEVRESİ', label_en: 'CONSTITUENCIES', layerCount: 59,
       selector: 'id',
       proxyParties: ['fl', 'na', 'se'],
-      swingProxy: { se: 'sp' },
-      swingProxyConfidence: { se: 0.6 },
+      swingProxy: { se: 'sp', elas: 'syriza' },
+      swingProxyConfidence: { se: 0.6, elas: 0.6 },
       // 2020 bonus law: first party 20 seats at 25%, +1 per 0.5pp up to 50
       bonus: { min: 25.0, minSeats: 20, step: 0.5, maxSeats: 50 },
       totalSeats: 300,

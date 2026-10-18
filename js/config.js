@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c263';
+const LOGO_CACHE = '20261005c264';
 
 const COUNTRIES = {
 
@@ -7702,27 +7702,26 @@ saxony_anhalt: {
     constituencies: false,
     recencyHalfLifeDays: 14,
     parties: {
-      pp:     { code: 'PP',      name: 'Partido Popular',                    name_en: 'People\'s Party',                      color: '#1D84CE' },
-      psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#E30713' },
-      vox:    { code: 'VOX',     name: 'Vox',                                name_en: 'Vox',                                   color: '#63BE21' },
-      sumar:  { code: 'FA',      name: 'Frente Amplio',                     name_en: 'Broad Front',                           color: '#F05501' },
-      erc:    { code: 'ERC',     name: 'Esquerra Republicana de Catalunya',  name_en: 'Republican Left of Catalonia',          color: '#FFB232' },
-      junts:  { code: 'JUNTS',   name: 'Junts per Catalunya',                name_en: 'Together for Catalonia',                color: '#00B0B9' },
-      bildu:  { code: 'EH BILDU',name: 'Euskal Herria Bildu',                name_en: 'Basque Country Gather',                 color: '#79BF43' },
-      pnv:    { code: 'EAJ-PNV', name: 'Euzko Alderdi Jeltzalea',            name_en: 'Basque Nationalist Party',              color: '#008000' },
-      bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#6CA5D0' },
-      cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFCC00' },
-      upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#1B4F9C' },
-      aa:     { code: 'AA',      name: 'Adelante Andalucía',                 name_en: 'Forward Andalusia',                     color: '#24C87E' },
-      podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#9269F5' },
-      salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#785A46' },
-      ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#064A81' },
+      pp:     { code: 'PP',      name: 'Partido Popular',                    name_en: 'People\'s Party',                      color: '#1D84CE', ideology: "Conservatism, Christian democracy" },
+      psoe:   { code: 'PSOE',    name: 'Partido Socialista Obrero Español',  name_en: 'Spanish Socialist Workers\' Party',    color: '#E30713', ideology: "Social democracy" },
+      vox:    { code: 'VOX',     name: 'Vox',                                name_en: 'Vox',                                   color: '#63BE21', ideology: "Right-wing populism, National conservatism" },
+      sumar:  { code: 'FA',      name: 'Frente Amplio',                     name_en: 'Broad Front',                           color: '#F05501', ideology: "Democratic socialism, Left-wing populism" },
+      erc:    { code: 'ERC',     name: 'Esquerra Republicana de Catalunya',  name_en: 'Republican Left of Catalonia',          color: '#FFB232', ideology: "Catalan independence, Social democracy" },
+      junts:  { code: 'JUNTS',   name: 'Junts per Catalunya',                name_en: 'Together for Catalonia',                color: '#00B0B9', ideology: "Catalan independence, Conservatism" },
+      bildu:  { code: 'EH BILDU',name: 'Euskal Herria Bildu',                name_en: 'Basque Country Gather',                 color: '#79BF43', ideology: "Basque independence, Left-wing nationalism" },
+      pnv:    { code: 'EAJ-PNV', name: 'Euzko Alderdi Jeltzalea',            name_en: 'Basque Nationalist Party',              color: '#008000', ideology: "Basque nationalism, Christian democracy" },
+      bng:    { code: 'BNG',     name: 'Bloque Nacionalista Galego',         name_en: 'Galician Nationalist Bloc',             color: '#6CA5D0', ideology: "Galician nationalism, Left-wing" },
+      cc:     { code: 'CC',      name: 'Coalición Canaria',                  name_en: 'Canarian Coalition',                    color: '#FFCC00', ideology: "Canarian nationalism, Regionalism" },
+      upn:    { code: 'UPN',     name: 'Unión del Pueblo Navarro',           name_en: 'Navarrese People\'s Union',            color: '#1B4F9C', ideology: "Navarrese regionalism, Christian democracy" },
+      aa:     { code: 'AA',      name: 'Adelante Andalucía',                 name_en: 'Forward Andalusia',                     color: '#24C87E', ideology: "Andalusian nationalism, Left-wing" },
+      podemos:{ code: 'PODEMOS', name: 'Podemos',                            name_en: 'Podemos',                               color: '#9269F5', ideology: "Left-wing populism, Democratic socialism" },
+      salf:   { code: 'SALF',    name: 'Se Acabó La Fiesta',                 name_en: 'The Party Is Over',                     color: '#785A46', ideology: "Right-wing populism, Ultraconservatism" },
+      ac:     { code: 'AC',      name: 'Aliança Catalana',                   name_en: 'Catalan Alliance',                      color: '#064A81', ideology: "Catalan independence, Right-wing populism" },
       compromis: { code: 'Compromís', name: 'Compromís',        name_en: 'Compromís',              color: '#F58220', ideology: "Valencian nationalism, Progressivism"},
       d21:       { code: 'D21',   name: 'Democracia para el Siglo XXI', name_en: 'Democracy for the 21st Century', color: '#EB6109', ideology: "Liberalism, Centrism"},
-      ipla:      { code: 'IPLA',  name: 'Iniciativa del Pueblo Andaluz', name_en: 'Andalusian People\'s Initiative', color: '#2E8B57', ideology: "Andalusian nationalism, Left-wing"},
     },
-    order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac', 'compromis', 'd21', 'ipla'],
-    parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'compromis', 'ipla', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'd21', 'ac', 'vox', 'salf'],
+    order: ['pp', 'psoe', 'vox', 'sumar', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'upn', 'aa', 'podemos', 'salf', 'ac', 'compromis', 'd21'],
+    parlOrder: ['bildu', 'erc', 'aa', 'podemos', 'sumar', 'compromis', 'psoe', 'junts', 'pnv', 'bng', 'cc', 'upn', 'pp', 'd21', 'ac', 'vox', 'salf'],
     // 2023 investiture majority (PSOE+Sumar and the regional allies) vs the right
     blocs: {
       bloc1: { name: 'Government bloc', short: 'GOV', parties: ['psoe', 'sumar', 'podemos', 'erc', 'junts', 'bildu', 'pnv', 'bng', 'cc', 'aa'], color: '#A6192E' },
@@ -8899,7 +8898,7 @@ saxony_anhalt: {
                 "aa": 0.83,
                 "podemos": 0.0,
                 "salf": 0.0,
-                "ac": 0.58, "compromis": 1.2, "d21": 0.6, "ipla": 0.4 }
+                "ac": 0.58, "compromis": 0, "d21": 0 }
     },
     lastElection: {
       date: '2023-07-23',
@@ -8956,7 +8955,7 @@ epBlend: 0.15,
       // shape (Poliwave proxy - the borrowed shape, confidence-weighted, then
       // scaled by the Podemos/Sumar national ratio), so its vote concentrates
       // where Sumar is strong instead of being flat across every province
-      swingProxy: { podemos: 'sumar', salf: 'vox', compromis: 'sumar', ipla: 'sumar', d21: 'pp' },
+      swingProxy: { podemos: 'sumar', salf: 'vox', compromis: 'sumar', d21: 'pp' },
       // SALF never ran in the 2023 general: it must not
       // appear in the 2023 result views
       proxyParties: ['salf'],
@@ -10957,7 +10956,7 @@ epBlend: 0.15,
     },
     pollsterMAE: {},
     maeKey: 'ES2023',
-    logos: {
+    logos: { compromis: 'img/es/COMPROMIS.svg', d21: 'img/es/D21.svg', 
       pp: 'img/es/PP.svg', psoe: 'img/es/PSOE.svg', vox: 'img/es/VOX.svg',
       sumar: 'img/es/SUMAR.svg', erc: 'img/es/ERC.svg', junts: 'img/es/JUNTS.svg',
       bildu: 'img/es/EHBildu.svg', pnv: 'img/es/EAJPNV.svg', bng: 'img/es/BNG.svg',

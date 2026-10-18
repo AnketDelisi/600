@@ -2253,7 +2253,7 @@ function renderParliament(avg){
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?LAST_ELECTION.date.slice(0,4)+' '+T.result:t('projected winner','tahmini kazanan'))}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
-        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?(mapConf.ilceDistrict?Object.keys(mapConf.ilceDistrict).length:Object.keys(mapConf.districts).length):''} ${mapConf&&mapConf.ilceDistrict?t('il\u00e7eler','il\u00e7e'):t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):(mapConf&&mapConf.ilceDistrict?t('il\u00e7e winner','il\u00e7e kazanan\u0131'):t('district winner','b\u00f6lge kazanan\u0131'))}`));
+        :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?(mapConf.layerCount||(mapConf.ilceDistrict?Object.keys(mapConf.ilceDistrict).length:Object.keys(mapConf.districts).length)):''} ${mapConf&&mapConf.ilceDistrict?t('il\u00e7eler','il\u00e7e'):t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):(mapConf&&mapConf.ilceDistrict?t('il\u00e7e winner','il\u00e7e kazanan\u0131'):t('district winner','b\u00f6lge kazanan\u0131'))}`));
   const archCap=(PARL_MODE==='upper'
       ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${(COUNTRIES[COUNTRY]||{}).senate?(UP.block?t('block voting · districts = provinces + islands (NUTS3)','blok oylama \u00b7 b\u00f6lgeler = iller + adalar (NUTS3)'):t('74 single-member districts + 126 PR (PR allocated nationally)','74 tek \u00fcyeli b\u00f6lge + 126 oransal (oransal koltuklar ulusal da\u011f\u0131t\u0131l\u0131r)')):t('approximate model - the upper chamber\u2019s own boundaries/lists differ','yaklaşık model — üst meclisin kendi sınırları/listeleri farklıdır')}`
       :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''}`);
@@ -3888,7 +3888,55 @@ function allocateSeatsSlovenia(avg, regionNoise, districtNoise){
 
 function allocateSeatsByDistrict(avg, regionNoise, districtNoise){
   const conf=MAP_CONF();
-  if(!conf||!conf.seatDistricts||conf.bonus) return null;
+  if(!conf||!conf.seatDistricts||(conf.bonus&&!conf.greekDistrictBonus)) return null;
+  // Greek hybrid (v. 2020 law): the first party takes the sliding bonus;
+  // the pool (300 - bonus) is allocated per constituency by Hare/Niemeyer
+  if(conf.bonus&&conf.greekDistrictBonus){
+    const bonus=bonusSeatCount(avg||{});
+    const total=(typeof conf.totalSeats==='number'?conf.totalSeats:300);
+    const pool=Math.max(1,total-bonus);
+    const keys=Object.keys(conf.seatDistricts);
+    const sum=keys.reduce((s,k)=>s+(conf.seatDistricts[k]||0),0)||1;
+    // scale the constituency seat counts to the pool (largest remainder)
+    const scaled=keys.map(k=>({k,v:(conf.seatDistricts[k]||0)*pool/sum}));
+    let assigned=0;
+    scaled.forEach(o=>{o.fl=Math.floor(o.v);assigned+=o.fl});
+    scaled.sort((x,y)=>(y.v-y.fl)-(x.v-x.fl));
+    for(let t2=0;t2<pool-assigned&&t2<scaled.length;t2++) scaled[t2].fl++;
+    const out={};
+    PARTY_ORDER.forEach(p=>{out[p]=0});
+    const ranked=PARTY_ORDER.slice().sort(
+      (p,q)=>((avg||{})[q]||0)-((avg||{})[p]||0));
+    const top=ranked[0];
+    for(const o of scaled){
+      const seatsN=o.fl;
+      if(seatsN<=0) continue;
+      const shares=districtShares(o.k, avg, false, null,
+                                  regionNoise, districtNoise);
+      if(!shares) continue;
+      const votes={};
+      PARTY_ORDER.forEach(p=>{votes[p]=shares[p]?shares[p].now:0});
+      const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>0
+        &&!(PARTY_META[p]&&PARTY_META[p].unallocated)
+        &&((avg[p]||0)>=THRESHOLD));
+      if(!valid.length) continue;
+      const totalVotes=valid.reduce((s,p)=>s+(votes[p]||0),0);
+      if(totalVotes<=0) continue;
+      const quota=totalVotes/seatsN;
+      const rems=[];
+      let given=0;
+      valid.forEach(p=>{
+        const q=(votes[p]||0)/quota;
+        const fl=Math.floor(q);
+        out[p]+=fl; given+=fl;
+        rems.push([q-fl,p]);
+      });
+      rems.sort((x,y)=>y[0]-x[0]);
+      for(let t2=0;t2<seatsN-given&&t2<rems.length;t2++) out[rems[t2][1]]++;
+    }
+    if(bonus&&top) out[top]=(out[top]||0)+bonus;
+    return out;
+  }
   const out={};
   PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.seatDistricts)){

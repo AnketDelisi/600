@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c235';
+const LOGO_CACHE = '20261005c236';
 
 const COUNTRIES = {
 
@@ -9842,13 +9842,14 @@ saxony_anhalt: {
     },
     map: {
       svg: 'img/greece_constituencies.svg',
-      label_tr: 'SEÇİM ÇEVRESİ', label_en: 'CONSTITUENCIES',
+      label_tr: 'SEÇİM ÇEVRESİ', label_en: 'CONSTITUENCIES', layerCount: 59,
       selector: 'id',
       proxyParties: ['fl', 'na', 'se'],
       swingProxy: { se: 'sp' },
       swingProxyConfidence: { se: 0.6 },
       // 2020 bonus law: first party 20 seats at 25%, +1 per 0.5pp up to 50
       bonus: { min: 25.0, minSeats: 20, step: 0.5, maxSeats: 50 },
+      totalSeats: 300,
       districts: {"ab1": "ab1","ab2": "ab2","ab3": "ab3","ach": "ach","ait": "ait","arc": "arc","arl": "arl","art": "art","ata": "ata","boe": "boe","cfu": "cfu","cha": "cha","chi": "chi","chn": "chn","cth": "cth","cyc": "cyc","dod": "dod","drm": "drm","eat": "eat","epi": "epi","eub": "eub","evr": "evr","evt": "evt","flo": "flo","fok": "fok","fth": "fth","gre": "gre","hra": "hra","ili": "ili","ima": "ima","ioa": "ioa","kar": "kar","kas": "kas","kav": "kav","kef": "kef","kil": "kil","koz": "koz","lac": "lac","las": "las","lef": "lef","les": "les","lrs": "lrs","mag": "mag","mes": "mes","per": "per","pia": "pia","pib": "pib","pla": "pla","pre": "pre","ret": "ret","rod": "rod","sam": "sam","ser": "ser","tha": "tha","thb": "thb","the": "the","tri": "tri","waa": "waa","xan": "xan","zan": "zan", 
               "attica": "attica",
               "thessalia_central_greece": "thessalia_central_greece",
@@ -14263,7 +14264,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
       seats: {"akp": 268, "chp": 169, "mhp": 50, "iyi": 43, "dem": 61, "yrp": 5, "tip": 4, "bbp": 0, "zp": 0, "a": 0, "yep": 0, "saadet": 0},
     },
     map: {},
-    map2: { svg: 'img/turkey.svg', label_tr: 'İLÇE HARİTASI', label_en: 'DISTRICTS' },
+    map2: { svg: 'img/turkey.svg', label_tr: 'İLÇE HARİTASI', label_en: 'DISTRICTS', layerCount: 976 },
   },
 
   qc: {

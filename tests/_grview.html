@@ -25,9 +25,10 @@ f.addEventListener('load', () => {
           }
         });
       }
+      const dots = box ? box.querySelectorAll('.seat-dots circle').length : -1;
       document.title = JSON.stringify({
         paths: box ? box.querySelectorAll('path[id]').length : -1,
-        fills: fills, sample: sample, err: err || 'none'
+        fills: fills, dots: dots, sample: sample, err: err || 'none'
       });
     }, 4000);
   }, 9000);

@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c249';
+const LOGO_CACHE = '20261005c250';
 
 const COUNTRIES = {
 
@@ -10067,9 +10067,11 @@ saxony_anhalt: {
       e:    { code: '+E',    name: '+Europa',                       name_en: 'More Europe',                   color: '#0073B9', ideology: "Liberalism (Italian), Pro-Europeanism"},
       nm:   { code: 'NM',    name: 'Noi Moderati',                  name_en: 'Us Moderates',                  color: '#43528F', ideology: "Liberal conservatism, Christian democracy"},
       svp:  { code: 'SVP',   name: 'Südtiroler Volkspartei',         name_en: 'South Tyrolean People\'s Party', color: '#231F20', ideology: "Regionalism, Christian democracy"},
+      scn:       { code: 'ScN',   name: 'Sud chiama Nord',              name_en: 'South calls North',             color: '#F2AB14', ideology: "Regionalism, Populism"},
+      uv:        { code: 'UV',    name: 'Union Valdôtaine',             name_en: 'Valdostan Union',               color: '#5EABD1', ideology: "Regionalism, Autonomism"},
       fn:   { code: 'FN',    name: 'Futuro Nazionale',              name_en: 'National Future',               color: '#20293D', ideology: "Ultranationalism, Ultraconservatism, Right-wing populism"},
     },
-    order: ['fdi', 'pd', 'm5s', 'lega', 'fi', 'a', 'iv', 'avs', 'e', 'nm', 'fn', 'svp'],
+    order: ['fdi', 'pd', 'm5s', 'lega', 'fi', 'a', 'iv', 'avs', 'e', 'nm', 'fn', 'scn', 'svp', 'uv'],
     // Senate: same ballot, Rosatellum with 74 single-member + 126
     // regional-list seats. Modelled by scaling the Chamber's collegio
     // win-rate to 74 and allocating 126 proportionally - the Senate's own
@@ -10323,7 +10325,7 @@ saxony_anhalt: {
                 "e": 2.94,
                 "nm": 0.9,
                 "fn": 0.0,
-                "svp": 0
+                "svp": 0, "scn": 1.0, "uv": 0.1
           },
           "label": "Senate districts (74)"
     },
@@ -10332,10 +10334,10 @@ saxony_anhalt: {
     // 3%/10% thresholds and a FIXED 70-deputy / 35-senator bonus for the
     // list or coalition at or above 42% in both chambers, capped 220/113
     stabilicum: { bonus: 70, cap: 220, minBonus: 42, coalitionThreshold: 10, senateBonus: 35, senateCap: 113 },
-    parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn', 'svp'],
+    parlOrder: ['avs', 'pd', 'm5s', 'a', 'iv', 'e', 'nm', 'fi', 'lega', 'fdi', 'fn', 'scn', 'svp', 'uv'],
     // coalitions: every member's votes count toward the Stabilicum 42% bonus
     blocs: {
-      bloc1: { name: 'Centre-right coalition', short: 'CDX', parties: ['fdi', 'lega', 'fi', 'nm'], color: '#1B4F9C' },
+      bloc1: { name: 'Centre-right coalition', short: 'CDX', parties: ['fdi', 'lega', 'fi', 'nm', 'scn'], color: '#1B4F9C' },
       bloc2: { name: 'Centre-left coalition',  short: 'CSX', parties: ['pd', 'm5s', 'avs', 'iv', 'e'], color: '#E4002B' },
     },
     lastElection: {
@@ -10661,8 +10663,7 @@ saxony_anhalt: {
                       "avs": 2.02,
                       "e": 1.62,
                       "nm": 0.9,
-                      "fn": 0.0
-              },
+                      "fn": 0.0, "scn": 13.0 },
               "toscana": {
                       "fdi": 25.89,
                       "pd": 25.85,
@@ -10713,8 +10714,7 @@ saxony_anhalt: {
                       "avs": 0.0,
                       "e": 0.0,
                       "nm": 0.61,
-                      "fn": 0.0
-              },
+                      "fn": 0.0, "uv": 25.0 },
               "veneto": {
                       "fdi": 32.6,
                       "pd": 16.16,
@@ -11316,7 +11316,7 @@ saxony_anhalt: {
       fdi: 'img/it/FDI.svg', pd: 'img/it/PD.svg', m5s: 'img/it/M5S.svg',
       lega: 'img/it/LEGA.svg', fi: 'img/it/FI.svg', a: 'img/it/A.svg',
       iv: 'img/it/IV.svg', avs: 'img/it/AVS.svg', e: 'img/it/E.svg',
-      nm: 'img/it/NM.svg', fn: 'img/it/FN.svg',
+      nm: 'img/it/NM.svg', fn: 'img/it/FN.svg',     svp: 'img/it/SVP.svg', scn: 'img/it/SCN.svg', uv: 'img/it/UV.svg',
     },
   },
   jp: {

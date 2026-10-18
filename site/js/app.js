@@ -3256,7 +3256,12 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   // list like SPN sits above smaller parties); otherwise by projected share.
   // Dissolved alliances (pastOnly) appear in the 2023 result view only.
       const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):(shares[p]?shares[p].now:0);
-      let rows=PARTY_ORDER.slice().filter(p=>!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{
+      // joint lists: in allied provinces the members render as ONE row under
+      // the list's own name (pooled share), never as separate party rows
+      const alHere=(conf.alliances||[]).filter(a=>a.provinces.indexOf(String(nr))>=0&&a.parties.length>1);
+      const alMember={};
+      alHere.forEach(a=>a.parties.forEach(p=>{alMember[p]=a}));
+      let rows=PARTY_ORDER.slice().filter(p=>!alMember[p]&&!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{
         const s=shares[p];
         if(!s) return '';
         const seatNr=(conf.ilceDistrict&&conf.ilceDistrict[nr])||nr;
@@ -3278,21 +3283,21 @@ async function renderMapInto(box, avg, resultMode, confOverride){
           <span class="map-tip-delta ${dCls}">${dTxt}</span>
         </div>`;
       }).filter(x=>x).join('');
-      // joint lists (29-N coalitions): a pooled banner row above the members,
-      // so SdP / PP+UPN / ERC+Podemos read as one list on the district
-      for(const al of (conf.alliances||[])){
-        if(al.provinces.indexOf(String(nr))<0) continue;
+      // joint lists: one row per coalition, named by its members, carrying
+      // the pooled share (the list competes as a whole in the calculation)
+      for(const al of alHere){
         const mem=al.parties.filter(p=>shares[p]);
         if(mem.length<2) continue;
         const pv=mem.reduce((a2,p)=>a2+(resultMode?(shares[p].past||0):(shares[p].now||0)),0);
         if(pv<0.05) continue;
         const cols=mem.map(p=>PARTY_META[p]?PARTY_META[p].color:'#888');
         const grad=cols.length>1?`linear-gradient(90deg,${cols.map((c,i)=>`${c} ${i*100/cols.length}% ${(i+1)*100/cols.length}%`).join(',')})`:cols[0];
+        const dls=mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
         rows=`<div class="map-tip-row">
           <span class="map-tip-code" style="color:#111">${mem.map(p=>partyCode(p)).join('+')}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${grad}"></div></div>
           <span class="map-tip-now">${pct(pv)}</span>
-          <span class="map-tip-delta flat"></span>
+          <span class="map-tip-delta ${dls>0.05?'up':(dls<-0.05?'down':'flat')}">${resultMode?'':(dls>0.05?'▲':(dls<-0.05?'▼':''))+(Math.abs(dls)<0.05?'':pct(Math.abs(dls)))}</span>
         </div>`+rows;
       }
       // unmodelled 2023 lists (remainder), past column only; shown whenever

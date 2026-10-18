@@ -3888,7 +3888,7 @@ function allocateSeatsSlovenia(avg, regionNoise, districtNoise){
 
 function allocateSeatsByDistrict(avg, regionNoise, districtNoise){
   const conf=MAP_CONF();
-  if(!conf||!conf.seatDistricts) return null;
+  if(!conf||!conf.seatDistricts||conf.bonus) return null;
   const out={};
   PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.seatDistricts)){

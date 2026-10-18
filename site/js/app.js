@@ -2324,6 +2324,21 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
         base=nb;
       }
     }
+    // 2024 European Parliament blend (epBlend): the EP's per-district
+    // geography at low weight sharpens the projection's regional pattern
+    // (backtest: BG 2023 national -> EP 2024 -> 2024 national triple,
+    // vote-weighted regional MAE 2.21 -> 2.06 at w=0.15, every party
+    // improved). The result views keep the pure base-election numbers.
+    if(!resultMode&&conf.epGebiete&&conf.epBlend!==undefined){
+      const pv=conf.epGebiete[gArr];
+      if(pv){
+        const w=conf.epBlend, nb={...base};
+        for(const p in base){
+          if(pv[p]!==undefined) nb[p]=base[p]*(1-w)+pv[p]*w;
+        }
+        base=nb;
+      }
+    }
   }
   // parties absent from the last election must not appear in the result
   // views (Turkey: YENİ/A/SAADET hold proxy geography for the swing)
@@ -2338,6 +2353,16 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
     const w=conf.baseBlend, nn={};
     for(const p in nat) nn[p]=(conf.prevNational[p]!==undefined)
       ?nat[p]*w+conf.prevNational[p]*(1-w):nat[p];
+    nat=nn;
+  }
+  // the EP blend shifts the swing anchor the same way, so the swing ratio
+  // stays coherent with the EP-blended geography above
+  if(!resultMode&&conf.epNational&&conf.epBlend!==undefined){
+    const w=conf.epBlend, nn={...nat};
+    for(const p in nat){
+      if(conf.epNational[p]!==undefined)
+        nn[p]=nat[p]*(1-w)+conf.epNational[p]*w;
+    }
     nat=nn;
   }
   // District swing method (backtested on the 2026 MV/Berlin state elections,

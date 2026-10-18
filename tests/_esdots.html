@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0}iframe{width:1400px;height:3600px;border:0}</style></head>
+<body>
+<script>localStorage.setItem('600_lang', 'tr');</script>
+<iframe id="f" src="/index.html?c=spain"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', () => {
+  const w = f.contentWindow, d = f.contentDocument;
+  const T = (ms) => new Promise(r => setTimeout(r, ms));
+  const byFill = (root) => {
+    const o = {};
+    root.querySelectorAll('[fill]').forEach(c => {
+      const k = c.getAttribute('fill');
+      if (k && k !== 'none') o[k] = (o[k] || 0) + 1;
+    });
+    return Object.entries(o).sort((a, b) => b[1] - a[1]).slice(0, 9)
+      .map(([k, v]) => k + ':' + v).join(' ');
+  };
+  (async () => {
+    let n = 0;
+    while (n < 100 && !d.querySelector('.parl-btn')) { await T(200); n++; }
+    await T(1500);
+    const ubtn = d.querySelector('button[data-parlmode="upper"]');
+    if (ubtn) ubtn.click();
+    await T(2500);
+    const out = {};
+    const pb = d.getElementById('parl-box');
+    if (pb) {
+      out.archFill = byFill(pb);
+      const cap = pb.parentElement.parentElement.innerText.replace(/\s+/g, ' ');
+      const mi = cap.indexOf('sandalye');
+      out.archCap = cap.slice(Math.max(0, mi - 6), mi + 70);
+    } else out.arch = 'no-parl-box';
+    const mbtn = d.querySelector('button[data-parlview="map"]');
+    if (mbtn) mbtn.click();
+    let n2 = 0;
+    while (n2 < 60 && !(d.getElementById('map-box')
+           && d.getElementById('map-box').querySelectorAll('path[id]').length)) {
+      await T(500); n2++;
+    }
+    await T(2000);
+    const box = d.getElementById('map-box');
+    if (box) {
+      out.paths = box.querySelectorAll('path[id]').length;
+      out.dots = box.querySelectorAll('.seat-dots circle').length;
+      out.mapFill = byFill(box);
+    } else out.map = 'no-map-box';
+    document.title = 'DIAG ' + JSON.stringify(out);
+  })();
+});
+</script>
+</body></html>

@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c229';
+const LOGO_CACHE = '20261005c230';
 
 const COUNTRIES = {
 
@@ -7736,7 +7736,6 @@ saxony_anhalt: {
               "upn": 0.21,
               "aa": 0.83,
               "podemos": 0.0,
-              "salf": 4.58,
               "ac": 0.58
       },
       seats: {
@@ -9843,6 +9842,7 @@ saxony_anhalt: {
     map: {
       svg: 'img/greece.svg',
       selector: 'id',
+      proxyParties: ['fl', 'na'],
       // 2020 bonus law: first party 20 seats at 25%, +1 per 0.5pp up to 50
       bonus: { min: 25.0, minSeats: 20, step: 0.5, maxSeats: 50 },
       districts: {
@@ -9868,8 +9868,8 @@ saxony_anhalt: {
                       "niki": 2.86,
                       "pe": 3.68,
                       "m25": 3.24,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 3.09,
+                      "na": 2.9,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9884,8 +9884,8 @@ saxony_anhalt: {
                       "niki": 3.62,
                       "pe": 2.79,
                       "m25": 1.99,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 2.83,
+                      "na": 1.72,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9900,8 +9900,8 @@ saxony_anhalt: {
                       "niki": 5.66,
                       "pe": 3.18,
                       "m25": 2.18,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 3.4,
+                      "na": 1.73,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9916,8 +9916,8 @@ saxony_anhalt: {
                       "niki": 2.31,
                       "pe": 2.79,
                       "m25": 2.51,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 2.93,
+                      "na": 2.27,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9932,8 +9932,8 @@ saxony_anhalt: {
                       "niki": 3.92,
                       "pe": 2.23,
                       "m25": 2.06,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 2.77,
+                      "na": 1.98,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9948,8 +9948,8 @@ saxony_anhalt: {
                       "niki": 3.28,
                       "pe": 3.09,
                       "m25": 2.07,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 2.94,
+                      "na": 2.25,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9964,8 +9964,8 @@ saxony_anhalt: {
                       "niki": 2.84,
                       "pe": 2.95,
                       "m25": 1.9,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 3.19,
+                      "na": 1.81,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -9980,8 +9980,8 @@ saxony_anhalt: {
                       "niki": 5.66,
                       "pe": 3.18,
                       "m25": 2.18,
-                      "fl": 0.0,
-                      "na": 0.0,
+                      "fl": 3.4,
+                      "na": 1.73,
                       "dpk": 0.0,
                       "elpida": 0.0,
                       "elas": 0.0
@@ -10007,8 +10007,8 @@ saxony_anhalt: {
               "niki": 3.69,
               "pe": 3.17,
               "m25": 2.5,
-              "fl": 0,
-              "na": 0,
+              "fl": 3.04,
+              "na": 2.45,
               "dpk": 0,
               "elpida": 0,
               "elas": 0

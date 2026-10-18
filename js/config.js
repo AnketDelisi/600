@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c262';
+const LOGO_CACHE = '20261005c263';
 
 const COUNTRIES = {
 
@@ -7738,7 +7738,7 @@ saxony_anhalt: {
           "alliances": [
             { "provinces": ["coruna", "lugo", "ourense", "pontevedra", "asturias", "cantabria", "alava", "gipuzkoa", "bizkaia", "navarra", "rioja", "huesca", "teruel", "zaragoza", "madrid", "avila", "burgos", "leon", "palencia", "salamanca", "segovia", "soria", "valladolid", "zamora", "albacete", "ciudad_real", "cuenca", "guadalajara", "toledo", "badajoz", "caceres", "alicante", "castellon", "valencia", "almeria", "cadiz", "cordoba", "granada", "huelva", "jaen", "malaga", "sevilla", "murcia", "ceuta", "melilla", "la_gomera"], "parties": ["psoe", "sumar"] },
             { "provinces": ["barcelona", "girona", "lleida", "tarragona", "alava", "gipuzkoa", "bizkaia", "navarra"], "parties": ["erc", "bildu"], "name": "ERC-EHB" },
-            { "provinces": ["navarra"], "parties": ["upn", "pp"], "name": "UPN" },
+            { "provinces": ["navarra"], "parties": ["pp", "upn"], "name": "UPN" },
             { "provinces": ["gran_canaria", "tenerife", "el_hierro", "fuerteventura", "la_gomera", "la_palma", "lanzarote"], "parties": ["sumar", "podemos"] }
           ],
           "selector": "id",
@@ -8940,7 +8940,7 @@ saxony_anhalt: {
       // together in Navarre; the Valencian and Canarian coalitions
       // absorb Podemos into the Frente Amplio space
       { provinces: ['barcelona', 'girona', 'lleida', 'tarragona'], parties: ['erc', 'podemos'] },
-      { provinces: ['navarra'], parties: ['upn', 'pp'], name: 'UPN' },
+      { provinces: ['navarra'], parties: ['pp', 'upn'], name: 'UPN' },
       { provinces: ['alicante', 'castellon', 'valencia'], parties: ['compromis', 'sumar', 'podemos'], name: 'FV' },
       { provinces: ['palmas', 'tenerife'], parties: ['sumar', 'podemos'], name: 'UPC' },
     ],

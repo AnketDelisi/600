@@ -214,6 +214,15 @@ def main():
         names[key] = disp
     national = {p: round(nat_votes.get(p, 0) * 100 / nat_valid, 2)
                 for p in PARTIES}
+    # SALF did not contest 2023: its per-province baseline is the 2024 EP
+    # election (9J), broadcast from its autonomous-community shares; the
+    # swing anchor is its EP national share
+    _ep = json.load(open(os.path.join(ROOT, "data", "spain", "ep2024.json"),
+                         encoding="utf8"))
+    for _k, _v in _ep["provinces"].items():
+        if _k in gebiete:
+            gebiete[_k]["salf"] = _v
+    national["salf"] = _ep["nation"]
     # AC and AA did not contest the 2023 general election: their baselines
     # come from the most recent regional elections - Alianca Catalana 3.77%
     # (Catalonia 2024) in the four Catalan provinces, Adelante Andalucia
@@ -357,6 +366,9 @@ def main():
       // scaled by the Podemos/Sumar national ratio), so its vote concentrates
       // where Sumar is strong instead of being flat across every province
       swingProxy: { podemos: 'sumar', salf: 'vox' },
+      // SALF never ran in the 2023 general: it must not
+      // appear in the 2023 result views
+      proxyParties: ['salf'],
       swingProxyConfidence: { podemos: 0.5, salf: 0.5 },
       selector: 'id',
       districtThreshold: true,    // 3% applies per constituency, not nationally

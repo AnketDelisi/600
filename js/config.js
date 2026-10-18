@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c227';
+const LOGO_CACHE = '20261005c228';
 
 const COUNTRIES = {
 
@@ -8992,8 +8992,8 @@ saxony_anhalt: {
       // shape (Poliwave proxy - the borrowed shape, confidence-weighted, then
       // scaled by the Podemos/Sumar national ratio), so its vote concentrates
       // where Sumar is strong instead of being flat across every province
-      swingProxy: { podemos: 'sumar' },
-      swingProxyConfidence: { podemos: 0.5 },
+      swingProxy: { podemos: 'sumar', salf: 'vox' },
+      swingProxyConfidence: { podemos: 0.5, salf: 0.5 },
       selector: 'id',
       districtThreshold: true,    // 3% applies per constituency, not nationally
       districts: {

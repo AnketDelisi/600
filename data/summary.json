@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T21:14:16Z",
+ "generated": "2026-10-19T21:22:33Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -483,7 +483,7 @@
   },
   "hu": {
    "name": "Hungary",
-   "election_date": "2026-04-12",
+   "election_date": "2030-04-14",
    "election_date_runoff": null,
    "last_election": "2026-04-12",
    "last_winner": "tisza",

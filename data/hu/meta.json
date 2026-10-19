@@ -1,7 +1,7 @@
 {
  "country": "hu",
  "name": "Hungary",
- "election_date": "2026-04-12",
+ "election_date": "2030-04-14",
  "seats": 199,
  "threshold": 5.0,
  "method": "dhondt",

@@ -6,9 +6,31 @@
    "url": "https://en.wikipedia.org/wiki/32nd_Alberta_general_election"
   }
  ],
- "scraped_at": "2026-10-17T10:06:59Z",
- "poll_count": 28,
+ "scraped_at": "2026-10-19T21:13:59Z",
+ "poll_count": 30,
  "polls": [
+  {
+   "pollster": "Mainstreet Research",
+   "date": "2026-10-16",
+   "votes": {
+    "ucp": 43.0,
+    "ndp": 43.0,
+    "grn": 3.0,
+    "tory": 6.0,
+    "wip": 3.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Abacus Data",
+   "date": "2026-10-13",
+   "votes": {
+    "ucp": 47.0,
+    "ndp": 42.0,
+    "tory": 6.0
+   },
+   "n": 1000
+  },
   {
    "pollster": "Janet Brown Opinion Research/Trend Research",
    "date": "2026-09-21",

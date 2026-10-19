@@ -2,9 +2,32 @@
  "country": "israel",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
- "scraped_at": "2026-10-17T10:06:34Z",
- "poll_count": 164,
+ "scraped_at": "2026-10-19T21:13:38Z",
+ "poll_count": 165,
  "polls": [
+  {
+   "pollster": "Kantar",
+   "date": "2026-10-18",
+   "votes": {
+    "likud": 21,
+    "together": 12,
+    "rzp": 7,
+    "otzma": 8,
+    "shas": 8,
+    "utj": 7,
+    "yb": 8,
+    "raam": 5,
+    "joint_list": 8,
+    "dems": 9,
+    "yashar": 23,
+    "reservists": 4
+   },
+   "country": "israel",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+   "n": 554,
+   "method": "mixed"
+  },
   {
    "pollster": "LRI+P4A",
    "date": "2026-10-15",

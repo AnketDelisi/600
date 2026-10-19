@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-17T10:08:11Z",
+  "scraped_at": "2026-10-19T21:15:05Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -220,10 +220,22 @@
     "Colorado": null,
     "Delaware": null,
     "Florida": {
-      "dem": 42.7,
-      "rep": 49.2,
+      "dem": 43.0,
+      "rep": 49.5,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Univision / YouGov",
+          "dates": "October 2–15, 2026",
+          "dem": 42.0,
+          "rep": 51.0
+        },
+        {
+          "pollster": "ActiVote",
+          "dates": "September 27 – October 15, 2026",
+          "dem": 47.0,
+          "rep": 53.0
+        },
         {
           "pollster": "MDW Communications",
           "dates": "October 4–10, 2026",
@@ -335,6 +347,13 @@
       "rep": 42.3,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Quantus Insights",
+          "dates": "October 15–17, 2026",
+          "partisan": "R",
+          "dem": 52.0,
+          "rep": 45.0
+        },
         {
           "pollster": "Trafalgar Group",
           "dates": "October 7–9, 2026",
@@ -503,10 +522,23 @@
     },
     "Illinois": null,
     "Iowa": {
-      "dem": 47.0,
+      "dem": 46.8,
       "rep": 45.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "October 13–15, 2026",
+          "partisan": "R",
+          "dem": 44.0,
+          "rep": 46.0
+        },
+        {
+          "pollster": "NPA Polling",
+          "dates": "October 8–12, 2026",
+          "dem": 44.0,
+          "rep": 47.0
+        },
         {
           "pollster": "YouGov",
           "dates": "October 6–12, 2026",
@@ -997,15 +1029,21 @@
       }
     },
     "Massachusetts": {
-      "dem": 53.8,
-      "rep": 29.3,
+      "dem": 54.1,
+      "rep": 29.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "UMass Amherst / YouGov",
+          "dates": "October 5–12, 2026",
+          "dem": 56.0,
+          "rep": 29.0
+        },
+        {
           "pollster": "MassINC Polling Group",
           "dates": "September 14–22, 2026",
-          "dem": 52.0,
-          "rep": 26.0
+          "dem": 54.0,
+          "rep": 28.0
         },
         {
           "pollster": "University of New Hampshire",
@@ -1413,10 +1451,17 @@
       }
     },
     "Minnesota": {
-      "dem": 45.9,
-      "rep": 42.8,
+      "dem": 46.4,
+      "rep": 43.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "October 13–15, 2026",
+          "partisan": "R",
+          "dem": 48.0,
+          "rep": 45.0
+        },
         {
           "pollster": "KSTP / SurveyUSA",
           "dates": "October 8–12, 2026",
@@ -1807,11 +1852,18 @@
     },
     "New Hampshire": {
       "dem": 49.8,
-      "rep": 43.0,
+      "rep": 43.6,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
-      "n_sponsored": 1,
+      "n_sponsored": 2,
       "polls": [
+        {
+          "pollster": "National Public Affairs",
+          "dates": "October 8–12, 2026",
+          "partisan": "R",
+          "dem": 50.0,
+          "rep": 45.0
+        },
         {
           "pollster": "YouGov",
           "dates": "September 28 – October 5, 2026",
@@ -2290,10 +2342,24 @@
       }
     },
     "Ohio": {
-      "dem": 47.5,
-      "rep": 44.0,
+      "dem": 47.8,
+      "rep": 44.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "ActiVote",
+          "dates": "September 26 – October 18, 2026",
+          "dem": 50.0,
+          "rep": 50.0
+        },
+        {
+          "pollster": "Rasmussen Reports",
+          "dates": "October 12–14, 2026",
+          "partisan": "R",
+          "dem": 47.0,
+          "rep": 49.0,
+          "ind": 1.0
+        },
         {
           "pollster": "Bowling Green State University / YouGov",
           "dates": "September 29 – October 9, 2026",
@@ -2571,10 +2637,17 @@
       }
     },
     "South Carolina": {
-      "dem": 43.4,
-      "rep": 45.2,
+      "dem": 44.3,
+      "rep": 46.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Trafalgar Group",
+          "dates": "October 16–18, 2026",
+          "partisan": "R",
+          "dem": 46.0,
+          "rep": 49.0
+        },
         {
           "pollster": "Rasmussen Reports",
           "dates": "October 5–8, 2026",
@@ -2713,16 +2786,28 @@
     },
     "Tennessee": null,
     "Texas": {
-      "dem": 48.4,
-      "rep": 45.7,
+      "dem": 48.6,
+      "rep": 46.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "CBS News / YouGov",
+          "dates": "October 8–16, 2026",
+          "dem": 51.0,
+          "rep": 49.0
+        },
         {
           "pollster": "InsiderAdvantage",
           "dates": "October 13–14, 2026",
           "partisan": "R",
           "dem": 48.0,
           "rep": 49.0
+        },
+        {
+          "pollster": "University of Houston",
+          "dates": "October 10–14, 2026",
+          "dem": 48.0,
+          "rep": 46.0
         },
         {
           "pollster": "ActiVote",
@@ -3294,6 +3379,12 @@
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
+          "pollster": "ActiVote",
+          "dates": "September 24 – October 16, 2026",
+          "dem": 63.0,
+          "rep": 37.0
+        },
+        {
           "pollster": "Manhattan Institute",
           "dates": "September 24 – October 1, 2026",
           "partisan": "R",
@@ -3368,8 +3459,8 @@
     },
     "Colorado": null,
     "Connecticut": {
-      "dem": 53.4,
-      "rep": 38.5,
+      "dem": 53.9,
+      "rep": 38.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
         {
@@ -3383,6 +3474,18 @@
           "dates": "October 8–12, 2026",
           "dem": 58.0,
           "rep": 38.0
+        },
+        {
+          "pollster": "Wesleyan University / YouGov",
+          "dates": "October 8–12, 2026",
+          "dem": 53.0,
+          "rep": 32.0
+        },
+        {
+          "pollster": "GreatBlue Research",
+          "dates": "October 6–12, 2026",
+          "dem": 53.0,
+          "rep": 31.0
         },
         {
           "pollster": "University of New Hampshire",
@@ -3438,6 +3541,12 @@
       "rep": 47.7,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Univision / YouGov",
+          "dates": "October 2–15, 2026",
+          "dem": 42.0,
+          "rep": 50.0
+        },
         {
           "pollster": "Fabrizio, Lee & Associates",
           "dates": "October 8–11, 2026",
@@ -3611,10 +3720,17 @@
       }
     },
     "Georgia": {
-      "dem": 46.7,
-      "rep": 48.4,
+      "dem": 46.9,
+      "rep": 48.6,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Quantus Insights",
+          "dates": "October 15–17, 2026",
+          "partisan": "R",
+          "dem": 47.0,
+          "rep": 48.0
+        },
         {
           "pollster": "InsiderAdvantage",
           "dates": "October 12–13, 2026",
@@ -3719,10 +3835,16 @@
     "Idaho": null,
     "Illinois": null,
     "Iowa": {
-      "dem": 51.5,
+      "dem": 51.4,
       "rep": 43.4,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "NPA Polling",
+          "dates": "October 8–12, 2026",
+          "dem": 50.0,
+          "rep": 45.0
+        },
         {
           "pollster": "YouGov",
           "dates": "October 6–12, 2026",
@@ -4018,10 +4140,16 @@
     },
     "Maryland": null,
     "Massachusetts": {
-      "dem": 54.5,
+      "dem": 54.8,
       "rep": 34.3,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "UMass Amherst / YouGov",
+          "dates": "October 5–12, 2026",
+          "dem": 56.0,
+          "rep": 31.0
+        },
         {
           "pollster": "MassINC Polling Group",
           "dates": "September 14–22, 2026",
@@ -4085,7 +4213,7 @@
       ],
       "names": {
         "d": "Maura Healey",
-        "r": "Michael Minogue"
+        "r": "Mike Minogue"
       }
     },
     "Michigan": {
@@ -4352,10 +4480,17 @@
       }
     },
     "Nebraska": {
-      "dem": 37.8,
-      "rep": 44.5,
+      "dem": 39.3,
+      "rep": 45.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Public Policy Polling",
+          "dates": "October 13–14, 2026",
+          "partisan": "D",
+          "dem": 46.0,
+          "rep": 48.0
+        },
         {
           "pollster": "National Public Affairs",
           "dates": "October 2–5, 2026",
@@ -4419,10 +4554,17 @@
       ]
     },
     "Nevada": {
-      "dem": 41.8,
-      "rep": 42.7,
+      "dem": 42.7,
+      "rep": 43.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Global Strategy Group",
+          "dates": "October 8–13, 2026",
+          "partisan": "D",
+          "dem": 47.0,
+          "rep": 48.0
+        },
         {
           "pollster": "Noble Predictive Insights",
           "dates": "September 22–26, 2026",
@@ -4515,10 +4657,17 @@
       }
     },
     "New Hampshire": {
-      "dem": 40.3,
-      "rep": 51.4,
+      "dem": 40.6,
+      "rep": 51.1,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "National Public Affairs",
+          "dates": "October 8–12, 2026",
+          "partisan": "R",
+          "dem": 38.0,
+          "rep": 54.0
+        },
         {
           "pollster": "YouGov",
           "dates": "September 28 – October 5, 2026",
@@ -5067,10 +5216,16 @@
       }
     },
     "Pennsylvania": {
-      "dem": 55.7,
-      "rep": 33.1,
+      "dem": 56.1,
+      "rep": 32.6,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "PennLive",
+          "dates": "October 5–11, 2026",
+          "dem": 58.0,
+          "rep": 28.0
+        },
         {
           "pollster": "Quinnipiac University",
           "dates": "October 1–5, 2026",
@@ -5326,10 +5481,22 @@
       }
     },
     "Texas": {
-      "dem": 46.5,
-      "rep": 48.4,
+      "dem": 46.8,
+      "rep": 48.9,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "CBS News / YouGov",
+          "dates": "October 8–16, 2026",
+          "dem": 48.0,
+          "rep": 52.0
+        },
+        {
+          "pollster": "University of Houston",
+          "dates": "October 10–14, 2026",
+          "dem": 46.0,
+          "rep": 49.0
+        },
         {
           "pollster": "ActiVote",
           "dates": "September 30 – October 14, 2026",
@@ -5664,10 +5831,16 @@
       }
     },
     "Wisconsin": {
-      "dem": 48.1,
-      "rep": 44.3,
+      "dem": 47.6,
+      "rep": 44.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "YouGov",
+          "dates": "September 22 – October 9, 2026",
+          "dem": 46.0,
+          "rep": 42.0
+        },
         {
           "pollster": "Z to A Research",
           "dates": "September 28 – October 1, 2026",
@@ -6050,12 +6223,19 @@
       }
     },
     "Maine 2": {
-      "dem": 49.4,
-      "rep": 47.8,
+      "dem": 49.6,
+      "rep": 47.4,
       "source": "Simple avg (latest 5 polls)",
       "n_polls": 5,
       "n_sponsored": 4,
       "polls": [
+        {
+          "pollster": "Tulchin Research",
+          "dates": "October 12–14, 2026",
+          "partisan": "D",
+          "dem": 50.0,
+          "rep": 46.0
+        },
         {
           "pollster": "Tulchin Research",
           "dates": "September 27–30, 2026",
@@ -6227,7 +6407,7 @@
         }
       ],
       "names": {
-        "d": "Jake Johnson",
+        "d": "Jake Johnson (DFL)",
         "r": "Brad Finstad"
       }
     },
@@ -6317,7 +6497,7 @@
       "names": {
         "d": "Teresa Benitez-Thompson",
         "r": "David Flippo",
-        "i": "Lynn Champan (IA)"
+        "i": "Lynn Chapman (IA)"
       }
     },
     "New Hampshire 2": {
@@ -6745,12 +6925,19 @@
       }
     },
     "Pennsylvania 10": {
-      "dem": 48.0,
-      "rep": 44.0,
+      "dem": 48.2,
+      "rep": 44.4,
       "source": "Simple avg (latest 5 polls)",
-      "n_polls": 4,
-      "n_sponsored": 3,
+      "n_polls": 5,
+      "n_sponsored": 4,
       "polls": [
+        {
+          "pollster": "Susquehanna Polling & Research",
+          "dates": "October 5–11, 2026",
+          "partisan": "R",
+          "dem": 49.0,
+          "rep": 46.0
+        },
         {
           "pollster": "Franklin & Marshall College",
           "dates": "September 9–20, 2026",

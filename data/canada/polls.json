@@ -6,8 +6,8 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_46th_Canadian_federal_election"
   }
  ],
- "scraped_at": "2026-10-17T10:06:59Z",
- "poll_count": 239,
+ "scraped_at": "2026-10-19T21:14:00Z",
+ "poll_count": 240,
  "polls": [
   {
    "pollster": "Abacus Data",
@@ -21,6 +21,18 @@
     "ppc": 1.0
    },
    "n": 3197
+  },
+  {
+   "pollster": "Léger",
+   "date": "2026-10-12",
+   "votes": {
+    "lpc": 48.0,
+    "cpc": 33.0,
+    "bq": 6.0,
+    "ndp": 8.0,
+    "gpc": 3.0
+   },
+   "n": 1525
   },
   {
    "pollster": "Liaison Strategies",

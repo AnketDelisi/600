@@ -344,6 +344,8 @@ const fmt=(v,d=1)=>v.toFixed(d);
 const pct=(v,d=1)=>fmt(v,d)+'%';
 const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
 const partyCode=pid=>pid==='other'?t('Other','Diğer'):((PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid);
+// chamber-specific display names (Spain Senate: the PSOE-led list runs as SDP)
+const partyLabel=(pid,conf)=>((conf&&conf.partyNames&&conf.partyNames[pid])||partyCode(pid));
 
 // Label for the sub-national units (MAP_ONLY countries can override; default "federative units")
 const unitLabel=()=>{
@@ -3326,7 +3328,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const dTxt=noDelta?'':(delta>0.05?'▲':(delta<-0.05?'▼':''))+(Math.abs(delta)<0.05?'':pct(Math.abs(delta)));
         const dCls=noDelta?'flat':(delta>0.05?'up':(delta<-0.05?'down':'flat'));
         return {v:(resultMode?s.past:s.now), html:`<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}"${s.name?` title="${s.name}"`:''}>${partyCode(p)}${pill}</span>
+          <span class="map-tip-code" style="color:${col}"${s.name?` title="${s.name}"`:''}>${partyLabel(p,conf)}${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${dCls}">${dTxt}</span>
@@ -5613,7 +5615,7 @@ function renderForecast(pane){
   // layer, so the page is dedicated to the head-to-head race
   const RO_ONLY=!!(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffOnly);
   if(RO_ONLY){ if(FC_MODE!=='res'&&FC_MODE!=='runoff') FC_MODE='runoff'; }
-  else if(FC_MODE==='runoff') FC_MODE='proj';
+  else if(FC_MODE==='runoff'||(FC_MODE==='upper'&&!((COUNTRIES[COUNTRY]||{}).senate))) FC_MODE='proj';
   const pollsterVal=$('filter-pollster')?$('filter-pollster').value:'';
   const methodVal=$('filter-method')?$('filter-method').value:'';
   let filtered=recentPolls(POLLS,daysVal);
@@ -5717,6 +5719,19 @@ function renderForecast(pane){
     const arr=sim.votesBy.other.slice().sort((a,b)=>a-b);
     medVotes.other=arr[Math.floor(arr.length/2)];
   }
+
+  // --- Senate (upper chamber) forecast data: the deterministic block-vote
+  // projection from the median national vote shares - shared by the card,
+  // the map toggle and the poster ---
+  const SEN_UP=(COUNTRIES[COUNTRY]||{}).upper||null;
+  const SEN_CONF=(COUNTRIES[COUNTRY]||{}).senate||null;
+  const senDet=(!MAP_ONLY&&SEN_UP&&SEN_CONF)?(allocateUpper(medVotes)||{}):null;
+  // the forecast map's caption follows its mode, live
+  const fcMapCap=()=>FC_MODE==='runoff'
+    ?t('Projected runoff winners (Lula vs Flávio) from the head-to-head average · hover a district for the past/forecast comparison','Başa baş ortalamasından tahmini ikinci tur kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
+    :FC_MODE==='upper'
+    ?t('Upper-chamber map from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Üst meclis haritası tahmin medyanından · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
+    :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin');
 
   // Second-round runoff card (two-round presidential only)
   let runoffHtml='';
@@ -6011,32 +6026,25 @@ function renderForecast(pane){
       </div>
     </div>`}
 
-    ${(!MAP_ONLY&&(COUNTRIES[COUNTRY]||{}).upper&&(COUNTRIES[COUNTRY]||{}).senate)?(()=>{
-      // Senate forecast: the deterministic upper-chamber projection from the
-      // simulation's median national vote shares - the same allocator the
+    ${senDet?(()=>{
+      // Senate forecast card: the deterministic upper-chamber projection from
+      // the simulation's median national vote shares - the same allocator the
       // polls-tab Senate toggle uses (block voting in Spain, the Stabilicum
       // Senate in Italy)
-      const medVotes={};
-      PARTY_ORDER.forEach(p=>{
-        const arr=(sim.votesBy&&sim.votesBy[p])||[];
-        const srt=arr.slice().sort((a,b)=>a-b);
-        medVotes[p]=srt.length?srt[Math.floor(srt.length/2)]:0;
-      });
-      const detUpper=allocateUpper(medVotes)||{};
-      const uRows=PARTY_ORDER.filter(p=>(detUpper[p]||0)>0)
-        .sort((a,b)=>(detUpper[b]||0)-(detUpper[a]||0))
-        .map(p=>`<tr><td style="font-weight:700;color:${(PARTY_META[p]||{}).color||'#888'}">${partyCode(p)}</td>
-          <td class="num c" style="font-weight:900">${detUpper[p]}</td></tr>`).join('');
-      const uTot=Object.values(detUpper).reduce((a,b)=>a+(b||0),0);
-      const up=COUNTRIES[COUNTRY].upper;
-      return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday} — ${up.label||t('Upper chamber','\u00dcst meclis')}</div>
-        <button class="shot-btn" id="fc-upper-shot-btn" style="margin-left:auto" title="Download parliament diagram as PNG">${CAM_ICON}</button></div>
-        <div class="parliament-box" id="fc-upper-box">${buildParliamentSVG(detUpper)}</div>
+      const uRows=PARTY_ORDER.filter(p=>(senDet[p]||0)>0)
+        .sort((a,b)=>(senDet[b]||0)-(senDet[a]||0))
+        .map(p=>`<tr><td style="font-weight:700;color:${(PARTY_META[p]||{}).color||'#888'}">${partyLabel(p,SEN_CONF)}</td>
+          <td class="num c" style="font-weight:900">${senDet[p]}</td></tr>`).join('');
+      const uTot=Object.values(senDet).reduce((a,b)=>a+(b||0),0);
+      return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday} — ${SEN_UP.label||t('Upper chamber','\u00dcst meclis')}</div>
+        <button class="shot-btn" id="fc-upper-poster-btn" style="margin-left:auto" title="${t('Download the projection poster as PNG','Projeksiyon posterini PNG olarak indir')}">${CAM_ICON}</button>
+        <button class="shot-btn" id="fc-upper-copy-btn" title="${t('Copy the projection poster to the clipboard','Projeksiyon posterini panoya kopyala')}">${COPY_ICON}</button></div>
+        <div class="parliament-box" id="fc-upper-box">${buildParliamentSVG(senDet)}</div>
         <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
           <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th>
         </tr></thead><tbody>${uRows}</tbody></table></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-          ${up.block?t('Upper-chamber projection from the median of the simulations: each province allocates its senators by block voting','\u00dcst meclis projeksiyonu sim\u00fclasyonlar\u0131n medyan\u0131ndan: her il senat\u00f6rlerini blok oylamayla da\u011f\u0131t\u0131r'):t('Upper-chamber projection from the median of the simulations','\u00dcst meclis projeksiyonu sim\u00fclasyonlar\u0131n medyan\u0131ndan')} · ${uTot} ${T.seats}
+          ${SEN_UP.block?t('Upper-chamber projection from the median of the simulations: each province allocates its senators by block voting','\u00dcst meclis projeksiyonu sim\u00fclasyonlar\u0131n medyan\u0131ndan: her il senat\u00f6rlerini blok oylamayla da\u011f\u0131t\u0131r'):t('Upper-chamber projection from the median of the simulations','\u00dcst meclis projeksiyonu sim\u00fclasyonlar\u0131n medyan\u0131ndan')} · ${uTot} ${T.seats}
         </div>
       </div>`;
     })():''}
@@ -6045,16 +6053,15 @@ function renderForecast(pane){
       <div class="map-toggle-row" style="justify-content:flex-end">
         ${RO_ONLY?'':`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>`}
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+        ${SEN_CONF?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='upper'?' active':''}" data-fcmode="upper">${(SEN_UP&&SEN_UP.label)||t('Upper chamber','\u00dcst meclis')}</button>`:''}
         ${MAP_ONLY&&MAP_CONF()&&(MAP_CONF().runoff2022||MAP_CONF().runoff2026)?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
-        ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
+        ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&FC_MODE!=='upper'?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-        ${FC_MODE==='runoff'
-          ?t('Projected runoff winners (Lula vs Flávio) from the head-to-head average · hover a district for the past/forecast comparison','Başa baş ortalamasından tahmini ikinci tur kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
-          :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')}
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center" id="fc-map-cap">
+        ${fcMapCap()}
       </div>
     </div>`:''}
 
@@ -6106,17 +6113,73 @@ function renderForecast(pane){
       captureBoxMap('fc-parl-box', COUNTRY+'-forecast-parliament.png');
     });
   }
-  const fcUpperShot=$('fc-upper-shot-btn');
-  if(fcUpperShot){
-    fcUpperShot.addEventListener('click',()=>{
-      captureBoxMap('fc-upper-box', COUNTRY+'-forecast-upper.png');
+  const fcUpperPoster=$('fc-upper-poster-btn');
+  if(fcUpperPoster){
+    fcUpperPoster.addEventListener('click',async()=>{
+      const opts=await posterOpts('senate');
+      const canvas=await renderPoster(opts);
+      downloadPng(canvas.toDataURL('image/png'), opts.file);
     });
   }
-  const posterOpts=()=>{
+  const fcUpperCopy=$('fc-upper-copy-btn');
+  if(fcUpperCopy){
+    fcUpperCopy.addEventListener('click',async()=>{
+      const opts=await posterOpts('senate');
+      const canvas=await renderPoster(opts);
+      canvas.toBlob(async(blob)=>{
+        try{
+          await navigator.clipboard.write(
+            [new ClipboardItem({'image/png':blob})]);
+          fcUpperCopy.innerHTML=CHECK_ICON;
+          setTimeout(()=>{fcUpperCopy.innerHTML=COPY_ICON;},1500);
+        }catch(e){
+          console.error('clipboard copy failed:',e);
+        }
+      },'image/png');
+    });
+  }
+  const posterOpts=async(scope)=>{
     const nS=sim.nSims;
     const rows=[];
     const grid=[];
     let tiles=null;
+    if(scope==='senate'&&senDet&&SEN_CONF){
+      // Senate poster: the deterministic upper-chamber projection from the
+      // simulation's median vote shares, its own arch and its own map
+      const order=PARTY_ORDER.filter(p=>(senDet[p]||0)>0)
+        .sort((a,b)=>(senDet[b]||0)-(senDet[a]||0));
+      const sRow=p=>({p:p,name:partyLabel(p,SEN_CONF),
+        shareText:(medVotes[p]!==undefined&&!SEAT_BASED)?'%'+fmt(medVotes[p],1):'',
+        seatsText:fmt(senDet[p]||0,0),
+        dvText:'',dsText:'',firstText:'',
+        ideology:ideologyTr((PARTY_META[p]||{}).ideology||''),
+        color:(PARTY_META[p]||{}).color||'#888',
+        logo:PARTY_LOGOS[p]||null});
+      const lead=order[0];
+      const MAJu=Math.floor((SEN_UP.seats||208)/2)+1;
+      const tmp=document.createElement('div');
+      tmp.innerHTML=buildParliamentSVG(senDet);
+      let mapSvg=null;
+      const mapBox=$('fc-map-box');
+      if(mapBox&&FC_MODE==='upper') mapSvg=mapBox.querySelector('svg');
+      if(!mapSvg){
+        const tmpMap=document.createElement('div');
+        try{
+          await renderMapInto(tmpMap,medVotes,false,SEN_CONF);
+          mapSvg=tmpMap.querySelector('svg');
+        }catch(e){}
+      }
+      return {title:COUNTRY_NAME+' — '+((SEN_UP&&SEN_UP.label)||t('Upper chamber','\u00dcst meclis')),
+        subtitle:t('If the election were held today','Se\u00e7im Bug\u00fcn Olsayd\u0131'),
+        rows:order.slice(0,7).map(sRow),grid:order.slice(7,19).map(sRow),
+        tiles:[{label:partyLabel(lead,SEN_CONF)+' '+t('seats','sandalye'),
+                value:fmt(senDet[lead]||0,0),
+                color:(PARTY_META[lead]||{}).color||'#888'},
+               {label:t('for a majority','\u00e7o\u011funluk i\u00e7in'),
+                value:String(MAJu),color:'#9CA3AF'}],
+        arcSvg:tmp.querySelector('svg'),mapSvg:mapSvg,
+        file:COUNTRY+'-senate-poster.png'};
+    }
       if(MAP_ONLY&&roCache){
         // two-candidate runoff: rows = the pair by win probability, two tiles
         const items=[[roCache.a,roCache.aN,roCache.winA/3000],
@@ -6241,14 +6304,16 @@ function renderForecast(pane){
   const fcPoster=$('fc-poster-btn');
   if(fcPoster){
     fcPoster.addEventListener('click',async()=>{
-      const canvas=await renderPoster(posterOpts());
-      downloadPng(canvas.toDataURL('image/png'), COUNTRY+'-poster.png');
+      const opts=await posterOpts(FC_MODE==='upper'?'senate':'congress');
+      const canvas=await renderPoster(opts);
+      downloadPng(canvas.toDataURL('image/png'), opts.file||COUNTRY+'-poster.png');
     });
   }
   const fcCopy=$('fc-copy-btn');
   if(fcCopy){
     fcCopy.addEventListener('click',async()=>{
-      const canvas=await renderPoster(posterOpts());
+      const opts=await posterOpts(FC_MODE==='upper'?'senate':'congress');
+      const canvas=await renderPoster(opts);
       canvas.toBlob(async(blob)=>{
         try{
           await navigator.clipboard.write(
@@ -6264,31 +6329,30 @@ function renderForecast(pane){
   if(MAP_CONF()){
     const fcRo=runoffMapAvg(avg,filtered,sim);
     const fcRunConf=runoffConf();
-    const fcBox=$('fc-map-box');
-    if(fcBox){
+    // one render path for every forecast-map mode: proj (median shares),
+    // res (last election), runoff and the Senate layer (its own districts)
+    const fcRender=()=>{
+      const fcBox=$('fc-map-box');
+      if(!fcBox) return;
+      const upper=(FC_MODE==='upper'&&SEN_CONF)?SEN_CONF:null;
       const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:(FC_MODE==='runoff'&&fcRo?fcRo:medVotes);
-      renderMapInto(fcBox, fcAvg, FC_MODE==='res', FC_MODE==='runoff'?fcRunConf:undefined);
-    }
+      renderMapInto(fcBox, fcAvg, FC_MODE==='res', upper||(FC_MODE==='runoff'?fcRunConf:undefined));
+      const capEl=$('fc-map-cap');
+      if(capEl) capEl.textContent=fcMapCap();
+    };
+    fcRender();
     pane.querySelectorAll('.fc-map-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         FC_MODE=btn.dataset.fcmode;
         pane.querySelectorAll('.fc-map-btn').forEach(b=>b.classList.toggle('active',b===btn));
-        const fcBox=$('fc-map-box');
-        if(fcBox){
-          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:(FC_MODE==='runoff'&&fcRo?fcRo:medVotes);
-          renderMapInto(fcBox, fcAvg, FC_MODE==='res', FC_MODE==='runoff'?fcRunConf:undefined);
-        }
+        fcRender();
       });
     });
     pane.querySelectorAll('.fc-map-color-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
         pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.toggle('active',b===btn));
-        const fcBox=$('fc-map-box');
-        if(fcBox){
-          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
-          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
-        }
+        fcRender();
       });
     });
     pane.querySelectorAll('.fc-layer-btn').forEach(btn=>{
@@ -6296,11 +6360,7 @@ function renderForecast(pane){
         MAP_LAYER=(MAP_LAYER===1)?0:1;
         updateUrl();
         pane.querySelectorAll('.fc-layer-btn').forEach(b=>b.classList.toggle('active',b===btn));
-        const fcBox=$('fc-map-box');
-        if(fcBox){
-          const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:medVotes;
-          renderMapInto(fcBox, fcAvg, FC_MODE==='res');
-        }
+        fcRender();
       });
     });
     const fcShot=$('fc-map-shot-btn');

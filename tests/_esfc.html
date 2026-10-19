@@ -8,36 +8,46 @@
 const f = document.getElementById('f');
 f.addEventListener('load', () => {
   const w = f.contentWindow, d = f.contentDocument;
+  const errs = [];
+  w.addEventListener('error', e => errs.push('E:' + (e.message || '').slice(0, 60)));
   const T = (ms) => new Promise(r => setTimeout(r, ms));
-  const byFill = (root) => {
-    const o = {};
-    root.querySelectorAll('[fill]').forEach(c => {
-      const k = c.getAttribute('fill');
-      if (k && k !== 'none') o[k] = (o[k] || 0) + 1;
-    });
-    return Object.entries(o).sort((a, b) => b[1] - a[1]).slice(0, 8)
-      .map(([k, v]) => k + ':' + v).join(' ');
-  };
   (async () => {
+    const out = {};
     let n = 0;
-    while (n < 100 && !d.querySelector('.tab-trigger')) { await T(200); n++; }
-    await T(2500);
+    while (n < 80 && !d.querySelector('.tab-trigger')) { await T(250); n++; }
+    await T(1500);
     const tabs = [...d.querySelectorAll('.tab-trigger')];
-    const ft = tabs.find(b => /TAHMİN$|TAHMIN$|FORECAST/i.test(b.textContent.trim()))
-      || tabs.find(b => (b.dataset.tab || '') === 'forecast');
-    const out = { tabs: tabs.map(b => (b.dataset.tab || b.textContent.trim())).join(',').slice(0, 120) };
+    const ft = tabs.find(b => /TAHMİN|TAHMIN|FORECAST/i.test(b.textContent.trim()));
     if (!ft) { out.ft = 'not-found'; document.title = 'DIAG ' + JSON.stringify(out); return; }
     ft.click();
     let n2 = 0;
-    while (n2 < 90 && !d.getElementById('fc-upper-box')) { await T(500); n2++; }
-    await T(1500);
+    while (n2 < 60 && !d.getElementById('fc-upper-box')) { await T(500); n2++; }
+    await T(1000);
     const ub = d.getElementById('fc-upper-box');
-    const pb = d.getElementById('fc-parl-box');
-    out.upper = ub ? byFill(ub) : 'none';
-    out.parl = pb ? byFill(pb) : 'none';
-    const uc = ub ? ub.parentElement : null;
-    if (uc) out.uCap = uc.innerText.replace(/\s+/g, ' ').slice(0, 160);
-    out.shotBtn = !!d.getElementById('fc-upper-shot-btn');
+    if (ub) {
+      const tbl = ub.parentElement.querySelector('table');
+      out.table = (tbl ? tbl.innerText : '').replace(/\s+/g, ' ').slice(0, 100);
+    }
+    const sbtn = d.querySelector('.fc-map-btn[data-fcmode="upper"]');
+    out.senBtn = sbtn ? sbtn.textContent.trim() : 'none';
+    if (sbtn) sbtn.click();
+    let n3 = 0;
+    while (n3 < 40 && !(d.getElementById('fc-map-box')
+           && d.getElementById('fc-map-box').querySelectorAll('path[id]').length === 59)) { await T(500); n3++; }
+    await T(1500);
+    const mb = d.getElementById('fc-map-box');
+    if (mb) {
+      out.mapPaths = mb.querySelectorAll('path[id]').length;
+      out.mapDots = mb.querySelectorAll('.seat-dots circle').length;
+    }
+    const cap = d.getElementById('fc-map-cap');
+    out.cap = cap ? cap.textContent.trim().slice(0, 45) : 'no-cap-el';
+    const cbtn = d.querySelector('.fc-map-btn[data-fcmode="proj"]');
+    if (cbtn) { cbtn.click(); await T(2500); }
+    if (mb) out.projPaths = mb.querySelectorAll('path[id]').length;
+    const cap2 = d.getElementById('fc-map-cap');
+    out.cap2 = cap2 ? cap2.textContent.trim().slice(0, 30) : '';
+    out.errs = errs.length ? errs.join(' | ') : 'none';
     document.title = 'DIAG ' + JSON.stringify(out);
   })();
 });

@@ -155,7 +155,7 @@ def scrape_spain():
     polls, seen = [], set()
     h2 = h3 = h4 = ""
     year = None
-    for el in soup.find_all(["h2", "h3", "h4", "div", "table"]):
+    for el in soup.find_all(["h2", "h3", "h4", "h5", "div", "table"]):
         if el.name == "h2":
             h2 = el.get_text(strip=True)
             continue
@@ -164,6 +164,13 @@ def scrape_spain():
             continue
         if el.name == "h4":
             h4 = el.get_text(strip=True)
+            continue
+        if el.name == "h5":
+            # the page splits recent years into h5 groups ("2026 (after
+            # Broad Front)") with no year div; the heading carries the year
+            m = re.match(r"\s*(20\d{2})\b", el.get_text(strip=True))
+            if m:
+                year = int(m.group(1))
             continue
         if el.name == "div":
             m = re.fullmatch(r"\s*(20\d{2})\s*", el.get_text())

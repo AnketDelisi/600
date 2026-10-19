@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c269';
+const LOGO_CACHE = '20261005c270';
 
 const COUNTRIES = {
 
@@ -8870,6 +8870,8 @@ saxony_anhalt: {
           },
           "label": "Senate districts (59)",
           "partyNames": { "psoe": "SDP" },
+          "partyColors": { "psoe": "#FF4D00" },
+          "partyLogos": { "psoe": "img/es/SDP.svg" },
           "national2021": {
                 "pp": 33.06,
                 "psoe": 31.68,

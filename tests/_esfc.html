@@ -10,43 +10,56 @@ f.addEventListener('load', () => {
   const w = f.contentWindow, d = f.contentDocument;
   const errs = [];
   w.addEventListener('error', e => errs.push('E:' + (e.message || '').slice(0, 60)));
+  w.addEventListener('unhandledrejection', e => errs.push('R:' + String((e.reason && e.reason.message) || e.reason).slice(0, 60)));
   const T = (ms) => new Promise(r => setTimeout(r, ms));
+  const NEW = '#FF4D00';
   (async () => {
-    const out = {};
     let n = 0;
-    while (n < 80 && !d.querySelector('.tab-trigger')) { await T(250); n++; }
-    await T(1500);
+    while (n < 100 && !d.querySelector('.tab-trigger')) { await T(200); n++; }
+    await T(2500);
+    const out = {};
     const tabs = [...d.querySelectorAll('.tab-trigger')];
-    const ft = tabs.find(b => /TAHMİN|TAHMIN|FORECAST/i.test(b.textContent.trim()));
-    if (!ft) { out.ft = 'not-found'; document.title = 'DIAG ' + JSON.stringify(out); return; }
+    out.tabs = tabs.length;
+    const ft = tabs.find(b => /TAHMİN$|TAHMIN$|FORECAST/i.test(b.textContent.trim())) || tabs[1];
+    if (!ft) { document.title = 'DIAG ' + JSON.stringify(out); return; }
     ft.click();
     let n2 = 0;
-    while (n2 < 60 && !d.getElementById('fc-upper-box')) { await T(500); n2++; }
-    await T(1000);
+    while (n2 < 90 && !d.getElementById('fc-upper-box')) { await T(500); n2++; }
+    await T(1500);
+    // 1. senate card arch colors + table
     const ub = d.getElementById('fc-upper-box');
     if (ub) {
-      const tbl = ub.parentElement.querySelector('table');
-      out.table = (tbl ? tbl.innerText : '').replace(/\s+/g, ' ').slice(0, 100);
+      out.archNew = ub.querySelectorAll('circle[fill="' + NEW + '"]').length;
+      out.archAll = ub.querySelectorAll('circle').length;
     }
+    const ubCard = ub ? ub.closest('.card') : null;
+    if (ubCard) {
+      const td = [...ubCard.querySelectorAll('td')].find(x => x.textContent.trim() === 'SDP');
+      out.sdpTd = td ? (td.getAttribute('style') || '') : 'no-td';
+    }
+    // 2. senate map: dots colored + tooltip alliance label
     const sbtn = d.querySelector('.fc-map-btn[data-fcmode="upper"]');
-    out.senBtn = sbtn ? sbtn.textContent.trim() : 'none';
     if (sbtn) sbtn.click();
     let n3 = 0;
-    while (n3 < 40 && !(d.getElementById('fc-map-box')
-           && d.getElementById('fc-map-box').querySelectorAll('path[id]').length === 59)) { await T(500); n3++; }
-    await T(1500);
+    while (n3 < 60 && !(d.getElementById('fc-map-box') && d.getElementById('fc-map-box').querySelectorAll('.seat-dots circle').length)) { await T(500); n3++; }
+    await T(2000);
     const mb = d.getElementById('fc-map-box');
     if (mb) {
-      out.mapPaths = mb.querySelectorAll('path[id]').length;
-      out.mapDots = mb.querySelectorAll('.seat-dots circle').length;
+      out.dotNew = mb.querySelectorAll('.seat-dots circle[fill="' + NEW + '"]').length;
+      out.dotAll = mb.querySelectorAll('.seat-dots circle').length;
+      const p = mb.querySelector('path[id]');
+      if (p) { p.dispatchEvent(new w.MouseEvent('mousemove', { bubbles: true, clientX: 10, clientY: 10 })); await T(600); }
+      const tip = d.querySelector('.map-tooltip') || d.querySelector('[id*="tip"]');
+      out.tip = tip && tip.style.display === 'block' ? tip.innerText.replace(/\s+/g, ' ').slice(0, 80) : 'no-tip';
     }
-    const cap = d.getElementById('fc-map-cap');
-    out.cap = cap ? cap.textContent.trim().slice(0, 45) : 'no-cap-el';
+    // 3. senate poster (uses color + logo now)
+    const pbtn = d.getElementById('fc-upper-poster-btn');
+    if (pbtn) { pbtn.click(); await T(5000); }
+    // 4. congress map: no SDP color leaks
     const cbtn = d.querySelector('.fc-map-btn[data-fcmode="proj"]');
-    if (cbtn) { cbtn.click(); await T(2500); }
-    if (mb) out.projPaths = mb.querySelectorAll('path[id]').length;
-    const cap2 = d.getElementById('fc-map-cap');
-    out.cap2 = cap2 ? cap2.textContent.trim().slice(0, 30) : '';
+    if (cbtn) cbtn.click();
+    await T(2500);
+    if (mb) out.projNew = mb.querySelectorAll('[fill="' + NEW + '"]').length;
     out.errs = errs.length ? errs.join(' | ') : 'none';
     document.title = 'DIAG ' + JSON.stringify(out);
   })();

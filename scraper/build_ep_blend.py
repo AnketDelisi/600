@@ -60,7 +60,7 @@ COUNTRIES = {
             'SK24L18': 'smer', 'SK24L21': 'ps', 'SK24L23': 'hlas',
             'SK24L04': 'aliancia', 'SK24L19': 'kdh', 'SK24L20': 'sas',
             'SK24L03': 'demokrati', 'SK24L10': 'sns', 'SK24L22': 'slovensko',
-            'SK24L14': 'lsns', 'SK24L17': 'ku',
+            'SK24L14': 'lsns', 'SK24L17': 'ku', 'SK24L11': 'republika',
         },
     },
     'spain': {
@@ -205,10 +205,16 @@ def strip_old(t, cc):
 
 def main():
     dry = '--dry' in sys.argv
+    only = None
+    for a in sys.argv[1:]:
+        if a.startswith('--only='):
+            only = set(a.split('=', 1)[1].split(','))
     path = os.path.join(ROOT, 'js', 'config.js')
     t = open(path, encoding='utf8').read()
     inserts = {}
     for cc in COUNTRIES:
+        if only and cc not in only:
+            continue
         i = t.find('\n  %s: {' % cc)
         assert i > 0, cc
         m = re.search(r'\n  \w+: \{', t[i + 10:])
@@ -224,10 +230,15 @@ def main():
     for cc, blob in inserts.items():
         t = strip_old(t, cc)
         i = t.find('\n  %s: {' % cc)
-        # the fields must live inside `map` (MAP_CONF returns c.map)
-        mp = t.find('map', i)
-        assert 0 < mp < i + 5000, (cc, 'map not found')
-        brace = t.find('{', mp)
+        m = re.search(r'\n  \w+: \{', t[i + 10:])
+        bo = i + 10
+        be = bo + (m.start() if m else len(t))
+        # the fields must live inside `map` (MAP_CONF returns c.map) - anchor
+        # on the map key itself; a bare "map" search used to trip over the
+        # senate/other blocks added since
+        mm = re.search(r'\n\s*map\s*:\s*\{', t[bo:be])
+        assert mm, (cc, 'map not found')
+        brace = bo + mm.start() + len(mm.group(0)) - 1
         fields = ''.join('\n      %s: %s,' % (k, json.dumps(v, ensure_ascii=False,
                                                            separators=(',', ':')))
                          for k, v in json.loads(blob).items())

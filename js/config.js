@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c273';
+const LOGO_CACHE = '20261005c274';
 
 const COUNTRIES = {
 
@@ -5318,8 +5318,8 @@ saxony_anhalt: {
     },
     map: {
       epBlend: 0.15,
-      epGebiete: {"banskabystrica":{"smer":26.69,"ps":24.54,"hlas":9.27,"aliancia":5.16,"kdh":5.08,"sas":4.07,"demokrati":4.0,"sns":2.19,"slovensko":1.58,"lsns":0.9,"ku":0.45},"bratislava":{"ps":44.88,"smer":18.22,"sas":8.09,"demokrati":5.79,"kdh":5.44,"hlas":3.76,"slovensko":1.33,"sns":1.12,"aliancia":0.73,"ku":0.41,"lsns":0.24},"kosice":{"ps":25.46,"smer":24.0,"hlas":7.68,"kdh":7.19,"aliancia":5.49,"demokrati":4.93,"sas":4.89,"slovensko":3.12,"sns":1.66,"ku":0.71,"lsns":0.47},"nitra":{"smer":26.02,"ps":23.45,"aliancia":11.72,"hlas":8.67,"kdh":4.41,"demokrati":3.91,"sas":3.64,"slovensko":1.52,"sns":1.42,"ku":0.56,"lsns":0.44},"presov":{"smer":25.23,"ps":19.74,"kdh":14.24,"hlas":8.98,"demokrati":4.53,"sas":3.94,"slovensko":3.41,"sns":2.44,"ku":0.95,"lsns":0.45,"aliancia":0.06},"trencin":{"smer":30.85,"ps":24.81,"hlas":7.77,"kdh":5.83,"sas":4.41,"demokrati":4.33,"sns":2.28,"slovensko":1.55,"ku":0.58,"lsns":0.52,"aliancia":0.03},"trnava":{"ps":27.8,"smer":23.18,"aliancia":11.24,"kdh":5.48,"hlas":5.1,"demokrati":4.72,"sas":4.29,"slovensko":2.13,"sns":1.58,"ku":0.43,"lsns":0.37},"zilina":{"smer":26.57,"ps":24.81,"kdh":9.07,"hlas":7.51,"demokrati":4.73,"sas":4.58,"sns":2.71,"slovensko":1.54,"ku":0.94,"lsns":0.58,"aliancia":0.04}},
-      epNational: {"smer":24.77,"ps":27.82,"hlas":7.18,"aliancia":3.88,"kdh":7.15,"sas":4.92,"demokrati":4.69,"sns":1.9,"slovensko":1.99,"lsns":0.48,"ku":0.63},
+      epGebiete: {"banskabystrica":{"smer":26.69,"ps":24.54,"republika":13.58,"hlas":9.27,"aliancia":5.16,"kdh":5.08,"sas":4.07,"demokrati":4.0,"sns":2.19,"slovensko":1.58,"lsns":0.9,"ku":0.45},"bratislava":{"ps":44.88,"smer":18.22,"republika":8.33,"sas":8.09,"demokrati":5.79,"kdh":5.44,"hlas":3.76,"slovensko":1.33,"sns":1.12,"aliancia":0.73,"ku":0.41,"lsns":0.24},"kosice":{"ps":25.46,"smer":24.0,"republika":12.06,"hlas":7.68,"kdh":7.19,"aliancia":5.49,"demokrati":4.93,"sas":4.89,"slovensko":3.12,"sns":1.66,"ku":0.71,"lsns":0.47},"nitra":{"smer":26.02,"ps":23.45,"republika":12.5,"aliancia":11.72,"hlas":8.67,"kdh":4.41,"demokrati":3.91,"sas":3.64,"slovensko":1.52,"sns":1.42,"ku":0.56,"lsns":0.44},"presov":{"smer":25.23,"ps":19.74,"kdh":14.24,"republika":13.47,"hlas":8.98,"demokrati":4.53,"sas":3.94,"slovensko":3.41,"sns":2.44,"ku":0.95,"lsns":0.45,"aliancia":0.06},"trencin":{"smer":30.85,"ps":24.81,"republika":14.96,"hlas":7.77,"kdh":5.83,"sas":4.41,"demokrati":4.33,"sns":2.28,"slovensko":1.55,"ku":0.58,"lsns":0.52,"aliancia":0.03},"trnava":{"ps":27.8,"smer":23.18,"republika":11.99,"aliancia":11.24,"kdh":5.48,"hlas":5.1,"demokrati":4.72,"sas":4.29,"slovensko":2.13,"sns":1.58,"ku":0.43,"lsns":0.37},"zilina":{"smer":26.57,"ps":24.81,"republika":14.88,"kdh":9.07,"hlas":7.51,"demokrati":4.73,"sas":4.58,"sns":2.71,"slovensko":1.54,"ku":0.94,"lsns":0.58,"aliancia":0.04}},
+      epNational: {"smer":24.77,"ps":27.82,"republika":12.53,"hlas":7.18,"aliancia":3.88,"kdh":7.15,"sas":4.92,"demokrati":4.69,"sns":1.9,"slovensko":1.99,"lsns":0.48,"ku":0.63},
       svg: 'img/Slovakia.svg',
       selector: 'id',
       districts: {
@@ -16584,7 +16584,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     method: 'sainte_lague_standard', // Sainte-Lague/Schepers, national party vote
     seatBased: false,             // polls report party-vote shares (%)
     constituencies: true,         // the map is the 72 electorates
-    constituencyRule: 'fptp',     // 72 electorate seats (64 general + 7 Maori)
+    constituencyRule: 'fptp',     // 72 electorate seats (65 general + 7 Maori)
     hideBlocs: true,
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,

@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
 """Build the New Zealand electorate map + config block (MMP, 120 seats).
 
-Geometry: the NZ Herald's GeoJSON conversions of the Electoral Commission's
-2014 general and Maori electorate boundaries (github.com/nzherald), renamed
-to their 2020 identities via the official 2014->2020 crosswalk
-(github.com/dakvid/election2020). The 2026 election uses the 2025 review
-boundaries (64 general + 7 Maori); the 2014 shapes renamed to the 2020
-electorates are the closest freely available geometry. The 7 Maori
-electorates and Takanini (new in 2020, no 2014 predecessor) have no SVG
-path - they are data-only, so the map draws the 64 general electorates.
+Geometry: the Statistics NZ 2020 electorate boundaries (ArcGIS layers
+"General Electorates 2020" and "Maori Electorates 2020") - all 65 general
+electorates incl. Takanini, plus the 7 Maori electorates. The Maori
+electorates overlap the general ones, so they cannot share the canvas: the
+SVG carries the 65 general shapes as the main map and the 7 Maori shapes
+as a smaller labelled panel below it.
 
 Baselines: the 2023 general election candidate-vote shares per electorate
 from the per-electorate Wikipedia articles (the electorate winner metric),
@@ -43,11 +41,19 @@ CONST_JSON = os.path.join(ROOT, "data", "nz", "constituencies.json")
 GEOJSON = os.path.join(CACHE, "nz_electorates.geojson")
 CROSSWALK_URL = ("https://raw.githubusercontent.com/dakvid/election2020/"
                  "main/data/electorates.csv")
-GEO_BASE = ("https://raw.githubusercontent.com/nzherald/%s/master/"
-            "geojson/%s.geojson")
 ATTRIBUTION = ("Risultati: Wikipedia (elezioni 2023 per circoscrizione); "
-               "Geometria: NZ Herald/Statistics NZ (confini 2014 rinominati "
-               "secondo la revisione 2020)")
+               "Geometria: Statistics NZ (confini 2020, generali e Maori)")
+GEO_GENERAL = ("https://services2.arcgis.com/vKb0s8tBIA3bdocZ/arcgis/rest/"
+               "services/General_Electorates_2020/FeatureServer/0/query?where="
+               "1%3D1&outFields=*&f=geojson&outSR=4326")
+GEO_MAORI = ("https://services2.arcgis.com/vKb0s8tBIA3bdocZ/arcgis/rest/"
+             "services/M%C4%81ori_Electorates_2020/FeatureServer/0/query?"
+             "where=1%3D1&outFields=*&f=geojson&outSR=4326")
+GENERAL_NAME = "GED2020_V1_00_NAME"
+MAORI_NAME = "MED2020_V1_00_NAME"
+GEOJSON_MAORI = os.path.join(CACHE, "nz", "nz_maori_2020_named.geojson")
+PANEL = 0.42
+GAP = 36
 
 PARTIES = ["nat", "lab", "grn", "act", "nzf", "tpm", "opp"]
 PARTY_NAMES = {
@@ -58,8 +64,6 @@ PARTY_NAMES = {
 }
 # 2023 official seats (122 with Te Pati Maori's overhang)
 SEATS_2023 = {"nat": 48, "lab": 34, "grn": 15, "act": 11, "nzf": 8, "tpm": 6}
-# new 2020 electorate with no 2014 predecessor: data-only
-NO_SHAPE = {"takanini"}
 
 
 def fetch(url, name, force=False):
@@ -79,14 +83,6 @@ def norm(s):
                  ("’", "'"), ("–", "-")]:
         s = s.replace(a, b)
     return s
-
-
-def demacron(s):
-    out = s or ""
-    for a, b in [("ā", "a"), ("ē", "e"), ("ī", "i"), ("ō", "o"), ("ū", "u"),
-                 ("Ā", "A"), ("Ē", "E"), ("Ī", "I"), ("Ō", "O"), ("Ū", "U")]:
-        out = out.replace(a, b)
-    return out
 
 
 def parse_table(t):
@@ -191,6 +187,54 @@ def drop_antimeridian(geom):
     return geom
 
 
+def layer_features(url, name_field, cache_name, force=False):
+    """StatsNZ ArcGIS layer -> [{name, geometry}] (antimeridian trimmed)."""
+    data = json.loads(fetch(url, cache_name, force))
+    feats = []
+    for f in data.get("features", []):
+        feats.append({"type": "Feature",
+                      "properties": {"name": f["properties"][name_field]},
+                      "geometry": drop_antimeridian(f.get("geometry") or {})})
+    return {"type": "FeatureCollection", "features": feats}
+
+
+def build_svg_map(geojson_path, out_path):
+    sys.argv = ["build_map_svg.py", "--geojson", geojson_path,
+                "--name-field", "name", "--fold", "--attr", "id",
+                "--no-prefix", "--out", out_path, "--attribution", ATTRIBUTION,
+                "--simplify", "0.0008"]
+    bm.main()
+
+
+def fnum(x):
+    return ("%.1f" % x) if abs(x - round(x)) > 1e-9 else str(int(round(x)))
+
+
+def splice_maori_panel(general_svg, maori_svg):
+    """Append the Maori electorates as a scaled, labelled panel (they
+    overlap the general electorates, so they cannot share the canvas)."""
+    m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', general_svg)
+    w, h = float(m.group(1)), float(m.group(2))
+    m2 = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', maori_svg)
+    mw, mh = float(m2.group(1)), float(m2.group(2))
+    s = PANEL * w / mw
+    new_h = h + GAP + 30 + mh * s
+    inner = re.search(r"<g [^>]*>.*</g>", maori_svg, re.S).group(0)
+    g = re.sub(r"<svg[^>]*>",
+               '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %s %s" '
+               'width="%s" height="%s">' % (fnum(w), fnum(new_h), fnum(w),
+                                            fnum(new_h)),
+               general_svg, count=1)
+    caption = ('<text x="%s" y="%s" text-anchor="middle" font-size="24" '
+               'font-weight="800" letter-spacing="2" fill="#111827" '
+               'font-family="Source Code Pro,monospace">MĀORI ELECTORATES'
+               '</text>' % (fnum(w / 2), fnum(h + GAP + 6)))
+    panel = ('<g transform="translate(%s,%s) scale(%s)">%s</g>'
+             % (fnum((w - w * PANEL) / 2), fnum(h + GAP + 18), fnum(s), inner))
+    idx = g.rindex("</g>")
+    return g[:idx + 4] + caption + panel + "</svg>"
+
+
 def main():
     force = "--force" in sys.argv
     os.makedirs(os.path.join(CACHE, "nz"), exist_ok=True)
@@ -249,38 +293,19 @@ def main():
         hold_seats[key] = max(PARTIES, key=lambda p: shares.get(p, 0))
     print("maori holds:", hold_seats)
 
-    # geometry: 2014 general electorates renamed to their 2020 identities
-    feats = []
-    used = set()
-    for r in general:
-        old = r["electorate_name_14"]
-        src = None
-        for repo in ["nz_general_electorates_geojson",
-                     "nz_maori_electorates_geojson"]:
-            for fname in [old, demacron(old)]:
-                try:
-                    raw = fetch(GEO_BASE % (repo, fname),
-                                "geo_%s.geojson" % norm(fname), force)
-                    src = json.loads(raw)
-                    break
-                except Exception:
-                    continue
-            if src is not None:
-                break
-        if src is None:
-            print("  no geometry for", old)
-            continue
-        used.add(norm(old))
-        gj = src if src.get("type") == "FeatureCollection" else \
-            {"type": "FeatureCollection", "features": [src]}
-        for f in gj["features"]:
-            f["properties"] = {"name": r["electorate_name"]}
-            f["geometry"] = drop_antimeridian(f.get("geometry") or {})
-            feats.append(f)
-    print("map features:", len(feats), "(2014 shapes:", len(used), ")")
-    # maori electorates: data-only (they overlap the general ones)
-    with open(GEOJSON, "w", encoding="utf8") as fh:
-        json.dump({"type": "FeatureCollection", "features": feats}, fh)
+    # geometry: Statistics NZ 2020 boundaries (general + Maori). The old
+    # 2014 NZ-Herald shapes lacked Takanini (new in 2020) and the Maori
+    # electorates; the 2020 layers carry all 65 general + 7 Maori.
+    gen = layer_features(GEO_GENERAL, GENERAL_NAME,
+                         "statsnz_general_2020.geojson", force)
+    mao = layer_features(GEO_MAORI, MAORI_NAME,
+                         "statsnz_maori_2020.geojson", force)
+    print("geometry features:", len(gen["features"]), "general +",
+          len(mao["features"]), "maori")
+    for path, feats in ((GEOJSON, gen), (GEOJSON_MAORI, mao)):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "w", encoding="utf8") as fh:
+            json.dump(feats, fh)
 
     cons = []
     for r in sorted(rows, key=lambda r: r["electorate_name"]):
@@ -305,13 +330,12 @@ def main():
                    "constituency_seats": 72, "leveling_seats": 48,
                    "constituencies": cons}, fh, ensure_ascii=False, indent=1)
 
-    sys.argv = ["build_map_svg.py", "--geojson", GEOJSON,
-                "--name-field", "name", "--fold", "--attr", "id",
-                "--no-prefix", "--out", OUT_SVG, "--attribution", ATTRIBUTION,
-                "--simplify", "0.0008"]
-    if force:
-        sys.argv.append("--force")
-    bm.main()
+    tmp_maori = os.path.join(CACHE, "nz", "nz_maori_2020.svg")
+    build_svg_map(GEOJSON, OUT_SVG)
+    build_svg_map(GEOJSON_MAORI, tmp_maori)
+    svg = splice_maori_panel(open(OUT_SVG, encoding="utf8").read(),
+                             open(tmp_maori, encoding="utf8").read())
+    open(OUT_SVG, "w", encoding="utf8", newline="").write(svg)
     import shutil
     if os.path.isdir(os.path.dirname(BMV_SVG)):
         shutil.copy2(OUT_SVG, BMV_SVG)
@@ -327,7 +351,7 @@ def main():
     method: 'sainte_lague_standard', // Sainte-Lague/Schepers, national party vote
     seatBased: false,             // polls report party-vote shares (%)
     constituencies: true,         // the map is the 72 electorates
-    constituencyRule: 'fptp',     // 72 electorate seats (64 general + 7 Maori)
+    constituencyRule: 'fptp',     // 72 electorate seats (65 general + 7 Maori)
     hideBlocs: true,
     hideConstituencyTable: true,
     recencyHalfLifeDays: 14,

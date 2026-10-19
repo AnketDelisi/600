@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c271';
+const LOGO_CACHE = '20261005c272';
 
 const COUNTRIES = {
 
@@ -1460,8 +1460,8 @@ saxony_anhalt: {
       date: '2023-12-17',
       // 2023 Serbian parliamentary election (source: RIK / en.wikipedia.org/wiki/2023_Serbian_parliamentary_election)
       // Coalition baselines: SNS ran as "Serbia Must Not Stop"; NPS was inside SPN; PES/SL did not exist yet.
-      results: { sns: 48.07, sps: 6.73, pes: 0, nps: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
-      seats:   { sns: 129, sps: 18, pes: 0, nps: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0, kshlp: 1 },
+      results: { sns: 48.07, sps: 6.73, pes: 0, nada: 5.16, misn: 4.82, sl: 0, spn: 24.32, vmsz: 1.74, spp: 0.78, sda: 0.59, rs: 0.31, sdp: 0, kshlp: 0.36 },
+      seats:   { sns: 129, sps: 18, pes: 0, nada: 13, misn: 13, sl: 0, spn: 65, vmsz: 6, spp: 2, sda: 2, rs: 1, sdp: 0, kshlp: 1 },
     },
     map: {},
     map2: {},
@@ -10398,7 +10398,7 @@ epBlend: 0.15,
               "upn": 0.21,
               "aa": 0.83,
               "podemos": 0.0,
-              "salf": 4.58,
+              "salf": 0.0,
               "ac": 0.58, "compromis": 0, "d21": 0 },
       // provinces where a regional party is not on the ballot: its projected
       // share is pinned to zero there
@@ -10980,7 +10980,7 @@ epBlend: 0.15,
       elas:   { code: 'ELAS',    name: 'Greek Left Alliance',              name_en: 'Greek Left Alliance',              color: '#A40044', ideology: "Social democracy, Progressivism"},
     },
     order: ['nd', 'syriza', 'pasok', 'kke', 'sp', 'se', 'el', 'niki', 'pe', 'm25', 'fl', 'na', 'dpk', 'elpida', 'elas'],
-    parlOrder: ['kke', 'elas', 'na', 'syriza', 'pe', 'm25', 'dpk', 'pasok', 'elpida', 'nd', 'fl', 'el', 'niki', 'sp', 'se', 'se'],
+    parlOrder: ['kke', 'elas', 'na', 'syriza', 'pe', 'm25', 'dpk', 'pasok', 'elpida', 'nd', 'fl', 'el', 'niki', 'sp', 'se'],
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['nd'], color: '#0D5EAF' },
       bloc2: { name: 'Opposition', short: 'OPP', parties: ['syriza', 'pasok', 'kke', 'sp', 'el', 'niki', 'pe', 'm25', 'fl', 'na', 'dpk', 'elpida', 'elas'], color: '#C4262E' },
@@ -11176,7 +11176,7 @@ epBlend: 0.15,
                       "elas": 0.0
               }
       },
-      names: {"ab1": "Athens B1 (North)","ab2": "Athens B2 (West)","ab3": "Athens B3 (South)","ach": "Achaea","ait": "Aitoloakarnania","arc": "Arcadia","arl": "Argolida","art": "Arta","ata": "Athens A","boe": "Boeotia","cfu": "Corfu","cha": "Chalkidiki","chi": "Chios","chn": "Chania","cth": "Corinthia","cyc": "Cyclades","dod": "Dodecanese","drm": "Drama","eat": "East Attica","epi": "State Deputies (Επικράτεια, 12 national-list seats)","eub": "Euboea","evr": "Evros","evt": "Evrytania","flo": "Florina","fok": "Fokida","fth": "Fthiotida","gre": "Grevena","hra": "Heraklion","ili": "Ilia (Elis)","ima": "Imathia","ioa": "Ioannina","kar": "Karditsa","kas": "Kastoria","kav": "Kavala","kef": "Kefalonia","kil": "Kilkis","koz": "Kozani","lac": "Laconia","las": "Lasithi","lef": "Lefkada","les": "Lesvos","lrs": "Larissa","mag": "Magnesia","mes": "Messenia","per": "Pieria","pia": "Piraeus A","pib": "Piraeus B","pla": "Pella","pre": "Preveza","ret": "Rethymno","rod": "Rhodope","sam": "Samos","ser": "Serres","tha": "Thessaloniki A","thb": "Thessaloniki B","the": "Thesprotia","tri": "Trikala","waa": "West Attica","xan": "Xanthi","zan": "Zakynthos", 
+      names: {"ab1": "Athens B1 (North)","ab2": "Athens B2 (West)","ab3": "Athens B3 (South)","ach": "Achaea","ait": "Aitoloakarnania","arc": "Arcadia","arl": "Argolida","art": "Arta","ata": "Athens A","boe": "Boeotia","cfu": "Corfu","cha": "Chalkidiki","chi": "Chios","chn": "Chania","cth": "Corinthia","cyc": "Cyclades","dod": "Dodecanese","drm": "Drama","eat": "East Attica","epi": "State Deputies (Επικράτεια, 15 national-list seats)","eub": "Euboea","evr": "Evros","evt": "Evrytania","flo": "Florina","fok": "Fokida","fth": "Fthiotida","gre": "Grevena","hra": "Heraklion","ili": "Ilia (Elis)","ima": "Imathia","ioa": "Ioannina","kar": "Karditsa","kas": "Kastoria","kav": "Kavala","kef": "Kefalonia","kil": "Kilkis","koz": "Kozani","lac": "Laconia","las": "Lasithi","lef": "Lefkada","les": "Lesvos","lrs": "Larissa","mag": "Magnesia","mes": "Messenia","per": "Pieria","pia": "Piraeus A","pib": "Piraeus B","pla": "Pella","pre": "Preveza","ret": "Rethymno","rod": "Rhodope","sam": "Samos","ser": "Serres","tha": "Thessaloniki A","thb": "Thessaloniki B","the": "Thesprotia","tri": "Trikala","waa": "West Attica","xan": "Xanthi","zan": "Zakynthos", 
               "attica": "Attica",
               "crete": "Crete",
               "egean": "Aegean",
@@ -15991,7 +15991,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
       pb: 'img/bg/PB.svg', gerb: 'img/bg/GERB.svg', pp: 'img/bg/PP.svg',
       db: 'img/bg/DB.svg', dps: 'img/bg/DPS.svg', vaz: 'img/bg/VAZ.svg',
       mech: 'img/bg/MECH.svg', veli: 'img/bg/VELI.svg',
-      bsp: 'img/bg/BSP.svg', aps: 'img/bg/APS.svg',
+      bsp: 'img/bg/BSP.svg', aps: 'img/bg/APS.svg', ppdb: 'img/bg/PPDB.svg',
     },
   },
 
@@ -16221,7 +16221,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
       rv:  { code: 'RV',  name: 'Radikale Venstre', name_en: 'Danish Social Liberal Party', color: '#733280', ideology: "Social liberalism, Green politics"},
       dd:  { code: 'DD',  name: 'Danmarksdemokraterne', name_en: 'Denmark Democrats', color: '#668DD1', ideology: "National conservatism, Right-wing populism"},
       alt: { code: 'ALT', name: 'Alternativet', name_en: 'The Alternative (Denmark)', color: '#18942D', ideology: "Green politics, Social liberalism"},
-      bp:  { code: 'BP',  name: 'Borgernes Parti', name_en: "Citizens' Party (Denmark)", color: '#2B72FD' },
+      bp:  { code: 'BP',  name: 'Borgernes Parti', name_en: "Citizens' Party (Denmark)", color: '#2B72FD', ideology: "Right-wing populism, National conservatism" },
       na:  { code: 'NA',  name: 'Nordatlantiske mandater', name_en: 'North Atlantic mandates', color: '#9CA3AF', pastOnly: true },
     },
     order: ['s', 'sf', 'v', 'la', 'df', 'm', 'kf', 'el', 'rv', 'dd', 'alt', 'bp', 'na'],

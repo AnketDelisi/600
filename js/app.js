@@ -346,6 +346,10 @@ const valDisp=(v,d=1)=>SEAT_BASED?String(Math.ceil(v)):fmt(v,d)+'%';
 const partyCode=pid=>pid==='other'?t('Other','Diğer'):((PARTY_META[pid]&&PARTY_META[pid].code)?PARTY_META[pid].code:pid);
 // chamber-specific display names (Spain Senate: the PSOE-led list runs as SDP)
 const partyLabel=(pid,conf)=>((conf&&conf.partyNames&&conf.partyNames[pid])||partyCode(pid));
+// chamber-scoped color/logo overrides, same pattern as partyNames
+// (Spain Senate: SDP displays as one orange-red list with its own logo)
+const partyColor=(pid,conf)=>((conf&&conf.partyColors&&conf.partyColors[pid])||(PARTY_META[pid]?PARTY_META[pid].color:'#888'));
+const partyLogo=(pid,conf)=>((conf&&conf.partyLogos&&conf.partyLogos[pid])||PARTY_LOGOS[pid]||null);
 
 // Label for the sub-national units (MAP_ONLY countries can override; default "federative units")
 const unitLabel=()=>{
@@ -2285,7 +2289,7 @@ function renderParliament(avg){
     </div>`;
   const box=showMap
     ?'<div class="parliament-box" id="map-box"></div>'
-    :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats)}</div>`;
+    :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats, PARL_MODE==='upper'?(COUNTRIES[COUNTRY]||{}).senate:null)}</div>`;
   const mapCap=(MAP_ONLY
       ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?LAST_ELECTION.date.slice(0,4)+' '+T.result:t('projected winner','tahmini kazanan'))}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
@@ -3168,7 +3172,7 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
       c.setAttribute('cx',(x0+(i%cols)*sp).toFixed(2));
       c.setAttribute('cy',(y0+Math.floor(i/cols)*sp).toFixed(2));
       c.setAttribute('r',r.toFixed(2));
-      c.setAttribute('fill',(PARTY_META[p]&&PARTY_META[p].color)||'#888');
+      c.setAttribute('fill',partyColor(p,conf));
       c.setAttribute('stroke','#ffffff');
       c.setAttribute('stroke-width','0.7');
       c.setAttribute('pointer-events','none');
@@ -3320,7 +3324,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         // hide parties at 0.0% (unless they still hold a seat pill)
         if(!((resultMode?s.past:s.now)>=0.05||pSeats>0)) return '';
         const delta=s.now-s.past;
-        const col=PARTY_META[p]?PARTY_META[p].color:'#888';
+        const col=partyColor(p,conf);
         const barW=Math.max(2,Math.min(100,s.now));
         const pill=pSeats!==null&&pSeats>0?`<span class="map-tip-pill">${pSeats}</span>`:'';
         // no delta for parties that did not contest the last election
@@ -3343,11 +3347,11 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const pv=sv?(resultMode?(sv.past||0):(sv.now||0))
           :mem.reduce((a2,p)=>a2+(resultMode?(shares[p].past||0):(shares[p].now||0)),0);
         if(pv<0.05) continue;
-        const col=al.color||(PARTY_META[al.parties[0]]?PARTY_META[al.parties[0]].color:'#888');
+        const col=al.color||partyColor(al.parties[0],conf);
         const dls=(sv&&!resultMode)?((sv.now||0)-(sv.past||0))
           :mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
         rowArr.push({v:pv, html:`<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${al.name||partyCode(al.parties[0])}</span>
+          <span class="map-tip-code" style="color:${col}" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${al.name||partyLabel(al.parties[0],conf)}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(pv)}</span>
           <span class="map-tip-delta ${dls>0.05?'up':(dls<-0.05?'down':'flat')}">${resultMode?'':(dls>0.05?'▲':(dls<-0.05?'▼':''))+(Math.abs(dls)<0.05?'':pct(Math.abs(dls)))}</span>
@@ -4529,7 +4533,7 @@ function allocateSeatsWinnerDistricts(avg, total, regionNoise, districtNoise){
   return out;
 }
 
-function buildParliamentSVG(seats){
+function buildParliamentSVG(seats, conf){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
@@ -4588,7 +4592,7 @@ function buildParliamentSVG(seats){
     svg+=`<line x1="${layout.cx}" y1="${fmt(lineTop,1)}" x2="${layout.cx}" y2="${fmt(lineBot,1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
-      const col=party==='other'?'#9CA3AF':(PARTY_META[party]?PARTY_META[party].color:'#888');
+      const col=party==='other'?'#9CA3AF':partyColor(party,conf);
       svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"/>`;
     }
     svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Source Code Pro,monospace">${total}</text>`;
@@ -6033,13 +6037,13 @@ function renderForecast(pane){
       // Senate in Italy)
       const uRows=PARTY_ORDER.filter(p=>(senDet[p]||0)>0)
         .sort((a,b)=>(senDet[b]||0)-(senDet[a]||0))
-        .map(p=>`<tr><td style="font-weight:700;color:${(PARTY_META[p]||{}).color||'#888'}">${partyLabel(p,SEN_CONF)}</td>
+        .map(p=>`<tr><td style="font-weight:700;color:${partyColor(p,SEN_CONF)}">${partyLabel(p,SEN_CONF)}</td>
           <td class="num c" style="font-weight:900">${senDet[p]}</td></tr>`).join('');
       const uTot=Object.values(senDet).reduce((a,b)=>a+(b||0),0);
       return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.ifHeldToday} — ${SEN_UP.label||t('Upper chamber','\u00dcst meclis')}</div>
         <button class="shot-btn" id="fc-upper-poster-btn" style="margin-left:auto" title="${t('Download the projection poster as PNG','Projeksiyon posterini PNG olarak indir')}">${CAM_ICON}</button>
         <button class="shot-btn" id="fc-upper-copy-btn" title="${t('Copy the projection poster to the clipboard','Projeksiyon posterini panoya kopyala')}">${COPY_ICON}</button></div>
-        <div class="parliament-box" id="fc-upper-box">${buildParliamentSVG(senDet)}</div>
+        <div class="parliament-box" id="fc-upper-box">${buildParliamentSVG(senDet,SEN_CONF)}</div>
         <div style="overflow-x:auto"><table class="polls-table compact-table"><thead><tr>
           <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th>
         </tr></thead><tbody>${uRows}</tbody></table></div>
@@ -6153,12 +6157,12 @@ function renderForecast(pane){
         seatsText:fmt(senDet[p]||0,0),
         dvText:'',dsText:'',firstText:'',
         ideology:ideologyTr((PARTY_META[p]||{}).ideology||''),
-        color:(PARTY_META[p]||{}).color||'#888',
-        logo:PARTY_LOGOS[p]||null});
+        color:partyColor(p,SEN_CONF),
+        logo:partyLogo(p,SEN_CONF)});
       const lead=order[0];
       const MAJu=Math.floor((SEN_UP.seats||208)/2)+1;
       const tmp=document.createElement('div');
-      tmp.innerHTML=buildParliamentSVG(senDet);
+      tmp.innerHTML=buildParliamentSVG(senDet,SEN_CONF);
       let mapSvg=null;
       const mapBox=$('fc-map-box');
       if(mapBox&&FC_MODE==='upper') mapSvg=mapBox.querySelector('svg');
@@ -6174,7 +6178,7 @@ function renderForecast(pane){
         rows:order.slice(0,7).map(sRow),grid:order.slice(7,19).map(sRow),
         tiles:[{label:partyLabel(lead,SEN_CONF)+' '+t('seats','sandalye'),
                 value:fmt(senDet[lead]||0,0),
-                color:(PARTY_META[lead]||{}).color||'#888'},
+                color:partyColor(lead,SEN_CONF)},
                {label:t('for a majority','\u00e7o\u011funluk i\u00e7in'),
                 value:String(MAJu),color:'#9CA3AF'}],
         arcSvg:tmp.querySelector('svg'),mapSvg:mapSvg,

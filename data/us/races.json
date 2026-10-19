@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-17T10:07:19Z",
+  "scraped_at": "2026-10-19T21:14:20Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -26,14 +26,14 @@
     {
       "pollster": "Decision Desk HQ",
       "dates": "January 9, 2025 – October 13, 2026",
-      "dem": 49.8,
-      "rep": 42.1
+      "dem": 50.2,
+      "rep": 42.4
     },
     {
       "pollster": "FiftyPlusOne",
       "dates": "January 9, 2025 – October 13, 2026",
-      "dem": 51.2,
-      "rep": 43.1
+      "dem": 51.7,
+      "rep": 43.2
     },
     {
       "pollster": "NBC News",
@@ -44,8 +44,8 @@
     {
       "pollster": "RealClearPolitics",
       "dates": "September 24 – October 13, 2026",
-      "dem": 50.0,
-      "rep": 42.0
+      "dem": 50.8,
+      "rep": 42.6
     },
     {
       "pollster": "Silver Bulletin",
@@ -77,7 +77,7 @@
         "state": "Alaska",
         "pvi": 6.0,
         "pvi_label": "R+6",
-        "incumbent": "Dan Sullivan",
+        "incumbent": "Dan S. Sullivan",
         "inc_status": "running",
         "party": "R",
         "last": {
@@ -4388,7 +4388,15 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 65.8,
+          "party": "R"
+        }
       },
       {
         "state": "New York",
@@ -5950,7 +5958,15 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {}
+        "ratings": {
+          "cook": "Solid R",
+          "ie": "Solid R",
+          "sabato": "Safe R"
+        },
+        "last": {
+          "pct": 64.5,
+          "party": "R"
+        }
       },
       {
         "state": "Texas",

@@ -2,8 +2,8 @@
  "country": "lt",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
- "scraped_at": "2026-10-17T10:06:53Z",
- "poll_count": 46,
+ "scraped_at": "2026-10-19T21:13:55Z",
+ "poll_count": 47,
  "polls": [
   {
    "pollster": "Baltijos tyrimai",
@@ -876,6 +876,28 @@
     "lvzs": 10.5,
     "lp": 3.5,
     "ns": 6.1
+   }
+  },
+  {
+   "pollster": "Baltijos tyrimai",
+   "date": "2026-10-05",
+   "n": 1025,
+   "country": "lt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2028_Lithuanian_parliamentary_election",
+   "votes": {
+    "lsdp": 16.3,
+    "tslkd": 20.7,
+    "na": 14.1,
+    "dsvl": 6.2,
+    "ls": 7.7,
+    "lvzs": 13.9,
+    "lp": 3.5,
+    "llrakss": 4.3,
+    "ns": 6.6,
+    "dp": 3.2,
+    "lrp": 2.0,
+    "tts": 1.5
    }
   }
  ]

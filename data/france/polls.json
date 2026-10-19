@@ -6,9 +6,152 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
   }
  ],
- "scraped_at": "2026-10-17T10:06:58Z",
- "poll_count": 53,
+ "scraped_at": "2026-10-19T21:13:58Z",
+ "poll_count": 56,
  "polls": [
+  {
+   "pollster": "Elabe",
+   "fieldwork_start": "2026-10-16",
+   "date": "2026-10-16",
+   "n": 1701,
+   "votes": {
+    "arthaud": 1.0,
+    "melenchon": 15.0,
+    "roussel": 1.5,
+    "tondelier": 3.0,
+    "glucksmann": 15.5,
+    "philippe": 16.5,
+    "villepin": 2.0,
+    "retailleau": 7.0,
+    "dupont": 2.5,
+    "lepen": 32.5,
+    "zemmour": 3.5,
+    "attal": 10.5,
+    "lisnard": 5.5,
+    "ruffin": 3.0
+   },
+   "runoff": {
+    "philippe": 47.5,
+    "lepen": 52.5
+   },
+   "runoffs": [
+    {
+     "pair": [
+      "philippe",
+      "lepen"
+     ],
+     "philippe": 47.5,
+     "lepen": 52.5
+    },
+    {
+     "pair": [
+      "glucksmann",
+      "lepen"
+     ],
+     "glucksmann": 46.5,
+     "lepen": 53.5
+    },
+    {
+     "pair": [
+      "melenchon",
+      "lepen"
+     ],
+     "melenchon": 31.0,
+     "lepen": 69.0
+    }
+   ],
+   "country": "france",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
+  },
+  {
+   "pollster": "Cluster17",
+   "fieldwork_start": "2026-10-15",
+   "date": "2026-10-15",
+   "n": 1263,
+   "votes": {
+    "arthaud": 0.5,
+    "melenchon": 18.0,
+    "roussel": 1.5,
+    "tondelier": 2.0,
+    "glucksmann": 11.0,
+    "philippe": 17.0,
+    "lisnard": 7.0,
+    "retailleau": 7.0,
+    "dupont": 2.0,
+    "lepen": 31.0,
+    "zemmour": 3.0,
+    "attal": 17.0
+   },
+   "country": "france",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
+  },
+  {
+   "pollster": "YouGov",
+   "fieldwork_start": "2026-10-15",
+   "date": "2026-10-15",
+   "n": 1094,
+   "votes": {
+    "arthaud": 0.0,
+    "melenchon": 15.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "glucksmann": 12.0,
+    "attal": 6.0,
+    "philippe": 10.0,
+    "retailleau": 6.0,
+    "dupont": 3.0,
+    "lepen": 36.0,
+    "zemmour": 3.0,
+    "hollande": 9.0,
+    "ruffin": 2.0,
+    "villepin": 1.0,
+    "lisnard": 4.0
+   },
+   "runoff": {
+    "philippe": 48.0,
+    "lepen": 52.0
+   },
+   "runoffs": [
+    {
+     "pair": [
+      "philippe",
+      "lepen"
+     ],
+     "philippe": 48.0,
+     "lepen": 52.0
+    },
+    {
+     "pair": [
+      "attal",
+      "lepen"
+     ],
+     "attal": 45.0,
+     "lepen": 55.0
+    },
+    {
+     "pair": [
+      "glucksmann",
+      "lepen"
+     ],
+     "glucksmann": 45.0,
+     "lepen": 55.0
+    },
+    {
+     "pair": [
+      "melenchon",
+      "lepen"
+     ],
+     "melenchon": 32.0,
+     "lepen": 68.0
+    }
+   ],
+   "country": "france",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election",
+   "method": "online"
+  },
   {
    "pollster": "OpinionWay",
    "fieldwork_start": "2026-10-14",
@@ -29,6 +172,36 @@
     "lepen": 35.0,
     "zemmour": 5.0
    },
+   "runoff": {
+    "philippe": 44.0,
+    "lepen": 56.0
+   },
+   "runoffs": [
+    {
+     "pair": [
+      "philippe",
+      "lepen"
+     ],
+     "philippe": 44.0,
+     "lepen": 56.0
+    },
+    {
+     "pair": [
+      "glucksmann",
+      "lepen"
+     ],
+     "glucksmann": 44.0,
+     "lepen": 56.0
+    },
+    {
+     "pair": [
+      "melenchon",
+      "lepen"
+     ],
+     "melenchon": 32.0,
+     "lepen": 68.0
+    }
+   ],
    "country": "france",
    "source": "Wikipedia",
    "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"

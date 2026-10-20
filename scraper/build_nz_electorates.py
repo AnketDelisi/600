@@ -31,6 +31,7 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(__file__))
 import build_map_svg as bm
+import clip_land
 from scrape_nz import expand_grid
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
@@ -42,7 +43,8 @@ GEOJSON = os.path.join(CACHE, "nz_electorates.geojson")
 CROSSWALK_URL = ("https://raw.githubusercontent.com/dakvid/election2020/"
                  "main/data/electorates.csv")
 ATTRIBUTION = ("Risultati: Wikipedia (elezioni 2023 per circoscrizione); "
-               "Geometria: Statistics NZ (confini 2020, generali e Maori)")
+               "Geometria: Statistics NZ (confini 2020, generali e Maori; "
+               "ritagliati sulla terraferma)")
 GEO_GENERAL = ("https://services2.arcgis.com/vKb0s8tBIA3bdocZ/arcgis/rest/"
                "services/General_Electorates_2020/FeatureServer/0/query?where="
                "1%3D1&outFields=*&f=geojson&outSR=4326")
@@ -301,6 +303,13 @@ def main():
     mao = layer_features(GEO_MAORI, MAORI_NAME,
                          "statsnz_maori_2020.geojson", force)
     print("geometry features:", len(gen["features"]), "general +",
+          len(mao["features"]), "maori")
+    # the Statistics NZ electorates include harbours, straits and lakes -
+    # clip them to the land (GADM outline minus the Natural Earth lakes)
+    land = clip_land.land_polygon("nz", (165.5, -48.2, 179.8, -33.5))
+    gen["features"] = clip_land.clip_features(gen["features"], land)
+    mao["features"] = clip_land.clip_features(mao["features"], land)
+    print("clipped:", len(gen["features"]), "general +",
           len(mao["features"]), "maori")
     for path, feats in ((GEOJSON, gen), (GEOJSON_MAORI, mao)):
         os.makedirs(os.path.dirname(path), exist_ok=True)

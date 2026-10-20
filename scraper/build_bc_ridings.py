@@ -4,8 +4,14 @@
 93 single-member ridings, first-past-the-post. Baselines: the 2024 general
 election per-riding party votes from the en.wikipedia article (Elections BC
 data). Geometry: BC Data Catalogue WFS layer
-WHSE_ADMIN_BOUNDARIES.EBC_ELECTORAL_DISTS_BS11_SVW (2023 redistribution).
-Party colors: en.wikipedia infobox colours (OneBC has none - teal assumed).
+WHSE_ADMIN_BOUNDARIES.EBC_ELECTORAL_DISTS_BS11_SVW (2023 redistribution),
+clipped to the land (GADM British Columbia minus the Freshwater Atlas lakes
+> 1 km2) - the source polygons carry the coastal waters and would otherwise
+cover the sea. Party colors: en.wikipedia infobox colours (OneBC has none -
+teal assumed).
+
+The map carries five urban insets (Kelowna, Nanaimo, Greater Victoria,
+Greater Vancouver, Fraser Valley) so the dense ridings stay readable.
 
 Writes img/bc_ridings.svg, data/bc/constituencies.json and inserts the bc
 block into js/config.js.
@@ -25,15 +31,16 @@ from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(__file__))
 import build_map_svg as bm
+import clip_land
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 CACHE = os.path.join(ROOT, "scraper", ".cache")
 OUT_SVG = os.path.join(ROOT, "img", "bc_ridings.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "bc_ridings.svg")
 CONST_JSON = os.path.join(ROOT, "data", "bc", "constituencies.json")
-ZOOM_SVG = os.path.join(CACHE, "bc_vancouver_detail.svg")
-ZOOM_BOX = (-123.35, 49.0, -122.35, 49.55)  # Metro Vancouver
+ZOOM_BOX = (-123.35, 49.0, -122.35, 49.55)  # Metro Vancouver (regionOf split)
 GEOJSON = os.path.join(CACHE, "bc_ridings.geojson")
+CLIPPED = os.path.join(CACHE, "bc_ridings_land.geojson")
 ARTICLE = "https://en.wikipedia.org/wiki/2024_British_Columbia_general_election"
 # 2024 elected members (Elections BC news release) and the final 2026
 # candidate list (nominations closed 2026-10-03): a 2024 winner not on the
@@ -45,9 +52,41 @@ WFS = ("https://openmaps.gov.bc.ca/geo/pub/WHSE_ADMIN_BOUNDARIES."
        "EBC_ELECTORAL_DISTS_BS11_SVW/ows?service=WFS&version=2.0.0"
        "&request=GetFeature&typeName=WHSE_ADMIN_BOUNDARIES."
        "EBC_ELECTORAL_DISTS_BS11_SVW&outputFormat=json&srsName=EPSG:4326")
-ATTRIBUTION = ("Risultati: Elections BC (elezioni 2024, via en.wikipedia); "
-               "Geometria: BC Data Catalogue (provincial electoral districts, "
-               "redistribuzione 2023)")
+ATTRIBUTION = ("Geometry: BC Data Catalogue "
+               "(WHSE_ADMIN_BOUNDARIES.EBC_ELECTORAL_DISTS_BS11_SVW, clipped "
+               "to land); Results: Elections BC")
+# urban insets: label, riding ids, width in main-map px (the height follows
+# the zoom map's aspect; the column is laid out dynamically below)
+ZOOMS = [
+    ("Kelowna", ['penticton-summerland', 'westkelowna-peachland',
+                 'kelownacentre', 'kelowna-mission'], 75),
+    ("Nanaimo", ['cowichanvalley', 'ladysmith-oceanside',
+                 'nanaimo-gabriolaisland', 'nanaimo-lantzville'], 98),
+    ("Greater Victoria", ['victoria-beaconhill', 'victoria-swanlake',
+                          'saanichsouth', 'esquimalt-colwood',
+                          'langford-highlands'], 51),
+    ("Greater Vancouver", [
+        'burnabycentre', 'burnabyeast', 'burnaby-newwestminster',
+        'burnabynorth', 'burnabysouth-metrotown', 'portcoquitlam',
+        'portmoody-burquitlam', 'vancouver-hastings', 'vancouver-kensington',
+        'vancouver-langara', 'vancouver-littlemountain', 'vancouver-pointgrey',
+        'vancouver-quilchena', 'vancouver-renfrew', 'vancouver-yaletown',
+        'westvancouver-capilano', 'vancouver-southgranville',
+        'vancouver-strathcona', 'vancouver-westend', 'richmondcentre',
+        'richmond-queensborough', 'richmond-steveston', 'surreycitycentre',
+        'surrey-cloverdale', 'surrey-fleetwood', 'surrey-guildford',
+        'surrey-newton', 'surreynorth', 'surrey-panorama',
+        'surrey-serpentineriver', 'surreysouth', 'surrey-whiterock',
+        'vancouver-fraserview', 'coquitlam-burkemountain',
+        'coquitlam-maillardville', 'deltanorth', 'deltasouth',
+        'langley-abbotsford', 'langley-walnutgrove', 'langley-willowbrook',
+        'mapleridgeeast', 'newwestminster-coquitlam',
+        'northvancouver-lonsdale', 'northvancouver-seymour'], 131),
+    ("Fraser Valley", ['abbotsford-mission', 'abbotsfordsouth',
+                       'abbotsfordwest', 'chilliwack-cultuslake',
+                       'chilliwacknorth', 'langley-abbotsford',
+                       'langley-walnutgrove', 'mapleridgeeast'], 150),
+]
 
 PARTIES = ["bcndp", "cpbc", "gpbc", "cbc", "onbc"]
 # 2024 party columns in the per-riding table -> config keys
@@ -206,25 +245,17 @@ def main():
                    "constituency_seats": 93, "leveling_seats": 0,
                    "constituencies": cons}, fh, ensure_ascii=False, indent=1)
 
-    sys.argv = ["build_map_svg.py", "--geojson", GEOJSON,
-                "--name-field", "ED_NAME", "--fold", "--attr", "id",
-                "--no-prefix", "--out", OUT_SVG, "--attribution", ATTRIBUTION, "--simplify", "0.00012"]
-    if force:
-        sys.argv.append("--force")
-    bm.main()
-    import shutil
-    if os.path.isdir(os.path.dirname(BMV_SVG)):
-        shutil.copy2(OUT_SVG, BMV_SVG)
-
-    # Metro Vancouver inset: the dense urban ridings are unreadable at
-    # province scale (the province simplification eps is ~1.4 km). Render them
-    # separately at their own scale - fine detail - and drop a smaller copy
-    # into the empty ocean corner south-west of Vancouver Island.
+    # Metro Vancouver vs the rest: the simulation's regional swing error uses
+    # this partition (there is no BC regional polling, so no mean blend).
+    # Computed on the source geometries (the water does not change a riding's
+    # membership).
     def bbox(geom):
         xs, ys = [], []
+
         def walk(c):
             if isinstance(c[0], (int, float)):
-                xs.append(c[0]); ys.append(c[1])
+                xs.append(c[0])
+                ys.append(c[1])
             else:
                 for x in c:
                     walk(x)
@@ -239,21 +270,54 @@ def main():
             urban.append(f)
     urban_ids = [bm.fold(f["properties"]["ED_NAME"]) for f in urban]
     print("metro vancouver ridings:", len(urban_ids))
-    # Metro Vancouver vs the rest: the simulation's regional swing error uses
-    # this partition (there is no BC regional polling, so no mean blend).
     metro = set(urban_ids)
     region_of = {c["id"]: ("metro" if c["id"] in metro else "rest")
                  for c in cons}
-    zoom_gj = os.path.join(CACHE, "bc_vancouver.geojson")
-    with open(zoom_gj, "w", encoding="utf8") as fh:
-        json.dump({"type": "FeatureCollection", "features": urban}, fh)
-    sys.argv = ["build_map_svg.py", "--geojson", zoom_gj,
-                "--name-field", "ED_NAME", "--fold", "--attr", "id",
-                "--no-prefix", "--out", ZOOM_SVG, "--attribution", ATTRIBUTION,
-                "--force"]
-    bm.main()
-    bm.add_inset(OUT_SVG, ZOOM_SVG, urban_ids, 150, (40, 640),
-                 label="Metro Vancouver")
+
+    # land clip: the riding polygons carry the coastal waters (and the
+    # provincial lakes); the map must show only land
+    land = clip_land.land_polygon("bc", (-139.5, 48.0, -113.5, 60.1))
+    gj["features"] = clip_land.clip_features(gj["features"], land)
+    print("clipped features:", len(gj["features"]))
+    with open(CLIPPED, "w", encoding="utf8") as fh:
+        json.dump(gj, fh)
+
+    def build_svg(geojson_path, out_path):
+        sys.argv = ["build_map_svg.py", "--geojson", geojson_path,
+                    "--name-field", "ED_NAME", "--fold", "--attr", "id",
+                    "--no-prefix", "--out", out_path,
+                    "--attribution", ATTRIBUTION, "--simplify", "0.00012"]
+        bm.main()
+
+    build_svg(CLIPPED, OUT_SVG)
+
+    # urban insets: the dense ridings are unreadable at province scale;
+    # render them separately and stack them in the ocean column on the left
+    by_id = {bm.fold(f["properties"]["ED_NAME"]): f for f in gj["features"]}
+    main_h = float(re.search(r'viewBox="0 0 [\d.]+ ([\d.]+)"',
+                             open(OUT_SVG, encoding="utf8").read()).group(1))
+    zooms = []
+    for label, ids, width in ZOOMS:
+        sel = [by_id[i] for i in ids if i in by_id]
+        zpath = os.path.join(CACHE, "bc_zoom_%s.geojson" % bm.fold(label))
+        with open(zpath, "w", encoding="utf8") as fh:
+            json.dump({"type": "FeatureCollection", "features": sel}, fh)
+        zsvg = os.path.join(CACHE, "bc_zoom_%s.svg" % bm.fold(label))
+        build_svg(zpath, zsvg)
+        sh = float(re.search(r'viewBox="0 0 [\d.]+ ([\d.]+)"',
+                             open(zsvg, encoding="utf8").read()).group(1))
+        zooms.append((label, ids, width, sh, zsvg))
+    gap, top = 32, 145
+    bottom = main_h - 24
+    total = sum(w * sh / 1000 for _l, _i, w, sh, _s in zooms)
+    total += gap * (len(zooms) - 1)
+    k = min(1.0, (bottom - top) / total) if total > 0 else 1.0
+    y = top
+    for label, ids, width, sh, zsvg in zooms:
+        h = sh * width * k / 1000
+        bm.add_inset(OUT_SVG, zsvg, ids, width * k, (30, y), label=label)
+        y += h + gap
+    import shutil
     if os.path.isdir(os.path.dirname(BMV_SVG)):
         shutil.copy2(OUT_SVG, BMV_SVG)
 

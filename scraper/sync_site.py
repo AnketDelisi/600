@@ -23,12 +23,10 @@ MIRRORED = [
     "js/config.js",
     "js/parliaments.js",
     "js/app.js",
-    "js/us.js",
     "css/style.css",
     "poll/index.html",
     "poll/poll.js",
     "sweden/index.html",
-    "us/index.html",
 ]
 
 

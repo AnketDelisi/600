@@ -2,8 +2,8 @@
  "country": "poland",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Polish_parliamentary_election",
- "scraped_at": "2026-10-19T21:13:37Z",
- "poll_count": 90,
+ "scraped_at": "2026-10-20T10:53:44Z",
+ "poll_count": 91,
  "polls": [
   {
    "pollster": "United Surveys / WP.pl",
@@ -21,6 +21,24 @@
    },
    "country": "poland",
    "date_end": "2026-10-18",
+   "n": 1000
+  },
+  {
+   "pollster": "IBRiS / Polsat News",
+   "date": "2026-10-14",
+   "votes": {
+    "pis": 19.1,
+    "ko": 27.8,
+    "pl2050": 0.5,
+    "psl": 5.1,
+    "lewica": 7.0,
+    "razem": 3.8,
+    "kwin": 12.7,
+    "kkp": 11.4,
+    "r": 5.8
+   },
+   "country": "poland",
+   "date_end": "2026-10-16",
    "n": 1000
   },
   {

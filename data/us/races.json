@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-19T21:14:20Z",
+  "scraped_at": "2026-10-20T10:54:23Z",
   "sources": {
     "senate": "https://en.wikipedia.org/wiki/2026_United_States_Senate_elections",
     "house": "https://en.wikipedia.org/wiki/2026_United_States_House_of_Representatives_elections",
@@ -5494,15 +5494,7 @@
         "inc_status": "running",
         "party": "R",
         "status": "Incumbent renominated",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "last": {
-          "pct": 53.9,
-          "party": "R"
-        }
+        "ratings": {}
       },
       {
         "state": "Tennessee",
@@ -5554,15 +5546,7 @@
         "inc_status": "open",
         "party": "R",
         "status": "Incumbent lost renomination",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "last": {
-          "pct": 65.7,
-          "party": "R"
-        }
+        "ratings": {}
       },
       {
         "state": "Texas",

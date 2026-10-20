@@ -2,9 +2,27 @@
   "country": "nz",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-  "scraped_at": "2026-10-19T21:13:51Z",
+  "scraped_at": "2026-10-20T10:53:55Z",
   "poll_count": 126,
   "polls": [
+    {
+      "pollster": "1 News–Verian",
+      "fieldwork_start": "2026-10-20",
+      "date": "2026-10-20",
+      "n": 1003,
+      "country": "nz",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
+      "votes": {
+        "nat": 32.0,
+        "lab": 27.0,
+        "grn": 16.0,
+        "act": 11.0,
+        "nzf": 8.0,
+        "tpm": 0.7,
+        "opp": 7.0
+      }
+    },
     {
       "pollster": "The Post/Freshwater Strategy",
       "fieldwork_start": "2026-10-20",
@@ -21,24 +39,6 @@
         "nzf": 11.8,
         "tpm": 2.0,
         "opp": 5.4
-      }
-    },
-    {
-      "pollster": "1 News–Verian",
-      "fieldwork_start": "2026-10-20",
-      "date": "2026-10-20",
-      "n": 1007,
-      "country": "nz",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-      "votes": {
-        "nat": 28.0,
-        "lab": 28.0,
-        "grn": 15.0,
-        "act": 10.0,
-        "nzf": 10.0,
-        "tpm": 0.4,
-        "opp": 8.0
       }
     },
     {

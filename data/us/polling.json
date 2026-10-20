@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-10-19T21:15:05Z",
+  "scraped_at": "2026-10-20T10:55:06Z",
   "senate": {
     "Alabama": null,
     "Alaska": {
@@ -522,10 +522,17 @@
     },
     "Illinois": null,
     "Iowa": {
-      "dem": 46.8,
-      "rep": 45.8,
+      "dem": 46.7,
+      "rep": 46.2,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "co/efficient",
+          "dates": "October 15–19, 2026",
+          "partisan": "R",
+          "dem": 45.0,
+          "rep": 48.0
+        },
         {
           "pollster": "Trafalgar Group",
           "dates": "October 13–15, 2026",
@@ -2343,9 +2350,15 @@
     },
     "Ohio": {
       "dem": 47.8,
-      "rep": 44.7,
+      "rep": 44.8,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Marist University",
+          "dates": "October 15–18, 2026",
+          "dem": 48.0,
+          "rep": 44.0
+        },
         {
           "pollster": "ActiVote",
           "dates": "September 26 – October 18, 2026",
@@ -3537,10 +3550,16 @@
       }
     },
     "Florida": {
-      "dem": 43.2,
-      "rep": 47.7,
+      "dem": 43.1,
+      "rep": 48.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "ActiVote",
+          "dates": "October 1 – October 19, 2026",
+          "dem": 48.0,
+          "rep": 52.0
+        },
         {
           "pollster": "Univision / YouGov",
           "dates": "October 2–15, 2026",
@@ -4967,6 +4986,12 @@
       "rep": 44.0,
       "source": "Aggregate (Wikipedia)",
       "polls": [
+        {
+          "pollster": "Marist University",
+          "dates": "October 15–18, 2026",
+          "dem": 51.0,
+          "rep": 43.0
+        },
         {
           "pollster": "Bowling Green State University / YouGov",
           "dates": "September 29 – October 9, 2026",

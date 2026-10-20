@@ -1,9 +1,9 @@
 {
   "model": "600 in-house model — rating+poll informed, national-swing Monte Carlo",
-  "generated": "2026-10-19T21:15:21Z",
+  "generated": "2026-10-20T10:55:22Z",
   "environment": {
     "election": "2026-11-03",
-    "days_to_election": 15,
+    "days_to_election": 14,
     "generic_ballot_generic_margin": 8.3,
     "n_sims": 20000,
     "rating_margin_table": {
@@ -1978,17 +1978,23 @@
         "lean": "Lean D",
         "leader": "D",
         "margin": 3.2,
-        "dem_pct": 71.5,
-        "rep_pct": 28.5,
+        "dem_pct": 71.1,
+        "rep_pct": 28.9,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
           "dem": 47.8,
-          "rep": 44.7,
+          "rep": 44.8,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "Marist University",
+              "dates": "October 15–18, 2026",
+              "dem": 48.0,
+              "rep": 44.0
+            },
             {
               "pollster": "ActiVote",
               "dates": "September 26 – October 18, 2026",
@@ -3239,247 +3245,6 @@
         }
       },
       {
-        "state": "Iowa",
-        "district": "",
-        "incumbent": "Joni Ernst",
-        "party": "R",
-        "rating": "Tossup",
-        "ratings": {
-          "cook": "Tossup",
-          "ie": "Tilt R",
-          "sabato": "Tossup"
-        },
-        "lean": "Tossup",
-        "leader": "D",
-        "margin": 1.9,
-        "dem_pct": 62.9,
-        "rep_pct": 37.1,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": {
-          "dem": 46.8,
-          "rep": 45.8,
-          "source": "Aggregate (Wikipedia)",
-          "polls": [
-            {
-              "pollster": "Trafalgar Group",
-              "dates": "October 13–15, 2026",
-              "partisan": "R",
-              "dem": 44.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "NPA Polling",
-              "dates": "October 8–12, 2026",
-              "dem": 44.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "YouGov",
-              "dates": "October 6–12, 2026",
-              "dem": 47.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Marist University",
-              "dates": "October 8–11, 2026",
-              "dem": 48.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "Emerson College",
-              "dates": "October 5–6, 2026",
-              "dem": 45.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "SSRS",
-              "dates": "September 29 – October 5, 2026",
-              "dem": 43.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "Suffolk University",
-              "dates": "October 1–4, 2026",
-              "dem": 48.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "New York Times / Siena University",
-              "dates": "September 22 – October 1, 2026",
-              "dem": 47.0,
-              "rep": 48.0
-            },
-            {
-              "pollster": "Rasmussen Reports",
-              "dates": "September 28–30, 2026",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "Quantus Insights",
-              "dates": "September 28–29, 2026",
-              "partisan": "R",
-              "dem": 46.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "Beacon Research / Shaw & Co. Research",
-              "dates": "September 24–28, 2026",
-              "partisan": "D",
-              "dem": 49.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "InsiderAdvantage",
-              "dates": "September 22–23, 2026",
-              "partisan": "R",
-              "dem": 47.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Marist University",
-              "dates": "September 17–20, 2026",
-              "dem": 50.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "Trafalgar Group",
-              "dates": "September 16–18, 2026",
-              "partisan": "R",
-              "dem": 42.0,
-              "rep": 44.0
-            },
-            {
-              "pollster": "co/efficient",
-              "dates": "September 14–16, 2026",
-              "partisan": "R",
-              "dem": 42.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Cygnal",
-              "dates": "September 9–11, 2026",
-              "partisan": "R",
-              "dem": 43.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "Rasmussen Reports",
-              "dates": "September 8–10, 2026",
-              "partisan": "R",
-              "dem": 45.0,
-              "rep": 40.0
-            },
-            {
-              "pollster": "YouGov",
-              "dates": "September 3–8, 2026",
-              "dem": 44.0,
-              "rep": 43.0
-            },
-            {
-              "pollster": "Emerson College",
-              "dates": "August 31 – September 1, 2026",
-              "dem": 45.0,
-              "rep": 50.0
-            },
-            {
-              "pollster": "Global Strategy Group",
-              "dates": "August 27–31, 2026",
-              "partisan": "D",
-              "dem": 46.0,
-              "rep": 42.0
-            },
-            {
-              "pollster": "Wedgewood Polls",
-              "dates": "August 27–29, 2026",
-              "dem": 48.0,
-              "rep": 50.0
-            },
-            {
-              "pollster": "Abacus Data",
-              "dates": "August 26–28, 2026",
-              "dem": 54.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "Suffolk University",
-              "dates": "August 20–23, 2026",
-              "dem": 41.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "Emerson College",
-              "dates": "August 2–4, 2026",
-              "dem": 45.0,
-              "rep": 48.0
-            },
-            {
-              "pollster": "Beacon Research / Shaw & Co. Research",
-              "dates": "June 23–27, 2026",
-              "partisan": "D",
-              "dem": 50.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "New York Times / Siena University",
-              "dates": "June 15–27, 2026",
-              "dem": 46.0,
-              "rep": 48.0
-            },
-            {
-              "pollster": "Cygnal",
-              "dates": "June 16–19, 2026",
-              "partisan": "R",
-              "dem": 44.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Global Strategy Group",
-              "dates": "June 8–11, 2026",
-              "partisan": "D",
-              "dem": 47.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "Public Policy Polling",
-              "dates": "June 3–4, 2026",
-              "partisan": "D",
-              "dem": 46.0,
-              "rep": 46.0
-            },
-            {
-              "pollster": "Echelon Insights",
-              "dates": "April 3–9, 2026",
-              "partisan": "R",
-              "dem": 46.0,
-              "rep": 45.0
-            },
-            {
-              "pollster": "GQR",
-              "dates": "March 10–16, 2026",
-              "partisan": "D",
-              "dem": 43.0,
-              "rep": 47.0
-            },
-            {
-              "pollster": "Change Research",
-              "dates": "January 8–11, 2026",
-              "partisan": "D",
-              "dem": 41.0,
-              "rep": 44.0
-            }
-          ],
-          "names": {
-            "r": "Ashley Hinson",
-            "d": "Josh Turek"
-          }
-        }
-      },
-      {
         "state": "South Carolina",
         "district": "",
         "incumbent": "Darline Graham",
@@ -3696,6 +3461,254 @@
           "names": {
             "r": "Roger Marshall",
             "d": "Adam Hamilton"
+          }
+        }
+      },
+      {
+        "state": "Iowa",
+        "district": "",
+        "incumbent": "Joni Ernst",
+        "party": "R",
+        "rating": "Tossup",
+        "ratings": {
+          "cook": "Tossup",
+          "ie": "Tilt R",
+          "sabato": "Tossup"
+        },
+        "lean": "Tossup",
+        "leader": "D",
+        "margin": 1.5,
+        "dem_pct": 60.7,
+        "rep_pct": 39.3,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": {
+          "dem": 46.7,
+          "rep": 46.2,
+          "source": "Aggregate (Wikipedia)",
+          "polls": [
+            {
+              "pollster": "co/efficient",
+              "dates": "October 15–19, 2026",
+              "partisan": "R",
+              "dem": 45.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Trafalgar Group",
+              "dates": "October 13–15, 2026",
+              "partisan": "R",
+              "dem": 44.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "NPA Polling",
+              "dates": "October 8–12, 2026",
+              "dem": 44.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "October 6–12, 2026",
+              "dem": 47.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Marist University",
+              "dates": "October 8–11, 2026",
+              "dem": 48.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "October 5–6, 2026",
+              "dem": 45.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "SSRS",
+              "dates": "September 29 – October 5, 2026",
+              "dem": 43.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Suffolk University",
+              "dates": "October 1–4, 2026",
+              "dem": 48.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "New York Times / Siena University",
+              "dates": "September 22 – October 1, 2026",
+              "dem": 47.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Rasmussen Reports",
+              "dates": "September 28–30, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Quantus Insights",
+              "dates": "September 28–29, 2026",
+              "partisan": "R",
+              "dem": 46.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Beacon Research / Shaw & Co. Research",
+              "dates": "September 24–28, 2026",
+              "partisan": "D",
+              "dem": 49.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "InsiderAdvantage",
+              "dates": "September 22–23, 2026",
+              "partisan": "R",
+              "dem": 47.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Marist University",
+              "dates": "September 17–20, 2026",
+              "dem": 50.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Trafalgar Group",
+              "dates": "September 16–18, 2026",
+              "partisan": "R",
+              "dem": 42.0,
+              "rep": 44.0
+            },
+            {
+              "pollster": "co/efficient",
+              "dates": "September 14–16, 2026",
+              "partisan": "R",
+              "dem": 42.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Cygnal",
+              "dates": "September 9–11, 2026",
+              "partisan": "R",
+              "dem": 43.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Rasmussen Reports",
+              "dates": "September 8–10, 2026",
+              "partisan": "R",
+              "dem": 45.0,
+              "rep": 40.0
+            },
+            {
+              "pollster": "YouGov",
+              "dates": "September 3–8, 2026",
+              "dem": 44.0,
+              "rep": 43.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "August 31 – September 1, 2026",
+              "dem": 45.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "Global Strategy Group",
+              "dates": "August 27–31, 2026",
+              "partisan": "D",
+              "dem": 46.0,
+              "rep": 42.0
+            },
+            {
+              "pollster": "Wedgewood Polls",
+              "dates": "August 27–29, 2026",
+              "dem": 48.0,
+              "rep": 50.0
+            },
+            {
+              "pollster": "Abacus Data",
+              "dates": "August 26–28, 2026",
+              "dem": 54.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Suffolk University",
+              "dates": "August 20–23, 2026",
+              "dem": 41.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Emerson College",
+              "dates": "August 2–4, 2026",
+              "dem": 45.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Beacon Research / Shaw & Co. Research",
+              "dates": "June 23–27, 2026",
+              "partisan": "D",
+              "dem": 50.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "New York Times / Siena University",
+              "dates": "June 15–27, 2026",
+              "dem": 46.0,
+              "rep": 48.0
+            },
+            {
+              "pollster": "Cygnal",
+              "dates": "June 16–19, 2026",
+              "partisan": "R",
+              "dem": 44.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Global Strategy Group",
+              "dates": "June 8–11, 2026",
+              "partisan": "D",
+              "dem": 47.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "Public Policy Polling",
+              "dates": "June 3–4, 2026",
+              "partisan": "D",
+              "dem": 46.0,
+              "rep": 46.0
+            },
+            {
+              "pollster": "Echelon Insights",
+              "dates": "April 3–9, 2026",
+              "partisan": "R",
+              "dem": 46.0,
+              "rep": 45.0
+            },
+            {
+              "pollster": "GQR",
+              "dates": "March 10–16, 2026",
+              "partisan": "D",
+              "dem": 43.0,
+              "rep": 47.0
+            },
+            {
+              "pollster": "Change Research",
+              "dates": "January 8–11, 2026",
+              "partisan": "D",
+              "dem": 41.0,
+              "rep": 44.0
+            }
+          ],
+          "names": {
+            "r": "Ashley Hinson",
+            "d": "Josh Turek"
           }
         }
       },
@@ -3927,8 +3940,8 @@
     "expected_r_seats": 46.9,
     "expected_i_seats": 1.3,
     "majority": {
-      "dem_pct": 87.6,
-      "rep_pct": 12.4
+      "dem_pct": 87.4,
+      "rep_pct": 12.6
     },
     "distribution_buckets": [
       {
@@ -3937,27 +3950,27 @@
       },
       {
         "seats": 49,
-        "pct": 4.9
+        "pct": 5.1
       },
       {
         "seats": 51,
-        "pct": 17.1
+        "pct": 17.3
       },
       {
         "seats": 53,
-        "pct": 32.2
+        "pct": 32.3
       },
       {
         "seats": 55,
-        "pct": 30.6
+        "pct": 30.3
       },
       {
         "seats": 57,
-        "pct": 12.7
+        "pct": 12.5
       },
       {
         "seats": 59,
-        "pct": 1.6
+        "pct": 1.5
       },
       {
         "seats": 61,
@@ -7387,28 +7400,6 @@
         "polls": null
       },
       {
-        "state": "Texas",
-        "district": "2",
-        "incumbent": "Dan Crenshaw",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "lean": "Solid R",
-        "leader": "R",
-        "margin": 17.1,
-        "dem_pct": 0.8,
-        "rep_pct": 99.2,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
         "state": "Wisconsin",
         "district": "6",
         "incumbent": "Glenn Grothman",
@@ -9229,28 +9220,6 @@
         "state": "Tennessee",
         "district": "5",
         "incumbent": "Andy Ogles",
-        "party": "R",
-        "rating": "Solid R",
-        "ratings": {
-          "cook": "Solid R",
-          "ie": "Solid R",
-          "sabato": "Safe R"
-        },
-        "lean": "Likely R",
-        "leader": "R",
-        "margin": 12.9,
-        "dem_pct": 2.4,
-        "rep_pct": 97.6,
-        "ind_pct": 0.0,
-        "dem_name": null,
-        "rep_name": null,
-        "ind_name": null,
-        "polls": null
-      },
-      {
-        "state": "Tennessee",
-        "district": "7",
-        "incumbent": "Matt Van Epps",
         "party": "R",
         "rating": "Solid R",
         "ratings": {
@@ -11278,6 +11247,24 @@
         "polls": null
       },
       {
+        "state": "Tennessee",
+        "district": "7",
+        "incumbent": "Matt Van Epps",
+        "party": "R",
+        "rating": null,
+        "ratings": {},
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 5.2,
+        "dem_pct": 18.5,
+        "rep_pct": 81.5,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": null
+      },
+      {
         "state": "Texas",
         "district": "3",
         "incumbent": "Keith Self",
@@ -12694,6 +12681,24 @@
         }
       },
       {
+        "state": "Texas",
+        "district": "2",
+        "incumbent": "Dan Crenshaw",
+        "party": "R",
+        "rating": null,
+        "ratings": {},
+        "lean": "Lean R",
+        "leader": "R",
+        "margin": 2.7,
+        "dem_pct": 31.6,
+        "rep_pct": 68.4,
+        "ind_pct": 0.0,
+        "dem_name": null,
+        "rep_name": null,
+        "ind_name": null,
+        "polls": null
+      },
+      {
         "state": "Maine",
         "district": "2",
         "incumbent": "Jared Golden",
@@ -13755,14 +13760,18 @@
         "polls": null
       }
     ],
-    "expected_d_seats": 240.9,
-    "expected_r_seats": 194.1,
+    "expected_d_seats": 241.4,
+    "expected_r_seats": 193.6,
     "expected_i_seats": 0.1,
     "majority": {
-      "dem_pct": 93.1,
-      "rep_pct": 6.9
+      "dem_pct": 93.3,
+      "rep_pct": 6.7
     },
     "distribution_buckets": [
+      {
+        "seats": 199,
+        "pct": 0.1
+      },
       {
         "seats": 201,
         "pct": 0.2
@@ -13773,7 +13782,7 @@
       },
       {
         "seats": 205,
-        "pct": 0.3
+        "pct": 0.2
       },
       {
         "seats": 207,
@@ -13789,19 +13798,19 @@
       },
       {
         "seats": 213,
-        "pct": 1.0
+        "pct": 0.9
       },
       {
         "seats": 215,
-        "pct": 1.4
+        "pct": 1.3
       },
       {
         "seats": 217,
-        "pct": 1.8
+        "pct": 1.7
       },
       {
         "seats": 219,
-        "pct": 2.4
+        "pct": 2.1
       },
       {
         "seats": 221,
@@ -13809,7 +13818,7 @@
       },
       {
         "seats": 223,
-        "pct": 2.9
+        "pct": 2.8
       },
       {
         "seats": 225,
@@ -13817,23 +13826,23 @@
       },
       {
         "seats": 227,
-        "pct": 3.5
+        "pct": 3.4
       },
       {
         "seats": 229,
-        "pct": 4.3
+        "pct": 4.0
       },
       {
         "seats": 231,
-        "pct": 4.2
+        "pct": 4.3
       },
       {
         "seats": 233,
-        "pct": 4.7
+        "pct": 4.6
       },
       {
         "seats": 235,
-        "pct": 4.9
+        "pct": 4.7
       },
       {
         "seats": 237,
@@ -13849,19 +13858,19 @@
       },
       {
         "seats": 243,
-        "pct": 4.7
+        "pct": 4.6
       },
       {
         "seats": 245,
-        "pct": 4.3
+        "pct": 4.4
       },
       {
         "seats": 247,
-        "pct": 4.0
+        "pct": 4.2
       },
       {
         "seats": 249,
-        "pct": 4.3
+        "pct": 4.0
       },
       {
         "seats": 251,
@@ -13869,11 +13878,11 @@
       },
       {
         "seats": 253,
-        "pct": 3.4
+        "pct": 3.5
       },
       {
         "seats": 255,
-        "pct": 2.8
+        "pct": 3.0
       },
       {
         "seats": 257,
@@ -13885,23 +13894,23 @@
       },
       {
         "seats": 261,
-        "pct": 2.0
+        "pct": 2.3
       },
       {
         "seats": 263,
-        "pct": 2.1
+        "pct": 1.9
       },
       {
         "seats": 265,
-        "pct": 1.6
+        "pct": 1.9
       },
       {
         "seats": 267,
-        "pct": 1.3
+        "pct": 1.4
       },
       {
         "seats": 269,
-        "pct": 1.2
+        "pct": 1.3
       },
       {
         "seats": 271,
@@ -13913,11 +13922,11 @@
       },
       {
         "seats": 275,
-        "pct": 0.7
+        "pct": 0.8
       },
       {
         "seats": 277,
-        "pct": 0.4
+        "pct": 0.5
       },
       {
         "seats": 279,
@@ -13925,15 +13934,15 @@
       },
       {
         "seats": 281,
-        "pct": 0.4
+        "pct": 0.5
       },
       {
         "seats": 283,
-        "pct": 0.2
+        "pct": 0.4
       },
       {
         "seats": 285,
-        "pct": 0.2
+        "pct": 0.3
       },
       {
         "seats": 287,
@@ -16305,6 +16314,12 @@
           "source": "Aggregate (Wikipedia)",
           "polls": [
             {
+              "pollster": "Marist University",
+              "dates": "October 15–18, 2026",
+              "dem": 51.0,
+              "rep": 43.0
+            },
+            {
               "pollster": "Bowling Green State University / YouGov",
               "dates": "September 29 – October 9, 2026",
               "dem": 50.0,
@@ -16506,18 +16521,24 @@
         },
         "lean": "Lean R",
         "leader": "R",
-        "margin": 3.5,
-        "dem_pct": 27.0,
-        "rep_pct": 73.0,
+        "margin": 3.7,
+        "dem_pct": 25.6,
+        "rep_pct": 74.4,
         "ind_pct": 0.0,
         "dem_name": null,
         "rep_name": null,
         "ind_name": null,
         "polls": {
-          "dem": 43.2,
-          "rep": 47.7,
+          "dem": 43.1,
+          "rep": 48.0,
           "source": "Aggregate (Wikipedia)",
           "polls": [
+            {
+              "pollster": "ActiVote",
+              "dates": "October 1 – October 19, 2026",
+              "dem": 48.0,
+              "rep": 52.0
+            },
             {
               "pollster": "Univision / YouGov",
               "dates": "October 2–15, 2026",

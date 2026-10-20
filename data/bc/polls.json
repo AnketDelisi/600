@@ -2,9 +2,25 @@
  "country": "bc",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
- "scraped_at": "2026-10-19T21:13:47Z",
- "poll_count": 54,
+ "scraped_at": "2026-10-20T10:53:53Z",
+ "poll_count": 55,
  "polls": [
+  {
+   "pollster": "Angus Reid",
+   "fieldwork_start": "2026-10-15",
+   "date": "2026-10-15",
+   "n": 793,
+   "country": "bc",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+   "votes": {
+    "bcndp": 43.0,
+    "cpbc": 46.0,
+    "gpbc": 8.0,
+    "onbc": 1.0,
+    "cbc": 1.0
+   }
+  },
   {
    "pollster": "Pallas Data",
    "fieldwork_start": "2026-10-10",

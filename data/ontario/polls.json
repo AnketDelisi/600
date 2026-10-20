@@ -6,9 +6,20 @@
    "url": "https://en.wikipedia.org/wiki/45th_Ontario_general_election"
   }
  ],
- "scraped_at": "2026-10-19T21:13:59Z",
- "poll_count": 48,
+ "scraped_at": "2026-10-20T10:54:03Z",
+ "poll_count": 49,
  "polls": [
+  {
+   "pollster": "Abacus Data",
+   "date": "2026-10-19",
+   "votes": {
+    "pc": 40.0,
+    "ndp": 20.0,
+    "olp": 32.0,
+    "gpo": 4.0
+   },
+   "n": 2291
+  },
   {
    "pollster": "Mainstreet Research",
    "date": "2026-09-29",

@@ -2,19 +2,22 @@
  "country": "serbia",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
- "scraped_at": "2026-10-20T10:53:48Z",
+ "scraped_at": "2026-10-22T11:06:48Z",
  "poll_count": 16,
  "polls": [
   {
    "pollster": "NSPM",
-   "date": "2026-09-30",
-   "n": 0,
+   "date": "2026-10-20",
+   "n": 1050,
    "country": "serbia",
    "source": "Wikipedia",
    "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Serbian_parliamentary_election",
    "votes": {
-    "sns": 41.7,
-    "sl": 44.4
+    "sns": 42.7,
+    "sps": 2.9,
+    "sl": 44.4,
+    "pes": 2.7,
+    "nada": 2.5
    }
   },
   {

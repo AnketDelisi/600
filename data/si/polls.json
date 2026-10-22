@@ -2,7 +2,7 @@
  "country": "si",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",
- "scraped_at": "2026-10-20T10:54:02Z",
+ "scraped_at": "2026-10-22T11:07:16Z",
  "poll_count": 16,
  "polls": [
   {
@@ -93,7 +93,7 @@
   {
    "pollster": "16th Government of Slovenia is confirmed.",
    "date": "2026-06-04",
-   "n": 1619,
+   "n": 1620,
    "country": "si",
    "source": "Wikipedia",
    "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Slovenian_parliamentary_election",

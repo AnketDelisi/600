@@ -2,9 +2,41 @@
  "country": "bc",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
- "scraped_at": "2026-10-20T10:53:53Z",
- "poll_count": 55,
+ "scraped_at": "2026-10-22T11:06:59Z",
+ "poll_count": 58,
  "polls": [
+  {
+   "pollster": "Mainstreet Research",
+   "fieldwork_start": "2026-10-17",
+   "date": "2026-10-17",
+   "n": 907,
+   "country": "bc",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+   "votes": {
+    "bcndp": 36.0,
+    "cpbc": 42.0,
+    "gpbc": 15.0,
+    "onbc": 5.0,
+    "cbc": 3.0
+   }
+  },
+  {
+   "pollster": "Innovative Research",
+   "fieldwork_start": "2026-10-15",
+   "date": "2026-10-15",
+   "n": 1000,
+   "country": "bc",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+   "votes": {
+    "bcndp": 38.0,
+    "cpbc": 43.0,
+    "gpbc": 12.0,
+    "onbc": 4.0,
+    "cbc": 2.0
+   }
+  },
   {
    "pollster": "Angus Reid",
    "fieldwork_start": "2026-10-15",
@@ -19,6 +51,22 @@
     "gpbc": 8.0,
     "onbc": 1.0,
     "cbc": 1.0
+   }
+  },
+  {
+   "pollster": "Pollara",
+   "fieldwork_start": "2026-10-15",
+   "date": "2026-10-15",
+   "n": 973,
+   "country": "bc",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_British_Columbia_general_election",
+   "votes": {
+    "bcndp": 36.0,
+    "cpbc": 43.0,
+    "gpbc": 12.0,
+    "onbc": 4.0,
+    "cbc": 3.0
    }
   },
   {

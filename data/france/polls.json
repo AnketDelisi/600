@@ -6,9 +6,81 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
   }
  ],
- "scraped_at": "2026-10-20T10:54:03Z",
- "poll_count": 56,
+ "scraped_at": "2026-10-22T11:07:17Z",
+ "poll_count": 57,
  "polls": [
+  {
+   "pollster": "Ifop",
+   "fieldwork_start": "2026-10-19",
+   "date": "2026-10-19",
+   "n": 1928,
+   "votes": {
+    "arthaud": 0.5,
+    "melenchon": 16.5,
+    "roussel": 3.0,
+    "tondelier": 3.0,
+    "glucksmann": 13.5,
+    "attal": 5.0,
+    "philippe": 12.0,
+    "retailleau": 5.0,
+    "dupont": 2.0,
+    "lepen": 36.0,
+    "zemmour": 3.5,
+    "hollande": 10.0,
+    "ruffin": 1.5,
+    "villepin": 1.5,
+    "lisnard": 5.5
+   },
+   "runoff": {
+    "philippe": 44.0,
+    "lepen": 56.0
+   },
+   "runoffs": [
+    {
+     "pair": [
+      "philippe",
+      "lepen"
+     ],
+     "philippe": 44.0,
+     "lepen": 56.0
+    },
+    {
+     "pair": [
+      "attal",
+      "lepen"
+     ],
+     "attal": 42.0,
+     "lepen": 58.0
+    },
+    {
+     "pair": [
+      "glucksmann",
+      "lepen"
+     ],
+     "glucksmann": 43.0,
+     "lepen": 57.0
+    },
+    {
+     "pair": [
+      "melenchon",
+      "lepen"
+     ],
+     "melenchon": 32.0,
+     "lepen": 68.0
+    },
+    {
+     "pair": [
+      "hollande",
+      "lepen"
+     ],
+     "hollande": 41.0,
+     "lepen": 59.0
+    }
+   ],
+   "country": "france",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
+  },
   {
    "pollster": "Elabe",
    "fieldwork_start": "2026-10-16",
@@ -681,6 +753,60 @@
     "zemmour": 3.5,
     "hollande": 12.0
    },
+   "runoff": {
+    "philippe": 48.0,
+    "lepen": 52.0
+   },
+   "runoffs": [
+    {
+     "pair": [
+      "philippe",
+      "lepen"
+     ],
+     "philippe": 48.0,
+     "lepen": 52.0
+    },
+    {
+     "pair": [
+      "attal",
+      "lepen"
+     ],
+     "attal": 46.0,
+     "lepen": 54.0
+    },
+    {
+     "pair": [
+      "glucksmann",
+      "lepen"
+     ],
+     "glucksmann": 45.0,
+     "lepen": 55.0
+    },
+    {
+     "pair": [
+      "melenchon",
+      "lepen"
+     ],
+     "melenchon": 33.0,
+     "lepen": 67.0
+    },
+    {
+     "pair": [
+      "hollande",
+      "lepen"
+     ],
+     "hollande": 46.0,
+     "lepen": 54.0
+    },
+    {
+     "pair": [
+      "retailleau",
+      "lepen"
+     ],
+     "retailleau": 42.0,
+     "lepen": 58.0
+    }
+   ],
    "country": "france",
    "source": "Wikipedia",
    "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"

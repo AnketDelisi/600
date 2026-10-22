@@ -2,8 +2,8 @@
  "country": "bgpres",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election",
- "scraped_at": "2026-10-20T10:53:57Z",
- "poll_count": 6,
+ "scraped_at": "2026-10-22T11:07:05Z",
+ "poll_count": 8,
  "polls": [
   {
    "pollster": "Sova Harris",
@@ -102,6 +102,38 @@
     "hristanov": 4.4
    },
    "method": "phone"
+  },
+  {
+   "pollster": "Sova Harris",
+   "date": "2026-10-17",
+   "n": 1000,
+   "country": "bgpres",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election",
+   "votes": {
+    "iotova": 49.2,
+    "gyurov": 24.8,
+    "kostadinov": 9.5,
+    "vasilev": 3.1,
+    "mihaylov": 2.6,
+    "hristanov": 1.9
+   }
+  },
+  {
+   "pollster": "Market Links",
+   "date": "2026-10-19",
+   "n": 1006,
+   "country": "bgpres",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election",
+   "votes": {
+    "iotova": 47.3,
+    "gyurov": 30.6,
+    "kostadinov": 10.3,
+    "vasilev": 2.8,
+    "mihaylov": 4.3,
+    "hristanov": 2.3
+   }
   }
  ]
 }

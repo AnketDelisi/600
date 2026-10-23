@@ -22,41 +22,41 @@ const POLL_CONFIG = {
   "bc-2026": {
     file: "../data/bc/polls.json",
     parties: [
-      { id: "bcndp", name: "BC NDP", color: "#F4A460" },
-      { id: "cpbc", name: "Conservatives", color: "#004AAD" },
-      { id: "gpbc", name: "Greens", color: "#99C955" },
-      { id: "onbc", name: "OneBC", color: "#C49B50" },
-      { id: "cbc", name: "CentreBC", color: "#EE2D30" },
+      { id: "bcndp", name: "BC NDP", short: "NDP", color: "#F4A460" },
+      { id: "cpbc", name: "Conservatives", short: "CON", color: "#004AAD" },
+      { id: "gpbc", name: "Greens", short: "GRN", color: "#99C955" },
+      { id: "onbc", name: "OneBC", short: "1BC", color: "#C49B50" },
+      { id: "cbc", name: "CentreBC", short: "CBC", color: "#EE2D30" },
     ],
   },
   "serbia-2026": {
     file: "../data/serbia/polls.json",
     parties: [
-      { id: "sns", name: "Vučić – United Serbia", color: "#242970" },
-      { id: "sl", name: "Student List", color: "#A81A32" },
-      { id: "sps", name: "Socialist Party", color: "#EB1B23" },
-      { id: "pes", name: "European Serbia", color: "#C9A227" },
-      { id: "nada", name: "NADA", color: "#616264" },
-      { id: "misn", name: "We – Power of the People", color: "#1B3160" },
+      { id: "sns", name: "Vučić – United Serbia", short: "SNS", color: "#242970" },
+      { id: "sl", name: "Student List", short: "SL", color: "#A81A32" },
+      { id: "sps", name: "Socialist Party", short: "SPS", color: "#EB1B23" },
+      { id: "pes", name: "European Serbia", short: "PES", color: "#C9A227" },
+      { id: "nada", name: "NADA", short: "NADA", color: "#616264" },
+      { id: "misn", name: "We – Power of the People", short: "MISN", color: "#1B3160" },
     ],
   },
   "brazil-2026-r2": {
     file: "../data/brazil/polls.json",
     runoff: true,
     parties: [
-      { id: "lula", name: "Lula", color: "#E20E28" },
-      { id: "flavio", name: "Flávio", color: "#015AAA" },
+      { id: "lula", name: "Lula", short: "Lula", color: "#E20E28" },
+      { id: "flavio", name: "Flávio", short: "Flávio", color: "#015AAA" },
     ],
   },
   "bulgaria-2026": {
     file: "../data/bgpres/polls.json",
     parties: [
-      { id: "iotova", name: "Iotova", color: "#DB0F28" },
-      { id: "gyurov", name: "Gyurov", color: "#4200FF" },
-      { id: "kostadinov", name: "Kostadinov", color: "#C09F62" },
-      { id: "mihaylov", name: "Mihaylov", color: "#AC2225" },
-      { id: "vasilev", name: "Vasilev", color: "#1A2C44" },
-      { id: "hristanov", name: "Hristanov", color: "#C0CC66" },
+      { id: "iotova", name: "Iotova", short: "IOT", color: "#DB0F28" },
+      { id: "gyurov", name: "Gyurov", short: "GYU", color: "#4200FF" },
+      { id: "kostadinov", name: "Kostadinov", short: "KOS", color: "#C09F62" },
+      { id: "mihaylov", name: "Mihaylov", short: "MIH", color: "#AC2225" },
+      { id: "vasilev", name: "Vasilev", short: "VAS", color: "#1A2C44" },
+      { id: "hristanov", name: "Hristanov", short: "HRI", color: "#C0CC66" },
     ],
   },
 };
@@ -155,7 +155,7 @@ function pollChart(data, polls, start, end, parties) {
   const L = compact ? 42 : 42;
   const R = compact ? 8 : 16;
   const T = 16;
-  const B = compact ? 32 : 34;
+  const B = compact ? 44 : 38;
   const values = [];
   for (const p of polls) for (const party of parties) {
     if (p.votes && p.votes[party.id] != null) values.push(p.votes[party.id]);
@@ -219,11 +219,25 @@ function pollTable(polls, parties) {
     <td data-label="N" class="num">${num(p.n)}</td>
     ${parties.map((party) => `<td data-label="${esc(party.name)}" class="num">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
   </tr>`).join("");
-  return `<div class="live-table-wrap" tabindex="0" role="region" aria-label="Campaign poll table"><div class="live-scroll-hint">Swipe to see all party columns →</div><table class="live-table live-polls" aria-label="All campaign polls">
-    <thead><tr><th>Date</th><th>Pollster</th><th>Method</th><th class="num">N</th>
-    ${parties.map((party) => `<th class="num">${esc(party.name)}</th>`).join("")}
-    </tr></thead><tbody>${rows}</tbody>
-  </table></div></div>`;
+  const cards = polls.map((p) => `<article class="live-poll-card">
+    <div class="live-poll-head">
+      <time>${esc(shortDate(p.date))}</time>
+      <strong>${esc(p.pollster)}</strong>
+      <span>${esc(METHOD_LABELS[p.method] || p.method || "Not stated")} · n ${num(p.n)}</span>
+    </div>
+    <div class="live-poll-values">${parties.map((party) => {
+      const v = p.votes && p.votes[party.id];
+      return `<span class="live-poll-value" title="${esc(party.name)}"><i style="background:${party.color}"></i><span>${esc(party.short || party.name)}</span><b>${v == null ? "—" : Number(v).toFixed(1)}</b></span>`;
+    }).join("")}</div>
+  </article>`).join("");
+  return `<div class="live-table-wrap live-poll-table" tabindex="0" role="region" aria-label="Campaign poll table">
+    <table class="live-table live-polls" aria-label="All campaign polls">
+      <thead><tr><th>Date</th><th>Pollster</th><th>Method</th><th class="num">N</th>
+      ${parties.map((party) => `<th class="num">${esc(party.name)}</th>`).join("")}
+      </tr></thead><tbody>${rows}</tbody>
+    </table>
+  </div>
+  <div class="live-poll-cards" aria-label="Campaign polls">${cards}</div>`;
 }
 
 function pollTrackerHtml(data, pollsJson, cfg) {
@@ -277,7 +291,7 @@ function forecastHtml(data, forecast, mapSvg) {
     const value = Number(s.pct) || 0;
     const range = s.lo == null || s.hi == null ? "" : `${s.lo.toFixed(1)}–${s.hi.toFixed(1)}`;
     return `<div class="live-fc-row">
-      <span class="name" style="color:${s.color}">${esc(s.label || s.name)}</span>
+      <span class="name" style="color:${s.color}" title="${esc(s.name || s.label)}">${esc(s.label || s.name)}</span>
       <span class="track"><span class="fill" style="width:${Math.max(1, value / max * 100)}%;background:${s.color}"></span></span>
       <b>${pct(value)}</b>
       <span class="range">${esc(range)}</span>
@@ -338,6 +352,11 @@ function renderNav(elections) {
   });
 }
 
+function updateChecked() {
+  const el = document.getElementById("live-checked");
+  if (el) el.textContent = checkedAt() + " UTC";
+}
+
 function updateCountdown() {
   const el = document.getElementById("live-count");
   if (!el || !currentData || !currentData.close_at) return;
@@ -353,7 +372,7 @@ function renderFooter(d) {
   const tracker = POLL_CONFIG[d.id]
     ? " Campaign tracker: every published poll in the official campaign period, with a 600 recency-weighted average."
     : "";
-  liveFooter.innerHTML = `<p>Results: ${source} · Page checked <span class="live-check">${checkedAt()} UTC</span> · Refreshes every 30 seconds.</p>
+  liveFooter.innerHTML = `<p>Results: ${source} · Refreshes every 30 seconds.</p>
     <p>Preliminary counts; the official record governs.${tracker}</p>`;
 }
 
@@ -419,7 +438,7 @@ function renderElection(d) {
       : `<span><b>${num(d.counted)}</b> / ${num(d.total)} ${esc(d.counted_label || "counted")}</span>`;
   const turnout = d.turnout == null ? "" : `<span>Turnout <b>${pct(d.turnout)}</b></span>`;
   const clock = countdown(d.close_at);
-  const status = `<div class="live-status" id="live-status" role="status" aria-live="polite" aria-atomic="true">${statusPill(d.status)}${counted}${turnout}${clock ? `<span id="live-count">${esc(clock)}</span>` : ""}<span>Checked <b>${checkedAt()} UTC</b></span></div>`;
+  const status = `<div class="live-status" id="live-status" role="status" aria-live="polite">${statusPill(d.status)}${counted}${turnout}${clock ? `<span id="live-count">${esc(clock)}</span>` : ""}<span>Checked <b id="live-checked">${checkedAt()} UTC</b></span></div>`;
   const hasForecast = !!POLL_CONFIG[d.id];
   const trackerNote = hasForecast ? "The forecast and campaign poll tracker below stay available before counting begins. " : "";
   const detailNote = d.seat_total ? `Seat and ${(d.area_label || "area").toLowerCase()} results will appear when counting starts.` : "Detailed results will appear when counting starts.";
@@ -462,6 +481,7 @@ async function loadElection(id) {
     if (payload === lastPayload) {
       currentData = d;
       updateCountdown();
+      updateChecked();
       renderFooter(d);
       return;
     }
@@ -494,6 +514,7 @@ async function boot() {
     liveTimer = setInterval(() => {
       if (!document.hidden) loadElection(liveId);
       if (!document.hidden) updateCountdown();
+      if (!document.hidden) updateChecked();
     }, 30000);
   } catch (err) {
     renderError("Live results unavailable", "The live-results index could not be loaded. Check your connection and try again.", boot);

@@ -46,7 +46,7 @@ body{margin:0}
 .live-card{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-big);padding:20px;margin:20px 0;width:100%}
 .live-card h2{margin:0 0 6px;font-family:var(--font);font-size:14px;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
 .live-card h3{margin:18px 0 8px;font-family:var(--font);font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--c-text-muted)}
-.live-note{color:var(--c-text-muted);font-family:var(--font);font-size:12px;line-height:1.5;margin:0 0 14px}
+.live-note{color:var(--c-text-muted);font-family:var(--font);font-size:12px;line-height:1.5;margin:0 0 14px;max-width:78ch}
 .live-bars{display:grid;gap:8px}
 .live-bar{display:grid;grid-template-columns:150px 1fr 64px;gap:10px;align-items:center;font-family:var(--font);font-size:12px}
 .live-bar .name{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -85,7 +85,8 @@ body{margin:0}
 .live-chart-legend span{display:inline-flex;align-items:center;gap:5px}
 .live-chart-legend i{width:16px;height:3px;display:inline-block;border-radius:2px}
 .live-table-wrap{overflow:auto;max-width:100%}
-.live-scroll-hint{display:none;font-family:var(--font);font-size:11px;font-weight:700;color:var(--c-text-muted);margin:0 0 8px}
+.live-poll-cards{display:none}
+.live-poll-cards-note{display:none}
 .live-polls th{white-space:nowrap}
 .live-polls td{white-space:nowrap}
 .live-polls td::before{display:none}
@@ -104,21 +105,23 @@ body{margin:0}
   .live-table{font-size:11px}
   .live-chart{overflow:visible}
   .live-chart svg{min-width:0}
-  .live-polls{border:0;background:transparent;border-radius:0;overflow:visible;min-width:0}
-  .live-polls thead{display:none}
-  .live-polls tbody{display:block}
-  .live-polls tr{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;border:2px solid var(--c-edge);border-radius:var(--radius);background:var(--c-surface);box-shadow:var(--shadow-md);margin:0 0 8px;padding:8px 10px}
-  .live-polls td{display:inline-flex;align-items:baseline;gap:4px;border:0;padding:0;white-space:nowrap;text-align:left;font-size:11px}
-  .live-polls td::before{display:none}
-  .live-polls td[data-label="Date"]{font-family:var(--font-mono);font-weight:700}
-  .live-polls td[data-label="Pollster"]{font-weight:900}
-  .live-polls td[data-label="Method"]{font-size:10px;color:var(--c-text-muted)}
-  .live-polls td[data-label="N"]{font-size:10px;color:var(--c-text-muted)}
-  .live-polls td[data-label="N"]::before{content:"n ";font-family:var(--font);font-weight:700}
-  .live-polls td.num:not([data-label="N"]){font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:10px;color:var(--c-text-main)}
-  .live-polls td.num:not([data-label="N"])::before{content:attr(data-label);font-family:var(--font);font-size:10px;font-weight:700;color:var(--c-text-muted)}
+  .live-poll-table{display:none}
+  .live-poll-cards{display:grid;gap:8px}
+  .live-poll-card{border:2px solid var(--c-edge);border-radius:var(--radius);background:var(--c-surface);box-shadow:var(--shadow-md);padding:9px 10px}
+  .live-poll-head{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:8px;align-items:baseline;margin-bottom:7px}
+  .live-poll-head time{font-family:var(--font-mono);font-size:11px;font-weight:700}
+  .live-poll-head strong{font-size:12px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .live-poll-head span{font-size:10px;color:var(--c-text-muted);text-align:right}
+  .live-poll-values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 10px}
+  .live-poll-value{display:flex;align-items:baseline;gap:4px;min-width:0;font-size:11px;color:var(--c-text-muted)}
+  .live-poll-value i{width:7px;height:7px;flex:none;border-radius:2px;border:1px solid var(--c-edge)}
+  .live-poll-value span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .live-poll-value b{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--c-text-main);font-variant-numeric:tabular-nums}
+  .live-poll-cards-note{font-family:var(--font);font-size:11px;color:var(--c-text-muted);margin:4px 0 0}
   .live-table-wrap{overflow:visible}
-  .live-scroll-hint{display:none}
+  .live-notice{padding:14px}
+  .live-status{font-size:11px}
+  .live-footer{font-size:12px}
   .live-notice{padding:14px}
   .live-status{font-size:11px}
   .live-footer{font-size:12px}
@@ -128,22 +131,24 @@ body{margin:0}
 .live-table-wrap:focus-visible{outline:3px solid var(--c-accent);outline-offset:2px}
 
 .live-fc-headline{font-family:var(--font);font-size:18px;font-weight:900;letter-spacing:.2px;margin:0 0 14px;color:var(--c-text-main)}
-.live-fc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;align-items:start}
-.live-fc-shares{display:grid;gap:7px;align-content:start}
-.live-fc-row{display:grid;grid-template-columns:76px minmax(80px,1fr) 54px 76px;gap:8px;align-items:center;font-family:var(--font);font-size:11px}
+.live-fc-grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+.live-fc-shares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 26px;align-content:start;max-width:980px}
+.live-fc-row{display:grid;grid-template-columns:82px minmax(80px,1fr) 56px 78px;gap:8px;align-items:center;font-family:var(--font);font-size:11px}
 .live-fc-row .name{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .live-fc-row .track{height:12px;background:#EFE9DE;border:2px solid #1A1A1A;border-radius:var(--radius-pill);overflow:hidden}
 .live-fc-row .fill{display:block;height:100%;border-radius:var(--radius-pill);min-width:2px}
 .live-fc-row b{font-family:var(--font-mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--c-text-main)}
-.live-fc-row .range{font-family:var(--font-mono);font-size:10px;color:var(--c-text-muted);text-align:right;font-variant-numeric:tabular-nums}
-.live-map{border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);padding:8px;overflow:hidden;min-width:0}
+.live-fc-row .range{font-family:var(--font-mono);font-size:11px;color:var(--c-text-muted);text-align:right;font-variant-numeric:tabular-nums}
+.live-map{border:2px solid var(--c-edge);border-radius:var(--radius-sm);background:var(--c-surface);padding:8px;overflow:hidden;min-width:0;width:100%;max-width:760px;margin:0 auto}
 .live-map svg{display:block;width:100%;height:auto}
+.live-map svg text{font-size:16px}
 .live-map path{cursor:default!important}
 .live-map-caption{margin:8px 0 0}
 .live-polls td:first-child{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 @media(max-width:700px){
-  .live-fc-grid{grid-template-columns:1fr;gap:16px}
-  .live-fc-row{grid-template-columns:68px minmax(70px,1fr) 48px 68px}
-  .live-fc-row .range{font-size:9px}
-  .live-map{padding:4px}
+  .live-fc-shares{grid-template-columns:1fr;gap:7px}
+  .live-fc-row{grid-template-columns:74px minmax(60px,1fr) 48px 70px}
+  .live-fc-row .range{font-size:10px}
+  .live-map{padding:4px;max-width:100%}
+  .live-map svg text{display:none}
 }

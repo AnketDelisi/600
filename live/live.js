@@ -65,7 +65,6 @@ const METHOD_LABELS = {
   mixed: "Mixed", "": "Not stated",
 };
 const pollCache = new Map();
-const forecastCache = new Map();
 
 async function fetchJson(url, timeout = 12000) {
   const ctrl = new AbortController();
@@ -74,21 +73,6 @@ async function fetchJson(url, timeout = 12000) {
     const r = await fetch(url, { cache: "no-store", signal: ctrl.signal });
     if (!r.ok) throw new Error("HTTP " + r.status);
     return await r.json();
-  } catch (err) {
-    if (err.name === "AbortError") throw new Error("Request timed out");
-    throw err;
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
-async function fetchText(url, timeout = 12000) {
-  const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), timeout);
-  try {
-    const r = await fetch(url, { cache: "no-store", signal: ctrl.signal });
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    return await r.text();
   } catch (err) {
     if (err.name === "AbortError") throw new Error("Request timed out");
     throw err;
@@ -226,34 +210,19 @@ function pollTable(polls, parties) {
     return `<tr>
     <td data-label="Date">${esc(shortDate(p.date))}</td>
     <td data-label="Pollster">${esc(p.pollster)}</td>
-    <td data-label="Method">${esc(METHOD_LABELS[p.method] || p.method || "Not stated")}</td>
-    <td data-label="N" class="num">${num(p.n)}</td>
-    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="num party-col${lead && lead.id === party.id ? " lead" : ""}" style="--pc:${party.color}">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
+    <td data-label="Method" class="c">${esc(METHOD_LABELS[p.method] || p.method || "Not stated")}</td>
+    <td data-label="N" class="c">${num(p.n)}</td>
+    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="c party-col${lead && lead.id === party.id ? " lead" : ""}" style="--pc:${party.color}">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
   </tr>`;
   }).join("");
-  const cards = polls.map((p) => {
-    const lead = pollLeader(p, parties);
-    return `<article class="live-poll-card" style="--lead-color:${lead ? lead.color : "#1A1A1A"}">
-    <div class="live-poll-head">
-      <time>${esc(shortDate(p.date))}</time>
-      <strong>${esc(p.pollster)}</strong>
-      <span>${esc(METHOD_LABELS[p.method] || p.method || "Not stated")} · n ${num(p.n)}</span>
-    </div>
-    <div class="live-poll-values">${parties.map((party) => {
-      const v = p.votes && p.votes[party.id];
-      const isLead = lead && lead.id === party.id;
-      return `<span class="live-poll-value${isLead ? " lead" : ""}" style="--pc:${party.color}" title="${esc(party.name)}"><i style="background:${party.color}"></i><span>${esc(party.short || party.name)}</span><b>${v == null ? "—" : Number(v).toFixed(1)}</b></span>`;
-    }).join("")}</div>
-  </article>`;
-  }).join("");
   return `<div class="live-table-wrap live-poll-table" tabindex="0" role="region" aria-label="Campaign poll table">
-    <table class="live-table live-polls" aria-label="All campaign polls">
-      <thead><tr><th>Date</th><th>Pollster</th><th>Method</th><th class="num">N</th>
-      ${parties.map((party) => `<th class="num party-col" scope="col" style="--pc:${party.color}"><span class="party-dot"></span>${esc(party.name)}</th>`).join("")}
+    <p class="live-scroll-note">Scroll sideways to see every party column.</p>
+    <table class="polls-table compact-table live-polls" aria-label="All campaign polls">
+      <thead><tr><th>Date</th><th>Pollster</th><th class="c">Method</th><th class="c">N</th>
+      ${parties.map((party) => `<th class="c party-col" scope="col" style="--pc:${party.color}"><span class="party-dot"></span>${esc(party.name)}</th>`).join("")}
       </tr></thead><tbody>${rows}</tbody>
     </table>
-  </div>
-  <div class="live-poll-cards" aria-label="Campaign polls">${cards}</div>`;
+  </div>`;
 }
 
 function pollTrackerHtml(data, pollsJson, cfg) {
@@ -276,7 +245,7 @@ function pollTrackerHtml(data, pollsJson, cfg) {
   return `<section class="live-card" id="live-poll-tracker" aria-labelledby="poll-tracker-title">
     <h2 id="poll-tracker-title">Campaign polls</h2>
     <p class="live-note">Every poll from the campaign, from every pollster, with the method shown when the source gives one. Dots are individual polls; the lines are the 600 recency-weighted average.</p>
-    <div class="live-forecast-summary">${summary}</div>
+    <div class="live-summary">${summary}</div>
     <div class="live-sub">${polls.length} polls · ${houses} pollsters · ${esc(shortDate(new Date(start).toISOString().slice(0, 10)))}–${esc(shortDate(data.date))}</div>
     <div class="live-chart">${pollChart(data, polls, start, end, cfg.parties)}</div>
     <div class="live-chart-legend">${cfg.parties.map((party) => `<span><i style="background:${party.color}"></i>${esc(party.name)}</span>`).join("")}<span>Dots: every poll</span></div>
@@ -297,53 +266,6 @@ async function loadPollTracker(data) {
     el.innerHTML = `<div class="live-card"><h2>Poll tracker unavailable</h2><p class="live-note">The campaign poll file could not be loaded. The live result source is still available.</p><button class="live-retry" type="button">Try again</button></div>`;
     const retry = el.querySelector(".live-retry");
     if (retry) retry.addEventListener("click", () => loadPollTracker(data));
-    console.error(err);
-  }
-}
-
-function forecastHtml(data, forecast, mapSvg) {
-  const max = Math.max(1, ...forecast.shares.map((s) => Number(s.pct) || 0));
-  const rows = forecast.shares.map((s) => {
-    const value = Number(s.pct) || 0;
-    const range = s.lo == null || s.hi == null ? "" : `${s.lo.toFixed(1)}–${s.hi.toFixed(1)}`;
-    return `<div class="live-fc-row">
-      <span class="name" style="color:${s.color}" title="${esc(s.name || s.label)}">${esc(s.label || s.name)}</span>
-      <span class="track"><span class="fill" style="width:${Math.max(1, value / max * 100)}%;background:${s.color}"></span></span>
-      <b>${pct(value)}</b>
-      <span class="range">${esc(range)}</span>
-    </div>`;
-  }).join("");
-  return `<section class="live-card" id="live-forecast" aria-labelledby="live-forecast-title">
-    <h2 id="live-forecast-title">Before the count</h2>
-    <p class="live-note">Where the 600 model has the race before counting: expected vote shares and the projected district map.</p>
-    <div class="live-fc-headline">${esc(forecast.headline || "")}</div>
-    <div class="live-fc-grid">
-      <div class="live-fc-shares">${rows}</div>
-      ${mapSvg ? `<div class="live-map">${mapSvg}</div>` : ""}
-    </div>
-    ${forecast.map_caption ? `<p class="live-note live-map-caption">${esc(String(forecast.map_caption).replace(/\s*·\s*hover.*$/i, ""))}</p>` : ""}
-    <div class="live-source">Forecast: ${esc(forecast.source || "600 forecast")} · generated ${esc(String(forecast.generated_at || "").slice(0, 10))}</div>
-  </section>`;
-}
-
-async function loadForecast(data) {
-  const el = document.getElementById("live-forecast");
-  if (!el) return;
-  try {
-    if (!forecastCache.has(data.id)) {
-      const json = await fetchJson(`../data/live/forecast-${data.id}.json`);
-      let svg = "";
-      if (json.map_url) {
-        try { svg = await fetchText(`../data/live/${json.map_url}`); } catch (err) { console.error(err); }
-      }
-      forecastCache.set(data.id, { json, svg });
-    }
-    const cached = forecastCache.get(data.id);
-    el.outerHTML = forecastHtml(data, cached.json, cached.svg);
-  } catch (err) {
-    el.innerHTML = `<div class="live-card"><h2>Forecast unavailable</h2><p class="live-note">The 600 forecast snapshot could not be loaded. The live result source is still available.</p><button class="live-retry" type="button">Try again</button></div>`;
-    const retry = el.querySelector(".live-retry");
-    if (retry) retry.addEventListener("click", () => { forecastCache.delete(data.id); loadForecast(data); });
     console.error(err);
   }
 }
@@ -455,8 +377,8 @@ function renderElection(d) {
   const turnout = d.turnout == null ? "" : `<span>Turnout <b>${pct(d.turnout)}</b></span>`;
   const clock = countdown(d.close_at);
   const status = `<div class="live-status" id="live-status" role="status" aria-live="polite">${statusPill(d.status)}${counted}${turnout}${clock ? `<span id="live-count">${esc(clock)}</span>` : ""}<span>Checked <b id="live-checked">${checkedAt()} UTC</b></span></div>`;
-  const hasForecast = !!POLL_CONFIG[d.id];
-  const trackerNote = hasForecast ? "While you wait, the final forecast and the campaign polls are below. " : "";
+  const hasTracker = !!POLL_CONFIG[d.id];
+  const trackerNote = hasTracker ? "While you wait, the campaign polls are below. " : "";
   const detailNote = d.seat_total ? `Seat and ${(d.area_label || "area").toLowerCase()} results will appear when counting starts.` : "Detailed results will appear when counting starts.";
   const wait = waiting
     ? `<div class="live-notice"><div><strong>${esc(d.waiting_text || "Waiting for the first official results.")}</strong><p>${trackerNote}${detailNote}</p></div></div>`
@@ -477,16 +399,12 @@ function renderElection(d) {
       ${status}
     </section>
     ${wait}
-    ${hasForecast ? '<div id="live-forecast"></div>' : ""}
-    ${hasForecast ? '<div id="live-poll-tracker"></div>' : ""}
+    ${hasTracker ? '<div id="live-poll-tracker"></div>' : ""}
     ${areas}
     ${d.notes ? `<div class="live-card"><p class="live-note" style="margin:0">${esc(d.notes)}</p></div>` : ""}
   `;
   renderFooter(d);
-  if (hasForecast) {
-    loadForecast(d);
-    loadPollTracker(d);
-  }
+  if (hasTracker) loadPollTracker(d);
 }
 
 async function loadElection(id) {

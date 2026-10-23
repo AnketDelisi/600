@@ -1,0 +1,26 @@
+{
+  "id": "bc-2026",
+  "name": "British Columbia 2026",
+  "date": "2026-10-24",
+  "subtitle": "Legislative Assembly · 93 ridings · 47 for a majority",
+  "status": "waiting",
+  "counted": 0,
+  "total": 93,
+  "counted_label": "ridings",
+  "source": "Elections BC",
+  "source_url": "https://elections.bc.ca/2026-provincial-election/",
+  "waiting_text": "Polls close at 8 pm Pacific on Saturday, 24 October.",
+  "result_title": "Seats and vote share",
+  "entries": [
+    {"id": "bcndp", "name": "BC NDP", "color": "#F4A460", "pct": 0, "votes": 0, "seats": 0},
+    {"id": "cpbc", "name": "BC Conservatives", "color": "#004AAD", "pct": 0, "votes": 0, "seats": 0},
+    {"id": "gpbc", "name": "BC Greens", "color": "#99C955", "pct": 0, "votes": 0, "seats": 0},
+    {"id": "cbc", "name": "CentreBC", "color": "#EE2D30", "pct": 0, "votes": 0, "seats": 0},
+    {"id": "onbc", "name": "OneBC", "color": "#C49B50", "pct": 0, "votes": 0, "seats": 0},
+    {"id": "ind", "name": "Independents", "color": "#6B7280", "pct": 0, "votes": 0, "seats": 0}
+  ],
+  "seat_total": 93,
+  "majority": 47,
+  "areas": [],
+  "notes": "Initial count on election night; mail-in and absentee ballots are added at the final count on 6–10 November."
+}

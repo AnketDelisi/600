@@ -2,7 +2,7 @@
   "country": "nz",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-  "scraped_at": "2026-10-22T11:07:03Z",
+  "scraped_at": "2026-10-23T10:58:29Z",
   "poll_count": 126,
   "polls": [
     {
@@ -140,13 +140,13 @@
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
       "votes": {
-        "nat": 27.0,
+        "nat": 26.5,
         "lab": 28.0,
-        "grn": 14.0,
-        "act": 9.0,
-        "nzf": 13.0,
-        "tpm": 2.0,
-        "opp": 6.0
+        "grn": 13.6,
+        "act": 8.7,
+        "nzf": 12.6,
+        "tpm": 2.2,
+        "opp": 6.3
       }
     },
     {
@@ -392,12 +392,12 @@
       "source": "Wikipedia",
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
       "votes": {
-        "nat": 29.0,
-        "lab": 35.0,
-        "grn": 10.0,
-        "act": 8.0,
+        "nat": 28.9,
+        "lab": 35.3,
+        "grn": 10.4,
+        "act": 8.1,
         "nzf": 12.0,
-        "tpm": 2.0
+        "tpm": 2.1
       }
     },
     {
@@ -661,11 +661,11 @@
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
       "votes": {
         "nat": 30.0,
-        "lab": 37.0,
-        "grn": 10.0,
-        "act": 6.0,
-        "nzf": 11.0,
-        "tpm": 2.0
+        "lab": 37.4,
+        "grn": 10.2,
+        "act": 6.4,
+        "nzf": 10.5,
+        "tpm": 2.5
       }
     },
     {
@@ -803,11 +803,11 @@
       "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
       "votes": {
         "nat": 30.0,
-        "lab": 38.0,
-        "grn": 8.0,
-        "act": 8.0,
-        "nzf": 9.0,
-        "tpm": 2.0
+        "lab": 38.4,
+        "grn": 8.4,
+        "act": 7.7,
+        "nzf": 9.1,
+        "tpm": 2.5
       }
     },
     {

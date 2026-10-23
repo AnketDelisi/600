@@ -2,7 +2,7 @@
  "country": "bg",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
- "scraped_at": "2026-10-22T11:07:04Z",
+ "scraped_at": "2026-10-23T10:58:31Z",
  "poll_count": 8,
  "polls": [
   {
@@ -138,9 +138,9 @@
    "source": "Wikipedia",
    "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
    "votes": {
-    "pb": 41.0,
-    "gerb": 9.7,
-    "pp": 10.2,
+    "pb": 37.3,
+    "gerb": 11.2,
+    "pp": 11.9,
     "db": 8.8,
     "dps": 6.5,
     "vaz": 5.1,

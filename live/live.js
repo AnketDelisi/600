@@ -274,8 +274,8 @@ function pollTrackerHtml(data, pollsJson, cfg) {
   ).join("");
   const houses = new Set(polls.map((p) => p.pollster)).size;
   return `<section class="live-card" id="live-poll-tracker" aria-labelledby="poll-tracker-title">
-    <h2 id="poll-tracker-title">Campaign poll tracker</h2>
-    <p class="live-note">Every published poll in the official campaign period, all pollsters and methods. Dots are individual polls; lines are the 600 recency-weighted average. Where the source does not state a method, the table says “Not stated”.</p>
+    <h2 id="poll-tracker-title">Campaign polls</h2>
+    <p class="live-note">Every poll from the campaign, from every pollster, with the method shown when the source gives one. Dots are individual polls; the lines are the 600 recency-weighted average.</p>
     <div class="live-forecast-summary">${summary}</div>
     <div class="live-sub">${polls.length} polls · ${houses} pollsters · ${esc(shortDate(new Date(start).toISOString().slice(0, 10)))}–${esc(shortDate(data.date))}</div>
     <div class="live-chart">${pollChart(data, polls, start, end, cfg.parties)}</div>
@@ -314,8 +314,8 @@ function forecastHtml(data, forecast, mapSvg) {
     </div>`;
   }).join("");
   return `<section class="live-card" id="live-forecast" aria-labelledby="live-forecast-title">
-    <h2 id="live-forecast-title">600 forecast</h2>
-    <p class="live-note">Expected vote shares and projected district map from the 600 forecast. This is a projection, not the live count.</p>
+    <h2 id="live-forecast-title">Before the count</h2>
+    <p class="live-note">Where the 600 model has the race before counting: expected vote shares and the projected district map.</p>
     <div class="live-fc-headline">${esc(forecast.headline || "")}</div>
     <div class="live-fc-grid">
       <div class="live-fc-shares">${rows}</div>
@@ -386,7 +386,7 @@ function renderFooter(d) {
     ? `<a href="${esc(d.source_url)}" target="_blank" rel="noopener">${esc(d.source || d.source_url)}</a>`
     : esc(d.source || "official source");
   const tracker = POLL_CONFIG[d.id]
-    ? " Campaign tracker: every published poll in the official campaign period, with a 600 recency-weighted average."
+    ? " Campaign tracker: every poll from the campaign, with a 600 recency-weighted average."
     : "";
   liveFooter.innerHTML = `<p>Results: ${source} · Refreshes every 30 seconds.</p>
     <p>Preliminary counts; the official record governs.${tracker}</p>`;

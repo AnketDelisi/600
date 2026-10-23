@@ -91,9 +91,9 @@ body{margin:0}
 .live-polls th{text-align:center}
 .live-polls td{text-align:center}
 .live-polls th:first-child,.live-polls td:first-child,.live-polls th:nth-child(2),.live-polls td:nth-child(2){text-align:left}
-.live-polls th.party-col{box-shadow:inset 0 4px 0 var(--pc);padding-top:10px}
-.live-polls td.party-col.lead{font-weight:900;box-shadow:inset 0 -2px 0 var(--pc)}
-.party-dot{display:inline-block;width:7px;height:7px;margin-right:4px;border-radius:2px;background:var(--pc);border:1px solid rgba(26,26,26,.35);vertical-align:1px}
+.live-polls th.party-col{text-align:center}
+.live-polls td.party-col.lead{font-weight:900;background:color-mix(in srgb, var(--pc) 14%, #fff)}
+.party-logo{display:inline-block;width:15px;height:15px;object-fit:contain;background:transparent;border:0;padding:0;margin-right:5px;vertical-align:-3px}
 @media(max-width:700px){
   .live-shell{padding:0 12px 40px}
   .live-top{margin:0 -12px;padding:8px 12px}

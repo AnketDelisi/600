@@ -973,28 +973,70 @@ function fmtCalDate(d){
   const M=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
   return parts[2]+' '+M[parseInt(parts[1],10)-1]+' '+parts[0];
 }
+function fmtShortDate(d){
+  const full=fmtCalDate(d);
+  return full.split(' ').slice(0,2).join(' ');
+}
+function plural(n,singular,pluralWord){ return n===1?singular:pluralWord; }
 function applyNavFilter(){
   const nav=$('country-nav');
   if(!nav) return;
   const box=nav.querySelector('.cnav-search');
   const q=box?box.value.trim().toLowerCase():'';
+  let visibleNav=0;
   nav.querySelectorAll('.cnav-item').forEach(b=>{
     const c=COUNTRIES[b.dataset.cnav]||{name:''};
     const hit=!q||c.name.toLowerCase().includes(q)||b.dataset.cnav.includes(q);
     b.style.display=hit?'':'none';
+    if(hit) visibleNav++;
   });
   nav.querySelectorAll('.cnav-group').forEach(g=>{
     const any=Array.from(g.querySelectorAll('.cnav-item')).some(b=>b.style.display!=='none');
     g.style.display=any?'':'none';
   });
+  let visibleCards=0;
+  document.querySelectorAll('.cal-card').forEach(card=>{
+    const c=COUNTRIES[card.dataset.cnav]||{name:''};
+    const hit=!q||c.name.toLowerCase().includes(q)||card.dataset.cnav.includes(q);
+    card.hidden=!hit;
+    if(hit) visibleCards++;
+  });
+  document.querySelectorAll('.home-section').forEach(sec=>{
+    sec.hidden=!sec.querySelector('.cal-card:not([hidden])');
+  });
+  const empty=$('home-no-results');
+  if(empty){
+    empty.hidden=!(q&&visibleCards===0);
+    if(q) empty.textContent=`No elections match “${box.value.trim()}”.`;
+  }
+  const status=$('home-search-status');
+  if(status) status.textContent=q?`${visibleCards} ${plural(visibleCards,'election','elections')} shown`:'';
+  const nstatus=nav.querySelector('.cnav-status');
+  if(nstatus) nstatus.textContent=q?`${visibleNav} ${plural(visibleNav,'country','countries')} shown`:'';
 }
 function renderCountryNav(){
   const nav=$('country-nav');
   if(!nav) return;
   if(!nav.querySelector('.cnav-search')){
-    nav.innerHTML=`<input class="cnav-search" type="search" placeholder="${t('Search countries\u2026','\u00dclke ara\u2026')}" aria-label="${t('Search countries','\u00dclke ara')}"><div class="cnav-groups"></div>`;
-    nav.querySelector('.cnav-search').addEventListener('input',applyNavFilter);
+    nav.innerHTML=`<button class="cnav-toggle" type="button" aria-expanded="false" aria-controls="cnav-groups">${t('Browse countries','Ülkeleri gözat')}<span></span></button>
+      <input class="cnav-search" type="search" placeholder="${t('Search countries\u2026','Ülke ara\u2026')}" aria-label="${t('Search countries','Ülke ara')}">
+      <div class="cnav-status" aria-live="polite"></div>
+      <div class="cnav-groups" id="cnav-groups"></div>`;
+    const toggle=nav.querySelector('.cnav-toggle');
+    toggle.addEventListener('click',()=>{
+      const open=!nav.classList.contains('open');
+      nav.classList.toggle('open',open);
+      toggle.setAttribute('aria-expanded',String(open));
+      if(open) nav.querySelector('.cnav-search').focus();
+    });
+    const search=nav.querySelector('.cnav-search');
+    search.addEventListener('input',applyNavFilter);
+    search.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){ search.value=''; applyNavFilter(); search.focus(); }
+    });
   }
+  nav.setAttribute('role','navigation');
+  nav.setAttribute('aria-label',t('Countries','Ülkeler'));
   const groups=nav.querySelector('.cnav-groups');
   const t0=todayStr();
   const sortKey=id=>{
@@ -1016,6 +1058,9 @@ function renderCountryNav(){
           <span class="cnav-name">${cName(id)}</span>
         </button>`;}).join('')+`</div></div>`;
   }).join('');
+  const visibleCount=groups.querySelectorAll('.cnav-item').length;
+  const countEl=nav.querySelector('.cnav-toggle span');
+  if(countEl) countEl.textContent=visibleCount;
   groups.querySelectorAll('.cnav-item').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const id=btn.dataset.cnav;
@@ -1032,14 +1077,25 @@ function renderHome(){
     <div class="home-kicker">${t('GLOBAL ELECTION CALENDAR','K\u00dcRESEL SE\u00c7\u0130M TAKV\u0130M\u0130')}</div>
     <h1 class="home-title">${t('Every election 600 tracks','600\u2019\u00fcn takip etti\u011fi t\u00fcm se\u00e7imler')}</h1>
     <div class="home-sub" id="home-sub">${t('Loading the calendar\u2026','Takvim y\u00fckleniyor\u2026')}</div>
+    <div class="home-search-status" id="home-search-status" aria-live="polite"></div>
   </div>
-  <div id="home-body"></div>`;
+  <div id="home-body"></div>
+  <div id="home-no-results" class="home-empty" hidden></div>
+  <footer class="home-footer">
+    <p>Polls from Wikipedia. Averages, seat models and simulations by <b>600</b>.</p>
+    <button class="home-method" type="button">${t('How 600 works','600 nas\u0131l \u00e7al\u0131\u015f\u0131r')}</button>
+  </footer>`;
+  const method=pane.querySelector('.home-method');
+  if(method) method.addEventListener('click',()=>{
+    const btn=document.querySelector('.tab-trigger[data-tab="methodology"]');
+    if(btn) switchTab(btn);
+  });
   loadSummary().then(()=>renderHomeBody());
 }
 function renderHomeBody(){
   const body=$('home-body');
   if(!body) return;
-  if(!SUMMARY||!SUMMARY.countries){ body.innerHTML=''; return; }
+  if(!SUMMARY||!SUMMARY.countries){ body.innerHTML='<div class="home-empty">The calendar could not load. Refresh to try again.</div>'; return; }
   const t0=todayStr();
   const entries=Object.entries(SUMMARY.countries)
     .filter(([id])=>COUNTRIES[id]&&!COUNTRIES[id].hidden);
@@ -1053,27 +1109,35 @@ function renderHomeBody(){
   upcoming.sort((a,b)=>a[2].date.localeCompare(b[2].date));
   past.sort((a,b)=>b[2].date.localeCompare(a[2].date));
   tbc.sort((a,b)=>cName(a[0]).localeCompare(cName(b[0])));
+  const weekEnd=new Date(t0+'T00:00:00Z');
+  weekEnd.setUTCDate(weekEnd.getUTCDate()+7);
+  const weekEndStr=weekEnd.toISOString().slice(0,10);
+  const thisWeek=upcoming.filter(x=>x[2].date<=weekEndStr);
+  const later=upcoming.filter(x=>x[2].date>weekEndStr);
   const sub=$('home-sub');
-  if(sub) sub.innerHTML=`${upcoming.length} ${t('upcoming elections','yakla\u015fan se\u00e7im')} \u00b7 ${t('updated','g\u00fcncellendi')} ${(SUMMARY.generated||'').slice(0,10)}`;
+  if(sub) sub.innerHTML=`${upcoming.length} ${plural(upcoming.length,t('upcoming election','yakla\u015fan se\u00e7im'),t('upcoming elections','yakla\u015fan se\u00e7im'))} \u00b7 ${t('updated','g\u00fcncellendi')} ${fmtCalDate((SUMMARY.generated||'').slice(0,10))}`;
   const sec=(title,items,fn)=>items.length?`<div class="home-section">
       <div class="home-section-head">${title}<span>${items.length}</span></div>
       <div class="cal-grid">${items.map(fn).join('')}</div></div>`:'';
   body.innerHTML=
-    sec(t('NEXT ELECTIONS','YAKLA\u015eAN SE\u00c7\u0130MLER'),upcoming,x=>calCard(...x,'next'))+
+    sec(t('THIS WEEK','BU HAFTA'),thisWeek,x=>calCard(...x,'next'))+
+    sec(t('LATER','DAHA SONRA'),later,x=>calCard(...x,'next'))+
     sec(t('RECENTLY HELD','SON YAPILANLAR'),past,x=>calCard(...x,'past'))+
     sec(t('DATE TO BE CONFIRMED','TAR\u0130H BELL\u0130 DE\u011e\u0130L'),tbc,x=>calCard(x[0],x[1],null,'tbc'));
   body.querySelectorAll('.cal-card').forEach(b=>{
     b.addEventListener('click',()=>{ if(window._600) window._600.setCountry(b.dataset.cnav); });
   });
+  applyNavFilter();
 }
 function calCard(id,s,ne,mode){
   const c=COUNTRIES[id];
   const precise=ne&&ne.date&&ne.date.length>4;
   const days=precise?Math.round((new Date(ne.date+'T00:00:00')-new Date(todayStr()+'T00:00:00'))/86400000):null;
   const soon=mode==='next'&&days!==null&&days<=45;
+  const dayWord=plural(Math.abs(days||0),t('day','g\u00fcn'),t('days','g\u00fcn'));
   const chip=precise?`<span class="cal-days${soon?' soon':''}">${mode==='past'
-    ? t('held','yap\u0131ld\u0131')+' '+Math.abs(days)+t('d','g')
-    : (days===0?t('TODAY','BUG\u00dcN'):days+' '+t('days','g\u00fcn'))}</span>`:'';
+    ? t('held','yap\u0131ld\u0131')+' '+Math.abs(days)+' '+dayWord
+    : (days===0?t('TODAY','BUG\u00dcN'):days+' '+dayWord)}</span>`:'';
   const dateTxt=ne?(fmtCalDate(ne.date)+(ne.runoff?` \u00b7 ${t('runoff','2. tur')}`:''))
     :(s.election_date||t('unscheduled','belirsiz'));
   const leader=s.leader?`<span class="cal-leader">
@@ -1084,13 +1148,17 @@ function calCard(id,s,ne,mode){
   const won=mode==='past'&&s.last_winner_code?`<span class="cal-leader">
       <span class="cal-dot" style="background:${s.last_winner_color||'#888'}"></span>
       <b>${s.last_winner_code}</b> ${t('won','kazand\u0131')}</span>`:'';
-  const fresh=s.latest_poll?`${s.poll_count} ${t('polls','anket')} \u00b7 ${t('latest','en yeni')} ${s.latest_poll.slice(5)}`:'';
+  const seats=s.seats||c.seats;
+  const unit=seats===1?t('seat','sandalye'):(c.mapOnly?t('regions','b\u00f6lge'):t('seats','sandalye'));
+  const method=c.runoffOnly?t('runoff','2. tur'):(seats===1?t('Presidential','Ba\u015fkanl\u0131k'):(METHOD_SHORT[c.method]||''));
+  const polls=s.poll_count?`${s.poll_count} ${plural(s.poll_count,t('poll','anket'),t('polls','anket'))}`:'';
+  const fresh=s.latest_poll?`${polls} \u00b7 ${t('latest','en yeni')} ${fmtShortDate(s.latest_poll)}`:'';
   return `<button class="cal-card" data-cnav="${id}">
     <div class="cal-top">
       <img class="cal-flag" src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy">
       <span class="cal-name">${cName(id)}</span>${chip}
     </div>
-    <div class="cal-meta">${dateTxt} \u00b7 ${s.seats||c.seats} ${t('seats','sandalye')}${METHOD_SHORT[c.method]?' \u00b7 '+METHOD_SHORT[c.method]:''}</div>
+    <div class="cal-meta">${dateTxt} \u00b7 ${seats} ${unit}${method?' \u00b7 '+method:''}</div>
     <div class="cal-foot">${mode==='past'?won:leader}</div>
     <div class="cal-fresh">${fresh}</div>
   </button>`;

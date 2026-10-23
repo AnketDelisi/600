@@ -99,6 +99,7 @@ def main():
     write_live(ELECTION, {
         "name": "Serbia 2026",
         "date": "2026-10-25",
+        "close_at": "2026-10-25T19:00:00Z",
         "subtitle": "National Assembly · 250 seats · 3% threshold",
         "status": "counting",
         "counted": counted,

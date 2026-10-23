@@ -61,6 +61,7 @@ def main():
     write_live(ELECTION, {
         "name": "Brazil 2026 runoff",
         "date": "2026-10-25",
+        "close_at": "2026-10-25T20:00:00Z",
         "subtitle": "Presidential runoff · Lula vs Flávio Bolsonaro",
         "status": status,
         "counted": counted,

@@ -49,6 +49,7 @@ def api_main():
     write_live(ELECTION, {
         "name": "Bulgaria 2026",
         "date": "2026-10-25",
+        "close_at": "2026-10-25T18:00:00Z",
         "subtitle": "Presidential election · first round",
         "status": status,
         "counted": None,

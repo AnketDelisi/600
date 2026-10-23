@@ -50,6 +50,7 @@ def api_main():
         "name": "Bulgaria 2026",
         "date": "2026-10-25",
         "close_at": "2026-10-25T18:00:00Z",
+        "chart_start": "2026-09-25",
         "subtitle": "Presidential election · first round",
         "status": status,
         "counted": None,

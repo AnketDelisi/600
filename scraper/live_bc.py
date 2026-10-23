@@ -1,13 +1,22 @@
 """British Columbia 2026 live feed (Elections BC / BC LocalLink results page)."""
+import json
 import re
+from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
 
 from live_common import write_live
 
+RIDING_PATH = Path(__file__).resolve().parent.parent / "data" / "bc" / "constituencies.json"
+RIDINGS = {}
+if RIDING_PATH.exists():
+    _bc = json.loads(RIDING_PATH.read_text(encoding="utf8"))
+    RIDINGS = {c["name"].lower(): c["name"] for c in _bc.get("constituencies", [])}
+
 ELECTION = "bc-2026"
 URL = "https://bc.locallink.ca/election-2026/results/"
+URLS = [URL, "https://electionsbcenr.blob.core.windows.net/electionsbcenr/Results.html"]
 PARTIES = {
     "bcndp": ("BC NDP", "#F4A460"),
     "cpbc": ("BC Conservatives", "#004AAD"),
@@ -46,31 +55,58 @@ def pctnum(s):
 
 
 def main():
-    html = requests.get(URL, headers={"User-Agent": "600-live-results/1.0"},
-                        timeout=45).text
+    html = None
+    used_url = URL
+    for url in URLS:
+        try:
+            r = requests.get(url, headers={"User-Agent": "600-live-results/1.0"},
+                             timeout=45)
+            r.raise_for_status()
+            if "<table" in r.text.lower():
+                html = r.text
+                used_url = url
+                break
+        except Exception as e:
+            print("bc: source unavailable", url, e)
+    if not html:
+        print("bc: no results table yet; leaving waiting")
+        return
     soup = BeautifulSoup(html, "lxml")
     rows = []
     for tbl in soup.find_all("table"):
-        head = [c.get_text(" ", strip=True) for c in tbl.find_all("tr")[0].find_all(["th", "td"])] if tbl.find_all("tr") else []
+        trs = tbl.find_all("tr")
+        if not trs:
+            continue
+        head = [c.get_text(" ", strip=True) for c in trs[0].find_all(["th", "td"])]
         lo = [h.lower() for h in head]
         di = next((i for i, h in enumerate(lo) if "riding" in h or "district" in h or "electoral" in h), None)
-        pi = next((i for i, h in enumerate(lo) if "party" in h or "candidate" in h), None)
+        pi = next((i for i, h in enumerate(lo) if "party" in h or "affiliation" in h), None)
+        ci = next((i for i, h in enumerate(lo) if "candidate" in h), None)
         vi = next((i for i, h in enumerate(lo) if "vote" in h and "%" not in h and "share" not in h), None)
         si = next((i for i, h in enumerate(lo) if "share" in h or "%" in h), None)
-        if di is None or pi is None:
-            continue
-        for tr in tbl.find_all("tr")[1:]:
+        heading = tbl.find_previous(["h1", "h2", "h3", "h4"])
+        caption = tbl.find("caption")
+        heading_text = ((heading.get_text(" ", strip=True) if heading else "")
+                        + " " + (caption.get_text(" ", strip=True) if caption else "")).lower()
+        heading_name = next((name for low, name in RIDINGS.items() if low in heading_text), None)
+        for tr in trs[1:]:
             cells = [c.get_text(" ", strip=True) for c in tr.find_all(["td", "th"])]
-            if len(cells) <= max(di, pi):
+            if not cells:
                 continue
-            key = party_key(cells[pi])
+            key = party_key(cells[pi]) if pi is not None and pi < len(cells) else None
             if not key:
+                key = next((party_key(cell) for cell in cells if party_key(cell)), None)
+            if not key:
+                continue
+            district = cells[di] if di is not None and di < len(cells) else heading_name
+            if not district:
                 continue
             votes = intnum(cells[vi]) if vi is not None and vi < len(cells) else 0
             share = pctnum(cells[si]) if si is not None and si < len(cells) else None
             rows.append({
-                "district": cells[di], "party": key,
-                "candidate": cells[pi], "votes": votes, "pct": share,
+                "district": district, "party": key,
+                "candidate": cells[ci] if ci is not None and ci < len(cells) else district,
+                "votes": votes, "pct": share,
             })
     if not rows:
         print("bc: no results table yet; leaving waiting")
@@ -87,9 +123,13 @@ def main():
         rs.sort(key=lambda x: -(x["votes"] or x["pct"] or 0))
         top = rs[0]
         seats[top["party"]] = seats.get(top["party"], 0) + 1
+        district_total = sum((x["votes"] or 0) for x in rs)
+        area_pct = top["pct"]
+        if area_pct is None and district_total:
+            area_pct = round(100.0 * (top["votes"] or 0) / district_total, 1)
         areas.append({
             "name": district, "winner": top["party"],
-            "winner_name": top["candidate"], "pct": top["pct"],
+            "winner_name": top["candidate"], "pct": area_pct,
             "leading": True, "elected": False,
         })
     for r in rows:
@@ -116,7 +156,7 @@ def main():
         "total": 93,
         "counted_label": "ridings",
         "source": "Elections BC",
-        "source_url": "https://elections.bc.ca/2026-provincial-election/",
+        "source_url": used_url,
         "result_title": "Seats and vote share",
         "result_note": "Riding leaders from the election-night count; leading is not elected.",
         "entries": entries,

@@ -29,6 +29,11 @@ def write_live(election, payload):
         if old.get("status") in ("counting", "final") and payload.get("status") == "waiting" and not payload.get("counted"):
             print("skip", election, "would replace counted data with a waiting snapshot")
             return
+        old_count, new_count = old.get("counted"), payload.get("counted")
+        if (old.get("status") in ("counting", "final") and old_count is not None
+                and new_count is not None and new_count < old_count):
+            print("skip", election, "count went backwards", old_count, "->", new_count)
+            return
         old.pop("updated_at", None)
         new = dict(payload)
         new.pop("updated_at", None)

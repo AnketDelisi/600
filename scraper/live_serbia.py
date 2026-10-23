@@ -64,7 +64,7 @@ def main():
     for tbl in soup.find_all("table"):
         for row in tbl.find_all("tr"):
             cells = [c.get_text(" ", strip=True) for c in row.find_all("td")]
-            if len(cells) < 5:
+            if len(cells) < 4:
                 continue
             name = cells[2]
             key = match(name)
@@ -102,7 +102,7 @@ def main():
         "close_at": "2026-10-25T19:00:00Z",
         "chart_start": "2026-09-09",
         "subtitle": "National Assembly · 250 seats · 3% threshold",
-        "status": "counting",
+        "status": "final" if (counted is not None and total and counted >= total) else "counting",
         "counted": counted,
         "total": total,
         "counted_label": "polling stations",

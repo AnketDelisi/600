@@ -100,6 +100,7 @@ def main():
         "name": "Serbia 2026",
         "date": "2026-10-25",
         "close_at": "2026-10-25T19:00:00Z",
+        "chart_start": "2026-09-09",
         "subtitle": "National Assembly · 250 seats · 3% threshold",
         "status": "counting",
         "counted": counted,

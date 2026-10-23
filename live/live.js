@@ -16,20 +16,56 @@ const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({
 const num = (v) => (v == null ? "—" : Number(v).toLocaleString());
 const pct = (v) => (v == null ? "—" : Number(v).toFixed(1) + "%");
 const color = (e) => e.color || "#6C665B";
+const DAY = 24 * 60 * 60 * 1000;
 
-const BC_DAY = 24 * 60 * 60 * 1000;
-const BC_PARTIES = [
-  { id: "bcndp", name: "BC NDP", color: "#F4A460", chartColor: "#A95500" },
-  { id: "cpbc", name: "Conservatives", color: "#004AAD", chartColor: "#004AAD" },
-  { id: "gpbc", name: "Greens", color: "#99C955", chartColor: "#4F7A1F" },
-  { id: "onbc", name: "OneBC", color: "#C49B50", chartColor: "#7A5A12" },
-  { id: "cbc", name: "CentreBC", color: "#EE2D30", chartColor: "#A61B1B" },
-];
-const BC_METHODS = {
+const POLL_CONFIG = {
+  "bc-2026": {
+    file: "../data/bc/polls.json",
+    parties: [
+      { id: "bcndp", name: "BC NDP", color: "#F4A460" },
+      { id: "cpbc", name: "Conservatives", color: "#004AAD" },
+      { id: "gpbc", name: "Greens", color: "#99C955" },
+      { id: "onbc", name: "OneBC", color: "#C49B50" },
+      { id: "cbc", name: "CentreBC", color: "#EE2D30" },
+    ],
+  },
+  "serbia-2026": {
+    file: "../data/serbia/polls.json",
+    parties: [
+      { id: "sns", name: "Vučić – United Serbia", color: "#242970" },
+      { id: "sl", name: "Student List", color: "#A81A32" },
+      { id: "sps", name: "Socialist Party", color: "#EB1B23" },
+      { id: "pes", name: "European Serbia", color: "#C9A227" },
+      { id: "nada", name: "NADA", color: "#616264" },
+      { id: "misn", name: "We – Power of the People", color: "#1B3160" },
+    ],
+  },
+  "brazil-2026-r2": {
+    file: "../data/brazil/polls.json",
+    runoff: true,
+    parties: [
+      { id: "lula", name: "Lula", color: "#E20E28" },
+      { id: "flavio", name: "Flávio", color: "#015AAA" },
+    ],
+  },
+  "bulgaria-2026": {
+    file: "../data/bgpres/polls.json",
+    parties: [
+      { id: "iotova", name: "Iotova", color: "#DB0F28" },
+      { id: "gyurov", name: "Gyurov", color: "#4200FF" },
+      { id: "kostadinov", name: "Kostadinov", color: "#C09F62" },
+      { id: "mihaylov", name: "Mihaylov", color: "#AC2225" },
+      { id: "vasilev", name: "Vasilev", color: "#1A2C44" },
+      { id: "hristanov", name: "Hristanov", color: "#C0CC66" },
+    ],
+  },
+};
+const METHOD_LABELS = {
   online: "Online panel", phone: "Telephone", face: "Face-to-face",
   mixed: "Mixed", "": "Not stated",
 };
-let bcPollsCache = null;
+const pollCache = new Map();
+const forecastCache = new Map();
 
 async function fetchJson(url, timeout = 12000) {
   const ctrl = new AbortController();
@@ -38,6 +74,21 @@ async function fetchJson(url, timeout = 12000) {
     const r = await fetch(url, { cache: "no-store", signal: ctrl.signal });
     if (!r.ok) throw new Error("HTTP " + r.status);
     return await r.json();
+  } catch (err) {
+    if (err.name === "AbortError") throw new Error("Request timed out");
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function fetchText(url, timeout = 12000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeout);
+  try {
+    const r = await fetch(url, { cache: "no-store", signal: ctrl.signal });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return await r.text();
   } catch (err) {
     if (err.name === "AbortError") throw new Error("Request timed out");
     throw err;
@@ -82,12 +133,12 @@ function shortDate(s) {
   });
 }
 
-function bcAverage(polls, party, at) {
+function pollAverage(polls, party, at) {
   let sw = 0, sv = 0;
   for (const p of polls) {
     const v = p.votes && p.votes[party];
     if (v == null) continue;
-    const age = (at - dayValue(p.date)) / BC_DAY;
+    const age = (at - dayValue(p.date)) / DAY;
     if (age < 0) continue;
     const w = Math.pow(0.5, age / 7) * Math.min(1500, p.n || 1000) / 1000;
     sw += w;
@@ -96,17 +147,17 @@ function bcAverage(polls, party, at) {
   return sw ? sv / sw : null;
 }
 
-function bcChart(polls, start, end) {
+function pollChart(data, polls, start, end, parties) {
   const appWidth = (liveRoot && liveRoot.clientWidth) || 960;
   const W = Math.max(260, Math.min(960, appWidth - 40));
   const compact = W < 600;
   const H = compact ? 270 : 320;
-  const L = compact ? 34 : 42;
+  const L = compact ? 42 : 42;
   const R = compact ? 8 : 16;
   const T = 16;
   const B = compact ? 32 : 34;
   const values = [];
-  for (const p of polls) for (const party of BC_PARTIES) {
+  for (const p of polls) for (const party of parties) {
     if (p.votes && p.votes[party.id] != null) values.push(p.votes[party.id]);
   }
   const maxValue = values.length ? Math.max(...values) : 0;
@@ -114,8 +165,9 @@ function bcChart(polls, start, end) {
   const x = (t) => L + ((t - start) / (end - start)) * (W - L - R);
   const y = (v) => T + (1 - v / yMax) * (H - T - B);
   const ticks = [];
-  const tickDays = compact ? 4 : 2;
-  for (let t = start; t <= end; t += tickDays * BC_DAY) ticks.push(t);
+  const spanDays = Math.max(1, Math.round((end - start) / DAY));
+  const tickDays = compact ? Math.max(4, Math.ceil(spanDays / 4)) : 4;
+  for (let t = start; t <= end; t += tickDays * DAY) ticks.push(t);
   if (ticks[ticks.length - 1] !== end) ticks.push(end);
   const yTicks = [];
   for (let v = 0; v <= yMax; v += 10) yTicks.push(v);
@@ -125,31 +177,31 @@ function bcChart(polls, start, end) {
     <text class="axis" x="${L - 7}" y="${y(v) + 3}" text-anchor="end">${v}%</text>`).join("");
   const xAxis = ticks.map((t) => {
     const px = x(t);
-    const anchor = px > W - 30 ? "end" : px < L + 20 ? "start" : "middle";
+    const anchor = px > W - 32 ? "end" : px < L + 20 ? "start" : "middle";
     return `<text class="axis" x="${px}" y="${H - 9}" text-anchor="${anchor}">${shortDate(new Date(t).toISOString().slice(0, 10))}</text>`;
   }).join("");
 
-  const paths = BC_PARTIES.map((party) => {
+  const paths = parties.map((party) => {
     const pts = [];
-    for (let t = start; t <= end; t += BC_DAY) {
-      const v = bcAverage(polls, party.id, t);
+    for (let t = start; t <= end; t += DAY) {
+      const v = pollAverage(polls, party.id, t);
       if (v != null) pts.push([x(t), y(v)]);
     }
     if (pts.length < 2) return "";
-    return `<path class="party-line" stroke="${party.chartColor}" d="${pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ")}"></path>`;
+    return `<path class="party-line" stroke="${party.color}" d="${pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ")}"></path>`;
   }).join("");
 
   const dots = [];
   for (const p of polls) {
-    for (const party of BC_PARTIES) {
+    for (const party of parties) {
       const v = p.votes && p.votes[party.id];
       if (v == null) continue;
-      const label = `${p.pollster} · ${shortDate(p.date)} · ${BC_METHODS[p.method] || p.method || "Not stated"} · ${party.name} ${v.toFixed(1)}%`;
-      dots.push(`<circle class="poll-dot" cx="${x(dayValue(p.date))}" cy="${y(v)}" r="${compact ? 2.8 : 3.2}" fill="${party.chartColor}"><title>${esc(label)}</title></circle>`);
+      const label = `${p.pollster} · ${shortDate(p.date)} · ${METHOD_LABELS[p.method] || p.method || "Not stated"} · ${party.name} ${v.toFixed(1)}%`;
+      dots.push(`<circle class="poll-dot" cx="${x(dayValue(p.date))}" cy="${y(v)}" r="${compact ? 2.8 : 3.2}" fill="${party.color}"><title>${esc(label)}</title></circle>`);
     }
   }
 
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="British Columbia poll trend, final 14 days">
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(data.name)} campaign poll trend">
     ${grid}
     <line class="election-line" x1="${x(end)}" y1="${T}" x2="${x(end)}" y2="${H - B}"></line>
     <text class="axis" x="${x(end) - 4}" y="${T + 10}" text-anchor="end">Election day</text>
@@ -159,62 +211,109 @@ function bcChart(polls, start, end) {
   </svg>`;
 }
 
-function bcPollTable(polls) {
+function pollTable(polls, parties) {
   const rows = polls.map((p) => `<tr>
     <td data-label="Date">${esc(shortDate(p.date))}</td>
     <td data-label="Pollster">${esc(p.pollster)}</td>
-    <td data-label="Method">${esc(BC_METHODS[p.method] || p.method || "Not stated")}</td>
+    <td data-label="Method">${esc(METHOD_LABELS[p.method] || p.method || "Not stated")}</td>
     <td data-label="N" class="num">${num(p.n)}</td>
-    ${BC_PARTIES.map((party) => `<td data-label="${esc(party.name)}" class="num">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
+    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="num">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
   </tr>`).join("");
-  return `<div class="live-table-wrap"><table class="live-table live-polls" aria-label="All polls in the final 14 days">
+  return `<div class="live-table-wrap" tabindex="0" role="region" aria-label="Campaign poll table"><div class="live-scroll-hint">Swipe to see all party columns →</div><table class="live-table live-polls" aria-label="All campaign polls">
     <thead><tr><th>Date</th><th>Pollster</th><th>Method</th><th class="num">N</th>
-    ${BC_PARTIES.map((party) => `<th class="num">${esc(party.name)}</th>`).join("")}
+    ${parties.map((party) => `<th class="num">${esc(party.name)}</th>`).join("")}
     </tr></thead><tbody>${rows}</tbody>
-  </table></div>`;
+  </table></div></div>`;
 }
 
-function bcForecastHtml(data, pollsJson) {
+function pollTrackerHtml(data, pollsJson, cfg) {
   const end = dayValue(data.date);
-  const start = end - 14 * BC_DAY;
+  const start = dayValue(data.chart_start || new Date(end - 14 * DAY).toISOString().slice(0, 10));
   const polls = (pollsJson.polls || [])
-    .filter((p) => p.date && dayValue(p.date) >= start && dayValue(p.date) <= end)
+    .map((p) => ({ ...p, votes: cfg.runoff ? (p.runoff || {}) : (p.votes || {}) }))
+    .filter((p) => p.date && Object.keys(p.votes).length && dayValue(p.date) >= start && dayValue(p.date) <= end)
     .sort((a, b) => String(a.date).localeCompare(String(b.date)) || String(a.pollster).localeCompare(String(b.pollster)));
   if (!polls.length) {
-    return `<section class="live-card" id="bc-forecast"><h2>BC forecast · last 14 days</h2><p class="live-note">No polls in the final 14 days yet.</p></section>`;
+    return `<section class="live-card" id="live-poll-tracker"><h2>Campaign poll tracker</h2><p class="live-note">No campaign polls yet.</p></section>`;
   }
-  const latest = BC_PARTIES.map((party) => ({
-    ...party, value: bcAverage(polls, party.id, end),
+  const latest = cfg.parties.map((party) => ({
+    ...party, value: pollAverage(polls, party.id, end),
   })).filter((party) => party.value != null);
   const summary = latest.map((party) =>
     `<span><i style="background:${party.color}"></i>${esc(party.name)} <b>${party.value.toFixed(1)}%</b></span>`
   ).join("");
   const houses = new Set(polls.map((p) => p.pollster)).size;
-  return `<section class="live-card" id="bc-forecast" aria-labelledby="bc-forecast-title">
-    <h2 id="bc-forecast-title">BC forecast · last 14 days</h2>
-    <p class="live-note">Every published poll in the final 14 days, all pollsters and methods. Dots are individual polls; lines are the 600 recency-weighted average. Where the source does not state a method, the table says “Not stated”.</p>
+  return `<section class="live-card" id="live-poll-tracker" aria-labelledby="poll-tracker-title">
+    <h2 id="poll-tracker-title">Campaign poll tracker</h2>
+    <p class="live-note">Every published poll in the official campaign period, all pollsters and methods. Dots are individual polls; lines are the 600 recency-weighted average. Where the source does not state a method, the table says “Not stated”.</p>
     <div class="live-forecast-summary">${summary}</div>
     <div class="live-sub">${polls.length} polls · ${houses} pollsters · ${esc(shortDate(new Date(start).toISOString().slice(0, 10)))}–${esc(shortDate(data.date))}</div>
-    <div class="live-chart">${bcChart(polls, start, end)}</div>
-    <div class="live-chart-legend">${BC_PARTIES.map((party) => `<span><i style="background:${party.chartColor}"></i>${esc(party.name)}</span>`).join("")}<span>Dots: every poll</span></div>
+    <div class="live-chart">${pollChart(data, polls, start, end, cfg.parties)}</div>
+    <div class="live-chart-legend">${cfg.parties.map((party) => `<span><i style="background:${party.color}"></i>${esc(party.name)}</span>`).join("")}<span>Dots: every poll</span></div>
     <h3>All polls</h3>
-    ${bcPollTable(polls)}
-    <div class="live-source">Polls: <a href="${esc(pollsJson.source_url || "#")}" target="_blank" rel="noopener">${esc(pollsJson.source || "source")}</a> · window ${esc(shortDate(new Date(start).toISOString().slice(0, 10)))}–${esc(shortDate(data.date))}</div>
+    ${pollTable(polls, cfg.parties)}
+    <div class="live-source">Polls: <a href="${esc(pollsJson.source_url || "#")}" target="_blank" rel="noopener">${esc(pollsJson.source || "source")}</a> · campaign ${esc(shortDate(new Date(start).toISOString().slice(0, 10)))}–${esc(shortDate(data.date))}</div>
   </section>`;
 }
 
-async function loadBcForecast(data) {
-  const el = document.getElementById("bc-forecast");
+async function loadPollTracker(data) {
+  const el = document.getElementById("live-poll-tracker");
+  const cfg = POLL_CONFIG[data.id];
+  if (!el || !cfg) return;
+  try {
+    if (!pollCache.has(data.id)) pollCache.set(data.id, await fetchJson(cfg.file));
+    el.outerHTML = pollTrackerHtml(data, pollCache.get(data.id), cfg);
+  } catch (err) {
+    el.innerHTML = `<div class="live-card"><h2>Poll tracker unavailable</h2><p class="live-note">The campaign poll file could not be loaded. The live result source is still available.</p><button class="live-retry" type="button">Try again</button></div>`;
+    const retry = el.querySelector(".live-retry");
+    if (retry) retry.addEventListener("click", () => loadPollTracker(data));
+    console.error(err);
+  }
+}
+
+function forecastHtml(data, forecast, mapSvg) {
+  const max = Math.max(1, ...forecast.shares.map((s) => Number(s.pct) || 0));
+  const rows = forecast.shares.map((s) => {
+    const value = Number(s.pct) || 0;
+    const range = s.lo == null || s.hi == null ? "" : `${s.lo.toFixed(1)}–${s.hi.toFixed(1)}`;
+    return `<div class="live-fc-row">
+      <span class="name" style="color:${s.color}">${esc(s.label || s.name)}</span>
+      <span class="track"><span class="fill" style="width:${Math.max(1, value / max * 100)}%;background:${s.color}"></span></span>
+      <b>${pct(value)}</b>
+      <span class="range">${esc(range)}</span>
+    </div>`;
+  }).join("");
+  return `<section class="live-card" id="live-forecast" aria-labelledby="live-forecast-title">
+    <h2 id="live-forecast-title">600 forecast</h2>
+    <p class="live-note">Expected vote shares and projected district map from the 600 forecast. This is a projection, not the live count.</p>
+    <div class="live-fc-headline">${esc(forecast.headline || "")}</div>
+    <div class="live-fc-grid">
+      <div class="live-fc-shares">${rows}</div>
+      ${mapSvg ? `<div class="live-map">${mapSvg}</div>` : ""}
+    </div>
+    ${forecast.map_caption ? `<p class="live-note live-map-caption">${esc(String(forecast.map_caption).replace(/\s*·\s*hover.*$/i, ""))}</p>` : ""}
+    <div class="live-source">Forecast: ${esc(forecast.source || "600 forecast")} · generated ${esc(String(forecast.generated_at || "").slice(0, 10))}</div>
+  </section>`;
+}
+
+async function loadForecast(data) {
+  const el = document.getElementById("live-forecast");
   if (!el) return;
   try {
-    if (!bcPollsCache) {
-      bcPollsCache = await fetchJson("../data/bc/polls.json");
+    if (!forecastCache.has(data.id)) {
+      const json = await fetchJson(`../data/live/forecast-${data.id}.json`);
+      let svg = "";
+      if (json.map_url) {
+        try { svg = await fetchText(`../data/live/${json.map_url}`); } catch (err) { console.error(err); }
+      }
+      forecastCache.set(data.id, { json, svg });
     }
-    el.outerHTML = bcForecastHtml(data, bcPollsCache);
+    const cached = forecastCache.get(data.id);
+    el.outerHTML = forecastHtml(data, cached.json, cached.svg);
   } catch (err) {
-    el.innerHTML = `<div class="live-card"><h2>BC poll tracker unavailable</h2><p class="live-note">The poll file could not be loaded. The live result source is still available.</p><button class="live-retry" type="button">Try again</button></div>`;
+    el.innerHTML = `<div class="live-card"><h2>Forecast unavailable</h2><p class="live-note">The 600 forecast snapshot could not be loaded. The live result source is still available.</p><button class="live-retry" type="button">Try again</button></div>`;
     const retry = el.querySelector(".live-retry");
-    if (retry) retry.addEventListener("click", () => { bcPollsCache = null; loadBcForecast(data); });
+    if (retry) retry.addEventListener("click", () => { forecastCache.delete(data.id); loadForecast(data); });
     console.error(err);
   }
 }
@@ -251,8 +350,8 @@ function renderFooter(d) {
   const source = d.source_url
     ? `<a href="${esc(d.source_url)}" target="_blank" rel="noopener">${esc(d.source || d.source_url)}</a>`
     : esc(d.source || "official source");
-  const tracker = d.id === "bc-2026"
-    ? " BC tracker: every published poll in the final 14 days, with a 600 recency-weighted average."
+  const tracker = POLL_CONFIG[d.id]
+    ? " Campaign tracker: every published poll in the official campaign period, with a 600 recency-weighted average."
     : "";
   liveFooter.innerHTML = `<p>Results: ${source} · Page checked <span class="live-check">${checkedAt()} UTC</span> · Refreshes every 30 seconds.</p>
     <p>Preliminary counts; the official record governs.${tracker}</p>`;
@@ -321,7 +420,8 @@ function renderElection(d) {
   const turnout = d.turnout == null ? "" : `<span>Turnout <b>${pct(d.turnout)}</b></span>`;
   const clock = countdown(d.close_at);
   const status = `<div class="live-status" id="live-status" role="status" aria-live="polite" aria-atomic="true">${statusPill(d.status)}${counted}${turnout}${clock ? `<span id="live-count">${esc(clock)}</span>` : ""}<span>Checked <b>${checkedAt()} UTC</b></span></div>`;
-  const trackerNote = d.id === "bc-2026" ? "The poll tracker below stays available before counting begins. " : "";
+  const hasForecast = !!POLL_CONFIG[d.id];
+  const trackerNote = hasForecast ? "The forecast and campaign poll tracker below stay available before counting begins. " : "";
   const detailNote = d.seat_total ? `Seat and ${(d.area_label || "area").toLowerCase()} results will appear when counting starts.` : "Detailed results will appear when counting starts.";
   const wait = waiting
     ? `<div class="live-notice"><div><strong>${esc(d.waiting_text || "Waiting for the first official results.")}</strong><p>${trackerNote}${detailNote}</p></div></div>`
@@ -342,12 +442,16 @@ function renderElection(d) {
       ${status}
     </section>
     ${wait}
-    ${d.id === "bc-2026" ? '<div id="bc-forecast"></div>' : ""}
+    ${hasForecast ? '<div id="live-forecast"></div>' : ""}
+    ${hasForecast ? '<div id="live-poll-tracker"></div>' : ""}
     ${areas}
     ${d.notes ? `<div class="live-card"><p class="live-note" style="margin:0">${esc(d.notes)}</p></div>` : ""}
   `;
   renderFooter(d);
-  if (d.id === "bc-2026") loadBcForecast(d);
+  if (hasForecast) {
+    loadForecast(d);
+    loadPollTracker(d);
+  }
 }
 
 async function loadElection(id) {
@@ -408,7 +512,7 @@ window.addEventListener("popstate", () => {
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
-    if (currentData && currentData.id === "bc-2026") renderElection(currentData);
+    if (currentData && POLL_CONFIG[currentData.id]) renderElection(currentData);
   }, 150);
 });
 

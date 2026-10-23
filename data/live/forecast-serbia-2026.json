@@ -1,0 +1,120 @@
+{
+ "election": "serbia-2026",
+ "generated_at": "2026-10-23T17:32:55Z",
+ "headline": "Government camp majority 50.3%",
+ "shares": [
+  {
+   "id": "sns",
+   "name": "Vučić – United Serbia",
+   "label": "AV-US",
+   "color": "#242970",
+   "pct": 42.1,
+   "lo": 36.3,
+   "hi": 48.1,
+   "trend": "▼ 0.0"
+  },
+  {
+   "id": "sl",
+   "name": "Student List",
+   "label": "SL",
+   "color": "#A81A32",
+   "pct": 38.4,
+   "lo": 32.7,
+   "hi": 44.3,
+   "trend": "▼ 0.0"
+  },
+  {
+   "id": "misn",
+   "name": "We – Power of the People",
+   "label": "MISN",
+   "color": "#1B3160",
+   "pct": 4.5,
+   "lo": 4.4,
+   "hi": 4.7,
+   "trend": ""
+  },
+  {
+   "id": "sps",
+   "name": "Socialist Party",
+   "label": "SPS",
+   "color": "#EB1B23",
+   "pct": 2.1,
+   "lo": 0.7,
+   "hi": 3.9,
+   "trend": "▼ 0.0"
+  },
+  {
+   "id": "vmsz",
+   "name": "Vojvodina Hungarians",
+   "label": "VMSZ",
+   "color": "#00732B",
+   "pct": 1.6,
+   "lo": 1.6,
+   "hi": 1.7,
+   "trend": ""
+  },
+  {
+   "id": "nada",
+   "name": "NADA",
+   "label": "NADA",
+   "color": "#616264",
+   "pct": 1.3,
+   "lo": 0.3,
+   "hi": 2.7,
+   "trend": "▼ 0.0"
+  },
+  {
+   "id": "spp",
+   "name": "Justice and Reconciliation",
+   "label": "SPP",
+   "color": "#16321B",
+   "pct": 0.7,
+   "lo": 0.7,
+   "hi": 0.8,
+   "trend": ""
+  },
+  {
+   "id": "sda",
+   "name": "SDA Sandžak",
+   "label": "SDA",
+   "color": "#069443",
+   "pct": 0.6,
+   "lo": 0.5,
+   "hi": 0.6,
+   "trend": ""
+  },
+  {
+   "id": "kshlp",
+   "name": "Preševo Valley Albanians",
+   "label": "KShLP",
+   "color": "#0081CC",
+   "pct": 0.3,
+   "lo": 0.3,
+   "hi": 0.3,
+   "trend": ""
+  },
+  {
+   "id": "rs",
+   "name": "Russian Party",
+   "label": "RS",
+   "color": "#0D3B66",
+   "pct": 0.3,
+   "lo": 0.3,
+   "hi": 0.3,
+   "trend": ""
+  },
+  {
+   "id": "pes",
+   "name": "European Serbia",
+   "label": "PES",
+   "color": "#C9A227",
+   "pct": 0.2,
+   "lo": 0.0,
+   "hi": 0.8,
+   "trend": "▼ 0.0"
+  }
+ ],
+ "map_url": "forecast-serbia-2026.svg",
+ "map_caption": "District winners from the forecast's median national vote shares",
+ "source": "600 forecast"
+}

@@ -62,6 +62,7 @@ def main():
         "name": "Brazil 2026 runoff",
         "date": "2026-10-25",
         "close_at": "2026-10-25T20:00:00Z",
+        "chart_start": "2026-10-05",
         "subtitle": "Presidential runoff · Lula vs Flávio Bolsonaro",
         "status": status,
         "counted": counted,

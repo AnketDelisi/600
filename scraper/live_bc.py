@@ -109,6 +109,7 @@ def main():
         "name": "British Columbia 2026",
         "date": "2026-10-24",
         "close_at": "2026-10-25T03:00:00Z",
+        "chart_start": "2026-09-22",
         "subtitle": "Legislative Assembly · 93 ridings · 47 for a majority",
         "status": "counting" if len(areas) < 93 else "final",
         "counted": len(areas),

@@ -211,15 +211,29 @@ function pollChart(data, polls, start, end, parties) {
   </svg>`;
 }
 
+function pollLeader(p, parties) {
+  let best = null, value = -1;
+  for (const party of parties) {
+    const v = p.votes && p.votes[party.id];
+    if (v != null && v > value) { value = v; best = party; }
+  }
+  return best;
+}
+
 function pollTable(polls, parties) {
-  const rows = polls.map((p) => `<tr>
+  const rows = polls.map((p) => {
+    const lead = pollLeader(p, parties);
+    return `<tr>
     <td data-label="Date">${esc(shortDate(p.date))}</td>
     <td data-label="Pollster">${esc(p.pollster)}</td>
     <td data-label="Method">${esc(METHOD_LABELS[p.method] || p.method || "Not stated")}</td>
     <td data-label="N" class="num">${num(p.n)}</td>
-    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="num">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
-  </tr>`).join("");
-  const cards = polls.map((p) => `<article class="live-poll-card">
+    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="num party-col${lead && lead.id === party.id ? " lead" : ""}" style="--pc:${party.color}">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
+  </tr>`;
+  }).join("");
+  const cards = polls.map((p) => {
+    const lead = pollLeader(p, parties);
+    return `<article class="live-poll-card" style="--lead-color:${lead ? lead.color : "#1A1A1A"}">
     <div class="live-poll-head">
       <time>${esc(shortDate(p.date))}</time>
       <strong>${esc(p.pollster)}</strong>
@@ -227,13 +241,15 @@ function pollTable(polls, parties) {
     </div>
     <div class="live-poll-values">${parties.map((party) => {
       const v = p.votes && p.votes[party.id];
-      return `<span class="live-poll-value" title="${esc(party.name)}"><i style="background:${party.color}"></i><span>${esc(party.short || party.name)}</span><b>${v == null ? "—" : Number(v).toFixed(1)}</b></span>`;
+      const isLead = lead && lead.id === party.id;
+      return `<span class="live-poll-value${isLead ? " lead" : ""}" style="--pc:${party.color}" title="${esc(party.name)}"><i style="background:${party.color}"></i><span>${esc(party.short || party.name)}</span><b>${v == null ? "—" : Number(v).toFixed(1)}</b></span>`;
     }).join("")}</div>
-  </article>`).join("");
+  </article>`;
+  }).join("");
   return `<div class="live-table-wrap live-poll-table" tabindex="0" role="region" aria-label="Campaign poll table">
     <table class="live-table live-polls" aria-label="All campaign polls">
       <thead><tr><th>Date</th><th>Pollster</th><th>Method</th><th class="num">N</th>
-      ${parties.map((party) => `<th class="num">${esc(party.name)}</th>`).join("")}
+      ${parties.map((party) => `<th class="num party-col" scope="col" style="--pc:${party.color}"><span class="party-dot"></span>${esc(party.name)}</th>`).join("")}
       </tr></thead><tbody>${rows}</tbody>
     </table>
   </div>

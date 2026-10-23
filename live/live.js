@@ -22,41 +22,41 @@ const POLL_CONFIG = {
   "bc-2026": {
     file: "../data/bc/polls.json",
     parties: [
-      { id: "bcndp", name: "BC NDP", short: "NDP", color: "#F4A460" },
-      { id: "cpbc", name: "Conservatives", short: "CON", color: "#004AAD" },
-      { id: "gpbc", name: "Greens", short: "GRN", color: "#99C955" },
-      { id: "onbc", name: "OneBC", short: "1BC", color: "#C49B50" },
-      { id: "cbc", name: "CentreBC", short: "CBC", color: "#EE2D30" },
+      { id: "bcndp", name: "BC NDP", short: "NDP", color: "#F4A460", logo: "../img/bc/BCNDP.svg" },
+      { id: "cpbc", name: "Conservatives", short: "CON", color: "#004AAD", logo: "../img/bc/CPBC.svg" },
+      { id: "gpbc", name: "Greens", short: "GRN", color: "#99C955", logo: "../img/bc/GPBC.svg" },
+      { id: "onbc", name: "OneBC", short: "1BC", color: "#C49B50", logo: "../img/bc/1BC.svg" },
+      { id: "cbc", name: "CentreBC", short: "CBC", color: "#EE2D30", logo: "../img/bc/CBC.svg" },
     ],
   },
   "serbia-2026": {
     file: "../data/serbia/polls.json",
     parties: [
-      { id: "sns", name: "Vučić – United Serbia", short: "SNS", color: "#242970" },
-      { id: "sl", name: "Student List", short: "SL", color: "#A81A32" },
-      { id: "sps", name: "Socialist Party", short: "SPS", color: "#EB1B23" },
-      { id: "pes", name: "European Serbia", short: "PES", color: "#C9A227" },
-      { id: "nada", name: "NADA", short: "NADA", color: "#616264" },
-      { id: "misn", name: "We – Power of the People", short: "MISN", color: "#1B3160" },
+      { id: "sns", name: "Vučić – United Serbia", short: "SNS", color: "#242970", logo: "../img/serbia/SNS.svg" },
+      { id: "sl", name: "Student List", short: "SL", color: "#A81A32", logo: "../img/serbia/SL.svg" },
+      { id: "sps", name: "Socialist Party", short: "SPS", color: "#EB1B23", logo: "../img/serbia/SPS.svg" },
+      { id: "pes", name: "European Serbia", short: "PES", color: "#C9A227", logo: "../img/serbia/PES.svg" },
+      { id: "nada", name: "NADA", short: "NADA", color: "#616264", logo: "../img/serbia/NADA.svg" },
+      { id: "misn", name: "We – Power of the People", short: "MISN", color: "#1B3160", logo: "../img/serbia/MISN.svg" },
     ],
   },
   "brazil-2026-r2": {
     file: "../data/brazil/polls.json",
     runoff: true,
     parties: [
-      { id: "lula", name: "Lula", short: "Lula", color: "#E20E28" },
-      { id: "flavio", name: "Flávio", short: "Flávio", color: "#015AAA" },
+      { id: "lula", name: "Lula", short: "Lula", color: "#E20E28", logo: "../img/br/Lula.svg" },
+      { id: "flavio", name: "Flávio", short: "Flávio", color: "#015AAA", logo: "../img/br/Bolsonaro.svg" },
     ],
   },
   "bulgaria-2026": {
     file: "../data/bgpres/polls.json",
     parties: [
-      { id: "iotova", name: "Iotova", short: "IOT", color: "#DB0F28" },
-      { id: "gyurov", name: "Gyurov", short: "GYU", color: "#4200FF" },
-      { id: "kostadinov", name: "Kostadinov", short: "KOS", color: "#C09F62" },
-      { id: "mihaylov", name: "Mihaylov", short: "MIH", color: "#AC2225" },
-      { id: "vasilev", name: "Vasilev", short: "VAS", color: "#1A2C44" },
-      { id: "hristanov", name: "Hristanov", short: "HRI", color: "#C0CC66" },
+      { id: "iotova", name: "Iotova", short: "IOT", color: "#DB0F28", logo: "../img/bg/PB.svg" },
+      { id: "gyurov", name: "Gyurov", short: "GYU", color: "#4200FF", logo: "../img/bg/PPDB.svg" },
+      { id: "kostadinov", name: "Kostadinov", short: "KOS", color: "#C09F62", logo: "../img/bg/VAZ.svg" },
+      { id: "mihaylov", name: "Mihaylov", short: "MIH", color: "#AC2225", logo: "../img/bg/VELI.svg" },
+      { id: "vasilev", name: "Vasilev", short: "VAS", color: "#1A2C44", logo: "../img/bg/MECH.svg" },
+      { id: "hristanov", name: "Hristanov", short: "HRI", color: "#C0CC66", logo: "../img/bg/Edinenie.svg" },
     ],
   },
 };
@@ -219,7 +219,7 @@ function pollTable(polls, parties) {
     <p class="live-scroll-note">Scroll sideways to see every party column.</p>
     <table class="polls-table compact-table live-polls" aria-label="All campaign polls">
       <thead><tr><th>Date</th><th>Pollster</th><th class="c">Method</th><th class="c">N</th>
-      ${parties.map((party) => `<th class="c party-col" scope="col" style="--pc:${party.color}"><span class="party-dot"></span>${esc(party.name)}</th>`).join("")}
+      ${parties.map((party) => `<th class="c party-col" scope="col" style="--pc:${party.color}"><img class="party-logo" src="${esc(party.logo)}" alt="">${esc(party.name)}</th>`).join("")}
       </tr></thead><tbody>${rows}</tbody>
     </table>
   </div>`;

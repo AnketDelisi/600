@@ -2,8 +2,8 @@
  "country": "germany",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
- "scraped_at": "2026-10-22T11:06:49Z",
- "poll_count": 404,
+ "scraped_at": "2026-10-23T10:58:18Z",
+ "poll_count": 405,
  "polls": [
   {
    "pollster": "pollytix",
@@ -105,6 +105,22 @@
     "gruene": 14.0,
     "linke": 11.0,
     "bsw": 4.0,
+    "fdp": 4.0
+   }
+  },
+  {
+   "pollster": "Allensbach",
+   "date": "2026-10-16",
+   "n": 1048,
+   "country": "germany",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
+   "votes": {
+    "cdu": 23.0,
+    "afd": 27.0,
+    "spd": 14.0,
+    "gruene": 14.0,
+    "linke": 11.0,
     "fdp": 4.0
    }
   },

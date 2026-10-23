@@ -6,9 +6,66 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election"
   }
  ],
- "scraped_at": "2026-10-22T11:06:59Z",
- "poll_count": 199,
+ "scraped_at": "2026-10-23T10:58:26Z",
+ "poll_count": 203,
  "polls": [
+  {
+   "pollster": "Vox Brasil",
+   "date": "2026-10-22",
+   "n": 2100,
+   "votes": {},
+   "runoff": {
+    "lula": 50.6,
+    "flavio": 49.4
+   },
+   "country": "brazil",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
+   "fieldwork_start": "2026-10-22"
+  },
+  {
+   "pollster": "Datafolha",
+   "date": "2026-10-22",
+   "n": 2520,
+   "votes": {},
+   "runoff": {
+    "lula": 49.5,
+    "flavio": 50.5
+   },
+   "country": "brazil",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
+   "fieldwork_start": "2026-10-22",
+   "method": "face"
+  },
+  {
+   "pollster": "Indexa",
+   "date": "2026-10-21",
+   "n": 2000,
+   "votes": {},
+   "runoff": {
+    "lula": 49.4,
+    "flavio": 50.6
+   },
+   "country": "brazil",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
+   "fieldwork_start": "2026-10-21"
+  },
+  {
+   "pollster": "PoderData",
+   "date": "2026-10-21",
+   "n": 4000,
+   "votes": {},
+   "runoff": {
+    "lula": 49.5,
+    "flavio": 50.5
+   },
+   "country": "brazil",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Brazilian_presidential_election",
+   "fieldwork_start": "2026-10-21"
+  },
   {
    "pollster": "Gerp",
    "date": "2026-10-21",

@@ -2,8 +2,8 @@
  "country": "hu",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Hungarian_parliamentary_election",
- "scraped_at": "2026-10-22T11:07:04Z",
- "poll_count": 27,
+ "scraped_at": "2026-10-23T10:58:30Z",
+ "poll_count": 29,
  "polls": [
   {
    "pollster": "Medián",
@@ -368,6 +368,34 @@
     "tisza": 61.0,
     "fidesz": 26.0,
     "mh": 9.0
+   }
+  },
+  {
+   "pollster": "Nézőpont",
+   "date": "2026-10-16",
+   "n": 1000,
+   "country": "hu",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Hungarian_parliamentary_election",
+   "votes": {
+    "tisza": 58.0,
+    "fidesz": 27.0,
+    "mh": 11.0
+   }
+  },
+  {
+   "pollster": "Publicus",
+   "date": "2026-10-16",
+   "n": 1006,
+   "country": "hu",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Hungarian_parliamentary_election",
+   "votes": {
+    "tisza": 63.0,
+    "fidesz": 25.0,
+    "mh": 7.0,
+    "dk": 1.0,
+    "mkkp": 2.0
    }
   },
   {

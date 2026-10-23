@@ -349,6 +349,7 @@ function renderElection(d) {
         ${d.majority ? `<span>Majority: <b>${num(d.majority)}</b></span>` : ""}</div>`;
   }
 
+  const showAreaCount = Array.isArray(d.areas) && d.areas.some((a) => a.counted != null);
   const areas = Array.isArray(d.areas) && d.areas.length ? `
     <div class="live-card">
       <h2>${esc(d.area_title || "Areas")}</h2>
@@ -359,13 +360,13 @@ function renderElection(d) {
           <th>${esc(d.area_label || "Area")}</th>
           <th>Leader</th>
           <th>%</th>
-          <th>Counted</th>
+          ${showAreaCount ? "<th>Counted</th>" : ""}
         </tr></thead>
         <tbody>${d.areas.map((a) => `<tr>
           <td>${esc(a.name)}</td>
           <td>${esc(a.winner_name || a.winner || "—")}${a.leading ? '<span class="live-tag lead">Leading</span>' : ""}${a.elected ? '<span class="live-tag win">Elected</span>' : ""}</td>
           <td class="num">${pct(a.pct)}</td>
-          <td class="num">${a.counted == null ? "—" : num(a.counted)}${a.total ? " / " + num(a.total) : ""}</td>
+          ${showAreaCount ? `<td class="num">${a.counted == null ? "—" : num(a.counted)}${a.total ? " / " + num(a.total) : ""}</td>` : ""}
         </tr>`).join("")}</tbody>
       </table></div>
     </div>` : "";

@@ -456,7 +456,7 @@ function renderElection(d) {
   const clock = countdown(d.close_at);
   const status = `<div class="live-status" id="live-status" role="status" aria-live="polite">${statusPill(d.status)}${counted}${turnout}${clock ? `<span id="live-count">${esc(clock)}</span>` : ""}<span>Checked <b id="live-checked">${checkedAt()} UTC</b></span></div>`;
   const hasForecast = !!POLL_CONFIG[d.id];
-  const trackerNote = hasForecast ? "The forecast and campaign poll tracker below stay available before counting begins. " : "";
+  const trackerNote = hasForecast ? "While you wait, the final forecast and the campaign polls are below. " : "";
   const detailNote = d.seat_total ? `Seat and ${(d.area_label || "area").toLowerCase()} results will appear when counting starts.` : "Detailed results will appear when counting starts.";
   const wait = waiting
     ? `<div class="live-notice"><div><strong>${esc(d.waiting_text || "Waiting for the first official results.")}</strong><p>${trackerNote}${detailNote}</p></div></div>`

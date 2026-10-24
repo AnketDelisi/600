@@ -10,7 +10,7 @@
  "counted_label": "sections",
  "source": "Superior Electoral Court (TSE)",
  "source_url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
- "source_updated_at": "24/10/2026 17:35:49",
+ "source_updated_at": "24/10/2026 19:19:13",
  "waiting_text": "Polls close at 17:00 Brasília time on Sunday, 25 October.",
  "result_title": "Valid vote",
  "result_note": "Official TSE totalization. Percentages are of valid votes.",
@@ -37,5 +37,5 @@
  "areas": [],
  "notes": "The first round was Lula 45.16%, Flávio 47.03% of valid votes.",
  "id": "brazil-2026-r2",
- "updated_at": "2026-10-24T20:51:09Z"
+ "updated_at": "2026-10-24T22:45:17Z"
 }

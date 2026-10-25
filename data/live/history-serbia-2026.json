@@ -1,0 +1,26 @@
+{
+ "election": "serbia-2026",
+ "snapshots": [
+  {
+   "at": "2026-10-25T21:08:20Z",
+   "counted": 876,
+   "total": 8392,
+   "counted_pct": 10.44,
+   "pct": {
+    "sns": 47.87,
+    "sl": 41.89,
+    "sps": 2.89,
+    "vmsz": 1.97,
+    "nada": 0.74,
+    "sda": 0.35,
+    "pes": 0.21,
+    "rs": 0.15
+   },
+   "seats": {
+    "sns": 131,
+    "sl": 114,
+    "vmsz": 5
+   }
+  }
+ ]
+}

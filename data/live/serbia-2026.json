@@ -1,121 +1,91 @@
 {
- "id": "serbia-2026",
  "name": "Serbia 2026",
  "date": "2026-10-25",
  "close_at": "2026-10-25T19:00:00Z",
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
- "status": "waiting",
- "counted": null,
- "total": null,
+ "status": "counting",
+ "counted": 876,
+ "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "waiting_text": "Polls close at 20:00 Belgrade time on Sunday, 25 October.",
+ "source_updated_at": "25.10.2026 22:05:00",
  "result_title": "Vote share and seats",
+ "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
   {
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
+   "pct": 47.87,
+   "votes": 96882,
+   "seats": 131
   },
   {
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
+   "pct": 41.89,
+   "votes": 84786,
+   "seats": 114
   },
   {
    "id": "sps",
    "name": "Socialist Party",
    "color": "#EB1B23",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
-  },
-  {
-   "id": "pes",
-   "name": "European Serbia",
-   "color": "#C9A227",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
-  },
-  {
-   "id": "nada",
-   "name": "NADA",
-   "color": "#616264",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
-  },
-  {
-   "id": "misn",
-   "name": "We – Power of the People",
-   "color": "#1B3160",
-   "pct": 0,
-   "votes": 0,
+   "pct": 2.89,
+   "votes": 5843,
    "seats": 0
   },
   {
    "id": "vmsz",
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
+   "pct": 1.97,
+   "votes": 3992,
+   "seats": 5
   },
   {
-   "id": "spp",
-   "name": "Justice and Reconciliation",
-   "color": "#16321B",
-   "pct": 0,
-   "votes": 0,
+   "id": "nada",
+   "name": "NADA",
+   "color": "#616264",
+   "pct": 0.74,
+   "votes": 1491,
    "seats": 0
   },
   {
    "id": "sda",
    "name": "SDA Sandžak",
    "color": "#069443",
-   "pct": 0,
-   "votes": 0,
+   "pct": 0.35,
+   "votes": 706,
+   "seats": 0
+  },
+  {
+   "id": "pes",
+   "name": "European Serbia",
+   "color": "#C9A227",
+   "pct": 0.21,
+   "votes": 427,
    "seats": 0
   },
   {
    "id": "rs",
    "name": "Russian Party",
    "color": "#0D3B66",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
-  },
-  {
-   "id": "sdp",
-   "name": "Social Democrats",
-   "color": "#FF004F",
-   "pct": 0,
-   "votes": 0,
-   "seats": 0
-  },
-  {
-   "id": "kshlp",
-   "name": "Preševo Valley Albanians",
-   "color": "#0081CC",
-   "pct": 0,
-   "votes": 0,
+   "pct": 0.15,
+   "votes": 307,
    "seats": 0
   }
  ],
  "seat_total": 250,
  "majority": 126,
  "areas": [],
- "notes": "RIK preliminary count. Seat allocation is D'Hondt with a 3% threshold; national-minority lists are exempt.",
  "map_svg": "../img/serbia.svg",
  "map_title": "National map",
- "map_note": "RIK's live feed does not publish regional totals, so the map shows the national leader."
+ "map_note": "RIK's live feed does not publish regional totals, so the map shows the national leader.",
+ "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
+ "id": "serbia-2026",
+ "updated_at": "2026-10-25T21:08:20Z"
 }

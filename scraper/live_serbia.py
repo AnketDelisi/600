@@ -10,6 +10,18 @@ ELECTION = "serbia-2026"
 URL = "https://www.rik.parlament.gov.rs/542645/rezultati/"
 API = "https://www.rik.parlament.gov.rs"
 ELEKT_URL = "https://elekt.io/elekt/api/v1/elections/srb-parliamentary-2026-2"
+REGION_NAMES = {
+    "1": "Belgrade",
+    "2": "Vojvodina",
+    "3": "Šumadija and Western Serbia",
+    "4": "Southern and Eastern Serbia",
+}
+REGION_MAP_IDS = {
+    "1": ["_1"],
+    "2": ["_%d" % i for i in range(2, 9)],
+    "3": ["_%d" % i for i in range(9, 17)],
+    "4": ["_%d" % i for i in range(17, 26)],
+}
 ALIASES = {
     "sns": ("vučić", "serbia must not stop", "вучић", "уједињена србија"),
     "sl": ("student", "студентска"),
@@ -96,18 +108,12 @@ def rik_api():
         "election_station": 0,
     }, timeout=45)
     response.raise_for_status()
-    return response.json()
+    return response.json(), session, round_id
 
 
-def main():
-    try:
-        data = rik_api()
-    except Exception as exc:
-        print("serbia: RIK API unavailable (%s); trying elekt" % exc)
-        return elekt_main()
-    stats = data.get("stat_sum_numbers") or {}
+def parse_rows(rows):
     entries = []
-    for row in data.get("table_data") or []:
+    for row in rows or []:
         key = match(row.get("list_name"))
         if not key:
             continue
@@ -120,11 +126,60 @@ def main():
             "votes": num(row.get("won_number")),
             "seats": 0,
         })
+    return entries
+
+
+def region_areas(session, round_id):
+    areas = []
+    for region_id in ("1", "2", "3", "4"):
+        try:
+            response = session.post(API + "/get_results/", data={
+                "should_update_pies": 0,
+                "type": "region",
+                "election_round": round_id,
+                "region": region_id,
+                "municipality": 0,
+                "election_station": 0,
+            }, timeout=45)
+            response.raise_for_status()
+            data = response.json()
+            stats = data.get("stat_sum_numbers") or {}
+            entries = parse_rows(data.get("table_data"))
+            entries = [e for e in entries if (e["pct"] or 0) > 0]
+            if not entries:
+                continue
+            top = max(entries, key=lambda e: e["pct"] or 0)
+            areas.append({
+                "name": REGION_NAMES[region_id],
+                "winner": top["id"],
+                "winner_name": top["name"],
+                "pct": top["pct"],
+                "votes": top["votes"],
+                "counted": num(stats.get("processed_stations")),
+                "total": num(stats.get("number_of_stations")),
+                "leading": True,
+                "elected": False,
+                "map_ids": REGION_MAP_IDS[region_id],
+            })
+        except Exception as exc:
+            print("serbia: region", region_id, "unavailable:", exc)
+    return areas
+
+
+def main():
+    try:
+        data, session, round_id = rik_api()
+    except Exception as exc:
+        print("serbia: RIK API unavailable (%s); trying elekt" % exc)
+        return elekt_main()
+    stats = data.get("stat_sum_numbers") or {}
+    entries = parse_rows(data.get("table_data"))
     if not entries or not any((e["pct"] or 0) > 0 for e in entries):
         print("serbia: no counted rows from RIK; trying elekt")
         return elekt_main()
     dhondt(entries)
     entries.sort(key=lambda e: -(e["pct"] or 0))
+    areas = region_areas(session, round_id)
     counted = num(stats.get("processed_stations"))
     total = num(stats.get("number_of_stations"))
     write_live(ELECTION, {
@@ -145,10 +200,13 @@ def main():
         "entries": entries,
         "seat_total": 250,
         "majority": 126,
-        "areas": [],
+        "area_title": "Regions",
+        "area_label": "Region",
+        "area_note": "RIK regional totals. Districts are coloured by the leading list in their region.",
+        "areas": areas,
         "map_svg": "../img/serbia.svg",
-        "map_title": "National map",
-        "map_note": "RIK's live feed does not publish regional totals, so the map shows the national leader.",
+        "map_title": "Regional map",
+        "map_note": "Districts are coloured by the leading list in their RIK region.",
         "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
     })
 

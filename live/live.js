@@ -349,7 +349,8 @@ async function loadMap(d) {
     const entries = d.entries || [];
     const byId = new Map(entries.map((e) => [String(e.id), e]));
     const areas = Array.isArray(d.areas) ? d.areas : [];
-    const areaById = new Map(areas.map((a) => [String(a.name).toUpperCase(), a]));
+    const areaById = new Map();
+    areas.forEach((a) => (a.map_ids || [a.name]).forEach((id) => areaById.set(String(id).toUpperCase(), a)));
     const leader = entries.find((e) => Number(e.pct) > 0) || null;
     const winners = new Set();
     svg.querySelectorAll("path[id]").forEach((path) => {

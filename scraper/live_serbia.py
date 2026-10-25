@@ -9,6 +9,20 @@ from live_common import write_live
 ELECTION = "serbia-2026"
 URL = "https://www.rik.parlament.gov.rs/542645/rezultati/"
 ELEKT_URL = "https://elekt.io/elekt/api/v1/elections/srb-parliamentary-2026-2"
+ALIASES = {
+    "sns": ("vučić", "serbia must not stop"),
+    "sl": ("student",),
+    "sps": ("socialist", "dačić"),
+    "pes": ("european serbia",),
+    "nada": ("nada",),
+    "misn": ("power of the people",),
+    "vmsz": ("vojvodina",),
+    "spp": ("reconciliation",),
+    "sda": ("sandžak",),
+    "rs": ("russian party",),
+    "sdp": ("social democrat",),
+    "kshlp": ("preševo",),
+}
 NAMES = {
     "sns": ("Vučić", "Vučić – United Serbia", "#242970"),
     "sl": ("Student", "Student List", "#A81A32"),
@@ -26,8 +40,9 @@ NAMES = {
 
 
 def match(name):
-    for key, (needle, _, _) in NAMES.items():
-        if needle.lower() in name.lower():
+    t = (name or "").lower()
+    for key, needles in ALIASES.items():
+        if any(needle in t for needle in needles):
             return key
     return None
 

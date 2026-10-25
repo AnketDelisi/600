@@ -118,9 +118,25 @@ def regional_areas():
         row["votes"][winner] = row["votes"].get(winner, 0) + votes
         row["total"] += total
         row["counted"] = max(row["counted"], counted or 0)
+    if "sofia" not in merged:
+        merged["sofia"] = {"label": "Sofia Region", "votes": {}, "total": 0, "counted": 0}
     labels = {"plovdiv": "Plovdiv", "sofiacity": "Sofia City", "sofia": "Sofia Region"}
     areas = []
     for map_id, row in merged.items():
+        if not row["votes"]:
+            areas.append({
+                "name": labels.get(map_id, row["label"]),
+                "winner": None,
+                "winner_name": "",
+                "pct": None,
+                "votes": 0,
+                "counted": 0,
+                "total": 100,
+                "leading": False,
+                "elected": False,
+                "map_ids": [map_id],
+            })
+            continue
         winner, votes = max(row["votes"].items(), key=lambda item: item[1])
         areas.append({
             "name": labels.get(map_id, row["label"]),
@@ -196,7 +212,7 @@ def cik_main():
         "majority": None,
         "area_title": "Regions",
         "area_label": "Region",
-        "area_note": "CIK regional totals. Regions are coloured by their leading candidate.",
+        "area_note": "CIK regional totals. Sofia Region has not reported yet and stays grey.",
         "areas": areas,
         "map_svg": "../img/bulgaria.svg",
         "map_title": "Regional map",
@@ -250,7 +266,7 @@ def elekt_main():
         "majority": None,
         "area_title": "Regions",
         "area_label": "Region",
-        "area_note": "CIK regional totals. Regions are coloured by their leading candidate.",
+        "area_note": "CIK regional totals. Sofia Region has not reported yet and stays grey.",
         "areas": [],
         "map_svg": "../img/bulgaria.svg",
         "map_title": "National map",

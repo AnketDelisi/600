@@ -67,7 +67,7 @@
  "majority": null,
  "area_title": "Regions",
  "area_label": "Region",
- "area_note": "CIK regional totals. Regions are coloured by their leading candidate.",
+ "area_note": "CIK regional totals. Sofia Region has not reported yet and stays grey.",
  "areas": [
   {
    "name": "Blagoevgrad",
@@ -446,6 +446,20 @@
    "map_ids": [
     "yambol"
    ]
+  },
+  {
+   "name": "Sofia Region",
+   "winner": null,
+   "winner_name": "",
+   "pct": null,
+   "votes": 0,
+   "counted": 0,
+   "total": 100,
+   "leading": false,
+   "elected": false,
+   "map_ids": [
+    "sofia"
+   ]
   }
  ],
  "map_svg": "../img/bulgaria.svg",
@@ -453,5 +467,5 @@
  "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-25T22:04:19Z"
+ "updated_at": "2026-10-25T22:13:52Z"
 }

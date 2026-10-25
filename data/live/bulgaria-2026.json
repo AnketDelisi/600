@@ -1,73 +1,75 @@
 {
- "id": "bulgaria-2026",
  "name": "Bulgaria 2026",
  "date": "2026-10-25",
  "close_at": "2026-10-25T18:00:00Z",
  "chart_start": "2026-09-25",
  "subtitle": "Presidential election · first round",
- "status": "waiting",
- "counted": null,
- "total": null,
- "counted_label": "sections",
- "source": "CIK (via elekt)",
- "source_url": "https://elekt.io/bulgaria/presidential-2026",
- "waiting_text": "Polls close at 20:00 Sofia time on Sunday, 25 October.",
+ "status": "counting",
+ "counted": 7.37,
+ "total": 100,
+ "counted_label": "percent of sections",
+ "source": "Central Election Commission (CIK)",
+ "source_url": "https://results.cik.bg/pvr202610/rezultati/index.html",
+ "source_updated_at": "23:00 на 25.10.2026",
  "result_title": "First-round vote",
+ "result_note": "CIK preliminary count. A runoff, if needed, is on 1 November.",
  "entries": [
   {
    "id": "iotova",
    "name": "Iliana Iotova",
    "color": "#DB0F28",
-   "pct": 0,
-   "votes": 0,
+   "pct": 35.504,
+   "votes": 33770,
    "seats": 0
   },
   {
    "id": "gyurov",
    "name": "Andrey Gyurov",
    "color": "#4200FF",
-   "pct": 0,
-   "votes": 0,
+   "pct": 30.289,
+   "votes": 28809,
    "seats": 0
   },
   {
    "id": "kostadinov",
    "name": "Kostadin Kostadinov",
    "color": "#C09F62",
-   "pct": 0,
-   "votes": 0,
+   "pct": 13.519,
+   "votes": 12859,
    "seats": 0
   },
   {
    "id": "vasilev",
    "name": "Radostin Vasilev",
    "color": "#1A2C44",
-   "pct": 0,
-   "votes": 0,
+   "pct": 4.115,
+   "votes": 3914,
    "seats": 0
   },
   {
    "id": "mihaylov",
    "name": "Ivelin Mihaylov",
    "color": "#AC2225",
-   "pct": 0,
-   "votes": 0,
+   "pct": 4.006,
+   "votes": 3810,
    "seats": 0
   },
   {
    "id": "hristanov",
    "name": "Ivan Hristanov",
    "color": "#C0CC66",
-   "pct": 0,
-   "votes": 0,
+   "pct": 2.398,
+   "votes": 2281,
    "seats": 0
   }
  ],
  "seat_total": null,
  "majority": null,
  "areas": [],
- "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "map_svg": "../img/bulgaria.svg",
  "map_title": "National map",
- "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader."
+ "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader.",
+ "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
+ "id": "bulgaria-2026",
+ "updated_at": "2026-10-25T21:55:40Z"
 }

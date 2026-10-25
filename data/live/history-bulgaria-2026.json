@@ -1,0 +1,20 @@
+{
+ "election": "bulgaria-2026",
+ "snapshots": [
+  {
+   "at": "2026-10-25T21:55:40Z",
+   "counted": 7.37,
+   "total": 100,
+   "counted_pct": 7.37,
+   "pct": {
+    "iotova": 35.504,
+    "gyurov": 30.289,
+    "kostadinov": 13.519,
+    "vasilev": 4.115,
+    "mihaylov": 4.006,
+    "hristanov": 2.398
+   },
+   "seats": {}
+  }
+ ]
+}

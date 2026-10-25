@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 970,
+ "counted": 1248,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "25.10.2026 22:10:00",
+ "source_updated_at": "25.10.2026 22:25:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,32 +18,32 @@
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 47.22,
-   "votes": 110545,
-   "seats": 129
+   "pct": 46.75,
+   "votes": 150764,
+   "seats": 128
   },
   {
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 42.19,
-   "votes": 98771,
-   "seats": 116
+   "pct": 43.08,
+   "votes": 138929,
+   "seats": 117
   },
   {
    "id": "sps",
    "name": "Socialist Party",
    "color": "#EB1B23",
    "pct": 2.84,
-   "votes": 6653,
+   "votes": 9161,
    "seats": 0
   },
   {
    "id": "vmsz",
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
-   "pct": 1.96,
-   "votes": 4586,
+   "pct": 1.86,
+   "votes": 6002,
    "seats": 5
   },
   {
@@ -51,15 +51,15 @@
    "name": "NADA",
    "color": "#616264",
    "pct": 0.74,
-   "votes": 1721,
+   "votes": 2384,
    "seats": 0
   },
   {
    "id": "sda",
    "name": "SDA Sandžak",
    "color": "#069443",
-   "pct": 0.35,
-   "votes": 817,
+   "pct": 0.36,
+   "votes": 1149,
    "seats": 0
   },
   {
@@ -67,7 +67,7 @@
    "name": "European Serbia",
    "color": "#C9A227",
    "pct": 0.22,
-   "votes": 513,
+   "votes": 711,
    "seats": 0
   },
   {
@@ -75,23 +75,23 @@
    "name": "Russian Party",
    "color": "#0D3B66",
    "pct": 0.16,
-   "votes": 367,
+   "votes": 515,
    "seats": 0
   }
  ],
  "seat_total": 250,
  "majority": 126,
- "area_title": "Regions",
- "area_label": "Region",
- "area_note": "RIK regional totals. Districts are coloured by the leading list in their region.",
+ "area_title": "Districts",
+ "area_label": "District",
+ "area_note": "District totals aggregated from RIK municipality results.",
  "areas": [
   {
    "name": "Belgrade",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 56.73,
-   "votes": 15988,
-   "counted": 55,
+   "pct": 57.89,
+   "votes": 25436,
+   "counted": 81,
    "total": 1266,
    "leading": true,
    "elected": false,
@@ -100,73 +100,2926 @@
    ]
   },
   {
-   "name": "Vojvodina",
-   "winner": "sl",
-   "winner_name": "Student List",
-   "pct": 44.56,
-   "votes": 33689,
-   "counted": 216,
-   "total": 1784,
+   "name": "North Bačka",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 36.94,
+   "votes": 1525,
+   "counted": 19,
+   "total": 175,
    "leading": true,
    "elected": false,
    "map_ids": [
-    "_2",
-    "_3",
-    "_4",
-    "_5",
-    "_6",
-    "_7",
+    "_6"
+   ]
+  },
+  {
+   "name": "Central Banat",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 46.39,
+   "votes": 2839,
+   "counted": 22,
+   "total": 178,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_7"
+   ]
+  },
+  {
+   "name": "North Banat",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 38.07,
+   "votes": 5903,
+   "counted": 55,
+   "total": 197,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_5"
+   ]
+  },
+  {
+   "name": "South Banat",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 50.19,
+   "votes": 5827,
+   "counted": 43,
+   "total": 273,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_3"
+   ]
+  },
+  {
+   "name": "West Bačka",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 47.69,
+   "votes": 6724,
+   "counted": 33,
+   "total": 172,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_2"
+   ]
+  },
+  {
+   "name": "South Bačka",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 49.95,
+   "votes": 12720,
+   "counted": 53,
+   "total": 513,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_4"
+   ]
+  },
+  {
+   "name": "Srem",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 50.09,
+   "votes": 13298,
+   "counted": 53,
+   "total": 276,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
     "_8"
    ]
   },
   {
-   "name": "Šumadija and Western Serbia",
+   "name": "Mačva",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 47.87,
-   "votes": 34251,
-   "counted": 391,
-   "total": 2760,
+   "pct": 52.58,
+   "votes": 6515,
+   "counted": 57,
+   "total": 389,
    "leading": true,
    "elected": false,
    "map_ids": [
-    "_9",
-    "_10",
-    "_11",
-    "_12",
-    "_13",
-    "_14",
-    "_15",
+    "_11"
+   ]
+  },
+  {
+   "name": "Kolubara",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 49.48,
+   "votes": 5586,
+   "counted": 66,
+   "total": 278,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_10"
+   ]
+  },
+  {
+   "name": "Podunavlje",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 49.34,
+   "votes": 2363,
+   "counted": 16,
+   "total": 174,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_23"
+   ]
+  },
+  {
+   "name": "Braničevo",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 54.55,
+   "votes": 7664,
+   "counted": 60,
+   "total": 302,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_18"
+   ]
+  },
+  {
+   "name": "Šumadija",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 48.75,
+   "votes": 7329,
+   "counted": 63,
+   "total": 342,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
     "_16"
    ]
   },
   {
-   "name": "Southern and Eastern Serbia",
+   "name": "Pomoravlje",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 55.17,
-   "votes": 32243,
-   "counted": 307,
-   "total": 2400,
+   "pct": 50.29,
+   "votes": 5169,
+   "counted": 56,
+   "total": 287,
    "leading": true,
    "elected": false,
    "map_ids": [
-    "_17",
-    "_18",
-    "_19",
-    "_20",
-    "_21",
-    "_22",
-    "_23",
-    "_24",
+    "_13"
+   ]
+  },
+  {
+   "name": "Bor",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 54.57,
+   "votes": 3199,
+   "counted": 27,
+   "total": 192,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_17"
+   ]
+  },
+  {
+   "name": "Zaječar",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 57.8,
+   "votes": 1785,
+   "counted": 28,
+   "total": 203,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_19"
+   ]
+  },
+  {
+   "name": "Zlatibor",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 46.43,
+   "votes": 8476,
+   "counted": 114,
+   "total": 499,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_9"
+   ]
+  },
+  {
+   "name": "Moravica",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 49.13,
+   "votes": 2093,
+   "counted": 25,
+   "total": 268,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_12"
+   ]
+  },
+  {
+   "name": "Raška",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 38.83,
+   "votes": 4683,
+   "counted": 52,
+   "total": 351,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_15"
+   ]
+  },
+  {
+   "name": "Rasina",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 55.11,
+   "votes": 5986,
+   "counted": 59,
+   "total": 346,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_14"
+   ]
+  },
+  {
+   "name": "Nišava",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 60.66,
+   "votes": 8504,
+   "counted": 67,
+   "total": 442,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_21"
+   ]
+  },
+  {
+   "name": "Toplica",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 60.68,
+   "votes": 2965,
+   "counted": 29,
+   "total": 197,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
     "_25"
+   ]
+  },
+  {
+   "name": "Pirot",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 54.79,
+   "votes": 2368,
+   "counted": 36,
+   "total": 184,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_22"
+   ]
+  },
+  {
+   "name": "Jablanica",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 57.16,
+   "votes": 5725,
+   "counted": 61,
+   "total": 346,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_20"
+   ]
+  },
+  {
+   "name": "Pčinja",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 52.69,
+   "votes": 7213,
+   "counted": 69,
+   "total": 360,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_24"
    ]
   }
  ],
  "map_svg": "../img/serbia.svg",
- "map_title": "Regional map",
- "map_note": "Districts are coloured by the leading list in their RIK region.",
+ "map_title": "District map",
+ "map_note": "Switch between districts and municipalities. Each area is coloured by its leading list.",
+ "map_layers": [
+  {
+   "id": "district",
+   "label": "Districts",
+   "title": "District map",
+   "svg": "../img/serbia.svg",
+   "areas": [
+    {
+     "name": "Belgrade",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 57.89,
+     "votes": 25436,
+     "counted": 81,
+     "total": 1266,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_1"
+     ]
+    },
+    {
+     "name": "North Bačka",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 36.94,
+     "votes": 1525,
+     "counted": 19,
+     "total": 175,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_6"
+     ]
+    },
+    {
+     "name": "Central Banat",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 46.39,
+     "votes": 2839,
+     "counted": 22,
+     "total": 178,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_7"
+     ]
+    },
+    {
+     "name": "North Banat",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 38.07,
+     "votes": 5903,
+     "counted": 55,
+     "total": 197,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_5"
+     ]
+    },
+    {
+     "name": "South Banat",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 50.19,
+     "votes": 5827,
+     "counted": 43,
+     "total": 273,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_3"
+     ]
+    },
+    {
+     "name": "West Bačka",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 47.69,
+     "votes": 6724,
+     "counted": 33,
+     "total": 172,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_2"
+     ]
+    },
+    {
+     "name": "South Bačka",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.95,
+     "votes": 12720,
+     "counted": 53,
+     "total": 513,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_4"
+     ]
+    },
+    {
+     "name": "Srem",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.09,
+     "votes": 13298,
+     "counted": 53,
+     "total": 276,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_8"
+     ]
+    },
+    {
+     "name": "Mačva",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.58,
+     "votes": 6515,
+     "counted": 57,
+     "total": 389,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_11"
+     ]
+    },
+    {
+     "name": "Kolubara",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 49.48,
+     "votes": 5586,
+     "counted": 66,
+     "total": 278,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_10"
+     ]
+    },
+    {
+     "name": "Podunavlje",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 49.34,
+     "votes": 2363,
+     "counted": 16,
+     "total": 174,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_23"
+     ]
+    },
+    {
+     "name": "Braničevo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.55,
+     "votes": 7664,
+     "counted": 60,
+     "total": 302,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_18"
+     ]
+    },
+    {
+     "name": "Šumadija",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.75,
+     "votes": 7329,
+     "counted": 63,
+     "total": 342,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_16"
+     ]
+    },
+    {
+     "name": "Pomoravlje",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.29,
+     "votes": 5169,
+     "counted": 56,
+     "total": 287,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_13"
+     ]
+    },
+    {
+     "name": "Bor",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.57,
+     "votes": 3199,
+     "counted": 27,
+     "total": 192,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_17"
+     ]
+    },
+    {
+     "name": "Zaječar",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 57.8,
+     "votes": 1785,
+     "counted": 28,
+     "total": 203,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_19"
+     ]
+    },
+    {
+     "name": "Zlatibor",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 46.43,
+     "votes": 8476,
+     "counted": 114,
+     "total": 499,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_9"
+     ]
+    },
+    {
+     "name": "Moravica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.13,
+     "votes": 2093,
+     "counted": 25,
+     "total": 268,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_12"
+     ]
+    },
+    {
+     "name": "Raška",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 38.83,
+     "votes": 4683,
+     "counted": 52,
+     "total": 351,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_15"
+     ]
+    },
+    {
+     "name": "Rasina",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.11,
+     "votes": 5986,
+     "counted": 59,
+     "total": 346,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_14"
+     ]
+    },
+    {
+     "name": "Nišava",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 60.66,
+     "votes": 8504,
+     "counted": 67,
+     "total": 442,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_21"
+     ]
+    },
+    {
+     "name": "Toplica",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 60.68,
+     "votes": 2965,
+     "counted": 29,
+     "total": 197,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_25"
+     ]
+    },
+    {
+     "name": "Pirot",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.79,
+     "votes": 2368,
+     "counted": 36,
+     "total": 184,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_22"
+     ]
+    },
+    {
+     "name": "Jablanica",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 57.16,
+     "votes": 5725,
+     "counted": 61,
+     "total": 346,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_20"
+     ]
+    },
+    {
+     "name": "Pčinja",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.69,
+     "votes": 7213,
+     "counted": 69,
+     "total": 360,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "_24"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "municipality",
+   "label": "Municipalities",
+   "title": "Municipality map",
+   "svg": "../img/serbia_opstine.svg",
+   "areas": [
+    {
+     "name": "Ada",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 37.06,
+     "votes": 657,
+     "counted": 8,
+     "total": 29,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "ada"
+     ]
+    },
+    {
+     "name": "Aleksandrovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.56,
+     "votes": 724,
+     "counted": 13,
+     "total": 61,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "aleksandrovac"
+     ]
+    },
+    {
+     "name": "Aleksinac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 51.84,
+     "votes": 762,
+     "counted": 8,
+     "total": 88,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "aleksinac"
+     ]
+    },
+    {
+     "name": "Alibunar",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 52.55,
+     "votes": 1183,
+     "counted": 5,
+     "total": 24,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "alibunar"
+     ]
+    },
+    {
+     "name": "Apatin",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 47.01,
+     "votes": 3004,
+     "counted": 13,
+     "total": 29,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "apatin"
+     ]
+    },
+    {
+     "name": "Arandjelovac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.75,
+     "votes": 1670,
+     "counted": 10,
+     "total": 41,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "arandjelovac"
+     ]
+    },
+    {
+     "name": "Arilje",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 55.26,
+     "votes": 961,
+     "counted": 7,
+     "total": 28,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "arilje"
+     ]
+    },
+    {
+     "name": "Babusnica",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 60.25,
+     "votes": 729,
+     "counted": 10,
+     "total": 41,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "babusnica"
+     ]
+    },
+    {
+     "name": "Bac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.84,
+     "votes": 591,
+     "counted": 4,
+     "total": 25,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bac"
+     ]
+    },
+    {
+     "name": "Backa Palanka",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 49.01,
+     "votes": 1931,
+     "counted": 6,
+     "total": 43,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "backa_palanka"
+     ]
+    },
+    {
+     "name": "Backa Topola",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 38.48,
+     "votes": 860,
+     "counted": 10,
+     "total": 50,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "backa_topola"
+     ]
+    },
+    {
+     "name": "Backi Petrovac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 64.22,
+     "votes": 831,
+     "counted": 2,
+     "total": 11,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "backi_petrovac"
+     ]
+    },
+    {
+     "name": "Bajina Basta",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.8,
+     "votes": 1605,
+     "counted": 18,
+     "total": 52,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bajina_basta"
+     ]
+    },
+    {
+     "name": "Barajevo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.66,
+     "votes": 232,
+     "counted": 1,
+     "total": 28,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "barajevo"
+     ]
+    },
+    {
+     "name": "Batocina",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.32,
+     "votes": 1262,
+     "counted": 10,
+     "total": 22,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "batocina"
+     ]
+    },
+    {
+     "name": "Becej",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 46.8,
+     "votes": 1870,
+     "counted": 9,
+     "total": 38,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "becej"
+     ]
+    },
+    {
+     "name": "Bela Crkva",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.54,
+     "votes": 1012,
+     "counted": 7,
+     "total": 19,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bela_crkva"
+     ]
+    },
+    {
+     "name": "Bela Palanka",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 68.44,
+     "votes": 386,
+     "counted": 6,
+     "total": 36,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bela_palanka"
+     ]
+    },
+    {
+     "name": "Beocin",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.0,
+     "votes": 712,
+     "counted": 4,
+     "total": 16,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "beocin"
+     ]
+    },
+    {
+     "name": "Blace",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 65.94,
+     "votes": 304,
+     "counted": 4,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "blace"
+     ]
+    },
+    {
+     "name": "Bogatic",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.89,
+     "votes": 1011,
+     "counted": 5,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bogatic"
+     ]
+    },
+    {
+     "name": "Bojnik",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 73.14,
+     "votes": 373,
+     "counted": 4,
+     "total": 24,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bojnik"
+     ]
+    },
+    {
+     "name": "Boljevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 65.67,
+     "votes": 331,
+     "counted": 5,
+     "total": 37,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "boljevac"
+     ]
+    },
+    {
+     "name": "Bor",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 51.72,
+     "votes": 705,
+     "counted": 3,
+     "total": 48,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bor"
+     ]
+    },
+    {
+     "name": "Bosilegrad",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 64.7,
+     "votes": 1032,
+     "counted": 15,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bosilegrad"
+     ]
+    },
+    {
+     "name": "Brus",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 59.81,
+     "votes": 826,
+     "counted": 8,
+     "total": 28,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "brus"
+     ]
+    },
+    {
+     "name": "Bujanovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 38.05,
+     "votes": 755,
+     "counted": 9,
+     "total": 59,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "bujanovac"
+     ]
+    },
+    {
+     "name": "Cacak",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 52.95,
+     "votes": 736,
+     "counted": 5,
+     "total": 104,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "cacak"
+     ]
+    },
+    {
+     "name": "Cajetina",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.03,
+     "votes": 608,
+     "counted": 8,
+     "total": 32,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "cajetina"
+     ]
+    },
+    {
+     "name": "Cicevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 53.68,
+     "votes": 1416,
+     "counted": 9,
+     "total": 18,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "cicevac"
+     ]
+    },
+    {
+     "name": "Coka",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.92,
+     "votes": 930,
+     "counted": 9,
+     "total": 22,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "coka"
+     ]
+    },
+    {
+     "name": "Crna Trava",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 72.74,
+     "votes": 467,
+     "counted": 12,
+     "total": 12,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "crna_trava"
+     ]
+    },
+    {
+     "name": "Cukarica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 67.51,
+     "votes": 960,
+     "counted": 2,
+     "total": 113,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "cukarica"
+     ]
+    },
+    {
+     "name": "Cuprija",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 78.1,
+     "votes": 82,
+     "counted": 2,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "cuprija"
+     ]
+    },
+    {
+     "name": "Despotovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 62.4,
+     "votes": 1190,
+     "counted": 10,
+     "total": 44,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "despotovac"
+     ]
+    },
+    {
+     "name": "Dimitrovgrad",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.07,
+     "votes": 959,
+     "counted": 10,
+     "total": 23,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "dimitrovgrad"
+     ]
+    },
+    {
+     "name": "Doljevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 73.9,
+     "votes": 2421,
+     "counted": 11,
+     "total": 37,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "doljevac"
+     ]
+    },
+    {
+     "name": "Gadzin Han",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 61.31,
+     "votes": 740,
+     "counted": 11,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "gadzin_han"
+     ]
+    },
+    {
+     "name": "Golubac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 65.03,
+     "votes": 727,
+     "counted": 9,
+     "total": 30,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "golubac"
+     ]
+    },
+    {
+     "name": "Gornji Milanovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.6,
+     "votes": 253,
+     "counted": 5,
+     "total": 66,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "gornji_milanovac"
+     ]
+    },
+    {
+     "name": "Grocka",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 53.68,
+     "votes": 678,
+     "counted": 2,
+     "total": 52,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "grocka"
+     ]
+    },
+    {
+     "name": "Indjija",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.4,
+     "votes": 1584,
+     "counted": 5,
+     "total": 37,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "indjija"
+     ]
+    },
+    {
+     "name": "Irig",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 56.98,
+     "votes": 906,
+     "counted": 6,
+     "total": 14,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "irig"
+     ]
+    },
+    {
+     "name": "Ivanjica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 52.0,
+     "votes": 663,
+     "counted": 6,
+     "total": 55,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "ivanjica"
+     ]
+    },
+    {
+     "name": "Jagodina",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 40.42,
+     "votes": 1761,
+     "counted": 21,
+     "total": 91,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "jagodina"
+     ]
+    },
+    {
+     "name": "Kanjiza",
+     "winner": "vmsz",
+     "winner_name": "Vojvodina Hungarians",
+     "pct": 42.97,
+     "votes": 1795,
+     "counted": 13,
+     "total": 33,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kanjiza"
+     ]
+    },
+    {
+     "name": "Kikinda",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.01,
+     "votes": 1845,
+     "counted": 9,
+     "total": 60,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kikinda"
+     ]
+    },
+    {
+     "name": "Kladovo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 70.72,
+     "votes": 1005,
+     "counted": 8,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kladovo"
+     ]
+    },
+    {
+     "name": "Knic",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 51.01,
+     "votes": 682,
+     "counted": 7,
+     "total": 36,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "knic"
+     ]
+    },
+    {
+     "name": "Knjazevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.55,
+     "votes": 732,
+     "counted": 10,
+     "total": 65,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "knjazevac"
+     ]
+    },
+    {
+     "name": "Koceljeva",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 60.58,
+     "votes": 481,
+     "counted": 4,
+     "total": 33,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "koceljeva"
+     ]
+    },
+    {
+     "name": "Kosjeric",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 60.23,
+     "votes": 836,
+     "counted": 7,
+     "total": 29,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kosjeric"
+     ]
+    },
+    {
+     "name": "Kovacica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 64.83,
+     "votes": 765,
+     "counted": 3,
+     "total": 21,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kovacica"
+     ]
+    },
+    {
+     "name": "Kovin",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 45.17,
+     "votes": 659,
+     "counted": 5,
+     "total": 26,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kovin"
+     ]
+    },
+    {
+     "name": "Kragujevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 47.09,
+     "votes": 542,
+     "counted": 10,
+     "total": 174,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kragujevac"
+     ]
+    },
+    {
+     "name": "Kraljevo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.64,
+     "votes": 1905,
+     "counted": 13,
+     "total": 103,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kraljevo"
+     ]
+    },
+    {
+     "name": "Krupanj",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 57.82,
+     "votes": 662,
+     "counted": 7,
+     "total": 32,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "krupanj"
+     ]
+    },
+    {
+     "name": "Krusevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 58.61,
+     "votes": 1586,
+     "counted": 15,
+     "total": 132,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "krusevac"
+     ]
+    },
+    {
+     "name": "Kucevo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 57.52,
+     "votes": 505,
+     "counted": 7,
+     "total": 39,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kucevo"
+     ]
+    },
+    {
+     "name": "Kula",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.55,
+     "votes": 885,
+     "counted": 5,
+     "total": 40,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kula"
+     ]
+    },
+    {
+     "name": "Kursumlija",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 51.5,
+     "votes": 739,
+     "counted": 8,
+     "total": 48,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "kursumlija"
+     ]
+    },
+    {
+     "name": "Lajkovac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 56.25,
+     "votes": 724,
+     "counted": 6,
+     "total": 34,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "lajkovac"
+     ]
+    },
+    {
+     "name": "Lapovo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.02,
+     "votes": 582,
+     "counted": 3,
+     "total": 11,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "lapovo"
+     ]
+    },
+    {
+     "name": "Lazarevac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 51.57,
+     "votes": 115,
+     "counted": 3,
+     "total": 65,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "lazarevac"
+     ]
+    },
+    {
+     "name": "Lebane",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 65.07,
+     "votes": 788,
+     "counted": 8,
+     "total": 42,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "lebane"
+     ]
+    },
+    {
+     "name": "Leskovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 53.46,
+     "votes": 3810,
+     "counted": 28,
+     "total": 186,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "leskovac"
+     ]
+    },
+    {
+     "name": "Ljig",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 58.5,
+     "votes": 585,
+     "counted": 7,
+     "total": 30,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "ljig"
+     ]
+    },
+    {
+     "name": "Ljubovija",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.18,
+     "votes": 969,
+     "counted": 11,
+     "total": 34,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "ljubovija"
+     ]
+    },
+    {
+     "name": "Loznica",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 60.04,
+     "votes": 867,
+     "counted": 7,
+     "total": 96,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "loznica"
+     ]
+    },
+    {
+     "name": "Lucani",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.19,
+     "votes": 595,
+     "counted": 9,
+     "total": 43,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "lucani"
+     ]
+    },
+    {
+     "name": "Majdanpek",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 54.2,
+     "votes": 988,
+     "counted": 8,
+     "total": 41,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "majdanpek"
+     ]
+    },
+    {
+     "name": "Mali Idjos",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 37.26,
+     "votes": 474,
+     "counted": 6,
+     "total": 23,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "mali_idjos"
+     ]
+    },
+    {
+     "name": "Mali Zvornik",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.62,
+     "votes": 582,
+     "counted": 6,
+     "total": 29,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "mali_zvornik"
+     ]
+    },
+    {
+     "name": "Malo Crnice",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.89,
+     "votes": 576,
+     "counted": 5,
+     "total": 29,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "malo_crnice"
+     ]
+    },
+    {
+     "name": "Medvedja",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.29,
+     "votes": 235,
+     "counted": 7,
+     "total": 24,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "medvedja"
+     ]
+    },
+    {
+     "name": "Merosina",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 66.09,
+     "votes": 1657,
+     "counted": 9,
+     "total": 26,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "merosina"
+     ]
+    },
+    {
+     "name": "Mionica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 51.61,
+     "votes": 1202,
+     "counted": 14,
+     "total": 38,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "mionica"
+     ]
+    },
+    {
+     "name": "Mladenovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.03,
+     "votes": 1872,
+     "counted": 11,
+     "total": 59,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "mladenovac"
+     ]
+    },
+    {
+     "name": "Negotin",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 67.17,
+     "votes": 843,
+     "counted": 8,
+     "total": 72,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "negotin"
+     ]
+    },
+    {
+     "name": "Nis",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 49.32,
+     "votes": 1929,
+     "counted": 13,
+     "total": 197,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "nis"
+     ]
+    },
+    {
+     "name": "Nova Crnja",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.8,
+     "votes": 918,
+     "counted": 9,
+     "total": 25,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "nova_crnja"
+     ]
+    },
+    {
+     "name": "Nova Varos",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.28,
+     "votes": 1357,
+     "counted": 16,
+     "total": 39,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "nova_varos"
+     ]
+    },
+    {
+     "name": "Novi Becej",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.36,
+     "votes": 810,
+     "counted": 5,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "novi_becej"
+     ]
+    },
+    {
+     "name": "Novi Beograd",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 68.73,
+     "votes": 499,
+     "counted": 1,
+     "total": 149,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "novi_beograd"
+     ]
+    },
+    {
+     "name": "Novi Knezevac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.73,
+     "votes": 1091,
+     "counted": 10,
+     "total": 22,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "novi_knezevac"
+     ]
+    },
+    {
+     "name": "Novi Pazar",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 27.97,
+     "votes": 1162,
+     "counted": 14,
+     "total": 103,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "novi_pazar"
+     ]
+    },
+    {
+     "name": "Obrenovac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.67,
+     "votes": 3794,
+     "counted": 12,
+     "total": 57,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "obrenovac"
+     ]
+    },
+    {
+     "name": "Odzaci",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.81,
+     "votes": 1418,
+     "counted": 4,
+     "total": 27,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "odzaci"
+     ]
+    },
+    {
+     "name": "Opovo",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 54.22,
+     "votes": 1079,
+     "counted": 8,
+     "total": 25,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "opovo"
+     ]
+    },
+    {
+     "name": "Osecina",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 50.09,
+     "votes": 563,
+     "counted": 6,
+     "total": 21,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "osecina"
+     ]
+    },
+    {
+     "name": "Palilula",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 52.35,
+     "votes": 2469,
+     "counted": 6,
+     "total": 123,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "palilula"
+     ]
+    },
+    {
+     "name": "Paracin",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.94,
+     "votes": 864,
+     "counted": 7,
+     "total": 55,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "paracin"
+     ]
+    },
+    {
+     "name": "Pecinci",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 64.84,
+     "votes": 2693,
+     "counted": 11,
+     "total": 30,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "pecinci"
+     ]
+    },
+    {
+     "name": "Petrovac Na Mlavi",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 57.02,
+     "votes": 922,
+     "counted": 6,
+     "total": 45,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "petrovac_na_mlavi"
+     ]
+    },
+    {
+     "name": "Pirot",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 53.16,
+     "votes": 294,
+     "counted": 10,
+     "total": 84,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "pirot"
+     ]
+    },
+    {
+     "name": "Plandiste",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 53.06,
+     "votes": 816,
+     "counted": 7,
+     "total": 23,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "plandiste"
+     ]
+    },
+    {
+     "name": "Pozarevac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.93,
+     "votes": 2030,
+     "counted": 11,
+     "total": 73,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "pozarevac"
+     ]
+    },
+    {
+     "name": "Pozega",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 50.23,
+     "votes": 647,
+     "counted": 9,
+     "total": 53,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "pozega"
+     ]
+    },
+    {
+     "name": "Presevo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 22.28,
+     "votes": 511,
+     "counted": 8,
+     "total": 37,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "presevo"
+     ]
+    },
+    {
+     "name": "Priboj",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.25,
+     "votes": 1626,
+     "counted": 20,
+     "total": 48,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "priboj"
+     ]
+    },
+    {
+     "name": "Prijepolje",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 53.01,
+     "votes": 317,
+     "counted": 6,
+     "total": 61,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "prijepolje"
+     ]
+    },
+    {
+     "name": "Prokuplje",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 61.48,
+     "votes": 929,
+     "counted": 11,
+     "total": 91,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "prokuplje"
+     ]
+    },
+    {
+     "name": "Raca",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 47.95,
+     "votes": 1402,
+     "counted": 14,
+     "total": 27,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "raca"
+     ]
+    },
+    {
+     "name": "Rakovica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 65.87,
+     "votes": 2710,
+     "counted": 5,
+     "total": 76,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "rakovica"
+     ]
+    },
+    {
+     "name": "Raska",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 58.67,
+     "votes": 308,
+     "counted": 5,
+     "total": 47,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "raska"
+     ]
+    },
+    {
+     "name": "Razanj",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 65.29,
+     "votes": 331,
+     "counted": 5,
+     "total": 21,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "razanj"
+     ]
+    },
+    {
+     "name": "Rekovac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.85,
+     "votes": 752,
+     "counted": 11,
+     "total": 36,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "rekovac"
+     ]
+    },
+    {
+     "name": "Ruma",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 50.42,
+     "votes": 2587,
+     "counted": 8,
+     "total": 43,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "ruma"
+     ]
+    },
+    {
+     "name": "Sabac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.82,
+     "votes": 1184,
+     "counted": 10,
+     "total": 100,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sabac"
+     ]
+    },
+    {
+     "name": "Savski Venac",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 69.11,
+     "votes": 1367,
+     "counted": 3,
+     "total": 39,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "savski_venac"
+     ]
+    },
+    {
+     "name": "Secanj",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 58.47,
+     "votes": 414,
+     "counted": 2,
+     "total": 17,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "secanj"
+     ]
+    },
+    {
+     "name": "Senta",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 45.73,
+     "votes": 797,
+     "counted": 6,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "senta"
+     ]
+    },
+    {
+     "name": "Sid",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 57.04,
+     "votes": 1077,
+     "counted": 6,
+     "total": 39,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sid"
+     ]
+    },
+    {
+     "name": "Sjenica",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 33.69,
+     "votes": 282,
+     "counted": 12,
+     "total": 68,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sjenica"
+     ]
+    },
+    {
+     "name": "Smederevo",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 59.87,
+     "votes": 282,
+     "counted": 2,
+     "total": 78,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "smederevo"
+     ]
+    },
+    {
+     "name": "Smederevska Palanka",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 49.32,
+     "votes": 1260,
+     "counted": 6,
+     "total": 49,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "smederevska_palanka"
+     ]
+    },
+    {
+     "name": "Sokobanja",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 61.33,
+     "votes": 249,
+     "counted": 4,
+     "total": 32,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sokobanja"
+     ]
+    },
+    {
+     "name": "Sombor",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 53.13,
+     "votes": 1772,
+     "counted": 11,
+     "total": 76,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sombor"
+     ]
+    },
+    {
+     "name": "Sopot",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 48.25,
+     "votes": 1627,
+     "counted": 12,
+     "total": 33,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sopot"
+     ]
+    },
+    {
+     "name": "Srbobran",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.31,
+     "votes": 1002,
+     "counted": 6,
+     "total": 28,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "srbobran"
+     ]
+    },
+    {
+     "name": "Sremska Mitrovica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 49.73,
+     "votes": 3017,
+     "counted": 10,
+     "total": 60,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sremska_mitrovica"
+     ]
+    },
+    {
+     "name": "Sremski Karlovci",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 56.62,
+     "votes": 1968,
+     "counted": 5,
+     "total": 8,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "sremski_karlovci"
+     ]
+    },
+    {
+     "name": "Stara Pazova",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 50.26,
+     "votes": 2234,
+     "counted": 7,
+     "total": 53,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "stara_pazova"
+     ]
+    },
+    {
+     "name": "Stari Grad",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 73.23,
+     "votes": 1756,
+     "counted": 5,
+     "total": 56,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "stari_grad"
+     ]
+    },
+    {
+     "name": "Subotica",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 42.83,
+     "votes": 266,
+     "counted": 3,
+     "total": 102,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "subotica"
+     ]
+    },
+    {
+     "name": "Surcin",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 53.95,
+     "votes": 437,
+     "counted": 1,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "surcin"
+     ]
+    },
+    {
+     "name": "Surdulica",
+     "winner": "sps",
+     "winner_name": "Socialist Party",
+     "pct": 36.65,
+     "votes": 177,
+     "counted": 3,
+     "total": 44,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "surdulica"
+     ]
+    },
+    {
+     "name": "Svilajnac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 61.68,
+     "votes": 520,
+     "counted": 5,
+     "total": 30,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "svilajnac"
+     ]
+    },
+    {
+     "name": "Svrljig",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 58.14,
+     "votes": 664,
+     "counted": 10,
+     "total": 42,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "svrljig"
+     ]
+    },
+    {
+     "name": "Temerin",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 51.13,
+     "votes": 1357,
+     "counted": 5,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "temerin"
+     ]
+    },
+    {
+     "name": "Titel",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 47.91,
+     "votes": 965,
+     "counted": 6,
+     "total": 25,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "titel"
+     ]
+    },
+    {
+     "name": "Topola",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 53.01,
+     "votes": 1294,
+     "counted": 9,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "topola"
+     ]
+    },
+    {
+     "name": "Trgoviste",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 75.53,
+     "votes": 565,
+     "counted": 5,
+     "total": 25,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "trgoviste"
+     ]
+    },
+    {
+     "name": "Trstenik",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 54.87,
+     "votes": 795,
+     "counted": 8,
+     "total": 67,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "trstenik"
+     ]
+    },
+    {
+     "name": "Tutin",
+     "winner": "sda",
+     "winner_name": "SDA Sandžak",
+     "pct": 36.06,
+     "votes": 406,
+     "counted": 10,
+     "total": 61,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "tutin"
+     ]
+    },
+    {
+     "name": "Ub",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 59.79,
+     "votes": 2390,
+     "counted": 19,
+     "total": 52,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "ub"
+     ]
+    },
+    {
+     "name": "Uzice",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 54.47,
+     "votes": 1254,
+     "counted": 11,
+     "total": 89,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "uzice"
+     ]
+    },
+    {
+     "name": "Valjevo",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 46.39,
+     "votes": 720,
+     "counted": 14,
+     "total": 103,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "valjevo"
+     ]
+    },
+    {
+     "name": "Varvarin",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 50.92,
+     "votes": 639,
+     "counted": 6,
+     "total": 40,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "varvarin"
+     ]
+    },
+    {
+     "name": "Velika Plana",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.81,
+     "votes": 931,
+     "counted": 8,
+     "total": 47,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "velika_plana"
+     ]
+    },
+    {
+     "name": "Veliko Gradiste",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 56.46,
+     "votes": 1363,
+     "counted": 10,
+     "total": 32,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "veliko_gradiste"
+     ]
+    },
+    {
+     "name": "Vladicin Han",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 71.19,
+     "votes": 378,
+     "counted": 6,
+     "total": 51,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vladicin_han"
+     ]
+    },
+    {
+     "name": "Vladimirci",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.73,
+     "votes": 865,
+     "counted": 7,
+     "total": 34,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vladimirci"
+     ]
+    },
+    {
+     "name": "Vlasotince",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.0,
+     "votes": 52,
+     "counted": 2,
+     "total": 58,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vlasotince"
+     ]
+    },
+    {
+     "name": "Vracar",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 72.65,
+     "votes": 3881,
+     "counted": 9,
+     "total": 63,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vracar"
+     ]
+    },
+    {
+     "name": "Vranje",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 63.02,
+     "votes": 3815,
+     "counted": 23,
+     "total": 113,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vranje"
+     ]
+    },
+    {
+     "name": "Vrbas",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 58.09,
+     "votes": 1174,
+     "counted": 3,
+     "total": 36,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vrbas"
+     ]
+    },
+    {
+     "name": "Vrnjacka Banja",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 55.57,
+     "votes": 1572,
+     "counted": 10,
+     "total": 37,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vrnjacka_banja"
+     ]
+    },
+    {
+     "name": "Vrsac",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 53.91,
+     "votes": 682,
+     "counted": 8,
+     "total": 56,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "vrsac"
+     ]
+    },
+    {
+     "name": "Zabalj",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 52.35,
+     "votes": 736,
+     "counted": 3,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zabalj"
+     ]
+    },
+    {
+     "name": "Zabari",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 66.76,
+     "votes": 231,
+     "counted": 4,
+     "total": 37,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zabari"
+     ]
+    },
+    {
+     "name": "Zagubica",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 59.83,
+     "votes": 1509,
+     "counted": 8,
+     "total": 17,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zagubica"
+     ]
+    },
+    {
+     "name": "Zajecar",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 60.25,
+     "votes": 473,
+     "counted": 9,
+     "total": 69,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zajecar"
+     ]
+    },
+    {
+     "name": "Zemun",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 58.41,
+     "votes": 2826,
+     "counted": 7,
+     "total": 115,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zemun"
+     ]
+    },
+    {
+     "name": "Zitiste",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 43.3,
+     "votes": 281,
+     "counted": 3,
+     "total": 31,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zitiste"
+     ]
+    },
+    {
+     "name": "Zitoradja",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 67.14,
+     "votes": 993,
+     "counted": 6,
+     "total": 27,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zitoradja"
+     ]
+    },
+    {
+     "name": "Zrenjanin",
+     "winner": "sns",
+     "winner_name": "Vučić – United Serbia",
+     "pct": 44.99,
+     "votes": 543,
+     "counted": 3,
+     "total": 74,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zrenjanin"
+     ]
+    },
+    {
+     "name": "Zvezdara",
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 73.93,
+     "votes": 797,
+     "counted": 1,
+     "total": 100,
+     "leading": true,
+     "elected": false,
+     "map_ids": [
+      "zvezdara"
+     ]
+    }
+   ]
+  }
+ ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-25T21:15:26Z"
+ "updated_at": "2026-10-25T21:30:28Z"
 }

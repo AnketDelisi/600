@@ -334,21 +334,27 @@ async function loadHistory(d) {
   }
 }
 
-async function loadMap(d) {
+async function loadMap(d, layerId) {
   const el = document.getElementById("live-map");
   if (!el) return;
   try {
-    if (!mapCache.has(d.map_svg)) {
-      const r = await fetch(d.map_svg);
+    const layers = Array.isArray(d.map_layers) && d.map_layers.length
+      ? d.map_layers
+      : [{ id: "default", svg: d.map_svg, areas: d.areas }];
+    const layer = layers.find((item) => item.id === layerId) || layers[0];
+    const svgPath = layer.svg || d.map_svg;
+    if (!svgPath) throw new Error("No map");
+    if (!mapCache.has(svgPath)) {
+      const r = await fetch(svgPath);
       if (!r.ok) throw new Error("HTTP " + r.status);
-      mapCache.set(d.map_svg, await r.text());
+      mapCache.set(svgPath, await r.text());
     }
-    const doc = new DOMParser().parseFromString(mapCache.get(d.map_svg), "image/svg+xml");
+    const doc = new DOMParser().parseFromString(mapCache.get(svgPath), "image/svg+xml");
     const svg = doc.querySelector("svg");
     if (!svg) throw new Error("No SVG");
     const entries = d.entries || [];
     const byId = new Map(entries.map((e) => [String(e.id), e]));
-    const areas = Array.isArray(d.areas) ? d.areas : [];
+    const areas = Array.isArray(layer.areas) ? layer.areas : [];
     const areaById = new Map();
     areas.forEach((a) => (a.map_ids || [a.name]).forEach((id) => areaById.set(String(id).toUpperCase(), a)));
     const leader = entries.find((e) => Number(e.pct) > 0) || null;
@@ -371,7 +377,9 @@ async function loadMap(d) {
     svg.removeAttribute("height");
     svg.setAttribute("width", "100%");
     svg.setAttribute("role", "img");
-    svg.setAttribute("aria-label", d.map_title || "Results map");
+    svg.setAttribute("aria-label", layer.title || d.map_title || "Results map");
+    const title = document.getElementById("live-map-title");
+    if (title) title.textContent = layer.title || d.map_title || "Map";
     el.replaceChildren(svg);
     const legend = document.getElementById("live-map-legend");
     if (legend) {
@@ -491,6 +499,10 @@ function renderElection(d) {
   const clock = countdown(d.close_at);
   const status = `<div class="live-status" id="live-status" role="status" aria-live="polite">${statusPill(d.status)}${counted}${turnout}${clock ? `<span id="live-count">${esc(clock)}</span>` : ""}<span>Checked <b id="live-checked">${checkedAt()} UTC</b></span></div>`;
   const hasTracker = !!POLL_CONFIG[d.id];
+  const mapLayers = Array.isArray(d.map_layers) && d.map_layers.length
+    ? d.map_layers
+    : (d.map_svg ? [{ id: "default", label: "Map", svg: d.map_svg, areas: d.areas }] : []);
+  const mapTabs = mapLayers.length > 1 ? `<div class="live-map-tabs" role="tablist" aria-label="Map layer">${mapLayers.map((layer, index) => `<button type="button" role="tab" data-layer="${esc(layer.id)}" aria-selected="${index === 0}" class="${index === 0 ? "active" : ""}">${esc(layer.label || layer.id)}</button>`).join("")}</div>` : "";
   const trackerNote = hasTracker ? "While you wait, the campaign polls are below. " : "";
   const detailNote = d.seat_total ? `Seat and ${(d.area_label || "area").toLowerCase()} results will appear when counting starts.` : "Detailed results will appear when counting starts.";
   const wait = waiting
@@ -512,14 +524,25 @@ function renderElection(d) {
       ${status}
     </section>
     ${wait}
-    ${d.map_svg ? `<section class="live-card" id="live-map-card" aria-labelledby="live-map-title"><h2 id="live-map-title">${esc(d.map_title || "Map")}</h2><p class="live-note">${esc(d.map_note || "Results as reported by the source.")}</p><div class="live-map" id="live-map"></div><div class="live-map-legend" id="live-map-legend"></div></section>` : ""}
+    ${mapLayers.length ? `<section class="live-card" id="live-map-card" aria-labelledby="live-map-title"><h2 id="live-map-title">${esc(mapLayers[0].title || d.map_title || "Map")}</h2><p class="live-note">${esc(d.map_note || "Results as reported by the source.")}</p>${mapTabs}<div class="live-map" id="live-map"></div><div class="live-map-legend" id="live-map-legend"></div></section>` : ""}
     <div id="live-history"></div>
     ${hasTracker ? '<div id="live-poll-tracker"></div>' : ""}
     ${areas}
     ${d.notes ? `<div class="live-card"><p class="live-note" style="margin:0">${esc(d.notes)}</p></div>` : ""}
   `;
   renderFooter(d);
-  if (d.map_svg) loadMap(d);
+  if (mapLayers.length) {
+    loadMap(d, mapLayers[0].id);
+    document.querySelectorAll(".live-map-tabs button").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".live-map-tabs button").forEach((item) => {
+          item.classList.toggle("active", item === button);
+          item.setAttribute("aria-selected", String(item === button));
+        });
+        loadMap(d, button.dataset.layer);
+      });
+    });
+  }
   loadHistory(d);
   if (hasTracker) loadPollTracker(d);
 }

@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 2456,
+ "counted": 2562,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "25.10.2026 23:20:00",
+ "source_updated_at": "25.10.2026 23:25:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,16 +18,16 @@
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 45.42,
-   "votes": 343524,
+   "pct": 45.44,
+   "votes": 362257,
    "seats": 124
   },
   {
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 44.86,
-   "votes": 339285,
+   "pct": 44.84,
+   "votes": 357482,
    "seats": 122
   },
   {
@@ -35,23 +35,23 @@
    "name": "Socialist Party",
    "color": "#EB1B23",
    "pct": 2.56,
-   "votes": 19330,
+   "votes": 20391,
    "seats": 0
   },
   {
    "id": "vmsz",
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
-   "pct": 1.65,
-   "votes": 12455,
+   "pct": 1.67,
+   "votes": 13311,
    "seats": 4
   },
   {
    "id": "nada",
    "name": "NADA",
    "color": "#616264",
-   "pct": 0.78,
-   "votes": 5902,
+   "pct": 0.77,
+   "votes": 6163,
    "seats": 0
   },
   {
@@ -59,7 +59,7 @@
    "name": "SDA Sandžak",
    "color": "#069443",
    "pct": 0.35,
-   "votes": 2660,
+   "votes": 2819,
    "seats": 0
   },
   {
@@ -67,7 +67,7 @@
    "name": "European Serbia",
    "color": "#C9A227",
    "pct": 0.24,
-   "votes": 1833,
+   "votes": 1933,
    "seats": 0
   },
   {
@@ -75,7 +75,7 @@
    "name": "Russian Party",
    "color": "#0D3B66",
    "pct": 0.15,
-   "votes": 1169,
+   "votes": 1227,
    "seats": 0
   }
  ],
@@ -7916,5 +7916,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-25T22:22:06Z"
+ "updated_at": "2026-10-25T22:26:27Z"
 }

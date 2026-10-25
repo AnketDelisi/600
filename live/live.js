@@ -262,7 +262,7 @@ async function loadPollTracker(data) {
 }
 
 async function loadIndex() {
-  return fetchJson(LIVE_INDEX);
+  return fetchJson(LIVE_INDEX + "?t=" + Date.now());
 }
 
 
@@ -327,7 +327,7 @@ async function loadHistory(d) {
   const el = document.getElementById("live-history");
   if (!el) return;
   try {
-    const history = await fetchJson(`../data/live/history-${encodeURIComponent(d.id)}.json`);
+    const history = await fetchJson(`../data/live/history-${encodeURIComponent(d.id)}.json?t=${Date.now()}`);
     el.outerHTML = historyHtml(d, history);
   } catch (err) {
     el.innerHTML = `<h2>Result over the count</h2><p class="live-note">The history chart starts with the first counted snapshot. It updates every five minutes.</p>`;
@@ -550,7 +550,7 @@ function renderElection(d) {
 async function loadElection(id) {
   if (!id) return;
   try {
-    const d = await fetchJson(`../data/live/${encodeURIComponent(id)}.json`);
+    const d = await fetchJson(`../data/live/${encodeURIComponent(id)}.json?t=${Date.now()}`);
     const payload = JSON.stringify(d);
     if (payload === lastPayload) {
       currentData = d;

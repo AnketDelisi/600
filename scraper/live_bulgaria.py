@@ -1,5 +1,6 @@
 """Bulgaria 2026 presidential live feed (CIK results page)."""
 import re
+from concurrent.futures import ThreadPoolExecutor
 
 import requests
 from bs4 import BeautifulSoup
@@ -7,7 +8,8 @@ from bs4 import BeautifulSoup
 from live_common import write_live
 
 ELECTION = "bulgaria-2026"
-CIK_URL = "https://results.cik.bg/pvr202610/rezultati/index.html"
+CIK_BASE = "https://results.cik.bg/pvr202610/rezultati"
+CIK_URL = CIK_BASE + "/index.html"
 ELEKT_URL = "https://elekt.io/elekt/api/v1/elections/bgr-presidential-2026"
 HEADERS = {"User-Agent": "600-live-results/1.0"}
 ALIASES = {
@@ -18,6 +20,39 @@ ALIASES = {
     "mihaylov": ("mihaylov", "михайлов"),
     "hristanov": ("hristanov", "христанов"),
 }
+REGIONS = [
+    ("01", "Blagoevgrad", "blagoevgrad"),
+    ("02", "Burgas", "burgas"),
+    ("03", "Varna", "varna"),
+    ("04", "Veliko Tarnovo", "veliko_tarnovo"),
+    ("05", "Vidin", "vidin"),
+    ("06", "Vratsa", "vratsa"),
+    ("07", "Gabrovo", "gabrovo"),
+    ("08", "Dobrich", "dobrich"),
+    ("09", "Kardzhali", "kardzhali"),
+    ("10", "Kyustendil", "kyustendil"),
+    ("11", "Lovech", "lovech"),
+    ("12", "Montana", "montana"),
+    ("13", "Pazardzhik", "pazardzhik"),
+    ("14", "Pernik", "pernik"),
+    ("15", "Pleven", "pleven"),
+    ("16", "Plovdiv City", "plovdiv"),
+    ("17", "Plovdiv Region", "plovdiv"),
+    ("18", "Razgrad", "razgrad"),
+    ("19", "Ruse", "ruse"),
+    ("20", "Silistra", "silistra"),
+    ("21", "Sliven", "sliven"),
+    ("22", "Smolyan", "smolyan"),
+    ("23", "Sofia 23", "sofiacity"),
+    ("24", "Sofia 24", "sofiacity"),
+    ("25", "Sofia 25", "sofiacity"),
+    ("26", "Sofia Region", "sofia"),
+    ("27", "Stara Zagora", "stara_zagora"),
+    ("28", "Targovishte", "targovishte"),
+    ("29", "Haskovo", "haskovo"),
+    ("30", "Shumen", "shumen"),
+    ("31", "Yambol", "yambol"),
+]
 NAMES = {
     "iotova": ("IOTOVA", "Iliana Iotova", "#DB0F28"),
     "gyurov": ("GYUROV", "Andrey Gyurov", "#4200FF"),
@@ -44,6 +79,62 @@ def num(value):
 def pct(value):
     found = re.search(r"(\d+(?:[.,]\d+)?)\s*%", value or "")
     return float(found.group(1).replace(",", ".")) if found else None
+
+
+def parse_region(region):
+    code, label, map_id = region
+    response = requests.get(CIK_BASE + "/" + code + ".html", headers=HEADERS, timeout=45)
+    response.raise_for_status()
+    soup = BeautifulSoup(response.content.decode("utf-8", "replace"), "lxml")
+    rows = []
+    total = 0
+    for row in soup.find_all("tr"):
+        cells = [cell.get_text(" ", strip=True) for cell in row.find_all(["td", "th"])]
+        if len(cells) < 3:
+            continue
+        votes = num(cells[-2])
+        total += votes
+        key = party(cells[1])
+        if key:
+            rows.append((key, votes))
+    if not rows or not total:
+        return None
+    text = soup.get_text(" ", strip=True)
+    found = re.search(r"обработени\s*([\d.,]+)\s*%", text, re.I)
+    counted = float(found.group(1).replace(",", ".")) if found else None
+    winner, votes = max(rows, key=lambda row: row[1])
+    return map_id, label, winner, votes, total, counted
+
+
+def regional_areas():
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = list(pool.map(parse_region, REGIONS))
+    merged = {}
+    for result in results:
+        if not result:
+            continue
+        map_id, label, winner, votes, total, counted = result
+        row = merged.setdefault(map_id, {"label": label, "votes": {}, "total": 0, "counted": 0})
+        row["votes"][winner] = row["votes"].get(winner, 0) + votes
+        row["total"] += total
+        row["counted"] = max(row["counted"], counted or 0)
+    labels = {"plovdiv": "Plovdiv", "sofiacity": "Sofia City", "sofia": "Sofia Region"}
+    areas = []
+    for map_id, row in merged.items():
+        winner, votes = max(row["votes"].items(), key=lambda item: item[1])
+        areas.append({
+            "name": labels.get(map_id, row["label"]),
+            "winner": winner,
+            "winner_name": NAMES[winner][1],
+            "pct": round(votes / row["total"] * 100, 2),
+            "votes": votes,
+            "counted": row["counted"] or None,
+            "total": 100,
+            "leading": True,
+            "elected": False,
+            "map_ids": [map_id],
+        })
+    return areas
 
 
 def cik_main():
@@ -84,6 +175,7 @@ def cik_main():
     if found:
         updated = found.group(1).strip()
     status = "final" if counted is not None and counted >= 100 else "counting"
+    areas = regional_areas()
     write_live(ELECTION, {
         "name": "Bulgaria 2026",
         "date": "2026-10-25",
@@ -102,10 +194,13 @@ def cik_main():
         "entries": entries,
         "seat_total": None,
         "majority": None,
-        "areas": [],
+        "area_title": "Regions",
+        "area_label": "Region",
+        "area_note": "CIK regional totals. Regions are coloured by their leading candidate.",
+        "areas": areas,
         "map_svg": "../img/bulgaria.svg",
-        "map_title": "National map",
-        "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader.",
+        "map_title": "Regional map",
+        "map_note": "Colour shows the leading candidate in each CIK region.",
         "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
     })
     return True
@@ -153,10 +248,13 @@ def elekt_main():
         "entries": entries,
         "seat_total": None,
         "majority": None,
+        "area_title": "Regions",
+        "area_label": "Region",
+        "area_note": "CIK regional totals. Regions are coloured by their leading candidate.",
         "areas": [],
         "map_svg": "../img/bulgaria.svg",
         "map_title": "National map",
-        "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader.",
+        "map_note": "The available feed has no regional totals, so the map shows the national leader.",
         "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
     })
     return True

@@ -2,7 +2,7 @@ name: Live results
 
 on:
   schedule:
-    # BC (24 Oct), Serbia / Brazil / Bulgaria (25 Oct), plus the day after
+    # Serbia / Brazil / Bulgaria (25 Oct), plus the day after
     - cron: '*/5 * 24-27 10 *'
   workflow_dispatch:
 

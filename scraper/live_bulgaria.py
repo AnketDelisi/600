@@ -64,6 +64,9 @@ def api_main():
         "seat_total": None,
         "majority": None,
         "areas": [],
+        "map_svg": "../img/bulgaria.svg",
+        "map_title": "National map",
+        "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader.",
         "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
     })
     return True
@@ -130,6 +133,9 @@ def main():
         "seat_total": None,
         "majority": None,
         "areas": [],
+        "map_svg": "../img/bulgaria.svg",
+        "map_title": "National map",
+        "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader.",
         "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
     })
 

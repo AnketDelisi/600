@@ -1,0 +1,16 @@
+{
+ "election": "brazil-2026-r2",
+ "snapshots": [
+  {
+   "at": "2026-10-25T20:35:37Z",
+   "counted": 1225,
+   "total": 499248,
+   "counted_pct": 0.25,
+   "pct": {
+    "lula": 57.66,
+    "flavio": 42.34
+   },
+   "seats": {}
+  }
+ ]
+}

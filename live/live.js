@@ -19,16 +19,6 @@ const color = (e) => e.color || "#6C665B";
 const DAY = 24 * 60 * 60 * 1000;
 
 const POLL_CONFIG = {
-  "bc-2026": {
-    file: "../data/bc/polls.json",
-    parties: [
-      { id: "bcndp", name: "BC NDP", short: "NDP", color: "#F4A460", logo: "../img/bc/BCNDP.svg" },
-      { id: "cpbc", name: "Conservatives", short: "CON", color: "#004AAD", logo: "../img/bc/CPBC.svg" },
-      { id: "gpbc", name: "Greens", short: "GRN", color: "#99C955", logo: "../img/bc/GPBC.svg" },
-      { id: "onbc", name: "OneBC", short: "1BC", color: "#C49B50", logo: "../img/bc/1BC.svg" },
-      { id: "cbc", name: "CentreBC", short: "CBC", color: "#EE2D30", logo: "../img/bc/CBC.svg" },
-    ],
-  },
   "serbia-2026": {
     file: "../data/serbia/polls.json",
     parties: [
@@ -65,6 +55,7 @@ const METHOD_LABELS = {
   mixed: "Mixed", "": "Not stated",
 };
 const pollCache = new Map();
+const mapCache = new Map();
 
 async function fetchJson(url, timeout = 12000) {
   const ctrl = new AbortController();
@@ -274,6 +265,125 @@ async function loadIndex() {
   return fetchJson(LIVE_INDEX);
 }
 
+
+function shortTime(iso) {
+  const d = new Date(iso);
+  return isNaN(d) ? "—" : d.toISOString().slice(11, 16);
+}
+
+function historyHtml(d, history) {
+  const snaps = (history.snapshots || []).filter((s) => s.pct && Object.keys(s.pct).length);
+  if (!snaps.length) {
+    return `<section class="live-card" id="live-history"><h2>Result over the count</h2><p class="live-note">The chart starts with the first counted snapshot. It updates every five minutes.</p></section>`;
+  }
+  const hasCount = snaps.some((s) => s.counted_pct != null);
+  const latest = snaps[snaps.length - 1];
+  const parties = (d.entries || []).map((e) => ({
+    ...e,
+    latest: Number(latest.pct[e.id] || 0),
+  })).filter((e) => snaps.some((s) => Number(s.pct[e.id] || 0) > 0))
+    .sort((a, b) => b.latest - a.latest).slice(0, 6);
+  const W = Math.max(620, (liveRoot && liveRoot.clientWidth) || 900);
+  const H = 300, L = 44, R = 18, T = 16, B = 34;
+  const iw = W - L - R, ih = H - T - B;
+  const values = snaps.flatMap((s) => parties.map((e) => Number(s.pct[e.id] || 0)));
+  const yMax = Math.max(10, Math.ceil(Math.max(...values) / 10) * 10);
+  const times = snaps.map((s) => new Date(s.at).getTime());
+  const tMin = Math.min(...times), tMax = Math.max(...times);
+  const x = (s) => {
+    if (hasCount) return L + (Math.max(0, Math.min(100, Number(s.counted_pct) || 0)) / 100) * iw;
+    return L + ((new Date(s.at).getTime() - tMin) / Math.max(1, tMax - tMin)) * iw;
+  };
+  const y = (v) => T + ih - (Math.max(0, Math.min(yMax, Number(v) || 0)) / yMax) * ih;
+  const xTicks = hasCount ? [0, 25, 50, 75, 100] : [0, .25, .5, .75, 1].map((p) => tMin + p * (tMax - tMin));
+  const yTicks = [0, .25, .5, .75, 1].map((p) => p * yMax);
+  const grid = yTicks.map((v) => `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"></line>`).join("");
+  const xAxis = xTicks.map((v) => {
+    const px = hasCount ? L + (v / 100) * iw : x({ at: new Date(v).toISOString() });
+    const label = hasCount ? v + "%" : shortTime(new Date(v).toISOString());
+    return `<text class="axis" x="${px}" y="${H - 12}" text-anchor="middle">${esc(label)}</text>`;
+  }).join("");
+  const yAxis = yTicks.map((v) => `<text class="axis" x="${L - 8}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`).join("");
+  const paths = parties.map((e) => {
+    const pts = snaps.filter((s) => s.pct[e.id] != null).map((s) => [x(s), y(s.pct[e.id])]);
+    if (!pts.length) return "";
+    const dpath = pts.map((p, i) => (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1)).join(" ");
+    const dots = snaps.filter((s) => s.pct[e.id] != null).map((s) =>
+      `<circle class="poll-dot" cx="${x(s)}" cy="${y(s.pct[e.id])}" r="3" fill="${color(e)}"><title>${esc(e.name)} · ${esc(shortTime(s.at))} UTC · ${pct(s.pct[e.id])} at ${s.counted_pct == null ? "count pending" : Number(s.counted_pct).toFixed(1) + "% counted"}</title></circle>`).join("");
+    return `<path class="party-line" stroke="${color(e)}" d="${dpath}"></path>${dots}`;
+  }).join("");
+  const title = hasCount ? "Result over the count" : "Result over time";
+  return `<section class="live-card" id="live-history" aria-labelledby="live-history-title">
+    <h2 id="live-history-title">${title}</h2>
+    <p class="live-note">Vote share at each five-minute snapshot. The x-axis runs from 0% to 100% counted${hasCount ? "" : "; this source does not publish a count, so it runs on time"}.</p>
+    <div class="live-chart live-history-chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}">${grid}${yAxis}${xAxis}${paths}</svg></div>
+    <div class="live-chart-legend">${parties.map((e) => `<span><i style="background:${color(e)}"></i>${esc(e.name)}</span>`).join("")}</div>
+    <div class="live-sub">${snaps.length} snapshots · latest ${esc(shortTime(latest.at))} UTC${latest.counted_pct == null ? "" : " · " + Number(latest.counted_pct).toFixed(1) + "% counted"}</div>
+  </section>`;
+}
+
+async function loadHistory(d) {
+  const el = document.getElementById("live-history");
+  if (!el) return;
+  try {
+    const history = await fetchJson(`../data/live/history-${encodeURIComponent(d.id)}.json`);
+    el.outerHTML = historyHtml(d, history);
+  } catch (err) {
+    el.innerHTML = `<h2>Result over the count</h2><p class="live-note">The history chart starts with the first counted snapshot. It updates every five minutes.</p>`;
+  }
+}
+
+async function loadMap(d) {
+  const el = document.getElementById("live-map");
+  if (!el) return;
+  try {
+    if (!mapCache.has(d.map_svg)) {
+      const r = await fetch(d.map_svg);
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      mapCache.set(d.map_svg, await r.text());
+    }
+    const doc = new DOMParser().parseFromString(mapCache.get(d.map_svg), "image/svg+xml");
+    const svg = doc.querySelector("svg");
+    if (!svg) throw new Error("No SVG");
+    const entries = d.entries || [];
+    const byId = new Map(entries.map((e) => [String(e.id), e]));
+    const areas = Array.isArray(d.areas) ? d.areas : [];
+    const areaById = new Map(areas.map((a) => [String(a.name).toUpperCase(), a]));
+    const leader = entries.find((e) => Number(e.pct) > 0) || null;
+    const winners = new Set();
+    svg.querySelectorAll("path[id]").forEach((path) => {
+      const area = areaById.get(path.id.toUpperCase());
+      const winner = area ? byId.get(String(area.winner)) : (areas.length ? null : leader);
+      if (winner) winners.add(winner.id);
+      path.style.fill = winner ? color(winner) : "#E6E0D6";
+      path.style.stroke = "#FFFFFF";
+      path.style.strokeWidth = "1";
+      path.style.vectorEffect = "non-scaling-stroke";
+      if (area) {
+        const t = doc.createElementNS("http://www.w3.org/2000/svg", "title");
+        t.textContent = `${area.name} · ${area.winner_name || area.winner}${area.pct == null ? "" : " " + pct(area.pct)}`;
+        path.appendChild(t);
+      }
+    });
+    svg.removeAttribute("width");
+    svg.removeAttribute("height");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", d.map_title || "Results map");
+    el.replaceChildren(svg);
+    const legend = document.getElementById("live-map-legend");
+    if (legend) {
+      const shown = entries.filter((e) => winners.has(e.id));
+      legend.innerHTML = shown.length
+        ? shown.map((e) => `<span><i style="background:${color(e)}"></i>${esc(e.name)}</span>`).join("")
+        : `<span>Map fills when counting starts.</span>`;
+    }
+  } catch (err) {
+    el.innerHTML = `<p class="live-note">Map could not be loaded.</p>`;
+    console.error(err);
+  }
+}
+
 function renderNav(elections) {
   liveNav.innerHTML = elections.map((e) => `
     <button type="button" data-id="${esc(e.id)}" class="${e.id === liveId ? "active" : ""}" aria-pressed="${e.id === liveId}">${esc(e.name)}</button>
@@ -400,11 +510,15 @@ function renderElection(d) {
       ${status}
     </section>
     ${wait}
+    ${d.map_svg ? `<section class="live-card" id="live-map-card" aria-labelledby="live-map-title"><h2 id="live-map-title">${esc(d.map_title || "Map")}</h2><p class="live-note">${esc(d.map_note || "Results as reported by the source.")}</p><div class="live-map" id="live-map"></div><div class="live-map-legend" id="live-map-legend"></div></section>` : ""}
+    <div id="live-history"></div>
     ${hasTracker ? '<div id="live-poll-tracker"></div>' : ""}
     ${areas}
     ${d.notes ? `<div class="live-card"><p class="live-note" style="margin:0">${esc(d.notes)}</p></div>` : ""}
   `;
   renderFooter(d);
+  if (d.map_svg) loadMap(d);
+  loadHistory(d);
   if (hasTracker) loadPollTracker(d);
 }
 

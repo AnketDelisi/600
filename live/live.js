@@ -287,7 +287,8 @@ function historyHtml(d, history) {
   const H = 300, L = 44, R = 18, T = 16, B = 34;
   const iw = W - L - R, ih = H - T - B;
   const values = snaps.flatMap((s) => parties.map((e) => Number(s.pct[e.id] || 0)));
-  const yMax = Math.max(10, Math.ceil(Math.max(...values) / 10) * 10);
+  const peak = values.length ? Math.max(...values) : 0;
+  const yMax = Math.max(10, Math.ceil(peak / 10) * 10);
   const times = snaps.map((s) => new Date(s.at).getTime());
   const tMin = Math.min(...times), tMax = Math.max(...times);
   const x = (s) => {

@@ -4,38 +4,89 @@
  "close_at": "2026-10-25T20:00:00Z",
  "chart_start": "2026-10-05",
  "subtitle": "Presidential runoff · Lula vs Flávio Bolsonaro",
- "status": "waiting",
- "counted": 0,
+ "status": "counting",
+ "counted": 1225,
  "total": 499248,
  "counted_label": "sections",
  "source": "Superior Electoral Court (TSE)",
  "source_url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
- "source_updated_at": "24/10/2026 19:19:13",
+ "source_updated_at": "25/10/2026 17:06:31",
  "waiting_text": "Polls close at 17:00 Brasília time on Sunday, 25 October.",
  "result_title": "Valid vote",
  "result_note": "Official TSE totalization. Percentages are of valid votes.",
  "entries": [
   {
-   "id": "flavio",
-   "name": "Flávio Bolsonaro",
-   "color": "#015AAA",
-   "pct": 0.0,
-   "votes": 0,
-   "seats": 0
-  },
-  {
    "id": "lula",
    "name": "Luiz Inácio Lula da Silva",
    "color": "#E20E28",
-   "pct": 0.0,
-   "votes": 0,
+   "pct": 57.66,
+   "votes": 193574,
+   "seats": 0
+  },
+  {
+   "id": "flavio",
+   "name": "Flávio Bolsonaro",
+   "color": "#015AAA",
+   "pct": 42.34,
+   "votes": 142169,
    "seats": 0
   }
  ],
  "seat_total": null,
  "majority": null,
- "areas": [],
+ "area_title": "State results",
+ "area_label": "State",
+ "area_note": "State-level leaders as reported by TSE. States are coloured by the leading candidate.",
+ "areas": [
+  {
+   "name": "BA",
+   "winner": "lula",
+   "winner_name": "Luiz Inácio Lula da Silva",
+   "pct": 72.2,
+   "votes": 1148,
+   "counted": 6,
+   "total": 35476,
+   "leading": true,
+   "elected": false
+  },
+  {
+   "name": "CE",
+   "winner": "lula",
+   "winner_name": "Luiz Inácio Lula da Silva",
+   "pct": 70.01,
+   "votes": 782,
+   "counted": 4,
+   "total": 23765,
+   "leading": true,
+   "elected": false
+  },
+  {
+   "name": "GO",
+   "winner": "flavio",
+   "winner_name": "Flávio Bolsonaro",
+   "pct": 55.11,
+   "votes": 943,
+   "counted": 6,
+   "total": 15686,
+   "leading": true,
+   "elected": false
+  },
+  {
+   "name": "PA",
+   "winner": "lula",
+   "winner_name": "Luiz Inácio Lula da Silva",
+   "pct": 65.03,
+   "votes": 22949,
+   "counted": 179,
+   "total": 20827,
+   "leading": true,
+   "elected": false
+  }
+ ],
+ "map_svg": "../img/brazil.svg",
+ "map_title": "State map",
+ "map_note": "States are coloured by the leading candidate in the official TSE count.",
  "notes": "The first round was Lula 45.16%, Flávio 47.03% of valid votes.",
  "id": "brazil-2026-r2",
- "updated_at": "2026-10-24T22:45:17Z"
+ "updated_at": "2026-10-25T20:35:37Z"
 }

@@ -1,13 +1,6 @@
 {
  "elections": [
   {
-   "id": "bc-2026",
-   "name": "British Columbia",
-   "date": "2026-10-24",
-   "status": "final",
-   "updated_at": "2026-10-25T13:55:59Z"
-  },
-  {
    "id": "serbia-2026",
    "name": "Serbia",
    "date": "2026-10-25",
@@ -17,8 +10,8 @@
    "id": "brazil-2026-r2",
    "name": "Brazil runoff",
    "date": "2026-10-25",
-   "status": "waiting",
-   "updated_at": "2026-10-24T22:45:17Z"
+   "status": "counting",
+   "updated_at": "2026-10-25T20:35:37Z"
   },
   {
    "id": "bulgaria-2026",

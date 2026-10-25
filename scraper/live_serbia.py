@@ -8,6 +8,7 @@ from live_common import write_live
 
 ELECTION = "serbia-2026"
 URL = "https://www.rik.parlament.gov.rs/542645/rezultati/"
+ELEKT_URL = "https://elekt.io/elekt/api/v1/elections/srb-parliamentary-2026-2"
 NAMES = {
     "sns": ("Vučić", "Vučić – United Serbia", "#242970"),
     "sl": ("Student", "Student List", "#A81A32"),
@@ -57,8 +58,12 @@ def dhondt(entries, total=250):
 
 
 def main():
-    html = requests.get(URL, headers={"User-Agent": "600-live-results/1.0"},
-                        timeout=45).text
+    try:
+        html = requests.get(URL, headers={"User-Agent": "600-live-results/1.0"},
+                            timeout=45).text
+    except Exception as exc:
+        print("serbia: RIK unavailable (%s); trying elekt" % exc)
+        return elekt_main()
     soup = BeautifulSoup(html, "lxml")
     entries = []
     for tbl in soup.find_all("table"):
@@ -83,8 +88,8 @@ def main():
                 "seats": 0,
             })
     if not entries or not any((e["pct"] or 0) > 0 for e in entries):
-        print("serbia: no counted rows yet; leaving waiting")
-        return
+        print("serbia: no counted rows yet; trying elekt")
+        return elekt_main()
     dhondt(entries)
     entries.sort(key=lambda e: -(e["pct"] or 0))
     text = soup.get_text(" ", strip=True)
@@ -114,6 +119,63 @@ def main():
         "seat_total": 250,
         "majority": 126,
         "areas": [],
+        "map_svg": "../img/serbia.svg",
+        "map_title": "National map",
+        "map_note": "RIK's live feed does not publish regional totals, so the map shows the national leader.",
+        "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
+    })
+
+
+def elekt_main():
+    try:
+        r = requests.get(ELEKT_URL, headers={"User-Agent": "600-live-results/1.0",
+                                             "Accept": "application/json"}, timeout=45)
+        r.raise_for_status()
+        data = r.json().get("data", {})
+    except Exception as exc:
+        print("serbia: no live source (%s); leaving waiting" % exc)
+        return
+    entries = []
+    for row in data.get("contestants") or []:
+        label = row.get("candidate") or row.get("label") or ""
+        key = match(label)
+        if not key:
+            continue
+        entries.append({
+            "id": key,
+            "name": NAMES[key][1],
+            "color": NAMES[key][2],
+            "pct": row.get("vote_share") or 0,
+            "votes": row.get("votes") or 0,
+            "seats": row.get("seats") or 0,
+        })
+    if not entries or not any((e["pct"] or 0) > 0 for e in entries):
+        print("serbia: no counted rows from RIK or elekt; leaving waiting")
+        return
+    if not any(e["seats"] for e in entries):
+        dhondt(entries)
+    entries.sort(key=lambda e: -(e["pct"] or 0))
+    write_live(ELECTION, {
+        "name": "Serbia 2026",
+        "date": "2026-10-25",
+        "close_at": "2026-10-25T19:00:00Z",
+        "chart_start": "2026-09-09",
+        "subtitle": "National Assembly · 250 seats · 3% threshold",
+        "status": "final" if data.get("results_status") in ("final", "declared") else "counting",
+        "counted": None,
+        "total": None,
+        "counted_label": "polling stations",
+        "source": "RIK (via elekt)",
+        "source_url": URL,
+        "result_title": "Vote share and seats",
+        "result_note": "Preliminary count via elekt while the RIK page is unavailable. Seat totals are as published.",
+        "entries": entries,
+        "seat_total": 250,
+        "majority": 126,
+        "areas": [],
+        "map_svg": "../img/serbia.svg",
+        "map_title": "National map",
+        "map_note": "The available feed has no regional totals, so the map shows the national leader.",
         "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
     })
 

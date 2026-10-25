@@ -17,23 +17,23 @@
    "id": "cpbc",
    "name": "BC Conservatives",
    "color": "#004AAD",
-   "votes": 656043,
-   "pct": 47.7,
-   "seats": 62
+   "votes": 860119,
+   "pct": 48.0,
+   "seats": 64
   },
   {
    "id": "bcndp",
    "name": "BC NDP",
    "color": "#F4A460",
-   "votes": 518697,
-   "pct": 37.7,
-   "seats": 29
+   "votes": 668835,
+   "pct": 37.3,
+   "seats": 27
   },
   {
    "id": "gpbc",
    "name": "BC Greens",
    "color": "#99C955",
-   "votes": 151348,
+   "votes": 196322,
    "pct": 11.0,
    "seats": 2
   },
@@ -41,7 +41,7 @@
    "id": "cbc",
    "name": "CentreBC",
    "color": "#EE2D30",
-   "votes": 21426,
+   "votes": 28942,
    "pct": 1.6,
    "seats": 0
   },
@@ -49,16 +49,16 @@
    "id": "onbc",
    "name": "OneBC",
    "color": "#C49B50",
-   "votes": 19586,
-   "pct": 1.4,
+   "votes": 26933,
+   "pct": 1.5,
    "seats": 0
   },
   {
    "id": "ind",
    "name": "Independents",
    "color": "#6B7280",
-   "votes": 7545,
-   "pct": 0.5,
+   "votes": 10173,
+   "pct": 0.6,
    "seats": 0
   }
  ],
@@ -69,7 +69,7 @@
    "name": "Abbotsford South",
    "winner": "cpbc",
    "winner_name": "Bruce Banman",
-   "pct": 63.4,
+   "pct": 63.3,
    "leading": true,
    "elected": false
   },
@@ -77,7 +77,7 @@
    "name": "Abbotsford West",
    "winner": "cpbc",
    "winner_name": "Korky Neufeld",
-   "pct": 62.6,
+   "pct": 61.7,
    "leading": true,
    "elected": false
   },
@@ -85,7 +85,7 @@
    "name": "Abbotsford-Mission",
    "winner": "cpbc",
    "winner_name": "Darryl Kropp",
-   "pct": 56.2,
+   "pct": 56.6,
    "leading": true,
    "elected": false
   },
@@ -93,15 +93,15 @@
    "name": "Boundary-Similkameen",
    "winner": "cpbc",
    "winner_name": "Donegal Wilson",
-   "pct": 55.2,
+   "pct": 52.4,
    "leading": true,
    "elected": false
   },
   {
    "name": "Bulkley Valley-Stikine",
-   "winner": "bcndp",
-   "winner_name": "Frankie Abel",
-   "pct": 54.4,
+   "winner": "cpbc",
+   "winner_name": "Sharon Hartwell",
+   "pct": 50.7,
    "leading": true,
    "elected": false
   },
@@ -109,7 +109,7 @@
    "name": "Burnaby Centre",
    "winner": "cpbc",
    "winner_name": "Joshua Domnich",
-   "pct": 48.0,
+   "pct": 47.5,
    "leading": true,
    "elected": false
   },
@@ -117,7 +117,7 @@
    "name": "Burnaby East",
    "winner": "bcndp",
    "winner_name": "Rohini Reah Arora",
-   "pct": 45.3,
+   "pct": 44.3,
    "leading": true,
    "elected": false
   },
@@ -125,7 +125,7 @@
    "name": "Burnaby North",
    "winner": "cpbc",
    "winner_name": "Simon Chandler",
-   "pct": 47.0,
+   "pct": 46.3,
    "leading": true,
    "elected": false
   },
@@ -133,7 +133,7 @@
    "name": "Burnaby South-Metrotown",
    "winner": "bcndp",
    "winner_name": "Paul Choi",
-   "pct": 44.1,
+   "pct": 44.2,
    "leading": true,
    "elected": false
   },
@@ -141,7 +141,7 @@
    "name": "Burnaby-New Westminster",
    "winner": "bcndp",
    "winner_name": "Raj Chouhan",
-   "pct": 54.0,
+   "pct": 53.8,
    "leading": true,
    "elected": false
   },
@@ -149,7 +149,7 @@
    "name": "Cariboo-Chilcotin",
    "winner": "cpbc",
    "winner_name": "Lorne Doerkson",
-   "pct": 76.2,
+   "pct": 76.9,
    "leading": true,
    "elected": false
   },
@@ -165,7 +165,7 @@
    "name": "Chilliwack-Cultus Lake",
    "winner": "cpbc",
    "winner_name": "A'aliya Warbus",
-   "pct": 59.8,
+   "pct": 59.9,
    "leading": true,
    "elected": false
   },
@@ -173,7 +173,7 @@
    "name": "Columbia River-Revelstoke",
    "winner": "cpbc",
    "winner_name": "Scott McInnis",
-   "pct": 51.1,
+   "pct": 52.4,
    "leading": true,
    "elected": false
   },
@@ -181,7 +181,7 @@
    "name": "Coquitlam-Burke Mountain",
    "winner": "cpbc",
    "winner_name": "Ryan Peterson",
-   "pct": 51.9,
+   "pct": 52.5,
    "leading": true,
    "elected": false
   },
@@ -197,15 +197,15 @@
    "name": "Courtenay-Comox",
    "winner": "bcndp",
    "winner_name": "Will Cole-Hamilton",
-   "pct": 45.3,
+   "pct": 45.0,
    "leading": true,
    "elected": false
   },
   {
    "name": "Cowichan Valley",
-   "winner": "bcndp",
-   "winner_name": "Debra Toporowski",
-   "pct": 42.7,
+   "winner": "cpbc",
+   "winner_name": "Bert Chen",
+   "pct": 42.8,
    "leading": true,
    "elected": false
   },
@@ -213,7 +213,7 @@
    "name": "Delta North",
    "winner": "cpbc",
    "winner_name": "Monica Mohan",
-   "pct": 53.5,
+   "pct": 53.4,
    "leading": true,
    "elected": false
   },
@@ -221,7 +221,7 @@
    "name": "Delta South",
    "winner": "cpbc",
    "winner_name": "Ian Paton",
-   "pct": 58.4,
+   "pct": 59.8,
    "leading": true,
    "elected": false
   },
@@ -237,7 +237,7 @@
    "name": "Fraser-Nicola",
    "winner": "cpbc",
    "winner_name": "Tony Luck",
-   "pct": 56.0,
+   "pct": 58.6,
    "leading": true,
    "elected": false
   },
@@ -245,7 +245,7 @@
    "name": "Juan de Fuca-Malahat",
    "winner": "cpbc",
    "winner_name": "Mike Hicks",
-   "pct": 41.2,
+   "pct": 41.7,
    "leading": true,
    "elected": false
   },
@@ -253,7 +253,7 @@
    "name": "Kamloops Centre",
    "winner": "cpbc",
    "winner_name": "Peter Milobar",
-   "pct": 54.0,
+   "pct": 53.3,
    "leading": true,
    "elected": false
   },
@@ -261,7 +261,7 @@
    "name": "Kamloops-North Thompson",
    "winner": "cpbc",
    "winner_name": "Ward Stamer",
-   "pct": 64.9,
+   "pct": 64.8,
    "leading": true,
    "elected": false
   },
@@ -269,7 +269,7 @@
    "name": "Kelowna Centre",
    "winner": "cpbc",
    "winner_name": "Kristina Loewen",
-   "pct": 48.9,
+   "pct": 48.2,
    "leading": true,
    "elected": false
   },
@@ -277,7 +277,7 @@
    "name": "Kelowna-Lake Country-Coldstream",
    "winner": "cpbc",
    "winner_name": "Pavneet Singh",
-   "pct": 48.4,
+   "pct": 47.4,
    "leading": true,
    "elected": false
   },
@@ -285,15 +285,15 @@
    "name": "Kelowna-Mission",
    "winner": "cpbc",
    "winner_name": "Gavin Dew",
-   "pct": 59.2,
+   "pct": 58.7,
    "leading": true,
    "elected": false
   },
   {
    "name": "Kootenay Central",
-   "winner": "cpbc",
-   "winner_name": "Gordon Skulnec",
-   "pct": 39.2,
+   "winner": "bcndp",
+   "winner_name": "Brittny Anderson",
+   "pct": 39.4,
    "leading": true,
    "elected": false
   },
@@ -301,7 +301,7 @@
    "name": "Kootenay-Monashee",
    "winner": "bcndp",
    "winner_name": "Steve Morissette",
-   "pct": 44.4,
+   "pct": 48.0,
    "leading": true,
    "elected": false
   },
@@ -309,15 +309,15 @@
    "name": "Kootenay-Rockies",
    "winner": "cpbc",
    "winner_name": "Pete Davis",
-   "pct": 56.4,
+   "pct": 56.2,
    "leading": true,
    "elected": false
   },
   {
    "name": "Ladysmith-Oceanside",
-   "winner": "bcndp",
-   "winner_name": "Stephanie Higginson",
-   "pct": 44.7,
+   "winner": "cpbc",
+   "winner_name": "Kris McNichol",
+   "pct": 44.5,
    "leading": true,
    "elected": false
   },
@@ -325,7 +325,7 @@
    "name": "Langford-Highlands",
    "winner": "bcndp",
    "winner_name": "Ravi Parmar",
-   "pct": 45.2,
+   "pct": 44.7,
    "leading": true,
    "elected": false
   },
@@ -333,7 +333,7 @@
    "name": "Langley-Abbotsford",
    "winner": "cpbc",
    "winner_name": "Harman Bhangu",
-   "pct": 61.6,
+   "pct": 61.2,
    "leading": true,
    "elected": false
   },
@@ -341,7 +341,7 @@
    "name": "Langley-Walnut Grove",
    "winner": "cpbc",
    "winner_name": "Misty Van Popta",
-   "pct": 54.9,
+   "pct": 56.8,
    "leading": true,
    "elected": false
   },
@@ -349,7 +349,7 @@
    "name": "Langley-Willowbrook",
    "winner": "cpbc",
    "winner_name": "Jody Toor",
-   "pct": 51.9,
+   "pct": 52.4,
    "leading": true,
    "elected": false
   },
@@ -357,7 +357,7 @@
    "name": "Maple Ridge East",
    "winner": "cpbc",
    "winner_name": "Lawrence Mok",
-   "pct": 54.2,
+   "pct": 53.5,
    "leading": true,
    "elected": false
   },
@@ -365,7 +365,7 @@
    "name": "Maple Ridge-Pitt Meadows",
    "winner": "cpbc",
    "winner_name": "Doug Morneau",
-   "pct": 49.8,
+   "pct": 48.5,
    "leading": true,
    "elected": false
   },
@@ -373,7 +373,7 @@
    "name": "Mid Island-Pacific Rim",
    "winner": "bcndp",
    "winner_name": "Josie Osborne",
-   "pct": 45.8,
+   "pct": 46.8,
    "leading": true,
    "elected": false
   },
@@ -381,7 +381,7 @@
    "name": "Nanaimo-Gabriola Island",
    "winner": "bcndp",
    "winner_name": "Sheila Malcolmson",
-   "pct": 47.0,
+   "pct": 48.0,
    "leading": true,
    "elected": false
   },
@@ -389,7 +389,7 @@
    "name": "Nanaimo-Lantzville",
    "winner": "bcndp",
    "winner_name": "George Anderson",
-   "pct": 46.7,
+   "pct": 46.6,
    "leading": true,
    "elected": false
   },
@@ -397,7 +397,7 @@
    "name": "Nechako Lakes",
    "winner": "cpbc",
    "winner_name": "Diane Black",
-   "pct": 61.5,
+   "pct": 63.8,
    "leading": true,
    "elected": false
   },
@@ -405,7 +405,7 @@
    "name": "New Westminster-Coquitlam",
    "winner": "bcndp",
    "winner_name": "Jennifer Whiteside",
-   "pct": 50.2,
+   "pct": 50.1,
    "leading": true,
    "elected": false
   },
@@ -413,7 +413,7 @@
    "name": "North Coast-Haida Gwaii",
    "winner": "bcndp",
    "winner_name": "Tamara Davidson",
-   "pct": 62.0,
+   "pct": 61.2,
    "leading": true,
    "elected": false
   },
@@ -421,7 +421,7 @@
    "name": "North Island",
    "winner": "cpbc",
    "winner_name": "Anna Kindy",
-   "pct": 48.5,
+   "pct": 48.0,
    "leading": true,
    "elected": false
   },
@@ -429,7 +429,7 @@
    "name": "North Vancouver-Lonsdale",
    "winner": "bcndp",
    "winner_name": "Bowinn Ma",
-   "pct": 47.2,
+   "pct": 46.9,
    "leading": true,
    "elected": false
   },
@@ -437,7 +437,7 @@
    "name": "North Vancouver-Seymour",
    "winner": "cpbc",
    "winner_name": "Lynne Block",
-   "pct": 47.2,
+   "pct": 46.7,
    "leading": true,
    "elected": false
   },
@@ -445,7 +445,7 @@
    "name": "Oak Bay-Gordon Head",
    "winner": "bcndp",
    "winner_name": "Diana Gibson",
-   "pct": 37.4,
+   "pct": 37.0,
    "leading": true,
    "elected": false
   },
@@ -453,7 +453,7 @@
    "name": "Peace River North",
    "winner": "cpbc",
    "winner_name": "Curtis Whitford",
-   "pct": 83.5,
+   "pct": 83.3,
    "leading": true,
    "elected": false
   },
@@ -461,7 +461,7 @@
    "name": "Peace River South",
    "winner": "cpbc",
    "winner_name": "Larry Neufeld",
-   "pct": 76.9,
+   "pct": 77.4,
    "leading": true,
    "elected": false
   },
@@ -469,7 +469,7 @@
    "name": "Penticton-Summerland",
    "winner": "cpbc",
    "winner_name": "Tracy St Claire",
-   "pct": 45.6,
+   "pct": 45.5,
    "leading": true,
    "elected": false
   },
@@ -477,7 +477,7 @@
    "name": "Port Coquitlam",
    "winner": "bcndp",
    "winner_name": "Mike Farnworth",
-   "pct": 45.6,
+   "pct": 45.3,
    "leading": true,
    "elected": false
   },
@@ -485,7 +485,7 @@
    "name": "Port Moody-Burquitlam",
    "winner": "cpbc",
    "winner_name": "John McEwen",
-   "pct": 46.6,
+   "pct": 46.8,
    "leading": true,
    "elected": false
   },
@@ -493,7 +493,7 @@
    "name": "Powell River-Sunshine Coast",
    "winner": "bcndp",
    "winner_name": "Randene Neill",
-   "pct": 47.6,
+   "pct": 49.0,
    "leading": true,
    "elected": false
   },
@@ -501,7 +501,7 @@
    "name": "Prince George-Mackenzie",
    "winner": "cpbc",
    "winner_name": "Kiel Giddens",
-   "pct": 66.7,
+   "pct": 66.1,
    "leading": true,
    "elected": false
   },
@@ -509,7 +509,7 @@
    "name": "Prince George-North Cariboo",
    "winner": "cpbc",
    "winner_name": "Sheldon Clare",
-   "pct": 69.5,
+   "pct": 70.3,
    "leading": true,
    "elected": false
   },
@@ -517,7 +517,7 @@
    "name": "Prince George-Valemount",
    "winner": "cpbc",
    "winner_name": "Rosalyn Bird",
-   "pct": 53.5,
+   "pct": 51.0,
    "leading": true,
    "elected": false
   },
@@ -525,7 +525,7 @@
    "name": "Richmond Centre",
    "winner": "cpbc",
    "winner_name": "Sacha Peter",
-   "pct": 59.0,
+   "pct": 57.5,
    "leading": true,
    "elected": false
   },
@@ -533,7 +533,7 @@
    "name": "Richmond-Bridgeport",
    "winner": "cpbc",
    "winner_name": "Teresa Wat",
-   "pct": 67.7,
+   "pct": 67.8,
    "leading": true,
    "elected": false
   },
@@ -541,7 +541,7 @@
    "name": "Richmond-Queensborough",
    "winner": "cpbc",
    "winner_name": "Steve Kooner",
-   "pct": 60.1,
+   "pct": 58.8,
    "leading": true,
    "elected": false
   },
@@ -549,7 +549,7 @@
    "name": "Richmond-Steveston",
    "winner": "cpbc",
    "winner_name": "Gordon Zhang",
-   "pct": 54.6,
+   "pct": 54.0,
    "leading": true,
    "elected": false
   },
@@ -557,7 +557,7 @@
    "name": "Saanich North and the Islands",
    "winner": "gpbc",
    "winner_name": "Emily Lowan",
-   "pct": 53.3,
+   "pct": 48.4,
    "leading": true,
    "elected": false
   },
@@ -565,7 +565,7 @@
    "name": "Saanich South",
    "winner": "cpbc",
    "winner_name": "Cathie Ounsted",
-   "pct": 38.9,
+   "pct": 39.2,
    "leading": true,
    "elected": false
   },
@@ -573,7 +573,7 @@
    "name": "Salmon Arm-Shuswap",
    "winner": "cpbc",
    "winner_name": "David L Williams",
-   "pct": 54.0,
+   "pct": 54.8,
    "leading": true,
    "elected": false
   },
@@ -581,7 +581,7 @@
    "name": "Skeena",
    "winner": "cpbc",
    "winner_name": "Claire RattÃ©e",
-   "pct": 52.0,
+   "pct": 51.4,
    "leading": true,
    "elected": false
   },
@@ -589,7 +589,7 @@
    "name": "Surrey City Centre",
    "winner": "cpbc",
    "winner_name": "Zeeshan Wahla",
-   "pct": 46.6,
+   "pct": 47.3,
    "leading": true,
    "elected": false
   },
@@ -597,7 +597,7 @@
    "name": "Surrey North",
    "winner": "cpbc",
    "winner_name": "Mandeep Singh Dhaliwal",
-   "pct": 58.5,
+   "pct": 57.7,
    "leading": true,
    "elected": false
   },
@@ -605,7 +605,7 @@
    "name": "Surrey South",
    "winner": "cpbc",
    "winner_name": "Megan Knight",
-   "pct": 62.6,
+   "pct": 61.4,
    "leading": true,
    "elected": false
   },
@@ -613,7 +613,7 @@
    "name": "Surrey-Cloverdale",
    "winner": "cpbc",
    "winner_name": "Nicholas Cartmell",
-   "pct": 49.9,
+   "pct": 52.4,
    "leading": true,
    "elected": false
   },
@@ -621,7 +621,7 @@
    "name": "Surrey-Fleetwood",
    "winner": "cpbc",
    "winner_name": "Garry Purewal",
-   "pct": 50.4,
+   "pct": 50.6,
    "leading": true,
    "elected": false
   },
@@ -629,7 +629,7 @@
    "name": "Surrey-Guildford",
    "winner": "cpbc",
    "winner_name": "Garry Thind",
-   "pct": 49.9,
+   "pct": 50.5,
    "leading": true,
    "elected": false
   },
@@ -645,7 +645,7 @@
    "name": "Surrey-Panorama",
    "winner": "cpbc",
    "winner_name": "Bryan Tepper",
-   "pct": 58.9,
+   "pct": 58.7,
    "leading": true,
    "elected": false
   },
@@ -661,7 +661,7 @@
    "name": "Surrey-White Rock",
    "winner": "cpbc",
    "winner_name": "Trevor Halford",
-   "pct": 58.5,
+   "pct": 58.1,
    "leading": true,
    "elected": false
   },
@@ -669,7 +669,7 @@
    "name": "Vancouver-Fraserview",
    "winner": "cpbc",
    "winner_name": "Deep Sandhu",
-   "pct": 43.9,
+   "pct": 44.0,
    "leading": true,
    "elected": false
   },
@@ -677,7 +677,7 @@
    "name": "Vancouver-Hastings",
    "winner": "bcndp",
    "winner_name": "Niki Sharma",
-   "pct": 50.9,
+   "pct": 51.2,
    "leading": true,
    "elected": false
   },
@@ -685,7 +685,7 @@
    "name": "Vancouver-Kensington",
    "winner": "bcndp",
    "winner_name": "Mable Elmore",
-   "pct": 46.7,
+   "pct": 46.6,
    "leading": true,
    "elected": false
   },
@@ -693,7 +693,7 @@
    "name": "Vancouver-Langara",
    "winner": "cpbc",
    "winner_name": "Jaime Stein",
-   "pct": 50.0,
+   "pct": 50.5,
    "leading": true,
    "elected": false
   },
@@ -701,7 +701,7 @@
    "name": "Vancouver-Little Mountain",
    "winner": "bcndp",
    "winner_name": "Christine Boyle",
-   "pct": 48.3,
+   "pct": 49.0,
    "leading": true,
    "elected": false
   },
@@ -717,7 +717,7 @@
    "name": "Vancouver-Quilchena",
    "winner": "cpbc",
    "winner_name": "Carson Binda",
-   "pct": 55.5,
+   "pct": 54.9,
    "leading": true,
    "elected": false
   },
@@ -733,7 +733,7 @@
    "name": "Vancouver-South Granville",
    "winner": "bcndp",
    "winner_name": "Lara Honrado",
-   "pct": 46.9,
+   "pct": 47.4,
    "leading": true,
    "elected": false
   },
@@ -741,7 +741,7 @@
    "name": "Vancouver-Strathcona",
    "winner": "bcndp",
    "winner_name": "Amanda Burrows",
-   "pct": 55.0,
+   "pct": 54.8,
    "leading": true,
    "elected": false
   },
@@ -749,7 +749,7 @@
    "name": "Vancouver-West End",
    "winner": "bcndp",
    "winner_name": "Spencer Chandra Herbert",
-   "pct": 51.7,
+   "pct": 51.5,
    "leading": true,
    "elected": false
   },
@@ -757,7 +757,7 @@
    "name": "Vancouver-Yaletown",
    "winner": "cpbc",
    "winner_name": "Margareta Dovgal",
-   "pct": 46.9,
+   "pct": 46.6,
    "leading": true,
    "elected": false
   },
@@ -765,7 +765,7 @@
    "name": "Vernon-Lumby",
    "winner": "cpbc",
    "winner_name": "Kevin Acton",
-   "pct": 50.7,
+   "pct": 50.8,
    "leading": true,
    "elected": false
   },
@@ -773,7 +773,7 @@
    "name": "Victoria-Beacon Hill",
    "winner": "bcndp",
    "winner_name": "Grace Lore",
-   "pct": 45.6,
+   "pct": 45.5,
    "leading": true,
    "elected": false
   },
@@ -781,7 +781,7 @@
    "name": "Victoria-Swan Lake",
    "winner": "bcndp",
    "winner_name": "Nina Krieger",
-   "pct": 43.3,
+   "pct": 43.6,
    "leading": true,
    "elected": false
   },
@@ -789,7 +789,7 @@
    "name": "West Kelowna-Peachland",
    "winner": "cpbc",
    "winner_name": "Macklin McCall",
-   "pct": 62.3,
+   "pct": 62.2,
    "leading": true,
    "elected": false
   },
@@ -797,7 +797,7 @@
    "name": "West Vancouver-Capilano",
    "winner": "cpbc",
    "winner_name": "Caroline Elliott",
-   "pct": 67.7,
+   "pct": 66.8,
    "leading": true,
    "elected": false
   },
@@ -805,7 +805,7 @@
    "name": "West Vancouver-Sea to Sky",
    "winner": "gpbc",
    "winner_name": "Jeremy Valeriote",
-   "pct": 47.3,
+   "pct": 47.5,
    "leading": true,
    "elected": false
   }
@@ -815,5 +815,5 @@
  "area_note": "Leader in each riding as results are reported.",
  "notes": "Initial count; mail-in and absentee ballots are added at the final count on 6–10 November.",
  "id": "bc-2026",
- "updated_at": "2026-10-25T05:09:51Z"
+ "updated_at": "2026-10-25T09:46:14Z"
 }

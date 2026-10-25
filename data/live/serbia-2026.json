@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 1458,
+ "counted": 1561,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "25.10.2026 22:35:00",
+ "source_updated_at": "25.10.2026 22:40:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,56 +18,56 @@
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 46.36,
-   "votes": 181769,
-   "seats": 126
+   "pct": 46.06,
+   "votes": 197029,
+   "seats": 125
   },
   {
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 43.64,
-   "votes": 171087,
-   "seats": 119
+   "pct": 43.97,
+   "votes": 188106,
+   "seats": 120
   },
   {
    "id": "sps",
    "name": "Socialist Party",
    "color": "#EB1B23",
-   "pct": 2.77,
-   "votes": 10846,
+   "pct": 2.73,
+   "votes": 11663,
    "seats": 0
   },
   {
    "id": "vmsz",
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
-   "pct": 1.83,
-   "votes": 7189,
-   "seats": 5
+   "pct": 1.78,
+   "votes": 7624,
+   "seats": 4
   },
   {
    "id": "nada",
    "name": "NADA",
    "color": "#616264",
-   "pct": 0.77,
-   "votes": 3034,
+   "pct": 0.78,
+   "votes": 3320,
    "seats": 0
   },
   {
    "id": "sda",
    "name": "SDA Sandžak",
    "color": "#069443",
-   "pct": 0.34,
-   "votes": 1351,
-   "seats": 0
+   "pct": 0.37,
+   "votes": 1586,
+   "seats": 1
   },
   {
    "id": "pes",
    "name": "European Serbia",
    "color": "#C9A227",
    "pct": 0.23,
-   "votes": 887,
+   "votes": 984,
    "seats": 0
   },
   {
@@ -75,7 +75,7 @@
    "name": "Russian Party",
    "color": "#0D3B66",
    "pct": 0.16,
-   "votes": 623,
+   "votes": 676,
    "seats": 0
   }
  ],
@@ -2713,5 +2713,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-25T21:37:19Z"
+ "updated_at": "2026-10-25T21:41:31Z"
 }

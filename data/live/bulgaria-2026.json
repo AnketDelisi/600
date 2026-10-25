@@ -89,6 +89,20 @@
      "color": "#4200FF",
      "pct": 39.85,
      "votes": 618
+    },
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 30.11,
+     "votes": 467
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 10.25,
+     "votes": 159
     }
    ]
   },
@@ -112,6 +126,20 @@
      "color": "#DB0F28",
      "pct": 36.11,
      "votes": 2415
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 29.58,
+     "votes": 1978
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 13.62,
+     "votes": 911
     }
    ]
   },
@@ -135,6 +163,20 @@
      "color": "#4200FF",
      "pct": 35.32,
      "votes": 2119
+    },
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 30.0,
+     "votes": 1800
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 16.0,
+     "votes": 960
     }
    ]
   },
@@ -158,6 +200,20 @@
      "color": "#DB0F28",
      "pct": 34.71,
      "votes": 922
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 30.27,
+     "votes": 804
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.8,
+     "votes": 393
     }
    ]
   },
@@ -181,6 +237,20 @@
      "color": "#DB0F28",
      "pct": 39.3,
      "votes": 1240
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 27.13,
+     "votes": 856
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.55,
+     "votes": 459
     }
    ]
   },
@@ -204,6 +274,20 @@
      "color": "#DB0F28",
      "pct": 45.01,
      "votes": 325
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 17.87,
+     "votes": 129
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.13,
+     "votes": 102
     }
    ]
   },
@@ -227,6 +311,20 @@
      "color": "#DB0F28",
      "pct": 33.71,
      "votes": 326
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 32.57,
+     "votes": 315
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 12.41,
+     "votes": 120
     }
    ]
   },
@@ -250,6 +348,20 @@
      "color": "#DB0F28",
      "pct": 43.2,
      "votes": 1255
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 20.17,
+     "votes": 586
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 15.7,
+     "votes": 456
     }
    ]
   },
@@ -273,6 +385,20 @@
      "color": "#DB0F28",
      "pct": 37.91,
      "votes": 906
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 21.0,
+     "votes": 502
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 8.24,
+     "votes": 197
     }
    ]
   },
@@ -296,6 +422,20 @@
      "color": "#DB0F28",
      "pct": 39.59,
      "votes": 346
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 27.12,
+     "votes": 237
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.53,
+     "votes": 127
     }
    ]
   },
@@ -319,6 +459,20 @@
      "color": "#DB0F28",
      "pct": 41.78,
      "votes": 1252
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 24.02,
+     "votes": 720
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 13.51,
+     "votes": 405
     }
    ]
   },
@@ -342,6 +496,20 @@
      "color": "#DB0F28",
      "pct": 41.07,
      "votes": 1198
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 20.36,
+     "votes": 594
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 15.67,
+     "votes": 457
     }
    ]
   },
@@ -365,6 +533,20 @@
      "color": "#DB0F28",
      "pct": 37.66,
      "votes": 964
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 25.7,
+     "votes": 658
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.06,
+     "votes": 360
     }
    ]
   },
@@ -388,6 +570,20 @@
      "color": "#DB0F28",
      "pct": 35.63,
      "votes": 720
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 25.04,
+     "votes": 506
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 15.73,
+     "votes": 318
     }
    ]
   },
@@ -411,6 +607,20 @@
      "color": "#DB0F28",
      "pct": 34.97,
      "votes": 328
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 27.4,
+     "votes": 257
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 12.47,
+     "votes": 117
     }
    ]
   },
@@ -434,6 +644,20 @@
      "color": "#DB0F28",
      "pct": 38.24,
      "votes": 470
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 20.42,
+     "votes": 251
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 12.21,
+     "votes": 150
     }
    ]
   },
@@ -457,6 +681,20 @@
      "color": "#DB0F28",
      "pct": 40.8,
      "votes": 457
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 26.43,
+     "votes": 296
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 10.27,
+     "votes": 115
     }
    ]
   },
@@ -480,6 +718,20 @@
      "color": "#DB0F28",
      "pct": 36.79,
      "votes": 2400
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 27.7,
+     "votes": 1807
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.66,
+     "votes": 956
     }
    ]
   },
@@ -503,6 +755,20 @@
      "color": "#DB0F28",
      "pct": 45.56,
      "votes": 1170
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 20.02,
+     "votes": 514
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 12.93,
+     "votes": 332
     }
    ]
   },
@@ -526,6 +792,20 @@
      "color": "#DB0F28",
      "pct": 39.46,
      "votes": 1863
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 25.08,
+     "votes": 1184
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.26,
+     "votes": 673
     }
    ]
   },
@@ -549,6 +829,20 @@
      "color": "#DB0F28",
      "pct": 39.32,
      "votes": 208
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 28.17,
+     "votes": 149
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 13.99,
+     "votes": 74
     }
    ]
   },
@@ -572,6 +866,20 @@
      "color": "#4200FF",
      "pct": 47.32,
      "votes": 7987
+    },
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 25.51,
+     "votes": 4306
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 10.87,
+     "votes": 1835
     }
    ]
   },
@@ -595,6 +903,20 @@
      "color": "#DB0F28",
      "pct": 36.83,
      "votes": 2619
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 27.43,
+     "votes": 1951
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 13.44,
+     "votes": 956
     }
    ]
   },
@@ -618,6 +940,20 @@
      "color": "#DB0F28",
      "pct": 39.42,
      "votes": 957
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 23.76,
+     "votes": 577
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 13.3,
+     "votes": 323
     }
    ]
   },
@@ -641,6 +977,20 @@
      "color": "#DB0F28",
      "pct": 43.75,
      "votes": 1134
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 22.61,
+     "votes": 586
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 13.77,
+     "votes": 357
     }
    ]
   },
@@ -664,6 +1014,20 @@
      "color": "#DB0F28",
      "pct": 38.46,
      "votes": 2369
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 24.77,
+     "votes": 1526
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 14.92,
+     "votes": 919
     }
    ]
   },
@@ -687,6 +1051,20 @@
      "color": "#DB0F28",
      "pct": 40.97,
      "votes": 1218
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 18.33,
+     "votes": 545
+    },
+    {
+     "id": "kostadinov",
+     "name": "Kostadin Kostadinov",
+     "color": "#C09F62",
+     "pct": 17.29,
+     "votes": 514
     }
    ]
   },
@@ -710,5 +1088,5 @@
  "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-25T22:19:24Z"
+ "updated_at": "2026-10-25T22:25:04Z"
 }

@@ -17,7 +17,7 @@
    "id": "cpbc",
    "name": "BC Conservatives",
    "color": "#004AAD",
-   "votes": 860119,
+   "votes": 861258,
    "pct": 48.0,
    "seats": 64
   },
@@ -25,7 +25,7 @@
    "id": "bcndp",
    "name": "BC NDP",
    "color": "#F4A460",
-   "votes": 668835,
+   "votes": 669901,
    "pct": 37.3,
    "seats": 27
   },
@@ -33,7 +33,7 @@
    "id": "gpbc",
    "name": "BC Greens",
    "color": "#99C955",
-   "votes": 196322,
+   "votes": 196593,
    "pct": 11.0,
    "seats": 2
   },
@@ -41,7 +41,7 @@
    "id": "cbc",
    "name": "CentreBC",
    "color": "#EE2D30",
-   "votes": 28942,
+   "votes": 28998,
    "pct": 1.6,
    "seats": 0
   },
@@ -49,7 +49,7 @@
    "id": "onbc",
    "name": "OneBC",
    "color": "#C49B50",
-   "votes": 26933,
+   "votes": 26991,
    "pct": 1.5,
    "seats": 0
   },
@@ -57,7 +57,7 @@
    "id": "ind",
    "name": "Independents",
    "color": "#6B7280",
-   "votes": 10173,
+   "votes": 10177,
    "pct": 0.6,
    "seats": 0
   }
@@ -245,7 +245,7 @@
    "name": "Juan de Fuca-Malahat",
    "winner": "cpbc",
    "winner_name": "Mike Hicks",
-   "pct": 41.7,
+   "pct": 41.6,
    "leading": true,
    "elected": false
   },
@@ -365,7 +365,7 @@
    "name": "Maple Ridge-Pitt Meadows",
    "winner": "cpbc",
    "winner_name": "Doug Morneau",
-   "pct": 48.5,
+   "pct": 48.2,
    "leading": true,
    "elected": false
   },
@@ -589,7 +589,7 @@
    "name": "Surrey City Centre",
    "winner": "cpbc",
    "winner_name": "Zeeshan Wahla",
-   "pct": 47.3,
+   "pct": 47.4,
    "leading": true,
    "elected": false
   },
@@ -717,7 +717,7 @@
    "name": "Vancouver-Quilchena",
    "winner": "cpbc",
    "winner_name": "Carson Binda",
-   "pct": 54.9,
+   "pct": 55.0,
    "leading": true,
    "elected": false
   },
@@ -815,5 +815,5 @@
  "area_note": "Leader in each riding as results are reported.",
  "notes": "Initial count; mail-in and absentee ballots are added at the final count on 6–10 November.",
  "id": "bc-2026",
- "updated_at": "2026-10-25T09:46:14Z"
+ "updated_at": "2026-10-25T13:55:59Z"
 }

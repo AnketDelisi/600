@@ -194,10 +194,18 @@ def rows_for(data):
     return rows, total
 
 
-def result_area(name, rows, total, counted, stations, map_ids):
-    if not counted or not total or not rows:
+def result_area(name, votes_by_party, total, counted, stations, map_ids):
+    if not counted or not total or not votes_by_party:
         return None
-    winner, votes = max(rows, key=lambda row: row[1])
+    ranked = sorted(votes_by_party.items(), key=lambda row: row[1], reverse=True)
+    winner, votes = ranked[0]
+    top = [{
+        "id": key,
+        "name": NAMES[key][1],
+        "color": NAMES[key][2],
+        "pct": round(party_votes / total * 100, 2),
+        "votes": party_votes,
+    } for key, party_votes in ranked[:3]]
     return {
         "name": name,
         "winner": winner,
@@ -209,6 +217,7 @@ def result_area(name, rows, total, counted, stations, map_ids):
         "leading": True,
         "elected": False,
         "map_ids": map_ids,
+        "top": top,
     }
 
 
@@ -254,14 +263,14 @@ def municipality_layers(session, round_id):
 
     district_areas = []
     for district_id, name, _ in DISTRICTS:
-        area = result_area(name, list(district_votes[district_id].items()),
+        area = result_area(name, district_votes[district_id],
                            district_totals[district_id], district_counted[district_id],
                            district_stations[district_id], [district_id])
         if area:
             district_areas.append(area)
     municipality_areas = []
     for map_id, votes in sorted(muni_votes.items()):
-        area = result_area(map_id.replace("_", " ").title(), list(votes.items()),
+        area = result_area(map_id.replace("_", " ").title(), votes,
                            muni_totals[map_id], muni_counted[map_id],
                            muni_stations[map_id], [map_id])
         if area:

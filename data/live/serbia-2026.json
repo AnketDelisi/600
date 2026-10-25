@@ -89,70 +89,185 @@
    "name": "Belgrade",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 61.38,
-   "votes": 66759,
-   "counted": 178,
+   "pct": 61.52,
+   "votes": 72152,
+   "counted": 189,
    "total": 1266,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_1"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 61.52,
+     "votes": 72152
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 33.92,
+     "votes": 39780
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 1.62,
+     "votes": 1898
+    }
    ]
   },
   {
    "name": "North Bačka",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 42.19,
-   "votes": 4922,
-   "counted": 42,
+   "pct": 41.83,
+   "votes": 5041,
+   "counted": 43,
    "total": 175,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_6"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 41.83,
+     "votes": 5041
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 36.96,
+     "votes": 4454
+    },
+    {
+     "id": "vmsz",
+     "name": "Vojvodina Hungarians",
+     "color": "#00732B",
+     "pct": 18.4,
+     "votes": 2217
+    }
    ]
   },
   {
    "name": "Central Banat",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 47.31,
-   "votes": 7340,
-   "counted": 43,
+   "pct": 48.02,
+   "votes": 8171,
+   "counted": 46,
    "total": 178,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_7"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 48.02,
+     "votes": 8171
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 42.77,
+     "votes": 7277
+    },
+    {
+     "id": "vmsz",
+     "name": "Vojvodina Hungarians",
+     "color": "#00732B",
+     "pct": 5.11,
+     "votes": 869
+    }
    ]
   },
   {
    "name": "North Banat",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 38.49,
-   "votes": 10282,
-   "counted": 91,
+   "pct": 38.04,
+   "votes": 10742,
+   "counted": 95,
    "total": 197,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_5"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 38.04,
+     "votes": 10742
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 37.3,
+     "votes": 10535
+    },
+    {
+     "id": "vmsz",
+     "name": "Vojvodina Hungarians",
+     "color": "#00732B",
+     "pct": 21.35,
+     "votes": 6030
+    }
    ]
   },
   {
    "name": "South Banat",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 48.58,
-   "votes": 12876,
-   "counted": 78,
+   "pct": 48.61,
+   "votes": 14043,
+   "counted": 82,
    "total": 273,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_3"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 48.61,
+     "votes": 14043
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 46.49,
+     "votes": 13432
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 1.79,
+     "votes": 517
+    }
    ]
   },
   {
@@ -167,272 +282,732 @@
    "elected": false,
    "map_ids": [
     "_2"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 46.57,
+     "votes": 12427
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 45.97,
+     "votes": 12267
+    },
+    {
+     "id": "vmsz",
+     "name": "Vojvodina Hungarians",
+     "color": "#00732B",
+     "pct": 3.57,
+     "votes": 953
+    }
    ]
   },
   {
    "name": "South Bačka",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 50.94,
-   "votes": 30260,
-   "counted": 114,
+   "pct": 51.23,
+   "votes": 32478,
+   "counted": 120,
    "total": 513,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_4"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 51.23,
+     "votes": 32478
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 42.01,
+     "votes": 26635
+    },
+    {
+     "id": "vmsz",
+     "name": "Vojvodina Hungarians",
+     "color": "#00732B",
+     "pct": 2.67,
+     "votes": 1693
+    }
    ]
   },
   {
    "name": "Srem",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 49.18,
-   "votes": 23608,
-   "counted": 87,
+   "pct": 49.47,
+   "votes": 24939,
+   "counted": 92,
    "total": 276,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_8"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 49.47,
+     "votes": 24939
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 46.06,
+     "votes": 23217
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 1.94,
+     "votes": 980
+    }
    ]
   },
   {
    "name": "Mačva",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 51.5,
-   "votes": 11358,
-   "counted": 93,
+   "pct": 51.45,
+   "votes": 12078,
+   "counted": 99,
    "total": 389,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_11"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 51.45,
+     "votes": 12078
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 41.92,
+     "votes": 9839
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.88,
+     "votes": 910
+    }
    ]
   },
   {
    "name": "Kolubara",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 48.3,
-   "votes": 10933,
-   "counted": 119,
+   "pct": 48.22,
+   "votes": 11327,
+   "counted": 123,
    "total": 278,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_10"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 48.22,
+     "votes": 11327
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 47.88,
+     "votes": 11246
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 2.23,
+     "votes": 523
+    }
    ]
   },
   {
    "name": "Podunavlje",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 49.71,
-   "votes": 4629,
-   "counted": 27,
+   "pct": 49.68,
+   "votes": 4974,
+   "counted": 28,
    "total": 174,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_23"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 49.68,
+     "votes": 4974
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 45.31,
+     "votes": 4537
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 2.52,
+     "votes": 252
+    }
    ]
   },
   {
    "name": "Braničevo",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 54.99,
-   "votes": 14741,
-   "counted": 98,
+   "pct": 55.17,
+   "votes": 15855,
+   "counted": 104,
    "total": 302,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_18"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 55.17,
+     "votes": 15855
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 39.63,
+     "votes": 11390
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.29,
+     "votes": 945
+    }
    ]
   },
   {
    "name": "Šumadija",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 49.14,
-   "votes": 13762,
-   "counted": 111,
+   "pct": 49.55,
+   "votes": 14831,
+   "counted": 116,
    "total": 342,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_16"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 49.55,
+     "votes": 14831
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 44.81,
+     "votes": 13413
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 2.91,
+     "votes": 871
+    }
    ]
   },
   {
    "name": "Pomoravlje",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 50.86,
-   "votes": 9277,
-   "counted": 91,
+   "pct": 50.95,
+   "votes": 9836,
+   "counted": 94,
    "total": 287,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_13"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 50.95,
+     "votes": 9836
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 37.39,
+     "votes": 7218
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 9.45,
+     "votes": 1825
+    }
    ]
   },
   {
    "name": "Bor",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 53.88,
-   "votes": 6756,
-   "counted": 49,
+   "pct": 53.71,
+   "votes": 6848,
+   "counted": 50,
    "total": 192,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_17"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 53.71,
+     "votes": 6848
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 41.54,
+     "votes": 5296
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.08,
+     "votes": 393
+    }
    ]
   },
   {
    "name": "Zaječar",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 57.0,
-   "votes": 3039,
-   "counted": 46,
+   "pct": 56.47,
+   "votes": 3396,
+   "counted": 50,
    "total": 203,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_19"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 56.47,
+     "votes": 3396
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 37.33,
+     "votes": 2245
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.61,
+     "votes": 217
+    }
    ]
   },
   {
    "name": "Zlatibor",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 46.22,
-   "votes": 14316,
-   "counted": 190,
+   "pct": 46.21,
+   "votes": 15480,
+   "counted": 199,
    "total": 499,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_9"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 46.21,
+     "votes": 15480
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 44.99,
+     "votes": 15072
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.01,
+     "votes": 1010
+    }
    ]
   },
   {
    "name": "Moravica",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 49.36,
-   "votes": 3967,
-   "counted": 52,
+   "pct": 47.99,
+   "votes": 4320,
+   "counted": 54,
    "total": 268,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_12"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 47.99,
+     "votes": 4320
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 47.24,
+     "votes": 4252
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 2.77,
+     "votes": 249
+    }
    ]
   },
   {
    "name": "Raška",
    "winner": "sl",
    "winner_name": "Student List",
-   "pct": 37.72,
-   "votes": 9883,
-   "counted": 105,
+   "pct": 37.58,
+   "votes": 10090,
+   "counted": 108,
    "total": 351,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_15"
+   ],
+   "top": [
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 37.58,
+     "votes": 10090
+    },
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 37.03,
+     "votes": 9942
+    },
+    {
+     "id": "sda",
+     "name": "SDA Sandžak",
+     "color": "#069443",
+     "pct": 7.77,
+     "votes": 2085
+    }
    ]
   },
   {
    "name": "Rasina",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 53.82,
-   "votes": 12273,
-   "counted": 103,
+   "pct": 53.8,
+   "votes": 12623,
+   "counted": 106,
    "total": 346,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_14"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 53.8,
+     "votes": 12623
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 40.93,
+     "votes": 9602
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 2.98,
+     "votes": 700
+    }
    ]
   },
   {
    "name": "Nišava",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 53.5,
-   "votes": 17664,
-   "counted": 119,
+   "pct": 52.82,
+   "votes": 19063,
+   "counted": 127,
    "total": 442,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_21"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 52.82,
+     "votes": 19063
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 42.36,
+     "votes": 15288
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 2.67,
+     "votes": 962
+    }
    ]
   },
   {
    "name": "Toplica",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 62.64,
-   "votes": 4336,
-   "counted": 48,
+   "pct": 62.68,
+   "votes": 4456,
+   "counted": 50,
    "total": 197,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_25"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 62.68,
+     "votes": 4456
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 31.85,
+     "votes": 2264
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.22,
+     "votes": 229
+    }
    ]
   },
   {
    "name": "Pirot",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 53.33,
-   "votes": 4653,
-   "counted": 59,
+   "pct": 53.43,
+   "votes": 4675,
+   "counted": 60,
    "total": 184,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_22"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 53.43,
+     "votes": 4675
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 40.9,
+     "votes": 3578
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 3.74,
+     "votes": 327
+    }
    ]
   },
   {
    "name": "Jablanica",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 55.11,
-   "votes": 12187,
-   "counted": 103,
+   "pct": 55.34,
+   "votes": 12716,
+   "counted": 107,
    "total": 346,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_20"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 55.34,
+     "votes": 12716
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 37.94,
+     "votes": 8718
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 4.04,
+     "votes": 929
+    }
    ]
   },
   {
    "name": "Pčinja",
    "winner": "sns",
    "winner_name": "Vučić – United Serbia",
-   "pct": 49.31,
-   "votes": 12050,
-   "counted": 120,
+   "pct": 48.84,
+   "votes": 12827,
+   "counted": 126,
    "total": 360,
    "leading": true,
    "elected": false,
    "map_ids": [
     "_24"
+   ],
+   "top": [
+    {
+     "id": "sns",
+     "name": "Vučić – United Serbia",
+     "color": "#242970",
+     "pct": 48.84,
+     "votes": 12827
+    },
+    {
+     "id": "sl",
+     "name": "Student List",
+     "color": "#A81A32",
+     "pct": 22.92,
+     "votes": 6020
+    },
+    {
+     "id": "sps",
+     "name": "Socialist Party",
+     "color": "#EB1B23",
+     "pct": 4.62,
+     "votes": 1213
+    }
    ]
   }
  ],
@@ -450,70 +1025,185 @@
      "name": "Belgrade",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 61.38,
-     "votes": 66759,
-     "counted": 178,
+     "pct": 61.52,
+     "votes": 72152,
+     "counted": 189,
      "total": 1266,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_1"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 61.52,
+       "votes": 72152
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 33.92,
+       "votes": 39780
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.62,
+       "votes": 1898
+      }
      ]
     },
     {
      "name": "North Bačka",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 42.19,
-     "votes": 4922,
-     "counted": 42,
+     "pct": 41.83,
+     "votes": 5041,
+     "counted": 43,
      "total": 175,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_6"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.83,
+       "votes": 5041
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 36.96,
+       "votes": 4454
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 18.4,
+       "votes": 2217
+      }
      ]
     },
     {
      "name": "Central Banat",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 47.31,
-     "votes": 7340,
-     "counted": 43,
+     "pct": 48.02,
+     "votes": 8171,
+     "counted": 46,
      "total": 178,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_7"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.02,
+       "votes": 8171
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 42.77,
+       "votes": 7277
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 5.11,
+       "votes": 869
+      }
      ]
     },
     {
      "name": "North Banat",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 38.49,
-     "votes": 10282,
-     "counted": 91,
+     "pct": 38.04,
+     "votes": 10742,
+     "counted": 95,
      "total": 197,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_5"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 38.04,
+       "votes": 10742
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.3,
+       "votes": 10535
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 21.35,
+       "votes": 6030
+      }
      ]
     },
     {
      "name": "South Banat",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 48.58,
-     "votes": 12876,
-     "counted": 78,
+     "pct": 48.61,
+     "votes": 14043,
+     "counted": 82,
      "total": 273,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_3"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.61,
+       "votes": 14043
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.49,
+       "votes": 13432
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.79,
+       "votes": 517
+      }
      ]
     },
     {
@@ -528,272 +1218,732 @@
      "elected": false,
      "map_ids": [
       "_2"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.57,
+       "votes": 12427
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.97,
+       "votes": 12267
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 3.57,
+       "votes": 953
+      }
      ]
     },
     {
      "name": "South Bačka",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 50.94,
-     "votes": 30260,
-     "counted": 114,
+     "pct": 51.23,
+     "votes": 32478,
+     "counted": 120,
      "total": 513,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_4"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.23,
+       "votes": 32478
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 42.01,
+       "votes": 26635
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 2.67,
+       "votes": 1693
+      }
      ]
     },
     {
      "name": "Srem",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 49.18,
-     "votes": 23608,
-     "counted": 87,
+     "pct": 49.47,
+     "votes": 24939,
+     "counted": 92,
      "total": 276,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_8"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 49.47,
+       "votes": 24939
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.06,
+       "votes": 23217
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.94,
+       "votes": 980
+      }
      ]
     },
     {
      "name": "Mačva",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 51.5,
-     "votes": 11358,
-     "counted": 93,
+     "pct": 51.45,
+     "votes": 12078,
+     "counted": 99,
      "total": 389,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_11"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.45,
+       "votes": 12078
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.92,
+       "votes": 9839
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.88,
+       "votes": 910
+      }
      ]
     },
     {
      "name": "Kolubara",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 48.3,
-     "votes": 10933,
-     "counted": 119,
+     "pct": 48.22,
+     "votes": 11327,
+     "counted": 123,
      "total": 278,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_10"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.22,
+       "votes": 11327
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 47.88,
+       "votes": 11246
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.23,
+       "votes": 523
+      }
      ]
     },
     {
      "name": "Podunavlje",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 49.71,
-     "votes": 4629,
-     "counted": 27,
+     "pct": 49.68,
+     "votes": 4974,
+     "counted": 28,
      "total": 174,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_23"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 49.68,
+       "votes": 4974
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 45.31,
+       "votes": 4537
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.52,
+       "votes": 252
+      }
      ]
     },
     {
      "name": "Braničevo",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 54.99,
-     "votes": 14741,
-     "counted": 98,
+     "pct": 55.17,
+     "votes": 15855,
+     "counted": 104,
      "total": 302,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_18"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.17,
+       "votes": 15855
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.63,
+       "votes": 11390
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.29,
+       "votes": 945
+      }
      ]
     },
     {
      "name": "Šumadija",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 49.14,
-     "votes": 13762,
-     "counted": 111,
+     "pct": 49.55,
+     "votes": 14831,
+     "counted": 116,
      "total": 342,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_16"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 49.55,
+       "votes": 14831
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.81,
+       "votes": 13413
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.91,
+       "votes": 871
+      }
      ]
     },
     {
      "name": "Pomoravlje",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 50.86,
-     "votes": 9277,
-     "counted": 91,
+     "pct": 50.95,
+     "votes": 9836,
+     "counted": 94,
      "total": 287,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_13"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.95,
+       "votes": 9836
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.39,
+       "votes": 7218
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 9.45,
+       "votes": 1825
+      }
      ]
     },
     {
      "name": "Bor",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 53.88,
-     "votes": 6756,
-     "counted": 49,
+     "pct": 53.71,
+     "votes": 6848,
+     "counted": 50,
      "total": 192,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_17"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.71,
+       "votes": 6848
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.54,
+       "votes": 5296
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.08,
+       "votes": 393
+      }
      ]
     },
     {
      "name": "Zaječar",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 57.0,
-     "votes": 3039,
-     "counted": 46,
+     "pct": 56.47,
+     "votes": 3396,
+     "counted": 50,
      "total": 203,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_19"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 56.47,
+       "votes": 3396
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.33,
+       "votes": 2245
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.61,
+       "votes": 217
+      }
      ]
     },
     {
      "name": "Zlatibor",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 46.22,
-     "votes": 14316,
-     "counted": 190,
+     "pct": 46.21,
+     "votes": 15480,
+     "counted": 199,
      "total": 499,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_9"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.21,
+       "votes": 15480
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 44.99,
+       "votes": 15072
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.01,
+       "votes": 1010
+      }
      ]
     },
     {
      "name": "Moravica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 49.36,
-     "votes": 3967,
-     "counted": 52,
+     "pct": 47.99,
+     "votes": 4320,
+     "counted": 54,
      "total": 268,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_12"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.99,
+       "votes": 4320
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 47.24,
+       "votes": 4252
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.77,
+       "votes": 249
+      }
      ]
     },
     {
      "name": "Raška",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 37.72,
-     "votes": 9883,
-     "counted": 105,
+     "pct": 37.58,
+     "votes": 10090,
+     "counted": 108,
      "total": 351,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_15"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.58,
+       "votes": 10090
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 37.03,
+       "votes": 9942
+      },
+      {
+       "id": "sda",
+       "name": "SDA Sandžak",
+       "color": "#069443",
+       "pct": 7.77,
+       "votes": 2085
+      }
      ]
     },
     {
      "name": "Rasina",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 53.82,
-     "votes": 12273,
-     "counted": 103,
+     "pct": 53.8,
+     "votes": 12623,
+     "counted": 106,
      "total": 346,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_14"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.8,
+       "votes": 12623
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.93,
+       "votes": 9602
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.98,
+       "votes": 700
+      }
      ]
     },
     {
      "name": "Nišava",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 53.5,
-     "votes": 17664,
-     "counted": 119,
+     "pct": 52.82,
+     "votes": 19063,
+     "counted": 127,
      "total": 442,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_21"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 52.82,
+       "votes": 19063
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.36,
+       "votes": 15288
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.67,
+       "votes": 962
+      }
      ]
     },
     {
      "name": "Toplica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 62.64,
-     "votes": 4336,
-     "counted": 48,
+     "pct": 62.68,
+     "votes": 4456,
+     "counted": 50,
      "total": 197,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_25"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 62.68,
+       "votes": 4456
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.85,
+       "votes": 2264
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.22,
+       "votes": 229
+      }
      ]
     },
     {
      "name": "Pirot",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 53.33,
-     "votes": 4653,
-     "counted": 59,
+     "pct": 53.43,
+     "votes": 4675,
+     "counted": 60,
      "total": 184,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_22"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.43,
+       "votes": 4675
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.9,
+       "votes": 3578
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.74,
+       "votes": 327
+      }
      ]
     },
     {
      "name": "Jablanica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 55.11,
-     "votes": 12187,
-     "counted": 103,
+     "pct": 55.34,
+     "votes": 12716,
+     "counted": 107,
      "total": 346,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_20"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.34,
+       "votes": 12716
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.94,
+       "votes": 8718
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.04,
+       "votes": 929
+      }
      ]
     },
     {
      "name": "Pčinja",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 49.31,
-     "votes": 12050,
-     "counted": 120,
+     "pct": 48.84,
+     "votes": 12827,
+     "counted": 126,
      "total": 360,
      "leading": true,
      "elected": false,
      "map_ids": [
       "_24"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.84,
+       "votes": 12827
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 22.92,
+       "votes": 6020
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.62,
+       "votes": 1213
+      }
      ]
     }
    ]
@@ -808,56 +1958,148 @@
      "name": "Ada",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 37.93,
-     "votes": 1203,
-     "counted": 14,
+     "pct": 37.09,
+     "votes": 1352,
+     "counted": 15,
      "total": 29,
      "leading": true,
      "elected": false,
      "map_ids": [
       "ada"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 37.09,
+       "votes": 1352
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 30.1,
+       "votes": 1097
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 29.68,
+       "votes": 1082
+      }
      ]
     },
     {
      "name": "Aleksandrovac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 50.41,
-     "votes": 1458,
-     "counted": 22,
+     "pct": 50.48,
+     "votes": 1529,
+     "counted": 23,
      "total": 61,
      "leading": true,
      "elected": false,
      "map_ids": [
       "aleksandrovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.48,
+       "votes": 1529
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.23,
+       "votes": 1249
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 6.47,
+       "votes": 196
+      }
      ]
     },
     {
      "name": "Aleksinac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 52.21,
-     "votes": 1525,
-     "counted": 13,
+     "pct": 52.94,
+     "votes": 1738,
+     "counted": 14,
      "total": 88,
      "leading": true,
      "elected": false,
      "map_ids": [
       "aleksinac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 52.94,
+       "votes": 1738
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.82,
+       "votes": 1373
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.41,
+       "votes": 112
+      }
      ]
     },
     {
      "name": "Alibunar",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 50.74,
-     "votes": 1794,
-     "counted": 8,
+     "pct": 51.05,
+     "votes": 2088,
+     "counted": 9,
      "total": 24,
      "leading": true,
      "elected": false,
      "map_ids": [
       "alibunar"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.05,
+       "votes": 2088
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.52,
+       "votes": 1821
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.42,
+       "votes": 58
+      }
      ]
     },
     {
@@ -872,6 +2114,29 @@
      "elected": false,
      "map_ids": [
       "apatin"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.41,
+       "votes": 4726
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.59,
+       "votes": 4541
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 4.94,
+       "votes": 503
+      }
      ]
     },
     {
@@ -886,20 +2151,66 @@
      "elected": false,
      "map_ids": [
       "arandjelovac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.7,
+       "votes": 3107
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.32,
+       "votes": 2716
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.08,
+       "votes": 189
+      }
      ]
     },
     {
      "name": "Arilje",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 52.43,
-     "votes": 1347,
-     "counted": 10,
+     "pct": 53.21,
+     "votes": 1540,
+     "counted": 11,
      "total": 28,
      "leading": true,
      "elected": false,
      "map_ids": [
       "arilje"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 53.21,
+       "votes": 1540
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 42.02,
+       "votes": 1216
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.94,
+       "votes": 56
+      }
      ]
     },
     {
@@ -914,6 +2225,29 @@
      "elected": false,
      "map_ids": [
       "babusnica"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 60.28,
+       "votes": 1003
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 34.68,
+       "votes": 577
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.55,
+       "votes": 59
+      }
      ]
     },
     {
@@ -928,34 +2262,103 @@
      "elected": false,
      "map_ids": [
       "bac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.82,
+       "votes": 1265
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.51,
+       "votes": 1231
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.62,
+       "votes": 42
+      }
      ]
     },
     {
      "name": "Backa Palanka",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 49.03,
-     "votes": 3820,
-     "counted": 12,
+     "pct": 50.11,
+     "votes": 4410,
+     "counted": 13,
      "total": 43,
      "leading": true,
      "elected": false,
      "map_ids": [
       "backa_palanka"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.11,
+       "votes": 4410
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.04,
+       "votes": 3964
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.26,
+       "votes": 199
+      }
      ]
     },
     {
      "name": "Backa Topola",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 38.13,
-     "votes": 1770,
-     "counted": 18,
+     "pct": 37.82,
+     "votes": 1901,
+     "counted": 19,
      "total": 50,
      "leading": true,
      "elected": false,
      "map_ids": [
       "backa_topola"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 37.82,
+       "votes": 1901
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.46,
+       "votes": 1883
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 21.56,
+       "votes": 1084
+      }
      ]
     },
     {
@@ -970,62 +2373,177 @@
      "elected": false,
      "map_ids": [
       "backi_petrovac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 64.41,
+       "votes": 2090
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 32.23,
+       "votes": 1046
+      },
+      {
+       "id": "pes",
+       "name": "European Serbia",
+       "color": "#C9A227",
+       "pct": 0.92,
+       "votes": 30
+      }
      ]
     },
     {
      "name": "Bajina Basta",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 53.96,
-     "votes": 2800,
-     "counted": 33,
+     "pct": 52.83,
+     "votes": 3346,
+     "counted": 35,
      "total": 52,
      "leading": true,
      "elected": false,
      "map_ids": [
       "bajina_basta"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 52.83,
+       "votes": 3346
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 43.13,
+       "votes": 2732
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.49,
+       "votes": 158
+      }
      ]
     },
     {
      "name": "Barajevo",
-     "winner": "sns",
-     "winner_name": "Vučić – United Serbia",
-     "pct": 47.99,
-     "votes": 858,
-     "counted": 4,
+     "winner": "sl",
+     "winner_name": "Student List",
+     "pct": 48.07,
+     "votes": 1073,
+     "counted": 5,
      "total": 28,
      "leading": true,
      "elected": false,
      "map_ids": [
       "barajevo"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.07,
+       "votes": 1073
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.91,
+       "votes": 1047
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.55,
+       "votes": 57
+      }
      ]
     },
     {
      "name": "Batocina",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 47.21,
-     "votes": 1910,
-     "counted": 14,
+     "pct": 46.95,
+     "votes": 1939,
+     "counted": 15,
      "total": 22,
      "leading": true,
      "elected": false,
      "map_ids": [
       "batocina"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.95,
+       "votes": 1939
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.63,
+       "votes": 1926
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.46,
+       "votes": 143
+      }
      ]
     },
     {
      "name": "Becej",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 45.36,
-     "votes": 3796,
-     "counted": 18,
+     "pct": 45.26,
+     "votes": 4014,
+     "counted": 19,
      "total": 38,
      "leading": true,
      "elected": false,
      "map_ids": [
       "becej"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.26,
+       "votes": 4014
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.38,
+       "votes": 3493
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 12.47,
+       "votes": 1106
+      }
      ]
     },
     {
@@ -1040,20 +2558,66 @@
      "elected": false,
      "map_ids": [
       "bela_crkva"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.24,
+       "votes": 2203
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 45.17,
+       "votes": 1942
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.49,
+       "votes": 64
+      }
      ]
     },
     {
      "name": "Bela Palanka",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 68.92,
-     "votes": 887,
-     "counted": 11,
+     "pct": 69.34,
+     "votes": 909,
+     "counted": 12,
      "total": 36,
      "leading": true,
      "elected": false,
      "map_ids": [
       "bela_palanka"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 69.34,
+       "votes": 909
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 26.62,
+       "votes": 349
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.83,
+       "votes": 24
+      }
      ]
     },
     {
@@ -1068,34 +2632,103 @@
      "elected": false,
      "map_ids": [
       "beocin"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.74,
+       "votes": 1281
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.16,
+       "votes": 1108
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 6.96,
+       "votes": 183
+      }
      ]
     },
     {
      "name": "Blace",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 65.51,
-     "votes": 433,
-     "counted": 7,
+     "pct": 63.96,
+     "votes": 465,
+     "counted": 8,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "blace"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 63.96,
+       "votes": 465
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 30.26,
+       "votes": 220
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.34,
+       "votes": 17
+      }
      ]
     },
     {
      "name": "Bogatic",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 49.55,
-     "votes": 2208,
-     "counted": 10,
+     "pct": 48.87,
+     "votes": 2391,
+     "counted": 11,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "bogatic"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.87,
+       "votes": 2391
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.9,
+       "votes": 2295
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.7,
+       "votes": 132
+      }
      ]
     },
     {
@@ -1110,34 +2743,103 @@
      "elected": false,
      "map_ids": [
       "bojnik"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 72.87,
+       "votes": 983
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 24.83,
+       "votes": 335
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.85,
+       "votes": 25
+      }
      ]
     },
     {
      "name": "Boljevac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 65.05,
-     "votes": 482,
-     "counted": 8,
+     "pct": 63.23,
+     "votes": 626,
+     "counted": 9,
      "total": 37,
      "leading": true,
      "elected": false,
      "map_ids": [
       "boljevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 63.23,
+       "votes": 626
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 32.12,
+       "votes": 318
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.73,
+       "votes": 27
+      }
      ]
     },
     {
      "name": "Bor",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 51.46,
-     "votes": 1477,
-     "counted": 7,
+     "pct": 51.62,
+     "votes": 1591,
+     "counted": 8,
      "total": 48,
      "leading": true,
      "elected": false,
      "map_ids": [
       "bor"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.62,
+       "votes": 1591
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 43.54,
+       "votes": 1342
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.11,
+       "votes": 96
+      }
      ]
     },
     {
@@ -1152,48 +2854,140 @@
      "elected": false,
      "map_ids": [
       "bosilegrad"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 64.92,
+       "votes": 1952
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 29.86,
+       "votes": 898
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.59,
+       "votes": 108
+      }
      ]
     },
     {
      "name": "Brus",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 55.44,
-     "votes": 2104,
-     "counted": 16,
+     "pct": 54.94,
+     "votes": 2251,
+     "counted": 17,
      "total": 28,
      "leading": true,
      "elected": false,
      "map_ids": [
       "brus"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 54.94,
+       "votes": 2251
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.1,
+       "votes": 1602
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.81,
+       "votes": 115
+      }
      ]
     },
     {
      "name": "Bujanovac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 32.43,
-     "votes": 1223,
-     "counted": 16,
+     "pct": 32.32,
+     "votes": 1338,
+     "counted": 17,
      "total": 59,
      "leading": true,
      "elected": false,
      "map_ids": [
       "bujanovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 32.32,
+       "votes": 1338
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 15.65,
+       "votes": 648
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.04,
+       "votes": 43
+      }
      ]
     },
     {
      "name": "Cacak",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 49.96,
-     "votes": 1397,
-     "counted": 12,
+     "pct": 52.52,
+     "votes": 1960,
+     "counted": 13,
      "total": 104,
      "leading": true,
      "elected": false,
      "map_ids": [
       "cacak"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 52.52,
+       "votes": 1960
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 42.15,
+       "votes": 1573
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.16,
+       "votes": 118
+      }
      ]
     },
     {
@@ -1208,6 +3002,29 @@
      "elected": false,
      "map_ids": [
       "cajetina"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.49,
+       "votes": 1089
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.8,
+       "votes": 988
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.23,
+       "votes": 48
+      }
      ]
     },
     {
@@ -1222,20 +3039,66 @@
      "elected": false,
      "map_ids": [
       "cicevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 54.53,
+       "votes": 2207
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.43,
+       "votes": 1636
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.74,
+       "votes": 111
+      }
      ]
     },
     {
      "name": "Coka",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 48.27,
-     "votes": 1693,
-     "counted": 16,
+     "pct": 47.75,
+     "votes": 1864,
+     "counted": 17,
      "total": 22,
      "leading": true,
      "elected": false,
      "map_ids": [
       "coka"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.75,
+       "votes": 1864
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 36.96,
+       "votes": 1443
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 12.91,
+       "votes": 504
+      }
      ]
     },
     {
@@ -1250,20 +3113,66 @@
      "elected": false,
      "map_ids": [
       "crna_trava"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 72.74,
+       "votes": 467
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 17.6,
+       "votes": 113
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 7.17,
+       "votes": 46
+      }
      ]
     },
     {
      "name": "Cukarica",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 68.42,
-     "votes": 3767,
-     "counted": 7,
+     "pct": 66.76,
+     "votes": 4267,
+     "counted": 8,
      "total": 113,
      "leading": true,
      "elected": false,
      "map_ids": [
       "cukarica"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 66.76,
+       "votes": 4267
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 28.33,
+       "votes": 1811
+      },
+      {
+       "id": "nada",
+       "name": "NADA",
+       "color": "#616264",
+       "pct": 1.77,
+       "votes": 113
+      }
      ]
     },
     {
@@ -1278,20 +3187,66 @@
      "elected": false,
      "map_ids": [
       "cuprija"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 58.87,
+       "votes": 501
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.25,
+       "votes": 317
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.53,
+       "votes": 13
+      }
      ]
     },
     {
      "name": "Despotovac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 63.2,
-     "votes": 2112,
-     "counted": 17,
+     "pct": 63.8,
+     "votes": 2268,
+     "counted": 18,
      "total": 44,
      "leading": true,
      "elected": false,
      "map_ids": [
       "despotovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 63.8,
+       "votes": 2268
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.62,
+       "votes": 1124
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.64,
+       "votes": 94
+      }
      ]
     },
     {
@@ -1306,20 +3261,66 @@
      "elected": false,
      "map_ids": [
       "dimitrovgrad"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.12,
+       "votes": 2405
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.06,
+       "votes": 2302
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.8,
+       "votes": 190
+      }
      ]
     },
     {
      "name": "Doljevac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 76.94,
-     "votes": 3820,
-     "counted": 16,
+     "pct": 75.75,
+     "votes": 4002,
+     "counted": 17,
      "total": 37,
      "leading": true,
      "elected": false,
      "map_ids": [
       "doljevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 75.75,
+       "votes": 4002
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 22.05,
+       "votes": 1165
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.19,
+       "votes": 63
+      }
      ]
     },
     {
@@ -1334,20 +3335,66 @@
      "elected": false,
      "map_ids": [
       "gadzin_han"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 62.06,
+       "votes": 1276
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.23,
+       "votes": 642
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 5.35,
+       "votes": 110
+      }
      ]
     },
     {
      "name": "Golubac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 61.64,
-     "votes": 1046,
-     "counted": 13,
+     "pct": 61.94,
+     "votes": 1154,
+     "counted": 14,
      "total": 30,
      "leading": true,
      "elected": false,
      "map_ids": [
       "golubac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 61.94,
+       "votes": 1154
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 32.21,
+       "votes": 600
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.03,
+       "votes": 75
+      }
      ]
     },
     {
@@ -1362,90 +3409,251 @@
      "elected": false,
      "map_ids": [
       "gornji_milanovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.17,
+       "votes": 593
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 43.99,
+       "votes": 520
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.47,
+       "votes": 41
+      }
      ]
     },
     {
      "name": "Grocka",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 55.46,
-     "votes": 3270,
-     "counted": 8,
+     "pct": 54.97,
+     "votes": 3558,
+     "counted": 9,
      "total": 52,
      "leading": true,
      "elected": false,
      "map_ids": [
       "grocka"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 54.97,
+       "votes": 3558
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 39.63,
+       "votes": 2565
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.41,
+       "votes": 156
+      }
      ]
     },
     {
      "name": "Indjija",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 47.75,
-     "votes": 2671,
-     "counted": 9,
+     "pct": 48.57,
+     "votes": 2913,
+     "counted": 10,
      "total": 37,
      "leading": true,
      "elected": false,
      "map_ids": [
       "indjija"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.57,
+       "votes": 2913
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.42,
+       "votes": 2784
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.13,
+       "votes": 128
+      }
      ]
     },
     {
      "name": "Irig",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 55.27,
-     "votes": 2056,
-     "counted": 10,
+     "pct": 56.18,
+     "votes": 2362,
+     "counted": 11,
      "total": 14,
      "leading": true,
      "elected": false,
      "map_ids": [
       "irig"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 56.18,
+       "votes": 2362
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.11,
+       "votes": 1644
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.28,
+       "votes": 96
+      }
      ]
     },
     {
      "name": "Ivanjica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 50.3,
-     "votes": 1106,
-     "counted": 14,
+     "pct": 50.7,
+     "votes": 1129,
+     "counted": 15,
      "total": 55,
      "leading": true,
      "elected": false,
      "map_ids": [
       "ivanjica"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.7,
+       "votes": 1129
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 44.45,
+       "votes": 990
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.74,
+       "votes": 61
+      }
      ]
     },
     {
      "name": "Jagodina",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 41.19,
-     "votes": 2743,
-     "counted": 32,
+     "pct": 41.25,
+     "votes": 2917,
+     "counted": 33,
      "total": 91,
      "leading": true,
      "elected": false,
      "map_ids": [
       "jagodina"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 41.25,
+       "votes": 2917
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 36.93,
+       "votes": 2612
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 19.75,
+       "votes": 1397
+      }
      ]
     },
     {
      "name": "Kanjiza",
      "winner": "vmsz",
      "winner_name": "Vojvodina Hungarians",
-     "pct": 42.52,
-     "votes": 2679,
-     "counted": 20,
+     "pct": 41.77,
+     "votes": 2797,
+     "counted": 21,
      "total": 33,
      "leading": true,
      "elected": false,
      "map_ids": [
       "kanjiza"
+     ],
+     "top": [
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 41.77,
+       "votes": 2797
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 30.72,
+       "votes": 2057
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 23.54,
+       "votes": 1576
+      }
      ]
     },
     {
@@ -1460,6 +3668,29 @@
      "elected": false,
      "map_ids": [
       "kikinda"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.61,
+       "votes": 3720
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.5,
+       "votes": 3711
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 2.91,
+       "votes": 232
+      }
      ]
     },
     {
@@ -1474,6 +3705,29 @@
      "elected": false,
      "map_ids": [
       "kladovo"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 64.89,
+       "votes": 2283
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 30.93,
+       "votes": 1088
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.59,
+       "votes": 91
+      }
      ]
     },
     {
@@ -1488,20 +3742,66 @@
      "elected": false,
      "map_ids": [
       "knic"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.03,
+       "votes": 1087
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.23,
+       "votes": 942
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.74,
+       "votes": 37
+      }
      ]
     },
     {
      "name": "Knjazevac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 54.42,
-     "votes": 935,
-     "counted": 14,
+     "pct": 54.11,
+     "votes": 962,
+     "counted": 15,
      "total": 65,
      "leading": true,
      "elected": false,
      "map_ids": [
       "knjazevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 54.11,
+       "votes": 962
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.88,
+       "votes": 709
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.98,
+       "votes": 53
+      }
      ]
     },
     {
@@ -1516,6 +3816,29 @@
      "elected": false,
      "map_ids": [
       "koceljeva"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 61.24,
+       "votes": 613
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 34.57,
+       "votes": 346
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.0,
+       "votes": 20
+      }
      ]
     },
     {
@@ -1530,6 +3853,29 @@
      "elected": false,
      "map_ids": [
       "kosjeric"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 58.46,
+       "votes": 1133
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 35.5,
+       "votes": 688
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.61,
+       "votes": 70
+      }
      ]
     },
     {
@@ -1544,6 +3890,29 @@
      "elected": false,
      "map_ids": [
       "kovacica"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 54.0,
+       "votes": 1559
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 38.28,
+       "votes": 1105
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 4.02,
+       "votes": 116
+      }
      ]
     },
     {
@@ -1558,48 +3927,140 @@
      "elected": false,
      "map_ids": [
       "kovin"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.05,
+       "votes": 1404
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 45.24,
+       "votes": 1350
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 3.38,
+       "votes": 101
+      }
      ]
     },
     {
      "name": "Kragujevac",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 47.04,
-     "votes": 2325,
-     "counted": 30,
+     "pct": 49.23,
+     "votes": 2886,
+     "counted": 31,
      "total": 174,
      "leading": true,
      "elected": false,
      "map_ids": [
       "kragujevac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 49.23,
+       "votes": 2886
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.08,
+       "votes": 2584
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.71,
+       "votes": 159
+      }
      ]
     },
     {
      "name": "Kraljevo",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 48.11,
-     "votes": 4233,
-     "counted": 25,
+     "pct": 47.95,
+     "votes": 4380,
+     "counted": 26,
      "total": 103,
      "leading": true,
      "elected": false,
      "map_ids": [
       "kraljevo"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.95,
+       "votes": 4380
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 47.33,
+       "votes": 4324
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.69,
+       "votes": 246
+      }
      ]
     },
     {
      "name": "Krupanj",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 59.19,
-     "votes": 821,
-     "counted": 9,
+     "pct": 56.19,
+     "votes": 962,
+     "counted": 10,
      "total": 32,
      "leading": true,
      "elected": false,
      "map_ids": [
       "krupanj"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 56.19,
+       "votes": 962
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 38.14,
+       "votes": 653
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.86,
+       "votes": 66
+      }
      ]
     },
     {
@@ -1614,6 +4075,29 @@
      "elected": false,
      "map_ids": [
       "krusevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 54.02,
+       "votes": 4122
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.54,
+       "votes": 3170
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.2,
+       "votes": 168
+      }
      ]
     },
     {
@@ -1628,6 +4112,29 @@
      "elected": false,
      "map_ids": [
       "kucevo"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 59.27,
+       "votes": 783
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 35.12,
+       "votes": 464
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.94,
+       "votes": 52
+      }
      ]
     },
     {
@@ -1642,20 +4149,66 @@
      "elected": false,
      "map_ids": [
       "kula"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.83,
+       "votes": 1981
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.28,
+       "votes": 1837
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 3.01,
+       "votes": 122
+      }
      ]
     },
     {
      "name": "Kursumlija",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 55.2,
-     "votes": 1157,
-     "counted": 13,
+     "pct": 56.16,
+     "votes": 1245,
+     "counted": 14,
      "total": 48,
      "leading": true,
      "elected": false,
      "map_ids": [
       "kursumlija"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 56.16,
+       "votes": 1245
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 38.66,
+       "votes": 857
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.8,
+       "votes": 40
+      }
      ]
     },
     {
@@ -1670,20 +4223,66 @@
      "elected": false,
      "map_ids": [
       "lajkovac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 56.27,
+       "votes": 1154
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 41.83,
+       "votes": 858
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 0.68,
+       "votes": 14
+      }
      ]
     },
     {
      "name": "Lapovo",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 50.39,
-     "votes": 1151,
-     "counted": 6,
+     "pct": 49.3,
+     "votes": 1311,
+     "counted": 7,
      "total": 11,
      "leading": true,
      "elected": false,
      "map_ids": [
       "lapovo"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 49.3,
+       "votes": 1311
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 44.94,
+       "votes": 1195
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.08,
+       "votes": 82
+      }
      ]
     },
     {
@@ -1698,62 +4297,177 @@
      "elected": false,
      "map_ids": [
       "lazarevac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 53.92,
+       "votes": 481
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 41.7,
+       "votes": 372
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.57,
+       "votes": 14
+      }
      ]
     },
     {
      "name": "Lebane",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 68.39,
-     "votes": 1179,
-     "counted": 12,
+     "pct": 67.83,
+     "votes": 1284,
+     "counted": 13,
      "total": 42,
      "leading": true,
      "elected": false,
      "map_ids": [
       "lebane"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 67.83,
+       "votes": 1284
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 24.78,
+       "votes": 469
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 5.81,
+       "votes": 110
+      }
      ]
     },
     {
      "name": "Leskovac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 51.59,
-     "votes": 9031,
-     "counted": 55,
+     "pct": 51.87,
+     "votes": 9413,
+     "counted": 57,
      "total": 186,
      "leading": true,
      "elected": false,
      "map_ids": [
       "leskovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.87,
+       "votes": 9413
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 41.7,
+       "votes": 7566
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.92,
+       "votes": 711
+      }
      ]
     },
     {
      "name": "Ljig",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 60.41,
-     "votes": 1491,
-     "counted": 14,
+     "pct": 59.94,
+     "votes": 1550,
+     "counted": 15,
      "total": 30,
      "leading": true,
      "elected": false,
      "map_ids": [
       "ljig"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 59.94,
+       "votes": 1550
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 36.54,
+       "votes": 945
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.47,
+       "votes": 38
+      }
      ]
     },
     {
      "name": "Ljubovija",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 47.8,
-     "votes": 1684,
-     "counted": 17,
+     "pct": 48.23,
+     "votes": 1773,
+     "counted": 18,
      "total": 34,
      "leading": true,
      "elected": false,
      "map_ids": [
       "ljubovija"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.23,
+       "votes": 1773
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 34.22,
+       "votes": 1258
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 10.26,
+       "votes": 377
+      }
      ]
     },
     {
@@ -1761,13 +4475,36 @@
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
      "pct": 53.6,
-     "votes": 2145,
-     "counted": 16,
+     "votes": 2224,
+     "counted": 17,
      "total": 96,
      "leading": true,
      "elected": false,
      "map_ids": [
       "loznica"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.6,
+       "votes": 2224
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.78,
+       "votes": 1775
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.98,
+       "votes": 82
+      }
      ]
     },
     {
@@ -1782,6 +4519,29 @@
      "elected": false,
      "map_ids": [
       "lucani"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.11,
+       "votes": 1025
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.04,
+       "votes": 782
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.56,
+       "votes": 29
+      }
      ]
     },
     {
@@ -1796,6 +4556,29 @@
      "elected": false,
      "map_ids": [
       "majdanpek"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.74,
+       "votes": 2080
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.94,
+       "votes": 1842
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.42,
+       "votes": 99
+      }
      ]
     },
     {
@@ -1810,6 +4593,29 @@
      "elected": false,
      "map_ids": [
       "mali_idjos"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 38.1,
+       "votes": 885
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 34.44,
+       "votes": 800
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 24.67,
+       "votes": 573
+      }
      ]
     },
     {
@@ -1824,20 +4630,66 @@
      "elected": false,
      "map_ids": [
       "mali_zvornik"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.71,
+       "votes": 922
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.44,
+       "votes": 721
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 6.23,
+       "votes": 111
+      }
      ]
     },
     {
      "name": "Malo Crnice",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 52.72,
-     "votes": 813,
-     "counted": 8,
+     "pct": 52.15,
+     "votes": 981,
+     "counted": 9,
      "total": 29,
      "leading": true,
      "elected": false,
      "map_ids": [
       "malo_crnice"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 52.15,
+       "votes": 981
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.82,
+       "votes": 749
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 6.11,
+       "votes": 115
+      }
      ]
     },
     {
@@ -1852,48 +4704,140 @@
      "elected": false,
      "map_ids": [
       "medvedja"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.64,
+       "votes": 324
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 24.5,
+       "votes": 148
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.97,
+       "votes": 30
+      }
      ]
     },
     {
      "name": "Merosina",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 67.0,
-     "votes": 2199,
-     "counted": 12,
+     "pct": 67.15,
+     "votes": 2234,
+     "counted": 13,
      "total": 26,
      "leading": true,
      "elected": false,
      "map_ids": [
       "merosina"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 67.15,
+       "votes": 2234
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 26.75,
+       "votes": 890
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.84,
+       "votes": 161
+      }
      ]
     },
     {
      "name": "Mionica",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 52.12,
-     "votes": 2795,
-     "counted": 26,
+     "pct": 51.94,
+     "votes": 2898,
+     "counted": 27,
      "total": 38,
      "leading": true,
      "elected": false,
      "map_ids": [
       "mionica"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.94,
+       "votes": 2898
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.09,
+       "votes": 2460
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.58,
+       "votes": 144
+      }
      ]
     },
     {
      "name": "Mladenovac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 49.3,
-     "votes": 3162,
-     "counted": 18,
+     "pct": 47.82,
+     "votes": 3386,
+     "counted": 19,
      "total": 59,
      "leading": true,
      "elected": false,
      "map_ids": [
       "mladenovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.82,
+       "votes": 3386
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 47.41,
+       "votes": 3357
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.23,
+       "votes": 158
+      }
      ]
     },
     {
@@ -1908,20 +4852,66 @@
      "elected": false,
      "map_ids": [
       "negotin"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 67.33,
+       "votes": 1381
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 26.18,
+       "votes": 537
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 5.22,
+       "votes": 107
+      }
      ]
     },
     {
      "name": "Nis",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 52.77,
-     "votes": 9119,
-     "counted": 36,
+     "pct": 53.26,
+     "votes": 10347,
+     "counted": 39,
      "total": 197,
      "leading": true,
      "elected": false,
      "map_ids": [
       "nis"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 53.26,
+       "votes": 10347
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 41.86,
+       "votes": 8132
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.09,
+       "votes": 407
+      }
      ]
     },
     {
@@ -1936,48 +4926,140 @@
      "elected": false,
      "map_ids": [
       "nova_crnja"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.08,
+       "votes": 1516
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 35.34,
+       "votes": 1049
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 8.49,
+       "votes": 252
+      }
      ]
     },
     {
      "name": "Nova Varos",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 47.48,
-     "votes": 2367,
-     "counted": 27,
+     "pct": 48.37,
+     "votes": 2736,
+     "counted": 29,
      "total": 39,
      "leading": true,
      "elected": false,
      "map_ids": [
       "nova_varos"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.37,
+       "votes": 2736
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.22,
+       "votes": 2614
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.69,
+       "votes": 152
+      }
      ]
     },
     {
      "name": "Novi Becej",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 50.91,
-     "votes": 1731,
-     "counted": 9,
+     "pct": 50.49,
+     "votes": 1897,
+     "counted": 10,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "novi_becej"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.49,
+       "votes": 1897
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 42.8,
+       "votes": 1608
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 3.35,
+       "votes": 126
+      }
      ]
     },
     {
      "name": "Novi Beograd",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 69.25,
-     "votes": 4142,
-     "counted": 7,
+     "pct": 69.89,
+     "votes": 5259,
+     "counted": 9,
      "total": 149,
      "leading": true,
      "elected": false,
      "map_ids": [
       "novi_beograd"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 69.89,
+       "votes": 5259
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 25.12,
+       "votes": 1890
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.67,
+       "votes": 126
+      }
      ]
     },
     {
@@ -1992,48 +5074,140 @@
      "elected": false,
      "map_ids": [
       "novi_knezevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.67,
+       "votes": 1597
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 34.17,
+       "votes": 1077
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 12.09,
+       "votes": 381
+      }
      ]
     },
     {
      "name": "Novi Pazar",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 32.12,
-     "votes": 3118,
-     "counted": 38,
+     "pct": 31.83,
+     "votes": 3147,
+     "counted": 39,
      "total": 103,
      "leading": true,
      "elected": false,
      "map_ids": [
       "novi_pazar"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.83,
+       "votes": 3147
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 24.28,
+       "votes": 2400
+      },
+      {
+       "id": "sda",
+       "name": "SDA Sandžak",
+       "color": "#069443",
+       "pct": 10.71,
+       "votes": 1059
+      }
      ]
     },
     {
      "name": "Novi Sad",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 62.65,
-     "votes": 4627,
-     "counted": 8,
+     "pct": 63.05,
+     "votes": 5487,
+     "counted": 9,
      "total": 221,
      "leading": true,
      "elected": false,
      "map_ids": [
       "novi_sad"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 63.05,
+       "votes": 5487
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 32.23,
+       "votes": 2805
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.84,
+       "votes": 160
+      }
      ]
     },
     {
      "name": "Obrenovac",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 50.17,
-     "votes": 7955,
-     "counted": 23,
+     "pct": 50.66,
+     "votes": 8343,
+     "counted": 24,
      "total": 57,
      "leading": true,
      "elected": false,
      "map_ids": [
       "obrenovac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.66,
+       "votes": 8343
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.59,
+       "votes": 7507
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.73,
+       "votes": 285
+      }
      ]
     },
     {
@@ -2048,6 +5222,29 @@
      "elected": false,
      "map_ids": [
       "odzaci"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.31,
+       "votes": 2731
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.16,
+       "votes": 1983
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.53,
+       "votes": 125
+      }
      ]
     },
     {
@@ -2062,6 +5259,29 @@
      "elected": false,
      "map_ids": [
       "opovo"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.37,
+       "votes": 1575
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.29,
+       "votes": 1358
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.05,
+       "votes": 63
+      }
      ]
     },
     {
@@ -2076,76 +5296,214 @@
      "elected": false,
      "map_ids": [
       "osecina"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.33,
+       "votes": 1457
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 47.33,
+       "votes": 1427
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.55,
+       "votes": 77
+      }
      ]
     },
     {
      "name": "Palilula",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 59.43,
-     "votes": 6409,
-     "counted": 14,
+     "pct": 58.85,
+     "votes": 6815,
+     "counted": 15,
      "total": 123,
      "leading": true,
      "elected": false,
      "map_ids": [
       "palilula"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 58.85,
+       "votes": 6815
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 36.93,
+       "votes": 4276
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.25,
+       "votes": 145
+      }
      ]
     },
     {
      "name": "Pancevo",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 52.64,
-     "votes": 1686,
-     "counted": 5,
+     "pct": 51.46,
+     "votes": 2460,
+     "counted": 7,
      "total": 79,
      "leading": true,
      "elected": false,
      "map_ids": [
       "pancevo"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.46,
+       "votes": 2460
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.52,
+       "votes": 2128
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.72,
+       "votes": 82
+      }
      ]
     },
     {
      "name": "Paracin",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 52.4,
-     "votes": 1505,
-     "counted": 10,
+     "pct": 52.37,
+     "votes": 1734,
+     "counted": 11,
      "total": 55,
      "leading": true,
      "elected": false,
      "map_ids": [
       "paracin"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 52.37,
+       "votes": 1734
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.89,
+       "votes": 1420
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.96,
+       "votes": 65
+      }
      ]
     },
     {
      "name": "Pecinci",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 59.71,
-     "votes": 3877,
-     "counted": 17,
+     "pct": 59.31,
+     "votes": 4129,
+     "counted": 18,
      "total": 30,
      "leading": true,
      "elected": false,
      "map_ids": [
       "pecinci"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 59.31,
+       "votes": 4129
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.99,
+       "votes": 2645
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 0.69,
+       "votes": 48
+      }
      ]
     },
     {
      "name": "Petrovac Na Mlavi",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 56.0,
-     "votes": 1340,
-     "counted": 9,
+     "pct": 55.43,
+     "votes": 1485,
+     "counted": 10,
      "total": 45,
      "leading": true,
      "elected": false,
      "map_ids": [
       "petrovac_na_mlavi"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.43,
+       "votes": 1485
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 38.97,
+       "votes": 1044
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.55,
+       "votes": 95
+      }
      ]
     },
     {
@@ -2160,6 +5518,29 @@
      "elected": false,
      "map_ids": [
       "pirot"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 59.41,
+       "votes": 461
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.83,
+       "votes": 247
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 6.96,
+       "votes": 54
+      }
      ]
     },
     {
@@ -2174,6 +5555,29 @@
      "elected": false,
      "map_ids": [
       "plandiste"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.99,
+       "votes": 1237
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.06,
+       "votes": 1069
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.98,
+       "votes": 48
+      }
      ]
     },
     {
@@ -2181,27 +5585,73 @@
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
      "pct": 48.98,
-     "votes": 5271,
-     "counted": 23,
+     "votes": 5426,
+     "counted": 24,
      "total": 73,
      "leading": true,
      "elected": false,
      "map_ids": [
       "pozarevac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.98,
+       "votes": 5426
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 45.85,
+       "votes": 5079
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.07,
+       "votes": 340
+      }
      ]
     },
     {
      "name": "Pozega",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 50.22,
-     "votes": 1143,
-     "counted": 17,
+     "pct": 50.15,
+     "votes": 1206,
+     "counted": 18,
      "total": 53,
      "leading": true,
      "elected": false,
      "map_ids": [
       "pozega"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.15,
+       "votes": 1206
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.61,
+       "votes": 1097
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.2,
+       "votes": 53
+      }
      ]
     },
     {
@@ -2216,34 +5666,103 @@
      "elected": false,
      "map_ids": [
       "presevo"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 14.26,
+       "votes": 650
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.93,
+       "votes": 88
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 1.69,
+       "votes": 77
+      }
      ]
     },
     {
      "name": "Priboj",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 51.47,
-     "votes": 2404,
-     "counted": 26,
+     "pct": 51.61,
+     "votes": 2469,
+     "counted": 27,
      "total": 48,
      "leading": true,
      "elected": false,
      "map_ids": [
       "priboj"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.61,
+       "votes": 2469
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 38.63,
+       "votes": 1848
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.24,
+       "votes": 203
+      }
      ]
     },
     {
      "name": "Prijepolje",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 55.02,
-     "votes": 905,
-     "counted": 13,
+     "pct": 55.73,
+     "votes": 977,
+     "counted": 14,
      "total": 61,
      "leading": true,
      "elected": false,
      "map_ids": [
       "prijepolje"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.73,
+       "votes": 977
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 30.35,
+       "votes": 532
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.19,
+       "votes": 56
+      }
      ]
     },
     {
@@ -2258,34 +5777,103 @@
      "elected": false,
      "map_ids": [
       "prokuplje"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 63.55,
+       "votes": 1414
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 29.75,
+       "votes": 662
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 5.12,
+       "votes": 114
+      }
      ]
     },
     {
      "name": "Raca",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 49.16,
-     "votes": 2039,
-     "counted": 20,
+     "pct": 48.85,
+     "votes": 2128,
+     "counted": 21,
      "total": 27,
      "leading": true,
      "elected": false,
      "map_ids": [
       "raca"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.85,
+       "votes": 2128
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.43,
+       "votes": 1979
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.08,
+       "votes": 134
+      }
      ]
     },
     {
      "name": "Rakovica",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 67.01,
-     "votes": 5042,
-     "counted": 9,
+     "pct": 67.23,
+     "votes": 5867,
+     "counted": 10,
      "total": 76,
      "leading": true,
      "elected": false,
      "map_ids": [
       "rakovica"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 67.23,
+       "votes": 5867
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 28.06,
+       "votes": 2449
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.58,
+       "votes": 138
+      }
      ]
     },
     {
@@ -2300,20 +5888,66 @@
      "elected": false,
      "map_ids": [
       "raska"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 59.88,
+       "votes": 491
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 30.37,
+       "votes": 249
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 7.44,
+       "votes": 61
+      }
      ]
     },
     {
      "name": "Razanj",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 68.66,
-     "votes": 644,
-     "counted": 8,
+     "pct": 67.25,
+     "votes": 733,
+     "counted": 9,
      "total": 21,
      "leading": true,
      "elected": false,
      "map_ids": [
       "razanj"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 67.25,
+       "votes": 733
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 27.25,
+       "votes": 297
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.39,
+       "votes": 37
+      }
      ]
     },
     {
@@ -2328,34 +5962,103 @@
      "elected": false,
      "map_ids": [
       "rekovac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 49.48,
+       "votes": 1275
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.77,
+       "votes": 1025
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 8.46,
+       "votes": 218
+      }
      ]
     },
     {
      "name": "Ruma",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 48.87,
-     "votes": 4204,
-     "counted": 13,
+     "pct": 48.67,
+     "votes": 4621,
+     "counted": 14,
      "total": 43,
      "leading": true,
      "elected": false,
      "map_ids": [
       "ruma"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.67,
+       "votes": 4621
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.85,
+       "votes": 4353
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.63,
+       "votes": 250
+      }
      ]
     },
     {
      "name": "Sabac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 51.03,
-     "votes": 1984,
-     "counted": 15,
+     "pct": 50.97,
+     "votes": 2163,
+     "counted": 17,
      "total": 100,
      "leading": true,
      "elected": false,
      "map_ids": [
       "sabac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.97,
+       "votes": 2163
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 44.37,
+       "votes": 1883
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.17,
+       "votes": 92
+      }
      ]
     },
     {
@@ -2370,6 +6073,29 @@
      "elected": false,
      "map_ids": [
       "savski_venac"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 65.97,
+       "votes": 2268
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 28.77,
+       "votes": 989
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.48,
+       "votes": 51
+      }
      ]
     },
     {
@@ -2384,62 +6110,177 @@
      "elected": false,
      "map_ids": [
       "secanj"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 56.76,
+       "votes": 1020
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 36.67,
+       "votes": 659
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 2.5,
+       "votes": 45
+      }
      ]
     },
     {
      "name": "Senta",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 42.5,
-     "votes": 1105,
-     "counted": 9,
+     "pct": 40.69,
+     "votes": 1165,
+     "counted": 10,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "senta"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.69,
+       "votes": 1165
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 35.59,
+       "votes": 1019
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 22.11,
+       "votes": 633
+      }
      ]
     },
     {
      "name": "Sid",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 58.14,
-     "votes": 1729,
-     "counted": 9,
+     "pct": 58.7,
+     "votes": 1838,
+     "counted": 10,
      "total": 39,
      "leading": true,
      "elected": false,
      "map_ids": [
       "sid"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 58.7,
+       "votes": 1838
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.34,
+       "votes": 1169
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.88,
+       "votes": 59
+      }
      ]
     },
     {
      "name": "Sjenica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 25.04,
-     "votes": 466,
-     "counted": 21,
+     "pct": 25.86,
+     "votes": 491,
+     "counted": 22,
      "total": 68,
      "leading": true,
      "elected": false,
      "map_ids": [
       "sjenica"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 25.86,
+       "votes": 491
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 16.96,
+       "votes": 322
+      },
+      {
+       "id": "sda",
+       "name": "SDA Sandžak",
+       "color": "#069443",
+       "pct": 15.06,
+       "votes": 286
+      }
      ]
     },
     {
      "name": "Smederevo",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 50.72,
-     "votes": 1237,
-     "counted": 6,
+     "pct": 49.65,
+     "votes": 1559,
+     "counted": 7,
      "total": 78,
      "leading": true,
      "elected": false,
      "map_ids": [
       "smederevo"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 49.65,
+       "votes": 1559
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 45.67,
+       "votes": 1434
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.91,
+       "votes": 60
+      }
      ]
     },
     {
@@ -2454,20 +6295,66 @@
      "elected": false,
      "map_ids": [
       "smederevska_palanka"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 52.71,
+       "votes": 1839
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 43.34,
+       "votes": 1512
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.06,
+       "votes": 72
+      }
      ]
     },
     {
      "name": "Sokobanja",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 52.55,
-     "votes": 639,
-     "counted": 8,
+     "pct": 50.69,
+     "votes": 768,
+     "counted": 9,
      "total": 32,
      "leading": true,
      "elected": false,
      "map_ids": [
       "sokobanja"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.69,
+       "votes": 768
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.77,
+       "votes": 648
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.7,
+       "votes": 56
+      }
      ]
     },
     {
@@ -2482,6 +6369,29 @@
      "elected": false,
      "map_ids": [
       "sombor"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 49.77,
+       "votes": 3737
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 42.06,
+       "votes": 3158
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 4.35,
+       "votes": 327
+      }
      ]
     },
     {
@@ -2496,6 +6406,29 @@
      "elected": false,
      "map_ids": [
       "sopot"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.47,
+       "votes": 2572
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.89,
+       "votes": 2488
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.83,
+       "votes": 97
+      }
      ]
     },
     {
@@ -2510,6 +6443,29 @@
      "elected": false,
      "map_ids": [
       "srbobran"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.45,
+       "votes": 1854
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 41.63,
+       "votes": 1530
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 3.48,
+       "votes": 128
+      }
      ]
     },
     {
@@ -2524,6 +6480,29 @@
      "elected": false,
      "map_ids": [
       "sremska_mitrovica"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 49.3,
+       "votes": 5841
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.06,
+       "votes": 5457
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.19,
+       "votes": 260
+      }
      ]
     },
     {
@@ -2538,6 +6517,29 @@
      "elected": false,
      "map_ids": [
       "sremski_karlovci"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 56.01,
+       "votes": 3120
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 39.14,
+       "votes": 2180
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.76,
+       "votes": 98
+      }
      ]
     },
     {
@@ -2552,20 +6554,66 @@
      "elected": false,
      "map_ids": [
       "stara_pazova"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 51.44,
+       "votes": 4513
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.3,
+       "votes": 3887
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.58,
+       "votes": 139
+      }
      ]
     },
     {
      "name": "Stari Grad",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 73.12,
-     "votes": 4976,
-     "counted": 14,
+     "pct": 73.24,
+     "votes": 5380,
+     "counted": 15,
      "total": 56,
      "leading": true,
      "elected": false,
      "map_ids": [
       "stari_grad"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 73.24,
+       "votes": 5380
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 21.51,
+       "votes": 1580
+      },
+      {
+       "id": "nada",
+       "name": "NADA",
+       "color": "#616264",
+       "pct": 1.73,
+       "votes": 127
+      }
      ]
     },
     {
@@ -2580,6 +6628,29 @@
      "elected": false,
      "map_ids": [
       "subotica"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 50.17,
+       "votes": 2358
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 35.49,
+       "votes": 1668
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 11.91,
+       "votes": 560
+      }
      ]
     },
     {
@@ -2594,20 +6665,66 @@
      "elected": false,
      "map_ids": [
       "surcin"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.44,
+       "votes": 1474
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 48.24,
+       "votes": 1468
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.38,
+       "votes": 42
+      }
      ]
     },
     {
      "name": "Surdulica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 36.94,
-     "votes": 539,
-     "counted": 7,
+     "pct": 35.56,
+     "votes": 627,
+     "counted": 8,
      "total": 44,
      "leading": true,
      "elected": false,
      "map_ids": [
       "surdulica"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 35.56,
+       "votes": 627
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 32.05,
+       "votes": 565
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.48,
+       "votes": 555
+      }
      ]
     },
     {
@@ -2622,62 +6739,177 @@
      "elected": false,
      "map_ids": [
       "svilajnac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 58.81,
+       "votes": 1141
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.11,
+       "votes": 720
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.96,
+       "votes": 38
+      }
      ]
     },
     {
      "name": "Svrljig",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 58.21,
-     "votes": 918,
-     "counted": 17,
+     "pct": 58.41,
+     "votes": 948,
+     "counted": 18,
      "total": 42,
      "leading": true,
      "elected": false,
      "map_ids": [
       "svrljig"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 58.41,
+       "votes": 948
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 35.37,
+       "votes": 574
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.44,
+       "votes": 72
+      }
      ]
     },
     {
      "name": "Temerin",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 48.49,
-     "votes": 2135,
-     "counted": 9,
+     "pct": 48.53,
+     "votes": 2377,
+     "counted": 10,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "temerin"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 48.53,
+       "votes": 2377
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 40.08,
+       "votes": 1963
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 7.43,
+       "votes": 364
+      }
      ]
     },
     {
      "name": "Titel",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 51.09,
-     "votes": 2326,
-     "counted": 12,
+     "pct": 50.34,
+     "votes": 2633,
+     "counted": 14,
      "total": 25,
      "leading": true,
      "elected": false,
      "map_ids": [
       "titel"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.34,
+       "votes": 2633
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 45.81,
+       "votes": 2396
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.68,
+       "votes": 88
+      }
      ]
     },
     {
      "name": "Topola",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 53.81,
-     "votes": 2328,
-     "counted": 14,
+     "pct": 53.61,
+     "votes": 2502,
+     "counted": 15,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "topola"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 53.61,
+       "votes": 2502
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 41.61,
+       "votes": 1942
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.72,
+       "votes": 127
+      }
      ]
     },
     {
@@ -2692,6 +6924,29 @@
      "elected": false,
      "map_ids": [
       "trgoviste"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 78.92,
+       "votes": 1438
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 19.05,
+       "votes": 347
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.7,
+       "votes": 31
+      }
      ]
     },
     {
@@ -2706,20 +6961,66 @@
      "elected": false,
      "map_ids": [
       "trstenik"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.01,
+       "votes": 978
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 39.71,
+       "votes": 706
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.76,
+       "votes": 49
+      }
      ]
     },
     {
      "name": "Tutin",
      "winner": "sda",
      "winner_name": "SDA Sandžak",
-     "pct": 44.01,
-     "votes": 1007,
-     "counted": 20,
+     "pct": 42.36,
+     "votes": 1023,
+     "counted": 21,
      "total": 61,
      "leading": true,
      "elected": false,
      "map_ids": [
       "tutin"
+     ],
+     "top": [
+      {
+       "id": "sda",
+       "name": "SDA Sandžak",
+       "color": "#069443",
+       "pct": 42.36,
+       "votes": 1023
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 12.84,
+       "votes": 310
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 12.75,
+       "votes": 308
+      }
      ]
     },
     {
@@ -2734,6 +7035,29 @@
      "elected": false,
      "map_ids": [
       "ub"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 59.89,
+       "votes": 3886
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.02,
+       "votes": 2402
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.65,
+       "votes": 107
+      }
      ]
     },
     {
@@ -2748,34 +7072,103 @@
      "elected": false,
      "map_ids": [
       "uzice"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 52.53,
+       "votes": 1934
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 43.29,
+       "votes": 1594
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.68,
+       "votes": 62
+      }
      ]
     },
     {
      "name": "Valjevo",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 47.54,
-     "votes": 1545,
-     "counted": 25,
+     "pct": 47.36,
+     "votes": 1785,
+     "counted": 27,
      "total": 103,
      "leading": true,
      "elected": false,
      "map_ids": [
       "valjevo"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 47.36,
+       "votes": 1785
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 46.46,
+       "votes": 1751
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.79,
+       "votes": 143
+      }
      ]
     },
     {
      "name": "Varvarin",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 52.76,
-     "votes": 1404,
-     "counted": 12,
+     "pct": 53.35,
+     "votes": 1536,
+     "counted": 13,
      "total": 40,
      "leading": true,
      "elected": false,
      "map_ids": [
       "varvarin"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.35,
+       "votes": 1536
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 43.04,
+       "votes": 1239
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.12,
+       "votes": 61
+      }
      ]
     },
     {
@@ -2790,34 +7183,103 @@
      "elected": false,
      "map_ids": [
       "velika_plana"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.27,
+       "votes": 1701
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 43.32,
+       "votes": 1466
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.55,
+       "votes": 120
+      }
      ]
     },
     {
      "name": "Veliko Gradiste",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 57.4,
-     "votes": 2353,
-     "counted": 18,
+     "pct": 58.33,
+     "votes": 2513,
+     "counted": 19,
      "total": 32,
      "leading": true,
      "elected": false,
      "map_ids": [
       "veliko_gradiste"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 58.33,
+       "votes": 2513
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 36.47,
+       "votes": 1571
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.41,
+       "votes": 147
+      }
      ]
     },
     {
      "name": "Vladicin Han",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 69.05,
-     "votes": 658,
-     "counted": 11,
+     "pct": 67.25,
+     "votes": 688,
+     "counted": 12,
      "total": 51,
      "leading": true,
      "elected": false,
      "map_ids": [
       "vladicin_han"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 67.25,
+       "votes": 688
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 27.27,
+       "votes": 279
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.83,
+       "votes": 29
+      }
      ]
     },
     {
@@ -2832,20 +7294,66 @@
      "elected": false,
      "map_ids": [
       "vladimirci"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 55.88,
+       "votes": 1126
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 40.3,
+       "votes": 812
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.49,
+       "votes": 30
+      }
      ]
     },
     {
      "name": "Vlasotince",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 69.76,
-     "votes": 203,
-     "counted": 6,
+     "pct": 71.01,
+     "votes": 245,
+     "counted": 7,
      "total": 58,
      "leading": true,
      "elected": false,
      "map_ids": [
       "vlasotince"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 71.01,
+       "votes": 245
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 25.22,
+       "votes": 87
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.03,
+       "votes": 7
+      }
      ]
     },
     {
@@ -2860,20 +7368,66 @@
      "elected": false,
      "map_ids": [
       "vracar"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 72.37,
+       "votes": 9036
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 22.84,
+       "votes": 2851
+      },
+      {
+       "id": "nada",
+       "name": "NADA",
+       "color": "#616264",
+       "pct": 1.42,
+       "votes": 177
+      }
      ]
     },
     {
      "name": "Vranje",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 63.04,
-     "votes": 5590,
-     "counted": 37,
+     "pct": 61.66,
+     "votes": 6134,
+     "counted": 40,
      "total": 113,
      "leading": true,
      "elected": false,
      "map_ids": [
       "vranje"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 61.66,
+       "votes": 6134
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 32.33,
+       "votes": 3216
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.51,
+       "votes": 349
+      }
      ]
     },
     {
@@ -2888,6 +7442,29 @@
      "elected": false,
      "map_ids": [
       "vrbas"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 57.6,
+       "votes": 3219
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 38.95,
+       "votes": 2177
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.66,
+       "votes": 93
+      }
      ]
     },
     {
@@ -2902,20 +7479,66 @@
      "elected": false,
      "map_ids": [
       "vrnjacka_banja"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 51.43,
+       "votes": 2361
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 44.91,
+       "votes": 2062
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.55,
+       "votes": 71
+      }
      ]
     },
     {
      "name": "Vrsac",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 53.5,
-     "votes": 2196,
-     "counted": 16,
+     "pct": 53.77,
+     "votes": 2344,
+     "counted": 17,
      "total": 56,
      "leading": true,
      "elected": false,
      "map_ids": [
       "vrsac"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 53.77,
+       "votes": 2344
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 42.03,
+       "votes": 1832
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.0,
+       "votes": 87
+      }
      ]
     },
     {
@@ -2930,6 +7553,29 @@
      "elected": false,
      "map_ids": [
       "zabalj"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 50.26,
+       "votes": 1811
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 46.04,
+       "votes": 1659
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.44,
+       "votes": 52
+      }
      ]
     },
     {
@@ -2944,62 +7590,177 @@
      "elected": false,
      "map_ids": [
       "zabari"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 62.4,
+       "votes": 380
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 31.2,
+       "votes": 190
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 3.45,
+       "votes": 21
+      }
      ]
     },
     {
      "name": "Zagubica",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 62.83,
-     "votes": 2755,
-     "counted": 12,
+     "pct": 62.66,
+     "votes": 3133,
+     "counted": 13,
      "total": 17,
      "leading": true,
      "elected": false,
      "map_ids": [
       "zagubica"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 62.66,
+       "votes": 3133
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 33.86,
+       "votes": 1693
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.0,
+       "votes": 100
+      }
      ]
     },
     {
      "name": "Zajecar",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 59.32,
-     "votes": 983,
-     "counted": 16,
+     "pct": 60.08,
+     "votes": 1040,
+     "counted": 17,
      "total": 69,
      "leading": true,
      "elected": false,
      "map_ids": [
       "zajecar"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 60.08,
+       "votes": 1040
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 32.93,
+       "votes": 570
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 4.68,
+       "votes": 81
+      }
      ]
     },
     {
      "name": "Zemun",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 66.33,
-     "votes": 7208,
-     "counted": 13,
+     "pct": 66.25,
+     "votes": 8019,
+     "counted": 14,
      "total": 115,
      "leading": true,
      "elected": false,
      "map_ids": [
       "zemun"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 66.25,
+       "votes": 8019
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 29.44,
+       "votes": 3563
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 1.43,
+       "votes": 173
+      }
      ]
     },
     {
      "name": "Zitiste",
      "winner": "sns",
      "winner_name": "Vučić – United Serbia",
-     "pct": 42.56,
-     "votes": 624,
-     "counted": 6,
+     "pct": 44.42,
+     "votes": 741,
+     "counted": 7,
      "total": 31,
      "leading": true,
      "elected": false,
      "map_ids": [
       "zitiste"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 44.42,
+       "votes": 741
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 37.53,
+       "votes": 626
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 14.03,
+       "votes": 234
+      }
      ]
     },
     {
@@ -3014,20 +7775,66 @@
      "elected": false,
      "map_ids": [
       "zitoradja"
+     ],
+     "top": [
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 68.66,
+       "votes": 1332
+      },
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 27.06,
+       "votes": 525
+      },
+      {
+       "id": "sps",
+       "name": "Socialist Party",
+       "color": "#EB1B23",
+       "pct": 2.99,
+       "votes": 58
+      }
      ]
     },
     {
      "name": "Zrenjanin",
      "winner": "sl",
      "winner_name": "Student List",
-     "pct": 56.99,
-     "votes": 3353,
-     "counted": 9,
+     "pct": 57.72,
+     "votes": 3940,
+     "counted": 10,
      "total": 74,
      "leading": true,
      "elected": false,
      "map_ids": [
       "zrenjanin"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 57.72,
+       "votes": 3940
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 35.04,
+       "votes": 2392
+      },
+      {
+       "id": "vmsz",
+       "name": "Vojvodina Hungarians",
+       "color": "#00732B",
+       "pct": 3.11,
+       "votes": 212
+      }
      ]
     },
     {
@@ -3042,6 +7849,29 @@
      "elected": false,
      "map_ids": [
       "zvezdara"
+     ],
+     "top": [
+      {
+       "id": "sl",
+       "name": "Student List",
+       "color": "#A81A32",
+       "pct": 72.25,
+       "votes": 4467
+      },
+      {
+       "id": "sns",
+       "name": "Vučić – United Serbia",
+       "color": "#242970",
+       "pct": 23.52,
+       "votes": 1454
+      },
+      {
+       "id": "nada",
+       "name": "NADA",
+       "color": "#616264",
+       "pct": 1.42,
+       "votes": 88
+      }
      ]
     }
    ]
@@ -3049,5 +7879,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-25T22:16:41Z"
+ "updated_at": "2026-10-25T22:19:12Z"
 }

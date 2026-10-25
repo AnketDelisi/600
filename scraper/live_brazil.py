@@ -161,7 +161,8 @@ def state_area(code, data):
                     })
     if not rows:
         return None
-    top = max(rows, key=lambda r: ((r["pct"] or 0), r["votes"]))
+    ranked = sorted(rows, key=lambda r: ((r["pct"] or 0), r["votes"]), reverse=True)
+    top = ranked[0]
     return {
         "name": code.upper(),
         "winner": top["id"],
@@ -172,6 +173,7 @@ def state_area(code, data):
         "total": total,
         "leading": True,
         "elected": False,
+        "top": ranked[:2],
     }
 
 

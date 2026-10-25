@@ -5,12 +5,12 @@
  "chart_start": "2026-10-05",
  "subtitle": "Presidential runoff · Lula vs Flávio Bolsonaro",
  "status": "counting",
- "counted": 9299,
+ "counted": 10703,
  "total": 499248,
  "counted_label": "sections",
  "source": "Superior Electoral Court (TSE)",
  "source_url": "https://resultados.tse.jus.br/oficial/ele2026/6258/dados/br/br-c0001-e006258-u.json",
- "source_updated_at": "25/10/2026 19:15:36",
+ "source_updated_at": "25/10/2026 19:18:06",
  "waiting_text": "Polls close at 17:00 Brasília time on Sunday, 25 October.",
  "result_title": "Valid vote",
  "result_note": "Official TSE totalization. Percentages are of valid votes.",
@@ -19,16 +19,16 @@
    "id": "lula",
    "name": "Luiz Inácio Lula da Silva",
    "color": "#E20E28",
-   "pct": 52.02,
-   "votes": 1204715,
+   "pct": 51.72,
+   "votes": 1380762,
    "seats": 0
   },
   {
    "id": "flavio",
    "name": "Flávio Bolsonaro",
    "color": "#015AAA",
-   "pct": 47.98,
-   "votes": 1111193,
+   "pct": 48.28,
+   "votes": 1289112,
    "seats": 0
   }
  ],
@@ -42,23 +42,51 @@
    "name": "AC",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 60.43,
-   "votes": 11608,
-   "counted": 128,
+   "pct": 60.55,
+   "votes": 14522,
+   "counted": 153,
    "total": 2270,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 60.55,
+     "votes": 14522
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 39.45,
+     "votes": 9463
+    }
+   ]
   },
   {
    "name": "AL",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 62.21,
-   "votes": 7756,
-   "counted": 46,
+   "pct": 61.41,
+   "votes": 11827,
+   "counted": 69,
    "total": 7101,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 61.41,
+     "votes": 11827
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 38.59,
+     "votes": 7433
+    }
+   ]
   },
   {
    "name": "AM",
@@ -69,150 +97,346 @@
    "counted": 152,
    "total": 8157,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 50.62,
+     "votes": 20307
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 49.38,
+     "votes": 19809
+    }
+   ]
   },
   {
    "name": "AP",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 71.99,
-   "votes": 5670,
-   "counted": 50,
+   "pct": 72.06,
+   "votes": 5766,
+   "counted": 51,
    "total": 1914,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 72.06,
+     "votes": 5766
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 27.94,
+     "votes": 2236
+    }
+   ]
   },
   {
    "name": "BA",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 70.81,
-   "votes": 20806,
-   "counted": 108,
+   "pct": 70.46,
+   "votes": 25622,
+   "counted": 136,
    "total": 35476,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 70.46,
+     "votes": 25622
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 29.54,
+     "votes": 10741
+    }
+   ]
   },
   {
    "name": "CE",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 66.33,
-   "votes": 5789,
-   "counted": 33,
+   "pct": 67.94,
+   "votes": 7340,
+   "counted": 41,
    "total": 23765,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 67.94,
+     "votes": 7340
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 32.06,
+     "votes": 3463
+    }
+   ]
   },
   {
    "name": "DF",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 54.63,
-   "votes": 120013,
-   "counted": 875,
+   "pct": 54.69,
+   "votes": 148858,
+   "counted": 1085,
    "total": 6969,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 54.69,
+     "votes": 148858
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 45.31,
+     "votes": 123338
+    }
+   ]
   },
   {
    "name": "ES",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 53.34,
-   "votes": 1866,
-   "counted": 16,
+   "pct": 52.45,
+   "votes": 1940,
+   "counted": 17,
    "total": 9844,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 52.45,
+     "votes": 1940
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 47.55,
+     "votes": 1759
+    }
+   ]
   },
   {
    "name": "GO",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 54.24,
-   "votes": 3013,
-   "counted": 19,
+   "pct": 55.52,
+   "votes": 3604,
+   "counted": 22,
    "total": 15686,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 55.52,
+     "votes": 3604
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 44.48,
+     "votes": 2887
+    }
+   ]
   },
   {
    "name": "MA",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 69.67,
-   "votes": 44647,
-   "counted": 321,
+   "pct": 68.27,
+   "votes": 54442,
+   "counted": 393,
    "total": 18093,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 68.27,
+     "votes": 54442
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 31.73,
+     "votes": 25300
+    }
+   ]
   },
   {
    "name": "MG",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 50.41,
-   "votes": 72666,
-   "counted": 503,
+   "pct": 50.14,
+   "votes": 93916,
+   "counted": 643,
    "total": 52062,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 50.14,
+     "votes": 93916
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 49.86,
+     "votes": 93376
+    }
+   ]
   },
   {
    "name": "MS",
-   "winner": "lula",
-   "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 51.45,
-   "votes": 4828,
-   "counted": 49,
+   "winner": "flavio",
+   "winner_name": "Flávio Bolsonaro",
+   "pct": 53.22,
+   "votes": 7550,
+   "counted": 71,
    "total": 7106,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 53.22,
+     "votes": 7550
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 46.78,
+     "votes": 6636
+    }
+   ]
   },
   {
    "name": "MT",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 56.62,
-   "votes": 36931,
-   "counted": 285,
+   "pct": 57.58,
+   "votes": 46822,
+   "counted": 351,
    "total": 8287,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 57.58,
+     "votes": 46822
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 42.42,
+     "votes": 34497
+    }
+   ]
   },
   {
    "name": "PA",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 56.66,
-   "votes": 210137,
-   "counted": 1545,
+   "pct": 56.35,
+   "votes": 237824,
+   "counted": 1746,
    "total": 20827,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 56.35,
+     "votes": 237824
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 43.65,
+     "votes": 184218
+    }
+   ]
   },
   {
    "name": "PB",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 72.43,
-   "votes": 130071,
-   "counted": 738,
+   "pct": 71.53,
+   "votes": 158332,
+   "counted": 905,
    "total": 10712,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 71.53,
+     "votes": 158332
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 28.47,
+     "votes": 63016
+    }
+   ]
   },
   {
    "name": "PE",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 72.57,
-   "votes": 13154,
-   "counted": 69,
+   "pct": 73.09,
+   "votes": 16777,
+   "counted": 87,
    "total": 21418,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 73.09,
+     "votes": 16777
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 26.91,
+     "votes": 6178
+    }
+   ]
   },
   {
    "name": "PI",
@@ -223,18 +447,46 @@
    "counted": 50,
    "total": 10225,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 79.31,
+     "votes": 7839
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 20.69,
+     "votes": 2045
+    }
+   ]
   },
   {
    "name": "PR",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 61.01,
-   "votes": 242680,
-   "counted": 1567,
+   "pct": 61.07,
+   "votes": 296649,
+   "counted": 1917,
    "total": 27142,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 61.07,
+     "votes": 296649
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 38.93,
+     "votes": 189106
+    }
+   ]
   },
   {
    "name": "RJ",
@@ -245,29 +497,71 @@
    "counted": 3,
    "total": 37675,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 56.88,
+     "votes": 430
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 43.12,
+     "votes": 326
+    }
+   ]
   },
   {
    "name": "RN",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 72.39,
-   "votes": 17533,
-   "counted": 97,
+   "pct": 72.12,
+   "votes": 22609,
+   "counted": 126,
    "total": 8115,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 72.12,
+     "votes": 22609
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 27.88,
+     "votes": 8742
+    }
+   ]
   },
   {
    "name": "RO",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 60.85,
-   "votes": 38114,
-   "counted": 294,
+   "pct": 61.04,
+   "votes": 46507,
+   "counted": 356,
    "total": 4698,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 61.04,
+     "votes": 46507
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 38.96,
+     "votes": 29683
+    }
+   ]
   },
   {
    "name": "RR",
@@ -278,51 +572,121 @@
    "counted": 6,
    "total": 1519,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 69.3,
+     "votes": 896
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 30.7,
+     "votes": 397
+    }
+   ]
   },
   {
    "name": "RS",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 65.69,
-   "votes": 17931,
-   "counted": 117,
+   "pct": 64.66,
+   "votes": 22248,
+   "counted": 145,
    "total": 27547,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 64.66,
+     "votes": 22248
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 35.34,
+     "votes": 12160
+    }
+   ]
   },
   {
    "name": "SC",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 52.41,
-   "votes": 42039,
-   "counted": 292,
+   "pct": 52.81,
+   "votes": 46707,
+   "counted": 321,
    "total": 17326,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 52.81,
+     "votes": 46707
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 47.19,
+     "votes": 41735
+    }
+   ]
   },
   {
    "name": "SP",
    "winner": "flavio",
    "winner_name": "Flávio Bolsonaro",
-   "pct": 56.77,
-   "votes": 2435,
-   "counted": 20,
+   "pct": 56.32,
+   "votes": 2565,
+   "counted": 23,
    "total": 103656,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 56.32,
+     "votes": 2565
+    },
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 43.68,
+     "votes": 1989
+    }
+   ]
   },
   {
    "name": "TO",
    "winner": "lula",
    "winner_name": "Luiz Inácio Lula da Silva",
-   "pct": 51.95,
-   "votes": 28344,
-   "counted": 276,
+   "pct": 51.76,
+   "votes": 38560,
+   "counted": 375,
    "total": 4384,
    "leading": true,
-   "elected": false
+   "elected": false,
+   "top": [
+    {
+     "id": "lula",
+     "name": "Luiz Inácio Lula da Silva",
+     "pct": 51.76,
+     "votes": 38560
+    },
+    {
+     "id": "flavio",
+     "name": "Flávio Bolsonaro",
+     "pct": 48.24,
+     "votes": 35936
+    }
+   ]
   }
  ],
  "map_svg": "../img/brazil.svg",
@@ -330,5 +694,5 @@
  "map_note": "States are coloured by the leading candidate in the official TSE count.",
  "notes": "The first round was Lula 45.16%, Flávio 47.03% of valid votes.",
  "id": "brazil-2026-r2",
- "updated_at": "2026-10-25T22:16:00Z"
+ "updated_at": "2026-10-25T22:19:13Z"
 }

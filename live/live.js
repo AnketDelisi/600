@@ -334,9 +334,53 @@ async function loadHistory(d) {
   }
 }
 
+
+function mapTipHtml(area, byId) {
+  if (!area) return "";
+  const rows = (area.top && area.top.length ? area.top : (area.winner ? [area] : [])).map((row) => {
+    const party = byId.get(String(row.id));
+    const color = row.color || (party && party.color) || "#6C665B";
+    const share = row.pct == null ? 0 : Number(row.pct);
+    return `<div class="live-map-tip-row">
+      <span class="live-map-tip-name"><i style="background:${color}"></i>${esc(row.name || row.winner_name || row.id)}</span>
+      <span class="live-map-tip-track"><i style="width:${Math.max(2, Math.min(100, share))}%;background:${color}"></i></span>
+      <b>${pct(share)}</b>
+    </div>`;
+  }).join("");
+  const count = area.counted == null ? "" : `<span>${num(area.counted)}${area.total ? " / " + num(area.total) : ""} counted</span>`;
+  return `<div class="live-map-tip-head">${esc(area.name)}</div>
+    <div class="live-map-tip-meta">${count}${area.votes ? `<span>${num(area.votes)} votes</span>` : ""}</div>
+    ${rows || '<p class="live-map-tip-empty">No results reported yet.</p>'}`;
+}
+
+
+function showMapTip(event, area, path) {
+  const tip = document.getElementById("live-map-tip");
+  const card = document.getElementById("live-map-card");
+  if (!tip || !card) return;
+  const byId = new Map((currentData && currentData.entries || []).map((entry) => [String(entry.id), entry]));
+  tip.innerHTML = mapTipHtml(area, byId);
+  tip.hidden = false;
+  const cardRect = card.getBoundingClientRect();
+  const pathRect = path.getBoundingClientRect();
+  let x = (event && event.clientX ? event.clientX : pathRect.left + pathRect.width / 2) - cardRect.left + 12;
+  let y = (event && event.clientY ? event.clientY : pathRect.top + pathRect.height / 2) - cardRect.top + 12;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  x = Math.max(8, Math.min(x, cardRect.width - tw - 8));
+  y = Math.max(8, Math.min(y, cardRect.height - th - 8));
+  tip.style.left = x + "px";
+  tip.style.top = y + "px";
+}
+
+function hideMapTip() {
+  const tip = document.getElementById("live-map-tip");
+  if (tip) tip.hidden = true;
+}
+
 async function loadMap(d, layerId) {
   const el = document.getElementById("live-map");
   if (!el) return;
+  hideMapTip();
   try {
     const layers = Array.isArray(d.map_layers) && d.map_layers.length
       ? d.map_layers
@@ -368,9 +412,13 @@ async function loadMap(d, layerId) {
       path.style.strokeWidth = "1";
       path.style.vectorEffect = "non-scaling-stroke";
       if (area) {
-        const t = doc.createElementNS("http://www.w3.org/2000/svg", "title");
-        t.textContent = `${area.name} · ${area.winner_name || area.winner}${area.pct == null ? "" : " " + pct(area.pct)}`;
-        path.appendChild(t);
+        path.setAttribute("tabindex", "0");
+        path.setAttribute("aria-label", `${area.name}${area.winner_name ? ": " + area.winner_name : ""}${area.pct == null ? "" : " " + pct(area.pct)}`);
+        path.addEventListener("mousemove", (event) => showMapTip(event, area, path));
+        path.addEventListener("mouseenter", (event) => showMapTip(event, area, path));
+        path.addEventListener("mouseleave", hideMapTip);
+        path.addEventListener("focus", (event) => showMapTip(event, area, path));
+        path.addEventListener("blur", hideMapTip);
       }
     });
     svg.removeAttribute("width");
@@ -524,7 +572,7 @@ function renderElection(d) {
       ${status}
     </section>
     ${wait}
-    ${mapLayers.length ? `<section class="live-card" id="live-map-card" aria-labelledby="live-map-title"><h2 id="live-map-title">${esc(mapLayers[0].title || d.map_title || "Map")}</h2><p class="live-note">${esc(d.map_note || "Results as reported by the source.")}</p>${mapTabs}<div class="live-map" id="live-map"></div><div class="live-map-legend" id="live-map-legend"></div></section>` : ""}
+    ${mapLayers.length ? `<section class="live-card" id="live-map-card" aria-labelledby="live-map-title"><h2 id="live-map-title">${esc(mapLayers[0].title || d.map_title || "Map")}</h2><p class="live-note">${esc(d.map_note || "Results as reported by the source.")}</p>${mapTabs}<div class="live-map" id="live-map"></div><div class="live-map-tip" id="live-map-tip" role="status" hidden></div><div class="live-map-legend" id="live-map-legend"></div></section>` : ""}
     <div id="live-history"></div>
     ${hasTracker ? '<div id="live-poll-tracker"></div>' : ""}
     ${areas}

@@ -81,6 +81,15 @@
    "elected": false,
    "map_ids": [
     "blagoevgrad"
+   ],
+   "top": [
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 39.85,
+     "votes": 618
+    }
    ]
   },
   {
@@ -95,6 +104,15 @@
    "elected": false,
    "map_ids": [
     "burgas"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 36.11,
+     "votes": 2415
+    }
    ]
   },
   {
@@ -109,6 +127,15 @@
    "elected": false,
    "map_ids": [
     "varna"
+   ],
+   "top": [
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 35.32,
+     "votes": 2119
+    }
    ]
   },
   {
@@ -123,6 +150,15 @@
    "elected": false,
    "map_ids": [
     "veliko_tarnovo"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 34.71,
+     "votes": 922
+    }
    ]
   },
   {
@@ -137,6 +173,15 @@
    "elected": false,
    "map_ids": [
     "vidin"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 39.3,
+     "votes": 1240
+    }
    ]
   },
   {
@@ -151,6 +196,15 @@
    "elected": false,
    "map_ids": [
     "vratsa"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 45.01,
+     "votes": 325
+    }
    ]
   },
   {
@@ -165,6 +219,15 @@
    "elected": false,
    "map_ids": [
     "gabrovo"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 33.71,
+     "votes": 326
+    }
    ]
   },
   {
@@ -179,6 +242,15 @@
    "elected": false,
    "map_ids": [
     "dobrich"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 43.2,
+     "votes": 1255
+    }
    ]
   },
   {
@@ -193,6 +265,15 @@
    "elected": false,
    "map_ids": [
     "kardzhali"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 37.91,
+     "votes": 906
+    }
    ]
   },
   {
@@ -207,6 +288,15 @@
    "elected": false,
    "map_ids": [
     "kyustendil"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 39.59,
+     "votes": 346
+    }
    ]
   },
   {
@@ -221,6 +311,15 @@
    "elected": false,
    "map_ids": [
     "lovech"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 41.78,
+     "votes": 1252
+    }
    ]
   },
   {
@@ -235,6 +334,15 @@
    "elected": false,
    "map_ids": [
     "montana"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 41.07,
+     "votes": 1198
+    }
    ]
   },
   {
@@ -249,6 +357,15 @@
    "elected": false,
    "map_ids": [
     "pazardzhik"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 37.66,
+     "votes": 964
+    }
    ]
   },
   {
@@ -263,6 +380,15 @@
    "elected": false,
    "map_ids": [
     "pernik"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 35.63,
+     "votes": 720
+    }
    ]
   },
   {
@@ -277,6 +403,15 @@
    "elected": false,
    "map_ids": [
     "pleven"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 34.97,
+     "votes": 328
+    }
    ]
   },
   {
@@ -291,6 +426,15 @@
    "elected": false,
    "map_ids": [
     "plovdiv"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 38.24,
+     "votes": 470
+    }
    ]
   },
   {
@@ -305,6 +449,15 @@
    "elected": false,
    "map_ids": [
     "razgrad"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 40.8,
+     "votes": 457
+    }
    ]
   },
   {
@@ -319,6 +472,15 @@
    "elected": false,
    "map_ids": [
     "ruse"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 36.79,
+     "votes": 2400
+    }
    ]
   },
   {
@@ -333,6 +495,15 @@
    "elected": false,
    "map_ids": [
     "silistra"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 45.56,
+     "votes": 1170
+    }
    ]
   },
   {
@@ -347,6 +518,15 @@
    "elected": false,
    "map_ids": [
     "sliven"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 39.46,
+     "votes": 1863
+    }
    ]
   },
   {
@@ -361,6 +541,15 @@
    "elected": false,
    "map_ids": [
     "smolyan"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 39.32,
+     "votes": 208
+    }
    ]
   },
   {
@@ -375,6 +564,15 @@
    "elected": false,
    "map_ids": [
     "sofiacity"
+   ],
+   "top": [
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 47.32,
+     "votes": 7987
+    }
    ]
   },
   {
@@ -389,6 +587,15 @@
    "elected": false,
    "map_ids": [
     "stara_zagora"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 36.83,
+     "votes": 2619
+    }
    ]
   },
   {
@@ -403,6 +610,15 @@
    "elected": false,
    "map_ids": [
     "targovishte"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 39.42,
+     "votes": 957
+    }
    ]
   },
   {
@@ -417,6 +633,15 @@
    "elected": false,
    "map_ids": [
     "haskovo"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 43.75,
+     "votes": 1134
+    }
    ]
   },
   {
@@ -431,6 +656,15 @@
    "elected": false,
    "map_ids": [
     "shumen"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 38.46,
+     "votes": 2369
+    }
    ]
   },
   {
@@ -445,6 +679,15 @@
    "elected": false,
    "map_ids": [
     "yambol"
+   ],
+   "top": [
+    {
+     "id": "iotova",
+     "name": "Iliana Iotova",
+     "color": "#DB0F28",
+     "pct": 40.97,
+     "votes": 1218
+    }
    ]
   },
   {
@@ -467,5 +710,5 @@
  "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-25T22:13:52Z"
+ "updated_at": "2026-10-25T22:19:24Z"
 }

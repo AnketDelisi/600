@@ -137,7 +137,15 @@ def regional_areas():
                 "map_ids": [map_id],
             })
             continue
-        winner, votes = max(row["votes"].items(), key=lambda item: item[1])
+        ranked = sorted(row["votes"].items(), key=lambda item: item[1], reverse=True)
+        winner, votes = ranked[0]
+        top = [{
+            "id": key,
+            "name": NAMES[key][1],
+            "color": NAMES[key][2],
+            "pct": round(party_votes / row["total"] * 100, 2),
+            "votes": party_votes,
+        } for key, party_votes in ranked[:3]]
         areas.append({
             "name": labels.get(map_id, row["label"]),
             "winner": winner,
@@ -149,6 +157,7 @@ def regional_areas():
             "leading": True,
             "elected": False,
             "map_ids": [map_id],
+            "top": top,
         })
     return areas
 

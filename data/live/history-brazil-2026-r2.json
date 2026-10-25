@@ -35,13 +35,13 @@
    "seats": {}
   },
   {
-   "at": "2026-10-25T22:16:00Z",
-   "counted": 9299,
+   "at": "2026-10-25T22:19:13Z",
+   "counted": 10703,
    "total": 499248,
-   "counted_pct": 1.86,
+   "counted_pct": 2.14,
    "pct": {
-    "lula": 52.02,
-    "flavio": 47.98
+    "lula": 51.72,
+    "flavio": 48.28
    },
    "seats": {}
   }

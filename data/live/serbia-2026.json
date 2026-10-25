@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 876,
+ "counted": 970,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "25.10.2026 22:05:00",
+ "source_updated_at": "25.10.2026 22:10:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,32 +18,32 @@
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 47.87,
-   "votes": 96882,
-   "seats": 131
+   "pct": 47.22,
+   "votes": 110545,
+   "seats": 129
   },
   {
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 41.89,
-   "votes": 84786,
-   "seats": 114
+   "pct": 42.19,
+   "votes": 98771,
+   "seats": 116
   },
   {
    "id": "sps",
    "name": "Socialist Party",
    "color": "#EB1B23",
-   "pct": 2.89,
-   "votes": 5843,
+   "pct": 2.84,
+   "votes": 6653,
    "seats": 0
   },
   {
    "id": "vmsz",
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
-   "pct": 1.97,
-   "votes": 3992,
+   "pct": 1.96,
+   "votes": 4586,
    "seats": 5
   },
   {
@@ -51,7 +51,7 @@
    "name": "NADA",
    "color": "#616264",
    "pct": 0.74,
-   "votes": 1491,
+   "votes": 1721,
    "seats": 0
   },
   {
@@ -59,33 +59,114 @@
    "name": "SDA Sandžak",
    "color": "#069443",
    "pct": 0.35,
-   "votes": 706,
+   "votes": 817,
    "seats": 0
   },
   {
    "id": "pes",
    "name": "European Serbia",
    "color": "#C9A227",
-   "pct": 0.21,
-   "votes": 427,
+   "pct": 0.22,
+   "votes": 513,
    "seats": 0
   },
   {
    "id": "rs",
    "name": "Russian Party",
    "color": "#0D3B66",
-   "pct": 0.15,
-   "votes": 307,
+   "pct": 0.16,
+   "votes": 367,
    "seats": 0
   }
  ],
  "seat_total": 250,
  "majority": 126,
- "areas": [],
+ "area_title": "Regions",
+ "area_label": "Region",
+ "area_note": "RIK regional totals. Districts are coloured by the leading list in their region.",
+ "areas": [
+  {
+   "name": "Belgrade",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 56.73,
+   "votes": 15988,
+   "counted": 55,
+   "total": 1266,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_1"
+   ]
+  },
+  {
+   "name": "Vojvodina",
+   "winner": "sl",
+   "winner_name": "Student List",
+   "pct": 44.56,
+   "votes": 33689,
+   "counted": 216,
+   "total": 1784,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_2",
+    "_3",
+    "_4",
+    "_5",
+    "_6",
+    "_7",
+    "_8"
+   ]
+  },
+  {
+   "name": "Šumadija and Western Serbia",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 47.87,
+   "votes": 34251,
+   "counted": 391,
+   "total": 2760,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_9",
+    "_10",
+    "_11",
+    "_12",
+    "_13",
+    "_14",
+    "_15",
+    "_16"
+   ]
+  },
+  {
+   "name": "Southern and Eastern Serbia",
+   "winner": "sns",
+   "winner_name": "Vučić – United Serbia",
+   "pct": 55.17,
+   "votes": 32243,
+   "counted": 307,
+   "total": 2400,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "_17",
+    "_18",
+    "_19",
+    "_20",
+    "_21",
+    "_22",
+    "_23",
+    "_24",
+    "_25"
+   ]
+  }
+ ],
  "map_svg": "../img/serbia.svg",
- "map_title": "National map",
- "map_note": "RIK's live feed does not publish regional totals, so the map shows the national leader.",
+ "map_title": "Regional map",
+ "map_note": "Districts are coloured by the leading list in their RIK region.",
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-25T21:08:20Z"
+ "updated_at": "2026-10-25T21:15:26Z"
 }

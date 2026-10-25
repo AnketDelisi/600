@@ -65,11 +65,393 @@
  ],
  "seat_total": null,
  "majority": null,
- "areas": [],
+ "area_title": "Regions",
+ "area_label": "Region",
+ "area_note": "CIK regional totals. Regions are coloured by their leading candidate.",
+ "areas": [
+  {
+   "name": "Blagoevgrad",
+   "winner": "gyurov",
+   "winner_name": "Andrey Gyurov",
+   "pct": 39.85,
+   "votes": 618,
+   "counted": 2.89,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "blagoevgrad"
+   ]
+  },
+  {
+   "name": "Burgas",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 36.11,
+   "votes": 2415,
+   "counted": 7.22,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "burgas"
+   ]
+  },
+  {
+   "name": "Varna",
+   "winner": "gyurov",
+   "winner_name": "Andrey Gyurov",
+   "pct": 35.32,
+   "votes": 2119,
+   "counted": 5.8,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "varna"
+   ]
+  },
+  {
+   "name": "Veliko Tarnovo",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 34.71,
+   "votes": 922,
+   "counted": 5.07,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "veliko_tarnovo"
+   ]
+  },
+  {
+   "name": "Vidin",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 39.3,
+   "votes": 1240,
+   "counted": 16.02,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "vidin"
+   ]
+  },
+  {
+   "name": "Vratsa",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 45.01,
+   "votes": 325,
+   "counted": 4.08,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "vratsa"
+   ]
+  },
+  {
+   "name": "Gabrovo",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 33.71,
+   "votes": 326,
+   "counted": 3.42,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "gabrovo"
+   ]
+  },
+  {
+   "name": "Dobrich",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 43.2,
+   "votes": 1255,
+   "counted": 10.32,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "dobrich"
+   ]
+  },
+  {
+   "name": "Kardzhali",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 37.91,
+   "votes": 906,
+   "counted": 15.38,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "kardzhali"
+   ]
+  },
+  {
+   "name": "Kyustendil",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 39.59,
+   "votes": 346,
+   "counted": 6.41,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "kyustendil"
+   ]
+  },
+  {
+   "name": "Lovech",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 41.78,
+   "votes": 1252,
+   "counted": 12.7,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "lovech"
+   ]
+  },
+  {
+   "name": "Montana",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 41.07,
+   "votes": 1198,
+   "counted": 8.65,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "montana"
+   ]
+  },
+  {
+   "name": "Pazardzhik",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 37.66,
+   "votes": 964,
+   "counted": 7.97,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "pazardzhik"
+   ]
+  },
+  {
+   "name": "Pernik",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 35.63,
+   "votes": 720,
+   "counted": 8.14,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "pernik"
+   ]
+  },
+  {
+   "name": "Pleven",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 34.97,
+   "votes": 328,
+   "counted": 2.32,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "pleven"
+   ]
+  },
+  {
+   "name": "Plovdiv",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 38.24,
+   "votes": 470,
+   "counted": 2.46,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "plovdiv"
+   ]
+  },
+  {
+   "name": "Razgrad",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 40.8,
+   "votes": 457,
+   "counted": 11.98,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "razgrad"
+   ]
+  },
+  {
+   "name": "Ruse",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 36.79,
+   "votes": 2400,
+   "counted": 16.12,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "ruse"
+   ]
+  },
+  {
+   "name": "Silistra",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 45.56,
+   "votes": 1170,
+   "counted": 10.92,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "silistra"
+   ]
+  },
+  {
+   "name": "Sliven",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 39.46,
+   "votes": 1863,
+   "counted": 15.82,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "sliven"
+   ]
+  },
+  {
+   "name": "Smolyan",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 39.32,
+   "votes": 208,
+   "counted": 2.24,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "smolyan"
+   ]
+  },
+  {
+   "name": "Sofia City",
+   "winner": "gyurov",
+   "winner_name": "Andrey Gyurov",
+   "pct": 47.32,
+   "votes": 7987,
+   "counted": 9.94,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "sofiacity"
+   ]
+  },
+  {
+   "name": "Stara Zagora",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 36.83,
+   "votes": 2619,
+   "counted": 12.4,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "stara_zagora"
+   ]
+  },
+  {
+   "name": "Targovishte",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 39.42,
+   "votes": 957,
+   "counted": 12.12,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "targovishte"
+   ]
+  },
+  {
+   "name": "Haskovo",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 43.75,
+   "votes": 1134,
+   "counted": 6.11,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "haskovo"
+   ]
+  },
+  {
+   "name": "Shumen",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 38.46,
+   "votes": 2369,
+   "counted": 15.46,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "shumen"
+   ]
+  },
+  {
+   "name": "Yambol",
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 40.97,
+   "votes": 1218,
+   "counted": 16.67,
+   "total": 100,
+   "leading": true,
+   "elected": false,
+   "map_ids": [
+    "yambol"
+   ]
+  }
+ ],
  "map_svg": "../img/bulgaria.svg",
- "map_title": "National map",
- "map_note": "CIK's regional feed is not publicly accessible, so the map shows the national leader.",
+ "map_title": "Regional map",
+ "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-25T21:55:40Z"
+ "updated_at": "2026-10-25T22:04:19Z"
 }

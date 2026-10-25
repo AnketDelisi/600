@@ -8,20 +8,21 @@ from live_common import write_live
 
 ELECTION = "serbia-2026"
 URL = "https://www.rik.parlament.gov.rs/542645/rezultati/"
+API = "https://www.rik.parlament.gov.rs"
 ELEKT_URL = "https://elekt.io/elekt/api/v1/elections/srb-parliamentary-2026-2"
 ALIASES = {
-    "sns": ("vučić", "serbia must not stop"),
-    "sl": ("student",),
-    "sps": ("socialist", "dačić"),
-    "pes": ("european serbia",),
-    "nada": ("nada",),
-    "misn": ("power of the people",),
-    "vmsz": ("vojvodina",),
-    "spp": ("reconciliation",),
-    "sda": ("sandžak",),
-    "rs": ("russian party",),
-    "sdp": ("social democrat",),
-    "kshlp": ("preševo",),
+    "sns": ("vučić", "serbia must not stop", "вучић", "уједињена србија"),
+    "sl": ("student", "студентска"),
+    "sps": ("socialist", "dačić", "дачић", "социјалистичка"),
+    "pes": ("european serbia", "европска србија"),
+    "nada": ("nada", "нада"),
+    "misn": ("power of the people", "моћ народа", "снага народа"),
+    "vmsz": ("vojvodina", "војвођански"),
+    "spp": ("reconciliation", "помирење"),
+    "sda": ("sandžak", "санџак"),
+    "rs": ("russian party", "руска странка"),
+    "sdp": ("social democrat", "социјалдемократска"),
+    "kshlp": ("preševo", "прешево"),
 }
 NAMES = {
     "sns": ("Vučić", "Vučić – United Serbia", "#242970"),
@@ -72,62 +73,73 @@ def dhondt(entries, total=250):
         e["seats"] = seats.get(e["id"], 0)
 
 
+def rik_api():
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "600-live-results/1.0",
+        "X-Requested-With": "XMLHttpRequest",
+        "Referer": URL,
+    })
+    rounds = session.post(API + "/get-elections/", data={"election_type": 2},
+                          timeout=45).json().get("rounds") or {}
+    round_id = next((k for k, v in rounds.items() if "2026" in v), None)
+    if not round_id and rounds:
+        round_id = max(rounds, key=lambda k: int(k))
+    if not round_id:
+        raise RuntimeError("no 2026 parliamentary round")
+    response = session.post(API + "/get_results/", data={
+        "should_update_pies": 1,
+        "type": "region",
+        "election_round": round_id,
+        "region": 0,
+        "municipality": 0,
+        "election_station": 0,
+    }, timeout=45)
+    response.raise_for_status()
+    return response.json()
+
+
 def main():
     try:
-        html = requests.get(URL, headers={"User-Agent": "600-live-results/1.0"},
-                            timeout=45).text
+        data = rik_api()
     except Exception as exc:
-        print("serbia: RIK unavailable (%s); trying elekt" % exc)
+        print("serbia: RIK API unavailable (%s); trying elekt" % exc)
         return elekt_main()
-    soup = BeautifulSoup(html, "lxml")
+    stats = data.get("stat_sum_numbers") or {}
     entries = []
-    for tbl in soup.find_all("table"):
-        for row in tbl.find_all("tr"):
-            cells = [c.get_text(" ", strip=True) for c in row.find_all("td")]
-            if len(cells) < 4:
-                continue
-            name = cells[2]
-            key = match(name)
-            if not key:
-                continue
-            vote_text = cells[3]
-            p = pct(cells[4]) if len(cells) > 4 else None
-            if p is None:
-                p = pct(vote_text)
-            entries.append({
-                "id": key,
-                "name": NAMES[key][1],
-                "color": NAMES[key][2],
-                "pct": p,
-                "votes": num(vote_text),
-                "seats": 0,
-            })
+    for row in data.get("table_data") or []:
+        key = match(row.get("list_name"))
+        if not key:
+            continue
+        p = row.get("won_percent")
+        entries.append({
+            "id": key,
+            "name": NAMES[key][1],
+            "color": NAMES[key][2],
+            "pct": float(p) if p is not None else None,
+            "votes": num(row.get("won_number")),
+            "seats": 0,
+        })
     if not entries or not any((e["pct"] or 0) > 0 for e in entries):
-        print("serbia: no counted rows yet; trying elekt")
+        print("serbia: no counted rows from RIK; trying elekt")
         return elekt_main()
     dhondt(entries)
     entries.sort(key=lambda e: -(e["pct"] or 0))
-    text = soup.get_text(" ", strip=True)
-    total = None
-    counted = None
-    m = re.search(r"Број бирачких места\s*(\d[\d.]*)", text)
-    if m:
-        total = int(m.group(1).replace(".", ""))
-    m = re.search(r"Број обрађених бирачких места\s*(\d[\d.]*)", text)
-    if m:
-        counted = int(m.group(1).replace(".", ""))
+    counted = num(stats.get("processed_stations"))
+    total = num(stats.get("number_of_stations"))
     write_live(ELECTION, {
         "name": "Serbia 2026",
         "date": "2026-10-25",
         "close_at": "2026-10-25T19:00:00Z",
         "chart_start": "2026-09-09",
         "subtitle": "National Assembly · 250 seats · 3% threshold",
-        "status": "final" if (counted is not None and total and counted >= total) else "counting",
-        "counted": counted,
-        "total": total,
+        "status": "final" if (counted and total and counted >= total) else "counting",
+        "counted": counted or None,
+        "total": total or None,
         "counted_label": "polling stations",
         "source": "Republic Electoral Commission (RIK)",
         "source_url": URL,
+        "source_updated_at": stats.get("datetime"),
         "result_title": "Vote share and seats",
         "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
         "entries": entries,

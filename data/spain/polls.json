@@ -2,9 +2,22 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-10-23T10:58:21Z",
- "poll_count": 570,
+ "scraped_at": "2026-10-25T10:39:42Z",
+ "poll_count": 571,
  "polls": [
+  {
+   "pollster": "PSOE",
+   "date": "2026-10-25",
+   "n": 0,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 29.0,
+    "psoe": 30.0,
+    "vox": 20.0
+   }
+  },
   {
    "pollster": "EM-Analytics/Electomanía",
    "date": "2026-10-17",
@@ -11689,10 +11702,11 @@
    "vox": 7.04
   },
   "madrid": {
-   "pp": 31.8,
-   "psoe": 26.0,
-   "sumar": 13.1,
-   "vox": 15.9
+   "pp": 32.8,
+   "psoe": 24.35,
+   "sumar": 11.15,
+   "vox": 16.2,
+   "podemos": 2.1
   },
   "murcia": {
    "pp": 43.88,

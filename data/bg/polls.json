@@ -2,8 +2,8 @@
  "country": "bg",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
- "scraped_at": "2026-10-23T10:58:31Z",
- "poll_count": 8,
+ "scraped_at": "2026-10-25T10:39:51Z",
+ "poll_count": 9,
  "polls": [
   {
    "pollster": "Market Links",
@@ -146,6 +146,27 @@
     "vaz": 5.1,
     "nota": 2.2
    }
+  },
+  {
+   "pollster": "Gallup International",
+   "date": "2026-10-22",
+   "n": 1001,
+   "country": "bg",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Bulgarian_parliamentary_election",
+   "votes": {
+    "pb": 35.6,
+    "gerb": 14.7,
+    "pp": 12.3,
+    "db": 6.7,
+    "dps": 7.0,
+    "vaz": 6.3,
+    "mech": 3.2,
+    "veli": 2.7,
+    "bsp": 3.1,
+    "nota": 1.8
+   },
+   "method": "phone"
   }
  ]
 }

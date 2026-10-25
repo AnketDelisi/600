@@ -6,8 +6,8 @@
       "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
     }
   ],
-  "scraped_at": "2026-10-23T10:58:39Z",
-  "poll_count": 15,
+  "scraped_at": "2026-10-25T10:39:59Z",
+  "poll_count": 16,
   "polls": [
     {
       "pollster": "Explanans Consultora",
@@ -57,6 +57,17 @@
         "villarruel": 6.4
       },
       "n": 1252
+    },
+    {
+      "pollster": "QSocial",
+      "date": "2026-07-31",
+      "votes": {
+        "milei": 31.0,
+        "kicillof": 29.0,
+        "schiaretti": 8.0,
+        "bregman": 11.0
+      },
+      "n": 1550
     },
     {
       "pollster": "RDT Consultores",

@@ -6,9 +6,33 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election"
   }
  ],
- "scraped_at": "2026-10-23T10:58:38Z",
- "poll_count": 59,
+ "scraped_at": "2026-10-25T10:39:59Z",
+ "poll_count": 60,
  "polls": [
+  {
+   "pollster": "Ipsos",
+   "fieldwork_start": "2026-10-22",
+   "date": "2026-10-22",
+   "n": 1500,
+   "votes": {
+    "arthaud": 0.5,
+    "melenchon": 17.0,
+    "roussel": 2.0,
+    "tondelier": 3.5,
+    "glucksmann": 13.0,
+    "attal": 4.0,
+    "philippe": 13.0,
+    "retailleau": 7.5,
+    "dupont": 1.5,
+    "lepen": 33.5,
+    "zemmour": 4.5,
+    "lisnard": 6.5
+   },
+   "country": "france",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_French_presidential_election",
+   "method": "mixed"
+  },
   {
    "pollster": "OpinionWay",
    "fieldwork_start": "2026-10-22",

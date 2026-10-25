@@ -2,9 +2,72 @@
  "country": "italy",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
- "scraped_at": "2026-10-23T10:58:25Z",
- "poll_count": 1136,
+ "scraped_at": "2026-10-25T10:39:45Z",
+ "poll_count": 1140,
  "polls": [
+  {
+   "pollster": "Only Numbers",
+   "date": "2026-10-22",
+   "n": 800,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 28.0,
+    "pd": 20.0,
+    "m5s": 11.4,
+    "lega": 6.4,
+    "fi": 7.5,
+    "a": 3.1,
+    "iv": 2.4,
+    "avs": 6.5,
+    "e": 1.6,
+    "nm": 1.0,
+    "fn": 6.8
+   }
+  },
+  {
+   "pollster": "Termometro Politico",
+   "date": "2026-10-22",
+   "n": 2400,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 27.8,
+    "pd": 20.6,
+    "m5s": 12.7,
+    "lega": 5.4,
+    "fi": 7.3,
+    "a": 2.8,
+    "iv": 2.5,
+    "avs": 6.4,
+    "e": 1.6,
+    "nm": 1.0,
+    "fn": 7.5
+   }
+  },
+  {
+   "pollster": "Lab21",
+   "date": "2026-10-22",
+   "n": 5406,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 28.4,
+    "pd": 20.0,
+    "m5s": 13.2,
+    "lega": 5.7,
+    "fi": 6.8,
+    "a": 3.0,
+    "iv": 2.6,
+    "avs": 5.6,
+    "e": 1.0,
+    "nm": 0.9,
+    "fn": 7.9
+   }
+  },
   {
    "pollster": "Eumetra",
    "date": "2026-10-21",
@@ -47,6 +110,27 @@
     "fn": 5.6
    },
    "method": "online"
+  },
+  {
+   "pollster": "Piepoli",
+   "date": "2026-10-19",
+   "n": 500,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 28.0,
+    "pd": 20.5,
+    "m5s": 13.0,
+    "lega": 5.0,
+    "fi": 7.0,
+    "a": 3.0,
+    "iv": 2.5,
+    "avs": 6.5,
+    "e": 1.5,
+    "nm": 1.5,
+    "fn": 6.5
+   }
   },
   {
    "pollster": "BiDiMedia",

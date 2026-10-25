@@ -2,8 +2,8 @@
  "country": "is",
  "source": "Wikipedia (is)",
  "source_url": "https://is.wikipedia.org/wiki/N%C3%A6stu_al%C3%BEingiskosningar",
- "scraped_at": "2026-10-23T10:58:37Z",
- "poll_count": 27,
+ "scraped_at": "2026-10-25T10:39:58Z",
+ "poll_count": 28,
  "polls": [
   {
    "pollster": "Maskína",
@@ -529,6 +529,25 @@
     "v": 3.7
    },
    "method": "phone"
+  },
+  {
+   "pollster": "Maskína",
+   "date": "2026-10-07",
+   "n": 1791,
+   "country": "is",
+   "source": "Wikipedia (is)",
+   "source_url": "https://is.wikipedia.org/wiki/N%C3%A6stu_al%C3%BEingiskosningar",
+   "votes": {
+    "s": 28.6,
+    "d": 21.9,
+    "c": 11.4,
+    "f": 4.6,
+    "m": 13.4,
+    "b": 7.9,
+    "j": 4.1,
+    "p": 3.3,
+    "v": 4.8
+   }
   }
  ]
 }

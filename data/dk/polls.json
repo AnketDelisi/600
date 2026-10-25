@@ -2,8 +2,8 @@
  "country": "dk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Next_Danish_general_election",
- "scraped_at": "2026-10-23T10:58:32Z",
- "poll_count": 34,
+ "scraped_at": "2026-10-25T10:39:52Z",
+ "poll_count": 35,
  "polls": [
   {
    "pollster": "Voxmeter",
@@ -751,6 +751,28 @@
     "dd": 5.8,
     "el": 8.7,
     "alt": 2.1
+   }
+  },
+  {
+   "pollster": "Megafon",
+   "date": "2026-10-22",
+   "n": 2024,
+   "country": "dk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Danish_general_election",
+   "votes": {
+    "s": 20.4,
+    "rv": 6.4,
+    "kf": 10.0,
+    "sf": 9.1,
+    "bp": 0.3,
+    "la": 11.3,
+    "m": 6.0,
+    "df": 14.8,
+    "v": 6.0,
+    "dd": 5.2,
+    "el": 9.0,
+    "alt": 1.4
    }
   }
  ]

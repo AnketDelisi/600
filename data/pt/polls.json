@@ -2,8 +2,8 @@
  "country": "pt",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Portuguese_legislative_election",
- "scraped_at": "2026-10-23T10:58:30Z",
- "poll_count": 41,
+ "scraped_at": "2026-10-25T10:39:50Z",
+ "poll_count": 42,
  "polls": [
   {
    "pollster": "Intercampus",
@@ -740,6 +740,24 @@
     "cdu": 4.7,
     "be": 2.8,
     "pan": 4.1
+   }
+  },
+  {
+   "pollster": "Pitagórica",
+   "date": "2026-10-12",
+   "n": 804,
+   "country": "pt",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Portuguese_legislative_election",
+   "votes": {
+    "ad": 22.8,
+    "ps": 28.6,
+    "ch": 27.9,
+    "il": 7.0,
+    "livre": 2.8,
+    "cdu": 3.2,
+    "be": 1.8,
+    "pan": 1.3
    }
   }
  ]

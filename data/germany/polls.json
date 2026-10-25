@@ -2,9 +2,59 @@
  "country": "germany",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
- "scraped_at": "2026-10-23T10:58:18Z",
- "poll_count": 405,
+ "scraped_at": "2026-10-25T10:39:39Z",
+ "poll_count": 408,
  "polls": [
+  {
+   "pollster": "INSA",
+   "date": "2026-10-23",
+   "n": 1209,
+   "country": "germany",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
+   "votes": {
+    "cdu": 19.0,
+    "afd": 30.0,
+    "spd": 14.0,
+    "gruene": 14.0,
+    "linke": 10.0,
+    "bsw": 3.0,
+    "fdp": 4.0
+   }
+  },
+  {
+   "pollster": "Forschungsgruppe Wahlen",
+   "date": "2026-10-22",
+   "n": 1225,
+   "country": "germany",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
+   "votes": {
+    "cdu": 23.0,
+    "afd": 26.0,
+    "spd": 14.0,
+    "gruene": 13.0,
+    "linke": 11.0,
+    "fdp": 3.0
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-10-20",
+   "n": 1470,
+   "country": "germany",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_German_federal_election",
+   "votes": {
+    "cdu": 20.0,
+    "afd": 28.0,
+    "spd": 13.0,
+    "gruene": 16.0,
+    "linke": 11.0,
+    "bsw": 3.0,
+    "fdp": 3.0
+   }
+  },
   {
    "pollster": "pollytix",
    "date": "2026-10-19",

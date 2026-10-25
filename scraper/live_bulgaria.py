@@ -102,8 +102,7 @@ def parse_region(region):
     text = soup.get_text(" ", strip=True)
     found = re.search(r"обработени\s*([\d.,]+)\s*%", text, re.I)
     counted = float(found.group(1).replace(",", ".")) if found else None
-    winner, votes = max(rows, key=lambda row: row[1])
-    return map_id, label, winner, votes, total, counted
+    return map_id, label, dict(rows), total, counted
 
 
 def regional_areas():
@@ -113,9 +112,10 @@ def regional_areas():
     for result in results:
         if not result:
             continue
-        map_id, label, winner, votes, total, counted = result
+        map_id, label, votes, total, counted = result
         row = merged.setdefault(map_id, {"label": label, "votes": {}, "total": 0, "counted": 0})
-        row["votes"][winner] = row["votes"].get(winner, 0) + votes
+        for key, value in votes.items():
+            row["votes"][key] = row["votes"].get(key, 0) + value
         row["total"] += total
         row["counted"] = max(row["counted"], counted or 0)
     if "sofia" not in merged:

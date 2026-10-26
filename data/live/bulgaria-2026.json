@@ -5,12 +5,12 @@
  "chart_start": "2026-09-25",
  "subtitle": "Presidential election · first round",
  "status": "counting",
- "counted": 30.71,
+ "counted": 84.57,
  "total": 100,
  "counted_label": "percent of sections",
  "source": "Central Election Commission (CIK)",
  "source_url": "https://results.cik.bg/pvr202610/rezultati/index.html",
- "source_updated_at": "01:00 на 26.10.2026",
+ "source_updated_at": "05:00 на 26.10.2026",
  "result_title": "First-round vote",
  "result_note": "CIK preliminary count. A runoff, if needed, is on 1 November.",
  "entries": [
@@ -18,48 +18,48 @@
    "id": "iotova",
    "name": "Iliana Iotova",
    "color": "#DB0F28",
-   "pct": 34.801,
-   "votes": 158986,
+   "pct": 34.621,
+   "votes": 446269,
    "seats": 0
   },
   {
    "id": "gyurov",
    "name": "Andrey Gyurov",
    "color": "#4200FF",
-   "pct": 31.672,
-   "votes": 144693,
+   "pct": 31.917,
+   "votes": 411413,
    "seats": 0
   },
   {
    "id": "kostadinov",
    "name": "Kostadin Kostadinov",
    "color": "#C09F62",
-   "pct": 13.13,
-   "votes": 59982,
+   "pct": 12.66,
+   "votes": 163187,
    "seats": 0
   },
   {
    "id": "vasilev",
    "name": "Radostin Vasilev",
    "color": "#1A2C44",
-   "pct": 4.206,
-   "votes": 19215,
+   "pct": 4.545,
+   "votes": 58581,
    "seats": 0
   },
   {
    "id": "mihaylov",
    "name": "Ivelin Mihaylov",
    "color": "#AC2225",
-   "pct": 4.061,
-   "votes": 18553,
+   "pct": 3.859,
+   "votes": 49747,
    "seats": 0
   },
   {
    "id": "hristanov",
    "name": "Ivan Hristanov",
    "color": "#C0CC66",
-   "pct": 2.487,
-   "votes": 11364,
+   "pct": 2.415,
+   "votes": 31129,
    "seats": 0
   }
  ],
@@ -71,11 +71,11 @@
  "areas": [
   {
    "name": "Blagoevgrad",
-   "winner": "gyurov",
-   "winner_name": "Andrey Gyurov",
-   "pct": 42.49,
-   "votes": 7304,
-   "counted": 24.55,
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 39.02,
+   "votes": 15299,
+   "counted": 59.39,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -84,25 +84,25 @@
    ],
    "top": [
     {
-     "id": "gyurov",
-     "name": "Andrey Gyurov",
-     "color": "#4200FF",
-     "pct": 42.49,
-     "votes": 7304
-    },
-    {
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 30.83,
-     "votes": 5299
+     "pct": 39.02,
+     "votes": 15299
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 34.2,
+     "votes": 13408
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 10.44,
-     "votes": 1795
+     "pct": 9.79,
+     "votes": 3839
     }
    ]
   },
@@ -110,9 +110,9 @@
    "name": "Burgas",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 36.44,
-   "votes": 15356,
-   "counted": 45.45,
+   "pct": 38.54,
+   "votes": 31071,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -124,32 +124,32 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 36.44,
-     "votes": 15356
+     "pct": 38.54,
+     "votes": 31071
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 29.09,
-     "votes": 12262
+     "pct": 26.08,
+     "votes": 21029
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.66,
-     "votes": 5758
+     "pct": 12.8,
+     "votes": 10318
     }
    ]
   },
   {
    "name": "Varna",
-   "winner": "gyurov",
-   "winner_name": "Andrey Gyurov",
-   "pct": 32.7,
-   "votes": 12370,
-   "counted": 33.89,
+   "winner": "iotova",
+   "winner_name": "Iliana Iotova",
+   "pct": 32.13,
+   "votes": 33199,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -158,25 +158,25 @@
    ],
    "top": [
     {
-     "id": "gyurov",
-     "name": "Andrey Gyurov",
-     "color": "#4200FF",
-     "pct": 32.7,
-     "votes": 12370
-    },
-    {
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 31.66,
-     "votes": 11975
+     "pct": 32.13,
+     "votes": 33199
+    },
+    {
+     "id": "gyurov",
+     "name": "Andrey Gyurov",
+     "color": "#4200FF",
+     "pct": 30.36,
+     "votes": 31364
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 16.26,
-     "votes": 6151
+     "pct": 16.34,
+     "votes": 16880
     }
    ]
   },
@@ -184,9 +184,9 @@
    "name": "Veliko Tarnovo",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 36.15,
-   "votes": 3213,
-   "counted": 16.67,
+   "pct": 39.23,
+   "votes": 13638,
+   "counted": 76.09,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -198,22 +198,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 36.15,
-     "votes": 3213
+     "pct": 39.23,
+     "votes": 13638
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 28.05,
-     "votes": 2493
+     "pct": 23.56,
+     "votes": 8190
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 15.57,
-     "votes": 1384
+     "pct": 14.98,
+     "votes": 5206
     }
    ]
   },
@@ -221,9 +221,9 @@
    "name": "Vidin",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 41.16,
-   "votes": 4207,
-   "counted": 51.56,
+   "pct": 42.88,
+   "votes": 7469,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -235,22 +235,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 41.16,
-     "votes": 4207
+     "pct": 42.88,
+     "votes": 7469
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 25.7,
-     "votes": 2627
+     "pct": 22.97,
+     "votes": 4002
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.83,
-     "votes": 1413
+     "pct": 12.64,
+     "votes": 2202
     }
    ]
   },
@@ -258,9 +258,9 @@
    "name": "Vratsa",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 41.88,
-   "votes": 3454,
-   "counted": 23.2,
+   "pct": 42.11,
+   "votes": 10872,
+   "counted": 79.94,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -272,22 +272,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 41.88,
-     "votes": 3454
+     "pct": 42.11,
+     "votes": 10872
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 23.32,
-     "votes": 1923
+     "pct": 19.55,
+     "votes": 5046
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.36,
-     "votes": 1102
+     "pct": 12.82,
+     "votes": 3311
     }
    ]
   },
@@ -295,9 +295,9 @@
    "name": "Gabrovo",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 33.59,
-   "votes": 1442,
-   "counted": 16.67,
+   "pct": 36.49,
+   "votes": 8000,
+   "counted": 98.29,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -309,22 +309,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 33.59,
-     "votes": 1442
+     "pct": 36.49,
+     "votes": 8000
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 30.49,
-     "votes": 1309
+     "pct": 25.27,
+     "votes": 5541
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 14.3,
-     "votes": 614
+     "pct": 14.99,
+     "votes": 3287
     }
    ]
   },
@@ -332,9 +332,9 @@
    "name": "Dobrich",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 41.77,
-   "votes": 4356,
-   "counted": 35.24,
+   "pct": 41.87,
+   "votes": 13186,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -346,22 +346,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 41.77,
-     "votes": 4356
+     "pct": 41.87,
+     "votes": 13186
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 20.18,
-     "votes": 2105
+     "pct": 20.99,
+     "votes": 6611
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 17.07,
-     "votes": 1780
+     "pct": 16.15,
+     "votes": 5085
     }
    ]
   },
@@ -369,9 +369,9 @@
    "name": "Kardzhali",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 39.96,
-   "votes": 2315,
-   "counted": 29.85,
+   "pct": 41.11,
+   "votes": 6200,
+   "counted": 63.92,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -383,22 +383,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 39.96,
-     "votes": 2315
+     "pct": 41.11,
+     "votes": 6200
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 21.95,
-     "votes": 1272
+     "pct": 22.38,
+     "votes": 3376
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 8.2,
-     "votes": 475
+     "pct": 8.23,
+     "votes": 1242
     }
    ]
   },
@@ -406,9 +406,9 @@
    "name": "Kyustendil",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 39.99,
-   "votes": 1516,
-   "counted": 16.01,
+   "pct": 38.54,
+   "votes": 4225,
+   "counted": 39.86,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -420,22 +420,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 39.99,
-     "votes": 1516
+     "pct": 38.54,
+     "votes": 4225
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 27.12,
-     "votes": 1028
+     "pct": 27.37,
+     "votes": 3001
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 12.95,
-     "votes": 491
+     "pct": 13.62,
+     "votes": 1493
     }
    ]
   },
@@ -443,9 +443,9 @@
    "name": "Lovech",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 40.13,
-   "votes": 2581,
-   "counted": 26.64,
+   "pct": 39.99,
+   "votes": 8127,
+   "counted": 91.8,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -457,22 +457,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 40.13,
-     "votes": 2581
+     "pct": 39.99,
+     "votes": 8127
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 25.31,
-     "votes": 1628
+     "pct": 23.34,
+     "votes": 4743
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.88,
-     "votes": 893
+     "pct": 13.52,
+     "votes": 2747
     }
    ]
   },
@@ -480,9 +480,9 @@
    "name": "Montana",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 41.85,
-   "votes": 3152,
-   "counted": 21.8,
+   "pct": 41.74,
+   "votes": 8468,
+   "counted": 84.43,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -494,22 +494,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 41.85,
-     "votes": 3152
+     "pct": 41.74,
+     "votes": 8468
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 20.66,
-     "votes": 1556
+     "pct": 18.73,
+     "votes": 3799
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 15.48,
-     "votes": 1166
+     "pct": 15.81,
+     "votes": 3208
     }
    ]
   },
@@ -517,9 +517,9 @@
    "name": "Pazardzhik",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 37.96,
-   "votes": 4839,
-   "counted": 29.12,
+   "pct": 38.75,
+   "votes": 11965,
+   "counted": 73.9,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -531,22 +531,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 37.96,
-     "votes": 4839
+     "pct": 38.75,
+     "votes": 11965
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 26.44,
-     "votes": 3370
+     "pct": 24.2,
+     "votes": 7471
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 14.36,
-     "votes": 1831
+     "pct": 13.86,
+     "votes": 4281
     }
    ]
   },
@@ -554,9 +554,9 @@
    "name": "Pernik",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 35.34,
-   "votes": 2998,
-   "counted": 32.17,
+   "pct": 36.26,
+   "votes": 8544,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -568,22 +568,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 35.34,
-     "votes": 2998
+     "pct": 36.26,
+     "votes": 8544
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 27.05,
-     "votes": 2295
+     "pct": 26.91,
+     "votes": 6341
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 15.0,
-     "votes": 1273
+     "pct": 15.03,
+     "votes": 3541
     }
    ]
   },
@@ -591,9 +591,9 @@
    "name": "Pleven",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 38.63,
-   "votes": 4251,
-   "counted": 19.85,
+   "pct": 41.02,
+   "votes": 12043,
+   "counted": 64.69,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -605,22 +605,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 38.63,
-     "votes": 4251
+     "pct": 41.02,
+     "votes": 12043
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 25.35,
-     "votes": 2789
+     "pct": 21.97,
+     "votes": 6450
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.97,
-     "votes": 1537
+     "pct": 13.61,
+     "votes": 3995
     }
    ]
   },
@@ -628,9 +628,9 @@
    "name": "Plovdiv",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 34.04,
-   "votes": 10306,
-   "counted": 26.84,
+   "pct": 35.49,
+   "votes": 37905,
+   "counted": 90.99,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -642,22 +642,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 34.04,
-     "votes": 10306
+     "pct": 35.49,
+     "votes": 37905
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 31.65,
-     "votes": 9581
+     "pct": 30.37,
+     "votes": 32444
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 12.16,
-     "votes": 3681
+     "pct": 12.66,
+     "votes": 13518
     }
    ]
   },
@@ -665,9 +665,9 @@
    "name": "Razgrad",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 40.8,
-   "votes": 457,
-   "counted": 11.98,
+   "pct": 43.62,
+   "votes": 5196,
+   "counted": 70.51,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -679,22 +679,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 40.8,
-     "votes": 457
+     "pct": 43.62,
+     "votes": 5196
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 26.43,
-     "votes": 296
+     "pct": 22.88,
+     "votes": 2726
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 10.27,
-     "votes": 115
+     "pct": 10.74,
+     "votes": 1279
     }
    ]
   },
@@ -702,9 +702,9 @@
    "name": "Ruse",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 37.48,
-   "votes": 7361,
-   "counted": 42.69,
+   "pct": 38.26,
+   "votes": 12988,
+   "counted": 78.81,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -716,22 +716,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 37.48,
-     "votes": 7361
+     "pct": 38.26,
+     "votes": 12988
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 27.45,
-     "votes": 5392
+     "pct": 26.27,
+     "votes": 8917
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 14.15,
-     "votes": 2780
+     "pct": 13.76,
+     "votes": 4671
     }
    ]
   },
@@ -739,9 +739,9 @@
    "name": "Silistra",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 44.28,
-   "votes": 3769,
-   "counted": 36.24,
+   "pct": 45.88,
+   "votes": 8919,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -753,22 +753,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 44.28,
-     "votes": 3769
+     "pct": 45.88,
+     "votes": 8919
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 19.02,
-     "votes": 1619
+     "pct": 17.13,
+     "votes": 3330
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.93,
-     "votes": 1186
+     "pct": 11.75,
+     "votes": 2284
     }
    ]
   },
@@ -776,9 +776,9 @@
    "name": "Sliven",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 39.57,
-   "votes": 6787,
-   "counted": 57.91,
+   "pct": 40.25,
+   "votes": 10577,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -790,22 +790,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 39.57,
-     "votes": 6787
+     "pct": 40.25,
+     "votes": 10577
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 24.56,
-     "votes": 4212
+     "pct": 21.9,
+     "votes": 5754
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 14.58,
-     "votes": 2500
+     "pct": 14.14,
+     "votes": 3717
     }
    ]
   },
@@ -813,9 +813,9 @@
    "name": "Smolyan",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 43.33,
-   "votes": 1918,
-   "counted": 21.27,
+   "pct": 47.19,
+   "votes": 8274,
+   "counted": 84.7,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -827,22 +827,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 43.33,
-     "votes": 1918
+     "pct": 47.19,
+     "votes": 8274
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 22.89,
-     "votes": 1013
+     "pct": 20.4,
+     "votes": 3576
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 11.46,
-     "votes": 507
+     "pct": 10.6,
+     "votes": 1858
     }
    ]
   },
@@ -850,9 +850,9 @@
    "name": "Sofia City",
    "winner": "gyurov",
    "winner_name": "Andrey Gyurov",
-   "pct": 47.38,
-   "votes": 33182,
-   "counted": 28.43,
+   "pct": 49.64,
+   "votes": 148506,
+   "counted": 99.4,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -864,22 +864,22 @@
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 47.38,
-     "votes": 33182
+     "pct": 49.64,
+     "votes": 148506
     },
     {
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 25.24,
-     "votes": 17680
+     "pct": 23.96,
+     "votes": 71675
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 10.91,
-     "votes": 7641
+     "pct": 10.48,
+     "votes": 31362
     }
    ]
   },
@@ -887,9 +887,9 @@
    "name": "Sofia Region",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 39.9,
-   "votes": 2842,
-   "counted": 19.16,
+   "pct": 37.16,
+   "votes": 13896,
+   "counted": 78.38,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -901,22 +901,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 39.9,
-     "votes": 2842
+     "pct": 37.16,
+     "votes": 13896
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 25.99,
-     "votes": 1851
+     "pct": 24.11,
+     "votes": 9016
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 11.93,
-     "votes": 850
+     "pct": 12.95,
+     "votes": 4842
     }
    ]
   },
@@ -924,9 +924,9 @@
    "name": "Stara Zagora",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 37.45,
-   "votes": 5295,
-   "counted": 22.97,
+   "pct": 39.24,
+   "votes": 18612,
+   "counted": 76.63,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -938,22 +938,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 37.45,
-     "votes": 5295
+     "pct": 39.24,
+     "votes": 18612
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 27.52,
-     "votes": 3890
+     "pct": 23.97,
+     "votes": 11368
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.76,
-     "votes": 1945
+     "pct": 13.92,
+     "votes": 6602
     }
    ]
   },
@@ -961,9 +961,9 @@
    "name": "Targovishte",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 40.22,
-   "votes": 3198,
-   "counted": 38.26,
+   "pct": 44.86,
+   "votes": 8002,
+   "counted": 98.86,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -975,22 +975,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 40.22,
-     "votes": 3198
+     "pct": 44.86,
+     "votes": 8002
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 22.99,
-     "votes": 1828
+     "pct": 19.76,
+     "votes": 3524
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.11,
-     "votes": 1042
+     "pct": 10.83,
+     "votes": 1931
     }
    ]
   },
@@ -998,9 +998,9 @@
    "name": "Haskovo",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 46.31,
-   "votes": 6972,
-   "counted": 32.63,
+   "pct": 47.89,
+   "votes": 20039,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -1012,22 +1012,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 46.31,
-     "votes": 6972
+     "pct": 47.89,
+     "votes": 20039
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 19.7,
-     "votes": 2966
+     "pct": 18.56,
+     "votes": 7768
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.38,
-     "votes": 2014
+     "pct": 12.59,
+     "votes": 5267
     }
    ]
   },
@@ -1035,9 +1035,9 @@
    "name": "Shumen",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 38.09,
-   "votes": 8047,
-   "counted": 59.94,
+   "pct": 39.37,
+   "votes": 11673,
+   "counted": 99.37,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -1049,22 +1049,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 38.09,
-     "votes": 8047
+     "pct": 39.37,
+     "votes": 11673
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 26.52,
-     "votes": 5602
+     "pct": 24.34,
+     "votes": 7216
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 13.12,
-     "votes": 2772
+     "pct": 11.81,
+     "votes": 3500
     }
    ]
   },
@@ -1072,9 +1072,9 @@
    "name": "Yambol",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 40.35,
-   "votes": 3326,
-   "counted": 41.2,
+   "pct": 42.01,
+   "votes": 8886,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -1086,22 +1086,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 40.35,
-     "votes": 3326
+     "pct": 42.01,
+     "votes": 8886
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 19.39,
-     "votes": 1598
+     "pct": 18.6,
+     "votes": 3934
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 16.26,
-     "votes": 1340
+     "pct": 15.86,
+     "votes": 3354
     }
    ]
   }
@@ -1111,5 +1111,5 @@
  "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-26T00:04:15Z"
+ "updated_at": "2026-10-26T04:30:35Z"
 }

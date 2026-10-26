@@ -1340,22 +1340,22 @@ function brazilRunoffHero(avg, filteredPolls){
         <span class="bz-code">${partyCode(ro.a)}</span>
         <span class="bz-pct">${fmt(ro.aN,1)}%</span>
         <div class="bz-bar"><div class="bz-fill" style="width:${barA(ro.aN/100)}%;background:${cA}"></div></div>
-        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${pct100(h2a)}</b></span>
+        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${probPct(h2a)}</b></span>
       </div>
       <div class="bz-vs">vs</div>
       <div class="bz-cand" style="--bz-c:${cB}">
         <span class="bz-code">${partyCode(ro.b)}</span>
         <span class="bz-pct">${fmt(ro.bN,1)}%</span>
         <div class="bz-bar"><div class="bz-fill" style="width:${barA(ro.bN/100)}%;background:${cB}"></div></div>
-        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${pct100(h2b)}</b></span>
+        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${probPct(h2b)}</b></span>
       </div>
     </div>
     <div class="bz-path">
       ${todayStr()<(META.election_date||'')
-        ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${pct100(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${pct100(1-ro.winA/3000)}</b></span>`
-        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct100((ro.winA/3000))} ${t('first-round win','ilk turda kazanır')}</span>
+        ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${probPct(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${probPct(1-ro.winA/3000)}</b></span>`
+        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${probPct((ro.winA/3000))} ${t('first-round win','ilk turda kazanır')}</span>
       <span>\u00b7</span>
-      <span>${partyCode(ro.b)} ${pct100(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>`}
+      <span>${partyCode(ro.b)} ${probPct(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>`}
     </div>
   </div>`;
 }
@@ -5292,6 +5292,12 @@ function deterministicSeats(medians, means, total){
 }
 
 function pct100(x){return (x*100).toFixed(1)+'%'}
+function calibrateProbability(p){
+  p=Math.max(0.001,Math.min(0.999,p));
+  const z=Math.log(p/(1-p))/2.5;
+  return 1/(1+Math.exp(-z));
+}
+function probPct(p){return (calibrateProbability(p)*100).toFixed(1)+'%'}
 
 /* ---------- second-round runoff forecast (two-round presidential) ---------- */
 function gaussianSample(rng){
@@ -5436,7 +5442,7 @@ function firstRoundCard(sim){
   const barRow=(label,color,v)=>`<div class="fc-row">
     <span class="fc-row-label" style="color:${color}">${label}</span>
     <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(v*100).toFixed(1)}%;background:${color}"></div></div>
-    <span class="fc-row-val">${pct100(v)}</span>
+    <span class="fc-row-val">${probPct(v)}</span>
   </div>`;
   return `<div class="card">
     <div class="card-head"><div class="bar"></div><div class="t">${t('FIRST ROUND — MAJORITY','İLK TUR — ÇOĞUNLUK')}</div></div>
@@ -5804,14 +5810,14 @@ function renderForecast(pane){
     }).filter(Boolean).sort((a,b)=>b.p-a.p);
     if(rows.length){
       coalHtml=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Coalition scenarios','Koalisyon senaryoları')}</div></div>
-        ${rows.map(r=>`<div class="coal-row" title="${r.c.parties.join(' + ')} \u2014 ${r.exp} ${T.seats}, ${pct100(r.p)}">
+        ${rows.map(r=>`<div class="coal-row" title="${r.c.parties.join(' + ')} \u2014 ${r.exp} ${T.seats}, ${probPct(r.p)}">
           <div class="coal-id">
             <span class="coal-chips">${r.c.parties.filter(p=>sim.seatsBy[p]).map(p=>`<span class="coal-chip" style="background:${(PARTY_META[p]||{}).color||'#888'}"></span>`).join('')}</span>
             <span class="coal-name">${r.c.name}</span>
             <span class="coal-seats">${r.exp}</span>
           </div>
           <div class="coal-bar"><div class="coal-fill" style="width:${Math.min(100,r.exp/(MAJ*1.3)*100).toFixed(1)}%;background:${r.color}"></div><div class="fc-thresh" style="left:${(100/1.3).toFixed(1)}%"></div></div>
-          <span class="coal-p ${r.p>=0.5?'strong':(r.p>=0.1?'mid':'weak')}">${pct100(r.p)}</span>
+          <span class="coal-p ${r.p>=0.5?'strong':(r.p>=0.1?'mid':'weak')}">${probPct(r.p)}</span>
         </div>`).join('')}
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">${t('Expected seats vs the '+MAJ+'-seat majority line','Beklenen sandalye ve '+MAJ+' sandalyelik \u00e7o\u011funluk \u00e7izgisi')}</div>
       </div>`;
@@ -5889,7 +5895,7 @@ function renderForecast(pane){
       const row=(label,color,p)=>`<div class="fc-row">
         <span class="fc-row-label" style="color:${color}">${label}</span>
         <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>
-        <span class="fc-row-val">${pct100(p)}</span>
+        <span class="fc-row-val">${probPct(p)}</span>
       </div>`;
       const shareRow=(label,color,mu,lo,hi,mom)=>{
         const momHtml=(mom===null||mom===undefined)?'':(mom>0
@@ -5982,7 +5988,7 @@ function renderForecast(pane){
     largestRows+=`<div class="fc-row">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
       <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(n/maxL*100).toFixed(1)}%;background:${color}"></div></div>
-      <span class="fc-row-val">${pct100(n/sim.nSims)}</span>
+      <span class="fc-row-val">${probPct(n/sim.nSims)}</span>
     </div>`;
   });
 
@@ -6010,9 +6016,9 @@ function renderForecast(pane){
     let note='';
     if(!MAP_ONLY){
       if(thresh>=0.5){
-        if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${pct100(1-thresh)} of sims</div>`;
+        if(thresh<0.995) note=`<div class="fc-note">${partyCode(p)} is below the threshold in ${probPct(1-thresh)} of sims</div>`;
       }else if(thresh>0.005){
-        note=`<div class="fc-note">${partyCode(p)} crosses the threshold in ${pct100(thresh)} of sims</div>`;
+        note=`<div class="fc-note">${partyCode(p)} crosses the threshold in ${probPct(thresh)} of sims</div>`;
       }
     }
     voteRows+=`<div class="fc-voterow">
@@ -6213,11 +6219,11 @@ function renderForecast(pane){
     ${HIDE_BLOCS?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
-        <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${pct100(rgP)}</span>
-        <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${pct100(tdP)}</span>
-        ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${pct100(kmP)}</span>`:''}
+        <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${probPct(rgP)}</span>
+        <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${probPct(tdP)}</span>
+        ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${probPct(kmP)}</span>`:''}
         ${BLOCS.bloc3?`<span><span class="fc-dot" style="background:${BLOCS.bloc3.color}"></span>${BLOCS.bloc3.name} ${Math.round(b3Seats)} ${T.seats} ${t('(unaligned)','(bağımsız)')}</span>`:''}
-        <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${pct100(hungP)}</span>
+        <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${probPct(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
       ${calibNote()}

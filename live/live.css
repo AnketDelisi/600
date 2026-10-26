@@ -155,3 +155,6 @@ body{margin:0}
 
 .live-nav button:focus-visible,.live-retry:focus-visible,.live-source a:focus-visible,.live-footer a:focus-visible{outline:3px solid var(--c-accent);outline-offset:2px}
 .live-table-wrap:focus-visible{outline:3px solid var(--c-accent);outline-offset:2px}
+
+.live-archive-link{margin-left:10px;font-family:var(--font);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;color:var(--c-text-muted);text-decoration:none;border-bottom:1px solid var(--c-rule)}
+.live-archive-link:hover{color:var(--c-accent)}

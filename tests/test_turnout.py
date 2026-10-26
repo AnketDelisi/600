@@ -13,6 +13,7 @@ def main():
     assert serbia["sigma"] > 0
     assert turnout_model.scenario("serbia", 0) == serbia["mean"]
     assert turnout_model.actual("serbia")["turnout"] == 66.76
+    assert turnout_model.scenarios("serbia")[1] == serbia["mean"]
 
     bulgaria = turnout_model.prior("bgpres")
     assert bulgaria and bulgaria["n"] == 3

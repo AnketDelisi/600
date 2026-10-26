@@ -45,6 +45,10 @@ def scenario(country, z=0.0, exclude=CURRENT):
     return round(max(0.0, min(100.0, value)), 2)
 
 
+def scenarios(country, zs=(-1.0, 0.0, 1.0), exclude=CURRENT):
+    return [scenario(country, z, exclude) for z in zs]
+
+
 def actual(country):
     rows = elections(country)
     if not rows:

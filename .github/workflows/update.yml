@@ -94,6 +94,9 @@ jobs:
       - name: App smoke check
         run: node scraper/smoke.js
 
+      - name: Country page smoke
+        run: python tests/country_smoke.py
+
       - name: Calibration gate
         run: python scraper/calibration_gate.py
 

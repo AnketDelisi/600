@@ -766,7 +766,7 @@ function stateSpaceAverage(polls, party, noBias){
   for(const row of rows){
     const gap=Math.max(0,(row.t-last)/DAY);
     variance+=0.25*gap;
-    const obs=2500/row.n;
+    const obs=1000/row.n;
     const gain=variance/(variance+obs);
     mean+=gain*(row.v-mean);
     variance*=(1-gain);

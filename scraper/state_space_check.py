@@ -8,7 +8,7 @@ import backtest as bt
 
 HORIZONS = (60, 30, 14, 7, 0)
 PROCESS_VAR = 0.25
-OBS_SCALE = 2500.0
+OBS_SCALE = 1000.0
 
 
 def ss_average(polls, as_of, half_life):

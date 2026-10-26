@@ -1,0 +1,38 @@
+{
+  "serbia": {
+    "date": "2026-10-25",
+    "counted": "8191/8392 polling stations",
+    "turnout": 66.76,
+    "shares": {
+      "sns": 39.17,
+      "sl": 52.71,
+      "sps": 2.17,
+      "vmsz": 0.81
+    },
+    "source": "RIK"
+  },
+  "bgpres": {
+    "date": "2026-10-25",
+    "counted": "100%",
+    "turnout": 21.91,
+    "shares": {
+      "iotova": 34.759,
+      "gyurov": 31.952,
+      "kostadinov": 12.545,
+      "vasilev": 4.608,
+      "mihaylov": 3.787,
+      "hristanov": 2.393
+    },
+    "source": "CIK"
+  },
+  "brazil": {
+    "date": "2026-10-25",
+    "counted": "100%",
+    "turnout": 80.78,
+    "shares": {
+      "lula": 51.79,
+      "flavio": 48.21
+    },
+    "source": "TSE"
+  }
+}

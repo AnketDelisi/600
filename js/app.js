@@ -4899,8 +4899,13 @@ function horizonSwing(avg, nPolls){
   return 2*Math.sqrt(Math.max(0.25,target*target-dirichlet*dirichlet));
 }
 let FORECAST_SWING_ACTIVE=null;
+function turnoutSwing(){
+  const t=META&&META.turnout;
+  return t&&Number(t.swing_sigma)||0;
+}
 function forecastSwingNow(){
-  return FORECAST_SWING_ACTIVE!=null?FORECAST_SWING_ACTIVE:FORECAST_SWING;
+  const base=FORECAST_SWING_ACTIVE!=null?FORECAST_SWING_ACTIVE:FORECAST_SWING;
+  return Math.sqrt(base*base+turnoutSwing()*turnoutSwing());
 }
 
 function forecastSigma(avg, nPolls){
@@ -4910,7 +4915,7 @@ function forecastSigma(avg, nPolls){
   // swing moves each bloc by ±σ; a party inside a bloc of share s sees about
   // s·σ/mean(bloc)). Approximate the total: sqrt(dirichlet^2 + (swing·0.5)^2),
   // with the swing scaled to the measured days-to-election uncertainty.
-  return Math.sqrt(dirichlet*dirichlet+Math.pow(horizonSwing(avg,nPolls)*0.5,2));
+  return Math.sqrt(dirichlet*dirichlet+Math.pow(horizonSwing(avg,nPolls)*0.5,2)+turnoutSwing()*turnoutSwing());
 }
 
 function gammaSample(alpha){

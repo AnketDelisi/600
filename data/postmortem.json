@@ -1,0 +1,114 @@
+{
+ "serbia": {
+  "date": "2026-10-25",
+  "counted": "8191/8392 polling stations",
+  "poll_window_days": 10,
+  "poll_count": 2,
+  "poll_average": {
+   "sns": 45.05,
+   "sl": 42.2,
+   "sps": 3.05
+  },
+  "actual": {
+   "sns": 39.17,
+   "sl": 52.71,
+   "sps": 2.17,
+   "vmsz": 0.81
+  },
+  "error": {
+   "sns": 5.88,
+   "sl": -10.51,
+   "sps": 0.88
+  },
+  "mae": 5.76,
+  "turnout": {
+   "actual": 66.76,
+   "prior": {
+    "country": "serbia",
+    "mean": 55.52,
+    "sigma": 4.52,
+    "n": 4,
+    "min": 48.96,
+    "max": 58.52
+   },
+   "error": 11.24
+  },
+  "source": "RIK"
+ },
+ "bgpres": {
+  "date": "2026-10-25",
+  "counted": "100%",
+  "poll_window_days": 10,
+  "poll_count": 6,
+  "poll_average": {
+   "iotova": 45.18,
+   "gyurov": 28.47,
+   "kostadinov": 11.07,
+   "vasilev": 3.08,
+   "mihaylov": 2.82,
+   "hristanov": 2.6
+  },
+  "actual": {
+   "iotova": 34.759,
+   "gyurov": 31.952,
+   "kostadinov": 12.545,
+   "vasilev": 4.608,
+   "mihaylov": 3.787,
+   "hristanov": 2.393
+  },
+  "error": {
+   "iotova": 10.42,
+   "gyurov": -3.48,
+   "kostadinov": -1.47,
+   "vasilev": -1.53,
+   "mihaylov": -0.97,
+   "hristanov": 0.21
+  },
+  "mae": 3.01,
+  "turnout": {
+   "actual": 21.91,
+   "prior": {
+    "country": "bgpres",
+    "mean": 49.78,
+    "sigma": 8.2,
+    "n": 3,
+    "min": 40.62,
+    "max": 56.46
+   },
+   "error": -27.87
+  },
+  "source": "CIK"
+ },
+ "brazil": {
+  "date": "2026-10-25",
+  "counted": "100%",
+  "poll_window_days": 5,
+  "poll_count": 25,
+  "poll_average": {
+   "lula": 49.12,
+   "flavio": 50.88
+  },
+  "actual": {
+   "lula": 51.79,
+   "flavio": 48.21
+  },
+  "error": {
+   "lula": -2.67,
+   "flavio": 2.67
+  },
+  "mae": 2.67,
+  "turnout": {
+   "actual": 80.78,
+   "prior": {
+    "country": "brazil",
+    "mean": 79.33,
+    "sigma": 0.5,
+    "n": 3,
+    "min": 78.9,
+    "max": 79.67
+   },
+   "error": 1.45
+  },
+  "source": "TSE"
+ }
+}

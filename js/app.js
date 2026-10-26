@@ -666,11 +666,10 @@ function recencyWeight(dateStr){
 // Automatic house effects: a pollster that sits consistently off the panel
 // consensus (house style, herding, partisan sponsorship) is pulled toward it.
 // The deviation is the pollster's n-weighted mean distance from the panel mean
-// per party, shrunk (HOUSE_SHRINK) and capped (HOUSE_CAP); pollsters with
-// fewer than HOUSE_MIN_POLLS polls are ignored, and a backtested config
+// per party, shrunk with empirical-Bayes reliability and capped (HOUSE_CAP);
+// pollsters with fewer than HOUSE_MIN_POLLS polls are ignored, and a backtested config
 // pollsterBias takes precedence when present. Computed once per country load
 // from the full poll set (not the filtered window) so it is stable.
-const HOUSE_SHRINK=0.5;
 const HOUSE_CAP=2.5;
 const HOUSE_MIN_POLLS=2;
 let HOUSE_CACHE=null, HOUSE_CACHE_KEY=null;
@@ -681,61 +680,55 @@ function houseEffects(){
   if(HOUSE_CACHE_KEY===polls) return HOUSE_CACHE;
   HOUSE_CACHE_KEY=polls;
   const cons={};
-  for(const p of PARTY_ORDER){
+  for(const party of PARTY_ORDER){
     let ws=0,wt=0;
     for(const poll of polls){
-      const v=poll.votes[p];
+      const v=poll.votes[party];
       if(v===undefined) continue;
       const w=Math.min(1500,poll.n||1000)*recencyWeight(poll.date);
       ws+=w*v; wt+=w;
     }
-    cons[p]=wt>0?ws/wt:null;
+    cons[party]=wt>0?ws/wt:null;
   }
   const acc={};
   for(const poll of polls){
-    const a=acc[poll.pollster]||(acc[poll.pollster]={polls:0,ws:{},wt:{}});
-    a.polls++;
-    for(const p of PARTY_ORDER){
-      const v=poll.votes[p];
-      if(v===undefined||cons[p]===null) continue;
-      const w=Math.min(1500,poll.n||1000);
-      a.ws[p]=(a.ws[p]||0)+w*(v-cons[p]);
-      a.wt[p]=(a.wt[p]||0)+w;
+    const a=acc[poll.pollster]||(acc[poll.pollster]={});
+    for(const party of PARTY_ORDER){
+      const v=poll.votes[party];
+      if(v===undefined||cons[party]===null) continue;
+      const w=Math.min(1500,poll.n||1000)*recencyWeight(poll.date);
+      const d=v-cons[party];
+      const cell=a[party]||(a[party]={n:0,w:0,sw:0,sw2:0});
+      cell.n++; cell.w+=w; cell.sw+=w*d; cell.sw2+=w*d*d;
     }
   }
   const out={};
-  for(const name in acc){
-    const a=acc[name];
-    if(a.polls<HOUSE_MIN_POLLS) continue;
-    const dev={};
-    for(const p of PARTY_ORDER){
-      if(!a.wt[p]) continue;
-      const d=Math.max(-HOUSE_CAP,Math.min(HOUSE_CAP,a.ws[p]/a.wt[p]))*HOUSE_SHRINK;
-      if(Math.abs(d)>0.05) dev[p]=d;
+  for(const party of PARTY_ORDER){
+    const items=[];
+    for(const ps in acc){
+      const cell=acc[ps][party];
+      if(!cell||cell.n<HOUSE_MIN_POLLS||cell.w<=0) continue;
+      const mean=cell.sw/cell.w;
+      const variance=Math.max(0,cell.sw2/cell.w-mean*mean);
+      items.push({ps,d:mean,se:Math.sqrt(variance/cell.n),w:cell.w});
     }
-    if(Object.keys(dev).length) out[name]=dev;
+    if(items.length<2) continue;
+    const tw=items.reduce((a,b)=>a+b.w,0);
+    const global=items.reduce((a,b)=>a+b.d*b.w,0)/tw;
+    const between=items.reduce((a,b)=>a+b.w*Math.pow(b.d-global,2),0)/tw;
+    const se2=items.reduce((a,b)=>a+b.se*b.se,0)/items.length;
+    const tau2=Math.max(0,between-se2);
+    if(tau2<=0) continue;
+    for(const item of items){
+      const effect=Math.max(-HOUSE_CAP,Math.min(HOUSE_CAP,
+        item.d*tau2/(tau2+item.se*item.se)));
+      if(Math.abs(effect)>0.05){
+        (out[item.ps]||(out[item.ps]={}))[party]=effect;
+      }
+    }
   }
   HOUSE_CACHE=out;
   return out;
-}
-
-function pollValue(p, party, noBias){
-  if(p.votes[party]===undefined) return null;
-  let v=p.votes[party];
-  if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
-    v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
-  }
-  if(!noBias && !ARCHIVE_MODE &&
-     !(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined)){
-    const he=houseEffects();
-    const hd=he&&he[p.pollster];
-    if(hd&&hd[party]!==undefined) v-=hd[party];
-  }
-  if(SEAT_BASED){
-    const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
-    if(raw>0) v*=SEATS_TOTAL/raw;
-  }
-  return v;
 }
 
 function weightedAverage(polls, party, noBias){

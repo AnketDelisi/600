@@ -5,12 +5,12 @@
  "chart_start": "2026-09-25",
  "subtitle": "Presidential election · first round",
  "status": "counting",
- "counted": 84.57,
+ "counted": 95.29,
  "total": 100,
  "counted_label": "percent of sections",
  "source": "Central Election Commission (CIK)",
  "source_url": "https://results.cik.bg/pvr202610/rezultati/index.html",
- "source_updated_at": "05:00 на 26.10.2026",
+ "source_updated_at": "06:00 на 26.10.2026",
  "result_title": "First-round vote",
  "result_note": "CIK preliminary count. A runoff, if needed, is on 1 November.",
  "entries": [
@@ -18,48 +18,48 @@
    "id": "iotova",
    "name": "Iliana Iotova",
    "color": "#DB0F28",
-   "pct": 34.621,
-   "votes": 446269,
+   "pct": 34.598,
+   "votes": 506628,
    "seats": 0
   },
   {
    "id": "gyurov",
    "name": "Andrey Gyurov",
    "color": "#4200FF",
-   "pct": 31.917,
-   "votes": 411413,
+   "pct": 32.038,
+   "votes": 469143,
    "seats": 0
   },
   {
    "id": "kostadinov",
    "name": "Kostadin Kostadinov",
    "color": "#C09F62",
-   "pct": 12.66,
-   "votes": 163187,
+   "pct": 12.624,
+   "votes": 184850,
    "seats": 0
   },
   {
    "id": "vasilev",
    "name": "Radostin Vasilev",
    "color": "#1A2C44",
-   "pct": 4.545,
-   "votes": 58581,
+   "pct": 4.605,
+   "votes": 67432,
    "seats": 0
   },
   {
    "id": "mihaylov",
    "name": "Ivelin Mihaylov",
    "color": "#AC2225",
-   "pct": 3.859,
-   "votes": 49747,
+   "pct": 3.807,
+   "votes": 55743,
    "seats": 0
   },
   {
    "id": "hristanov",
    "name": "Ivan Hristanov",
    "color": "#C0CC66",
-   "pct": 2.415,
-   "votes": 31129,
+   "pct": 2.412,
+   "votes": 35321,
    "seats": 0
   }
  ],
@@ -1111,5 +1111,5 @@
  "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-26T04:30:35Z"
+ "updated_at": "2026-10-26T04:34:24Z"
 }

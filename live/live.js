@@ -126,7 +126,9 @@ function pollChart(data, polls, start, end, parties, seatBased) {
     if (p.votes && p.votes[party.id] != null) values.push(p.votes[party.id]);
   }
   const maxValue = values.length ? Math.max(...values) : 0;
-  const yMax = seatBased ? 120 : Math.max(50, Math.ceil((maxValue + 2) / 10) * 10);
+  const yMax = seatBased
+    ? Math.min(120, Math.max(30, Math.ceil((maxValue + 5) / 10) * 10))
+    : Math.max(50, Math.ceil((maxValue + 2) / 10) * 10);
   const x = (t) => L + ((t - start) / (end - start)) * (W - L - R);
   const y = (v) => T + (1 - v / yMax) * (H - T - B);
   const ticks = [];
@@ -193,7 +195,7 @@ function pollTable(polls, parties) {
     <td data-label="Pollster">${esc(p.pollster)}</td>
     <td data-label="Method" class="c">${esc(METHOD_LABELS[p.method] || p.method || "Not stated")}</td>
     <td data-label="N" class="c">${num(p.n)}</td>
-    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="c party-col${lead && lead.id === party.id ? " lead" : ""}" style="--pc:${party.color}">${p.votes && p.votes[party.id] != null ? Number(p.votes[party.id]).toFixed(1) : "—"}</td>`).join("")}
+    ${parties.map((party) => `<td data-label="${esc(party.name)}" class="c party-col${lead && lead.id === party.id ? " lead" : ""}" style="--pc:${party.color}">${p.votes && p.votes[party.id] != null ? (Number.isInteger(Number(p.votes[party.id])) ? String(Number(p.votes[party.id])) : Number(p.votes[party.id]).toFixed(1)) : "—"}</td>`).join("")}
   </tr>`;
   }).join("");
   return `<div class="live-table-wrap live-poll-table" tabindex="0" role="region" aria-label="Campaign poll table">

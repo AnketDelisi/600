@@ -1,6 +1,6 @@
 {
  "n": 3,
- "brier": 0.2328,
+ "brier": 0.2247,
  "cases": [
   {
    "race": "serbia",
@@ -11,10 +11,10 @@
    },
    "predicted": "sns",
    "actual": "sl",
-   "probability": 0.619,
+   "probability": 0.596,
    "hit": false,
    "majority": {
-    "predicted_opp": 0.575,
+    "predicted_opp": 0.601,
     "actual_opp_seats": 154,
     "actual_opp_majority": true
    }
@@ -31,7 +31,7 @@
    },
    "predicted": "iotova",
    "actual": "iotova",
-   "probability": 0.938,
+   "probability": 0.946,
    "hit": true
   },
   {
@@ -42,7 +42,7 @@
    },
    "predicted": "flavio",
    "actual": "lula",
-   "probability": 0.558,
+   "probability": 0.562,
    "hit": false
   }
  ],

@@ -94,6 +94,9 @@ jobs:
       - name: App smoke check
         run: node scraper/smoke.js
 
+      - name: Calibration gate
+        run: python scraper/calibration_gate.py
+
       # Poster smoke test: render the shareable poster in headless Chrome
       # (preinstalled on the runner) and assert a real 1600x900@2x PNG comes
       # out. Non-blocking - a flaky browser must not stop the data commit -

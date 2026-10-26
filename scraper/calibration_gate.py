@@ -62,6 +62,8 @@ def main():
     (ROOT / "data" / "calibration_gate.json").write_text(
         json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf8")
     print(json.dumps(out, ensure_ascii=False, indent=1))
+    if brier > 0.30:
+        raise SystemExit("calibration gate failed: Brier %.3f > 0.30" % brier)
 
 
 if __name__ == "__main__":

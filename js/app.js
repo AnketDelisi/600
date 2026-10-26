@@ -719,44 +719,60 @@ function houseEffects(){
   return out;
 }
 
+function pollValue(p, party, noBias){
+  if(p.votes[party]===undefined) return null;
+  let v=p.votes[party];
+  if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
+    v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
+  }
+  if(!noBias && !ARCHIVE_MODE &&
+     !(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined)){
+    const he=houseEffects();
+    const hd=he&&he[p.pollster];
+    if(hd&&hd[party]!==undefined) v-=hd[party];
+  }
+  if(SEAT_BASED){
+    const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
+    if(raw>0) v*=SEATS_TOTAL/raw;
+  }
+  return v;
+}
+
 function weightedAverage(polls, party, noBias){
   let wSum=0, wTotal=0;
   for(const p of polls){
-    if(p.votes[party]===undefined) continue;
-    // Archive-mode replicates the frozen snapshot's math (no n-cap, no bias)
-    // so the live FCST column matches the archive page exactly.
+    const value=pollValue(p, party, noBias);
+    if(value===null) continue;
     const n=ARCHIVE_MODE?(p.n||1000):Math.min(1500, p.n||1000);
-    const pw=pollsterWeight(p.pollster);
-    const rw=recencyWeight(p.date);
-    const w=n*pw*rw;
-    // seat-based polls report seats only for above-threshold parties;
-    // renormalize each poll to sum to SEATS_TOTAL so the average is on a
-    // common scale (missing below-threshold seats are treated as 'Others')
-    let v=p.votes[party];
-    // signed-bias correction: bias = poll − actual (from per-election backtest);
-    // subtract it so pollster's systematic error is removed. BIAS_SHRINK (0..1)
-    // damps this: a single-election bias can flip sign across elections (Sweden
-    // 2022 said pollsters understated S, 2026 every pollster overstated it), so
-    // full-strength correction can actively hurt — shrink toward 0.
-    if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
-      v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
-    }
-    // automatic house effect (consensus deviation), unless this pollster has a
-    // backtested config bias (that one is better and would double-correct)
-    if(!noBias && !ARCHIVE_MODE &&
-       !(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined)){
-      const he=houseEffects();
-      const hd=he&&he[p.pollster];
-      if(hd&&hd[party]!==undefined) v-=hd[party];
-    }
-    if(SEAT_BASED){
-      const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
-      if(raw>0) v*=SEATS_TOTAL/raw;
-    }
-    wSum+=v*w;
+    const w=n*pollsterWeight(p.pollster)*recencyWeight(p.date);
+    wSum+=value*w;
     wTotal+=w;
   }
   return wTotal>0?wSum/wTotal:null;
+}
+
+function stateSpaceAverage(polls, party, noBias){
+  const rows=[];
+  for(const p of polls){
+    const value=pollValue(p, party, noBias);
+    if(value===null) continue;
+    const t=new Date(p.date).getTime();
+    if(!Number.isFinite(t)) continue;
+    rows.push({t, v:value, n:Math.max(50, p.n||50)});
+  }
+  if(rows.length<2) return weightedAverage(polls, party, noBias);
+  rows.sort((a,b)=>a.t-b.t);
+  let mean=rows[0].v, variance=4.0, last=rows[0].t;
+  for(const row of rows){
+    const gap=Math.max(0,(row.t-last)/DAY);
+    variance+=0.25*gap;
+    const obs=2500/row.n;
+    const gain=variance/(variance+obs);
+    mean+=gain*(row.v-mean);
+    variance*=(1-gain);
+    last=row.t;
+  }
+  return mean;
 }
 
 // Linear-trend extrapolation: fit each party's recent polls (recency-weighted
@@ -860,7 +876,7 @@ function trendProjections(polls){
 function computeAverages(polls, raw){
   const avg={};
   for(const pid of PARTY_ORDER){
-    avg[pid]=weightedAverage(polls, pid, raw);
+    avg[pid]=stateSpaceAverage(polls, pid, raw);
   }
   // "Other": the vote share not covered by the modelled parties. Publish
   // reports party values that rarely sum to 100 (e.g. ~91% for Berlin), so

@@ -1,38 +1,59 @@
 {
-  "serbia": {
-    "date": "2026-10-25",
-    "counted": "8191/8392 polling stations",
-    "turnout": 66.76,
-    "shares": {
-      "sns": 39.17,
-      "sl": 52.71,
-      "sps": 2.17,
-      "vmsz": 0.81
-    },
-    "source": "RIK"
+ "serbia": {
+  "date": "2026-10-25",
+  "counted": "8191/8392 polling stations",
+  "turnout": 66.76,
+  "shares": {
+   "sns": 39.17,
+   "sl": 52.71,
+   "sps": 2.17,
+   "vmsz": 0.81
   },
-  "bgpres": {
-    "date": "2026-10-25",
-    "counted": "100%",
-    "turnout": 21.91,
-    "shares": {
-      "iotova": 34.759,
-      "gyurov": 31.952,
-      "kostadinov": 12.545,
-      "vasilev": 4.608,
-      "mihaylov": 3.787,
-      "hristanov": 2.393
-    },
-    "source": "CIK"
+  "source": "RIK",
+  "votes": {
+   "sns": 1686176,
+   "sl": 2268747,
+   "sps": 93314,
+   "vmsz": 34762
   },
-  "brazil": {
-    "date": "2026-10-25",
-    "counted": "100%",
-    "turnout": 80.78,
-    "shares": {
-      "lula": 51.79,
-      "flavio": 48.21
-    },
-    "source": "TSE"
-  }
+  "electorate": 6451292
+ },
+ "bgpres": {
+  "date": "2026-10-25",
+  "counted": "100%",
+  "turnout": 21.91,
+  "shares": {
+   "iotova": 34.759,
+   "gyurov": 31.952,
+   "kostadinov": 12.545,
+   "vasilev": 4.608,
+   "mihaylov": 3.787,
+   "hristanov": 2.393
+  },
+  "source": "CIK",
+  "votes": {
+   "iotova": 528929,
+   "gyurov": 486214,
+   "kostadinov": 190894,
+   "vasilev": 70118,
+   "mihaylov": 57633,
+   "hristanov": 36414
+  },
+  "electorate": 6637238
+ },
+ "brazil": {
+  "date": "2026-10-25",
+  "counted": "100%",
+  "turnout": 80.78,
+  "shares": {
+   "lula": 51.79,
+   "flavio": 48.21
+  },
+  "source": "TSE",
+  "votes": {
+   "lula": 64256232,
+   "flavio": 59826041
+  },
+  "electorate": 158745502
+ }
 }

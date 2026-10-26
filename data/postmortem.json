@@ -39,14 +39,14 @@
   "date": "2026-10-25",
   "counted": "100%",
   "poll_window_days": 10,
-  "poll_count": 6,
+  "poll_count": 11,
   "poll_average": {
-   "iotova": 45.18,
-   "gyurov": 28.47,
-   "kostadinov": 11.07,
-   "vasilev": 3.08,
-   "mihaylov": 2.82,
-   "hristanov": 2.6
+   "iotova": 40.69,
+   "gyurov": 30.1,
+   "kostadinov": 12.35,
+   "vasilev": 3.4,
+   "mihaylov": 2.98,
+   "hristanov": 2.37
   },
   "actual": {
    "iotova": 34.759,
@@ -57,14 +57,14 @@
    "hristanov": 2.393
   },
   "error": {
-   "iotova": 10.42,
-   "gyurov": -3.48,
-   "kostadinov": -1.47,
-   "vasilev": -1.53,
-   "mihaylov": -0.97,
-   "hristanov": 0.21
+   "iotova": 5.93,
+   "gyurov": -1.85,
+   "kostadinov": -0.2,
+   "vasilev": -1.21,
+   "mihaylov": -0.81,
+   "hristanov": -0.02
   },
-  "mae": 3.01,
+  "mae": 1.67,
   "turnout": {
    "actual": 21.91,
    "prior": {

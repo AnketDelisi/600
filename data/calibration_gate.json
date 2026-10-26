@@ -1,6 +1,6 @@
 {
  "n": 3,
- "brier": 0.2068,
+ "brier": 0.2279,
  "cases": [
   {
    "race": "serbia",
@@ -11,30 +11,30 @@
    },
    "predicted": "sns",
    "actual": "sl",
-   "probability": 0.589,
+   "probability": 0.604,
    "hit": false,
    "majority": {
-    "predicted_opp": 0.603,
+    "predicted_opp": 0.586,
     "actual_opp_seats": 154,
     "actual_opp_majority": true
    },
-   "calibrated": 0.536
+   "calibrated": 0.542
   },
   {
    "race": "bgpres",
    "poll_average": {
-    "iotova": 45.18,
-    "gyurov": 28.47,
-    "kostadinov": 11.07,
-    "vasilev": 3.08,
-    "mihaylov": 2.82,
-    "hristanov": 2.6
+    "iotova": 40.69,
+    "gyurov": 30.1,
+    "kostadinov": 12.35,
+    "vasilev": 3.4,
+    "mihaylov": 2.98,
+    "hristanov": 2.37
    },
    "predicted": "iotova",
    "actual": "iotova",
-   "probability": 0.944,
+   "probability": 0.852,
    "hit": true,
-   "calibrated": 0.756
+   "calibrated": 0.668
   },
   {
    "race": "brazil",
@@ -44,9 +44,9 @@
    },
    "predicted": "flavio",
    "actual": "lula",
-   "probability": 0.558,
+   "probability": 0.571,
    "hit": false,
-   "calibrated": 0.523
+   "calibrated": 0.529
   }
  ],
  "note": "Three completed 2026 races; a diagnostic gate, not enough alone to recalibrate."

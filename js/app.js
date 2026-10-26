@@ -40,6 +40,7 @@ const dataBase=()=>{
   if(depth<=1) return '';
   return '../'.repeat(depth-1);
 };
+const DAY=24*60*60*1000;
 const isPinnedCountry=()=>!!(typeof window!=='undefined'&&window.__600_COUNTRY__);
 
 /* ---------- language ---------- */
@@ -729,6 +730,25 @@ function houseEffects(){
   }
   HOUSE_CACHE=out;
   return out;
+}
+
+function pollValue(p, party, noBias){
+  if(p.votes[party]===undefined) return null;
+  let v=p.votes[party];
+  if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
+    v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
+  }
+  if(!noBias && !ARCHIVE_MODE &&
+     !(BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined)){
+    const he=houseEffects();
+    const hd=he&&he[p.pollster];
+    if(hd&&hd[party]!==undefined) v-=hd[party];
+  }
+  if(SEAT_BASED){
+    const raw=Object.values(p.votes).reduce((a,b)=>a+b,0);
+    if(raw>0) v*=SEATS_TOTAL/raw;
+  }
+  return v;
 }
 
 function weightedAverage(polls, party, noBias){

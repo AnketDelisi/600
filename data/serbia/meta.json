@@ -1,10 +1,16 @@
 {
-  "country": "serbia",
-  "name": "Serbia",
-  "election_date": "2026-10-25",
-  "seats": 250,
-  "threshold": 3.0,
-  "method": "dhondt",
-  "constituencies": false,
-  "notes": "National Assembly: closed-list PR, single national district, 3% threshold (coalitions: 3% + additional). Polls reported as vote share (%)."
+ "country": "serbia",
+ "name": "Serbia",
+ "election_date": "2026-10-25",
+ "seats": 250,
+ "threshold": 3.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "National Assembly: closed-list PR, single national district, 3% threshold (coalitions: 3% + additional). Polls reported as vote share (%).",
+ "turnout": {
+  "prior": 55.52,
+  "sigma": 4.52,
+  "swing_sigma": 4.5,
+  "source": "Historical RIK turnout; postmortem actual 66.76"
+ }
 }

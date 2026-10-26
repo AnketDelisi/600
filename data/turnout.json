@@ -1,0 +1,33 @@
+{
+  "serbia": {
+    "label": "Serbia",
+    "elections": [
+      {"date": "2016-04-24", "type": "parliamentary", "registered": 6727047, "voted": 3774405, "turnout": 56.11},
+      {"date": "2020-06-21", "type": "parliamentary", "registered": 6574488, "voted": 3218602, "turnout": 48.96},
+      {"date": "2022-04-03", "type": "parliamentary", "registered": 6502196, "voted": 3805088, "turnout": 58.52},
+      {"date": "2023-12-17", "type": "parliamentary", "registered": 6500904, "voted": 3802061, "turnout": 58.49},
+      {"date": "2026-10-25", "type": "parliamentary", "registered": 6451292, "voted": 4307042, "turnout": 66.76, "note": "97.6% of polling stations processed"}
+    ],
+    "source": "RIK / historical national turnout"
+  },
+  "bgpres": {
+    "label": "Bulgaria (presidential)",
+    "elections": [
+      {"date": "2011-10-23", "type": "presidential", "registered": 6933493, "voted": 3622633, "turnout": 52.25},
+      {"date": "2016-11-06", "type": "presidential", "registered": 7041684, "voted": 3975538, "turnout": 56.46},
+      {"date": "2021-11-14", "type": "presidential", "registered": 6913538, "voted": 2808078, "turnout": 40.62},
+      {"date": "2026-10-25", "type": "presidential", "registered": 6637238, "voted": 1454358, "turnout": 21.91, "note": "valid-vote turnout; final CIK count"}
+    ],
+    "source": "CIK / historical national turnout"
+  },
+  "brazil": {
+    "label": "Brazil",
+    "elections": [
+      {"date": "2014-10-05", "type": "presidential", "registered": 142822225, "voted": 112647414, "turnout": 78.90},
+      {"date": "2018-10-07", "type": "presidential", "registered": 147306295, "voted": 117363042, "turnout": 79.67},
+      {"date": "2022-10-02", "type": "presidential", "registered": 156453354, "voted": 124252796, "turnout": 79.42},
+      {"date": "2026-10-25", "type": "presidential", "registered": 158745502, "voted": 128236074, "turnout": 80.78, "note": "runoff; final TSE count"}
+    ],
+    "source": "TSE / historical national turnout"
+  }
+}

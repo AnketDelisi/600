@@ -4899,9 +4899,13 @@ function horizonSwing(avg, nPolls){
   return 2*Math.sqrt(Math.max(0.25,target*target-dirichlet*dirichlet));
 }
 let FORECAST_SWING_ACTIVE=null;
+const TURNOUT_DEFAULT_SWING=1.5;
+const TURNOUT_PRESIDENTIAL_SWING=2.0;
 function turnoutSwing(){
   const t=META&&META.turnout;
-  return t&&Number(t.swing_sigma)||0;
+  if(t&&t.swing_sigma!=null) return Number(t.swing_sigma);
+  if(!META) return TURNOUT_DEFAULT_SWING;
+  return (META.seats===1||META.method==='runoff')?TURNOUT_PRESIDENTIAL_SWING:TURNOUT_DEFAULT_SWING;
 }
 function forecastSwingNow(){
   const base=FORECAST_SWING_ACTIVE!=null?FORECAST_SWING_ACTIVE:FORECAST_SWING;

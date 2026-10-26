@@ -16,6 +16,8 @@ def main():
     counts = backtest.setdefault("counts", {})
     live = backtest.setdefault("live_2026", {})
     for country, row in postmortem.items():
+        if country in live:
+            continue
         mae = float(row["mae"])
         current = countries.get(country) or {}
         n = int((counts.get(country) or {}).get("0", 0))
@@ -31,6 +33,12 @@ def main():
             "poll_count": row["poll_count"],
             "date": row["date"],
         }
+    if not backtest.get("aggregate_live_applied") and live:
+        vals = [row["poll_mae"] for row in live.values()]
+        n = 15
+        backtest["aggregate"]["0"] = round(
+            (float(backtest["aggregate"]["0"]) * n + sum(vals)) / (n + len(vals)), 2)
+        backtest["aggregate_live_applied"] = True
     BACKTEST.write_text(json.dumps(backtest, ensure_ascii=False, indent=1) + "\n",
                         encoding="utf8")
     for country, row in live.items():

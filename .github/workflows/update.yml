@@ -97,6 +97,9 @@ jobs:
       - name: Calibration gate
         run: python scraper/calibration_gate.py
 
+      - name: Seat/majority gate
+        run: python scraper/seat_gate.py
+
       - name: Model gate
         run: python scraper/model_gate.py
 

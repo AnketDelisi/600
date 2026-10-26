@@ -891,6 +891,13 @@ function computeAverages(polls, raw){
   for(const pid of PARTY_ORDER){
     avg[pid]=stateSpaceAverage(polls, pid, raw);
   }
+  // Fundamentals-only fallback: with no usable polls, the last election is
+  // still a valid structural forecast rather than an empty page.
+  if(!raw && polls.length===0 && LAST_ELECTION&&LAST_ELECTION.results){
+    for(const pid of PARTY_ORDER){
+      avg[pid]=LAST_ELECTION.results[pid]!==undefined?LAST_ELECTION.results[pid]:0;
+    }
+  }
   // "Other": the vote share not covered by the modelled parties. Publish
   // reports party values that rarely sum to 100 (e.g. ~91% for Berlin), so
   // the remainder must be kept as a real bucket — otherwise it leaks into
@@ -5762,7 +5769,7 @@ function renderForecast(pane){
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
   if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
   const avg=computeAverages(filtered);
-  if(!filtered.length||Object.values(avg).every(v=>v===null)){
+  if((!filtered.length&&!(LAST_ELECTION&&LAST_ELECTION.results))||Object.values(avg).every(v=>v===null)){
     pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">FORECAST</div></div><div class="method-text" style="padding:16px"><p>No polls in the selected range.</p></div></div></div>`;
     return;
   }

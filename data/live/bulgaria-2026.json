@@ -4,13 +4,13 @@
  "close_at": "2026-10-25T18:00:00Z",
  "chart_start": "2026-09-25",
  "subtitle": "Presidential election · first round",
- "status": "counting",
- "counted": 99.95,
+ "status": "final",
+ "counted": 100.0,
  "total": 100,
  "counted_label": "percent of sections",
  "source": "Central Election Commission (CIK)",
  "source_url": "https://results.cik.bg/pvr202610/rezultati/index.html",
- "source_updated_at": "10:00 на 26.10.2026",
+ "source_updated_at": "15:00 на 26.10.2026",
  "result_title": "First-round vote",
  "result_note": "CIK preliminary count. A runoff, if needed, is on 1 November.",
  "entries": [
@@ -19,23 +19,23 @@
    "name": "Iliana Iotova",
    "color": "#DB0F28",
    "pct": 34.759,
-   "votes": 528782,
+   "votes": 528929,
    "seats": 0
   },
   {
    "id": "gyurov",
    "name": "Andrey Gyurov",
    "color": "#4200FF",
-   "pct": 31.953,
-   "votes": 486099,
+   "pct": 31.952,
+   "votes": 486214,
    "seats": 0
   },
   {
    "id": "kostadinov",
    "name": "Kostadin Kostadinov",
    "color": "#C09F62",
-   "pct": 12.544,
-   "votes": 190828,
+   "pct": 12.545,
+   "votes": 190894,
    "seats": 0
   },
   {
@@ -43,15 +43,15 @@
    "name": "Radostin Vasilev",
    "color": "#1A2C44",
    "pct": 4.608,
-   "votes": 70097,
+   "votes": 70118,
    "seats": 0
   },
   {
    "id": "mihaylov",
    "name": "Ivelin Mihaylov",
    "color": "#AC2225",
-   "pct": 3.788,
-   "votes": 57621,
+   "pct": 3.787,
+   "votes": 57633,
    "seats": 0
   },
   {
@@ -59,7 +59,7 @@
    "name": "Ivan Hristanov",
    "color": "#C0CC66",
    "pct": 2.393,
-   "votes": 36406,
+   "votes": 36414,
    "seats": 0
   }
  ],
@@ -369,9 +369,9 @@
    "name": "Kardzhali",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 42.86,
-   "votes": 9908,
-   "counted": 99.27,
+   "pct": 42.91,
+   "votes": 9962,
+   "counted": 100.0,
    "total": 100,
    "leading": true,
    "elected": false,
@@ -383,22 +383,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 42.86,
-     "votes": 9908
+     "pct": 42.91,
+     "votes": 9962
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 21.44,
-     "votes": 4957
+     "pct": 21.4,
+     "votes": 4968
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 7.67,
-     "votes": 1772
+     "pct": 7.65,
+     "votes": 1776
     }
    ]
   },
@@ -628,8 +628,8 @@
    "name": "Plovdiv",
    "winner": "iotova",
    "winner_name": "Iliana Iotova",
-   "pct": 34.52,
-   "votes": 46681,
+   "pct": 34.51,
+   "votes": 46727,
    "counted": 100.0,
    "total": 100,
    "leading": true,
@@ -642,22 +642,22 @@
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
-     "pct": 34.52,
-     "votes": 46681
+     "pct": 34.51,
+     "votes": 46727
     },
     {
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
      "pct": 32.16,
-     "votes": 43490
+     "votes": 43547
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 12.44,
-     "votes": 16824
+     "pct": 12.45,
+     "votes": 16859
     }
    ]
   },
@@ -850,8 +850,8 @@
    "name": "Sofia City",
    "winner": "gyurov",
    "winner_name": "Andrey Gyurov",
-   "pct": 48.96,
-   "votes": 178936,
+   "pct": 48.95,
+   "votes": 178983,
    "counted": 100.0,
    "total": 100,
    "leading": true,
@@ -864,22 +864,22 @@
      "id": "gyurov",
      "name": "Andrey Gyurov",
      "color": "#4200FF",
-     "pct": 48.96,
-     "votes": 178936
+     "pct": 48.95,
+     "votes": 178983
     },
     {
      "id": "iotova",
      "name": "Iliana Iotova",
      "color": "#DB0F28",
      "pct": 24.3,
-     "votes": 88804
+     "votes": 88851
     },
     {
      "id": "kostadinov",
      "name": "Kostadin Kostadinov",
      "color": "#C09F62",
-     "pct": 10.59,
-     "votes": 38718
+     "pct": 10.6,
+     "votes": 38745
     }
    ]
   },
@@ -1111,5 +1111,5 @@
  "map_note": "Colour shows the leading candidate in each CIK region.",
  "notes": "First round on 25 October. A runoff, if needed, is on 1 November.",
  "id": "bulgaria-2026",
- "updated_at": "2026-10-26T10:24:14Z"
+ "updated_at": "2026-10-26T16:50:48Z"
 }

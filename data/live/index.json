@@ -5,7 +5,7 @@
    "name": "Serbia",
    "date": "2026-10-25",
    "status": "counting",
-   "updated_at": "2026-10-26T10:26:27Z"
+   "updated_at": "2026-10-26T16:50:43Z"
   },
   {
    "id": "brazil-2026-r2",
@@ -18,8 +18,8 @@
    "id": "bulgaria-2026",
    "name": "Bulgaria",
    "date": "2026-10-25",
-   "status": "counting",
-   "updated_at": "2026-10-26T10:24:14Z"
+   "status": "final",
+   "updated_at": "2026-10-26T16:50:48Z"
   }
  ]
 }

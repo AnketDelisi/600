@@ -287,5 +287,413 @@
     "votes": 954763
    }
   ]
+ },
+ "bgpres": {
+  "source": "CIK regional results; 16:00 activity proxy (final regional turnout unavailable)",
+  "regions": [
+   {
+    "name": "Blagoevgrad",
+    "turnout": 14.16,
+    "shares": {
+     "gyurov": 31.54,
+     "kostadinov": 10.01,
+     "vasilev": 4.26,
+     "hristanov": 1.68,
+     "mihaylov": 3.17,
+     "iotova": 40.55
+    },
+    "votes": 63154
+   },
+   {
+    "name": "Burgas",
+    "turnout": 15.68,
+    "shares": {
+     "gyurov": 26.08,
+     "kostadinov": 12.8,
+     "vasilev": 4.96,
+     "hristanov": 2.74,
+     "mihaylov": 3.93,
+     "iotova": 38.54
+    },
+    "votes": 80629
+   },
+   {
+    "name": "Varna",
+    "turnout": 17.93,
+    "shares": {
+     "gyurov": 30.36,
+     "kostadinov": 16.34,
+     "vasilev": 3.49,
+     "hristanov": 2.59,
+     "mihaylov": 5.38,
+     "iotova": 32.13
+    },
+    "votes": 103321
+   },
+   {
+    "name": "Veliko Tarnovo",
+    "turnout": 16.96,
+    "shares": {
+     "gyurov": 22.93,
+     "kostadinov": 14.97,
+     "vasilev": 4.25,
+     "hristanov": 2.23,
+     "mihaylov": 6.06,
+     "iotova": 39.64
+    },
+    "votes": 44225
+   },
+   {
+    "name": "Vidin",
+    "turnout": 17.58,
+    "shares": {
+     "gyurov": 22.97,
+     "kostadinov": 12.64,
+     "vasilev": 5.07,
+     "hristanov": 1.97,
+     "mihaylov": 2.24,
+     "iotova": 42.88
+    },
+    "votes": 17420
+   },
+   {
+    "name": "Vratsa",
+    "turnout": 16.56,
+    "shares": {
+     "gyurov": 18.72,
+     "kostadinov": 13.16,
+     "vasilev": 10.06,
+     "hristanov": 2.06,
+     "mihaylov": 3.06,
+     "iotova": 42.47
+    },
+    "votes": 31177
+   },
+   {
+    "name": "Gabrovo",
+    "turnout": 17.3,
+    "shares": {
+     "gyurov": 25.22,
+     "kostadinov": 14.95,
+     "vasilev": 4.53,
+     "hristanov": 2.68,
+     "mihaylov": 5.85,
+     "iotova": 36.64
+    },
+    "votes": 22276
+   },
+   {
+    "name": "Dobrich",
+    "turnout": 14.46,
+    "shares": {
+     "gyurov": 20.99,
+     "kostadinov": 16.15,
+     "vasilev": 4.62,
+     "hristanov": 2.08,
+     "mihaylov": 5.24,
+     "iotova": 41.87
+    },
+    "votes": 31491
+   },
+   {
+    "name": "Kardzhali",
+    "turnout": 6.77,
+    "shares": {
+     "gyurov": 21.4,
+     "kostadinov": 7.65,
+     "vasilev": 3.65,
+     "hristanov": 1.43,
+     "mihaylov": 1.51,
+     "iotova": 42.91
+    },
+    "votes": 23216
+   },
+   {
+    "name": "Kyustendil",
+    "turnout": 14.67,
+    "shares": {
+     "gyurov": 25.33,
+     "kostadinov": 13.44,
+     "vasilev": 5.11,
+     "hristanov": 2.12,
+     "mihaylov": 3.05,
+     "iotova": 40.24
+    },
+    "votes": 24071
+   },
+   {
+    "name": "Lovech",
+    "turnout": 15.34,
+    "shares": {
+     "gyurov": 23.1,
+     "kostadinov": 13.27,
+     "vasilev": 6.83,
+     "hristanov": 2.09,
+     "mihaylov": 5.13,
+     "iotova": 40.01
+    },
+    "votes": 22015
+   },
+   {
+    "name": "Montana",
+    "turnout": 15.75,
+    "shares": {
+     "gyurov": 17.95,
+     "kostadinov": 15.58,
+     "vasilev": 9.29,
+     "hristanov": 2.32,
+     "mihaylov": 2.95,
+     "iotova": 41.91
+    },
+    "votes": 22981
+   },
+   {
+    "name": "Pazardzhik",
+    "turnout": 13.06,
+    "shares": {
+     "gyurov": 23.85,
+     "kostadinov": 13.3,
+     "vasilev": 7.39,
+     "hristanov": 1.86,
+     "mihaylov": 3.72,
+     "iotova": 39.94
+    },
+    "votes": 41319
+   },
+   {
+    "name": "Pernik",
+    "turnout": 16.95,
+    "shares": {
+     "gyurov": 26.91,
+     "kostadinov": 15.03,
+     "vasilev": 5.51,
+     "hristanov": 2.32,
+     "mihaylov": 3.11,
+     "iotova": 36.26
+    },
+    "votes": 23560
+   },
+   {
+    "name": "Pleven",
+    "turnout": 14.8,
+    "shares": {
+     "gyurov": 21.41,
+     "kostadinov": 13.64,
+     "vasilev": 7.03,
+     "hristanov": 3.33,
+     "mihaylov": 4.5,
+     "iotova": 41.55
+    },
+    "votes": 43978
+   },
+   {
+    "name": "Plovdiv City",
+    "turnout": 17.86,
+    "shares": {
+     "gyurov": 37.91,
+     "kostadinov": 12.08,
+     "vasilev": 3.92,
+     "hristanov": 2.99,
+     "mihaylov": 3.13,
+     "iotova": 30.78
+    },
+    "votes": 79944
+   },
+   {
+    "name": "Plovdiv Region",
+    "turnout": 13.97,
+    "shares": {
+     "gyurov": 23.87,
+     "kostadinov": 12.99,
+     "vasilev": 6.08,
+     "hristanov": 2.36,
+     "mihaylov": 4.64,
+     "iotova": 39.87
+    },
+    "votes": 55471
+   },
+   {
+    "name": "Razgrad",
+    "turnout": 11.14,
+    "shares": {
+     "gyurov": 22.74,
+     "kostadinov": 10.05,
+     "vasilev": 4.29,
+     "hristanov": 1.07,
+     "mihaylov": 3.83,
+     "iotova": 44.3
+    },
+    "votes": 18574
+   },
+   {
+    "name": "Ruse",
+    "turnout": 16.41,
+    "shares": {
+     "gyurov": 25.52,
+     "kostadinov": 13.69,
+     "vasilev": 4.81,
+     "hristanov": 2.31,
+     "mihaylov": 5.42,
+     "iotova": 38.85
+    },
+    "votes": 41424
+   },
+   {
+    "name": "Silistra",
+    "turnout": 13.73,
+    "shares": {
+     "gyurov": 17.13,
+     "kostadinov": 11.75,
+     "vasilev": 4.5,
+     "hristanov": 1.92,
+     "mihaylov": 5.26,
+     "iotova": 45.88
+    },
+    "votes": 19441
+   },
+   {
+    "name": "Sliven",
+    "turnout": 11.51,
+    "shares": {
+     "gyurov": 21.9,
+     "kostadinov": 14.14,
+     "vasilev": 5.79,
+     "hristanov": 1.94,
+     "mihaylov": 5.1,
+     "iotova": 40.25
+    },
+    "votes": 26279
+   },
+   {
+    "name": "Smolyan",
+    "turnout": 16.65,
+    "shares": {
+     "gyurov": 20.59,
+     "kostadinov": 10.68,
+     "vasilev": 3.67,
+     "hristanov": 3.21,
+     "mihaylov": 2.58,
+     "iotova": 47.22
+    },
+    "votes": 20102
+   },
+   {
+    "name": "Sofia 23",
+    "turnout": 25.91,
+    "shares": {
+     "gyurov": 54.38,
+     "kostadinov": 9.35,
+     "vasilev": 2.25,
+     "hristanov": 2.79,
+     "mihaylov": 1.72,
+     "iotova": 21.93
+    },
+    "votes": 163067
+   },
+   {
+    "name": "Sofia 24",
+    "turnout": 16.77,
+    "shares": {
+     "gyurov": 49.86,
+     "kostadinov": 10.63,
+     "vasilev": 2.95,
+     "hristanov": 2.69,
+     "mihaylov": 2.03,
+     "iotova": 23.52
+    },
+    "votes": 105273
+   },
+   {
+    "name": "Sofia 25",
+    "turnout": 19.69,
+    "shares": {
+     "gyurov": 38.86,
+     "kostadinov": 12.64,
+     "vasilev": 4.07,
+     "hristanov": 2.9,
+     "mihaylov": 2.62,
+     "iotova": 29.1
+    },
+    "votes": 97306
+   },
+   {
+    "name": "Sofia Region",
+    "turnout": 18.36,
+    "shares": {
+     "gyurov": 24.39,
+     "kostadinov": 13.31,
+     "vasilev": 6.25,
+     "hristanov": 2.31,
+     "mihaylov": 2.63,
+     "iotova": 37.17
+    },
+    "votes": 45445
+   },
+   {
+    "name": "Stara Zagora",
+    "turnout": 16.85,
+    "shares": {
+     "gyurov": 23.27,
+     "kostadinov": 13.81,
+     "vasilev": 6.05,
+     "hristanov": 2.09,
+     "mihaylov": 4.77,
+     "iotova": 39.94
+    },
+    "votes": 62797
+   },
+   {
+    "name": "Targovishte",
+    "turnout": 11.77,
+    "shares": {
+     "gyurov": 19.65,
+     "kostadinov": 10.8,
+     "vasilev": 5.02,
+     "hristanov": 1.53,
+     "mihaylov": 4.95,
+     "iotova": 44.88
+    },
+    "votes": 17993
+   },
+   {
+    "name": "Haskovo",
+    "turnout": 14.18,
+    "shares": {
+     "gyurov": 18.56,
+     "kostadinov": 12.59,
+     "vasilev": 4.9,
+     "hristanov": 2.34,
+     "mihaylov": 3.84,
+     "iotova": 47.89
+    },
+    "votes": 41843
+   },
+   {
+    "name": "Shumen",
+    "turnout": 12.6,
+    "shares": {
+     "gyurov": 24.29,
+     "kostadinov": 11.78,
+     "vasilev": 4.39,
+     "hristanov": 1.8,
+     "mihaylov": 5.16,
+     "iotova": 39.44
+    },
+    "votes": 29744
+   },
+   {
+    "name": "Yambol",
+    "turnout": 16.07,
+    "shares": {
+     "gyurov": 18.6,
+     "kostadinov": 15.86,
+     "vasilev": 5.76,
+     "hristanov": 2.19,
+     "mihaylov": 4.3,
+     "iotova": 42.01
+    },
+    "votes": 21154
+   }
+  ]
  }
 }

@@ -11,6 +11,14 @@
   "prior": 49.78,
   "sigma": 8.2,
   "swing_sigma": 8.2,
-  "source": "Historical CIK presidential turnout; postmortem actual 21.91"
+  "source": "Historical CIK presidential turnout; postmortem actual 21.91",
+  "tilt": {
+   "gyurov": 0.618,
+   "hristanov": 0.019,
+   "iotova": -0.41,
+   "kostadinov": -0.037,
+   "mihaylov": -0.041,
+   "vasilev": -0.059
+  }
  }
 }

@@ -11,6 +11,10 @@
   "prior": 55.52,
   "sigma": 4.52,
   "swing_sigma": 4.5,
-  "source": "Historical RIK turnout; postmortem actual 66.76"
+  "source": "Historical RIK turnout; postmortem actual 66.76",
+  "tilt": {
+   "sl": 0.792,
+   "sns": -0.629
+  }
  }
 }

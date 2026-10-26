@@ -4908,8 +4908,7 @@ function turnoutSwing(){
   return (META.seats===1||META.method==='runoff')?TURNOUT_PRESIDENTIAL_SWING:TURNOUT_DEFAULT_SWING;
 }
 function forecastSwingNow(){
-  const base=FORECAST_SWING_ACTIVE!=null?FORECAST_SWING_ACTIVE:FORECAST_SWING;
-  return Math.sqrt(base*base+turnoutSwing()*turnoutSwing());
+  return FORECAST_SWING_ACTIVE!=null?FORECAST_SWING_ACTIVE:FORECAST_SWING;
 }
 
 function forecastSigma(avg, nPolls){
@@ -4977,16 +4976,14 @@ function districtVotesMedian(){
   return DISTRICT_VOTES_MEDIAN;
 }
 // Apply a common bloc swing to a shares vector. Returns a new object.
-function applyNationalSwing(simVotes){
-  if(ARCHIVE_MODE) return simVotes;   // frozen snapshot predates the swing
+function applyBlocSwing(simVotes, delta){
   const b1=BLOCS&&BLOCS.bloc1, b2=BLOCS&&BLOCS.bloc2;
   if(!b1||!b2||!b1.parties||!b2.parties) return simVotes;
   const t1=b1.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
   const t2=b2.parties.reduce((a,p)=>a+(simVotes[p]||0),0);
   if(!(t1>0)||!(t2>0)) return simVotes;
-    const delta=gaussianSample(fcRand)*forecastSwingNow();
-  const f1=Math.max(0.05,1+delta/t1);   // bloc1 gains delta
-  const f2=Math.max(0.05,1-delta/t2);   // bloc2 loses delta
+  const f1=Math.max(0.05,1+delta/t1);
+  const f2=Math.max(0.05,1-delta/t2);
   const out={};
   let sum=0;
   for(const p in simVotes){
@@ -4999,6 +4996,23 @@ function applyNationalSwing(simVotes){
   }
   if(sum>0){for(const p in out) out[p]=100*out[p]/sum}
   return out;
+}
+
+function applyNationalSwing(simVotes){
+  if(ARCHIVE_MODE) return simVotes;
+  let out=applyBlocSwing(simVotes, gaussianSample(fcRand)*forecastSwingNow());
+  const tz=gaussianSample(fcRand)*turnoutSwing();
+  const tilt=META&&META.turnout&&META.turnout.tilt;
+  if(tilt&&Object.keys(tilt).length){
+    let sum=0;
+    for(const p in out){
+      out[p]=Math.max(0,(out[p]||0)+(Number(tilt[p])||0)*tz);
+      sum+=out[p];
+    }
+    if(sum>0){for(const p in out) out[p]=100*out[p]/sum}
+    return out;
+  }
+  return applyBlocSwing(out,tz);
 }
 
 // The published calibration of the majority probability: hit rates per

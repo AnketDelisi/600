@@ -1,0 +1,291 @@
+{
+ "serbia": {
+  "source": "RIK regional results and turnout",
+  "regions": [
+   {
+    "name": "Belgrade",
+    "turnout": 68.74,
+    "shares": {
+     "sns": 31.63,
+     "sl": 62.96
+    },
+    "votes": 1089109
+   },
+   {
+    "name": "Vojvodina",
+    "turnout": 69.23,
+    "shares": {
+     "sns": 39.58,
+     "sl": 52.18
+    },
+    "votes": 1128516
+   },
+   {
+    "name": "Šumadija and West",
+    "turnout": 68.57,
+    "shares": {
+     "sns": 39.94,
+     "sl": 50.77
+    },
+    "votes": 1155394
+   },
+   {
+    "name": "South and East",
+    "turnout": 65.62,
+    "shares": {
+     "sns": 45.91,
+     "sl": 44.22
+    },
+    "votes": 879940
+   }
+  ]
+ },
+ "brazil": {
+  "source": "TSE state results and turnout",
+  "regions": [
+   {
+    "name": "AC",
+    "turnout": 73.92,
+    "shares": {
+     "flavio": 66.57,
+     "lula": 33.43
+    },
+    "votes": 453654
+   },
+   {
+    "name": "AL",
+    "turnout": 79.92,
+    "shares": {
+     "flavio": 39.23,
+     "lula": 60.77
+    },
+    "votes": 1951632
+   },
+   {
+    "name": "AP",
+    "turnout": 74.53,
+    "shares": {
+     "flavio": 47.12,
+     "lula": 52.88
+    },
+    "votes": 429975
+   },
+   {
+    "name": "AM",
+    "turnout": 78.33,
+    "shares": {
+     "flavio": 45.98,
+     "lula": 54.02
+    },
+    "votes": 2192059
+   },
+   {
+    "name": "BA",
+    "turnout": 83.29,
+    "shares": {
+     "flavio": 28.69,
+     "lula": 71.31
+    },
+    "votes": 9422047
+   },
+   {
+    "name": "CE",
+    "turnout": 86.11,
+    "shares": {
+     "flavio": 31.07,
+     "lula": 68.93
+    },
+    "votes": 6024843
+   },
+   {
+    "name": "DF",
+    "turnout": 82.7,
+    "shares": {
+     "flavio": 54.28,
+     "lula": 45.72
+    },
+    "votes": 1868280
+   },
+   {
+    "name": "ES",
+    "turnout": 80.53,
+    "shares": {
+     "flavio": 56.37,
+     "lula": 43.63
+    },
+    "votes": 2409214
+   },
+   {
+    "name": "GO",
+    "turnout": 79.66,
+    "shares": {
+     "flavio": 59.66,
+     "lula": 40.34
+    },
+    "votes": 4047280
+   },
+   {
+    "name": "MA",
+    "turnout": 79.64,
+    "shares": {
+     "flavio": 30.46,
+     "lula": 69.54
+    },
+    "votes": 4127771
+   },
+   {
+    "name": "MT",
+    "turnout": 79.05,
+    "shares": {
+     "flavio": 66.06,
+     "lula": 33.94
+    },
+    "votes": 2085334
+   },
+   {
+    "name": "MS",
+    "turnout": 78.76,
+    "shares": {
+     "flavio": 59.6,
+     "lula": 40.4
+    },
+    "votes": 1594460
+   },
+   {
+    "name": "MG",
+    "turnout": 79.67,
+    "shares": {
+     "flavio": 49.57,
+     "lula": 50.43
+    },
+    "votes": 13044203
+   },
+   {
+    "name": "PA",
+    "turnout": 79.68,
+    "shares": {
+     "flavio": 44.98,
+     "lula": 55.02
+    },
+    "votes": 4989573
+   },
+   {
+    "name": "PB",
+    "turnout": 84.46,
+    "shares": {
+     "flavio": 32.54,
+     "lula": 67.46
+    },
+    "votes": 2743560
+   },
+   {
+    "name": "PR",
+    "turnout": 81.96,
+    "shares": {
+     "flavio": 62.58,
+     "lula": 37.42
+    },
+    "votes": 7059339
+   },
+   {
+    "name": "PE",
+    "turnout": 84.82,
+    "shares": {
+     "flavio": 30.8,
+     "lula": 69.2
+    },
+    "votes": 6126467
+   },
+   {
+    "name": "PI",
+    "turnout": 82.81,
+    "shares": {
+     "flavio": 24.12,
+     "lula": 75.88
+    },
+    "votes": 2239830
+   },
+   {
+    "name": "RJ",
+    "turnout": 78.38,
+    "shares": {
+     "flavio": 53.1,
+     "lula": 46.9
+    },
+    "votes": 10077449
+   },
+   {
+    "name": "RN",
+    "turnout": 83.94,
+    "shares": {
+     "flavio": 34.28,
+     "lula": 65.72
+    },
+    "votes": 2232823
+   },
+   {
+    "name": "RS",
+    "turnout": 80.84,
+    "shares": {
+     "flavio": 57.84,
+     "lula": 42.16
+    },
+    "votes": 6889638
+   },
+   {
+    "name": "RO",
+    "turnout": 78.08,
+    "shares": {
+     "flavio": 69.61,
+     "lula": 30.39
+    },
+    "votes": 988489
+   },
+   {
+    "name": "RR",
+    "turnout": 76.85,
+    "shares": {
+     "flavio": 72.46,
+     "lula": 27.54
+    },
+    "votes": 308597
+   },
+   {
+    "name": "SC",
+    "turnout": 83.04,
+    "shares": {
+     "flavio": 69.42,
+     "lula": 30.58
+    },
+    "votes": 4762303
+   },
+   {
+    "name": "SP",
+    "turnout": 80.19,
+    "shares": {
+     "flavio": 53.85,
+     "lula": 46.15
+    },
+    "votes": 27364389
+   },
+   {
+    "name": "SE",
+    "turnout": 84.29,
+    "shares": {
+     "flavio": 30.47,
+     "lula": 69.53
+    },
+    "votes": 1466659
+   },
+   {
+    "name": "TO",
+    "turnout": 80.77,
+    "shares": {
+     "flavio": 51.37,
+     "lula": 48.63
+    },
+    "votes": 954763
+   }
+  ]
+ }
+}

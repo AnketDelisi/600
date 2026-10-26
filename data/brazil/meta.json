@@ -127,6 +127,10 @@
   "prior": 79.33,
   "sigma": 0.5,
   "swing_sigma": 0.5,
-  "source": "Historical TSE turnout; postmortem actual 80.78"
+  "source": "Historical TSE turnout; postmortem actual 80.78",
+  "tilt": {
+   "flavio": -1.508,
+   "lula": 1.508
+  }
  }
 }

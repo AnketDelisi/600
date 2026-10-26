@@ -5,11 +5,16 @@ import statistics
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "data" / "turnout.json"
+TILTS = Path(__file__).resolve().parent.parent / "data" / "turnout_tilts.json"
 CURRENT = "2026-10-25"
 
 
 def load():
     return json.loads(DATA.read_text(encoding="utf8"))
+
+
+def load_tilts():
+    return json.loads(TILTS.read_text(encoding="utf8")) if TILTS.exists() else {}
 
 
 def elections(country):

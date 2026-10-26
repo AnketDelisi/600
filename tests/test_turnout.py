@@ -25,6 +25,10 @@ def main():
     assert 79 < brazil["mean"] < 80
     assert turnout_model.actual("brazil")["turnout"] == 80.78
 
+    tilts = turnout_model.load_tilts()
+    assert "serbia" in tilts and "brazil" in tilts
+    assert tilts["brazil"]["lula"] > 0
+    assert tilts["brazil"]["flavio"] < 0
     print("turnout model ok")
 
 

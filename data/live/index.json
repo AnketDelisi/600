@@ -1,25 +1,10 @@
 {
  "elections": [
   {
-   "id": "serbia-2026",
-   "name": "Serbia",
-   "date": "2026-10-25",
-   "status": "counting",
-   "updated_at": "2026-10-26T21:16:37Z"
-  },
-  {
-   "id": "brazil-2026-r2",
-   "name": "Brazil runoff",
-   "date": "2026-10-25",
-   "status": "final",
-   "updated_at": "2026-10-26T04:30:29Z"
-  },
-  {
-   "id": "bulgaria-2026",
-   "name": "Bulgaria",
-   "date": "2026-10-25",
-   "status": "final",
-   "updated_at": "2026-10-26T16:50:48Z"
+   "id": "israel-2026",
+   "name": "Israel",
+   "date": "2026-10-27",
+   "status": "waiting"
   }
  ]
 }

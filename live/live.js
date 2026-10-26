@@ -19,34 +19,24 @@ const color = (e) => e.color || "#6C665B";
 const DAY = 24 * 60 * 60 * 1000;
 
 const POLL_CONFIG = {
-  "serbia-2026": {
-    file: "../data/serbia/polls.json",
+  "israel-2026": {
+    file: "../data/israel/polls.json",
+    seat_based: true,
     parties: [
-      { id: "sns", name: "Vučić – United Serbia", short: "SNS", color: "#242970", logo: "../img/serbia/SNS.svg" },
-      { id: "sl", name: "Student List", short: "SL", color: "#A81A32", logo: "../img/serbia/SL.svg" },
-      { id: "sps", name: "Socialist Party", short: "SPS", color: "#EB1B23", logo: "../img/serbia/SPS.svg" },
-      { id: "pes", name: "European Serbia", short: "PES", color: "#C9A227", logo: "../img/serbia/PES.svg" },
-      { id: "nada", name: "NADA", short: "NADA", color: "#616264", logo: "../img/serbia/NADA.svg" },
-      { id: "misn", name: "We – Power of the People", short: "MISN", color: "#1B3160", logo: "../img/serbia/MISN.svg" },
-    ],
-  },
-  "brazil-2026-r2": {
-    file: "../data/brazil/polls.json",
-    runoff: true,
-    parties: [
-      { id: "lula", name: "Lula", short: "Lula", color: "#E20E28", logo: "../img/br/Lula.svg" },
-      { id: "flavio", name: "Flávio", short: "Flávio", color: "#015AAA", logo: "../img/br/Bolsonaro.svg" },
-    ],
-  },
-  "bulgaria-2026": {
-    file: "../data/bgpres/polls.json",
-    parties: [
-      { id: "iotova", name: "Iotova", short: "IOT", color: "#DB0F28", logo: "../img/bg/PB.svg" },
-      { id: "gyurov", name: "Gyurov", short: "GYU", color: "#4200FF", logo: "../img/bg/PPDB.svg" },
-      { id: "kostadinov", name: "Kostadinov", short: "KOS", color: "#C09F62", logo: "../img/bg/VAZ.svg" },
-      { id: "mihaylov", name: "Mihaylov", short: "MIH", color: "#AC2225", logo: "../img/bg/VELI.svg" },
-      { id: "vasilev", name: "Vasilev", short: "VAS", color: "#1A2C44", logo: "../img/bg/MECH.svg" },
-      { id: "hristanov", name: "Hristanov", short: "HRI", color: "#C0CC66", logo: "../img/bg/Edinenie.svg" },
+      { id: "likud", name: "Likud", short: "LK", color: "#1F5AA5", logo: "../img/il/Likud.svg" },
+      { id: "together", name: "Together", short: "TG", color: "#2A2A78", logo: "../img/il/Together.svg" },
+      { id: "yashar", name: "Yashar", short: "YASH", color: "#62B9F2", logo: "../img/il/Yashar.svg" },
+      { id: "rzp", name: "Religious Zionist", short: "RZP", color: "#4F9298", logo: "../img/il/RZP.svg" },
+      { id: "otzma", name: "Otzma Yehudit", short: "OTZ", color: "#FF4500", logo: "../img/il/Otzma.svg" },
+      { id: "shas", name: "Shas", short: "SHAS", color: "#000000", logo: "../img/il/Shas.svg" },
+      { id: "utj", name: "United Torah Judaism", short: "UTJ", color: "#003366", logo: "../img/il/UTJ.svg" },
+      { id: "yb", name: "Yisrael Beiteinu", short: "YB", color: "#23C2EB", logo: "../img/il/YisraelBeiteinu.svg" },
+      { id: "blue_white", name: "Blue and White", short: "BW", color: "#0DAAFF", logo: "../img/il/BW.svg" },
+      { id: "reservists", name: "The Reservists", short: "RSV", color: "#68692C", logo: "../img/il/Reservists.svg" },
+      { id: "dems", name: "The Democrats", short: "DEM", color: "#2A38D7", logo: "../img/il/Dems.svg" },
+      { id: "raam", name: "Ra'am", short: "RAAM", color: "#15793D", logo: "../img/il/Raam.svg" },
+      { id: "joint_list", name: "Joint List", short: "JL", color: "#01B2AC", logo: "../img/il/JointList.svg" },
+      { id: "amcha", name: "Amcha Yisrael", short: "AMC", color: "#8F36BF", logo: "../img/il/Amcha.svg" },
     ],
   },
 };
@@ -122,7 +112,7 @@ function pollAverage(polls, party, at) {
   return sw ? sv / sw : null;
 }
 
-function pollChart(data, polls, start, end, parties) {
+function pollChart(data, polls, start, end, parties, seatBased) {
   const appWidth = (liveRoot && liveRoot.clientWidth) || 960;
   const W = Math.max(260, Math.min(960, appWidth - 40));
   const compact = W < 600;
@@ -136,7 +126,7 @@ function pollChart(data, polls, start, end, parties) {
     if (p.votes && p.votes[party.id] != null) values.push(p.votes[party.id]);
   }
   const maxValue = values.length ? Math.max(...values) : 0;
-  const yMax = Math.max(50, Math.ceil((maxValue + 2) / 10) * 10);
+  const yMax = seatBased ? 120 : Math.max(50, Math.ceil((maxValue + 2) / 10) * 10);
   const x = (t) => L + ((t - start) / (end - start)) * (W - L - R);
   const y = (v) => T + (1 - v / yMax) * (H - T - B);
   const ticks = [];
@@ -149,7 +139,7 @@ function pollChart(data, polls, start, end, parties) {
 
   const grid = yTicks.map((v) => `
     <line class="grid" x1="${L}" y1="${y(v)}" x2="${W - R}" y2="${y(v)}"></line>
-    <text class="axis" x="${L - 7}" y="${y(v) + 3}" text-anchor="end">${v}%</text>`).join("");
+    <text class="axis" x="${L - 7}" y="${y(v) + 3}" text-anchor="end">${v}${seatBased ? "" : "%"}</text>`).join("");
   const xAxis = ticks.map((t) => {
     const px = x(t);
     const anchor = px > W - 32 ? "end" : px < L + 20 ? "start" : "middle";
@@ -171,7 +161,7 @@ function pollChart(data, polls, start, end, parties) {
     for (const party of parties) {
       const v = p.votes && p.votes[party.id];
       if (v == null) continue;
-      const label = `${p.pollster} · ${shortDate(p.date)} · ${METHOD_LABELS[p.method] || p.method || "Not stated"} · ${party.name} ${v.toFixed(1)}%`;
+      const label = `${p.pollster} · ${shortDate(p.date)} · ${METHOD_LABELS[p.method] || p.method || "Not stated"} · ${party.name} ${v.toFixed(1)}${seatBased ? " seats" : "%"}`;
       dots.push(`<circle class="poll-dot" cx="${x(dayValue(p.date))}" cy="${y(v)}" r="${compact ? 2.8 : 3.2}" fill="${party.color}"><title>${esc(label)}</title></circle>`);
     }
   }
@@ -230,15 +220,15 @@ function pollTrackerHtml(data, pollsJson, cfg) {
     ...party, value: pollAverage(polls, party.id, end),
   })).filter((party) => party.value != null);
   const summary = latest.map((party) =>
-    `<span><i style="background:${party.color}"></i>${esc(party.name)} <b>${party.value.toFixed(1)}%</b></span>`
+    `<span><i style="background:${party.color}"></i>${esc(party.name)} <b>${party.value.toFixed(1)}${cfg.seat_based ? " seats" : "%"}</b></span>`
   ).join("");
   const houses = new Set(polls.map((p) => p.pollster)).size;
   return `<section class="live-card" id="live-poll-tracker" aria-labelledby="poll-tracker-title">
     <h2 id="poll-tracker-title">Campaign polls</h2>
-    <p class="live-note">Every poll from the campaign, from every pollster, with the method shown when the source gives one. Dots are individual polls; the lines are the 600 recency-weighted average.</p>
+    <p class="live-note">Every poll from the campaign, from every pollster, with the method shown when the source gives one. Dots are individual polls; the lines are the 600 recency-weighted average${cfg.seat_based ? " of projected seats" : ""}.</p>
     <div class="live-summary">${summary}</div>
     <div class="live-sub">${polls.length} polls · ${houses} pollsters · ${esc(shortDate(new Date(start).toISOString().slice(0, 10)))}–${esc(shortDate(data.date))}</div>
-    <div class="live-chart">${pollChart(data, polls, start, end, cfg.parties)}</div>
+    <div class="live-chart">${pollChart(data, polls, start, end, cfg.parties, cfg.seat_based)}</div>
     <div class="live-chart-legend">${cfg.parties.map((party) => `<span><i style="background:${party.color}"></i>${esc(party.name)}</span>`).join("")}<span>Dots: every poll</span></div>
     <h3>All polls</h3>
     ${pollTable(polls, cfg.parties)}

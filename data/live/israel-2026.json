@@ -1,0 +1,23 @@
+{
+ "name": "Israel 2026",
+ "date": "2026-10-27",
+ "close_at": "2026-10-27T19:00:00Z",
+ "chart_start": "2026-09-01",
+ "subtitle": "Knesset · 120 seats · 3.25% threshold",
+ "status": "waiting",
+ "counted": null,
+ "total": null,
+ "counted_label": "votes counted",
+ "source": "Central Elections Committee",
+ "source_url": "https://votes26.bechirot.gov.il/",
+ "waiting_text": "Polls close at 22:00 Israel time on Tuesday, 27 October.",
+ "result_title": "Seats",
+ "result_note": "Official CEC count, with Bader-Ofer seat allocation.",
+ "entries": [],
+ "seat_total": 120,
+ "majority": 61,
+ "areas": [],
+ "notes": "Knesset seats use the Bader-Ofer method and the 3.25% threshold. Results are preliminary until the CEC publishes the official record.",
+ "id": "israel-2026",
+ "updated_at": "2026-10-26T21:52:46Z"
+}

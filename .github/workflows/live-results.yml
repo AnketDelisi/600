@@ -1,6 +1,8 @@
 name: Live results
 
 on:
+  schedule:
+    - cron: '*/5 * 27-29 10 *'
   workflow_dispatch:
 
 permissions:

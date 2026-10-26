@@ -1,7 +1,7 @@
 """Run all live-results adapters; one failure must not stop the others."""
 import importlib
 
-MODULES = ("live_serbia", "live_brazil", "live_bulgaria")
+MODULES = ("live_israel",)
 
 
 def main():

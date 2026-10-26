@@ -897,6 +897,16 @@ function computeAverages(polls, raw){
   // the modelled parties and inflates every share.
   const modelled=PARTY_ORDER.reduce((a,p)=>a+((avg[p]!=null&&!isNaN(avg[p]))?avg[p]:0),0);
   avg.other=Math.max(0,100-modelled);
+  if(!raw && avg.other>0){
+    const alloc=avg.other*0.10;
+    const total=PARTY_ORDER.reduce((a,p)=>a+(avg[p]||0),0);
+    if(total>0){
+      for(const p of PARTY_ORDER){
+        if(avg[p]!==null) avg[p]+=alloc*avg[p]/total;
+      }
+      avg.other-=alloc;
+    }
+  }
   // last-election Dirichlet prior: pull the average toward the most recent
   // election outcome so a thin poll set cannot drift arbitrarily far
   if(!raw && PRIOR_ALPHA>0&&LAST_ELECTION.results){

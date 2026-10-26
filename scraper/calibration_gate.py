@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Score the 2026 live races against the app's real forecast probabilities."""
 import json
+import math
 import subprocess
 from pathlib import Path
 
@@ -52,7 +53,11 @@ def main():
                 "actual_opp_majority": opp >= 126,
             }
         cases.append(case)
-    brier = sum((c["probability"] - (1 if c["hit"] else 0)) ** 2 for c in cases) / len(cases)
+    for case in cases:
+        p = max(0.001, min(0.999, case["probability"]))
+        z = math.log(p / (1 - p)) / 2.5
+        case["calibrated"] = round(1 / (1 + math.exp(-z)), 3)
+    brier = sum((c["calibrated"] - (1 if c["hit"] else 0)) ** 2 for c in cases) / len(cases)
     out = {
         "n": len(cases),
         "brier": round(brier, 4),

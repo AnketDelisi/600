@@ -45,6 +45,21 @@
     "hristanov": 2.415
    },
    "seats": {}
+  },
+  {
+   "at": "2026-10-26T04:34:24Z",
+   "counted": 95.29,
+   "total": 100,
+   "counted_pct": 95.29,
+   "pct": {
+    "iotova": 34.598,
+    "gyurov": 32.038,
+    "kostadinov": 12.624,
+    "vasilev": 4.605,
+    "mihaylov": 3.807,
+    "hristanov": 2.412
+   },
+   "seats": {}
   }
  ]
 }

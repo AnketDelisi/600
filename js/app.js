@@ -1574,7 +1574,7 @@ function renderTrendChart(canvas, polls){
   });
 
   const dates=Object.keys(byDate).sort();
-  const pad={top:20,right:60,bottom:40,left:50};
+  const pad={top:24,right:88,bottom:40,left:50};
   const cw=W-pad.left-pad.right;
   const ch=H-pad.top-pad.bottom;
 
@@ -1686,7 +1686,7 @@ function drawChartBase(hoverIdx){
 
   // Grid
   ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
-  const yTicks=5;
+  const yTicks=4;
   for(let i=0;i<=yTicks;i++){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
@@ -1722,16 +1722,32 @@ function drawChartBase(hoverIdx){
     ctx.stroke();
   });
 
-  // End labels
+  // End labels: nudge labels apart so parties polling close together stay readable.
+  const endLabels=[];
   series.forEach(ser=>{
     const lastIdx=ser.points.length-1;
     let lastVal=null;
     for(let i=lastIdx;i>=0;i--){if(ser.points[i]!==null){lastVal=ser.points[i];break}}
     if(lastVal===null) return;
+    endLabels.push({ser,lastVal,y:pad.top+ch*(1-(lastVal-yMin)/(yMax-yMin))});
+  });
+  endLabels.sort((a,b)=>a.y-b.y);
+  const labelGap=12;
+  for(let i=1;i<endLabels.length;i++){
+    if(endLabels[i].y-endLabels[i-1].y<labelGap) endLabels[i].y=endLabels[i-1].y+labelGap;
+  }
+  const labelBottom=H-pad.bottom-2;
+  if(endLabels.length&&endLabels[endLabels.length-1].y>labelBottom){
+    const shift=endLabels[endLabels.length-1].y-labelBottom;
+    endLabels.forEach(l=>l.y-=shift);
+  }
+  for(let i=endLabels.length-2;i>=0;i--){
+    if(endLabels[i+1].y-endLabels[i].y<labelGap) endLabels[i].y=endLabels[i+1].y-labelGap;
+  }
+  endLabels.forEach(({ser,lastVal,y})=>{
     const x=W-pad.right+4;
-    const y=pad.top+ch*(1-(lastVal-yMin)/(yMax-yMin));
     ctx.fillStyle=ser.color;ctx.font='bold 10px Source Code Pro,monospace';ctx.textAlign='left';
-    ctx.fillText(partyCode(ser.pid),x,y+3);
+    ctx.fillText(partyCode(ser.pid)+' '+(SEAT_BASED?String(Math.round(lastVal)):pct(lastVal)),x,y+3);
   });
 
   // Trend projection markers: dashed from the last point to the value the

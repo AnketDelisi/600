@@ -40,6 +40,14 @@ const POLL_CONFIG = {
     ],
   },
 };
+const LIVE_BLOCS = {
+  "israel-2026": [
+    { id: "netanyahu", name: "Netanyahu", parties: ["likud", "rzp", "otzma", "shas", "utj", "amcha"], color: "#00A0DF" },
+    { id: "opposition", name: "Opposition", parties: ["together", "yb", "dems", "yashar", "blue_white"], color: "#E30613" },
+    { id: "arab", name: "Arab parties", parties: ["raam", "joint_list"], color: "#2E7D32" },
+    { id: "unaligned", name: "Unaligned", parties: ["reservists"], color: "#68692C" },
+  ],
+};
 const METHOD_LABELS = {
   online: "Online panel", phone: "Telephone", face: "Face-to-face",
   mixed: "Mixed", "": "Not stated",
@@ -483,17 +491,61 @@ function renderError(title, message, retryFn) {
   if (retry) retry.addEventListener("click", retryFn);
 }
 
+function buildKnessetSVG(entries, total) {
+  const seats = [];
+  for (const entry of entries) {
+    for (let i = 0; i < (Number(entry.seats) || 0); i++) seats.push(entry);
+  }
+  if (!seats.length) return "";
+  const rows = [20, 24, 25, 25, 26];
+  const W = 420, H = 238, cx = 210, cy = 218;
+  let index = 0;
+  const dots = [];
+  rows.forEach((count, row) => {
+    const radius = 58 + row * 28;
+    for (let i = 0; i < count; i++) {
+      const frac = count === 1 ? 0.5 : i / (count - 1);
+      const angle = Math.PI - frac * Math.PI;
+      const x = cx + Math.cos(angle) * radius;
+      const y = cy - Math.sin(angle) * radius;
+      const seat = seats[index++] || seats[seats.length - 1];
+      dots.push(`<circle class="seat" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.2" fill="${color(seat)}"><title>${esc(seat.name)}</title></circle>`);
+    }
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Knesset seat diagram, ${seats.length} seats">
+    ${dots.join("")}
+    <text x="${cx}" y="24" text-anchor="middle" class="knesset-label">${seats.length} seats</text>
+    <line x1="${cx}" y1="34" x2="${cx}" y2="212" class="knesset-majority"></line>
+  </svg>`;
+}
+
+function blocSummary(d) {
+  const groups = LIVE_BLOCS[d.id];
+  if (!groups || !Array.isArray(d.entries) || !d.entries.length) return "";
+  const rows = groups.map((group) => {
+    const seats = d.entries
+      .filter((entry) => group.parties.includes(String(entry.id)))
+      .reduce((sum, entry) => sum + (Number(entry.seats) || 0), 0);
+    return { ...group, seats };
+  });
+  if (!rows.some((row) => row.seats > 0)) return "";
+  return `<div class="live-blocs" aria-label="Seat totals by bloc">${rows.map((row) =>
+    `<span class="live-bloc"><i style="background:${row.color}"></i><b>${num(row.seats)}</b><span>${esc(row.name)}</span></span>`
+  ).join("")}</div>`;
+}
+
 function renderElection(d) {
   const entries = d.entries || [];
   const waiting = d.status === "waiting" && !entries.some((e) => Number(e.pct) > 0);
   const maxPct = Math.max(1, ...entries.map((e) => Number(e.pct) || 0));
-  const bars = entries.map((e) => {
+  const bars = `<div class="live-bar live-bar-head"><span>Party</span><span></span><span>Vote</span><span>Seats</span></div>` + entries.map((e) => {
     const p = Number(e.pct) || 0;
     const w = Math.max(0.5, (p / maxPct) * 100);
     return `<div class="live-bar">
       <span class="name">${esc(e.name || e.id)}</span>
       <span class="track"><span class="fill" style="width:${w}%;background:${color(e)}"></span></span>
       <span class="pct">${pct(p)}</span>
+      <span class="seats">${num(e.seats)}</span>
     </div>`;
   }).join("");
 
@@ -504,10 +556,12 @@ function renderElection(d) {
       `<i style="width:${(Number(e.seats) / total) * 100}%;background:${color(e)}" title="${esc(e.name)}: ${num(e.seats)}"></i>`
     ).join("");
     seats = `<div class="live-seats">${seg}</div>
-      <div class="live-seat-legend">${entries.filter((e) => Number(e.seats) > 0)
-        .map((e) => `<span><b>${num(e.seats)}</b> ${esc(e.name)}</span>`).join("")}
-        ${d.majority ? `<span>Majority: <b>${num(d.majority)}</b></span>` : ""}</div>`;
+      <div class="live-seat-legend">${d.majority ? `<span>Majority: <b>${num(d.majority)}</b></span>` : ""}</div>`;
   }
+
+  const knesset = d.id === "israel-2026" && d.seat_total && entries.some((e) => Number(e.seats) > 0)
+    ? `<div class="live-knesset">${buildKnessetSVG(entries, Number(d.seat_total))}</div>`
+    : "";
 
   const showAreaCount = Array.isArray(d.areas) && d.areas.some((a) => a.counted != null);
   const areas = Array.isArray(d.areas) && d.areas.length ? `
@@ -552,6 +606,8 @@ function renderElection(d) {
         <p class="live-note">${esc(d.result_note || "Vote share as reported by the source.")}</p>
         <div class="live-bars">${bars}</div>
         ${seats}
+        ${knesset}
+        ${blocSummary(d)}
         <div class="live-source">${d.source_url ? `Source: <a href="${esc(d.source_url)}" target="_blank" rel="noopener">${esc(d.source || d.source_url)}</a>` : `Source: ${esc(d.source || "—")}`}</div>
       </div>`;
 

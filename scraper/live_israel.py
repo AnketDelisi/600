@@ -9,6 +9,25 @@ from live_common import write_live
 ELECTION = "israel-2026"
 URL = "https://knesset-count.lol/api/results?k=26"
 SOURCE_URL = "https://knesset-count.lol/"
+MAP_FIELDS = {
+    "map_svg": "../img/israel.svg",
+    "map_title": "Districts",
+    "map_note": "District-level results are not published by this source yet; the national count is above.",
+    "map_layers": [{
+        "id": "districts",
+        "label": "Districts",
+        "svg": "../img/israel.svg",
+        "areas": [
+            {"name": "Northern District", "map_ids": ["north"]},
+            {"name": "Haifa", "map_ids": ["haifa"]},
+            {"name": "Central District", "map_ids": ["central"]},
+            {"name": "Tel Aviv", "map_ids": ["tel_aviv"]},
+            {"name": "Jerusalem", "map_ids": ["jerusalem"]},
+            {"name": "Southern District", "map_ids": ["south"]},
+        ],
+    }],
+}
+
 LETTERS = {
     "מחל": ("likud", "Likud", "#1F5AA5"),
     "רק": ("together", "Together", "#2A2A78"),
@@ -55,6 +74,7 @@ def waiting():
         "majority": 61,
         "areas": [],
         "notes": "Knesset seats use the Bader-Ofer method and the 3.25% threshold. Results are preliminary until the CEC publishes the official record.",
+        **MAP_FIELDS,
     })
 
 
@@ -114,6 +134,7 @@ def main():
         "majority": 61,
         "areas": [],
         "notes": "Knesset seats use the Bader-Ofer method and the 3.25% threshold. Results are preliminary until the CEC publishes the official record.",
+        **MAP_FIELDS,
     })
 
 

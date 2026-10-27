@@ -132,5 +132,53 @@
  "areas": [],
  "notes": "Knesset seats use the Bader-Ofer method and the 3.25% threshold. Results are preliminary until the CEC publishes the official record.",
  "id": "israel-2026",
- "updated_at": "2026-10-27T22:25:01Z"
+ "updated_at": "2026-10-27T22:25:01Z",
+ "map_svg": "../img/israel.svg",
+ "map_title": "Districts",
+ "map_note": "District-level results are not published by this source yet; the national count is above.",
+ "map_layers": [
+  {
+   "id": "districts",
+   "label": "Districts",
+   "svg": "../img/israel.svg",
+   "areas": [
+    {
+     "name": "Northern District",
+     "map_ids": [
+      "north"
+     ]
+    },
+    {
+     "name": "Haifa",
+     "map_ids": [
+      "haifa"
+     ]
+    },
+    {
+     "name": "Central District",
+     "map_ids": [
+      "central"
+     ]
+    },
+    {
+     "name": "Tel Aviv",
+     "map_ids": [
+      "tel_aviv"
+     ]
+    },
+    {
+     "name": "Jerusalem",
+     "map_ids": [
+      "jerusalem"
+     ]
+    },
+    {
+     "name": "Southern District",
+     "map_ids": [
+      "south"
+     ]
+    }
+   ]
+  }
+ ]
 }

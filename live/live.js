@@ -40,6 +40,9 @@ const POLL_CONFIG = {
     ],
   },
 };
+const ISRAEL_LAYOUT = {"w":270,"h":240,"cx":135,"cy":136,"seats":[[135,40,6.7],[135,56,6.7],[135,24,6.7],[135,8,6.7],[151,42,6.7],[151,58,6.7],[151,26,6.7],[151,10,6.7],[167,44,6.7],[167,60,6.7],[167,28,6.7],[167,12,6.7],[183,46,6.7],[183,62,6.7],[183,30,6.7],[183,14,6.7],[199,48,6.7],[199,32,6.7],[199,16,6.7],[215,34,6.7],[215,18,6.7],[231,20,6.7],[119,42,6.7],[119,58,6.7],[119,26,6.7],[119,10,6.7],[103,44,6.7],[103,60,6.7],[103,28,6.7],[103,12,6.7],[87,46,6.7],[87,62,6.7],[87,30,6.7],[87,14,6.7],[71,48,6.7],[71,32,6.7],[71,16,6.7],[55,34,6.7],[55,18,6.7],[39,20,6.7],[230,136,6.7],[214,136,6.7],[246,136,6.7],[262,136,6.7],[228,152,6.7],[212,152,6.7],[244,152,6.7],[260,152,6.7],[226,168,6.7],[210,168,6.7],[242,168,6.7],[258,168,6.7],[224,184,6.7],[208,184,6.7],[240,184,6.7],[256,184,6.7],[222,200,6.7],[238,200,6.7],[254,200,6.7],[236,216,6.7],[252,216,6.7],[250,232,6.7],[228,120,6.7],[212,120,6.7],[244,120,6.7],[260,120,6.7],[226,104,6.7],[210,104,6.7],[242,104,6.7],[258,104,6.7],[224,88,6.7],[208,88,6.7],[240,88,6.7],[256,88,6.7],[222,72,6.7],[238,72,6.7],[254,72,6.7],[236,56,6.7],[252,56,6.7],[250,40,6.7],[40,136,6.7],[56,136,6.7],[24,136,6.7],[8,136,6.7],[42,152,6.7],[58,152,6.7],[26,152,6.7],[10,152,6.7],[44,168,6.7],[60,168,6.7],[28,168,6.7],[12,168,6.7],[46,184,6.7],[62,184,6.7],[30,184,6.7],[14,184,6.7],[48,200,6.7],[32,200,6.7],[16,200,6.7],[34,216,6.7],[18,216,6.7],[20,232,6.7],[42,120,6.7],[58,120,6.7],[26,120,6.7],[10,120,6.7],[44,104,6.7],[60,104,6.7],[28,104,6.7],[12,104,6.7],[46,88,6.7],[62,88,6.7],[30,88,6.7],[14,88,6.7],[48,72,6.7],[32,72,6.7],[16,72,6.7],[34,56,6.7],[18,56,6.7],[20,40,6.7]]};
+const ISRAEL_ORDER = ['joint_list','raam','dems','together','yashar','blue_white','yb','reservists','amcha','utj','likud','otzma','shas','rzp'];
+
 const LIVE_BLOCS = {
   "israel-2026": [
     { id: "netanyahu", name: "Netanyahu", parties: ["likud", "rzp", "otzma", "shas", "utj", "amcha"], color: "#00A0DF" },
@@ -492,31 +495,52 @@ function renderError(title, message, retryFn) {
 }
 
 function buildKnessetSVG(entries, total) {
-  const seats = [];
-  for (const entry of entries) {
-    for (let i = 0; i < (Number(entry.seats) || 0); i++) seats.push(entry);
+  const byId = new Map(entries.map((entry) => [String(entry.id), entry]));
+  const assigned = [];
+  for (const id of ISRAEL_ORDER) {
+    const entry = byId.get(id);
+    if (!entry) continue;
+    for (let i = 0; i < (Number(entry.seats) || 0); i++) assigned.push(entry);
   }
-  if (!seats.length) return "";
-  const rows = [20, 24, 25, 25, 26];
-  const W = 420, H = 238, cx = 210, cy = 218;
-  let index = 0;
-  const dots = [];
-  rows.forEach((count, row) => {
-    const radius = 58 + row * 28;
-    for (let i = 0; i < count; i++) {
-      const frac = count === 1 ? 0.5 : i / (count - 1);
-      const angle = Math.PI - frac * Math.PI;
-      const x = cx + Math.cos(angle) * radius;
-      const y = cy - Math.sin(angle) * radius;
-      const seat = seats[index++] || seats[seats.length - 1];
-      dots.push(`<circle class="seat" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.2" fill="${color(seat)}"><title>${esc(seat.name)}</title></circle>`);
-    }
-  });
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Knesset seat diagram, ${seats.length} seats">
-    ${dots.join("")}
-    <text x="${cx}" y="24" text-anchor="middle" class="knesset-label">${seats.length} seats</text>
-    <line x1="${cx}" y1="34" x2="${cx}" y2="212" class="knesset-majority"></line>
-  </svg>`;
+  for (const entry of entries) {
+    if (ISRAEL_ORDER.includes(String(entry.id))) continue;
+    for (let i = 0; i < (Number(entry.seats) || 0); i++) assigned.push(entry);
+  }
+  if (!assigned.length) return "";
+  const layout = ISRAEL_LAYOUT;
+  const pts = layout.seats.map((seat) => ({
+    angle: Math.atan2(layout.cx - seat[0], layout.cy - seat[1]),
+    r: Math.hypot(seat[0] - layout.cx, seat[1] - layout.cy),
+    x: seat[0], y: seat[1], rr: seat[2],
+  })).sort((a, b) => (a.angle - b.angle) || (b.r - a.r)).reverse();
+
+  let minY = Infinity, maxY = -Infinity;
+  pts.forEach((point) => { minY = Math.min(minY, point.y); maxY = Math.max(maxY, point.y); });
+  const topSeat = pts.find((point) => point.y === minY) || pts[0];
+  const botSeat = pts.find((point) => point.y === maxY) || pts[0];
+  const topR = topSeat ? topSeat.rr : 4;
+  const botR = botSeat ? botSeat.rr : 4;
+  const majority = Math.floor(total / 2) + 1;
+  const padTop = Math.max(8, Math.round(26 - minY));
+  const labelY = minY - topR - 3;
+  const lineTop = labelY + 4;
+  const lineBot = minY + (maxY - minY) * 0.55;
+  const totalFs = layout.h <= 200 ? 20 : 26;
+  const capH = Math.ceil(totalFs * 0.72);
+  const descH = Math.ceil(totalFs * 0.2) + 2;
+  const padBottom = padTop + capH + descH + 4;
+  const totalY = layout.h + capH + 2;
+
+  let svg = `<svg viewBox="0 ${-padTop} ${layout.w} ${layout.h + padBottom}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Knesset seat diagram, ${total} seats">`;
+  svg += `<text x="${layout.cx}" y="${labelY.toFixed(1)}" text-anchor="middle" font-size="10" font-weight="800" letter-spacing="1" fill="#111827" font-family="Source Code Pro,monospace">MAJORITY ${majority}</text>`;
+  svg += `<line x1="${layout.cx}" y1="${lineTop.toFixed(1)}" x2="${layout.cx}" y2="${lineBot.toFixed(1)}" stroke="#111827" stroke-width="1" stroke-dasharray="3,3" opacity="0.25"/>`;
+  for (let i = 0; i < assigned.length && i < pts.length; i++) {
+    const party = assigned[i];
+    svg += `<circle cx="${pts[i].x.toFixed(2)}" cy="${pts[i].y.toFixed(2)}" r="${pts[i].rr.toFixed(2)}" fill="${color(party)}"/>`;
+  }
+  svg += `<text x="${layout.cx}" y="${totalY.toFixed(1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Source Code Pro,monospace">${total}</text>`;
+  svg += `</svg>`;
+  return svg;
 }
 
 function blocSummary(d) {

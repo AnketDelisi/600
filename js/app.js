@@ -1415,7 +1415,7 @@ function renderHeroGeneric(avg, filteredPolls){
     <div class="hero-title">${COUNTRY_NAME} — ${T.pollAverage}</div>
     <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','en yeni')}: ${latestStr} (${days}${t('d','g')} ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
-      ${logoSrc?`<span class="hero-mark" role="img" aria-label="${topParty}" style="--mark-color:${color};--mark:url('${assetUrl(b+logoSrc+'?v='+LOGO_CACHE)}')"></span>`:`<span class="hero-mark hero-mark-text" style="color:${color}">${topParty}</span>`}
+      ${logoSrc?`<span class="hero-mark" role="img" aria-label="${topParty}" title="${topParty}" style="--mark-color:${color};--mark:url('${assetUrl(b+logoSrc+'?v='+LOGO_CACHE)}')"></span>`:`<span class="hero-mark hero-mark-text" style="color:${color}">${topParty}</span>`}
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
         <span style="font-size:13px;font-weight:700;color:var(--c-text-muted);margin-left:4px">${t('leading','önde')}</span>
@@ -1448,7 +1448,7 @@ function renderPartyBars(avg){
     const mpSeats=SEAT_BASED?Math.ceil(val):(seats[pid]||0);
 
     html+=`<div class="party-row">
-      ${PARTY_LOGOS[pid]?`<span class="party-mark" role="img" aria-label="${pid}" style="--mark-color:${color};--mark:url('${assetUrl(dataBase()+PARTY_LOGOS[pid]+'?v='+LOGO_CACHE)}')"></span>`:`<span class="party-mark party-mark-text" style="color:${color}">${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
+      ${PARTY_LOGOS[pid]?`<span class="party-mark" role="img" aria-label="${pid}" title="${pid}" style="--mark-color:${color};--mark:url('${assetUrl(dataBase()+PARTY_LOGOS[pid]+'?v='+LOGO_CACHE)}')"></span>`:`<span class="party-mark party-mark-text" style="color:${color}">${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${valDisp(val)}</div>

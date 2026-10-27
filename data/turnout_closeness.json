@@ -1,0 +1,3466 @@
+{
+ "n": 346,
+ "countries": 37,
+ "rows": [
+  {
+   "election_id": "752",
+   "country": "AUS",
+   "date": "1990-03-24",
+   "year": 1990,
+   "turnout": 95.31,
+   "margin": 4.600000000000001,
+   "closeness": 95.4,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "753",
+   "country": "AUS",
+   "date": "1993-03-13",
+   "year": 1993,
+   "turnout": 95.75,
+   "margin": 8.100000000000001,
+   "closeness": 91.9,
+   "incumbent_swing": 5.5
+  },
+  {
+   "election_id": "754",
+   "country": "AUS",
+   "date": "1996-03-02",
+   "year": 1996,
+   "turnout": 95.77,
+   "margin": -0.09999999999999432,
+   "closeness": 100.1,
+   "incumbent_swing": -6.100000000000001
+  },
+  {
+   "election_id": "756",
+   "country": "AUS",
+   "date": "1998-10-03",
+   "year": 1998,
+   "turnout": 94.99,
+   "margin": 6.200000000000003,
+   "closeness": 93.8,
+   "incumbent_swing": -4.800000000000004
+  },
+  {
+   "election_id": "760",
+   "country": "AUS",
+   "date": "2001-11-10",
+   "year": 2001,
+   "turnout": 94.85,
+   "margin": -0.6999999999999957,
+   "closeness": 100.69999999999999,
+   "incumbent_swing": -2.3000000000000043
+  },
+  {
+   "election_id": "762",
+   "country": "AUS",
+   "date": "2004-10-09",
+   "year": 2004,
+   "turnout": 94.32,
+   "margin": 2.8999999999999986,
+   "closeness": 97.1,
+   "incumbent_swing": 3.3999999999999986
+  },
+  {
+   "election_id": "761",
+   "country": "AUS",
+   "date": "2007-11-24",
+   "year": 2007,
+   "turnout": 94.76,
+   "margin": 7.100000000000001,
+   "closeness": 92.9,
+   "incumbent_swing": -4.200000000000003
+  },
+  {
+   "election_id": "246",
+   "country": "AUS",
+   "date": "2010-08-21",
+   "year": 2010,
+   "turnout": 93.21,
+   "margin": 7.530000000000001,
+   "closeness": 92.47,
+   "incumbent_swing": -5.409999999999997
+  },
+  {
+   "election_id": "804",
+   "country": "AUS",
+   "date": "2013-09-07",
+   "year": 2013,
+   "turnout": 93.23,
+   "margin": -1.3599999999999994,
+   "closeness": 101.36,
+   "incumbent_swing": -4.609999999999999
+  },
+  {
+   "election_id": "1006",
+   "country": "AUS",
+   "date": "2016-07-02",
+   "year": 2016,
+   "turnout": 90.98,
+   "margin": 6.059999999999995,
+   "closeness": 93.94,
+   "incumbent_swing": -3.3500000000000014
+  },
+  {
+   "election_id": "1087",
+   "country": "AUS",
+   "date": "2019-05-18",
+   "year": 2019,
+   "turnout": 91.87,
+   "margin": 5.350000000000005,
+   "closeness": 94.64999999999999,
+   "incumbent_swing": -1.3899999999999935
+  },
+  {
+   "election_id": "1111",
+   "country": "AUS",
+   "date": "2022-05-21",
+   "year": 2022,
+   "turnout": 89.74,
+   "margin": 8.689999999999998,
+   "closeness": 91.31,
+   "incumbent_swing": -0.7600000000000051
+  },
+  {
+   "election_id": "325",
+   "country": "AUT",
+   "date": "1990-10-07",
+   "year": 1990,
+   "turnout": 86.14,
+   "margin": 10.699999999999996,
+   "closeness": 89.30000000000001,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "66",
+   "country": "AUT",
+   "date": "1994-10-09",
+   "year": 1994,
+   "turnout": 81.94,
+   "margin": 7.199999999999999,
+   "closeness": 92.8,
+   "incumbent_swing": -7.899999999999999
+  },
+  {
+   "election_id": "162",
+   "country": "AUT",
+   "date": "1995-12-17",
+   "year": 1995,
+   "turnout": 85.98,
+   "margin": 9.8,
+   "closeness": 90.2,
+   "incumbent_swing": 3.200000000000003
+  },
+  {
+   "election_id": "492",
+   "country": "AUT",
+   "date": "1999-10-03",
+   "year": 1999,
+   "turnout": 80.42,
+   "margin": 6.300000000000004,
+   "closeness": 93.69999999999999,
+   "incumbent_swing": -4.899999999999999
+  },
+  {
+   "election_id": "365",
+   "country": "AUT",
+   "date": "2002-11-24",
+   "year": 2002,
+   "turnout": 84.27,
+   "margin": 5.789999999999999,
+   "closeness": 94.21000000000001,
+   "incumbent_swing": 3.309999999999995
+  },
+  {
+   "election_id": "197",
+   "country": "AUT",
+   "date": "2006-10-01",
+   "year": 2006,
+   "turnout": 78.49,
+   "margin": 1.0,
+   "closeness": 99.0,
+   "incumbent_swing": -8.0
+  },
+  {
+   "election_id": "607",
+   "country": "AUT",
+   "date": "2008-09-28",
+   "year": 2008,
+   "turnout": 78.81,
+   "margin": 3.280000000000001,
+   "closeness": 96.72,
+   "incumbent_swing": -6.039999999999996
+  },
+  {
+   "election_id": "802",
+   "country": "AUT",
+   "date": "2013-09-29",
+   "year": 2013,
+   "turnout": 74.91,
+   "margin": 2.8000000000000007,
+   "closeness": 97.2,
+   "incumbent_swing": -2.460000000000001
+  },
+  {
+   "election_id": "1019",
+   "country": "AUT",
+   "date": "2017-10-15",
+   "year": 2017,
+   "turnout": 80.0,
+   "margin": 4.600000000000001,
+   "closeness": 95.4,
+   "incumbent_swing": 0.09999999999999787
+  },
+  {
+   "election_id": "1080",
+   "country": "AUT",
+   "date": "2019-09-29",
+   "year": 2019,
+   "turnout": 75.59,
+   "margin": 16.3,
+   "closeness": 83.7,
+   "incumbent_swing": 6.0
+  },
+  {
+   "election_id": "418",
+   "country": "BEL",
+   "date": "1991-11-24",
+   "year": 1991,
+   "turnout": 92.71,
+   "margin": 3.3000000000000007,
+   "closeness": 96.7,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "332",
+   "country": "BEL",
+   "date": "1995-05-21",
+   "year": 1995,
+   "turnout": 91.15,
+   "margin": 4.049999999999999,
+   "closeness": 95.95,
+   "incumbent_swing": 0.3999999999999986
+  },
+  {
+   "election_id": "2",
+   "country": "BEL",
+   "date": "1999-06-13",
+   "year": 1999,
+   "turnout": 90.56,
+   "margin": 0.21000000000000085,
+   "closeness": 99.78999999999999,
+   "incumbent_swing": -3.1099999999999994
+  },
+  {
+   "election_id": "143",
+   "country": "BEL",
+   "date": "2003-05-18",
+   "year": 2003,
+   "turnout": 91.63,
+   "margin": 2.34,
+   "closeness": 97.66,
+   "incumbent_swing": 1.0599999999999987
+  },
+  {
+   "election_id": "401",
+   "country": "BEL",
+   "date": "2007-06-10",
+   "year": 2007,
+   "turnout": 91.08,
+   "margin": 6.0,
+   "closeness": 94.0,
+   "incumbent_swing": -3.5299999999999994
+  },
+  {
+   "election_id": "486",
+   "country": "BEL",
+   "date": "2010-06-13",
+   "year": 2010,
+   "turnout": 89.22,
+   "margin": 3.6999999999999993,
+   "closeness": 96.3,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "816",
+   "country": "BEL",
+   "date": "2014-05-25",
+   "year": 2014,
+   "turnout": 89.37,
+   "margin": 8.590000000000002,
+   "closeness": 91.41,
+   "incumbent_swing": 2.860000000000003
+  },
+  {
+   "election_id": "1048",
+   "country": "BEL",
+   "date": "2019-05-26",
+   "year": 2019,
+   "turnout": 88.38,
+   "margin": 6.57,
+   "closeness": 93.43,
+   "incumbent_swing": -4.23
+  },
+  {
+   "election_id": "32",
+   "country": "BGR",
+   "date": "1991-10-13",
+   "year": 1991,
+   "turnout": 83.87,
+   "margin": 1.2199999999999989,
+   "closeness": 98.78,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "355",
+   "country": "BGR",
+   "date": "1994-12-18",
+   "year": 1994,
+   "turnout": 75.23,
+   "margin": 19.27,
+   "closeness": 80.73,
+   "incumbent_swing": -10.129999999999999
+  },
+  {
+   "election_id": "126",
+   "country": "BGR",
+   "date": "1997-04-19",
+   "year": 1997,
+   "turnout": 58.87,
+   "margin": 26.709999999999997,
+   "closeness": 73.29,
+   "incumbent_swing": -21.06
+  },
+  {
+   "election_id": "681",
+   "country": "BGR",
+   "date": "2001-06-18",
+   "year": 2001,
+   "turnout": 66.77,
+   "margin": 24.560000000000002,
+   "closeness": 75.44,
+   "incumbent_swing": -30.97
+  },
+  {
+   "election_id": "618",
+   "country": "BGR",
+   "date": "2005-06-25",
+   "year": 2005,
+   "turnout": 55.76,
+   "margin": 11.07,
+   "closeness": 88.93,
+   "incumbent_swing": -22.860000000000003
+  },
+  {
+   "election_id": "79",
+   "country": "BGR",
+   "date": "2009-07-05",
+   "year": 2009,
+   "turnout": 60.95,
+   "margin": 22.02,
+   "closeness": 77.98,
+   "incumbent_swing": -13.25
+  },
+  {
+   "election_id": "799",
+   "country": "BGR",
+   "date": "2013-05-12",
+   "year": 2013,
+   "turnout": 52.49,
+   "margin": 3.9259999999999984,
+   "closeness": 96.074,
+   "incumbent_swing": -9.184999999999999
+  },
+  {
+   "election_id": "840",
+   "country": "BGR",
+   "date": "2014-10-05",
+   "year": 2014,
+   "turnout": 51.05,
+   "margin": 17.270000000000003,
+   "closeness": 82.72999999999999,
+   "incumbent_swing": 2.1350000000000016
+  },
+  {
+   "election_id": "1011",
+   "country": "BGR",
+   "date": "2017-03-26",
+   "year": 2017,
+   "turnout": 52.57,
+   "margin": 5.609999999999999,
+   "closeness": 94.39,
+   "incumbent_swing": 0.8699999999999974
+  },
+  {
+   "election_id": "1101",
+   "country": "BGR",
+   "date": "2021-04-04",
+   "year": 2021,
+   "turnout": 49.11,
+   "margin": 8.52,
+   "closeness": 91.48,
+   "incumbent_swing": -7.359999999999999
+  },
+  {
+   "election_id": "1102",
+   "country": "BGR",
+   "date": "2021-07-11",
+   "year": 2021,
+   "turnout": 41.62,
+   "margin": 0.5699999999999967,
+   "closeness": 99.43,
+   "incumbent_swing": -2.669999999999998
+  },
+  {
+   "election_id": "1106",
+   "country": "BGR",
+   "date": "2021-11-14",
+   "year": 2021,
+   "turnout": 40.07,
+   "margin": 2.9300000000000033,
+   "closeness": 97.07,
+   "incumbent_swing": -14.559999999999999
+  },
+  {
+   "election_id": "1114",
+   "country": "BGR",
+   "date": "2022-10-02",
+   "year": 2022,
+   "turnout": 39.41,
+   "margin": 5.129999999999999,
+   "closeness": 94.87,
+   "incumbent_swing": -5.470000000000002
+  },
+  {
+   "election_id": "1120",
+   "country": "BGR",
+   "date": "2023-04-02",
+   "year": 2023,
+   "turnout": 40.69,
+   "margin": 1.8500000000000014,
+   "closeness": 98.15,
+   "incumbent_swing": 0.060000000000002274
+  },
+  {
+   "election_id": "546",
+   "country": "CAN",
+   "date": "1993-10-25",
+   "year": 1993,
+   "turnout": 69.64,
+   "margin": 27.810000000000002,
+   "closeness": 72.19,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "650",
+   "country": "CAN",
+   "date": "1997-06-02",
+   "year": 1997,
+   "turnout": 67.0,
+   "margin": 19.11,
+   "closeness": 80.89,
+   "incumbent_swing": -2.8599999999999994
+  },
+  {
+   "election_id": "455",
+   "country": "CAN",
+   "date": "2000-11-27",
+   "year": 2000,
+   "turnout": 61.18,
+   "margin": 15.360000000000003,
+   "closeness": 84.64,
+   "incumbent_swing": 2.3900000000000006
+  },
+  {
+   "election_id": "240",
+   "country": "CAN",
+   "date": "2004-06-28",
+   "year": 2004,
+   "turnout": 60.91,
+   "margin": 7.099999999999998,
+   "closeness": 92.9,
+   "incumbent_swing": -4.1200000000000045
+  },
+  {
+   "election_id": "137",
+   "country": "CAN",
+   "date": "2006-01-23",
+   "year": 2006,
+   "turnout": 64.67,
+   "margin": 6.040000000000003,
+   "closeness": 93.96,
+   "incumbent_swing": -6.4999999999999964
+  },
+  {
+   "election_id": "601",
+   "country": "CAN",
+   "date": "2008-10-14",
+   "year": 2008,
+   "turnout": 58.83,
+   "margin": 11.400000000000002,
+   "closeness": 88.6,
+   "incumbent_swing": 1.4299999999999997
+  },
+  {
+   "election_id": "703",
+   "country": "CAN",
+   "date": "2011-05-02",
+   "year": 2011,
+   "turnout": 61.11,
+   "margin": 9.0,
+   "closeness": 91.0,
+   "incumbent_swing": 1.8999999999999986
+  },
+  {
+   "election_id": "994",
+   "country": "CAN",
+   "date": "2015-10-19",
+   "year": 2015,
+   "turnout": 68.49,
+   "margin": 7.579999999999998,
+   "closeness": 92.42,
+   "incumbent_swing": -7.710000000000001
+  },
+  {
+   "election_id": "1084",
+   "country": "CAN",
+   "date": "2019-10-21",
+   "year": 2019,
+   "turnout": 71.32,
+   "margin": -1.220000000000006,
+   "closeness": 101.22,
+   "incumbent_swing": -6.350000000000001
+  },
+  {
+   "election_id": "1103",
+   "country": "CAN",
+   "date": "2021-09-20",
+   "year": 2021,
+   "turnout": 62.25,
+   "margin": -1.1299999999999955,
+   "closeness": 101.13,
+   "incumbent_swing": -0.4199999999999946
+  },
+  {
+   "election_id": "521",
+   "country": "CHE",
+   "date": "1991-10-20",
+   "year": 1991,
+   "turnout": 46.05,
+   "margin": 2.5,
+   "closeness": 97.5,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "105",
+   "country": "CHE",
+   "date": "1995-10-22",
+   "year": 1995,
+   "turnout": 42.22,
+   "margin": 1.6000000000000014,
+   "closeness": 98.4,
+   "incumbent_swing": -0.8000000000000007
+  },
+  {
+   "election_id": "427",
+   "country": "CHE",
+   "date": "1999-10-24",
+   "year": 1999,
+   "turnout": 43.3,
+   "margin": 0.0,
+   "closeness": 100.0,
+   "incumbent_swing": 0.6999999999999993
+  },
+  {
+   "election_id": "206",
+   "country": "CHE",
+   "date": "2003-10-19",
+   "year": 2003,
+   "turnout": 45.23,
+   "margin": 3.3999999999999986,
+   "closeness": 96.6,
+   "incumbent_swing": 0.8000000000000007
+  },
+  {
+   "election_id": "310",
+   "country": "CHE",
+   "date": "2007-10-21",
+   "year": 2007,
+   "turnout": 48.28,
+   "margin": 9.399999999999999,
+   "closeness": 90.6,
+   "incumbent_swing": 2.1999999999999993
+  },
+  {
+   "election_id": "779",
+   "country": "CHE",
+   "date": "2011-10-23",
+   "year": 2011,
+   "turnout": 48.5,
+   "margin": 7.84,
+   "closeness": 92.16,
+   "incumbent_swing": -2.34
+  },
+  {
+   "election_id": "995",
+   "country": "CHE",
+   "date": "2015-10-18",
+   "year": 2015,
+   "turnout": 48.51,
+   "margin": 10.55,
+   "closeness": 89.45,
+   "incumbent_swing": 2.830000000000002
+  },
+  {
+   "election_id": "1083",
+   "country": "CHE",
+   "date": "2019-10-20",
+   "year": 2019,
+   "turnout": 45.11,
+   "margin": 8.75,
+   "closeness": 91.25,
+   "incumbent_swing": -3.8000000000000007
+  },
+  {
+   "election_id": "342",
+   "country": "CYP",
+   "date": "1991-05-19",
+   "year": 1991,
+   "turnout": 93.01,
+   "margin": 5.199999999999996,
+   "closeness": 94.80000000000001,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "330",
+   "country": "CYP",
+   "date": "1996-05-26",
+   "year": 1996,
+   "turnout": 92.94,
+   "margin": 1.5,
+   "closeness": 98.5,
+   "incumbent_swing": -1.2999999999999972
+  },
+  {
+   "election_id": "339",
+   "country": "CYP",
+   "date": "2001-05-27",
+   "year": 2001,
+   "turnout": 91.75,
+   "margin": 0.7000000000000028,
+   "closeness": 99.3,
+   "incumbent_swing": -0.5
+  },
+  {
+   "election_id": "556",
+   "country": "CYP",
+   "date": "2006-05-21",
+   "year": 2006,
+   "turnout": 89.0,
+   "margin": 0.7899999999999991,
+   "closeness": 99.21000000000001,
+   "incumbent_swing": -3.570000000000004
+  },
+  {
+   "election_id": "701",
+   "country": "CYP",
+   "date": "2011-05-22",
+   "year": 2011,
+   "turnout": 78.7,
+   "margin": 1.6099999999999994,
+   "closeness": 98.39,
+   "incumbent_swing": 1.5400000000000027
+  },
+  {
+   "election_id": "1004",
+   "country": "CYP",
+   "date": "2016-05-22",
+   "year": 2016,
+   "turnout": 66.74,
+   "margin": 5.02,
+   "closeness": 94.98,
+   "incumbent_swing": -3.59
+  },
+  {
+   "election_id": "1095",
+   "country": "CYP",
+   "date": "2021-05-30",
+   "year": 2021,
+   "turnout": 65.72,
+   "margin": 5.43,
+   "closeness": 94.57,
+   "incumbent_swing": -2.9200000000000017
+  },
+  {
+   "election_id": "63",
+   "country": "CZE",
+   "date": "1990-06-09",
+   "year": 1990,
+   "turnout": 96.79,
+   "margin": 36.26,
+   "closeness": 63.74,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "39",
+   "country": "CZE",
+   "date": "1992-06-06",
+   "year": 1992,
+   "turnout": 85.08,
+   "margin": 15.68,
+   "closeness": 84.32,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "301",
+   "country": "CZE",
+   "date": "1996-06-01",
+   "year": 1996,
+   "turnout": 76.29,
+   "margin": 3.1799999999999997,
+   "closeness": 96.82,
+   "incumbent_swing": -0.10999999999999943
+  },
+  {
+   "election_id": "27",
+   "country": "CZE",
+   "date": "1998-06-20",
+   "year": 1998,
+   "turnout": 73.86,
+   "margin": 4.570000000000004,
+   "closeness": 95.42999999999999,
+   "incumbent_swing": -1.8800000000000026
+  },
+  {
+   "election_id": "487",
+   "country": "CZE",
+   "date": "2002-06-15",
+   "year": 2002,
+   "turnout": 57.95,
+   "margin": 5.73,
+   "closeness": 94.27,
+   "incumbent_swing": -2.110000000000003
+  },
+  {
+   "election_id": "50",
+   "country": "CZE",
+   "date": "2006-06-03",
+   "year": 2006,
+   "turnout": 64.42,
+   "margin": 3.0600000000000023,
+   "closeness": 96.94,
+   "incumbent_swing": 2.120000000000001
+  },
+  {
+   "election_id": "599",
+   "country": "CZE",
+   "date": "2010-05-29",
+   "year": 2010,
+   "turnout": 62.55,
+   "margin": 1.8599999999999994,
+   "closeness": 98.14,
+   "incumbent_swing": -15.160000000000004
+  },
+  {
+   "election_id": "805",
+   "country": "CZE",
+   "date": "2013-10-25",
+   "year": 2013,
+   "turnout": 59.44,
+   "margin": 1.8000000000000007,
+   "closeness": 98.2,
+   "incumbent_swing": -1.629999999999999
+  },
+  {
+   "election_id": "1020",
+   "country": "CZE",
+   "date": "2017-10-21",
+   "year": 2017,
+   "turnout": 60.79,
+   "margin": 18.32,
+   "closeness": 81.68,
+   "incumbent_swing": -13.18
+  },
+  {
+   "election_id": "1099",
+   "country": "CZE",
+   "date": "2021-10-09",
+   "year": 2021,
+   "turnout": 65.4,
+   "margin": -0.6600000000000001,
+   "closeness": 100.66,
+   "incumbent_swing": -2.5100000000000016
+  },
+  {
+   "election_id": "445",
+   "country": "DEU",
+   "date": "1990-12-02",
+   "year": 1990,
+   "turnout": 77.76,
+   "margin": 3.200000000000003,
+   "closeness": 96.8,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "595",
+   "country": "DEU",
+   "date": "1994-10-16",
+   "year": 1994,
+   "turnout": 78.97,
+   "margin": 2.1999999999999957,
+   "closeness": 97.80000000000001,
+   "incumbent_swing": -2.5
+  },
+  {
+   "election_id": "679",
+   "country": "DEU",
+   "date": "1998-09-27",
+   "year": 1998,
+   "turnout": 82.2,
+   "margin": 12.5,
+   "closeness": 87.5,
+   "incumbent_swing": 4.5
+  },
+  {
+   "election_id": "385",
+   "country": "DEU",
+   "date": "2002-09-22",
+   "year": 2002,
+   "turnout": 79.08,
+   "margin": 9.0,
+   "closeness": 91.0,
+   "incumbent_swing": -2.3999999999999986
+  },
+  {
+   "election_id": "118",
+   "country": "DEU",
+   "date": "2005-09-18",
+   "year": 2005,
+   "turnout": 77.65,
+   "margin": 6.400000000000002,
+   "closeness": 93.6,
+   "incumbent_swing": -4.299999999999997
+  },
+  {
+   "election_id": "93",
+   "country": "DEU",
+   "date": "2009-09-27",
+   "year": 2009,
+   "turnout": 70.78,
+   "margin": 4.300000000000001,
+   "closeness": 95.7,
+   "incumbent_swing": -11.200000000000003
+  },
+  {
+   "election_id": "800",
+   "country": "DEU",
+   "date": "2013-09-22",
+   "year": 2013,
+   "turnout": 71.53,
+   "margin": 8.400000000000002,
+   "closeness": 91.6,
+   "incumbent_swing": 6.800000000000001
+  },
+  {
+   "election_id": "1016",
+   "country": "DEU",
+   "date": "2017-09-24",
+   "year": 2017,
+   "turnout": 76.15,
+   "margin": 6.300000000000001,
+   "closeness": 93.7,
+   "incumbent_swing": -7.300000000000001
+  },
+  {
+   "election_id": "1096",
+   "country": "DEU",
+   "date": "2021-09-26",
+   "year": 2021,
+   "turnout": 76.58,
+   "margin": 6.84,
+   "closeness": 93.16,
+   "incumbent_swing": -7.900000000000002
+  },
+  {
+   "election_id": "157",
+   "country": "DNK",
+   "date": "1990-12-12",
+   "year": 1990,
+   "turnout": 82.84,
+   "margin": 21.4,
+   "closeness": 78.6,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "89",
+   "country": "DNK",
+   "date": "1994-09-21",
+   "year": 1994,
+   "turnout": 84.25,
+   "margin": 11.3,
+   "closeness": 88.7,
+   "incumbent_swing": -2.799999999999997
+  },
+  {
+   "election_id": "389",
+   "country": "DNK",
+   "date": "1998-03-11",
+   "year": 1998,
+   "turnout": 85.95,
+   "margin": 11.899999999999999,
+   "closeness": 88.1,
+   "incumbent_swing": 1.2999999999999972
+  },
+  {
+   "election_id": "632",
+   "country": "DNK",
+   "date": "2001-11-20",
+   "year": 2001,
+   "turnout": 87.15,
+   "margin": 2.099999999999998,
+   "closeness": 97.9,
+   "incumbent_swing": -6.799999999999997
+  },
+  {
+   "election_id": "563",
+   "country": "DNK",
+   "date": "2005-02-08",
+   "year": 2005,
+   "turnout": 84.54,
+   "margin": 3.1999999999999993,
+   "closeness": 96.8,
+   "incumbent_swing": -2.1999999999999993
+  },
+  {
+   "election_id": "174",
+   "country": "DNK",
+   "date": "2007-11-13",
+   "year": 2007,
+   "turnout": 86.59,
+   "margin": 0.6999999999999993,
+   "closeness": 99.3,
+   "incumbent_swing": -2.8000000000000007
+  },
+  {
+   "election_id": "722",
+   "country": "DNK",
+   "date": "2011-09-15",
+   "year": 2011,
+   "turnout": 87.74,
+   "margin": 1.8999999999999986,
+   "closeness": 98.1,
+   "incumbent_swing": 0.5
+  },
+  {
+   "election_id": "976",
+   "country": "DNK",
+   "date": "2015-06-18",
+   "year": 2015,
+   "turnout": 85.89,
+   "margin": 5.199999999999999,
+   "closeness": 94.8,
+   "incumbent_swing": -7.199999999999999
+  },
+  {
+   "election_id": "1077",
+   "country": "DNK",
+   "date": "2019-06-05",
+   "year": 2019,
+   "turnout": 84.6,
+   "margin": 2.5,
+   "closeness": 97.5,
+   "incumbent_swing": -0.40000000000000213
+  },
+  {
+   "election_id": "1116",
+   "country": "DNK",
+   "date": "2022-11-01",
+   "year": 2022,
+   "turnout": 84.16,
+   "margin": 14.2,
+   "closeness": 85.8,
+   "incumbent_swing": 1.6000000000000014
+  },
+  {
+   "election_id": "252",
+   "country": "ESP",
+   "date": "1993-06-06",
+   "year": 1993,
+   "turnout": 76.44,
+   "margin": 4.060000000000002,
+   "closeness": 95.94,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "99",
+   "country": "ESP",
+   "date": "1996-03-03",
+   "year": 1996,
+   "turnout": 77.38,
+   "margin": 1.1700000000000017,
+   "closeness": 98.83,
+   "incumbent_swing": -1.1000000000000014
+  },
+  {
+   "election_id": "687",
+   "country": "ESP",
+   "date": "2000-03-12",
+   "year": 2000,
+   "turnout": 68.71,
+   "margin": 10.530000000000001,
+   "closeness": 89.47,
+   "incumbent_swing": 6.07
+  },
+  {
+   "election_id": "164",
+   "country": "ESP",
+   "date": "2004-03-14",
+   "year": 2004,
+   "turnout": 75.66,
+   "margin": 4.960000000000001,
+   "closeness": 95.03999999999999,
+   "incumbent_swing": -6.93
+  },
+  {
+   "election_id": "500",
+   "country": "ESP",
+   "date": "2008-03-09",
+   "year": 2008,
+   "turnout": 73.85,
+   "margin": 4.259999999999998,
+   "closeness": 95.74000000000001,
+   "incumbent_swing": 1.0899999999999963
+  },
+  {
+   "election_id": "777",
+   "country": "ESP",
+   "date": "2011-11-20",
+   "year": 2011,
+   "turnout": 68.94,
+   "margin": 12.739999999999998,
+   "closeness": 87.26,
+   "incumbent_swing": -15.2
+  },
+  {
+   "election_id": "998",
+   "country": "ESP",
+   "date": "2015-12-20",
+   "year": 2015,
+   "turnout": 73.2,
+   "margin": 6.709999999999997,
+   "closeness": 93.29,
+   "incumbent_swing": -13.18
+  },
+  {
+   "election_id": "1005",
+   "country": "ESP",
+   "date": "2016-06-26",
+   "year": 2016,
+   "turnout": 69.84,
+   "margin": 10.370000000000001,
+   "closeness": 89.63,
+   "incumbent_swing": 4.310000000000002
+  },
+  {
+   "election_id": "1046",
+   "country": "ESP",
+   "date": "2019-04-28",
+   "year": 2019,
+   "turnout": 75.75,
+   "margin": 11.98,
+   "closeness": 88.02,
+   "incumbent_swing": -16.330000000000002
+  },
+  {
+   "election_id": "1085",
+   "country": "ESP",
+   "date": "2019-11-10",
+   "year": 2019,
+   "turnout": 66.23,
+   "margin": 7.190000000000001,
+   "closeness": 92.81,
+   "incumbent_swing": -0.6799999999999997
+  },
+  {
+   "election_id": "670",
+   "country": "EST",
+   "date": "1992-09-20",
+   "year": 1992,
+   "turnout": 67.85,
+   "margin": 8.4,
+   "closeness": 91.6,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "600",
+   "country": "EST",
+   "date": "1995-03-05",
+   "year": 1995,
+   "turnout": 69.06,
+   "margin": 16.039999999999996,
+   "closeness": 83.96000000000001,
+   "incumbent_swing": -14.14
+  },
+  {
+   "election_id": "239",
+   "country": "EST",
+   "date": "1999-03-07",
+   "year": 1999,
+   "turnout": 57.43,
+   "margin": 7.32,
+   "closeness": 92.68,
+   "incumbent_swing": -24.65
+  },
+  {
+   "election_id": "423",
+   "country": "EST",
+   "date": "2003-03-02",
+   "year": 2003,
+   "turnout": 58.24,
+   "margin": 0.7999999999999972,
+   "closeness": 99.2,
+   "incumbent_swing": 1.9899999999999984
+  },
+  {
+   "election_id": "83",
+   "country": "EST",
+   "date": "2007-03-04",
+   "year": 2007,
+   "turnout": 61.91,
+   "margin": 1.6999999999999993,
+   "closeness": 98.3,
+   "incumbent_swing": 0.7000000000000028
+  },
+  {
+   "election_id": "699",
+   "country": "EST",
+   "date": "2011-03-06",
+   "year": 2011,
+   "turnout": 63.53,
+   "margin": 5.300000000000001,
+   "closeness": 94.7,
+   "incumbent_swing": 0.8000000000000007
+  },
+  {
+   "election_id": "853",
+   "country": "EST",
+   "date": "2015-03-01",
+   "year": 2015,
+   "turnout": 64.23,
+   "margin": 2.8800000000000026,
+   "closeness": 97.12,
+   "incumbent_swing": -0.9100000000000001
+  },
+  {
+   "election_id": "1044",
+   "country": "EST",
+   "date": "2019-03-03",
+   "year": 2019,
+   "turnout": 63.67,
+   "margin": 5.799999999999997,
+   "closeness": 94.2,
+   "incumbent_swing": 1.2099999999999973
+  },
+  {
+   "election_id": "1118",
+   "country": "EST",
+   "date": "2023-03-05",
+   "year": 2023,
+   "turnout": 63.53,
+   "margin": 15.099999999999998,
+   "closeness": 84.9,
+   "incumbent_swing": 2.3000000000000007
+  },
+  {
+   "election_id": "602",
+   "country": "FIN",
+   "date": "1991-03-17",
+   "year": 1991,
+   "turnout": 68.39,
+   "margin": 2.6999999999999993,
+   "closeness": 97.3,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "24",
+   "country": "FIN",
+   "date": "1995-03-19",
+   "year": 1995,
+   "turnout": 68.58,
+   "margin": 8.5,
+   "closeness": 91.5,
+   "incumbent_swing": -5.0
+  },
+  {
+   "election_id": "15",
+   "country": "FIN",
+   "date": "1999-03-21",
+   "year": 1999,
+   "turnout": 65.27,
+   "margin": 0.5,
+   "closeness": 99.5,
+   "incumbent_swing": -5.400000000000002
+  },
+  {
+   "election_id": "253",
+   "country": "FIN",
+   "date": "2003-03-16",
+   "year": 2003,
+   "turnout": 66.71,
+   "margin": 0.1999999999999993,
+   "closeness": 99.8,
+   "incumbent_swing": 1.6000000000000014
+  },
+  {
+   "election_id": "314",
+   "country": "FIN",
+   "date": "2007-03-18",
+   "year": 2007,
+   "turnout": 65.02,
+   "margin": 0.8000000000000007,
+   "closeness": 99.2,
+   "incumbent_swing": -1.5999999999999979
+  },
+  {
+   "election_id": "700",
+   "country": "FIN",
+   "date": "2011-04-17",
+   "year": 2011,
+   "turnout": 67.37,
+   "margin": 1.2999999999999972,
+   "closeness": 98.7,
+   "incumbent_swing": -7.300000000000001
+  },
+  {
+   "election_id": "855",
+   "country": "FIN",
+   "date": "2015-04-19",
+   "year": 2015,
+   "turnout": 66.85,
+   "margin": 3.450000000000003,
+   "closeness": 96.55,
+   "incumbent_swing": -2.1999999999999993
+  },
+  {
+   "election_id": "1045",
+   "country": "FIN",
+   "date": "2019-04-14",
+   "year": 2019,
+   "turnout": 72.84,
+   "margin": 0.1999999999999993,
+   "closeness": 99.8,
+   "incumbent_swing": -7.300000000000001
+  },
+  {
+   "election_id": "1119",
+   "country": "FIN",
+   "date": "2023-04-02",
+   "year": 2023,
+   "turnout": 72.71,
+   "margin": 0.6999999999999993,
+   "closeness": 99.3,
+   "incumbent_swing": 2.1999999999999993
+  },
+  {
+   "election_id": "664",
+   "country": "FRA",
+   "date": "1993-03-28",
+   "year": 1993,
+   "turnout": 68.58,
+   "margin": 1.2999999999999972,
+   "closeness": 98.7,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "479",
+   "country": "FRA",
+   "date": "1997-06-01",
+   "year": 1997,
+   "turnout": 67.92,
+   "margin": 7.83,
+   "closeness": 92.17,
+   "incumbent_swing": -4.729999999999999
+  },
+  {
+   "election_id": "403",
+   "country": "FRA",
+   "date": "2002-06-16",
+   "year": 2002,
+   "turnout": 64.42,
+   "margin": 9.189999999999998,
+   "closeness": 90.81,
+   "incumbent_swing": 0.6099999999999994
+  },
+  {
+   "election_id": "171",
+   "country": "FRA",
+   "date": "2007-06-17",
+   "year": 2007,
+   "turnout": 60.42,
+   "margin": 14.809999999999999,
+   "closeness": 85.19,
+   "incumbent_swing": 6.240000000000002
+  },
+  {
+   "election_id": "782",
+   "country": "FRA",
+   "date": "2012-06-17",
+   "year": 2012,
+   "turnout": 57.22,
+   "margin": 2.2300000000000004,
+   "closeness": 97.77,
+   "incumbent_swing": -12.419999999999998
+  },
+  {
+   "election_id": "1014",
+   "country": "FRA",
+   "date": "2017-06-18",
+   "year": 2017,
+   "turnout": 48.7,
+   "margin": 12.440000000000001,
+   "closeness": 87.56,
+   "incumbent_swing": -21.91
+  },
+  {
+   "election_id": "1110",
+   "country": "FRA",
+   "date": "2022-06-19",
+   "year": 2022,
+   "turnout": 47.51,
+   "margin": 0.08999999999999986,
+   "closeness": 99.91,
+   "incumbent_swing": -2.460000000000001
+  },
+  {
+   "election_id": "514",
+   "country": "GBR",
+   "date": "1992-04-09",
+   "year": 1992,
+   "turnout": 77.77,
+   "margin": 7.0,
+   "closeness": 93.0,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "315",
+   "country": "GBR",
+   "date": "1997-05-01",
+   "year": 1997,
+   "turnout": 71.54,
+   "margin": 12.500000000000004,
+   "closeness": 87.5,
+   "incumbent_swing": -11.2
+  },
+  {
+   "election_id": "208",
+   "country": "GBR",
+   "date": "2001-06-07",
+   "year": 2001,
+   "turnout": 59.61,
+   "margin": 9.000000000000004,
+   "closeness": 91.0,
+   "incumbent_swing": -2.5
+  },
+  {
+   "election_id": "233",
+   "country": "GBR",
+   "date": "2005-05-05",
+   "year": 2005,
+   "turnout": 61.78,
+   "margin": 2.8000000000000043,
+   "closeness": 97.19999999999999,
+   "incumbent_swing": -5.5
+  },
+  {
+   "election_id": "582",
+   "country": "GBR",
+   "date": "2010-05-06",
+   "year": 2010,
+   "turnout": 65.77,
+   "margin": 7.100000000000001,
+   "closeness": 92.9,
+   "incumbent_swing": -6.200000000000003
+  },
+  {
+   "election_id": "856",
+   "country": "GBR",
+   "date": "2015-05-07",
+   "year": 2015,
+   "turnout": 66.11,
+   "margin": 6.469999999999999,
+   "closeness": 93.53,
+   "incumbent_swing": 0.8299999999999983
+  },
+  {
+   "election_id": "1013",
+   "country": "GBR",
+   "date": "2017-06-08",
+   "year": 2017,
+   "turnout": 68.94,
+   "margin": 2.460000000000001,
+   "closeness": 97.53999999999999,
+   "incumbent_swing": 5.520000000000003
+  },
+  {
+   "election_id": "1086",
+   "country": "GBR",
+   "date": "2019-12-12",
+   "year": 2019,
+   "turnout": 67.27,
+   "margin": 11.470000000000006,
+   "closeness": 88.53,
+   "incumbent_swing": 1.1799999999999997
+  },
+  {
+   "election_id": "284",
+   "country": "GRC",
+   "date": "1990-04-08",
+   "year": 1990,
+   "turnout": 79.24,
+   "margin": 8.299999999999997,
+   "closeness": 91.7,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "654",
+   "country": "GRC",
+   "date": "1993-10-10",
+   "year": 1993,
+   "turnout": 79.22,
+   "margin": 7.800000000000004,
+   "closeness": 92.19999999999999,
+   "incumbent_swing": -7.600000000000001
+  },
+  {
+   "election_id": "399",
+   "country": "GRC",
+   "date": "1996-09-22",
+   "year": 1996,
+   "turnout": 76.35,
+   "margin": 3.3700000000000045,
+   "closeness": 96.63,
+   "incumbent_swing": -5.609999999999999
+  },
+  {
+   "election_id": "475",
+   "country": "GRC",
+   "date": "2000-04-09",
+   "year": 2000,
+   "turnout": 74.97,
+   "margin": 1.0499999999999972,
+   "closeness": 98.95,
+   "incumbent_swing": 2.299999999999997
+  },
+  {
+   "election_id": "201",
+   "country": "GRC",
+   "date": "2004-03-07",
+   "year": 2004,
+   "turnout": 76.5,
+   "margin": 4.810000000000002,
+   "closeness": 95.19,
+   "incumbent_swing": -3.240000000000002
+  },
+  {
+   "election_id": "466",
+   "country": "GRC",
+   "date": "2007-09-16",
+   "year": 2007,
+   "turnout": 74.15,
+   "margin": 3.740000000000002,
+   "closeness": 96.25999999999999,
+   "incumbent_swing": -3.519999999999996
+  },
+  {
+   "election_id": "651",
+   "country": "GRC",
+   "date": "2009-10-04",
+   "year": 2009,
+   "turnout": 70.95,
+   "margin": 10.450000000000003,
+   "closeness": 89.55,
+   "incumbent_swing": -8.370000000000005
+  },
+  {
+   "election_id": "783",
+   "country": "GRC",
+   "date": "2012-05-06",
+   "year": 2012,
+   "turnout": 65.12,
+   "margin": 2.0600000000000023,
+   "closeness": 97.94,
+   "incumbent_swing": -30.740000000000002
+  },
+  {
+   "election_id": "784",
+   "country": "GRC",
+   "date": "2012-06-17",
+   "year": 2012,
+   "turnout": 62.47,
+   "margin": 2.7699999999999996,
+   "closeness": 97.23,
+   "incumbent_swing": 10.809999999999999
+  },
+  {
+   "election_id": "851",
+   "country": "GRC",
+   "date": "2015-01-25",
+   "year": 2015,
+   "turnout": 63.87,
+   "margin": 8.530000000000005,
+   "closeness": 91.47,
+   "incumbent_swing": -1.8500000000000014
+  },
+  {
+   "election_id": "992",
+   "country": "GRC",
+   "date": "2015-09-20",
+   "year": 2015,
+   "turnout": 56.57,
+   "margin": 7.359999999999999,
+   "closeness": 92.64,
+   "incumbent_swing": -0.8800000000000026
+  },
+  {
+   "election_id": "1078",
+   "country": "GRC",
+   "date": "2019-07-07",
+   "year": 2019,
+   "turnout": 57.91,
+   "margin": 8.32,
+   "closeness": 91.68,
+   "incumbent_swing": -3.9299999999999997
+  },
+  {
+   "election_id": "1122",
+   "country": "GRC",
+   "date": "2023-05-21",
+   "year": 2023,
+   "turnout": 60.94,
+   "margin": 20.099999999999998,
+   "closeness": 79.9,
+   "incumbent_swing": 0.9499999999999957
+  },
+  {
+   "election_id": "1123",
+   "country": "GRC",
+   "date": "2023-06-25",
+   "year": 2023,
+   "turnout": 53.74,
+   "margin": 22.730000000000004,
+   "closeness": 77.27,
+   "incumbent_swing": -0.23999999999999488
+  },
+  {
+   "election_id": "797",
+   "country": "HRV",
+   "date": "2000-01-03",
+   "year": 2000,
+   "turnout": 76.53,
+   "margin": -16.4,
+   "closeness": 116.4,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "795",
+   "country": "HRV",
+   "date": "2003-11-23",
+   "year": 2003,
+   "turnout": 66.83,
+   "margin": 9.900000000000002,
+   "closeness": 90.1,
+   "incumbent_swing": 8.800000000000004
+  },
+  {
+   "election_id": "793",
+   "country": "HRV",
+   "date": "2007-11-25",
+   "year": 2007,
+   "turnout": 57.17,
+   "margin": 5.099999999999998,
+   "closeness": 94.9,
+   "incumbent_swing": 2.6999999999999957
+  },
+  {
+   "election_id": "792",
+   "country": "HRV",
+   "date": "2011-12-04",
+   "year": 2011,
+   "turnout": 61.95,
+   "margin": 17.58,
+   "closeness": 82.42,
+   "incumbent_swing": -12.399999999999999
+  },
+  {
+   "election_id": "1001",
+   "country": "HRV",
+   "date": "2015-11-08",
+   "year": 2015,
+   "turnout": 60.82,
+   "margin": 1.25,
+   "closeness": 98.75,
+   "incumbent_swing": -8.25
+  },
+  {
+   "election_id": "1007",
+   "country": "HRV",
+   "date": "2016-09-11",
+   "year": 2016,
+   "turnout": 52.56,
+   "margin": 2.990000000000002,
+   "closeness": 97.00999999999999,
+   "incumbent_swing": 1.0900000000000034
+  },
+  {
+   "election_id": "1094",
+   "country": "HRV",
+   "date": "2020-07-05",
+   "year": 2020,
+   "turnout": 468.95,
+   "margin": 13.379999999999999,
+   "closeness": 86.62,
+   "incumbent_swing": 2.0899999999999963
+  },
+  {
+   "election_id": "257",
+   "country": "HUN",
+   "date": "1990-04-08",
+   "year": 1990,
+   "turnout": 65.09,
+   "margin": 3.3000000000000007,
+   "closeness": 96.7,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "620",
+   "country": "HUN",
+   "date": "1994-05-29",
+   "year": 1994,
+   "turnout": 68.92,
+   "margin": 13.3,
+   "closeness": 86.7,
+   "incumbent_swing": -13.0
+  },
+  {
+   "election_id": "671",
+   "country": "HUN",
+   "date": "1998-05-24",
+   "year": 1998,
+   "turnout": 56.26,
+   "margin": -3.3999999999999986,
+   "closeness": 103.4,
+   "incumbent_swing": -0.10000000000000142
+  },
+  {
+   "election_id": "463",
+   "country": "HUN",
+   "date": "2002-04-21",
+   "year": 2002,
+   "turnout": 70.53,
+   "margin": 0.9799999999999969,
+   "closeness": 99.02000000000001,
+   "incumbent_swing": 11.57
+  },
+  {
+   "election_id": "194",
+   "country": "HUN",
+   "date": "2006-04-09",
+   "year": 2006,
+   "turnout": 67.83,
+   "margin": 36.7,
+   "closeness": 63.3,
+   "incumbent_swing": 1.1500000000000057
+  },
+  {
+   "election_id": "688",
+   "country": "HUN",
+   "date": "2010-04-25",
+   "year": 2010,
+   "turnout": 64.45,
+   "margin": 2.629999999999999,
+   "closeness": 97.37,
+   "incumbent_swing": -23.900000000000002
+  },
+  {
+   "election_id": "814",
+   "country": "HUN",
+   "date": "2014-04-06",
+   "year": 2014,
+   "turnout": 61.8,
+   "margin": 5.350000000000001,
+   "closeness": 94.65,
+   "incumbent_swing": 6.27
+  },
+  {
+   "election_id": "1023",
+   "country": "HUN",
+   "date": "2018-04-08",
+   "year": 2018,
+   "turnout": 69.67,
+   "margin": 7.149999999999999,
+   "closeness": 92.85,
+   "incumbent_swing": -13.66
+  },
+  {
+   "election_id": "1107",
+   "country": "HUN",
+   "date": "2022-04-03",
+   "year": 2022,
+   "turnout": 70.21,
+   "margin": 29.860000000000003,
+   "closeness": 70.14,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "359",
+   "country": "IRL",
+   "date": "1992-11-25",
+   "year": 1992,
+   "turnout": 68.49,
+   "margin": 14.64,
+   "closeness": 85.36,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "316",
+   "country": "IRL",
+   "date": "1997-06-06",
+   "year": 1997,
+   "turnout": 65.92,
+   "margin": 11.379999999999999,
+   "closeness": 88.62,
+   "incumbent_swing": 0.21999999999999886
+  },
+  {
+   "election_id": "408",
+   "country": "IRL",
+   "date": "2002-05-17",
+   "year": 2002,
+   "turnout": 62.57,
+   "margin": 18.999999999999996,
+   "closeness": 81.0,
+   "incumbent_swing": 2.1499999999999986
+  },
+  {
+   "election_id": "190",
+   "country": "IRL",
+   "date": "2007-05-24",
+   "year": 2007,
+   "turnout": 67.03,
+   "margin": 14.240000000000002,
+   "closeness": 85.75999999999999,
+   "incumbent_swing": 0.0800000000000054
+  },
+  {
+   "election_id": "698",
+   "country": "IRL",
+   "date": "2011-02-25",
+   "year": 2011,
+   "turnout": 69.9,
+   "margin": 16.650000000000002,
+   "closeness": 83.35,
+   "incumbent_swing": -24.110000000000003
+  },
+  {
+   "election_id": "1002",
+   "country": "IRL",
+   "date": "2016-02-26",
+   "year": 2016,
+   "turnout": 65.47,
+   "margin": 1.1699999999999982,
+   "closeness": 98.83,
+   "incumbent_swing": -10.580000000000002
+  },
+  {
+   "election_id": "1088",
+   "country": "IRL",
+   "date": "2020-02-08",
+   "year": 2020,
+   "turnout": 62.92,
+   "margin": -2.3500000000000014,
+   "closeness": 102.35,
+   "incumbent_swing": -4.66
+  },
+  {
+   "election_id": "274",
+   "country": "ISL",
+   "date": "1991-04-20",
+   "year": 1991,
+   "turnout": 87.62,
+   "margin": 19.700000000000003,
+   "closeness": 80.3,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "82",
+   "country": "ISL",
+   "date": "1995-04-08",
+   "year": 1995,
+   "turnout": 87.38,
+   "margin": 13.8,
+   "closeness": 86.2,
+   "incumbent_swing": -1.5
+  },
+  {
+   "election_id": "592",
+   "country": "ISL",
+   "date": "1999-05-08",
+   "year": 1999,
+   "turnout": 84.07,
+   "margin": 13.900000000000002,
+   "closeness": 86.1,
+   "incumbent_swing": 3.6000000000000014
+  },
+  {
+   "election_id": "178",
+   "country": "ISL",
+   "date": "2003-05-10",
+   "year": 2003,
+   "turnout": 87.74,
+   "margin": 2.700000000000003,
+   "closeness": 97.3,
+   "incumbent_swing": -7.0
+  },
+  {
+   "election_id": "265",
+   "country": "ISL",
+   "date": "2007-05-12",
+   "year": 2007,
+   "turnout": 83.62,
+   "margin": 9.8,
+   "closeness": 90.2,
+   "incumbent_swing": 2.8999999999999986
+  },
+  {
+   "election_id": "36",
+   "country": "ISL",
+   "date": "2009-04-25",
+   "year": 2009,
+   "turnout": 85.1,
+   "margin": 6.100000000000001,
+   "closeness": 93.9,
+   "incumbent_swing": -12.900000000000002
+  },
+  {
+   "election_id": "798",
+   "country": "ISL",
+   "date": "2013-04-27",
+   "year": 2013,
+   "turnout": 81.49,
+   "margin": 2.2699999999999996,
+   "closeness": 97.73,
+   "incumbent_swing": -16.950000000000003
+  },
+  {
+   "election_id": "1008",
+   "country": "ISL",
+   "date": "2016-10-29",
+   "year": 2016,
+   "turnout": 79.19,
+   "margin": 12.720000000000002,
+   "closeness": 87.28,
+   "incumbent_swing": 1.4700000000000024
+  },
+  {
+   "election_id": "1021",
+   "country": "ISL",
+   "date": "2017-10-28",
+   "year": 2017,
+   "turnout": 81.2,
+   "margin": 8.3,
+   "closeness": 91.7,
+   "incumbent_swing": -2.9700000000000024
+  },
+  {
+   "election_id": "1105",
+   "country": "ISL",
+   "date": "2021-09-25",
+   "year": 2021,
+   "turnout": 79.23,
+   "margin": 7.099999999999998,
+   "closeness": 92.9,
+   "incumbent_swing": -0.8000000000000007
+  },
+  {
+   "election_id": "716",
+   "country": "ISR",
+   "date": "1992-06-23",
+   "year": 1992,
+   "turnout": 77.38,
+   "margin": 9.800000000000004,
+   "closeness": 90.19999999999999,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "717",
+   "country": "ISR",
+   "date": "1996-05-29",
+   "year": 1996,
+   "turnout": 79.32,
+   "margin": 1.6999999999999993,
+   "closeness": 98.3,
+   "incumbent_swing": -7.900000000000002
+  },
+  {
+   "election_id": "718",
+   "country": "ISR",
+   "date": "1999-05-17",
+   "year": 1999,
+   "turnout": 78.73,
+   "margin": 6.1,
+   "closeness": 93.9,
+   "incumbent_swing": -6.600000000000001
+  },
+  {
+   "election_id": "719",
+   "country": "ISR",
+   "date": "2003-01-28",
+   "year": 2003,
+   "turnout": 67.81,
+   "margin": 14.93,
+   "closeness": 85.07,
+   "incumbent_swing": -5.739999999999998
+  },
+  {
+   "election_id": "720",
+   "country": "ISR",
+   "date": "2006-03-28",
+   "year": 2006,
+   "turnout": 63.55,
+   "margin": 6.9,
+   "closeness": 93.1,
+   "incumbent_swing": -20.39
+  },
+  {
+   "election_id": "721",
+   "country": "ISR",
+   "date": "2009-02-10",
+   "year": 2009,
+   "turnout": 64.72,
+   "margin": 0.8999999999999986,
+   "closeness": 99.1,
+   "incumbent_swing": 0.5
+  },
+  {
+   "election_id": "815",
+   "country": "ISR",
+   "date": "2013-01-22",
+   "year": 2013,
+   "turnout": 67.77,
+   "margin": 9.01,
+   "closeness": 90.99,
+   "incumbent_swing": -20.42
+  },
+  {
+   "election_id": "852",
+   "country": "ISR",
+   "date": "2015-03-17",
+   "year": 2015,
+   "turnout": 72.34,
+   "margin": 4.729999999999997,
+   "closeness": 95.27000000000001,
+   "incumbent_swing": 0.05999999999999872
+  },
+  {
+   "election_id": "1047",
+   "country": "ISR",
+   "date": "2019-04-09",
+   "year": 2019,
+   "turnout": 68.46,
+   "margin": 0.33000000000000185,
+   "closeness": 99.67,
+   "incumbent_swing": 3.0600000000000023
+  },
+  {
+   "election_id": "1079",
+   "country": "ISR",
+   "date": "2019-09-17",
+   "year": 2019,
+   "turnout": 69.83,
+   "margin": 0.8499999999999979,
+   "closeness": 99.15,
+   "incumbent_swing": -1.3599999999999994
+  },
+  {
+   "election_id": "1090",
+   "country": "ISR",
+   "date": "2020-03-02",
+   "year": 2020,
+   "turnout": 71.52,
+   "margin": 2.870000000000001,
+   "closeness": 97.13,
+   "incumbent_swing": 0.6400000000000006
+  },
+  {
+   "election_id": "1100",
+   "country": "ISR",
+   "date": "2021-03-23",
+   "year": 2021,
+   "turnout": 67.44,
+   "margin": 10.260000000000002,
+   "closeness": 89.74,
+   "incumbent_swing": -5.27
+  },
+  {
+   "election_id": "1117",
+   "country": "ISR",
+   "date": "2022-11-01",
+   "year": 2022,
+   "turnout": 70.63,
+   "margin": 5.620000000000001,
+   "closeness": 94.38,
+   "incumbent_swing": -0.7800000000000011
+  },
+  {
+   "election_id": "605",
+   "country": "ITA",
+   "date": "1992-04-05",
+   "year": 1992,
+   "turnout": 87.29,
+   "margin": 13.599999999999998,
+   "closeness": 86.4,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "146",
+   "country": "ITA",
+   "date": "1994-03-27",
+   "year": 1994,
+   "turnout": 86.14,
+   "margin": 15.1,
+   "closeness": 84.9,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "551",
+   "country": "ITA",
+   "date": "1996-04-21",
+   "year": 1996,
+   "turnout": 82.91,
+   "margin": 1.5,
+   "closeness": 98.5,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "498",
+   "country": "ITA",
+   "date": "2001-05-13",
+   "year": 2001,
+   "turnout": 81.38,
+   "margin": 12.86,
+   "closeness": 87.14,
+   "incumbent_swing": -6.130000000000001
+  },
+  {
+   "election_id": "107",
+   "country": "ITA",
+   "date": "2006-04-09",
+   "year": 2006,
+   "turnout": 81.69,
+   "margin": 6.829999999999998,
+   "closeness": 93.17,
+   "incumbent_swing": -5.829999999999998
+  },
+  {
+   "election_id": "111",
+   "country": "ITA",
+   "date": "2008-04-13",
+   "year": 2008,
+   "turnout": 75.52,
+   "margin": 4.189999999999998,
+   "closeness": 95.81,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "789",
+   "country": "ITA",
+   "date": "2013-02-25",
+   "year": 2013,
+   "turnout": 75.2,
+   "margin": 0.39000000000000057,
+   "closeness": 99.61,
+   "incumbent_swing": -16.24
+  },
+  {
+   "election_id": "1024",
+   "country": "ITA",
+   "date": "2018-03-04",
+   "year": 2018,
+   "turnout": 72.94,
+   "margin": 15.939999999999998,
+   "closeness": 84.06,
+   "incumbent_swing": -7.509999999999998
+  },
+  {
+   "election_id": "1113",
+   "country": "ITA",
+   "date": "2022-09-25",
+   "year": 2022,
+   "turnout": 63.79,
+   "margin": 6.93,
+   "closeness": 93.07,
+   "incumbent_swing": -17.9
+  },
+  {
+   "election_id": "25",
+   "country": "JPN",
+   "date": "1990-02-18",
+   "year": 1990,
+   "turnout": 73.31,
+   "margin": 21.809999999999995,
+   "closeness": 78.19,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "57",
+   "country": "JPN",
+   "date": "1993-07-18",
+   "year": 1993,
+   "turnout": 66.99,
+   "margin": 21.189999999999998,
+   "closeness": 78.81,
+   "incumbent_swing": -9.54
+  },
+  {
+   "election_id": "628",
+   "country": "JPN",
+   "date": "1996-10-20",
+   "year": 1996,
+   "turnout": 59.0,
+   "margin": 4.719999999999999,
+   "closeness": 95.28,
+   "incumbent_swing": -3.8599999999999994
+  },
+  {
+   "election_id": "237",
+   "country": "JPN",
+   "date": "2000-06-25",
+   "year": 2000,
+   "turnout": 62.45,
+   "margin": 3.129999999999999,
+   "closeness": 96.87,
+   "incumbent_swing": -4.449999999999999
+  },
+  {
+   "election_id": "511",
+   "country": "JPN",
+   "date": "2003-11-09",
+   "year": 2003,
+   "turnout": 59.86,
+   "margin": -2.3999999999999986,
+   "closeness": 102.4,
+   "incumbent_swing": 6.690000000000001
+  },
+  {
+   "election_id": "554",
+   "country": "JPN",
+   "date": "2005-09-11",
+   "year": 2005,
+   "turnout": 67.46,
+   "margin": 7.16,
+   "closeness": 92.84,
+   "incumbent_swing": 3.1799999999999997
+  },
+  {
+   "election_id": "327",
+   "country": "JPN",
+   "date": "2009-08-30",
+   "year": 2009,
+   "turnout": 69.26,
+   "margin": 15.679999999999996,
+   "closeness": 84.32000000000001,
+   "incumbent_swing": -11.45
+  },
+  {
+   "election_id": "788",
+   "country": "JPN",
+   "date": "2012-12-16",
+   "year": 2012,
+   "turnout": 59.31,
+   "margin": 11.600000000000001,
+   "closeness": 88.4,
+   "incumbent_swing": -26.409999999999997
+  },
+  {
+   "election_id": "850",
+   "country": "JPN",
+   "date": "2014-12-14",
+   "year": 2014,
+   "turnout": 52.65,
+   "margin": 14.780000000000001,
+   "closeness": 85.22,
+   "incumbent_swing": 5.509999999999998
+  },
+  {
+   "election_id": "1022",
+   "country": "JPN",
+   "date": "2017-10-22",
+   "year": 2017,
+   "turnout": 53.68,
+   "margin": 13.400000000000002,
+   "closeness": 86.6,
+   "incumbent_swing": 0.1700000000000017
+  },
+  {
+   "election_id": "1098",
+   "country": "JPN",
+   "date": "2021-10-31",
+   "year": 2021,
+   "turnout": 55.62,
+   "margin": 14.659999999999997,
+   "closeness": 85.34,
+   "incumbent_swing": 1.3799999999999955
+  },
+  {
+   "election_id": "439",
+   "country": "LTU",
+   "date": "1992-11-15",
+   "year": 1992,
+   "turnout": 75.22,
+   "margin": 22.809999999999995,
+   "closeness": 77.19,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "566",
+   "country": "LTU",
+   "date": "1996-10-20",
+   "year": 1996,
+   "turnout": 52.92,
+   "margin": 20.91,
+   "closeness": 79.09,
+   "incumbent_swing": -33.97
+  },
+  {
+   "election_id": "59",
+   "country": "LTU",
+   "date": "2000-10-08",
+   "year": 2000,
+   "turnout": 58.63,
+   "margin": -2.3900000000000006,
+   "closeness": 102.39,
+   "incumbent_swing": -22.72
+  },
+  {
+   "election_id": "214",
+   "country": "LTU",
+   "date": "2004-10-24",
+   "year": 2004,
+   "turnout": 46.08,
+   "margin": 13.690000000000001,
+   "closeness": 86.31,
+   "incumbent_swing": -8.06
+  },
+  {
+   "election_id": "646",
+   "country": "LTU",
+   "date": "2008-10-12",
+   "year": 2008,
+   "turnout": 48.59,
+   "margin": 7.999999999999998,
+   "closeness": 92.0,
+   "incumbent_swing": -19.450000000000003
+  },
+  {
+   "election_id": "786",
+   "country": "LTU",
+   "date": "2012-10-14",
+   "year": 2012,
+   "turnout": 52.93,
+   "margin": 3.290000000000001,
+   "closeness": 96.71,
+   "incumbent_swing": -4.639999999999999
+  },
+  {
+   "election_id": "1009",
+   "country": "LTU",
+   "date": "2016-10-09",
+   "year": 2016,
+   "turnout": 50.64,
+   "margin": -0.17999999999999972,
+   "closeness": 100.18,
+   "incumbent_swing": -3.330000000000002
+  },
+  {
+   "election_id": "1091",
+   "country": "LTU",
+   "date": "2020-10-11",
+   "year": 2020,
+   "turnout": 47.81,
+   "margin": 7.699999999999999,
+   "closeness": 92.3,
+   "incumbent_swing": -4.379999999999999
+  },
+  {
+   "election_id": "306",
+   "country": "LUX",
+   "date": "1994-06-12",
+   "year": 1994,
+   "turnout": 88.3,
+   "margin": 3.0199999999999996,
+   "closeness": 96.98,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "299",
+   "country": "LUX",
+   "date": "1999-06-13",
+   "year": 1999,
+   "turnout": 86.51,
+   "margin": 8.129999999999999,
+   "closeness": 91.87,
+   "incumbent_swing": 0.00999999999999801
+  },
+  {
+   "election_id": "383",
+   "country": "LUX",
+   "date": "2004-06-13",
+   "year": 2004,
+   "turnout": 91.92,
+   "margin": 10.380000000000003,
+   "closeness": 89.62,
+   "incumbent_swing": 6.090000000000003
+  },
+  {
+   "election_id": "172",
+   "country": "LUX",
+   "date": "2009-06-07",
+   "year": 2009,
+   "turnout": 90.75,
+   "margin": 16.48,
+   "closeness": 83.52,
+   "incumbent_swing": 2.229999999999997
+  },
+  {
+   "election_id": "803",
+   "country": "LUX",
+   "date": "2013-10-20",
+   "year": 2013,
+   "turnout": 91.32,
+   "margin": 13.399999999999999,
+   "closeness": 86.6,
+   "incumbent_swing": -4.359999999999999
+  },
+  {
+   "election_id": "1043",
+   "country": "LUX",
+   "date": "2018-10-14",
+   "year": 2018,
+   "turnout": 89.66,
+   "margin": 10.68,
+   "closeness": 89.32,
+   "incumbent_swing": -6.600000000000001
+  },
+  {
+   "election_id": "564",
+   "country": "LVA",
+   "date": "1993-06-06",
+   "year": 1993,
+   "turnout": 91.18,
+   "margin": 19.059999999999995,
+   "closeness": 80.94,
+   "incumbent_swing": -65.57000000000001
+  },
+  {
+   "election_id": "534",
+   "country": "LVA",
+   "date": "1995-10-01",
+   "year": 1995,
+   "turnout": 72.65,
+   "margin": 0.5,
+   "closeness": 99.5,
+   "incumbent_swing": -17.759999999999998
+  },
+  {
+   "election_id": "615",
+   "country": "LVA",
+   "date": "1998-10-03",
+   "year": 1998,
+   "turnout": 71.0,
+   "margin": 3.1400000000000006,
+   "closeness": 96.86,
+   "incumbent_swing": -13.55
+  },
+  {
+   "election_id": "260",
+   "country": "LVA",
+   "date": "2002-10-05",
+   "year": 2002,
+   "turnout": 71.51,
+   "margin": 4.899999999999999,
+   "closeness": 95.1,
+   "incumbent_swing": -4.59
+  },
+  {
+   "election_id": "52",
+   "country": "LVA",
+   "date": "2006-10-07",
+   "year": 2006,
+   "turnout": 60.98,
+   "margin": 2.849999999999998,
+   "closeness": 97.15,
+   "incumbent_swing": -7.52
+  },
+  {
+   "election_id": "690",
+   "country": "LVA",
+   "date": "2010-10-02",
+   "year": 2010,
+   "turnout": 64.73,
+   "margin": 5.289999999999999,
+   "closeness": 94.71000000000001,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "765",
+   "country": "LVA",
+   "date": "2011-09-17",
+   "year": 2011,
+   "turnout": 59.49,
+   "margin": 7.530000000000001,
+   "closeness": 92.47,
+   "incumbent_swing": -13.07
+  },
+  {
+   "election_id": "831",
+   "country": "LVA",
+   "date": "2014-10-04",
+   "year": 2014,
+   "turnout": 58.85,
+   "margin": 1.129999999999999,
+   "closeness": 98.87,
+   "incumbent_swing": -5.359999999999999
+  },
+  {
+   "election_id": "1042",
+   "country": "LVA",
+   "date": "2018-10-06",
+   "year": 2018,
+   "turnout": 54.58,
+   "margin": 5.590000000000002,
+   "closeness": 94.41,
+   "incumbent_swing": -3.0799999999999983
+  },
+  {
+   "election_id": "1115",
+   "country": "LVA",
+   "date": "2022-10-01",
+   "year": 2022,
+   "turnout": 59.41,
+   "margin": 6.529999999999999,
+   "closeness": 93.47,
+   "incumbent_swing": -15.110000000000003
+  },
+  {
+   "election_id": "520",
+   "country": "MLT",
+   "date": "1992-02-22",
+   "year": 1992,
+   "turnout": 96.08,
+   "margin": 5.270000000000003,
+   "closeness": 94.72999999999999,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "483",
+   "country": "MLT",
+   "date": "1996-10-26",
+   "year": 1996,
+   "turnout": 97.16,
+   "margin": 2.9000000000000057,
+   "closeness": 97.1,
+   "incumbent_swing": -3.970000000000006
+  },
+  {
+   "election_id": "173",
+   "country": "MLT",
+   "date": "1998-09-05",
+   "year": 1998,
+   "turnout": 95.4,
+   "margin": 4.840000000000003,
+   "closeness": 95.16,
+   "incumbent_swing": -3.730000000000004
+  },
+  {
+   "election_id": "509",
+   "country": "MLT",
+   "date": "2003-04-12",
+   "year": 2003,
+   "turnout": 95.7,
+   "margin": 4.280000000000001,
+   "closeness": 95.72,
+   "incumbent_swing": -0.020000000000003126
+  },
+  {
+   "election_id": "203",
+   "country": "MLT",
+   "date": "2008-03-08",
+   "year": 2008,
+   "turnout": 93.3,
+   "margin": 0.5500000000000043,
+   "closeness": 99.44999999999999,
+   "incumbent_swing": -2.4499999999999957
+  },
+  {
+   "election_id": "790",
+   "country": "MLT",
+   "date": "2013-03-09",
+   "year": 2013,
+   "turnout": 92.97,
+   "margin": 11.489999999999995,
+   "closeness": 88.51,
+   "incumbent_swing": -6.0
+  },
+  {
+   "election_id": "1010",
+   "country": "MLT",
+   "date": "2017-06-03",
+   "year": 2017,
+   "turnout": 92.06,
+   "margin": 11.36,
+   "closeness": 88.64,
+   "incumbent_swing": 0.21000000000000085
+  },
+  {
+   "election_id": "570",
+   "country": "NLD",
+   "date": "1994-05-03",
+   "year": 1994,
+   "turnout": 78.81,
+   "margin": 1.7399999999999984,
+   "closeness": 98.26,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "372",
+   "country": "NLD",
+   "date": "1998-05-06",
+   "year": 1998,
+   "turnout": 73.35,
+   "margin": 4.289999999999999,
+   "closeness": 95.71000000000001,
+   "incumbent_swing": 5.010000000000002
+  },
+  {
+   "election_id": "74",
+   "country": "NLD",
+   "date": "2002-05-15",
+   "year": 2002,
+   "turnout": 79.06,
+   "margin": 10.93,
+   "closeness": 89.07,
+   "incumbent_swing": -13.870000000000001
+  },
+  {
+   "election_id": "335",
+   "country": "NLD",
+   "date": "2003-01-22",
+   "year": 2003,
+   "turnout": 80.04,
+   "margin": 1.3599999999999994,
+   "closeness": 98.64,
+   "incumbent_swing": 0.6900000000000013
+  },
+  {
+   "election_id": "578",
+   "country": "NLD",
+   "date": "2006-11-22",
+   "year": 2006,
+   "turnout": 80.35,
+   "margin": 5.32,
+   "closeness": 94.68,
+   "incumbent_swing": -2.1099999999999994
+  },
+  {
+   "election_id": "530",
+   "country": "NLD",
+   "date": "2010-06-09",
+   "year": 2010,
+   "turnout": 75.4,
+   "margin": 0.8599999999999994,
+   "closeness": 99.14,
+   "incumbent_swing": -12.900000000000002
+  },
+  {
+   "election_id": "785",
+   "country": "NLD",
+   "date": "2012-09-12",
+   "year": 2012,
+   "turnout": 74.57,
+   "margin": 1.7399999999999984,
+   "closeness": 98.26,
+   "incumbent_swing": 6.09
+  },
+  {
+   "election_id": "1012",
+   "country": "NLD",
+   "date": "2017-03-15",
+   "year": 2017,
+   "turnout": 81.93,
+   "margin": 8.200000000000001,
+   "closeness": 91.8,
+   "incumbent_swing": -5.279999999999998
+  },
+  {
+   "election_id": "1097",
+   "country": "NLD",
+   "date": "2021-03-17",
+   "year": 2021,
+   "turnout": 78.71,
+   "margin": 6.850000000000001,
+   "closeness": 93.15,
+   "incumbent_swing": 0.5700000000000003
+  },
+  {
+   "election_id": "404",
+   "country": "NOR",
+   "date": "1993-09-13",
+   "year": 1993,
+   "turnout": 75.85,
+   "margin": 20.2,
+   "closeness": 79.8,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "669",
+   "country": "NOR",
+   "date": "1997-09-16",
+   "year": 1997,
+   "turnout": 78.33,
+   "margin": 19.7,
+   "closeness": 80.3,
+   "incumbent_swing": -1.8999999999999986
+  },
+  {
+   "election_id": "328",
+   "country": "NOR",
+   "date": "2001-09-10",
+   "year": 2001,
+   "turnout": 75.53,
+   "margin": 3.1000000000000014,
+   "closeness": 96.9,
+   "incumbent_swing": -10.7
+  },
+  {
+   "election_id": "3",
+   "country": "NOR",
+   "date": "2005-09-12",
+   "year": 2005,
+   "turnout": 77.43,
+   "margin": 10.600000000000001,
+   "closeness": 89.4,
+   "incumbent_swing": 8.400000000000002
+  },
+  {
+   "election_id": "285",
+   "country": "NOR",
+   "date": "2009-09-14",
+   "year": 2009,
+   "turnout": 76.37,
+   "margin": 12.5,
+   "closeness": 87.5,
+   "incumbent_swing": 2.6999999999999957
+  },
+  {
+   "election_id": "801",
+   "country": "NOR",
+   "date": "2013-09-09",
+   "year": 2013,
+   "turnout": 78.2,
+   "margin": 5.0,
+   "closeness": 95.0,
+   "incumbent_swing": -4.599999999999998
+  },
+  {
+   "election_id": "1017",
+   "country": "NOR",
+   "date": "2017-09-11",
+   "year": 2017,
+   "turnout": 78.22,
+   "margin": 2.3999999999999986,
+   "closeness": 97.6,
+   "incumbent_swing": -3.400000000000002
+  },
+  {
+   "election_id": "1104",
+   "country": "NOR",
+   "date": "2021-09-13",
+   "year": 2021,
+   "turnout": 77.17,
+   "margin": 5.900000000000002,
+   "closeness": 94.1,
+   "incumbent_swing": -1.0999999999999979
+  },
+  {
+   "election_id": "350",
+   "country": "NZL",
+   "date": "1990-10-27",
+   "year": 1990,
+   "turnout": 85.24,
+   "margin": 12.68,
+   "closeness": 87.32,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "634",
+   "country": "NZL",
+   "date": "1993-11-06",
+   "year": 1993,
+   "turnout": 85.2,
+   "margin": 0.36999999999999744,
+   "closeness": 99.63,
+   "incumbent_swing": -12.770000000000003
+  },
+  {
+   "election_id": "561",
+   "country": "NZL",
+   "date": "1996-10-12",
+   "year": 1996,
+   "turnout": 88.28,
+   "margin": 5.650000000000002,
+   "closeness": 94.35,
+   "incumbent_swing": -1.2099999999999937
+  },
+  {
+   "election_id": "451",
+   "country": "NZL",
+   "date": "1999-11-27",
+   "year": 1999,
+   "turnout": 84.77,
+   "margin": 8.240000000000002,
+   "closeness": 91.75999999999999,
+   "incumbent_swing": -3.3400000000000034
+  },
+  {
+   "election_id": "572",
+   "country": "NZL",
+   "date": "2002-07-27",
+   "year": 2002,
+   "turnout": 76.98,
+   "margin": 20.33,
+   "closeness": 79.67,
+   "incumbent_swing": 2.519999999999996
+  },
+  {
+   "election_id": "675",
+   "country": "NZL",
+   "date": "2005-09-17",
+   "year": 2005,
+   "turnout": 80.92,
+   "margin": 2.0,
+   "closeness": 98.0,
+   "incumbent_swing": -0.1599999999999966
+  },
+  {
+   "election_id": "660",
+   "country": "NZL",
+   "date": "2008-11-08",
+   "year": 2008,
+   "turnout": 79.46,
+   "margin": 10.939999999999998,
+   "closeness": 89.06,
+   "incumbent_swing": -7.109999999999999
+  },
+  {
+   "election_id": "776",
+   "country": "NZL",
+   "date": "2011-11-26",
+   "year": 2011,
+   "turnout": 74.21,
+   "margin": 19.830000000000002,
+   "closeness": 80.17,
+   "incumbent_swing": 2.3800000000000026
+  },
+  {
+   "election_id": "829",
+   "country": "NZL",
+   "date": "2014-09-20",
+   "year": 2014,
+   "turnout": 77.9,
+   "margin": 21.91,
+   "closeness": 78.09,
+   "incumbent_swing": -0.2700000000000031
+  },
+  {
+   "election_id": "1018",
+   "country": "NZL",
+   "date": "2017-09-23",
+   "year": 2017,
+   "turnout": 79.75,
+   "margin": 7.5,
+   "closeness": 92.5,
+   "incumbent_swing": -2.6400000000000006
+  },
+  {
+   "election_id": "1092",
+   "country": "NZL",
+   "date": "2020-10-17",
+   "year": 2020,
+   "turnout": 82.24,
+   "margin": 24.43,
+   "closeness": 75.57,
+   "incumbent_swing": -18.82
+  },
+  {
+   "election_id": "211",
+   "country": "POL",
+   "date": "1991-10-27",
+   "year": 1991,
+   "turnout": 43.2,
+   "margin": 0.3100000000000005,
+   "closeness": 99.69,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "268",
+   "country": "POL",
+   "date": "1993-09-19",
+   "year": 1993,
+   "turnout": 52.13,
+   "margin": 4.999999999999998,
+   "closeness": 95.0,
+   "incumbent_swing": -1.7100000000000009
+  },
+  {
+   "election_id": "477",
+   "country": "POL",
+   "date": "1997-09-21",
+   "year": 1997,
+   "turnout": 47.93,
+   "margin": 6.699999999999999,
+   "closeness": 93.3,
+   "incumbent_swing": 6.73
+  },
+  {
+   "election_id": "565",
+   "country": "POL",
+   "date": "2001-09-23",
+   "year": 2001,
+   "turnout": 46.29,
+   "margin": 28.34,
+   "closeness": 71.66,
+   "incumbent_swing": -28.229999999999997
+  },
+  {
+   "election_id": "188",
+   "country": "POL",
+   "date": "2005-09-25",
+   "year": 2005,
+   "turnout": 40.51,
+   "margin": 2.8999999999999986,
+   "closeness": 97.1,
+   "incumbent_swing": -29.74
+  },
+  {
+   "election_id": "560",
+   "country": "POL",
+   "date": "2007-10-19",
+   "year": 2007,
+   "turnout": 53.82,
+   "margin": 9.399999999999999,
+   "closeness": 90.6,
+   "incumbent_swing": 5.109999999999999
+  },
+  {
+   "election_id": "766",
+   "country": "POL",
+   "date": "2011-10-09",
+   "year": 2011,
+   "turnout": 48.92,
+   "margin": 9.29,
+   "closeness": 90.71000000000001,
+   "incumbent_swing": -2.3299999999999983
+  },
+  {
+   "election_id": "996",
+   "country": "POL",
+   "date": "2015-10-25",
+   "year": 2015,
+   "turnout": 50.92,
+   "margin": 13.489999999999998,
+   "closeness": 86.51,
+   "incumbent_swing": -15.09
+  },
+  {
+   "election_id": "1082",
+   "country": "POL",
+   "date": "2019-10-13",
+   "year": 2019,
+   "turnout": 61.75,
+   "margin": 16.190000000000005,
+   "closeness": 83.81,
+   "incumbent_swing": 6.010000000000005
+  },
+  {
+   "election_id": "90",
+   "country": "PRT",
+   "date": "1991-10-06",
+   "year": 1991,
+   "turnout": 67.78,
+   "margin": 21.900000000000002,
+   "closeness": 78.1,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "216",
+   "country": "PRT",
+   "date": "1995-10-01",
+   "year": 1995,
+   "turnout": 66.3,
+   "margin": 9.829999999999998,
+   "closeness": 90.17,
+   "incumbent_swing": -16.82
+  },
+  {
+   "election_id": "352",
+   "country": "PRT",
+   "date": "1999-10-10",
+   "year": 1999,
+   "turnout": 61.09,
+   "margin": 11.980000000000004,
+   "closeness": 88.02,
+   "incumbent_swing": 0.3500000000000014
+  },
+  {
+   "election_id": "657",
+   "country": "PRT",
+   "date": "2002-03-17",
+   "year": 2002,
+   "turnout": 61.48,
+   "margin": 2.460000000000001,
+   "closeness": 97.53999999999999,
+   "incumbent_swing": -6.410000000000004
+  },
+  {
+   "election_id": "210",
+   "country": "PRT",
+   "date": "2005-02-20",
+   "year": 2005,
+   "turnout": 64.26,
+   "margin": 16.759999999999998,
+   "closeness": 83.24000000000001,
+   "incumbent_swing": -11.369999999999997
+  },
+  {
+   "election_id": "405",
+   "country": "PRT",
+   "date": "2009-09-27",
+   "year": 2009,
+   "turnout": 59.68,
+   "margin": 7.689999999999998,
+   "closeness": 92.31,
+   "incumbent_swing": -8.670000000000002
+  },
+  {
+   "election_id": "702",
+   "country": "PRT",
+   "date": "2011-06-05",
+   "year": 2011,
+   "turnout": 58.03,
+   "margin": 11.070000000000004,
+   "closeness": 88.92999999999999,
+   "incumbent_swing": -8.489999999999998
+  },
+  {
+   "election_id": "993",
+   "country": "PRT",
+   "date": "2015-10-04",
+   "year": 2015,
+   "turnout": 55.84,
+   "margin": 6.270000000000003,
+   "closeness": 93.72999999999999,
+   "incumbent_swing": -0.46999999999999886
+  },
+  {
+   "election_id": "1081",
+   "country": "PRT",
+   "date": "2019-10-06",
+   "year": 2019,
+   "turnout": 48.6,
+   "margin": 9.02,
+   "closeness": 90.98,
+   "incumbent_swing": -10.650000000000002
+  },
+  {
+   "election_id": "1109",
+   "country": "PRT",
+   "date": "2022-01-30",
+   "year": 2022,
+   "turnout": 51.46,
+   "margin": 14.09,
+   "closeness": 85.91,
+   "incumbent_swing": 4.289999999999999
+  },
+  {
+   "election_id": "633",
+   "country": "ROU",
+   "date": "1990-05-20",
+   "year": 1990,
+   "turnout": 86.19,
+   "margin": 59.099999999999994,
+   "closeness": 40.900000000000006,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "416",
+   "country": "ROU",
+   "date": "1992-09-27",
+   "year": 1992,
+   "turnout": 76.29,
+   "margin": 17.5,
+   "closeness": 82.5,
+   "incumbent_swing": -56.099999999999994
+  },
+  {
+   "election_id": "49",
+   "country": "ROU",
+   "date": "1996-11-03",
+   "year": 1996,
+   "turnout": 76.01,
+   "margin": 8.84,
+   "closeness": 91.16,
+   "incumbent_swing": -5.93
+  },
+  {
+   "election_id": "336",
+   "country": "ROU",
+   "date": "2000-11-26",
+   "year": 2000,
+   "turnout": 65.31,
+   "margin": 17.13,
+   "closeness": 82.87,
+   "incumbent_swing": 14.84
+  },
+  {
+   "election_id": "165",
+   "country": "ROU",
+   "date": "2004-11-28",
+   "year": 2004,
+   "turnout": 58.51,
+   "margin": 5.300000000000001,
+   "closeness": 94.7,
+   "incumbent_swing": -0.00999999999999801
+  },
+  {
+   "election_id": "319",
+   "country": "ROU",
+   "date": "2008-11-30",
+   "year": 2008,
+   "turnout": 39.2,
+   "margin": -0.730000000000004,
+   "closeness": 100.73,
+   "incumbent_swing": -3.509999999999998
+  },
+  {
+   "election_id": "787",
+   "country": "ROU",
+   "date": "2012-12-09",
+   "year": 2012,
+   "turnout": 41.76,
+   "margin": 42.120000000000005,
+   "closeness": 57.879999999999995,
+   "incumbent_swing": -15.849999999999998
+  },
+  {
+   "election_id": "1015",
+   "country": "ROU",
+   "date": "2016-12-11",
+   "year": 2016,
+   "turnout": 39.46,
+   "margin": 25.439999999999998,
+   "closeness": 74.56,
+   "incumbent_swing": -13.150000000000006
+  },
+  {
+   "election_id": "1093",
+   "country": "ROU",
+   "date": "2020-12-06",
+   "year": 2020,
+   "turnout": 31.94,
+   "margin": 3.7099999999999973,
+   "closeness": 96.29,
+   "incumbent_swing": -16.58
+  },
+  {
+   "election_id": "538",
+   "country": "SVK",
+   "date": "1990-06-09",
+   "year": 1990,
+   "turnout": 95.39,
+   "margin": 10.14,
+   "closeness": 89.86,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "294",
+   "country": "SVK",
+   "date": "1992-06-06",
+   "year": 1992,
+   "turnout": 84.2,
+   "margin": 22.56,
+   "closeness": 77.44,
+   "incumbent_swing": -25.310000000000002
+  },
+  {
+   "election_id": "119",
+   "country": "SVK",
+   "date": "1994-10-01",
+   "year": 1994,
+   "turnout": 75.41,
+   "margin": 24.549999999999997,
+   "closeness": 75.45,
+   "incumbent_swing": -2.289999999999999
+  },
+  {
+   "election_id": "349",
+   "country": "SVK",
+   "date": "1998-09-26",
+   "year": 1998,
+   "turnout": 84.15,
+   "margin": 0.6700000000000017,
+   "closeness": 99.33,
+   "incumbent_swing": -7.969999999999999
+  },
+  {
+   "election_id": "218",
+   "country": "SVK",
+   "date": "2002-09-21",
+   "year": 2002,
+   "turnout": 69.99,
+   "margin": 4.41,
+   "closeness": 95.59,
+   "incumbent_swing": -7.5
+  },
+  {
+   "election_id": "192",
+   "country": "SVK",
+   "date": "2006-06-17",
+   "year": 2006,
+   "turnout": 54.67,
+   "margin": 10.79,
+   "closeness": 89.21000000000001,
+   "incumbent_swing": -10.71
+  },
+  {
+   "election_id": "524",
+   "country": "SVK",
+   "date": "2010-06-12",
+   "year": 2010,
+   "turnout": 58.84,
+   "margin": 19.369999999999997,
+   "closeness": 80.63,
+   "incumbent_swing": 5.649999999999999
+  },
+  {
+   "election_id": "781",
+   "country": "SVK",
+   "date": "2012-03-10",
+   "year": 2012,
+   "turnout": 59.11,
+   "margin": 35.589999999999996,
+   "closeness": 64.41,
+   "incumbent_swing": 9.619999999999997
+  },
+  {
+   "election_id": "1003",
+   "country": "SVK",
+   "date": "2016-03-06",
+   "year": 2016,
+   "turnout": 59.82,
+   "margin": 16.18,
+   "closeness": 83.82,
+   "incumbent_swing": -16.129999999999995
+  },
+  {
+   "election_id": "1089",
+   "country": "SVK",
+   "date": "2020-02-29",
+   "year": 2020,
+   "turnout": 65.81,
+   "margin": 6.73,
+   "closeness": 93.27,
+   "incumbent_swing": -9.990000000000002
+  },
+  {
+   "election_id": "382",
+   "country": "SVN",
+   "date": "1992-12-06",
+   "year": 1992,
+   "turnout": 85.67,
+   "margin": 8.950000000000001,
+   "closeness": 91.05,
+   "incumbent_swing": -3.7200000000000006
+  },
+  {
+   "election_id": "338",
+   "country": "SVN",
+   "date": "1996-11-10",
+   "year": 1996,
+   "turnout": 73.67,
+   "margin": 7.630000000000003,
+   "closeness": 92.37,
+   "incumbent_swing": 3.5500000000000007
+  },
+  {
+   "election_id": "525",
+   "country": "SVN",
+   "date": "2000-10-15",
+   "year": 2000,
+   "turnout": 70.09,
+   "margin": 20.449999999999996,
+   "closeness": 79.55000000000001,
+   "incumbent_swing": 9.249999999999996
+  },
+  {
+   "election_id": "80",
+   "country": "SVN",
+   "date": "2004-10-03",
+   "year": 2004,
+   "turnout": 60.65,
+   "margin": 6.279999999999998,
+   "closeness": 93.72,
+   "incumbent_swing": -13.459999999999997
+  },
+  {
+   "election_id": "522",
+   "country": "SVN",
+   "date": "2008-09-21",
+   "year": 2008,
+   "turnout": 63.1,
+   "margin": 1.1899999999999977,
+   "closeness": 98.81,
+   "incumbent_swing": 0.18000000000000327
+  },
+  {
+   "election_id": "778",
+   "country": "SVN",
+   "date": "2011-12-04",
+   "year": 2011,
+   "turnout": 65.6,
+   "margin": 2.3200000000000003,
+   "closeness": 97.68,
+   "incumbent_swing": -19.93
+  },
+  {
+   "election_id": "817",
+   "country": "SVN",
+   "date": "2014-07-13",
+   "year": 2014,
+   "turnout": 51.71,
+   "margin": 13.780000000000001,
+   "closeness": 86.22,
+   "incumbent_swing": -25.540000000000003
+  },
+  {
+   "election_id": "1025",
+   "country": "SVN",
+   "date": "2018-06-03",
+   "year": 2018,
+   "turnout": 52.63,
+   "margin": 12.320000000000002,
+   "closeness": 87.67999999999999,
+   "incumbent_swing": -24.740000000000002
+  },
+  {
+   "election_id": "1108",
+   "country": "SVN",
+   "date": "2022-04-22",
+   "year": 2022,
+   "turnout": 70.96,
+   "margin": 10.970000000000002,
+   "closeness": 89.03,
+   "incumbent_swing": -1.4400000000000013
+  },
+  {
+   "election_id": "472",
+   "country": "SWE",
+   "date": "1991-09-15",
+   "year": 1991,
+   "turnout": 86.74,
+   "margin": 15.800000000000004,
+   "closeness": 84.19999999999999,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "412",
+   "country": "SWE",
+   "date": "1994-09-18",
+   "year": 1994,
+   "turnout": 86.83,
+   "margin": 22.9,
+   "closeness": 77.1,
+   "incumbent_swing": 7.599999999999994
+  },
+  {
+   "election_id": "33",
+   "country": "SWE",
+   "date": "1998-09-20",
+   "year": 1998,
+   "turnout": 81.39,
+   "margin": 13.480000000000004,
+   "closeness": 86.52,
+   "incumbent_swing": -8.919999999999995
+  },
+  {
+   "election_id": "156",
+   "country": "SWE",
+   "date": "2002-09-15",
+   "year": 2002,
+   "turnout": 80.11,
+   "margin": 24.599999999999998,
+   "closeness": 75.4,
+   "incumbent_swing": 3.519999999999996
+  },
+  {
+   "election_id": "629",
+   "country": "SWE",
+   "date": "2006-09-17",
+   "year": 2006,
+   "turnout": 81.99,
+   "margin": 9.100000000000001,
+   "closeness": 90.9,
+   "incumbent_swing": -4.699999999999996
+  },
+  {
+   "election_id": "512",
+   "country": "SWE",
+   "date": "2010-09-19",
+   "year": 2010,
+   "turnout": 84.63,
+   "margin": 0.6000000000000014,
+   "closeness": 99.4,
+   "incumbent_swing": -4.540000000000003
+  },
+  {
+   "election_id": "828",
+   "country": "SWE",
+   "date": "2014-09-14",
+   "year": 2014,
+   "turnout": 85.81,
+   "margin": 7.680000000000003,
+   "closeness": 92.32,
+   "incumbent_swing": 0.3500000000000014
+  },
+  {
+   "election_id": "1041",
+   "country": "SWE",
+   "date": "2018-09-09",
+   "year": 2018,
+   "turnout": 87.18,
+   "margin": 8.420000000000002,
+   "closeness": 91.58,
+   "incumbent_swing": -2.75
+  },
+  {
+   "election_id": "1112",
+   "country": "SWE",
+   "date": "2022-09-11",
+   "year": 2022,
+   "turnout": 84.21,
+   "margin": 9.79,
+   "closeness": 90.21000000000001,
+   "incumbent_swing": 2.0699999999999967
+  },
+  {
+   "election_id": "811",
+   "country": "TUR",
+   "date": "1991-10-20",
+   "year": 1991,
+   "turnout": 83.92,
+   "margin": 3.0199999999999996,
+   "closeness": 96.98,
+   "incumbent_swing": null
+  },
+  {
+   "election_id": "810",
+   "country": "TUR",
+   "date": "1995-12-24",
+   "year": 1995,
+   "turnout": 85.2,
+   "margin": 2.192,
+   "closeness": 97.80799999999999,
+   "incumbent_swing": -7.846
+  },
+  {
+   "election_id": "809",
+   "country": "TUR",
+   "date": "1999-04-18",
+   "year": 1999,
+   "turnout": 87.09,
+   "margin": 4.210000000000001,
+   "closeness": 95.78999999999999,
+   "incumbent_swing": -5.966000000000001
+  },
+  {
+   "election_id": "808",
+   "country": "TUR",
+   "date": "2002-11-03",
+   "year": 2002,
+   "turnout": 79.14,
+   "margin": 14.89,
+   "closeness": 85.11,
+   "incumbent_swing": -20.970000000000002
+  },
+  {
+   "election_id": "807",
+   "country": "TUR",
+   "date": "2007-07-22",
+   "year": 2007,
+   "turnout": 84.25,
+   "margin": 25.759999999999998,
+   "closeness": 74.24000000000001,
+   "incumbent_swing": 12.379999999999995
+  },
+  {
+   "election_id": "806",
+   "country": "TUR",
+   "date": "2011-06-12",
+   "year": 2011,
+   "turnout": 83.16,
+   "margin": 23.849999999999998,
+   "closeness": 76.15,
+   "incumbent_swing": 3.1700000000000017
+  },
+  {
+   "election_id": "975",
+   "country": "TUR",
+   "date": "2015-06-07",
+   "year": 2015,
+   "turnout": 83.92,
+   "margin": 15.919999999999998,
+   "closeness": 84.08,
+   "incumbent_swing": -8.96
+  },
+  {
+   "election_id": "997",
+   "country": "TUR",
+   "date": "2015-11-01",
+   "year": 2015,
+   "turnout": 85.23,
+   "margin": 24.18,
+   "closeness": 75.82,
+   "incumbent_swing": 8.630000000000003
+  },
+  {
+   "election_id": "1032",
+   "country": "TUR",
+   "date": "2018-06-24",
+   "year": 2018,
+   "turnout": 86.23,
+   "margin": 19.949999999999996,
+   "closeness": 80.05000000000001,
+   "incumbent_swing": -6.880000000000003
+  },
+  {
+   "election_id": "1121",
+   "country": "TUR",
+   "date": "2023-05-14",
+   "year": 2023,
+   "turnout": 86.98,
+   "margin": 10.3,
+   "closeness": 89.7,
+   "incumbent_swing": -7.019999999999996
+  }
+ ]
+}

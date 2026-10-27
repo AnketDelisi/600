@@ -1,4 +1,36 @@
 {
  "election": "israel-2026",
- "snapshots": []
+ "snapshots": [
+  {
+   "at": "2026-10-27T22:25:01Z",
+   "counted": null,
+   "total": null,
+   "counted_pct": null,
+   "pct": {
+    "likud": 27.02,
+    "rzp": 16.84,
+    "yashar": 16.61,
+    "otzma": 8.38,
+    "dems": 8.08,
+    "together": 6.5,
+    "shas": 4.81,
+    "reservists": 3.49,
+    "yb": 3.19,
+    "amcha": 2.93,
+    "utj": 1.01,
+    "raam": 0.11,
+    "joint_list": 0.04
+   },
+   "seats": {
+    "likud": 36,
+    "rzp": 22,
+    "yashar": 22,
+    "otzma": 11,
+    "dems": 11,
+    "together": 8,
+    "shas": 6,
+    "reservists": 4
+   }
+  }
+ ]
 }

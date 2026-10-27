@@ -4,20 +4,133 @@
  "close_at": "2026-10-27T19:00:00Z",
  "chart_start": "2026-09-01",
  "subtitle": "Knesset · 120 seats · 3.25% threshold",
- "status": "waiting",
+ "status": "counting",
  "counted": null,
  "total": null,
  "counted_label": "votes counted",
+ "turnout": 75.72,
  "source": "Knesset Count (CEC data)",
  "source_url": "https://knesset-count.lol/",
- "waiting_text": "Polls have closed. Waiting for the first official results.",
  "result_title": "Vote share",
  "result_note": "Official CEC count, with Bader-Ofer seat allocation.",
- "entries": [],
+ "entries": [
+  {
+   "id": "likud",
+   "name": "Likud",
+   "color": "#1F5AA5",
+   "pct": 27.02,
+   "votes": 719,
+   "seats": 36
+  },
+  {
+   "id": "rzp",
+   "name": "Religious Zionist Party",
+   "color": "#4F9298",
+   "pct": 16.84,
+   "votes": 448,
+   "seats": 22
+  },
+  {
+   "id": "yashar",
+   "name": "Yashar",
+   "color": "#62B9F2",
+   "pct": 16.61,
+   "votes": 442,
+   "seats": 22
+  },
+  {
+   "id": "otzma",
+   "name": "Otzma Yehudit",
+   "color": "#FF4500",
+   "pct": 8.38,
+   "votes": 223,
+   "seats": 11
+  },
+  {
+   "id": "dems",
+   "name": "The Democrats",
+   "color": "#2A38D7",
+   "pct": 8.08,
+   "votes": 215,
+   "seats": 11
+  },
+  {
+   "id": "together",
+   "name": "Together",
+   "color": "#2A2A78",
+   "pct": 6.5,
+   "votes": 173,
+   "seats": 8
+  },
+  {
+   "id": "shas",
+   "name": "Shas",
+   "color": "#000000",
+   "pct": 4.81,
+   "votes": 128,
+   "seats": 6
+  },
+  {
+   "id": "reservists",
+   "name": "The Reservists",
+   "color": "#68692C",
+   "pct": 3.49,
+   "votes": 93,
+   "seats": 4
+  },
+  {
+   "id": "yb",
+   "name": "Yisrael Beiteinu",
+   "color": "#23C2EB",
+   "pct": 3.19,
+   "votes": 85,
+   "seats": 0
+  },
+  {
+   "id": "amcha",
+   "name": "Amcha Yisrael",
+   "color": "#8F36BF",
+   "pct": 2.93,
+   "votes": 78,
+   "seats": 0
+  },
+  {
+   "id": "utj",
+   "name": "United Torah Judaism",
+   "color": "#003366",
+   "pct": 1.01,
+   "votes": 27,
+   "seats": 0
+  },
+  {
+   "id": "raam",
+   "name": "Ra'am",
+   "color": "#15793D",
+   "pct": 0.11,
+   "votes": 3,
+   "seats": 0
+  },
+  {
+   "id": "joint_list",
+   "name": "Joint List",
+   "color": "#01B2AC",
+   "pct": 0.04,
+   "votes": 1,
+   "seats": 0
+  },
+  {
+   "id": "blue_white",
+   "name": "Blue and White",
+   "color": "#0DAAFF",
+   "pct": 0.0,
+   "votes": 0,
+   "seats": 0
+  }
+ ],
  "seat_total": 120,
  "majority": 61,
  "areas": [],
  "notes": "Knesset seats use the Bader-Ofer method and the 3.25% threshold. Results are preliminary until the CEC publishes the official record.",
  "id": "israel-2026",
- "updated_at": "2026-10-26T21:52:46Z"
+ "updated_at": "2026-10-27T22:25:01Z"
 }

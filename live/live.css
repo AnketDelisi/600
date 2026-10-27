@@ -158,9 +158,3 @@ body{margin:0}
 
 .live-archive-link{margin-left:10px;font-family:var(--font);font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;color:var(--c-text-muted);text-decoration:none;border-bottom:1px solid var(--c-rule)}
 .live-archive-link:hover{color:var(--c-accent)}
-
-/* Editorial masthead */
-.live-head h1{font-family:var(--font-display);font-weight:700;letter-spacing:-.04em}
-.live-head .sub{font-family:var(--font-display);font-size:14px;line-height:1.45;font-weight:400;max-width:70ch}
-
-.live-nav button:hover,.live-retry:hover{transform:none}

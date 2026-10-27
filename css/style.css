@@ -21,6 +21,9 @@
   --radius:6px;
   --radius-sm:4px;
   --radius-pill:999px;
+  --card-border:1px solid var(--c-border);
+  --card-border-strong:1px solid var(--c-edge);
+  --card-shadow:0 1px 2px rgba(26,26,26,.04);
   --font:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
   --font-mono:'Source Code Pro','Atlas Grotesk','Nunito Sans',monospace;
   --shadow-big:0 1px 2px rgba(26,26,26,0.05),0 12px 32px -12px rgba(26,26,26,0.16);
@@ -122,7 +125,7 @@ button:active{transform:translateY(1px)}
 .cnav-item.active img{border-color:#FFFFFF}
 
 /* ---------- Cards ---------- */
-.card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);box-shadow:0 1px 2px rgba(26,26,26,.04);padding:20px;width:100%}
+.card{background:var(--c-surface);border:var(--card-border);border-radius:var(--radius);box-shadow:var(--card-shadow);padding:20px;width:100%}
 .card+.card{margin-top:20px}
 .card-head{display:flex;align-items:center;width:100%;margin-bottom:10px;gap:8px}
 .card-head .bar{width:4px;height:13px;background:var(--c-edge);border-radius:var(--radius-pill)}
@@ -153,7 +156,7 @@ button:active{transform:translateY(1px)}
 .ps-rate{font-size:11px;letter-spacing:1px;white-space:nowrap}
 
 /* ---------- Live tab: majority single bar + seat ticks ---------- */
-.lv-majbanner{border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-hard);padding:14px 16px;background:var(--c-surface);margin-bottom:12px}
+.lv-majbanner{border:var(--card-border);border-radius:8px;box-shadow:var(--card-shadow);padding:14px 16px;background:var(--c-surface);margin-bottom:12px}
 .lv-maj-hd{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase;margin-bottom:8px}
 .lv-maj-hd b{font-family:var(--font-mono);font-size:13px;color:var(--c-text-main)}
 .lv-maj-th{font-family:var(--font-mono);font-size:11px;color:var(--c-text-main)}
@@ -174,7 +177,7 @@ button:active{transform:translateY(1px)}
 /* ---------- Brazil identity ---------- */
 .hero-brazil{border-top:4px solid var(--br-yellow)}
 .bz-runoff{display:flex;align-items:stretch;gap:16px;margin-top:14px}
-.bz-cand{flex:1;padding:14px 16px;border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-md);background:var(--c-surface);position:relative}
+.bz-cand{flex:1;padding:14px 16px;border:var(--card-border);border-radius:8px;box-shadow:var(--card-shadow);background:var(--c-surface);position:relative}
 .bz-code{font-size:14px;font-weight:900;letter-spacing:0.5px}
 .bz-pct{font-size:26px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums;margin-left:8px}
 .bz-bar{height:8px;background:#EFEAE0;border-radius:999px;margin:10px 0 8px;overflow:hidden}
@@ -183,7 +186,7 @@ button:active{transform:translateY(1px)}
 .bz-sub b{color:var(--c-text-main);font-family:var(--font-mono)}
 .bz-vs{align-self:center;font-size:12px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted)}
 .bz-path{margin-top:12px;padding-top:10px;border-top:1px solid var(--c-rule);font-size:11px;font-weight:700;color:var(--c-text-muted);display:flex;gap:8px;flex-wrap:wrap}
-.bz-state-card{display:flex;align-items:center;gap:10px;border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-hard);padding:12px 16px;background:var(--c-surface)}
+.bz-state-card{display:flex;align-items:center;gap:10px;border:var(--card-border);border-radius:8px;box-shadow:var(--card-shadow);padding:12px 16px;background:var(--c-surface)}
 .bz-state-code{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:900;border:2px solid var(--c-edge)}
 .bz-state-num{font-size:24px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 .bz-state-lbl{font-size:11px;font-weight:900;letter-spacing:1px;color:var(--c-text-muted);text-transform:uppercase}
@@ -200,14 +203,14 @@ button:active{transform:translateY(1px)}
 .bz-reg-lead{width:60px;text-align:right;font-size:12px;font-weight:900}
 
 /* ---------- Hero ---------- */
-.hero{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-big);padding:24px 28px;width:100%;margin-bottom:20px}
+.hero{background:var(--c-surface);border:var(--card-border-strong);border-radius:8px;box-shadow:var(--shadow-big);padding:24px 28px;width:100%;margin-bottom:20px}
 .hero-title{font-size:15px;font-weight:900;color:var(--c-text-muted);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
 .hero-date{font-size:13px;font-weight:700;color:var(--c-text-muted);margin-bottom:12px}
 .hero-subtitle{font-size:12px;color:var(--c-text-muted);font-weight:700}
 
 /* ---------- Bloc summary ---------- */
 .bloc-row{display:flex;gap:12px;width:100%;margin-bottom:0;height:100%}
-.bloc-card{flex:1;background:var(--c-surface);border:1.5px solid var(--c-edge);border-radius:8px;padding:10px 14px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.bloc-card{flex:1;background:var(--c-surface);border:var(--card-border);border-radius:8px;padding:10px 14px;text-align:center;display:flex;flex-direction:column;justify-content:center}
 .bloc-card .bloc-name{font-size:11px;font-weight:900;color:var(--c-text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
 .bloc-card .bloc-pct{font-size:22px;font-weight:900;line-height:1.15;font-variant-numeric:tabular-nums}
 .bloc-card .bloc-parties{font-size:11px;color:var(--c-text-muted);font-weight:700;margin-top:2px}
@@ -262,7 +265,7 @@ button:active{transform:translateY(1px)}
 /* ---------- District map hover tooltip ---------- */
 #map-box{position:relative}
 #map-box svg path{transition:opacity .15s ease}
-.map-tip{position:absolute;z-index:40;display:none;min-width:230px;max-width:300px;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-big);padding:10px 12px;pointer-events:none;font-family:var(--font)}
+.map-tip{position:absolute;z-index:40;display:none;min-width:230px;max-width:300px;background:var(--c-surface);border:var(--card-border-strong);border-radius:var(--radius);box-shadow:var(--shadow-big);padding:10px 12px;pointer-events:none;font-family:var(--font)}
 .map-tip-head{margin-bottom:8px;border-bottom:1px solid var(--c-edge);padding-bottom:6px}
 .map-tip-title{font-weight:900;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:6px}
 .map-tip-pill{display:inline-block;background:#1A1A1A;color:#FFFFFF;font-weight:900;font-size:8px;line-height:1;padding:2px 4px;border-radius:999px;margin-left:4px;vertical-align:1px;min-width:14px;text-align:center}
@@ -282,7 +285,7 @@ button:active{transform:translateY(1px)}
 .map-tip-delta.flat{color:var(--c-text-muted)}
 
 /* ---------- Trend chart tooltip ---------- */
-.chart-tooltip{position:absolute;z-index:20;display:none;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);padding:8px 10px;font-family:var(--font);font-size:11px;max-width:240px;pointer-events:none}
+.chart-tooltip{position:absolute;z-index:20;display:none;background:var(--c-surface);border:var(--card-border-strong);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);padding:8px 10px;font-family:var(--font);font-size:11px;max-width:240px;pointer-events:none}
 .chart-tooltip.visible{display:block}
 .ct-date{font-weight:900;font-size:10px;letter-spacing:0.5px;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:4px}
 .ct-row{display:flex;align-items:center;gap:6px;white-space:nowrap;padding:1px 0}
@@ -293,7 +296,7 @@ button:active{transform:translateY(1px)}
 /* ---------- Forecast ---------- */
 .fc-section{display:flex;align-items:center;gap:8px;margin:28px 0 14px 0;font-weight:900;color:var(--c-text-muted);font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
 .fc-section .bar{width:4px;height:12px;background:var(--c-edge);border-radius:var(--radius-pill)}
-.fc-hero{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:8px;box-shadow:var(--shadow-big);padding:24px 28px;width:100%;margin-bottom:20px}
+.fc-hero{background:var(--c-surface);border:var(--card-border-strong);border-radius:8px;box-shadow:var(--shadow-big);padding:24px 28px;width:100%;margin-bottom:20px}
 .fc-headline{display:flex;align-items:baseline;gap:10px;margin:8px 0 2px 0;flex-wrap:wrap}
 .fc-headline-label{font-size:16px;font-weight:900;letter-spacing:0.3px}
 .fc-headline-num{font-size:28px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
@@ -357,10 +360,10 @@ button:active{transform:translateY(1px)}
 .method-text p{margin:8px 0}
 .method-text ul{margin:8px 0 8px 20px}
 .method-text li{margin:4px 0}
-.method-text .formula{background:#F6F2E7;border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:12px 16px;font-family:var(--font-mono);font-size:12px;margin:12px 0;width:100%;display:block}
+.method-text .formula{background:#F6F2E7;border:var(--card-border-strong);border-radius:var(--radius);box-shadow:var(--card-shadow);padding:12px 16px;font-family:var(--font-mono);font-size:12px;margin:12px 0;width:100%;display:block}
 
 /* ---------- Sidebar sections (inside the side card) ---------- */
-.sb-section{background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);padding:12px;width:100%}
+.sb-section{background:var(--c-surface);border:var(--card-border);border-radius:var(--radius);padding:12px;width:100%}
 .sb-section+.sb-section{margin-top:12px}
 .sb-kicker{display:flex;align-items:center;width:100%;margin-bottom:8px;gap:8px}
 .sb-kicker .bar{width:4px;height:12px;background:var(--c-accent);border-radius:var(--radius-pill)}
@@ -435,7 +438,7 @@ body.home .tab-trigger{display:none}
 .home-section-head span{font-size:10px;background:#1A1A1A;color:#fff;border-radius:999px;padding:2px 8px}
 .cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
 .cal-card{
-  text-align:left;border:2px solid var(--c-border);background:var(--c-surface);
+  text-align:left;border:var(--card-border);background:var(--c-surface);
   border-radius:var(--radius-sm);padding:12px 14px;cursor:pointer;
   font-family:var(--font);display:flex;flex-direction:column;gap:7px;
   transition:transform .12s ease, box-shadow .12s ease;
@@ -472,7 +475,7 @@ body.home .tab-trigger{display:none}
 .cnav-toggle:hover{border-color:var(--c-accent)}
 .cnav-status{font-family:var(--font);font-size:11px;font-weight:700;color:var(--c-text-muted);min-height:14px;text-align:center;width:100%}
 .home-search-status{font-family:var(--font);font-size:11px;font-weight:700;color:var(--c-text-muted);text-align:center;min-height:16px;margin:2px 0 0}
-.home-empty{padding:28px 16px;text-align:center;font-family:var(--font);font-size:13px;font-weight:700;color:var(--c-text-muted);border:2px solid var(--c-border);border-radius:var(--radius);background:var(--c-surface)}
+.home-empty{padding:28px 16px;text-align:center;font-family:var(--font);font-size:13px;font-weight:700;color:var(--c-text-muted);border:var(--card-border);border-radius:var(--radius);background:var(--c-surface)}
 .home-footer{margin:26px 24px 12px;padding:16px 0 0;border-top:2px solid var(--c-edge);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;font-family:var(--font);font-size:12px;line-height:1.5;color:var(--c-text-muted)}
 .home-footer p{margin:0}
 .home-footer b{color:var(--c-text-main)}

@@ -30,7 +30,7 @@ body{margin:0}
 .live-pill.waiting{background:#FFF6DA;border-color:#9A7416;color:#5F4608}
 .live-pill.counting{background:#E8F0FF;border-color:#2E6EA8;color:#1D4E7A}
 .live-pill.final{background:#1A1A1A;border-color:#1A1A1A;color:#FFF}
-.live-notice{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;background:var(--c-surface);border:2px solid var(--c-edge);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:14px 18px;margin:16px 0}
+.live-notice{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;background:var(--c-surface);border:var(--card-border);border-radius:var(--radius);box-shadow:var(--card-shadow);padding:14px 18px;margin:16px 0}
 .live-notice p{margin:0;font-family:var(--font);font-size:12px;line-height:1.5;color:var(--c-text-muted)}
 .live-notice strong{display:block;font-size:13px;color:var(--c-text-main);margin-bottom:2px}
 .live-countdown{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--c-text-main);text-transform:uppercase;letter-spacing:.3px}
@@ -43,7 +43,7 @@ body{margin:0}
 .live-retry{min-height:44px;border:2px solid var(--c-edge);background:var(--c-surface);color:var(--c-text-main);border-radius:var(--radius-sm);box-shadow:var(--shadow-hard);font-family:var(--font);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.4px;padding:8px 14px;cursor:pointer;margin-top:10px}
 .live-retry:hover{background:var(--c-accent);border-color:var(--c-accent);color:#FFF;transform:translateY(-1px)}
 .live-chart svg{display:block;width:100%;height:auto}
-.live-card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--radius);box-shadow:0 1px 2px rgba(26,26,26,.04);padding:20px;margin:20px 0;width:100%}
+.live-card{background:var(--c-surface);border:var(--card-border);border-radius:var(--radius);box-shadow:var(--card-shadow);padding:20px;margin:20px 0;width:100%}
 .live-card h2{margin:0 0 6px;font-family:var(--font);font-size:14px;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
 .live-card h3{margin:18px 0 8px;font-family:var(--font);font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--c-text-muted)}
 .live-note{color:var(--c-text-muted);font-family:var(--font);font-size:12px;line-height:1.5;margin:0 0 14px;max-width:78ch}
@@ -98,7 +98,7 @@ body{margin:0}
 
 
 #live-map-card{position:relative}
-.live-map-tip{position:absolute;z-index:20;width:min(270px,calc(100% - 16px));background:var(--c-surface);border:2px solid var(--c-edge);box-shadow:var(--shadow-big);padding:10px;pointer-events:none;font-family:var(--font);color:var(--c-text-main)}
+.live-map-tip{position:absolute;z-index:20;width:min(270px,calc(100% - 16px));background:var(--c-surface);border:var(--card-border-strong);box-shadow:var(--shadow-big);padding:10px;pointer-events:none;font-family:var(--font);color:var(--c-text-main)}
 .live-map-tip[hidden]{display:none}
 .live-map-tip-head{font-size:13px;font-weight:900;line-height:1.2;margin-bottom:4px}
 .live-map-tip-meta{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--font-mono);font-size:10px;color:var(--c-text-muted);margin-bottom:7px}

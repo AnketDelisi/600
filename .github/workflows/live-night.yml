@@ -1,0 +1,62 @@
+﻿name: Live results night watch
+
+on:
+  workflow_dispatch:
+    inputs:
+      minutes:
+        description: "Minutes to keep polling"
+        required: false
+        default: "360"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-night
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Poll until the count settles
+        env:
+          MINUTES: ${{ inputs.minutes }}
+        run: |
+          git config user.name "600 live bot"
+          git config user.email "600@users.noreply.github.com"
+          end=$((SECONDS + MINUTES * 60))
+          publish() {
+            git add data/live
+            if git diff --cached --quiet; then return 0; fi
+            git commit -m "Night watch $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git pull --rebase origin main
+            git push origin main
+            git fetch origin stable
+            git checkout stable
+            git checkout main -- data/live
+            git add data/live
+            if ! git diff --cached --quiet; then
+              git commit -m "Sync night watch to stable $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+              git pull --rebase origin stable
+              git push origin stable
+            fi
+            git checkout main
+          }
+          while [ "$SECONDS" -lt "$end" ]; do
+            python scraper/live_all.py
+            publish
+            sleep 30
+          done

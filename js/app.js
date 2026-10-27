@@ -41,6 +41,11 @@ const dataBase=()=>{
   return '../'.repeat(depth-1);
 };
 const DAY=24*60*60*1000;
+const METHOD_DEFF={face:1.0, phone:1.2, online:1.6, mixed:1.3, "":1.4};
+function effectiveSample(poll){
+  const deff=METHOD_DEFF[(poll.method||"").toLowerCase()]||1.4;
+  return Math.max(50,(poll.n||1000)/deff);
+}
 const isPinnedCountry=()=>!!(typeof window!=='undefined'&&window.__600_COUNTRY__);
 
 /* ---------- language ---------- */
@@ -756,7 +761,7 @@ function weightedAverage(polls, party, noBias){
   for(const p of polls){
     const value=pollValue(p, party, noBias);
     if(value===null) continue;
-    const n=ARCHIVE_MODE?(p.n||1000):Math.min(1500, p.n||1000);
+    const n=ARCHIVE_MODE?(p.n||1000):Math.min(1500, effectiveSample(p));
     const w=n*pollsterWeight(p.pollster)*recencyWeight(p.date);
     wSum+=value*w;
     wTotal+=w;
@@ -771,7 +776,7 @@ function stateSpaceAverage(polls, party, noBias){
     if(value===null) continue;
     const t=new Date(p.date).getTime();
     if(!Number.isFinite(t)) continue;
-    rows.push({t, v:value, n:Math.max(50, p.n||50)});
+    rows.push({t, v:value, n:Math.max(50, effectiveSample(p))});
   }
   if(rows.length<2) return weightedAverage(polls, party, noBias);
   rows.sort((a,b)=>a.t-b.t);
@@ -815,7 +820,7 @@ function trendSlopeFit(polls, party, days, now){
     // (CDU 13.5 vs ~20 elsewhere) entered the trend at full strength and its
     // single point flipped the CDU projection upward.
     w*=pollsterWeight(p.pollster);
-    w*=Math.min(1500, p.n||1000);
+    w*=Math.min(1500, effectiveSample(p));
     sw+=w; swt+=w*t; swtt+=w*t*t; swv+=w*(p.votes[party]||0); swtv+=w*t*(p.votes[party]||0);
   }
   const den=sw*swtt-swt*swt;
@@ -5046,8 +5051,8 @@ function applyBlocSwing(simVotes, delta){
 
 function applyNationalSwing(simVotes){
   if(ARCHIVE_MODE) return simVotes;
-  let out=applyBlocSwing(simVotes, gaussianSample(fcRand)*forecastSwingNow());
-  const tz=gaussianSample(fcRand)*turnoutSwing();
+  let out=applyBlocSwing(simVotes, studentTSample(fcRand)*forecastSwingNow());
+  const tz=studentTSample(fcRand)*turnoutSwing();
   const tilt=META&&META.turnout&&META.turnout.tilt;
   if(tilt&&Object.keys(tilt).length){
     let sum=0;
@@ -5178,7 +5183,7 @@ function runForecast(avg, nSims, nPolls){
       regionNoise={};
       for(const nr in mconf.regionOf){
         const r=mconf.regionOf[nr];
-        if(!(r in regionNoise)) regionNoise[r]=gaussianSample(fcRand)*FORECAST_REGION_SIGMA;
+        if(!(r in regionNoise)) regionNoise[r]=studentTSample(fcRand)*FORECAST_REGION_SIGMA;
       }
     }
     // per-district swing error (the baseline pattern's own error, measured
@@ -5197,7 +5202,7 @@ function runForecast(avg, nSims, nPolls){
           const v=(c&&c.votes2022)||ref;
           scale=Math.sqrt(ref/Math.max(1,v));
         }
-        districtNoise[nr]=gaussianSample(fcRand)*FORECAST_DISTRICT_SIGMA*
+        districtNoise[nr]=studentTSample(fcRand)*FORECAST_DISTRICT_SIGMA*
           scale;
       }
     }
@@ -5311,6 +5316,12 @@ function gaussianSample(rng){
   let u1=0;do{u1=rng()}while(u1<=1e-9);
   const u2=rng()||1e-9;
   return Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+}
+function studentTSample(rng, df=5){
+  const z=gaussianSample(rng);
+  let chi=0;
+  for(let i=0;i<df;i++){const g=gaussianSample(rng);chi+=g*g}
+  return z/Math.sqrt(chi/df)*Math.sqrt((df-2)/df);
 }
 
 function frRunoffPairs(p){

@@ -729,3 +729,58 @@ body{background:#fff;color:#111}
 .cnav-item:focus-visible,.cnav-toggle:focus-visible{outline:2px solid #111;outline-offset:1px}
 .home-row:focus-visible td{background:#f7f7f7}
 .home-row:focus-visible td:first-child{box-shadow:inset 2px 0 0 #111}
+
+
+/* ---------- Type scale pass ---------- */
+body{font-size:15px;line-height:1.5}
+h1,h2,h3,.home-title,.hero-title,.card-head .t,.home-section-head{text-wrap:balance}
+p,.home-sub,.home-footer p,.page-note,.method-text{text-wrap:pretty}
+.tab-trigger,.tab-social{font-size:13px}
+.cnav-search{font-size:13px}
+.cnav-item{font-size:12.5px}
+.cnav-group-label{font-size:10px}
+.cnav-status,.home-search-status{font-size:11px}
+.home-kicker{font-size:11px}
+.home-sub{font-size:13px;line-height:1.5}
+.home-title{line-height:1.1}
+.home-section-head{font-size:12.5px}
+.home-section-head span{font-size:11.5px}
+.index-table{font-size:13.5px;line-height:1.4}
+.index-table th{font-size:11px;padding:8px}
+.index-table td{padding:10px 8px}
+.idx-date b{font-size:12.5px}
+.idx-date span,.idx-country span{font-size:11px}
+.idx-leader{font-size:12px}
+.idx-leader span{font-size:12px}
+.home-footer{font-size:12px}
+.page-note{font-size:11px;line-height:1.6}
+.card-head .t{font-size:12.5px}
+.hero-title{font-size:20px;line-height:1.2}
+.hero-date{font-size:12px;line-height:1.55}
+.sb-kicker .t{font-size:11.5px}
+.sb-hint{font-size:11px;line-height:1.45}
+.sb-le-name,.sb-le-pct{font-size:12px}
+.polls-table{font-size:13px;line-height:1.35}
+.polls-table th{font-size:11px;padding:7px 8px}
+.polls-table td{padding:7px 8px}
+.compact-table td{font-size:11px;line-height:1.35}
+.compact-table .num{font-size:11px}
+.bar-header{font-size:11px}
+.party-name{font-size:13.5px}
+.party-pct,.party-seats{font-size:13.5px}
+.party-delta{font-size:11px}
+.fc-section{font-size:11px}
+.method-text{font-size:14px;line-height:1.7}
+@media(max-width:768px){
+  body{font-size:15px}
+  .tab-trigger{font-size:12.5px}
+  .tab-social{font-size:12.5px}
+  .index-table{font-size:13px}
+  .index-table th,.index-table td{padding-left:5px;padding-right:5px}
+  .idx-date b{font-size:12px}
+  .idx-date span,.idx-country span{font-size:10.5px}
+  .hero-title{font-size:19px}
+  .home-footer{font-size:11.5px}
+}
+
+.side-card{height:auto!important;overflow:visible}

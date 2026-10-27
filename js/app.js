@@ -1046,15 +1046,17 @@ function applyNavFilter(){
     g.style.display=any?'':'none';
   });
   let visibleCards=0;
-  document.querySelectorAll('.cal-card').forEach(card=>{
+  document.querySelectorAll('#home-body [data-cnav], .cal-card').forEach(card=>{
     const c=COUNTRIES[card.dataset.cnav]||{name:''};
     const hit=!q||c.name.toLowerCase().includes(q)||card.dataset.cnav.includes(q);
     card.hidden=!hit;
     if(hit) visibleCards++;
   });
   document.querySelectorAll('.home-section').forEach(sec=>{
-    sec.hidden=!sec.querySelector('.cal-card:not([hidden])');
+    sec.hidden=!sec.querySelector('[data-cnav]:not([hidden]), .cal-card:not([hidden])');
   });
+  const front=document.querySelector('.home-front');
+  if(front) front.hidden=!(front.querySelector('[data-cnav]:not([hidden])'));
   const empty=$('home-no-results');
   if(empty){
     empty.hidden=!(q&&visibleCards===0);
@@ -1125,15 +1127,22 @@ function renderHome(){
   const pane=$('pane-polls');
   if(!pane) return;
   pane.innerHTML=`<div class="home-hero">
+    <div class="home-masthead">
+      <span>${t('THE 600 ELECTION BRIEF','600 SEÇİM BRİFİNGİ')}</span>
+      <span>${t('ISSUE','SAYI')} ${fmtCalDate(todayStr())}</span>
+    </div>
     <div class="home-kicker">${t('GLOBAL ELECTION CALENDAR','K\u00dcRESEL SE\u00c7\u0130M TAKV\u0130M\u0130')}</div>
-    <h1 class="home-title">${t('Every election 600 tracks','600\u2019\u00fcn takip etti\u011fi t\u00fcm se\u00e7imler')}</h1>
+    <h1 class="home-title">${t('Every election<br>600 tracks','600\u2019\u00fcn takip etti\u011fi<br>t\u00fcm se\u00e7imler')}</h1>
     <div class="home-sub" id="home-sub">${t('Loading the calendar\u2026','Takvim y\u00fckleniyor\u2026')}</div>
     <div class="home-search-status" id="home-search-status" aria-live="polite"></div>
   </div>
   <div id="home-body"></div>
   <div id="home-no-results" class="home-empty" hidden></div>
   <footer class="home-footer">
-    <p>Polls from Wikipedia. Averages, seat models and simulations by <b>600</b>.</p>
+    <div>
+      <p>Polls from Wikipedia. Averages, seat models and simulations by <b>600</b>.</p>
+      <p class="home-colophon">${t('Independent election brief · corrections and sources welcome via GitHub.','Bağımsız seçim brifingi · düzeltmeler ve kaynaklar GitHub üzerinden.')}</p>
+    </div>
     <button class="home-method" type="button">${t('How 600 works','600 nas\u0131l \u00e7al\u0131\u015f\u0131r')}</button>
   </footer>`;
   const method=pane.querySelector('.home-method');
@@ -1167,19 +1176,105 @@ function renderHomeBody(){
   const later=upcoming.filter(x=>x[2].date>weekEndStr);
   const sub=$('home-sub');
   if(sub) sub.innerHTML=`${upcoming.length} ${plural(upcoming.length,t('upcoming election','yakla\u015fan se\u00e7im'),t('upcoming elections','yakla\u015fan se\u00e7im'))} \u00b7 ${t('updated','g\u00fcncellendi')} ${fmtCalDate((SUMMARY.generated||'').slice(0,10))}`;
-  const sec=(title,items,fn)=>items.length?`<div class="home-section">
+  const lead=thisWeek[0]||upcoming[0]||null;
+  const leadId=lead?lead[0]:null;
+  const rail=[...thisWeek,...later].filter(x=>x[0]!==leadId).slice(0,3);
+  const railIds=new Set(rail.map(x=>x[0]));
+  const index=[...thisWeek,...later].filter(x=>x[0]!==leadId&&!railIds.has(x[0]));
+  const section=(title,items,fn,cls='')=>items.length?`<section class="home-section ${cls}">
       <div class="home-section-head">${title}<span>${items.length}</span></div>
-      <div class="cal-grid">${items.map(fn).join('')}</div></div>`:'';
+      <div class="home-index">${items.map(fn).join('')}</div></section>`:'';
   body.innerHTML=
-    sec(t('THIS WEEK','BU HAFTA'),thisWeek,x=>calCard(...x,'next'))+
-    sec(t('LATER','DAHA SONRA'),later,x=>calCard(...x,'next'))+
-    sec(t('RECENTLY HELD','SON YAPILANLAR'),past,x=>calCard(...x,'past'))+
-    sec(t('DATE TO BE CONFIRMED','TAR\u0130H BELL\u0130 DE\u011e\u0130L'),tbc,x=>calCard(x[0],x[1],null,'tbc'));
-  body.querySelectorAll('.cal-card').forEach(b=>{
-    b.addEventListener('click',()=>{ if(window._600) window._600.setCountry(b.dataset.cnav); });
+    `<div class="home-front">
+      ${lead?`<div class="home-lead-wrap">${leadStory(...lead)}</div>`:''}
+      <aside class="home-rail">
+        <div class="rail-block"><div class="rail-label">${t('ON THE CALENDAR','TAKVİMDE')}</div>
+          ${rail.map(x=>calRow(...x,'next')).join('')}
+        </div>
+        ${editorialNote(upcoming)}
+      </aside>
+    </div>`+
+    section(t('THE INDEX','DİZİN'),index,x=>calRow(...x,'next'),'home-index-section')+
+    section(t('RECENTLY HELD','SON YAPILANLAR'),past.slice(0,8),x=>calRow(...x,'past'),'home-index-section')+
+    section(t('DATE TO BE CONFIRMED','TAR\u0130H BELL\u0130 DE\u011e\u0130L'),tbc,x=>calRow(x[0],x[1],null,'tbc'),'home-index-section');
+  body.querySelectorAll('[data-cnav]').forEach(el=>{
+    el.addEventListener('click',e=>{
+      e.preventDefault();
+      if(window._600) window._600.setCountry(el.dataset.cnav);
+    });
   });
   applyNavFilter();
 }
+
+function summaryValue(s,v){
+  if(v===null||v===undefined) return '—';
+  return s.seat_based?`${v} ${t('seats','sandalye')}`:`${v}%`;
+}
+function summaryMargin(s){
+  if(s.leader_pct===null||s.leader_pct===undefined||s.second_pct===null||s.second_pct===undefined) return '';
+  const m=Math.abs(s.leader_pct-s.second_pct);
+  return s.seat_based?`${fmt(m,1)} ${t('seats','sandalye')}`:`${fmt(m,1)} ${t('points','puan')}`;
+}
+function homeDateLine(ne,mode){
+  if(!ne||!ne.date) return t('DATE TO BE CONFIRMED','TARİH BELLİ DEĞİL');
+  const d=fmtCalDate(ne.date);
+  if(mode==='past') return d;
+  const days=Math.round((new Date(ne.date+'T00:00:00')-new Date(todayStr()+'T00:00:00'))/86400000);
+  if(days===0) return t('POLLS CLOSE TODAY','SANDIKLAR BUGÜN KAPANIYOR');
+  if(days===1) return t('POLLS CLOSE TOMORROW','SANDIKLAR YARIN KAPANIYOR');
+  return `${days} ${plural(days,t('DAY','GÜN'),t('DAYS','GÜN'))} · ${d}`;
+}
+function leadStory(id,s,ne){
+  const top=s.leader_code||s.leader||'—';
+  const second=s.second?partyCode(s.second):'';
+  const margin=summaryMargin(s);
+  const topVal=summaryValue(s,s.leader_pct);
+  const when=homeDateLine(ne,'next');
+  const dek=second&&margin
+    ? `${top} ${t('leads the polling average at','anket ortalamasında önde:')} ${topVal}, ${margin} ${t('ahead of','önde')} ${second}.`
+    : `${s.poll_count||0} ${plural(s.poll_count||0,t('poll','anket'),t('polls','anket'))} ${t('in the current window.','mevcut pencerede.')}`;
+  const latest=s.latest_poll?fmtShortDate(s.latest_poll):'—';
+  return `<a class="home-lead" href="?c=${id}" data-cnav="${id}">
+    <div class="lead-kicker"><span>${t('LEAD ELECTION','BAŞ SEÇİM')}</span><span>${when}</span></div>
+    <h2 class="lead-title">${cName(id)}</h2>
+    <p class="lead-dek">${dek}</p>
+    <div class="lead-stats">
+      <div><span>${t('POLL AVERAGE','ANKET ORTALAMASI')}</span><b>${topVal}</b></div>
+      <div><span>${t('POLLS','ANKET')}</span><b>${s.poll_count||'—'}</b></div>
+      <div><span>${t('LATEST POLL','EN YENİ ANKET')}</span><b>${latest}</b></div>
+    </div>
+    <span class="lead-cta">${t('Open the briefing','Brifingi aç')} →</span>
+  </a>`;
+}
+function calRow(id,s,ne,mode){
+  const precise=ne&&ne.date&&ne.date.length>4;
+  const days=precise?Math.round((new Date(ne.date+'T00:00:00')-new Date(todayStr()+'T00:00:00'))/86400000):null;
+  const chip=precise?(mode==='past'?t('HELD','YAPILDI'):(days===0?t('TODAY','BUGÜN'):days+' '+t('D','G'))):'TBC';
+  const top=s.leader_code||s.leader||'';
+  const topPct=summaryValue(s,s.leader_pct);
+  const seats=s.seats||(COUNTRIES[id]||{}).seats||'';
+  const polls=s.poll_count?`${s.poll_count} ${plural(s.poll_count,t('poll','anket'),t('polls','anket'))}`:'';
+  return `<a class="home-entry" href="?c=${id}" data-cnav="${id}">
+    <span class="he-date">${ne&&ne.date?fmtShortDate(ne.date):'TBC'}</span>
+    <span class="he-main"><b>${cName(id)}</b><small>${seats} ${t('seats','sandalye')}${polls?' · '+polls:''}</small></span>
+    <span class="he-leader">${top?`<i style="background:${s.leader_color||'#888'}"></i>${top} ${topPct}`:''}</span>
+    <span class="he-days">${chip}</span>
+  </a>`;
+}
+function editorialNote(upcoming){
+  const close=upcoming.slice().filter(x=>x[1].leader_pct!==null&&x[1].second_pct!==null&&Math.abs(x[1].leader_pct-x[1].second_pct)>0.05)
+    .sort((a,b)=>Math.abs(a[1].leader_pct-a[1].second_pct)-Math.abs(b[1].leader_pct-b[1].second_pct))[0];
+  const line=close
+    ? `${cName(close[0])} is the closest race on the board: ${close[1].leader_code||close[1].leader} leads by ${summaryMargin(close[1])}.`
+    : t('The calendar is between elections. The model still carries the last result forward.','Takvim seçimler arasında. Model son sonucu ileri taşımaya devam ediyor.');
+  return `<div class="rail-note">
+    <div class="rail-label">${t('FROM THE DESK','MASADAN')}</div>
+    <p>${t('We publish the polling average and the uncertainty around it. A lead is not a forecast; the seat model is where the story usually changes.','Anket ortalamasını ve etrafındaki belirsizliği yayımlıyoruz. Önde olmak tahmin değildir; hikâye genellikle sandalye modelinde değişir.')}</p>
+    <p class="rail-close">${line}</p>
+    <p class="rail-sign">— 600</p>
+  </div>`;
+}
+
 function calCard(id,s,ne,mode){
   const c=COUNTRIES[id];
   const precise=ne&&ne.date&&ne.date.length>4;
@@ -1345,7 +1440,7 @@ function brazilRunoffHero(avg, filteredPolls){
   const frTop=fr?Object.entries(fr).sort((x,y)=>y[1]-x[1]).slice(0,2)
     .map(([pp,vv])=>`${partyCode(pp)} ${fmt(vv,1)}`).join(' \u2013 '):'';
   return `<div class="hero hero-brazil">
-    <div class="hero-title">${COUNTRY_NAME} — ${t('PRESIDENTIAL · TWO ROUNDS','BAŞKANLIK · İKİ TUR')}</div>
+    <div class="hero-title">${t('TWO-ROUND AVERAGE','İKİ TURLU ORTALAMA')}</div>
     <div class="hero-date">${d1} ${t('first round','ilk tur')}${frTop?` (${frTop})`:''} → ${d2} ${t('runoff','ikinci tur')} · ${ro.roN} ${t('head-to-head polls','başa baş anket')}</div>
     <div class="bz-runoff">
       <div class="bz-cand" style="--bz-c:${cA}">
@@ -1372,6 +1467,42 @@ function brazilRunoffHero(avg, filteredPolls){
   </div>`;
 }
 
+function renderBriefingHead(avg, filteredPolls){
+  const latest=filteredPolls[0];
+  const order=PARTY_ORDER.slice().filter(pid=>!(PARTY_META[pid]&&PARTY_META[pid].pastOnly));
+  const ranked=order.slice().sort((a,b)=>(avg[b]||0)-(avg[a]||0));
+  const top=ranked[0], second=ranked[1];
+  const topPct=avg[top]||0, secondPct=second?(avg[second]||0):0;
+  const margin=Math.abs(topPct-secondPct);
+  const unit=SEAT_BASED?t('seats','sandalye'):t('points','puan');
+  const topVal=top?(SEAT_BASED?fmt(topPct,1)+' '+t('seats','sandalye'):pct(topPct)):'—';
+  const electionDate=META.election_date||(COUNTRIES[COUNTRY]||{}).election_date||'';
+  const year=electionDate?electionDate.slice(0,4):'';
+  const updated=latest?fmtCalDate(latest.date):'—';
+  const polls=filteredPolls.length;
+  const hasPolls=polls>0&&Object.values(avg).some(v=>v!==null);
+  const lede=hasPolls
+    ? `${partyCode(top)} ${t('leads the polling average at','anket ortalamasında önde:')} ${topVal}${second?`, ${fmt(margin,1)} ${unit} ${t('ahead of','önde')} ${partyCode(second)}`:''}.`
+    : t('No polls in the current window. The last election is the baseline.','Mevcut pencerede anket yok. Son seçim referans alınıyor.');
+  const note=!hasPolls
+    ? t('The model is running on the last result. Polls will sharpen the picture when the next survey lands.','Model son sonuçla çalışıyor. Yeni anket geldiğinde tablo netleşecek.')
+    : (margin<=2
+      ? t('The race is close enough that the seat model, not the average, is the main story. Read the forecast interval, not just the lead.','Yarış, ortalamanın değil sandalye modelinin ana hikâye olacağı kadar yakın. Sadece farkı değil tahmin aralığını okuyun.')
+      : `${partyCode(top)} ${t('has a clear polling lead. The forecast below tests whether it survives the seat model.','net bir anket üstünlüğüne sahip. Aşağıdaki tahmin bunun sandalye modelinde sürüp sürmediğini test ediyor.')}`);
+  return `<header class="briefing-head">
+    <div class="briefing-kicker"><span>${t('THE 600 BRIEF','600 BRİFİNGİ')}</span><span>${t('POLL OF RECORD','KAYIT ANKETİ')}</span></div>
+    <h1 class="briefing-title">${COUNTRY_NAME}${year?` <span>${year}</span>`:''}</h1>
+    <p class="briefing-dek">${lede}</p>
+    <div class="briefing-meta">
+      <span>${t('By 600','600 tarafından')}</span>
+      <span>${t('Updated','Güncellendi')} ${updated}</span>
+      <span>${polls} ${plural(polls,t('poll','anket'),t('polls','anket'))}</span>
+      <span>${seatsDesc()} ${t('seats','sandalye')} · ${methodNameShort()}</span>
+    </div>
+    <div class="briefing-note"><b>${t('WHAT WE ARE WATCHING','NEYE BAKIYORUZ')}</b><p>${note}</p></div>
+  </header>`;
+}
+
 function renderHero(avg, filteredPolls){
   // two-round presidential countries (Brazil, France): the head-to-head hero
   // whenever the poll window carries runoff pairs; it falls back to the
@@ -1391,7 +1522,7 @@ function renderHeroGeneric(avg, filteredPolls){
   const logoSrc=PARTY_LOGOS[topParty]||'';
   const b=dataBase();
   return `<div class="hero">
-    <div class="hero-title">${COUNTRY_NAME} — ${T.pollAverage}</div>
+    <div class="hero-title">${T.pollAverage}</div>
     <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','en yeni')}: ${latestStr} (${days}${t('d','g')} ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
       <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
@@ -1579,7 +1710,7 @@ function renderTrendChart(canvas, polls){
   const ch=H-pad.top-pad.bottom;
 
   if(dates.length<2){
-    ctx.fillStyle='#64748B';ctx.font='12px Atlas Grotesk,sans-serif';ctx.textAlign='center';
+    ctx.fillStyle='#6B6255';ctx.font='12px Atlas Grotesk,sans-serif';ctx.textAlign='center';
     ctx.fillText('Need at least 2 dates for a chart',W/2,H/2);
     return;
   }
@@ -1685,25 +1816,25 @@ function drawChartBase(hoverIdx){
   ctx.clearRect(0,0,W,H);
 
   // Grid
-  ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+  ctx.strokeStyle='#DED6C8';ctx.lineWidth=0.5;
   const yTicks=4;
   for(let i=0;i<=yTicks;i++){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const val=yMax-(yMax-yMin)*(i/yTicks);
-    ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#6B6255';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(SEAT_BASED?String(Math.round(val)):pct(val),pad.left-6,y+3);
   }
 
   // X labels
   const xStep=Math.max(1,Math.floor(dates.length/8));
-  ctx.fillStyle='#64748B';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#6B6255';ctx.font='10px Source Code Pro,monospace';ctx.textAlign='center';
   for(let i=0;i<dates.length;i+=xStep){
     ctx.fillText(dates[i].slice(5),xOf(i),H-pad.bottom+16);
   }
   // axis note: the lower bound is zoomed, say so
   if(yMin>0){
-    ctx.fillStyle='#94A3B8';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='left';
+    ctx.fillStyle='#8A7F6D';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='left';
     ctx.fillText('axis starts at '+(SEAT_BASED?String(Math.round(yMin)):pct(yMin)),pad.left,pad.top-4);
   }
 
@@ -1793,18 +1924,18 @@ function drawChartBase(hoverIdx){
         const et=Date.parse(ev.date);
         if(!et||et<_aT||et>_bT) return;
         const x=pad.left+((et-_aT)/Math.max(1,(_bT-_aT)))*cw;
-        ctx.strokeStyle='#94A3B8';ctx.lineWidth=1;
+        ctx.strokeStyle='#8A7F6D';ctx.lineWidth=1;
         ctx.setLineDash([2,4]);
         ctx.beginPath();ctx.moveTo(x,pad.top);ctx.lineTo(x,H-pad.bottom);ctx.stroke();
         ctx.setLineDash([]);
         ctx.beginPath();
-        ctx.fillStyle='#475569';
+        ctx.fillStyle='#4A4338';
         ctx.moveTo(x-4,pad.top);ctx.lineTo(x+4,pad.top);ctx.lineTo(x,pad.top+7);
         ctx.closePath();ctx.fill();
         const lbl=(LANG==='tr'&&ev.tr)?ev.tr:(ev.en||'');
         if(lbl){
           ctx.font='600 9px "Source Code Pro",monospace';
-          ctx.fillStyle='#475569';
+          ctx.fillStyle='#4A4338';
           ctx.textAlign='center';
           ctx.fillText(lbl,x,pad.top-4,150);
           ctx.textAlign='left';
@@ -6176,8 +6307,9 @@ function renderForecast(pane){
   }
 
   pane.innerHTML=`<div class="tab-pane-inner">
+    ${renderBriefingHead(avg, filtered)}
     <div class="hero fc-hero">
-      <div class="hero-title">${T.tabs.forecast} — ${COUNTRY_NAME} ${(((META&&META.election_date)||(TREND_CONF&&TREND_CONF.electionDate))||'').slice(0,4)||new Date().getFullYear()}</div>
+      <div class="hero-title">${T.tabs.forecast}</div>
       <button class="shot-btn" id="fc-poster-btn" title="${t('Download the projection poster as PNG','Projeksiyon posterini PNG olarak indir')}" style="margin-left:auto;align-self:center">${CAM_ICON}</button>
       <button class="shot-btn" id="fc-copy-btn" title="${t('Copy the projection poster to the clipboard','Projeksiyon posterini panoya kopyala')}" style="align-self:center">${COPY_ICON}</button>
       <div class="fc-headline">
@@ -7043,16 +7175,16 @@ function drawHistoryLine(canvas, hist, mode){
   const yFor=v=>pad.top+ch*(1-(v-yMin)/(yMax-yMin));
 
   // grid + y labels
-  ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+  ctx.strokeStyle='#DED6C8';ctx.lineWidth=0.5;
   const yTicks=4;
   for(let i=0;i<=yTicks;i++){
     const y=pad.top+ch*(i/yTicks);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const v=yMax-(yMax-yMin)*(i/yTicks);
-    ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#6B6255';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(String(Math.round(v)),pad.left-4,y+3);
   }
-  ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#6B6255';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
     ctx.fillText(String(years[i]),xFor(i),H-pad.bottom+12);
@@ -7169,15 +7301,15 @@ function drawHistoryTurnout(canvas, hist){
   const cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
   const yMin=40,yMax=100;
 
-  ctx.strokeStyle='#E2E8F0';ctx.lineWidth=0.5;
+  ctx.strokeStyle='#DED6C8';ctx.lineWidth=0.5;
   for(let i=0;i<=4;i++){
     const y=pad.top+ch*(i/4);
     ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(W-pad.right,y);ctx.stroke();
     const v=yMax-(yMax-yMin)*(i/4);
-    ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
+    ctx.fillStyle='#6B6255';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='right';
     ctx.fillText(v+'%',pad.left-4,y+3);
   }
-  ctx.fillStyle='#64748B';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
+  ctx.fillStyle='#6B6255';ctx.font='9px Source Code Pro,monospace';ctx.textAlign='center';
   const xStep=Math.max(1,Math.floor(years.length/8));
   for(let i=0;i<years.length;i+=xStep){
     const x=pad.left+(i/(years.length-1))*cw;
@@ -7388,6 +7520,7 @@ function renderPollsTab(){
   const rawAvg=computeAverages(fieldPolls, true);
 
   let html=`<div class="tab-pane-inner">`;
+  html+=renderBriefingHead(avg, filtered);
   // Top row: side card beside hero + poll trend
   html+=`<div class="page-top">
     <div class="card side-card"><div id="sidebar-content"></div></div>
@@ -7418,6 +7551,7 @@ function renderPollsTab(){
         if(!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable) html+=renderConstituencyTable(avg);
   html+=renderPollsTable(fieldPolls);
   html+=renderRunoffTable(filtered);
+  html+=`<div class="briefing-colophon">${t('Polls from Wikipedia. Averages, seat model and simulations by 600. Corrections and sources welcome via GitHub.','Anketler Wikipedia\'dan. Ortalamalar, sandalye modeli ve simülasyonlar 600\'e ait. Düzeltmeler ve kaynaklar GitHub üzerinden.')}</div>`;
   html+=`</div>`;
   pane.innerHTML=html;
 

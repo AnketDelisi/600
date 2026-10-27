@@ -40,6 +40,7 @@ const dataBase=()=>{
   if(depth<=1) return '';
   return '../'.repeat(depth-1);
 };
+const assetUrl=p=>{try{return new URL(p,location.href).href}catch(e){return p}};
 const DAY=24*60*60*1000;
 const METHOD_DEFF={face:1.0, phone:1.2, online:1.6, mixed:1.3, "":1.4};
 function effectiveSample(poll){
@@ -1068,25 +1069,55 @@ function applyNavFilter(){
 function renderCountryNav(){
   const nav=$('country-nav');
   if(!nav) return;
+  if(!nav.querySelector('.cnav-search')){
+    nav.innerHTML=`<button class="cnav-toggle" type="button" aria-expanded="false" aria-controls="cnav-groups">${t('Browse countries','Ülkeleri gözat')}<span></span></button>
+      <input class="cnav-search" type="search" placeholder="${t('Search countries…','Ülke ara…')}" aria-label="${t('Search countries','Ülke ara')}">
+      <div class="cnav-status" aria-live="polite"></div>
+      <div class="cnav-groups" id="cnav-groups"></div>`;
+    const toggle=nav.querySelector('.cnav-toggle');
+    toggle.addEventListener('click',()=>{
+      const open=!nav.classList.contains('open');
+      nav.classList.toggle('open',open);
+      toggle.setAttribute('aria-expanded',String(open));
+      if(open) nav.querySelector('.cnav-search').focus();
+    });
+    const search=nav.querySelector('.cnav-search');
+    search.addEventListener('input',applyNavFilter);
+    search.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){ search.value=''; applyNavFilter(); search.focus(); }
+    });
+  }
   nav.setAttribute('role','navigation');
   nav.setAttribute('aria-label',t('Countries','Ülkeler'));
-  const isHome=typeof HOME_MODE!=='undefined'&&HOME_MODE;
-  const opts=NAV_REGIONS.map(([label,ids])=>{
+  const groups=nav.querySelector('.cnav-groups');
+  const t0=todayStr();
+  const sortKey=id=>{
+    const ne=nextElection(id);
+    if(!ne) return '3';
+    if(ne.date>=t0) return '1'+ne.date;
+    return '2'+String(99999999-parseInt(ne.date.replace(/-/g,''),10));
+  };
+  groups.innerHTML=NAV_REGIONS.map(([label,ids])=>{
     const vis=ids.filter(id=>COUNTRIES[id]&&!COUNTRIES[id].hidden)
-      .sort((a,b)=>cName(a).localeCompare(cName(b)));
+      .sort((a,b)=>{const ka=sortKey(a),kb=sortKey(b);
+        return ka!==kb?ka.localeCompare(kb):cName(a).localeCompare(cName(b));});
     if(!vis.length) return '';
-    return `<optgroup label="${label}">${vis.map(id=>
-      `<option value="${id}"${id===COUNTRY&&!isHome?' selected':''}>${cName(id)}</option>`).join('')}</optgroup>`;
+    return `<div class="cnav-group"><div class="cnav-group-label">${label}</div><div class="cnav-row">`+
+      vis.map(id=>{
+        const active=id===COUNTRY;
+        return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${cName(id)}" aria-pressed="${active}">
+          <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
+          <span class="cnav-name">${cName(id)}</span>
+        </button>`;}).join('')+`</div></div>`;
   }).join('');
-  nav.innerHTML=`<label class="cnav-label">${t('Country','Ülke')}
-    <select class="cnav-select" aria-label="${t('Choose a country','Ülke seç')}">
-      <option value="" disabled${isHome?' selected':''}>${t('Choose a country','Ülke seç')}</option>
-      ${opts}
-    </select></label>`;
-  const sel=nav.querySelector('.cnav-select');
-  sel.addEventListener('change',()=>{
-    if(sel.value&&sel.value!==COUNTRY&&window._600) window._600.setCountry(sel.value);
+  const countEl=nav.querySelector('.cnav-toggle span');
+  if(countEl) countEl.textContent=groups.querySelectorAll('.cnav-item').length;
+  groups.querySelectorAll('.cnav-item').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      if(btn.dataset.cnav!==COUNTRY&&window._600) window._600.setCountry(btn.dataset.cnav);
+    });
   });
+  applyNavFilter();
 }
 function renderHome(){
   document.body.classList.add('home');
@@ -1096,6 +1127,7 @@ function renderHome(){
     <div class="home-kicker">600 / ${t('ELECTION POLLING','SEÇİM ANKETLERİ')}</div>
     <h1 class="home-title">${t('Election calendar','Seçim takvimi')}</h1>
     <p class="home-sub" id="home-sub">${t('Loading the calendar…','Takvim yükleniyor…')}</p>
+    <div class="home-search-status" id="home-search-status" aria-live="polite"></div>
   </div>
   <div id="home-body"></div>
   <div id="home-no-results" class="home-empty" hidden></div>
@@ -1383,9 +1415,7 @@ function renderHeroGeneric(avg, filteredPolls){
     <div class="hero-title">${COUNTRY_NAME} — ${T.pollAverage}</div>
     <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','en yeni')}: ${latestStr} (${days}${t('d','g')} ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
-      <div style="width:36px;height:36px;border:2px solid var(--c-edge);box-shadow:var(--shadow-md);background:${color};display:flex;align-items:center;justify-content:center;overflow:hidden">
-        ${logoSrc?`<img src="${b}${logoSrc}?v=${LOGO_CACHE}" alt="${topParty}" style="width:28px;height:28px;object-fit:contain">`:`<span style="color:${textOn(color)};font-weight:900;font-size:12px">${topParty}</span>`}
-      </div>
+      ${logoSrc?`<span class="hero-mark" role="img" aria-label="${topParty}" style="--mark-color:${color};--mark:url('${assetUrl(b+logoSrc+'?v='+LOGO_CACHE)}')"></span>`:`<span class="hero-mark hero-mark-text" style="color:${color}">${topParty}</span>`}
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
         <span style="font-size:13px;font-weight:700;color:var(--c-text-muted);margin-left:4px">${t('leading','önde')}</span>
@@ -1418,9 +1448,7 @@ function renderPartyBars(avg){
     const mpSeats=SEAT_BASED?Math.ceil(val):(seats[pid]||0);
 
     html+=`<div class="party-row">
-      <div class="party-logo" style="background:${color}">
-        ${PARTY_LOGOS[pid]?`<img src="${dataBase()}${PARTY_LOGOS[pid]}?v=${LOGO_CACHE}" alt="${pid}" style="width:24px;height:24px;object-fit:contain">`:`<span style="color:${textOn(color)}">${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
-      </div>
+      ${PARTY_LOGOS[pid]?`<span class="party-mark" role="img" aria-label="${pid}" style="--mark-color:${color};--mark:url('${assetUrl(dataBase()+PARTY_LOGOS[pid]+'?v='+LOGO_CACHE)}')"></span>`:`<span class="party-mark party-mark-text" style="color:${color}">${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${valDisp(val)}</div>
@@ -1438,7 +1466,7 @@ function renderPartyBars(avg){
       const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
       const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
       html+=`<div class="party-row">
-        <div class="party-logo" style="background:#9CA3AF"><span style="color:#1F2937">${t('OTH','DİĞ')}</span></div>
+        <span class="party-mark party-mark-text" style="color:#9CA3AF">${t('OTH','DİĞ')}</span>
         <div class="party-name">${t('Other','Diğer')}</div>
         <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:#9CA3AF"></div></div>
         <div class="party-pct">${fmt(othersNow)}%</div>

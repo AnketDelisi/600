@@ -31,6 +31,37 @@
     "shas": 6,
     "reservists": 4
    }
+  },
+  {
+   "at": "2026-10-27T23:09:04Z",
+   "counted": null,
+   "total": null,
+   "counted_pct": null,
+   "pct": {
+    "likud": 26.5,
+    "yashar": 19.32,
+    "rzp": 11.25,
+    "dems": 8.44,
+    "together": 8.2,
+    "otzma": 8.15,
+    "yb": 5.05,
+    "shas": 4.34,
+    "reservists": 3.16,
+    "amcha": 2.68,
+    "utj": 1.79,
+    "raam": 0.18,
+    "joint_list": 0.13
+   },
+   "seats": {
+    "likud": 35,
+    "yashar": 26,
+    "rzp": 15,
+    "dems": 11,
+    "together": 11,
+    "otzma": 11,
+    "yb": 6,
+    "shas": 5
+   }
   }
  ]
 }

@@ -17,7 +17,7 @@ CASES = [
     ("/?c=serbia", "POLL AVERAGE"),
     ("/?c=brazil", "POLL AVERAGE"),
     ("/?c=bgpres", "POLL AVERAGE"),
-    ("/", "GLOBAL ELECTION CALENDAR"),
+    ("/", "Election calendar"),
 ]
 
 

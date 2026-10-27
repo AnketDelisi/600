@@ -1046,14 +1046,14 @@ function applyNavFilter(){
     g.style.display=any?'':'none';
   });
   let visibleCards=0;
-  document.querySelectorAll('.cal-card').forEach(card=>{
+  document.querySelectorAll('#home-body [data-cnav], .cal-card').forEach(card=>{
     const c=COUNTRIES[card.dataset.cnav]||{name:''};
     const hit=!q||c.name.toLowerCase().includes(q)||card.dataset.cnav.includes(q);
     card.hidden=!hit;
     if(hit) visibleCards++;
   });
   document.querySelectorAll('.home-section').forEach(sec=>{
-    sec.hidden=!sec.querySelector('.cal-card:not([hidden])');
+    sec.hidden=!sec.querySelector('[data-cnav]:not([hidden]), .cal-card:not([hidden])');
   });
   const empty=$('home-no-results');
   if(empty){
@@ -1068,73 +1068,40 @@ function applyNavFilter(){
 function renderCountryNav(){
   const nav=$('country-nav');
   if(!nav) return;
-  if(!nav.querySelector('.cnav-search')){
-    nav.innerHTML=`<button class="cnav-toggle" type="button" aria-expanded="false" aria-controls="cnav-groups">${t('Browse countries','Ülkeleri gözat')}<span></span></button>
-      <input class="cnav-search" type="search" placeholder="${t('Search countries\u2026','Ülke ara\u2026')}" aria-label="${t('Search countries','Ülke ara')}">
-      <div class="cnav-status" aria-live="polite"></div>
-      <div class="cnav-groups" id="cnav-groups"></div>`;
-    const toggle=nav.querySelector('.cnav-toggle');
-    toggle.addEventListener('click',()=>{
-      const open=!nav.classList.contains('open');
-      nav.classList.toggle('open',open);
-      toggle.setAttribute('aria-expanded',String(open));
-      if(open) nav.querySelector('.cnav-search').focus();
-    });
-    const search=nav.querySelector('.cnav-search');
-    search.addEventListener('input',applyNavFilter);
-    search.addEventListener('keydown',e=>{
-      if(e.key==='Escape'){ search.value=''; applyNavFilter(); search.focus(); }
-    });
-  }
   nav.setAttribute('role','navigation');
   nav.setAttribute('aria-label',t('Countries','Ülkeler'));
-  const groups=nav.querySelector('.cnav-groups');
-  const t0=todayStr();
-  const sortKey=id=>{
-    const ne=nextElection(id);
-    if(!ne) return '3';
-    if(ne.date>=t0) return '1'+ne.date;
-    return '2'+String(99999999-parseInt(ne.date.replace(/-/g,''),10));
-  };
-  groups.innerHTML=NAV_REGIONS.map(([label,ids])=>{
+  const isHome=typeof HOME_MODE!=='undefined'&&HOME_MODE;
+  const opts=NAV_REGIONS.map(([label,ids])=>{
     const vis=ids.filter(id=>COUNTRIES[id]&&!COUNTRIES[id].hidden)
-      .sort((a,b)=>{const ka=sortKey(a),kb=sortKey(b);
-        return ka!==kb?ka.localeCompare(kb):cName(a).localeCompare(cName(b));});
+      .sort((a,b)=>cName(a).localeCompare(cName(b)));
     if(!vis.length) return '';
-    return `<div class="cnav-group"><div class="cnav-group-label">${label}</div><div class="cnav-row">`+
-      vis.map(id=>{
-        const c=COUNTRIES[id]; const active=id===COUNTRY;
-        return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${cName(id)}" aria-pressed="${active}">
-          <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
-          <span class="cnav-name">${cName(id)}</span>
-        </button>`;}).join('')+`</div></div>`;
+    return `<optgroup label="${label}">${vis.map(id=>
+      `<option value="${id}"${id===COUNTRY&&!isHome?' selected':''}>${cName(id)}</option>`).join('')}</optgroup>`;
   }).join('');
-  const visibleCount=groups.querySelectorAll('.cnav-item').length;
-  const countEl=nav.querySelector('.cnav-toggle span');
-  if(countEl) countEl.textContent=visibleCount;
-  groups.querySelectorAll('.cnav-item').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const id=btn.dataset.cnav;
-      if(id!==COUNTRY&&window._600) window._600.setCountry(id);
-    });
+  nav.innerHTML=`<label class="cnav-label">${t('Country','Ülke')}
+    <select class="cnav-select" aria-label="${t('Choose a country','Ülke seç')}">
+      <option value="" disabled${isHome?' selected':''}>${t('Choose a country','Ülke seç')}</option>
+      ${opts}
+    </select></label>`;
+  const sel=nav.querySelector('.cnav-select');
+  sel.addEventListener('change',()=>{
+    if(sel.value&&sel.value!==COUNTRY&&window._600) window._600.setCountry(sel.value);
   });
-  applyNavFilter();
 }
 function renderHome(){
   document.body.classList.add('home');
   const pane=$('pane-polls');
   if(!pane) return;
-  pane.innerHTML=`<div class="home-hero">
-    <div class="home-kicker">${t('GLOBAL ELECTION CALENDAR','K\u00dcRESEL SE\u00c7\u0130M TAKV\u0130M\u0130')}</div>
-    <h1 class="home-title">${t('Every election 600 tracks','600\u2019\u00fcn takip etti\u011fi t\u00fcm se\u00e7imler')}</h1>
-    <div class="home-sub" id="home-sub">${t('Loading the calendar\u2026','Takvim y\u00fckleniyor\u2026')}</div>
-    <div class="home-search-status" id="home-search-status" aria-live="polite"></div>
+  pane.innerHTML=`<div class="home-head">
+    <div class="home-kicker">600 / ${t('ELECTION POLLING','SEÇİM ANKETLERİ')}</div>
+    <h1 class="home-title">${t('Election calendar','Seçim takvimi')}</h1>
+    <p class="home-sub" id="home-sub">${t('Loading the calendar…','Takvim yükleniyor…')}</p>
   </div>
   <div id="home-body"></div>
   <div id="home-no-results" class="home-empty" hidden></div>
   <footer class="home-footer">
-    <p>Polls from Wikipedia. Averages, seat models and simulations by <b>600</b>.</p>
-    <button class="home-method" type="button">${t('How 600 works','600 nas\u0131l \u00e7al\u0131\u015f\u0131r')}</button>
+    <p>${t('600 is an independent, one-person election notebook. Polls from Wikipedia; averages, seat models and mistakes are ours.','600 bağımsız, tek kişilik bir seçim defteridir. Anketler Wikipedia’dan; ortalamalar, sandalye modelleri ve hatalar bize ait.')}</p>
+    <button class="home-method" type="button">${t('How 600 works','600 nasıl çalışır')}</button>
   </footer>`;
   const method=pane.querySelector('.home-method');
   if(method) method.addEventListener('click',()=>{
@@ -1160,26 +1127,48 @@ function renderHomeBody(){
   upcoming.sort((a,b)=>a[2].date.localeCompare(b[2].date));
   past.sort((a,b)=>b[2].date.localeCompare(a[2].date));
   tbc.sort((a,b)=>cName(a[0]).localeCompare(cName(b[0])));
-  const weekEnd=new Date(t0+'T00:00:00Z');
-  weekEnd.setUTCDate(weekEnd.getUTCDate()+7);
-  const weekEndStr=weekEnd.toISOString().slice(0,10);
-  const thisWeek=upcoming.filter(x=>x[2].date<=weekEndStr);
-  const later=upcoming.filter(x=>x[2].date>weekEndStr);
   const sub=$('home-sub');
-  if(sub) sub.innerHTML=`${upcoming.length} ${plural(upcoming.length,t('upcoming election','yakla\u015fan se\u00e7im'),t('upcoming elections','yakla\u015fan se\u00e7im'))} \u00b7 ${t('updated','g\u00fcncellendi')} ${fmtCalDate((SUMMARY.generated||'').slice(0,10))}`;
-  const sec=(title,items,fn)=>items.length?`<div class="home-section">
+  if(sub) sub.innerHTML=`${upcoming.length} ${plural(upcoming.length,t('upcoming election','yaklaşan seçim'),t('upcoming elections','yaklaşan seçim'))} · ${t('updated','güncellendi')} ${fmtCalDate((SUMMARY.generated||'').slice(0,10))}`;
+  const section=(title,items,mode)=>items.length?`<section class="home-section">
       <div class="home-section-head">${title}<span>${items.length}</span></div>
-      <div class="cal-grid">${items.map(fn).join('')}</div></div>`:'';
+      <table class="index-table">
+        <thead><tr><th>${t('Date','Tarih')}</th><th>${t('Election','Seçim')}</th><th class="num">${t('Seats','Sandalye')}</th><th>${t('Leader','Lider')}</th><th class="num">${t('Polls','Anket')}</th></tr></thead>
+        <tbody>${items.map(x=>indexRow(x[0],x[1],x[2],mode)).join('')}</tbody>
+      </table></section>`:'';
   body.innerHTML=
-    sec(t('THIS WEEK','BU HAFTA'),thisWeek,x=>calCard(...x,'next'))+
-    sec(t('LATER','DAHA SONRA'),later,x=>calCard(...x,'next'))+
-    sec(t('RECENTLY HELD','SON YAPILANLAR'),past,x=>calCard(...x,'past'))+
-    sec(t('DATE TO BE CONFIRMED','TAR\u0130H BELL\u0130 DE\u011e\u0130L'),tbc,x=>calCard(x[0],x[1],null,'tbc'));
-  body.querySelectorAll('.cal-card').forEach(b=>{
-    b.addEventListener('click',()=>{ if(window._600) window._600.setCountry(b.dataset.cnav); });
+    section(t('Upcoming','Yaklaşan'),upcoming,'next')+
+    section(t('Recently held','Son yapılanlar'),past,'past')+
+    section(t('Date to be confirmed','Tarih belirsiz'),tbc,'tbc');
+  body.querySelectorAll('.home-row').forEach(row=>{
+    const go=()=>{ if(window._600) window._600.setCountry(row.dataset.cnav); };
+    row.addEventListener('click',go);
+    row.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}
+    });
   });
   applyNavFilter();
 }
+
+function indexRow(id,s,ne,mode){
+  const c=COUNTRIES[id]||{};
+  const precise=ne&&ne.date&&ne.date.length>4;
+  const days=precise?Math.round((new Date(ne.date+'T00:00:00')-new Date(todayStr()+'T00:00:00'))/86400000):null;
+  const when=mode==='past'?t('held','yapıldı'):(days===0?t('today','bugün'):(days===1?t('tomorrow','yarın'):(days!==null?`${days} ${t('days','gün')}`:t('TBC','belirsiz'))));
+  const date=ne&&ne.date?fmtCalDate(ne.date):t('TBC','belirsiz');
+  const seats=s.seats||c.seats||'—';
+  const leader=mode==='past'?(s.last_winner_code||''):(s.leader_code||s.leader||'');
+  const color=mode==='past'?(s.last_winner_color||'#888'):(s.leader_color||'#888');
+  const val=mode==='past'?'':(s.leader_pct==null?'':(s.seat_based?`${s.leader_pct} ${t('seats','sandalye')}`:`${s.leader_pct}%`));
+  const polls=s.poll_count==null?'—':s.poll_count;
+  return `<tr class="home-row" data-cnav="${id}" tabindex="0" role="link" aria-label="${cName(id)}">
+    <td class="idx-date"><b>${date}</b><span>${when}</span></td>
+    <td class="idx-country"><b>${cName(id)}</b><span>${c.method?METHOD_SHORT[c.method]||'':(c.runoffOnly?t('runoff','2. tur'):'')}</span></td>
+    <td class="idx-seats num">${seats}</td>
+    <td class="idx-leader">${leader?`<i style="background:${color}"></i><b>${leader}</b> <span>${val}</span>`:'—'}</td>
+    <td class="idx-polls num">${polls}</td>
+  </tr>`;
+}
+
 function calCard(id,s,ne,mode){
   const c=COUNTRIES[id];
   const precise=ne&&ne.date&&ne.date.length>4;
@@ -7418,6 +7407,7 @@ function renderPollsTab(){
         if(!(COUNTRIES[COUNTRY]||{}).hideConstituencyTable) html+=renderConstituencyTable(avg);
   html+=renderPollsTable(fieldPolls);
   html+=renderRunoffTable(filtered);
+  html+=`<div class="page-note">${t('Polls from Wikipedia. Updated','Anketler Wikipedia’dan. Güncellendi')} ${filtered[0]?fmtCalDate(filtered[0].date):'—'} · <a href="https://github.com/AnketDelisi/600" target="_blank" rel="noopener">${t('Corrections and sources','Düzeltmeler ve kaynaklar')}</a></div>`;
   html+=`</div>`;
   pane.innerHTML=html;
 

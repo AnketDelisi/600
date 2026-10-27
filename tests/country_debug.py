@@ -12,7 +12,7 @@ if not CHROME:
         if Path(c).exists(): CHROME = c; break
 
 def cases():
-    out = [("/", "GLOBAL ELECTION CALENDAR")]
+    out = [("/", "Election calendar")]
     for f in glob.glob(str(ROOT / "data" / "*" / "meta.json")):
         cc = Path(f).parent.name
         out.append(("/?c=" + cc, "POLL AVERAGE"))

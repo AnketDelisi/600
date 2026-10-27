@@ -1,12 +1,14 @@
 """Israel 2026 Knesset live results (CEC data via Knesset Count)."""
 import re
+from datetime import datetime, timezone
+
 import requests
 
 from live_common import write_live
 
 ELECTION = "israel-2026"
 URL = "https://knesset-count.lol/api/results?k=26"
-CEC_URL = "https://votes26.bechirot.gov.il/"
+SOURCE_URL = "https://knesset-count.lol/"
 LETTERS = {
     "מחל": ("likud", "Likud", "#1F5AA5"),
     "רק": ("together", "Together", "#2A2A78"),
@@ -25,6 +27,13 @@ LETTERS = {
 }
 
 
+def waiting_text():
+    close = datetime(2026, 10, 27, 19, 0, tzinfo=timezone.utc)
+    if datetime.now(timezone.utc) >= close:
+        return "Polls have closed. Waiting for the first official results."
+    return "Polls close at 22:00 Israel time on Tuesday, 27 October."
+
+
 def waiting():
     write_live(ELECTION, {
         "name": "Israel 2026",
@@ -36,10 +45,10 @@ def waiting():
         "counted": None,
         "total": None,
         "counted_label": "votes counted",
-        "source": "Central Elections Committee",
-        "source_url": CEC_URL,
-        "waiting_text": "Polls close at 22:00 Israel time on Tuesday, 27 October.",
-        "result_title": "Seats",
+        "source": "Knesset Count (CEC data)",
+        "source_url": SOURCE_URL,
+        "waiting_text": waiting_text(),
+        "result_title": "Vote share",
         "result_note": "Official CEC count, with Bader-Ofer seat allocation.",
         "entries": [],
         "seat_total": 120,
@@ -74,14 +83,14 @@ def main():
     if not entries:
         print("israel: no results yet")
         return waiting()
-    total_votes = sum(e["votes"] for e in entries)
+    total_votes = sum(int(row.get("votes") or 0) for row in rows)
     for entry in entries:
         entry["pct"] = round(entry["votes"] / total_votes * 100, 2) if total_votes else None
     entries.sort(key=lambda e: (-e["seats"], -e["votes"]))
     summary = data.get("summary") or []
     turnout = None
     for row in summary:
-        if isinstance(row, list) and len(row) >= 2 and "הצבעה" in str(row[0]):
+        if isinstance(row, list) and len(row) >= 2 and ("שיעור" in str(row[0]) or "הצבעה" in str(row[0])):
             found = re.search(r"(\d+(?:[.,]\d+)?)\s*%", str(row[1]))
             if found:
                 turnout = float(found.group(1).replace(",", "."))
@@ -96,9 +105,9 @@ def main():
         "total": None,
         "counted_label": "votes counted",
         "turnout": turnout,
-        "source": "Central Elections Committee (via Knesset Count)",
-        "source_url": CEC_URL,
-        "result_title": "Seats",
+        "source": "Knesset Count (CEC data)",
+        "source_url": SOURCE_URL,
+        "result_title": "Vote share",
         "result_note": "Official CEC count, with Bader-Ofer seat allocation.",
         "entries": entries,
         "seat_total": 120,

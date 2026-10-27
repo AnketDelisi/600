@@ -8,7 +8,7 @@
  "counted": null,
  "total": null,
  "counted_label": "votes counted",
- "turnout": 75.72,
+ "turnout": 72.81,
  "source": "Knesset Count (CEC data)",
  "source_url": "https://knesset-count.lol/",
  "result_title": "Vote share",
@@ -18,104 +18,104 @@
    "id": "likud",
    "name": "Likud",
    "color": "#1F5AA5",
-   "pct": 27.02,
-   "votes": 719,
-   "seats": 36
-  },
-  {
-   "id": "rzp",
-   "name": "Religious Zionist Party",
-   "color": "#4F9298",
-   "pct": 16.84,
-   "votes": 448,
-   "seats": 22
+   "pct": 26.5,
+   "votes": 3812,
+   "seats": 35
   },
   {
    "id": "yashar",
    "name": "Yashar",
    "color": "#62B9F2",
-   "pct": 16.61,
-   "votes": 442,
-   "seats": 22
+   "pct": 19.32,
+   "votes": 2779,
+   "seats": 26
   },
   {
-   "id": "otzma",
-   "name": "Otzma Yehudit",
-   "color": "#FF4500",
-   "pct": 8.38,
-   "votes": 223,
-   "seats": 11
+   "id": "rzp",
+   "name": "Religious Zionist Party",
+   "color": "#4F9298",
+   "pct": 11.25,
+   "votes": 1618,
+   "seats": 15
   },
   {
    "id": "dems",
    "name": "The Democrats",
    "color": "#2A38D7",
-   "pct": 8.08,
-   "votes": 215,
+   "pct": 8.44,
+   "votes": 1214,
    "seats": 11
   },
   {
    "id": "together",
    "name": "Together",
    "color": "#2A2A78",
-   "pct": 6.5,
-   "votes": 173,
-   "seats": 8
+   "pct": 8.2,
+   "votes": 1180,
+   "seats": 11
   },
   {
-   "id": "shas",
-   "name": "Shas",
-   "color": "#000000",
-   "pct": 4.81,
-   "votes": 128,
-   "seats": 6
-  },
-  {
-   "id": "reservists",
-   "name": "The Reservists",
-   "color": "#68692C",
-   "pct": 3.49,
-   "votes": 93,
-   "seats": 4
+   "id": "otzma",
+   "name": "Otzma Yehudit",
+   "color": "#FF4500",
+   "pct": 8.15,
+   "votes": 1172,
+   "seats": 11
   },
   {
    "id": "yb",
    "name": "Yisrael Beiteinu",
    "color": "#23C2EB",
-   "pct": 3.19,
-   "votes": 85,
+   "pct": 5.05,
+   "votes": 727,
+   "seats": 6
+  },
+  {
+   "id": "shas",
+   "name": "Shas",
+   "color": "#000000",
+   "pct": 4.34,
+   "votes": 625,
+   "seats": 5
+  },
+  {
+   "id": "reservists",
+   "name": "The Reservists",
+   "color": "#68692C",
+   "pct": 3.16,
+   "votes": 454,
    "seats": 0
   },
   {
    "id": "amcha",
    "name": "Amcha Yisrael",
    "color": "#8F36BF",
-   "pct": 2.93,
-   "votes": 78,
+   "pct": 2.68,
+   "votes": 385,
    "seats": 0
   },
   {
    "id": "utj",
    "name": "United Torah Judaism",
    "color": "#003366",
-   "pct": 1.01,
-   "votes": 27,
+   "pct": 1.79,
+   "votes": 257,
    "seats": 0
   },
   {
    "id": "raam",
    "name": "Ra'am",
    "color": "#15793D",
-   "pct": 0.11,
-   "votes": 3,
+   "pct": 0.18,
+   "votes": 26,
    "seats": 0
   },
   {
    "id": "joint_list",
    "name": "Joint List",
    "color": "#01B2AC",
-   "pct": 0.04,
-   "votes": 1,
+   "pct": 0.13,
+   "votes": 19,
    "seats": 0
   },
   {
@@ -131,8 +131,6 @@
  "majority": 61,
  "areas": [],
  "notes": "Knesset seats use the Bader-Ofer method and the 3.25% threshold. Results are preliminary until the CEC publishes the official record.",
- "id": "israel-2026",
- "updated_at": "2026-10-27T22:25:01Z",
  "map_svg": "../img/israel.svg",
  "map_title": "Districts",
  "map_note": "District-level results are not published by this source yet; the national count is above.",
@@ -180,5 +178,7 @@
     }
    ]
   }
- ]
+ ],
+ "id": "israel-2026",
+ "updated_at": "2026-10-27T23:09:04Z"
 }

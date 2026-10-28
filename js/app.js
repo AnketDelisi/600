@@ -2013,6 +2013,7 @@ let MAP_LAYER=0;         // 0 = main map, 1 = map2 (lower/higher layer)
 let FC_MODE='proj';      // forecast district map: 'proj' or 'res'
 let TREND_MODE='fr';     // poll trend chart: 'fr' (first round) or 'ro' (runoff)
 let MAP_COLOR='party';   // district map coloring: 'party' or 'bloc' (Sweden)
+let MAP_HEAT_PARTY=null;  // selected party for district strength shading
 let FIELD_SIG=null;      // selected poll-field scenario (France 2027); null = all polls
 
 function normalizeTo(src, total){
@@ -2369,6 +2370,18 @@ function filtersNote(){
 
 // Readable text on a party color: dark ink on light colors (yellow SDS,
 // Iceland F), white on the rest.
+function heatColor(hex, value, max, min){
+  const m=/^#?([0-9a-f]{6})$/i.exec(String(hex||''));
+  if(!m) return '#F2F2F2';
+  const v=parseInt(m[1],16);
+  const r=(v>>16)&255, g=(v>>8)&255, b=v&255;
+  const lo=Number(min)||0;
+  const hi=Math.max(lo+0.01, Number(max)||50);
+  const t=Math.max(0,Math.min(1,((Number(value)||0)-lo)/(hi-lo)));
+  const k=0.04+0.96*t;
+  const mix=c=>Math.round(255+(c-255)*k);
+  return `rgb(${mix(r)},${mix(g)},${mix(b)})`;
+}
 function textOn(hex){
   const m=/^#?([0-9a-f]{6})$/i.exec(String(hex||''));
   if(!m) return '#fff';
@@ -2415,6 +2428,7 @@ function renderParliament(avg){
       ${mapConf&&!MAP_ONLY&&!bigMap?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${MAP_LAYER===1?(LANG==='tr'?(mapConf.label_tr||mapConf.label):(mapConf.label_en||mapConf.label))||T.map||'layer 1':((COUNTRIES[COUNTRY].map2&&(LANG==='tr'?(COUNTRIES[COUNTRY].map2.label_tr||COUNTRIES[COUNTRY].map2.label):(COUNTRIES[COUNTRY].map2.label_en||COUNTRIES[COUNTRY].map2.label)))||'layer 2')}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
+      ${mapConf?`<label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
     </div>`;
@@ -2443,6 +2457,7 @@ function renderParliament(avg){
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
     ${box}
+    ${MAP_HEAT_PARTY?`<div class="map-heat-note">${partyCode(MAP_HEAT_PARTY)} ${t('share shading · darker = stronger','oy gölgesi · koyu = güçlü')}</div>`:''}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
       ${cap}${prov}
     </div></div>
@@ -3344,6 +3359,11 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   else selector='path[id^="_"]';
   const paths=svg.querySelectorAll(selector);
   const mapped=[];
+  let heatMax=50, heatMin=0;
+  if(MAP_HEAT_PARTY){
+    const vals=Object.values(conf.gebiete||{}).map(row=>row&&row[MAP_HEAT_PARTY]).filter(v=>v!=null);
+    if(vals.length){ heatMin=Math.min(...vals); heatMax=Math.max(...vals); }
+  }
   const tooltip=document.createElement('div');
   tooltip.className='map-tip';
   box.style.position='relative';
@@ -3382,7 +3402,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
     if(conf.seatDistricts||conf.seatDots||conf.prDistricts) mapped.push({nr,ph});
     const shares=districtShares(nr, avg, resultMode, conf);
     if(!shares) return;
-    const blocMode=MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
+    const blocMode=!MAP_HEAT_PARTY&&MAP_COLOR==='bloc'&&!conf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2;
     const blocTotals=blocMode?districtBlocTotals(shares):null;
     // RESULT mode: official per-district winners (winners2021 map / wkResults
     // argmax / per-constituency 2022), else the uniform-swing projection.
@@ -3395,8 +3415,12 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         ?(districtResultWinner(nr,conf)||districtWinnerProjection(nr,LAST_ELECTION.results,conf))
         :districtWinnerProjection(nr,avg,conf);
     }
-    if(!winner) return;
-    const color=blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888');
+    if(!winner&&!MAP_HEAT_PARTY) return;
+    const heat=MAP_HEAT_PARTY&&shares[MAP_HEAT_PARTY]
+      ?(resultMode?shares[MAP_HEAT_PARTY].past:shares[MAP_HEAT_PARTY].now):null;
+    const color=heat!==null
+      ?heatColor(partyColor(MAP_HEAT_PARTY,conf),heat,heatMax,heatMin)
+      :(blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888'));
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
       ph.style.stroke='#ffffff';
@@ -4742,6 +4766,9 @@ function bindParlToggles(avg){
       if(btn.dataset.mapcolor) MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
       renderPollsTab();
     });
+  });
+  pane.querySelectorAll('.map-heat-select').forEach(sel=>{
+    sel.addEventListener('change',()=>{ MAP_HEAT_PARTY=sel.value||null; renderPollsTab(); });
   });
   const mapShot=$('map-shot-btn');
   if(mapShot){
@@ -6217,6 +6244,7 @@ function renderForecast(pane){
         ${MAP_ONLY&&MAP_CONF()&&(MAP_CONF().runoff2022||MAP_CONF().runoff2026)?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
         ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&FC_MODE!=='upper'?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
+        <label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
@@ -6514,6 +6542,9 @@ function renderForecast(pane){
         pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.toggle('active',b===btn));
         fcRender();
       });
+    });
+    pane.querySelectorAll('.map-heat-select').forEach(sel=>{
+      sel.addEventListener('change',()=>{ MAP_HEAT_PARTY=sel.value||null; fcRender(); });
     });
     pane.querySelectorAll('.fc-layer-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
@@ -7470,6 +7501,7 @@ PARL_MODE='proj';
     MAP_LAYER=0;
     FC_MODE='proj';
     MAP_COLOR='party';
+    MAP_HEAT_PARTY=null;
     FIELD_SIG=null;
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});

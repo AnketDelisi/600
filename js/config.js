@@ -1443,7 +1443,7 @@ saxony_anhalt: {
       pes: 'img/serbia/PES.svg', nada: 'img/serbia/NADA.svg', misn: 'img/serbia/MISN.svg',
       sl: 'img/serbia/SL.svg', vmsz: 'img/serbia/VMSZ.svg', spp: 'img/serbia/SPP.svg',
       sda: 'img/serbia/SDA.svg', rs: 'img/serbia/RS.svg', sdp: 'img/serbia/SDP.svg',
-      kshlp: 'img/serbia/KSHLP.svg',
+      kshlp: 'img/serbia/KSHLP.svg', spn: 'img/serbia/SPN.svg',
     },
     // Pollster MAE (mean absolute error, %-points) from final party-level polls before each election,
     // averaged over SNS / SPS / main opposition list / smaller opposition list / NADA.
@@ -4103,7 +4103,7 @@ saxony_anhalt: {
       svobodni: 'img/cz/SVOBODNI.svg',
       top09: 'img/cz/TOP09.svg',
       trikolora: 'img/cz/TRIKOLORA.svg',
-      zeleni: 'img/cz/ZELENI.svg',
+      zeleni: 'img/cz/ZELENI.svg', spolu: 'img/cz/SPOLU.svg',
     },
   },
 

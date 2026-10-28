@@ -5577,7 +5577,7 @@ function ypUpdate(){
   if(sumEl) sumEl.textContent=fmt(sum,1)+'%';
   const seats=predictionSeats(votes);
   if(!seats||!Object.keys(seats).length){ box.innerHTML=''; return; }
-  const order=PARTY_ORDER.filter(p=>votes[p]!==undefined&&!(PARTY_META[p]&&PARTY_META[p].pastOnly));
+  const order=PARTY_ORDER.filter(p=>votes[p]!==undefined);
   let total=0; order.forEach(p=>{total+=seats[p]||0});
   const MAJ=Math.floor(total/2)+1;
   const majEl=document.getElementById('yp-maj');
@@ -5633,10 +5633,9 @@ function renderPrediction(pane){
     return;
   }
   const c=COUNTRIES[COUNTRY]||{};
-  const fOrder=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
   // unallocated options (Bulgaria's NOTA) read like the Other bucket:
   // they are polled and displayed, but never an editable prediction input
-  const ypOrder=fOrder.filter(p=>p!=='ind'&&!(PARTY_META[p]&&PARTY_META[p].unallocated));
+  const ypOrder=PARTY_ORDER.filter(p=>p!=='ind'&&!(PARTY_META[p]&&PARTY_META[p].unallocated));
   // default: the poll average, else the last national share (the same
   // convention the model uses for unpolled parties - so an unpolled party
   // starts at its baseline and only reads 0 when the user really means it)
@@ -5754,8 +5753,7 @@ function renderPrediction(pane){
         votes[el.dataset.p]=Math.max(0,Math.min(100,parseFloat(el.value)||0));
       });
       const seats=predictionSeats(votes)||{};
-      const order=PARTY_ORDER.filter(p=>votes[p]!==undefined&&votes[p]>0
-          &&!(PARTY_META[p]&&PARTY_META[p].pastOnly))
+      const order=PARTY_ORDER.filter(p=>votes[p]!==undefined&&votes[p]>0)
         .slice().sort((a,b)=>(seats[b]||0)-(seats[a]||0));
       const leR=LAST_ELECTION.results||{}, leS=LAST_ELECTION.seats||{};
       const mkRow=(p)=>{

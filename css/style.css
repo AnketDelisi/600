@@ -915,3 +915,8 @@ body{background:#FFFFFF}
 .home-method{background:transparent;color:#FFFFFF;border-color:#FFFFFF}
 .home-method:hover{background:#FFFFFF;border-color:#FFFFFF;color:var(--red-deep)}
 .home-empty{background:#FFFFFF;border-color:var(--red-line);color:var(--red-deep)}
+
+.home-footer{background:#FFFFFF;color:#5E514D;border-top:1px solid var(--red-line)}
+.home-footer b{color:#171A1D}
+.home-method{background:#FFFFFF;color:var(--red-deep);border-color:var(--red-line)}
+.home-method:hover{background:var(--red);color:#FFFFFF;border-color:var(--red)}

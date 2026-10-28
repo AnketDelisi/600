@@ -2572,7 +2572,8 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   for(const p of PARTY_ORDER){
     const past=base[p]||0;
     let now;
-    if(PARTY_META[p]&&PARTY_META[p].pastOnly){
+    if(PARTY_META[p]&&PARTY_META[p].pastOnly&&
+       !(avg&&avg[p]!==undefined&&avg[p]!==null)){
       // dissolved alliances: shown in the 2023 result view, never projected
       now=resultMode?past:0;
     }else if(resultMode||!avg||(avg[p]==null&&!(reg&&reg[p]!==undefined))){

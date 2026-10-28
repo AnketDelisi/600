@@ -10,9 +10,8 @@ area constituencies) - those are assigned to the nearest constituency by
 centroid (documented approximation; the seat allocation itself stays exact
 per constituency).
 
-Municipality shapes: GADM 4.1 ADM2 (212 municipalities), dissolved with
-shapely into the 8 constituencies; lon/lat -> build_map_svg projects to
-Web Mercator.
+Shapes: the official GURS Register of Spatial Units VDV_VE layer (8
+electoral-unit polygons); lon/lat -> build_map_svg projects to Web Mercator.
 
 Baselines: data/si/results.json (2026 per-constituency shares; the national
 shares anchor the swing). 11 seats per constituency (seatDistricts = 88);
@@ -191,11 +190,8 @@ def main():
     map_block = f"""    map: {{
       svg: 'img/slovenia.svg',
       selector: 'id',
-      stroke: '#111827',
       swingMethod: 'geometric',
-      // the 8 volilne enote (GADM municipalities dissolved by the ZDVEDZ
-      // law composition; the split municipalities - Ljubljana above all -
-      // are assigned to the nearest constituency, documented). Per-
+      // the 8 official volilne enote (GURS RPE VDV_VE layer). Per-
       // constituency D'Hondt, 11 seats each, with the 4% threshold applied
       // nationally (districtThreshold off); the 2 minority seats are
       // reservedSeats.

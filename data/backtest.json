@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T19:46:36Z",
+ "generated": "2026-10-28T20:36:30Z",
  "horizons": [
   60,
   30,
@@ -367,14 +367,14 @@
    {
     "lo": 0.0,
     "hi": 0.5,
-    "n": 9,
-    "hits": 9
+    "n": 15,
+    "hits": 11
    },
    {
     "lo": 0.5,
     "hi": 0.75,
-    "n": 21,
-    "hits": 14
+    "n": 15,
+    "hits": 12
    },
    {
     "lo": 0.75,
@@ -396,7 +396,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "lab",
-    "p": 0.944,
+    "p": 0.921,
     "actual": 411,
     "need": 326,
     "hit": true
@@ -406,7 +406,7 @@
     "horizon": 30,
     "bloc": "bloc1",
     "leader": "lab",
-    "p": 0.976,
+    "p": 0.964,
     "actual": 411,
     "need": 326,
     "hit": true
@@ -416,7 +416,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "lab",
-    "p": 0.99,
+    "p": 0.993,
     "actual": 411,
     "need": 326,
     "hit": true
@@ -426,7 +426,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "lab",
-    "p": 0.995,
+    "p": 0.989,
     "actual": 411,
     "need": 326,
     "hit": true
@@ -436,7 +436,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "lab",
-    "p": 0.996,
+    "p": 0.998,
     "actual": 411,
     "need": 326,
     "hit": true
@@ -446,7 +446,7 @@
     "horizon": 30,
     "bloc": "bloc2",
     "leader": "pp",
-    "p": 0.8,
+    "p": 0.783,
     "actual": 171,
     "need": 176,
     "hit": false
@@ -456,7 +456,7 @@
     "horizon": 14,
     "bloc": "bloc2",
     "leader": "pp",
-    "p": 0.775,
+    "p": 0.776,
     "actual": 171,
     "need": 176,
     "hit": false
@@ -466,7 +466,7 @@
     "horizon": 7,
     "bloc": "bloc2",
     "leader": "pp",
-    "p": 0.789,
+    "p": 0.78,
     "actual": 171,
     "need": 176,
     "hit": false
@@ -476,217 +476,217 @@
     "horizon": 0,
     "bloc": "bloc2",
     "leader": "pp",
-    "p": 0.779,
-    "actual": 171,
-    "need": 176,
-    "hit": false
-   },
-   {
-    "cycle": "bc-2024",
-    "horizon": 60,
-    "bloc": "bloc1",
-    "leader": "bcndp",
-    "p": 0.551,
-    "actual": 47,
-    "need": 47,
-    "hit": true
-   },
-   {
-    "cycle": "bc-2024",
-    "horizon": 30,
-    "bloc": "bloc1",
-    "leader": "bcndp",
-    "p": 0.514,
-    "actual": 47,
-    "need": 47,
-    "hit": true
-   },
-   {
-    "cycle": "bc-2024",
-    "horizon": 14,
-    "bloc": "bloc1",
-    "leader": "bcndp",
-    "p": 0.475,
-    "actual": 47,
-    "need": 47,
-    "hit": true
-   },
-   {
-    "cycle": "bc-2024",
-    "horizon": 7,
-    "bloc": "bloc2",
-    "leader": "cpbc",
-    "p": 0.568,
-    "actual": 46,
-    "need": 47,
-    "hit": false
-   },
-   {
-    "cycle": "bc-2024",
-    "horizon": 0,
-    "bloc": "bloc2",
-    "leader": "cpbc",
-    "p": 0.597,
-    "actual": 46,
-    "need": 47,
-    "hit": false
-   },
-   {
-    "cycle": "serbia-2023",
-    "horizon": 60,
-    "bloc": "bloc1",
-    "leader": "sns",
-    "p": 0.997,
-    "actual": 154,
-    "need": 126,
-    "hit": true
-   },
-   {
-    "cycle": "serbia-2023",
-    "horizon": 30,
-    "bloc": "bloc1",
-    "leader": "sns",
-    "p": 1.0,
-    "actual": 154,
-    "need": 126,
-    "hit": true
-   },
-   {
-    "cycle": "serbia-2023",
-    "horizon": 14,
-    "bloc": "bloc1",
-    "leader": "sns",
-    "p": 1.0,
-    "actual": 154,
-    "need": 126,
-    "hit": true
-   },
-   {
-    "cycle": "serbia-2023",
-    "horizon": 7,
-    "bloc": "bloc1",
-    "leader": "sns",
-    "p": 0.999,
-    "actual": 154,
-    "need": 126,
-    "hit": true
-   },
-   {
-    "cycle": "serbia-2023",
-    "horizon": 0,
-    "bloc": "bloc1",
-    "leader": "sns",
-    "p": 1.0,
-    "actual": 154,
-    "need": 126,
-    "hit": true
-   },
-   {
-    "cycle": "germany-2025",
-    "horizon": 30,
-    "bloc": "bloc1",
-    "leader": "cdu",
-    "p": 0.999,
-    "actual": 477,
-    "need": 316,
-    "hit": true
-   },
-   {
-    "cycle": "germany-2025",
-    "horizon": 14,
-    "bloc": "bloc1",
-    "leader": "cdu",
-    "p": 0.999,
-    "actual": 477,
-    "need": 316,
-    "hit": true
-   },
-   {
-    "cycle": "germany-2025",
-    "horizon": 7,
-    "bloc": "bloc1",
-    "leader": "cdu",
-    "p": 0.999,
-    "actual": 477,
-    "need": 316,
-    "hit": true
-   },
-   {
-    "cycle": "germany-2025",
-    "horizon": 0,
-    "bloc": "bloc1",
-    "leader": "cdu",
-    "p": 1.0,
-    "actual": 477,
-    "need": 316,
-    "hit": true
-   },
-   {
-    "cycle": "latvia-2022",
-    "horizon": 30,
-    "bloc": "bloc1",
-    "leader": "jv",
-    "p": 1.0,
-    "actual": 70,
-    "need": 51,
-    "hit": true
-   },
-   {
-    "cycle": "latvia-2022",
-    "horizon": 14,
-    "bloc": "bloc1",
-    "leader": "jv",
-    "p": 1.0,
-    "actual": 70,
-    "need": 51,
-    "hit": true
-   },
-   {
-    "cycle": "latvia-2022",
-    "horizon": 7,
-    "bloc": "bloc1",
-    "leader": "jv",
-    "p": 1.0,
-    "actual": 70,
-    "need": 51,
-    "hit": true
-   },
-   {
-    "cycle": "latvia-2022",
-    "horizon": 0,
-    "bloc": "bloc1",
-    "leader": "jv",
-    "p": 1.0,
-    "actual": 70,
-    "need": 51,
-    "hit": true
-   },
-   {
-    "cycle": "slovakia-2023",
-    "horizon": 60,
-    "bloc": "bloc1",
-    "leader": "smer",
-    "p": 0.701,
-    "actual": 79,
-    "need": 76,
-    "hit": true
-   },
-   {
-    "cycle": "slovakia-2023",
-    "horizon": 30,
-    "bloc": "bloc1",
-    "leader": "smer",
-    "p": 0.616,
-    "actual": 79,
-    "need": 76,
-    "hit": true
-   },
-   {
-    "cycle": "slovakia-2023",
-    "horizon": 14,
-    "bloc": "bloc1",
-    "leader": "smer",
     "p": 0.834,
+    "actual": 171,
+    "need": 176,
+    "hit": false
+   },
+   {
+    "cycle": "bc-2024",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "bcndp",
+    "p": 0.548,
+    "actual": 47,
+    "need": 47,
+    "hit": true
+   },
+   {
+    "cycle": "bc-2024",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "bcndp",
+    "p": 0.54,
+    "actual": 47,
+    "need": 47,
+    "hit": true
+   },
+   {
+    "cycle": "bc-2024",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "bcndp",
+    "p": 0.483,
+    "actual": 47,
+    "need": 47,
+    "hit": true
+   },
+   {
+    "cycle": "bc-2024",
+    "horizon": 7,
+    "bloc": "bloc2",
+    "leader": "cpbc",
+    "p": 0.59,
+    "actual": 46,
+    "need": 47,
+    "hit": false
+   },
+   {
+    "cycle": "bc-2024",
+    "horizon": 0,
+    "bloc": "bloc2",
+    "leader": "cpbc",
+    "p": 0.594,
+    "actual": 46,
+    "need": 47,
+    "hit": false
+   },
+   {
+    "cycle": "serbia-2023",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "sns",
+    "p": 0.998,
+    "actual": 154,
+    "need": 126,
+    "hit": true
+   },
+   {
+    "cycle": "serbia-2023",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "sns",
+    "p": 1.0,
+    "actual": 154,
+    "need": 126,
+    "hit": true
+   },
+   {
+    "cycle": "serbia-2023",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "sns",
+    "p": 1.0,
+    "actual": 154,
+    "need": 126,
+    "hit": true
+   },
+   {
+    "cycle": "serbia-2023",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "sns",
+    "p": 0.999,
+    "actual": 154,
+    "need": 126,
+    "hit": true
+   },
+   {
+    "cycle": "serbia-2023",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "sns",
+    "p": 1.0,
+    "actual": 154,
+    "need": 126,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 0.999,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "latvia-2022",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "jv",
+    "p": 1.0,
+    "actual": 70,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "latvia-2022",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "jv",
+    "p": 1.0,
+    "actual": 70,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "latvia-2022",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "jv",
+    "p": 1.0,
+    "actual": 70,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "latvia-2022",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "jv",
+    "p": 1.0,
+    "actual": 70,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.691,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.613,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.821,
     "actual": 79,
     "need": 76,
     "hit": true
@@ -696,7 +696,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "smer",
-    "p": 0.715,
+    "p": 0.713,
     "actual": 79,
     "need": 76,
     "hit": true
@@ -706,7 +706,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "smer",
-    "p": 0.542,
+    "p": 0.529,
     "actual": 79,
     "need": 76,
     "hit": true
@@ -714,6 +714,16 @@
    {
     "cycle": "pt-2024",
     "horizon": 60,
+    "bloc": "bloc2",
+    "leader": "ps",
+    "p": 0.995,
+    "actual": 150,
+    "need": 116,
+    "hit": true
+   },
+   {
+    "cycle": "pt-2024",
+    "horizon": 30,
     "bloc": "bloc2",
     "leader": "ps",
     "p": 0.999,
@@ -723,16 +733,6 @@
    },
    {
     "cycle": "pt-2024",
-    "horizon": 30,
-    "bloc": "bloc2",
-    "leader": "ps",
-    "p": 1.0,
-    "actual": 150,
-    "need": 116,
-    "hit": true
-   },
-   {
-    "cycle": "pt-2024",
     "horizon": 14,
     "bloc": "bloc2",
     "leader": "ps",
@@ -766,7 +766,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "ref",
-    "p": 0.319,
+    "p": 0.328,
     "actual": 51,
     "need": 51,
     "hit": true
@@ -776,7 +776,7 @@
     "horizon": 30,
     "bloc": "bloc1",
     "leader": "ref",
-    "p": 0.133,
+    "p": 0.123,
     "actual": 51,
     "need": 51,
     "hit": true
@@ -786,7 +786,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "ref",
-    "p": 0.086,
+    "p": 0.103,
     "actual": 51,
     "need": 51,
     "hit": true
@@ -796,7 +796,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "ref",
-    "p": 0.051,
+    "p": 0.057,
     "actual": 51,
     "need": 51,
     "hit": true
@@ -806,7 +806,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "ref",
-    "p": 0.11,
+    "p": 0.063,
     "actual": 51,
     "need": 51,
     "hit": true
@@ -816,7 +816,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "lsdp",
-    "p": 0.898,
+    "p": 0.878,
     "actual": 77,
     "need": 71,
     "hit": true
@@ -826,7 +826,7 @@
     "horizon": 30,
     "bloc": "bloc1",
     "leader": "lsdp",
-    "p": 0.948,
+    "p": 0.957,
     "actual": 77,
     "need": 71,
     "hit": true
@@ -836,7 +836,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "lsdp",
-    "p": 0.944,
+    "p": 0.954,
     "actual": 77,
     "need": 71,
     "hit": true
@@ -856,7 +856,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "lsdp",
-    "p": 0.943,
+    "p": 0.974,
     "actual": 77,
     "need": 71,
     "hit": true
@@ -866,7 +866,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "ldp",
-    "p": 0.997,
+    "p": 0.998,
     "actual": 316,
     "need": 233,
     "hit": true
@@ -876,7 +876,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "ldp",
-    "p": 0.998,
+    "p": 0.997,
     "actual": 316,
     "need": 233,
     "hit": true
@@ -886,7 +886,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "ldp",
-    "p": 0.999,
+    "p": 0.996,
     "actual": 316,
     "need": 233,
     "hit": true
@@ -896,7 +896,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "dpk",
-    "p": 0.944,
+    "p": 0.919,
     "actual": 175,
     "need": 151,
     "hit": true
@@ -916,7 +916,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "dpk",
-    "p": 0.619,
+    "p": 0.629,
     "actual": 175,
     "need": 151,
     "hit": true
@@ -926,7 +926,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "dpk",
-    "p": 0.597,
+    "p": 0.595,
     "actual": 175,
     "need": 151,
     "hit": true
@@ -936,7 +936,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "dpk",
-    "p": 0.582,
+    "p": 0.613,
     "actual": 175,
     "need": 151,
     "hit": true
@@ -946,7 +946,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "hdz",
-    "p": 0.702,
+    "p": 0.526,
     "actual": 75,
     "need": 76,
     "hit": false
@@ -956,7 +956,7 @@
     "horizon": 30,
     "bloc": "bloc1",
     "leader": "hdz",
-    "p": 0.619,
+    "p": 0.411,
     "actual": 75,
     "need": 76,
     "hit": false
@@ -966,7 +966,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "hdz",
-    "p": 0.604,
+    "p": 0.413,
     "actual": 75,
     "need": 76,
     "hit": false
@@ -976,7 +976,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "hdz",
-    "p": 0.604,
+    "p": 0.421,
     "actual": 75,
     "need": 76,
     "hit": false
@@ -986,7 +986,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "hdz",
-    "p": 0.594,
+    "p": 0.337,
     "actual": 75,
     "need": 76,
     "hit": false
@@ -996,7 +996,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "s",
-    "p": 0.44,
+    "p": 0.448,
     "actual": 36,
     "need": 32,
     "hit": true
@@ -1016,7 +1016,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "s",
-    "p": 0.797,
+    "p": 0.78,
     "actual": 36,
     "need": 32,
     "hit": true
@@ -1026,7 +1026,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "s",
-    "p": 0.828,
+    "p": 0.812,
     "actual": 36,
     "need": 32,
     "hit": true
@@ -1036,7 +1036,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "s",
-    "p": 0.835,
+    "p": 0.838,
     "actual": 36,
     "need": 32,
     "hit": true
@@ -1046,7 +1046,7 @@
     "horizon": 60,
     "bloc": "bloc1",
     "leader": "sds",
-    "p": 0.587,
+    "p": 0.521,
     "actual": 48,
     "need": 46,
     "hit": true
@@ -1056,7 +1056,7 @@
     "horizon": 30,
     "bloc": "bloc1",
     "leader": "sds",
-    "p": 0.551,
+    "p": 0.461,
     "actual": 48,
     "need": 46,
     "hit": true
@@ -1066,7 +1066,7 @@
     "horizon": 14,
     "bloc": "bloc1",
     "leader": "sds",
-    "p": 0.521,
+    "p": 0.415,
     "actual": 48,
     "need": 46,
     "hit": true
@@ -1076,7 +1076,7 @@
     "horizon": 7,
     "bloc": "bloc1",
     "leader": "sds",
-    "p": 0.384,
+    "p": 0.29,
     "actual": 48,
     "need": 46,
     "hit": true
@@ -1086,7 +1086,7 @@
     "horizon": 0,
     "bloc": "bloc1",
     "leader": "sds",
-    "p": 0.312,
+    "p": 0.201,
     "actual": 48,
     "need": 46,
     "hit": true

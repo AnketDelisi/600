@@ -12879,6 +12879,9 @@ epBlend: 0.15,
     map: {
       svg: 'img/slovenia.svg',
       selector: 'id',
+      // the GADM dissolve is clean but the constituency borders are part of
+      // the story; use the ink stroke rather than white slivers
+      stroke: '#111827',
       swingMethod: 'geometric',
       // the 8 volilne enote (GADM municipalities dissolved by the ZDVEDZ
       // law composition; the split municipalities - Ljubljana above all -
@@ -16345,6 +16348,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     // the source polling table's own grouping: Red (R, SV, MDG, Ap, Sp) vs
     // Blue (V, KrF, H, FrP); Ap governs alone since the 2025 election,
     // supported on budgets by the red-green parties
+    incumbent: 'ap',             // Ap governs alone; bloc1 is the wider red-green camp
     blocs: {
       bloc1: { name: 'Red–green', short: 'RED', parties: ['r', 'sv', 'mdg', 'ap', 'sp'], color: '#C8102E' },
       bloc2: { name: 'Blue', short: 'BLU', parties: ['v', 'krf', 'h', 'frp'], color: '#0057B8' },

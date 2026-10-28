@@ -831,3 +831,27 @@ body{background:var(--c-bg);color:var(--c-text-main)}
 .map-tip-logo.party-mark-text{width:14px;height:14px;font-size:8px}
 .ct-logo{width:14px;height:14px;margin-right:0}
 .ct-logo.party-mark-text{width:14px;height:14px;font-size:8px}
+
+/* ---------- Option 2: logo and vote-bar system ---------- */
+:root{
+  --vote-bar-h:10px;
+  --vote-bar-compact:8px;
+  --vote-track:#EEF2F5;
+  --vote-radius:2px;
+}
+.party-bar,.fc-row-bar{
+  height:var(--vote-bar-h);background:var(--vote-track);border:0;border-radius:var(--vote-radius);
+}
+.party-bar .fill,.fc-row-fill{border-radius:var(--vote-radius)}
+.map-tip-track{
+  height:var(--vote-bar-compact);background:var(--vote-track);border:0;border-radius:var(--vote-radius);
+}
+.map-tip-fill{border-radius:var(--vote-radius)}
+.map-tip-code{display:flex;align-items:center;gap:4px;width:66px}
+.map-tip-code-label{font-size:9px;font-weight:700;color:var(--c-text-muted);white-space:nowrap}
+.sb-le-logo{width:20px;height:20px}
+.sb-le-logo.party-mark-text{width:20px;height:20px;font-size:9px}
+.map-tip-logo{width:18px;height:18px}
+.map-tip-logo.party-mark-text{width:18px;height:18px;font-size:8px}
+.ct-logo{width:18px;height:18px}
+.ct-logo.party-mark-text{width:18px;height:18px;font-size:8px}

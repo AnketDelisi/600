@@ -3472,7 +3472,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       const sortKey=(p)=> (resultMode&&LAST_ELECTION.seats)?(LAST_ELECTION.seats[p]||0):(shares[p]?shares[p].now:0);
       // joint lists: in allied provinces the members render as ONE row under
       // the list's own name (pooled share), never as separate party rows
-      const alHere=(conf.alliances||[]).filter(a=>a.provinces.indexOf(String(nr))>=0&&a.parties.length>1);
+      const alHere=(Array.isArray(conf.alliances)?conf.alliances:[]).filter(a=>a.provinces.indexOf(String(nr))>=0&&a.parties.length>1);
       const alMember={};
       alHere.forEach(a=>a.parties.forEach(p=>{alMember[p]=a}));
       const rowArr=PARTY_ORDER.slice().filter(p=>!alMember[p]&&!((PARTY_META[p]||{}).pastOnly&&!resultMode)).sort((a,b)=> (sortKey(b)-sortKey(a)) || ((shares[b]?shares[b].now:0)-(shares[a]?shares[a].now:0))).map(p=>{

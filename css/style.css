@@ -298,10 +298,10 @@ button:active{transform:translateY(1px)}
 .fc-headline{display:flex;align-items:baseline;gap:10px;margin:8px 0 2px 0;flex-wrap:wrap}
 .fc-headline-label{font-size:16px;font-weight:900;letter-spacing:0.3px}
 .fc-headline-num{font-size:28px;font-weight:900;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-.fc-majbar{display:flex;width:100%;height:18px;border:2px solid var(--c-edge);border-radius:var(--radius-pill);box-shadow:var(--shadow-md);overflow:hidden}
+.fc-majbar{display:flex;width:100%;height:var(--vote-bar-h);background:var(--vote-track);border:0;border-radius:var(--vote-radius);box-shadow:none;overflow:hidden}
 .fc-majseg{height:100%}
-.fc-majseg:first-child{border-radius:var(--radius-pill) 0 0 var(--radius-pill)}
-.fc-majseg:last-child{border-radius:0 var(--radius-pill) var(--radius-pill) 0}
+.fc-majseg:first-child{border-radius:var(--vote-radius) 0 0 var(--vote-radius)}
+.fc-majseg:last-child{border-radius:0 var(--vote-radius) var(--vote-radius) 0}
 .fc-majlegend{display:flex;gap:16px;margin-top:10px;font-size:11px;font-weight:800;flex-wrap:wrap}
 .fc-dot{width:9px;height:9px;display:inline-block;margin-right:4px;border:1px solid var(--c-edge);border-radius:3px;vertical-align:-1px}
 .fc-row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid rgba(26,26,26,0.08)}

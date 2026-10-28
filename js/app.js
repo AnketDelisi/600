@@ -362,7 +362,7 @@ const partyMark=(pid,conf,color,cls='party-mark')=>{
   const col=color||partyColor(pid,conf);
   const name=partyLabel(pid,conf);
   if(logo) return `<span class="${cls}" role="img" aria-label="${name}" title="${name}" style="--mark-color:${col};--mark:url('${assetUrl(dataBase()+logo+'?v='+LOGO_CACHE)}')"></span>`;
-  return `<span class="${cls} ${cls}-text" style="color:${col}">${partyCode(pid)}</span>`;
+  return `<span class="${cls} party-mark-fallback" role="img" aria-label="${name}" title="${name}" style="--mark-color:${col};background:${col}"></span>`;
 };
 
 // Label for the sub-national units (MAP_ONLY countries can override; default "federative units")
@@ -1394,7 +1394,7 @@ function renderHeroGeneric(avg, filteredPolls){
     <div class="hero-title">${COUNTRY_NAME} — ${T.pollAverage}</div>
     <div class="hero-date">${filteredPolls.length} ${t('polls','anket')} · ${t('latest','en yeni')}: ${latestStr} (${days}${t('d','g')} ${t('ago','önce')}) · ${t('sample-size + pollster accuracy + recency weighted','örneklem + anketçi doğruluğu + güncellik ağırlıklı')}</div>
     <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
-      ${logoSrc?`<span class="hero-mark" role="img" aria-label="${topParty}" title="${topParty}" style="--mark-color:${color};--mark:url('${assetUrl(b+logoSrc+'?v='+LOGO_CACHE)}')"></span>`:`<span class="hero-mark hero-mark-text" style="color:${color}">${topParty}</span>`}
+      ${logoSrc?`<span class="hero-mark" role="img" aria-label="${topParty}" title="${topParty}" style="--mark-color:${color};--mark:url('${assetUrl(b+logoSrc+'?v='+LOGO_CACHE)}')"></span>`:`<span class="hero-mark party-mark-fallback" role="img" aria-label="${topParty}" title="${topParty}" style="--mark-color:${color};background:${color}"></span>`}
       <div>
         <span style="font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;font-family:var(--font-mono)">${valDisp(topPct)}</span>
         <span style="font-size:13px;font-weight:700;color:var(--c-text-muted);margin-left:4px">${t('leading','önde')}</span>
@@ -1427,7 +1427,7 @@ function renderPartyBars(avg){
     const mpSeats=SEAT_BASED?Math.ceil(val):(seats[pid]||0);
 
     html+=`<div class="party-row">
-      ${PARTY_LOGOS[pid]?`<span class="party-mark" role="img" aria-label="${pid}" title="${pid}" style="--mark-color:${color};--mark:url('${assetUrl(dataBase()+PARTY_LOGOS[pid]+'?v='+LOGO_CACHE)}')"></span>`:`<span class="party-mark party-mark-text" style="color:${color}">${HIDE_BLOCS?partyCode(pid).replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase():partyCode(pid)}</span>`}
+      ${partyMark(pid,null,color,'party-mark')}
       <div class="party-name">${partyCode(pid)}</div>
       <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:${color}"></div></div>
       <div class="party-pct">${valDisp(val)}</div>
@@ -1445,7 +1445,7 @@ function renderPartyBars(avg){
       const deltaStr=delta>0?`+${fmt(delta)}`:fmt(delta);
       const deltaColor=delta>0?'#0B9E17':delta<0?'var(--c-accent)':'var(--c-text-muted)';
       html+=`<div class="party-row">
-        <span class="party-mark party-mark-text" style="color:#9CA3AF">${t('OTH','DİĞ')}</span>
+        <span class="party-mark party-mark-fallback" aria-label="${t('Other','Diğer')}" title="${t('Other','Diğer')}" style="--mark-color:#9CA3AF;background:#9CA3AF"></span>
         <div class="party-name">${t('Other','Diğer')}</div>
         <div class="party-bar"><div class="fill" style="width:${barWidth}%;background:#9CA3AF"></div></div>
         <div class="party-pct">${fmt(othersNow)}%</div>

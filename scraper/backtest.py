@@ -815,13 +815,20 @@ def horizon_votes(polls, spec, horizon):
     return votes, len(use)
 
 
-def run_forecast(cc, votes, n_sims=1500, n_polls=20):
+def run_forecast(cc, votes, n_sims=1500, n_polls=20, horizon=None):
     """Run the app's real Monte Carlo through scraper/forecast_run.js and
-    return the slim summary (maj / largest / means / nSims), or None."""
+    return the slim summary (maj / largest / means / nSims), or None.
+
+    horizon is days-to-election for the historical scenario; None means the
+    live current date. Passing it is essential: the measured uncertainty curve
+    is horizon-specific.
+    """
     import subprocess
     try:
         args = ["node", os.path.join("scraper", "forecast_run.js"), cc,
                 json.dumps(votes), str(n_sims), str(n_polls)]
+        if horizon is not None:
+            args.append(str(horizon))
         r = subprocess.run(args, capture_output=True, text=True,
                            encoding="utf8", cwd=ROOT, timeout=300)
         if r.returncode != 0 or not r.stdout.strip():
@@ -971,7 +978,7 @@ def main():
                 need = total // 2 + 1
                 for ch in (60, 30, 14, 7, 0):
                     cv, cn = horizon_votes(polls, spec, ch)
-                    fc = run_forecast(country, cv, 1000, cn) if cv else None
+                    fc = run_forecast(country, cv, 1000, cn, ch) if cv else None
                     if not (fc and bl and fc.get("nSims")):
                         continue
                     means = {k: v for k, v in (fc.get("means") or {}).items()

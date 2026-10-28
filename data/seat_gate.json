@@ -18,19 +18,25 @@
   }
  },
  "majority": {
-  "n": 14,
-  "brier": 0.1717,
+  "n": 15,
+  "brier": 0.1812,
   "cases": [
+   {
+    "country": "uk",
+    "cycle": 2024,
+    "p": 0.994,
+    "hit": true
+   },
    {
     "country": "spain",
     "cycle": 2023,
-    "p": 0.616,
+    "p": 0.77,
     "hit": false
    },
    {
     "country": "bc",
     "cycle": 2024,
-    "p": 0.558,
+    "p": 0.566,
     "hit": false
    },
    {
@@ -42,7 +48,7 @@
    {
     "country": "germany",
     "cycle": 2025,
-    "p": 1.0,
+    "p": 0.998,
     "hit": true
    },
    {
@@ -54,7 +60,7 @@
    {
     "country": "slovakia",
     "cycle": 2023,
-    "p": 0.41,
+    "p": 0.384,
     "hit": true
    },
    {
@@ -66,43 +72,43 @@
    {
     "country": "estonia",
     "cycle": 2023,
-    "p": 0.366,
+    "p": 0.38,
     "hit": true
    },
    {
     "country": "lt",
     "cycle": 2024,
-    "p": 0.932,
+    "p": 0.944,
     "hit": true
    },
    {
     "country": "jp",
     "cycle": 2026,
-    "p": 0.996,
+    "p": 0.998,
     "hit": true
    },
    {
     "country": "kr",
     "cycle": 2024,
-    "p": 0.684,
+    "p": 0.66,
     "hit": true
    },
    {
     "country": "hr",
     "cycle": 2024,
-    "p": 0.612,
+    "p": 0.638,
     "hit": false
    },
    {
     "country": "is",
     "cycle": 2024,
-    "p": 0.838,
+    "p": 0.826,
     "hit": true
    },
    {
     "country": "si",
     "cycle": 2026,
-    "p": 0.676,
+    "p": 0.696,
     "hit": false
    }
   ]

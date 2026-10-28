@@ -325,7 +325,6 @@
     if (chartSeg) chartSeg.style.display = c.seatBased ? 'none' : '';
     (c.order || []).forEach((pid) => {
       const meta = c.parties[pid] || {};
-      if (meta.pastOnly) return; // dissolved alliances: baseline only, no input row
       const tr = document.createElement('tr');
       const nameLbl = meta.name_en || meta.name || pid;
       tr.innerHTML =
@@ -438,8 +437,7 @@
     const chartEl = document.querySelector('input[name="chart"]:checked');
     const seatsMode = (c && c.seatBased) ? true : (chartEl ? chartEl.value === 'seats' : false);
     let now, prev, total, display;
-    // placeholder parties (dissolved alliances) never appear in polls/forecasts
-    const activeOrder = (c.order || []).filter((p) => !((c.parties[p] || {}).pastOnly));
+    const activeOrder = (c.order || []).slice();
     const direct = (c && (c.seatBased || c.directNumbers)) || custom;   // entered numbers used as-is
     if (seatsMode) {
       now = direct ? poll : seatCalc(c, poll);
@@ -511,7 +509,7 @@
     // header
     const padTop = Math.round(H * 0.045);
     const logoH = Math.round(clamp(H * 0.055, 30, 54));
-    const logoImg = await loadImg(BASE + 'img/600logo.svg');
+    const logoImg = await loadImg(BASE + 'img/600logo.svg?v=20261028');
     if (logoImg) {
       const iw = logoImg.naturalWidth || 100, ih = logoImg.naturalHeight || 100;
       const logoW = Math.round(logoH * (iw / ih));

@@ -1482,6 +1482,20 @@ function blocSeats(rg,td){
   }
   return {gov:base[0],opp:base[1],other:base[2]};
 }
+function blocColors(avg){
+  const c=COUNTRIES[COUNTRY]||{};
+  const gov=BLOCS&&BLOCS.bloc1;
+  const opp=BLOCS&&BLOCS.bloc2;
+  const govParty=c.incumbent||(gov&&gov.parties&&gov.parties[0])||null;
+  const oppParty=opp&&opp.parties&&opp.parties.length
+    ?opp.parties.slice().sort((a,b)=>((avg&&avg[b])||0)-((avg&&avg[a])||0))[0]
+    :null;
+  return {
+    gov:govParty?partyColor(govParty):((gov&&gov.color)||'#888'),
+    opp:oppParty?partyColor(oppParty):((opp&&opp.color)||'#888'),
+    govParty,oppParty
+  };
+}
 function renderBlocs(avg){
   const rg=BLOCS.bloc1.parties.reduce((s,p)=>s+(avg[p]||0),0);
   const td=BLOCS.bloc2.parties.reduce((s,p)=>s+(avg[p]||0),0);
@@ -1502,13 +1516,14 @@ function renderBlocs(avg){
     const n=b.parties.reduce((s,p)=>s+(seats[p]||0),0);
     return `<div class="bloc-seats">${n} ${T.seats}</div>`;
   };
-  const card=(b,val)=>`<div class="bloc-card" style="border-left:6px solid ${b.color}">
+  const card=(b,val,color)=>`<div class="bloc-card" style="border-left:6px solid ${color||b.color}">
       <div class="bloc-name">${b.name}</div>
-      <div class="bloc-pct" style="color:${b.color}">${val}</div>
+      <div class="bloc-pct" style="color:${color||b.color}">${val}</div>
       ${seatLine(b)}
       <div class="bloc-parties">${b.parties.map(partyCode).join(' + ')}</div>
     </div>`;
-  let cards=card(BLOCS.bloc1,disp(bs?bs.gov:rg))+card(BLOCS.bloc2,disp(bs?bs.opp:td));
+  const colors=blocColors(avg);
+  let cards=card(BLOCS.bloc1,disp(bs?bs.gov:rg),colors.gov)+card(BLOCS.bloc2,disp(bs?bs.opp:td),colors.opp);
   // optional third bloc (e.g. Israel's Arab parties): shown on its own
   if(BLOCS.bloc3){
     const b3=BLOCS.bloc3.parties.reduce((s,p)=>s+(avg[p]||0),0);
@@ -3427,7 +3442,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       :(blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888'));
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
-      ph.style.stroke='#ffffff';
+      ph.style.stroke=conf.stroke||'#ffffff';
     }
     ph.style.cursor='pointer';
     ph.style.transition='opacity .15s ease';
@@ -5217,7 +5232,8 @@ function runForecast(avg, nSims, nPolls, horizonDays){
   const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
   const noPoll={};
   PARTY_ORDER.forEach(p=>{
-    if(avg[p]==null&&!(PARTY_META[p]&&PARTY_META[p].pastOnly))
+    if(avg[p]==null&&!(PARTY_META[p]&&
+       (PARTY_META[p].pastOnly||PARTY_META[p].unallocated)))
       noPoll[p]=natBase[p]||0;
   });
   for(let s=0;s<nSims;s++){
@@ -5226,7 +5242,18 @@ function runForecast(avg, nSims, nPolls, horizonDays){
     let simVotes={};
     PARTY_ORDER.forEach((p,i)=>{simVotes[p]=100*draws[i]/totalD});
     simVotes.other=100*draws[PARTY_ORDER.length]/totalD;
-    for(const p in noPoll) simVotes[p]=noPoll[p];
+    // Pinned no-poll parties are added after the Dirichlet draw. Remove
+    // their baseline from the Other bucket and renormalize, otherwise the
+    // pinned parties and Other both carry the same votes (a real double count
+    // for Serbia's minority lists, UK NI parties, etc.).
+    let pinned=0;
+    for(const p in noPoll){ simVotes[p]=noPoll[p]; pinned+=noPoll[p]; }
+    if(pinned>0) simVotes.other=Math.max(0,(simVotes.other||0)-pinned);
+    let pinnedTotal=0;
+    for(const p in simVotes) pinnedTotal+=simVotes[p]||0;
+    if(pinnedTotal>0){
+      for(const p in simVotes) simVotes[p]=100*(simVotes[p]||0)/pinnedTotal;
+    }
     simVotes=applyNationalSwing(simVotes);
     // one correlated regional swing deviation per region (see
     // FORECAST_REGION_SIGMA), applied to that region's districts below
@@ -5262,7 +5289,8 @@ function runForecast(avg, nSims, nPolls, horizonDays){
     const seats=(mconf&&mconf.winnerDistricts)?allocateSeatsWinnerDistricts(simVotes,SEATS_TOTAL,regionNoise,districtNoise):(mconf&&mconf.fptpSeats)?allocateSeatsItaly(simVotes):((SEAT_METHOD==='fptp')?allocateSeatsFptp(simVotes,regionNoise,districtNoise):allocateSeatsFast(simVotes,SEATS_TOTAL,regionNoise,districtNoise));
     const rg=BLOCS.bloc1.parties.reduce((a,p)=>a+(seats[p]||0),0);
     const td=BLOCS.bloc2.parties.reduce((a,p)=>a+(seats[p]||0),0);
-    const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0);
+    const simTotal=PARTY_ORDER.reduce((a,p)=>a+(seats[p]||0),0)+
+      (seats.other||0);
     const MAJ_TH=Math.floor(simTotal/2)+1;
     const KM=BLOCS.kingmaker;
     const kmActive=!!(KM&&!BLOCS.bloc1.parties.includes(KM)&&!BLOCS.bloc2.parties.includes(KM));
@@ -5855,10 +5883,19 @@ function renderForecast(pane){
   // probability temperature here: calibrating each share independently
   // breaks the sum (Spain was showing >100%).
   const sharePct=p=>pct(p*100,1);
+  // Government = the incumbent party's colour; opposition = the largest
+  // opposition party in the current poll average. This keeps the probability
+  // colours tied to the parties the reader is actually watching.
+  const blocCol=blocColors(avg);
+  const GOV_COLOR=blocCol.gov, OPP_COLOR=blocCol.opp;
   // optional third bloc (e.g. Israel's Arab parties): unaligned, so it has no
   // majority probability - shown as its expected seat count instead
   const b3Seats=BLOCS.bloc3?BLOCS.bloc3.parties.reduce((a,p)=>a+mean(sim.seatsBy[p]),0):0;
-  const expectedSeats=Math.round(fOrder.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
+  const otherMean=sim.seatsBy&&sim.seatsBy.other?mean(sim.seatsBy.other):0;
+  // Include pastOnly/reserved entries too (Romania's 19 minority deputies,
+  // Croatia/Slovenia's reserved Other seats): the majority threshold is based
+  // on the actual chamber, not only the parties with polling.
+  const expectedSeats=Math.round(PARTY_ORDER.reduce((a,p)=>a+mean(sim.seatsBy[p]),0)+otherMean);
   const MAJ=Math.floor(expectedSeats/2)+1;
 
   // --- Coalition scenarios: P(configured combination reaches a majority),
@@ -6042,8 +6079,8 @@ function renderForecast(pane){
 
   // --- Probabilities ---
   const majorityBar=`<div class="fc-majbar">
-    <div class="fc-majseg" style="width:${(rgP*100).toFixed(1)}%;background:${BLOCS.bloc1.color}"></div>
-    <div class="fc-majseg" style="width:${(tdP*100).toFixed(1)}%;background:${BLOCS.bloc2.color}"></div>
+    <div class="fc-majseg" style="width:${(rgP*100).toFixed(1)}%;background:${GOV_COLOR}"></div>
+    <div class="fc-majseg" style="width:${(tdP*100).toFixed(1)}%;background:${OPP_COLOR}"></div>
     ${kmDefined?`<div class="fc-majseg" style="width:${(kmP*100).toFixed(1)}%;background:${KM_COLOR}"></div>`:''}
     <div class="fc-majseg" style="width:${(hungP*100).toFixed(1)}%;background:#9CA3AF"></div>
   </div>`;
@@ -6142,7 +6179,7 @@ function renderForecast(pane){
     leadCands=fOrder.slice().sort((a,b)=>(sim.largest[b]||0)-(sim.largest[a]||0))
       .map(p=>({n:partyCode(p),c:PARTY_META[p]?PARTY_META[p].color:'#888',p:(sim.largest[p]||0)/sim.nSims}));
   }else{
-    leadCands=[{n:BLOCS.bloc1.name,c:BLOCS.bloc1.color,p:rgP},{n:BLOCS.bloc2.name,c:BLOCS.bloc2.color,p:tdP}];
+    leadCands=[{n:BLOCS.bloc1.name,c:GOV_COLOR,p:rgP},{n:BLOCS.bloc2.name,c:OPP_COLOR,p:tdP}];
     if(kmDefined)leadCands.push({n:BLOCS.kingmakerLabel||'Kingmaker',c:KM_COLOR,p:kmP});
     leadCands.sort((a,b)=>b.p-a.p);
   }
@@ -6284,8 +6321,8 @@ function renderForecast(pane){
     ${HIDE_BLOCS?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
-        <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${sharePct(rgP)}</span>
-        <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${sharePct(tdP)}</span>
+        <span><span class="fc-dot" style="background:${GOV_COLOR}"></span>${BLOCS.bloc1.name} ${sharePct(rgP)}</span>
+        <span><span class="fc-dot" style="background:${OPP_COLOR}"></span>${BLOCS.bloc2.name} ${sharePct(tdP)}</span>
         ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${sharePct(kmP)}</span>`:''}
         ${BLOCS.bloc3?`<span><span class="fc-dot" style="background:${BLOCS.bloc3.color}"></span>${BLOCS.bloc3.name} ${Math.round(b3Seats)} ${T.seats} ${t('(unaligned)','(bağımsız)')}</span>`:''}
         <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${sharePct(hungP)}</span>

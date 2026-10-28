@@ -32,8 +32,9 @@ import unicodedata
 
 import requests
 from bs4 import BeautifulSoup
-from shapely.geometry import shape
+from shapely.geometry import Polygon, MultiPolygon, shape
 from shapely.ops import unary_union
+from shapely.validation import make_valid
 
 sys.path.insert(0, os.path.dirname(__file__))
 import build_map_svg as bm
@@ -43,13 +44,13 @@ CACHE = os.path.join(ROOT, "scraper", ".cache")
 LAW_URL = ("https://www.tax-fin-lex.si/dokument/podrobnosti/"
            "a637c16c5-e43b-47a5-a436-9e8e6574c05e/clen/"
            "a82bf97c8-65bb-483c-aeb2-0cdfbe924e99")
-GADM_URL = ("https://geodata.ucdavis.edu/gadm/gadm4.1/json/"
-            "gadm41_SVN_2.json")
+VE_URL = ("https://raw.githubusercontent.com/stefanb/gurs-rpe/"
+          "master/data/VDV/VDV_VE.geojson")
 GEOJSON = os.path.join(CACHE, "si_constituencies.geojson")
 OUT_SVG = os.path.join(ROOT, "img", "slovenia.svg")
 BMV_SVG = os.path.join(ROOT, "bmv", "img", "slovenia.svg")
 ATTRIBUTION = ("Rezultati: DVK (2026, via en.wikipedia); "
-               "Meje: ZDVEDZ; Geometrija: GADM 4.1")
+               "Meje: GURS RPE (VDV_VE); Geometrija: GURS")
 
 # volilna enota code -> key
 VE_KEY = {1000: "kranj", 2000: "postojna", 3000: "ljubljana_center",
@@ -66,6 +67,26 @@ def fold(s):
     s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     return re.sub(r"[^a-z0-9]", "", s.lower())
+
+
+def clean_geometry(geom):
+    """Repair invalid polygons and drop tiny interior slivers.
+
+    The official GURS layer is much cleaner than the old GADM municipality
+    dissolve, but keep the same repair/fill step for defensive rendering.
+    """
+    if not geom.is_valid:
+        geom = make_valid(geom)
+    if geom.geom_type == 'GeometryCollection':
+        geom = MultiPolygon([p for p in geom.geoms
+                             if p.geom_type == 'Polygon' and not p.is_empty])
+    if geom.is_empty:
+        return geom
+    parts = list(geom.geoms) if geom.geom_type == 'MultiPolygon' else [geom]
+    parts = [Polygon(p.exterior) for p in parts if p.area > 0]
+    if not parts:
+        return geom
+    return MultiPolygon(parts) if len(parts) > 1 else parts[0]
 
 
 def fetch(url, name, force=False):
@@ -110,50 +131,20 @@ def parse_law(force):
 
 
 def build_geojson(force):
-    raw = fetch(GADM_URL, "gadm41_SVN_2.json", force)
-    gadm = json.loads(raw.decode("utf8"))
-    lists = parse_law(force)
+    """Use the official GURS VDV_VE layer: eight clean constituency polygons.
 
-    # name -> ve codes
-    owners = {}
-    for code, names in lists.items():
-        for n in names:
-            owners.setdefault(n, []).append(code)
-
-    mun = []
-    for feat in gadm["features"]:
-        name = feat["properties"]["NAME_2"]
-        key = fold(name)
-        codes = owners.get(key, [])
-        mun.append({"name": name, "key": key, "geom": shape(feat["geometry"]),
-                    "ve": codes[0] if len(codes) == 1 else None})
-    print("gadm municipalities:", len(mun),
-          "| unambiguous:", sum(1 for m in mun if m["ve"]))
-    # GADM 4.1 has 192 municipality polygons (the 212 obcine are partly
-    # merged); the law match covers all but a handful of splits
-    assert len(mun) >= 180, len(mun)
-
-    # pass 1: dissolve the unambiguous ones to get constituency centroids
-    ve_geoms = {}
-    for code in VE_KEY:
-        parts = [m["geom"] for m in mun if m["ve"] == code]
-        assert parts, code
-        ve_geoms[code] = unary_union(parts)
-    centroids = {c: g.centroid for c, g in ve_geoms.items()}
-
-    # pass 2: assign split/unmatched municipalities to the nearest centroid
-    for m in mun:
-        if m["ve"] is None:
-            c = m["geom"].centroid
-            m["ve"] = min(centroids,
-                          key=lambda cc: c.distance(centroids[cc]))
-    for code in VE_KEY:
-        parts = [m["geom"] for m in mun if m["ve"] == code]
-        ve_geoms[code] = unary_union(parts)
-
+    The old GADM municipality dissolve left hairline slivers between adjacent
+    municipalities (and therefore white scratch lines inside the map). The
+    GURS Register of Spatial Units publishes the actual eight electoral-unit
+    boundaries, so use that authoritative layer instead.
+    """
+    raw = fetch(VE_URL, "si_ve.geojson", force)
+    gj = json.loads(raw.decode("utf8"))
+    by_id = {int(f["properties"]["VDV_ID"]): f for f in gj["features"]}
+    assert set(by_id) == set(VE_KEY), sorted(by_id)
     feats = []
     for code, key in sorted(VE_KEY.items(), key=lambda x: x[1]):
-        geom = ve_geoms[code]
+        geom = clean_geometry(shape(by_id[code]["geometry"]))
         polys = list(geom.geoms) if geom.geom_type == "MultiPolygon" \
             else [geom]
         rings = []
@@ -169,17 +160,18 @@ def build_geojson(force):
     with open(GEOJSON, "w", encoding="utf8") as fh:
         json.dump({"type": "FeatureCollection", "features": feats}, fh,
                   ensure_ascii=False)
-    print("geojson: 8 constituencies dissolved")
+    print("geojson: 8 official GURS constituencies")
     return feats
-
 
 def main():
     force = "--force" in sys.argv
+    skip_config = "--no-config" in sys.argv
     res = json.loads(open(os.path.join(ROOT, "data", "si", "results.json"),
                           encoding="utf8").read())
     build_geojson(force)
     sys.argv = ["build_map_svg.py", "--geojson", GEOJSON,
                 "--name-field", "shapeName", "--no-prefix",
+                "--simplify", "0.0002",
                 "--out", OUT_SVG, "--attribution", ATTRIBUTION]
     if force:
         sys.argv.append("--force")
@@ -199,6 +191,7 @@ def main():
     map_block = f"""    map: {{
       svg: 'img/slovenia.svg',
       selector: 'id',
+      stroke: '#111827',
       swingMethod: 'geometric',
       // the 8 volilne enote (GADM municipalities dissolved by the ZDVEDZ
       // law composition; the split municipalities - Ljubljana above all -
@@ -214,6 +207,9 @@ def main():
       national2021: {j(nat, ensure_ascii=False)},
     }},
 """
+    if skip_config:
+        print("skipped config patch (--no-config)")
+        return
     cp = os.path.join(ROOT, "js", "config.js")
     text = open(cp, encoding="utf8").read()
     assert "    map: {\n      svg: 'img/slovenia.svg'" not in text, \

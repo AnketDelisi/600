@@ -2,8 +2,8 @@
  "country": "no",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
- "scraped_at": "2026-10-26T12:12:54Z",
- "poll_count": 76,
+ "scraped_at": "2026-10-28T18:32:47Z",
+ "poll_count": 85,
  "polls": [
   {
    "pollster": "Verian",
@@ -1459,6 +1459,178 @@
     "h": 15.2,
     "frp": 29.2
    }
+  },
+  {
+   "pollster": "Opinion",
+   "date": "2026-09-12",
+   "n": 1000,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 7.9,
+    "sv": 5.0,
+    "mdg": 3.7,
+    "ap": 20.6,
+    "sp": 4.5,
+    "v": 3.4,
+    "krf": 4.2,
+    "h": 14.3,
+    "frp": 32.5
+   }
+  },
+  {
+   "pollster": "Respons Analyse",
+   "date": "2026-09-14",
+   "n": 1003,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 6.4,
+    "sv": 5.9,
+    "mdg": 4.1,
+    "ap": 24.3,
+    "sp": 4.5,
+    "v": 3.6,
+    "krf": 4.2,
+    "h": 16.0,
+    "frp": 30.4
+   }
+  },
+  {
+   "pollster": "Opinion",
+   "date": "2026-09-27",
+   "n": 1001,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 8.0,
+    "sv": 4.4,
+    "mdg": 4.4,
+    "ap": 22.4,
+    "sp": 5.8,
+    "v": 2.5,
+    "krf": 3.1,
+    "h": 13.7,
+    "frp": 32.6
+   }
+  },
+  {
+   "pollster": "InFact",
+   "date": "2026-10-01",
+   "n": 2907,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 8.4,
+    "sv": 3.6,
+    "mdg": 4.9,
+    "ap": 21.5,
+    "sp": 5.4,
+    "v": 2.7,
+    "krf": 4.2,
+    "h": 11.9,
+    "frp": 35.1
+   }
+  },
+  {
+   "pollster": "Norfakta",
+   "date": "2026-10-07",
+   "n": 1000,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 6.2,
+    "sv": 5.5,
+    "mdg": 4.5,
+    "ap": 21.2,
+    "sp": 6.2,
+    "v": 3.3,
+    "krf": 4.0,
+    "h": 12.8,
+    "frp": 33.2
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-10-07",
+   "n": 983,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 7.0,
+    "sv": 5.6,
+    "mdg": 3.7,
+    "ap": 21.4,
+    "sp": 5.4,
+    "v": 4.7,
+    "krf": 3.8,
+    "h": 14.3,
+    "frp": 31.9
+   }
+  },
+  {
+   "pollster": "Opinion",
+   "date": "2026-10-10",
+   "n": 1000,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 9.2,
+    "sv": 4.2,
+    "mdg": 3.4,
+    "ap": 22.3,
+    "sp": 5.3,
+    "v": 3.0,
+    "krf": 3.5,
+    "h": 12.8,
+    "frp": 32.7
+   }
+  },
+  {
+   "pollster": "Respons Analyse",
+   "date": "2026-10-12",
+   "n": 1000,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 7.9,
+    "sv": 4.3,
+    "mdg": 4.1,
+    "ap": 21.0,
+    "sp": 4.9,
+    "v": 3.9,
+    "krf": 4.1,
+    "h": 14.4,
+    "frp": 33.9
+   }
+  },
+  {
+   "pollster": "Norstat",
+   "date": "2026-10-21",
+   "n": 1000,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 8.8,
+    "sv": 5.1,
+    "mdg": 4.2,
+    "ap": 22.5,
+    "sp": 5.1,
+    "v": 3.7,
+    "krf": 3.1,
+    "h": 13.1,
+    "frp": 31.6
+   },
+   "method": "online"
   }
  ]
 }

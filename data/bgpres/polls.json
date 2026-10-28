@@ -2,7 +2,7 @@
  "country": "bgpres",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/2026_Bulgarian_presidential_election",
- "scraped_at": "2026-10-26T12:12:52Z",
+ "scraped_at": "2026-10-28T18:32:44Z",
  "poll_count": 17,
  "polls": [
   {
@@ -29,9 +29,9 @@
     "iotova": 51.6,
     "gyurov": 27.5,
     "kostadinov": 8.0,
+    "hristanov": 1.1,
     "vasilev": 2.0,
-    "mihaylov": 4.9,
-    "hristanov": 1.1
+    "mihaylov": 4.9
    }
   },
   {
@@ -46,9 +46,9 @@
     "iotova": 44.5,
     "gyurov": 26.1,
     "kostadinov": 10.5,
+    "hristanov": 3.4,
     "vasilev": 2.5,
-    "mihaylov": 2.2,
-    "hristanov": 3.4
+    "mihaylov": 2.2
    }
   },
   {
@@ -63,9 +63,9 @@
     "iotova": 47.8,
     "gyurov": 24.6,
     "kostadinov": 9.7,
+    "hristanov": 1.9,
     "vasilev": 4.6,
-    "mihaylov": 2.4,
-    "hristanov": 1.9
+    "mihaylov": 2.4
    }
   },
   {
@@ -80,9 +80,9 @@
     "iotova": 46.9,
     "gyurov": 25.3,
     "kostadinov": 8.8,
+    "hristanov": 2.7,
     "vasilev": 2.2,
-    "mihaylov": 4.2,
-    "hristanov": 2.7
+    "mihaylov": 4.2
    }
   },
   {
@@ -97,9 +97,9 @@
     "iotova": 47.8,
     "gyurov": 26.4,
     "kostadinov": 11.6,
+    "hristanov": 4.4,
     "vasilev": 2.8,
-    "mihaylov": 1.7,
-    "hristanov": 4.4
+    "mihaylov": 1.7
    },
    "method": "phone"
   },
@@ -114,9 +114,9 @@
     "iotova": 49.2,
     "gyurov": 24.8,
     "kostadinov": 9.5,
+    "hristanov": 1.9,
     "vasilev": 3.1,
-    "mihaylov": 2.6,
-    "hristanov": 1.9
+    "mihaylov": 2.6
    }
   },
   {
@@ -130,9 +130,9 @@
     "iotova": 47.3,
     "gyurov": 30.6,
     "kostadinov": 10.3,
+    "hristanov": 2.3,
     "vasilev": 2.8,
-    "mihaylov": 4.3,
-    "hristanov": 2.3
+    "mihaylov": 4.3
    }
   },
   {
@@ -147,9 +147,9 @@
     "iotova": 43.4,
     "gyurov": 28.9,
     "kostadinov": 10.2,
+    "hristanov": 1.9,
     "vasilev": 2.9,
-    "mihaylov": 3.1,
-    "hristanov": 1.9
+    "mihaylov": 3.1
    }
   },
   {
@@ -164,9 +164,9 @@
     "iotova": 45.9,
     "gyurov": 27.8,
     "kostadinov": 10.9,
+    "hristanov": 2.4,
     "vasilev": 3.2,
-    "mihaylov": 2.2,
-    "hristanov": 2.4
+    "mihaylov": 2.2
    }
   },
   {
@@ -181,9 +181,9 @@
     "iotova": 41.1,
     "gyurov": 28.3,
     "kostadinov": 12.8,
+    "hristanov": 3.6,
     "vasilev": 3.9,
-    "mihaylov": 3.4,
-    "hristanov": 3.6
+    "mihaylov": 3.4
    }
   },
   {
@@ -198,9 +198,9 @@
     "iotova": 44.2,
     "gyurov": 30.4,
     "kostadinov": 12.7,
+    "hristanov": 3.5,
     "vasilev": 2.6,
-    "mihaylov": 1.3,
-    "hristanov": 3.5
+    "mihaylov": 1.3
    },
    "method": "phone"
   },
@@ -216,9 +216,9 @@
     "iotova": 35.3,
     "gyurov": 32.4,
     "kostadinov": 12.6,
+    "hristanov": 2.2,
     "vasilev": 4.1,
-    "mihaylov": 3.5,
-    "hristanov": 2.2
+    "mihaylov": 3.5
    }
   },
   {
@@ -233,9 +233,9 @@
     "iotova": 36.6,
     "gyurov": 31.8,
     "kostadinov": 15.7,
+    "hristanov": 2.6,
     "vasilev": 3.1,
-    "mihaylov": 2.7,
-    "hristanov": 2.6
+    "mihaylov": 2.7
    },
    "method": "phone"
   },
@@ -251,9 +251,9 @@
     "iotova": 32.6,
     "gyurov": 31.5,
     "kostadinov": 13.5,
+    "hristanov": 2.4,
     "vasilev": 4.3,
-    "mihaylov": 3.5,
-    "hristanov": 2.4
+    "mihaylov": 3.5
    }
   },
   {
@@ -268,9 +268,9 @@
     "iotova": 35.6,
     "gyurov": 32.5,
     "kostadinov": 13.5,
+    "hristanov": 1.6,
     "vasilev": 3.9,
-    "mihaylov": 3.2,
-    "hristanov": 1.6
+    "mihaylov": 3.2
    }
   },
   {
@@ -285,9 +285,9 @@
     "iotova": 36.4,
     "gyurov": 32.1,
     "kostadinov": 14.1,
+    "hristanov": 1.7,
     "vasilev": 3.5,
-    "mihaylov": 3.0,
-    "hristanov": 1.7
+    "mihaylov": 3.0
    }
   }
  ]

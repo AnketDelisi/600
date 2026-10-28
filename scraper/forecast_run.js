@@ -60,12 +60,36 @@ vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'js', 'config.js'), 'utf8'),
 vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'js', 'app.js'), 'utf8'), { filename: 'app.js' });
 
 async function main() {
+  // --avg <country> <polls-json>: expose the app's deployed computeAverages()
+  // for a historical/live poll set (used by calibration_gate.py).
+  if (process.argv[2] === '--avg') {
+    const cc = process.argv[3];
+    const polls = JSON.parse(process.argv[4]);
+    await globalThis.__600_loadAll(cc);
+    const avg = globalThis.__600_avg(cc, polls, false);
+    console.log(JSON.stringify(avg));
+    return;
+  }
   const cc = process.argv[2];
   const votes = JSON.parse(process.argv[3]);
   const nSims = process.argv[4] ? parseInt(process.argv[4], 10) : 1500;
   const nPolls = process.argv[5] ? parseInt(process.argv[5], 10) : 20;
-  await globalThis.__600_loadAll();
-  const summary = await globalThis.__600_forecast(cc, votes, nSims, nPolls);
+  const horizonArg = process.argv[6];
+  const horizon = horizonArg !== undefined && horizonArg !== '' &&
+    Number.isFinite(Number(horizonArg)) ? Number(horizonArg) : null;
+  // load the target country, not the boot country (Israel): META, maps and
+  // constituency data all belong to the country whose race is being scored
+  await globalThis.__600_loadAll(cc);
+  // merge split map data for every country, matching seats_run.js; loadData()
+  // only fetches it for the currently selected country
+  for (const id of Object.keys(COUNTRIES)) {
+    try {
+      const g = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', id, 'geo.json'), 'utf8'));
+      if (g.map) COUNTRIES[id].map = g.map;
+      if (g.map2) COUNTRIES[id].map2 = g.map2;
+    } catch (e) { /* inline map */ }
+  }
+  const summary = await globalThis.__600_forecast(cc, votes, nSims, nPolls, horizon);
   console.log(JSON.stringify(summary));
 }
 

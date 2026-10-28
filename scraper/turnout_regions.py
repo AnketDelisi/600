@@ -16,11 +16,12 @@ CAP = 2.0
 
 
 def slope(rows, party):
-    xs = [float(row["turnout"]) for row in rows]
-    ys = [float(row["shares"][party]) for row in rows if party in row.get("shares", {})]
-    ws = [float(row.get("votes") or 1) for row in rows if party in row.get("shares", {})]
-    if len(ys) < 3:
+    sample = [row for row in rows if party in row.get("shares", {})]
+    if len(sample) < 3:
         return None
+    xs = [float(row["turnout"]) for row in sample]
+    ys = [float(row["shares"][party]) for row in sample]
+    ws = [float(row.get("votes") or 1) for row in sample]
     mx = statistics.mean(xs)
     my = statistics.mean(ys)
     den = sum(w * (x - mx) ** 2 for x, w in zip(xs, ws))

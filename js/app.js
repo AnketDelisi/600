@@ -4837,8 +4837,9 @@ function allocateSeatsFastRaw(votes, total, regionNoise, districtNoise){
        !(PARTY_META[p]&&PARTY_META[p].pastOnly)) votes[p]=natBase[p]||0;
   });
   const minority=(COUNTRIES[COUNTRY]||{}).minorityParties||[];
-  const valid=PARTY_ORDER.filter(p=>(votes[p]||0)>=THRESHOLD||
-    (minority.indexOf(p)>=0&&(votes[p]||0)>0));
+  const valid=PARTY_ORDER.filter(p=>((votes[p]||0)>=THRESHOLD||
+    (minority.indexOf(p)>=0&&(votes[p]||0)>0))&&
+    !(PARTY_META[p]&&PARTY_META[p].unallocated));
   if(!valid.length) return {};
   const seats={};valid.forEach(p=>{seats[p]=0});
   const bonus=bonusSeatCount(votes);
@@ -4985,11 +4986,11 @@ function maeAt(days){
 // measured curve: total^2 = dirichlet^2 + (swing/2)^2, floored so the swing
 // never contributes less than 1.0pp (the old fixed contribution) - a thin
 // poll set keeps its own (larger) Dirichlet uncertainty on top.
-function horizonSwing(avg, nPolls){
+function horizonSwing(avg, nPolls, horizonDays){
   const sumA=PARTY_ORDER.reduce((a,p)=>a+Math.max(0.5,(avg[p]||0)),0)
     *effectiveK(nPolls,FORECAST_K);
   const dirichlet=Math.sqrt(0.3*0.7/(sumA+1))*100;
-  const target=1.253*maeAt(daysToElection());
+  const target=1.253*maeAt(horizonDays!=null?horizonDays:daysToElection());
   return 2*Math.sqrt(Math.max(0.25,target*target-dirichlet*dirichlet));
 }
 let FORECAST_SWING_ACTIVE=null;
@@ -5016,10 +5017,12 @@ function forecastSigma(avg, nPolls){
 }
 
 function gammaSample(alpha){
-  // Marsaglia-Tsang (alpha > 1)
+  // Marsaglia-Tsang needs alpha >= 1; boost the shape for small Dirichlet
+  // concentrations instead of feeding a negative d into the loop.
+  if(alpha<1) return gammaSample(alpha+1)*Math.pow(fcRand(),1/alpha);
   const d=alpha-1/3, c=1/Math.sqrt(9*d);
   for(let i=0;i<20;i++){
-    const z=Math.sqrt(-2*Math.log(fcRand()))*(fcRand()<0.5?-1:1);  // full standard normal
+    const z=gaussianSample(fcRand);
     const y=Math.pow(1+c*z,3);
     if(y>0){
       const u=fcRand();
@@ -5176,11 +5179,12 @@ function runSeatForecast(avg, nSims, nPolls){
   return summarize(seatsBy,votesBy,largest,maj,nSims);
 }
 
-function runForecast(avg, nSims, nPolls){
+function runForecast(avg, nSims, nPolls, horizonDays){
   if(SEAT_BASED) return runSeatForecast(avg, nSims, nPolls);
   // the correlated swing is scaled to the measured days-to-election error
-  // curve for this country before any simulation draws from it
-  FORECAST_SWING_ACTIVE=horizonSwing(avg,nPolls);
+  // curve for this country before any simulation draws from it. The backtest
+  // passes its as-of horizon explicitly; the live app leaves it null.
+  FORECAST_SWING_ACTIVE=horizonSwing(avg,nPolls,horizonDays);
   let K=effectiveK(nPolls,FORECAST_K);
   const maj={rg:0,td:0,hung:0,km:0};
   const largest={};
@@ -5194,8 +5198,14 @@ function runForecast(avg, nSims, nPolls){
   // dissolved alliances (pastOnly) never contest the projection: keep their
   // sim draw negligible so they cannot soak up seats or votes (Serbia's SPN
   // is still in PARTY_ORDER for the 2023 result view)
-  const alpha=PARTY_ORDER.map(p=>(PARTY_META[p]&&(PARTY_META[p].pastOnly||PARTY_META[p].unallocated))?0.01:
-    Math.max(0.5,(avg[p]||0)*K));
+  const alpha=PARTY_ORDER.map(p=>{
+    if(PARTY_META[p]&&(PARTY_META[p].pastOnly||PARTY_META[p].unallocated)) return 0.01;
+    // parties with no polling are pinned to their baseline below; keep their
+    // Dirichlet placeholder negligible so it cannot consume mass from the
+    // parties the polls actually measure
+    if(avg[p]==null) return 0.01;
+    return Math.max(0.5,(avg[p]||0)*K);
+  });
   // "Other" is a real bucket in the Dirichlet: its draw competes with the
   // modelled parties, so their simulated shares shrink to honest levels.
   alpha.push(Math.max(0.5,(avg.other||0)*K));
@@ -7638,7 +7648,8 @@ window.addEventListener('resize',()=>{fitSideCard(); if(window.__ypFit) window._
 // the real allocation on arbitrary vote maps without a browser). Node sets
 // window.__600_SEATAPI__ before loading this file; inert in the browser.
 if(typeof window!=='undefined'&&window.__600_SEATAPI__){
-  window.__600_loadAll=function(){
+  window.__600_loadAll=function(cc){
+    if(cc) setCountry(cc);
     return loadData().then(()=>loadConstituencies()).then(()=>loadBacktest());
   };
   window.__600_alloc=function(cc,votes,total,swing){
@@ -7680,13 +7691,21 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
   // Headless Monte Carlo for the backtest's calibration: the same
   // runForecast the forecast tab uses, slimmed to the summary the harness
   // needs (no per-sim arrays).
-  window.__600_forecast=function(cc,votes,nSims,nPolls){
+  window.__600_forecast=function(cc,votes,nSims,nPolls,horizonDays){
     setCountry(cc);
     return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>{
-      const r=runForecast(votes,nSims||1500,nPolls||20);
+      const r=runForecast(votes,nSims||1500,nPolls||20,horizonDays);
       return {maj:r.maj,largest:r.largest,means:r.means,medians:r.medians,
               modal:r.modal,nSims:r.nSims};
     });
+  };
+  window.__600_gammaSample=gammaSample;
+  // Compute the deployed average for an explicit poll set. Used by the
+  // validation harness so it scores computeAverages(), not a Python copy.
+  window.__600_avg=function(cc,polls,raw){
+    setCountry(cc);
+    POLLS=Array.isArray(polls)?polls:[];
+    return computeAverages(POLLS,!!raw);
   };
 }
 

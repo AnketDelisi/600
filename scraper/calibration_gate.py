@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Score the 2026 live races against the app's real forecast probabilities."""
+import datetime
 import json
 import math
 import subprocess
@@ -11,9 +12,41 @@ ACTUAL = json.loads((ROOT / "data" / "election_results.json").read_text(encoding
 RACES = {"serbia": "serbia", "bgpres": "bgpres", "brazil": "brazil"}
 
 
-def forecast(cc, votes):
+def poll_rows(country, spec):
+    data = json.loads((ROOT / "data" / country / "polls.json").read_text(encoding="utf8"))
+    end = datetime.date.fromisoformat(ACTUAL[country]["date"])
+    start = end - datetime.timedelta(days=spec["poll_window_days"])
+    rows = []
+    for poll in data.get("polls") or []:
+        try:
+            when = datetime.date.fromisoformat(poll["date"])
+        except (KeyError, ValueError):
+            continue
+        if not start <= when <= end:
+            continue
+        votes = poll.get("runoff") if country == "brazil" else poll.get("votes")
+        if not votes:
+            continue
+        rows.append({
+            "pollster": poll.get("pollster") or "unknown",
+            "date": poll["date"],
+            "votes": votes,
+            "n": poll.get("n") or 1000,
+            "method": poll.get("method") or "",
+        })
+    return rows
+
+
+def average(cc, polls):
     out = subprocess.run(
-        ["node", "scraper/forecast_run.js", cc, json.dumps(votes), "2000", "20"],
+        ["node", "scraper/forecast_run.js", "--avg", cc, json.dumps(polls)],
+        cwd=ROOT, capture_output=True, text=True, encoding="utf8", check=True)
+    return json.loads(out.stdout)
+
+
+def forecast(cc, votes, n_polls):
+    out = subprocess.run(
+        ["node", "scraper/forecast_run.js", cc, json.dumps(votes), "2000", str(n_polls)],
         cwd=ROOT, capture_output=True, text=True, encoding="utf8", check=True)
     return json.loads(out.stdout)
 
@@ -29,7 +62,9 @@ def main():
     cases = []
     for key, cc in RACES.items():
         actual = ACTUAL[key]
-        result = forecast(cc, POST[key]["poll_average"])
+        rows = poll_rows(cc, POST[key])
+        avg = average(cc, rows)
+        result = forecast(cc, avg, len(rows))
         n = result["nSims"]
         largest = result["largest"]
         predicted = max(largest, key=largest.get)
@@ -37,7 +72,10 @@ def main():
         p = largest[predicted] / n
         case = {
             "race": key,
-            "poll_average": POST[key]["poll_average"],
+            "poll_average": {k: round(v, 2) for k, v in avg.items()
+                             if v is not None and k != "other"},
+            "simple_average": POST[key]["poll_average"],
+            "poll_count": len(rows),
             "predicted": predicted,
             "actual": actual_winner,
             "probability": round(p, 3),

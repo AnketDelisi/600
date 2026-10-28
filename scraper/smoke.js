@@ -86,9 +86,30 @@ function ballotOf(conf) {
   return votes;
 }
 
+function checkGamma() {
+  const g = globalThis.__600_gammaSample;
+  if (!g) throw new Error('gammaSample hook missing');
+  for (const alpha of [0.2, 0.5, 1, 5]) {
+    let sum = 0;
+    for (let i = 0; i < 5000; i++) {
+      const x = g(alpha);
+      if (!Number.isFinite(x) || x < 0) {
+        throw new Error('gammaSample(' + alpha + ') returned ' + x);
+      }
+      sum += x;
+    }
+    const mean = sum / 5000;
+    if (Math.abs(mean - alpha) > 0.15 * Math.max(1, alpha)) {
+      throw new Error('gammaSample(' + alpha + ') mean ' + mean.toFixed(3) +
+        ', expected ~' + alpha);
+    }
+  }
+}
+
 async function main() {
   const only = process.argv[2] || null;
   await globalThis.__600_loadAll();
+  checkGamma();
   const rows = [];
   let bad = 0;
   const ccs = Object.keys(COUNTRIES).filter((c) => !only || c === only);

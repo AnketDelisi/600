@@ -56,7 +56,7 @@ def main():
         bl = bt.country_blocs(country)
         if not votes or not bl:
             continue
-        fc = bt.run_forecast(country, votes, 500, n)
+        fc = bt.run_forecast(country, votes, 500, n, 0)
         if not fc:
             continue
         means = {k: v for k, v in (fc.get("means") or {}).items() if k != "other"}

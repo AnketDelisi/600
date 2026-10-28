@@ -2768,7 +2768,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   // joint lists: projections fold the members into the list party so the map
   // winner, the seat split and the allocators all treat the alliance as one
   // list (history keeps the recorded separate results)
-  if(!resultMode&&conf.alliances){
+  if(!resultMode&&Array.isArray(conf.alliances)){
     for(const al of conf.alliances){
       if(al.provinces.indexOf(String(nr))<0) continue;
       const sen=al.parties[0];

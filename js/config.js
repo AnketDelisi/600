@@ -16163,13 +16163,13 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     },
     order: ['psd', 'aur', 'pnl', 'usr', 'sos', 'pot', 'udmr', 'pmp', 'fd', 'reper', 'sens', 'min'],
     parlOrder: ['psd', 'min', 'udmr', 'pnl', 'reper', 'sens', 'usr', 'fd', 'pmp', 'aur', 'sos', 'pot'],
-    // October 2026 Niculescu cabinet: PSD is the only party in government
-    // (with non-partisan ministers); PNL and UDMR support it externally but
-    // are not cabinet members. USR, AUR, SOS, POT and the rest are opposition.
+    // October 2026 Niculescu cabinet: PSD is the only party in cabinet (with
+    // non-partisan ministers); PNL, UDMR and the national-minority group
+    // support it externally. USR, AUR, SOS, POT and the rest are opposition.
     incumbent: 'psd',
     blocs: {
-      bloc1: { name: 'Government', short: 'GOV', parties: ['psd'], color: '#EF3340' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['pnl', 'usr', 'udmr', 'aur', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' },
+      bloc1: { name: 'Government + support', short: 'GOV', parties: ['psd', 'pnl', 'udmr', 'min'], color: '#EF3340' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['usr', 'aur', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' },
     },
     lastElection: {
       date: '2024-12-01',

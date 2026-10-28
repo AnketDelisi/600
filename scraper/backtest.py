@@ -387,6 +387,7 @@ def fetch(article, refresh=False):
         r = requests.get("https://en.wikipedia.org/wiki/" + article,
                          headers=H, timeout=120)
         r.raise_for_status()
+        os.makedirs(CACHE, exist_ok=True)
         open(path, "wb").write(r.content)
     return BeautifulSoup(open(path, "rb").read().decode("utf8"), "lxml")
 

@@ -3761,7 +3761,7 @@ saxony_anhalt: {
       socdem: { code: 'SOCDEM', name: 'Social Democracy', name_en: 'Social Democracy', color: '#FF5F61', ideology: "Social democracy, Left-wing populism"},
       prisaha: { code: 'Přísaha', name: 'Oath', name_en: 'Oath', color: '#0033FF', ideology: "Populism, Anti-corruption"},
       nc: { code: 'NC', name: 'Our Czechia', name_en: 'Our Czechia', color: '#FD3307', ideology: "Liberal conservatism, Pro-Europeanism"},
-      spolu: { code: 'SPOLU', name: 'SPOLU (ODS, KDU-ČSL, TOP 09)', name_en: 'Spolu (Czech political alliance)', color: '#37349D', pastOnly: true, ideology: "Liberal conservatism, Christian democracy"},
+      spolu: { code: 'SPOLU', name: 'SPOLU (ODS, KDU-ČSL, TOP 09)', name_en: 'Spolu (Czech political alliance)', color: '#00EA29', pastOnly: true, ideology: "Liberal conservatism, Christian democracy"},
     },
     // Poll-table column order (the 16 parties with logos) + dissolved SPOLU;
     // Not modelled (no logo; always '–' in polls): Stačilo! folds into 'Other'.

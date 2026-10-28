@@ -5850,6 +5850,11 @@ function renderForecast(pane){
   const kmDefined=!!BLOCS.kingmaker;
   const KM_COLOR=BLOCS.kingmakerColor||'#F59E0B';
   const rgP=maj.rg/majTotal, tdP=maj.td/majTotal, hungP=maj.hung/majTotal, kmP=kmDefined?((maj.km||0)/majTotal):0;
+  // These four outcomes are exhaustive and mutually exclusive, so their
+  // displayed shares must add to 100%. Do not apply the single-event
+  // probability temperature here: calibrating each share independently
+  // breaks the sum (Spain was showing >100%).
+  const sharePct=p=>pct(p*100,1);
   // optional third bloc (e.g. Israel's Arab parties): unaligned, so it has no
   // majority probability - shown as its expected seat count instead
   const b3Seats=BLOCS.bloc3?BLOCS.bloc3.parties.reduce((a,p)=>a+mean(sim.seatsBy[p]),0):0;
@@ -6279,11 +6284,11 @@ function renderForecast(pane){
     ${HIDE_BLOCS?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.majority}</div></div>
       ${majorityBar}
       <div class="fc-majlegend">
-        <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${probPct(rgP)}</span>
-        <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${probPct(tdP)}</span>
-        ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${probPct(kmP)}</span>`:''}
+        <span><span class="fc-dot" style="background:${BLOCS.bloc1.color}"></span>${BLOCS.bloc1.name} ${sharePct(rgP)}</span>
+        <span><span class="fc-dot" style="background:${BLOCS.bloc2.color}"></span>${BLOCS.bloc2.name} ${sharePct(tdP)}</span>
+        ${kmDefined?`<span><span class="fc-dot" style="background:${KM_COLOR}"></span>${BLOCS.kingmakerLabel||'Kingmaker'} ${sharePct(kmP)}</span>`:''}
         ${BLOCS.bloc3?`<span><span class="fc-dot" style="background:${BLOCS.bloc3.color}"></span>${BLOCS.bloc3.name} ${Math.round(b3Seats)} ${T.seats} ${t('(unaligned)','(bağımsız)')}</span>`:''}
-        <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${probPct(hungP)}</span>
+        <span><span class="fc-dot" style="background:#9CA3AF"></span>No majority ${sharePct(hungP)}</span>
       </div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Chance of a ${MAJ}-seat majority</div>
       ${calibNote()}

@@ -11,9 +11,30 @@
    "license": "CC0"
   }
  ],
- "scraped_at": "2026-10-26T12:12:32Z",
- "poll_count": 116,
+ "scraped_at": "2026-10-28T18:32:17Z",
+ "poll_count": 117,
  "polls": [
+  {
+   "pollster": "Ipsos",
+   "date": "2026-10-27",
+   "votes": {
+    "S": 27.0,
+    "M": 24.0,
+    "SD": 19.0,
+    "V": 8.0,
+    "C": 6.0,
+    "KD": 5.0,
+    "MP": 6.0,
+    "L": 4.0
+   },
+   "country": "sweden",
+   "source": "SwedishPolls",
+   "source_url": "https://github.com/MansMeg/SwedishPolls",
+   "n": 1589,
+   "fieldwork_start": "2026-10-13",
+   "fieldwork_end": "2026-10-25",
+   "method": "mixed"
+  },
   {
    "pollster": "Novus",
    "date": "2026-10-14",

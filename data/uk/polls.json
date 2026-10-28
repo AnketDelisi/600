@@ -2,9 +2,68 @@
  "country": "uk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
- "scraped_at": "2026-10-26T12:12:49Z",
- "poll_count": 594,
+ "scraped_at": "2026-10-28T18:32:40Z",
+ "poll_count": 597,
  "polls": [
+  {
+   "pollster": "YouGov",
+   "fieldwork_start": "2026-10-26",
+   "date": "2026-10-26",
+   "n": 2271,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 27.0,
+    "con": 22.0,
+    "ref": 20.0,
+    "lib": 11.0,
+    "grn": 10.0,
+    "snp": 2.0,
+    "plc": 1.0,
+    "res": 4.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "More in Common",
+   "fieldwork_start": "2026-10-26",
+   "date": "2026-10-26",
+   "n": 3286,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 28.0,
+    "con": 24.0,
+    "ref": 23.0,
+    "lib": 11.0,
+    "grn": 7.0,
+    "snp": 2.0,
+    "plc": 1.0,
+    "res": 5.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "Deltapoll",
+   "fieldwork_start": "2026-10-26",
+   "date": "2026-10-26",
+   "n": 1932,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 32.0,
+    "con": 21.0,
+    "ref": 25.0,
+    "lib": 7.0,
+    "grn": 8.0,
+    "snp": 4.0,
+    "plc": 1.0
+   },
+   "method": "online"
+  },
   {
    "pollster": "Opinium",
    "fieldwork_start": "2026-10-23",

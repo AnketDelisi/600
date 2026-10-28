@@ -2,8 +2,8 @@
  "country": "hr",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Croatian_parliamentary_election",
- "scraped_at": "2026-10-26T12:12:57Z",
- "poll_count": 71,
+ "scraped_at": "2026-10-28T18:32:52Z",
+ "poll_count": 72,
  "polls": [
   {
    "pollster": "Ipsos",
@@ -1551,6 +1551,32 @@
     "centar": 1.2,
     "drito": 2.0
    }
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2026-10-27",
+   "n": 995,
+   "country": "hr",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Croatian_parliamentary_election",
+   "votes": {
+    "hdz": 25.5,
+    "sdp": 17.0,
+    "dp": 2.2,
+    "domino": 1.7,
+    "pip": 1.9,
+    "mozemo": 13.7,
+    "most": 10.1,
+    "hs": 1.2,
+    "ids": 1.2,
+    "nps": 0.4,
+    "centar": 0.7,
+    "hss": 0.6,
+    "hsu": 2.0,
+    "hns": 0.1,
+    "drito": 1.8
+   },
+   "method": "mixed"
   }
  ]
 }

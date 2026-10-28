@@ -8,7 +8,7 @@
  "counted": null,
  "total": null,
  "counted_label": "votes counted",
- "turnout": 69.87,
+ "turnout": 70.2,
  "source": "Knesset Count (CEC data)",
  "source_url": "https://knesset-count.lol/",
  "result_title": "Vote share",
@@ -18,56 +18,56 @@
    "id": "likud",
    "name": "Likud",
    "color": "#1F5AA5",
-   "pct": 22.24,
-   "votes": 355360,
+   "pct": 22.02,
+   "votes": 388865,
    "seats": 29
   },
   {
    "id": "yashar",
    "name": "Yashar",
    "color": "#62B9F2",
-   "pct": 15.41,
-   "votes": 246260,
+   "pct": 15.46,
+   "votes": 273048,
    "seats": 20
   },
   {
    "id": "joint_list",
    "name": "Joint List",
    "color": "#01B2AC",
-   "pct": 8.28,
-   "votes": 132331,
+   "pct": 8.57,
+   "votes": 151337,
    "seats": 11
   },
   {
    "id": "together",
    "name": "Together",
    "color": "#2A2A78",
-   "pct": 8.22,
-   "votes": 131419,
+   "pct": 8.29,
+   "votes": 146387,
    "seats": 11
   },
   {
    "id": "utj",
    "name": "United Torah Judaism",
    "color": "#003366",
-   "pct": 6.74,
-   "votes": 107776,
+   "pct": 6.71,
+   "votes": 118588,
    "seats": 9
   },
   {
    "id": "yb",
    "name": "Yisrael Beiteinu",
    "color": "#23C2EB",
-   "pct": 6.43,
-   "votes": 102720,
+   "pct": 6.37,
+   "votes": 112430,
    "seats": 8
   },
   {
    "id": "otzma",
    "name": "Otzma Yehudit",
    "color": "#FF4500",
-   "pct": 6.02,
-   "votes": 96210,
+   "pct": 5.95,
+   "votes": 105152,
    "seats": 7
   },
   {
@@ -75,31 +75,31 @@
    "name": "The Democrats",
    "color": "#2A38D7",
    "pct": 5.89,
-   "votes": 94096,
+   "votes": 104003,
    "seats": 7
   },
   {
    "id": "shas",
    "name": "Shas",
    "color": "#000000",
-   "pct": 5.74,
-   "votes": 91675,
+   "pct": 5.79,
+   "votes": 102300,
    "seats": 7
   },
   {
    "id": "rzp",
    "name": "Religious Zionist Party",
    "color": "#4F9298",
-   "pct": 5.71,
-   "votes": 91174,
+   "pct": 5.62,
+   "votes": 99210,
    "seats": 7
   },
   {
    "id": "raam",
    "name": "Ra'am",
    "color": "#15793D",
-   "pct": 3.67,
-   "votes": 58671,
+   "pct": 3.7,
+   "votes": 65267,
    "seats": 4
   },
   {
@@ -107,15 +107,15 @@
    "name": "The Reservists",
    "color": "#68692C",
    "pct": 2.72,
-   "votes": 43527,
+   "votes": 48012,
    "seats": 0
   },
   {
    "id": "amcha",
    "name": "Amcha Yisrael",
    "color": "#8F36BF",
-   "pct": 1.79,
-   "votes": 28656,
+   "pct": 1.8,
+   "votes": 31765,
    "seats": 0
   },
   {
@@ -180,5 +180,5 @@
   }
  ],
  "id": "israel-2026",
- "updated_at": "2026-10-28T02:56:19Z"
+ "updated_at": "2026-10-28T03:16:16Z"
 }

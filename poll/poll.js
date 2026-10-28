@@ -245,11 +245,74 @@
     return seats;
   }
 
+  /* Czech Chamber: two-tier LR-Imperiali / Hagenbach-Bischoff, matching app.js */
+  function seatCzechia(c, votes) {
+    const conf = (c && c.map) || {};
+    if (!conf.regions) return null;
+    const nat = conf.national2021 || (c.lastElection ? c.lastElection.results : {}) || {};
+    const threshold = Number(c.threshold || 0);
+    const valid = (c.order || []).filter((p) => (votes[p] || 0) >= threshold);
+    const out = {};
+    (c.order || []).forEach((p) => { out[p] = 0; });
+    if (!valid.length) return out;
+    const remainders = {};
+    valid.forEach((p) => { remainders[p] = 0; });
+    let unfilled = 0;
+    Object.keys(conf.regions).forEach((rid) => {
+      const r = conf.regions[rid];
+      const rv = {}; let sum = 0;
+      valid.forEach((p) => {
+        rv[p] = Math.max(0, (r.results[p] || 0) + ((votes[p] || 0) - (nat[p] || 0))) * (r.votes || 100) / 100;
+        sum += rv[p];
+      });
+      if (!(sum > 0)) { unfilled += r.seats; return; }
+      const quota = Math.floor(sum / (r.seats + 2)) || 1;
+      const alloc = {}; const rems = []; let given = 0;
+      valid.forEach((p) => {
+        const q = Math.floor(rv[p] / quota);
+        alloc[p] = q; given += q;
+        rems.push([rv[p] - q * quota, p]);
+      });
+      if (given > r.seats) {
+        rems.sort((a, b) => a[0] - b[0]);
+        for (let i = 0; i < rems.length && given > r.seats; i++) {
+          const p = rems[i][1];
+          if (alloc[p] > 0) { alloc[p]--; given--; }
+        }
+      }
+      if (given < r.seats) unfilled += r.seats - given;
+      valid.forEach((p) => {
+        remainders[p] += rv[p] - quota * alloc[p];
+        out[p] += alloc[p];
+      });
+    });
+    if (unfilled > 0) {
+      const totalRem = valid.reduce((s, p) => s + remainders[p], 0);
+      if (totalRem > 0) {
+        const quota = Math.floor(totalRem / (unfilled + 1)) || 1;
+        const alloc = {}; const rems = []; let given = 0;
+        valid.forEach((p) => {
+          const q = Math.floor(remainders[p] / quota);
+          alloc[p] = q; given += q;
+          rems.push([remainders[p] - q * quota, p]);
+        });
+        rems.sort((a, b) => b[0] - a[0]);
+        for (let i = 0; i < rems.length && given < unfilled; i++) {
+          alloc[rems[i][1]]++; given++;
+        }
+        valid.forEach((p) => { out[p] += alloc[p]; });
+      }
+    }
+    return out;
+  }
+
   /* seat projection from the poll's numbers (vote % or seat counts) */
   function seatCalc(c, votes) {
     const total = Number(c.seats || 0);
     if (!total) return {};
     if (c.overhang) return seatOverhang(c, votes, total, seatDirectMandates(c, votes), Number(c.overhang.cap || c.seats));
+    if (c.method === 'imperiali_hb' && c.map && c.map.regions) return seatCzechia(c, votes);
+    if (c.method === 'fptp' && c.map && c.map.districts) return seatDirectMandates(c, votes);
     if (c.method === 'hare_niemeyer') return seatHareNiemeyer(c, votes, total);
     return seatDivisor(c, votes, total);
   }
@@ -444,12 +507,12 @@
       prev = (custom || (c && c.directNumbers)) ? last : ((c && c.lastElection && c.lastElection.seats) ? c.lastElection.seats : {});
       total = direct ? ((c && c.seatBased) ? Number(c.seats || 0) : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0))
                      : (c.order || []).reduce((a, p) => a + (now[p] || 0), 0);
-      display = activeOrder.filter((p) => (now[p] || 0) > 0).sort((a, b) => (now[b] || 0) - (now[a] || 0));
+      display = activeOrder.filter((p) => (now[p] || 0) > 0 || ((c.parties[p] || {}).pastOnly && (prev[p] || 0) > 0)).sort((a, b) => (now[b] || 0) - (now[a] || 0));
       if (!display.length) display = activeOrder.slice();
     } else {
       now = poll; prev = last; total = 0;
       const directSort = custom || (c && c.directNumbers);
-      display = activeOrder.filter((p) => (now[p] || 0) > 0)
+      display = activeOrder.filter((p) => (now[p] || 0) > 0 || ((c.parties[p] || {}).pastOnly && (prev[p] || 0) > 0))
         .sort(directSort ? (a, b) => (now[b] || 0) - (now[a] || 0) : (a, b) => (prev[b] || 0) - (prev[a] || 0));
       if (!display.length) display = activeOrder.slice();
     }

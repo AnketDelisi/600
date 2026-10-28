@@ -357,6 +357,13 @@ const partyLabel=(pid,conf)=>((conf&&conf.partyNames&&conf.partyNames[pid])||par
 // (Spain Senate: SDP displays as one orange-red list with its own logo)
 const partyColor=(pid,conf)=>((conf&&conf.partyColors&&conf.partyColors[pid])||(PARTY_META[pid]?PARTY_META[pid].color:'#888'));
 const partyLogo=(pid,conf)=>((conf&&conf.partyLogos&&conf.partyLogos[pid])||PARTY_LOGOS[pid]||null);
+const partyMark=(pid,conf,color,cls='party-mark')=>{
+  const logo=partyLogo(pid,conf);
+  const col=color||partyColor(pid,conf);
+  const name=partyLabel(pid,conf);
+  if(logo) return `<span class="${cls}" role="img" aria-label="${name}" title="${name}" style="--mark-color:${col};--mark:url('${assetUrl(dataBase()+logo+'?v='+LOGO_CACHE)}')"></span>`;
+  return `<span class="${cls} ${cls}-text" style="color:${col}">${partyCode(pid)}</span>`;
+};
 
 // Label for the sub-national units (MAP_ONLY countries can override; default "federative units")
 const unitLabel=()=>{
@@ -1342,7 +1349,7 @@ function renderLastElection(){
     if(!(pct_val>=0.05)) continue;   // parties at 0.0% are noise
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
     html+=`<div class="sb-le-row">
-      <div class="sb-le-dot" style="background:${color}"></div>
+      ${partyMark(pid,null,color,'party-mark sb-le-logo')}
       <div class="sb-le-name">${partyCode(pid)}</div>
       <div class="sb-le-pct">${pct(pct_val)}</div>
     </div>`;
@@ -1668,7 +1675,7 @@ function renderTrendChart(canvas, polls){
       if(!vals||!vals.length) continue;
       const v=vals.reduce((a,b)=>a+b,0)/vals.length;
       const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
-      rows+=`<div class="ct-row"><span class="ct-dot" style="background:${color}"></span><span class="ct-label">${pid}</span><span class="ct-val">${SEAT_BASED?String(Math.round(v)):v.toFixed(1)+'%'}</span></div>`;
+      rows+=`<div class="ct-row">${partyMark(pid,null,color,'party-mark ct-logo')}<span class="ct-label">${partyCode(pid)}</span><span class="ct-val">${SEAT_BASED?String(Math.round(v)):v.toFixed(1)+'%'}</span></div>`;
     }
     tip.innerHTML=`<div class="ct-date">${date}</div>${rows}`;
     tip.classList.add('visible');
@@ -3484,7 +3491,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const dTxt=noDelta?'':(delta>0.05?'▲':(delta<-0.05?'▼':''))+(Math.abs(delta)<0.05?'':pct(Math.abs(delta)));
         const dCls=noDelta?'flat':(delta>0.05?'up':(delta<-0.05?'down':'flat'));
         return {v:(resultMode?s.past:s.now), html:`<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}"${s.name?` title="${s.name}"`:''}>${partyLabel(p,conf)}${pill}</span>
+          <span class="map-tip-code" title="${partyLabel(p,conf)}">${partyMark(p,conf,col,'party-mark map-tip-logo')}${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${dCls}">${dTxt}</span>
@@ -3503,7 +3510,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const dls=(sv&&!resultMode)?((sv.now||0)-(sv.past||0))
           :mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
         rowArr.push({v:pv, html:`<div class="map-tip-row">
-          <span class="map-tip-code" style="color:${col}" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${al.name||partyLabel(al.parties[0],conf)}</span>
+          <span class="map-tip-code" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${partyMark(al.parties[0],conf,col,'party-mark map-tip-logo')}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(pv)}</span>
           <span class="map-tip-delta ${dls>0.05?'up':(dls<-0.05?'down':'flat')}">${resultMode?'':(dls>0.05?'▲':(dls<-0.05?'▼':''))+(Math.abs(dls)<0.05?'':pct(Math.abs(dls)))}</span>

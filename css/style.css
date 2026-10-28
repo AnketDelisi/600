@@ -824,3 +824,10 @@ body{background:var(--c-bg);color:var(--c-text-main)}
 .hero,.fc-hero{border-bottom-color:var(--c-border)}
 .home-footer{background:var(--c-wash);border-top-color:var(--c-border);padding-left:20px;padding-right:20px}
 .page-note{border-top-color:var(--c-border)}
+
+.sb-le-logo{width:18px;height:18px;margin-right:0;flex-shrink:0}
+.sb-le-logo.party-mark-text{width:18px;height:18px;font-size:8px}
+.map-tip-logo{width:14px;height:14px;margin-right:0}
+.map-tip-logo.party-mark-text{width:14px;height:14px;font-size:8px}
+.ct-logo{width:14px;height:14px;margin-right:0}
+.ct-logo.party-mark-text{width:14px;height:14px;font-size:8px}

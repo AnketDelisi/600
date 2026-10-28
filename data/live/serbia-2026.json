@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 8292,
+ "counted": 8331,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "28.10.2026 10:00:00",
+ "source_updated_at": "28.10.2026 16:55:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,24 +18,24 @@
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 52.85,
-   "votes": 2316617,
+   "pct": 53.03,
+   "votes": 2345272,
    "seats": 143
   },
   {
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 39.1,
-   "votes": 1714132,
+   "pct": 38.97,
+   "votes": 1723654,
    "seats": 105
   },
   {
    "id": "sps",
    "name": "Socialist Party",
    "color": "#EB1B23",
-   "pct": 2.15,
-   "votes": 94140,
+   "pct": 2.14,
+   "votes": 94461,
    "seats": 0
   },
   {
@@ -43,14 +43,14 @@
    "name": "NADA",
    "color": "#616264",
    "pct": 0.89,
-   "votes": 39101,
+   "votes": 39383,
    "seats": 0
   },
   {
    "id": "vmsz",
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
-   "pct": 0.8,
+   "pct": 0.79,
    "votes": 35004,
    "seats": 2
   },
@@ -59,7 +59,7 @@
    "name": "European Serbia",
    "color": "#C9A227",
    "pct": 0.28,
-   "votes": 12406,
+   "votes": 12540,
    "seats": 0
   },
   {
@@ -67,7 +67,7 @@
    "name": "SDA Sandžak",
    "color": "#069443",
    "pct": 0.28,
-   "votes": 12418,
+   "votes": 12379,
    "seats": 0
   },
   {
@@ -75,7 +75,7 @@
    "name": "Russian Party",
    "color": "#0D3B66",
    "pct": 0.15,
-   "votes": 6451,
+   "votes": 6476,
    "seats": 0
   }
  ],
@@ -7916,5 +7916,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-28T09:01:25Z"
+ "updated_at": "2026-10-28T15:56:17Z"
 }

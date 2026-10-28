@@ -2428,7 +2428,7 @@ function renderParliament(avg){
       ${mapConf&&!MAP_ONLY&&!bigMap?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
       ${mapConf&&COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&PARL_MODE!=='upper'?`<button class="map-toggle-btn parl-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${MAP_LAYER===1?(LANG==='tr'?(mapConf.label_tr||mapConf.label):(mapConf.label_en||mapConf.label))||T.map||'layer 1':((COUNTRIES[COUNTRY].map2&&(LANG==='tr'?(COUNTRIES[COUNTRY].map2.label_tr||COUNTRIES[COUNTRY].map2.label):(COUNTRIES[COUNTRY].map2.label_en||COUNTRIES[COUNTRY].map2.label)))||'layer 2')}</button>`:''}
       ${mapConf&&mapConf.useConstituencies&&!mapConf.hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
-      ${mapConf?`<label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>`:''}
+      ${mapConf?`<label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option><option value="all"${MAP_HEAT_PARTY==='all'?' selected':''}>${t('All parties','Tüm partiler')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>`:''}
       ${mapConf&&showMap?`<button class="shot-btn" id="map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>`:''}
       ${!showMap&&!MAP_ONLY?`<button class="shot-btn" id="parl-shot-btn" title="Download parliament diagram as PNG">${CAM_ICON}</button>`:''}
     </div>`;
@@ -2457,7 +2457,7 @@ function renderParliament(avg){
   return `<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?T.map:T.seatProjection}</div></div>
     ${btnRow}
     ${box}
-    ${MAP_HEAT_PARTY?`<div class="map-heat-note">${partyCode(MAP_HEAT_PARTY)} ${t('share shading · darker = stronger','oy gölgesi · koyu = güçlü')}</div>`:''}
+    ${MAP_HEAT_PARTY?`<div class="map-heat-note">${MAP_HEAT_PARTY==='all'?t('All parties','Tüm partiler'):partyCode(MAP_HEAT_PARTY)} ${t('share shading · darker = stronger','oy gölgesi · koyu = güçlü')}</div>`:''}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
       ${cap}${prov}
     </div></div>
@@ -3360,7 +3360,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   const paths=svg.querySelectorAll(selector);
   const mapped=[];
   let heatMax=50, heatMin=0;
-  if(MAP_HEAT_PARTY){
+  if(MAP_HEAT_PARTY&&MAP_HEAT_PARTY!=='all'){
     const vals=Object.values(conf.gebiete||{}).map(row=>row&&row[MAP_HEAT_PARTY]).filter(v=>v!=null);
     if(vals.length){ heatMin=Math.min(...vals); heatMax=Math.max(...vals); }
   }
@@ -3416,10 +3416,13 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         :districtWinnerProjection(nr,avg,conf);
     }
     if(!winner&&!MAP_HEAT_PARTY) return;
-    const heat=MAP_HEAT_PARTY&&shares[MAP_HEAT_PARTY]
-      ?(resultMode?shares[MAP_HEAT_PARTY].past:shares[MAP_HEAT_PARTY].now):null;
+    const heatParty=MAP_HEAT_PARTY==='all'?winner:MAP_HEAT_PARTY;
+    const heat=heatParty&&shares[heatParty]
+      ?(resultMode?shares[heatParty].past:shares[heatParty].now):null;
     const color=heat!==null
-      ?heatColor(partyColor(MAP_HEAT_PARTY,conf),heat,heatMax,heatMin)
+      ?heatColor(partyColor(heatParty,conf),heat,
+                 MAP_HEAT_PARTY==='all'?50:heatMax,
+                 MAP_HEAT_PARTY==='all'?0:heatMin)
       :(blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888'));
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
@@ -6244,7 +6247,7 @@ function renderForecast(pane){
         ${MAP_ONLY&&MAP_CONF()&&(MAP_CONF().runoff2022||MAP_CONF().runoff2026)?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
         ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&FC_MODE!=='upper'?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
         ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
-        <label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>
+        <label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option><option value="all"${MAP_HEAT_PARTY==='all'?' selected':''}>${t('All parties','Tüm partiler')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>
       </div>
       <div class="parliament-box" id="fc-map-box"></div>

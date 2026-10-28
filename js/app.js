@@ -3491,7 +3491,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const dTxt=noDelta?'':(delta>0.05?'▲':(delta<-0.05?'▼':''))+(Math.abs(delta)<0.05?'':pct(Math.abs(delta)));
         const dCls=noDelta?'flat':(delta>0.05?'up':(delta<-0.05?'down':'flat'));
         return {v:(resultMode?s.past:s.now), html:`<div class="map-tip-row">
-          <span class="map-tip-code" title="${partyLabel(p,conf)}">${partyMark(p,conf,col,'party-mark map-tip-logo')}${pill}</span>
+          <span class="map-tip-code" title="${partyLabel(p,conf)}">${partyMark(p,conf,col,'party-mark map-tip-logo')}<span class="map-tip-code-label">${partyCode(p)}</span>${pill}</span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${barW}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(s.now)}</span>
           <span class="map-tip-delta ${dCls}">${dTxt}</span>
@@ -3510,7 +3510,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         const dls=(sv&&!resultMode)?((sv.now||0)-(sv.past||0))
           :mem.reduce((a2,p)=>a2+(resultMode?0:((shares[p].now||0)-(shares[p].past||0))),0);
         rowArr.push({v:pv, html:`<div class="map-tip-row">
-          <span class="map-tip-code" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${partyMark(al.parties[0],conf,col,'party-mark map-tip-logo')}</span>
+          <span class="map-tip-code" title="${mem.map(p=>PARTY_META[p]?PARTY_META[p].name:p).join(' + ')}">${partyMark(al.parties[0],conf,col,'party-mark map-tip-logo')}<span class="map-tip-code-label">${partyCode(al.parties[0])}</span></span>
           <div class="map-tip-track"><div class="map-tip-fill" style="width:${Math.max(2,Math.min(100,pv))}%;background:${col}"></div></div>
           <span class="map-tip-now">${pct(pv)}</span>
           <span class="map-tip-delta ${dls>0.05?'up':(dls<-0.05?'down':'flat')}">${resultMode?'':(dls>0.05?'▲':(dls<-0.05?'▼':''))+(Math.abs(dls)<0.05?'':pct(Math.abs(dls)))}</span>

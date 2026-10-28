@@ -784,3 +784,50 @@ p,.home-sub,.home-footer p,.page-note,.method-text{text-wrap:pretty}
 }
 
 .side-card{height:auto!important;overflow:visible}
+
+
+/* ---------- Colour pass: warm paper, tinted structure ---------- */
+:root{
+  --c-bg:#FFFFFF;
+  --c-surface:#FFFFFF;
+  --c-text-main:#15191C;
+  --c-text-muted:#5E6870;
+  --c-accent:#B93A32;
+  --c-accent-2:#8F2F2B;
+  --c-border:#DCE3E9;
+  --c-rule:#C6D1DA;
+  --c-edge:#171A1D;
+  --c-wash:#F8FAFC;
+  --c-head:#EEF3F7;
+  --c-zebra:#F9FBFD;
+  --c-hover:#F3F7FA;
+}
+body{background:var(--c-bg);color:var(--c-text-main)}
+.seg-nav{background:var(--c-wash);border-bottom-color:var(--c-border)}
+.country-nav{background:var(--c-wash);border-bottom-color:var(--c-border)}
+.tab-trigger[data-active="true"]{border-bottom-color:var(--c-accent)}
+.cnav-search{background:var(--c-surface);border-color:var(--c-border)}
+.cnav-item:hover{background:var(--c-hover)}
+.cnav-group-label,.cnav-status,.home-search-status{color:var(--c-text-muted)}
+.home-kicker{color:var(--c-accent)}
+.home-section-head{border-bottom-color:var(--c-edge)}
+.index-table th{background:var(--c-head);border-bottom-color:var(--c-edge)}
+.index-table tbody tr:nth-child(even) td{background:var(--c-zebra)}
+.index-table tbody tr:hover td{background:var(--c-hover)}
+.polls-table th{background:var(--c-head);border-bottom-color:var(--c-edge)}
+.polls-table tbody tr:nth-child(even) td{background:var(--c-zebra)}
+.polls-table tbody tr:hover td{background:var(--c-hover)}
+.party-row:hover{background:var(--c-hover)}
+.sb-select{background:var(--c-surface);border-color:var(--c-border)}
+.sb-section{border-top-color:var(--c-border)}
+.card{border-top-color:var(--c-border)}
+.hero,.fc-hero{border-bottom-color:var(--c-border)}
+.home-footer{background:var(--c-wash);border-top-color:var(--c-border);padding-left:20px;padding-right:20px}
+.page-note{border-top-color:var(--c-border)}
+
+.sb-le-logo{width:18px;height:18px;margin-right:0;flex-shrink:0}
+.sb-le-logo.party-mark-text{width:18px;height:18px;font-size:8px}
+.map-tip-logo{width:14px;height:14px;margin-right:0}
+.map-tip-logo.party-mark-text{width:14px;height:14px;font-size:8px}
+.ct-logo{width:14px;height:14px;margin-right:0}
+.ct-logo.party-mark-text{width:14px;height:14px;font-size:8px}

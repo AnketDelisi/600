@@ -12879,13 +12879,8 @@ epBlend: 0.15,
     map: {
       svg: 'img/slovenia.svg',
       selector: 'id',
-      // the GADM dissolve is clean but the constituency borders are part of
-      // the story; use the ink stroke rather than white slivers
-      stroke: '#111827',
       swingMethod: 'geometric',
-      // the 8 volilne enote (GADM municipalities dissolved by the ZDVEDZ
-      // law composition; the split municipalities - Ljubljana above all -
-      // are assigned to the nearest constituency, documented). Per-
+      // the 8 official volilne enote (GURS RPE VDV_VE layer). Per-
       // constituency D'Hondt, 11 seats each, with the 4% threshold applied
       // nationally (districtThreshold off); the 2 minority seats are
       // reservedSeats.
@@ -16168,11 +16163,13 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     },
     order: ['psd', 'aur', 'pnl', 'usr', 'sos', 'pot', 'udmr', 'pmp', 'fd', 'reper', 'sens', 'min'],
     parlOrder: ['psd', 'min', 'udmr', 'pnl', 'reper', 'sens', 'usr', 'fd', 'pmp', 'aur', 'sos', 'pot'],
-    // Government (the 2024 post-election coalition) vs Opposition (the
-    // forecast's majority simulation needs a two-bloc structure)
+    // October 2026 Niculescu cabinet: PSD is the only party in government
+    // (with non-partisan ministers); PNL and UDMR support it externally but
+    // are not cabinet members. USR, AUR, SOS, POT and the rest are opposition.
+    incumbent: 'psd',
     blocs: {
-      bloc1: { name: 'Government', short: 'GOV', parties: ['pnl', 'usr', 'udmr', 'min'], color: '#FDE000' },
-      bloc2: { name: 'Opposition', short: 'OPP', parties: ['psd', 'aur', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' },
+      bloc1: { name: 'Government', short: 'GOV', parties: ['psd'], color: '#EF3340' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['pnl', 'usr', 'udmr', 'aur', 'sos', 'pot', 'pmp', 'fd', 'reper', 'sens'], color: '#FCB21F' },
     },
     lastElection: {
       date: '2024-12-01',

@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 8287,
+ "counted": 8292,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "28.10.2026 03:40:00",
+ "source_updated_at": "28.10.2026 09:55:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,16 +18,16 @@
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 52.82,
-   "votes": 2312245,
+   "pct": 52.85,
+   "votes": 2316617,
    "seats": 143
   },
   {
    "id": "sns",
    "name": "Vučić – United Serbia",
    "color": "#242970",
-   "pct": 39.12,
-   "votes": 1712677,
+   "pct": 39.1,
+   "votes": 1714132,
    "seats": 105
   },
   {
@@ -35,7 +35,7 @@
    "name": "Socialist Party",
    "color": "#EB1B23",
    "pct": 2.15,
-   "votes": 94093,
+   "votes": 94140,
    "seats": 0
   },
   {
@@ -43,7 +43,7 @@
    "name": "NADA",
    "color": "#616264",
    "pct": 0.89,
-   "votes": 39072,
+   "votes": 39101,
    "seats": 0
   },
   {
@@ -51,7 +51,7 @@
    "name": "Vojvodina Hungarians",
    "color": "#00732B",
    "pct": 0.8,
-   "votes": 35001,
+   "votes": 35004,
    "seats": 2
   },
   {
@@ -59,7 +59,7 @@
    "name": "European Serbia",
    "color": "#C9A227",
    "pct": 0.28,
-   "votes": 12387,
+   "votes": 12406,
    "seats": 0
   },
   {
@@ -75,7 +75,7 @@
    "name": "Russian Party",
    "color": "#0D3B66",
    "pct": 0.15,
-   "votes": 6447,
+   "votes": 6451,
    "seats": 0
   }
  ],
@@ -7916,5 +7916,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-28T02:41:22Z"
+ "updated_at": "2026-10-28T08:59:47Z"
 }

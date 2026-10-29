@@ -10,7 +10,7 @@
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "29.10.2026 07:20:00",
+ "source_updated_at": "29.10.2026 14:25:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -7916,5 +7916,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-29T06:21:52Z"
+ "updated_at": "2026-10-29T13:26:50Z"
 }

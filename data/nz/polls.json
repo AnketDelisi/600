@@ -2,9 +2,27 @@
   "country": "nz",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-  "scraped_at": "2026-10-28T18:32:41Z",
+  "scraped_at": "2026-10-29T12:15:16Z",
   "poll_count": 126,
   "polls": [
+    {
+      "pollster": "RNZ–Reid Research",
+      "fieldwork_start": "2026-10-20",
+      "date": "2026-10-20",
+      "n": 1000,
+      "country": "nz",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
+      "votes": {
+        "nat": 24.8,
+        "lab": 30.6,
+        "grn": 14.5,
+        "act": 10.1,
+        "nzf": 9.9,
+        "tpm": 1.9,
+        "opp": 7.2
+      }
+    },
     {
       "pollster": "1 News–Verian",
       "fieldwork_start": "2026-10-20",
@@ -75,24 +93,6 @@
         "nzf": 12.0,
         "tpm": 1.4,
         "opp": 4.8
-      }
-    },
-    {
-      "pollster": "RNZ–Reid Research",
-      "fieldwork_start": "2026-10-20",
-      "date": "2026-10-20",
-      "n": 1000,
-      "country": "nz",
-      "source": "Wikipedia",
-      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-      "votes": {
-        "nat": 25.9,
-        "lab": 30.8,
-        "grn": 14.8,
-        "act": 9.0,
-        "nzf": 10.6,
-        "tpm": 2.0,
-        "opp": 5.5
       }
     },
     {

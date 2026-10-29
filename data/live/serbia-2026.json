@@ -5,12 +5,12 @@
  "chart_start": "2026-09-09",
  "subtitle": "National Assembly · 250 seats · 3% threshold",
  "status": "counting",
- "counted": 8338,
+ "counted": 8339,
  "total": 8392,
  "counted_label": "polling stations",
  "source": "Republic Electoral Commission (RIK)",
  "source_url": "https://www.rik.parlament.gov.rs/542645/rezultati/",
- "source_updated_at": "29.10.2026 14:25:00",
+ "source_updated_at": "29.10.2026 20:05:00",
  "result_title": "Vote share and seats",
  "result_note": "RIK preliminary count. Seat allocation is an approximation from current vote shares.",
  "entries": [
@@ -18,8 +18,8 @@
    "id": "sl",
    "name": "Student List",
    "color": "#A81A32",
-   "pct": 53.04,
-   "votes": 2349689,
+   "pct": 53.03,
+   "votes": 2349777,
    "seats": 143
   },
   {
@@ -27,7 +27,7 @@
    "name": "Vučić – United Serbia",
    "color": "#242970",
    "pct": 38.97,
-   "votes": 1726375,
+   "votes": 1726554,
    "seats": 105
   },
   {
@@ -35,7 +35,7 @@
    "name": "Socialist Party",
    "color": "#EB1B23",
    "pct": 2.13,
-   "votes": 94569,
+   "votes": 94571,
    "seats": 0
   },
   {
@@ -43,7 +43,7 @@
    "name": "NADA",
    "color": "#616264",
    "pct": 0.89,
-   "votes": 39484,
+   "votes": 39485,
    "seats": 0
   },
   {
@@ -7916,5 +7916,5 @@
  ],
  "notes": "D'Hondt allocation with a 3% threshold; national-minority lists are exempt.",
  "id": "serbia-2026",
- "updated_at": "2026-10-29T13:26:50Z"
+ "updated_at": "2026-10-29T19:08:43Z"
 }

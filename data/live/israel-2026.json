@@ -8,7 +8,7 @@
  "counted": null,
  "total": null,
  "counted_label": "votes counted",
- "turnout": 72.19,
+ "turnout": 75.85,
  "source": "Knesset Count (CEC data)",
  "source_url": "https://knesset-count.lol/",
  "result_title": "Vote share",
@@ -18,104 +18,104 @@
    "id": "likud",
    "name": "Likud",
    "color": "#1F5AA5",
-   "pct": 20.69,
-   "votes": 1075551,
-   "seats": 26
+   "pct": 20.56,
+   "votes": 1133834,
+   "seats": 27
   },
   {
    "id": "yashar",
    "name": "Yashar",
    "color": "#62B9F2",
-   "pct": 16.16,
-   "votes": 840231,
+   "pct": 16.09,
+   "votes": 887341,
    "seats": 21
-  },
-  {
-   "id": "joint_list",
-   "name": "Joint List",
-   "color": "#01B2AC",
-   "pct": 9.16,
-   "votes": 476242,
-   "seats": 12
   },
   {
    "id": "together",
    "name": "Together",
    "color": "#2A2A78",
-   "pct": 9.04,
-   "votes": 470048,
+   "pct": 9.24,
+   "votes": 509399,
    "seats": 12
+  },
+  {
+   "id": "joint_list",
+   "name": "Joint List",
+   "color": "#01B2AC",
+   "pct": 8.95,
+   "votes": 493536,
+   "seats": 11
   },
   {
    "id": "dems",
    "name": "The Democrats",
    "color": "#2A38D7",
-   "pct": 6.48,
-   "votes": 337169,
+   "pct": 6.45,
+   "votes": 355768,
    "seats": 8
   },
   {
    "id": "raam",
    "name": "Ra'am",
    "color": "#15793D",
-   "pct": 6.08,
-   "votes": 316266,
-   "seats": 7
+   "pct": 5.99,
+   "votes": 330630,
+   "seats": 8
   },
   {
    "id": "yb",
    "name": "Yisrael Beiteinu",
    "color": "#23C2EB",
-   "pct": 5.94,
-   "votes": 308739,
-   "seats": 7
-  },
-  {
-   "id": "utj",
-   "name": "United Torah Judaism",
-   "color": "#003366",
-   "pct": 5.62,
-   "votes": 291969,
+   "pct": 5.93,
+   "votes": 327298,
    "seats": 7
   },
   {
    "id": "otzma",
    "name": "Otzma Yehudit",
    "color": "#FF4500",
-   "pct": 5.57,
-   "votes": 289697,
+   "pct": 5.67,
+   "votes": 312644,
+   "seats": 7
+  },
+  {
+   "id": "utj",
+   "name": "United Torah Judaism",
+   "color": "#003366",
+   "pct": 5.54,
+   "votes": 305283,
    "seats": 7
   },
   {
    "id": "shas",
    "name": "Shas",
    "color": "#000000",
-   "pct": 5.3,
-   "votes": 275611,
-   "seats": 7
+   "pct": 5.27,
+   "votes": 290503,
+   "seats": 6
   },
   {
    "id": "rzp",
    "name": "Religious Zionist Party",
    "color": "#4F9298",
-   "pct": 4.74,
-   "votes": 246577,
+   "pct": 4.97,
+   "votes": 274252,
    "seats": 6
   },
   {
    "id": "reservists",
    "name": "The Reservists",
    "color": "#68692C",
-   "pct": 2.64,
-   "votes": 137182,
+   "pct": 2.69,
+   "votes": 148553,
    "seats": 0
   },
   {
    "id": "amcha",
    "name": "Amcha Yisrael",
    "color": "#8F36BF",
-   "pct": 1.61,
-   "votes": 83758,
+   "pct": 1.65,
+   "votes": 91252,
    "seats": 0
   },
   {
@@ -123,7 +123,7 @@
    "name": "Blue and White",
    "color": "#0DAAFF",
    "pct": 0.0,
-   "votes": 27,
+   "votes": 33,
    "seats": 0
   }
  ],
@@ -180,5 +180,5 @@
   }
  ],
  "id": "israel-2026",
- "updated_at": "2026-10-29T06:21:15Z"
+ "updated_at": "2026-10-29T13:26:12Z"
 }

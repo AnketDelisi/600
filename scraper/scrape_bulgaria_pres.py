@@ -163,6 +163,20 @@ def scrape():
 
 def main():
     polls = scrape()
+    # The Wikipedia page has a separate second-round table. This scraper only
+    # parses first-round tables, so preserve an existing head-to-head entry
+    # instead of deleting the one runoff poll on the next refresh.
+    path = OUTPUT_DIR / "polls.json"
+    if path.exists():
+        try:
+            old = json.loads(path.read_text(encoding="utf8")).get("polls", [])
+        except Exception:
+            old = []
+        seen = {(p["pollster"], p["date"]) for p in polls}
+        for p in old:
+            if p.get("runoff") and (p["pollster"], p["date"]) not in seen:
+                polls.append(p)
+        polls.sort(key=lambda p: (p["date"], p["pollster"]))
     print(f"Parsed {len(polls)} polls "
           f"(latest: {polls[-1]['date'] if polls else '-'})")
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -171,7 +185,6 @@ def main():
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "poll_count": len(polls), "polls": polls,
     }
-    path = OUTPUT_DIR / "polls.json"
     path.write_text(json.dumps(out, ensure_ascii=False, indent=1),
                     encoding="utf8")
     print(f"Wrote {path}")

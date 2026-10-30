@@ -71,6 +71,41 @@ CYCLES = {
                       "uup": 1, "tuv": 1, "spk": 1, "ind": 6, "apni": 1},
         },
     },
+    "canada": {
+        2019: {
+            "article": "Opinion_polling_for_the_2019_Canadian_federal_election",
+            "election": "2019-10-21", "prev": "2015-10-19", "half_life": 14,
+            "cols": {"lpc": r"^lpc|^lib", "cpc": r"^cpc|^con",
+                     "ndp": r"^ndp|^new democratic",
+                     "bq": r"^bq|^bloc", "gpc": r"^gpc|^green",
+                     "ppc": r"^ppc|^people"},
+            "result": {"lpc": 33.12, "cpc": 34.34, "ndp": 15.98,
+                       "bq": 7.63, "gpc": 6.55, "ppc": 1.62},
+        },
+        2021: {
+            "article": "Opinion_polling_for_the_2021_Canadian_federal_election",
+            "election": "2021-09-20", "prev": "2019-10-21", "half_life": 14,
+            "cols": {"lpc": r"^lpc|^lib", "cpc": r"^cpc|^con",
+                     "ndp": r"^ndp|^new democratic",
+                     "bq": r"^bq|^bloc", "gpc": r"^gpc|^green",
+                     "ppc": r"^ppc|^people"},
+            "result": {"lpc": 32.62, "cpc": 33.74, "ndp": 17.82,
+                       "bq": 7.64, "gpc": 2.33, "ppc": 4.94},
+        },
+        2025: {
+            "article": "Opinion_polling_for_the_2025_Canadian_federal_election",
+            "election": "2025-04-28", "prev": "2021-09-20", "half_life": 14,
+            "cols": {"lpc": r"^lpc|^lib", "cpc": r"^cpc|^con",
+                     "ndp": r"^ndp|^new democratic",
+                     "bq": r"^bq|^bloc", "gpc": r"^gpc|^green",
+                     "ppc": r"^ppc|^people"},
+            "result": {"lpc": 43.76, "cpc": 41.31, "ndp": 6.29,
+                       "bq": 6.29, "gpc": 1.22, "ppc": 0.70},
+            # 2025 is the 343-riding map the app currently uses
+            "seats": {"lpc": 169, "cpc": 144, "bq": 22, "ndp": 7,
+                      "gpc": 1, "ppc": 0},
+        },
+    },
     "spain": {
         2019: {
             "article": "Opinion_polling_for_the_November_2019_Spanish_general_election",

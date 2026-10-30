@@ -2,7 +2,7 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-10-29T12:15:08Z",
+ "scraped_at": "2026-10-30T12:05:29Z",
  "poll_count": 577,
  "polls": [
   {
@@ -11786,10 +11786,10 @@
    "sumar": 5.4
   },
   "pais_vasco": {
-   "pnv": 23.7,
-   "pp": 11.2,
+   "pnv": 23.1,
+   "pp": 11.67,
    "sumar": 9.7,
-   "vox": 3.9
+   "vox": 4.2
   },
   "canarias": {
    "psoe": 30.0,
@@ -11837,9 +11837,9 @@
    "vox": 7.0
   },
   "valenciana": {
-   "pp": 32.15,
-   "psoe": 27.12,
-   "vox": 20.77,
+   "pp": 32.46,
+   "psoe": 27.58,
+   "vox": 20.22,
    "sumar": 10.77,
    "podemos": 5.1,
    "salf": 3.05

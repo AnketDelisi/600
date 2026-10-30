@@ -2,8 +2,8 @@
  "country": "poland",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Polish_parliamentary_election",
- "scraped_at": "2026-10-29T12:14:59Z",
- "poll_count": 94,
+ "scraped_at": "2026-10-30T12:05:18Z",
+ "poll_count": 95,
  "polls": [
   {
    "pollster": "IPSOS / \"19:30\" TVP Info",
@@ -167,6 +167,23 @@
    "country": "poland",
    "date_end": "2026-10-13",
    "n": 2000
+  },
+  {
+   "pollster": "SW Research / Klub Jagielloński, Instytut Sobieskiego",
+   "date": "2026-09-28",
+   "votes": {
+    "pis": 19.8,
+    "ko": 33.7,
+    "psl": 3.0,
+    "lewica": 7.0,
+    "razem": 5.6,
+    "kwin": 14.3,
+    "kkp": 10.2,
+    "r": 6.0
+   },
+   "country": "poland",
+   "date_end": "2026-09-30",
+   "n": 1002
   },
   {
    "pollster": "Pollster / \"SE.pl\"",

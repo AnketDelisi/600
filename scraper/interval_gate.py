@@ -8,6 +8,7 @@ closest to nominal coverage. No UI or model re-implementation lives here.
 """
 import json
 import statistics as st
+import subprocess
 from pathlib import Path
 
 import backtest as bt
@@ -58,6 +59,17 @@ def group_summary(rows, keyfn, scales, floor=0):
     return {k: summarize(v, scales, floor) for k, v in groups.items()}
 
 
+def app_avg(country, polls):
+    """The deployed state-space average, via forecast_run.js --avg."""
+    path = Path(bt.CACHE) / "interval_avg_polls.json"
+    path.write_text(json.dumps(polls, ensure_ascii=False), encoding="utf8")
+    r = subprocess.run(
+        ["node", "scraper/forecast_run.js", "--avg", country, "@" + str(path)],
+        cwd=bt.ROOT, capture_output=True, text=True, encoding="utf8",
+        timeout=300, check=True)
+    return json.loads(r.stdout)
+
+
 def main():
     rows = {"votes": [], "seats": []}
     by_horizon = {"votes": {}, "seats": {}}
@@ -69,10 +81,20 @@ def main():
             data[(country, cycle)] = (polls, spec)
             print("== %s %d: %d polls" % (country, cycle, len(polls)))
             for horizon in HORIZONS:
-                votes, n = bt.horizon_votes(polls, spec, horizon)
-                if not votes:
+                import datetime
+                election = datetime.date.fromisoformat(spec["election"])
+                as_of = election - datetime.timedelta(days=horizon)
+                use = [p for p in polls
+                       if bt._ord(p["date"]) <= bt._as_ord(as_of.isoformat())]
+                if len(use) < 2:
                     continue
-                fc = bt.run_forecast(country, votes, N_SIMS, n, horizon)
+                avg = app_avg(country, use)
+                smap = spec.get("seat_map", {})
+                avg = {smap.get(k, k): v for k, v in avg.items()
+                       if v is not None}
+                if len(avg) < 3:
+                    continue
+                fc = bt.run_forecast(country, avg, N_SIMS, len(use), horizon)
                 if not fc or not fc.get("intervals"):
                     continue
                 means = fc.get("means") or {}

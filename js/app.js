@@ -5107,11 +5107,12 @@ const FORECAST_DISTRICT_SIGMA=1.5;
 // (vote 63%, seat 72%); these scales/floor bring empirical coverage to ~90%.
 // Size-bucket calibration from the interval backtest. Large parties need much
 // less widening than the global all-party scale; tiny parties need more.
-const INTERVAL_VOTE_SCALE_BY_SIZE={large:1.6,mid:1.8,small:2.0,tiny:2.4};
+const INTERVAL_VOTE_SCALE_BY_SIZE={large:1.2,mid:1.8,small:1.6,tiny:2.4};
 const INTERVAL_SEAT_SCALE_BY_SIZE={large:1.0,mid:1.0,small:1.0,tiny:1.0};
 const INTERVAL_SEAT_FLOOR_BY_SIZE={large:0,mid:6,small:6,tiny:6};
+const INTERVAL_COUNTRY_SEAT_FLOOR={canada:2};
 // Only countries with enough historical cases get a country override.
-const INTERVAL_COUNTRY_VOTE_SCALE={uk:1.6,nz:1.4,germany:1.6,qc:2.0,lt:2.0};
+const INTERVAL_COUNTRY_VOTE_SCALE={canada:1.8};
 function intervalSize(mean,kind){
   if(kind==='votes'){
     if(mean>=20) return 'large';
@@ -5132,7 +5133,9 @@ function intervalVoteScale(mean){
 function intervalSeatParams(mean){
   const k=intervalSize(mean,'seats');
   return {scale:INTERVAL_SEAT_SCALE_BY_SIZE[k],
-          floor:INTERVAL_SEAT_FLOOR_BY_SIZE[k]};
+          floor:INTERVAL_COUNTRY_SEAT_FLOOR[COUNTRY]!==undefined
+            ?INTERVAL_COUNTRY_SEAT_FLOOR[COUNTRY]
+            :INTERVAL_SEAT_FLOOR_BY_SIZE[k]};
 }
 
 let DISTRICT_VOTES_MEDIAN=null, DISTRICT_VOTES_KEY=null;

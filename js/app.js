@@ -697,6 +697,7 @@ function houseEffects(){
   for(const party of PARTY_ORDER){
     let ws=0,wt=0;
     for(const poll of polls){
+      if(!poll.votes) continue;
       const v=poll.votes[party];
       if(v===undefined) continue;
       const w=Math.min(1500,poll.n||1000)*recencyWeight(poll.date);
@@ -706,6 +707,7 @@ function houseEffects(){
   }
   const acc={};
   for(const poll of polls){
+    if(!poll.votes) continue;
     const a=acc[poll.pollster]||(acc[poll.pollster]={});
     for(const party of PARTY_ORDER){
       const v=poll.votes[party];
@@ -746,7 +748,7 @@ function houseEffects(){
 }
 
 function pollValue(p, party, noBias){
-  if(p.votes[party]===undefined) return null;
+  if(!p.votes||p.votes[party]===undefined) return null;
   let v=p.votes[party];
   if(!noBias && !ARCHIVE_MODE && BIAS_KEY && POLLSTER_BIAS[p.pollster] && POLLSTER_BIAS[p.pollster][party]!==undefined){
     v-=BIAS_SHRINK*POLLSTER_BIAS[p.pollster][party];
@@ -1574,6 +1576,7 @@ function renderTrendChart(canvas, polls){
   const byDate={};
   polls.forEach(p=>{
     if(roMode&&!p.runoff) return;
+    if(!roMode&&!p.votes) return;
     const src=roMode?p.runoff:p.votes;
     if(!byDate[p.date]) byDate[p.date]={};
     for(const pid of PARTY_ORDER){
@@ -1865,6 +1868,9 @@ function relativePollsterRatings(){
 }
 
 function renderPollsTable(polls){
+  // A runoff-only poll carries p.runoff but no first-round votes; it belongs
+  // in the runoff table, not the first-round table.
+  polls=polls.filter(p=>p.votes&&Object.keys(p.votes).length);
   const ratings=relativePollsterRatings();
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.individualPolls}</div></div>
     <div class="polls-scroll">
@@ -5460,7 +5466,7 @@ function firstRoundMAE(){
 // simulated head-to-head with the same national polling error scale.
 function runoffForecast(avg, filtered, sim){
   const roPolls=filtered.filter(p=>p.runoff&&typeof p.runoff==='object'&&Object.keys(p.runoff).length);
-  if(roPolls.length<2) return null;
+  if(!roPolls.length) return null;
   // memoize: the runoff sim is deterministic (seeded) and only depends on the
   // runoff poll set, so cache by date+count+headline values
   const freq={};
@@ -5494,9 +5500,14 @@ function runoffForecast(avg, filtered, sim){
   // poll-weight philosophy as the main model)
   const fr=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].firstRoundResult;
   if(fr&&fr[a]!=null&&fr[b]!=null&&fr[a]+fr[b]>0){
+    // The first-round result is an actual same-electorate vote, so it anchors
+    // the runoff. A single stale pre-round poll must not dominate: bgpres sets
+    // runoffAnchor=0.8; countries with a real runoff poll series keep 0.35.
     const ft=fr[a]+fr[b];
-    aN=0.65*aN+0.35*(100*fr[a]/ft);
-    bN=0.65*bN+0.35*(100*fr[b]/ft);
+    const anchorW=(COUNTRIES[COUNTRY].runoffAnchor!==undefined)
+      ?COUNTRIES[COUNTRY].runoffAnchor:0.35;
+    aN=(1-anchorW)*aN+anchorW*(100*fr[a]/ft);
+    bN=(1-anchorW)*bN+anchorW*(100*fr[b]/ft);
   }
   const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
   const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
@@ -5979,7 +5990,7 @@ function renderForecast(pane){
   const senDet=(!MAP_ONLY&&SEN_UP&&SEN_CONF)?(allocateUpper(medVotes)||{}):null;
   // the forecast map's caption follows its mode, live
   const fcMapCap=()=>FC_MODE==='runoff'
-    ?t('Projected runoff winners (Lula vs Flávio) from the head-to-head average · hover a district for the past/forecast comparison','Başa baş ortalamasından tahmini ikinci tur kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
+    ?t('Projected runoff winners from the head-to-head average · hover a district for the past/forecast comparison','Başa baş ortalamasından tahmini ikinci tur kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
     :FC_MODE==='upper'
     ?t('Upper-chamber map from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Üst meclis haritası tahmin medyanından · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
     :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin');
@@ -5995,18 +6006,24 @@ function renderForecast(pane){
       const cA=PARTY_META[ro.a]?PARTY_META[ro.a].color:'#888';
       const cB=PARTY_META[ro.b]?PARTY_META[ro.b].color:'#888';
       const h2a=ro.winA/3000, h2b=1-h2a;
-      const reachA=(sim.top2[ro.a]||0)/sim.nSims, reachB=(sim.top2[ro.b]||0)/sim.nSims;
-      const w1A=(sim.win50[ro.a]||0)/sim.nSims, w1B=(sim.win50[ro.b]||0)/sim.nSims;
+      // Round 1 is already decided: the finalists both reached the runoff and
+      // nobody won outright. Do not re-derive those facts from stale polls.
+      const decided=!!(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffOnly&&
+                       COUNTRIES[COUNTRY].firstRoundResult);
+      const reachA=decided?1:(sim.top2[ro.a]||0)/sim.nSims;
+      const reachB=decided?1:(sim.top2[ro.b]||0)/sim.nSims;
+      const w1A=decided?0:(sim.win50[ro.a]||0)/sim.nSims;
+      const w1B=decided?0:(sim.win50[ro.b]||0)/sim.nSims;
       // Elected = round-1 majority + reach-the-runoff × head-to-head win.
       // Both rows below therefore agree whenever both finalists always reach
       // the runoff (the usual case), instead of reporting a second,
       // independent runoff simulation with a different number.
       const eleA=w1A+Math.max(0,reachA-w1A)*h2a;
       const eleB=w1B+Math.max(0,reachB-w1B)*h2b;
-      const row=(label,color,p)=>`<div class="fc-row">
+      const row=(label,color,p,txt)=>`<div class="fc-row">
         <span class="fc-row-label" style="color:${color}">${label}</span>
         <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>
-        <span class="fc-row-val">${probPct(p)}</span>
+        <span class="fc-row-val">${txt||probPct(p)}</span>
       </div>`;
       const shareRow=(label,color,mu,lo,hi)=>{
         return `<div class="fc-voterow">
@@ -6025,8 +6042,8 @@ function renderForecast(pane){
         ${row(partyCode(ro.a),cA,h2a)}
         ${row(partyCode(ro.b),cB,h2b)}
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('REACHES THE RUNOFF','İKİNCİ TURA KALIR')}</span><span></span><span>P</span></div>
-        ${row(partyCode(ro.a),cA,reachA)}
-        ${row(partyCode(ro.b),cB,reachB)}
+        ${row(partyCode(ro.a),cA,reachA,decided?'100.0%':null)}
+        ${row(partyCode(ro.b),cB,reachB,decided?'100.0%':null)}
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('ELECTED PRESIDENT','CUMHURBAŞKANI SEÇİLİR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,eleA)}
         ${row(partyCode(ro.b),cB,eleB)}
@@ -6038,7 +6055,10 @@ function renderForecast(pane){
         </div>
       </div>`;
       const winA=eleA>=eleB;
-      roLead={n:partyCode(winA?ro.a:ro.b), c:winA?cA:cB, p:winA?eleA:eleB};
+      // The headline uses the same calibrated probability as the card row;
+      // raw Monte Carlo frequencies read overconfident next to it.
+      roLead={n:partyCode(winA?ro.a:ro.b), c:winA?cA:cB,
+              p:calibrateProbability(winA?eleA:eleB)};
     }
   }
 
@@ -6518,8 +6538,10 @@ function renderForecast(pane){
         }else if(MAP_ONLY){
           // presidential multi-candidate: first-round win + runoff win
           const lead=order[0];
-          const reach=(sim.top2[lead]||0)/nS;
-          const w1=(sim.win50[lead]||0)/nS;
+          const decided=!!(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffOnly&&
+                           COUNTRIES[COUNTRY].firstRoundResult);
+          const reach=decided?1:(sim.top2[lead]||0)/nS;
+          const w1=decided?0:(sim.win50[lead]||0)/nS;
           const h2=roCache?roCache.winA/3000:0;
           const elected=w1+Math.max(0,reach-w1)*h2;
           const lc=(PARTY_META[lead]||{}).color||'#888';

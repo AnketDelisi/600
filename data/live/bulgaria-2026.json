@@ -4,7 +4,7 @@
  "close_at": "2026-10-25T18:00:00Z",
  "chart_start": "2026-09-25",
  "subtitle": "Presidential election · first round",
- "status": "counting",
+ "status": "final",
  "counted": 100.0,
  "total": 100,
  "counted_label": "percent of sections",
@@ -12,7 +12,7 @@
  "source_url": "https://results.cik.bg/pvr202610/rezultati/index.html",
  "source_updated_at": null,
  "result_title": "First-round vote",
- "result_note": "CIK preliminary count. A runoff, if needed, is on 1 November.",
+ "result_note": "CIK final first-round count. Runoff: Iotova vs Gyurov on 1 November.",
  "entries": [
   {
    "id": "iotova",

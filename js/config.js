@@ -15907,7 +15907,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     pollsterMAE: {},
     maeKey: 'BGPRES2026',
     logos: {
-      iotova: 'img/bg/PB.svg', gyurov: 'img/bg/PPDB.svg',
+      iotova: 'img/bg/BSP.svg', gyurov: 'img/bg/PPDB.svg',
       kostadinov: 'img/bg/VAZ.svg', vasilev: 'img/bg/MECH.svg',
       mihaylov: 'img/bg/VELI.svg', hristanov: 'img/bg/Edinenie.svg',
       radev: 'img/bg/PB.svg', gerdzhikov: 'img/bg/PPDB.svg',

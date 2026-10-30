@@ -24,10 +24,12 @@ import build_map_svg as bm
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 CACHE = os.path.join(ROOT, "scraper", ".cache")
 ZIP = os.path.join(CACHE, "bg_pe202604_export.zip")
+ZIP2024 = os.path.join(CACHE, "bg_pe202410_export.zip")
 ADM2 = os.path.join(CACHE, "bgr_adm2.geojson")
 DISSOLVED = os.path.join(CACHE, "bg_municipalities.geojson")
 OUT_SVG = os.path.join(ROOT, "img", "bulgaria_municipalities.svg")
 ZIP_URL = "https://results.cik.bg/pe202604/opendata/export.zip"
+ZIP2024_URL = "https://results.cik.bg/pe202410/opendata/export.zip"
 ADM2_URL = ("https://github.com/wmgeolab/geoBoundaries/raw/9469f09/"
             "releaseData/gbOpen/BGR/ADM2/"
             "geoBoundaries-BGR-ADM2_simplified.geojson")
@@ -35,9 +37,16 @@ ATTRIBUTION = ("Rezultati: CIK (NS 19.04.2026, opendata); "
                "Geometria: geoBoundaries BGR ADM2")
 # party number in cik_parties -> config key
 PARTIES = {
-    "4": "mech", "5": "bsp", "7": "ppdb", "8": "vaz", "11": "aps",
+    "4": "mech", "5": "bsp", "8": "vaz", "11": "aps",
     "14": "veli", "15": "gerb", "17": "dps", "21": "pb",
 }
+# PP-DB ran as one list in 2026. The base map splits it into the current
+# pp/db parties by the 5.5/6.9 national ratio; do the same here so the
+# municipality and province layers use the same party schema (Sofia).
+PPDB = {"pp": 5.5, "db": 6.9}
+# 2024 ballot numbers differ from 2026; these are the 2024 positions.
+PREV_NUMBERS = {"4": "veli", "8": "dps", "12": "vaz", "13": "aps",
+                "17": "mech", "18": "gerb", "26": "ppdb", "28": "bsp"}
 
 
 def fetch(url, path, force=False):
@@ -72,8 +81,10 @@ def clean(geom):
     return MultiPolygon(parts) if len(parts) > 1 else parts[0]
 
 
-def build_results(z):
+
+def build_results(z, current=True):
     sections = {}
+    settlements = {}
     for line in db(z, "sections").splitlines():
         p = line.split(";")
         if len(p) < 8 or p[0][:2] == "32":
@@ -82,6 +93,7 @@ def build_results(z):
             sections[p[0]] = (float(p[6]), float(p[7]))
         except ValueError:
             continue
+        settlements[p[0]] = p[3]
     votes = defaultdict(lambda: defaultdict(int))
     totals = defaultdict(int)
     for line in db(z, "votes").splitlines():
@@ -97,17 +109,27 @@ def build_results(z):
             except (ValueError, IndexError):
                 continue
             totals[p[1]] += value
-            key = PARTIES.get(p[i].strip())
+            number = p[i].strip()
+            if current and number == "7":
+                for key, weight in PPDB.items():
+                    votes[p[1]][key] += value * weight / sum(PPDB.values())
+                continue
+            key = (PARTIES.get(number) if current
+                   else PREV_NUMBERS.get(number))
             if key:
                 votes[p[1]][key] += value
-    return sections, votes, totals
+    return sections, settlements, votes, totals
 
 
 def build_geojson(force):
     fetch(ADM2_URL, ADM2, force)
     fetch(ZIP_URL, ZIP, force)
+    fetch(ZIP2024_URL, ZIP2024, force)
     z = zipfile.ZipFile(ZIP)
-    sections, votes, totals = build_results(z)
+    z24 = zipfile.ZipFile(ZIP2024)
+    sections, settlements, votes, totals = build_results(z, True)
+    prev_sections, prev_settlements, prev_votes, prev_totals = build_results(
+        z24, False)
     feats = []
     for f in json.load(open(ADM2, encoding="utf8"))["features"]:
         geom = shape(f["geometry"])
@@ -126,6 +148,19 @@ def build_geojson(force):
         if code not in votes or totals[code] <= 0:
             continue
         grouped[name].append(code)
+    code_name = {code: name for name, codes in grouped.items()
+                 for code in codes}
+    settlement_name = {settlements[code]: name for code, name in code_name.items()
+                       if code in settlements}
+    prev_by_name = defaultdict(lambda: defaultdict(int))
+    prev_tot_by_name = defaultdict(int)
+    for code, acc in prev_votes.items():
+        name = settlement_name.get(prev_settlements.get(code))
+        if not name:
+            continue
+        prev_tot_by_name[name] += prev_totals.get(code, 0)
+        for key, value in acc.items():
+            prev_by_name[name][key] += value
     out = []
     for name, codes in sorted(grouped.items()):
         geom = next(g for n, g in feats if n == name)
@@ -141,18 +176,26 @@ def build_geojson(force):
         if total <= 0:
             continue
         shares = {k: round(v * 100 / total, 2) for k, v in acc.items() if v}
+        # 2024 municipality shares for the same baseBlend as the province layer
+        pacc = prev_by_name.get(name, {})
+        ptot = prev_tot_by_name.get(name, 0)
+        prev_shares = ({k: round(v * 100 / ptot, 2)
+                        for k, v in pacc.items() if v} if ptot > 0 else {})
         out.append({
             "type": "Feature",
             "properties": {"shapeName": slug(name), "name": name},
             "geometry": {"type": "MultiPolygon", "coordinates": rings},
             "shares": shares,
+            "prev_shares": prev_shares,
         })
     # move shares out of GeoJSON properties for the map builder
     shares = {f["properties"]["shapeName"]: f.pop("shares") for f in out}
+    prev_shares = {f["properties"]["shapeName"]: f.pop("prev_shares")
+                   for f in out}
     with open(DISSOLVED, "w", encoding="utf8") as fh:
         json.dump({"type": "FeatureCollection", "features": out}, fh,
                   ensure_ascii=False)
-    return out, shares
+    return out, shares, prev_shares
 
 
 def build_svg(force):
@@ -165,11 +208,12 @@ def build_svg(force):
     bm.main()
 
 
-def map2_block(feats, shares):
+def map2_block(feats, shares, prev_shares):
     names = {f["properties"]["shapeName"]: f["properties"]["name"]
              for f in feats}
     districts = {key: key for key in names}
     gebiete = {key: shares[key] for key in names}
+    prev = {key: prev_shares[key] for key in names if prev_shares.get(key)}
     j = lambda value: json.dumps(value, ensure_ascii=False)
     return """    map2: {
       svg: 'img/bulgaria_municipalities.svg',
@@ -179,8 +223,9 @@ def map2_block(feats, shares):
       districts: %s,
       names: %s,
       gebiete: %s,
+      prevGebiete: %s,
     },
-""" % (len(names), j(districts), j(names), j(gebiete))
+""" % (len(names), j(districts), j(names), j(gebiete), j(prev))
 
 
 def patch_config(block):
@@ -200,9 +245,9 @@ def patch_config(block):
 
 def main():
     force = "--force" in sys.argv
-    feats, shares = build_geojson(force)
+    feats, shares, prev_shares = build_geojson(force)
     build_svg(force)
-    patch_config(map2_block(feats, shares))
+    patch_config(map2_block(feats, shares, prev_shares))
 
 
 if __name__ == "__main__":

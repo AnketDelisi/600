@@ -219,6 +219,7 @@ def map2_block(feats, shares, prev_shares):
       svg: 'img/bulgaria_municipalities.svg',
       selector: 'id',
       label: 'MUNICIPALITIES',
+      noSeatDots: true,
       layerCount: %d,
       districts: %s,
       names: %s,

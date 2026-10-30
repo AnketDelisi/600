@@ -5102,6 +5102,12 @@ const FORECAST_REGION_SIGMA=1.5;
 // as sqrt(median electorate / district electorate), using the 2022 valid-vote
 // count as the electorate proxy (stored per constituency as votes2022).
 const FORECAST_DISTRICT_SIGMA=1.5;
+// 90% display intervals calibrated by scraper/interval_gate.py against the
+// historical cycle backtest. Raw p5-p95 simulation intervals under-covered
+// (vote 63%, seat 72%); these scales/floor bring empirical coverage to ~90%.
+const INTERVAL_VOTE_SCALE=2.0;
+const INTERVAL_SEAT_SCALE=1.0;
+const INTERVAL_SEAT_FLOOR=6;
 
 let DISTRICT_VOTES_MEDIAN=null, DISTRICT_VOTES_KEY=null;
 function districtVotesMedian(){
@@ -5344,6 +5350,12 @@ function runForecast(avg, nSims, nPolls, horizonDays){
   return summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50);
 }
 
+function quantile(arr,q){
+  if(!arr||!arr.length) return null;
+  const a=arr.slice().sort((x,y)=>x-y);
+  const i=(a.length-1)*q, lo=Math.floor(i), hi=Math.ceil(i);
+  return lo===hi?a[lo]:a[lo]+(a[hi]-a[lo])*(i-lo);
+}
 function summarize(seatsBy,votesBy,largest,maj,nSims,comboCount,top2,win50){
 const means={},medians={},modes={};
 const allKeys=PARTY_ORDER.concat(seatsBy.other?['other']:[]);
@@ -5364,7 +5376,25 @@ modes[p]=best;
   if(modalKey){
     PARTY_ORDER.forEach((p,i)=>{modal[p]=parseInt(modalKey.split(',')[i],10)});
   }
-  return {maj,largest,seatsBy,votesBy,means,medians,modes,modal,modalN,nSims,top2:top2||{},win50:win50||{}};
+  const intervals={votes:{},seats:{}},calibrated={votes:{},seats:{}},voteMeans={};
+  allKeys.forEach(p=>{
+    voteMeans[p]=mean(votesBy[p]||[]);
+    const v05=quantile(votesBy[p],0.05),v95=quantile(votesBy[p],0.95);
+    const s05=quantile(seatsBy[p],0.05),s95=quantile(seatsBy[p],0.95);
+    intervals.votes[p]=[v05,v95];
+    intervals.seats[p]=[s05,s95];
+    const vm=voteMeans[p];
+    calibrated.votes[p]=[Math.max(0,vm+(v05-vm)*INTERVAL_VOTE_SCALE),
+                          Math.min(100,vm+(v95-vm)*INTERVAL_VOTE_SCALE)];
+    const sm=means[p];
+    let slo=sm+(s05-sm)*INTERVAL_SEAT_SCALE;
+    let shi=sm+(s95-sm)*INTERVAL_SEAT_SCALE;
+    slo=Math.min(slo,sm-INTERVAL_SEAT_FLOOR);
+    shi=Math.max(shi,sm+INTERVAL_SEAT_FLOOR);
+    calibrated.seats[p]=[Math.max(0,slo),Math.min(SEATS_TOTAL,shi)];
+  });
+  return {maj,largest,seatsBy,votesBy,means,voteMeans,medians,modes,modal,modalN,nSims,
+          top2:top2||{},win50:win50||{},intervals,calibrated};
 }
 
 function deterministicSeats(medians, means, total){
@@ -5986,20 +6016,25 @@ function renderForecast(pane){
     // is a row of zeros: keep it out of the seats table
     if(!(detSeats[p]||sim.medians[p]||sim.modes[p])) return;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
+    const sr=sim.calibrated&&sim.calibrated.seats&&sim.calibrated.seats[p];
+    const srTxt=sr?`${Math.round(sr[0])}\u2013${Math.round(sr[1])}`:'\u2014';
     cmpRows+=`<tr>
       <td style="font-weight:700;color:${color}">${partyCode(p)}</td>
       <td class="num c" style="font-weight:900">${detSeats[p]}</td>
       <td class="num c">${sim.medians[p]}</td>
       <td class="num c">${sim.modes[p]}</td>
+      <td class="num c" style="color:var(--c-text-muted)">${srTxt}</td>
     </tr>`;
   });
   // "Other" row: the unmodelled remainder (minority lists etc.) — must be
   // visible for honest accuracy; below-threshold parties live here.
+  const osr=sim.calibrated&&sim.calibrated.seats&&sim.calibrated.seats.other;
   cmpRows+=`<tr>
       <td style="font-weight:700;color:#9CA3AF">${t('Other','Diğer')}</td>
       <td class="num c" style="font-weight:900">${detSeats.other||0}</td>
       <td class="num c">${sim.medians.other!=null?sim.medians.other:0}</td>
       <td class="num c">${sim.modes.other!=null?sim.modes.other:0}</td>
+      <td class="num c" style="color:var(--c-text-muted)">${osr?`${Math.round(osr[0])}\u2013${Math.round(osr[1])}`:'\u2014'}</td>
     </tr>`;
 
   // --- Constituency results (median national vote shares) ---
@@ -6161,8 +6196,9 @@ function renderForecast(pane){
     // simulation-floor artifacts (~0.1%) of candidates no pollster tracks
     if(!(mu>=0.05)) return;
     if(MAP_ONLY&&mu<0.5) return;
-    const lo=SEAT_BASED?percentile(arr,5)/100*SEATS_TOTAL:percentile(arr,5);
-    const hi=SEAT_BASED?percentile(arr,95)/100*SEATS_TOTAL:percentile(arr,95);
+    const civ=sim.calibrated&&sim.calibrated.votes&&sim.calibrated.votes[p];
+    const lo=civ?(SEAT_BASED?civ[0]/100*SEATS_TOTAL:civ[0]):percentile(arr,5);
+    const hi=civ?(SEAT_BASED?civ[1]/100*SEATS_TOTAL:civ[1]):percentile(arr,95);
     const thresh=arr.filter(v=>(SEAT_BASED?v/100*SEATS_TOTAL:v)>=vsThresh).length/arr.length;
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     const barW=Math.min(100,mu/vsMax*100);
@@ -6193,7 +6229,9 @@ function renderForecast(pane){
     const arr=sim.seatsBy[p];
     const mu=mean(arr);
     if(!(mu>=0.05)) return;   // never in parliament: a row of zeros is noise
-    const lo=percentile(arr,5), hi=percentile(arr,95);
+    const civ=sim.calibrated&&sim.calibrated.seats&&sim.calibrated.seats[p];
+    const lo=civ?Math.round(civ[0]):percentile(arr,5);
+    const hi=civ?Math.round(civ[1]):percentile(arr,95);
     const color=PARTY_META[p]?PARTY_META[p].color:'#888';
     const span=Math.max(1,hi-lo);
     const bW=Math.max(1,Math.ceil(span/MAX_BUCKETS));
@@ -6311,10 +6349,10 @@ function renderForecast(pane){
       ${MAP_ONLY?'':`<div class="parliament-box" id="fc-parl-box">${buildParliamentSVG(detSeats)}</div>`}
       <div style="overflow-x:auto">
       <table class="polls-table compact-table"><thead><tr>
-        <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th>
+        <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th><th class="c">90% ${t('interval','aral\u0131k')}</th>
       </tr></thead><tbody>${cmpRows}</tbody></table></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-        ${t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Simülasyonların medyanından deterministik tahmin (medyanı 0 olan partiler hariç)')}
+        ${t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Sim\u00fclasyonlar\u0131n medyan\u0131ndan deterministik tahmin (medyan\u0131 0 olan partiler hari\u00e7)')} \u00b7 last column = calibrated 90% seat interval
       </div>
     </div>`}
 
@@ -6391,13 +6429,13 @@ function renderForecast(pane){
     ${SEAT_BASED||RO_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.voteShare}</div></div>
       <div class="fc-votehd"><span></span><span></span><span>EXP</span><span>90% INT</span></div>
       ${voteRows}
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations${MAP_ONLY||THRESHOLD<=0?'':` · dashed line = ${THRESHOLD}% threshold`}</div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected vote share from simulations \u00b7 calibrated 90% interval, not a polling margin of error</div>
     </div>`}
 
     ${MAP_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.seatDistribution}</div></div>
       <div class="fc-seathead fc-seathead-hd"><span></span><span>EXP</span><span>90% INT</span></div>
       ${seatRows}
-      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations · 90% interval = 5th–95th percentile</div>
+      <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations \u00b7 calibrated 90% interval</div>
     </div>`}
   </div>`;
   const fcParlShot=$('fc-parl-shot-btn');
@@ -7791,8 +7829,9 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
     setCountry(cc);
     return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>{
       const r=runForecast(votes,nSims||1500,nPolls||20,horizonDays);
-      return {maj:r.maj,largest:r.largest,means:r.means,medians:r.medians,
-              modal:r.modal,nSims:r.nSims};
+      return {maj:r.maj,largest:r.largest,means:r.means,voteMeans:r.voteMeans,
+              medians:r.medians,modal:r.modal,nSims:r.nSims,
+              intervals:r.intervals,calibrated:r.calibrated};
     });
   };
   window.__600_gammaSample=gammaSample;

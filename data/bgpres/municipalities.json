@@ -1,0 +1,6032 @@
+{
+ "country": "bgpres",
+ "source": "CIK pvr202610 opendata",
+ "municipalities": {
+  "aksakovo": {
+   "shares": {
+    "gyurov": 21.22,
+    "kostadinov": 19.13,
+    "vasilev": 6.08,
+    "hristanov": 1.84,
+    "mihaylov": 6.17,
+    "iotova": 37.38
+   },
+   "runoff2026": {
+    "iotova": 63.79,
+    "gyurov": 36.21
+   },
+   "votes": {
+    "gyurov": 771,
+    "kostadinov": 695,
+    "vasilev": 221,
+    "hristanov": 67,
+    "mihaylov": 224,
+    "iotova": 1358
+   },
+   "total": 3633
+  },
+  "alfatar": {
+   "shares": {
+    "gyurov": 8.32,
+    "kostadinov": 5.6,
+    "vasilev": 3.16,
+    "mihaylov": 2.87,
+    "iotova": 74.46,
+    "hristanov": 0.57
+   },
+   "runoff2026": {
+    "iotova": 89.95,
+    "gyurov": 10.05
+   },
+   "votes": {
+    "gyurov": 58,
+    "kostadinov": 39,
+    "vasilev": 22,
+    "mihaylov": 20,
+    "iotova": 519,
+    "hristanov": 4
+   },
+   "total": 697
+  },
+  "anton": {
+   "shares": {
+    "gyurov": 22.36,
+    "kostadinov": 26.16,
+    "vasilev": 8.44,
+    "hristanov": 1.69,
+    "mihaylov": 1.27,
+    "iotova": 34.6
+   },
+   "runoff2026": {
+    "iotova": 60.74,
+    "gyurov": 39.26
+   },
+   "votes": {
+    "gyurov": 53,
+    "kostadinov": 62,
+    "vasilev": 20,
+    "hristanov": 4,
+    "mihaylov": 3,
+    "iotova": 82
+   },
+   "total": 237
+  },
+  "antonovo": {
+   "shares": {
+    "gyurov": 14.96,
+    "kostadinov": 9.25,
+    "mihaylov": 5.35,
+    "iotova": 54.01,
+    "vasilev": 7.3,
+    "hristanov": 1.58
+   },
+   "runoff2026": {
+    "iotova": 78.31,
+    "gyurov": 21.69
+   },
+   "votes": {
+    "gyurov": 123,
+    "kostadinov": 76,
+    "mihaylov": 44,
+    "iotova": 444,
+    "vasilev": 60,
+    "hristanov": 13
+   },
+   "total": 822
+  },
+  "apriltsi": {
+   "shares": {
+    "gyurov": 19.05,
+    "kostadinov": 15.82,
+    "vasilev": 3.06,
+    "hristanov": 2.89,
+    "mihaylov": 5.61,
+    "iotova": 48.13
+   },
+   "runoff2026": {
+    "iotova": 71.65,
+    "gyurov": 28.35
+   },
+   "votes": {
+    "gyurov": 112,
+    "kostadinov": 93,
+    "vasilev": 18,
+    "hristanov": 17,
+    "mihaylov": 33,
+    "iotova": 283
+   },
+   "total": 588
+  },
+  "ardino": {
+   "shares": {
+    "gyurov": 22.65,
+    "kostadinov": 8.73,
+    "vasilev": 3.49,
+    "hristanov": 1.93,
+    "mihaylov": 1.62,
+    "iotova": 48.85
+   },
+   "runoff2026": {
+    "iotova": 68.32,
+    "gyurov": 31.68
+   },
+   "votes": {
+    "gyurov": 363,
+    "kostadinov": 140,
+    "vasilev": 56,
+    "hristanov": 31,
+    "mihaylov": 26,
+    "iotova": 783
+   },
+   "total": 1603
+  },
+  "asenovgrad": {
+   "shares": {
+    "gyurov": 31.38,
+    "kostadinov": 14.15,
+    "vasilev": 4.34,
+    "hristanov": 2.79,
+    "mihaylov": 3.96,
+    "iotova": 38.61
+   },
+   "runoff2026": {
+    "iotova": 55.16,
+    "gyurov": 44.84
+   },
+   "votes": {
+    "gyurov": 3288,
+    "kostadinov": 1483,
+    "vasilev": 455,
+    "hristanov": 292,
+    "mihaylov": 415,
+    "iotova": 4045
+   },
+   "total": 10477
+  },
+  "avren": {
+   "shares": {
+    "gyurov": 18.07,
+    "kostadinov": 17.82,
+    "vasilev": 5.94,
+    "hristanov": 2.78,
+    "mihaylov": 5.32,
+    "iotova": 42.76
+   },
+   "runoff2026": {
+    "iotova": 70.3,
+    "gyurov": 29.7
+   },
+   "votes": {
+    "gyurov": 292,
+    "kostadinov": 288,
+    "vasilev": 96,
+    "hristanov": 45,
+    "mihaylov": 86,
+    "iotova": 691
+   },
+   "total": 1616
+  },
+  "aytos": {
+   "shares": {
+    "gyurov": 20.3,
+    "kostadinov": 13.42,
+    "vasilev": 6.82,
+    "hristanov": 1.79,
+    "mihaylov": 5.65,
+    "iotova": 42.91
+   },
+   "runoff2026": {
+    "iotova": 67.89,
+    "gyurov": 32.11
+   },
+   "votes": {
+    "gyurov": 693,
+    "kostadinov": 458,
+    "vasilev": 233,
+    "hristanov": 61,
+    "mihaylov": 193,
+    "iotova": 1465
+   },
+   "total": 3414
+  },
+  "balchik": {
+   "shares": {
+    "gyurov": 19.37,
+    "kostadinov": 18.5,
+    "vasilev": 4.78,
+    "hristanov": 1.94,
+    "mihaylov": 5.48,
+    "iotova": 43.89
+   },
+   "runoff2026": {
+    "iotova": 69.38,
+    "gyurov": 30.62
+   },
+   "votes": {
+    "gyurov": 580,
+    "kostadinov": 554,
+    "vasilev": 143,
+    "hristanov": 58,
+    "mihaylov": 164,
+    "iotova": 1314
+   },
+   "total": 2994
+  },
+  "banite": {
+   "shares": {
+    "gyurov": 13.73,
+    "kostadinov": 7.47,
+    "vasilev": 2.53,
+    "iotova": 66.67,
+    "hristanov": 0.8,
+    "mihaylov": 2.0
+   },
+   "runoff2026": {
+    "iotova": 82.92,
+    "gyurov": 17.08
+   },
+   "votes": {
+    "gyurov": 103,
+    "kostadinov": 56,
+    "vasilev": 19,
+    "iotova": 500,
+    "hristanov": 6,
+    "mihaylov": 15
+   },
+   "total": 750
+  },
+  "bansko": {
+   "shares": {
+    "gyurov": 31.31,
+    "kostadinov": 10.77,
+    "vasilev": 3.79,
+    "hristanov": 2.15,
+    "mihaylov": 3.02,
+    "iotova": 43.33
+   },
+   "runoff2026": {
+    "iotova": 58.05,
+    "gyurov": 41.95
+   },
+   "votes": {
+    "gyurov": 974,
+    "kostadinov": 335,
+    "vasilev": 118,
+    "hristanov": 67,
+    "mihaylov": 94,
+    "iotova": 1348
+   },
+   "total": 3111
+  },
+  "batak": {
+   "shares": {
+    "gyurov": 21.53,
+    "kostadinov": 11.84,
+    "vasilev": 5.52,
+    "hristanov": 1.62,
+    "mihaylov": 2.69,
+    "iotova": 48.72
+   },
+   "runoff2026": {
+    "iotova": 69.35,
+    "gyurov": 30.65
+   },
+   "votes": {
+    "gyurov": 160,
+    "kostadinov": 88,
+    "vasilev": 41,
+    "hristanov": 12,
+    "mihaylov": 20,
+    "iotova": 362
+   },
+   "total": 743
+  },
+  "belene": {
+   "shares": {
+    "gyurov": 8.05,
+    "kostadinov": 15.77,
+    "vasilev": 5.03,
+    "hristanov": 5.03,
+    "mihaylov": 2.68,
+    "iotova": 59.06
+   },
+   "runoff2026": {
+    "iotova": 88.0,
+    "gyurov": 12.0
+   },
+   "votes": {
+    "gyurov": 24,
+    "kostadinov": 47,
+    "vasilev": 15,
+    "hristanov": 15,
+    "mihaylov": 8,
+    "iotova": 176
+   },
+   "total": 298
+  },
+  "belitsa": {
+   "shares": {
+    "gyurov": 19.14,
+    "kostadinov": 11.1,
+    "vasilev": 3.4,
+    "hristanov": 1.47,
+    "iotova": 57.98,
+    "mihaylov": 1.36
+   },
+   "runoff2026": {
+    "iotova": 75.18,
+    "gyurov": 24.82
+   },
+   "votes": {
+    "gyurov": 169,
+    "kostadinov": 98,
+    "vasilev": 30,
+    "hristanov": 13,
+    "iotova": 512,
+    "mihaylov": 12
+   },
+   "total": 883
+  },
+  "belogradchik": {
+   "shares": {
+    "gyurov": 17.72,
+    "kostadinov": 11.81,
+    "vasilev": 3.74,
+    "hristanov": 2.66,
+    "mihaylov": 3.54,
+    "iotova": 54.92
+   },
+   "runoff2026": {
+    "iotova": 75.61,
+    "gyurov": 24.39
+   },
+   "votes": {
+    "gyurov": 180,
+    "kostadinov": 120,
+    "vasilev": 38,
+    "hristanov": 27,
+    "mihaylov": 36,
+    "iotova": 558
+   },
+   "total": 1016
+  },
+  "beloslav": {
+   "shares": {
+    "gyurov": 18.85,
+    "kostadinov": 16.86,
+    "vasilev": 6.17,
+    "mihaylov": 9.62,
+    "iotova": 41.31,
+    "hristanov": 1.41
+   },
+   "runoff2026": {
+    "iotova": 68.67,
+    "gyurov": 31.33
+   },
+   "votes": {
+    "gyurov": 333,
+    "kostadinov": 298,
+    "vasilev": 109,
+    "mihaylov": 170,
+    "iotova": 730,
+    "hristanov": 25
+   },
+   "total": 1767
+  },
+  "belovo": {
+   "shares": {
+    "gyurov": 17.86,
+    "kostadinov": 15.68,
+    "vasilev": 7.5,
+    "hristanov": 1.91,
+    "mihaylov": 3.82,
+    "iotova": 45.26
+   },
+   "runoff2026": {
+    "iotova": 71.71,
+    "gyurov": 28.29
+   },
+   "votes": {
+    "gyurov": 262,
+    "kostadinov": 230,
+    "vasilev": 110,
+    "hristanov": 28,
+    "mihaylov": 56,
+    "iotova": 664
+   },
+   "total": 1467
+  },
+  "berkovitsa": {
+   "shares": {
+    "gyurov": 18.53,
+    "kostadinov": 18.27,
+    "vasilev": 7.17,
+    "hristanov": 3.07,
+    "mihaylov": 3.85,
+    "iotova": 42.86
+   },
+   "runoff2026": {
+    "iotova": 69.82,
+    "gyurov": 30.18
+   },
+   "votes": {
+    "gyurov": 501,
+    "kostadinov": 494,
+    "vasilev": 194,
+    "hristanov": 83,
+    "mihaylov": 104,
+    "iotova": 1159
+   },
+   "total": 2704
+  },
+  "blagoevgrad": {
+   "shares": {
+    "gyurov": 44.45,
+    "kostadinov": 11.12,
+    "vasilev": 3.96,
+    "hristanov": 2.0,
+    "mihaylov": 2.87,
+    "iotova": 32.04
+   },
+   "runoff2026": {
+    "iotova": 41.89,
+    "gyurov": 58.11
+   },
+   "votes": {
+    "gyurov": 7786,
+    "kostadinov": 1947,
+    "vasilev": 694,
+    "hristanov": 350,
+    "mihaylov": 502,
+    "iotova": 5612
+   },
+   "total": 17516
+  },
+  "boboshevo": {
+   "shares": {
+    "gyurov": 21.69,
+    "kostadinov": 12.45,
+    "vasilev": 4.42,
+    "hristanov": 0.4,
+    "mihaylov": 1.61,
+    "iotova": 53.21
+   },
+   "runoff2026": {
+    "iotova": 71.05,
+    "gyurov": 28.95
+   },
+   "votes": {
+    "gyurov": 108,
+    "kostadinov": 62,
+    "vasilev": 22,
+    "hristanov": 2,
+    "mihaylov": 8,
+    "iotova": 265
+   },
+   "total": 498
+  },
+  "bobov_dol": {
+   "shares": {
+    "gyurov": 18.57,
+    "kostadinov": 15.73,
+    "vasilev": 7.98,
+    "hristanov": 1.92,
+    "mihaylov": 2.46,
+    "iotova": 46.66
+   },
+   "runoff2026": {
+    "iotova": 71.53,
+    "gyurov": 28.47
+   },
+   "votes": {
+    "gyurov": 242,
+    "kostadinov": 205,
+    "vasilev": 104,
+    "hristanov": 25,
+    "mihaylov": 32,
+    "iotova": 608
+   },
+   "total": 1303
+  },
+  "bolyarovo": {
+   "shares": {
+    "gyurov": 7.57,
+    "kostadinov": 10.06,
+    "vasilev": 5.15,
+    "mihaylov": 2.09,
+    "iotova": 65.94,
+    "hristanov": 0.97
+   },
+   "runoff2026": {
+    "iotova": 89.7,
+    "gyurov": 10.3
+   },
+   "votes": {
+    "gyurov": 94,
+    "kostadinov": 125,
+    "vasilev": 64,
+    "mihaylov": 26,
+    "iotova": 819,
+    "hristanov": 12
+   },
+   "total": 1242
+  },
+  "borino": {
+   "shares": {
+    "gyurov": 12.96,
+    "kostadinov": 4.48,
+    "vasilev": 2.88,
+    "hristanov": 10.24,
+    "mihaylov": 1.6,
+    "iotova": 63.84
+   },
+   "runoff2026": {
+    "iotova": 83.12,
+    "gyurov": 16.88
+   },
+   "votes": {
+    "gyurov": 81,
+    "kostadinov": 28,
+    "vasilev": 18,
+    "hristanov": 64,
+    "mihaylov": 10,
+    "iotova": 399
+   },
+   "total": 625
+  },
+  "borovan": {
+   "shares": {
+    "gyurov": 10.91,
+    "kostadinov": 10.81,
+    "vasilev": 26.16,
+    "iotova": 35.52,
+    "hristanov": 1.16,
+    "mihaylov": 2.7
+   },
+   "runoff2026": {
+    "iotova": 76.51,
+    "gyurov": 23.49
+   },
+   "votes": {
+    "gyurov": 113,
+    "kostadinov": 112,
+    "vasilev": 271,
+    "iotova": 368,
+    "hristanov": 12,
+    "mihaylov": 28
+   },
+   "total": 1036
+  },
+  "borovo": {
+   "shares": {
+    "gyurov": 13.49,
+    "kostadinov": 12.48,
+    "vasilev": 8.7,
+    "hristanov": 1.77,
+    "mihaylov": 5.8,
+    "iotova": 49.81
+   },
+   "runoff2026": {
+    "iotova": 78.69,
+    "gyurov": 21.31
+   },
+   "votes": {
+    "gyurov": 107,
+    "kostadinov": 99,
+    "vasilev": 69,
+    "hristanov": 14,
+    "mihaylov": 46,
+    "iotova": 395
+   },
+   "total": 793
+  },
+  "botevgrad": {
+   "shares": {
+    "gyurov": 25.91,
+    "kostadinov": 13.43,
+    "vasilev": 6.86,
+    "mihaylov": 3.06,
+    "iotova": 42.35,
+    "hristanov": 2.24
+   },
+   "runoff2026": {
+    "iotova": 62.04,
+    "gyurov": 37.96
+   },
+   "votes": {
+    "gyurov": 1489,
+    "kostadinov": 772,
+    "vasilev": 394,
+    "mihaylov": 176,
+    "iotova": 2434,
+    "hristanov": 129
+   },
+   "total": 5747
+  },
+  "boychinovtsi": {
+   "shares": {
+    "gyurov": 9.31,
+    "kostadinov": 14.91,
+    "vasilev": 18.71,
+    "hristanov": 1.72,
+    "mihaylov": 3.1,
+    "iotova": 43.88
+   },
+   "runoff2026": {
+    "iotova": 82.5,
+    "gyurov": 17.5
+   },
+   "votes": {
+    "gyurov": 108,
+    "kostadinov": 173,
+    "vasilev": 217,
+    "hristanov": 20,
+    "mihaylov": 36,
+    "iotova": 509
+   },
+   "total": 1160
+  },
+  "boynitsa": {
+   "shares": {
+    "gyurov": 17.62,
+    "kostadinov": 10.66,
+    "vasilev": 6.56,
+    "hristanov": 3.69,
+    "mihaylov": 1.64,
+    "iotova": 46.31
+   },
+   "runoff2026": {
+    "iotova": 72.44,
+    "gyurov": 27.56
+   },
+   "votes": {
+    "gyurov": 43,
+    "kostadinov": 26,
+    "vasilev": 16,
+    "hristanov": 9,
+    "mihaylov": 4,
+    "iotova": 113
+   },
+   "total": 244
+  },
+  "bozhurishte": {
+   "shares": {
+    "gyurov": 32.44,
+    "kostadinov": 15.76,
+    "vasilev": 4.88,
+    "hristanov": 3.69,
+    "mihaylov": 3.41,
+    "iotova": 33.64
+   },
+   "runoff2026": {
+    "iotova": 50.91,
+    "gyurov": 49.09
+   },
+   "votes": {
+    "gyurov": 352,
+    "kostadinov": 171,
+    "vasilev": 53,
+    "hristanov": 40,
+    "mihaylov": 37,
+    "iotova": 365
+   },
+   "total": 1085
+  },
+  "bratsigovo": {
+   "shares": {
+    "gyurov": 22.87,
+    "kostadinov": 16.69,
+    "vasilev": 5.34,
+    "hristanov": 1.25,
+    "mihaylov": 3.01,
+    "iotova": 45.24
+   },
+   "runoff2026": {
+    "iotova": 66.42,
+    "gyurov": 33.58
+   },
+   "votes": {
+    "gyurov": 274,
+    "kostadinov": 200,
+    "vasilev": 64,
+    "hristanov": 15,
+    "mihaylov": 36,
+    "iotova": 542
+   },
+   "total": 1198
+  },
+  "bratya_daskalovi": {
+   "shares": {
+    "gyurov": 13.39,
+    "kostadinov": 13.9,
+    "vasilev": 7.25,
+    "mihaylov": 5.84,
+    "iotova": 50.86,
+    "hristanov": 1.11
+   },
+   "runoff2026": {
+    "iotova": 79.15,
+    "gyurov": 20.85
+   },
+   "votes": {
+    "gyurov": 133,
+    "kostadinov": 138,
+    "vasilev": 72,
+    "mihaylov": 58,
+    "iotova": 505,
+    "hristanov": 11
+   },
+   "total": 993
+  },
+  "bregovo": {
+   "shares": {
+    "gyurov": 31.24,
+    "kostadinov": 9.35,
+    "vasilev": 3.47,
+    "hristanov": 1.16,
+    "mihaylov": 1.93,
+    "iotova": 44.17
+   },
+   "runoff2026": {
+    "iotova": 58.57,
+    "gyurov": 41.43
+   },
+   "votes": {
+    "gyurov": 324,
+    "kostadinov": 97,
+    "vasilev": 36,
+    "hristanov": 12,
+    "mihaylov": 20,
+    "iotova": 458
+   },
+   "total": 1037
+  },
+  "breznik": {
+   "shares": {
+    "gyurov": 19.36,
+    "kostadinov": 16.6,
+    "vasilev": 7.63,
+    "hristanov": 1.93,
+    "mihaylov": 3.52,
+    "iotova": 45.18
+   },
+   "runoff2026": {
+    "iotova": 70.0,
+    "gyurov": 30.0
+   },
+   "votes": {
+    "gyurov": 231,
+    "kostadinov": 198,
+    "vasilev": 91,
+    "hristanov": 23,
+    "mihaylov": 42,
+    "iotova": 539
+   },
+   "total": 1193
+  },
+  "brezovo": {
+   "shares": {
+    "gyurov": 15.06,
+    "kostadinov": 14.31,
+    "vasilev": 5.44,
+    "hristanov": 1.84,
+    "mihaylov": 5.52,
+    "iotova": 50.88
+   },
+   "runoff2026": {
+    "iotova": 77.16,
+    "gyurov": 22.84
+   },
+   "votes": {
+    "gyurov": 180,
+    "kostadinov": 171,
+    "vasilev": 65,
+    "hristanov": 22,
+    "mihaylov": 66,
+    "iotova": 608
+   },
+   "total": 1195
+  },
+  "brusartsi": {
+   "shares": {
+    "gyurov": 12.21,
+    "kostadinov": 15.29,
+    "vasilev": 13.09,
+    "iotova": 48.24,
+    "hristanov": 1.18,
+    "mihaylov": 2.65
+   },
+   "runoff2026": {
+    "iotova": 79.81,
+    "gyurov": 20.19
+   },
+   "votes": {
+    "gyurov": 83,
+    "kostadinov": 104,
+    "vasilev": 89,
+    "iotova": 328,
+    "hristanov": 8,
+    "mihaylov": 18
+   },
+   "total": 680
+  },
+  "burgas": {
+   "shares": {
+    "gyurov": 31.97,
+    "kostadinov": 14.03,
+    "vasilev": 4.19,
+    "hristanov": 3.4,
+    "mihaylov": 4.24,
+    "iotova": 37.14
+   },
+   "runoff2026": {
+    "iotova": 53.74,
+    "gyurov": 46.26
+   },
+   "votes": {
+    "gyurov": 13822,
+    "kostadinov": 6064,
+    "vasilev": 1810,
+    "hristanov": 1470,
+    "mihaylov": 1834,
+    "iotova": 16055
+   },
+   "total": 43229
+  },
+  "byala": {
+   "shares": {
+    "gyurov": 15.5,
+    "kostadinov": 12.8,
+    "vasilev": 9.16,
+    "hristanov": 1.65,
+    "mihaylov": 6.01,
+    "iotova": 48.15
+   },
+   "runoff2026": {
+    "iotova": 75.65,
+    "gyurov": 24.35
+   },
+   "votes": {
+    "gyurov": 281,
+    "kostadinov": 232,
+    "vasilev": 166,
+    "hristanov": 30,
+    "mihaylov": 109,
+    "iotova": 873
+   },
+   "total": 1813
+  },
+  "byala_slatina": {
+   "shares": {
+    "gyurov": 16.65,
+    "kostadinov": 11.55,
+    "vasilev": 13.07,
+    "hristanov": 1.34,
+    "mihaylov": 3.12,
+    "iotova": 46.43
+   },
+   "runoff2026": {
+    "iotova": 73.61,
+    "gyurov": 26.39
+   },
+   "votes": {
+    "gyurov": 545,
+    "kostadinov": 378,
+    "vasilev": 428,
+    "hristanov": 44,
+    "mihaylov": 102,
+    "iotova": 1520
+   },
+   "total": 3274
+  },
+  "chavdar": {
+   "shares": {
+    "gyurov": 21.4,
+    "kostadinov": 14.85,
+    "vasilev": 7.42,
+    "hristanov": 1.75,
+    "mihaylov": 2.18,
+    "iotova": 43.67
+   },
+   "runoff2026": {
+    "iotova": 67.11,
+    "gyurov": 32.89
+   },
+   "votes": {
+    "gyurov": 49,
+    "kostadinov": 34,
+    "vasilev": 17,
+    "hristanov": 4,
+    "mihaylov": 5,
+    "iotova": 100
+   },
+   "total": 229
+  },
+  "chepelare": {
+   "shares": {
+    "gyurov": 28.05,
+    "kostadinov": 12.29,
+    "vasilev": 3.21,
+    "hristanov": 2.4,
+    "mihaylov": 5.61,
+    "iotova": 42.92
+   },
+   "runoff2026": {
+    "iotova": 60.48,
+    "gyurov": 39.52
+   },
+   "votes": {
+    "gyurov": 315,
+    "kostadinov": 138,
+    "vasilev": 36,
+    "hristanov": 27,
+    "mihaylov": 63,
+    "iotova": 482
+   },
+   "total": 1123
+  },
+  "chernoochene": {
+   "shares": {
+    "gyurov": 11.73,
+    "kostadinov": 4.2,
+    "vasilev": 3.0,
+    "iotova": 66.02,
+    "mihaylov": 1.4,
+    "hristanov": 1.0
+   },
+   "runoff2026": {
+    "iotova": 84.92,
+    "gyurov": 15.08
+   },
+   "votes": {
+    "gyurov": 176,
+    "kostadinov": 63,
+    "vasilev": 45,
+    "iotova": 991,
+    "mihaylov": 21,
+    "hristanov": 15
+   },
+   "total": 1501
+  },
+  "cherven_bryag": {
+   "shares": {
+    "gyurov": 18.46,
+    "kostadinov": 13.51,
+    "vasilev": 10.67,
+    "mihaylov": 3.61,
+    "iotova": 46.33,
+    "hristanov": 1.77
+   },
+   "runoff2026": {
+    "iotova": 71.51,
+    "gyurov": 28.49
+   },
+   "votes": {
+    "gyurov": 604,
+    "kostadinov": 442,
+    "vasilev": 349,
+    "mihaylov": 118,
+    "iotova": 1516,
+    "hristanov": 58
+   },
+   "total": 3272
+  },
+  "chiprovtsi": {
+   "shares": {
+    "gyurov": 18.9,
+    "kostadinov": 23.7,
+    "vasilev": 4.51,
+    "hristanov": 1.13,
+    "mihaylov": 1.97,
+    "iotova": 43.16
+   },
+   "runoff2026": {
+    "iotova": 69.55,
+    "gyurov": 30.45
+   },
+   "votes": {
+    "gyurov": 134,
+    "kostadinov": 168,
+    "vasilev": 32,
+    "hristanov": 8,
+    "mihaylov": 14,
+    "iotova": 306
+   },
+   "total": 709
+  },
+  "chirpan": {
+   "shares": {
+    "gyurov": 18.99,
+    "kostadinov": 13.78,
+    "vasilev": 8.25,
+    "hristanov": 1.38,
+    "iotova": 41.48,
+    "mihaylov": 7.72
+   },
+   "runoff2026": {
+    "iotova": 68.6,
+    "gyurov": 31.4
+   },
+   "votes": {
+    "gyurov": 536,
+    "kostadinov": 389,
+    "vasilev": 233,
+    "hristanov": 39,
+    "iotova": 1171,
+    "mihaylov": 218
+   },
+   "total": 2823
+  },
+  "chuprene": {
+   "shares": {
+    "gyurov": 17.07,
+    "kostadinov": 13.6,
+    "vasilev": 4.27,
+    "iotova": 50.4,
+    "hristanov": 0.53,
+    "mihaylov": 1.33
+   },
+   "runoff2026": {
+    "iotova": 74.7,
+    "gyurov": 25.3
+   },
+   "votes": {
+    "gyurov": 64,
+    "kostadinov": 51,
+    "vasilev": 16,
+    "iotova": 189,
+    "hristanov": 2,
+    "mihaylov": 5
+   },
+   "total": 375
+  },
+  "dalgopol": {
+   "shares": {
+    "gyurov": 14.63,
+    "kostadinov": 9.08,
+    "vasilev": 3.64,
+    "mihaylov": 4.51,
+    "iotova": 40.37,
+    "hristanov": 0.69
+   },
+   "runoff2026": {
+    "iotova": 73.4,
+    "gyurov": 26.6
+   },
+   "votes": {
+    "gyurov": 253,
+    "kostadinov": 157,
+    "vasilev": 63,
+    "mihaylov": 78,
+    "iotova": 698,
+    "hristanov": 12
+   },
+   "total": 1729
+  },
+  "devin": {
+   "shares": {
+    "gyurov": 19.17,
+    "kostadinov": 12.91,
+    "vasilev": 4.22,
+    "hristanov": 2.17,
+    "mihaylov": 2.81,
+    "iotova": 49.84
+   },
+   "runoff2026": {
+    "iotova": 72.22,
+    "gyurov": 27.78
+   },
+   "votes": {
+    "gyurov": 300,
+    "kostadinov": 202,
+    "vasilev": 66,
+    "hristanov": 34,
+    "mihaylov": 44,
+    "iotova": 780
+   },
+   "total": 1565
+  },
+  "devnya": {
+   "shares": {
+    "gyurov": 16.08,
+    "kostadinov": 16.08,
+    "vasilev": 10.13,
+    "hristanov": 1.46,
+    "mihaylov": 9.19,
+    "iotova": 38.0
+   },
+   "runoff2026": {
+    "iotova": 70.27,
+    "gyurov": 29.73
+   },
+   "votes": {
+    "gyurov": 154,
+    "kostadinov": 154,
+    "vasilev": 97,
+    "hristanov": 14,
+    "mihaylov": 88,
+    "iotova": 364
+   },
+   "total": 958
+  },
+  "dimitrovgrad": {
+   "shares": {
+    "gyurov": 20.41,
+    "kostadinov": 16.59,
+    "vasilev": 6.82,
+    "mihaylov": 5.32,
+    "iotova": 42.48,
+    "hristanov": 2.21
+   },
+   "runoff2026": {
+    "iotova": 67.55,
+    "gyurov": 32.45
+   },
+   "votes": {
+    "gyurov": 1763,
+    "kostadinov": 1433,
+    "vasilev": 589,
+    "mihaylov": 460,
+    "iotova": 3670,
+    "hristanov": 191
+   },
+   "total": 8639
+  },
+  "dimovo": {
+   "shares": {
+    "gyurov": 15.53,
+    "kostadinov": 12.36,
+    "vasilev": 9.5,
+    "hristanov": 2.35,
+    "mihaylov": 2.15,
+    "iotova": 48.42
+   },
+   "runoff2026": {
+    "iotova": 75.72,
+    "gyurov": 24.28
+   },
+   "votes": {
+    "gyurov": 152,
+    "kostadinov": 121,
+    "vasilev": 93,
+    "hristanov": 23,
+    "mihaylov": 21,
+    "iotova": 474
+   },
+   "total": 979
+  },
+  "dobrich": {
+   "shares": {
+    "gyurov": 24.76,
+    "kostadinov": 18.39,
+    "vasilev": 4.09,
+    "hristanov": 2.5,
+    "mihaylov": 5.87,
+    "iotova": 39.65
+   },
+   "runoff2026": {
+    "iotova": 61.57,
+    "gyurov": 38.43
+   },
+   "votes": {
+    "gyurov": 3968,
+    "kostadinov": 2948,
+    "vasilev": 655,
+    "hristanov": 401,
+    "mihaylov": 941,
+    "iotova": 6356
+   },
+   "total": 16029
+  },
+  "dobrichka": {
+   "shares": {
+    "gyurov": 13.18,
+    "kostadinov": 14.52,
+    "vasilev": 6.44,
+    "iotova": 53.83,
+    "hristanov": 1.09,
+    "mihaylov": 4.78
+   },
+   "runoff2026": {
+    "iotova": 80.33,
+    "gyurov": 19.67
+   },
+   "votes": {
+    "gyurov": 471,
+    "kostadinov": 519,
+    "vasilev": 230,
+    "iotova": 1924,
+    "hristanov": 39,
+    "mihaylov": 171
+   },
+   "total": 3574
+  },
+  "dolna_banya": {
+   "shares": {
+    "gyurov": 18.2,
+    "kostadinov": 11.35,
+    "vasilev": 14.34,
+    "hristanov": 1.6,
+    "mihaylov": 2.04,
+    "iotova": 41.05
+   },
+   "runoff2026": {
+    "iotova": 69.29,
+    "gyurov": 30.71
+   },
+   "votes": {
+    "gyurov": 250,
+    "kostadinov": 156,
+    "vasilev": 197,
+    "hristanov": 22,
+    "mihaylov": 28,
+    "iotova": 564
+   },
+   "total": 1374
+  },
+  "dolna_mitropoliya": {
+   "shares": {
+    "gyurov": 15.52,
+    "kostadinov": 13.63,
+    "vasilev": 8.77,
+    "hristanov": 2.06,
+    "mihaylov": 5.39,
+    "iotova": 46.87
+   },
+   "runoff2026": {
+    "iotova": 75.12,
+    "gyurov": 24.88
+   },
+   "votes": {
+    "gyurov": 354,
+    "kostadinov": 311,
+    "vasilev": 200,
+    "hristanov": 47,
+    "mihaylov": 123,
+    "iotova": 1069
+   },
+   "total": 2281
+  },
+  "dolni_chiflik": {
+   "shares": {
+    "gyurov": 13.36,
+    "kostadinov": 15.47,
+    "vasilev": 6.96,
+    "hristanov": 1.51,
+    "mihaylov": 6.36,
+    "iotova": 33.82
+   },
+   "runoff2026": {
+    "iotova": 71.68,
+    "gyurov": 28.32
+   },
+   "votes": {
+    "gyurov": 292,
+    "kostadinov": 338,
+    "vasilev": 152,
+    "hristanov": 33,
+    "mihaylov": 139,
+    "iotova": 739
+   },
+   "total": 2185
+  },
+  "dolni_dabnik": {
+   "shares": {
+    "gyurov": 18.27,
+    "kostadinov": 11.38,
+    "vasilev": 11.11,
+    "hristanov": 2.48,
+    "mihaylov": 3.88,
+    "iotova": 46.59
+   },
+   "runoff2026": {
+    "iotova": 71.83,
+    "gyurov": 28.17
+   },
+   "votes": {
+    "gyurov": 273,
+    "kostadinov": 170,
+    "vasilev": 166,
+    "hristanov": 37,
+    "mihaylov": 58,
+    "iotova": 696
+   },
+   "total": 1494
+  },
+  "dospat": {
+   "shares": {
+    "gyurov": 18.02,
+    "vasilev": 2.2,
+    "mihaylov": 3.19,
+    "iotova": 62.86,
+    "kostadinov": 7.69,
+    "hristanov": 1.54
+   },
+   "runoff2026": {
+    "iotova": 77.72,
+    "gyurov": 22.28
+   },
+   "votes": {
+    "gyurov": 164,
+    "vasilev": 20,
+    "mihaylov": 29,
+    "iotova": 572,
+    "kostadinov": 70,
+    "hristanov": 14
+   },
+   "total": 910
+  },
+  "dragoman": {
+   "shares": {
+    "gyurov": 20.39,
+    "kostadinov": 14.44,
+    "vasilev": 4.85,
+    "hristanov": 1.46,
+    "mihaylov": 2.43,
+    "iotova": 46.84
+   },
+   "runoff2026": {
+    "iotova": 69.68,
+    "gyurov": 30.32
+   },
+   "votes": {
+    "gyurov": 168,
+    "kostadinov": 119,
+    "vasilev": 40,
+    "hristanov": 12,
+    "mihaylov": 20,
+    "iotova": 386
+   },
+   "total": 824
+  },
+  "dryanovo": {
+   "shares": {
+    "gyurov": 21.31,
+    "kostadinov": 14.54,
+    "vasilev": 4.2,
+    "hristanov": 1.93,
+    "mihaylov": 4.96,
+    "iotova": 46.0
+   },
+   "runoff2026": {
+    "iotova": 68.34,
+    "gyurov": 31.66
+   },
+   "votes": {
+    "gyurov": 365,
+    "kostadinov": 249,
+    "vasilev": 72,
+    "hristanov": 33,
+    "mihaylov": 85,
+    "iotova": 788
+   },
+   "total": 1713
+  },
+  "dulovo": {
+   "shares": {
+    "gyurov": 18.39,
+    "kostadinov": 8.66,
+    "vasilev": 6.38,
+    "mihaylov": 3.94,
+    "iotova": 49.31,
+    "hristanov": 1.5
+   },
+   "runoff2026": {
+    "iotova": 72.83,
+    "gyurov": 27.17
+   },
+   "votes": {
+    "gyurov": 467,
+    "kostadinov": 220,
+    "vasilev": 162,
+    "mihaylov": 100,
+    "iotova": 1252,
+    "hristanov": 38
+   },
+   "total": 2539
+  },
+  "dupnitsa": {
+   "shares": {
+    "gyurov": 28.78,
+    "kostadinov": 14.04,
+    "vasilev": 6.34,
+    "hristanov": 1.89,
+    "mihaylov": 3.34,
+    "iotova": 39.77
+   },
+   "runoff2026": {
+    "iotova": 58.01,
+    "gyurov": 41.99
+   },
+   "votes": {
+    "gyurov": 2112,
+    "kostadinov": 1030,
+    "vasilev": 465,
+    "hristanov": 139,
+    "mihaylov": 245,
+    "iotova": 2918
+   },
+   "total": 7338
+  },
+  "dve_mogili": {
+   "shares": {
+    "gyurov": 16.94,
+    "kostadinov": 12.88,
+    "hristanov": 2.34,
+    "mihaylov": 4.68,
+    "iotova": 48.74,
+    "vasilev": 7.75
+   },
+   "runoff2026": {
+    "iotova": 74.21,
+    "gyurov": 25.79
+   },
+   "votes": {
+    "gyurov": 188,
+    "kostadinov": 143,
+    "hristanov": 26,
+    "mihaylov": 52,
+    "iotova": 541,
+    "vasilev": 86
+   },
+   "total": 1110
+  },
+  "dzhebel": {
+   "shares": {
+    "gyurov": 21.32,
+    "kostadinov": 6.16,
+    "vasilev": 2.85,
+    "hristanov": 1.5,
+    "mihaylov": 0.98,
+    "iotova": 46.55
+   },
+   "runoff2026": {
+    "iotova": 68.58,
+    "gyurov": 31.42
+   },
+   "votes": {
+    "gyurov": 284,
+    "kostadinov": 82,
+    "vasilev": 38,
+    "hristanov": 20,
+    "mihaylov": 13,
+    "iotova": 620
+   },
+   "total": 1332
+  },
+  "elena": {
+   "shares": {
+    "gyurov": 19.01,
+    "kostadinov": 14.26,
+    "vasilev": 4.42,
+    "hristanov": 2.21,
+    "mihaylov": 4.48,
+    "iotova": 45.65
+   },
+   "runoff2026": {
+    "iotova": 70.6,
+    "gyurov": 29.4
+   },
+   "votes": {
+    "gyurov": 284,
+    "kostadinov": 213,
+    "vasilev": 66,
+    "hristanov": 33,
+    "mihaylov": 67,
+    "iotova": 682
+   },
+   "total": 1494
+  },
+  "elhovo": {
+   "shares": {
+    "gyurov": 17.69,
+    "kostadinov": 17.51,
+    "vasilev": 8.57,
+    "mihaylov": 3.38,
+    "iotova": 42.84,
+    "hristanov": 1.71
+   },
+   "runoff2026": {
+    "iotova": 70.77,
+    "gyurov": 29.23
+   },
+   "votes": {
+    "gyurov": 382,
+    "kostadinov": 378,
+    "vasilev": 185,
+    "mihaylov": 73,
+    "iotova": 925,
+    "hristanov": 37
+   },
+   "total": 2159
+  },
+  "elin_pelin": {
+   "shares": {
+    "gyurov": 23.0,
+    "kostadinov": 12.58,
+    "vasilev": 4.32,
+    "hristanov": 2.27,
+    "mihaylov": 2.6,
+    "iotova": 26.9
+   },
+   "runoff2026": {
+    "iotova": 53.91,
+    "gyurov": 46.09
+   },
+   "votes": {
+    "gyurov": 1203,
+    "kostadinov": 658,
+    "vasilev": 226,
+    "hristanov": 119,
+    "mihaylov": 136,
+    "iotova": 1407
+   },
+   "total": 5231
+  },
+  "etropole": {
+   "shares": {
+    "gyurov": 21.44,
+    "kostadinov": 13.31,
+    "vasilev": 8.26,
+    "hristanov": 2.07,
+    "mihaylov": 3.03,
+    "iotova": 43.8
+   },
+   "runoff2026": {
+    "iotova": 67.14,
+    "gyurov": 32.86
+   },
+   "votes": {
+    "gyurov": 467,
+    "kostadinov": 290,
+    "vasilev": 180,
+    "hristanov": 45,
+    "mihaylov": 66,
+    "iotova": 954
+   },
+   "total": 2178
+  },
+  "gabrovo": {
+   "shares": {
+    "gyurov": 29.19,
+    "kostadinov": 16.01,
+    "vasilev": 4.07,
+    "hristanov": 3.1,
+    "mihaylov": 6.38,
+    "iotova": 35.99
+   },
+   "runoff2026": {
+    "iotova": 55.22,
+    "gyurov": 44.78
+   },
+   "votes": {
+    "gyurov": 3460,
+    "kostadinov": 1898,
+    "vasilev": 482,
+    "hristanov": 367,
+    "mihaylov": 756,
+    "iotova": 4266
+   },
+   "total": 11852
+  },
+  "galabovo": {
+   "shares": {
+    "gyurov": 8.48,
+    "kostadinov": 8.76,
+    "vasilev": 7.15,
+    "hristanov": 1.61,
+    "mihaylov": 4.62,
+    "iotova": 61.61
+   },
+   "runoff2026": {
+    "iotova": 87.91,
+    "gyurov": 12.09
+   },
+   "votes": {
+    "gyurov": 242,
+    "kostadinov": 250,
+    "vasilev": 204,
+    "hristanov": 46,
+    "mihaylov": 132,
+    "iotova": 1759
+   },
+   "total": 2855
+  },
+  "garmen": {
+   "shares": {
+    "gyurov": 20.57,
+    "kostadinov": 6.47,
+    "vasilev": 5.01,
+    "hristanov": 1.85,
+    "mihaylov": 4.57,
+    "iotova": 57.39
+   },
+   "runoff2026": {
+    "iotova": 73.61,
+    "gyurov": 26.39
+   },
+   "votes": {
+    "gyurov": 423,
+    "kostadinov": 133,
+    "vasilev": 103,
+    "hristanov": 38,
+    "mihaylov": 94,
+    "iotova": 1180
+   },
+   "total": 2056
+  },
+  "general_toshevo": {
+   "shares": {
+    "gyurov": 15.14,
+    "kostadinov": 14.58,
+    "vasilev": 5.4,
+    "hristanov": 1.37,
+    "mihaylov": 5.02,
+    "iotova": 51.82
+   },
+   "runoff2026": {
+    "iotova": 77.39,
+    "gyurov": 22.61
+   },
+   "votes": {
+    "gyurov": 320,
+    "kostadinov": 308,
+    "vasilev": 114,
+    "hristanov": 29,
+    "mihaylov": 106,
+    "iotova": 1095
+   },
+   "total": 2113
+  },
+  "georgi_bamyanovo": {
+   "shares": {
+    "gyurov": 13.45,
+    "kostadinov": 16.6,
+    "hristanov": 1.86,
+    "iotova": 45.49,
+    "vasilev": 5.87,
+    "mihaylov": 3.0
+   },
+   "runoff2026": {
+    "iotova": 77.18,
+    "gyurov": 22.82
+   },
+   "votes": {
+    "gyurov": 94,
+    "kostadinov": 116,
+    "hristanov": 13,
+    "iotova": 318,
+    "vasilev": 41,
+    "mihaylov": 21
+   },
+   "total": 699
+  },
+  "glavinitsa": {
+   "shares": {
+    "gyurov": 17.74,
+    "kostadinov": 8.63,
+    "vasilev": 7.52,
+    "mihaylov": 3.59,
+    "iotova": 44.72,
+    "hristanov": 2.14
+   },
+   "runoff2026": {
+    "iotova": 71.6,
+    "gyurov": 28.4
+   },
+   "votes": {
+    "gyurov": 257,
+    "kostadinov": 125,
+    "vasilev": 109,
+    "mihaylov": 52,
+    "iotova": 648,
+    "hristanov": 31
+   },
+   "total": 1449
+  },
+  "godech": {
+   "shares": {
+    "gyurov": 26.45,
+    "kostadinov": 11.59,
+    "vasilev": 5.92,
+    "hristanov": 5.43,
+    "mihaylov": 2.17,
+    "iotova": 43.72
+   },
+   "runoff2026": {
+    "iotova": 62.31,
+    "gyurov": 37.69
+   },
+   "votes": {
+    "gyurov": 219,
+    "kostadinov": 96,
+    "vasilev": 49,
+    "hristanov": 45,
+    "mihaylov": 18,
+    "iotova": 362
+   },
+   "total": 828
+  },
+  "gorna_malina": {
+   "shares": {
+    "gyurov": 23.59,
+    "kostadinov": 11.91,
+    "vasilev": 6.83,
+    "hristanov": 1.43,
+    "mihaylov": 3.26,
+    "iotova": 39.87
+   },
+   "runoff2026": {
+    "iotova": 62.83,
+    "gyurov": 37.17
+   },
+   "votes": {
+    "gyurov": 297,
+    "kostadinov": 150,
+    "vasilev": 86,
+    "hristanov": 18,
+    "mihaylov": 41,
+    "iotova": 502
+   },
+   "total": 1259
+  },
+  "gorna_oryahovitsa": {
+   "shares": {
+    "gyurov": 20.75,
+    "kostadinov": 16.1,
+    "vasilev": 5.44,
+    "hristanov": 2.14,
+    "mihaylov": 8.42,
+    "iotova": 41.05
+   },
+   "runoff2026": {
+    "iotova": 66.42,
+    "gyurov": 33.58
+   },
+   "votes": {
+    "gyurov": 968,
+    "kostadinov": 751,
+    "vasilev": 254,
+    "hristanov": 100,
+    "mihaylov": 393,
+    "iotova": 1915
+   },
+   "total": 4665
+  },
+  "gotse_delchev": {
+   "shares": {
+    "gyurov": 43.09,
+    "kostadinov": 9.71,
+    "vasilev": 3.5,
+    "hristanov": 1.61,
+    "mihaylov": 3.38,
+    "iotova": 33.73
+   },
+   "runoff2026": {
+    "iotova": 43.9,
+    "gyurov": 56.1
+   },
+   "votes": {
+    "gyurov": 2521,
+    "kostadinov": 568,
+    "vasilev": 205,
+    "hristanov": 94,
+    "mihaylov": 198,
+    "iotova": 1973
+   },
+   "total": 5850
+  },
+  "gramada": {
+   "shares": {
+    "gyurov": 44.42,
+    "kostadinov": 6.07,
+    "vasilev": 3.13,
+    "iotova": 37.38,
+    "hristanov": 0.59,
+    "mihaylov": 0.59
+   },
+   "runoff2026": {
+    "iotova": 45.69,
+    "gyurov": 54.31
+   },
+   "votes": {
+    "gyurov": 227,
+    "kostadinov": 31,
+    "vasilev": 16,
+    "iotova": 191,
+    "hristanov": 3,
+    "mihaylov": 3
+   },
+   "total": 511
+  },
+  "gulyantsi": {
+   "shares": {
+    "gyurov": 12.96,
+    "kostadinov": 16.6,
+    "vasilev": 7.21,
+    "hristanov": 1.54,
+    "mihaylov": 11.9,
+    "iotova": 43.7
+   },
+   "runoff2026": {
+    "iotova": 77.13,
+    "gyurov": 22.87
+   },
+   "votes": {
+    "gyurov": 185,
+    "kostadinov": 237,
+    "vasilev": 103,
+    "hristanov": 22,
+    "mihaylov": 170,
+    "iotova": 624
+   },
+   "total": 1428
+  },
+  "gurkovo": {
+   "shares": {
+    "gyurov": 14.36,
+    "kostadinov": 11.58,
+    "vasilev": 13.05,
+    "hristanov": 1.63,
+    "mihaylov": 7.18,
+    "iotova": 43.39
+   },
+   "runoff2026": {
+    "iotova": 75.14,
+    "gyurov": 24.86
+   },
+   "votes": {
+    "gyurov": 88,
+    "kostadinov": 71,
+    "vasilev": 80,
+    "hristanov": 10,
+    "mihaylov": 44,
+    "iotova": 266
+   },
+   "total": 613
+  },
+  "hadzhidimovo": {
+   "shares": {
+    "gyurov": 29.83,
+    "kostadinov": 8.98,
+    "vasilev": 4.54,
+    "hristanov": 1.37,
+    "mihaylov": 2.85,
+    "iotova": 47.67
+   },
+   "runoff2026": {
+    "iotova": 61.51,
+    "gyurov": 38.49
+   },
+   "votes": {
+    "gyurov": 545,
+    "kostadinov": 164,
+    "vasilev": 83,
+    "hristanov": 25,
+    "mihaylov": 52,
+    "iotova": 871
+   },
+   "total": 1827
+  },
+  "harmanli": {
+   "shares": {
+    "gyurov": 17.8,
+    "kostadinov": 12.65,
+    "vasilev": 5.54,
+    "hristanov": 2.47,
+    "mihaylov": 4.46,
+    "iotova": 51.69
+   },
+   "runoff2026": {
+    "iotova": 74.39,
+    "gyurov": 25.61
+   },
+   "votes": {
+    "gyurov": 626,
+    "kostadinov": 445,
+    "vasilev": 195,
+    "hristanov": 87,
+    "mihaylov": 157,
+    "iotova": 1818
+   },
+   "total": 3517
+  },
+  "haskovo": {
+   "shares": {
+    "gyurov": 24.06,
+    "kostadinov": 13.26,
+    "iotova": 46.08,
+    "hristanov": 2.98,
+    "mihaylov": 4.33,
+    "vasilev": 3.93
+   },
+   "runoff2026": {
+    "iotova": 65.7,
+    "gyurov": 34.3
+   },
+   "votes": {
+    "gyurov": 3731,
+    "kostadinov": 2057,
+    "iotova": 7147,
+    "hristanov": 462,
+    "mihaylov": 671,
+    "vasilev": 610
+   },
+   "total": 15510
+  },
+  "hayredin": {
+   "shares": {
+    "gyurov": 11.28,
+    "kostadinov": 12.98,
+    "vasilev": 17.21,
+    "hristanov": 1.69,
+    "mihaylov": 2.82,
+    "iotova": 48.52
+   },
+   "runoff2026": {
+    "iotova": 81.13,
+    "gyurov": 18.87
+   },
+   "votes": {
+    "gyurov": 80,
+    "kostadinov": 92,
+    "vasilev": 122,
+    "hristanov": 12,
+    "mihaylov": 20,
+    "iotova": 344
+   },
+   "total": 709
+  },
+  "hisarya": {
+   "shares": {
+    "gyurov": 18.76,
+    "kostadinov": 14.7,
+    "vasilev": 5.08,
+    "hristanov": 2.4,
+    "mihaylov": 7.72,
+    "iotova": 46.07
+   },
+   "runoff2026": {
+    "iotova": 71.06,
+    "gyurov": 28.94
+   },
+   "votes": {
+    "gyurov": 406,
+    "kostadinov": 318,
+    "vasilev": 110,
+    "hristanov": 52,
+    "mihaylov": 167,
+    "iotova": 997
+   },
+   "total": 2164
+  },
+  "hitrino": {
+   "shares": {
+    "gyurov": 78.16,
+    "kostadinov": 3.35,
+    "iotova": 12.35,
+    "vasilev": 1.54,
+    "mihaylov": 0.99,
+    "hristanov": 0.16
+   },
+   "runoff2026": {
+    "iotova": 13.64,
+    "gyurov": 86.36
+   },
+   "votes": {
+    "gyurov": 1424,
+    "kostadinov": 61,
+    "iotova": 225,
+    "vasilev": 28,
+    "mihaylov": 18,
+    "hristanov": 3
+   },
+   "total": 1822
+  },
+  "ihtiman": {
+   "shares": {
+    "gyurov": 21.45,
+    "kostadinov": 14.66,
+    "vasilev": 9.12,
+    "hristanov": 3.58,
+    "mihaylov": 2.75,
+    "iotova": 39.82
+   },
+   "runoff2026": {
+    "iotova": 64.99,
+    "gyurov": 35.01
+   },
+   "votes": {
+    "gyurov": 515,
+    "kostadinov": 352,
+    "vasilev": 219,
+    "hristanov": 86,
+    "mihaylov": 66,
+    "iotova": 956
+   },
+   "total": 2401
+  },
+  "iskar": {
+   "shares": {
+    "gyurov": 11.91,
+    "kostadinov": 12.86,
+    "vasilev": 16.86,
+    "hristanov": 2.32,
+    "mihaylov": 4.53,
+    "iotova": 44.99
+   },
+   "runoff2026": {
+    "iotova": 79.07,
+    "gyurov": 20.93
+   },
+   "votes": {
+    "gyurov": 113,
+    "kostadinov": 122,
+    "vasilev": 160,
+    "hristanov": 22,
+    "mihaylov": 43,
+    "iotova": 427
+   },
+   "total": 949
+  },
+  "isperih": {
+   "shares": {
+    "gyurov": 22.69,
+    "kostadinov": 9.54,
+    "vasilev": 6.62,
+    "hristanov": 1.33,
+    "mihaylov": 3.78,
+    "iotova": 38.29
+   },
+   "runoff2026": {
+    "iotova": 62.79,
+    "gyurov": 37.21
+   },
+   "votes": {
+    "gyurov": 528,
+    "kostadinov": 222,
+    "vasilev": 154,
+    "hristanov": 31,
+    "mihaylov": 88,
+    "iotova": 891
+   },
+   "total": 2327
+  },
+  "ivanovo": {
+   "shares": {
+    "gyurov": 19.77,
+    "kostadinov": 11.82,
+    "vasilev": 4.36,
+    "mihaylov": 5.28,
+    "iotova": 49.68,
+    "hristanov": 2.11
+   },
+   "runoff2026": {
+    "iotova": 71.53,
+    "gyurov": 28.47
+   },
+   "votes": {
+    "gyurov": 281,
+    "kostadinov": 168,
+    "vasilev": 62,
+    "mihaylov": 75,
+    "iotova": 706,
+    "hristanov": 30
+   },
+   "total": 1421
+  },
+  "ivaylovgrad": {
+   "shares": {
+    "gyurov": 12.46,
+    "kostadinov": 8.51,
+    "vasilev": 2.92,
+    "hristanov": 0.91,
+    "mihaylov": 2.19,
+    "iotova": 68.09
+   },
+   "runoff2026": {
+    "iotova": 84.53,
+    "gyurov": 15.47
+   },
+   "votes": {
+    "gyurov": 205,
+    "kostadinov": 140,
+    "vasilev": 48,
+    "hristanov": 15,
+    "mihaylov": 36,
+    "iotova": 1120
+   },
+   "total": 1645
+  },
+  "kaloyanovo": {
+   "shares": {
+    "gyurov": 23.34,
+    "kostadinov": 12.51,
+    "vasilev": 7.24,
+    "hristanov": 2.41,
+    "mihaylov": 6.56,
+    "iotova": 41.11
+   },
+   "runoff2026": {
+    "iotova": 63.78,
+    "gyurov": 36.22
+   },
+   "votes": {
+    "gyurov": 377,
+    "kostadinov": 202,
+    "vasilev": 117,
+    "hristanov": 39,
+    "mihaylov": 106,
+    "iotova": 664
+   },
+   "total": 1615
+  },
+  "kameno": {
+   "shares": {
+    "gyurov": 16.15,
+    "kostadinov": 15.31,
+    "vasilev": 10.18,
+    "hristanov": 2.32,
+    "mihaylov": 4.63,
+    "iotova": 43.19
+   },
+   "runoff2026": {
+    "iotova": 72.78,
+    "gyurov": 27.22
+   },
+   "votes": {
+    "gyurov": 230,
+    "kostadinov": 218,
+    "vasilev": 145,
+    "hristanov": 33,
+    "mihaylov": 66,
+    "iotova": 615
+   },
+   "total": 1424
+  },
+  "kaolinovo": {
+   "shares": {
+    "gyurov": 14.13,
+    "kostadinov": 5.6,
+    "vasilev": 4.68,
+    "mihaylov": 3.3,
+    "iotova": 54.86,
+    "hristanov": 0.64
+   },
+   "runoff2026": {
+    "iotova": 79.52,
+    "gyurov": 20.48
+   },
+   "votes": {
+    "gyurov": 154,
+    "kostadinov": 61,
+    "vasilev": 51,
+    "mihaylov": 36,
+    "iotova": 598,
+    "hristanov": 7
+   },
+   "total": 1090
+  },
+  "kardzhali": {
+   "shares": {
+    "gyurov": 27.27,
+    "kostadinov": 11.41,
+    "mihaylov": 2.2,
+    "iotova": 42.43,
+    "vasilev": 4.87,
+    "hristanov": 1.81
+   },
+   "runoff2026": {
+    "iotova": 60.87,
+    "gyurov": 39.13
+   },
+   "votes": {
+    "gyurov": 2350,
+    "kostadinov": 983,
+    "mihaylov": 190,
+    "iotova": 3656,
+    "vasilev": 420,
+    "hristanov": 156
+   },
+   "total": 8617
+  },
+  "karlovo": {
+   "shares": {
+    "gyurov": 24.38,
+    "kostadinov": 13.59,
+    "vasilev": 5.07,
+    "hristanov": 1.96,
+    "mihaylov": 5.82,
+    "iotova": 43.73
+   },
+   "runoff2026": {
+    "iotova": 64.2,
+    "gyurov": 35.8
+   },
+   "votes": {
+    "gyurov": 2276,
+    "kostadinov": 1269,
+    "vasilev": 473,
+    "hristanov": 183,
+    "mihaylov": 543,
+    "iotova": 4082
+   },
+   "total": 9335
+  },
+  "karnobat": {
+   "shares": {
+    "gyurov": 17.8,
+    "kostadinov": 15.14,
+    "vasilev": 8.91,
+    "hristanov": 1.86,
+    "mihaylov": 3.83,
+    "iotova": 45.43
+   },
+   "runoff2026": {
+    "iotova": 71.85,
+    "gyurov": 28.15
+   },
+   "votes": {
+    "gyurov": 623,
+    "kostadinov": 530,
+    "vasilev": 312,
+    "hristanov": 65,
+    "mihaylov": 134,
+    "iotova": 1590
+   },
+   "total": 3500
+  },
+  "kaspichan": {
+   "shares": {
+    "gyurov": 14.76,
+    "kostadinov": 16.46,
+    "vasilev": 8.63,
+    "hristanov": 0.89,
+    "mihaylov": 6.42,
+    "iotova": 42.73
+   },
+   "runoff2026": {
+    "iotova": 74.33,
+    "gyurov": 25.67
+   },
+   "votes": {
+    "gyurov": 200,
+    "kostadinov": 223,
+    "vasilev": 117,
+    "hristanov": 12,
+    "mihaylov": 87,
+    "iotova": 579
+   },
+   "total": 1355
+  },
+  "kavarna": {
+   "shares": {
+    "gyurov": 23.38,
+    "kostadinov": 15.38,
+    "vasilev": 6.32,
+    "mihaylov": 5.57,
+    "iotova": 39.95,
+    "hristanov": 2.78
+   },
+   "runoff2026": {
+    "iotova": 63.08,
+    "gyurov": 36.92
+   },
+   "votes": {
+    "gyurov": 529,
+    "kostadinov": 348,
+    "vasilev": 143,
+    "mihaylov": 126,
+    "iotova": 904,
+    "hristanov": 63
+   },
+   "total": 2263
+  },
+  "kaynardzha": {
+   "shares": {
+    "gyurov": 12.05,
+    "kostadinov": 13.53,
+    "vasilev": 15.01,
+    "mihaylov": 3.17,
+    "iotova": 43.76,
+    "hristanov": 0.63
+   },
+   "runoff2026": {
+    "iotova": 78.41,
+    "gyurov": 21.59
+   },
+   "votes": {
+    "gyurov": 57,
+    "kostadinov": 64,
+    "vasilev": 71,
+    "mihaylov": 15,
+    "iotova": 207,
+    "hristanov": 3
+   },
+   "total": 473
+  },
+  "kazanlak": {
+   "shares": {
+    "gyurov": 23.86,
+    "kostadinov": 14.77,
+    "vasilev": 5.23,
+    "hristanov": 2.27,
+    "mihaylov": 5.51,
+    "iotova": 43.35
+   },
+   "runoff2026": {
+    "iotova": 64.5,
+    "gyurov": 35.5
+   },
+   "votes": {
+    "gyurov": 3103,
+    "kostadinov": 1921,
+    "vasilev": 680,
+    "hristanov": 295,
+    "mihaylov": 716,
+    "iotova": 5637
+   },
+   "total": 13004
+  },
+  "kirkovo": {
+   "shares": {
+    "gyurov": 19.33,
+    "kostadinov": 6.29,
+    "vasilev": 3.91,
+    "hristanov": 0.75,
+    "mihaylov": 1.13,
+    "iotova": 51.57
+   },
+   "runoff2026": {
+    "iotova": 72.73,
+    "gyurov": 27.27
+   },
+   "votes": {
+    "gyurov": 667,
+    "kostadinov": 217,
+    "vasilev": 135,
+    "hristanov": 26,
+    "mihaylov": 39,
+    "iotova": 1779
+   },
+   "total": 3450
+  },
+  "knezha": {
+   "shares": {
+    "gyurov": 16.32,
+    "kostadinov": 15.56,
+    "vasilev": 12.04,
+    "hristanov": 2.64,
+    "mihaylov": 4.82,
+    "iotova": 41.87
+   },
+   "runoff2026": {
+    "iotova": 71.95,
+    "gyurov": 28.05
+   },
+   "votes": {
+    "gyurov": 278,
+    "kostadinov": 265,
+    "vasilev": 205,
+    "hristanov": 45,
+    "mihaylov": 82,
+    "iotova": 713
+   },
+   "total": 1703
+  },
+  "kocherinovo": {
+   "shares": {
+    "gyurov": 21.09,
+    "kostadinov": 11.85,
+    "vasilev": 4.86,
+    "hristanov": 2.01,
+    "mihaylov": 2.01,
+    "iotova": 52.13
+   },
+   "runoff2026": {
+    "iotova": 71.2,
+    "gyurov": 28.8
+   },
+   "votes": {
+    "gyurov": 178,
+    "kostadinov": 100,
+    "vasilev": 41,
+    "hristanov": 17,
+    "mihaylov": 17,
+    "iotova": 440
+   },
+   "total": 844
+  },
+  "koprivshtitsa": {
+   "shares": {
+    "gyurov": 22.39,
+    "kostadinov": 18.76,
+    "vasilev": 5.76,
+    "hristanov": 2.77,
+    "mihaylov": 2.56,
+    "iotova": 40.09
+   },
+   "runoff2026": {
+    "iotova": 64.16,
+    "gyurov": 35.84
+   },
+   "votes": {
+    "gyurov": 105,
+    "kostadinov": 88,
+    "vasilev": 27,
+    "hristanov": 13,
+    "mihaylov": 12,
+    "iotova": 188
+   },
+   "total": 469
+  },
+  "kostenets": {
+   "shares": {
+    "gyurov": 23.48,
+    "kostadinov": 15.62,
+    "vasilev": 5.39,
+    "hristanov": 3.93,
+    "mihaylov": 3.83,
+    "iotova": 41.71
+   },
+   "runoff2026": {
+    "iotova": 63.99,
+    "gyurov": 36.01
+   },
+   "votes": {
+    "gyurov": 466,
+    "kostadinov": 310,
+    "vasilev": 107,
+    "hristanov": 78,
+    "mihaylov": 76,
+    "iotova": 828
+   },
+   "total": 1985
+  },
+  "kostinbrod": {
+   "shares": {
+    "gyurov": 27.56,
+    "kostadinov": 14.12,
+    "vasilev": 4.7,
+    "hristanov": 2.38,
+    "mihaylov": 2.62,
+    "iotova": 40.46
+   },
+   "runoff2026": {
+    "iotova": 59.48,
+    "gyurov": 40.52
+   },
+   "votes": {
+    "gyurov": 927,
+    "kostadinov": 475,
+    "vasilev": 158,
+    "hristanov": 80,
+    "mihaylov": 88,
+    "iotova": 1361
+   },
+   "total": 3364
+  },
+  "kotel": {
+   "shares": {
+    "gyurov": 13.57,
+    "kostadinov": 10.67,
+    "vasilev": 8.76,
+    "hristanov": 1.48,
+    "mihaylov": 6.12,
+    "iotova": 42.77
+   },
+   "runoff2026": {
+    "iotova": 75.91,
+    "gyurov": 24.09
+   },
+   "votes": {
+    "gyurov": 257,
+    "kostadinov": 202,
+    "vasilev": 166,
+    "hristanov": 28,
+    "mihaylov": 116,
+    "iotova": 810
+   },
+   "total": 1894
+  },
+  "kovachevtsi": {
+   "shares": {
+    "gyurov": 15.37,
+    "kostadinov": 12.84,
+    "iotova": 56.0,
+    "vasilev": 4.21,
+    "hristanov": 1.26,
+    "mihaylov": 2.11
+   },
+   "runoff2026": {
+    "iotova": 78.47,
+    "gyurov": 21.53
+   },
+   "votes": {
+    "gyurov": 73,
+    "kostadinov": 61,
+    "iotova": 266,
+    "vasilev": 20,
+    "hristanov": 6,
+    "mihaylov": 10
+   },
+   "total": 475
+  },
+  "kozloduy": {
+   "shares": {
+    "gyurov": 17.04,
+    "kostadinov": 18.43,
+    "vasilev": 8.68,
+    "hristanov": 1.72,
+    "mihaylov": 3.4,
+    "iotova": 43.02
+   },
+   "runoff2026": {
+    "iotova": 71.63,
+    "gyurov": 28.37
+   },
+   "votes": {
+    "gyurov": 526,
+    "kostadinov": 569,
+    "vasilev": 268,
+    "hristanov": 53,
+    "mihaylov": 105,
+    "iotova": 1328
+   },
+   "total": 3087
+  },
+  "kresna": {
+   "shares": {
+    "gyurov": 33.74,
+    "kostadinov": 8.02,
+    "vasilev": 4.93,
+    "mihaylov": 2.03,
+    "iotova": 45.73,
+    "hristanov": 1.76
+   },
+   "runoff2026": {
+    "iotova": 57.54,
+    "gyurov": 42.46
+   },
+   "votes": {
+    "gyurov": 383,
+    "kostadinov": 91,
+    "vasilev": 56,
+    "mihaylov": 23,
+    "iotova": 519,
+    "hristanov": 20
+   },
+   "total": 1135
+  },
+  "krichim": {
+   "shares": {
+    "gyurov": 22.52,
+    "kostadinov": 10.64,
+    "vasilev": 5.32,
+    "hristanov": 1.33,
+    "mihaylov": 4.81,
+    "iotova": 51.18
+   },
+   "runoff2026": {
+    "iotova": 69.44,
+    "gyurov": 30.56
+   },
+   "votes": {
+    "gyurov": 220,
+    "kostadinov": 104,
+    "vasilev": 52,
+    "hristanov": 13,
+    "mihaylov": 47,
+    "iotova": 500
+   },
+   "total": 977
+  },
+  "krivodol": {
+   "shares": {
+    "gyurov": 13.45,
+    "kostadinov": 10.48,
+    "vasilev": 16.01,
+    "hristanov": 2.48,
+    "mihaylov": 3.96,
+    "iotova": 47.19
+   },
+   "runoff2026": {
+    "iotova": 77.82,
+    "gyurov": 22.18
+   },
+   "votes": {
+    "gyurov": 163,
+    "kostadinov": 127,
+    "vasilev": 194,
+    "hristanov": 30,
+    "mihaylov": 48,
+    "iotova": 572
+   },
+   "total": 1212
+  },
+  "krumovgrad": {
+   "shares": {
+    "gyurov": 19.61,
+    "iotova": 54.81,
+    "kostadinov": 6.01,
+    "vasilev": 3.93,
+    "hristanov": 1.24,
+    "mihaylov": 1.37
+   },
+   "runoff2026": {
+    "iotova": 73.65,
+    "gyurov": 26.35
+   },
+   "votes": {
+    "gyurov": 444,
+    "iotova": 1241,
+    "kostadinov": 136,
+    "vasilev": 89,
+    "hristanov": 28,
+    "mihaylov": 31
+   },
+   "total": 2264
+  },
+  "krushari": {
+   "shares": {
+    "gyurov": 11.37,
+    "kostadinov": 9.03,
+    "vasilev": 5.92,
+    "hristanov": 1.87,
+    "mihaylov": 3.43,
+    "iotova": 57.94
+   },
+   "runoff2026": {
+    "iotova": 83.6,
+    "gyurov": 16.4
+   },
+   "votes": {
+    "gyurov": 73,
+    "kostadinov": 58,
+    "vasilev": 38,
+    "hristanov": 12,
+    "mihaylov": 22,
+    "iotova": 372
+   },
+   "total": 642
+  },
+  "kubrat": {
+   "shares": {
+    "gyurov": 20.03,
+    "kostadinov": 10.95,
+    "vasilev": 6.57,
+    "mihaylov": 4.81,
+    "iotova": 44.87,
+    "hristanov": 1.12
+   },
+   "runoff2026": {
+    "iotova": 69.14,
+    "gyurov": 30.86
+   },
+   "votes": {
+    "gyurov": 375,
+    "kostadinov": 205,
+    "vasilev": 123,
+    "mihaylov": 90,
+    "iotova": 840,
+    "hristanov": 21
+   },
+   "total": 1872
+  },
+  "kuklen": {
+   "shares": {
+    "gyurov": 35.51,
+    "kostadinov": 10.95,
+    "vasilev": 3.98,
+    "hristanov": 2.32,
+    "mihaylov": 4.09,
+    "iotova": 36.5
+   },
+   "runoff2026": {
+    "iotova": 50.69,
+    "gyurov": 49.31
+   },
+   "votes": {
+    "gyurov": 321,
+    "kostadinov": 99,
+    "vasilev": 36,
+    "hristanov": 21,
+    "mihaylov": 37,
+    "iotova": 330
+   },
+   "total": 904
+  },
+  "kula": {
+   "shares": {
+    "gyurov": 21.26,
+    "kostadinov": 11.35,
+    "vasilev": 6.32,
+    "hristanov": 1.72,
+    "iotova": 47.27,
+    "mihaylov": 1.72
+   },
+   "runoff2026": {
+    "iotova": 68.97,
+    "gyurov": 31.03
+   },
+   "votes": {
+    "gyurov": 148,
+    "kostadinov": 79,
+    "vasilev": 44,
+    "hristanov": 12,
+    "iotova": 329,
+    "mihaylov": 12
+   },
+   "total": 696
+  },
+  "kyustendil": {
+   "shares": {
+    "gyurov": 29.02,
+    "kostadinov": 14.43,
+    "vasilev": 4.69,
+    "mihaylov": 3.33,
+    "iotova": 40.75,
+    "hristanov": 2.64
+   },
+   "runoff2026": {
+    "iotova": 58.41,
+    "gyurov": 41.59
+   },
+   "votes": {
+    "gyurov": 2999,
+    "kostadinov": 1492,
+    "vasilev": 485,
+    "mihaylov": 344,
+    "iotova": 4212,
+    "hristanov": 273
+   },
+   "total": 10336
+  },
+  "laki": {
+   "shares": {
+    "gyurov": 19.95,
+    "kostadinov": 15.65,
+    "vasilev": 2.95,
+    "hristanov": 3.63,
+    "mihaylov": 4.31,
+    "iotova": 48.3
+   },
+   "runoff2026": {
+    "iotova": 70.76,
+    "gyurov": 29.24
+   },
+   "votes": {
+    "gyurov": 88,
+    "kostadinov": 69,
+    "vasilev": 13,
+    "hristanov": 16,
+    "mihaylov": 19,
+    "iotova": 213
+   },
+   "total": 441
+  },
+  "lesichovo": {
+   "shares": {
+    "gyurov": 14.99,
+    "kostadinov": 11.69,
+    "vasilev": 16.64,
+    "hristanov": 2.06,
+    "mihaylov": 2.75,
+    "iotova": 43.33
+   },
+   "runoff2026": {
+    "iotova": 74.29,
+    "gyurov": 25.71
+   },
+   "votes": {
+    "gyurov": 109,
+    "kostadinov": 85,
+    "vasilev": 121,
+    "hristanov": 15,
+    "mihaylov": 20,
+    "iotova": 315
+   },
+   "total": 727
+  },
+  "letnitsa": {
+   "shares": {
+    "gyurov": 10.93,
+    "kostadinov": 9.27,
+    "vasilev": 5.81,
+    "hristanov": 1.38,
+    "mihaylov": 18.53,
+    "iotova": 48.13
+   },
+   "runoff2026": {
+    "iotova": 81.5,
+    "gyurov": 18.5
+   },
+   "votes": {
+    "gyurov": 79,
+    "kostadinov": 67,
+    "vasilev": 42,
+    "hristanov": 10,
+    "mihaylov": 134,
+    "iotova": 348
+   },
+   "total": 723
+  },
+  "levski": {
+   "shares": {
+    "gyurov": 16.5,
+    "kostadinov": 15.71,
+    "vasilev": 7.19,
+    "hristanov": 2.44,
+    "mihaylov": 5.93,
+    "iotova": 46.43
+   },
+   "runoff2026": {
+    "iotova": 73.78,
+    "gyurov": 26.22
+   },
+   "votes": {
+    "gyurov": 420,
+    "kostadinov": 400,
+    "vasilev": 183,
+    "hristanov": 62,
+    "mihaylov": 151,
+    "iotova": 1182
+   },
+   "total": 2546
+  },
+  "lom": {
+   "shares": {
+    "gyurov": 19.54,
+    "kostadinov": 16.8,
+    "vasilev": 10.14,
+    "hristanov": 1.76,
+    "mihaylov": 3.52,
+    "iotova": 43.18
+   },
+   "runoff2026": {
+    "iotova": 68.85,
+    "gyurov": 31.15
+   },
+   "votes": {
+    "gyurov": 622,
+    "kostadinov": 535,
+    "vasilev": 323,
+    "hristanov": 56,
+    "mihaylov": 112,
+    "iotova": 1375
+   },
+   "total": 3184
+  },
+  "lovech": {
+   "shares": {
+    "gyurov": 26.74,
+    "kostadinov": 14.23,
+    "vasilev": 4.98,
+    "hristanov": 2.2,
+    "mihaylov": 4.98,
+    "iotova": 41.5
+   },
+   "runoff2026": {
+    "iotova": 60.81,
+    "gyurov": 39.19
+   },
+   "votes": {
+    "gyurov": 2235,
+    "kostadinov": 1189,
+    "vasilev": 416,
+    "hristanov": 184,
+    "mihaylov": 416,
+    "iotova": 3468
+   },
+   "total": 8357
+  },
+  "loznitsa": {
+   "shares": {
+    "gyurov": 31.76,
+    "kostadinov": 8.39,
+    "vasilev": 4.71,
+    "iotova": 39.77,
+    "mihaylov": 5.0,
+    "hristanov": 0.38
+   },
+   "runoff2026": {
+    "iotova": 55.6,
+    "gyurov": 44.4
+   },
+   "votes": {
+    "gyurov": 337,
+    "kostadinov": 89,
+    "vasilev": 50,
+    "iotova": 422,
+    "mihaylov": 53,
+    "hristanov": 4
+   },
+   "total": 1061
+  },
+  "lukovit": {
+   "shares": {
+    "gyurov": 18.77,
+    "kostadinov": 12.99,
+    "vasilev": 13.44,
+    "hristanov": 1.59,
+    "mihaylov": 4.37,
+    "iotova": 41.63
+   },
+   "runoff2026": {
+    "iotova": 68.92,
+    "gyurov": 31.08
+   },
+   "votes": {
+    "gyurov": 331,
+    "kostadinov": 229,
+    "vasilev": 237,
+    "hristanov": 28,
+    "mihaylov": 77,
+    "iotova": 734
+   },
+   "total": 1763
+  },
+  "lyaskovets": {
+   "shares": {
+    "gyurov": 22.85,
+    "kostadinov": 15.39,
+    "vasilev": 3.45,
+    "hristanov": 2.23,
+    "mihaylov": 7.66,
+    "iotova": 43.4
+   },
+   "runoff2026": {
+    "iotova": 65.51,
+    "gyurov": 34.49
+   },
+   "votes": {
+    "gyurov": 1191,
+    "kostadinov": 802,
+    "vasilev": 180,
+    "hristanov": 116,
+    "mihaylov": 399,
+    "iotova": 2262
+   },
+   "total": 5212
+  },
+  "lyubimets": {
+   "shares": {
+    "gyurov": 12.47,
+    "kostadinov": 11.91,
+    "vasilev": 5.6,
+    "hristanov": 2.0,
+    "mihaylov": 2.56,
+    "iotova": 59.71
+   },
+   "runoff2026": {
+    "iotova": 82.72,
+    "gyurov": 17.28
+   },
+   "votes": {
+    "gyurov": 156,
+    "kostadinov": 149,
+    "vasilev": 70,
+    "hristanov": 25,
+    "mihaylov": 32,
+    "iotova": 747
+   },
+   "total": 1251
+  },
+  "madan": {
+   "shares": {
+    "gyurov": 16.85,
+    "kostadinov": 12.36,
+    "vasilev": 6.6,
+    "hristanov": 2.49,
+    "mihaylov": 2.49,
+    "iotova": 52.55
+   },
+   "runoff2026": {
+    "iotova": 75.72,
+    "gyurov": 24.28
+   },
+   "votes": {
+    "gyurov": 304,
+    "kostadinov": 223,
+    "vasilev": 119,
+    "hristanov": 45,
+    "mihaylov": 45,
+    "iotova": 948
+   },
+   "total": 1804
+  },
+  "madzharovo": {
+   "shares": {
+    "gyurov": 24.92,
+    "kostadinov": 12.78,
+    "hristanov": 0.64,
+    "iotova": 51.44,
+    "vasilev": 0.96,
+    "mihaylov": 0.64
+   },
+   "runoff2026": {
+    "iotova": 67.36,
+    "gyurov": 32.64
+   },
+   "votes": {
+    "gyurov": 78,
+    "kostadinov": 40,
+    "hristanov": 2,
+    "iotova": 161,
+    "vasilev": 3,
+    "mihaylov": 2
+   },
+   "total": 313
+  },
+  "maglizh": {
+   "shares": {
+    "gyurov": 17.53,
+    "kostadinov": 9.99,
+    "vasilev": 19.82,
+    "hristanov": 0.82,
+    "mihaylov": 3.19,
+    "iotova": 41.52
+   },
+   "runoff2026": {
+    "iotova": 70.32,
+    "gyurov": 29.68
+   },
+   "votes": {
+    "gyurov": 214,
+    "kostadinov": 122,
+    "vasilev": 242,
+    "hristanov": 10,
+    "mihaylov": 39,
+    "iotova": 507
+   },
+   "total": 1221
+  },
+  "makresh": {
+   "shares": {
+    "gyurov": 19.79,
+    "kostadinov": 9.89,
+    "vasilev": 2.67,
+    "hristanov": 0.53,
+    "mihaylov": 2.14,
+    "iotova": 61.5
+   },
+   "runoff2026": {
+    "iotova": 75.66,
+    "gyurov": 24.34
+   },
+   "votes": {
+    "gyurov": 74,
+    "kostadinov": 37,
+    "vasilev": 10,
+    "hristanov": 2,
+    "mihaylov": 8,
+    "iotova": 230
+   },
+   "total": 374
+  },
+  "malko_tarnovo": {
+   "shares": {
+    "gyurov": 15.99,
+    "kostadinov": 16.84,
+    "vasilev": 4.08,
+    "hristanov": 1.02,
+    "mihaylov": 3.91,
+    "iotova": 53.23
+   },
+   "runoff2026": {
+    "iotova": 76.9,
+    "gyurov": 23.1
+   },
+   "votes": {
+    "gyurov": 94,
+    "kostadinov": 99,
+    "vasilev": 24,
+    "hristanov": 6,
+    "mihaylov": 23,
+    "iotova": 313
+   },
+   "total": 588
+  },
+  "maritsa": {
+   "shares": {
+    "gyurov": 22.83,
+    "kostadinov": 15.08,
+    "vasilev": 7.22,
+    "hristanov": 2.98,
+    "mihaylov": 4.46,
+    "iotova": 41.64
+   },
+   "runoff2026": {
+    "iotova": 64.58,
+    "gyurov": 35.42
+   },
+   "votes": {
+    "gyurov": 1151,
+    "kostadinov": 760,
+    "vasilev": 364,
+    "hristanov": 150,
+    "mihaylov": 225,
+    "iotova": 2099
+   },
+   "total": 5041
+  },
+  "medkovets": {
+   "shares": {
+    "gyurov": 12.02,
+    "kostadinov": 10.79,
+    "vasilev": 16.7,
+    "hristanov": 2.24,
+    "mihaylov": 4.07,
+    "iotova": 45.01
+   },
+   "runoff2026": {
+    "iotova": 78.93,
+    "gyurov": 21.07
+   },
+   "votes": {
+    "gyurov": 59,
+    "kostadinov": 53,
+    "vasilev": 82,
+    "hristanov": 11,
+    "mihaylov": 20,
+    "iotova": 221
+   },
+   "total": 491
+  },
+  "mezdra": {
+   "shares": {
+    "gyurov": 17.66,
+    "kostadinov": 13.89,
+    "vasilev": 9.74,
+    "hristanov": 3.34,
+    "mihaylov": 3.37,
+    "iotova": 46.63
+   },
+   "runoff2026": {
+    "iotova": 72.53,
+    "gyurov": 27.47
+   },
+   "votes": {
+    "gyurov": 655,
+    "kostadinov": 515,
+    "vasilev": 361,
+    "hristanov": 124,
+    "mihaylov": 125,
+    "iotova": 1729
+   },
+   "total": 3708
+  },
+  "mineralni_bani": {
+   "shares": {
+    "gyurov": 7.26,
+    "kostadinov": 5.91,
+    "vasilev": 2.77,
+    "hristanov": 1.2,
+    "mihaylov": 2.4,
+    "iotova": 73.13
+   },
+   "runoff2026": {
+    "iotova": 90.97,
+    "gyurov": 9.03
+   },
+   "votes": {
+    "gyurov": 97,
+    "kostadinov": 79,
+    "vasilev": 37,
+    "hristanov": 16,
+    "mihaylov": 32,
+    "iotova": 977
+   },
+   "total": 1336
+  },
+  "mirkovo": {
+   "shares": {
+    "gyurov": 30.88,
+    "kostadinov": 13.59,
+    "vasilev": 9.45,
+    "hristanov": 2.76,
+    "mihaylov": 2.3,
+    "iotova": 34.33
+   },
+   "runoff2026": {
+    "iotova": 52.65,
+    "gyurov": 47.35
+   },
+   "votes": {
+    "gyurov": 134,
+    "kostadinov": 59,
+    "vasilev": 41,
+    "hristanov": 12,
+    "mihaylov": 10,
+    "iotova": 149
+   },
+   "total": 434
+  },
+  "miziya": {
+   "shares": {
+    "gyurov": 16.52,
+    "vasilev": 13.68,
+    "iotova": 42.59,
+    "kostadinov": 13.68,
+    "hristanov": 1.38,
+    "mihaylov": 3.81
+   },
+   "runoff2026": {
+    "iotova": 72.05,
+    "gyurov": 27.95
+   },
+   "votes": {
+    "gyurov": 204,
+    "vasilev": 169,
+    "iotova": 526,
+    "kostadinov": 169,
+    "hristanov": 17,
+    "mihaylov": 47
+   },
+   "total": 1235
+  },
+  "momchilgrad": {
+   "shares": {
+    "gyurov": 25.65,
+    "kostadinov": 6.28,
+    "hristanov": 2.5,
+    "iotova": 47.78,
+    "vasilev": 2.22,
+    "mihaylov": 1.34
+   },
+   "runoff2026": {
+    "iotova": 65.07,
+    "gyurov": 34.93
+   },
+   "votes": {
+    "gyurov": 555,
+    "kostadinov": 136,
+    "hristanov": 54,
+    "iotova": 1034,
+    "vasilev": 48,
+    "mihaylov": 29
+   },
+   "total": 2164
+  },
+  "montana": {
+   "shares": {
+    "gyurov": 21.34,
+    "kostadinov": 16.43,
+    "vasilev": 8.38,
+    "hristanov": 3.01,
+    "mihaylov": 3.05,
+    "iotova": 42.34
+   },
+   "runoff2026": {
+    "iotova": 66.48,
+    "gyurov": 33.52
+   },
+   "votes": {
+    "gyurov": 2009,
+    "kostadinov": 1547,
+    "vasilev": 789,
+    "hristanov": 283,
+    "mihaylov": 287,
+    "iotova": 3985
+   },
+   "total": 9413
+  },
+  "nedelino": {
+   "shares": {
+    "gyurov": 14.01,
+    "kostadinov": 9.91,
+    "vasilev": 2.0,
+    "hristanov": 0.2,
+    "mihaylov": 1.2,
+    "iotova": 67.57
+   },
+   "runoff2026": {
+    "iotova": 82.82,
+    "gyurov": 17.18
+   },
+   "votes": {
+    "gyurov": 140,
+    "kostadinov": 99,
+    "vasilev": 20,
+    "hristanov": 2,
+    "mihaylov": 12,
+    "iotova": 675
+   },
+   "total": 999
+  },
+  "nesebar": {
+   "shares": {
+    "gyurov": 23.45,
+    "kostadinov": 16.01,
+    "vasilev": 5.33,
+    "hristanov": 3.0,
+    "mihaylov": 4.44,
+    "iotova": 42.44
+   },
+   "runoff2026": {
+    "iotova": 64.41,
+    "gyurov": 35.59
+   },
+   "votes": {
+    "gyurov": 977,
+    "kostadinov": 667,
+    "vasilev": 222,
+    "hristanov": 125,
+    "mihaylov": 185,
+    "iotova": 1768
+   },
+   "total": 4166
+  },
+  "nevestino": {
+   "shares": {
+    "gyurov": 16.67,
+    "kostadinov": 18.01,
+    "vasilev": 3.26,
+    "iotova": 52.87,
+    "hristanov": 1.53,
+    "mihaylov": 1.53
+   },
+   "runoff2026": {
+    "iotova": 76.03,
+    "gyurov": 23.97
+   },
+   "votes": {
+    "gyurov": 87,
+    "kostadinov": 94,
+    "vasilev": 17,
+    "iotova": 276,
+    "hristanov": 8,
+    "mihaylov": 8
+   },
+   "total": 522
+  },
+  "nikola_kozlevo": {
+   "shares": {
+    "gyurov": 13.57,
+    "kostadinov": 7.99,
+    "vasilev": 12.27,
+    "iotova": 49.26,
+    "mihaylov": 3.9,
+    "hristanov": 0.37
+   },
+   "runoff2026": {
+    "iotova": 78.4,
+    "gyurov": 21.6
+   },
+   "votes": {
+    "gyurov": 73,
+    "kostadinov": 43,
+    "vasilev": 66,
+    "iotova": 265,
+    "mihaylov": 21,
+    "hristanov": 2
+   },
+   "total": 538
+  },
+  "nikolaevo": {
+   "shares": {
+    "gyurov": 15.54,
+    "kostadinov": 9.01,
+    "vasilev": 6.08,
+    "hristanov": 1.35,
+    "mihaylov": 2.7,
+    "iotova": 55.86
+   },
+   "runoff2026": {
+    "iotova": 78.23,
+    "gyurov": 21.77
+   },
+   "votes": {
+    "gyurov": 69,
+    "kostadinov": 40,
+    "vasilev": 27,
+    "hristanov": 6,
+    "mihaylov": 12,
+    "iotova": 248
+   },
+   "total": 444
+  },
+  "nikopol": {
+   "shares": {
+    "gyurov": 14.17,
+    "kostadinov": 11.72,
+    "vasilev": 5.4,
+    "hristanov": 3.16,
+    "iotova": 55.35,
+    "mihaylov": 5.2
+   },
+   "runoff2026": {
+    "iotova": 79.62,
+    "gyurov": 20.38
+   },
+   "votes": {
+    "gyurov": 139,
+    "kostadinov": 115,
+    "vasilev": 53,
+    "hristanov": 31,
+    "iotova": 543,
+    "mihaylov": 51
+   },
+   "total": 981
+  },
+  "nova_zagora": {
+   "shares": {
+    "gyurov": 19.06,
+    "kostadinov": 15.81,
+    "vasilev": 6.59,
+    "mihaylov": 5.36,
+    "iotova": 43.65,
+    "hristanov": 1.93
+   },
+   "runoff2026": {
+    "iotova": 69.6,
+    "gyurov": 30.4
+   },
+   "votes": {
+    "gyurov": 839,
+    "kostadinov": 696,
+    "vasilev": 290,
+    "mihaylov": 236,
+    "iotova": 1921,
+    "hristanov": 85
+   },
+   "total": 4401
+  },
+  "novi_pazar": {
+   "shares": {
+    "gyurov": 15.9,
+    "kostadinov": 12.92,
+    "vasilev": 6.2,
+    "hristanov": 2.07,
+    "mihaylov": 6.6,
+    "iotova": 50.6
+   },
+   "runoff2026": {
+    "iotova": 76.09,
+    "gyurov": 23.91
+   },
+   "votes": {
+    "gyurov": 400,
+    "kostadinov": 325,
+    "vasilev": 156,
+    "hristanov": 52,
+    "mihaylov": 166,
+    "iotova": 1273
+   },
+   "total": 2516
+  },
+  "novo_selo": {
+   "shares": {
+    "gyurov": 18.52,
+    "kostadinov": 9.58,
+    "vasilev": 6.75,
+    "hristanov": 1.73,
+    "mihaylov": 2.51,
+    "iotova": 37.83
+   },
+   "runoff2026": {
+    "iotova": 67.13,
+    "gyurov": 32.87
+   },
+   "votes": {
+    "gyurov": 118,
+    "kostadinov": 61,
+    "vasilev": 43,
+    "hristanov": 11,
+    "mihaylov": 16,
+    "iotova": 241
+   },
+   "total": 637
+  },
+  "omurtag": {
+   "shares": {
+    "gyurov": 15.25,
+    "kostadinov": 4.71,
+    "mihaylov": 5.95,
+    "iotova": 58.29,
+    "vasilev": 4.29,
+    "hristanov": 1.3
+   },
+   "runoff2026": {
+    "iotova": 79.27,
+    "gyurov": 20.73
+   },
+   "votes": {
+    "gyurov": 515,
+    "kostadinov": 159,
+    "mihaylov": 201,
+    "iotova": 1969,
+    "vasilev": 145,
+    "hristanov": 44
+   },
+   "total": 3378
+  },
+  "opaka": {
+   "shares": {
+    "gyurov": 18.31,
+    "kostadinov": 6.87,
+    "vasilev": 4.29,
+    "hristanov": 0.43,
+    "mihaylov": 6.15,
+    "iotova": 51.07
+   },
+   "runoff2026": {
+    "iotova": 73.61,
+    "gyurov": 26.39
+   },
+   "votes": {
+    "gyurov": 128,
+    "kostadinov": 48,
+    "vasilev": 30,
+    "hristanov": 3,
+    "mihaylov": 43,
+    "iotova": 357
+   },
+   "total": 699
+  },
+  "opan": {
+   "shares": {
+    "gyurov": 12.28,
+    "kostadinov": 15.49,
+    "vasilev": 7.88,
+    "mihaylov": 3.87,
+    "iotova": 49.53,
+    "hristanov": 0.93
+   },
+   "runoff2026": {
+    "iotova": 80.13,
+    "gyurov": 19.87
+   },
+   "votes": {
+    "gyurov": 92,
+    "kostadinov": 116,
+    "vasilev": 59,
+    "mihaylov": 29,
+    "iotova": 371,
+    "hristanov": 7
+   },
+   "total": 749
+  },
+  "oryahovo": {
+   "shares": {
+    "gyurov": 15.34,
+    "kostadinov": 14.34,
+    "vasilev": 11.72,
+    "hristanov": 1.46,
+    "mihaylov": 3.32,
+    "iotova": 48.73
+   },
+   "runoff2026": {
+    "iotova": 76.05,
+    "gyurov": 23.95
+   },
+   "votes": {
+    "gyurov": 199,
+    "kostadinov": 186,
+    "vasilev": 152,
+    "hristanov": 19,
+    "mihaylov": 43,
+    "iotova": 632
+   },
+   "total": 1297
+  },
+  "panagyurishte": {
+   "shares": {
+    "gyurov": 23.62,
+    "kostadinov": 15.33,
+    "vasilev": 6.83,
+    "hristanov": 1.97,
+    "mihaylov": 4.29,
+    "iotova": 43.48
+   },
+   "runoff2026": {
+    "iotova": 64.8,
+    "gyurov": 35.2
+   },
+   "votes": {
+    "gyurov": 937,
+    "kostadinov": 608,
+    "vasilev": 271,
+    "hristanov": 78,
+    "mihaylov": 170,
+    "iotova": 1725
+   },
+   "total": 3967
+  },
+  "parvomay": {
+   "shares": {
+    "gyurov": 19.48,
+    "kostadinov": 14.61,
+    "vasilev": 9.75,
+    "hristanov": 1.86,
+    "mihaylov": 4.59,
+    "iotova": 43.49
+   },
+   "runoff2026": {
+    "iotova": 69.07,
+    "gyurov": 30.93
+   },
+   "votes": {
+    "gyurov": 721,
+    "kostadinov": 541,
+    "vasilev": 361,
+    "hristanov": 69,
+    "mihaylov": 170,
+    "iotova": 1610
+   },
+   "total": 3702
+  },
+  "pavel_banya": {
+   "shares": {
+    "gyurov": 16.77,
+    "kostadinov": 13.86,
+    "vasilev": 9.06,
+    "iotova": 45.26,
+    "hristanov": 1.78,
+    "mihaylov": 6.4
+   },
+   "runoff2026": {
+    "iotova": 72.97,
+    "gyurov": 27.03
+   },
+   "votes": {
+    "gyurov": 283,
+    "kostadinov": 234,
+    "vasilev": 153,
+    "iotova": 764,
+    "hristanov": 30,
+    "mihaylov": 108
+   },
+   "total": 1688
+  },
+  "pavlikeni": {
+   "shares": {
+    "gyurov": 17.44,
+    "kostadinov": 16.49,
+    "vasilev": 7.02,
+    "hristanov": 2.26,
+    "mihaylov": 5.59,
+    "iotova": 44.85
+   },
+   "runoff2026": {
+    "iotova": 72.01,
+    "gyurov": 27.99
+   },
+   "votes": {
+    "gyurov": 571,
+    "kostadinov": 540,
+    "vasilev": 230,
+    "hristanov": 74,
+    "mihaylov": 183,
+    "iotova": 1469
+   },
+   "total": 3275
+  },
+  "pazardzhik": {
+   "shares": {
+    "gyurov": 27.84,
+    "kostadinov": 14.59,
+    "vasilev": 7.32,
+    "hristanov": 2.16,
+    "mihaylov": 3.39,
+    "iotova": 39.05
+   },
+   "runoff2026": {
+    "iotova": 58.38,
+    "gyurov": 41.62
+   },
+   "votes": {
+    "gyurov": 5101,
+    "kostadinov": 2674,
+    "vasilev": 1341,
+    "hristanov": 395,
+    "mihaylov": 621,
+    "iotova": 7155
+   },
+   "total": 18323
+  },
+  "pernik": {
+   "shares": {
+    "gyurov": 31.15,
+    "kostadinov": 16.26,
+    "vasilev": 5.78,
+    "hristanov": 2.63,
+    "mihaylov": 3.35,
+    "iotova": 35.72
+   },
+   "runoff2026": {
+    "iotova": 53.42,
+    "gyurov": 46.58
+   },
+   "votes": {
+    "gyurov": 4945,
+    "kostadinov": 2581,
+    "vasilev": 917,
+    "hristanov": 418,
+    "mihaylov": 532,
+    "iotova": 5671
+   },
+   "total": 15876
+  },
+  "perushtitsa": {
+   "shares": {
+    "gyurov": 23.01,
+    "vasilev": 6.47,
+    "hristanov": 2.33,
+    "mihaylov": 4.77,
+    "iotova": 45.92,
+    "kostadinov": 9.97
+   },
+   "runoff2026": {
+    "iotova": 66.62,
+    "gyurov": 33.38
+   },
+   "votes": {
+    "gyurov": 217,
+    "vasilev": 61,
+    "hristanov": 22,
+    "mihaylov": 45,
+    "iotova": 433,
+    "kostadinov": 94
+   },
+   "total": 943
+  },
+  "peshtera": {
+   "shares": {
+    "kostadinov": 10.3,
+    "vasilev": 8.27,
+    "mihaylov": 3.86,
+    "iotova": 49.0,
+    "gyurov": 21.0,
+    "hristanov": 1.51
+   },
+   "runoff2026": {
+    "iotova": 70.01,
+    "gyurov": 29.99
+   },
+   "votes": {
+    "kostadinov": 294,
+    "vasilev": 236,
+    "mihaylov": 110,
+    "iotova": 1398,
+    "gyurov": 599,
+    "hristanov": 43
+   },
+   "total": 2853
+  },
+  "petrich": {
+   "shares": {
+    "gyurov": 26.87,
+    "kostadinov": 12.9,
+    "vasilev": 6.49,
+    "mihaylov": 4.11,
+    "iotova": 42.74,
+    "hristanov": 1.7
+   },
+   "runoff2026": {
+    "iotova": 61.4,
+    "gyurov": 38.6
+   },
+   "votes": {
+    "gyurov": 2091,
+    "kostadinov": 1004,
+    "vasilev": 505,
+    "mihaylov": 320,
+    "iotova": 3326,
+    "hristanov": 132
+   },
+   "total": 7782
+  },
+  "pirdop": {
+   "shares": {
+    "gyurov": 26.99,
+    "kostadinov": 16.46,
+    "vasilev": 8.17,
+    "hristanov": 1.98,
+    "mihaylov": 2.23,
+    "iotova": 40.01
+   },
+   "runoff2026": {
+    "iotova": 59.71,
+    "gyurov": 40.29
+   },
+   "votes": {
+    "gyurov": 423,
+    "kostadinov": 258,
+    "vasilev": 128,
+    "hristanov": 31,
+    "mihaylov": 35,
+    "iotova": 627
+   },
+   "total": 1567
+  },
+  "pleven": {
+   "shares": {
+    "gyurov": 26.62,
+    "kostadinov": 14.3,
+    "vasilev": 5.99,
+    "hristanov": 4.32,
+    "mihaylov": 4.18,
+    "iotova": 40.6
+   },
+   "runoff2026": {
+    "iotova": 60.4,
+    "gyurov": 39.6
+   },
+   "votes": {
+    "gyurov": 6610,
+    "kostadinov": 3550,
+    "vasilev": 1488,
+    "hristanov": 1073,
+    "mihaylov": 1039,
+    "iotova": 10082
+   },
+   "total": 24833
+  },
+  "plovdiv": {
+   "shares": {
+    "gyurov": 41.1,
+    "kostadinov": 12.45,
+    "vasilev": 4.14,
+    "hristanov": 3.15,
+    "mihaylov": 3.17,
+    "iotova": 31.38
+   },
+   "runoff2026": {
+    "iotova": 43.3,
+    "gyurov": 56.7
+   },
+   "votes": {
+    "gyurov": 25958,
+    "kostadinov": 7863,
+    "vasilev": 2614,
+    "hristanov": 1989,
+    "mihaylov": 2000,
+    "iotova": 19821
+   },
+   "total": 63164
+  },
+  "polski_trambesh": {
+   "shares": {
+    "gyurov": 13.04,
+    "kostadinov": 15.4,
+    "vasilev": 6.96,
+    "mihaylov": 8.49,
+    "iotova": 49.21,
+    "hristanov": 1.59
+   },
+   "runoff2026": {
+    "iotova": 79.05,
+    "gyurov": 20.95
+   },
+   "votes": {
+    "gyurov": 238,
+    "kostadinov": 281,
+    "vasilev": 127,
+    "mihaylov": 155,
+    "iotova": 898,
+    "hristanov": 29
+   },
+   "total": 1825
+  },
+  "pomorie": {
+   "shares": {
+    "gyurov": 19.44,
+    "kostadinov": 12.87,
+    "hristanov": 2.64,
+    "mihaylov": 4.98,
+    "iotova": 44.91,
+    "vasilev": 8.42
+   },
+   "runoff2026": {
+    "iotova": 69.79,
+    "gyurov": 30.21
+   },
+   "votes": {
+    "gyurov": 441,
+    "kostadinov": 292,
+    "hristanov": 60,
+    "mihaylov": 113,
+    "iotova": 1019,
+    "vasilev": 191
+   },
+   "total": 2269
+  },
+  "popovo": {
+   "shares": {
+    "gyurov": 20.95,
+    "kostadinov": 14.56,
+    "vasilev": 4.84,
+    "hristanov": 1.23,
+    "mihaylov": 4.79,
+    "iotova": 47.04
+   },
+   "runoff2026": {
+    "iotova": 69.18,
+    "gyurov": 30.82
+   },
+   "votes": {
+    "gyurov": 718,
+    "kostadinov": 499,
+    "vasilev": 166,
+    "hristanov": 42,
+    "mihaylov": 164,
+    "iotova": 1612
+   },
+   "total": 3427
+  },
+  "pordim": {
+   "shares": {
+    "gyurov": 12.86,
+    "kostadinov": 13.97,
+    "vasilev": 11.59,
+    "hristanov": 2.22,
+    "iotova": 47.14,
+    "mihaylov": 5.4
+   },
+   "runoff2026": {
+    "iotova": 78.57,
+    "gyurov": 21.43
+   },
+   "votes": {
+    "gyurov": 81,
+    "kostadinov": 88,
+    "vasilev": 73,
+    "hristanov": 14,
+    "iotova": 297,
+    "mihaylov": 34
+   },
+   "total": 630
+  },
+  "pravets": {
+   "shares": {
+    "gyurov": 21.28,
+    "kostadinov": 10.64,
+    "vasilev": 9.07,
+    "hristanov": 2.09,
+    "mihaylov": 2.62,
+    "iotova": 43.26
+   },
+   "runoff2026": {
+    "iotova": 67.03,
+    "gyurov": 32.97
+   },
+   "votes": {
+    "gyurov": 366,
+    "kostadinov": 183,
+    "vasilev": 156,
+    "hristanov": 36,
+    "mihaylov": 45,
+    "iotova": 744
+   },
+   "total": 1720
+  },
+  "primorsko": {
+   "shares": {
+    "gyurov": 22.23,
+    "kostadinov": 12.39,
+    "vasilev": 5.18,
+    "hristanov": 3.05,
+    "mihaylov": 4.37,
+    "iotova": 46.29
+   },
+   "runoff2026": {
+    "iotova": 67.56,
+    "gyurov": 32.44
+   },
+   "votes": {
+    "gyurov": 219,
+    "kostadinov": 122,
+    "vasilev": 51,
+    "hristanov": 30,
+    "mihaylov": 43,
+    "iotova": 456
+   },
+   "total": 985
+  },
+  "provadiya": {
+   "shares": {
+    "gyurov": 16.94,
+    "kostadinov": 18.05,
+    "vasilev": 7.32,
+    "mihaylov": 8.81,
+    "iotova": 40.89,
+    "hristanov": 1.1
+   },
+   "runoff2026": {
+    "iotova": 70.7,
+    "gyurov": 29.3
+   },
+   "votes": {
+    "gyurov": 477,
+    "kostadinov": 508,
+    "vasilev": 206,
+    "mihaylov": 248,
+    "iotova": 1151,
+    "hristanov": 31
+   },
+   "total": 2815
+  },
+  "radnevo": {
+   "shares": {
+    "gyurov": 15.3,
+    "kostadinov": 16.72,
+    "vasilev": 9.17,
+    "hristanov": 2.24,
+    "mihaylov": 4.91,
+    "iotova": 44.21
+   },
+   "runoff2026": {
+    "iotova": 74.29,
+    "gyurov": 25.71
+   },
+   "votes": {
+    "gyurov": 464,
+    "kostadinov": 507,
+    "vasilev": 278,
+    "hristanov": 68,
+    "mihaylov": 149,
+    "iotova": 1341
+   },
+   "total": 3033
+  },
+  "radomir": {
+   "shares": {
+    "gyurov": 25.27,
+    "kostadinov": 15.24,
+    "vasilev": 5.76,
+    "hristanov": 2.18,
+    "mihaylov": 3.43,
+    "iotova": 41.17
+   },
+   "runoff2026": {
+    "iotova": 61.97,
+    "gyurov": 38.03
+   },
+   "votes": {
+    "gyurov": 847,
+    "kostadinov": 511,
+    "vasilev": 193,
+    "hristanov": 73,
+    "mihaylov": 115,
+    "iotova": 1380
+   },
+   "total": 3352
+  },
+  "rakitovo": {
+   "shares": {
+    "gyurov": 23.77,
+    "kostadinov": 13.07,
+    "vasilev": 10.27,
+    "hristanov": 1.61,
+    "mihaylov": 4.58,
+    "iotova": 38.29
+   },
+   "runoff2026": {
+    "iotova": 61.7,
+    "gyurov": 38.3
+   },
+   "votes": {
+    "gyurov": 280,
+    "kostadinov": 154,
+    "vasilev": 121,
+    "hristanov": 19,
+    "mihaylov": 54,
+    "iotova": 451
+   },
+   "total": 1178
+  },
+  "rakovski": {
+   "shares": {
+    "gyurov": 22.48,
+    "kostadinov": 13.63,
+    "vasilev": 9.42,
+    "hristanov": 2.61,
+    "mihaylov": 4.41,
+    "iotova": 41.75
+   },
+   "runoff2026": {
+    "iotova": 65.0,
+    "gyurov": 35.0
+   },
+   "votes": {
+    "gyurov": 673,
+    "kostadinov": 408,
+    "vasilev": 282,
+    "hristanov": 78,
+    "mihaylov": 132,
+    "iotova": 1250
+   },
+   "total": 2994
+  },
+  "razgrad": {
+   "shares": {
+    "gyurov": 17.81,
+    "kostadinov": 10.96,
+    "mihaylov": 5.48,
+    "iotova": 53.42,
+    "vasilev": 1.37,
+    "hristanov": 1.37
+   },
+   "runoff2026": {
+    "iotova": 75.0,
+    "gyurov": 25.0
+   },
+   "votes": {
+    "gyurov": 13,
+    "kostadinov": 8,
+    "mihaylov": 4,
+    "iotova": 39,
+    "vasilev": 1,
+    "hristanov": 1
+   },
+   "total": 73
+  },
+  "razlog": {
+   "shares": {
+    "gyurov": 31.33,
+    "kostadinov": 10.66,
+    "vasilev": 5.56,
+    "hristanov": 2.22,
+    "mihaylov": 2.95,
+    "iotova": 41.3
+   },
+   "runoff2026": {
+    "iotova": 56.86,
+    "gyurov": 43.14
+   },
+   "votes": {
+    "gyurov": 1370,
+    "kostadinov": 466,
+    "vasilev": 243,
+    "hristanov": 97,
+    "mihaylov": 129,
+    "iotova": 1806
+   },
+   "total": 4373
+  },
+  "rila": {
+   "shares": {
+    "gyurov": 22.93,
+    "kostadinov": 10.26,
+    "vasilev": 4.8,
+    "hristanov": 3.49,
+    "mihaylov": 4.15,
+    "iotova": 48.69
+   },
+   "runoff2026": {
+    "iotova": 67.99,
+    "gyurov": 32.01
+   },
+   "votes": {
+    "gyurov": 105,
+    "kostadinov": 47,
+    "vasilev": 22,
+    "hristanov": 16,
+    "mihaylov": 19,
+    "iotova": 223
+   },
+   "total": 458
+  },
+  "rodopi": {
+   "shares": {
+    "gyurov": 32.16,
+    "kostadinov": 13.6,
+    "vasilev": 4.57,
+    "hristanov": 3.09,
+    "mihaylov": 4.19,
+    "iotova": 37.48
+   },
+   "runoff2026": {
+    "iotova": 53.82,
+    "gyurov": 46.18
+   },
+   "votes": {
+    "gyurov": 6174,
+    "kostadinov": 2611,
+    "vasilev": 877,
+    "hristanov": 593,
+    "mihaylov": 804,
+    "iotova": 7195
+   },
+   "total": 19199
+  },
+  "roman": {
+   "shares": {
+    "gyurov": 11.9,
+    "kostadinov": 12.54,
+    "vasilev": 15.52,
+    "mihaylov": 2.34,
+    "iotova": 46.55,
+    "hristanov": 1.28
+   },
+   "runoff2026": {
+    "iotova": 79.64,
+    "gyurov": 20.36
+   },
+   "votes": {
+    "gyurov": 112,
+    "kostadinov": 118,
+    "vasilev": 146,
+    "mihaylov": 22,
+    "iotova": 438,
+    "hristanov": 12
+   },
+   "total": 941
+  },
+  "rudozem": {
+   "shares": {
+    "gyurov": 22.54,
+    "kostadinov": 9.0,
+    "vasilev": 5.19,
+    "hristanov": 2.96,
+    "mihaylov": 2.56,
+    "iotova": 43.23
+   },
+   "runoff2026": {
+    "iotova": 65.73,
+    "gyurov": 34.27
+   },
+   "votes": {
+    "gyurov": 343,
+    "kostadinov": 137,
+    "vasilev": 79,
+    "hristanov": 45,
+    "mihaylov": 39,
+    "iotova": 658
+   },
+   "total": 1522
+  },
+  "ruen": {
+   "shares": {
+    "gyurov": 18.06,
+    "kostadinov": 3.26,
+    "vasilev": 6.49,
+    "iotova": 51.34,
+    "hristanov": 1.01,
+    "mihaylov": 2.52
+   },
+   "runoff2026": {
+    "iotova": 73.98,
+    "gyurov": 26.02
+   },
+   "votes": {
+    "gyurov": 682,
+    "kostadinov": 123,
+    "vasilev": 245,
+    "iotova": 1939,
+    "hristanov": 38,
+    "mihaylov": 95
+   },
+   "total": 3777
+  },
+  "ruse": {
+   "shares": {
+    "gyurov": 29.58,
+    "kostadinov": 14.85,
+    "vasilev": 4.33,
+    "hristanov": 2.58,
+    "mihaylov": 5.82,
+    "iotova": 38.4
+   },
+   "runoff2026": {
+    "iotova": 56.49,
+    "gyurov": 43.51
+   },
+   "votes": {
+    "gyurov": 9022,
+    "kostadinov": 4529,
+    "vasilev": 1320,
+    "hristanov": 787,
+    "mihaylov": 1774,
+    "iotova": 11712
+   },
+   "total": 30503
+  },
+  "ruzhinsi": {
+   "shares": {
+    "gyurov": 11.78,
+    "kostadinov": 9.14,
+    "vasilev": 7.91,
+    "hristanov": 1.58,
+    "mihaylov": 2.46,
+    "iotova": 40.95
+   },
+   "runoff2026": {
+    "iotova": 77.67,
+    "gyurov": 22.33
+   },
+   "votes": {
+    "gyurov": 67,
+    "kostadinov": 52,
+    "vasilev": 45,
+    "hristanov": 9,
+    "mihaylov": 14,
+    "iotova": 233
+   },
+   "total": 569
+  },
+  "sadovo": {
+   "shares": {
+    "gyurov": 15.84,
+    "kostadinov": 11.37,
+    "vasilev": 9.0,
+    "hristanov": 1.79,
+    "mihaylov": 4.0,
+    "iotova": 51.05
+   },
+   "runoff2026": {
+    "iotova": 76.32,
+    "gyurov": 23.68
+   },
+   "votes": {
+    "gyurov": 301,
+    "kostadinov": 216,
+    "vasilev": 171,
+    "hristanov": 34,
+    "mihaylov": 76,
+    "iotova": 970
+   },
+   "total": 1900
+  },
+  "saedinenie": {
+   "shares": {
+    "gyurov": 19.36,
+    "kostadinov": 12.74,
+    "vasilev": 10.28,
+    "mihaylov": 4.51,
+    "iotova": 44.15,
+    "hristanov": 2.34
+   },
+   "runoff2026": {
+    "iotova": 69.51,
+    "gyurov": 30.49
+   },
+   "votes": {
+    "gyurov": 339,
+    "kostadinov": 223,
+    "vasilev": 180,
+    "mihaylov": 79,
+    "iotova": 773,
+    "hristanov": 41
+   },
+   "total": 1751
+  },
+  "samokov": {
+   "shares": {
+    "gyurov": 30.81,
+    "kostadinov": 13.2,
+    "hristanov": 2.29,
+    "mihaylov": 2.49,
+    "iotova": 40.38,
+    "vasilev": 5.6
+   },
+   "runoff2026": {
+    "iotova": 56.72,
+    "gyurov": 43.28
+   },
+   "votes": {
+    "gyurov": 1683,
+    "kostadinov": 721,
+    "hristanov": 125,
+    "mihaylov": 136,
+    "iotova": 2206,
+    "vasilev": 306
+   },
+   "total": 5463
+  },
+  "samuil": {
+   "shares": {
+    "gyurov": 8.38,
+    "kostadinov": 2.14,
+    "vasilev": 2.92,
+    "mihaylov": 0.83,
+    "iotova": 80.95,
+    "hristanov": 0.34
+   },
+   "runoff2026": {
+    "iotova": 90.62,
+    "gyurov": 9.38
+   },
+   "votes": {
+    "gyurov": 172,
+    "kostadinov": 44,
+    "vasilev": 60,
+    "mihaylov": 17,
+    "iotova": 1662,
+    "hristanov": 7
+   },
+   "total": 2053
+  },
+  "sandanski": {
+   "shares": {
+    "gyurov": 30.83,
+    "kostadinov": 12.64,
+    "vasilev": 4.18,
+    "hristanov": 2.18,
+    "mihaylov": 4.44,
+    "iotova": 40.79
+   },
+   "runoff2026": {
+    "iotova": 56.95,
+    "gyurov": 43.05
+   },
+   "votes": {
+    "gyurov": 2134,
+    "kostadinov": 875,
+    "vasilev": 289,
+    "hristanov": 151,
+    "mihaylov": 307,
+    "iotova": 2823
+   },
+   "total": 6921
+  },
+  "sapareva_banya": {
+   "shares": {
+    "gyurov": 18.82,
+    "kostadinov": 15.44,
+    "vasilev": 5.49,
+    "hristanov": 2.36,
+    "mihaylov": 4.56,
+    "iotova": 45.15
+   },
+   "runoff2026": {
+    "iotova": 70.58,
+    "gyurov": 29.42
+   },
+   "votes": {
+    "gyurov": 223,
+    "kostadinov": 183,
+    "vasilev": 65,
+    "hristanov": 28,
+    "mihaylov": 54,
+    "iotova": 535
+   },
+   "total": 1185
+  },
+  "satovcha": {
+   "shares": {
+    "gyurov": 27.64,
+    "kostadinov": 5.88,
+    "vasilev": 2.59,
+    "mihaylov": 2.26,
+    "iotova": 57.45,
+    "hristanov": 0.61
+   },
+   "runoff2026": {
+    "iotova": 67.51,
+    "gyurov": 32.49
+   },
+   "votes": {
+    "gyurov": 588,
+    "kostadinov": 125,
+    "vasilev": 55,
+    "mihaylov": 48,
+    "iotova": 1222,
+    "hristanov": 13
+   },
+   "total": 2127
+  },
+  "septemvri": {
+   "shares": {
+    "gyurov": 21.69,
+    "kostadinov": 16.04,
+    "vasilev": 13.59,
+    "mihaylov": 4.65,
+    "iotova": 35.99,
+    "hristanov": 1.19
+   },
+   "runoff2026": {
+    "iotova": 62.4,
+    "gyurov": 37.6
+   },
+   "votes": {
+    "gyurov": 672,
+    "kostadinov": 497,
+    "vasilev": 421,
+    "mihaylov": 144,
+    "iotova": 1115,
+    "hristanov": 37
+   },
+   "total": 3098
+  },
+  "sevlievo": {
+   "shares": {
+    "gyurov": 23.21,
+    "kostadinov": 15.34,
+    "vasilev": 6.88,
+    "hristanov": 2.78,
+    "mihaylov": 6.14,
+    "iotova": 40.08
+   },
+   "runoff2026": {
+    "iotova": 63.33,
+    "gyurov": 36.67
+   },
+   "votes": {
+    "gyurov": 1319,
+    "kostadinov": 872,
+    "vasilev": 391,
+    "hristanov": 158,
+    "mihaylov": 349,
+    "iotova": 2278
+   },
+   "total": 5683
+  },
+  "shabla": {
+   "shares": {
+    "gyurov": 19.72,
+    "kostadinov": 19.37,
+    "vasilev": 3.25,
+    "hristanov": 2.2,
+    "mihaylov": 3.13,
+    "iotova": 47.45
+   },
+   "runoff2026": {
+    "iotova": 70.64,
+    "gyurov": 29.36
+   },
+   "votes": {
+    "gyurov": 170,
+    "kostadinov": 167,
+    "vasilev": 28,
+    "hristanov": 19,
+    "mihaylov": 27,
+    "iotova": 409
+   },
+   "total": 862
+  },
+  "shumen": {
+   "shares": {
+    "gyurov": 25.76,
+    "kostadinov": 14.78,
+    "vasilev": 4.11,
+    "hristanov": 2.43,
+    "mihaylov": 5.53,
+    "iotova": 41.42
+   },
+   "runoff2026": {
+    "iotova": 61.66,
+    "gyurov": 38.34
+   },
+   "votes": {
+    "gyurov": 4201,
+    "kostadinov": 2410,
+    "vasilev": 670,
+    "hristanov": 397,
+    "mihaylov": 902,
+    "iotova": 6755
+   },
+   "total": 16308
+  },
+  "silistra": {
+   "shares": {
+    "gyurov": 20.06,
+    "kostadinov": 14.47,
+    "vasilev": 3.6,
+    "hristanov": 2.53,
+    "mihaylov": 6.92,
+    "iotova": 46.47
+   },
+   "runoff2026": {
+    "iotova": 69.85,
+    "gyurov": 30.15
+   },
+   "votes": {
+    "gyurov": 1984,
+    "kostadinov": 1431,
+    "vasilev": 356,
+    "hristanov": 250,
+    "mihaylov": 685,
+    "iotova": 4597
+   },
+   "total": 9892
+  },
+  "simeonovgrad": {
+   "shares": {
+    "gyurov": 10.23,
+    "kostadinov": 16.11,
+    "vasilev": 9.21,
+    "hristanov": 1.41,
+    "mihaylov": 2.3,
+    "iotova": 51.53
+   },
+   "runoff2026": {
+    "iotova": 83.44,
+    "gyurov": 16.56
+   },
+   "votes": {
+    "gyurov": 80,
+    "kostadinov": 126,
+    "vasilev": 72,
+    "hristanov": 11,
+    "mihaylov": 18,
+    "iotova": 403
+   },
+   "total": 782
+  },
+  "simitli": {
+   "shares": {
+    "gyurov": 12.84,
+    "kostadinov": 5.85,
+    "vasilev": 4.89,
+    "hristanov": 0.85,
+    "mihaylov": 3.22,
+    "iotova": 68.23
+   },
+   "runoff2026": {
+    "iotova": 84.17,
+    "gyurov": 15.83
+   },
+   "votes": {
+    "gyurov": 606,
+    "kostadinov": 276,
+    "vasilev": 231,
+    "hristanov": 40,
+    "mihaylov": 152,
+    "iotova": 3221
+   },
+   "total": 4721
+  },
+  "sitovo": {
+   "shares": {
+    "gyurov": 14.46,
+    "kostadinov": 11.54,
+    "vasilev": 5.98,
+    "hristanov": 2.23,
+    "mihaylov": 3.48,
+    "iotova": 50.76
+   },
+   "runoff2026": {
+    "iotova": 77.83,
+    "gyurov": 22.17
+   },
+   "votes": {
+    "gyurov": 104,
+    "kostadinov": 83,
+    "vasilev": 43,
+    "hristanov": 16,
+    "mihaylov": 25,
+    "iotova": 365
+   },
+   "total": 719
+  },
+  "sliven": {
+   "shares": {
+    "gyurov": 25.16,
+    "kostadinov": 15.11,
+    "iotova": 41.26,
+    "vasilev": 5.45,
+    "hristanov": 2.06,
+    "mihaylov": 5.09
+   },
+   "runoff2026": {
+    "iotova": 62.12,
+    "gyurov": 37.88
+   },
+   "votes": {
+    "gyurov": 4387,
+    "kostadinov": 2635,
+    "iotova": 7195,
+    "vasilev": 950,
+    "hristanov": 360,
+    "mihaylov": 887
+   },
+   "total": 17438
+  },
+  "slivnitsa": {
+   "shares": {
+    "gyurov": 28.25,
+    "kostadinov": 14.86,
+    "iotova": 40.38,
+    "vasilev": 6.92,
+    "hristanov": 2.35,
+    "mihaylov": 2.16
+   },
+   "runoff2026": {
+    "iotova": 58.83,
+    "gyurov": 41.17
+   },
+   "votes": {
+    "gyurov": 445,
+    "kostadinov": 234,
+    "iotova": 636,
+    "vasilev": 109,
+    "hristanov": 37,
+    "mihaylov": 34
+   },
+   "total": 1575
+  },
+  "slivo_pole": {
+   "shares": {
+    "gyurov": 17.71,
+    "kostadinov": 14.2,
+    "vasilev": 7.84,
+    "hristanov": 2.57,
+    "mihaylov": 4.53,
+    "iotova": 46.32
+   },
+   "runoff2026": {
+    "iotova": 72.33,
+    "gyurov": 27.67
+   },
+   "votes": {
+    "gyurov": 262,
+    "kostadinov": 210,
+    "vasilev": 116,
+    "hristanov": 38,
+    "mihaylov": 67,
+    "iotova": 685
+   },
+   "total": 1479
+  },
+  "smolyan": {
+   "shares": {
+    "gyurov": 25.91,
+    "kostadinov": 12.8,
+    "hristanov": 4.86,
+    "mihaylov": 2.74,
+    "iotova": 44.54,
+    "vasilev": 3.95
+   },
+   "runoff2026": {
+    "iotova": 63.22,
+    "gyurov": 36.78
+   },
+   "votes": {
+    "gyurov": 1950,
+    "kostadinov": 963,
+    "hristanov": 366,
+    "mihaylov": 206,
+    "iotova": 3352,
+    "vasilev": 297
+   },
+   "total": 7526
+  },
+  "smyadovo": {
+   "shares": {
+    "gyurov": 14.41,
+    "kostadinov": 12.61,
+    "vasilev": 6.82,
+    "mihaylov": 8.37,
+    "iotova": 46.46,
+    "hristanov": 1.67
+   },
+   "runoff2026": {
+    "iotova": 76.32,
+    "gyurov": 23.68
+   },
+   "votes": {
+    "gyurov": 112,
+    "kostadinov": 98,
+    "vasilev": 53,
+    "mihaylov": 65,
+    "iotova": 361,
+    "hristanov": 13
+   },
+   "total": 777
+  },
+  "sopot": {
+   "shares": {
+    "gyurov": 20.16,
+    "kostadinov": 16.8,
+    "vasilev": 6.2,
+    "mihaylov": 8.79,
+    "iotova": 43.15,
+    "hristanov": 0.52
+   },
+   "runoff2026": {
+    "iotova": 68.16,
+    "gyurov": 31.84
+   },
+   "votes": {
+    "gyurov": 78,
+    "kostadinov": 65,
+    "vasilev": 24,
+    "mihaylov": 34,
+    "iotova": 167,
+    "hristanov": 2
+   },
+   "total": 387
+  },
+  "sozopol": {
+   "shares": {
+    "gyurov": 19.18,
+    "kostadinov": 12.62,
+    "vasilev": 7.69,
+    "hristanov": 1.96,
+    "mihaylov": 3.05,
+    "iotova": 46.72
+   },
+   "runoff2026": {
+    "iotova": 70.89,
+    "gyurov": 29.11
+   },
+   "votes": {
+    "gyurov": 459,
+    "kostadinov": 302,
+    "vasilev": 184,
+    "hristanov": 47,
+    "mihaylov": 73,
+    "iotova": 1118
+   },
+   "total": 2393
+  },
+  "sredets": {
+   "shares": {
+    "gyurov": 16.8,
+    "kostadinov": 14.36,
+    "vasilev": 7.74,
+    "hristanov": 2.29,
+    "mihaylov": 4.48,
+    "iotova": 46.44
+   },
+   "runoff2026": {
+    "iotova": 73.43,
+    "gyurov": 26.57
+   },
+   "votes": {
+    "gyurov": 330,
+    "kostadinov": 282,
+    "vasilev": 152,
+    "hristanov": 45,
+    "mihaylov": 88,
+    "iotova": 912
+   },
+   "total": 1964
+  },
+  "stamboliyski": {
+   "shares": {
+    "gyurov": 28.36,
+    "kostadinov": 13.66,
+    "vasilev": 9.07,
+    "hristanov": 3.06,
+    "mihaylov": 4.03,
+    "iotova": 35.26
+   },
+   "runoff2026": {
+    "iotova": 55.43,
+    "gyurov": 44.57
+   },
+   "votes": {
+    "gyurov": 760,
+    "kostadinov": 366,
+    "vasilev": 243,
+    "hristanov": 82,
+    "mihaylov": 108,
+    "iotova": 945
+   },
+   "total": 2680
+  },
+  "stambolovo": {
+   "shares": {
+    "gyurov": 10.19,
+    "vasilev": 3.4,
+    "iotova": 66.41,
+    "kostadinov": 6.21,
+    "mihaylov": 1.65,
+    "hristanov": 1.75
+   },
+   "runoff2026": {
+    "iotova": 86.69,
+    "gyurov": 13.31
+   },
+   "votes": {
+    "gyurov": 105,
+    "vasilev": 35,
+    "iotova": 684,
+    "kostadinov": 64,
+    "mihaylov": 17,
+    "hristanov": 18
+   },
+   "total": 1030
+  },
+  "stara_zagora": {
+   "shares": {
+    "gyurov": 28.7,
+    "kostadinov": 14.91,
+    "iotova": 38.13,
+    "vasilev": 5.43,
+    "hristanov": 2.41,
+    "mihaylov": 4.56
+   },
+   "runoff2026": {
+    "iotova": 57.06,
+    "gyurov": 42.94
+   },
+   "votes": {
+    "gyurov": 9370,
+    "kostadinov": 4867,
+    "iotova": 12450,
+    "vasilev": 1772,
+    "hristanov": 786,
+    "mihaylov": 1488
+   },
+   "total": 32649
+  },
+  "stolichna": {
+   "shares": {
+    "gyurov": 51.04,
+    "kostadinov": 11.05,
+    "vasilev": 3.06,
+    "hristanov": 2.91,
+    "mihaylov": 2.14,
+    "iotova": 25.34
+   },
+   "runoff2026": {
+    "iotova": 33.17,
+    "gyurov": 66.83
+   },
+   "votes": {
+    "gyurov": 179205,
+    "kostadinov": 38806,
+    "vasilev": 10759,
+    "hristanov": 10219,
+    "mihaylov": 7517,
+    "iotova": 88950
+   },
+   "total": 351094
+  },
+  "straldzha": {
+   "shares": {
+    "gyurov": 13.24,
+    "kostadinov": 13.35,
+    "vasilev": 9.44,
+    "mihaylov": 4.02,
+    "iotova": 48.85,
+    "hristanov": 1.66
+   },
+   "runoff2026": {
+    "iotova": 78.67,
+    "gyurov": 21.33
+   },
+   "votes": {
+    "gyurov": 247,
+    "kostadinov": 249,
+    "vasilev": 176,
+    "mihaylov": 75,
+    "iotova": 911,
+    "hristanov": 31
+   },
+   "total": 1865
+  },
+  "strazhitsa": {
+   "shares": {
+    "gyurov": 14.4,
+    "kostadinov": 11.98,
+    "mihaylov": 4.71,
+    "iotova": 39.96,
+    "vasilev": 10.46,
+    "hristanov": 2.42
+   },
+   "runoff2026": {
+    "iotova": 73.5,
+    "gyurov": 26.5
+   },
+   "votes": {
+    "gyurov": 208,
+    "kostadinov": 173,
+    "mihaylov": 68,
+    "iotova": 577,
+    "vasilev": 151,
+    "hristanov": 35
+   },
+   "total": 1444
+  },
+  "strelcha": {
+   "shares": {
+    "gyurov": 20.84,
+    "kostadinov": 13.77,
+    "vasilev": 6.83,
+    "hristanov": 2.28,
+    "mihaylov": 5.99,
+    "iotova": 42.04
+   },
+   "runoff2026": {
+    "iotova": 66.86,
+    "gyurov": 33.14
+   },
+   "votes": {
+    "gyurov": 174,
+    "kostadinov": 115,
+    "vasilev": 57,
+    "hristanov": 19,
+    "mihaylov": 50,
+    "iotova": 351
+   },
+   "total": 835
+  },
+  "strumyarni": {
+   "shares": {
+    "gyurov": 15.29,
+    "kostadinov": 12.98,
+    "vasilev": 4.02,
+    "mihaylov": 3.22,
+    "iotova": 58.05,
+    "hristanov": 1.11
+   },
+   "runoff2026": {
+    "iotova": 79.15,
+    "gyurov": 20.85
+   },
+   "votes": {
+    "gyurov": 152,
+    "kostadinov": 129,
+    "vasilev": 40,
+    "mihaylov": 32,
+    "iotova": 577,
+    "hristanov": 11
+   },
+   "total": 994
+  },
+  "suhindol": {
+   "shares": {
+    "gyurov": 12.41,
+    "kostadinov": 10.3,
+    "hristanov": 5.62,
+    "mihaylov": 7.49,
+    "iotova": 51.99,
+    "vasilev": 5.39
+   },
+   "runoff2026": {
+    "iotova": 80.73,
+    "gyurov": 19.27
+   },
+   "votes": {
+    "gyurov": 53,
+    "kostadinov": 44,
+    "hristanov": 24,
+    "mihaylov": 32,
+    "iotova": 222,
+    "vasilev": 23
+   },
+   "total": 427
+  },
+  "sungurlare": {
+   "shares": {
+    "gyurov": 17.21,
+    "kostadinov": 11.64,
+    "vasilev": 11.21,
+    "hristanov": 2.02,
+    "mihaylov": 4.56,
+    "iotova": 42.95
+   },
+   "runoff2026": {
+    "iotova": 71.39,
+    "gyurov": 28.61
+   },
+   "votes": {
+    "gyurov": 238,
+    "kostadinov": 161,
+    "vasilev": 155,
+    "hristanov": 28,
+    "mihaylov": 63,
+    "iotova": 594
+   },
+   "total": 1383
+  },
+  "suvorovo": {
+   "shares": {
+    "gyurov": 19.46,
+    "kostadinov": 17.39,
+    "vasilev": 5.1,
+    "hristanov": 2.42,
+    "mihaylov": 7.61,
+    "iotova": 36.85
+   },
+   "runoff2026": {
+    "iotova": 65.44,
+    "gyurov": 34.56
+   },
+   "votes": {
+    "gyurov": 225,
+    "kostadinov": 201,
+    "vasilev": 59,
+    "hristanov": 28,
+    "mihaylov": 88,
+    "iotova": 426
+   },
+   "total": 1156
+  },
+  "svilengrad": {
+   "shares": {
+    "gyurov": 17.62,
+    "kostadinov": 13.52,
+    "vasilev": 5.92,
+    "hristanov": 3.11,
+    "mihaylov": 3.37,
+    "iotova": 51.2
+   },
+   "runoff2026": {
+    "iotova": 74.4,
+    "gyurov": 25.6
+   },
+   "votes": {
+    "gyurov": 696,
+    "kostadinov": 534,
+    "vasilev": 234,
+    "hristanov": 123,
+    "mihaylov": 133,
+    "iotova": 2023
+   },
+   "total": 3951
+  },
+  "svishtov": {
+   "shares": {
+    "gyurov": 19.62,
+    "kostadinov": 16.33,
+    "vasilev": 5.96,
+    "iotova": 44.64,
+    "hristanov": 1.97,
+    "mihaylov": 5.88
+   },
+   "runoff2026": {
+    "iotova": 69.46,
+    "gyurov": 30.54
+   },
+   "votes": {
+    "gyurov": 728,
+    "kostadinov": 606,
+    "vasilev": 221,
+    "iotova": 1656,
+    "hristanov": 73,
+    "mihaylov": 218
+   },
+   "total": 3710
+  },
+  "svoge": {
+   "shares": {
+    "gyurov": 26.85,
+    "kostadinov": 17.19,
+    "vasilev": 6.01,
+    "hristanov": 2.3,
+    "mihaylov": 3.11,
+    "iotova": 37.06
+   },
+   "runoff2026": {
+    "iotova": 57.99,
+    "gyurov": 42.01
+   },
+   "votes": {
+    "gyurov": 889,
+    "kostadinov": 569,
+    "vasilev": 199,
+    "hristanov": 76,
+    "mihaylov": 103,
+    "iotova": 1227
+   },
+   "total": 3311
+  },
+  "targovishte": {
+   "shares": {
+    "gyurov": 24.0,
+    "kostadinov": 13.54,
+    "vasilev": 5.84,
+    "mihaylov": 5.13,
+    "iotova": 42.49,
+    "hristanov": 2.02
+   },
+   "runoff2026": {
+    "iotova": 63.9,
+    "gyurov": 36.1
+   },
+   "votes": {
+    "gyurov": 2041,
+    "kostadinov": 1151,
+    "vasilev": 497,
+    "mihaylov": 436,
+    "iotova": 3613,
+    "hristanov": 172
+   },
+   "total": 8503
+  },
+  "tervel": {
+   "shares": {
+    "gyurov": 26.43,
+    "kostadinov": 9.19,
+    "mihaylov": 4.76,
+    "iotova": 41.78,
+    "vasilev": 5.46,
+    "hristanov": 1.73
+   },
+   "runoff2026": {
+    "iotova": 61.25,
+    "gyurov": 38.75
+   },
+   "votes": {
+    "gyurov": 489,
+    "kostadinov": 170,
+    "mihaylov": 88,
+    "iotova": 773,
+    "vasilev": 101,
+    "hristanov": 32
+   },
+   "total": 1850
+  },
+  "teteven": {
+   "shares": {
+    "gyurov": 21.11,
+    "kostadinov": 12.16,
+    "vasilev": 9.65,
+    "mihaylov": 3.02,
+    "iotova": 47.31,
+    "hristanov": 1.66
+   },
+   "runoff2026": {
+    "iotova": 69.14,
+    "gyurov": 30.86
+   },
+   "votes": {
+    "gyurov": 573,
+    "kostadinov": 330,
+    "vasilev": 262,
+    "mihaylov": 82,
+    "iotova": 1284,
+    "hristanov": 45
+   },
+   "total": 2714
+  },
+  "topolovgrad": {
+   "shares": {
+    "gyurov": 13.37,
+    "kostadinov": 10.97,
+    "vasilev": 8.93,
+    "iotova": 55.64,
+    "hristanov": 1.38,
+    "mihaylov": 2.88
+   },
+   "runoff2026": {
+    "iotova": 80.63,
+    "gyurov": 19.37
+   },
+   "votes": {
+    "gyurov": 223,
+    "kostadinov": 183,
+    "vasilev": 149,
+    "iotova": 928,
+    "hristanov": 23,
+    "mihaylov": 48
+   },
+   "total": 1668
+  },
+  "tran": {
+   "shares": {
+    "gyurov": 16.97,
+    "kostadinov": 12.41,
+    "vasilev": 5.79,
+    "hristanov": 2.21,
+    "mihaylov": 2.07,
+    "iotova": 50.21
+   },
+   "runoff2026": {
+    "iotova": 74.74,
+    "gyurov": 25.26
+   },
+   "votes": {
+    "gyurov": 123,
+    "kostadinov": 90,
+    "vasilev": 42,
+    "hristanov": 16,
+    "mihaylov": 15,
+    "iotova": 364
+   },
+   "total": 725
+  },
+  "treklyano": {
+   "shares": {
+    "gyurov": 12.18,
+    "kostadinov": 10.08,
+    "vasilev": 2.52,
+    "mihaylov": 2.1,
+    "iotova": 66.81,
+    "hristanov": 0.42
+   },
+   "runoff2026": {
+    "iotova": 84.57,
+    "gyurov": 15.43
+   },
+   "votes": {
+    "gyurov": 29,
+    "kostadinov": 24,
+    "vasilev": 6,
+    "mihaylov": 5,
+    "iotova": 159,
+    "hristanov": 1
+   },
+   "total": 238
+  },
+  "troyan": {
+   "shares": {
+    "gyurov": 27.18,
+    "kostadinov": 14.99,
+    "vasilev": 6.71,
+    "hristanov": 2.69,
+    "mihaylov": 6.27,
+    "iotova": 37.4
+   },
+   "runoff2026": {
+    "iotova": 57.91,
+    "gyurov": 42.09
+   },
+   "votes": {
+    "gyurov": 1447,
+    "kostadinov": 798,
+    "vasilev": 357,
+    "hristanov": 143,
+    "mihaylov": 334,
+    "iotova": 1991
+   },
+   "total": 5324
+  },
+  "tryavna": {
+   "shares": {
+    "gyurov": 24.68,
+    "kostadinov": 16.45,
+    "vasilev": 3.34,
+    "hristanov": 2.06,
+    "mihaylov": 5.91,
+    "iotova": 42.11
+   },
+   "runoff2026": {
+    "iotova": 63.05,
+    "gyurov": 36.95
+   },
+   "votes": {
+    "gyurov": 480,
+    "kostadinov": 320,
+    "vasilev": 65,
+    "hristanov": 40,
+    "mihaylov": 115,
+    "iotova": 819
+   },
+   "total": 1945
+  },
+  "tsar_kaloyan": {
+   "shares": {
+    "gyurov": 27.95,
+    "kostadinov": 11.8,
+    "vasilev": 3.73,
+    "mihaylov": 4.66,
+    "iotova": 40.99,
+    "hristanov": 0.78
+   },
+   "runoff2026": {
+    "iotova": 59.46,
+    "gyurov": 40.54
+   },
+   "votes": {
+    "gyurov": 180,
+    "kostadinov": 76,
+    "vasilev": 24,
+    "mihaylov": 30,
+    "iotova": 264,
+    "hristanov": 5
+   },
+   "total": 644
+  },
+  "tsarevo": {
+   "shares": {
+    "gyurov": 18.78,
+    "kostadinov": 12.01,
+    "hristanov": 1.35,
+    "mihaylov": 3.63,
+    "iotova": 52.98,
+    "vasilev": 6.28
+   },
+   "runoff2026": {
+    "iotova": 73.83,
+    "gyurov": 26.17
+   },
+   "votes": {
+    "gyurov": 347,
+    "kostadinov": 222,
+    "hristanov": 25,
+    "mihaylov": 67,
+    "iotova": 979,
+    "vasilev": 116
+   },
+   "total": 1848
+  },
+  "tsenovo": {
+   "shares": {
+    "gyurov": 13.73,
+    "kostadinov": 12.03,
+    "vasilev": 7.17,
+    "mihaylov": 6.08,
+    "iotova": 52.98,
+    "hristanov": 0.97
+   },
+   "runoff2026": {
+    "iotova": 79.42,
+    "gyurov": 20.58
+   },
+   "votes": {
+    "gyurov": 113,
+    "kostadinov": 99,
+    "vasilev": 59,
+    "mihaylov": 50,
+    "iotova": 436,
+    "hristanov": 8
+   },
+   "total": 823
+  },
+  "tundzha": {
+   "shares": {
+    "gyurov": 14.45,
+    "mihaylov": 4.44,
+    "iotova": 47.11,
+    "kostadinov": 16.5,
+    "vasilev": 6.58,
+    "hristanov": 1.46
+   },
+   "runoff2026": {
+    "iotova": 76.53,
+    "gyurov": 23.47
+   },
+   "votes": {
+    "gyurov": 514,
+    "mihaylov": 158,
+    "iotova": 1676,
+    "kostadinov": 587,
+    "vasilev": 234,
+    "hristanov": 52
+   },
+   "total": 3558
+  },
+  "tutrakan": {
+   "shares": {
+    "gyurov": 16.51,
+    "kostadinov": 13.54,
+    "vasilev": 4.69,
+    "mihaylov": 5.25,
+    "iotova": 50.9,
+    "hristanov": 1.25
+   },
+   "runoff2026": {
+    "iotova": 75.51,
+    "gyurov": 24.49
+   },
+   "votes": {
+    "gyurov": 384,
+    "kostadinov": 315,
+    "vasilev": 109,
+    "mihaylov": 122,
+    "iotova": 1184,
+    "hristanov": 29
+   },
+   "total": 2326
+  },
+  "tvarditsa": {
+   "shares": {
+    "gyurov": 17.79,
+    "kostadinov": 12.9,
+    "hristanov": 2.8,
+    "iotova": 43.2,
+    "vasilev": 7.62,
+    "mihaylov": 6.42
+   },
+   "runoff2026": {
+    "iotova": 70.83,
+    "gyurov": 29.17
+   },
+   "votes": {
+    "gyurov": 280,
+    "kostadinov": 203,
+    "hristanov": 44,
+    "iotova": 680,
+    "vasilev": 120,
+    "mihaylov": 101
+   },
+   "total": 1574
+  },
+  "ugarchin": {
+   "shares": {
+    "gyurov": 17.89,
+    "kostadinov": 12.8,
+    "hristanov": 2.73,
+    "mihaylov": 3.85,
+    "iotova": 45.34,
+    "vasilev": 10.19
+   },
+   "runoff2026": {
+    "iotova": 71.71,
+    "gyurov": 28.29
+   },
+   "votes": {
+    "gyurov": 144,
+    "kostadinov": 103,
+    "hristanov": 22,
+    "mihaylov": 31,
+    "iotova": 365,
+    "vasilev": 82
+   },
+   "total": 805
+  },
+  "valchedram": {
+   "shares": {
+    "gyurov": 13.17,
+    "kostadinov": 13.85,
+    "vasilev": 17.66,
+    "hristanov": 1.66,
+    "mihaylov": 2.44,
+    "iotova": 44.98
+   },
+   "runoff2026": {
+    "iotova": 77.35,
+    "gyurov": 22.65
+   },
+   "votes": {
+    "gyurov": 135,
+    "kostadinov": 142,
+    "vasilev": 181,
+    "hristanov": 17,
+    "mihaylov": 25,
+    "iotova": 461
+   },
+   "total": 1025
+  },
+  "valchi_dol": {
+   "shares": {
+    "gyurov": 10.09,
+    "kostadinov": 10.74,
+    "vasilev": 6.75,
+    "hristanov": 1.11,
+    "mihaylov": 9.69,
+    "iotova": 54.03
+   },
+   "runoff2026": {
+    "iotova": 84.27,
+    "gyurov": 15.73
+   },
+   "votes": {
+    "gyurov": 154,
+    "kostadinov": 164,
+    "vasilev": 103,
+    "hristanov": 17,
+    "mihaylov": 148,
+    "iotova": 825
+   },
+   "total": 1527
+  },
+  "varbitsa": {
+   "shares": {
+    "gyurov": 8.07,
+    "kostadinov": 4.41,
+    "vasilev": 4.31,
+    "hristanov": 0.65,
+    "mihaylov": 10.76,
+    "iotova": 43.7
+   },
+   "runoff2026": {
+    "iotova": 84.41,
+    "gyurov": 15.59
+   },
+   "votes": {
+    "gyurov": 75,
+    "kostadinov": 41,
+    "vasilev": 40,
+    "hristanov": 6,
+    "mihaylov": 100,
+    "iotova": 406
+   },
+   "total": 929
+  },
+  "varna": {
+   "shares": {
+    "gyurov": 35.32,
+    "kostadinov": 17.25,
+    "vasilev": 3.0,
+    "hristanov": 2.99,
+    "mihaylov": 4.94,
+    "iotova": 32.08
+   },
+   "runoff2026": {
+    "iotova": 47.6,
+    "gyurov": 52.4
+   },
+   "votes": {
+    "gyurov": 28214,
+    "kostadinov": 13779,
+    "vasilev": 2397,
+    "hristanov": 2387,
+    "mihaylov": 3945,
+    "iotova": 25626
+   },
+   "total": 79889
+  },
+  "varshets": {
+   "shares": {
+    "gyurov": 21.54,
+    "kostadinov": 13.76,
+    "mihaylov": 2.41,
+    "iotova": 51.17,
+    "vasilev": 3.5,
+    "hristanov": 1.87
+   },
+   "runoff2026": {
+    "iotova": 70.37,
+    "gyurov": 29.63
+   },
+   "votes": {
+    "gyurov": 277,
+    "kostadinov": 177,
+    "mihaylov": 31,
+    "iotova": 658,
+    "vasilev": 45,
+    "hristanov": 24
+   },
+   "total": 1286
+  },
+  "veliki_preslav": {
+   "shares": {
+    "gyurov": 20.04,
+    "kostadinov": 11.73,
+    "vasilev": 5.17,
+    "hristanov": 2.05,
+    "mihaylov": 6.68,
+    "iotova": 47.71
+   },
+   "runoff2026": {
+    "iotova": 70.43,
+    "gyurov": 29.57
+   },
+   "votes": {
+    "gyurov": 333,
+    "kostadinov": 195,
+    "vasilev": 86,
+    "hristanov": 34,
+    "mihaylov": 111,
+    "iotova": 793
+   },
+   "total": 1662
+  },
+  "veliko_tarnovo": {
+   "shares": {
+    "gyurov": 30.25,
+    "kostadinov": 15.95,
+    "vasilev": 2.98,
+    "hristanov": 2.6,
+    "mihaylov": 5.95,
+    "iotova": 37.69
+   },
+   "runoff2026": {
+    "iotova": 55.48,
+    "gyurov": 44.52
+   },
+   "votes": {
+    "gyurov": 5228,
+    "kostadinov": 2757,
+    "vasilev": 515,
+    "hristanov": 450,
+    "mihaylov": 1029,
+    "iotova": 6514
+   },
+   "total": 17283
+  },
+  "velingrad": {
+   "shares": {
+    "gyurov": 24.9,
+    "kostadinov": 10.44,
+    "vasilev": 5.16,
+    "hristanov": 2.11,
+    "mihaylov": 4.92,
+    "iotova": 45.66
+   },
+   "runoff2026": {
+    "iotova": 64.72,
+    "gyurov": 35.28
+   },
+   "votes": {
+    "gyurov": 1249,
+    "kostadinov": 524,
+    "vasilev": 259,
+    "hristanov": 106,
+    "mihaylov": 247,
+    "iotova": 2291
+   },
+   "total": 5017
+  },
+  "venets": {
+   "shares": {
+    "gyurov": 17.1,
+    "kostadinov": 3.35,
+    "vasilev": 4.11,
+    "mihaylov": 2.92,
+    "iotova": 55.52,
+    "hristanov": 0.65
+   },
+   "runoff2026": {
+    "iotova": 76.45,
+    "gyurov": 23.55
+   },
+   "votes": {
+    "gyurov": 158,
+    "kostadinov": 31,
+    "vasilev": 38,
+    "mihaylov": 27,
+    "iotova": 513,
+    "hristanov": 6
+   },
+   "total": 924
+  },
+  "vetovo": {
+   "shares": {
+    "gyurov": 17.89,
+    "kostadinov": 12.54,
+    "vasilev": 8.18,
+    "hristanov": 1.53,
+    "mihaylov": 4.2,
+    "iotova": 46.41
+   },
+   "runoff2026": {
+    "iotova": 72.18,
+    "gyurov": 27.82
+   },
+   "votes": {
+    "gyurov": 234,
+    "kostadinov": 164,
+    "vasilev": 107,
+    "hristanov": 20,
+    "mihaylov": 55,
+    "iotova": 607
+   },
+   "total": 1308
+  },
+  "vetrino": {
+   "shares": {
+    "gyurov": 9.99,
+    "kostadinov": 11.78,
+    "vasilev": 6.22,
+    "hristanov": 1.32,
+    "mihaylov": 27.33,
+    "iotova": 36.48
+   },
+   "runoff2026": {
+    "iotova": 78.5,
+    "gyurov": 21.5
+   },
+   "votes": {
+    "gyurov": 106,
+    "kostadinov": 125,
+    "vasilev": 66,
+    "hristanov": 14,
+    "mihaylov": 290,
+    "iotova": 387
+   },
+   "total": 1061
+  },
+  "vidin": {
+   "shares": {
+    "gyurov": 25.56,
+    "kostadinov": 15.11,
+    "vasilev": 5.22,
+    "mihaylov": 2.52,
+    "iotova": 43.02,
+    "hristanov": 2.36
+   },
+   "runoff2026": {
+    "iotova": 62.73,
+    "gyurov": 37.27
+   },
+   "votes": {
+    "gyurov": 2475,
+    "kostadinov": 1463,
+    "vasilev": 505,
+    "mihaylov": 244,
+    "iotova": 4166,
+    "hristanov": 229
+   },
+   "total": 9683
+  },
+  "vratsa": {
+   "shares": {
+    "gyurov": 24.62,
+    "kostadinov": 13.88,
+    "vasilev": 7.73,
+    "hristanov": 2.43,
+    "mihaylov": 3.13,
+    "iotova": 43.15
+   },
+   "runoff2026": {
+    "iotova": 63.67,
+    "gyurov": 36.33
+   },
+   "votes": {
+    "gyurov": 3190,
+    "kostadinov": 1798,
+    "vasilev": 1002,
+    "hristanov": 315,
+    "mihaylov": 406,
+    "iotova": 5590
+   },
+   "total": 12955
+  },
+  "yablanitsa": {
+   "shares": {
+    "gyurov": 19.28,
+    "kostadinov": 14.36,
+    "vasilev": 12.5,
+    "hristanov": 1.46,
+    "mihaylov": 2.79,
+    "iotova": 41.76
+   },
+   "runoff2026": {
+    "iotova": 68.41,
+    "gyurov": 31.59
+   },
+   "votes": {
+    "gyurov": 145,
+    "kostadinov": 108,
+    "vasilev": 94,
+    "hristanov": 11,
+    "mihaylov": 21,
+    "iotova": 314
+   },
+   "total": 752
+  },
+  "yakimovo": {
+   "shares": {
+    "gyurov": 16.16,
+    "kostadinov": 11.72,
+    "vasilev": 23.98,
+    "hristanov": 1.6,
+    "iotova": 41.92,
+    "mihaylov": 1.24
+   },
+   "runoff2026": {
+    "iotova": 72.17,
+    "gyurov": 27.83
+   },
+   "votes": {
+    "gyurov": 91,
+    "kostadinov": 66,
+    "vasilev": 135,
+    "hristanov": 9,
+    "iotova": 236,
+    "mihaylov": 7
+   },
+   "total": 563
+  },
+  "yakoruda": {
+   "shares": {
+    "gyurov": 19.37,
+    "kostadinov": 11.02,
+    "vasilev": 4.51,
+    "hristanov": 0.83,
+    "mihaylov": 4.01,
+    "iotova": 52.59
+   },
+   "runoff2026": {
+    "iotova": 73.09,
+    "gyurov": 26.91
+   },
+   "votes": {
+    "gyurov": 116,
+    "kostadinov": 66,
+    "vasilev": 27,
+    "hristanov": 5,
+    "mihaylov": 24,
+    "iotova": 315
+   },
+   "total": 599
+  },
+  "yambol": {
+   "shares": {
+    "gyurov": 23.54,
+    "kostadinov": 17.59,
+    "vasilev": 4.95,
+    "hristanov": 2.89,
+    "mihaylov": 5.1,
+    "iotova": 39.69
+   },
+   "runoff2026": {
+    "iotova": 62.77,
+    "gyurov": 37.23
+   },
+   "votes": {
+    "gyurov": 2692,
+    "kostadinov": 2011,
+    "vasilev": 566,
+    "hristanov": 331,
+    "mihaylov": 583,
+    "iotova": 4538
+   },
+   "total": 11434
+  },
+  "zavet": {
+   "shares": {
+    "gyurov": 21.57,
+    "kostadinov": 5.8,
+    "vasilev": 8.8,
+    "mihaylov": 2.61,
+    "iotova": 49.81,
+    "hristanov": 1.55
+   },
+   "runoff2026": {
+    "iotova": 69.78,
+    "gyurov": 30.22
+   },
+   "votes": {
+    "gyurov": 223,
+    "kostadinov": 60,
+    "vasilev": 91,
+    "mihaylov": 27,
+    "iotova": 515,
+    "hristanov": 16
+   },
+   "total": 1034
+  },
+  "zemen": {
+   "shares": {
+    "gyurov": 18.41,
+    "kostadinov": 15.88,
+    "vasilev": 6.08,
+    "hristanov": 1.69,
+    "mihaylov": 2.53,
+    "iotova": 48.99
+   },
+   "runoff2026": {
+    "iotova": 72.68,
+    "gyurov": 27.32
+   },
+   "votes": {
+    "gyurov": 109,
+    "kostadinov": 94,
+    "vasilev": 36,
+    "hristanov": 10,
+    "mihaylov": 15,
+    "iotova": 290
+   },
+   "total": 592
+  },
+  "zlataritsa": {
+   "shares": {
+    "gyurov": 14.08,
+    "kostadinov": 12.03,
+    "vasilev": 5.06,
+    "hristanov": 1.58,
+    "mihaylov": 5.06,
+    "iotova": 52.22
+   },
+   "runoff2026": {
+    "iotova": 78.76,
+    "gyurov": 21.24
+   },
+   "votes": {
+    "gyurov": 89,
+    "kostadinov": 76,
+    "vasilev": 32,
+    "hristanov": 10,
+    "mihaylov": 32,
+    "iotova": 330
+   },
+   "total": 632
+  },
+  "zlatitsa": {
+   "shares": {
+    "gyurov": 22.77,
+    "kostadinov": 16.81,
+    "vasilev": 8.84,
+    "hristanov": 1.34,
+    "mihaylov": 2.79,
+    "iotova": 43.52
+   },
+   "runoff2026": {
+    "iotova": 65.65,
+    "gyurov": 34.35
+   },
+   "votes": {
+    "gyurov": 237,
+    "kostadinov": 175,
+    "vasilev": 92,
+    "hristanov": 14,
+    "mihaylov": 29,
+    "iotova": 453
+   },
+   "total": 1041
+  },
+  "zlatograd": {
+   "shares": {
+    "gyurov": 20.85,
+    "kostadinov": 10.99,
+    "vasilev": 3.0,
+    "hristanov": 2.14,
+    "mihaylov": 2.75,
+    "iotova": 52.8
+   },
+   "runoff2026": {
+    "iotova": 71.69,
+    "gyurov": 28.31
+   },
+   "votes": {
+    "gyurov": 410,
+    "kostadinov": 216,
+    "vasilev": 59,
+    "hristanov": 42,
+    "mihaylov": 54,
+    "iotova": 1038
+   },
+   "total": 1966
+  }
+ }
+}

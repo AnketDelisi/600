@@ -2412,6 +2412,13 @@ function textOn(hex){
   return lum>0.62?'#111827':'#fff';
 }
 
+// Year shown on the result-map toggle. Runoff-only contests (Brazil/Bulgaria
+// presidential) have a first-round result newer than LAST_ELECTION.
+function resultYear(){
+  const c=COUNTRIES[COUNTRY]||{};
+  return String((c.firstRoundDate||(LAST_ELECTION&&LAST_ELECTION.date)||'').slice(0,4));
+}
+
 function renderParliament(avg){
   let seats;
   const UP=(COUNTRIES[COUNTRY]||{}).upper||null;
@@ -2443,7 +2450,7 @@ function renderParliament(avg){
   const showMap=MAP_ONLY||(PARL_VIEW==='map'&&mapConf);
   const btnRow=`<div class="map-toggle-row" style="justify-content:flex-end">
       <button class="map-toggle-btn parl-btn${PARL_MODE==='proj'?' active':''}" data-parlmode="proj">${T.projection}</button>
-      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+      <button class="map-toggle-btn parl-btn${PARL_MODE==='2022'?' active':''}" data-parlmode="2022">${resultYear()} ${T.result}</button>
       ${UP?`<button class="map-toggle-btn parl-btn${PARL_MODE==='upper'?' active':''}" data-parlmode="upper">${UP.label||t('Upper chamber','\u00dcst meclis')}</button>`:''}
       ${MAP_ONLY&&mapConf&&(mapConf.runoff2022||mapConf.runoff2026)?`<button class="map-toggle-btn parl-btn${PARL_MODE==='runoff'?' active':''}" data-parlmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
       ${mapConf&&!MAP_ONLY&&!bigMap?`<button class="map-toggle-btn parl-btn${showMap?' active':''}" data-parlview="map">${T.map}</button>`:''}
@@ -2457,7 +2464,7 @@ function renderParliament(avg){
     ?'<div class="parliament-box" id="map-box"></div>'
     :`<div class="parliament-box" id="parl-box">${buildParliamentSVG(seats, PARL_MODE==='upper'?(COUNTRIES[COUNTRY]||{}).senate:null)}</div>`;
   const mapCap=(MAP_ONLY
-      ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?LAST_ELECTION.date.slice(0,4)+' '+T.result:t('projected winner','tahmini kazanan'))}`
+      ?`${SEATS_TOTAL} ${unitLabel()} · ${T.coloredBy} ${PARL_MODE==='runoff'?t('projected runoff winner','tahmini ikinci tur kazananı'):(PARL_MODE==='2022'?resultYear()+' '+T.result:t('projected winner','tahmini kazanan'))}`
       :(PARL_MODE==='upper'&&(COUNTRIES[COUNTRY]||{}).senate
         ?`${seatsTotal} ${T.seats} · ${UP?UP.label:''} · ${t('map = the upper chamber\u2019s own districts','harita = \u00fcst meclisin kendi b\u00f6lgeleri')}`
         :`${seatsTotal} ${T.seats} · ${methodName()}${THRESHOLD>0?` · ${THRESHOLD}% ${T.threshold}`:''} · ${t('map','harita')} = ${mapConf?(mapConf.layerCount||(mapConf.ilceDistrict?Object.keys(mapConf.ilceDistrict).length:Object.keys(mapConf.districts).length)):''} ${mapConf&&mapConf.ilceDistrict?t('il\u00e7eler','il\u00e7e'):t('constituencies','b\u00f6lge')}, ${T.coloredBy} ${(MAP_COLOR==='bloc'&&mapConf.useConstituencies&&!mapConf.hideBlocToggle)?t('leading bloc','önde olan blok'):(mapConf&&mapConf.ilceDistrict?t('il\u00e7e winner','il\u00e7e kazanan\u0131'):t('district winner','b\u00f6lge kazanan\u0131'))}`));
@@ -5499,12 +5506,13 @@ function runoffForecast(avg, filtered, sim){
   // (65% head-to-head polls, 35% the round-1 result - the same
   // poll-weight philosophy as the main model)
   const fr=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].firstRoundResult;
+  let anchorW=0;
   if(fr&&fr[a]!=null&&fr[b]!=null&&fr[a]+fr[b]>0){
     // The first-round result is an actual same-electorate vote, so it anchors
     // the runoff. A single stale pre-round poll must not dominate: bgpres sets
     // runoffAnchor=0.8; countries with a real runoff poll series keep 0.35.
     const ft=fr[a]+fr[b];
-    const anchorW=(COUNTRIES[COUNTRY].runoffAnchor!==undefined)
+    anchorW=(COUNTRIES[COUNTRY].runoffAnchor!==undefined)
       ?COUNTRIES[COUNTRY].runoffAnchor:0.35;
     aN=(1-anchorW)*aN+anchorW*(100*fr[a]/ft);
     bN=(1-anchorW)*bN+anchorW*(100*fr[b]/ft);
@@ -5531,7 +5539,7 @@ function runoffForecast(avg, filtered, sim){
   }
   valsA.sort((p,q)=>p-q);
   const aExp=mean(valsA), aLo=percentile(valsA,5), aHi=percentile(valsA,95);
-  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,
+  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,anchorW,
              aExp,aLo,aHi,bExp:100-aExp,bLo:100-aHi,bHi:100-aLo};
   RUNOFF_CACHE[cacheKey]=res;
   return res;
@@ -6036,7 +6044,7 @@ function renderForecast(pane){
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
-          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${t('runoff polls','ikinci tur anketi')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
+          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,h2a)}
@@ -6313,7 +6321,7 @@ function renderForecast(pane){
     ${MAP_CONF()?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div></div>
       <div class="map-toggle-row" style="justify-content:flex-end">
         ${RO_ONLY?'':`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='proj'?' active':''}" data-fcmode="proj">${T.projection}</button>`}
-        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${LAST_ELECTION.date.slice(0,4)} ${T.result}</button>
+        <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${resultYear()} ${T.result}</button>
         ${SEN_CONF?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='upper'?' active':''}" data-fcmode="upper">${(SEN_UP&&SEN_UP.label)||t('Upper chamber','\u00dcst meclis')}</button>`:''}
         ${MAP_ONLY&&MAP_CONF()&&(MAP_CONF().runoff2022||MAP_CONF().runoff2026)?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
         ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&FC_MODE!=='upper'?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
@@ -6592,15 +6600,16 @@ function renderForecast(pane){
   }
   if(MAP_CONF()){
     const fcRo=runoffMapAvg(avg,filtered,sim);
-    const fcRunConf=runoffConf();
     // one render path for every forecast-map mode: proj (median shares),
-    // res (last election), runoff and the Senate layer (its own districts)
+    // res (last election), runoff and the Senate layer (its own districts).
+    // runoffConf must be evaluated inside the render: it reads MAP_CONF(),
+    // which changes when the municipality layer is toggled.
     const fcRender=()=>{
       const fcBox=$('fc-map-box');
       if(!fcBox) return;
       const upper=(FC_MODE==='upper'&&SEN_CONF)?SEN_CONF:null;
       const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:(FC_MODE==='runoff'&&fcRo?fcRo:medVotes);
-      renderMapInto(fcBox, fcAvg, FC_MODE==='res', upper||(FC_MODE==='runoff'?fcRunConf:undefined));
+      renderMapInto(fcBox, fcAvg, FC_MODE==='res', upper||(FC_MODE==='runoff'?runoffConf():undefined));
       const capEl=$('fc-map-cap');
       if(capEl) capEl.textContent=fcMapCap();
     };

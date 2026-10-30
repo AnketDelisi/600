@@ -6,7 +6,7 @@
  "threshold": 0.0,
  "method": "runoff",
  "constituencies": false,
- "notes": "President of Bulgaria: two-round election on 25 October 2026 (runoff 1 November). To win the first round a candidate needs 50% of the valid votes with turnout above 50%; a runoff otherwise, as every poll indicates. Iliana Iotova (the incumbent acting president, backed by Progressive Bulgaria and BSP) leads Andrey Gyurov (backed by PP-DB) with a runoff between them expected; the runoff map carries the 2021 runoff result (Radev 66.7 / Gerdzhikov 33.3).",
+ "notes": "President of Bulgaria: first round held 25 October 2026; runoff Iotova vs Gyurov on 1 November. CIK first-round result is 100% counted. The runoff model anchors on the actual first-round two-way vote and the single pre-round Sova Harris head-to-head poll.",
  "turnout": {
   "prior": 49.78,
   "sigma": 8.2,

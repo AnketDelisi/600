@@ -64,7 +64,9 @@ async function main() {
   // for a historical/live poll set (used by calibration_gate.py).
   if (process.argv[2] === '--avg') {
     const cc = process.argv[3];
-    const polls = JSON.parse(process.argv[4]);
+    const pollsArg = process.argv[4];
+    const polls = JSON.parse(pollsArg.startsWith('@')
+      ? fs.readFileSync(pollsArg.slice(1), 'utf8') : pollsArg);
     await globalThis.__600_loadAll(cc);
     const avg = globalThis.__600_avg(cc, polls, false);
     console.log(JSON.stringify(avg));

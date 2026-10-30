@@ -3585,7 +3585,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   box.appendChild(tooltip);
   // seat circles for multi-member district maps (Spain/Poland); drawn after
   // the SVG is in the DOM so getBBox() has layout
-  if((conf.seatDistricts||conf.seatDots||conf.prDistricts)&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
+  if(!conf.noSeatDots&&(conf.seatDistricts||conf.seatDots||conf.prDistricts)&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);
 }
 
 /* ---------- screenshot capture ---------- */

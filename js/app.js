@@ -1289,7 +1289,7 @@ function renderSidebar(prevDays, prevPollster, prevMethod){
     </select></div>`;
 
   // Last election
-  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${LAST_ELECTION.date.slice(0,4)} ${T.result}</div></div>
+  html+=`<div class="sb-section"><div class="sb-kicker"><div class="bar"></div><div class="t">${resultYear()} ${T.result}</div></div>
     <div class="sb-last-election" id="sb-election"></div></div>`;
 
   // Info
@@ -1317,13 +1317,14 @@ function renderLastElection(){
   const c=$('sb-election');
   if(!c) return;
   let html='';
+  const res=resultData();
   const list=PARTY_ORDER.slice();
   for(const pid in PARTY_META){
-    if(PARTY_META[pid].pastOnly&&LAST_ELECTION.results[pid]!==undefined&&list.indexOf(pid)<0) list.push(pid);
+    if(PARTY_META[pid].pastOnly&&res[pid]!==undefined&&list.indexOf(pid)<0) list.push(pid);
   }
-  const sorted=list.slice().sort((a,b)=>(LAST_ELECTION.results[b]||0)-(LAST_ELECTION.results[a]||0));
+  const sorted=list.slice().sort((a,b)=>(res[b]||0)-(res[a]||0));
   for(const pid of sorted){
-    const pct_val=LAST_ELECTION.results[pid];
+    const pct_val=res[pid];
     if(pct_val===undefined) continue;
     if(!(pct_val>=0.05)) continue;   // parties at 0.0% are noise
     const color=PARTY_META[pid]?PARTY_META[pid].color:'#888';
@@ -2425,6 +2426,10 @@ function textOn(hex){
 function resultYear(){
   const c=COUNTRIES[COUNTRY]||{};
   return String((c.firstRoundDate||(LAST_ELECTION&&LAST_ELECTION.date)||'').slice(0,4));
+}
+function resultData(){
+  const c=COUNTRIES[COUNTRY]||{};
+  return c.firstRoundResult||((LAST_ELECTION&&LAST_ELECTION.results)||{});
 }
 
 function renderParliament(avg){

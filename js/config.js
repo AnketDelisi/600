@@ -15864,6 +15864,8 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     firstRoundDate: '2026-10-25',
     firstRoundResult: {"iotova": 34.759, "gyurov": 31.952, "kostadinov": 12.545, "vasilev": 4.608, "mihaylov": 3.787, "hristanov": 2.393},
     runoffAnchor: 0.8,
+    runoffEndorsement: { candidate: 'gyurov', delta: 1.5, lo: 0.5, hi: 2.5,
+      source: 'GERB/SDS endorsement (30 Oct)' },
     runoffOnly: true,
     parties: {
       iotova:     { code: 'IOTOVA', name: 'Iliana Iotova', name_en: 'Iliana Iotova', color: '#DB0F28' },

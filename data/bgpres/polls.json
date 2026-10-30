@@ -231,7 +231,8 @@
     "hristanov": 2.2,
     "vasilev": 4.1,
     "mihaylov": 3.5
-   }
+   },
+   "exitPoll": true
   },
   {
    "pollster": "Gallup",
@@ -249,7 +250,8 @@
     "vasilev": 3.1,
     "mihaylov": 2.7
    },
-   "method": "phone"
+   "method": "phone",
+   "exitPoll": true
   },
   {
    "pollster": "Market Links",
@@ -266,7 +268,8 @@
     "hristanov": 2.4,
     "vasilev": 4.3,
     "mihaylov": 3.5
-   }
+   },
+   "exitPoll": true
   },
   {
    "pollster": "Myara",
@@ -283,7 +286,8 @@
     "hristanov": 1.6,
     "vasilev": 3.9,
     "mihaylov": 3.2
-   }
+   },
+   "exitPoll": true
   },
   {
    "pollster": "Trend",
@@ -300,7 +304,8 @@
     "hristanov": 1.7,
     "vasilev": 3.5,
     "mihaylov": 3.0
-   }
+   },
+   "exitPoll": true
   }
  ]
 }

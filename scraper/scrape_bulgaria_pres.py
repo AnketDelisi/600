@@ -151,11 +151,16 @@ def scrape():
             if sig in seen or sig in SKIP:
                 continue
             seen.add(sig)
-            polls.append({
+            poll = {
                 "pollster": pollster, "date": date, "n": n,
                 "country": COUNTRY, "source": "Wikipedia",
                 "source_url": WIKI_URL, "votes": votes,
-            })
+            }
+            # Election-day tables with no sample size are exit polls; keep
+            # them for validation but out of forecast averages.
+            if n == 0:
+                poll["exitPoll"] = True
+            polls.append(poll)
     polls.sort(key=lambda p: (p["date"], p["pollster"]))
     polls = canonicalize_polls(polls)
     return polls

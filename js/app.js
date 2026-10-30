@@ -697,7 +697,7 @@ function houseEffects(){
   for(const party of PARTY_ORDER){
     let ws=0,wt=0;
     for(const poll of polls){
-      if(!poll.votes) continue;
+      if(!poll.votes||isExitPoll(poll)) continue;
       const v=poll.votes[party];
       if(v===undefined) continue;
       const w=Math.min(1500,poll.n||1000)*recencyWeight(poll.date);
@@ -707,7 +707,7 @@ function houseEffects(){
   }
   const acc={};
   for(const poll of polls){
-    if(!poll.votes) continue;
+    if(!poll.votes||isExitPoll(poll)) continue;
     const a=acc[poll.pollster]||(acc[poll.pollster]={});
     for(const party of PARTY_ORDER){
       const v=poll.votes[party];
@@ -902,6 +902,7 @@ function trendProjections(polls){
 }
 
 function computeAverages(polls, raw){
+  polls=polls.filter(p=>!isExitPoll(p));
   const avg={};
   for(const pid of PARTY_ORDER){
     avg[pid]=stateSpaceAverage(polls, pid, raw);
@@ -975,6 +976,10 @@ function recentPolls(polls, days){
   cutoff.setDate(cutoff.getDate()-days);
   return polls.filter(p=>new Date(p.date)>=cutoff);
 }
+// Exit polls are published after voting has started. They are validation
+// evidence, not pre-election vote intention, so they must not enter averages,
+// house effects or the pollster MAE used to weight the runoff.
+function isExitPoll(p){return !!(p&&p.exitPoll);}
 
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
@@ -1365,7 +1370,7 @@ function brazilRunoffHero(avg, filteredPolls){
       </div>
     </div>
     <div class="bz-path">
-      ${todayStr()<(META.election_date||'')
+      ${((COUNTRIES[COUNTRY]||{}).runoffOnly||todayStr()>=(META.election_date||''))
         ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${probPct(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${probPct(1-ro.winA/3000)}</b></span>`
         :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${probPct((ro.winA/3000))} ${t('first-round win','ilk turda kazanır')}</span>
       <span>\u00b7</span>
@@ -1375,6 +1380,8 @@ function brazilRunoffHero(avg, filteredPolls){
 }
 
 function renderHero(avg, filteredPolls){
+  // Exit polls are validation evidence, never the "latest poll" headline.
+  filteredPolls=filteredPolls.filter(p=>!isExitPoll(p));
   // two-round presidential countries (Brazil, France): the head-to-head hero
   // whenever the poll window carries runoff pairs; it falls back to the
   // generic hero itself when there are fewer than two runoff polls
@@ -1576,7 +1583,7 @@ function renderTrendChart(canvas, polls){
   const byDate={};
   polls.forEach(p=>{
     if(roMode&&!p.runoff) return;
-    if(!roMode&&!p.votes) return;
+    if(!roMode&&(!p.votes||isExitPoll(p))) return;
     const src=roMode?p.runoff:p.votes;
     if(!byDate[p.date]) byDate[p.date]={};
     for(const pid of PARTY_ORDER){
@@ -1904,7 +1911,7 @@ function renderPollsTable(polls){
     const rateTitle=maeVal!=null&&rr!==undefined?`${t('accuracy vs best','en iyiye göre doğruluk')}: ${(rr*100).toFixed(0)}% · MAE ${fmt(maeVal,2)}`:'';
     const rateColor=rr===undefined?'var(--c-rule)':(rr>=0.85?'#0B9E17':(rr>=0.6?'#E0A800':'var(--c-text-muted)'));
 
-    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}${p.method?`<span class="poll-method" title="${t('Fieldwork method','Saha yöntemi')}: ${p.method}">${p.method}</span>`:''}</td>
+    html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}${p.exitPoll?`<span class="poll-method" title="EXIT poll: published after voting started; excluded from averages">EXIT</span>`:''}${p.method?`<span class="poll-method" title="${t('Fieldwork method','Saha yöntemi')}: ${p.method}">${p.method}</span>`:''}</td>
       <td class="num c ps-rate" title="${rateTitle}" style="color:${rateColor}">${rateTxt}</td>
       <td class="num c" style="color:${leadColor};font-weight:700">${partyCode(leadP)} +${SEAT_BASED?String(Math.round(margin)):fmt(margin)}</td>`;
     active.forEach(pid=>{
@@ -1928,29 +1935,30 @@ function renderPollsTable(polls){
 // with each pollster's measured error from the first round next to the
 // head-to-head numbers it feeds into the runoff average.
 function renderRunoffTable(polls){
-  const ro=polls.filter(p=>p.runoff&&
-    (p.runoff.lula!==undefined||p.runoff.flavio!==undefined));
+  const ro=polls.filter(p=>p.runoff&&Object.keys(p.runoff).length);
   if(!ro.length) return '';
+  const pair=Object.keys(ro[0].runoff).slice(0,2);
+  const a=pair[0], b=pair[1];
   const frM=firstRoundMAE();
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Runoff polls (head-to-head)','\u0130kinci tur anketleri (ba\u015fa ba\u015f)')}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
       <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anketçi')}</th>
-      <th class="c" title="${t('Pollster error in the 4 Oct first round (their final poll vs the actual result); runoff weight = 1/MAE','Anketçinin 4 Ekim\'deki ilk tur hatası (son anketiyle gerçek sonuç arasındaki fark); ikinci tur ağırlığı = 1/MAE')}">${t('R1 MAE','1T HATA')}</th>
-      <th class="c">${partyCode('lula')}</th><th class="c">${partyCode('flavio')}</th>
+      <th class="c" title="${t('Pollster error in the first round (their final poll vs the actual result); runoff weight = 1/MAE','Anketçinin 4 Ekim\'deki ilk tur hatası (son anketiyle gerçek sonuç arasındaki fark); ikinci tur ağırlığı = 1/MAE')}">${t('R1 MAE','1T HATA')}</th>
+      <th class="c">${partyCode(a)}</th><th class="c">${partyCode(b)}</th>
       <th class="c">${t('Lead','Fark')}</th>
       </tr></thead><tbody>`;
   ro.slice(0,60).forEach(p=>{
-    const l=p.runoff.lula, f=p.runoff.flavio;
-    const lc=(PARTY_META.lula||{}).color||'#888';
-    const fc=(PARTY_META.flavio||{}).color||'#888';
+    const l=p.runoff[a], f=p.runoff[b];
+    const lc=(PARTY_META[a]||{}).color||'#888';
+    const fc=(PARTY_META[b]||{}).color||'#888';
     const mae=frM[p.pollster];
     const lead=(l!==undefined&&f!==undefined)
-      ?(l>f?['lula',l-f]:['flavio',f-l]):null;
+      ?(l>f?[a,l-f]:[b,f-l]):null;
     html+=`<tr><td>${p.date.slice(5)}</td><td>${p.pollster}</td>
       <td class="num c" style="font-weight:700">${mae?fmt(mae,2):'\u2014'}</td>
-      <td class="num c" style="color:${lc};font-weight:${lead&&lead[0]==='lula'?'900':'400'};background:${lead&&lead[0]==='lula'?lc+'22':''}">${l!==undefined?pct(l):'\u2014'}</td>
-      <td class="num c" style="color:${fc};font-weight:${lead&&lead[0]==='flavio'?'900':'400'};background:${lead&&lead[0]==='flavio'?fc+'22':''}">${f!==undefined?pct(f):'\u2014'}</td>
+      <td class="num c" style="color:${lc};font-weight:${lead&&lead[0]===a?'900':'400'};background:${lead&&lead[0]===a?lc+'22':''}">${l!==undefined?pct(l):'\u2014'}</td>
+      <td class="num c" style="color:${fc};font-weight:${lead&&lead[0]===b?'900':'400'};background:${lead&&lead[0]===b?fc+'22':''}">${f!==undefined?pct(f):'\u2014'}</td>
       <td class="num c" style="color:${lead?(PARTY_META[lead[0]]||{}).color:'#888'};font-weight:700">${lead?partyCode(lead[0])+' +'+fmt(lead[1],1):'\u2014'}</td>
       </tr>`;
   });
@@ -5457,7 +5465,7 @@ function firstRoundMAE(){
   const frDate=conf.firstRoundDate||'2026-10-04';
   const best={};
   POLLS.forEach(p=>{
-    if(!p.votes||!p.date||p.date>frDate) return;
+    if(!p.votes||!p.date||p.date>frDate||isExitPoll(p)) return;
     const ks=Object.keys(p.votes).filter(k=>fr[k]!=null);
     if(ks.length<3) return;
     const err=ks.reduce((a,k)=>a+Math.abs(p.votes[k]-fr[k]),0)/ks.length;
@@ -5502,9 +5510,9 @@ function runoffForecast(avg, filtered, sim){
   if(wa===null||wb===null) return null;
   const tot=wa+wb;
   let aN=100*wa/tot, bN=100*wb/tot;
-  // round 1 is over: the actual two-way vote anchors the projection
-  // (65% head-to-head polls, 35% the round-1 result - the same
-  // poll-weight philosophy as the main model)
+  // round 1 is over: the actual two-way vote anchors the projection.
+  // The default is 35% actual; bgpres uses 80% because its only runoff poll
+  // is a stale pre-first-round survey.
   const fr=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].firstRoundResult;
   let anchorW=0;
   if(fr&&fr[a]!=null&&fr[b]!=null&&fr[a]+fr[b]>0){
@@ -5516,6 +5524,16 @@ function runoffForecast(avg, filtered, sim){
       ?COUNTRIES[COUNTRY].runoffAnchor:0.35;
     aN=(1-anchorW)*aN+anchorW*(100*fr[a]/ft);
     bN=(1-anchorW)*bN+anchorW*(100*fr[b]/ft);
+  }
+  // Party endorsements are transfer evidence, not a head-to-head poll. The
+  // GERB/SDS pool is small and already leaned Gyurov in the exit crosstabs;
+  // apply a deliberately modest, configurable shift and expose it in the UI.
+  let endorsement=null;
+  const end=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffEndorsement;
+  if(end&&(end.candidate===a||end.candidate===b)){
+    const d=Number(end.delta)||0;
+    if(end.candidate===a){aN+=d;bN-=d;}else{bN+=d;aN-=d;}
+    endorsement=end;
   }
   const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
   const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
@@ -5539,7 +5557,7 @@ function runoffForecast(avg, filtered, sim){
   }
   valsA.sort((p,q)=>p-q);
   const aExp=mean(valsA), aLo=percentile(valsA,5), aHi=percentile(valsA,95);
-  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,anchorW,
+  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,anchorW,endorsement,
              aExp,aLo,aHi,bExp:100-aExp,bLo:100-aHi,bHi:100-aLo};
   RUNOFF_CACHE[cacheKey]=res;
   return res;
@@ -6044,7 +6062,7 @@ function renderForecast(pane){
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
-          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
+          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')+(ro.endorsement?` \u00b7 ${ro.endorsement.source} +${fmt(ro.endorsement.delta,1)}pp ${t('scenario','scenario')}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,h2a)}

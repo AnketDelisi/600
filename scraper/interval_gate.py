@@ -39,6 +39,25 @@ def summarize(rows, scales, floor=0):
     return out
 
 
+def size_bucket(mean, kind):
+    if kind == "votes":
+        if mean >= 20: return "large"
+        if mean >= 10: return "mid"
+        if mean >= 5: return "small"
+        return "tiny"
+    if mean >= 30: return "large"
+    if mean >= 10: return "mid"
+    if mean >= 3: return "small"
+    return "tiny"
+
+
+def group_summary(rows, keyfn, scales, floor=0):
+    groups = {}
+    for r in rows:
+        groups.setdefault(keyfn(r), []).append(r)
+    return {k: summarize(v, scales, floor) for k, v in groups.items()}
+
+
 def main():
     rows = {"votes": [], "seats": []}
     by_horizon = {"votes": {}, "seats": {}}
@@ -64,7 +83,8 @@ def main():
                         continue
                     center = vote_means.get(p, (iv[0] + iv[1]) / 2)
                     row = {"horizon": horizon, "center": center,
-                           "actual": actual, "lo": iv[0], "hi": iv[1]}
+                           "actual": actual, "lo": iv[0], "hi": iv[1],
+                           "country": country, "party": p}
                     rows["votes"].append(row)
                     by_horizon["votes"].setdefault(horizon, []).append(row)
                 for p, actual in (spec.get("seats") or {}).items():
@@ -73,11 +93,29 @@ def main():
                         continue
                     center = means.get(p, (iv[0] + iv[1]) / 2)
                     row = {"horizon": horizon, "center": center,
-                           "actual": actual, "lo": iv[0], "hi": iv[1]}
+                           "actual": actual, "lo": iv[0], "hi": iv[1],
+                           "country": country, "party": p}
                     rows["seats"].append(row)
                     by_horizon["seats"].setdefault(horizon, []).append(row)
     result = {
         "nominal": 0.9,
+        "votes_by_country": group_summary(
+            rows["votes"], lambda r: r["country"], SCALES),
+        "votes_by_size": group_summary(
+            rows["votes"], lambda r: size_bucket(r["center"], "votes"), SCALES),
+        "seats_by_country": {
+            c: {str(f): summarize(v, SCALES, f) for f in SEAT_FLOORS}
+            for c, v in ((k, [r for r in rows["seats"]
+                              if r["country"] == k])
+                         for k in {r["country"] for r in rows["seats"]})
+        },
+        "seats_by_size": {
+            b: {str(f): summarize(v, SCALES, f) for f in SEAT_FLOORS}
+            for b, v in ((k, [r for r in rows["seats"]
+                              if size_bucket(r["center"], "seats") == k])
+                         for k in {size_bucket(r["center"], "seats")
+                                   for r in rows["seats"]})
+        },
         "n_sims": N_SIMS,
         "scales": list(SCALES),
         "votes": {

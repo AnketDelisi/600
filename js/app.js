@@ -5105,9 +5105,35 @@ const FORECAST_DISTRICT_SIGMA=1.5;
 // 90% display intervals calibrated by scraper/interval_gate.py against the
 // historical cycle backtest. Raw p5-p95 simulation intervals under-covered
 // (vote 63%, seat 72%); these scales/floor bring empirical coverage to ~90%.
-const INTERVAL_VOTE_SCALE=2.0;
-const INTERVAL_SEAT_SCALE=1.0;
-const INTERVAL_SEAT_FLOOR=6;
+// Size-bucket calibration from the interval backtest. Large parties need much
+// less widening than the global all-party scale; tiny parties need more.
+const INTERVAL_VOTE_SCALE_BY_SIZE={large:1.6,mid:1.8,small:2.0,tiny:2.4};
+const INTERVAL_SEAT_SCALE_BY_SIZE={large:1.0,mid:1.0,small:1.0,tiny:1.0};
+const INTERVAL_SEAT_FLOOR_BY_SIZE={large:0,mid:6,small:6,tiny:6};
+// Only countries with enough historical cases get a country override.
+const INTERVAL_COUNTRY_VOTE_SCALE={uk:1.6,nz:1.4,germany:1.6,qc:2.0,lt:2.0};
+function intervalSize(mean,kind){
+  if(kind==='votes'){
+    if(mean>=20) return 'large';
+    if(mean>=10) return 'mid';
+    if(mean>=5) return 'small';
+    return 'tiny';
+  }
+  if(mean>=30) return 'large';
+  if(mean>=10) return 'mid';
+  if(mean>=3) return 'small';
+  return 'tiny';
+}
+function intervalVoteScale(mean){
+  const c=COUNTRIES[COUNTRY]||{};
+  return INTERVAL_COUNTRY_VOTE_SCALE[c.id||COUNTRY]||
+         INTERVAL_VOTE_SCALE_BY_SIZE[intervalSize(mean,'votes')];
+}
+function intervalSeatParams(mean){
+  const k=intervalSize(mean,'seats');
+  return {scale:INTERVAL_SEAT_SCALE_BY_SIZE[k],
+          floor:INTERVAL_SEAT_FLOOR_BY_SIZE[k]};
+}
 
 let DISTRICT_VOTES_MEDIAN=null, DISTRICT_VOTES_KEY=null;
 function districtVotesMedian(){
@@ -5384,13 +5410,15 @@ modes[p]=best;
     intervals.votes[p]=[v05,v95];
     intervals.seats[p]=[s05,s95];
     const vm=voteMeans[p];
-    calibrated.votes[p]=[Math.max(0,vm+(v05-vm)*INTERVAL_VOTE_SCALE),
-                          Math.min(100,vm+(v95-vm)*INTERVAL_VOTE_SCALE)];
+    const vs=intervalVoteScale(vm);
+    calibrated.votes[p]=[Math.max(0,vm+(v05-vm)*vs),
+                          Math.min(100,vm+(v95-vm)*vs)];
     const sm=means[p];
-    let slo=sm+(s05-sm)*INTERVAL_SEAT_SCALE;
-    let shi=sm+(s95-sm)*INTERVAL_SEAT_SCALE;
-    slo=Math.min(slo,sm-INTERVAL_SEAT_FLOOR);
-    shi=Math.max(shi,sm+INTERVAL_SEAT_FLOOR);
+    const sp=intervalSeatParams(sm);
+    let slo=sm+(s05-sm)*sp.scale;
+    let shi=sm+(s95-sm)*sp.scale;
+    slo=Math.min(slo,sm-sp.floor);
+    shi=Math.max(shi,sm+sp.floor);
     calibrated.seats[p]=[Math.max(0,slo),Math.min(SEATS_TOTAL,shi)];
   });
   return {maj,largest,seatsBy,votesBy,means,voteMeans,medians,modes,modal,modalN,nSims,

@@ -3416,6 +3416,7 @@ function addMapOutline(svg, paths){
     clone.setAttribute('pointer-events','none');
     clone.setAttribute('aria-hidden','true');
     clone.setAttribute('class','map-outline-layer');
+    scale=Math.max(0.08,Math.min(4,scale));
     const id='map-outline-'+(++MAP_OUTLINE_SEQ);
     const f=document.createElementNS(NS,'filter');
     f.setAttribute('id',id);
@@ -3427,7 +3428,7 @@ function addMapOutline(svg, paths){
     const dilate=document.createElementNS(NS,'feMorphology');
     dilate.setAttribute('in','SourceAlpha');
     dilate.setAttribute('operator','dilate');
-    dilate.setAttribute('radius',(1.5/Math.max(0.05,scale)).toFixed(2));
+    dilate.setAttribute('radius',(0.75/scale).toFixed(2));
     dilate.setAttribute('result','expanded');
     const ring=document.createElementNS(NS,'feComposite');
     ring.setAttribute('in','expanded');

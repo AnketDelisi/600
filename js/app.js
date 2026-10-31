@@ -5545,6 +5545,25 @@ function firstRoundMAE(){
 // Head-to-head runoff forecast from polls that carry a "runoff" pair.
 // Averages are recency-weighted, renormalized to the two candidates, then
 // simulated head-to-head with the same national polling error scale.
+// First-round eliminated-candidate transfer prior. Each candidate's vote is
+// split according to the endorsement/transfer table; the remainder abstains.
+function runoffTransferPrior(fr, conf, a, b){
+  if(!fr||!conf||!conf.runoffTransfers) return null;
+  const keys=conf.runoffTransfers;
+  let va=fr[a]||0, vb=fr[b]||0;
+  const known=Object.keys(fr).reduce((s,k)=>s+(fr[k]||0),0);
+  const other=Math.max(0,100-known);
+  for(const k in keys){
+    if(k===a||k===b) continue;
+    const v=(k==='others')?other:(fr[k]||0);
+    const t=keys[k]||{};
+    va+=v*(t[a]||0);
+    vb+=v*(t[b]||0);
+  }
+  const tot=va+vb;
+  return tot>0?{a:100*va/tot,b:100*vb/tot}:null;
+}
+
 function runoffForecast(avg, filtered, sim){
   const roPolls=filtered.filter(p=>p.runoff&&typeof p.runoff==='object'&&Object.keys(p.runoff).length);
   if(!roPolls.length) return null;
@@ -5591,6 +5610,18 @@ function runoffForecast(avg, filtered, sim){
     aN=(1-anchorW)*aN+anchorW*(100*fr[a]/ft);
     bN=(1-anchorW)*bN+anchorW*(100*fr[b]/ft);
   }
+  // Blend in the eliminated-candidate transfer prior before the GERB/SDS
+  // endorsement shift. This makes the endorsement assumptions explicit.
+  let transfer=null;
+  if(fr){
+    transfer=runoffTransferPrior(fr,COUNTRIES[COUNTRY],a,b);
+    if(transfer){
+      const tw=(COUNTRIES[COUNTRY].runoffTransferWeight!==undefined)
+        ?COUNTRIES[COUNTRY].runoffTransferWeight:0;
+      aN=(1-tw)*aN+tw*transfer.a;
+      bN=(1-tw)*bN+tw*transfer.b;
+    }
+  }
   // Party endorsements are transfer evidence, not a head-to-head poll. The
   // GERB/SDS pool is small and already leaned Gyurov in the exit crosstabs;
   // apply a deliberately modest, configurable shift and expose it in the UI.
@@ -5623,7 +5654,7 @@ function runoffForecast(avg, filtered, sim){
   }
   valsA.sort((p,q)=>p-q);
   const aExp=mean(valsA), aLo=percentile(valsA,5), aHi=percentile(valsA,95);
-  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,anchorW,endorsement,
+  const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,anchorW,endorsement,transfer,
              aExp,aLo,aHi,bExp:100-aExp,bLo:100-aHi,bHi:100-aLo};
   RUNOFF_CACHE[cacheKey]=res;
   return res;
@@ -6133,7 +6164,7 @@ function renderForecast(pane){
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
-          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')+(ro.endorsement?` \u00b7 ${ro.endorsement.source} +${fmt(ro.endorsement.delta,1)}pp ${t('scenario','scenario')}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
+          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')+(ro.endorsement?` \u00b7 ${ro.endorsement.source} +${fmt(ro.endorsement.delta,1)}pp ${t('scenario','scenario')}`:'')+(ro.transfer?` \u00b7 ${t('eliminated-candidate transfers','eliminated-candidate transfers')} ${fmt(ro.transfer.a,1)}/${fmt(ro.transfer.b,1)}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,h2a)}

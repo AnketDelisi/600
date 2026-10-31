@@ -3375,6 +3375,77 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
   if(g.childNodes.length) svg.appendChild(g);
 }
 
+// Add a black outer edge around the union of the map shapes. The original
+// paths stay on top, so their white internal borders are untouched.
+let MAP_OUTLINE_SEQ=0;
+function addMapOutline(svg, paths){
+  const NS='http://www.w3.org/2000/svg';
+  const groups=new Set();
+  const direct=[];
+  paths.forEach(ph=>{
+    if((ph.getAttribute('class')||'')==='seat-area') return;
+    let root=ph;
+    while(root.parentNode&&root.parentNode!==svg) root=root.parentNode;
+    if(root.parentNode!==svg||root===svg) return;
+    if(root===ph) direct.push(ph);
+    else groups.add(root);
+  });
+  if(direct.length){
+    const wrap=document.createElementNS(NS,'g');
+    svg.insertBefore(wrap,direct[0]);
+    direct.forEach(ph=>wrap.appendChild(ph));
+    groups.add(wrap);
+  }
+  if(!groups.size) return;
+  let defs=svg.querySelector('defs');
+  if(!defs){
+    defs=document.createElementNS(NS,'defs');
+    svg.insertBefore(defs,svg.firstChild);
+  }
+  groups.forEach(g=>{
+    if(g.getAttribute('filter')) return;
+    let scale=1;
+    try{
+      const m=g.getCTM();
+      if(m) scale=Math.sqrt(Math.abs(m.a*m.d-m.b*m.c))||1;
+    }catch(e){}
+    const id='map-outline-'+(++MAP_OUTLINE_SEQ);
+    const f=document.createElementNS(NS,'filter');
+    f.setAttribute('id',id);
+    f.setAttribute('x','-10%');
+    f.setAttribute('y','-10%');
+    f.setAttribute('width','120%');
+    f.setAttribute('height','120%');
+    f.setAttribute('color-interpolation-filters','sRGB');
+    const dilate=document.createElementNS(NS,'feMorphology');
+    dilate.setAttribute('in','SourceAlpha');
+    dilate.setAttribute('operator','dilate');
+    dilate.setAttribute('radius',(1.5/Math.max(0.05,scale)).toFixed(2));
+    dilate.setAttribute('result','expanded');
+    const flood=document.createElementNS(NS,'feFlood');
+    flood.setAttribute('flood-color','#111827');
+    flood.setAttribute('result','ink');
+    const comp=document.createElementNS(NS,'feComposite');
+    comp.setAttribute('in','ink');
+    comp.setAttribute('in2','expanded');
+    comp.setAttribute('operator','in');
+    comp.setAttribute('result','outline');
+    const merge=document.createElementNS(NS,'feMerge');
+    const outlineNode=document.createElementNS(NS,'feMergeNode');
+    outlineNode.setAttribute('in','outline');
+    const graphicNode=document.createElementNS(NS,'feMergeNode');
+    graphicNode.setAttribute('in','SourceGraphic');
+    merge.appendChild(outlineNode);
+    merge.appendChild(graphicNode);
+    f.appendChild(dilate);
+    f.appendChild(flood);
+    f.appendChild(comp);
+    f.appendChild(merge);
+    defs.appendChild(f);
+    g.setAttribute('filter','url(#'+id+')');
+  });
+}
+
 async function renderMapInto(box, avg, resultMode, confOverride){
   const conf=confOverride||MAP_CONF();
   if(!conf) return;
@@ -3614,6 +3685,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   box.innerHTML='';
   box.appendChild(svg);
   box.appendChild(tooltip);
+  addMapOutline(svg, paths);
   // seat circles for multi-member district maps (Spain/Poland); drawn after
   // the SVG is in the DOM so getBBox() has layout
   if(!conf.noSeatDots&&(conf.seatDistricts||conf.seatDots||conf.prDistricts)&&mapped.length) drawSeatDots(svg, mapped, avg, resultMode, conf);

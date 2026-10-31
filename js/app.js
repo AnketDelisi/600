@@ -2617,6 +2617,11 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
        !(avg&&avg[p]!==undefined&&avg[p]!==null)){
       // dissolved alliances: shown in the 2023 result view, never projected
       now=resultMode?past:0;
+    }else if(avg&&avg[p]==null&&!(reg&&reg[p]!==undefined)&&
+             conf.proxyParties&&conf.proxyParties.indexOf(p)>=0){
+      // proxy geography is a swing shape, not a result: an unpolled proxy
+      // party stays at zero instead of being resurrected from its baseline
+      now=0;
     }else if(resultMode||!avg||(avg[p]==null&&!(reg&&reg[p]!==undefined))){
       now=past;
     }else{
@@ -3659,11 +3664,11 @@ function captureChartPng(canvas, filename){
   downloadPng(out.toDataURL('image/png'), filename);
 }
 
-// ---------- poster: dark landscape shareable projection ----------
-// 1600x900 dark card in the "Seçim Projeksiyonu" style: party rows with logo
-// tiles + shares + seats, first-place / coalition / runoff probability tiles,
-// the parliament arc and the coloured district map - both rasterized from
-// the SVGs already on screen, so the poster matches the page.
+// ---------- poster: light landscape shareable projection ----------
+// 1600x900 white card: party rows with direct colour-masked logos + shares +
+// seats, first-place / coalition / runoff probability tiles, the parliament
+// arc and the coloured district map - both rasterized from the SVGs already
+// on screen, so the poster matches the page.
 function posterTextColor(hex){
   const h=(hex||'#888888').replace('#','');
   const r=parseInt(h.slice(0,2),16)||0, g=parseInt(h.slice(2,4),16)||0,
@@ -3679,6 +3684,25 @@ function loadImg(src){
     i.onload=()=>res(i); i.onerror=()=>res(null);
     i.src=src;
   });
+}
+// Recolour a logo's opaque pixels with the party colour, keeping its
+// transparent background and its square footprint (no coloured tile behind it).
+function logoMask(lg,color,size){
+  if(!lg) return null;
+  const out=document.createElement('canvas');
+  out.width=Math.round(size*2); out.height=Math.round(size*2);
+  const g=out.getContext('2d');
+  g.scale(2,2);
+  g.beginPath();
+  g.rect(0,0,size,size);
+  g.clip();
+  const sc=Math.max(size/lg.width,size/lg.height);
+  const w=lg.width*sc, h=lg.height*sc;
+  g.drawImage(lg,(size-w)/2,(size-h)/2,w,h);
+  g.globalCompositeOperation='source-in';
+  g.fillStyle=color;
+  g.fillRect(0,0,size,size);
+  return out;
 }
 function svgElementToImg(svg, brightText){
   return new Promise(res=>{
@@ -3764,37 +3788,41 @@ async function renderPoster(opts){
   canvas.width=W*S; canvas.height=H*S;
   const ctx=canvas.getContext('2d');
   ctx.scale(S,S);
-  const FONT='"Source Code Pro","Archivo Narrow",monospace';
-  const MONO=FONT;
-  // make sure the mono weights are actually loaded before drawing text
+  const DISPLAY='"Advent Pro","Public Sans",system-ui,sans-serif';
+  const FONT='"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
+  const MONO='"Source Code Pro",monospace';
+  // make sure every poster weight is actually loaded before drawing text
   if(document.fonts&&document.fonts.load){
-    await Promise.all(['400','500','600','700','800','900'].map(w=>
-      document.fonts.load(w+' 16px "Source Code Pro"').catch(()=>{})));
+    const loads=[];
+    ['600','700'].forEach(w=>loads.push(document.fonts.load(w+' 16px "Advent Pro"')));
+    ['600','700','800'].forEach(w=>loads.push(document.fonts.load(w+' 16px "Public Sans"')));
+    ['700','800'].forEach(w=>loads.push(document.fonts.load(w+' 16px "Source Code Pro"')));
+    await Promise.all(loads.map(p=>p.catch(()=>{})));
   }
-  ctx.fillStyle='#111111';
+  ctx.fillStyle='#FFFFFF';
   ctx.fillRect(0,0,W,H);
 
   // title (top right), shrunk to fit the right half
-  ctx.fillStyle='#FFFFFF';
+  ctx.fillStyle='#161616';
   ctx.textAlign='right';
   ctx.textBaseline='alphabetic';
   let titleSize=56;
   const titleTxt=String(opts.title||'');
-  ctx.font='700 '+titleSize+'px '+FONT;
+  ctx.font='700 '+titleSize+'px '+DISPLAY;
   while(titleSize>28&&ctx.measureText(titleTxt).width>W-40-700){
     titleSize-=2;
-    ctx.font='700 '+titleSize+'px '+FONT;
+    ctx.font='700 '+titleSize+'px '+DISPLAY;
   }
   ctx.fillText(titleTxt,W-40,84);
-  ctx.font='italic 700 25px '+FONT;
-  ctx.fillStyle='#DDDDDD';
+  ctx.font='600 24px '+FONT;
+  ctx.fillStyle='#5A5A5A';
   ctx.fillText(opts.subtitle||'',W-40,124);
 
   const rows=opts.rows||[];
   const grid=opts.grid||[];
   const logos=await Promise.all(rows.concat(grid).map(r=>loadImg(r.logo)));
-  const arcImg=await svgElementToImg(opts.arcSvg,true);
-  const mapImg=await svgElementToImg(opts.mapSvg,true);
+  const arcImg=await svgElementToImg(opts.arcSvg,false);
+  const mapImg=await svgElementToImg(opts.mapSvg,false);
 
   const X=40, barW=420;
   // consistent spacing across every country: the box always leaves a 10px
@@ -3804,23 +3832,13 @@ async function renderPoster(opts){
   const TH=RH-10;
   const totalW=TH+6+barW+8+92;
   const drawTile=(r,lg,yy,th)=>{
-    ctx.fillStyle=r.color;
-    ctx.fillRect(X,yy,th,th);
     if(lg){
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(X,yy,th,th);
-      ctx.clip();
-      try{ctx.filter='brightness(0) invert(1)'}catch(e){}
-      // the logos are already square-adjusted: fill the tile, never shrink
-      const sc=Math.max(th/lg.width, th/lg.height);
-      ctx.drawImage(lg,X+(th-lg.width*sc)/2,yy+(th-lg.height*sc)/2,
-        lg.width*sc,lg.height*sc);
-      ctx.restore();
+      const mask=logoMask(lg,r.color,th);
+      if(mask) ctx.drawImage(mask,X,yy,th,th);
     }else{
-      ctx.fillStyle=posterTextColor(r.color);
+      ctx.fillStyle=r.color;
       ctx.textAlign='center'; ctx.textBaseline='middle';
-      ctx.font='700 '+Math.round(th*0.32)+'px '+FONT;
+      ctx.font='800 '+Math.round(th*0.32)+'px '+FONT;
       ctx.fillText(r.code||'',X+th/2,yy+th/2);
       ctx.textAlign='left'; ctx.textBaseline='alphabetic';
     }
@@ -3877,16 +3895,16 @@ async function renderPoster(opts){
     const nameTxt=String(r.name||'').toUpperCase();
     const nameAvail=numX-(bx+14)-14;
     let nsize=Math.min(40,Math.round(th*0.47));
-    ctx.font='700 '+nsize+'px '+FONT;
+    ctx.font='800 '+nsize+'px '+FONT;
     while(nsize>22&&ctx.measureText(nameTxt).width>nameAvail){
       nsize-=2;
-      ctx.font='700 '+nsize+'px '+FONT;
+      ctx.font='800 '+nsize+'px '+FONT;
     }
     ctx.fillText(nameTxt,bx+14,b1);
     // ideology: the best-fitting item at a fixed size, word-boundary
     // ellipsised when long; baseline shared with the seats
     if(r.ideology){
-      ctx.font='700 13px '+FONT;
+      ctx.font='600 13px '+FONT;
       ctx.fillText(ellipsizeText(pickIdeology(r.ideology),nameAvail,ctx),
         bx+14,b2);
     }
@@ -3896,10 +3914,10 @@ async function renderPoster(opts){
       ctx.fillRect(fx,y,fw,th);
       ctx.fillStyle=tc;
       ctx.textAlign='center';
-      ctx.font='700 9px '+FONT;
+      ctx.font='700 10px '+FONT;
       ctx.fillText(t('Chance of first','Birincilik şansı'),fx+fw/2,
         y+Math.round(th*0.33));
-      ctx.font='900 26px '+MONO;
+      ctx.font='800 26px '+MONO;
       ctx.fillText(r.firstText,fx+fw/2,y+Math.round(th*0.74));
       ctx.textAlign='left';
     }
@@ -3925,18 +3943,15 @@ async function renderPoster(opts){
     grid.forEach((r,i)=>{
       const gx=X+(i%2)*(gw+gap), gy=y+Math.floor(i/2)*(gh+gap);
       const th2=gh, lg=logos[rows.length+i];
-      ctx.fillStyle=r.color;
-      ctx.fillRect(gx,gy,th2,th2);
       if(lg){
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(gx,gy,th2,th2);
-        ctx.clip();
-        try{ctx.filter='brightness(0) invert(1)'}catch(e){}
-        const sc=Math.max(th2/lg.width, th2/lg.height);
-        ctx.drawImage(lg,gx+(th2-lg.width*sc)/2,gy+(th2-lg.height*sc)/2,
-          lg.width*sc,lg.height*sc);
-        ctx.restore();
+        const mask=logoMask(lg,r.color,th2);
+        if(mask) ctx.drawImage(mask,gx,gy,th2,th2);
+      }else{
+        ctx.fillStyle=r.color;
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.font='800 '+Math.round(th2*0.42)+'px '+FONT;
+        ctx.fillText(r.code||'',gx+th2/2,gy+th2/2);
+        ctx.textAlign='left'; ctx.textBaseline='alphabetic';
       }
       const bx=gx+th2+4, bw=gw-th2-4;
       ctx.fillStyle=r.color;
@@ -3944,11 +3959,11 @@ async function renderPoster(opts){
       const tc=posterTextColor(r.color);
       ctx.fillStyle=tc;
       // name and share share a baseline; ideology and seats share the next
-      ctx.font='700 '+nameS+'px '+FONT;
+      ctx.font='800 '+nameS+'px '+FONT;
       ctx.fillText(String(r.name||'').toUpperCase(),bx+7,
         gy+Math.round(gh*0.42));
       if(r.ideology){
-        ctx.font='700 10px '+FONT;
+        ctx.font='600 10px '+FONT;
         ctx.fillText(ellipsizeText(pickIdeology(r.ideology),bw-14,ctx),
           bx+7,gy+Math.round(gh*0.8));
       }
@@ -3999,7 +4014,7 @@ async function renderPoster(opts){
         ctx.font='700 '+lsize+'px '+FONT;
       }
       ctx.fillText(labelTxt,tx+14,y+(single?38:30));
-      ctx.font='900 '+(single?60:38)+'px '+MONO;
+      ctx.font='800 '+(single?60:38)+'px '+MONO;
       ctx.fillText(tl.value,tx+14,y+(single?88:72));
       tx+=tw+12;
     });
@@ -5288,9 +5303,12 @@ function runForecast(avg, nSims, nPolls, horizonDays){
   const ORDER_ALL=PARTY_ORDER.concat(['other']);
   // Parties with no polling (UK's NI parties): their Dirichlet placeholder
   // draw would otherwise act as a "poll" and swing their seats on noise.
-  // Pin them to their last-election national share, so districtShares gives
-  // them zero swing and their seats hold the baseline.
-  const natBase=(MAP_CONF()&&MAP_CONF().national2021)||LAST_ELECTION.results||{};
+  // Pin them to their actual last-election national share, so districtShares
+  // gives them zero swing and their seats hold the baseline. Do not use the
+  // map's national2021 anchor here: it can carry synthetic proxy geography
+  // for new parties (Turkey's A/YENİ/SAADET), which would force an unpolled
+  // party into the forecast with a made-up share.
+  const natBase=LAST_ELECTION.results||{};
   const noPoll={};
   PARTY_ORDER.forEach(p=>{
     if(avg[p]==null&&!(PARTY_META[p]&&

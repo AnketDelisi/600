@@ -3549,7 +3549,8 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       :(blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888'));
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
-      ph.style.stroke=conf.stroke||'none';
+      ph.style.stroke=conf.stroke||'#ffffff';
+      ph.style.strokeWidth='0.7';
     }
     ph.style.cursor='pointer';
     ph.style.transition='opacity .15s ease';

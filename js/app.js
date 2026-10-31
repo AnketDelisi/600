@@ -3995,30 +3995,15 @@ async function renderPoster(opts){
     });
     y+=rowsN*(gh+gap)+10;
   }
-  // probability strip: full width of the party rows, two quiet columns
-  // separated by a hairline. No card fill; the colour is a small accent rule.
+  // probability metrics: no frame, colour only in a rule under each number
   if(opts.tiles&&opts.tiles.length){
     const rowW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
     const cols=opts.tiles.length===1?1:2;
     const colW=rowW/cols;
     const py=y+10;
-    ctx.strokeStyle='#DCDCDC';
-    ctx.lineWidth=1;
-    ctx.beginPath();
-    ctx.moveTo(X,py);
-    ctx.lineTo(X+rowW,py);
-    ctx.stroke();
-    if(cols===2){
-      ctx.beginPath();
-      ctx.moveTo(X+colW,py+8);
-      ctx.lineTo(X+colW,py+60);
-      ctx.stroke();
-    }
     opts.tiles.slice(0,2).forEach((tl,idx)=>{
       const tx=X+idx*colW+(idx?16:0);
       const availW=colW-(idx?16:0)-12;
-      ctx.fillStyle=tl.color||'#9CA3AF';
-      ctx.fillRect(tx,py+9,28,3);
       ctx.fillStyle='#5A5A5A';
       let lsize=11;
       const labelTxt=String(tl.label||'');
@@ -4027,10 +4012,12 @@ async function renderPoster(opts){
         lsize--;
         ctx.font='700 '+lsize+'px '+FONT;
       }
-      ctx.fillText(labelTxt,tx,py+28);
+      ctx.fillText(labelTxt,tx,py+16);
       ctx.fillStyle='#161616';
       ctx.font='800 34px '+MONO;
-      ctx.fillText(tl.value,tx,py+62);
+      ctx.fillText(tl.value,tx,py+50);
+      ctx.fillStyle=tl.color||'#9CA3AF';
+      ctx.fillRect(tx,py+58,availW,2);
     });
   }
   if(mapImg){
@@ -6618,7 +6605,7 @@ function renderForecast(pane){
         tiles=items.map(([p,sh,wp])=>({
           label:((PARTY_META[p]||{}).short||partyCode(p))+' '+
             t('win probability','kazanma ihtimali'),
-          value:'%'+fmt(100*wp,1),
+          value:'%'+probPct(wp).replace('%',''),
           color:(PARTY_META[p]||{}).color||'#888'}));
       }else{
         const order=fOrder.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
@@ -6717,9 +6704,9 @@ function renderForecast(pane){
           const elected=w1+Math.max(0,reach-w1)*h2;
           const lc=(PARTY_META[lead]||{}).color||'#888';
           tiles=[{label:partyCode(lead)+' '+t('wins the first round','ilk turu kazanma'),
-                  value:'%'+fmt(100*w1,1),color:lc},
+                  value:'%'+probPct(w1).replace('%',''),color:lc},
                  {label:partyCode(lead)+' '+t('wins the runoff','ikinci turda kazanma'),
-                  value:'%'+fmt(100*elected,1),color:lc}];
+                  value:'%'+probPct(elected).replace('%',''),color:lc}];
         }
       }
       const tmp=document.createElement('div');

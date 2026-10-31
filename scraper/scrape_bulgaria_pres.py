@@ -177,10 +177,22 @@ def main():
             old = json.loads(path.read_text(encoding="utf8")).get("polls", [])
         except Exception:
             old = []
-        seen = {(p["pollster"], p["date"]) for p in polls}
+        # A runoff poll can share the pollster/date with that pollster's
+        # first-round row (Sova Harris 2026-10-17 does). Merge it into the new
+        # row instead of treating it as a duplicate and dropping it.
+        by_sig = {(p["pollster"], p["date"]): p for p in polls}
         for p in old:
-            if p.get("runoff") and (p["pollster"], p["date"]) not in seen:
+            if not (p.get("runoff") or p.get("runoffs")):
+                continue
+            sig = (p["pollster"], p["date"])
+            target = by_sig.get(sig)
+            if target is None:
                 polls.append(p)
+                continue
+            if p.get("runoff") and not target.get("runoff"):
+                target["runoff"] = p["runoff"]
+            if p.get("runoffs") and not target.get("runoffs"):
+                target["runoffs"] = p["runoffs"]
         polls.sort(key=lambda p: (p["date"], p["pollster"]))
     print(f"Parsed {len(polls)} polls "
           f"(latest: {polls[-1]['date'] if polls else '-'})")

@@ -3820,21 +3820,16 @@ async function renderPoster(opts){
 
   const rows=opts.rows||[];
   const grid=opts.grid||[];
-  const logos=await Promise.all(rows.concat(grid).map(r=>loadImg(r.logo)));
+  const logos=await Promise.all(rows.map(r=>loadImg(r.logo)));
   const arcImg=await svgElementToImg(opts.arcSvg,false);
   const mapImg=await svgElementToImg(opts.mapSvg,false);
 
   const X=40, barW=420;
   // consistent spacing across every country: the box always leaves a 10px
-  // gap inside its row slot; rows give height back when a minor-party list
-  // must also fit so the compact rows stay aligned with the big rows
-  const tilesH=(opts.tiles&&opts.tiles.length)?82:0;
-  let RH=96;
-  if(grid.length){
-    const avail=H-40-30-tilesH-10;
-    const maxMajor=Math.floor((avail-grid.length*22)/Math.max(1,rows.length));
-    RH=Math.max(64,Math.min(80,maxMajor));
-  }
+  // gap inside its row slot; rows give height back when the stacked minor
+  // parties must also fit
+  const tilesH=(opts.tiles&&opts.tiles.length)?72:0;
+  const RH=grid.length?(rows.length>=6?80:90):96;
   const TH=RH-10;
   const totalW=TH+6+barW+8+92;
   const drawTile=(r,lg,yy,th)=>{
@@ -3932,106 +3927,110 @@ async function renderPoster(opts){
     }
     y+=RH;
   });
-  // compact minor-party rows: full width, same logo/bar/number columns as the
-  // big rows, just shorter. The old two-column grid made them look detached.
+  // minor parties: the old two-column stack, but text-only (no logo column)
   if(grid.length){
     y+=6;
-    const minorRows=grid.length;
-    const minorAvail=H-30-y-tilesH-10;
-    let minorGap=4;
-    let minorH=Math.min(48,Math.floor((minorAvail-(minorRows-1)*minorGap)/minorRows));
-    if(minorH<24){
-      minorGap=0;
-      minorH=Math.max(18,Math.floor(minorAvail/minorRows));
-    }
+    const boxW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
+    const rowsN=Math.ceil(grid.length/2);
+    const avail=H-30-y-tilesH-10;
+    const gh=Math.max(18,Math.min(52,Math.floor(avail/rowsN)-10));
+    const gap=10;
+    const gw=Math.floor((boxW-gap)/2);
+    const nameS=Math.max(10,Math.round(gh*0.42));
+    const shareS=Math.max(9,Math.round(gh*0.4));
+    const seatS=Math.max(8,Math.round(gh*0.32));
     grid.forEach((r,i)=>{
-      const gy=y+i*(minorH+minorGap);
-      const lg=logos[rows.length+i];
-      if(lg){
-        const mask=logoMask(lg,r.color,minorH);
-        if(mask) ctx.drawImage(mask,X+(TH-minorH)/2,gy,minorH,minorH);
-      }else{
-        ctx.fillStyle=r.color;
-        ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.font='800 '+Math.round(minorH*0.42)+'px '+FONT;
-        ctx.fillText(r.code||'',X+TH/2,gy+minorH/2);
-        ctx.textAlign='left'; ctx.textBaseline='alphabetic';
-      }
-      const bx=X+TH+6;
+      const gx=X+(i%2)*(gw+gap), gy=y+Math.floor(i/2)*(gh+gap);
       ctx.fillStyle=r.color;
-      ctx.fillRect(bx,gy,barW,minorH);
+      ctx.fillRect(gx,gy,gw,gh);
       const tc=posterTextColor(r.color);
       const deltaInk=tc==='#FFFFFF'?'rgba(255,255,255,0.62)':'rgba(22,22,22,0.55)';
       ctx.fillStyle=tc;
-      const b1=gy+Math.round(minorH*0.56);
-      const b2=gy+Math.round(minorH*0.86);
-      const numX=bx+barW-14-(colW?colW+10:0);
-      const nameTxt=String(r.name||'').toUpperCase();
-      const nameAvail=numX-(bx+14)-14;
-      let nsize=Math.max(12,Math.round(minorH*0.40));
-      ctx.font='800 '+nsize+'px '+FONT;
-      while(nsize>11&&ctx.measureText(nameTxt).width>nameAvail){
-        nsize--;
-        ctx.font='800 '+nsize+'px '+FONT;
+      const b1=gy+Math.round(gh*0.42);
+      const b2=gy+Math.round(gh*0.8);
+      const gR=gx+gw-8;
+      let dvW=0, dsW=0;
+      if(r.dvText){
+        const dvS=Math.max(7,Math.round(shareS*0.40));
+        ctx.font='600 '+dvS+'px '+MONO;
+        dvW=ctx.measureText(r.dvText).width+5;
       }
-      ctx.fillText(nameTxt,bx+14,b1);
-      if(r.ideology&&minorH>=28){
-        ctx.font='600 '+Math.max(9,Math.round(minorH*0.22))+'px '+FONT;
+      if(r.dsText){
+        const dsS=Math.max(6,Math.round(seatS*0.58));
+        ctx.font='600 '+dsS+'px '+MONO;
+        dsW=ctx.measureText(r.dsText).width+5;
+      }
+      const nameAvail=gR-dvW-(gx+8)-6;
+      ctx.font='800 '+nameS+'px '+FONT;
+      ctx.fillText(ellipsizeText(String(r.name||'').toUpperCase(),nameAvail,ctx),
+        gx+8,b1);
+      if(r.ideology){
+        ctx.font='600 '+Math.max(9,Math.round(gh*0.20))+'px '+FONT;
         ctx.fillText(ellipsizeText(pickIdeology(r.ideology),nameAvail,ctx),
-          bx+14,b2);
+          gx+8,b2);
       }
       ctx.textAlign='right';
-      ctx.font='700 '+Math.max(12,Math.round(minorH*0.40))+'px '+MONO;
-      ctx.fillText(r.shareText||'',numX,b1);
+      ctx.font='700 '+shareS+'px '+MONO;
+      ctx.fillText(r.shareText||'',gR-dvW,b1);
       if(r.seatsText){
-        ctx.font='700 '+Math.max(10,Math.round(minorH*0.30))+'px '+MONO;
-        ctx.fillText(r.seatsText,numX,b2);
+        ctx.font='700 '+seatS+'px '+MONO;
+        ctx.fillText(r.seatsText,gR-dsW,b2);
       }
       if(r.dvText||r.dsText){
         ctx.textAlign='left';
         ctx.fillStyle=deltaInk;
         if(r.dvText){
-          ctx.font='600 '+Math.max(9,Math.round(minorH*0.26))+'px '+MONO;
-          ctx.fillText(r.dvText,bx+barW-14-colW,b1);
+          const dvS=Math.max(7,Math.round(shareS*0.40));
+          ctx.font='600 '+dvS+'px '+MONO;
+          ctx.fillText(r.dvText,gR-dvW+5,b1);
         }
         if(r.dsText){
-          ctx.font='600 '+Math.max(8,Math.round(minorH*0.22))+'px '+MONO;
-          ctx.fillText(r.dsText,bx+barW-14-colW,b2);
+          const dsS=Math.max(6,Math.round(seatS*0.58));
+          ctx.font='600 '+dsS+'px '+MONO;
+          ctx.fillText(r.dsText,gR-dsW+5,b2);
         }
         ctx.fillStyle=tc;
       }
       ctx.textAlign='left';
     });
-    y+=minorRows*(minorH+minorGap)+6;
+    y+=rowsN*(gh+gap)+10;
   }
-  // probability cards: compact neutral cards side by side, with the party
-  // colour reduced to a thin accent rule instead of a full loud fill
+  // probability strip: full width of the party rows, two quiet columns
+  // separated by a hairline. No card fill; the colour is a small accent rule.
   if(opts.tiles&&opts.tiles.length){
-    const single=opts.tiles.length===1;
-    const tw=single?380:300, th3=76;
-    let tx=X;
-    opts.tiles.slice(0,2).forEach(tl=>{
-      const cy=y+6;
-      ctx.fillStyle='#F7F7F5';
-      ctx.fillRect(tx,cy,tw,th3);
-      ctx.strokeStyle='#DCDCDC';
-      ctx.lineWidth=1;
-      ctx.strokeRect(tx+0.5,cy+0.5,tw-1,th3-1);
+    const rowW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
+    const cols=opts.tiles.length===1?1:2;
+    const colW=rowW/cols;
+    const py=y+10;
+    ctx.strokeStyle='#DCDCDC';
+    ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(X,py);
+    ctx.lineTo(X+rowW,py);
+    ctx.stroke();
+    if(cols===2){
+      ctx.beginPath();
+      ctx.moveTo(X+colW,py+8);
+      ctx.lineTo(X+colW,py+60);
+      ctx.stroke();
+    }
+    opts.tiles.slice(0,2).forEach((tl,idx)=>{
+      const tx=X+idx*colW+(idx?16:0);
+      const availW=colW-(idx?16:0)-12;
       ctx.fillStyle=tl.color||'#9CA3AF';
-      ctx.fillRect(tx,cy,4,th3);
+      ctx.fillRect(tx,py+9,28,3);
       ctx.fillStyle='#5A5A5A';
-      let lsize=13;
+      let lsize=11;
       const labelTxt=String(tl.label||'');
       ctx.font='700 '+lsize+'px '+FONT;
-      while(lsize>10&&ctx.measureText(labelTxt).width>tw-32){
+      while(lsize>9&&ctx.measureText(labelTxt).width>availW){
         lsize--;
         ctx.font='700 '+lsize+'px '+FONT;
       }
-      ctx.fillText(labelTxt,tx+16,cy+26);
+      ctx.fillText(labelTxt,tx,py+28);
       ctx.fillStyle='#161616';
-      ctx.font='800 '+(single?40:34)+'px '+MONO;
-      ctx.fillText(tl.value,tx+16,cy+64);
-      tx+=tw+12;
+      ctx.font='800 34px '+MONO;
+      ctx.fillText(tl.value,tx,py+62);
     });
   }
   if(mapImg){
@@ -6622,7 +6621,7 @@ function renderForecast(pane){
           value:'%'+fmt(100*wp,1),
           color:(PARTY_META[p]||{}).color||'#888'}));
       }else{
-        const order=fOrder.slice().sort((a,b)=>(sim.means[b]||0)-(sim.means[a]||0));
+        const order=fOrder.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));
         const firstLead=order[0];
         const firstP=(sim.largest[firstLead]||0)/nS;
         const hasBlocs=!!(BLOCS&&BLOCS.bloc1&&BLOCS.bloc2);

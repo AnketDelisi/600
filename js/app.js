@@ -3826,9 +3826,15 @@ async function renderPoster(opts){
 
   const X=40, barW=420;
   // consistent spacing across every country: the box always leaves a 10px
-  // gap inside its row slot; rows give height back when a grid must also fit
-  // so the small boxes can be as tall as possible
-  const RH=grid.length?(rows.length>=6?80:90):96;
+  // gap inside its row slot; rows give height back when a minor-party list
+  // must also fit so the compact rows stay aligned with the big rows
+  const tilesH=(opts.tiles&&opts.tiles.length)?82:0;
+  let RH=96;
+  if(grid.length){
+    const avail=H-40-30-tilesH-10;
+    const maxMajor=Math.floor((avail-grid.length*22)/Math.max(1,rows.length));
+    RH=Math.max(64,Math.min(80,maxMajor));
+  }
   const TH=RH-10;
   const totalW=TH+6+barW+8+92;
   const drawTile=(r,lg,yy,th)=>{
@@ -3846,12 +3852,12 @@ async function renderPoster(opts){
   // one delta column for every row: measure the widest vote/seat delta so
   // the shares and seats right-align in a single column and the deltas
   // left-align in their own
-  ctx.font='700 16px '+MONO;
+  ctx.font='600 13px '+MONO;
   let colW=0;
   rows.forEach(r=>{
     if(r.dvText) colW=Math.max(colW,ctx.measureText(r.dvText).width);
   });
-  ctx.font='700 14px '+MONO;
+  ctx.font='600 11px '+MONO;
   rows.forEach(r=>{
     if(r.dsText) colW=Math.max(colW,ctx.measureText(r.dsText).width);
   });
@@ -3865,6 +3871,7 @@ async function renderPoster(opts){
     ctx.fillStyle=r.color;
     ctx.fillRect(bx,y,barW,th);
     const tc=posterTextColor(r.color);
+    const deltaInk=tc==='#FFFFFF'?'rgba(255,255,255,0.62)':'rgba(22,22,22,0.55)';
     ctx.fillStyle=tc;
     // numbers right-align in one column, deltas left-align in the next, both
     // lines sharing baselines (share+vote delta at 46, seats+seat delta at 74)
@@ -3882,14 +3889,16 @@ async function renderPoster(opts){
     }
     if(r.dvText||r.dsText){
       ctx.textAlign='left';
+      ctx.fillStyle=deltaInk;
       if(r.dvText){
-        ctx.font='700 16px '+MONO;
+        ctx.font='600 13px '+MONO;
         ctx.fillText(r.dvText,bx+barW-14-colW,b1);
       }
       if(r.dsText){
-        ctx.font='700 14px '+MONO;
+        ctx.font='600 11px '+MONO;
         ctx.fillText(r.dsText,bx+barW-14-colW,b2);
       }
+      ctx.fillStyle=tc;
     }
     ctx.textAlign='left';
     const nameTxt=String(r.name||'').toUpperCase();
@@ -3923,99 +3932,105 @@ async function renderPoster(opts){
     }
     y+=RH;
   });
-  // compact grid (2 columns) for the parties below the big rows: each box is
-  // individually shorter than half the big box, the wider middle gap keeps
-  // the pair totalling the big box width, and the freed height makes the
-  // boxes taller with bigger logos
+  // compact minor-party rows: full width, same logo/bar/number columns as the
+  // big rows, just shorter. The old two-column grid made them look detached.
   if(grid.length){
     y+=6;
-    const boxW=TH+6+barW+(rows.some(r=>r.firstText)?100:0);
-    const rowsN=Math.ceil(grid.length/2);
-    const tilesH=(opts.tiles&&opts.tiles.length)
-      ?(opts.tiles.length===1?106:90):0;
-    const avail=H-30-y-tilesH-10;
-    const gh=Math.max(18,Math.min(52,Math.floor(avail/rowsN)-10));
-    const gap=10;
-    const gw=Math.floor((boxW-gap)/2);
-    const nameS=Math.max(10,Math.round(gh*0.42));
-    const shareS=Math.max(9,Math.round(gh*0.4));
-    const seatS=Math.max(8,Math.round(gh*0.32));
+    const minorRows=grid.length;
+    const minorAvail=H-30-y-tilesH-10;
+    let minorGap=4;
+    let minorH=Math.min(48,Math.floor((minorAvail-(minorRows-1)*minorGap)/minorRows));
+    if(minorH<24){
+      minorGap=0;
+      minorH=Math.max(18,Math.floor(minorAvail/minorRows));
+    }
     grid.forEach((r,i)=>{
-      const gx=X+(i%2)*(gw+gap), gy=y+Math.floor(i/2)*(gh+gap);
-      const th2=gh, lg=logos[rows.length+i];
+      const gy=y+i*(minorH+minorGap);
+      const lg=logos[rows.length+i];
       if(lg){
-        const mask=logoMask(lg,r.color,th2);
-        if(mask) ctx.drawImage(mask,gx,gy,th2,th2);
+        const mask=logoMask(lg,r.color,minorH);
+        if(mask) ctx.drawImage(mask,X+(TH-minorH)/2,gy,minorH,minorH);
       }else{
         ctx.fillStyle=r.color;
         ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.font='800 '+Math.round(th2*0.42)+'px '+FONT;
-        ctx.fillText(r.code||'',gx+th2/2,gy+th2/2);
+        ctx.font='800 '+Math.round(minorH*0.42)+'px '+FONT;
+        ctx.fillText(r.code||'',X+TH/2,gy+minorH/2);
         ctx.textAlign='left'; ctx.textBaseline='alphabetic';
       }
-      const bx=gx+th2+4, bw=gw-th2-4;
+      const bx=X+TH+6;
       ctx.fillStyle=r.color;
-      ctx.fillRect(bx,gy,bw,th2);
+      ctx.fillRect(bx,gy,barW,minorH);
       const tc=posterTextColor(r.color);
+      const deltaInk=tc==='#FFFFFF'?'rgba(255,255,255,0.62)':'rgba(22,22,22,0.55)';
       ctx.fillStyle=tc;
-      // name and share share a baseline; ideology and seats share the next
-      ctx.font='800 '+nameS+'px '+FONT;
-      ctx.fillText(String(r.name||'').toUpperCase(),bx+7,
-        gy+Math.round(gh*0.42));
-      if(r.ideology){
-        ctx.font='600 10px '+FONT;
-        ctx.fillText(ellipsizeText(pickIdeology(r.ideology),bw-14,ctx),
-          bx+7,gy+Math.round(gh*0.8));
+      const b1=gy+Math.round(minorH*0.56);
+      const b2=gy+Math.round(minorH*0.86);
+      const numX=bx+barW-14-(colW?colW+10:0);
+      const nameTxt=String(r.name||'').toUpperCase();
+      const nameAvail=numX-(bx+14)-14;
+      let nsize=Math.max(12,Math.round(minorH*0.40));
+      ctx.font='800 '+nsize+'px '+FONT;
+      while(nsize>11&&ctx.measureText(nameTxt).width>nameAvail){
+        nsize--;
+        ctx.font='800 '+nsize+'px '+FONT;
+      }
+      ctx.fillText(nameTxt,bx+14,b1);
+      if(r.ideology&&minorH>=28){
+        ctx.font='600 '+Math.max(9,Math.round(minorH*0.22))+'px '+FONT;
+        ctx.fillText(ellipsizeText(pickIdeology(r.ideology),nameAvail,ctx),
+          bx+14,b2);
       }
       ctx.textAlign='right';
-      // share + vote delta in separate columns (the delta at the big rows'
-      // smaller ratio), so small boxes never overlap
-      const gR=bx+bw-7;
-      let dvW=0;
-      if(r.dvText){
-        const dvS=Math.max(8,Math.round(shareS*0.44));
-        ctx.font='700 '+dvS+'px '+MONO;
-        dvW=ctx.measureText(r.dvText).width+5;
-        ctx.fillText(r.dvText,gR,gy+Math.round(gh*0.42));
+      ctx.font='700 '+Math.max(12,Math.round(minorH*0.40))+'px '+MONO;
+      ctx.fillText(r.shareText||'',numX,b1);
+      if(r.seatsText){
+        ctx.font='700 '+Math.max(10,Math.round(minorH*0.30))+'px '+MONO;
+        ctx.fillText(r.seatsText,numX,b2);
       }
-      ctx.font='700 '+shareS+'px '+MONO;
-      ctx.fillText(r.shareText||'',gR-dvW,gy+Math.round(gh*0.42));
-      if(r.seatsText||r.dsText){
-        let dsW=0;
-        if(r.dsText){
-          const dsS=Math.max(7,Math.round(seatS*0.64));
-          ctx.font='700 '+dsS+'px '+MONO;
-          dsW=ctx.measureText(r.dsText).width+5;
-          ctx.fillText(r.dsText,gR,gy+Math.round(gh*0.8));
+      if(r.dvText||r.dsText){
+        ctx.textAlign='left';
+        ctx.fillStyle=deltaInk;
+        if(r.dvText){
+          ctx.font='600 '+Math.max(9,Math.round(minorH*0.26))+'px '+MONO;
+          ctx.fillText(r.dvText,bx+barW-14-colW,b1);
         }
-        ctx.font='700 '+seatS+'px '+MONO;
-        ctx.fillText(r.seatsText||'',gR-dsW,gy+Math.round(gh*0.8));
+        if(r.dsText){
+          ctx.font='600 '+Math.max(8,Math.round(minorH*0.22))+'px '+MONO;
+          ctx.fillText(r.dsText,bx+barW-14-colW,b2);
+        }
+        ctx.fillStyle=tc;
       }
       ctx.textAlign='left';
     });
-    y+=rowsN*(gh+gap)+10;
+    y+=minorRows*(minorH+minorGap)+6;
   }
-  // probability tiles: one (government/coalition majority) or two (runoff
-  // win probabilities); kept compact so the small-party grid gets the space
+  // probability cards: compact neutral cards side by side, with the party
+  // colour reduced to a thin accent rule instead of a full loud fill
   if(opts.tiles&&opts.tiles.length){
     const single=opts.tiles.length===1;
-    const tw=single?470:300, th3=single?100:84;
+    const tw=single?380:300, th3=76;
     let tx=X;
     opts.tiles.slice(0,2).forEach(tl=>{
-      ctx.fillStyle=tl.color;
-      ctx.fillRect(tx,y+6,tw,th3);
-      const tc=posterTextColor(tl.color);
-      ctx.fillStyle=tc;
-      let lsize=single?18:13;
+      const cy=y+6;
+      ctx.fillStyle='#F7F7F5';
+      ctx.fillRect(tx,cy,tw,th3);
+      ctx.strokeStyle='#DCDCDC';
+      ctx.lineWidth=1;
+      ctx.strokeRect(tx+0.5,cy+0.5,tw-1,th3-1);
+      ctx.fillStyle=tl.color||'#9CA3AF';
+      ctx.fillRect(tx,cy,4,th3);
+      ctx.fillStyle='#5A5A5A';
+      let lsize=13;
       const labelTxt=String(tl.label||'');
       ctx.font='700 '+lsize+'px '+FONT;
-      while(lsize>10&&ctx.measureText(labelTxt).width>tw-28){
+      while(lsize>10&&ctx.measureText(labelTxt).width>tw-32){
         lsize--;
         ctx.font='700 '+lsize+'px '+FONT;
       }
-      ctx.fillText(labelTxt,tx+14,y+(single?38:30));
-      ctx.font='800 '+(single?60:38)+'px '+MONO;
-      ctx.fillText(tl.value,tx+14,y+(single?88:72));
+      ctx.fillText(labelTxt,tx+16,cy+26);
+      ctx.fillStyle='#161616';
+      ctx.font='800 '+(single?40:34)+'px '+MONO;
+      ctx.fillText(tl.value,tx+16,cy+64);
       tx+=tw+12;
     });
   }
@@ -6608,6 +6623,9 @@ function renderForecast(pane){
           color:(PARTY_META[p]||{}).color||'#888'}));
       }else{
         const order=fOrder.slice().sort((a,b)=>(sim.means[b]||0)-(sim.means[a]||0));
+        const firstLead=order[0];
+        const firstP=(sim.largest[firstLead]||0)/nS;
+        const hasBlocs=!!(BLOCS&&BLOCS.bloc1&&BLOCS.bloc2);
         // every modelled party that polls above zero (a 0.01 floor only skips
         // float noise), matching the reference posters' 0.0% rows
         const eligible=order.filter(p=>(mean(sim.votesBy[p])||0)>0.01
@@ -6636,9 +6654,9 @@ function renderForecast(pane){
           // reader nothing - prefer the strongest realistic alternative
           topCoal=scored.find(x=>!x.cross)||scored[0];
         }
-        // per-row first-place tiles only where no majority/coalition card
-        // applies (Quebec-style: hideBlocs pages)
-        const showFirst=!topCoal&&!MAP_ONLY&&HIDE_BLOCS;
+        // per-row first-place tiles only where there is no bloc majority
+        // card to pair the first-party probability with
+        const showFirst=!topCoal&&!MAP_ONLY&&HIDE_BLOCS&&!hasBlocs;
         // big rows: parties at >= 8 mean seats, at least 5 and at most 7;
         // the rest go to the compact grid
         let bigN=eligible.filter(p=>(sim.means[p]||0)>=8).length;
@@ -6650,9 +6668,9 @@ function renderForecast(pane){
           const ds=(detSeats[p]||0)-(leS[p]||0);
           return {
             dvText:(!SEAT_BASED&&Math.abs(dv)>=0.05)
-              ?(dv>0?'\u25b2'+fmt(dv,1):'\u25bc'+fmt(Math.abs(dv),1)):'',
+              ?(dv>0?'+'+fmt(dv,1):'\u2212'+fmt(Math.abs(dv),1)):'',
             dsText:(!MAP_ONLY&&ds!==0)
-              ?(ds>0?'\u25b2'+ds:'\u25bc'+Math.abs(ds)):''
+              ?(ds>0?'+'+ds:'\u2212'+Math.abs(ds)):''
           };
         };
         eligible.slice(0,bigN).forEach(p=>{
@@ -6676,14 +6694,19 @@ function renderForecast(pane){
             color:(PARTY_META[p]||{}).color||'#888',
             logo:PARTY_LOGOS[p]||null});
         });
+        const firstTile={label:partyCode(firstLead)+' '+t('first place','birincilik'),
+          value:'%'+fmt(100*firstP,1),
+          color:(PARTY_META[firstLead]||{}).color||'#888'};
         if(topCoal){
           tiles=[{label:topCoal.c.name+' '+t('majority probability','çoğunluk ihtimali'),
             value:'%'+fmt(100*topCoal.p,1),
-            color:(PARTY_META[topCoal.c.parties[0]]||{}).color||'#888'}];
-        }else if(!MAP_ONLY&&!HIDE_BLOCS){
+            color:(PARTY_META[topCoal.c.parties[0]]||{}).color||'#888'},
+            firstTile];
+        }else if(!MAP_ONLY&&hasBlocs){
           tiles=[{label:t('Government majority probability','Hükümetin çoğunluk kazanma olasılığı'),
             value:'%'+fmt(100*rgP,1),
-            color:(BLOCS.bloc1||{}).color||'#888'}];
+            color:(BLOCS.bloc1||{}).color||'#888'},
+            firstTile];
         }else if(MAP_ONLY){
           // presidential multi-candidate: first-round win + runoff win
           const lead=order[0];

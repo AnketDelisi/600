@@ -3447,7 +3447,7 @@ function addMapOutline(svg, paths){
     f.appendChild(comp);
     defs.appendChild(f);
     clone.setAttribute('filter','url(#'+id+')');
-    g.parentNode.insertBefore(clone,g);
+    g.parentNode.insertBefore(clone,g.nextSibling);
   });
 }
 

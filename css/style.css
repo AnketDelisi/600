@@ -924,3 +924,13 @@ body{background:var(--c-bg);color:var(--c-text-main)}
   .coal-summary>div:last-child{grid-column:1/-1}
   .coal-saved-name{max-width:110px}
 }
+
+.coal-parliament{margin:2px 0 6px;overflow:hidden;min-height:0}
+.coal-parliament svg{display:block;width:min(100%,360px);height:auto;margin:0 auto}
+.coal-seatbar{position:relative;height:14px;background:var(--c-wash);border:1px solid var(--c-border);border-radius:999px;overflow:hidden}
+.coal-seatfill{height:100%;background:var(--c-edge);border-radius:999px}
+.coal-majority{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--c-accent);transform:translateX(-1px)}
+.coal-seatlegend{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:5px;font-size:10px;color:var(--c-text-muted);font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.coal-seatlegend b{color:var(--c-text-main);font-weight:900}
+.coal-prob{margin-left:auto;color:var(--c-text-main);font-weight:900}
+@media(max-width:560px){.coal-prob{margin-left:0}.coal-parliament svg{width:min(100%,280px)}}

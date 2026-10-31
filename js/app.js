@@ -5743,7 +5743,7 @@ function coalitionBuilderHtml(sim,maj,detSeats){
   const pctSeats=totalSeats?Math.min(100,stats.seats/totalSeats*100):0;
   const majPct=totalSeats?Math.min(100,maj/totalSeats*100):50;
   return `<div class="card coal-builder" data-coal-builder>
-    <div class="card-head"><div class="bar"></div><div class="t">${t('Build a coalition','Koalisyon kur')}</div></div>
+    <div class="card-head"><div class="bar"></div><div class="t">${t('BUILD A COALITION','KOALİSYON KUR')}</div></div>
     <div class="coal-hint">${t('Pick parties. Unselected seats fade; the probability is the share of simulations where the coalition reaches a majority.','Parti seçin. Seçilmeyen sandalyeler soluklaşır; olasılık koalisyonun çoğunluğa ulaştığı simülasyon payıdır.')}</div>
     <div class="coal-parliament">${buildParliamentSVG(detSeats,null,new Set(COAL_SELECTION))}</div>
     <div class="coal-seatbar" role="img" aria-label="${stats.seats} / ${totalSeats} ${T.seats}, ${t('majority','çoğunluk')} ${maj}">
@@ -5933,6 +5933,11 @@ function renderForecast(pane){
     :FC_MODE==='upper'
     ?t('Upper-chamber map from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Üst meclis haritası tahmin medyanından · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
     :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin');
+  const m2Label=(()=>{
+    const m=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2;
+    if(!m) return '';
+    return (LANG==='tr'?(m.label_tr||m.label):(m.label_en||m.label))||t('LAYER 2','KATMAN 2');
+  })();
 
   // Second-round runoff card (two-round presidential only)
   let runoffHtml='';
@@ -6258,7 +6263,7 @@ function renderForecast(pane){
         <button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='res'?' active':''}" data-fcmode="res">${resultYear()} ${T.result}</button>
         ${SEN_CONF?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='upper'?' active':''}" data-fcmode="upper">${(SEN_UP&&SEN_UP.label)||t('Upper chamber','\u00dcst meclis')}</button>`:''}
         ${MAP_ONLY&&MAP_CONF()&&(MAP_CONF().runoff2022||MAP_CONF().runoff2026)?`<button class="map-toggle-btn parl-btn fc-map-btn${FC_MODE==='runoff'?' active':''}" data-fcmode="runoff">${t('RUNOFF','İKİNCİ TUR')}</button>`:''}
-        ${COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2&&FC_MODE!=='upper'?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${COUNTRIES[COUNTRY].map2.label||'layer 2'}</button>`:''}
+        ${m2Label&&FC_MODE!=='upper'?`<button class="map-toggle-btn parl-btn fc-layer-btn${MAP_LAYER===1?' active':''}" data-maplayer="1">${m2Label}</button>`:''}
         ${MAP_CONF().useConstituencies&&!MAP_CONF().hideBlocToggle&&BLOCS.bloc1&&BLOCS.bloc2?`<button class="map-toggle-btn parl-btn fc-map-color-btn${MAP_COLOR==='bloc'?' active':''}" data-mapcolor="bloc">${T.blocs}</button>`:''}
         <label class="map-heat-label">${t('SHADE','GÖLGE')}<select class="map-heat-select" aria-label="${t('Colour map by party strength','Haritayı parti gücüne göre renklendir')}"><option value="">${t('Winner','Kazanan')}</option><option value="all"${MAP_HEAT_PARTY==='all'?' selected':''}>${t('All parties','Tüm partiler')}</option>${PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly)).map(p=>`<option value="${p}"${MAP_HEAT_PARTY===p?' selected':''}>${partyCode(p)}</option>`).join('')}</select></label>
         <button class="shot-btn" id="fc-map-shot-btn" title="Download map as PNG">${CAM_ICON}</button>

@@ -632,7 +632,7 @@ async function loadData(){
     try{
       const cc=COUNTRIES[COUNTRY];
       if(cc&&(!cc.map||!Object.keys(cc.map).length)){
-        const r=await fetch(base+'data/'+COUNTRY+'/geo.json');
+        const r=await fetch(base+'data/'+COUNTRY+'/geo.json?v='+ASSET_V);
         if(r.ok){
           const gj=await r.json();
           if(gj.map) cc.map=gj.map;

@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T12:06:49Z",
+ "generated": "2026-10-31T11:40:14Z",
  "countries": {
   "israel": {
    "name": "Israel",
@@ -15,10 +15,10 @@
    "leader_color": "#62B9F2",
    "leader_logo": "img/il/Yashar.svg",
    "second": "likud",
-   "second_pct": 20.3,
+   "second_pct": 20.4,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 32,
+   "poll_count": 29,
    "latest_poll": "2026-10-23"
   },
   "serbia": {
@@ -55,10 +55,10 @@
    "leader_color": "#E20E28",
    "leader_logo": "img/br/Lula.svg",
    "second": "flavio",
-   "second_pct": 44.1,
+   "second_pct": 44.5,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 64,
+   "poll_count": 62,
    "latest_poll": "2026-10-24"
   },
   "austria": {
@@ -110,7 +110,7 @@
    "seats": 460,
    "seat_based": false,
    "leader": "ko",
-   "leader_pct": 32.2,
+   "leader_pct": 32.3,
    "leader_code": "KO",
    "leader_color": "#F68F2D",
    "leader_logo": "img/pl/KO.svg",
@@ -118,8 +118,8 @@
    "second_pct": 22.3,
    "last_winner_code": "PiS",
    "last_winner_color": "#263778",
-   "poll_count": 9,
-   "latest_poll": "2026-10-21"
+   "poll_count": 10,
+   "latest_poll": "2026-10-26"
   },
   "netherlands": {
    "name": "Netherlands",
@@ -210,7 +210,7 @@
    "seats": 630,
    "seat_based": false,
    "leader": "afd",
-   "leader_pct": 28.3,
+   "leader_pct": 28.4,
    "leader_code": "AfD",
    "leader_color": "#00A2DE",
    "leader_logo": "img/de/AFD.svg",
@@ -218,7 +218,7 @@
    "second_pct": 19.6,
    "last_winner_code": "CDU/CSU",
    "last_winner_color": "#151518",
-   "poll_count": 21,
+   "poll_count": 20,
    "latest_poll": "2026-10-26"
   },
   "spain": {
@@ -270,7 +270,7 @@
    "seats": 400,
    "seat_based": false,
    "leader": "fdi",
-   "leader_pct": 27.8,
+   "leader_pct": 27.7,
    "leader_code": "FdI",
    "leader_color": "#03386A",
    "leader_logo": "img/it/FDI.svg",
@@ -318,7 +318,7 @@
    "second_pct": 32.1,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 39,
+   "poll_count": 38,
    "latest_poll": "2026-09-30"
   },
   "hr": {
@@ -370,15 +370,15 @@
    "seats": 90,
    "seat_based": false,
    "leader": "sds",
-   "leader_pct": 28.6,
+   "leader_pct": 29.0,
    "leader_code": "SDS",
    "leader_color": "#FCDC00",
    "leader_logo": "img/si/SDS.svg",
    "second": "gs",
-   "second_pct": 24.7,
+   "second_pct": 24.9,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 5,
+   "poll_count": 4,
    "latest_poll": "2026-09-24"
   },
   "bc": {
@@ -470,15 +470,15 @@
    "seats": 600,
    "seat_based": false,
    "leader": "akp",
-   "leader_pct": 29.6,
+   "leader_pct": 28.5,
    "leader_code": "AKP",
    "leader_color": "#fda000",
    "leader_logo": "img/tr/AKP.svg",
    "second": "yep",
-   "second_pct": 23.7,
+   "second_pct": 23.8,
    "last_winner_code": "AKP",
    "last_winner_color": "#fda000",
-   "poll_count": 2,
+   "poll_count": 1,
    "latest_poll": "2026-10-04"
   },
   "hu": {
@@ -498,7 +498,7 @@
    "second_pct": 25.3,
    "last_winner_code": "TISZA",
    "last_winner_color": "#88E8FF",
-   "poll_count": 5,
+   "poll_count": 4,
    "latest_poll": "2026-10-18"
   },
   "argentina": {
@@ -524,7 +524,7 @@
   "bgpres": {
    "name": "Bulgaria (presidential)",
    "election_date": "2026-10-25",
-   "election_date_runoff": null,
+   "election_date_runoff": "2026-11-01",
    "last_election": "2021-11-21",
    "last_winner": null,
    "seats": 1,
@@ -533,7 +533,7 @@
    "leader_pct": 40.4,
    "leader_code": "IOTOVA",
    "leader_color": "#DB0F28",
-   "leader_logo": "img/bg/PB.svg",
+   "leader_logo": "img/bg/BSP.svg",
    "second": "gyurov",
    "second_pct": 30.0,
    "last_winner_code": null,
@@ -710,16 +710,16 @@
    "seats": 650,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 28.1,
+   "leader_pct": 28.6,
    "leader_code": "LAB",
    "leader_color": "#E41C3E",
    "leader_logo": "img/uk/LAB.svg",
    "second": "ref",
-   "second_pct": 22.1,
+   "second_pct": 21.8,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 23,
-   "latest_poll": "2026-10-26"
+   "poll_count": 24,
+   "latest_poll": "2026-10-29"
   },
   "nz": {
    "name": "New Zealand",

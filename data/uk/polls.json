@@ -2,9 +2,48 @@
  "country": "uk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
- "scraped_at": "2026-10-30T12:05:38Z",
- "poll_count": 597,
+ "scraped_at": "2026-10-31T11:39:01Z",
+ "poll_count": 599,
  "polls": [
+  {
+   "pollster": "Find Out Now",
+   "fieldwork_start": "2026-10-29",
+   "date": "2026-10-29",
+   "n": 2514,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 28.0,
+    "con": 21.0,
+    "ref": 20.0,
+    "lib": 10.0,
+    "grn": 11.0,
+    "snp": 3.0,
+    "plc": 1.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "BMG Research",
+   "fieldwork_start": "2026-10-29",
+   "date": "2026-10-29",
+   "n": 1529,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 31.0,
+    "con": 21.0,
+    "ref": 22.0,
+    "lib": 8.0,
+    "grn": 8.0,
+    "snp": 2.0,
+    "plc": 1.0,
+    "res": 5.0
+   },
+   "method": "online"
+  },
   {
    "pollster": "YouGov",
    "fieldwork_start": "2026-10-26",

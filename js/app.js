@@ -3219,6 +3219,16 @@ function districtSeatSplit(nr, avg, resultMode, conf){
 // clearance lets the cluster shrink to stay inside small districts (Warsaw,
 // Tallinn's districts). All rings of the path are used, so holes count as
 // outside.
+function districtSeatLeader(nr,avg,conf){
+  const list=districtSeatSplit(nr,avg,false,conf);
+  if(!list||!list.length) return null;
+  const counts={};
+  list.forEach(p=>{counts[p]=(counts[p]||0)+1});
+  const shares=districtShares(nr,avg,false,conf);
+  const now=p=>shares&&shares[p]?(shares[p].now||0):0;
+  return Object.keys(counts).sort((a,b)=>(counts[b]-counts[a])||(now(b)-now(a)))[0]||null;
+}
+
 function dotAnchor(ph){
   const d=ph.getAttribute('d')||'';
   const rings=[];
@@ -3484,6 +3494,12 @@ async function renderMapInto(box, avg, resultMode, confOverride){
   else selector='path[id^="_"]';
   const paths=svg.querySelectorAll(selector);
   const mapped=[];
+  const seatWinners={};
+  const seatWinnerFor=(nr)=>{
+    if(resultMode||!conf.prDistricts||!conf.prDistricts[nr]) return null;
+    if(nr in seatWinners) return seatWinners[nr];
+    return seatWinners[nr]=districtSeatLeader(nr,avg,conf);
+  };
   let heatMax=50, heatMin=0;
   if(MAP_HEAT_PARTY&&MAP_HEAT_PARTY!=='all'){
     const vals=Object.values(conf.gebiete||{}).map(row=>row&&row[MAP_HEAT_PARTY]).filter(v=>v!=null);
@@ -3538,7 +3554,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
     }else{
       winner=resultMode
         ?(districtResultWinner(nr,conf)||districtWinnerProjection(nr,LAST_ELECTION.results,conf))
-        :districtWinnerProjection(nr,avg,conf);
+        :(seatWinnerFor(nr)||districtWinnerProjection(nr,avg,conf));
     }
     if(!winner&&!MAP_HEAT_PARTY) return;
     const heatParty=MAP_HEAT_PARTY==='all'?winner:MAP_HEAT_PARTY;
@@ -3590,7 +3606,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
         return;
       }
       const pastWinner=districtResultWinner(nr,conf)||districtWinnerProjection(nr,LAST_ELECTION.results,conf);
-      const nowWinner=resultMode?pastWinner:districtWinnerProjection(nr,avg,conf);
+      const nowWinner=resultMode?pastWinner:(seatWinnerFor(nr)||districtWinnerProjection(nr,avg,conf));
       // Result mode: order rows by the official seat outcome (so a dissolved-but-large
   // list like SPN sits above smaller parties); otherwise by projected share.
   // Dissolved alliances (pastOnly) appear in the 2023 result view only.
@@ -5880,8 +5896,19 @@ function renderForecast(pane){
     }
   }
 
-  // --- Deterministic: median-based parliament ---
-  const detSeats=deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL);
+  // --- Deterministic: median vote shares, same allocation as the map ---
+  const medVotes={};
+  fOrder.forEach(p=>{
+    const arr=sim.votesBy[p].slice().sort((a,b)=>a-b);
+    medVotes[p]=arr[Math.floor(arr.length/2)];
+  });
+  if(sim.votesBy.other){
+    const arr=sim.votesBy.other.slice().sort((a,b)=>a-b);
+    medVotes.other=arr[Math.floor(arr.length/2)];
+  }
+  const detSeats=(MAP_CONF()&&MAP_CONF().prDistricts)
+    ?(allocateSeatsTotal(medVotes,OVERHANG?expectedSeats:SEATS_TOTAL)||deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL))
+    :deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL);
   let cmpRows='';
   const cmpOrder=fOrder.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
   cmpOrder.forEach(p=>{
@@ -5910,17 +5937,6 @@ function renderForecast(pane){
       <td class="num c" style="color:var(--c-text-muted)">${osr?`${Math.round(osr[0])}\u2013${Math.round(osr[1])}`:'\u2014'}</td>
     </tr>`;
 
-  // --- Constituency results (median national vote shares) ---
-  const medVotes={};
-  fOrder.forEach(p=>{
-    const arr=sim.votesBy[p].slice().sort((a,b)=>a-b);
-    medVotes[p]=arr[Math.floor(arr.length/2)];
-  });
-  if(sim.votesBy.other){
-    const arr=sim.votesBy.other.slice().sort((a,b)=>a-b);
-    medVotes.other=arr[Math.floor(arr.length/2)];
-  }
-
   // --- Senate (upper chamber) forecast data: the deterministic block-vote
   // projection from the median national vote shares - shared by the card,
   // the map toggle and the poster ---
@@ -5932,6 +5948,8 @@ function renderForecast(pane){
     ?t('Projected runoff winners from the head-to-head average · hover a district for the past/forecast comparison','Başa baş ortalamasından tahmini ikinci tur kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
     :FC_MODE==='upper'
     ?t('Upper-chamber map from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Üst meclis haritası tahmin medyanından · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
+    :MAP_CONF()&&MAP_CONF().prDistricts
+    ?t('Seat winners from the forecast\'s median national vote shares · fill = largest seat winner, dots = all seats · hover a district for the past/forecast comparison','Tahmin medyanından sandalye kazananları · dolgu = en büyük sandalye kazananı, noktalar = tüm sandalyeler · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin')
     :t('District winners from the forecast\'s median national vote shares · hover a district for the past/forecast comparison','Tahmin medyanından bölge kazananları · geçmiş/tahmin karşılaştırması için bölgenin üzerine gelin');
   const m2Label=(()=>{
     const m=COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].map2;
@@ -6230,7 +6248,9 @@ function renderForecast(pane){
         <th>${t('Party','Parti')}</th><th class="c">${T.seats}</th><th class="c">Median</th><th class="c">Mode</th><th class="c">90% ${t('interval','aral\u0131k')}</th>
       </tr></thead><tbody>${cmpRows}</tbody></table></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">
-        ${t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Sim\u00fclasyonlar\u0131n medyan\u0131ndan deterministik tahmin (medyan\u0131 0 olan partiler hari\u00e7)')} \u00b7 last column = calibrated 90% seat interval
+        ${MAP_CONF()&&MAP_CONF().prDistricts
+          ?t('Deterministic projection from the median national vote shares, using the same per-district allocation as the map (parties at 0 seats are left out)','Tahmin medyanından deterministik tahmin; haritayla aynı bölge bazlı dağıtım (0 sandalyeli partiler hariç)')
+          :t('Deterministic projection from the median of the simulations (parties whose median is 0 are left out)','Sim\u00fclasyonlar\u0131n medyan\u0131ndan deterministik tahmin (medyan\u0131 0 olan partiler hari\u00e7)')} \u00b7 last column = calibrated 90% seat interval
       </div>
     </div>`}
 

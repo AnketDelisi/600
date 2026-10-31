@@ -122,6 +122,20 @@ async function main() {
       if (!fc) throw new Error('forecast returned nothing');
       await globalThis.__600_alloc(cc, votes);
       const mc = conf.map || {};
+      // Proxy parties carry synthetic map geography, not a last-election
+      // result. When they are absent from the poll set they must stay out of
+      // the forecast instead of being pinned to that proxy baseline.
+      const proxies = mc.proxyParties || [];
+      if (proxies.length) {
+        const noPollVotes = Object.assign({}, votes);
+        proxies.forEach((p) => { noPollVotes[p] = null; });
+        const noPollFc = await globalThis.__600_forecast(cc, noPollVotes, 20, 10);
+        for (const p of proxies) {
+          if ((noPollFc.voteMeans[p] || 0) > 0.01) {
+            throw new Error('unpolled proxy ' + p + ' leaked into the forecast');
+          }
+        }
+      }
       const pd = mc.prDistricts || {};
       for (const nr of Object.keys(pd)) {
         try {

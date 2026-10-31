@@ -6,7 +6,7 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_46th_Canadian_federal_election"
   }
  ],
- "scraped_at": "2026-10-30T12:05:53Z",
+ "scraped_at": "2026-10-31T11:39:11Z",
  "poll_count": 245,
  "polls": [
   {
@@ -3155,57 +3155,5 @@
    },
    "n": 1297
   }
- ],
- "regional": {
-  "bc": {
-   "lpc": 46.82,
-   "cpc": 31.15,
-   "ndp": 17.21,
-   "gpc": 3.07,
-   "ppc": 1.74,
-   "bq": 0.0
-  },
-  "ab": {
-   "lpc": 38.72,
-   "cpc": 43.68,
-   "ndp": 13.23,
-   "gpc": 2.72,
-   "ppc": 1.65,
-   "bq": 0.0
-  },
-  "skmb": {
-   "lpc": 38.69,
-   "cpc": 43.12,
-   "ndp": 13.67,
-   "gpc": 2.81,
-   "ppc": 1.71,
-   "bq": 0.0
-  },
-  "on": {
-   "lpc": 49.85,
-   "cpc": 33.74,
-   "ndp": 11.88,
-   "gpc": 2.82,
-   "ppc": 1.71,
-   "bq": 0.0
-  },
-  "qc": {
-   "lpc": 45.34,
-   "bq": 25.22,
-   "cpc": 17.17,
-   "ndp": 7.85,
-   "gpc": 2.75,
-   "ppc": 1.67
-  },
-  "atl": {
-   "lpc": 58.76,
-   "cpc": 26.55,
-   "ndp": 10.13,
-   "gpc": 2.84,
-   "ppc": 1.72,
-   "bq": 0.0
-  }
- },
- "regional_as_of": "2026-10-30",
- "regional_source": "Polling Canada federal regional averages"
+ ]
 }

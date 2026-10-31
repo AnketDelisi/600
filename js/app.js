@@ -4467,7 +4467,7 @@ function allocateSeatsWinnerDistricts(avg, total, regionNoise, districtNoise){
   return out;
 }
 
-function buildParliamentSVG(seats, conf){
+function buildParliamentSVG(seats, conf, highlight){
   const total=Object.values(seats).reduce((a,b)=>a+b,0);
   if(total===0) return '<svg viewBox="0 0 10 10"></svg>';
 
@@ -4527,7 +4527,8 @@ function buildParliamentSVG(seats, conf){
     for(let i=0;i<assigned.length&&i<pts.length;i++){
       const party=assigned[i];
       const col=party==='other'?'#9CA3AF':partyColor(party,conf);
-      svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"/>`;
+      const dim=highlight&&!highlight.has(party)?' opacity="0.18"':'';
+      svg+=`<circle cx="${fmt(pts[i].x,2)}" cy="${fmt(pts[i].y,2)}" r="${fmt(pts[i].rr,2)}" fill="${col}"${dim}/>`;
     }
     svg+=`<text x="${layout.cx}" y="${fmt(totalY,1)}" text-anchor="middle" font-size="${totalFs}" font-weight="900" fill="#111827" font-family="Source Code Pro,monospace">${total}</text>`;
     svg+=`</svg>`;
@@ -5727,9 +5728,9 @@ function coalSaved(country){
 function writeCoalStore(store){
   try{localStorage.setItem(COAL_STORE_KEY,JSON.stringify(store))}catch(e){}
 }
-function coalitionStats(sim,parts,maj){
+function coalitionStats(sim,parts,maj,detSeats){
   const valid=(parts||[]).filter(p=>sim.seatsBy&&sim.seatsBy[p]);
-  if(!valid.length) return {p:0,exp:0,pm:null,valid:[]};
+  if(!valid.length) return {p:0,seats:0,valid:[]};
   let win=0;
   const n=sim.nSims||0;
   for(let i=0;i<n;i++){
@@ -5737,19 +5738,19 @@ function coalitionStats(sim,parts,maj){
     for(const p of valid) s+=sim.seatsBy[p][i]||0;
     if(s>=maj) win++;
   }
-  const exp=Math.round(valid.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
-  const pm=valid.slice().sort((a,b)=>mean(sim.seatsBy[b])-mean(sim.seatsBy[a]))[0];
-  return {p:n?win/n:0,exp,pm,valid};
+  const seats=valid.reduce((a,p)=>a+((detSeats&&detSeats[p])||0),0);
+  return {p:n?win/n:0,seats,valid};
 }
-function coalitionBuilderHtml(sim,maj){
+function coalitionBuilderHtml(sim,maj,detSeats){
   if(MAP_ONLY||!sim.seatsBy||PARTY_ORDER.length<2) return '';
-  const parties=PARTY_ORDER.filter(p=>sim.seatsBy[p]&&mean(sim.seatsBy[p])>0.05);
+  const parties=PARTY_ORDER.filter(p=>sim.seatsBy[p]&&((detSeats&&detSeats[p])||0)>0);
   COAL_SELECTION=COAL_SELECTION.filter(p=>parties.includes(p));
-  const stats=coalitionStats(sim,COAL_SELECTION,maj);
+  const stats=coalitionStats(sim,COAL_SELECTION,maj,detSeats);
+  const totalSeats=Object.values(detSeats||{}).reduce((a,b)=>a+(b||0),0);
   const picks=parties.map(p=>{
     const col=(PARTY_META[p]||{}).color||'#888';
     const on=COAL_SELECTION.includes(p);
-    return `<button type="button" class="coal-pick${on?' on':''}" data-coal-party="${p}" aria-pressed="${on}" style="--mark-color:${col}">${partyMark(p,null,col,'party-mark')}<span>${partyCode(p)}</span><span class="coal-pick-seats">${Math.round(mean(sim.seatsBy[p]))}</span></button>`;
+    return `<button type="button" class="coal-pick${on?' on':''}" data-coal-party="${p}" aria-pressed="${on}" style="--mark-color:${col}">${partyMark(p,null,col,'party-mark')}<span>${partyCode(p)}</span><span class="coal-pick-seats">${detSeats[p]||0}</span></button>`;
   }).join('');
   const saved=coalSaved(COUNTRY);
   const savedHtml=saved.length?`<div class="coal-saved">
@@ -5761,15 +5762,23 @@ function coalitionBuilderHtml(sim,maj){
       <button type="button" class="coal-mini danger" data-coal-del="${i}" aria-label="${t('Delete','Sil')}">✕</button>
     </div>`).join('')}
   </div>`:'';
+  const pctSeats=totalSeats?Math.min(100,stats.seats/totalSeats*100):0;
+  const majPct=totalSeats?Math.min(100,maj/totalSeats*100):50;
   return `<div class="card coal-builder" data-coal-builder>
     <div class="card-head"><div class="bar"></div><div class="t">${t('Build a coalition','Koalisyon kur')}</div></div>
-    <div class="coal-hint">${t('Pick parties. The probability is the share of simulations where they reach a majority.','Parti seçin. Olasılık, simülasyonlarda çoğunluğa ulaştıkları paydır.')}</div>
-    <div class="coal-picks">${picks}</div>
-    <div class="coal-summary">
-      <div><span>${t('Expected seats','Beklenen sandalye')}</span><b>${stats.exp}</b><em>/ ${maj}</em></div>
-      <div><span>${t('Majority probability','Çoğunluk ihtimali')}</span><b>${probPct(stats.p)}</b></div>
-      <div><span>${t('Likely PM','Muhtemel başbakan')}</span><b>${stats.pm?partyCode(stats.pm):'—'}</b></div>
+    <div class="coal-hint">${t('Pick parties. Unselected seats fade; the probability is the share of simulations where the coalition reaches a majority.','Parti seçin. Seçilmeyen sandalyeler soluklaşır; olasılık koalisyonun çoğunluğa ulaştığı simülasyon payıdır.')}</div>
+    <div class="coal-parliament">${buildParliamentSVG(detSeats,null,new Set(COAL_SELECTION))}</div>
+    <div class="coal-seatbar" title="${stats.seats} / ${totalSeats} ${T.seats} · ${t('majority','çoğunluk')} ${maj}">
+      <div class="coal-seatfill" style="width:${pctSeats.toFixed(1)}%"></div>
+      <div class="coal-majority" style="left:${majPct.toFixed(1)}%"></div>
     </div>
+    <div class="coal-seatlegend">
+      <span><b>${stats.seats}</b> ${t('coalition seats','koalisyon sandalyesi')}</span>
+      <span>${totalSeats} ${T.seats}</span>
+      <span><b>${maj}</b> ${t('majority','çoğunluk')}</span>
+      <span class="coal-prob"><b>${probPct(stats.p)}</b> ${t('majority probability','çoğunluk ihtimali')}</span>
+    </div>
+    <div class="coal-picks">${picks}</div>
     <div class="coal-actions">
       <button type="button" class="coal-btn" data-coal-share>${t('Share link','Bağlantıyı paylaş')}</button>
       <button type="button" class="coal-btn" data-coal-save>${t('Save scenario','Senaryoyu kaydet')}</button>
@@ -6365,7 +6374,7 @@ function renderForecast(pane){
       ${calibNote()}
     </div>`}
 
-    ${coalitionBuilderHtml(sim,MAJ)}
+    ${coalitionBuilderHtml(sim,MAJ,detSeats)}
 
     ${coalHtml}
 

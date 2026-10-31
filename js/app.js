@@ -4,6 +4,7 @@
 
 /* ---------- helpers ---------- */
 const $=s=>document.getElementById(s);
+const escHtml=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // this file's own cache-busting token (?v= on the script tag), reused for
 // map svg fetches so a rebuilt map is not served from the browser cache
 const ASSET_V=(function(){
@@ -4703,6 +4704,7 @@ function hashStr(s){
 let fcRand=Math.random;
 const FC_CACHE={};
 const RUNOFF_CACHE={};
+let COAL_SELECTION=[];
 
 // Dirichlet concentration K is calibrated for a rich poll sample; with few
 // polls the estimate is less certain, so K shrinks (never below 30%).
@@ -5713,6 +5715,151 @@ function renderPrediction(pane){
   });
 }
 
+/* ---------- coalition builder ---------- */
+const COAL_STORE_KEY='600_coal_scenarios';
+function coalStore(){
+  try{return JSON.parse(localStorage.getItem(COAL_STORE_KEY)||'{}')||{}}
+  catch(e){return {}}
+}
+function coalSaved(country){
+  return (coalStore()[country]||[]).filter(x=>x&&Array.isArray(x.parties));
+}
+function writeCoalStore(store){
+  try{localStorage.setItem(COAL_STORE_KEY,JSON.stringify(store))}catch(e){}
+}
+function coalitionStats(sim,parts,maj){
+  const valid=(parts||[]).filter(p=>sim.seatsBy&&sim.seatsBy[p]);
+  if(!valid.length) return {p:0,exp:0,pm:null,valid:[]};
+  let win=0;
+  const n=sim.nSims||0;
+  for(let i=0;i<n;i++){
+    let s=0;
+    for(const p of valid) s+=sim.seatsBy[p][i]||0;
+    if(s>=maj) win++;
+  }
+  const exp=Math.round(valid.reduce((a,p)=>a+mean(sim.seatsBy[p]),0));
+  const pm=valid.slice().sort((a,b)=>mean(sim.seatsBy[b])-mean(sim.seatsBy[a]))[0];
+  return {p:n?win/n:0,exp,pm,valid};
+}
+function coalitionBuilderHtml(sim,maj){
+  if(MAP_ONLY||!sim.seatsBy||PARTY_ORDER.length<2) return '';
+  const parties=PARTY_ORDER.filter(p=>sim.seatsBy[p]&&mean(sim.seatsBy[p])>0.05);
+  COAL_SELECTION=COAL_SELECTION.filter(p=>parties.includes(p));
+  const stats=coalitionStats(sim,COAL_SELECTION,maj);
+  const picks=parties.map(p=>{
+    const col=(PARTY_META[p]||{}).color||'#888';
+    const on=COAL_SELECTION.includes(p);
+    return `<button type="button" class="coal-pick${on?' on':''}" data-coal-party="${p}" aria-pressed="${on}" style="--mark-color:${col}">${partyMark(p,null,col,'party-mark')}<span>${partyCode(p)}</span><span class="coal-pick-seats">${Math.round(mean(sim.seatsBy[p]))}</span></button>`;
+  }).join('');
+  const saved=coalSaved(COUNTRY);
+  const savedHtml=saved.length?`<div class="coal-saved">
+    <div class="coal-saved-head">${t('Saved scenarios','Kaydedilen senaryolar')}</div>
+    ${saved.map((x,i)=>`<div class="coal-saved-row">
+      <span class="coal-saved-name">${escHtml(x.name||t('Coalition','Koalisyon'))}</span>
+      <span class="coal-saved-parties">${(x.parties||[]).map(partyCode).join(' + ')}</span>
+      <button type="button" class="coal-mini" data-coal-load="${i}">${t('Load','Yükle')}</button>
+      <button type="button" class="coal-mini danger" data-coal-del="${i}" aria-label="${t('Delete','Sil')}">✕</button>
+    </div>`).join('')}
+  </div>`:'';
+  return `<div class="card coal-builder" data-coal-builder>
+    <div class="card-head"><div class="bar"></div><div class="t">${t('Build a coalition','Koalisyon kur')}</div></div>
+    <div class="coal-hint">${t('Pick parties. The probability is the share of simulations where they reach a majority.','Parti seçin. Olasılık, simülasyonlarda çoğunluğa ulaştıkları paydır.')}</div>
+    <div class="coal-picks">${picks}</div>
+    <div class="coal-summary">
+      <div><span>${t('Expected seats','Beklenen sandalye')}</span><b>${stats.exp}</b><em>/ ${maj}</em></div>
+      <div><span>${t('Majority probability','Çoğunluk ihtimali')}</span><b>${probPct(stats.p)}</b></div>
+      <div><span>${t('Likely PM','Muhtemel başbakan')}</span><b>${stats.pm?partyCode(stats.pm):'—'}</b></div>
+    </div>
+    <div class="coal-actions">
+      <button type="button" class="coal-btn" data-coal-share>${t('Share link','Bağlantıyı paylaş')}</button>
+      <button type="button" class="coal-btn" data-coal-save>${t('Save scenario','Senaryoyu kaydet')}</button>
+      <button type="button" class="coal-btn ghost" data-coal-clear>${t('Clear','Temizle')}</button>
+    </div>
+    ${savedHtml}
+  </div>`;
+}
+function bindCoalitionBuilder(pane,sim,maj){
+  const rerender=()=>{updateUrl();renderForecast(pane);};
+  pane.querySelectorAll('[data-coal-party]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const p=btn.dataset.coalParty;
+      COAL_SELECTION=COAL_SELECTION.includes(p)
+        ?COAL_SELECTION.filter(x=>x!==p)
+        :COAL_SELECTION.concat([p]);
+      rerender();
+    });
+  });
+  pane.querySelectorAll('[data-coal-preset]').forEach(row=>{
+    const load=()=>{
+      COAL_SELECTION=(row.dataset.coalPreset||'').split(',').filter(Boolean);
+      rerender();
+    };
+    row.addEventListener('click',load);
+    row.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();load();}
+    });
+  });
+  const share=pane.querySelector('[data-coal-share]');
+  if(share) share.addEventListener('click',()=>{
+    updateUrl();
+    const url=location.href;
+    const done=()=>{share.textContent=t('Copied','Kopyalandı');setTimeout(()=>{share.textContent=t('Share link','Bağlantıyı paylaş')},1400)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done).catch(()=>prompt(t('Copy this link','Bu bağlantıyı kopyalayın'),url));
+    }else{
+      prompt(t('Copy this link','Bu bağlantıyı kopyalayın'),url);
+    }
+  });
+  const save=pane.querySelector('[data-coal-save]');
+  if(save) save.addEventListener('click',()=>{
+    if(!COAL_SELECTION.length) return;
+    const def=COAL_SELECTION.map(partyCode).join('+');
+    const name=prompt(t('Scenario name','Senaryo adı'),def);
+    if(!name) return;
+    const store=coalStore();
+    const d=$('filter-days'), ps=$('filter-pollster'), mt=$('filter-method');
+    const list=store[COUNTRY]||[];
+    list.unshift({
+      name:name,
+      parties:COAL_SELECTION.slice(),
+      days:d?d.value:'30',
+      pollster:ps?ps.value:'',
+      method:mt?mt.value:''
+    });
+    store[COUNTRY]=list.slice(0,20);
+    writeCoalStore(store);
+    rerender();
+  });
+  const clear=pane.querySelector('[data-coal-clear]');
+  if(clear) clear.addEventListener('click',()=>{
+    COAL_SELECTION=[];
+    rerender();
+  });
+  pane.querySelectorAll('[data-coal-load]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=coalSaved(COUNTRY)[Number(btn.dataset.coalLoad)];
+      if(!item) return;
+      COAL_SELECTION=(item.parties||[]).filter(p=>PARTY_ORDER.includes(p));
+      const d=$('filter-days'), ps=$('filter-pollster'), mt=$('filter-method');
+      if(d&&item.days) d.value=item.days;
+      if(ps) ps.value=item.pollster||'';
+      if(mt) mt.value=item.method||'';
+      window._600UserDays=true;
+      rerender();
+    });
+  });
+  pane.querySelectorAll('[data-coal-del]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const store=coalStore();
+      const list=store[COUNTRY]||[];
+      list.splice(Number(btn.dataset.coalDel),1);
+      if(list.length) store[COUNTRY]=list; else delete store[COUNTRY];
+      writeCoalStore(store);
+      rerender();
+    });
+  });
+}
+
 /* ---------- forecast tab ---------- */
 function renderForecast(pane){
   const fd=$('filter-days');
@@ -5791,7 +5938,7 @@ function renderForecast(pane){
     }).filter(Boolean).sort((a,b)=>b.p-a.p);
     if(rows.length){
       coalHtml=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Coalition scenarios','Koalisyon senaryoları')}</div></div>
-        ${rows.map(r=>`<div class="coal-row" title="${r.c.parties.join(' + ')} \u2014 ${r.exp} ${T.seats}, ${probPct(r.p)}">
+        ${rows.map(r=>`<div class="coal-row" data-coal-preset="${r.c.parties.join(',')}" role="button" tabindex="0" title="${r.c.parties.join(' + ')} \u2014 ${r.exp} ${T.seats}, ${probPct(r.p)}">
           <div class="coal-id">
             <span class="coal-chips">${r.c.parties.filter(p=>sim.seatsBy[p]).map(p=>`<span class="coal-chip" style="background:${(PARTY_META[p]||{}).color||'#888'}"></span>`).join('')}</span>
             <span class="coal-name">${r.c.name}</span>
@@ -6218,6 +6365,8 @@ function renderForecast(pane){
       ${calibNote()}
     </div>`}
 
+    ${coalitionBuilderHtml(sim,MAJ)}
+
     ${coalHtml}
 
     ${RO_ONLY?'':`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${MAP_ONLY?t('FIRST-ROUND LEADER','İLK TUR LİDERİ'):T.largestParty}</div></div>
@@ -6236,6 +6385,7 @@ function renderForecast(pane){
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">Expected seats = mean of simulations \u00b7 calibrated 90% interval</div>
     </div>`}
   </div>`;
+  bindCoalitionBuilder(pane,sim,MAJ);
   const fcParlShot=$('fc-parl-shot-btn');
   if(fcParlShot){
     fcParlShot.addEventListener('click',()=>{
@@ -7433,7 +7583,7 @@ window._600={
   applyFilters(){
     const active=document.querySelector('.tab-trigger[data-active="true"]');
     const tabId=active?active.dataset.tab:'polls';
-    if(tabId==='polls'){renderPollsTab();return}
+    if(tabId==='polls'){renderPollsTab(); if(typeof updateUrl==='function') updateUrl(); return}
     const pane=$('pane-'+tabId);
     if(!pane) return;
     if(tabId==='forecast'){renderForecast(pane)}
@@ -7441,6 +7591,7 @@ window._600={
     else if(tabId==='live'){renderLive(pane)}
     else if(tabId==='history'){renderHistory(pane)}
     else if(tabId==='methodology'){renderMethodology(pane)}
+    if(typeof updateUrl==='function') updateUrl();
   },
   setCountry(id){
     if(!COUNTRIES[id]||id===COUNTRY) return;
@@ -7454,6 +7605,7 @@ PARL_MODE='proj';
     FC_MODE='proj';
     MAP_COLOR='party';
     MAP_HEAT_PARTY=null;
+    COAL_SELECTION=[];
     FIELD_SIG=null;
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
@@ -7482,6 +7634,13 @@ function updateUrl(){
     const tabId=active?active.dataset.tab:'polls';
     if(tabId&&tabId!=='polls') p.set('t',tabId);
     if(MAP_LAYER===1) p.set('l','2');
+    if(COAL_SELECTION.length) p.set('coal',COAL_SELECTION.join(','));
+    const dSel=document.getElementById('filter-days');
+    if(dSel&&dSel.value&&dSel.value!=='30') p.set('d',dSel.value);
+    const pSel=document.getElementById('filter-pollster');
+    if(pSel&&pSel.value) p.set('pollster',pSel.value);
+    const mSel=document.getElementById('filter-method');
+    if(mSel&&mSel.value) p.set('method',mSel.value);
     history.replaceState(null,'',location.pathname+'?'+p.toString());
   }catch(e){}
 }
@@ -7494,6 +7653,20 @@ function applyUrlParams(){
   if(d){
     const sel=document.getElementById('filter-days');
     if(sel&&[...sel.options].some(o=>o.value===d)) sel.value=d;
+  }
+  const ps=p.get('pollster');
+  if(ps){
+    const sel=document.getElementById('filter-pollster');
+    if(sel) sel.value=ps;
+  }
+  const mt=p.get('method');
+  if(mt){
+    const sel=document.getElementById('filter-method');
+    if(sel) sel.value=mt;
+  }
+  const coal=p.get('coal');
+  if(coal){
+    COAL_SELECTION=coal.split(',').filter(p=>PARTY_ORDER.includes(p));
   }
   const t=p.get('t');
   if(t&&t!=='polls'){

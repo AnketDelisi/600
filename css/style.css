@@ -890,3 +890,37 @@ body{background:var(--c-bg);color:var(--c-text-main)}
   .cnav-search{max-width:none;margin:6px 0 8px}
   .cnav-group{display:block}
 }
+
+/* ---------- coalition builder ---------- */
+.coal-row[data-coal-preset]{cursor:pointer;border-radius:2px;transition:background 120ms var(--ease)}
+.coal-row[data-coal-preset]:hover,.coal-row[data-coal-preset]:focus-visible{background:var(--c-hover);outline:0}
+.coal-hint{font-size:11px;line-height:1.45;color:var(--c-text-muted);margin:2px 0 8px}
+.coal-picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(102px,1fr));gap:5px;margin-bottom:8px}
+.coal-pick{display:flex;align-items:center;gap:6px;min-width:0;padding:6px 7px;border:2px solid var(--c-border);border-radius:2px;background:var(--c-surface);color:var(--c-text-main);font-family:var(--font);font-size:11px;font-weight:900;cursor:pointer;text-align:left}
+.coal-pick:hover{border-color:var(--c-edge)}
+.coal-pick.on{border-color:var(--c-edge);box-shadow:2px 2px 0 var(--c-edge);background:var(--c-head)}
+.coal-pick .party-mark{width:16px;height:16px;margin-right:0}
+.coal-pick .party-mark-text{width:16px;height:16px;font-size:8px;margin-right:0}
+.coal-pick-seats{margin-left:auto;font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--c-text-muted);font-variant-numeric:tabular-nums}
+.coal-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:1px solid var(--c-border);padding-top:8px;margin-top:2px}
+.coal-summary span{display:block;font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--c-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.coal-summary b{display:inline-block;margin-top:3px;font-family:var(--font-mono);font-size:18px;font-weight:900;font-variant-numeric:tabular-nums;color:var(--c-text-main)}
+.coal-summary em{font-style:normal;font-size:11px;font-weight:700;color:var(--c-text-muted);margin-left:2px}
+.coal-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.coal-btn{font-family:var(--font);font-size:10px;font-weight:900;letter-spacing:.4px;text-transform:uppercase;padding:6px 9px;border:2px solid var(--c-edge);border-radius:2px;background:var(--c-edge);color:#fff;cursor:pointer;box-shadow:2px 2px 0 rgba(26,26,26,.25)}
+.coal-btn:hover{transform:translateY(-1px)}
+.coal-btn.ghost{background:var(--c-surface);color:var(--c-text-main);box-shadow:none}
+.coal-saved{margin-top:10px;border-top:1px dashed var(--c-border);padding-top:8px}
+.coal-saved-head{font-size:10px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:5px}
+.coal-saved-row{display:flex;align-items:center;gap:6px;min-width:0;padding:5px 0;border-bottom:1px solid rgba(26,26,26,.06);font-size:11px}
+.coal-saved-row:last-child{border-bottom:none}
+.coal-saved-name{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+.coal-saved-parties{font-family:var(--font-mono);font-size:10px;color:var(--c-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.coal-mini{font-family:var(--font);font-size:10px;font-weight:900;padding:3px 6px;border:1px solid var(--c-border);border-radius:2px;background:var(--c-surface);color:var(--c-text-main);cursor:pointer}
+.coal-mini:hover{border-color:var(--c-edge)}
+.coal-mini.danger{color:var(--c-accent);border-color:transparent;background:transparent}
+@media(max-width:560px){
+  .coal-summary{grid-template-columns:1fr 1fr}
+  .coal-summary>div:last-child{grid-column:1/-1}
+  .coal-saved-name{max-width:110px}
+}

@@ -3375,8 +3375,9 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
   if(g.childNodes.length) svg.appendChild(g);
 }
 
-// Add a black outer edge around the union of the map shapes. The original
-// paths stay on top, so their white internal borders are untouched.
+// Add a black outer edge around the union of the map shapes. A cloned,
+// filtered layer draws only the expanded rim, so the live paths keep their
+// hover opacity and their internal borders are untouched.
 let MAP_OUTLINE_SEQ=0;
 function addMapOutline(svg, paths){
   const NS='http://www.w3.org/2000/svg';
@@ -3403,12 +3404,18 @@ function addMapOutline(svg, paths){
     svg.insertBefore(defs,svg.firstChild);
   }
   groups.forEach(g=>{
-    if(g.getAttribute('filter')) return;
     let scale=1;
     try{
       const m=g.getCTM();
       if(m) scale=Math.sqrt(Math.abs(m.a*m.d-m.b*m.c))||1;
     }catch(e){}
+    const clone=g.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach(n=>n.removeAttribute('id'));
+    clone.querySelectorAll('text,rect,image').forEach(n=>n.remove());
+    clone.setAttribute('pointer-events','none');
+    clone.setAttribute('aria-hidden','true');
+    clone.setAttribute('class','map-outline-layer');
     const id='map-outline-'+(++MAP_OUTLINE_SEQ);
     const f=document.createElementNS(NS,'filter');
     f.setAttribute('id',id);
@@ -3422,27 +3429,25 @@ function addMapOutline(svg, paths){
     dilate.setAttribute('operator','dilate');
     dilate.setAttribute('radius',(1.5/Math.max(0.05,scale)).toFixed(2));
     dilate.setAttribute('result','expanded');
+    const ring=document.createElementNS(NS,'feComposite');
+    ring.setAttribute('in','expanded');
+    ring.setAttribute('in2','SourceAlpha');
+    ring.setAttribute('operator','out');
+    ring.setAttribute('result','ring');
     const flood=document.createElementNS(NS,'feFlood');
     flood.setAttribute('flood-color','#111827');
     flood.setAttribute('result','ink');
     const comp=document.createElementNS(NS,'feComposite');
     comp.setAttribute('in','ink');
-    comp.setAttribute('in2','expanded');
+    comp.setAttribute('in2','ring');
     comp.setAttribute('operator','in');
-    comp.setAttribute('result','outline');
-    const merge=document.createElementNS(NS,'feMerge');
-    const outlineNode=document.createElementNS(NS,'feMergeNode');
-    outlineNode.setAttribute('in','outline');
-    const graphicNode=document.createElementNS(NS,'feMergeNode');
-    graphicNode.setAttribute('in','SourceGraphic');
-    merge.appendChild(outlineNode);
-    merge.appendChild(graphicNode);
     f.appendChild(dilate);
+    f.appendChild(ring);
     f.appendChild(flood);
     f.appendChild(comp);
-    f.appendChild(merge);
     defs.appendChild(f);
-    g.setAttribute('filter','url(#'+id+')');
+    clone.setAttribute('filter','url(#'+id+')');
+    g.parentNode.insertBefore(clone,g);
   });
 }
 
@@ -3544,7 +3549,7 @@ async function renderMapInto(box, avg, resultMode, confOverride){
       :(blocMode?(BLOCS[winner]?BLOCS[winner].color:'#888'):(PARTY_META[winner]?PARTY_META[winner].color:'#888'));
     ph.style.fill=color;
     if(!ph.getAttribute('style')||ph.getAttribute('style').indexOf('stroke')<0){
-      ph.style.stroke=conf.stroke||'#ffffff';
+      ph.style.stroke=conf.stroke||'none';
     }
     ph.style.cursor='pointer';
     ph.style.transition='opacity .15s ease';

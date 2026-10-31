@@ -6,7 +6,7 @@
  "threshold": 0.0,
  "method": "runoff",
  "constituencies": false,
- "notes": "President of Bulgaria: first round held 25 October 2026; runoff Iotova vs Gyurov on 1 November. CIK first-round result is 100% counted. The runoff model anchors on the actual first-round two-way vote, the single pre-round Sova Harris head-to-head poll, and a +1.5pp GERB/SDS endorsement scenario (range 0.5-2.5pp); exit polls are validation-only and excluded from averages and pollster MAE.",
+ "notes": "President of Bulgaria: first round held 25 October 2026; runoff Iotova vs Gyurov on 1 November. CIK first-round result is 100% counted. The runoff model anchors on the actual first-round two-way vote, the single pre-round Sova Harris head-to-head poll, a 40%-weight eliminated-candidate transfer prior, and a +1.5pp GERB/SDS endorsement scenario (range 0.5-2.5pp); exit polls are validation-only and excluded from averages and pollster MAE.",
  "turnout": {
   "prior": 49.78,
   "sigma": 8.2,

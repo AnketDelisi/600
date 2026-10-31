@@ -15866,6 +15866,16 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     runoffAnchor: 0.8,
     runoffEndorsement: { candidate: 'gyurov', delta: 1.5, lo: 0.5, hi: 2.5,
       source: 'GERB/SDS endorsement (30 Oct)' },
+    // Transfer prior from the eliminated first-round candidates. Shares are
+    // of each candidate's first-round vote; the remainder abstains/blank.
+    runoffTransferWeight: 0.4,
+    runoffTransfers: {
+      kostadinov: { iotova: 0.65, gyurov: 0.10 },
+      vasilev:    { iotova: 0.10, gyurov: 0.65 },
+      mihaylov:   { iotova: 0.65, gyurov: 0.10 },
+      hristanov:  { iotova: 0.25, gyurov: 0.55 },
+      others:     { iotova: 0.40, gyurov: 0.40 },
+    },
     runoffOnly: true,
     parties: {
       iotova:     { code: 'IOTOVA', name: 'Iliana Iotova', name_en: 'Iliana Iotova', color: '#DB0F28' },

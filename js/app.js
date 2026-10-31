@@ -4,7 +4,6 @@
 
 /* ---------- helpers ---------- */
 const $=s=>document.getElementById(s);
-const escHtml=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 // this file's own cache-busting token (?v= on the script tag), reused for
 // map svg fetches so a rebuilt map is not served from the browser cache
 const ASSET_V=(function(){
@@ -5717,17 +5716,6 @@ function renderPrediction(pane){
 }
 
 /* ---------- coalition builder ---------- */
-const COAL_STORE_KEY='600_coal_scenarios';
-function coalStore(){
-  try{return JSON.parse(localStorage.getItem(COAL_STORE_KEY)||'{}')||{}}
-  catch(e){return {}}
-}
-function coalSaved(country){
-  return (coalStore()[country]||[]).filter(x=>x&&Array.isArray(x.parties));
-}
-function writeCoalStore(store){
-  try{localStorage.setItem(COAL_STORE_KEY,JSON.stringify(store))}catch(e){}
-}
 function coalitionStats(sim,parts,maj,detSeats){
   const valid=(parts||[]).filter(p=>sim.seatsBy&&sim.seatsBy[p]);
   if(!valid.length) return {p:0,seats:0,valid:[]};
@@ -5752,23 +5740,13 @@ function coalitionBuilderHtml(sim,maj,detSeats){
     const on=COAL_SELECTION.includes(p);
     return `<button type="button" class="coal-pick${on?' on':''}" data-coal-party="${p}" aria-pressed="${on}" style="--mark-color:${col}">${partyMark(p,null,col,'party-mark')}<span>${partyCode(p)}</span><span class="coal-pick-seats">${detSeats[p]||0}</span></button>`;
   }).join('');
-  const saved=coalSaved(COUNTRY);
-  const savedHtml=saved.length?`<div class="coal-saved">
-    <div class="coal-saved-head">${t('Saved scenarios','Kaydedilen senaryolar')}</div>
-    ${saved.map((x,i)=>`<div class="coal-saved-row">
-      <span class="coal-saved-name">${escHtml(x.name||t('Coalition','Koalisyon'))}</span>
-      <span class="coal-saved-parties">${(x.parties||[]).map(partyCode).join(' + ')}</span>
-      <button type="button" class="coal-mini" data-coal-load="${i}">${t('Load','Yükle')}</button>
-      <button type="button" class="coal-mini danger" data-coal-del="${i}" aria-label="${t('Delete','Sil')}">✕</button>
-    </div>`).join('')}
-  </div>`:'';
   const pctSeats=totalSeats?Math.min(100,stats.seats/totalSeats*100):0;
   const majPct=totalSeats?Math.min(100,maj/totalSeats*100):50;
   return `<div class="card coal-builder" data-coal-builder>
     <div class="card-head"><div class="bar"></div><div class="t">${t('Build a coalition','Koalisyon kur')}</div></div>
     <div class="coal-hint">${t('Pick parties. Unselected seats fade; the probability is the share of simulations where the coalition reaches a majority.','Parti seçin. Seçilmeyen sandalyeler soluklaşır; olasılık koalisyonun çoğunluğa ulaştığı simülasyon payıdır.')}</div>
     <div class="coal-parliament">${buildParliamentSVG(detSeats,null,new Set(COAL_SELECTION))}</div>
-    <div class="coal-seatbar" title="${stats.seats} / ${totalSeats} ${T.seats} · ${t('majority','çoğunluk')} ${maj}">
+    <div class="coal-seatbar" role="img" aria-label="${stats.seats} / ${totalSeats} ${T.seats}, ${t('majority','çoğunluk')} ${maj}">
       <div class="coal-seatfill" style="width:${pctSeats.toFixed(1)}%"></div>
       <div class="coal-majority" style="left:${majPct.toFixed(1)}%"></div>
     </div>
@@ -5779,12 +5757,7 @@ function coalitionBuilderHtml(sim,maj,detSeats){
       <span class="coal-prob"><b>${probPct(stats.p)}</b> ${t('majority probability','çoğunluk ihtimali')}</span>
     </div>
     <div class="coal-picks">${picks}</div>
-    <div class="coal-actions">
-      <button type="button" class="coal-btn" data-coal-share>${t('Share link','Bağlantıyı paylaş')}</button>
-      <button type="button" class="coal-btn" data-coal-save>${t('Save scenario','Senaryoyu kaydet')}</button>
-      <button type="button" class="coal-btn ghost" data-coal-clear>${t('Clear','Temizle')}</button>
-    </div>
-    ${savedHtml}
+    ${COAL_SELECTION.length?`<div class="coal-actions"><button type="button" class="coal-clear" data-coal-clear>${t('Clear selection','Seçimi temizle')}</button></div>`:''}
   </div>`;
 }
 function bindCoalitionBuilder(pane,sim,maj){
@@ -5808,64 +5781,10 @@ function bindCoalitionBuilder(pane,sim,maj){
       if(e.key==='Enter'||e.key===' '){e.preventDefault();load();}
     });
   });
-  const share=pane.querySelector('[data-coal-share]');
-  if(share) share.addEventListener('click',()=>{
-    updateUrl();
-    const url=location.href;
-    const done=()=>{share.textContent=t('Copied','Kopyalandı');setTimeout(()=>{share.textContent=t('Share link','Bağlantıyı paylaş')},1400)};
-    if(navigator.clipboard&&navigator.clipboard.writeText){
-      navigator.clipboard.writeText(url).then(done).catch(()=>prompt(t('Copy this link','Bu bağlantıyı kopyalayın'),url));
-    }else{
-      prompt(t('Copy this link','Bu bağlantıyı kopyalayın'),url);
-    }
-  });
-  const save=pane.querySelector('[data-coal-save]');
-  if(save) save.addEventListener('click',()=>{
-    if(!COAL_SELECTION.length) return;
-    const def=COAL_SELECTION.map(partyCode).join('+');
-    const name=prompt(t('Scenario name','Senaryo adı'),def);
-    if(!name) return;
-    const store=coalStore();
-    const d=$('filter-days'), ps=$('filter-pollster'), mt=$('filter-method');
-    const list=store[COUNTRY]||[];
-    list.unshift({
-      name:name,
-      parties:COAL_SELECTION.slice(),
-      days:d?d.value:'30',
-      pollster:ps?ps.value:'',
-      method:mt?mt.value:''
-    });
-    store[COUNTRY]=list.slice(0,20);
-    writeCoalStore(store);
-    rerender();
-  });
   const clear=pane.querySelector('[data-coal-clear]');
   if(clear) clear.addEventListener('click',()=>{
     COAL_SELECTION=[];
     rerender();
-  });
-  pane.querySelectorAll('[data-coal-load]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const item=coalSaved(COUNTRY)[Number(btn.dataset.coalLoad)];
-      if(!item) return;
-      COAL_SELECTION=(item.parties||[]).filter(p=>PARTY_ORDER.includes(p));
-      const d=$('filter-days'), ps=$('filter-pollster'), mt=$('filter-method');
-      if(d&&item.days) d.value=item.days;
-      if(ps) ps.value=item.pollster||'';
-      if(mt) mt.value=item.method||'';
-      window._600UserDays=true;
-      rerender();
-    });
-  });
-  pane.querySelectorAll('[data-coal-del]').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const store=coalStore();
-      const list=store[COUNTRY]||[];
-      list.splice(Number(btn.dataset.coalDel),1);
-      if(list.length) store[COUNTRY]=list; else delete store[COUNTRY];
-      writeCoalStore(store);
-      rerender();
-    });
   });
 }
 

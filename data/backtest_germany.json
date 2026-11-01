@@ -1,0 +1,105 @@
+{
+ "generated": "2026-11-01T11:26:53Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 3.43,
+  "30": 1.77,
+  "14": 1.35,
+  "7": 1.24,
+  "0": 1.15
+ },
+ "countries": {
+  "germany": {
+   "60": 3.43,
+   "30": 1.77,
+   "14": 1.35,
+   "7": 1.24,
+   "0": 1.15
+  }
+ },
+ "counts": {
+  "germany": {
+   "60": 1,
+   "30": 2,
+   "14": 2,
+   "7": 2,
+   "0": 2
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "30": 19.14,
+   "14": 12.57,
+   "7": 9.33,
+   "0": 8
+  },
+  "cycles": {
+   "germany-2025": {
+    "30": 19.14,
+    "14": 12.57,
+    "7": 9.33,
+    "0": 8
+   }
+  }
+ },
+ "calibration": {
+  "n": 4,
+  "buckets": [
+   {
+    "lo": 0.9,
+    "hi": 1.01,
+    "n": 4,
+    "hits": 4
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "germany-2025",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 0.998,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   },
+   {
+    "cycle": "germany-2025",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "cdu",
+    "p": 1.0,
+    "actual": 477,
+    "need": 316,
+    "hit": true
+   }
+  ]
+ }
+}

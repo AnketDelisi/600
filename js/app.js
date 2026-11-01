@@ -7845,6 +7845,12 @@ PARL_MODE='proj';
     MAP_HEAT_PARTY=null;
     COAL_SELECTION=[];
     FIELD_SIG=null;
+    // A pollster/method/time filter chosen for the previous country must not
+    // hide every poll in the new one (Belgium's regional series is sparse).
+    window._600UserDays=false;
+    if($('filter-days')) $('filter-days').value='30';
+    if($('filter-pollster')) $('filter-pollster').value='';
+    if($('filter-method')) $('filter-method').value='';
     if(LIVE_INTERVAL){clearInterval(LIVE_INTERVAL);LIVE_INTERVAL=null}
     document.querySelectorAll('.tab-trigger').forEach(b=>{b.dataset.active='false';delete b.dataset.loaded});
     document.querySelectorAll('.tab-pane').forEach(p=>{delete p.dataset.loaded});

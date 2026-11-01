@@ -1,0 +1,17 @@
+{
+ "election": "bulgaria-2026-r2",
+ "snapshots": [
+  {
+   "at": "2026-11-01T21:34:50Z",
+   "counted": 17.39,
+   "total": 100,
+   "counted_pct": 17.39,
+   "pct": {
+    "iotova": 57.943,
+    "gyurov": 39.007,
+    "nota": 3.05
+   },
+   "seats": {}
+  }
+ ]
+}

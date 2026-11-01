@@ -2,7 +2,7 @@ name: Live results
 
 on:
   schedule:
-    - cron: '*/5 * 27-29 10 *'
+    - cron: '*/5 * 1-2 11 *'
   workflow_dispatch:
 
 permissions:
@@ -28,7 +28,9 @@ jobs:
         run: pip install requests beautifulsoup4 lxml
 
       - name: Pull live results
-        run: python scraper/live_all.py
+        run: |
+          python scraper/live_all.py
+          python scraper/live_bulgaria_runoff.py
 
       - name: Publish live updates every minute
         run: |
@@ -56,5 +58,6 @@ jobs:
             sleep 30
             python scraper/live_serbia_fast.py
             python scraper/live_bulgaria_fast.py
+            python scraper/live_bulgaria_runoff.py
             publish
           done

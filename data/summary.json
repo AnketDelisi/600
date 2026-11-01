@@ -1,6 +1,26 @@
 {
- "generated": "2026-10-31T11:40:14Z",
+ "generated": "2026-11-01T19:51:17Z",
  "countries": {
+  "sweden": {
+   "name": "Sweden",
+   "election_date": "2026-09-13",
+   "election_date_runoff": null,
+   "last_election": "2022-09-11",
+   "last_winner": null,
+   "seats": 349,
+   "seat_based": false,
+   "leader": "S",
+   "leader_pct": 27.0,
+   "leader_code": "S",
+   "leader_color": "#ED1B34",
+   "leader_logo": "img/S.svg",
+   "second": "M",
+   "second_pct": 24.9,
+   "last_winner_code": null,
+   "last_winner_color": null,
+   "poll_count": 4,
+   "latest_poll": "2026-10-29"
+  },
   "israel": {
    "name": "Israel",
    "election_date": "2026-10-27",
@@ -15,10 +35,10 @@
    "leader_color": "#62B9F2",
    "leader_logo": "img/il/Yashar.svg",
    "second": "likud",
-   "second_pct": 20.4,
+   "second_pct": 20.3,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 29,
+   "poll_count": 28,
    "latest_poll": "2026-10-23"
   },
   "serbia": {
@@ -55,10 +75,10 @@
    "leader_color": "#E20E28",
    "leader_logo": "img/br/Lula.svg",
    "second": "flavio",
-   "second_pct": 44.5,
+   "second_pct": 44.4,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 62,
+   "poll_count": 61,
    "latest_poll": "2026-10-24"
   },
   "austria": {
@@ -98,7 +118,7 @@
    "second_pct": 17.6,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 2,
+   "poll_count": 4,
    "latest_poll": "2026-10-01"
   },
   "poland": {
@@ -110,15 +130,15 @@
    "seats": 460,
    "seat_based": false,
    "leader": "ko",
-   "leader_pct": 32.3,
+   "leader_pct": 32.0,
    "leader_code": "KO",
    "leader_color": "#F68F2D",
    "leader_logo": "img/pl/KO.svg",
    "second": "pis",
-   "second_pct": 22.3,
+   "second_pct": 22.1,
    "last_winner_code": "PiS",
    "last_winner_color": "#263778",
-   "poll_count": 10,
+   "poll_count": 9,
    "latest_poll": "2026-10-26"
   },
   "netherlands": {
@@ -230,7 +250,7 @@
    "seats": 350,
    "seat_based": false,
    "leader": "pp",
-   "leader_pct": 30.8,
+   "leader_pct": 30.7,
    "leader_code": "PP",
    "leader_color": "#1D84CE",
    "leader_logo": "img/es/PP.svg",
@@ -238,7 +258,7 @@
    "second_pct": 27.3,
    "last_winner_code": "PP",
    "last_winner_color": "#1D84CE",
-   "poll_count": 31,
+   "poll_count": 28,
    "latest_poll": "2026-10-25"
   },
   "greece": {
@@ -278,7 +298,7 @@
    "second_pct": 20.4,
    "last_winner_code": "FdI",
    "last_winner_color": "#03386A",
-   "poll_count": 30,
+   "poll_count": 28,
    "latest_poll": "2026-10-29"
   },
   "jp": {
@@ -395,10 +415,10 @@
    "leader_color": "#004AAD",
    "leader_logo": "img/bc/CPBC.svg",
    "second": "bcndp",
-   "second_pct": 38.8,
+   "second_pct": 38.7,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 20,
+   "poll_count": 17,
    "latest_poll": "2026-10-23"
   },
   "ontario": {
@@ -535,10 +555,10 @@
    "leader_color": "#DB0F28",
    "leader_logo": "img/bg/BSP.svg",
    "second": "gyurov",
-   "second_pct": 30.0,
+   "second_pct": 30.1,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 15,
+   "poll_count": 14,
    "latest_poll": "2026-10-25"
   },
   "bg": {
@@ -670,7 +690,7 @@
    "seats": 169,
    "seat_based": false,
    "leader": "frp",
-   "leader_pct": 32.9,
+   "leader_pct": 32.6,
    "leader_code": "FrP",
    "leader_color": "#004F80",
    "leader_logo": "img/no/FRP.svg",
@@ -678,7 +698,7 @@
    "second_pct": 21.8,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 6,
+   "poll_count": 5,
    "latest_poll": "2026-10-21"
   },
   "pt": {
@@ -710,7 +730,7 @@
    "seats": 650,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 28.6,
+   "leader_pct": 28.7,
    "leader_code": "LAB",
    "leader_color": "#E41C3E",
    "leader_logo": "img/uk/LAB.svg",
@@ -718,8 +738,8 @@
    "second_pct": 21.8,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 24,
-   "latest_poll": "2026-10-29"
+   "poll_count": 25,
+   "latest_poll": "2026-10-30"
   },
   "nz": {
    "name": "New Zealand",

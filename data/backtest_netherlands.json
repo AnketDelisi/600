@@ -1,0 +1,117 @@
+{
+ "generated": "2026-11-01T09:31:26Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 2.24,
+  "30": 2.22,
+  "14": 2.02,
+  "7": 2.02,
+  "0": 1.29
+ },
+ "countries": {
+  "netherlands": {
+   "60": 2.24,
+   "30": 2.22,
+   "14": 2.02,
+   "7": 2.02,
+   "0": 1.29
+  }
+ },
+ "counts": {
+  "netherlands": {
+   "60": 1,
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "60": 3.2,
+   "30": 3.2,
+   "14": 2.93,
+   "7": 2.93,
+   "0": 1.73
+  },
+  "cycles": {
+   "netherlands-2025": {
+    "60": 3.2,
+    "30": 3.2,
+    "14": 2.93,
+    "7": 2.93,
+    "0": 1.73
+   }
+  }
+ },
+ "calibration": {
+  "n": 5,
+  "buckets": [
+   {
+    "lo": 0.9,
+    "hi": 1.01,
+    "n": 5,
+    "hits": 5
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "netherlands-2025",
+    "horizon": 60,
+    "bloc": "bloc2",
+    "leader": "pvv",
+    "p": 1.0,
+    "actual": 84,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "netherlands-2025",
+    "horizon": 30,
+    "bloc": "bloc2",
+    "leader": "pvv",
+    "p": 1.0,
+    "actual": 84,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "netherlands-2025",
+    "horizon": 14,
+    "bloc": "bloc2",
+    "leader": "pvv",
+    "p": 1.0,
+    "actual": 84,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "netherlands-2025",
+    "horizon": 7,
+    "bloc": "bloc2",
+    "leader": "pvv",
+    "p": 1.0,
+    "actual": 84,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "netherlands-2025",
+    "horizon": 0,
+    "bloc": "bloc2",
+    "leader": "pvv",
+    "p": 1.0,
+    "actual": 84,
+    "need": 76,
+    "hit": true
+   }
+  ]
+ }
+}

@@ -427,6 +427,30 @@ CYCLES = {
                       "neos": 18, "gruene": 16, "kpoe": 0},
         },
     },
+    "netherlands": {
+        2025: {
+            "article": "Opinion_polling_for_the_2025_Dutch_general_election",
+            "election": "2025-10-29", "prev": "2023-11-22", "half_life": 14,
+            # the article has separate seat and vote-share tables; the model
+            # needs the percentage table, not the seat table
+            "section": r"^Vote share$",
+            "cols": {"pvv": r"^pvv", "pro": r"^gl|^pvd",
+                     "vvd": r"^vvd", "d66": r"^d66", "bbb": r"^bbb",
+                     "cda": r"^cda", "sp": r"^sp$", "denk": r"^denk",
+                     "pvdd": r"^pvdD", "fvd": r"^fvd", "sgp": r"^sgp",
+                     "cu": r"^cu$", "volt": r"^volt",
+                     "ja21": r"^ja21", "fiftyplus": r"^50"},
+            "result": {"d66": 16.94, "pvv": 16.66, "vvd": 14.24,
+                       "pro": 12.79, "cda": 11.79, "ja21": 5.95,
+                       "fvd": 4.54, "bbb": 2.65, "denk": 2.37,
+                       "sgp": 2.25, "pvdd": 2.08, "cu": 1.90,
+                       "sp": 1.89, "fiftyplus": 1.43, "volt": 1.10},
+            "seats": {"d66": 26, "pvv": 26, "vvd": 22, "pro": 20,
+                      "cda": 18, "ja21": 9, "fvd": 7, "bbb": 4,
+                      "denk": 3, "sgp": 3, "pvdd": 3, "cu": 3,
+                      "sp": 3, "fiftyplus": 2, "volt": 1},
+        },
+    },
 }
 
 
@@ -510,7 +534,7 @@ def parse_cycle(soup, spec):
     for el in soup.find_all(["h2", "h3", "h4", "table"]):
         if el.name != "table":
             txt = el.get_text(" ", strip=True)
-            if el.name == "h2":
+            if el.name in ("h2", "h3", "h4"):
                 section = txt
             m = re.search(r"\b(20\d{2})\b", txt)
             if m and len(txt) < 100:

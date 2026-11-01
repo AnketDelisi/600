@@ -22,6 +22,8 @@ from pollster_norm import canonicalize_polls
 
 WIKI_URL = ("https://en.wikipedia.org/wiki/"
             "Opinion_polling_for_the_next_United_Kingdom_general_election")
+SCOTLAND_URL = ("https://en.wikipedia.org/wiki/"
+                "Opinion_polling_in_Scotland_for_the_next_United_Kingdom_general_election")
 COUNTRY = "uk"
 CUTOFF = "2024-07-05"          # after the 4 July 2024 election
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / COUNTRY
@@ -198,17 +200,149 @@ def scrape_uk():
     return polls
 
 
+def table_after_heading(soup, heading):
+    """First wikitable after an exact h2/h3/h4 heading."""
+    for h in soup.find_all(["h2", "h3", "h4"]):
+        title = " ".join(h.get_text(" ", strip=True).split())
+        if title != heading:
+            continue
+        t = h.find_next("table")
+        if t is not None and "wikitable" in (t.get("class") or []):
+            return t
+    return None
+
+
+def parse_regional_table(table, region, url, ref_year=2026):
+    grid, metas = expand_grid(table)
+    header_end = 0
+    for ri in range(min(4, len(grid))):
+        if any("pollster" in (c or "").lower() for c in grid[ri]):
+            header_end = ri + 1
+            break
+    if not header_end:
+        return []
+    hdr = grid[header_end - 1]
+    col_map, sample_col = {}, None
+    for i, htxt in enumerate(hdr):
+        key = map_header(htxt)
+        if key:
+            col_map[i] = key
+        if re.search(r"sample", htxt, re.I):
+            sample_col = i
+    if len(col_map) < 3:
+        return []
+    polls = []
+    for ri in range(header_end, len(grid)):
+        row = grid[ri]
+        if len(row) < 5:
+            continue
+        start, date = parse_date(row[0], ref_year)
+        if not date or date < CUTOFF:
+            continue
+        pollster = re.sub(r"\[[^\]]*\]", "", row[1] or "")
+        pollster = re.sub(r"\s+", " ", pollster).strip()
+        if not pollster or len(pollster) < 3 or len(pollster) > 60:
+            continue
+        if "election" in pollster.lower():
+            continue
+        n = 0
+        if sample_col is not None and sample_col < len(row):
+            digits = re.sub(r"[^\d]", "", row[sample_col] or "")
+            if digits:
+                n = int(digits)
+        votes = {}
+        for start_c, span, txt in metas[ri]:
+            for i in range(start_c, min(start_c + span, len(row))):
+                if i in col_map:
+                    share = parse_share(txt)
+                    if share is not None:
+                        votes[col_map[i]] = share
+        if len(votes) < 3 or not 60 <= sum(votes.values()) <= 110:
+            continue
+        polls.append({"pollster": pollster, "date": date, "n": n,
+                      "region": region, "votes": votes,
+                      "source_url": url})
+    return polls
+
+
+def regional_averages(polls):
+    """Recent-sample weighted regional average, normalized over polled parties."""
+    now = datetime.now(timezone.utc)
+    out = {}
+    for region in sorted({p["region"] for p in polls}):
+        rows = sorted((p for p in polls if p["region"] == region),
+                      key=lambda p: p["date"], reverse=True)[:10]
+        if len(rows) < 2:
+            continue
+        sums, weights = {}, 0.0
+        for p in rows:
+            try:
+                age = (now - datetime.fromisoformat(p["date"] + "T00:00:00+00:00")).days
+            except ValueError:
+                age = 0
+            w = max(1, min(1500, p.get("n") or 1000)) * (0.5 ** (max(0, age) / 120))
+            weights += w
+            for party, share in p["votes"].items():
+                sums[party] = sums.get(party, 0.0) + w * share
+        if weights <= 0 or not sums:
+            continue
+        avg = {party: value / weights for party, value in sums.items()}
+        total = sum(avg.values())
+        if total <= 0:
+            continue
+        out[region] = {party: round(100 * value / total, 2)
+                       for party, value in avg.items()}
+    return out
+
+
+def scrape_regional():
+    print("Fetching regional tables...")
+    scot = BeautifulSoup(requests.get(
+        SCOTLAND_URL, headers={"User-Agent": "600-poll-scraper/1.0"},
+        timeout=120).text, "lxml")
+    main = BeautifulSoup(requests.get(
+        WIKI_URL, headers={"User-Agent": "600-poll-scraper/1.0"},
+        timeout=120).text, "lxml")
+    polls = []
+    for region, soup, heading, url in (
+            ("scotland", scot, "Polls", SCOTLAND_URL),
+            ("wales", main, "Wales", WIKI_URL),
+            ("london", main, "London", WIKI_URL)):
+        table = table_after_heading(soup, heading)
+        if table is None:
+            print("  missing table:", region)
+            continue
+        rows = parse_regional_table(table, region, url)
+        print("  %s: %d polls" % (region, len(rows)))
+        polls.extend(rows)
+    return regional_averages(polls)
+
+
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     polls = scrape_uk()
     print(f"Scraped {len(polls)} polls")
     out = OUTPUT_DIR / "polls.json"
+    previous = {}
+    if out.exists():
+        try:
+            previous = json.loads(out.read_text(encoding="utf-8"))
+        except Exception:
+            previous = {}
+    try:
+        regional = scrape_regional()
+    except Exception as exc:
+        print("regional scrape failed:", exc)
+        regional = previous.get("regional", {})
+    if not regional:
+        regional = previous.get("regional", {})
     out.write_text(json.dumps({
         "country": COUNTRY,
         "source": "Wikipedia",
         "source_url": WIKI_URL,
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "poll_count": len(polls),
+        "regional": regional,
         "polls": polls,
     }, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {out}")

@@ -902,6 +902,53 @@ function trendProjections(polls){
   return res;
 }
 
+// Poll ensemble: the deployed average is a state-space estimate. A trimmed
+// poll-level mean is less sensitive to a single outlier/house and gives the
+// forecast a second, independent read of the same poll set.
+const POLL_ENSEMBLE_TRIM=0.15;
+const POLL_ENSEMBLE_WEIGHT=0.35;
+function trimmedPollAverage(polls, party){
+  const vals=[];
+  for(const poll of polls){
+    if(!poll.votes||isExitPoll(poll)) continue;
+    const v=pollValue(poll, party, false);
+    if(v===null||v===undefined||isNaN(v)) continue;
+    const w=Math.min(1500, effectiveSample(poll))*pollsterWeight(poll.pollster)*recencyWeight(poll.date);
+    if(w>0) vals.push([v,w]);
+  }
+  if(!vals.length) return null;
+  vals.sort((a,b)=>a[0]-b[0]);
+  const cut=vals.length>=8?Math.floor(vals.length*POLL_ENSEMBLE_TRIM):0;
+  const kept=vals.slice(cut, vals.length-cut);
+  let num=0, den=0;
+  for(const [v,w] of kept){ num+=v*w; den+=w; }
+  return den>0?num/den:null;
+}
+function computeAveragesEnsemble(polls, raw){
+  const base=computeAverages(polls, raw);
+  if(raw) return base;
+  const out={...base};
+  for(const pid of PARTY_ORDER){
+    const t=trimmedPollAverage(polls,pid);
+    if(t!==null) out[pid]=(1-POLL_ENSEMBLE_WEIGHT)*base[pid]+POLL_ENSEMBLE_WEIGHT*t;
+  }
+  let total=0;
+  for(const pid of PARTY_ORDER) total+=out[pid]||0;
+  if(SEAT_BASED){
+    if(total>0){
+      for(const pid of PARTY_ORDER) out[pid]=out[pid]*SEATS_TOTAL/total;
+      out.other=0;
+    }
+  }else{
+    if(total>100){
+      for(const pid of PARTY_ORDER) out[pid]=out[pid]*100/total;
+      total=100;
+    }
+    out.other=Math.max(0,100-total);
+  }
+  return out;
+}
+
 function computeAverages(polls, raw){
   polls=polls.filter(p=>!isExitPoll(p));
   const avg={};
@@ -4881,6 +4928,11 @@ const INTERVAL_SEAT_FLOOR_BY_SIZE={large:0,mid:6,small:6,tiny:6};
 const INTERVAL_COUNTRY_SEAT_FLOOR={canada:2};
 // Only countries with enough historical cases get a country override.
 const INTERVAL_COUNTRY_VOTE_SCALE={canada:1.8};
+// Country-specific interval multipliers from the country backtests: the
+// aggregate interval gate hides persistent country-level errors (Japan,
+// Croatia, Iceland, Slovenia, Serbia; seat models in the UK/Germany/Japan).
+const INTERVAL_COUNTRY_VOTE_MULT={jp:1.2,hr:1.15,is:1.1,si:1.1,serbia:1.5};
+const INTERVAL_COUNTRY_SEAT_MULT={uk:1.25,germany:1.25,jp:1.25,serbia:1.2,greece:1.15,latvia:1.15,sweden:1.1,portugal:1.1,slovenia:1.1};
 function intervalSize(mean,kind){
   if(kind==='votes'){
     if(mean>=20) return 'large';
@@ -4895,12 +4947,13 @@ function intervalSize(mean,kind){
 }
 function intervalVoteScale(mean){
   const c=COUNTRIES[COUNTRY]||{};
-  return INTERVAL_COUNTRY_VOTE_SCALE[c.id||COUNTRY]||
-         INTERVAL_VOTE_SCALE_BY_SIZE[intervalSize(mean,'votes')];
+  return (INTERVAL_COUNTRY_VOTE_SCALE[c.id||COUNTRY]||
+         INTERVAL_VOTE_SCALE_BY_SIZE[intervalSize(mean,'votes')])*
+         (INTERVAL_COUNTRY_VOTE_MULT[COUNTRY]||1);
 }
 function intervalSeatParams(mean){
   const k=intervalSize(mean,'seats');
-  return {scale:INTERVAL_SEAT_SCALE_BY_SIZE[k],
+  return {scale:INTERVAL_SEAT_SCALE_BY_SIZE[k]*(INTERVAL_COUNTRY_SEAT_MULT[COUNTRY]||1),
           floor:INTERVAL_COUNTRY_SEAT_FLOOR[COUNTRY]!==undefined
             ?INTERVAL_COUNTRY_SEAT_FLOOR[COUNTRY]
             :INTERVAL_SEAT_FLOOR_BY_SIZE[k]};
@@ -5873,7 +5926,7 @@ function renderForecast(pane){
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
   if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
-  const avg=computeAverages(filtered);
+  const avg=computeAveragesEnsemble(filtered);
   if((!filtered.length&&!(LAST_ELECTION&&LAST_ELECTION.results))||Object.values(avg).every(v=>v===null)){
     pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">FORECAST</div></div><div class="method-text" style="padding:16px"><p>No polls in the selected range.</p></div></div></div>`;
     return;
@@ -7822,11 +7875,11 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
   };
   window.__600_gammaSample=gammaSample;
   // Compute the deployed average for an explicit poll set. Used by the
-  // validation harness so it scores computeAverages(), not a Python copy.
+  // validation harness so it scores the live average, not a Python copy.
   window.__600_avg=function(cc,polls,raw){
     setCountry(cc);
     POLLS=Array.isArray(polls)?polls:[];
-    return computeAverages(POLLS,!!raw);
+    return computeAveragesEnsemble(POLLS,!!raw);
   };
 }
 

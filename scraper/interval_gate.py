@@ -27,6 +27,10 @@ APP_VOTE_SCALE_BY_COUNTRY = {"canada": 1.8}
 APP_SEAT_SCALE_BY_SIZE = {"large": 1.0, "mid": 1.0, "small": 1.0, "tiny": 1.0}
 APP_SEAT_FLOOR_BY_SIZE = {"large": 0, "mid": 6, "small": 6, "tiny": 6}
 APP_SEAT_FLOOR_BY_COUNTRY = {"canada": 2}
+APP_VOTE_MULT = {"jp": 1.2, "hr": 1.15, "is": 1.1, "si": 1.1, "serbia": 1.5}
+APP_SEAT_MULT = {"uk": 1.25, "germany": 1.25, "jp": 1.25, "serbia": 1.2,
+                 "greece": 1.15, "latvia": 1.15, "sweden": 1.1,
+                 "portugal": 1.1, "slovenia": 1.1}
 
 
 def scaled(lo, hi, center, scale):
@@ -69,15 +73,15 @@ def group_summary(rows, keyfn, scales, floor=0):
 
 def app_vote_scale(row):
     c = row.get("country")
-    if c in APP_VOTE_SCALE_BY_COUNTRY:
-        return APP_VOTE_SCALE_BY_COUNTRY[c]
-    return APP_VOTE_SCALE_BY_SIZE[size_bucket(row["center"], "votes")]
+    scale = APP_VOTE_SCALE_BY_COUNTRY.get(
+        c, APP_VOTE_SCALE_BY_SIZE[size_bucket(row["center"], "votes")])
+    return scale * APP_VOTE_MULT.get(c, 1)
 
 
 def app_seat_params(row):
     c = row.get("country")
     key = size_bucket(row["center"], "seats")
-    return (APP_SEAT_SCALE_BY_SIZE[key],
+    return (APP_SEAT_SCALE_BY_SIZE[key] * APP_SEAT_MULT.get(c, 1),
             APP_SEAT_FLOOR_BY_COUNTRY.get(c, APP_SEAT_FLOOR_BY_SIZE[key]))
 
 
@@ -218,10 +222,12 @@ def main():
     result["calibrated"] = {
         "votes": {"scales": APP_VOTE_SCALE_BY_SIZE,
                   "country": APP_VOTE_SCALE_BY_COUNTRY,
+                  "multipliers": APP_VOTE_MULT,
                   "coverage": app_coverage(rows["votes"], "votes")},
         "seats": {"scales": APP_SEAT_SCALE_BY_SIZE,
                   "floors": APP_SEAT_FLOOR_BY_SIZE,
                   "country": APP_SEAT_FLOOR_BY_COUNTRY,
+                  "multipliers": APP_SEAT_MULT,
                   "coverage": app_coverage(rows["seats"], "seats")},
     }
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",

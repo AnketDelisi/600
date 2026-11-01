@@ -27,6 +27,7 @@ function stubEl() {
 }
 
 global.window = globalThis;
+globalThis.__600_BACKTEST_MODE__ = true;
 globalThis.__600_SEATAPI__ = true;
 global.addEventListener = noop;
 global.removeEventListener = noop;

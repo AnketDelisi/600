@@ -2738,7 +2738,8 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   // Sub-national polling: a regional adjustment blended into the
   // 2023-based projection (never the base point itself).
   const region=conf.regionOf?conf.regionOf[String(nr)]:null;
-  const reg=region&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
+  const backtestMode=typeof window!=='undefined'&&window.__600_BACKTEST_MODE__;
+  const reg=region&&!backtestMode&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
   const rbase=region?((conf.regionBase||conf.region2023||conf.region2022||{})[region]||null):null;
   const rw=(conf.regionalBlend!==undefined)?conf.regionalBlend:0.5;
   const out={};

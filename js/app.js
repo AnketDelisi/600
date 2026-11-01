@@ -613,9 +613,11 @@ async function loadData(){
   try{
     // Detect base: local dev (site/ subdir) vs Pages (root)
     const base=dataBase();
+    // Poll files are overwritten by the daily scraper without a JS release.
+    // Bypass the browser cache so a stale copy cannot show an old field.
     const [pollsResp, metaResp]=await Promise.all([
-      fetch(base+'data/'+COUNTRY+'/polls.json'),
-      fetch(base+'data/'+COUNTRY+'/meta.json')
+      fetch(base+'data/'+COUNTRY+'/polls.json',{cache:'no-store'}),
+      fetch(base+'data/'+COUNTRY+'/meta.json',{cache:'no-store'})
     ]);
     const pollsJson=await pollsResp.json();
     const metaJson=await metaResp.json();
@@ -1473,7 +1475,9 @@ function brazilRunoffHero(avg, filteredPolls){
   if(!ro) return renderHeroGeneric(avg, filteredPolls);
   const cA=PARTY_META[ro.a]?PARTY_META[ro.a].color:'#888';
   const cB=PARTY_META[ro.b]?PARTY_META[ro.b].color:'#888';
-  const h2a=ro.winA/3000, h2b=1-h2a;
+  // The two runoff outcomes are complementary. Calibrate the pair once;
+  // calibrating each side independently can print totals above 100%.
+  const h2a=calibrateProbability(ro.winA/3000,ro.roN), h2b=1-h2a;
   const barA=(v)=>Math.max(2,v*100);
   const d1=META.election_date||'2026-10-04';
   const d2=META.election_date_runoff||'2026-10-25';
@@ -1488,23 +1492,23 @@ function brazilRunoffHero(avg, filteredPolls){
         <span class="bz-code">${partyCode(ro.a)}</span>
         <span class="bz-pct">${fmt(ro.aN,1)}%</span>
         <div class="bz-bar"><div class="bz-fill" style="width:${barA(ro.aN/100)}%;background:${cA}"></div></div>
-        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${probPct(h2a)}</b></span>
+        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${pct(h2a*100,1)}</b></span>
       </div>
       <div class="bz-vs">vs</div>
       <div class="bz-cand" style="--bz-c:${cB}">
         <span class="bz-code">${partyCode(ro.b)}</span>
         <span class="bz-pct">${fmt(ro.bN,1)}%</span>
         <div class="bz-bar"><div class="bz-fill" style="width:${barA(ro.bN/100)}%;background:${cB}"></div></div>
-        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${probPct(h2b)}</b></span>
+        <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${pct(h2b*100,1)}</b></span>
       </div>
     </div>
     ${ro.notaN>0?`<div style="font-size:12px;color:var(--c-text-muted);text-align:center;margin-top:4px">NOTA ${fmt(ro.notaN,1)}%</div>`:''}
     <div class="bz-path">
       ${((COUNTRIES[COUNTRY]||{}).runoffOnly||todayStr()>=(META.election_date||''))
-        ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${probPct(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${probPct(1-ro.winA/3000)}</b></span>`
-        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${probPct((ro.winA/3000))} ${t('first-round win','ilk turda kazanır')}</span>
+        ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${pct(h2a*100,1)}</b> \u00b7 ${partyCode(ro.b)} <b>${pct(h2b*100,1)}</b></span>`
+        :`<span>${t('ELECTION PATH','SEÇİM YOLU')}: ${partyCode(ro.a)} ${pct(h2a*100,1)} ${t('first-round win','ilk turda kazanır')}</span>
       <span>\u00b7</span>
-      <span>${partyCode(ro.b)} ${probPct(1-ro.winA/3000)} ${t('would go to runoff','ikinci tura gider')}</span>`}
+      <span>${partyCode(ro.b)} ${pct(h2b*100,1)} ${t('would go to runoff','ikinci tura gider')}</span>`}
     </div>
   </div>`;
 }
@@ -5664,7 +5668,7 @@ function firstRoundCard(sim){
   const barRow=(label,color,v)=>`<div class="fc-row">
     <span class="fc-row-label" style="color:${color}">${label}</span>
     <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(v*100).toFixed(1)}%;background:${color}"></div></div>
-    <span class="fc-row-val">${probPct(v)}</span>
+    <span class="fc-row-val">${pct(v*100,1)}</span>
   </div>`;
   return `<div class="card">
     <div class="card-head"><div class="bar"></div><div class="t">${t('FIRST ROUND — MAJORITY','İLK TUR — ÇOĞUNLUK')}</div></div>
@@ -6205,7 +6209,8 @@ function renderForecast(pane){
       roCache=ro;
       const cA=PARTY_META[ro.a]?PARTY_META[ro.a].color:'#888';
       const cB=PARTY_META[ro.b]?PARTY_META[ro.b].color:'#888';
-      const h2a=ro.winA/3000, h2b=1-h2a;
+      // Complementary event pairs are calibrated once, never twice.
+      const h2a=calibrateProbability(ro.winA/3000,ro.roN), h2b=1-h2a;
       // Round 1 is already decided: the finalists both reached the runoff and
       // nobody won outright. Do not re-derive those facts from stale polls.
       const decided=!!(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffOnly&&
@@ -6220,6 +6225,7 @@ function renderForecast(pane){
       // independent runoff simulation with a different number.
       const eleA=w1A+Math.max(0,reachA-w1A)*h2a;
       const eleB=w1B+Math.max(0,reachB-w1B)*h2b;
+      const eleACal=calibrateProbability(eleA,ro.roN), eleBCal=1-eleACal;
       const row=(label,color,p,txt)=>`<div class="fc-row">
         <span class="fc-row-label" style="color:${color}">${label}</span>
         <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(p*100).toFixed(1)}%;background:${color}"></div></div>
@@ -6239,14 +6245,14 @@ function renderForecast(pane){
           ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')+(ro.endorsement?` \u00b7 ${ro.endorsement.source} +${fmt(ro.endorsement.delta,1)}pp ${t('scenario','scenario')}`:'')+(ro.transfer?` \u00b7 ${t('eliminated-candidate transfers','eliminated-candidate transfers')} ${fmt(ro.transfer.a,1)}/${fmt(ro.transfer.b,1)}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.notaN>0?` / NOTA ${fmt(ro.notaN,1)}%`:''}${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
-        ${row(partyCode(ro.a),cA,h2a)}
-        ${row(partyCode(ro.b),cB,h2b)}
+        ${row(partyCode(ro.a),cA,h2a,pct(h2a*100,1))}
+        ${row(partyCode(ro.b),cB,h2b,pct(h2b*100,1))}
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('REACHES THE RUNOFF','İKİNCİ TURA KALIR')}</span><span></span><span>P</span></div>
-        ${row(partyCode(ro.a),cA,reachA,decided?'100.0%':null)}
-        ${row(partyCode(ro.b),cB,reachB,decided?'100.0%':null)}
+        ${row(partyCode(ro.a),cA,reachA,decided?'100.0%':pct(reachA*100,1))}
+        ${row(partyCode(ro.b),cB,reachB,decided?'100.0%':pct(reachB*100,1))}
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('ELECTED PRESIDENT','CUMHURBAŞKANI SEÇİLİR')}</span><span></span><span>P</span></div>
-        ${row(partyCode(ro.a),cA,eleA)}
-        ${row(partyCode(ro.b),cB,eleB)}
+        ${row(partyCode(ro.a),cA,eleACal,pct(eleACal*100,1))}
+        ${row(partyCode(ro.b),cB,eleBCal,pct(eleBCal*100,1))}
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('PROJECTED VOTE SHARE','TAHMİNİ OY ORANI')}</span><span>EXP</span><span>90% INT</span></div>
         ${shareRow(partyCode(ro.a),cA,ro.aExp,ro.aLo,ro.aHi)}
         ${shareRow(partyCode(ro.b),cB,ro.bExp,ro.bLo,ro.bHi)}
@@ -6255,11 +6261,11 @@ function renderForecast(pane){
           ${t('Two-round system: a candidate is elected with a majority of valid votes in the first round; otherwise the top two face a runoff two weeks later'+(META.election_date_runoff?rDateNote:'')+'. P(elected) = round-1 majority + reach-the-runoff × head-to-head win.','İki turlu sistem: aday birinci turda geçerli oyların çoğunluğunu alırsa seçilir; aksi halde ilk iki aday iki hafta sonra ikinci turda karşılaşır'+(META.election_date_runoff?rDateNote:'')+'. Seçilme olasılığı = birinci turda çoğunluk + ikinci tura kalma × ikinci tur kazanma.')}
         </div>
       </div>`;
-      const winA=eleA>=eleB;
+      const winA=eleACal>=eleBCal;
       // The headline uses the same calibrated probability as the card row;
       // raw Monte Carlo frequencies read overconfident next to it.
       roLead={n:partyCode(winA?ro.a:ro.b), c:winA?cA:cB,
-              p:calibrateProbability(winA?eleA:eleB,ro.roN)};
+              p:(winA?eleACal:eleBCal)};
     }
   }
 
@@ -6316,7 +6322,7 @@ function renderForecast(pane){
     largestRows+=`<div class="fc-row">
       <span class="fc-row-label" style="color:${color}">${partyCode(p)}</span>
       <div class="fc-row-bar"><div class="fc-row-fill" style="width:${(n/maxL*100).toFixed(1)}%;background:${color}"></div></div>
-      <span class="fc-row-val">${probPct(n/sim.nSims)}</span>
+      <span class="fc-row-val">${pct((n/sim.nSims)*100,1)}</span>
     </div>`;
   });
 
@@ -6659,8 +6665,9 @@ function renderForecast(pane){
     }
       if(MAP_ONLY&&roCache){
         // two-candidate runoff: rows = the pair by win probability, two tiles
-        const items=[[roCache.a,roCache.aN,roCache.winA/3000],
-                     [roCache.b,roCache.bN,1-roCache.winA/3000]]
+        const h2aCal=calibrateProbability(roCache.winA/3000,roCache.roN);
+        const items=[[roCache.a,roCache.aN,h2aCal],
+                     [roCache.b,roCache.bN,1-h2aCal]]
           .sort((x,y)=>y[2]-x[2]);
         items.forEach(([p,sh,wp])=>{
           rows.push({p:p,name:(PARTY_META[p]||{}).short||partyCode(p),
@@ -6670,7 +6677,7 @@ function renderForecast(pane){
         tiles=items.map(([p,sh,wp])=>({
           label:((PARTY_META[p]||{}).short||partyCode(p))+' '+
             t('win probability','kazanma ihtimali'),
-          value:'%'+probPct(wp).replace('%',''),
+          value:'%'+fmt(100*wp,1),
           color:(PARTY_META[p]||{}).color||'#888'}));
       }else{
         const order=fOrder.slice().sort((a,b)=>mean(sim.votesBy[b])-mean(sim.votesBy[a]));

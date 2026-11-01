@@ -515,6 +515,23 @@ CYCLES = {
                       "liik": 1, "aland": 1},
         },
     },
+    "greece": {
+        2023: {
+            "article": "Opinion_polling_for_the_June_2023_Greek_legislative_election",
+            "election": "2023-06-25", "prev": "2023-05-21", "half_life": 14,
+            "section": r"^Polling$",
+            "cols": {"nd": r"^nd$", "syriza": r"^syriza$",
+                     "pasok": r"^pasok$", "kke": r"^kke$",
+                     "el": r"^el$", "niki": r"^niki$", "pe": r"^pe$",
+                     "m25": r"^mera25$", "sp": r"^sp"},
+            "result": {"nd": 40.56, "syriza": 17.83, "pasok": 11.84,
+                       "kke": 7.69, "sp": 4.68, "el": 4.44,
+                       "niki": 3.69, "pe": 3.17, "m25": 2.50},
+            "seats": {"nd": 158, "syriza": 47, "pasok": 32, "kke": 21,
+                      "sp": 12, "el": 12, "niki": 10, "pe": 8,
+                      "m25": 0},
+        },
+    },
 }
 
 

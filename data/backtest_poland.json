@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T15:10:13Z",
+ "generated": "2026-11-01T15:39:07Z",
  "horizons": [
   60,
   30,
@@ -68,7 +68,7 @@
     "horizon": 30,
     "bloc": "bloc2",
     "leader": "pis",
-    "p": 0.683,
+    "p": 0.699,
     "actual": 212,
     "need": 231,
     "hit": false
@@ -78,7 +78,7 @@
     "horizon": 14,
     "bloc": "bloc2",
     "leader": "pis",
-    "p": 0.612,
+    "p": 0.621,
     "actual": 212,
     "need": 231,
     "hit": false
@@ -88,7 +88,7 @@
     "horizon": 7,
     "bloc": "bloc2",
     "leader": "pis",
-    "p": 0.523,
+    "p": 0.526,
     "actual": 212,
     "need": 231,
     "hit": false
@@ -98,7 +98,7 @@
     "horizon": 0,
     "bloc": "bloc2",
     "leader": "pis",
-    "p": 0.433,
+    "p": 0.427,
     "actual": 212,
     "need": 231,
     "hit": false

@@ -567,12 +567,14 @@ CYCLES = {
         2022: {
             "article": "Opinion_polling_for_the_2022_Italian_general_election",
             "election": "2022-09-25", "half_life": 14,
-            # Party-list shares; A-IV is the combined Azione/Italia Viva list.
-            # The model keeps them split, so the combined list is scored as
-            # 'a' with its combined seats (a=12, iv=9 -> a=21).
+            # The article repeats campaign tables by month; the first table has
+            # only the final four polls. min_rows selects the full campaign
+            # table. Party-list shares; A-IV is the combined Azione/Italia Viva
+            # list, scored as 'a' with its combined seats (12+9 -> 21).
+            "min_rows": 20,
             "cols": {"fdi": r"^fdi", "pd": r"^pd\b", "m5s": r"^m5s",
                      "lega": r"^lega", "fi": r"^fi\b", "avs": r"^avs",
-                     "e": r"^\+e\b", "a": r"^a[–-]iv",
+                     "e": r"^\+e\b", "a": r"^a\s*[–-]\s*iv",
                      "nm": r"^nm\b", "svp": r"^svp"},
             "result": {"fdi": 25.98, "pd": 19.04, "m5s": 15.43,
                        "lega": 8.79, "fi": 8.11, "avs": 3.64,
@@ -586,12 +588,14 @@ CYCLES = {
         2023: {
             "article": "Opinion_polling_for_the_2023_Polish_parliamentary_election",
             "election": "2023-10-15", "half_life": 14,
-            # The 2023 article polls alliances, not the current party split:
-            # Third Way -> pl2050, The Left -> lewica, Confederation -> kwin.
-            # The combined actuals keep the seat conversion honest.
+            # The 2023 article polls alliances, not the current party split.
+            # Keep the alliance shares for the vote score and fold the model's
+            # sub-party output back into the alliance before scoring seats.
             "cols": {"pis": r"^united right", "ko": r"^civic coalition",
                      "lewica": r"^the left", "pl2050": r"^third way",
                      "kwin": r"^confederation"},
+            "seat_group": {"psl": "pl2050", "razem": "lewica",
+                           "kkp": "kwin"},
             "result": {"pis": 35.38, "ko": 30.70, "lewica": 8.61,
                        "pl2050": 14.41, "kwin": 7.17},
             "seats": {"pis": 194, "ko": 157, "lewica": 26,
@@ -715,7 +719,7 @@ def parse_cycle(soup, spec):
                        for x in (section, subtitle, hay)):
                 continue
         grid = expand_grid(el)
-        if len(grid) < 4:
+        if len(grid) < spec.get("min_rows", 4):
             continue
         # header selection: try each of the first rows alone, scored by how
         # many party columns plus a date and a poll/source column it carries
@@ -1140,6 +1144,9 @@ def score_seats(polls, spec, horizon, cc):
     proj = run_seats(cc, votes)
     if not proj:
         return None
+    for src, dst in (spec.get("seat_group") or {}).items():
+        if src in proj:
+            proj[dst] = proj.get(dst, 0) + proj.pop(src)
     mae, lead_ok = score_proj(proj, spec["seats"])
     return {"n": n, "seat_mae": mae, "lead": lead_ok, "proj": proj}
 

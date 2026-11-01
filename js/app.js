@@ -804,6 +804,86 @@ function stateSpaceAverage(polls, party, noBias){
   return mean;
 }
 
+// Pollster random effects: after house-effect correction, pollsters still
+// disagree in correlated blocks. Keep one residual vector per pollster and
+// draw one per simulation, so the average inherits pollster uncertainty
+// instead of treating every poll as an independent observation.
+const POLLSTER_EFFECT_STRENGTH=0.35;
+function pollsterEffectSet(polls){
+  const consensus={};
+  for(const p of PARTY_ORDER) consensus[p]=weightedAverage(polls,p,false);
+  const acc={};
+  for(const poll of polls){
+    if(!poll.votes||isExitPoll(poll)) continue;
+    const a=acc[poll.pollster]||(acc[poll.pollster]={n:0,cells:{}});
+    a.n++;
+    for(const p of PARTY_ORDER){
+      const v=pollValue(poll,p,false);
+      if(v===null||v===undefined||isNaN(v)||consensus[p]===null) continue;
+      const w=Math.min(1500,effectiveSample(poll))*pollsterWeight(poll.pollster)*recencyWeight(poll.date);
+      const c=a.cells[p]||(a.cells[p]={w:0,d:0});
+      c.w+=w; c.d+=w*(v-consensus[p]);
+    }
+  }
+  const out=[];
+  for(const ps in acc){
+    const a=acc[ps];
+    if(a.n<2) continue;
+    const d={};
+    let sum=0, count=0;
+    for(const p in a.cells){
+      const c=a.cells[p];
+      if(c.w<=0) continue;
+      d[p]=c.d/c.w;
+      sum+=d[p]; count++;
+    }
+    if(count<3) continue;
+    const mean=sum/count;
+    for(const p in d) d[p]-=mean;
+    out.push({n:a.n,d});
+  }
+  return out;
+}
+function applyPollsterEffect(simVotes, effect, skip){
+  const out={...simVotes};
+  for(const p in out){
+    if(p==='other'||(skip&&skip.has(p))) continue;
+    out[p]=Math.max(0,(out[p]||0)+(effect[p]||0)*POLLSTER_EFFECT_STRENGTH);
+  }
+  let total=0;
+  for(const p in out) total+=out[p]||0;
+  if(total>0) for(const p in out) out[p]=100*(out[p]||0)/total;
+  return out;
+}
+// A deliberately simple stress test: move the poll average by the country's
+// measured T-0 poll error in both directions and reallocate the chamber.
+function pollMissStress(avg, baseSeats){
+  if(SEAT_BASED||MAP_ONLY||!avg) return null;
+  const sigma=Math.max(0.75, maeAt(0)||1.5);
+  const lead=Object.keys(baseSeats||{}).reduce((a,p)=>
+    ((baseSeats[p]||0)>(baseSeats[a]||baseSeats[p]||0)?p:a),PARTY_ORDER[0]);
+  const got=[];
+  for(const dir of [1,-1]){
+    let shifted;
+    if(BLOCS&&BLOCS.bloc1&&BLOCS.bloc2){
+      shifted=applyBlocSwing(avg,dir*sigma);
+    }else{
+      shifted={...avg};
+      const top=PARTY_ORDER.reduce((a,p)=>
+        ((shifted[p]||0)>(shifted[a]||0)?p:a),PARTY_ORDER[0]);
+      shifted[top]=Math.max(0,(shifted[top]||0)+dir*sigma);
+      let sum=0;
+      for(const p of PARTY_ORDER) sum+=shifted[p]||0;
+      if(sum>0) for(const p of PARTY_ORDER) shifted[p]=100*(shifted[p]||0)/sum;
+    }
+    const s=allocateSeatsTotal(shifted,SEATS_TOTAL);
+    if(s) got.push(s);
+  }
+  if(!got.length) return null;
+  const vals=got.map(s=>s[lead]||0);
+  return {sigma, lead, lo:Math.min(...vals), hi:Math.max(...vals)};
+}
+
 // Linear-trend extrapolation: fit each party's recent polls (recency-weighted
 // least squares on time), project the slope forward to the election date, capped
 // at maxDaily points/day so the model cannot run away in the final stretch.
@@ -5105,7 +5185,7 @@ function runSeatForecast(avg, nSims, nPolls){
   return summarize(seatsBy,votesBy,largest,maj,nSims);
 }
 
-function runForecast(avg, nSims, nPolls, horizonDays){
+function runForecast(avg, nSims, nPolls, horizonDays, pollsterEffects){
   if(SEAT_BASED) return runSeatForecast(avg, nSims, nPolls);
   // the correlated swing is scaled to the measured days-to-election error
   // curve for this country before any simulation draws from it. The backtest
@@ -5177,6 +5257,12 @@ function runForecast(avg, nSims, nPolls, horizonDays){
       for(const p in simVotes) simVotes[p]=100*(simVotes[p]||0)/pinnedTotal;
     }
     simVotes=applyNationalSwing(simVotes,pinnedSet);
+    if(pollsterEffects&&pollsterEffects.length){
+      const tw=pollsterEffects.reduce((a,e)=>a+e.n,0);
+      let r=fcRand()*tw, chosen=pollsterEffects[0];
+      for(const e of pollsterEffects){ r-=e.n; if(r<=0){chosen=e;break;} }
+      simVotes=applyPollsterEffect(simVotes,chosen.d,pinnedSet);
+    }
     // one correlated regional swing deviation per region (see
     // FORECAST_REGION_SIGMA), applied to that region's districts below
     let regionNoise=null;
@@ -5927,6 +6013,7 @@ function renderForecast(pane){
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
   if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
   const avg=computeAveragesEnsemble(filtered);
+  const pEffects=pollsterEffectSet(filtered);
   if((!filtered.length&&!(LAST_ELECTION&&LAST_ELECTION.results))||Object.values(avg).every(v=>v===null)){
     pane.innerHTML=`<div class="tab-pane-inner"><div class="card"><div class="card-head"><div class="bar"></div><div class="t">FORECAST</div></div><div class="method-text" style="padding:16px"><p>No polls in the selected range.</p></div></div></div>`;
     return;
@@ -5937,7 +6024,7 @@ function renderForecast(pane){
   let sim=FC_CACHE[seedKey];
   if(!sim){
     fcRand=mulberry32(hashStr(seedKey));
-    sim=runForecast(avg,3000,filtered.length);
+    sim=runForecast(avg,3000,filtered.length,null,pEffects);
     FC_CACHE[seedKey]=sim;
   }
   const fOrder=PARTY_ORDER.filter(p=>!(PARTY_META[p]&&PARTY_META[p].pastOnly));
@@ -6016,6 +6103,7 @@ function renderForecast(pane){
   const detSeats=(MAP_CONF()&&MAP_CONF().prDistricts)
     ?(allocateSeatsTotal(medVotes,OVERHANG?expectedSeats:SEATS_TOTAL)||deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL))
     :deterministicSeats(sim.medians,sim.means,OVERHANG?expectedSeats:SEATS_TOTAL);
+  const stress=pollMissStress(avg,detSeats);
   let cmpRows='';
   const cmpOrder=fOrder.slice().sort((a,b)=>sim.means[b]-sim.means[a]);
   cmpOrder.forEach(p=>{
@@ -6426,6 +6514,12 @@ function renderForecast(pane){
     </div>`}
 
     ${coalitionBuilderHtml(sim,MAJ,detSeats)}
+
+    ${stress?`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('POLL-MISS STRESS','ANKET HATASI STRES\u0130')}</div></div>
+      <div style="font-size:12px;color:var(--c-text-muted);line-height:1.5">
+        ${t('If the polls miss by','Anketler')} \u00b1${fmt(stress.sigma,1)}pp, ${partyCode(stress.lead)} ${t('wins','kazan\u0131r')} <strong style="color:var(--c-text)">${stress.lo}\u2013${stress.hi}</strong> ${T.seats}.
+        <br>${t('Historical country poll error; a stress test, not a forecast.','Ülkenin tarihsel anket hatası; tahmin değil, stres testi.')}
+      </div></div>`:''}
 
     ${coalHtml}
 

@@ -1,0 +1,117 @@
+{
+ "generated": "2026-11-01T10:28:18Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 2.9,
+  "30": 1.85,
+  "14": 1.74,
+  "7": 1.64,
+  "0": 1.13
+ },
+ "countries": {
+  "estonia": {
+   "60": 2.9,
+   "30": 1.85,
+   "14": 1.74,
+   "7": 1.64,
+   "0": 1.13
+  }
+ },
+ "counts": {
+  "estonia": {
+   "60": 1,
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "60": 4,
+   "30": 2.67,
+   "14": 2.67,
+   "7": 2.33,
+   "0": 1.67
+  },
+  "cycles": {
+   "estonia-2023": {
+    "60": 4,
+    "30": 2.67,
+    "14": 2.67,
+    "7": 2.33,
+    "0": 1.67
+   }
+  }
+ },
+ "calibration": {
+  "n": 5,
+  "buckets": [
+   {
+    "lo": 0.0,
+    "hi": 0.5,
+    "n": 5,
+    "hits": 5
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "estonia-2023",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "ref",
+    "p": 0.302,
+    "actual": 51,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "estonia-2023",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "ref",
+    "p": 0.143,
+    "actual": 51,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "estonia-2023",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "ref",
+    "p": 0.098,
+    "actual": 51,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "estonia-2023",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "ref",
+    "p": 0.064,
+    "actual": 51,
+    "need": 51,
+    "hit": true
+   },
+   {
+    "cycle": "estonia-2023",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "ref",
+    "p": 0.072,
+    "actual": 51,
+    "need": 51,
+    "hit": true
+   }
+  ]
+ }
+}

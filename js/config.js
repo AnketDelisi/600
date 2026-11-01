@@ -10,11 +10,13 @@ const COUNTRIES = {
     name: 'Sweden',
     name_tr: 'İsveç',
     hidden: false,                  // visible again; riksdag election 2026-09-13
+    election_date: '2030-09-08',     // next ordinary Riksdag election
     seats: 349,
     threshold: 4.0,
     method: 'sainte_lague',       // modified Sainte-Laguë (divisor 1.2)
     seatBased: false,
     constituencies: true,
+    hideConstituencyTable: true,   // the district map carries the seat circles now
     recencyHalfLifeDays: 7,       // respond faster to the latest polls
     live: {
       // election-night proxy (Cloudflare worker) + local static fallback
@@ -41,14 +43,15 @@ const COUNTRIES = {
       bloc2: { name: 'Tidö',      short: 'TIDÖ', parties: ['M', 'SD', 'KD', 'L'], color: '#006AB5' },
     },
     lastElection: {
-      date: '2022-09-11',
-      results: { S: 30.33, SD: 20.54, M: 19.10, V: 6.75, C: 6.71, KD: 5.34, MP: 5.10, L: 4.61 },
-      seats:   { S: 107, SD: 73, M: 68, V: 24, C: 24, KD: 19, MP: 18, L: 16 },
+      date: '2026-09-13',
+      results: {"S": 28.0, "SD": 17.5, "M": 19.8, "V": 8.4, "C": 7.0, "KD": 6.2, "MP": 6.1, "L": 5.3},
+      seats:   {"S": 99, "SD": 62, "M": 70, "V": 30, "C": 25, "KD": 22, "MP": 22, "L": 19},
     },
     map: {
       svg: 'img/sweden.svg',
       selector: 'label',          // paths carry inkscape:label = valkrets name
       useConstituencies: true,    // 2022 shares + MP seats per valkrets from data/sweden/constituencies.json
+      seatDots: {"method":"sainte_lague","seats":{"stockholm":33,"stockholms_län":43,"uppsala":13,"södermanland":11,"östergötland":15,"jönköping":13,"kronoberg":6,"kalmar":8,"gotland":2,"blekinge":5,"malmö":11,"skåne_v":12,"skåne_s":13,"skåne_ne":12,"halland":13,"göteborg":18,"vg_västra":13,"vg_norra":10,"vg_södra":7,"vg_östra":9,"värmland":11,"örebro":12,"västmanland":9,"dalarna":11,"gävleborg":10,"västernorrland":8,"jämtland":4,"västerbotten":9,"norrbotten":8},"actual":{"stockholm":{"S":9,"C":3,"KD":1,"L":3,"MP":4,"M":6,"SD":3,"V":4},"stockholms_län":{"S":12,"C":3,"KD":2,"L":3,"MP":3,"M":10,"SD":6,"V":4},"uppsala":{"S":4,"C":1,"KD":1,"L":1,"MP":1,"M":2,"SD":2,"V":1},"södermanland":{"S":3,"C":1,"KD":1,"L":0,"MP":1,"M":2,"SD":2,"V":1},"östergötland":{"S":4,"C":1,"KD":1,"L":1,"MP":1,"M":3,"SD":3,"V":1},"jönköping":{"S":3,"C":1,"KD":1,"L":1,"MP":1,"M":2,"SD":3,"V":1},"kronoberg":{"S":2,"C":0,"KD":0,"L":0,"MP":0,"M":2,"SD":2,"V":0},"kalmar":{"S":2,"C":1,"KD":1,"L":0,"MP":0,"M":2,"SD":2,"V":0},"gotland":{"S":1,"C":0,"KD":0,"L":0,"MP":0,"M":1,"SD":0,"V":0},"blekinge":{"S":2,"C":0,"KD":0,"L":0,"MP":0,"M":1,"SD":2,"V":0},"malmö":{"S":3,"C":1,"KD":0,"L":1,"MP":1,"M":2,"SD":1,"V":2},"skåne_v":{"S":3,"C":1,"KD":0,"L":1,"MP":1,"M":2,"SD":3,"V":1},"skåne_s":{"S":3,"C":1,"KD":1,"L":1,"MP":1,"M":3,"SD":2,"V":1},"skåne_ne":{"S":3,"C":1,"KD":1,"L":1,"MP":0,"M":2,"SD":3,"V":1},"halland":{"S":3,"C":1,"KD":1,"L":1,"MP":1,"M":3,"SD":2,"V":1},"göteborg":{"S":5,"C":1,"KD":1,"L":1,"MP":2,"M":3,"SD":2,"V":3},"vg_västra":{"S":3,"C":1,"KD":1,"L":1,"MP":1,"M":3,"SD":2,"V":1},"vg_norra":{"S":3,"C":0,"KD":1,"L":1,"MP":0,"M":2,"SD":2,"V":1},"vg_södra":{"S":2,"C":0,"KD":1,"L":0,"MP":0,"M":2,"SD":2,"V":0},"vg_östra":{"S":3,"C":1,"KD":1,"L":0,"MP":0,"M":2,"SD":2,"V":0},"värmland":{"S":3,"C":1,"KD":1,"L":0,"MP":1,"M":2,"SD":2,"V":1},"örebro":{"S":3,"C":1,"KD":1,"L":1,"MP":1,"M":2,"SD":2,"V":1},"västmanland":{"S":3,"C":0,"KD":0,"L":1,"MP":0,"M":2,"SD":2,"V":1},"dalarna":{"S":3,"C":1,"KD":1,"L":0,"MP":1,"M":2,"SD":2,"V":1},"gävleborg":{"S":3,"C":1,"KD":1,"L":0,"MP":0,"M":2,"SD":2,"V":1},"västernorrland":{"S":3,"C":1,"KD":1,"L":0,"MP":0,"M":1,"SD":2,"V":0},"jämtland":{"S":2,"C":0,"KD":0,"L":0,"MP":0,"M":1,"SD":1,"V":0},"västerbotten":{"S":3,"C":1,"KD":1,"L":0,"MP":1,"M":1,"SD":1,"V":1},"norrbotten":{"S":3,"C":0,"KD":0,"L":0,"MP":0,"M":2,"SD":2,"V":1}}},
       // map path label -> constituency id (constituencies.json)
       districts: {
         'Stockholms kommun': 'stockholm',

@@ -483,6 +483,22 @@ CYCLES = {
                       "KD": 19, "MP": 18, "L": 16},
         },
     },
+    "pt": {
+        2025: {
+            "article": "Opinion_polling_for_the_2025_Portuguese_legislative_election",
+            "election": "2025-05-18", "prev": "2024-03-10", "half_life": 14,
+            "section": r"^Polling$",
+            "cols": {"ad": r"^ad$", "ps": r"^ps$", "ch": r"^ch$",
+                     "il": r"^il$", "livre": r"^l$", "cdu": r"^cdu$",
+                     "be": r"^be$", "pan": r"^pan$"},
+            "result": {"ad": 31.78, "ps": 22.83, "ch": 22.76,
+                       "il": 5.36, "livre": 4.07, "cdu": 2.91,
+                       "be": 1.99, "pan": 1.38},
+            "seats": {"ad": 91, "ps": 58, "ch": 60, "il": 9,
+                      "cdu": 3, "be": 1, "livre": 6, "pan": 1,
+                      "jpp": 1},
+        },
+    },
 }
 
 

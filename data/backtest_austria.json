@@ -1,0 +1,117 @@
+{
+ "generated": "2026-11-01T09:25:59Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 1.25,
+  "30": 0.93,
+  "14": 0.81,
+  "7": 0.93,
+  "0": 0.93
+ },
+ "countries": {
+  "austria": {
+   "60": 1.25,
+   "30": 0.93,
+   "14": 0.81,
+   "7": 0.93,
+   "0": 0.93
+  }
+ },
+ "counts": {
+  "austria": {
+   "60": 1,
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "60": 2,
+   "30": 1.67,
+   "14": 0.67,
+   "7": 1.33,
+   "0": 1.33
+  },
+  "cycles": {
+   "austria-2024": {
+    "60": 2,
+    "30": 1.67,
+    "14": 0.67,
+    "7": 1.33,
+    "0": 1.33
+   }
+  }
+ },
+ "calibration": {
+  "n": 5,
+  "buckets": [
+   {
+    "lo": 0.0,
+    "hi": 0.5,
+    "n": 5,
+    "hits": 0
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "austria-2024",
+    "horizon": 60,
+    "bloc": "bloc2",
+    "leader": "fpoe",
+    "p": 0.105,
+    "actual": 73,
+    "need": 92,
+    "hit": false
+   },
+   {
+    "cycle": "austria-2024",
+    "horizon": 30,
+    "bloc": "bloc2",
+    "leader": "fpoe",
+    "p": 0.037,
+    "actual": 73,
+    "need": 92,
+    "hit": false
+   },
+   {
+    "cycle": "austria-2024",
+    "horizon": 14,
+    "bloc": "bloc2",
+    "leader": "fpoe",
+    "p": 0.03,
+    "actual": 73,
+    "need": 92,
+    "hit": false
+   },
+   {
+    "cycle": "austria-2024",
+    "horizon": 7,
+    "bloc": "bloc2",
+    "leader": "fpoe",
+    "p": 0.021,
+    "actual": 73,
+    "need": 92,
+    "hit": false
+   },
+   {
+    "cycle": "austria-2024",
+    "horizon": 0,
+    "bloc": "bloc2",
+    "leader": "fpoe",
+    "p": 0.008,
+    "actual": 73,
+    "need": 92,
+    "hit": false
+   }
+  ]
+ }
+}

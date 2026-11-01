@@ -1,0 +1,1539 @@
+{
+ "n_sims": 600,
+ "horizons": [
+  14,
+  0
+ ],
+ "rows": [
+  {
+   "country": "uk",
+   "cycle": 2017,
+   "horizon": 14,
+   "polls": 95,
+   "effects": 10,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.917540235523135,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.986943977822628,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "uk",
+   "cycle": 2017,
+   "horizon": 0,
+   "polls": 120,
+   "effects": 13,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.8757827663550968,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.8629594693683424,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "uk",
+   "cycle": 2019,
+   "horizon": 14,
+   "polls": 221,
+   "effects": 34,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 3.907349485777344,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 4.079875244596052,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "uk",
+   "cycle": 2019,
+   "horizon": 0,
+   "polls": 248,
+   "effects": 37,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 3.460463246429317,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 3.586038818904038,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "uk",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 271,
+   "effects": 27,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 15,
+    "seat_n": 15,
+    "vote_mae": 2.1273257935699705,
+    "seat_mae": 7.076000000000001
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 15,
+    "seat_n": 15,
+    "vote_mae": 2.1368419136098145,
+    "seat_mae": 7.068333333333334
+   }
+  },
+  {
+   "country": "uk",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 319,
+   "effects": 28,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 15,
+    "seat_n": 15,
+    "vote_mae": 1.8080535083200038,
+    "seat_mae": 6.1115555555555545
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 15,
+    "seat_n": 15,
+    "vote_mae": 1.819139872330988,
+    "seat_mae": 6.118444444444443
+   }
+  },
+  {
+   "country": "canada",
+   "cycle": 2019,
+   "horizon": 14,
+   "polls": 69,
+   "effects": 10,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.3360305607406324,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.3574854737899973,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "canada",
+   "cycle": 2019,
+   "horizon": 0,
+   "polls": 115,
+   "effects": 12,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 0.7907888324118663,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 0.8420809242867304,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "canada",
+   "cycle": 2021,
+   "horizon": 14,
+   "polls": 90,
+   "effects": 9,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.0521971389969833,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.035756414820926,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "canada",
+   "cycle": 2021,
+   "horizon": 0,
+   "polls": 151,
+   "effects": 13,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 0.9851247429459775,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 0.9578249975712426,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "canada",
+   "cycle": 2025,
+   "horizon": 14,
+   "polls": 98,
+   "effects": 13,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.2674703660173388,
+    "seat_mae": 9.756666666666666
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.08855451711193,
+    "seat_mae": 8.06388888888889
+   }
+  },
+  {
+   "country": "canada",
+   "cycle": 2025,
+   "horizon": 0,
+   "polls": 168,
+   "effects": 15,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 0.9023695783634956,
+    "seat_mae": 4.6577777777777785
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 0.9061535544232687,
+    "seat_mae": 5.296666666666667
+   }
+  },
+  {
+   "country": "spain",
+   "cycle": 2019,
+   "horizon": 14,
+   "polls": 121,
+   "effects": 15,
+   "base": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.4289712576068478,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.4982462790469662,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "spain",
+   "cycle": 2019,
+   "horizon": 0,
+   "polls": 153,
+   "effects": 19,
+   "base": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 0.6539366229419539,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 0.6277288886920515,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "spain",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 92,
+   "effects": 16,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 10,
+    "seat_n": 11,
+    "vote_mae": 1.3933380847590482,
+    "seat_mae": 2.940151515151514
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 9,
+    "seat_n": 11,
+    "vote_mae": 1.588659838734622,
+    "seat_mae": 3.2754545454545463
+   }
+  },
+  {
+   "country": "spain",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 150,
+   "effects": 22,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 10,
+    "seat_n": 11,
+    "vote_mae": 1.4953950830550262,
+    "seat_mae": 3.147424242424242
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 10,
+    "seat_n": 11,
+    "vote_mae": 1.4962755906807272,
+    "seat_mae": 3.153181818181817
+   }
+  },
+  {
+   "country": "bc",
+   "cycle": 2020,
+   "horizon": 14,
+   "polls": 43,
+   "effects": 0,
+   "base": {
+    "vote_hit": 2,
+    "vote_n": 2,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.936431033846917,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 2,
+    "vote_n": 2,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.8392686414833097,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "bc",
+   "cycle": 2020,
+   "horizon": 0,
+   "polls": 51,
+   "effects": 0,
+   "base": {
+    "vote_hit": 2,
+    "vote_n": 2,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.7286458600897232,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 2,
+    "vote_n": 2,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.7390882885246066,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "bc",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 74,
+   "effects": 9,
+   "base": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 3,
+    "seat_n": 3,
+    "vote_mae": 1.8122588691415835,
+    "seat_mae": 1.2677777777777772
+   },
+   "effects_score": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 3,
+    "seat_n": 3,
+    "vote_mae": 1.787209926729716,
+    "seat_mae": 1.4555555555555533
+   }
+  },
+  {
+   "country": "bc",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 99,
+   "effects": 10,
+   "base": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 3,
+    "seat_n": 3,
+    "vote_mae": 1.7632082938070799,
+    "seat_mae": 1.088888888888889
+   },
+   "effects_score": {
+    "vote_hit": 3,
+    "vote_n": 3,
+    "seat_hit": 3,
+    "seat_n": 3,
+    "vote_mae": 1.7631814078480634,
+    "seat_mae": 1.4244444444444426
+   }
+  },
+  {
+   "country": "serbia",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 15,
+   "effects": 4,
+   "base": {
+    "vote_hit": 3,
+    "vote_n": 4,
+    "seat_hit": 6,
+    "seat_n": 9,
+    "vote_mae": 7.256442363974234,
+    "seat_mae": 14.504074074074074
+   },
+   "effects_score": {
+    "vote_hit": 3,
+    "vote_n": 4,
+    "seat_hit": 6,
+    "seat_n": 9,
+    "vote_mae": 7.241035220417119,
+    "seat_mae": 14.51648148148148
+   }
+  },
+  {
+   "country": "serbia",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 18,
+   "effects": 4,
+   "base": {
+    "vote_hit": 3,
+    "vote_n": 4,
+    "seat_hit": 6,
+    "seat_n": 9,
+    "vote_mae": 9.604543740364441,
+    "seat_mae": 14.939629629629628
+   },
+   "effects_score": {
+    "vote_hit": 3,
+    "vote_n": 4,
+    "seat_hit": 6,
+    "seat_n": 9,
+    "vote_mae": 9.724084560070498,
+    "seat_mae": 14.995925925925926
+   }
+  },
+  {
+   "country": "qc",
+   "cycle": 2018,
+   "horizon": 14,
+   "polls": 107,
+   "effects": 5,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 4.099856656364563,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 4.0158809735074374,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "qc",
+   "cycle": 2018,
+   "horizon": 0,
+   "polls": 115,
+   "effects": 6,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.747333917236724,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 4,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 3.091007432031266,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "qc",
+   "cycle": 2022,
+   "horizon": 14,
+   "polls": 76,
+   "effects": 8,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 3.525245147971952,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 3.2306313556278807,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "qc",
+   "cycle": 2022,
+   "horizon": 0,
+   "polls": 98,
+   "effects": 9,
+   "base": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.4267734081366434,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.3857235713621723,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "nz",
+   "cycle": 2020,
+   "horizon": 14,
+   "polls": 44,
+   "effects": 4,
+   "base": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.9956941469697411,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.168606699529908,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "nz",
+   "cycle": 2020,
+   "horizon": 0,
+   "polls": 46,
+   "effects": 4,
+   "base": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.069573990626094,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 4,
+    "vote_n": 5,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 2.3093911606021758,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "nz",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 118,
+   "effects": 9,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.1280616573613196,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.3655369540267646,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "nz",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 124,
+   "effects": 9,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.2400590156284153,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.3464819855346501,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "germany",
+   "cycle": 2021,
+   "horizon": 14,
+   "polls": 218,
+   "effects": 13,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.4089902196306177,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.4240256502080904,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "germany",
+   "cycle": 2021,
+   "horizon": 0,
+   "polls": 235,
+   "effects": 13,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.145172097828871,
+    "seat_mae": 0.0
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 0,
+    "seat_n": 0,
+    "vote_mae": 1.1318957280720394,
+    "seat_mae": 0.0
+   }
+  },
+  {
+   "country": "germany",
+   "cycle": 2025,
+   "horizon": 14,
+   "polls": 45,
+   "effects": 10,
+   "base": {
+    "vote_hit": 5,
+    "vote_n": 6,
+    "seat_hit": 5,
+    "seat_n": 6,
+    "vote_mae": 1.1443031164202866,
+    "seat_mae": 8.693611111111114
+   },
+   "effects_score": {
+    "vote_hit": 5,
+    "vote_n": 6,
+    "seat_hit": 5,
+    "seat_n": 6,
+    "vote_mae": 1.1141808035522633,
+    "seat_mae": 8.617777777777775
+   }
+  },
+  {
+   "country": "germany",
+   "cycle": 2025,
+   "horizon": 0,
+   "polls": 65,
+   "effects": 11,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 5,
+    "seat_n": 6,
+    "vote_mae": 0.9849749930829698,
+    "seat_mae": 6.75972222222222
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 6,
+    "seat_hit": 5,
+    "seat_n": 6,
+    "vote_mae": 0.9966170107263022,
+    "seat_mae": 6.857777777777783
+   }
+  },
+  {
+   "country": "latvia",
+   "cycle": 2022,
+   "horizon": 14,
+   "polls": 4,
+   "effects": 1,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 1.8342943513560068,
+    "seat_mae": 3.2347619047619043
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 1.8475525077830213,
+    "seat_mae": 3.259761904761905
+   }
+  },
+  {
+   "country": "latvia",
+   "cycle": 2022,
+   "horizon": 0,
+   "polls": 6,
+   "effects": 1,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 1.0165074059924148,
+    "seat_mae": 2.1654761904761903
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 1.200501651413767,
+    "seat_mae": 2.2609523809523813
+   }
+  },
+  {
+   "country": "slovakia",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 50,
+   "effects": 7,
+   "base": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 1.022911700497647,
+    "seat_mae": 1.2119047619047614
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 1.000824422108586,
+    "seat_mae": 1.1923809523809523
+   }
+  },
+  {
+   "country": "slovakia",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 59,
+   "effects": 7,
+   "base": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 0.7843728794006743,
+    "seat_mae": 1.6388095238095228
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 7,
+    "seat_n": 7,
+    "vote_mae": 0.7934007225848854,
+    "seat_mae": 1.6299999999999994
+   }
+  },
+  {
+   "country": "pt",
+   "cycle": 2025,
+   "horizon": 14,
+   "polls": 45,
+   "effects": 6,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 8,
+    "seat_hit": 7,
+    "seat_n": 9,
+    "vote_mae": 1.7299942339263616,
+    "seat_mae": 4.276296296296296
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 8,
+    "seat_hit": 7,
+    "seat_n": 9,
+    "vote_mae": 1.7107253940019755,
+    "seat_mae": 4.4622222222222225
+   }
+  },
+  {
+   "country": "pt",
+   "cycle": 2025,
+   "horizon": 0,
+   "polls": 62,
+   "effects": 6,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.8823632233190792,
+    "seat_mae": 2.192222222222222
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.9102668141435014,
+    "seat_mae": 2.2133333333333325
+   }
+  },
+  {
+   "country": "estonia",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 13,
+   "effects": 2,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.5165279730354548,
+    "seat_mae": 2.7672222222222227
+   },
+   "effects_score": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.4367080870783662,
+    "seat_mae": 2.6383333333333336
+   }
+  },
+  {
+   "country": "estonia",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 19,
+   "effects": 3,
+   "base": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 0.5964985123628994,
+    "seat_mae": 1.4644444444444435
+   },
+   "effects_score": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 0.5476958966540171,
+    "seat_mae": 1.3527777777777785
+   }
+  },
+  {
+   "country": "lt",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 109,
+   "effects": 6,
+   "base": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 1.527993060003048,
+    "seat_mae": 2.6315
+   },
+   "effects_score": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 1.617821892955421,
+    "seat_mae": 2.879
+   }
+  },
+  {
+   "country": "lt",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 109,
+   "effects": 6,
+   "base": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 1.553730053678536,
+    "seat_mae": 2.7445
+   },
+   "effects_score": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 1.642011427216188,
+    "seat_mae": 2.9214999999999995
+   }
+  },
+  {
+   "country": "jp",
+   "cycle": 2026,
+   "horizon": 14,
+   "polls": 8,
+   "effects": 0,
+   "base": {
+    "vote_hit": 7,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 2.8694660158278538,
+    "seat_mae": 7.511666666666667
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 2.8535526237465167,
+    "seat_mae": 7.644444444444442
+   }
+  },
+  {
+   "country": "jp",
+   "cycle": 2026,
+   "horizon": 0,
+   "polls": 12,
+   "effects": 2,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 2.1318589733001128,
+    "seat_mae": 9.460370370370372
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 2.263538294238103,
+    "seat_mae": 10.007037037037037
+   }
+  },
+  {
+   "country": "kr",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 57,
+   "effects": 14,
+   "base": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 2.4923325979182986,
+    "seat_mae": 3.9866666666666664
+   },
+   "effects_score": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 2.356251660330181,
+    "seat_mae": 2.4561111111111105
+   }
+  },
+  {
+   "country": "kr",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 76,
+   "effects": 20,
+   "base": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.5327070949394028,
+    "seat_mae": 3.973888888888888
+   },
+   "effects_score": {
+    "vote_hit": 5,
+    "vote_n": 5,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.5314485730154663,
+    "seat_mae": 3.2811111111111093
+   }
+  },
+  {
+   "country": "hr",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 124,
+   "effects": 4,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 1.9034162098326164,
+    "seat_mae": 1.1
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 1.9082874292297771,
+    "seat_mae": 1.1162962962962957
+   }
+  },
+  {
+   "country": "hr",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 125,
+   "effects": 4,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.692913500360286,
+    "seat_mae": 0.7240740740740743
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.9082193162231049,
+    "seat_mae": 0.9459259259259262
+   }
+  },
+  {
+   "country": "is",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 88,
+   "effects": 3,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 2.0914220413936087,
+    "seat_mae": 1.7702777777777776
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 2.053828472830308,
+    "seat_mae": 1.7291666666666663
+   }
+  },
+  {
+   "country": "is",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 91,
+   "effects": 3,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.609251706171734,
+    "seat_mae": 1.2627777777777776
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.550122664191405,
+    "seat_mae": 1.2108333333333334
+   }
+  },
+  {
+   "country": "si",
+   "cycle": 2026,
+   "horizon": 14,
+   "polls": 25,
+   "effects": 5,
+   "base": {
+    "vote_hit": 6,
+    "vote_n": 7,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 2.098288295456235,
+    "seat_mae": 2.1364583333333336
+   },
+   "effects_score": {
+    "vote_hit": 6,
+    "vote_n": 7,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 2.0650191801534397,
+    "seat_mae": 2.130416666666667
+   }
+  },
+  {
+   "country": "si",
+   "cycle": 2026,
+   "horizon": 0,
+   "polls": 38,
+   "effects": 5,
+   "base": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 0.9550455786023976,
+    "seat_mae": 1.3529166666666668
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 0.9380799646315864,
+    "seat_mae": 1.3266666666666664
+   }
+  },
+  {
+   "country": "austria",
+   "cycle": 2024,
+   "horizon": 14,
+   "polls": 25,
+   "effects": 6,
+   "base": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.0880469693059742,
+    "seat_mae": 1.003333333333335
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.0670726818190006,
+    "seat_mae": 0.983333333333334
+   }
+  },
+  {
+   "country": "austria",
+   "cycle": 2024,
+   "horizon": 0,
+   "polls": 30,
+   "effects": 7,
+   "base": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.2236278680326234,
+    "seat_mae": 1.9655555555555564
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 7,
+    "seat_hit": 6,
+    "seat_n": 6,
+    "vote_mae": 1.1713116817154987,
+    "seat_mae": 1.8044444444444443
+   }
+  },
+  {
+   "country": "dk",
+   "cycle": 2026,
+   "horizon": 14,
+   "polls": 24,
+   "effects": 3,
+   "base": {
+    "vote_hit": 11,
+    "vote_n": 12,
+    "seat_hit": 13,
+    "seat_n": 13,
+    "vote_mae": 0.9513253618061247,
+    "seat_mae": 1.619230769230769
+   },
+   "effects_score": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 13,
+    "seat_n": 13,
+    "vote_mae": 0.9684892263805764,
+    "seat_mae": 1.6400000000000001
+   }
+  },
+  {
+   "country": "dk",
+   "cycle": 2026,
+   "horizon": 0,
+   "polls": 33,
+   "effects": 4,
+   "base": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 13,
+    "seat_n": 13,
+    "vote_mae": 0.7486597099285696,
+    "seat_mae": 1.3033333333333335
+   },
+   "effects_score": {
+    "vote_hit": 12,
+    "vote_n": 12,
+    "seat_hit": 13,
+    "seat_n": 13,
+    "vote_mae": 0.7469009560061428,
+    "seat_mae": 1.2725641025641028
+   }
+  },
+  {
+   "country": "sweden",
+   "cycle": 2022,
+   "horizon": 14,
+   "polls": 301,
+   "effects": 9,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 0.5130271806733718,
+    "seat_mae": 1.6962500000000016
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 0.5327000391704814,
+    "seat_mae": 1.637083333333334
+   }
+  },
+  {
+   "country": "sweden",
+   "cycle": 2022,
+   "horizon": 0,
+   "polls": 322,
+   "effects": 11,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 0.5907291637415671,
+    "seat_mae": 1.8933333333333326
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 8,
+    "seat_hit": 8,
+    "seat_n": 8,
+    "vote_mae": 0.5953777646793298,
+    "seat_mae": 1.8750000000000013
+   }
+  },
+  {
+   "country": "fi",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 96,
+   "effects": 4,
+   "base": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 0.6982442518847036,
+    "seat_mae": 1.4853333333333338
+   },
+   "effects_score": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 0.7187716226900175,
+    "seat_mae": 1.5446666666666664
+   }
+  },
+  {
+   "country": "fi",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 96,
+   "effects": 4,
+   "base": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 0.711817092100691,
+    "seat_mae": 1.5306666666666664
+   },
+   "effects_score": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 10,
+    "seat_n": 10,
+    "vote_mae": 0.735311781151631,
+    "seat_mae": 1.4826666666666664
+   }
+  },
+  {
+   "country": "greece",
+   "cycle": 2023,
+   "horizon": 14,
+   "polls": 11,
+   "effects": 1,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 1.2839200269992446,
+    "seat_mae": 3.5392592592592607
+   },
+   "effects_score": {
+    "vote_hit": 7,
+    "vote_n": 9,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 1.2488266038758822,
+    "seat_mae": 3.579259259259258
+   }
+  },
+  {
+   "country": "greece",
+   "cycle": 2023,
+   "horizon": 0,
+   "polls": 29,
+   "effects": 6,
+   "base": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 1.1425291722209292,
+    "seat_mae": 4.288148148148149
+   },
+   "effects_score": {
+    "vote_hit": 8,
+    "vote_n": 9,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 1.1423830743623111,
+    "seat_mae": 4.127407407407407
+   }
+  },
+  {
+   "country": "no",
+   "cycle": 2025,
+   "horizon": 14,
+   "polls": 62,
+   "effects": 6,
+   "base": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.7661457242378878,
+    "seat_mae": 1.9244444444444448
+   },
+   "effects_score": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.7381888651323663,
+    "seat_mae": 1.9448148148148148
+   }
+  },
+  {
+   "country": "no",
+   "cycle": 2025,
+   "horizon": 0,
+   "polls": 72,
+   "effects": 6,
+   "base": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 9,
+    "seat_n": 9,
+    "vote_mae": 0.749973871048257,
+    "seat_mae": 1.5862962962962963
+   },
+   "effects_score": {
+    "vote_hit": 9,
+    "vote_n": 9,
+    "seat_hit": 8,
+    "seat_n": 9,
+    "vote_mae": 0.7499921215531555,
+    "seat_mae": 1.6659259259259258
+   }
+  }
+ ],
+ "base": {
+  "vote_coverage": 0.947,
+  "seat_coverage": 0.956,
+  "vote_mae": 1.769,
+  "seat_mae": 2.46
+ },
+ "effects": {
+  "vote_coverage": 0.9493,
+  "seat_coverage": 0.9505,
+  "vote_mae": 1.789,
+  "seat_mae": 2.44
+ }
+}

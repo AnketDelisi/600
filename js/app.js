@@ -7958,14 +7958,19 @@ if(typeof window!=='undefined'&&window.__600_SEATAPI__){
   // Headless Monte Carlo for the backtest's calibration: the same
   // runForecast the forecast tab uses, slimmed to the summary the harness
   // needs (no per-sim arrays).
-  window.__600_forecast=function(cc,votes,nSims,nPolls,horizonDays){
+  window.__600_forecast=function(cc,votes,nSims,nPolls,horizonDays,pollsterEffects){
     setCountry(cc);
     return Promise.resolve(HAS_CONSTITUENCIES?loadConstituencies():null).then(()=>{
-      const r=runForecast(votes,nSims||1500,nPolls||20,horizonDays);
+      const r=runForecast(votes,nSims||1500,nPolls||20,horizonDays,pollsterEffects);
       return {maj:r.maj,largest:r.largest,means:r.means,voteMeans:r.voteMeans,
               medians:r.medians,modal:r.modal,nSims:r.nSims,
               intervals:r.intervals,calibrated:r.calibrated};
     });
+  };
+  window.__600_pollster_effects=function(cc,polls){
+    setCountry(cc);
+    POLLS=Array.isArray(polls)?polls:[];
+    return pollsterEffectSet(POLLS);
   };
   window.__600_gammaSample=gammaSample;
   // Compute the deployed average for an explicit poll set. Used by the

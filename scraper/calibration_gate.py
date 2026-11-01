@@ -93,6 +93,11 @@ def main():
         cases.append(case)
     for case in cases:
         p = max(0.001, min(0.999, case["probability"]))
+        # Match the deployed calibration: thin poll sets shrink toward 50%
+        # before the historical temperature is applied.
+        n = max(1, int(case.get("poll_count") or 0))
+        p = 0.5 + (p - 0.5) * (n / (n + 4))
+        p = max(0.001, min(0.999, p))
         z = math.log(p / (1 - p)) / 2.5
         case["calibrated"] = round(1 / (1 + math.exp(-z)), 3)
     brier = sum((c["calibrated"] - (1 if c["hit"] else 0)) ** 2 for c in cases) / len(cases)

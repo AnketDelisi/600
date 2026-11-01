@@ -4,6 +4,7 @@
   "swingMethod": "proportional",
   "selector": "id",
   "useConstituencies": true,
+  "incumbentBoost": 2,
   "hideBlocToggle": true,
   "districts": {
    "avalon": "avalon",

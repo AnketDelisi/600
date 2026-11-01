@@ -1,0 +1,108 @@
+{
+ "generated": "2026-11-01T15:10:13Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "30": 2.34,
+  "14": 2.07,
+  "7": 2.11,
+  "0": 1.9
+ },
+ "countries": {
+  "poland": {
+   "30": 2.34,
+   "14": 2.07,
+   "7": 2.11,
+   "0": 1.9
+  }
+ },
+ "counts": {
+  "poland": {
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "30": 16.4,
+   "14": 15.2,
+   "7": 13.6,
+   "0": 12.8
+  },
+  "cycles": {
+   "poland-2023": {
+    "30": 16.4,
+    "14": 15.2,
+    "7": 13.6,
+    "0": 12.8
+   }
+  }
+ },
+ "calibration": {
+  "n": 4,
+  "buckets": [
+   {
+    "lo": 0.0,
+    "hi": 0.5,
+    "n": 1,
+    "hits": 0
+   },
+   {
+    "lo": 0.5,
+    "hi": 0.75,
+    "n": 3,
+    "hits": 0
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "poland-2023",
+    "horizon": 30,
+    "bloc": "bloc2",
+    "leader": "pis",
+    "p": 0.683,
+    "actual": 212,
+    "need": 231,
+    "hit": false
+   },
+   {
+    "cycle": "poland-2023",
+    "horizon": 14,
+    "bloc": "bloc2",
+    "leader": "pis",
+    "p": 0.612,
+    "actual": 212,
+    "need": 231,
+    "hit": false
+   },
+   {
+    "cycle": "poland-2023",
+    "horizon": 7,
+    "bloc": "bloc2",
+    "leader": "pis",
+    "p": 0.523,
+    "actual": 212,
+    "need": 231,
+    "hit": false
+   },
+   {
+    "cycle": "poland-2023",
+    "horizon": 0,
+    "bloc": "bloc2",
+    "leader": "pis",
+    "p": 0.433,
+    "actual": 212,
+    "need": 231,
+    "hit": false
+   }
+  ]
+ }
+}

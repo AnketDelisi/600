@@ -1,0 +1,87 @@
+{
+ "generated": "2026-11-01T15:07:28Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "14": 1.32,
+  "7": 1.32,
+  "0": 1.32
+ },
+ "countries": {
+  "italy": {
+   "14": 1.32,
+   "7": 1.32,
+   "0": 1.32
+  }
+ },
+ "counts": {
+  "italy": {
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "14": 5.09,
+   "7": 5.09,
+   "0": 5.09
+  },
+  "cycles": {
+   "italy-2022": {
+    "14": 5.09,
+    "7": 5.09,
+    "0": 5.09
+   }
+  }
+ },
+ "calibration": {
+  "n": 3,
+  "buckets": [
+   {
+    "lo": 0.5,
+    "hi": 0.75,
+    "n": 3,
+    "hits": 3
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "italy-2022",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "fdi",
+    "p": 0.622,
+    "actual": 237,
+    "need": 199,
+    "hit": true
+   },
+   {
+    "cycle": "italy-2022",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "fdi",
+    "p": 0.668,
+    "actual": 237,
+    "need": 199,
+    "hit": true
+   },
+   {
+    "cycle": "italy-2022",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "fdi",
+    "p": 0.644,
+    "actual": 237,
+    "need": 199,
+    "hit": true
+   }
+  ]
+ }
+}

@@ -563,6 +563,54 @@ CYCLES = {
                       "sde": 9, "isamaa": 8},
         },
     },
+    "italy": {
+        2022: {
+            "article": "Opinion_polling_for_the_2022_Italian_general_election",
+            "election": "2022-09-25", "half_life": 14,
+            # Party-list shares; A-IV is the combined Azione/Italia Viva list.
+            # The model keeps them split, so the combined list is scored as
+            # 'a' with its combined seats (a=12, iv=9 -> a=21).
+            "cols": {"fdi": r"^fdi", "pd": r"^pd\b", "m5s": r"^m5s",
+                     "lega": r"^lega", "fi": r"^fi\b", "avs": r"^avs",
+                     "e": r"^\+e\b", "a": r"^a[–-]iv",
+                     "nm": r"^nm\b", "svp": r"^svp"},
+            "result": {"fdi": 25.98, "pd": 19.04, "m5s": 15.43,
+                       "lega": 8.79, "fi": 8.11, "avs": 3.64,
+                       "a": 7.78, "e": 2.83, "nm": 0.90, "svp": 0.30},
+            "seats": {"fdi": 119, "pd": 69, "m5s": 52, "lega": 66,
+                      "fi": 45, "a": 21, "avs": 12, "e": 2,
+                      "nm": 7, "svp": 3},
+        },
+    },
+    "poland": {
+        2023: {
+            "article": "Opinion_polling_for_the_2023_Polish_parliamentary_election",
+            "election": "2023-10-15", "half_life": 14,
+            # The 2023 article polls alliances, not the current party split:
+            # Third Way -> pl2050, The Left -> lewica, Confederation -> kwin.
+            # The combined actuals keep the seat conversion honest.
+            "cols": {"pis": r"^united right", "ko": r"^civic coalition",
+                     "lewica": r"^the left", "pl2050": r"^third way",
+                     "kwin": r"^confederation"},
+            "result": {"pis": 35.38, "ko": 30.70, "lewica": 8.61,
+                       "pl2050": 14.41, "kwin": 7.17},
+            "seats": {"pis": 194, "ko": 157, "lewica": 26,
+                      "pl2050": 65, "kwin": 18},
+        },
+    },
+    "hu": {
+        2026: {
+            "article": "Opinion_polling_for_the_2026_Hungarian_parliamentary_election",
+            "election": "2026-04-12", "half_life": 14,
+            "cols": {"tisza": r"^tisza", "fidesz": r"^fidesz",
+                     "mh": r"^mi haz|^mh$", "dk": r"^dk$",
+                     "mkkp": r"^mkkp"},
+            "result": {"tisza": 53.18, "fidesz": 38.61, "mh": 5.63,
+                       "dk": 1.10, "mkkp": 0.82},
+            "seats": {"tisza": 141, "fidesz": 52, "mh": 6,
+                      "dk": 0, "mkkp": 0},
+        },
+    },
 }
 
 

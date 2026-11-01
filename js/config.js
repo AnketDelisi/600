@@ -9,7 +9,7 @@ const COUNTRIES = {
   sweden: {
     name: 'Sweden',
     name_tr: 'İsveç',
-    hidden: true,                   // archived 2026-09-14 (riksdag election 2026-09-14)
+    hidden: false,                  // visible again; riksdag election 2026-09-13
     seats: 349,
     threshold: 4.0,
     method: 'sainte_lague',       // modified Sainte-Laguë (divisor 1.2)

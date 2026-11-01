@@ -1,0 +1,87 @@
+{
+ "generated": "2026-11-01T11:23:56Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "14": 2.92,
+  "7": 2.91,
+  "0": 2.62
+ },
+ "countries": {
+  "jp": {
+   "14": 2.92,
+   "7": 2.91,
+   "0": 2.62
+  }
+ },
+ "counts": {
+  "jp": {
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "14": 8.67,
+   "7": 8.44,
+   "0": 8.89
+  },
+  "cycles": {
+   "jp-2026": {
+    "14": 8.67,
+    "7": 8.44,
+    "0": 8.89
+   }
+  }
+ },
+ "calibration": {
+  "n": 3,
+  "buckets": [
+   {
+    "lo": 0.9,
+    "hi": 1.01,
+    "n": 3,
+    "hits": 3
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "jp-2026",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "ldp",
+    "p": 0.999,
+    "actual": 316,
+    "need": 233,
+    "hit": true
+   },
+   {
+    "cycle": "jp-2026",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "ldp",
+    "p": 0.998,
+    "actual": 316,
+    "need": 233,
+    "hit": true
+   },
+   {
+    "cycle": "jp-2026",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "ldp",
+    "p": 0.999,
+    "actual": 316,
+    "need": 233,
+    "hit": true
+   }
+  ]
+ }
+}

@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T20:14:27Z",
+ "generated": "2026-11-01T20:46:23Z",
  "countries": {
   "sweden": {
    "name": "Sweden",
@@ -20,6 +20,26 @@
    "last_winner_color": "#ED1B34",
    "poll_count": 4,
    "latest_poll": "2026-10-29"
+  },
+  "belgium": {
+   "name": "Belgium",
+   "election_date": "2029-06-10",
+   "election_date_runoff": null,
+   "last_election": "2024-06-09",
+   "last_winner": "nva",
+   "seats": 150,
+   "seat_based": false,
+   "leader": "vb",
+   "leader_pct": 18.1,
+   "leader_code": "VB",
+   "leader_color": "#FFD700",
+   "leader_logo": "img/be/vb.svg",
+   "second": "ptb",
+   "second_pct": 14.6,
+   "last_winner_code": "N-VA",
+   "last_winner_color": "#E6B800",
+   "poll_count": 11,
+   "latest_poll": "2026-09-15"
   },
   "israel": {
    "name": "Israel",

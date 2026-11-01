@@ -1,0 +1,10 @@
+{
+ "country": "belgium",
+ "name": "Belgium",
+ "election_date": "2029-06-10",
+ "seats": 150,
+ "threshold": 5.0,
+ "method": "dhondt",
+ "constituencies": false,
+ "notes": "Chamber of Representatives: 11 multi-member constituencies (10 provinces + Brussels), D'Hondt, 5% threshold. Baselines: 2024 federal election (official Chamber results). Polling: regional federal tables."
+}

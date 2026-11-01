@@ -20,6 +20,7 @@ REF = {
     "alberta": (87, 0.0, "fptp", True),
     "argentina": (24, 50.0, None, False),
     "austria": (183, 4.0, "dhondt", True),
+    "belgium": (150, 5.0, "dhondt", False),
     "canada": (343, 0.0, "fptp", True),
     "ontario": (124, 0.0, "fptp", True),
     "turkey": (600, 7.0, "dhondt", False),

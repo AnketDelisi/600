@@ -469,6 +469,20 @@ CYCLES = {
                       "alt": 5, "bp": 4, "na": 4},
         },
     },
+    "sweden": {
+        2022: {
+            "article": "Opinion_polling_for_the_2022_Swedish_general_election",
+            "election": "2022-09-11", "prev": "2018-09-09", "half_life": 7,
+            "section": r"^Vote share$",
+            "cols": {"S": r"^s$", "SD": r"^sd$", "M": r"^m$",
+                     "V": r"^v$", "C": r"^c$", "KD": r"^kd$",
+                     "MP": r"^mp$", "L": r"^l$"},
+            "result": {"S": 30.33, "SD": 20.54, "M": 19.10, "V": 6.75,
+                       "C": 6.71, "KD": 5.34, "MP": 5.10, "L": 4.61},
+            "seats": {"S": 107, "SD": 73, "M": 68, "V": 24, "C": 24,
+                      "KD": 19, "MP": 18, "L": 16},
+        },
+    },
 }
 
 

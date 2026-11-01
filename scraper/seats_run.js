@@ -77,7 +77,7 @@ async function main() {
   const a5 = process.argv[5];
   const total = a4 && /^\d+$/.test(a4) ? parseInt(a4, 10) : undefined;
   const swing = a5 || (a4 && !/^\d+$/.test(a4) ? a4 : undefined);
-  await globalThis.__600_loadAll();
+  await globalThis.__600_loadAll(cc);
   const seats = await globalThis.__600_alloc(cc, votes, total, swing);
   console.log(JSON.stringify(seats));
 }

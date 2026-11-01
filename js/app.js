@@ -1222,7 +1222,7 @@ function renderCountryNav(){
       vis.map(id=>{
         const active=id===COUNTRY;
         return `<button class="cnav-item${active?' active':''}" data-cnav="${id}" title="${cName(id)}" aria-pressed="${active}">
-          <img src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy" width="22" height="16">
+          <img src="${dataBase()}img/flags/${id}.svg?v=${LOGO_CACHE}" alt="" loading="lazy" width="22" height="16">
           <span class="cnav-name">${cName(id)}</span>
         </button>`;}).join('')+`</div></div>`;
   }).join('');
@@ -1343,7 +1343,7 @@ function calCard(id,s,ne,mode){
   const fresh=s.latest_poll?`${polls} \u00b7 ${t('latest','en yeni')} ${fmtShortDate(s.latest_poll)}`:'';
   return `<button class="cal-card" data-cnav="${id}">
     <div class="cal-top">
-      <img class="cal-flag" src="${dataBase()}img/flags/${id}.svg" alt="" loading="lazy">
+      <img class="cal-flag" src="${dataBase()}img/flags/${id}.svg?v=${LOGO_CACHE}" alt="" loading="lazy">
       <span class="cal-name">${cName(id)}</span>${chip}
     </div>
     <div class="cal-meta">${dateTxt} \u00b7 ${seats} ${unit}${method?' \u00b7 '+method:''}</div>

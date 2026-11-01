@@ -4608,10 +4608,23 @@ function allocateSeatsWinnerDistricts(avg, total, regionNoise, districtNoise){
       });
       const valid=PARTY_ORDER.filter(p=>votes[p]>0&&
         !(PARTY_META[p]&&PARTY_META[p].unallocated));
-      const quo=[];
-      valid.forEach(p=>{for(let d=1;d<=seatsN;d++) quo.push([votes[p]/d,p])});
-      quo.sort((a,b)=>b[0]-a[0]);
-      for(let i=0;i<seatsN&&i<quo.length;i++) out[quo[i][1]]++;
+      // Japan's dual candidacy means a party cannot take more PR seats than
+      // its post-district list can supply. The 2026 actual per-bloc PR seats
+      // are the best available list-capacity baseline; parties without a cap
+      // stay uncapped (new lists can grow).
+      const caps=(conf.prSeats2026&&conf.prSeats2026[bk])||{};
+      const won={};
+      for(let i=0;i<seatsN;i++){
+        let best=null,bq=-1;
+        for(const p of valid){
+          if(caps[p]>0&&(won[p]||0)>=caps[p]) continue;
+          const q=votes[p]/((won[p]||0)+1);
+          if(q>bq){bq=q;best=p;}
+        }
+        if(!best) break;
+        won[best]=(won[best]||0)+1;
+        out[best]=(out[best]||0)+1;
+      }
     }
     return out;
   }

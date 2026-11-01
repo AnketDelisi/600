@@ -22,7 +22,7 @@ CONFIG = os.path.join(ROOT, "js", "config.js")
 CACHE = os.path.join(ROOT, "scraper", ".cache", "wiki_party_colors.json")
 
 COUNTRY_NAMES = {
-    "sweden": "Sweden", "israel": "Israel", "germany": "Germany",
+    "sweden": "Sweden", "belgium": "Belgium", "israel": "Israel", "germany": "Germany",
     "mecklenburg_vorpommern": "Germany", "berlin": "Germany",
     "serbia": "Serbia", "latvia": "Latvia", "brazil": "Brazil",
     "austria": "Austria", "czechia": "Czech Republic",
@@ -59,6 +59,17 @@ ALIASES = {
     # Sweden
     "Social Democrats": "Swedish Social Democratic Party",
     "Moderates": "Moderate Party",
+    # Belgium
+    "Nieuw-Vlaamse Alliantie": "New Flemish Alliance",
+    "Anders": "Anders (political party)",
+    "Vooruit": "Vooruit (political party)",
+    "Groen": "Groen (political party)",
+    "Partij van de Arbeid van België / Parti du Travail de Belgique":
+        "Workers' Party of Belgium",
+    "Mouvement Réformateur": "Reformist Movement",
+    "Parti Socialiste": "Socialist Party (Belgium)",
+    "Les Engagés": "Les Engagés (political party)",
+    "Démocrate Fédéraliste Indépendant": "DéFI",
     # Germany
     "Christian Democratic Union": "Christian Democratic Union of Germany",
     # Israel

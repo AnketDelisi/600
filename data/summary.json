@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-01T20:46:23Z",
+ "generated": "2026-11-01T20:53:58Z",
  "countries": {
   "sweden": {
    "name": "Sweden",
@@ -32,12 +32,12 @@
    "leader": "vb",
    "leader_pct": 18.1,
    "leader_code": "VB",
-   "leader_color": "#FFD700",
+   "leader_color": "#FFE500",
    "leader_logo": "img/be/vb.svg",
    "second": "ptb",
    "second_pct": 14.6,
    "last_winner_code": "N-VA",
-   "last_winner_color": "#E6B800",
+   "last_winner_color": "#F9CE19",
    "poll_count": 11,
    "latest_poll": "2026-09-15"
   },

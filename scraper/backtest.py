@@ -413,6 +413,20 @@ CYCLES = {
                       "l": 5, "res": 5, "other": 2},
         },
     },
+    "austria": {
+        2024: {
+            "article": "Opinion_polling_for_the_2024_Austrian_legislative_election",
+            "election": "2024-09-29", "prev": "2019-09-29", "half_life": 14,
+            "cols": {"fpoe": r"^fp", "oevp": r"^öv|^oevp",
+                     "spoe": r"^sp", "neos": r"^neos",
+                     "gruene": r"^gr", "kpoe": r"^kp"},
+            "result": {"fpoe": 28.8, "oevp": 26.3, "spoe": 21.1,
+                       "neos": 9.1, "gruene": 8.2, "kpoe": 2.4,
+                       "other": 4.1},
+            "seats": {"fpoe": 57, "oevp": 51, "spoe": 41,
+                      "neos": 18, "gruene": 16, "kpoe": 0},
+        },
+    },
 }
 
 
@@ -941,6 +955,8 @@ def score_seats(polls, spec, horizon, cc):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", default=None)
+    ap.add_argument("--out", default=None,
+                    help="optional per-country output path (default: data/backtest.json)")
     ap.add_argument("--refresh", action="store_true")
     ap.add_argument("--variants", action="store_true")
     ap.add_argument("--swings", action="store_true",
@@ -954,6 +970,8 @@ def main():
     cal_rows = []
     data_all = {}
     for country, cycles in CYCLES.items():
+        if args.country and country != args.country:
+            continue
         for cycle, spec in sorted(cycles.items()):
             spec["prev"] = spec.get("prev", "1900-01-01")
             data_all[(country, cycle)] = (parse_cycle(
@@ -1168,7 +1186,7 @@ def main():
                         "n_cycles": len({r["cycle"] for r in cal_rows}),
                         "cycles": cal_rows},
     }
-    path = os.path.join(ROOT, "data", "backtest.json")
+    path = args.out or os.path.join(ROOT, "data", "backtest.json")
     with open(path, "w", encoding="utf8") as fh:
         json.dump(out, fh, ensure_ascii=False, indent=1)
     print("\nwrote %s (aggregate %s)" % (path, agg))

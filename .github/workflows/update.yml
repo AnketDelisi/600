@@ -30,6 +30,7 @@ jobs:
         run: |
           python scraper/scrape_all.py
           python scraper/scrape_austria.py
+          python scraper/scrape_belgium.py
           python scraper/scrape_czechia.py
           python scraper/scrape_poland.py
           python scraper/scrape_israel.py

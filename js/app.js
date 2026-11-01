@@ -1114,7 +1114,7 @@ function isExitPoll(p){return !!(p&&p.exitPoll);}
 /* ---------- render country nav (Europe Elects-style flag card) ---------- */
 /* ---------- calendar home + grouped country nav ---------- */
 const NAV_REGIONS=[
-  [t('Europe','Avrupa'),['austria','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','turkey','uk']],
+  [t('Europe','Avrupa'),['austria','belgium','bg','bgpres','czechia','dk','estonia','fi','france','germany','greece','hr','hu','is','italy','latvia','lt','md','netherlands','no','poland','pt','ro','serbia','si','slovakia','spain','sweden','turkey','uk']],
   [t('Americas','Amerika'),['alberta','argentina','bc','brazil','canada','ontario','qc']],
   [t('Middle East & Asia-Pacific','Orta Doğu ve Asya-Pasifik'),['israel','jp','kr','nz']],
 ];

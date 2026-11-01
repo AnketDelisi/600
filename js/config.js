@@ -2,7 +2,7 @@
 
 // Cache-buster appended to party-logo <img> URLs so logo updates reach users
 // without a hard refresh (script tags already carry ?v=, images did not).
-const LOGO_CACHE = '20261005c279';
+const LOGO_CACHE = '20261101be';
 
 const COUNTRIES = {
 
@@ -116,6 +116,61 @@ const COUNTRIES = {
       S:  'img/S.svg', SD: 'img/SD.svg', M: 'img/M.svg', V: 'img/V.svg',
       C:  'img/C.svg', KD: 'img/KD.svg', MP: 'img/MP.svg', L: 'img/L.svg',
     },
+  },
+
+  belgium: {
+    name: 'Belgium',
+    name_tr: 'Belçika',
+    election_date: '2029-06-10',
+    seats: 150,
+    threshold: 5.0,
+    method: 'dhondt',
+    seatBased: false,
+    constituencies: false,
+    districtThreshold: true,
+    defaultDays: 2026,
+    recencyHalfLifeDays: 30,
+    parties: {
+      nva: { code: 'N-VA', name: 'Nieuw-Vlaamse Alliantie', name_en: 'Nieuw-Vlaamse Alliantie', color: '#E6B800', ideology: "Flemish nationalism, Conservatism" },
+      vb: { code: 'VB', name: 'Vlaams Belang', name_en: 'Vlaams Belang', color: '#FFD700', ideology: "Right-wing populism, Flemish nationalism" },
+      cdv: { code: 'CD&V', name: 'Christen-Democratisch en Vlaams', name_en: 'Christen-Democratisch en Vlaams', color: '#FF7F00', ideology: "Christian democracy" },
+      and: { code: 'AND', name: 'Anders', name_en: 'Anders', color: '#1B4F9C', ideology: "Liberalism" },
+      vooruit: { code: 'VOORUIT', name: 'Vooruit', name_en: 'Vooruit', color: '#E30613', ideology: "Social democracy" },
+      groen: { code: 'GROEN', name: 'Groen', name_en: 'Groen', color: '#6BBE45', ideology: "Green politics, Progressivism" },
+      ptb: { code: 'PVDA-PTB', name: 'Partij van de Arbeid van België / Parti du Travail de Belgique', name_en: 'Partij van de Arbeid van België / Parti du Travail de Belgique', color: '#8B0000', ideology: "Socialism, Communism" },
+      mr: { code: 'MR', name: 'Mouvement Réformateur', name_en: 'Mouvement Réformateur', color: '#0055A4', ideology: "Liberalism, Conservative liberalism" },
+      ps: { code: 'PS', name: 'Parti Socialiste', name_en: 'Parti Socialiste', color: '#E4002B', ideology: "Social democracy" },
+      le: { code: 'LE', name: 'Les Engagés', name_en: 'Les Engagés', color: '#00AEEF', ideology: "Christian democracy, Centrism" },
+      eco: { code: 'ECOLO', name: 'Ecolo', name_en: 'Ecolo', color: '#5BB553', ideology: "Green politics" },
+      defi: { code: 'DéFI', name: 'Démocrate Fédéraliste Indépendant', name_en: 'Démocrate Fédéraliste Indépendant', color: '#F4A300', ideology: "Regionalism, Social liberalism" },
+      tfa: { code: 'TFA', name: 'Team Fouad Ahidar', name_en: 'Team Fouad Ahidar', color: '#7A3DB8', ideology: "Brussels regionalism, Social democracy" },
+    },
+    order: ['nva', 'vb', 'cdv', 'and', 'vooruit', 'groen', 'ptb', 'mr', 'ps', 'le', 'eco', 'defi', 'tfa'],
+    parlOrder: ['nva', 'vb', 'cdv', 'and', 'vooruit', 'groen', 'ptb', 'mr', 'ps', 'le', 'eco', 'defi', 'tfa'],
+    blocs: {
+      bloc1: { name: 'Government', short: 'GOV', parties: ['nva','mr','le','vooruit','cdv','and'], color: '#1B4F9C' },
+      bloc2: { name: 'Opposition', short: 'OPP', parties: ['vb','ptb','ps','eco','groen','defi','tfa'], color: '#E30613' },
+    },
+    lastElection: {
+      date: '2024-06-09',
+      results: {"nva": 16.71, "vb": 13.77, "mr": 10.26, "ptb": 9.86, "vooruit": 8.11, "ps": 8.04, "cdv": 7.98, "le": 6.77, "and": 5.45, "groen": 4.65, "eco": 2.93, "defi": 1.2, "tfa": 0},
+      seats: {"nva": 24, "vb": 20, "mr": 20, "ptb": 15, "vooruit": 13, "ps": 16, "cdv": 11, "le": 14, "and": 7, "groen": 6, "eco": 3, "defi": 1, "tfa": 0},
+    },
+    map: {
+      svg: 'img/belgium.svg',
+      selector: 'id',
+      useConstituencies: false,
+      seatDistricts: {"antwerp": 24, "east_flanders": 20, "hainaut": 17, "west_flanders": 16, "flemish_brabant": 15, "brussels": 16, "liege": 14, "limburg": 12, "namur": 7, "walloon_brabant": 5, "luxembourg": 4},
+      districts: {"antwerp": "antwerp", "east_flanders": "east_flanders", "hainaut": "hainaut", "west_flanders": "west_flanders", "flemish_brabant": "flemish_brabant", "brussels": "brussels", "liege": "liege", "limburg": "limburg", "namur": "namur", "walloon_brabant": "walloon_brabant", "luxembourg": "luxembourg"},
+      names: {"antwerp": "Antwerp", "east_flanders": "East Flanders", "hainaut": "Hainaut", "west_flanders": "West Flanders", "flemish_brabant": "Flemish Brabant", "brussels": "Brussels", "liege": "Liège", "limburg": "Limburg", "namur": "Namur", "walloon_brabant": "Walloon Brabant", "luxembourg": "Luxembourg"},
+      regionOf: {"antwerp": "flanders", "east_flanders": "flanders", "hainaut": "wallonia", "west_flanders": "flanders", "flemish_brabant": "flanders", "brussels": "brussels", "liege": "wallonia", "limburg": "flanders", "namur": "wallonia", "walloon_brabant": "wallonia", "luxembourg": "wallonia"},
+      regionBase: {"flanders": {"nva": 25.56, "vb": 21.81, "vooruit": 13.02, "cdv": 12.81, "and": 8.75, "ptb": 8.16, "groen": 7.46}, "wallonia": {"mr": 28.21, "ps": 21.98, "le": 20.01, "ptb": 11.64, "eco": 6.89, "defi": 2.36}, "brussels": {"mr": 23.15, "ps": 18.6, "ptb": 16.75, "eco": 11.3, "le": 9.52, "defi": 6.58}},
+      regionalBlend: 1.0,
+      gebiete: {"antwerp": {"nva": 30.97, "vb": 20.97, "vooruit": 10.74, "cdv": 10.57, "ptb": 10.52, "groen": 7.59, "and": 5.95}, "east_flanders": {"vb": 22.61, "nva": 22.29, "vooruit": 12.3, "cdv": 12.12, "and": 11.48, "groen": 9.99, "ptb": 7.31}, "hainaut": {"ps": 28.86, "mr": 26.05, "le": 15.48, "ptb": 13.97}, "west_flanders": {"vb": 24.52, "nva": 23.22, "vooruit": 16.62, "cdv": 14.68, "and": 7.96, "groen": 5.5, "ptb": 5.34}, "flemish_brabant": {"nva": 25.52, "vb": 16.65, "vooruit": 13.69, "cdv": 13.04, "and": 11.68, "ptb": 8.04}, "brussels": {"mr": 23.15, "ps": 18.6, "ptb": 16.75, "eco": 11.3, "le": 9.52, "defi": 6.58}, "liege": {"mr": 28.37, "ps": 21.75, "le": 16.41, "ptb": 14.43, "eco": 7.9}, "limburg": {"vb": 24.62, "nva": 23.68, "cdv": 15.73, "vooruit": 13.04, "ptb": 9.07, "and": 7.11}, "namur": {"le": 29.05, "mr": 25.64, "ps": 16.95, "ptb": 10.08}, "walloon_brabant": {"mr": 35.31, "le": 22.66, "ps": 12.39}, "luxembourg": {"le": 32.09, "mr": 30.9, "ps": 16.81}},
+    },
+    logos: { nva: 'img/be/nva.svg', vb: 'img/be/vb.svg', cdv: 'img/be/cdv.svg', and: 'img/be/and.svg', vooruit: 'img/be/vooruit.svg', groen: 'img/be/groen.svg', ptb: 'img/be/ptb.svg', mr: 'img/be/mr.svg', ps: 'img/be/ps.svg', le: 'img/be/le.svg', eco: 'img/be/eco.svg', defi: 'img/be/defi.svg', tfa: 'img/be/tfa.svg' },
+    pollsterMAE: {},
+    maeKey: 'BE2029',
   },
 
   israel: {

@@ -1,0 +1,276 @@
+{
+ "country": "belgium",
+ "source": "Wikipedia",
+ "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Belgian_elections",
+ "scraped_at": "2026-11-01T20:37:20Z",
+ "poll_count": 11,
+ "polls": [
+  {
+   "pollster": "Ipsos",
+   "date": "2026-09-15",
+   "votes": {
+    "nva": 14.57,
+    "vb": 17.4,
+    "cdv": 8.17,
+    "and": 3.77,
+    "vooruit": 8.1,
+    "groen": 4.13,
+    "ptb": 14.11,
+    "mr": 7.87,
+    "ps": 11.08,
+    "le": 6.46,
+    "eco": 3.74,
+    "defi": 0.48,
+    "tfa": 0.12
+   },
+   "n": 200
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2026-06-09",
+   "votes": {
+    "nva": 14.27,
+    "vb": 16.74,
+    "cdv": 7.84,
+    "and": 4.38,
+    "vooruit": 8.09,
+    "groen": 4.59,
+    "ptb": 13.92,
+    "mr": 7.71,
+    "ps": 10.97,
+    "le": 7.33,
+    "eco": 3.41,
+    "defi": 0.56,
+    "tfa": 0.18
+   },
+   "n": 201
+  },
+  {
+   "pollster": "ULB , UAntwerp",
+   "date": "2026-04-05",
+   "votes": {
+    "nva": 17.85,
+    "vb": 13.23,
+    "cdv": 7.81,
+    "and": 4.44,
+    "vooruit": 8.39,
+    "groen": 4.99,
+    "ptb": 15.01,
+    "mr": 7.84,
+    "ps": 9.59,
+    "le": 7.35,
+    "eco": 2.82,
+    "defi": 0.69,
+    "tfa": 0.0
+   },
+   "n": 1
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2026-03-09",
+   "votes": {
+    "nva": 16.07,
+    "vb": 15.94,
+    "cdv": 7.91,
+    "and": 3.54,
+    "vooruit": 8.03,
+    "groen": 4.94,
+    "ptb": 13.83,
+    "mr": 8.22,
+    "ps": 10.59,
+    "le": 7.27,
+    "eco": 3.18,
+    "defi": 0.41,
+    "tfa": 0.08
+   },
+   "n": 200
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2025-12-09",
+   "votes": {
+    "nva": 16.03,
+    "vb": 15.16,
+    "cdv": 8.66,
+    "and": 4.46,
+    "vooruit": 7.11,
+    "groen": 4.56,
+    "ptb": 14.54,
+    "mr": 8.38,
+    "ps": 11.03,
+    "le": 6.32,
+    "eco": 3.03,
+    "defi": 0.51,
+    "tfa": 0.22
+   },
+   "n": 200
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2025-09-23",
+   "votes": {
+    "nva": 14.7,
+    "vb": 16.84,
+    "cdv": 8.32,
+    "and": 3.61,
+    "vooruit": 8.63,
+    "groen": 4.76,
+    "ptb": 13.36,
+    "mr": 9.16,
+    "ps": 10.21,
+    "le": 6.68,
+    "eco": 3.32,
+    "defi": 0.35,
+    "tfa": 0.05
+   },
+   "n": 200
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2025-06-03",
+   "votes": {
+    "nva": 16.32,
+    "vb": 14.24,
+    "cdv": 8.87,
+    "and": 3.87,
+    "vooruit": 8.36,
+    "groen": 4.73,
+    "ptb": 12.3,
+    "mr": 9.51,
+    "ps": 10.01,
+    "le": 6.88,
+    "eco": 3.38,
+    "defi": 1.3,
+    "tfa": 0.22
+   },
+   "n": 200
+  },
+  {
+   "pollster": "ULB , UAntwerp",
+   "date": "2025-05-23",
+   "votes": {
+    "nva": 17.13,
+    "vb": 13.18,
+    "cdv": 8.81,
+    "and": 3.72,
+    "vooruit": 9.48,
+    "groen": 4.93,
+    "ptb": 12.93,
+    "mr": 9.41,
+    "ps": 9.47,
+    "le": 7.45,
+    "eco": 3.09,
+    "defi": 0.41,
+    "tfa": 0.0
+   },
+   "n": 1
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2025-03-11",
+   "votes": {
+    "nva": 15.73,
+    "vb": 15.85,
+    "cdv": 7.26,
+    "and": 3.82,
+    "vooruit": 8.95,
+    "groen": 4.21,
+    "ptb": 13.29,
+    "mr": 9.92,
+    "ps": 10.08,
+    "le": 6.79,
+    "eco": 3.32,
+    "defi": 0.64,
+    "tfa": 0.12
+   },
+   "n": 200
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2024-11-21",
+   "votes": {
+    "nva": 15.5,
+    "vb": 14.67,
+    "cdv": 8.29,
+    "and": 4.51,
+    "vooruit": 9.85,
+    "groen": 4.48,
+    "ptb": 10.83,
+    "mr": 10.6,
+    "ps": 9.72,
+    "le": 7.18,
+    "eco": 3.63,
+    "defi": 0.53,
+    "tfa": 0.23
+   },
+   "n": 197
+  },
+  {
+   "pollster": "Ipsos",
+   "date": "2024-09-17",
+   "votes": {
+    "nva": 16.86,
+    "vb": 14.73,
+    "cdv": 7.2,
+    "and": 4.38,
+    "vooruit": 9.38,
+    "groen": 4.25,
+    "ptb": 11.23,
+    "mr": 10.7,
+    "ps": 8.91,
+    "le": 8.07,
+    "eco": 3.53,
+    "defi": 0.58,
+    "tfa": 0.19
+   },
+   "n": 200
+  }
+ ],
+ "regional": {
+  "flanders": {
+   "nva": 24.62,
+   "vb": 25.15,
+   "cdv": 12.68,
+   "and": 6.38,
+   "vooruit": 12.88,
+   "groen": 7.05,
+   "ptb": 10.12,
+   "mr": 0.0,
+   "ps": 0.0,
+   "le": 0.0,
+   "eco": 0.0,
+   "defi": 0.0,
+   "tfa": 0.0
+  },
+  "wallonia": {
+   "nva": 0.0,
+   "vb": 0.0,
+   "cdv": 0.0,
+   "and": 0.0,
+   "vooruit": 0.0,
+   "groen": 0.0,
+   "ptb": 17.82,
+   "mr": 20.35,
+   "ps": 27.7,
+   "le": 19.12,
+   "eco": 7.92,
+   "defi": 0.0,
+   "tfa": 0.0
+  },
+  "brussels": {
+   "nva": 4.55,
+   "vb": 2.73,
+   "cdv": 0.85,
+   "and": 0.85,
+   "vooruit": 1.85,
+   "groen": 3.1,
+   "ptb": 24.02,
+   "mr": 15.0,
+   "ps": 18.23,
+   "le": 10.5,
+   "eco": 8.1,
+   "defi": 5.75,
+   "tfa": 1.02
+  }
+ }
+}

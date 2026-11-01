@@ -532,6 +532,21 @@ CYCLES = {
                       "m25": 0},
         },
     },
+    "no": {
+        2025: {
+            "article": "Opinion_polling_for_the_2025_Norwegian_parliamentary_election",
+            "election": "2025-09-08", "prev": "2021-09-13", "half_life": 14,
+            "section": r"^2025$",
+            "cols": {"r": r"^r$", "sv": r"^sv$", "mdg": r"^mdg$",
+                     "ap": r"^ap$", "sp": r"^sp$", "v": r"^v$",
+                     "krf": r"^krf$", "h": r"^h$", "frp": r"^frp$"},
+            "result": {"ap": 28.02, "frp": 23.85, "h": 14.65,
+                       "sv": 5.63, "sp": 5.59, "r": 5.32,
+                       "mdg": 4.74, "krf": 4.20, "v": 3.69},
+            "seats": {"ap": 53, "frp": 47, "h": 24, "sv": 9,
+                      "sp": 9, "r": 9, "mdg": 8, "krf": 7, "v": 3},
+        },
+    },
 }
 
 

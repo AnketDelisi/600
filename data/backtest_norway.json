@@ -1,0 +1,123 @@
+{
+ "generated": "2026-11-01T10:24:18Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 1.13,
+  "30": 0.9,
+  "14": 0.76,
+  "7": 0.84,
+  "0": 0.8
+ },
+ "countries": {
+  "no": {
+   "60": 1.13,
+   "30": 0.9,
+   "14": 0.76,
+   "7": 0.84,
+   "0": 0.8
+  }
+ },
+ "counts": {
+  "no": {
+   "60": 1,
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "60": 4.22,
+   "30": 2.89,
+   "14": 2.44,
+   "7": 2.22,
+   "0": 2.22
+  },
+  "cycles": {
+   "no-2025": {
+    "60": 4.22,
+    "30": 2.89,
+    "14": 2.44,
+    "7": 2.22,
+    "0": 2.22
+   }
+  }
+ },
+ "calibration": {
+  "n": 5,
+  "buckets": [
+   {
+    "lo": 0.5,
+    "hi": 0.75,
+    "n": 3,
+    "hits": 3
+   },
+   {
+    "lo": 0.75,
+    "hi": 0.9,
+    "n": 2,
+    "hits": 2
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "no-2025",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "ap",
+    "p": 0.616,
+    "actual": 88,
+    "need": 85,
+    "hit": true
+   },
+   {
+    "cycle": "no-2025",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "ap",
+    "p": 0.615,
+    "actual": 88,
+    "need": 85,
+    "hit": true
+   },
+   {
+    "cycle": "no-2025",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "ap",
+    "p": 0.724,
+    "actual": 88,
+    "need": 85,
+    "hit": true
+   },
+   {
+    "cycle": "no-2025",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "ap",
+    "p": 0.752,
+    "actual": 88,
+    "need": 85,
+    "hit": true
+   },
+   {
+    "cycle": "no-2025",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "ap",
+    "p": 0.814,
+    "actual": 88,
+    "need": 85,
+    "hit": true
+   }
+  ]
+ }
+}

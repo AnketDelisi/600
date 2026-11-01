@@ -5231,8 +5231,13 @@ function runForecast(avg, nSims, nPolls, horizonDays, pollsterEffects){
   const priorBase=LAST_ELECTION.results||{};
   const priorScale=p=>{
     const b=priorBase[p]||0;
-    if(b<=0.05) return NEW_PARTY_K_SCALE;
-    if(b<2) return SMALL_PARTY_K_SCALE;
+    const polling=avg[p]||0;
+    // A well-polled new party (Turkey's YENİ, 20%+) must keep its poll mean.
+    // The weaker Dirichlet concentration is only a prior for thin/unknown
+    // new parties; applying it to a well-polled race shrinks the party toward
+    // the old field and inflated the old parties instead.
+    if(b<=0.05) return polling>=5?1:NEW_PARTY_K_SCALE;
+    if(b<2) return polling>=5?1:SMALL_PARTY_K_SCALE;
     return 1;
   };
   const alpha=PARTY_ORDER.map(p=>{

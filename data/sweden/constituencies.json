@@ -1,37 +1,1052 @@
 {
-  "country": "sweden",
-  "total_seats": 349,
-  "constituency_seats": 310,
-  "leveling_seats": 39,
-  "constituencies": [
-    {"id":"stockholm","name":"Stockholm","seats":29,"region":"Svealand","results_2022":{"S":28.1,"SD":10.7,"M":19.1,"V":11.7,"C":8.5,"KD":3.2,"MP":10.0,"L":6.9}},
-    {"id":"stockholms_län","name":"Stockholms län","seats":40,"region":"Svealand","results_2022":{"S":27.1,"SD":17.5,"M":24.0,"V":6.3,"C":7.4,"KD":4.9,"MP":5.1,"L":6.0}},
-    {"id":"uppsala","name":"Uppsala","seats":12,"region":"Svealand","results_2022":{"S":29.1,"SD":18.2,"M":18.3,"V":7.9,"C":7.2,"KD":5.9,"MP":6.7,"L":5.0}},
-    {"id":"södermanland","name":"Södermanland","seats":9,"region":"Svealand","results_2022":{"S":32.9,"SD":23.0,"M":19.2,"V":5.2,"C":5.9,"KD":4.7,"MP":4.0,"L":3.6}},
-    {"id":"östergötland","name":"Östergötland","seats":14,"region":"Götaland","results_2022":{"S":30.6,"SD":21.2,"M":19.8,"V":5.6,"C":6.5,"KD":6.0,"MP":4.6,"L":4.4}},
-    {"id":"jönköping","name":"Jönköping","seats":11,"region":"Götaland","results_2022":{"S":29.1,"SD":23.3,"M":18.7,"V":4.0,"C":7.5,"KD":9.3,"MP":3.2,"L":3.7}},
-    {"id":"kronoberg","name":"Kronoberg","seats":6,"region":"Götaland","results_2022":{"S":31.0,"SD":23.6,"M":19.5,"V":5.0,"C":6.0,"KD":6.8,"MP":3.5,"L":3.1}},
-    {"id":"kalmar","name":"Kalmar","seats":8,"region":"Götaland","results_2022":{"S":31.7,"SD":24.5,"M":17.8,"V":4.6,"C":6.5,"KD":7.0,"MP":3.4,"L":3.2}},
-    {"id":"gotland","name":"Gotland","seats":2,"region":"Svealand","results_2022":{"S":34.6,"SD":15.7,"M":16.8,"V":6.4,"C":11.7,"KD":4.0,"MP":6.5,"L":2.8}},
-    {"id":"blekinge","name":"Blekinge","seats":5,"region":"Götaland","results_2022":{"S":31.1,"SD":28.5,"M":17.9,"V":4.4,"C":4.8,"KD":5.5,"MP":2.9,"L":3.5}},
-    {"id":"malmö","name":"Malmö","seats":10,"region":"Götaland","results_2022":{"S":29.6,"SD":16.4,"M":17.9,"V":12.5,"C":5.5,"KD":3.0,"MP":7.5,"L":4.5}},
-    {"id":"skåne_v","name":"Skåne V","seats":9,"region":"Götaland","results_2022":{"S":27.3,"SD":28.8,"M":19.8,"V":4.6,"C":5.0,"KD":4.7,"MP":3.5,"L":4.5}},
-    {"id":"skåne_s","name":"Skåne S","seats":12,"region":"Götaland","results_2022":{"S":25.4,"SD":23.4,"M":22.1,"V":5.0,"C":6.6,"KD":4.8,"MP":5.5,"L":6.2}},
-    {"id":"skåne_ne","name":"Skåne NE","seats":10,"region":"Götaland","results_2022":{"S":25.2,"SD":32.2,"M":19.5,"V":3.9,"C":4.9,"KD":6.2,"MP":3.0,"L":3.8}},
-    {"id":"halland","name":"Halland","seats":10,"region":"Götaland","results_2022":{"S":28.3,"SD":22.6,"M":22.5,"V":4.0,"C":7.0,"KD":6.0,"MP":3.6,"L":4.8}},
-    {"id":"göteborg","name":"Göteborg","seats":17,"region":"Götaland","results_2022":{"S":27.7,"SD":14.7,"M":18.5,"V":12.8,"C":5.9,"KD":4.4,"MP":7.9,"L":5.9}},
-    {"id":"vg_västra","name":"VG Västra","seats":11,"region":"Götaland","results_2022":{"S":28.0,"SD":21.2,"M":20.5,"V":5.7,"C":6.4,"KD":6.3,"MP":5.2,"L":5.4}},
-    {"id":"vg_norra","name":"VG Norra","seats":8,"region":"Götaland","results_2022":{"S":31.3,"SD":25.4,"M":17.5,"V":5.2,"C":5.7,"KD":6.2,"MP":3.6,"L":3.6}},
-    {"id":"vg_södra","name":"VG Södra","seats":7,"region":"Götaland","results_2022":{"S":29.1,"SD":23.6,"M":18.9,"V":5.3,"C":7.1,"KD":7.0,"MP":3.6,"L":3.8}},
-    {"id":"vg_östra","name":"VG Östra","seats":8,"region":"Götaland","results_2022":{"S":31.4,"SD":24.1,"M":18.6,"V":4.5,"C":6.6,"KD":7.0,"MP":3.3,"L":3.4}},
-    {"id":"värmland","name":"Värmland","seats":9,"region":"Svealand","results_2022":{"S":34.6,"SD":22.8,"M":17.0,"V":5.0,"C":6.3,"KD":5.8,"MP":3.6,"L":3.7}},
-    {"id":"örebro","name":"Örebro","seats":9,"region":"Svealand","results_2022":{"S":33.2,"SD":22.1,"M":16.7,"V":6.1,"C":6.3,"KD":5.3,"MP":4.1,"L":4.5}},
-    {"id":"västmanland","name":"Västmanland","seats":8,"region":"Svealand","results_2022":{"S":32.0,"SD":23.7,"M":19.1,"V":6.1,"C":5.4,"KD":5.0,"MP":3.2,"L":4.2}},
-    {"id":"dalarna","name":"Dalarna","seats":9,"region":"Svealand","results_2022":{"S":31.7,"SD":25.7,"M":16.4,"V":5.3,"C":6.5,"KD":6.0,"MP":3.8,"L":3.1}},
-    {"id":"gävleborg","name":"Gävleborg","seats":9,"region":"Norrland","results_2022":{"S":34.7,"SD":24.1,"M":16.2,"V":5.9,"C":6.2,"KD":5.1,"MP":3.5,"L":3.0}},
-    {"id":"västernorrland","name":"Västernorrland","seats":8,"region":"Norrland","results_2022":{"S":39.4,"SD":20.7,"M":14.0,"V":5.7,"C":7.4,"KD":5.4,"MP":3.4,"L":2.7}},
-    {"id":"jämtland","name":"Jämtland","seats":4,"region":"Norrland","results_2022":{"S":36.1,"SD":20.1,"M":14.8,"V":5.6,"C":9.1,"KD":5.4,"MP":5.0,"L":2.6}},
-    {"id":"västerbotten","name":"Västerbotten","seats":8,"region":"Norrland","results_2022":{"S":40.7,"SD":14.5,"M":14.1,"V":8.5,"C":7.8,"KD":4.7,"MP":5.4,"L":3.1}},
-    {"id":"norrbotten","name":"Norrbotten","seats":8,"region":"Norrland","results_2022":{"S":41.6,"SD":20.3,"M":13.6,"V":7.0,"C":5.3,"KD":5.1,"MP":3.4,"L":2.5}}
-  ]
+ "country": "sweden",
+ "total_seats": 349,
+ "constituency_seats": 310,
+ "leveling_seats": 39,
+ "constituencies": [
+  {
+   "id": "stockholm",
+   "name": "Stockholm",
+   "seats": 33,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 28.1,
+    "SD": 10.7,
+    "M": 19.1,
+    "V": 11.7,
+    "C": 8.5,
+    "KD": 3.2,
+    "MP": 10.0,
+    "L": 6.9
+   },
+   "results_2026": {
+    "S": 26.3,
+    "SD": 8.3,
+    "M": 19.1,
+    "V": 13.0,
+    "C": 9.8,
+    "KD": 3.9,
+    "MP": 11.2,
+    "L": 7.1
+   },
+   "seats_2026": {
+    "S": 9,
+    "C": 3,
+    "KD": 1,
+    "L": 3,
+    "MP": 4,
+    "M": 6,
+    "SD": 3,
+    "V": 4
+   }
+  },
+  {
+   "id": "stockholms_län",
+   "name": "Stockholms län",
+   "seats": 43,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 27.1,
+    "SD": 17.5,
+    "M": 24.0,
+    "V": 6.3,
+    "C": 7.4,
+    "KD": 4.9,
+    "MP": 5.1,
+    "L": 6.0
+   },
+   "results_2026": {
+    "S": 25.8,
+    "SD": 14.9,
+    "M": 23.8,
+    "V": 8.1,
+    "C": 7.8,
+    "KD": 5.7,
+    "MP": 5.7,
+    "L": 6.6
+   },
+   "seats_2026": {
+    "S": 12,
+    "C": 3,
+    "KD": 2,
+    "L": 3,
+    "MP": 3,
+    "M": 10,
+    "SD": 6,
+    "V": 4
+   }
+  },
+  {
+   "id": "uppsala",
+   "name": "Uppsala",
+   "seats": 13,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 29.1,
+    "SD": 18.2,
+    "M": 18.3,
+    "V": 7.9,
+    "C": 7.2,
+    "KD": 5.9,
+    "MP": 6.7,
+    "L": 5.0
+   },
+   "results_2026": {
+    "S": 27.1,
+    "SD": 15.6,
+    "M": 18.4,
+    "V": 9.7,
+    "C": 7.7,
+    "KD": 6.6,
+    "MP": 8.4,
+    "L": 5.0
+   },
+   "seats_2026": {
+    "S": 4,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "södermanland",
+   "name": "Södermanland",
+   "seats": 11,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 32.9,
+    "SD": 23.0,
+    "M": 19.2,
+    "V": 5.2,
+    "C": 5.9,
+    "KD": 4.7,
+    "MP": 4.0,
+    "L": 3.6
+   },
+   "results_2026": {
+    "S": 30.6,
+    "SD": 20.2,
+    "M": 19.6,
+    "V": 7.3,
+    "C": 5.6,
+    "KD": 5.7,
+    "MP": 4.9,
+    "L": 4.5
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 1,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "östergötland",
+   "name": "Östergötland",
+   "seats": 15,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 30.6,
+    "SD": 21.2,
+    "M": 19.8,
+    "V": 5.6,
+    "C": 6.5,
+    "KD": 6.0,
+    "MP": 4.6,
+    "L": 4.4
+   },
+   "results_2026": {
+    "S": 28.4,
+    "SD": 18.4,
+    "M": 20.5,
+    "V": 7.0,
+    "C": 6.8,
+    "KD": 6.6,
+    "MP": 5.6,
+    "L": 4.9
+   },
+   "seats_2026": {
+    "S": 4,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 3,
+    "SD": 3,
+    "V": 1
+   }
+  },
+  {
+   "id": "jönköping",
+   "name": "Jönköping",
+   "seats": 13,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 29.1,
+    "SD": 23.3,
+    "M": 18.7,
+    "V": 4.0,
+    "C": 7.5,
+    "KD": 9.3,
+    "MP": 3.2,
+    "L": 3.7
+   },
+   "results_2026": {
+    "S": 26.6,
+    "SD": 20.6,
+    "M": 19.8,
+    "V": 5.9,
+    "C": 7.0,
+    "KD": 10.2,
+    "MP": 3.8,
+    "L": 4.6
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 2,
+    "SD": 3,
+    "V": 1
+   }
+  },
+  {
+   "id": "kronoberg",
+   "name": "Kronoberg",
+   "seats": 6,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 31.0,
+    "SD": 23.6,
+    "M": 19.5,
+    "V": 5.0,
+    "C": 6.0,
+    "KD": 6.8,
+    "MP": 3.5,
+    "L": 3.1
+   },
+   "results_2026": {
+    "S": 27.7,
+    "SD": 20.3,
+    "M": 20.0,
+    "V": 7.6,
+    "C": 6.3,
+    "KD": 8.0,
+    "MP": 4.4,
+    "L": 4.4
+   },
+   "seats_2026": {
+    "S": 2,
+    "C": 0,
+    "KD": 0,
+    "L": 0,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 0
+   }
+  },
+  {
+   "id": "kalmar",
+   "name": "Kalmar",
+   "seats": 8,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 31.7,
+    "SD": 24.5,
+    "M": 17.8,
+    "V": 4.6,
+    "C": 6.5,
+    "KD": 7.0,
+    "MP": 3.4,
+    "L": 3.2
+   },
+   "results_2026": {
+    "S": 29.0,
+    "SD": 21.4,
+    "M": 18.7,
+    "V": 6.1,
+    "C": 6.4,
+    "KD": 8.4,
+    "MP": 4.1,
+    "L": 4.2
+   },
+   "seats_2026": {
+    "S": 2,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 0
+   }
+  },
+  {
+   "id": "gotland",
+   "name": "Gotland",
+   "seats": 2,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 34.6,
+    "SD": 15.7,
+    "M": 16.8,
+    "V": 6.4,
+    "C": 11.7,
+    "KD": 4.0,
+    "MP": 6.5,
+    "L": 2.8
+   },
+   "results_2026": {
+    "S": 31.1,
+    "SD": 13.5,
+    "M": 18.3,
+    "V": 6.7,
+    "C": 10.7,
+    "KD": 5.2,
+    "MP": 7.9,
+    "L": 5.3
+   },
+   "seats_2026": {
+    "S": 1,
+    "C": 0,
+    "KD": 0,
+    "L": 0,
+    "MP": 0,
+    "M": 1,
+    "SD": 0,
+    "V": 0
+   }
+  },
+  {
+   "id": "blekinge",
+   "name": "Blekinge",
+   "seats": 5,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 31.1,
+    "SD": 28.5,
+    "M": 17.9,
+    "V": 4.4,
+    "C": 4.8,
+    "KD": 5.5,
+    "MP": 2.9,
+    "L": 3.5
+   },
+   "results_2026": {
+    "S": 28.6,
+    "SD": 24.4,
+    "M": 18.3,
+    "V": 5.9,
+    "C": 5.5,
+    "KD": 7.3,
+    "MP": 3.8,
+    "L": 4.9
+   },
+   "seats_2026": {
+    "S": 2,
+    "C": 0,
+    "KD": 0,
+    "L": 0,
+    "MP": 0,
+    "M": 1,
+    "SD": 2,
+    "V": 0
+   }
+  },
+  {
+   "id": "malmö",
+   "name": "Malmö",
+   "seats": 11,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 29.6,
+    "SD": 16.4,
+    "M": 17.9,
+    "V": 12.5,
+    "C": 5.5,
+    "KD": 3.0,
+    "MP": 7.5,
+    "L": 4.5
+   },
+   "results_2026": {
+    "S": 29.0,
+    "SD": 13.1,
+    "M": 16.5,
+    "V": 17.2,
+    "C": 5.9,
+    "KD": 3.3,
+    "MP": 9.3,
+    "L": 4.6
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 0,
+    "L": 1,
+    "MP": 1,
+    "M": 2,
+    "SD": 1,
+    "V": 2
+   }
+  },
+  {
+   "id": "skåne_v",
+   "name": "Skåne V",
+   "seats": 12,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 27.3,
+    "SD": 28.8,
+    "M": 19.8,
+    "V": 4.6,
+    "C": 5.0,
+    "KD": 4.7,
+    "MP": 3.5,
+    "L": 4.5
+   },
+   "results_2026": {
+    "S": 26.1,
+    "SD": 24.0,
+    "M": 20.1,
+    "V": 7.8,
+    "C": 5.3,
+    "KD": 5.2,
+    "MP": 4.4,
+    "L": 5.7
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 0,
+    "L": 1,
+    "MP": 1,
+    "M": 2,
+    "SD": 3,
+    "V": 1
+   }
+  },
+  {
+   "id": "skåne_s",
+   "name": "Skåne S",
+   "seats": 13,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 25.4,
+    "SD": 23.4,
+    "M": 22.1,
+    "V": 5.0,
+    "C": 6.6,
+    "KD": 4.8,
+    "MP": 5.5,
+    "L": 6.2
+   },
+   "results_2026": {
+    "S": 22.8,
+    "SD": 19.8,
+    "M": 23.3,
+    "V": 6.0,
+    "C": 8.0,
+    "KD": 5.3,
+    "MP": 7.3,
+    "L": 6.5
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 3,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "skåne_ne",
+   "name": "Skåne NE",
+   "seats": 12,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 25.2,
+    "SD": 32.2,
+    "M": 19.5,
+    "V": 3.9,
+    "C": 4.9,
+    "KD": 6.2,
+    "MP": 3.0,
+    "L": 3.8
+   },
+   "results_2026": {
+    "S": 23.2,
+    "SD": 27.2,
+    "M": 20.8,
+    "V": 6.0,
+    "C": 5.3,
+    "KD": 6.9,
+    "MP": 3.7,
+    "L": 5.5
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 0,
+    "M": 2,
+    "SD": 3,
+    "V": 1
+   }
+  },
+  {
+   "id": "halland",
+   "name": "Halland",
+   "seats": 13,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 28.3,
+    "SD": 22.6,
+    "M": 22.5,
+    "V": 4.0,
+    "C": 7.0,
+    "KD": 6.0,
+    "MP": 3.6,
+    "L": 4.8
+   },
+   "results_2026": {
+    "S": 25.5,
+    "SD": 19.6,
+    "M": 23.3,
+    "V": 5.2,
+    "C": 7.6,
+    "KD": 7.1,
+    "MP": 4.4,
+    "L": 6.0
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 3,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "göteborg",
+   "name": "Göteborg",
+   "seats": 18,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 27.7,
+    "SD": 14.7,
+    "M": 18.5,
+    "V": 12.8,
+    "C": 5.9,
+    "KD": 4.4,
+    "MP": 7.9,
+    "L": 5.9
+   },
+   "results_2026": {
+    "S": 27.1,
+    "SD": 11.8,
+    "M": 18.2,
+    "V": 15.1,
+    "C": 6.5,
+    "KD": 4.9,
+    "MP": 9.1,
+    "L": 5.9
+   },
+   "seats_2026": {
+    "S": 5,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 2,
+    "M": 3,
+    "SD": 2,
+    "V": 3
+   }
+  },
+  {
+   "id": "vg_västra",
+   "name": "VG Västra",
+   "seats": 13,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 28.0,
+    "SD": 21.2,
+    "M": 20.5,
+    "V": 5.7,
+    "C": 6.4,
+    "KD": 6.3,
+    "MP": 5.2,
+    "L": 5.4
+   },
+   "results_2026": {
+    "S": 25.3,
+    "SD": 18.2,
+    "M": 21.5,
+    "V": 6.3,
+    "C": 7.4,
+    "KD": 7.2,
+    "MP": 6.3,
+    "L": 6.3
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 3,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "vg_norra",
+   "name": "VG Norra",
+   "seats": 10,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 31.3,
+    "SD": 25.4,
+    "M": 17.5,
+    "V": 5.2,
+    "C": 5.7,
+    "KD": 6.2,
+    "MP": 3.6,
+    "L": 3.6
+   },
+   "results_2026": {
+    "S": 28.6,
+    "SD": 21.6,
+    "M": 19.1,
+    "V": 7.1,
+    "C": 5.8,
+    "KD": 6.9,
+    "MP": 4.5,
+    "L": 4.9
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 0,
+    "KD": 1,
+    "L": 1,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "vg_södra",
+   "name": "VG Södra",
+   "seats": 7,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 29.1,
+    "SD": 23.6,
+    "M": 18.9,
+    "V": 5.3,
+    "C": 7.1,
+    "KD": 7.0,
+    "MP": 3.6,
+    "L": 3.8
+   },
+   "results_2026": {
+    "S": 27.3,
+    "SD": 20.7,
+    "M": 19.6,
+    "V": 7.1,
+    "C": 6.7,
+    "KD": 7.9,
+    "MP": 4.3,
+    "L": 4.7
+   },
+   "seats_2026": {
+    "S": 2,
+    "C": 0,
+    "KD": 1,
+    "L": 0,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 0
+   }
+  },
+  {
+   "id": "vg_östra",
+   "name": "VG Östra",
+   "seats": 9,
+   "region": "Götaland",
+   "results_2022": {
+    "S": 31.4,
+    "SD": 24.1,
+    "M": 18.6,
+    "V": 4.5,
+    "C": 6.6,
+    "KD": 7.0,
+    "MP": 3.3,
+    "L": 3.4
+   },
+   "results_2026": {
+    "S": 28.1,
+    "SD": 21.4,
+    "M": 20.0,
+    "V": 5.8,
+    "C": 6.5,
+    "KD": 8.0,
+    "MP": 4.1,
+    "L": 4.4
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 0
+   }
+  },
+  {
+   "id": "värmland",
+   "name": "Värmland",
+   "seats": 11,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 34.6,
+    "SD": 22.8,
+    "M": 17.0,
+    "V": 5.0,
+    "C": 6.3,
+    "KD": 5.8,
+    "MP": 3.6,
+    "L": 3.7
+   },
+   "results_2026": {
+    "S": 31.0,
+    "SD": 19.7,
+    "M": 20.1,
+    "V": 5.8,
+    "C": 6.1,
+    "KD": 6.9,
+    "MP": 4.4,
+    "L": 4.5
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 1,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "örebro",
+   "name": "Örebro",
+   "seats": 12,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 33.2,
+    "SD": 22.1,
+    "M": 16.7,
+    "V": 6.1,
+    "C": 6.3,
+    "KD": 5.3,
+    "MP": 4.1,
+    "L": 4.5
+   },
+   "results_2026": {
+    "S": 30.4,
+    "SD": 17.8,
+    "M": 17.6,
+    "V": 7.8,
+    "C": 5.7,
+    "KD": 6.2,
+    "MP": 4.9,
+    "L": 4.4
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 1,
+    "MP": 1,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "västmanland",
+   "name": "Västmanland",
+   "seats": 9,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 32.0,
+    "SD": 23.7,
+    "M": 19.1,
+    "V": 6.1,
+    "C": 5.4,
+    "KD": 5.0,
+    "MP": 3.2,
+    "L": 4.2
+   },
+   "results_2026": {
+    "S": 30.5,
+    "SD": 20.4,
+    "M": 19.7,
+    "V": 8.0,
+    "C": 5.3,
+    "KD": 5.6,
+    "MP": 3.7,
+    "L": 5.0
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 0,
+    "KD": 0,
+    "L": 1,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "dalarna",
+   "name": "Dalarna",
+   "seats": 11,
+   "region": "Svealand",
+   "results_2022": {
+    "S": 31.7,
+    "SD": 25.7,
+    "M": 16.4,
+    "V": 5.3,
+    "C": 6.5,
+    "KD": 6.0,
+    "MP": 3.8,
+    "L": 3.1
+   },
+   "results_2026": {
+    "S": 29.5,
+    "SD": 22.2,
+    "M": 18.3,
+    "V": 5.8,
+    "C": 6.5,
+    "KD": 7.1,
+    "MP": 4.7,
+    "L": 4.0
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 1,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "gävleborg",
+   "name": "Gävleborg",
+   "seats": 10,
+   "region": "Norrland",
+   "results_2022": {
+    "S": 34.7,
+    "SD": 24.1,
+    "M": 16.2,
+    "V": 5.9,
+    "C": 6.2,
+    "KD": 5.1,
+    "MP": 3.5,
+    "L": 3.0
+   },
+   "results_2026": {
+    "S": 31.8,
+    "SD": 21.5,
+    "M": 17.7,
+    "V": 6.8,
+    "C": 6.1,
+    "KD": 6.2,
+    "MP": 4.2,
+    "L": 4.0
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  },
+  {
+   "id": "västernorrland",
+   "name": "Västernorrland",
+   "seats": 8,
+   "region": "Norrland",
+   "results_2022": {
+    "S": 39.4,
+    "SD": 20.7,
+    "M": 14.0,
+    "V": 5.7,
+    "C": 7.4,
+    "KD": 5.4,
+    "MP": 3.4,
+    "L": 2.7
+   },
+   "results_2026": {
+    "S": 34.4,
+    "SD": 19.1,
+    "M": 16.2,
+    "V": 6.3,
+    "C": 6.9,
+    "KD": 7.0,
+    "MP": 4.6,
+    "L": 3.7
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 0,
+    "M": 1,
+    "SD": 2,
+    "V": 0
+   }
+  },
+  {
+   "id": "jämtland",
+   "name": "Jämtland",
+   "seats": 4,
+   "region": "Norrland",
+   "results_2022": {
+    "S": 36.1,
+    "SD": 20.1,
+    "M": 14.8,
+    "V": 5.6,
+    "C": 9.1,
+    "KD": 5.4,
+    "MP": 5.0,
+    "L": 2.6
+   },
+   "results_2026": {
+    "S": 31.5,
+    "SD": 17.5,
+    "M": 17.4,
+    "V": 6.0,
+    "C": 10.1,
+    "KD": 5.5,
+    "MP": 6.7,
+    "L": 3.6
+   },
+   "seats_2026": {
+    "S": 2,
+    "C": 0,
+    "KD": 0,
+    "L": 0,
+    "MP": 0,
+    "M": 1,
+    "SD": 1,
+    "V": 0
+   }
+  },
+  {
+   "id": "västerbotten",
+   "name": "Västerbotten",
+   "seats": 9,
+   "region": "Norrland",
+   "results_2022": {
+    "S": 40.7,
+    "SD": 14.5,
+    "M": 14.1,
+    "V": 8.5,
+    "C": 7.8,
+    "KD": 4.7,
+    "MP": 5.4,
+    "L": 3.1
+   },
+   "results_2026": {
+    "S": 36.9,
+    "SD": 12.7,
+    "M": 15.4,
+    "V": 9.3,
+    "C": 7.2,
+    "KD": 5.9,
+    "MP": 7.5,
+    "L": 3.5
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 1,
+    "KD": 1,
+    "L": 0,
+    "MP": 1,
+    "M": 1,
+    "SD": 1,
+    "V": 1
+   }
+  },
+  {
+   "id": "norrbotten",
+   "name": "Norrbotten",
+   "seats": 8,
+   "region": "Norrland",
+   "results_2022": {
+    "S": 41.6,
+    "SD": 20.3,
+    "M": 13.6,
+    "V": 7.0,
+    "C": 5.3,
+    "KD": 5.1,
+    "MP": 3.4,
+    "L": 2.5
+   },
+   "results_2026": {
+    "S": 37.5,
+    "SD": 18.1,
+    "M": 16.4,
+    "V": 6.9,
+    "C": 5.1,
+    "KD": 6.5,
+    "MP": 4.6,
+    "L": 3.3
+   },
+   "seats_2026": {
+    "S": 3,
+    "C": 0,
+    "KD": 0,
+    "L": 0,
+    "MP": 0,
+    "M": 2,
+    "SD": 2,
+    "V": 1
+   }
+  }
+ ]
 }

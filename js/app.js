@@ -484,8 +484,8 @@ async function loadConstituencies(){
 /* ---------- constituency seat allocator ---------- */
 function allocateConstituencySeats(votes, constituency){
   const seats=constituency.seats;
-  const results=constituency.results_2022;
-  // Shift 2022 results by (poll_avg - 2022_national) per party
+  const results=constituency.results_2026||constituency.results_2022||{};
+  // Shift the last-election results by (poll_avg - last-election national)
   const shifted={};
   for(const pid of PARTY_ORDER){
     const pollVal=votes[pid]||0;
@@ -2668,7 +2668,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   if(conf.useConstituencies){
     const c=constituencyById(nr, conf);
     if(!c) return null;
-    base=c.results_2022||{};
+    base=c.results_2026||c.results_2022||{};
   }else if(conf.wkResults&&conf.wkResults[String(nr)]){
     base=conf.wkResults[String(nr)];
   }else{
@@ -2971,8 +2971,8 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
 }
 
 // MP seats a party holds from a district (Sweden only):
-// - result mode: official 2022 per-constituency seats (mp2022, fasta + utjämningsmandat)
-// - projection mode: Sainte-Laguë allocation of the constituency's fasta seats
+// - result mode: official 2026 per-constituency seats (seats_2026, fasta + utjämningsmandat)
+// - projection mode: Sainte-Laguë allocation of the constituency's seats
 //   from the current poll avg, honoring the 4% national / 12% valkrets rule
 function districtPartySeats(nr, party, avg, resultMode){
   const conf=MAP_CONF();
@@ -2989,6 +2989,8 @@ function districtPartySeats(nr, party, avg, resultMode){
   // winner-takes-all constituencies (fptp): no per-party MP pills
   if(CONSTITUENCY_RULE==='fptp') return null;
   if(resultMode){
+    const c=constituencyById(nr);
+    if(c&&c.seats_2026) return c.seats_2026[party]||0;
     const lbl=Object.keys(conf.districts).find(k=>conf.districts[k]===String(nr));
     if(lbl&&conf.mp2022&&conf.mp2022[lbl]) return conf.mp2022[lbl][party]||0;
     return 0;
@@ -3184,6 +3186,17 @@ function blockVoteSeats(n, votes){
 function districtSeatSplit(nr, avg, resultMode, conf){
   const dots=conf.seatDots;
   let seatsN=null, votes={}, method='dhondt', valid=null;
+  // Sweden: the result map carries the real 2026 per-district seat split,
+  // not a Sainte-Laguë reconstruction from the district vote shares.
+  if(resultMode&&dots&&dots.actual){
+    const gKey=(conf.districts&&conf.districts[String(nr)])||String(nr);
+    const actual=dots.actual[gKey];
+    if(actual){
+      const arr=[];
+      PARTY_ORDER.forEach(p=>{for(let i=0;i<(actual[p]||0);i++) arr.push(p)});
+      return arr.length?arr:null;
+    }
+  }
   // the real last-election seat counts per district (Turkey's mv2023):
   // exact, and immune to the proxy geography the projection uses
   if(resultMode&&conf.mv2023&&conf.mv2023[nr]){

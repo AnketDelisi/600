@@ -1,12 +1,12 @@
 {
- "generated": "2026-11-01T19:51:17Z",
+ "generated": "2026-11-01T19:59:23Z",
  "countries": {
   "sweden": {
    "name": "Sweden",
-   "election_date": "2026-09-13",
+   "election_date": "2030-09-08",
    "election_date_runoff": null,
-   "last_election": "2022-09-11",
-   "last_winner": null,
+   "last_election": "2026-09-13",
+   "last_winner": "S",
    "seats": 349,
    "seat_based": false,
    "leader": "S",
@@ -16,8 +16,8 @@
    "leader_logo": "img/S.svg",
    "second": "M",
    "second_pct": 24.9,
-   "last_winner_code": null,
-   "last_winner_color": null,
+   "last_winner_code": "S",
+   "last_winner_color": "#ED1B34",
    "poll_count": 4,
    "latest_poll": "2026-10-29"
   },

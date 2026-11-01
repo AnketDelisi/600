@@ -1498,6 +1498,7 @@ function brazilRunoffHero(avg, filteredPolls){
         <span class="bz-sub">${t('WINS RUNOFF','İKİNCİ TURU KAZANIR')} <b>${probPct(h2b)}</b></span>
       </div>
     </div>
+    ${ro.notaN>0?`<div style="font-size:12px;color:var(--c-text-muted);text-align:center;margin-top:4px">NOTA ${fmt(ro.notaN,1)}%</div>`:''}
     <div class="bz-path">
       ${((COUNTRIES[COUNTRY]||{}).runoffOnly||todayStr()>=(META.election_date||''))
         ?`<span>${t('RUNOFF WIN PROBABILITY','İKİNCİ TUR KAZANMA OLASILIĞI')}: ${partyCode(ro.a)} <b>${probPct(ro.winA/3000)}</b> \u00b7 ${partyCode(ro.b)} <b>${probPct(1-ro.winA/3000)}</b></span>`
@@ -2068,13 +2069,16 @@ function renderRunoffTable(polls){
   if(!ro.length) return '';
   const pair=Object.keys(ro[0].runoff).slice(0,2);
   const a=pair[0], b=pair[1];
+  const showNota=ro.some(p=>p.runoff&&p.runoff.nota!==undefined)||
+    !!(COUNTRIES[COUNTRY]&&COUNTRIES[COUNTRY].runoffNota);
+  const baseNota=(COUNTRIES[COUNTRY]||{}).runoffNota;
   const frM=firstRoundMAE();
   let html=`<div class="card"><div class="card-head"><div class="bar"></div><div class="t">${t('Runoff polls (head-to-head)','\u0130kinci tur anketleri (ba\u015fa ba\u015f)')}</div></div>
     <div style="overflow-x:auto">
     <table class="polls-table compact-table"><thead><tr>
       <th>${t('Date','Tarih')}</th><th>${t('Pollster','Anketçi')}</th>
       <th class="c" title="${t('Pollster error in the first round (their final poll vs the actual result); runoff weight = 1/MAE','Anketçinin 4 Ekim\'deki ilk tur hatası (son anketiyle gerçek sonuç arasındaki fark); ikinci tur ağırlığı = 1/MAE')}">${t('R1 MAE','1T HATA')}</th>
-      <th class="c">${partyCode(a)}</th><th class="c">${partyCode(b)}</th>
+      <th class="c">${partyCode(a)}</th><th class="c">${partyCode(b)}</th>${showNota?'<th class="c">NOTA</th>':''}
       <th class="c">${t('Lead','Fark')}</th>
       </tr></thead><tbody>`;
   ro.slice(0,60).forEach(p=>{
@@ -2088,11 +2092,12 @@ function renderRunoffTable(polls){
       <td class="num c" style="font-weight:700">${mae?fmt(mae,2):'\u2014'}</td>
       <td class="num c" style="color:${lc};font-weight:${lead&&lead[0]===a?'900':'400'};background:${lead&&lead[0]===a?lc+'22':''}">${l!==undefined?pct(l):'\u2014'}</td>
       <td class="num c" style="color:${fc};font-weight:${lead&&lead[0]===b?'900':'400'};background:${lead&&lead[0]===b?fc+'22':''}">${f!==undefined?pct(f):'\u2014'}</td>
+      ${showNota?`<td class="num c" style="color:#9CA3AF;font-weight:700">${p.runoff.nota!==undefined?pct(p.runoff.nota):(baseNota!==undefined?pct(baseNota):'\u2014')}</td>`:''}
       <td class="num c" style="color:${lead?(PARTY_META[lead[0]]||{}).color:'#888'};font-weight:700">${lead?partyCode(lead[0])+' +'+fmt(lead[1],1):'\u2014'}</td>
       </tr>`;
   });
   html+=`</tbody></table></div>
-    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Head-to-head shares are of decided voters; the runoff average weights each poll by 1/MAE measured in the first round','Ba\u015fa ba\u015f oranlar\u0131, karar\u0131n\u0131 vermi\u015f se\u00e7menler aras\u0131ndad\u0131r; ikinci tur ortalamas\u0131 her anketi ilk turda \u00f6l\u00e7\u00fclen 1/MAE ile a\u011f\u0131rl\u0131kland\u0131r\u0131r')}</div></div>`;
+    <div style="font-size:11px;color:var(--c-text-muted);margin-top:6px">${t('Head-to-head shares are of decided voters; the runoff average weights each poll by 1/MAE measured in the first round','Ba\u015fa ba\u015f oranlar\u0131, karar\u0131n\u0131 vermi\u015f se\u00e7menler aras\u0131ndad\u0131r; ikinci tur ortalamas\u0131 her anketi ilk turda \u00f6l\u00e7\u00fclen 1/MAE ile a\u011f\u0131rl\u0131kland\u0131r\u0131r')}${showNota&&baseNota!==undefined?` \u00b7 ${t('NOTA held at the first-round actual where the head-to-head poll omits it','Ba\u015fa ba\u015f anketinde yer almad\u0131\u011f\u0131nda NOTA ilk tur ger\u00e7ek sonucunda sabit tutulur')}`:''}</div></div>`;
   return html;
 }
 
@@ -5580,6 +5585,15 @@ function runoffForecast(avg, filtered, sim){
     if(end.candidate===a){aN+=d;bN-=d;}else{bN+=d;aN-=d;}
     endorsement=end;
   }
+  // NOTA is a second-round ballot option too. The published head-to-head
+  // poll is a candidate-only share, so keep NOTA as a separate slice of the
+  // valid vote and scale the two candidates into the remaining share.
+  const pollNota=weightedAvgRunoff(roPolls,'nota');
+  const notaN=Math.max(0,Math.min(20,
+    pollNota!=null?pollNota:Number((COUNTRIES[COUNTRY]||{}).runoffNota)||0));
+  const candTotal=100-notaN;
+  aN*=candTotal/100;
+  bN*=candTotal/100;
   const rng=mulberry32(hashStr((POLLS[0]?POLLS[0].date:'')+'|runoff|'+roPolls.length));
   const sigma=forecastSigma({[a]:aN,[b]:bN}, roPolls.length);
   // horizon drift for the runoff date (the first-round date is past, so
@@ -5603,7 +5617,8 @@ function runoffForecast(avg, filtered, sim){
   valsA.sort((p,q)=>p-q);
   const aExp=mean(valsA), aLo=percentile(valsA,5), aHi=percentile(valsA,95);
   const res={a,b,aN,bN,winA,roN:roPolls.length,sigma,roPolls,pairFallback,anchorW,endorsement,transfer,
-             aExp,aLo,aHi,bExp:100-aExp,bLo:100-aHi,bHi:100-aLo};
+             notaN,notaLo:notaN,notaHi:notaN,
+             aExp,aLo,aHi,bExp:candTotal-aExp,bLo:candTotal-aHi,bHi:candTotal-aLo};
   RUNOFF_CACHE[cacheKey]=res;
   return res;
 }
@@ -6194,7 +6209,7 @@ function renderForecast(pane){
       runoffHtml=`<div class="card">
         <div class="card-head"><div class="bar"></div><div class="t">${t('SECOND ROUND — RUNOFF','İKİNCİ TUR')}</div></div>
         <div style="font-size:11px;color:var(--c-text-muted);margin-bottom:8px">
-          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')+(ro.endorsement?` \u00b7 ${ro.endorsement.source} +${fmt(ro.endorsement.delta,1)}pp ${t('scenario','scenario')}`:'')+(ro.transfer?` \u00b7 ${t('eliminated-candidate transfers','eliminated-candidate transfers')} ${fmt(ro.transfer.a,1)}/${fmt(ro.transfer.b,1)}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
+          ${t('Head-to-head from','Başa baş:')} ${ro.roN} ${(ro.roN===1?t('runoff poll','ikinci tur anketi'):t('runoff polls','ikinci tur anketi'))+(ro.anchorW?` + ${Math.round(ro.anchorW*100)}% ${t('first-round anchor','first-round anchor')}`:'')+(ro.endorsement?` \u00b7 ${ro.endorsement.source} +${fmt(ro.endorsement.delta,1)}pp ${t('scenario','scenario')}`:'')+(ro.transfer?` \u00b7 ${t('eliminated-candidate transfers','eliminated-candidate transfers')} ${fmt(ro.transfer.a,1)}/${fmt(ro.transfer.b,1)}`:'')} · \u03c3\u2248${fmt(ro.sigma,1)}pp · ${partyCode(ro.a)} ${fmt(ro.aN,1)}% / ${partyCode(ro.b)} ${fmt(ro.bN,1)}%${ro.notaN>0?` / NOTA ${fmt(ro.notaN,1)}%`:''}${ro.pairFallback?` · ${t('nearest polled pairing - no head-to-head for the first-round top two yet','en yakın anket eşleşmesi — ilk turun ilk iki adayı için henüz başa baş anket yok')}`:''}
         </div>
         <div class="fc-seathead fc-seathead-hd"><span>${t('WINS THE RUNOFF','İKİNCİ TURU KAZANIR')}</span><span></span><span>P</span></div>
         ${row(partyCode(ro.a),cA,h2a)}
@@ -6208,6 +6223,7 @@ function renderForecast(pane){
         <div class="fc-seathead fc-seathead-hd" style="margin-top:10px"><span>${t('PROJECTED VOTE SHARE','TAHMİNİ OY ORANI')}</span><span>EXP</span><span>90% INT</span></div>
         ${shareRow(partyCode(ro.a),cA,ro.aExp,ro.aLo,ro.aHi)}
         ${shareRow(partyCode(ro.b),cB,ro.bExp,ro.bLo,ro.bHi)}
+        ${ro.notaN>0?shareRow(t('NOTA','NOTA'),'#9CA3AF',ro.notaN,ro.notaLo,ro.notaHi):''}
         <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px">
           ${t('Two-round system: a candidate is elected with a majority of valid votes in the first round; otherwise the top two face a runoff two weeks later'+(META.election_date_runoff?rDateNote:'')+'. P(elected) = round-1 majority + reach-the-runoff × head-to-head win.','İki turlu sistem: aday birinci turda geçerli oyların çoğunluğunu alırsa seçilir; aksi halde ilk iki aday iki hafta sonra ikinci turda karşılaşır'+(META.election_date_runoff?rDateNote:'')+'. Seçilme olasılığı = birinci turda çoğunluk + ikinci tura kalma × ikinci tur kazanma.')}
         </div>

@@ -5011,6 +5011,10 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
     election_date_runoff: '2026-11-01',
     firstRoundDate: '2026-10-25',
     firstRoundResult: {"iotova": 34.759, "gyurov": 31.952, "kostadinov": 12.545, "vasilev": 4.608, "mihaylov": 3.787, "hristanov": 2.393},
+    // 2026 first-round official NOTA (67,353 votes, 4.43% of valid votes);
+    // the runoff poll asks only the two-candidate head-to-head, so NOTA is
+    // held as a separate valid-vote option rather than normalized away.
+    runoffNota: 4.43,
     runoffAnchor: 0.8,
     runoffEndorsement: { candidate: 'gyurov', delta: 1.5, lo: 0.5, hi: 2.5,
       source: 'GERB/SDS endorsement (30 Oct)' },

@@ -4352,6 +4352,11 @@ function allocateSeatsItaly(avg){
 function allocateSeatsFptp(avg, regionNoise, districtNoise){
   const conf=MAP_CONF();
   if(!conf||!conf.useConstituencies||!conf.districts) return null;
+  // useConstituencies also describes PR maps whose districts are
+  // constituencies (Sweden's 29 valkretsar); only FPTP systems take the
+  // winner-takes-the-seat path.
+  const c=COUNTRIES[COUNTRY]||{};
+  if(c.constituencyRule!=='fptp'&&c.method!=='fptp') return null;
   const out={}; PARTY_ORDER.forEach(p=>{out[p]=0});
   for(const nr of Object.keys(conf.districts)){
     const w=districtWinnerProjection(nr,avg,conf,regionNoise,districtNoise);

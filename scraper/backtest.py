@@ -499,6 +499,22 @@ CYCLES = {
                       "jpp": 1},
         },
     },
+    "fi": {
+        2023: {
+            "article": "Opinion_polling_for_the_2023_Finnish_parliamentary_election",
+            "election": "2023-04-02", "prev": "2019-04-14", "half_life": 21,
+            "section": r"^Vote share$",
+            "cols": {"kok": r"^kok$", "ps": r"^ps$", "sdp": r"^sdp$",
+                     "kesk": r"^kesk$", "vihr": r"^vihr$", "vas": r"^vas$",
+                     "sfp": r"^sfp$", "kd": r"^kd$", "liik": r"^liik$"},
+            "result": {"kok": 20.82, "ps": 20.06, "sdp": 19.95,
+                       "kesk": 11.29, "vihr": 7.04, "vas": 7.06,
+                       "sfp": 4.31, "kd": 4.22, "liik": 2.42},
+            "seats": {"kok": 48, "ps": 46, "sdp": 43, "kesk": 23,
+                      "vihr": 13, "vas": 11, "sfp": 9, "kd": 5,
+                      "liik": 1, "aland": 1},
+        },
+    },
 }
 
 

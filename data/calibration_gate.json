@@ -1,15 +1,15 @@
 {
  "n": 3,
- "brier": 0.2791,
+ "brier": 0.2629,
  "cases": [
   {
    "race": "serbia",
    "poll_average": {
-    "sns": 46.81,
-    "sl": 41.15,
+    "sns": 46.8,
+    "sl": 40.96,
     "sps": 3.16,
-    "pes": 1.17,
-    "nada": 1.87
+    "pes": 1.13,
+    "nada": 1.85
    },
    "simple_average": {
     "sns": 45.05,
@@ -19,25 +19,25 @@
    "poll_count": 2,
    "predicted": "sns",
    "actual": "sl",
-   "probability": 0.772,
+   "probability": 0.995,
    "hit": false,
    "majority": {
-    "predicted_opp": 0.345,
+    "predicted_opp": 0.008,
     "actual_opp_seats": 154,
     "actual_opp_majority": true
    },
-   "calibrated": 0.62
+   "calibrated": 0.568
   },
   {
    "race": "bgpres",
    "poll_average": {
-    "iotova": 37.24,
-    "gyurov": 31.61,
-    "kostadinov": 13.6,
-    "vasilev": 3.65,
-    "mihaylov": 3.0,
-    "hristanov": 2.31,
-    "nota": 3.95
+    "iotova": 38.25,
+    "gyurov": 31.26,
+    "kostadinov": 13.19,
+    "vasilev": 3.56,
+    "mihaylov": 2.98,
+    "hristanov": 2.33,
+    "nota": 3.76
    },
    "simple_average": {
     "iotova": 40.69,
@@ -50,15 +50,23 @@
    "poll_count": 11,
    "predicted": "iotova",
    "actual": "iotova",
-   "probability": 0.72,
+   "probability": 0.736,
    "hit": true,
-   "calibrated": 0.593
+   "calibrated": 0.572
   },
   {
    "race": "brazil",
    "poll_average": {
-    "lula": 49.24,
-    "flavio": 50.76
+    "lula": 49.2,
+    "flavio": 50.8,
+    "cury": 0,
+    "caiado": 0,
+    "renan": 0,
+    "zema": 0,
+    "margal": 0,
+    "samara": 0,
+    "edmilson": 0,
+    "rui": 0
    },
    "simple_average": {
     "lula": 49.12,
@@ -67,9 +75,9 @@
    "poll_count": 25,
    "predicted": "flavio",
    "actual": "lula",
-   "probability": 0.59,
+   "probability": 0.593,
    "hit": false,
-   "calibrated": 0.536
+   "calibrated": 0.532
   }
  ],
  "note": "Three completed 2026 races; a diagnostic gate, not enough alone to recalibrate."

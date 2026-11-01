@@ -5425,12 +5425,24 @@ function deterministicSeats(medians, means, total){
 }
 
 function pct100(x){return (x*100).toFixed(1)+'%'}
-function calibrateProbability(p){
+function currentPollCount(){
+  if(typeof FILTERED_POLLS!=='undefined'&&FILTERED_POLLS&&FILTERED_POLLS.length) return FILTERED_POLLS.length;
+  if(typeof POLLS!=='undefined'&&POLLS&&POLLS.length) return POLLS.length;
+  return null;
+}
+// Probability calibration: shrink toward 50% when the poll set is thin,
+// then apply the historical temperature. A 2-poll race must not inherit the
+// confidence of a 20-poll race (Serbia 2026 is the canonical case).
+function calibrateProbability(p,nPolls){
+  p=Math.max(0.001,Math.min(0.999,p));
+  const n=nPolls!=null?nPolls:currentPollCount();
+  const shrink=n>0?n/(n+4):1;
+  p=0.5+(p-0.5)*shrink;
   p=Math.max(0.001,Math.min(0.999,p));
   const z=Math.log(p/(1-p))/2.5;
   return 1/(1+Math.exp(-z));
 }
-function probPct(p){return (calibrateProbability(p)*100).toFixed(1)+'%'}
+function probPct(p,nPolls){return (calibrateProbability(p,nPolls)*100).toFixed(1)+'%'}
 
 /* ---------- second-round runoff forecast (two-round presidential) ---------- */
 function gaussianSample(rng){
@@ -6028,6 +6040,7 @@ function renderForecast(pane){
   let filtered=recentPolls(POLLS,daysVal);
   if(pollsterVal) filtered=filtered.filter(p=>p.pollster===pollsterVal);
   if(methodVal) filtered=filtered.filter(p=>p.method===methodVal);
+  FILTERED_POLLS=filtered;
   const avg=computeAveragesEnsemble(filtered);
   const pEffects=pollsterEffectSet(filtered);
   if((!filtered.length&&!(LAST_ELECTION&&LAST_ELECTION.results))||Object.values(avg).every(v=>v===null)){
@@ -6232,7 +6245,7 @@ function renderForecast(pane){
       // The headline uses the same calibrated probability as the card row;
       // raw Monte Carlo frequencies read overconfident next to it.
       roLead={n:partyCode(winA?ro.a:ro.b), c:winA?cA:cB,
-              p:calibrateProbability(winA?eleA:eleB)};
+              p:calibrateProbability(winA?eleA:eleB,ro.roN)};
     }
   }
 

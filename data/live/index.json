@@ -1,11 +1,11 @@
 {
  "elections": [
   {
-   "id": "israel-2026",
-   "name": "Israel",
-   "date": "2026-10-27",
+   "id": "bulgaria-2026-r2",
+   "name": "Bulgaria 2026 runoff",
+   "date": "2026-11-01",
    "status": "counting",
-   "updated_at": "2026-10-29T23:16:45Z"
+   "updated_at": "2026-11-01T18:25:00Z"
   }
  ]
 }

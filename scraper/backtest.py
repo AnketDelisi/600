@@ -547,6 +547,22 @@ CYCLES = {
                       "sp": 9, "r": 9, "mdg": 8, "krf": 7, "v": 3},
         },
     },
+    "estonia": {
+        2023: {
+            "article": "Opinion_polling_for_the_2023_Estonian_parliamentary_election",
+            "election": "2023-03-05", "prev": "2019-03-03", "half_life": 14,
+            "section": r"^2023$",
+            "cols": {"ref": r"^ref$", "kesk": r"^kesk$",
+                     "ekre": r"^ekre$", "isamaa": r"^isamaa$",
+                     "sde": r"^sde$", "e200": r"^e200$",
+                     "eer": r"^eer$", "pp": r"^parem$"},
+            "result": {"ref": 31.24, "ekre": 16.05, "kesk": 15.28,
+                       "e200": 13.33, "sde": 9.27, "isamaa": 8.21,
+                       "vl": 2.39, "pp": 2.30, "eer": 0.96},
+            "seats": {"ref": 37, "ekre": 17, "kesk": 16, "e200": 14,
+                      "sde": 9, "isamaa": 8},
+        },
+    },
 }
 
 

@@ -20,6 +20,14 @@ N_SIMS = 800
 SCALES = (1.0, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 3.0, 4.0, 5.0, 6.0)
 SEAT_FLOORS = (0, 2, 4, 6, 8, 10)
 
+# Must match the deployed calibration in js/app.js. The gate's "calibrated"
+# block below scores these actual size/country buckets, not one global scale.
+APP_VOTE_SCALE_BY_SIZE = {"large": 1.2, "mid": 1.8, "small": 1.6, "tiny": 2.4}
+APP_VOTE_SCALE_BY_COUNTRY = {"canada": 1.8}
+APP_SEAT_SCALE_BY_SIZE = {"large": 1.0, "mid": 1.0, "small": 1.0, "tiny": 1.0}
+APP_SEAT_FLOOR_BY_SIZE = {"large": 0, "mid": 6, "small": 6, "tiny": 6}
+APP_SEAT_FLOOR_BY_COUNTRY = {"canada": 2}
+
 
 def scaled(lo, hi, center, scale):
     return center + (lo - center) * scale, center + (hi - center) * scale
@@ -57,6 +65,36 @@ def group_summary(rows, keyfn, scales, floor=0):
     for r in rows:
         groups.setdefault(keyfn(r), []).append(r)
     return {k: summarize(v, scales, floor) for k, v in groups.items()}
+
+
+def app_vote_scale(row):
+    c = row.get("country")
+    if c in APP_VOTE_SCALE_BY_COUNTRY:
+        return APP_VOTE_SCALE_BY_COUNTRY[c]
+    return APP_VOTE_SCALE_BY_SIZE[size_bucket(row["center"], "votes")]
+
+
+def app_seat_params(row):
+    c = row.get("country")
+    key = size_bucket(row["center"], "seats")
+    return (APP_SEAT_SCALE_BY_SIZE[key],
+            APP_SEAT_FLOOR_BY_COUNTRY.get(c, APP_SEAT_FLOOR_BY_SIZE[key]))
+
+
+def app_coverage(rows, kind):
+    hit = 0
+    for r in rows:
+        if kind == "votes":
+            scale = app_vote_scale(r)
+            floor = 0
+        else:
+            scale, floor = app_seat_params(r)
+        lo, hi = scaled(r["lo"], r["hi"], r["center"], scale)
+        if floor:
+            lo = min(lo, r["center"] - floor)
+            hi = max(hi, r["center"] + floor)
+        hit += lo <= r["actual"] <= hi
+    return round(hit / len(rows), 4) if rows else None
 
 
 def app_avg(country, polls):
@@ -175,12 +213,16 @@ def main():
     if best:
         result["seats"]["recommended_scale"] = best[1]
         result["seats"]["recommended_floor"] = best[2]
-    # the values wired into js/app.js after this run
+    # empirical coverage of the actual size/country buckets wired into
+    # js/app.js, not a single global scale
     result["calibrated"] = {
-        "votes": {"scale": 2.0,
-                  "coverage": result["votes"]["overall"]["2.0"]["coverage"]},
-        "seats": {"scale": 1.0, "floor": 6,
-                  "coverage": result["seats"]["overall"]["6"]["1.0"]["coverage"]},
+        "votes": {"scales": APP_VOTE_SCALE_BY_SIZE,
+                  "country": APP_VOTE_SCALE_BY_COUNTRY,
+                  "coverage": app_coverage(rows["votes"], "votes")},
+        "seats": {"scales": APP_SEAT_SCALE_BY_SIZE,
+                  "floors": APP_SEAT_FLOOR_BY_SIZE,
+                  "country": APP_SEAT_FLOOR_BY_COUNTRY,
+                  "coverage": app_coverage(rows["seats"], "seats")},
     }
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n",
                    encoding="utf8")

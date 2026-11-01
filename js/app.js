@@ -4831,6 +4831,13 @@ const FORECAST_K_SEATS=3.5;  // Dirichlet concentration for seat shares
 // opposite directions, preserving within-bloc proportions. The Dirichlet
 // per-party noise alone misses this correlation and understates uncertainty.
 const FORECAST_SWING=2.0;
+// Common poll-error factor: some cycles over/under-report every listed party
+// at once (undecided allocation, turnout filters, Other coverage). That is a
+// positive correlation the independent Dirichlet draws cannot produce, so one
+// shared relative error is absorbed by the Other bucket. Pinned parties are
+// skipped, and the shift is capped by the available Other share so it cannot
+// invent or destroy modelled vote mass.
+const FORECAST_COMMON_SIGMA=0.02;
 // Regional swing error: a region's swing can deviate from the national one
 // (Montreal vs the rest, Metro Vancouver vs the interior). Each simulation
 // draws one correlated bloc deviation per region (sigma FORECAST_REGION_SIGMA)
@@ -4922,7 +4929,36 @@ function applyBlocSwing(simVotes, delta){
   return out;
 }
 
-function applyNationalSwing(simVotes){
+// One shared relative error on all polled parties, with Other absorbing it.
+// Pinned parties (no polling) are skipped so their baseline remains fixed.
+function applyCommonPollError(simVotes, skip){
+  if(!(FORECAST_COMMON_SIGMA>0)||simVotes.other===undefined) return simVotes;
+  let nonOther=0;
+  for(const p in simVotes){
+    if(p==='other'||(skip&&skip.has(p))) continue;
+    nonOther+=Math.max(0,simVotes[p]||0);
+  }
+  if(!(nonOther>0)) return simVotes;
+  let f=1+studentTSample(fcRand)*FORECAST_COMMON_SIGMA;
+  f=Math.max(0.5,Math.min(1.5,f));
+  // Keep the implied Other share inside [0,100]; the cap is the real limit of
+  // what a common party-level error can explain in this poll set.
+  const other=Math.max(0,simVotes.other||0);
+  if(f>1&&(f-1)*nonOther>other) f=1+other/nonOther;
+  if(f<1&&(1-f)*nonOther>100-other) f=1-(100-other)/nonOther;
+  if(!(f>0)||Math.abs(f-1)<1e-9) return simVotes;
+  const out={};
+  let sum=0;
+  for(const p in simVotes){
+    const v=simVotes[p]||0;
+    out[p]=(p==='other'||(skip&&skip.has(p)))?v:v*f;
+    sum+=out[p];
+  }
+  out.other=(out.other||0)+(100-sum);
+  return out;
+}
+
+function applyNationalSwing(simVotes, skip){
   if(ARCHIVE_MODE) return simVotes;
   let out=applyBlocSwing(simVotes, studentTSample(fcRand)*forecastSwingNow());
   const tz=studentTSample(fcRand)*turnoutSwing();
@@ -4934,9 +4970,9 @@ function applyNationalSwing(simVotes){
       sum+=out[p];
     }
     if(sum>0){for(const p in out) out[p]=100*out[p]/sum}
-    return out;
+    return applyCommonPollError(out,skip);
   }
-  return applyBlocSwing(out,tz);
+  return applyCommonPollError(applyBlocSwing(out,tz),skip);
 }
 
 // The published calibration of the majority probability: hit rates per
@@ -5051,6 +5087,7 @@ function runForecast(avg, nSims, nPolls, horizonDays){
        (PARTY_META[p].pastOnly||PARTY_META[p].unallocated)))
       noPoll[p]=natBase[p]||0;
   });
+  const pinnedSet=new Set(Object.keys(noPoll));
   for(let s=0;s<nSims;s++){
     const draws=alpha.map(a=>gammaSample(a));
     const totalD=draws.reduce((a,b)=>a+b,0);
@@ -5069,7 +5106,7 @@ function runForecast(avg, nSims, nPolls, horizonDays){
     if(pinnedTotal>0){
       for(const p in simVotes) simVotes[p]=100*(simVotes[p]||0)/pinnedTotal;
     }
-    simVotes=applyNationalSwing(simVotes);
+    simVotes=applyNationalSwing(simVotes,pinnedSet);
     // one correlated regional swing deviation per region (see
     // FORECAST_REGION_SIGMA), applied to that region's districts below
     let regionNoise=null;

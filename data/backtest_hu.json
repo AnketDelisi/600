@@ -1,0 +1,117 @@
+{
+ "generated": "2026-11-01T15:09:11Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 3.06,
+  "30": 2.63,
+  "14": 2.43,
+  "7": 2.1,
+  "0": 1.82
+ },
+ "countries": {
+  "hu": {
+   "60": 3.06,
+   "30": 2.63,
+   "14": 2.43,
+   "7": 2.1,
+   "0": 1.82
+  }
+ },
+ "counts": {
+  "hu": {
+   "60": 1,
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "60": 4,
+   "30": 2.4,
+   "14": 2.4,
+   "7": 1.6,
+   "0": 0.8
+  },
+  "cycles": {
+   "hu-2026": {
+    "60": 4,
+    "30": 2.4,
+    "14": 2.4,
+    "7": 1.6,
+    "0": 0.8
+   }
+  }
+ },
+ "calibration": {
+  "n": 5,
+  "buckets": [
+   {
+    "lo": 0.9,
+    "hi": 1.01,
+    "n": 5,
+    "hits": 5
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "hu-2026",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "tisza",
+    "p": 0.982,
+    "actual": 141,
+    "need": 100,
+    "hit": true
+   },
+   {
+    "cycle": "hu-2026",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "tisza",
+    "p": 0.998,
+    "actual": 141,
+    "need": 100,
+    "hit": true
+   },
+   {
+    "cycle": "hu-2026",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "tisza",
+    "p": 1.0,
+    "actual": 141,
+    "need": 100,
+    "hit": true
+   },
+   {
+    "cycle": "hu-2026",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "tisza",
+    "p": 1.0,
+    "actual": 141,
+    "need": 100,
+    "hit": true
+   },
+   {
+    "cycle": "hu-2026",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "tisza",
+    "p": 1.0,
+    "actual": 141,
+    "need": 100,
+    "hit": true
+   }
+  ]
+ }
+}

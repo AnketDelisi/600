@@ -1,0 +1,123 @@
+{
+ "generated": "2026-11-01T11:14:26Z",
+ "horizons": [
+  60,
+  30,
+  14,
+  7,
+  0
+ ],
+ "aggregate": {
+  "60": 1.4,
+  "30": 1.38,
+  "14": 1.22,
+  "7": 1.1,
+  "0": 0.9
+ },
+ "countries": {
+  "slovakia": {
+   "60": 1.4,
+   "30": 1.38,
+   "14": 1.22,
+   "7": 1.1,
+   "0": 0.9
+  }
+ },
+ "counts": {
+  "slovakia": {
+   "60": 1,
+   "30": 1,
+   "14": 1,
+   "7": 1,
+   "0": 1
+  }
+ },
+ "seats": {
+  "aggregate": {
+   "60": 0.57,
+   "30": 1.43,
+   "14": 1.14,
+   "7": 1.43,
+   "0": 1.43
+  },
+  "cycles": {
+   "slovakia-2023": {
+    "60": 0.57,
+    "30": 1.43,
+    "14": 1.14,
+    "7": 1.43,
+    "0": 1.43
+   }
+  }
+ },
+ "calibration": {
+  "n": 5,
+  "buckets": [
+   {
+    "lo": 0.5,
+    "hi": 0.75,
+    "n": 4,
+    "hits": 4
+   },
+   {
+    "lo": 0.75,
+    "hi": 0.9,
+    "n": 1,
+    "hits": 1
+   }
+  ],
+  "n_cycles": 1,
+  "cycles": [
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 60,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.675,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 30,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.629,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 14,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.815,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 7,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.702,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   },
+   {
+    "cycle": "slovakia-2023",
+    "horizon": 0,
+    "bloc": "bloc1",
+    "leader": "smer",
+    "p": 0.514,
+    "actual": 79,
+    "need": 76,
+    "hit": true
+   }
+  ]
+ }
+}

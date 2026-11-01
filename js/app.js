@@ -4838,11 +4838,6 @@ function allocateSeatsFast(votes, total, regionNoise, districtNoise){
 // poll averages across 2014/2018/2022 was ~1.2-1.5pp. K=11 gives sigma ~1.4pp
 // for a 30% party (with the election 9 days away, late swings are limited).
 const FORECAST_K=11;
-// Weak-baseline parties carry a less concentrated Dirichlet prior: a party
-// with no last-election result is the least known, and sub-2% parties are
-// noisier than the major parties even when they appear in the polls.
-const NEW_PARTY_K_SCALE=0.6;
-const SMALL_PARTY_K_SCALE=0.8;
 
 // Horizon drift: between now and election day the poll average itself can move
 // (late swings, differential turnout). Model it as a random walk with daily
@@ -5228,25 +5223,16 @@ function runForecast(avg, nSims, nPolls, horizonDays, pollsterEffects){
   // dissolved alliances (pastOnly) never contest the projection: keep their
   // sim draw negligible so they cannot soak up seats or votes (Serbia's SPN
   // is still in PARTY_ORDER for the 2023 result view)
-  const priorBase=LAST_ELECTION.results||{};
-  const priorScale=p=>{
-    const b=priorBase[p]||0;
-    const polling=avg[p]||0;
-    // A well-polled new party (Turkey's YENİ, 20%+) must keep its poll mean.
-    // The weaker Dirichlet concentration is only a prior for thin/unknown
-    // new parties; applying it to a well-polled race shrinks the party toward
-    // the old field and inflated the old parties instead.
-    if(b<=0.05) return polling>=5?1:NEW_PARTY_K_SCALE;
-    if(b<2) return polling>=5?1:SMALL_PARTY_K_SCALE;
-    return 1;
-  };
   const alpha=PARTY_ORDER.map(p=>{
     if(PARTY_META[p]&&(PARTY_META[p].pastOnly||PARTY_META[p].unallocated)) return 0.01;
     // parties with no polling are pinned to their baseline below; keep their
     // Dirichlet placeholder negligible so it cannot consume mass from the
     // parties the polls actually measure
     if(avg[p]==null) return 0.01;
-    return Math.max(0.5,(avg[p]||0)*K*priorScale(p));
+    // Keep the posterior mean equal to the poll average. A weaker prior for
+    // new/small parties only changed their mean and shifted votes to old
+    // parties; uncertainty comes from K, the swing and the poll-count floor.
+    return Math.max(0.5,(avg[p]||0)*K);
   });
   // "Other" is a real bucket in the Dirichlet: its draw competes with the
   // modelled parties, so their simulated shares shrink to honest levels.

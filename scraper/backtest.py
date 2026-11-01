@@ -642,12 +642,18 @@ def parse_cycle(soup, spec):
     polls, seen = [], set()
     year = None
     section = None
-    # walk headings to track the section year (the 2024 article spans years)
+    subtitle = None
+    # walk headings to track the section year (the 2024 article spans years).
+    # Keep h2 and h3/h4 separate: some pages put the measure in h2 ("Voting
+    # intention") and the year in h3, others put the measure in h3.
     for el in soup.find_all(["h2", "h3", "h4", "table"]):
         if el.name != "table":
             txt = el.get_text(" ", strip=True)
-            if el.name in ("h2", "h3", "h4"):
+            if el.name == "h2":
                 section = txt
+                subtitle = None
+            elif el.name in ("h3", "h4"):
+                subtitle = txt
             m = re.search(r"\b(20\d{2})\b", txt)
             if m and len(txt) < 100:
                 year = int(m.group(1))
@@ -656,9 +662,11 @@ def parse_cycle(soup, spec):
             continue
         # optional section scope (the Japanese page carries both party-ID and
         # voting-intention tables; the model wants the vote measure)
-        if spec.get("section") and not re.search(spec["section"],
-                                                 section or "", re.I):
-            continue
+        if spec.get("section"):
+            hay = " ".join(x for x in (section, subtitle) if x)
+            if not any(re.search(spec["section"], x or "", re.I)
+                       for x in (section, subtitle, hay)):
+                continue
         grid = expand_grid(el)
         if len(grid) < 4:
             continue

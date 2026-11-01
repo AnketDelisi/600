@@ -451,6 +451,24 @@ CYCLES = {
                       "sp": 3, "fiftyplus": 2, "volt": 1},
         },
     },
+    "dk": {
+        2026: {
+            "article": "Opinion_polling_for_the_2026_Danish_general_election",
+            "election": "2026-03-24", "prev": "2022-11-01", "half_life": 14,
+            # Folketing letter columns; the four North Atlantic mandates are
+            # separate elections and are kept as reserved seats, not polls
+            "cols": {"s": r"^a$", "v": r"^v$", "m": r"^m$", "sf": r"^f$",
+                     "dd": r"^æ$", "la": r"^i$", "kf": r"^c$",
+                     "el": r"^ø$", "rv": r"^b$", "alt": r"^å$",
+                     "df": r"^o$", "bp": r"^h$"},
+            "result": {"s": 21.84, "sf": 11.58, "v": 10.14, "la": 9.37,
+                       "df": 9.10, "m": 7.70, "kf": 7.59, "el": 6.34,
+                       "rv": 5.81, "dd": 5.75, "alt": 2.57, "bp": 2.13},
+            "seats": {"s": 38, "sf": 20, "v": 18, "la": 16, "df": 16,
+                      "m": 14, "kf": 13, "el": 11, "rv": 10, "dd": 10,
+                      "alt": 5, "bp": 4, "na": 4},
+        },
+    },
 }
 
 

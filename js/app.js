@@ -4860,10 +4860,11 @@ const RUNOFF_CACHE={};
 let COAL_SELECTION=[];
 
 // Dirichlet concentration K is calibrated for a rich poll sample; with few
-// polls the estimate is less certain, so K shrinks (never below 30%).
+// polls the estimate is less certain, so K shrinks (never below 15%; thin
+// poll sets need a real poll-miss tail, not a 30% floor).
 function effectiveK(nPolls, base){
   if(!nPolls||nPolls<=0) return base;
-  return base*Math.max(0.3, Math.min(1, nPolls/12));
+  return base*Math.max(0.15, Math.min(1, nPolls/12));
 }
 
 // Measured horizon curve (scraper/backtest.py -> data/backtest.json): the

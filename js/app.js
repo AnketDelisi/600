@@ -3485,6 +3485,17 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
   const NS='http://www.w3.org/2000/svg';
   const g=document.createElementNS(NS,'g');
   g.setAttribute('class','seat-dots');
+  const blocDots=!MAP_HEAT_PARTY&&MAP_COLOR==='bloc'&&
+    BLOCS.bloc1&&BLOCS.bloc2&&!conf.hideBlocToggle;
+  const dotColor=p=>{
+    if(blocDots){
+      for(const bk of Object.keys(BLOCS)){
+        const b=BLOCS[bk];
+        if(b&&Array.isArray(b.parties)&&b.parties.indexOf(p)>=0) return b.color||'#888';
+      }
+    }
+    return partyColor(p,conf);
+  };
   // inset groups (e.g. Athens on Greece) carry a transform: dots appended
   // to the root are mapped through each path's cumulative transform
   let rootM=null;
@@ -3526,7 +3537,7 @@ function drawSeatDots(svg, mapped, avg, resultMode, conf){
       c.setAttribute('cx',(x0+(i%cols)*sp).toFixed(2));
       c.setAttribute('cy',(y0+Math.floor(i/cols)*sp).toFixed(2));
       c.setAttribute('r',r.toFixed(2));
-      c.setAttribute('fill',partyColor(p,conf));
+      c.setAttribute('fill',dotColor(p));
       c.setAttribute('stroke','#ffffff');
       c.setAttribute('stroke-width','0.7');
       c.setAttribute('pointer-events','none');
@@ -4726,12 +4737,19 @@ function bindParlToggles(avg){
       if(btn.dataset.parlmode) PARL_MODE=btn.dataset.parlmode;
       if(btn.dataset.parlview) PARL_VIEW=(PARL_VIEW==='map')?'seats':'map';
       if(btn.dataset.maplayer){ MAP_LAYER=(MAP_LAYER===1)?0:1; PARL_VIEW='map'; updateUrl(); }
-      if(btn.dataset.mapcolor) MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
+      if(btn.dataset.mapcolor){
+        MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
+        if(MAP_COLOR==='bloc') MAP_HEAT_PARTY=null;
+      }
       renderPollsTab();
     });
   });
   pane.querySelectorAll('.map-heat-select').forEach(sel=>{
-    sel.addEventListener('change',()=>{ MAP_HEAT_PARTY=sel.value||null; renderPollsTab(); });
+    sel.addEventListener('change',()=>{
+      MAP_HEAT_PARTY=sel.value||null;
+      if(MAP_HEAT_PARTY) MAP_COLOR='party';
+      renderPollsTab();
+    });
   });
   const mapShot=$('map-shot-btn');
   if(mapShot){
@@ -6850,12 +6868,23 @@ function renderForecast(pane){
     pane.querySelectorAll('.fc-map-color-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
         MAP_COLOR=(MAP_COLOR==='bloc')?'party':'bloc';
+        if(MAP_COLOR==='bloc'){
+          MAP_HEAT_PARTY=null;
+          pane.querySelectorAll('.map-heat-select').forEach(sel=>{sel.value=''});
+        }
         pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.toggle('active',b===btn));
         fcRender();
       });
     });
     pane.querySelectorAll('.map-heat-select').forEach(sel=>{
-      sel.addEventListener('change',()=>{ MAP_HEAT_PARTY=sel.value||null; fcRender(); });
+      sel.addEventListener('change',()=>{
+        MAP_HEAT_PARTY=sel.value||null;
+        if(MAP_HEAT_PARTY){
+          MAP_COLOR='party';
+          pane.querySelectorAll('.fc-map-color-btn').forEach(b=>b.classList.remove('active'));
+        }
+        fcRender();
+      });
     });
     pane.querySelectorAll('.fc-layer-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{

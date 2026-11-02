@@ -12,6 +12,18 @@
     "nota": 3.05
    },
    "seats": {}
+  },
+  {
+   "at": "2026-11-02T01:02:15Z",
+   "counted": 92.39,
+   "total": 100,
+   "counted_pct": 92.39,
+   "pct": {
+    "iotova": 57.358,
+    "gyurov": 39.677,
+    "nota": 2.964
+   },
+   "seats": {}
   }
  ]
 }

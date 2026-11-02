@@ -35,7 +35,7 @@
    "name": "Together",
    "color": "#2A2A78",
    "pct": 9.34,
-   "votes": 531414,
+   "votes": 531631,
    "seats": 12
   },
   {
@@ -43,7 +43,7 @@
    "name": "Joint List",
    "color": "#01B2AC",
    "pct": 8.79,
-   "votes": 500147,
+   "votes": 500149,
    "seats": 11
   },
   {
@@ -75,7 +75,7 @@
    "name": "Otzma Yehudit",
    "color": "#FF4500",
    "pct": 5.74,
-   "votes": 326624,
+   "votes": 326629,
    "seats": 7
   },
   {
@@ -83,7 +83,7 @@
    "name": "United Torah Judaism",
    "color": "#003366",
    "pct": 5.49,
-   "votes": 312604,
+   "votes": 312609,
    "seats": 7
   },
   {
@@ -107,7 +107,7 @@
    "name": "The Reservists",
    "color": "#68692C",
    "pct": 2.72,
-   "votes": 154950,
+   "votes": 155008,
    "seats": 0
   },
   {
@@ -115,7 +115,7 @@
    "name": "Amcha Yisrael",
    "color": "#8F36BF",
    "pct": 1.68,
-   "votes": 95663,
+   "votes": 95661,
    "seats": 0
   },
   {
@@ -180,5 +180,5 @@
   }
  ],
  "id": "israel-2026",
- "updated_at": "2026-10-29T23:16:45Z"
+ "updated_at": "2026-11-02T01:02:10Z"
 }

@@ -1,48 +1,48 @@
 {
  "horizons": {
   "30": {
-   "n": 15,
-   "seat_mae": 4.74
+   "n": 25,
+   "seat_mae": 4.6
   },
   "14": {
-   "n": 16,
-   "seat_mae": 3.51
+   "n": 26,
+   "seat_mae": 3.3
   },
   "7": {
-   "n": 16,
-   "seat_mae": 3.5
+   "n": 26,
+   "seat_mae": 3.3
   },
   "0": {
-   "n": 16,
-   "seat_mae": 3.0
+   "n": 26,
+   "seat_mae": 2.63
   }
  },
  "majority": {
-  "n": 16,
-  "brier": 0.1638,
+  "n": 26,
+  "brier": 0.1177,
   "cases": [
    {
     "country": "uk",
     "cycle": 2024,
-    "p": 0.998,
+    "p": 0.982,
     "hit": true
    },
    {
     "country": "canada",
     "cycle": 2025,
-    "p": 0.518,
+    "p": 0.566,
     "hit": false
    },
    {
     "country": "spain",
     "cycle": 2023,
-    "p": 0.776,
+    "p": 0.654,
     "hit": false
    },
    {
     "country": "bc",
     "cycle": 2024,
-    "p": 0.612,
+    "p": 0.564,
     "hit": false
    },
    {
@@ -71,20 +71,20 @@
    },
    {
     "country": "pt",
-    "cycle": 2024,
-    "p": 1.0,
-    "hit": true
+    "cycle": 2025,
+    "p": 0.002,
+    "hit": false
    },
    {
     "country": "estonia",
     "cycle": 2023,
-    "p": 0.342,
+    "p": 0.348,
     "hit": true
    },
    {
     "country": "lt",
     "cycle": 2024,
-    "p": 0.964,
+    "p": 0.96,
     "hit": true
    },
    {
@@ -96,26 +96,86 @@
    {
     "country": "kr",
     "cycle": 2024,
-    "p": 0.678,
+    "p": 0.7,
     "hit": true
    },
    {
     "country": "hr",
     "cycle": 2024,
-    "p": 0.302,
+    "p": 0.328,
     "hit": false
    },
    {
     "country": "is",
     "cycle": 2024,
-    "p": 0.84,
+    "p": 0.874,
     "hit": true
    },
    {
     "country": "si",
     "cycle": 2026,
-    "p": 0.584,
+    "p": 0.58,
     "hit": false
+   },
+   {
+    "country": "austria",
+    "cycle": 2024,
+    "p": 0.006,
+    "hit": false
+   },
+   {
+    "country": "netherlands",
+    "cycle": 2025,
+    "p": 0.992,
+    "hit": true
+   },
+   {
+    "country": "dk",
+    "cycle": 2026,
+    "p": 0.08,
+    "hit": false
+   },
+   {
+    "country": "sweden",
+    "cycle": 2022,
+    "p": 0.53,
+    "hit": false
+   },
+   {
+    "country": "fi",
+    "cycle": 2023,
+    "p": 0.59,
+    "hit": true
+   },
+   {
+    "country": "greece",
+    "cycle": 2023,
+    "p": 0.964,
+    "hit": true
+   },
+   {
+    "country": "no",
+    "cycle": 2025,
+    "p": 0.828,
+    "hit": true
+   },
+   {
+    "country": "italy",
+    "cycle": 2022,
+    "p": 0.68,
+    "hit": true
+   },
+   {
+    "country": "poland",
+    "cycle": 2023,
+    "p": 0.222,
+    "hit": false
+   },
+   {
+    "country": "hu",
+    "cycle": 2026,
+    "p": 1.0,
+    "hit": true
    }
   ]
  }

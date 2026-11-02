@@ -6,7 +6,7 @@
       "url": "https://en.wikipedia.org/wiki/2027_Argentine_general_election"
     }
   ],
-  "scraped_at": "2026-10-31T11:39:10Z",
+  "scraped_at": "2026-11-02T14:42:18Z",
   "poll_count": 16,
   "polls": [
     {
@@ -41,8 +41,7 @@
         "massa": 8.7,
         "grabois": 1.7,
         "bregman": 4.7,
-        "villarruel": 6.7,
-        "gebel": 1.0
+        "villarruel": 6.7
       },
       "n": 1286
     },
@@ -103,8 +102,7 @@
         "macri": 6.0,
         "schiaretti": 2.4,
         "bregman": 9.0,
-        "villarruel": 5.3,
-        "gebel": 1.1
+        "villarruel": 5.3
       },
       "n": 5400
     },
@@ -155,8 +153,7 @@
         "grabois": 3.0,
         "macri": 8.0,
         "bregman": 12.0,
-        "villarruel": 4.0,
-        "gebel": 1.0
+        "villarruel": 4.0
       },
       "n": 1915
     },
@@ -178,8 +175,7 @@
         "milei": 28.3,
         "kicillof": 24.2,
         "grabois": 6.7,
-        "villarruel": 2.0,
-        "gebel": 3.2
+        "villarruel": 2.0
       },
       "n": 2015
     },
@@ -203,8 +199,7 @@
         "moreno": 4.5,
         "macri": 5.2,
         "schiaretti": 3.7,
-        "bregman": 4.2,
-        "gebel": 0.8
+        "bregman": 4.2
       },
       "n": 2588
     }

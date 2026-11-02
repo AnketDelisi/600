@@ -2,9 +2,30 @@
  "country": "italy",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
- "scraped_at": "2026-10-31T11:38:59Z",
- "poll_count": 1145,
+ "scraped_at": "2026-11-02T14:42:00Z",
+ "poll_count": 1146,
  "polls": [
+  {
+   "pollster": "BiDiMedia",
+   "date": "2026-10-30",
+   "n": 1000,
+   "country": "italy",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Italian_general_election",
+   "votes": {
+    "fdi": 26.6,
+    "pd": 20.6,
+    "m5s": 12.0,
+    "lega": 5.4,
+    "fi": 7.2,
+    "a": 3.0,
+    "iv": 1.9,
+    "avs": 6.7,
+    "e": 0.8,
+    "nm": 1.0,
+    "fn": 6.7
+   }
+  },
   {
    "pollster": "Termometro Politico",
    "date": "2026-10-29",

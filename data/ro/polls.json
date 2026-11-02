@@ -2,8 +2,8 @@
  "country": "ro",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Next_Romanian_parliamentary_election",
- "scraped_at": "2026-10-31T11:39:04Z",
- "poll_count": 41,
+ "scraped_at": "2026-11-02T14:42:10Z",
+ "poll_count": 43,
  "polls": [
   {
    "pollster": "Avangarde",
@@ -742,6 +742,40 @@
     "sos": 3.0,
     "udmr": 5.0,
     "sens": 2.0
+   }
+  },
+  {
+   "pollster": "Avangarde",
+   "date": "2026-10-26",
+   "n": 1000,
+   "country": "ro",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Romanian_parliamentary_election",
+   "votes": {
+    "psd": 26.0,
+    "aur": 35.0,
+    "pnl": 15.0,
+    "usr": 10.0,
+    "sos": 2.0,
+    "udmr": 5.0,
+    "sens": 4.0
+   }
+  },
+  {
+   "pollster": "CURS",
+   "date": "2026-10-27",
+   "n": 1068,
+   "country": "ro",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Next_Romanian_parliamentary_election",
+   "votes": {
+    "psd": 26.0,
+    "aur": 34.0,
+    "pnl": 16.0,
+    "usr": 8.0,
+    "sos": 2.0,
+    "udmr": 5.0,
+    "sens": 3.0
    }
   }
  ]

@@ -43,7 +43,7 @@
    "name": "Joint List",
    "color": "#01B2AC",
    "pct": 8.8,
-   "votes": 500651,
+   "votes": 500650,
    "seats": 11
   },
   {
@@ -59,7 +59,7 @@
    "name": "Ra'am",
    "color": "#15793D",
    "pct": 5.93,
-   "votes": 337712,
+   "votes": 337718,
    "seats": 8
   },
   {
@@ -83,7 +83,7 @@
    "name": "United Torah Judaism",
    "color": "#003366",
    "pct": 5.49,
-   "votes": 312629,
+   "votes": 312630,
    "seats": 7
   },
   {
@@ -98,8 +98,8 @@
    "id": "rzp",
    "name": "Religious Zionist Party",
    "color": "#4F9298",
-   "pct": 5.1,
-   "votes": 290525,
+   "pct": 5.11,
+   "votes": 290548,
    "seats": 6
   },
   {
@@ -107,7 +107,7 @@
    "name": "The Reservists",
    "color": "#68692C",
    "pct": 2.72,
-   "votes": 155064,
+   "votes": 155089,
    "seats": 0
   },
   {
@@ -123,7 +123,7 @@
    "name": "Blue and White",
    "color": "#0DAAFF",
    "pct": 0.0,
-   "votes": 43,
+   "votes": 0,
    "seats": 0
   }
  ],
@@ -180,5 +180,5 @@
   }
  ],
  "id": "israel-2026",
- "updated_at": "2026-11-02T17:25:46Z"
+ "updated_at": "2026-11-02T23:58:48Z"
 }

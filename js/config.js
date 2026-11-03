@@ -4452,7 +4452,7 @@ saxony_anhalt: {
       districts: {"i": "i", "ii": "ii", "iii": "iii", "iv": "iv", "v": "v", "vi": "vi", "vii": "vii", "viii": "viii", "ix": "ix", "x": "x", "xi": "xi"},
       seatDistricts: {"i": 14, "ii": 14, "iii": 14, "iv": 14, "v": 14, "vi": 14, "vii": 14, "viii": 14, "ix": 14, "x": 14, "xi": 3},
       names: {"i": "I", "ii": "II", "iii": "III", "iv": "IV", "v": "V", "vi": "VI", "vii": "VII", "viii": "VIII", "ix": "IX", "x": "X", "xi": "Diaspora (XI)"},
-      gebiete: {"i": {"hdz": 27.65, "sdp": 24.37, "dp": 9.29, "most": 7.34, "mozemo": 19.87, "ourcroatia": 0.9, "fokus": 3.4}, "ii": {"hdz": 35.3, "sdp": 24.8, "dp": 11.1, "most": 9.1, "mozemo": 8.6, "ourcroatia": 1.2, "fokus": 2.8}, "iii": {"hdz": 27.6, "sdp": 36.8, "dp": 5.1, "most": 3.8, "mozemo": 6.2, "nps": 12.2, "fokus": 0.9}, "iv": {"hdz": 41.8, "sdp": 25.2, "dp": 13.1, "most": 6.0, "mozemo": 5.5, "ourcroatia": 1.0, "fokus": 1.0}, "v": {"hdz": 42.8, "sdp": 19.6, "dp": 17.4, "most": 8.5, "mozemo": 3.6, "ourcroatia": 0.4, "fokus": 1.0}, "vi": {"hdz": 24.8, "sdp": 23.8, "dp": 8.7, "most": 9.5, "mozemo": 18.1, "ourcroatia": 0.6, "fokus": 7.8}, "vii": {"hdz": 41.3, "sdp": 25.4, "dp": 8.6, "most": 6.6, "mozemo": 6.9, "ourcroatia": 1.0, "fokus": 1.6}, "viii": {"hdz": 21.3, "sdp": 33.4, "dp": 4.0, "most": 5.7, "mozemo": 10.2, "ids": 15.9, "fokus": 1.9}, "ix": {"hdz": 39.7, "sdp": 19.4, "dp": 10.6, "most": 12.1, "mozemo": 4.4, "ourcroatia": 0.9, "fokus": 1.0}, "x": {"hdz": 37.0, "sdp": 25.5, "dp": 10.8, "most": 11.5, "mozemo": 5.3, "ourcroatia": 0.5, "fokus": 0.5}, "xi": {"hdz": 79.5, "most": 6.6, "mozemo": 3.0, "fokus": 0.5}},
+      gebiete: {"i": {"hdz": 27.65, "sdp": 24.37, "dp": 9.29, "most": 7.34, "mozemo": 19.87, "fokus": 3.4}, "ii": {"hdz": 35.3, "sdp": 24.8, "dp": 11.1, "most": 9.1, "mozemo": 8.6, "fokus": 2.8}, "iii": {"hdz": 27.6, "sdp": 36.8, "dp": 5.1, "most": 3.8, "mozemo": 6.2, "nps": 12.2, "fokus": 0.9}, "iv": {"hdz": 41.8, "sdp": 25.2, "dp": 13.1, "most": 6.0, "mozemo": 5.5, "fokus": 1.0}, "v": {"hdz": 42.8, "sdp": 19.6, "dp": 17.4, "most": 8.5, "mozemo": 3.6, "fokus": 1.0}, "vi": {"hdz": 24.8, "sdp": 23.8, "dp": 8.7, "most": 9.5, "mozemo": 18.1, "fokus": 7.8}, "vii": {"hdz": 41.3, "sdp": 25.4, "dp": 8.6, "most": 6.6, "mozemo": 6.9, "fokus": 1.6}, "viii": {"hdz": 21.3, "sdp": 33.4, "dp": 4.0, "most": 5.7, "mozemo": 10.2, "ids": 15.9, "fokus": 1.9}, "ix": {"hdz": 39.7, "sdp": 19.4, "dp": 10.6, "most": 12.1, "mozemo": 4.4, "fokus": 1.0}, "x": {"hdz": 37.0, "sdp": 25.5, "dp": 10.8, "most": 11.5, "mozemo": 5.3, "fokus": 0.5}, "xi": {"hdz": 79.5, "most": 6.6, "mozemo": 3.0, "fokus": 0.5}},
       national2021: {"hdz": 34.4, "sdp": 25.4, "dp": 9.6, "most": 8.0, "mozemo": 9.1, "nps": 1.22, "fokus": 2.3, "ids": 2.25},
     },
     pollsterMAE: {
@@ -4864,7 +4864,7 @@ akp: 'img/tr/AKP.svg', chp: 'img/tr/CHP.svg', mhp: 'img/tr/MHP.svg', iyi: 'img/t
       seats: {"akp": 268, "chp": 169, "mhp": 50, "iyi": 43, "dem": 61, "yrp": 5, "tip": 4, "bbp": 0, "zp": 0, "a": 0, "yep": 0, "saadet": 0},
     },
     map: {},
-    map2: { svg: 'img/turkey.svg', label_tr: 'İLÇE HARİTASI', label_en: 'DISTRICTS', layerCount: 976 },
+    map2: { svg: 'img/turkey.svg', label_tr: 'İLÇE HARİTASI', label_en: 'DISTRICTS' },
   },
 
   qc: {

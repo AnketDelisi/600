@@ -2,9 +2,32 @@
   "country": "greece",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
-  "scraped_at": "2026-11-02T14:41:57Z",
-  "poll_count": 332,
+  "scraped_at": "2026-11-03T13:35:01Z",
+  "poll_count": 333,
   "polls": [
+    {
+      "pollster": "Alco/Alpha",
+      "date": "2026-10-30",
+      "n": 1000,
+      "country": "greece",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Greek_parliamentary_election",
+      "votes": {
+        "nd": 27.8,
+        "syriza": 2.1,
+        "pasok": 13.6,
+        "kke": 8.5,
+        "el": 6.9,
+        "niki": 2.0,
+        "pe": 4.4,
+        "m25": 3.0,
+        "fl": 2.6,
+        "se": 3.8,
+        "dpk": 0.8,
+        "elpida": 3.7,
+        "elas": 15.9
+      }
+    },
     {
       "pollster": "Interview/Politic",
       "date": "2026-10-25",

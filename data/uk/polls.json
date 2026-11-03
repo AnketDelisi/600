@@ -2,15 +2,15 @@
  "country": "uk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
- "scraped_at": "2026-11-02T14:42:06Z",
- "poll_count": 600,
+ "scraped_at": "2026-11-03T13:35:11Z",
+ "poll_count": 603,
  "regional": {
   "london": {
-   "lab": 32.51,
-   "con": 19.52,
-   "lib": 11.91,
-   "grn": 17.06,
-   "ref": 19.0
+   "lab": 33.07,
+   "con": 19.39,
+   "lib": 11.45,
+   "grn": 17.05,
+   "ref": 19.05
   },
   "scotland": {
    "lab": 20.51,
@@ -30,6 +30,62 @@
   }
  },
  "polls": [
+  {
+   "pollster": "YouGov",
+   "fieldwork_start": "2026-11-02",
+   "date": "2026-11-02",
+   "n": 2355,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 26.0,
+    "con": 24.0,
+    "ref": 21.0,
+    "lib": 11.0,
+    "grn": 10.0,
+    "snp": 3.0,
+    "plc": 2.0,
+    "res": 3.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "Deltapoll",
+   "fieldwork_start": "2026-10-30",
+   "date": "2026-11-02",
+   "n": 2215,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 30.0,
+    "con": 23.0,
+    "ref": 25.0,
+    "lib": 7.0,
+    "grn": 8.0,
+    "snp": 3.0,
+    "plc": 1.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "Freshwater Strategy",
+   "fieldwork_start": "2026-10-30",
+   "date": "2026-11-01",
+   "n": 1219,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 30.0,
+    "con": 22.0,
+    "ref": 22.0,
+    "lib": 10.0,
+    "grn": 10.0,
+    "snp": 2.0
+   }
+  },
   {
    "pollster": "Opinium",
    "fieldwork_start": "2026-10-30",

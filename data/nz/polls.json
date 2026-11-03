@@ -2,9 +2,27 @@
   "country": "nz",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
-  "scraped_at": "2026-11-02T14:42:07Z",
-  "poll_count": 126,
+  "scraped_at": "2026-11-03T13:35:12Z",
+  "poll_count": 127,
   "polls": [
+    {
+      "pollster": "1 News–Verian",
+      "fieldwork_start": "2026-11-20",
+      "date": "2026-11-20",
+      "n": 1006,
+      "country": "nz",
+      "source": "Wikipedia",
+      "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_New_Zealand_general_election",
+      "votes": {
+        "nat": 29.5,
+        "lab": 28.8,
+        "grn": 16.4,
+        "act": 10.0,
+        "nzf": 8.4,
+        "tpm": 0.4,
+        "opp": 6.2
+      }
+    },
     {
       "pollster": "RNZ–Reid Research",
       "fieldwork_start": "2026-10-20",

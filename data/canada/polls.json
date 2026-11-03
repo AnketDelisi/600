@@ -6,9 +6,35 @@
    "url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_46th_Canadian_federal_election"
   }
  ],
- "scraped_at": "2026-11-02T14:42:20Z",
- "poll_count": 245,
+ "scraped_at": "2026-11-03T13:35:27Z",
+ "poll_count": 247,
  "polls": [
+  {
+   "pollster": "Liaison Strategies",
+   "date": "2026-10-31",
+   "votes": {
+    "lpc": 45.0,
+    "cpc": 30.0,
+    "bq": 6.0,
+    "ndp": 14.0,
+    "gpc": 2.0,
+    "ppc": 2.0
+   },
+   "n": 1000
+  },
+  {
+   "pollster": "Nanos Research",
+   "date": "2026-10-30",
+   "votes": {
+    "lpc": 45.4,
+    "cpc": 28.9,
+    "bq": 7.4,
+    "ndp": 12.9,
+    "gpc": 2.7,
+    "ppc": 1.9
+   },
+   "n": 1014
+  },
   {
    "pollster": "Liaison Strategies",
    "date": "2026-10-24",

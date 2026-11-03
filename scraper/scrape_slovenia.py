@@ -143,7 +143,7 @@ def scrape():
         cols = header_cols(el)
         if sum(1 for v in cols.values() if v) < MIN_PARTIES:
             continue
-        grid, _ = expand_grid(el)
+        grid, metas = expand_grid(el)
         for ri in range(2, len(grid)):
             texts = grid[ri]
             if len(texts) < 10:
@@ -155,18 +155,27 @@ def scrape():
             if not pollster or len(pollster) < 3:
                 continue
             low = pollster.lower()
-            if any(w in low for w in ("election", "result", "turnout")):
+            if any(w in low for w in ("election", "result", "turnout",
+                                      "government", "confirmed")):
                 continue
             n = parse_sample(texts[3] if len(texts) > 3 else "")
             votes = {}
-            for i in range(len(texts)):
-                key = cols.get(i)
-                if not key:
+            for start, span, txt in metas[ri]:
+                keys = [cols.get(i) for i in range(start, min(start + span, len(texts)))
+                        if cols.get(i)]
+                if not keys:
                     continue
-                v = parse_share(texts[i])
-                if v is not None:
-                    votes[key] = v
+                v = parse_share(txt)
+                if v is None:
+                    continue
+                if span > 1 and len(set(keys)) > 1:
+                    # One merged group cell is one reading, not one per party.
+                    votes.setdefault(keys[0], v)
+                else:
+                    votes[keys[0]] = v
             if len(votes) < MIN_PARTIES:
+                continue
+            if not 80 <= sum(votes.values()) <= 115:
                 continue
             sig = (pollster, date)
             if sig in seen:

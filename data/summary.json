@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T13:36:57Z",
+ "generated": "2026-11-03T21:51:27Z",
  "countries": {
   "sweden": {
    "name": "Sweden",
@@ -30,7 +30,7 @@
    "seats": 150,
    "seat_based": false,
    "leader": "vb",
-   "leader_pct": 18.1,
+   "leader_pct": 17.9,
    "leader_code": "VB",
    "leader_color": "#FFE500",
    "leader_logo": "img/be/vb.svg",
@@ -110,16 +110,16 @@
    "seats": 183,
    "seat_based": false,
    "leader": "fpoe",
-   "leader_pct": 39.9,
+   "leader_pct": 39.8,
    "leader_code": "FPÖ",
    "leader_color": "#0056A2",
    "leader_logo": "img/at/FPO.svg",
    "second": "oevp",
-   "second_pct": 19.8,
+   "second_pct": 19.7,
    "last_winner_code": null,
    "last_winner_color": null,
    "poll_count": 4,
-   "latest_poll": "2026-10-07"
+   "latest_poll": "2026-10-13"
   },
   "czechia": {
    "name": "Czechia",
@@ -350,15 +350,15 @@
    "seats": 300,
    "seat_based": false,
    "leader": "dpk",
-   "leader_pct": 40.0,
+   "leader_pct": 39.9,
    "leader_code": "DPK",
    "leader_color": "#152484",
    "leader_logo": "img/kr/DPK.svg",
    "second": "ppp",
-   "second_pct": 32.1,
+   "second_pct": 32.2,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 36,
+   "poll_count": 35,
    "latest_poll": "2026-09-30"
   },
   "hr": {
@@ -770,16 +770,16 @@
    "seats": 120,
    "seat_based": false,
    "leader": "lab",
-   "leader_pct": 28.9,
+   "leader_pct": 28.8,
    "leader_code": "LAB",
    "leader_color": "#D82A20",
    "leader_logo": "img/nz/LAB.svg",
    "second": "nat",
-   "second_pct": 27.8,
+   "second_pct": 27.6,
    "last_winner_code": "NAT",
    "last_winner_color": "#00529F",
-   "poll_count": 6,
-   "latest_poll": "2026-11-20"
+   "poll_count": 5,
+   "latest_poll": "2026-10-20"
   }
  }
 }

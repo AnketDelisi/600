@@ -226,8 +226,9 @@ def scrape_slovakia():
                 elif span == 1:
                     votes[nonempty[0]] = votes.get(nonempty[0], 0) + pct
                 else:
-                    for k in nonempty:
-                        votes.setdefault(k, pct)
+                    # A merged group cell is one reading for the whole group,
+                    # not one reading per sub-column (the O?aNO group).
+                    votes.setdefault(nonempty[0], pct)
 
             if len(votes) < MIN_PARTIES:
                 continue

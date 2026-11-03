@@ -32,11 +32,12 @@ MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
 
 # normalized table header -> config party key (config keys:
 # sns, sps, srs, pes, nada, misn, sl, spn; NPS/ZLF/DS/KP -> sl, they all
-# withdrew and endorsed the Student List)
+# withdrew and endorsed the Student List; newer tables also carry an SL
+# column, so add its reading to the folded components)
 HEADER_MAP = {
     "sns-led coalition": "sns",
     "sps-js": "sps", "sps": "sps",
-    "student list": "sl",
+    "student list": "sl", "sl": "sl",
     "pes": "pes", "ssp": "pes", "srce": "pes",
     "nps": "sl", "zlf": "sl", "ds": "sl", "kp": "sl",
     "nada": "nada", "ndss": "nada", "monarchists": "nada", "poks": "nada",
@@ -231,7 +232,7 @@ def main():
         "scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "poll_count": len(polls),
         "polls": polls,
-    }, indent=2, ensure_ascii=False), encoding="utf-8")
+    }, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
     print(f"Wrote {out}")
     if polls:
         pollsters = sorted(set(p["pollster"] for p in polls))

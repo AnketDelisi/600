@@ -607,6 +607,27 @@ let POLLS=[], FILTERED_POLLS=[], META={};
 let SCRAPED_AT=null;   // ISO timestamp of the last poll scrape (data health)
 let ARCHIVE_MODE=false; // replicate the frozen archive snapshot's weighting math
 let REGIONAL_AVG={};    // sub-national polling averages (region -> party -> %)
+// A regional poll only replaces the national swing when it covers enough
+// vote share; partial regional tables must not override the national model.
+const REGIONAL_MIN_COVERAGE=75;
+function regionalPollUsable(region){
+  const row=REGIONAL_AVG&&REGIONAL_AVG[region];
+  if(!row) return false;
+  let sum=0;
+  for(const k in row) sum+=Number(row[k])||0;
+  return sum>=REGIONAL_MIN_COVERAGE;
+}
+function regionalCoverage(){
+  const conf=MAP_CONF&&MAP_CONF();
+  const regions=conf&&conf.regionOf?[...new Set(Object.values(conf.regionOf))]:[];
+  const covered=regions.filter(regionalPollUsable).length;
+  return {total:regions.length,covered};
+}
+function regionalCoverageNote(){
+  const c=regionalCoverage();
+  if(!c.total||!c.covered||c.covered>=c.total) return '';
+  return `${t('Regional polling','B?lgesel anket')}: ${c.covered}/${c.total} ${t('regions','b?lge')} ? ${t('uncovered regions use national fallback','kapsanmayan b?lgeler ulusal tahmine d?ner')}`;
+}
 
 let EVENTS=[];
 async function loadData(){
@@ -2625,6 +2646,7 @@ function renderParliament(avg){
   // filter provenance under the projection (never for the result view - the
   // result is not "based on" the current poll window)
   const prov=(PARL_MODE==='proj'&&!showMap)?` · ${filtersNote()}`:'';
+  const regNote=regionalCoverageNote();
   // map-as-the-story: the map always visible below the arch (bigMap)
   const mapSection=bigMap?`<div class="card" style="margin-top:14px"><div class="card-head"><div class="bar"></div><div class="t">${T.districtMap}</div>
       <button class="shot-btn" id="map-sec-shot-btn" style="margin-left:auto" title="Download map as PNG">${CAM_ICON}</button></div>
@@ -2637,7 +2659,7 @@ function renderParliament(avg){
     ${box}
     ${MAP_HEAT_PARTY?`<div class="map-heat-note">${MAP_HEAT_PARTY==='all'?t('All parties','Tüm partiler'):partyCode(MAP_HEAT_PARTY)} ${t('share shading · darker = stronger','oy gölgesi · koyu = güçlü')}</div>`:''}
     <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center">
-      ${cap}${prov}
+      ${cap}${regNote?` ? ${regNote}`:''}${prov}
     </div></div>
   ${mapSection}`;
 }
@@ -2744,7 +2766,7 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   const region=conf.regionOf?conf.regionOf[String(nr)]:null;
   const backtestMode=typeof window!=='undefined'&&window.__600_BACKTEST_MODE__;
   const predictionMode=typeof window!=='undefined'&&window.__600_PREDICTION_MODE__;
-  const reg=region&&!backtestMode&&!predictionMode&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
+  const reg=region&&!backtestMode&&!predictionMode&&regionalPollUsable(region)?REGIONAL_AVG[region]:null;
   const rbase=region?((conf.regionBase||conf.region2023||conf.region2022||{})[region]||null):null;
   const rw=(conf.regionalBlend!==undefined)?conf.regionalBlend:0.5;
   const out={};
@@ -6565,7 +6587,7 @@ function renderForecast(pane){
       </div>
       <div class="parliament-box" id="fc-map-box"></div>
       <div style="font-size:11px;color:var(--c-text-muted);margin-top:8px;text-align:center" id="fc-map-cap">
-        ${fcMapCap()}
+        ${fcMapCap()}${regionalCoverageNote()?` ? ${regionalCoverageNote()}`:''}
       </div>
     </div>`:''}
 
@@ -6863,7 +6885,7 @@ function renderForecast(pane){
       const fcAvg=FC_MODE==='res'?LAST_ELECTION.results:(FC_MODE==='runoff'&&fcRo?fcRo:medVotes);
       renderMapInto(fcBox, fcAvg, FC_MODE==='res', upper||(FC_MODE==='runoff'?runoffConf():undefined));
       const capEl=$('fc-map-cap');
-      if(capEl) capEl.textContent=fcMapCap();
+      if(capEl) capEl.textContent=fcMapCap()+(regionalCoverageNote()?` ? ${regionalCoverageNote()}`:'');
     };
     fcRender();
     pane.querySelectorAll('.fc-map-btn').forEach(btn=>{

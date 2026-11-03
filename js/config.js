@@ -702,7 +702,7 @@ saxony_anhalt: {
       jkp: { code: 'JKP',  name: 'Jaunā konservatīvā partija',     name_en: 'New Conservative Party',     color: '#182956', ideology: "Liberal conservatism"},
       lks: { code: 'LKS',  name: 'Latvijas Krievu savienība',      name_en: 'Latvian Russian Union',      color: '#3560A9', ideology: "Russian minority politics, Russian nationalism"},
     },
-    order: ['as', 'sv', 'lpv', 'pro', 'na', 'jv', 'zzs', 'la', 'mmn', 'st', 'sc', 'asl', 'jkp'],
+    order: ['as', 'sv', 'lpv', 'pro', 'na', 'jv', 'zzs', 'la', 'mmn', 'st', 'sc', 'lks', 'asl', 'jkp'],
     parlOrder: ['sc', 'pro', 'lks', 'as', 'zzs', 'jv', 'la', 'na', 'st', 'sv', 'lpv', 'asl', 'jkp'],
     blocs: {
       bloc1: { name: 'Government', short: 'GOV', parties: ['as', 'jv', 'na', 'zzs'], color: '#FFB300' },

@@ -35,6 +35,10 @@ def num(text):
     m = re.search(r"(\d+(?:[.,]\d+)?)\s*%?", text or "")
     return float(m.group(1).replace(",", ".")) if m else None
 
+def sample_n(text):
+    digits = re.sub(r"[^\d]", "", text or "")
+    return int(digits) if digits else 1000
+
 def main():
     r = requests.get(URL, headers={"User-Agent":"600-poll-scraper/1.0"}, timeout=180)
     r.raise_for_status()
@@ -76,7 +80,7 @@ def main():
                 if v is not None: votes[k]=v
             if len(votes) < 3: continue
             raw[region].append({"pollster":pollster,"date":date,"votes":votes,
-                                "n": int(num(row[ni])) if ni is not None and ni < len(row) and num(row[ni]) else 1000})
+                                "n": sample_n(row[ni]) if ni is not None and ni < len(row) else 1000})
     # Latest regional averages for the map's regional override.
     regional = {}
     for reg, ps in raw.items():
@@ -104,6 +108,7 @@ def main():
         "country":"belgium","source":"Wikipedia","source_url":URL,
         "scraped_at":datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "poll_count":len(national),"polls":national,"regional":regional,
+        "syntheticNational":True,"regionalWeights":weights,
     },ensure_ascii=False,indent=1)+"\n",encoding="utf8")
     print("wrote",len(national),"national polls; regions", {k:len(v) for k,v in raw.items()})
 

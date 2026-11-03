@@ -180,6 +180,8 @@ def scrape():
                     votes[key] = v
             if len(votes) < MIN_PARTIES:
                 continue
+            if sum(votes.values()) < 50:
+                continue
             sig = (pollster, date)
             if sig in seen:
                 continue

@@ -147,6 +147,8 @@ def scrape_nz():
             start, date = parse_date(row[0])
             if not date or date < CUTOFF:
                 continue
+            if date > datetime.now(timezone.utc).strftime("%Y-%m-%d"):
+                continue
             pollster = re.sub(r"\[\s*[\w\d]+\s*\]", "", row[1])
             pollster = re.sub(r"\s+", " ", pollster).strip()
             if not pollster or len(pollster) < 3 or len(pollster) > 60:

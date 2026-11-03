@@ -194,11 +194,12 @@ def scrape_wikipedia():
 
             poll = {
                 "pollster": pollster,
-                "date": date_str,
+                "date": date_end or date_str,
                 "votes": votes,
                 "country": COUNTRY,
             }
             if date_end:
+                poll["fieldwork_start"] = date_str
                 poll["date_end"] = date_end
             if n:
                 poll["n"] = n

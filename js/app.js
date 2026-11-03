@@ -2743,7 +2743,8 @@ function districtShares(nr, avg, resultMode, confOverride, regionNoise, district
   // 2023-based projection (never the base point itself).
   const region=conf.regionOf?conf.regionOf[String(nr)]:null;
   const backtestMode=typeof window!=='undefined'&&window.__600_BACKTEST_MODE__;
-  const reg=region&&!backtestMode&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
+  const predictionMode=typeof window!=='undefined'&&window.__600_PREDICTION_MODE__;
+  const reg=region&&!backtestMode&&!predictionMode&&REGIONAL_AVG[region]?REGIONAL_AVG[region]:null;
   const rbase=region?((conf.regionBase||conf.region2023||conf.region2022||{})[region]||null):null;
   const rw=(conf.regionalBlend!==undefined)?conf.regionalBlend:0.5;
   const out={};
@@ -5714,6 +5715,8 @@ function predictionSeats(votes){
   if(SEAT_BASED) return seatParliament(votes, SEATS_TOTAL);
   const zeroed=PARTY_ORDER.filter(p=>!(votes[p]>0.01));
   const conf=MAP_CONF();
+  const prevPredictionMode=window.__600_PREDICTION_MODE__;
+  window.__600_PREDICTION_MODE__=true;
   let saved=null, mutated=false;
   if(conf&&conf.districts&&zeroed.length){
     saved=conf.noCandidate;
@@ -5728,6 +5731,7 @@ function predictionSeats(votes){
     return allocateSeatsTotal(votes, SEATS_TOTAL);
   }finally{
     if(mutated) conf.noCandidate=saved;
+    window.__600_PREDICTION_MODE__=prevPredictionMode;
   }
 }
 let YP_MAP_TIMER=null, YP_MAP_LAYER=0;
@@ -5749,8 +5753,12 @@ function ypRenderMap(votes){
     }
     conf=Object.assign({},base,{noCandidate:nc});
   }
+  const prevPredictionMode=window.__600_PREDICTION_MODE__;
+  window.__600_PREDICTION_MODE__=true;
   renderMapInto(box, votes, false, conf).then(()=>{
     if(window.__ypFit) window.__ypFit();
+  }).finally(()=>{
+    window.__600_PREDICTION_MODE__=prevPredictionMode;
   });
 }
 function ypUpdate(){

@@ -2,8 +2,8 @@
  "country": "uk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
- "scraped_at": "2026-11-03T13:35:11Z",
- "poll_count": 603,
+ "scraped_at": "2026-11-04T13:44:33Z",
+ "poll_count": 604,
  "regional": {
   "london": {
    "lab": 33.07,
@@ -66,6 +66,25 @@
     "grn": 8.0,
     "snp": 3.0,
     "plc": 1.0
+   },
+   "method": "online"
+  },
+  {
+   "pollster": "More in Common",
+   "fieldwork_start": "2026-10-31",
+   "date": "2026-11-01",
+   "n": 2602,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 29.0,
+    "con": 23.0,
+    "ref": 22.0,
+    "lib": 9.0,
+    "grn": 8.0,
+    "snp": 2.0,
+    "res": 5.0
    },
    "method": "online"
   },
@@ -1750,25 +1769,6 @@
    "method": "online"
   },
   {
-   "pollster": "BMG Research",
-   "fieldwork_start": "2026-07-30",
-   "date": "2026-07-30",
-   "n": 974,
-   "country": "uk",
-   "source": "Wikipedia",
-   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
-   "votes": {
-    "lab": 28.0,
-    "con": 20.0,
-    "ref": 23.0,
-    "lib": 10.0,
-    "grn": 10.0,
-    "snp": 3.0,
-    "plc": 1.0
-   },
-   "method": "online"
-  },
-  {
    "pollster": "Convergent Opinion (MRP)",
    "fieldwork_start": "2026-07-30",
    "date": "2026-07-30",
@@ -1785,6 +1785,25 @@
     "snp": 2.0,
     "plc": 1.0
    }
+  },
+  {
+   "pollster": "BMG Research",
+   "fieldwork_start": "2026-07-29",
+   "date": "2026-07-29",
+   "n": 974,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 28.0,
+    "con": 20.0,
+    "ref": 23.0,
+    "lib": 10.0,
+    "grn": 10.0,
+    "snp": 3.0,
+    "plc": 1.0
+   },
+   "method": "online"
   },
   {
    "pollster": "Find Out Now",

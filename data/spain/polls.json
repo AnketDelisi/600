@@ -2,8 +2,8 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-11-03T13:35:00Z",
- "poll_count": 585,
+ "scraped_at": "2026-11-04T13:44:26Z",
+ "poll_count": 586,
  "polls": [
   {
    "pollster": "SocioMétrica/El Español",
@@ -176,6 +176,22 @@
     "psoe": 30.0,
     "vox": 20.0
    }
+  },
+  {
+   "pollster": "More in Common",
+   "date": "2026-10-25",
+   "n": 2210,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 28.3,
+    "psoe": 27.6,
+    "vox": 20.8,
+    "podemos": 2.6,
+    "salf": 2.4
+   },
+   "method": "online"
   },
   {
    "pollster": "SocioMétrica/El Español",

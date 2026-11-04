@@ -624,6 +624,7 @@ def fetch(article, refresh=False):
         r = requests.get("https://en.wikipedia.org/wiki/" + article,
                          headers=H, timeout=120)
         r.raise_for_status()
+        os.makedirs(CACHE, exist_ok=True)
         open(path, "wb").write(r.content)
     return BeautifulSoup(open(path, "rb").read().decode("utf8"), "lxml")
 
@@ -1082,9 +1083,8 @@ def run_forecast(cc, votes, n_sims=1500, n_polls=20, horizon=None):
         return None
 
 
-def country_blocs(cc):
-    """bloc1/bloc2/bloc3 party lists for a country, parsed from js/config.js
-    (the harness must never hold its own copy of the model config)."""
+def config_country_body(cc):
+    """The text of one country's config object, parsed from js/config.js."""
     txt = open(os.path.join(ROOT, "js", "config.js"), encoding="utf8").read()
     try:
         i = txt.index("\n  %s: {" % cc)
@@ -1101,7 +1101,27 @@ def country_blocs(cc):
             if depth == 0:
                 break
         j += 1
-    body = txt[i:j + 1]
+    return txt[i:j + 1]
+
+
+def config_last_election(cc):
+    """Date of the election whose result/map the app currently uses as its
+    seat baseline. Seat projections are conversion tests only when the
+    backtest cycle's target is this election."""
+    body = config_country_body(cc)
+    if not body:
+        return None
+    m = re.search(r"lastElection:\s*\{[\s\S]*?\bdate:\s*['\"]([^'\"]+)['\"]",
+                  body)
+    return m.group(1) if m else None
+
+
+def country_blocs(cc):
+    """bloc1/bloc2/bloc3 party lists for a country, parsed from js/config.js
+    (the harness must never hold its own copy of the model config)."""
+    body = config_country_body(cc)
+    if not body:
+        return None
     m = re.search(r"\bblocs:\s*\{", body)
     if not m:
         return None
@@ -1167,6 +1187,7 @@ def main():
     variants = []
     seat_rows = []
     cal_rows = []
+    seat_skipped = []
     data_all = {}
     for country, cycles in CYCLES.items():
         if args.country and country != args.country:
@@ -1205,7 +1226,19 @@ def main():
                         variants.append((country, cycle, horizon,
                                          s["mae"], c["mae"], nz["mae"],
                                          mw["mae"], mh["mae"]))
+            seat_ok = True
             if spec.get("seats"):
+                baseline = config_last_election(country)
+                if baseline and baseline != spec["election"]:
+                    seat_ok = False
+                    seat_skipped.append({
+                        "cycle": "%s-%d" % (country, cycle),
+                        "election": spec["election"], "baseline": baseline,
+                    })
+                    print("   seats: skipped (cycle %s != current baseline %s; "
+                          "not a conversion test)" %
+                          (spec["election"], baseline))
+            if spec.get("seats") and seat_ok:
                 got = 0
                 for horizon in (60, 30, 14, 7, 0):
                     s2 = score_seats(polls, spec, horizon, country)
@@ -1292,13 +1325,11 @@ def main():
                                 "hits": hits})
 
     if args.swings:
-        # Measured 2026-10 on the nine seat cycles: an equal-weight ensemble
-        # of the three swing methods does NOT beat proportional (T-0 mean
-        # seat MAE: prop 3.66, uniform 3.73, shrunk 4.83, ensemble 4.08; UK
-        # 2024: prop 7.9 vs ensemble 11.0). Uniform is statistically tied,
-        # 'shrunk' drags the mix down, and the methods are too correlated for
-        # variance reduction. Proportional stays the default - re-run
-        # --swings before changing any map's swingMethod.
+        # Latest conversion-cycle check (2026-11): uniform beats proportional
+        # on aggregate seat MAE, but the effect is map-specific (UK prefers
+        # proportional; Canada/Japan/Korea prefer uniform). Keep per-map
+        # defaults until each map is tested separately; re-run --swings after
+        # changing a map's swingMethod.
         print("\n== swing-method comparison (seat MAE; * = leader missed)")
         srows = []
         for country, cycles in CYCLES.items():
@@ -1306,6 +1337,9 @@ def main():
                 continue
             for cycle, spec in sorted(cycles.items()):
                 if not spec.get("seats"):
+                    continue
+                baseline = config_last_election(country)
+                if baseline and baseline != spec["election"]:
                     continue
                 polls = data_all[(country, cycle)][0]
                 for horizon in (60, 30, 14, 7, 0):
@@ -1318,6 +1352,9 @@ def main():
                         if p is None:
                             ok = False
                             break
+                        for src, dst in (spec.get("seat_group") or {}).items():
+                            if src in p:
+                                p[dst] = p.get(dst, 0) + p.pop(src)
                         res[m] = p
                     if not ok:
                         continue
@@ -1380,7 +1417,8 @@ def main():
         "aggregate": agg,
         "countries": countries,
         "counts": counts,
-        "seats": {"aggregate": seat_agg, "cycles": seat_by},
+        "seats": {"mode": "conversion", "aggregate": seat_agg,
+                  "cycles": seat_by, "baseline_mismatch": seat_skipped},
         "calibration": {"n": len(cal_rows), "buckets": cal_buckets,
                         "n_cycles": len({r["cycle"] for r in cal_rows}),
                         "cycles": cal_rows},

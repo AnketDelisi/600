@@ -2,8 +2,8 @@
  "country": "fi",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
- "scraped_at": "2026-11-04T13:44:38Z",
- "poll_count": 80,
+ "scraped_at": "2026-11-05T13:56:58Z",
+ "poll_count": 81,
  "polls": [
   {
    "pollster": "Taloustutkimus",
@@ -1531,6 +1531,25 @@
     "sfp": 4.0,
     "kd": 2.8,
     "liik": 2.4
+   }
+  },
+  {
+   "pollster": "Taloustutkimus",
+   "date": "2026-11-03",
+   "n": 2170,
+   "country": "fi",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2027_Finnish_parliamentary_election",
+   "votes": {
+    "kok": 15.4,
+    "ps": 16.7,
+    "sdp": 22.9,
+    "kesk": 12.2,
+    "vas": 12.6,
+    "vihr": 8.6,
+    "sfp": 4.1,
+    "kd": 3.5,
+    "liik": 2.1
    }
   }
  ]

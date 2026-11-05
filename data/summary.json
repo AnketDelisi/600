@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T13:45:34Z",
+ "generated": "2026-11-05T13:57:52Z",
  "countries": {
   "sweden": {
    "name": "Sweden",
@@ -58,7 +58,7 @@
    "second_pct": 20.3,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 27,
+   "poll_count": 26,
    "latest_poll": "2026-10-23"
   },
   "serbia": {
@@ -150,16 +150,16 @@
    "seats": 460,
    "seat_based": false,
    "leader": "ko",
-   "leader_pct": 31.9,
+   "leader_pct": 31.0,
    "leader_code": "KO",
    "leader_color": "#F68F2D",
    "leader_logo": "img/pl/KO.svg",
    "second": "pis",
-   "second_pct": 22.1,
+   "second_pct": 21.8,
    "last_winner_code": "PiS",
    "last_winner_color": "#263778",
    "poll_count": 8,
-   "latest_poll": "2026-10-26"
+   "latest_poll": "2026-11-02"
   },
   "netherlands": {
    "name": "Netherlands",
@@ -210,7 +210,7 @@
    "seats": 150,
    "seat_based": false,
    "leader": "ps",
-   "leader_pct": 18.3,
+   "leader_pct": 18.0,
    "leader_code": "PS",
    "leader_color": "#00BDFF",
    "leader_logo": "img/sk/PS.svg",
@@ -218,7 +218,7 @@
    "second_pct": 17.7,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 3,
+   "poll_count": 2,
    "latest_poll": "2026-10-19"
   },
   "france": {
@@ -258,7 +258,7 @@
    "second_pct": 19.8,
    "last_winner_code": "CDU/CSU",
    "last_winner_color": "#151518",
-   "poll_count": 21,
+   "poll_count": 19,
    "latest_poll": "2026-11-02"
   },
   "spain": {
@@ -318,7 +318,7 @@
    "second_pct": 20.4,
    "last_winner_code": "FdI",
    "last_winner_color": "#03386A",
-   "poll_count": 30,
+   "poll_count": 28,
    "latest_poll": "2026-11-02"
   },
   "jp": {
@@ -610,15 +610,15 @@
    "seats": 141,
    "seat_based": false,
    "leader": "tslkd",
-   "leader_pct": 20.7,
+   "leader_pct": 22.7,
    "leader_code": "TS-LKD",
    "leader_color": "#3359A3",
    "leader_logo": "img/lt/TSLKD.svg",
    "second": "lsdp",
-   "second_pct": 16.3,
+   "second_pct": 14.8,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 1,
+   "poll_count": 2,
    "latest_poll": "2026-10-05"
   },
   "md": {
@@ -690,16 +690,16 @@
    "seats": 200,
    "seat_based": false,
    "leader": "sdp",
-   "leader_pct": 23.1,
+   "leader_pct": 23.0,
    "leader_code": "SDP",
    "leader_color": "#F54B4B",
    "leader_logo": "img/fi/SDP.svg",
-   "second": "kok",
-   "second_pct": 16.3,
+   "second": "ps",
+   "second_pct": 16.2,
    "last_winner_code": "KOK",
    "last_winner_color": "#006288",
-   "poll_count": 5,
-   "latest_poll": "2026-10-19"
+   "poll_count": 6,
+   "latest_poll": "2026-11-03"
   },
   "no": {
    "name": "Norway",
@@ -710,7 +710,7 @@
    "seats": 169,
    "seat_based": false,
    "leader": "frp",
-   "leader_pct": 32.6,
+   "leader_pct": 33.7,
    "leader_code": "FrP",
    "leader_color": "#004F80",
    "leader_logo": "img/no/FRP.svg",
@@ -718,8 +718,8 @@
    "second_pct": 21.8,
    "last_winner_code": null,
    "last_winner_color": null,
-   "poll_count": 5,
-   "latest_poll": "2026-10-21"
+   "poll_count": 8,
+   "latest_poll": "2026-11-02"
   },
   "pt": {
    "name": "Portugal",
@@ -758,7 +758,7 @@
    "second_pct": 21.9,
    "last_winner_code": "LAB",
    "last_winner_color": "#E41C3E",
-   "poll_count": 27,
+   "poll_count": 24,
    "latest_poll": "2026-11-02"
   },
   "nz": {

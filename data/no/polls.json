@@ -2,8 +2,8 @@
  "country": "no",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
- "scraped_at": "2026-11-04T13:44:39Z",
- "poll_count": 85,
+ "scraped_at": "2026-11-05T13:56:58Z",
+ "poll_count": 88,
  "polls": [
   {
    "pollster": "Verian",
@@ -1631,6 +1631,63 @@
     "frp": 31.6
    },
    "method": "online"
+  },
+  {
+   "pollster": "Opinion",
+   "date": "2026-10-23",
+   "n": 1000,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 6.7,
+    "sv": 4.2,
+    "mdg": 4.3,
+    "ap": 20.6,
+    "sp": 5.7,
+    "v": 3.3,
+    "krf": 3.3,
+    "h": 12.5,
+    "frp": 37.6
+   }
+  },
+  {
+   "pollster": "Verian",
+   "date": "2026-10-30",
+   "n": 983,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 8.1,
+    "sv": 5.7,
+    "mdg": 4.1,
+    "ap": 22.9,
+    "sp": 5.4,
+    "v": 4.0,
+    "krf": 2.7,
+    "h": 13.1,
+    "frp": 32.2
+   }
+  },
+  {
+   "pollster": "InFact",
+   "date": "2026-11-02",
+   "n": 1181,
+   "country": "no",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2029_Norwegian_parliamentary_election",
+   "votes": {
+    "r": 9.1,
+    "sv": 5.7,
+    "mdg": 3.8,
+    "ap": 21.7,
+    "sp": 4.8,
+    "v": 3.5,
+    "krf": 3.8,
+    "h": 11.7,
+    "frp": 34.2
+   }
   }
  ]
 }

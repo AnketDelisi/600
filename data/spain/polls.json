@@ -2,9 +2,31 @@
  "country": "spain",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
- "scraped_at": "2026-11-05T13:56:49Z",
- "poll_count": 586,
+ "scraped_at": "2026-11-06T13:42:01Z",
+ "poll_count": 587,
  "polls": [
+  {
+   "pollster": "SW Demoscopia/La Séptima",
+   "date": "2026-11-04",
+   "n": 3500,
+   "country": "spain",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_Spanish_general_election",
+   "votes": {
+    "pp": 28.8,
+    "psoe": 30.9,
+    "vox": 17.0,
+    "erc": 2.6,
+    "junts": 1.2,
+    "bildu": 1.4,
+    "pnv": 0.8,
+    "bng": 0.9,
+    "cc": 0.4,
+    "aa": 1.4,
+    "podemos": 1.2,
+    "salf": 2.0
+   }
+  },
   {
    "pollster": "SocioMétrica/El Español",
    "date": "2026-11-01",
@@ -150,7 +172,7 @@
    }
   },
   {
-   "pollster": "The Objective",
+   "pollster": "Vox/The Objective",
    "date": "2026-10-27",
    "n": 1500,
    "country": "spain",
@@ -11961,10 +11983,11 @@
    "sumar": 5.4
   },
   "pais_vasco": {
-   "pnv": 23.1,
-   "pp": 11.67,
+   "pnv": 23.07,
+   "pp": 11.65,
    "sumar": 9.7,
-   "vox": 4.2
+   "vox": 4.38,
+   "podemos": 1.9
   },
   "canarias": {
    "psoe": 30.0,
@@ -11975,19 +11998,21 @@
    "podemos": 3.0
   },
   "cataluna": {
-   "psoe": 31.55,
-   "sumar": 8.47,
-   "pp": 11.54,
-   "erc": 15.91,
-   "junts": 10.75,
-   "vox": 10.64,
+   "psoe": 31.93,
+   "sumar": 8.22,
+   "pp": 11.72,
+   "erc": 16.52,
+   "junts": 10.82,
+   "vox": 11.45,
    "podemos": 3.58
   },
   "galicia": {
-   "pp": 42.38,
-   "sumar": 8.05,
-   "bng": 13.51,
-   "vox": 7.04
+   "pp": 41.92,
+   "sumar": 7.71,
+   "bng": 14.3,
+   "vox": 7.64,
+   "podemos": 1.8,
+   "salf": 0.5
   },
   "madrid": {
    "pp": 32.8,
@@ -12005,11 +12030,12 @@
    "salf": 4.1
   },
   "navarra": {
-   "psoe": 23.6,
-   "pp": 17.7,
+   "psoe": 24.55,
+   "pp": 24.65,
    "upn": 14.7,
    "sumar": 11.6,
-   "vox": 7.0
+   "vox": 9.75,
+   "podemos": 2.1
   },
   "valenciana": {
    "pp": 32.46,

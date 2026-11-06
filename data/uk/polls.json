@@ -2,8 +2,8 @@
  "country": "uk",
  "source": "Wikipedia",
  "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
- "scraped_at": "2026-11-05T13:56:55Z",
- "poll_count": 604,
+ "scraped_at": "2026-11-06T13:42:08Z",
+ "poll_count": 605,
  "regional": {
   "london": {
    "lab": 33.07,
@@ -30,6 +30,25 @@
   }
  },
  "polls": [
+  {
+   "pollster": "Find Out Now",
+   "fieldwork_start": "2026-11-04",
+   "date": "2026-11-04",
+   "n": 2406,
+   "country": "uk",
+   "source": "Wikipedia",
+   "source_url": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_next_United_Kingdom_general_election",
+   "votes": {
+    "lab": 28.0,
+    "con": 21.0,
+    "ref": 20.0,
+    "lib": 8.0,
+    "grn": 13.0,
+    "snp": 2.0,
+    "plc": 1.0
+   },
+   "method": "online"
+  },
   {
    "pollster": "YouGov",
    "fieldwork_start": "2026-11-02",
@@ -84,6 +103,7 @@
     "lib": 9.0,
     "grn": 8.0,
     "snp": 2.0,
+    "plc": 1.0,
     "res": 5.0
    },
    "method": "online"
